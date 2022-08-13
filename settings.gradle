@@ -1,0 +1,6 @@
+rootProject.name = 'overrungl'
+
+file('modules/overrungl/').eachDir { dir ->
+    include "$dir.name"
+    project(":$dir.name").projectDir = dir
+}

@@ -1,0 +1,39 @@
+project.ext.subName = ''
+project(':glfw').ext.subName = '-glfw'
+
+allprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+    apply plugin: 'signing'
+    apply plugin: 'maven-publish'
+
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_19
+
+    group = 'io.github.over-run'
+    archivesBaseName = "overrungl$subName"
+    version = '0.1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        // temporary maven repositories
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/releases' }
+        maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots' }
+    }
+
+    dependencies {
+        compileOnly 'org.jetbrains:annotations:23.0.0'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    jar {
+        manifestContentCharset 'utf-8'
+        metadataCharset 'utf-8'
+        from 'LICENSE'
+    }
+
+    idea.module.inheritOutputDirs = true
+}
