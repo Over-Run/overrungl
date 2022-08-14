@@ -1,11 +1,19 @@
 package org.overrun.glib.glfw;
 
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
+
+import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.glfw.Handles.*;
+
 /**
  * The GLFW binding.
  *
  * @author squid233
  * @since 0.1.0
  */
+@SuppressWarnings("unused")
+//todo
 public class GLFW {
     /**
      * The major version number of the GLFW header.
@@ -717,6 +725,160 @@ public class GLFW {
 
     public static final int DONT_CARE = -1;
 
-    private static void initLibrary() {
+    static {
+        create();
+    }
+
+    /**
+     * Initializes the GLFW library.
+     * <p>
+     * This function initializes the GLFW library.  Before most GLFW functions can
+     * be used, GLFW must be initialized, and before an application terminates GLFW
+     * should be terminated in order to free any resources allocated during or
+     * after initialization.
+     * <p>
+     * If this function fails, it calls {@link #terminate} before returning.  If it
+     * succeeds, you should call {@link #terminate} before the application exits.
+     * <p>
+     * Additional calls to this function after successful initialization but before
+     * termination will return {@code TRUE} immediately.
+     *
+     * <h3>Errors</h3>
+     * Possible errors include {@link #PLATFORM_ERROR}.
+     *
+     * <h3>Remarks</h3>
+     * <b>macOS</b>: This function will change the current directory of the
+     * application to the {@code Contents/Resources} subdirectory of the application's
+     * bundle, if present.  This can be disabled with the
+     * {@link #COCOA_CHDIR_RESOURCES} init hint.<br>
+     * <b>X11</b>: This function will set the {@code LC_CTYPE} category of the
+     * application locale according to the current environment if that category is
+     * still "C".  This is because the "C" locale breaks Unicode text input.
+     *
+     * <h3>Thread safety</h3>
+     * This function must only be called from the main thread.
+     *
+     * @return {@code TRUE} if successful, or {@code FALSE} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
+     * @see #terminate
+     */
+    public static boolean init() throws Throwable {
+        return (int) glfwInit.invoke() == TRUE;
+    }
+
+    /**
+     * Terminates the GLFW library.
+     * <p>
+     * This function destroys all remaining windows and cursors, restores any
+     * modified gamma ramps and frees any other allocated resources.  Once this
+     * function is called, you must again call {@link #init} successfully before
+     * you will be able to use most GLFW functions.
+     * <p>
+     * If GLFW has been successfully initialized, this function should be called
+     * before the application exits.  If initialization fails, there is no need to
+     * call this function, as it is called by {@link #init} before it returns
+     * failure.
+     * <p>
+     * This function has no effect if GLFW is not initialized.
+     *
+     * <h3>Errors</h3>
+     * Possible errors include {@link #PLATFORM_ERROR}.
+     *
+     * <h3>Remarks</h3>
+     * This function may be called before {@link #init}.
+     *
+     * <h3>Warning</h3>
+     * The contexts of any remaining windows must not be current on any
+     * other thread when this function is called.
+     *
+     * <h3>Reentrancy</h3>
+     * This function must not be called from a callback.
+     *
+     * <h3>Thread safety</h3>
+     * This function must only be called from the main thread.
+     *
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
+     * @see #init
+     */
+    public static void terminate() throws Throwable {
+        glfwTerminate.invoke();
+    }
+
+    public static void initHint(int hint, int value) throws Throwable {
+        glfwInitHint.invoke(hint, value);
+    }
+
+    public static void ngetVersion(MemoryAddress major, MemoryAddress minor, MemoryAddress rev) throws Throwable {
+        glfwGetVersion.invoke(major, minor, rev);
+    }
+
+    public static void getVersion(int[] major, int[] minor, int[] rev) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pMajor = major != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pMinor = minor != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pRev = rev != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            ngetVersion(pMajor, pMinor, pRev);
+            if (major != null && major.length > 0) {
+                major[0] = pMajor.get(JAVA_INT, 0L);
+            }
+            if (minor != null && minor.length > 0) {
+                minor[0] = pMinor.get(JAVA_INT, 0L);
+            }
+            if (rev != null && rev.length > 0) {
+                rev[0] = pRev.get(JAVA_INT, 0L);
+            }
+        }
+    }
+
+    public static MemoryAddress ngetVersionString() throws Throwable {
+        return (MemoryAddress) glfwGetVersionString.invoke();
+    }
+
+    public static String getVersionString() throws Throwable {
+        return ngetVersionString().getUtf8String(0L);
+    }
+
+    public static int ngetError(MemoryAddress description) throws Throwable {
+        return (int) glfwGetError.invoke(description);
+    }
+
+    public static int getError(String[] description) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pDesc = description != null ? session.allocate(ADDRESS).address() : MemoryAddress.NULL;
+            int err = ngetError(pDesc);
+            if (description != null && description.length > 0) {
+                description[0] = pDesc.get(ADDRESS, 0L).getUtf8String(0L);
+            }
+            return err;
+        }
+    }
+
+    public static MemoryAddress nsetErrorCallback(MemoryAddress callback) throws Throwable {
+        return (MemoryAddress) glfwSetErrorCallback.invoke(callback);
+    }
+
+    public static MemoryAddress setErrorCallback(IGLFWErrorFun callback) throws Throwable {
+        return nsetErrorCallback(callback.address(MemorySession.global()));
+    }
+
+    public static MemoryAddress ngetMonitors(MemoryAddress count) throws Throwable {
+        return (MemoryAddress) glfwGetMonitors.invoke(count);
+    }
+
+    public static MemoryAddress[] getMonitors() throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pCount = session.allocate(JAVA_INT);
+            var pMonitors = ngetMonitors(pCount.address());
+            MemoryAddress[] monitors = new MemoryAddress[pCount.get(JAVA_INT, 0L)];
+            for (int i = 0; i < monitors.length; i++) {
+                monitors[i] = pMonitors.getAtIndex(ADDRESS, i);
+            }
+            return monitors;
+        }
+    }
+
+    public static MemoryAddress getPrimaryMonitor() throws Throwable {
+        return (MemoryAddress) glfwGetPrimaryMonitor.invoke();
     }
 }

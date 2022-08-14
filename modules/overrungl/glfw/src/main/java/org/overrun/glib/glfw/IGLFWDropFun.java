@@ -11,7 +11,7 @@ import java.lang.invoke.MethodType;
  * callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWDropFun::invoke)
- * void functionName(MemoryAddress window, int pathCount, String[] paths);
+ * void functionName(MemoryAddress window, String[] paths);
  * }
  *
  * <h3>Pointer lifetime</h3>
@@ -30,10 +30,9 @@ public interface IGLFWDropFun {
      * The function pointer type for path drop callbacks.
      *
      * @param window    The window that received the event.
-     * @param pathCount The number of dropped paths.
      * @param paths     The UTF-8 encoded file and/or directory path names.
      */
-    void invoke(MemoryAddress window, int pathCount, String[] paths);
+    void invoke(MemoryAddress window, String[] paths);
 
     default void ninvoke(MemoryAddress window, int pathCount, MemorySegment paths) {
         String[] pathArr = new String[pathCount];
@@ -41,6 +40,6 @@ public interface IGLFWDropFun {
             var ptr = paths.getAtIndex(ValueLayout.ADDRESS, i);
             pathArr[i] = ptr.getUtf8String(0L);
         }
-        invoke(window, pathCount, pathArr);
+        invoke(window, pathArr);
     }
 }

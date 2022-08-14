@@ -26,11 +26,13 @@ public abstract class OperatingSystem {
     private final String toStringValue;
     private final String osName;
     private final String osVersion;
+    private final String osArch;
 
     OperatingSystem() {
         osName = System.getProperty("os.name");
         osVersion = System.getProperty("os.version");
-        toStringValue = getName() + " " + getVersion() + " " + System.getProperty("os.arch");
+        osArch = System.getProperty("os.arch");
+        toStringValue = getName() + " " + getVersion() + " " + getArch();
     }
 
     public static OperatingSystem current() {
@@ -74,6 +76,10 @@ public abstract class OperatingSystem {
 
     public String getVersion() {
         return osVersion;
+    }
+
+    public String getArch() {
+        return osArch;
     }
 
     public boolean isWindows() {
@@ -333,8 +339,8 @@ public abstract class OperatingSystem {
             return osPrefix;
         }
 
-        protected String getArch() {
-            String arch = System.getProperty("os.arch");
+        public String getArch() {
+            String arch = super.getArch();
             if ("x86".equals(arch)) {
                 arch = "i386";
             }
@@ -406,7 +412,7 @@ public abstract class OperatingSystem {
         }
 
         @Override
-        protected String getArch() {
+        public String getArch() {
             String arch = System.getProperty("os.arch");
             if (arch.equals("i386") || arch.equals("x86")) {
                 return "x86";

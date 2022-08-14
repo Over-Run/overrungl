@@ -4,3 +4,6 @@ file('modules/overrungl/').eachDir { dir ->
     include "$dir.name"
     project(":$dir.name").projectDir = dir
 }
+
+include 'samples'
+project(':samples').projectDir = file 'modules/samples/'
