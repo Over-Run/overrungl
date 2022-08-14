@@ -37,3 +37,9 @@ allprojects {
 
     idea.module.inheritOutputDirs = true
 }
+
+subprojects {
+    dependencies {
+        implementation rootProject
+    }
+}

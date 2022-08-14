@@ -6,8 +6,6 @@ package org.overrun.glib.glfw;
  * @author squid233
  * @since 0.1.0
  */
-//todo
-@SuppressWarnings("unused")
 public class GLFW {
     /**
      * The major version number of the GLFW header.
@@ -464,7 +462,8 @@ public class GLFW {
         MAXIMIZED = 0x00020008,
         CENTER_CURSOR = 0x00020009,
         TRANSPARENT_FRAMEBUFFER = 0x0002000A,
-        FOCUS_ON_SHOW = 0x0002000C;
+        FOCUS_ON_SHOW = 0x0002000C,
+        SCALE_TO_MONITOR = 0x0002200C;
 
     /**
      * <b>HOVERED</b> indicates whether the cursor is currently directly over the content area of the window, with no other windows between.
@@ -487,7 +486,7 @@ public class GLFW {
      * <li>{@link #SRGB_CAPABLE}: specifies whether the framebuffer should be sRGB capable. Possible values are {@link #TRUE} and {@link #FALSE}.
      * <p>
      * <b>Note</b><br>
-     * <b>OpenGL</b>: If enabled and supported by the system, the {@link GL?TODO?#FRAMEBUFFER_SRGB FRAMEBUFFER_SRGB} enable will control sRGB rendering. By default, sRGB rendering will be disabled.<br>
+     * <b>OpenGL</b>: If enabled and supported by the system, the {@link GL30C#FRAMEBUFFER_SRGB FRAMEBUFFER_SRGB} enable will control sRGB rendering. By default, sRGB rendering will be disabled.<br>
      * <b>OpenGL ES</b>: If enabled and supported by the system, the context will always have sRGB rendering enabled.
      * </li>
      * <li>{@link #DOUBLEBUFFER}: specifies whether the framebuffer should be double buffered. You nearly always want to use double buffering. This is a hard constraint. Possible values are {@link #TRUE} and {@link #FALSE}.</li>
@@ -509,114 +508,118 @@ public class GLFW {
         SRGB_CAPABLE = 0x0002100E,
         DOUBLEBUFFER = 0x00021010;
 
-    /*! @brief Monitor refresh rate hint.
-     *
-     *  Monitor refresh rate [hint](@ref REFRESH_RATE).
+    /**
+     * <b>REFRESH_RATE</b> specifies the desired refresh rate for full screen windows. A value of {@link #DONT_CARE} means the highest available refresh rate will be used. This hint is ignored for windowed mode windows.
      */
     public static final int REFRESH_RATE = 0x0002100F;
 
-    /*! @brief Context client API hint and attribute.
-     *
-     *  Context client API [hint](@ref CLIENT_API_hint) and
-     *  [attribute](@ref CLIENT_API_attrib).
+    /**
+     * <h3>Context related hints</h3>
+     * <ul>
+     * <li>{@link #CLIENT_API}: specifies which client API to create the context for. Possible values are {@link #OPENGL_API}, {@link #OPENGL_ES_API} and {@link #NO_API}. This is a hard constraint.</li>
+     * <li>{@link #CONTEXT_CREATION_API}: specifies which context creation API to use to create the context. Possible values are {@link #NATIVE_CONTEXT_API}, {@link #EGL_CONTEXT_API} and {@link #OSMESA_CONTEXT_API}. This is a hard constraint. If no client API is requested, this hint is ignored.
+     * <p>
+     * An <a href="https://www.glfw.org/docs/latest/context_guide.html#context_glext_auto">extension loader library</a> that assumes it knows which API was used to create the current context may fail if you change this hint. This can be resolved by having it load functions via {@link #getProcAddress}.
+     * <p>
+     * <b>Note</b><br>
+     * <b>Wayland</b>: The EGL API is the native context creation API, so this hint will have no effect.<br>
+     * <b>X11</b>: On some Linux systems, creating contexts via both the native and EGL APIs in a single process will cause the application to segfault. Stick to one API or the other on Linux for now.<br>
+     * <b>OSMesa</b>: As its name implies, an OpenGL context created with OSMesa does not update the window contents when its buffers are swapped. Use OpenGL functions or the OSMesa native access functions {@link GLFWNative#getOSMesaColorBuffer getOSMesaColorBuffer} and {@link GLFWNative#getOSMesaDepthBuffer getOSMesaDepthBuffer} to retrieve the framebuffer contents.
+     * </li>
+     * <li>{@link #CONTEXT_VERSION_MAJOR} and {@link #CONTEXT_VERSION_MINOR}: specify the client API version that the created context must be compatible with. The exact behavior of these hints depend on the requested client API.
+     * <p>
+     * While there is no way to ask the driver for a context of the highest supported version, GLFW will attempt to provide this when you ask for a version 1.0 context, which is the default for these hints.
+     * <p>
+     * Do not confuse these hints with {@link #VERSION_MAJOR} and {@link #VERSION_MINOR}, which provide the API version of the GLFW header.
+     * <p>
+     * <b>Note</b><br>
+     * <b>OpenGL</b>: These hints are not hard constraints, but creation will fail if the OpenGL version of the created context is less than the one requested. It is therefore perfectly safe to use the default of version 1.0 for legacy code and you will still get backwards-compatible contexts of version 3.0 and above when available.<br>
+     * <b>OpenGL ES</b>: These hints are not hard constraints, but creation will fail if the OpenGL ES version of the created context is less than the one requested. Additionally, OpenGL ES 1.x cannot be returned if 2.0 or later was requested, and vice versa. This is because OpenGL ES 3.x is backward compatible with 2.0, but OpenGL ES 2.0 is not backward compatible with 1.x.<br>
+     * <b>macOS</b>: The OS only supports forward-compatible core profile contexts for OpenGL versions 3.2 and later. Before creating an OpenGL context of version 3.2 or later you must set the {@link #OPENGL_FORWARD_COMPAT} and {@link #OPENGL_PROFILE} hints accordingly. OpenGL 3.0 and 3.1 contexts are not supported at all on macOS.
+     * </li>
+     * <li>{@link #OPENGL_FORWARD_COMPAT}: specifies whether the OpenGL context should be forward-compatible, i.e. one where all functionality deprecated in the requested version of OpenGL is removed. This must only be used if the requested OpenGL version is 3.0 or above. If OpenGL ES is requested, this hint is ignored.
+     * <p>
+     * Forward-compatibility is described in detail in the <a href="https://www.opengl.org/registry/">OpenGL Reference Manual</a>.
+     * </li>
+     * <li>{@link #OPENGL_DEBUG_CONTEXT}: specifies whether the context should be created in debug mode, which may provide additional error and diagnostic reporting functionality. Possible values are {@link #TRUE} and {@link #FALSE}.
+     * <p>
+     * Debug contexts for OpenGL and OpenGL ES are described in detail by the <a href="https://www.khronos.org/registry/OpenGL/extensions/KHR/KHR_debug.txt">GL_KHR_debug</a> extension.
+     * </li>
+     * <li>{@link #OPENGL_PROFILE}: specifies which OpenGL profile to create the context for. Possible values are one of {@link #OPENGL_CORE_PROFILE} or {@link #OPENGL_COMPAT_PROFILE}, or {@link #OPENGL_ANY_PROFILE} to not request a specific profile. If requesting an OpenGL version below 3.2, {@link #OPENGL_ANY_PROFILE} must be used. If OpenGL ES is requested, this hint is ignored.
+     * <p>
+     * OpenGL profiles are described in detail in the <a href="https://www.opengl.org/registry/">OpenGL Reference Manual</a>.
+     * </li>
+     * <li>{@link #CONTEXT_ROBUSTNESS}: specifies the robustness strategy to be used by the context. This can be one of {@link #NO_RESET_NOTIFICATION} or {@link #LOSE_CONTEXT_ON_RESET}, or {@link #NO_ROBUSTNESS} to not request a robustness strategy.</li>
+     * <li>{@link #CONTEXT_RELEASE_BEHAVIOR}: specifies the release behavior to be used by the context. Possible values are one of {@link #ANY_RELEASE_BEHAVIOR}, {@link #RELEASE_BEHAVIOR_FLUSH} or {@link #RELEASE_BEHAVIOR_NONE}. If the behavior is {@link #ANY_RELEASE_BEHAVIOR}, the default behavior of the context creation API will be used. If the behavior is {@link #RELEASE_BEHAVIOR_FLUSH}, the pipeline will be flushed whenever the context is released from being the current one. If the behavior is {@link #RELEASE_BEHAVIOR_NONE}, the pipeline will not be flushed on release.
+     * <p>
+     * Context release behaviors are described in detail by the <a href="https://www.opengl.org/registry/specs/KHR/context_flush_control.txt">GL_KHR_context_flush_control</a> extension.
+     * </li>
+     * <li>{@link #CONTEXT_NO_ERROR}: specifies whether errors should be generated by the context. Possible values are {@link #TRUE} and {@link #FALSE}. If enabled, situations that would have generated errors instead cause undefined behavior.
+     * <p>
+     * The no error mode for OpenGL and OpenGL ES is described in detail by the <a href="https://www.opengl.org/registry/specs/KHR/no_error.txt">GL_KHR_no_error</a> extension.
+     * </li>
+     * </ul>
      */
-    public static final int CLIENT_API = 0x00022001;
-    /*! @brief Context client API major version hint and attribute.
-     *
-     *  Context client API major version [hint](@ref CONTEXT_VERSION_MAJOR_hint)
-     *  and [attribute](@ref CONTEXT_VERSION_MAJOR_attrib).
-     */
-    public static final int CONTEXT_VERSION_MAJOR = 0x00022002;
-    /*! @brief Context client API minor version hint and attribute.
-     *
-     *  Context client API minor version [hint](@ref CONTEXT_VERSION_MINOR_hint)
-     *  and [attribute](@ref CONTEXT_VERSION_MINOR_attrib).
-     */
-    public static final int CONTEXT_VERSION_MINOR = 0x00022003;
-    /*! @brief Context client API revision number attribute.
-     *
-     *  Context client API revision number
-     *  [attribute](@ref CONTEXT_REVISION_attrib).
+    public static final int CLIENT_API = 0x00022001,
+        CONTEXT_VERSION_MAJOR = 0x00022002,
+        CONTEXT_VERSION_MINOR = 0x00022003,
+        CONTEXT_ROBUSTNESS = 0x00022005,
+        OPENGL_FORWARD_COMPAT = 0x00022006,
+        OPENGL_DEBUG_CONTEXT = 0x00022007,
+        OPENGL_PROFILE = 0x00022008,
+        CONTEXT_RELEASE_BEHAVIOR = 0x00022009,
+        CONTEXT_NO_ERROR = 0x0002200A,
+        CONTEXT_CREATION_API = 0x0002200B;
+
+    /**
+     * {@link #CONTEXT_VERSION_MAJOR}, {@link #CONTEXT_VERSION_MINOR} and {@code CONTEXT_REVISION} indicate the client API version of the window's context.
      */
     public static final int CONTEXT_REVISION = 0x00022004;
-    /*! @brief Context robustness hint and attribute.
-     *
-     *  Context client API revision number [hint](@ref CONTEXT_ROBUSTNESS_hint)
-     *  and [attribute](@ref CONTEXT_ROBUSTNESS_attrib).
-     */
-    public static final int CONTEXT_ROBUSTNESS = 0x00022005;
-    /*! @brief OpenGL forward-compatibility hint and attribute.
-     *
-     *  OpenGL forward-compatibility [hint](@ref OPENGL_FORWARD_COMPAT_hint)
-     *  and [attribute](@ref OPENGL_FORWARD_COMPAT_attrib).
-     */
-    public static final int OPENGL_FORWARD_COMPAT = 0x00022006;
-    /*! @brief Debug mode context hint and attribute.
-     *
-     *  Debug mode context [hint](@ref OPENGL_DEBUG_CONTEXT_hint) and
-     *  [attribute](@ref OPENGL_DEBUG_CONTEXT_attrib).
-     */
-    public static final int OPENGL_DEBUG_CONTEXT = 0x00022007;
-    /*! @brief OpenGL profile hint and attribute.
-     *
-     *  OpenGL profile [hint](@ref OPENGL_PROFILE_hint) and
-     *  [attribute](@ref OPENGL_PROFILE_attrib).
-     */
-    public static final int OPENGL_PROFILE = 0x00022008;
-    /*! @brief Context flush-on-release hint and attribute.
-     *
-     *  Context flush-on-release [hint](@ref CONTEXT_RELEASE_BEHAVIOR_hint) and
-     *  [attribute](@ref CONTEXT_RELEASE_BEHAVIOR_attrib).
-     */
-    public static final int CONTEXT_RELEASE_BEHAVIOR = 0x00022009;
-    /*! @brief Context error suppression hint and attribute.
-     *
-     *  Context error suppression [hint](@ref CONTEXT_NO_ERROR_hint) and
-     *  [attribute](@ref CONTEXT_NO_ERROR_attrib).
-     */
-    public static final int CONTEXT_NO_ERROR = 0x0002200A;
-    /*! @brief Context creation API hint and attribute.
-     *
-     *  Context creation API [hint](@ref CONTEXT_CREATION_API_hint) and
-     *  [attribute](@ref CONTEXT_CREATION_API_attrib).
-     */
-    public static final int CONTEXT_CREATION_API = 0x0002200B;
-    /*! @brief Window content area scaling window
-     *  [window hint](@ref SCALE_TO_MONITOR).
-     */
-    public static final int SCALE_TO_MONITOR = 0x0002200C;
-    /*! @brief macOS specific
-     *  [window hint](@ref COCOA_RETINA_FRAMEBUFFER_hint).
-     */
-    public static final int COCOA_RETINA_FRAMEBUFFER = 0x00023001;
-    /*! @brief macOS specific
-     *  [window hint](@ref COCOA_FRAME_NAME_hint).
-     */
-    public static final int COCOA_FRAME_NAME = 0x00023002;
-    /*! @brief macOS specific
-     *  [window hint](@ref COCOA_GRAPHICS_SWITCHING_hint).
-     */
-    public static final int COCOA_GRAPHICS_SWITCHING = 0x00023003;
-    /*! @brief X11 specific
-     *  [window hint](@ref X11_CLASS_NAME_hint).
-     */
-    public static final int X11_CLASS_NAME = 0x00024001;
-    /*! @brief X11 specific
-     *  [window hint](@ref X11_CLASS_NAME_hint).
-     */
-    public static final int X11_INSTANCE_NAME = 0x00024002;
 
-    public static final int NO_API = 0;
-    public static final int OPENGL_API = 0x00030001;
-    public static final int OPENGL_ES_API = 0x00030002;
+    /**
+     * <h3>macOS specific window hints</h3>
+     * <ul>
+     * <li>{@link #COCOA_RETINA_FRAMEBUFFER}: specifies whether to use full resolution framebuffers on Retina displays. Possible values are {@link #TRUE} and {@link #FALSE}. This is ignored on other platforms.</li>
+     * <li>{@link #COCOA_FRAME_NAME}: specifies the UTF-8 encoded name to use for autosaving the window frame, or if empty disables frame autosaving for the window. This is ignored on other platforms. This is set with {@link #windowHintString}.</li>
+     * <li>{@link #COCOA_GRAPHICS_SWITCHING}: specifies whether to in Automatic Graphics Switching, i.e. to allow the system to choose the integrated GPU for the OpenGL context and move it between GPUs if necessary or whether to force it to always run on the discrete GPU. This only affects systems with both integrated and discrete GPUs. Possible values are {@link #TRUE} and {@link #FALSE}. This is ignored on other platforms.
+     * <p>
+     * Simpler programs and tools may want to enable this to save power, while games and other applications performing advanced rendering will want to leave it disabled.
+     * <p>
+     * A bundled application that wishes to participate in Automatic Graphics Switching should also declare this in its {@code Info.plist} by setting the {@code NSSupportsAutomaticGraphicsSwitching} key to {@code true}.
+     * </li>
+     * </ul>
+     */
+    public static final int COCOA_RETINA_FRAMEBUFFER = 0x00023001,
+        COCOA_FRAME_NAME = 0x00023002,
+        COCOA_GRAPHICS_SWITCHING = 0x00023003;
 
-    public static final int NO_ROBUSTNESS = 0;
-    public static final int NO_RESET_NOTIFICATION = 0x00031001;
-    public static final int LOSE_CONTEXT_ON_RESET = 0x00031002;
+    /**
+     * <h3>X11 specific window hints</h3>
+     * {@link #X11_CLASS_NAME} and {@link #X11_INSTANCE_NAME} specifies the desired ASCII encoded class and instance parts of the ICCCM {@code WM_CLASS} window property. These are set with {@link #windowHintString}.
+     */
+    public static final int X11_CLASS_NAME = 0x00024001,
+        X11_INSTANCE_NAME = 0x00024002;
 
-    public static final int OPENGL_ANY_PROFILE = 0;
-    public static final int OPENGL_CORE_PROFILE = 0x00032001;
-    public static final int OPENGL_COMPAT_PROFILE = 0x00032002;
+    /**
+     * @see #CLIENT_API
+     */
+    public static final int NO_API = 0,
+        OPENGL_API = 0x00030001,
+        OPENGL_ES_API = 0x00030002;
+
+    /**
+     * @see #CONTEXT_ROBUSTNESS
+     */
+    public static final int NO_ROBUSTNESS = 0,
+        NO_RESET_NOTIFICATION = 0x00031001,
+        LOSE_CONTEXT_ON_RESET = 0x00031002;
+
+    /**
+     * @see #OPENGL_PROFILE
+     */
+    public static final int OPENGL_ANY_PROFILE = 0,
+        OPENGL_CORE_PROFILE = 0x00032001,
+        OPENGL_COMPAT_PROFILE = 0x00032002;
 
     public static final int CURSOR = 0x00033001;
     public static final int STICKY_KEYS = 0x00033002;
@@ -624,9 +627,41 @@ public class GLFW {
     public static final int LOCK_KEY_MODS = 0x00033004;
     public static final int RAW_MOUSE_MOTION = 0x00033005;
 
-    public static final int CURSOR_NORMAL = 0x00034001;
-    public static final int CURSOR_HIDDEN = 0x00034002;
-    public static final int CURSOR_DISABLED = 0x00034003;
+    /**
+     * <h3>Cursor mode</h3>
+     * The {@code CURSOR} input mode provides several cursor modes for special forms of mouse motion input.
+     * By default, the cursor mode is {@code CURSOR_NORMAL}, meaning the regular arrow cursor
+     * (or another cursor set with {@link #setCursor}) is used and cursor motion is not limited.
+     * <p>
+     * If you wish to implement mouse motion based camera controls or other input schemes
+     * that require unlimited mouse movement, set the cursor mode to {@code CURSOR_DISABLED}.
+     * <!-- todo don't use snippet because some bugs -->
+     * <pre>{@code
+     * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_DISABLED);
+     * }</pre>
+     * This will hide the cursor and lock it to the specified window. GLFW will then take care of all the details of cursor re-centering
+     * and offset calculation and providing the application with a virtual cursor position. This virtual position is provided normally
+     * via both the cursor position callback and through polling.
+     * <p>
+     * <b>Note</b><br>
+     * You should not implement your own version of this functionality using other features of GLFW.
+     * It is not supported and will not work as robustly as {@code CURSOR_DISABLED}.
+     * <p>
+     * If you only wish the cursor to become hidden when it is over a window but still want it to behave normally,
+     * set the cursor mode to {@code CURSOR_HIDDEN}.
+     * <pre>{@code
+     * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_HIDDEN);
+     * }</pre>
+     * This mode puts no limit on the motion of the cursor.
+     * <p>
+     * To exit out of either of these special modes, restore the {@code CURSOR_NORMAL} cursor mode.
+     * <pre>{@code
+     * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_NORMAL);
+     * }</pre>
+     */
+    public static final int CURSOR_NORMAL = 0x00034001,
+        CURSOR_HIDDEN = 0x00034002,
+        CURSOR_DISABLED = 0x00034003;
 
     public static final int ANY_RELEASE_BEHAVIOR = 0;
     public static final int RELEASE_BEHAVIOR_FLUSH = 0x00035001;
@@ -636,67 +671,49 @@ public class GLFW {
     public static final int EGL_CONTEXT_API = 0x00036002;
     public static final int OSMESA_CONTEXT_API = 0x00036003;
 
-    /*! @defgroup shapes Standard cursor shapes
-     *  @brief Standard system cursor shapes.
-     *
-     *  See [standard cursor creation](@ref cursor_standard) for how these are used.
-     *
-     *  @ingroup input
-     *  @{ */
-
-    /*! @brief The regular arrow cursor shape.
-     *
-     *  The regular arrow cursor.
+    /**
+     * The regular arrow cursor.
      */
     public static final int ARROW_CURSOR = 0x00036001;
-    /*! @brief The text input I-beam cursor shape.
-     *
-     *  The text input I-beam cursor shape.
+    /**
+     * The text input I-beam cursor shape.
      */
     public static final int IBEAM_CURSOR = 0x00036002;
-    /*! @brief The crosshair shape.
-     *
-     *  The crosshair shape.
+    /**
+     * The crosshair shape.
      */
     public static final int CROSSHAIR_CURSOR = 0x00036003;
-    /*! @brief The hand shape.
-     *
-     *  The hand shape.
+    /**
+     * The hand shape.
      */
     public static final int HAND_CURSOR = 0x00036004;
-    /*! @brief The horizontal resize arrow shape.
-     *
-     *  The horizontal resize arrow shape.
+    /**
+     * The horizontal resize arrow shape.
      */
     public static final int HRESIZE_CURSOR = 0x00036005;
-    /*! @brief The vertical resize arrow shape.
-     *
-     *  The vertical resize arrow shape.
+    /**
+     * The vertical resize arrow shape.
      */
     public static final int VRESIZE_CURSOR = 0x00036006;
-    /*! @} */
 
     public static final int CONNECTED = 0x00040001;
     public static final int DISCONNECTED = 0x00040002;
 
-    /*! @addtogroup init
-     *  @{ */
-    /*! @brief Joystick hat buttons init hint.
-     *
-     *  Joystick hat buttons [init hint](@ref JOYSTICK_HAT_BUTTONS).
+    /**
+     * {@code JOYSTICK_HAT_BUTTONS} specifies whether to also expose joystick hats as buttons,
+     * for compatibility with earlier versions of GLFW that did not have {@link #getJoystickHats}.
+     * Possible values are {@link #TRUE} and {@link #FALSE}.
      */
     public static final int JOYSTICK_HAT_BUTTONS = 0x00050001;
-    /*! @brief macOS specific init hint.
-     *
-     *  macOS specific [init hint](@ref COCOA_CHDIR_RESOURCES_hint).
+    /**
+     * <h3>macOS specific init hints</h3>
+     * <ul>
+     * <li>{@link #COCOA_CHDIR_RESOURCES}: specifies whether to set the current directory to the application to the {@code Contents/Resources} subdirectory of the application's bundle, if present. Set this with {@link #initHint}.</li>
+     * <li>{@link #COCOA_MENUBAR}: specifies whether to create a basic menu bar, either from a nib or manually, when the first window is created, which is when AppKit is initialized. Set this with {@link #initHint}.</li>
+     * </ul>
      */
-    public static final int COCOA_CHDIR_RESOURCES = 0x00051001;
-    /*! @brief macOS specific init hint.
-     *
-     *  macOS specific [init hint](@ref COCOA_MENUBAR_hint).
-     */
-    public static final int COCOA_MENUBAR = 0x00051002;
-    /*! @} */
+    public static final int COCOA_CHDIR_RESOURCES = 0x00051001,
+        COCOA_MENUBAR = 0x00051002;
 
     public static final int DONT_CARE = -1;
 
