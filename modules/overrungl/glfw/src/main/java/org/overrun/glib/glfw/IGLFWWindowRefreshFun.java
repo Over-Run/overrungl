@@ -1,7 +1,10 @@
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ICallback;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
@@ -18,7 +21,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWWindowRefreshFun {
+public interface IGLFWWindowRefreshFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
     MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class);
 
@@ -28,4 +31,9 @@ public interface IGLFWWindowRefreshFun {
      * @param window The window whose content needs to be refreshed.
      */
     void invoke(MemoryAddress window);
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWWindowRefreshFun.class, "invoke", MTYPE, DESC);
+    }
 }

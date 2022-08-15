@@ -1,7 +1,10 @@
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ICallback;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
@@ -18,7 +21,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWWindowContentScaleFun {
+public interface IGLFWWindowContentScaleFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
     MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, float.class, float.class);
 
@@ -30,4 +33,9 @@ public interface IGLFWWindowContentScaleFun {
      * @param yscale The new y-axis content scale of the window.
      */
     void invoke(MemoryAddress window, float xscale, float yscale);
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWWindowContentScaleFun.class, "invoke", MTYPE, DESC);
+    }
 }

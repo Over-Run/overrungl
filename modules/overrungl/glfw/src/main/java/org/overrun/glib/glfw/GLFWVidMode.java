@@ -46,6 +46,16 @@ public class GLFWVidMode extends Pointer {
     }
 
     /**
+     * Creates a {@code GLFWvidmode} instance with the given memory session.
+     *
+     * @param session the memory session
+     * @return the instance
+     */
+    public static GLFWVidMode create(MemorySession session) {
+        return new GLFWVidMode(session.allocate(LAYOUT));
+    }
+
+    /**
      * Gets the width.
      *
      * @return The width, in screen coordinates, of the video mode.

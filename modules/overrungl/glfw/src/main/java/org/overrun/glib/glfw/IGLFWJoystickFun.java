@@ -1,6 +1,10 @@
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ICallback;
+
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
@@ -17,7 +21,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWJoystickFun {
+public interface IGLFWJoystickFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
     MethodType MTYPE = MethodType.methodType(void.class, int.class, int.class);
 
@@ -29,4 +33,9 @@ public interface IGLFWJoystickFun {
      *              releases may add more events.
      */
     void invoke(int jid, int event);
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWJoystickFun.class, "invoke", MTYPE, DESC);
+    }
 }

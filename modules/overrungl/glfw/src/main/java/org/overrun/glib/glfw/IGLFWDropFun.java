@@ -1,9 +1,8 @@
 package org.overrun.glib.glfw;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import org.overrun.glib.ICallback;
+
+import java.lang.foreign.*;
 import java.lang.invoke.MethodType;
 
 /**
@@ -22,7 +21,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWDropFun {
+public interface IGLFWDropFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, MemoryAddress.class);
 
@@ -41,5 +40,10 @@ public interface IGLFWDropFun {
             pathArr[i] = ptr.getUtf8String(0L);
         }
         invoke(window, pathArr);
+    }
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWDropFun.class, "ninvoke", MTYPE, DESC);
     }
 }

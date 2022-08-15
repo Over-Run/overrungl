@@ -1,7 +1,10 @@
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ICallback;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
@@ -18,7 +21,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWKeyFun {
+public interface IGLFWKeyFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
     MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class, int.class, int.class);
 
@@ -34,4 +37,9 @@ public interface IGLFWKeyFun {
      *                 were held down.
      */
     void invoke(MemoryAddress window, int key, int scancode, int action, int mods);
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWKeyFun.class, "invoke", MTYPE, DESC);
+    }
 }

@@ -1,7 +1,10 @@
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ICallback;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
@@ -22,7 +25,7 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 @Deprecated(forRemoval = true)
-public interface IGLFWCharModsFun {
+public interface IGLFWCharModsFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
     MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class);
 
@@ -35,4 +38,9 @@ public interface IGLFWCharModsFun {
      *                  held down.
      */
     void invoke(MemoryAddress window, int codepoint, int mods);
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWCharModsFun.class, "invoke", MTYPE, DESC);
+    }
 }

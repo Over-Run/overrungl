@@ -40,6 +40,6 @@ public interface IGLFWErrorFun extends ICallback {
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {
-        return segment(session, IGLFWErrorFun.class, "ninvoke", MTYPE, DESC).address();
+        return address(session, IGLFWErrorFun.class, "ninvoke", MTYPE, DESC);
     }
 }

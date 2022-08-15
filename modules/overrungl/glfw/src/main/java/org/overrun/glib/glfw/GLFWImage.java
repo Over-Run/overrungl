@@ -39,6 +39,49 @@ public class GLFWImage extends Pointer {
     }
 
     /**
+     * Creates a {@code GLFWimage} instance with the given memory session.
+     *
+     * @param session the memory session
+     * @return the instance
+     */
+    public static GLFWImage create(MemorySession session) {
+        return new GLFWImage(session.allocate(LAYOUT));
+    }
+
+    /**
+     * Sets the image width.
+     *
+     * @param width The width, in pixels, of this image.
+     * @return this
+     */
+    public GLFWImage width(int width) {
+        address().set(ValueLayout.JAVA_INT, 0L, width);
+        return this;
+    }
+
+    /**
+     * Sets the image height.
+     *
+     * @param height The height, in pixels, of this image.
+     * @return this
+     */
+    public GLFWImage height(int height) {
+        address().setAtIndex(ValueLayout.JAVA_INT, 1L, height);
+        return this;
+    }
+
+    /**
+     * Sets the image pixels address.
+     *
+     * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
+     * @return this
+     */
+    public GLFWImage pixels(MemoryAddress pixels) {
+        address().set(ValueLayout.ADDRESS, ValueLayout.JAVA_INT.byteSize() * 2L, pixels);
+        return this;
+    }
+
+    /**
      * Gets the image width.
      *
      * @return The width, in pixels, of this image.

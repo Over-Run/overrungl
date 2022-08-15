@@ -48,6 +48,16 @@ public class GLFWGamepadState extends Pointer {
     }
 
     /**
+     * Creates a {@code GLFWgamepadstate} instance with the given memory session.
+     *
+     * @param session the memory session
+     * @return the instance
+     */
+    public static GLFWGamepadState create(MemorySession session) {
+        return new GLFWGamepadState(session.allocate(LAYOUT));
+    }
+
+    /**
      * Gets the button state array by the memory session.
      *
      * @param session the memory session

@@ -23,6 +23,28 @@ public interface ICallback {
     MemoryAddress address(MemorySession session) throws Exception;
 
     /**
+     * Gets the memory address of the upcall stub with the given memory session.
+     *
+     * @param session  the memory session
+     * @param refc     the callback class
+     * @param name     the callback method name
+     * @param type     the callback method type
+     * @param function the function descriptor
+     * @return the memory address
+     * @throws NoSuchMethodException  if the method does not exist
+     * @throws IllegalAccessException if access checking fails, or if the method is {@code static},
+     *                                or if the method's variable arity modifier bit is set and asVarargsCollector fails
+     */
+    default MemoryAddress address(MemorySession session,
+                                  Class<?> refc,
+                                  String name,
+                                  MethodType type,
+                                  FunctionDescriptor function)
+        throws NoSuchMethodException, IllegalAccessException {
+        return segment(session, refc, name, type, function).address();
+    }
+
+    /**
      * Gets the memory segment of the upcall stub with the given memory session.
      *
      * @param session  the memory session

@@ -1,7 +1,10 @@
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ICallback;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
@@ -18,7 +21,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWScrollFun {
+public interface IGLFWScrollFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
     MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, double.class, double.class);
 
@@ -30,4 +33,9 @@ public interface IGLFWScrollFun {
      * @param yoffset The scroll offset along the y-axis.
      */
     void invoke(MemoryAddress window, double xoffset, double yoffset);
+
+    @Override
+    default MemoryAddress address(MemorySession session) throws Exception {
+        return address(session, IGLFWScrollFun.class, "invoke", MTYPE, DESC);
+    }
 }

@@ -218,7 +218,7 @@ final class Handles {
         glfwWindowHint = downcallV("glfwWindowHint", JAVA_INT, JAVA_INT);
         glfwWindowHintString = downcallV("glfwWindowHintString", JAVA_INT, ADDRESS);
         glfwCreateWindow = downcall("glfwCreateWindow", ADDRESS, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS, ADDRESS);
-        glfwDestroyWindow = downcallV("glfwDestroyWindow", ADDRESS);
+        glfwDestroyWindow = downcallPV("glfwDestroyWindow");
         glfwWindowShouldClose = downcall("glfwWindowShouldClose", JAVA_INT, ADDRESS);
         glfwSetWindowShouldClose = downcallV("glfwSetWindowShouldClose", ADDRESS, JAVA_INT);
         glfwSetWindowTitle = downcallPPV("glfwSetWindowTitle");

@@ -7,7 +7,6 @@ import java.lang.foreign.MemorySession;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Path;
 
 /**
@@ -31,7 +30,7 @@ public final class GameLib {
         // 1. Load from classpath
         try {
             uri = ClassLoader.getSystemResource(module + os.getFamilyName() + "/" + os.getArch() + path).toURI();
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
             // 2. Load from natives directory
             var file = new File(System.getProperty("overrungl.natives", "") + path);
             if (!file.exists()) {

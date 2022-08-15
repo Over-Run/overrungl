@@ -42,6 +42,60 @@ public class GLFWGammaRamp extends Pointer {
     }
 
     /**
+     * Creates a {@code GLFWgammaramp} instance with the given memory session.
+     *
+     * @param session the memory session
+     * @return the instance
+     */
+    public static GLFWGammaRamp create(MemorySession session) {
+        return new GLFWGammaRamp(session.allocate(LAYOUT));
+    }
+
+    /**
+     * Sets the red value array.
+     *
+     * @param reds the array
+     * @return this
+     */
+    public GLFWGammaRamp red(short[] reds) {
+        address().set(ValueLayout.ADDRESS, 1L, MemorySegment.ofArray(reds));
+        return this;
+    }
+
+    /**
+     * Sets the green value array.
+     *
+     * @param greens the array
+     * @return this
+     */
+    public GLFWGammaRamp green(short[] greens) {
+        address().set(ValueLayout.ADDRESS, 2L, MemorySegment.ofArray(greens));
+        return this;
+    }
+
+    /**
+     * Sets the blue value array.
+     *
+     * @param blues the array
+     * @return this
+     */
+    public GLFWGammaRamp blue(short[] blues) {
+        address().set(ValueLayout.ADDRESS, 0L, MemorySegment.ofArray(blues));
+        return this;
+    }
+
+    /**
+     * Sets the arrays size.
+     *
+     * @param size The number of elements in each array.
+     * @return this
+     */
+    public GLFWGammaRamp size(int size) {
+        address().set(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.byteSize() * 3L, size);
+        return this;
+    }
+
+    /**
      * Gets a red value at the given index.
      *
      * @param index the index
