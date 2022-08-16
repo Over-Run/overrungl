@@ -14,8 +14,6 @@ import static org.overrun.glib.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-@SuppressWarnings("unused")
-//todo
 public class GLFW {
     /**
      * The major version number of the GLFW header.
@@ -818,6 +816,10 @@ public class GLFW {
 
     static {
         create();
+    }
+
+    protected GLFW() {
+        throw new IllegalStateException("Do not construct instance");
     }
 
     /**

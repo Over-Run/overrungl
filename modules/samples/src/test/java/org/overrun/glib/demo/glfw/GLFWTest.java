@@ -1,5 +1,8 @@
 package org.overrun.glib.demo.glfw;
 
+import org.overrun.glib.gl.GL;
+import org.overrun.glib.gl.GL10C;
+import org.overrun.glib.gl.GLConstC;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 
@@ -69,12 +72,13 @@ public final class GLFWTest {
     }
 
     private void loop() throws Throwable {
-        //load gl
+        if (GL.load(GLFW::getProcAddress) == 0)
+            throw new IllegalStateException("Failed to load OpenGL");
 
-        //clear color
+        GL10C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
         while (!GLFW.windowShouldClose(window)) {
-            //clear
+            GL10C.clear(GLConstC.GL_COLOR_BUFFER_BIT | GLConstC.GL_DEPTH_BUFFER_BIT);
 
             GLFW.swapBuffers(window);
 
