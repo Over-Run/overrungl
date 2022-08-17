@@ -31,10 +31,11 @@ public interface IGLFWCursorEnterFun extends ICallback {
      * @param window  The window that received the event.
      * @param entered {@code true} if the cursor entered the window's content
      *                area, or {@code false} if it left it.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, boolean entered);
+    void invoke(MemoryAddress window, boolean entered) throws Throwable;
 
-    default void ninvoke(MemoryAddress window, int entered) {
+    default void ninvoke(MemoryAddress window, int entered) throws Throwable {
         invoke(window, entered == GLFW.TRUE);
     }
 

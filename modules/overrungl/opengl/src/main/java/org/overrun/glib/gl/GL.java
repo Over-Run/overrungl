@@ -32,9 +32,14 @@ public class GL {
     static final FunctionDescriptor dIIV = ofDescriptor("IIV");
     static final FunctionDescriptor dIPV = ofDescriptor("IPV");
     static final FunctionDescriptor dISV = ofDescriptor("ISV");
+    static final FunctionDescriptor dPPV = ofDescriptor("PPV");
+    static final FunctionDescriptor dSSV = ofDescriptor("SSV");
     static final FunctionDescriptor dBBBV = ofDescriptor("BBBV");
     static final FunctionDescriptor dDDDV = ofDescriptor("DDDV");
     static final FunctionDescriptor dFFFV = ofDescriptor("FFFV");
+    static final FunctionDescriptor dIDDV = ofDescriptor("IDDV");
+    static final FunctionDescriptor dIFFV = ofDescriptor("IFFV");
+    static final FunctionDescriptor dIIDV = ofDescriptor("IIDV");
     static final FunctionDescriptor dIIFV = ofDescriptor("IIFV");
     static final FunctionDescriptor dIIIV = ofDescriptor("IIIV");
     static final FunctionDescriptor dIIPV = ofDescriptor("IIPV");
@@ -51,6 +56,10 @@ public class GL {
     static final FunctionDescriptor dIIIIIV = ofDescriptor("IIIIIV");
     static final FunctionDescriptor dIIIIPV = ofDescriptor("IIIIPV");
     static final FunctionDescriptor dDDDDDDV = ofDescriptor("DDDDDDV");
+    static final FunctionDescriptor dIDDIDDV = ofDescriptor("IDDIDDV");
+    static final FunctionDescriptor dIDDIIPV = ofDescriptor("IDDIIPV");
+    static final FunctionDescriptor dIFFIFFV = ofDescriptor("IFFIFFV");
+    static final FunctionDescriptor dIFFIIPV = ofDescriptor("IFFIIPV");
     static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
     static final FunctionDescriptor dIIFFFFPV = ofDescriptor("IIFFFFPV");
     static final FunctionDescriptor dIIIIIIIV = ofDescriptor("IIIIIIIV");
@@ -58,6 +67,8 @@ public class GL {
     static final FunctionDescriptor dIIIIIIIIV = ofDescriptor("IIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIPV = ofDescriptor("IIIIIIIPV");
     static final FunctionDescriptor dIIIIIIIIPV = ofDescriptor("IIIIIIIIPV");
+    static final FunctionDescriptor dIDDIIDDIIPV = ofDescriptor("IDDIIDDIIPV");
+    static final FunctionDescriptor dIFFIIFFIIPV = ofDescriptor("IFFIIFFIIPV");
 
     private static ValueLayout ofValue(char c) {
         return switch (c) {
@@ -106,10 +117,25 @@ public class GL {
         return Linker.nativeLinker().downcallHandle(symbol, function);
     }
 
+    /**
+     * Load OpenGL compatibility profile by the given load function.
+     *
+     * @param load the load function
+     * @return the OpenGL version, or {@code 0} if no OpenGL context found
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
+     */
     public static int load(GLLoadFunc load) throws Throwable {
         return load(false, load);
     }
 
+    /**
+     * Load OpenGL by the given load function.
+     *
+     * @param forwardCompatible If {@code true}, only loading core profile functions.
+     * @param load              the load function
+     * @return the OpenGL version, or {@code 0} if no OpenGL context found
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
+     */
     public static int load(boolean forwardCompatible, GLLoadFunc load) throws Throwable {
         GL10C.glGetString = downcallSafe(load.invoke("glGetString"), dIP);
         if (GL10C.glGetString == null) return 0;

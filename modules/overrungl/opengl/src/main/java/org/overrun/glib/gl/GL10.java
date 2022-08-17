@@ -265,154 +265,154 @@ public class GL10 extends GL10C {
         glLoadMatrixd = downcallSafe(load.invoke("glLoadMatrixd"), dPV);
         glLoadMatrixf = downcallSafe(load.invoke("glLoadMatrixf"), dPV);
         glLoadName = downcallSafe(load.invoke("glLoadName"), dIV);
-        glMap1d = downcallSafe(load.invoke("glMap1d"), );
-        glMap1f = downcallSafe(load.invoke("glMap1f"), );
-        glMap2d = downcallSafe(load.invoke("glMap2d"), );
-        glMap2f = downcallSafe(load.invoke("glMap2f"), );
-        glMapGrid1d = downcallSafe(load.invoke("glMapGrid1d"), );
-        glMapGrid1f = downcallSafe(load.invoke("glMapGrid1f"), );
-        glMapGrid2d = downcallSafe(load.invoke("glMapGrid2d"), );
-        glMapGrid2f = downcallSafe(load.invoke("glMapGrid2f"), );
-        glMaterialf = downcallSafe(load.invoke("glMaterialf"), );
-        glMaterialfv = downcallSafe(load.invoke("glMaterialfv"), );
-        glMateriali = downcallSafe(load.invoke("glMateriali"), );
-        glMaterialiv = downcallSafe(load.invoke("glMaterialiv"), );
-        glMatrixMode = downcallSafe(load.invoke("glMatrixMode"), );
-        glMultMatrixd = downcallSafe(load.invoke("glMultMatrixd"), );
-        glMultMatrixf = downcallSafe(load.invoke("glMultMatrixf"), );
-        glNewList = downcallSafe(load.invoke("glNewList"), );
-        glNormal3b = downcallSafe(load.invoke("glNormal3b"), );
-        glNormal3bv = downcallSafe(load.invoke("glNormal3bv"), );
-        glNormal3d = downcallSafe(load.invoke("glNormal3d"), );
-        glNormal3dv = downcallSafe(load.invoke("glNormal3dv"), );
-        glNormal3f = downcallSafe(load.invoke("glNormal3f"), );
-        glNormal3fv = downcallSafe(load.invoke("glNormal3fv"), );
-        glNormal3i = downcallSafe(load.invoke("glNormal3i"), );
-        glNormal3iv = downcallSafe(load.invoke("glNormal3iv"), );
-        glNormal3s = downcallSafe(load.invoke("glNormal3s"), );
-        glNormal3sv = downcallSafe(load.invoke("glNormal3sv"), );
-        glOrtho = downcallSafe(load.invoke("glOrtho"), );
-        glPassThrough = downcallSafe(load.invoke("glPassThrough"), );
-        glPixelMapfv = downcallSafe(load.invoke("glPixelMapfv"), );
-        glPixelMapuiv = downcallSafe(load.invoke("glPixelMapuiv"), );
-        glPixelMapusv = downcallSafe(load.invoke("glPixelMapusv"), );
-        glPixelTransferf = downcallSafe(load.invoke("glPixelTransferf"), );
-        glPixelTransferi = downcallSafe(load.invoke("glPixelTransferi"), );
-        glPixelZoom = downcallSafe(load.invoke("glPixelZoom"), );
-        glPolygonStipple = downcallSafe(load.invoke("glPolygonStipple"), );
-        glPopAttrib = downcallSafe(load.invoke("glPopAttrib"), );
-        glPopMatrix = downcallSafe(load.invoke("glPopMatrix"), );
-        glPopName = downcallSafe(load.invoke("glPopName"), );
-        glPushAttrib = downcallSafe(load.invoke("glPushAttrib"), );
-        glPushMatrix = downcallSafe(load.invoke("glPushMatrix"), );
-        glPushName = downcallSafe(load.invoke("glPushName"), );
-        glRasterPos2d = downcallSafe(load.invoke("glRasterPos2d"), );
-        glRasterPos2dv = downcallSafe(load.invoke("glRasterPos2dv"), );
-        glRasterPos2f = downcallSafe(load.invoke("glRasterPos2f"), );
-        glRasterPos2fv = downcallSafe(load.invoke("glRasterPos2fv"), );
-        glRasterPos2i = downcallSafe(load.invoke("glRasterPos2i"), );
-        glRasterPos2iv = downcallSafe(load.invoke("glRasterPos2iv"), );
-        glRasterPos2s = downcallSafe(load.invoke("glRasterPos2s"), );
-        glRasterPos2sv = downcallSafe(load.invoke("glRasterPos2sv"), );
-        glRasterPos3d = downcallSafe(load.invoke("glRasterPos3d"), );
-        glRasterPos3dv = downcallSafe(load.invoke("glRasterPos3dv"), );
-        glRasterPos3f = downcallSafe(load.invoke("glRasterPos3f"), );
-        glRasterPos3fv = downcallSafe(load.invoke("glRasterPos3fv"), );
-        glRasterPos3i = downcallSafe(load.invoke("glRasterPos3i"), );
-        glRasterPos3iv = downcallSafe(load.invoke("glRasterPos3iv"), );
-        glRasterPos3s = downcallSafe(load.invoke("glRasterPos3s"), );
-        glRasterPos3sv = downcallSafe(load.invoke("glRasterPos3sv"), );
-        glRasterPos4d = downcallSafe(load.invoke("glRasterPos4d"), );
-        glRasterPos4dv = downcallSafe(load.invoke("glRasterPos4dv"), );
-        glRasterPos4f = downcallSafe(load.invoke("glRasterPos4f"), );
-        glRasterPos4fv = downcallSafe(load.invoke("glRasterPos4fv"), );
-        glRasterPos4i = downcallSafe(load.invoke("glRasterPos4i"), );
-        glRasterPos4iv = downcallSafe(load.invoke("glRasterPos4iv"), );
-        glRasterPos4s = downcallSafe(load.invoke("glRasterPos4s"), );
-        glRasterPos4sv = downcallSafe(load.invoke("glRasterPos4sv"), );
-        glRectd = downcallSafe(load.invoke("glRectd"), );
-        glRectdv = downcallSafe(load.invoke("glRectdv"), );
-        glRectf = downcallSafe(load.invoke("glRectf"), );
-        glRectfv = downcallSafe(load.invoke("glRectfv"), );
-        glRecti = downcallSafe(load.invoke("glRecti"), );
-        glRectiv = downcallSafe(load.invoke("glRectiv"), );
-        glRects = downcallSafe(load.invoke("glRects"), );
-        glRectsv = downcallSafe(load.invoke("glRectsv"), );
-        glRenderMode = downcallSafe(load.invoke("glRenderMode"), );
-        glRotated = downcallSafe(load.invoke("glRotated"), );
-        glRotatef = downcallSafe(load.invoke("glRotatef"), );
-        glScaled = downcallSafe(load.invoke("glScaled"), );
-        glScalef = downcallSafe(load.invoke("glScalef"), );
-        glSelectBuffer = downcallSafe(load.invoke("glSelectBuffer"), );
-        glShadeModel = downcallSafe(load.invoke("glShadeModel"), );
-        glTexCoord1d = downcallSafe(load.invoke("glTexCoord1d"), );
-        glTexCoord1dv = downcallSafe(load.invoke("glTexCoord1dv"), );
-        glTexCoord1f = downcallSafe(load.invoke("glTexCoord1f"), );
-        glTexCoord1fv = downcallSafe(load.invoke("glTexCoord1fv"), );
-        glTexCoord1i = downcallSafe(load.invoke("glTexCoord1i"), );
-        glTexCoord1iv = downcallSafe(load.invoke("glTexCoord1iv"), );
-        glTexCoord1s = downcallSafe(load.invoke("glTexCoord1s"), );
-        glTexCoord1sv = downcallSafe(load.invoke("glTexCoord1sv"), );
-        glTexCoord2d = downcallSafe(load.invoke("glTexCoord2d"), );
-        glTexCoord2dv = downcallSafe(load.invoke("glTexCoord2dv"), );
-        glTexCoord2f = downcallSafe(load.invoke("glTexCoord2f"), );
-        glTexCoord2fv = downcallSafe(load.invoke("glTexCoord2fv"), );
-        glTexCoord2i = downcallSafe(load.invoke("glTexCoord2i"), );
-        glTexCoord2iv = downcallSafe(load.invoke("glTexCoord2iv"), );
-        glTexCoord2s = downcallSafe(load.invoke("glTexCoord2s"), );
-        glTexCoord2sv = downcallSafe(load.invoke("glTexCoord2sv"), );
-        glTexCoord3d = downcallSafe(load.invoke("glTexCoord3d"), );
-        glTexCoord3dv = downcallSafe(load.invoke("glTexCoord3dv"), );
-        glTexCoord3f = downcallSafe(load.invoke("glTexCoord3f"), );
-        glTexCoord3fv = downcallSafe(load.invoke("glTexCoord3fv"), );
-        glTexCoord3i = downcallSafe(load.invoke("glTexCoord3i"), );
-        glTexCoord3iv = downcallSafe(load.invoke("glTexCoord3iv"), );
-        glTexCoord3s = downcallSafe(load.invoke("glTexCoord3s"), );
-        glTexCoord3sv = downcallSafe(load.invoke("glTexCoord3sv"), );
-        glTexCoord4d = downcallSafe(load.invoke("glTexCoord4d"), );
-        glTexCoord4dv = downcallSafe(load.invoke("glTexCoord4dv"), );
-        glTexCoord4f = downcallSafe(load.invoke("glTexCoord4f"), );
-        glTexCoord4fv = downcallSafe(load.invoke("glTexCoord4fv"), );
-        glTexCoord4i = downcallSafe(load.invoke("glTexCoord4i"), );
-        glTexCoord4iv = downcallSafe(load.invoke("glTexCoord4iv"), );
-        glTexCoord4s = downcallSafe(load.invoke("glTexCoord4s"), );
-        glTexCoord4sv = downcallSafe(load.invoke("glTexCoord4sv"), );
-        glTexEnvf = downcallSafe(load.invoke("glTexEnvf"), );
-        glTexEnvfv = downcallSafe(load.invoke("glTexEnvfv"), );
-        glTexEnvi = downcallSafe(load.invoke("glTexEnvi"), );
-        glTexEnviv = downcallSafe(load.invoke("glTexEnviv"), );
-        glTexGend = downcallSafe(load.invoke("glTexGend"), );
-        glTexGendv = downcallSafe(load.invoke("glTexGendv"), );
-        glTexGenf = downcallSafe(load.invoke("glTexGenf"), );
-        glTexGenfv = downcallSafe(load.invoke("glTexGenfv"), );
-        glTexGeni = downcallSafe(load.invoke("glTexGeni"), );
-        glTexGeniv = downcallSafe(load.invoke("glTexGeniv"), );
-        glTranslated = downcallSafe(load.invoke("glTranslated"), );
-        glTranslatef = downcallSafe(load.invoke("glTranslatef"), );
-        glVertex2d = downcallSafe(load.invoke("glVertex2d"), );
-        glVertex2dv = downcallSafe(load.invoke("glVertex2dv"), );
-        glVertex2f = downcallSafe(load.invoke("glVertex2f"), );
-        glVertex2fv = downcallSafe(load.invoke("glVertex2fv"), );
-        glVertex2i = downcallSafe(load.invoke("glVertex2i"), );
-        glVertex2iv = downcallSafe(load.invoke("glVertex2iv"), );
-        glVertex2s = downcallSafe(load.invoke("glVertex2s"), );
-        glVertex2sv = downcallSafe(load.invoke("glVertex2sv"), );
-        glVertex3d = downcallSafe(load.invoke("glVertex3d"), );
-        glVertex3dv = downcallSafe(load.invoke("glVertex3dv"), );
-        glVertex3f = downcallSafe(load.invoke("glVertex3f"), );
-        glVertex3fv = downcallSafe(load.invoke("glVertex3fv"), );
-        glVertex3i = downcallSafe(load.invoke("glVertex3i"), );
-        glVertex3iv = downcallSafe(load.invoke("glVertex3iv"), );
-        glVertex3s = downcallSafe(load.invoke("glVertex3s"), );
-        glVertex3sv = downcallSafe(load.invoke("glVertex3sv"), );
-        glVertex4d = downcallSafe(load.invoke("glVertex4d"), );
-        glVertex4dv = downcallSafe(load.invoke("glVertex4dv"), );
-        glVertex4f = downcallSafe(load.invoke("glVertex4f"), );
-        glVertex4fv = downcallSafe(load.invoke("glVertex4fv"), );
-        glVertex4i = downcallSafe(load.invoke("glVertex4i"), );
-        glVertex4iv = downcallSafe(load.invoke("glVertex4iv"), );
-        glVertex4s = downcallSafe(load.invoke("glVertex4s"), );
-        glVertex4sv = downcallSafe(load.invoke("glVertex4sv"), );
+        glMap1d = downcallSafe(load.invoke("glMap1d"), dIDDIIPV);
+        glMap1f = downcallSafe(load.invoke("glMap1f"), dIFFIIPV);
+        glMap2d = downcallSafe(load.invoke("glMap2d"), dIDDIIDDIIPV);
+        glMap2f = downcallSafe(load.invoke("glMap2f"), dIFFIIFFIIPV);
+        glMapGrid1d = downcallSafe(load.invoke("glMapGrid1d"), dIDDV);
+        glMapGrid1f = downcallSafe(load.invoke("glMapGrid1f"), dIFFV);
+        glMapGrid2d = downcallSafe(load.invoke("glMapGrid2d"), dIDDIDDV);
+        glMapGrid2f = downcallSafe(load.invoke("glMapGrid2f"), dIFFIFFV);
+        glMaterialf = downcallSafe(load.invoke("glMaterialf"), dIIFV);
+        glMaterialfv = downcallSafe(load.invoke("glMaterialfv"), dIIPV);
+        glMateriali = downcallSafe(load.invoke("glMateriali"), dIIIV);
+        glMaterialiv = downcallSafe(load.invoke("glMaterialiv"), dIIPV);
+        glMatrixMode = downcallSafe(load.invoke("glMatrixMode"), dIV);
+        glMultMatrixd = downcallSafe(load.invoke("glMultMatrixd"), dPV);
+        glMultMatrixf = downcallSafe(load.invoke("glMultMatrixf"), dPV);
+        glNewList = downcallSafe(load.invoke("glNewList"), dIIV);
+        glNormal3b = downcallSafe(load.invoke("glNormal3b"), dBBBV);
+        glNormal3bv = downcallSafe(load.invoke("glNormal3bv"), dPV);
+        glNormal3d = downcallSafe(load.invoke("glNormal3d"), dDDDV);
+        glNormal3dv = downcallSafe(load.invoke("glNormal3dv"), dPV);
+        glNormal3f = downcallSafe(load.invoke("glNormal3f"), dFFFV);
+        glNormal3fv = downcallSafe(load.invoke("glNormal3fv"), dPV);
+        glNormal3i = downcallSafe(load.invoke("glNormal3i"), dIIIV);
+        glNormal3iv = downcallSafe(load.invoke("glNormal3iv"), dPV);
+        glNormal3s = downcallSafe(load.invoke("glNormal3s"), dSSSV);
+        glNormal3sv = downcallSafe(load.invoke("glNormal3sv"), dPV);
+        glOrtho = downcallSafe(load.invoke("glOrtho"), dDDDDDDV);
+        glPassThrough = downcallSafe(load.invoke("glPassThrough"), dFV);
+        glPixelMapfv = downcallSafe(load.invoke("glPixelMapfv"), dIIPV);
+        glPixelMapuiv = downcallSafe(load.invoke("glPixelMapuiv"), dIIPV);
+        glPixelMapusv = downcallSafe(load.invoke("glPixelMapusv"), dIIPV);
+        glPixelTransferf = downcallSafe(load.invoke("glPixelTransferf"), dIFV);
+        glPixelTransferi = downcallSafe(load.invoke("glPixelTransferi"), dIIV);
+        glPixelZoom = downcallSafe(load.invoke("glPixelZoom"), dFFV);
+        glPolygonStipple = downcallSafe(load.invoke("glPolygonStipple"), dPV);
+        glPopAttrib = downcallSafe(load.invoke("glPopAttrib"), dV);
+        glPopMatrix = downcallSafe(load.invoke("glPopMatrix"), dV);
+        glPopName = downcallSafe(load.invoke("glPopName"), dV);
+        glPushAttrib = downcallSafe(load.invoke("glPushAttrib"), dIV);
+        glPushMatrix = downcallSafe(load.invoke("glPushMatrix"), dV);
+        glPushName = downcallSafe(load.invoke("glPushName"), dIV);
+        glRasterPos2d = downcallSafe(load.invoke("glRasterPos2d"), dDDV);
+        glRasterPos2dv = downcallSafe(load.invoke("glRasterPos2dv"), dPV);
+        glRasterPos2f = downcallSafe(load.invoke("glRasterPos2f"), dFFV);
+        glRasterPos2fv = downcallSafe(load.invoke("glRasterPos2fv"), dPV);
+        glRasterPos2i = downcallSafe(load.invoke("glRasterPos2i"), dIIV);
+        glRasterPos2iv = downcallSafe(load.invoke("glRasterPos2iv"), dPV);
+        glRasterPos2s = downcallSafe(load.invoke("glRasterPos2s"), dSSV);
+        glRasterPos2sv = downcallSafe(load.invoke("glRasterPos2sv"), dPV);
+        glRasterPos3d = downcallSafe(load.invoke("glRasterPos3d"), dDDDV);
+        glRasterPos3dv = downcallSafe(load.invoke("glRasterPos3dv"), dPV);
+        glRasterPos3f = downcallSafe(load.invoke("glRasterPos3f"), dFFFV);
+        glRasterPos3fv = downcallSafe(load.invoke("glRasterPos3fv"), dPV);
+        glRasterPos3i = downcallSafe(load.invoke("glRasterPos3i"), dIIIV);
+        glRasterPos3iv = downcallSafe(load.invoke("glRasterPos3iv"), dPV);
+        glRasterPos3s = downcallSafe(load.invoke("glRasterPos3s"), dSSSV);
+        glRasterPos3sv = downcallSafe(load.invoke("glRasterPos3sv"), dPV);
+        glRasterPos4d = downcallSafe(load.invoke("glRasterPos4d"), dDDDDV);
+        glRasterPos4dv = downcallSafe(load.invoke("glRasterPos4dv"), dPV);
+        glRasterPos4f = downcallSafe(load.invoke("glRasterPos4f"), dFFFFV);
+        glRasterPos4fv = downcallSafe(load.invoke("glRasterPos4fv"), dPV);
+        glRasterPos4i = downcallSafe(load.invoke("glRasterPos4i"), dIIIIV);
+        glRasterPos4iv = downcallSafe(load.invoke("glRasterPos4iv"), dPV);
+        glRasterPos4s = downcallSafe(load.invoke("glRasterPos4s"), dSSSSV);
+        glRasterPos4sv = downcallSafe(load.invoke("glRasterPos4sv"), dPV);
+        glRectd = downcallSafe(load.invoke("glRectd"), dDDDDV);
+        glRectdv = downcallSafe(load.invoke("glRectdv"), dPPV);
+        glRectf = downcallSafe(load.invoke("glRectf"), dFFFFV);
+        glRectfv = downcallSafe(load.invoke("glRectfv"), dPPV);
+        glRecti = downcallSafe(load.invoke("glRecti"), dIIIIV);
+        glRectiv = downcallSafe(load.invoke("glRectiv"), dPPV);
+        glRects = downcallSafe(load.invoke("glRects"), dSSSSV);
+        glRectsv = downcallSafe(load.invoke("glRectsv"), dPPV);
+        glRenderMode = downcallSafe(load.invoke("glRenderMode"), dII);
+        glRotated = downcallSafe(load.invoke("glRotated"), dDDDDV);
+        glRotatef = downcallSafe(load.invoke("glRotatef"), dFFFFV);
+        glScaled = downcallSafe(load.invoke("glScaled"), dDDDV);
+        glScalef = downcallSafe(load.invoke("glScalef"), dFFFV);
+        glSelectBuffer = downcallSafe(load.invoke("glSelectBuffer"), dIPV);
+        glShadeModel = downcallSafe(load.invoke("glShadeModel"), dIV);
+        glTexCoord1d = downcallSafe(load.invoke("glTexCoord1d"), dDV);
+        glTexCoord1dv = downcallSafe(load.invoke("glTexCoord1dv"), dPV);
+        glTexCoord1f = downcallSafe(load.invoke("glTexCoord1f"), dFV);
+        glTexCoord1fv = downcallSafe(load.invoke("glTexCoord1fv"), dPV);
+        glTexCoord1i = downcallSafe(load.invoke("glTexCoord1i"), dIV);
+        glTexCoord1iv = downcallSafe(load.invoke("glTexCoord1iv"), dPV);
+        glTexCoord1s = downcallSafe(load.invoke("glTexCoord1s"), dSV);
+        glTexCoord1sv = downcallSafe(load.invoke("glTexCoord1sv"), dPV);
+        glTexCoord2d = downcallSafe(load.invoke("glTexCoord2d"), dDDV);
+        glTexCoord2dv = downcallSafe(load.invoke("glTexCoord2dv"), dPV);
+        glTexCoord2f = downcallSafe(load.invoke("glTexCoord2f"), dFFV);
+        glTexCoord2fv = downcallSafe(load.invoke("glTexCoord2fv"), dPV);
+        glTexCoord2i = downcallSafe(load.invoke("glTexCoord2i"), dIIV);
+        glTexCoord2iv = downcallSafe(load.invoke("glTexCoord2iv"), dPV);
+        glTexCoord2s = downcallSafe(load.invoke("glTexCoord2s"), dSSV);
+        glTexCoord2sv = downcallSafe(load.invoke("glTexCoord2sv"), dPV);
+        glTexCoord3d = downcallSafe(load.invoke("glTexCoord3d"), dDDDV);
+        glTexCoord3dv = downcallSafe(load.invoke("glTexCoord3dv"), dPV);
+        glTexCoord3f = downcallSafe(load.invoke("glTexCoord3f"), dFFFV);
+        glTexCoord3fv = downcallSafe(load.invoke("glTexCoord3fv"), dPV);
+        glTexCoord3i = downcallSafe(load.invoke("glTexCoord3i"), dIIIV);
+        glTexCoord3iv = downcallSafe(load.invoke("glTexCoord3iv"), dPV);
+        glTexCoord3s = downcallSafe(load.invoke("glTexCoord3s"), dSSSV);
+        glTexCoord3sv = downcallSafe(load.invoke("glTexCoord3sv"), dPV);
+        glTexCoord4d = downcallSafe(load.invoke("glTexCoord4d"), dDDDDV);
+        glTexCoord4dv = downcallSafe(load.invoke("glTexCoord4dv"), dPV);
+        glTexCoord4f = downcallSafe(load.invoke("glTexCoord4f"), dFFFFV);
+        glTexCoord4fv = downcallSafe(load.invoke("glTexCoord4fv"), dPV);
+        glTexCoord4i = downcallSafe(load.invoke("glTexCoord4i"), dIIIIV);
+        glTexCoord4iv = downcallSafe(load.invoke("glTexCoord4iv"), dPV);
+        glTexCoord4s = downcallSafe(load.invoke("glTexCoord4s"), dSSSSV);
+        glTexCoord4sv = downcallSafe(load.invoke("glTexCoord4sv"), dPV);
+        glTexEnvf = downcallSafe(load.invoke("glTexEnvf"), dIIFV);
+        glTexEnvfv = downcallSafe(load.invoke("glTexEnvfv"), dIIPV);
+        glTexEnvi = downcallSafe(load.invoke("glTexEnvi"), dIIIV);
+        glTexEnviv = downcallSafe(load.invoke("glTexEnviv"), dIIPV);
+        glTexGend = downcallSafe(load.invoke("glTexGend"), dIIDV);
+        glTexGendv = downcallSafe(load.invoke("glTexGendv"), dIIPV);
+        glTexGenf = downcallSafe(load.invoke("glTexGenf"), dIIFV);
+        glTexGenfv = downcallSafe(load.invoke("glTexGenfv"), dIIPV);
+        glTexGeni = downcallSafe(load.invoke("glTexGeni"), dIIIV);
+        glTexGeniv = downcallSafe(load.invoke("glTexGeniv"), dIIPV);
+        glTranslated = downcallSafe(load.invoke("glTranslated"), dDDDV);
+        glTranslatef = downcallSafe(load.invoke("glTranslatef"), dFFFV);
+        glVertex2d = downcallSafe(load.invoke("glVertex2d"), dDDV);
+        glVertex2dv = downcallSafe(load.invoke("glVertex2dv"), dPV);
+        glVertex2f = downcallSafe(load.invoke("glVertex2f"), dFFV);
+        glVertex2fv = downcallSafe(load.invoke("glVertex2fv"), dPV);
+        glVertex2i = downcallSafe(load.invoke("glVertex2i"), dIIV);
+        glVertex2iv = downcallSafe(load.invoke("glVertex2iv"), dPV);
+        glVertex2s = downcallSafe(load.invoke("glVertex2s"), dSSV);
+        glVertex2sv = downcallSafe(load.invoke("glVertex2sv"), dPV);
+        glVertex3d = downcallSafe(load.invoke("glVertex3d"), dDDDV);
+        glVertex3dv = downcallSafe(load.invoke("glVertex3dv"), dPV);
+        glVertex3f = downcallSafe(load.invoke("glVertex3f"), dFFFV);
+        glVertex3fv = downcallSafe(load.invoke("glVertex3fv"), dPV);
+        glVertex3i = downcallSafe(load.invoke("glVertex3i"), dIIIV);
+        glVertex3iv = downcallSafe(load.invoke("glVertex3iv"), dPV);
+        glVertex3s = downcallSafe(load.invoke("glVertex3s"), dSSSV);
+        glVertex3sv = downcallSafe(load.invoke("glVertex3sv"), dPV);
+        glVertex4d = downcallSafe(load.invoke("glVertex4d"), dDDDDV);
+        glVertex4dv = downcallSafe(load.invoke("glVertex4dv"), dPV);
+        glVertex4f = downcallSafe(load.invoke("glVertex4f"), dFFFFV);
+        glVertex4fv = downcallSafe(load.invoke("glVertex4fv"), dPV);
+        glVertex4i = downcallSafe(load.invoke("glVertex4i"), dIIIIV);
+        glVertex4iv = downcallSafe(load.invoke("glVertex4iv"), dPV);
+        glVertex4s = downcallSafe(load.invoke("glVertex4s"), dSSSSV);
+        glVertex4sv = downcallSafe(load.invoke("glVertex4sv"), dPV);
     }
 
     public static void accum(int op, float value) throws Throwable {
@@ -1354,5 +1354,1107 @@ public class GL10 extends GL10C {
 
     public static void loadName(int name) throws Throwable {
         check(glLoadName).invoke(name);
+    }
+
+    public static void map1d(int target, double u1, double u2, int stride, int order, MemoryAddress points) throws Throwable {
+        check(glMap1d).invoke(target, u1, u2, stride, order, points);
+    }
+
+    public static void map1d(int target, double u1, double u2, int stride, int order, double[] points) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pp = session.allocateArray(JAVA_DOUBLE, points);
+            map1d(target, u1, u2, stride, order, pp.address());
+        }
+    }
+
+    public static void map1f(int target, float u1, float u2, int stride, int order, MemoryAddress points) throws Throwable {
+        check(glMap1f).invoke(target, u1, u2, stride, order, points);
+    }
+
+    public static void map1f(int target, float u1, float u2, int stride, int order, float[] points) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pp = session.allocateArray(JAVA_FLOAT, points);
+            map1f(target, u1, u2, stride, order, pp.address());
+        }
+    }
+
+    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemoryAddress points) throws Throwable {
+        check(glMap2d).invoke(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    }
+
+    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pp = session.allocateArray(JAVA_DOUBLE, points);
+            map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp.address());
+        }
+    }
+
+    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemoryAddress points) throws Throwable {
+        check(glMap2f).invoke(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    }
+
+    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var pp = session.allocateArray(JAVA_FLOAT, points);
+            map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp.address());
+        }
+    }
+
+    public static void mapGrid1d(int un, double u1, double u2) throws Throwable {
+        check(glMapGrid1d).invoke(un, u1, u2);
+    }
+
+    public static void mapGrid1f(int un, float u1, float u2) throws Throwable {
+        check(glMapGrid1f).invoke(un, u1, u2);
+    }
+
+    public static void mapGrid2d(int un, double u1, double u2, int vn, double v1, double v2) throws Throwable {
+        check(glMapGrid2d).invoke(un, u1, u2, vn, v1, v2);
+    }
+
+    public static void mapGrid2f(int un, float u1, float u2, int vn, float v1, float v2) throws Throwable {
+        check(glMapGrid2f).invoke(un, u1, u2, vn, v1, v2);
+    }
+
+    public static void materialf(int face, int pname, float param) throws Throwable {
+        check(glMaterialf).invoke(face, pname, param);
+    }
+
+    public static void materialfv(int face, int pname, MemoryAddress params) throws Throwable {
+        check(glMaterialfv).invoke(face, pname, params);
+    }
+
+    public static void materialfv(int face, int pname, float[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, params);
+            materialfv(face, pname, seg.address());
+        }
+    }
+
+    public static void materiali(int face, int pname, int param) throws Throwable {
+        check(glMateriali).invoke(face, pname, param);
+    }
+
+    public static void materialiv(int face, int pname, MemoryAddress params) throws Throwable {
+        check(glMaterialiv).invoke(face, pname, params);
+    }
+
+    public static void materialiv(int face, int pname, int[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params);
+            materialiv(face, pname, seg.address());
+        }
+    }
+
+    public static void matrixMode(int mode) throws Throwable {
+        check(glMatrixMode).invoke(mode);
+    }
+
+    public static void multMatrixd(MemoryAddress m) throws Throwable {
+        check(glMultMatrixd).invoke(m);
+    }
+
+    public static void multMatrixd(double[] m) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, m);
+            multMatrixd(seg.address());
+        }
+    }
+
+    public static void multMatrixf(MemoryAddress m) throws Throwable {
+        check(glMultMatrixf).invoke(m);
+    }
+
+    public static void multMatrixf(float[] m) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, m);
+            multMatrixf(seg.address());
+        }
+    }
+
+    public static void newList(int list, int mode) throws Throwable {
+        check(glNewList).invoke(list, mode);
+    }
+
+    public static void normal3b(byte nx, byte ny, byte nz) throws Throwable {
+        check(glNormal3b).invoke(nx, ny, nz);
+    }
+
+    public static void normal3bv(MemoryAddress v) throws Throwable {
+        check(glNormal3bv).invoke(v);
+    }
+
+    public static void normal3bv(byte[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_BYTE, v);
+            normal3bv(seg.address());
+        }
+    }
+
+    public static void normal3d(double nx, double ny, double nz) throws Throwable {
+        check(glNormal3d).invoke(nx, ny, nz);
+    }
+
+    public static void normal3dv(MemoryAddress v) throws Throwable {
+        check(glNormal3dv).invoke(v);
+    }
+
+    public static void normal3dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            normal3dv(seg.address());
+        }
+    }
+
+    public static void normal3f(float nx, float ny, float nz) throws Throwable {
+        check(glNormal3f).invoke(nx, ny, nz);
+    }
+
+    public static void normal3fv(MemoryAddress v) throws Throwable {
+        check(glNormal3fv).invoke(v);
+    }
+
+    public static void normal3fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            normal3fv(seg.address());
+        }
+    }
+
+    public static void normal3i(int nx, int ny, int nz) throws Throwable {
+        check(glNormal3i).invoke(nx, ny, nz);
+    }
+
+    public static void normal3iv(MemoryAddress v) throws Throwable {
+        check(glNormal3iv).invoke(v);
+    }
+
+    public static void normal3iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            normal3iv(seg.address());
+        }
+    }
+
+    public static void normal3s(short nx, short ny, short nz) throws Throwable {
+        check(glNormal3s).invoke(nx, ny, nz);
+    }
+
+    public static void normal3sv(MemoryAddress v) throws Throwable {
+        check(glNormal3sv).invoke(v);
+    }
+
+    public static void normal3sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            normal3sv(seg.address());
+        }
+    }
+
+    public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar) throws Throwable {
+        check(glOrtho).invoke(left, right, bottom, top, zNear, zFar);
+    }
+
+    public static void passThrough(float token) throws Throwable {
+        check(glPassThrough).invoke(token);
+    }
+
+    public static void pixelMapfv(int map, int mapSize, MemoryAddress values) throws Throwable {
+        check(glPixelMapfv).invoke(map, mapSize, values);
+    }
+
+    public static void pixelMapfv(int map, int mapSize, float[] values) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, mapSize);
+            for (int i = 0; i < mapSize; i++) {
+                seg.setAtIndex(JAVA_FLOAT, i, values[i]);
+            }
+            pixelMapfv(map, mapSize, seg.address());
+        }
+    }
+
+    public static void pixelMapfv(int map, float[] values) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, values);
+            pixelMapfv(map, values.length, seg.address());
+        }
+    }
+
+    public static void pixelMapuiv(int map, int mapSize, MemoryAddress values) throws Throwable {
+        check(glPixelMapuiv).invoke(map, mapSize, values);
+    }
+
+    public static void pixelMapuiv(int map, int mapSize, int[] values) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, mapSize);
+            for (int i = 0; i < mapSize; i++) {
+                seg.setAtIndex(JAVA_INT, i, values[i]);
+            }
+            pixelMapuiv(map, mapSize, seg.address());
+        }
+    }
+
+    public static void pixelMapuiv(int map, int[] values) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, values);
+            pixelMapuiv(map, values.length, seg.address());
+        }
+    }
+
+    public static void pixelMapusv(int map, int mapSize, MemoryAddress values) throws Throwable {
+        check(glPixelMapusv).invoke(map, mapSize, values);
+    }
+
+    public static void pixelMapusv(int map, int mapSize, short[] values) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, mapSize);
+            for (int i = 0; i < mapSize; i++) {
+                seg.setAtIndex(JAVA_SHORT, i, values[i]);
+            }
+            pixelMapusv(map, mapSize, seg.address());
+        }
+    }
+
+    public static void pixelMapusv(int map, short[] values) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, values);
+            pixelMapusv(map, values.length, seg.address());
+        }
+    }
+
+    public static void pixelTransferf(int pname, float param) throws Throwable {
+        check(glPixelTransferf).invoke(pname, param);
+    }
+
+    public static void pixelTransferi(int pname, int param) throws Throwable {
+        check(glPixelTransferi).invoke(pname, param);
+    }
+
+    public static void pixelZoom(float xfactor, float yfactor) throws Throwable {
+        check(glPixelZoom).invoke(xfactor, yfactor);
+    }
+
+    public static void polygonStipple(MemoryAddress mask) throws Throwable {
+        check(glPolygonStipple).invoke(mask);
+    }
+
+    public static void polygonStipple(byte[] mask) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_BYTE, mask);
+            polygonStipple(seg.address());
+        }
+    }
+
+    public static void popAttrib() throws Throwable {
+        check(glPopAttrib).invoke();
+    }
+
+    public static void popMatrix() throws Throwable {
+        check(glPopMatrix).invoke();
+    }
+
+    public static void popName() throws Throwable {
+        check(glPopName).invoke();
+    }
+
+    public static void pushAttrib(int mask) throws Throwable {
+        check(glPushAttrib).invoke(mask);
+    }
+
+    public static void pushMatrix() throws Throwable {
+        check(glPushMatrix).invoke();
+    }
+
+    public static void pushName(int name) throws Throwable {
+        check(glPushName).invoke(name);
+    }
+
+    public static void rasterPos2d(double x, double y) throws Throwable {
+        check(glRasterPos2d).invoke(x, y);
+    }
+
+    public static void rasterPos2dv(MemoryAddress v) throws Throwable {
+        check(glRasterPos2dv).invoke(v);
+    }
+
+    public static void rasterPos2dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            rasterPos2dv(seg.address());
+        }
+    }
+
+    public static void rasterPos2f(float x, float y) throws Throwable {
+        check(glRasterPos2f).invoke(x, y);
+    }
+
+    public static void rasterPos2fv(MemoryAddress v) throws Throwable {
+        check(glRasterPos2fv).invoke(v);
+    }
+
+    public static void rasterPos2fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            rasterPos2fv(seg.address());
+        }
+    }
+
+    public static void rasterPos2i(int x, int y) throws Throwable {
+        check(glRasterPos2i).invoke(x, y);
+    }
+
+    public static void rasterPos2iv(MemoryAddress v) throws Throwable {
+        check(glRasterPos2iv).invoke(v);
+    }
+
+    public static void rasterPos2iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            rasterPos2iv(seg.address());
+        }
+    }
+
+    public static void rasterPos2s(short x, short y) throws Throwable {
+        check(glRasterPos2s).invoke(x, y);
+    }
+
+    public static void rasterPos2sv(MemoryAddress v) throws Throwable {
+        check(glRasterPos2sv).invoke(v);
+    }
+
+    public static void rasterPos2sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            rasterPos2sv(seg.address());
+        }
+    }
+
+    public static void rasterPos3d(double x, double y, double z) throws Throwable {
+        check(glRasterPos3d).invoke(x, y, z);
+    }
+
+    public static void rasterPos3dv(MemoryAddress v) throws Throwable {
+        check(glRasterPos3dv).invoke(v);
+    }
+
+    public static void rasterPos3dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            rasterPos3dv(seg.address());
+        }
+    }
+
+    public static void rasterPos3f(float x, float y, float z) throws Throwable {
+        check(glRasterPos3f).invoke(x, y, z);
+    }
+
+    public static void rasterPos3fv(MemoryAddress v) throws Throwable {
+        check(glRasterPos3fv).invoke(v);
+    }
+
+    public static void rasterPos3fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            rasterPos3fv(seg.address());
+        }
+    }
+
+    public static void rasterPos3i(int x, int y, int z) throws Throwable {
+        check(glRasterPos3i).invoke(x, y, z);
+    }
+
+    public static void rasterPos3iv(MemoryAddress v) throws Throwable {
+        check(glRasterPos3iv).invoke(v);
+    }
+
+    public static void rasterPos3iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            rasterPos3iv(seg.address());
+        }
+    }
+
+    public static void rasterPos3s(short x, short y, short z) throws Throwable {
+        check(glRasterPos3s).invoke(x, y, z);
+    }
+
+    public static void rasterPos3sv(MemoryAddress v) throws Throwable {
+        check(glRasterPos3sv).invoke(v);
+    }
+
+    public static void rasterPos3sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            rasterPos3sv(seg.address());
+        }
+    }
+
+    public static void rasterPos4d(double x, double y, double z, double w) throws Throwable {
+        check(glRasterPos4d).invoke(x, y, z, w);
+    }
+
+    public static void rasterPos4dv(MemoryAddress v) throws Throwable {
+        check(glRasterPos4dv).invoke(v);
+    }
+
+    public static void rasterPos4dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            rasterPos4dv(seg.address());
+        }
+    }
+
+    public static void rasterPos4f(float x, float y, float z, float w) throws Throwable {
+        check(glRasterPos4f).invoke(x, y, z, w);
+    }
+
+    public static void rasterPos4fv(MemoryAddress v) throws Throwable {
+        check(glRasterPos4fv).invoke(v);
+    }
+
+    public static void rasterPos4fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            rasterPos4fv(seg.address());
+        }
+    }
+
+    public static void rasterPos4i(int x, int y, int z, int w) throws Throwable {
+        check(glRasterPos4i).invoke(x, y, z, w);
+    }
+
+    public static void rasterPos4iv(MemoryAddress v) throws Throwable {
+        check(glRasterPos4iv).invoke(v);
+    }
+
+    public static void rasterPos4iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            rasterPos4iv(seg.address());
+        }
+    }
+
+    public static void rasterPos4s(short x, short y, short z, short w) throws Throwable {
+        check(glRasterPos4s).invoke(x, y, z, w);
+    }
+
+    public static void rasterPos4sv(MemoryAddress v) throws Throwable {
+        check(glRasterPos4sv).invoke(v);
+    }
+
+    public static void rasterPos4sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            rasterPos4sv(seg.address());
+        }
+    }
+
+    public static void rectd(double x1, double y1, double x2, double y2) throws Throwable {
+        check(glRectd).invoke(x1, y1, x2, y2);
+    }
+
+    public static void rectdv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
+        check(glRectdv).invoke(v1, v2);
+    }
+
+    public static void rectdv(double[] v1, double[] v2) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg1 = session.allocateArray(JAVA_DOUBLE, v1);
+            var seg2 = session.allocateArray(JAVA_DOUBLE, v2);
+            rectdv(seg1.address(), seg2.address());
+        }
+    }
+
+    public static void rectf(float x1, float y1, float x2, float y2) throws Throwable {
+        check(glRectf).invoke(x1, y1, x2, y2);
+    }
+
+    public static void rectfv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
+        check(glRectfv).invoke(v1, v2);
+    }
+
+    public static void rectfv(float[] v1, float[] v2) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg1 = session.allocateArray(JAVA_FLOAT, v1);
+            var seg2 = session.allocateArray(JAVA_FLOAT, v2);
+            rectfv(seg1.address(), seg2.address());
+        }
+    }
+
+    public static void recti(int x1, int y1, int x2, int y2) throws Throwable {
+        check(glRecti).invoke(x1, y1, x2, y2);
+    }
+
+    public static void rectiv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
+        check(glRectiv).invoke(v1, v2);
+    }
+
+    public static void rectiv(int[] v1, int[] v2) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg1 = session.allocateArray(JAVA_INT, v1);
+            var seg2 = session.allocateArray(JAVA_INT, v2);
+            rectiv(seg1.address(), seg2.address());
+        }
+    }
+
+    public static void rects(short x1, short y1, short x2, short y2) throws Throwable {
+        check(glRects).invoke(x1, y1, x2, y2);
+    }
+
+    public static void rectsv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
+        check(glRectsv).invoke(v1, v2);
+    }
+
+    public static void rectsv(short[] v1, short[] v2) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg1 = session.allocateArray(JAVA_SHORT, v1);
+            var seg2 = session.allocateArray(JAVA_SHORT, v2);
+            rectsv(seg1.address(), seg2.address());
+        }
+    }
+
+    public static int renderMode(int mode) throws Throwable {
+        return (int) check(glRenderMode).invoke(mode);
+    }
+
+    public static void rotated(double angle, double x, double y, double z) throws Throwable {
+        check(glRotated).invoke(angle, x, y, z);
+    }
+
+    public static void rotatef(float angle, float x, float y, float z) throws Throwable {
+        check(glRotatef).invoke(angle, x, y, z);
+    }
+
+    public static void scaled(double x, double y, double z) throws Throwable {
+        check(glScaled).invoke(x, y, z);
+    }
+
+    public static void scalef(float x, float y, float z) throws Throwable {
+        check(glScalef).invoke(x, y, z);
+    }
+
+    public static void selectBuffer(int size, MemoryAddress buffer) throws Throwable {
+        check(glSelectBuffer).invoke(size, buffer);
+    }
+
+    public static void selectBuffer(int size, int[] buffer) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, size);
+            selectBuffer(size, seg.address());
+            for (int i = 0; i < size; i++) {
+                buffer[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static void selectBuffer(int[] buffer) throws Throwable {
+        selectBuffer(buffer.length, buffer);
+    }
+
+    public static void shadeModel(int mode) throws Throwable {
+        check(glShadeModel).invoke(mode);
+    }
+
+    public static void texCoord1d(double s) throws Throwable {
+        check(glTexCoord1d).invoke(s);
+    }
+
+    public static void texCoord1dv(MemoryAddress v) throws Throwable {
+        check(glTexCoord1dv).invoke(v);
+    }
+
+    public static void texCoord1dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            texCoord1dv(seg.address());
+        }
+    }
+
+    public static void texCoord1f(float s) throws Throwable {
+        check(glTexCoord1f).invoke(s);
+    }
+
+    public static void texCoord1fv(MemoryAddress v) throws Throwable {
+        check(glTexCoord1fv).invoke(v);
+    }
+
+    public static void texCoord1fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            texCoord1fv(seg.address());
+        }
+    }
+
+    public static void texCoord1i(int s) throws Throwable {
+        check(glTexCoord1i).invoke(s);
+    }
+
+    public static void texCoord1iv(MemoryAddress v) throws Throwable {
+        check(glTexCoord1iv).invoke(v);
+    }
+
+    public static void texCoord1iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            texCoord1iv(seg.address());
+        }
+    }
+
+    public static void texCoord1s(short s) throws Throwable {
+        check(glTexCoord1s).invoke(s);
+    }
+
+    public static void texCoord1sv(MemoryAddress v) throws Throwable {
+        check(glTexCoord1sv).invoke(v);
+    }
+
+    public static void texCoord1sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            texCoord1sv(seg.address());
+        }
+    }
+
+    public static void texCoord2d(double s, double t) throws Throwable {
+        check(glTexCoord2d).invoke(s, t);
+    }
+
+    public static void texCoord2dv(MemoryAddress v) throws Throwable {
+        check(glTexCoord2dv).invoke(v);
+    }
+
+    public static void texCoord2dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            texCoord2dv(seg.address());
+        }
+    }
+
+    public static void texCoord2f(float s, float t) throws Throwable {
+        check(glTexCoord2f).invoke(s, t);
+    }
+
+    public static void texCoord2fv(MemoryAddress v) throws Throwable {
+        check(glTexCoord2fv).invoke(v);
+    }
+
+    public static void texCoord2fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            texCoord2fv(seg.address());
+        }
+    }
+
+    public static void texCoord2i(int s, int t) throws Throwable {
+        check(glTexCoord2i).invoke(s, t);
+    }
+
+    public static void texCoord2iv(MemoryAddress v) throws Throwable {
+        check(glTexCoord2iv).invoke(v);
+    }
+
+    public static void texCoord2iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            texCoord2iv(seg.address());
+        }
+    }
+
+    public static void texCoord2s(short s, short t) throws Throwable {
+        check(glTexCoord2s).invoke(s, t);
+    }
+
+    public static void texCoord2sv(MemoryAddress v) throws Throwable {
+        check(glTexCoord2sv).invoke(v);
+    }
+
+    public static void texCoord2sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            texCoord2sv(seg.address());
+        }
+    }
+
+    public static void texCoord3d(double s, double t, double r) throws Throwable {
+        check(glTexCoord3d).invoke(s, t, r);
+    }
+
+    public static void texCoord3dv(MemoryAddress v) throws Throwable {
+        check(glTexCoord3dv).invoke(v);
+    }
+
+    public static void texCoord3dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            texCoord3dv(seg.address());
+        }
+    }
+
+    public static void texCoord3f(float s, float t, float r) throws Throwable {
+        check(glTexCoord3f).invoke(s, t, r);
+    }
+
+    public static void texCoord3fv(MemoryAddress v) throws Throwable {
+        check(glTexCoord3fv).invoke(v);
+    }
+
+    public static void texCoord3fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            texCoord3fv(seg.address());
+        }
+    }
+
+    public static void texCoord3i(int s, int t, int r) throws Throwable {
+        check(glTexCoord3i).invoke(s, t, r);
+    }
+
+    public static void texCoord3iv(MemoryAddress v) throws Throwable {
+        check(glTexCoord3iv).invoke(v);
+    }
+
+    public static void texCoord3iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            texCoord3iv(seg.address());
+        }
+    }
+
+    public static void texCoord3s(short s, short t, short r) throws Throwable {
+        check(glTexCoord3s).invoke(s, t, r);
+    }
+
+    public static void texCoord3sv(MemoryAddress v) throws Throwable {
+        check(glTexCoord3sv).invoke(v);
+    }
+
+    public static void texCoord3sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            texCoord3sv(seg.address());
+        }
+    }
+
+    public static void texCoord4d(double s, double t, double r, double q) throws Throwable {
+        check(glTexCoord4d).invoke(s, t, r, q);
+    }
+
+    public static void texCoord4dv(MemoryAddress v) throws Throwable {
+        check(glTexCoord4dv).invoke(v);
+    }
+
+    public static void texCoord4dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            texCoord4dv(seg.address());
+        }
+    }
+
+    public static void texCoord4f(float s, float t, float r, float q) throws Throwable {
+        check(glTexCoord4f).invoke(s, t, r, q);
+    }
+
+    public static void texCoord4fv(MemoryAddress v) throws Throwable {
+        check(glTexCoord4fv).invoke(v);
+    }
+
+    public static void texCoord4fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            texCoord4fv(seg.address());
+        }
+    }
+
+    public static void texCoord4i(int s, int t, int r, int q) throws Throwable {
+        check(glTexCoord4i).invoke(s, t, r, q);
+    }
+
+    public static void texCoord4iv(MemoryAddress v) throws Throwable {
+        check(glTexCoord4iv).invoke(v);
+    }
+
+    public static void texCoord4iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            texCoord4iv(seg.address());
+        }
+    }
+
+    public static void texCoord4s(short s, short t, short r, short q) throws Throwable {
+        check(glTexCoord4s).invoke(s, t, r, q);
+    }
+
+    public static void texCoord4sv(MemoryAddress v) throws Throwable {
+        check(glTexCoord4sv).invoke(v);
+    }
+
+    public static void texCoord4sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            texCoord4sv(seg.address());
+        }
+    }
+
+    public static void texEnvf(int target, int pname, float param) throws Throwable {
+        check(glTexEnvf).invoke(target, pname, param);
+    }
+
+    public static void texEnvfv(int target, int pname, MemoryAddress params) throws Throwable {
+        check(glTexEnvfv).invoke(target, pname, params);
+    }
+
+    public static void texEnvfv(int target, int pname, float[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, params);
+            texEnvfv(target, pname, seg.address());
+        }
+    }
+
+    public static void texEnvi(int target, int pname, int param) throws Throwable {
+        check(glTexEnvi).invoke(target, pname, param);
+    }
+
+    public static void texEnviv(int target, int pname, MemoryAddress params) throws Throwable {
+        check(glTexEnviv).invoke(target, pname, params);
+    }
+
+    public static void texEnviv(int target, int pname, int[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params);
+            texEnviv(target, pname, seg.address());
+        }
+    }
+
+    public static void texGend(int coord, int pname, double param) throws Throwable {
+        check(glTexGend).invoke(coord, pname, param);
+    }
+
+    public static void texGendv(int coord, int pname, MemoryAddress params) throws Throwable {
+        check(glTexGendv).invoke(coord, pname, params);
+    }
+
+    public static void texGendv(int coord, int pname, double[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, params);
+            texGendv(coord, pname, seg.address());
+        }
+    }
+
+    public static void texGenf(int coord, int pname, float param) throws Throwable {
+        check(glTexGenf).invoke(coord, pname, param);
+    }
+
+    public static void texGenfv(int coord, int pname, MemoryAddress params) throws Throwable {
+        check(glTexGenfv).invoke(coord, pname, params);
+    }
+
+    public static void texGenfv(int coord, int pname, float[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, params);
+            texGenfv(coord, pname, seg.address());
+        }
+    }
+
+    public static void texGeni(int coord, int pname, int param) throws Throwable {
+        check(glTexGeni).invoke(coord, pname, param);
+    }
+
+    public static void texGeniv(int coord, int pname, MemoryAddress params) throws Throwable {
+        check(glTexGeniv).invoke(coord, pname, params);
+    }
+
+    public static void texGeniv(int coord, int pname, int[] params) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params);
+            texGeniv(coord, pname, seg.address());
+        }
+    }
+
+    public static void translated(double x, double y, double z) throws Throwable {
+        check(glTranslated).invoke(x, y, z);
+    }
+
+    public static void translatef(float x, float y, float z) throws Throwable {
+        check(glTranslatef).invoke(x, y, z);
+    }
+
+    public static void vertex2d(double x, double y) throws Throwable {
+        check(glVertex2d).invoke(x, y);
+    }
+
+    public static void vertex2dv(MemoryAddress v) throws Throwable {
+        check(glVertex2dv).invoke(v);
+    }
+
+    public static void vertex2dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            vertex2dv(seg.address());
+        }
+    }
+
+    public static void vertex2f(float x, float y) throws Throwable {
+        check(glVertex2f).invoke(x, y);
+    }
+
+    public static void vertex2fv(MemoryAddress v) throws Throwable {
+        check(glVertex2fv).invoke(v);
+    }
+
+    public static void vertex2fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            vertex2fv(seg.address());
+        }
+    }
+
+    public static void vertex2i(int x, int y) throws Throwable {
+        check(glVertex2i).invoke(x, y);
+    }
+
+    public static void vertex2iv(MemoryAddress v) throws Throwable {
+        check(glVertex2iv).invoke(v);
+    }
+
+    public static void vertex2iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            vertex2iv(seg.address());
+        }
+    }
+
+    public static void vertex2s(short x, short y) throws Throwable {
+        check(glVertex2s).invoke(x, y);
+    }
+
+    public static void vertex2sv(MemoryAddress v) throws Throwable {
+        check(glVertex2sv).invoke(v);
+    }
+
+    public static void vertex2sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            vertex2sv(seg.address());
+        }
+    }
+
+    public static void vertex3d(double x, double y, double z) throws Throwable {
+        check(glVertex3d).invoke(x, y, z);
+    }
+
+    public static void vertex3dv(MemoryAddress v) throws Throwable {
+        check(glVertex3dv).invoke(v);
+    }
+
+    public static void vertex3dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            vertex3dv(seg.address());
+        }
+    }
+
+    public static void vertex3f(float x, float y, float z) throws Throwable {
+        check(glVertex3f).invoke(x, y, z);
+    }
+
+    public static void vertex3fv(MemoryAddress v) throws Throwable {
+        check(glVertex3fv).invoke(v);
+    }
+
+    public static void vertex3fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            vertex3fv(seg.address());
+        }
+    }
+
+    public static void vertex3i(int x, int y, int z) throws Throwable {
+        check(glVertex3i).invoke(x, y, z);
+    }
+
+    public static void vertex3iv(MemoryAddress v) throws Throwable {
+        check(glVertex3iv).invoke(v);
+    }
+
+    public static void vertex3iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            vertex3iv(seg.address());
+        }
+    }
+
+    public static void vertex3s(short x, short y, short z) throws Throwable {
+        check(glVertex3s).invoke(x, y, z);
+    }
+
+    public static void vertex3sv(MemoryAddress v) throws Throwable {
+        check(glVertex3sv).invoke(v);
+    }
+
+    public static void vertex3sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            vertex3sv(seg.address());
+        }
+    }
+
+    public static void vertex4d(double x, double y, double z, double w) throws Throwable {
+        check(glVertex4d).invoke(x, y, z, w);
+    }
+
+    public static void vertex4dv(MemoryAddress v) throws Throwable {
+        check(glVertex4dv).invoke(v);
+    }
+
+    public static void vertex4dv(double[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_DOUBLE, v);
+            vertex4dv(seg.address());
+        }
+    }
+
+    public static void vertex4f(float x, float y, float z, float w) throws Throwable {
+        check(glVertex4f).invoke(x, y, z, w);
+    }
+
+    public static void vertex4fv(MemoryAddress v) throws Throwable {
+        check(glVertex4fv).invoke(v);
+    }
+
+    public static void vertex4fv(float[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, v);
+            vertex4fv(seg.address());
+        }
+    }
+
+    public static void vertex4i(int x, int y, int z, int w) throws Throwable {
+        check(glVertex4i).invoke(x, y, z, w);
+    }
+
+    public static void vertex4iv(MemoryAddress v) throws Throwable {
+        check(glVertex4iv).invoke(v);
+    }
+
+    public static void vertex4iv(int[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, v);
+            vertex4iv(seg.address());
+        }
+    }
+
+    public static void vertex4s(short x, short y, short z, short w) throws Throwable {
+        check(glVertex4s).invoke(x, y, z, w);
+    }
+
+    public static void vertex4sv(MemoryAddress v) throws Throwable {
+        check(glVertex4sv).invoke(v);
+    }
+
+    public static void vertex4sv(short[] v) throws Throwable {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, v);
+            vertex4sv(seg.address());
+        }
     }
 }

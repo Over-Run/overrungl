@@ -31,10 +31,11 @@ public interface IGLFWWindowIconifyFun extends ICallback {
      * @param window    The window that was iconified or restored.
      * @param iconified {@code true} if the window was iconified, or
      *                  {@code false} if it was restored.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, boolean iconified);
+    void invoke(MemoryAddress window, boolean iconified) throws Throwable;
 
-    default void ninvoke(MemoryAddress window, int iconified) {
+    default void ninvoke(MemoryAddress window, int iconified) throws Throwable {
         invoke(window, iconified == GLFW.TRUE);
     }
 

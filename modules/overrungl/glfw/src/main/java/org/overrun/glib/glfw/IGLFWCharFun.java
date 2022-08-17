@@ -30,8 +30,9 @@ public interface IGLFWCharFun extends ICallback {
      *
      * @param window    The window that received the event.
      * @param codepoint The Unicode code point of the character.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int codepoint);
+    void invoke(MemoryAddress window, int codepoint) throws Throwable;
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {

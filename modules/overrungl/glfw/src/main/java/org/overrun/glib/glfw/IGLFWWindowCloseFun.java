@@ -29,8 +29,9 @@ public interface IGLFWWindowCloseFun extends ICallback {
      * The function pointer type for window close callbacks.
      *
      * @param window The window that the user attempted to close.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window);
+    void invoke(MemoryAddress window) throws Throwable;
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {

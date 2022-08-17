@@ -1,14 +1,16 @@
 package org.overrun.glib.demo.glfw;
 
 import org.overrun.glib.gl.GL;
+import org.overrun.glib.gl.GL10;
 import org.overrun.glib.gl.GL10C;
-import org.overrun.glib.gl.GLConstC;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
+
+import static org.overrun.glib.gl.GLConstC.*;
 
 /**
  * Tests basic GLFW and OpenGL
@@ -44,13 +46,11 @@ public final class GLFWTest {
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                try {
-                    GLFW.setWindowShouldClose(window, true);
-                } catch (Throwable e) {
-                    throw new RuntimeException(e);
-                }
+                GLFW.setWindowShouldClose(window, true);
             }
         });
+        GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
+            GL10C.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             try (var session = MemorySession.openShared()) {
@@ -78,7 +78,17 @@ public final class GLFWTest {
         GL10C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
         while (!GLFW.windowShouldClose(window)) {
-            GL10C.clear(GLConstC.GL_COLOR_BUFFER_BIT | GLConstC.GL_DEPTH_BUFFER_BIT);
+            GL10C.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+            // Draw triangle
+            GL10.begin(GL_TRIANGLES);
+            GL10.color3f(1f, 0f, 0f);
+            GL10.vertex2f(0.0f, 0.5f);
+            GL10.color3f(0f, 1f, 0f);
+            GL10.vertex2f(-0.5f, -0.5f);
+            GL10.color3f(0f, 0f, 1f);
+            GL10.vertex2f(0.5f, -0.5f);
+            GL10.end();
 
             GLFW.swapBuffers(window);
 

@@ -31,8 +31,9 @@ public interface IGLFWCursorPosFun extends ICallback {
      * @param window The window that received the event.
      * @param xpos   The new cursor x-coordinate, relative to the left edge of the content area.
      * @param ypos   The new cursor y-coordinate, relative to the top edge of the content area.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, double xpos, double ypos);
+    void invoke(MemoryAddress window, double xpos, double ypos) throws Throwable;
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {

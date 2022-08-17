@@ -29,8 +29,9 @@ public interface IGLFWWindowRefreshFun extends ICallback {
      * The function pointer type for window content refresh callbacks.
      *
      * @param window The window whose content needs to be refreshed.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window);
+    void invoke(MemoryAddress window) throws Throwable;
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {

@@ -31,10 +31,11 @@ public interface IGLFWErrorFun extends ICallback {
      *
      * @param errorCode   An <a href="https://www.glfw.org/docs/latest/group__errors.html">error code</a>. Future releases may add more error codes.
      * @param description A UTF-8 encoded string describing the error.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(int errorCode, String description);
+    void invoke(int errorCode, String description) throws Throwable;
 
-    default void ninvoke(int errorCode, MemoryAddress description) {
+    default void ninvoke(int errorCode, MemoryAddress description) throws Throwable {
         invoke(errorCode, description.getUtf8String(0L));
     }
 

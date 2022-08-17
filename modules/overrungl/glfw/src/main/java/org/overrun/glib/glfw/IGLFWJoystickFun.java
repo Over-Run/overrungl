@@ -31,8 +31,9 @@ public interface IGLFWJoystickFun extends ICallback {
      * @param jid   The joystick that was connected or disconnected.
      * @param event One of {@code CONNECTED} or {@code DISCONNECTED}. Future
      *              releases may add more events.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(int jid, int event);
+    void invoke(int jid, int event) throws Throwable;
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {

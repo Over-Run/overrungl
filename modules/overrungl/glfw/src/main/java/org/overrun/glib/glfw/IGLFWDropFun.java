@@ -30,10 +30,11 @@ public interface IGLFWDropFun extends ICallback {
      *
      * @param window    The window that received the event.
      * @param paths     The UTF-8 encoded file and/or directory path names.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, String[] paths);
+    void invoke(MemoryAddress window, String[] paths) throws Throwable;
 
-    default void ninvoke(MemoryAddress window, int pathCount, MemorySegment paths) {
+    default void ninvoke(MemoryAddress window, int pathCount, MemorySegment paths) throws Throwable {
         String[] pathArr = new String[pathCount];
         for (int i = 0; i < pathCount; i++) {
             var ptr = paths.getAtIndex(ValueLayout.ADDRESS, i);

@@ -36,8 +36,9 @@ public interface IGLFWCharModsFun extends ICallback {
      * @param codepoint The Unicode code point of the character.
      * @param mods      Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a> were
      *                  held down.
+     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int codepoint, int mods);
+    void invoke(MemoryAddress window, int codepoint, int mods) throws Throwable;
 
     @Override
     default MemoryAddress address(MemorySession session) throws Exception {
