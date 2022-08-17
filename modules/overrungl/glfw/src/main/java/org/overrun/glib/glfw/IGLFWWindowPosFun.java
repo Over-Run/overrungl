@@ -33,12 +33,11 @@ public interface IGLFWWindowPosFun extends ICallback {
      *               upper-left corner of the content area of the window.
      * @param ypos   The new y-coordinate, in screen coordinates, of the
      *               upper-left corner of the content area of the window.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int xpos, int ypos) throws Throwable;
+    void invoke(MemoryAddress window, int xpos, int ypos);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWWindowPosFun.class, "invoke", MTYPE, DESC);
     }
 }

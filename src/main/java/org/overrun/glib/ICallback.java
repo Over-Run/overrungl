@@ -18,9 +18,8 @@ public interface ICallback {
      *
      * @param session the memory session
      * @return the memory address
-     * @throws Exception any exception if caused
      */
-    MemoryAddress address(MemorySession session) throws Exception;
+    MemoryAddress address(MemorySession session);
 
     /**
      * Gets the memory address of the upcall stub with the given memory session.
@@ -31,16 +30,12 @@ public interface ICallback {
      * @param type     the callback method type
      * @param function the function descriptor
      * @return the memory address
-     * @throws NoSuchMethodException  if the method does not exist
-     * @throws IllegalAccessException if access checking fails, or if the method is {@code static},
-     *                                or if the method's variable arity modifier bit is set and asVarargsCollector fails
      */
     default MemoryAddress address(MemorySession session,
                                   Class<?> refc,
                                   String name,
                                   MethodType type,
-                                  FunctionDescriptor function)
-        throws NoSuchMethodException, IllegalAccessException {
+                                  FunctionDescriptor function) {
         return segment(session, refc, name, type, function).address();
     }
 
@@ -53,16 +48,16 @@ public interface ICallback {
      * @param type     the callback method type
      * @param function the function descriptor
      * @return the memory segment
-     * @throws NoSuchMethodException  if the method does not exist
-     * @throws IllegalAccessException if access checking fails, or if the method is {@code static},
-     *                                or if the method's variable arity modifier bit is set and asVarargsCollector fails
      */
     default MemorySegment segment(MemorySession session,
                                   Class<?> refc,
                                   String name,
                                   MethodType type,
-                                  FunctionDescriptor function)
-        throws NoSuchMethodException, IllegalAccessException {
-        return Linker.nativeLinker().upcallStub(MethodHandles.publicLookup().findVirtual(refc, name, type).bindTo(this), function, session);
+                                  FunctionDescriptor function) {
+        try {
+            return Linker.nativeLinker().upcallStub(MethodHandles.publicLookup().findVirtual(refc, name, type).bindTo(this), function, session);
+        } catch (NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

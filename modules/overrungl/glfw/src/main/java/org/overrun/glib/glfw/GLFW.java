@@ -2,7 +2,9 @@ package org.overrun.glib.glfw;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -446,7 +448,7 @@ public class GLFW {
      * <h3>Window related hints</h3>
      * <ul>
      * <li>{@link #RESIZABLE}: specifies whether the windowed mode window will be resizable by the user.
-     * The window will still be resizable using the {@link setWindowSize} function.
+     * The window will still be resizable using the {@link #setWindowSize} function.
      * Possible values are {@link #TRUE} and {@link #FALSE}.
      * This hint is ignored for full screen and undecorated windows.</li>
      * <li>{@link #VISIBLE}: specifies whether the windowed mode window will be initially visible.
@@ -527,7 +529,7 @@ public class GLFW {
      * <p>
      * <b>Note</b><br>
      * <b>OpenGL</b>: If enabled and supported by the system,
-     * the {@link GL30C#FRAMEBUFFER_SRGB FRAMEBUFFER_SRGB} enable will control sRGB rendering.
+     * the {@code GL_FRAMEBUFFER_SRGB} enable will control sRGB rendering.
      * By default, sRGB rendering will be disabled.<br>
      * <b>OpenGL ES</b>: If enabled and supported by the system, the context will always have sRGB rendering enabled.
      * </li>
@@ -853,11 +855,15 @@ public class GLFW {
      *
      * @return {@code TRUE} if successful, or {@code FALSE} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      * @see #terminate
      */
-    public static boolean init() throws Throwable {
-        return (int) glfwInit.invoke() == TRUE;
+    public static boolean init() {
+        try {
+            return (int) glfwInit.invoke() == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
@@ -891,78 +897,109 @@ public class GLFW {
      * <h3>Thread safety</h3>
      * This function must only be called from the main thread.
      *
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      * @see #init
      */
-    public static void terminate() throws Throwable {
-        glfwTerminate.invoke();
+    public static void terminate() {
+        try {
+            glfwTerminate.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void initHint(int hint, int value) throws Throwable {
-        glfwInitHint.invoke(hint, value);
+    public static void initHint(int hint, int value) {
+        try {
+            glfwInitHint.invoke(hint, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void ngetVersion(MemoryAddress major, MemoryAddress minor, MemoryAddress rev) throws Throwable {
-        glfwGetVersion.invoke(major, minor, rev);
+    public static void ngetVersion(Addressable major, Addressable minor, Addressable rev) {
+        try {
+            glfwGetVersion.invoke(major, minor, rev);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) throws Throwable {
+    public static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
         try (var session = MemorySession.openShared()) {
-            var pMajor = major != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var pMinor = minor != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var pRev = rev != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pMajor = major != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pMinor = minor != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pRev = rev != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetVersion(pMajor, pMinor, pRev);
             if (major != null && major.length > 0) {
-                major[0] = pMajor.get(JAVA_INT, 0L);
+                major[0] = ((MemorySegment) pMajor).get(JAVA_INT, 0L);
             }
             if (minor != null && minor.length > 0) {
-                minor[0] = pMinor.get(JAVA_INT, 0L);
+                minor[0] = ((MemorySegment) pMinor).get(JAVA_INT, 0L);
             }
             if (rev != null && rev.length > 0) {
-                rev[0] = pRev.get(JAVA_INT, 0L);
+                rev[0] = ((MemorySegment) pRev).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static MemoryAddress ngetVersionString() throws Throwable {
-        return (MemoryAddress) glfwGetVersionString.invoke();
+    public static MemoryAddress ngetVersionString() {
+        try {
+            return (MemoryAddress) glfwGetVersionString.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static String getVersionString() throws Throwable {
+    public static String getVersionString() {
         return ngetVersionString().getUtf8String(0L);
     }
 
-    public static int ngetError(MemoryAddress description) throws Throwable {
-        return (int) glfwGetError.invoke(description);
+    public static int ngetError(Addressable description) {
+        try {
+            return (int) glfwGetError.invoke(description);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
-    public static int getError(String @Nullable [] description) throws Throwable {
+    public static int getError(String @Nullable [] description) {
         try (var session = MemorySession.openShared()) {
-            var pDesc = description != null ? session.allocate(ADDRESS).address() : MemoryAddress.NULL;
+            var pDesc = description != null ? session.allocate(ADDRESS) : MemoryAddress.NULL;
             int err = ngetError(pDesc);
             if (description != null && description.length > 0) {
-                description[0] = pDesc.get(ADDRESS, 0L).getUtf8String(0L);
+                description[0] = ((MemorySegment)pDesc).get(ADDRESS, 0L).getUtf8String(0L);
             }
             return err;
         }
     }
 
-    public static MemoryAddress nsetErrorCallback(MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetErrorCallback.invoke(callback);
+    public static MemoryAddress nsetErrorCallback(Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetErrorCallback.invoke(callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setErrorCallback(@Nullable IGLFWErrorFun callback) throws Throwable {
+    public static MemoryAddress setErrorCallback(@Nullable IGLFWErrorFun callback) {
         return nsetErrorCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress ngetMonitors(MemoryAddress count) throws Throwable {
-        return (MemoryAddress) glfwGetMonitors.invoke(count);
+    public static MemoryAddress ngetMonitors(Addressable count) {
+        try {
+            return (MemoryAddress) glfwGetMonitors.invoke(count);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress @Nullable [] getMonitors() throws Throwable {
+    public static MemoryAddress @Nullable [] getMonitors() {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
-            var pMonitors = ngetMonitors(pCount.address());
+            var pMonitors = ngetMonitors(pCount);
             if (pMonitors == MemoryAddress.NULL) {
                 return null;
             }
@@ -974,124 +1011,169 @@ public class GLFW {
         }
     }
 
-    public static MemoryAddress getPrimaryMonitor() throws Throwable {
-        return (MemoryAddress) glfwGetPrimaryMonitor.invoke();
+    public static MemoryAddress getPrimaryMonitor() {
+        try {
+            return (MemoryAddress) glfwGetPrimaryMonitor.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static void ngetMonitorPos(MemoryAddress monitor, MemoryAddress xpos, MemoryAddress ypos) throws Throwable {
-        glfwGetMonitorPos.invoke(monitor, xpos, ypos);
+    public static void ngetMonitorPos(MemoryAddress monitor, Addressable xpos, Addressable ypos) {
+        try {
+            glfwGetMonitorPos.invoke(monitor, xpos, ypos);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMonitorPos(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos) throws Throwable {
+    public static void getMonitorPos(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
         try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorPos(monitor, px, py);
             if (xpos != null && xpos.length > 0) {
-                xpos[0] = px.get(JAVA_INT, 0L);
+                xpos[0] = ((MemorySegment)px).get(JAVA_INT, 0L);
             }
             if (ypos != null && ypos.length > 0) {
-                ypos[0] = py.get(JAVA_INT, 0L);
+                ypos[0] = ((MemorySegment)py).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static void ngetMonitorWorkarea(MemoryAddress monitor, MemoryAddress xpos, MemoryAddress ypos, MemoryAddress width, MemoryAddress height) throws Throwable {
-        glfwGetMonitorWorkarea.invoke(monitor, xpos, ypos, width, height);
+    public static void ngetMonitorWorkarea(MemoryAddress monitor, Addressable xpos, Addressable ypos, Addressable width, Addressable height) {
+        try {
+            glfwGetMonitorWorkarea.invoke(monitor, xpos, ypos, width, height);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMonitorWorkarea(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) throws Throwable {
+    public static void getMonitorWorkarea(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
         try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var pw = width != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var ph = height != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pw = width != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             if (xpos != null && xpos.length > 0) {
-                xpos[0] = px.get(JAVA_INT, 0L);
+                xpos[0] = ((MemorySegment)px).get(JAVA_INT, 0L);
             }
             if (ypos != null && ypos.length > 0) {
-                ypos[0] = py.get(JAVA_INT, 0L);
+                ypos[0] = ((MemorySegment)py).get(JAVA_INT, 0L);
             }
             if (width != null && width.length > 0) {
-                width[0] = pw.get(JAVA_INT, 0L);
+                width[0] = ((MemorySegment)pw).get(JAVA_INT, 0L);
             }
             if (height != null && height.length > 0) {
-                height[0] = ph.get(JAVA_INT, 0L);
+                height[0] = ((MemorySegment)ph).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static void ngetMonitorPhysicalSize(MemoryAddress monitor, MemoryAddress widthMM, MemoryAddress heightMM) throws Throwable {
-        glfwGetMonitorPhysicalSize.invoke(monitor, widthMM, heightMM);
+    public static void ngetMonitorPhysicalSize(MemoryAddress monitor, Addressable widthMM, Addressable heightMM) {
+        try {
+            glfwGetMonitorPhysicalSize.invoke(monitor, widthMM, heightMM);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMonitorPhysicalSize(MemoryAddress monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) throws Throwable {
+    public static void getMonitorPhysicalSize(MemoryAddress monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
         try (var session = MemorySession.openShared()) {
-            var pw = widthMM != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var ph = heightMM != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pw = widthMM != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var ph = heightMM != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorPhysicalSize(monitor, pw, ph);
             if (widthMM != null && widthMM.length > 0) {
-                widthMM[0] = pw.get(JAVA_INT, 0L);
+                widthMM[0] = ((MemorySegment)pw).get(JAVA_INT, 0L);
             }
             if (heightMM != null && heightMM.length > 0) {
-                heightMM[0] = ph.get(JAVA_INT, 0L);
+                heightMM[0] = ((MemorySegment)ph).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static void ngetMonitorContentScale(MemoryAddress monitor, MemoryAddress xscale, MemoryAddress yscale) throws Throwable {
-        glfwGetMonitorContentScale.invoke(monitor, xscale, yscale);
+    public static void ngetMonitorContentScale(MemoryAddress monitor, Addressable xscale, Addressable yscale) {
+        try {
+            glfwGetMonitorContentScale.invoke(monitor, xscale, yscale);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMonitorContentScale(MemoryAddress monitor, float @Nullable [] xscale, float @Nullable [] yscale) throws Throwable {
+    public static void getMonitorContentScale(MemoryAddress monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
         try (var session = MemorySession.openShared()) {
-            var px = xscale != null ? session.allocate(JAVA_FLOAT).address() : MemoryAddress.NULL;
-            var py = yscale != null ? session.allocate(JAVA_FLOAT).address() : MemoryAddress.NULL;
+            var px = xscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
+            var py = yscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
             ngetMonitorContentScale(monitor, px, py);
             if (xscale != null && xscale.length > 0) {
-                xscale[0] = px.get(JAVA_FLOAT, 0L);
+                xscale[0] = ((MemorySegment)px).get(JAVA_FLOAT, 0L);
             }
             if (yscale != null && yscale.length > 0) {
-                yscale[0] = py.get(JAVA_FLOAT, 0L);
+                yscale[0] = ((MemorySegment)py).get(JAVA_FLOAT, 0L);
             }
         }
     }
 
-    public static MemoryAddress ngetMonitorName(MemoryAddress monitor) throws Throwable {
-        return (MemoryAddress) glfwGetMonitorName.invoke(monitor);
+    public static MemoryAddress ngetMonitorName(MemoryAddress monitor) {
+        try {
+            return (MemoryAddress) glfwGetMonitorName.invoke(monitor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static String getMonitorName(MemoryAddress monitor) throws Throwable {
+    public static String getMonitorName(MemoryAddress monitor) {
         var pName = ngetMonitorName(monitor);
         return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
     }
 
-    public static void setMonitorUserPointer(MemoryAddress monitor, MemoryAddress pointer) throws Throwable {
-        glfwSetMonitorUserPointer.invoke(monitor, pointer);
+    public static void setMonitorUserPointer(MemoryAddress monitor, Addressable pointer) {
+        try {
+            glfwSetMonitorUserPointer.invoke(monitor, pointer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static MemoryAddress getMonitorUserPointer(MemoryAddress monitor) throws Throwable {
-        return (MemoryAddress) glfwGetMonitorUserPointer.invoke(monitor);
+    public static MemoryAddress getMonitorUserPointer(MemoryAddress monitor) {
+        try {
+            return (MemoryAddress) glfwGetMonitorUserPointer.invoke(monitor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress nsetMonitorCallback(MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetMonitorCallback.invoke(callback);
+    public static MemoryAddress nsetMonitorCallback(Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetMonitorCallback.invoke(callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setMonitorCallback(@Nullable IGLFWMonitorFun callback) throws Throwable {
+    public static MemoryAddress setMonitorCallback(@Nullable IGLFWMonitorFun callback) {
         return nsetMonitorCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress ngetVideoModes(MemoryAddress monitor, MemoryAddress count) throws Throwable {
-        return (MemoryAddress) glfwGetVideoModes.invoke(monitor, count);
+    public static MemoryAddress ngetVideoModes(MemoryAddress monitor, Addressable count) {
+        try {
+            return (MemoryAddress) glfwGetVideoModes.invoke(monitor, count);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static GLFWVidMode @Nullable [] getVideoModes(MemoryAddress monitor) throws Throwable {
+    public static GLFWVidMode @Nullable [] getVideoModes(MemoryAddress monitor) {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
-            var pModes = ngetVideoModes(monitor, pCount.address());
+            var pModes = ngetVideoModes(monitor, pCount);
             if (pModes == MemoryAddress.NULL) {
                 return null;
             }
@@ -1104,522 +1186,849 @@ public class GLFW {
         }
     }
 
-    public static MemoryAddress ngetVideoMode(MemoryAddress monitor) throws Throwable {
-        return (MemoryAddress) glfwGetVideoMode.invoke(monitor);
+    public static MemoryAddress ngetVideoMode(MemoryAddress monitor) {
+        try {
+            return (MemoryAddress) glfwGetVideoMode.invoke(monitor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static GLFWVidMode getVideoMode(MemoryAddress monitor) throws Throwable {
+    public static GLFWVidMode getVideoMode(MemoryAddress monitor) {
         var pMode = ngetVideoMode(monitor);
         return pMode != MemoryAddress.NULL ? new GLFWVidMode(pMode) : null;
     }
 
-    public static void setGamma(MemoryAddress monitor, float gamma) throws Throwable {
-        glfwSetGamma.invoke(monitor, gamma);
+    public static void setGamma(MemoryAddress monitor, float gamma) {
+        try {
+            glfwSetGamma.invoke(monitor, gamma);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static MemoryAddress ngetGammaRamp(MemoryAddress monitor) throws Throwable {
-        return (MemoryAddress) glfwGetGammaRamp.invoke(monitor);
+    public static MemoryAddress ngetGammaRamp(MemoryAddress monitor) {
+        try {
+            return (MemoryAddress) glfwGetGammaRamp.invoke(monitor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(MemoryAddress monitor) throws Throwable {
+    public static GLFWGammaRamp getGammaRamp(MemoryAddress monitor) {
         var pRamp = ngetGammaRamp(monitor);
         return pRamp != MemoryAddress.NULL ? new GLFWGammaRamp(pRamp) : null;
     }
 
-    public static void setGammaRamp(MemoryAddress monitor, GLFWGammaRamp ramp) throws Throwable {
-        glfwSetGammaRamp.invoke(monitor, ramp.address());
+    public static void setGammaRamp(MemoryAddress monitor, GLFWGammaRamp ramp) {
+        try {
+            glfwSetGammaRamp.invoke(monitor, ramp.rawAddress());
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void defaultWindowHints() throws Throwable {
-        glfwDefaultWindowHints.invoke();
+    public static void defaultWindowHints() {
+        try {
+            glfwDefaultWindowHints.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void windowHint(int hint, int value) throws Throwable {
-        glfwWindowHint.invoke(hint, value);
+    public static void windowHint(int hint, int value) {
+        try {
+            glfwWindowHint.invoke(hint, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void windowHint(int hint, boolean value) throws Throwable {
+    public static void windowHint(int hint, boolean value) {
         windowHint(hint, value ? TRUE : FALSE);
     }
 
-    public static void nwindowHintString(int hint, MemoryAddress value) throws Throwable {
-        glfwWindowHintString.invoke(hint, value);
-    }
-
-    public static void windowHintString(int hint, String value) throws Throwable {
-        try (var session = MemorySession.openShared()) {
-            nwindowHintString(hint, session.allocateUtf8String(value).address());
+    public static void nwindowHintString(int hint, Addressable value) {
+        try {
+            glfwWindowHintString.invoke(hint, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 
-    public static MemoryAddress ncreateWindow(int width, int height, MemoryAddress title, MemoryAddress monitor, MemoryAddress share) throws Throwable {
-        return (MemoryAddress) glfwCreateWindow.invoke(width, height, title, monitor, share);
-    }
-
-    public static MemoryAddress createWindow(int width, int height, String title, MemoryAddress monitor, MemoryAddress share) throws Throwable {
+    public static void windowHintString(int hint, String value) {
         try (var session = MemorySession.openShared()) {
-            return ncreateWindow(width, height, session.allocateUtf8String(title).address(), monitor, share);
+            nwindowHintString(hint, session.allocateUtf8String(value));
         }
     }
 
-    public static void destroyWindow(MemoryAddress window) throws Throwable {
-        glfwDestroyWindow.invoke(window);
-    }
-
-    public static boolean windowShouldClose(MemoryAddress window) throws Throwable {
-        return (int) glfwWindowShouldClose.invoke(window) == TRUE;
-    }
-
-    public static void setWindowShouldClose(MemoryAddress window, boolean value) throws Throwable {
-        glfwSetWindowShouldClose.invoke(window, value ? TRUE : FALSE);
-    }
-
-    public static void nsetWindowTitle(MemoryAddress window, MemoryAddress title) throws Throwable {
-        glfwSetWindowTitle.invoke(window, title);
-    }
-
-    public static void setWindowTitle(MemoryAddress window, String title) throws Throwable {
-        try (var session = MemorySession.openShared()) {
-            nsetWindowTitle(window, session.allocateUtf8String(title).address());
+    public static MemoryAddress ncreateWindow(int width, int height, Addressable title, MemoryAddress monitor, MemoryAddress share) {
+        try {
+            return (MemoryAddress) glfwCreateWindow.invoke(width, height, title, monitor, share);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
         }
     }
 
-    public static void nsetWindowIcon(MemoryAddress window, int count, MemoryAddress images) throws Throwable {
-        glfwSetWindowIcon.invoke(window, count, images);
+    public static MemoryAddress createWindow(int width, int height, String title, MemoryAddress monitor, MemoryAddress share) {
+        try (var session = MemorySession.openShared()) {
+            return ncreateWindow(width, height, session.allocateUtf8String(title), monitor, share);
+        }
     }
 
-    public static void setWindowIcon(MemoryAddress window, int count, GLFWImage[] images) throws Throwable {
+    public static void destroyWindow(MemoryAddress window) {
+        try {
+            glfwDestroyWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean windowShouldClose(MemoryAddress window) {
+        try {
+            return (int) glfwWindowShouldClose.invoke(window) == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    public static void setWindowShouldClose(MemoryAddress window, boolean value) {
+        try {
+            glfwSetWindowShouldClose.invoke(window, value ? TRUE : FALSE);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void nsetWindowTitle(MemoryAddress window, Addressable title) {
+        try {
+            glfwSetWindowTitle.invoke(window, title);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setWindowTitle(MemoryAddress window, String title) {
+        try (var session = MemorySession.openShared()) {
+            nsetWindowTitle(window, session.allocateUtf8String(title));
+        }
+    }
+
+    public static void nsetWindowIcon(MemoryAddress window, int count, Addressable images) {
+        try {
+            glfwSetWindowIcon.invoke(window, count, images);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setWindowIcon(MemoryAddress window, int count, GLFWImage[] images) {
         try (var session = MemorySession.openShared()) {
             var pImages = session.allocateArray(ADDRESS, count);
             for (int i = 0; i < count; i++) {
-                pImages.setAtIndex(ADDRESS, i, images[i].address());
+                pImages.setAtIndex(ADDRESS, i, images[i].rawAddress());
             }
-            nsetWindowIcon(window, count, pImages.address());
+            nsetWindowIcon(window, count, pImages);
         }
     }
 
-    public static void setWindowIcon(MemoryAddress window, GLFWImage[] images) throws Throwable {
+    public static void setWindowIcon(MemoryAddress window, GLFWImage[] images) {
         setWindowIcon(window, images.length, images);
     }
 
-    public static void ngetWindowPos(MemoryAddress window, MemoryAddress xpos, MemoryAddress ypos) throws Throwable {
-        glfwGetWindowPos.invoke(window, xpos, ypos);
+    public static void ngetWindowPos(MemoryAddress window, Addressable xpos, Addressable ypos) {
+        try {
+            glfwGetWindowPos.invoke(window, xpos, ypos);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getWindowPos(MemoryAddress window, int @Nullable [] xpos, int @Nullable [] ypos) throws Throwable {
+    public static void getWindowPos(MemoryAddress window, int @Nullable [] xpos, int @Nullable [] ypos) {
         try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowPos(window, px, py);
             if (xpos != null && xpos.length > 1) {
-                xpos[0] = px.get(JAVA_INT, 0L);
+                xpos[0] = ((MemorySegment)px).get(JAVA_INT, 0L);
             }
             if (ypos != null && ypos.length > 1) {
-                ypos[0] = py.get(JAVA_INT, 0L);
+                ypos[0] = ((MemorySegment)py).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static void setWindowPos(MemoryAddress window, int xpos, int ypos) throws Throwable {
-        glfwSetWindowPos.invoke(window, xpos, ypos);
+    public static void setWindowPos(MemoryAddress window, int xpos, int ypos) {
+        try {
+            glfwSetWindowPos.invoke(window, xpos, ypos);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void ngetWindowSize(MemoryAddress window, MemoryAddress width, MemoryAddress height) throws Throwable {
-        glfwGetWindowSize.invoke(window, width, height);
+    public static void ngetWindowSize(MemoryAddress window, Addressable width, Addressable height) {
+        try {
+            glfwGetWindowSize.invoke(window, width, height);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getWindowSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) throws Throwable {
+    public static void getWindowSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) {
         try (var session = MemorySession.openShared()) {
-            var pw = width != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var ph = height != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pw = width != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowSize(window, pw, ph);
             if (width != null && width.length > 0) {
-                width[0] = pw.get(JAVA_INT, 0);
+                width[0] = ((MemorySegment)pw).get(JAVA_INT, 0);
             }
             if (height != null && height.length > 0) {
-                height[0] = ph.get(JAVA_INT, 0);
+                height[0] = ((MemorySegment)ph).get(JAVA_INT, 0);
             }
         }
     }
 
-    public static void setWindowSizeLimits(MemoryAddress window, int minWidth, int minHeight, int maxWidth, int maxHeight) throws Throwable {
-        glfwSetWindowSizeLimits.invoke(window, minWidth, minHeight, maxWidth, maxHeight);
+    public static void setWindowSizeLimits(MemoryAddress window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
+        try {
+            glfwSetWindowSizeLimits.invoke(window, minWidth, minHeight, maxWidth, maxHeight);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void setWindowAspectRatio(MemoryAddress window, int numer, int denom) throws Throwable {
-        glfwSetWindowAspectRatio.invoke(window, numer, denom);
+    public static void setWindowAspectRatio(MemoryAddress window, int numer, int denom) {
+        try {
+            glfwSetWindowAspectRatio.invoke(window, numer, denom);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void setWindowSize(MemoryAddress window, int width, int height) throws Throwable {
-        glfwSetWindowSize.invoke(window, width, height);
+    public static void setWindowSize(MemoryAddress window, int width, int height) {
+        try {
+            glfwSetWindowSize.invoke(window, width, height);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void ngetFramebufferSize(MemoryAddress window, MemoryAddress width, MemoryAddress height) throws Throwable {
-        glfwGetFramebufferSize.invoke(window, width, height);
+    public static void ngetFramebufferSize(MemoryAddress window, Addressable width, Addressable height) {
+        try {
+            glfwGetFramebufferSize.invoke(window, width, height);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getFramebufferSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) throws Throwable {
+    public static void getFramebufferSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) {
         try (var session = MemorySession.openShared()) {
-            var pw = width != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var ph = height != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pw = width != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetFramebufferSize(window, pw, ph);
             if (width != null && width.length > 0) {
-                width[0] = pw.get(JAVA_INT, 0L);
+                width[0] = ((MemorySegment)pw).get(JAVA_INT, 0L);
             }
             if (height != null && height.length > 0) {
-                height[0] = ph.get(JAVA_INT, 0L);
+                height[0] = ((MemorySegment)ph).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static void ngetWindowFrameSize(MemoryAddress window, MemoryAddress left, MemoryAddress top, MemoryAddress right, MemoryAddress bottom) throws Throwable {
-        glfwGetWindowFrameSize.invoke(window, left, top, right, bottom);
+    public static void ngetWindowFrameSize(MemoryAddress window, Addressable left, Addressable top, Addressable right, Addressable bottom) {
+        try {
+            glfwGetWindowFrameSize.invoke(window, left, top, right, bottom);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getWindowFrameSize(MemoryAddress window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) throws Throwable {
+    public static void getWindowFrameSize(MemoryAddress window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
         try (var session = MemorySession.openShared()) {
-            var pl = left != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var pt = top != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var pr = right != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
-            var pb = bottom != null ? session.allocate(JAVA_INT).address() : MemoryAddress.NULL;
+            var pl = left != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pt = top != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pr = right != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pb = bottom != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             if (left != null && left.length > 0) {
-                left[0] = pl.get(JAVA_INT, 0L);
+                left[0] = ((MemorySegment)pl).get(JAVA_INT, 0L);
             }
             if (top != null && top.length > 0) {
-                top[0] = pt.get(JAVA_INT, 0L);
+                top[0] = ((MemorySegment)pt).get(JAVA_INT, 0L);
             }
             if (right != null && right.length > 0) {
-                right[0] = pr.get(JAVA_INT, 0L);
+                right[0] = ((MemorySegment)pr).get(JAVA_INT, 0L);
             }
             if (bottom != null && bottom.length > 0) {
-                bottom[0] = pb.get(JAVA_INT, 0L);
+                bottom[0] = ((MemorySegment)pb).get(JAVA_INT, 0L);
             }
         }
     }
 
-    public static void ngetWindowContentScale(MemoryAddress window, MemoryAddress xscale, MemoryAddress yscale) throws Throwable {
-        glfwGetWindowContentScale.invoke(window, xscale, yscale);
+    public static void ngetWindowContentScale(MemoryAddress window, Addressable xscale, Addressable yscale) {
+        try {
+            glfwGetWindowContentScale.invoke(window, xscale, yscale);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getWindowContentScale(MemoryAddress window, float @Nullable [] xscale, float @Nullable [] yscale) throws Throwable {
+    public static void getWindowContentScale(MemoryAddress window, float @Nullable [] xscale, float @Nullable [] yscale) {
         try (var session = MemorySession.openShared()) {
-            var px = xscale != null ? session.allocate(JAVA_FLOAT).address() : MemoryAddress.NULL;
-            var py = yscale != null ? session.allocate(JAVA_FLOAT).address() : MemoryAddress.NULL;
+            var px = xscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
+            var py = yscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
             ngetWindowContentScale(window, px, py);
             if (xscale != null && xscale.length > 0) {
-                xscale[0] = px.get(JAVA_FLOAT, 0L);
+                xscale[0] = ((MemorySegment)px).get(JAVA_FLOAT, 0L);
             }
             if (yscale != null && yscale.length > 0) {
-                yscale[0] = py.get(JAVA_FLOAT, 0L);
+                yscale[0] = ((MemorySegment)py).get(JAVA_FLOAT, 0L);
             }
         }
     }
 
-    public static float getWindowOpacity(MemoryAddress window) throws Throwable {
-        return (float) glfwGetWindowOpacity.invoke(window);
+    public static float getWindowOpacity(MemoryAddress window) {
+        try {
+            return (float) glfwGetWindowOpacity.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 1.0f;
+        }
     }
 
-    public static void setWindowOpacity(MemoryAddress window, float opacity) throws Throwable {
-        glfwSetWindowOpacity.invoke(window, opacity);
+    public static void setWindowOpacity(MemoryAddress window, float opacity) {
+        try {
+            glfwSetWindowOpacity.invoke(window, opacity);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void iconifyWindow(MemoryAddress window) throws Throwable {
-        glfwIconifyWindow.invoke(window);
+    public static void iconifyWindow(MemoryAddress window) {
+        try {
+            glfwIconifyWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void restoreWindow(MemoryAddress window) throws Throwable {
-        glfwRestoreWindow.invoke(window);
+    public static void restoreWindow(MemoryAddress window) {
+        try {
+            glfwRestoreWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void maximizeWindow(MemoryAddress window) throws Throwable {
-        glfwMaximizeWindow.invoke(window);
+    public static void maximizeWindow(MemoryAddress window) {
+        try {
+            glfwMaximizeWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void showWindow(MemoryAddress window) throws Throwable {
-        glfwShowWindow.invoke(window);
+    public static void showWindow(MemoryAddress window) {
+        try {
+            glfwShowWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void hideWindow(MemoryAddress window) throws Throwable {
-        glfwHideWindow.invoke(window);
+    public static void hideWindow(MemoryAddress window) {
+        try {
+            glfwHideWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void focusWindow(MemoryAddress window) throws Throwable {
-        glfwFocusWindow.invoke(window);
+    public static void focusWindow(MemoryAddress window) {
+        try {
+            glfwFocusWindow.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void requestWindowAttention(MemoryAddress window) throws Throwable {
-        glfwRequestWindowAttention.invoke(window);
+    public static void requestWindowAttention(MemoryAddress window) {
+        try {
+            glfwRequestWindowAttention.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static MemoryAddress getWindowMonitor(MemoryAddress window) throws Throwable {
-        return (MemoryAddress) glfwGetWindowMonitor.invoke(window);
+    public static MemoryAddress getWindowMonitor(MemoryAddress window) {
+        try {
+            return (MemoryAddress) glfwGetWindowMonitor.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static void setWindowMonitor(MemoryAddress window, MemoryAddress monitor, int xpos, int ypos, int width, int height, int refreshRate) throws Throwable {
-        glfwGetWindowMonitor.invoke(window, monitor, xpos, ypos, width, height, refreshRate);
+    public static void setWindowMonitor(MemoryAddress window, MemoryAddress monitor, int xpos, int ypos, int width, int height, int refreshRate) {
+        try {
+            glfwGetWindowMonitor.invoke(window, monitor, xpos, ypos, width, height, refreshRate);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static int getWindowAttrib(MemoryAddress window, int attrib) throws Throwable {
-        return (int) glfwGetWindowAttrib.invoke(window, attrib);
+    public static int getWindowAttrib(MemoryAddress window, int attrib) {
+        try {
+            return (int) glfwGetWindowAttrib.invoke(window, attrib);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
-    public static void setWindowAttrib(MemoryAddress window, int attrib, boolean value) throws Throwable {
-        glfwSetWindowAttrib.invoke(window, attrib, value ? TRUE : FALSE);
+    public static void setWindowAttrib(MemoryAddress window, int attrib, boolean value) {
+        try {
+            glfwSetWindowAttrib.invoke(window, attrib, value ? TRUE : FALSE);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void setWindowUserPointer(MemoryAddress window, MemoryAddress pointer) throws Throwable {
-        glfwSetWindowUserPointer.invoke(window, pointer);
+    public static void setWindowUserPointer(MemoryAddress window, Addressable pointer) {
+        try {
+            glfwSetWindowUserPointer.invoke(window, pointer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static MemoryAddress getWindowUserPointer(MemoryAddress window) throws Throwable {
-        return (MemoryAddress) glfwSetWindowUserPointer.invoke(window);
+    public static MemoryAddress getWindowUserPointer(MemoryAddress window) {
+        try {
+            return (MemoryAddress) glfwSetWindowUserPointer.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress nsetWindowPosCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowPosCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowPosCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowPosCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowPosCallback(MemoryAddress window, @Nullable IGLFWWindowPosFun callback) throws Throwable {
+    public static MemoryAddress setWindowPosCallback(MemoryAddress window, @Nullable IGLFWWindowPosFun callback) {
         return nsetWindowPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowSizeCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowSizeCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowSizeCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowSizeCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowSizeCallback(MemoryAddress window, @Nullable IGLFWWindowSizeFun callback) throws Throwable {
+    public static MemoryAddress setWindowSizeCallback(MemoryAddress window, @Nullable IGLFWWindowSizeFun callback) {
         return nsetWindowSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowCloseCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowCloseCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowCloseCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowCloseCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowCloseCallback(MemoryAddress window, @Nullable IGLFWWindowCloseFun callback) throws Throwable {
+    public static MemoryAddress setWindowCloseCallback(MemoryAddress window, @Nullable IGLFWWindowCloseFun callback) {
         return nsetWindowCloseCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowRefreshCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowRefreshCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowRefreshCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowRefreshCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowRefreshCallback(MemoryAddress window, @Nullable IGLFWWindowRefreshFun callback) throws Throwable {
+    public static MemoryAddress setWindowRefreshCallback(MemoryAddress window, @Nullable IGLFWWindowRefreshFun callback) {
         return nsetWindowRefreshCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowFocusCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowFocusCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowFocusCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowFocusCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowFocusCallback(MemoryAddress window, @Nullable IGLFWWindowFocusFun callback) throws Throwable {
+    public static MemoryAddress setWindowFocusCallback(MemoryAddress window, @Nullable IGLFWWindowFocusFun callback) {
         return nsetWindowFocusCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowIconifyCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowIconifyCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowIconifyCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowIconifyCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowIconifyCallback(MemoryAddress window, @Nullable IGLFWWindowIconifyFun callback) throws Throwable {
+    public static MemoryAddress setWindowIconifyCallback(MemoryAddress window, @Nullable IGLFWWindowIconifyFun callback) {
         return nsetWindowIconifyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowMaximizeCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowMaximizeCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowMaximizeCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowMaximizeCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowMaximizeCallback(MemoryAddress window, @Nullable IGLFWWindowMaximizeFun callback) throws Throwable {
+    public static MemoryAddress setWindowMaximizeCallback(MemoryAddress window, @Nullable IGLFWWindowMaximizeFun callback) {
         return nsetWindowMaximizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetFramebufferSizeCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetFramebufferSizeCallback.invoke(window, callback);
+    public static MemoryAddress nsetFramebufferSizeCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetFramebufferSizeCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setFramebufferSizeCallback(MemoryAddress window, @Nullable IGLFWFramebufferSizeFun callback) throws Throwable {
+    public static MemoryAddress setFramebufferSizeCallback(MemoryAddress window, @Nullable IGLFWFramebufferSizeFun callback) {
         return nsetFramebufferSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetWindowContentScaleCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetWindowContentScaleCallback.invoke(window, callback);
+    public static MemoryAddress nsetWindowContentScaleCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetWindowContentScaleCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setWindowContentScaleCallback(MemoryAddress window, @Nullable IGLFWWindowContentScaleFun callback) throws Throwable {
+    public static MemoryAddress setWindowContentScaleCallback(MemoryAddress window, @Nullable IGLFWWindowContentScaleFun callback) {
         return nsetWindowContentScaleCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static void pollEvents() throws Throwable {
-        glfwPollEvents.invoke();
+    public static void pollEvents() {
+        try {
+            glfwPollEvents.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void waitEvents() throws Throwable {
-        glfwWaitEvents.invoke();
+    public static void waitEvents() {
+        try {
+            glfwWaitEvents.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void waitEventsTimeout(double timeout) throws Throwable {
-        glfwWaitEventsTimeout.invoke();
+    public static void waitEventsTimeout(double timeout) {
+        try {
+            glfwWaitEventsTimeout.invoke(timeout);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void postEmptyEvents() throws Throwable {
-        glfwPostEmptyEvent.invoke();
+    public static void postEmptyEvents() {
+        try {
+            glfwPostEmptyEvent.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static int getInputMode(MemoryAddress window, int mode) throws Throwable {
-        return (int) glfwGetInputMode.invoke(window, mode);
+    public static int getInputMode(MemoryAddress window, int mode) {
+        try {
+            return (int) glfwGetInputMode.invoke(window, mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
-    public static void setInputMode(MemoryAddress window, int mode, int value) throws Throwable {
-        glfwSetInputMode.invoke(window, mode, value);
+    public static void setInputMode(MemoryAddress window, int mode, int value) {
+        try {
+            glfwSetInputMode.invoke(window, mode, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static boolean rawMouseMotionSupported() throws Throwable {
-        return (int) glfwRawMouseMotionSupported.invoke() == TRUE;
+    public static boolean rawMouseMotionSupported() {
+        try {
+            return (int) glfwRawMouseMotionSupported.invoke() == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public static MemoryAddress ngetKeyName(int key, int scancode) throws Throwable {
-        return (MemoryAddress) glfwGetKeyName.invoke(key, scancode);
+    public static MemoryAddress ngetKeyName(int key, int scancode) {
+        try {
+            return (MemoryAddress) glfwGetKeyName.invoke(key, scancode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static String getKeyName(int key, int scancode) throws Throwable {
+    public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
         return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
     }
 
-    public static int getKeyScancode(int key) throws Throwable {
-        return (int) glfwGetKeyScancode.invoke(key);
+    public static int getKeyScancode(int key) {
+        try {
+            return (int) glfwGetKeyScancode.invoke(key);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return -1;
+        }
     }
 
-    public static int getKey(MemoryAddress window, int key) throws Throwable {
-        return (int) glfwGetKey.invoke(window, key);
+    public static int getKey(MemoryAddress window, int key) {
+        try {
+            return (int) glfwGetKey.invoke(window, key);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return RELEASE;
+        }
     }
 
-    public static int getMouseButton(MemoryAddress window, int button) throws Throwable {
-        return (int) glfwGetMouseButton.invoke(window, button);
+    public static int getMouseButton(MemoryAddress window, int button) {
+        try {
+            return (int) glfwGetMouseButton.invoke(window, button);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return RELEASE;
+        }
     }
 
-    public static void ngetCursorPos(MemoryAddress window, MemoryAddress xpos, MemoryAddress ypos) throws Throwable {
-        glfwGetCursorPos.invoke(window, xpos, ypos);
+    public static void ngetCursorPos(MemoryAddress window, Addressable xpos, Addressable ypos) {
+        try {
+            glfwGetCursorPos.invoke(window, xpos, ypos);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getCursorPos(MemoryAddress window, double @Nullable [] xpos, double @Nullable [] ypos) throws Throwable {
+    public static void getCursorPos(MemoryAddress window, double @Nullable [] xpos, double @Nullable [] ypos) {
         try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_DOUBLE).address() : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_DOUBLE).address() : MemoryAddress.NULL;
+            var px = xpos != null ? session.allocate(JAVA_DOUBLE) : MemoryAddress.NULL;
+            var py = ypos != null ? session.allocate(JAVA_DOUBLE) : MemoryAddress.NULL;
             ngetCursorPos(window, px, py);
             if (xpos != null && xpos.length > 0) {
-                xpos[0] = px.get(JAVA_DOUBLE, 0L);
+                xpos[0] = ((MemorySegment)px).get(JAVA_DOUBLE, 0L);
             }
             if (ypos != null && ypos.length > 0) {
-                ypos[0] = py.get(JAVA_DOUBLE, 0L);
+                ypos[0] = ((MemorySegment)py).get(JAVA_DOUBLE, 0L);
             }
         }
     }
 
-    public static void setCursorPos(MemoryAddress window, double xpos, double ypos) throws Throwable {
-        glfwSetCursorPos.invoke(window, xpos, ypos);
+    public static void setCursorPos(MemoryAddress window, double xpos, double ypos) {
+        try {
+            glfwSetCursorPos.invoke(window, xpos, ypos);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static MemoryAddress ncreateCursor(MemoryAddress image, int xhot, int yhot) throws Throwable {
-        return (MemoryAddress) glfwCreateCursor.invoke(image, xhot, yhot);
+    public static MemoryAddress ncreateCursor(Addressable image, int xhot, int yhot) {
+        try {
+            return (MemoryAddress) glfwCreateCursor.invoke(image, xhot, yhot);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress createCursor(GLFWImage image, int xhot, int yhot) throws Throwable {
-        return ncreateCursor(image.address(), xhot, yhot);
+    public static MemoryAddress createCursor(GLFWImage image, int xhot, int yhot) {
+        return ncreateCursor(image.rawAddress(), xhot, yhot);
     }
 
-    public static MemoryAddress createStandardCursor(int shape) throws Throwable {
-        return (MemoryAddress) glfwCreateStandardCursor.invoke(shape);
+    public static MemoryAddress createStandardCursor(int shape) {
+        try {
+            return (MemoryAddress) glfwCreateStandardCursor.invoke(shape);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static void destroyCursor(MemoryAddress cursor) throws Throwable {
-        glfwDestroyCursor.invoke(cursor);
+    public static void destroyCursor(Addressable cursor) {
+        try {
+            glfwDestroyCursor.invoke(cursor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void setCursor(MemoryAddress window, MemoryAddress cursor) throws Throwable {
-        glfwSetCursor.invoke(window, cursor);
+    public static void setCursor(MemoryAddress window, Addressable cursor) {
+        try {
+            glfwSetCursor.invoke(window, cursor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static MemoryAddress nsetKeyCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetKeyCallback.invoke(window, callback);
+    public static MemoryAddress nsetKeyCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetKeyCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setKeyCallback(MemoryAddress window, @Nullable IGLFWKeyFun callback) throws Throwable {
+    public static MemoryAddress setKeyCallback(MemoryAddress window, @Nullable IGLFWKeyFun callback) {
         return nsetKeyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetCharCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetCharCallback.invoke(window, callback);
+    public static MemoryAddress nsetCharCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetCharCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setCharCallback(MemoryAddress window, @Nullable IGLFWCharFun callback) throws Throwable {
+    public static MemoryAddress setCharCallback(MemoryAddress window, @Nullable IGLFWCharFun callback) {
         return nsetCharCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
     @Deprecated(forRemoval = true)
-    public static MemoryAddress nsetCharModsCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetCharModsCallback.invoke(window, callback);
+    public static MemoryAddress nsetCharModsCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetCharModsCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Deprecated(forRemoval = true)
-    public static MemoryAddress setCharModsCallback(MemoryAddress window, @Nullable IGLFWCharModsFun callback) throws Throwable {
+    public static MemoryAddress setCharModsCallback(MemoryAddress window, @Nullable IGLFWCharModsFun callback) {
         return nsetCharModsCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetMouseButtonCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetMouseButtonCallback.invoke(window, callback);
+    public static MemoryAddress nsetMouseButtonCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetMouseButtonCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setMouseButtonCallback(MemoryAddress window, @Nullable IGLFWMouseButtonFun callback) throws Throwable {
+    public static MemoryAddress setMouseButtonCallback(MemoryAddress window, @Nullable IGLFWMouseButtonFun callback) {
         return nsetMouseButtonCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetCursorPosCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetCursorPosCallback.invoke(window, callback);
+    public static MemoryAddress nsetCursorPosCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetCursorPosCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setCursorPosCallback(MemoryAddress window, @Nullable IGLFWCursorPosFun callback) throws Throwable {
+    public static MemoryAddress setCursorPosCallback(MemoryAddress window, @Nullable IGLFWCursorPosFun callback) {
         return nsetCursorPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetCursorEnterCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetCursorEnterCallback.invoke(window, callback);
+    public static MemoryAddress nsetCursorEnterCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetCursorEnterCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setCursorEnterCallback(MemoryAddress window, @Nullable IGLFWCursorEnterFun callback) throws Throwable {
+    public static MemoryAddress setCursorEnterCallback(MemoryAddress window, @Nullable IGLFWCursorEnterFun callback) {
         return nsetCursorEnterCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetScrollCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetScrollCallback.invoke(window, callback);
+    public static MemoryAddress nsetScrollCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetScrollCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setScrollCallback(MemoryAddress window, @Nullable IGLFWScrollFun callback) throws Throwable {
+    public static MemoryAddress setScrollCallback(MemoryAddress window, @Nullable IGLFWScrollFun callback) {
         return nsetScrollCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static MemoryAddress nsetDropCallback(MemoryAddress window, MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetDropCallback.invoke(window, callback);
+    public static MemoryAddress nsetDropCallback(MemoryAddress window, Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetDropCallback.invoke(window, callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static MemoryAddress setDropCallback(MemoryAddress window, @Nullable IGLFWDropFun callback) throws Throwable {
+    public static MemoryAddress setDropCallback(MemoryAddress window, @Nullable IGLFWDropFun callback) {
         return nsetDropCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
-    public static boolean joystickPresent(int jid) throws Throwable {
-        return (int) glfwJoystickPresent.invoke(jid) == TRUE;
+    public static boolean joystickPresent(int jid) {
+        try {
+            return (int) glfwJoystickPresent.invoke(jid) == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public static MemoryAddress ngetJoystickAxes(int jid, MemoryAddress count) throws Throwable {
-        return (MemoryAddress) glfwGetJoystickAxes.invoke(jid, count);
+    public static MemoryAddress ngetJoystickAxes(int jid, Addressable count) {
+        try {
+            return (MemoryAddress) glfwGetJoystickAxes.invoke(jid, count);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static float[] getJoystickAxes(int jid) throws Throwable {
+    public static float[] getJoystickAxes(int jid) {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
-            var pAxes = ngetJoystickAxes(jid, pCount.address());
+            var pAxes = ngetJoystickAxes(jid, pCount);
             float[] axes = new float[pCount.get(JAVA_INT, 0L)];
             for (int i = 0; i < axes.length; i++) {
                 axes[i] = pAxes.getAtIndex(JAVA_FLOAT, i);
@@ -1628,14 +2037,19 @@ public class GLFW {
         }
     }
 
-    public static MemoryAddress ngetJoystickButtons(int jid, MemoryAddress count) throws Throwable {
-        return (MemoryAddress) glfwGetJoystickButtons.invoke(jid, count);
+    public static MemoryAddress ngetJoystickButtons(int jid, Addressable count) {
+        try {
+            return (MemoryAddress) glfwGetJoystickButtons.invoke(jid, count);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static boolean[] getJoystickButtons(int jid) throws Throwable {
+    public static boolean[] getJoystickButtons(int jid) {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
-            var pButtons = ngetJoystickButtons(jid, pCount.address());
+            var pButtons = ngetJoystickButtons(jid, pCount);
             boolean[] buttons = new boolean[pCount.get(JAVA_INT, 0L)];
             for (int i = 0; i < buttons.length; i++) {
                 buttons[i] = pButtons.getAtIndex(JAVA_INT, i) == PRESS;
@@ -1644,14 +2058,19 @@ public class GLFW {
         }
     }
 
-    public static MemoryAddress ngetJoystickHats(int jid, MemoryAddress count) throws Throwable {
-        return (MemoryAddress) glfwGetJoystickHats.invoke(jid, count);
+    public static MemoryAddress ngetJoystickHats(int jid, Addressable count) {
+        try {
+            return (MemoryAddress) glfwGetJoystickHats.invoke(jid, count);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
-    public static byte[] getJoystickHats(int jid) throws Throwable {
+    public static byte[] getJoystickHats(int jid) {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
-            var pHats = ngetJoystickHats(jid, pCount.address());
+            var pHats = ngetJoystickHats(jid, pCount);
             byte[] hats = new byte[pCount.get(JAVA_INT, 0L)];
             for (int i = 0; i < hats.length; i++) {
                 hats[i] = pHats.get(JAVA_BYTE, i);
@@ -1660,158 +2079,267 @@ public class GLFW {
         }
     }
 
-    public static MemoryAddress ngetJoystickName(int jid) throws Throwable {
-        return (MemoryAddress) glfwGetJoystickName.invoke(jid);
+    public static MemoryAddress ngetJoystickName(int jid) {
+        try {
+            return (MemoryAddress) glfwGetJoystickName.invoke(jid);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static String getJoystickName(int jid) throws Throwable {
+    public static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
         return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
     }
 
-    public static MemoryAddress ngetJoystickGUID(int jid) throws Throwable {
-        return (MemoryAddress) glfwGetJoystickGUID.invoke(jid);
+    public static MemoryAddress ngetJoystickGUID(int jid) {
+        try {
+            return (MemoryAddress) glfwGetJoystickGUID.invoke(jid);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static String getJoystickGUID(int jid) throws Throwable {
+    public static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
         return pGUID != MemoryAddress.NULL ? pGUID.getUtf8String(0L) : null;
     }
 
-    public static void setJoystickUserPointer(int jid, MemoryAddress pointer) throws Throwable {
-        glfwSetJoystickUserPointer.invoke(jid, pointer);
-    }
-
-    public static MemoryAddress getJoystickUserPointer(int jid) throws Throwable {
-        return (MemoryAddress) glfwGetJoystickUserPointer.invoke(jid);
-    }
-
-    public static boolean joystickIsGamepad(int jid) throws Throwable {
-        return (int) glfwJoystickIsGamepad.invoke(jid) == TRUE;
-    }
-
-    public static MemoryAddress nsetJoystickCallback(MemoryAddress callback) throws Throwable {
-        return (MemoryAddress) glfwSetJoystickCallback.invoke(callback);
-    }
-
-    public static MemoryAddress setJoystickCallback(@Nullable IGLFWJoystickFun callback) throws Throwable {
-        return nsetJoystickCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
-    }
-
-    public static boolean nupdateGamepadMappings(MemoryAddress string) throws Throwable {
-        return (int) glfwUpdateGamepadMappings.invoke(string) == TRUE;
-    }
-
-    public static boolean updateGamepadMappings(String string) throws Throwable {
-        try (var session = MemorySession.openShared()) {
-            return nupdateGamepadMappings(session.allocateUtf8String(string).address());
+    public static void setJoystickUserPointer(int jid, Addressable pointer) {
+        try {
+            glfwSetJoystickUserPointer.invoke(jid, pointer);
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 
-    public static MemoryAddress ngetGamepadName(int jid) throws Throwable {
-        return (MemoryAddress) glfwGetGamepadName.invoke(jid);
+    public static MemoryAddress getJoystickUserPointer(int jid) {
+        try {
+            return (MemoryAddress) glfwGetJoystickUserPointer.invoke(jid);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    public static boolean joystickIsGamepad(int jid) {
+        try {
+            return (int) glfwJoystickIsGamepad.invoke(jid) == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static MemoryAddress nsetJoystickCallback(Addressable callback) {
+        try {
+            return (MemoryAddress) glfwSetJoystickCallback.invoke(callback);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    public static MemoryAddress setJoystickCallback(@Nullable IGLFWJoystickFun callback) {
+        return nsetJoystickCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
+    }
+
+    public static boolean nupdateGamepadMappings(Addressable string) {
+        try {
+            return (int) glfwUpdateGamepadMappings.invoke(string) == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateGamepadMappings(String string) {
+        try (var session = MemorySession.openShared()) {
+            return nupdateGamepadMappings(session.allocateUtf8String(string));
+        }
+    }
+
+    public static MemoryAddress ngetGamepadName(int jid) {
+        try {
+            return (MemoryAddress) glfwGetGamepadName.invoke(jid);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static String getGamepadName(int jid) throws Throwable {
+    public static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
         return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
     }
 
-    public static boolean ngetGamepadState(int jid, MemoryAddress state) throws Throwable {
-        return (int) glfwGetGamepadState.invoke(jid, state) == TRUE;
-    }
-
-    public static boolean getGamepadState(int jid, GLFWGamepadState state) throws Throwable {
-        return ngetGamepadState(jid, state.address());
-    }
-
-    public static void nsetClipboardString(@Deprecated MemoryAddress window, MemoryAddress string) throws Throwable {
-        glfwSetClipboardString.invoke(window, string);
-    }
-
-    public static void setClipboardString(@Deprecated MemoryAddress window, String string) throws Throwable {
-        try (var session = MemorySession.openShared()) {
-            nsetClipboardString(window, session.allocateUtf8String(string).address());
+    public static boolean ngetGamepadState(int jid, Addressable state) {
+        try {
+            return (int) glfwGetGamepadState.invoke(jid, state) == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
-    public static MemoryAddress ngetClipboardString(@Deprecated MemoryAddress window) throws Throwable {
-        return (MemoryAddress) glfwGetClipboardString.invoke(window);
+    public static boolean getGamepadState(int jid, GLFWGamepadState state) {
+        return ngetGamepadState(jid, state.rawAddress());
+    }
+
+    public static void nsetClipboardString(@Deprecated MemoryAddress window, Addressable string) {
+        try {
+            glfwSetClipboardString.invoke(window, string);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setClipboardString(@Deprecated MemoryAddress window, String string) {
+        try (var session = MemorySession.openShared()) {
+            nsetClipboardString(window, session.allocateUtf8String(string));
+        }
+    }
+
+    public static MemoryAddress ngetClipboardString(@Deprecated MemoryAddress window) {
+        try {
+            return (MemoryAddress) glfwGetClipboardString.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
     }
 
     @Nullable
-    public static String getClipboardString(@Deprecated MemoryAddress window) throws Throwable {
+    public static String getClipboardString(@Deprecated MemoryAddress window) {
         var pString = ngetClipboardString(window);
         return pString != MemoryAddress.NULL ? pString.getUtf8String(0L) : null;
     }
 
-    public static double getTime() throws Throwable {
-        return (double) glfwGetTime.invoke();
-    }
-
-    public static void setTime(double time) throws Throwable {
-        glfwSetTime.invoke(time);
-    }
-
-    public static long getTimerValue() throws Throwable {
-        return (long) glfwGetTimerValue.invoke();
-    }
-
-    public static long getTimerFrequency() throws Throwable {
-        return (long) glfwGetTimerFrequency.invoke();
-    }
-
-    public static void makeContextCurrent(MemoryAddress window) throws Throwable {
-        glfwMakeContextCurrent.invoke(window);
-    }
-
-    public static MemoryAddress getCurrentContext() throws Throwable {
-        return (MemoryAddress) glfwGetCurrentContext.invoke();
-    }
-
-    public static void swapBuffers(MemoryAddress window) throws Throwable {
-        glfwSwapBuffers.invoke(window);
-    }
-
-    public static void swapInterval(int interval) throws Throwable {
-        glfwSwapInterval.invoke(interval);
-    }
-
-    public static boolean nextensionSupported(MemoryAddress extension) throws Throwable {
-        return (int) glfwExtensionSupported.invoke(extension) == TRUE;
-    }
-
-    public static boolean extensionSupported(String extension) throws Throwable {
-        try (var session = MemorySession.openShared()) {
-            return nextensionSupported(session.allocateUtf8String(extension).address());
+    public static double getTime() {
+        try {
+            return (double) glfwGetTime.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 0.0;
         }
     }
 
-    public static MemoryAddress ngetProcAddress(MemoryAddress procName) throws Throwable {
-        return (MemoryAddress) glfwGetProcAddress.invoke(procName);
-    }
-
-    public static MemoryAddress getProcAddress(String procName) throws Throwable {
-        try (var session = MemorySession.openShared()) {
-            return ngetProcAddress(session.allocateUtf8String(procName).address());
+    public static void setTime(double time) {
+        try {
+            glfwSetTime.invoke(time);
+        } catch (Throwable e) {
+            e.printStackTrace();
         }
     }
 
-    public static boolean vulkanSupported() throws Throwable {
-        return (int) glfwVulkanSupported.invoke() == TRUE;
+    public static long getTimerValue() {
+        try {
+            return (long) glfwGetTimerValue.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 0L;
+        }
     }
 
-    public static MemoryAddress ngetRequiredInstanceExtensions(MemoryAddress count) throws Throwable {
-        return (MemoryAddress) glfwGetRequiredInstanceExtensions.invoke(count);
+    public static long getTimerFrequency() {
+        try {
+            return (long) glfwGetTimerFrequency.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 0L;
+        }
     }
 
-    public static String[] getRequiredInstanceExtensions() throws Throwable {
+    public static void makeContextCurrent(MemoryAddress window) {
+        try {
+            glfwMakeContextCurrent.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static MemoryAddress getCurrentContext() {
+        try {
+            return (MemoryAddress) glfwGetCurrentContext.invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    public static void swapBuffers(MemoryAddress window) {
+        try {
+            glfwSwapBuffers.invoke(window);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void swapInterval(int interval) {
+        try {
+            glfwSwapInterval.invoke(interval);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean nextensionSupported(Addressable extension) {
+        try {
+            return (int) glfwExtensionSupported.invoke(extension) == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean extensionSupported(String extension) {
+        try (var session = MemorySession.openShared()) {
+            return nextensionSupported(session.allocateUtf8String(extension));
+        }
+    }
+
+    public static MemoryAddress ngetProcAddress(Addressable procName) {
+        try {
+            return (MemoryAddress) glfwGetProcAddress.invoke(procName);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    public static MemoryAddress getProcAddress(String procName) {
+        try (var session = MemorySession.openShared()) {
+            return ngetProcAddress(session.allocateUtf8String(procName));
+        }
+    }
+
+    public static boolean vulkanSupported() {
+        try {
+            return (int) glfwVulkanSupported.invoke() == TRUE;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static MemoryAddress ngetRequiredInstanceExtensions(Addressable count) {
+        try {
+            return (MemoryAddress) glfwGetRequiredInstanceExtensions.invoke(count);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    public static String[] getRequiredInstanceExtensions() {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
-            var pExt = ngetRequiredInstanceExtensions(pCount.address());
+            var pExt = ngetRequiredInstanceExtensions(pCount);
             String[] ext = new String[pCount.get(JAVA_INT, 0L)];
             for (int i = 0; i < ext.length; i++) {
                 ext[i] = pExt.get(ADDRESS, i).getUtf8String(0L);

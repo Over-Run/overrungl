@@ -31,12 +31,11 @@ public interface IGLFWScrollFun extends ICallback {
      * @param window  The window that received the event.
      * @param xoffset The scroll offset along the x-axis.
      * @param yoffset The scroll offset along the y-axis.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, double xoffset, double yoffset) throws Throwable;
+    void invoke(MemoryAddress window, double xoffset, double yoffset);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWScrollFun.class, "invoke", MTYPE, DESC);
     }
 }

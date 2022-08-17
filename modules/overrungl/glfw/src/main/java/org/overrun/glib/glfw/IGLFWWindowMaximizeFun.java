@@ -31,16 +31,15 @@ public interface IGLFWWindowMaximizeFun extends ICallback {
      * @param window    The window that was maximized or restored.
      * @param maximized {@code true} if the window was maximized, or
      *                  {@code false} if it was restored.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, boolean maximized) throws Throwable;
+    void invoke(MemoryAddress window, boolean maximized);
 
-    default void ninvoke(MemoryAddress window, int maximized) throws Throwable {
+    default void ninvoke(MemoryAddress window, int maximized) {
         invoke(window, maximized == GLFW.TRUE);
     }
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWWindowMaximizeFun.class, "ninvoke", MTYPE, DESC);
     }
 }

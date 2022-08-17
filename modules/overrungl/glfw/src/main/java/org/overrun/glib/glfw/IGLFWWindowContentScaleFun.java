@@ -31,12 +31,11 @@ public interface IGLFWWindowContentScaleFun extends ICallback {
      * @param window The window whose content scale changed.
      * @param xscale The new x-axis content scale of the window.
      * @param yscale The new y-axis content scale of the window.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, float xscale, float yscale) throws Throwable;
+    void invoke(MemoryAddress window, float xscale, float yscale);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWWindowContentScaleFun.class, "invoke", MTYPE, DESC);
     }
 }

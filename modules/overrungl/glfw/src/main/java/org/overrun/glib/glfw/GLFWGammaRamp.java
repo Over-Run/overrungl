@@ -58,7 +58,11 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        address().set(ValueLayout.ADDRESS, 1L, MemorySegment.ofArray(reds));
+        var addr = MemorySession.openImplicit().allocateArray(ValueLayout.JAVA_SHORT, reds.length);
+        for (int i = 0; i < reds.length; i++) {
+            addr.setAtIndex(ValueLayout.JAVA_SHORT, i, reds[i]);
+        }
+        address().set(ValueLayout.ADDRESS, 0L, addr);
         return this;
     }
 
@@ -69,7 +73,11 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        address().set(ValueLayout.ADDRESS, 2L, MemorySegment.ofArray(greens));
+        var addr = MemorySession.openImplicit().allocateArray(ValueLayout.JAVA_SHORT, greens.length);
+        for (int i = 0; i < greens.length; i++) {
+            addr.setAtIndex(ValueLayout.JAVA_SHORT, i, greens[i]);
+        }
+        address().setAtIndex(ValueLayout.ADDRESS, 1L, addr);
         return this;
     }
 
@@ -80,7 +88,11 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        address().set(ValueLayout.ADDRESS, 0L, MemorySegment.ofArray(blues));
+        var addr = MemorySession.openImplicit().allocateArray(ValueLayout.JAVA_SHORT, blues.length);
+        for (int i = 0; i < blues.length; i++) {
+            addr.setAtIndex(ValueLayout.JAVA_SHORT, i, blues[i]);
+        }
+        address().setAtIndex(ValueLayout.ADDRESS, 2L, addr);
         return this;
     }
 

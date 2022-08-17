@@ -21,7 +21,7 @@ import static org.overrun.glib.gl.GLConstC.*;
 public final class GLFWTest {
     private MemoryAddress window;
 
-    public void run() throws Throwable {
+    public void run() {
         init();
         loop();
 
@@ -32,7 +32,7 @@ public final class GLFWTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init() throws Throwable {
+    private void init() {
         GLFW.setErrorCallback((errorCode, description) ->
             System.err.println("GLFW Error " + errorCode + ": " + description));
         if (!GLFW.init()) {
@@ -71,7 +71,7 @@ public final class GLFWTest {
         GLFW.showWindow(window);
     }
 
-    private void loop() throws Throwable {
+    private void loop() {
         if (GL.load(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -96,7 +96,7 @@ public final class GLFWTest {
         }
     }
 
-    public static void main(String[] args) throws Throwable {
+    public static void main(String[] args) {
         new GLFWTest().run();
     }
 }

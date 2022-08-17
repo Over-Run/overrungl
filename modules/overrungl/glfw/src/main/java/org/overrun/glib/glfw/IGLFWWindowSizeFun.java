@@ -31,12 +31,11 @@ public interface IGLFWWindowSizeFun extends ICallback {
      * @param window The window that was resized.
      * @param width  The new width, in screen coordinates, of the window.
      * @param height The new height, in screen coordinates, of the window.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int width, int height) throws Throwable;
+    void invoke(MemoryAddress window, int width, int height);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWWindowSizeFun.class, "invoke", MTYPE, DESC);
     }
 }

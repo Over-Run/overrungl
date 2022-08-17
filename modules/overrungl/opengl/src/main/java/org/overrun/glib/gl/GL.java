@@ -61,14 +61,17 @@ public class GL {
     static final FunctionDescriptor dIFFIFFV = ofDescriptor("IFFIFFV");
     static final FunctionDescriptor dIFFIIPV = ofDescriptor("IFFIIPV");
     static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
+    static final FunctionDescriptor dIIIIIPV = ofDescriptor("IIIIIPV");
     static final FunctionDescriptor dIIFFFFPV = ofDescriptor("IIFFFFPV");
     static final FunctionDescriptor dIIIIIIIV = ofDescriptor("IIIIIIIV");
     static final FunctionDescriptor dIIIIIIPV = ofDescriptor("IIIIIIPV");
     static final FunctionDescriptor dIIIIIIIIV = ofDescriptor("IIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIPV = ofDescriptor("IIIIIIIPV");
+    static final FunctionDescriptor dIIIIIIIIIV = ofDescriptor("IIIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIIPV = ofDescriptor("IIIIIIIIPV");
     static final FunctionDescriptor dIDDIIDDIIPV = ofDescriptor("IDDIIDDIIPV");
     static final FunctionDescriptor dIFFIIFFIIPV = ofDescriptor("IFFIIFFIIPV");
+    static final FunctionDescriptor dIIIIIIIIIIV = ofDescriptor("IIIIIIIIIIV");
 
     private static ValueLayout ofValue(char c) {
         return switch (c) {
@@ -122,9 +125,8 @@ public class GL {
      *
      * @param load the load function
      * @return the OpenGL version, or {@code 0} if no OpenGL context found
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    public static int load(GLLoadFunc load) throws Throwable {
+    public static int load(GLLoadFunc load) {
         return load(false, load);
     }
 
@@ -134,9 +136,8 @@ public class GL {
      * @param forwardCompatible If {@code true}, only loading core profile functions.
      * @param load              the load function
      * @return the OpenGL version, or {@code 0} if no OpenGL context found
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    public static int load(boolean forwardCompatible, GLLoadFunc load) throws Throwable {
+    public static int load(boolean forwardCompatible, GLLoadFunc load) {
         GL10C.glGetString = downcallSafe(load.invoke("glGetString"), dIP);
         if (GL10C.glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
@@ -144,6 +145,7 @@ public class GL {
 
         GL10C.load(load);
         GL11C.load(load);
+        GL12C.load(load);
         if (!forwardCompatible) {
             GL10.load(load);
             GL11.load(load);
@@ -152,7 +154,7 @@ public class GL {
         return version;
     }
 
-    private static int findCoreGL() throws Throwable {
+    private static int findCoreGL() {
         final String[] prefixes = {
             "OpenGL ES-CM ",
             "OpenGL ES-CL ",

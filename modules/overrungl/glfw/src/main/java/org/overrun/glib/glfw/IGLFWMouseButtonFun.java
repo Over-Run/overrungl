@@ -32,12 +32,11 @@ public interface IGLFWMouseButtonFun extends ICallback {
      * @param button The <a href="https://www.glfw.org/docs/latest/group__buttons.html">mouse button</a> that was pressed or released.
      * @param action One of {@code PRESS} or {@code RELEASE}. Future releases may add more actions.
      * @param mods   Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a> were held down.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int button, int action, int mods) throws Throwable;
+    void invoke(MemoryAddress window, int button, int action, int mods);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWMouseButtonFun.class, "invoke", MTYPE, DESC);
     }
 }

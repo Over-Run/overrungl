@@ -2,7 +2,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
@@ -15,9 +15,7 @@ import static org.overrun.glib.gl.GL.*;
  * @author squid233
  * @since 0.1.0
  */
-//todo
-@SuppressWarnings("unused")
-public class GL10 extends GL10C {
+public final class GL10 extends GL10C {
     @Nullable
     public static MethodHandle
         glAccum, glAlphaFunc,
@@ -153,7 +151,7 @@ public class GL10 extends GL10C {
         glVertex4i, glVertex4iv,
         glVertex4s, glVertex4sv;
 
-    static void load(GLLoadFunc load) throws Throwable {
+    static void load(GLLoadFunc load) {
         if (!Ver10) return;
         glAccum = downcallSafe(load.invoke("glAccum"), dIFV);
         glAlphaFunc = downcallSafe(load.invoke("glAlphaFunc"), dIFV);
@@ -415,472 +413,749 @@ public class GL10 extends GL10C {
         glVertex4sv = downcallSafe(load.invoke("glVertex4sv"), dPV);
     }
 
-    public static void accum(int op, float value) throws Throwable {
-        check(glAccum).invoke(op, value);
+    public static void accum(int op, float value) {
+        try {
+            check(glAccum).invoke(op, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void alphaFunc(int func, float ref) throws Throwable {
-        check(glAlphaFunc).invoke(func, ref);
+    public static void alphaFunc(int func, float ref) {
+        try {
+            check(glAlphaFunc).invoke(func, ref);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void begin(int mode) throws Throwable {
-        check(glBegin).invoke(mode);
+    public static void begin(int mode) {
+        try {
+            check(glBegin).invoke(mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, MemoryAddress bitmap) throws Throwable {
-        check(glBitmap).invoke(width, height, xorig, yorig, xmove, ymove, bitmap);
+    public static void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, Addressable bitmap) {
+        try {
+            check(glBitmap).invoke(width, height, xorig, yorig, xmove, ymove, bitmap);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void callList(int list) throws Throwable {
-        check(glCallList).invoke(list);
+    public static void callList(int list) {
+        try {
+            check(glCallList).invoke(list);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void callLists(int n, int type, MemoryAddress lists) throws Throwable {
-        check(glCallLists).invoke(n, type, lists);
+    public static void callLists(int n, int type, Addressable lists) {
+        try {
+            check(glCallLists).invoke(n, type, lists);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void clearAccum(float red, float green, float blue, float alpha) throws Throwable {
-        check(glClearAccum).invoke(red, green, blue, alpha);
+    public static void clearAccum(float red, float green, float blue, float alpha) {
+        try {
+            check(glClearAccum).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void clearIndex(float c) throws Throwable {
-        check(glClearIndex).invoke(c);
+    public static void clearIndex(float c) {
+        try {
+            check(glClearIndex).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void clipPlane(int plane, MemoryAddress equation) throws Throwable {
-        check(glClipPlane).invoke(plane, equation);
+    public static void clipPlane(int plane, Addressable equation) {
+        try {
+            check(glClipPlane).invoke(plane, equation);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void clipPlane(int plane, double[] equation) throws Throwable {
+    public static void clipPlane(int plane, double[] equation) {
         try (var session = MemorySession.openShared()) {
             var pEq = session.allocateArray(JAVA_DOUBLE, equation);
-            clipPlane(plane, pEq.address());
+            clipPlane(plane, pEq);
         }
     }
 
 
-    public static void color3b(byte red, byte green, byte blue) throws Throwable {
-        check(glColor3b).invoke(red, green, blue);
+    public static void color3b(byte red, byte green, byte blue) {
+        try {
+            check(glColor3b).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3bv(MemoryAddress v) throws Throwable {
-        check(glColor3bv).invoke(v);
+    public static void color3bv(Addressable v) {
+        try {
+            check(glColor3bv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3bv(byte[] v) throws Throwable {
+    public static void color3bv(byte[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_BYTE, v);
-            color3bv(pv.address());
+            color3bv(pv);
         }
     }
 
-    public static void color3d(double red, double green, double blue) throws Throwable {
-        check(glColor3d).invoke(red, green, blue);
+    public static void color3d(double red, double green, double blue) {
+        try {
+            check(glColor3d).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3dv(MemoryAddress v) throws Throwable {
-        check(glColor3dv).invoke(v);
+    public static void color3dv(Addressable v) {
+        try {
+            check(glColor3dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3dv(double[] v) throws Throwable {
+    public static void color3dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_DOUBLE, v);
-            color3dv(pv.address());
+            color3dv(pv);
         }
     }
 
-    public static void color3f(float red, float green, float blue) throws Throwable {
-        check(glColor3f).invoke(red, green, blue);
+    public static void color3f(float red, float green, float blue) {
+        try {
+            check(glColor3f).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3fv(MemoryAddress v) throws Throwable {
-        check(glColor3fv).invoke(v);
+    public static void color3fv(Addressable v) {
+        try {
+            check(glColor3fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3fv(float[] v) throws Throwable {
+    public static void color3fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_FLOAT, v);
-            color3fv(pv.address());
+            color3fv(pv);
         }
     }
 
-    public static void color3i(int red, int green, int blue) throws Throwable {
-        check(glColor3i).invoke(red, green, blue);
+    public static void color3i(int red, int green, int blue) {
+        try {
+            check(glColor3i).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3iv(MemoryAddress v) throws Throwable {
-        check(glColor3iv).invoke(v);
+    public static void color3iv(Addressable v) {
+        try {
+            check(glColor3iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3iv(int[] v) throws Throwable {
+    public static void color3iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_INT, v);
-            color3iv(pv.address());
+            color3iv(pv);
         }
     }
 
-    public static void color3s(short red, short green, short blue) throws Throwable {
-        check(glColor3s).invoke(red, green, blue);
+    public static void color3s(short red, short green, short blue) {
+        try {
+            check(glColor3s).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3sv(MemoryAddress v) throws Throwable {
-        check(glColor3sv).invoke(v);
+    public static void color3sv(Addressable v) {
+        try {
+            check(glColor3sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3sv(short[] v) throws Throwable {
+    public static void color3sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_SHORT, v);
-            color3sv(pv.address());
+            color3sv(pv);
         }
     }
 
-    public static void color3ub(byte red, byte green, byte blue) throws Throwable {
-        check(glColor3ub).invoke(red, green, blue);
+    public static void color3ub(byte red, byte green, byte blue) {
+        try {
+            check(glColor3ub).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3ubv(MemoryAddress v) throws Throwable {
-        check(glColor3ubv).invoke(v);
+    public static void color3ubv(Addressable v) {
+        try {
+            check(glColor3ubv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3ubv(byte[] v) throws Throwable {
+    public static void color3ubv(byte[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_BYTE, v);
-            color3ubv(pv.address());
+            color3ubv(pv);
         }
     }
 
-    public static void color3ui(int red, int green, int blue) throws Throwable {
-        check(glColor3ui).invoke(red, green, blue);
+    public static void color3ui(int red, int green, int blue) {
+        try {
+            check(glColor3ui).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3uiv(MemoryAddress v) throws Throwable {
-        check(glColor3uiv).invoke(v);
+    public static void color3uiv(Addressable v) {
+        try {
+            check(glColor3uiv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3uiv(int[] v) throws Throwable {
+    public static void color3uiv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_INT, v);
-            color3uiv(pv.address());
+            color3uiv(pv);
         }
     }
 
-    public static void color3us(short red, short green, short blue) throws Throwable {
-        check(glColor3us).invoke(red, green, blue);
+    public static void color3us(short red, short green, short blue) {
+        try {
+            check(glColor3us).invoke(red, green, blue);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3usv(MemoryAddress v) throws Throwable {
-        check(glColor3usv).invoke(v);
+    public static void color3usv(Addressable v) {
+        try {
+            check(glColor3usv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color3usv(short[] v) throws Throwable {
+    public static void color3usv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_SHORT, v);
-            color3usv(pv.address());
+            color3usv(pv);
         }
     }
 
-    public static void color4b(byte red, byte green, byte blue, byte alpha) throws Throwable {
-        check(glColor4b).invoke(red, green, blue, alpha);
+    public static void color4b(byte red, byte green, byte blue, byte alpha) {
+        try {
+            check(glColor4b).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4bv(MemoryAddress v) throws Throwable {
-        check(glColor4bv).invoke(v);
+    public static void color4bv(Addressable v) {
+        try {
+            check(glColor4bv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4bv(byte[] v) throws Throwable {
+    public static void color4bv(byte[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_BYTE, v);
-            color4bv(pv.address());
+            color4bv(pv);
         }
     }
 
-    public static void color4d(double red, double green, double blue, double alpha) throws Throwable {
-        check(glColor4d).invoke(red, green, blue, alpha);
+    public static void color4d(double red, double green, double blue, double alpha) {
+        try {
+            check(glColor4d).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4dv(MemoryAddress v) throws Throwable {
-        check(glColor4dv).invoke(v);
+    public static void color4dv(Addressable v) {
+        try {
+            check(glColor4dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4dv(double[] v) throws Throwable {
+    public static void color4dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_DOUBLE, v);
-            color4dv(pv.address());
+            color4dv(pv);
         }
     }
 
-    public static void color4f(float red, float green, float blue, float alpha) throws Throwable {
-        check(glColor4f).invoke(red, green, blue, alpha);
+    public static void color4f(float red, float green, float blue, float alpha) {
+        try {
+            check(glColor4f).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4fv(MemoryAddress v) throws Throwable {
-        check(glColor4fv).invoke(v);
+    public static void color4fv(Addressable v) {
+        try {
+            check(glColor4fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4fv(float[] v) throws Throwable {
+    public static void color4fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_FLOAT, v);
-            color4fv(pv.address());
+            color4fv(pv);
         }
     }
 
-    public static void color4i(int red, int green, int blue, int alpha) throws Throwable {
-        check(glColor4i).invoke(red, green, blue, alpha);
+    public static void color4i(int red, int green, int blue, int alpha) {
+        try {
+            check(glColor4i).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4iv(MemoryAddress v) throws Throwable {
-        check(glColor4iv).invoke(v);
+    public static void color4iv(Addressable v) {
+        try {
+            check(glColor4iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4iv(int[] v) throws Throwable {
+    public static void color4iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_INT, v);
-            color4iv(pv.address());
+            color4iv(pv);
         }
     }
 
-    public static void color4s(short red, short green, short blue, short alpha) throws Throwable {
-        check(glColor4s).invoke(red, green, blue, alpha);
+    public static void color4s(short red, short green, short blue, short alpha) {
+        try {
+            check(glColor4s).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4sv(MemoryAddress v) throws Throwable {
-        check(glColor4sv).invoke(v);
+    public static void color4sv(Addressable v) {
+        try {
+            check(glColor4sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4sv(short[] v) throws Throwable {
+    public static void color4sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_SHORT, v);
-            color4sv(pv.address());
+            color4sv(pv);
         }
     }
 
-    public static void color4ub(byte red, byte green, byte blue, byte alpha) throws Throwable {
-        check(glColor4ub).invoke(red, green, blue, alpha);
+    public static void color4ub(byte red, byte green, byte blue, byte alpha) {
+        try {
+            check(glColor4ub).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4ubv(MemoryAddress v) throws Throwable {
-        check(glColor4ubv).invoke(v);
+    public static void color4ubv(Addressable v) {
+        try {
+            check(glColor4ubv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4ubv(byte[] v) throws Throwable {
+    public static void color4ubv(byte[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_BYTE, v);
-            color4ubv(pv.address());
+            color4ubv(pv);
         }
     }
 
-    public static void color4ui(int red, int green, int blue, int alpha) throws Throwable {
-        check(glColor4ui).invoke(red, green, blue, alpha);
+    public static void color4ui(int red, int green, int blue, int alpha) {
+        try {
+            check(glColor4ui).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4uiv(MemoryAddress v) throws Throwable {
-        check(glColor4uiv).invoke(v);
+    public static void color4uiv(Addressable v) {
+        try {
+            check(glColor4uiv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4uiv(int[] v) throws Throwable {
+    public static void color4uiv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_INT, v);
-            color4uiv(pv.address());
+            color4uiv(pv);
         }
     }
 
-    public static void color4us(short red, short green, short blue, short alpha) throws Throwable {
-        check(glColor4us).invoke(red, green, blue, alpha);
+    public static void color4us(short red, short green, short blue, short alpha) {
+        try {
+            check(glColor4us).invoke(red, green, blue, alpha);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4usv(MemoryAddress v) throws Throwable {
-        check(glColor4usv).invoke(v);
+    public static void color4usv(Addressable v) {
+        try {
+            check(glColor4usv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void color4usv(short[] v) throws Throwable {
+    public static void color4usv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_SHORT, v);
-            color4usv(pv.address());
+            color4usv(pv);
         }
     }
 
-    public static void colorMaterial(int face, int mode) throws Throwable {
-        check(glColorMaterial).invoke(face, mode);
+    public static void colorMaterial(int face, int mode) {
+        try {
+            check(glColorMaterial).invoke(face, mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void copyPixels(int x, int y, int width, int height, int type) throws Throwable {
-        check(glCopyPixels).invoke(x, y, width, height, type);
+    public static void copyPixels(int x, int y, int width, int height, int type) {
+        try {
+            check(glCopyPixels).invoke(x, y, width, height, type);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void deleteLists(int list, int range) throws Throwable {
-        check(glDeleteLists).invoke(list, range);
+    public static void deleteLists(int list, int range) {
+        try {
+            check(glDeleteLists).invoke(list, range);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void drawPixels(int width, int height, int format, int type, MemoryAddress pixels) throws Throwable {
-        check(glDrawPixels).invoke(width, height, format, type, pixels);
+    public static void drawPixels(int width, int height, int format, int type, Addressable pixels) {
+        try {
+            check(glDrawPixels).invoke(width, height, format, type, pixels);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void edgeFlag(boolean flag) throws Throwable {
-        check(glEdgeFlag).invoke(flag);
+    public static void edgeFlag(boolean flag) {
+        try {
+            check(glEdgeFlag).invoke(flag);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void edgeFlagv(MemoryAddress flag) throws Throwable {
-        check(glEdgeFlagv).invoke(flag);
+    public static void edgeFlagv(Addressable flag) {
+        try {
+            check(glEdgeFlagv).invoke(flag);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void edgeFlagv(boolean[] flag) throws Throwable {
+    public static void edgeFlagv(boolean[] flag) {
         try (var session = MemorySession.openShared()) {
             var pFlag = session.allocateArray(JAVA_BOOLEAN, flag.length);
             for (int i = 0; i < flag.length; i++) {
                 pFlag.set(JAVA_BOOLEAN, i, flag[i]);
             }
-            edgeFlagv(pFlag.address());
+            edgeFlagv(pFlag);
         }
     }
 
-    public static void end() throws Throwable {
-        check(glEnd).invoke();
+    public static void end() {
+        try {
+            check(glEnd).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void endList() throws Throwable {
-        check(glEndList).invoke();
+    public static void endList() {
+        try {
+            check(glEndList).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord1d(double u) throws Throwable {
-        check(glEvalCoord1d).invoke(u);
+    public static void evalCoord1d(double u) {
+        try {
+            check(glEvalCoord1d).invoke(u);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord1dv(MemoryAddress u) throws Throwable {
-        check(glEvalCoord1dv).invoke(u);
+    public static void evalCoord1dv(Addressable u) {
+        try {
+            check(glEvalCoord1dv).invoke(u);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord1dv(double[] u) throws Throwable {
+    public static void evalCoord1dv(double[] u) {
         try (var session = MemorySession.openShared()) {
             var pu = session.allocateArray(JAVA_DOUBLE, u);
-            evalCoord1dv(pu.address());
+            evalCoord1dv(pu);
         }
     }
 
-    public static void evalCoord1f(float u) throws Throwable {
-        check(glEvalCoord1f).invoke(u);
+    public static void evalCoord1f(float u) {
+        try {
+            check(glEvalCoord1f).invoke(u);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord1fv(MemoryAddress u) throws Throwable {
-        check(glEvalCoord1fv).invoke(u);
+    public static void evalCoord1fv(Addressable u) {
+        try {
+            check(glEvalCoord1fv).invoke(u);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord1fv(float[] u) throws Throwable {
+    public static void evalCoord1fv(float[] u) {
         try (var session = MemorySession.openShared()) {
             var pu = session.allocateArray(JAVA_FLOAT, u);
-            evalCoord1fv(pu.address());
+            evalCoord1fv(pu);
         }
     }
 
-    public static void evalCoord2d(double u, double v) throws Throwable {
-        check(glEvalCoord2d).invoke(u, v);
+    public static void evalCoord2d(double u, double v) {
+        try {
+            check(glEvalCoord2d).invoke(u, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord2dv(MemoryAddress u) throws Throwable {
-        check(glEvalCoord2dv).invoke(u);
+    public static void evalCoord2dv(Addressable u) {
+        try {
+            check(glEvalCoord2dv).invoke(u);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord2dv(double[] u) throws Throwable {
+    public static void evalCoord2dv(double[] u) {
         try (var session = MemorySession.openShared()) {
             var pu = session.allocateArray(JAVA_DOUBLE, u);
-            evalCoord2dv(pu.address());
+            evalCoord2dv(pu);
         }
     }
 
-    public static void evalCoord2f(float u, float v) throws Throwable {
-        check(glEvalCoord2f).invoke(u, v);
+    public static void evalCoord2f(float u, float v) {
+        try {
+            check(glEvalCoord2f).invoke(u, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord2fv(MemoryAddress u) throws Throwable {
-        check(glEvalCoord2fv).invoke(u);
+    public static void evalCoord2fv(Addressable u) {
+        try {
+            check(glEvalCoord2fv).invoke(u);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalCoord2fv(float[] u) throws Throwable {
+    public static void evalCoord2fv(float[] u) {
         try (var session = MemorySession.openShared()) {
             var pu = session.allocateArray(JAVA_FLOAT, u);
-            evalCoord2fv(pu.address());
+            evalCoord2fv(pu);
         }
     }
 
-    public static void evalMesh1(int mode, int i1, int i2) throws Throwable {
-        check(glEvalMesh1).invoke(mode, i1, i2);
+    public static void evalMesh1(int mode, int i1, int i2) {
+        try {
+            check(glEvalMesh1).invoke(mode, i1, i2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalMesh2(int mode, int i1, int i2, int j1, int j2) throws Throwable {
-        check(glEvalMesh2).invoke(mode, i1, i2, j1, j2);
+    public static void evalMesh2(int mode, int i1, int i2, int j1, int j2) {
+        try {
+            check(glEvalMesh2).invoke(mode, i1, i2, j1, j2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalPoint1(int mode, int i) throws Throwable {
-        check(glEvalPoint1).invoke(mode, i);
+    public static void evalPoint1(int mode, int i) {
+        try {
+            check(glEvalPoint1).invoke(mode, i);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void evalPoint2(int mode, int i, int j) throws Throwable {
-        check(glEvalPoint2).invoke(mode, i, j);
+    public static void evalPoint2(int mode, int i, int j) {
+        try {
+            check(glEvalPoint2).invoke(mode, i, j);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void feedbackBuffer(int size, int type, MemoryAddress buffer) throws Throwable {
-        check(glFeedbackBuffer).invoke(size, type, buffer);
+    public static void feedbackBuffer(int size, int type, Addressable buffer) {
+        try {
+            check(glFeedbackBuffer).invoke(size, type, buffer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void feedbackBuffer(int size, int type, float[] buffer) throws Throwable {
+    public static void feedbackBuffer(int size, int type, float[] buffer) {
         try (var session = MemorySession.openShared()) {
             var pBuffer = session.allocateArray(JAVA_FLOAT, size);
-            feedbackBuffer(size, type, pBuffer.address());
+            feedbackBuffer(size, type, pBuffer);
             for (int i = 0; i < size; i++) {
                 buffer[i] = pBuffer.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static void feedbackBuffer(int type, float[] buffer) throws Throwable {
+    public static void feedbackBuffer(int type, float[] buffer) {
         feedbackBuffer(buffer.length, type, buffer);
     }
 
-    public static void fogf(int pname, float param) throws Throwable {
-        check(glFogf).invoke(pname, param);
+    public static void fogf(int pname, float param) {
+        try {
+            check(glFogf).invoke(pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void fogfv(int pname, MemoryAddress params) throws Throwable {
-        check(glFogfv).invoke(pname, params);
+    public static void fogfv(int pname, Addressable params) {
+        try {
+            check(glFogfv).invoke(pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void fogfv(int pname, float[] params) throws Throwable {
+    public static void fogfv(int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParam = session.allocateArray(JAVA_FLOAT, params);
-            fogfv(pname, pParam.address());
+            fogfv(pname, pParam);
         }
     }
 
-    public static void fogi(int pname, int param) throws Throwable {
-        check(glFogi).invoke(pname, param);
+    public static void fogi(int pname, int param) {
+        try {
+            check(glFogi).invoke(pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void fogiv(int pname, MemoryAddress params) throws Throwable {
-        check(glFogiv).invoke(pname, params);
+    public static void fogiv(int pname, Addressable params) {
+        try {
+            check(glFogiv).invoke(pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void fogiv(int pname, int[] params) throws Throwable {
+    public static void fogiv(int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParam = session.allocateArray(JAVA_INT, params);
-            fogiv(pname, pParam.address());
+            fogiv(pname, pParam);
         }
     }
 
-    public static void frustum(double left, double right, double bottom, double top, double zNear, double zFar) throws Throwable {
-        check(glFrustum).invoke(left, right, bottom, top, zNear, zFar);
+    public static void frustum(double left, double right, double bottom, double top, double zNear, double zFar) {
+        try {
+            check(glFrustum).invoke(left, right, bottom, top, zNear, zFar);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static int genLists(int range) throws Throwable {
-        return (int) check(glGenLists).invoke(range);
+    public static int genLists(int range) {
+        try {
+            return (int) check(glGenLists).invoke(range);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
-    public static void getClipPlane(int plane, MemoryAddress equation) throws Throwable {
-        check(glGetClipPlane).invoke(plane, equation);
+    public static void getClipPlane(int plane, Addressable equation) {
+        try {
+            check(glGetClipPlane).invoke(plane, equation);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static double[] getClipPlane(int plane) throws Throwable {
+    public static double[] getClipPlane(int plane) {
         try (var session = MemorySession.openShared()) {
             var pEq = session.allocateArray(JAVA_DOUBLE, 4L);
-            getClipPlane(plane, pEq.address());
+            getClipPlane(plane, pEq);
             return new double[]{
                 pEq.get(JAVA_DOUBLE, 0L),
                 pEq.getAtIndex(JAVA_DOUBLE, 1L),
@@ -890,1571 +1165,2329 @@ public class GL10 extends GL10C {
         }
     }
 
-    public static void getLightfv(int light, int pname, MemoryAddress params) throws Throwable {
-        check(glGetLightfv).invoke(light, pname, params);
+    public static void getLightfv(int light, int pname, Addressable params) {
+        try {
+            check(glGetLightfv).invoke(light, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getLightfv(int light, int pname, float[] params) throws Throwable {
+    public static void getLightfv(int light, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
-            getLightfv(light, pname, pParams.address());
+            getLightfv(light, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static float getLightf(int light, int pname) throws Throwable {
+    public static float getLightf(int light, int pname) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
-            getLightfv(light, pname, pParams.address());
+            getLightfv(light, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0L);
         }
     }
 
-    public static void getLightiv(int light, int pname, MemoryAddress params) throws Throwable {
-        check(glGetLightiv).invoke(light, pname, params);
+    public static void getLightiv(int light, int pname, Addressable params) {
+        try {
+            check(glGetLightiv).invoke(light, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getLightiv(int light, int pname, int[] params) throws Throwable {
+    public static void getLightiv(int light, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
-            getLightiv(light, pname, pParams.address());
+            getLightiv(light, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static int getLighti(int light, int pname) throws Throwable {
+    public static int getLighti(int light, int pname) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
-            getLightiv(light, pname, pParams.address());
+            getLightiv(light, pname, pParams);
             return pParams.get(JAVA_INT, 0L);
         }
     }
 
-    public static void getMapdv(int target, int query, MemoryAddress v) throws Throwable {
-        check(glGetMapdv).invoke(target, query, v);
+    public static void getMapdv(int target, int query, Addressable v) {
+        try {
+            check(glGetMapdv).invoke(target, query, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMapdv(int target, int query, double[] v) throws Throwable {
+    public static void getMapdv(int target, int query, double[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_DOUBLE, v.length);
-            getMapdv(target, query, pv.address());
+            getMapdv(target, query, pv);
             for (int i = 0; i < v.length; i++) {
                 v[i] = pv.getAtIndex(JAVA_DOUBLE, i);
             }
         }
     }
 
-    public static double getMapdv(int target, int query) throws Throwable {
+    public static double getMapdv(int target, int query) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_DOUBLE);
-            getMapdv(target, query, pv.address());
+            getMapdv(target, query, pv);
             return pv.get(JAVA_DOUBLE, 0L);
         }
     }
 
-    public static void getMapfv(int target, int query, MemoryAddress v) throws Throwable {
-        check(glGetMapfv).invoke(target, query, v);
+    public static void getMapfv(int target, int query, Addressable v) {
+        try {
+            check(glGetMapfv).invoke(target, query, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMapfv(int target, int query, float[] v) throws Throwable {
+    public static void getMapfv(int target, int query, float[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_FLOAT, v.length);
-            getMapfv(target, query, pv.address());
+            getMapfv(target, query, pv);
             for (int i = 0; i < v.length; i++) {
                 v[i] = pv.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static float getMapfv(int target, int query) throws Throwable {
+    public static float getMapfv(int target, int query) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_FLOAT);
-            getMapfv(target, query, pv.address());
+            getMapfv(target, query, pv);
             return pv.get(JAVA_FLOAT, 0L);
         }
     }
 
-    public static void getMapiv(int target, int query, MemoryAddress v) throws Throwable {
-        check(glGetMapiv).invoke(target, query, v);
+    public static void getMapiv(int target, int query, Addressable v) {
+        try {
+            check(glGetMapiv).invoke(target, query, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMapiv(int target, int query, int[] v) throws Throwable {
+    public static void getMapiv(int target, int query, int[] v) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_INT, v.length);
-            getMapiv(target, query, pv.address());
+            getMapiv(target, query, pv);
             for (int i = 0; i < v.length; i++) {
                 v[i] = pv.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static int getMapiv(int target, int query) throws Throwable {
+    public static int getMapiv(int target, int query) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_INT);
-            getMapiv(target, query, pv.address());
+            getMapiv(target, query, pv);
             return pv.get(JAVA_INT, 0L);
         }
     }
 
-    public static void getMaterialfv(int face, int pname, MemoryAddress params) throws Throwable {
-        check(glGetMaterialfv).invoke(face, pname, params);
+    public static void getMaterialfv(int face, int pname, Addressable params) {
+        try {
+            check(glGetMaterialfv).invoke(face, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMaterialfv(int face, int pname, float[] params) throws Throwable {
+    public static void getMaterialfv(int face, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
-            getMaterialfv(face, pname, pParams.address());
+            getMaterialfv(face, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static float getMaterialf(int face, int pname) throws Throwable {
+    public static float getMaterialf(int face, int pname) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
-            getMaterialfv(face, pname, pParams.address());
+            getMaterialfv(face, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0L);
         }
     }
 
-    public static void getMaterialiv(int face, int pname, MemoryAddress params) throws Throwable {
-        check(glGetMaterialiv).invoke(face, pname, params);
+    public static void getMaterialiv(int face, int pname, Addressable params) {
+        try {
+            check(glGetMaterialiv).invoke(face, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getMaterialiv(int face, int pname, int[] params) throws Throwable {
+    public static void getMaterialiv(int face, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
-            getMaterialiv(face, pname, pParams.address());
+            getMaterialiv(face, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static int getMateriali(int face, int pname) throws Throwable {
+    public static int getMateriali(int face, int pname) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
-            getMaterialiv(face, pname, pParams.address());
+            getMaterialiv(face, pname, pParams);
             return pParams.get(JAVA_INT, 0L);
         }
     }
 
-    public static void getPixelMapfv(int map, MemoryAddress values) throws Throwable {
-        check(glGetPixelMapfv).invoke(map, values);
+    public static void getPixelMapfv(int map, Addressable values) {
+        try {
+            check(glGetPixelMapfv).invoke(map, values);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getPixelMapfv(int map, float[] values) throws Throwable {
+    public static void getPixelMapfv(int map, float[] values) {
         try (var session = MemorySession.openShared()) {
             var pValues = session.allocateArray(JAVA_FLOAT, values.length);
-            getPixelMapfv(map, pValues.address());
+            getPixelMapfv(map, pValues);
             for (int i = 0; i < values.length; i++) {
                 values[i] = pValues.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static void getPixelMapuiv(int map, MemoryAddress values) throws Throwable {
-        check(glGetPixelMapuiv).invoke(map, values);
+    public static void getPixelMapuiv(int map, Addressable values) {
+        try {
+            check(glGetPixelMapuiv).invoke(map, values);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getPixelMapuiv(int map, int[] values) throws Throwable {
+    public static void getPixelMapuiv(int map, int[] values) {
         try (var session = MemorySession.openShared()) {
             var pValues = session.allocateArray(JAVA_INT, values.length);
-            getPixelMapuiv(map, pValues.address());
+            getPixelMapuiv(map, pValues);
             for (int i = 0; i < values.length; i++) {
                 values[i] = pValues.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static void getPixelMapusv(int map, MemoryAddress values) throws Throwable {
-        check(glGetPixelMapusv).invoke(map, values);
+    public static void getPixelMapusv(int map, Addressable values) {
+        try {
+            check(glGetPixelMapusv).invoke(map, values);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getPixelMapusv(int map, short[] values) throws Throwable {
+    public static void getPixelMapusv(int map, short[] values) {
         try (var session = MemorySession.openShared()) {
             var pValues = session.allocateArray(JAVA_SHORT, values.length);
-            getPixelMapusv(map, pValues.address());
+            getPixelMapusv(map, pValues);
             for (int i = 0; i < values.length; i++) {
                 values[i] = pValues.getAtIndex(JAVA_SHORT, i);
             }
         }
     }
 
-    public static void getPolygonStipple(MemoryAddress mask) throws Throwable {
-        check(glGetPolygonStipple).invoke(mask);
+    public static void getPolygonStipple(Addressable mask) {
+        try {
+            check(glGetPolygonStipple).invoke(mask);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getPolygonStipple(byte[] mask) throws Throwable {
+    public static void getPolygonStipple(byte[] mask) {
         try (var session = MemorySession.openShared()) {
             var pMask = session.allocateArray(JAVA_BYTE, mask.length);
-            getPolygonStipple(pMask.address());
+            getPolygonStipple(pMask);
             for (int i = 0; i < mask.length; i++) {
                 mask[i] = pMask.get(JAVA_BYTE, i);
             }
         }
     }
 
-    public static void getTexEnvfv(int target, int pname, MemoryAddress params) throws Throwable {
-        check(glGetTexEnvfv).invoke(target, pname, params);
+    public static void getTexEnvfv(int target, int pname, Addressable params) {
+        try {
+            check(glGetTexEnvfv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getTexEnvfv(int target, int pname, float[] params) throws Throwable {
+    public static void getTexEnvfv(int target, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
-            getTexEnvfv(target, pname, pParams.address());
+            getTexEnvfv(target, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static float getTexEnvf(int target, int pname) throws Throwable {
+    public static float getTexEnvf(int target, int pname) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
-            getTexEnvfv(target, pname, pParams.address());
+            getTexEnvfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0L);
         }
     }
 
-    public static void getTexEnviv(int target, int pname, MemoryAddress params) throws Throwable {
-        check(glGetTexEnviv).invoke(target, pname, params);
+    public static void getTexEnviv(int target, int pname, Addressable params) {
+        try {
+            check(glGetTexEnviv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getTexEnviv(int target, int pname, int[] params) throws Throwable {
+    public static void getTexEnviv(int target, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
-            getTexEnviv(target, pname, pParams.address());
+            getTexEnviv(target, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static int getTexEnvi(int target, int pname) throws Throwable {
+    public static int getTexEnvi(int target, int pname) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
-            getTexEnviv(target, pname, pParams.address());
+            getTexEnviv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0L);
         }
     }
 
-    public static void getTexGendv(int coord, int pname, MemoryAddress params) throws Throwable {
-        check(glGetTexGendv).invoke(coord, pname, params);
+    public static void getTexGendv(int coord, int pname, Addressable params) {
+        try {
+            check(glGetTexGendv).invoke(coord, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getTexGendv(int coord, int pname, double[] params) throws Throwable {
+    public static void getTexGendv(int coord, int pname, double[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_DOUBLE, params.length);
-            getTexGendv(coord, pname, pParams.address());
+            getTexGendv(coord, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_DOUBLE, i);
             }
         }
     }
 
-    public static void getTexGenfv(int coord, int pname, MemoryAddress params) throws Throwable {
-        check(glGetTexGenfv).invoke(coord, pname, params);
+    public static void getTexGenfv(int coord, int pname, Addressable params) {
+        try {
+            check(glGetTexGenfv).invoke(coord, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getTexGenfv(int coord, int pname, float[] params) throws Throwable {
+    public static void getTexGenfv(int coord, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
-            getTexGenfv(coord, pname, pParams.address());
+            getTexGenfv(coord, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
             }
         }
     }
 
-    public static void getTexGeniv(int coord, int pname, MemoryAddress params) throws Throwable {
-        check(glGetTexGeniv).invoke(coord, pname, params);
+    public static void getTexGeniv(int coord, int pname, Addressable params) {
+        try {
+            check(glGetTexGeniv).invoke(coord, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void getTexGeniv(int coord, int pname, int[] params) throws Throwable {
+    public static void getTexGeniv(int coord, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
-            getTexGeniv(coord, pname, pParams.address());
+            getTexGeniv(coord, pname, pParams);
             for (int i = 0; i < params.length; i++) {
                 params[i] = pParams.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static void indexMask(int mask) throws Throwable {
-        check(glIndexMask).invoke(mask);
+    public static void indexMask(int mask) {
+        try {
+            check(glIndexMask).invoke(mask);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexd(double c) throws Throwable {
-        check(glIndexd).invoke(c);
+    public static void indexd(double c) {
+        try {
+            check(glIndexd).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexdv(MemoryAddress c) throws Throwable {
-        check(glIndexdv).invoke(c);
+    public static void indexdv(Addressable c) {
+        try {
+            check(glIndexdv).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexdv(double[] c) throws Throwable {
+    public static void indexdv(double[] c) {
         try (var session = MemorySession.openShared()) {
             var pc = session.allocateArray(JAVA_DOUBLE, c);
-            indexdv(pc.address());
+            indexdv(pc);
         }
     }
 
-    public static void indexf(float c) throws Throwable {
-        check(glIndexf).invoke(c);
+    public static void indexf(float c) {
+        try {
+            check(glIndexf).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexfv(MemoryAddress c) throws Throwable {
-        check(glIndexfv).invoke(c);
+    public static void indexfv(Addressable c) {
+        try {
+            check(glIndexfv).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexfv(float[] c) throws Throwable {
+    public static void indexfv(float[] c) {
         try (var session = MemorySession.openShared()) {
             var pc = session.allocateArray(JAVA_FLOAT, c);
-            indexfv(pc.address());
+            indexfv(pc);
         }
     }
 
-    public static void indexi(int c) throws Throwable {
-        check(glIndexi).invoke(c);
+    public static void indexi(int c) {
+        try {
+            check(glIndexi).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexiv(MemoryAddress c) throws Throwable {
-        check(glIndexiv).invoke(c);
+    public static void indexiv(Addressable c) {
+        try {
+            check(glIndexiv).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexiv(int[] c) throws Throwable {
+    public static void indexiv(int[] c) {
         try (var session = MemorySession.openShared()) {
             var pc = session.allocateArray(JAVA_INT, c);
-            indexiv(pc.address());
+            indexiv(pc);
         }
     }
 
-    public static void indexs(short c) throws Throwable {
-        check(glIndexs).invoke(c);
+    public static void indexs(short c) {
+        try {
+            check(glIndexs).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexsv(MemoryAddress c) throws Throwable {
-        check(glIndexsv).invoke(c);
+    public static void indexsv(Addressable c) {
+        try {
+            check(glIndexsv).invoke(c);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void indexsv(short[] c) throws Throwable {
+    public static void indexsv(short[] c) {
         try (var session = MemorySession.openShared()) {
             var pc = session.allocateArray(JAVA_SHORT, c);
-            indexsv(pc.address());
+            indexsv(pc);
         }
     }
 
-    public static void initNames() throws Throwable {
-        check(glInitNames).invoke();
+    public static void initNames() {
+        try {
+            check(glInitNames).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static boolean isList(int list) throws Throwable {
-        return (boolean) check(glIsList).invoke(list);
+    public static boolean isList(int list) {
+        try {
+            return (boolean) check(glIsList).invoke(list);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public static void lightModelf(int pname, float param) throws Throwable {
-        check(glLightModelf).invoke(pname, param);
+    public static void lightModelf(int pname, float param) {
+        try {
+            check(glLightModelf).invoke(pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightModelfv(int pname, MemoryAddress params) throws Throwable {
-        check(glLightModelfv).invoke(pname, params);
+    public static void lightModelfv(int pname, Addressable params) {
+        try {
+            check(glLightModelfv).invoke(pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightModelfv(int pname, float[] params) throws Throwable {
+    public static void lightModelfv(int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params);
-            lightModelfv(pname, pParams.address());
+            lightModelfv(pname, pParams);
         }
     }
 
-    public static void lightModeli(int pname, int param) throws Throwable {
-        check(glLightModeli).invoke(pname, param);
+    public static void lightModeli(int pname, int param) {
+        try {
+            check(glLightModeli).invoke(pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightModeliv(int pname, MemoryAddress params) throws Throwable {
-        check(glLightModeliv).invoke(pname, params);
+    public static void lightModeliv(int pname, Addressable params) {
+        try {
+            check(glLightModeliv).invoke(pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightModeliv(int pname, int[] params) throws Throwable {
+    public static void lightModeliv(int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params);
-            lightModeliv(pname, pParams.address());
+            lightModeliv(pname, pParams);
         }
     }
 
-    public static void lightf(int light, int pname, float param) throws Throwable {
-        check(glLightf).invoke(light, pname, param);
+    public static void lightf(int light, int pname, float param) {
+        try {
+            check(glLightf).invoke(light, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightfv(int light, int pname, MemoryAddress params) throws Throwable {
-        check(glLightfv).invoke(light, pname, params);
+    public static void lightfv(int light, int pname, Addressable params) {
+        try {
+            check(glLightfv).invoke(light, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightfv(int light, int pname, float[] params) throws Throwable {
+    public static void lightfv(int light, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params);
-            lightfv(light, pname, pParams.address());
+            lightfv(light, pname, pParams);
         }
     }
 
-    public static void lighti(int light, int pname, int param) throws Throwable {
-        check(glLighti).invoke(light, pname, param);
+    public static void lighti(int light, int pname, int param) {
+        try {
+            check(glLighti).invoke(light, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightiv(int light, int pname, MemoryAddress params) throws Throwable {
-        check(glLightiv).invoke(light, pname, params);
+    public static void lightiv(int light, int pname, Addressable params) {
+        try {
+            check(glLightiv).invoke(light, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void lightiv(int light, int pname, int[] params) throws Throwable {
+    public static void lightiv(int light, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params);
-            lightiv(light, pname, pParams.address());
+            lightiv(light, pname, pParams);
         }
     }
 
-    public static void lineStipple(int factor, short pattern) throws Throwable {
-        check(glLineStipple).invoke(factor, pattern);
+    public static void lineStipple(int factor, short pattern) {
+        try {
+            check(glLineStipple).invoke(factor, pattern);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void listBase(int base) throws Throwable {
-        check(glListBase).invoke(base);
+    public static void listBase(int base) {
+        try {
+            check(glListBase).invoke(base);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void loadIdentity() throws Throwable {
-        check(glLoadIdentity).invoke();
+    public static void loadIdentity() {
+        try {
+            check(glLoadIdentity).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void loadMatrixd(MemoryAddress m) throws Throwable {
-        check(glLoadMatrixd).invoke(m);
+    public static void loadMatrixd(Addressable m) {
+        try {
+            check(glLoadMatrixd).invoke(m);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void loadMatrixd(double[] m) throws Throwable {
+    public static void loadMatrixd(double[] m) {
         try (var session = MemorySession.openShared()) {
             var pm = session.allocateArray(JAVA_DOUBLE, m);
-            loadMatrixd(pm.address());
+            loadMatrixd(pm);
         }
     }
 
-    public static void loadMatrixf(MemoryAddress m) throws Throwable {
-        check(glLoadMatrixf).invoke(m);
+    public static void loadMatrixf(Addressable m) {
+        try {
+            check(glLoadMatrixf).invoke(m);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void loadMatrixf(float[] m) throws Throwable {
+    public static void loadMatrixf(float[] m) {
         try (var session = MemorySession.openShared()) {
             var pm = session.allocateArray(JAVA_FLOAT, m);
-            loadMatrixf(pm.address());
+            loadMatrixf(pm);
         }
     }
 
-    public static void loadName(int name) throws Throwable {
-        check(glLoadName).invoke(name);
+    public static void loadName(int name) {
+        try {
+            check(glLoadName).invoke(name);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void map1d(int target, double u1, double u2, int stride, int order, MemoryAddress points) throws Throwable {
-        check(glMap1d).invoke(target, u1, u2, stride, order, points);
+    public static void map1d(int target, double u1, double u2, int stride, int order, Addressable points) {
+        try {
+            check(glMap1d).invoke(target, u1, u2, stride, order, points);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void map1d(int target, double u1, double u2, int stride, int order, double[] points) throws Throwable {
+    public static void map1d(int target, double u1, double u2, int stride, int order, double[] points) {
         try (var session = MemorySession.openShared()) {
             var pp = session.allocateArray(JAVA_DOUBLE, points);
-            map1d(target, u1, u2, stride, order, pp.address());
+            map1d(target, u1, u2, stride, order, pp);
         }
     }
 
-    public static void map1f(int target, float u1, float u2, int stride, int order, MemoryAddress points) throws Throwable {
-        check(glMap1f).invoke(target, u1, u2, stride, order, points);
+    public static void map1f(int target, float u1, float u2, int stride, int order, Addressable points) {
+        try {
+            check(glMap1f).invoke(target, u1, u2, stride, order, points);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void map1f(int target, float u1, float u2, int stride, int order, float[] points) throws Throwable {
+    public static void map1f(int target, float u1, float u2, int stride, int order, float[] points) {
         try (var session = MemorySession.openShared()) {
             var pp = session.allocateArray(JAVA_FLOAT, points);
-            map1f(target, u1, u2, stride, order, pp.address());
+            map1f(target, u1, u2, stride, order, pp);
         }
     }
 
-    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemoryAddress points) throws Throwable {
-        check(glMap2d).invoke(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
+        try {
+            check(glMap2d).invoke(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) throws Throwable {
+    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
         try (var session = MemorySession.openShared()) {
             var pp = session.allocateArray(JAVA_DOUBLE, points);
-            map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp.address());
+            map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp);
         }
     }
 
-    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemoryAddress points) throws Throwable {
-        check(glMap2f).invoke(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
+        try {
+            check(glMap2f).invoke(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) throws Throwable {
+    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
         try (var session = MemorySession.openShared()) {
             var pp = session.allocateArray(JAVA_FLOAT, points);
-            map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp.address());
+            map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp);
         }
     }
 
-    public static void mapGrid1d(int un, double u1, double u2) throws Throwable {
-        check(glMapGrid1d).invoke(un, u1, u2);
+    public static void mapGrid1d(int un, double u1, double u2) {
+        try {
+            check(glMapGrid1d).invoke(un, u1, u2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void mapGrid1f(int un, float u1, float u2) throws Throwable {
-        check(glMapGrid1f).invoke(un, u1, u2);
+    public static void mapGrid1f(int un, float u1, float u2) {
+        try {
+            check(glMapGrid1f).invoke(un, u1, u2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void mapGrid2d(int un, double u1, double u2, int vn, double v1, double v2) throws Throwable {
-        check(glMapGrid2d).invoke(un, u1, u2, vn, v1, v2);
+    public static void mapGrid2d(int un, double u1, double u2, int vn, double v1, double v2) {
+        try {
+            check(glMapGrid2d).invoke(un, u1, u2, vn, v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void mapGrid2f(int un, float u1, float u2, int vn, float v1, float v2) throws Throwable {
-        check(glMapGrid2f).invoke(un, u1, u2, vn, v1, v2);
+    public static void mapGrid2f(int un, float u1, float u2, int vn, float v1, float v2) {
+        try {
+            check(glMapGrid2f).invoke(un, u1, u2, vn, v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void materialf(int face, int pname, float param) throws Throwable {
-        check(glMaterialf).invoke(face, pname, param);
+    public static void materialf(int face, int pname, float param) {
+        try {
+            check(glMaterialf).invoke(face, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void materialfv(int face, int pname, MemoryAddress params) throws Throwable {
-        check(glMaterialfv).invoke(face, pname, params);
+    public static void materialfv(int face, int pname, Addressable params) {
+        try {
+            check(glMaterialfv).invoke(face, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void materialfv(int face, int pname, float[] params) throws Throwable {
+    public static void materialfv(int face, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, params);
-            materialfv(face, pname, seg.address());
+            materialfv(face, pname, seg);
         }
     }
 
-    public static void materiali(int face, int pname, int param) throws Throwable {
-        check(glMateriali).invoke(face, pname, param);
+    public static void materiali(int face, int pname, int param) {
+        try {
+            check(glMateriali).invoke(face, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void materialiv(int face, int pname, MemoryAddress params) throws Throwable {
-        check(glMaterialiv).invoke(face, pname, params);
+    public static void materialiv(int face, int pname, Addressable params) {
+        try {
+            check(glMaterialiv).invoke(face, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void materialiv(int face, int pname, int[] params) throws Throwable {
+    public static void materialiv(int face, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params);
-            materialiv(face, pname, seg.address());
+            materialiv(face, pname, seg);
         }
     }
 
-    public static void matrixMode(int mode) throws Throwable {
-        check(glMatrixMode).invoke(mode);
+    public static void matrixMode(int mode) {
+        try {
+            check(glMatrixMode).invoke(mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void multMatrixd(MemoryAddress m) throws Throwable {
-        check(glMultMatrixd).invoke(m);
+    public static void multMatrixd(Addressable m) {
+        try {
+            check(glMultMatrixd).invoke(m);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void multMatrixd(double[] m) throws Throwable {
+    public static void multMatrixd(double[] m) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, m);
-            multMatrixd(seg.address());
+            multMatrixd(seg);
         }
     }
 
-    public static void multMatrixf(MemoryAddress m) throws Throwable {
-        check(glMultMatrixf).invoke(m);
+    public static void multMatrixf(Addressable m) {
+        try {
+            check(glMultMatrixf).invoke(m);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void multMatrixf(float[] m) throws Throwable {
+    public static void multMatrixf(float[] m) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, m);
-            multMatrixf(seg.address());
+            multMatrixf(seg);
         }
     }
 
-    public static void newList(int list, int mode) throws Throwable {
-        check(glNewList).invoke(list, mode);
+    public static void newList(int list, int mode) {
+        try {
+            check(glNewList).invoke(list, mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3b(byte nx, byte ny, byte nz) throws Throwable {
-        check(glNormal3b).invoke(nx, ny, nz);
+    public static void normal3b(byte nx, byte ny, byte nz) {
+        try {
+            check(glNormal3b).invoke(nx, ny, nz);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3bv(MemoryAddress v) throws Throwable {
-        check(glNormal3bv).invoke(v);
+    public static void normal3bv(Addressable v) {
+        try {
+            check(glNormal3bv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3bv(byte[] v) throws Throwable {
+    public static void normal3bv(byte[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_BYTE, v);
-            normal3bv(seg.address());
+            normal3bv(seg);
         }
     }
 
-    public static void normal3d(double nx, double ny, double nz) throws Throwable {
-        check(glNormal3d).invoke(nx, ny, nz);
+    public static void normal3d(double nx, double ny, double nz) {
+        try {
+            check(glNormal3d).invoke(nx, ny, nz);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3dv(MemoryAddress v) throws Throwable {
-        check(glNormal3dv).invoke(v);
+    public static void normal3dv(Addressable v) {
+        try {
+            check(glNormal3dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3dv(double[] v) throws Throwable {
+    public static void normal3dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            normal3dv(seg.address());
+            normal3dv(seg);
         }
     }
 
-    public static void normal3f(float nx, float ny, float nz) throws Throwable {
-        check(glNormal3f).invoke(nx, ny, nz);
+    public static void normal3f(float nx, float ny, float nz) {
+        try {
+            check(glNormal3f).invoke(nx, ny, nz);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3fv(MemoryAddress v) throws Throwable {
-        check(glNormal3fv).invoke(v);
+    public static void normal3fv(Addressable v) {
+        try {
+            check(glNormal3fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3fv(float[] v) throws Throwable {
+    public static void normal3fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            normal3fv(seg.address());
+            normal3fv(seg);
         }
     }
 
-    public static void normal3i(int nx, int ny, int nz) throws Throwable {
-        check(glNormal3i).invoke(nx, ny, nz);
+    public static void normal3i(int nx, int ny, int nz) {
+        try {
+            check(glNormal3i).invoke(nx, ny, nz);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3iv(MemoryAddress v) throws Throwable {
-        check(glNormal3iv).invoke(v);
+    public static void normal3iv(Addressable v) {
+        try {
+            check(glNormal3iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3iv(int[] v) throws Throwable {
+    public static void normal3iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            normal3iv(seg.address());
+            normal3iv(seg);
         }
     }
 
-    public static void normal3s(short nx, short ny, short nz) throws Throwable {
-        check(glNormal3s).invoke(nx, ny, nz);
+    public static void normal3s(short nx, short ny, short nz) {
+        try {
+            check(glNormal3s).invoke(nx, ny, nz);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3sv(MemoryAddress v) throws Throwable {
-        check(glNormal3sv).invoke(v);
+    public static void normal3sv(Addressable v) {
+        try {
+            check(glNormal3sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void normal3sv(short[] v) throws Throwable {
+    public static void normal3sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            normal3sv(seg.address());
+            normal3sv(seg);
         }
     }
 
-    public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar) throws Throwable {
-        check(glOrtho).invoke(left, right, bottom, top, zNear, zFar);
+    public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar) {
+        try {
+            check(glOrtho).invoke(left, right, bottom, top, zNear, zFar);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void passThrough(float token) throws Throwable {
-        check(glPassThrough).invoke(token);
+    public static void passThrough(float token) {
+        try {
+            check(glPassThrough).invoke(token);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pixelMapfv(int map, int mapSize, MemoryAddress values) throws Throwable {
-        check(glPixelMapfv).invoke(map, mapSize, values);
+    public static void pixelMapfv(int map, int mapSize, Addressable values) {
+        try {
+            check(glPixelMapfv).invoke(map, mapSize, values);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pixelMapfv(int map, int mapSize, float[] values) throws Throwable {
+    public static void pixelMapfv(int map, int mapSize, float[] values) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, mapSize);
             for (int i = 0; i < mapSize; i++) {
                 seg.setAtIndex(JAVA_FLOAT, i, values[i]);
             }
-            pixelMapfv(map, mapSize, seg.address());
+            pixelMapfv(map, mapSize, seg);
         }
     }
 
-    public static void pixelMapfv(int map, float[] values) throws Throwable {
+    public static void pixelMapfv(int map, float[] values) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, values);
-            pixelMapfv(map, values.length, seg.address());
+            pixelMapfv(map, values.length, seg);
         }
     }
 
-    public static void pixelMapuiv(int map, int mapSize, MemoryAddress values) throws Throwable {
-        check(glPixelMapuiv).invoke(map, mapSize, values);
+    public static void pixelMapuiv(int map, int mapSize, Addressable values) {
+        try {
+            check(glPixelMapuiv).invoke(map, mapSize, values);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pixelMapuiv(int map, int mapSize, int[] values) throws Throwable {
+    public static void pixelMapuiv(int map, int mapSize, int[] values) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, mapSize);
             for (int i = 0; i < mapSize; i++) {
                 seg.setAtIndex(JAVA_INT, i, values[i]);
             }
-            pixelMapuiv(map, mapSize, seg.address());
+            pixelMapuiv(map, mapSize, seg);
         }
     }
 
-    public static void pixelMapuiv(int map, int[] values) throws Throwable {
+    public static void pixelMapuiv(int map, int[] values) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, values);
-            pixelMapuiv(map, values.length, seg.address());
+            pixelMapuiv(map, values.length, seg);
         }
     }
 
-    public static void pixelMapusv(int map, int mapSize, MemoryAddress values) throws Throwable {
-        check(glPixelMapusv).invoke(map, mapSize, values);
+    public static void pixelMapusv(int map, int mapSize, Addressable values) {
+        try {
+            check(glPixelMapusv).invoke(map, mapSize, values);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pixelMapusv(int map, int mapSize, short[] values) throws Throwable {
+    public static void pixelMapusv(int map, int mapSize, short[] values) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, mapSize);
             for (int i = 0; i < mapSize; i++) {
                 seg.setAtIndex(JAVA_SHORT, i, values[i]);
             }
-            pixelMapusv(map, mapSize, seg.address());
+            pixelMapusv(map, mapSize, seg);
         }
     }
 
-    public static void pixelMapusv(int map, short[] values) throws Throwable {
+    public static void pixelMapusv(int map, short[] values) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, values);
-            pixelMapusv(map, values.length, seg.address());
+            pixelMapusv(map, values.length, seg);
         }
     }
 
-    public static void pixelTransferf(int pname, float param) throws Throwable {
-        check(glPixelTransferf).invoke(pname, param);
+    public static void pixelTransferf(int pname, float param) {
+        try {
+            check(glPixelTransferf).invoke(pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pixelTransferi(int pname, int param) throws Throwable {
-        check(glPixelTransferi).invoke(pname, param);
+    public static void pixelTransferi(int pname, int param) {
+        try {
+            check(glPixelTransferi).invoke(pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pixelZoom(float xfactor, float yfactor) throws Throwable {
-        check(glPixelZoom).invoke(xfactor, yfactor);
+    public static void pixelZoom(float xfactor, float yfactor) {
+        try {
+            check(glPixelZoom).invoke(xfactor, yfactor);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void polygonStipple(MemoryAddress mask) throws Throwable {
-        check(glPolygonStipple).invoke(mask);
+    public static void polygonStipple(Addressable mask) {
+        try {
+            check(glPolygonStipple).invoke(mask);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void polygonStipple(byte[] mask) throws Throwable {
+    public static void polygonStipple(byte[] mask) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_BYTE, mask);
-            polygonStipple(seg.address());
+            polygonStipple(seg);
         }
     }
 
-    public static void popAttrib() throws Throwable {
-        check(glPopAttrib).invoke();
+    public static void popAttrib() {
+        try {
+            check(glPopAttrib).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void popMatrix() throws Throwable {
-        check(glPopMatrix).invoke();
+    public static void popMatrix() {
+        try {
+            check(glPopMatrix).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void popName() throws Throwable {
-        check(glPopName).invoke();
+    public static void popName() {
+        try {
+            check(glPopName).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pushAttrib(int mask) throws Throwable {
-        check(glPushAttrib).invoke(mask);
+    public static void pushAttrib(int mask) {
+        try {
+            check(glPushAttrib).invoke(mask);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pushMatrix() throws Throwable {
-        check(glPushMatrix).invoke();
+    public static void pushMatrix() {
+        try {
+            check(glPushMatrix).invoke();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void pushName(int name) throws Throwable {
-        check(glPushName).invoke(name);
+    public static void pushName(int name) {
+        try {
+            check(glPushName).invoke(name);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2d(double x, double y) throws Throwable {
-        check(glRasterPos2d).invoke(x, y);
+    public static void rasterPos2d(double x, double y) {
+        try {
+            check(glRasterPos2d).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2dv(MemoryAddress v) throws Throwable {
-        check(glRasterPos2dv).invoke(v);
+    public static void rasterPos2dv(Addressable v) {
+        try {
+            check(glRasterPos2dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2dv(double[] v) throws Throwable {
+    public static void rasterPos2dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            rasterPos2dv(seg.address());
+            rasterPos2dv(seg);
         }
     }
 
-    public static void rasterPos2f(float x, float y) throws Throwable {
-        check(glRasterPos2f).invoke(x, y);
+    public static void rasterPos2f(float x, float y) {
+        try {
+            check(glRasterPos2f).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2fv(MemoryAddress v) throws Throwable {
-        check(glRasterPos2fv).invoke(v);
+    public static void rasterPos2fv(Addressable v) {
+        try {
+            check(glRasterPos2fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2fv(float[] v) throws Throwable {
+    public static void rasterPos2fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            rasterPos2fv(seg.address());
+            rasterPos2fv(seg);
         }
     }
 
-    public static void rasterPos2i(int x, int y) throws Throwable {
-        check(glRasterPos2i).invoke(x, y);
+    public static void rasterPos2i(int x, int y) {
+        try {
+            check(glRasterPos2i).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2iv(MemoryAddress v) throws Throwable {
-        check(glRasterPos2iv).invoke(v);
+    public static void rasterPos2iv(Addressable v) {
+        try {
+            check(glRasterPos2iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2iv(int[] v) throws Throwable {
+    public static void rasterPos2iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            rasterPos2iv(seg.address());
+            rasterPos2iv(seg);
         }
     }
 
-    public static void rasterPos2s(short x, short y) throws Throwable {
-        check(glRasterPos2s).invoke(x, y);
+    public static void rasterPos2s(short x, short y) {
+        try {
+            check(glRasterPos2s).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2sv(MemoryAddress v) throws Throwable {
-        check(glRasterPos2sv).invoke(v);
+    public static void rasterPos2sv(Addressable v) {
+        try {
+            check(glRasterPos2sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos2sv(short[] v) throws Throwable {
+    public static void rasterPos2sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            rasterPos2sv(seg.address());
+            rasterPos2sv(seg);
         }
     }
 
-    public static void rasterPos3d(double x, double y, double z) throws Throwable {
-        check(glRasterPos3d).invoke(x, y, z);
+    public static void rasterPos3d(double x, double y, double z) {
+        try {
+            check(glRasterPos3d).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3dv(MemoryAddress v) throws Throwable {
-        check(glRasterPos3dv).invoke(v);
+    public static void rasterPos3dv(Addressable v) {
+        try {
+            check(glRasterPos3dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3dv(double[] v) throws Throwable {
+    public static void rasterPos3dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            rasterPos3dv(seg.address());
+            rasterPos3dv(seg);
         }
     }
 
-    public static void rasterPos3f(float x, float y, float z) throws Throwable {
-        check(glRasterPos3f).invoke(x, y, z);
+    public static void rasterPos3f(float x, float y, float z) {
+        try {
+            check(glRasterPos3f).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3fv(MemoryAddress v) throws Throwable {
-        check(glRasterPos3fv).invoke(v);
+    public static void rasterPos3fv(Addressable v) {
+        try {
+            check(glRasterPos3fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3fv(float[] v) throws Throwable {
+    public static void rasterPos3fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            rasterPos3fv(seg.address());
+            rasterPos3fv(seg);
         }
     }
 
-    public static void rasterPos3i(int x, int y, int z) throws Throwable {
-        check(glRasterPos3i).invoke(x, y, z);
+    public static void rasterPos3i(int x, int y, int z) {
+        try {
+            check(glRasterPos3i).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3iv(MemoryAddress v) throws Throwable {
-        check(glRasterPos3iv).invoke(v);
+    public static void rasterPos3iv(Addressable v) {
+        try {
+            check(glRasterPos3iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3iv(int[] v) throws Throwable {
+    public static void rasterPos3iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            rasterPos3iv(seg.address());
+            rasterPos3iv(seg);
         }
     }
 
-    public static void rasterPos3s(short x, short y, short z) throws Throwable {
-        check(glRasterPos3s).invoke(x, y, z);
+    public static void rasterPos3s(short x, short y, short z) {
+        try {
+            check(glRasterPos3s).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3sv(MemoryAddress v) throws Throwable {
-        check(glRasterPos3sv).invoke(v);
+    public static void rasterPos3sv(Addressable v) {
+        try {
+            check(glRasterPos3sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos3sv(short[] v) throws Throwable {
+    public static void rasterPos3sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            rasterPos3sv(seg.address());
+            rasterPos3sv(seg);
         }
     }
 
-    public static void rasterPos4d(double x, double y, double z, double w) throws Throwable {
-        check(glRasterPos4d).invoke(x, y, z, w);
+    public static void rasterPos4d(double x, double y, double z, double w) {
+        try {
+            check(glRasterPos4d).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4dv(MemoryAddress v) throws Throwable {
-        check(glRasterPos4dv).invoke(v);
+    public static void rasterPos4dv(Addressable v) {
+        try {
+            check(glRasterPos4dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4dv(double[] v) throws Throwable {
+    public static void rasterPos4dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            rasterPos4dv(seg.address());
+            rasterPos4dv(seg);
         }
     }
 
-    public static void rasterPos4f(float x, float y, float z, float w) throws Throwable {
-        check(glRasterPos4f).invoke(x, y, z, w);
+    public static void rasterPos4f(float x, float y, float z, float w) {
+        try {
+            check(glRasterPos4f).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4fv(MemoryAddress v) throws Throwable {
-        check(glRasterPos4fv).invoke(v);
+    public static void rasterPos4fv(Addressable v) {
+        try {
+            check(glRasterPos4fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4fv(float[] v) throws Throwable {
+    public static void rasterPos4fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            rasterPos4fv(seg.address());
+            rasterPos4fv(seg);
         }
     }
 
-    public static void rasterPos4i(int x, int y, int z, int w) throws Throwable {
-        check(glRasterPos4i).invoke(x, y, z, w);
+    public static void rasterPos4i(int x, int y, int z, int w) {
+        try {
+            check(glRasterPos4i).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4iv(MemoryAddress v) throws Throwable {
-        check(glRasterPos4iv).invoke(v);
+    public static void rasterPos4iv(Addressable v) {
+        try {
+            check(glRasterPos4iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4iv(int[] v) throws Throwable {
+    public static void rasterPos4iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            rasterPos4iv(seg.address());
+            rasterPos4iv(seg);
         }
     }
 
-    public static void rasterPos4s(short x, short y, short z, short w) throws Throwable {
-        check(glRasterPos4s).invoke(x, y, z, w);
+    public static void rasterPos4s(short x, short y, short z, short w) {
+        try {
+            check(glRasterPos4s).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4sv(MemoryAddress v) throws Throwable {
-        check(glRasterPos4sv).invoke(v);
+    public static void rasterPos4sv(Addressable v) {
+        try {
+            check(glRasterPos4sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rasterPos4sv(short[] v) throws Throwable {
+    public static void rasterPos4sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            rasterPos4sv(seg.address());
+            rasterPos4sv(seg);
         }
     }
 
-    public static void rectd(double x1, double y1, double x2, double y2) throws Throwable {
-        check(glRectd).invoke(x1, y1, x2, y2);
+    public static void rectd(double x1, double y1, double x2, double y2) {
+        try {
+            check(glRectd).invoke(x1, y1, x2, y2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectdv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
-        check(glRectdv).invoke(v1, v2);
+    public static void rectdv(Addressable v1, Addressable v2) {
+        try {
+            check(glRectdv).invoke(v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectdv(double[] v1, double[] v2) throws Throwable {
+    public static void rectdv(double[] v1, double[] v2) {
         try (var session = MemorySession.openShared()) {
             var seg1 = session.allocateArray(JAVA_DOUBLE, v1);
             var seg2 = session.allocateArray(JAVA_DOUBLE, v2);
-            rectdv(seg1.address(), seg2.address());
+            rectdv(seg1, seg2);
         }
     }
 
-    public static void rectf(float x1, float y1, float x2, float y2) throws Throwable {
-        check(glRectf).invoke(x1, y1, x2, y2);
+    public static void rectf(float x1, float y1, float x2, float y2) {
+        try {
+            check(glRectf).invoke(x1, y1, x2, y2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectfv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
-        check(glRectfv).invoke(v1, v2);
+    public static void rectfv(Addressable v1, Addressable v2) {
+        try {
+            check(glRectfv).invoke(v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectfv(float[] v1, float[] v2) throws Throwable {
+    public static void rectfv(float[] v1, float[] v2) {
         try (var session = MemorySession.openShared()) {
             var seg1 = session.allocateArray(JAVA_FLOAT, v1);
             var seg2 = session.allocateArray(JAVA_FLOAT, v2);
-            rectfv(seg1.address(), seg2.address());
+            rectfv(seg1, seg2);
         }
     }
 
-    public static void recti(int x1, int y1, int x2, int y2) throws Throwable {
-        check(glRecti).invoke(x1, y1, x2, y2);
+    public static void recti(int x1, int y1, int x2, int y2) {
+        try {
+            check(glRecti).invoke(x1, y1, x2, y2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectiv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
-        check(glRectiv).invoke(v1, v2);
+    public static void rectiv(Addressable v1, Addressable v2) {
+        try {
+            check(glRectiv).invoke(v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectiv(int[] v1, int[] v2) throws Throwable {
+    public static void rectiv(int[] v1, int[] v2) {
         try (var session = MemorySession.openShared()) {
             var seg1 = session.allocateArray(JAVA_INT, v1);
             var seg2 = session.allocateArray(JAVA_INT, v2);
-            rectiv(seg1.address(), seg2.address());
+            rectiv(seg1, seg2);
         }
     }
 
-    public static void rects(short x1, short y1, short x2, short y2) throws Throwable {
-        check(glRects).invoke(x1, y1, x2, y2);
+    public static void rects(short x1, short y1, short x2, short y2) {
+        try {
+            check(glRects).invoke(x1, y1, x2, y2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectsv(MemoryAddress v1, MemoryAddress v2) throws Throwable {
-        check(glRectsv).invoke(v1, v2);
+    public static void rectsv(Addressable v1, Addressable v2) {
+        try {
+            check(glRectsv).invoke(v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rectsv(short[] v1, short[] v2) throws Throwable {
+    public static void rectsv(short[] v1, short[] v2) {
         try (var session = MemorySession.openShared()) {
             var seg1 = session.allocateArray(JAVA_SHORT, v1);
             var seg2 = session.allocateArray(JAVA_SHORT, v2);
-            rectsv(seg1.address(), seg2.address());
+            rectsv(seg1, seg2);
         }
     }
 
-    public static int renderMode(int mode) throws Throwable {
-        return (int) check(glRenderMode).invoke(mode);
+    public static int renderMode(int mode) {
+        try {
+            return (int) check(glRenderMode).invoke(mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
-    public static void rotated(double angle, double x, double y, double z) throws Throwable {
-        check(glRotated).invoke(angle, x, y, z);
+    public static void rotated(double angle, double x, double y, double z) {
+        try {
+            check(glRotated).invoke(angle, x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void rotatef(float angle, float x, float y, float z) throws Throwable {
-        check(glRotatef).invoke(angle, x, y, z);
+    public static void rotatef(float angle, float x, float y, float z) {
+        try {
+            check(glRotatef).invoke(angle, x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void scaled(double x, double y, double z) throws Throwable {
-        check(glScaled).invoke(x, y, z);
+    public static void scaled(double x, double y, double z) {
+        try {
+            check(glScaled).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void scalef(float x, float y, float z) throws Throwable {
-        check(glScalef).invoke(x, y, z);
+    public static void scalef(float x, float y, float z) {
+        try {
+            check(glScalef).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void selectBuffer(int size, MemoryAddress buffer) throws Throwable {
-        check(glSelectBuffer).invoke(size, buffer);
+    public static void selectBuffer(int size, Addressable buffer) {
+        try {
+            check(glSelectBuffer).invoke(size, buffer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void selectBuffer(int size, int[] buffer) throws Throwable {
+    public static void selectBuffer(int size, int[] buffer) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, size);
-            selectBuffer(size, seg.address());
+            selectBuffer(size, seg);
             for (int i = 0; i < size; i++) {
                 buffer[i] = seg.getAtIndex(JAVA_INT, i);
             }
         }
     }
 
-    public static void selectBuffer(int[] buffer) throws Throwable {
+    public static void selectBuffer(int[] buffer) {
         selectBuffer(buffer.length, buffer);
     }
 
-    public static void shadeModel(int mode) throws Throwable {
-        check(glShadeModel).invoke(mode);
+    public static void shadeModel(int mode) {
+        try {
+            check(glShadeModel).invoke(mode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1d(double s) throws Throwable {
-        check(glTexCoord1d).invoke(s);
+    public static void texCoord1d(double s) {
+        try {
+            check(glTexCoord1d).invoke(s);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1dv(MemoryAddress v) throws Throwable {
-        check(glTexCoord1dv).invoke(v);
+    public static void texCoord1dv(Addressable v) {
+        try {
+            check(glTexCoord1dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1dv(double[] v) throws Throwable {
+    public static void texCoord1dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            texCoord1dv(seg.address());
+            texCoord1dv(seg);
         }
     }
 
-    public static void texCoord1f(float s) throws Throwable {
-        check(glTexCoord1f).invoke(s);
+    public static void texCoord1f(float s) {
+        try {
+            check(glTexCoord1f).invoke(s);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1fv(MemoryAddress v) throws Throwable {
-        check(glTexCoord1fv).invoke(v);
+    public static void texCoord1fv(Addressable v) {
+        try {
+            check(glTexCoord1fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1fv(float[] v) throws Throwable {
+    public static void texCoord1fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            texCoord1fv(seg.address());
+            texCoord1fv(seg);
         }
     }
 
-    public static void texCoord1i(int s) throws Throwable {
-        check(glTexCoord1i).invoke(s);
+    public static void texCoord1i(int s) {
+        try {
+            check(glTexCoord1i).invoke(s);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1iv(MemoryAddress v) throws Throwable {
-        check(glTexCoord1iv).invoke(v);
+    public static void texCoord1iv(Addressable v) {
+        try {
+            check(glTexCoord1iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1iv(int[] v) throws Throwable {
+    public static void texCoord1iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            texCoord1iv(seg.address());
+            texCoord1iv(seg);
         }
     }
 
-    public static void texCoord1s(short s) throws Throwable {
-        check(glTexCoord1s).invoke(s);
+    public static void texCoord1s(short s) {
+        try {
+            check(glTexCoord1s).invoke(s);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1sv(MemoryAddress v) throws Throwable {
-        check(glTexCoord1sv).invoke(v);
+    public static void texCoord1sv(Addressable v) {
+        try {
+            check(glTexCoord1sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord1sv(short[] v) throws Throwable {
+    public static void texCoord1sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            texCoord1sv(seg.address());
+            texCoord1sv(seg);
         }
     }
 
-    public static void texCoord2d(double s, double t) throws Throwable {
-        check(glTexCoord2d).invoke(s, t);
+    public static void texCoord2d(double s, double t) {
+        try {
+            check(glTexCoord2d).invoke(s, t);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2dv(MemoryAddress v) throws Throwable {
-        check(glTexCoord2dv).invoke(v);
+    public static void texCoord2dv(Addressable v) {
+        try {
+            check(glTexCoord2dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2dv(double[] v) throws Throwable {
+    public static void texCoord2dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            texCoord2dv(seg.address());
+            texCoord2dv(seg);
         }
     }
 
-    public static void texCoord2f(float s, float t) throws Throwable {
-        check(glTexCoord2f).invoke(s, t);
+    public static void texCoord2f(float s, float t) {
+        try {
+            check(glTexCoord2f).invoke(s, t);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2fv(MemoryAddress v) throws Throwable {
-        check(glTexCoord2fv).invoke(v);
+    public static void texCoord2fv(Addressable v) {
+        try {
+            check(glTexCoord2fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2fv(float[] v) throws Throwable {
+    public static void texCoord2fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            texCoord2fv(seg.address());
+            texCoord2fv(seg);
         }
     }
 
-    public static void texCoord2i(int s, int t) throws Throwable {
-        check(glTexCoord2i).invoke(s, t);
+    public static void texCoord2i(int s, int t) {
+        try {
+            check(glTexCoord2i).invoke(s, t);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2iv(MemoryAddress v) throws Throwable {
-        check(glTexCoord2iv).invoke(v);
+    public static void texCoord2iv(Addressable v) {
+        try {
+            check(glTexCoord2iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2iv(int[] v) throws Throwable {
+    public static void texCoord2iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            texCoord2iv(seg.address());
+            texCoord2iv(seg);
         }
     }
 
-    public static void texCoord2s(short s, short t) throws Throwable {
-        check(glTexCoord2s).invoke(s, t);
+    public static void texCoord2s(short s, short t) {
+        try {
+            check(glTexCoord2s).invoke(s, t);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2sv(MemoryAddress v) throws Throwable {
-        check(glTexCoord2sv).invoke(v);
+    public static void texCoord2sv(Addressable v) {
+        try {
+            check(glTexCoord2sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord2sv(short[] v) throws Throwable {
+    public static void texCoord2sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            texCoord2sv(seg.address());
+            texCoord2sv(seg);
         }
     }
 
-    public static void texCoord3d(double s, double t, double r) throws Throwable {
-        check(glTexCoord3d).invoke(s, t, r);
+    public static void texCoord3d(double s, double t, double r) {
+        try {
+            check(glTexCoord3d).invoke(s, t, r);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3dv(MemoryAddress v) throws Throwable {
-        check(glTexCoord3dv).invoke(v);
+    public static void texCoord3dv(Addressable v) {
+        try {
+            check(glTexCoord3dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3dv(double[] v) throws Throwable {
+    public static void texCoord3dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            texCoord3dv(seg.address());
+            texCoord3dv(seg);
         }
     }
 
-    public static void texCoord3f(float s, float t, float r) throws Throwable {
-        check(glTexCoord3f).invoke(s, t, r);
+    public static void texCoord3f(float s, float t, float r) {
+        try {
+            check(glTexCoord3f).invoke(s, t, r);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3fv(MemoryAddress v) throws Throwable {
-        check(glTexCoord3fv).invoke(v);
+    public static void texCoord3fv(Addressable v) {
+        try {
+            check(glTexCoord3fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3fv(float[] v) throws Throwable {
+    public static void texCoord3fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            texCoord3fv(seg.address());
+            texCoord3fv(seg);
         }
     }
 
-    public static void texCoord3i(int s, int t, int r) throws Throwable {
-        check(glTexCoord3i).invoke(s, t, r);
+    public static void texCoord3i(int s, int t, int r) {
+        try {
+            check(glTexCoord3i).invoke(s, t, r);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3iv(MemoryAddress v) throws Throwable {
-        check(glTexCoord3iv).invoke(v);
+    public static void texCoord3iv(Addressable v) {
+        try {
+            check(glTexCoord3iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3iv(int[] v) throws Throwable {
+    public static void texCoord3iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            texCoord3iv(seg.address());
+            texCoord3iv(seg);
         }
     }
 
-    public static void texCoord3s(short s, short t, short r) throws Throwable {
-        check(glTexCoord3s).invoke(s, t, r);
+    public static void texCoord3s(short s, short t, short r) {
+        try {
+            check(glTexCoord3s).invoke(s, t, r);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3sv(MemoryAddress v) throws Throwable {
-        check(glTexCoord3sv).invoke(v);
+    public static void texCoord3sv(Addressable v) {
+        try {
+            check(glTexCoord3sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord3sv(short[] v) throws Throwable {
+    public static void texCoord3sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            texCoord3sv(seg.address());
+            texCoord3sv(seg);
         }
     }
 
-    public static void texCoord4d(double s, double t, double r, double q) throws Throwable {
-        check(glTexCoord4d).invoke(s, t, r, q);
+    public static void texCoord4d(double s, double t, double r, double q) {
+        try {
+            check(glTexCoord4d).invoke(s, t, r, q);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4dv(MemoryAddress v) throws Throwable {
-        check(glTexCoord4dv).invoke(v);
+    public static void texCoord4dv(Addressable v) {
+        try {
+            check(glTexCoord4dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4dv(double[] v) throws Throwable {
+    public static void texCoord4dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            texCoord4dv(seg.address());
+            texCoord4dv(seg);
         }
     }
 
-    public static void texCoord4f(float s, float t, float r, float q) throws Throwable {
-        check(glTexCoord4f).invoke(s, t, r, q);
+    public static void texCoord4f(float s, float t, float r, float q) {
+        try {
+            check(glTexCoord4f).invoke(s, t, r, q);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4fv(MemoryAddress v) throws Throwable {
-        check(glTexCoord4fv).invoke(v);
+    public static void texCoord4fv(Addressable v) {
+        try {
+            check(glTexCoord4fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4fv(float[] v) throws Throwable {
+    public static void texCoord4fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            texCoord4fv(seg.address());
+            texCoord4fv(seg);
         }
     }
 
-    public static void texCoord4i(int s, int t, int r, int q) throws Throwable {
-        check(glTexCoord4i).invoke(s, t, r, q);
+    public static void texCoord4i(int s, int t, int r, int q) {
+        try {
+            check(glTexCoord4i).invoke(s, t, r, q);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4iv(MemoryAddress v) throws Throwable {
-        check(glTexCoord4iv).invoke(v);
+    public static void texCoord4iv(Addressable v) {
+        try {
+            check(glTexCoord4iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4iv(int[] v) throws Throwable {
+    public static void texCoord4iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            texCoord4iv(seg.address());
+            texCoord4iv(seg);
         }
     }
 
-    public static void texCoord4s(short s, short t, short r, short q) throws Throwable {
-        check(glTexCoord4s).invoke(s, t, r, q);
+    public static void texCoord4s(short s, short t, short r, short q) {
+        try {
+            check(glTexCoord4s).invoke(s, t, r, q);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4sv(MemoryAddress v) throws Throwable {
-        check(glTexCoord4sv).invoke(v);
+    public static void texCoord4sv(Addressable v) {
+        try {
+            check(glTexCoord4sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texCoord4sv(short[] v) throws Throwable {
+    public static void texCoord4sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            texCoord4sv(seg.address());
+            texCoord4sv(seg);
         }
     }
 
-    public static void texEnvf(int target, int pname, float param) throws Throwable {
-        check(glTexEnvf).invoke(target, pname, param);
+    public static void texEnvf(int target, int pname, float param) {
+        try {
+            check(glTexEnvf).invoke(target, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texEnvfv(int target, int pname, MemoryAddress params) throws Throwable {
-        check(glTexEnvfv).invoke(target, pname, params);
+    public static void texEnvfv(int target, int pname, Addressable params) {
+        try {
+            check(glTexEnvfv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texEnvfv(int target, int pname, float[] params) throws Throwable {
+    public static void texEnvfv(int target, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, params);
-            texEnvfv(target, pname, seg.address());
+            texEnvfv(target, pname, seg);
         }
     }
 
-    public static void texEnvi(int target, int pname, int param) throws Throwable {
-        check(glTexEnvi).invoke(target, pname, param);
+    public static void texEnvi(int target, int pname, int param) {
+        try {
+            check(glTexEnvi).invoke(target, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texEnviv(int target, int pname, MemoryAddress params) throws Throwable {
-        check(glTexEnviv).invoke(target, pname, params);
+    public static void texEnviv(int target, int pname, Addressable params) {
+        try {
+            check(glTexEnviv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texEnviv(int target, int pname, int[] params) throws Throwable {
+    public static void texEnviv(int target, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params);
-            texEnviv(target, pname, seg.address());
+            texEnviv(target, pname, seg);
         }
     }
 
-    public static void texGend(int coord, int pname, double param) throws Throwable {
-        check(glTexGend).invoke(coord, pname, param);
+    public static void texGend(int coord, int pname, double param) {
+        try {
+            check(glTexGend).invoke(coord, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texGendv(int coord, int pname, MemoryAddress params) throws Throwable {
-        check(glTexGendv).invoke(coord, pname, params);
+    public static void texGendv(int coord, int pname, Addressable params) {
+        try {
+            check(glTexGendv).invoke(coord, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texGendv(int coord, int pname, double[] params) throws Throwable {
+    public static void texGendv(int coord, int pname, double[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, params);
-            texGendv(coord, pname, seg.address());
+            texGendv(coord, pname, seg);
         }
     }
 
-    public static void texGenf(int coord, int pname, float param) throws Throwable {
-        check(glTexGenf).invoke(coord, pname, param);
+    public static void texGenf(int coord, int pname, float param) {
+        try {
+            check(glTexGenf).invoke(coord, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texGenfv(int coord, int pname, MemoryAddress params) throws Throwable {
-        check(glTexGenfv).invoke(coord, pname, params);
+    public static void texGenfv(int coord, int pname, Addressable params) {
+        try {
+            check(glTexGenfv).invoke(coord, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texGenfv(int coord, int pname, float[] params) throws Throwable {
+    public static void texGenfv(int coord, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, params);
-            texGenfv(coord, pname, seg.address());
+            texGenfv(coord, pname, seg);
         }
     }
 
-    public static void texGeni(int coord, int pname, int param) throws Throwable {
-        check(glTexGeni).invoke(coord, pname, param);
+    public static void texGeni(int coord, int pname, int param) {
+        try {
+            check(glTexGeni).invoke(coord, pname, param);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texGeniv(int coord, int pname, MemoryAddress params) throws Throwable {
-        check(glTexGeniv).invoke(coord, pname, params);
+    public static void texGeniv(int coord, int pname, Addressable params) {
+        try {
+            check(glTexGeniv).invoke(coord, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void texGeniv(int coord, int pname, int[] params) throws Throwable {
+    public static void texGeniv(int coord, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params);
-            texGeniv(coord, pname, seg.address());
+            texGeniv(coord, pname, seg);
         }
     }
 
-    public static void translated(double x, double y, double z) throws Throwable {
-        check(glTranslated).invoke(x, y, z);
+    public static void translated(double x, double y, double z) {
+        try {
+            check(glTranslated).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void translatef(float x, float y, float z) throws Throwable {
-        check(glTranslatef).invoke(x, y, z);
+    public static void translatef(float x, float y, float z) {
+        try {
+            check(glTranslatef).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2d(double x, double y) throws Throwable {
-        check(glVertex2d).invoke(x, y);
+    public static void vertex2d(double x, double y) {
+        try {
+            check(glVertex2d).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2dv(MemoryAddress v) throws Throwable {
-        check(glVertex2dv).invoke(v);
+    public static void vertex2dv(Addressable v) {
+        try {
+            check(glVertex2dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2dv(double[] v) throws Throwable {
+    public static void vertex2dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            vertex2dv(seg.address());
+            vertex2dv(seg);
         }
     }
 
-    public static void vertex2f(float x, float y) throws Throwable {
-        check(glVertex2f).invoke(x, y);
+    public static void vertex2f(float x, float y) {
+        try {
+            check(glVertex2f).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2fv(MemoryAddress v) throws Throwable {
-        check(glVertex2fv).invoke(v);
+    public static void vertex2fv(Addressable v) {
+        try {
+            check(glVertex2fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2fv(float[] v) throws Throwable {
+    public static void vertex2fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            vertex2fv(seg.address());
+            vertex2fv(seg);
         }
     }
 
-    public static void vertex2i(int x, int y) throws Throwable {
-        check(glVertex2i).invoke(x, y);
+    public static void vertex2i(int x, int y) {
+        try {
+            check(glVertex2i).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2iv(MemoryAddress v) throws Throwable {
-        check(glVertex2iv).invoke(v);
+    public static void vertex2iv(Addressable v) {
+        try {
+            check(glVertex2iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2iv(int[] v) throws Throwable {
+    public static void vertex2iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            vertex2iv(seg.address());
+            vertex2iv(seg);
         }
     }
 
-    public static void vertex2s(short x, short y) throws Throwable {
-        check(glVertex2s).invoke(x, y);
+    public static void vertex2s(short x, short y) {
+        try {
+            check(glVertex2s).invoke(x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2sv(MemoryAddress v) throws Throwable {
-        check(glVertex2sv).invoke(v);
+    public static void vertex2sv(Addressable v) {
+        try {
+            check(glVertex2sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex2sv(short[] v) throws Throwable {
+    public static void vertex2sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            vertex2sv(seg.address());
+            vertex2sv(seg);
         }
     }
 
-    public static void vertex3d(double x, double y, double z) throws Throwable {
-        check(glVertex3d).invoke(x, y, z);
+    public static void vertex3d(double x, double y, double z) {
+        try {
+            check(glVertex3d).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3dv(MemoryAddress v) throws Throwable {
-        check(glVertex3dv).invoke(v);
+    public static void vertex3dv(Addressable v) {
+        try {
+            check(glVertex3dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3dv(double[] v) throws Throwable {
+    public static void vertex3dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            vertex3dv(seg.address());
+            vertex3dv(seg);
         }
     }
 
-    public static void vertex3f(float x, float y, float z) throws Throwable {
-        check(glVertex3f).invoke(x, y, z);
+    public static void vertex3f(float x, float y, float z) {
+        try {
+            check(glVertex3f).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3fv(MemoryAddress v) throws Throwable {
-        check(glVertex3fv).invoke(v);
+    public static void vertex3fv(Addressable v) {
+        try {
+            check(glVertex3fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3fv(float[] v) throws Throwable {
+    public static void vertex3fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            vertex3fv(seg.address());
+            vertex3fv(seg);
         }
     }
 
-    public static void vertex3i(int x, int y, int z) throws Throwable {
-        check(glVertex3i).invoke(x, y, z);
+    public static void vertex3i(int x, int y, int z) {
+        try {
+            check(glVertex3i).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3iv(MemoryAddress v) throws Throwable {
-        check(glVertex3iv).invoke(v);
+    public static void vertex3iv(Addressable v) {
+        try {
+            check(glVertex3iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3iv(int[] v) throws Throwable {
+    public static void vertex3iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            vertex3iv(seg.address());
+            vertex3iv(seg);
         }
     }
 
-    public static void vertex3s(short x, short y, short z) throws Throwable {
-        check(glVertex3s).invoke(x, y, z);
+    public static void vertex3s(short x, short y, short z) {
+        try {
+            check(glVertex3s).invoke(x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3sv(MemoryAddress v) throws Throwable {
-        check(glVertex3sv).invoke(v);
+    public static void vertex3sv(Addressable v) {
+        try {
+            check(glVertex3sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex3sv(short[] v) throws Throwable {
+    public static void vertex3sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            vertex3sv(seg.address());
+            vertex3sv(seg);
         }
     }
 
-    public static void vertex4d(double x, double y, double z, double w) throws Throwable {
-        check(glVertex4d).invoke(x, y, z, w);
+    public static void vertex4d(double x, double y, double z, double w) {
+        try {
+            check(glVertex4d).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4dv(MemoryAddress v) throws Throwable {
-        check(glVertex4dv).invoke(v);
+    public static void vertex4dv(Addressable v) {
+        try {
+            check(glVertex4dv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4dv(double[] v) throws Throwable {
+    public static void vertex4dv(double[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, v);
-            vertex4dv(seg.address());
+            vertex4dv(seg);
         }
     }
 
-    public static void vertex4f(float x, float y, float z, float w) throws Throwable {
-        check(glVertex4f).invoke(x, y, z, w);
+    public static void vertex4f(float x, float y, float z, float w) {
+        try {
+            check(glVertex4f).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4fv(MemoryAddress v) throws Throwable {
-        check(glVertex4fv).invoke(v);
+    public static void vertex4fv(Addressable v) {
+        try {
+            check(glVertex4fv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4fv(float[] v) throws Throwable {
+    public static void vertex4fv(float[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, v);
-            vertex4fv(seg.address());
+            vertex4fv(seg);
         }
     }
 
-    public static void vertex4i(int x, int y, int z, int w) throws Throwable {
-        check(glVertex4i).invoke(x, y, z, w);
+    public static void vertex4i(int x, int y, int z, int w) {
+        try {
+            check(glVertex4i).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4iv(MemoryAddress v) throws Throwable {
-        check(glVertex4iv).invoke(v);
+    public static void vertex4iv(Addressable v) {
+        try {
+            check(glVertex4iv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4iv(int[] v) throws Throwable {
+    public static void vertex4iv(int[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, v);
-            vertex4iv(seg.address());
+            vertex4iv(seg);
         }
     }
 
-    public static void vertex4s(short x, short y, short z, short w) throws Throwable {
-        check(glVertex4s).invoke(x, y, z, w);
+    public static void vertex4s(short x, short y, short z, short w) {
+        try {
+            check(glVertex4s).invoke(x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4sv(MemoryAddress v) throws Throwable {
-        check(glVertex4sv).invoke(v);
+    public static void vertex4sv(Addressable v) {
+        try {
+            check(glVertex4sv).invoke(v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void vertex4sv(short[] v) throws Throwable {
+    public static void vertex4sv(short[] v) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, v);
-            vertex4sv(seg.address());
+            vertex4sv(seg);
         }
     }
 }

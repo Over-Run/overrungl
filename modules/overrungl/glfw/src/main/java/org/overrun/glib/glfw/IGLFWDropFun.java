@@ -23,28 +23,27 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWDropFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, MemoryAddress.class);
+    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, Addressable.class);
 
     /**
      * The function pointer type for path drop callbacks.
      *
      * @param window    The window that received the event.
      * @param paths     The UTF-8 encoded file and/or directory path names.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, String[] paths) throws Throwable;
+    void invoke(MemoryAddress window, String[] paths);
 
-    default void ninvoke(MemoryAddress window, int pathCount, MemorySegment paths) throws Throwable {
+    default void ninvoke(MemoryAddress window, int pathCount, Addressable paths) {
         String[] pathArr = new String[pathCount];
         for (int i = 0; i < pathCount; i++) {
-            var ptr = paths.getAtIndex(ValueLayout.ADDRESS, i);
+            var ptr = paths.address().getAtIndex(ValueLayout.ADDRESS, i);
             pathArr[i] = ptr.getUtf8String(0L);
         }
         invoke(window, pathArr);
     }
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWDropFun.class, "ninvoke", MTYPE, DESC);
     }
 }

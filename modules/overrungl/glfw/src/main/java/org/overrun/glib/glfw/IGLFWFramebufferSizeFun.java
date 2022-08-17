@@ -31,12 +31,11 @@ public interface IGLFWFramebufferSizeFun extends ICallback {
      * @param window The window whose framebuffer was resized.
      * @param width  The new width, in pixels, of the framebuffer.
      * @param height The new height, in pixels, of the framebuffer.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int width, int height) throws Throwable;
+    void invoke(MemoryAddress window, int width, int height);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWFramebufferSizeFun.class, "invoke", MTYPE, DESC);
     }
 }

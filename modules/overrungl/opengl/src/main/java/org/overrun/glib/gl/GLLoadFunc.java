@@ -18,7 +18,6 @@ public interface GLLoadFunc {
      *
      * @param procName the function name
      * @return the function address
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    MemoryAddress invoke(String procName) throws Throwable;
+    MemoryAddress invoke(String procName);
 }

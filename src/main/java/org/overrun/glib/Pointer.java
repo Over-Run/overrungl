@@ -22,11 +22,20 @@ public class Pointer {
     }
 
     /**
+     * Gets the address as {@link Addressable}.
+     *
+     * @return the address
+     */
+    public Addressable rawAddress() {
+        return address;
+    }
+
+    /**
      * Gets the address.
      *
      * @return the memory address
      */
     public MemoryAddress address() {
-        return address.address();
+        return rawAddress().address();
     }
 }

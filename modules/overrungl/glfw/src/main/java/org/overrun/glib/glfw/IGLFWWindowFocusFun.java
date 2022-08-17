@@ -31,16 +31,15 @@ public interface IGLFWWindowFocusFun extends ICallback {
      * @param window  The window that gained or lost input focus.
      * @param focused {@code true} if the window was given input focus, or
      *                {@code false} if it lost it.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, boolean focused) throws Throwable;
+    void invoke(MemoryAddress window, boolean focused);
 
-    default void ninvoke(MemoryAddress window, int focused) throws Throwable {
+    default void ninvoke(MemoryAddress window, int focused) {
         invoke(window, focused == GLFW.TRUE);
     }
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWWindowFocusFun.class, "ninvoke", MTYPE, DESC);
     }
 }

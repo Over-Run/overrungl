@@ -31,12 +31,11 @@ public interface IGLFWMonitorFun extends ICallback {
      * @param monitor The monitor that was connected or disconnected.
      * @param event   One of {@code CONNECTED} or {@code DISCONNECTED}. Future
      *                releases may add more events.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress monitor, int event) throws Throwable;
+    void invoke(MemoryAddress monitor, int event);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWMonitorFun.class, "invoke", MTYPE, DESC);
     }
 }

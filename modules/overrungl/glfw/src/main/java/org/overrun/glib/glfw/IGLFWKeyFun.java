@@ -35,12 +35,11 @@ public interface IGLFWKeyFun extends ICallback {
      * @param action   {@code PRESS}, {@code RELEASE} or {@code REPEAT}. Future releases may add more actions.
      * @param mods     Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a>
      *                 were held down.
-     * @throws Throwable anything thrown by the underlying method propagates unchanged through the method handle call
      */
-    void invoke(MemoryAddress window, int key, int scancode, int action, int mods) throws Throwable;
+    void invoke(MemoryAddress window, int key, int scancode, int action, int mods);
 
     @Override
-    default MemoryAddress address(MemorySession session) throws Exception {
+    default MemoryAddress address(MemorySession session) {
         return address(session, IGLFWKeyFun.class, "invoke", MTYPE, DESC);
     }
 }

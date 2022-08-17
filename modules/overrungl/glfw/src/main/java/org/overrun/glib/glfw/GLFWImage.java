@@ -76,7 +76,7 @@ public class GLFWImage extends Pointer {
      * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
      * @return this
      */
-    public GLFWImage pixels(MemoryAddress pixels) {
+    public GLFWImage pixels(Addressable pixels) {
         address().set(ValueLayout.ADDRESS, ValueLayout.JAVA_INT.byteSize() * 2L, pixels);
         return this;
     }
