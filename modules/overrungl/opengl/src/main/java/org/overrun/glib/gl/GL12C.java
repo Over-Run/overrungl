@@ -20,8 +20,7 @@ public sealed class GL12C extends GL11C permits GL13C {
     public static MethodHandle
         glCopyTexSubImage3D,
         glDrawRangeElements,
-        glTexImage3D,
-        glTexSubImage3D;
+        glTexImage3D, glTexSubImage3D;
 
     static void load(GLLoadFunc load) {
         if (!Ver12) return;

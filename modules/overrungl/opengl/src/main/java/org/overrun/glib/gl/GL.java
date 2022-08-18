@@ -1,5 +1,8 @@
 package org.overrun.glib.gl;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.regex.Pattern;
@@ -7,7 +10,7 @@ import java.util.regex.Pattern;
 import static java.lang.foreign.ValueLayout.*;
 
 /**
- * The OpenGL capabilities.
+ * The OpenGL loader.
  *
  * @author squid233
  * @since 0.1.0
@@ -28,7 +31,10 @@ public class GL {
     static final FunctionDescriptor dZV = FunctionDescriptor.ofVoid(JAVA_BOOLEAN);
     static final FunctionDescriptor dDDV = ofDescriptor("DDV");
     static final FunctionDescriptor dFFV = ofDescriptor("FFV");
+    static final FunctionDescriptor dFZV = ofDescriptor("FZV");
+    static final FunctionDescriptor dIDV = ofDescriptor("IDV");
     static final FunctionDescriptor dIFV = ofDescriptor("IFV");
+    static final FunctionDescriptor dIIP = ofDescriptor("IIP");
     static final FunctionDescriptor dIIV = ofDescriptor("IIV");
     static final FunctionDescriptor dIPV = ofDescriptor("IPV");
     static final FunctionDescriptor dISV = ofDescriptor("ISV");
@@ -45,16 +51,27 @@ public class GL {
     static final FunctionDescriptor dIIPV = ofDescriptor("IIPV");
     static final FunctionDescriptor dIPPV = ofDescriptor("IPPV");
     static final FunctionDescriptor dIPPZ = ofDescriptor("IPPZ");
+    static final FunctionDescriptor dISSV = ofDescriptor("ISSV");
     static final FunctionDescriptor dSSSV = ofDescriptor("SSSV");
     static final FunctionDescriptor dBBBBV = ofDescriptor("BBBBV");
     static final FunctionDescriptor dDDDDV = ofDescriptor("DDDDV");
     static final FunctionDescriptor dFFFFV = ofDescriptor("FFFFV");
+    static final FunctionDescriptor dIDDDV = ofDescriptor("IDDDV");
+    static final FunctionDescriptor dIFFFV = ofDescriptor("IFFFV");
     static final FunctionDescriptor dIIIIV = ofDescriptor("IIIIV");
     static final FunctionDescriptor dIIIPV = ofDescriptor("IIIPV");
+    static final FunctionDescriptor dIJJPV = ofDescriptor("IJJPV");
+    static final FunctionDescriptor dIJPIV = ofDescriptor("IJPIV");
+    static final FunctionDescriptor dIPPIV = ofDescriptor("IPPIV");
+    static final FunctionDescriptor dISSSV = ofDescriptor("ISSSV");
     static final FunctionDescriptor dSSSSV = ofDescriptor("SSSSV");
     static final FunctionDescriptor dZZZZV = ofDescriptor("ZZZZV");
+    static final FunctionDescriptor dIDDDDV = ofDescriptor("IDDDDV");
+    static final FunctionDescriptor dIFFFFV = ofDescriptor("IFFFFV");
     static final FunctionDescriptor dIIIIIV = ofDescriptor("IIIIIV");
     static final FunctionDescriptor dIIIIPV = ofDescriptor("IIIIPV");
+    static final FunctionDescriptor dIPIPIV = ofDescriptor("IPIPIV");
+    static final FunctionDescriptor dISSSSV = ofDescriptor("ISSSSV");
     static final FunctionDescriptor dDDDDDDV = ofDescriptor("DDDDDDV");
     static final FunctionDescriptor dIDDIDDV = ofDescriptor("IDDIDDV");
     static final FunctionDescriptor dIDDIIPV = ofDescriptor("IDDIIPV");
@@ -72,6 +89,7 @@ public class GL {
     static final FunctionDescriptor dIDDIIDDIIPV = ofDescriptor("IDDIIDDIIPV");
     static final FunctionDescriptor dIFFIIFFIIPV = ofDescriptor("IFFIIFFIIPV");
     static final FunctionDescriptor dIIIIIIIIIIV = ofDescriptor("IIIIIIIIIIV");
+    static final FunctionDescriptor dIIIIIIIIIIPV = ofDescriptor("IIIIIIIIIIPV");
 
     private static ValueLayout ofValue(char c) {
         return switch (c) {
@@ -105,6 +123,8 @@ public class GL {
         Ver30, Ver31, Ver32, Ver33,
         Ver40, Ver41, Ver42, Ver43, Ver44, Ver45, Ver46;
 
+    @NotNull
+    @Contract(value = "null -> fail; !null -> param1", pure = true)
     public static MethodHandle check(MethodHandle handle) {
         if (handle == null)
             throw new IllegalStateException("The argument 'handle' is null; may be no context or function exists.");
@@ -146,12 +166,45 @@ public class GL {
         GL10C.load(load);
         GL11C.load(load);
         GL12C.load(load);
+        GL13C.load(load);
+        GL14C.load(load);
+        GL15C.load(load);
+        GL20C.load(load);
         if (!forwardCompatible) {
             GL10.load(load);
             GL11.load(load);
+            GL13.load(load);
+            GL14.load(load);
         }
 
+        if (!findExtensionsGL(version)) return 0;
+
         return version;
+    }
+
+    private static boolean getExtensions(int version, Addressable outExts, Addressable outNumExtsI, Addressable outExtsI) {
+        if (version / 10000 < 3) {
+            if (GL10C.glGetString == null) {
+                return false;
+            }
+            outExts.address().set(ADDRESS, 0L, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
+        } else {
+        }
+
+        return true;
+    }
+
+    private static boolean findExtensionsGL(int version) {
+        try (var session = MemorySession.openShared()) {
+            var exts = session.allocate(ADDRESS);
+            var numExtsI = session.allocate(JAVA_INT);
+            var extsI = session.allocate(ADDRESS);
+            if (!getExtensions(version, exts, numExtsI, extsI)) return false;
+
+            // (void) glad_gl_has_extension;
+
+            return true;
+        }
     }
 
     private static int findCoreGL() {
