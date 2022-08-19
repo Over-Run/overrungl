@@ -36,6 +36,7 @@ public class GL {
     static final FunctionDescriptor dIFV = ofDescriptor("IFV");
     static final FunctionDescriptor dIIP = ofDescriptor("IIP");
     static final FunctionDescriptor dIIV = ofDescriptor("IIV");
+    static final FunctionDescriptor dIPI = ofDescriptor("IPI");
     static final FunctionDescriptor dIPV = ofDescriptor("IPV");
     static final FunctionDescriptor dISV = ofDescriptor("ISV");
     static final FunctionDescriptor dPPV = ofDescriptor("PPV");
@@ -60,12 +61,15 @@ public class GL {
     static final FunctionDescriptor dIFFFV = ofDescriptor("IFFFV");
     static final FunctionDescriptor dIIIIV = ofDescriptor("IIIIV");
     static final FunctionDescriptor dIIIPV = ofDescriptor("IIIPV");
+    static final FunctionDescriptor dIIPPV = ofDescriptor("IIPPV");
+    static final FunctionDescriptor dIIZPV = ofDescriptor("IIZPV");
     static final FunctionDescriptor dIJJPV = ofDescriptor("IJJPV");
     static final FunctionDescriptor dIJPIV = ofDescriptor("IJPIV");
     static final FunctionDescriptor dIPPIV = ofDescriptor("IPPIV");
     static final FunctionDescriptor dISSSV = ofDescriptor("ISSSV");
     static final FunctionDescriptor dSSSSV = ofDescriptor("SSSSV");
     static final FunctionDescriptor dZZZZV = ofDescriptor("ZZZZV");
+    static final FunctionDescriptor dIBBBBV = ofDescriptor("IBBBBV");
     static final FunctionDescriptor dIDDDDV = ofDescriptor("IDDDDV");
     static final FunctionDescriptor dIFFFFV = ofDescriptor("IFFFFV");
     static final FunctionDescriptor dIIIIIV = ofDescriptor("IIIIIV");
@@ -79,9 +83,11 @@ public class GL {
     static final FunctionDescriptor dIFFIIPV = ofDescriptor("IFFIIPV");
     static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
     static final FunctionDescriptor dIIIIIPV = ofDescriptor("IIIIIPV");
+    static final FunctionDescriptor dIIIZIPV = ofDescriptor("IIIZIPV");
     static final FunctionDescriptor dIIFFFFPV = ofDescriptor("IIFFFFPV");
     static final FunctionDescriptor dIIIIIIIV = ofDescriptor("IIIIIIIV");
     static final FunctionDescriptor dIIIIIIPV = ofDescriptor("IIIIIIPV");
+    static final FunctionDescriptor dIIIPPPPV = ofDescriptor("IIIPPPPV");
     static final FunctionDescriptor dIIIIIIIIV = ofDescriptor("IIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIPV = ofDescriptor("IIIIIIIPV");
     static final FunctionDescriptor dIIIIIIIIIV = ofDescriptor("IIIIIIIIIV");
@@ -170,6 +176,7 @@ public class GL {
         GL14C.load(load);
         GL15C.load(load);
         GL20C.load(load);
+        GL21C.load(load);
         if (!forwardCompatible) {
             GL10.load(load);
             GL11.load(load);

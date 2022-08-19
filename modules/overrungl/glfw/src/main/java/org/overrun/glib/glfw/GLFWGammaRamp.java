@@ -1,5 +1,6 @@
 package org.overrun.glib.glfw;
 
+import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
@@ -21,7 +22,7 @@ import java.lang.foreign.*;
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
-public class GLFWGammaRamp extends Pointer {
+public class GLFWGammaRamp extends Pointer implements AutoCloseable {
     /**
      * The struct layout.
      */
@@ -31,14 +32,31 @@ public class GLFWGammaRamp extends Pointer {
         ValueLayout.ADDRESS.withName("blue"),
         ValueLayout.JAVA_INT.withName("size")
     );
+    @Nullable
+    private final MemorySession session;
 
     /**
-     * Create a {@code GLFWgammaramp} instance.
+     * Create a {@code GLFWgammaramp} instance with the memory session.
+     * <p>
+     * If you create a mutable instance with a memory session
+     * in a try-with-resources statement block, the session
+     * should be {@link MemorySession#asNonCloseable() non-closeable}.
+     *
+     * @param address the address
+     * @param session the memory session or {@code null}
+     */
+    public GLFWGammaRamp(Addressable address, @Nullable MemorySession session) {
+        super(address);
+        this.session = session;
+    }
+
+    /**
+     * Create a {@code GLFWgammaramp const} instance.
      *
      * @param address the address
      */
     public GLFWGammaRamp(Addressable address) {
-        super(address);
+        this(address, null);
     }
 
     /**
@@ -48,7 +66,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the instance
      */
     public static GLFWGammaRamp create(MemorySession session) {
-        return new GLFWGammaRamp(session.allocate(LAYOUT));
+        return new GLFWGammaRamp(session.allocate(LAYOUT), session);
     }
 
     /**
@@ -58,11 +76,8 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        var addr = MemorySession.openImplicit().allocateArray(ValueLayout.JAVA_SHORT, reds.length);
-        for (int i = 0; i < reds.length; i++) {
-            addr.setAtIndex(ValueLayout.JAVA_SHORT, i, reds[i]);
-        }
-        address().set(ValueLayout.ADDRESS, 0L, addr);
+        if (session == null) throw new IllegalStateException("The struct is const!");
+        address().set(ValueLayout.ADDRESS, 0L, session.allocateArray(ValueLayout.JAVA_SHORT, reds));
         return this;
     }
 
@@ -73,11 +88,8 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        var addr = MemorySession.openImplicit().allocateArray(ValueLayout.JAVA_SHORT, greens.length);
-        for (int i = 0; i < greens.length; i++) {
-            addr.setAtIndex(ValueLayout.JAVA_SHORT, i, greens[i]);
-        }
-        address().setAtIndex(ValueLayout.ADDRESS, 1L, addr);
+        if (session == null) throw new IllegalStateException("The struct is const!");
+        address().setAtIndex(ValueLayout.ADDRESS, 1L, session.allocateArray(ValueLayout.JAVA_SHORT, greens));
         return this;
     }
 
@@ -88,11 +100,8 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        var addr = MemorySession.openImplicit().allocateArray(ValueLayout.JAVA_SHORT, blues.length);
-        for (int i = 0; i < blues.length; i++) {
-            addr.setAtIndex(ValueLayout.JAVA_SHORT, i, blues[i]);
-        }
-        address().setAtIndex(ValueLayout.ADDRESS, 2L, addr);
+        if (session == null) throw new IllegalStateException("The struct is const!");
+        address().setAtIndex(ValueLayout.ADDRESS, 2L, session.allocateArray(ValueLayout.JAVA_SHORT, blues));
         return this;
     }
 
@@ -228,5 +237,10 @@ public class GLFWGammaRamp extends Pointer {
 
     public MemoryAddress nblue() {
         return address().getAtIndex(ValueLayout.ADDRESS, 2L);
+    }
+
+    @Override
+    public void close() {
+        if (session != null && session.isCloseable()) session.close();
     }
 }
