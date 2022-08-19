@@ -15,7 +15,7 @@ import static org.overrun.glib.gl.GL.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GL21C extends GL20C {
+public sealed class GL21C extends GL20C permits GL30C {
     @Nullable
     public static MethodHandle
         glUniformMatrix2x3fv,

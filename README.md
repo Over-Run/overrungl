@@ -9,3 +9,7 @@ Our goal is to support these libraries with full document:
 - [ ] [GLFW](https://www.glfw.org/) 3.3.8 (Currently 75%)
 - [ ] [OpenGL](https://www.khronos.org/opengl/) 4.6 (Currently 27%)
 - [ ] [STB](https://github.com/nothings/stb) (Currently 0%)
+
+## Additional
+
+OpenGL docs can be found [here](https://docs.gl/).
