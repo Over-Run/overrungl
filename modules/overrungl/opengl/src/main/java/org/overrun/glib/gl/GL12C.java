@@ -22,8 +22,11 @@ public sealed class GL12C extends GL11C permits GL13C {
         glDrawRangeElements,
         glTexImage3D, glTexSubImage3D;
 
+    static boolean isSupported() {
+        return checkAll(glCopyTexSubImage3D, glDrawRangeElements, glTexImage3D, glTexSubImage3D);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver12) return;
         glCopyTexSubImage3D = downcallSafe(load.invoke("glCopyTexSubImage3D"), dIIIIIIIIIV);
         glDrawRangeElements = downcallSafe(load.invoke("glDrawRangeElements"), dIIIIIPV);
         glTexImage3D = downcallSafe(load.invoke("glTexImage3D"), dIIIIIIIIIV);

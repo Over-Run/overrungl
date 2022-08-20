@@ -29,8 +29,13 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         glPolygonOffset,
         glTexSubImage1D, glTexSubImage2D;
 
+    static boolean isSupported() {
+        return checkAll(glBindTexture, glCopyTexImage1D, glCopyTexImage2D, glCopyTexSubImage1D,
+            glCopyTexSubImage2D, glDeleteTextures, glDrawArrays, glDrawElements, glGenTextures,
+            glGetPointerv, glIsTexture, glPolygonOffset, glTexSubImage1D, glTexSubImage2D);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver11) return;
         glBindTexture = downcallSafe(load.invoke("glBindTexture"), dIIV);
         glCopyTexImage1D = downcallSafe(load.invoke("glCopyTexImage1D"), dIIIIIIIV);
         glCopyTexImage2D = downcallSafe(load.invoke("glCopyTexImage2D"), dIIIIIIIIV);

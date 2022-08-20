@@ -23,8 +23,13 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         glPointParameterf, glPointParameterfv,
         glPointParameteri, glPointParameteriv;
 
+    static boolean isSupported() {
+        return checkAll(glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays,
+            glMultiDrawElements, glPointParameterf, glPointParameterfv, glPointParameteri,
+            glPointParameteriv);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver14) return;
         glBlendColor = downcallSafe(load.invoke("glBlendColor"), dFFFFV);
         glBlendEquation = downcallSafe(load.invoke("glBlendEquation"), dIV);
         glBlendFuncSeparate = downcallSafe(load.invoke("glBlendFuncSeparate"), dIIIIV);

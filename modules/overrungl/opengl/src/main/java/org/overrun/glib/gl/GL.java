@@ -36,6 +36,7 @@ public class GL {
     static final FunctionDescriptor dIFV = ofDescriptor("IFV");
     static final FunctionDescriptor dIIP = ofDescriptor("IIP");
     static final FunctionDescriptor dIIV = ofDescriptor("IIV");
+    static final FunctionDescriptor dIIZ = ofDescriptor("IIZ");
     static final FunctionDescriptor dIPI = ofDescriptor("IPI");
     static final FunctionDescriptor dIPV = ofDescriptor("IPV");
     static final FunctionDescriptor dISV = ofDescriptor("ISV");
@@ -63,8 +64,10 @@ public class GL {
     static final FunctionDescriptor dIIIIV = ofDescriptor("IIIIV");
     static final FunctionDescriptor dIIIPV = ofDescriptor("IIIPV");
     static final FunctionDescriptor dIIFIV = ofDescriptor("IIFIV");
+    static final FunctionDescriptor dIIPIV = ofDescriptor("IIPIV");
     static final FunctionDescriptor dIIPPV = ofDescriptor("IIPPV");
     static final FunctionDescriptor dIIZPV = ofDescriptor("IIZPV");
+    static final FunctionDescriptor dIJJIP = ofDescriptor("IJJIV");
     static final FunctionDescriptor dIJJPV = ofDescriptor("IJJPV");
     static final FunctionDescriptor dIJPIV = ofDescriptor("IJPIV");
     static final FunctionDescriptor dIPPIV = ofDescriptor("IPPIV");
@@ -141,6 +144,15 @@ public class GL {
         return handle;
     }
 
+    static boolean checkAll(MethodHandle... handles) {
+        for (var handle : handles) {
+            if (handle == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
         if (symbol.address() == MemoryAddress.NULL) return null;
         return downcall(symbol, function);
@@ -171,7 +183,6 @@ public class GL {
         GL10C.glGetString = downcallSafe(load.invoke("glGetString"), dIP);
         if (GL10C.glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
-        int version = findCoreGL();
 
         GL10C.load(load);
         GL11C.load(load);
@@ -182,6 +193,8 @@ public class GL {
         GL20C.load(load);
         GL21C.load(load);
         GL30C.load(load);
+
+        int version = findCoreGL();
         if (!forwardCompatible) {
             GL10.load(load);
             GL11.load(load);
@@ -227,6 +240,22 @@ public class GL {
         return true;
     }
 
+    static boolean hasExtension(int version, String exts, int numExtsI, String[] extsI, String ext) {
+        if (version / 10000 < 3) {
+            if (exts == null || ext == null) {
+                return false;
+            }
+            return exts.contains(ext);
+        } else {
+            for (int index = 0; index < numExtsI; index++) {
+                if (extsI[index].equals(ext)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private static boolean findExtensionsGL(int version) {
         try (var session = MemorySession.openShared()) {
             var exts = session.allocate(ADDRESS);
@@ -265,15 +294,15 @@ public class GL {
             major = 0;
             minor = 0;
         }
-        Ver10 = (major == 1 && minor >= 0) || major > 1;
-        Ver11 = (major == 1 && minor >= 1) || major > 1;
-        Ver12 = (major == 1 && minor >= 2) || major > 1;
-        Ver13 = (major == 1 && minor >= 3) || major > 1;
-        Ver14 = (major == 1 && minor >= 4) || major > 1;
-        Ver15 = (major == 1 && minor >= 5) || major > 1;
-        Ver20 = (major == 2 && minor >= 0) || major > 2;
-        Ver21 = (major == 2 && minor >= 1) || major > 2;
-        Ver30 = (major == 3 && minor >= 0) || major > 3;
+        Ver10 = (major == 1 && minor >= 0) || major > 1 || GL10C.isSupported();
+        Ver11 = (major == 1 && minor >= 1) || major > 1 || GL11C.isSupported();
+        Ver12 = (major == 1 && minor >= 2) || major > 1 || GL12C.isSupported();
+        Ver13 = (major == 1 && minor >= 3) || major > 1 || GL13C.isSupported();
+        Ver14 = (major == 1 && minor >= 4) || major > 1 || GL14C.isSupported();
+        Ver15 = (major == 1 && minor >= 5) || major > 1 || GL15C.isSupported();
+        Ver20 = (major == 2 && minor >= 0) || major > 2 || GL20C.isSupported();
+        Ver21 = (major == 2 && minor >= 1) || major > 2 || GL21C.isSupported();
+        Ver30 = (major == 3 && minor >= 0) || major > 3 || GL30C.isSupported();
         Ver31 = (major == 3 && minor >= 1) || major > 3;
         Ver32 = (major == 3 && minor >= 2) || major > 3;
         Ver33 = (major == 3 && minor >= 3) || major > 3;

@@ -22,8 +22,13 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         glGetCompressedTexImage,
         glSampleCoverage;
 
+    static boolean isSupported() {
+        return checkAll(glActiveTexture, glCompressedTexImage1D, glCompressedTexImage2D,
+            glCompressedTexImage3D, glCompressedTexSubImage1D, glCompressedTexSubImage2D,
+            glCompressedTexSubImage3D, glGetCompressedTexImage, glSampleCoverage);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver13) return;
         glActiveTexture = downcallSafe(load.invoke("glActiveTexture"), dIV);
         glCompressedTexImage1D = downcallSafe(load.invoke("glCompressedTexImage1D"), dIIIIIIPV);
         glCompressedTexImage2D = downcallSafe(load.invoke("glCompressedTexImage2D"), dIIIIIIIPV);

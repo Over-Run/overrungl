@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
@@ -11,7 +12,7 @@ import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.gl.GL.*;
 
 /**
- * The OpenGL 3.0 forward compatible functions.
+ * The OpenGL 3.0 core profile functions.
  *
  * @author squid233
  * @since 0.1.0
@@ -19,90 +20,73 @@ import static org.overrun.glib.gl.GL.*;
 public final class GL30C extends GL21C {
     @Nullable
     public static MethodHandle
-        glBeginConditionalRender,
-        glBeginTransformFeedback,
-        glBindBufferBase,
-        glBindBufferRange,
-        glBindFragDataLocation,
-        glBindFramebuffer,
-        glBindRenderbuffer,
-        glBindVertexArray,
+        glBeginConditionalRender, glBeginTransformFeedback,
+        glBindBufferBase, glBindBufferRange, glBindFragDataLocation,
+        glBindFramebuffer, glBindRenderbuffer, glBindVertexArray,
         glBlitFramebuffer,
-        glCheckFramebufferStatus,
-        glClampColor,
-        glClearBufferfi,
-        glClearBufferfv,
-        glClearBufferiv,
-        glClearBufferuiv,
+        glCheckFramebufferStatus, glClampColor,
+        glClearBufferfi, glClearBufferfv,
+        glClearBufferiv, glClearBufferuiv,
         glColorMaski,
-        glDeleteFramebuffers,
-        glDeleteRenderbuffers,
-        glDeleteVertexArrays,
-        glDisablei,
-        glEnablei,
-        glEndConditionalRender,
-        glEndTransformFeedback,
-        glFlushMappedBufferRange,
-        glFramebufferRenderbuffer,
-        glFramebufferTexture1D,
-        glFramebufferTexture2D,
-        glFramebufferTexture3D,
-        glFramebufferTextureLayer,
-        glGenFramebuffers,
-        glGenRenderbuffers,
-        glGenVertexArrays,
-        glGenerateMipmap,
-        glGetBooleani_v,
-        glGetFragDataLocation,
-        glGetFramebufferAttachmentParameteriv,
-        glGetIntegeri_v,
-        glGetRenderbufferParameteriv,
+        glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays,
+        glDisablei, glEnablei,
+        glEndConditionalRender, glEndTransformFeedback,
+        glFlushMappedBufferRange, glFramebufferRenderbuffer,
+        glFramebufferTexture1D, glFramebufferTexture2D,
+        glFramebufferTexture3D, glFramebufferTextureLayer,
+        glGenFramebuffers, glGenRenderbuffers, glGenVertexArrays,
+        glGenerateMipmap, glGetBooleani_v,
+        glGetFragDataLocation, glGetFramebufferAttachmentParameteriv,
+        glGetIntegeri_v, glGetRenderbufferParameteriv,
         glGetStringi,
-        glGetTexParameterIiv,
-        glGetTexParameterIuiv,
-        glGetTransformFeedbackVarying,
-        glGetUniformuiv,
-        glGetVertexAttribIiv,
-        glGetVertexAttribIuiv,
-        glIsEnabledi,
-        glIsFramebuffer,
-        glIsRenderbuffer,
-        glIsVertexArray,
+        glGetTexParameterIiv, glGetTexParameterIuiv,
+        glGetTransformFeedbackVarying, glGetUniformuiv,
+        glGetVertexAttribIiv, glGetVertexAttribIuiv,
+        glIsEnabledi, glIsFramebuffer,
+        glIsRenderbuffer, glIsVertexArray,
         glMapBufferRange,
-        glRenderbufferStorage,
-        glRenderbufferStorageMultisample,
-        glTexParameterIiv,
-        glTexParameterIuiv,
+        glRenderbufferStorage, glRenderbufferStorageMultisample,
+        glTexParameterIiv, glTexParameterIuiv,
         glTransformFeedbackVaryings,
-        glUniform1ui,
-        glUniform1uiv,
-        glUniform2ui,
-        glUniform2uiv,
-        glUniform3ui,
-        glUniform3uiv,
-        glUniform4ui,
-        glUniform4uiv,
-        glVertexAttribI1i,
-        glVertexAttribI1iv,
-        glVertexAttribI1ui,
-        glVertexAttribI1uiv,
-        glVertexAttribI2i,
-        glVertexAttribI2iv,
-        glVertexAttribI2ui,
-        glVertexAttribI2uiv,
-        glVertexAttribI3i,
-        glVertexAttribI3iv,
-        glVertexAttribI3ui,
-        glVertexAttribI3uiv,
-        glVertexAttribI4bv,
-        glVertexAttribI4i,
-        glVertexAttribI4iv,
-        glVertexAttribI4sv,
-        glVertexAttribI4ubv,
-        glVertexAttribI4ui,
-        glVertexAttribI4uiv,
-        glVertexAttribI4usv,
-        glVertexAttribIPointer;
+        glUniform1ui, glUniform1uiv,
+        glUniform2ui, glUniform2uiv,
+        glUniform3ui, glUniform3uiv,
+        glUniform4ui, glUniform4uiv,
+        glVertexAttribI1i, glVertexAttribI1iv,
+        glVertexAttribI1ui, glVertexAttribI1uiv,
+        glVertexAttribI2i, glVertexAttribI2iv,
+        glVertexAttribI2ui, glVertexAttribI2uiv,
+        glVertexAttribI3i, glVertexAttribI3iv,
+        glVertexAttribI3ui, glVertexAttribI3uiv, glVertexAttribI4bv,
+        glVertexAttribI4i, glVertexAttribI4iv,
+        glVertexAttribI4sv, glVertexAttribI4ubv,
+        glVertexAttribI4ui, glVertexAttribI4uiv,
+        glVertexAttribI4usv, glVertexAttribIPointer;
+
+    static boolean isSupported() {
+        return checkAll(glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase,
+            glBindBufferRange, glBindFragDataLocation, glBindFramebuffer, glBindRenderbuffer,
+            glBindVertexArray, glBlitFramebuffer, glCheckFramebufferStatus, glClampColor,
+            glClearBufferfi, glClearBufferfv, glClearBufferiv, glClearBufferuiv, glColorMaski,
+            glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays, glDisablei,
+            glEnablei, glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange,
+            glFramebufferRenderbuffer, glFramebufferTexture1D, glFramebufferTexture2D,
+            glFramebufferTexture3D, glFramebufferTextureLayer, glGenFramebuffers,
+            glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v,
+            glGetFragDataLocation, glGetFramebufferAttachmentParameteriv, glGetIntegeri_v,
+            glGetRenderbufferParameteriv, glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv,
+            glGetTransformFeedbackVarying, glGetUniformuiv, glGetVertexAttribIiv,
+            glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer, glIsVertexArray,
+            glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample,
+            glTexParameterIiv, glTexParameterIuiv, glTransformFeedbackVaryings, glUniform1ui,
+            glUniform1uiv, glUniform2ui, glUniform2uiv, glUniform3ui, glUniform3uiv, glUniform4ui,
+            glUniform4uiv, glVertexAttribI1i, glVertexAttribI1iv, glVertexAttribI1ui,
+            glVertexAttribI1uiv, glVertexAttribI2i, glVertexAttribI2iv, glVertexAttribI2ui,
+            glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv, glVertexAttribI3ui,
+            glVertexAttribI3uiv, glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv,
+            glVertexAttribI4sv, glVertexAttribI4ubv, glVertexAttribI4ui, glVertexAttribI4uiv,
+            glVertexAttribI4usv, glVertexAttribIPointer);
+    }
 
     static void load(GLLoadFunc load) {
         if (!Ver30) return;
@@ -147,28 +131,28 @@ public final class GL30C extends GL21C {
         glGetStringi = downcallSafe(load.invoke("glGetStringi"), dIIP);
         glGetTexParameterIiv = downcallSafe(load.invoke("glGetTexParameterIiv"), dIIPV);
         glGetTexParameterIuiv = downcallSafe(load.invoke("glGetTexParameterIuiv"), dIIPV);
-        glGetTransformFeedbackVarying = downcallSafe(load.invoke("glGetTransformFeedbackVarying"), );
-        glGetUniformuiv = downcallSafe(load.invoke("glGetUniformuiv"), );
-        glGetVertexAttribIiv = downcallSafe(load.invoke("glGetVertexAttribIiv"), );
-        glGetVertexAttribIuiv = downcallSafe(load.invoke("glGetVertexAttribIuiv"), );
-        glIsEnabledi = downcallSafe(load.invoke("glIsEnabledi"), );
-        glIsFramebuffer = downcallSafe(load.invoke("glIsFramebuffer"), );
-        glIsRenderbuffer = downcallSafe(load.invoke("glIsRenderbuffer"), );
-        glIsVertexArray = downcallSafe(load.invoke("glIsVertexArray"), );
-        glMapBufferRange = downcallSafe(load.invoke("glMapBufferRange"), );
-        glRenderbufferStorage = downcallSafe(load.invoke("glRenderbufferStorage"), );
-        glRenderbufferStorageMultisample = downcallSafe(load.invoke("glRenderbufferStorageMultisample"), );
-        glTexParameterIiv = downcallSafe(load.invoke("glTexParameterIiv"), );
-        glTexParameterIuiv = downcallSafe(load.invoke("glTexParameterIuiv"), );
-        glTransformFeedbackVaryings = downcallSafe(load.invoke("glTransformFeedbackVaryings"), );
-        glUniform1ui = downcallSafe(load.invoke("glUniform1ui"), );
-        glUniform1uiv = downcallSafe(load.invoke("glUniform1uiv"), );
-        glUniform2ui = downcallSafe(load.invoke("glUniform2ui"), );
-        glUniform2uiv = downcallSafe(load.invoke("glUniform2uiv"), );
-        glUniform3ui = downcallSafe(load.invoke("glUniform3ui"), );
-        glUniform3uiv = downcallSafe(load.invoke("glUniform3uiv"), );
-        glUniform4ui = downcallSafe(load.invoke("glUniform4ui"), );
-        glUniform4uiv = downcallSafe(load.invoke("glUniform4uiv"), );
+        glGetTransformFeedbackVarying = downcallSafe(load.invoke("glGetTransformFeedbackVarying"), dIIIPPPPV);
+        glGetUniformuiv = downcallSafe(load.invoke("glGetUniformuiv"), dIIPV);
+        glGetVertexAttribIiv = downcallSafe(load.invoke("glGetVertexAttribIiv"), dIIPV);
+        glGetVertexAttribIuiv = downcallSafe(load.invoke("glGetVertexAttribIuiv"), dIIPV);
+        glIsEnabledi = downcallSafe(load.invoke("glIsEnabledi"), dIIZ);
+        glIsFramebuffer = downcallSafe(load.invoke("glIsFramebuffer"), dIZ);
+        glIsRenderbuffer = downcallSafe(load.invoke("glIsRenderbuffer"), dIZ);
+        glIsVertexArray = downcallSafe(load.invoke("glIsVertexArray"), dIZ);
+        glMapBufferRange = downcallSafe(load.invoke("glMapBufferRange"), dIJJIP);
+        glRenderbufferStorage = downcallSafe(load.invoke("glRenderbufferStorage"), dIIIIV);
+        glRenderbufferStorageMultisample = downcallSafe(load.invoke("glRenderbufferStorageMultisample"), dIIIIIV);
+        glTexParameterIiv = downcallSafe(load.invoke("glTexParameterIiv"), dIIPV);
+        glTexParameterIuiv = downcallSafe(load.invoke("glTexParameterIuiv"), dIIPV);
+        glTransformFeedbackVaryings = downcallSafe(load.invoke("glTransformFeedbackVaryings"), dIIPIV);
+        glUniform1ui = downcallSafe(load.invoke("glUniform1ui"), dIIV);
+        glUniform1uiv = downcallSafe(load.invoke("glUniform1uiv"), dIIPV);
+        glUniform2ui = downcallSafe(load.invoke("glUniform2ui"), dIIIV);
+        glUniform2uiv = downcallSafe(load.invoke("glUniform2uiv"), dIIPV);
+        glUniform3ui = downcallSafe(load.invoke("glUniform3ui"), dIIIIV);
+        glUniform3uiv = downcallSafe(load.invoke("glUniform3uiv"), dIIPV);
+        glUniform4ui = downcallSafe(load.invoke("glUniform4ui"), dIIIIIV);
+        glUniform4uiv = downcallSafe(load.invoke("glUniform4uiv"), dIIPV);
         glVertexAttribI1i = downcallSafe(load.invoke("glVertexAttribI1i"), );
         glVertexAttribI1iv = downcallSafe(load.invoke("glVertexAttribI1iv"), );
         glVertexAttribI1ui = downcallSafe(load.invoke("glVertexAttribI1ui"), );
@@ -699,5 +683,354 @@ public final class GL30C extends GL21C {
     public static String getStringi(int pname, int index) {
         var pStr = ngetStringi(pname, index);
         return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0L) : null;
+    }
+
+    public static void getTexParameterIiv(int target, int pname, Addressable params) {
+        try {
+            check(glGetTexParameterIiv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getTexParameterIiv(int target, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params.length);
+            getTexParameterIiv(target, pname, seg);
+            for (int i = 0; i < params.length; i++) {
+                params[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int getTexParameterIiv(int target, int pname) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getTexParameterIiv(target, pname, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void getTexParameterIuiv(int target, int pname, Addressable params) {
+        try {
+            check(glGetTexParameterIuiv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getTexParameterIuiv(int target, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params.length);
+            getTexParameterIuiv(target, pname, seg);
+            for (int i = 0; i < params.length; i++) {
+                params[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int getTexParameterIuiv(int target, int pname) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getTexParameterIuiv(target, pname, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void getTransformFeedbackVarying(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
+        try {
+            check(glGetTransformFeedbackVarying).invoke(program, index, bufSize, length, size, type, name);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getTransformFeedbackVarying(int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
+        try (var session = MemorySession.openShared()) {
+            var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+            var pSz = session.allocate(JAVA_INT);
+            var pType = session.allocate(JAVA_INT);
+            var pName = session.allocateArray(JAVA_BYTE, bufSize);
+            getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
+            if (length != null && length.length > 0) {
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+            }
+            size[0] = pSz.get(JAVA_INT, 0L);
+            type[0] = pType.get(JAVA_INT, 0L);
+            name[0] = pName.getUtf8String(0L);
+        }
+    }
+
+    public static void getUniformuiv(int program, int location, Addressable params) {
+        try {
+            check(glGetUniformuiv).invoke(program, location, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getUniformuiv(int program, int location, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params.length);
+            getUniformuiv(program, location, seg);
+            for (int i = 0; i < params.length; i++) {
+                params[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int getUniformui(int program, int location) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getUniformuiv(program, location, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void getVertexAttribIiv(int index, int pname, Addressable params) {
+        try {
+            check(glGetVertexAttribIiv).invoke(index, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getVertexAttribIiv(int index, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params.length);
+            getVertexAttribIiv(index, pname, seg);
+            for (int i = 0; i < params.length; i++) {
+                params[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int getVertexAttribIi(int index, int pname) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getVertexAttribIiv(index, pname, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void getVertexAttribIuiv(int index, int pname, Addressable params) {
+        try {
+            check(glGetVertexAttribIuiv).invoke(index, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getVertexAttribIuiv(int index, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, params.length);
+            getVertexAttribIuiv(index, pname, seg);
+            for (int i = 0; i < params.length; i++) {
+                params[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int getVertexAttribIui(int index, int pname) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getVertexAttribIuiv(index, pname, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static boolean isEnabledi(int target, int index) {
+        try {
+            return (boolean) check(glIsEnabledi).invoke(target, index);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isFramebuffer(int framebuffer) {
+        try {
+            return (boolean) check(glIsFramebuffer).invoke(framebuffer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isRenderbuffer(int renderbuffer) {
+        try {
+            return (boolean) check(glIsRenderbuffer).invoke(renderbuffer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isVertexArray(int array) {
+        try {
+            return (boolean) check(glIsVertexArray).invoke(array);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static MemoryAddress mapBufferRange(int target, long offset, long length, int access) {
+        try {
+            return (MemoryAddress) check(glMapBufferRange).invoke(target, offset, length, access);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    public static void renderbufferStorage(int target, int internalFormat, int width, int height) {
+        try {
+            check(glRenderbufferStorage).invoke(target, internalFormat, width, height);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void renderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) {
+        try {
+            check(glRenderbufferStorageMultisample).invoke(target, samples, internalFormat, width, height);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void texParameterIiv(int target, int pname, Addressable params) {
+        try {
+            check(glTexParameterIiv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void texParameterIiv(int target, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            texParameterIiv(target, pname, session.allocateArray(JAVA_INT, params));
+        }
+    }
+
+    public static void texParameterIuiv(int target, int pname, Addressable params) {
+        try {
+            check(glTexParameterIuiv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void texParameterIuiv(int target, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            texParameterIuiv(target, pname, session.allocateArray(JAVA_INT, params));
+        }
+    }
+
+    public static void transformFeedbackVaryings(int program, int count, Addressable varyings, int bufferMode) {
+        try {
+            check(glTransformFeedbackVaryings).invoke(program, count, varyings, bufferMode);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void transformFeedbackVaryings(int program, String[] varyings, int bufferMode) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(ADDRESS, varyings.length);
+            for (int i = 0; i < varyings.length; i++) {
+                seg.setAtIndex(ADDRESS, i, session.allocateUtf8String(varyings[i]));
+            }
+            transformFeedbackVaryings(program, varyings.length, seg, bufferMode);
+        }
+    }
+
+    public static void uniform1ui(int location, int v0) {
+        try {
+            check(glUniform1ui).invoke(location, v0);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform1uiv(int location, int count, Addressable value) {
+        try {
+            check(glUniform1uiv).invoke(location, count, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform1uiv(int location, int[] value) {
+        try (var session = MemorySession.openShared()) {
+            uniform1uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+        }
+    }
+
+    public static void uniform2ui(int location, int v0, int v1) {
+        try {
+            check(glUniform2ui).invoke(location, v0, v1);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform2uiv(int location, int count, Addressable value) {
+        try {
+            check(glUniform2uiv).invoke(location, count, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform2uiv(int location, int[] value) {
+        try (var session = MemorySession.openShared()) {
+            uniform2uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+        }
+    }
+
+    public static void uniform3ui(int location, int v0, int v1, int v2) {
+        try {
+            check(glUniform3ui).invoke(location, v0, v1, v2);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform3uiv(int location, int count, Addressable value) {
+        try {
+            check(glUniform3uiv).invoke(location, count, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform3uiv(int location, int[] value) {
+        try (var session = MemorySession.openShared()) {
+            uniform3uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+        }
+    }
+
+    public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
+        try {
+            check(glUniform4ui).invoke(location, v0, v1, v2, v3);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform4uiv(int location, int count, Addressable value) {
+        try {
+            check(glUniform4uiv).invoke(location, count, value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void uniform4uiv(int location, int[] value) {
+        try (var session = MemorySession.openShared()) {
+            uniform4uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+        }
     }
 }

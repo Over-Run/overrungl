@@ -50,8 +50,19 @@ public sealed class GL10C permits GL10, GL11C {
         throw new IllegalStateException("Do not construct instance");
     }
 
+    static boolean isSupported() {
+        return checkAll(glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil,
+            glColorMask, glCullFace, glDepthFunc, glDepthMask, glDepthRange, glDisable,
+            glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace, glGetBooleanv, glGetDoublev,
+            glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage,
+            glGetTexLevelParameterfv, glGetTexLevelParameteriv, glGetTexParameterfv,
+            glGetTexParameteriv, glHint, glIsEnabled, glLineWidth, glLogicOp, glPixelStoref,
+            glPixelStorei, glPointSize, glPolygonMode, glReadBuffer, glReadPixels, glScissor,
+            glStencilFunc, glStencilMask, glStencilOp, glTexImage1D, glTexImage2D, glTexParameterf,
+            glTexParameterfv, glTexParameteri, glTexParameteriv, glViewport);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver10) return;
         glBlendFunc = downcallSafe(load.invoke("glBlendFunc"), dIIV);
         glClear = downcallSafe(load.invoke("glClear"), dIV);
         glClearColor = downcallSafe(load.invoke("glClearColor"), dFFFFV);

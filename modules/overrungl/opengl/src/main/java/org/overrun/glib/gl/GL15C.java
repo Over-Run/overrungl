@@ -29,8 +29,14 @@ public sealed class GL15C extends GL14C permits GL20C {
         glIsBuffer, glIsQuery,
         glMapBuffer, glUnmapBuffer;
 
+    static boolean isSupported() {
+        return checkAll(glBeginQuery, glBindBuffer, glBufferData, glBufferSubData, glDeleteBuffers,
+            glDeleteQueries, glEndQuery, glGenBuffers, glGenQueries, glGetBufferParameteriv,
+            glGetBufferPointerv, glGetBufferSubData, glGetQueryObjectiv, glGetQueryObjectuiv,
+            glGetQueryiv, glIsBuffer, glIsQuery, glMapBuffer, glUnmapBuffer);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver15) return;
         glBeginQuery = downcallSafe(load.invoke("glBeginQuery"), dIIV);
         glBindBuffer = downcallSafe(load.invoke("glBindBuffer"), dIIV);
         glBufferData = downcallSafe(load.invoke("glBufferData"), dIJPIV);

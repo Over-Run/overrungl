@@ -25,8 +25,12 @@ public sealed class GL21C extends GL20C permits GL30C {
         glUniformMatrix4x2fv,
         glUniformMatrix4x3fv;
 
+    static boolean isSupported() {
+        return checkAll(glUniformMatrix2x3fv, glUniformMatrix2x4fv, glUniformMatrix3x2fv,
+            glUniformMatrix3x4fv, glUniformMatrix4x2fv, glUniformMatrix4x3fv);
+    }
+
     static void load(GLLoadFunc load) {
-        if (!Ver21) return;
         glUniformMatrix2x3fv = downcallSafe(load.invoke("glUniformMatrix2x3fv"), dIIZPV);
         glUniformMatrix2x4fv = downcallSafe(load.invoke("glUniformMatrix2x4fv"), dIIZPV);
         glUniformMatrix3x2fv = downcallSafe(load.invoke("glUniformMatrix3x2fv"), dIIZPV);
