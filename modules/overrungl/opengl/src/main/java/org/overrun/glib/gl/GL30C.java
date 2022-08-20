@@ -3,11 +3,11 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
-import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.gl.GL.*;
 
 /**
@@ -131,22 +131,22 @@ public final class GL30C extends GL21C {
         glEndTransformFeedback = downcallSafe(load.invoke("glEndTransformFeedback"), dV);
         glFlushMappedBufferRange = downcallSafe(load.invoke("glFlushMappedBufferRange"), dIJJV);
         glFramebufferRenderbuffer = downcallSafe(load.invoke("glFramebufferRenderbuffer"), dIIIIV);
-        glFramebufferTexture1D = downcallSafe(load.invoke("glFramebufferTexture1D"), );
-        glFramebufferTexture2D = downcallSafe(load.invoke("glFramebufferTexture2D"), );
-        glFramebufferTexture3D = downcallSafe(load.invoke("glFramebufferTexture3D"), );
-        glFramebufferTextureLayer = downcallSafe(load.invoke("glFramebufferTextureLayer"), );
-        glGenFramebuffers = downcallSafe(load.invoke("glGenFramebuffers"), );
-        glGenRenderbuffers = downcallSafe(load.invoke("glGenRenderbuffers"), );
-        glGenVertexArrays = downcallSafe(load.invoke("glGenVertexArrays"), );
-        glGenerateMipmap = downcallSafe(load.invoke("glGenerateMipmap"), );
-        glGetBooleani_v = downcallSafe(load.invoke("glGetBooleani_v"), );
-        glGetFragDataLocation = downcallSafe(load.invoke("glGetFragDataLocation"), );
-        glGetFramebufferAttachmentParameteriv = downcallSafe(load.invoke("glGetFramebufferAttachmentParameteriv"), );
-        glGetIntegeri_v = downcallSafe(load.invoke("glGetIntegeri_v"), );
-        glGetRenderbufferParameteriv = downcallSafe(load.invoke("glGetRenderbufferParameteriv"), );
-        glGetStringi = downcallSafe(load.invoke("glGetStringi"), );
-        glGetTexParameterIiv = downcallSafe(load.invoke("glGetTexParameterIiv"), );
-        glGetTexParameterIuiv = downcallSafe(load.invoke("glGetTexParameterIuiv"), );
+        glFramebufferTexture1D = downcallSafe(load.invoke("glFramebufferTexture1D"), dIIIIIV);
+        glFramebufferTexture2D = downcallSafe(load.invoke("glFramebufferTexture2D"), dIIIIIV);
+        glFramebufferTexture3D = downcallSafe(load.invoke("glFramebufferTexture3D"), dIIIIIIV);
+        glFramebufferTextureLayer = downcallSafe(load.invoke("glFramebufferTextureLayer"), dIIIIIV);
+        glGenFramebuffers = downcallSafe(load.invoke("glGenFramebuffers"), dIPV);
+        glGenRenderbuffers = downcallSafe(load.invoke("glGenRenderbuffers"), dIPV);
+        glGenVertexArrays = downcallSafe(load.invoke("glGenVertexArrays"), dIPV);
+        glGenerateMipmap = downcallSafe(load.invoke("glGenerateMipmap"), dIV);
+        glGetBooleani_v = downcallSafe(load.invoke("glGetBooleani_v"), dIIPV);
+        glGetFragDataLocation = downcallSafe(load.invoke("glGetFragDataLocation"), dIPI);
+        glGetFramebufferAttachmentParameteriv = downcallSafe(load.invoke("glGetFramebufferAttachmentParameteriv"), dIIIPV);
+        glGetIntegeri_v = downcallSafe(load.invoke("glGetIntegeri_v"), dIIPV);
+        glGetRenderbufferParameteriv = downcallSafe(load.invoke("glGetRenderbufferParameteriv"), dIIPV);
+        glGetStringi = downcallSafe(load.invoke("glGetStringi"), dIIP);
+        glGetTexParameterIiv = downcallSafe(load.invoke("glGetTexParameterIiv"), dIIPV);
+        glGetTexParameterIuiv = downcallSafe(load.invoke("glGetTexParameterIuiv"), dIIPV);
         glGetTransformFeedbackVarying = downcallSafe(load.invoke("glGetTransformFeedbackVarying"), );
         glGetUniformuiv = downcallSafe(load.invoke("glGetUniformuiv"), );
         glGetVertexAttribIiv = downcallSafe(load.invoke("glGetVertexAttribIiv"), );
@@ -451,5 +451,253 @@ public final class GL30C extends GL21C {
         } catch (Throwable e) {
             e.printStackTrace();
         }
+    }
+
+    public static void framebufferTexture1D(int target, int attachment, int texTarget, int texture, int level) {
+        try {
+            check(glFramebufferTexture1D).invoke(target, attachment, texTarget, texture, level);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void framebufferTexture2D(int target, int attachment, int texTarget, int texture, int level) {
+        try {
+            check(glFramebufferTexture2D).invoke(target, attachment, texTarget, texture, level);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void framebufferTexture3D(int target, int attachment, int texTarget, int texture, int level, int zoffset) {
+        try {
+            check(glFramebufferTexture3D).invoke(target, attachment, texTarget, texture, level, zoffset);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void framebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
+        try {
+            check(glFramebufferTextureLayer).invoke(target, attachment, texture, level, layer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void genFramebuffers(int n, Addressable framebuffers) {
+        try {
+            check(glGenFramebuffers).invoke(n, framebuffers);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void genFramebuffers(int[] framebuffers) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, framebuffers.length);
+            genFramebuffers(framebuffers.length, seg);
+            for (int i = 0; i < framebuffers.length; i++) {
+                framebuffers[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int genFramebuffer() {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            genFramebuffers(1, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void genRenderbuffers(int n, Addressable renderbuffers) {
+        try {
+            check(glGenRenderbuffers).invoke(n, renderbuffers);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void genRenderbuffers(int[] renderbuffers) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, renderbuffers.length);
+            genRenderbuffers(renderbuffers.length, seg);
+            for (int i = 0; i < renderbuffers.length; i++) {
+                renderbuffers[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int genRenderbuffer() {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            genRenderbuffers(1, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void genVertexArrays(int n, Addressable arrays) {
+        try {
+            check(glGenVertexArrays).invoke(n, arrays);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void genVertexArrays(int[] arrays) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, arrays.length);
+            genVertexArrays(arrays.length, seg);
+            for (int i = 0; i < arrays.length; i++) {
+                arrays[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int genVertexArray() {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            genVertexArrays(1, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void generateMipmap(int target) {
+        try {
+            check(glGenerateMipmap).invoke(target);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getBooleani_v(int target, int index, Addressable data) {
+        try {
+            check(glGetBooleani_v).invoke(target, index, data);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getBooleani_v(int target, int index, boolean[] data) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_BOOLEAN, data.length);
+            getBooleani_v(target, index, seg);
+            for (int i = 0; i < data.length; i++) {
+                data[i] = seg.get(JAVA_BOOLEAN, i);
+            }
+        }
+    }
+
+    public static boolean getBooleani(int target, int index) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_BOOLEAN);
+            getBooleani_v(target, index, seg);
+            return seg.get(JAVA_BOOLEAN, 0L);
+        }
+    }
+
+    public static int getFragDataLocation(int program, Addressable name) {
+        try {
+            return (int) check(glGetFragDataLocation).invoke(program, name);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public static int getFragDataLocation(int program, String name) {
+        try (var session = MemorySession.openShared()) {
+            return getFragDataLocation(program, session.allocateUtf8String(name));
+        }
+    }
+
+    public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, Addressable params) {
+        try {
+            check(glGetFramebufferAttachmentParameteriv).invoke(target, attachment, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
+            params[0] = seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static int getFramebufferAttachmentParameteri(int target, int attachment, int pname) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void getIntegeri_v(int target, int index, Addressable data) {
+        try {
+            check(glGetIntegeri_v).invoke(target, index, data);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getIntegeri_v(int target, int index, int[] data) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, data.length);
+            getIntegeri_v(target, index, seg);
+            for (int i = 0; i < data.length; i++) {
+                data[i] = seg.getAtIndex(JAVA_INT, i);
+            }
+        }
+    }
+
+    public static int getIntegeri(int target, int index) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getIntegeri_v(target, index, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static void getRenderbufferParameteriv(int target, int pname, Addressable params) {
+        try {
+            check(glGetRenderbufferParameteriv).invoke(target, pname, params);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void getRenderbufferParameteriv(int target, int pname, int[] params) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getRenderbufferParameteriv(target, pname, seg);
+            params[0] = seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static int getRenderbufferParameteri(int target, int pname) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocate(JAVA_INT);
+            getRenderbufferParameteriv(target, pname, seg);
+            return seg.get(JAVA_INT, 0L);
+        }
+    }
+
+    public static MemoryAddress ngetStringi(int pname, int index) {
+        try {
+            return (MemoryAddress) check(glGetStringi).invoke(pname, index);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return MemoryAddress.NULL;
+        }
+    }
+
+    @Nullable
+    public static String getStringi(int pname, int index) {
+        var pStr = ngetStringi(pname, index);
+        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0L) : null;
     }
 }

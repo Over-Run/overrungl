@@ -194,13 +194,34 @@ public class GL {
         return version;
     }
 
-    private static boolean getExtensions(int version, Addressable outExts, Addressable outNumExtsI, Addressable outExtsI) {
+    private static boolean getExtensions(MemorySession session,
+                                         int version,
+                                         MemorySegment outExts,
+                                         MemorySegment outNumExtsI,
+                                         MemorySegment outExtsI) {
         if (version / 10000 < 3) {
             if (GL10C.glGetString == null) {
                 return false;
             }
-            outExts.address().set(ADDRESS, 0L, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
+            outExts.set(ADDRESS, 0L, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
         } else {
+            if (GL30C.glGetStringi == null || GL10C.glGetIntegerv == null) {
+                return false;
+            }
+            int numExtsI = GL10C.getInteger(GLConstC.GL_NUM_EXTENSIONS);
+            var extsI = (Addressable) MemoryAddress.NULL;
+            if (numExtsI > 0) {
+                extsI = session.allocateArray(ADDRESS, numExtsI);
+            }
+            if (extsI == MemoryAddress.NULL) {
+                return false;
+            }
+            for (int index = 0; index < numExtsI; index++) {
+                var glStrTmp = GL30C.getStringi(GLConstC.GL_EXTENSIONS, index);
+                ((MemorySegment) extsI).setAtIndex(ADDRESS, index, session.allocateUtf8String(glStrTmp));
+            }
+            outNumExtsI.set(JAVA_INT, 0L, numExtsI);
+            outExtsI.set(ADDRESS, 0L, extsI);
         }
 
         return true;
@@ -211,7 +232,7 @@ public class GL {
             var exts = session.allocate(ADDRESS);
             var numExtsI = session.allocate(JAVA_INT);
             var extsI = session.allocate(ADDRESS);
-            if (!getExtensions(version, exts, numExtsI, extsI)) return false;
+            if (!getExtensions(session, version, exts, numExtsI, extsI)) return false;
 
             // (void) glad_gl_has_extension;
 
@@ -230,7 +251,7 @@ public class GL {
         if (version == null) return 0;
         for (var prefix : prefixes) {
             int len = prefix.length();
-            if (version.substring(0, len).startsWith(prefix)) {
+            if (version.startsWith(prefix)) {
                 version = version.substring(len);
                 break;
             }
