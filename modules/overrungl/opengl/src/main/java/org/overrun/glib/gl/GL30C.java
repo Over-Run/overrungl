@@ -17,7 +17,7 @@ import static org.overrun.glib.gl.GL.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GL30C extends GL21C {
+public sealed class GL30C extends GL21C permits GL31C {
     @Nullable
     public static MethodHandle
         glBeginConditionalRender, glBeginTransformFeedback,
@@ -89,7 +89,6 @@ public final class GL30C extends GL21C {
     }
 
     static void load(GLLoadFunc load) {
-        if (!Ver30) return;
         glBeginConditionalRender = downcallSafe(load.invoke("glBeginConditionalRender"), dIIV);
         glBeginTransformFeedback = downcallSafe(load.invoke("glBeginTransformFeedback"), dIV);
         glBindBufferBase = downcallSafe(load.invoke("glBindBufferBase"), dIIIV);
@@ -153,27 +152,27 @@ public final class GL30C extends GL21C {
         glUniform3uiv = downcallSafe(load.invoke("glUniform3uiv"), dIIPV);
         glUniform4ui = downcallSafe(load.invoke("glUniform4ui"), dIIIIIV);
         glUniform4uiv = downcallSafe(load.invoke("glUniform4uiv"), dIIPV);
-        glVertexAttribI1i = downcallSafe(load.invoke("glVertexAttribI1i"), );
-        glVertexAttribI1iv = downcallSafe(load.invoke("glVertexAttribI1iv"), );
-        glVertexAttribI1ui = downcallSafe(load.invoke("glVertexAttribI1ui"), );
-        glVertexAttribI1uiv = downcallSafe(load.invoke("glVertexAttribI1uiv"), );
-        glVertexAttribI2i = downcallSafe(load.invoke("glVertexAttribI2i"), );
-        glVertexAttribI2iv = downcallSafe(load.invoke("glVertexAttribI2iv"), );
-        glVertexAttribI2ui = downcallSafe(load.invoke("glVertexAttribI2ui"), );
-        glVertexAttribI2uiv = downcallSafe(load.invoke("glVertexAttribI2uiv"), );
-        glVertexAttribI3i = downcallSafe(load.invoke("glVertexAttribI3i"), );
-        glVertexAttribI3iv = downcallSafe(load.invoke("glVertexAttribI3iv"), );
-        glVertexAttribI3ui = downcallSafe(load.invoke("glVertexAttribI3ui"), );
-        glVertexAttribI3uiv = downcallSafe(load.invoke("glVertexAttribI3uiv"), );
-        glVertexAttribI4bv = downcallSafe(load.invoke("glVertexAttribI4bv"), );
-        glVertexAttribI4i = downcallSafe(load.invoke("glVertexAttribI4i"), );
-        glVertexAttribI4iv = downcallSafe(load.invoke("glVertexAttribI4iv"), );
-        glVertexAttribI4sv = downcallSafe(load.invoke("glVertexAttribI4sv"), );
-        glVertexAttribI4ubv = downcallSafe(load.invoke("glVertexAttribI4ubv"), );
-        glVertexAttribI4ui = downcallSafe(load.invoke("glVertexAttribI4ui"), );
-        glVertexAttribI4uiv = downcallSafe(load.invoke("glVertexAttribI4uiv"), );
-        glVertexAttribI4usv = downcallSafe(load.invoke("glVertexAttribI4usv"), );
-        glVertexAttribIPointer = downcallSafe(load.invoke("glVertexAttribIPointer"), );
+        glVertexAttribI1i = downcallSafe(load.invoke("glVertexAttribI1i"), dIIV);
+        glVertexAttribI1iv = downcallSafe(load.invoke("glVertexAttribI1iv"), dIPV);
+        glVertexAttribI1ui = downcallSafe(load.invoke("glVertexAttribI1ui"), dIIV);
+        glVertexAttribI1uiv = downcallSafe(load.invoke("glVertexAttribI1uiv"), dIPV);
+        glVertexAttribI2i = downcallSafe(load.invoke("glVertexAttribI2i"), dIIIV);
+        glVertexAttribI2iv = downcallSafe(load.invoke("glVertexAttribI2iv"), dIPV);
+        glVertexAttribI2ui = downcallSafe(load.invoke("glVertexAttribI2ui"), dIIIV);
+        glVertexAttribI2uiv = downcallSafe(load.invoke("glVertexAttribI2uiv"), dIPV);
+        glVertexAttribI3i = downcallSafe(load.invoke("glVertexAttribI3i"), dIIIIV);
+        glVertexAttribI3iv = downcallSafe(load.invoke("glVertexAttribI3iv"), dIPV);
+        glVertexAttribI3ui = downcallSafe(load.invoke("glVertexAttribI3ui"), dIIIIV);
+        glVertexAttribI3uiv = downcallSafe(load.invoke("glVertexAttribI3uiv"), dIPV);
+        glVertexAttribI4bv = downcallSafe(load.invoke("glVertexAttribI4bv"), dIPV);
+        glVertexAttribI4i = downcallSafe(load.invoke("glVertexAttribI4i"), dIIIIIV);
+        glVertexAttribI4iv = downcallSafe(load.invoke("glVertexAttribI4iv"), dIPV);
+        glVertexAttribI4sv = downcallSafe(load.invoke("glVertexAttribI4sv"), dIPV);
+        glVertexAttribI4ubv = downcallSafe(load.invoke("glVertexAttribI4ubv"), dIPV);
+        glVertexAttribI4ui = downcallSafe(load.invoke("glVertexAttribI4ui"), dIIIIIV);
+        glVertexAttribI4uiv = downcallSafe(load.invoke("glVertexAttribI4uiv"), dIPV);
+        glVertexAttribI4usv = downcallSafe(load.invoke("glVertexAttribI4usv"), dIPV);
+        glVertexAttribIPointer = downcallSafe(load.invoke("glVertexAttribIPointer"), dIIIIPV);
     }
 
     public static void beginConditionalRender(int id, int mode) {
@@ -1031,6 +1030,264 @@ public final class GL30C extends GL21C {
     public static void uniform4uiv(int location, int[] value) {
         try (var session = MemorySession.openShared()) {
             uniform4uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+        }
+    }
+
+    public static void vertexAttribI1i(int index, int x) {
+        try {
+            check(glVertexAttribI1i).invoke(index, x);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI1iv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI1iv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI1iv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI1iv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI1ui(int index, int x) {
+        try {
+            check(glVertexAttribI1ui).invoke(index, x);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI1uiv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI1uiv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI1uiv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI1uiv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI2i(int index, int x, int y) {
+        try {
+            check(glVertexAttribI2i).invoke(index, x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI2iv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI2iv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI2iv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI2iv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI2ui(int index, int x, int y) {
+        try {
+            check(glVertexAttribI2ui).invoke(index, x, y);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI2uiv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI2uiv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI2uiv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI2uiv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI3i(int index, int x, int y, int z) {
+        try {
+            check(glVertexAttribI3i).invoke(index, x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI3iv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI3iv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI3iv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI3iv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI3ui(int index, int x, int y, int z) {
+        try {
+            check(glVertexAttribI3ui).invoke(index, x, y, z);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI3uiv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI3uiv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI3uiv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI3uiv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI4bv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI4bv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4bv(int index, byte[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI4bv(index, session.allocateArray(JAVA_BYTE, v));
+        }
+    }
+
+    public static void vertexAttribI4i(int index, int x, int y, int z, int w) {
+        try {
+            check(glVertexAttribI4i).invoke(index, x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4iv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI4iv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4iv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI4iv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI4sv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI4sv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4sv(int index, short[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI4sv(index, session.allocateArray(JAVA_SHORT, v));
+        }
+    }
+
+    public static void vertexAttribI4ubv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI4ubv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4ubv(int index, byte[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI4ubv(index, session.allocateArray(JAVA_BYTE, v));
+        }
+    }
+
+    public static void vertexAttribI4ui(int index, int x, int y, int z, int w) {
+        try {
+            check(glVertexAttribI4ui).invoke(index, x, y, z, w);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4uiv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI4uiv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4uiv(int index, int[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI4uiv(index, session.allocateArray(JAVA_INT, v));
+        }
+    }
+
+    public static void vertexAttribI4usv(int index, Addressable v) {
+        try {
+            check(glVertexAttribI4usv).invoke(index, v);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribI4usv(int index, short[] v) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribI4usv(index, session.allocateArray(JAVA_SHORT, v));
+        }
+    }
+
+    public static void vertexAttribIPointer(int index, int size, int type, int stride, Addressable pointer) {
+        try {
+            check(glVertexAttribIPointer).invoke(index, size, type, stride, pointer);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void vertexAttribIPointer(int index, int size, int type, int stride, byte[] pointer) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
+        }
+    }
+
+    public static void vertexAttribIPointer(int index, int size, int type, int stride, short[] pointer) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
+        }
+    }
+
+    public static void vertexAttribIPointer(int index, int size, int type, int stride, int[] pointer) {
+        try (var session = MemorySession.openShared()) {
+            vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_INT, pointer));
         }
     }
 }

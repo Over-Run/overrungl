@@ -80,6 +80,10 @@ public class GL {
     static final FunctionDescriptor dIIIIIV = ofDescriptor("IIIIIV");
     static final FunctionDescriptor dIIIIPV = ofDescriptor("IIIIPV");
     static final FunctionDescriptor dIIIJJV = ofDescriptor("IIIJJV");
+    static final FunctionDescriptor dIIIPIV = ofDescriptor("IIIPIV");
+    static final FunctionDescriptor dIIIPPV = ofDescriptor("IIIPPV");
+    static final FunctionDescriptor dIIJJJV = ofDescriptor("IIJJJV");
+    static final FunctionDescriptor dIIPIPV = ofDescriptor("IIPIPV");
     static final FunctionDescriptor dIPIPIV = ofDescriptor("IPIPIV");
     static final FunctionDescriptor dISSSSV = ofDescriptor("ISSSSV");
     static final FunctionDescriptor dIZZZZV = ofDescriptor("IZZZZV");
@@ -130,11 +134,18 @@ public class GL {
         return FunctionDescriptor.of(ofValue(str.charAt(len - 1)), layouts);
     }
 
+    /**
+     * The OpenGL version available status
+     */
     public static boolean
         Ver10, Ver11, Ver12, Ver13, Ver14, Ver15,
         Ver20, Ver21,
         Ver30, Ver31, Ver32, Ver33,
         Ver40, Ver41, Ver42, Ver43, Ver44, Ver45, Ver46;
+    /**
+     * Is forward compatible
+     */
+    public static boolean forwardCompatible;
 
     @NotNull
     @Contract(value = "null -> fail; !null -> param1", pure = true)
@@ -184,6 +195,8 @@ public class GL {
         if (GL10C.glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
 
+        GL.forwardCompatible = forwardCompatible;
+
         GL10C.load(load);
         GL11C.load(load);
         GL12C.load(load);
@@ -193,6 +206,7 @@ public class GL {
         GL20C.load(load);
         GL21C.load(load);
         GL30C.load(load);
+        GL31C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -303,7 +317,7 @@ public class GL {
         Ver20 = (major == 2 && minor >= 0) || major > 2 || GL20C.isSupported();
         Ver21 = (major == 2 && minor >= 1) || major > 2 || GL21C.isSupported();
         Ver30 = (major == 3 && minor >= 0) || major > 3 || GL30C.isSupported();
-        Ver31 = (major == 3 && minor >= 1) || major > 3;
+        Ver31 = (major == 3 && minor >= 1) || major > 3 || GL31C.isSupported();
         Ver32 = (major == 3 && minor >= 2) || major > 3;
         Ver33 = (major == 3 && minor >= 3) || major > 3;
         Ver40 = (major == 4 && minor >= 0) || major > 4;
