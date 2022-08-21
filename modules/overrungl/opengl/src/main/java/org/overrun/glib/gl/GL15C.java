@@ -100,25 +100,25 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void bufferData(int target, int[] data, int usage) {
         try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 4, session.allocateArray(JAVA_INT, data), usage);
+            bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), usage);
         }
     }
 
     public static void bufferData(int target, long[] data, int usage) {
         try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 8, session.allocateArray(JAVA_LONG, data), usage);
+            bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), usage);
         }
     }
 
     public static void bufferData(int target, float[] data, int usage) {
         try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 4, session.allocateArray(JAVA_FLOAT, data), usage);
+            bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), usage);
         }
     }
 
     public static void bufferData(int target, double[] data, int usage) {
         try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 8, session.allocateArray(JAVA_DOUBLE, data), usage);
+            bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), usage);
         }
     }
 
@@ -138,31 +138,31 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void bufferSubData(int target, long offset, short[] data) {
         try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_SHORT, data));
+            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
         }
     }
 
     public static void bufferSubData(int target, long offset, int[] data) {
         try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 4, session.allocateArray(JAVA_INT, data));
+            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
         }
     }
 
     public static void bufferSubData(int target, long offset, long[] data) {
         try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 8, session.allocateArray(JAVA_LONG, data));
+            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
         }
     }
 
     public static void bufferSubData(int target, long offset, float[] data) {
         try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 4, session.allocateArray(JAVA_FLOAT, data));
+            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
         }
     }
 
     public static void bufferSubData(int target, long offset, double[] data) {
         try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 8, session.allocateArray(JAVA_DOUBLE, data));
+            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
         }
     }
 
@@ -322,31 +322,31 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getBufferSubData(int target, long offset, short[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_SHORT, data));
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
         }
     }
 
     public static void getBufferSubData(int target, long offset, int[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 4, session.allocateArray(JAVA_INT, data));
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
         }
     }
 
     public static void getBufferSubData(int target, long offset, long[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 8, session.allocateArray(JAVA_LONG, data));
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
         }
     }
 
     public static void getBufferSubData(int target, long offset, float[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 4, session.allocateArray(JAVA_FLOAT, data));
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
         }
     }
 
     public static void getBufferSubData(int target, long offset, double[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 8, session.allocateArray(JAVA_DOUBLE, data));
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
         }
     }
 

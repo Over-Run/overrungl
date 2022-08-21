@@ -17,7 +17,7 @@ import static org.overrun.glib.gl.GL.*;
  * @author squid233
  * @since 0.1.0
  */
-public non-sealed class GL31C extends GL30C {
+public sealed class GL31C extends GL30C permits GL32C {
     @Nullable
     public static MethodHandle
         glCopyBufferSubData,

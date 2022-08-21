@@ -409,7 +409,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getProgramInfoLog(int program) {
-        return getProgramInfoLog(program, getInteger(GLConstC.GL_INFO_LOG_LENGTH), null);
+        return getProgramInfoLog(program, getProgrami(program, GLConstC.GL_INFO_LOG_LENGTH), null);
     }
 
     public static void getProgramiv(int program, int pname, Addressable params) {
@@ -463,7 +463,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getShaderInfoLog(int shader) {
-        return getShaderInfoLog(shader, getInteger(GLConstC.GL_INFO_LOG_LENGTH), null);
+        return getShaderInfoLog(shader, getShaderi(shader, GLConstC.GL_INFO_LOG_LENGTH), null);
     }
 
     public static void getShaderSource(int shader, int bufSize, Addressable length, Addressable source) {
@@ -491,7 +491,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getShaderSource(int shader) {
-        return getShaderSource(shader, getInteger(GLConstC.GL_SHADER_SOURCE_LENGTH), null);
+        return getShaderSource(shader, getShaderi(shader, GLConstC.GL_SHADER_SOURCE_LENGTH), null);
     }
 
     public static void getShaderiv(int shader, int pname, Addressable params) {

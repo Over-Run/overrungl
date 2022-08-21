@@ -2,7 +2,10 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
 /**
@@ -23,7 +26,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWDropFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, Addressable.class);
+    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, MemoryAddress.class);
 
     /**
      * The function pointer type for path drop callbacks.
@@ -33,7 +36,7 @@ public interface IGLFWDropFun extends ICallback {
      */
     void invoke(MemoryAddress window, String[] paths);
 
-    default void ninvoke(MemoryAddress window, int pathCount, Addressable paths) {
+    default void ninvoke(MemoryAddress window, int pathCount, MemoryAddress paths) {
         String[] pathArr = new String[pathCount];
         for (int i = 0; i < pathCount; i++) {
             var ptr = paths.address().getAtIndex(ValueLayout.ADDRESS, i);

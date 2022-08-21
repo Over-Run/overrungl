@@ -28,6 +28,7 @@ public class GL {
     static final FunctionDescriptor dIZ = ofDescriptor("IZ");
     static final FunctionDescriptor dPV = FunctionDescriptor.ofVoid(ADDRESS);
     static final FunctionDescriptor dSV = FunctionDescriptor.ofVoid(JAVA_SHORT);
+    static final FunctionDescriptor dPZ = ofDescriptor("PZ");
     static final FunctionDescriptor dZV = FunctionDescriptor.ofVoid(JAVA_BOOLEAN);
     static final FunctionDescriptor dDDV = ofDescriptor("DDV");
     static final FunctionDescriptor dFFV = ofDescriptor("FFV");
@@ -55,6 +56,8 @@ public class GL {
     static final FunctionDescriptor dIPPV = ofDescriptor("IPPV");
     static final FunctionDescriptor dIPPZ = ofDescriptor("IPPZ");
     static final FunctionDescriptor dISSV = ofDescriptor("ISSV");
+    static final FunctionDescriptor dPIJI = ofDescriptor("PIJI");
+    static final FunctionDescriptor dPIJV = ofDescriptor("PIJV");
     static final FunctionDescriptor dSSSV = ofDescriptor("SSSV");
     static final FunctionDescriptor dBBBBV = ofDescriptor("BBBBV");
     static final FunctionDescriptor dDDDDV = ofDescriptor("DDDDV");
@@ -66,6 +69,7 @@ public class GL {
     static final FunctionDescriptor dIIFIV = ofDescriptor("IIFIV");
     static final FunctionDescriptor dIIPIV = ofDescriptor("IIPIV");
     static final FunctionDescriptor dIIPPV = ofDescriptor("IIPPV");
+    static final FunctionDescriptor dIIZIV = ofDescriptor("IIZIV");
     static final FunctionDescriptor dIIZPV = ofDescriptor("IIZPV");
     static final FunctionDescriptor dIJJIP = ofDescriptor("IJJIV");
     static final FunctionDescriptor dIJJPV = ofDescriptor("IJJPV");
@@ -87,6 +91,7 @@ public class GL {
     static final FunctionDescriptor dIPIPIV = ofDescriptor("IPIPIV");
     static final FunctionDescriptor dISSSSV = ofDescriptor("ISSSSV");
     static final FunctionDescriptor dIZZZZV = ofDescriptor("IZZZZV");
+    static final FunctionDescriptor dPIIPPV = ofDescriptor("PIIPPV");
     static final FunctionDescriptor dDDDDDDV = ofDescriptor("DDDDDDV");
     static final FunctionDescriptor dIDDIDDV = ofDescriptor("IDDIDDV");
     static final FunctionDescriptor dIDDIIPV = ofDescriptor("IDDIIPV");
@@ -94,10 +99,15 @@ public class GL {
     static final FunctionDescriptor dIFFIIPV = ofDescriptor("IFFIIPV");
     static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
     static final FunctionDescriptor dIIIIIPV = ofDescriptor("IIIIIPV");
+    static final FunctionDescriptor dIIIIIZV = ofDescriptor("IIIIIZV");
+    static final FunctionDescriptor dIIIPIIV = ofDescriptor("IIIPIIV");
     static final FunctionDescriptor dIIIZIPV = ofDescriptor("IIIZIPV");
+    static final FunctionDescriptor dIPIPIPV = ofDescriptor("IPIPIPV");
     static final FunctionDescriptor dIIFFFFPV = ofDescriptor("IIFFFFPV");
     static final FunctionDescriptor dIIIIIIIV = ofDescriptor("IIIIIIIV");
     static final FunctionDescriptor dIIIIIIPV = ofDescriptor("IIIIIIPV");
+    static final FunctionDescriptor dIIIIIIZV = ofDescriptor("IIIIIIZV");
+    static final FunctionDescriptor dIIIIIPIV = ofDescriptor("IIIIIPIV");
     static final FunctionDescriptor dIIIPPPPV = ofDescriptor("IIIPPPPV");
     static final FunctionDescriptor dIIIIIIIIV = ofDescriptor("IIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIPV = ofDescriptor("IIIIIIIPV");
@@ -207,6 +217,8 @@ public class GL {
         GL21C.load(load);
         GL30C.load(load);
         GL31C.load(load);
+        GL32C.load(load);
+        GL33C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -318,8 +330,8 @@ public class GL {
         Ver21 = (major == 2 && minor >= 1) || major > 2 || GL21C.isSupported();
         Ver30 = (major == 3 && minor >= 0) || major > 3 || GL30C.isSupported();
         Ver31 = (major == 3 && minor >= 1) || major > 3 || GL31C.isSupported();
-        Ver32 = (major == 3 && minor >= 2) || major > 3;
-        Ver33 = (major == 3 && minor >= 3) || major > 3;
+        Ver32 = (major == 3 && minor >= 2) || major > 3 || GL32C.isSupported();
+        Ver33 = (major == 3 && minor >= 3) || major > 3 || GL33C.isSupported();
         Ver40 = (major == 4 && minor >= 0) || major > 4;
         Ver41 = (major == 4 && minor >= 1) || major > 4;
         Ver42 = (major == 4 && minor >= 2) || major > 4;

@@ -1,5 +1,6 @@
 project.ext.subName = ''
 project(':glfw').ext.subName = '-glfw'
+project(':opengl').ext.subName = '-opengl'
 
 allprojects {
     apply plugin: 'java-library'

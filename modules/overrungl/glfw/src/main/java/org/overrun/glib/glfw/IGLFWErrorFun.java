@@ -2,7 +2,10 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodType;
 
 /**
@@ -24,7 +27,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWErrorFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, int.class, Addressable.class);
+    MethodType MTYPE = MethodType.methodType(void.class, int.class, MemoryAddress.class);
 
     /**
      * The function pointer type for error callbacks.
@@ -34,7 +37,7 @@ public interface IGLFWErrorFun extends ICallback {
      */
     void invoke(int errorCode, String description);
 
-    default void ninvoke(int errorCode, Addressable description) {
+    default void ninvoke(int errorCode, MemoryAddress description) {
         invoke(errorCode, description.address().getUtf8String(0L));
     }
 

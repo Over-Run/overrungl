@@ -33,7 +33,7 @@ public final class GameLib {
             // 2. Load from natives directory
             var file = new File(System.getProperty("overrungl.natives", "") + path);
             if (!file.exists()) {
-                throw new RuntimeException("File not found: " + file + "; Try to set property overrungl.natives to a valid path");
+                throw new RuntimeException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
             }
             uri = file.toURI();
         }
