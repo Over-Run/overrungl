@@ -1,6 +1,6 @@
 package org.overrun.glib.demo.glfw;
 
-import org.overrun.glib.gl.GL;
+import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.gl.GL10;
 import org.overrun.glib.gl.GL10C;
 import org.overrun.glib.glfw.Callbacks;
@@ -72,7 +72,7 @@ public final class GLFWTest {
     }
 
     private void loop() {
-        if (GL.load(GLFW::getProcAddress) == 0)
+        if (GLCaps.load(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL10C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

@@ -9,7 +9,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
-import static org.overrun.glib.gl.GL.*;
+import static org.overrun.glib.gl.GLCaps.*;
 
 /**
  * The OpenGL 3.2 core profile functions.

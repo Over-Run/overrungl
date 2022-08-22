@@ -1,6 +1,6 @@
 package org.overrun.glib.demo.opengl;
 
-import org.overrun.glib.gl.GL;
+import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.gl.GL33C;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
@@ -79,7 +79,7 @@ public class GL33Test {
     }
 
     private void loop() {
-        if (GL.load(true, GLFW::getProcAddress) == 0)
+        if (GLCaps.load(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL33C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

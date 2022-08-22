@@ -15,7 +15,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GL {
+public class GLCaps {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
     static final FunctionDescriptor dI = FunctionDescriptor.of(JAVA_INT);
     static final FunctionDescriptor dV = FunctionDescriptor.ofVoid();
@@ -205,7 +205,7 @@ public class GL {
         if (GL10C.glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
 
-        GL.forwardCompatible = forwardCompatible;
+        GLCaps.forwardCompatible = forwardCompatible;
 
         GL10C.load(load);
         GL11C.load(load);

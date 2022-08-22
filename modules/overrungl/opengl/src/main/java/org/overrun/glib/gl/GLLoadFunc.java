@@ -6,7 +6,7 @@ import java.lang.foreign.MemoryAddress;
  * The OpenGL loading function.
  *
  * <h3>Example</h3>
- * {@code GL.load(GLFW::getProcAddress)}
+ * {@code GLCaps.load(GLFW::getProcAddress)}
  *
  * @author squid233
  * @since 0.1.0

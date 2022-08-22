@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.foreign.Addressable;
 import java.lang.invoke.MethodHandle;
 
-import static org.overrun.glib.gl.GL.*;
+import static org.overrun.glib.gl.GLCaps.*;
 
 /**
  * The OpenGL 1.3 forward compatible functions.

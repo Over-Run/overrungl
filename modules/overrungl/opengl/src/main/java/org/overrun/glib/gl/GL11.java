@@ -7,7 +7,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
-import static org.overrun.glib.gl.GL.*;
+import static org.overrun.glib.gl.GLCaps.*;
 
 /**
  * The OpenGL 1.1 functions.
