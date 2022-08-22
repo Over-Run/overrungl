@@ -15,7 +15,7 @@ import static org.overrun.glib.gl.GLCaps.*;
  * @author squid233
  * @since 0.1.0
  */
-public non-sealed class GL33C extends GL32C {
+public sealed class GL33C extends GL32C permits GL {
     @Nullable
     public static MethodHandle
         glBindFragDataLocationIndexed, glBindSampler,

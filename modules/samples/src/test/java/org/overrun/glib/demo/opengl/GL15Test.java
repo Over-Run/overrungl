@@ -1,8 +1,8 @@
 package org.overrun.glib.demo.opengl;
 
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GL11;
-import org.overrun.glib.gl.GL15C;
+import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 
@@ -50,7 +50,7 @@ public final class GL15Test {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL15C.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             try (var session = MemorySession.openShared()) {
@@ -75,37 +75,37 @@ public final class GL15Test {
         if (GLCaps.load(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
-        GL15C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        int vbo = GL15C.genBuffer();
-        GL15C.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL15C.bufferData(GL_ARRAY_BUFFER, new float[]{
+        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        int vbo = GL.genBuffer();
+        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
+        GL.bufferData(GL_ARRAY_BUFFER, new float[]{
             // Vertex          Color
             0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
             0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
         }, GL_STATIC_DRAW);
-        GL15C.bindBuffer(GL_ARRAY_BUFFER, 0);
+        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
 
         while (!GLFW.windowShouldClose(window)) {
-            GL15C.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL15C.bindBuffer(GL_ARRAY_BUFFER, vbo);
+            GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
             GL11.enableClientState(GL_VERTEX_ARRAY);
             GL11.enableClientState(GL_COLOR_ARRAY);
             GL11.vertexPointer(3, GL_FLOAT, 24, MemoryAddress.NULL);
             GL11.colorPointer(3, GL_FLOAT, 24, MemoryAddress.ofLong(12L));
-            GL15C.drawArrays(GL_TRIANGLES, 0, 3);
+            GL.drawArrays(GL_TRIANGLES, 0, 3);
             GL11.disableClientState(GL_VERTEX_ARRAY);
             GL11.disableClientState(GL_COLOR_ARRAY);
-            GL15C.bindBuffer(GL_ARRAY_BUFFER, 0);
+            GL.bindBuffer(GL_ARRAY_BUFFER, 0);
 
             GLFW.swapBuffers(window);
 
             GLFW.pollEvents();
         }
 
-        GL15C.deleteBuffer(vbo);
+        GL.deleteBuffer(vbo);
     }
 
     public static void main(String[] args) {

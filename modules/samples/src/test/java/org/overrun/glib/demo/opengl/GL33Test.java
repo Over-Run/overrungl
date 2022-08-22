@@ -1,7 +1,7 @@
 package org.overrun.glib.demo.opengl;
 
+import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLCaps;
-import org.overrun.glib.gl.GL33C;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 
@@ -57,7 +57,7 @@ public class GL33Test {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL33C.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             try (var session = MemorySession.openShared()) {
@@ -82,11 +82,11 @@ public class GL33Test {
         if (GLCaps.load(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
-        GL33C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        int program = GL33C.createProgram();
-        int vsh = GL33C.createShader(GL_VERTEX_SHADER);
-        int fsh = GL33C.createShader(GL_FRAGMENT_SHADER);
-        GL33C.shaderSource(vsh, """
+        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        int program = GL.createProgram();
+        int vsh = GL.createShader(GL_VERTEX_SHADER);
+        int fsh = GL.createShader(GL_FRAGMENT_SHADER);
+        GL.shaderSource(vsh, """
             #version 330
 
             layout (location = 0) in vec3 position;
@@ -102,7 +102,7 @@ public class GL33Test {
                 vertexColor = color;
             }
             """);
-        GL33C.shaderSource(fsh, """
+        GL.shaderSource(fsh, """
             #version 330
 
             in vec3 vertexColor;
@@ -113,40 +113,40 @@ public class GL33Test {
                 fragColor = vec4(vertexColor, 1.0);
             }
             """);
-        GL33C.compileShader(vsh);
-        GL33C.compileShader(fsh);
-        GL33C.attachShader(program, vsh);
-        GL33C.attachShader(program, fsh);
-        GL33C.linkProgram(program);
-        GL33C.detachShader(program, vsh);
-        GL33C.detachShader(program, fsh);
-        GL33C.deleteShader(vsh);
-        GL33C.deleteShader(fsh);
+        GL.compileShader(vsh);
+        GL.compileShader(fsh);
+        GL.attachShader(program, vsh);
+        GL.attachShader(program, fsh);
+        GL.linkProgram(program);
+        GL.detachShader(program, vsh);
+        GL.detachShader(program, fsh);
+        GL.deleteShader(vsh);
+        GL.deleteShader(fsh);
 
-        int rotationMat = GL33C.getUniformLocation(program, "rotationMat");
+        int rotationMat = GL.getUniformLocation(program, "rotationMat");
 
-        int vao = GL33C.genVertexArray();
-        GL33C.bindVertexArray(vao);
-        int vbo = GL33C.genBuffer();
-        GL33C.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL33C.bufferData(GL_ARRAY_BUFFER, new float[]{
+        int vao = GL.genVertexArray();
+        GL.bindVertexArray(vao);
+        int vbo = GL.genBuffer();
+        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
+        GL.bufferData(GL_ARRAY_BUFFER, new float[]{
             // Vertex          Color
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
             0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
         }, GL_STATIC_DRAW);
-        int ebo = GL33C.genBuffer();
-        GL33C.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        GL33C.bufferData(GL_ELEMENT_ARRAY_BUFFER, new byte[]{
+        int ebo = GL.genBuffer();
+        GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+        GL.bufferData(GL_ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 2, 3, 0
         }, GL_STATIC_DRAW);
-        GL33C.enableVertexAttribArray(0);
-        GL33C.enableVertexAttribArray(1);
-        GL33C.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
-        GL33C.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12L));
-        int mbo = GL33C.genBuffer();
-        GL33C.bindBuffer(GL_ARRAY_BUFFER, mbo);
+        GL.enableVertexAttribArray(0);
+        GL.enableVertexAttribArray(1);
+        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
+        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12L));
+        int mbo = GL.genBuffer();
+        GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
         try (var session = MemorySession.openShared()) {
             var iseq = MemoryLayout.sequenceLayout(
                 INSTANCE_COUNT,
@@ -200,22 +200,22 @@ public class GL33Test {
                 handle32.set(matrices, i, 0.0f);
                 handle33.set(matrices, i, 1.0f);
             }
-            GL33C.bufferData(GL_ARRAY_BUFFER, matrices.byteSize(), matrices, GL_STATIC_DRAW);
+            GL.bufferData(GL_ARRAY_BUFFER, matrices.byteSize(), matrices, GL_STATIC_DRAW);
         }
-        GL33C.enableVertexAttribArray(2);
-        GL33C.enableVertexAttribArray(3);
-        GL33C.enableVertexAttribArray(4);
-        GL33C.enableVertexAttribArray(5);
-        GL33C.vertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemoryAddress.NULL);
-        GL33C.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(16L));
-        GL33C.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(32L));
-        GL33C.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(48L));
-        GL33C.vertexAttribDivisor(2, 1);
-        GL33C.vertexAttribDivisor(3, 1);
-        GL33C.vertexAttribDivisor(4, 1);
-        GL33C.vertexAttribDivisor(5, 1);
-        GL33C.bindBuffer(GL_ARRAY_BUFFER, 0);
-        GL33C.bindVertexArray(0);
+        GL.enableVertexAttribArray(2);
+        GL.enableVertexAttribArray(3);
+        GL.enableVertexAttribArray(4);
+        GL.enableVertexAttribArray(5);
+        GL.vertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemoryAddress.NULL);
+        GL.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(16L));
+        GL.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(32L));
+        GL.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(48L));
+        GL.vertexAttribDivisor(2, 1);
+        GL.vertexAttribDivisor(3, 1);
+        GL.vertexAttribDivisor(4, 1);
+        GL.vertexAttribDivisor(5, 1);
+        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+        GL.bindVertexArray(0);
 
         var pRotationMat = MemorySession.openImplicit().allocateArray(JAVA_FLOAT, 4 * 4);
         pRotationMat.set(JAVA_FLOAT, 0, 1.0f);
@@ -241,10 +241,10 @@ public class GL33Test {
         while (!GLFW.windowShouldClose(window)) {
             time = GLFW.getTime();
 
-            GL33C.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL33C.useProgram(program);
+            GL.useProgram(program);
 
             double rotXY = GLFW.getTime() * 0.01;
             //region Rotation matrix
@@ -264,11 +264,11 @@ public class GL33Test {
             pRotationMat.setAtIndex(JAVA_FLOAT, 3, nm03);
             //endregion
 
-            GL33C.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
-            GL33C.bindVertexArray(vao);
-            GL33C.drawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemoryAddress.NULL, INSTANCE_COUNT);
-            GL33C.bindVertexArray(0);
-            GL33C.useProgram(0);
+            GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
+            GL.bindVertexArray(vao);
+            GL.drawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemoryAddress.NULL, INSTANCE_COUNT);
+            GL.bindVertexArray(0);
+            GL.useProgram(0);
 
             GLFW.swapBuffers(window);
 
@@ -280,11 +280,11 @@ public class GL33Test {
             GLFW.setWindowTitle(window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
         }
 
-        GL33C.deleteProgram(program);
-        GL33C.deleteVertexArray(vao);
-        GL33C.deleteBuffer(vbo);
-        GL33C.deleteBuffer(ebo);
-        GL33C.deleteBuffer(mbo);
+        GL.deleteProgram(program);
+        GL.deleteVertexArray(vao);
+        GL.deleteBuffer(vbo);
+        GL.deleteBuffer(ebo);
+        GL.deleteBuffer(mbo);
     }
 
     public static void main(String[] args) {

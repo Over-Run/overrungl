@@ -1,8 +1,8 @@
 package org.overrun.glib.demo.glfw;
 
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GL10;
-import org.overrun.glib.gl.GL10C;
+import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 
@@ -50,7 +50,7 @@ public final class GLFWTest {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL10C.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             try (var session = MemorySession.openShared()) {
@@ -75,10 +75,10 @@ public final class GLFWTest {
         if (GLCaps.load(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
-        GL10C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
         while (!GLFW.windowShouldClose(window)) {
-            GL10C.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
             GL10.begin(GL_TRIANGLES);

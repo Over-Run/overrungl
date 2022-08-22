@@ -1,7 +1,7 @@
 package org.overrun.glib.demo.opengl;
 
+import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLCaps;
-import org.overrun.glib.gl.GL30C;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 
@@ -49,7 +49,7 @@ public final class GL30Test {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL30C.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             try (var session = MemorySession.openShared()) {
@@ -74,11 +74,11 @@ public final class GL30Test {
         if (GLCaps.load(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
-        GL30C.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        int program = GL30C.createProgram();
-        int vsh = GL30C.createShader(GL_VERTEX_SHADER);
-        int fsh = GL30C.createShader(GL_FRAGMENT_SHADER);
-        GL30C.shaderSource(vsh, """
+        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        int program = GL.createProgram();
+        int vsh = GL.createShader(GL_VERTEX_SHADER);
+        int fsh = GL.createShader(GL_FRAGMENT_SHADER);
+        GL.shaderSource(vsh, """
             #version 130
 
             in vec3 position;
@@ -91,7 +91,7 @@ public final class GL30Test {
                 vertexColor = color;
             }
             """);
-        GL30C.shaderSource(fsh, """
+        GL.shaderSource(fsh, """
             #version 130
 
             in vec3 vertexColor;
@@ -102,52 +102,52 @@ public final class GL30Test {
                 fragColor = vec4(vertexColor, 1.0);
             }
             """);
-        GL30C.compileShader(vsh);
-        GL30C.compileShader(fsh);
-        GL30C.attachShader(program, vsh);
-        GL30C.attachShader(program, fsh);
-        GL30C.bindAttribLocation(program, 0, "position");
-        GL30C.bindAttribLocation(program, 1, "color");
-        GL30C.linkProgram(program);
-        GL30C.detachShader(program, vsh);
-        GL30C.detachShader(program, fsh);
-        GL30C.deleteShader(vsh);
-        GL30C.deleteShader(fsh);
-        int vao = GL30C.genVertexArray();
-        GL30C.bindVertexArray(vao);
-        int vbo = GL30C.genBuffer();
-        GL30C.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL30C.bufferData(GL_ARRAY_BUFFER, new float[]{
+        GL.compileShader(vsh);
+        GL.compileShader(fsh);
+        GL.attachShader(program, vsh);
+        GL.attachShader(program, fsh);
+        GL.bindAttribLocation(program, 0, "position");
+        GL.bindAttribLocation(program, 1, "color");
+        GL.linkProgram(program);
+        GL.detachShader(program, vsh);
+        GL.detachShader(program, fsh);
+        GL.deleteShader(vsh);
+        GL.deleteShader(fsh);
+        int vao = GL.genVertexArray();
+        GL.bindVertexArray(vao);
+        int vbo = GL.genBuffer();
+        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
+        GL.bufferData(GL_ARRAY_BUFFER, new float[]{
             // Vertex          Color
             0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
             0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
         }, GL_STATIC_DRAW);
-        GL30C.enableVertexAttribArray(0);
-        GL30C.enableVertexAttribArray(1);
-        GL30C.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
-        GL30C.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12L));
-        GL30C.bindBuffer(GL_ARRAY_BUFFER, 0);
-        GL30C.bindVertexArray(0);
+        GL.enableVertexAttribArray(0);
+        GL.enableVertexAttribArray(1);
+        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
+        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12L));
+        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+        GL.bindVertexArray(0);
 
         while (!GLFW.windowShouldClose(window)) {
-            GL30C.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL30C.useProgram(program);
-            GL30C.bindVertexArray(vao);
-            GL30C.drawArrays(GL_TRIANGLES, 0, 3);
-            GL30C.bindVertexArray(0);
-            GL30C.useProgram(0);
+            GL.useProgram(program);
+            GL.bindVertexArray(vao);
+            GL.drawArrays(GL_TRIANGLES, 0, 3);
+            GL.bindVertexArray(0);
+            GL.useProgram(0);
 
             GLFW.swapBuffers(window);
 
             GLFW.pollEvents();
         }
 
-        GL30C.deleteProgram(program);
-        GL30C.deleteVertexArray(vao);
-        GL30C.deleteBuffer(vbo);
+        GL.deleteProgram(program);
+        GL.deleteVertexArray(vao);
+        GL.deleteBuffer(vbo);
     }
 
     public static void main(String[] args) {
