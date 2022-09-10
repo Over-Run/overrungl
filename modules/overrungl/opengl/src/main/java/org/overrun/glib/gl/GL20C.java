@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
@@ -20,76 +44,40 @@ import static org.overrun.glib.gl.GLCaps.*;
 public sealed class GL20C extends GL15C permits GL21C {
     @Nullable
     public static MethodHandle
-        glAttachShader,
-        glBindAttribLocation, glBlendEquationSeparate,
-        glCompileShader,
-        glCreateProgram, glCreateShader,
-        glDeleteProgram, glDeleteShader,
-        glDetachShader, glDisableVertexAttribArray,
-        glDrawBuffers,
-        glEnableVertexAttribArray,
-        glGetActiveAttrib, glGetActiveUniform,
-        glGetAttachedShaders, glGetAttribLocation,
-        glGetProgramInfoLog, glGetProgramiv,
-        glGetShaderInfoLog, glGetShaderSource, glGetShaderiv,
-        glGetUniformLocation, glGetUniformfv, glGetUniformiv,
-        glGetVertexAttribPointerv, glGetVertexAttribdv,
-        glGetVertexAttribfv, glGetVertexAttribiv,
-        glIsProgram, glIsShader,
-        glLinkProgram,
-        glShaderSource,
-        glStencilFuncSeparate, glStencilMaskSeparate, glStencilOpSeparate,
-        glUniform1f, glUniform1fv,
-        glUniform1i, glUniform1iv,
-        glUniform2f, glUniform2fv,
-        glUniform2i, glUniform2iv,
-        glUniform3f, glUniform3fv,
-        glUniform3i, glUniform3iv,
-        glUniform4f, glUniform4fv,
-        glUniform4i, glUniform4iv,
-        glUniformMatrix2fv, glUniformMatrix3fv, glUniformMatrix4fv,
-        glUseProgram,
-        glValidateProgram,
-        glVertexAttrib1d, glVertexAttrib1dv,
-        glVertexAttrib1f, glVertexAttrib1fv,
-        glVertexAttrib1s, glVertexAttrib1sv,
-        glVertexAttrib2d, glVertexAttrib2dv,
-        glVertexAttrib2f, glVertexAttrib2fv,
-        glVertexAttrib2s, glVertexAttrib2sv,
-        glVertexAttrib3d, glVertexAttrib3dv,
-        glVertexAttrib3f, glVertexAttrib3fv,
-        glVertexAttrib3s, glVertexAttrib3sv,
-        glVertexAttrib4Nbv, glVertexAttrib4Niv, glVertexAttrib4Nsv,
-        glVertexAttrib4Nub, glVertexAttrib4Nubv,
-        glVertexAttrib4Nuiv, glVertexAttrib4Nusv, glVertexAttrib4bv,
-        glVertexAttrib4d, glVertexAttrib4dv,
-        glVertexAttrib4f, glVertexAttrib4fv, glVertexAttrib4iv,
-        glVertexAttrib4s, glVertexAttrib4sv,
-        glVertexAttrib4ubv, glVertexAttrib4uiv, glVertexAttrib4usv,
-        glVertexAttribPointer;
+        glAttachShader, glBindAttribLocation, glBlendEquationSeparate, glCompileShader, glCreateProgram, glCreateShader,
+        glDeleteProgram, glDeleteShader, glDetachShader, glDisableVertexAttribArray, glDrawBuffers,
+        glEnableVertexAttribArray, glGetActiveAttrib, glGetActiveUniform, glGetAttachedShaders, glGetAttribLocation,
+        glGetProgramInfoLog, glGetProgramiv, glGetShaderInfoLog, glGetShaderSource, glGetShaderiv, glGetUniformLocation,
+        glGetUniformfv, glGetUniformiv, glGetVertexAttribPointerv, glGetVertexAttribdv, glGetVertexAttribfv,
+        glGetVertexAttribiv, glIsProgram, glIsShader, glLinkProgram, glShaderSource, glStencilFuncSeparate,
+        glStencilMaskSeparate, glStencilOpSeparate, glUniform1f, glUniform1fv, glUniform1i, glUniform1iv, glUniform2f,
+        glUniform2fv, glUniform2i, glUniform2iv, glUniform3f, glUniform3fv, glUniform3i, glUniform3iv, glUniform4f,
+        glUniform4fv, glUniform4i, glUniform4iv, glUniformMatrix2fv, glUniformMatrix3fv, glUniformMatrix4fv,
+        glUseProgram, glValidateProgram, glVertexAttrib1d, glVertexAttrib1dv, glVertexAttrib1f, glVertexAttrib1fv,
+        glVertexAttrib1s, glVertexAttrib1sv, glVertexAttrib2d, glVertexAttrib2dv, glVertexAttrib2f, glVertexAttrib2fv,
+        glVertexAttrib2s, glVertexAttrib2sv, glVertexAttrib3d, glVertexAttrib3dv, glVertexAttrib3f, glVertexAttrib3fv,
+        glVertexAttrib3s, glVertexAttrib3sv, glVertexAttrib4Nbv, glVertexAttrib4Niv, glVertexAttrib4Nsv,
+        glVertexAttrib4Nub, glVertexAttrib4Nubv, glVertexAttrib4Nuiv, glVertexAttrib4Nusv, glVertexAttrib4bv,
+        glVertexAttrib4d, glVertexAttrib4dv, glVertexAttrib4f, glVertexAttrib4fv, glVertexAttrib4iv, glVertexAttrib4s,
+        glVertexAttrib4sv, glVertexAttrib4ubv, glVertexAttrib4uiv, glVertexAttrib4usv, glVertexAttribPointer;
 
     static boolean isSupported() {
-        return checkAll(glAttachShader, glBindAttribLocation, glBlendEquationSeparate,
-            glCompileShader, glCreateProgram, glCreateShader, glDeleteProgram, glDeleteShader,
-            glDetachShader, glDisableVertexAttribArray, glDrawBuffers, glEnableVertexAttribArray,
-            glGetActiveAttrib, glGetActiveUniform, glGetAttachedShaders, glGetAttribLocation,
-            glGetProgramInfoLog, glGetProgramiv, glGetShaderInfoLog, glGetShaderSource,
-            glGetShaderiv, glGetUniformLocation, glGetUniformfv, glGetUniformiv,
-            glGetVertexAttribPointerv, glGetVertexAttribdv, glGetVertexAttribfv,
-            glGetVertexAttribiv, glIsProgram, glIsShader, glLinkProgram, glShaderSource,
-            glStencilFuncSeparate, glStencilMaskSeparate, glStencilOpSeparate, glUniform1f,
-            glUniform1fv, glUniform1i, glUniform1iv, glUniform2f, glUniform2fv, glUniform2i,
-            glUniform2iv, glUniform3f, glUniform3fv, glUniform3i, glUniform3iv, glUniform4f,
-            glUniform4fv, glUniform4i, glUniform4iv, glUniformMatrix2fv, glUniformMatrix3fv,
-            glUniformMatrix4fv, glUseProgram, glValidateProgram, glVertexAttrib1d,
-            glVertexAttrib1dv, glVertexAttrib1f, glVertexAttrib1fv, glVertexAttrib1s,
-            glVertexAttrib1sv, glVertexAttrib2d, glVertexAttrib2dv, glVertexAttrib2f,
-            glVertexAttrib2fv, glVertexAttrib2s, glVertexAttrib2sv, glVertexAttrib3d,
-            glVertexAttrib3dv, glVertexAttrib3f, glVertexAttrib3fv, glVertexAttrib3s,
-            glVertexAttrib3sv, glVertexAttrib4Nbv, glVertexAttrib4Niv, glVertexAttrib4Nsv,
-            glVertexAttrib4Nub, glVertexAttrib4Nubv, glVertexAttrib4Nuiv, glVertexAttrib4Nusv,
-            glVertexAttrib4bv, glVertexAttrib4d, glVertexAttrib4dv, glVertexAttrib4f,
-            glVertexAttrib4fv, glVertexAttrib4iv, glVertexAttrib4s, glVertexAttrib4sv,
+        return checkAll(glAttachShader, glBindAttribLocation, glBlendEquationSeparate, glCompileShader, glCreateProgram,
+            glCreateShader, glDeleteProgram, glDeleteShader, glDetachShader, glDisableVertexAttribArray, glDrawBuffers,
+            glEnableVertexAttribArray, glGetActiveAttrib, glGetActiveUniform, glGetAttachedShaders, glGetAttribLocation,
+            glGetProgramInfoLog, glGetProgramiv, glGetShaderInfoLog, glGetShaderSource, glGetShaderiv,
+            glGetUniformLocation, glGetUniformfv, glGetUniformiv, glGetVertexAttribPointerv, glGetVertexAttribdv,
+            glGetVertexAttribfv, glGetVertexAttribiv, glIsProgram, glIsShader, glLinkProgram, glShaderSource,
+            glStencilFuncSeparate, glStencilMaskSeparate, glStencilOpSeparate, glUniform1f, glUniform1fv, glUniform1i,
+            glUniform1iv, glUniform2f, glUniform2fv, glUniform2i, glUniform2iv, glUniform3f, glUniform3fv, glUniform3i,
+            glUniform3iv, glUniform4f, glUniform4fv, glUniform4i, glUniform4iv, glUniformMatrix2fv, glUniformMatrix3fv,
+            glUniformMatrix4fv, glUseProgram, glValidateProgram, glVertexAttrib1d, glVertexAttrib1dv, glVertexAttrib1f,
+            glVertexAttrib1fv, glVertexAttrib1s, glVertexAttrib1sv, glVertexAttrib2d, glVertexAttrib2dv,
+            glVertexAttrib2f, glVertexAttrib2fv, glVertexAttrib2s, glVertexAttrib2sv, glVertexAttrib3d,
+            glVertexAttrib3dv, glVertexAttrib3f, glVertexAttrib3fv, glVertexAttrib3s, glVertexAttrib3sv,
+            glVertexAttrib4Nbv, glVertexAttrib4Niv, glVertexAttrib4Nsv, glVertexAttrib4Nub, glVertexAttrib4Nubv,
+            glVertexAttrib4Nuiv, glVertexAttrib4Nusv, glVertexAttrib4bv, glVertexAttrib4d, glVertexAttrib4dv,
+            glVertexAttrib4f, glVertexAttrib4fv, glVertexAttrib4iv, glVertexAttrib4s, glVertexAttrib4sv,
             glVertexAttrib4ubv, glVertexAttrib4uiv, glVertexAttrib4usv, glVertexAttribPointer);
     }
 

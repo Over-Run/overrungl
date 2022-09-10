@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Contract;
@@ -51,6 +75,7 @@ public class GLCaps {
     static final FunctionDescriptor dIIDV = ofDescriptor("IIDV");
     static final FunctionDescriptor dIIFV = ofDescriptor("IIFV");
     static final FunctionDescriptor dIIIV = ofDescriptor("IIIV");
+    static final FunctionDescriptor dIIPI = ofDescriptor("IIPI");
     static final FunctionDescriptor dIIPV = ofDescriptor("IIPV");
     static final FunctionDescriptor dIJJV = ofDescriptor("IJJV");
     static final FunctionDescriptor dIPPV = ofDescriptor("IPPV");
@@ -100,6 +125,7 @@ public class GLCaps {
     static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
     static final FunctionDescriptor dIIIIIPV = ofDescriptor("IIIIIPV");
     static final FunctionDescriptor dIIIIIZV = ofDescriptor("IIIIIZV");
+    static final FunctionDescriptor dIIIIPPV = ofDescriptor("IIIIPPV");
     static final FunctionDescriptor dIIIPIIV = ofDescriptor("IIIPIIV");
     static final FunctionDescriptor dIIIZIPV = ofDescriptor("IIIZIPV");
     static final FunctionDescriptor dIPIPIPV = ofDescriptor("IPIPIPV");
@@ -219,6 +245,7 @@ public class GLCaps {
         GL31C.load(load);
         GL32C.load(load);
         GL33C.load(load);
+        GL40C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -332,7 +359,7 @@ public class GLCaps {
         Ver31 = (major == 3 && minor >= 1) || major > 3 || GL31C.isSupported();
         Ver32 = (major == 3 && minor >= 2) || major > 3 || GL32C.isSupported();
         Ver33 = (major == 3 && minor >= 3) || major > 3 || GL33C.isSupported();
-        Ver40 = (major == 4 && minor >= 0) || major > 4;
+        Ver40 = (major == 4 && minor >= 0) || major > 4 || GL40C.isSupported();
         Ver41 = (major == 4 && minor >= 1) || major > 4;
         Ver42 = (major == 4 && minor >= 2) || major > 4;
         Ver43 = (major == 4 && minor >= 3) || major > 4;

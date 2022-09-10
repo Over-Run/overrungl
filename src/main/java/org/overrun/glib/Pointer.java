@@ -10,6 +10,9 @@ import java.lang.foreign.MemoryAddress;
  * @since 0.1.0
  */
 public class Pointer {
+    /**
+     * The pointer address.
+     */
     protected final Addressable address;
 
     /**

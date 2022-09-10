@@ -1,12 +1,36 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
+import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -18,15 +42,12 @@ import static org.overrun.glib.gl.GLCaps.*;
 public sealed class GL14C extends GL13C permits GL14, GL15C {
     @Nullable
     public static MethodHandle
-        glBlendColor, glBlendEquation, glBlendFuncSeparate,
-        glMultiDrawArrays, glMultiDrawElements,
-        glPointParameterf, glPointParameterfv,
-        glPointParameteri, glPointParameteriv;
+        glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays, glMultiDrawElements, glPointParameterf,
+        glPointParameterfv, glPointParameteri, glPointParameteriv;
 
     static boolean isSupported() {
-        return checkAll(glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays,
-            glMultiDrawElements, glPointParameterf, glPointParameterfv, glPointParameteri,
-            glPointParameteriv);
+        return checkAll(glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays, glMultiDrawElements,
+            glPointParameterf, glPointParameterfv, glPointParameteri, glPointParameteriv);
     }
 
     static void load(GLLoadFunc load) {
@@ -75,7 +96,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
 
     public static void multiDrawArrays(int mode, int[] first, int[] count, int drawCount) {
         try (var session = MemorySession.openShared()) {
-            multiDrawArrays(mode, session.allocateArray(ValueLayout.JAVA_INT, first), session.allocateArray(ValueLayout.JAVA_INT, count), drawCount);
+            multiDrawArrays(mode, session.allocateArray(JAVA_INT, first), session.allocateArray(JAVA_INT, count), drawCount);
         }
     }
 
@@ -91,33 +112,45 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void multiDrawElements(int mode, int[] count, int type, byte[] indices, int drawCount) {
+    public static void multiDrawElements(int mode, int[] count, int type, byte[][] indices, int drawCount) {
         try (var session = MemorySession.openShared()) {
-            multiDrawElements(mode, session.allocateArray(ValueLayout.JAVA_INT, count), type, session.allocateArray(ValueLayout.JAVA_BYTE, indices), drawCount);
+            var seg = session.allocateArray(ADDRESS, indices.length);
+            for (int i = 0; i < indices.length; i++) {
+                seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_BYTE, indices[i]));
+            }
+            multiDrawElements(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount);
         }
     }
 
-    public static void multiDrawElements(int mode, int[] count, int type, byte[] indices) {
+    public static void multiDrawElements(int mode, int[] count, int type, byte[][] indices) {
         multiDrawElements(mode, count, type, indices, Math.min(count.length, indices.length));
     }
 
-    public static void multiDrawElements(int mode, int[] count, int type, short[] indices, int drawCount) {
+    public static void multiDrawElements(int mode, int[] count, int type, short[][] indices, int drawCount) {
         try (var session = MemorySession.openShared()) {
-            multiDrawElements(mode, session.allocateArray(ValueLayout.JAVA_INT, count), type, session.allocateArray(ValueLayout.JAVA_SHORT, indices), drawCount);
+            var seg = session.allocateArray(ADDRESS, indices.length);
+            for (int i = 0; i < indices.length; i++) {
+                seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_SHORT, indices[i]));
+            }
+            multiDrawElements(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount);
         }
     }
 
-    public static void multiDrawElements(int mode, int[] count, int type, short[] indices) {
+    public static void multiDrawElements(int mode, int[] count, int type, short[][] indices) {
         multiDrawElements(mode, count, type, indices, Math.min(count.length, indices.length));
     }
 
-    public static void multiDrawElements(int mode, int[] count, int type, int[] indices, int drawCount) {
+    public static void multiDrawElements(int mode, int[] count, int type, int[][] indices, int drawCount) {
         try (var session = MemorySession.openShared()) {
-            multiDrawElements(mode, session.allocateArray(ValueLayout.JAVA_INT, count), type, session.allocateArray(ValueLayout.JAVA_INT, indices), drawCount);
+            var seg = session.allocateArray(ADDRESS, indices.length);
+            for (int i = 0; i < indices.length; i++) {
+                seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_INT, indices[i]));
+            }
+            multiDrawElements(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount);
         }
     }
 
-    public static void multiDrawElements(int mode, int[] count, int type, int[] indices) {
+    public static void multiDrawElements(int mode, int[] count, int type, int[][] indices) {
         multiDrawElements(mode, count, type, indices, Math.min(count.length, indices.length));
     }
 
@@ -139,7 +172,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
 
     public static void pointParameterfv(int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
-            pointParameterfv(pname, session.allocateArray(ValueLayout.JAVA_FLOAT, params));
+            pointParameterfv(pname, session.allocateArray(JAVA_FLOAT, params));
         }
     }
 
@@ -161,7 +194,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
 
     public static void pointParameteriv(int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
-            pointParameteriv(pname, session.allocateArray(ValueLayout.JAVA_INT, params));
+            pointParameteriv(pname, session.allocateArray(JAVA_INT, params));
         }
     }
 }

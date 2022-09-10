@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.glfw;
 
 import org.jetbrains.annotations.Nullable;
@@ -822,6 +846,28 @@ public class GLFW {
 
     protected GLFW() {
         throw new IllegalStateException("Do not construct instance");
+    }
+
+    /**
+     * Converts error code to readable string.
+     * @param errorCode the error code
+     * @return the error string
+     */
+    public static String getErrorString(int errorCode) {
+        return switch (errorCode) {
+            case NO_ERROR -> "NO_ERROR";
+            case NOT_INITIALIZED -> "NOT_INITIALIZED";
+            case NO_CURRENT_CONTEXT -> "NO_CURRENT_CONTEXT";
+            case INVALID_ENUM -> "INVALID_ENUM";
+            case INVALID_VALUE -> "INVALID_VALUE";
+            case OUT_OF_MEMORY -> "OUT_OF_MEMORY";
+            case API_UNAVAILABLE -> "API_UNAVAILABLE";
+            case VERSION_UNAVAILABLE -> "VERSION_UNAVAILABLE";
+            case PLATFORM_ERROR -> "PLATFORM_ERROR";
+            case FORMAT_UNAVAILABLE -> "FORMAT_UNAVAILABLE";
+            case NO_WINDOW_CONTEXT -> "NO_WINDOW_CONTEXT";
+            default -> "UNKNOWN_ERROR";
+        };
     }
 
     /**

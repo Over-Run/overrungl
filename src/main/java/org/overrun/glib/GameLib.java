@@ -21,10 +21,12 @@ public final class GameLib {
      * @param module   the module name like glfw
      * @param basename the basename of the library (without extensions)
      * @return the {@link SymbolLookup}
+     * @throws RuntimeException if file not found
      */
-    public static SymbolLookup load(String module, String basename) {
+    public static SymbolLookup load(String module, String basename)
+        throws RuntimeException {
         final var os = OperatingSystem.current();
-        var path = basename + os.getSharedLibrarySuffix();
+        final var path = basename + os.getSharedLibrarySuffix();
         URI uri;
         // 1. Load from classpath
         try {
@@ -37,6 +39,7 @@ public final class GameLib {
             }
             uri = file.toURI();
         }
+        // Load library by the path with the global session
         return SymbolLookup.libraryLookup(Path.of(uri), MemorySession.global());
     }
 }

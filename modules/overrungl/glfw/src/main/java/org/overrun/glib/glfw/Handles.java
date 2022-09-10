@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.glfw;
 
 import org.overrun.glib.GameLib;
@@ -17,123 +41,33 @@ final class Handles {
     public static SymbolLookup lookup;
     public static Linker linker;
     public static MethodHandle
-        glfwInit,
-        glfwTerminate,
-        glfwInitHint,
-        glfwGetVersion,
-        glfwGetVersionString,
-        glfwGetError,
-        glfwSetErrorCallback,
-        glfwGetMonitors,
-        glfwGetPrimaryMonitor,
-        glfwGetMonitorPos,
-        glfwGetMonitorWorkarea,
-        glfwGetMonitorPhysicalSize,
-        glfwGetMonitorContentScale,
-        glfwGetMonitorName,
-        glfwSetMonitorUserPointer,
-        glfwGetMonitorUserPointer,
-        glfwSetMonitorCallback,
-        glfwGetVideoModes,
-        glfwGetVideoMode,
-        glfwSetGamma,
-        glfwGetGammaRamp,
-        glfwSetGammaRamp,
-        glfwDefaultWindowHints,
-        glfwWindowHint,
-        glfwWindowHintString,
-        glfwCreateWindow,
-        glfwDestroyWindow,
-        glfwWindowShouldClose,
-        glfwSetWindowShouldClose,
-        glfwSetWindowTitle,
-        glfwSetWindowIcon,
-        glfwGetWindowPos,
-        glfwSetWindowPos,
-        glfwGetWindowSize,
-        glfwSetWindowSizeLimits,
-        glfwSetWindowAspectRatio,
-        glfwSetWindowSize,
-        glfwGetFramebufferSize,
-        glfwGetWindowFrameSize,
-        glfwGetWindowContentScale,
-        glfwGetWindowOpacity,
-        glfwSetWindowOpacity,
-        glfwIconifyWindow,
-        glfwRestoreWindow,
-        glfwMaximizeWindow,
-        glfwShowWindow,
-        glfwHideWindow,
-        glfwFocusWindow,
-        glfwRequestWindowAttention,
-        glfwGetWindowMonitor,
-        glfwSetWindowMonitor,
-        glfwGetWindowAttrib,
-        glfwSetWindowAttrib,
-        glfwSetWindowUserPointer,
-        glfwGetWindowUserPointer,
-        glfwSetWindowPosCallback,
-        glfwSetWindowSizeCallback,
-        glfwSetWindowCloseCallback,
-        glfwSetWindowRefreshCallback,
-        glfwSetWindowFocusCallback,
-        glfwSetWindowIconifyCallback,
-        glfwSetWindowMaximizeCallback,
-        glfwSetFramebufferSizeCallback,
-        glfwSetWindowContentScaleCallback,
-        glfwPollEvents,
-        glfwWaitEvents,
-        glfwWaitEventsTimeout,
-        glfwPostEmptyEvent,
-        glfwGetInputMode,
-        glfwSetInputMode,
-        glfwRawMouseMotionSupported,
-        glfwGetKeyName,
-        glfwGetKeyScancode,
-        glfwGetKey,
-        glfwGetMouseButton,
-        glfwGetCursorPos,
-        glfwSetCursorPos,
-        glfwCreateCursor,
-        glfwCreateStandardCursor,
-        glfwDestroyCursor,
-        glfwSetCursor,
-        glfwSetKeyCallback,
-        glfwSetCharCallback;
+        glfwInit, glfwTerminate, glfwInitHint, glfwGetVersion, glfwGetVersionString, glfwGetError, glfwSetErrorCallback,
+        glfwGetMonitors, glfwGetPrimaryMonitor, glfwGetMonitorPos, glfwGetMonitorWorkarea, glfwGetMonitorPhysicalSize,
+        glfwGetMonitorContentScale, glfwGetMonitorName, glfwSetMonitorUserPointer, glfwGetMonitorUserPointer,
+        glfwSetMonitorCallback, glfwGetVideoModes, glfwGetVideoMode, glfwSetGamma, glfwGetGammaRamp, glfwSetGammaRamp,
+        glfwDefaultWindowHints, glfwWindowHint, glfwWindowHintString, glfwCreateWindow, glfwDestroyWindow,
+        glfwWindowShouldClose, glfwSetWindowShouldClose, glfwSetWindowTitle, glfwSetWindowIcon, glfwGetWindowPos,
+        glfwSetWindowPos, glfwGetWindowSize, glfwSetWindowSizeLimits, glfwSetWindowAspectRatio, glfwSetWindowSize,
+        glfwGetFramebufferSize, glfwGetWindowFrameSize, glfwGetWindowContentScale, glfwGetWindowOpacity,
+        glfwSetWindowOpacity, glfwIconifyWindow, glfwRestoreWindow, glfwMaximizeWindow, glfwShowWindow, glfwHideWindow,
+        glfwFocusWindow, glfwRequestWindowAttention, glfwGetWindowMonitor, glfwSetWindowMonitor, glfwGetWindowAttrib,
+        glfwSetWindowAttrib, glfwSetWindowUserPointer, glfwGetWindowUserPointer, glfwSetWindowPosCallback,
+        glfwSetWindowSizeCallback, glfwSetWindowCloseCallback, glfwSetWindowRefreshCallback, glfwSetWindowFocusCallback,
+        glfwSetWindowIconifyCallback, glfwSetWindowMaximizeCallback, glfwSetFramebufferSizeCallback,
+        glfwSetWindowContentScaleCallback, glfwPollEvents, glfwWaitEvents, glfwWaitEventsTimeout, glfwPostEmptyEvent,
+        glfwGetInputMode, glfwSetInputMode, glfwRawMouseMotionSupported, glfwGetKeyName, glfwGetKeyScancode, glfwGetKey,
+        glfwGetMouseButton, glfwGetCursorPos, glfwSetCursorPos, glfwCreateCursor, glfwCreateStandardCursor,
+        glfwDestroyCursor, glfwSetCursor, glfwSetKeyCallback, glfwSetCharCallback;
     @Deprecated(forRemoval = true)
     public static MethodHandle glfwSetCharModsCallback;
     public static MethodHandle
-        glfwSetMouseButtonCallback,
-        glfwSetCursorPosCallback,
-        glfwSetCursorEnterCallback,
-        glfwSetScrollCallback,
-        glfwSetDropCallback,
-        glfwJoystickPresent,
-        glfwGetJoystickAxes,
-        glfwGetJoystickButtons,
-        glfwGetJoystickHats,
-        glfwGetJoystickName,
-        glfwGetJoystickGUID,
-        glfwSetJoystickUserPointer,
-        glfwGetJoystickUserPointer,
-        glfwJoystickIsGamepad,
-        glfwSetJoystickCallback,
-        glfwUpdateGamepadMappings,
-        glfwGetGamepadName,
-        glfwGetGamepadState,
-        glfwSetClipboardString,
-        glfwGetClipboardString,
-        glfwGetTime,
-        glfwSetTime,
-        glfwGetTimerValue,
-        glfwGetTimerFrequency,
-        glfwMakeContextCurrent,
-        glfwGetCurrentContext,
-        glfwSwapBuffers,
-        glfwSwapInterval,
-        glfwExtensionSupported,
-        glfwGetProcAddress,
-        glfwVulkanSupported,
+        glfwSetMouseButtonCallback, glfwSetCursorPosCallback, glfwSetCursorEnterCallback, glfwSetScrollCallback,
+        glfwSetDropCallback, glfwJoystickPresent, glfwGetJoystickAxes, glfwGetJoystickButtons, glfwGetJoystickHats,
+        glfwGetJoystickName, glfwGetJoystickGUID, glfwSetJoystickUserPointer, glfwGetJoystickUserPointer,
+        glfwJoystickIsGamepad, glfwSetJoystickCallback, glfwUpdateGamepadMappings, glfwGetGamepadName,
+        glfwGetGamepadState, glfwSetClipboardString, glfwGetClipboardString, glfwGetTime, glfwSetTime,
+        glfwGetTimerValue, glfwGetTimerFrequency, glfwMakeContextCurrent, glfwGetCurrentContext, glfwSwapBuffers,
+        glfwSwapInterval, glfwExtensionSupported, glfwGetProcAddress, glfwVulkanSupported,
         glfwGetRequiredInstanceExtensions;
 
     private static MethodHandle downcall(String name,

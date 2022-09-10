@@ -19,25 +19,7 @@ public interface ICallback {
      * @param session the memory session
      * @return the memory address
      */
-    MemoryAddress address(MemorySession session);
-
-    /**
-     * Gets the memory address of the upcall stub with the given memory session.
-     *
-     * @param session  the memory session
-     * @param refc     the callback class
-     * @param name     the callback method name
-     * @param type     the callback method type
-     * @param function the function descriptor
-     * @return the memory address
-     */
-    default MemoryAddress address(MemorySession session,
-                                  Class<?> refc,
-                                  String name,
-                                  MethodType type,
-                                  FunctionDescriptor function) {
-        return segment(session, refc, name, type, function).address();
-    }
+    Addressable address(MemorySession session);
 
     /**
      * Gets the memory segment of the upcall stub with the given memory session.

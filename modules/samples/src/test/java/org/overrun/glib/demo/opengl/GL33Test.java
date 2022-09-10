@@ -1,16 +1,41 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.demo.opengl;
 
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
+import org.overrun.glib.glfw.GLFWErrorCallback;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 
+import static java.lang.foreign.MemoryLayout.PathElement.sequenceElement;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -29,7 +54,7 @@ public class GL33Test {
         init();
         loop();
 
-        Callbacks.glfwFreeCallbacks(window);
+        Callbacks.free(window);
         GLFW.destroyWindow(window);
 
         GLFW.terminate();
@@ -37,8 +62,7 @@ public class GL33Test {
     }
 
     private void init() {
-        GLFW.setErrorCallback((errorCode, description) ->
-            System.err.println("GLFW Error " + errorCode + ": " + description));
+        GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
         }
@@ -63,7 +87,7 @@ public class GL33Test {
             try (var session = MemorySession.openShared()) {
                 var pWidth = session.allocate(ValueLayout.JAVA_INT);
                 var pHeight = session.allocate(ValueLayout.JAVA_INT);
-                GLFW.ngetWindowSize(window, pWidth.address(), pHeight.address());
+                GLFW.ngetWindowSize(window, pWidth, pHeight);
                 GLFW.setWindowPos(
                     window,
                     (vidMode.width() - pWidth.get(ValueLayout.JAVA_INT, 0L)) / 2,
@@ -153,22 +177,22 @@ public class GL33Test {
                 MemoryLayout.sequenceLayout(4 * 4, JAVA_FLOAT)
             );
             //region Var handles
-            var handle00 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(0));
-            var handle01 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(1));
-            var handle02 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(2));
-            var handle03 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(3));
-            var handle10 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(4));
-            var handle11 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(5));
-            var handle12 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(6));
-            var handle13 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(7));
-            var handle20 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(8));
-            var handle21 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(9));
-            var handle22 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(10));
-            var handle23 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(11));
-            var handle30 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(12));
-            var handle31 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(13));
-            var handle32 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(14));
-            var handle33 = iseq.varHandle(PathElement.sequenceElement(), PathElement.sequenceElement(15));
+            var handle00 = iseq.varHandle(sequenceElement(), sequenceElement(0));
+            var handle01 = iseq.varHandle(sequenceElement(), sequenceElement(1));
+            var handle02 = iseq.varHandle(sequenceElement(), sequenceElement(2));
+            var handle03 = iseq.varHandle(sequenceElement(), sequenceElement(3));
+            var handle10 = iseq.varHandle(sequenceElement(), sequenceElement(4));
+            var handle11 = iseq.varHandle(sequenceElement(), sequenceElement(5));
+            var handle12 = iseq.varHandle(sequenceElement(), sequenceElement(6));
+            var handle13 = iseq.varHandle(sequenceElement(), sequenceElement(7));
+            var handle20 = iseq.varHandle(sequenceElement(), sequenceElement(8));
+            var handle21 = iseq.varHandle(sequenceElement(), sequenceElement(9));
+            var handle22 = iseq.varHandle(sequenceElement(), sequenceElement(10));
+            var handle23 = iseq.varHandle(sequenceElement(), sequenceElement(11));
+            var handle30 = iseq.varHandle(sequenceElement(), sequenceElement(12));
+            var handle31 = iseq.varHandle(sequenceElement(), sequenceElement(13));
+            var handle32 = iseq.varHandle(sequenceElement(), sequenceElement(14));
+            var handle33 = iseq.varHandle(sequenceElement(), sequenceElement(15));
             //endregion
             var matrices = session.allocate(iseq);
             float mul = (float) Math.sqrt(INSTANCE_COUNT);
@@ -217,23 +241,12 @@ public class GL33Test {
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
 
-        var pRotationMat = MemorySession.openImplicit().allocateArray(JAVA_FLOAT, 4 * 4);
-        pRotationMat.set(JAVA_FLOAT, 0, 1.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 1, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 2, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 3, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 4, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 5, 1.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 6, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 7, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 8, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 9, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 10, 1.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 11, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 12, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 13, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 14, 0.0f);
-        pRotationMat.setAtIndex(JAVA_FLOAT, 15, 1.0f);
+        var pRotationMat = MemorySession.openImplicit().allocateArray(JAVA_FLOAT,
+            1f, 0f, 0f, 0f,
+            0f, 1f, 0f, 0f,
+            0f, 0f, 1f, 0f,
+            0f, 0f, 0f, 1f
+        );
 
         double lastTime;
         double time;

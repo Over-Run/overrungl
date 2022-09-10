@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
@@ -19,47 +43,26 @@ import static org.overrun.glib.gl.GLCaps.*;
 public sealed class GL10C permits GL10, GL11C {
     @Nullable
     public static MethodHandle
-        glBlendFunc,
-        glClear, glClearColor, glClearDepth, glClearStencil,
-        glColorMask,
-        glCullFace,
-        glDepthFunc, glDepthMask, glDepthRange,
-        glDisable, glDrawBuffer,
-        glEnable,
-        glFinish, glFlush, glFrontFace,
-        glGetBooleanv, glGetDoublev,
-        glGetError, glGetFloatv,
-        glGetIntegerv, glGetString,
-        glGetTexImage,
-        glGetTexLevelParameterfv, glGetTexLevelParameteriv,
-        glGetTexParameterfv, glGetTexParameteriv,
-        glHint,
-        glIsEnabled,
-        glLineWidth, glLogicOp,
-        glPixelStoref, glPixelStorei,
-        glPointSize, glPolygonMode,
-        glReadBuffer, glReadPixels,
-        glScissor,
-        glStencilFunc, glStencilMask, glStencilOp,
-        glTexImage1D, glTexImage2D,
-        glTexParameterf, glTexParameterfv,
-        glTexParameteri, glTexParameteriv,
-        glViewport;
+        glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil, glColorMask, glCullFace, glDepthFunc,
+        glDepthMask, glDepthRange, glDisable, glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace, glGetBooleanv,
+        glGetDoublev, glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage, glGetTexLevelParameterfv,
+        glGetTexLevelParameteriv, glGetTexParameterfv, glGetTexParameteriv, glHint, glIsEnabled, glLineWidth, glLogicOp,
+        glPixelStoref, glPixelStorei, glPointSize, glPolygonMode, glReadBuffer, glReadPixels, glScissor, glStencilFunc,
+        glStencilMask, glStencilOp, glTexImage1D, glTexImage2D, glTexParameterf, glTexParameterfv, glTexParameteri,
+        glTexParameteriv, glViewport;
 
     protected GL10C() {
         throw new IllegalStateException("Do not construct instance");
     }
 
     static boolean isSupported() {
-        return checkAll(glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil,
-            glColorMask, glCullFace, glDepthFunc, glDepthMask, glDepthRange, glDisable,
-            glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace, glGetBooleanv, glGetDoublev,
-            glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage,
-            glGetTexLevelParameterfv, glGetTexLevelParameteriv, glGetTexParameterfv,
-            glGetTexParameteriv, glHint, glIsEnabled, glLineWidth, glLogicOp, glPixelStoref,
-            glPixelStorei, glPointSize, glPolygonMode, glReadBuffer, glReadPixels, glScissor,
-            glStencilFunc, glStencilMask, glStencilOp, glTexImage1D, glTexImage2D, glTexParameterf,
-            glTexParameterfv, glTexParameteri, glTexParameteriv, glViewport);
+        return checkAll(glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil, glColorMask, glCullFace,
+            glDepthFunc, glDepthMask, glDepthRange, glDisable, glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace,
+            glGetBooleanv, glGetDoublev, glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage,
+            glGetTexLevelParameterfv, glGetTexLevelParameteriv, glGetTexParameterfv, glGetTexParameteriv, glHint,
+            glIsEnabled, glLineWidth, glLogicOp, glPixelStoref, glPixelStorei, glPointSize, glPolygonMode, glReadBuffer,
+            glReadPixels, glScissor, glStencilFunc, glStencilMask, glStencilOp, glTexImage1D, glTexImage2D,
+            glTexParameterf, glTexParameterfv, glTexParameteri, glTexParameteriv, glViewport);
     }
 
     static void load(GLLoadFunc load) {

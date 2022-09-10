@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
@@ -18,26 +42,13 @@ import static org.overrun.glib.gl.GLCaps.*;
 public final class GL14 extends GL14C {
     @Nullable
     public static MethodHandle
-        glFogCoordPointer,
-        glFogCoordd, glFogCoorddv,
-        glFogCoordf, glFogCoordfv,
-        glSecondaryColor3b, glSecondaryColor3bv,
-        glSecondaryColor3d, glSecondaryColor3dv,
-        glSecondaryColor3f, glSecondaryColor3fv,
-        glSecondaryColor3i, glSecondaryColor3iv,
-        glSecondaryColor3s, glSecondaryColor3sv,
-        glSecondaryColor3ub, glSecondaryColor3ubv,
-        glSecondaryColor3ui, glSecondaryColor3uiv,
-        glSecondaryColor3us, glSecondaryColor3usv,
-        glSecondaryColorPointer,
-        glWindowPos2d, glWindowPos2dv,
-        glWindowPos2f, glWindowPos2fv,
-        glWindowPos2i, glWindowPos2iv,
-        glWindowPos2s, glWindowPos2sv,
-        glWindowPos3d, glWindowPos3dv,
-        glWindowPos3f, glWindowPos3fv,
-        glWindowPos3i, glWindowPos3iv,
-        glWindowPos3s, glWindowPos3sv;
+        glFogCoordPointer, glFogCoordd, glFogCoorddv, glFogCoordf, glFogCoordfv, glSecondaryColor3b,
+        glSecondaryColor3bv, glSecondaryColor3d, glSecondaryColor3dv, glSecondaryColor3f, glSecondaryColor3fv,
+        glSecondaryColor3i, glSecondaryColor3iv, glSecondaryColor3s, glSecondaryColor3sv, glSecondaryColor3ub,
+        glSecondaryColor3ubv, glSecondaryColor3ui, glSecondaryColor3uiv, glSecondaryColor3us, glSecondaryColor3usv,
+        glSecondaryColorPointer, glWindowPos2d, glWindowPos2dv, glWindowPos2f, glWindowPos2fv, glWindowPos2i,
+        glWindowPos2iv, glWindowPos2s, glWindowPos2sv, glWindowPos3d, glWindowPos3dv, glWindowPos3f, glWindowPos3fv,
+        glWindowPos3i, glWindowPos3iv, glWindowPos3s, glWindowPos3sv;
 
     static void load(GLLoadFunc load) {
         if (!Ver14) return;

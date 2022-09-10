@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
@@ -20,72 +44,42 @@ import static org.overrun.glib.gl.GLCaps.*;
 public sealed class GL30C extends GL21C permits GL31C {
     @Nullable
     public static MethodHandle
-        glBeginConditionalRender, glBeginTransformFeedback,
-        glBindBufferBase, glBindBufferRange, glBindFragDataLocation,
-        glBindFramebuffer, glBindRenderbuffer, glBindVertexArray,
-        glBlitFramebuffer,
-        glCheckFramebufferStatus, glClampColor,
-        glClearBufferfi, glClearBufferfv,
-        glClearBufferiv, glClearBufferuiv,
-        glColorMaski,
-        glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays,
-        glDisablei, glEnablei,
-        glEndConditionalRender, glEndTransformFeedback,
-        glFlushMappedBufferRange, glFramebufferRenderbuffer,
-        glFramebufferTexture1D, glFramebufferTexture2D,
-        glFramebufferTexture3D, glFramebufferTextureLayer,
-        glGenFramebuffers, glGenRenderbuffers, glGenVertexArrays,
-        glGenerateMipmap, glGetBooleani_v,
-        glGetFragDataLocation, glGetFramebufferAttachmentParameteriv,
-        glGetIntegeri_v, glGetRenderbufferParameteriv,
-        glGetStringi,
-        glGetTexParameterIiv, glGetTexParameterIuiv,
-        glGetTransformFeedbackVarying, glGetUniformuiv,
-        glGetVertexAttribIiv, glGetVertexAttribIuiv,
-        glIsEnabledi, glIsFramebuffer,
-        glIsRenderbuffer, glIsVertexArray,
-        glMapBufferRange,
-        glRenderbufferStorage, glRenderbufferStorageMultisample,
-        glTexParameterIiv, glTexParameterIuiv,
-        glTransformFeedbackVaryings,
-        glUniform1ui, glUniform1uiv,
-        glUniform2ui, glUniform2uiv,
-        glUniform3ui, glUniform3uiv,
-        glUniform4ui, glUniform4uiv,
-        glVertexAttribI1i, glVertexAttribI1iv,
-        glVertexAttribI1ui, glVertexAttribI1uiv,
-        glVertexAttribI2i, glVertexAttribI2iv,
-        glVertexAttribI2ui, glVertexAttribI2uiv,
-        glVertexAttribI3i, glVertexAttribI3iv,
-        glVertexAttribI3ui, glVertexAttribI3uiv, glVertexAttribI4bv,
-        glVertexAttribI4i, glVertexAttribI4iv,
-        glVertexAttribI4sv, glVertexAttribI4ubv,
-        glVertexAttribI4ui, glVertexAttribI4uiv,
-        glVertexAttribI4usv, glVertexAttribIPointer;
+        glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange, glBindFragDataLocation,
+        glBindFramebuffer, glBindRenderbuffer, glBindVertexArray, glBlitFramebuffer, glCheckFramebufferStatus,
+        glClampColor, glClearBufferfi, glClearBufferfv, glClearBufferiv, glClearBufferuiv, glColorMaski,
+        glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays, glDisablei, glEnablei,
+        glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange, glFramebufferRenderbuffer,
+        glFramebufferTexture1D, glFramebufferTexture2D, glFramebufferTexture3D, glFramebufferTextureLayer,
+        glGenFramebuffers, glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v,
+        glGetFragDataLocation, glGetFramebufferAttachmentParameteriv, glGetIntegeri_v, glGetRenderbufferParameteriv,
+        glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv, glGetTransformFeedbackVarying, glGetUniformuiv,
+        glGetVertexAttribIiv, glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer, glIsVertexArray,
+        glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample, glTexParameterIiv,
+        glTexParameterIuiv, glTransformFeedbackVaryings, glUniform1ui, glUniform1uiv, glUniform2ui, glUniform2uiv,
+        glUniform3ui, glUniform3uiv, glUniform4ui, glUniform4uiv, glVertexAttribI1i, glVertexAttribI1iv,
+        glVertexAttribI1ui, glVertexAttribI1uiv, glVertexAttribI2i, glVertexAttribI2iv, glVertexAttribI2ui,
+        glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv, glVertexAttribI3ui, glVertexAttribI3uiv,
+        glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv, glVertexAttribI4sv, glVertexAttribI4ubv,
+        glVertexAttribI4ui, glVertexAttribI4uiv, glVertexAttribI4usv, glVertexAttribIPointer;
 
     static boolean isSupported() {
-        return checkAll(glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase,
-            glBindBufferRange, glBindFragDataLocation, glBindFramebuffer, glBindRenderbuffer,
-            glBindVertexArray, glBlitFramebuffer, glCheckFramebufferStatus, glClampColor,
-            glClearBufferfi, glClearBufferfv, glClearBufferiv, glClearBufferuiv, glColorMaski,
-            glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays, glDisablei,
-            glEnablei, glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange,
-            glFramebufferRenderbuffer, glFramebufferTexture1D, glFramebufferTexture2D,
-            glFramebufferTexture3D, glFramebufferTextureLayer, glGenFramebuffers,
-            glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v,
-            glGetFragDataLocation, glGetFramebufferAttachmentParameteriv, glGetIntegeri_v,
-            glGetRenderbufferParameteriv, glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv,
-            glGetTransformFeedbackVarying, glGetUniformuiv, glGetVertexAttribIiv,
-            glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer, glIsVertexArray,
-            glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample,
-            glTexParameterIiv, glTexParameterIuiv, glTransformFeedbackVaryings, glUniform1ui,
-            glUniform1uiv, glUniform2ui, glUniform2uiv, glUniform3ui, glUniform3uiv, glUniform4ui,
-            glUniform4uiv, glVertexAttribI1i, glVertexAttribI1iv, glVertexAttribI1ui,
-            glVertexAttribI1uiv, glVertexAttribI2i, glVertexAttribI2iv, glVertexAttribI2ui,
-            glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv, glVertexAttribI3ui,
-            glVertexAttribI3uiv, glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv,
-            glVertexAttribI4sv, glVertexAttribI4ubv, glVertexAttribI4ui, glVertexAttribI4uiv,
-            glVertexAttribI4usv, glVertexAttribIPointer);
+        return checkAll(glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange,
+            glBindFragDataLocation, glBindFramebuffer, glBindRenderbuffer, glBindVertexArray, glBlitFramebuffer,
+            glCheckFramebufferStatus, glClampColor, glClearBufferfi, glClearBufferfv, glClearBufferiv, glClearBufferuiv,
+            glColorMaski, glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays, glDisablei, glEnablei,
+            glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange, glFramebufferRenderbuffer,
+            glFramebufferTexture1D, glFramebufferTexture2D, glFramebufferTexture3D, glFramebufferTextureLayer,
+            glGenFramebuffers, glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v,
+            glGetFragDataLocation, glGetFramebufferAttachmentParameteriv, glGetIntegeri_v, glGetRenderbufferParameteriv,
+            glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv, glGetTransformFeedbackVarying, glGetUniformuiv,
+            glGetVertexAttribIiv, glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer,
+            glIsVertexArray, glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample,
+            glTexParameterIiv, glTexParameterIuiv, glTransformFeedbackVaryings, glUniform1ui, glUniform1uiv,
+            glUniform2ui, glUniform2uiv, glUniform3ui, glUniform3uiv, glUniform4ui, glUniform4uiv, glVertexAttribI1i,
+            glVertexAttribI1iv, glVertexAttribI1ui, glVertexAttribI1uiv, glVertexAttribI2i, glVertexAttribI2iv,
+            glVertexAttribI2ui, glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv, glVertexAttribI3ui,
+            glVertexAttribI3uiv, glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv, glVertexAttribI4sv,
+            glVertexAttribI4ubv, glVertexAttribI4ui, glVertexAttribI4uiv, glVertexAttribI4usv, glVertexAttribIPointer);
     }
 
     static void load(GLLoadFunc load) {

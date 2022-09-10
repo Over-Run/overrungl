@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
@@ -19,25 +43,14 @@ import static org.overrun.glib.gl.GLCaps.*;
 public final class GL13 extends GL13C {
     @Nullable
     public static MethodHandle
-        glClientActiveTexture,
-        glLoadTransposeMatrixd, glLoadTransposeMatrixf,
-        glMultTransposeMatrixd, glMultTransposeMatrixf,
-        glMultiTexCoord1d, glMultiTexCoord1dv,
-        glMultiTexCoord1f, glMultiTexCoord1fv,
-        glMultiTexCoord1i, glMultiTexCoord1iv,
-        glMultiTexCoord1s, glMultiTexCoord1sv,
-        glMultiTexCoord2d, glMultiTexCoord2dv,
-        glMultiTexCoord2f, glMultiTexCoord2fv,
-        glMultiTexCoord2i, glMultiTexCoord2iv,
-        glMultiTexCoord2s, glMultiTexCoord2sv,
-        glMultiTexCoord3d, glMultiTexCoord3dv,
-        glMultiTexCoord3f, glMultiTexCoord3fv,
-        glMultiTexCoord3i, glMultiTexCoord3iv,
-        glMultiTexCoord3s, glMultiTexCoord3sv,
-        glMultiTexCoord4d, glMultiTexCoord4dv,
-        glMultiTexCoord4f, glMultiTexCoord4fv,
-        glMultiTexCoord4i, glMultiTexCoord4iv,
-        glMultiTexCoord4s, glMultiTexCoord4sv;
+        glClientActiveTexture, glLoadTransposeMatrixd, glLoadTransposeMatrixf, glMultTransposeMatrixd,
+        glMultTransposeMatrixf, glMultiTexCoord1d, glMultiTexCoord1dv, glMultiTexCoord1f, glMultiTexCoord1fv,
+        glMultiTexCoord1i, glMultiTexCoord1iv, glMultiTexCoord1s, glMultiTexCoord1sv, glMultiTexCoord2d,
+        glMultiTexCoord2dv, glMultiTexCoord2f, glMultiTexCoord2fv, glMultiTexCoord2i, glMultiTexCoord2iv,
+        glMultiTexCoord2s, glMultiTexCoord2sv, glMultiTexCoord3d, glMultiTexCoord3dv, glMultiTexCoord3f,
+        glMultiTexCoord3fv, glMultiTexCoord3i, glMultiTexCoord3iv, glMultiTexCoord3s, glMultiTexCoord3sv,
+        glMultiTexCoord4d, glMultiTexCoord4dv, glMultiTexCoord4f, glMultiTexCoord4fv, glMultiTexCoord4i,
+        glMultiTexCoord4iv, glMultiTexCoord4s, glMultiTexCoord4sv;
 
     static void load(GLLoadFunc load) {
         if (!Ver13) return;
