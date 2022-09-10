@@ -124,7 +124,9 @@ final class Handles {
     }
 
     public static void create() {
-        lookup = GameLib.load("glfw", "glfw3");
+        lookup = GameLib.load("glfw",
+            "glfw3",
+            GLFW.VERSION_MAJOR + "." + GLFW.VERSION_MINOR + "." + GLFW.VERSION_REVISION);
         linker = Linker.nativeLinker();
         glfwInit = downcall("glfwInit", JAVA_INT);
         glfwTerminate = downcallV("glfwTerminate");
