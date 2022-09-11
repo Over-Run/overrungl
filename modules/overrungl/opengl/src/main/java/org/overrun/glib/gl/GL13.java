@@ -97,7 +97,7 @@ public final class GL13 extends GL13C {
         try {
             check(glClientActiveTexture).invoke(texture);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -105,7 +105,7 @@ public final class GL13 extends GL13C {
         try {
             check(glLoadTransposeMatrixd).invoke(m);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -119,7 +119,7 @@ public final class GL13 extends GL13C {
         try {
             check(glLoadTransposeMatrixf).invoke(m);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -133,7 +133,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultTransposeMatrixd).invoke(m);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -147,7 +147,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultTransposeMatrixf).invoke(m);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -161,7 +161,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1d).invoke(target, s);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -169,7 +169,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1dv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -183,7 +183,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1f).invoke(target, s);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -191,7 +191,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1fv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -205,7 +205,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1i).invoke(target, s);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -213,7 +213,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1iv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -227,7 +227,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1s).invoke(target, s);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -235,7 +235,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord1sv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -249,7 +249,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2d).invoke(target, s, t);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -257,7 +257,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2dv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -271,7 +271,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2f).invoke(target, s, t);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -279,7 +279,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2fv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -293,7 +293,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2i).invoke(target, s, t);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -301,7 +301,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2iv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -315,7 +315,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2s).invoke(target, s, t);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -323,7 +323,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord2sv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -337,7 +337,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3d).invoke(target, s, t, r);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -345,7 +345,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3dv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -359,7 +359,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3f).invoke(target, s, t, r);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -367,7 +367,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3fv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -381,7 +381,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3i).invoke(target, s, t, r);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -389,7 +389,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3iv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -403,7 +403,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3s).invoke(target, s, t, r);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -411,7 +411,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord3sv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -425,7 +425,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4d).invoke(target, s, t, r, q);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -433,7 +433,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4dv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -447,7 +447,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4f).invoke(target, s, t, r, q);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -455,7 +455,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4fv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -469,7 +469,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4i).invoke(target, s, t, r, q);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -477,7 +477,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4iv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -491,7 +491,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4s).invoke(target, s, t, r, q);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -499,7 +499,7 @@ public final class GL13 extends GL13C {
         try {
             check(glMultiTexCoord4sv).invoke(target, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

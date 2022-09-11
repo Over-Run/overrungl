@@ -74,7 +74,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glBindTexture).invoke(target, texture);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -82,7 +82,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glCopyTexImage1D).invoke(target, level, internalFormat, x, y, width, border);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -90,7 +90,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glCopyTexImage2D).invoke(target, level, internalFormat, x, y, width, height, border);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -98,7 +98,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glCopyTexSubImage1D).invoke(target, level, xoffset, x, y, width);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -106,7 +106,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glCopyTexSubImage2D).invoke(target, level, xoffset, yoffset, x, y, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -114,7 +114,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glDeleteTextures).invoke(n, textures);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -125,9 +125,9 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void deleteTexture(int n, int texture) {
+    public static void deleteTexture(int texture) {
         try (var session = MemorySession.openShared()) {
-            deleteTextures(n, session.allocate(ValueLayout.JAVA_INT, texture));
+            deleteTextures(1, session.allocate(ValueLayout.JAVA_INT, texture));
         }
     }
 
@@ -135,7 +135,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glDrawArrays).invoke(mode, first, count);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -143,7 +143,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glDrawElements).invoke(mode, count, type, indices);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -172,7 +172,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glGenTextures).invoke(n, textures);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -202,7 +202,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glGetPointerv).invoke(pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -222,8 +222,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             return (boolean) check(glIsTexture).invoke(texture);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -231,7 +230,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glPolygonOffset).invoke(factor, units);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -239,7 +238,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glTexSubImage1D).invoke(target, level, xoffset, width, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -265,7 +264,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try {
             check(glTexSubImage2D).invoke(target, level, xoffset, yoffset, width, height, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

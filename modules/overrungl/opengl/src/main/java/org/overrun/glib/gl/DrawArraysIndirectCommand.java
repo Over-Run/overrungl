@@ -28,9 +28,20 @@ import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.VarHandle;
 
 /**
  * The OpenGL 4.2 draw arrays indirect command.
+ *
+ * <h3>Layout</h3>
+ * <pre><code>
+ * struct DrawArraysIndirectCommand {
+ *     unsigned int {@link #count() count};
+ *     unsigned int {@link #primCount() primCount};
+ *     unsigned int {@link #first() first};
+ *     unsigned int {@link #baseInstance() baseInstance};
+ * }
+ * </code></pre>
  *
  * @author squid233
  * @since 0.1.0
@@ -46,14 +57,11 @@ public class DrawArraysIndirectCommand extends Pointer {
             ValueLayout.JAVA_INT.withName("first"),
             ValueLayout.JAVA_INT.withName("baseInstance")
         );
-    /**
-     * The struct path elements.
-     */
-    public static final PathElement
-        COUNT = PathElement.groupElement("count"),
-        PRIM_COUNT = PathElement.groupElement("primCount"),
-        FIRST = PathElement.groupElement("first"),
-        BASE_INSTANCE = PathElement.groupElement("baseInstance");
+    private static final VarHandle
+        pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
+        pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
+        pFirst = LAYOUT.varHandle(PathElement.groupElement("first")),
+        pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
 
     /**
      * Create the pointer instance.
@@ -65,12 +73,12 @@ public class DrawArraysIndirectCommand extends Pointer {
     }
 
     /**
-     * Allocate a command instance.
+     * Creates a command instance with the given memory session.
      *
      * @param session the memory session
      * @return the instance
      */
-    public static DrawArraysIndirectCommand alloc(MemorySession session) {
+    public static DrawArraysIndirectCommand create(MemorySession session) {
         return new DrawArraysIndirectCommand(session.allocate(LAYOUT));
     }
 
@@ -81,8 +89,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand count(int count) {
-        var handle = LAYOUT.varHandle(COUNT);
-        handle.set(address(), count);
+        pCount.set(address(), count);
         return this;
     }
 
@@ -93,8 +100,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand primCount(int primCount) {
-        var handle = LAYOUT.varHandle(PRIM_COUNT);
-        handle.set(address(), primCount);
+        pPrimCount.set(address(), primCount);
         return this;
     }
 
@@ -105,8 +111,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand first(int first) {
-        var handle = LAYOUT.varHandle(FIRST);
-        handle.set(address(), first);
+        pFirst.set(address(), first);
         return this;
     }
 
@@ -117,8 +122,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand baseInstance(int baseInstance) {
-        var handle = LAYOUT.varHandle(BASE_INSTANCE);
-        handle.set(address(), baseInstance);
+        pBaseInstance.set(address(), baseInstance);
         return this;
     }
 
@@ -128,8 +132,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        var handle = LAYOUT.varHandle(COUNT);
-        return (int) handle.get(address());
+        return (int) pCount.get(address());
     }
 
     /**
@@ -138,8 +141,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        var handle = LAYOUT.varHandle(PRIM_COUNT);
-        return (int) handle.get(address());
+        return (int) pPrimCount.get(address());
     }
 
     /**
@@ -148,8 +150,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the first
      */
     public int first() {
-        var handle = LAYOUT.varHandle(FIRST);
-        return (int) handle.get(address());
+        return (int) pFirst.get(address());
     }
 
     /**
@@ -158,7 +159,6 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        var handle = LAYOUT.varHandle(BASE_INSTANCE);
-        return (int) handle.get(address());
+        return (int) pBaseInstance.get(address());
     }
 }

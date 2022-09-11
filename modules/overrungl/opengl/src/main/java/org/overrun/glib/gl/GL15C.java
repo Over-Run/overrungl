@@ -79,7 +79,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glBeginQuery).invoke(target, id);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -87,7 +87,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glBindBuffer).invoke(target, buffer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -95,7 +95,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glBufferData).invoke(target, size, data, usage);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -143,7 +143,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glBufferSubData).invoke(target, offset, size, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -187,7 +187,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glDeleteBuffers).invoke(n, buffers);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -207,7 +207,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glDeleteQueries).invoke(n, ids);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -227,7 +227,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glEndQuery).invoke(target);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -235,7 +235,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGenBuffers).invoke(n, buffers);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -261,7 +261,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGenQueries).invoke(n, ids);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -287,7 +287,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGetBufferParameteriv).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -307,7 +307,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGetBufferPointerv).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -327,7 +327,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGetBufferSubData).invoke(target, offset, size, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -371,7 +371,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGetQueryObjectiv).invoke(id, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -391,7 +391,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGetQueryObjectuiv).invoke(id, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -411,7 +411,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             check(glGetQueryiv).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -431,8 +431,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             return (boolean) check(glIsBuffer).invoke(buffer);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -440,8 +439,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             return (boolean) check(glIsQuery).invoke(buffer);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -449,8 +447,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             return (MemoryAddress) check(glMapBuffer).invoke(target, access);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -458,8 +455,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try {
             return (boolean) check(glUnmapBuffer).invoke(target);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 }

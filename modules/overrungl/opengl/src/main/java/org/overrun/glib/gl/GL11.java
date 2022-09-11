@@ -70,8 +70,7 @@ public final class GL11 extends GL11C {
         try {
             return (boolean) check(glAreTexturesResident).invoke(n, textures, residences);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -96,7 +95,7 @@ public final class GL11 extends GL11C {
         try {
             check(glArrayElement).invoke(i);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -104,7 +103,7 @@ public final class GL11 extends GL11C {
         try {
             check(glColorPointer).invoke(size, type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -142,7 +141,7 @@ public final class GL11 extends GL11C {
         try {
             check(glDisableClientState).invoke(array);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -150,7 +149,7 @@ public final class GL11 extends GL11C {
         try {
             check(glEdgeFlagPointer).invoke(stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -158,7 +157,7 @@ public final class GL11 extends GL11C {
         try {
             check(glEnableClientState).invoke(array);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -166,7 +165,7 @@ public final class GL11 extends GL11C {
         try {
             check(glIndexPointer).invoke(type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -204,7 +203,7 @@ public final class GL11 extends GL11C {
         try {
             check(glIndexub).invoke(c);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -212,7 +211,7 @@ public final class GL11 extends GL11C {
         try {
             check(glIndexubv).invoke(c);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -227,7 +226,7 @@ public final class GL11 extends GL11C {
         try {
             check(glInterleavedArrays).invoke(format, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -242,7 +241,7 @@ public final class GL11 extends GL11C {
         try {
             check(glNormalPointer).invoke(type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -280,7 +279,7 @@ public final class GL11 extends GL11C {
         try {
             check(glPopClientAttrib).invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -288,7 +287,7 @@ public final class GL11 extends GL11C {
         try {
             check(glPrioritizeTextures).invoke(n, textures, priorities);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -312,7 +311,7 @@ public final class GL11 extends GL11C {
         try {
             check(glPushClientAttrib).invoke(mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -320,7 +319,7 @@ public final class GL11 extends GL11C {
         try {
             check(glTexCoordPointer).invoke(size, type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -352,7 +351,7 @@ public final class GL11 extends GL11C {
         try {
             check(glVertexPointer).invoke(size, type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

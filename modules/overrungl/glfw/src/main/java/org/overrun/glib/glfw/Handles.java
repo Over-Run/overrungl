@@ -25,6 +25,7 @@
 package org.overrun.glib.glfw;
 
 import org.overrun.glib.GameLib;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -39,7 +40,6 @@ import static java.lang.foreign.ValueLayout.*;
  */
 final class Handles {
     public static SymbolLookup lookup;
-    public static Linker linker;
     public static MethodHandle
         glfwInit, glfwTerminate, glfwInitHint, glfwGetVersion, glfwGetVersionString, glfwGetError, glfwSetErrorCallback,
         glfwGetMonitors, glfwGetPrimaryMonitor, glfwGetMonitorPos, glfwGetMonitorWorkarea, glfwGetMonitorPhysicalSize,
@@ -73,13 +73,13 @@ final class Handles {
     private static MethodHandle downcall(String name,
                                          MemoryLayout retLayout,
                                          MemoryLayout... argLayouts) {
-        return linker.downcallHandle(lookup.lookup(name).orElseThrow(),
+        return RuntimeHelper.downcallThrow(lookup.lookup(name),
             FunctionDescriptor.of(retLayout, argLayouts));
     }
 
     private static MethodHandle downcallV(String name,
                                           MemoryLayout... argLayouts) {
-        return linker.downcallHandle(lookup.lookup(name).orElseThrow(),
+        return RuntimeHelper.downcallThrow(lookup.lookup(name),
             FunctionDescriptor.ofVoid(argLayouts));
     }
 
@@ -127,7 +127,6 @@ final class Handles {
         lookup = GameLib.load("glfw",
             "glfw3",
             GLFW.VERSION_MAJOR + "." + GLFW.VERSION_MINOR + "." + GLFW.VERSION_REVISION);
-        linker = Linker.nativeLinker();
         glfwInit = downcall("glfwInit", JAVA_INT);
         glfwTerminate = downcallV("glfwTerminate");
         glfwInitHint = downcallV("glfwInitHint", JAVA_INT, JAVA_INT);

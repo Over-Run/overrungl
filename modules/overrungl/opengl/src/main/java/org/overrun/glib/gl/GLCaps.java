@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -201,12 +202,7 @@ public class GLCaps {
     }
 
     public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
-        if (symbol.address() == MemoryAddress.NULL) return null;
-        return downcall(symbol, function);
-    }
-
-    public static MethodHandle downcall(Addressable symbol, FunctionDescriptor function) {
-        return Linker.nativeLinker().downcallHandle(symbol, function);
+        return RuntimeHelper.downcallSafe(symbol, function);
     }
 
     /**

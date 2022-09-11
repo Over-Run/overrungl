@@ -28,6 +28,7 @@ import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.VarHandle;
 
 /**
  * This describes the input state of a gamepad.
@@ -56,12 +57,9 @@ public class GLFWGamepadState extends Pointer {
         BUTTONS_LAYOUT,
         AXES_LAYOUT
     );
-    /**
-     * The struct path elements.
-     */
-    public static final PathElement
-        BUTTONS = PathElement.groupElement("buttons"),
-        AXES = PathElement.groupElement("axes");
+    private static final VarHandle
+        pButtons = LAYOUT.varHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement()),
+        pAxes = LAYOUT.varHandle(PathElement.groupElement("axes"), PathElement.sequenceElement());
 
     /**
      * Create a {@code GLFWgamepadstate} instance.
@@ -92,9 +90,8 @@ public class GLFWGamepadState extends Pointer {
     public byte[] buttons(MemorySession session) {
         var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
         byte[] arr = new byte[15];
-        var handle = LAYOUT.varHandle(BUTTONS, PathElement.sequenceElement());
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (byte) handle.get(seg, (long) i);
+            arr[i] = (byte) pButtons.get(seg, (long) i);
         }
         return arr;
     }
@@ -120,7 +117,7 @@ public class GLFWGamepadState extends Pointer {
     public boolean button(int index) {
         try (var session = MemorySession.openShared()) {
             var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
-            return (byte) LAYOUT.varHandle(BUTTONS, PathElement.sequenceElement()).get(seg, (long) index) == GLFW.PRESS;
+            return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
         }
     }
 
@@ -134,9 +131,8 @@ public class GLFWGamepadState extends Pointer {
     public float[] axes(MemorySession session) {
         var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
         float[] arr = new float[6];
-        var handle = LAYOUT.varHandle(AXES, PathElement.sequenceElement());
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (float) handle.get(seg, (long) i);
+            arr[i] = (float) pAxes.get(seg, (long) i);
         }
         return arr;
     }
@@ -162,7 +158,7 @@ public class GLFWGamepadState extends Pointer {
     public float axe(int index) {
         try (var session = MemorySession.openShared()) {
             var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
-            return (float) LAYOUT.varHandle(AXES, PathElement.sequenceElement()).get(seg, (long) index);
+            return (float) pAxes.get(seg, (long) index);
         }
     }
 }

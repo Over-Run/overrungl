@@ -30,10 +30,13 @@ import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
+import org.overrun.glib.stb.STBImage;
 
+import java.io.IOException;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
+import java.util.Objects;
 
 import static org.overrun.glib.gl.GLConst.*;
 
@@ -100,29 +103,65 @@ public final class GL15Test {
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        GL.enable(GL_TEXTURE_2D);
+
         int vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         GL.bufferData(GL_ARRAY_BUFFER, new float[]{
-            // Vertex          Color
-            0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+            // Vertex          Color             Tex-coord
+            0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f
         }, GL_STATIC_DRAW);
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+
+        int tex = GL.genTexture();
+        GL.bindTexture(GL_TEXTURE_2D, tex);
+        GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        try (var is = ClassLoader.getSystemResourceAsStream("image.png")) {
+            byte[] bytes = Objects.requireNonNull(is).readNBytes(256);
+            try (var session = MemorySession.openShared()) {
+                var px = session.allocate(ValueLayout.JAVA_INT);
+                var py = session.allocate(ValueLayout.JAVA_INT);
+                var pc = session.allocate(ValueLayout.JAVA_INT);
+                var data = STBImage.nloadFromMemory(session.allocateArray(ValueLayout.JAVA_BYTE, bytes), bytes.length, px, py, pc, STBImage.RGB);
+                GL.texImage2D(GL_TEXTURE_2D,
+                    0,
+                    GL_RGB,
+                    px.get(ValueLayout.JAVA_INT, 0),
+                    py.get(ValueLayout.JAVA_INT, 0),
+                    0,
+                    GL_RGB,
+                    GL_UNSIGNED_BYTE,
+                    data);
+                STBImage.free(data);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        GL.bindTexture(GL_TEXTURE_2D, 0);
 
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
+            GL.bindTexture(GL_TEXTURE_2D, tex);
             GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
             GL11.enableClientState(GL_VERTEX_ARRAY);
             GL11.enableClientState(GL_COLOR_ARRAY);
-            GL11.vertexPointer(3, GL_FLOAT, 24, MemoryAddress.NULL);
-            GL11.colorPointer(3, GL_FLOAT, 24, MemoryAddress.ofLong(12L));
+            GL11.enableClientState(GL_TEXTURE_COORD_ARRAY);
+            // 8 double words = 32 bytes
+            final int stride = 8 << 2;
+            GL11.vertexPointer(3, GL_FLOAT, stride, MemoryAddress.NULL);
+            GL11.colorPointer(3, GL_FLOAT, stride, MemoryAddress.ofLong(3 << 2));
+            GL11.texCoordPointer(2, GL_FLOAT, stride, MemoryAddress.ofLong(6 << 2));
             GL.drawArrays(GL_TRIANGLES, 0, 3);
             GL11.disableClientState(GL_VERTEX_ARRAY);
             GL11.disableClientState(GL_COLOR_ARRAY);
+            GL11.disableClientState(GL_TEXTURE_COORD_ARRAY);
             GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+            GL.bindTexture(GL_TEXTURE_2D, 0);
 
             GLFW.swapBuffers(window);
 
@@ -130,6 +169,7 @@ public final class GL15Test {
         }
 
         GL.deleteBuffer(vbo);
+        GL.deleteTexture(tex);
     }
 
     public static void main(String[] args) {

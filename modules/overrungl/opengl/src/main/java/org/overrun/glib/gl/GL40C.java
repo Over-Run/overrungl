@@ -121,7 +121,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glBeginQueryIndexed).invoke(target, index, id);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -129,7 +129,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glBindTransformFeedback).invoke(target, id);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -137,7 +137,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glBlendEquationSeparatei).invoke(buf, modeRGB, modeAlpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -145,7 +145,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glBlendEquationi).invoke(buf, mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -153,7 +153,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glBlendEquationSeparatei).invoke(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -161,7 +161,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glBlendFunci).invoke(buf, src, dst);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -169,7 +169,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glDeleteTransformFeedbacks).invoke(n, ids);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -189,7 +189,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glDrawArraysIndirect).invoke(mode, indirect);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -207,7 +207,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glDrawElementsIndirect).invoke(mode, type, indirect);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -225,7 +225,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glDrawTransformFeedback).invoke(mode, id);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -233,7 +233,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glDrawTransformFeedbackStream).invoke(mode, id, stream);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -241,7 +241,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glEndQueryIndexed).invoke(target, index);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -249,7 +249,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGenTransformFeedbacks).invoke(n, ids);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -275,7 +275,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetActiveSubroutineName).invoke(program, shaderType, index, bufSize, length, name);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -291,7 +291,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetActiveSubroutineUniformName).invoke(program, shaderType, index, bufSize, length, name);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -307,7 +307,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetActiveSubroutineUniformiv).invoke(program, shaderType, index, pname, values);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -333,7 +333,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetProgramStageiv).invoke(program, shaderType, pname, values);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -349,7 +349,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetQueryIndexediv).invoke(target, index, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -365,8 +365,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             return (int) check(glGetSubroutineIndex).invoke(program, shaderType, name);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return GLConstC.GL_INVALID_INDEX;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -380,8 +379,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             return (int) check(glGetSubroutineUniformLocation).invoke(program, shaderType, name);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -395,7 +393,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetUniformSubroutineuiv).invoke(shaderType, location, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -413,7 +411,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glGetUniformdv).invoke(program, location, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -439,8 +437,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             return (boolean) check(glIsTransformFeedback).invoke(id);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -448,7 +445,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glMinSampleShading).invoke(value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -456,7 +453,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glPatchParameterfv).invoke(pname, values);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -470,7 +467,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glPatchParameteri).invoke(pname, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -478,7 +475,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glPauseTransformFeedback).invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -486,7 +483,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glResumeTransformFeedback).invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -494,7 +491,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform1d).invoke(location, x);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -502,7 +499,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform1dv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -516,7 +513,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform2d).invoke(location, x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -524,7 +521,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform2dv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -538,7 +535,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform3d).invoke(location, x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -546,7 +543,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform3dv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -560,7 +557,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform4d).invoke(location, x, y, z, w);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -568,7 +565,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniform4dv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -582,7 +579,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix2dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -600,7 +597,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix2x3dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -618,7 +615,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix2x4dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -636,7 +633,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix3dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -654,7 +651,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix3x2dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -672,7 +669,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix3x4dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -690,7 +687,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix4dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -708,7 +705,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix4x2dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -726,7 +723,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformMatrix4x3dv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -744,7 +741,7 @@ public sealed class GL40C extends GL33C permits GL {
         try {
             check(glUniformSubroutinesuiv).invoke(shaderType, count, indices);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

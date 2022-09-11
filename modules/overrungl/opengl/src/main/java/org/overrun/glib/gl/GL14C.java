@@ -66,7 +66,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glBlendColor).invoke(red, green, blue, alpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -74,7 +74,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glBlendEquation).invoke(mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -82,7 +82,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glBlendFuncSeparate).invoke(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -90,7 +90,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glMultiDrawArrays).invoke(mode, first, count, drawCount);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -108,7 +108,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glMultiDrawElements).invoke(mode, count, type, indices, drawCount);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -166,7 +166,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glPointParameterfv).invoke(pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -188,7 +188,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         try {
             check(glPointParameteriv).invoke(pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

@@ -24,7 +24,6 @@
 
 package org.overrun.glib.glfw;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
@@ -46,7 +45,7 @@ import java.lang.foreign.*;
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
-public class GLFWGammaRamp extends Pointer implements AutoCloseable {
+public class GLFWGammaRamp extends Pointer {
     /**
      * The struct layout.
      */
@@ -56,23 +55,6 @@ public class GLFWGammaRamp extends Pointer implements AutoCloseable {
         ValueLayout.ADDRESS.withName("blue"),
         ValueLayout.JAVA_INT.withName("size")
     );
-    @Nullable
-    private final MemorySession session;
-
-    /**
-     * Create a {@code GLFWgammaramp} instance with the memory session.
-     * <p>
-     * If you create a mutable instance with a memory session
-     * in a try-with-resources statement block, the session
-     * should be {@link MemorySession#asNonCloseable() non-closeable}.
-     *
-     * @param address the address
-     * @param session the memory session or {@code null}
-     */
-    public GLFWGammaRamp(Addressable address, @Nullable MemorySession session) {
-        super(address);
-        this.session = session;
-    }
 
     /**
      * Create a {@code GLFWgammaramp const} instance.
@@ -80,7 +62,7 @@ public class GLFWGammaRamp extends Pointer implements AutoCloseable {
      * @param address the address
      */
     public GLFWGammaRamp(Addressable address) {
-        this(address, null);
+        super(address);
     }
 
     /**
@@ -90,41 +72,44 @@ public class GLFWGammaRamp extends Pointer implements AutoCloseable {
      * @return the instance
      */
     public static GLFWGammaRamp create(MemorySession session) {
-        return new GLFWGammaRamp(session.allocate(LAYOUT), session);
+        return new GLFWGammaRamp(session.allocate(LAYOUT));
     }
 
     /**
-     * Sets the red value array.
+     * Sets the red value array with the given memory session.
      *
-     * @param reds the array
+     * @param session the memory session. the lifetime of the session
+     *                <b>MUST</b> be equal or greater than this instance.
+     * @param reds    the array
      * @return this
      */
-    public GLFWGammaRamp red(short[] reds) {
-        if (session == null) throw new IllegalStateException("The struct is const!");
+    public GLFWGammaRamp red(MemorySession session, short[] reds) {
         address().set(ValueLayout.ADDRESS, 0L, session.allocateArray(ValueLayout.JAVA_SHORT, reds));
         return this;
     }
 
     /**
-     * Sets the green value array.
+     * Sets the green value array with the given memory session.
      *
-     * @param greens the array
+     * @param session the memory session. the lifetime of the session
+     *                <b>MUST</b> be equal or greater than this instance.
+     * @param greens  the array
      * @return this
      */
-    public GLFWGammaRamp green(short[] greens) {
-        if (session == null) throw new IllegalStateException("The struct is const!");
+    public GLFWGammaRamp green(MemorySession session, short[] greens) {
         address().setAtIndex(ValueLayout.ADDRESS, 1L, session.allocateArray(ValueLayout.JAVA_SHORT, greens));
         return this;
     }
 
     /**
-     * Sets the blue value array.
+     * Sets the blue value array with the given memory session.
      *
-     * @param blues the array
+     * @param session the memory session. the lifetime of the session
+     *                <b>MUST</b> be equal or greater than this instance.
+     * @param blues   the array
      * @return this
      */
-    public GLFWGammaRamp blue(short[] blues) {
-        if (session == null) throw new IllegalStateException("The struct is const!");
+    public GLFWGammaRamp blue(MemorySession session, short[] blues) {
         address().setAtIndex(ValueLayout.ADDRESS, 2L, session.allocateArray(ValueLayout.JAVA_SHORT, blues));
         return this;
     }
@@ -261,10 +246,5 @@ public class GLFWGammaRamp extends Pointer implements AutoCloseable {
 
     public MemoryAddress nblue() {
         return address().getAtIndex(ValueLayout.ADDRESS, 2L);
-    }
-
-    @Override
-    public void close() {
-        if (session != null && session.isCloseable()) session.close();
     }
 }

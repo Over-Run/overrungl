@@ -96,7 +96,7 @@ public final class GL14 extends GL14C {
         try {
             check(glFogCoordPointer).invoke(type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -116,7 +116,7 @@ public final class GL14 extends GL14C {
         try {
             check(glFogCoordd).invoke(coord);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -124,7 +124,7 @@ public final class GL14 extends GL14C {
         try {
             check(glFogCoorddv).invoke(coord);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -138,7 +138,7 @@ public final class GL14 extends GL14C {
         try {
             check(glFogCoordf).invoke(coord);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -146,7 +146,7 @@ public final class GL14 extends GL14C {
         try {
             check(glFogCoordfv).invoke(coord);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -160,7 +160,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3b).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -168,7 +168,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3bv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -182,7 +182,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3d).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -190,7 +190,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3dv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -204,7 +204,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3f).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -212,7 +212,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3fv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -226,7 +226,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3i).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -234,7 +234,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3iv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -248,7 +248,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3s).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -256,7 +256,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3sv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -270,7 +270,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3ub).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -278,7 +278,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3ubv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -292,7 +292,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3ui).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -300,7 +300,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3uiv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -314,7 +314,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3us).invoke(red, green, blue);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -322,7 +322,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColor3usv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -336,7 +336,7 @@ public final class GL14 extends GL14C {
         try {
             check(glSecondaryColorPointer).invoke(size, type, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -374,7 +374,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2d).invoke(x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -382,7 +382,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2dv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -396,7 +396,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2f).invoke(x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -404,7 +404,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2fv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -418,7 +418,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2i).invoke(x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -426,7 +426,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2iv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -440,7 +440,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2s).invoke(x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -448,7 +448,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos2sv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -462,7 +462,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3d).invoke(x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -470,7 +470,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3dv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -484,7 +484,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3f).invoke(x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -492,7 +492,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3fv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -506,7 +506,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3i).invoke(x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -514,7 +514,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3iv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -528,7 +528,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3s).invoke(x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -536,7 +536,7 @@ public final class GL14 extends GL14C {
         try {
             check(glWindowPos3sv).invoke(v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

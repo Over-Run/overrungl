@@ -907,8 +907,7 @@ public class GLFW {
         try {
             return (int) glfwInit.invoke() == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -949,7 +948,7 @@ public class GLFW {
         try {
             glfwTerminate.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -957,7 +956,7 @@ public class GLFW {
         try {
             glfwInitHint.invoke(hint, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -965,7 +964,7 @@ public class GLFW {
         try {
             glfwGetVersion.invoke(major, minor, rev);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -991,8 +990,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetVersionString.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1004,8 +1002,7 @@ public class GLFW {
         try {
             return (int) glfwGetError.invoke(description);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1024,8 +1021,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetErrorCallback.invoke(callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1037,8 +1033,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetMonitors.invoke(count);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1061,8 +1056,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetPrimaryMonitor.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1070,7 +1064,7 @@ public class GLFW {
         try {
             glfwGetMonitorPos.invoke(monitor, xpos, ypos);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1092,7 +1086,7 @@ public class GLFW {
         try {
             glfwGetMonitorWorkarea.invoke(monitor, xpos, ypos, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1122,7 +1116,7 @@ public class GLFW {
         try {
             glfwGetMonitorPhysicalSize.invoke(monitor, widthMM, heightMM);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1144,7 +1138,7 @@ public class GLFW {
         try {
             glfwGetMonitorContentScale.invoke(monitor, xscale, yscale);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1166,8 +1160,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetMonitorName.invoke(monitor);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1181,7 +1174,7 @@ public class GLFW {
         try {
             glfwSetMonitorUserPointer.invoke(monitor, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1189,8 +1182,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetMonitorUserPointer.invoke(monitor);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1198,8 +1190,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetMonitorCallback.invoke(callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1211,8 +1202,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetVideoModes.invoke(monitor, count);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1236,8 +1226,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetVideoMode.invoke(monitor);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1251,7 +1240,7 @@ public class GLFW {
         try {
             glfwSetGamma.invoke(monitor, gamma);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1259,8 +1248,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetGammaRamp.invoke(monitor);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1274,7 +1262,7 @@ public class GLFW {
         try {
             glfwSetGammaRamp.invoke(monitor, ramp.rawAddress());
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1282,7 +1270,7 @@ public class GLFW {
         try {
             glfwDefaultWindowHints.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1290,7 +1278,7 @@ public class GLFW {
         try {
             glfwWindowHint.invoke(hint, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1302,7 +1290,7 @@ public class GLFW {
         try {
             glfwWindowHintString.invoke(hint, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1316,8 +1304,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwCreateWindow.invoke(width, height, title, monitor, share);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1331,7 +1318,7 @@ public class GLFW {
         try {
             glfwDestroyWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1339,8 +1326,7 @@ public class GLFW {
         try {
             return (int) glfwWindowShouldClose.invoke(window) == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return true;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1348,7 +1334,7 @@ public class GLFW {
         try {
             glfwSetWindowShouldClose.invoke(window, value ? TRUE : FALSE);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1356,7 +1342,7 @@ public class GLFW {
         try {
             glfwSetWindowTitle.invoke(window, title);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1370,7 +1356,7 @@ public class GLFW {
         try {
             glfwSetWindowIcon.invoke(window, count, images);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1392,7 +1378,7 @@ public class GLFW {
         try {
             glfwGetWindowPos.invoke(window, xpos, ypos);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1414,7 +1400,7 @@ public class GLFW {
         try {
             glfwSetWindowPos.invoke(window, xpos, ypos);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1422,7 +1408,7 @@ public class GLFW {
         try {
             glfwGetWindowSize.invoke(window, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1444,7 +1430,7 @@ public class GLFW {
         try {
             glfwSetWindowSizeLimits.invoke(window, minWidth, minHeight, maxWidth, maxHeight);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1452,7 +1438,7 @@ public class GLFW {
         try {
             glfwSetWindowAspectRatio.invoke(window, numer, denom);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1460,7 +1446,7 @@ public class GLFW {
         try {
             glfwSetWindowSize.invoke(window, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1468,7 +1454,7 @@ public class GLFW {
         try {
             glfwGetFramebufferSize.invoke(window, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1490,7 +1476,7 @@ public class GLFW {
         try {
             glfwGetWindowFrameSize.invoke(window, left, top, right, bottom);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1520,7 +1506,7 @@ public class GLFW {
         try {
             glfwGetWindowContentScale.invoke(window, xscale, yscale);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1542,8 +1528,7 @@ public class GLFW {
         try {
             return (float) glfwGetWindowOpacity.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 1.0f;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1551,7 +1536,7 @@ public class GLFW {
         try {
             glfwSetWindowOpacity.invoke(window, opacity);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1559,7 +1544,7 @@ public class GLFW {
         try {
             glfwIconifyWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1567,7 +1552,7 @@ public class GLFW {
         try {
             glfwRestoreWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1575,7 +1560,7 @@ public class GLFW {
         try {
             glfwMaximizeWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1583,7 +1568,7 @@ public class GLFW {
         try {
             glfwShowWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1591,7 +1576,7 @@ public class GLFW {
         try {
             glfwHideWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1599,7 +1584,7 @@ public class GLFW {
         try {
             glfwFocusWindow.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1607,7 +1592,7 @@ public class GLFW {
         try {
             glfwRequestWindowAttention.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1615,8 +1600,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetWindowMonitor.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1624,7 +1608,7 @@ public class GLFW {
         try {
             glfwGetWindowMonitor.invoke(window, monitor, xpos, ypos, width, height, refreshRate);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1632,8 +1616,7 @@ public class GLFW {
         try {
             return (int) glfwGetWindowAttrib.invoke(window, attrib);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 0;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1641,7 +1624,7 @@ public class GLFW {
         try {
             glfwSetWindowAttrib.invoke(window, attrib, value ? TRUE : FALSE);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1649,7 +1632,7 @@ public class GLFW {
         try {
             glfwSetWindowUserPointer.invoke(window, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1657,8 +1640,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowUserPointer.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1666,8 +1648,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowPosCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1679,8 +1660,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowSizeCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1692,8 +1672,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowCloseCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1705,8 +1684,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowRefreshCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1718,8 +1696,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowFocusCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1731,8 +1708,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowIconifyCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1744,8 +1720,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowMaximizeCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1757,8 +1732,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetFramebufferSizeCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1770,8 +1744,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetWindowContentScaleCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1783,7 +1756,7 @@ public class GLFW {
         try {
             glfwPollEvents.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1791,7 +1764,7 @@ public class GLFW {
         try {
             glfwWaitEvents.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1799,7 +1772,7 @@ public class GLFW {
         try {
             glfwWaitEventsTimeout.invoke(timeout);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1807,7 +1780,7 @@ public class GLFW {
         try {
             glfwPostEmptyEvent.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1815,8 +1788,7 @@ public class GLFW {
         try {
             return (int) glfwGetInputMode.invoke(window, mode);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1824,7 +1796,7 @@ public class GLFW {
         try {
             glfwSetInputMode.invoke(window, mode, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1832,8 +1804,7 @@ public class GLFW {
         try {
             return (int) glfwRawMouseMotionSupported.invoke() == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1841,8 +1812,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetKeyName.invoke(key, scancode);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1856,8 +1826,7 @@ public class GLFW {
         try {
             return (int) glfwGetKeyScancode.invoke(key);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1865,8 +1834,7 @@ public class GLFW {
         try {
             return (int) glfwGetKey.invoke(window, key);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return RELEASE;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1874,8 +1842,7 @@ public class GLFW {
         try {
             return (int) glfwGetMouseButton.invoke(window, button);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return RELEASE;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1883,7 +1850,7 @@ public class GLFW {
         try {
             glfwGetCursorPos.invoke(window, xpos, ypos);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1905,7 +1872,7 @@ public class GLFW {
         try {
             glfwSetCursorPos.invoke(window, xpos, ypos);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1913,8 +1880,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwCreateCursor.invoke(image, xhot, yhot);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1926,8 +1892,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwCreateStandardCursor.invoke(shape);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1935,7 +1900,7 @@ public class GLFW {
         try {
             glfwDestroyCursor.invoke(cursor);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1943,7 +1908,7 @@ public class GLFW {
         try {
             glfwSetCursor.invoke(window, cursor);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1951,8 +1916,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetKeyCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1964,8 +1928,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetCharCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1978,8 +1941,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetCharModsCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1992,8 +1954,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetMouseButtonCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2005,8 +1966,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetCursorPosCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2018,8 +1978,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetCursorEnterCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2031,8 +1990,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetScrollCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2044,8 +2002,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetDropCallback.invoke(window, callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2057,8 +2014,7 @@ public class GLFW {
         try {
             return (int) glfwJoystickPresent.invoke(jid) == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2066,8 +2022,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetJoystickAxes.invoke(jid, count);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2087,8 +2042,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetJoystickButtons.invoke(jid, count);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2108,8 +2062,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetJoystickHats.invoke(jid, count);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2129,8 +2082,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetJoystickName.invoke(jid);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2144,8 +2096,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetJoystickGUID.invoke(jid);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2159,7 +2110,7 @@ public class GLFW {
         try {
             glfwSetJoystickUserPointer.invoke(jid, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2167,8 +2118,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetJoystickUserPointer.invoke(jid);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2176,8 +2126,7 @@ public class GLFW {
         try {
             return (int) glfwJoystickIsGamepad.invoke(jid) == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2185,8 +2134,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwSetJoystickCallback.invoke(callback);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2198,8 +2146,7 @@ public class GLFW {
         try {
             return (int) glfwUpdateGamepadMappings.invoke(string) == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2213,8 +2160,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetGamepadName.invoke(jid);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2228,8 +2174,7 @@ public class GLFW {
         try {
             return (int) glfwGetGamepadState.invoke(jid, state) == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2241,7 +2186,7 @@ public class GLFW {
         try {
             glfwSetClipboardString.invoke(window, string);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2255,8 +2200,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetClipboardString.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2270,8 +2214,7 @@ public class GLFW {
         try {
             return (double) glfwGetTime.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 0.0;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2279,7 +2222,7 @@ public class GLFW {
         try {
             glfwSetTime.invoke(time);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2287,8 +2230,7 @@ public class GLFW {
         try {
             return (long) glfwGetTimerValue.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 0L;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2296,8 +2238,7 @@ public class GLFW {
         try {
             return (long) glfwGetTimerFrequency.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 0L;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2305,7 +2246,7 @@ public class GLFW {
         try {
             glfwMakeContextCurrent.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2313,8 +2254,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetCurrentContext.invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2322,7 +2262,7 @@ public class GLFW {
         try {
             glfwSwapBuffers.invoke(window);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2330,7 +2270,7 @@ public class GLFW {
         try {
             glfwSwapInterval.invoke(interval);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2338,8 +2278,7 @@ public class GLFW {
         try {
             return (int) glfwExtensionSupported.invoke(extension) == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2353,8 +2292,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetProcAddress.invoke(procName);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2368,8 +2306,7 @@ public class GLFW {
         try {
             return (int) glfwVulkanSupported.invoke() == TRUE;
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -2377,8 +2314,7 @@ public class GLFW {
         try {
             return (MemoryAddress) glfwGetRequiredInstanceExtensions.invoke(count);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 

@@ -59,7 +59,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         try {
             check(glCopyTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, x, y, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -67,7 +67,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         try {
             check(glDrawRangeElements).invoke(mode, start, end, count, type, indices);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -93,7 +93,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         try {
             check(glTexImage3D).invoke(target, level, internalFormat, width, height, depth, border, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -119,7 +119,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         try {
             check(glTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

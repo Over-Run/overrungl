@@ -22,46 +22,44 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.glfw;
-
-import org.overrun.glib.ICallback;
+package org.overrun.glib;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
+import java.util.Optional;
 
 /**
- * This is the function pointer type for window close callbacks. A window
- * close callback function has the following signature:
- * {@snippet :
- * @Invoker(IGLFWWindowCloseFun::invoke)
- * void functionName(MemoryAddress window);
- * }
+ * The runtime helper.
  *
  * @author squid233
- * @see GLFW#setWindowCloseCallback
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface IGLFWWindowCloseFun extends ICallback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class);
+public final class RuntimeHelper {
+    /**
+     * The native linker.
+     */
+    public static final Linker LINKER = Linker.nativeLinker();
 
     /**
-     * The function pointer type for window close callbacks.
+     * Creates a downcall handle or {@code null}.
      *
-     * @param window The window that the user attempted to close.
+     * @param symbol   the address of the target function.
+     * @param function the function descriptor of the target function.
+     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
      */
-    void invoke(MemoryAddress window);
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowCloseFun.class, "invoke", MTYPE);
+    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
+        if (symbol.address() == MemoryAddress.NULL) return null;
+        return LINKER.downcallHandle(symbol, function);
     }
 
-    @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    /**
+     * Creates a downcall handle or throws exception.
+     *
+     * @param optional the optional contained the address of the target function.
+     * @param function the function descriptor of the target function.
+     * @return a downcall method handle.
+     */
+    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptor function) {
+        return LINKER.downcallHandle(optional.orElseThrow(), function);
     }
 }

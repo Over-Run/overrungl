@@ -83,8 +83,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             return (int) check(glClientWaitSync).invoke(sync, flags, timeout);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return GLConstC.GL_WAIT_FAILED;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -92,7 +91,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glDeleteSync).invoke(sync);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -100,7 +99,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glDrawElementsBaseVertex).invoke(mode, count, type, indices, baseVertex);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -126,7 +125,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glDrawElementsInstancedBaseVertex).invoke(mode, count, type, indices, instanceCount, baseVertex);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -152,7 +151,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glDrawRangeElementsBaseVertex).invoke(mode, start, end, count, type, indices, baseVertex);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -178,8 +177,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             return (MemoryAddress) check(glFenceSync).invoke(condition, flags);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -187,7 +185,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glFramebufferTexture).invoke(target, attachment, texture, level);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -195,7 +193,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glGetBufferParameteri64v).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -215,7 +213,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glGetInteger64i_v).invoke(target, index, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -241,7 +239,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glGetInteger64v).invoke(pname, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -267,7 +265,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glGetMultisamplefv).invoke(pname, index, val);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -293,7 +291,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glGetSynciv).invoke(sync, pname, count, length, values);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -323,8 +321,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             return (boolean) check(glIsSync).invoke(sync);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -332,7 +329,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glMultiDrawElementsBaseVertex).invoke(mode, count, type, indices, drawCount, baseVertex);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -380,7 +377,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glProvokingVertex).invoke(mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -388,7 +385,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glSampleMaski).invoke(maskNumber, mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -396,7 +393,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glTexImage2DMultisample).invoke(target, samples, internalFormat, width, height, fixedSampleLocations);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -404,7 +401,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glTexImage3DMultisample).invoke(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -412,7 +409,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try {
             check(glWaitSync).invoke(sync, flags, timeout);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 }

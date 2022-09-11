@@ -120,7 +120,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glBlendFunc).invoke(sfactor, dfactor);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -128,7 +128,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glClear).invoke(mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -136,7 +136,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glClearColor).invoke(red, green, blue, alpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -144,7 +144,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glClearDepth).invoke(depth);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -152,7 +152,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glClearStencil).invoke(s);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -160,7 +160,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glColorMask).invoke(red, green, blue, alpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -168,7 +168,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glCullFace).invoke(mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -176,7 +176,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glDepthFunc).invoke(func);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -184,7 +184,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glDepthMask).invoke(flag);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -192,7 +192,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glDepthRange).invoke(n, f);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -200,7 +200,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glDisable).invoke(cap);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -208,7 +208,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glDrawBuffer).invoke(buf);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -216,7 +216,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glEnable).invoke(cap);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -232,7 +232,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glFrontFace).invoke(mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -240,7 +240,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetBooleanv).invoke(pname, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -266,7 +266,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetDoublev).invoke(pname, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -292,8 +292,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             return (int) check(glGetError).invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -301,7 +300,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetFloatv).invoke(pname, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -327,7 +326,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetIntegerv).invoke(pname, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -353,8 +352,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             return (MemoryAddress) check(glGetString).invoke(name);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return MemoryAddress.NULL;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -368,7 +366,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetTexImage).invoke(target, level, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -376,7 +374,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetTexLevelParameterfv).invoke(target, level, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -402,7 +400,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetTexLevelParameteriv).invoke(target, level, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -428,7 +426,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetTexParameterfv).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -454,7 +452,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glGetTexParameteriv).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -480,7 +478,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glHint).invoke(target, mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -488,8 +486,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             return (boolean) check(glIsEnabled).invoke(cap);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -497,7 +494,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glLineWidth).invoke(width);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -505,7 +502,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glLogicOp).invoke(opcode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -513,7 +510,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glPixelStoref).invoke(pname, param);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -521,7 +518,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glPixelStorei).invoke(pname, param);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -529,7 +526,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glPointSize).invoke(size);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -537,7 +534,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glPolygonMode).invoke(face, mode);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -545,7 +542,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glReadBuffer).invoke(src);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -553,7 +550,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glReadPixels).invoke(x, y, width, height, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -561,7 +558,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glScissor).invoke(x, y, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -569,7 +566,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glStencilFunc).invoke(func, ref, mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -577,7 +574,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glStencilMask).invoke(mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -585,7 +582,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glStencilOp).invoke(fail, zfail, zpass);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -593,7 +590,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glTexImage1D).invoke(target, level, internalFormat, width, border, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -622,7 +619,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glTexImage2D).invoke(target, level, internalFormat, width, height, border, format, type, pixels);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -651,7 +648,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glTexParameterf).invoke(target, pname, param);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -674,7 +671,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glTexParameteri).invoke(target, pname, param);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -682,7 +679,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glTexParameteriv).invoke(target, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -697,7 +694,7 @@ public sealed class GL10C permits GL10, GL11C {
         try {
             check(glViewport).invoke(x, y, width, height);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 }

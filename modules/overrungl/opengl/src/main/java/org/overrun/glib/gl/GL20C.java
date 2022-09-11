@@ -181,7 +181,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glAttachShader).invoke(program, shader);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -189,7 +189,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glBindAttribLocation).invoke(program, index, name);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -203,7 +203,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glBlendEquationSeparate).invoke(modeRGB, modeAlpha);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -211,7 +211,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glCompileShader).invoke(shader);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -219,8 +219,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             return (int) check(glCreateProgram).invoke();
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 0;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -228,8 +227,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             return (int) check(glCreateShader).invoke(type);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return 0;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -237,7 +235,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glDeleteProgram).invoke(program);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -245,7 +243,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glDeleteShader).invoke(shader);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -253,7 +251,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glDetachShader).invoke(program, shader);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -261,7 +259,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glDisableVertexAttribArray).invoke(index);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -269,7 +267,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glDrawBuffers).invoke(n, bufs);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -283,7 +281,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glEnableVertexAttribArray).invoke(index);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -291,7 +289,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetActiveAttrib).invoke(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -315,7 +313,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetActiveUniform).invoke(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -339,7 +337,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetAttachedShaders).invoke(program, maxCount, count, shaders);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -361,8 +359,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             return (int) check(glGetAttribLocation).invoke(program, name);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -376,7 +373,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetProgramInfoLog).invoke(program, bufSize, length, infoLog);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -404,7 +401,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetProgramiv).invoke(program, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -430,7 +427,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetShaderInfoLog).invoke(shader, bufSize, length, infoLog);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -458,7 +455,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetShaderSource).invoke(shader, bufSize, length, source);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -486,7 +483,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetShaderiv).invoke(shader, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -512,8 +509,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             return (int) check(glGetUniformLocation).invoke(program, name);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return -1;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -527,7 +523,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetUniformfv).invoke(program, location, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -553,7 +549,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetUniformiv).invoke(program, location, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -579,7 +575,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetVertexAttribPointerv).invoke(index, pname, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -637,7 +633,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetVertexAttribdv).invoke(index, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -663,7 +659,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetVertexAttribfv).invoke(index, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -689,7 +685,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glGetVertexAttribiv).invoke(index, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -715,8 +711,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             return (boolean) check(glIsProgram).invoke(program);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -724,8 +719,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             return (boolean) check(glIsShader).invoke(shader);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return false;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -733,7 +727,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glLinkProgram).invoke(program);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -741,7 +735,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glShaderSource).invoke(shader, count, string, length);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -777,7 +771,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glStencilFuncSeparate).invoke(face, func, ref, mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -785,7 +779,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glStencilMaskSeparate).invoke(face, mask);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -793,7 +787,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glStencilOpSeparate).invoke(face, sfail, dpfail, dppass);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -801,7 +795,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform1f).invoke(location, v0);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -809,7 +803,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform1fv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -823,7 +817,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform1i).invoke(location, v0);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -831,7 +825,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform1iv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -845,7 +839,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform2f).invoke(location, v0, v1);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -853,7 +847,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform2fv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -867,7 +861,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform2i).invoke(location, v0, v1);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -875,7 +869,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform2iv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -889,7 +883,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform3f).invoke(location, v0, v1, v2);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -897,7 +891,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform3fv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -911,7 +905,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform3i).invoke(location, v0, v1, v2);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -919,7 +913,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform3iv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -933,7 +927,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform4f).invoke(location, v0, v1, v2, v3);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -941,7 +935,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform4fv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -955,7 +949,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform4i).invoke(location, v0, v1, v2, v3);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -963,7 +957,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniform4iv).invoke(location, count, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -977,7 +971,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniformMatrix2fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -995,7 +989,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniformMatrix3fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1013,7 +1007,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUniformMatrix4fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1031,7 +1025,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glUseProgram).invoke(program);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1039,7 +1033,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glValidateProgram).invoke(program);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1047,7 +1041,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib1d).invoke(index, x);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1055,7 +1049,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib1dv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1069,7 +1063,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib1f).invoke(index, x);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1077,7 +1071,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib1fv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1091,7 +1085,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib1s).invoke(index, x);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1099,7 +1093,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib1sv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1113,7 +1107,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib2d).invoke(index, x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1121,7 +1115,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib2dv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1135,7 +1129,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib2f).invoke(index, x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1143,7 +1137,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib2fv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1157,7 +1151,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib2s).invoke(index, x, y);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1165,7 +1159,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib2sv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1179,7 +1173,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib3d).invoke(index, x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1187,7 +1181,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib3dv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1201,7 +1195,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib3f).invoke(index, x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1209,7 +1203,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib3fv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1223,7 +1217,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib3s).invoke(index, x, y, z);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1231,7 +1225,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib3sv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1245,7 +1239,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Nbv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1259,7 +1253,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Niv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1273,7 +1267,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Nsv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1287,7 +1281,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Nub).invoke(index, x, y, z, w);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1295,7 +1289,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Nubv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1309,7 +1303,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Nuiv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1323,7 +1317,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4Nusv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1337,7 +1331,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4bv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1351,7 +1345,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4d).invoke(index, x, y, z, w);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1359,7 +1353,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4dv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1373,7 +1367,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4f).invoke(index, x, y, z, w);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1381,7 +1375,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4fv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1395,7 +1389,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4iv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1409,7 +1403,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4s).invoke(index, x, y, z, w);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1417,7 +1411,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4sv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1431,7 +1425,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4ubv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1445,7 +1439,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4uiv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1459,7 +1453,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttrib4usv).invoke(index, v);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -1473,7 +1467,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try {
             check(glVertexAttribPointer).invoke(index, size, type, normalized, stride, pointer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

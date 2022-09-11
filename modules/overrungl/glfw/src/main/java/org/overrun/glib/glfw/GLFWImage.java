@@ -35,9 +35,9 @@ import java.lang.foreign.*;
  * <h3>Layout</h3>
  * <pre><code>
  * struct GLFWimage {
- *     int {@link #width};
- *     int {@link #height};
- *     unsigned char* {@link #pixels};
+ *     int {@link #width() width};
+ *     int {@link #height() height};
+ *     unsigned char* {@link #pixels() pixels};
  * }</code></pre>
  *
  * @author squid233

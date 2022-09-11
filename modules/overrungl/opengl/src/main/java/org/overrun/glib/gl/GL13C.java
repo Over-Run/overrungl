@@ -66,7 +66,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glActiveTexture).invoke(texture);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -74,7 +74,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glCompressedTexImage1D).invoke(target, level, internalFormat, width, border, imageSize, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -82,7 +82,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glCompressedTexImage2D).invoke(target, level, internalFormat, width, height, border, imageSize, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -90,7 +90,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glCompressedTexImage3D).invoke(target, level, internalFormat, width, height, depth, border, imageSize, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -98,7 +98,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glCompressedTexSubImage1D).invoke(target, level, xoffset, width, format, imageSize, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -106,7 +106,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glCompressedTexSubImage2D).invoke(target, level, xoffset, yoffset, width, height, format, imageSize, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -114,7 +114,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glCompressedTexSubImage2D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -122,7 +122,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glGetCompressedTexImage).invoke(target, level, img);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -130,7 +130,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         try {
             check(glSampleCoverage).invoke(value, invert);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 }

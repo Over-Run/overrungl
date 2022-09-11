@@ -27,6 +27,8 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.ICallback;
 
 import java.lang.foreign.*;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 
 /**
@@ -57,7 +59,12 @@ public interface IGLFWMouseButtonFun extends ICallback {
     void invoke(MemoryAddress window, int button, int action, int mods);
 
     @Override
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWMouseButtonFun.class, "invoke", MTYPE);
+    }
+
+    @Override
     default Addressable address(MemorySession session) {
-        return segment(session, IGLFWMouseButtonFun.class, "invoke", MTYPE, DESC);
+        return segment(session, DESC);
     }
 }

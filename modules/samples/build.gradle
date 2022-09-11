@@ -1,4 +1,5 @@
 dependencies {
     implementation project(':glfw')
     implementation project(':opengl')
+    implementation project(':stb')
 }

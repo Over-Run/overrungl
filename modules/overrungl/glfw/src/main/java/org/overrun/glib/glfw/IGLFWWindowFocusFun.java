@@ -27,6 +27,8 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.ICallback;
 
 import java.lang.foreign.*;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 
 /**
@@ -60,7 +62,12 @@ public interface IGLFWWindowFocusFun extends ICallback {
     }
 
     @Override
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWWindowFocusFun.class, "ninvoke", MTYPE);
+    }
+
+    @Override
     default Addressable address(MemorySession session) {
-        return segment(session, IGLFWWindowFocusFun.class, "ninvoke", MTYPE, DESC);
+        return segment(session, DESC);
     }
 }

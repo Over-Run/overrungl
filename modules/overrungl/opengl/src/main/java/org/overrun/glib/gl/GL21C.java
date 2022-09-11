@@ -63,7 +63,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         try {
             check(glUniformMatrix2x3fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -81,7 +81,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         try {
             check(glUniformMatrix2x4fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -99,7 +99,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         try {
             check(glUniformMatrix3x2fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -117,7 +117,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         try {
             check(glUniformMatrix3x4fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -135,7 +135,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         try {
             check(glUniformMatrix4x2fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -153,7 +153,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         try {
             check(glUniformMatrix4x3fv).invoke(location, count, transpose, value);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 

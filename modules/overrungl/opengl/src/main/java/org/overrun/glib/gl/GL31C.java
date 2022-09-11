@@ -77,7 +77,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glCopyBufferSubData).invoke(readTarget, writeTarget, readOffset, writeOffset, size);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -85,7 +85,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glDrawArraysInstanced).invoke(mode, first, count, instanceCount);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -93,7 +93,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glDrawElementsInstanced).invoke(mode, count, type, indices, instanceCount);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -119,7 +119,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glGetActiveUniformBlockName).invoke(program, uniformBlockIndex, bufSize, length, uniformBlockName);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -147,7 +147,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glGetActiveUniformBlockiv).invoke(program, uniformBlockIndex, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -165,7 +165,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glGetActiveUniformName).invoke(program, uniformIndex, bufSize, length, uniformName);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -193,7 +193,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glGetActiveUniformsiv).invoke(program, uniformCount, uniformIndices, pname, params);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -220,8 +220,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             return (int) check(glGetUniformBlockIndex).invoke(program, uniformBlockName);
         } catch (Throwable e) {
-            e.printStackTrace();
-            return GLConstC.GL_INVALID_INDEX;
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -235,7 +234,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glGetUniformIndices).invoke(program, uniformCount, uniformNames, uniformIndices);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -266,7 +265,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glPrimitiveRestartIndex).invoke(index);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -274,7 +273,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glTexBuffer).invoke(target, internalFormat, buffer);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 
@@ -282,7 +281,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try {
             check(glUniformBlockBinding).invoke(program, uniformBlockIndex, uniformBlockBinding);
         } catch (Throwable e) {
-            e.printStackTrace();
+            throw new AssertionError("should not reach here");
         }
     }
 }

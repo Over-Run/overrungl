@@ -28,6 +28,7 @@ import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.VarHandle;
 
 /**
  * The OpenGL 4.2 draw arrays indirect command.
@@ -47,15 +48,12 @@ public class DrawElementsIndirectCommand extends Pointer {
             ValueLayout.JAVA_INT.withName("baseVertex"),
             ValueLayout.JAVA_INT.withName("baseInstance")
         );
-    /**
-     * The struct path elements.
-     */
-    public static final PathElement
-        COUNT = PathElement.groupElement("count"),
-        PRIM_COUNT = PathElement.groupElement("primCount"),
-        FIRST_INDEX = PathElement.groupElement("firstIndex"),
-        BASE_VERTEX = PathElement.groupElement("baseVertex"),
-        BASE_INSTANCE = PathElement.groupElement("baseInstance");
+    private static final VarHandle
+        pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
+        pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
+        pFirstIndex = LAYOUT.varHandle(PathElement.groupElement("firstIndex")),
+        pBaseVertex = LAYOUT.varHandle(PathElement.groupElement("baseVertex")),
+        pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
 
     /**
      * Create the pointer instance.
@@ -67,12 +65,12 @@ public class DrawElementsIndirectCommand extends Pointer {
     }
 
     /**
-     * Allocate a command instance.
+     * Creates a command instance with the given memory session.
      *
      * @param session the memory session
      * @return the instance
      */
-    public static DrawElementsIndirectCommand alloc(MemorySession session) {
+    public static DrawElementsIndirectCommand create(MemorySession session) {
         return new DrawElementsIndirectCommand(session.allocate(LAYOUT));
     }
 
@@ -83,8 +81,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand count(int count) {
-        var handle = LAYOUT.varHandle(COUNT);
-        handle.set(address(), count);
+        pCount.set(address(), count);
         return this;
     }
 
@@ -95,8 +92,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand primCount(int primCount) {
-        var handle = LAYOUT.varHandle(PRIM_COUNT);
-        handle.set(address(), primCount);
+        pPrimCount.set(address(), primCount);
         return this;
     }
 
@@ -107,8 +103,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand firstIndex(int firstIndex) {
-        var handle = LAYOUT.varHandle(FIRST_INDEX);
-        handle.set(address(), firstIndex);
+        pFirstIndex.set(address(), firstIndex);
         return this;
     }
 
@@ -119,8 +114,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseVertex(int baseVertex) {
-        var handle = LAYOUT.varHandle(BASE_VERTEX);
-        handle.set(address(), baseVertex);
+        pBaseVertex.set(address(), baseVertex);
         return this;
     }
 
@@ -131,8 +125,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseInstance(int baseInstance) {
-        var handle = LAYOUT.varHandle(BASE_INSTANCE);
-        handle.set(address(), baseInstance);
+        pBaseInstance.set(address(), baseInstance);
         return this;
     }
 
@@ -142,8 +135,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        var handle = LAYOUT.varHandle(COUNT);
-        return (int) handle.get(address());
+        return (int) pCount.get(address());
     }
 
     /**
@@ -152,8 +144,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        var handle = LAYOUT.varHandle(PRIM_COUNT);
-        return (int) handle.get(address());
+        return (int) pPrimCount.get(address());
     }
 
     /**
@@ -162,8 +153,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the first index
      */
     public int firstIndex() {
-        var handle = LAYOUT.varHandle(FIRST_INDEX);
-        return (int) handle.get(address());
+        return (int) pFirstIndex.get(address());
     }
 
     /**
@@ -172,8 +162,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base vertex
      */
     public int baseVertex() {
-        var handle = LAYOUT.varHandle(BASE_VERTEX);
-        return (int) handle.get(address());
+        return (int) pBaseVertex.get(address());
     }
 
     /**
@@ -182,7 +171,6 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        var handle = LAYOUT.varHandle(BASE_INSTANCE);
-        return (int) handle.get(address());
+        return (int) pBaseInstance.get(address());
     }
 }
