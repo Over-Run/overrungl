@@ -114,6 +114,7 @@ public class GLCaps {
     static final FunctionDescriptor dIIIPPV = ofDescriptor("IIIPPV");
     static final FunctionDescriptor dIIJJJV = ofDescriptor("IIJJJV");
     static final FunctionDescriptor dIIPIPV = ofDescriptor("IIPIPV");
+    static final FunctionDescriptor dIIPPPV = ofDescriptor("IIPPPV");
     static final FunctionDescriptor dIPIPIV = ofDescriptor("IPIPIV");
     static final FunctionDescriptor dISSSSV = ofDescriptor("ISSSSV");
     static final FunctionDescriptor dIZZZZV = ofDescriptor("IZZZZV");
@@ -201,7 +202,7 @@ public class GLCaps {
         return true;
     }
 
-    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
+    static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
         return RuntimeHelper.downcallSafe(symbol, function);
     }
 
@@ -242,6 +243,7 @@ public class GLCaps {
         GL32C.load(load);
         GL33C.load(load);
         GL40C.load(load);
+        GL41C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -265,7 +267,7 @@ public class GLCaps {
             if (GL10C.glGetString == null) {
                 return false;
             }
-            outExts.set(ADDRESS, 0L, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
+            outExts.set(ADDRESS, 0, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
         } else {
             if (GL30C.glGetStringi == null || GL10C.glGetIntegerv == null) {
                 return false;
@@ -282,8 +284,8 @@ public class GLCaps {
                 var glStrTmp = GL30C.getStringi(GLConstC.GL_EXTENSIONS, index);
                 ((MemorySegment) extsI).setAtIndex(ADDRESS, index, session.allocateUtf8String(glStrTmp));
             }
-            outNumExtsI.set(JAVA_INT, 0L, numExtsI);
-            outExtsI.set(ADDRESS, 0L, extsI);
+            outNumExtsI.set(JAVA_INT, 0, numExtsI);
+            outExtsI.set(ADDRESS, 0, extsI);
         }
 
         return true;
@@ -356,7 +358,7 @@ public class GLCaps {
         Ver32 = (major == 3 && minor >= 2) || major > 3 || GL32C.isSupported();
         Ver33 = (major == 3 && minor >= 3) || major > 3 || GL33C.isSupported();
         Ver40 = (major == 4 && minor >= 0) || major > 4 || GL40C.isSupported();
-        Ver41 = (major == 4 && minor >= 1) || major > 4;
+        Ver41 = (major == 4 && minor >= 1) || major > 4 || GL41C.isSupported();
         Ver42 = (major == 4 && minor >= 2) || major > 4;
         Ver43 = (major == 4 && minor >= 3) || major > 4;
         Ver44 = (major == 4 && minor >= 4) || major > 4;

@@ -32,8 +32,6 @@ import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -77,16 +75,13 @@ public final class GLFWTest {
             GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
-            try (var session = MemorySession.openShared()) {
-                var pWidth = session.allocate(ValueLayout.JAVA_INT);
-                var pHeight = session.allocate(ValueLayout.JAVA_INT);
-                GLFW.ngetWindowSize(window, pWidth, pHeight);
-                GLFW.setWindowPos(
-                    window,
-                    (vidMode.width() - pWidth.get(ValueLayout.JAVA_INT, 0L)) / 2,
-                    (vidMode.height() - pHeight.get(ValueLayout.JAVA_INT, 0L)) / 2
-                );
-            }
+            int[] pWidth = new int[1], pHeight = new int[1];
+            GLFW.getWindowSize(window, pWidth, pHeight);
+            GLFW.setWindowPos(
+                window,
+                (vidMode.width() - pWidth[0]) / 2,
+                (vidMode.height() - pHeight[0]) / 2
+            );
         }
 
         GLFW.makeContextCurrent(window);

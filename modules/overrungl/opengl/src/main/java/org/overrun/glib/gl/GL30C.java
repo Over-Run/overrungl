@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -473,9 +474,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, framebuffers.length);
             genFramebuffers(framebuffers.length, seg);
-            for (int i = 0; i < framebuffers.length; i++) {
-                framebuffers[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, framebuffers);
         }
     }
 
@@ -483,7 +482,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             genFramebuffers(1, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -499,9 +498,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, renderbuffers.length);
             genRenderbuffers(renderbuffers.length, seg);
-            for (int i = 0; i < renderbuffers.length; i++) {
-                renderbuffers[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, renderbuffers);
         }
     }
 
@@ -509,7 +506,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             genRenderbuffers(1, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -525,9 +522,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, arrays.length);
             genVertexArrays(arrays.length, seg);
-            for (int i = 0; i < arrays.length; i++) {
-                arrays[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, arrays);
         }
     }
 
@@ -535,7 +530,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             genVertexArrays(1, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -559,9 +554,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_BOOLEAN, data.length);
             getBooleani_v(target, index, seg);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = seg.get(JAVA_BOOLEAN, i);
-            }
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
@@ -569,7 +562,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_BOOLEAN);
             getBooleani_v(target, index, seg);
-            return seg.get(JAVA_BOOLEAN, 0L);
+            return seg.get(JAVA_BOOLEAN, 0);
         }
     }
 
@@ -599,7 +592,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
-            params[0] = seg.get(JAVA_INT, 0L);
+            params[0] = seg.get(JAVA_INT, 0);
         }
     }
 
@@ -607,7 +600,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -623,9 +616,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, data.length);
             getIntegeri_v(target, index, seg);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
@@ -633,7 +624,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getIntegeri_v(target, index, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -649,7 +640,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getRenderbufferParameteriv(target, pname, seg);
-            params[0] = seg.get(JAVA_INT, 0L);
+            params[0] = seg.get(JAVA_INT, 0);
         }
     }
 
@@ -657,7 +648,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getRenderbufferParameteriv(target, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -672,7 +663,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     @Nullable
     public static String getStringi(int pname, int index) {
         var pStr = ngetStringi(pname, index);
-        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0L) : null;
+        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0) : null;
     }
 
     public static void getTexParameterIiv(int target, int pname, Addressable params) {
@@ -687,9 +678,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getTexParameterIiv(target, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -697,7 +686,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getTexParameterIiv(target, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -713,9 +702,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getTexParameterIuiv(target, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -723,7 +710,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getTexParameterIuiv(target, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -743,11 +730,11 @@ public sealed class GL30C extends GL21C permits GL31C {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            size[0] = pSz.get(JAVA_INT, 0L);
-            type[0] = pType.get(JAVA_INT, 0L);
-            name[0] = pName.getUtf8String(0L);
+            size[0] = pSz.get(JAVA_INT, 0);
+            type[0] = pType.get(JAVA_INT, 0);
+            name[0] = pName.getUtf8String(0);
         }
     }
 
@@ -763,9 +750,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getUniformuiv(program, location, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -773,7 +758,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getUniformuiv(program, location, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -789,9 +774,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getVertexAttribIiv(index, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -799,7 +782,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getVertexAttribIiv(index, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -815,9 +798,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getVertexAttribIuiv(index, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -825,7 +806,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getVertexAttribIuiv(index, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 

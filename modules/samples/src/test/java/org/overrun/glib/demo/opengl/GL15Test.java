@@ -34,8 +34,6 @@ import org.overrun.glib.stb.STBImage;
 
 import java.io.IOException;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 import java.util.Objects;
 
 import static org.overrun.glib.gl.GLConst.*;
@@ -80,16 +78,13 @@ public final class GL15Test {
             GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
-            try (var session = MemorySession.openShared()) {
-                var pWidth = session.allocate(ValueLayout.JAVA_INT);
-                var pHeight = session.allocate(ValueLayout.JAVA_INT);
-                GLFW.ngetWindowSize(window, pWidth, pHeight);
-                GLFW.setWindowPos(
-                    window,
-                    (vidMode.width() - pWidth.get(ValueLayout.JAVA_INT, 0L)) / 2,
-                    (vidMode.height() - pHeight.get(ValueLayout.JAVA_INT, 0L)) / 2
-                );
-            }
+            int[] pWidth = new int[1], pHeight = new int[1];
+            GLFW.getWindowSize(window, pWidth, pHeight);
+            GLFW.setWindowPos(
+                window,
+                (vidMode.width() - pWidth[0]) / 2,
+                (vidMode.height() - pHeight[0]) / 2
+            );
         }
 
         GLFW.makeContextCurrent(window);
@@ -121,22 +116,18 @@ public final class GL15Test {
         GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         try (var is = ClassLoader.getSystemResourceAsStream("image.png")) {
             byte[] bytes = Objects.requireNonNull(is).readNBytes(256);
-            try (var session = MemorySession.openShared()) {
-                var px = session.allocate(ValueLayout.JAVA_INT);
-                var py = session.allocate(ValueLayout.JAVA_INT);
-                var pc = session.allocate(ValueLayout.JAVA_INT);
-                var data = STBImage.nloadFromMemory(session.allocateArray(ValueLayout.JAVA_BYTE, bytes), bytes.length, px, py, pc, STBImage.RGB);
-                GL.texImage2D(GL_TEXTURE_2D,
-                    0,
-                    GL_RGB,
-                    px.get(ValueLayout.JAVA_INT, 0),
-                    py.get(ValueLayout.JAVA_INT, 0),
-                    0,
-                    GL_RGB,
-                    GL_UNSIGNED_BYTE,
-                    data);
-                STBImage.free(data);
-            }
+            int[] px = new int[1], py = new int[1], pc = new int[1];
+            var data = STBImage.loadFromMemory(bytes, px, py, pc, STBImage.RGB);
+            GL.texImage2D(GL_TEXTURE_2D,
+                0,
+                GL_RGB,
+                px[0],
+                py[0],
+                0,
+                GL_RGB,
+                GL_UNSIGNED_BYTE,
+                data);
+            STBImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

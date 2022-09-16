@@ -30,5 +30,5 @@ package org.overrun.glib.gl;
  * @author squid233
  * @since 0.1.0
  */
-public non-sealed class GL extends GL40C {
+public non-sealed class GL extends GL41C {
 }

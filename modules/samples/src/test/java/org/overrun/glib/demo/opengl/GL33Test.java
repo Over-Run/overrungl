@@ -33,7 +33,6 @@ import org.overrun.glib.glfw.GLFWErrorCallback;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 
 import static java.lang.foreign.MemoryLayout.PathElement.sequenceElement;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -84,16 +83,13 @@ public class GL33Test {
             GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
-            try (var session = MemorySession.openShared()) {
-                var pWidth = session.allocate(ValueLayout.JAVA_INT);
-                var pHeight = session.allocate(ValueLayout.JAVA_INT);
-                GLFW.ngetWindowSize(window, pWidth, pHeight);
-                GLFW.setWindowPos(
-                    window,
-                    (vidMode.width() - pWidth.get(ValueLayout.JAVA_INT, 0L)) / 2,
-                    (vidMode.height() - pHeight.get(ValueLayout.JAVA_INT, 0L)) / 2
-                );
-            }
+            int[] pWidth = new int[1], pHeight = new int[1];
+            GLFW.getWindowSize(window, pWidth, pHeight);
+            GLFW.setWindowPos(
+                window,
+                (vidMode.width() - pWidth[0]) / 2,
+                (vidMode.height() - pHeight[0]) / 2
+            );
         }
 
         GLFW.makeContextCurrent(window);
@@ -168,7 +164,7 @@ public class GL33Test {
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
         GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
-        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12L));
+        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12));
         int mbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
         try (var session = MemorySession.openShared()) {
@@ -231,9 +227,9 @@ public class GL33Test {
         GL.enableVertexAttribArray(4);
         GL.enableVertexAttribArray(5);
         GL.vertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemoryAddress.NULL);
-        GL.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(16L));
-        GL.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(32L));
-        GL.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(48L));
+        GL.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(16));
+        GL.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(32));
+        GL.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(48));
         GL.vertexAttribDivisor(2, 1);
         GL.vertexAttribDivisor(3, 1);
         GL.vertexAttribDivisor(4, 1);

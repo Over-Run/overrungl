@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -176,25 +177,20 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void genTextures(int n, int[] textures) {
+    public static void genTextures(int[] textures) {
         try (var session = MemorySession.openShared()) {
+            final int n = textures.length;
             var pTex = session.allocateArray(ValueLayout.JAVA_INT, n);
             genTextures(n, pTex);
-            for (int i = 0; i < n; i++) {
-                textures[n] = pTex.getAtIndex(ValueLayout.JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pTex, textures);
         }
-    }
-
-    public static void genTextures(int[] textures) {
-        genTextures(textures.length, textures);
     }
 
     public static int genTexture() {
         try (var session = MemorySession.openShared()) {
             var pTex = session.allocate(ValueLayout.JAVA_INT);
             genTextures(1, pTex);
-            return pTex.get(ValueLayout.JAVA_INT, 0L);
+            return pTex.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
@@ -214,7 +210,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(ValueLayout.ADDRESS);
             getPointerv(pname, pParams);
-            return pParams.get(ValueLayout.ADDRESS, 0L);
+            return pParams.get(ValueLayout.ADDRESS, 0);
         }
     }
 

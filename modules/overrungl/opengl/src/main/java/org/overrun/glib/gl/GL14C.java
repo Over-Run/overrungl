@@ -101,7 +101,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawArrays(int mode, int[] first, int[] count) {
-        multiDrawArrays(mode, first, count, Math.min(first.length, count.length));
+        multiDrawArrays(mode, first, count, first.length);
     }
 
     public static void multiDrawElements(int mode, Addressable count, int type, Addressable indices, int drawCount) {
@@ -123,7 +123,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(int mode, int[] count, int type, byte[][] indices) {
-        multiDrawElements(mode, count, type, indices, Math.min(count.length, indices.length));
+        multiDrawElements(mode, count, type, indices, count.length);
     }
 
     public static void multiDrawElements(int mode, int[] count, int type, short[][] indices, int drawCount) {
@@ -137,7 +137,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(int mode, int[] count, int type, short[][] indices) {
-        multiDrawElements(mode, count, type, indices, Math.min(count.length, indices.length));
+        multiDrawElements(mode, count, type, indices, count.length);
     }
 
     public static void multiDrawElements(int mode, int[] count, int type, int[][] indices, int drawCount) {
@@ -151,7 +151,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(int mode, int[] count, int type, int[][] indices) {
-        multiDrawElements(mode, count, type, indices, Math.min(count.length, indices.length));
+        multiDrawElements(mode, count, type, indices, count.length);
     }
 
     public static void pointParameterf(int pname, float param) {

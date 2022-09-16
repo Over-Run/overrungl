@@ -27,6 +27,8 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.VarHandle;
 
 /**
  * This describes a single video mode.
@@ -59,6 +61,13 @@ public class GLFWVidMode extends Pointer {
         ValueLayout.JAVA_INT.withName("blueBits"),
         ValueLayout.JAVA_INT.withName("refreshRate")
     );
+    private static final VarHandle
+        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
+        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
+        pRedBits = LAYOUT.varHandle(PathElement.groupElement("redBits")),
+        pGreenBits = LAYOUT.varHandle(PathElement.groupElement("greenBits")),
+        pBlueBits = LAYOUT.varHandle(PathElement.groupElement("blueBits")),
+        pRefreshRate = LAYOUT.varHandle(PathElement.groupElement("refreshRate"));
 
     /**
      * Create a {@code GLFWvidmode} instance.
@@ -85,7 +94,7 @@ public class GLFWVidMode extends Pointer {
      * @return The width, in screen coordinates, of the video mode.
      */
     public int width() {
-        return address().get(ValueLayout.JAVA_INT, 0L);
+        return (int) pWidth.get(address());
     }
 
     /**
@@ -94,7 +103,7 @@ public class GLFWVidMode extends Pointer {
      * @return The height, in screen coordinates, of the video mode.
      */
     public int height() {
-        return address().getAtIndex(ValueLayout.JAVA_INT, 1L);
+        return (int) pHeight.get(address());
     }
 
     /**
@@ -103,7 +112,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the red channel of the video mode.
      */
     public int redBits() {
-        return address().getAtIndex(ValueLayout.JAVA_INT, 2L);
+        return (int) pRedBits.get(address());
     }
 
     /**
@@ -112,7 +121,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the green channel of the video mode.
      */
     public int greenBits() {
-        return address().getAtIndex(ValueLayout.JAVA_INT, 3L);
+        return (int) pGreenBits.get(address());
     }
 
     /**
@@ -121,7 +130,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the blue channel of the video mode.
      */
     public int blueBits() {
-        return address().getAtIndex(ValueLayout.JAVA_INT, 4L);
+        return (int) pBlueBits.get(address());
     }
 
     /**
@@ -130,6 +139,6 @@ public class GLFWVidMode extends Pointer {
      * @return The refresh rate, in Hz, of the video mode.
      */
     public int refreshRate() {
-        return address().getAtIndex(ValueLayout.JAVA_INT, 5L);
+        return (int) pRefreshRate.get(address());
     }
 }

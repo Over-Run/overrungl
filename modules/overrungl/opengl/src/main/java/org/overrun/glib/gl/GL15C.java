@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -243,9 +244,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, buffers.length);
             genBuffers(buffers.length, seg);
-            for (int i = 0; i < buffers.length; i++) {
-                buffers[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, buffers);
         }
     }
 
@@ -253,7 +252,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             genBuffers(1, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -269,9 +268,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, ids.length);
             genQueries(ids.length, seg);
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, ids);
         }
     }
 
@@ -279,7 +276,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             genQueries(1, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -299,7 +296,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getBufferParameteriv(target, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -319,7 +316,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(ADDRESS);
             getBufferPointerv(target, pname, seg);
-            return seg.get(ADDRESS, 0L);
+            return seg.get(ADDRESS, 0);
         }
     }
 
@@ -383,7 +380,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getQueryObjectiv(id, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -403,7 +400,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getQueryObjectuiv(id, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -423,7 +420,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getQueryiv(target, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 

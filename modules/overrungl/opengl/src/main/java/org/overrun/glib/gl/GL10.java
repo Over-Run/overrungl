@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
@@ -992,18 +993,12 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void feedbackBuffer(int size, int type, float[] buffer) {
-        try (var session = MemorySession.openShared()) {
-            var pBuffer = session.allocateArray(JAVA_FLOAT, size);
-            feedbackBuffer(size, type, pBuffer);
-            for (int i = 0; i < size; i++) {
-                buffer[i] = pBuffer.getAtIndex(JAVA_FLOAT, i);
-            }
-        }
-    }
-
     public static void feedbackBuffer(int type, float[] buffer) {
-        feedbackBuffer(buffer.length, type, buffer);
+        try (var session = MemorySession.openShared()) {
+            var pBuffer = session.allocateArray(JAVA_FLOAT, buffer.length);
+            feedbackBuffer(buffer.length, type, pBuffer);
+            RuntimeHelper.toArray(pBuffer, buffer);
+        }
     }
 
     public static void fogf(int pname, float param) {
@@ -1078,13 +1073,13 @@ public final class GL10 extends GL10C {
 
     public static double[] getClipPlane(int plane) {
         try (var session = MemorySession.openShared()) {
-            var pEq = session.allocateArray(JAVA_DOUBLE, 4L);
+            var pEq = session.allocateArray(JAVA_DOUBLE, 4);
             getClipPlane(plane, pEq);
             return new double[]{
-                pEq.get(JAVA_DOUBLE, 0L),
-                pEq.getAtIndex(JAVA_DOUBLE, 1L),
-                pEq.getAtIndex(JAVA_DOUBLE, 2L),
-                pEq.getAtIndex(JAVA_DOUBLE, 3L)
+                pEq.get(JAVA_DOUBLE, 0),
+                pEq.getAtIndex(JAVA_DOUBLE, 1),
+                pEq.getAtIndex(JAVA_DOUBLE, 2),
+                pEq.getAtIndex(JAVA_DOUBLE, 3)
             };
         }
     }
@@ -1101,9 +1096,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
             getLightfv(light, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1111,7 +1104,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
             getLightfv(light, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0L);
+            return pParams.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -1127,9 +1120,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
             getLightiv(light, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1137,7 +1128,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
             getLightiv(light, pname, pParams);
-            return pParams.get(JAVA_INT, 0L);
+            return pParams.get(JAVA_INT, 0);
         }
     }
 
@@ -1153,9 +1144,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_DOUBLE, v.length);
             getMapdv(target, query, pv);
-            for (int i = 0; i < v.length; i++) {
-                v[i] = pv.getAtIndex(JAVA_DOUBLE, i);
-            }
+            RuntimeHelper.toArray(pv, v);
         }
     }
 
@@ -1163,7 +1152,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_DOUBLE);
             getMapdv(target, query, pv);
-            return pv.get(JAVA_DOUBLE, 0L);
+            return pv.get(JAVA_DOUBLE, 0);
         }
     }
 
@@ -1179,9 +1168,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_FLOAT, v.length);
             getMapfv(target, query, pv);
-            for (int i = 0; i < v.length; i++) {
-                v[i] = pv.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pv, v);
         }
     }
 
@@ -1189,7 +1176,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_FLOAT);
             getMapfv(target, query, pv);
-            return pv.get(JAVA_FLOAT, 0L);
+            return pv.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -1205,9 +1192,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocateArray(JAVA_INT, v.length);
             getMapiv(target, query, pv);
-            for (int i = 0; i < v.length; i++) {
-                v[i] = pv.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pv, v);
         }
     }
 
@@ -1215,7 +1200,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_INT);
             getMapiv(target, query, pv);
-            return pv.get(JAVA_INT, 0L);
+            return pv.get(JAVA_INT, 0);
         }
     }
 
@@ -1231,9 +1216,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
             getMaterialfv(face, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1241,7 +1224,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
             getMaterialfv(face, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0L);
+            return pParams.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -1257,9 +1240,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
             getMaterialiv(face, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1267,7 +1248,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
             getMaterialiv(face, pname, pParams);
-            return pParams.get(JAVA_INT, 0L);
+            return pParams.get(JAVA_INT, 0);
         }
     }
 
@@ -1283,9 +1264,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pValues = session.allocateArray(JAVA_FLOAT, values.length);
             getPixelMapfv(map, pValues);
-            for (int i = 0; i < values.length; i++) {
-                values[i] = pValues.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pValues, values);
         }
     }
 
@@ -1301,9 +1280,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pValues = session.allocateArray(JAVA_INT, values.length);
             getPixelMapuiv(map, pValues);
-            for (int i = 0; i < values.length; i++) {
-                values[i] = pValues.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pValues, values);
         }
     }
 
@@ -1319,9 +1296,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pValues = session.allocateArray(JAVA_SHORT, values.length);
             getPixelMapusv(map, pValues);
-            for (int i = 0; i < values.length; i++) {
-                values[i] = pValues.getAtIndex(JAVA_SHORT, i);
-            }
+            RuntimeHelper.toArray(pValues, values);
         }
     }
 
@@ -1337,9 +1312,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pMask = session.allocateArray(JAVA_BYTE, mask.length);
             getPolygonStipple(pMask);
-            for (int i = 0; i < mask.length; i++) {
-                mask[i] = pMask.get(JAVA_BYTE, i);
-            }
+            RuntimeHelper.toArray(pMask, mask);
         }
     }
 
@@ -1355,9 +1328,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
             getTexEnvfv(target, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1365,7 +1336,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
             getTexEnvfv(target, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0L);
+            return pParams.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -1381,9 +1352,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
             getTexEnviv(target, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1391,7 +1360,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
             getTexEnviv(target, pname, pParams);
-            return pParams.get(JAVA_INT, 0L);
+            return pParams.get(JAVA_INT, 0);
         }
     }
 
@@ -1407,9 +1376,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_DOUBLE, params.length);
             getTexGendv(coord, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_DOUBLE, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1425,9 +1392,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
             getTexGenfv(coord, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -1443,9 +1408,7 @@ public final class GL10 extends GL10C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
             getTexGeniv(coord, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -2616,18 +2579,12 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void selectBuffer(int size, int[] buffer) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, size);
-            selectBuffer(size, seg);
-            for (int i = 0; i < size; i++) {
-                buffer[i] = seg.getAtIndex(JAVA_INT, i);
-            }
-        }
-    }
-
     public static void selectBuffer(int[] buffer) {
-        selectBuffer(buffer.length, buffer);
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, buffer.length);
+            selectBuffer(buffer.length, seg);
+            RuntimeHelper.toArray(seg, buffer);
+        }
     }
 
     public static void shadeModel(int mode) {

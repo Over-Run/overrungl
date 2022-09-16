@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -248,9 +249,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocateArray(JAVA_BOOLEAN, data.length);
             getBooleanv(pname, pData);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = pData.get(JAVA_BOOLEAN, i);
-            }
+            RuntimeHelper.toArray(pData, data);
         }
     }
 
@@ -258,7 +257,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocate(JAVA_BOOLEAN);
             getBooleanv(pname, pData);
-            return pData.get(JAVA_BOOLEAN, 0L);
+            return pData.get(JAVA_BOOLEAN, 0);
         }
     }
 
@@ -274,9 +273,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocateArray(JAVA_DOUBLE, data.length);
             getDoublev(pname, pData);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = pData.getAtIndex(JAVA_DOUBLE, i);
-            }
+            RuntimeHelper.toArray(pData, data);
         }
     }
 
@@ -284,7 +281,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocate(JAVA_DOUBLE);
             getDoublev(pname, pData);
-            return pData.get(JAVA_DOUBLE, 0L);
+            return pData.get(JAVA_DOUBLE, 0);
         }
     }
 
@@ -308,9 +305,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocateArray(JAVA_FLOAT, data.length);
             getFloatv(pname, pData);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = pData.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pData, data);
         }
     }
 
@@ -318,7 +313,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocate(JAVA_FLOAT);
             getFloatv(pname, pData);
-            return pData.get(JAVA_FLOAT, 0L);
+            return pData.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -334,9 +329,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocateArray(JAVA_INT, data.length);
             getIntegerv(pname, pData);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = pData.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pData, data);
         }
     }
 
@@ -344,7 +337,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocate(JAVA_INT);
             getIntegerv(pname, pData);
-            return pData.get(JAVA_INT, 0L);
+            return pData.get(JAVA_INT, 0);
         }
     }
 
@@ -359,7 +352,7 @@ public sealed class GL10C permits GL10, GL11C {
     @Nullable
     public static String getString(int name) {
         var pStr = ngetString(name);
-        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0L) : null;
+        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0) : null;
     }
 
     public static void getTexImage(int target, int level, int format, int type, Addressable pixels) {
@@ -382,9 +375,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
             getTexLevelParameterfv(target, level, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -392,7 +383,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
             getTexLevelParameterfv(target, level, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0L);
+            return pParams.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -408,9 +399,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
             getTexLevelParameteriv(target, level, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -418,7 +407,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
             getTexLevelParameteriv(target, level, pname, pParams);
-            return pParams.get(JAVA_INT, 0L);
+            return pParams.get(JAVA_INT, 0);
         }
     }
 
@@ -434,9 +423,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_FLOAT, params.length);
             getTexParameterfv(target, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -444,7 +431,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_FLOAT);
             getTexParameterfv(target, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0L);
+            return pParams.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -460,9 +447,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocateArray(JAVA_INT, params.length);
             getTexParameteriv(target, pname, pParams);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = pParams.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pParams, params);
         }
     }
 
@@ -470,7 +455,7 @@ public sealed class GL10C permits GL10, GL11C {
         try (var session = MemorySession.openShared()) {
             var pParams = session.allocate(JAVA_INT);
             getTexParameteriv(target, pname, pParams);
-            return pParams.get(JAVA_INT, 0L);
+            return pParams.get(JAVA_INT, 0);
         }
     }
 

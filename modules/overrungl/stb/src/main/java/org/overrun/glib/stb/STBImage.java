@@ -25,6 +25,7 @@
 package org.overrun.glib.stb;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 
@@ -92,7 +93,7 @@ public class STBImage {
     @Nullable
     public static String failureReason() {
         var pReason = nfailureReason();
-        return pReason != MemoryAddress.NULL ? pReason.getUtf8String(0L) : null;
+        return pReason != MemoryAddress.NULL ? pReason.getUtf8String(0) : null;
     }
 
     public static void hdrToLdrGamma(float gamma) {
@@ -133,9 +134,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             boolean b = ninfo(session.allocateUtf8String(filename), px, py, pc);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            comp[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            comp[0] = pc.get(JAVA_INT, 0);
             return b;
         }
     }
@@ -154,9 +155,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             boolean b = ninfoFromCallbacks(clbk.rawAddress(), user, px, py, pc);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            comp[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            comp[0] = pc.get(JAVA_INT, 0);
             return b;
         }
     }
@@ -175,9 +176,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             boolean b = ninfoFromFile(f, px, py, pc);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            comp[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            comp[0] = pc.get(JAVA_INT, 0);
             return b;
         }
     }
@@ -196,9 +197,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             boolean b = ninfoFromMemory(buffer, (int) buffer.byteSize(), px, py, pc);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            comp[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            comp[0] = pc.get(JAVA_INT, 0);
             return b;
         }
     }
@@ -343,9 +344,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nload(session.allocateUtf8String(filename), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -364,9 +365,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nload16(session.allocateUtf8String(filename), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -385,9 +386,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nload16FromCallbacks(clbk.rawAddress(), user, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -406,9 +407,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nload16FromMemory(buffer, (int) buffer.byteSize(), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -433,9 +434,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadFromCallbacks(clbk.rawAddress(), user, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -454,9 +455,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadFromFile(f, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -475,9 +476,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadFromFile16(f, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -496,9 +497,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadFromMemory(buffer, (int) buffer.byteSize(), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -509,9 +510,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadFromMemory(session.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -532,15 +533,12 @@ public class STBImage {
             var pz = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadGifFromMemory(buffer, (int) buffer.byteSize(), pd, px, py, pz, pc, reqComp);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            final int layers = pz.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            final int layers = pz.get(JAVA_INT, 0);
             z[0] = layers;
-            comp[0] = pc.get(JAVA_INT, 0L);
-            delays[0] = new int[layers];
-            for (int i = 0; i < layers; i++) {
-                delays[0][i] = pd.get(ADDRESS, 0L).getAtIndex(JAVA_INT, i);
-            }
+            comp[0] = pc.get(JAVA_INT, 0);
+            delays[0] = RuntimeHelper.toArray(pd.get(ADDRESS, 0), new int[layers]);
             return addr;
         }
     }
@@ -565,9 +563,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadf(session.allocateUtf8String(filename), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -586,9 +584,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadfFromCallbacks(clbk.rawAddress(), user, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -607,9 +605,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadfFromFile(f, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -628,9 +626,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadfFromMemory(buffer, (int) buffer.byteSize(), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }
@@ -641,9 +639,9 @@ public class STBImage {
             var py = session.allocate(JAVA_INT);
             var pc = session.allocate(JAVA_INT);
             var addr = nloadfFromMemory(session.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0L);
-            y[0] = py.get(JAVA_INT, 0L);
-            channelsInFile[0] = pc.get(JAVA_INT, 0L);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
             return addr;
         }
     }

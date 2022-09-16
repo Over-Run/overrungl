@@ -25,6 +25,7 @@
 package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -60,12 +61,7 @@ public interface IGLFWDropFun extends ICallback {
     void invoke(MemoryAddress window, String[] paths);
 
     default void ninvoke(MemoryAddress window, int pathCount, MemoryAddress paths) {
-        String[] pathArr = new String[pathCount];
-        for (int i = 0; i < pathCount; i++) {
-            var ptr = paths.getAtIndex(ValueLayout.ADDRESS, i);
-            pathArr[i] = ptr.getUtf8String(0L);
-        }
-        invoke(window, pathArr);
+        invoke(window, RuntimeHelper.toArray(paths, new String[pathCount]));
     }
 
     @Override

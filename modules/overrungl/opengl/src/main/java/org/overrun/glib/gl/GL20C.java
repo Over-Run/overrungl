@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -301,11 +302,11 @@ public sealed class GL20C extends GL15C permits GL21C {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveAttrib(program, index, bufSize, pLen, pSz, pType, pName);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            size[0] = pSz.get(JAVA_INT, 0L);
-            type[0] = pType.get(JAVA_INT, 0L);
-            name[0] = pName.getUtf8String(0L);
+            size[0] = pSz.get(JAVA_INT, 0);
+            type[0] = pType.get(JAVA_INT, 0);
+            name[0] = pName.getUtf8String(0);
         }
     }
 
@@ -325,11 +326,11 @@ public sealed class GL20C extends GL15C permits GL21C {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveUniform(program, index, bufSize, pLen, pSz, pType, pName);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            size[0] = pSz.get(JAVA_INT, 0L);
-            type[0] = pType.get(JAVA_INT, 0L);
-            name[0] = pName.getUtf8String(0L);
+            size[0] = pSz.get(JAVA_INT, 0);
+            type[0] = pType.get(JAVA_INT, 0);
+            name[0] = pName.getUtf8String(0);
         }
     }
 
@@ -347,11 +348,9 @@ public sealed class GL20C extends GL15C permits GL21C {
             var pShaders = session.allocateArray(JAVA_INT, shaders.length);
             getAttachedShaders(program, shaders.length, pCount, pShaders);
             if (count != null && count.length > 0) {
-                count[0] = ((MemorySegment) pCount).get(JAVA_INT, 0L);
+                count[0] = ((MemorySegment) pCount).get(JAVA_INT, 0);
             }
-            for (int i = 0; i < shaders.length; i++) {
-                shaders[i] = pShaders.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pShaders, shaders);
         }
     }
 
@@ -387,9 +386,9 @@ public sealed class GL20C extends GL15C permits GL21C {
             var pLog = session.allocateArray(JAVA_BYTE, bufSize);
             getProgramInfoLog(program, bufSize, pLen, pLog);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            return pLog.getUtf8String(0L);
+            return pLog.getUtf8String(0);
         }
     }
 
@@ -409,9 +408,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getProgramiv(program, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -419,7 +416,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getProgramiv(program, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -441,9 +438,9 @@ public sealed class GL20C extends GL15C permits GL21C {
             var pLog = session.allocateArray(JAVA_BYTE, bufSize);
             getShaderInfoLog(shader, bufSize, pLen, pLog);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            return pLog.getUtf8String(0L);
+            return pLog.getUtf8String(0);
         }
     }
 
@@ -469,9 +466,9 @@ public sealed class GL20C extends GL15C permits GL21C {
             var pSrc = session.allocateArray(JAVA_BYTE, bufSize);
             getShaderSource(shader, bufSize, pLen, pSrc);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            return pSrc.getUtf8String(0L);
+            return pSrc.getUtf8String(0);
         }
     }
 
@@ -491,9 +488,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getShaderiv(shader, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -501,7 +496,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getShaderiv(shader, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -531,9 +526,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, params.length);
             getUniformfv(program, location, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -541,7 +534,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_FLOAT);
             getUniformfv(program, location, seg);
-            return seg.get(JAVA_FLOAT, 0L);
+            return seg.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -557,9 +550,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getUniformiv(program, location, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -567,7 +558,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getUniformiv(program, location, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -583,9 +574,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_BYTE, pointer.length);
             getVertexAttribPointerv(index, pname, seg);
-            for (int i = 0; i < pointer.length; i++) {
-                pointer[i] = seg.get(JAVA_BYTE, i);
-            }
+            RuntimeHelper.toArray(seg, pointer);
         }
     }
 
@@ -593,9 +582,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_SHORT, pointer.length);
             getVertexAttribPointerv(index, pname, seg);
-            for (int i = 0; i < pointer.length; i++) {
-                pointer[i] = seg.getAtIndex(JAVA_SHORT, i);
-            }
+            RuntimeHelper.toArray(seg, pointer);
         }
     }
 
@@ -603,9 +590,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, pointer.length);
             getVertexAttribPointerv(index, pname, seg);
-            for (int i = 0; i < pointer.length; i++) {
-                pointer[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, pointer);
         }
     }
 
@@ -613,9 +598,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, pointer.length);
             getVertexAttribPointerv(index, pname, seg);
-            for (int i = 0; i < pointer.length; i++) {
-                pointer[i] = seg.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(seg, pointer);
         }
     }
 
@@ -623,9 +606,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, pointer.length);
             getVertexAttribPointerv(index, pname, seg);
-            for (int i = 0; i < pointer.length; i++) {
-                pointer[i] = seg.getAtIndex(JAVA_DOUBLE, i);
-            }
+            RuntimeHelper.toArray(seg, pointer);
         }
     }
 
@@ -641,9 +622,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, params.length);
             getVertexAttribdv(index, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_DOUBLE, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -651,7 +630,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_DOUBLE);
             getVertexAttribdv(index, pname, seg);
-            return seg.get(JAVA_DOUBLE, 0L);
+            return seg.get(JAVA_DOUBLE, 0);
         }
     }
 
@@ -667,9 +646,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, params.length);
             getVertexAttribfv(index, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -677,7 +654,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_FLOAT);
             getVertexAttribfv(index, pname, seg);
-            return seg.get(JAVA_FLOAT, 0L);
+            return seg.get(JAVA_FLOAT, 0);
         }
     }
 
@@ -693,9 +670,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getVertexAttribiv(index, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -703,7 +678,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getVertexAttribiv(index, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -736,16 +711,6 @@ public sealed class GL20C extends GL15C permits GL21C {
             check(glShaderSource).invoke(shader, count, string, length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
-        }
-    }
-
-    public static void shaderSource(int shader, String[] string, int[] length) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(ADDRESS, string.length);
-            for (int i = 0; i < string.length; i++) {
-                seg.setAtIndex(ADDRESS, i, session.allocateUtf8String(string[i]));
-            }
-            shaderSource(shader, Math.min(string.length, length.length), seg, session.allocateArray(JAVA_INT, length));
         }
     }
 

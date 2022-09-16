@@ -74,8 +74,9 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static boolean areTexturesResident(int n, int[] textures, boolean[] residences) {
+    public static boolean areTexturesResident(int[] textures, boolean[] residences) {
         try (var session = MemorySession.openShared()) {
+            final int n = textures.length;
             var pTex = session.allocateArray(ValueLayout.JAVA_INT, n);
             var pRes = session.allocateArray(ValueLayout.JAVA_BOOLEAN, n);
             boolean b = areTexturesResident(n, pTex, pRes);
@@ -85,10 +86,6 @@ public final class GL11 extends GL11C {
             }
             return b;
         }
-    }
-
-    public static boolean areTexturesResident(int[] textures, boolean[] residences) {
-        return areTexturesResident(textures.length, textures, residences);
     }
 
     public static void arrayElement(int i) {
@@ -291,8 +288,9 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void prioritizeTextures(int n, int[] textures, float[] priorities) {
+    public static void prioritizeTextures(int[] textures, float[] priorities) {
         try (var session = MemorySession.openShared()) {
+            final int n = textures.length;
             var pTex = session.allocateArray(ValueLayout.JAVA_INT, n);
             var pPri = session.allocateArray(ValueLayout.JAVA_FLOAT, n);
             for (int i = 0; i < n; i++) {
@@ -301,10 +299,6 @@ public final class GL11 extends GL11C {
             }
             prioritizeTextures(n, pTex, pPri);
         }
-    }
-
-    public static void prioritizeTextures(int[] textures, float[] priorities) {
-        prioritizeTextures(textures.length, textures, priorities);
     }
 
     public static void pushClientAttrib(int mask) {

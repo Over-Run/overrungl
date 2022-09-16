@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -205,7 +206,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_LONG);
             getBufferParameteri64v(target, pname, seg);
-            return seg.get(JAVA_LONG, 0L);
+            return seg.get(JAVA_LONG, 0);
         }
     }
 
@@ -221,9 +222,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_LONG, data.length);
             getInteger64i_v(target, index, seg);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = seg.getAtIndex(JAVA_LONG, i);
-            }
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
@@ -231,7 +230,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_LONG);
             getInteger64i_v(target, index, seg);
-            return seg.get(JAVA_LONG, 0L);
+            return seg.get(JAVA_LONG, 0);
         }
     }
 
@@ -247,9 +246,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocateArray(JAVA_LONG, data.length);
             getInteger64v(pname, pData);
-            for (int i = 0; i < data.length; i++) {
-                data[i] = pData.getAtIndex(JAVA_LONG, i);
-            }
+            RuntimeHelper.toArray(pData, data);
         }
     }
 
@@ -257,7 +254,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var pData = session.allocate(JAVA_LONG);
             getInteger64v(pname, pData);
-            return pData.get(JAVA_LONG, 0L);
+            return pData.get(JAVA_LONG, 0);
         }
     }
 
@@ -273,9 +270,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, val.length);
             getMultisamplefv(pname, index, seg);
-            for (int i = 0; i < val.length; i++) {
-                val[i] = seg.getAtIndex(JAVA_FLOAT, i);
-            }
+            RuntimeHelper.toArray(seg, val);
         }
     }
 
@@ -283,7 +278,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_FLOAT, 2);
             getMultisamplefv(pname, index, seg);
-            return new float[]{seg.get(JAVA_FLOAT, 0L), seg.getAtIndex(JAVA_FLOAT, 1L)};
+            return new float[]{seg.get(JAVA_FLOAT, 0), seg.getAtIndex(JAVA_FLOAT, 1)};
         }
     }
 
@@ -301,11 +296,9 @@ public sealed class GL32C extends GL31C permits GL33C {
             var pVal = session.allocateArray(JAVA_INT, values.length);
             getSynciv(sync, pname, values.length, pLen, pVal);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            for (int i = 0; i < values.length; i++) {
-                values[i] = pVal.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pVal, values);
         }
     }
 
@@ -313,7 +306,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getSynciv(sync, pname, 1, MemoryAddress.NULL, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 

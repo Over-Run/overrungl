@@ -25,6 +25,7 @@
 package org.overrun.glib.glfw;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -850,6 +851,7 @@ public class GLFW {
 
     /**
      * Converts error code to readable string.
+     *
      * @param errorCode the error code
      * @return the error string
      */
@@ -975,13 +977,13 @@ public class GLFW {
             var pRev = rev != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetVersion(pMajor, pMinor, pRev);
             if (major != null && major.length > 0) {
-                major[0] = ((MemorySegment) pMajor).get(JAVA_INT, 0L);
+                major[0] = ((MemorySegment) pMajor).get(JAVA_INT, 0);
             }
             if (minor != null && minor.length > 0) {
-                minor[0] = ((MemorySegment) pMinor).get(JAVA_INT, 0L);
+                minor[0] = ((MemorySegment) pMinor).get(JAVA_INT, 0);
             }
             if (rev != null && rev.length > 0) {
-                rev[0] = ((MemorySegment) pRev).get(JAVA_INT, 0L);
+                rev[0] = ((MemorySegment) pRev).get(JAVA_INT, 0);
             }
         }
     }
@@ -995,7 +997,7 @@ public class GLFW {
     }
 
     public static String getVersionString() {
-        return ngetVersionString().getUtf8String(0L);
+        return ngetVersionString().getUtf8String(0);
     }
 
     public static int ngetError(Addressable description) {
@@ -1011,7 +1013,7 @@ public class GLFW {
             var pDesc = description != null ? session.allocate(ADDRESS) : MemoryAddress.NULL;
             int err = ngetError(pDesc);
             if (description != null && description.length > 0) {
-                description[0] = ((MemorySegment)pDesc).get(ADDRESS, 0L).getUtf8String(0L);
+                description[0] = ((MemorySegment) pDesc).get(ADDRESS, 0).getUtf8String(0);
             }
             return err;
         }
@@ -1044,11 +1046,7 @@ public class GLFW {
             if (pMonitors == MemoryAddress.NULL) {
                 return null;
             }
-            MemoryAddress[] monitors = new MemoryAddress[pCount.get(JAVA_INT, 0L)];
-            for (int i = 0; i < monitors.length; i++) {
-                monitors[i] = pMonitors.getAtIndex(ADDRESS, i);
-            }
-            return monitors;
+            return RuntimeHelper.toArray(pMonitors, new MemoryAddress[pCount.get(JAVA_INT, 0)]);
         }
     }
 
@@ -1074,10 +1072,10 @@ public class GLFW {
             var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorPos(monitor, px, py);
             if (xpos != null && xpos.length > 0) {
-                xpos[0] = ((MemorySegment)px).get(JAVA_INT, 0L);
+                xpos[0] = ((MemorySegment) px).get(JAVA_INT, 0);
             }
             if (ypos != null && ypos.length > 0) {
-                ypos[0] = ((MemorySegment)py).get(JAVA_INT, 0L);
+                ypos[0] = ((MemorySegment) py).get(JAVA_INT, 0);
             }
         }
     }
@@ -1098,16 +1096,16 @@ public class GLFW {
             var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             if (xpos != null && xpos.length > 0) {
-                xpos[0] = ((MemorySegment)px).get(JAVA_INT, 0L);
+                xpos[0] = ((MemorySegment) px).get(JAVA_INT, 0);
             }
             if (ypos != null && ypos.length > 0) {
-                ypos[0] = ((MemorySegment)py).get(JAVA_INT, 0L);
+                ypos[0] = ((MemorySegment) py).get(JAVA_INT, 0);
             }
             if (width != null && width.length > 0) {
-                width[0] = ((MemorySegment)pw).get(JAVA_INT, 0L);
+                width[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
             }
             if (height != null && height.length > 0) {
-                height[0] = ((MemorySegment)ph).get(JAVA_INT, 0L);
+                height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
             }
         }
     }
@@ -1126,10 +1124,10 @@ public class GLFW {
             var ph = heightMM != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorPhysicalSize(monitor, pw, ph);
             if (widthMM != null && widthMM.length > 0) {
-                widthMM[0] = ((MemorySegment)pw).get(JAVA_INT, 0L);
+                widthMM[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
             }
             if (heightMM != null && heightMM.length > 0) {
-                heightMM[0] = ((MemorySegment)ph).get(JAVA_INT, 0L);
+                heightMM[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
             }
         }
     }
@@ -1148,10 +1146,10 @@ public class GLFW {
             var py = yscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
             ngetMonitorContentScale(monitor, px, py);
             if (xscale != null && xscale.length > 0) {
-                xscale[0] = ((MemorySegment)px).get(JAVA_FLOAT, 0L);
+                xscale[0] = ((MemorySegment) px).get(JAVA_FLOAT, 0);
             }
             if (yscale != null && yscale.length > 0) {
-                yscale[0] = ((MemorySegment)py).get(JAVA_FLOAT, 0L);
+                yscale[0] = ((MemorySegment) py).get(JAVA_FLOAT, 0);
             }
         }
     }
@@ -1167,7 +1165,7 @@ public class GLFW {
     @Nullable
     public static String getMonitorName(MemoryAddress monitor) {
         var pName = ngetMonitorName(monitor);
-        return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
+        return pName != MemoryAddress.NULL ? pName.getUtf8String(0) : null;
     }
 
     public static void setMonitorUserPointer(MemoryAddress monitor, Addressable pointer) {
@@ -1213,12 +1211,7 @@ public class GLFW {
             if (pModes == MemoryAddress.NULL) {
                 return null;
             }
-            GLFWVidMode[] modes = new GLFWVidMode[pCount.get(JAVA_INT, 0L)];
-            for (int i = 0; i < modes.length; i++) {
-                var pMode = pModes.getAtIndex(ADDRESS, i);
-                modes[i] = new GLFWVidMode(pMode);
-            }
-            return modes;
+            return RuntimeHelper.toArray(pModes, new GLFWVidMode[pCount.get(JAVA_INT, 0)], GLFWVidMode::new);
         }
     }
 
@@ -1388,10 +1381,10 @@ public class GLFW {
             var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowPos(window, px, py);
             if (xpos != null && xpos.length > 1) {
-                xpos[0] = ((MemorySegment)px).get(JAVA_INT, 0L);
+                xpos[0] = ((MemorySegment) px).get(JAVA_INT, 0);
             }
             if (ypos != null && ypos.length > 1) {
-                ypos[0] = ((MemorySegment)py).get(JAVA_INT, 0L);
+                ypos[0] = ((MemorySegment) py).get(JAVA_INT, 0);
             }
         }
     }
@@ -1418,10 +1411,10 @@ public class GLFW {
             var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowSize(window, pw, ph);
             if (width != null && width.length > 0) {
-                width[0] = ((MemorySegment)pw).get(JAVA_INT, 0);
+                width[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
             }
             if (height != null && height.length > 0) {
-                height[0] = ((MemorySegment)ph).get(JAVA_INT, 0);
+                height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
             }
         }
     }
@@ -1464,10 +1457,10 @@ public class GLFW {
             var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetFramebufferSize(window, pw, ph);
             if (width != null && width.length > 0) {
-                width[0] = ((MemorySegment)pw).get(JAVA_INT, 0L);
+                width[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
             }
             if (height != null && height.length > 0) {
-                height[0] = ((MemorySegment)ph).get(JAVA_INT, 0L);
+                height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
             }
         }
     }
@@ -1488,16 +1481,16 @@ public class GLFW {
             var pb = bottom != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             if (left != null && left.length > 0) {
-                left[0] = ((MemorySegment)pl).get(JAVA_INT, 0L);
+                left[0] = ((MemorySegment) pl).get(JAVA_INT, 0);
             }
             if (top != null && top.length > 0) {
-                top[0] = ((MemorySegment)pt).get(JAVA_INT, 0L);
+                top[0] = ((MemorySegment) pt).get(JAVA_INT, 0);
             }
             if (right != null && right.length > 0) {
-                right[0] = ((MemorySegment)pr).get(JAVA_INT, 0L);
+                right[0] = ((MemorySegment) pr).get(JAVA_INT, 0);
             }
             if (bottom != null && bottom.length > 0) {
-                bottom[0] = ((MemorySegment)pb).get(JAVA_INT, 0L);
+                bottom[0] = ((MemorySegment) pb).get(JAVA_INT, 0);
             }
         }
     }
@@ -1516,10 +1509,10 @@ public class GLFW {
             var py = yscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
             ngetWindowContentScale(window, px, py);
             if (xscale != null && xscale.length > 0) {
-                xscale[0] = ((MemorySegment)px).get(JAVA_FLOAT, 0L);
+                xscale[0] = ((MemorySegment) px).get(JAVA_FLOAT, 0);
             }
             if (yscale != null && yscale.length > 0) {
-                yscale[0] = ((MemorySegment)py).get(JAVA_FLOAT, 0L);
+                yscale[0] = ((MemorySegment) py).get(JAVA_FLOAT, 0);
             }
         }
     }
@@ -1819,7 +1812,7 @@ public class GLFW {
     @Nullable
     public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
-        return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
+        return pName != MemoryAddress.NULL ? pName.getUtf8String(0) : null;
     }
 
     public static int getKeyScancode(int key) {
@@ -1860,10 +1853,10 @@ public class GLFW {
             var py = ypos != null ? session.allocate(JAVA_DOUBLE) : MemoryAddress.NULL;
             ngetCursorPos(window, px, py);
             if (xpos != null && xpos.length > 0) {
-                xpos[0] = ((MemorySegment)px).get(JAVA_DOUBLE, 0L);
+                xpos[0] = ((MemorySegment) px).get(JAVA_DOUBLE, 0);
             }
             if (ypos != null && ypos.length > 0) {
-                ypos[0] = ((MemorySegment)py).get(JAVA_DOUBLE, 0L);
+                ypos[0] = ((MemorySegment) py).get(JAVA_DOUBLE, 0);
             }
         }
     }
@@ -2030,11 +2023,7 @@ public class GLFW {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
             var pAxes = ngetJoystickAxes(jid, pCount);
-            float[] axes = new float[pCount.get(JAVA_INT, 0L)];
-            for (int i = 0; i < axes.length; i++) {
-                axes[i] = pAxes.getAtIndex(JAVA_FLOAT, i);
-            }
-            return axes;
+            return RuntimeHelper.toArray(pAxes, new float[pCount.get(JAVA_INT, 0)]);
         }
     }
 
@@ -2050,7 +2039,7 @@ public class GLFW {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
             var pButtons = ngetJoystickButtons(jid, pCount);
-            boolean[] buttons = new boolean[pCount.get(JAVA_INT, 0L)];
+            boolean[] buttons = new boolean[pCount.get(JAVA_INT, 0)];
             for (int i = 0; i < buttons.length; i++) {
                 buttons[i] = pButtons.getAtIndex(JAVA_INT, i) == PRESS;
             }
@@ -2070,11 +2059,7 @@ public class GLFW {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
             var pHats = ngetJoystickHats(jid, pCount);
-            byte[] hats = new byte[pCount.get(JAVA_INT, 0L)];
-            for (int i = 0; i < hats.length; i++) {
-                hats[i] = pHats.get(JAVA_BYTE, i);
-            }
-            return hats;
+            return RuntimeHelper.toArray(pHats, new byte[pCount.get(JAVA_INT, 0)]);
         }
     }
 
@@ -2089,7 +2074,7 @@ public class GLFW {
     @Nullable
     public static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
-        return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
+        return pName != MemoryAddress.NULL ? pName.getUtf8String(0) : null;
     }
 
     public static MemoryAddress ngetJoystickGUID(int jid) {
@@ -2103,7 +2088,7 @@ public class GLFW {
     @Nullable
     public static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
-        return pGUID != MemoryAddress.NULL ? pGUID.getUtf8String(0L) : null;
+        return pGUID != MemoryAddress.NULL ? pGUID.getUtf8String(0) : null;
     }
 
     public static void setJoystickUserPointer(int jid, Addressable pointer) {
@@ -2167,7 +2152,7 @@ public class GLFW {
     @Nullable
     public static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
-        return pName != MemoryAddress.NULL ? pName.getUtf8String(0L) : null;
+        return pName != MemoryAddress.NULL ? pName.getUtf8String(0) : null;
     }
 
     public static boolean ngetGamepadState(int jid, Addressable state) {
@@ -2207,7 +2192,7 @@ public class GLFW {
     @Nullable
     public static String getClipboardString(@Deprecated MemoryAddress window) {
         var pString = ngetClipboardString(window);
-        return pString != MemoryAddress.NULL ? pString.getUtf8String(0L) : null;
+        return pString != MemoryAddress.NULL ? pString.getUtf8String(0) : null;
     }
 
     public static double getTime() {
@@ -2322,11 +2307,7 @@ public class GLFW {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
             var pExt = ngetRequiredInstanceExtensions(pCount);
-            String[] ext = new String[pCount.get(JAVA_INT, 0L)];
-            for (int i = 0; i < ext.length; i++) {
-                ext[i] = pExt.get(ADDRESS, i).getUtf8String(0L);
-            }
-            return ext;
+            return RuntimeHelper.toArray(pExt, new String[pCount.get(JAVA_INT, 0)]);
         }
     }
 }

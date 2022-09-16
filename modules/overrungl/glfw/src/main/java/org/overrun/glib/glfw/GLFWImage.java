@@ -27,6 +27,8 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.Pointer;
 
 import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.VarHandle;
 
 /**
  * This describes a single 2D image. See the documentation for each related
@@ -52,6 +54,10 @@ public class GLFWImage extends Pointer {
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.ADDRESS.withName("pixels")
     );
+    private static final VarHandle
+        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
+        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
+        pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
 
     /**
      * Create a {@code GLFWimage} instance.
@@ -79,7 +85,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage width(int width) {
-        address().set(ValueLayout.JAVA_INT, 0L, width);
+        pWidth.set(address(), width);
         return this;
     }
 
@@ -90,7 +96,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage height(int height) {
-        address().setAtIndex(ValueLayout.JAVA_INT, 1L, height);
+        pHeight.set(address(), height);
         return this;
     }
 
@@ -101,7 +107,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage pixels(Addressable pixels) {
-        address().set(ValueLayout.ADDRESS, ValueLayout.JAVA_INT.byteSize() * 2L, pixels);
+        pPixels.set(address(), pixels);
         return this;
     }
 
@@ -111,7 +117,7 @@ public class GLFWImage extends Pointer {
      * @return The width, in pixels, of this image.
      */
     public int width() {
-        return address().get(ValueLayout.JAVA_INT, 0L);
+        return (int) pWidth.get(address());
     }
 
     /**
@@ -120,7 +126,7 @@ public class GLFWImage extends Pointer {
      * @return The height, in pixels, of this image.
      */
     public int height() {
-        return address().getAtIndex(ValueLayout.JAVA_INT, 1L);
+        return (int) pHeight.get(address());
     }
 
     /**
@@ -129,6 +135,6 @@ public class GLFWImage extends Pointer {
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
     public MemoryAddress pixels() {
-        return address().get(ValueLayout.ADDRESS, ValueLayout.JAVA_INT.byteSize() * 2L);
+        return (MemoryAddress) pPixels.get(address());
     }
 }

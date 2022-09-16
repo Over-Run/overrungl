@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -40,7 +41,7 @@ import static org.overrun.glib.gl.GLCaps.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL40C extends GL33C permits GL {
+public sealed class GL40C extends GL33C permits GL41C {
     @Nullable
     public static MethodHandle
         glBeginQueryIndexed, glBindTransformFeedback, glBlendEquationSeparatei, glBlendEquationi, glBlendFuncSeparatei,
@@ -257,9 +258,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, ids.length);
             genTransformFeedbacks(ids.length, seg);
-            for (int i = 0; i < ids.length; i++) {
-                ids[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, ids);
         }
     }
 
@@ -267,7 +266,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             genTransformFeedbacks(1, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -283,7 +282,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveSubroutineName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
-            return seg.getUtf8String(0L);
+            return seg.getUtf8String(0);
         }
     }
 
@@ -299,7 +298,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
-            return seg.getUtf8String(0L);
+            return seg.getUtf8String(0);
         }
     }
 
@@ -315,9 +314,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, values.length);
             getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
-            for (int i = 0; i < values.length; i++) {
-                values[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, values);
         }
     }
 
@@ -325,7 +322,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -341,7 +338,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getProgramStageiv(program, shaderType, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -357,7 +354,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getQueryIndexediv(target, index, pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -401,9 +398,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getUniformSubroutineuiv(shaderType, location, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -419,9 +414,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_DOUBLE, params.length);
             getUniformdv(program, location, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_DOUBLE, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -429,7 +422,7 @@ public sealed class GL40C extends GL33C permits GL {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_DOUBLE);
             getUniformdv(program, location, seg);
-            return seg.get(JAVA_DOUBLE, 0L);
+            return seg.get(JAVA_DOUBLE, 0);
         }
     }
 

@@ -61,7 +61,7 @@ public interface IGLFWErrorFun extends ICallback {
     void invoke(int errorCode, String description);
 
     default void ninvoke(int errorCode, MemoryAddress description) {
-        invoke(errorCode, description.getUtf8String(0L));
+        invoke(errorCode, description.getUtf8String(0));
     }
 
     /**

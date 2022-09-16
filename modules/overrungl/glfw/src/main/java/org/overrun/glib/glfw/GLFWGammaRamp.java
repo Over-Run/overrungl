@@ -25,8 +25,12 @@
 package org.overrun.glib.glfw;
 
 import org.overrun.glib.Pointer;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
+import java.lang.invoke.VarHandle;
+
+import static java.lang.foreign.ValueLayout.*;
 
 /**
  * This describes the gamma ramp for a monitor.
@@ -41,7 +45,7 @@ import java.lang.foreign.*;
  * }</code></pre>
  *
  * @author squid233
- * @see GLFW#setGammaRamp
+ * @see GLFW#getGammaRamp
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
@@ -50,11 +54,19 @@ public class GLFWGammaRamp extends Pointer {
      * The struct layout.
      */
     public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.ADDRESS.withName("red"),
-        ValueLayout.ADDRESS.withName("green"),
-        ValueLayout.ADDRESS.withName("blue"),
-        ValueLayout.JAVA_INT.withName("size")
+        ADDRESS.withName("red"),
+        ADDRESS.withName("green"),
+        ADDRESS.withName("blue"),
+        JAVA_INT.withName("size")
     );
+    private static final VarHandle
+        ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
+        ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),
+        ppBlue = LAYOUT.varHandle(PathElement.groupElement("blue")),
+        pRed = LAYOUT.varHandle(PathElement.groupElement("red"), PathElement.sequenceElement()),
+        pGreen = LAYOUT.varHandle(PathElement.groupElement("green"), PathElement.sequenceElement()),
+        pBlue = LAYOUT.varHandle(PathElement.groupElement("blue"), PathElement.sequenceElement()),
+        pSize = LAYOUT.varHandle(PathElement.groupElement("size"));
 
     /**
      * Create a {@code GLFWgammaramp const} instance.
@@ -84,7 +96,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp red(MemorySession session, short[] reds) {
-        address().set(ValueLayout.ADDRESS, 0L, session.allocateArray(ValueLayout.JAVA_SHORT, reds));
+        ppRed.set(address(), session.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
@@ -97,7 +109,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp green(MemorySession session, short[] greens) {
-        address().setAtIndex(ValueLayout.ADDRESS, 1L, session.allocateArray(ValueLayout.JAVA_SHORT, greens));
+        ppGreen.set(address(), session.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
@@ -110,7 +122,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp blue(MemorySession session, short[] blues) {
-        address().setAtIndex(ValueLayout.ADDRESS, 2L, session.allocateArray(ValueLayout.JAVA_SHORT, blues));
+        ppBlue.set(address(), session.allocateArray(JAVA_SHORT, blues));
         return this;
     }
 
@@ -121,7 +133,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        address().set(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.byteSize() * 3L, size);
+        pSize.set(address(), size);
         return this;
     }
 
@@ -132,7 +144,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the red value
      */
     public short red(int index) {
-        return nred().getAtIndex(ValueLayout.JAVA_SHORT, index);
+        return (short) pRed.get(address(), (long) index);
     }
 
     /**
@@ -142,7 +154,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the green value
      */
     public short green(int index) {
-        return ngreen().getAtIndex(ValueLayout.JAVA_SHORT, index);
+        return (short) pGreen.get(address(), (long) index);
     }
 
     /**
@@ -152,7 +164,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the blue value
      */
     public short blue(int index) {
-        return nblue().getAtIndex(ValueLayout.JAVA_SHORT, index);
+        return (short) pBlue.get(address(), (long) index);
     }
 
     /**
@@ -162,12 +174,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the array
      */
     public short[] reds(int size) {
-        short[] arr = new short[size];
-        var addr = nred();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = addr.getAtIndex(ValueLayout.JAVA_SHORT, i);
-        }
-        return arr;
+        return RuntimeHelper.toArray(nred(), new short[size]);
     }
 
     /**
@@ -177,12 +184,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the array
      */
     public short[] greens(int size) {
-        short[] arr = new short[size];
-        var addr = ngreen();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = addr.getAtIndex(ValueLayout.JAVA_SHORT, i);
-        }
-        return arr;
+        return RuntimeHelper.toArray(ngreen(), new short[size]);
     }
 
     /**
@@ -192,12 +194,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the array
      */
     public short[] blues(int size) {
-        short[] arr = new short[size];
-        var addr = nblue();
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = addr.getAtIndex(ValueLayout.JAVA_SHORT, i);
-        }
-        return arr;
+        return RuntimeHelper.toArray(nblue(), new short[size]);
     }
 
     /**
@@ -233,18 +230,18 @@ public class GLFWGammaRamp extends Pointer {
      * @return The number of elements in each array.
      */
     public int size() {
-        return address().get(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.byteSize() * 3L);
+        return (int) pSize.get(address());
     }
 
     public MemoryAddress nred() {
-        return address().get(ValueLayout.ADDRESS, 0L);
+        return (MemoryAddress) ppRed.get(address());
     }
 
     public MemoryAddress ngreen() {
-        return address().getAtIndex(ValueLayout.ADDRESS, 1L);
+        return (MemoryAddress) ppGreen.get(address());
     }
 
     public MemoryAddress nblue() {
-        return address().getAtIndex(ValueLayout.ADDRESS, 2L);
+        return (MemoryAddress) ppBlue.get(address());
     }
 }

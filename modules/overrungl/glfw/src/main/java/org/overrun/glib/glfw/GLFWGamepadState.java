@@ -48,8 +48,8 @@ public class GLFWGamepadState extends Pointer {
      * The struct member layout.
      */
     public static final SequenceLayout
-        BUTTONS_LAYOUT = MemoryLayout.sequenceLayout(15L, ValueLayout.JAVA_BYTE).withName("buttons"),
-        AXES_LAYOUT = MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_FLOAT).withName("axes");
+        BUTTONS_LAYOUT = MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("buttons"),
+        AXES_LAYOUT = MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("axes");
     /**
      * The struct layout.
      */

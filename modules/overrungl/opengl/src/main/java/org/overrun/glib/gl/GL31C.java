@@ -25,6 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -129,9 +130,9 @@ public sealed class GL31C extends GL30C permits GL32C {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveUniformBlockName(program, uniformBlockIndex, bufSize, pLen, pName);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            uniformBlockName[0] = pName.getUtf8String(0L);
+            uniformBlockName[0] = pName.getUtf8String(0);
         }
     }
 
@@ -139,7 +140,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try (var session = MemorySession.openShared()) {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveUniformBlockName(program, uniformBlockIndex, bufSize, MemoryAddress.NULL, pName);
-            return pName.getUtf8String(0L);
+            return pName.getUtf8String(0);
         }
     }
 
@@ -155,9 +156,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocateArray(JAVA_INT, params.length);
             getActiveUniformBlockiv(program, uniformBlockIndex, pname, seg);
-            for (int i = 0; i < params.length; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -175,9 +174,9 @@ public sealed class GL31C extends GL30C permits GL32C {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveUniformName(program, uniformIndex, bufSize, pLen, pName);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0L);
+                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
             }
-            uniformName[0] = pName.getUtf8String(0L);
+            uniformName[0] = pName.getUtf8String(0);
         }
     }
 
@@ -185,7 +184,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try (var session = MemorySession.openShared()) {
             var pName = session.allocateArray(JAVA_BYTE, bufSize);
             getActiveUniformName(program, uniformIndex, bufSize, MemoryAddress.NULL, pName);
-            return pName.getUtf8String(0L);
+            return pName.getUtf8String(0);
         }
     }
 
@@ -199,12 +198,10 @@ public sealed class GL31C extends GL30C permits GL32C {
 
     public static void getActiveUniformsiv(int program, int[] uniformIndices, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
-            final int count = Math.min(uniformIndices.length, params.length);
+            final int count = uniformIndices.length;
             var seg = session.allocateArray(JAVA_INT, count);
             getActiveUniformsiv(program, count, session.allocateArray(JAVA_INT, uniformIndices), pname, seg);
-            for (int i = 0; i < count; i++) {
-                params[i] = seg.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(seg, params);
         }
     }
 
@@ -212,7 +209,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getActiveUniformsiv(program, 1, session.allocate(JAVA_INT, uniformIndex), pname, seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
@@ -240,16 +237,14 @@ public sealed class GL31C extends GL30C permits GL32C {
 
     public static void getUniformIndices(int program, String[] uniformNames, int[] uniformIndices) {
         try (var session = MemorySession.openShared()) {
-            final int count = Math.min(uniformNames.length, uniformIndices.length);
+            final int count = uniformNames.length;
             var pNames = session.allocateArray(ADDRESS, count);
             for (int i = 0; i < count; i++) {
                 pNames.setAtIndex(ADDRESS, i, session.allocateUtf8String(uniformNames[i]));
             }
             var pIndices = session.allocateArray(JAVA_INT, count);
             getUniformIndices(program, count, pNames, pIndices);
-            for (int i = 0; i < count; i++) {
-                uniformIndices[i] = pIndices.getAtIndex(JAVA_INT, i);
-            }
+            RuntimeHelper.toArray(pIndices, uniformIndices);
         }
     }
 
@@ -257,7 +252,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getUniformIndices(program, 1, session.allocateUtf8String(uniformName), seg);
-            return seg.get(JAVA_INT, 0L);
+            return seg.get(JAVA_INT, 0);
         }
     }
 
