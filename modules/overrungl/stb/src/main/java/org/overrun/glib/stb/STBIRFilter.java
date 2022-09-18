@@ -22,46 +22,52 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.glfw;
-
-import org.overrun.glib.ICallback;
-
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
+package org.overrun.glib.stb;
 
 /**
- * This is the function pointer type for window close callbacks. A window
- * close callback function has the following signature:
- * {@snippet :
- * @Invoker(IGLFWWindowCloseFun::invoke)
- * void functionName(MemoryAddress window);
- * }
+ * The STB image resizer filter
  *
  * @author squid233
- * @see GLFW#setWindowCloseCallback
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface IGLFWWindowCloseFun extends ICallback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class);
-
+public enum STBIRFilter {
     /**
-     * The function pointer type for window close callbacks.
-     *
-     * @param window The window that the user attempted to close.
+     * use same filter type that easy-to-use API chooses
      */
-    void invoke(MemoryAddress window);
+    DEFAULT(0),
+    /**
+     * A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios
+     */
+    BOX(1),
+    /**
+     * On upsampling, produces same results as bilinear texture filtering
+     */
+    TRIANGLE(2),
+    /**
+     * The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque
+     */
+    CUBICBSPLINE(3),
+    /**
+     * An interpolating cubic spline
+     */
+    CATMULLROM(4),
+    /**
+     * Mitchell-Netrevalli filter with B=1/3, C=1/3
+     */
+    MITCHELL(5);
 
-    @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
+    private final int value;
+
+    STBIRFilter(int value) {
+        this.value = value;
     }
 
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowCloseFun.class, "invoke", MTYPE);
+    /**
+     * Returns the enum value.
+     *
+     * @return the value
+     */
+    public int getValue() {
+        return value;
     }
 }

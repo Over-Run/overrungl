@@ -22,46 +22,32 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.glfw;
-
-import org.overrun.glib.ICallback;
-
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
+package org.overrun.glib.stb;
 
 /**
- * This is the function pointer type for window close callbacks. A window
- * close callback function has the following signature:
- * {@snippet :
- * @Invoker(IGLFWWindowCloseFun::invoke)
- * void functionName(MemoryAddress window);
- * }
+ * The STB image resizer edge
  *
  * @author squid233
- * @see GLFW#setWindowCloseCallback
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface IGLFWWindowCloseFun extends ICallback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class);
+public enum STBIREdge {
+    CLAMP(1),
+    REFLECT(2),
+    WRAP(3),
+    ZERO(4);
 
-    /**
-     * The function pointer type for window close callbacks.
-     *
-     * @param window The window that the user attempted to close.
-     */
-    void invoke(MemoryAddress window);
+    private final int value;
 
-    @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
+    STBIREdge(int value) {
+        this.value = value;
     }
 
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowCloseFun.class, "invoke", MTYPE);
+    /**
+     * Returns the enum value.
+     *
+     * @return the value
+     */
+    public int getValue() {
+        return value;
     }
 }

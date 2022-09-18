@@ -41,13 +41,17 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 final class Handles {
+    private static boolean loaded = false;
     public static SymbolLookup lookup;
     public static MethodHandle
-        //region stb_image.h
         stbi__unpremultiply_on_load_thread,
         stbi_convert_iphone_png_to_rgb,
         stbi_convert_iphone_png_to_rgb_thread,
         stbi_failure_reason,
+        stbi_flip_vertically_on_write,
+        stbi_get_write_force_png_filter,
+        stbi_get_write_png_compression_level,
+        stbi_get_write_tga_with_rle,
         stbi_hdr_to_ldr_gamma,
         stbi_hdr_to_ldr_scale,
         stbi_image_free,
@@ -81,14 +85,37 @@ final class Handles {
         stbi_set_flip_vertically_on_load,
         stbi_set_flip_vertically_on_load_thread,
         stbi_set_unpremultiply_on_load,
+        stbi_set_write_force_png_filter,
+        stbi_set_write_png_compression_level,
+        stbi_set_write_tga_with_rle,
+        stbi_write_bmp,
+        stbi_write_bmp_to_func,
+        stbi_write_hdr,
+        stbi_write_hdr_to_func,
+        stbi_write_jpg,
+        stbi_write_jpg_to_func,
+        stbi_write_png,
+        stbi_write_png_to_func,
+        stbi_write_png_to_mem,
+        stbi_write_tga,
+        stbi_write_tga_to_func,
+        stbi_zlib_compress,
         stbi_zlib_decode_buffer,
         stbi_zlib_decode_malloc,
         stbi_zlib_decode_malloc_guesssize,
         stbi_zlib_decode_malloc_guesssize_headerflag,
         stbi_zlib_decode_noheader_buffer,
-        stbi_zlib_decode_noheader_malloc
-            //endregion
-            ;
+        stbi_zlib_decode_noheader_malloc,
+        stbir_resize,
+        stbir_resize_float,
+        stbir_resize_float_generic,
+        stbir_resize_region,
+        stbir_resize_subpixel,
+        stbir_resize_uint16_generic,
+        stbir_resize_uint8,
+        stbir_resize_uint8_generic,
+        stbir_resize_uint8_srgb,
+        stbir_resize_uint8_srgb_edgemode;
 
     private static MethodHandle downcall(String name,
                                          MemoryLayout retLayout,
@@ -99,14 +126,12 @@ final class Handles {
 
     private static MethodHandle downcallI(String name,
                                           MemoryLayout... argLayouts) {
-        return RuntimeHelper.downcallThrow(lookup.lookup(name),
-            FunctionDescriptor.of(JAVA_INT, argLayouts));
+        return downcall(name, JAVA_INT, argLayouts);
     }
 
     private static MethodHandle downcallP(String name,
                                           MemoryLayout... argLayouts) {
-        return RuntimeHelper.downcallThrow(lookup.lookup(name),
-            FunctionDescriptor.of(ADDRESS, argLayouts));
+        return downcall(name, ADDRESS, argLayouts);
     }
 
     private static MethodHandle downcallV(String name,
@@ -119,10 +144,7 @@ final class Handles {
         return downcallV(name, JAVA_INT);
     }
 
-    public static void create() {
-        lookup = GameLib.load("stb",
-            "stb",
-            "0.1.0");
+    private static void create_stbi() {
         stbi__unpremultiply_on_load_thread = downcallIV("stbi__unpremultiply_on_load_thread");
         stbi_convert_iphone_png_to_rgb = downcallIV("stbi_convert_iphone_png_to_rgb");
         stbi_convert_iphone_png_to_rgb_thread = downcallIV("stbi_convert_iphone_png_to_rgb_thread");
@@ -166,5 +188,51 @@ final class Handles {
         stbi_zlib_decode_malloc_guesssize_headerflag = downcallP("stbi_zlib_decode_malloc_guesssize_headerflag", ADDRESS, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
         stbi_zlib_decode_noheader_buffer = downcallI("stbi_zlib_decode_noheader_buffer", ADDRESS, JAVA_INT, ADDRESS, JAVA_INT);
         stbi_zlib_decode_noheader_malloc = downcallP("stbi_zlib_decode_noheader_malloc", ADDRESS, JAVA_INT, ADDRESS);
+    }
+
+    private static void create_stbi_resize() {
+        stbir_resize = downcallI("stbir_resize", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_float = downcallI("stbir_resize_float", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+        stbir_resize_float_generic = downcallI("stbir_resize_float_generic", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_region = downcallI("stbir_resize_region", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT);
+        stbir_resize_subpixel = downcallI("stbir_resize_subpixel", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT);
+        stbir_resize_uint16_generic = downcallI("stbir_resize_uint16_generic", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_uint8 = downcallI("stbir_resize_uint8", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+        stbir_resize_uint8_generic = downcallI("stbir_resize_uint8_generic", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_uint8_srgb = downcallI("stbir_resize_uint8_srgb", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+        stbir_resize_uint8_srgb_edgemode = downcallI("stbir_resize_uint8_srgb_edgemode", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+    }
+
+    private static void create_stbi_write() {
+        stbi_flip_vertically_on_write = downcallIV("stbi_flip_vertically_on_write");
+        stbi_get_write_force_png_filter = downcallI("stbi_get_write_force_png_filter");
+        stbi_get_write_png_compression_level = downcallI("stbi_get_write_png_compression_level");
+        stbi_get_write_tga_with_rle = downcallI("stbi_get_write_tga_with_rle");
+        stbi_set_write_force_png_filter = downcallIV("stbi_set_write_force_png_filter");
+        stbi_set_write_png_compression_level = downcallIV("stbi_set_write_png_compression_level");
+        stbi_set_write_tga_with_rle = downcallIV("stbi_set_write_tga_with_rle");
+        stbi_write_bmp = downcallI("stbi_write_bmp", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_write_bmp_to_func = downcallI("stbi_write_bmp_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_write_hdr = downcallI("stbi_write_hdr", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_write_hdr_to_func = downcallI("stbi_write_hdr_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_write_jpg = downcallI("stbi_write_jpg", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
+        stbi_write_jpg_to_func = downcallI("stbi_write_jpg_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
+        stbi_write_png = downcallI("stbi_write_png", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
+        stbi_write_png_to_func = downcallI("stbi_write_png_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
+        stbi_write_png_to_mem = downcallP("stbi_write_png_to_mem", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_write_tga = downcallI("stbi_write_tga", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_write_tga_to_func = downcallI("stbi_write_tga_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbi_zlib_compress = downcallP("stbi_zlib_compress", ADDRESS, JAVA_INT, ADDRESS, JAVA_INT);
+    }
+
+    public static void create() {
+        if (loaded) return;
+        loaded = true;
+        lookup = GameLib.load("stb",
+            "stb",
+            "0.1.0");
+        create_stbi();
+        create_stbi_resize();
+        create_stbi_write();
     }
 }

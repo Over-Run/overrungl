@@ -95,13 +95,13 @@ public class STBIIoCallbacks extends Pointer {
         int invoke(MemoryAddress user, MemoryAddress data, int size);
 
         @Override
-        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Read.class, "invoke", MTYPE);
+        default FunctionDescriptor descriptor() {
+            return DESC;
         }
 
         @Override
-        default Addressable address(MemorySession session) {
-            return segment(session, DESC);
+        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+            return lookup.findVirtual(Read.class, "invoke", MTYPE);
         }
     }
 
@@ -125,13 +125,13 @@ public class STBIIoCallbacks extends Pointer {
         void invoke(MemoryAddress user, int n);
 
         @Override
-        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Skip.class, "invoke", MTYPE);
+        default FunctionDescriptor descriptor() {
+            return DESC;
         }
 
         @Override
-        default Addressable address(MemorySession session) {
-            return segment(session, DESC);
+        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+            return lookup.findVirtual(Skip.class, "invoke", MTYPE);
         }
     }
 
@@ -155,13 +155,13 @@ public class STBIIoCallbacks extends Pointer {
         int invoke(MemoryAddress user);
 
         @Override
-        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Eof.class, "invoke", MTYPE);
+        default FunctionDescriptor descriptor() {
+            return DESC;
         }
 
         @Override
-        default Addressable address(MemorySession session) {
-            return segment(session, DESC);
+        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+            return lookup.findVirtual(Eof.class, "invoke", MTYPE);
         }
     }
 

@@ -21,7 +21,16 @@ public interface ICallback {
      * @param session the memory session
      * @return the memory address
      */
-    Addressable address(MemorySession session);
+    default Addressable address(MemorySession session) {
+        return segment(session, descriptor());
+    }
+
+    /**
+     * Returns the function descriptor of this callback.
+     *
+     * @return the function descriptor
+     */
+    FunctionDescriptor descriptor();
 
     /**
      * Find the method handle from the given method handles lookup.

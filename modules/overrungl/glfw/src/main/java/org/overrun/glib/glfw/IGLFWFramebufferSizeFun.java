@@ -58,12 +58,12 @@ public interface IGLFWFramebufferSizeFun extends ICallback {
     void invoke(MemoryAddress window, int width, int height);
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWFramebufferSizeFun.class, "invoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWFramebufferSizeFun.class, "invoke", MTYPE);
     }
 }

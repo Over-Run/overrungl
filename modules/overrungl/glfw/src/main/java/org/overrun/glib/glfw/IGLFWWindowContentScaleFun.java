@@ -58,12 +58,12 @@ public interface IGLFWWindowContentScaleFun extends ICallback {
     void invoke(MemoryAddress window, float xscale, float yscale);
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowContentScaleFun.class, "invoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWWindowContentScaleFun.class, "invoke", MTYPE);
     }
 }

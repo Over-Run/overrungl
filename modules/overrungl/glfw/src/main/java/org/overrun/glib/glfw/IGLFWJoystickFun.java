@@ -58,12 +58,12 @@ public interface IGLFWJoystickFun extends ICallback {
     void invoke(int jid, int event);
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWJoystickFun.class, "invoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWJoystickFun.class, "invoke", MTYPE);
     }
 }

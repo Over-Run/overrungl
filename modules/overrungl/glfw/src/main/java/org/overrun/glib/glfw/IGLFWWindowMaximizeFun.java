@@ -62,12 +62,12 @@ public interface IGLFWWindowMaximizeFun extends ICallback {
     }
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowMaximizeFun.class, "ninvoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWWindowMaximizeFun.class, "ninvoke", MTYPE);
     }
 }

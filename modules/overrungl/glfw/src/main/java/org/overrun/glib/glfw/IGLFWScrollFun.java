@@ -58,12 +58,12 @@ public interface IGLFWScrollFun extends ICallback {
     void invoke(MemoryAddress window, double xoffset, double yoffset);
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWScrollFun.class, "invoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWScrollFun.class, "invoke", MTYPE);
     }
 }

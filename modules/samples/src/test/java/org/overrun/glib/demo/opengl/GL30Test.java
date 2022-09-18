@@ -29,8 +29,11 @@ import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
+import org.overrun.glib.stb.STBImage;
 
+import java.io.IOException;
 import java.lang.foreign.MemoryAddress;
+import java.util.Objects;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -94,6 +97,30 @@ public final class GL30Test {
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+
+        int tex = GL.genTexture();
+        GL.bindTexture(GL_TEXTURE_2D, tex);
+        GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        try (var is = ClassLoader.getSystemResourceAsStream("image.png")) {
+            byte[] bytes = Objects.requireNonNull(is).readNBytes(256);
+            int[] px = new int[1], py = new int[1], pc = new int[1];
+            var data = STBImage.loadFromMemory(bytes, px, py, pc, STBImage.RGB);
+            GL.texImage2D(GL_TEXTURE_2D,
+                0,
+                GL_RGB,
+                px[0],
+                py[0],
+                0,
+                GL_RGB,
+                GL_UNSIGNED_BYTE,
+                data);
+            STBImage.free(data);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        GL.bindTexture(GL_TEXTURE_2D, 0);
+
         int program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
@@ -101,24 +128,27 @@ public final class GL30Test {
             #version 130
 
             in vec3 position;
-            in vec3 color;
+            in vec2 uv;
 
-            out vec3 vertexColor;
+            out vec2 texCoord;
 
             void main() {
                 gl_Position = vec4(position, 1.0);
-                vertexColor = color;
+                texCoord = uv;
             }
             """);
         GL.shaderSource(fsh, """
             #version 130
 
-            in vec3 vertexColor;
+            in vec2 texCoord;
 
             out vec4 fragColor;
 
+            uniform sampler2D sampler;
+            uniform float colorFactor;
+
             void main() {
-                fragColor = vec4(vertexColor, 1.0);
+                fragColor = colorFactor * texture(sampler, texCoord);
             }
             """);
         GL.compileShader(vsh);
@@ -126,38 +156,53 @@ public final class GL30Test {
         GL.attachShader(program, vsh);
         GL.attachShader(program, fsh);
         GL.bindAttribLocation(program, 0, "position");
-        GL.bindAttribLocation(program, 1, "color");
+        GL.bindAttribLocation(program, 1, "uv");
         GL.linkProgram(program);
         GL.detachShader(program, vsh);
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
+        GL.useProgram(program);
+        GL.uniform1i(GL.getUniformLocation(program, "sampler"), 0);
+        GL.useProgram(0);
+
         int vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
         int vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         GL.bufferData(GL_ARRAY_BUFFER, new float[]{
-            // Vertex          Color
-            0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f,
-            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f
+            // Vertex          UV
+            -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
+            0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+            0.5f, 0.5f, 0.0f, 1.0f, 0.0f
+        }, GL_STATIC_DRAW);
+        int ebo = GL.genBuffer();
+        GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+        GL.bufferData(GL_ELEMENT_ARRAY_BUFFER, new int[]{
+            0, 1, 2, 0, 2, 3
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
-        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12));
+        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 20, MemoryAddress.NULL);
+        GL.vertexAttribPointer(1, 2, GL_FLOAT, false, 20, MemoryAddress.ofLong(12));
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
+
+        final int colorFactor = GL.getUniformLocation(program, "colorFactor");
 
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
+            GL.bindTexture(GL_TEXTURE_2D, tex);
             GL.useProgram(program);
+            GL.uniform1f(colorFactor, (float) ((Math.sin(GLFW.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
             GL.bindVertexArray(vao);
-            GL.drawArrays(GL_TRIANGLES, 0, 3);
+            GL.drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, MemoryAddress.NULL);
             GL.bindVertexArray(0);
             GL.useProgram(0);
+            GL.bindTexture(GL_TEXTURE_2D, 0);
 
             GLFW.swapBuffers(window);
 
@@ -167,6 +212,7 @@ public final class GL30Test {
         GL.deleteProgram(program);
         GL.deleteVertexArray(vao);
         GL.deleteBuffer(vbo);
+        GL.deleteTexture(tex);
     }
 
     public static void main(String[] args) {

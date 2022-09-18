@@ -55,19 +55,19 @@ public interface IGLFWCursorEnterFun extends ICallback {
      * @param entered {@code true} if the cursor entered the window's content
      *                area, or {@code false} if it left it.
      */
-    void invoke(MemoryAddress window, boolean entered) ;
+    void invoke(MemoryAddress window, boolean entered);
 
     default void ninvoke(MemoryAddress window, int entered) {
         invoke(window, entered == GLFW.TRUE);
     }
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWCursorEnterFun.class, "ninvoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWCursorEnterFun.class, "ninvoke", MTYPE);
     }
 }

@@ -59,12 +59,12 @@ public interface IGLFWMouseButtonFun extends ICallback {
     void invoke(MemoryAddress window, int button, int action, int mods);
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWMouseButtonFun.class, "invoke", MTYPE);
+    default FunctionDescriptor descriptor() {
+        return DESC;
     }
 
     @Override
-    default Addressable address(MemorySession session) {
-        return segment(session, DESC);
+    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
+        return lookup.findVirtual(IGLFWMouseButtonFun.class, "invoke", MTYPE);
     }
 }
