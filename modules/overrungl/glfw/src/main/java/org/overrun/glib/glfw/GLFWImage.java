@@ -85,7 +85,9 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage width(int width) {
-        pWidth.set(address(), width);
+        try (var session = MemorySession.openShared()) {
+            pWidth.set(segment(LAYOUT, session), width);
+        }
         return this;
     }
 
@@ -96,7 +98,9 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage height(int height) {
-        pHeight.set(address(), height);
+        try (var session = MemorySession.openShared()) {
+            pHeight.set(segment(LAYOUT, session), height);
+        }
         return this;
     }
 
@@ -107,7 +111,9 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage pixels(Addressable pixels) {
-        pPixels.set(address(), pixels);
+        try (var session = MemorySession.openShared()) {
+            pPixels.set(segment(LAYOUT, session), pixels);
+        }
         return this;
     }
 
@@ -117,7 +123,9 @@ public class GLFWImage extends Pointer {
      * @return The width, in pixels, of this image.
      */
     public int width() {
-        return (int) pWidth.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pWidth.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -126,7 +134,9 @@ public class GLFWImage extends Pointer {
      * @return The height, in pixels, of this image.
      */
     public int height() {
-        return (int) pHeight.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pHeight.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -135,6 +145,8 @@ public class GLFWImage extends Pointer {
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
     public MemoryAddress pixels() {
-        return (MemoryAddress) pPixels.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) pPixels.get(segment(LAYOUT, session));
+        }
     }
 }

@@ -89,8 +89,10 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand count(int count) {
-        pCount.set(address(), count);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pCount.set(segment(LAYOUT, session), count);
+            return this;
+        }
     }
 
     /**
@@ -100,8 +102,10 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand primCount(int primCount) {
-        pPrimCount.set(address(), primCount);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pPrimCount.set(segment(LAYOUT, session), primCount);
+            return this;
+        }
     }
 
     /**
@@ -111,8 +115,10 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand first(int first) {
-        pFirst.set(address(), first);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pFirst.set(segment(LAYOUT, session), first);
+            return this;
+        }
     }
 
     /**
@@ -122,8 +128,10 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(address(), baseInstance);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pBaseInstance.set(segment(LAYOUT, session), baseInstance);
+            return this;
+        }
     }
 
     /**
@@ -132,7 +140,9 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        return (int) pCount.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pCount.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -141,7 +151,9 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        return (int) pPrimCount.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pPrimCount.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -150,7 +162,9 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the first
      */
     public int first() {
-        return (int) pFirst.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pFirst.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -159,6 +173,8 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pBaseInstance.get(segment(LAYOUT, session));
+        }
     }
 }

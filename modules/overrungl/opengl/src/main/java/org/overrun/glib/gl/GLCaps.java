@@ -42,6 +42,8 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public class GLCaps {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
+
+    // region Function descriptors
     static final FunctionDescriptor dI = FunctionDescriptor.of(JAVA_INT);
     static final FunctionDescriptor dV = FunctionDescriptor.ofVoid();
     static final FunctionDescriptor dBV = FunctionDescriptor.ofVoid(JAVA_BYTE);
@@ -90,9 +92,11 @@ public class GLCaps {
     static final FunctionDescriptor dFFFFV = ofDescriptor("FFFFV");
     static final FunctionDescriptor dIDDDV = ofDescriptor("IDDDV");
     static final FunctionDescriptor dIFFFV = ofDescriptor("IFFFV");
+    static final FunctionDescriptor dIIDDV = ofDescriptor("IIDDV");
+    static final FunctionDescriptor dIIFFV = ofDescriptor("IIFFV");
+    static final FunctionDescriptor dIIFIV = ofDescriptor("IIFIV");
     static final FunctionDescriptor dIIIIV = ofDescriptor("IIIIV");
     static final FunctionDescriptor dIIIPV = ofDescriptor("IIIPV");
-    static final FunctionDescriptor dIIFIV = ofDescriptor("IIFIV");
     static final FunctionDescriptor dIIPIV = ofDescriptor("IIPIV");
     static final FunctionDescriptor dIIPPV = ofDescriptor("IIPPV");
     static final FunctionDescriptor dIIZIV = ofDescriptor("IIZIV");
@@ -107,11 +111,14 @@ public class GLCaps {
     static final FunctionDescriptor dIBBBBV = ofDescriptor("IBBBBV");
     static final FunctionDescriptor dIDDDDV = ofDescriptor("IDDDDV");
     static final FunctionDescriptor dIFFFFV = ofDescriptor("IFFFFV");
+    static final FunctionDescriptor dIIDDDV = ofDescriptor("IIDDDV");
+    static final FunctionDescriptor dIIFFFV = ofDescriptor("IIFFFV");
     static final FunctionDescriptor dIIIIIV = ofDescriptor("IIIIIV");
     static final FunctionDescriptor dIIIIPV = ofDescriptor("IIIIPV");
     static final FunctionDescriptor dIIIJJV = ofDescriptor("IIIJJV");
     static final FunctionDescriptor dIIIPIV = ofDescriptor("IIIPIV");
     static final FunctionDescriptor dIIIPPV = ofDescriptor("IIIPPV");
+    static final FunctionDescriptor dIIIZPV = ofDescriptor("IIIZPV");
     static final FunctionDescriptor dIIJJJV = ofDescriptor("IIJJJV");
     static final FunctionDescriptor dIIPIPV = ofDescriptor("IIPIPV");
     static final FunctionDescriptor dIIPPPV = ofDescriptor("IIPPPV");
@@ -124,6 +131,8 @@ public class GLCaps {
     static final FunctionDescriptor dIDDIIPV = ofDescriptor("IDDIIPV");
     static final FunctionDescriptor dIFFIFFV = ofDescriptor("IFFIFFV");
     static final FunctionDescriptor dIFFIIPV = ofDescriptor("IFFIIPV");
+    static final FunctionDescriptor dIIDDDDV = ofDescriptor("IIDDDDV");
+    static final FunctionDescriptor dIIFFFFV = ofDescriptor("IIFFFFV");
     static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
     static final FunctionDescriptor dIIIIIPV = ofDescriptor("IIIIIPV");
     static final FunctionDescriptor dIIIIIZV = ofDescriptor("IIIIIZV");
@@ -136,7 +145,9 @@ public class GLCaps {
     static final FunctionDescriptor dIIIIIIPV = ofDescriptor("IIIIIIPV");
     static final FunctionDescriptor dIIIIIIZV = ofDescriptor("IIIIIIZV");
     static final FunctionDescriptor dIIIIIPIV = ofDescriptor("IIIIIPIV");
+    static final FunctionDescriptor dIIIPIIIV = ofDescriptor("IIIPIIIV");
     static final FunctionDescriptor dIIIPPPPV = ofDescriptor("IIIPPPPV");
+    static final FunctionDescriptor dIIIZIIIV = ofDescriptor("IIIZIIIV");
     static final FunctionDescriptor dIIIIIIIIV = ofDescriptor("IIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIPV = ofDescriptor("IIIIIIIPV");
     static final FunctionDescriptor dIIIIIIIIIV = ofDescriptor("IIIIIIIIIV");
@@ -145,6 +156,7 @@ public class GLCaps {
     static final FunctionDescriptor dIFFIIFFIIPV = ofDescriptor("IFFIIFFIIPV");
     static final FunctionDescriptor dIIIIIIIIIIV = ofDescriptor("IIIIIIIIIIV");
     static final FunctionDescriptor dIIIIIIIIIIPV = ofDescriptor("IIIIIIIIIIPV");
+    // endregion
 
     private static ValueLayout ofValue(char c) {
         return switch (c) {
@@ -210,7 +222,8 @@ public class GLCaps {
      * Load OpenGL compatibility profile by the given load function.
      *
      * @param load the load function
-     * @return the OpenGL version, or {@code 0} if no OpenGL context found
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public static int load(GLLoadFunc load) {
         return load(false, load);
@@ -221,7 +234,8 @@ public class GLCaps {
      *
      * @param forwardCompatible If {@code true}, only loading core profile functions.
      * @param load              the load function
-     * @return the OpenGL version, or {@code 0} if no OpenGL context found
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public static int load(boolean forwardCompatible, GLLoadFunc load) {
         GL10C.glGetString = downcallSafe(load.invoke("glGetString"), dIP);
@@ -244,6 +258,7 @@ public class GLCaps {
         GL33C.load(load);
         GL40C.load(load);
         GL41C.load(load);
+        GL42C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -359,7 +374,7 @@ public class GLCaps {
         Ver33 = (major == 3 && minor >= 3) || major > 3 || GL33C.isSupported();
         Ver40 = (major == 4 && minor >= 0) || major > 4 || GL40C.isSupported();
         Ver41 = (major == 4 && minor >= 1) || major > 4 || GL41C.isSupported();
-        Ver42 = (major == 4 && minor >= 2) || major > 4;
+        Ver42 = (major == 4 && minor >= 2) || major > 4 || GL42C.isSupported();
         Ver43 = (major == 4 && minor >= 3) || major > 4;
         Ver44 = (major == 4 && minor >= 4) || major > 4;
         Ver45 = (major == 4 && minor >= 5) || major > 4;

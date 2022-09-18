@@ -88,7 +88,7 @@ public class GLFWGamepadState extends Pointer {
      * {@code PRESS} or {@code RELEASE}.
      */
     public byte[] buttons(MemorySession session) {
-        var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
+        var seg = segment(LAYOUT, session);
         byte[] arr = new byte[15];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (byte) pButtons.get(seg, (long) i);
@@ -116,7 +116,7 @@ public class GLFWGamepadState extends Pointer {
      */
     public boolean button(int index) {
         try (var session = MemorySession.openShared()) {
-            var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
+            var seg = segment(LAYOUT, session);
             return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
         }
     }
@@ -129,7 +129,7 @@ public class GLFWGamepadState extends Pointer {
      * in the range -1.0 to 1.0 inclusive.
      */
     public float[] axes(MemorySession session) {
-        var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
+        var seg = segment(LAYOUT, session);
         float[] arr = new float[6];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (float) pAxes.get(seg, (long) i);
@@ -157,7 +157,7 @@ public class GLFWGamepadState extends Pointer {
      */
     public float axe(int index) {
         try (var session = MemorySession.openShared()) {
-            var seg = MemorySegment.ofAddress(address(), LAYOUT.byteSize(), session);
+            var seg = segment(LAYOUT, session);
             return (float) pAxes.get(seg, (long) index);
         }
     }

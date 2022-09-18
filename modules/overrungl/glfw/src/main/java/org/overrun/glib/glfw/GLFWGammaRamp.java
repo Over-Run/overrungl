@@ -96,7 +96,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp red(MemorySession session, short[] reds) {
-        ppRed.set(address(), session.allocateArray(JAVA_SHORT, reds));
+        ppRed.set(segment(LAYOUT, session), session.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
@@ -109,7 +109,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp green(MemorySession session, short[] greens) {
-        ppGreen.set(address(), session.allocateArray(JAVA_SHORT, greens));
+        ppGreen.set(segment(LAYOUT, session), session.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
@@ -122,7 +122,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp blue(MemorySession session, short[] blues) {
-        ppBlue.set(address(), session.allocateArray(JAVA_SHORT, blues));
+        ppBlue.set(segment(LAYOUT, session), session.allocateArray(JAVA_SHORT, blues));
         return this;
     }
 
@@ -133,7 +133,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        pSize.set(address(), size);
+        try (var session = MemorySession.openShared()) {
+            pSize.set(segment(LAYOUT, session), size);
+        }
         return this;
     }
 
@@ -144,7 +146,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return the red value
      */
     public short red(int index) {
-        return (short) pRed.get(address(), (long) index);
+        try (var session = MemorySession.openShared()) {
+            return (short) pRed.get(segment(LAYOUT, session), (long) index);
+        }
     }
 
     /**
@@ -154,7 +158,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return the green value
      */
     public short green(int index) {
-        return (short) pGreen.get(address(), (long) index);
+        try (var session = MemorySession.openShared()) {
+            return (short) pGreen.get(segment(LAYOUT, session), (long) index);
+        }
     }
 
     /**
@@ -164,7 +170,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return the blue value
      */
     public short blue(int index) {
-        return (short) pBlue.get(address(), (long) index);
+        try (var session = MemorySession.openShared()) {
+            return (short) pBlue.get(segment(LAYOUT, session), (long) index);
+        }
     }
 
     /**
@@ -230,18 +238,26 @@ public class GLFWGammaRamp extends Pointer {
      * @return The number of elements in each array.
      */
     public int size() {
-        return (int) pSize.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pSize.get(segment(LAYOUT, session));
+        }
     }
 
     public MemoryAddress nred() {
-        return (MemoryAddress) ppRed.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) ppRed.get(segment(LAYOUT, session));
+        }
     }
 
     public MemoryAddress ngreen() {
-        return (MemoryAddress) ppGreen.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) ppGreen.get(segment(LAYOUT, session));
+        }
     }
 
     public MemoryAddress nblue() {
-        return (MemoryAddress) ppBlue.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) ppBlue.get(segment(LAYOUT, session));
+        }
     }
 }

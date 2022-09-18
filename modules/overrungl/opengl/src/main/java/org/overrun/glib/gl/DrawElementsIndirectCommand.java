@@ -81,8 +81,10 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand count(int count) {
-        pCount.set(address(), count);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pCount.set(segment(LAYOUT, session), count);
+            return this;
+        }
     }
 
     /**
@@ -92,8 +94,10 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand primCount(int primCount) {
-        pPrimCount.set(address(), primCount);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pPrimCount.set(segment(LAYOUT, session), primCount);
+            return this;
+        }
     }
 
     /**
@@ -103,8 +107,10 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand firstIndex(int firstIndex) {
-        pFirstIndex.set(address(), firstIndex);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pFirstIndex.set(segment(LAYOUT, session), firstIndex);
+            return this;
+        }
     }
 
     /**
@@ -114,8 +120,10 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseVertex(int baseVertex) {
-        pBaseVertex.set(address(), baseVertex);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pBaseVertex.set(segment(LAYOUT, session), baseVertex);
+            return this;
+        }
     }
 
     /**
@@ -125,8 +133,10 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(address(), baseInstance);
-        return this;
+        try (var session = MemorySession.openShared()) {
+            pBaseInstance.set(segment(LAYOUT, session), baseInstance);
+            return this;
+        }
     }
 
     /**
@@ -135,7 +145,9 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        return (int) pCount.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pCount.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -144,7 +156,9 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        return (int) pPrimCount.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pPrimCount.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -153,7 +167,9 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the first index
      */
     public int firstIndex() {
-        return (int) pFirstIndex.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pFirstIndex.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -162,7 +178,9 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base vertex
      */
     public int baseVertex() {
-        return (int) pBaseVertex.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pBaseVertex.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -171,6 +189,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pBaseInstance.get(segment(LAYOUT, session));
+        }
     }
 }

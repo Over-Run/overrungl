@@ -181,7 +181,9 @@ public class STBIIoCallbacks extends Pointer {
      * @return the read callback
      */
     public MemoryAddress read() {
-        return (MemoryAddress) pRead.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) pRead.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -190,7 +192,9 @@ public class STBIIoCallbacks extends Pointer {
      * @return the skip callback
      */
     public MemoryAddress skip() {
-        return (MemoryAddress) pSkip.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) pSkip.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -199,7 +203,9 @@ public class STBIIoCallbacks extends Pointer {
      * @return the eof callback
      */
     public MemoryAddress eof() {
-        return (MemoryAddress) pEof.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (MemoryAddress) pEof.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -211,7 +217,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks read(MemorySession session, Read read) {
-        pRead.set(address(), read.address(session));
+        pRead.set(segment(LAYOUT, session), read.address(session));
         return this;
     }
 
@@ -224,7 +230,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks skip(MemorySession session, Skip skip) {
-        pSkip.set(address(), skip.address(session));
+        pSkip.set(segment(LAYOUT, session), skip.address(session));
         return this;
     }
 
@@ -237,7 +243,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks eof(MemorySession session, Eof eof) {
-        pEof.set(address(), eof.address(session));
+        pEof.set(segment(LAYOUT, session), eof.address(session));
         return this;
     }
 }

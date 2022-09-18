@@ -1,7 +1,6 @@
 package org.overrun.glib;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.*;
 
 /**
  * A {@link MemoryAddress} wrapper.
@@ -40,5 +39,27 @@ public class Pointer {
      */
     public MemoryAddress address() {
         return rawAddress().address();
+    }
+
+    /**
+     * Gets as memory segment.
+     *
+     * @param bytesSize the bytes size
+     * @param session   the memory session to allocate
+     * @return the memory segment
+     */
+    public MemorySegment segment(long bytesSize, MemorySession session) {
+        return MemorySegment.ofAddress(address(), bytesSize, session);
+    }
+
+    /**
+     * Gets as memory segment.
+     *
+     * @param layout  the memory layout
+     * @param session the memory session to allocate
+     * @return the memory segment
+     */
+    public MemorySegment segment(MemoryLayout layout, MemorySession session) {
+        return segment(layout.byteSize(), session);
     }
 }

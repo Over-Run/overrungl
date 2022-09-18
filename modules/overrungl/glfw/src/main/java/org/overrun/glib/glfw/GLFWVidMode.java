@@ -94,7 +94,9 @@ public class GLFWVidMode extends Pointer {
      * @return The width, in screen coordinates, of the video mode.
      */
     public int width() {
-        return (int) pWidth.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pWidth.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -103,7 +105,9 @@ public class GLFWVidMode extends Pointer {
      * @return The height, in screen coordinates, of the video mode.
      */
     public int height() {
-        return (int) pHeight.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pHeight.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -112,7 +116,9 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the red channel of the video mode.
      */
     public int redBits() {
-        return (int) pRedBits.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pRedBits.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -121,7 +127,9 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the green channel of the video mode.
      */
     public int greenBits() {
-        return (int) pGreenBits.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pGreenBits.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -130,7 +138,9 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the blue channel of the video mode.
      */
     public int blueBits() {
-        return (int) pBlueBits.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pBlueBits.get(segment(LAYOUT, session));
+        }
     }
 
     /**
@@ -139,6 +149,8 @@ public class GLFWVidMode extends Pointer {
      * @return The refresh rate, in Hz, of the video mode.
      */
     public int refreshRate() {
-        return (int) pRefreshRate.get(address());
+        try (var session = MemorySession.openShared()) {
+            return (int) pRefreshRate.get(segment(LAYOUT, session));
+        }
     }
 }
