@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -51,15 +52,15 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     static void load(GLLoadFunc load) {
-        glBlendColor = downcallSafe(load.invoke("glBlendColor"), dFFFFV);
-        glBlendEquation = downcallSafe(load.invoke("glBlendEquation"), dIV);
-        glBlendFuncSeparate = downcallSafe(load.invoke("glBlendFuncSeparate"), dIIIIV);
-        glMultiDrawArrays = downcallSafe(load.invoke("glMultiDrawArrays"), dIPPIV);
-        glMultiDrawElements = downcallSafe(load.invoke("glMultiDrawElements"), dIPIPIV);
-        glPointParameterf = downcallSafe(load.invoke("glPointParameterf"), dIFV);
-        glPointParameterfv = downcallSafe(load.invoke("glPointParameterfv"), dIPV);
-        glPointParameteri = downcallSafe(load.invoke("glPointParameteri"), dIIV);
-        glPointParameteriv = downcallSafe(load.invoke("glPointParameteriv"), dIPV);
+        glBlendColor = load.invoke("glBlendColor", FFFFV);
+        glBlendEquation = load.invoke("glBlendEquation", IV);
+        glBlendFuncSeparate = load.invoke("glBlendFuncSeparate", IIIIV);
+        glMultiDrawArrays = load.invoke("glMultiDrawArrays", IPPIV);
+        glMultiDrawElements = load.invoke("glMultiDrawElements", IPIPIV);
+        glPointParameterf = load.invoke("glPointParameterf", IFV);
+        glPointParameterfv = load.invoke("glPointParameterfv", IPV);
+        glPointParameteri = load.invoke("glPointParameteri", IIV);
+        glPointParameteriv = load.invoke("glPointParameteriv", IPV);
     }
 
     public static void blendColor(float red, float green, float blue, float alpha) {

@@ -32,6 +32,7 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -54,43 +55,43 @@ public final class GL13 extends GL13C {
 
     static void load(GLLoadFunc load) {
         if (!Ver13) return;
-        glClientActiveTexture = downcallSafe(load.invoke("glClientActiveTexture"), dIV);
-        glLoadTransposeMatrixd = downcallSafe(load.invoke("glLoadTransposeMatrixd"), dPV);
-        glLoadTransposeMatrixf = downcallSafe(load.invoke("glLoadTransposeMatrixf"), dPV);
-        glMultTransposeMatrixd = downcallSafe(load.invoke("glMultTransposeMatrixd"), dPV);
-        glMultTransposeMatrixf = downcallSafe(load.invoke("glMultTransposeMatrixf"), dPV);
-        glMultiTexCoord1d = downcallSafe(load.invoke("glMultiTexCoord1d"), dIDV);
-        glMultiTexCoord1dv = downcallSafe(load.invoke("glMultiTexCoord1dv"), dIPV);
-        glMultiTexCoord1f = downcallSafe(load.invoke("glMultiTexCoord1f"), dIFV);
-        glMultiTexCoord1fv = downcallSafe(load.invoke("glMultiTexCoord1fv"), dIPV);
-        glMultiTexCoord1i = downcallSafe(load.invoke("glMultiTexCoord1i"), dIIV);
-        glMultiTexCoord1iv = downcallSafe(load.invoke("glMultiTexCoord1iv"), dIPV);
-        glMultiTexCoord1s = downcallSafe(load.invoke("glMultiTexCoord1s"), dISV);
-        glMultiTexCoord1sv = downcallSafe(load.invoke("glMultiTexCoord1sv"), dIPV);
-        glMultiTexCoord2d = downcallSafe(load.invoke("glMultiTexCoord2d"), dIDDV);
-        glMultiTexCoord2dv = downcallSafe(load.invoke("glMultiTexCoord2dv"), dIPV);
-        glMultiTexCoord2f = downcallSafe(load.invoke("glMultiTexCoord2f"), dIFFV);
-        glMultiTexCoord2fv = downcallSafe(load.invoke("glMultiTexCoord2fv"), dIPV);
-        glMultiTexCoord2i = downcallSafe(load.invoke("glMultiTexCoord2i"), dIIIV);
-        glMultiTexCoord2iv = downcallSafe(load.invoke("glMultiTexCoord2iv"), dIPV);
-        glMultiTexCoord2s = downcallSafe(load.invoke("glMultiTexCoord2s"), dISSV);
-        glMultiTexCoord2sv = downcallSafe(load.invoke("glMultiTexCoord2sv"), dIPV);
-        glMultiTexCoord3d = downcallSafe(load.invoke("glMultiTexCoord3d"), dIDDDV);
-        glMultiTexCoord3dv = downcallSafe(load.invoke("glMultiTexCoord3dv"), dIPV);
-        glMultiTexCoord3f = downcallSafe(load.invoke("glMultiTexCoord3f"), dIFFFV);
-        glMultiTexCoord3fv = downcallSafe(load.invoke("glMultiTexCoord3fv"), dIPV);
-        glMultiTexCoord3i = downcallSafe(load.invoke("glMultiTexCoord3i"), dIIIIV);
-        glMultiTexCoord3iv = downcallSafe(load.invoke("glMultiTexCoord3iv"), dIPV);
-        glMultiTexCoord3s = downcallSafe(load.invoke("glMultiTexCoord3s"), dISSSV);
-        glMultiTexCoord3sv = downcallSafe(load.invoke("glMultiTexCoord3sv"), dIPV);
-        glMultiTexCoord4d = downcallSafe(load.invoke("glMultiTexCoord4d"), dIDDDDV);
-        glMultiTexCoord4dv = downcallSafe(load.invoke("glMultiTexCoord4dv"), dIPV);
-        glMultiTexCoord4f = downcallSafe(load.invoke("glMultiTexCoord4f"), dIFFFFV);
-        glMultiTexCoord4fv = downcallSafe(load.invoke("glMultiTexCoord4fv"), dIPV);
-        glMultiTexCoord4i = downcallSafe(load.invoke("glMultiTexCoord4i"), dIIIIIV);
-        glMultiTexCoord4iv = downcallSafe(load.invoke("glMultiTexCoord4iv"), dIPV);
-        glMultiTexCoord4s = downcallSafe(load.invoke("glMultiTexCoord4s"), dISSSSV);
-        glMultiTexCoord4sv = downcallSafe(load.invoke("glMultiTexCoord4sv"), dIPV);
+        glClientActiveTexture = load.invoke("glClientActiveTexture", IV);
+        glLoadTransposeMatrixd = load.invoke("glLoadTransposeMatrixd", PV);
+        glLoadTransposeMatrixf = load.invoke("glLoadTransposeMatrixf", PV);
+        glMultTransposeMatrixd = load.invoke("glMultTransposeMatrixd", PV);
+        glMultTransposeMatrixf = load.invoke("glMultTransposeMatrixf", PV);
+        glMultiTexCoord1d = load.invoke("glMultiTexCoord1d", IDV);
+        glMultiTexCoord1dv = load.invoke("glMultiTexCoord1dv", IPV);
+        glMultiTexCoord1f = load.invoke("glMultiTexCoord1f", IFV);
+        glMultiTexCoord1fv = load.invoke("glMultiTexCoord1fv", IPV);
+        glMultiTexCoord1i = load.invoke("glMultiTexCoord1i", IIV);
+        glMultiTexCoord1iv = load.invoke("glMultiTexCoord1iv", IPV);
+        glMultiTexCoord1s = load.invoke("glMultiTexCoord1s", ISV);
+        glMultiTexCoord1sv = load.invoke("glMultiTexCoord1sv", IPV);
+        glMultiTexCoord2d = load.invoke("glMultiTexCoord2d", IDDV);
+        glMultiTexCoord2dv = load.invoke("glMultiTexCoord2dv", IPV);
+        glMultiTexCoord2f = load.invoke("glMultiTexCoord2f", IFFV);
+        glMultiTexCoord2fv = load.invoke("glMultiTexCoord2fv", IPV);
+        glMultiTexCoord2i = load.invoke("glMultiTexCoord2i", IIIV);
+        glMultiTexCoord2iv = load.invoke("glMultiTexCoord2iv", IPV);
+        glMultiTexCoord2s = load.invoke("glMultiTexCoord2s", ISSV);
+        glMultiTexCoord2sv = load.invoke("glMultiTexCoord2sv", IPV);
+        glMultiTexCoord3d = load.invoke("glMultiTexCoord3d", IDDDV);
+        glMultiTexCoord3dv = load.invoke("glMultiTexCoord3dv", IPV);
+        glMultiTexCoord3f = load.invoke("glMultiTexCoord3f", IFFFV);
+        glMultiTexCoord3fv = load.invoke("glMultiTexCoord3fv", IPV);
+        glMultiTexCoord3i = load.invoke("glMultiTexCoord3i", IIIIV);
+        glMultiTexCoord3iv = load.invoke("glMultiTexCoord3iv", IPV);
+        glMultiTexCoord3s = load.invoke("glMultiTexCoord3s", ISSSV);
+        glMultiTexCoord3sv = load.invoke("glMultiTexCoord3sv", IPV);
+        glMultiTexCoord4d = load.invoke("glMultiTexCoord4d", IDDDDV);
+        glMultiTexCoord4dv = load.invoke("glMultiTexCoord4dv", IPV);
+        glMultiTexCoord4f = load.invoke("glMultiTexCoord4f", IFFFFV);
+        glMultiTexCoord4fv = load.invoke("glMultiTexCoord4fv", IPV);
+        glMultiTexCoord4i = load.invoke("glMultiTexCoord4i", IIIIIV);
+        glMultiTexCoord4iv = load.invoke("glMultiTexCoord4iv", IPV);
+        glMultiTexCoord4s = load.invoke("glMultiTexCoord4s", ISSSSV);
+        glMultiTexCoord4sv = load.invoke("glMultiTexCoord4sv", IPV);
     }
 
     public static void clientActiveTexture(int texture) {

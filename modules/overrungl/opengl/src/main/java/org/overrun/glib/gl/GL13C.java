@@ -29,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.foreign.Addressable;
 import java.lang.invoke.MethodHandle;
 
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -51,15 +52,15 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     static void load(GLLoadFunc load) {
-        glActiveTexture = downcallSafe(load.invoke("glActiveTexture"), dIV);
-        glCompressedTexImage1D = downcallSafe(load.invoke("glCompressedTexImage1D"), dIIIIIIPV);
-        glCompressedTexImage2D = downcallSafe(load.invoke("glCompressedTexImage2D"), dIIIIIIIPV);
-        glCompressedTexImage3D = downcallSafe(load.invoke("glCompressedTexImage3D"), dIIIIIIIIPV);
-        glCompressedTexSubImage1D = downcallSafe(load.invoke("glCompressedTexSubImage1D"), dIIIIIIPV);
-        glCompressedTexSubImage2D = downcallSafe(load.invoke("glCompressedTexSubImage2D"), dIIIIIIIIPV);
-        glCompressedTexSubImage3D = downcallSafe(load.invoke("glCompressedTexSubImage3D"), dIIIIIIIIIIPV);
-        glGetCompressedTexImage = downcallSafe(load.invoke("glGetCompressedTexImage"), dIIPV);
-        glSampleCoverage = downcallSafe(load.invoke("glSampleCoverage"), dFZV);
+        glActiveTexture = load.invoke("glActiveTexture", IV);
+        glCompressedTexImage1D = load.invoke("glCompressedTexImage1D", IIIIIIPV);
+        glCompressedTexImage2D = load.invoke("glCompressedTexImage2D", IIIIIIIPV);
+        glCompressedTexImage3D = load.invoke("glCompressedTexImage3D", IIIIIIIIPV);
+        glCompressedTexSubImage1D = load.invoke("glCompressedTexSubImage1D", IIIIIIPV);
+        glCompressedTexSubImage2D = load.invoke("glCompressedTexSubImage2D", IIIIIIIIPV);
+        glCompressedTexSubImage3D = load.invoke("glCompressedTexSubImage3D", IIIIIIIIIIPV);
+        glGetCompressedTexImage = load.invoke("glGetCompressedTexImage", IIPV);
+        glSampleCoverage = load.invoke("glSampleCoverage", FZV);
     }
 
     public static void activeTexture(int texture) {

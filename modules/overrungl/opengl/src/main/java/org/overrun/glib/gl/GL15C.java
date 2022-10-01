@@ -33,6 +33,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -55,25 +56,25 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     static void load(GLLoadFunc load) {
-        glBeginQuery = downcallSafe(load.invoke("glBeginQuery"), dIIV);
-        glBindBuffer = downcallSafe(load.invoke("glBindBuffer"), dIIV);
-        glBufferData = downcallSafe(load.invoke("glBufferData"), dIJPIV);
-        glBufferSubData = downcallSafe(load.invoke("glBufferSubData"), dIJJPV);
-        glDeleteBuffers = downcallSafe(load.invoke("glDeleteBuffers"), dIPV);
-        glDeleteQueries = downcallSafe(load.invoke("glDeleteQueries"), dIPV);
-        glEndQuery = downcallSafe(load.invoke("glEndQuery"), dIV);
-        glGenBuffers = downcallSafe(load.invoke("glGenBuffers"), dIPV);
-        glGenQueries = downcallSafe(load.invoke("glGenQueries"), dIPV);
-        glGetBufferParameteriv = downcallSafe(load.invoke("glGetBufferParameteriv"), dIIPV);
-        glGetBufferPointerv = downcallSafe(load.invoke("glGetBufferPointerv"), dIIPV);
-        glGetBufferSubData = downcallSafe(load.invoke("glGetBufferSubData"), dIJJPV);
-        glGetQueryObjectiv = downcallSafe(load.invoke("glGetQueryObjectiv"), dIIPV);
-        glGetQueryObjectuiv = downcallSafe(load.invoke("glGetQueryObjectuiv"), dIIPV);
-        glGetQueryiv = downcallSafe(load.invoke("glGetQueryiv"), dIIPV);
-        glIsBuffer = downcallSafe(load.invoke("glIsBuffer"), dIZ);
-        glIsQuery = downcallSafe(load.invoke("glIsQuery"), dIZ);
-        glMapBuffer = downcallSafe(load.invoke("glMapBuffer"), dIIP);
-        glUnmapBuffer = downcallSafe(load.invoke("glUnmapBuffer"), dIZ);
+        glBeginQuery = load.invoke("glBeginQuery", IIV);
+        glBindBuffer = load.invoke("glBindBuffer", IIV);
+        glBufferData = load.invoke("glBufferData", IJPIV);
+        glBufferSubData = load.invoke("glBufferSubData", IJJPV);
+        glDeleteBuffers = load.invoke("glDeleteBuffers", IPV);
+        glDeleteQueries = load.invoke("glDeleteQueries", IPV);
+        glEndQuery = load.invoke("glEndQuery", IV);
+        glGenBuffers = load.invoke("glGenBuffers", IPV);
+        glGenQueries = load.invoke("glGenQueries", IPV);
+        glGetBufferParameteriv = load.invoke("glGetBufferParameteriv", IIPV);
+        glGetBufferPointerv = load.invoke("glGetBufferPointerv", IIPV);
+        glGetBufferSubData = load.invoke("glGetBufferSubData", IJJPV);
+        glGetQueryObjectiv = load.invoke("glGetQueryObjectiv", IIPV);
+        glGetQueryObjectuiv = load.invoke("glGetQueryObjectuiv", IIPV);
+        glGetQueryiv = load.invoke("glGetQueryiv", IIPV);
+        glIsBuffer = load.invoke("glIsBuffer", IZ);
+        glIsQuery = load.invoke("glIsQuery", IZ);
+        glMapBuffer = load.invoke("glMapBuffer", IIP);
+        glUnmapBuffer = load.invoke("glUnmapBuffer", IZ);
     }
 
     public static void beginQuery(int target, int id) {

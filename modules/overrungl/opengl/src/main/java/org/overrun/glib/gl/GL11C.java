@@ -33,6 +33,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -55,20 +56,20 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     static void load(GLLoadFunc load) {
-        glBindTexture = downcallSafe(load.invoke("glBindTexture"), dIIV);
-        glCopyTexImage1D = downcallSafe(load.invoke("glCopyTexImage1D"), dIIIIIIIV);
-        glCopyTexImage2D = downcallSafe(load.invoke("glCopyTexImage2D"), dIIIIIIIIV);
-        glCopyTexSubImage1D = downcallSafe(load.invoke("glCopyTexSubImage1D"), dIIIIIIV);
-        glCopyTexSubImage2D = downcallSafe(load.invoke("glCopyTexSubImage2D"), dIIIIIIIIV);
-        glDeleteTextures = downcallSafe(load.invoke("glDeleteTextures"), dIPV);
-        glDrawArrays = downcallSafe(load.invoke("glDrawArrays"), dIIIV);
-        glDrawElements = downcallSafe(load.invoke("glDrawElements"), dIIIPV);
-        glGenTextures = downcallSafe(load.invoke("glGenTextures"), dIPV);
-        glGetPointerv = downcallSafe(load.invoke("glGetPointerv"), dIPV);
-        glIsTexture = downcallSafe(load.invoke("glIsTexture"), dIZ);
-        glPolygonOffset = downcallSafe(load.invoke("glPolygonOffset"), dFFV);
-        glTexSubImage1D = downcallSafe(load.invoke("glTexSubImage1D"), dIIIIIIPV);
-        glTexSubImage2D = downcallSafe(load.invoke("glTexSubImage2D"), dIIIIIIIIPV);
+        glBindTexture = load.invoke("glBindTexture", IIV);
+        glCopyTexImage1D = load.invoke("glCopyTexImage1D", IIIIIIIV);
+        glCopyTexImage2D = load.invoke("glCopyTexImage2D", IIIIIIIIV);
+        glCopyTexSubImage1D = load.invoke("glCopyTexSubImage1D", IIIIIIV);
+        glCopyTexSubImage2D = load.invoke("glCopyTexSubImage2D", IIIIIIIIV);
+        glDeleteTextures = load.invoke("glDeleteTextures", IPV);
+        glDrawArrays = load.invoke("glDrawArrays", IIIV);
+        glDrawElements = load.invoke("glDrawElements", IIIPV);
+        glGenTextures = load.invoke("glGenTextures", IPV);
+        glGetPointerv = load.invoke("glGetPointerv", IPV);
+        glIsTexture = load.invoke("glIsTexture", IZ);
+        glPolygonOffset = load.invoke("glPolygonOffset", FFV);
+        glTexSubImage1D = load.invoke("glTexSubImage1D", IIIIIIPV);
+        glTexSubImage2D = load.invoke("glTexSubImage2D", IIIIIIIIPV);
     }
 
     public static void bindTexture(int target, int texture) {

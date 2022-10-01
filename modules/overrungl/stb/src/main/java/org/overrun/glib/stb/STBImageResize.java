@@ -28,6 +28,7 @@ import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
+import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.stb.Handles.*;
@@ -39,8 +40,27 @@ import static org.overrun.glib.stb.Handles.*;
  * @since 0.1.0
  */
 public class STBImageResize {
+    private static MethodHandle
+        stbir_resize, stbir_resize_float, stbir_resize_float_generic, stbir_resize_region, stbir_resize_subpixel,
+        stbir_resize_uint16_generic, stbir_resize_uint8, stbir_resize_uint8_generic, stbir_resize_uint8_srgb,
+        stbir_resize_uint8_srgb_edgemode;
+
     static {
+        initialize();
         create();
+    }
+
+    private static void create() {
+        stbir_resize = downcallI("stbir_resize", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_float = downcallI("stbir_resize_float", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+        stbir_resize_float_generic = downcallI("stbir_resize_float_generic", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_region = downcallI("stbir_resize_region", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT);
+        stbir_resize_subpixel = downcallI("stbir_resize_subpixel", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT);
+        stbir_resize_uint16_generic = downcallI("stbir_resize_uint16_generic", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_uint8 = downcallI("stbir_resize_uint8", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+        stbir_resize_uint8_generic = downcallI("stbir_resize_uint8_generic", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
+        stbir_resize_uint8_srgb = downcallI("stbir_resize_uint8_srgb", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
+        stbir_resize_uint8_srgb_edgemode = downcallI("stbir_resize_uint8_srgb_edgemode", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT);
     }
 
     protected STBImageResize() {

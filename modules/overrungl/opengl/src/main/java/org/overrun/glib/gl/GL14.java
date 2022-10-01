@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -52,44 +53,44 @@ public final class GL14 extends GL14C {
 
     static void load(GLLoadFunc load) {
         if (!Ver14) return;
-        glFogCoordPointer = downcallSafe(load.invoke("glFogCoordPointer"), dIIPV);
-        glFogCoordd = downcallSafe(load.invoke("glFogCoordd"), dDV);
-        glFogCoorddv = downcallSafe(load.invoke("glFogCoorddv"), dPV);
-        glFogCoordf = downcallSafe(load.invoke("glFogCoordf"), dFV);
-        glFogCoordfv = downcallSafe(load.invoke("glFogCoordfv"), dPV);
-        glSecondaryColor3b = downcallSafe(load.invoke("glSecondaryColor3b"), dBBBV);
-        glSecondaryColor3bv = downcallSafe(load.invoke("glSecondaryColor3bv"), dPV);
-        glSecondaryColor3d = downcallSafe(load.invoke("glSecondaryColor3d"), dDDDV);
-        glSecondaryColor3dv = downcallSafe(load.invoke("glSecondaryColor3dv"), dPV);
-        glSecondaryColor3f = downcallSafe(load.invoke("glSecondaryColor3f"), dFFFV);
-        glSecondaryColor3fv = downcallSafe(load.invoke("glSecondaryColor3fv"), dPV);
-        glSecondaryColor3i = downcallSafe(load.invoke("glSecondaryColor3i"), dIIIV);
-        glSecondaryColor3iv = downcallSafe(load.invoke("glSecondaryColor3iv"), dPV);
-        glSecondaryColor3s = downcallSafe(load.invoke("glSecondaryColor3s"), dSSSV);
-        glSecondaryColor3sv = downcallSafe(load.invoke("glSecondaryColor3sv"), dPV);
-        glSecondaryColor3ub = downcallSafe(load.invoke("glSecondaryColor3ub"), dBBBV);
-        glSecondaryColor3ubv = downcallSafe(load.invoke("glSecondaryColor3ubv"), dPV);
-        glSecondaryColor3ui = downcallSafe(load.invoke("glSecondaryColor3ui"), dIIIV);
-        glSecondaryColor3uiv = downcallSafe(load.invoke("glSecondaryColor3uiv"), dPV);
-        glSecondaryColor3us = downcallSafe(load.invoke("glSecondaryColor3us"), dSSSV);
-        glSecondaryColor3usv = downcallSafe(load.invoke("glSecondaryColor3usv"), dPV);
-        glSecondaryColorPointer = downcallSafe(load.invoke("glSecondaryColorPointer"), dIIIPV);
-        glWindowPos2d = downcallSafe(load.invoke("glWindowPos2d"), dDDV);
-        glWindowPos2dv = downcallSafe(load.invoke("glWindowPos2dv"), dPV);
-        glWindowPos2f = downcallSafe(load.invoke("glWindowPos2f"), dFFV);
-        glWindowPos2fv = downcallSafe(load.invoke("glWindowPos2fv"), dPV);
-        glWindowPos2i = downcallSafe(load.invoke("glWindowPos2i"), dIIV);
-        glWindowPos2iv = downcallSafe(load.invoke("glWindowPos2iv"), dPV);
-        glWindowPos2s = downcallSafe(load.invoke("glWindowPos2s"), dSSV);
-        glWindowPos2sv = downcallSafe(load.invoke("glWindowPos2sv"), dPV);
-        glWindowPos3d = downcallSafe(load.invoke("glWindowPos3d"), dDDDV);
-        glWindowPos3dv = downcallSafe(load.invoke("glWindowPos3dv"), dPV);
-        glWindowPos3f = downcallSafe(load.invoke("glWindowPos3f"), dFFFV);
-        glWindowPos3fv = downcallSafe(load.invoke("glWindowPos3fv"), dPV);
-        glWindowPos3i = downcallSafe(load.invoke("glWindowPos3i"), dIIIV);
-        glWindowPos3iv = downcallSafe(load.invoke("glWindowPos3iv"), dPV);
-        glWindowPos3s = downcallSafe(load.invoke("glWindowPos3s"), dSSSV);
-        glWindowPos3sv = downcallSafe(load.invoke("glWindowPos3sv"), dPV);
+        glFogCoordPointer = load.invoke("glFogCoordPointer", IIPV);
+        glFogCoordd = load.invoke("glFogCoordd", DV);
+        glFogCoorddv = load.invoke("glFogCoorddv", PV);
+        glFogCoordf = load.invoke("glFogCoordf", FV);
+        glFogCoordfv = load.invoke("glFogCoordfv", PV);
+        glSecondaryColor3b = load.invoke("glSecondaryColor3b", BBBV);
+        glSecondaryColor3bv = load.invoke("glSecondaryColor3bv", PV);
+        glSecondaryColor3d = load.invoke("glSecondaryColor3d", DDDV);
+        glSecondaryColor3dv = load.invoke("glSecondaryColor3dv", PV);
+        glSecondaryColor3f = load.invoke("glSecondaryColor3f", FFFV);
+        glSecondaryColor3fv = load.invoke("glSecondaryColor3fv", PV);
+        glSecondaryColor3i = load.invoke("glSecondaryColor3i", IIIV);
+        glSecondaryColor3iv = load.invoke("glSecondaryColor3iv", PV);
+        glSecondaryColor3s = load.invoke("glSecondaryColor3s", SSSV);
+        glSecondaryColor3sv = load.invoke("glSecondaryColor3sv", PV);
+        glSecondaryColor3ub = load.invoke("glSecondaryColor3ub", BBBV);
+        glSecondaryColor3ubv = load.invoke("glSecondaryColor3ubv", PV);
+        glSecondaryColor3ui = load.invoke("glSecondaryColor3ui", IIIV);
+        glSecondaryColor3uiv = load.invoke("glSecondaryColor3uiv", PV);
+        glSecondaryColor3us = load.invoke("glSecondaryColor3us", SSSV);
+        glSecondaryColor3usv = load.invoke("glSecondaryColor3usv", PV);
+        glSecondaryColorPointer = load.invoke("glSecondaryColorPointer", IIIPV);
+        glWindowPos2d = load.invoke("glWindowPos2d", DDV);
+        glWindowPos2dv = load.invoke("glWindowPos2dv", PV);
+        glWindowPos2f = load.invoke("glWindowPos2f", FFV);
+        glWindowPos2fv = load.invoke("glWindowPos2fv", PV);
+        glWindowPos2i = load.invoke("glWindowPos2i", IIV);
+        glWindowPos2iv = load.invoke("glWindowPos2iv", PV);
+        glWindowPos2s = load.invoke("glWindowPos2s", SSV);
+        glWindowPos2sv = load.invoke("glWindowPos2sv", PV);
+        glWindowPos3d = load.invoke("glWindowPos3d", DDDV);
+        glWindowPos3dv = load.invoke("glWindowPos3dv", PV);
+        glWindowPos3f = load.invoke("glWindowPos3f", FFFV);
+        glWindowPos3fv = load.invoke("glWindowPos3fv", PV);
+        glWindowPos3i = load.invoke("glWindowPos3i", IIIV);
+        glWindowPos3iv = load.invoke("glWindowPos3iv", PV);
+        glWindowPos3s = load.invoke("glWindowPos3s", SSSV);
+        glWindowPos3sv = load.invoke("glWindowPos3sv", PV);
     }
 
     public static void fogCoordPointer(int type, int stride, Addressable pointer) {

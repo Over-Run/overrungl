@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -48,22 +49,22 @@ public final class GL11 extends GL11C {
 
     static void load(GLLoadFunc load) {
         if (!Ver11) return;
-        glAreTexturesResident = downcallSafe(load.invoke("glAreTexturesResident"), dIPPZ);
-        glArrayElement = downcallSafe(load.invoke("glArrayElement"), dIV);
-        glColorPointer = downcallSafe(load.invoke("glColorPointer"), dIIIPV);
-        glDisableClientState = downcallSafe(load.invoke("glDisableClientState"), dIV);
-        glEdgeFlagPointer = downcallSafe(load.invoke("glEdgeFlagPointer"), dIPV);
-        glEnableClientState = downcallSafe(load.invoke("glEnableClientState"), dIV);
-        glIndexPointer = downcallSafe(load.invoke("glIndexPointer"), dIIPV);
-        glIndexub = downcallSafe(load.invoke("glIndexub"), dBV);
-        glIndexubv = downcallSafe(load.invoke("glIndexubv"), dPV);
-        glInterleavedArrays = downcallSafe(load.invoke("glInterleavedArrays"), dIIPV);
-        glNormalPointer = downcallSafe(load.invoke("glNormalPointer"), dIIPV);
-        glPopClientAttrib = downcallSafe(load.invoke("glPopClientAttrib"), dV);
-        glPrioritizeTextures = downcallSafe(load.invoke("glPrioritizeTextures"), dIPPV);
-        glPushClientAttrib = downcallSafe(load.invoke("glPushClientAttrib"), dIV);
-        glTexCoordPointer = downcallSafe(load.invoke("glTexCoordPointer"), dIIIPV);
-        glVertexPointer = downcallSafe(load.invoke("glVertexPointer"), dIIIPV);
+        glAreTexturesResident = load.invoke("glAreTexturesResident", IPPZ);
+        glArrayElement = load.invoke("glArrayElement", IV);
+        glColorPointer = load.invoke("glColorPointer", IIIPV);
+        glDisableClientState = load.invoke("glDisableClientState", IV);
+        glEdgeFlagPointer = load.invoke("glEdgeFlagPointer", IPV);
+        glEnableClientState = load.invoke("glEnableClientState", IV);
+        glIndexPointer = load.invoke("glIndexPointer", IIPV);
+        glIndexub = load.invoke("glIndexub", BV);
+        glIndexubv = load.invoke("glIndexubv", PV);
+        glInterleavedArrays = load.invoke("glInterleavedArrays", IIPV);
+        glNormalPointer = load.invoke("glNormalPointer", IIPV);
+        glPopClientAttrib = load.invoke("glPopClientAttrib", V);
+        glPrioritizeTextures = load.invoke("glPrioritizeTextures", IPPV);
+        glPushClientAttrib = load.invoke("glPushClientAttrib", IV);
+        glTexCoordPointer = load.invoke("glTexCoordPointer", IIIPV);
+        glVertexPointer = load.invoke("glVertexPointer", IIIPV);
     }
 
     public static boolean areTexturesResident(int n, Addressable textures, Addressable residences) {

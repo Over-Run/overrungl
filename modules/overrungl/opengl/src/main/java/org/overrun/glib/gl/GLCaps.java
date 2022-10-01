@@ -26,7 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.FunctionDescriptors;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -42,147 +42,6 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public class GLCaps {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
-
-    // region Function descriptors
-    static final FunctionDescriptor dI = FunctionDescriptor.of(JAVA_INT);
-    static final FunctionDescriptor dV = FunctionDescriptor.ofVoid();
-    static final FunctionDescriptor dBV = FunctionDescriptor.ofVoid(JAVA_BYTE);
-    static final FunctionDescriptor dDV = FunctionDescriptor.ofVoid(JAVA_DOUBLE);
-    static final FunctionDescriptor dFV = FunctionDescriptor.ofVoid(JAVA_FLOAT);
-    static final FunctionDescriptor dII = ofDescriptor("II");
-    static final FunctionDescriptor dIP = ofDescriptor("IP");
-    static final FunctionDescriptor dIV = FunctionDescriptor.ofVoid(JAVA_INT);
-    static final FunctionDescriptor dIZ = ofDescriptor("IZ");
-    static final FunctionDescriptor dPV = FunctionDescriptor.ofVoid(ADDRESS);
-    static final FunctionDescriptor dSV = FunctionDescriptor.ofVoid(JAVA_SHORT);
-    static final FunctionDescriptor dPZ = ofDescriptor("PZ");
-    static final FunctionDescriptor dZV = FunctionDescriptor.ofVoid(JAVA_BOOLEAN);
-    static final FunctionDescriptor dDDV = ofDescriptor("DDV");
-    static final FunctionDescriptor dFFV = ofDescriptor("FFV");
-    static final FunctionDescriptor dFZV = ofDescriptor("FZV");
-    static final FunctionDescriptor dIDV = ofDescriptor("IDV");
-    static final FunctionDescriptor dIFV = ofDescriptor("IFV");
-    static final FunctionDescriptor dIIP = ofDescriptor("IIP");
-    static final FunctionDescriptor dIIV = ofDescriptor("IIV");
-    static final FunctionDescriptor dIIZ = ofDescriptor("IIZ");
-    static final FunctionDescriptor dIPI = ofDescriptor("IPI");
-    static final FunctionDescriptor dIPV = ofDescriptor("IPV");
-    static final FunctionDescriptor dISV = ofDescriptor("ISV");
-    static final FunctionDescriptor dPPV = ofDescriptor("PPV");
-    static final FunctionDescriptor dSSV = ofDescriptor("SSV");
-    static final FunctionDescriptor dBBBV = ofDescriptor("BBBV");
-    static final FunctionDescriptor dDDDV = ofDescriptor("DDDV");
-    static final FunctionDescriptor dFFFV = ofDescriptor("FFFV");
-    static final FunctionDescriptor dIDDV = ofDescriptor("IDDV");
-    static final FunctionDescriptor dIFFV = ofDescriptor("IFFV");
-    static final FunctionDescriptor dIIDV = ofDescriptor("IIDV");
-    static final FunctionDescriptor dIIFV = ofDescriptor("IIFV");
-    static final FunctionDescriptor dIIIV = ofDescriptor("IIIV");
-    static final FunctionDescriptor dIIPI = ofDescriptor("IIPI");
-    static final FunctionDescriptor dIIPV = ofDescriptor("IIPV");
-    static final FunctionDescriptor dIJJV = ofDescriptor("IJJV");
-    static final FunctionDescriptor dIPPV = ofDescriptor("IPPV");
-    static final FunctionDescriptor dIPPZ = ofDescriptor("IPPZ");
-    static final FunctionDescriptor dISSV = ofDescriptor("ISSV");
-    static final FunctionDescriptor dPIJI = ofDescriptor("PIJI");
-    static final FunctionDescriptor dPIJV = ofDescriptor("PIJV");
-    static final FunctionDescriptor dSSSV = ofDescriptor("SSSV");
-    static final FunctionDescriptor dBBBBV = ofDescriptor("BBBBV");
-    static final FunctionDescriptor dDDDDV = ofDescriptor("DDDDV");
-    static final FunctionDescriptor dFFFFV = ofDescriptor("FFFFV");
-    static final FunctionDescriptor dIDDDV = ofDescriptor("IDDDV");
-    static final FunctionDescriptor dIFFFV = ofDescriptor("IFFFV");
-    static final FunctionDescriptor dIIDDV = ofDescriptor("IIDDV");
-    static final FunctionDescriptor dIIFFV = ofDescriptor("IIFFV");
-    static final FunctionDescriptor dIIFIV = ofDescriptor("IIFIV");
-    static final FunctionDescriptor dIIIIV = ofDescriptor("IIIIV");
-    static final FunctionDescriptor dIIIPV = ofDescriptor("IIIPV");
-    static final FunctionDescriptor dIIPIV = ofDescriptor("IIPIV");
-    static final FunctionDescriptor dIIPPV = ofDescriptor("IIPPV");
-    static final FunctionDescriptor dIIZIV = ofDescriptor("IIZIV");
-    static final FunctionDescriptor dIIZPV = ofDescriptor("IIZPV");
-    static final FunctionDescriptor dIJJIP = ofDescriptor("IJJIV");
-    static final FunctionDescriptor dIJJPV = ofDescriptor("IJJPV");
-    static final FunctionDescriptor dIJPIV = ofDescriptor("IJPIV");
-    static final FunctionDescriptor dIPPIV = ofDescriptor("IPPIV");
-    static final FunctionDescriptor dISSSV = ofDescriptor("ISSSV");
-    static final FunctionDescriptor dSSSSV = ofDescriptor("SSSSV");
-    static final FunctionDescriptor dZZZZV = ofDescriptor("ZZZZV");
-    static final FunctionDescriptor dIBBBBV = ofDescriptor("IBBBBV");
-    static final FunctionDescriptor dIDDDDV = ofDescriptor("IDDDDV");
-    static final FunctionDescriptor dIFFFFV = ofDescriptor("IFFFFV");
-    static final FunctionDescriptor dIIDDDV = ofDescriptor("IIDDDV");
-    static final FunctionDescriptor dIIFFFV = ofDescriptor("IIFFFV");
-    static final FunctionDescriptor dIIIIIV = ofDescriptor("IIIIIV");
-    static final FunctionDescriptor dIIIIPV = ofDescriptor("IIIIPV");
-    static final FunctionDescriptor dIIIJJV = ofDescriptor("IIIJJV");
-    static final FunctionDescriptor dIIIPIV = ofDescriptor("IIIPIV");
-    static final FunctionDescriptor dIIIPPV = ofDescriptor("IIIPPV");
-    static final FunctionDescriptor dIIIZPV = ofDescriptor("IIIZPV");
-    static final FunctionDescriptor dIIJJJV = ofDescriptor("IIJJJV");
-    static final FunctionDescriptor dIIPIPV = ofDescriptor("IIPIPV");
-    static final FunctionDescriptor dIIPPPV = ofDescriptor("IIPPPV");
-    static final FunctionDescriptor dIPIPIV = ofDescriptor("IPIPIV");
-    static final FunctionDescriptor dISSSSV = ofDescriptor("ISSSSV");
-    static final FunctionDescriptor dIZZZZV = ofDescriptor("IZZZZV");
-    static final FunctionDescriptor dPIIPPV = ofDescriptor("PIIPPV");
-    static final FunctionDescriptor dDDDDDDV = ofDescriptor("DDDDDDV");
-    static final FunctionDescriptor dIDDIDDV = ofDescriptor("IDDIDDV");
-    static final FunctionDescriptor dIDDIIPV = ofDescriptor("IDDIIPV");
-    static final FunctionDescriptor dIFFIFFV = ofDescriptor("IFFIFFV");
-    static final FunctionDescriptor dIFFIIPV = ofDescriptor("IFFIIPV");
-    static final FunctionDescriptor dIIDDDDV = ofDescriptor("IIDDDDV");
-    static final FunctionDescriptor dIIFFFFV = ofDescriptor("IIFFFFV");
-    static final FunctionDescriptor dIIIIIIV = ofDescriptor("IIIIIIV");
-    static final FunctionDescriptor dIIIIIPV = ofDescriptor("IIIIIPV");
-    static final FunctionDescriptor dIIIIIZV = ofDescriptor("IIIIIZV");
-    static final FunctionDescriptor dIIIIPPV = ofDescriptor("IIIIPPV");
-    static final FunctionDescriptor dIIIPIIV = ofDescriptor("IIIPIIV");
-    static final FunctionDescriptor dIIIZIPV = ofDescriptor("IIIZIPV");
-    static final FunctionDescriptor dIPIPIPV = ofDescriptor("IPIPIPV");
-    static final FunctionDescriptor dIIFFFFPV = ofDescriptor("IIFFFFPV");
-    static final FunctionDescriptor dIIIIIIIV = ofDescriptor("IIIIIIIV");
-    static final FunctionDescriptor dIIIIIIPV = ofDescriptor("IIIIIIPV");
-    static final FunctionDescriptor dIIIIIIZV = ofDescriptor("IIIIIIZV");
-    static final FunctionDescriptor dIIIIIPIV = ofDescriptor("IIIIIPIV");
-    static final FunctionDescriptor dIIIPIIIV = ofDescriptor("IIIPIIIV");
-    static final FunctionDescriptor dIIIPPPPV = ofDescriptor("IIIPPPPV");
-    static final FunctionDescriptor dIIIZIIIV = ofDescriptor("IIIZIIIV");
-    static final FunctionDescriptor dIIIIIIIIV = ofDescriptor("IIIIIIIIV");
-    static final FunctionDescriptor dIIIIIIIPV = ofDescriptor("IIIIIIIPV");
-    static final FunctionDescriptor dIIIIIIIIIV = ofDescriptor("IIIIIIIIIV");
-    static final FunctionDescriptor dIIIIIIIIPV = ofDescriptor("IIIIIIIIPV");
-    static final FunctionDescriptor dIDDIIDDIIPV = ofDescriptor("IDDIIDDIIPV");
-    static final FunctionDescriptor dIFFIIFFIIPV = ofDescriptor("IFFIIFFIIPV");
-    static final FunctionDescriptor dIIIIIIIIIIV = ofDescriptor("IIIIIIIIIIV");
-    static final FunctionDescriptor dIIIIIIIIIIPV = ofDescriptor("IIIIIIIIIIPV");
-    // endregion
-
-    private static ValueLayout ofValue(char c) {
-        return switch (c) {
-            case 'B' -> JAVA_BYTE;
-            case 'S' -> JAVA_SHORT;
-            case 'I' -> JAVA_INT;
-            case 'J' -> JAVA_LONG;
-            case 'C' -> JAVA_CHAR;
-            case 'Z' -> JAVA_BOOLEAN;
-            case 'F' -> JAVA_FLOAT;
-            case 'D' -> JAVA_DOUBLE;
-            default -> ADDRESS;
-        };
-    }
-
-    private static FunctionDescriptor ofDescriptor(String str) {
-        final int len = str.length();
-        ValueLayout[] layouts = new ValueLayout[len - 1];
-        for (int i = 0; i < layouts.length; i++) {
-            layouts[i] = ofValue(str.charAt(i));
-        }
-        if (str.endsWith("V")) {
-            return FunctionDescriptor.ofVoid(layouts);
-        }
-        return FunctionDescriptor.of(ofValue(str.charAt(len - 1)), layouts);
-    }
 
     /**
      * The OpenGL version available status
@@ -214,8 +73,35 @@ public class GLCaps {
         return true;
     }
 
-    static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
-        return RuntimeHelper.downcallSafe(symbol, function);
+    /**
+     * Pack the version into an integer.
+     *
+     * @param major the major version
+     * @param minor the minor version
+     * @return the packed version
+     */
+    public static int makeVersion(int major, int minor) {
+        return major * 10000 + minor;
+    }
+
+    /**
+     * Gets the major version.
+     *
+     * @param version the packed version
+     * @return the major version
+     */
+    public static int versionMajor(int version) {
+        return version / 10000;
+    }
+
+    /**
+     * Gets the minor version.
+     *
+     * @param version the packed version
+     * @return the minor version
+     */
+    public static int versionMinor(int version) {
+        return version % 10000;
     }
 
     /**
@@ -238,7 +124,7 @@ public class GLCaps {
      * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public static int load(boolean forwardCompatible, GLLoadFunc load) {
-        GL10C.glGetString = downcallSafe(load.invoke("glGetString"), dIP);
+        GL10C.glGetString = load.invoke("glGetString", FunctionDescriptors.IP);
         if (GL10C.glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
 
@@ -259,6 +145,7 @@ public class GLCaps {
         GL40C.load(load);
         GL41C.load(load);
         GL42C.load(load);
+        GL43C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -278,7 +165,7 @@ public class GLCaps {
                                          MemorySegment outExts,
                                          MemorySegment outNumExtsI,
                                          MemorySegment outExtsI) {
-        if (version / 10000 < 3) {
+        if (versionMajor(version) < 3) {
             if (GL10C.glGetString == null) {
                 return false;
             }
@@ -307,7 +194,7 @@ public class GLCaps {
     }
 
     static boolean hasExtension(int version, String exts, int numExtsI, String[] extsI, String ext) {
-        if (version / 10000 < 3) {
+        if (versionMajor(version) < 3) {
             if (exts == null || ext == null) {
                 return false;
             }
@@ -375,10 +262,67 @@ public class GLCaps {
         Ver40 = (major == 4 && minor >= 0) || major > 4 || GL40C.isSupported();
         Ver41 = (major == 4 && minor >= 1) || major > 4 || GL41C.isSupported();
         Ver42 = (major == 4 && minor >= 2) || major > 4 || GL42C.isSupported();
-        Ver43 = (major == 4 && minor >= 3) || major > 4;
+        Ver43 = (major == 4 && minor >= 3) || major > 4 || GL43C.isSupported();
         Ver44 = (major == 4 && minor >= 4) || major > 4;
         Ver45 = (major == 4 && minor >= 5) || major > 4;
         Ver46 = (major == 4 && minor >= 6) || major > 4;
-        return major * 10000 + minor;
+        if (Ver46) {
+            return 40006;
+        }
+        if (Ver45) {
+            return 40005;
+        }
+        if (Ver44) {
+            return 40004;
+        }
+        if (Ver43) {
+            return 40003;
+        }
+        if (Ver42) {
+            return 40002;
+        }
+        if (Ver41) {
+            return 40001;
+        }
+        if (Ver40) {
+            return 40000;
+        }
+        if (Ver33) {
+            return 30003;
+        }
+        if (Ver32) {
+            return 30002;
+        }
+        if (Ver31) {
+            return 30001;
+        }
+        if (Ver30) {
+            return 30000;
+        }
+        if (Ver21) {
+            return 20001;
+        }
+        if (Ver20) {
+            return 20000;
+        }
+        if (Ver15) {
+            return 10005;
+        }
+        if (Ver14) {
+            return 10004;
+        }
+        if (Ver13) {
+            return 10003;
+        }
+        if (Ver12) {
+            return 10002;
+        }
+        if (Ver11) {
+            return 10001;
+        }
+        if (Ver10) {
+            return 10000;
+        }
+        return makeVersion(major, minor);
     }
 }

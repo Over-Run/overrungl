@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
+import static org.overrun.glib.FunctionDescriptors.IIZPV;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -51,12 +52,12 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     static void load(GLLoadFunc load) {
-        glUniformMatrix2x3fv = downcallSafe(load.invoke("glUniformMatrix2x3fv"), dIIZPV);
-        glUniformMatrix2x4fv = downcallSafe(load.invoke("glUniformMatrix2x4fv"), dIIZPV);
-        glUniformMatrix3x2fv = downcallSafe(load.invoke("glUniformMatrix3x2fv"), dIIZPV);
-        glUniformMatrix3x4fv = downcallSafe(load.invoke("glUniformMatrix3x4fv"), dIIZPV);
-        glUniformMatrix4x2fv = downcallSafe(load.invoke("glUniformMatrix4x2fv"), dIIZPV);
-        glUniformMatrix4x3fv = downcallSafe(load.invoke("glUniformMatrix4x3fv"), dIIZPV);
+        glUniformMatrix2x3fv = load.invoke("glUniformMatrix2x3fv", IIZPV);
+        glUniformMatrix2x4fv = load.invoke("glUniformMatrix2x4fv", IIZPV);
+        glUniformMatrix3x2fv = load.invoke("glUniformMatrix3x2fv", IIZPV);
+        glUniformMatrix3x4fv = load.invoke("glUniformMatrix3x4fv", IIZPV);
+        glUniformMatrix4x2fv = load.invoke("glUniformMatrix4x2fv", IIZPV);
+        glUniformMatrix4x3fv = load.invoke("glUniformMatrix4x3fv", IIZPV);
     }
 
     public static void uniformMatrix2x3fv(int location, int count, boolean transpose, Addressable value) {

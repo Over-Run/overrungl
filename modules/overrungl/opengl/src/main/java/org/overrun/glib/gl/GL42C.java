@@ -32,6 +32,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -40,7 +41,7 @@ import static org.overrun.glib.gl.GLCaps.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL42C extends GL41C permits GL {
+public sealed class GL42C extends GL41C permits GL43C {
     @Nullable
     public static MethodHandle
         glBindImageTexture, glDrawArraysInstancedBaseInstance, glDrawElementsInstancedBaseInstance,
@@ -56,18 +57,18 @@ public sealed class GL42C extends GL41C permits GL {
     }
 
     static void load(GLLoadFunc load) {
-        glBindImageTexture = downcallSafe(load.invoke("glBindImageTexture"), dIIIZIIIV);
-        glDrawArraysInstancedBaseInstance = downcallSafe(load.invoke("glDrawArraysInstancedBaseInstance"), dIIIIIV);
-        glDrawElementsInstancedBaseInstance = downcallSafe(load.invoke("glDrawElementsInstancedBaseInstance"), dIIIPIIV);
-        glDrawElementsInstancedBaseVertexBaseInstance = downcallSafe(load.invoke("glDrawElementsInstancedBaseVertexBaseInstance"), dIIIPIIIV);
-        glDrawTransformFeedbackInstanced = downcallSafe(load.invoke("glDrawTransformFeedbackInstanced"), dIIIV);
-        glDrawTransformFeedbackStreamInstanced = downcallSafe(load.invoke("glDrawTransformFeedbackStreamInstanced"), dIIIIV);
-        glGetActiveAtomicCounterBufferiv = downcallSafe(load.invoke("glGetActiveAtomicCounterBufferiv"), dIIIPV);
-        glGetInternalformativ = downcallSafe(load.invoke("glGetInternalformativ"), dIIIIPV);
-        glMemoryBarrier = downcallSafe(load.invoke("glMemoryBarrier"), dIV);
-        glTexStorage1D = downcallSafe(load.invoke("glTexStorage1D"), dIIIIV);
-        glTexStorage2D = downcallSafe(load.invoke("glTexStorage2D"), dIIIIIV);
-        glTexStorage3D = downcallSafe(load.invoke("glTexStorage3D"), dIIIIIIV);
+        glBindImageTexture = load.invoke("glBindImageTexture", IIIZIIIV);
+        glDrawArraysInstancedBaseInstance = load.invoke("glDrawArraysInstancedBaseInstance", IIIIIV);
+        glDrawElementsInstancedBaseInstance = load.invoke("glDrawElementsInstancedBaseInstance", IIIPIIV);
+        glDrawElementsInstancedBaseVertexBaseInstance = load.invoke("glDrawElementsInstancedBaseVertexBaseInstance", IIIPIIIV);
+        glDrawTransformFeedbackInstanced = load.invoke("glDrawTransformFeedbackInstanced", IIIV);
+        glDrawTransformFeedbackStreamInstanced = load.invoke("glDrawTransformFeedbackStreamInstanced", IIIIV);
+        glGetActiveAtomicCounterBufferiv = load.invoke("glGetActiveAtomicCounterBufferiv", IIIPV);
+        glGetInternalformativ = load.invoke("glGetInternalformativ", IIIIPV);
+        glMemoryBarrier = load.invoke("glMemoryBarrier", IV);
+        glTexStorage1D = load.invoke("glTexStorage1D", IIIIV);
+        glTexStorage2D = load.invoke("glTexStorage2D", IIIIIV);
+        glTexStorage3D = load.invoke("glTexStorage3D", IIIIIIV);
     }
 
     public static void bindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {

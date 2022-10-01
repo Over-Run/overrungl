@@ -33,6 +33,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -70,52 +71,52 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     static void load(GLLoadFunc load) {
-        glBeginQueryIndexed = downcallSafe(load.invoke("glBeginQueryIndexed"), dIIIV);
-        glBindTransformFeedback = downcallSafe(load.invoke("glBindTransformFeedback"), dIIV);
-        glBlendEquationSeparatei = downcallSafe(load.invoke("glBlendEquationSeparatei"), dIIIV);
-        glBlendEquationi = downcallSafe(load.invoke("glBlendEquationi"), dIIV);
-        glBlendFuncSeparatei = downcallSafe(load.invoke("glBlendFuncSeparatei"), dIIIIIV);
-        glBlendFunci = downcallSafe(load.invoke("glBlendFunci"), dIIIV);
-        glDeleteTransformFeedbacks = downcallSafe(load.invoke("glDeleteTransformFeedbacks"), dIPV);
-        glDrawArraysIndirect = downcallSafe(load.invoke("glDrawArraysIndirect"), dIPV);
-        glDrawElementsIndirect = downcallSafe(load.invoke("glDrawElementsIndirect"), dIIPV);
-        glDrawTransformFeedback = downcallSafe(load.invoke("glDrawTransformFeedback"), dIIV);
-        glDrawTransformFeedbackStream = downcallSafe(load.invoke("glDrawTransformFeedbackStream"), dIIIV);
-        glEndQueryIndexed = downcallSafe(load.invoke("glEndQueryIndexed"), dIIV);
-        glGenTransformFeedbacks = downcallSafe(load.invoke("glGenTransformFeedbacks"), dIPV);
-        glGetActiveSubroutineName = downcallSafe(load.invoke("glGetActiveSubroutineName"), dIIIIPPV);
-        glGetActiveSubroutineUniformName = downcallSafe(load.invoke("glGetActiveSubroutineUniformName"), dIIIIPPV);
-        glGetActiveSubroutineUniformiv = downcallSafe(load.invoke("glGetActiveSubroutineUniformiv"), dIIIIPV);
-        glGetProgramStageiv = downcallSafe(load.invoke("glGetProgramStageiv"), dIIIPV);
-        glGetQueryIndexediv = downcallSafe(load.invoke("glGetQueryIndexediv"), dIIIPV);
-        glGetSubroutineIndex = downcallSafe(load.invoke("glGetSubroutineIndex"), dIIPI);
-        glGetSubroutineUniformLocation = downcallSafe(load.invoke("glGetSubroutineUniformLocation"), dIIPI);
-        glGetUniformSubroutineuiv = downcallSafe(load.invoke("glGetUniformSubroutineuiv"), dIIPV);
-        glGetUniformdv = downcallSafe(load.invoke("glGetUniformdv"), dIIPV);
-        glIsTransformFeedback = downcallSafe(load.invoke("glIsTransformFeedback"), dIZ);
-        glMinSampleShading = downcallSafe(load.invoke("glMinSampleShading"), dFV);
-        glPatchParameterfv = downcallSafe(load.invoke("glPatchParameterfv"), dIPV);
-        glPatchParameteri = downcallSafe(load.invoke("glPatchParameteri"), dIIV);
-        glPauseTransformFeedback = downcallSafe(load.invoke("glPauseTransformFeedback"), dV);
-        glResumeTransformFeedback = downcallSafe(load.invoke("glResumeTransformFeedback"), dV);
-        glUniform1d = downcallSafe(load.invoke("glUniform1d"), dIDV);
-        glUniform1dv = downcallSafe(load.invoke("glUniform1dv"), dIIPV);
-        glUniform2d = downcallSafe(load.invoke("glUniform2d"), dIDDV);
-        glUniform2dv = downcallSafe(load.invoke("glUniform2dv"), dIIPV);
-        glUniform3d = downcallSafe(load.invoke("glUniform3d"), dIDDDV);
-        glUniform3dv = downcallSafe(load.invoke("glUniform3dv"), dIIPV);
-        glUniform4d = downcallSafe(load.invoke("glUniform4d"), dIDDDDV);
-        glUniform4dv = downcallSafe(load.invoke("glUniform4dv"), dIIPV);
-        glUniformMatrix2dv = downcallSafe(load.invoke("glUniformMatrix2dv"), dIIZPV);
-        glUniformMatrix2x3dv = downcallSafe(load.invoke("glUniformMatrix2x3dv"), dIIZPV);
-        glUniformMatrix2x4dv = downcallSafe(load.invoke("glUniformMatrix2x4dv"), dIIZPV);
-        glUniformMatrix3dv = downcallSafe(load.invoke("glUniformMatrix3dv"), dIIZPV);
-        glUniformMatrix3x2dv = downcallSafe(load.invoke("glUniformMatrix3x2dv"), dIIZPV);
-        glUniformMatrix3x4dv = downcallSafe(load.invoke("glUniformMatrix3x4dv"), dIIZPV);
-        glUniformMatrix4dv = downcallSafe(load.invoke("glUniformMatrix4dv"), dIIZPV);
-        glUniformMatrix4x2dv = downcallSafe(load.invoke("glUniformMatrix4x2dv"), dIIZPV);
-        glUniformMatrix4x3dv = downcallSafe(load.invoke("glUniformMatrix4x3dv"), dIIZPV);
-        glUniformSubroutinesuiv = downcallSafe(load.invoke("glUniformSubroutinesuiv"), dIIPV);
+        glBeginQueryIndexed = load.invoke("glBeginQueryIndexed", IIIV);
+        glBindTransformFeedback = load.invoke("glBindTransformFeedback", IIV);
+        glBlendEquationSeparatei = load.invoke("glBlendEquationSeparatei", IIIV);
+        glBlendEquationi = load.invoke("glBlendEquationi", IIV);
+        glBlendFuncSeparatei = load.invoke("glBlendFuncSeparatei", IIIIIV);
+        glBlendFunci = load.invoke("glBlendFunci", IIIV);
+        glDeleteTransformFeedbacks = load.invoke("glDeleteTransformFeedbacks", IPV);
+        glDrawArraysIndirect = load.invoke("glDrawArraysIndirect", IPV);
+        glDrawElementsIndirect = load.invoke("glDrawElementsIndirect", IIPV);
+        glDrawTransformFeedback = load.invoke("glDrawTransformFeedback", IIV);
+        glDrawTransformFeedbackStream = load.invoke("glDrawTransformFeedbackStream", IIIV);
+        glEndQueryIndexed = load.invoke("glEndQueryIndexed", IIV);
+        glGenTransformFeedbacks = load.invoke("glGenTransformFeedbacks", IPV);
+        glGetActiveSubroutineName = load.invoke("glGetActiveSubroutineName", IIIIPPV);
+        glGetActiveSubroutineUniformName = load.invoke("glGetActiveSubroutineUniformName", IIIIPPV);
+        glGetActiveSubroutineUniformiv = load.invoke("glGetActiveSubroutineUniformiv", IIIIPV);
+        glGetProgramStageiv = load.invoke("glGetProgramStageiv", IIIPV);
+        glGetQueryIndexediv = load.invoke("glGetQueryIndexediv", IIIPV);
+        glGetSubroutineIndex = load.invoke("glGetSubroutineIndex", IIPI);
+        glGetSubroutineUniformLocation = load.invoke("glGetSubroutineUniformLocation", IIPI);
+        glGetUniformSubroutineuiv = load.invoke("glGetUniformSubroutineuiv", IIPV);
+        glGetUniformdv = load.invoke("glGetUniformdv", IIPV);
+        glIsTransformFeedback = load.invoke("glIsTransformFeedback", IZ);
+        glMinSampleShading = load.invoke("glMinSampleShading", FV);
+        glPatchParameterfv = load.invoke("glPatchParameterfv", IPV);
+        glPatchParameteri = load.invoke("glPatchParameteri", IIV);
+        glPauseTransformFeedback = load.invoke("glPauseTransformFeedback", V);
+        glResumeTransformFeedback = load.invoke("glResumeTransformFeedback", V);
+        glUniform1d = load.invoke("glUniform1d", IDV);
+        glUniform1dv = load.invoke("glUniform1dv", IIPV);
+        glUniform2d = load.invoke("glUniform2d", IDDV);
+        glUniform2dv = load.invoke("glUniform2dv", IIPV);
+        glUniform3d = load.invoke("glUniform3d", IDDDV);
+        glUniform3dv = load.invoke("glUniform3dv", IIPV);
+        glUniform4d = load.invoke("glUniform4d", IDDDDV);
+        glUniform4dv = load.invoke("glUniform4dv", IIPV);
+        glUniformMatrix2dv = load.invoke("glUniformMatrix2dv", IIZPV);
+        glUniformMatrix2x3dv = load.invoke("glUniformMatrix2x3dv", IIZPV);
+        glUniformMatrix2x4dv = load.invoke("glUniformMatrix2x4dv", IIZPV);
+        glUniformMatrix3dv = load.invoke("glUniformMatrix3dv", IIZPV);
+        glUniformMatrix3x2dv = load.invoke("glUniformMatrix3x2dv", IIZPV);
+        glUniformMatrix3x4dv = load.invoke("glUniformMatrix3x4dv", IIZPV);
+        glUniformMatrix4dv = load.invoke("glUniformMatrix4dv", IIZPV);
+        glUniformMatrix4x2dv = load.invoke("glUniformMatrix4x2dv", IIZPV);
+        glUniformMatrix4x3dv = load.invoke("glUniformMatrix4x3dv", IIZPV);
+        glUniformSubroutinesuiv = load.invoke("glUniformSubroutinesuiv", IIPV);
     }
 
     public static void beginQueryIndexed(int target, int index, int id) {

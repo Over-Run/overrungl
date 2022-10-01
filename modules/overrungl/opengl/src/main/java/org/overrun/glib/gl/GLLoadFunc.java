@@ -24,7 +24,10 @@
 
 package org.overrun.glib.gl;
 
+import org.overrun.glib.FunctionDescriptors;
+
 import java.lang.foreign.MemoryAddress;
+import java.lang.invoke.MethodHandle;
 
 /**
  * The OpenGL loading function.
@@ -44,4 +47,15 @@ public interface GLLoadFunc {
      * @return the function address
      */
     MemoryAddress invoke(String procName);
+
+    /**
+     * Load a function by the given name and creates a downcall handle or {@code null}.
+     *
+     * @param procName the function name
+     * @param function the function descriptor of the target function.
+     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
+     */
+    default MethodHandle invoke(String procName, FunctionDescriptors function) {
+        return function.downcallSafe(invoke(procName));
+    }
 }

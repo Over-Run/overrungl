@@ -34,6 +34,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -57,21 +58,21 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     static void load(GLLoadFunc load) {
-        glBindBufferBase = downcallSafe(load.invoke("glBindBufferBase"), dIIIV);
-        glBindBufferRange = downcallSafe(load.invoke("glBindBufferRange"), dIIIJJV);
-        glCopyBufferSubData = downcallSafe(load.invoke("glCopyBufferSubData"), dIIJJJV);
-        glDrawArraysInstanced = downcallSafe(load.invoke("glDrawArraysInstanced"), dIIIIV);
-        glDrawElementsInstanced = downcallSafe(load.invoke("glDrawElementsInstanced"), dIIIPIV);
-        glGetActiveUniformBlockName = downcallSafe(load.invoke("glGetActiveUniformBlockName"), dIIIPPV);
-        glGetActiveUniformBlockiv = downcallSafe(load.invoke("glGetActiveUniformBlockiv"), dIIIPV);
-        glGetActiveUniformName = downcallSafe(load.invoke("glGetActiveUniformName"), dIIIPPV);
-        glGetActiveUniformsiv = downcallSafe(load.invoke("glGetActiveUniformsiv"), dIIPIPV);
-        glGetIntegeri_v = downcallSafe(load.invoke("glGetIntegeri_v"), dIIPV);
-        glGetUniformBlockIndex = downcallSafe(load.invoke("glGetUniformBlockIndex"), dIPI);
-        glGetUniformIndices = downcallSafe(load.invoke("glGetUniformIndices"), dIIPPV);
-        glPrimitiveRestartIndex = downcallSafe(load.invoke("glPrimitiveRestartIndex"), dIV);
-        glTexBuffer = downcallSafe(load.invoke("glTexBuffer"), dIIIV);
-        glUniformBlockBinding = downcallSafe(load.invoke("glUniformBlockBinding"), dIIIV);
+        glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
+        glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
+        glCopyBufferSubData = load.invoke("glCopyBufferSubData", IIJJJV);
+        glDrawArraysInstanced = load.invoke("glDrawArraysInstanced", IIIIV);
+        glDrawElementsInstanced = load.invoke("glDrawElementsInstanced", IIIPIV);
+        glGetActiveUniformBlockName = load.invoke("glGetActiveUniformBlockName", IIIPPV);
+        glGetActiveUniformBlockiv = load.invoke("glGetActiveUniformBlockiv", IIIPV);
+        glGetActiveUniformName = load.invoke("glGetActiveUniformName", IIIPPV);
+        glGetActiveUniformsiv = load.invoke("glGetActiveUniformsiv", IIPIPV);
+        glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
+        glGetUniformBlockIndex = load.invoke("glGetUniformBlockIndex", IPI);
+        glGetUniformIndices = load.invoke("glGetUniformIndices", IIPPV);
+        glPrimitiveRestartIndex = load.invoke("glPrimitiveRestartIndex", IV);
+        glTexBuffer = load.invoke("glTexBuffer", IIIV);
+        glUniformBlockBinding = load.invoke("glUniformBlockBinding", IIIV);
     }
 
     public static void copyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {

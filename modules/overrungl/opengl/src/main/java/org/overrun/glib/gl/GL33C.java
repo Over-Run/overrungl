@@ -32,6 +32,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -61,34 +62,34 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     static void load(GLLoadFunc load) {
-        glBindFragDataLocationIndexed = downcallSafe(load.invoke("glBindFragDataLocationIndexed"), dIIIPV);
-        glBindSampler = downcallSafe(load.invoke("glBindSampler"), dIIV);
-        glDeleteSamplers = downcallSafe(load.invoke("glDeleteSamplers"), dIPV);
-        glGenSamplers = downcallSafe(load.invoke("glGenSamplers"), dIIP);
-        glGetFragDataIndex = downcallSafe(load.invoke("glGetFragDataIndex"), dIPI);
-        glGetQueryObjecti64v = downcallSafe(load.invoke("glGetQueryObjecti64v"), dIIPV);
-        glGetQueryObjectui64v = downcallSafe(load.invoke("glGetQueryObjectui64v"), dIIPV);
-        glGetSamplerParameterIiv = downcallSafe(load.invoke("glGetSamplerParameterIiv"), dIIPV);
-        glGetSamplerParameterIuiv = downcallSafe(load.invoke("glGetSamplerParameterIuiv"), dIIPV);
-        glGetSamplerParameterfv = downcallSafe(load.invoke("glGetSamplerParameterfv"), dIIPV);
-        glGetSamplerParameteriv = downcallSafe(load.invoke("glGetSamplerParameteriv"), dIIPV);
-        glIsSampler = downcallSafe(load.invoke("glIsSampler"), dIZ);
-        glQueryCounter = downcallSafe(load.invoke("glQueryCounter"), dIIV);
-        glSamplerParameterIiv = downcallSafe(load.invoke("glSamplerParameterIiv"), dIIPV);
-        glSamplerParameterIuiv = downcallSafe(load.invoke("glSamplerParameterIuiv"), dIIPV);
-        glSamplerParameterf = downcallSafe(load.invoke("glSamplerParameterf"), dIIFV);
-        glSamplerParameterfv = downcallSafe(load.invoke("glSamplerParameterfv"), dIIPV);
-        glSamplerParameteri = downcallSafe(load.invoke("glSamplerParameteri"), dIIIV);
-        glSamplerParameteriv = downcallSafe(load.invoke("glSamplerParameteriv"), dIIPV);
-        glVertexAttribDivisor = downcallSafe(load.invoke("glVertexAttribDivisor"), dIIV);
-        glVertexAttribP1ui = downcallSafe(load.invoke("glVertexAttribP1ui"), dIIZIV);
-        glVertexAttribP1uiv = downcallSafe(load.invoke("glVertexAttribP1uiv"), dIIZPV);
-        glVertexAttribP2ui = downcallSafe(load.invoke("glVertexAttribP2ui"), dIIZIV);
-        glVertexAttribP2uiv = downcallSafe(load.invoke("glVertexAttribP2uiv"), dIIZPV);
-        glVertexAttribP3ui = downcallSafe(load.invoke("glVertexAttribP3ui"), dIIZIV);
-        glVertexAttribP3uiv = downcallSafe(load.invoke("glVertexAttribP3uiv"), dIIZPV);
-        glVertexAttribP4ui = downcallSafe(load.invoke("glVertexAttribP4ui"), dIIZIV);
-        glVertexAttribP4uiv = downcallSafe(load.invoke("glVertexAttribP4uiv"), dIIZPV);
+        glBindFragDataLocationIndexed = load.invoke("glBindFragDataLocationIndexed", IIIPV);
+        glBindSampler = load.invoke("glBindSampler", IIV);
+        glDeleteSamplers = load.invoke("glDeleteSamplers", IPV);
+        glGenSamplers = load.invoke("glGenSamplers", IIP);
+        glGetFragDataIndex = load.invoke("glGetFragDataIndex", IPI);
+        glGetQueryObjecti64v = load.invoke("glGetQueryObjecti64v", IIPV);
+        glGetQueryObjectui64v = load.invoke("glGetQueryObjectui64v", IIPV);
+        glGetSamplerParameterIiv = load.invoke("glGetSamplerParameterIiv", IIPV);
+        glGetSamplerParameterIuiv = load.invoke("glGetSamplerParameterIuiv", IIPV);
+        glGetSamplerParameterfv = load.invoke("glGetSamplerParameterfv", IIPV);
+        glGetSamplerParameteriv = load.invoke("glGetSamplerParameteriv", IIPV);
+        glIsSampler = load.invoke("glIsSampler", IZ);
+        glQueryCounter = load.invoke("glQueryCounter", IIV);
+        glSamplerParameterIiv = load.invoke("glSamplerParameterIiv", IIPV);
+        glSamplerParameterIuiv = load.invoke("glSamplerParameterIuiv", IIPV);
+        glSamplerParameterf = load.invoke("glSamplerParameterf", IIFV);
+        glSamplerParameterfv = load.invoke("glSamplerParameterfv", IIPV);
+        glSamplerParameteri = load.invoke("glSamplerParameteri", IIIV);
+        glSamplerParameteriv = load.invoke("glSamplerParameteriv", IIPV);
+        glVertexAttribDivisor = load.invoke("glVertexAttribDivisor", IIV);
+        glVertexAttribP1ui = load.invoke("glVertexAttribP1ui", IIZIV);
+        glVertexAttribP1uiv = load.invoke("glVertexAttribP1uiv", IIZPV);
+        glVertexAttribP2ui = load.invoke("glVertexAttribP2ui", IIZIV);
+        glVertexAttribP2uiv = load.invoke("glVertexAttribP2uiv", IIZPV);
+        glVertexAttribP3ui = load.invoke("glVertexAttribP3ui", IIZIV);
+        glVertexAttribP3uiv = load.invoke("glVertexAttribP3uiv", IIZPV);
+        glVertexAttribP4ui = load.invoke("glVertexAttribP4ui", IIZIV);
+        glVertexAttribP4uiv = load.invoke("glVertexAttribP4uiv", IIZPV);
     }
 
     public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {

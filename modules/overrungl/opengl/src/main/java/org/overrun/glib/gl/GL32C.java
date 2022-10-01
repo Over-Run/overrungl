@@ -34,6 +34,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -59,25 +60,25 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     static void load(GLLoadFunc load) {
-        glClientWaitSync = downcallSafe(load.invoke("glClientWaitSync"), dPIJI);
-        glDeleteSync = downcallSafe(load.invoke("glDeleteSync"), dPV);
-        glDrawElementsBaseVertex = downcallSafe(load.invoke("glDrawElementsBaseVertex"), dIIIPIV);
-        glDrawElementsInstancedBaseVertex = downcallSafe(load.invoke("glDrawElementsInstancedBaseVertex"), dIIIPIIV);
-        glDrawRangeElementsBaseVertex = downcallSafe(load.invoke("glDrawRangeElementsBaseVertex"), dIIIIIPIV);
-        glFenceSync = downcallSafe(load.invoke("glFenceSync"), dIIP);
-        glFramebufferTexture = downcallSafe(load.invoke("glFramebufferTexture"), dIIIIV);
-        glGetBufferParameteri64v = downcallSafe(load.invoke("glGetBufferParameteri64v"), dIIPV);
-        glGetInteger64i_v = downcallSafe(load.invoke("glGetInteger64i_v"), dIIPV);
-        glGetInteger64v = downcallSafe(load.invoke("glGetInteger64v"), dIPV);
-        glGetMultisamplefv = downcallSafe(load.invoke("glGetMultisamplefv"), dIIPV);
-        glGetSynciv = downcallSafe(load.invoke("glGetSynciv"), dPIIPPV);
-        glIsSync = downcallSafe(load.invoke("glIsSync"), dPZ);
-        glMultiDrawElementsBaseVertex = downcallSafe(load.invoke("glMultiDrawElementsBaseVertex"), dIPIPIPV);
-        glProvokingVertex = downcallSafe(load.invoke("glProvokingVertex"), dIV);
-        glSampleMaski = downcallSafe(load.invoke("glSampleMaski"), dIIV);
-        glTexImage2DMultisample = downcallSafe(load.invoke("glTexImage2DMultisample"), dIIIIIZV);
-        glTexImage3DMultisample = downcallSafe(load.invoke("glTexImage3DMultisample"), dIIIIIIZV);
-        glWaitSync = downcallSafe(load.invoke("glWaitSync"), dPIJV);
+        glClientWaitSync = load.invoke("glClientWaitSync", PIJI);
+        glDeleteSync = load.invoke("glDeleteSync", PV);
+        glDrawElementsBaseVertex = load.invoke("glDrawElementsBaseVertex", IIIPIV);
+        glDrawElementsInstancedBaseVertex = load.invoke("glDrawElementsInstancedBaseVertex", IIIPIIV);
+        glDrawRangeElementsBaseVertex = load.invoke("glDrawRangeElementsBaseVertex", IIIIIPIV);
+        glFenceSync = load.invoke("glFenceSync", IIP);
+        glFramebufferTexture = load.invoke("glFramebufferTexture", IIIIV);
+        glGetBufferParameteri64v = load.invoke("glGetBufferParameteri64v", IIPV);
+        glGetInteger64i_v = load.invoke("glGetInteger64i_v", IIPV);
+        glGetInteger64v = load.invoke("glGetInteger64v", IPV);
+        glGetMultisamplefv = load.invoke("glGetMultisamplefv", IIPV);
+        glGetSynciv = load.invoke("glGetSynciv", PIIPPV);
+        glIsSync = load.invoke("glIsSync", PZ);
+        glMultiDrawElementsBaseVertex = load.invoke("glMultiDrawElementsBaseVertex", IPIPIPV);
+        glProvokingVertex = load.invoke("glProvokingVertex", IV);
+        glSampleMaski = load.invoke("glSampleMaski", IIV);
+        glTexImage2DMultisample = load.invoke("glTexImage2DMultisample", IIIIIZV);
+        glTexImage3DMultisample = load.invoke("glTexImage3DMultisample", IIIIIIZV);
+        glWaitSync = load.invoke("glWaitSync", PIJV);
     }
 
     public static int clientWaitSync(MemoryAddress sync, int flags, long timeout) {

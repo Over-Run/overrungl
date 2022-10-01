@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.*;
 
 /**
@@ -49,10 +50,10 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     static void load(GLLoadFunc load) {
-        glCopyTexSubImage3D = downcallSafe(load.invoke("glCopyTexSubImage3D"), dIIIIIIIIIV);
-        glDrawRangeElements = downcallSafe(load.invoke("glDrawRangeElements"), dIIIIIPV);
-        glTexImage3D = downcallSafe(load.invoke("glTexImage3D"), dIIIIIIIIIV);
-        glTexSubImage3D = downcallSafe(load.invoke("glTexSubImage3D"), dIIIIIIIIIIV);
+        glCopyTexSubImage3D = load.invoke("glCopyTexSubImage3D", IIIIIIIIIV);
+        glDrawRangeElements = load.invoke("glDrawRangeElements", IIIIIPV);
+        glTexImage3D = load.invoke("glTexImage3D", IIIIIIIIIV);
+        glTexSubImage3D = load.invoke("glTexSubImage3D", IIIIIIIIIIV);
     }
 
     public static void copyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
