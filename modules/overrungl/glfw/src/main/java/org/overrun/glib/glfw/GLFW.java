@@ -1204,14 +1204,14 @@ public class GLFW {
         }
     }
 
-    public static GLFWVidMode @Nullable [] getVideoModes(MemoryAddress monitor) {
-        try (var session = MemorySession.openShared()) {
-            var pCount = session.allocate(JAVA_INT);
+    public static GLFWVidMode @Nullable [] getVideoModes(MemoryAddress monitor, MemorySession session) {
+        try (var session1 = MemorySession.openShared()) {
+            var pCount = session1.allocate(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
             if (pModes == MemoryAddress.NULL) {
                 return null;
             }
-            return RuntimeHelper.toArray(pModes, new GLFWVidMode[pCount.get(JAVA_INT, 0)], GLFWVidMode::new);
+            return RuntimeHelper.toArray(pModes, new GLFWVidMode[pCount.get(JAVA_INT, 0)], address -> new GLFWVidMode(address, session));
         }
     }
 
@@ -1224,9 +1224,9 @@ public class GLFW {
     }
 
     @Nullable
-    public static GLFWVidMode getVideoMode(MemoryAddress monitor) {
+    public static GLFWVidMode getVideoMode(MemoryAddress monitor, MemorySession session) {
         var pMode = ngetVideoMode(monitor);
-        return pMode != MemoryAddress.NULL ? new GLFWVidMode(pMode) : null;
+        return pMode != MemoryAddress.NULL ? new GLFWVidMode(pMode, session) : null;
     }
 
     public static void setGamma(MemoryAddress monitor, float gamma) {
@@ -1246,9 +1246,9 @@ public class GLFW {
     }
 
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(MemoryAddress monitor) {
+    public static GLFWGammaRamp getGammaRamp(MemoryAddress monitor, MemorySession session) {
         var pRamp = ngetGammaRamp(monitor);
-        return pRamp != MemoryAddress.NULL ? new GLFWGammaRamp(pRamp) : null;
+        return pRamp != MemoryAddress.NULL ? new GLFWGammaRamp(pRamp, session) : null;
     }
 
     public static void setGammaRamp(MemoryAddress monitor, GLFWGammaRamp ramp) {
@@ -1353,18 +1353,10 @@ public class GLFW {
         }
     }
 
-    public static void setWindowIcon(MemoryAddress window, int count, GLFWImage[] images) {
+    public static void setWindowIcon(MemoryAddress window, int count, GLFWImage.Buffer images) {
         try (var session = MemorySession.openShared()) {
-            var pImages = session.allocateArray(ADDRESS, count);
-            for (int i = 0; i < count; i++) {
-                pImages.setAtIndex(ADDRESS, i, images[i].rawAddress());
-            }
-            nsetWindowIcon(window, count, pImages);
+            nsetWindowIcon(window, count, images.rawAddress());
         }
-    }
-
-    public static void setWindowIcon(MemoryAddress window, GLFWImage[] images) {
-        setWindowIcon(window, images.length, images);
     }
 
     public static void ngetWindowPos(MemoryAddress window, Addressable xpos, Addressable ypos) {

@@ -13,14 +13,20 @@ public class Pointer {
      * The pointer address.
      */
     protected final Addressable address;
+    /**
+     * The pointer memory session.
+     */
+    protected final MemorySession session;
 
     /**
      * Create the pointer instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public Pointer(Addressable address) {
+    public Pointer(Addressable address, MemorySession session) {
         this.address = address;
+        this.session = session;
     }
 
     /**
@@ -42,6 +48,15 @@ public class Pointer {
     }
 
     /**
+     * Gets the memory session.
+     *
+     * @return the memory session
+     */
+    public MemorySession session() {
+        return session;
+    }
+
+    /**
      * Gets as memory segment.
      *
      * @param bytesSize the bytes size
@@ -49,6 +64,9 @@ public class Pointer {
      * @return the memory segment
      */
     public MemorySegment segment(long bytesSize, MemorySession session) {
+        if (rawAddress() instanceof MemorySegment segment) {
+            return segment;
+        }
         return MemorySegment.ofAddress(address(), bytesSize, session);
     }
 

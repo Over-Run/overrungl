@@ -72,9 +72,10 @@ public class GLFWGammaRamp extends Pointer {
      * Create a {@code GLFWgammaramp const} instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public GLFWGammaRamp(Addressable address) {
-        super(address);
+    public GLFWGammaRamp(Addressable address, MemorySession session) {
+        super(address, session);
     }
 
     /**
@@ -84,44 +85,38 @@ public class GLFWGammaRamp extends Pointer {
      * @return the instance
      */
     public static GLFWGammaRamp create(MemorySession session) {
-        return new GLFWGammaRamp(session.allocate(LAYOUT));
+        return new GLFWGammaRamp(session.allocate(LAYOUT), session);
     }
 
     /**
-     * Sets the red value array with the given memory session.
+     * Sets the red value array.
      *
-     * @param session the memory session. the lifetime of the session
-     *                <b>MUST</b> be equal or greater than this instance.
-     * @param reds    the array
+     * @param reds the array
      * @return this
      */
-    public GLFWGammaRamp red(MemorySession session, short[] reds) {
+    public GLFWGammaRamp red(short[] reds) {
         ppRed.set(segment(LAYOUT, session), session.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
     /**
-     * Sets the green value array with the given memory session.
+     * Sets the green value array.
      *
-     * @param session the memory session. the lifetime of the session
-     *                <b>MUST</b> be equal or greater than this instance.
-     * @param greens  the array
+     * @param greens the array
      * @return this
      */
-    public GLFWGammaRamp green(MemorySession session, short[] greens) {
+    public GLFWGammaRamp green(short[] greens) {
         ppGreen.set(segment(LAYOUT, session), session.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
     /**
-     * Sets the blue value array with the given memory session.
+     * Sets the blue value array.
      *
-     * @param session the memory session. the lifetime of the session
-     *                <b>MUST</b> be equal or greater than this instance.
-     * @param blues   the array
+     * @param blues the array
      * @return this
      */
-    public GLFWGammaRamp blue(MemorySession session, short[] blues) {
+    public GLFWGammaRamp blue(short[] blues) {
         ppBlue.set(segment(LAYOUT, session), session.allocateArray(JAVA_SHORT, blues));
         return this;
     }
@@ -133,9 +128,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        try (var session = MemorySession.openShared()) {
-            pSize.set(segment(LAYOUT, session), size);
-        }
+        pSize.set(segment(LAYOUT, session), size);
         return this;
     }
 
@@ -146,9 +139,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the red value
      */
     public short red(int index) {
-        try (var session = MemorySession.openShared()) {
-            return (short) pRed.get(segment(LAYOUT, session), (long) index);
-        }
+        return (short) pRed.get(segment(LAYOUT, session), (long) index);
     }
 
     /**
@@ -158,9 +149,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the green value
      */
     public short green(int index) {
-        try (var session = MemorySession.openShared()) {
-            return (short) pGreen.get(segment(LAYOUT, session), (long) index);
-        }
+        return (short) pGreen.get(segment(LAYOUT, session), (long) index);
     }
 
     /**
@@ -170,9 +159,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the blue value
      */
     public short blue(int index) {
-        try (var session = MemorySession.openShared()) {
-            return (short) pBlue.get(segment(LAYOUT, session), (long) index);
-        }
+        return (short) pBlue.get(segment(LAYOUT, session), (long) index);
     }
 
     /**
@@ -238,26 +225,18 @@ public class GLFWGammaRamp extends Pointer {
      * @return The number of elements in each array.
      */
     public int size() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pSize.get(segment(LAYOUT, session));
-        }
+        return (int) pSize.get(segment(LAYOUT, session));
     }
 
     public MemoryAddress nred() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) ppRed.get(segment(LAYOUT, session));
-        }
+        return (MemoryAddress) ppRed.get(segment(LAYOUT, session));
     }
 
     public MemoryAddress ngreen() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) ppGreen.get(segment(LAYOUT, session));
-        }
+        return (MemoryAddress) ppGreen.get(segment(LAYOUT, session));
     }
 
     public MemoryAddress nblue() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) ppBlue.get(segment(LAYOUT, session));
-        }
+        return (MemoryAddress) ppBlue.get(segment(LAYOUT, session));
     }
 }

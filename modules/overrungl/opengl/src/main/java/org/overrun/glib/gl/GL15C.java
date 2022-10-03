@@ -331,37 +331,49 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getBufferSubData(int target, long offset, byte[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data));
+            var seg = session.allocateArray(JAVA_BYTE, data.length);
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length), seg);
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
     public static void getBufferSubData(int target, long offset, short[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
+            var seg = session.allocateArray(JAVA_SHORT, data.length);
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, seg);
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
     public static void getBufferSubData(int target, long offset, int[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
+            var seg = session.allocateArray(JAVA_INT, data.length);
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
     public static void getBufferSubData(int target, long offset, long[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
+            var seg = session.allocateArray(JAVA_LONG, data.length);
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
     public static void getBufferSubData(int target, long offset, float[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
+            var seg = session.allocateArray(JAVA_FLOAT, data.length);
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
+            RuntimeHelper.toArray(seg, data);
         }
     }
 
     public static void getBufferSubData(int target, long offset, double[] data) {
         try (var session = MemorySession.openShared()) {
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
+            var seg = session.allocateArray(JAVA_DOUBLE, data.length);
+            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
+            RuntimeHelper.toArray(seg, data);
         }
     }
 

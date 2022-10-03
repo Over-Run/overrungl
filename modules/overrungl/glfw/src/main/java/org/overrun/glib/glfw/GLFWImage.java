@@ -63,9 +63,10 @@ public class GLFWImage extends Pointer {
      * Create a {@code GLFWimage} instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public GLFWImage(Addressable address) {
-        super(address);
+    public GLFWImage(Addressable address, MemorySession session) {
+        super(address, session);
     }
 
     /**
@@ -75,7 +76,18 @@ public class GLFWImage extends Pointer {
      * @return the instance
      */
     public static GLFWImage create(MemorySession session) {
-        return new GLFWImage(session.allocate(LAYOUT));
+        return new GLFWImage(session.allocate(LAYOUT), session);
+    }
+
+    /**
+     * Creates a {@code GLFWimage} instance with the given memory session and count.
+     *
+     * @param session the memory session
+     * @param count   the count
+     * @return the instance
+     */
+    public static Buffer create(MemorySession session, long count) {
+        return new Buffer(session.allocateArray(LAYOUT, count), session);
     }
 
     /**
@@ -85,9 +97,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage width(int width) {
-        try (var session = MemorySession.openShared()) {
-            pWidth.set(segment(LAYOUT, session), width);
-        }
+        pWidth.set(segment(LAYOUT, session), width);
         return this;
     }
 
@@ -98,9 +108,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage height(int height) {
-        try (var session = MemorySession.openShared()) {
-            pHeight.set(segment(LAYOUT, session), height);
-        }
+        pHeight.set(segment(LAYOUT, session), height);
         return this;
     }
 
@@ -111,9 +119,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage pixels(Addressable pixels) {
-        try (var session = MemorySession.openShared()) {
-            pPixels.set(segment(LAYOUT, session), pixels);
-        }
+        pPixels.set(segment(LAYOUT, session), pixels);
         return this;
     }
 
@@ -123,9 +129,7 @@ public class GLFWImage extends Pointer {
      * @return The width, in pixels, of this image.
      */
     public int width() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pWidth.get(segment(LAYOUT, session));
-        }
+        return (int) pWidth.get(segment(LAYOUT, session));
     }
 
     /**
@@ -134,9 +138,7 @@ public class GLFWImage extends Pointer {
      * @return The height, in pixels, of this image.
      */
     public int height() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pHeight.get(segment(LAYOUT, session));
-        }
+        return (int) pHeight.get(segment(LAYOUT, session));
     }
 
     /**
@@ -145,8 +147,125 @@ public class GLFWImage extends Pointer {
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
     public MemoryAddress pixels() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) pPixels.get(segment(LAYOUT, session));
+        return (MemoryAddress) pPixels.get(segment(LAYOUT, session));
+    }
+
+    /**
+     * This describes 2D images.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    public static class Buffer extends GLFWImage {
+        private static final VarHandle
+            pWidth = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width")),
+            pHeight = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height")),
+            pPixels = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
+
+        /**
+         * Create a {@code GLFWimage.Buffer} instance.
+         *
+         * @param address the address
+         * @param session the memory session
+         */
+        public Buffer(Addressable address, MemorySession session) {
+            super(address, session);
+        }
+
+        /**
+         * Sets the image width at the given index.
+         *
+         * @param index the index
+         * @param width The width, in pixels, of this image.
+         * @return this
+         */
+        public Buffer width(long index, int width) {
+            pWidth.set(segment(LAYOUT, session), index, width);
+            return this;
+        }
+
+        /**
+         * Sets the image height at the given index.
+         *
+         * @param index  the index
+         * @param height The height, in pixels, of this image.
+         * @return this
+         */
+        public Buffer height(long index, int height) {
+            pHeight.set(segment(LAYOUT, session), index, height);
+            return this;
+        }
+
+        /**
+         * Sets the image pixels address at the given index.
+         *
+         * @param index  the index
+         * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
+         * @return this
+         */
+        public Buffer pixels(long index, Addressable pixels) {
+            pPixels.set(segment(LAYOUT, session), index, pixels);
+            return this;
+        }
+
+        @Override
+        public Buffer width(int width) {
+            return width(0, width);
+        }
+
+        @Override
+        public Buffer height(int height) {
+            return height(0, height);
+        }
+
+        @Override
+        public Buffer pixels(Addressable pixels) {
+            return pixels(0, pixels);
+        }
+
+        /**
+         * Gets the image width at the given index.
+         *
+         * @param index the index
+         * @return The width, in pixels, of this image.
+         */
+        public int widthAt(long index) {
+            return (int) pWidth.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the image height at the given index.
+         *
+         * @param index the index
+         * @return The height, in pixels, of this image.
+         */
+        public int heightAt(long index) {
+            return (int) pHeight.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the image pixels address at the given index.
+         *
+         * @param index the index
+         * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
+         */
+        public MemoryAddress pixelsAt(long index) {
+            return (MemoryAddress) pPixels.get(segment(LAYOUT, session), index);
+        }
+
+        @Override
+        public int width() {
+            return widthAt(0);
+        }
+
+        @Override
+        public int height() {
+            return heightAt(0);
+        }
+
+        @Override
+        public MemoryAddress pixels() {
+            return pixelsAt(0);
         }
     }
 }

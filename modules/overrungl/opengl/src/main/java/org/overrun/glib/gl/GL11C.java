@@ -30,11 +30,12 @@ import org.overrun.glib.RuntimeHelper;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
+import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 1.1 forward compatible functions.
@@ -122,14 +123,14 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void deleteTextures(int n, int[] textures) {
         try (var session = MemorySession.openShared()) {
-            var pTex = session.allocateArray(ValueLayout.JAVA_INT, textures);
+            var pTex = session.allocateArray(JAVA_INT, textures);
             deleteTextures(n, pTex);
         }
     }
 
     public static void deleteTexture(int texture) {
         try (var session = MemorySession.openShared()) {
-            deleteTextures(1, session.allocate(ValueLayout.JAVA_INT, texture));
+            deleteTextures(1, session.allocate(JAVA_INT, texture));
         }
     }
 
@@ -151,21 +152,21 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void drawElements(int mode, int count, int type, byte[] indices) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(ValueLayout.JAVA_BYTE, indices);
+            var seg = session.allocateArray(JAVA_BYTE, indices);
             drawElements(mode, count, type, seg);
         }
     }
 
     public static void drawElements(int mode, int count, int type, short[] indices) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(ValueLayout.JAVA_SHORT, indices);
+            var seg = session.allocateArray(JAVA_SHORT, indices);
             drawElements(mode, count, type, seg);
         }
     }
 
     public static void drawElements(int mode, int count, int type, int[] indices) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(ValueLayout.JAVA_INT, indices);
+            var seg = session.allocateArray(JAVA_INT, indices);
             drawElements(mode, count, type, seg);
         }
     }
@@ -181,7 +182,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     public static void genTextures(int[] textures) {
         try (var session = MemorySession.openShared()) {
             final int n = textures.length;
-            var pTex = session.allocateArray(ValueLayout.JAVA_INT, n);
+            var pTex = session.allocateArray(JAVA_INT, n);
             genTextures(n, pTex);
             RuntimeHelper.toArray(pTex, textures);
         }
@@ -189,9 +190,9 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static int genTexture() {
         try (var session = MemorySession.openShared()) {
-            var pTex = session.allocate(ValueLayout.JAVA_INT);
+            var pTex = session.allocate(JAVA_INT);
             genTextures(1, pTex);
-            return pTex.get(ValueLayout.JAVA_INT, 0);
+            return pTex.get(JAVA_INT, 0);
         }
     }
 
@@ -209,9 +210,9 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static MemoryAddress getPointer(int pname) {
         try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(ValueLayout.ADDRESS);
+            var pParams = session.allocate(ADDRESS);
             getPointerv(pname, pParams);
-            return pParams.get(ValueLayout.ADDRESS, 0);
+            return pParams.get(ADDRESS, 0);
         }
     }
 
@@ -241,19 +242,19 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
         try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(ValueLayout.JAVA_BYTE, pixels));
+            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_BYTE, pixels));
         }
     }
 
     public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
         try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(ValueLayout.JAVA_SHORT, pixels));
+            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_SHORT, pixels));
         }
     }
 
     public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
         try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(ValueLayout.JAVA_INT, pixels));
+            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_INT, pixels));
         }
     }
 
@@ -267,19 +268,19 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
         try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(ValueLayout.JAVA_BYTE, pixels));
+            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_BYTE, pixels));
         }
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
         try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(ValueLayout.JAVA_SHORT, pixels));
+            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_SHORT, pixels));
         }
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
         try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(ValueLayout.JAVA_INT, pixels));
+            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_INT, pixels));
         }
     }
 }

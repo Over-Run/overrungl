@@ -2,6 +2,6 @@
 ---
 Added
 - GLFW 3.3.8
-- OpenGL 1.0 ~ 4.2 functions
+- OpenGL 1.0 ~ 4.4 functions
 - OpenGL 1.0 ~ 4.6 constants
 - OpenGL Loader

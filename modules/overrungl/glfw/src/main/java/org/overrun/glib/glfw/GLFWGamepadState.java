@@ -65,9 +65,10 @@ public class GLFWGamepadState extends Pointer {
      * Create a {@code GLFWgamepadstate} instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public GLFWGamepadState(Addressable address) {
-        super(address);
+    public GLFWGamepadState(Addressable address, MemorySession session) {
+        super(address, session);
     }
 
     /**
@@ -77,7 +78,7 @@ public class GLFWGamepadState extends Pointer {
      * @return the instance
      */
     public static GLFWGamepadState create(MemorySession session) {
-        return new GLFWGamepadState(session.allocate(LAYOUT));
+        return new GLFWGamepadState(session.allocate(LAYOUT), session);
     }
 
     /**
@@ -103,9 +104,7 @@ public class GLFWGamepadState extends Pointer {
      * {@code PRESS} or {@code RELEASE}.
      */
     public byte[] buttons() {
-        try (var session = MemorySession.openShared()) {
-            return buttons(session);
-        }
+        return buttons(session);
     }
 
     /**
@@ -115,10 +114,8 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = segment(LAYOUT, session);
-            return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
-        }
+        var seg = segment(LAYOUT, session);
+        return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
     }
 
     /**
@@ -144,9 +141,7 @@ public class GLFWGamepadState extends Pointer {
      * in the range -1.0 to 1.0 inclusive.
      */
     public float[] axes() {
-        try (var session = MemorySession.openShared()) {
-            return axes(session);
-        }
+        return axes(session);
     }
 
     /**
@@ -156,9 +151,7 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = segment(LAYOUT, session);
-            return (float) pAxes.get(seg, (long) index);
-        }
+        var seg = segment(LAYOUT, session);
+        return (float) pAxes.get(seg, (long) index);
     }
 }

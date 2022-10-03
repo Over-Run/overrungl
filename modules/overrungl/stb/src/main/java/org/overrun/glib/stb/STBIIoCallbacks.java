@@ -68,9 +68,10 @@ public class STBIIoCallbacks extends Pointer {
      * Create a {@code stbi_io_callbacks} instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public STBIIoCallbacks(Addressable address) {
-        super(address);
+    public STBIIoCallbacks(Addressable address, MemorySession session) {
+        super(address, session);
     }
 
     /**
@@ -172,7 +173,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the instance
      */
     public static STBIIoCallbacks create(MemorySession session) {
-        return new STBIIoCallbacks(session.allocate(LAYOUT));
+        return new STBIIoCallbacks(session.allocate(LAYOUT), session);
     }
 
     /**
@@ -181,9 +182,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the read callback
      */
     public MemoryAddress read() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) pRead.get(segment(LAYOUT, session));
-        }
+        return (MemoryAddress) pRead.get(segment(LAYOUT, session));
     }
 
     /**
@@ -192,9 +191,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the skip callback
      */
     public MemoryAddress skip() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) pSkip.get(segment(LAYOUT, session));
-        }
+        return (MemoryAddress) pSkip.get(segment(LAYOUT, session));
     }
 
     /**
@@ -203,46 +200,38 @@ public class STBIIoCallbacks extends Pointer {
      * @return the eof callback
      */
     public MemoryAddress eof() {
-        try (var session = MemorySession.openShared()) {
-            return (MemoryAddress) pEof.get(segment(LAYOUT, session));
-        }
+        return (MemoryAddress) pEof.get(segment(LAYOUT, session));
     }
 
     /**
-     * Sets the read callback with the given memory session.
+     * Sets the read callback.
      *
-     * @param session the memory session. the lifetime of the session
-     *                <b>MUST</b> be equal or greater than this instance.
-     * @param read    the read callback
+     * @param read the read callback
      * @return this
      */
-    public STBIIoCallbacks read(MemorySession session, Read read) {
+    public STBIIoCallbacks read(Read read) {
         pRead.set(segment(LAYOUT, session), read.address(session));
         return this;
     }
 
     /**
-     * Sets the skip callback with the given memory session.
+     * Sets the skip callback.
      *
-     * @param session the memory session. the lifetime of the session
-     *                <b>MUST</b> be equal or greater than this instance.
-     * @param skip    the skip callback
+     * @param skip the skip callback
      * @return this
      */
-    public STBIIoCallbacks skip(MemorySession session, Skip skip) {
+    public STBIIoCallbacks skip(Skip skip) {
         pSkip.set(segment(LAYOUT, session), skip.address(session));
         return this;
     }
 
     /**
-     * Sets the eof callback with the given memory session.
+     * Sets the eof callback.
      *
-     * @param session the memory session. the lifetime of the session
-     *                <b>MUST</b> be equal or greater than this instance.
-     * @param eof     the eof callback
+     * @param eof the eof callback
      * @return this
      */
-    public STBIIoCallbacks eof(MemorySession session, Eof eof) {
+    public STBIIoCallbacks eof(Eof eof) {
         pEof.set(segment(LAYOUT, session), eof.address(session));
         return this;
     }

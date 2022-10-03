@@ -31,7 +31,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.VarHandle;
 
 /**
- * The OpenGL 4.2 draw arrays indirect command.
+ * The OpenGL 4.2 draw elements indirect command.
  *
  * @author squid233
  * @since 0.1.0
@@ -59,9 +59,10 @@ public class DrawElementsIndirectCommand extends Pointer {
      * Create the pointer instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public DrawElementsIndirectCommand(Addressable address) {
-        super(address);
+    public DrawElementsIndirectCommand(Addressable address, MemorySession session) {
+        super(address, session);
     }
 
     /**
@@ -71,7 +72,18 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the instance
      */
     public static DrawElementsIndirectCommand create(MemorySession session) {
-        return new DrawElementsIndirectCommand(session.allocate(LAYOUT));
+        return new DrawElementsIndirectCommand(session.allocate(LAYOUT), session);
+    }
+
+    /**
+     * Creates a command instance with the given memory session and count.
+     *
+     * @param session the memory session
+     * @param count   the count
+     * @return the instance
+     */
+    public static Buffer create(MemorySession session, long count) {
+        return new Buffer(session.allocateArray(LAYOUT, count), session);
     }
 
     /**
@@ -81,10 +93,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand count(int count) {
-        try (var session = MemorySession.openShared()) {
-            pCount.set(segment(LAYOUT, session), count);
-            return this;
-        }
+        pCount.set(segment(LAYOUT, session), count);
+        return this;
     }
 
     /**
@@ -94,10 +104,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand primCount(int primCount) {
-        try (var session = MemorySession.openShared()) {
-            pPrimCount.set(segment(LAYOUT, session), primCount);
-            return this;
-        }
+        pPrimCount.set(segment(LAYOUT, session), primCount);
+        return this;
     }
 
     /**
@@ -107,10 +115,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand firstIndex(int firstIndex) {
-        try (var session = MemorySession.openShared()) {
-            pFirstIndex.set(segment(LAYOUT, session), firstIndex);
-            return this;
-        }
+        pFirstIndex.set(segment(LAYOUT, session), firstIndex);
+        return this;
     }
 
     /**
@@ -120,10 +126,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseVertex(int baseVertex) {
-        try (var session = MemorySession.openShared()) {
-            pBaseVertex.set(segment(LAYOUT, session), baseVertex);
-            return this;
-        }
+        pBaseVertex.set(segment(LAYOUT, session), baseVertex);
+        return this;
     }
 
     /**
@@ -133,10 +137,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseInstance(int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            pBaseInstance.set(segment(LAYOUT, session), baseInstance);
-            return this;
-        }
+        pBaseInstance.set(segment(LAYOUT, session), baseInstance);
+        return this;
     }
 
     /**
@@ -145,9 +147,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pCount.get(segment(LAYOUT, session));
-        }
+        return (int) pCount.get(segment(LAYOUT, session));
     }
 
     /**
@@ -156,9 +156,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pPrimCount.get(segment(LAYOUT, session));
-        }
+        return (int) pPrimCount.get(segment(LAYOUT, session));
     }
 
     /**
@@ -167,9 +165,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the first index
      */
     public int firstIndex() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pFirstIndex.get(segment(LAYOUT, session));
-        }
+        return (int) pFirstIndex.get(segment(LAYOUT, session));
     }
 
     /**
@@ -178,9 +174,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base vertex
      */
     public int baseVertex() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pBaseVertex.get(segment(LAYOUT, session));
-        }
+        return (int) pBaseVertex.get(segment(LAYOUT, session));
     }
 
     /**
@@ -189,8 +183,191 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pBaseInstance.get(segment(LAYOUT, session));
+        return (int) pBaseInstance.get(segment(LAYOUT, session));
+    }
+
+    /**
+     * The OpenGL 4.2 draw elements indirect commands.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    public static class Buffer extends DrawElementsIndirectCommand {
+        private static final VarHandle
+            pCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count")),
+            pPrimCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount")),
+            pFirstIndex = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex")),
+            pBaseVertex = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseVertex")),
+            pBaseInstance = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
+
+        /**
+         * Create the pointer instance.
+         *
+         * @param address the address
+         * @param session the memory session
+         */
+        public Buffer(Addressable address, MemorySession session) {
+            super(address, session);
+        }
+
+        /**
+         * Sets the count at the given index.
+         *
+         * @param index the index
+         * @param count the count
+         * @return this
+         */
+        public Buffer count(long index, int count) {
+            pCount.set(segment(LAYOUT, session), index, count);
+            return this;
+        }
+
+        /**
+         * Sets the primitive count at the given index.
+         *
+         * @param index     the index
+         * @param primCount the primitive count
+         * @return this
+         */
+        public Buffer primCount(long index, int primCount) {
+            pPrimCount.set(segment(LAYOUT, session), index, primCount);
+            return this;
+        }
+
+        /**
+         * Sets the first index at the given index.
+         *
+         * @param index      the index
+         * @param firstIndex the first index
+         * @return this
+         */
+        public Buffer firstIndex(long index, int firstIndex) {
+            pFirstIndex.set(segment(LAYOUT, session), index, firstIndex);
+            return this;
+        }
+
+        /**
+         * Sets the base vertex at the given index.
+         *
+         * @param index      the index
+         * @param baseVertex the base vertex
+         * @return this
+         */
+        public Buffer baseVertex(long index, int baseVertex) {
+            pBaseVertex.set(segment(LAYOUT, session), index, baseVertex);
+            return this;
+        }
+
+        /**
+         * Sets the base instance at the given index.
+         *
+         * @param index        the index
+         * @param baseInstance the base instance
+         * @return this
+         */
+        public Buffer baseInstance(long index, int baseInstance) {
+            pBaseInstance.set(segment(LAYOUT, session), index, baseInstance);
+            return this;
+        }
+
+        @Override
+        public Buffer count(int count) {
+            return count(0, count);
+        }
+
+        @Override
+        public Buffer primCount(int primCount) {
+            return primCount(0, primCount);
+        }
+
+        @Override
+        public Buffer firstIndex(int firstIndex) {
+            return firstIndex(0, firstIndex);
+        }
+
+        @Override
+        public Buffer baseVertex(int baseVertex) {
+            return baseVertex(0, baseVertex);
+        }
+
+        @Override
+        public Buffer baseInstance(int baseInstance) {
+            return baseInstance(0, baseInstance);
+        }
+
+        /**
+         * Gets the count at the given index.
+         *
+         * @param index the index
+         * @return the count
+         */
+        public int countAt(long index) {
+            return (int) pCount.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the primitive count at the given index.
+         *
+         * @param index the index
+         * @return the primitive count
+         */
+        public int primCountAt(long index) {
+            return (int) pPrimCount.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the first index at the given index.
+         *
+         * @param index the index
+         * @return the first index
+         */
+        public int firstIndexAt(long index) {
+            return (int) pFirstIndex.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the base vertex at the given index.
+         *
+         * @param index the index
+         * @return the base vertex
+         */
+        public int baseVertexAt(long index) {
+            return (int) pBaseVertex.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the base instance at the given index.
+         *
+         * @param index the index
+         * @return the base instance
+         */
+        public int baseInstanceAt(long index) {
+            return (int) pBaseInstance.get(segment(LAYOUT, session), index);
+        }
+
+        @Override
+        public int count() {
+            return countAt(0);
+        }
+
+        @Override
+        public int primCount() {
+            return primCountAt(0);
+        }
+
+        @Override
+        public int firstIndex() {
+            return firstIndexAt(0);
+        }
+
+        @Override
+        public int baseVertex() {
+            return baseVertexAt(0);
+        }
+
+        @Override
+        public int baseInstance() {
+            return baseInstanceAt(0);
         }
     }
 }

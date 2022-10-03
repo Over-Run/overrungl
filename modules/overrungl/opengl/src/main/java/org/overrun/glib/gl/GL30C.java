@@ -683,7 +683,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static int getTexParameterIiv(int target, int pname) {
+    public static int getTexParameterIi(int target, int pname) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getTexParameterIiv(target, pname, seg);
@@ -707,7 +707,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static int getTexParameterIuiv(int target, int pname) {
+    public static int getTexParameterIui(int target, int pname) {
         try (var session = MemorySession.openShared()) {
             var seg = session.allocate(JAVA_INT);
             getTexParameterIuiv(target, pname, seg);

@@ -29,6 +29,8 @@ import org.overrun.glib.Pointer;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.VarHandle;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * This describes a single video mode.
@@ -73,9 +75,10 @@ public class GLFWVidMode extends Pointer {
      * Create a {@code GLFWvidmode} instance.
      *
      * @param address the address
+     * @param session the memory session
      */
-    public GLFWVidMode(Addressable address) {
-        super(address);
+    public GLFWVidMode(Addressable address, MemorySession session) {
+        super(address, session);
     }
 
     /**
@@ -85,7 +88,23 @@ public class GLFWVidMode extends Pointer {
      * @return the instance
      */
     public static GLFWVidMode create(MemorySession session) {
-        return new GLFWVidMode(session.allocate(LAYOUT));
+        return new GLFWVidMode(session.allocate(LAYOUT), session);
+    }
+
+    /**
+     * Perform the action if the video mode is not null.
+     *
+     * @param monitor   the monitor
+     * @param allocator the memory session lazy. will be auto-closed
+     * @param pass      the action
+     */
+    public static void withNotNull(MemoryAddress monitor, Supplier<MemorySession> allocator, Consumer<GLFWVidMode> pass) {
+        var pMode = GLFW.ngetVideoMode(monitor);
+        if (pMode != MemoryAddress.NULL) {
+            try (var session = allocator.get()) {
+                pass.accept(new GLFWVidMode(pMode, session));
+            }
+        }
     }
 
     /**
@@ -94,9 +113,7 @@ public class GLFWVidMode extends Pointer {
      * @return The width, in screen coordinates, of the video mode.
      */
     public int width() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pWidth.get(segment(LAYOUT, session));
-        }
+        return (int) pWidth.get(segment(LAYOUT, session));
     }
 
     /**
@@ -105,9 +122,7 @@ public class GLFWVidMode extends Pointer {
      * @return The height, in screen coordinates, of the video mode.
      */
     public int height() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pHeight.get(segment(LAYOUT, session));
-        }
+        return (int) pHeight.get(segment(LAYOUT, session));
     }
 
     /**
@@ -116,9 +131,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the red channel of the video mode.
      */
     public int redBits() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pRedBits.get(segment(LAYOUT, session));
-        }
+        return (int) pRedBits.get(segment(LAYOUT, session));
     }
 
     /**
@@ -127,9 +140,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the green channel of the video mode.
      */
     public int greenBits() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pGreenBits.get(segment(LAYOUT, session));
-        }
+        return (int) pGreenBits.get(segment(LAYOUT, session));
     }
 
     /**
@@ -138,9 +149,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the blue channel of the video mode.
      */
     public int blueBits() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pBlueBits.get(segment(LAYOUT, session));
-        }
+        return (int) pBlueBits.get(segment(LAYOUT, session));
     }
 
     /**
@@ -149,8 +158,6 @@ public class GLFWVidMode extends Pointer {
      * @return The refresh rate, in Hz, of the video mode.
      */
     public int refreshRate() {
-        try (var session = MemorySession.openShared()) {
-            return (int) pRefreshRate.get(segment(LAYOUT, session));
-        }
+        return (int) pRefreshRate.get(segment(LAYOUT, session));
     }
 }

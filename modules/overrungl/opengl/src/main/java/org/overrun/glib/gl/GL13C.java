@@ -111,9 +111,9 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
+    public static void compressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexSubImage2D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+            check(glCompressedTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }

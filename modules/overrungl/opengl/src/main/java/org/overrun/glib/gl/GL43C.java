@@ -45,7 +45,7 @@ import static org.overrun.glib.gl.GLCaps.checkAll;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL43C extends GL42C permits GL {
+public sealed class GL43C extends GL42C permits GL44C {
     @Nullable
     public static MethodHandle
         glBindVertexBuffer, glClearBufferData, glClearBufferSubData, glCopyImageSubData, glDebugMessageCallback,
@@ -78,7 +78,7 @@ public sealed class GL43C extends GL42C permits GL {
         glBindVertexBuffer = load.invoke("glBindVertexBuffer", IIJIV);
         glClearBufferData = load.invoke("glClearBufferData", IIIIPV);
         glClearBufferSubData = load.invoke("glClearBufferSubData", IIJJIIPV);
-        glCopyImageSubData = load.invoke("glCopyImageSubData", IIIIIIIIIIIIIII);
+        glCopyImageSubData = load.invoke("glCopyImageSubData", IIIIIIIIIIIIIIIV);
         glDebugMessageCallback = load.invoke("glDebugMessageCallback", PPV);
         glDebugMessageControl = load.invoke("glDebugMessageControl", IIIIPZV);
         glDebugMessageInsert = load.invoke("glDebugMessageInsert", IIIIIPV);
@@ -104,21 +104,21 @@ public sealed class GL43C extends GL42C permits GL {
         glInvalidateTexImage = load.invoke("glInvalidateTexImage", IIV);
         glInvalidateTexSubImage = load.invoke("glInvalidateTexSubImage", IIIIIIIIV);
         glMultiDrawArraysIndirect = load.invoke("glMultiDrawArraysIndirect", IPIIV);
-        glMultiDrawElementsIndirect = load.invoke("glMultiDrawElementsIndirect", );
-        glObjectLabel = load.invoke("glObjectLabel", );
-        glObjectPtrLabel = load.invoke("glObjectPtrLabel", );cm
-        glPopDebugGroup = load.invoke("glPopDebugGroup", );
-        glPushDebugGroup = load.invoke("glPushDebugGroup", );
-        glShaderStorageBlockBinding = load.invoke("glShaderStorageBlockBinding", );
-        glTexBufferRange = load.invoke("glTexBufferRange", );
-        glTexStorage2DMultisample = load.invoke("glTexStorage2DMultisample", );
-        glTexStorage3DMultisample = load.invoke("glTexStorage3DMultisample", );
-        glTextureView = load.invoke("glTextureView", );
-        glVertexAttribBinding = load.invoke("glVertexAttribBinding", );
-        glVertexAttribFormat = load.invoke("glVertexAttribFormat", );
-        glVertexAttribIFormat = load.invoke("glVertexAttribIFormat", );
-        glVertexAttribLFormat = load.invoke("glVertexAttribLFormat", );
-        glVertexBindingDivisor = load.invoke("glVertexBindingDivisor", );
+        glMultiDrawElementsIndirect = load.invoke("glMultiDrawElementsIndirect", IIPIIV);
+        glObjectLabel = load.invoke("glObjectLabel", IIIPV);
+        glObjectPtrLabel = load.invoke("glObjectPtrLabel", PIPV);
+        glPopDebugGroup = load.invoke("glPopDebugGroup", V);
+        glPushDebugGroup = load.invoke("glPushDebugGroup", IIIPV);
+        glShaderStorageBlockBinding = load.invoke("glShaderStorageBlockBinding", IIIV);
+        glTexBufferRange = load.invoke("glTexBufferRange", IIIJJV);
+        glTexStorage2DMultisample = load.invoke("glTexStorage2DMultisample", IIIIIZV);
+        glTexStorage3DMultisample = load.invoke("glTexStorage3DMultisample", IIIIIIZV);
+        glTextureView = load.invoke("glTextureView", IIIIIIIIV);
+        glVertexAttribBinding = load.invoke("glVertexAttribBinding", IIV);
+        glVertexAttribFormat = load.invoke("glVertexAttribFormat", IIIZIV);
+        glVertexAttribIFormat = load.invoke("glVertexAttribIFormat", IIIIV);
+        glVertexAttribLFormat = load.invoke("glVertexAttribLFormat", IIIIV);
+        glVertexBindingDivisor = load.invoke("glVertexBindingDivisor", IIV);
     }
 
     public static void bindVertexBuffer(int bindingIndex, int buffer, long offset, int stride) {
@@ -542,7 +542,149 @@ public sealed class GL43C extends GL42C permits GL {
         }
     }
 
-    public static void multiDrawArraysIndirect(int mode, DrawArraysIndirectCommand indirect, int drawCount, int stride) {
+    public static void multiDrawArraysIndirect(int mode, DrawArraysIndirectCommand.Buffer indirect, int drawCount, int stride) {
         multiDrawArraysIndirect(mode, indirect.rawAddress(), drawCount, stride);
+    }
+
+    public static void multiDrawElementsIndirect(int mode, int type, Addressable indirect, int drawCount, int stride) {
+        try {
+            check(glMultiDrawElementsIndirect).invoke(mode, type, indirect, drawCount, stride);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void multiDrawElementsIndirect(int mode, int type, DrawElementsIndirectCommand.Buffer indirect, int drawCount, int stride) {
+        multiDrawElementsIndirect(mode, type, indirect.rawAddress(), drawCount, stride);
+    }
+
+    public static void objectLabel(int identifier, int name, int length, Addressable label) {
+        try {
+            check(glObjectLabel).invoke(identifier, name, length, label);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void objectLabel(int identifier, int name, String label) {
+        try (var session = MemorySession.openShared()) {
+            objectLabel(identifier, name, -1, session.allocateUtf8String(label));
+        }
+    }
+
+    public static void objectPtrLabel(MemoryAddress ptr, int length, Addressable label) {
+        try {
+            check(glObjectPtrLabel).invoke(ptr, length, label);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void objectPtrLabel(MemoryAddress ptr, String label) {
+        try (var session = MemorySession.openShared()) {
+            objectPtrLabel(ptr, -1, session.allocateUtf8String(label));
+        }
+    }
+
+    public static void popDebugGroup() {
+        try {
+            check(glPopDebugGroup).invoke();
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void pushDebugGroup(int source, int id, int length, Addressable message) {
+        try {
+            check(glPushDebugGroup).invoke(source, id, length, message);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void pushDebugGroup(int source, int id, String message) {
+        try (var session = MemorySession.openShared()) {
+            pushDebugGroup(source, id, -1, session.allocateUtf8String(message));
+        }
+    }
+
+    public static void shaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {
+        try {
+            check(glShaderStorageBlockBinding).invoke(program, storageBlockIndex, storageBlockBinding);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void texBufferRange(int target, int internalFormat, int buffer, long offset, long size) {
+        try {
+            check(glTexBufferRange).invoke(target, internalFormat, buffer, offset, size);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void texStorage2DMultisample(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
+        try {
+            check(glTexStorage2DMultisample).invoke(target, samples, internalFormat, width, height, fixedSampleLocations);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void texStorage3DMultisample(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
+        try {
+            check(glTexStorage3DMultisample).invoke(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void textureView(int texture, int target, int origTexture, int internalFormat, int minLevel, int numLevels, int minLayer, int numLayers) {
+        try {
+            check(glTextureView).invoke(texture, target, origTexture, internalFormat, minLevel, numLevels, minLayer, numLayers);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void vertexAttribBinding(int attribIndex, int bindingIndex) {
+        try {
+            check(glVertexAttribBinding).invoke(attribIndex, bindingIndex);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void vertexAttribFormat(int attribIndex, int size, int type, boolean normalized, int relativeOffset) {
+        try {
+            check(glVertexAttribFormat).invoke(attribIndex, size, type, normalized, relativeOffset);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void vertexAttribIFormat(int attribIndex, int size, int type, int relativeOffset) {
+        try {
+            check(glVertexAttribIFormat).invoke(attribIndex, size, type, relativeOffset);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void vertexAttribLFormat(int attribIndex, int size, int type, int relativeOffset) {
+        try {
+            check(glVertexAttribLFormat).invoke(attribIndex, size, type, relativeOffset);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void vertexBindingDivisor(int bindingIndex, int divisor) {
+        try {
+            check(glVertexBindingDivisor).invoke(bindingIndex, divisor);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
     }
 }

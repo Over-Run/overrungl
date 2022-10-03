@@ -146,6 +146,9 @@ public class GLCaps {
         GL41C.load(load);
         GL42C.load(load);
         GL43C.load(load);
+        GL44C.load(load);
+        GL45C.load(load);
+        GL46C.load(load);
 
         int version = findCoreGL();
         if (!forwardCompatible) {
@@ -263,9 +266,9 @@ public class GLCaps {
         Ver41 = (major == 4 && minor >= 1) || major > 4 || GL41C.isSupported();
         Ver42 = (major == 4 && minor >= 2) || major > 4 || GL42C.isSupported();
         Ver43 = (major == 4 && minor >= 3) || major > 4 || GL43C.isSupported();
-        Ver44 = (major == 4 && minor >= 4) || major > 4;
-        Ver45 = (major == 4 && minor >= 5) || major > 4;
-        Ver46 = (major == 4 && minor >= 6) || major > 4;
+        Ver44 = (major == 4 && minor >= 4) || major > 4 || GL44C.isSupported();
+        Ver45 = (major == 4 && minor >= 5) || major > 4 || GL45C.isSupported();
+        Ver46 = (major == 4 && minor >= 6) || major > 4 || GL46C.isSupported();
         if (Ver46) {
             return 40006;
         }
