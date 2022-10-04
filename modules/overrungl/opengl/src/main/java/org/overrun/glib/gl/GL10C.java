@@ -540,6 +540,38 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
+    public static void readPixels(int x, int y, int width, int height, int format, int type, byte[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_BYTE, pixels.length);
+            readPixels(x, y, width, height, format, type, seg);
+            RuntimeHelper.toArray(seg, pixels);
+        }
+    }
+
+    public static void readPixels(int x, int y, int width, int height, int format, int type, short[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_SHORT, pixels.length);
+            readPixels(x, y, width, height, format, type, seg);
+            RuntimeHelper.toArray(seg, pixels);
+        }
+    }
+
+    public static void readPixels(int x, int y, int width, int height, int format, int type, int[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_INT, pixels.length);
+            readPixels(x, y, width, height, format, type, seg);
+            RuntimeHelper.toArray(seg, pixels);
+        }
+    }
+
+    public static void readPixels(int x, int y, int width, int height, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            var seg = session.allocateArray(JAVA_FLOAT, pixels.length);
+            readPixels(x, y, width, height, format, type, seg);
+            RuntimeHelper.toArray(seg, pixels);
+        }
+    }
+
     public static void scissor(int x, int y, int width, int height) {
         try {
             check(glScissor).invoke(x, y, width, height);
@@ -582,22 +614,25 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, byte[] pixels) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, pixels);
-            texImage1D(target, level, internalFormat, width, border, format, type, seg);
+            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
         }
     }
 
     public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, short[] pixels) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_SHORT, pixels);
-            texImage1D(target, level, internalFormat, width, border, format, type, seg);
+            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
         }
     }
 
     public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, int[] pixels) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, pixels);
-            texImage1D(target, level, internalFormat, width, border, format, type, seg);
+            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_INT, pixels));
+        }
+    }
+
+    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
         }
     }
 
@@ -611,22 +646,25 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, byte[] pixels) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, pixels);
-            texImage2D(target, level, internalFormat, width, height, border, format, type, seg);
+            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
         }
     }
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, short[] pixels) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_SHORT, pixels);
-            texImage2D(target, level, internalFormat, width, height, border, format, type, seg);
+            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
         }
     }
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, int[] pixels) {
         try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, pixels);
-            texImage2D(target, level, internalFormat, width, height, border, format, type, seg);
+            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_INT, pixels));
+        }
+    }
+
+    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
         }
     }
 
@@ -648,8 +686,7 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void texParameterfv(int target, int pname, float[] params) {
         try (var session = MemorySession.openShared()) {
-            var pParams = session.allocateArray(JAVA_FLOAT, params);
-            texParameterfv(target, pname, pParams);
+            texParameterfv(target, pname, session.allocateArray(JAVA_FLOAT, params));
         }
     }
 
@@ -671,8 +708,7 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void texParameteriv(int target, int pname, int[] params) {
         try (var session = MemorySession.openShared()) {
-            var pParams = session.allocateArray(JAVA_INT, params);
-            texParameteriv(target, pname, pParams);
+            texParameteriv(target, pname, session.allocateArray(JAVA_INT, params));
         }
     }
 

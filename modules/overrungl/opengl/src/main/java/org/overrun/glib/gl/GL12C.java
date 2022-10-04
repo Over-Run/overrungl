@@ -52,8 +52,8 @@ public sealed class GL12C extends GL11C permits GL13C {
     static void load(GLLoadFunc load) {
         glCopyTexSubImage3D = load.invoke("glCopyTexSubImage3D", IIIIIIIIIV);
         glDrawRangeElements = load.invoke("glDrawRangeElements", IIIIIPV);
-        glTexImage3D = load.invoke("glTexImage3D", IIIIIIIIIV);
-        glTexSubImage3D = load.invoke("glTexSubImage3D", IIIIIIIIIIV);
+        glTexImage3D = load.invoke("glTexImage3D", IIIIIIIIIPV);
+        glTexSubImage3D = load.invoke("glTexSubImage3D", IIIIIIIIIIPV);
     }
 
     public static void copyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
@@ -116,6 +116,12 @@ public sealed class GL12C extends GL11C permits GL13C {
         }
     }
 
+    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+        }
+    }
+
     public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
         try {
             check(glTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
@@ -139,6 +145,12 @@ public sealed class GL12C extends GL11C permits GL13C {
     public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
         try (var session = MemorySession.openShared()) {
             texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_INT, pixels));
+        }
+    }
+
+    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_FLOAT, pixels));
         }
     }
 }

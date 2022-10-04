@@ -27,11 +27,11 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
-import static java.lang.foreign.ValueLayout.JAVA_INT;
-import static java.lang.foreign.ValueLayout.JAVA_LONG;
+import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.check;
 import static org.overrun.glib.gl.GLCaps.checkAll;
@@ -154,6 +154,46 @@ public sealed class GL44C extends GL43C permits GL45C {
             check(glBufferStorage).invoke(target, size, data, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void bufferStorage(int target, long size, int flags) {
+        bufferStorage(target, size, MemoryAddress.NULL, flags);
+    }
+
+    public static void bufferStorage(int target, byte[] data, int flags) {
+        try (var session = MemorySession.openShared()) {
+            bufferStorage(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), flags);
+        }
+    }
+
+    public static void bufferStorage(int target, short[] data, int flags) {
+        try (var session = MemorySession.openShared()) {
+            bufferStorage(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), flags);
+        }
+    }
+
+    public static void bufferStorage(int target, int[] data, int flags) {
+        try (var session = MemorySession.openShared()) {
+            bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), flags);
+        }
+    }
+
+    public static void bufferStorage(int target, long[] data, int flags) {
+        try (var session = MemorySession.openShared()) {
+            bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), flags);
+        }
+    }
+
+    public static void bufferStorage(int target, float[] data, int flags) {
+        try (var session = MemorySession.openShared()) {
+            bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), flags);
+        }
+    }
+
+    public static void bufferStorage(int target, double[] data, int flags) {
+        try (var session = MemorySession.openShared()) {
+            bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), flags);
         }
     }
 

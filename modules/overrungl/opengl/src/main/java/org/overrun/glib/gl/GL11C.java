@@ -258,6 +258,12 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
+    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+        }
+    }
+
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
         try {
             check(glTexSubImage2D).invoke(target, level, xoffset, yoffset, width, height, format, type, pixels);
@@ -281,6 +287,12 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
         try (var session = MemorySession.openShared()) {
             texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_INT, pixels));
+        }
+    }
+
+    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
+        try (var session = MemorySession.openShared()) {
+            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_FLOAT, pixels));
         }
     }
 }
