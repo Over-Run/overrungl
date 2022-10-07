@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 /**
  * The operating system.
  *
- * @author squid233
  * @since 0.1.0
  */
 public abstract class OperatingSystem {

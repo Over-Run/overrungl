@@ -28,11 +28,9 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.overrun.glib.FunctionDescriptors;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 import java.util.regex.Pattern;
-
-import static java.lang.foreign.ValueLayout.*;
 
 /**
  * The OpenGL loader.
@@ -158,71 +156,12 @@ public class GLCaps {
             GL14.load(load);
         }
 
-        if (!findExtensionsGL(version)) return 0;
+        try (var session = MemorySession.openShared()) {
+            if (!GLExtCaps.findExtensionsGL(version, session)) return 0;
+        }
+        GLExtCaps.load(load);
 
         return version;
-    }
-
-    private static boolean getExtensions(MemorySession session,
-                                         int version,
-                                         MemorySegment outExts,
-                                         MemorySegment outNumExtsI,
-                                         MemorySegment outExtsI) {
-        if (versionMajor(version) < 3) {
-            if (GL10C.glGetString == null) {
-                return false;
-            }
-            outExts.set(ADDRESS, 0, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
-        } else {
-            if (GL30C.glGetStringi == null || GL10C.glGetIntegerv == null) {
-                return false;
-            }
-            int numExtsI = GL10C.getInteger(GLConstC.GL_NUM_EXTENSIONS);
-            var extsI = (Addressable) MemoryAddress.NULL;
-            if (numExtsI > 0) {
-                extsI = session.allocateArray(ADDRESS, numExtsI);
-            }
-            if (extsI == MemoryAddress.NULL) {
-                return false;
-            }
-            for (int index = 0; index < numExtsI; index++) {
-                var glStrTmp = GL30C.getStringi(GLConstC.GL_EXTENSIONS, index);
-                ((MemorySegment) extsI).setAtIndex(ADDRESS, index, session.allocateUtf8String(glStrTmp));
-            }
-            outNumExtsI.set(JAVA_INT, 0, numExtsI);
-            outExtsI.set(ADDRESS, 0, extsI);
-        }
-
-        return true;
-    }
-
-    static boolean hasExtension(int version, String exts, int numExtsI, String[] extsI, String ext) {
-        if (versionMajor(version) < 3) {
-            if (exts == null || ext == null) {
-                return false;
-            }
-            return exts.contains(ext);
-        } else {
-            for (int index = 0; index < numExtsI; index++) {
-                if (extsI[index].equals(ext)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private static boolean findExtensionsGL(int version) {
-        try (var session = MemorySession.openShared()) {
-            var exts = session.allocate(ADDRESS);
-            var numExtsI = session.allocate(JAVA_INT);
-            var extsI = session.allocate(ADDRESS);
-            if (!getExtensions(session, version, exts, numExtsI, extsI)) return false;
-
-            // (void) glad_gl_has_extension;
-
-            return true;
-        }
     }
 
     private static int findCoreGL() {
