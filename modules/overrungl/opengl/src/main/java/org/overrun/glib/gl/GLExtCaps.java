@@ -875,11 +875,15 @@ public class GLExtCaps {
     }
 
     static void load(GLLoadFunc load) {
-        // TODO: 5/307 extensions
+        // TODO: 8/307 extensions
         GL3DFXTbuffer.load(load);
         GLAMDDebugOutput.load(load);
         GLAMDDrawBuffersBlend.load(load);
         GLAMDFramebufferMultisampleAdvanced.load(load);
         GLAMDFramebufferSamplePositions.load(load);
+        // TODO: GLAMDGpuShaderInt64.load(load);
+        GLAMDInterleavedElements.load(load);
+        GLAMDMultiDrawIndirect.load(load);
+        GLAMDNameGenDelete.load(load);
     }
 }
