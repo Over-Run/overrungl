@@ -40,7 +40,7 @@ import java.lang.invoke.MethodType;
  * void functionName(MemoryAddress window, String[] paths);
  * }
  *
- * <h3>Pointer lifetime</h3>
+ * <h2>Pointer lifetime</h2>
  * The path array and its strings are valid until the callback function returns.
  *
  * @author squid233

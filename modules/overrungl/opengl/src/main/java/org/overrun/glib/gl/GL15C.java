@@ -29,6 +29,7 @@ import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
@@ -101,6 +102,10 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
+    public static void bufferData(int target, MemorySegment data, int usage) {
+        bufferData(target, data.byteSize(), data, usage);
+    }
+
     public static void bufferData(int target, long size, int usage) {
         bufferData(target, size, MemoryAddress.NULL, usage);
     }
@@ -147,6 +152,10 @@ public sealed class GL15C extends GL14C permits GL20C {
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
+    }
+
+    public static void bufferSubData(int target, long offset, MemorySegment data) {
+        bufferSubData(target, offset, data.byteSize(), data);
     }
 
     public static void bufferSubData(int target, long offset, byte[] data) {

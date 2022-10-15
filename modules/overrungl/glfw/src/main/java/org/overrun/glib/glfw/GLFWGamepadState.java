@@ -33,7 +33,7 @@ import java.lang.invoke.VarHandle;
 /**
  * This describes the input state of a gamepad.
  *
- * <h3>Layout</h3>
+ * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWgamepadstate {
  *     unsigned char {@link #buttons() buttons}[15];

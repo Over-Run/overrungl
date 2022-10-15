@@ -24,6 +24,8 @@
 
 package org.overrun.glib;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Optional;
@@ -50,6 +52,7 @@ public final class RuntimeHelper {
      * @param function the function descriptor of the target function.
      * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
      */
+    @Nullable
     public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
         if (symbol.address() == MemoryAddress.NULL) return null;
         return LINKER.downcallHandle(symbol, function);

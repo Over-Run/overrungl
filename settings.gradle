@@ -1,4 +1,12 @@
-rootProject.name = 'overrungl'
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/public'}
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+}
+rootProject.name = projName
 
 file('modules/overrungl/').eachDir { dir ->
     include "$dir.name"

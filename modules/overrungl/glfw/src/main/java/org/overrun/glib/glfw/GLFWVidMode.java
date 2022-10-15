@@ -35,7 +35,7 @@ import java.util.function.Supplier;
 /**
  * This describes a single video mode.
  *
- * <h3>Layout</h3>
+ * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWvidmode {
  *     int {@link #width};

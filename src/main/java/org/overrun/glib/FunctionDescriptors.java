@@ -24,6 +24,8 @@
 
 package org.overrun.glib;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.lang.foreign.Addressable;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemoryAddress;
@@ -52,7 +54,7 @@ public enum FunctionDescriptors {
     IJJIP, IJJPV, IJPIV, IPIIV, IPPIV, ISSSV, PIPPV, SSSSV, ZZZZV,
     // 6
     IBBBBV, IDDDDV, IFFFFV, IIDDDV, IIFFFV, IIIFIV, IIIIIV, IIIIPV, IIIJIV, IIIJJV, IIIPIV, IIIPPV, IIIPZV, IIIZIV,
-    IIIZPV, IIJJJV, IIPIIV, IIPIPV, IIPPPV, IPIPIV, IPIPPV, IPJIIV, ISSSSV, IZZZZV, PIIPPV,
+    IIIZPV, IIJJJV, IIPIIV, IIPIPV, IIPPPV, IPIPIV, IPIPPV, IPJIIV, IPPIPV, ISSSSV, IZIIPV, IZZZZV, PIIPPV,
     // 7
     DDDDDDV, IDDIDDV, IDDIIPV, IFFIFFV, IFFIIPV, IIDDDDV, IIFFFFV, IIIIIIV, IIIIIPV, IIIIIZV, IIIIPPV, IIIIPZV, IIIIZIV,
     IIIPIIV, IIIPPPV, IIIZIPV, IIPJIIV, IPIPIPV,
@@ -123,6 +125,7 @@ public enum FunctionDescriptors {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
      * @see RuntimeHelper#downcallSafe(Addressable, FunctionDescriptor)
      */
+    @Nullable
     public MethodHandle downcallSafe(Addressable symbol) {
         return RuntimeHelper.downcallSafe(symbol, descriptor);
     }

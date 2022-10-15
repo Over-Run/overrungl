@@ -22,42 +22,36 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl;
+package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLExtCaps;
+import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.MemoryAddress;
 import java.lang.invoke.MethodHandle;
 
 /**
- * The OpenGL loading function.
- *
- * <h3>Example</h3>
- * {@code GLCaps.load(GLFW::getProcAddress)}
+ * {@code GL_AMD_interleaved_elements}
  *
  * @author squid233
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface GLLoadFunc {
-    /**
-     * Load a function by the given name.
-     *
-     * @param procName the function name
-     * @return the function address
-     */
-    MemoryAddress invoke(String procName);
-
-    /**
-     * Load a function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
-     */
+public class GLAMDInterleavedElements {
     @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptors function) {
-        return function.downcallSafe(invoke(procName));
+    public static MethodHandle glVertexAttribParameteriAMD;
+
+    public static void load(GLLoadFunc load) {
+        if (!GLExtCaps.GL_AMD_interleaved_elements) return;
+        glVertexAttribParameteriAMD = load.invoke("glVertexAttribParameteriAMD", FunctionDescriptors.IIIV);
+    }
+
+    public static void glVertexAttribParameteriAMD(int index, int pname, int param) {
+        try {
+            GLCaps.check(glVertexAttribParameteriAMD).invoke(index, pname, param);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
     }
 }

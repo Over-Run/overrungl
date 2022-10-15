@@ -343,7 +343,7 @@ public class GLFW {
     /**
      * No error has occurred.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * Yay.
      */
     public static final int NO_ERROR = 0;
@@ -353,7 +353,7 @@ public class GLFW {
      * This occurs if a GLFW function was called that must not be called unless the
      * library is <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * Application programmer error. Initialize GLFW before calling any
      * function that requires initialization.
      */
@@ -365,7 +365,7 @@ public class GLFW {
      * current OpenGL or OpenGL ES context but no context is current on the calling
      * thread.  One such function is @ref glfwSwapInterval.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * Application programmer error. Ensure a context is current before
      * calling functions that require a current context.
      */
@@ -374,7 +374,7 @@ public class GLFW {
      * One of the arguments to the function was an invalid enum value, for example
      * requesting {@link #RED_BITS} with {@link #getWindowAttrib}.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * Application programmer error. Fix the offending call.
      */
     public static final int INVALID_ENUM = 0x00010003;
@@ -385,14 +385,14 @@ public class GLFW {
      * Requesting a valid but unavailable OpenGL or OpenGL ES version will instead
      * result in a {@link #VERSION_UNAVAILABLE} error.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * Application programmer error. Fix the offending call.
      */
     public static final int INVALID_VALUE = 0x00010004;
     /**
      * A memory allocation failed.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * A bug in GLFW or the underlying operating system. Report the bug
      * to the <a href="https://github.com/glfw/glfw/issues">issue tracker</a>.
      */
@@ -400,7 +400,7 @@ public class GLFW {
     /**
      * GLFW could not find support for the requested API on the system.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * The installed graphics driver does not support the requested
      * API, or does not support it via the chosen context creation backend.
      * Below are a few examples.
@@ -416,7 +416,7 @@ public class GLFW {
      * The requested OpenGL or OpenGL ES version (including any requested context
      * or framebuffer hints) is not available on this machine.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * The machine does not support your requirements.  If your
      * application is sufficiently flexible, downgrade your requirements and try
      * again.  Otherwise, inform the user that their machine does not match your
@@ -432,7 +432,7 @@ public class GLFW {
      * A platform-specific error occurred that does not match any of the more
      * specific categories.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * A bug or configuration error in GLFW, the underlying operating
      * system or its drivers, or a lack of required resources.  Report the issue to
      * the <a href="https://github.com/glfw/glfw/issues">issue tracker</a>.
@@ -447,7 +447,7 @@ public class GLFW {
      * If emitted when querying the clipboard, the contents of the clipboard could
      * not be converted to the requested format.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * If emitted during window creation, one or more
      * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints_hard">hard constraints</a> did not match any of the
      * available pixel formats.  If your application is sufficiently flexible,
@@ -464,13 +464,13 @@ public class GLFW {
      * A window that does not have an OpenGL or OpenGL ES context was passed to
      * a function that requires it to have one.
      *
-     * <h3>Analysis</h3>
+     * <h4>Analysis</h4>
      * Application programmer error. Fix the offending call.
      */
     public static final int NO_WINDOW_CONTEXT = 0x0001000A;
 
     /**
-     * <h3>Window related hints</h3>
+     * <h4>Window related hints</h4>
      * <ul>
      * <li>{@link #RESIZABLE}: specifies whether the windowed mode window will be resizable by the user.
      * The window will still be resizable using the {@link #setWindowSize} function.
@@ -531,7 +531,7 @@ public class GLFW {
     public static final int HOVERED = 0x0002000B;
 
     /**
-     * <h3>Framebuffer related hints</h3>
+     * <h4>Framebuffer related hints</h4>
      * <ul>
      * <li>{@link #RED_BITS}, {@link #GREEN_BITS}, {@link #BLUE_BITS}, {@link #ALPHA_BITS}, {@link #DEPTH_BITS} and {@link #STENCIL_BITS}:
      * specify the desired bit depths of the various components of the default framebuffer.
@@ -553,10 +553,10 @@ public class GLFW {
      * Possible values are {@link #TRUE} and {@link #FALSE}.
      * <p>
      * <b>Note</b><br>
-     * <b>OpenGL</b>: If enabled and supported by the system,
+     * <b>OpenGL:</b> If enabled and supported by the system,
      * the {@code GL_FRAMEBUFFER_SRGB} enable will control sRGB rendering.
      * By default, sRGB rendering will be disabled.<br>
-     * <b>OpenGL ES</b>: If enabled and supported by the system, the context will always have sRGB rendering enabled.
+     * <b>OpenGL ES:</b> If enabled and supported by the system, the context will always have sRGB rendering enabled.
      * </li>
      * <li>{@link #DOUBLEBUFFER}: specifies whether the framebuffer should be double buffered.
      * You nearly always want to use double buffering. This is a hard constraint.
@@ -587,7 +587,7 @@ public class GLFW {
     public static final int REFRESH_RATE = 0x0002100F;
 
     /**
-     * <h3>Context related hints</h3>
+     * <h4>Context related hints</h4>
      * <ul>
      * <li>{@link #CLIENT_API}: specifies which client API to create the context for.
      * Possible values are {@link #OPENGL_API}, {@link #OPENGL_ES_API} and {@link #NO_API}.
@@ -601,10 +601,10 @@ public class GLFW {
      * This can be resolved by having it load functions via {@link #getProcAddress}.
      * <p>
      * <b>Note</b><br>
-     * <b>Wayland</b>: The EGL API is the native context creation API, so this hint will have no effect.<br>
-     * <b>X11</b>: On some Linux systems, creating contexts via both the native and EGL APIs in a single process
+     * <b>Wayland:</b> The EGL API is the native context creation API, so this hint will have no effect.<br>
+     * <b>X11:</b> On some Linux systems, creating contexts via both the native and EGL APIs in a single process
      * will cause the application to segfault. Stick to one API or the other on Linux for now.<br>
-     * <b>OSMesa</b>: As its name implies, an OpenGL context created with OSMesa does not update the window contents
+     * <b>OSMesa:</b> As its name implies, an OpenGL context created with OSMesa does not update the window contents
      * when its buffers are swapped. Use OpenGL functions or the OSMesa native access functions
      * {@link GLFWNative#getOSMesaColorBuffer getOSMesaColorBuffer} and {@link GLFWNative#getOSMesaDepthBuffer getOSMesaDepthBuffer}
      * to retrieve the framebuffer contents.
@@ -621,14 +621,14 @@ public class GLFW {
      * which provide the API version of the GLFW header.
      * <p>
      * <b>Note</b><br>
-     * <b>OpenGL</b>: These hints are not hard constraints, but creation will fail if the OpenGL version
+     * <b>OpenGL:</b> These hints are not hard constraints, but creation will fail if the OpenGL version
      * of the created context is less than the one requested. It is therefore perfectly safe to use the default
      * of version 1.0 for legacy code and you will still get backwards-compatible contexts of version 3.0 and above when available.<br>
-     * <b>OpenGL ES</b>: These hints are not hard constraints, but creation will fail if the OpenGL ES version
+     * <b>OpenGL ES:</b> These hints are not hard constraints, but creation will fail if the OpenGL ES version
      * of the created context is less than the one requested. Additionally, OpenGL ES 1.x cannot be returned
      * if 2.0 or later was requested, and vice versa. This is because OpenGL ES 3.x is backward compatible with 2.0,
      * but OpenGL ES 2.0 is not backward compatible with 1.x.<br>
-     * <b>macOS</b>: The OS only supports forward-compatible core profile contexts for OpenGL versions 3.2 and later.
+     * <b>macOS:</b> The OS only supports forward-compatible core profile contexts for OpenGL versions 3.2 and later.
      * Before creating an OpenGL context of version 3.2 or later you must set the {@link #OPENGL_FORWARD_COMPAT}
      * and {@link #OPENGL_PROFILE} hints accordingly. OpenGL 3.0 and 3.1 contexts are not supported at all on macOS.
      * </li>
@@ -689,7 +689,7 @@ public class GLFW {
     public static final int CONTEXT_REVISION = 0x00022004;
 
     /**
-     * <h3>macOS specific window hints</h3>
+     * <h4>macOS specific window hints</h4>
      * <ul>
      * <li>{@link #COCOA_RETINA_FRAMEBUFFER}: specifies whether to use full resolution framebuffers on Retina displays.
      * Possible values are {@link #TRUE} and {@link #FALSE}. This is ignored on other platforms.</li>
@@ -715,7 +715,7 @@ public class GLFW {
         COCOA_GRAPHICS_SWITCHING = 0x00023003;
 
     /**
-     * <h3>X11 specific window hints</h3>
+     * <h4>X11 specific window hints</h4>
      * {@link #X11_CLASS_NAME} and {@link #X11_INSTANCE_NAME} specifies the desired ASCII encoded class and instance parts
      * of the ICCCM {@code WM_CLASS} window property. These are set with {@link #windowHintString}.
      */
@@ -723,6 +723,8 @@ public class GLFW {
         X11_INSTANCE_NAME = 0x00024002;
 
     /**
+     * value for CLIENT_API
+     *
      * @see #CLIENT_API
      */
     public static final int NO_API = 0,
@@ -730,6 +732,8 @@ public class GLFW {
         OPENGL_ES_API = 0x00030002;
 
     /**
+     * value for CONTEXT_ROBUSTNESS
+     *
      * @see #CONTEXT_ROBUSTNESS
      */
     public static final int NO_ROBUSTNESS = 0,
@@ -737,6 +741,8 @@ public class GLFW {
         LOSE_CONTEXT_ON_RESET = 0x00031002;
 
     /**
+     * value for OPENGL_PROFILE
+     *
      * @see #OPENGL_PROFILE
      */
     public static final int OPENGL_ANY_PROFILE = 0,
@@ -750,7 +756,7 @@ public class GLFW {
     public static final int RAW_MOUSE_MOTION = 0x00033005;
 
     /**
-     * <h3>Cursor mode</h3>
+     * <h4>Cursor mode</h4>
      * The {@code CURSOR} input mode provides several cursor modes for special forms of mouse motion input.
      * By default, the cursor mode is {@code CURSOR_NORMAL}, meaning the regular arrow cursor
      * (or another cursor set with {@link #setCursor}) is used and cursor motion is not limited.
@@ -828,7 +834,7 @@ public class GLFW {
      */
     public static final int JOYSTICK_HAT_BUTTONS = 0x00050001;
     /**
-     * <h3>macOS specific init hints</h3>
+     * <h4>macOS specific init hints</h4>
      * <ul>
      * <li>{@link #COCOA_CHDIR_RESOURCES}: specifies whether to set the current directory to the application
      * to the {@code Contents/Resources} subdirectory of the application's bundle, if present. Set this with {@link #initHint}.</li>
@@ -839,12 +845,18 @@ public class GLFW {
     public static final int COCOA_CHDIR_RESOURCES = 0x00051001,
         COCOA_MENUBAR = 0x00051002;
 
+    /**
+     * Don't care value.
+     */
     public static final int DONT_CARE = -1;
 
     static {
         create();
     }
 
+    /**
+     * constructor
+     */
     protected GLFW() {
         throw new IllegalStateException("Do not construct instance");
     }
@@ -886,23 +898,18 @@ public class GLFW {
      * Additional calls to this function after successful initialization but before
      * termination will return {@code TRUE} immediately.
      *
-     * <h3>Errors</h3>
-     * Possible errors include {@link #PLATFORM_ERROR}.
-     *
-     * <h3>Remarks</h3>
-     * <b>macOS</b>: This function will change the current directory of the
+     * @return {@code TRUE} if successful, or {@code FALSE} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #PLATFORM_ERROR}.
+     * @remark <b>macOS:</b> This function will change the current directory of the
      * application to the {@code Contents/Resources} subdirectory of the application's
      * bundle, if present.  This can be disabled with the
      * {@link #COCOA_CHDIR_RESOURCES} init hint.<br>
-     * <b>X11</b>: This function will set the {@code LC_CTYPE} category of the
+     *
+     * <b>X11:</b> This function will set the {@code LC_CTYPE} category of the
      * application locale according to the current environment if that category is
      * still "C".  This is because the "C" locale breaks Unicode text input.
-     *
-     * <h3>Thread safety</h3>
-     * This function must only be called from the main thread.
-     *
-     * @return {@code TRUE} if successful, or {@code FALSE} if an
-     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @thread_safety This function must only be called from the main thread.
      * @see #terminate
      */
     public static boolean init() {
@@ -928,22 +935,12 @@ public class GLFW {
      * <p>
      * This function has no effect if GLFW is not initialized.
      *
-     * <h3>Errors</h3>
-     * Possible errors include {@link #PLATFORM_ERROR}.
-     *
-     * <h3>Remarks</h3>
-     * This function may be called before {@link #init}.
-     *
-     * <h3>Warning</h3>
-     * The contexts of any remaining windows must not be current on any
+     * @errors Possible errors include {@link #PLATFORM_ERROR}.
+     * @remark This function may be called before {@link #init}.
+     * @warning The contexts of any remaining windows must not be current on any
      * other thread when this function is called.
-     *
-     * <h3>Reentrancy</h3>
-     * This function must not be called from a callback.
-     *
-     * <h3>Thread safety</h3>
-     * This function must only be called from the main thread.
-     *
+     * @reentrancy This function must not be called from a callback.
+     * @thread_safety This function must only be called from the main thread.
      * @see #init
      */
     public static void terminate() {
@@ -954,6 +951,26 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the specified init hint to the desired value.
+     * <p>
+     * This function sets hints for the next initialization of GLFW.
+     * The values you set hints to are never reset by GLFW, but they only take
+     * effect during initialization.  Once GLFW has been initialized, any values
+     * you set will be ignored until the library is terminated and initialized
+     * again.
+     * <p>
+     * Some hints are platform specific.  These may be set on any platform, but they
+     * will only affect their specific platform.  Other platforms will ignore them.
+     * Setting these hints requires no platform specific headers or functions.
+     *
+     * @param hint  The <a href="https://www.glfw.org/docs/latest/intro_guide.html#init_hints">init hint</a> to set.
+     * @param value The new value of the init hint.
+     * @errors Possible errors include {@link #INVALID_ENUM} and {@link #INVALID_VALUE}.
+     * @remark This function may be called before {@link #init}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #init() init
+     */
     public static void initHint(int hint, int value) {
         try {
             glfwInitHint.invoke(hint, value);
@@ -962,6 +979,23 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the version of the GLFW library.
+     * <p>
+     * This function retrieves the major, minor and revision numbers of the GLFW
+     * library.  It is intended for when you are using GLFW as a shared library and
+     * want to ensure that you are using the minimum required version.
+     * <p>
+     * Any or all of the version arguments may be {@link MemoryAddress#NULL NULL}.
+     *
+     * @param major Where to store the major version number, or {@link MemoryAddress#NULL NULL}.
+     * @param minor Where to store the minor version number, or {@link MemoryAddress#NULL NULL}.
+     * @param rev   Where to store the revision number, or {@link MemoryAddress#NULL NULL}.
+     * @errors None.
+     * @remark This function may be called before {@link #init}.
+     * @thread_safety This function may be called from any thread.
+     * @see #ngetVersionString() getVersionString
+     */
     public static void ngetVersion(Addressable major, Addressable minor, Addressable rev) {
         try {
             glfwGetVersion.invoke(major, minor, rev);
@@ -970,6 +1004,14 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the version of the GLFW library.
+     *
+     * @param major Where to store the major version number, or {@code null}.
+     * @param minor Where to store the minor version number, or {@code null}.
+     * @param rev   Where to store the revision number, or {@code null}.
+     * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
+     */
     public static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
         try (var session = MemorySession.openShared()) {
             var pMajor = major != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
@@ -988,6 +1030,25 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns a string describing the compile-time configuration.
+     * <p>
+     * This function returns the compile-time generated
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_version_string">version string</a>
+     * of the GLFW library binary.  It describes the version, platform, compiler and any platform-specific
+     * compile-time options.  It should not be confused with the OpenGL or OpenGL
+     * ES version string, queried with {@code GL.getString}.
+     * <p>
+     * <b>Do not use the version string</b> to parse the GLFW library version.  The
+     * {@link #ngetVersion getVersion} function provides the version of the running library
+     * binary in numerical format.
+     *
+     * @return The ASCII encoded GLFW version string.
+     * @errors None.
+     * @remark This function may be called before {@link #init}.
+     * @thread_safety This function may be called from any thread.
+     * @see #ngetVersion(Addressable, Addressable, Addressable) getVersion
+     */
     public static MemoryAddress ngetVersionString() {
         try {
             return (MemoryAddress) glfwGetVersionString.invoke();
@@ -996,10 +1057,35 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns a string describing the compile-time configuration.
+     *
+     * @return The ASCII encoded GLFW version string.
+     * @see #ngetVersionString() ngetVersionString
+     */
     public static String getVersionString() {
         return ngetVersionString().getUtf8String(0);
     }
 
+    /**
+     * Returns and clears the last error for the calling thread.
+     * <p>
+     * This function returns and clears the <a href="https://www.glfw.org/docs/latest/group__errors.html">error code</a>
+     * of the last error that occurred on the calling thread, and optionally a UTF-8 encoded
+     * human-readable description of it.  If no error has occurred since the last
+     * call, it returns {@link #NO_ERROR} (zero) and the description pointer is
+     * set to {@link MemoryAddress#NULL NULL}.
+     *
+     * @param description Where to store the error description pointer, or {@link MemoryAddress#NULL NULL}.
+     * @return The last error code for the calling thread, or {@link #NO_ERROR} (zero).
+     * @errors None.
+     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is guaranteed to be valid only until the
+     * next error occurs or the library is terminated.
+     * @remark This function may be called before {@link #init}.
+     * @thread_safety This function may be called from any thread.
+     * @see #nsetErrorCallback(Addressable) setErrorCallback
+     */
     public static int ngetError(Addressable description) {
         try {
             return (int) glfwGetError.invoke(description);
@@ -1008,6 +1094,13 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns and clears the last error for the calling thread.
+     *
+     * @param description Where to store the error description pointer, or {@code null}.
+     * @return The last error code for the calling thread, or {@link #NO_ERROR} (zero).
+     * @see #ngetError(Addressable) ngetError
+     */
     public static int getError(String @Nullable [] description) {
         try (var session = MemorySession.openShared()) {
             var pDesc = description != null ? session.allocate(ADDRESS) : MemoryAddress.NULL;
@@ -1019,6 +1112,34 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the error callback.
+     * <p>
+     * This function sets the error callback, which is called with an error code
+     * and a human-readable description each time a GLFW error occurs.
+     * <p>
+     * The error code is set before the callback is called.  Calling
+     * {@link #getError} from the error callback will return the same value as the error
+     * code argument.
+     * <p>
+     * The error callback is called on the thread where the error occurred.  If you
+     * are using GLFW from multiple threads, your error callback needs to be
+     * written accordingly.
+     * <p>
+     * Because the description string may have been generated specifically for that
+     * error, it is not guaranteed to be valid after the callback has returned.  If
+     * you wish to use it after the callback returns, you need to make a copy.
+     * <p>
+     * Once set, the error callback remains set even after the library has been
+     * terminated.
+     *
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set.
+     * @errors None.
+     * @remark This function may be called before {@link #init}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetError(Addressable) getError
+     */
     public static MemoryAddress nsetErrorCallback(Addressable callback) {
         try {
             return (MemoryAddress) glfwSetErrorCallback.invoke(callback);
@@ -1027,10 +1148,35 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the error callback.
+     *
+     * @param callback The new callback, or {@code null} to remove the currently set callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set.
+     * @see #nsetErrorCallback(Addressable) nsetErrorCallback
+     */
     public static MemoryAddress setErrorCallback(@Nullable IGLFWErrorFun callback) {
         return nsetErrorCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
     }
 
+    /**
+     * Returns the currently connected monitors.
+     * <p>
+     * This function returns an array of handles for all currently connected
+     * monitors.  The primary monitor is always first in the returned array.  If no
+     * monitors were found, this function returns {@link MemoryAddress#NULL NULL}.
+     *
+     * @param count Where to store the number of monitors in the returned array.
+     *              This is set to zero if an error occurred.
+     * @return An array of monitor handles, or {@link MemoryAddress#NULL NULL} if no monitors were found or
+     * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is guaranteed to be valid only until the
+     * monitor configuration changes or the library is terminated.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #getPrimaryMonitor() getPrimaryMonitor
+     */
     public static MemoryAddress ngetMonitors(Addressable count) {
         try {
             return (MemoryAddress) glfwGetMonitors.invoke(count);
@@ -1039,6 +1185,13 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the currently connected monitors.
+     *
+     * @return An array of monitor handles, or {@code null} if no monitors were found or
+     * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetMonitors(Addressable) ngetMonitors
+     */
     public static MemoryAddress @Nullable [] getMonitors() {
         try (var session = MemorySession.openShared()) {
             var pCount = session.allocate(JAVA_INT);
@@ -1050,6 +1203,20 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the primary monitor.
+     * <p>
+     * This function returns the primary monitor.  This is usually the monitor
+     * where elements like the task bar or global menu bar are located.
+     *
+     * @return The primary monitor, or {@link MemoryAddress#NULL NULL} if no monitors were found or if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     * @remark The primary monitor is always first in the array returned by
+     * {@link #ngetMonitors(Addressable) getMonitors}.
+     * @see #ngetMonitors(Addressable) getMonitors
+     */
     public static MemoryAddress getPrimaryMonitor() {
         try {
             return (MemoryAddress) glfwGetPrimaryMonitor.invoke();
@@ -1058,6 +1225,22 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the position of the monitor's viewport on the virtual screen.
+     * <p>
+     * This function returns the position, in screen coordinates, of the upper-left
+     * corner of the specified monitor.
+     * <p>
+     * Any or all of the position arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
+     * non-{@link MemoryAddress#NULL NULL} position arguments will be set to zero.
+     *
+     * @param monitor The monitor to query.
+     * @param xpos    Where to store the monitor x-coordinate, or {@link MemoryAddress#NULL NULL}.
+     * @param ypos    Where to store the monitor y-coordinate, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void ngetMonitorPos(MemoryAddress monitor, Addressable xpos, Addressable ypos) {
         try {
             glfwGetMonitorPos.invoke(monitor, xpos, ypos);
@@ -1066,6 +1249,14 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the position of the monitor's viewport on the virtual screen.
+     *
+     * @param monitor The monitor to query.
+     * @param xpos    Where to store the monitor x-coordinate, or {@code null}.
+     * @param ypos    Where to store the monitor y-coordinate, or {@code null}.
+     * @see #ngetMonitorPos(MemoryAddress, Addressable, Addressable) ngetMonitorPos
+     */
     public static void getMonitorPos(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
         try (var session = MemorySession.openShared()) {
             var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
@@ -1080,6 +1271,28 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the work area of the monitor.
+     * <p>
+     * This function returns the position, in screen coordinates, of the upper-left
+     * corner of the work area of the specified monitor along with the work area
+     * size in screen coordinates. The work area is defined as the area of the
+     * monitor not occluded by the operating system task bar where present. If no
+     * task bar exists then the work area is the monitor resolution in screen
+     * coordinates.
+     * <p>
+     * Any or all of the position and size arguments may be {@link MemoryAddress#NULL NULL}.  If an error
+     * occurs, all non-{@link MemoryAddress#NULL NULL} position and size arguments will be set to zero.
+     *
+     * @param monitor The monitor to query.
+     * @param xpos    Where to store the monitor x-coordinate, or {@link MemoryAddress#NULL NULL}.
+     * @param ypos    Where to store the monitor y-coordinate, or {@link MemoryAddress#NULL NULL}.
+     * @param width   Where to store the monitor width, or {@link MemoryAddress#NULL NULL}.
+     * @param height  Where to store the monitor height, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void ngetMonitorWorkarea(MemoryAddress monitor, Addressable xpos, Addressable ypos, Addressable width, Addressable height) {
         try {
             glfwGetMonitorWorkarea.invoke(monitor, xpos, ypos, width, height);
@@ -1088,6 +1301,16 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the work area of the monitor.
+     *
+     * @param monitor The monitor to query.
+     * @param xpos    Where to store the monitor x-coordinate, or {@code null}.
+     * @param ypos    Where to store the monitor y-coordinate, or {@code null}.
+     * @param width   Where to store the monitor width, or {@code null}.
+     * @param height  Where to store the monitor height, or {@code null}.
+     * @see #ngetMonitorWorkarea(MemoryAddress, Addressable, Addressable, Addressable, Addressable) ngetMonitorWorkarea
+     */
     public static void getMonitorWorkarea(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
         try (var session = MemorySession.openShared()) {
             var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
@@ -1110,6 +1333,30 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the physical size of the monitor.
+     * <p>
+     * This function returns the size, in millimetres, of the display area of the
+     * specified monitor.
+     * <p>
+     * Some systems do not provide accurate monitor size information, either
+     * because the monitor
+     * <a href="https://en.wikipedia.org/wiki/Extended_display_identification_data">EDID</a>
+     * data is incorrect or because the driver does not report it accurately.
+     * <p>
+     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
+     * non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     *
+     * @param monitor  The monitor to query.
+     * @param widthMM  Where to store the width, in millimetres, of the
+     *                 monitor's display area, or {@link MemoryAddress#NULL NULL}.
+     * @param heightMM Where to store the height, in millimetres, of the
+     *                 monitor's display area, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @remark <b>Windows:</b> On Windows 8 and earlier the physical size is calculated from
+     * the current resolution and system DPI instead of querying the monitor EDID data.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void ngetMonitorPhysicalSize(MemoryAddress monitor, Addressable widthMM, Addressable heightMM) {
         try {
             glfwGetMonitorPhysicalSize.invoke(monitor, widthMM, heightMM);
@@ -1118,6 +1365,16 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the physical size of the monitor.
+     *
+     * @param monitor  The monitor to query.
+     * @param widthMM  Where to store the width, in millimetres, of the
+     *                 monitor's display area, or {@code null}.
+     * @param heightMM Where to store the height, in millimetres, of the
+     *                 monitor's display area, or {@code null}.
+     * @see #ngetMonitorPhysicalSize(MemoryAddress, Addressable, Addressable) ngetMonitorPhysicalSize
+     */
     public static void getMonitorPhysicalSize(MemoryAddress monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
         try (var session = MemorySession.openShared()) {
             var pw = widthMM != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
@@ -1132,6 +1389,29 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the content scale for the specified monitor.
+     * <p>
+     * This function retrieves the content scale for the specified monitor.  The
+     * content scale is the ratio between the current DPI and the platform's
+     * default DPI.  This is especially important for text and any UI elements.  If
+     * the pixel dimensions of your UI scaled by this look appropriate on your
+     * machine then it should appear at a reasonable size on other machines
+     * regardless of their DPI and scaling settings.  This relies on the system DPI
+     * and scaling settings being somewhat correct.
+     * <p>
+     * The content scale may depend on both the monitor resolution and pixel
+     * density and on user settings.  It may be very different from the raw DPI
+     * calculated from the physical size and current resolution.
+     *
+     * @param monitor The monitor to query.
+     * @param xscale  Where to store the x-axis content scale, or {@link MemoryAddress#NULL NULL}.
+     * @param yscale  Where to store the y-axis content scale, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetWindowContentScale(MemoryAddress, Addressable, Addressable) getWindowContentScale
+     */
     public static void ngetMonitorContentScale(MemoryAddress monitor, Addressable xscale, Addressable yscale) {
         try {
             glfwGetMonitorContentScale.invoke(monitor, xscale, yscale);
@@ -1140,6 +1420,14 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the content scale for the specified monitor.
+     *
+     * @param monitor The monitor to query.
+     * @param xscale  Where to store the x-axis content scale, or {@code null}.
+     * @param yscale  Where to store the y-axis content scale, or {@code null}.
+     * @see #ngetMonitorContentScale(MemoryAddress, Addressable, Addressable) ngetMonitorContentScale
+     */
     public static void getMonitorContentScale(MemoryAddress monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
         try (var session = MemorySession.openShared()) {
             var px = xscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
@@ -1154,6 +1442,22 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the name of the specified monitor.
+     * <p>
+     * This function returns a human-readable name, encoded as UTF-8, of the
+     * specified monitor.  The name typically reflects the make and model of the
+     * monitor and is not guaranteed to be unique among the connected monitors.
+     *
+     * @param monitor The monitor to query.
+     * @return The UTF-8 encoded name of the monitor, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the specified monitor is
+     * disconnected or the library is terminated.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress ngetMonitorName(MemoryAddress monitor) {
         try {
             return (MemoryAddress) glfwGetMonitorName.invoke(monitor);
@@ -1162,6 +1466,14 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the name of the specified monitor.
+     *
+     * @param monitor The monitor to query.
+     * @return The UTF-8 encoded name of the monitor, or {@code null} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetMonitorName(MemoryAddress) ngetMonitorName
+     */
     @Nullable
     public static String getMonitorName(MemoryAddress monitor) {
         var pName = ngetMonitorName(monitor);

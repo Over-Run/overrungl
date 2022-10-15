@@ -39,7 +39,7 @@ import java.lang.invoke.MethodType;
  * void callbackName(int errorCode, String description);
  * }
  *
- * <h3>Pointer lifetime</h3>
+ * <h2>Pointer lifetime</h2>
  * The error description string is valid until the callback
  * function returns.
  *

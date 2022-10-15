@@ -1,6 +1,6 @@
 # OverrunGL
 
-Overrun Game Library is a set of C/C++ library bindings.
+Overrun Game Library is a set of C/C++ library bindings and native accessor.
 
 ## Goals
 

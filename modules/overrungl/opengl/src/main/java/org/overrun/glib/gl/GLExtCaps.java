@@ -24,7 +24,8 @@
 
 package org.overrun.glib.gl;
 
-import org.overrun.glib.gl.ext.*;
+import org.overrun.glib.gl.ext.GL3DFXTbuffer;
+import org.overrun.glib.gl.ext.amd.*;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -41,6 +42,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @since 0.1.0
  */
 public class GLExtCaps {
+    // region Flags
     public static boolean
         GL_3DFX_multisample, GL_3DFX_tbuffer, GL_3DFX_texture_compression_FXT1, GL_AMD_blend_minmax_factor,
         GL_AMD_conservative_depth, GL_AMD_debug_output, GL_AMD_depth_clamp_separate, GL_AMD_draw_buffers_blend,
@@ -190,6 +192,7 @@ public class GLExtCaps {
         GL_SGIX_vertex_preclip, GL_SGIX_ycrcb, GL_SGIX_ycrcb_subsample, GL_SGIX_ycrcba, GL_SGI_color_matrix, GL_SGI_color_table,
         GL_SGI_texture_color_table, GL_SUNX_constant_data, GL_SUN_convolution_border_modes, GL_SUN_global_alpha, GL_SUN_mesh_array,
         GL_SUN_slice_accum, GL_SUN_triangle_list, GL_SUN_vertex, GL_WIN_phong_shading, GL_WIN_specular_fog;
+    // endregion
 
     private static boolean getExtensions(MemorySession session,
                                          int version,
@@ -875,7 +878,7 @@ public class GLExtCaps {
     }
 
     static void load(GLLoadFunc load) {
-        // TODO: 8/307 extensions
+        // TODO: 14/307 extensions
         GL3DFXTbuffer.load(load);
         GLAMDDebugOutput.load(load);
         GLAMDDrawBuffersBlend.load(load);
@@ -885,5 +888,11 @@ public class GLExtCaps {
         GLAMDInterleavedElements.load(load);
         GLAMDMultiDrawIndirect.load(load);
         GLAMDNameGenDelete.load(load);
+        GLAMDOcclusionQueryEvent.load(load);
+        GLAMDPerformanceMonitor.load(load);
+        GLAMDSamplePositions.load(load);
+        GLAMDSparseTexture.load(load);
+        GLAMDStencilOperationExtended.load(load);
+        GLAMDVertexShaderTessellator.load(load);
     }
 }

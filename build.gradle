@@ -1,7 +1,93 @@
 project.ext.subName = ''
-project(':glfw').ext.subName = '-glfw'
-project(':opengl').ext.subName = '-opengl'
-project(':stb').ext.subName = '-stb'
+for (String p : ['glfw', 'opengl', 'stb']) {
+    project(":$p").ext.subName = "-$p"
+}
+
+enum NativePlatform {
+    WIN_32("windows", "i386", "windows-x86"),
+    WIN_64("windows", "amd64", "windows"),
+    WIN_ARM64("windows", "arm64", "windows-arm64"),
+    MACOS("os x", "amd64", "macos"),
+
+    private final String osFamilyName
+    private final String osArch
+    private final String classifier
+
+    NativePlatform(String osFamilyName, String osArch, String classifier) {
+        this.osFamilyName = osFamilyName
+        this.osArch = osArch
+        this.classifier = classifier
+    }
+
+    String getOsFamilyName() {
+        return osFamilyName
+    }
+
+    String getOsArch() {
+        return osArch
+    }
+
+    String getClassifier() {
+        return classifier
+    }
+}
+
+enum NativeBinding {
+    GLFW("glfw", "glfw3", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.MACOS),
+    STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.WIN_ARM64, NativePlatform.MACOS),
+
+    private final String name
+    private final String basename
+    private final NativePlatform[] platforms
+
+    private NativeBinding(String name, String basename, NativePlatform... platforms) {
+        this.name = name
+        this.platforms = platforms
+        this.basename = basename
+    }
+
+    @Override
+    String toString() {
+        return name
+    }
+
+    String getBasename() {
+        return basename
+    }
+
+    NativePlatform[] getPlatforms() {
+        return platforms
+    }
+}
+
+enum Artifact {
+    CORE("", "Core", null),
+    GLFW("-glfw", "Glfw", NativeBinding.GLFW),
+    OPENGL("-opengl", "Opengl", null),
+    STB("-stb", "Stb", NativeBinding.STB),
+
+    private final String artifactName
+    private final String mavenName
+    private final NativeBinding nativeBinding
+
+    Artifact(String artifactName, String mavenName, NativeBinding nativeBinding) {
+        this.artifactName = artifactName
+        this.mavenName = mavenName
+        this.nativeBinding = nativeBinding
+    }
+
+    String getArtifactName() {
+        return artifactName
+    }
+
+    String getMavenName() {
+        return mavenName
+    }
+
+    NativeBinding getNativeBinding() {
+        return nativeBinding
+    }
+}
 
 allprojects {
     apply plugin: 'java-library'
@@ -11,9 +97,9 @@ allprojects {
 
     sourceCompatibility = targetCompatibility = JavaVersion.VERSION_19
 
-    group = 'io.github.over-run'
-    archivesBaseName = "overrungl$subName"
-    version = '0.1.0-SNAPSHOT'
+    group = projGroupId
+    archivesBaseName = "$projArtifactId$subName"
+    version = projVersion
 
     repositories {
         mavenCentral()
@@ -29,15 +115,124 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
+        options.compilerArgs += '--enable-preview'
+    }
+
+    tasks.withType(Javadoc) {
+        if (options instanceof CoreJavadocOptions) {
+            options.addBooleanOption('-enable-preview', true)
+            options.addStringOption('source', sourceCompatibility.toString())
+        }
     }
 
     jar {
         manifestContentCharset 'utf-8'
         metadataCharset 'utf-8'
         from 'LICENSE'
+        manifest.attributes(
+            'Specification-Title': projName,
+            'Specification-Vendor': 'Overrun Organization',
+            'Specification-Version': '0',
+            'Implementation-Title': projName,
+            'Implementation-Vendor': 'Overrun Organization',
+            'Implementation-Version': archiveVersion
+        )
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        archiveClassifier.set 'sources'
+        from sourceSets.main.allSource, 'LICENSE'
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        archiveClassifier.set 'javadoc'
+        from javadoc, 'LICENSE'
+    }
+
+    artifacts {
+        archives javadocJar, sourcesJar
+    }
+
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    javadoc {
+        failOnError = false
+        options.encoding 'UTF-8'
+        options.charSet 'UTF-8'
+        options.author true
+        options.locale 'en-US'
+        options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
+        options.windowTitle "OverrunGL $projVersion Javadoc"
+    }
+
+    // You have to add 'OSSRH_USERNAME', 'OSSRH_PASSWORD', 'signing.keyId',
+    // 'signing.password' and 'signing.secretKeyRingFile' to
+    // GRADLE_USER_HOME/gradle.properties
+    publishing.repositories {
+        maven {
+            name = "OSSRH"
+            credentials {
+                username = project.findProperty("OSSRH_USERNAME") ?: "null"
+                password = project.findProperty("OSSRH_PASSWORD") ?: "null"
+            }
+            url = version.endsWith('-SNAPSHOT')
+                ? "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+        }
+    }
+
+    signing {
+        if (!version.endsWith('-SNAPSHOT') && Boolean.parseBoolean(System.getProperty("gpg.signing", "true")))
+            sign publishing.publications.mavenJava
     }
 
     idea.module.inheritOutputDirs = true
+}
+
+publishing.publications {
+    for (Artifact module : Artifact.values()) {
+        create("maven${module.mavenName}", MavenPublication) {
+            groupId = projGroupId
+            artifactId = "$projArtifactId${module.artifactName}"
+            version = projVersion
+            description = projDesc
+            from components.java
+            pom {
+                name = projName
+                description = projDesc
+                url = "https://github.com/$projVcs"
+                licenses {
+                    license {
+                        name = 'The MIT License'
+                        url = "https://raw.githubusercontent.com/$projVcs/$projBranch/LICENSE"
+                    }
+                }
+                organization {
+                    name = orgName
+                    url = orgUrl
+                }
+                developers {
+                    String[] prop = project.developers.split(',')
+                    for (String s : prop) {
+                        String[] dev = s.split(':', 3)
+                        developer {
+                            id = dev[0]
+                            name = dev[1]
+                            email = dev[2]
+                        }
+                    }
+                }
+                scm {
+                    connection = "https://github.com/${projVcs}.git"
+                    developerConnection = "https://github.com/${projVcs}.git"
+                    url = "https://github.com/$projVcs"
+                }
+            }
+        }
+    }
 }
 
 subprojects {

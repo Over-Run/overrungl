@@ -174,20 +174,10 @@ public class GL33Test {
             );
             //region Var handles
             var handle00 = iseq.varHandle(sequenceElement(), sequenceElement(0));
-            var handle01 = iseq.varHandle(sequenceElement(), sequenceElement(1));
-            var handle02 = iseq.varHandle(sequenceElement(), sequenceElement(2));
-            var handle03 = iseq.varHandle(sequenceElement(), sequenceElement(3));
-            var handle10 = iseq.varHandle(sequenceElement(), sequenceElement(4));
             var handle11 = iseq.varHandle(sequenceElement(), sequenceElement(5));
-            var handle12 = iseq.varHandle(sequenceElement(), sequenceElement(6));
-            var handle13 = iseq.varHandle(sequenceElement(), sequenceElement(7));
-            var handle20 = iseq.varHandle(sequenceElement(), sequenceElement(8));
-            var handle21 = iseq.varHandle(sequenceElement(), sequenceElement(9));
             var handle22 = iseq.varHandle(sequenceElement(), sequenceElement(10));
-            var handle23 = iseq.varHandle(sequenceElement(), sequenceElement(11));
             var handle30 = iseq.varHandle(sequenceElement(), sequenceElement(12));
             var handle31 = iseq.varHandle(sequenceElement(), sequenceElement(13));
-            var handle32 = iseq.varHandle(sequenceElement(), sequenceElement(14));
             var handle33 = iseq.varHandle(sequenceElement(), sequenceElement(15));
             //endregion
             var matrices = session.allocate(iseq);
@@ -204,23 +194,13 @@ public class GL33Test {
             }
             for (int i = 0; i < INSTANCE_COUNT; i++) {
                 handle00.set(matrices, i, scaling);
-                handle01.set(matrices, i, 0.0f);
-                handle02.set(matrices, i, 0.0f);
-                handle03.set(matrices, i, 0.0f);
-                handle10.set(matrices, i, 0.0f);
                 handle11.set(matrices, i, scaling);
-                handle12.set(matrices, i, 0.0f);
-                handle13.set(matrices, i, 0.0f);
-                handle20.set(matrices, i, 0.0f);
-                handle21.set(matrices, i, 0.0f);
                 handle22.set(matrices, i, 1.0f);
-                handle23.set(matrices, i, 0.0f);
                 handle30.set(matrices, i, translations[i * 2]);
                 handle31.set(matrices, i, translations[i * 2 + 1]);
-                handle32.set(matrices, i, 0.0f);
                 handle33.set(matrices, i, 1.0f);
             }
-            GL.bufferData(GL_ARRAY_BUFFER, matrices.byteSize(), matrices, GL_STATIC_DRAW);
+            GL.bufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
         }
         GL.enableVertexAttribArray(2);
         GL.enableVertexAttribArray(3);
@@ -246,6 +226,7 @@ public class GL33Test {
 
         double lastTime;
         double time;
+        double dt = 0;
 
         while (!GLFW.windowShouldClose(window)) {
             time = GLFW.getTime();
@@ -255,22 +236,22 @@ public class GL33Test {
             // Draw triangle
             GL.useProgram(program);
 
-            double rotXY = GLFW.getTime() * 0.01;
+            double rotXY = dt;
             //region Rotation matrix
             float sin = (float) Math.sin(rotXY);
             float cos = (float) Math.cos(rotXY);
-            float nm00 = pRotationMat.get(JAVA_FLOAT, 0) * cos + pRotationMat.getAtIndex(JAVA_FLOAT, 4) * sin;
-            float nm01 = pRotationMat.getAtIndex(JAVA_FLOAT, 1) * cos + pRotationMat.getAtIndex(JAVA_FLOAT, 5) * sin;
-            float nm02 = pRotationMat.getAtIndex(JAVA_FLOAT, 2) * cos + pRotationMat.getAtIndex(JAVA_FLOAT, 6) * sin;
-            float nm03 = pRotationMat.getAtIndex(JAVA_FLOAT, 3) * cos + pRotationMat.getAtIndex(JAVA_FLOAT, 7) * sin;
-            pRotationMat.setAtIndex(JAVA_FLOAT, 4, pRotationMat.get(JAVA_FLOAT, 0) * -sin + pRotationMat.getAtIndex(JAVA_FLOAT, 4) * cos);
-            pRotationMat.setAtIndex(JAVA_FLOAT, 5, pRotationMat.getAtIndex(JAVA_FLOAT, 1) * -sin + pRotationMat.getAtIndex(JAVA_FLOAT, 5) * cos);
-            pRotationMat.setAtIndex(JAVA_FLOAT, 6, pRotationMat.getAtIndex(JAVA_FLOAT, 2) * -sin + pRotationMat.getAtIndex(JAVA_FLOAT, 6) * cos);
-            pRotationMat.setAtIndex(JAVA_FLOAT, 7, pRotationMat.getAtIndex(JAVA_FLOAT, 3) * -sin + pRotationMat.getAtIndex(JAVA_FLOAT, 7) * cos);
+            float nm00 = pRotationMat.get(JAVA_FLOAT, 0) * cos + pRotationMat.get(JAVA_FLOAT, 16) * sin;
+            float nm01 = pRotationMat.get(JAVA_FLOAT, 4) * cos + pRotationMat.get(JAVA_FLOAT, 20) * sin;
+            float nm02 = pRotationMat.get(JAVA_FLOAT, 8) * cos + pRotationMat.get(JAVA_FLOAT, 24) * sin;
+            float nm03 = pRotationMat.get(JAVA_FLOAT, 12) * cos + pRotationMat.get(JAVA_FLOAT, 28) * sin;
+            pRotationMat.set(JAVA_FLOAT, 16, pRotationMat.get(JAVA_FLOAT, 0) * -sin + pRotationMat.get(JAVA_FLOAT, 16) * cos);
+            pRotationMat.set(JAVA_FLOAT, 20, pRotationMat.get(JAVA_FLOAT, 4) * -sin + pRotationMat.get(JAVA_FLOAT, 20) * cos);
+            pRotationMat.set(JAVA_FLOAT, 24, pRotationMat.get(JAVA_FLOAT, 8) * -sin + pRotationMat.get(JAVA_FLOAT, 24) * cos);
+            pRotationMat.set(JAVA_FLOAT, 28, pRotationMat.get(JAVA_FLOAT, 12) * -sin + pRotationMat.get(JAVA_FLOAT, 28) * cos);
             pRotationMat.set(JAVA_FLOAT, 0, nm00);
-            pRotationMat.setAtIndex(JAVA_FLOAT, 1, nm01);
-            pRotationMat.setAtIndex(JAVA_FLOAT, 2, nm02);
-            pRotationMat.setAtIndex(JAVA_FLOAT, 3, nm03);
+            pRotationMat.set(JAVA_FLOAT, 4, nm01);
+            pRotationMat.set(JAVA_FLOAT, 8, nm02);
+            pRotationMat.set(JAVA_FLOAT, 12, nm03);
             //endregion
 
             GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
@@ -285,7 +266,7 @@ public class GL33Test {
 
             lastTime = time;
             time = GLFW.getTime();
-            double dt = time - lastTime;
+            dt = time - lastTime;
             GLFW.setWindowTitle(window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
         }
 

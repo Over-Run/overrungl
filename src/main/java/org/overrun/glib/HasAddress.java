@@ -22,37 +22,31 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext;
+package org.overrun.glib;
 
-import org.jetbrains.annotations.Nullable;
-import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLExtCaps;
-import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
-
-import static org.overrun.glib.gl.GLCaps.check;
+import java.lang.foreign.Addressable;
 
 /**
- * {@code GL_AMD_interleaved_elements}
+ * An object that has an {@link Addressable} value.
  *
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDInterleavedElements {
-    @Nullable
-    public static MethodHandle glVertexAttribParameteriAMD;
+@FunctionalInterface
+public interface HasAddress {
+    /**
+     * The raw address value.
+     *
+     * @return the address
+     */
+    Addressable rawAddress();
 
-    public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_interleaved_elements) return;
-        glVertexAttribParameteriAMD = load.invoke("glVertexAttribParameteriAMD", FunctionDescriptors.IIIV);
-    }
-
-    public static void glVertexAttribParameteriAMD(int index, int pname, int param) {
-        try {
-            check(glVertexAttribParameteriAMD).invoke(index, pname, param);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
-        }
+    /**
+     * The address value. Defaulted to the {@link #rawAddress() raw address}.
+     *
+     * @return the address
+     */
+    default Addressable address() {
+        return rawAddress().address();
     }
 }

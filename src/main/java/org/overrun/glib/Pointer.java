@@ -8,7 +8,7 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public class Pointer {
+public class Pointer implements HasAddress {
     /**
      * The pointer address.
      */
@@ -34,6 +34,7 @@ public class Pointer {
      *
      * @return the address
      */
+    @Override
     public Addressable rawAddress() {
         return address;
     }
@@ -43,6 +44,7 @@ public class Pointer {
      *
      * @return the memory address
      */
+    @Override
     public MemoryAddress address() {
         return rawAddress().address();
     }

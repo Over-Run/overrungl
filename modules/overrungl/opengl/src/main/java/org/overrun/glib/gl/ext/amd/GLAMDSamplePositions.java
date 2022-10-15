@@ -22,47 +22,45 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext;
+package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
 import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySession;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
-import static org.overrun.glib.gl.GLCaps.check;
-
 /**
- * {@code GL_AMD_multi_draw_indirect}
+ * {@code GL_AMD_sample_positions}
  *
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDMultiDrawIndirect {
+public class GLAMDSamplePositions {
     @Nullable
-    public static MethodHandle glMultiDrawArraysIndirectAMD, glMultiDrawElementsIndirectAMD;
+    public static MethodHandle glSetMultisamplefvAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_multi_draw_indirect) return;
-        glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
-        glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
+        if (!GLExtCaps.GL_AMD_sample_positions) return;
+        glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", FunctionDescriptors.IIPV);
     }
 
-    public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
+    public static void glSetMultisamplefvAMD(int pname, int index, Addressable val) {
         try {
-            check(glMultiDrawArraysIndirectAMD).invoke(mode, indirect, primCount, stride);
+            GLCaps.check(glSetMultisamplefvAMD).invoke(pname, index, val);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
     }
 
-    public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
-        try {
-            check(glMultiDrawElementsIndirectAMD).invoke(mode, type, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+    public static void glSetMultisamplefvAMD(int pname, int index, float[] val) {
+        try (var session = MemorySession.openShared()) {
+            glSetMultisamplefvAMD(pname, index, session.allocateArray(ValueLayout.JAVA_FLOAT, val));
         }
     }
 }

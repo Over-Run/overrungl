@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext;
+package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;

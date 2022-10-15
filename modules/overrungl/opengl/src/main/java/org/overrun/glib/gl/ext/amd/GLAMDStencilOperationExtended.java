@@ -22,45 +22,34 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext;
+package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
 import java.lang.invoke.MethodHandle;
 
-import static org.overrun.glib.FunctionDescriptors.IIIIIIV;
-import static org.overrun.glib.gl.GLCaps.check;
-
 /**
- * {@code GL_AMD_framebuffer_multisample_advanced}
+ * {@code GL_AMD_stencil_operation_extended}
  *
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDFramebufferMultisampleAdvanced {
+public class GLAMDStencilOperationExtended {
     @Nullable
-    public static MethodHandle
-        glNamedRenderbufferStorageMultisampleAdvancedAMD, glRenderbufferStorageMultisampleAdvancedAMD;
+    public static MethodHandle glStencilOpValueAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_framebuffer_multisample_advanced) return;
-        glNamedRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glNamedRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
-        glRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
+        if (!GLExtCaps.GL_AMD_stencil_operation_extended) return;
+        glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", FunctionDescriptors.IIV);
     }
 
-    public static void glNamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalFormat, int width, int height) {
+    public static void glStencilOpValueAMD(int face, int value) {
         try {
-            check(glNamedRenderbufferStorageMultisampleAdvancedAMD).invoke(renderbuffer, samples, storageSamples, internalFormat, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
-        }
-    }
-
-    public static void glRenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalFormat, int width, int height) {
-        try {
-            check(glRenderbufferStorageMultisampleAdvancedAMD).invoke(target, samples, storageSamples, internalFormat, width, height);
+            GLCaps.check(glStencilOpValueAMD).invoke(face, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }

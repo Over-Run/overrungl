@@ -34,7 +34,7 @@ import java.lang.invoke.VarHandle;
  * This describes a single 2D image. See the documentation for each related
  * function what the expected pixel format is.
  *
- * <h3>Layout</h3>
+ * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWimage {
  *     int {@link #width() width};

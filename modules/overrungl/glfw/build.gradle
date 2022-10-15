@@ -1,0 +1,10 @@
+tasks.withType(Javadoc) {
+    if (options instanceof StandardJavadocDocletOptions) {
+        options.tags += 'errors:m:Errors:'
+        options.tags += 'remark:m:Remarks:'
+        options.tags += 'thread_safety:m:Thread safety:'
+        options.tags += 'warning:m:Warning:'
+        options.tags += 'reentrancy:m:Reentrancy:'
+        options.tags += 'pointer_lifetime:m:Pointer lifetime:'
+    }
+}

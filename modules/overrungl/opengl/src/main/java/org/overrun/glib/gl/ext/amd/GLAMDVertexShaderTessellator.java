@@ -22,42 +22,46 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl;
+package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GLExtCaps;
+import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.MemoryAddress;
 import java.lang.invoke.MethodHandle;
 
+import static org.overrun.glib.gl.GLCaps.check;
+
 /**
- * The OpenGL loading function.
- *
- * <h3>Example</h3>
- * {@code GLCaps.load(GLFW::getProcAddress)}
+ * {@code GL_AMD_vertex_shader_tessellator}
  *
  * @author squid233
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface GLLoadFunc {
-    /**
-     * Load a function by the given name.
-     *
-     * @param procName the function name
-     * @return the function address
-     */
-    MemoryAddress invoke(String procName);
-
-    /**
-     * Load a function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
-     */
+public class GLAMDVertexShaderTessellator {
     @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptors function) {
-        return function.downcallSafe(invoke(procName));
+    public static MethodHandle glTessellationFactorAMD, glTessellationModeAMD;
+
+    public static void load(GLLoadFunc load) {
+        if (!GLExtCaps.GL_AMD_vertex_shader_tessellator) return;
+        glTessellationFactorAMD = load.invoke("glTessellationFactorAMD", FunctionDescriptors.FV);
+        glTessellationModeAMD = load.invoke("glTessellationModeAMD", FunctionDescriptors.IV);
+    }
+
+    public static void glTessellationFactorAMD(float factor) {
+        try {
+            check(glTessellationFactorAMD).invoke(factor);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    public static void glTessellationModeAMD(int mode) {
+        try {
+            check(glTessellationModeAMD).invoke(mode);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
     }
 }
