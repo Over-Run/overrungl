@@ -81,23 +81,29 @@ enum NativeBinding {
 }
 
 enum Artifact {
-    CORE("overrungl", "Core", null),
-    GLFW("overrungl-glfw", "Glfw", NativeBinding.GLFW),
-    OPENGL("overrungl-opengl", "Opengl", null),
-    STB("overrungl-stb", "Stb", NativeBinding.STB),
+    CORE("overrungl", null, "Core", null),
+    GLFW("overrungl-glfw", ":glfw", "Glfw", NativeBinding.GLFW),
+    OPENGL("overrungl-opengl", ":opengl", "Opengl", null),
+    STB("overrungl-stb", ":stb", "Stb", NativeBinding.STB),
 
     private final String artifactName
+    private final String subprojectName
     private final String mavenName
     private final NativeBinding nativeBinding
 
-    Artifact(String artifactName, String mavenName, NativeBinding nativeBinding) {
+    Artifact(String artifactName, String subprojectName, String mavenName, NativeBinding nativeBinding) {
         this.artifactName = artifactName
+        this.subprojectName = subprojectName
         this.mavenName = mavenName
         this.nativeBinding = nativeBinding
     }
 
     String getArtifactName() {
         return artifactName
+    }
+
+    String getSubprojectName() {
+        return subprojectName
     }
 
     String getMavenName() {
@@ -208,7 +214,7 @@ publishing.publications {
             artifactId = module.artifactName
             version = projVersion
             description = projDesc
-            from components.java
+            artifact(module.subprojectName != null ? project(module.subprojectName).jar : jar)
             if (module.nativeBinding != null) {
                 for (NativePlatform platform : module.nativeBinding.platforms) {
                     String nativeFn = module.nativeFilename(platform)
