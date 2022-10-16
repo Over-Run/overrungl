@@ -14,6 +14,39 @@ Our goal is to support these libraries with full document:
 |:-----------------------------------------:|
 | <progress value="45" max="100" /> **45%** |
 
+## Publishing
+
+To publish this library, you need a GPG key and the write permission of Maven Central.
+
+### Packing Natives
+
+The build script can put the native libraries into jars.
+
+The tree structure of libraries is:
+
+- glfw
+    - os x
+        - amd64
+            - libglfw3.dylib
+        - arm64
+            - libglfw3.dylib
+    - windows
+        - amd64
+            - glfw3.dll
+        - i386
+            - glfw3.dll
+- stb
+    - os x
+        - amd64
+            - libstb.dylib
+    - windows
+        - amd64
+            - stb.dll
+        - arm64
+            - stb.dll
+        - i386
+            - stb.dll
+
 ## Additional
 
 OpenGL docs can be found [here](https://docs.gl/).

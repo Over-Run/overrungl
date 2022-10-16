@@ -4,19 +4,27 @@ for (String p : ['glfw', 'opengl', 'stb']) {
 }
 
 enum NativePlatform {
-    WIN_32("windows", "i386", "windows-x86"),
-    WIN_64("windows", "amd64", "windows"),
-    WIN_ARM64("windows", "arm64", "windows-arm64"),
-    MACOS("os x", "amd64", "macos"),
+    WIN_32("windows", "i386", "windows-x86", "", ".dll", "Win32"),
+    WIN_64("windows", "amd64", "windows", "", ".dll", "Win64"),
+    WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
+    MACOS("os x", "amd64", "macos", "lib", ".dylib", "Macos"),
+    MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64"),
 
     private final String osFamilyName
     private final String osArch
     private final String classifier
+    private final String nativeLibPrefix
+    private final String nativeLibSuffix
+    private final String taskSuffix
 
-    NativePlatform(String osFamilyName, String osArch, String classifier) {
+    NativePlatform(String osFamilyName, String osArch, String classifier,
+                   String nativeLibPrefix, String nativeLibSuffix, String taskSuffix) {
         this.osFamilyName = osFamilyName
         this.osArch = osArch
-        this.classifier = classifier
+        this.classifier = "natives-$classifier"
+        this.nativeLibPrefix = nativeLibPrefix
+        this.nativeLibSuffix = nativeLibSuffix
+        this.taskSuffix = taskSuffix
     }
 
     String getOsFamilyName() {
@@ -30,10 +38,22 @@ enum NativePlatform {
     String getClassifier() {
         return classifier
     }
+
+    String getNativeLibPrefix() {
+        return nativeLibPrefix
+    }
+
+    String getNativeLibSuffix() {
+        return nativeLibSuffix
+    }
+
+    String getTaskSuffix() {
+        return taskSuffix
+    }
 }
 
 enum NativeBinding {
-    GLFW("glfw", "glfw3", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.MACOS),
+    GLFW("glfw", "glfw3", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
     STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.WIN_ARM64, NativePlatform.MACOS),
 
     private final String name
@@ -61,10 +81,10 @@ enum NativeBinding {
 }
 
 enum Artifact {
-    CORE("", "Core", null),
-    GLFW("-glfw", "Glfw", NativeBinding.GLFW),
-    OPENGL("-opengl", "Opengl", null),
-    STB("-stb", "Stb", NativeBinding.STB),
+    CORE("overrungl", "Core", null),
+    GLFW("overrungl-glfw", "Glfw", NativeBinding.GLFW),
+    OPENGL("overrungl-opengl", "Opengl", null),
+    STB("overrungl-stb", "Stb", NativeBinding.STB),
 
     private final String artifactName
     private final String mavenName
@@ -86,6 +106,11 @@ enum Artifact {
 
     NativeBinding getNativeBinding() {
         return nativeBinding
+    }
+
+    String nativeFilename(NativePlatform platform) {
+        if (nativeBinding == null) return null
+        return "$nativeBinding/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
     }
 }
 
@@ -168,25 +193,9 @@ allprojects {
         options.windowTitle "OverrunGL $projVersion Javadoc"
     }
 
-    // You have to add 'OSSRH_USERNAME', 'OSSRH_PASSWORD', 'signing.keyId',
-    // 'signing.password' and 'signing.secretKeyRingFile' to
-    // GRADLE_USER_HOME/gradle.properties
-    publishing.repositories {
-        maven {
-            name = "OSSRH"
-            credentials {
-                username = project.findProperty("OSSRH_USERNAME") ?: "null"
-                password = project.findProperty("OSSRH_PASSWORD") ?: "null"
-            }
-            url = version.endsWith('-SNAPSHOT')
-                ? "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-                : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-        }
-    }
-
     signing {
         if (!version.endsWith('-SNAPSHOT') && Boolean.parseBoolean(System.getProperty("gpg.signing", "true")))
-            sign publishing.publications.mavenJava
+            sign publishing.publications
     }
 
     idea.module.inheritOutputDirs = true
@@ -196,10 +205,26 @@ publishing.publications {
     for (Artifact module : Artifact.values()) {
         create("maven${module.mavenName}", MavenPublication) {
             groupId = projGroupId
-            artifactId = "$projArtifactId${module.artifactName}"
+            artifactId = module.artifactName
             version = projVersion
             description = projDesc
             from components.java
+            if (module.nativeBinding != null) {
+                for (NativePlatform platform : module.nativeBinding.platforms) {
+                    String nativeFn = module.nativeFilename(platform)
+                    String nativeParentFn = new File(nativeFn).parent
+                    File file = new File("${rootProject.projectDir}/natives/$nativeFn")
+                    if (file.exists()) {
+                        artifact(tasks.create("nativeJar${module.mavenName}${platform.taskSuffix}", Jar) {
+                            archiveClassifier.set platform.classifier
+                            archiveBaseName = module.artifactName
+                            from(file) { into nativeParentFn }
+                        }) {
+                            classifier = platform.classifier
+                        }
+                    }
+                }
+            }
             pom {
                 name = projName
                 description = projDesc
@@ -230,13 +255,47 @@ publishing.publications {
                     developerConnection = "https://github.com/${projVcs}.git"
                     url = "https://github.com/$projVcs"
                 }
+                if (module != Artifact.CORE) {
+                    withXml {
+                        def dependencies = asNode().appendNode("dependencies")
+                        def dependency = dependencies.appendNode("dependency")
+                        dependency.appendNode("groupId", "io.github.over-run")
+                        dependency.appendNode("artifactId", "overrungl")
+                        dependency.appendNode("version", project.version)
+                        dependency.appendNode("scope", "compile")
+                    }
+                }
             }
         }
+    }
+}
+
+// You have to add 'OSSRH_USERNAME', 'OSSRH_PASSWORD', 'signing.keyId',
+// 'signing.password' and 'signing.secretKeyRingFile' to
+// GRADLE_USER_HOME/gradle.properties
+publishing.repositories {
+    maven {
+        name = "OSSRH"
+        credentials {
+            username = project.findProperty("OSSRH_USERNAME") ?: "null"
+            password = project.findProperty("OSSRH_PASSWORD") ?: "null"
+        }
+        url = version.endsWith('-SNAPSHOT')
+            ? "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
     }
 }
 
 subprojects {
     dependencies {
         implementation rootProject
+    }
+}
+
+dependencies {
+    constraints {
+        for (Artifact module : Artifact.values()) {
+            api "io.github.over-run:${module.artifactName}:$version"
+        }
     }
 }
