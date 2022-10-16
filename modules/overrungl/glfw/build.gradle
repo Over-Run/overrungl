@@ -1,4 +1,4 @@
-tasks.withType(Javadoc) {
+tasks.withType(Javadoc).configureEach {
     if (options instanceof StandardJavadocDocletOptions) {
         options.tags += 'errors:m:Errors:'
         options.tags += 'remark:m:Remarks:'

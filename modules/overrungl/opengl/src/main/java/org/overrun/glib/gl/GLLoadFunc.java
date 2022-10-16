@@ -33,7 +33,7 @@ import java.lang.invoke.MethodHandle;
 /**
  * The OpenGL loading function.
  *
- * <h3>Example</h3>
+ * <h2>Example</h2>
  * {@code GLCaps.load(GLFW::getProcAddress)}
  *
  * @author squid233

@@ -37,7 +37,7 @@ import java.lang.invoke.VarHandle;
 /**
  * The IO callback of STB image.
  *
- * <h3>Layout</h3>
+ * <h2>Layout</h2>
  * <pre><code>
  * struct stbi_io_callbacks {
  *     int (*{@link #read() read})(void* user, char* data, int size);

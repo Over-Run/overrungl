@@ -33,7 +33,7 @@ import java.lang.invoke.VarHandle;
 /**
  * The OpenGL 4.2 draw arrays indirect command.
  *
- * <h3>Layout</h3>
+ * <h2>Layout</h2>
  * <pre><code>
  * struct DrawArraysIndirectCommand {
  *     unsigned int {@link #count() count};

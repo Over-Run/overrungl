@@ -42,6 +42,9 @@ import static org.overrun.glib.gl.GLCaps.*;
  * @since 0.1.0
  */
 public final class GL10 extends GL10C {
+    /**
+     * Method handles
+     */
     @Nullable
     public static MethodHandle
         glAccum, glAlphaFunc, glBegin, glBitmap, glCallList, glCallLists, glClearAccum, glClearIndex, glClipPlane,

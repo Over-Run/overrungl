@@ -144,12 +144,12 @@ allprojects {
         compileOnly 'org.jetbrains:annotations:23.0.0'
     }
 
-    tasks.withType(JavaCompile) {
+    tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
         options.compilerArgs += '--enable-preview'
     }
 
-    tasks.withType(Javadoc) {
+    tasks.withType(Javadoc).configureEach {
         if (options instanceof CoreJavadocOptions) {
             options.addBooleanOption('-enable-preview', true)
             options.addStringOption('source', sourceCompatibility.toString())
@@ -214,7 +214,23 @@ publishing.publications {
             artifactId = module.artifactName
             version = projVersion
             description = projDesc
-            artifact(module.subprojectName != null ? project(module.subprojectName).jar : jar)
+            if (module.subprojectName != null) {
+                artifact project(module.subprojectName).jar
+                artifact(project(module.subprojectName).sourcesJar) {
+                    classifier = 'sources'
+                }
+                artifact(project(module.subprojectName).javadocJar) {
+                    classifier = 'javadoc'
+                }
+            } else {
+                artifact jar
+                artifact(sourcesJar) {
+                    classifier = 'sources'
+                }
+                artifact(javadocJar) {
+                    classifier = 'javadoc'
+                }
+            }
             if (module.nativeBinding != null) {
                 for (NativePlatform platform : module.nativeBinding.platforms) {
                     String nativeFn = module.nativeFilename(platform)
