@@ -1,5 +1,16 @@
-project.ext.subName = ''
-for (String p : ['glfw', 'opengl', 'stb']) {
+import org.w3c.dom.Node
+
+plugins {
+    id 'java-platform'
+    id 'maven-publish'
+}
+
+group = projGroupId
+version = projVersion
+
+project(":core").ext.subName = ''
+for (String p : ['glfw', 'opengl', 'stb',
+                 'samples']) {
     project(":$p").ext.subName = "-$p"
 }
 
@@ -81,18 +92,31 @@ enum NativeBinding {
 }
 
 enum Artifact {
-    CORE("overrungl", null, "Core", null),
-    GLFW("overrungl-glfw", ":glfw", "Glfw", NativeBinding.GLFW),
-    OPENGL("overrungl-opengl", ":opengl", "Opengl", null),
-    STB("overrungl-stb", ":stb", "Stb", NativeBinding.STB),
+    CORE("overrungl", "OverrunGL",
+        "The OverrunGL core library.",
+        ":core", "Core", null),
+    GLFW("overrungl-glfw", "OverrunGL - GLFW bindings",
+        "A multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.",
+        ":glfw", "Glfw", NativeBinding.GLFW),
+    OPENGL("overrungl-opengl", "OverrunGL - OpenGL bindings",
+        "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
+        ":opengl", "Opengl", null),
+    STB("overrungl-stb", "OverrunGL - stb bindings",
+        "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
+        ":stb", "Stb", NativeBinding.STB),
 
     private final String artifactName
+    private final String projectName
+    private final String projectDescription
     private final String subprojectName
     private final String mavenName
     private final NativeBinding nativeBinding
 
-    Artifact(String artifactName, String subprojectName, String mavenName, NativeBinding nativeBinding) {
+    Artifact(String artifactName, String projectName, String projectDescription,
+             String subprojectName, String mavenName, NativeBinding nativeBinding) {
         this.artifactName = artifactName
+        this.projectName = projectName
+        this.projectDescription = projectDescription
         this.subprojectName = subprojectName
         this.mavenName = mavenName
         this.nativeBinding = nativeBinding
@@ -100,6 +124,14 @@ enum Artifact {
 
     String getArtifactName() {
         return artifactName
+    }
+
+    String getProjectName() {
+        return projectName
+    }
+
+    String getProjectDescription() {
+        return projectDescription
     }
 
     String getSubprojectName() {
@@ -120,11 +152,10 @@ enum Artifact {
     }
 }
 
-allprojects {
+subprojects {
     apply plugin: 'java-library'
     apply plugin: 'idea'
     apply plugin: 'signing'
-    apply plugin: 'maven-publish'
 
     sourceCompatibility = targetCompatibility = JavaVersion.VERSION_19
 
@@ -142,6 +173,9 @@ allprojects {
 
     dependencies {
         compileOnly 'org.jetbrains:annotations:23.0.0'
+        if (project.name != "core") {
+            implementation project(':core')
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {
@@ -207,29 +241,52 @@ allprojects {
     idea.module.inheritOutputDirs = true
 }
 
+void setupBom(MavenPom pom, String pomName, String pomDescription, String pomPackaging) {
+    pom.name.set pomName
+    pom.description.set pomDescription
+    pom.url.set "https://github.com/$projVcs"
+    pom.packaging = pomPackaging
+    pom.licenses {
+        license {
+            name.set 'The MIT License'
+            url.set "https://raw.githubusercontent.com/$projVcs/$projBranch/LICENSE"
+        }
+    }
+    pom.organization {
+        name.set orgName
+        url.set orgUrl
+    }
+    pom.developers {
+        String[] prop = project.developers.split(',')
+        for (String s : prop) {
+            String[] dev = s.split(':', 3)
+            developer {
+                id.set dev[0]
+                name.set dev[1]
+                email.set dev[2]
+            }
+        }
+    }
+    pom.scm {
+        connection.set "https://github.com/${projVcs}.git"
+        developerConnection.set "https://github.com/${projVcs}.git"
+        url.set "https://github.com/$projVcs"
+    }
+}
+
 publishing.publications {
     for (Artifact module : Artifact.values()) {
         create("maven${module.mavenName}", MavenPublication) {
             groupId = projGroupId
             artifactId = module.artifactName
             version = projVersion
-            description = projDesc
-            if (module.subprojectName != null) {
-                artifact project(module.subprojectName).jar
-                artifact(project(module.subprojectName).sourcesJar) {
-                    classifier = 'sources'
-                }
-                artifact(project(module.subprojectName).javadocJar) {
-                    classifier = 'javadoc'
-                }
-            } else {
-                artifact jar
-                artifact(sourcesJar) {
-                    classifier = 'sources'
-                }
-                artifact(javadocJar) {
-                    classifier = 'javadoc'
-                }
+            description = module.projectDescription
+            artifact project(module.subprojectName).jar
+            artifact(project(module.subprojectName).sourcesJar) {
+                classifier = 'sources'
+            }
+            artifact(project(module.subprojectName).javadocJar) {
+                classifier = 'javadoc'
             }
             if (module.nativeBinding != null) {
                 for (NativePlatform platform : module.nativeBinding.platforms) {
@@ -239,7 +296,7 @@ publishing.publications {
                     if (file.exists()) {
                         artifact(tasks.create("nativeJar${module.mavenName}${platform.taskSuffix}", Jar) {
                             archiveClassifier.set platform.classifier
-                            archiveBaseName = module.artifactName
+                            archiveBaseName.set module.artifactName
                             from(file) { into nativeParentFn }
                         }) {
                             classifier = platform.classifier
@@ -248,35 +305,7 @@ publishing.publications {
                 }
             }
             pom {
-                name = projName
-                description = projDesc
-                url = "https://github.com/$projVcs"
-                licenses {
-                    license {
-                        name = 'The MIT License'
-                        url = "https://raw.githubusercontent.com/$projVcs/$projBranch/LICENSE"
-                    }
-                }
-                organization {
-                    name = orgName
-                    url = orgUrl
-                }
-                developers {
-                    String[] prop = project.developers.split(',')
-                    for (String s : prop) {
-                        String[] dev = s.split(':', 3)
-                        developer {
-                            id = dev[0]
-                            name = dev[1]
-                            email = dev[2]
-                        }
-                    }
-                }
-                scm {
-                    connection = "https://github.com/${projVcs}.git"
-                    developerConnection = "https://github.com/${projVcs}.git"
-                    url = "https://github.com/$projVcs"
-                }
+                setupBom(it, module.projectName, module.projectDescription, "jar")
                 if (module != Artifact.CORE) {
                     withXml {
                         def dependencies = asNode().appendNode("dependencies")
@@ -287,6 +316,52 @@ publishing.publications {
                         dependency.appendNode("scope", "compile")
                     }
                 }
+            }
+        }
+    }
+    create("overrunglBOM", MavenPublication) {
+        from(components.javaPlatform)
+        artifactId = "overrungl-bom"
+
+        pom {
+            setupBom(it, "OverrunGL BOM", "OverrunGL Bill of Materials.", "pom")
+
+            withXml {
+                Node dependencyManagement = asElement().getElementsByTagName("dependencyManagement").item(0)
+                Node dependencies = asElement().getElementsByTagName("dependencies").item(0)
+                for (Artifact module : Artifact.values()) {
+                    if (module.nativeBinding != null) {
+                        for (NativePlatform platform : module.nativeBinding.platforms) {
+                            Node dependency = dependencies.appendChild(dependencies.ownerDocument.createElement("dependency"))
+                            Node groupId = dependency.appendChild(dependency.ownerDocument.createElement("groupId"))
+                            groupId.textContent = "io.github.over-run"
+                            dependency.appendChild(groupId)
+                            Node artifactId = dependency.appendChild(dependency.ownerDocument.createElement("artifactId"))
+                            artifactId.textContent = module.artifactName
+                            dependency.appendChild(artifactId)
+                            Node version = dependency.appendChild(dependency.ownerDocument.createElement("version"))
+                            version.textContent = project.version as String
+                            dependency.appendChild(version)
+                            Node classifier = dependency.appendChild(dependency.ownerDocument.createElement("classifier"))
+                            classifier.textContent = platform.classifier
+                            dependency.appendChild(classifier)
+                        }
+                    } else {
+                        Node dependency = dependencies.appendChild(dependencies.ownerDocument.createElement("dependency"))
+                        Node groupId = dependency.appendChild(dependency.ownerDocument.createElement("groupId"))
+                        groupId.textContent = "io.github.over-run"
+                        dependency.appendChild(groupId)
+                        Node artifactId = dependency.appendChild(dependency.ownerDocument.createElement("artifactId"))
+                        artifactId.textContent = module.artifactName
+                        dependency.appendChild(artifactId)
+                        Node version = dependency.appendChild(dependency.ownerDocument.createElement("version"))
+                        version.textContent = project.version as String
+                        dependency.appendChild(version)
+                    }
+                }
+
+                // Workaround for https://github.com/gradle/gradle/issues/7529
+                asNode()
             }
         }
     }
@@ -305,12 +380,6 @@ publishing.repositories {
         url = version.endsWith('-SNAPSHOT')
             ? "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-    }
-}
-
-subprojects {
-    dependencies {
-        implementation rootProject
     }
 }
 

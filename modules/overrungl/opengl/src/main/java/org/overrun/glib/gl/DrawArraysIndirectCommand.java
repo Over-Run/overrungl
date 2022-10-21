@@ -91,7 +91,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the instance
      */
     public static Buffer create(MemorySession session, long count) {
-        return new Buffer(session.allocateArray(LAYOUT, count), session);
+        return new Buffer(session.allocateArray(LAYOUT, count), session, count);
     }
 
     /**
@@ -186,15 +186,27 @@ public class DrawArraysIndirectCommand extends Pointer {
             pPrimCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount")),
             pFirst = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("first")),
             pBaseInstance = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
+        private final long elementCount;
 
         /**
          * Create the pointer instance.
          *
-         * @param address the address
-         * @param session the memory session
+         * @param address      the address
+         * @param session      the memory session
+         * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession session) {
+        public Buffer(Addressable address, MemorySession session, long elementCount) {
             super(address, session);
+            this.elementCount = elementCount;
+        }
+
+        /**
+         * Gets the element count.
+         *
+         * @return the element count
+         */
+        public long elementCount() {
+            return elementCount;
         }
 
         /**

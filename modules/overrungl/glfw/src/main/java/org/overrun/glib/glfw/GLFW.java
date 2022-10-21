@@ -26,6 +26,10 @@ package org.overrun.glib.glfw;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.ValueInt2;
+import org.overrun.glib.util.ValueInt3;
+import org.overrun.glib.util.ValueInt4;
+import org.overrun.glib.util.ValueObjInt;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -1031,6 +1035,22 @@ public class GLFW {
     }
 
     /**
+     * Retrieves the version of the GLFW library.
+     *
+     * @return the version
+     * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
+     */
+    public static ValueInt3 getVersion() {
+        try (var session = MemorySession.openShared()) {
+            var pMajor = session.allocate(JAVA_INT);
+            var pMinor = session.allocate(JAVA_INT);
+            var pRev = session.allocate(JAVA_INT);
+            ngetVersion(pMajor, pMinor, pRev);
+            return new ValueInt3(pMajor.get(JAVA_INT, 0), pMinor.get(JAVA_INT, 0), pRev.get(JAVA_INT, 0));
+        }
+    }
+
+    /**
      * Returns a string describing the compile-time configuration.
      * <p>
      * This function returns the compile-time generated
@@ -1109,6 +1129,20 @@ public class GLFW {
                 description[0] = ((MemorySegment) pDesc).get(ADDRESS, 0).getUtf8String(0);
             }
             return err;
+        }
+    }
+
+    /**
+     * Returns and clears the last error for the calling thread.
+     *
+     * @return the error description pointer. and the last error code for the calling thread, or {@link #NO_ERROR} (zero)
+     * @see #ngetError(Addressable) ngetError
+     */
+    public static ValueObjInt<String> getError() {
+        try (var session = MemorySession.openShared()) {
+            var pDesc = session.allocate(ADDRESS);
+            int err = ngetError(pDesc);
+            return new ValueObjInt<>(pDesc.get(ADDRESS, 0).getUtf8String(0), err);
         }
     }
 
@@ -1272,6 +1306,22 @@ public class GLFW {
     }
 
     /**
+     * Returns the position of the monitor's viewport on the virtual screen.
+     *
+     * @param monitor The monitor to query.
+     * @return the monitor xy-coordinate
+     * @see #ngetMonitorPos(MemoryAddress, Addressable, Addressable) ngetMonitorPos
+     */
+    public static ValueInt2 getMonitorPos(MemoryAddress monitor) {
+        try (var session = MemorySession.openShared()) {
+            var px = session.allocate(JAVA_INT);
+            var py = session.allocate(JAVA_INT);
+            ngetMonitorPos(monitor, px, py);
+            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+        }
+    }
+
+    /**
      * Retrieves the work area of the monitor.
      * <p>
      * This function returns the position, in screen coordinates, of the upper-left
@@ -1330,6 +1380,24 @@ public class GLFW {
             if (height != null && height.length > 0) {
                 height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
             }
+        }
+    }
+
+    /**
+     * Retrieves the work area of the monitor.
+     *
+     * @param monitor The monitor to query.
+     * @return the monitor xy-coordinate, the monitor width and the monitor height
+     * @see #ngetMonitorWorkarea(MemoryAddress, Addressable, Addressable, Addressable, Addressable) ngetMonitorWorkarea
+     */
+    public static ValueInt4 getMonitorWorkarea(MemoryAddress monitor) {
+        try (var session = MemorySession.openShared()) {
+            var px = session.allocate(JAVA_INT);
+            var py = session.allocate(JAVA_INT);
+            var pw = session.allocate(JAVA_INT);
+            var ph = session.allocate(JAVA_INT);
+            ngetMonitorWorkarea(monitor, px, py, pw, ph);
+            return new ValueInt4(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0), pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         }
     }
 
@@ -1480,6 +1548,23 @@ public class GLFW {
         return pName != MemoryAddress.NULL ? pName.getUtf8String(0) : null;
     }
 
+    /**
+     * Sets the user pointer of the specified monitor.
+     * <p>
+     * This function sets the user-defined pointer of the specified monitor.  The
+     * current value is retained until the monitor is disconnected.  The initial
+     * value is {@link MemoryAddress#NULL NULL}.
+     * <p>
+     * This function may be called from the monitor callback, even for a monitor
+     * that is being disconnected.
+     *
+     * @param monitor The monitor whose pointer to set.
+     * @param pointer The new value.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     * @see #getMonitorUserPointer(MemoryAddress) getMonitorUserPointer
+     */
     public static void setMonitorUserPointer(MemoryAddress monitor, Addressable pointer) {
         try {
             glfwSetMonitorUserPointer.invoke(monitor, pointer);
@@ -1488,6 +1573,21 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the user pointer of the specified monitor.
+     * <p>
+     * This function returns the current value of the user-defined pointer of the
+     * specified monitor.  The initial value is {@link MemoryAddress#NULL NULL}.
+     * <p>
+     * This function may be called from the monitor callback, even for a monitor
+     * that is being disconnected.
+     *
+     * @param monitor The monitor whose pointer to return.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     * @see #setMonitorUserPointer(MemoryAddress, Addressable) setMonitorUserPointer
+     */
     public static MemoryAddress getMonitorUserPointer(MemoryAddress monitor) {
         try {
             return (MemoryAddress) glfwGetMonitorUserPointer.invoke(monitor);
@@ -1496,6 +1596,23 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the monitor configuration callback.
+     * <p>
+     * This function sets the monitor configuration callback, or removes the
+     * currently set callback.  This is called when a monitor is connected to or
+     * disconnected from the system.
+     *
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWmonitor* monitor, int event)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWMonitorFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetMonitorCallback(Addressable callback) {
         try {
             return (MemoryAddress) glfwSetMonitorCallback.invoke(callback);
@@ -1504,6 +1621,15 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the monitor configuration callback.
+     *
+     * @param callback The new callback, or {@code null}  to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@code null} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetMonitorCallback(Addressable) nsetMonitorCallback
+     */
     public static MemoryAddress setMonitorCallback(@Nullable IGLFWMonitorFun callback) {
         return nsetMonitorCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
     }
@@ -1516,14 +1642,14 @@ public class GLFW {
         }
     }
 
-    public static GLFWVidMode @Nullable [] getVideoModes(MemoryAddress monitor, MemorySession session) {
+    public static @Nullable GLFWVidMode.Buffer getVideoModes(MemoryAddress monitor, MemorySession session) {
         try (var session1 = MemorySession.openShared()) {
             var pCount = session1.allocate(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
             if (pModes == MemoryAddress.NULL) {
                 return null;
             }
-            return RuntimeHelper.toArray(pModes, new GLFWVidMode[pCount.get(JAVA_INT, 0)], address -> new GLFWVidMode(address, session));
+            return new GLFWVidMode.Buffer(pModes, session, pCount.get(JAVA_INT, 0));
         }
     }
 

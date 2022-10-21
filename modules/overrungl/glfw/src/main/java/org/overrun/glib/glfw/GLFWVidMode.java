@@ -92,6 +92,17 @@ public class GLFWVidMode extends Pointer {
     }
 
     /**
+     * Creates a {@code GLFWvidmode} instance with the given memory session and count.
+     *
+     * @param session the memory session
+     * @param count   the count
+     * @return the instance
+     */
+    public static Buffer create(MemorySession session, long count) {
+        return new Buffer(session.allocateArray(LAYOUT, count), session, count);
+    }
+
+    /**
      * Perform the action if the video mode is not null.
      *
      * @param monitor   the monitor
@@ -159,5 +170,133 @@ public class GLFWVidMode extends Pointer {
      */
     public int refreshRate() {
         return (int) pRefreshRate.get(segment(LAYOUT, session));
+    }
+
+    /**
+     * This describes video modes.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    public static class Buffer extends GLFWVidMode {
+        private static final VarHandle
+            pWidth = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width")),
+            pHeight = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height")),
+            pRedBits = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits")),
+            pGreenBits = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits")),
+            pBlueBits = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits")),
+            pRefreshRate = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
+        private final long elementCount;
+
+        /**
+         * Create a {@code GLFWvidmode.Buffer} instance.
+         *
+         * @param address      the address
+         * @param session      the memory session
+         * @param elementCount the element count
+         */
+        public Buffer(Addressable address, MemorySession session, long elementCount) {
+            super(address, session);
+            this.elementCount = elementCount;
+        }
+
+        /**
+         * Gets the element count.
+         *
+         * @return the element count
+         */
+        public long elementCount() {
+            return elementCount;
+        }
+
+        /**
+         * Gets the width at the given index.
+         *
+         * @param index the index
+         * @return The width, in screen coordinates, of the video mode.
+         */
+        public int widthAt(long index) {
+            return (int) pWidth.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the height at the given index.
+         *
+         * @param index the index
+         * @return The height, in screen coordinates, of the video mode.
+         */
+        public int heightAt(long index) {
+            return (int) pHeight.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the red bits at the given index.
+         *
+         * @param index the index
+         * @return The bit depth of the red channel of the video mode.
+         */
+        public int redBitsAt(long index) {
+            return (int) pRedBits.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the green bits at the given index.
+         *
+         * @param index the index
+         * @return The bit depth of the green channel of the video mode.
+         */
+        public int greenBitsAt(long index) {
+            return (int) pGreenBits.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the blue bits at the given index.
+         *
+         * @param index the index
+         * @return The bit depth of the blue channel of the video mode.
+         */
+        public int blueBitsAt(long index) {
+            return (int) pBlueBits.get(segment(LAYOUT, session), index);
+        }
+
+        /**
+         * Gets the refresh rate at the given index.
+         *
+         * @param index the index
+         * @return The refresh rate, in Hz, of the video mode.
+         */
+        public int refreshRateAt(long index) {
+            return (int) pRefreshRate.get(segment(LAYOUT, session), index);
+        }
+
+        @Override
+        public int width() {
+            return widthAt(0);
+        }
+
+        @Override
+        public int height() {
+            return heightAt(0);
+        }
+
+        @Override
+        public int redBits() {
+            return redBitsAt(0);
+        }
+
+        @Override
+        public int greenBits() {
+            return greenBitsAt(0);
+        }
+
+        @Override
+        public int blueBits() {
+            return blueBitsAt(0);
+        }
+
+        @Override
+        public int refreshRate() {
+            return refreshRateAt(0);
+        }
     }
 }

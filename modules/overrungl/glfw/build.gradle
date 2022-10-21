@@ -6,5 +6,6 @@ tasks.withType(Javadoc).configureEach {
         options.tags += 'warning:m:Warning:'
         options.tags += 'reentrancy:m:Reentrancy:'
         options.tags += 'pointer_lifetime:m:Pointer lifetime:'
+        options.tags += 'callback_signature:m:Callback signature:'
     }
 }
