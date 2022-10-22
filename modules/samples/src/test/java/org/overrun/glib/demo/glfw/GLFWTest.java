@@ -30,10 +30,8 @@ import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
-import org.overrun.glib.glfw.GLFWVidMode;
 
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -75,15 +73,15 @@ public final class GLFWTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        GLFWVidMode.withNotNull(GLFW.getPrimaryMonitor(), MemorySession::openShared, vidMode -> {
-            int[] pWidth = new int[1], pHeight = new int[1];
-            GLFW.getWindowSize(window, pWidth, pHeight);
+        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        if (vidMode != null) {
+            var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
                 window,
-                (vidMode.width() - pWidth[0]) / 2,
-                (vidMode.height() - pHeight[0]) / 2
+                (vidMode.width() - size.x()) / 2,
+                (vidMode.height() - size.y()) / 2
             );
-        });
+        }
 
         GLFW.makeContextCurrent(window);
         GLFW.swapInterval(1);

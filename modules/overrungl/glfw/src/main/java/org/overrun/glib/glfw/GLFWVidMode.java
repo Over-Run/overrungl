@@ -29,8 +29,6 @@ import org.overrun.glib.Pointer;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.VarHandle;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * This describes a single video mode.
@@ -103,19 +101,12 @@ public class GLFWVidMode extends Pointer {
     }
 
     /**
-     * Perform the action if the video mode is not null.
+     * {@code const_cast<GLFWVidMode>(this)}
      *
-     * @param monitor   the monitor
-     * @param allocator the memory session lazy. will be auto-closed
-     * @param pass      the action
+     * @return the immutable state
      */
-    public static void withNotNull(MemoryAddress monitor, Supplier<MemorySession> allocator, Consumer<GLFWVidMode> pass) {
-        var pMode = GLFW.ngetVideoMode(monitor);
-        if (pMode != MemoryAddress.NULL) {
-            try (var session = allocator.get()) {
-                pass.accept(new GLFWVidMode(pMode, session));
-            }
-        }
+    public Value constCast() {
+        return new Value(rawAddress(), session(), this);
     }
 
     /**
@@ -173,6 +164,71 @@ public class GLFWVidMode extends Pointer {
     }
 
     /**
+     * The immutable state of {@link GLFWVidMode}.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    public static final class Value extends GLFWVidMode {
+        private final int width;
+        private final int height;
+        private final int redBits;
+        private final int greenBits;
+        private final int blueBits;
+        private final int refreshRate;
+
+        private Value(Addressable address, MemorySession session, GLFWVidMode mode) {
+            super(address, session);
+            this.width = mode.width();
+            this.height = mode.height();
+            this.redBits = mode.redBits();
+            this.greenBits = mode.greenBits();
+            this.blueBits = mode.blueBits();
+            this.refreshRate = mode.refreshRate();
+        }
+
+        /**
+         * returns this
+         *
+         * @return this
+         */
+        @Override
+        public Value constCast() {
+            return this;
+        }
+
+        @Override
+        public int width() {
+            return width;
+        }
+
+        @Override
+        public int height() {
+            return height;
+        }
+
+        @Override
+        public int redBits() {
+            return redBits;
+        }
+
+        @Override
+        public int greenBits() {
+            return greenBits;
+        }
+
+        @Override
+        public int blueBits() {
+            return blueBits;
+        }
+
+        @Override
+        public int refreshRate() {
+            return refreshRate;
+        }
+    }
+
+    /**
      * This describes video modes.
      *
      * @author squid233
@@ -207,6 +263,15 @@ public class GLFWVidMode extends Pointer {
          */
         public long elementCount() {
             return elementCount;
+        }
+
+        /**
+         * Converts to the {@link Segmented segmented buffer}.
+         *
+         * @return The {@link Buffer} with instanced memory segment.
+         */
+        public Segmented toSegmented() {
+            return new Segmented(rawAddress(), session(), elementCount());
         }
 
         /**
@@ -297,6 +362,26 @@ public class GLFWVidMode extends Pointer {
         @Override
         public int refreshRate() {
             return refreshRateAt(0);
+        }
+
+        /**
+         * The {@link Buffer} with instanced memory segment.
+         *
+         * @author squid233
+         * @since 0.1.0
+         */
+        public static final class Segmented extends Buffer {
+            private final MemorySegment segment;
+
+            private Segmented(Addressable address, MemorySession session, long elementCount) {
+                super(address, session, elementCount);
+                segment = segment(LAYOUT, session);
+            }
+
+            @Override
+            public MemorySegment segment(MemoryLayout layout, MemorySession session) {
+                return segment;
+            }
         }
     }
 }

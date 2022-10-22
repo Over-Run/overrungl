@@ -26,10 +26,7 @@ package org.overrun.glib.glfw;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
-import org.overrun.glib.util.ValueInt2;
-import org.overrun.glib.util.ValueInt3;
-import org.overrun.glib.util.ValueInt4;
-import org.overrun.glib.util.ValueObjInt;
+import org.overrun.glib.util.*;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -1037,7 +1034,7 @@ public class GLFW {
     /**
      * Retrieves the version of the GLFW library.
      *
-     * @return the version
+     * @return the major, minor and revision version number
      * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
      */
     public static ValueInt3 getVersion() {
@@ -1458,6 +1455,22 @@ public class GLFW {
     }
 
     /**
+     * Returns the physical size of the monitor.
+     *
+     * @param monitor The monitor to query.
+     * @return the width and height, in millimetres, of the monitor's display area.
+     * @see #ngetMonitorPhysicalSize(MemoryAddress, Addressable, Addressable) ngetMonitorPhysicalSize
+     */
+    public static ValueInt2 getMonitorPhysicalSize(MemoryAddress monitor) {
+        try (var session = MemorySession.openShared()) {
+            var pw = session.allocate(JAVA_INT);
+            var ph = session.allocate(JAVA_INT);
+            ngetMonitorPhysicalSize(monitor, pw, ph);
+            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+        }
+    }
+
+    /**
      * Retrieves the content scale for the specified monitor.
      * <p>
      * This function retrieves the content scale for the specified monitor.  The
@@ -1507,6 +1520,22 @@ public class GLFW {
             if (yscale != null && yscale.length > 0) {
                 yscale[0] = ((MemorySegment) py).get(JAVA_FLOAT, 0);
             }
+        }
+    }
+
+    /**
+     * Retrieves the content scale for the specified monitor.
+     *
+     * @param monitor The monitor to query.
+     * @return the xy-axis content scale
+     * @see #ngetMonitorContentScale(MemoryAddress, Addressable, Addressable) ngetMonitorContentScale
+     */
+    public static ValueFloat2 getMonitorContentScale(MemoryAddress monitor) {
+        try (var session = MemorySession.openShared()) {
+            var px = session.allocate(JAVA_FLOAT);
+            var py = session.allocate(JAVA_FLOAT);
+            ngetMonitorContentScale(monitor, px, py);
+            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         }
     }
 
@@ -1626,7 +1655,7 @@ public class GLFW {
      *
      * @param callback The new callback, or {@code null}  to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@code null} if no callback was set or the
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMonitorCallback(Addressable) nsetMonitorCallback
      */
@@ -1634,6 +1663,29 @@ public class GLFW {
         return nsetMonitorCallback(callback != null ? callback.address(MemorySession.global()) : MemoryAddress.NULL);
     }
 
+    /**
+     * Returns the available video modes for the specified monitor.
+     * <p>
+     * This function returns an array of all video modes supported by the specified
+     * monitor.  The returned array is sorted in ascending order, first by color
+     * bit depth (the sum of all channel depths), then by resolution area (the
+     * product of width and height), then resolution width and finally by refresh
+     * rate.
+     *
+     * @param monitor The monitor to query.
+     * @param count   Where to store the number of video modes in the returned
+     *                array.  This is set to zero if an error occurred.
+     * @return An array of video modes, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the specified monitor is
+     * disconnected, this function is called again for that monitor or the library
+     * is terminated.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetVideoMode(MemoryAddress) getVideoMode
+     */
     public static MemoryAddress ngetVideoModes(MemoryAddress monitor, Addressable count) {
         try {
             return (MemoryAddress) glfwGetVideoModes.invoke(monitor, count);
@@ -1642,17 +1694,44 @@ public class GLFW {
         }
     }
 
-    public static @Nullable GLFWVidMode.Buffer getVideoModes(MemoryAddress monitor, MemorySession session) {
+    /**
+     * Returns the available video modes for the specified monitor.
+     *
+     * @param monitor The monitor to query.
+     * @param session The memory session to hold the result.
+     * @return An array of video modes, or {@code null} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetVideoModes(MemoryAddress, Addressable) ngetVideoModes
+     */
+    public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemoryAddress monitor, MemorySession session) {
         try (var session1 = MemorySession.openShared()) {
             var pCount = session1.allocate(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
             if (pModes == MemoryAddress.NULL) {
                 return null;
             }
-            return new GLFWVidMode.Buffer(pModes, session, pCount.get(JAVA_INT, 0));
+            return new GLFWVidMode.Buffer(pModes, session, pCount.get(JAVA_INT, 0)).toSegmented();
         }
     }
 
+    /**
+     * Returns the current mode of the specified monitor.
+     * <p>
+     * This function returns the current video mode of the specified monitor.  If
+     * you have created a full screen window for that monitor, the return value
+     * will depend on whether that window is iconified.
+     *
+     * @param monitor The monitor to query.
+     * @return The current mode of the monitor, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the specified monitor is
+     * disconnected or the library is terminated.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetVideoModes(MemoryAddress, Addressable) getVideoModes
+     */
     public static MemoryAddress ngetVideoMode(MemoryAddress monitor) {
         try {
             return (MemoryAddress) glfwGetVideoMode.invoke(monitor);
@@ -1661,10 +1740,22 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the current mode of the specified monitor.
+     *
+     * @param monitor The monitor to query.
+     * @return The current mode of the monitor, or {@code null} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     */
     @Nullable
-    public static GLFWVidMode getVideoMode(MemoryAddress monitor, MemorySession session) {
+    public static GLFWVidMode.Value getVideoMode(MemoryAddress monitor) {
         var pMode = ngetVideoMode(monitor);
-        return pMode != MemoryAddress.NULL ? new GLFWVidMode(pMode, session) : null;
+        if (pMode == MemoryAddress.NULL) {
+            return null;
+        }
+        try (var session = MemorySession.openShared()) {
+            return new GLFWVidMode(pMode, session).constCast();
+        }
     }
 
     public static void setGamma(MemoryAddress monitor, float gamma) {
@@ -1819,6 +1910,15 @@ public class GLFW {
         }
     }
 
+    public static ValueInt2 getWindowPos(MemoryAddress window) {
+        try (var session = MemorySession.openShared()) {
+            var px = session.allocate(JAVA_INT);
+            var py = session.allocate(JAVA_INT);
+            ngetWindowPos(window, px, py);
+            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+        }
+    }
+
     public static void setWindowPos(MemoryAddress window, int xpos, int ypos) {
         try {
             glfwSetWindowPos.invoke(window, xpos, ypos);
@@ -1846,6 +1946,15 @@ public class GLFW {
             if (height != null && height.length > 0) {
                 height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
             }
+        }
+    }
+
+    public static ValueInt2 getWindowSize(MemoryAddress window) {
+        try (var session = MemorySession.openShared()) {
+            var pw = session.allocate(JAVA_INT);
+            var ph = session.allocate(JAVA_INT);
+            ngetWindowSize(window, pw, ph);
+            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         }
     }
 
@@ -1895,6 +2004,15 @@ public class GLFW {
         }
     }
 
+    public static ValueInt2 getFramebufferSize(MemoryAddress window) {
+        try (var session = MemorySession.openShared()) {
+            var pw = session.allocate(JAVA_INT);
+            var ph = session.allocate(JAVA_INT);
+            ngetFramebufferSize(window, pw, ph);
+            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+        }
+    }
+
     public static void ngetWindowFrameSize(MemoryAddress window, Addressable left, Addressable top, Addressable right, Addressable bottom) {
         try {
             glfwGetWindowFrameSize.invoke(window, left, top, right, bottom);
@@ -1925,6 +2043,17 @@ public class GLFW {
         }
     }
 
+    public static ValueInt4 getWindowFrameSize(MemoryAddress window) {
+        try (var session = MemorySession.openShared()) {
+            var pl = session.allocate(JAVA_INT);
+            var pt = session.allocate(JAVA_INT);
+            var pr = session.allocate(JAVA_INT);
+            var pb = session.allocate(JAVA_INT);
+            ngetWindowFrameSize(window, pl, pt, pr, pb);
+            return new ValueInt4(pl.get(JAVA_INT, 0), pt.get(JAVA_INT, 0), pr.get(JAVA_INT, 0), pb.get(JAVA_INT, 0));
+        }
+    }
+
     public static void ngetWindowContentScale(MemoryAddress window, Addressable xscale, Addressable yscale) {
         try {
             glfwGetWindowContentScale.invoke(window, xscale, yscale);
@@ -1944,6 +2073,15 @@ public class GLFW {
             if (yscale != null && yscale.length > 0) {
                 yscale[0] = ((MemorySegment) py).get(JAVA_FLOAT, 0);
             }
+        }
+    }
+
+    public static ValueFloat2 getWindowContentScale(MemoryAddress window) {
+        try (var session = MemorySession.openShared()) {
+            var px = session.allocate(JAVA_FLOAT);
+            var py = session.allocate(JAVA_FLOAT);
+            ngetWindowContentScale(window, px, py);
+            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         }
     }
 
@@ -2288,6 +2426,15 @@ public class GLFW {
             if (ypos != null && ypos.length > 0) {
                 ypos[0] = ((MemorySegment) py).get(JAVA_DOUBLE, 0);
             }
+        }
+    }
+
+    public static ValueDouble2 getCursorPos(MemoryAddress window) {
+        try (var session = MemorySession.openShared()) {
+            var px = session.allocate(JAVA_DOUBLE);
+            var py = session.allocate(JAVA_DOUBLE);
+            ngetCursorPos(window, px, py);
+            return new ValueDouble2(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
         }
     }
 
