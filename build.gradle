@@ -272,7 +272,7 @@ void setupPom(MavenPom pom, String pomName, String pomDescription, String pomPac
     }
 }
 
-void appendBOM(org.w3c.dom.Node dependencies, NativePlatform platform) {
+void appendBOM(org.w3c.dom.Node dependencies, NativePlatform platform, Artifact module) {
     def dependency = dependencies.appendChild(dependencies.ownerDocument.createElement("dependency"))
     def groupId = dependency.appendChild(dependency.ownerDocument.createElement("groupId"))
     groupId.textContent = "io.github.over-run"
@@ -284,7 +284,7 @@ void appendBOM(org.w3c.dom.Node dependencies, NativePlatform platform) {
     version.textContent = project.version as String
     dependency.appendChild(version)
     if (platform != null) {
-        Node classifier = dependency.appendChild(dependency.ownerDocument.createElement("classifier"))
+        def classifier = dependency.appendChild(dependency.ownerDocument.createElement("classifier"))
         classifier.textContent = platform.classifier
         dependency.appendChild(classifier)
     }
@@ -349,10 +349,10 @@ publishing.publications {
                 for (Artifact module : Artifact.values()) {
                     if (module.nativeBinding != null) {
                         for (NativePlatform platform : module.nativeBinding.platforms) {
-                            appendBOM(dependencies, platform)
+                            appendBOM(dependencies, platform, module)
                         }
                     } else {
-                        appendBOM(dependencies, null)
+                        appendBOM(dependencies, null, module)
                     }
                 }
 
