@@ -27,10 +27,14 @@ package org.overrun.glib.stb;
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.*;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.stb.Handles.*;
 
 /**
@@ -70,49 +74,49 @@ public class STBImage {
     }
 
     private static void create() {
-        stbi__unpremultiply_on_load_thread = downcallIV("stbi__unpremultiply_on_load_thread");
-        stbi_convert_iphone_png_to_rgb = downcallIV("stbi_convert_iphone_png_to_rgb");
-        stbi_convert_iphone_png_to_rgb_thread = downcallIV("stbi_convert_iphone_png_to_rgb_thread");
-        stbi_failure_reason = downcallP("stbi_failure_reason");
-        stbi_hdr_to_ldr_gamma = downcallV("stbi_hdr_to_ldr_gamma", JAVA_FLOAT);
-        stbi_hdr_to_ldr_scale = downcallV("stbi_hdr_to_ldr_scale", JAVA_FLOAT);
-        stbi_image_free = downcallV("stbi_image_free", ADDRESS);
-        stbi_info = downcallI("stbi_info", ADDRESS, ADDRESS, ADDRESS, ADDRESS);
-        stbi_info_from_callbacks = downcallI("stbi_info_from_callbacks", ADDRESS, ADDRESS, ADDRESS, ADDRESS, ADDRESS);
-        stbi_info_from_file = downcallI("stbi_info_from_file", ADDRESS, ADDRESS, ADDRESS, ADDRESS);
-        stbi_info_from_memory = downcallI("stbi_info_from_memory", ADDRESS, JAVA_INT, ADDRESS, ADDRESS, ADDRESS);
-        stbi_is_16_bit = downcallI("stbi_is_16_bit", ADDRESS);
-        stbi_is_16_bit_from_callbacks = downcallI("stbi_is_16_bit_from_callbacks", ADDRESS, ADDRESS);
-        stbi_is_16_bit_from_file = downcallI("stbi_is_16_bit_from_file", ADDRESS);
-        stbi_is_16_bit_from_memory = downcallI("stbi_is_16_bit_from_memory", ADDRESS, JAVA_INT);
-        stbi_is_hdr = downcallI("stbi_is_hdr", ADDRESS);
-        stbi_is_hdr_from_callbacks = downcallI("stbi_is_hdr_from_callbacks", ADDRESS, ADDRESS);
-        stbi_is_hdr_from_file = downcallI("stbi_is_hdr_from_file", ADDRESS);
-        stbi_is_hdr_from_memory = downcallI("stbi_is_hdr_from_memory", ADDRESS, JAVA_INT);
-        stbi_ldr_to_hdr_gamma = downcallV("stbi_ldr_to_hdr_gamma", JAVA_FLOAT);
-        stbi_ldr_to_hdr_scale = downcallV("stbi_ldr_to_hdr_scale", JAVA_FLOAT);
-        stbi_load = downcallP("stbi_load", ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_16 = downcallP("stbi_load_16", ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_16_from_callbacks = downcallP("stbi_load_16_from_callbacks", ADDRESS, ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_16_from_memory = downcallP("stbi_load_16_from_memory", ADDRESS, JAVA_INT, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_from_callbacks = downcallP("stbi_load_from_callbacks", ADDRESS, ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_from_file = downcallP("stbi_load_from_file", ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_from_file_16 = downcallP("stbi_load_from_file_16", ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_from_memory = downcallP("stbi_load_from_memory", ADDRESS, JAVA_INT, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_load_gif_from_memory = downcallP("stbi_load_gif_from_memory", ADDRESS, JAVA_INT, ADDRESS, ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_loadf = downcallP("stbi_loadf", ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_loadf_from_callbacks = downcallP("stbi_loadf_from_callbacks", ADDRESS, ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_loadf_from_file = downcallP("stbi_loadf_from_file", ADDRESS, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_loadf_from_memory = downcallP("stbi_loadf_from_memory", ADDRESS, JAVA_INT, ADDRESS, ADDRESS, ADDRESS, JAVA_INT);
-        stbi_set_flip_vertically_on_load = downcallV("stbi_set_flip_vertically_on_load", JAVA_INT);
-        stbi_set_flip_vertically_on_load_thread = downcallV("stbi_set_flip_vertically_on_load_thread", JAVA_INT);
-        stbi_set_unpremultiply_on_load = downcallV("stbi_set_unpremultiply_on_load", JAVA_INT);
-        stbi_zlib_decode_buffer = downcallI("stbi_zlib_decode_buffer", ADDRESS, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_zlib_decode_malloc = downcallP("stbi_zlib_decode_malloc", ADDRESS, JAVA_INT, ADDRESS);
-        stbi_zlib_decode_malloc_guesssize = downcallP("stbi_zlib_decode_malloc_guesssize", ADDRESS, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_zlib_decode_malloc_guesssize_headerflag = downcallP("stbi_zlib_decode_malloc_guesssize_headerflag", ADDRESS, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_zlib_decode_noheader_buffer = downcallI("stbi_zlib_decode_noheader_buffer", ADDRESS, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_zlib_decode_noheader_malloc = downcallP("stbi_zlib_decode_noheader_malloc", ADDRESS, JAVA_INT, ADDRESS);
+        stbi__unpremultiply_on_load_thread = downcall("stbi__unpremultiply_on_load_thread", IV);
+        stbi_convert_iphone_png_to_rgb = downcall("stbi_convert_iphone_png_to_rgb", IV);
+        stbi_convert_iphone_png_to_rgb_thread = downcall("stbi_convert_iphone_png_to_rgb_thread", IV);
+        stbi_failure_reason = downcall("stbi_failure_reason", P);
+        stbi_hdr_to_ldr_gamma = downcall("stbi_hdr_to_ldr_gamma", FV);
+        stbi_hdr_to_ldr_scale = downcall("stbi_hdr_to_ldr_scale", FV);
+        stbi_image_free = downcall("stbi_image_free", PV);
+        stbi_info = downcall("stbi_info", PPPPI);
+        stbi_info_from_callbacks = downcall("stbi_info_from_callbacks", PPPPPI);
+        stbi_info_from_file = downcall("stbi_info_from_file", PPPPI);
+        stbi_info_from_memory = downcall("stbi_info_from_memory", PIPPPI);
+        stbi_is_16_bit = downcall("stbi_is_16_bit", fd_PI);
+        stbi_is_16_bit_from_callbacks = downcall("stbi_is_16_bit_from_callbacks", PPI);
+        stbi_is_16_bit_from_file = downcall("stbi_is_16_bit_from_file", fd_PI);
+        stbi_is_16_bit_from_memory = downcall("stbi_is_16_bit_from_memory", PII);
+        stbi_is_hdr = downcall("stbi_is_hdr", fd_PI);
+        stbi_is_hdr_from_callbacks = downcall("stbi_is_hdr_from_callbacks", PPI);
+        stbi_is_hdr_from_file = downcall("stbi_is_hdr_from_file", fd_PI);
+        stbi_is_hdr_from_memory = downcall("stbi_is_hdr_from_memory", PII);
+        stbi_ldr_to_hdr_gamma = downcall("stbi_ldr_to_hdr_gamma", FV);
+        stbi_ldr_to_hdr_scale = downcall("stbi_ldr_to_hdr_scale", FV);
+        stbi_load = downcall("stbi_load", PPPPIP);
+        stbi_load_16 = downcall("stbi_load_16", PPPPIP);
+        stbi_load_16_from_callbacks = downcall("stbi_load_16_from_callbacks", PPPPPIP);
+        stbi_load_16_from_memory = downcall("stbi_load_16_from_memory", PIPPPIP);
+        stbi_load_from_callbacks = downcall("stbi_load_from_callbacks", PPPPPIP);
+        stbi_load_from_file = downcall("stbi_load_from_file", PPPPIP);
+        stbi_load_from_file_16 = downcall("stbi_load_from_file_16", PPPPIP);
+        stbi_load_from_memory = downcall("stbi_load_from_memory", PIPPPIP);
+        stbi_load_gif_from_memory = downcall("stbi_load_gif_from_memory", PIPPPPPIP);
+        stbi_loadf = downcall("stbi_loadf", PPPPIP);
+        stbi_loadf_from_callbacks = downcall("stbi_loadf_from_callbacks", PPPPPIP);
+        stbi_loadf_from_file = downcall("stbi_loadf_from_file", PPPPIP);
+        stbi_loadf_from_memory = downcall("stbi_loadf_from_memory", PIPPPIP);
+        stbi_set_flip_vertically_on_load = downcall("stbi_set_flip_vertically_on_load", IV);
+        stbi_set_flip_vertically_on_load_thread = downcall("stbi_set_flip_vertically_on_load_thread", IV);
+        stbi_set_unpremultiply_on_load = downcall("stbi_set_unpremultiply_on_load", IV);
+        stbi_zlib_decode_buffer = downcall("stbi_zlib_decode_buffer", PIPII);
+        stbi_zlib_decode_malloc = downcall("stbi_zlib_decode_malloc", PIPP);
+        stbi_zlib_decode_malloc_guesssize = downcall("stbi_zlib_decode_malloc_guesssize", PIIPP);
+        stbi_zlib_decode_malloc_guesssize_headerflag = downcall("stbi_zlib_decode_malloc_guesssize_headerflag", PIIPIP);
+        stbi_zlib_decode_noheader_buffer = downcall("stbi_zlib_decode_noheader_buffer", PIPII);
+        stbi_zlib_decode_noheader_malloc = downcall("stbi_zlib_decode_noheader_malloc", PIPP);
     }
 
     protected STBImage() {

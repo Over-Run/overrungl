@@ -24,15 +24,12 @@
 
 package org.overrun.glib.stb;
 
+import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.GameLib;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
-
-import static java.lang.foreign.ValueLayout.*;
 
 /**
  * The STB method handles.
@@ -45,30 +42,9 @@ final class Handles {
     private static SymbolLookup lookup;
 
     static MethodHandle downcall(String name,
-                                 MemoryLayout retLayout,
-                                 MemoryLayout... argLayouts) {
+                                 FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(lookup.lookup(name),
-            FunctionDescriptor.of(retLayout, argLayouts));
-    }
-
-    static MethodHandle downcallI(String name,
-                                  MemoryLayout... argLayouts) {
-        return downcall(name, JAVA_INT, argLayouts);
-    }
-
-    static MethodHandle downcallP(String name,
-                                  MemoryLayout... argLayouts) {
-        return downcall(name, ADDRESS, argLayouts);
-    }
-
-    static MethodHandle downcallV(String name,
-                                  MemoryLayout... argLayouts) {
-        return RuntimeHelper.downcallThrow(lookup.lookup(name),
-            FunctionDescriptor.ofVoid(argLayouts));
-    }
-
-    static MethodHandle downcallIV(String name) {
-        return downcallV(name, JAVA_INT);
+            function.descriptor());
     }
 
     public static void initialize() {

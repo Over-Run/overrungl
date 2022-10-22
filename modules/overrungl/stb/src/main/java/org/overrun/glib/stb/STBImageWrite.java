@@ -32,6 +32,7 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
+import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.stb.Handles.*;
 
 /**
@@ -54,25 +55,25 @@ public class STBImageWrite {
     }
 
     private static void create() {
-        stbi_flip_vertically_on_write = downcallIV("stbi_flip_vertically_on_write");
-        stbi_get_write_force_png_filter = downcallI("stbi_get_write_force_png_filter");
-        stbi_get_write_png_compression_level = downcallI("stbi_get_write_png_compression_level");
-        stbi_get_write_tga_with_rle = downcallI("stbi_get_write_tga_with_rle");
-        stbi_set_write_force_png_filter = downcallIV("stbi_set_write_force_png_filter");
-        stbi_set_write_png_compression_level = downcallIV("stbi_set_write_png_compression_level");
-        stbi_set_write_tga_with_rle = downcallIV("stbi_set_write_tga_with_rle");
-        stbi_write_bmp = downcallI("stbi_write_bmp", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_write_bmp_to_func = downcallI("stbi_write_bmp_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_write_hdr = downcallI("stbi_write_hdr", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_write_hdr_to_func = downcallI("stbi_write_hdr_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_write_jpg = downcallI("stbi_write_jpg", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_write_jpg_to_func = downcallI("stbi_write_jpg_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_write_png = downcallI("stbi_write_png", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_write_png_to_func = downcallI("stbi_write_png_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT);
-        stbi_write_png_to_mem = downcallP("stbi_write_png_to_mem", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_write_tga = downcallI("stbi_write_tga", ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_write_tga_to_func = downcallI("stbi_write_tga_to_func", ADDRESS, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS);
-        stbi_zlib_compress = downcallP("stbi_zlib_compress", ADDRESS, JAVA_INT, ADDRESS, JAVA_INT);
+        stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV);
+        stbi_get_write_force_png_filter = downcall("stbi_get_write_force_png_filter", I);
+        stbi_get_write_png_compression_level = downcall("stbi_get_write_png_compression_level", I);
+        stbi_get_write_tga_with_rle = downcall("stbi_get_write_tga_with_rle", I);
+        stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV);
+        stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV);
+        stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV);
+        stbi_write_bmp = downcall("stbi_write_bmp", PIIIP);
+        stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP);
+        stbi_write_hdr = downcall("stbi_write_hdr", PIIIP);
+        stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP);
+        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPI);
+        stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI);
+        stbi_write_png = downcall("stbi_write_png", PIIIPI);
+        stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI);
+        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPP);
+        stbi_write_tga = downcall("stbi_write_tga", PIIIP);
+        stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP);
+        stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIP);
     }
 
     protected STBImageWrite() {

@@ -915,7 +915,7 @@ public class GLFW {
      */
     public static boolean init() {
         try {
-            return (int) glfwInit.invoke() == TRUE;
+            return (int) glfwInit.invoke() != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -1697,13 +1697,13 @@ public class GLFW {
     /**
      * Returns the available video modes for the specified monitor.
      *
-     * @param monitor The monitor to query.
      * @param session The memory session to hold the result.
+     * @param monitor The monitor to query.
      * @return An array of video modes, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemoryAddress, Addressable) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemoryAddress monitor, MemorySession session) {
+    public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemorySession session, MemoryAddress monitor) {
         try (var session1 = MemorySession.openShared()) {
             var pCount = session1.allocate(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
@@ -1746,6 +1746,7 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @return The current mode of the monitor, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetVideoMode(MemoryAddress) ngetVideoMode
      */
     @Nullable
     public static GLFWVidMode.Value getVideoMode(MemoryAddress monitor) {
@@ -1758,6 +1759,29 @@ public class GLFW {
         }
     }
 
+    /**
+     * Generates a gamma ramp and sets it for the specified monitor.
+     * <p>
+     * This function generates an appropriately sized gamma ramp from the specified
+     * exponent and then calls {@link #setGammaRamp(MemoryAddress, GLFWGammaRamp) setGammaRamp} with it.
+     * The value must be a finite number greater than zero.
+     * <p>
+     * The software controlled gamma ramp is applied <i>in addition</i> to the hardware
+     * gamma correction, which today is usually an approximation of sRGB gamma.
+     * This means that setting a perfectly linear ramp, or gamma 1.0, will produce
+     * the default (usually sRGB-like) behavior.
+     * <p>
+     * For gamma correct rendering with OpenGL or OpenGL ES, see the
+     * {@link #SRGB_CAPABLE} hint.
+     *
+     * @param monitor The monitor whose gamma ramp to set.
+     * @param gamma   The desired exponent.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
+     * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void setGamma(MemoryAddress monitor, float gamma) {
         try {
             glfwSetGamma.invoke(monitor, gamma);
@@ -1766,6 +1790,25 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the current gamma ramp for the specified monitor.
+     * <p>
+     * This function returns the current gamma ramp of the specified monitor.
+     *
+     * @param monitor The monitor to query.
+     * @return The current gamma ramp, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
+     * will thus never be implemented and emits {@link #PLATFORM_ERROR} while
+     * returning {@link MemoryAddress#NULL NULL}.
+     * @pointer_lifetime The returned structure and its arrays are allocated and
+     * freed by GLFW.  You should not free them yourself.  They are valid until the
+     * specified monitor is disconnected, this function is called again for that
+     * monitor or the library is terminated.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress ngetGammaRamp(MemoryAddress monitor) {
         try {
             return (MemoryAddress) glfwGetGammaRamp.invoke(monitor);
@@ -1774,20 +1817,81 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the current gamma ramp for the specified monitor.
+     *
+     * @param session The memory session to hold the result.
+     * @param monitor The monitor to query.
+     * @return The current gamma ramp, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetGammaRamp(MemoryAddress) ngetGammaRamp
+     */
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(MemoryAddress monitor, MemorySession session) {
+    public static GLFWGammaRamp getGammaRamp(MemorySession session, MemoryAddress monitor) {
         var pRamp = ngetGammaRamp(monitor);
         return pRamp != MemoryAddress.NULL ? new GLFWGammaRamp(pRamp, session) : null;
     }
 
-    public static void setGammaRamp(MemoryAddress monitor, GLFWGammaRamp ramp) {
+    /**
+     * Sets the current gamma ramp for the specified monitor.
+     * <p>
+     * This function sets the current gamma ramp for the specified monitor.  The
+     * original gamma ramp for that monitor is saved by GLFW the first time this
+     * function is called and is restored by {@link #terminate}.
+     * <p>
+     * The software controlled gamma ramp is applied <i>in addition</i> to the hardware
+     * gamma correction, which today is usually an approximation of sRGB gamma.
+     * This means that setting a perfectly linear ramp, or gamma 1.0, will produce
+     * the default (usually sRGB-like) behavior.
+     * <p>
+     * For gamma correct rendering with OpenGL or OpenGL ES, see the
+     * {@link #SRGB_CAPABLE} hint.
+     *
+     * @param monitor The monitor whose gamma ramp to set.
+     * @param ramp    The gamma ramp to use.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark The size of the specified gamma ramp should match the size of the
+     * current ramp for that monitor.
+     * <p>
+     * <b>Windows:</b> The gamma ramp size must be 256.
+     * <p>
+     * <b>Wayland:</b> Gamma handling is a privileged protocol, this function
+     * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
+     * @pointer_lifetime The specified gamma ramp is copied before this function
+     * returns.
+     * @thread_safety This function must only be called from the main thread.
+     */
+    public static void nsetGammaRamp(MemoryAddress monitor, Addressable ramp) {
         try {
-            glfwSetGammaRamp.invoke(monitor, ramp.rawAddress());
+            glfwSetGammaRamp.invoke(monitor, ramp);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
     }
 
+    /**
+     * Sets the current gamma ramp for the specified monitor.
+     *
+     * @param monitor The monitor whose gamma ramp to set.
+     * @param ramp    The gamma ramp to use.
+     * @see #nsetGammaRamp(MemoryAddress, Addressable) nsetGammaRamp
+     */
+    public static void setGammaRamp(MemoryAddress monitor, GLFWGammaRamp ramp) {
+        nsetGammaRamp(monitor, ramp.rawAddress());
+    }
+
+    /**
+     * Resets all window hints to their default values.
+     * <p>
+     * This function resets all window hints to their
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints_values">default values</a>.
+     *
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #windowHint(int, int) windowHint
+     * @see #nwindowHintString(int, Addressable) windowHintString
+     */
     public static void defaultWindowHints() {
         try {
             glfwDefaultWindowHints.invoke();
@@ -1796,6 +1900,32 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the specified window hint to the desired value.
+     * <p>
+     * This function sets hints for the next call to {@link #ncreateWindow createWindow}.  The
+     * hints, once set, retain their values until changed by a call to this
+     * function or {@link #defaultWindowHints}, or until the library is terminated.
+     * <p>
+     * Only integer value hints can be set with this function.  String value hints
+     * are set with {@link #nwindowHintString windowHintString}.
+     * <p>
+     * This function does not check whether the specified hint values are valid.
+     * If you set hints to invalid values this will instead be reported by the next
+     * call to {@link #ncreateWindow createWindow}.
+     * <p>
+     * Some hints are platform specific.  These may be set on any platform, but they
+     * will only affect their specific platform.  Other platforms will ignore them.
+     * Setting these hints requires no platform specific headers or functions.
+     *
+     * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value The new value of the window hint.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #INVALID_ENUM}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #nwindowHintString(int, Addressable) windowHintString
+     * @see #defaultWindowHints
+     */
     public static void windowHint(int hint, int value) {
         try {
             glfwWindowHint.invoke(hint, value);
@@ -1804,10 +1934,44 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the specified window hint to the desired value.
+     *
+     * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value The new value of the window hint.
+     */
     public static void windowHint(int hint, boolean value) {
         windowHint(hint, value ? TRUE : FALSE);
     }
 
+    /**
+     * Sets the specified window hint to the desired value.
+     * <p>
+     * This function sets hints for the next call to {@link #ncreateWindow createWindow}.  The
+     * hints, once set, retain their values until changed by a call to this
+     * function or {@link #defaultWindowHints}, or until the library is terminated.
+     * <p>
+     * Only string type hints can be set with this function.  Integer value hints
+     * are set with {@link #windowHint(int, int) windowHint}.
+     * <p>
+     * This function does not check whether the specified hint values are valid.
+     * If you set hints to invalid values this will instead be reported by the next
+     * call to {@link #ncreateWindow}.
+     * <p>
+     * Some hints are platform specific.  These may be set on any platform, but they
+     * will only affect their specific platform.  Other platforms will ignore them.
+     * Setting these hints requires no platform specific headers or functions.
+     *
+     * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value The new value of the window hint.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #INVALID_ENUM}.
+     * @pointer_lifetime The specified string is copied before this function
+     * returns.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #windowHint(int, int) windowHint
+     * @see #defaultWindowHints
+     */
     public static void nwindowHintString(int hint, Addressable value) {
         try {
             glfwWindowHintString.invoke(hint, value);
@@ -1816,12 +1980,170 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the specified window hint to the desired value.
+     *
+     * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value The new value of the window hint.
+     * @see #nwindowHintString(int, Addressable) nwindowHintString
+     */
     public static void windowHintString(int hint, String value) {
         try (var session = MemorySession.openShared()) {
             nwindowHintString(hint, session.allocateUtf8String(value));
         }
     }
 
+    /**
+     * Creates a window and its associated context.
+     * <p>
+     * This function creates a window and its associated OpenGL or OpenGL ES
+     * context.  Most of the options controlling how the window and its context
+     * should be created are specified with
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hints</a>.
+     * <p>
+     * Successful creation does not change which context is current.  Before you
+     * can use the newly created context, you need to
+     * <a href="https://www.glfw.org/docs/latest/context_guide.html#context_current">make it current</a>.
+     * For information about the {@code share} parameter, see
+     * <a href="https://www.glfw.org/docs/latest/context_guide.html#context_sharing">Context object sharing</a>.
+     * <p>
+     * The created window, framebuffer and context may differ from what you
+     * requested, as not all parameters and hints are
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints_hard">hard constraints</a>.
+     * This includes the size of the window, especially for full screen windows.  To query the actual attributes
+     * of the created window, framebuffer and context, see
+     * {@link #getWindowAttrib}, {@link #ngetWindowSize(MemoryAddress, Addressable, Addressable) getWindowSize}
+     * and {@link #ngetFramebufferSize(MemoryAddress, Addressable, Addressable) getFramebufferSize}.
+     * <p>
+     * To create a full screen window, you need to specify the monitor the window
+     * will cover.  If no monitor is specified, the window will be windowed mode.
+     * Unless you have a way for the user to choose a specific monitor, it is
+     * recommended that you pick the primary monitor.  For more information on how
+     * to query connected monitors, see
+     * <a href="https://www.glfw.org/docs/latest/monitor_guide.html#monitor_monitors">Retrieving monitors</a>.
+     * <p>
+     * For full screen windows, the specified size becomes the resolution of the
+     * window's <i>desired video mode</i>.  As long as a full screen window is not
+     * iconified, the supported video mode most closely matching the desired video
+     * mode is set for the specified monitor.  For more information about full
+     * screen windows, including the creation of so called <i>windowed full screen</i>
+     * or <i>borderless full screen</i> windows, see
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_windowed_full_screen">"Windowed full screen" windows</a>.
+     * <p>
+     * Once you have created the window, you can switch it between windowed and
+     * full screen mode with {@link #setWindowMonitor}.  This will not affect its
+     * OpenGL or OpenGL ES context.
+     * <p>
+     * By default, newly created windows use the placement recommended by the
+     * window system.  To create the window at a specific position, make it
+     * initially invisible using the {@link #VISIBLE} window
+     * hint, set its <a href="https://www.glfw.org/docs/latest/window_guide.html#window_pos">position</a>
+     * and then <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hide">show</a>
+     * it.
+     * <p>
+     * As long as at least one full screen window is not iconified, the screensaver
+     * is prohibited from starting.
+     * <p>
+     * Window systems put limits on window sizes.  Very large or very small window
+     * dimensions may be overridden by the window system on creation.  Check the
+     * actual <a href="https://www.glfw.org/docs/latest/window_guide.html#window_size">size</a> after creation.
+     * <p>
+     * The <a href="https://www.glfw.org/docs/latest/window_guide.html#buffer_swap">swap interval</a>
+     * is not set during window creation and
+     * the initial value may vary depending on driver settings and defaults.
+     *
+     * @param width   The desired width, in screen coordinates, of the window.
+     *                This must be greater than zero.
+     * @param height  The desired height, in screen coordinates, of the window.
+     *                This must be greater than zero.
+     * @param title   The initial, UTF-8 encoded window title.
+     * @param monitor The monitor to use for full screen mode, or {@link MemoryAddress#NULL NULL} for
+     *                windowed mode.
+     * @param share   The window whose context to share resources with, or {@link MemoryAddress#NULL NULL}
+     *                to not share resources.
+     * @return The handle of the created window, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_ENUM}, {@link #INVALID_VALUE}, {@link #API_UNAVAILABLE},
+     * {@link #VERSION_UNAVAILABLE}, {@link #FORMAT_UNAVAILABLE} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Windows:</b> Window creation will fail if the Microsoft GDI software
+     * OpenGL implementation is the only one available.
+     * <p>
+     * <b>Windows:</b> If the executable has an icon resource named {@code GLFW_ICON}, it
+     * will be set as the initial icon for the window.  If no such icon is present,
+     * the {@code IDI_APPLICATION} icon will be used instead.  To set a different icon,
+     * see {@link #nsetWindowIcon(MemoryAddress, int, Addressable) setWindowIcon}.
+     * <p>
+     * <b>Windows:</b> The context to share resources with must not be current on
+     * any other thread.
+     * <p>
+     * <b>macOS:</b> The OS only supports forward-compatible core profile contexts
+     * for OpenGL versions 3.2 and later.  Before creating an OpenGL context of
+     * version 3.2, or later you must set the
+     * {@link #OPENGL_FORWARD_COMPAT} and
+     * {@link #OPENGL_PROFILE} hints accordingly.
+     * OpenGL 3.0 and 3.1 contexts are not supported at all on macOS.
+     * <p>
+     * <b>macOS:</b> The GLFW window has no icon, as it is not a document
+     * window, but the dock icon will be the same as the application bundle's icon.
+     * For more information on bundles, see the
+     * <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/">Bundle Programming Guide</a>
+     * in the Mac Developer Library.
+     * <p>
+     * <b>macOS:</b> The first time a window is created the menu bar is created.
+     * If GLFW finds a {@code MainMenu.nib} it is loaded and assumed to contain a menu
+     * bar.  Otherwise, a minimal menu bar is created manually with common commands
+     * like Hide, Quit and About.  The "About" entry opens a minimal about dialog
+     * with information from the application's bundle.  Menu bar creation can be
+     * disabled entirely with the {@link #COCOA_MENUBAR} init hint.
+     * <p>
+     * <b>macOS:</b> On OS X 10.10 and later the window frame will not be rendered
+     * at full resolution on Retina displays unless the
+     * {@link #COCOA_RETINA_FRAMEBUFFER}
+     * hint is {@code TRUE} and the {@code NSHighResolutionCapable} key is enabled in the
+     * application bundle's {@code Info.plist}.  For more information, see
+     * <a href="https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html">High Resolution Guidelines for OS X</a>
+     * in the Mac Developer Library.  The GLFW test and example programs use
+     * a custom {@code Info.plist} template for this, which can be found as
+     * {@code CMake/MacOSXBundleInfo.plist.in} in the source tree.
+     * <p>
+     * <b>macOS:</b> When activating frame autosaving with
+     * {@link #COCOA_FRAME_NAME}, the specified
+     * window size and position may be overridden by previously saved values.
+     * <p>
+     * <b>X11:</b> Some window managers will not respect the placement of
+     * initially hidden windows.
+     * <p>
+     * <b>X11:</b> Due to the asynchronous nature of X11, it may take a moment for
+     * a window to reach its requested state.  This means you may not be able to
+     * query the final size, position or other attributes directly after window
+     * creation.
+     * <p>
+     * <b>X11:</b> The class part of the {@code WM_CLASS} window property will by
+     * default be set to the window title passed to this function.  The instance
+     * part will use the contents of the {@code RESOURCE_NAME} environment variable, if
+     * present and not empty, or fall back to the window title.  Set the
+     * {@link #X11_CLASS_NAME} and
+     * {@link #X11_INSTANCE_NAME} window hints to
+     * override this.
+     * <p>
+     * <b>Wayland:</b> Compositors should implement the xdg-decoration protocol
+     * for GLFW to decorate the window properly.  If this protocol isn't
+     * supported, or if the compositor prefers client-side decorations, a very
+     * simple fallback frame will be drawn using the wp_viewporter protocol.  A
+     * compositor can still emit close, maximize or fullscreen events, using for
+     * instance a keybind mechanism.  If neither of these protocols is supported,
+     * the window won't be decorated.
+     * <p>
+     * <b>Wayland:</b> A full screen window will not attempt to change the mode,
+     * no matter what the requested size or refresh rate.
+     * <p>
+     * <b>Wayland:</b> Screensaver inhibition requires the idle-inhibit protocol
+     * to be implemented in the user's compositor.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #destroyWindow
+     */
     public static MemoryAddress ncreateWindow(int width, int height, Addressable title, MemoryAddress monitor, MemoryAddress share) {
         try {
             return (MemoryAddress) glfwCreateWindow.invoke(width, height, title, monitor, share);
@@ -1830,6 +2152,22 @@ public class GLFW {
         }
     }
 
+    /**
+     * Creates a window and its associated context.
+     *
+     * @param width   The desired width, in screen coordinates, of the window.
+     *                This must be greater than zero.
+     * @param height  The desired height, in screen coordinates, of the window.
+     *                This must be greater than zero.
+     * @param title   The initial, UTF-8 encoded window title.
+     * @param monitor The monitor to use for full screen mode, or {@link MemoryAddress#NULL NULL} for
+     *                windowed mode.
+     * @param share   The window whose context to share resources with, or {@link MemoryAddress#NULL NULL}
+     *                to not share resources.
+     * @return The handle of the created window, or {@link MemoryAddress#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ncreateWindow(int, int, Addressable, MemoryAddress, MemoryAddress) ncreateWindow
+     */
     public static MemoryAddress createWindow(int width, int height, String title, MemoryAddress monitor, MemoryAddress share) {
         try (var session = MemorySession.openShared()) {
             return ncreateWindow(width, height, session.allocateUtf8String(title), monitor, share);
@@ -1846,7 +2184,7 @@ public class GLFW {
 
     public static boolean windowShouldClose(MemoryAddress window) {
         try {
-            return (int) glfwWindowShouldClose.invoke(window) == TRUE;
+            return (int) glfwWindowShouldClose.invoke(window) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2363,7 +2701,7 @@ public class GLFW {
 
     public static boolean rawMouseMotionSupported() {
         try {
-            return (int) glfwRawMouseMotionSupported.invoke() == TRUE;
+            return (int) glfwRawMouseMotionSupported.invoke() != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2582,7 +2920,7 @@ public class GLFW {
 
     public static boolean joystickPresent(int jid) {
         try {
-            return (int) glfwJoystickPresent.invoke(jid) == TRUE;
+            return (int) glfwJoystickPresent.invoke(jid) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2686,7 +3024,7 @@ public class GLFW {
 
     public static boolean joystickIsGamepad(int jid) {
         try {
-            return (int) glfwJoystickIsGamepad.invoke(jid) == TRUE;
+            return (int) glfwJoystickIsGamepad.invoke(jid) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2706,7 +3044,7 @@ public class GLFW {
 
     public static boolean nupdateGamepadMappings(Addressable string) {
         try {
-            return (int) glfwUpdateGamepadMappings.invoke(string) == TRUE;
+            return (int) glfwUpdateGamepadMappings.invoke(string) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2734,7 +3072,7 @@ public class GLFW {
 
     public static boolean ngetGamepadState(int jid, Addressable state) {
         try {
-            return (int) glfwGetGamepadState.invoke(jid, state) == TRUE;
+            return (int) glfwGetGamepadState.invoke(jid, state) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2838,7 +3176,7 @@ public class GLFW {
 
     public static boolean nextensionSupported(Addressable extension) {
         try {
-            return (int) glfwExtensionSupported.invoke(extension) == TRUE;
+            return (int) glfwExtensionSupported.invoke(extension) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -2866,7 +3204,7 @@ public class GLFW {
 
     public static boolean vulkanSupported() {
         try {
-            return (int) glfwVulkanSupported.invoke() == TRUE;
+            return (int) glfwVulkanSupported.invoke() != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }

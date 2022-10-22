@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.invoke.MethodHandle;
@@ -58,6 +59,6 @@ public interface GLLoadFunc {
      */
     @Nullable
     default MethodHandle invoke(String procName, FunctionDescriptors function) {
-        return function.downcallSafe(invoke(procName));
+        return RuntimeHelper.downcallSafe(invoke(procName), function);
     }
 }

@@ -70,6 +70,29 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Creates a downcall handle or {@code null}.
+     *
+     * @param symbol   the address of the target function.
+     * @param function the function descriptor of the target function.
+     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
+     */
+    @Nullable
+    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptors function) {
+        return downcallSafe(symbol, function.descriptor());
+    }
+
+    /**
+     * Creates a downcall handle or throws exception.
+     *
+     * @param optional the optional contained the address of the target function.
+     * @param function the function descriptor of the target function.
+     * @return a downcall method handle.
+     */
+    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptors function) {
+        return downcallThrow(optional, function.descriptor());
+    }
+
+    /**
      * Gets the objects from an address array.
      *
      * @param addr the memory address contains objects. native type: {@code void**}
