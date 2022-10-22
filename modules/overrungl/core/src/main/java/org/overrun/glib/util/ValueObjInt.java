@@ -29,6 +29,7 @@ package org.overrun.glib.util;
  *
  * @param x the first value.
  * @param y the second value.
+ * @param <T> the type of first value object .
  * @author squid233
  * @since 0.1.0
  */
