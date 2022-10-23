@@ -28,11 +28,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
+import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.Ver11;
+import static org.overrun.glib.gl.GLCaps.check;
 
 /**
  * The OpenGL 1.1 functions.
@@ -78,12 +79,12 @@ public final class GL11 extends GL11C {
     public static boolean areTexturesResident(int[] textures, boolean[] residences) {
         try (var session = MemorySession.openShared()) {
             final int n = textures.length;
-            var pTex = session.allocateArray(ValueLayout.JAVA_INT, n);
-            var pRes = session.allocateArray(ValueLayout.JAVA_BOOLEAN, n);
+            var pTex = session.allocateArray(JAVA_INT, n);
+            var pRes = session.allocateArray(JAVA_BOOLEAN, n);
             boolean b = areTexturesResident(n, pTex, pRes);
             for (int i = 0; i < n; i++) {
-                textures[i] = pTex.getAtIndex(ValueLayout.JAVA_INT, i);
-                residences[i] = pTex.get(ValueLayout.JAVA_BOOLEAN, i);
+                textures[i] = pTex.getAtIndex(JAVA_INT, i);
+                residences[i] = pTex.get(JAVA_BOOLEAN, i);
             }
             return b;
         }
@@ -107,31 +108,31 @@ public final class GL11 extends GL11C {
 
     public static void colorPointer(int size, int type, int stride, byte[] pointer) {
         try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_BYTE, pointer));
+            colorPointer(size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
         }
     }
 
     public static void colorPointer(int size, int type, int stride, short[] pointer) {
         try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_SHORT, pointer));
+            colorPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
         }
     }
 
     public static void colorPointer(int size, int type, int stride, int[] pointer) {
         try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_INT, pointer));
+            colorPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
         }
     }
 
     public static void colorPointer(int size, int type, int stride, float[] pointer) {
         try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_FLOAT, pointer));
+            colorPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
         }
     }
 
     public static void colorPointer(int size, int type, int stride, double[] pointer) {
         try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_DOUBLE, pointer));
+            colorPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
         }
     }
 
@@ -169,31 +170,31 @@ public final class GL11 extends GL11C {
 
     public static void indexPointer(int type, int stride, byte[] pointer) {
         try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(ValueLayout.JAVA_BYTE, pointer));
+            indexPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
         }
     }
 
     public static void indexPointer(int type, int stride, short[] pointer) {
         try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(ValueLayout.JAVA_SHORT, pointer));
+            indexPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
         }
     }
 
     public static void indexPointer(int type, int stride, int[] pointer) {
         try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(ValueLayout.JAVA_INT, pointer));
+            indexPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
         }
     }
 
     public static void indexPointer(int type, int stride, float[] pointer) {
         try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(ValueLayout.JAVA_FLOAT, pointer));
+            indexPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
         }
     }
 
     public static void indexPointer(int type, int stride, double[] pointer) {
         try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(ValueLayout.JAVA_DOUBLE, pointer));
+            indexPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
         }
     }
 
@@ -215,7 +216,7 @@ public final class GL11 extends GL11C {
 
     public static void indexubv(byte[] c) {
         try (var session = MemorySession.openShared()) {
-            var pc = session.allocateArray(ValueLayout.JAVA_BYTE, c);
+            var pc = session.allocateArray(JAVA_BYTE, c);
             indexubv(pc);
         }
     }
@@ -230,7 +231,7 @@ public final class GL11 extends GL11C {
 
     public static void interleavedArrays(int format, int stride, float[] pointer) {
         try (var session = MemorySession.openShared()) {
-            var pp = session.allocateArray(ValueLayout.JAVA_FLOAT, pointer);
+            var pp = session.allocateArray(JAVA_FLOAT, pointer);
             interleavedArrays(format, stride, pp);
         }
     }
@@ -245,31 +246,31 @@ public final class GL11 extends GL11C {
 
     public static void normalPointer(int type, int stride, byte[] pointer) {
         try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(ValueLayout.JAVA_BYTE, pointer));
+            normalPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
         }
     }
 
     public static void normalPointer(int type, int stride, short[] pointer) {
         try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(ValueLayout.JAVA_SHORT, pointer));
+            normalPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
         }
     }
 
     public static void normalPointer(int type, int stride, int[] pointer) {
         try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(ValueLayout.JAVA_INT, pointer));
+            normalPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
         }
     }
 
     public static void normalPointer(int type, int stride, float[] pointer) {
         try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(ValueLayout.JAVA_FLOAT, pointer));
+            normalPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
         }
     }
 
     public static void normalPointer(int type, int stride, double[] pointer) {
         try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(ValueLayout.JAVA_DOUBLE, pointer));
+            normalPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
         }
     }
 
@@ -292,11 +293,11 @@ public final class GL11 extends GL11C {
     public static void prioritizeTextures(int[] textures, float[] priorities) {
         try (var session = MemorySession.openShared()) {
             final int n = textures.length;
-            var pTex = session.allocateArray(ValueLayout.JAVA_INT, n);
-            var pPri = session.allocateArray(ValueLayout.JAVA_FLOAT, n);
+            var pTex = session.allocateArray(JAVA_INT, n);
+            var pPri = session.allocateArray(JAVA_FLOAT, n);
             for (int i = 0; i < n; i++) {
-                pTex.setAtIndex(ValueLayout.JAVA_INT, i, textures[i]);
-                pPri.setAtIndex(ValueLayout.JAVA_FLOAT, i, priorities[i]);
+                pTex.setAtIndex(JAVA_INT, i, textures[i]);
+                pPri.setAtIndex(JAVA_FLOAT, i, priorities[i]);
             }
             prioritizeTextures(n, pTex, pPri);
         }
@@ -320,25 +321,25 @@ public final class GL11 extends GL11C {
 
     public static void texCoordPointer(int size, int type, int stride, short[] pointer) {
         try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_SHORT, pointer));
+            texCoordPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
         }
     }
 
     public static void texCoordPointer(int size, int type, int stride, int[] pointer) {
         try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_INT, pointer));
+            texCoordPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
         }
     }
 
     public static void texCoordPointer(int size, int type, int stride, float[] pointer) {
         try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_FLOAT, pointer));
+            texCoordPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
         }
     }
 
     public static void texCoordPointer(int size, int type, int stride, double[] pointer) {
         try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_DOUBLE, pointer));
+            texCoordPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
         }
     }
 
@@ -352,25 +353,25 @@ public final class GL11 extends GL11C {
 
     public static void vertexPointer(int size, int type, int stride, short[] pointer) {
         try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_SHORT, pointer));
+            vertexPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
         }
     }
 
     public static void vertexPointer(int size, int type, int stride, int[] pointer) {
         try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_INT, pointer));
+            vertexPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
         }
     }
 
     public static void vertexPointer(int size, int type, int stride, float[] pointer) {
         try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_FLOAT, pointer));
+            vertexPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
         }
     }
 
     public static void vertexPointer(int size, int type, int stride, double[] pointer) {
         try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(ValueLayout.JAVA_DOUBLE, pointer));
+            vertexPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
         }
     }
 }

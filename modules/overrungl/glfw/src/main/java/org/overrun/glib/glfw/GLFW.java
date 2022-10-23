@@ -30,11 +30,11 @@ import org.overrun.glib.util.*;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
+import static org.overrun.glib.util.MemoryUtil.*;
 
 /**
  * The GLFW binding.
@@ -1014,20 +1014,18 @@ public class GLFW {
      * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
      */
     public static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
-        try (var session = MemorySession.openShared()) {
-            var pMajor = major != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pMinor = minor != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pRev = rev != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetVersion(pMajor, pMinor, pRev);
-            if (major != null && major.length > 0) {
-                major[0] = ((MemorySegment) pMajor).get(JAVA_INT, 0);
-            }
-            if (minor != null && minor.length > 0) {
-                minor[0] = ((MemorySegment) pMinor).get(JAVA_INT, 0);
-            }
-            if (rev != null && rev.length > 0) {
-                rev[0] = ((MemorySegment) pRev).get(JAVA_INT, 0);
-            }
+        var pMajor = major != null ? malloc(4) : MemoryAddress.NULL;
+        var pMinor = minor != null ? malloc(4) : MemoryAddress.NULL;
+        var pRev = rev != null ? malloc(4) : MemoryAddress.NULL;
+        ngetVersion(pMajor, pMinor, pRev);
+        if (major != null && major.length > 0) {
+            major[0] = getAndFree(pMajor, JAVA_INT, 0);
+        }
+        if (minor != null && minor.length > 0) {
+            minor[0] = getAndFree(pMinor, JAVA_INT, 0);
+        }
+        if (rev != null && rev.length > 0) {
+            rev[0] = getAndFree(pRev, JAVA_INT, 0);
         }
     }
 
@@ -1038,13 +1036,13 @@ public class GLFW {
      * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
      */
     public static ValueInt3 getVersion() {
-        try (var session = MemorySession.openShared()) {
-            var pMajor = session.allocate(JAVA_INT);
-            var pMinor = session.allocate(JAVA_INT);
-            var pRev = session.allocate(JAVA_INT);
-            ngetVersion(pMajor, pMinor, pRev);
-            return new ValueInt3(pMajor.get(JAVA_INT, 0), pMinor.get(JAVA_INT, 0), pRev.get(JAVA_INT, 0));
-        }
+        var pMajor = malloc(4);
+        var pMinor = malloc(4);
+        var pRev = malloc(4);
+        ngetVersion(pMajor, pMinor, pRev);
+        return new ValueInt3(getAndFree(pMajor, JAVA_INT, 0),
+            getAndFree(pMinor, JAVA_INT, 0),
+            getAndFree(pRev, JAVA_INT, 0));
     }
 
     /**
@@ -1119,14 +1117,13 @@ public class GLFW {
      * @see #ngetError(Addressable) ngetError
      */
     public static int getError(String @Nullable [] description) {
-        try (var session = MemorySession.openShared()) {
-            var pDesc = description != null ? session.allocate(ADDRESS) : MemoryAddress.NULL;
-            int err = ngetError(pDesc);
-            if (description != null && description.length > 0) {
-                description[0] = ((MemorySegment) pDesc).get(ADDRESS, 0).getUtf8String(0);
-            }
-            return err;
+        var pDesc = description != null ? malloc(ADDRESS) : MemoryAddress.NULL;
+        int err = ngetError(pDesc);
+        if (description != null && description.length > 0) {
+            description[0] = pDesc.get(ADDRESS, 0).getUtf8String(0);
+            free(pDesc);
         }
+        return err;
     }
 
     /**
@@ -1136,11 +1133,11 @@ public class GLFW {
      * @see #ngetError(Addressable) ngetError
      */
     public static ValueObjInt<String> getError() {
-        try (var session = MemorySession.openShared()) {
-            var pDesc = session.allocate(ADDRESS);
-            int err = ngetError(pDesc);
-            return new ValueObjInt<>(pDesc.get(ADDRESS, 0).getUtf8String(0), err);
-        }
+        var pDesc = malloc(ADDRESS);
+        int err = ngetError(pDesc);
+        String desc = pDesc.get(ADDRESS, 0).getUtf8String(0);
+        free(pDesc);
+        return new ValueObjInt<>(desc, err);
     }
 
     /**
@@ -1224,14 +1221,12 @@ public class GLFW {
      * @see #ngetMonitors(Addressable) ngetMonitors
      */
     public static MemoryAddress @Nullable [] getMonitors() {
-        try (var session = MemorySession.openShared()) {
-            var pCount = session.allocate(JAVA_INT);
-            var pMonitors = ngetMonitors(pCount);
-            if (pMonitors == MemoryAddress.NULL) {
-                return null;
-            }
-            return RuntimeHelper.toArray(pMonitors, new MemoryAddress[pCount.get(JAVA_INT, 0)]);
+        var pCount = malloc(4);
+        var pMonitors = ngetMonitors(pCount);
+        if (pMonitors == MemoryAddress.NULL) {
+            return null;
         }
+        return RuntimeHelper.toArray(pMonitors, new MemoryAddress[getAndFree(pCount, JAVA_INT, 0)]);
     }
 
     /**
@@ -1289,16 +1284,14 @@ public class GLFW {
      * @see #ngetMonitorPos(MemoryAddress, Addressable, Addressable) ngetMonitorPos
      */
     public static void getMonitorPos(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
-        try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetMonitorPos(monitor, px, py);
-            if (xpos != null && xpos.length > 0) {
-                xpos[0] = ((MemorySegment) px).get(JAVA_INT, 0);
-            }
-            if (ypos != null && ypos.length > 0) {
-                ypos[0] = ((MemorySegment) py).get(JAVA_INT, 0);
-            }
+        var px = xpos != null ? malloc(4) : MemoryAddress.NULL;
+        var py = ypos != null ? malloc(4) : MemoryAddress.NULL;
+        ngetMonitorPos(monitor, px, py);
+        if (xpos != null && xpos.length > 0) {
+            xpos[0] = getAndFree(px, JAVA_INT, 0);
+        }
+        if (ypos != null && ypos.length > 0) {
+            ypos[0] = getAndFree(py, JAVA_INT, 0);
         }
     }
 
@@ -1310,12 +1303,10 @@ public class GLFW {
      * @see #ngetMonitorPos(MemoryAddress, Addressable, Addressable) ngetMonitorPos
      */
     public static ValueInt2 getMonitorPos(MemoryAddress monitor) {
-        try (var session = MemorySession.openShared()) {
-            var px = session.allocate(JAVA_INT);
-            var py = session.allocate(JAVA_INT);
-            ngetMonitorPos(monitor, px, py);
-            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
-        }
+        var px = malloc(4);
+        var py = malloc(4);
+        ngetMonitorPos(monitor, px, py);
+        return new ValueInt2(getAndFree(px, JAVA_INT, 0), getAndFree(px, JAVA_INT, 0));
     }
 
     /**
@@ -1359,24 +1350,22 @@ public class GLFW {
      * @see #ngetMonitorWorkarea(MemoryAddress, Addressable, Addressable, Addressable, Addressable) ngetMonitorWorkarea
      */
     public static void getMonitorWorkarea(MemoryAddress monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
-        try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pw = width != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetMonitorWorkarea(monitor, px, py, pw, ph);
-            if (xpos != null && xpos.length > 0) {
-                xpos[0] = ((MemorySegment) px).get(JAVA_INT, 0);
-            }
-            if (ypos != null && ypos.length > 0) {
-                ypos[0] = ((MemorySegment) py).get(JAVA_INT, 0);
-            }
-            if (width != null && width.length > 0) {
-                width[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
-            }
+        var px = xpos != null ? malloc(4) : MemoryAddress.NULL;
+        var py = ypos != null ? malloc(4) : MemoryAddress.NULL;
+        var pw = width != null ? malloc(4) : MemoryAddress.NULL;
+        var ph = height != null ? malloc(4) : MemoryAddress.NULL;
+        ngetMonitorWorkarea(monitor, px, py, pw, ph);
+        if (xpos != null && xpos.length > 0) {
+            xpos[0] = getAndFree(px, JAVA_INT, 0);
+        }
+        if (ypos != null && ypos.length > 0) {
+            ypos[0] = getAndFree(py, JAVA_INT, 0);
+        }
+        if (width != null && width.length > 0) {
+            width[0] = getAndFree(pw, JAVA_INT, 0);
+        }
+        if (height != null && height.length > 0) {
+            height[0] = getAndFree(ph, JAVA_INT, 0);
         }
     }
 
@@ -1388,14 +1377,15 @@ public class GLFW {
      * @see #ngetMonitorWorkarea(MemoryAddress, Addressable, Addressable, Addressable, Addressable) ngetMonitorWorkarea
      */
     public static ValueInt4 getMonitorWorkarea(MemoryAddress monitor) {
-        try (var session = MemorySession.openShared()) {
-            var px = session.allocate(JAVA_INT);
-            var py = session.allocate(JAVA_INT);
-            var pw = session.allocate(JAVA_INT);
-            var ph = session.allocate(JAVA_INT);
-            ngetMonitorWorkarea(monitor, px, py, pw, ph);
-            return new ValueInt4(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0), pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        }
+        var px = malloc(4);
+        var py = malloc(4);
+        var pw = malloc(4);
+        var ph = malloc(4);
+        ngetMonitorWorkarea(monitor, px, py, pw, ph);
+        return new ValueInt4(getAndFree(px, JAVA_INT, 0),
+            getAndFree(py, JAVA_INT, 0),
+            getAndFree(pw, JAVA_INT, 0),
+            getAndFree(ph, JAVA_INT, 0));
     }
 
     /**
@@ -1441,16 +1431,14 @@ public class GLFW {
      * @see #ngetMonitorPhysicalSize(MemoryAddress, Addressable, Addressable) ngetMonitorPhysicalSize
      */
     public static void getMonitorPhysicalSize(MemoryAddress monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
-        try (var session = MemorySession.openShared()) {
-            var pw = widthMM != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var ph = heightMM != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetMonitorPhysicalSize(monitor, pw, ph);
-            if (widthMM != null && widthMM.length > 0) {
-                widthMM[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
-            }
-            if (heightMM != null && heightMM.length > 0) {
-                heightMM[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
-            }
+        var pw = widthMM != null ? malloc(4) : MemoryAddress.NULL;
+        var ph = heightMM != null ? malloc(4) : MemoryAddress.NULL;
+        ngetMonitorPhysicalSize(monitor, pw, ph);
+        if (widthMM != null && widthMM.length > 0) {
+            widthMM[0] = getAndFree(pw, JAVA_INT, 0);
+        }
+        if (heightMM != null && heightMM.length > 0) {
+            heightMM[0] = getAndFree(ph, JAVA_INT, 0);
         }
     }
 
@@ -1462,12 +1450,10 @@ public class GLFW {
      * @see #ngetMonitorPhysicalSize(MemoryAddress, Addressable, Addressable) ngetMonitorPhysicalSize
      */
     public static ValueInt2 getMonitorPhysicalSize(MemoryAddress monitor) {
-        try (var session = MemorySession.openShared()) {
-            var pw = session.allocate(JAVA_INT);
-            var ph = session.allocate(JAVA_INT);
-            ngetMonitorPhysicalSize(monitor, pw, ph);
-            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        }
+        var pw = malloc(4);
+        var ph = malloc(4);
+        ngetMonitorPhysicalSize(monitor, pw, ph);
+        return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
     }
 
     /**
@@ -1510,16 +1496,14 @@ public class GLFW {
      * @see #ngetMonitorContentScale(MemoryAddress, Addressable, Addressable) ngetMonitorContentScale
      */
     public static void getMonitorContentScale(MemoryAddress monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
-        try (var session = MemorySession.openShared()) {
-            var px = xscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
-            var py = yscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
-            ngetMonitorContentScale(monitor, px, py);
-            if (xscale != null && xscale.length > 0) {
-                xscale[0] = ((MemorySegment) px).get(JAVA_FLOAT, 0);
-            }
-            if (yscale != null && yscale.length > 0) {
-                yscale[0] = ((MemorySegment) py).get(JAVA_FLOAT, 0);
-            }
+        var px = xscale != null ? malloc(4) : MemoryAddress.NULL;
+        var py = yscale != null ? malloc(4) : MemoryAddress.NULL;
+        ngetMonitorContentScale(monitor, px, py);
+        if (xscale != null && xscale.length > 0) {
+            xscale[0] = getAndFree(px, JAVA_FLOAT, 0);
+        }
+        if (yscale != null && yscale.length > 0) {
+            yscale[0] = getAndFree(py, JAVA_FLOAT, 0);
         }
     }
 
@@ -1531,12 +1515,10 @@ public class GLFW {
      * @see #ngetMonitorContentScale(MemoryAddress, Addressable, Addressable) ngetMonitorContentScale
      */
     public static ValueFloat2 getMonitorContentScale(MemoryAddress monitor) {
-        try (var session = MemorySession.openShared()) {
-            var px = session.allocate(JAVA_FLOAT);
-            var py = session.allocate(JAVA_FLOAT);
-            ngetMonitorContentScale(monitor, px, py);
-            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
-        }
+        var px = malloc(4);
+        var py = malloc(4);
+        ngetMonitorContentScale(monitor, px, py);
+        return new ValueFloat2(getAndFree(px, JAVA_FLOAT, 0), getAndFree(py, JAVA_FLOAT, 0));
     }
 
     /**
@@ -1704,14 +1686,12 @@ public class GLFW {
      * @see #ngetVideoModes(MemoryAddress, Addressable) ngetVideoModes
      */
     public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemorySession session, MemoryAddress monitor) {
-        try (var session1 = MemorySession.openShared()) {
-            var pCount = session1.allocate(JAVA_INT);
-            var pModes = ngetVideoModes(monitor, pCount);
-            if (pModes == MemoryAddress.NULL) {
-                return null;
-            }
-            return new GLFWVidMode.Buffer(pModes, session, pCount.get(JAVA_INT, 0)).toSegmented();
+        var pCount = malloc(4);
+        var pModes = ngetVideoModes(monitor, pCount);
+        if (pModes == MemoryAddress.NULL) {
+            return null;
         }
+        return new GLFWVidMode.Buffer(pModes, session, getAndFree(pCount, JAVA_INT, 0)).toSegmented();
     }
 
     /**
@@ -1822,7 +1802,7 @@ public class GLFW {
      *
      * @param session The memory session to hold the result.
      * @param monitor The monitor to query.
-     * @return The current gamma ramp, or {@link MemoryAddress#NULL NULL} if an
+     * @return The current gamma ramp, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetGammaRamp(MemoryAddress) ngetGammaRamp
      */
@@ -2174,6 +2154,24 @@ public class GLFW {
         }
     }
 
+    /**
+     * Destroys the specified window and its context.
+     * <p>
+     * This function destroys the specified window and its context.  On calling
+     * this function, no further callbacks will be called for that window.
+     * <p>
+     * If the context of the specified window is current on the main thread, it is
+     * detached before being destroyed.
+     *
+     * @param window The window to destroy.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @note The context of the specified window must not be current on any other
+     * thread when this function is called.
+     * @reentrancy This function must not be called from a callback.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ncreateWindow(int, int, Addressable, MemoryAddress, MemoryAddress) createWindow
+     */
     public static void destroyWindow(MemoryAddress window) {
         try {
             glfwDestroyWindow.invoke(window);
@@ -2182,6 +2180,17 @@ public class GLFW {
         }
     }
 
+    /**
+     * Checks the close flag of the specified window.
+     * <p>
+     * This function returns the value of the close flag of the specified window.
+     *
+     * @param window The window to query.
+     * @return The value of the close flag.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     */
     public static boolean windowShouldClose(MemoryAddress window) {
         try {
             return (int) glfwWindowShouldClose.invoke(window) != FALSE;
@@ -2190,6 +2199,19 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the close flag of the specified window.
+     * <p>
+     * This function sets the value of the close flag of the specified window.
+     * This can be used to override the user's attempt to close the window, or
+     * to signal that it should be closed.
+     *
+     * @param window The window whose flag to change.
+     * @param value  The new value.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     */
     public static void setWindowShouldClose(MemoryAddress window, boolean value) {
         try {
             glfwSetWindowShouldClose.invoke(window, value ? TRUE : FALSE);
@@ -2198,6 +2220,20 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the title of the specified window.
+     * <p>
+     * This function sets the window title, encoded as UTF-8, of the specified
+     * window.
+     *
+     * @param window The window whose title to change.
+     * @param title  The UTF-8 encoded window title.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>macOS:</b> The window title will not be updated until the next time you
+     * process events.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void nsetWindowTitle(MemoryAddress window, Addressable title) {
         try {
             glfwSetWindowTitle.invoke(window, title);
@@ -2206,12 +2242,55 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the title of the specified window.
+     *
+     * @param window The window whose title to change.
+     * @param title  The UTF-8 encoded window title.
+     * @see #nsetWindowTitle(MemoryAddress, Addressable) nsetWindowTitle
+     */
     public static void setWindowTitle(MemoryAddress window, String title) {
         try (var session = MemorySession.openShared()) {
             nsetWindowTitle(window, session.allocateUtf8String(title));
         }
     }
 
+    /**
+     * Sets the icon for the specified window.
+     * <p>
+     * This function sets the icon of the specified window.  If passed an array of
+     * candidate images, those of or closest to the sizes desired by the system are
+     * selected.  If no images are specified, the window reverts to its default
+     * icon.
+     * <p>
+     * The pixels are 32-bit, little-endian, non-premultiplied RGBA, i.e. eight
+     * bits per channel with the red channel first.  They are arranged canonically
+     * as packed sequential rows, starting from the top-left corner.
+     * <p>
+     * The desired image sizes varies depending on platform and system settings.
+     * The selected images will be rescaled as needed.  Good sizes include 16x16,
+     * 32x32 and 48x48.
+     *
+     * @param window The window whose icon to set.
+     * @param count  The number of images in the specified array, or zero to
+     *               revert to the default window icon.
+     * @param images The images to create the icon from.  This is ignored if
+     *               count is zero.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @pointer_lifetime The specified image data is copied before this function
+     * returns.
+     * @remark <b>macOS:</b> The GLFW window has no icon, as it is not a document
+     * window, so this function does nothing.  The dock icon will be the same as
+     * the application bundle's icon.  For more information on bundles, see the
+     * <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/">Bundle Programming Guide</a>
+     * in the Mac Developer Library.
+     * <p>
+     * <b>Wayland:</b> There is no existing protocol to change an icon, the
+     * window will thus inherit the one defined in the application's desktop file.
+     * This function always emits {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void nsetWindowIcon(MemoryAddress window, int count, Addressable images) {
         try {
             glfwSetWindowIcon.invoke(window, count, images);
@@ -2220,12 +2299,58 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the icon for the specified window.
+     *
+     * @param window The window whose icon to set.
+     * @param count  The number of images in the specified array, or zero to
+     *               revert to the default window icon.
+     * @param images The images to create the icon from.  This is ignored if
+     *               count is zero.
+     * @see #nsetWindowIcon(MemoryAddress, int, Addressable) nsetWindowIcon
+     */
     public static void setWindowIcon(MemoryAddress window, int count, GLFWImage.Buffer images) {
-        try (var session = MemorySession.openShared()) {
-            nsetWindowIcon(window, count, images.rawAddress());
+        nsetWindowIcon(window, count, images.rawAddress());
+    }
+
+    /**
+     * Sets the icon for the specified window.
+     *
+     * @param window The window whose icon to set.
+     * @param images The images to create the icon from.  This is ignored if
+     *               count is zero.
+     * @see #nsetWindowIcon(MemoryAddress, int, Addressable) nsetWindowIcon
+     */
+    public static void setWindowIcon(MemoryAddress window, GLFWImage.Buffer images) {
+        if (images == null) {
+            nsetWindowIcon(window, 0, MemoryAddress.NULL);
+        } else {
+            setWindowIcon(window, (int) images.elementCount(), images);
         }
     }
 
+    /**
+     * Retrieves the position of the content area of the specified window.
+     * <p>
+     * This function retrieves the position, in screen coordinates, of the
+     * upper-left corner of the content area of the specified window.
+     * <p>
+     * Any or all of the position arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
+     * non-{@link MemoryAddress#NULL NULL} position arguments will be set to zero.
+     *
+     * @param window The window to query.
+     * @param xpos   Where to store the x-coordinate of the upper-left corner of
+     *               the content area, or {@link MemoryAddress#NULL NULL}.
+     * @param ypos   Where to store the y-coordinate of the upper-left corner of
+     *               the content area, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> There is no way for an application to retrieve the global
+     * position of its windows, this function will always emit
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowPos(MemoryAddress, int, int) setWindowPos
+     */
     public static void ngetWindowPos(MemoryAddress window, Addressable xpos, Addressable ypos) {
         try {
             glfwGetWindowPos.invoke(window, xpos, ypos);
@@ -2234,29 +2359,64 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the position of the content area of the specified window.
+     *
+     * @param window The window to query.
+     * @param xpos   Where to store the x-coordinate of the upper-left corner of
+     *               the content area, or {@code null}.
+     * @param ypos   Where to store the y-coordinate of the upper-left corner of
+     *               the content area, or {@code null}.
+     */
     public static void getWindowPos(MemoryAddress window, int @Nullable [] xpos, int @Nullable [] ypos) {
-        try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetWindowPos(window, px, py);
-            if (xpos != null && xpos.length > 1) {
-                xpos[0] = ((MemorySegment) px).get(JAVA_INT, 0);
-            }
-            if (ypos != null && ypos.length > 1) {
-                ypos[0] = ((MemorySegment) py).get(JAVA_INT, 0);
-            }
+        var px = xpos != null ? malloc(4) : MemoryAddress.NULL;
+        var py = ypos != null ? malloc(4) : MemoryAddress.NULL;
+        ngetWindowPos(window, px, py);
+        if (xpos != null && xpos.length > 1) {
+            xpos[0] = getAndFree(px, JAVA_INT, 0);
+        }
+        if (ypos != null && ypos.length > 1) {
+            ypos[0] = getAndFree(py, JAVA_INT, 0);
         }
     }
 
+    /**
+     * Retrieves the position of the content area of the specified window.
+     *
+     * @param window The window to query.
+     * @return the xy-coordinate of the upper-left corner of the content area.
+     */
     public static ValueInt2 getWindowPos(MemoryAddress window) {
-        try (var session = MemorySession.openShared()) {
-            var px = session.allocate(JAVA_INT);
-            var py = session.allocate(JAVA_INT);
-            ngetWindowPos(window, px, py);
-            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
-        }
+        var px = malloc(4);
+        var py = malloc(4);
+        ngetWindowPos(window, px, py);
+        return new ValueInt2(getAndFree(px, JAVA_INT, 0), getAndFree(py, JAVA_INT, 0));
     }
 
+    /**
+     * Sets the position of the content area of the specified window.
+     * <p>
+     * This function sets the position, in screen coordinates, of the upper-left
+     * corner of the content area of the specified windowed mode window.  If the
+     * window is a full screen window, this function does nothing.
+     * <p>
+     * <b>Do not use this function</b> to move an already visible window unless you
+     * have very good reasons for doing so, as it will confuse and annoy the user.
+     * <p>
+     * The window manager may put limits on what positions are allowed.  GLFW
+     * cannot and should not override these limits.
+     *
+     * @param window The window to query.
+     * @param xpos   The x-coordinate of the upper-left corner of the content area.
+     * @param ypos   The y-coordinate of the upper-left corner of the content area.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> There is no way for an application to set the global
+     * position of its windows, this function will always emit
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetWindowPos(MemoryAddress, Addressable, Addressable) getWindowPos
+     */
     public static void setWindowPos(MemoryAddress window, int xpos, int ypos) {
         try {
             glfwSetWindowPos.invoke(window, xpos, ypos);
@@ -2265,6 +2425,27 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the content area of the specified window.
+     * <p>
+     * This function retrieves the size, in screen coordinates, of the content area
+     * of the specified window.  If you wish to retrieve the size of the
+     * framebuffer of the window in pixels, see
+     * {@link #ngetFramebufferSize(MemoryAddress, Addressable, Addressable) getFramebufferSize}.
+     * <p>
+     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
+     * non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     *
+     * @param window The window whose size to retrieve.
+     * @param width  Where to store the width, in screen coordinates, of the
+     *               content area, or {@link MemoryAddress#NULL NULL}.
+     * @param height Where to store the height, in screen coordinates, of the
+     *               content area, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowSize(MemoryAddress, int, int) setWindowSize
+     */
     public static void ngetWindowSize(MemoryAddress window, Addressable width, Addressable height) {
         try {
             glfwGetWindowSize.invoke(window, width, height);
@@ -2273,27 +2454,40 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the content area of the specified window.
+     *
+     * @param window The window whose size to retrieve.
+     * @param width  Where to store the width, in screen coordinates, of the
+     *               content area, or {@code null}.
+     * @param height Where to store the height, in screen coordinates, of the
+     *               content area, or {@code null}.
+     * @see #ngetWindowSize(MemoryAddress, Addressable, Addressable) ngetWindowSize
+     */
     public static void getWindowSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) {
-        try (var session = MemorySession.openShared()) {
-            var pw = width != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetWindowSize(window, pw, ph);
-            if (width != null && width.length > 0) {
-                width[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
-            }
+        var pw = width != null ? malloc(4) : MemoryAddress.NULL;
+        var ph = height != null ? malloc(4) : MemoryAddress.NULL;
+        ngetWindowSize(window, pw, ph);
+        if (width != null && width.length > 0) {
+            width[0] = getAndFree(pw, JAVA_INT, 0);
+        }
+        if (height != null && height.length > 0) {
+            height[0] = getAndFree(ph, JAVA_INT, 0);
         }
     }
 
+    /**
+     * Retrieves the size of the content area of the specified window.
+     *
+     * @param window The window whose size to retrieve.
+     * @return the width and height, in screen coordinates, of the content area.
+     * @see #ngetWindowSize(MemoryAddress, Addressable, Addressable) ngetWindowSize
+     */
     public static ValueInt2 getWindowSize(MemoryAddress window) {
-        try (var session = MemorySession.openShared()) {
-            var pw = session.allocate(JAVA_INT);
-            var ph = session.allocate(JAVA_INT);
-            ngetWindowSize(window, pw, ph);
-            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        }
+        var pw = malloc(4);
+        var ph = malloc(4);
+        ngetWindowSize(window, pw, ph);
+        return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
     }
 
     public static void setWindowSizeLimits(MemoryAddress window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
@@ -2329,26 +2523,22 @@ public class GLFW {
     }
 
     public static void getFramebufferSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) {
-        try (var session = MemorySession.openShared()) {
-            var pw = width != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var ph = height != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetFramebufferSize(window, pw, ph);
-            if (width != null && width.length > 0) {
-                width[0] = ((MemorySegment) pw).get(JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = ((MemorySegment) ph).get(JAVA_INT, 0);
-            }
+        var pw = width != null ? malloc(4) : MemoryAddress.NULL;
+        var ph = height != null ? malloc(4) : MemoryAddress.NULL;
+        ngetFramebufferSize(window, pw, ph);
+        if (width != null && width.length > 0) {
+            width[0] = getAndFree(pw, JAVA_INT, 0);
+        }
+        if (height != null && height.length > 0) {
+            height[0] = getAndFree(ph, JAVA_INT, 0);
         }
     }
 
     public static ValueInt2 getFramebufferSize(MemoryAddress window) {
-        try (var session = MemorySession.openShared()) {
-            var pw = session.allocate(JAVA_INT);
-            var ph = session.allocate(JAVA_INT);
-            ngetFramebufferSize(window, pw, ph);
-            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        }
+        var pw = malloc(4);
+        var ph = malloc(4);
+        ngetFramebufferSize(window, pw, ph);
+        return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
     }
 
     public static void ngetWindowFrameSize(MemoryAddress window, Addressable left, Addressable top, Addressable right, Addressable bottom) {
@@ -2360,36 +2550,35 @@ public class GLFW {
     }
 
     public static void getWindowFrameSize(MemoryAddress window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
-        try (var session = MemorySession.openShared()) {
-            var pl = left != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pt = top != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pr = right != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pb = bottom != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            ngetWindowFrameSize(window, pl, pt, pr, pb);
-            if (left != null && left.length > 0) {
-                left[0] = ((MemorySegment) pl).get(JAVA_INT, 0);
-            }
-            if (top != null && top.length > 0) {
-                top[0] = ((MemorySegment) pt).get(JAVA_INT, 0);
-            }
-            if (right != null && right.length > 0) {
-                right[0] = ((MemorySegment) pr).get(JAVA_INT, 0);
-            }
-            if (bottom != null && bottom.length > 0) {
-                bottom[0] = ((MemorySegment) pb).get(JAVA_INT, 0);
-            }
+        var pl = left != null ? malloc(4) : MemoryAddress.NULL;
+        var pt = top != null ? malloc(4) : MemoryAddress.NULL;
+        var pr = right != null ? malloc(4) : MemoryAddress.NULL;
+        var pb = bottom != null ? malloc(4) : MemoryAddress.NULL;
+        ngetWindowFrameSize(window, pl, pt, pr, pb);
+        if (left != null && left.length > 0) {
+            left[0] = getAndFree(pl, JAVA_INT, 0);
+        }
+        if (top != null && top.length > 0) {
+            top[0] = getAndFree(pt, JAVA_INT, 0);
+        }
+        if (right != null && right.length > 0) {
+            right[0] = getAndFree(pr, JAVA_INT, 0);
+        }
+        if (bottom != null && bottom.length > 0) {
+            bottom[0] = getAndFree(pb, JAVA_INT, 0);
         }
     }
 
     public static ValueInt4 getWindowFrameSize(MemoryAddress window) {
-        try (var session = MemorySession.openShared()) {
-            var pl = session.allocate(JAVA_INT);
-            var pt = session.allocate(JAVA_INT);
-            var pr = session.allocate(JAVA_INT);
-            var pb = session.allocate(JAVA_INT);
-            ngetWindowFrameSize(window, pl, pt, pr, pb);
-            return new ValueInt4(pl.get(JAVA_INT, 0), pt.get(JAVA_INT, 0), pr.get(JAVA_INT, 0), pb.get(JAVA_INT, 0));
-        }
+        var pl = malloc(4);
+        var pt = malloc(4);
+        var pr = malloc(4);
+        var pb = malloc(4);
+        ngetWindowFrameSize(window, pl, pt, pr, pb);
+        return new ValueInt4(getAndFree(pl, JAVA_INT, 0),
+            getAndFree(pt, JAVA_INT, 0),
+            getAndFree(pr, JAVA_INT, 0),
+            getAndFree(pb, JAVA_INT, 0));
     }
 
     public static void ngetWindowContentScale(MemoryAddress window, Addressable xscale, Addressable yscale) {
@@ -2401,26 +2590,22 @@ public class GLFW {
     }
 
     public static void getWindowContentScale(MemoryAddress window, float @Nullable [] xscale, float @Nullable [] yscale) {
-        try (var session = MemorySession.openShared()) {
-            var px = xscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
-            var py = yscale != null ? session.allocate(JAVA_FLOAT) : MemoryAddress.NULL;
-            ngetWindowContentScale(window, px, py);
-            if (xscale != null && xscale.length > 0) {
-                xscale[0] = ((MemorySegment) px).get(JAVA_FLOAT, 0);
-            }
-            if (yscale != null && yscale.length > 0) {
-                yscale[0] = ((MemorySegment) py).get(JAVA_FLOAT, 0);
-            }
+        var px = xscale != null ? malloc(4) : MemoryAddress.NULL;
+        var py = yscale != null ? malloc(4) : MemoryAddress.NULL;
+        ngetWindowContentScale(window, px, py);
+        if (xscale != null && xscale.length > 0) {
+            xscale[0] = getAndFree(px, JAVA_FLOAT, 0);
+        }
+        if (yscale != null && yscale.length > 0) {
+            yscale[0] = getAndFree(py, JAVA_FLOAT, 0);
         }
     }
 
     public static ValueFloat2 getWindowContentScale(MemoryAddress window) {
-        try (var session = MemorySession.openShared()) {
-            var px = session.allocate(JAVA_FLOAT);
-            var py = session.allocate(JAVA_FLOAT);
-            ngetWindowContentScale(window, px, py);
-            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
-        }
+        var px = malloc(4);
+        var py = malloc(4);
+        ngetWindowContentScale(window, px, py);
+        return new ValueFloat2(getAndFree(px, JAVA_FLOAT, 0), getAndFree(py, JAVA_FLOAT, 0));
     }
 
     public static float getWindowOpacity(MemoryAddress window) {
@@ -2754,26 +2939,22 @@ public class GLFW {
     }
 
     public static void getCursorPos(MemoryAddress window, double @Nullable [] xpos, double @Nullable [] ypos) {
-        try (var session = MemorySession.openShared()) {
-            var px = xpos != null ? session.allocate(JAVA_DOUBLE) : MemoryAddress.NULL;
-            var py = ypos != null ? session.allocate(JAVA_DOUBLE) : MemoryAddress.NULL;
-            ngetCursorPos(window, px, py);
-            if (xpos != null && xpos.length > 0) {
-                xpos[0] = ((MemorySegment) px).get(JAVA_DOUBLE, 0);
-            }
-            if (ypos != null && ypos.length > 0) {
-                ypos[0] = ((MemorySegment) py).get(JAVA_DOUBLE, 0);
-            }
+        var px = xpos != null ? malloc(8) : MemoryAddress.NULL;
+        var py = ypos != null ? malloc(8) : MemoryAddress.NULL;
+        ngetCursorPos(window, px, py);
+        if (xpos != null && xpos.length > 0) {
+            xpos[0] = getAndFree(px, JAVA_DOUBLE, 0);
+        }
+        if (ypos != null && ypos.length > 0) {
+            ypos[0] = getAndFree(py, JAVA_DOUBLE, 0);
         }
     }
 
     public static ValueDouble2 getCursorPos(MemoryAddress window) {
-        try (var session = MemorySession.openShared()) {
-            var px = session.allocate(JAVA_DOUBLE);
-            var py = session.allocate(JAVA_DOUBLE);
-            ngetCursorPos(window, px, py);
-            return new ValueDouble2(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
-        }
+        var px = malloc(8);
+        var py = malloc(8);
+        ngetCursorPos(window, px, py);
+        return new ValueDouble2(getAndFree(px, JAVA_DOUBLE, 0), getAndFree(py, JAVA_DOUBLE, 0));
     }
 
     public static void setCursorPos(MemoryAddress window, double xpos, double ypos) {
@@ -2935,11 +3116,9 @@ public class GLFW {
     }
 
     public static float[] getJoystickAxes(int jid) {
-        try (var session = MemorySession.openShared()) {
-            var pCount = session.allocate(JAVA_INT);
-            var pAxes = ngetJoystickAxes(jid, pCount);
-            return RuntimeHelper.toArray(pAxes, new float[pCount.get(JAVA_INT, 0)]);
-        }
+        var pCount = malloc(4);
+        var pAxes = ngetJoystickAxes(jid, pCount);
+        return RuntimeHelper.toArray(pAxes, new float[getAndFree(pCount, JAVA_INT, 0)]);
     }
 
     public static MemoryAddress ngetJoystickButtons(int jid, Addressable count) {
@@ -2951,15 +3130,13 @@ public class GLFW {
     }
 
     public static boolean[] getJoystickButtons(int jid) {
-        try (var session = MemorySession.openShared()) {
-            var pCount = session.allocate(JAVA_INT);
-            var pButtons = ngetJoystickButtons(jid, pCount);
-            boolean[] buttons = new boolean[pCount.get(JAVA_INT, 0)];
-            for (int i = 0; i < buttons.length; i++) {
-                buttons[i] = pButtons.getAtIndex(JAVA_INT, i) == PRESS;
-            }
-            return buttons;
+        var pCount = malloc(4);
+        var pButtons = ngetJoystickButtons(jid, pCount);
+        boolean[] buttons = new boolean[getAndFree(pCount, JAVA_INT, 0)];
+        for (int i = 0; i < buttons.length; i++) {
+            buttons[i] = pButtons.getAtIndex(JAVA_INT, i) == PRESS;
         }
+        return buttons;
     }
 
     public static MemoryAddress ngetJoystickHats(int jid, Addressable count) {
@@ -2971,11 +3148,9 @@ public class GLFW {
     }
 
     public static byte[] getJoystickHats(int jid) {
-        try (var session = MemorySession.openShared()) {
-            var pCount = session.allocate(JAVA_INT);
-            var pHats = ngetJoystickHats(jid, pCount);
-            return RuntimeHelper.toArray(pHats, new byte[pCount.get(JAVA_INT, 0)]);
-        }
+        var pCount = malloc(4);
+        var pHats = ngetJoystickHats(jid, pCount);
+        return RuntimeHelper.toArray(pHats, new byte[getAndFree(pCount, JAVA_INT, 0)]);
     }
 
     public static MemoryAddress ngetJoystickName(int jid) {
@@ -3219,10 +3394,8 @@ public class GLFW {
     }
 
     public static String[] getRequiredInstanceExtensions() {
-        try (var session = MemorySession.openShared()) {
-            var pCount = session.allocate(JAVA_INT);
-            var pExt = ngetRequiredInstanceExtensions(pCount);
-            return RuntimeHelper.toArray(pExt, new String[pCount.get(JAVA_INT, 0)]);
-        }
+        var pCount = malloc(4);
+        var pExt = ngetRequiredInstanceExtensions(pCount);
+        return RuntimeHelper.toArray(pExt, new String[getAndFree(pCount, JAVA_INT, 0)]);
     }
 }

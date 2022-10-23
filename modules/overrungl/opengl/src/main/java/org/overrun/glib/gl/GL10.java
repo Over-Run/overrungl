@@ -33,7 +33,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.Ver10;
+import static org.overrun.glib.gl.GLCaps.check;
 
 /**
  * The OpenGL 1.0 functions.
@@ -1152,7 +1153,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static double getMapdv(int target, int query) {
+    public static double getMapd(int target, int query) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_DOUBLE);
             getMapdv(target, query, pv);
@@ -1176,7 +1177,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static float getMapfv(int target, int query) {
+    public static float getMapf(int target, int query) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_FLOAT);
             getMapfv(target, query, pv);
@@ -1200,7 +1201,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static int getMapiv(int target, int query) {
+    public static int getMapi(int target, int query) {
         try (var session = MemorySession.openShared()) {
             var pv = session.allocate(JAVA_INT);
             getMapiv(target, query, pv);

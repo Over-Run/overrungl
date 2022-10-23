@@ -28,7 +28,9 @@ import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -67,6 +69,17 @@ public final class MemoryUtil {
     }
 
     /**
+     * Allocates memory blocks.
+     *
+     * @param layout Bytes to allocate.
+     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemoryAddress#NULL NULL}
+     * if there is insufficient memory available.
+     */
+    public static MemoryAddress malloc(MemoryLayout layout) {
+        return malloc((int) layout.byteSize());
+    }
+
+    /**
      * Allocates an array in memory with elements initialized to 0.
      * <p>
      * The {@code calloc} function allocates storage space for an array of <i>{@code number}</i>
@@ -83,6 +96,21 @@ public final class MemoryUtil {
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
+    }
+
+    /**
+     * Allocates an array in memory with elements initialized to 0.
+     * <p>
+     * The {@code calloc} function allocates storage space for an array of <i>{@code number}</i>
+     * elements, each of length <i>{@code size}</i> bytes. Each element is initialized to 0.
+     *
+     * @param number Number of elements.
+     * @param layout Length in bytes of each element.
+     * @return {@code calloc} returns a pointer to the allocated space. The storage space pointed to by the
+     * return value is suitably aligned for storage of any type of object.
+     */
+    public static MemoryAddress calloc(int number, MemoryLayout layout) {
+        return calloc(number, (int) layout.byteSize());
     }
 
     /**
@@ -139,6 +167,74 @@ public final class MemoryUtil {
             m_free.invoke(memblock);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
+        }
+    }
+
+    /**
+     * {@link MemoryAddress#get(ValueLayout.OfInt, long) get} and {@link #free(MemoryAddress) free}
+     *
+     * @param address the memory address
+     * @param layout  the layout of the memory region to be read.
+     * @param offset  offset in bytes (relative to this address). Might be negative.
+     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
+     * @return an int value read from this address.
+     */
+    public static int getAndFree(MemoryAddress address, ValueLayout.OfInt layout, long offset) {
+        try {
+            return address.get(layout, offset);
+        } finally {
+            free(address);
+        }
+    }
+
+    /**
+     * {@link MemoryAddress#get(ValueLayout.OfFloat, long) get} and {@link #free(MemoryAddress) free}
+     *
+     * @param address the memory address
+     * @param layout  the layout of the memory region to be read.
+     * @param offset  offset in bytes (relative to this address). Might be negative.
+     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
+     * @return a float value read from this address.
+     */
+    public static float getAndFree(MemoryAddress address, ValueLayout.OfFloat layout, long offset) {
+        try {
+            return address.get(layout, offset);
+        } finally {
+            free(address);
+        }
+    }
+
+    /**
+     * {@link MemoryAddress#get(ValueLayout.OfDouble, long) get} and {@link #free(MemoryAddress) free}
+     *
+     * @param address the memory address
+     * @param layout  the layout of the memory region to be read.
+     * @param offset  offset in bytes (relative to this address). Might be negative.
+     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
+     * @return a double value read from this address.
+     */
+    public static double getAndFree(MemoryAddress address, ValueLayout.OfDouble layout, long offset) {
+        try {
+            return address.get(layout, offset);
+        } finally {
+            free(address);
+        }
+    }
+
+    /**
+     * {@link MemoryAddress#get(ValueLayout.OfAddress, long) get} and {@link #free(MemoryAddress) free}
+     *
+     * @param address the memory address
+     * @param layout  the layout of the memory region to be read.
+     * @param offset  offset in bytes (relative to this address). Might be negative.
+     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
+     * @return an address value read from this address.
+     */
+    public static MemoryAddress getAndFree(MemoryAddress address, ValueLayout.OfAddress layout, long offset) {
+        try {
+            return address.get(layout, offset);
+        } finally {
+            free(address);
         }
     }
 }
