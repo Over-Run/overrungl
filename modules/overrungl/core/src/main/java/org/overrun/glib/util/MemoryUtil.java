@@ -27,10 +27,7 @@ package org.overrun.glib.util;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.SymbolLookup;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -47,7 +44,10 @@ public final class MemoryUtil {
         m_malloc = downcall("malloc", IP),
         m_calloc = downcall("calloc", IIP),
         m_realloc = downcall("realloc", PIP),
-        m_free = downcall("free", PV);
+        m_free = downcall("free", PV),
+        m_memcpy = downcall("memcpy", PPIP),
+        m_memmove = downcall("memmove", PPIP),
+        m_memset = downcall("memset", PIIP);
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.lookup(name), function);
@@ -165,6 +165,74 @@ public final class MemoryUtil {
     public static void free(MemoryAddress memblock) {
         try {
             m_free.invoke(memblock);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    /**
+     * Copies bytes between buffers.
+     * <p>
+     * {@code memcpy} copies <i>{@code count}</i> bytes from <i>{@code src}</i> to <i>{@code dest}</i>.
+     * If the source and destination overlap, the behavior of {@code memcpy} is undefined.
+     * Use {@code memmove} to handle overlapping regions.
+     * <p>
+     * Make sure that the destination buffer is the same size or larger than the source buffer.
+     *
+     * @param dest  New buffer.
+     * @param src   Buffer to copy from.
+     * @param count Number of characters to copy.
+     * @return The value of <i>{@code dest}</i>.
+     */
+    public static MemoryAddress memcpy(MemoryAddress dest, Addressable src, int count) {
+        try {
+            return (MemoryAddress) m_memcpy.invoke(dest, src, count);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    /**
+     * Moves one buffer to another.
+     * <p>
+     * Copies <i>{@code count}</i> bytes from <i>{@code src}</i> to <i>{@code dest}</i>.
+     * If some regions of the source area and the destination overlap,
+     * both functions ensure that the original source bytes in the overlapping region
+     * are copied before being overwritten.
+     * <p>
+     * <b>Security Note</b> Make sure that the destination buffer is the same size
+     * or larger than the source buffer.
+     *
+     * @param dest  Destination object.
+     * @param src   Source object.
+     * @param count Number of bytes to copy.
+     * @return The value of <i>{@code dest}</i>.
+     */
+    public static MemoryAddress memmove(MemoryAddress dest, Addressable src, int count) {
+        try {
+            return (MemoryAddress) m_memmove.invoke(dest, src, count);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here");
+        }
+    }
+
+    /**
+     * Sets a buffer to a specified character.
+     * <p>
+     * Sets the first <i>{@code count}</i> characters of <i>{@code dest}</i>
+     * to the character <i>{@code c}</i>.
+     * <p>
+     * <b>Security Note</b> Make sure that the destination buffer has enough room
+     * for at least <i>{@code count}</i> characters.
+     *
+     * @param dest  Pointer to destination.
+     * @param c     Character to set.
+     * @param count Number of characters.
+     * @return The value of <i>{@code dest}</i>.
+     */
+    public static MemoryAddress memset(MemoryAddress dest, int c, int count) {
+        try {
+            return (MemoryAddress) m_memset.invoke(dest, c, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }

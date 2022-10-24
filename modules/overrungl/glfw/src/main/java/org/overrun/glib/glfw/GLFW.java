@@ -2490,6 +2490,39 @@ public class GLFW {
         return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
     }
 
+    /**
+     * Sets the size limits of the specified window.
+     * <p>
+     * This function sets the size limits of the content area of the specified
+     * window.  If the window is full screen, the size limits only take effect
+     * once it is made windowed.  If the window is not resizable, this function
+     * does nothing.
+     * <p>
+     * The size limits are applied immediately to a windowed mode window and may
+     * cause it to be resized.
+     * <p>
+     * The maximum dimensions must be greater than or equal to the minimum
+     * dimensions and all must be greater than or equal to zero.
+     *
+     * @param window    The window to set limits for.
+     * @param minWidth  The minimum width, in screen coordinates, of the content
+     *                  area, or {@link #DONT_CARE}.
+     * @param minHeight The minimum height, in screen coordinates, of the
+     *                  content area, or {@link #DONT_CARE}.
+     * @param maxWidth  The maximum width, in screen coordinates, of the content
+     *                  area, or {@link #DONT_CARE}.
+     * @param maxHeight The maximum height, in screen coordinates, of the
+     *                  content area, or {@link #DONT_CARE}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @remark If you set size limits and an aspect ratio that conflict, the
+     * results are undefined.
+     * <p>
+     * <b>Wayland:</b> The size limits will not be applied until the window is
+     * actually resized, either by the user or by the compositor.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowAspectRatio(MemoryAddress, int, int) setWindowAspectRatio
+     */
     public static void setWindowSizeLimits(MemoryAddress window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
         try {
             glfwSetWindowSizeLimits.invoke(window, minWidth, minHeight, maxWidth, maxHeight);
@@ -2498,6 +2531,39 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the aspect ratio of the specified window.
+     * <p>
+     * This function sets the required aspect ratio of the content area of the
+     * specified window.  If the window is full screen, the aspect ratio only takes
+     * effect once it is made windowed.  If the window is not resizable, this
+     * function does nothing.
+     * <p>
+     * The aspect ratio is specified as a numerator and a denominator and both
+     * values must be greater than zero.  For example, the common 16:9 aspect ratio
+     * is specified as 16 and 9, respectively.
+     * <p>
+     * If the numerator and denominator is set to {@link #DONT_CARE} then the aspect
+     * ratio limit is disabled.
+     * <p>
+     * The aspect ratio is applied immediately to a windowed mode window and may
+     * cause it to be resized.
+     *
+     * @param window The window to set limits for.
+     * @param numer  The numerator of the desired aspect ratio, or
+     *               {@link #DONT_CARE}.
+     * @param denom  The denominator of the desired aspect ratio, or
+     *               {@link #DONT_CARE}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @remark If you set size limits and an aspect ratio that conflict, the
+     * results are undefined.
+     * <p>
+     * <b>Wayland:</b> The aspect ratio will not be applied until the window is
+     * actually resized, either by the user or by the compositor.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowSizeLimits(MemoryAddress, int, int, int, int) setWindowSizeLimits
+     */
     public static void setWindowAspectRatio(MemoryAddress window, int numer, int denom) {
         try {
             glfwSetWindowAspectRatio.invoke(window, numer, denom);
@@ -2506,6 +2572,37 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the size of the content area of the specified window.
+     * <p>
+     * This function sets the size, in screen coordinates, of the content area of
+     * the specified window.
+     * <p>
+     * For full screen windows, this function updates the resolution of its desired
+     * video mode and switches to the video mode closest to it, without affecting
+     * the window's context.  As the context is unaffected, the bit depths of the
+     * framebuffer remain unchanged.
+     * <p>
+     * If you wish to update the refresh rate of the desired video mode in addition
+     * to its resolution, see
+     * {@link #setWindowMonitor(MemoryAddress, MemoryAddress, int, int, int, int, int) setWindowMonitor}.
+     * <p>
+     * The window manager may put limits on what sizes are allowed.  GLFW cannot
+     * and should not override these limits.
+     *
+     * @param window The window to resize.
+     * @param width  The desired width, in screen coordinates, of the window
+     *               content area.
+     * @param height The desired height, in screen coordinates, of the window
+     *               content area.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> A full screen window will not attempt to change the mode,
+     * no matter what the requested size.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetWindowSize(MemoryAddress, Addressable, Addressable) getWindowSize
+     * @see #setWindowMonitor(MemoryAddress, MemoryAddress, int, int, int, int, int) setWindowMonitor
+     */
     public static void setWindowSize(MemoryAddress window, int width, int height) {
         try {
             glfwSetWindowSize.invoke(window, width, height);
@@ -2514,6 +2611,26 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the framebuffer of the specified window.
+     * <p>
+     * This function retrieves the size, in pixels, of the framebuffer of the
+     * specified window.  If you wish to retrieve the size of the window in screen
+     * coordinates, see {@link #ngetWindowSize(MemoryAddress, Addressable, Addressable) getWindowSize}.
+     * <p>
+     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
+     * non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     *
+     * @param window The window whose framebuffer to query.
+     * @param width  Where to store the width, in pixels, of the framebuffer,
+     *               or {@link MemoryAddress#NULL NULL}.
+     * @param height Where to store the height, in pixels, of the framebuffer,
+     *               or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #nsetFramebufferSizeCallback(MemoryAddress, Addressable) setFramebufferSizeCallback
+     */
     public static void ngetFramebufferSize(MemoryAddress window, Addressable width, Addressable height) {
         try {
             glfwGetFramebufferSize.invoke(window, width, height);
@@ -2522,6 +2639,16 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the framebuffer of the specified window.
+     *
+     * @param window The window whose framebuffer to query.
+     * @param width  Where to store the width, in pixels, of the framebuffer,
+     *               or {@code null}.
+     * @param height Where to store the height, in pixels, of the framebuffer,
+     *               or {@code null}.
+     * @see #ngetFramebufferSize(MemoryAddress, Addressable, Addressable) ngetFramebufferSize
+     */
     public static void getFramebufferSize(MemoryAddress window, int @Nullable [] width, int @Nullable [] height) {
         var pw = width != null ? malloc(4) : MemoryAddress.NULL;
         var ph = height != null ? malloc(4) : MemoryAddress.NULL;
@@ -2534,6 +2661,13 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the framebuffer of the specified window.
+     *
+     * @param window The window whose framebuffer to query.
+     * @return the width and height, in pixels, of the framebuffer.
+     * @see #ngetFramebufferSize(MemoryAddress, Addressable, Addressable) ngetFramebufferSize
+     */
     public static ValueInt2 getFramebufferSize(MemoryAddress window) {
         var pw = malloc(4);
         var ph = malloc(4);
@@ -2541,6 +2675,35 @@ public class GLFW {
         return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
     }
 
+    /**
+     * Retrieves the size of the frame of the window.
+     * <p>
+     * This function retrieves the size, in screen coordinates, of each edge of the
+     * frame of the specified window.  This size includes the title bar, if the
+     * window has one.  The size of the frame may vary depending on the
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints_wnd">window-related hints</a>
+     * used to create it.
+     * <p>
+     * Because this function retrieves the size of each window frame edge and not
+     * the offset along a particular coordinate axis, the retrieved values will
+     * always be zero or positive.
+     * <p>
+     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.
+     * If an error occurs, all non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     *
+     * @param window The window whose frame size to query.
+     * @param left   Where to store the size, in screen coordinates, of the left
+     *               edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     * @param top    Where to store the size, in screen coordinates, of the top
+     *               edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     * @param right  Where to store the size, in screen coordinates, of the
+     *               right edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     * @param bottom Where to store the size, in screen coordinates, of the
+     *               bottom edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void ngetWindowFrameSize(MemoryAddress window, Addressable left, Addressable top, Addressable right, Addressable bottom) {
         try {
             glfwGetWindowFrameSize.invoke(window, left, top, right, bottom);
@@ -2549,6 +2712,20 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the frame of the window.
+     *
+     * @param window The window whose frame size to query.
+     * @param left   Where to store the size, in screen coordinates, of the left
+     *               edge of the window frame, or {@code null}.
+     * @param top    Where to store the size, in screen coordinates, of the top
+     *               edge of the window frame, or {@code null}.
+     * @param right  Where to store the size, in screen coordinates, of the
+     *               right edge of the window frame, or {@code null}.
+     * @param bottom Where to store the size, in screen coordinates, of the
+     *               bottom edge of the window frame, or {@code null}.
+     * @see #ngetWindowFrameSize(MemoryAddress, Addressable, Addressable, Addressable, Addressable) ngetWindowFrameSize
+     */
     public static void getWindowFrameSize(MemoryAddress window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
         var pl = left != null ? malloc(4) : MemoryAddress.NULL;
         var pt = top != null ? malloc(4) : MemoryAddress.NULL;
@@ -2569,6 +2746,14 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the size of the frame of the window.
+     *
+     * @param window The window whose frame size to query.
+     * @return the size, in screen coordinates, of the left, top, right and bottom
+     * edge of the window frame.
+     * @see #ngetWindowFrameSize(MemoryAddress, Addressable, Addressable, Addressable, Addressable) ngetWindowFrameSize
+     */
     public static ValueInt4 getWindowFrameSize(MemoryAddress window) {
         var pl = malloc(4);
         var pt = malloc(4);
@@ -2581,6 +2766,30 @@ public class GLFW {
             getAndFree(pb, JAVA_INT, 0));
     }
 
+    /**
+     * Retrieves the content scale for the specified window.
+     * <p>
+     * This function retrieves the content scale for the specified window.  The
+     * content scale is the ratio between the current DPI and the platform's
+     * default DPI.  This is especially important for text and any UI elements.  If
+     * the pixel dimensions of your UI scaled by this look appropriate on your
+     * machine then it should appear at a reasonable size on other machines
+     * regardless of their DPI and scaling settings.  This relies on the system DPI
+     * and scaling settings being somewhat correct.
+     * <p>
+     * On systems where each monitors can have its own content scale, the window
+     * content scale will depend on which monitor the system considers the window
+     * to be on.
+     *
+     * @param window The window to query.
+     * @param xscale Where to store the x-axis content scale, or {@link MemoryAddress#NULL NULL}.
+     * @param yscale Where to store the y-axis content scale, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #nsetWindowContentScaleCallback(MemoryAddress, Addressable) setWindowContentScaleCallback
+     * @see #ngetMonitorContentScale(MemoryAddress, Addressable, Addressable) getMonitorContentScale
+     */
     public static void ngetWindowContentScale(MemoryAddress window, Addressable xscale, Addressable yscale) {
         try {
             glfwGetWindowContentScale.invoke(window, xscale, yscale);
@@ -2589,6 +2798,14 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the content scale for the specified window.
+     *
+     * @param window The window to query.
+     * @param xscale Where to store the x-axis content scale, or {@code null}.
+     * @param yscale Where to store the y-axis content scale, or {@code null}.
+     * @see #ngetWindowContentScale(MemoryAddress, Addressable, Addressable) ngetWindowContentScale
+     */
     public static void getWindowContentScale(MemoryAddress window, float @Nullable [] xscale, float @Nullable [] yscale) {
         var px = xscale != null ? malloc(4) : MemoryAddress.NULL;
         var py = yscale != null ? malloc(4) : MemoryAddress.NULL;
@@ -2601,6 +2818,13 @@ public class GLFW {
         }
     }
 
+    /**
+     * Retrieves the content scale for the specified window.
+     *
+     * @param window The window to query.
+     * @return the xy-axis content scale.
+     * @see #ngetWindowContentScale(MemoryAddress, Addressable, Addressable) ngetWindowContentScale
+     */
     public static ValueFloat2 getWindowContentScale(MemoryAddress window) {
         var px = malloc(4);
         var py = malloc(4);
@@ -2608,6 +2832,24 @@ public class GLFW {
         return new ValueFloat2(getAndFree(px, JAVA_FLOAT, 0), getAndFree(py, JAVA_FLOAT, 0));
     }
 
+    /**
+     * Returns the opacity of the whole window.
+     * <p>
+     * This function returns the opacity of the window, including any decorations.
+     * <p>
+     * The opacity (or alpha) value is a positive finite number between zero and
+     * one, where zero is fully transparent and one is fully opaque.  If the system
+     * does not support whole window transparency, this function always returns one.
+     * <p>
+     * The initial opacity value for newly created windows is one.
+     *
+     * @param window The window to query.
+     * @return The opacity value of the specified window.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowOpacity(MemoryAddress, float) setWindowOpacity
+     */
     public static float getWindowOpacity(MemoryAddress window) {
         try {
             return (float) glfwGetWindowOpacity.invoke(window);
@@ -2616,6 +2858,26 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the opacity of the whole window.
+     * <p>
+     * This function sets the opacity of the window, including any decorations.
+     * <p>
+     * The opacity (or alpha) value is a positive finite number between zero and
+     * one, where zero is fully transparent and one is fully opaque.
+     * <p>
+     * The initial opacity value for newly created windows is one.
+     * <p>
+     * A window created with framebuffer transparency may not use whole window
+     * transparency.  The results of doing this are undefined.
+     *
+     * @param window  The window to set the opacity for.
+     * @param opacity The desired opacity of the specified window.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #getWindowOpacity(MemoryAddress) getWindowOpacity
+     */
     public static void setWindowOpacity(MemoryAddress window, float opacity) {
         try {
             glfwSetWindowOpacity.invoke(window, opacity);
@@ -2624,6 +2886,24 @@ public class GLFW {
         }
     }
 
+    /**
+     * Iconifies the specified window.
+     * <p>
+     * This function iconifies (minimizes) the specified window if it was
+     * previously restored.  If the window is already iconified, this function does
+     * nothing.
+     * <p>
+     * If the specified window is a full screen window, GLFW restores the original
+     * video mode of the monitor.  The window's desired video mode is set again
+     * when the window is restored.
+     *
+     * @param window The window to iconify.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #restoreWindow(MemoryAddress) restoreWindow
+     * @see #maximizeWindow(MemoryAddress) maximizeWindow
+     */
     public static void iconifyWindow(MemoryAddress window) {
         try {
             glfwIconifyWindow.invoke(window);
@@ -2632,6 +2912,23 @@ public class GLFW {
         }
     }
 
+    /**
+     * Restores the specified window.
+     * <p>
+     * This function restores the specified window if it was previously iconified
+     * (minimized) or maximized.  If the window is already restored, this function
+     * does nothing.
+     * <p>
+     * If the specified window is an iconified full screen window, its desired
+     * video mode is set again for its monitor when the window is restored.
+     *
+     * @param window The window to restore.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #iconifyWindow(MemoryAddress) iconifyWindow
+     * @see #maximizeWindow(MemoryAddress) maximizeWindow
+     */
     public static void restoreWindow(MemoryAddress window) {
         try {
             glfwRestoreWindow.invoke(window);
@@ -2640,6 +2937,21 @@ public class GLFW {
         }
     }
 
+    /**
+     * Maximizes the specified window.
+     * <p>
+     * This function maximizes the specified window if it was previously not
+     * maximized.  If the window is already maximized, this function does nothing.
+     * <p>
+     * If the specified window is a full screen window, this function does nothing.
+     *
+     * @param window The window to maximize.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function may only be called from the main thread.
+     * @see #iconifyWindow(MemoryAddress) iconifyWindow
+     * @see #restoreWindow(MemoryAddress) restoreWindow
+     */
     public static void maximizeWindow(MemoryAddress window) {
         try {
             glfwMaximizeWindow.invoke(window);
@@ -2648,6 +2960,28 @@ public class GLFW {
         }
     }
 
+    /**
+     * Makes the specified window visible.
+     * <p>
+     * This function makes the specified window visible if it was previously
+     * hidden.  If the window is already visible or is in full screen mode, this
+     * function does nothing.
+     * <p>
+     * By default, windowed mode windows are focused when shown
+     * Set the {@link #FOCUS_ON_SHOW} window hint
+     * to change this behavior for all newly created windows, or change the
+     * behavior for an existing window with {@link #setWindowAttrib}.
+     *
+     * @param window The window to make visible.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> Because Wayland wants every frame of the desktop to be
+     * complete, this function does not immediately make the window visible.
+     * Instead, it will become visible the next time the window framebuffer is
+     * updated after this call.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #hideWindow(MemoryAddress) hideWindow
+     */
     public static void showWindow(MemoryAddress window) {
         try {
             glfwShowWindow.invoke(window);
@@ -2656,6 +2990,19 @@ public class GLFW {
         }
     }
 
+    /**
+     * Hides the specified window.
+     * <p>
+     * This function hides the specified window if it was previously visible.  If
+     * the window is already hidden or is in full screen mode, this function does
+     * nothing.
+     *
+     * @param window The window to hide.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #showWindow(MemoryAddress) showWindow
+     */
     public static void hideWindow(MemoryAddress window) {
         try {
             glfwHideWindow.invoke(window);
@@ -2664,6 +3011,34 @@ public class GLFW {
         }
     }
 
+    /**
+     * Brings the specified window to front and sets input focus.
+     * <p>
+     * This function brings the specified window to front and sets input focus.
+     * The window should already be visible and not iconified.
+     * <p>
+     * By default, both windowed and full screen mode windows are focused when
+     * initially created.  Set the {@link #FOCUSED} to
+     * disable this behavior.
+     * <p>
+     * Also by default, windowed mode windows are focused when shown
+     * with {@link #showWindow}. Set the
+     * {@link #FOCUS_ON_SHOW} to disable this behavior.
+     * <p>
+     * <b>Do not use this function</b> to steal focus from other applications unless
+     * you are certain that is what the user wants.  Focus stealing can be
+     * extremely disruptive.
+     * <p>
+     * For a less disruptive way of getting the user's attention, see
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_attention">attention requests</a>.
+     *
+     * @param window The window to give input focus.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>Wayland:</b> It is not possible for an application to bring its windows
+     * to front, this function will always emit {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void focusWindow(MemoryAddress window) {
         try {
             glfwFocusWindow.invoke(window);
@@ -2672,6 +3047,23 @@ public class GLFW {
         }
     }
 
+    /**
+     * Requests user attention to the specified window.
+     * <p>
+     * This function requests user attention to the specified window.  On
+     * platforms where this is not supported, attention is requested to the
+     * application as a whole.
+     * <p>
+     * Once the user has given attention, usually by focusing the window or
+     * application, the system will end the request automatically.
+     *
+     * @param window The window to request attention to.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark <b>macOS:</b> Attention is requested to the application as a whole, not the
+     * specific window.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static void requestWindowAttention(MemoryAddress window) {
         try {
             glfwRequestWindowAttention.invoke(window);
@@ -2680,6 +3072,19 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the monitor that the window uses for full screen mode.
+     * <p>
+     * This function returns the handle of the monitor that the specified window is
+     * in full screen on.
+     *
+     * @param window The window to query.
+     * @return The monitor, or {@link MemoryAddress#NULL NULL} if the window is in windowed mode or an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowMonitor(MemoryAddress, MemoryAddress, int, int, int, int, int) setWindowMonitor
+     */
     public static MemoryAddress getWindowMonitor(MemoryAddress window) {
         try {
             return (MemoryAddress) glfwGetWindowMonitor.invoke(window);
@@ -2688,6 +3093,54 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the mode, monitor, video mode and placement of a window.
+     * <p>
+     * This function sets the monitor that the window uses for full screen mode or,
+     * if the monitor is {@link MemoryAddress#NULL NULL}, makes it windowed mode.
+     * <p>
+     * When setting a monitor, this function updates the width, height and refresh
+     * rate of the desired video mode and switches to the video mode closest to it.
+     * The window position is ignored when setting a monitor.
+     * <p>
+     * When the monitor is {@link MemoryAddress#NULL NULL}, the position,
+     * width and height are used to place the window content area.
+     * The refresh rate is ignored when no monitor is specified.
+     * <p>
+     * If you only wish to update the resolution of a full screen window or the
+     * size of a windowed mode window, see {@link #setWindowSize}.
+     * <p>
+     * When a window transitions from full screen to windowed mode, this function
+     * restores any previous window settings such as whether it is decorated,
+     * floating, resizable, has size or aspect ratio limits, etc.
+     *
+     * @param window      The window whose monitor, size or video mode to set.
+     * @param monitor     The desired monitor, or {@link MemoryAddress#NULL NULL} to set windowed mode.
+     * @param xpos        The desired x-coordinate of the upper-left corner of the
+     *                    content area.
+     * @param ypos        The desired y-coordinate of the upper-left corner of the
+     *                    content area.
+     * @param width       The desired with, in screen coordinates, of the content
+     *                    area or video mode.
+     * @param height      The desired height, in screen coordinates, of the content
+     *                    area or video mode.
+     * @param refreshRate The desired refresh rate, in Hz, of the video mode,
+     *                    or {@link #DONT_CARE}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark The OpenGL or OpenGL ES context will not be destroyed or otherwise
+     * affected by any resizing or mode switching, although you may need to update
+     * your viewport if the framebuffer size has changed.
+     * <p>
+     * <b>Wayland:</b> The desired window position is ignored, as there is no way
+     * for an application to set this property.
+     * <p>
+     * <b>Wayland:</b> Setting the window to full screen will not attempt to
+     * change the mode, no matter what the requested size or refresh rate.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #getWindowMonitor(MemoryAddress) getWindowMonitor
+     * @see #setWindowSize(MemoryAddress, int, int) setWindowSize
+     */
     public static void setWindowMonitor(MemoryAddress window, MemoryAddress monitor, int xpos, int ypos, int width, int height, int refreshRate) {
         try {
             glfwGetWindowMonitor.invoke(window, monitor, xpos, ypos, width, height, refreshRate);
@@ -2696,6 +3149,33 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns an attribute of the specified window.
+     * <p>
+     * This function returns the value of an attribute of the specified window or
+     * its OpenGL or OpenGL ES context.
+     *
+     * @param window The window to query.
+     * @param attrib The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_attribs">window attribute</a>
+     *               whose value to return.
+     * @return The value of the attribute, or zero if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * @remark Framebuffer related hints are not window attributes.  See
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_attribs_fb">Framebuffer related attributes</a>
+     * for more information.
+     * @remark Zero is a valid value for many window and context related
+     * attributes, so you cannot use a return value of zero as an indication of
+     * errors.  However, this function should not fail as long as it is passed
+     * valid arguments and the library has been
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * <p>
+     * <b>Wayland:</b> The Wayland protocol provides no way to check whether a
+     * window is iconfied, so {@link #ICONIFIED} always returns {@link #FALSE}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setWindowAttrib(MemoryAddress, int, boolean) setWindowAttrib
+     */
     public static int getWindowAttrib(MemoryAddress window, int attrib) {
         try {
             return (int) glfwGetWindowAttrib.invoke(window, attrib);
@@ -2704,6 +3184,33 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets an attribute of the specified window.
+     * <p>
+     * This function sets the value of an attribute of the specified window.
+     * <p>
+     * The supported attributes are {@link #DECORATED},
+     * {@link #RESIZABLE},
+     * {@link #FLOATING},
+     * {@link #AUTO_ICONIFY} and
+     * {@link #FOCUS_ON_SHOW}.
+     * <p>
+     * Some of these attributes are ignored for full screen windows.  The new
+     * value will take effect if the window is later made windowed.
+     * <p>
+     * Some of these attributes are ignored for windowed mode windows.  The new
+     * value will take effect if the window is later made full screen.
+     *
+     * @param window The window to set the attribute for.
+     * @param attrib A supported window attribute.
+     * @param value  {@code true} of {@code false}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_ENUM}, {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @remark Calling {@link #getWindowAttrib} will always return the latest
+     * value, even if that value is ignored by the current mode of the window.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #getWindowAttrib(MemoryAddress, int) getWindowAttrib
+     */
     public static void setWindowAttrib(MemoryAddress window, int attrib, boolean value) {
         try {
             glfwSetWindowAttrib.invoke(window, attrib, value ? TRUE : FALSE);
@@ -2712,6 +3219,20 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the user pointer of the specified window.
+     * <p>
+     * This function sets the user-defined pointer of the specified window.  The
+     * current value is retained until the window is destroyed.  The initial value
+     * is {@link MemoryAddress#NULL NULL}.
+     *
+     * @param window  The window whose pointer to set.
+     * @param pointer The new value.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     * @see #getWindowUserPointer(MemoryAddress) getWindowUserPointer
+     */
     public static void setWindowUserPointer(MemoryAddress window, Addressable pointer) {
         try {
             glfwSetWindowUserPointer.invoke(window, pointer);
@@ -2720,6 +3241,18 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the user pointer of the specified window.
+     * <p>
+     * This function returns the current value of the user-defined pointer of the
+     * specified window.  The initial value is {@link MemoryAddress#NULL NULL}.
+     *
+     * @param window The window whose pointer to return.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     * @see #setWindowUserPointer(MemoryAddress, Addressable) setWindowUserPointer
+     */
     public static MemoryAddress getWindowUserPointer(MemoryAddress window) {
         try {
             return (MemoryAddress) glfwSetWindowUserPointer.invoke(window);
