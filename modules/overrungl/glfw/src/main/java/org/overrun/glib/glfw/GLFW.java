@@ -3261,6 +3261,27 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the position callback for the specified window.
+     * <p>
+     * This function sets the position callback of the specified window, which is
+     * called when the window is moved.  The callback is provided with the
+     * position, in screen coordinates, of the upper-left corner of the content
+     * area of the window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int xpos, int ypos)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowPosFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @remark <b>Wayland:</b> This callback will never be called, as there is no way for
+     * an application to know its global position.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowPosCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowPosCallback.invoke(window, callback);
@@ -3269,10 +3290,38 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the position callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowPosCallback(MemoryAddress, Addressable) nsetWindowPosCallback
+     */
     public static MemoryAddress setWindowPosCallback(MemoryAddress window, @Nullable IGLFWWindowPosFun callback) {
         return nsetWindowPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the size callback for the specified window.
+     * <p>
+     * This function sets the size callback of the specified window, which is
+     * called when the window is resized.  The callback is provided with the size,
+     * in screen coordinates, of the content area of the window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowSizeFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowSizeCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowSizeCallback.invoke(window, callback);
@@ -3281,10 +3330,45 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the size callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowSizeCallback(MemoryAddress, Addressable) nsetWindowSizeCallback
+     */
     public static MemoryAddress setWindowSizeCallback(MemoryAddress window, @Nullable IGLFWWindowSizeFun callback) {
         return nsetWindowSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the close callback for the specified window.
+     * <p>
+     * This function sets the close callback of the specified window, which is
+     * called when the user attempts to close the window, for example by clicking
+     * the close widget in the title bar.
+     * <p>
+     * The close flag is set before this callback is called, but you can modify it
+     * at any time with {@link #setWindowShouldClose}.
+     * <p>
+     * The close callback is not triggered by {@link #destroyWindow}.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowCloseFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @remark <b>macOS:</b> Selecting Quit from the application menu will trigger the
+     * close callback for all windows.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowCloseCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowCloseCallback.invoke(window, callback);
@@ -3293,10 +3377,42 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the close callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowCloseCallback(MemoryAddress, Addressable) nsetWindowCloseCallback
+     */
     public static MemoryAddress setWindowCloseCallback(MemoryAddress window, @Nullable IGLFWWindowCloseFun callback) {
         return nsetWindowCloseCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the refresh callback for the specified window.
+     * <p>
+     * This function sets the refresh callback of the specified window, which is
+     * called when the content area of the window needs to be redrawn, for example
+     * if the window has been exposed after having been covered by another window.
+     * <p>
+     * On compositing window systems such as Aero, Compiz, Aqua or Wayland, where
+     * the window contents are saved off-screen, this callback may be called only
+     * very infrequently or never at all.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window);}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowRefreshFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowRefreshCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowRefreshCallback.invoke(window, callback);
@@ -3305,10 +3421,43 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the refresh callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowRefreshCallback(MemoryAddress, Addressable) nsetWindowRefreshCallback
+     */
     public static MemoryAddress setWindowRefreshCallback(MemoryAddress window, @Nullable IGLFWWindowRefreshFun callback) {
         return nsetWindowRefreshCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the focus callback for the specified window.
+     * <p>
+     * This function sets the focus callback of the specified window, which is
+     * called when the window gains or loses input focus.
+     * <p>
+     * After the focus callback is called for a window that lost input focus,
+     * synthetic key and mouse button release events will be generated for all such
+     * that had been pressed.  For more information, see
+     * {@link #nsetKeyCallback(MemoryAddress, Addressable) setKeyCallback}
+     * and {@link #nsetMouseButtonCallback(MemoryAddress, Addressable) setMouseButtonCallback}.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int focused)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowFocusFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowFocusCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowFocusCallback.invoke(window, callback);
@@ -3317,10 +3466,39 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the focus callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowFocusCallback(MemoryAddress, Addressable) nsetWindowFocusCallback
+     */
     public static MemoryAddress setWindowFocusCallback(MemoryAddress window, @Nullable IGLFWWindowFocusFun callback) {
         return nsetWindowFocusCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the iconify callback for the specified window.
+     * <p>
+     * This function sets the iconification callback of the specified window, which
+     * is called when the window is iconified or restored.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int iconified)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowIconifyFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @remark <b>Wayland:</b> The XDG-shell protocol has no event for iconification, so
+     * this callback will never be called.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowIconifyCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowIconifyCallback.invoke(window, callback);
@@ -3329,10 +3507,37 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the iconify callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowIconifyCallback(MemoryAddress, Addressable) nsetWindowIconifyCallback
+     */
     public static MemoryAddress setWindowIconifyCallback(MemoryAddress window, @Nullable IGLFWWindowIconifyFun callback) {
         return nsetWindowIconifyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the maximize callback for the specified window.
+     * <p>
+     * This function sets the maximization callback of the specified window, which
+     * is called when the window is maximized or restored.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int maximized)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowMaximizeFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetWindowMaximizeCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowMaximizeCallback.invoke(window, callback);
@@ -3341,10 +3546,37 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the maximize callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowMaximizeCallback(MemoryAddress, Addressable) nsetWindowMaximizeCallback
+     */
     public static MemoryAddress setWindowMaximizeCallback(MemoryAddress window, @Nullable IGLFWWindowMaximizeFun callback) {
         return nsetWindowMaximizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the framebuffer resize callback for the specified window.
+     * <p>
+     * This function sets the framebuffer resize callback of the specified window,
+     * which is called when the framebuffer of the specified window is resized.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWFramebufferSizeFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress nsetFramebufferSizeCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetFramebufferSizeCallback.invoke(window, callback);
@@ -3353,10 +3585,38 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the framebuffer resize callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetFramebufferSizeCallback(MemoryAddress, Addressable) nsetFramebufferSizeCallback
+     */
     public static MemoryAddress setFramebufferSizeCallback(MemoryAddress window, @Nullable IGLFWFramebufferSizeFun callback) {
         return nsetFramebufferSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Sets the window content scale callback for the specified window.
+     * <p>
+     * This function sets the window content scale callback of the specified window,
+     * which is called when the content scale of the specified window changes.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, float xscale, float yscale)}</pre>
+     * For more information about the callback parameters, see the
+     * {@link IGLFWWindowContentScaleFun function pointer type}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #ngetWindowContentScale(MemoryAddress, Addressable, Addressable) getWindowContentScale
+     */
     public static MemoryAddress nsetWindowContentScaleCallback(MemoryAddress window, Addressable callback) {
         try {
             return (MemoryAddress) glfwSetWindowContentScaleCallback.invoke(window, callback);
@@ -3365,10 +3625,50 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets the window content scale callback for the specified window.
+     *
+     * @param window   The window whose callback to set.
+     * @param callback The new callback, or {@code null} to remove the currently set
+     *                 callback.
+     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
+     * @see #nsetWindowContentScaleCallback(MemoryAddress, Addressable) nsetWindowContentScaleCallback
+     */
     public static MemoryAddress setWindowContentScaleCallback(MemoryAddress window, @Nullable IGLFWWindowContentScaleFun callback) {
         return nsetWindowContentScaleCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemoryAddress.NULL);
     }
 
+    /**
+     * Processes all pending events.
+     * <p>
+     * This function processes only those events that are already in the event
+     * queue and then returns immediately.  Processing events will cause the window
+     * and input callbacks associated with those events to be called.
+     * <p>
+     * On some platforms, a window move, resize or menu operation will cause event
+     * processing to block.  This is due to how event processing is designed on
+     * those platforms.  You can use the
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_refresh">window refresh callback</a>
+     * to redraw the contents of
+     * your window when necessary during such operations.
+     * <p>
+     * Do not assume that callbacks you set will <i>only</i> be called in response to
+     * event processing functions like this one.  While it is necessary to poll for
+     * events, window systems that require GLFW to register callbacks of its own
+     * can pass events to GLFW in response to many window system function calls.
+     * GLFW will pass those events on to the application callbacks before
+     * returning.
+     * <p>
+     * Event processing is not required for joystick input to work.
+     *
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @reentrancy This function must not be called from a callback.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #waitEvents() waitEvents
+     * @see #waitEventsTimeout(double) waitEventsTimeout
+     */
     public static void pollEvents() {
         try {
             glfwPollEvents.invoke();
@@ -3377,6 +3677,42 @@ public class GLFW {
         }
     }
 
+    /**
+     * Waits until events are queued and processes them.
+     * <p>
+     * This function puts the calling thread to sleep until at least one event is
+     * available in the event queue.  Once one or more events are available,
+     * it behaves exactly like {@link #pollEvents}, i.e. the events in the queue
+     * are processed and the function then returns immediately.  Processing events
+     * will cause the window and input callbacks associated with those events to be
+     * called.
+     * <p>
+     * Since not all events are associated with callbacks, this function may return
+     * without a callback having been called even if you are monitoring all
+     * callbacks.
+     * <p>
+     * On some platforms, a window move, resize or menu operation will cause event
+     * processing to block.  This is due to how event processing is designed on
+     * those platforms.  You can use the
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_refresh">window refresh callback</a>
+     * to redraw the contents of your window when necessary during such operations.
+     * <p>
+     * Do not assume that callbacks you set will <i>only</i> be called in response to
+     * event processing functions like this one.  While it is necessary to poll for
+     * events, window systems that require GLFW to register callbacks of its own
+     * can pass events to GLFW in response to many window system function calls.
+     * GLFW will pass those events on to the application callbacks before
+     * returning.
+     * <p>
+     * Event processing is not required for joystick input to work.
+     *
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @reentrancy This function must not be called from a callback.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #pollEvents() pollEvents
+     * @see #waitEventsTimeout(double) waitEventsTimeout
+     */
     public static void waitEvents() {
         try {
             glfwWaitEvents.invoke();
@@ -3385,6 +3721,45 @@ public class GLFW {
         }
     }
 
+    /**
+     * Waits with timeout until events are queued and processes them.
+     * <p>
+     * This function puts the calling thread to sleep until at least one event is
+     * available in the event queue, or until the specified timeout is reached.  If
+     * one or more events are available, it behaves exactly like
+     * {@link #pollEvents}, i.e. the events in the queue are processed and the function
+     * then returns immediately.  Processing events will cause the window and input
+     * callbacks associated with those events to be called.
+     * <p>
+     * The timeout value must be a positive finite number.
+     * <p>
+     * Since not all events are associated with callbacks, this function may return
+     * without a callback having been called even if you are monitoring all
+     * callbacks.
+     * <p>
+     * On some platforms, a window move, resize or menu operation will cause event
+     * processing to block.  This is due to how event processing is designed on
+     * those platforms.  You can use the
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_refresh">window refresh callback</a>
+     * to redraw the contents of your window when necessary during such operations.
+     * <p>
+     * Do not assume that callbacks you set will <i>only</i> be called in response to
+     * event processing functions like this one.  While it is necessary to poll for
+     * events, window systems that require GLFW to register callbacks of its own
+     * can pass events to GLFW in response to many window system function calls.
+     * GLFW will pass those events on to the application callbacks before
+     * returning.
+     * <p>
+     * Event processing is not required for joystick input to work.
+     *
+     * @param timeout The maximum amount of time, in seconds, to wait.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @reentrancy This function must not be called from a callback.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #pollEvents() pollEvents
+     * @see #waitEvents() waitEvents
+     */
     public static void waitEventsTimeout(double timeout) {
         try {
             glfwWaitEventsTimeout.invoke(timeout);
@@ -3393,6 +3768,18 @@ public class GLFW {
         }
     }
 
+    /**
+     * Posts an empty event to the event queue.
+     * <p>
+     * This function posts an empty event from the current thread to the event
+     * queue, causing {@link #waitEvents} or {@link #waitEventsTimeout} to return.
+     *
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @thread_safety This function may be called from any thread.
+     * @see #waitEvents() waitEvents
+     * @see #waitEventsTimeout(double) waitEventsTimeout
+     */
     public static void postEmptyEvents() {
         try {
             glfwPostEmptyEvent.invoke();
@@ -3401,6 +3788,23 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the value of an input option for the specified window.
+     * <p>
+     * This function returns the value of an input option for the specified window.
+     * The mode must be one of {@link #CURSOR}, {@link #STICKY_KEYS},
+     * {@link #STICKY_MOUSE_BUTTONS}, {@link #LOCK_KEY_MODS} or
+     * {@link #RAW_MOUSE_MOTION}.
+     *
+     * @param window The window to query.
+     * @param mode   One of {@code CURSOR}, {@code STICKY_KEYS},
+     *               {@code STICKY_MOUSE_BUTTONS}, {@code LOCK_KEY_MODS} or
+     *               {@code RAW_MOUSE_MOTION}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #INVALID_ENUM}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setInputMode(MemoryAddress, int, int) setInputMode
+     */
     public static int getInputMode(MemoryAddress window, int mode) {
         try {
             return (int) glfwGetInputMode.invoke(window, mode);
@@ -3409,6 +3813,62 @@ public class GLFW {
         }
     }
 
+    /**
+     * Sets an input option for the specified window.
+     * <p>
+     * This function sets an input mode option for the specified window.  The mode
+     * must be one of {@link #CURSOR}, {@link #STICKY_KEYS},
+     * {@link #STICKY_MOUSE_BUTTONS}, {@link #LOCK_KEY_MODS} or
+     * {@link #RAW_MOUSE_MOTION}.
+     * <p>
+     * If the mode is {@code CURSOR}, the value must be one of the following cursor
+     * modes:
+     * <ul>
+     *     <li>{@link #CURSOR_NORMAL} makes the cursor visible and behaving normally.</li>
+     *     <li>{@link #CURSOR_HIDDEN} makes the cursor invisible when it is over the
+     *         content area of the window but does not restrict the cursor from leaving.</li>
+     *     <li>{@link #CURSOR_DISABLED} hides and grabs the cursor, providing virtual
+     *         and unlimited cursor movement.  This is useful for implementing for
+     *         example 3D camera controls.</li>
+     * </ul>
+     * <p>
+     * If the mode is {@code STICKY_KEYS}, the value must be either {@code TRUE} to
+     * enable sticky keys, or {@code FALSE} to disable it.  If sticky keys are
+     * enabled, a key press will ensure that {@link #getKey} returns {@code PRESS}
+     * the next time it is called even if the key had been released before the
+     * call.  This is useful when you are only interested in whether keys have been
+     * pressed but not when or in which order.
+     * <p>
+     * If the mode is {@code STICKY_MOUSE_BUTTONS}, the value must be either
+     * {@code TRUE} to enable sticky mouse buttons, or {@code FALSE} to disable it.
+     * If sticky mouse buttons are enabled, a mouse button press will ensure that
+     * {@link #getMouseButton} returns {@code PRESS} the next time it is called even
+     * if the mouse button had been released before the call.  This is useful when
+     * you are only interested in whether mouse buttons have been pressed but not
+     * when or in which order.
+     * <p>
+     * If the mode is {@code LOCK_KEY_MODS}, the value must be either {@code TRUE} to
+     * enable lock key modifier bits, or {@code FALSE} to disable them.  If enabled,
+     * callbacks that receive modifier bits will also have the
+     * {@link #MOD_CAPS_LOCK} bit set when the event was generated with Caps Lock on,
+     * and the {@link #MOD_NUM_LOCK} bit when Num Lock was on.
+     * <p>
+     * If the mode is {@code RAW_MOUSE_MOTION}, the value must be either {@code TRUE}
+     * to enable raw (unscaled and unaccelerated) mouse motion when the cursor is
+     * disabled, or {@code FALSE} to disable it.  If raw motion is not supported,
+     * attempting to set this will emit {@link #PLATFORM_ERROR}.  Call
+     * {@link #rawMouseMotionSupported} to check for support.
+     *
+     * @param window The window whose input mode to set.
+     * @param mode   One of {@code CURSOR}, {@code STICKY_KEYS},
+     *               {@code STICKY_MOUSE_BUTTONS}, {@code LOCK_KEY_MODS} or
+     *               {@code RAW_MOUSE_MOTION}.
+     * @param value  The new value of the specified input mode.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #getInputMode(MemoryAddress, int) getInputMode
+     */
     public static void setInputMode(MemoryAddress window, int mode, int value) {
         try {
             glfwSetInputMode.invoke(window, mode, value);
@@ -3417,6 +3877,26 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns whether raw mouse motion is supported.
+     * <p>
+     * This function returns whether raw mouse motion is supported on the current
+     * system.  This status does not change after GLFW has been initialized so you
+     * only need to check this once.  If you attempt to enable raw motion on
+     * a system that does not support it, {@link #PLATFORM_ERROR} will be emitted.
+     * <p>
+     * Raw mouse motion is closer to the actual motion of the mouse across
+     * a surface.  It is not affected by the scaling and acceleration applied to
+     * the motion of the desktop cursor.  That processing is suitable for a cursor
+     * while raw motion is better for controlling for example a 3D camera.  Because
+     * of this, raw mouse motion is only provided when the cursor is disabled.
+     *
+     * @return {@link #TRUE} if raw mouse motion is supported on the current machine,
+     * or {@link #FALSE} otherwise.
+     * @errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @thread_safety This function must only be called from the main thread.
+     * @see #setInputMode(MemoryAddress, int, int) setInputMode
+     */
     public static boolean rawMouseMotionSupported() {
         try {
             return (int) glfwRawMouseMotionSupported.invoke() != FALSE;
@@ -3425,6 +3905,67 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the layout-specific name of the specified printable key.
+     * <p>
+     * This function returns the name of the specified printable key, encoded as
+     * UTF-8.  This is typically the character that key would produce without any
+     * modifier keys, intended for displaying key bindings to the user.  For dead
+     * keys, it is typically the diacritic it would add to a character.
+     * <p>
+     * <b>Do not use this function</b> for
+     * <a href="https://www.glfw.org/docs/latest/input_guide.html#input_char">text input</a>.
+     * You will break text input for many languages even if it happens to work for yours.
+     * <p>
+     * If the key is {@link #KEY_UNKNOWN}, the scancode is used to identify the key,
+     * otherwise the scancode is ignored.  If you specify a non-printable key, or
+     * {@link #KEY_UNKNOWN} and a scancode that maps to a non-printable key, this
+     * function returns {@link MemoryAddress#NULL NULL} but does not emit an error.
+     * <p>
+     * This behavior allows you to always pass in the arguments in the
+     * <a href="https://www.glfw.org/docs/latest/input_guide.html#input_key">key callback</a>
+     * without modification.
+     * <p>
+     * The printable keys are:
+     * <ul>
+     *     <li>{@link #KEY_APOSTROPHE}</li>
+     *     <li>{@link #KEY_COMMA}</li>
+     *     <li>{@link #KEY_MINUS}</li>
+     *     <li>{@link #KEY_PERIOD}</li>
+     *     <li>{@link #KEY_SLASH}</li>
+     *     <li>{@link #KEY_SEMICOLON}</li>
+     *     <li>{@link #KEY_EQUAL}</li>
+     *     <li>{@link #KEY_LEFT_BRACKET}</li>
+     *     <li>{@link #KEY_RIGHT_BRACKET}</li>
+     *     <li>{@link #KEY_BACKSLASH}</li>
+     *     <li>{@link #KEY_WORLD_1}</li>
+     *     <li>{@link #KEY_WORLD_2}</li>
+     *     <li>{@link #KEY_0} to {@link #KEY_9}</li>
+     *     <li>{@link #KEY_A} to {@link #KEY_Z}</li>
+     *     <li>{@link #KEY_KP_0} to {@link #KEY_KP_9}</li>
+     *     <li>{@link #KEY_KP_DECIMAL}</li>
+     *     <li>{@link #KEY_KP_DIVIDE}</li>
+     *     <li>{@link #KEY_KP_MULTIPLY}</li>
+     *     <li>{@link #KEY_KP_SUBTRACT}</li>
+     *     <li>{@link #KEY_KP_ADD}</li>
+     *     <li>{@link #KEY_KP_EQUAL}</li>
+     * </ul>
+     * <p>
+     * Names for printable keys depend on keyboard layout, while names for
+     * non-printable keys are the same across layouts but depend on the application
+     * language and should be localized along with other user interface text.
+     *
+     * @param key      The key to query, or {@link #KEY_UNKNOWN}.
+     * @param scancode The scancode of the key to query.
+     * @return The UTF-8 encoded, layout-specific name of the key, or {@link MemoryAddress#NULL NULL}.
+     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @remark The contents of the returned string may change when a keyboard
+     * layout change event is received.
+     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the library is terminated.
+     * @thread_safety This function must only be called from the main thread.
+     */
     public static MemoryAddress ngetKeyName(int key, int scancode) {
         try {
             return (MemoryAddress) glfwGetKeyName.invoke(key, scancode);
@@ -3433,12 +3974,35 @@ public class GLFW {
         }
     }
 
+    /**
+     * Returns the layout-specific name of the specified printable key.
+     *
+     * @param key      The key to query, or {@link #KEY_UNKNOWN}.
+     * @param scancode The scancode of the key to query.
+     * @return The UTF-8 encoded, layout-specific name of the key, or {@code null}.
+     * @see #ngetKeyName(int, int) ngetKeyName
+     */
     @Nullable
     public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
         return pName != MemoryAddress.NULL ? pName.getUtf8String(0) : null;
     }
 
+    /**
+     * Returns the platform-specific scancode of the specified key.
+     * <p>
+     * This function returns the platform-specific scancode of the specified key.
+     * <p>
+     * If the key is {@code KEY_UNKNOWN} or does not exist on the keyboard this
+     * method will return {@code -1}.
+     *
+     * @param key Any <a href="https://www.glfw.org/docs/latest/group__keys.html">named key</a>.
+     * @return The platform-specific scancode for the key, or {@code -1} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * @thread_safety This function may be called from any thread.
+     */
     public static int getKeyScancode(int key) {
         try {
             return (int) glfwGetKeyScancode.invoke(key);
