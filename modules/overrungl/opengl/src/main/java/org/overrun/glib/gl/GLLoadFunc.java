@@ -29,19 +29,49 @@ import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
+import java.lang.ref.Cleaner;
+import java.util.function.BiFunction;
 
 /**
  * The OpenGL loading function.
  *
  * <h2>Example</h2>
- * {@code GLCaps.load(GLFW::getProcAddress)}
+ * <pre>{@code
+ * try (var func = GLLoadFunc.ofShared(GLFW::getProcAddress)) {
+ *     if (GLCaps.load(func) == 0)
+ *         throw new IllegalStateException("Failed to load OpenGL");
+ * }
+ * }</pre>
  *
  * @author squid233
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface GLLoadFunc {
+public interface GLLoadFunc extends AutoCloseable {
+    /**
+     * Creates a load function.
+     *
+     * @param function the function pointer getter
+     * @return the load function
+     */
+    static GLLoadFunc ofShared(BiFunction<MemorySession, String, MemoryAddress> function) {
+        return new GLLoadFunc() {
+            private final MemorySession session = MemorySession.openShared(Cleaner.create());
+
+            @Override
+            public MemoryAddress invoke(String procName) {
+                return function.apply(session, procName);
+            }
+
+            @Override
+            public void close() {
+                session.close();
+            }
+        };
+    }
+
     /**
      * Load a function by the given name.
      *
@@ -49,6 +79,10 @@ public interface GLLoadFunc {
      * @return the function address
      */
     MemoryAddress invoke(String procName);
+
+    @Override
+    default void close() {
+    }
 
     /**
      * Load a function by the given name and creates a downcall handle or {@code null}.

@@ -6,13 +6,13 @@ Overrun Game Library is a set of C/C++ library bindings and native accessor.
 
 Our goal is to support these libraries with full document:
 
-- [ ] [GLFW](https://www.glfw.org/) 3.3.8 (Currently 78%)
+- [x] [GLFW](https://www.glfw.org/) 3.3.8 (Currently 90%)
 - [ ] [OpenGL](https://www.khronos.org/opengl/) 4.6 (Currently 38%)
 - [ ] [STB](https://github.com/nothings/stb) (Currently 22%)
 
 |              Total Progress               |
 |:-----------------------------------------:|
-| <progress value="46" max="100" /> **46%** |
+| <progress value="50" max="100" /> **50%** |
 
 ## Publishing
 

@@ -40,8 +40,8 @@ import static org.overrun.glib.FunctionDescriptors.*;
  * @since 0.1.0
  */
 final class Handles {
-    public static SymbolLookup lookup;
-    public static MethodHandle
+    static SymbolLookup lookup;
+    static MethodHandle
         glfwInit, glfwTerminate, glfwInitHint, glfwGetVersion, glfwGetVersionString, glfwGetError, glfwSetErrorCallback,
         glfwGetMonitors, glfwGetPrimaryMonitor, glfwGetMonitorPos, glfwGetMonitorWorkarea, glfwGetMonitorPhysicalSize,
         glfwGetMonitorContentScale, glfwGetMonitorName, glfwSetMonitorUserPointer, glfwGetMonitorUserPointer,
@@ -60,8 +60,8 @@ final class Handles {
         glfwGetMouseButton, glfwGetCursorPos, glfwSetCursorPos, glfwCreateCursor, glfwCreateStandardCursor,
         glfwDestroyCursor, glfwSetCursor, glfwSetKeyCallback, glfwSetCharCallback;
     @Deprecated(forRemoval = true)
-    public static MethodHandle glfwSetCharModsCallback;
-    public static MethodHandle
+    static MethodHandle glfwSetCharModsCallback;
+    static MethodHandle
         glfwSetMouseButtonCallback, glfwSetCursorPosCallback, glfwSetCursorEnterCallback, glfwSetScrollCallback,
         glfwSetDropCallback, glfwJoystickPresent, glfwGetJoystickAxes, glfwGetJoystickButtons, glfwGetJoystickHats,
         glfwGetJoystickName, glfwGetJoystickGUID, glfwSetJoystickUserPointer, glfwGetJoystickUserPointer,
@@ -76,7 +76,7 @@ final class Handles {
         return RuntimeHelper.downcallThrow(lookup.lookup(name), function);
     }
 
-    public static void create() {
+    static void create() {
         lookup = GameLib.load("glfw",
             "glfw3",
             GLFW.VERSION_MAJOR + "." + GLFW.VERSION_MINOR + "." + GLFW.VERSION_REVISION);
