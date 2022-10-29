@@ -1919,6 +1919,7 @@ public class GLFW {
      *
      * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
      * @param value The new value of the window hint.
+     * @see #windowHint(int, int)
      */
     public static void windowHint(int hint, boolean value) {
         windowHint(hint, value ? TRUE : FALSE);
@@ -2310,7 +2311,11 @@ public class GLFW {
      * @see #nsetWindowIcon(Addressable, int, Addressable) nsetWindowIcon
      */
     public static void setWindowIcon(Addressable window, int count, GLFWImage.Buffer images) {
-        nsetWindowIcon(window, count, images.rawAddress());
+        if (images == null || count == 0) {
+            nsetWindowIcon(window, 0, MemoryAddress.NULL);
+        } else {
+            nsetWindowIcon(window, count, images.rawAddress());
+        }
     }
 
     /**

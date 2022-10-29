@@ -166,6 +166,12 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
+    public static int getFragDataIndex(int program, String name) {
+        try (var session = MemorySession.openShared()) {
+            return getFragDataIndex(program, session.allocateUtf8String(name));
+        }
+    }
+
     public static void getQueryObjecti64v(int id, int pname, Addressable params) {
         try {
             check(glGetQueryObjecti64v).invoke(id, pname, params);
