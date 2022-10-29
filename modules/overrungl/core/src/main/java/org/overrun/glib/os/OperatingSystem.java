@@ -9,18 +9,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static org.overrun.glib.os.OperatingSystems.*;
+
 /**
  * The operating system.
  *
+ * @author Gradle
  * @since 0.1.0
  */
 public abstract class OperatingSystem {
-    public static final Windows WINDOWS = new Windows();
-    public static final MacOs MAC_OS = new MacOs();
-    public static final Solaris SOLARIS = new Solaris();
-    public static final Linux LINUX = new Linux();
-    public static final FreeBSD FREE_BSD = new FreeBSD();
-    public static final Unix UNIX = new Unix();
     private static OperatingSystem currentOs;
     private final String toStringValue;
     private final String osName;
