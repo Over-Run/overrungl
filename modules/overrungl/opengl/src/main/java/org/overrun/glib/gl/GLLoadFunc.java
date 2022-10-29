@@ -39,50 +39,37 @@ import java.util.function.BiFunction;
  *
  * <h2>Example</h2>
  * <pre>{@code
- * try (var func = GLLoadFunc.ofShared(GLFW::getProcAddress)) {
- *     if (GLCaps.load(func) == 0)
- *         throw new IllegalStateException("Failed to load OpenGL");
- * }
+ * if (GLCaps.loadShared(GLFW::getProcAddress) == 0)
+ *     throw new IllegalStateException("Failed to load OpenGL");
  * }</pre>
  *
  * @author squid233
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface GLLoadFunc extends AutoCloseable {
+public interface GLLoadFunc extends AutoCloseable, BiFunction<MemorySession, String, MemoryAddress> {
     /**
      * Creates a load function.
      *
      * @param function the function pointer getter
      * @return the load function
      */
-    static GLLoadFunc ofShared(BiFunction<MemorySession, String, MemoryAddress> function) {
-        return new GLLoadFunc() {
-            private final MemorySession session = MemorySession.openShared(Cleaner.create());
+    static GLLoadFunc ofShared(Getter function) {
+        return new GLLoadFunc.Delegate(MemorySession.openShared(Cleaner.create()), function);
+    }
 
-            @Override
-            public MemoryAddress invoke(String procName) {
-                return function.apply(session, procName);
-            }
-
-            @Override
-            public void close() {
-                session.close();
-            }
-        };
+    @Override
+    default MemoryAddress apply(MemorySession session, String s) {
+        return invoke(session, s);
     }
 
     /**
      * Load a function by the given name.
      *
+     * @param session  the memory session to allocate function name string
      * @param procName the function name
      * @return the function address
      */
-    MemoryAddress invoke(String procName);
-
-    @Override
-    default void close() {
-    }
+    MemoryAddress invoke(MemorySession session, String procName);
 
     /**
      * Load a function by the given name and creates a downcall handle or {@code null}.
@@ -92,7 +79,59 @@ public interface GLLoadFunc extends AutoCloseable {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
      */
     @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptors function) {
-        return RuntimeHelper.downcallSafe(invoke(procName), function);
+    MethodHandle invoke(String procName, FunctionDescriptors function);
+
+    @Override
+    default void close() {
+    }
+
+    /**
+     * The function pointer getter.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    @FunctionalInterface
+    interface Getter extends BiFunction<MemorySession, String, MemoryAddress> {
+    }
+
+    /**
+     * The delegate contained a memory session and the callback.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    class Delegate implements GLLoadFunc {
+        private final MemorySession session;
+        private final Getter func;
+
+        /**
+         * Creates a delegate.
+         *
+         * @param session the memory session
+         * @param func    the loading function
+         */
+        public Delegate(MemorySession session,
+                        Getter func) {
+            this.session = session;
+            this.func = func;
+        }
+
+        @Override
+        public MemoryAddress invoke(MemorySession session, String procName) {
+            return func.apply(session, procName);
+        }
+
+        @Override
+        public @Nullable MethodHandle invoke(String procName, FunctionDescriptors function) {
+            return RuntimeHelper.downcallSafe(invoke(session, procName), function);
+        }
+
+        @Override
+        public void close() {
+            if (session.isCloseable()) {
+                session.close();
+            }
+        }
     }
 }

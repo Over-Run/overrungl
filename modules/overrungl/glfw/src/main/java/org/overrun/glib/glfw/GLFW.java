@@ -5617,8 +5617,8 @@ public class GLFW {
      * without a current context will cause a {@link #NO_CURRENT_CONTEXT} error.
      * <p>
      * This function does not apply to Vulkan.  If you are rendering with Vulkan,
-     * see {@code getInstanceProcAddress}, {@code vkGetInstanceProcAddr} and
-     * {@code vkGetDeviceProcAddr} instead.
+     * see {@link GLFWVulkan#nglfwGetInstanceProcAddress(Addressable, Addressable) glfwGetInstanceProcAddress},
+     * {@code vkGetInstanceProcAddr} and {@code vkGetDeviceProcAddr} instead.
      *
      * @param procName The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
@@ -5665,9 +5665,10 @@ public class GLFW {
      * <p>
      * The availability of a Vulkan loader and even an ICD does not by itself guarantee that
      * surface creation or even instance creation is possible.  Call
-     * {@link #ngetRequiredInstanceExtensions} to check whether the extensions necessary for Vulkan
-     * surface creation are available and {@code getPhysicalDevicePresentationSupport} to
-     * check whether a queue family of a physical device supports image presentation.
+     * {@link #ngetRequiredInstanceExtensions getRequiredInstanceExtensions} to check whether the
+     * extensions necessary for Vulkan surface creation are available and
+     * {@link GLFWVulkan#glfwGetPhysicalDevicePresentationSupport glfwGetPhysicalDevicePresentationSupport}
+     * to check whether a queue family of a physical device supports image presentation.
      *
      * @return {@code true} if Vulkan is minimally available, or {@code false}
      * otherwise.

@@ -40,6 +40,7 @@ import static org.overrun.glib.FunctionDescriptors.*;
  * @since 0.1.0
  */
 final class Handles {
+    private static boolean initialized;
     static SymbolLookup lookup;
     static MethodHandle
         glfwInit, glfwTerminate, glfwInitHint, glfwGetVersion, glfwGetVersionString, glfwGetError, glfwSetErrorCallback,
@@ -71,12 +72,19 @@ final class Handles {
         glfwSwapInterval, glfwExtensionSupported, glfwGetProcAddress, glfwVulkanSupported,
         glfwGetRequiredInstanceExtensions;
 
+    // GLFW Vulkan
+    static MethodHandle
+        glfwGetInstanceProcAddress, glfwGetPhysicalDevicePresentationSupport, glfwCreateWindowSurface;
+
     private static MethodHandle downcall(String name,
                                          FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(lookup.lookup(name), function);
     }
 
     static void create() {
+        if (initialized) return;
+        initialized = true;
+
         lookup = GameLib.load("glfw",
             "glfw3",
             GLFW.VERSION_MAJOR + "." + GLFW.VERSION_MINOR + "." + GLFW.VERSION_REVISION);
@@ -196,5 +204,10 @@ final class Handles {
         glfwGetProcAddress = downcall("glfwGetProcAddress", PP);
         glfwVulkanSupported = downcall("glfwVulkanSupported", I);
         glfwGetRequiredInstanceExtensions = downcall("glfwGetRequiredInstanceExtensions", PP);
+
+        // GLFW Vulkan
+        glfwGetInstanceProcAddress = downcall("glfwGetInstanceProcAddress", PPP);
+        glfwGetPhysicalDevicePresentationSupport = downcall("glfwGetPhysicalDevicePresentationSupport", PPII);
+        glfwCreateWindowSurface = downcall("glfwCreateWindowSurface", PPPPI);
     }
 }

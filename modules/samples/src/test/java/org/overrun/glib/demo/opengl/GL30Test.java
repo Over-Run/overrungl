@@ -26,7 +26,6 @@ package org.overrun.glib.demo.opengl;
 
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLCaps;
-import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
@@ -93,10 +92,8 @@ public final class GL30Test {
     }
 
     private void loop() {
-        try (var func = GLLoadFunc.ofShared(GLFW::getProcAddress)) {
-            if (GLCaps.load(true, func) == 0)
-                throw new IllegalStateException("Failed to load OpenGL");
-        }
+        if (GLCaps.loadShared(true, GLFW::getProcAddress) == 0)
+            throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
