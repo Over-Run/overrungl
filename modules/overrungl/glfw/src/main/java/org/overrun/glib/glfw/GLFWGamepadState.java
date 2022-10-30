@@ -55,6 +55,7 @@ public class GLFWGamepadState extends Pointer {
      */
     public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
         BUTTONS_LAYOUT,
+        MemoryLayout.paddingLayout(8),
         AXES_LAYOUT
     );
     private static final VarHandle

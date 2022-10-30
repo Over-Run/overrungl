@@ -189,7 +189,7 @@ final class Handles {
         glfwSetJoystickCallback = downcall("glfwSetJoystickCallback", PP);
         glfwUpdateGamepadMappings = downcall("glfwUpdateGamepadMappings", fd_PI);
         glfwGetGamepadName = downcall("glfwGetGamepadName", IP);
-        glfwGetGamepadState = downcall("glfwGetGamepadState", PII);
+        glfwGetGamepadState = downcall("glfwGetGamepadState", IPI);
         glfwSetClipboardString = downcall("glfwSetClipboardString", PPV);
         glfwGetClipboardString = downcall("glfwGetClipboardString", PP);
         glfwGetTime = downcall("glfwGetTime", D);
