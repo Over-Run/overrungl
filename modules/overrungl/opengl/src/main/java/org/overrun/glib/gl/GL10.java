@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
@@ -1106,10 +1107,14 @@ public final class GL10 extends GL10C {
     }
 
     public static float getLightf(int light, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getLightfv(light, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1130,10 +1135,14 @@ public final class GL10 extends GL10C {
     }
 
     public static int getLighti(int light, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getLightiv(light, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1154,10 +1163,14 @@ public final class GL10 extends GL10C {
     }
 
     public static double getMapd(int target, int query) {
-        try (var session = MemorySession.openShared()) {
-            var pv = session.allocate(JAVA_DOUBLE);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pv = stack.calloc(JAVA_DOUBLE);
             getMapdv(target, query, pv);
             return pv.get(JAVA_DOUBLE, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1178,10 +1191,14 @@ public final class GL10 extends GL10C {
     }
 
     public static float getMapf(int target, int query) {
-        try (var session = MemorySession.openShared()) {
-            var pv = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pv = stack.calloc(JAVA_FLOAT);
             getMapfv(target, query, pv);
             return pv.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1202,10 +1219,14 @@ public final class GL10 extends GL10C {
     }
 
     public static int getMapi(int target, int query) {
-        try (var session = MemorySession.openShared()) {
-            var pv = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pv = stack.calloc(JAVA_INT);
             getMapiv(target, query, pv);
             return pv.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1226,10 +1247,14 @@ public final class GL10 extends GL10C {
     }
 
     public static float getMaterialf(int face, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getMaterialfv(face, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1250,10 +1275,14 @@ public final class GL10 extends GL10C {
     }
 
     public static int getMateriali(int face, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getMaterialiv(face, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1338,10 +1367,14 @@ public final class GL10 extends GL10C {
     }
 
     public static float getTexEnvf(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getTexEnvfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1362,10 +1395,14 @@ public final class GL10 extends GL10C {
     }
 
     public static int getTexEnvi(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getTexEnviv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

@@ -36,9 +36,22 @@ public final class Configurations {
     /**
      * The stack size configuration for {@link org.overrun.glib.util.MemoryStack MemoryStack}.
      * <p>
-     * The default value is {@code 128}.
+     * The default value is {@code 64}.
      */
-    public static final Entry<Integer> STACK_SIZE = new Entry<>(() -> 128);
+    public static final Entry<Long> STACK_SIZE = new Entry<>(() -> 64L);
+    /**
+     * Enable debug messages and prints to {@link RuntimeHelper#apiLogger()}.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> DEBUG = new Entry<>(() -> false);
+    /**
+     * Enable using debug memory stack.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> DEBUG_STACK = new Entry<>(() -> false);
+    public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
 
     /**
      * A configuration entry.

@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -255,10 +256,14 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static boolean getBoolean(int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocate(JAVA_BOOLEAN);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pData = stack.calloc(JAVA_BOOLEAN);
             getBooleanv(pname, pData);
             return pData.get(JAVA_BOOLEAN, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -279,10 +284,14 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static double getDouble(int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocate(JAVA_DOUBLE);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pData = stack.calloc(JAVA_DOUBLE);
             getDoublev(pname, pData);
             return pData.get(JAVA_DOUBLE, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -311,10 +320,14 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static float getFloat(int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pData = stack.calloc(JAVA_FLOAT);
             getFloatv(pname, pData);
             return pData.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -335,10 +348,14 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static int getInteger(int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pData = stack.calloc(JAVA_INT);
             getIntegerv(pname, pData);
             return pData.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

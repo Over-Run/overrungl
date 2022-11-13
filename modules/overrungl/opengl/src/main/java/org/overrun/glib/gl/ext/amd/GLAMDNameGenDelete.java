@@ -29,6 +29,7 @@ import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
@@ -69,8 +70,14 @@ public class GLAMDNameGenDelete {
     }
 
     public static void glDeleteNameAMD(int identifier, int name) {
-        try (var session = MemorySession.openShared()) {
-            glDeleteNamesAMD(identifier, 1, session.allocate(JAVA_INT, name));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, name);
+            glDeleteNamesAMD(identifier, 1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -91,10 +98,14 @@ public class GLAMDNameGenDelete {
     }
 
     public static int glGenNameAMD(int identifier) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             glGenNamesAMD(identifier, 1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

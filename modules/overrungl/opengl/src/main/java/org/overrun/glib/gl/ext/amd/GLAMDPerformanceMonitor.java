@@ -29,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -93,8 +94,14 @@ public class GLAMDPerformanceMonitor {
     }
 
     public static void glDeletePerfMonitorAMD(int monitor) {
-        try (var session = MemorySession.openShared()) {
-            glDeletePerfMonitorsAMD(1, session.allocate(JAVA_INT, monitor));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, monitor);
+            glDeletePerfMonitorsAMD(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -123,10 +130,14 @@ public class GLAMDPerformanceMonitor {
     }
 
     public static int glGenPerfMonitorAMD() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             glGenPerfMonitorsAMD(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

@@ -26,7 +26,8 @@ package org.overrun.glib.glfw;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
-import org.overrun.glib.util.*;
+import org.overrun.glib.util.MemoryStack;
+import org.overrun.glib.util.value.*;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -1014,18 +1015,24 @@ public class GLFW {
      * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
      */
     public static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
-        var pMajor = major != null ? malloc(4) : MemoryAddress.NULL;
-        var pMinor = minor != null ? malloc(4) : MemoryAddress.NULL;
-        var pRev = rev != null ? malloc(4) : MemoryAddress.NULL;
-        ngetVersion(pMajor, pMinor, pRev);
-        if (major != null && major.length > 0) {
-            major[0] = getAndFree(pMajor, JAVA_INT, 0);
-        }
-        if (minor != null && minor.length > 0) {
-            minor[0] = getAndFree(pMinor, JAVA_INT, 0);
-        }
-        if (rev != null && rev.length > 0) {
-            rev[0] = getAndFree(pRev, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pMajor = major != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pMinor = minor != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pRev = rev != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetVersion(pMajor, pMinor, pRev);
+            if (major != null && major.length > 0) {
+                major[0] = pMajor.get(JAVA_INT, 0);
+            }
+            if (minor != null && minor.length > 0) {
+                minor[0] = pMinor.get(JAVA_INT, 0);
+            }
+            if (rev != null && rev.length > 0) {
+                rev[0] = pRev.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1036,13 +1043,19 @@ public class GLFW {
      * @see #ngetVersion(Addressable, Addressable, Addressable) ngetVersion
      */
     public static ValueInt3 getVersion() {
-        var pMajor = malloc(4);
-        var pMinor = malloc(4);
-        var pRev = malloc(4);
-        ngetVersion(pMajor, pMinor, pRev);
-        return new ValueInt3(getAndFree(pMajor, JAVA_INT, 0),
-            getAndFree(pMinor, JAVA_INT, 0),
-            getAndFree(pRev, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pMajor = stack.calloc(4);
+            var pMinor = stack.calloc(4);
+            var pRev = stack.calloc(4);
+            ngetVersion(pMajor, pMinor, pRev);
+            return new ValueInt3(pMajor.get(JAVA_INT, 0),
+                pMinor.get(JAVA_INT, 0),
+                pRev.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -1221,12 +1234,18 @@ public class GLFW {
      * @see #ngetMonitors(Addressable) ngetMonitors
      */
     public static MemoryAddress @Nullable [] getMonitors() {
-        var pCount = malloc(4);
-        var pMonitors = ngetMonitors(pCount);
-        if (pMonitors == MemoryAddress.NULL) {
-            return null;
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pCount = stack.calloc(4);
+            var pMonitors = ngetMonitors(pCount);
+            if (pMonitors == MemoryAddress.NULL) {
+                return null;
+            }
+            return RuntimeHelper.toArray(pMonitors, new MemoryAddress[pCount.get(JAVA_INT, 0)]);
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return RuntimeHelper.toArray(pMonitors, new MemoryAddress[getAndFree(pCount, JAVA_INT, 0)]);
     }
 
     /**
@@ -1284,14 +1303,20 @@ public class GLFW {
      * @see #ngetMonitorPos(Addressable, Addressable, Addressable) ngetMonitorPos
      */
     public static void getMonitorPos(Addressable monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
-        var px = xpos != null ? malloc(4) : MemoryAddress.NULL;
-        var py = ypos != null ? malloc(4) : MemoryAddress.NULL;
-        ngetMonitorPos(monitor, px, py);
-        if (xpos != null && xpos.length > 0) {
-            xpos[0] = getAndFree(px, JAVA_INT, 0);
-        }
-        if (ypos != null && ypos.length > 0) {
-            ypos[0] = getAndFree(py, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = xpos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetMonitorPos(monitor, px, py);
+            if (xpos != null && xpos.length > 0) {
+                xpos[0] = px.get(JAVA_INT, 0);
+            }
+            if (ypos != null && ypos.length > 0) {
+                ypos[0] = py.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1303,10 +1328,16 @@ public class GLFW {
      * @see #ngetMonitorPos(Addressable, Addressable, Addressable) ngetMonitorPos
      */
     public static ValueInt2 getMonitorPos(Addressable monitor) {
-        var px = malloc(4);
-        var py = malloc(4);
-        ngetMonitorPos(monitor, px, py);
-        return new ValueInt2(getAndFree(px, JAVA_INT, 0), getAndFree(px, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.calloc(4);
+            var py = stack.calloc(4);
+            ngetMonitorPos(monitor, px, py);
+            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -1350,22 +1381,28 @@ public class GLFW {
      * @see #ngetMonitorWorkarea(Addressable, Addressable, Addressable, Addressable, Addressable) ngetMonitorWorkarea
      */
     public static void getMonitorWorkarea(Addressable monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
-        var px = xpos != null ? malloc(4) : MemoryAddress.NULL;
-        var py = ypos != null ? malloc(4) : MemoryAddress.NULL;
-        var pw = width != null ? malloc(4) : MemoryAddress.NULL;
-        var ph = height != null ? malloc(4) : MemoryAddress.NULL;
-        ngetMonitorWorkarea(monitor, px, py, pw, ph);
-        if (xpos != null && xpos.length > 0) {
-            xpos[0] = getAndFree(px, JAVA_INT, 0);
-        }
-        if (ypos != null && ypos.length > 0) {
-            ypos[0] = getAndFree(py, JAVA_INT, 0);
-        }
-        if (width != null && width.length > 0) {
-            width[0] = getAndFree(pw, JAVA_INT, 0);
-        }
-        if (height != null && height.length > 0) {
-            height[0] = getAndFree(ph, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = xpos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pw = width != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var ph = height != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetMonitorWorkarea(monitor, px, py, pw, ph);
+            if (xpos != null && xpos.length > 0) {
+                xpos[0] = px.get(JAVA_INT, 0);
+            }
+            if (ypos != null && ypos.length > 0) {
+                ypos[0] = py.get(JAVA_INT, 0);
+            }
+            if (width != null && width.length > 0) {
+                width[0] = pw.get(JAVA_INT, 0);
+            }
+            if (height != null && height.length > 0) {
+                height[0] = ph.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1377,15 +1414,21 @@ public class GLFW {
      * @see #ngetMonitorWorkarea(Addressable, Addressable, Addressable, Addressable, Addressable) ngetMonitorWorkarea
      */
     public static ValueInt4 getMonitorWorkarea(Addressable monitor) {
-        var px = malloc(4);
-        var py = malloc(4);
-        var pw = malloc(4);
-        var ph = malloc(4);
-        ngetMonitorWorkarea(monitor, px, py, pw, ph);
-        return new ValueInt4(getAndFree(px, JAVA_INT, 0),
-            getAndFree(py, JAVA_INT, 0),
-            getAndFree(pw, JAVA_INT, 0),
-            getAndFree(ph, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.calloc(4);
+            var py = stack.calloc(4);
+            var pw = stack.calloc(4);
+            var ph = stack.calloc(4);
+            ngetMonitorWorkarea(monitor, px, py, pw, ph);
+            return new ValueInt4(px.get(JAVA_INT, 0),
+                py.get(JAVA_INT, 0),
+                pw.get(JAVA_INT, 0),
+                ph.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -1431,14 +1474,20 @@ public class GLFW {
      * @see #ngetMonitorPhysicalSize(Addressable, Addressable, Addressable) ngetMonitorPhysicalSize
      */
     public static void getMonitorPhysicalSize(Addressable monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
-        var pw = widthMM != null ? malloc(4) : MemoryAddress.NULL;
-        var ph = heightMM != null ? malloc(4) : MemoryAddress.NULL;
-        ngetMonitorPhysicalSize(monitor, pw, ph);
-        if (widthMM != null && widthMM.length > 0) {
-            widthMM[0] = getAndFree(pw, JAVA_INT, 0);
-        }
-        if (heightMM != null && heightMM.length > 0) {
-            heightMM[0] = getAndFree(ph, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pw = widthMM != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var ph = heightMM != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetMonitorPhysicalSize(monitor, pw, ph);
+            if (widthMM != null && widthMM.length > 0) {
+                widthMM[0] = pw.get(JAVA_INT, 0);
+            }
+            if (heightMM != null && heightMM.length > 0) {
+                heightMM[0] = ph.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1450,10 +1499,16 @@ public class GLFW {
      * @see #ngetMonitorPhysicalSize(Addressable, Addressable, Addressable) ngetMonitorPhysicalSize
      */
     public static ValueInt2 getMonitorPhysicalSize(Addressable monitor) {
-        var pw = malloc(4);
-        var ph = malloc(4);
-        ngetMonitorPhysicalSize(monitor, pw, ph);
-        return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pw = stack.calloc(4);
+            var ph = stack.calloc(4);
+            ngetMonitorPhysicalSize(monitor, pw, ph);
+            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -1496,14 +1551,20 @@ public class GLFW {
      * @see #ngetMonitorContentScale(Addressable, Addressable, Addressable) ngetMonitorContentScale
      */
     public static void getMonitorContentScale(Addressable monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
-        var px = xscale != null ? malloc(4) : MemoryAddress.NULL;
-        var py = yscale != null ? malloc(4) : MemoryAddress.NULL;
-        ngetMonitorContentScale(monitor, px, py);
-        if (xscale != null && xscale.length > 0) {
-            xscale[0] = getAndFree(px, JAVA_FLOAT, 0);
-        }
-        if (yscale != null && yscale.length > 0) {
-            yscale[0] = getAndFree(py, JAVA_FLOAT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = xscale != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var py = yscale != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetMonitorContentScale(monitor, px, py);
+            if (xscale != null && xscale.length > 0) {
+                xscale[0] = px.get(JAVA_FLOAT, 0);
+            }
+            if (yscale != null && yscale.length > 0) {
+                yscale[0] = py.get(JAVA_FLOAT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1515,10 +1576,16 @@ public class GLFW {
      * @see #ngetMonitorContentScale(Addressable, Addressable, Addressable) ngetMonitorContentScale
      */
     public static ValueFloat2 getMonitorContentScale(Addressable monitor) {
-        var px = malloc(4);
-        var py = malloc(4);
-        ngetMonitorContentScale(monitor, px, py);
-        return new ValueFloat2(getAndFree(px, JAVA_FLOAT, 0), getAndFree(py, JAVA_FLOAT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.calloc(4);
+            var py = stack.calloc(4);
+            ngetMonitorContentScale(monitor, px, py);
+            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -1686,12 +1753,18 @@ public class GLFW {
      * @see #ngetVideoModes(Addressable, Addressable) ngetVideoModes
      */
     public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemorySession session, Addressable monitor) {
-        var pCount = malloc(4);
-        var pModes = ngetVideoModes(monitor, pCount);
-        if (pModes == MemoryAddress.NULL) {
-            return null;
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pCount = stack.calloc(4);
+            var pModes = ngetVideoModes(monitor, pCount);
+            if (pModes == MemoryAddress.NULL) {
+                return null;
+            }
+            return new GLFWVidMode.Buffer(pModes, session, pCount.get(JAVA_INT, 0)).toSegmented();
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return new GLFWVidMode.Buffer(pModes, session, getAndFree(pCount, JAVA_INT, 0)).toSegmented();
     }
 
     /**
@@ -2374,14 +2447,20 @@ public class GLFW {
      *               the content area, or {@code null}.
      */
     public static void getWindowPos(Addressable window, int @Nullable [] xpos, int @Nullable [] ypos) {
-        var px = xpos != null ? malloc(4) : MemoryAddress.NULL;
-        var py = ypos != null ? malloc(4) : MemoryAddress.NULL;
-        ngetWindowPos(window, px, py);
-        if (xpos != null && xpos.length > 1) {
-            xpos[0] = getAndFree(px, JAVA_INT, 0);
-        }
-        if (ypos != null && ypos.length > 1) {
-            ypos[0] = getAndFree(py, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = xpos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetWindowPos(window, px, py);
+            if (xpos != null && xpos.length > 1) {
+                xpos[0] = px.get(JAVA_INT, 0);
+            }
+            if (ypos != null && ypos.length > 1) {
+                ypos[0] = py.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -2392,10 +2471,16 @@ public class GLFW {
      * @return the xy-coordinate of the upper-left corner of the content area.
      */
     public static ValueInt2 getWindowPos(Addressable window) {
-        var px = malloc(4);
-        var py = malloc(4);
-        ngetWindowPos(window, px, py);
-        return new ValueInt2(getAndFree(px, JAVA_INT, 0), getAndFree(py, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.calloc(4);
+            var py = stack.calloc(4);
+            ngetWindowPos(window, px, py);
+            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -2470,14 +2555,20 @@ public class GLFW {
      * @see #ngetWindowSize(Addressable, Addressable, Addressable) ngetWindowSize
      */
     public static void getWindowSize(Addressable window, int @Nullable [] width, int @Nullable [] height) {
-        var pw = width != null ? malloc(4) : MemoryAddress.NULL;
-        var ph = height != null ? malloc(4) : MemoryAddress.NULL;
-        ngetWindowSize(window, pw, ph);
-        if (width != null && width.length > 0) {
-            width[0] = getAndFree(pw, JAVA_INT, 0);
-        }
-        if (height != null && height.length > 0) {
-            height[0] = getAndFree(ph, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pw = width != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var ph = height != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetWindowSize(window, pw, ph);
+            if (width != null && width.length > 0) {
+                width[0] = pw.get(JAVA_INT, 0);
+            }
+            if (height != null && height.length > 0) {
+                height[0] = ph.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -2489,10 +2580,16 @@ public class GLFW {
      * @see #ngetWindowSize(Addressable, Addressable, Addressable) ngetWindowSize
      */
     public static ValueInt2 getWindowSize(Addressable window) {
-        var pw = malloc(4);
-        var ph = malloc(4);
-        ngetWindowSize(window, pw, ph);
-        return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pw = stack.calloc(4);
+            var ph = stack.calloc(4);
+            ngetWindowSize(window, pw, ph);
+            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -2655,14 +2752,20 @@ public class GLFW {
      * @see #ngetFramebufferSize(Addressable, Addressable, Addressable) ngetFramebufferSize
      */
     public static void getFramebufferSize(Addressable window, int @Nullable [] width, int @Nullable [] height) {
-        var pw = width != null ? malloc(4) : MemoryAddress.NULL;
-        var ph = height != null ? malloc(4) : MemoryAddress.NULL;
-        ngetFramebufferSize(window, pw, ph);
-        if (width != null && width.length > 0) {
-            width[0] = getAndFree(pw, JAVA_INT, 0);
-        }
-        if (height != null && height.length > 0) {
-            height[0] = getAndFree(ph, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pw = width != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var ph = height != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetFramebufferSize(window, pw, ph);
+            if (width != null && width.length > 0) {
+                width[0] = pw.get(JAVA_INT, 0);
+            }
+            if (height != null && height.length > 0) {
+                height[0] = ph.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -2674,10 +2777,16 @@ public class GLFW {
      * @see #ngetFramebufferSize(Addressable, Addressable, Addressable) ngetFramebufferSize
      */
     public static ValueInt2 getFramebufferSize(Addressable window) {
-        var pw = malloc(4);
-        var ph = malloc(4);
-        ngetFramebufferSize(window, pw, ph);
-        return new ValueInt2(getAndFree(pw, JAVA_INT, 0), getAndFree(ph, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pw = stack.calloc(4);
+            var ph = stack.calloc(4);
+            ngetFramebufferSize(window, pw, ph);
+            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -2732,22 +2841,28 @@ public class GLFW {
      * @see #ngetWindowFrameSize(Addressable, Addressable, Addressable, Addressable, Addressable) ngetWindowFrameSize
      */
     public static void getWindowFrameSize(Addressable window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
-        var pl = left != null ? malloc(4) : MemoryAddress.NULL;
-        var pt = top != null ? malloc(4) : MemoryAddress.NULL;
-        var pr = right != null ? malloc(4) : MemoryAddress.NULL;
-        var pb = bottom != null ? malloc(4) : MemoryAddress.NULL;
-        ngetWindowFrameSize(window, pl, pt, pr, pb);
-        if (left != null && left.length > 0) {
-            left[0] = getAndFree(pl, JAVA_INT, 0);
-        }
-        if (top != null && top.length > 0) {
-            top[0] = getAndFree(pt, JAVA_INT, 0);
-        }
-        if (right != null && right.length > 0) {
-            right[0] = getAndFree(pr, JAVA_INT, 0);
-        }
-        if (bottom != null && bottom.length > 0) {
-            bottom[0] = getAndFree(pb, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pl = left != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pt = top != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pr = right != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pb = bottom != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetWindowFrameSize(window, pl, pt, pr, pb);
+            if (left != null && left.length > 0) {
+                left[0] = pl.get(JAVA_INT, 0);
+            }
+            if (top != null && top.length > 0) {
+                top[0] = pt.get(JAVA_INT, 0);
+            }
+            if (right != null && right.length > 0) {
+                right[0] = pr.get(JAVA_INT, 0);
+            }
+            if (bottom != null && bottom.length > 0) {
+                bottom[0] = pb.get(JAVA_INT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -2760,15 +2875,21 @@ public class GLFW {
      * @see #ngetWindowFrameSize(Addressable, Addressable, Addressable, Addressable, Addressable) ngetWindowFrameSize
      */
     public static ValueInt4 getWindowFrameSize(Addressable window) {
-        var pl = malloc(4);
-        var pt = malloc(4);
-        var pr = malloc(4);
-        var pb = malloc(4);
-        ngetWindowFrameSize(window, pl, pt, pr, pb);
-        return new ValueInt4(getAndFree(pl, JAVA_INT, 0),
-            getAndFree(pt, JAVA_INT, 0),
-            getAndFree(pr, JAVA_INT, 0),
-            getAndFree(pb, JAVA_INT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pl = stack.calloc(4);
+            var pt = stack.calloc(4);
+            var pr = stack.calloc(4);
+            var pb = stack.calloc(4);
+            ngetWindowFrameSize(window, pl, pt, pr, pb);
+            return new ValueInt4(pl.get(JAVA_INT, 0),
+                pt.get(JAVA_INT, 0),
+                pr.get(JAVA_INT, 0),
+                pb.get(JAVA_INT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -2812,14 +2933,20 @@ public class GLFW {
      * @see #ngetWindowContentScale(Addressable, Addressable, Addressable) ngetWindowContentScale
      */
     public static void getWindowContentScale(Addressable window, float @Nullable [] xscale, float @Nullable [] yscale) {
-        var px = xscale != null ? malloc(4) : MemoryAddress.NULL;
-        var py = yscale != null ? malloc(4) : MemoryAddress.NULL;
-        ngetWindowContentScale(window, px, py);
-        if (xscale != null && xscale.length > 0) {
-            xscale[0] = getAndFree(px, JAVA_FLOAT, 0);
-        }
-        if (yscale != null && yscale.length > 0) {
-            yscale[0] = getAndFree(py, JAVA_FLOAT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = xscale != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var py = yscale != null ? stack.calloc(4) : MemoryAddress.NULL;
+            ngetWindowContentScale(window, px, py);
+            if (xscale != null && xscale.length > 0) {
+                xscale[0] = px.get(JAVA_FLOAT, 0);
+            }
+            if (yscale != null && yscale.length > 0) {
+                yscale[0] = py.get(JAVA_FLOAT, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -2831,10 +2958,16 @@ public class GLFW {
      * @see #ngetWindowContentScale(Addressable, Addressable, Addressable) ngetWindowContentScale
      */
     public static ValueFloat2 getWindowContentScale(Addressable window) {
-        var px = malloc(4);
-        var py = malloc(4);
-        ngetWindowContentScale(window, px, py);
-        return new ValueFloat2(getAndFree(px, JAVA_FLOAT, 0), getAndFree(py, JAVA_FLOAT, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.calloc(4);
+            var py = stack.calloc(4);
+            ngetWindowContentScale(window, px, py);
+            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -4131,14 +4264,20 @@ public class GLFW {
      * @see #ngetCursorPos(Addressable, Addressable, Addressable) ngetCursorPos
      */
     public static void getCursorPos(Addressable window, double @Nullable [] xpos, double @Nullable [] ypos) {
-        var px = xpos != null ? malloc(8) : MemoryAddress.NULL;
-        var py = ypos != null ? malloc(8) : MemoryAddress.NULL;
-        ngetCursorPos(window, px, py);
-        if (xpos != null && xpos.length > 0) {
-            xpos[0] = getAndFree(px, JAVA_DOUBLE, 0);
-        }
-        if (ypos != null && ypos.length > 0) {
-            ypos[0] = getAndFree(py, JAVA_DOUBLE, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = xpos != null ? stack.calloc(8) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(8) : MemoryAddress.NULL;
+            ngetCursorPos(window, px, py);
+            if (xpos != null && xpos.length > 0) {
+                xpos[0] = px.get(JAVA_DOUBLE, 0);
+            }
+            if (ypos != null && ypos.length > 0) {
+                ypos[0] = py.get(JAVA_DOUBLE, 0);
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -4151,10 +4290,16 @@ public class GLFW {
      * @see #ngetCursorPos(Addressable, Addressable, Addressable) ngetCursorPos
      */
     public static ValueDouble2 getCursorPos(Addressable window) {
-        var px = malloc(8);
-        var py = malloc(8);
-        ngetCursorPos(window, px, py);
-        return new ValueDouble2(getAndFree(px, JAVA_DOUBLE, 0), getAndFree(py, JAVA_DOUBLE, 0));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.calloc(8);
+            var py = stack.calloc(8);
+            ngetCursorPos(window, px, py);
+            return new ValueDouble2(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -4761,9 +4906,17 @@ public class GLFW {
      * @see #ngetJoystickAxes(int, Addressable) ngetJoystickAxes
      */
     public static float @Nullable [] getJoystickAxes(int jid) {
-        var pCount = malloc(4);
-        var pAxes = ngetJoystickAxes(jid, pCount);
-        final int count = getAndFree(pCount, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        MemoryAddress pAxes;
+        final int count;
+        try {
+            var pCount = stack.calloc(4);
+            pAxes = ngetJoystickAxes(jid, pCount);
+            count = pCount.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
         if (count == 0) return null;
         return RuntimeHelper.toArray(pAxes, new float[count]);
     }
@@ -4815,9 +4968,17 @@ public class GLFW {
      * @see #ngetJoystickButtons(int, Addressable) ngetJoystickButtons
      */
     public static boolean @Nullable [] getJoystickButtons(int jid) {
-        var pCount = malloc(4);
-        var pButtons = ngetJoystickButtons(jid, pCount);
-        final int count = getAndFree(pCount, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        MemoryAddress pButtons;
+        final int count;
+        try {
+            var pCount = stack.calloc(4);
+            pButtons = ngetJoystickButtons(jid, pCount);
+            count = pCount.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
         if (count == 0) return null;
         boolean[] buttons = new boolean[count];
         for (int i = 0; i < count; i++) {
@@ -4889,9 +5050,15 @@ public class GLFW {
      * @see #ngetJoystickHats(int, Addressable) ngetJoystickHats
      */
     public static byte[] getJoystickHats(int jid) {
-        var pCount = malloc(4);
-        var pHats = ngetJoystickHats(jid, pCount);
-        return RuntimeHelper.toArray(pHats, new byte[getAndFree(pCount, JAVA_INT, 0)]);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pCount = stack.calloc(4);
+            var pHats = ngetJoystickHats(jid, pCount);
+            return RuntimeHelper.toArray(pHats, new byte[pCount.get(JAVA_INT, 0)]);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -5736,9 +5903,17 @@ public class GLFW {
      * @see #ngetRequiredInstanceExtensions(Addressable) ngetRequiredInstanceExtensions
      */
     public static String @Nullable [] getRequiredInstanceExtensions() {
-        var pCount = malloc(4);
-        var pExt = ngetRequiredInstanceExtensions(pCount);
-        final int count = getAndFree(pCount, JAVA_INT, 0);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        MemoryAddress pExt;
+        final int count;
+        try {
+            var pCount = stack.calloc(4);
+            pExt = ngetRequiredInstanceExtensions(pCount);
+            count = pCount.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
         if (count == 0) return null;
         return RuntimeHelper.toArray(pExt, new String[count]);
     }

@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -129,8 +130,14 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void deleteTexture(int texture) {
-        try (var session = MemorySession.openShared()) {
-            deleteTextures(1, session.allocate(JAVA_INT, texture));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, texture);
+            deleteTextures(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -189,10 +196,14 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static int genTexture() {
-        try (var session = MemorySession.openShared()) {
-            var pTex = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pTex = stack.calloc(JAVA_INT);
             genTextures(1, pTex);
             return pTex.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -209,10 +220,14 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static MemoryAddress getPointer(int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(ADDRESS);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(ADDRESS);
             getPointerv(pname, pParams);
             return pParams.get(ADDRESS, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

@@ -22,18 +22,16 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.util;
+package org.overrun.glib.util.value;
 
 /**
- * A value object with 4 integers.
+ * A value object with 2 doubles.
  *
  * @param x the first value.
  * @param y the second value.
- * @param z the third value.
- * @param w the fourth value.
  * @author squid233
  * @since 0.1.0
  */
-// TODO: Replaces with more generic Value4<T, U, V, W>
-public record ValueInt4(int x, int y, int z, int w) {
+// TODO: Replaces with more generic Value2<T, U>
+public record ValueDouble2(double x, double y) {
 }

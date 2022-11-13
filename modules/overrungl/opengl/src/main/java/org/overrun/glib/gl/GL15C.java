@@ -26,6 +26,8 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -35,7 +37,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 1.5 forward compatible functions.
@@ -106,6 +109,10 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferData(target, data.byteSize(), data, usage);
     }
 
+    public static void bufferData(int target, BufferBuilder data, int usage) {
+        bufferData(target, data.offset(), data.address(), usage);
+    }
+
     public static void bufferData(int target, long size, int usage) {
         bufferData(target, size, MemoryAddress.NULL, usage);
     }
@@ -156,6 +163,10 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void bufferSubData(int target, long offset, MemorySegment data) {
         bufferSubData(target, offset, data.byteSize(), data);
+    }
+
+    public static void bufferSubData(int target, long offset, BufferBuilder data) {
+        bufferSubData(target, offset, data.offset(), data.address());
     }
 
     public static void bufferSubData(int target, long offset, byte[] data) {
@@ -209,8 +220,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void deleteBuffer(int buffer) {
-        try (var session = MemorySession.openShared()) {
-            deleteBuffers(1, session.allocate(JAVA_INT, buffer));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, buffer);
+            deleteBuffers(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -229,8 +246,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void deleteQuery(int id) {
-        try (var session = MemorySession.openShared()) {
-            deleteQueries(1, session.allocate(JAVA_INT, id));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, id);
+            deleteQueries(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -259,10 +282,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static int genBuffer() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -283,10 +310,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static int genQuery() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genQueries(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -298,15 +329,15 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getBufferParameteriv(int target, int pname, int[] params) {
-        params[0] = getBufferParameteri(target, pname);
-    }
-
     public static int getBufferParameteri(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getBufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -323,10 +354,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static MemoryAddress getBufferPointer(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(ADDRESS);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(ADDRESS);
             getBufferPointerv(target, pname, seg);
             return seg.get(ADDRESS, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -394,15 +429,15 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getQueryObjectiv(int id, int pname, int[] params) {
-        params[0] = getQueryObjecti(id, pname);
-    }
-
     public static int getQueryObjecti(int id, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getQueryObjectiv(id, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -419,10 +454,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static int getQueryObjectui(int id, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getQueryObjectuiv(id, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -439,10 +478,14 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static int getQueryi(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getQueryiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

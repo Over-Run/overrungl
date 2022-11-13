@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -34,7 +35,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 4.0 core profile functions.
@@ -182,8 +184,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void deleteTransformFeedback(int id) {
-        try (var session = MemorySession.openShared()) {
-            deleteTransformFeedbacks(1, session.allocate(JAVA_INT, id));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem=stack.calloc(JAVA_INT);
+            mem.set(JAVA_INT,0,id);
+            deleteTransformFeedbacks(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -264,10 +272,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static int genTransformFeedback() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -320,10 +332,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static int getActiveSubroutineUniformi(int program, int shaderType, int index, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -336,10 +352,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static int getProgramStagei(int program, int shaderType, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getProgramStageiv(program, shaderType, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -352,10 +372,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static int getQueryIndexedi(int target, int index, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getQueryIndexediv(target, index, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -420,10 +444,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static double getUniformd(int program, int location) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_DOUBLE);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_DOUBLE);
             getUniformdv(program, location, seg);
             return seg.get(JAVA_DOUBLE, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

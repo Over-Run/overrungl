@@ -24,6 +24,8 @@
 
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.RuntimeHelper;
+
 import java.io.PrintStream;
 import java.util.function.Consumer;
 
@@ -68,13 +70,13 @@ public class GLFWErrorCallback {
     }
 
     /**
-     * Returns a {@link IGLFWErrorFun} instance that prints a message to standard error
-     * when an error occurs.
+     * Returns a {@link IGLFWErrorFun} instance that prints a message to
+     * {@link RuntimeHelper#apiLogger() default library logger} when an error occurs.
      *
      * @return the {@code GLFWerrorCallback}
      * @see #createPrint(PrintStream)
      */
     public static IGLFWErrorFun createPrint() {
-        return createPrint(System.err);
+        return createLog(RuntimeHelper.apiLogger());
     }
 }

@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -392,10 +393,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createBuffer() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -416,10 +421,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createFramebuffer() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -440,10 +449,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createProgramPipeline() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -464,10 +477,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createQuery(int target) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createQueries(target, 1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -488,10 +505,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createRenderbuffer() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -512,10 +533,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createSampler() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createSamplers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -537,10 +562,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createTexture(int target) {
-        try (var session = MemorySession.openShared()) {
-            var pTex = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pTex = stack.calloc(JAVA_INT);
             createTextures(target, 1, pTex);
             return pTex.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -561,10 +590,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createTransformFeedback() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -585,10 +618,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int createVertexArray() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             createVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -656,15 +693,15 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getNamedBufferParameteri64v(int buffer, int pname, long[] params) {
-        params[0] = getNamedBufferParameteri64(buffer, pname);
-    }
-
     public static long getNamedBufferParameteri64(int buffer, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_LONG);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_LONG);
             getNamedBufferParameteri64v(buffer, pname, seg);
             return seg.get(JAVA_LONG, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -676,15 +713,15 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getNamedBufferParameteriv(int buffer, int pname, int[] params) {
-        params[0] = getNamedBufferParameteri(buffer, pname);
-    }
-
     public static int getNamedBufferParameteri(int buffer, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getNamedBufferParameteriv(buffer, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -696,15 +733,15 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getNamedBufferPointerv(int target, int pname, MemoryAddress[] params) {
-        params[0] = getNamedBufferPointer(target, pname);
-    }
-
     public static MemoryAddress getNamedBufferPointer(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(ADDRESS);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(ADDRESS);
             getNamedBufferPointerv(target, pname, seg);
             return seg.get(ADDRESS, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -772,19 +809,15 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
-            getNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, seg);
-            params[0] = seg.get(JAVA_INT, 0);
-        }
-    }
-
     public static int getNamedFramebufferAttachmentParameteri(int framebuffer, int attachment, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -797,10 +830,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getNamedFramebufferParameteri(int framebuffer, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getNamedFramebufferParameteriv(framebuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -813,18 +850,26 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedRenderbufferParameteriv(int renderbuffer, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             params[0] = seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static int getNamedRenderbufferParameteri(int renderbuffer, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -885,10 +930,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static float getTextureLevelParameterf(int texture, int level, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getTextureLevelParameterfv(texture, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -909,10 +958,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getTextureLevelParameteri(int texture, int level, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getTextureLevelParameteriv(texture, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -933,10 +986,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getTextureParameterIi(int texture, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getTextureParameterIiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -957,10 +1014,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getTextureParameterIui(int texture, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getTextureParameterIuiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -981,10 +1042,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static float getTextureParameterf(int texture, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getTextureParameterfv(texture, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1005,10 +1070,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getTextureParameteri(int texture, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getTextureParameteriv(texture, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1109,10 +1178,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static long getVertexArrayIndexed64i(int vaobj, int index, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_LONG);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_LONG);
             getVertexArrayIndexed64iv(vaobj, index, pname, seg);
             return seg.get(JAVA_LONG, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1125,10 +1198,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getVertexArrayIndexedi(int vaobj, int index, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getVertexArrayIndexediv(vaobj, index, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1141,10 +1218,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getVertexArrayi(int vaobj, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getVertexArrayiv(vaobj, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1299,8 +1380,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void invalidateNamedFramebufferData(int framebuffer, int attachment) {
-        try (var session = MemorySession.openShared()) {
-            invalidateNamedFramebufferData(framebuffer, 1, session.allocate(JAVA_INT, attachment));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, attachment);
+            invalidateNamedFramebufferData(framebuffer, 1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -1319,8 +1406,14 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void invalidateNamedFramebufferSubData(int framebuffer, int attachment, int x, int y, int width, int height) {
-        try (var session = MemorySession.openShared()) {
-            invalidateNamedFramebufferSubData(framebuffer, 1, session.allocate(JAVA_INT, attachment), x, y, width, height);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, attachment);
+            invalidateNamedFramebufferSubData(framebuffer, 1, mem, x, y, width, height);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

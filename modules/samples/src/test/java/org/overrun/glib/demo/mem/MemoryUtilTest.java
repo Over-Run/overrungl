@@ -42,7 +42,7 @@ public final class MemoryUtilTest {
         StringBuilder sb;
         long start, end, delta;
 
-        // MemorySession
+        // MemorySession inside loop
         sb = new StringBuilder();
         start = System.nanoTime();
         for (int i = 0; i < ALLOC_COUNT; i++) {
@@ -54,7 +54,21 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemorySession elapsed time (in nanoseconds): " + delta);
+        System.out.println("MemorySession  in elapsed time (in nanoseconds): " + delta);
+
+        // MemorySession outside loop
+        sb = new StringBuilder();
+        start = System.nanoTime();
+        try (var session = MemorySession.openShared()) {
+            for (int i = 0; i < ALLOC_COUNT; i++) {
+                var seg = session.allocate(ValueLayout.JAVA_INT);
+                seg.set(ValueLayout.JAVA_INT, 0, i);
+                sb.append(seg.get(ValueLayout.JAVA_INT, 0));
+            }
+        }
+        end = System.nanoTime();
+        delta = end - start;
+        System.out.println("MemorySession out elapsed time (in nanoseconds): " + delta);
 
         // MemoryUtil malloc
         sb = new StringBuilder();

@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -35,7 +36,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 3.0 core profile functions.
@@ -338,8 +340,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteFramebuffer(int framebuffer) {
-        try (var session = MemorySession.openShared()) {
-            deleteFramebuffers(1, session.allocate(JAVA_INT, framebuffer));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, framebuffer);
+            deleteFramebuffers(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -358,8 +366,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteRenderbuffer(int renderbuffer) {
-        try (var session = MemorySession.openShared()) {
-            deleteRenderbuffers(1, session.allocate(JAVA_INT, renderbuffer));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, renderbuffer);
+            deleteRenderbuffers(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -378,8 +392,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteVertexArray(int array) {
-        try (var session = MemorySession.openShared()) {
-            deleteVertexArrays(1, session.allocate(JAVA_INT, array));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, array);
+            deleteVertexArrays(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -480,10 +500,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int genFramebuffer() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -504,10 +528,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int genRenderbuffer() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -528,10 +556,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int genVertexArray() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -560,10 +592,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static boolean getBooleani(int target, int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_BOOLEAN);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_BOOLEAN);
             getBooleani_v(target, index, seg);
             return seg.get(JAVA_BOOLEAN, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -589,19 +625,15 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
-            getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
-            params[0] = seg.get(JAVA_INT, 0);
-        }
-    }
-
     public static int getFramebufferAttachmentParameteri(int target, int attachment, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -622,10 +654,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getIntegeri(int target, int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getIntegeri_v(target, index, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -638,18 +674,26 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getRenderbufferParameteriv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getRenderbufferParameteriv(target, pname, seg);
             params[0] = seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static int getRenderbufferParameteri(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getRenderbufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -684,10 +728,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getTexParameterIi(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getTexParameterIiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -708,10 +756,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getTexParameterIui(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getTexParameterIuiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -756,10 +808,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getUniformui(int program, int location) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getUniformuiv(program, location, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -780,10 +836,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getVertexAttribIi(int index, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getVertexAttribIiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -804,10 +864,14 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getVertexAttribIui(int index, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getVertexAttribIuiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

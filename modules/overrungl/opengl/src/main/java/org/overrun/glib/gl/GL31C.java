@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -207,10 +208,16 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static int getActiveUniformi(int program, int uniformIndex, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
-            getActiveUniformsiv(program, 1, session.allocate(JAVA_INT, uniformIndex), pname, seg);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
+            var pi = stack.calloc(JAVA_INT);
+            pi.set(JAVA_INT, 0, uniformIndex);
+            getActiveUniformsiv(program, 1, pi, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

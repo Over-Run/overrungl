@@ -28,7 +28,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -44,6 +47,45 @@ public final class RuntimeHelper {
      * The native linker.
      */
     public static final Linker LINKER = Linker.nativeLinker();
+    private static final Consumer<String> DEFAULT_LOGGER = System.out::println;
+    private static Consumer<String> apiLogger = DEFAULT_LOGGER;
+
+    /**
+     * Sets the API logger.
+     *
+     * @param logger the logger. pass {@code null} to reset to the default logger
+     */
+    public static void setApiLogger(Consumer<String> logger) {
+        apiLogger = Objects.requireNonNullElse(logger, DEFAULT_LOGGER);
+    }
+
+    /**
+     * Gets the API logger. Defaults to {@link System#out}
+     *
+     * @return the API logger
+     */
+    public static Consumer<String> apiLogger() {
+        return apiLogger;
+    }
+
+    /**
+     * Log a message.
+     *
+     * @param message the message
+     */
+    public static void apiLog(String message) {
+        apiLogger.accept(message);
+    }
+
+    /**
+     * Gets the length of the null-terminated string encoded in UTF8.
+     *
+     * @param s the string
+     * @return the length
+     */
+    public static int utf8StringCLength(String s) {
+        return s.getBytes(StandardCharsets.UTF_8).length + 1;
+    }
 
     /**
      * Creates a downcall handle or {@code null}.

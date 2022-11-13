@@ -24,11 +24,13 @@
 
 package org.overrun.glib.util;
 
+import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.util.Objects;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 
@@ -41,13 +43,13 @@ import static org.overrun.glib.FunctionDescriptors.*;
 public final class MemoryUtil {
     private static final SymbolLookup LOOKUP = RuntimeHelper.LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", IP),
-        m_calloc = downcall("calloc", IIP),
-        m_realloc = downcall("realloc", PIP),
+        m_malloc = downcall("malloc", JP),
+        m_calloc = downcall("calloc", JJP),
+        m_realloc = downcall("realloc", PJP),
         m_free = downcall("free", PV),
-        m_memcpy = downcall("memcpy", PPIP),
-        m_memmove = downcall("memmove", PPIP),
-        m_memset = downcall("memset", PIIP);
+        m_memcpy = downcall("memcpy", PPJP),
+        m_memmove = downcall("memmove", PPJP),
+        m_memset = downcall("memset", PIJP);
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.lookup(name), function);
@@ -55,12 +57,19 @@ public final class MemoryUtil {
 
     /**
      * Allocates memory blocks.
+     * <p>
+     * The {@code malloc} function allocates a memory block of at least <i>{@code size}</i> bytes. The block may be
+     * larger than <i>{@code size}</i> bytes because of the space that's required for alignment and maintenance
+     * information.
      *
      * @param size Bytes to allocate.
      * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemoryAddress#NULL NULL}
-     * if there is insufficient memory available.
+     * if there is insufficient memory available. The storage space pointed to by the return value is suitably aligned
+     * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
+     * alignment.
+     * @see #malloc(MemoryLayout)
      */
-    public static MemoryAddress malloc(int size) {
+    public static MemoryAddress malloc(long size) {
         try {
             return (MemoryAddress) m_malloc.invoke(size);
         } catch (Throwable e) {
@@ -70,13 +79,20 @@ public final class MemoryUtil {
 
     /**
      * Allocates memory blocks.
+     * <p>
+     * The {@code malloc} function allocates a memory block of at least <i>{@code size}</i> bytes. The block may be
+     * larger than <i>{@code size}</i> bytes because of the space that's required for alignment and maintenance
+     * information.
      *
      * @param layout Bytes to allocate.
      * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemoryAddress#NULL NULL}
-     * if there is insufficient memory available.
+     * if there is insufficient memory available. The storage space pointed to by the return value is suitably aligned
+     * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
+     * alignment.
+     * @see #malloc(long)
      */
     public static MemoryAddress malloc(MemoryLayout layout) {
-        return malloc((int) layout.byteSize());
+        return malloc(layout.byteSize());
     }
 
     /**
@@ -89,8 +105,9 @@ public final class MemoryUtil {
      * @param size   Length in bytes of each element.
      * @return {@code calloc} returns a pointer to the allocated space. The storage space pointed to by the
      * return value is suitably aligned for storage of any type of object.
+     * @see #calloc(long, MemoryLayout)
      */
-    public static MemoryAddress calloc(int number, int size) {
+    public static MemoryAddress calloc(long number, long size) {
         try {
             return (MemoryAddress) m_calloc.invoke(number, size);
         } catch (Throwable e) {
@@ -108,9 +125,10 @@ public final class MemoryUtil {
      * @param layout Length in bytes of each element.
      * @return {@code calloc} returns a pointer to the allocated space. The storage space pointed to by the
      * return value is suitably aligned for storage of any type of object.
+     * @see #calloc(long, long)
      */
-    public static MemoryAddress calloc(int number, MemoryLayout layout) {
-        return calloc(number, (int) layout.byteSize());
+    public static MemoryAddress calloc(long number, MemoryLayout layout) {
+        return calloc(number, layout.byteSize());
     }
 
     /**
@@ -141,9 +159,11 @@ public final class MemoryUtil {
      * <p>
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
-    public static MemoryAddress realloc(MemoryAddress memblock, int size) {
+    public static MemoryAddress realloc(@Nullable MemoryAddress memblock, long size) {
         try {
-            return (MemoryAddress) m_realloc.invoke(memblock, size);
+            return (MemoryAddress) m_realloc.invoke(
+                Objects.requireNonNullElse(memblock, MemoryAddress.NULL),
+                size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
         }
@@ -162,7 +182,8 @@ public final class MemoryUtil {
      *
      * @param memblock Previously allocated memory block to be freed.
      */
-    public static void free(MemoryAddress memblock) {
+    public static void free(@Nullable MemoryAddress memblock) {
+        if (memblock == null) return;
         try {
             m_free.invoke(memblock);
         } catch (Throwable e) {
@@ -184,7 +205,7 @@ public final class MemoryUtil {
      * @param count Number of characters to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memcpy(MemoryAddress dest, Addressable src, int count) {
+    public static MemoryAddress memcpy(MemoryAddress dest, Addressable src, long count) {
         try {
             return (MemoryAddress) m_memcpy.invoke(dest, src, count);
         } catch (Throwable e) {
@@ -208,7 +229,7 @@ public final class MemoryUtil {
      * @param count Number of bytes to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memmove(MemoryAddress dest, Addressable src, int count) {
+    public static MemoryAddress memmove(MemoryAddress dest, Addressable src, long count) {
         try {
             return (MemoryAddress) m_memmove.invoke(dest, src, count);
         } catch (Throwable e) {
@@ -230,79 +251,11 @@ public final class MemoryUtil {
      * @param count Number of characters.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memset(MemoryAddress dest, int c, int count) {
+    public static MemoryAddress memset(MemoryAddress dest, int c, long count) {
         try {
             return (MemoryAddress) m_memset.invoke(dest, c, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here");
-        }
-    }
-
-    /**
-     * {@link MemoryAddress#get(ValueLayout.OfInt, long) get} and {@link #free(MemoryAddress) free}
-     *
-     * @param address the memory address
-     * @param layout  the layout of the memory region to be read.
-     * @param offset  offset in bytes (relative to this address). Might be negative.
-     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
-     * @return an int value read from this address.
-     */
-    public static int getAndFree(MemoryAddress address, ValueLayout.OfInt layout, long offset) {
-        try {
-            return address.get(layout, offset);
-        } finally {
-            free(address);
-        }
-    }
-
-    /**
-     * {@link MemoryAddress#get(ValueLayout.OfFloat, long) get} and {@link #free(MemoryAddress) free}
-     *
-     * @param address the memory address
-     * @param layout  the layout of the memory region to be read.
-     * @param offset  offset in bytes (relative to this address). Might be negative.
-     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
-     * @return a float value read from this address.
-     */
-    public static float getAndFree(MemoryAddress address, ValueLayout.OfFloat layout, long offset) {
-        try {
-            return address.get(layout, offset);
-        } finally {
-            free(address);
-        }
-    }
-
-    /**
-     * {@link MemoryAddress#get(ValueLayout.OfDouble, long) get} and {@link #free(MemoryAddress) free}
-     *
-     * @param address the memory address
-     * @param layout  the layout of the memory region to be read.
-     * @param offset  offset in bytes (relative to this address). Might be negative.
-     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
-     * @return a double value read from this address.
-     */
-    public static double getAndFree(MemoryAddress address, ValueLayout.OfDouble layout, long offset) {
-        try {
-            return address.get(layout, offset);
-        } finally {
-            free(address);
-        }
-    }
-
-    /**
-     * {@link MemoryAddress#get(ValueLayout.OfAddress, long) get} and {@link #free(MemoryAddress) free}
-     *
-     * @param address the memory address
-     * @param layout  the layout of the memory region to be read.
-     * @param offset  offset in bytes (relative to this address). Might be negative.
-     *                The final address of this read operation can be expressed as {@code toRawLongValue() + offset}.
-     * @return an address value read from this address.
-     */
-    public static MemoryAddress getAndFree(MemoryAddress address, ValueLayout.OfAddress layout, long offset) {
-        try {
-            return address.get(layout, offset);
-        } finally {
-            free(address);
         }
     }
 }

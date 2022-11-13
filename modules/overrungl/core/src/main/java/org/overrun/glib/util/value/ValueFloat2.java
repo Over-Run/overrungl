@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.util;
+package org.overrun.glib.util.value;
 
 /**
  * A value object with 2 floats.

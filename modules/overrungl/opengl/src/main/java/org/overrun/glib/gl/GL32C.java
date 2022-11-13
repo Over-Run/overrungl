@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -35,7 +36,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 3.2 core profile functions.
@@ -204,10 +206,14 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static long getBufferParameteri64(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_LONG);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_LONG);
             getBufferParameteri64v(target, pname, seg);
             return seg.get(JAVA_LONG, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -228,10 +234,14 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static long getInteger64i(int target, int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_LONG);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_LONG);
             getInteger64i_v(target, index, seg);
             return seg.get(JAVA_LONG, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -252,10 +262,14 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static long getInteger64(int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocate(JAVA_LONG);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pData = stack.calloc(JAVA_LONG);
             getInteger64v(pname, pData);
             return pData.get(JAVA_LONG, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -304,10 +318,14 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static int getSynci(MemoryAddress sync, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getSynciv(sync, pname, 1, MemoryAddress.NULL, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

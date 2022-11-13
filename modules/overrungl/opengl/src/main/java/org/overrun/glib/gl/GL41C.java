@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -35,7 +36,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 4.1 core profile functions.
@@ -243,8 +245,14 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void deleteProgramPipeline(int pipeline) {
-        try (var session = MemorySession.openShared()) {
-            deleteProgramPipelines(1, session.allocate(JAVA_INT, pipeline));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, pipeline);
+            deleteProgramPipelines(1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -295,10 +303,14 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static int genProgramPipeline() {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             genProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -319,10 +331,14 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static double getDoublei(int target, int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_DOUBLE);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_DOUBLE);
             getDoublei_v(target, index, seg);
             return seg.get(JAVA_DOUBLE, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -343,10 +359,14 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static float getFloati(int target, int index) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_FLOAT);
             getFloati_v(target, index, seg);
             return seg.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -359,14 +379,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramBinary(int program, int bufSize, int @Nullable [] length, int[] binaryFormat, Addressable binary) {
-        try (var session = MemorySession.openShared()) {
-            var pl = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pf = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pl = length != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pf = stack.calloc(JAVA_INT);
             getProgramBinary(program, bufSize, pl, pf, binary);
             if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pl).get(JAVA_INT, 0);
+                length[0] = pl.get(JAVA_INT, 0);
             }
             binaryFormat[0] = pf.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -411,15 +435,15 @@ public sealed class GL41C extends GL40C permits GL42C {
         }
     }
 
-    public static void getProgramPipelineiv(int pipeline, int pname, int[] params) {
-        params[0] = getProgramPipelinei(pipeline, pname);
-    }
-
     public static int getProgramPipelinei(int pipeline, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getProgramPipelineiv(pipeline, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 

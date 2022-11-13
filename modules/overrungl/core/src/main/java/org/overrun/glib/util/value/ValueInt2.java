@@ -22,17 +22,16 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.util;
+package org.overrun.glib.util.value;
 
 /**
- * A value object with an object and an integer.
+ * A value object with 2 integers.
  *
  * @param x the first value.
  * @param y the second value.
- * @param <T> the type of first value object .
  * @author squid233
  * @since 0.1.0
  */
 // TODO: Replaces with more generic Value2<T, U>
-public record ValueObjInt<T>(T x, int y) {
+public record ValueInt2(int x, int y) {
 }

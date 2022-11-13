@@ -26,6 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
@@ -34,7 +35,6 @@ import java.lang.foreign.MemorySession;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.ValueLayout.JAVA_LONG;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLCaps.check;
 import static org.overrun.glib.gl.GLCaps.checkAll;
@@ -257,10 +257,14 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getFramebufferParameteri(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getFramebufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -353,10 +357,14 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramInterfacei(int program, int programInterface, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getProgramInterfaceiv(program, programInterface, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -493,8 +501,14 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateFramebuffer(int target, int attachment) {
-        try (var session = MemorySession.openShared()) {
-            invalidateFramebuffer(target, 1, session.allocate(JAVA_INT, attachment));
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, attachment);
+            invalidateFramebuffer(target, 1, mem);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -513,8 +527,14 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateSubFramebuffer(int target, int attachment, int x, int y, int width, int height) {
-        try (var session = MemorySession.openShared()) {
-            invalidateSubFramebuffer(target, 1, session.allocate(JAVA_INT, attachment), x, y, width, height);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var mem = stack.malloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, attachment);
+            invalidateSubFramebuffer(target, 1, mem, x, y, width, height);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
