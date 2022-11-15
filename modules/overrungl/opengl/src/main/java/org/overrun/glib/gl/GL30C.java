@@ -28,10 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -175,168 +172,158 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void beginConditionalRender(int id, int mode) {
         try {
-            check(glBeginConditionalRender).invoke(id, mode);
+            check(glBeginConditionalRender).invokeExact(id, mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void beginTransformFeedback(int primitiveMode) {
         try {
-            check(glBeginTransformFeedback).invoke(primitiveMode);
+            check(glBeginTransformFeedback).invokeExact(primitiveMode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindBufferBase(int target, int index, int buffer) {
         try {
-            check(glBindBufferBase).invoke(target, index, buffer);
+            check(glBindBufferBase).invokeExact(target, index, buffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindBufferRange(int target, int index, int buffer, long offset, long size) {
         try {
-            check(glBindBufferRange).invoke(target, index, buffer, offset, size);
+            check(glBindBufferRange).invokeExact(target, index, buffer, offset, size);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindFragDataLocation(int program, int color, Addressable name) {
         try {
-            check(glBindFragDataLocation).invoke(program, color, name);
+            check(glBindFragDataLocation).invokeExact(program, color, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindFragDataLocation(int program, int color, String name) {
-        try (var session = MemorySession.openShared()) {
-            bindFragDataLocation(program, color, session.allocateUtf8String(name));
-        }
+    public static void bindFragDataLocation(SegmentAllocator session, int program, int color, String name) {
+        bindFragDataLocation(program, color, session.allocateUtf8String(name));
     }
 
     public static void bindFramebuffer(int target, int framebuffer) {
         try {
-            check(glBindFramebuffer).invoke(target, framebuffer);
+            check(glBindFramebuffer).invokeExact(target, framebuffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindRenderbuffer(int target, int renderbuffer) {
         try {
-            check(glBindRenderbuffer).invoke(target, renderbuffer);
+            check(glBindRenderbuffer).invokeExact(target, renderbuffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindVertexArray(int array) {
         try {
-            check(glBindVertexArray).invoke(array);
+            check(glBindVertexArray).invokeExact(array);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
         try {
-            check(glBlitFramebuffer).invoke(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+            check(glBlitFramebuffer).invokeExact(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int checkFramebufferStatus(int target) {
         try {
-            return (int) check(glCheckFramebufferStatus).invoke(target);
+            return (int) check(glCheckFramebufferStatus).invokeExact(target);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clampColor(int target, int clamp) {
         try {
-            check(glClampColor).invoke(target, clamp);
+            check(glClampColor).invokeExact(target, clamp);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearBufferfi(int buffer, int drawBuffer, float depth, int stencil) {
         try {
-            check(glClearBufferfi).invoke(buffer, drawBuffer, depth, stencil);
+            check(glClearBufferfi).invokeExact(buffer, drawBuffer, depth, stencil);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearBufferfv(int buffer, int drawBuffer, Addressable value) {
         try {
-            check(glClearBufferfv).invoke(buffer, drawBuffer, value);
+            check(glClearBufferfv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void clearBufferfv(int buffer, int drawBuffer, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            clearBufferfv(buffer, drawBuffer, session.allocateArray(JAVA_FLOAT, value));
-        }
+    public static void clearBufferfv(SegmentAllocator session, int buffer, int drawBuffer, float[] value) {
+        clearBufferfv(buffer, drawBuffer, session.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void clearBufferiv(int buffer, int drawBuffer, Addressable value) {
         try {
-            check(glClearBufferiv).invoke(buffer, drawBuffer, value);
+            check(glClearBufferiv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void clearBufferiv(int buffer, int drawBuffer, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            clearBufferiv(buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
-        }
+    public static void clearBufferiv(SegmentAllocator session, int buffer, int drawBuffer, int[] value) {
+        clearBufferiv(buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
     }
 
     public static void clearBufferuiv(int buffer, int drawBuffer, Addressable value) {
         try {
-            check(glClearBufferuiv).invoke(buffer, drawBuffer, value);
+            check(glClearBufferuiv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void clearBufferuiv(int buffer, int drawBuffer, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            clearBufferuiv(buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
-        }
+    public static void clearBufferuiv(SegmentAllocator session, int buffer, int drawBuffer, int[] value) {
+        clearBufferuiv(buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
     }
 
     public static void colorMaski(int index, boolean r, boolean g, boolean b, boolean a) {
         try {
-            check(glColorMaski).invoke(index, r, g, b, a);
+            check(glColorMaski).invokeExact(index, r, g, b, a);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteFramebuffers(int n, Addressable framebuffers) {
         try {
-            check(glDeleteFramebuffers).invoke(n, framebuffers);
+            check(glDeleteFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteFramebuffers(int[] framebuffers) {
-        try (var session = MemorySession.openShared()) {
-            deleteFramebuffers(framebuffers.length, session.allocateArray(JAVA_INT, framebuffers));
-        }
+    public static void deleteFramebuffers(SegmentAllocator session, int[] framebuffers) {
+        deleteFramebuffers(framebuffers.length, session.allocateArray(JAVA_INT, framebuffers));
     }
 
     public static void deleteFramebuffer(int framebuffer) {
@@ -353,16 +340,14 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void deleteRenderbuffers(int n, Addressable renderbuffers) {
         try {
-            check(glDeleteRenderbuffers).invoke(n, renderbuffers);
+            check(glDeleteRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteRenderbuffers(int[] renderbuffers) {
-        try (var session = MemorySession.openShared()) {
-            deleteRenderbuffers(renderbuffers.length, session.allocateArray(JAVA_INT, renderbuffers));
-        }
+    public static void deleteRenderbuffers(SegmentAllocator session, int[] renderbuffers) {
+        deleteRenderbuffers(renderbuffers.length, session.allocateArray(JAVA_INT, renderbuffers));
     }
 
     public static void deleteRenderbuffer(int renderbuffer) {
@@ -379,16 +364,14 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void deleteVertexArrays(int n, Addressable arrays) {
         try {
-            check(glDeleteVertexArrays).invoke(n, arrays);
+            check(glDeleteVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteVertexArrays(int[] arrays) {
-        try (var session = MemorySession.openShared()) {
-            deleteVertexArrays(arrays.length, session.allocateArray(JAVA_INT, arrays));
-        }
+    public static void deleteVertexArrays(SegmentAllocator session, int[] arrays) {
+        deleteVertexArrays(arrays.length, session.allocateArray(JAVA_INT, arrays));
     }
 
     public static void deleteVertexArray(int array) {
@@ -405,98 +388,96 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void disablei(int target, int index) {
         try {
-            check(glDisablei).invoke(target, index);
+            check(glDisablei).invokeExact(target, index);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void enablei(int target, int index) {
         try {
-            check(glEnablei).invoke(target, index);
+            check(glEnablei).invokeExact(target, index);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void endConditionalRender() {
         try {
-            check(glEndConditionalRender).invoke();
+            check(glEndConditionalRender).invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void endTransformFeedback() {
         try {
-            check(glEndTransformFeedback).invoke();
+            check(glEndTransformFeedback).invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void flushMappedBufferRange(int target, long offset, long length) {
         try {
-            check(glFlushMappedBufferRange).invoke(target, offset, length);
+            check(glFlushMappedBufferRange).invokeExact(target, offset, length);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderbuffer) {
         try {
-            check(glFramebufferRenderbuffer).invoke(target, attachment, renderbufferTarget, renderbuffer);
+            check(glFramebufferRenderbuffer).invokeExact(target, attachment, renderbufferTarget, renderbuffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture1D(int target, int attachment, int texTarget, int texture, int level) {
         try {
-            check(glFramebufferTexture1D).invoke(target, attachment, texTarget, texture, level);
+            check(glFramebufferTexture1D).invokeExact(target, attachment, texTarget, texture, level);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture2D(int target, int attachment, int texTarget, int texture, int level) {
         try {
-            check(glFramebufferTexture2D).invoke(target, attachment, texTarget, texture, level);
+            check(glFramebufferTexture2D).invokeExact(target, attachment, texTarget, texture, level);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture3D(int target, int attachment, int texTarget, int texture, int level, int zoffset) {
         try {
-            check(glFramebufferTexture3D).invoke(target, attachment, texTarget, texture, level, zoffset);
+            check(glFramebufferTexture3D).invokeExact(target, attachment, texTarget, texture, level, zoffset);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
         try {
-            check(glFramebufferTextureLayer).invoke(target, attachment, texture, level, layer);
+            check(glFramebufferTextureLayer).invokeExact(target, attachment, texture, level, layer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void genFramebuffers(int n, Addressable framebuffers) {
         try {
-            check(glGenFramebuffers).invoke(n, framebuffers);
+            check(glGenFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genFramebuffers(int[] framebuffers) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, framebuffers.length);
-            genFramebuffers(framebuffers.length, seg);
-            RuntimeHelper.toArray(seg, framebuffers);
-        }
+    public static void genFramebuffers(SegmentAllocator session, int[] framebuffers) {
+        var seg = session.allocateArray(JAVA_INT, framebuffers.length);
+        genFramebuffers(framebuffers.length, seg);
+        RuntimeHelper.toArray(seg, framebuffers);
     }
 
     public static int genFramebuffer() {
@@ -513,18 +494,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void genRenderbuffers(int n, Addressable renderbuffers) {
         try {
-            check(glGenRenderbuffers).invoke(n, renderbuffers);
+            check(glGenRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genRenderbuffers(int[] renderbuffers) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, renderbuffers.length);
-            genRenderbuffers(renderbuffers.length, seg);
-            RuntimeHelper.toArray(seg, renderbuffers);
-        }
+    public static void genRenderbuffers(SegmentAllocator session, int[] renderbuffers) {
+        var seg = session.allocateArray(JAVA_INT, renderbuffers.length);
+        genRenderbuffers(renderbuffers.length, seg);
+        RuntimeHelper.toArray(seg, renderbuffers);
     }
 
     public static int genRenderbuffer() {
@@ -541,18 +520,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void genVertexArrays(int n, Addressable arrays) {
         try {
-            check(glGenVertexArrays).invoke(n, arrays);
+            check(glGenVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genVertexArrays(int[] arrays) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, arrays.length);
-            genVertexArrays(arrays.length, seg);
-            RuntimeHelper.toArray(seg, arrays);
-        }
+    public static void genVertexArrays(SegmentAllocator session, int[] arrays) {
+        var seg = session.allocateArray(JAVA_INT, arrays.length);
+        genVertexArrays(arrays.length, seg);
+        RuntimeHelper.toArray(seg, arrays);
     }
 
     public static int genVertexArray() {
@@ -569,26 +546,24 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void generateMipmap(int target) {
         try {
-            check(glGenerateMipmap).invoke(target);
+            check(glGenerateMipmap).invokeExact(target);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getBooleani_v(int target, int index, Addressable data) {
         try {
-            check(glGetBooleani_v).invoke(target, index, data);
+            check(glGetBooleani_v).invokeExact(target, index, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getBooleani_v(int target, int index, boolean[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BOOLEAN, data.length);
-            getBooleani_v(target, index, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBooleani_v(SegmentAllocator session, int target, int index, boolean[] data) {
+        var seg = session.allocateArray(JAVA_BOOLEAN, data.length);
+        getBooleani_v(target, index, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
     public static boolean getBooleani(int target, int index) {
@@ -605,23 +580,21 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static int getFragDataLocation(int program, Addressable name) {
         try {
-            return (int) check(glGetFragDataLocation).invoke(program, name);
+            return (int) check(glGetFragDataLocation).invokeExact(program, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static int getFragDataLocation(int program, String name) {
-        try (var session = MemorySession.openShared()) {
-            return getFragDataLocation(program, session.allocateUtf8String(name));
-        }
+    public static int getFragDataLocation(SegmentAllocator session, int program, String name) {
+        return getFragDataLocation(program, session.allocateUtf8String(name));
     }
 
     public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, Addressable params) {
         try {
-            check(glGetFramebufferAttachmentParameteriv).invoke(target, attachment, pname, params);
+            check(glGetFramebufferAttachmentParameteriv).invokeExact(target, attachment, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -639,18 +612,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getIntegeri_v(int target, int index, Addressable data) {
         try {
-            check(glGetIntegeri_v).invoke(target, index, data);
+            check(glGetIntegeri_v).invokeExact(target, index, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getIntegeri_v(int target, int index, int[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, data.length);
-            getIntegeri_v(target, index, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getIntegeri_v(SegmentAllocator session, int target, int index, int[] data) {
+        var seg = session.allocateArray(JAVA_INT, data.length);
+        getIntegeri_v(target, index, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
     public static int getIntegeri(int target, int index) {
@@ -667,9 +638,9 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getRenderbufferParameteriv(int target, int pname, Addressable params) {
         try {
-            check(glGetRenderbufferParameteriv).invoke(target, pname, params);
+            check(glGetRenderbufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -699,9 +670,9 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static MemoryAddress ngetStringi(int pname, int index) {
         try {
-            return (MemoryAddress) check(glGetStringi).invoke(pname, index);
+            return (MemoryAddress) check(glGetStringi).invokeExact(pname, index);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -713,18 +684,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getTexParameterIiv(int target, int pname, Addressable params) {
         try {
-            check(glGetTexParameterIiv).invoke(target, pname, params);
+            check(glGetTexParameterIiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTexParameterIiv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getTexParameterIiv(target, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getTexParameterIiv(SegmentAllocator session, int target, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getTexParameterIiv(target, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getTexParameterIi(int target, int pname) {
@@ -741,18 +710,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getTexParameterIuiv(int target, int pname, Addressable params) {
         try {
-            check(glGetTexParameterIuiv).invoke(target, pname, params);
+            check(glGetTexParameterIuiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTexParameterIuiv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getTexParameterIuiv(target, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getTexParameterIuiv(SegmentAllocator session, int target, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getTexParameterIuiv(target, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getTexParameterIui(int target, int pname) {
@@ -769,42 +736,38 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getTransformFeedbackVarying(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
         try {
-            check(glGetTransformFeedbackVarying).invoke(program, index, bufSize, length, size, type, name);
+            check(glGetTransformFeedbackVarying).invokeExact(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTransformFeedbackVarying(int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
-        try (var session = MemorySession.openShared()) {
-            var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            var pSz = session.allocate(JAVA_INT);
-            var pType = session.allocate(JAVA_INT);
-            var pName = session.allocateArray(JAVA_BYTE, bufSize);
-            getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
-            if (length != null && length.length > 0) {
-                length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
-            }
-            size[0] = pSz.get(JAVA_INT, 0);
-            type[0] = pType.get(JAVA_INT, 0);
-            name[0] = pName.getUtf8String(0);
+    public static void getTransformFeedbackVarying(SegmentAllocator session, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
+        var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pSz = session.allocate(JAVA_INT);
+        var pType = session.allocate(JAVA_INT);
+        var pName = session.allocateArray(JAVA_BYTE, bufSize);
+        getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
+        if (length != null && length.length > 0) {
+            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
         }
+        size[0] = pSz.get(JAVA_INT, 0);
+        type[0] = pType.get(JAVA_INT, 0);
+        name[0] = pName.getUtf8String(0);
     }
 
     public static void getUniformuiv(int program, int location, Addressable params) {
         try {
-            check(glGetUniformuiv).invoke(program, location, params);
+            check(glGetUniformuiv).invokeExact(program, location, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getUniformuiv(int program, int location, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getUniformuiv(program, location, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getUniformuiv(SegmentAllocator session, int program, int location, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getUniformuiv(program, location, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getUniformui(int program, int location) {
@@ -821,18 +784,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getVertexAttribIiv(int index, int pname, Addressable params) {
         try {
-            check(glGetVertexAttribIiv).invoke(index, pname, params);
+            check(glGetVertexAttribIiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getVertexAttribIiv(int index, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getVertexAttribIiv(index, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getVertexAttribIiv(SegmentAllocator session, int index, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getVertexAttribIiv(index, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getVertexAttribIi(int index, int pname) {
@@ -849,18 +810,16 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static void getVertexAttribIuiv(int index, int pname, Addressable params) {
         try {
-            check(glGetVertexAttribIuiv).invoke(index, pname, params);
+            check(glGetVertexAttribIuiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getVertexAttribIuiv(int index, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getVertexAttribIuiv(index, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getVertexAttribIuiv(SegmentAllocator session, int index, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getVertexAttribIuiv(index, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getVertexAttribIui(int index, int pname) {
@@ -877,449 +836,405 @@ public sealed class GL30C extends GL21C permits GL31C {
 
     public static boolean isEnabledi(int target, int index) {
         try {
-            return (boolean) check(glIsEnabledi).invoke(target, index);
+            return (boolean) check(glIsEnabledi).invokeExact(target, index);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isFramebuffer(int framebuffer) {
         try {
-            return (boolean) check(glIsFramebuffer).invoke(framebuffer);
+            return (boolean) check(glIsFramebuffer).invokeExact(framebuffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isRenderbuffer(int renderbuffer) {
         try {
-            return (boolean) check(glIsRenderbuffer).invoke(renderbuffer);
+            return (boolean) check(glIsRenderbuffer).invokeExact(renderbuffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isVertexArray(int array) {
         try {
-            return (boolean) check(glIsVertexArray).invoke(array);
+            return (boolean) check(glIsVertexArray).invokeExact(array);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static MemoryAddress mapBufferRange(int target, long offset, long length, int access) {
         try {
-            return (MemoryAddress) check(glMapBufferRange).invoke(target, offset, length, access);
+            return (MemoryAddress) check(glMapBufferRange).invokeExact(target, offset, length, access);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void renderbufferStorage(int target, int internalFormat, int width, int height) {
         try {
-            check(glRenderbufferStorage).invoke(target, internalFormat, width, height);
+            check(glRenderbufferStorage).invokeExact(target, internalFormat, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void renderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) {
         try {
-            check(glRenderbufferStorageMultisample).invoke(target, samples, internalFormat, width, height);
+            check(glRenderbufferStorageMultisample).invokeExact(target, samples, internalFormat, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texParameterIiv(int target, int pname, Addressable params) {
         try {
-            check(glTexParameterIiv).invoke(target, pname, params);
+            check(glTexParameterIiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texParameterIiv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            texParameterIiv(target, pname, session.allocateArray(JAVA_INT, params));
-        }
+    public static void texParameterIiv(SegmentAllocator session, int target, int pname, int[] params) {
+        texParameterIiv(target, pname, session.allocateArray(JAVA_INT, params));
     }
 
     public static void texParameterIuiv(int target, int pname, Addressable params) {
         try {
-            check(glTexParameterIuiv).invoke(target, pname, params);
+            check(glTexParameterIuiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texParameterIuiv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            texParameterIuiv(target, pname, session.allocateArray(JAVA_INT, params));
-        }
+    public static void texParameterIuiv(SegmentAllocator session, int target, int pname, int[] params) {
+        texParameterIuiv(target, pname, session.allocateArray(JAVA_INT, params));
     }
 
     public static void transformFeedbackVaryings(int program, int count, Addressable varyings, int bufferMode) {
         try {
-            check(glTransformFeedbackVaryings).invoke(program, count, varyings, bufferMode);
+            check(glTransformFeedbackVaryings).invokeExact(program, count, varyings, bufferMode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void transformFeedbackVaryings(int program, String[] varyings, int bufferMode) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(ADDRESS, varyings.length);
-            for (int i = 0; i < varyings.length; i++) {
-                seg.setAtIndex(ADDRESS, i, session.allocateUtf8String(varyings[i]));
-            }
-            transformFeedbackVaryings(program, varyings.length, seg, bufferMode);
+    public static void transformFeedbackVaryings(SegmentAllocator session, int program, String[] varyings, int bufferMode) {
+        var seg = session.allocateArray(ADDRESS, varyings.length);
+        for (int i = 0; i < varyings.length; i++) {
+            seg.setAtIndex(ADDRESS, i, session.allocateUtf8String(varyings[i]));
         }
+        transformFeedbackVaryings(program, varyings.length, seg, bufferMode);
     }
 
     public static void uniform1ui(int location, int v0) {
         try {
-            check(glUniform1ui).invoke(location, v0);
+            check(glUniform1ui).invokeExact(location, v0);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1uiv(int location, int count, Addressable value) {
         try {
-            check(glUniform1uiv).invoke(location, count, value);
+            check(glUniform1uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform1uiv(int location, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform1uiv(location, value.length, session.allocateArray(JAVA_INT, value));
-        }
+    public static void uniform1uiv(SegmentAllocator session, int location, int[] value) {
+        uniform1uiv(location, value.length, session.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform2ui(int location, int v0, int v1) {
         try {
-            check(glUniform2ui).invoke(location, v0, v1);
+            check(glUniform2ui).invokeExact(location, v0, v1);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform2uiv(int location, int count, Addressable value) {
         try {
-            check(glUniform2uiv).invoke(location, count, value);
+            check(glUniform2uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform2uiv(int location, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform2uiv(location, value.length, session.allocateArray(JAVA_INT, value));
-        }
+    public static void uniform2uiv(SegmentAllocator session, int location, int[] value) {
+        uniform2uiv(location, value.length, session.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform3ui(int location, int v0, int v1, int v2) {
         try {
-            check(glUniform3ui).invoke(location, v0, v1, v2);
+            check(glUniform3ui).invokeExact(location, v0, v1, v2);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform3uiv(int location, int count, Addressable value) {
         try {
-            check(glUniform3uiv).invoke(location, count, value);
+            check(glUniform3uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform3uiv(int location, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform3uiv(location, value.length, session.allocateArray(JAVA_INT, value));
-        }
+    public static void uniform3uiv(SegmentAllocator session, int location, int[] value) {
+        uniform3uiv(location, value.length, session.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
         try {
-            check(glUniform4ui).invoke(location, v0, v1, v2, v3);
+            check(glUniform4ui).invokeExact(location, v0, v1, v2, v3);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform4uiv(int location, int count, Addressable value) {
         try {
-            check(glUniform4uiv).invoke(location, count, value);
+            check(glUniform4uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform4uiv(int location, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform4uiv(location, value.length, session.allocateArray(JAVA_INT, value));
-        }
+    public static void uniform4uiv(SegmentAllocator session, int location, int[] value) {
+        uniform4uiv(location, value.length, session.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribI1i(int index, int x) {
         try {
-            check(glVertexAttribI1i).invoke(index, x);
+            check(glVertexAttribI1i).invokeExact(index, x);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI1iv(int index, Addressable v) {
         try {
-            check(glVertexAttribI1iv).invoke(index, v);
+            check(glVertexAttribI1iv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI1iv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI1iv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI1iv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI1iv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI1ui(int index, int x) {
         try {
-            check(glVertexAttribI1ui).invoke(index, x);
+            check(glVertexAttribI1ui).invokeExact(index, x);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI1uiv(int index, Addressable v) {
         try {
-            check(glVertexAttribI1uiv).invoke(index, v);
+            check(glVertexAttribI1uiv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI1uiv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI1uiv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI1uiv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI1uiv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI2i(int index, int x, int y) {
         try {
-            check(glVertexAttribI2i).invoke(index, x, y);
+            check(glVertexAttribI2i).invokeExact(index, x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI2iv(int index, Addressable v) {
         try {
-            check(glVertexAttribI2iv).invoke(index, v);
+            check(glVertexAttribI2iv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI2iv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI2iv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI2iv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI2iv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI2ui(int index, int x, int y) {
         try {
-            check(glVertexAttribI2ui).invoke(index, x, y);
+            check(glVertexAttribI2ui).invokeExact(index, x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI2uiv(int index, Addressable v) {
         try {
-            check(glVertexAttribI2uiv).invoke(index, v);
+            check(glVertexAttribI2uiv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI2uiv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI2uiv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI2uiv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI2uiv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI3i(int index, int x, int y, int z) {
         try {
-            check(glVertexAttribI3i).invoke(index, x, y, z);
+            check(glVertexAttribI3i).invokeExact(index, x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI3iv(int index, Addressable v) {
         try {
-            check(glVertexAttribI3iv).invoke(index, v);
+            check(glVertexAttribI3iv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI3iv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI3iv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI3iv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI3iv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI3ui(int index, int x, int y, int z) {
         try {
-            check(glVertexAttribI3ui).invoke(index, x, y, z);
+            check(glVertexAttribI3ui).invokeExact(index, x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI3uiv(int index, Addressable v) {
         try {
-            check(glVertexAttribI3uiv).invoke(index, v);
+            check(glVertexAttribI3uiv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI3uiv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI3uiv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI3uiv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI3uiv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI4bv(int index, Addressable v) {
         try {
-            check(glVertexAttribI4bv).invoke(index, v);
+            check(glVertexAttribI4bv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI4bv(int index, byte[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI4bv(index, session.allocateArray(JAVA_BYTE, v));
-        }
+    public static void vertexAttribI4bv(SegmentAllocator session, int index, byte[] v) {
+        vertexAttribI4bv(index, session.allocateArray(JAVA_BYTE, v));
     }
 
     public static void vertexAttribI4i(int index, int x, int y, int z, int w) {
         try {
-            check(glVertexAttribI4i).invoke(index, x, y, z, w);
+            check(glVertexAttribI4i).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI4iv(int index, Addressable v) {
         try {
-            check(glVertexAttribI4iv).invoke(index, v);
+            check(glVertexAttribI4iv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI4iv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI4iv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI4iv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI4iv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI4sv(int index, Addressable v) {
         try {
-            check(glVertexAttribI4sv).invoke(index, v);
+            check(glVertexAttribI4sv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI4sv(int index, short[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI4sv(index, session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void vertexAttribI4sv(SegmentAllocator session, int index, short[] v) {
+        vertexAttribI4sv(index, session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void vertexAttribI4ubv(int index, Addressable v) {
         try {
-            check(glVertexAttribI4ubv).invoke(index, v);
+            check(glVertexAttribI4ubv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI4ubv(int index, byte[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI4ubv(index, session.allocateArray(JAVA_BYTE, v));
-        }
+    public static void vertexAttribI4ubv(SegmentAllocator session, int index, byte[] v) {
+        vertexAttribI4ubv(index, session.allocateArray(JAVA_BYTE, v));
     }
 
     public static void vertexAttribI4ui(int index, int x, int y, int z, int w) {
         try {
-            check(glVertexAttribI4ui).invoke(index, x, y, z, w);
+            check(glVertexAttribI4ui).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI4uiv(int index, Addressable v) {
         try {
-            check(glVertexAttribI4uiv).invoke(index, v);
+            check(glVertexAttribI4uiv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI4uiv(int index, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI4uiv(index, session.allocateArray(JAVA_INT, v));
-        }
+    public static void vertexAttribI4uiv(SegmentAllocator session, int index, int[] v) {
+        vertexAttribI4uiv(index, session.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI4usv(int index, Addressable v) {
         try {
-            check(glVertexAttribI4usv).invoke(index, v);
+            check(glVertexAttribI4usv).invokeExact(index, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribI4usv(int index, short[] v) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribI4usv(index, session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void vertexAttribI4usv(SegmentAllocator session, int index, short[] v) {
+        vertexAttribI4usv(index, session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void vertexAttribIPointer(int index, int size, int type, int stride, Addressable pointer) {
         try {
-            check(glVertexAttribIPointer).invoke(index, size, type, stride, pointer);
+            check(glVertexAttribIPointer).invokeExact(index, size, type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribIPointer(int index, int size, int type, int stride, byte[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
-        }
+    public static void vertexAttribIPointer(SegmentAllocator session, int index, int size, int type, int stride, byte[] pointer) {
+        vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void vertexAttribIPointer(int index, int size, int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void vertexAttribIPointer(SegmentAllocator session, int index, int size, int type, int stride, short[] pointer) {
+        vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void vertexAttribIPointer(int index, int size, int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void vertexAttribIPointer(SegmentAllocator session, int index, int size, int type, int stride, int[] pointer) {
+        vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 }

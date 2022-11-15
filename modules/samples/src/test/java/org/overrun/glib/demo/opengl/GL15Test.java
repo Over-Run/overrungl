@@ -34,6 +34,7 @@ import org.overrun.glib.stb.STBImage;
 
 import java.io.IOException;
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 import java.util.Objects;
 
 import static org.overrun.glib.gl.GLConst.*;
@@ -46,10 +47,17 @@ import static org.overrun.glib.gl.GLConst.*;
  */
 public final class GL15Test {
     private MemoryAddress window;
+    private int vbo, tex;
 
     public void run() {
-        init();
+        try (var session = MemorySession.openShared()) {
+            init(session);
+            load(session);
+        }
         loop();
+
+        GL.deleteBuffer(vbo);
+        GL.deleteTexture(tex);
 
         Callbacks.free(window);
         GLFW.destroyWindow(window);
@@ -58,7 +66,7 @@ public final class GL15Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init() {
+    private void init(MemorySession session) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -66,7 +74,7 @@ public final class GL15Test {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(640, 480, "OpenGL 1.5", MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(session, 640, 480, "OpenGL 1.5", MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -76,7 +84,7 @@ public final class GL15Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -92,16 +100,16 @@ public final class GL15Test {
         GLFW.showWindow(window);
     }
 
-    private void loop() {
+    private void load(MemorySession session) {
         if (GLCaps.loadShared(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         GL.enable(GL_TEXTURE_2D);
 
-        int vbo = GL.genBuffer();
+        vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL.bufferData(GL_ARRAY_BUFFER, new float[]{
+        GL.bufferData(session, GL_ARRAY_BUFFER, new float[]{
             // Vertex          Color             Tex-coord
             0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
@@ -109,14 +117,14 @@ public final class GL15Test {
         }, GL_STATIC_DRAW);
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
 
-        int tex = GL.genTexture();
+        tex = GL.genTexture();
         GL.bindTexture(GL_TEXTURE_2D, tex);
         GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         try (var is = ClassLoader.getSystemResourceAsStream("image.png")) {
             byte[] bytes = Objects.requireNonNull(is).readNBytes(256);
             int[] px = new int[1], py = new int[1], pc = new int[1];
-            var data = STBImage.loadFromMemory(bytes, px, py, pc, STBImage.RGB);
+            var data = STBImage.loadFromMemory(session, bytes, px, py, pc, STBImage.RGB);
             GL.texImage2D(GL_TEXTURE_2D,
                 0,
                 GL_RGB,
@@ -131,7 +139,9 @@ public final class GL15Test {
             throw new RuntimeException(e);
         }
         GL.bindTexture(GL_TEXTURE_2D, 0);
+    }
 
+    private void loop() {
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -157,9 +167,6 @@ public final class GL15Test {
 
             GLFW.pollEvents();
         }
-
-        GL.deleteBuffer(vbo);
-        GL.deleteTexture(tex);
     }
 
     public static void main(String[] args) {

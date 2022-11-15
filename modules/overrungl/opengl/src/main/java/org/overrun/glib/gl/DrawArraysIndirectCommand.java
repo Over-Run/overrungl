@@ -56,7 +56,7 @@ public class DrawArraysIndirectCommand extends Pointer {
             ValueLayout.JAVA_INT.withName("primCount"),
             ValueLayout.JAVA_INT.withName("first"),
             ValueLayout.JAVA_INT.withName("baseInstance")
-        );
+        ).withName("DrawArraysIndirectCommand");
     private static final VarHandle
         pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
         pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),

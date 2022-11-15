@@ -24,10 +24,7 @@
 
 package org.overrun.glib.glfw;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 
 import static org.overrun.glib.glfw.Handles.*;
 
@@ -84,9 +81,9 @@ public class GLFWVulkan {
      */
     public static MemoryAddress nglfwGetInstanceProcAddress(Addressable instance, Addressable procName) {
         try {
-            return (MemoryAddress) glfwGetInstanceProcAddress.invoke(instance, procName);
+            return (MemoryAddress) glfwGetInstanceProcAddress.invokeExact(instance, procName);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -134,9 +131,9 @@ public class GLFWVulkan {
      */
     public static boolean glfwGetPhysicalDevicePresentationSupport(Addressable instance, Addressable device, int queueFamily) {
         try {
-            return (int) glfwGetPhysicalDevicePresentationSupport.invoke(instance, device, queueFamily) != GLFW.FALSE;
+            return (int) glfwGetPhysicalDevicePresentationSupport.invokeExact(instance, device, queueFamily) != GLFW.FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -197,9 +194,9 @@ public class GLFWVulkan {
      */
     public static int nglfwCreateWindowSurface(Addressable instance, Addressable window, Addressable allocator, Addressable surface) {
         try {
-            return (int) glfwCreateWindowSurface.invoke(instance, window, allocator, surface);
+            return (int) glfwCreateWindowSurface.invokeExact(instance, window, allocator, surface);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -216,12 +213,10 @@ public class GLFWVulkan {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nglfwCreateWindowSurface(Addressable, Addressable, Addressable, Addressable) nglfwCreateWindowSurface
      */
-    public static int glfwCreateWindowSurface(Addressable instance, Addressable window, Addressable allocator, long[] surface) {
-        try (var session = MemorySession.openShared()) {
-            var pSurface = session.allocate(ValueLayout.JAVA_LONG);
-            int result = nglfwCreateWindowSurface(instance, window, allocator, pSurface);
-            surface[0] = pSurface.get(ValueLayout.JAVA_LONG, 0);
-            return result;
-        }
+    public static int glfwCreateWindowSurface(SegmentAllocator session, Addressable instance, Addressable window, Addressable allocator, long[] surface) {
+        var pSurface = session.allocate(ValueLayout.JAVA_LONG);
+        int result = nglfwCreateWindowSurface(instance, window, allocator, pSurface);
+        surface[0] = pSurface.get(ValueLayout.JAVA_LONG, 0);
+        return result;
     }
 }

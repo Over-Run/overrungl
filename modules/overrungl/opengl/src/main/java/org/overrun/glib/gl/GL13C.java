@@ -65,73 +65,73 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
 
     public static void activeTexture(int texture) {
         try {
-            check(glActiveTexture).invoke(texture);
+            check(glActiveTexture).invokeExact(texture);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexImage1D(int target, int level, int internalFormat, int width, int border, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexImage1D).invoke(target, level, internalFormat, width, border, imageSize, data);
+            check(glCompressedTexImage1D).invokeExact(target, level, internalFormat, width, border, imageSize, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexImage2D).invoke(target, level, internalFormat, width, height, border, imageSize, data);
+            check(glCompressedTexImage2D).invokeExact(target, level, internalFormat, width, height, border, imageSize, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexImage3D).invoke(target, level, internalFormat, width, height, depth, border, imageSize, data);
+            check(glCompressedTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, imageSize, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexSubImage1D).invoke(target, level, xoffset, width, format, imageSize, data);
+            check(glCompressedTexSubImage1D).invokeExact(target, level, xoffset, width, format, imageSize, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexSubImage2D).invoke(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+            check(glCompressedTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, imageSize, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
         try {
-            check(glCompressedTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+            check(glCompressedTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getCompressedTexImage(int target, int level, Addressable img) {
         try {
-            check(glGetCompressedTexImage).invoke(target, level, img);
+            check(glGetCompressedTexImage).invokeExact(target, level, img);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void sampleCoverage(float value, boolean invert) {
         try {
-            check(glSampleCoverage).invoke(value, invert);
+            check(glSampleCoverage).invokeExact(value, invert);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

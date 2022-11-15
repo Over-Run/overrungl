@@ -49,9 +49,9 @@ public class GL3DFXTbuffer {
 
     public static void glTbufferMask3DFX(int mask) {
         try {
-            GLCaps.check(glTbufferMask3DFX).invoke(mask);
+            GLCaps.check(glTbufferMask3DFX).invokeExact(mask);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

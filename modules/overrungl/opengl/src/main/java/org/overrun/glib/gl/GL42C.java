@@ -26,14 +26,16 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 4.2 core profile functions.
@@ -73,165 +75,157 @@ public sealed class GL42C extends GL41C permits GL43C {
 
     public static void bindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
         try {
-            check(glBindImageTexture).invoke(unit, texture, level, layered, layer, access, format);
+            check(glBindImageTexture).invokeExact(unit, texture, level, layered, layer, access, format);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawArraysInstancedBaseInstance(int mode, int first, int count, int instanceCount, int baseInstance) {
         try {
-            check(glDrawArraysInstancedBaseInstance).invoke(mode, first, count, instanceCount, baseInstance);
+            check(glDrawArraysInstancedBaseInstance).invokeExact(mode, first, count, instanceCount, baseInstance);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawElementsInstancedBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseInstance) {
         try {
-            check(glDrawElementsInstancedBaseInstance).invoke(mode, count, type, indices, instanceCount, baseInstance);
+            check(glDrawElementsInstancedBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseInstance);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void drawElementsInstancedBaseInstance(int mode, int count, int type, byte[] indices, int instanceCount, int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsInstancedBaseInstance(mode, count, type, session.allocateArray(JAVA_BYTE, indices), instanceCount, baseInstance);
-        }
+    public static void drawElementsInstancedBaseInstance(SegmentAllocator session, int mode, int count, int type, byte[] indices, int instanceCount, int baseInstance) {
+        drawElementsInstancedBaseInstance(mode, count, type, session.allocateArray(JAVA_BYTE, indices), instanceCount, baseInstance);
     }
 
-    public static void drawElementsInstancedBaseInstance(int mode, int count, int type, short[] indices, int instanceCount, int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsInstancedBaseInstance(mode, count, type, session.allocateArray(JAVA_SHORT, indices), instanceCount, baseInstance);
-        }
+    public static void drawElementsInstancedBaseInstance(SegmentAllocator session, int mode, int count, int type, short[] indices, int instanceCount, int baseInstance) {
+        drawElementsInstancedBaseInstance(mode, count, type, session.allocateArray(JAVA_SHORT, indices), instanceCount, baseInstance);
     }
 
-    public static void drawElementsInstancedBaseInstance(int mode, int count, int type, int[] indices, int instanceCount, int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsInstancedBaseInstance(mode, count, type, session.allocateArray(JAVA_INT, indices), instanceCount, baseInstance);
-        }
+    public static void drawElementsInstancedBaseInstance(SegmentAllocator session, int mode, int count, int type, int[] indices, int instanceCount, int baseInstance) {
+        drawElementsInstancedBaseInstance(mode, count, type, session.allocateArray(JAVA_INT, indices), instanceCount, baseInstance);
     }
 
     public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex, int baseInstance) {
         try {
-            check(glDrawElementsInstancedBaseVertexBaseInstance).invoke(mode, count, type, indices, instanceCount, baseVertex, baseInstance);
+            check(glDrawElementsInstancedBaseVertexBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseVertex, baseInstance);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, byte[] indices, int instanceCount, int baseVertex, int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsInstancedBaseVertexBaseInstance(mode, count, type, session.allocateArray(JAVA_BYTE, indices), instanceCount, baseVertex, baseInstance);
-        }
+    public static void drawElementsInstancedBaseVertexBaseInstance(SegmentAllocator session, int mode, int count, int type, byte[] indices, int instanceCount, int baseVertex, int baseInstance) {
+        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, session.allocateArray(JAVA_BYTE, indices), instanceCount, baseVertex, baseInstance);
     }
 
-    public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, short[] indices, int instanceCount, int baseVertex, int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsInstancedBaseVertexBaseInstance(mode, count, type, session.allocateArray(JAVA_SHORT, indices), instanceCount, baseVertex, baseInstance);
-        }
+    public static void drawElementsInstancedBaseVertexBaseInstance(SegmentAllocator session, int mode, int count, int type, short[] indices, int instanceCount, int baseVertex, int baseInstance) {
+        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, session.allocateArray(JAVA_SHORT, indices), instanceCount, baseVertex, baseInstance);
     }
 
-    public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, int[] indices, int instanceCount, int baseVertex, int baseInstance) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsInstancedBaseVertexBaseInstance(mode, count, type, session.allocateArray(JAVA_INT, indices), instanceCount, baseVertex, baseInstance);
-        }
+    public static void drawElementsInstancedBaseVertexBaseInstance(SegmentAllocator session, int mode, int count, int type, int[] indices, int instanceCount, int baseVertex, int baseInstance) {
+        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, session.allocateArray(JAVA_INT, indices), instanceCount, baseVertex, baseInstance);
     }
 
     public static void drawTransformFeedbackInstanced(int mode, int id, int instanceCount) {
         try {
-            check(glDrawTransformFeedbackInstanced).invoke(mode, id, instanceCount);
+            check(glDrawTransformFeedbackInstanced).invokeExact(mode, id, instanceCount);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawTransformFeedbackStreamInstanced(int mode, int id, int stream, int instanceCount) {
         try {
-            check(glDrawTransformFeedbackStreamInstanced).invoke(mode, id, stream, instanceCount);
+            check(glDrawTransformFeedbackStreamInstanced).invokeExact(mode, id, stream, instanceCount);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, Addressable params) {
         try {
-            check(glGetActiveAtomicCounterBufferiv).invoke(program, bufferIndex, pname, params);
+            check(glGetActiveAtomicCounterBufferiv).invokeExact(program, bufferIndex, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getActiveAtomicCounterBufferiv(SegmentAllocator session, int program, int bufferIndex, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getActiveAtomicCounterBufferi(int program, int bufferIndex, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, 1);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static void getInternalformativ(int target, int internalFormat, int pname, int count, Addressable params) {
         try {
-            check(glGetInternalformativ).invoke(target, internalFormat, pname, count, params);
+            check(glGetInternalformativ).invokeExact(target, internalFormat, pname, count, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getInternalformativ(int target, int internalFormat, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getInternalformativ(target, internalFormat, pname, params.length, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getInternalformativ(SegmentAllocator session, int target, int internalFormat, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getInternalformativ(target, internalFormat, pname, params.length, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getInternalformati(int target, int internalFormat, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, 1);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.calloc(JAVA_INT);
             getInternalformativ(target, internalFormat, pname, 1, seg);
             return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static void memoryBarrier(int barriers) {
         try {
-            check(glMemoryBarrier).invoke(barriers);
+            check(glMemoryBarrier).invokeExact(barriers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage1D(int target, int levels, int internalFormat, int width) {
         try {
-            check(glTexStorage1D).invoke(target, levels, internalFormat, width);
+            check(glTexStorage1D).invokeExact(target, levels, internalFormat, width);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage2D(int target, int levels, int internalFormat, int width, int height) {
         try {
-            check(glTexStorage2D).invoke(target, levels, internalFormat, width, height);
+            check(glTexStorage2D).invokeExact(target, levels, internalFormat, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage3D(int target, int levels, int internalFormat, int width, int height, int depth) {
         try {
-            check(glTexStorage3D).invoke(target, levels, internalFormat, width, height, depth);
+            check(glTexStorage3D).invokeExact(target, levels, internalFormat, width, height, depth);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

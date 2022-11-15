@@ -31,7 +31,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
@@ -52,15 +52,13 @@ public class GLAMDSamplePositions {
 
     public static void glSetMultisamplefvAMD(int pname, int index, Addressable val) {
         try {
-            GLCaps.check(glSetMultisamplefvAMD).invoke(pname, index, val);
+            GLCaps.check(glSetMultisamplefvAMD).invokeExact(pname, index, val);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glSetMultisamplefvAMD(int pname, int index, float[] val) {
-        try (var session = MemorySession.openShared()) {
-            glSetMultisamplefvAMD(pname, index, session.allocateArray(ValueLayout.JAVA_FLOAT, val));
-        }
+    public static void glSetMultisamplefvAMD(SegmentAllocator session, int pname, int index, float[] val) {
+        glSetMultisamplefvAMD(pname, index, session.allocateArray(ValueLayout.JAVA_FLOAT, val));
     }
 }

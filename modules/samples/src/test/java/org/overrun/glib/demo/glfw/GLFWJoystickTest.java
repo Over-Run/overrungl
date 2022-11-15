@@ -61,7 +61,9 @@ public final class GLFWJoystickTest {
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         GLFW.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        window = GLFW.createWindow(200, 100, "Holder", MemoryAddress.NULL, MemoryAddress.NULL);
+        try (var session = MemorySession.openShared()) {
+            window = GLFW.createWindow(session, 200, 100, "Holder", MemoryAddress.NULL, MemoryAddress.NULL);
+        }
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {

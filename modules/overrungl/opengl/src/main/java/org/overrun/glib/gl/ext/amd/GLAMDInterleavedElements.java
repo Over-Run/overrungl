@@ -49,9 +49,9 @@ public class GLAMDInterleavedElements {
 
     public static void glVertexAttribParameteriAMD(int index, int pname, int param) {
         try {
-            GLCaps.check(glVertexAttribParameteriAMD).invoke(index, pname, param);
+            GLCaps.check(glVertexAttribParameteriAMD).invokeExact(index, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

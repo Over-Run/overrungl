@@ -32,6 +32,7 @@ import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.util.BufferBuilder;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -45,10 +46,18 @@ import static org.overrun.glib.gl.GLConstC.*;
  */
 public final class BufferBuilderTest {
     private MemoryAddress window;
+    private int program, vao, vbo;
 
     public void run() {
-        init();
-        loop();
+        try (var session = MemorySession.openShared()) {
+            init(session);
+            load(session);
+            loop();
+        }
+
+        GL.deleteProgram(program);
+        GL.deleteVertexArray(vao);
+        GL.deleteBuffer(vbo);
 
         Callbacks.free(window);
         GLFW.destroyWindow(window);
@@ -57,7 +66,7 @@ public final class BufferBuilderTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init() {
+    private void init(MemorySession session) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -65,7 +74,7 @@ public final class BufferBuilderTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(300, 300, "BufferBuilder Test", MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(session, 300, 300, "BufferBuilder Test", MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -75,7 +84,7 @@ public final class BufferBuilderTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -91,16 +100,16 @@ public final class BufferBuilderTest {
         GLFW.showWindow(window);
     }
 
-    private void loop() {
+    private void load(MemorySession session) {
         if (GLCaps.loadShared(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
-        int program = GL.createProgram();
+        program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
-        GL.shaderSource(vsh, """
+        GL.shaderSource(session, vsh, """
             #version 130
 
             in vec3 position;
@@ -113,7 +122,7 @@ public final class BufferBuilderTest {
                 vertexColor = color;
             }
             """);
-        GL.shaderSource(fsh, """
+        GL.shaderSource(session, fsh, """
             #version 130
 
             in vec3 vertexColor;
@@ -128,17 +137,17 @@ public final class BufferBuilderTest {
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
         GL.attachShader(program, fsh);
-        GL.bindAttribLocation(program, 0, "position");
-        GL.bindAttribLocation(program, 1, "color");
+        GL.bindAttribLocation(session, program, 0, "position");
+        GL.bindAttribLocation(session, program, 1, "color");
         GL.linkProgram(program);
         GL.detachShader(program, vsh);
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
 
-        int vao = GL.genVertexArray();
+        vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
-        int vbo = GL.genBuffer();
+        vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         int stride;
         try (var builder = new BufferBuilder(4 * 3 * 3 + 3 * 3)) {
@@ -166,7 +175,9 @@ public final class BufferBuilderTest {
         GL.vertexAttribPointer(1, 3, GL_UNSIGNED_BYTE, true, stride, MemoryAddress.ofLong(12));
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
+    }
 
+    private void loop() {
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -181,10 +192,6 @@ public final class BufferBuilderTest {
 
             GLFW.pollEvents();
         }
-
-        GL.deleteProgram(program);
-        GL.deleteVertexArray(vao);
-        GL.deleteBuffer(vbo);
     }
 
     public static void main(String[] args) {

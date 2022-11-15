@@ -58,7 +58,7 @@ public class GLFWGammaRamp extends Pointer {
         ADDRESS.withName("green"),
         ADDRESS.withName("blue"),
         JAVA_INT.withName("size")
-    );
+    ).withName("GLFWgammaramp");
     private static final VarHandle
         ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
         ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),

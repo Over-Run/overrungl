@@ -48,10 +48,22 @@ public class GL33Test {
     private static final int INSTANCE_COUNT = 10 * 10;
     private static final String WND_TITLE = "OpenGL 3.3";
     private MemoryAddress window;
+    private int program;
+    private int rotationMat;
+    private int vao, vbo, ebo, mbo;
 
     public void run() {
-        init();
+        try (var session = MemorySession.openShared()) {
+            init(session);
+            load(session);
+        }
         loop();
+
+        GL.deleteProgram(program);
+        GL.deleteVertexArray(vao);
+        GL.deleteBuffer(vbo);
+        GL.deleteBuffer(ebo);
+        GL.deleteBuffer(mbo);
 
         Callbacks.free(window);
         GLFW.destroyWindow(window);
@@ -60,7 +72,7 @@ public class GL33Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init() {
+    private void init(MemorySession session) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -71,7 +83,7 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-        window = GLFW.createWindow(640, 480, WND_TITLE, MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(session, 640, 480, WND_TITLE, MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -81,7 +93,7 @@ public class GL33Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -97,15 +109,15 @@ public class GL33Test {
         GLFW.showWindow(window);
     }
 
-    private void loop() {
+    private void load(MemorySession session) {
         if (GLCaps.loadShared(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        int program = GL.createProgram();
+        program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
-        GL.shaderSource(vsh, """
+        GL.shaderSource(session, vsh, """
             #version 330
 
             layout (location = 0) in vec3 position;
@@ -121,7 +133,7 @@ public class GL33Test {
                 vertexColor = color;
             }
             """);
-        GL.shaderSource(fsh, """
+        GL.shaderSource(session, fsh, """
             #version 330
 
             in vec3 vertexColor;
@@ -141,66 +153,63 @@ public class GL33Test {
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
+        rotationMat = GL.getUniformLocation(session, program, "rotationMat");
 
-        int rotationMat = GL.getUniformLocation(program, "rotationMat");
-
-        int vao = GL.genVertexArray();
+        vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
-        int vbo = GL.genBuffer();
+        vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL.bufferData(GL_ARRAY_BUFFER, new float[]{
+        GL.bufferData(session, GL_ARRAY_BUFFER, new float[]{
             // Vertex          Color
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
             0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
         }, GL_STATIC_DRAW);
-        int ebo = GL.genBuffer();
+        ebo = GL.genBuffer();
         GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        GL.bufferData(GL_ELEMENT_ARRAY_BUFFER, new byte[]{
+        GL.bufferData(session, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 2, 3, 0
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
         GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
         GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12));
-        int mbo = GL.genBuffer();
+        mbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
-        try (var session = MemorySession.openShared()) {
-            var iseq = MemoryLayout.sequenceLayout(
-                INSTANCE_COUNT,
-                MemoryLayout.sequenceLayout(4 * 4, JAVA_FLOAT)
-            );
-            //region Var handles
-            var handle00 = iseq.varHandle(sequenceElement(), sequenceElement(0));
-            var handle11 = iseq.varHandle(sequenceElement(), sequenceElement(5));
-            var handle22 = iseq.varHandle(sequenceElement(), sequenceElement(10));
-            var handle30 = iseq.varHandle(sequenceElement(), sequenceElement(12));
-            var handle31 = iseq.varHandle(sequenceElement(), sequenceElement(13));
-            var handle33 = iseq.varHandle(sequenceElement(), sequenceElement(15));
-            //endregion
-            var matrices = session.allocate(iseq);
-            float mul = (float) Math.sqrt(INSTANCE_COUNT);
-            float scaling = 1f / mul;
-            float[] translations = new float[2 * INSTANCE_COUNT];
-            for (int i = 0; i < 2 * INSTANCE_COUNT; ) {
-                for (int y = (int) -mul; y < mul; y += 2) {
-                    for (int x = (int) -mul; x < mul; x += 2) {
-                        translations[i++] = (x + 1) * scaling;
-                        translations[i++] = (y + 1) * scaling;
-                    }
+        var iseq = MemoryLayout.sequenceLayout(
+            INSTANCE_COUNT,
+            MemoryLayout.sequenceLayout(4 * 4, JAVA_FLOAT)
+        );
+        //region Var handles
+        var handle00 = iseq.varHandle(sequenceElement(), sequenceElement(0));
+        var handle11 = iseq.varHandle(sequenceElement(), sequenceElement(5));
+        var handle22 = iseq.varHandle(sequenceElement(), sequenceElement(10));
+        var handle30 = iseq.varHandle(sequenceElement(), sequenceElement(12));
+        var handle31 = iseq.varHandle(sequenceElement(), sequenceElement(13));
+        var handle33 = iseq.varHandle(sequenceElement(), sequenceElement(15));
+        //endregion
+        var matrices = session.allocate(iseq);
+        float mul = (float) Math.sqrt(INSTANCE_COUNT);
+        float scaling = 1f / mul;
+        float[] translations = new float[2 * INSTANCE_COUNT];
+        for (int i = 0; i < 2 * INSTANCE_COUNT; ) {
+            for (int y = (int) -mul; y < mul; y += 2) {
+                for (int x = (int) -mul; x < mul; x += 2) {
+                    translations[i++] = (x + 1) * scaling;
+                    translations[i++] = (y + 1) * scaling;
                 }
             }
-            for (int i = 0; i < INSTANCE_COUNT; i++) {
-                handle00.set(matrices, i, scaling);
-                handle11.set(matrices, i, scaling);
-                handle22.set(matrices, i, 1.0f);
-                handle30.set(matrices, i, translations[i * 2]);
-                handle31.set(matrices, i, translations[i * 2 + 1]);
-                handle33.set(matrices, i, 1.0f);
-            }
-            GL.bufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
         }
+        for (int i = 0; i < INSTANCE_COUNT; i++) {
+            handle00.set(matrices, i, scaling);
+            handle11.set(matrices, i, scaling);
+            handle22.set(matrices, i, 1.0f);
+            handle30.set(matrices, i, translations[i * 2]);
+            handle31.set(matrices, i, translations[i * 2 + 1]);
+            handle33.set(matrices, i, 1.0f);
+        }
+        GL.bufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(2);
         GL.enableVertexAttribArray(3);
         GL.enableVertexAttribArray(4);
@@ -215,7 +224,9 @@ public class GL33Test {
         GL.vertexAttribDivisor(5, 1);
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
+    }
 
+    private void loop() {
         var pRotationMat = MemorySession.openImplicit().allocateArray(JAVA_FLOAT,
             1f, 0f, 0f, 0f,
             0f, 1f, 0f, 0f,
@@ -266,14 +277,10 @@ public class GL33Test {
             lastTime = time;
             time = GLFW.getTime();
             dt = time - lastTime;
-            GLFW.setWindowTitle(window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
+            try (var session = MemorySession.openShared()) {
+                GLFW.setWindowTitle(session, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
+            }
         }
-
-        GL.deleteProgram(program);
-        GL.deleteVertexArray(vao);
-        GL.deleteBuffer(vbo);
-        GL.deleteBuffer(ebo);
-        GL.deleteBuffer(mbo);
     }
 
     public static void main(String[] args) {

@@ -30,12 +30,13 @@ import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 1.0 forward compatible functions.
@@ -121,105 +122,105 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void blendFunc(int sfactor, int dfactor) {
         try {
-            check(glBlendFunc).invoke(sfactor, dfactor);
+            check(glBlendFunc).invokeExact(sfactor, dfactor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clear(int mask) {
         try {
-            check(glClear).invoke(mask);
+            check(glClear).invokeExact(mask);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearColor(float red, float green, float blue, float alpha) {
         try {
-            check(glClearColor).invoke(red, green, blue, alpha);
+            check(glClearColor).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearDepth(double depth) {
         try {
-            check(glClearDepth).invoke(depth);
+            check(glClearDepth).invokeExact(depth);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearStencil(int s) {
         try {
-            check(glClearStencil).invoke(s);
+            check(glClearStencil).invokeExact(s);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void colorMask(boolean red, boolean green, boolean blue, boolean alpha) {
         try {
-            check(glColorMask).invoke(red, green, blue, alpha);
+            check(glColorMask).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void cullFace(int mode) {
         try {
-            check(glCullFace).invoke(mode);
+            check(glCullFace).invokeExact(mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthFunc(int func) {
         try {
-            check(glDepthFunc).invoke(func);
+            check(glDepthFunc).invokeExact(func);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthMask(boolean flag) {
         try {
-            check(glDepthMask).invoke(flag);
+            check(glDepthMask).invokeExact(flag);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthRange(double n, double f) {
         try {
-            check(glDepthRange).invoke(n, f);
+            check(glDepthRange).invokeExact(n, f);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void disable(int cap) {
         try {
-            check(glDisable).invoke(cap);
+            check(glDisable).invokeExact(cap);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawBuffer(int buf) {
         try {
-            check(glDrawBuffer).invoke(buf);
+            check(glDrawBuffer).invokeExact(buf);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void enable(int cap) {
         try {
-            check(glEnable).invoke(cap);
+            check(glEnable).invokeExact(cap);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -233,26 +234,24 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void frontFace(int mode) {
         try {
-            check(glFrontFace).invoke(mode);
+            check(glFrontFace).invokeExact(mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getBooleanv(int pname, Addressable data) {
         try {
-            check(glGetBooleanv).invoke(pname, data);
+            check(glGetBooleanv).invokeExact(pname, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getBooleanv(int pname, boolean[] data) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocateArray(JAVA_BOOLEAN, data.length);
-            getBooleanv(pname, pData);
-            RuntimeHelper.toArray(pData, data);
-        }
+    public static void getBooleanv(SegmentAllocator session, int pname, boolean[] data) {
+        var pData = session.allocateArray(JAVA_BOOLEAN, data.length);
+        getBooleanv(pname, pData);
+        RuntimeHelper.toArray(pData, data);
     }
 
     public static boolean getBoolean(int pname) {
@@ -269,18 +268,16 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void getDoublev(int pname, Addressable data) {
         try {
-            check(glGetDoublev).invoke(pname, data);
+            check(glGetDoublev).invokeExact(pname, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getDoublev(int pname, double[] data) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocateArray(JAVA_DOUBLE, data.length);
-            getDoublev(pname, pData);
-            RuntimeHelper.toArray(pData, data);
-        }
+    public static void getDoublev(SegmentAllocator session, int pname, double[] data) {
+        var pData = session.allocateArray(JAVA_DOUBLE, data.length);
+        getDoublev(pname, pData);
+        RuntimeHelper.toArray(pData, data);
     }
 
     public static double getDouble(int pname) {
@@ -297,26 +294,24 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static int getError() {
         try {
-            return (int) check(glGetError).invoke();
+            return (int) check(glGetError).invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getFloatv(int pname, Addressable data) {
         try {
-            check(glGetFloatv).invoke(pname, data);
+            check(glGetFloatv).invokeExact(pname, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getFloatv(int pname, float[] data) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocateArray(JAVA_FLOAT, data.length);
-            getFloatv(pname, pData);
-            RuntimeHelper.toArray(pData, data);
-        }
+    public static void getFloatv(SegmentAllocator session, int pname, float[] data) {
+        var pData = session.allocateArray(JAVA_FLOAT, data.length);
+        getFloatv(pname, pData);
+        RuntimeHelper.toArray(pData, data);
     }
 
     public static float getFloat(int pname) {
@@ -333,18 +328,16 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void getIntegerv(int pname, Addressable data) {
         try {
-            check(glGetIntegerv).invoke(pname, data);
+            check(glGetIntegerv).invokeExact(pname, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getIntegerv(int pname, int[] data) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocateArray(JAVA_INT, data.length);
-            getIntegerv(pname, pData);
-            RuntimeHelper.toArray(pData, data);
-        }
+    public static void getIntegerv(SegmentAllocator session, int pname, int[] data) {
+        var pData = session.allocateArray(JAVA_INT, data.length);
+        getIntegerv(pname, pData);
+        RuntimeHelper.toArray(pData, data);
     }
 
     public static int getInteger(int pname) {
@@ -361,9 +354,9 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static MemoryAddress ngetString(int name) {
         try {
-            return (MemoryAddress) check(glGetString).invoke(name);
+            return (MemoryAddress) check(glGetString).invokeExact(name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -375,365 +368,345 @@ public sealed class GL10C permits GL10, GL11C {
 
     public static void getTexImage(int target, int level, int format, int type, Addressable pixels) {
         try {
-            check(glGetTexImage).invoke(target, level, format, type, pixels);
+            check(glGetTexImage).invokeExact(target, level, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getTexLevelParameterfv(int target, int level, int pname, Addressable params) {
         try {
-            check(glGetTexLevelParameterfv).invoke(target, level, pname, params);
+            check(glGetTexLevelParameterfv).invokeExact(target, level, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTexLevelParameterfv(int target, int level, int pname, float[] params) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocateArray(JAVA_FLOAT, params.length);
-            getTexLevelParameterfv(target, level, pname, pParams);
-            RuntimeHelper.toArray(pParams, params);
-        }
+    public static void getTexLevelParameterfv(SegmentAllocator session, int target, int level, int pname, float[] params) {
+        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+        getTexLevelParameterfv(target, level, pname, pParams);
+        RuntimeHelper.toArray(pParams, params);
     }
 
     public static float getTexLevelParameterf(int target, int level, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getTexLevelParameterfv(target, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static void getTexLevelParameteriv(int target, int level, int pname, Addressable params) {
         try {
-            check(glGetTexLevelParameteriv).invoke(target, level, pname, params);
+            check(glGetTexLevelParameteriv).invokeExact(target, level, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTexLevelParameteriv(int target, int level, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocateArray(JAVA_INT, params.length);
-            getTexLevelParameteriv(target, level, pname, pParams);
-            RuntimeHelper.toArray(pParams, params);
-        }
+    public static void getTexLevelParameteriv(SegmentAllocator session, int target, int level, int pname, int[] params) {
+        var pParams = session.allocateArray(JAVA_INT, params.length);
+        getTexLevelParameteriv(target, level, pname, pParams);
+        RuntimeHelper.toArray(pParams, params);
     }
 
     public static int getTexLevelParameteri(int target, int level, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getTexLevelParameteriv(target, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static void getTexParameterfv(int target, int pname, Addressable params) {
         try {
-            check(glGetTexParameterfv).invoke(target, pname, params);
+            check(glGetTexParameterfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTexParameterfv(int target, int pname, float[] params) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocateArray(JAVA_FLOAT, params.length);
-            getTexParameterfv(target, pname, pParams);
-            RuntimeHelper.toArray(pParams, params);
-        }
+    public static void getTexParameterfv(SegmentAllocator session, int target, int pname, float[] params) {
+        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+        getTexParameterfv(target, pname, pParams);
+        RuntimeHelper.toArray(pParams, params);
     }
 
     public static float getTexParameterf(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_FLOAT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_FLOAT);
             getTexParameterfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static void getTexParameteriv(int target, int pname, Addressable params) {
         try {
-            check(glGetTexParameteriv).invoke(target, pname, params);
+            check(glGetTexParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getTexParameteriv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocateArray(JAVA_INT, params.length);
-            getTexParameteriv(target, pname, pParams);
-            RuntimeHelper.toArray(pParams, params);
-        }
+    public static void getTexParameteriv(SegmentAllocator session, int target, int pname, int[] params) {
+        var pParams = session.allocateArray(JAVA_INT, params.length);
+        getTexParameteriv(target, pname, pParams);
+        RuntimeHelper.toArray(pParams, params);
     }
 
     public static int getTexParameteri(int target, int pname) {
-        try (var session = MemorySession.openShared()) {
-            var pParams = session.allocate(JAVA_INT);
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pParams = stack.calloc(JAVA_INT);
             getTexParameteriv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
     public static void hint(int target, int mode) {
         try {
-            check(glHint).invoke(target, mode);
+            check(glHint).invokeExact(target, mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isEnabled(int cap) {
         try {
-            return (boolean) check(glIsEnabled).invoke(cap);
+            return (boolean) check(glIsEnabled).invokeExact(cap);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lineWidth(float width) {
         try {
-            check(glLineWidth).invoke(width);
+            check(glLineWidth).invokeExact(width);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void logicOp(int opcode) {
         try {
-            check(glLogicOp).invoke(opcode);
+            check(glLogicOp).invokeExact(opcode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelStoref(int pname, float param) {
         try {
-            check(glPixelStoref).invoke(pname, param);
+            check(glPixelStoref).invokeExact(pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelStorei(int pname, int param) {
         try {
-            check(glPixelStorei).invoke(pname, param);
+            check(glPixelStorei).invokeExact(pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pointSize(float size) {
         try {
-            check(glPointSize).invoke(size);
+            check(glPointSize).invokeExact(size);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonMode(int face, int mode) {
         try {
-            check(glPolygonMode).invoke(face, mode);
+            check(glPolygonMode).invokeExact(face, mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void readBuffer(int src) {
         try {
-            check(glReadBuffer).invoke(src);
+            check(glReadBuffer).invokeExact(src);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void readPixels(int x, int y, int width, int height, int format, int type, Addressable pixels) {
         try {
-            check(glReadPixels).invoke(x, y, width, height, format, type, pixels);
+            check(glReadPixels).invokeExact(x, y, width, height, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void readPixels(int x, int y, int width, int height, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, pixels.length);
-            readPixels(x, y, width, height, format, type, seg);
-            RuntimeHelper.toArray(seg, pixels);
-        }
+    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, byte[] pixels) {
+        var seg = session.allocateArray(JAVA_BYTE, pixels.length);
+        readPixels(x, y, width, height, format, type, seg);
+        RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void readPixels(int x, int y, int width, int height, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_SHORT, pixels.length);
-            readPixels(x, y, width, height, format, type, seg);
-            RuntimeHelper.toArray(seg, pixels);
-        }
+    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, short[] pixels) {
+        var seg = session.allocateArray(JAVA_SHORT, pixels.length);
+        readPixels(x, y, width, height, format, type, seg);
+        RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void readPixels(int x, int y, int width, int height, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, pixels.length);
-            readPixels(x, y, width, height, format, type, seg);
-            RuntimeHelper.toArray(seg, pixels);
-        }
+    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, int[] pixels) {
+        var seg = session.allocateArray(JAVA_INT, pixels.length);
+        readPixels(x, y, width, height, format, type, seg);
+        RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void readPixels(int x, int y, int width, int height, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_FLOAT, pixels.length);
-            readPixels(x, y, width, height, format, type, seg);
-            RuntimeHelper.toArray(seg, pixels);
-        }
+    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, float[] pixels) {
+        var seg = session.allocateArray(JAVA_FLOAT, pixels.length);
+        readPixels(x, y, width, height, format, type, seg);
+        RuntimeHelper.toArray(seg, pixels);
     }
 
     public static void scissor(int x, int y, int width, int height) {
         try {
-            check(glScissor).invoke(x, y, width, height);
+            check(glScissor).invokeExact(x, y, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilFunc(int func, int ref, int mask) {
         try {
-            check(glStencilFunc).invoke(func, ref, mask);
+            check(glStencilFunc).invokeExact(func, ref, mask);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilMask(int mask) {
         try {
-            check(glStencilMask).invoke(mask);
+            check(glStencilMask).invokeExact(mask);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilOp(int fail, int zfail, int zpass) {
         try {
-            check(glStencilOp).invoke(fail, zfail, zpass);
+            check(glStencilOp).invokeExact(fail, zfail, zpass);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, Addressable pixels) {
         try {
-            check(glTexImage1D).invoke(target, level, internalFormat, width, border, format, type, pixels);
+            check(glTexImage1D).invokeExact(target, level, internalFormat, width, border, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
-        }
+    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, byte[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
-        }
+    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, short[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_INT, pixels));
-        }
+    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, int[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
-        }
+    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, float[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, Addressable pixels) {
         try {
-            check(glTexImage2D).invoke(target, level, internalFormat, width, height, border, format, type, pixels);
+            check(glTexImage2D).invokeExact(target, level, internalFormat, width, height, border, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
-        }
+    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, byte[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
-        }
+    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, short[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_INT, pixels));
-        }
+    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, int[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
-        }
+    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, float[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texParameterf(int target, int pname, float param) {
         try {
-            check(glTexParameterf).invoke(target, pname, param);
+            check(glTexParameterf).invokeExact(target, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texParameterfv(int target, int pname, Addressable params) {
         try {
-            check(glTexParameterfv).invoke(target, pname, params);
+            check(glTexParameterfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void texParameterfv(int target, int pname, float[] params) {
-        try (var session = MemorySession.openShared()) {
-            texParameterfv(target, pname, session.allocateArray(JAVA_FLOAT, params));
-        }
+    public static void texParameterfv(SegmentAllocator session, int target, int pname, float[] params) {
+        texParameterfv(target, pname, session.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void texParameteri(int target, int pname, int param) {
         try {
-            check(glTexParameteri).invoke(target, pname, param);
+            check(glTexParameteri).invokeExact(target, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texParameteriv(int target, int pname, Addressable params) {
         try {
-            check(glTexParameteriv).invoke(target, pname, params);
+            check(glTexParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texParameteriv(int target, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            texParameteriv(target, pname, session.allocateArray(JAVA_INT, params));
-        }
+    public static void texParameteriv(SegmentAllocator session, int target, int pname, int[] params) {
+        texParameteriv(target, pname, session.allocateArray(JAVA_INT, params));
     }
 
     public static void viewport(int x, int y, int width, int height) {
         try {
-            check(glViewport).invoke(x, y, width, height);
+            check(glViewport).invokeExact(x, y, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

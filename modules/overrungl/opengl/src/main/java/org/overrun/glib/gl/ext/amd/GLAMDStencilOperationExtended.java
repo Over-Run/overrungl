@@ -49,9 +49,9 @@ public class GLAMDStencilOperationExtended {
 
     public static void glStencilOpValueAMD(int face, int value) {
         try {
-            GLCaps.check(glStencilOpValueAMD).invoke(face, value);
+            GLCaps.check(glStencilOpValueAMD).invokeExact(face, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

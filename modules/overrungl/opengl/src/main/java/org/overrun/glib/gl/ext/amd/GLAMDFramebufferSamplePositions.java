@@ -30,7 +30,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -60,61 +60,53 @@ public class GLAMDFramebufferSamplePositions {
 
     public static void glFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, Addressable values) {
         try {
-            check(glFramebufferSamplePositionsfvAMD).invoke(target, numSamples, pixelIndex, values);
+            check(glFramebufferSamplePositionsfvAMD).invokeExact(target, numSamples, pixelIndex, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, float[] values) {
-        try (var session = MemorySession.openShared()) {
-            glFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, session.allocateArray(JAVA_FLOAT, values));
-        }
+    public static void glFramebufferSamplePositionsfvAMD(SegmentAllocator session, int target, int numSamples, int pixelIndex, float[] values) {
+        glFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, session.allocateArray(JAVA_FLOAT, values));
     }
 
     public static void glGetFramebufferParameterfvAMD(int target, int pname, int numSamples, int pixelIndex, int size, Addressable values) {
         try {
-            check(glGetFramebufferParameterfvAMD).invoke(target, pname, numSamples, pixelIndex, size, values);
+            check(glGetFramebufferParameterfvAMD).invokeExact(target, pname, numSamples, pixelIndex, size, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGetFramebufferParameterfvAMD(int target, int pname, int numSamples, int pixelIndex, int size, float[] values) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_FLOAT, values.length);
-            glGetFramebufferParameterfvAMD(target, pname, numSamples, pixelIndex, size, seg);
-            RuntimeHelper.toArray(seg, values);
-        }
+    public static void glGetFramebufferParameterfvAMD(SegmentAllocator session, int target, int pname, int numSamples, int pixelIndex, int size, float[] values) {
+        var seg = session.allocateArray(JAVA_FLOAT, values.length);
+        glGetFramebufferParameterfvAMD(target, pname, numSamples, pixelIndex, size, seg);
+        RuntimeHelper.toArray(seg, values);
     }
 
     public static void glGetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numSamples, int pixelIndex, int size, Addressable values) {
         try {
-            check(glGetNamedFramebufferParameterfvAMD).invoke(framebuffer, pname, numSamples, pixelIndex, size, values);
+            check(glGetNamedFramebufferParameterfvAMD).invokeExact(framebuffer, pname, numSamples, pixelIndex, size, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numSamples, int pixelIndex, int size, float[] values) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_FLOAT, values.length);
-            glGetNamedFramebufferParameterfvAMD(framebuffer, pname, numSamples, pixelIndex, size, seg);
-            RuntimeHelper.toArray(seg, values);
-        }
+    public static void glGetNamedFramebufferParameterfvAMD(SegmentAllocator session, int framebuffer, int pname, int numSamples, int pixelIndex, int size, float[] values) {
+        var seg = session.allocateArray(JAVA_FLOAT, values.length);
+        glGetNamedFramebufferParameterfvAMD(framebuffer, pname, numSamples, pixelIndex, size, seg);
+        RuntimeHelper.toArray(seg, values);
     }
 
     public static void glNamedFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, Addressable values) {
         try {
-            check(glNamedFramebufferSamplePositionsfvAMD).invoke(target, numSamples, pixelIndex, values);
+            check(glNamedFramebufferSamplePositionsfvAMD).invokeExact(target, numSamples, pixelIndex, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glNamedFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, float[] values) {
-        try (var session = MemorySession.openShared()) {
-            glNamedFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, session.allocateArray(JAVA_FLOAT, values));
-        }
+    public static void glNamedFramebufferSamplePositionsfvAMD(SegmentAllocator session, int target, int numSamples, int pixelIndex, float[] values) {
+        glNamedFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, session.allocateArray(JAVA_FLOAT, values));
     }
 }

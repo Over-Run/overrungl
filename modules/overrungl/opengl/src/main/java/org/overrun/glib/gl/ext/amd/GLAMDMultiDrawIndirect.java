@@ -52,17 +52,17 @@ public class GLAMDMultiDrawIndirect {
 
     public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
         try {
-            check(glMultiDrawArraysIndirectAMD).invoke(mode, indirect, primCount, stride);
+            check(glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
         try {
-            check(glMultiDrawElementsIndirectAMD).invoke(mode, type, indirect, primCount, stride);
+            check(glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

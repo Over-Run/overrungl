@@ -32,6 +32,7 @@ import org.overrun.glib.gl.GLLoadFunc;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
@@ -60,9 +61,9 @@ public class GLAMDDebugOutput {
 
     public static void glDebugMessageCallbackAMD(Addressable callback, Addressable userParam) {
         try {
-            check(glDebugMessageCallbackAMD).invoke(callback, userParam);
+            check(glDebugMessageCallbackAMD).invokeExact(callback, userParam);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -72,37 +73,33 @@ public class GLAMDDebugOutput {
 
     public static void glDebugMessageEnableAMD(int category, int severity, int count, Addressable ids, boolean enabled) {
         try {
-            check(glDebugMessageEnableAMD).invoke(category, severity, count, ids, enabled);
+            check(glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glDebugMessageEnableAMD(int category, int severity, int[] ids, boolean enabled) {
-        try (var session = MemorySession.openShared()) {
-            glDebugMessageEnableAMD(category, severity, ids.length, session.allocateArray(JAVA_INT, ids), enabled);
-        }
+    public static void glDebugMessageEnableAMD(SegmentAllocator session, int category, int severity, int[] ids, boolean enabled) {
+        glDebugMessageEnableAMD(category, severity, ids.length, session.allocateArray(JAVA_INT, ids), enabled);
     }
 
     public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, Addressable buf) {
         try {
-            check(glDebugMessageInsertAMD).invoke(category, severity, id, length, buf);
+            check(glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glDebugMessageInsertAMD(int category, int severity, int id, String buf) {
-        try (var session = MemorySession.openShared()) {
-            glDebugMessageInsertAMD(category, severity, id, 0, session.allocateUtf8String(buf));
-        }
+    public static void glDebugMessageInsertAMD(SegmentAllocator session, int category, int severity, int id, String buf) {
+        glDebugMessageInsertAMD(category, severity, id, 0, session.allocateUtf8String(buf));
     }
 
     public static int glGetDebugMessageLogAMD(int count, int bufSize, Addressable categories, Addressable severities, Addressable ids, Addressable lengths, Addressable message) {
         try {
-            return (int) check(glGetDebugMessageLogAMD).invoke(count, bufSize, categories, severities, ids, lengths, message);
+            return (int) check(glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -110,20 +107,18 @@ public class GLAMDDebugOutput {
         return glGetDebugMessageLogAMD(count, (int) messageLog.byteSize(), categories, severities, ids, lengths, messageLog);
     }
 
-    public static int glGetDebugMessageLogAMD(int count, int bufSize, int[] categories, int[] severities, int[] ids, int[] lengths, String[] messageLog) {
-        try (var session = MemorySession.openShared()) {
-            var pCgr = session.allocateArray(JAVA_INT, categories.length);
-            var pSvr = session.allocateArray(JAVA_INT, severities.length);
-            var pIds = session.allocateArray(JAVA_INT, ids.length);
-            var pLen = session.allocateArray(JAVA_INT, lengths.length);
-            var pLog = session.allocateArray(JAVA_BYTE, bufSize);
-            int num = glGetDebugMessageLogAMD(count, bufSize, pCgr, pSvr, pIds, pLen, pLog);
-            RuntimeHelper.toArray(pCgr, categories);
-            RuntimeHelper.toArray(pSvr, severities);
-            RuntimeHelper.toArray(pIds, ids);
-            RuntimeHelper.toArray(pLen, lengths);
-            messageLog[0] = pLog.getUtf8String(0);
-            return num;
-        }
+    public static int glGetDebugMessageLogAMD(SegmentAllocator session, int count, int bufSize, int[] categories, int[] severities, int[] ids, int[] lengths, String[] messageLog) {
+        var pCgr = session.allocateArray(JAVA_INT, categories.length);
+        var pSvr = session.allocateArray(JAVA_INT, severities.length);
+        var pIds = session.allocateArray(JAVA_INT, ids.length);
+        var pLen = session.allocateArray(JAVA_INT, lengths.length);
+        var pLog = session.allocateArray(JAVA_BYTE, bufSize);
+        int num = glGetDebugMessageLogAMD(count, bufSize, pCgr, pSvr, pIds, pLen, pLog);
+        RuntimeHelper.toArray(pCgr, categories);
+        RuntimeHelper.toArray(pSvr, severities);
+        RuntimeHelper.toArray(pIds, ids);
+        RuntimeHelper.toArray(pLen, lengths);
+        messageLog[0] = pLog.getUtf8String(0);
+        return num;
     }
 }

@@ -26,10 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -61,53 +58,49 @@ public sealed class GL46C extends GL45C permits GL {
 
     public static void multiDrawArraysIndirectCount(int mode, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
         try {
-            check(glMultiDrawArraysIndirectCount).invoke(mode, indirect, drawCount, maxDrawCount, stride);
+            check(glMultiDrawArraysIndirectCount).invokeExact(mode, indirect, drawCount, maxDrawCount, stride);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiDrawElementsIndirectCount(int mode, int type, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
         try {
-            check(glMultiDrawElementsIndirectCount).invoke(mode, type, indirect, drawCount, maxDrawCount, stride);
+            check(glMultiDrawElementsIndirectCount).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonOffsetClamp(float factor, float units, float clamp) {
         try {
-            check(glPolygonOffsetClamp).invoke(factor, units, clamp);
+            check(glPolygonOffsetClamp).invokeExact(factor, units, clamp);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void specializeShader(int shader, Addressable pEntryPoint, int numSpecializationConstants, Addressable pConstantIndex, Addressable pConstantValue) {
         try {
-            check(glSpecializeShader).invoke(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+            check(glSpecializeShader).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void specializeShader(int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
-        try (var session = MemorySession.openShared()) {
-            specializeShader(shader,
-                pEntryPoint != null ? session.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
-                pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
-                pConstantIndex != null ? session.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemoryAddress.NULL,
-                pConstantValue != null ? session.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemoryAddress.NULL);
-        }
+    public static void specializeShader(SegmentAllocator session, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
+        specializeShader(shader,
+            pEntryPoint != null ? session.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
+            pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
+            pConstantIndex != null ? session.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemoryAddress.NULL,
+            pConstantValue != null ? session.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemoryAddress.NULL);
     }
 
-    public static void specializeShader(int shader, @Nullable String pEntryPoint) {
-        try (var session = MemorySession.openShared()) {
-            specializeShader(shader,
-                pEntryPoint != null ? session.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
-                0,
-                MemoryAddress.NULL,
-                MemoryAddress.NULL);
-        }
+    public static void specializeShader(SegmentAllocator session, int shader, @Nullable String pEntryPoint) {
+        specializeShader(shader,
+            pEntryPoint != null ? session.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
+            0,
+            MemoryAddress.NULL,
+            MemoryAddress.NULL);
     }
 }

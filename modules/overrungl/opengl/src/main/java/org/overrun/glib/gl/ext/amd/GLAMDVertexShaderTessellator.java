@@ -51,17 +51,17 @@ public class GLAMDVertexShaderTessellator {
 
     public static void glTessellationFactorAMD(float factor) {
         try {
-            check(glTessellationFactorAMD).invoke(factor);
+            check(glTessellationFactorAMD).invokeExact(factor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glTessellationModeAMD(int mode) {
         try {
-            check(glTessellationModeAMD).invoke(mode);
+            check(glTessellationModeAMD).invokeExact(mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

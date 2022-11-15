@@ -30,7 +30,7 @@ import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -123,72 +123,70 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static void beginQueryIndexed(int target, int index, int id) {
         try {
-            check(glBeginQueryIndexed).invoke(target, index, id);
+            check(glBeginQueryIndexed).invokeExact(target, index, id);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindTransformFeedback(int target, int id) {
         try {
-            check(glBindTransformFeedback).invoke(target, id);
+            check(glBindTransformFeedback).invokeExact(target, id);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blendEquationSeparatei(int buf, int modeRGB, int modeAlpha) {
         try {
-            check(glBlendEquationSeparatei).invoke(buf, modeRGB, modeAlpha);
+            check(glBlendEquationSeparatei).invokeExact(buf, modeRGB, modeAlpha);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blendEquationi(int buf, int mode) {
         try {
-            check(glBlendEquationi).invoke(buf, mode);
+            check(glBlendEquationi).invokeExact(buf, mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blendEquationSeparatei(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         try {
-            check(glBlendEquationSeparatei).invoke(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+            check(glBlendEquationSeparatei).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blendFunci(int buf, int src, int dst) {
         try {
-            check(glBlendFunci).invoke(buf, src, dst);
+            check(glBlendFunci).invokeExact(buf, src, dst);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteTransformFeedbacks(int n, Addressable ids) {
         try {
-            check(glDeleteTransformFeedbacks).invoke(n, ids);
+            check(glDeleteTransformFeedbacks).invokeExact(n, ids);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteTransformFeedbacks(int[] ids) {
-        try (var session = MemorySession.openShared()) {
-            deleteTransformFeedbacks(ids.length, session.allocateArray(JAVA_INT, ids));
-        }
+    public static void deleteTransformFeedbacks(SegmentAllocator session, int[] ids) {
+        deleteTransformFeedbacks(ids.length, session.allocateArray(JAVA_INT, ids));
     }
 
     public static void deleteTransformFeedback(int id) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem=stack.calloc(JAVA_INT);
-            mem.set(JAVA_INT,0,id);
+            var mem = stack.calloc(JAVA_INT);
+            mem.set(JAVA_INT, 0, id);
             deleteTransformFeedbacks(1, mem);
         } finally {
             stack.setPointer(stackPointer);
@@ -197,9 +195,9 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static void drawArraysIndirect(int mode, Addressable indirect) {
         try {
-            check(glDrawArraysIndirect).invoke(mode, indirect);
+            check(glDrawArraysIndirect).invokeExact(mode, indirect);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -207,17 +205,15 @@ public sealed class GL40C extends GL33C permits GL41C {
         drawArraysIndirect(mode, indirect.rawAddress());
     }
 
-    public static void drawArraysIndirect(int mode, int[] indirect) {
-        try (var session = MemorySession.openShared()) {
-            drawArraysIndirect(mode, session.allocateArray(JAVA_INT, indirect));
-        }
+    public static void drawArraysIndirect(SegmentAllocator session, int mode, int[] indirect) {
+        drawArraysIndirect(mode, session.allocateArray(JAVA_INT, indirect));
     }
 
     public static void drawElementsIndirect(int mode, int type, Addressable indirect) {
         try {
-            check(glDrawElementsIndirect).invoke(mode, type, indirect);
+            check(glDrawElementsIndirect).invokeExact(mode, type, indirect);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -225,50 +221,46 @@ public sealed class GL40C extends GL33C permits GL41C {
         drawElementsIndirect(mode, type, indirect.rawAddress());
     }
 
-    public static void drawElementsIndirect(int mode, int type, int[] indirect) {
-        try (var session = MemorySession.openShared()) {
-            drawElementsIndirect(mode, type, session.allocateArray(JAVA_INT, indirect));
-        }
+    public static void drawElementsIndirect(SegmentAllocator session, int mode, int type, int[] indirect) {
+        drawElementsIndirect(mode, type, session.allocateArray(JAVA_INT, indirect));
     }
 
     public static void drawTransformFeedback(int mode, int id) {
         try {
-            check(glDrawTransformFeedback).invoke(mode, id);
+            check(glDrawTransformFeedback).invokeExact(mode, id);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawTransformFeedbackStream(int mode, int id, int stream) {
         try {
-            check(glDrawTransformFeedbackStream).invoke(mode, id, stream);
+            check(glDrawTransformFeedbackStream).invokeExact(mode, id, stream);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void endQueryIndexed(int target, int index) {
         try {
-            check(glEndQueryIndexed).invoke(target, index);
+            check(glEndQueryIndexed).invokeExact(target, index);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void genTransformFeedbacks(int n, Addressable ids) {
         try {
-            check(glGenTransformFeedbacks).invoke(n, ids);
+            check(glGenTransformFeedbacks).invokeExact(n, ids);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genTransformFeedbacks(int[] ids) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, ids.length);
-            genTransformFeedbacks(ids.length, seg);
-            RuntimeHelper.toArray(seg, ids);
-        }
+    public static void genTransformFeedbacks(SegmentAllocator session, int[] ids) {
+        var seg = session.allocateArray(JAVA_INT, ids.length);
+        genTransformFeedbacks(ids.length, seg);
+        RuntimeHelper.toArray(seg, ids);
     }
 
     public static int genTransformFeedback() {
@@ -285,50 +277,44 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static void getActiveSubroutineName(int program, int shaderType, int index, int bufSize, Addressable length, Addressable name) {
         try {
-            check(glGetActiveSubroutineName).invoke(program, shaderType, index, bufSize, length, name);
+            check(glGetActiveSubroutineName).invokeExact(program, shaderType, index, bufSize, length, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static String getActiveSubroutineName(int program, int shaderType, int index, int bufSize) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, bufSize);
-            getActiveSubroutineName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
-            return seg.getUtf8String(0);
-        }
+    public static String getActiveSubroutineName(SegmentAllocator session, int program, int shaderType, int index, int bufSize) {
+        var seg = session.allocateArray(JAVA_BYTE, bufSize);
+        getActiveSubroutineName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
+        return seg.getUtf8String(0);
     }
 
     public static void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, Addressable length, Addressable name) {
         try {
-            check(glGetActiveSubroutineUniformName).invoke(program, shaderType, index, bufSize, length, name);
+            check(glGetActiveSubroutineUniformName).invokeExact(program, shaderType, index, bufSize, length, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static String getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, bufSize);
-            getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
-            return seg.getUtf8String(0);
-        }
+    public static String getActiveSubroutineUniformName(SegmentAllocator session, int program, int shaderType, int index, int bufSize) {
+        var seg = session.allocateArray(JAVA_BYTE, bufSize);
+        getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
+        return seg.getUtf8String(0);
     }
 
     public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, Addressable values) {
         try {
-            check(glGetActiveSubroutineUniformiv).invoke(program, shaderType, index, pname, values);
+            check(glGetActiveSubroutineUniformiv).invokeExact(program, shaderType, index, pname, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, int[] values) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, values.length);
-            getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
-            RuntimeHelper.toArray(seg, values);
-        }
+    public static void getActiveSubroutineUniformiv(SegmentAllocator session, int program, int shaderType, int index, int pname, int[] values) {
+        var seg = session.allocateArray(JAVA_INT, values.length);
+        getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
+        RuntimeHelper.toArray(seg, values);
     }
 
     public static int getActiveSubroutineUniformi(int program, int shaderType, int index, int pname) {
@@ -345,9 +331,9 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static void getProgramStageiv(int program, int shaderType, int pname, Addressable values) {
         try {
-            check(glGetProgramStageiv).invoke(program, shaderType, pname, values);
+            check(glGetProgramStageiv).invokeExact(program, shaderType, pname, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -365,9 +351,9 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static void getQueryIndexediv(int target, int index, int pname, Addressable params) {
         try {
-            check(glGetQueryIndexediv).invoke(target, index, pname, params);
+            check(glGetQueryIndexediv).invokeExact(target, index, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -385,62 +371,54 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static int getSubroutineIndex(int program, int shaderType, Addressable name) {
         try {
-            return (int) check(glGetSubroutineIndex).invoke(program, shaderType, name);
+            return (int) check(glGetSubroutineIndex).invokeExact(program, shaderType, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static int getSubroutineIndex(int program, int shaderType, String name) {
-        try (var session = MemorySession.openShared()) {
-            return getSubroutineIndex(program, shaderType, session.allocateUtf8String(name));
-        }
+    public static int getSubroutineIndex(SegmentAllocator session, int program, int shaderType, String name) {
+        return getSubroutineIndex(program, shaderType, session.allocateUtf8String(name));
     }
 
     public static int getSubroutineUniformLocation(int program, int shaderType, Addressable name) {
         try {
-            return (int) check(glGetSubroutineUniformLocation).invoke(program, shaderType, name);
+            return (int) check(glGetSubroutineUniformLocation).invokeExact(program, shaderType, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static int getSubroutineUniformLocation(int program, int shaderType, String name) {
-        try (var session = MemorySession.openShared()) {
-            return getSubroutineUniformLocation(program, shaderType, session.allocateUtf8String(name));
-        }
+    public static int getSubroutineUniformLocation(SegmentAllocator session, int program, int shaderType, String name) {
+        return getSubroutineUniformLocation(program, shaderType, session.allocateUtf8String(name));
     }
 
     public static void getUniformSubroutineuiv(int shaderType, int location, Addressable params) {
         try {
-            check(glGetUniformSubroutineuiv).invoke(shaderType, location, params);
+            check(glGetUniformSubroutineuiv).invokeExact(shaderType, location, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getUniformSubroutineuiv(int shaderType, int location, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getUniformSubroutineuiv(shaderType, location, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getUniformSubroutineuiv(SegmentAllocator session, int shaderType, int location, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getUniformSubroutineuiv(shaderType, location, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static void getUniformdv(int program, int location, Addressable params) {
         try {
-            check(glGetUniformdv).invoke(program, location, params);
+            check(glGetUniformdv).invokeExact(program, location, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getUniformdv(int program, int location, double[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_DOUBLE, params.length);
-            getUniformdv(program, location, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getUniformdv(SegmentAllocator session, int program, int location, double[] params) {
+        var seg = session.allocateArray(JAVA_DOUBLE, params.length);
+        getUniformdv(program, location, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static double getUniformd(int program, int location) {
@@ -457,319 +435,289 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static boolean isTransformFeedback(int id) {
         try {
-            return (boolean) check(glIsTransformFeedback).invoke(id);
+            return (boolean) check(glIsTransformFeedback).invokeExact(id);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void minSampleShading(float value) {
         try {
-            check(glMinSampleShading).invoke(value);
+            check(glMinSampleShading).invokeExact(value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void patchParameterfv(int pname, Addressable values) {
         try {
-            check(glPatchParameterfv).invoke(pname, values);
+            check(glPatchParameterfv).invokeExact(pname, values);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void patchParameterfv(int pname, float[] values) {
-        try (var session = MemorySession.openShared()) {
-            patchParameterfv(pname, session.allocateArray(JAVA_FLOAT, values));
-        }
+    public static void patchParameterfv(SegmentAllocator session, int pname, float[] values) {
+        patchParameterfv(pname, session.allocateArray(JAVA_FLOAT, values));
     }
 
     public static void patchParameteri(int pname, int value) {
         try {
-            check(glPatchParameteri).invoke(pname, value);
+            check(glPatchParameteri).invokeExact(pname, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pauseTransformFeedback() {
         try {
-            check(glPauseTransformFeedback).invoke();
+            check(glPauseTransformFeedback).invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void resumeTransformFeedback() {
         try {
-            check(glResumeTransformFeedback).invoke();
+            check(glResumeTransformFeedback).invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1d(int location, double x) {
         try {
-            check(glUniform1d).invoke(location, x);
+            check(glUniform1d).invokeExact(location, x);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1dv(int location, int count, Addressable value) {
         try {
-            check(glUniform1dv).invoke(location, count, value);
+            check(glUniform1dv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform1dv(int location, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform1dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniform1dv(SegmentAllocator session, int location, double[] value) {
+        uniform1dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform2d(int location, double x, double y) {
         try {
-            check(glUniform2d).invoke(location, x, y);
+            check(glUniform2d).invokeExact(location, x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform2dv(int location, int count, Addressable value) {
         try {
-            check(glUniform2dv).invoke(location, count, value);
+            check(glUniform2dv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform2dv(int location, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform2dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniform2dv(SegmentAllocator session, int location, double[] value) {
+        uniform2dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform3d(int location, double x, double y, double z) {
         try {
-            check(glUniform3d).invoke(location, x, y, z);
+            check(glUniform3d).invokeExact(location, x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform3dv(int location, int count, Addressable value) {
         try {
-            check(glUniform3dv).invoke(location, count, value);
+            check(glUniform3dv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform3dv(int location, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform3dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniform3dv(SegmentAllocator session, int location, double[] value) {
+        uniform3dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform4d(int location, double x, double y, double z, double w) {
         try {
-            check(glUniform4d).invoke(location, x, y, z, w);
+            check(glUniform4d).invokeExact(location, x, y, z, w);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform4dv(int location, int count, Addressable value) {
         try {
-            check(glUniform4dv).invoke(location, count, value);
+            check(glUniform4dv).invokeExact(location, count, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniform4dv(int location, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniform4dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniform4dv(SegmentAllocator session, int location, double[] value) {
+        uniform4dv(location, value.length, session.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix2dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix2dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix2dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix2dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix2dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix2dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix2dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix2dv(int location, boolean transpose, double[] value) {
-        uniformMatrix2dv(location, value.length >> 2, transpose, value);
+    public static void uniformMatrix2dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix2dv(session, location, value.length >> 2, transpose, value);
     }
 
     public static void uniformMatrix2x3dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix2x3dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix2x3dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix2x3dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix2x3dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix2x3dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix2x3dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix2x3dv(int location, boolean transpose, double[] value) {
-        uniformMatrix2x3dv(location, value.length / 6, transpose, value);
+    public static void uniformMatrix2x3dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix2x3dv(session, location, value.length / 6, transpose, value);
     }
 
     public static void uniformMatrix2x4dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix2x4dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix2x4dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix2x4dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix2x4dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix2x4dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix2x4dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix2x4dv(int location, boolean transpose, double[] value) {
-        uniformMatrix2x4dv(location, value.length >> 3, transpose, value);
+    public static void uniformMatrix2x4dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix2x4dv(session, location, value.length >> 3, transpose, value);
     }
 
     public static void uniformMatrix3dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix3dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix3dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix3dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix3dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix3dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix3dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix3dv(int location, boolean transpose, double[] value) {
-        uniformMatrix3dv(location, value.length / 9, transpose, value);
+    public static void uniformMatrix3dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix3dv(session, location, value.length / 9, transpose, value);
     }
 
     public static void uniformMatrix3x2dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix3x2dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix3x2dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix3x2dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix3x2dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix3x2dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix3x2dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix3x2dv(int location, boolean transpose, double[] value) {
-        uniformMatrix3x2dv(location, value.length / 6, transpose, value);
+    public static void uniformMatrix3x2dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix3x2dv(session, location, value.length / 6, transpose, value);
     }
 
     public static void uniformMatrix3x4dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix3x4dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix3x4dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix3x4dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix3x4dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix3x4dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix3x4dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix3x4dv(int location, boolean transpose, double[] value) {
-        uniformMatrix3x4dv(location, value.length / 12, transpose, value);
+    public static void uniformMatrix3x4dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix3x4dv(session, location, value.length / 12, transpose, value);
     }
 
     public static void uniformMatrix4dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix4dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix4dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix4dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix4dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix4dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix4dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix4dv(int location, boolean transpose, double[] value) {
-        uniformMatrix4dv(location, value.length >> 4, transpose, value);
+    public static void uniformMatrix4dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix4dv(session, location, value.length >> 4, transpose, value);
     }
 
     public static void uniformMatrix4x2dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix4x2dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix4x2dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix4x2dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix4x2dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix4x2dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix4x2dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix4x2dv(int location, boolean transpose, double[] value) {
-        uniformMatrix4x2dv(location, value.length >> 3, transpose, value);
+    public static void uniformMatrix4x2dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix4x2dv(session, location, value.length >> 3, transpose, value);
     }
 
     public static void uniformMatrix4x3dv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix4x3dv).invoke(location, count, transpose, value);
+            check(glUniformMatrix4x3dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix4x3dv(int location, int count, boolean transpose, double[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix4x3dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
-        }
+    public static void uniformMatrix4x3dv(SegmentAllocator session, int location, int count, boolean transpose, double[] value) {
+        uniformMatrix4x3dv(location, count, transpose, session.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix4x3dv(int location, boolean transpose, double[] value) {
-        uniformMatrix4x3dv(location, value.length / 12, transpose, value);
+    public static void uniformMatrix4x3dv(SegmentAllocator session, int location, boolean transpose, double[] value) {
+        uniformMatrix4x3dv(session, location, value.length / 12, transpose, value);
     }
 
     public static void uniformSubroutinesuiv(int shaderType, int count, Addressable indices) {
         try {
-            check(glUniformSubroutinesuiv).invoke(shaderType, count, indices);
+            check(glUniformSubroutinesuiv).invokeExact(shaderType, count, indices);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformSubroutinesuiv(int shaderType, int[] indices) {
-        try (var session = MemorySession.openShared()) {
-            uniformSubroutinesuiv(shaderType, indices.length, session.allocateArray(JAVA_INT, indices));
-        }
+    public static void uniformSubroutinesuiv(SegmentAllocator session, int shaderType, int[] indices) {
+        uniformSubroutinesuiv(shaderType, indices.length, session.allocateArray(JAVA_INT, indices));
     }
 }

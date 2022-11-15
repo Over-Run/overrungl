@@ -49,9 +49,9 @@ public class GLAMDOcclusionQueryEvent {
 
     public static void glQueryObjectParameteruiAMD(int target, int id, int pname, int param) {
         try {
-            GLCaps.check(glQueryObjectParameteruiAMD).invoke(target, id, pname, param);
+            GLCaps.check(glQueryObjectParameteruiAMD).invokeExact(target, id, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

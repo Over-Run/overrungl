@@ -29,12 +29,13 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 3.3 core profile functions.
@@ -95,38 +96,34 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {
         try {
-            check(glBindFragDataLocationIndexed).invoke(program, colorNumber, index, name);
+            check(glBindFragDataLocationIndexed).invokeExact(program, colorNumber, index, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, String name) {
-        try (var session = MemorySession.openShared()) {
-            bindFragDataLocationIndexed(program, colorNumber, index, session.allocateUtf8String(name));
-        }
+    public static void bindFragDataLocationIndexed(SegmentAllocator session, int program, int colorNumber, int index, String name) {
+        bindFragDataLocationIndexed(program, colorNumber, index, session.allocateUtf8String(name));
     }
 
     public static void bindSampler(int unit, int sampler) {
         try {
-            check(glBindSampler).invoke(unit, sampler);
+            check(glBindSampler).invokeExact(unit, sampler);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteSamplers(int count, Addressable samplers) {
         try {
-            check(glDeleteSamplers).invoke(count, samplers);
+            check(glDeleteSamplers).invokeExact(count, samplers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteSamplers(int[] samplers) {
-        try (var session = MemorySession.openShared()) {
-            deleteSamplers(samplers.length, session.allocateArray(JAVA_INT, samplers));
-        }
+    public static void deleteSamplers(SegmentAllocator session, int[] samplers) {
+        deleteSamplers(samplers.length, session.allocateArray(JAVA_INT, samplers));
     }
 
     public static void deleteSampler(int sampler) {
@@ -143,18 +140,16 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void genSamplers(int count, Addressable samplers) {
         try {
-            check(glGenSamplers).invoke(count, samplers);
+            check(glGenSamplers).invokeExact(count, samplers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genSamplers(int[] samplers) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, samplers.length);
-            genSamplers(samplers.length, seg);
-            RuntimeHelper.toArray(seg, samplers);
-        }
+    public static void genSamplers(SegmentAllocator session, int[] samplers) {
+        var seg = session.allocateArray(JAVA_INT, samplers.length);
+        genSamplers(samplers.length, seg);
+        RuntimeHelper.toArray(seg, samplers);
     }
 
     public static int genSampler() {
@@ -171,28 +166,22 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static int getFragDataIndex(int program, Addressable name) {
         try {
-            return (int) check(glGetFragDataIndex).invoke(program, name);
+            return (int) check(glGetFragDataIndex).invokeExact(program, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static int getFragDataIndex(int program, String name) {
-        try (var session = MemorySession.openShared()) {
-            return getFragDataIndex(program, session.allocateUtf8String(name));
-        }
+    public static int getFragDataIndex(SegmentAllocator session, int program, String name) {
+        return getFragDataIndex(program, session.allocateUtf8String(name));
     }
 
     public static void getQueryObjecti64v(int id, int pname, Addressable params) {
         try {
-            check(glGetQueryObjecti64v).invoke(id, pname, params);
+            check(glGetQueryObjecti64v).invokeExact(id, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void getQueryObjecti64v(int id, int pname, long[] params) {
-        params[0] = getQueryObjecti64(id, pname);
     }
 
     public static long getQueryObjecti64(int id, int pname) {
@@ -209,14 +198,10 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void getQueryObjectui64v(int id, int pname, Addressable params) {
         try {
-            check(glGetQueryObjectui64v).invoke(id, pname, params);
+            check(glGetQueryObjectui64v).invokeExact(id, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void getQueryObjectui64v(int id, int pname, long[] params) {
-        params[0] = getQueryObjectui64(id, pname);
     }
 
     public static long getQueryObjectui64(int id, int pname) {
@@ -233,18 +218,16 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void getSamplerParameterIiv(int sampler, int pname, Addressable params) {
         try {
-            check(glGetSamplerParameterIiv).invoke(sampler, pname, params);
+            check(glGetSamplerParameterIiv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getSamplerParameterIiv(int sampler, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getSamplerParameterIiv(sampler, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getSamplerParameterIiv(SegmentAllocator session, int sampler, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getSamplerParameterIiv(sampler, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getSamplerParameterIi(int sampler, int pname) {
@@ -261,18 +244,16 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void getSamplerParameterIuiv(int sampler, int pname, Addressable params) {
         try {
-            check(glGetSamplerParameterIuiv).invoke(sampler, pname, params);
+            check(glGetSamplerParameterIuiv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getSamplerParameterIuiv(int sampler, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getSamplerParameterIuiv(sampler, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getSamplerParameterIuiv(SegmentAllocator session, int sampler, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getSamplerParameterIuiv(sampler, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getSamplerParameterIui(int sampler, int pname) {
@@ -289,18 +270,16 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void getSamplerParameterfv(int sampler, int pname, Addressable params) {
         try {
-            check(glGetSamplerParameterfv).invoke(sampler, pname, params);
+            check(glGetSamplerParameterfv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getSamplerParameterfv(int sampler, int pname, float[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_FLOAT, params.length);
-            getSamplerParameterfv(sampler, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getSamplerParameterfv(SegmentAllocator session, int sampler, int pname, float[] params) {
+        var seg = session.allocateArray(JAVA_FLOAT, params.length);
+        getSamplerParameterfv(sampler, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static float getSamplerParameterf(int sampler, int pname) {
@@ -317,18 +296,16 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static void getSamplerParameteriv(int sampler, int pname, Addressable params) {
         try {
-            check(glGetSamplerParameteriv).invoke(sampler, pname, params);
+            check(glGetSamplerParameteriv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getSamplerParameteriv(int sampler, int pname, int[] params) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, params.length);
-            getSamplerParameteriv(sampler, pname, seg);
-            RuntimeHelper.toArray(seg, params);
-        }
+    public static void getSamplerParameteriv(SegmentAllocator session, int sampler, int pname, int[] params) {
+        var seg = session.allocateArray(JAVA_INT, params.length);
+        getSamplerParameteriv(sampler, pname, seg);
+        RuntimeHelper.toArray(seg, params);
     }
 
     public static int getSamplerParameteri(int sampler, int pname) {
@@ -345,185 +322,169 @@ public sealed class GL33C extends GL32C permits GL40C {
 
     public static boolean isSampler(int sampler) {
         try {
-            return (boolean) check(glIsSampler).invoke(sampler);
+            return (boolean) check(glIsSampler).invokeExact(sampler);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void queryCounter(int id, int target) {
         try {
-            check(glQueryCounter).invoke(id, target);
+            check(glQueryCounter).invokeExact(id, target);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void samplerParameterIiv(int sampler, int pname, Addressable param) {
         try {
-            check(glSamplerParameterIiv).invoke(sampler, pname, param);
+            check(glSamplerParameterIiv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void samplerParameterIiv(int sampler, int pname, int[] param) {
-        try (var session = MemorySession.openShared()) {
-            samplerParameterIiv(sampler, pname, session.allocateArray(JAVA_INT, param));
-        }
+    public static void samplerParameterIiv(SegmentAllocator session, int sampler, int pname, int[] param) {
+        samplerParameterIiv(sampler, pname, session.allocateArray(JAVA_INT, param));
     }
 
     public static void samplerParameterIuiv(int sampler, int pname, Addressable param) {
         try {
-            check(glSamplerParameterIuiv).invoke(sampler, pname, param);
+            check(glSamplerParameterIuiv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void samplerParameterIuiv(int sampler, int pname, int[] param) {
-        try (var session = MemorySession.openShared()) {
-            samplerParameterIuiv(sampler, pname, session.allocateArray(JAVA_INT, param));
-        }
+    public static void samplerParameterIuiv(SegmentAllocator session, int sampler, int pname, int[] param) {
+        samplerParameterIuiv(sampler, pname, session.allocateArray(JAVA_INT, param));
     }
 
     public static void samplerParameterf(int sampler, int pname, int param) {
         try {
-            check(glSamplerParameterf).invoke(sampler, pname, param);
+            check(glSamplerParameterf).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void samplerParameterfv(int sampler, int pname, Addressable param) {
         try {
-            check(glSamplerParameterfv).invoke(sampler, pname, param);
+            check(glSamplerParameterfv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void samplerParameterfv(int sampler, int pname, int[] param) {
-        try (var session = MemorySession.openShared()) {
-            samplerParameterfv(sampler, pname, session.allocateArray(JAVA_INT, param));
-        }
+    public static void samplerParameterfv(SegmentAllocator session, int sampler, int pname, int[] param) {
+        samplerParameterfv(sampler, pname, session.allocateArray(JAVA_INT, param));
     }
 
     public static void samplerParameteri(int sampler, int pname, int param) {
         try {
-            check(glSamplerParameteri).invoke(sampler, pname, param);
+            check(glSamplerParameteri).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void samplerParameteriv(int sampler, int pname, Addressable param) {
         try {
-            check(glSamplerParameteriv).invoke(sampler, pname, param);
+            check(glSamplerParameteriv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void samplerParameteriv(int sampler, int pname, int[] param) {
-        try (var session = MemorySession.openShared()) {
-            samplerParameteriv(sampler, pname, session.allocateArray(JAVA_INT, param));
-        }
+    public static void samplerParameteriv(SegmentAllocator session, int sampler, int pname, int[] param) {
+        samplerParameteriv(sampler, pname, session.allocateArray(JAVA_INT, param));
     }
 
     public static void vertexAttribDivisor(int index, int divisor) {
         try {
-            check(glVertexAttribDivisor).invoke(index, divisor);
+            check(glVertexAttribDivisor).invokeExact(index, divisor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP1ui(int index, int type, boolean normalized, int value) {
         try {
-            check(glVertexAttribP1ui).invoke(index, type, normalized, value);
+            check(glVertexAttribP1ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP1uiv(int index, int type, boolean normalized, Addressable value) {
         try {
-            check(glVertexAttribP1uiv).invoke(index, type, normalized, value);
+            check(glVertexAttribP1uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribP1uiv(int index, int type, boolean normalized, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribP1uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
-        }
+    public static void vertexAttribP1uiv(SegmentAllocator session, int index, int type, boolean normalized, int[] value) {
+        vertexAttribP1uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribP2ui(int index, int type, boolean normalized, int value) {
         try {
-            check(glVertexAttribP2ui).invoke(index, type, normalized, value);
+            check(glVertexAttribP2ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP2uiv(int index, int type, boolean normalized, Addressable value) {
         try {
-            check(glVertexAttribP2uiv).invoke(index, type, normalized, value);
+            check(glVertexAttribP2uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribP2uiv(int index, int type, boolean normalized, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribP2uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
-        }
+    public static void vertexAttribP2uiv(SegmentAllocator session, int index, int type, boolean normalized, int[] value) {
+        vertexAttribP2uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribP3ui(int index, int type, boolean normalized, int value) {
         try {
-            check(glVertexAttribP3ui).invoke(index, type, normalized, value);
+            check(glVertexAttribP3ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP3uiv(int index, int type, boolean normalized, Addressable value) {
         try {
-            check(glVertexAttribP3uiv).invoke(index, type, normalized, value);
+            check(glVertexAttribP3uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribP3uiv(int index, int type, boolean normalized, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribP3uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
-        }
+    public static void vertexAttribP3uiv(SegmentAllocator session, int index, int type, boolean normalized, int[] value) {
+        vertexAttribP3uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribP4ui(int index, int type, boolean normalized, int value) {
         try {
-            check(glVertexAttribP4ui).invoke(index, type, normalized, value);
+            check(glVertexAttribP4ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP4uiv(int index, int type, boolean normalized, Addressable value) {
         try {
-            check(glVertexAttribP4uiv).invoke(index, type, normalized, value);
+            check(glVertexAttribP4uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexAttribP4uiv(int index, int type, boolean normalized, int[] value) {
-        try (var session = MemorySession.openShared()) {
-            vertexAttribP4uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
-        }
+    public static void vertexAttribP4uiv(SegmentAllocator session, int index, int type, boolean normalized, int[] value) {
+        vertexAttribP4uiv(index, type, normalized, session.allocateArray(JAVA_INT, value));
     }
 }

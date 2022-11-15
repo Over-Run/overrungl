@@ -52,17 +52,17 @@ public class GLAMDFramebufferMultisampleAdvanced {
 
     public static void glNamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalFormat, int width, int height) {
         try {
-            check(glNamedRenderbufferStorageMultisampleAdvancedAMD).invoke(renderbuffer, samples, storageSamples, internalFormat, width, height);
+            check(glNamedRenderbufferStorageMultisampleAdvancedAMD).invokeExact(renderbuffer, samples, storageSamples, internalFormat, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glRenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalFormat, int width, int height) {
         try {
-            check(glRenderbufferStorageMultisampleAdvancedAMD).invoke(target, samples, storageSamples, internalFormat, width, height);
+            check(glRenderbufferStorageMultisampleAdvancedAMD).invokeExact(target, samples, storageSamples, internalFormat, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

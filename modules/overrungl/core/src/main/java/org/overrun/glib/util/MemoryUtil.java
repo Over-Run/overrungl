@@ -71,9 +71,9 @@ public final class MemoryUtil {
      */
     public static MemoryAddress malloc(long size) {
         try {
-            return (MemoryAddress) m_malloc.invoke(size);
+            return (MemoryAddress) m_malloc.invokeExact(size);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -109,9 +109,9 @@ public final class MemoryUtil {
      */
     public static MemoryAddress calloc(long number, long size) {
         try {
-            return (MemoryAddress) m_calloc.invoke(number, size);
+            return (MemoryAddress) m_calloc.invokeExact(number, size);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -159,13 +159,13 @@ public final class MemoryUtil {
      * <p>
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
-    public static MemoryAddress realloc(@Nullable MemoryAddress memblock, long size) {
+    public static MemoryAddress realloc(@Nullable Addressable memblock, long size) {
         try {
-            return (MemoryAddress) m_realloc.invoke(
+            return (MemoryAddress) m_realloc.invokeExact(
                 Objects.requireNonNullElse(memblock, MemoryAddress.NULL),
                 size);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -182,12 +182,12 @@ public final class MemoryUtil {
      *
      * @param memblock Previously allocated memory block to be freed.
      */
-    public static void free(@Nullable MemoryAddress memblock) {
+    public static void free(@Nullable Addressable memblock) {
         if (memblock == null) return;
         try {
-            m_free.invoke(memblock);
+            m_free.invokeExact(memblock);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -205,11 +205,11 @@ public final class MemoryUtil {
      * @param count Number of characters to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memcpy(MemoryAddress dest, Addressable src, long count) {
+    public static MemoryAddress memcpy(Addressable dest, Addressable src, long count) {
         try {
-            return (MemoryAddress) m_memcpy.invoke(dest, src, count);
+            return (MemoryAddress) m_memcpy.invokeExact(dest, src, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -229,11 +229,11 @@ public final class MemoryUtil {
      * @param count Number of bytes to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memmove(MemoryAddress dest, Addressable src, long count) {
+    public static MemoryAddress memmove(Addressable dest, Addressable src, long count) {
         try {
-            return (MemoryAddress) m_memmove.invoke(dest, src, count);
+            return (MemoryAddress) m_memmove.invokeExact(dest, src, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -251,11 +251,11 @@ public final class MemoryUtil {
      * @param count Number of characters.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memset(MemoryAddress dest, int c, long count) {
+    public static MemoryAddress memset(Addressable dest, int c, long count) {
         try {
-            return (MemoryAddress) m_memset.invoke(dest, c, count);
+            return (MemoryAddress) m_memset.invokeExact(dest, c, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

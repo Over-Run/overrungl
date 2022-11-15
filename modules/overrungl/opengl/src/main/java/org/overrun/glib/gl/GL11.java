@@ -27,7 +27,7 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -70,308 +70,254 @@ public final class GL11 extends GL11C {
 
     public static boolean areTexturesResident(int n, Addressable textures, Addressable residences) {
         try {
-            return (boolean) check(glAreTexturesResident).invoke(n, textures, residences);
+            return (boolean) check(glAreTexturesResident).invokeExact(n, textures, residences);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static boolean areTexturesResident(int[] textures, boolean[] residences) {
-        try (var session = MemorySession.openShared()) {
-            final int n = textures.length;
-            var pTex = session.allocateArray(JAVA_INT, n);
-            var pRes = session.allocateArray(JAVA_BOOLEAN, n);
-            boolean b = areTexturesResident(n, pTex, pRes);
-            for (int i = 0; i < n; i++) {
-                textures[i] = pTex.getAtIndex(JAVA_INT, i);
-                residences[i] = pTex.get(JAVA_BOOLEAN, i);
-            }
-            return b;
+    public static boolean areTexturesResident(SegmentAllocator session, int[] textures, boolean[] residences) {
+        final int n = textures.length;
+        var pTex = session.allocateArray(JAVA_INT, n);
+        var pRes = session.allocateArray(JAVA_BOOLEAN, n);
+        boolean b = areTexturesResident(n, pTex, pRes);
+        for (int i = 0; i < n; i++) {
+            textures[i] = pTex.getAtIndex(JAVA_INT, i);
+            residences[i] = pTex.get(JAVA_BOOLEAN, i);
         }
+        return b;
     }
 
     public static void arrayElement(int i) {
         try {
-            check(glArrayElement).invoke(i);
+            check(glArrayElement).invokeExact(i);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void colorPointer(int size, int type, int stride, Addressable pointer) {
         try {
-            check(glColorPointer).invoke(size, type, stride, pointer);
+            check(glColorPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void colorPointer(int size, int type, int stride, byte[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
-        }
+    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, byte[] pointer) {
+        colorPointer(size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void colorPointer(int size, int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
+        colorPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void colorPointer(int size, int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
+        colorPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void colorPointer(int size, int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
+        colorPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void colorPointer(int size, int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            colorPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
+        colorPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void disableClientState(int array) {
         try {
-            check(glDisableClientState).invoke(array);
+            check(glDisableClientState).invokeExact(array);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void edgeFlagPointer(int stride, Addressable pointer) {
         try {
-            check(glEdgeFlagPointer).invoke(stride, pointer);
+            check(glEdgeFlagPointer).invokeExact(stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void enableClientState(int array) {
         try {
-            check(glEnableClientState).invoke(array);
+            check(glEnableClientState).invokeExact(array);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexPointer(int type, int stride, Addressable pointer) {
         try {
-            check(glIndexPointer).invoke(type, stride, pointer);
+            check(glIndexPointer).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void indexPointer(int type, int stride, byte[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
-        }
+    public static void indexPointer(SegmentAllocator session, int type, int stride, byte[] pointer) {
+        indexPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void indexPointer(int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void indexPointer(SegmentAllocator session, int type, int stride, short[] pointer) {
+        indexPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void indexPointer(int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void indexPointer(SegmentAllocator session, int type, int stride, int[] pointer) {
+        indexPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void indexPointer(int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void indexPointer(SegmentAllocator session, int type, int stride, float[] pointer) {
+        indexPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void indexPointer(int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            indexPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void indexPointer(SegmentAllocator session, int type, int stride, double[] pointer) {
+        indexPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void indexub(byte c) {
         try {
-            check(glIndexub).invoke(c);
+            check(glIndexub).invokeExact(c);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexubv(Addressable c) {
         try {
-            check(glIndexubv).invoke(c);
+            check(glIndexubv).invokeExact(c);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void indexubv(byte[] c) {
-        try (var session = MemorySession.openShared()) {
-            var pc = session.allocateArray(JAVA_BYTE, c);
-            indexubv(pc);
-        }
+    public static void indexubv(SegmentAllocator session, byte[] c) {
+        var pc = session.allocateArray(JAVA_BYTE, c);
+        indexubv(pc);
     }
 
     public static void interleavedArrays(int format, int stride, Addressable pointer) {
         try {
-            check(glInterleavedArrays).invoke(format, stride, pointer);
+            check(glInterleavedArrays).invokeExact(format, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void interleavedArrays(int format, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            var pp = session.allocateArray(JAVA_FLOAT, pointer);
-            interleavedArrays(format, stride, pp);
-        }
+    public static void interleavedArrays(SegmentAllocator session, int format, int stride, float[] pointer) {
+        var pp = session.allocateArray(JAVA_FLOAT, pointer);
+        interleavedArrays(format, stride, pp);
     }
 
     public static void normalPointer(int type, int stride, Addressable pointer) {
         try {
-            check(glNormalPointer).invoke(type, stride, pointer);
+            check(glNormalPointer).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void normalPointer(int type, int stride, byte[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
-        }
+    public static void normalPointer(SegmentAllocator session, int type, int stride, byte[] pointer) {
+        normalPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void normalPointer(int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void normalPointer(SegmentAllocator session, int type, int stride, short[] pointer) {
+        normalPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void normalPointer(int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void normalPointer(SegmentAllocator session, int type, int stride, int[] pointer) {
+        normalPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void normalPointer(int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void normalPointer(SegmentAllocator session, int type, int stride, float[] pointer) {
+        normalPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void normalPointer(int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            normalPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void normalPointer(SegmentAllocator session, int type, int stride, double[] pointer) {
+        normalPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void popClientAttrib() {
         try {
-            check(glPopClientAttrib).invoke();
+            check(glPopClientAttrib).invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void prioritizeTextures(int n, Addressable textures, Addressable priorities) {
         try {
-            check(glPrioritizeTextures).invoke(n, textures, priorities);
+            check(glPrioritizeTextures).invokeExact(n, textures, priorities);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void prioritizeTextures(int[] textures, float[] priorities) {
-        try (var session = MemorySession.openShared()) {
-            final int n = textures.length;
-            var pTex = session.allocateArray(JAVA_INT, n);
-            var pPri = session.allocateArray(JAVA_FLOAT, n);
-            for (int i = 0; i < n; i++) {
-                pTex.setAtIndex(JAVA_INT, i, textures[i]);
-                pPri.setAtIndex(JAVA_FLOAT, i, priorities[i]);
-            }
-            prioritizeTextures(n, pTex, pPri);
+    public static void prioritizeTextures(SegmentAllocator session, int[] textures, float[] priorities) {
+        final int n = textures.length;
+        var pTex = session.allocateArray(JAVA_INT, n);
+        var pPri = session.allocateArray(JAVA_FLOAT, n);
+        for (int i = 0; i < n; i++) {
+            pTex.setAtIndex(JAVA_INT, i, textures[i]);
+            pPri.setAtIndex(JAVA_FLOAT, i, priorities[i]);
         }
+        prioritizeTextures(n, pTex, pPri);
     }
 
     public static void pushClientAttrib(int mask) {
         try {
-            check(glPushClientAttrib).invoke(mask);
+            check(glPushClientAttrib).invokeExact(mask);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoordPointer(int size, int type, int stride, Addressable pointer) {
         try {
-            check(glTexCoordPointer).invoke(size, type, stride, pointer);
+            check(glTexCoordPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texCoordPointer(int size, int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
+        texCoordPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void texCoordPointer(int size, int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
+        texCoordPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void texCoordPointer(int size, int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
+        texCoordPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void texCoordPointer(int size, int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            texCoordPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
+        texCoordPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void vertexPointer(int size, int type, int stride, Addressable pointer) {
         try {
-            check(glVertexPointer).invoke(size, type, stride, pointer);
+            check(glVertexPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void vertexPointer(int size, int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
+        vertexPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void vertexPointer(int size, int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
+        vertexPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void vertexPointer(int size, int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
+        vertexPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void vertexPointer(int size, int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            vertexPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
+        vertexPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 }

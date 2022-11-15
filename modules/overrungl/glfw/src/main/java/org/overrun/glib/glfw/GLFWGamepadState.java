@@ -57,7 +57,7 @@ public class GLFWGamepadState extends Pointer {
         BUTTONS_LAYOUT,
         MemoryLayout.paddingLayout(8),
         AXES_LAYOUT
-    );
+    ).withName("GLFWgamepadstate");
     private static final VarHandle
         pButtons = LAYOUT.varHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement()),
         pAxes = LAYOUT.varHandle(PathElement.groupElement("axes"), PathElement.sequenceElement());

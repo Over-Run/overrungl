@@ -27,12 +27,13 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.Ver14;
+import static org.overrun.glib.gl.GLCaps.check;
 
 /**
  * The OpenGL 1.4 functions.
@@ -95,455 +96,405 @@ public final class GL14 extends GL14C {
 
     public static void fogCoordPointer(int type, int stride, Addressable pointer) {
         try {
-            check(glFogCoordPointer).invoke(type, stride, pointer);
+            check(glFogCoordPointer).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void fogCoordPointer(int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            fogCoordPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void fogCoordPointer(SegmentAllocator session, int type, int stride, float[] pointer) {
+        fogCoordPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void fogCoordPointer(int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            fogCoordPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void fogCoordPointer(SegmentAllocator session, int type, int stride, double[] pointer) {
+        fogCoordPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void fogCoordd(double coord) {
         try {
-            check(glFogCoordd).invoke(coord);
+            check(glFogCoordd).invokeExact(coord);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void fogCoorddv(Addressable coord) {
         try {
-            check(glFogCoorddv).invoke(coord);
+            check(glFogCoorddv).invokeExact(coord);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void fogCoorddv(double[] coord) {
-        try (var session = MemorySession.openShared()) {
-            fogCoorddv(session.allocateArray(JAVA_DOUBLE, coord));
-        }
+    public static void fogCoorddv(SegmentAllocator session, double[] coord) {
+        fogCoorddv(session.allocateArray(JAVA_DOUBLE, coord));
     }
 
     public static void fogCoordf(float coord) {
         try {
-            check(glFogCoordf).invoke(coord);
+            check(glFogCoordf).invokeExact(coord);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void fogCoordfv(Addressable coord) {
         try {
-            check(glFogCoordfv).invoke(coord);
+            check(glFogCoordfv).invokeExact(coord);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void fogCoordfv(float[] coord) {
-        try (var session = MemorySession.openShared()) {
-            fogCoordfv(session.allocateArray(JAVA_FLOAT, coord));
-        }
+    public static void fogCoordfv(SegmentAllocator session, float[] coord) {
+        fogCoordfv(session.allocateArray(JAVA_FLOAT, coord));
     }
 
     public static void secondaryColor3b(byte red, byte green, byte blue) {
         try {
-            check(glSecondaryColor3b).invoke(red, green, blue);
+            check(glSecondaryColor3b).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3bv(Addressable v) {
         try {
-            check(glSecondaryColor3bv).invoke(v);
+            check(glSecondaryColor3bv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3bv(byte[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3bv(session.allocateArray(JAVA_BYTE, v));
-        }
+    public static void secondaryColor3bv(SegmentAllocator session, byte[] v) {
+        secondaryColor3bv(session.allocateArray(JAVA_BYTE, v));
     }
 
     public static void secondaryColor3d(double red, double green, double blue) {
         try {
-            check(glSecondaryColor3d).invoke(red, green, blue);
+            check(glSecondaryColor3d).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3dv(Addressable v) {
         try {
-            check(glSecondaryColor3dv).invoke(v);
+            check(glSecondaryColor3dv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3dv(double[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3dv(session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void secondaryColor3dv(SegmentAllocator session, double[] v) {
+        secondaryColor3dv(session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void secondaryColor3f(float red, float green, float blue) {
         try {
-            check(glSecondaryColor3f).invoke(red, green, blue);
+            check(glSecondaryColor3f).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3fv(Addressable v) {
         try {
-            check(glSecondaryColor3fv).invoke(v);
+            check(glSecondaryColor3fv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3fv(float[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3fv(session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void secondaryColor3fv(SegmentAllocator session, float[] v) {
+        secondaryColor3fv(session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void secondaryColor3i(int red, int green, int blue) {
         try {
-            check(glSecondaryColor3i).invoke(red, green, blue);
+            check(glSecondaryColor3i).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3iv(Addressable v) {
         try {
-            check(glSecondaryColor3iv).invoke(v);
+            check(glSecondaryColor3iv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3iv(int[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3iv(session.allocateArray(JAVA_INT, v));
-        }
+    public static void secondaryColor3iv(SegmentAllocator session, int[] v) {
+        secondaryColor3iv(session.allocateArray(JAVA_INT, v));
     }
 
     public static void secondaryColor3s(short red, short green, short blue) {
         try {
-            check(glSecondaryColor3s).invoke(red, green, blue);
+            check(glSecondaryColor3s).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3sv(Addressable v) {
         try {
-            check(glSecondaryColor3sv).invoke(v);
+            check(glSecondaryColor3sv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3sv(short[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3sv(session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void secondaryColor3sv(SegmentAllocator session, short[] v) {
+        secondaryColor3sv(session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void secondaryColor3ub(byte red, byte green, byte blue) {
         try {
-            check(glSecondaryColor3ub).invoke(red, green, blue);
+            check(glSecondaryColor3ub).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3ubv(Addressable v) {
         try {
-            check(glSecondaryColor3ubv).invoke(v);
+            check(glSecondaryColor3ubv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3ubv(byte[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3ubv(session.allocateArray(JAVA_BYTE, v));
-        }
+    public static void secondaryColor3ubv(SegmentAllocator session, byte[] v) {
+        secondaryColor3ubv(session.allocateArray(JAVA_BYTE, v));
     }
 
     public static void secondaryColor3ui(int red, int green, int blue) {
         try {
-            check(glSecondaryColor3ui).invoke(red, green, blue);
+            check(glSecondaryColor3ui).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3uiv(Addressable v) {
         try {
-            check(glSecondaryColor3uiv).invoke(v);
+            check(glSecondaryColor3uiv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3uiv(int[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3uiv(session.allocateArray(JAVA_INT, v));
-        }
+    public static void secondaryColor3uiv(SegmentAllocator session, int[] v) {
+        secondaryColor3uiv(session.allocateArray(JAVA_INT, v));
     }
 
     public static void secondaryColor3us(short red, short green, short blue) {
         try {
-            check(glSecondaryColor3us).invoke(red, green, blue);
+            check(glSecondaryColor3us).invokeExact(red, green, blue);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void secondaryColor3usv(Addressable v) {
         try {
-            check(glSecondaryColor3usv).invoke(v);
+            check(glSecondaryColor3usv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColor3usv(short[] v) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColor3usv(session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void secondaryColor3usv(SegmentAllocator session, short[] v) {
+        secondaryColor3usv(session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void secondaryColorPointer(int size, int type, int stride, Addressable pointer) {
         try {
-            check(glSecondaryColorPointer).invoke(size, type, stride, pointer);
+            check(glSecondaryColorPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void secondaryColorPointer(int size, int type, int stride, byte[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
-        }
+    public static void secondaryColorPointer(SegmentAllocator session, int size, int type, int stride, byte[] pointer) {
+        secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void secondaryColorPointer(int size, int type, int stride, short[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
-        }
+    public static void secondaryColorPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
+        secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void secondaryColorPointer(int size, int type, int stride, int[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
-        }
+    public static void secondaryColorPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
+        secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void secondaryColorPointer(int size, int type, int stride, float[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
-        }
+    public static void secondaryColorPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
+        secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void secondaryColorPointer(int size, int type, int stride, double[] pointer) {
-        try (var session = MemorySession.openShared()) {
-            secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
-        }
+    public static void secondaryColorPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
+        secondaryColorPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void windowPos2d(double x, double y) {
         try {
-            check(glWindowPos2d).invoke(x, y);
+            check(glWindowPos2d).invokeExact(x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos2dv(Addressable v) {
         try {
-            check(glWindowPos2dv).invoke(v);
+            check(glWindowPos2dv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos2dv(double[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos2dv(session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void windowPos2dv(SegmentAllocator session, double[] v) {
+        windowPos2dv(session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void windowPos2f(float x, float y) {
         try {
-            check(glWindowPos2f).invoke(x, y);
+            check(glWindowPos2f).invokeExact(x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos2fv(Addressable v) {
         try {
-            check(glWindowPos2fv).invoke(v);
+            check(glWindowPos2fv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos2fv(float[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos2fv(session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void windowPos2fv(SegmentAllocator session, float[] v) {
+        windowPos2fv(session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void windowPos2i(int x, int y) {
         try {
-            check(glWindowPos2i).invoke(x, y);
+            check(glWindowPos2i).invokeExact(x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos2iv(Addressable v) {
         try {
-            check(glWindowPos2iv).invoke(v);
+            check(glWindowPos2iv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos2iv(int[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos2iv(session.allocateArray(JAVA_INT, v));
-        }
+    public static void windowPos2iv(SegmentAllocator session, int[] v) {
+        windowPos2iv(session.allocateArray(JAVA_INT, v));
     }
 
     public static void windowPos2s(short x, short y) {
         try {
-            check(glWindowPos2s).invoke(x, y);
+            check(glWindowPos2s).invokeExact(x, y);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos2sv(Addressable v) {
         try {
-            check(glWindowPos2sv).invoke(v);
+            check(glWindowPos2sv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos2sv(short[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos2sv(session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void windowPos2sv(SegmentAllocator session, short[] v) {
+        windowPos2sv(session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void windowPos3d(double x, double y, double z) {
         try {
-            check(glWindowPos3d).invoke(x, y, z);
+            check(glWindowPos3d).invokeExact(x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos3dv(Addressable v) {
         try {
-            check(glWindowPos3dv).invoke(v);
+            check(glWindowPos3dv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos3dv(double[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos3dv(session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void windowPos3dv(SegmentAllocator session, double[] v) {
+        windowPos3dv(session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void windowPos3f(float x, float y, float z) {
         try {
-            check(glWindowPos3f).invoke(x, y, z);
+            check(glWindowPos3f).invokeExact(x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos3fv(Addressable v) {
         try {
-            check(glWindowPos3fv).invoke(v);
+            check(glWindowPos3fv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos3fv(float[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos3fv(session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void windowPos3fv(SegmentAllocator session, float[] v) {
+        windowPos3fv(session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void windowPos3i(int x, int y, int z) {
         try {
-            check(glWindowPos3i).invoke(x, y, z);
+            check(glWindowPos3i).invokeExact(x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos3iv(Addressable v) {
         try {
-            check(glWindowPos3iv).invoke(v);
+            check(glWindowPos3iv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos3iv(int[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos3iv(session.allocateArray(JAVA_INT, v));
-        }
+    public static void windowPos3iv(SegmentAllocator session, int[] v) {
+        windowPos3iv(session.allocateArray(JAVA_INT, v));
     }
 
     public static void windowPos3s(short x, short y, short z) {
         try {
-            check(glWindowPos3s).invoke(x, y, z);
+            check(glWindowPos3s).invokeExact(x, y, z);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void windowPos3sv(Addressable v) {
         try {
-            check(glWindowPos3sv).invoke(v);
+            check(glWindowPos3sv).invokeExact(v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void windowPos3sv(short[] v) {
-        try (var session = MemorySession.openShared()) {
-            windowPos3sv(session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void windowPos3sv(SegmentAllocator session, short[] v) {
+        windowPos3sv(session.allocateArray(JAVA_SHORT, v));
     }
 }

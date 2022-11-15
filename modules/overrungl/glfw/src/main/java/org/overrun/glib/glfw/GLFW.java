@@ -32,6 +32,7 @@ import org.overrun.glib.util.value.*;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
@@ -916,9 +917,9 @@ public class GLFW {
      */
     public static boolean init() {
         try {
-            return (int) glfwInit.invoke() != FALSE;
+            return (int) glfwInit.invokeExact() != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -947,9 +948,9 @@ public class GLFW {
      */
     public static void terminate() {
         try {
-            glfwTerminate.invoke();
+            glfwTerminate.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -975,9 +976,9 @@ public class GLFW {
      */
     public static void initHint(int hint, int value) {
         try {
-            glfwInitHint.invoke(hint, value);
+            glfwInitHint.invokeExact(hint, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1000,9 +1001,9 @@ public class GLFW {
      */
     public static void ngetVersion(Addressable major, Addressable minor, Addressable rev) {
         try {
-            glfwGetVersion.invoke(major, minor, rev);
+            glfwGetVersion.invokeExact(major, minor, rev);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1018,9 +1019,9 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pMajor = major != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var pMinor = minor != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var pRev = rev != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pMajor = major != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pMinor = minor != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pRev = rev != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetVersion(pMajor, pMinor, pRev);
             if (major != null && major.length > 0) {
                 major[0] = pMajor.get(JAVA_INT, 0);
@@ -1046,9 +1047,9 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pMajor = stack.calloc(4);
-            var pMinor = stack.calloc(4);
-            var pRev = stack.calloc(4);
+            var pMajor = stack.calloc(JAVA_INT);
+            var pMinor = stack.calloc(JAVA_INT);
+            var pRev = stack.calloc(JAVA_INT);
             ngetVersion(pMajor, pMinor, pRev);
             return new ValueInt3(pMajor.get(JAVA_INT, 0),
                 pMinor.get(JAVA_INT, 0),
@@ -1079,9 +1080,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetVersionString() {
         try {
-            return (MemoryAddress) glfwGetVersionString.invoke();
+            return (MemoryAddress) glfwGetVersionString.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1116,9 +1117,9 @@ public class GLFW {
      */
     public static int ngetError(Addressable description) {
         try {
-            return (int) glfwGetError.invoke(description);
+            return (int) glfwGetError.invokeExact(description);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1145,12 +1146,12 @@ public class GLFW {
      * @return the error description pointer. and the last error code for the calling thread, or {@link #NO_ERROR} (zero)
      * @see #ngetError(Addressable) ngetError
      */
-    public static ValueObjInt<String> getError() {
+    public static Value2.OfObjInt<String> getError() {
         var pDesc = malloc(ADDRESS);
         int err = ngetError(pDesc);
         String desc = pDesc.get(ADDRESS, 0).getUtf8String(0);
         free(pDesc);
-        return new ValueObjInt<>(desc, err);
+        return new Value2.OfObjInt<>(desc, err);
     }
 
     /**
@@ -1183,9 +1184,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetErrorCallback(Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetErrorCallback.invoke(callback);
+            return (MemoryAddress) glfwSetErrorCallback.invokeExact(callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1220,9 +1221,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetMonitors(Addressable count) {
         try {
-            return (MemoryAddress) glfwGetMonitors.invoke(count);
+            return (MemoryAddress) glfwGetMonitors.invokeExact(count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1237,7 +1238,7 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pCount = stack.calloc(4);
+            var pCount = stack.calloc(JAVA_INT);
             var pMonitors = ngetMonitors(pCount);
             if (pMonitors == MemoryAddress.NULL) {
                 return null;
@@ -1264,9 +1265,9 @@ public class GLFW {
      */
     public static MemoryAddress getPrimaryMonitor() {
         try {
-            return (MemoryAddress) glfwGetPrimaryMonitor.invoke();
+            return (MemoryAddress) glfwGetPrimaryMonitor.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1288,9 +1289,9 @@ public class GLFW {
      */
     public static void ngetMonitorPos(Addressable monitor, Addressable xpos, Addressable ypos) {
         try {
-            glfwGetMonitorPos.invoke(monitor, xpos, ypos);
+            glfwGetMonitorPos.invokeExact(monitor, xpos, ypos);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1306,8 +1307,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var py = ypos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var px = xpos != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorPos(monitor, px, py);
             if (xpos != null && xpos.length > 0) {
                 xpos[0] = px.get(JAVA_INT, 0);
@@ -1327,14 +1328,14 @@ public class GLFW {
      * @return the monitor xy-coordinate
      * @see #ngetMonitorPos(Addressable, Addressable, Addressable) ngetMonitorPos
      */
-    public static ValueInt2 getMonitorPos(Addressable monitor) {
+    public static Value2.OfInt getMonitorPos(Addressable monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(4);
-            var py = stack.calloc(4);
+            var px = stack.calloc(JAVA_INT);
+            var py = stack.calloc(JAVA_INT);
             ngetMonitorPos(monitor, px, py);
-            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+            return new Value2.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1364,9 +1365,9 @@ public class GLFW {
      */
     public static void ngetMonitorWorkarea(Addressable monitor, Addressable xpos, Addressable ypos, Addressable width, Addressable height) {
         try {
-            glfwGetMonitorWorkarea.invoke(monitor, xpos, ypos, width, height);
+            glfwGetMonitorWorkarea.invokeExact(monitor, xpos, ypos, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1384,10 +1385,10 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var py = ypos != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var pw = width != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var ph = height != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var px = xpos != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pw = width != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var ph = height != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             if (xpos != null && xpos.length > 0) {
                 xpos[0] = px.get(JAVA_INT, 0);
@@ -1417,10 +1418,10 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(4);
-            var py = stack.calloc(4);
-            var pw = stack.calloc(4);
-            var ph = stack.calloc(4);
+            var px = stack.calloc(JAVA_INT);
+            var py = stack.calloc(JAVA_INT);
+            var pw = stack.calloc(JAVA_INT);
+            var ph = stack.calloc(JAVA_INT);
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             return new ValueInt4(px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
@@ -1457,9 +1458,9 @@ public class GLFW {
      */
     public static void ngetMonitorPhysicalSize(Addressable monitor, Addressable widthMM, Addressable heightMM) {
         try {
-            glfwGetMonitorPhysicalSize.invoke(monitor, widthMM, heightMM);
+            glfwGetMonitorPhysicalSize.invokeExact(monitor, widthMM, heightMM);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1477,8 +1478,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = widthMM != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var ph = heightMM != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pw = widthMM != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var ph = heightMM != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetMonitorPhysicalSize(monitor, pw, ph);
             if (widthMM != null && widthMM.length > 0) {
                 widthMM[0] = pw.get(JAVA_INT, 0);
@@ -1498,14 +1499,14 @@ public class GLFW {
      * @return the width and height, in millimetres, of the monitor's display area.
      * @see #ngetMonitorPhysicalSize(Addressable, Addressable, Addressable) ngetMonitorPhysicalSize
      */
-    public static ValueInt2 getMonitorPhysicalSize(Addressable monitor) {
+    public static Value2.OfInt getMonitorPhysicalSize(Addressable monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = stack.calloc(4);
-            var ph = stack.calloc(4);
+            var pw = stack.calloc(JAVA_INT);
+            var ph = stack.calloc(JAVA_INT);
             ngetMonitorPhysicalSize(monitor, pw, ph);
-            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+            return new Value2.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1536,9 +1537,9 @@ public class GLFW {
      */
     public static void ngetMonitorContentScale(Addressable monitor, Addressable xscale, Addressable yscale) {
         try {
-            glfwGetMonitorContentScale.invoke(monitor, xscale, yscale);
+            glfwGetMonitorContentScale.invokeExact(monitor, xscale, yscale);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1554,8 +1555,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xscale != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var py = yscale != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var px = xscale != null ? stack.calloc(JAVA_FLOAT) : MemoryAddress.NULL;
+            var py = yscale != null ? stack.calloc(JAVA_FLOAT) : MemoryAddress.NULL;
             ngetMonitorContentScale(monitor, px, py);
             if (xscale != null && xscale.length > 0) {
                 xscale[0] = px.get(JAVA_FLOAT, 0);
@@ -1575,14 +1576,14 @@ public class GLFW {
      * @return the xy-axis content scale
      * @see #ngetMonitorContentScale(Addressable, Addressable, Addressable) ngetMonitorContentScale
      */
-    public static ValueFloat2 getMonitorContentScale(Addressable monitor) {
+    public static Value2.OfFloat getMonitorContentScale(Addressable monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(4);
-            var py = stack.calloc(4);
+            var px = stack.calloc(JAVA_FLOAT);
+            var py = stack.calloc(JAVA_FLOAT);
             ngetMonitorContentScale(monitor, px, py);
-            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
+            return new Value2.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1606,9 +1607,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetMonitorName(Addressable monitor) {
         try {
-            return (MemoryAddress) glfwGetMonitorName.invoke(monitor);
+            return (MemoryAddress) glfwGetMonitorName.invokeExact(monitor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1645,9 +1646,9 @@ public class GLFW {
      */
     public static void setMonitorUserPointer(Addressable monitor, Addressable pointer) {
         try {
-            glfwSetMonitorUserPointer.invoke(monitor, pointer);
+            glfwSetMonitorUserPointer.invokeExact(monitor, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1668,9 +1669,9 @@ public class GLFW {
      */
     public static MemoryAddress getMonitorUserPointer(Addressable monitor) {
         try {
-            return (MemoryAddress) glfwGetMonitorUserPointer.invoke(monitor);
+            return (MemoryAddress) glfwGetMonitorUserPointer.invokeExact(monitor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1693,9 +1694,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetMonitorCallback(Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetMonitorCallback.invoke(callback);
+            return (MemoryAddress) glfwSetMonitorCallback.invokeExact(callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1737,9 +1738,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetVideoModes(Addressable monitor, Addressable count) {
         try {
-            return (MemoryAddress) glfwGetVideoModes.invoke(monitor, count);
+            return (MemoryAddress) glfwGetVideoModes.invokeExact(monitor, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1756,7 +1757,7 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pCount = stack.calloc(4);
+            var pCount = stack.calloc(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
             if (pModes == MemoryAddress.NULL) {
                 return null;
@@ -1787,29 +1788,28 @@ public class GLFW {
      */
     public static MemoryAddress ngetVideoMode(Addressable monitor) {
         try {
-            return (MemoryAddress) glfwGetVideoMode.invoke(monitor);
+            return (MemoryAddress) glfwGetVideoMode.invokeExact(monitor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Returns the current mode of the specified monitor.
      *
+     * @param session The memory session to hold the result.
      * @param monitor The monitor to query.
      * @return The current mode of the monitor, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoMode(Addressable) ngetVideoMode
      */
     @Nullable
-    public static GLFWVidMode.Value getVideoMode(Addressable monitor) {
+    public static GLFWVidMode.Value getVideoMode(MemorySession session, Addressable monitor) {
         var pMode = ngetVideoMode(monitor);
         if (pMode == MemoryAddress.NULL) {
             return null;
         }
-        try (var session = MemorySession.openShared()) {
-            return new GLFWVidMode(pMode, session).constCast();
-        }
+        return new GLFWVidMode(pMode, session).constCast();
     }
 
     /**
@@ -1837,9 +1837,9 @@ public class GLFW {
      */
     public static void setGamma(Addressable monitor, float gamma) {
         try {
-            glfwSetGamma.invoke(monitor, gamma);
+            glfwSetGamma.invokeExact(monitor, gamma);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1864,9 +1864,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetGammaRamp(Addressable monitor) {
         try {
-            return (MemoryAddress) glfwGetGammaRamp.invoke(monitor);
+            return (MemoryAddress) glfwGetGammaRamp.invokeExact(monitor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1917,9 +1917,9 @@ public class GLFW {
      */
     public static void nsetGammaRamp(Addressable monitor, Addressable ramp) {
         try {
-            glfwSetGammaRamp.invoke(monitor, ramp);
+            glfwSetGammaRamp.invokeExact(monitor, ramp);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1947,9 +1947,9 @@ public class GLFW {
      */
     public static void defaultWindowHints() {
         try {
-            glfwDefaultWindowHints.invoke();
+            glfwDefaultWindowHints.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -1981,9 +1981,9 @@ public class GLFW {
      */
     public static void windowHint(int hint, int value) {
         try {
-            glfwWindowHint.invoke(hint, value);
+            glfwWindowHint.invokeExact(hint, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2028,23 +2028,22 @@ public class GLFW {
      */
     public static void nwindowHintString(int hint, Addressable value) {
         try {
-            glfwWindowHintString.invoke(hint, value);
+            glfwWindowHintString.invokeExact(hint, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Sets the specified window hint to the desired value.
      *
-     * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
-     * @param value The new value of the window hint.
+     * @param session The allocator.
+     * @param hint    The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value   The new value of the window hint.
      * @see #nwindowHintString(int, Addressable) nwindowHintString
      */
-    public static void windowHintString(int hint, String value) {
-        try (var session = MemorySession.openShared()) {
-            nwindowHintString(hint, session.allocateUtf8String(value));
-        }
+    public static void windowHintString(SegmentAllocator session, int hint, String value) {
+        nwindowHintString(hint, session.allocateUtf8String(value));
     }
 
     /**
@@ -2200,15 +2199,16 @@ public class GLFW {
      */
     public static MemoryAddress ncreateWindow(int width, int height, Addressable title, Addressable monitor, Addressable share) {
         try {
-            return (MemoryAddress) glfwCreateWindow.invoke(width, height, title, monitor, share);
+            return (MemoryAddress) glfwCreateWindow.invokeExact(width, height, title, monitor, share);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Creates a window and its associated context.
      *
+     * @param session The allocator.
      * @param width   The desired width, in screen coordinates, of the window.
      *                This must be greater than zero.
      * @param height  The desired height, in screen coordinates, of the window.
@@ -2222,10 +2222,8 @@ public class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateWindow(int, int, Addressable, Addressable, Addressable) ncreateWindow
      */
-    public static MemoryAddress createWindow(int width, int height, String title, Addressable monitor, Addressable share) {
-        try (var session = MemorySession.openShared()) {
-            return ncreateWindow(width, height, session.allocateUtf8String(title), monitor, share);
-        }
+    public static MemoryAddress createWindow(SegmentAllocator session, int width, int height, String title, Addressable monitor, Addressable share) {
+        return ncreateWindow(width, height, session.allocateUtf8String(title), monitor, share);
     }
 
     /**
@@ -2248,9 +2246,9 @@ public class GLFW {
      */
     public static void destroyWindow(Addressable window) {
         try {
-            glfwDestroyWindow.invoke(window);
+            glfwDestroyWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2267,9 +2265,9 @@ public class GLFW {
      */
     public static boolean windowShouldClose(Addressable window) {
         try {
-            return (int) glfwWindowShouldClose.invoke(window) != FALSE;
+            return (int) glfwWindowShouldClose.invokeExact(window) != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2288,9 +2286,9 @@ public class GLFW {
      */
     public static void setWindowShouldClose(Addressable window, boolean value) {
         try {
-            glfwSetWindowShouldClose.invoke(window, value ? TRUE : FALSE);
+            glfwSetWindowShouldClose.invokeExact(window, value ? TRUE : FALSE);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2310,23 +2308,22 @@ public class GLFW {
      */
     public static void nsetWindowTitle(Addressable window, Addressable title) {
         try {
-            glfwSetWindowTitle.invoke(window, title);
+            glfwSetWindowTitle.invokeExact(window, title);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Sets the title of the specified window.
      *
-     * @param window The window whose title to change.
-     * @param title  The UTF-8 encoded window title.
+     * @param session The allocator.
+     * @param window  The window whose title to change.
+     * @param title   The UTF-8 encoded window title.
      * @see #nsetWindowTitle(Addressable, Addressable) nsetWindowTitle
      */
-    public static void setWindowTitle(Addressable window, String title) {
-        try (var session = MemorySession.openShared()) {
-            nsetWindowTitle(window, session.allocateUtf8String(title));
-        }
+    public static void setWindowTitle(SegmentAllocator session, Addressable window, String title) {
+        nsetWindowTitle(window, session.allocateUtf8String(title));
     }
 
     /**
@@ -2367,9 +2364,9 @@ public class GLFW {
      */
     public static void nsetWindowIcon(Addressable window, int count, Addressable images) {
         try {
-            glfwSetWindowIcon.invoke(window, count, images);
+            glfwSetWindowIcon.invokeExact(window, count, images);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2431,9 +2428,9 @@ public class GLFW {
      */
     public static void ngetWindowPos(Addressable window, Addressable xpos, Addressable ypos) {
         try {
-            glfwGetWindowPos.invoke(window, xpos, ypos);
+            glfwGetWindowPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2450,8 +2447,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var py = ypos != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var px = xpos != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowPos(window, px, py);
             if (xpos != null && xpos.length > 1) {
                 xpos[0] = px.get(JAVA_INT, 0);
@@ -2470,14 +2467,14 @@ public class GLFW {
      * @param window The window to query.
      * @return the xy-coordinate of the upper-left corner of the content area.
      */
-    public static ValueInt2 getWindowPos(Addressable window) {
+    public static Value2.OfInt getWindowPos(Addressable window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(4);
-            var py = stack.calloc(4);
+            var px = stack.calloc(JAVA_INT);
+            var py = stack.calloc(JAVA_INT);
             ngetWindowPos(window, px, py);
-            return new ValueInt2(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+            return new Value2.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2509,9 +2506,9 @@ public class GLFW {
      */
     public static void setWindowPos(Addressable window, int xpos, int ypos) {
         try {
-            glfwSetWindowPos.invoke(window, xpos, ypos);
+            glfwSetWindowPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2538,9 +2535,9 @@ public class GLFW {
      */
     public static void ngetWindowSize(Addressable window, Addressable width, Addressable height) {
         try {
-            glfwGetWindowSize.invoke(window, width, height);
+            glfwGetWindowSize.invokeExact(window, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2558,8 +2555,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = width != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var ph = height != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pw = width != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var ph = height != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowSize(window, pw, ph);
             if (width != null && width.length > 0) {
                 width[0] = pw.get(JAVA_INT, 0);
@@ -2579,14 +2576,14 @@ public class GLFW {
      * @return the width and height, in screen coordinates, of the content area.
      * @see #ngetWindowSize(Addressable, Addressable, Addressable) ngetWindowSize
      */
-    public static ValueInt2 getWindowSize(Addressable window) {
+    public static Value2.OfInt getWindowSize(Addressable window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = stack.calloc(4);
-            var ph = stack.calloc(4);
+            var pw = stack.calloc(JAVA_INT);
+            var ph = stack.calloc(JAVA_INT);
             ngetWindowSize(window, pw, ph);
-            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+            return new Value2.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2627,9 +2624,9 @@ public class GLFW {
      */
     public static void setWindowSizeLimits(Addressable window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
         try {
-            glfwSetWindowSizeLimits.invoke(window, minWidth, minHeight, maxWidth, maxHeight);
+            glfwSetWindowSizeLimits.invokeExact(window, minWidth, minHeight, maxWidth, maxHeight);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2668,9 +2665,9 @@ public class GLFW {
      */
     public static void setWindowAspectRatio(Addressable window, int numer, int denom) {
         try {
-            glfwSetWindowAspectRatio.invoke(window, numer, denom);
+            glfwSetWindowAspectRatio.invokeExact(window, numer, denom);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2707,9 +2704,9 @@ public class GLFW {
      */
     public static void setWindowSize(Addressable window, int width, int height) {
         try {
-            glfwSetWindowSize.invoke(window, width, height);
+            glfwSetWindowSize.invokeExact(window, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2735,9 +2732,9 @@ public class GLFW {
      */
     public static void ngetFramebufferSize(Addressable window, Addressable width, Addressable height) {
         try {
-            glfwGetFramebufferSize.invoke(window, width, height);
+            glfwGetFramebufferSize.invokeExact(window, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2755,8 +2752,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = width != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var ph = height != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pw = width != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var ph = height != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetFramebufferSize(window, pw, ph);
             if (width != null && width.length > 0) {
                 width[0] = pw.get(JAVA_INT, 0);
@@ -2776,14 +2773,14 @@ public class GLFW {
      * @return the width and height, in pixels, of the framebuffer.
      * @see #ngetFramebufferSize(Addressable, Addressable, Addressable) ngetFramebufferSize
      */
-    public static ValueInt2 getFramebufferSize(Addressable window) {
+    public static Value2.OfInt getFramebufferSize(Addressable window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = stack.calloc(4);
-            var ph = stack.calloc(4);
+            var pw = stack.calloc(JAVA_INT);
+            var ph = stack.calloc(JAVA_INT);
             ngetFramebufferSize(window, pw, ph);
-            return new ValueInt2(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+            return new Value2.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2820,9 +2817,9 @@ public class GLFW {
      */
     public static void ngetWindowFrameSize(Addressable window, Addressable left, Addressable top, Addressable right, Addressable bottom) {
         try {
-            glfwGetWindowFrameSize.invoke(window, left, top, right, bottom);
+            glfwGetWindowFrameSize.invokeExact(window, left, top, right, bottom);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2844,10 +2841,10 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pl = left != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var pt = top != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var pr = right != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var pb = bottom != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var pl = left != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pt = top != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pr = right != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
+            var pb = bottom != null ? stack.calloc(JAVA_INT) : MemoryAddress.NULL;
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             if (left != null && left.length > 0) {
                 left[0] = pl.get(JAVA_INT, 0);
@@ -2878,10 +2875,10 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pl = stack.calloc(4);
-            var pt = stack.calloc(4);
-            var pr = stack.calloc(4);
-            var pb = stack.calloc(4);
+            var pl = stack.calloc(JAVA_INT);
+            var pt = stack.calloc(JAVA_INT);
+            var pr = stack.calloc(JAVA_INT);
+            var pb = stack.calloc(JAVA_INT);
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             return new ValueInt4(pl.get(JAVA_INT, 0),
                 pt.get(JAVA_INT, 0),
@@ -2918,9 +2915,9 @@ public class GLFW {
      */
     public static void ngetWindowContentScale(Addressable window, Addressable xscale, Addressable yscale) {
         try {
-            glfwGetWindowContentScale.invoke(window, xscale, yscale);
+            glfwGetWindowContentScale.invokeExact(window, xscale, yscale);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -2936,8 +2933,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xscale != null ? stack.calloc(4) : MemoryAddress.NULL;
-            var py = yscale != null ? stack.calloc(4) : MemoryAddress.NULL;
+            var px = xscale != null ? stack.calloc(JAVA_FLOAT) : MemoryAddress.NULL;
+            var py = yscale != null ? stack.calloc(JAVA_FLOAT) : MemoryAddress.NULL;
             ngetWindowContentScale(window, px, py);
             if (xscale != null && xscale.length > 0) {
                 xscale[0] = px.get(JAVA_FLOAT, 0);
@@ -2957,14 +2954,14 @@ public class GLFW {
      * @return the xy-axis content scale.
      * @see #ngetWindowContentScale(Addressable, Addressable, Addressable) ngetWindowContentScale
      */
-    public static ValueFloat2 getWindowContentScale(Addressable window) {
+    public static Value2.OfFloat getWindowContentScale(Addressable window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(4);
-            var py = stack.calloc(4);
+            var px = stack.calloc(JAVA_FLOAT);
+            var py = stack.calloc(JAVA_FLOAT);
             ngetWindowContentScale(window, px, py);
-            return new ValueFloat2(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
+            return new Value2.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2990,9 +2987,9 @@ public class GLFW {
      */
     public static float getWindowOpacity(Addressable window) {
         try {
-            return (float) glfwGetWindowOpacity.invoke(window);
+            return (float) glfwGetWindowOpacity.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3018,9 +3015,9 @@ public class GLFW {
      */
     public static void setWindowOpacity(Addressable window, float opacity) {
         try {
-            glfwSetWindowOpacity.invoke(window, opacity);
+            glfwSetWindowOpacity.invokeExact(window, opacity);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3044,9 +3041,9 @@ public class GLFW {
      */
     public static void iconifyWindow(Addressable window) {
         try {
-            glfwIconifyWindow.invoke(window);
+            glfwIconifyWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3069,9 +3066,9 @@ public class GLFW {
      */
     public static void restoreWindow(Addressable window) {
         try {
-            glfwRestoreWindow.invoke(window);
+            glfwRestoreWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3092,9 +3089,9 @@ public class GLFW {
      */
     public static void maximizeWindow(Addressable window) {
         try {
-            glfwMaximizeWindow.invoke(window);
+            glfwMaximizeWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3122,9 +3119,9 @@ public class GLFW {
      */
     public static void showWindow(Addressable window) {
         try {
-            glfwShowWindow.invoke(window);
+            glfwShowWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3143,9 +3140,9 @@ public class GLFW {
      */
     public static void hideWindow(Addressable window) {
         try {
-            glfwHideWindow.invoke(window);
+            glfwHideWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3179,9 +3176,9 @@ public class GLFW {
      */
     public static void focusWindow(Addressable window) {
         try {
-            glfwFocusWindow.invoke(window);
+            glfwFocusWindow.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3204,9 +3201,9 @@ public class GLFW {
      */
     public static void requestWindowAttention(Addressable window) {
         try {
-            glfwRequestWindowAttention.invoke(window);
+            glfwRequestWindowAttention.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3225,9 +3222,9 @@ public class GLFW {
      */
     public static MemoryAddress getWindowMonitor(Addressable window) {
         try {
-            return (MemoryAddress) glfwGetWindowMonitor.invoke(window);
+            return (MemoryAddress) glfwGetWindowMonitor.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3281,9 +3278,9 @@ public class GLFW {
      */
     public static void setWindowMonitor(Addressable window, Addressable monitor, int xpos, int ypos, int width, int height, int refreshRate) {
         try {
-            glfwGetWindowMonitor.invoke(window, monitor, xpos, ypos, width, height, refreshRate);
+            glfwGetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3316,9 +3313,9 @@ public class GLFW {
      */
     public static int getWindowAttrib(Addressable window, int attrib) {
         try {
-            return (int) glfwGetWindowAttrib.invoke(window, attrib);
+            return (int) glfwGetWindowAttrib.invokeExact(window, attrib);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3351,9 +3348,9 @@ public class GLFW {
      */
     public static void setWindowAttrib(Addressable window, int attrib, boolean value) {
         try {
-            glfwSetWindowAttrib.invoke(window, attrib, value ? TRUE : FALSE);
+            glfwSetWindowAttrib.invokeExact(window, attrib, value ? TRUE : FALSE);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3373,9 +3370,9 @@ public class GLFW {
      */
     public static void setWindowUserPointer(Addressable window, Addressable pointer) {
         try {
-            glfwSetWindowUserPointer.invoke(window, pointer);
+            glfwSetWindowUserPointer.invokeExact(window, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3393,9 +3390,9 @@ public class GLFW {
      */
     public static MemoryAddress getWindowUserPointer(Addressable window) {
         try {
-            return (MemoryAddress) glfwSetWindowUserPointer.invoke(window);
+            return (MemoryAddress) glfwSetWindowUserPointer.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3422,9 +3419,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowPosCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowPosCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowPosCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3462,9 +3459,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowSizeCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowSizeCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowSizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3509,9 +3506,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowCloseCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowCloseCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowCloseCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3553,9 +3550,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowRefreshCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowRefreshCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowRefreshCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3598,9 +3595,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowFocusCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowFocusCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowFocusCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3639,9 +3636,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowIconifyCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowIconifyCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowIconifyCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3678,9 +3675,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowMaximizeCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowMaximizeCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowMaximizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3717,9 +3714,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetFramebufferSizeCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetFramebufferSizeCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetFramebufferSizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3757,9 +3754,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetWindowContentScaleCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetWindowContentScaleCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetWindowContentScaleCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3809,9 +3806,9 @@ public class GLFW {
      */
     public static void pollEvents() {
         try {
-            glfwPollEvents.invoke();
+            glfwPollEvents.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3853,9 +3850,9 @@ public class GLFW {
      */
     public static void waitEvents() {
         try {
-            glfwWaitEvents.invoke();
+            glfwWaitEvents.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3900,9 +3897,9 @@ public class GLFW {
      */
     public static void waitEventsTimeout(double timeout) {
         try {
-            glfwWaitEventsTimeout.invoke(timeout);
+            glfwWaitEventsTimeout.invokeExact(timeout);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3920,9 +3917,9 @@ public class GLFW {
      */
     public static void postEmptyEvents() {
         try {
-            glfwPostEmptyEvent.invoke();
+            glfwPostEmptyEvent.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -3945,9 +3942,9 @@ public class GLFW {
      */
     public static int getInputMode(Addressable window, int mode) {
         try {
-            return (int) glfwGetInputMode.invoke(window, mode);
+            return (int) glfwGetInputMode.invokeExact(window, mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4009,9 +4006,9 @@ public class GLFW {
      */
     public static void setInputMode(Addressable window, int mode, int value) {
         try {
-            glfwSetInputMode.invoke(window, mode, value);
+            glfwSetInputMode.invokeExact(window, mode, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4037,9 +4034,9 @@ public class GLFW {
      */
     public static boolean rawMouseMotionSupported() {
         try {
-            return (int) glfwRawMouseMotionSupported.invoke() != FALSE;
+            return (int) glfwRawMouseMotionSupported.invokeExact() != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4106,9 +4103,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetKeyName(int key, int scancode) {
         try {
-            return (MemoryAddress) glfwGetKeyName.invoke(key, scancode);
+            return (MemoryAddress) glfwGetKeyName.invokeExact(key, scancode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4143,9 +4140,9 @@ public class GLFW {
      */
     public static int getKeyScancode(int key) {
         try {
-            return (int) glfwGetKeyScancode.invoke(key);
+            return (int) glfwGetKeyScancode.invokeExact(key);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4182,9 +4179,9 @@ public class GLFW {
      */
     public static int getKey(Addressable window, int key) {
         try {
-            return (int) glfwGetKey.invoke(window, key);
+            return (int) glfwGetKey.invokeExact(window, key);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4209,9 +4206,9 @@ public class GLFW {
      */
     public static int getMouseButton(Addressable window, int button) {
         try {
-            return (int) glfwGetMouseButton.invoke(window, button);
+            return (int) glfwGetMouseButton.invokeExact(window, button);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4246,9 +4243,9 @@ public class GLFW {
      */
     public static void ngetCursorPos(Addressable window, Addressable xpos, Addressable ypos) {
         try {
-            glfwGetCursorPos.invoke(window, xpos, ypos);
+            glfwGetCursorPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4267,8 +4264,8 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(8) : MemoryAddress.NULL;
-            var py = ypos != null ? stack.calloc(8) : MemoryAddress.NULL;
+            var px = xpos != null ? stack.calloc(JAVA_DOUBLE) : MemoryAddress.NULL;
+            var py = ypos != null ? stack.calloc(JAVA_DOUBLE) : MemoryAddress.NULL;
             ngetCursorPos(window, px, py);
             if (xpos != null && xpos.length > 0) {
                 xpos[0] = px.get(JAVA_DOUBLE, 0);
@@ -4289,14 +4286,14 @@ public class GLFW {
      * @return the cursor xy-coordinate, relative to the left and top edge of the content area.
      * @see #ngetCursorPos(Addressable, Addressable, Addressable) ngetCursorPos
      */
-    public static ValueDouble2 getCursorPos(Addressable window) {
+    public static Value2.OfDouble getCursorPos(Addressable window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(8);
-            var py = stack.calloc(8);
+            var px = stack.calloc(JAVA_DOUBLE);
+            var py = stack.calloc(JAVA_DOUBLE);
             ngetCursorPos(window, px, py);
-            return new ValueDouble2(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
+            return new Value2.OfDouble(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -4334,9 +4331,9 @@ public class GLFW {
      */
     public static void setCursorPos(Addressable window, double xpos, double ypos) {
         try {
-            glfwSetCursorPos.invoke(window, xpos, ypos);
+            glfwSetCursorPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4370,9 +4367,9 @@ public class GLFW {
      */
     public static MemoryAddress ncreateCursor(Addressable image, int xhot, int yhot) {
         try {
-            return (MemoryAddress) glfwCreateCursor.invoke(image, xhot, yhot);
+            return (MemoryAddress) glfwCreateCursor.invokeExact(image, xhot, yhot);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4407,9 +4404,9 @@ public class GLFW {
      */
     public static MemoryAddress createStandardCursor(int shape) {
         try {
-            return (MemoryAddress) glfwCreateStandardCursor.invoke(shape);
+            return (MemoryAddress) glfwCreateStandardCursor.invokeExact(shape);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4432,9 +4429,9 @@ public class GLFW {
      */
     public static void destroyCursor(Addressable cursor) {
         try {
-            glfwDestroyCursor.invoke(cursor);
+            glfwDestroyCursor.invokeExact(cursor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4458,9 +4455,9 @@ public class GLFW {
      */
     public static void setCursor(Addressable window, Addressable cursor) {
         try {
-            glfwSetCursor.invoke(window, cursor);
+            glfwSetCursor.invokeExact(window, cursor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4503,9 +4500,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetKeyCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetKeyCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetKeyCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4554,9 +4551,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetCharCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetCharCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetCharCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4605,9 +4602,9 @@ public class GLFW {
     @Deprecated(forRemoval = true)
     public static MemoryAddress nsetCharModsCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetCharModsCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetCharModsCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4652,9 +4649,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetMouseButtonCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetMouseButtonCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetMouseButtonCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4693,9 +4690,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetCursorPosCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetCursorPosCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetCursorPosCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4733,9 +4730,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetCursorEnterCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetCursorEnterCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetCursorEnterCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4776,9 +4773,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetScrollCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetScrollCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetScrollCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4821,9 +4818,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetDropCallback(Addressable window, Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetDropCallback.invoke(window, callback);
+            return (MemoryAddress) glfwSetDropCallback.invokeExact(window, callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4858,9 +4855,9 @@ public class GLFW {
      */
     public static boolean joystickPresent(int jid) {
         try {
-            return (int) glfwJoystickPresent.invoke(jid) != FALSE;
+            return (int) glfwJoystickPresent.invokeExact(jid) != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4890,9 +4887,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetJoystickAxes(int jid, Addressable count) {
         try {
-            return (MemoryAddress) glfwGetJoystickAxes.invoke(jid, count);
+            return (MemoryAddress) glfwGetJoystickAxes.invokeExact(jid, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4911,7 +4908,7 @@ public class GLFW {
         MemoryAddress pAxes;
         final int count;
         try {
-            var pCount = stack.calloc(4);
+            var pCount = stack.calloc(JAVA_INT);
             pAxes = ngetJoystickAxes(jid, pCount);
             count = pCount.get(JAVA_INT, 0);
         } finally {
@@ -4953,9 +4950,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetJoystickButtons(int jid, Addressable count) {
         try {
-            return (MemoryAddress) glfwGetJoystickButtons.invoke(jid, count);
+            return (MemoryAddress) glfwGetJoystickButtons.invokeExact(jid, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -4973,7 +4970,7 @@ public class GLFW {
         MemoryAddress pButtons;
         final int count;
         try {
-            var pCount = stack.calloc(4);
+            var pCount = stack.calloc(JAVA_INT);
             pButtons = ngetJoystickButtons(jid, pCount);
             count = pCount.get(JAVA_INT, 0);
         } finally {
@@ -5035,9 +5032,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetJoystickHats(int jid, Addressable count) {
         try {
-            return (MemoryAddress) glfwGetJoystickHats.invoke(jid, count);
+            return (MemoryAddress) glfwGetJoystickHats.invokeExact(jid, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5053,7 +5050,7 @@ public class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pCount = stack.calloc(4);
+            var pCount = stack.calloc(JAVA_INT);
             var pHats = ngetJoystickHats(jid, pCount);
             return RuntimeHelper.toArray(pHats, new byte[pCount.get(JAVA_INT, 0)]);
         } finally {
@@ -5084,9 +5081,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetJoystickName(int jid) {
         try {
-            return (MemoryAddress) glfwGetJoystickName.invoke(jid);
+            return (MemoryAddress) glfwGetJoystickName.invokeExact(jid);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5137,9 +5134,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetJoystickGUID(int jid) {
         try {
-            return (MemoryAddress) glfwGetJoystickGUID.invoke(jid);
+            return (MemoryAddress) glfwGetJoystickGUID.invokeExact(jid);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5176,9 +5173,9 @@ public class GLFW {
      */
     public static void setJoystickUserPointer(int jid, Addressable pointer) {
         try {
-            glfwSetJoystickUserPointer.invoke(jid, pointer);
+            glfwSetJoystickUserPointer.invokeExact(jid, pointer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5199,9 +5196,9 @@ public class GLFW {
      */
     public static MemoryAddress getJoystickUserPointer(int jid) {
         try {
-            return (MemoryAddress) glfwGetJoystickUserPointer.invoke(jid);
+            return (MemoryAddress) glfwGetJoystickUserPointer.invokeExact(jid);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5226,9 +5223,9 @@ public class GLFW {
      */
     public static boolean joystickIsGamepad(int jid) {
         try {
-            return (int) glfwJoystickIsGamepad.invoke(jid) != FALSE;
+            return (int) glfwJoystickIsGamepad.invokeExact(jid) != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5258,9 +5255,9 @@ public class GLFW {
      */
     public static MemoryAddress nsetJoystickCallback(Addressable callback) {
         try {
-            return (MemoryAddress) glfwSetJoystickCallback.invoke(callback);
+            return (MemoryAddress) glfwSetJoystickCallback.invokeExact(callback);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5305,24 +5302,23 @@ public class GLFW {
      */
     public static boolean nupdateGamepadMappings(Addressable string) {
         try {
-            return (int) glfwUpdateGamepadMappings.invoke(string) != FALSE;
+            return (int) glfwUpdateGamepadMappings.invokeExact(string) != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Adds the specified SDL_GameControllerDB gamepad mappings.
      *
-     * @param string The string containing the gamepad mappings.
+     * @param session The allocator.
+     * @param string  The string containing the gamepad mappings.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(Addressable) nupdateGamepadMappings
      */
-    public static boolean updateGamepadMappings(String string) {
-        try (var session = MemorySession.openShared()) {
-            return nupdateGamepadMappings(session.allocateUtf8String(string));
-        }
+    public static boolean updateGamepadMappings(SegmentAllocator session, String string) {
+        return nupdateGamepadMappings(session.allocateUtf8String(string));
     }
 
     /**
@@ -5349,9 +5345,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetGamepadName(int jid) {
         try {
-            return (MemoryAddress) glfwGetGamepadName.invoke(jid);
+            return (MemoryAddress) glfwGetGamepadName.invokeExact(jid);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5401,9 +5397,9 @@ public class GLFW {
      */
     public static boolean ngetGamepadState(int jid, Addressable state) {
         try {
-            return (int) glfwGetGamepadState.invoke(jid, state) != FALSE;
+            return (int) glfwGetGamepadState.invokeExact(jid, state) != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5438,23 +5434,22 @@ public class GLFW {
      */
     public static void nsetClipboardString(@Deprecated Addressable window, Addressable string) {
         try {
-            glfwSetClipboardString.invoke(window, string);
+            glfwSetClipboardString.invokeExact(window, string);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Sets the clipboard to the specified string.
      *
-     * @param window Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
-     * @param string A UTF-8 encoded string.
+     * @param session The allocator.
+     * @param window  Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
+     * @param string  A UTF-8 encoded string.
      * @see #nsetClipboardString(Addressable, Addressable) nsetClipboardString
      */
-    public static void setClipboardString(@Deprecated Addressable window, String string) {
-        try (var session = MemorySession.openShared()) {
-            nsetClipboardString(window, session.allocateUtf8String(string));
-        }
+    public static void setClipboardString(SegmentAllocator session, @Deprecated Addressable window, String string) {
+        nsetClipboardString(window, session.allocateUtf8String(string));
     }
 
     /**
@@ -5480,9 +5475,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetClipboardString(@Deprecated Addressable window) {
         try {
-            return (MemoryAddress) glfwGetClipboardString.invoke(window);
+            return (MemoryAddress) glfwGetClipboardString.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5522,9 +5517,9 @@ public class GLFW {
      */
     public static double getTime() {
         try {
-            return (double) glfwGetTime.invoke();
+            return (double) glfwGetTime.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5550,9 +5545,9 @@ public class GLFW {
      */
     public static void setTime(double time) {
         try {
-            glfwSetTime.invoke(time);
+            glfwSetTime.invokeExact(time);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5571,9 +5566,9 @@ public class GLFW {
      */
     public static long getTimerValue() {
         try {
-            return (long) glfwGetTimerValue.invoke();
+            return (long) glfwGetTimerValue.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5590,9 +5585,9 @@ public class GLFW {
      */
     public static long getTimerFrequency() {
         try {
-            return (long) glfwGetTimerFrequency.invoke();
+            return (long) glfwGetTimerFrequency.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5627,9 +5622,9 @@ public class GLFW {
      */
     public static void makeContextCurrent(Addressable window) {
         try {
-            glfwMakeContextCurrent.invoke(window);
+            glfwMakeContextCurrent.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5647,9 +5642,9 @@ public class GLFW {
      */
     public static MemoryAddress getCurrentContext() {
         try {
-            return (MemoryAddress) glfwGetCurrentContext.invoke();
+            return (MemoryAddress) glfwGetCurrentContext.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5677,9 +5672,9 @@ public class GLFW {
      */
     public static void swapBuffers(Addressable window) {
         try {
-            glfwSwapBuffers.invoke(window);
+            glfwSwapBuffers.invokeExact(window);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5720,9 +5715,9 @@ public class GLFW {
      */
     public static void swapInterval(int interval) {
         try {
-            glfwSwapInterval.invoke(interval);
+            glfwSwapInterval.invokeExact(interval);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5757,24 +5752,23 @@ public class GLFW {
      */
     public static boolean nextensionSupported(Addressable extension) {
         try {
-            return (int) glfwExtensionSupported.invoke(extension) != FALSE;
+            return (int) glfwExtensionSupported.invokeExact(extension) != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
      * Returns whether the specified extension is available.
      *
+     * @param session   The allocator.
      * @param extension The ASCII encoded name of the extension.
      * @return {@code true} if the extension is available, or {@code false}
      * otherwise.
      * @see #nextensionSupported(Addressable) nextensionSupported
      */
-    public static boolean extensionSupported(String extension) {
-        try (var session = MemorySession.openShared()) {
-            return nextensionSupported(session.allocateUtf8String(extension));
-        }
+    public static boolean extensionSupported(SegmentAllocator session, String extension) {
+        return nextensionSupported(session.allocateUtf8String(extension));
     }
 
     /**
@@ -5810,9 +5804,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetProcAddress(Addressable procName) {
         try {
-            return (MemoryAddress) glfwGetProcAddress.invoke(procName);
+            return (MemoryAddress) glfwGetProcAddress.invokeExact(procName);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5849,9 +5843,9 @@ public class GLFW {
      */
     public static boolean vulkanSupported() {
         try {
-            return (int) glfwVulkanSupported.invoke() != FALSE;
+            return (int) glfwVulkanSupported.invokeExact() != FALSE;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5889,9 +5883,9 @@ public class GLFW {
      */
     public static MemoryAddress ngetRequiredInstanceExtensions(Addressable count) {
         try {
-            return (MemoryAddress) glfwGetRequiredInstanceExtensions.invoke(count);
+            return (MemoryAddress) glfwGetRequiredInstanceExtensions.invokeExact(count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -5908,7 +5902,7 @@ public class GLFW {
         MemoryAddress pExt;
         final int count;
         try {
-            var pCount = stack.calloc(4);
+            var pCount = stack.calloc(JAVA_INT);
             pExt = ngetRequiredInstanceExtensions(pCount);
             count = pCount.get(JAVA_INT, 0);
         } finally {

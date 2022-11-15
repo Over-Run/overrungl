@@ -28,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -67,93 +67,81 @@ public sealed class GL44C extends GL43C permits GL45C {
 
     public static void bindBuffersBase(int target, int first, int count, Addressable buffers) {
         try {
-            check(glBindBuffersBase).invoke(target, first, count, buffers);
+            check(glBindBuffersBase).invokeExact(target, first, count, buffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindBuffersBase(int target, int first, int count, int[] buffers) {
-        try (var session = MemorySession.openShared()) {
-            bindBuffersBase(target, first, count, session.allocateArray(JAVA_INT, buffers));
-        }
+    public static void bindBuffersBase(SegmentAllocator session, int target, int first, int count, int[] buffers) {
+        bindBuffersBase(target, first, count, session.allocateArray(JAVA_INT, buffers));
     }
 
     public static void bindBuffersRange(int target, int first, int count, Addressable buffers, Addressable offsets, Addressable sizes) {
         try {
-            check(glBindBuffersRange).invoke(target, first, count, buffers, offsets, sizes);
+            check(glBindBuffersRange).invokeExact(target, first, count, buffers, offsets, sizes);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindBuffersRange(int target, int first, int count, int[] buffers, long[] offsets, long[] sizes) {
-        try (var session = MemorySession.openShared()) {
-            bindBuffersRange(target, first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_LONG, sizes));
-        }
+    public static void bindBuffersRange(SegmentAllocator session, int target, int first, int count, int[] buffers, long[] offsets, long[] sizes) {
+        bindBuffersRange(target, first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_LONG, sizes));
     }
 
     public static void bindImageTextures(int first, int count, Addressable textures) {
         try {
-            check(glBindImageTextures).invoke(first, count, textures);
+            check(glBindImageTextures).invokeExact(first, count, textures);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindImageTextures(int first, int count, int[] textures) {
-        try (var session = MemorySession.openShared()) {
-            bindImageTextures(first, count, session.allocateArray(JAVA_INT, textures));
-        }
+    public static void bindImageTextures(SegmentAllocator session, int first, int count, int[] textures) {
+        bindImageTextures(first, count, session.allocateArray(JAVA_INT, textures));
     }
 
     public static void bindSamplers(int first, int count, Addressable samplers) {
         try {
-            check(glBindSamplers).invoke(first, count, samplers);
+            check(glBindSamplers).invokeExact(first, count, samplers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindSamplers(int first, int count, int[] samplers) {
-        try (var session = MemorySession.openShared()) {
-            bindSamplers(first, count, session.allocateArray(JAVA_INT, samplers));
-        }
+    public static void bindSamplers(SegmentAllocator session, int first, int count, int[] samplers) {
+        bindSamplers(first, count, session.allocateArray(JAVA_INT, samplers));
     }
 
     public static void bindTextures(int first, int count, Addressable textures) {
         try {
-            check(glBindTextures).invoke(first, count, textures);
+            check(glBindTextures).invokeExact(first, count, textures);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindTextures(int first, int count, int[] textures) {
-        try (var session = MemorySession.openShared()) {
-            bindTextures(first, count, session.allocateArray(JAVA_INT, textures));
-        }
+    public static void bindTextures(SegmentAllocator session, int first, int count, int[] textures) {
+        bindTextures(first, count, session.allocateArray(JAVA_INT, textures));
     }
 
     public static void bindVertexBuffers(int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
         try {
-            check(glBindVertexBuffers).invoke(first, count, buffers, offsets, strides);
+            check(glBindVertexBuffers).invokeExact(first, count, buffers, offsets, strides);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void bindVertexBuffers(int first, int count, int[] buffers, long[] offsets, long[] strides) {
-        try (var session = MemorySession.openShared()) {
-            bindVertexBuffers(first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_LONG, strides));
-        }
+    public static void bindVertexBuffers(SegmentAllocator session, int first, int count, int[] buffers, long[] offsets, long[] strides) {
+        bindVertexBuffers(first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_LONG, strides));
     }
 
     public static void bufferStorage(int target, long size, Addressable data, int flags) {
         try {
-            check(glBufferStorage).invoke(target, size, data, flags);
+            check(glBufferStorage).invokeExact(target, size, data, flags);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -161,55 +149,43 @@ public sealed class GL44C extends GL43C permits GL45C {
         bufferStorage(target, size, MemoryAddress.NULL, flags);
     }
 
-    public static void bufferStorage(int target, byte[] data, int flags) {
-        try (var session = MemorySession.openShared()) {
-            bufferStorage(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), flags);
-        }
+    public static void bufferStorage(SegmentAllocator session, int target, byte[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), flags);
     }
 
-    public static void bufferStorage(int target, short[] data, int flags) {
-        try (var session = MemorySession.openShared()) {
-            bufferStorage(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), flags);
-        }
+    public static void bufferStorage(SegmentAllocator session, int target, short[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), flags);
     }
 
-    public static void bufferStorage(int target, int[] data, int flags) {
-        try (var session = MemorySession.openShared()) {
-            bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), flags);
-        }
+    public static void bufferStorage(SegmentAllocator session, int target, int[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), flags);
     }
 
-    public static void bufferStorage(int target, long[] data, int flags) {
-        try (var session = MemorySession.openShared()) {
-            bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), flags);
-        }
+    public static void bufferStorage(SegmentAllocator session, int target, long[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), flags);
     }
 
-    public static void bufferStorage(int target, float[] data, int flags) {
-        try (var session = MemorySession.openShared()) {
-            bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), flags);
-        }
+    public static void bufferStorage(SegmentAllocator session, int target, float[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), flags);
     }
 
-    public static void bufferStorage(int target, double[] data, int flags) {
-        try (var session = MemorySession.openShared()) {
-            bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), flags);
-        }
+    public static void bufferStorage(SegmentAllocator session, int target, double[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), flags);
     }
 
     public static void clearTexImage(int texture, int level, int format, int type, Addressable data) {
         try {
-            check(glClearTexImage).invoke(texture, level, format, type, data);
+            check(glClearTexImage).invokeExact(texture, level, format, type, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
         try {
-            check(glClearTexSubImage).invoke(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+            check(glClearTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

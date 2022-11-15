@@ -47,7 +47,7 @@ public class DrawElementsIndirectCommand extends Pointer {
             ValueLayout.JAVA_INT.withName("firstIndex"),
             ValueLayout.JAVA_INT.withName("baseVertex"),
             ValueLayout.JAVA_INT.withName("baseInstance")
-        );
+        ).withName("DrawElementsIndirectCommand");
     private static final VarHandle
         pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
         pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),

@@ -25,13 +25,58 @@
 package org.overrun.glib.util.value;
 
 /**
- * A value object with 2 floats.
+ * A value object with 2 objects.
  *
- * @param x the first value.
- * @param y the second value.
+ * @param <T> the first type.
+ * @param <U> the second type.
+ * @param x   the first value.
+ * @param y   the second value.
  * @author squid233
  * @since 0.1.0
  */
-// TODO: Replaces with more generic Value2<T, U>
-public record ValueFloat2(float x, float y) {
+public record Value2<T, U>(T x, U y) {
+    /**
+     * A value object with 2 integers.
+     *
+     * @param x the first value.
+     * @param y the second value.
+     * @author squid233
+     * @since 0.1.0
+     */
+    public record OfInt(int x, int y) {
+    }
+
+    /**
+     * A value object with 2 floats.
+     *
+     * @param x the first value.
+     * @param y the second value.
+     * @author squid233
+     * @since 0.1.0
+     */
+    public record OfFloat(float x, float y) {
+    }
+
+    /**
+     * A value object with 2 doubles.
+     *
+     * @param x the first value.
+     * @param y the second value.
+     * @author squid233
+     * @since 0.1.0
+     */
+    public record OfDouble(double x, double y) {
+    }
+
+    /**
+     * A value object with an object and an integer.
+     *
+     * @param x   the first value.
+     * @param y   the second value.
+     * @param <T> the type of first value object.
+     * @author squid233
+     * @since 0.1.0
+     */
+    public record OfObjInt<T>(T x, int y) {
+    }
 }

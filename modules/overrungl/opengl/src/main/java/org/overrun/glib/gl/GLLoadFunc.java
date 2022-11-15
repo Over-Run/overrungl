@@ -48,13 +48,24 @@ import java.util.function.BiFunction;
  */
 public interface GLLoadFunc extends AutoCloseable, BiFunction<MemorySession, String, MemoryAddress> {
     /**
-     * Creates a load function.
+     * Creates a load function with shared memory session.
      *
      * @param function the function pointer getter
      * @return the load function
      */
     static GLLoadFunc ofShared(Getter function) {
-        return new GLLoadFunc.Delegate(MemorySession.openShared(Cleaner.create()), function);
+        return of(MemorySession.openShared(Cleaner.create()), function);
+    }
+
+    /**
+     * Creates a load function with given memory session.
+     *
+     * @param session  the memory session. will be <b>auto-closed</b>
+     * @param function the function pointer getter
+     * @return the load function
+     */
+    static GLLoadFunc of(MemorySession session, Getter function) {
+        return new GLLoadFunc.Delegate(session, function);
     }
 
     @Override

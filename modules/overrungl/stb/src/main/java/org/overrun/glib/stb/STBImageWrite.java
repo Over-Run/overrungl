@@ -29,11 +29,13 @@ import org.overrun.glib.RuntimeHelper;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.stb.Handles.*;
+import static org.overrun.glib.stb.Handles.downcall;
+import static org.overrun.glib.stb.Handles.initialize;
 
 /**
  * The STB image writer.
@@ -82,233 +84,209 @@ public class STBImageWrite {
 
     public static boolean getWriteTgaWithRle() {
         try {
-            return (int) stbi_get_write_tga_with_rle.invoke() != 0;
+            return (int) stbi_get_write_tga_with_rle.invokeExact() != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int getWritePngCompressionLevel() {
         try {
-            return (int) stbi_get_write_png_compression_level.invoke();
+            return (int) stbi_get_write_png_compression_level.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int getWriteForcePngFilter() {
         try {
-            return (int) stbi_get_write_force_png_filter.invoke();
+            return (int) stbi_get_write_force_png_filter.invokeExact();
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void setWriteTgaWithRle(boolean rle) {
         try {
-            stbi_set_write_tga_with_rle.invoke(rle ? 1 : 0);
+            stbi_set_write_tga_with_rle.invokeExact(rle ? 1 : 0);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void setWritePngCompressionLevel(int level) {
         try {
-            stbi_set_write_png_compression_level.invoke(level);
+            stbi_set_write_png_compression_level.invokeExact(level);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void setWriteForcePngFilter(int filter) {
         try {
-            stbi_set_write_force_png_filter.invoke(filter);
+            stbi_set_write_force_png_filter.invokeExact(filter);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean npng(Addressable filename, int w, int h, int comp, Addressable data, int strideInBytes) {
         try {
-            return (int) stbi_write_png.invoke(filename, w, h, comp, data, strideInBytes) != 0;
+            return (int) stbi_write_png.invokeExact(filename, w, h, comp, data, strideInBytes) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean nbmp(Addressable filename, int w, int h, int comp, Addressable data) {
         try {
-            return (int) stbi_write_bmp.invoke(filename, w, h, comp, data) != 0;
+            return (int) stbi_write_bmp.invokeExact(filename, w, h, comp, data) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean ntga(Addressable filename, int w, int h, int comp, Addressable data) {
         try {
-            return (int) stbi_write_tga.invoke(filename, w, h, comp, data) != 0;
+            return (int) stbi_write_tga.invokeExact(filename, w, h, comp, data) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean nhdr(Addressable filename, int w, int h, int comp, Addressable data) {
         try {
-            return (int) stbi_write_hdr.invoke(filename, w, h, comp, data) != 0;
+            return (int) stbi_write_hdr.invokeExact(filename, w, h, comp, data) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean njpg(Addressable filename, int x, int y, int comp, Addressable data, int quality) {
         try {
-            return (int) stbi_write_jpg.invoke(filename, x, y, comp, data, quality) != 0;
+            return (int) stbi_write_jpg.invokeExact(filename, x, y, comp, data, quality) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static boolean png(String filename, int w, int h, int comp, Addressable data, int strideInBytes) {
-        try (var session = MemorySession.openShared()) {
-            return npng(session.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
-        }
+    public static boolean png(SegmentAllocator session, String filename, int w, int h, int comp, Addressable data, int strideInBytes) {
+        return npng(session.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmp(String filename, int w, int h, int comp, Addressable data) {
-        try (var session = MemorySession.openShared()) {
-            return nbmp(session.allocateUtf8String(filename), w, h, comp, data);
-        }
+    public static boolean bmp(SegmentAllocator session, String filename, int w, int h, int comp, Addressable data) {
+        return nbmp(session.allocateUtf8String(filename), w, h, comp, data);
     }
 
-    public static boolean tga(String filename, int w, int h, int comp, Addressable data) {
-        try (var session = MemorySession.openShared()) {
-            return ntga(session.allocateUtf8String(filename), w, h, comp, data);
-        }
+    public static boolean tga(SegmentAllocator session, String filename, int w, int h, int comp, Addressable data) {
+        return ntga(session.allocateUtf8String(filename), w, h, comp, data);
     }
 
-    public static boolean hdr(String filename, int w, int h, int comp, float[] data) {
-        try (var session = MemorySession.openShared()) {
-            return nhdr(session.allocateUtf8String(filename), w, h, comp, session.allocateArray(JAVA_FLOAT, data));
-        }
+    public static boolean hdr(SegmentAllocator session, String filename, int w, int h, int comp, float[] data) {
+        return nhdr(session.allocateUtf8String(filename), w, h, comp, session.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpg(String filename, int x, int y, int comp, Addressable data, int quality) {
-        try (var session = MemorySession.openShared()) {
-            return njpg(session.allocateUtf8String(filename), x, y, comp, data, quality);
-        }
+    public static boolean jpg(SegmentAllocator session, String filename, int x, int y, int comp, Addressable data, int quality) {
+        return njpg(session.allocateUtf8String(filename), x, y, comp, data, quality);
     }
 
     public static boolean npngToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
         try {
-            return (int) stbi_write_png_to_func.invoke(func, context, w, h, comp, data, strideInBytes) != 0;
+            return (int) stbi_write_png_to_func.invokeExact(func, context, w, h, comp, data, strideInBytes) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean nbmpToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data) {
         try {
-            return (int) stbi_write_bmp_to_func.invoke(func, context, w, h, comp, data) != 0;
+            return (int) stbi_write_bmp_to_func.invokeExact(func, context, w, h, comp, data) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean ntgaToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data) {
         try {
-            return (int) stbi_write_tga_to_func.invoke(func, context, w, h, comp, data) != 0;
+            return (int) stbi_write_tga_to_func.invokeExact(func, context, w, h, comp, data) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean nhdrToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data) {
         try {
-            return (int) stbi_write_hdr_to_func.invoke(func, context, w, h, comp, data) != 0;
+            return (int) stbi_write_hdr_to_func.invokeExact(func, context, w, h, comp, data) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean njpgToFunc(Addressable func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
         try {
-            return (int) stbi_write_jpg_to_func.invoke(func, context, x, y, comp, data, quality) != 0;
+            return (int) stbi_write_jpg_to_func.invokeExact(func, context, x, y, comp, data, quality) != 0;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static boolean pngToFunc(STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
-        try (var session = MemorySession.openShared()) {
-            return npngToFunc(func.address(session), context, w, h, comp, data, strideInBytes);
-        }
+    public static boolean pngToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
+        return npngToFunc(func.address(session), context, w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmpToFunc(STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
-        try (var session = MemorySession.openShared()) {
-            return nbmpToFunc(func.address(session), context, w, h, comp, data);
-        }
+    public static boolean bmpToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
+        return nbmpToFunc(func.address(session), context, w, h, comp, data);
     }
 
-    public static boolean tgaToFunc(STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
-        try (var session = MemorySession.openShared()) {
-            return ntgaToFunc(func.address(session), context, w, h, comp, data);
-        }
+    public static boolean tgaToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
+        return ntgaToFunc(func.address(session), context, w, h, comp, data);
     }
 
-    public static boolean hdrToFunc(STBIWriteFunc func, Addressable context, int w, int h, int comp, float[] data) {
-        try (var session = MemorySession.openShared()) {
-            return nhdrToFunc(func.address(session), context, w, h, comp, session.allocateArray(JAVA_FLOAT, data));
-        }
+    public static boolean hdrToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, float[] data) {
+        return nhdrToFunc(func.address(session), context, w, h, comp, session.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpgToFunc(STBIWriteFunc func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
-        try (var session = MemorySession.openShared()) {
-            return njpgToFunc(func.address(session), context, x, y, comp, data, quality);
-        }
+    public static boolean jpgToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
+        return njpgToFunc(func.address(session), context, x, y, comp, data, quality);
     }
 
     public static void flipVerticallyOnWrite(boolean flip) {
         try {
-            stbi_flip_vertically_on_write.invoke(flip ? 1 : 0);
+            stbi_flip_vertically_on_write.invokeExact(flip ? 1 : 0);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static MemoryAddress pngToMem(Addressable pixels, int strideInBytes, int x, int y, int n, Addressable outLen) {
         try {
-            return (MemoryAddress) stbi_write_png_to_mem.invoke(pixels, strideInBytes, x, y, n, outLen);
+            return (MemoryAddress) stbi_write_png_to_mem.invokeExact(pixels, strideInBytes, x, y, n, outLen);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static byte[] pngToMem(byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
-        try (var session = MemorySession.openShared()) {
-            var pl = session.allocate(JAVA_INT);
-            var p = pngToMem(session.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
-            final int len = pl.get(JAVA_INT, 0);
-            outLen[0] = len;
-            return RuntimeHelper.toArray(p, new byte[len]);
-        }
+    public static byte[] pngToMem(SegmentAllocator session, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
+        var pl = session.allocate(JAVA_INT);
+        var p = pngToMem(session.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
+        final int len = pl.get(JAVA_INT, 0);
+        outLen[0] = len;
+        return RuntimeHelper.toArray(p, new byte[len]);
     }
 
     public static MemoryAddress zlibCompress(Addressable data, int dataLen, Addressable outLen, int quality) {
         try {
-            return (MemoryAddress) stbi_zlib_compress.invoke(data, dataLen, outLen, quality);
+            return (MemoryAddress) stbi_zlib_compress.invokeExact(data, dataLen, outLen, quality);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static byte[] zlibCompress(byte[] data, int[] outLen, int quality) {
-        try (var session = MemorySession.openShared()) {
-            var pl = session.allocate(JAVA_INT);
-            var p = zlibCompress(session.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
-            final int len = pl.get(JAVA_INT, 0);
-            outLen[0] = len;
-            return RuntimeHelper.toArray(p, new byte[len]);
-        }
+    public static byte[] zlibCompress(SegmentAllocator session, byte[] data, int[] outLen, int quality) {
+        var pl = session.allocate(JAVA_INT);
+        var p = zlibCompress(session.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
+        final int len = pl.get(JAVA_INT, 0);
+        outLen[0] = len;
+        return RuntimeHelper.toArray(p, new byte[len]);
     }
 }

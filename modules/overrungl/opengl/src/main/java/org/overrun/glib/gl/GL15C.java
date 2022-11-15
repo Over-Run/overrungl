@@ -29,10 +29,7 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.BufferBuilder;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -83,25 +80,25 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void beginQuery(int target, int id) {
         try {
-            check(glBeginQuery).invoke(target, id);
+            check(glBeginQuery).invokeExact(target, id);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindBuffer(int target, int buffer) {
         try {
-            check(glBindBuffer).invoke(target, buffer);
+            check(glBindBuffer).invokeExact(target, buffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bufferData(int target, long size, Addressable data, int usage) {
         try {
-            check(glBufferData).invoke(target, size, data, usage);
+            check(glBufferData).invokeExact(target, size, data, usage);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -117,47 +114,35 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferData(target, size, MemoryAddress.NULL, usage);
     }
 
-    public static void bufferData(int target, byte[] data, int usage) {
-        try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), usage);
-        }
+    public static void bufferData(SegmentAllocator session, int target, byte[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), usage);
     }
 
-    public static void bufferData(int target, short[] data, int usage) {
-        try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), usage);
-        }
+    public static void bufferData(SegmentAllocator session, int target, short[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), usage);
     }
 
-    public static void bufferData(int target, int[] data, int usage) {
-        try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), usage);
-        }
+    public static void bufferData(SegmentAllocator session, int target, int[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), usage);
     }
 
-    public static void bufferData(int target, long[] data, int usage) {
-        try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), usage);
-        }
+    public static void bufferData(SegmentAllocator session, int target, long[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), usage);
     }
 
-    public static void bufferData(int target, float[] data, int usage) {
-        try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), usage);
-        }
+    public static void bufferData(SegmentAllocator session, int target, float[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), usage);
     }
 
-    public static void bufferData(int target, double[] data, int usage) {
-        try (var session = MemorySession.openShared()) {
-            bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), usage);
-        }
+    public static void bufferData(SegmentAllocator session, int target, double[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), usage);
     }
 
     public static void bufferSubData(int target, long offset, long size, Addressable data) {
         try {
-            check(glBufferSubData).invoke(target, offset, size, data);
+            check(glBufferSubData).invokeExact(target, offset, size, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -169,54 +154,40 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferSubData(target, offset, data.offset(), data.address());
     }
 
-    public static void bufferSubData(int target, long offset, byte[] data) {
-        try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data));
-        }
+    public static void bufferSubData(SegmentAllocator session, int target, long offset, byte[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data));
     }
 
-    public static void bufferSubData(int target, long offset, short[] data) {
-        try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
-        }
+    public static void bufferSubData(SegmentAllocator session, int target, long offset, short[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
     }
 
-    public static void bufferSubData(int target, long offset, int[] data) {
-        try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
-        }
+    public static void bufferSubData(SegmentAllocator session, int target, long offset, int[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
     }
 
-    public static void bufferSubData(int target, long offset, long[] data) {
-        try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
-        }
+    public static void bufferSubData(SegmentAllocator session, int target, long offset, long[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
     }
 
-    public static void bufferSubData(int target, long offset, float[] data) {
-        try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
-        }
+    public static void bufferSubData(SegmentAllocator session, int target, long offset, float[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static void bufferSubData(int target, long offset, double[] data) {
-        try (var session = MemorySession.openShared()) {
-            bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
-        }
+    public static void bufferSubData(SegmentAllocator session, int target, long offset, double[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
     }
 
     public static void deleteBuffers(int n, Addressable buffers) {
         try {
-            check(glDeleteBuffers).invoke(n, buffers);
+            check(glDeleteBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteBuffers(int[] buffers) {
-        try (var session = MemorySession.openShared()) {
-            deleteBuffers(buffers.length, session.allocateArray(JAVA_INT, buffers));
-        }
+    public static void deleteBuffers(SegmentAllocator session, int[] buffers) {
+        deleteBuffers(buffers.length, session.allocateArray(JAVA_INT, buffers));
     }
 
     public static void deleteBuffer(int buffer) {
@@ -233,16 +204,14 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void deleteQueries(int n, Addressable ids) {
         try {
-            check(glDeleteQueries).invoke(n, ids);
+            check(glDeleteQueries).invokeExact(n, ids);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteQueries(int[] ids) {
-        try (var session = MemorySession.openShared()) {
-            deleteQueries(ids.length, session.allocateArray(JAVA_INT, ids));
-        }
+    public static void deleteQueries(SegmentAllocator session, int[] ids) {
+        deleteQueries(ids.length, session.allocateArray(JAVA_INT, ids));
     }
 
     public static void deleteQuery(int id) {
@@ -259,26 +228,24 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void endQuery(int target) {
         try {
-            check(glEndQuery).invoke(target);
+            check(glEndQuery).invokeExact(target);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void genBuffers(int n, Addressable buffers) {
         try {
-            check(glGenBuffers).invoke(n, buffers);
+            check(glGenBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genBuffers(int[] buffers) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, buffers.length);
-            genBuffers(buffers.length, seg);
-            RuntimeHelper.toArray(seg, buffers);
-        }
+    public static void genBuffers(SegmentAllocator session, int[] buffers) {
+        var seg = session.allocateArray(JAVA_INT, buffers.length);
+        genBuffers(buffers.length, seg);
+        RuntimeHelper.toArray(seg, buffers);
     }
 
     public static int genBuffer() {
@@ -295,18 +262,16 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void genQueries(int n, Addressable ids) {
         try {
-            check(glGenQueries).invoke(n, ids);
+            check(glGenQueries).invokeExact(n, ids);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genQueries(int[] ids) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, ids.length);
-            genQueries(ids.length, seg);
-            RuntimeHelper.toArray(seg, ids);
-        }
+    public static void genQueries(SegmentAllocator session, int[] ids) {
+        var seg = session.allocateArray(JAVA_INT, ids.length);
+        genQueries(ids.length, seg);
+        RuntimeHelper.toArray(seg, ids);
     }
 
     public static int genQuery() {
@@ -323,9 +288,9 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getBufferParameteriv(int target, int pname, Addressable params) {
         try {
-            check(glGetBufferParameteriv).invoke(target, pname, params);
+            check(glGetBufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -343,14 +308,10 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getBufferPointerv(int target, int pname, Addressable params) {
         try {
-            check(glGetBufferPointerv).invoke(target, pname, params);
+            check(glGetBufferPointerv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void getBufferPointerv(int target, int pname, MemoryAddress[] params) {
-        params[0] = getBufferPointer(target, pname);
     }
 
     public static MemoryAddress getBufferPointer(int target, int pname) {
@@ -367,65 +328,53 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getBufferSubData(int target, long offset, long size, Addressable data) {
         try {
-            check(glGetBufferSubData).invoke(target, offset, size, data);
+            check(glGetBufferSubData).invokeExact(target, offset, size, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void getBufferSubData(int target, long offset, byte[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, data.length);
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length), seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBufferSubData(SegmentAllocator session, int target, long offset, byte[] data) {
+        var seg = session.allocateArray(JAVA_BYTE, data.length);
+        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length), seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(int target, long offset, short[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_SHORT, data.length);
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBufferSubData(SegmentAllocator session, int target, long offset, short[] data) {
+        var seg = session.allocateArray(JAVA_SHORT, data.length);
+        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(int target, long offset, int[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, data.length);
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBufferSubData(SegmentAllocator session, int target, long offset, int[] data) {
+        var seg = session.allocateArray(JAVA_INT, data.length);
+        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(int target, long offset, long[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_LONG, data.length);
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBufferSubData(SegmentAllocator session, int target, long offset, long[] data) {
+        var seg = session.allocateArray(JAVA_LONG, data.length);
+        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(int target, long offset, float[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_FLOAT, data.length);
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBufferSubData(SegmentAllocator session, int target, long offset, float[] data) {
+        var seg = session.allocateArray(JAVA_FLOAT, data.length);
+        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(int target, long offset, double[] data) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_DOUBLE, data.length);
-            getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
-            RuntimeHelper.toArray(seg, data);
-        }
+    public static void getBufferSubData(SegmentAllocator session, int target, long offset, double[] data) {
+        var seg = session.allocateArray(JAVA_DOUBLE, data.length);
+        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
+        RuntimeHelper.toArray(seg, data);
     }
 
     public static void getQueryObjectiv(int id, int pname, Addressable params) {
         try {
-            check(glGetQueryObjectiv).invoke(id, pname, params);
+            check(glGetQueryObjectiv).invokeExact(id, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
@@ -443,14 +392,10 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getQueryObjectuiv(int id, int pname, Addressable params) {
         try {
-            check(glGetQueryObjectuiv).invoke(id, pname, params);
+            check(glGetQueryObjectuiv).invokeExact(id, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void getQueryObjectuiv(int id, int pname, int[] params) {
-        params[0] = getQueryObjectui(id, pname);
     }
 
     public static int getQueryObjectui(int id, int pname) {
@@ -467,14 +412,10 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void getQueryiv(int target, int pname, Addressable params) {
         try {
-            check(glGetQueryiv).invoke(target, pname, params);
+            check(glGetQueryiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void getQueryiv(int target, int pname, int[] params) {
-        params[0] = getQueryi(target, pname);
     }
 
     public static int getQueryi(int target, int pname) {
@@ -491,33 +432,33 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static boolean isBuffer(int buffer) {
         try {
-            return (boolean) check(glIsBuffer).invoke(buffer);
+            return (boolean) check(glIsBuffer).invokeExact(buffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isQuery(int buffer) {
         try {
-            return (boolean) check(glIsQuery).invoke(buffer);
+            return (boolean) check(glIsQuery).invokeExact(buffer);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static MemoryAddress mapBuffer(int target, int access) {
         try {
-            return (MemoryAddress) check(glMapBuffer).invoke(target, access);
+            return (MemoryAddress) check(glMapBuffer).invokeExact(target, access);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean unmapBuffer(int target) {
         try {
-            return (boolean) check(glUnmapBuffer).invoke(target);
+            return (boolean) check(glUnmapBuffer).invokeExact(target);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

@@ -130,6 +130,35 @@ public class GLCaps {
     }
 
     /**
+     * Load OpenGL compatibility profile by the given load function with the given memory session.
+     *
+     * @param getter  the function pointer getter
+     * @param session the memory session. will be <b>auto-closed</b>
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    public static int load(MemorySession session, GLLoadFunc.Getter getter) {
+        try (var load = GLLoadFunc.of(session, getter)) {
+            return load(load);
+        }
+    }
+
+    /**
+     * Load OpenGL by the given load function with the given memory session.
+     *
+     * @param forwardCompatible If {@code true}, only loading core profile functions.
+     * @param session           the memory session. will be <b>auto-closed</b>
+     * @param getter            the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    public static int load(boolean forwardCompatible, MemorySession session, GLLoadFunc.Getter getter) {
+        try (var load = GLLoadFunc.of(session, getter)) {
+            return load(forwardCompatible, load);
+        }
+    }
+
+    /**
      * Load OpenGL compatibility profile by the given load function.
      *
      * @param load the load function

@@ -51,17 +51,17 @@ public class GLAMDSparseTexture {
 
     public static void glTexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
         try {
-            check(glTexStorageSparseAMD).invoke(target, internalFormat, width, height, depth, layers, flags);
+            check(glTexStorageSparseAMD).invokeExact(target, internalFormat, width, height, depth, layers, flags);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glTexStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
         try {
-            check(glTexStorageSparseAMD).invoke(texture, target, internalFormat, width, height, depth, layers, flags);
+            check(glTexStorageSparseAMD).invokeExact(texture, target, internalFormat, width, height, depth, layers, flags);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

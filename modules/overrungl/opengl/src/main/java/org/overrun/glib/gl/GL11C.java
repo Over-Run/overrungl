@@ -30,7 +30,7 @@ import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -76,57 +76,55 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void bindTexture(int target, int texture) {
         try {
-            check(glBindTexture).invoke(target, texture);
+            check(glBindTexture).invokeExact(target, texture);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexImage1D(int target, int level, int internalFormat, int x, int y, int width, int border) {
         try {
-            check(glCopyTexImage1D).invoke(target, level, internalFormat, x, y, width, border);
+            check(glCopyTexImage1D).invokeExact(target, level, internalFormat, x, y, width, border);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height, int border) {
         try {
-            check(glCopyTexImage2D).invoke(target, level, internalFormat, x, y, width, height, border);
+            check(glCopyTexImage2D).invokeExact(target, level, internalFormat, x, y, width, height, border);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width) {
         try {
-            check(glCopyTexSubImage1D).invoke(target, level, xoffset, x, y, width);
+            check(glCopyTexSubImage1D).invokeExact(target, level, xoffset, x, y, width);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
         try {
-            check(glCopyTexSubImage2D).invoke(target, level, xoffset, yoffset, x, y, width, height);
+            check(glCopyTexSubImage2D).invokeExact(target, level, xoffset, yoffset, x, y, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteTextures(int n, Addressable textures) {
         try {
-            check(glDeleteTextures).invoke(n, textures);
+            check(glDeleteTextures).invokeExact(n, textures);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void deleteTextures(int n, int[] textures) {
-        try (var session = MemorySession.openShared()) {
-            var pTex = session.allocateArray(JAVA_INT, textures);
-            deleteTextures(n, pTex);
-        }
+    public static void deleteTextures(SegmentAllocator session, int n, int[] textures) {
+        var pTex = session.allocateArray(JAVA_INT, textures);
+        deleteTextures(n, pTex);
     }
 
     public static void deleteTexture(int texture) {
@@ -143,56 +141,48 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void drawArrays(int mode, int first, int count) {
         try {
-            check(glDrawArrays).invoke(mode, first, count);
+            check(glDrawArrays).invokeExact(mode, first, count);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawElements(int mode, int count, int type, Addressable indices) {
         try {
-            check(glDrawElements).invoke(mode, count, type, indices);
+            check(glDrawElements).invokeExact(mode, count, type, indices);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void drawElements(int mode, int count, int type, byte[] indices) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, indices);
-            drawElements(mode, count, type, seg);
-        }
+    public static void drawElements(SegmentAllocator session, int mode, int count, int type, byte[] indices) {
+        var seg = session.allocateArray(JAVA_BYTE, indices);
+        drawElements(mode, count, type, seg);
     }
 
-    public static void drawElements(int mode, int count, int type, short[] indices) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_SHORT, indices);
-            drawElements(mode, count, type, seg);
-        }
+    public static void drawElements(SegmentAllocator session, int mode, int count, int type, short[] indices) {
+        var seg = session.allocateArray(JAVA_SHORT, indices);
+        drawElements(mode, count, type, seg);
     }
 
-    public static void drawElements(int mode, int count, int type, int[] indices) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, indices);
-            drawElements(mode, count, type, seg);
-        }
+    public static void drawElements(SegmentAllocator session, int mode, int count, int type, int[] indices) {
+        var seg = session.allocateArray(JAVA_INT, indices);
+        drawElements(mode, count, type, seg);
     }
 
     public static void genTextures(int n, Addressable textures) {
         try {
-            check(glGenTextures).invoke(n, textures);
+            check(glGenTextures).invokeExact(n, textures);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void genTextures(int[] textures) {
-        try (var session = MemorySession.openShared()) {
-            final int n = textures.length;
-            var pTex = session.allocateArray(JAVA_INT, n);
-            genTextures(n, pTex);
-            RuntimeHelper.toArray(pTex, textures);
-        }
+    public static void genTextures(SegmentAllocator session, int[] textures) {
+        final int n = textures.length;
+        var pTex = session.allocateArray(JAVA_INT, n);
+        genTextures(n, pTex);
+        RuntimeHelper.toArray(pTex, textures);
     }
 
     public static int genTexture() {
@@ -209,14 +199,10 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void getPointerv(int pname, Addressable params) {
         try {
-            check(glGetPointerv).invoke(pname, params);
+            check(glGetPointerv).invokeExact(pname, params);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void getPointerv(int pname, MemoryAddress[] params) {
-        params[0] = getPointer(pname);
     }
 
     public static MemoryAddress getPointer(int pname) {
@@ -233,81 +219,65 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static boolean isTexture(int texture) {
         try {
-            return (boolean) check(glIsTexture).invoke(texture);
+            return (boolean) check(glIsTexture).invokeExact(texture);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonOffset(float factor, float units) {
         try {
-            check(glPolygonOffset).invoke(factor, units);
+            check(glPolygonOffset).invokeExact(factor, units);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, Addressable pixels) {
         try {
-            check(glTexSubImage1D).invoke(target, level, xoffset, width, format, type, pixels);
+            check(glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_BYTE, pixels));
-        }
+    public static void texSubImage1D(SegmentAllocator session, int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
+        texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_SHORT, pixels));
-        }
+    public static void texSubImage1D(SegmentAllocator session, int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
+        texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_INT, pixels));
-        }
+    public static void texSubImage1D(SegmentAllocator session, int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
+        texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_FLOAT, pixels));
-        }
+    public static void texSubImage1D(SegmentAllocator session, int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
+        texSubImage1D(target, level, xoffset, width, format, type, session.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
         try {
-            check(glTexSubImage2D).invoke(target, level, xoffset, yoffset, width, height, format, type, pixels);
+            check(glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_BYTE, pixels));
-        }
+    public static void texSubImage2D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_SHORT, pixels));
-        }
+    public static void texSubImage2D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_INT, pixels));
-        }
+    public static void texSubImage2D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_FLOAT, pixels));
-        }
+    public static void texSubImage2D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_FLOAT, pixels));
     }
 }

@@ -31,10 +31,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
@@ -73,24 +70,22 @@ public class GLAMDPerformanceMonitor {
 
     public static void glBeginPerfMonitorAMD(int monitor) {
         try {
-            check(glBeginPerfMonitorAMD).invoke(monitor);
+            check(glBeginPerfMonitorAMD).invokeExact(monitor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glDeletePerfMonitorsAMD(int n, Addressable monitors) {
         try {
-            check(glDeletePerfMonitorsAMD).invoke(n, monitors);
+            check(glDeletePerfMonitorsAMD).invokeExact(n, monitors);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glDeletePerfMonitorsAMD(int[] monitors) {
-        try (var session = MemorySession.openShared()) {
-            glDeletePerfMonitorsAMD(monitors.length, session.allocateArray(JAVA_INT, monitors));
-        }
+    public static void glDeletePerfMonitorsAMD(SegmentAllocator session, int[] monitors) {
+        glDeletePerfMonitorsAMD(monitors.length, session.allocateArray(JAVA_INT, monitors));
     }
 
     public static void glDeletePerfMonitorAMD(int monitor) {
@@ -107,26 +102,24 @@ public class GLAMDPerformanceMonitor {
 
     public static void glEndPerfMonitorAMD(int monitor) {
         try {
-            check(glEndPerfMonitorAMD).invoke(monitor);
+            check(glEndPerfMonitorAMD).invokeExact(monitor);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glGenPerfMonitorsAMD(int n, Addressable monitors) {
         try {
-            check(glGenPerfMonitorsAMD).invoke(n, monitors);
+            check(glGenPerfMonitorsAMD).invokeExact(n, monitors);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGenPerfMonitorsAMD(int[] monitors) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, monitors.length);
-            glGenPerfMonitorsAMD(monitors.length, seg);
-            RuntimeHelper.toArray(seg, monitors);
-        }
+    public static void glGenPerfMonitorsAMD(SegmentAllocator session, int[] monitors) {
+        var seg = session.allocateArray(JAVA_INT, monitors.length);
+        glGenPerfMonitorsAMD(monitors.length, seg);
+        RuntimeHelper.toArray(seg, monitors);
     }
 
     public static int glGenPerfMonitorAMD() {
@@ -143,119 +136,107 @@ public class GLAMDPerformanceMonitor {
 
     public static void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, Addressable data, Addressable bytesWritten) {
         try {
-            check(glGetPerfMonitorCounterDataAMD).invoke(monitor, pname, dataSize, data, bytesWritten);
+            check(glGetPerfMonitorCounterDataAMD).invokeExact(monitor, pname, dataSize, data, bytesWritten);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int[] data, int @Nullable [] bytesWritten) {
-        try (var session = MemorySession.openShared()) {
-            var pData = session.allocateArray(JAVA_INT, data.length);
-            var pNum = bytesWritten != null ? session.allocateArray(JAVA_INT, bytesWritten.length) : MemoryAddress.NULL;
-            glGetPerfMonitorCounterDataAMD(monitor, pname, data.length, pData, pNum);
-            RuntimeHelper.toArray(pData, data);
-            if (bytesWritten != null && bytesWritten.length > 0) {
-                bytesWritten[0] = ((MemorySegment) pNum).get(JAVA_INT, 0);
-            }
+    public static void glGetPerfMonitorCounterDataAMD(SegmentAllocator session, int monitor, int pname, int[] data, int @Nullable [] bytesWritten) {
+        var pData = session.allocateArray(JAVA_INT, data.length);
+        var pNum = bytesWritten != null ? session.allocateArray(JAVA_INT, bytesWritten.length) : MemoryAddress.NULL;
+        glGetPerfMonitorCounterDataAMD(monitor, pname, data.length, pData, pNum);
+        RuntimeHelper.toArray(pData, data);
+        if (bytesWritten != null && bytesWritten.length > 0) {
+            bytesWritten[0] = ((MemorySegment) pNum).get(JAVA_INT, 0);
         }
     }
 
     public static void glGetPerfMonitorCounterInfoAMD(int group, int counter, int pname, Addressable data) {
         try {
-            check(glGetPerfMonitorCounterInfoAMD).invoke(group, counter, pname, data);
+            check(glGetPerfMonitorCounterInfoAMD).invokeExact(group, counter, pname, data);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, Addressable length, Addressable counterString) {
         try {
-            check(glGetPerfMonitorCounterStringAMD).invoke(group, counter, bufSize, length, counterString);
+            check(glGetPerfMonitorCounterStringAMD).invokeExact(group, counter, bufSize, length, counterString);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static String glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, bufSize);
-            glGetPerfMonitorCounterStringAMD(group, counter, bufSize, MemoryAddress.NULL, seg);
-            return seg.getUtf8String(0);
-        }
+    public static String glGetPerfMonitorCounterStringAMD(SegmentAllocator session, int group, int counter, int bufSize) {
+        var seg = session.allocateArray(JAVA_BYTE, bufSize);
+        glGetPerfMonitorCounterStringAMD(group, counter, bufSize, MemoryAddress.NULL, seg);
+        return seg.getUtf8String(0);
     }
 
     public static void glGetPerfMonitorCountersAMD(int group, Addressable numCounters, Addressable maxActiveCounters, int counterSize, Addressable counters) {
         try {
-            check(glGetPerfMonitorCountersAMD).invoke(group, numCounters, maxActiveCounters, counterSize, counters);
+            check(glGetPerfMonitorCountersAMD).invokeExact(group, numCounters, maxActiveCounters, counterSize, counters);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGetPerfMonitorCountersAMD(int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int counterSize, int @Nullable [] counters) {
-        try (var session = MemorySession.openShared()) {
-            var pNum = numCounters != null ? session.allocateArray(JAVA_INT, numCounters.length) : MemoryAddress.NULL;
-            var pMax = maxActiveCounters != null ? session.allocateArray(JAVA_INT, maxActiveCounters.length) : MemoryAddress.NULL;
-            var pc = counters != null ? session.allocateArray(JAVA_INT, counters.length) : MemoryAddress.NULL;
-            glGetPerfMonitorCountersAMD(group, pNum, pMax, counters != null ? counters.length : counterSize, pc);
-        }
+    public static void glGetPerfMonitorCountersAMD(SegmentAllocator session, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int counterSize, int @Nullable [] counters) {
+        var pNum = numCounters != null ? session.allocateArray(JAVA_INT, numCounters.length) : MemoryAddress.NULL;
+        var pMax = maxActiveCounters != null ? session.allocateArray(JAVA_INT, maxActiveCounters.length) : MemoryAddress.NULL;
+        var pc = counters != null ? session.allocateArray(JAVA_INT, counters.length) : MemoryAddress.NULL;
+        glGetPerfMonitorCountersAMD(group, pNum, pMax, counters != null ? counters.length : counterSize, pc);
     }
 
-    public static void glGetPerfMonitorCountersAMD(int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int @NotNull [] counters) {
-        glGetPerfMonitorCountersAMD(group, numCounters, maxActiveCounters, counters.length, counters);
+    public static void glGetPerfMonitorCountersAMD(SegmentAllocator session, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int @NotNull [] counters) {
+        glGetPerfMonitorCountersAMD(session, group, numCounters, maxActiveCounters, counters.length, counters);
     }
 
     public static void glGetPerfMonitorGroupStringAMD(int group, int bufSize, Addressable length, Addressable groupString) {
         try {
-            check(glGetPerfMonitorGroupStringAMD).invoke(group, bufSize, length, groupString);
+            check(glGetPerfMonitorGroupStringAMD).invokeExact(group, bufSize, length, groupString);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static String glGetPerfMonitorGroupStringAMD(int group, int bufSize) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_BYTE, bufSize);
-            glGetPerfMonitorGroupStringAMD(group, bufSize, MemoryAddress.NULL, seg);
-            return seg.getUtf8String(0);
-        }
+    public static String glGetPerfMonitorGroupStringAMD(SegmentAllocator session, int group, int bufSize) {
+        var seg = session.allocateArray(JAVA_BYTE, bufSize);
+        glGetPerfMonitorGroupStringAMD(group, bufSize, MemoryAddress.NULL, seg);
+        return seg.getUtf8String(0);
     }
 
     public static void glGetPerfMonitorGroupsAMD(Addressable numGroups, int groupsSize, Addressable groups) {
         try {
-            check(glGetPerfMonitorGroupsAMD).invoke(numGroups, groupsSize, groups);
+            check(glGetPerfMonitorGroupsAMD).invokeExact(numGroups, groupsSize, groups);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGetPerfMonitorGroupsAMD(int @Nullable [] numGroups, int @Nullable [] groups) {
-        try (var session = MemorySession.openShared()) {
-            var pn = numGroups != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-            final boolean hasGroups = groups != null;
-            var pg = groups != null ? session.allocateArray(JAVA_INT, groups.length) : MemoryAddress.NULL;
-            glGetPerfMonitorGroupsAMD(pn, groups != null ? groups.length : 0, pg);
-            if (numGroups != null && numGroups.length > 0) {
-                numGroups[0] = ((MemorySegment) pn).get(JAVA_INT, 0);
-            }
-            if (hasGroups) {
-                RuntimeHelper.toArray(pg, groups);
-            }
+    public static void glGetPerfMonitorGroupsAMD(SegmentAllocator session, int @Nullable [] numGroups, int @Nullable [] groups) {
+        var pn = numGroups != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+        final boolean hasGroups = groups != null;
+        var pg = groups != null ? session.allocateArray(JAVA_INT, groups.length) : MemoryAddress.NULL;
+        glGetPerfMonitorGroupsAMD(pn, groups != null ? groups.length : 0, pg);
+        if (numGroups != null && numGroups.length > 0) {
+            numGroups[0] = ((MemorySegment) pn).get(JAVA_INT, 0);
+        }
+        if (hasGroups) {
+            RuntimeHelper.toArray(pg, groups);
         }
     }
 
     public static void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, Addressable counterList) {
         try {
-            check(glSelectPerfMonitorCountersAMD).invoke(monitor, enable, group, numCounters, counterList);
+            check(glSelectPerfMonitorCountersAMD).invokeExact(monitor, enable, group, numCounters, counterList);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int[] counterList) {
-        try (var session = MemorySession.openShared()) {
-            glSelectPerfMonitorCountersAMD(monitor, enable, group, counterList.length, session.allocateArray(JAVA_INT, counterList));
-        }
+    public static void glSelectPerfMonitorCountersAMD(SegmentAllocator session, int monitor, boolean enable, int group, int[] counterList) {
+        glSelectPerfMonitorCountersAMD(monitor, enable, group, counterList.length, session.allocateArray(JAVA_INT, counterList));
     }
 }

@@ -54,33 +54,33 @@ public class GLAMDDrawBuffersBlend {
 
     public static void glBlendEquationIndexedAMD(int buf, int mode) {
         try {
-            check(glBlendEquationIndexedAMD).invoke(buf, mode);
+            check(glBlendEquationIndexedAMD).invokeExact(buf, mode);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glBlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
         try {
-            check(glBlendEquationSeparateIndexedAMD).invoke(buf, modeRGB, modeAlpha);
+            check(glBlendEquationSeparateIndexedAMD).invokeExact(buf, modeRGB, modeAlpha);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glBlendFuncIndexedAMD(int buf, int src, int dst) {
         try {
-            check(glBlendFuncIndexedAMD).invoke(buf, src, dst);
+            check(glBlendFuncIndexedAMD).invokeExact(buf, src, dst);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glBlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
         try {
-            check(glBlendFuncSeparateIndexedAMD).invoke(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+            check(glBlendFuncSeparateIndexedAMD).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

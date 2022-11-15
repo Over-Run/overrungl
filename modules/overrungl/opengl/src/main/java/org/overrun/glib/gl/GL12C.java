@@ -27,12 +27,13 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 1.2 forward compatible functions.
@@ -58,99 +59,77 @@ public sealed class GL12C extends GL11C permits GL13C {
 
     public static void copyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
         try {
-            check(glCopyTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+            check(glCopyTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, x, y, width, height);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawRangeElements(int mode, int start, int end, int count, int type, Addressable indices) {
         try {
-            check(glDrawRangeElements).invoke(mode, start, end, count, type, indices);
+            check(glDrawRangeElements).invokeExact(mode, start, end, count, type, indices);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void drawRangeElements(int mode, int start, int end, int count, int type, byte[] indices) {
-        try (var session = MemorySession.openShared()) {
-            drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_BYTE, indices));
-        }
+    public static void drawRangeElements(SegmentAllocator session, int mode, int start, int end, int count, int type, byte[] indices) {
+        drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_BYTE, indices));
     }
 
-    public static void drawRangeElements(int mode, int start, int end, int count, int type, short[] indices) {
-        try (var session = MemorySession.openShared()) {
-            drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_SHORT, indices));
-        }
+    public static void drawRangeElements(SegmentAllocator session, int mode, int start, int end, int count, int type, short[] indices) {
+        drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_SHORT, indices));
     }
 
-    public static void drawRangeElements(int mode, int start, int end, int count, int type, int[] indices) {
-        try (var session = MemorySession.openShared()) {
-            drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_INT, indices));
-        }
+    public static void drawRangeElements(SegmentAllocator session, int mode, int start, int end, int count, int type, int[] indices) {
+        drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_INT, indices));
     }
 
     public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, Addressable pixels) {
         try {
-            check(glTexImage3D).invoke(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+            check(glTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
-        }
+    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, byte[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
-        }
+    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, short[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_INT, pixels));
-        }
+    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, int[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
-        }
+    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, float[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
         try {
-            check(glTexSubImage3D).invoke(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+            check(glTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_BYTE, pixels));
-        }
+    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_SHORT, pixels));
-        }
+    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_INT, pixels));
-        }
+    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
-        try (var session = MemorySession.openShared()) {
-            texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_FLOAT, pixels));
-        }
+    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_FLOAT, pixels));
     }
 }

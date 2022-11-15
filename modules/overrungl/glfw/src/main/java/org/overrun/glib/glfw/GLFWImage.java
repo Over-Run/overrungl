@@ -53,7 +53,7 @@ public class GLFWImage extends Pointer {
         ValueLayout.JAVA_INT.withName("width"),
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.ADDRESS.withName("pixels")
-    );
+    ).withName("GLFWimage");
     private static final VarHandle
         pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
         pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),

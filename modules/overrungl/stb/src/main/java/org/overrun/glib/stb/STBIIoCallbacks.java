@@ -58,7 +58,7 @@ public class STBIIoCallbacks extends Pointer {
             ValueLayout.ADDRESS.withName("read"),
             ValueLayout.ADDRESS.withName("skip"),
             ValueLayout.ADDRESS.withName("eof")
-        );
+        ).withName("stbi_io_callbacks");
     private static final VarHandle
         pRead = LAYOUT.varHandle(PathElement.groupElement("read")),
         pSkip = LAYOUT.varHandle(PathElement.groupElement("skip")),

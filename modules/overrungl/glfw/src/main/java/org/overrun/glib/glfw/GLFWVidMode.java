@@ -60,7 +60,7 @@ public class GLFWVidMode extends Pointer {
         ValueLayout.JAVA_INT.withName("greenBits"),
         ValueLayout.JAVA_INT.withName("blueBits"),
         ValueLayout.JAVA_INT.withName("refreshRate")
-    );
+    ).withName("GLFWvidmode");
     private static final VarHandle
         pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
         pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),

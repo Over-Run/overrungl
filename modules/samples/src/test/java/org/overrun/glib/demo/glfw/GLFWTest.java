@@ -32,6 +32,7 @@ import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySession;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -45,7 +46,9 @@ public final class GLFWTest {
     private MemoryAddress window;
 
     public void run() {
-        init();
+        try (var session = MemorySession.openShared()) {
+            init(session);
+        }
         loop();
 
         Callbacks.free(window);
@@ -55,7 +58,7 @@ public final class GLFWTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init() {
+    private void init(MemorySession session) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -63,7 +66,7 @@ public final class GLFWTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(300, 300, "Hello World!", MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(session, 300, 300, "Hello World!", MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -73,7 +76,7 @@ public final class GLFWTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(

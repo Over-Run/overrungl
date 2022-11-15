@@ -74,7 +74,7 @@ public final class MemoryUtilTest {
         sb = new StringBuilder();
         start = System.nanoTime();
         for (int i = 0; i < ALLOC_COUNT; i++) {
-            var seg = MemoryUtil.malloc(4);
+            var seg = MemoryUtil.malloc(ValueLayout.JAVA_INT);
             seg.set(ValueLayout.JAVA_INT, 0, i);
             sb.append(seg.get(ValueLayout.JAVA_INT, 0));
             MemoryUtil.free(seg);
@@ -87,7 +87,7 @@ public final class MemoryUtilTest {
         sb = new StringBuilder();
         start = System.nanoTime();
         for (int i = 0; i < ALLOC_COUNT; i++) {
-            var seg = MemoryUtil.calloc(1, 4);
+            var seg = MemoryUtil.calloc(1, ValueLayout.JAVA_INT);
             seg.set(ValueLayout.JAVA_INT, 0, i);
             sb.append(seg.get(ValueLayout.JAVA_INT, 0));
             MemoryUtil.free(seg);

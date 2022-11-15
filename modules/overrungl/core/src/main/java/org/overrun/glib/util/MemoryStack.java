@@ -279,7 +279,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * Returns the memory address at the current stack pointer.
      */
     public MemoryAddress getPointerAddress() {
-        return address().addOffset(pointer & 0xFFFF_FFFFL);
+        return address().addOffset(pointer);
     }
 
     /**

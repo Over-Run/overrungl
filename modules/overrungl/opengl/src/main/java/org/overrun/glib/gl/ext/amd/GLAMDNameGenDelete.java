@@ -32,7 +32,7 @@ import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -57,16 +57,14 @@ public class GLAMDNameGenDelete {
 
     public static void glDeleteNamesAMD(int identifier, int num, Addressable names) {
         try {
-            check(glDeleteNamesAMD).invoke(identifier, num, names);
+            check(glDeleteNamesAMD).invokeExact(identifier, num, names);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glDeleteNamesAMD(int identifier, int[] names) {
-        try (var session = MemorySession.openShared()) {
-            glDeleteNamesAMD(identifier, names.length, session.allocateArray(JAVA_INT, names));
-        }
+    public static void glDeleteNamesAMD(SegmentAllocator session, int identifier, int[] names) {
+        glDeleteNamesAMD(identifier, names.length, session.allocateArray(JAVA_INT, names));
     }
 
     public static void glDeleteNameAMD(int identifier, int name) {
@@ -83,18 +81,16 @@ public class GLAMDNameGenDelete {
 
     public static void glGenNamesAMD(int identifier, int num, Addressable names) {
         try {
-            check(glGenNamesAMD).invoke(identifier, num, names);
+            check(glGenNamesAMD).invokeExact(identifier, num, names);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void glGenNamesAMD(int identifier, int[] names) {
-        try (var session = MemorySession.openShared()) {
-            var seg = session.allocateArray(JAVA_INT, names.length);
-            glGenNamesAMD(identifier, names.length, seg);
-            RuntimeHelper.toArray(seg, names);
-        }
+    public static void glGenNamesAMD(SegmentAllocator session, int identifier, int[] names) {
+        var seg = session.allocateArray(JAVA_INT, names.length);
+        glGenNamesAMD(identifier, names.length, seg);
+        RuntimeHelper.toArray(seg, names);
     }
 
     public static int glGenNameAMD(int identifier) {
@@ -111,9 +107,9 @@ public class GLAMDNameGenDelete {
 
     public static boolean glIsNameAMD(int identifier, int name) {
         try {
-            return (boolean) check(glIsNameAMD).invoke(identifier, name);
+            return (boolean) check(glIsNameAMD).invokeExact(identifier, name);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 }

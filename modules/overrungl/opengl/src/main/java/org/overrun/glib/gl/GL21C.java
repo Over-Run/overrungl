@@ -27,12 +27,13 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
+import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.FunctionDescriptors.IIZPV;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLCaps.checkAll;
 
 /**
  * The OpenGL 2.1 forward compatible functions.
@@ -62,109 +63,97 @@ public sealed class GL21C extends GL20C permits GL30C {
 
     public static void uniformMatrix2x3fv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix2x3fv).invoke(location, count, transpose, value);
+            check(glUniformMatrix2x3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix2x3fv(int location, int count, boolean transpose, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix2x3fv(location, count, transpose, session.allocateArray(ValueLayout.JAVA_FLOAT, value));
-        }
+    public static void uniformMatrix2x3fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix2x3fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix2x3fv(int location, boolean transpose, float[] value) {
-        uniformMatrix2x3fv(location, value.length / 6, transpose, value);
+    public static void uniformMatrix2x3fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
+        uniformMatrix2x3fv(session, location, value.length / 6, transpose, value);
     }
 
     public static void uniformMatrix2x4fv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix2x4fv).invoke(location, count, transpose, value);
+            check(glUniformMatrix2x4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix2x4fv(int location, int count, boolean transpose, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix2x4fv(location, count, transpose, session.allocateArray(ValueLayout.JAVA_FLOAT, value));
-        }
+    public static void uniformMatrix2x4fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix2x4fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix2x4fv(int location, boolean transpose, float[] value) {
-        uniformMatrix2x4fv(location, value.length >> 3, transpose, value);
+    public static void uniformMatrix2x4fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
+        uniformMatrix2x4fv(session, location, value.length >> 3, transpose, value);
     }
 
     public static void uniformMatrix3x2fv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix3x2fv).invoke(location, count, transpose, value);
+            check(glUniformMatrix3x2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix3x2fv(int location, int count, boolean transpose, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix3x2fv(location, count, transpose, session.allocateArray(ValueLayout.JAVA_FLOAT, value));
-        }
+    public static void uniformMatrix3x2fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix3x2fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix3x2fv(int location, boolean transpose, float[] value) {
-        uniformMatrix3x2fv(location, value.length / 6, transpose, value);
+    public static void uniformMatrix3x2fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
+        uniformMatrix3x2fv(session, location, value.length / 6, transpose, value);
     }
 
     public static void uniformMatrix3x4fv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix3x4fv).invoke(location, count, transpose, value);
+            check(glUniformMatrix3x4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix3x4fv(int location, int count, boolean transpose, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix3x4fv(location, count, transpose, session.allocateArray(ValueLayout.JAVA_FLOAT, value));
-        }
+    public static void uniformMatrix3x4fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix3x4fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix3x4fv(int location, boolean transpose, float[] value) {
-        uniformMatrix3x4fv(location, value.length / 12, transpose, value);
+    public static void uniformMatrix3x4fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
+        uniformMatrix3x4fv(session, location, value.length / 12, transpose, value);
     }
 
     public static void uniformMatrix4x2fv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix4x2fv).invoke(location, count, transpose, value);
+            check(glUniformMatrix4x2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix4x2fv(int location, int count, boolean transpose, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix4x2fv(location, count, transpose, session.allocateArray(ValueLayout.JAVA_FLOAT, value));
-        }
+    public static void uniformMatrix4x2fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix4x2fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix4x2fv(int location, boolean transpose, float[] value) {
-        uniformMatrix4x2fv(location, value.length >> 3, transpose, value);
+    public static void uniformMatrix4x2fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
+        uniformMatrix4x2fv(session, location, value.length >> 3, transpose, value);
     }
 
     public static void uniformMatrix4x3fv(int location, int count, boolean transpose, Addressable value) {
         try {
-            check(glUniformMatrix4x3fv).invoke(location, count, transpose, value);
+            check(glUniformMatrix4x3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void uniformMatrix4x3fv(int location, int count, boolean transpose, float[] value) {
-        try (var session = MemorySession.openShared()) {
-            uniformMatrix4x3fv(location, count, transpose, session.allocateArray(ValueLayout.JAVA_FLOAT, value));
-        }
+    public static void uniformMatrix4x3fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix4x3fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix4x3fv(int location, boolean transpose, float[] value) {
-        uniformMatrix4x3fv(location, value.length / 12, transpose, value);
+    public static void uniformMatrix4x3fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
+        uniformMatrix4x3fv(session, location, value.length / 12, transpose, value);
     }
 }

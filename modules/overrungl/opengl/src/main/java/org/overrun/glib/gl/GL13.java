@@ -27,13 +27,13 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLCaps.Ver13;
+import static org.overrun.glib.gl.GLCaps.check;
 
 /**
  * The OpenGL 1.3 functions.
@@ -96,417 +96,377 @@ public final class GL13 extends GL13C {
 
     public static void clientActiveTexture(int texture) {
         try {
-            check(glClientActiveTexture).invoke(texture);
+            check(glClientActiveTexture).invokeExact(texture);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void loadTransposeMatrixd(Addressable m) {
         try {
-            check(glLoadTransposeMatrixd).invoke(m);
+            check(glLoadTransposeMatrixd).invokeExact(m);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void loadTransposeMatrixd(double[] m) {
-        try (var session = MemorySession.openShared()) {
-            loadTransposeMatrixd(session.allocateArray(ValueLayout.JAVA_DOUBLE, m));
-        }
+    public static void loadTransposeMatrixd(SegmentAllocator session, double[] m) {
+        loadTransposeMatrixd(session.allocateArray(JAVA_DOUBLE, m));
     }
 
     public static void loadTransposeMatrixf(Addressable m) {
         try {
-            check(glLoadTransposeMatrixf).invoke(m);
+            check(glLoadTransposeMatrixf).invokeExact(m);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void loadTransposeMatrixf(float[] m) {
-        try (var session = MemorySession.openShared()) {
-            loadTransposeMatrixf(session.allocateArray(JAVA_FLOAT, m));
-        }
+    public static void loadTransposeMatrixf(SegmentAllocator session, float[] m) {
+        loadTransposeMatrixf(session.allocateArray(JAVA_FLOAT, m));
     }
 
     public static void multTransposeMatrixd(Addressable m) {
         try {
-            check(glMultTransposeMatrixd).invoke(m);
+            check(glMultTransposeMatrixd).invokeExact(m);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multTransposeMatrixd(double[] m) {
-        try (var session = MemorySession.openShared()) {
-            multTransposeMatrixd(session.allocateArray(ValueLayout.JAVA_DOUBLE, m));
-        }
+    public static void multTransposeMatrixd(SegmentAllocator session, double[] m) {
+        multTransposeMatrixd(session.allocateArray(JAVA_DOUBLE, m));
     }
 
     public static void multTransposeMatrixf(Addressable m) {
         try {
-            check(glMultTransposeMatrixf).invoke(m);
+            check(glMultTransposeMatrixf).invokeExact(m);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multTransposeMatrixf(float[] m) {
-        try (var session = MemorySession.openShared()) {
-            multTransposeMatrixf(session.allocateArray(JAVA_FLOAT, m));
-        }
+    public static void multTransposeMatrixf(SegmentAllocator session, float[] m) {
+        multTransposeMatrixf(session.allocateArray(JAVA_FLOAT, m));
     }
 
     public static void multiTexCoord1d(int target, double s) {
         try {
-            check(glMultiTexCoord1d).invoke(target, s);
+            check(glMultiTexCoord1d).invokeExact(target, s);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1dv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord1dv).invoke(target, v);
+            check(glMultiTexCoord1dv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord1dv(int target, double[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord1dv(target, session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void multiTexCoord1dv(SegmentAllocator session, int target, double[] v) {
+        multiTexCoord1dv(target, session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord1f(int target, float s) {
         try {
-            check(glMultiTexCoord1f).invoke(target, s);
+            check(glMultiTexCoord1f).invokeExact(target, s);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1fv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord1fv).invoke(target, v);
+            check(glMultiTexCoord1fv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord1fv(int target, float[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord1fv(target, session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void multiTexCoord1fv(SegmentAllocator session, int target, float[] v) {
+        multiTexCoord1fv(target, session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord1i(int target, int s) {
         try {
-            check(glMultiTexCoord1i).invoke(target, s);
+            check(glMultiTexCoord1i).invokeExact(target, s);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1iv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord1iv).invoke(target, v);
+            check(glMultiTexCoord1iv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord1iv(int target, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord1iv(target, session.allocateArray(JAVA_INT, v));
-        }
+    public static void multiTexCoord1iv(SegmentAllocator session, int target, int[] v) {
+        multiTexCoord1iv(target, session.allocateArray(JAVA_INT, v));
     }
 
     public static void multiTexCoord1s(int target, short s) {
         try {
-            check(glMultiTexCoord1s).invoke(target, s);
+            check(glMultiTexCoord1s).invokeExact(target, s);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1sv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord1sv).invoke(target, v);
+            check(glMultiTexCoord1sv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord1sv(int target, short[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord1sv(target, session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void multiTexCoord1sv(SegmentAllocator session, int target, short[] v) {
+        multiTexCoord1sv(target, session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void multiTexCoord2d(int target, double s, double t) {
         try {
-            check(glMultiTexCoord2d).invoke(target, s, t);
+            check(glMultiTexCoord2d).invokeExact(target, s, t);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2dv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord2dv).invoke(target, v);
+            check(glMultiTexCoord2dv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord2dv(int target, double[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord2dv(target, session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void multiTexCoord2dv(SegmentAllocator session, int target, double[] v) {
+        multiTexCoord2dv(target, session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord2f(int target, float s, float t) {
         try {
-            check(glMultiTexCoord2f).invoke(target, s, t);
+            check(glMultiTexCoord2f).invokeExact(target, s, t);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2fv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord2fv).invoke(target, v);
+            check(glMultiTexCoord2fv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord2fv(int target, float[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord2fv(target, session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void multiTexCoord2fv(SegmentAllocator session, int target, float[] v) {
+        multiTexCoord2fv(target, session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord2i(int target, int s, int t) {
         try {
-            check(glMultiTexCoord2i).invoke(target, s, t);
+            check(glMultiTexCoord2i).invokeExact(target, s, t);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2iv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord2iv).invoke(target, v);
+            check(glMultiTexCoord2iv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord2iv(int target, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord2iv(target, session.allocateArray(JAVA_INT, v));
-        }
+    public static void multiTexCoord2iv(SegmentAllocator session, int target, int[] v) {
+        multiTexCoord2iv(target, session.allocateArray(JAVA_INT, v));
     }
 
     public static void multiTexCoord2s(int target, short s, short t) {
         try {
-            check(glMultiTexCoord2s).invoke(target, s, t);
+            check(glMultiTexCoord2s).invokeExact(target, s, t);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2sv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord2sv).invoke(target, v);
+            check(glMultiTexCoord2sv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord2sv(int target, short[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord2sv(target, session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void multiTexCoord2sv(SegmentAllocator session, int target, short[] v) {
+        multiTexCoord2sv(target, session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void multiTexCoord3d(int target, double s, double t, double r) {
         try {
-            check(glMultiTexCoord3d).invoke(target, s, t, r);
+            check(glMultiTexCoord3d).invokeExact(target, s, t, r);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3dv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord3dv).invoke(target, v);
+            check(glMultiTexCoord3dv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord3dv(int target, double[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord3dv(target, session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void multiTexCoord3dv(SegmentAllocator session, int target, double[] v) {
+        multiTexCoord3dv(target, session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord3f(int target, float s, float t, float r) {
         try {
-            check(glMultiTexCoord3f).invoke(target, s, t, r);
+            check(glMultiTexCoord3f).invokeExact(target, s, t, r);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3fv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord3fv).invoke(target, v);
+            check(glMultiTexCoord3fv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord3fv(int target, float[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord3fv(target, session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void multiTexCoord3fv(SegmentAllocator session, int target, float[] v) {
+        multiTexCoord3fv(target, session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord3i(int target, int s, int t, int r) {
         try {
-            check(glMultiTexCoord3i).invoke(target, s, t, r);
+            check(glMultiTexCoord3i).invokeExact(target, s, t, r);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3iv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord3iv).invoke(target, v);
+            check(glMultiTexCoord3iv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord3iv(int target, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord3iv(target, session.allocateArray(JAVA_INT, v));
-        }
+    public static void multiTexCoord3iv(SegmentAllocator session, int target, int[] v) {
+        multiTexCoord3iv(target, session.allocateArray(JAVA_INT, v));
     }
 
     public static void multiTexCoord3s(int target, short s, short t, short r) {
         try {
-            check(glMultiTexCoord3s).invoke(target, s, t, r);
+            check(glMultiTexCoord3s).invokeExact(target, s, t, r);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3sv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord3sv).invoke(target, v);
+            check(glMultiTexCoord3sv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord3sv(int target, short[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord3sv(target, session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void multiTexCoord3sv(SegmentAllocator session, int target, short[] v) {
+        multiTexCoord3sv(target, session.allocateArray(JAVA_SHORT, v));
     }
 
     public static void multiTexCoord4d(int target, double s, double t, double r, double q) {
         try {
-            check(glMultiTexCoord4d).invoke(target, s, t, r, q);
+            check(glMultiTexCoord4d).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4dv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord4dv).invoke(target, v);
+            check(glMultiTexCoord4dv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord4dv(int target, double[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord4dv(target, session.allocateArray(JAVA_DOUBLE, v));
-        }
+    public static void multiTexCoord4dv(SegmentAllocator session, int target, double[] v) {
+        multiTexCoord4dv(target, session.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord4f(int target, float s, float t, float r, float q) {
         try {
-            check(glMultiTexCoord4f).invoke(target, s, t, r, q);
+            check(glMultiTexCoord4f).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4fv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord4fv).invoke(target, v);
+            check(glMultiTexCoord4fv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord4fv(int target, float[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord4fv(target, session.allocateArray(JAVA_FLOAT, v));
-        }
+    public static void multiTexCoord4fv(SegmentAllocator session, int target, float[] v) {
+        multiTexCoord4fv(target, session.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord4i(int target, int s, int t, int r, int q) {
         try {
-            check(glMultiTexCoord4i).invoke(target, s, t, r, q);
+            check(glMultiTexCoord4i).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4iv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord4iv).invoke(target, v);
+            check(glMultiTexCoord4iv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord4iv(int target, int[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord4iv(target, session.allocateArray(JAVA_INT, v));
-        }
+    public static void multiTexCoord4iv(SegmentAllocator session, int target, int[] v) {
+        multiTexCoord4iv(target, session.allocateArray(JAVA_INT, v));
     }
 
     public static void multiTexCoord4s(int target, short s, short t, short r, short q) {
         try {
-            check(glMultiTexCoord4s).invoke(target, s, t, r, q);
+            check(glMultiTexCoord4s).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4sv(int target, Addressable v) {
         try {
-            check(glMultiTexCoord4sv).invoke(target, v);
+            check(glMultiTexCoord4sv).invokeExact(target, v);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here");
+            throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void multiTexCoord4sv(int target, short[] v) {
-        try (var session = MemorySession.openShared()) {
-            multiTexCoord4sv(target, session.allocateArray(JAVA_SHORT, v));
-        }
+    public static void multiTexCoord4sv(SegmentAllocator session, int target, short[] v) {
+        multiTexCoord4sv(target, session.allocateArray(JAVA_SHORT, v));
     }
 }
