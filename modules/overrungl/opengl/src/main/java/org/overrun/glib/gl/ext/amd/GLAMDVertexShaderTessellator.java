@@ -44,7 +44,7 @@ public class GLAMDVertexShaderTessellator {
     public static MethodHandle glTessellationFactorAMD, glTessellationModeAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_vertex_shader_tessellator) return;
+        if (GLExtCaps.Flags.GL_AMD_vertex_shader_tessellator.no()) return;
         glTessellationFactorAMD = load.invoke("glTessellationFactorAMD", FunctionDescriptors.FV);
         glTessellationModeAMD = load.invoke("glTessellationModeAMD", FunctionDescriptors.IV);
     }

@@ -44,7 +44,7 @@ public class GLAMDSparseTexture {
     public static MethodHandle glTexStorageSparseAMD, glTextureStorageSparseAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_sparse_texture) return;
+        if (GLExtCaps.Flags.GL_AMD_sparse_texture.no()) return;
         glTexStorageSparseAMD = load.invoke("glTexStorageSparseAMD", FunctionDescriptors.IIIIIIIV);
         glTextureStorageSparseAMD = load.invoke("glTextureStorageSparseAMD", FunctionDescriptors.IIIIIIIIV);
     }

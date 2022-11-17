@@ -104,16 +104,16 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void drawElementsBaseVertex(SegmentAllocator session, int mode, int count, int type, byte[] indices, int baseVertex) {
-        drawElementsBaseVertex(mode, count, type, session.allocateArray(JAVA_BYTE, indices), baseVertex);
+    public static void drawElementsBaseVertex(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int baseVertex) {
+        drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), baseVertex);
     }
 
-    public static void drawElementsBaseVertex(SegmentAllocator session, int mode, int count, int type, short[] indices, int baseVertex) {
-        drawElementsBaseVertex(mode, count, type, session.allocateArray(JAVA_SHORT, indices), baseVertex);
+    public static void drawElementsBaseVertex(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int baseVertex) {
+        drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), baseVertex);
     }
 
-    public static void drawElementsBaseVertex(SegmentAllocator session, int mode, int count, int type, int[] indices, int baseVertex) {
-        drawElementsBaseVertex(mode, count, type, session.allocateArray(JAVA_INT, indices), baseVertex);
+    public static void drawElementsBaseVertex(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int baseVertex) {
+        drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_INT, indices), baseVertex);
     }
 
     public static void drawElementsInstancedBaseVertex(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex) {
@@ -124,16 +124,16 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void drawElementsInstancedBaseVertex(SegmentAllocator session, int mode, int count, int type, byte[] indices, int instanceCount, int baseVertex) {
-        drawElementsInstancedBaseVertex(mode, count, type, session.allocateArray(JAVA_BYTE, indices), instanceCount, baseVertex);
+    public static void drawElementsInstancedBaseVertex(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount, int baseVertex) {
+        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), instanceCount, baseVertex);
     }
 
-    public static void drawElementsInstancedBaseVertex(SegmentAllocator session, int mode, int count, int type, short[] indices, int instanceCount, int baseVertex) {
-        drawElementsInstancedBaseVertex(mode, count, type, session.allocateArray(JAVA_SHORT, indices), instanceCount, baseVertex);
+    public static void drawElementsInstancedBaseVertex(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount, int baseVertex) {
+        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), instanceCount, baseVertex);
     }
 
-    public static void drawElementsInstancedBaseVertex(SegmentAllocator session, int mode, int count, int type, int[] indices, int instanceCount, int baseVertex) {
-        drawElementsInstancedBaseVertex(mode, count, type, session.allocateArray(JAVA_INT, indices), instanceCount, baseVertex);
+    public static void drawElementsInstancedBaseVertex(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount, int baseVertex) {
+        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount, baseVertex);
     }
 
     public static void drawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, Addressable indices, int baseVertex) {
@@ -144,16 +144,16 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void drawRangeElementsBaseVertex(SegmentAllocator session, int mode, int start, int end, int count, int type, byte[] indices, int baseVertex) {
-        drawRangeElementsBaseVertex(mode, start, end, count, type, session.allocateArray(JAVA_BYTE, indices), baseVertex);
+    public static void drawRangeElementsBaseVertex(SegmentAllocator allocator, int mode, int start, int end, int count, int type, byte[] indices, int baseVertex) {
+        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_BYTE, indices), baseVertex);
     }
 
-    public static void drawRangeElementsBaseVertex(SegmentAllocator session, int mode, int start, int end, int count, int type, short[] indices, int baseVertex) {
-        drawRangeElementsBaseVertex(mode, start, end, count, type, session.allocateArray(JAVA_SHORT, indices), baseVertex);
+    public static void drawRangeElementsBaseVertex(SegmentAllocator allocator, int mode, int start, int end, int count, int type, short[] indices, int baseVertex) {
+        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_SHORT, indices), baseVertex);
     }
 
-    public static void drawRangeElementsBaseVertex(SegmentAllocator session, int mode, int start, int end, int count, int type, int[] indices, int baseVertex) {
-        drawRangeElementsBaseVertex(mode, start, end, count, type, session.allocateArray(JAVA_INT, indices), baseVertex);
+    public static void drawRangeElementsBaseVertex(SegmentAllocator allocator, int mode, int start, int end, int count, int type, int[] indices, int baseVertex) {
+        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_INT, indices), baseVertex);
     }
 
     public static MemoryAddress fenceSync(int condition, int flags) {
@@ -200,8 +200,8 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getInteger64i_v(SegmentAllocator session, int target, int index, long[] data) {
-        var seg = session.allocateArray(JAVA_LONG, data.length);
+    public static void getInteger64i_v(SegmentAllocator allocator, int target, int index, long[] data) {
+        var seg = allocator.allocateArray(JAVA_LONG, data.length);
         getInteger64i_v(target, index, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -226,8 +226,8 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getInteger64v(SegmentAllocator session, int pname, long[] data) {
-        var pData = session.allocateArray(JAVA_LONG, data.length);
+    public static void getInteger64v(SegmentAllocator allocator, int pname, long[] data) {
+        var pData = allocator.allocateArray(JAVA_LONG, data.length);
         getInteger64v(pname, pData);
         RuntimeHelper.toArray(pData, data);
     }
@@ -252,14 +252,14 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getMultisamplefv(SegmentAllocator session, int pname, int index, float[] val) {
-        var seg = session.allocateArray(JAVA_FLOAT, val.length);
+    public static void getMultisamplefv(SegmentAllocator allocator, int pname, int index, float[] val) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, val.length);
         getMultisamplefv(pname, index, seg);
         RuntimeHelper.toArray(seg, val);
     }
 
-    public static float[] getMultisamplefv(SegmentAllocator session, int pname, int index) {
-        var seg = session.allocateArray(JAVA_FLOAT, 2);
+    public static float[] getMultisamplefv(SegmentAllocator allocator, int pname, int index) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, 2);
         getMultisamplefv(pname, index, seg);
         return new float[]{seg.get(JAVA_FLOAT, 0), seg.getAtIndex(JAVA_FLOAT, 1)};
     }
@@ -272,9 +272,9 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getSynciv(SegmentAllocator session, MemoryAddress sync, int pname, int @Nullable [] length, int[] values) {
-        var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-        var pVal = session.allocateArray(JAVA_INT, values.length);
+    public static void getSynciv(SegmentAllocator allocator, MemoryAddress sync, int pname, int @Nullable [] length, int[] values) {
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pVal = allocator.allocateArray(JAVA_INT, values.length);
         getSynciv(sync, pname, values.length, pLen, pVal);
         if (length != null && length.length > 0) {
             length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
@@ -310,36 +310,36 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void multiDrawElementsBaseVertex(SegmentAllocator session, int mode, int[] count, int type, Addressable[] indices, int drawCount, int[] baseVertex) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, Addressable[] indices, int drawCount, int[] baseVertex) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
             seg.setAtIndex(ADDRESS, i, indices[i]);
         }
-        multiDrawElementsBaseVertex(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount, session.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
     }
 
-    public static void multiDrawElementsBaseVertex(SegmentAllocator session, int mode, int[] count, int type, byte[][] indices, int drawCount, int[] baseVertex) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices, int drawCount, int[] baseVertex) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_BYTE, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_BYTE, indices[i]));
         }
-        multiDrawElementsBaseVertex(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount, session.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
     }
 
-    public static void multiDrawElementsBaseVertex(SegmentAllocator session, int mode, int[] count, int type, short[][] indices, int drawCount, int[] baseVertex) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices, int drawCount, int[] baseVertex) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_SHORT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_SHORT, indices[i]));
         }
-        multiDrawElementsBaseVertex(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount, session.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
     }
 
-    public static void multiDrawElementsBaseVertex(SegmentAllocator session, int mode, int[] count, int type, int[][] indices, int drawCount, int[] baseVertex) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices, int drawCount, int[] baseVertex) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_INT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_INT, indices[i]));
         }
-        multiDrawElementsBaseVertex(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount, session.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
     }
 
     public static void provokingVertex(int mode) {

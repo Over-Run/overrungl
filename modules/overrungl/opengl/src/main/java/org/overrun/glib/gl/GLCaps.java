@@ -42,7 +42,7 @@ public class GLCaps {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
 
     /**
-     * The OpenGL version available status
+     * The OpenGL context version flags
      */
     public static boolean
         Ver10, Ver11, Ver12, Ver13, Ver14, Ver15,
@@ -50,7 +50,7 @@ public class GLCaps {
         Ver30, Ver31, Ver32, Ver33,
         Ver40, Ver41, Ver42, Ver43, Ver44, Ver45, Ver46;
     /**
-     * Is forward compatible
+     * Forward compatible flag. {@code false} for deprecated and removed function.
      */
     public static boolean forwardCompatible;
 
@@ -264,63 +264,6 @@ public class GLCaps {
         Ver44 = (major == 4 && minor >= 4) || major > 4 || GL44C.isSupported();
         Ver45 = (major == 4 && minor >= 5) || major > 4 || GL45C.isSupported();
         Ver46 = (major == 4 && minor >= 6) || major > 4 || GL46C.isSupported();
-        if (Ver46) {
-            return 40006;
-        }
-        if (Ver45) {
-            return 40005;
-        }
-        if (Ver44) {
-            return 40004;
-        }
-        if (Ver43) {
-            return 40003;
-        }
-        if (Ver42) {
-            return 40002;
-        }
-        if (Ver41) {
-            return 40001;
-        }
-        if (Ver40) {
-            return 40000;
-        }
-        if (Ver33) {
-            return 30003;
-        }
-        if (Ver32) {
-            return 30002;
-        }
-        if (Ver31) {
-            return 30001;
-        }
-        if (Ver30) {
-            return 30000;
-        }
-        if (Ver21) {
-            return 20001;
-        }
-        if (Ver20) {
-            return 20000;
-        }
-        if (Ver15) {
-            return 10005;
-        }
-        if (Ver14) {
-            return 10004;
-        }
-        if (Ver13) {
-            return 10003;
-        }
-        if (Ver12) {
-            return 10002;
-        }
-        if (Ver11) {
-            return 10001;
-        }
-        if (Ver10) {
-            return 10000;
-        }
         return makeVersion(major, minor);
     }
 }

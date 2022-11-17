@@ -43,7 +43,7 @@ public class GL3DFXTbuffer {
     public static MethodHandle glTbufferMask3DFX;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_3DFX_tbuffer) return;
+        if (GLExtCaps.Flags.GL_3DFX_tbuffer.no()) return;
         glTbufferMask3DFX = load.invoke("glTbufferMask3DFX", FunctionDescriptors.IV);
     }
 

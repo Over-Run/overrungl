@@ -276,8 +276,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void clearNamedFramebufferfv(SegmentAllocator session, int framebuffer, int buffer, int drawBuffer, float[] value) {
-        clearNamedFramebufferfv(framebuffer, buffer, drawBuffer, session.allocateArray(JAVA_FLOAT, value));
+    public static void clearNamedFramebufferfv(SegmentAllocator allocator, int framebuffer, int buffer, int drawBuffer, float[] value) {
+        clearNamedFramebufferfv(framebuffer, buffer, drawBuffer, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void clearNamedFramebufferiv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
@@ -288,8 +288,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void clearNamedFramebufferiv(SegmentAllocator session, int framebuffer, int buffer, int drawBuffer, int[] value) {
-        clearNamedFramebufferiv(framebuffer, buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
+    public static void clearNamedFramebufferiv(SegmentAllocator allocator, int framebuffer, int buffer, int drawBuffer, int[] value) {
+        clearNamedFramebufferiv(framebuffer, buffer, drawBuffer, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void clearNamedFramebufferuiv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
@@ -300,8 +300,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void clearNamedFramebufferuiv(SegmentAllocator session, int framebuffer, int buffer, int drawBuffer, int[] value) {
-        clearNamedFramebufferuiv(framebuffer, buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
+    public static void clearNamedFramebufferuiv(SegmentAllocator allocator, int framebuffer, int buffer, int drawBuffer, int[] value) {
+        clearNamedFramebufferuiv(framebuffer, buffer, drawBuffer, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void clipControl(int origin, int depth) {
@@ -376,8 +376,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createBuffers(SegmentAllocator session, int[] buffers) {
-        var seg = session.allocateArray(JAVA_INT, buffers.length);
+    public static void createBuffers(SegmentAllocator allocator, int[] buffers) {
+        var seg = allocator.allocateArray(JAVA_INT, buffers.length);
         createBuffers(buffers.length, seg);
         RuntimeHelper.toArray(seg, buffers);
     }
@@ -402,8 +402,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createFramebuffers(SegmentAllocator session, int[] framebuffers) {
-        var seg = session.allocateArray(JAVA_INT, framebuffers.length);
+    public static void createFramebuffers(SegmentAllocator allocator, int[] framebuffers) {
+        var seg = allocator.allocateArray(JAVA_INT, framebuffers.length);
         createFramebuffers(framebuffers.length, seg);
         RuntimeHelper.toArray(seg, framebuffers);
     }
@@ -428,8 +428,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createProgramPipelines(SegmentAllocator session, int[] pipelines) {
-        var seg = session.allocateArray(JAVA_INT, pipelines.length);
+    public static void createProgramPipelines(SegmentAllocator allocator, int[] pipelines) {
+        var seg = allocator.allocateArray(JAVA_INT, pipelines.length);
         createProgramPipelines(pipelines.length, seg);
         RuntimeHelper.toArray(seg, pipelines);
     }
@@ -454,8 +454,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createQueries(SegmentAllocator session, int target, int[] ids) {
-        var seg = session.allocateArray(JAVA_INT, ids.length);
+    public static void createQueries(SegmentAllocator allocator, int target, int[] ids) {
+        var seg = allocator.allocateArray(JAVA_INT, ids.length);
         createQueries(target, ids.length, seg);
         RuntimeHelper.toArray(seg, ids);
     }
@@ -480,8 +480,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createRenderbuffers(SegmentAllocator session, int[] renderbuffers) {
-        var seg = session.allocateArray(JAVA_INT, renderbuffers.length);
+    public static void createRenderbuffers(SegmentAllocator allocator, int[] renderbuffers) {
+        var seg = allocator.allocateArray(JAVA_INT, renderbuffers.length);
         createRenderbuffers(renderbuffers.length, seg);
         RuntimeHelper.toArray(seg, renderbuffers);
     }
@@ -506,8 +506,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createSamplers(SegmentAllocator session, int[] samplers) {
-        var seg = session.allocateArray(JAVA_INT, samplers.length);
+    public static void createSamplers(SegmentAllocator allocator, int[] samplers) {
+        var seg = allocator.allocateArray(JAVA_INT, samplers.length);
         createSamplers(samplers.length, seg);
         RuntimeHelper.toArray(seg, samplers);
     }
@@ -532,9 +532,9 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createTextures(SegmentAllocator session, int target, int[] textures) {
+    public static void createTextures(SegmentAllocator allocator, int target, int[] textures) {
         final int n = textures.length;
-        var pTex = session.allocateArray(JAVA_INT, n);
+        var pTex = allocator.allocateArray(JAVA_INT, n);
         createTextures(target, n, pTex);
         RuntimeHelper.toArray(pTex, textures);
     }
@@ -559,8 +559,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createTransformFeedbacks(SegmentAllocator session, int[] ids) {
-        var seg = session.allocateArray(JAVA_INT, ids.length);
+    public static void createTransformFeedbacks(SegmentAllocator allocator, int[] ids) {
+        var seg = allocator.allocateArray(JAVA_INT, ids.length);
         createTransformFeedbacks(ids.length, seg);
         RuntimeHelper.toArray(seg, ids);
     }
@@ -585,8 +585,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void createVertexArrays(SegmentAllocator session, int[] arrays) {
-        var seg = session.allocateArray(JAVA_INT, arrays.length);
+    public static void createVertexArrays(SegmentAllocator allocator, int[] arrays) {
+        var seg = allocator.allocateArray(JAVA_INT, arrays.length);
         createVertexArrays(arrays.length, seg);
         RuntimeHelper.toArray(seg, arrays);
     }
@@ -727,38 +727,38 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getNamedBufferSubData(SegmentAllocator session, int buffer, long offset, byte[] data) {
-        var seg = session.allocateArray(JAVA_BYTE, data.length);
+    public static void getNamedBufferSubData(SegmentAllocator allocator, int buffer, long offset, byte[] data) {
+        var seg = allocator.allocateArray(JAVA_BYTE, data.length);
         getNamedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length), seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getNamedBufferSubData(SegmentAllocator session, int buffer, long offset, short[] data) {
-        var seg = session.allocateArray(JAVA_SHORT, data.length);
+    public static void getNamedBufferSubData(SegmentAllocator allocator, int buffer, long offset, short[] data) {
+        var seg = allocator.allocateArray(JAVA_SHORT, data.length);
         getNamedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 1, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getNamedBufferSubData(SegmentAllocator session, int buffer, long offset, int[] data) {
-        var seg = session.allocateArray(JAVA_INT, data.length);
+    public static void getNamedBufferSubData(SegmentAllocator allocator, int buffer, long offset, int[] data) {
+        var seg = allocator.allocateArray(JAVA_INT, data.length);
         getNamedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 2, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getNamedBufferSubData(SegmentAllocator session, int buffer, long offset, long[] data) {
-        var seg = session.allocateArray(JAVA_LONG, data.length);
+    public static void getNamedBufferSubData(SegmentAllocator allocator, int buffer, long offset, long[] data) {
+        var seg = allocator.allocateArray(JAVA_LONG, data.length);
         getNamedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 3, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getNamedBufferSubData(SegmentAllocator session, int buffer, long offset, float[] data) {
-        var seg = session.allocateArray(JAVA_FLOAT, data.length);
+    public static void getNamedBufferSubData(SegmentAllocator allocator, int buffer, long offset, float[] data) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, data.length);
         getNamedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 2, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getNamedBufferSubData(SegmentAllocator session, int buffer, long offset, double[] data) {
-        var seg = session.allocateArray(JAVA_DOUBLE, data.length);
+    public static void getNamedBufferSubData(SegmentAllocator allocator, int buffer, long offset, double[] data) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, data.length);
         getNamedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 3, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -883,8 +883,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureLevelParameterfv(SegmentAllocator session, int texture, int level, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getTextureLevelParameterfv(SegmentAllocator allocator, int texture, int level, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getTextureLevelParameterfv(texture, level, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -909,8 +909,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureLevelParameteriv(SegmentAllocator session, int texture, int level, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getTextureLevelParameteriv(SegmentAllocator allocator, int texture, int level, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getTextureLevelParameteriv(texture, level, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -935,8 +935,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureParameterIiv(SegmentAllocator session, int texture, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getTextureParameterIiv(SegmentAllocator allocator, int texture, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getTextureParameterIiv(texture, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -961,8 +961,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureParameterIuiv(SegmentAllocator session, int texture, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getTextureParameterIuiv(SegmentAllocator allocator, int texture, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getTextureParameterIuiv(texture, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -987,8 +987,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureParameterfv(SegmentAllocator session, int texture, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getTextureParameterfv(SegmentAllocator allocator, int texture, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getTextureParameterfv(texture, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1013,8 +1013,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureParameteriv(SegmentAllocator session, int texture, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getTextureParameteriv(SegmentAllocator allocator, int texture, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getTextureParameteriv(texture, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1039,26 +1039,26 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureSubImage(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, byte[] pixels) {
-        var seg = session.allocateArray(JAVA_BYTE, pixels.length);
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, byte[] pixels) {
+        var seg = allocator.allocateArray(JAVA_BYTE, pixels.length);
         getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getTextureSubImage(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, short[] pixels) {
-        var seg = session.allocateArray(JAVA_SHORT, pixels.length);
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, short[] pixels) {
+        var seg = allocator.allocateArray(JAVA_SHORT, pixels.length);
         getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getTextureSubImage(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, int[] pixels) {
-        var seg = session.allocateArray(JAVA_INT, pixels.length);
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, int[] pixels) {
+        var seg = allocator.allocateArray(JAVA_INT, pixels.length);
         getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getTextureSubImage(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, float[] pixels) {
-        var seg = session.allocateArray(JAVA_FLOAT, pixels.length);
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, float[] pixels) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, pixels.length);
         getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
@@ -1071,8 +1071,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTransformFeedbacki64_v(SegmentAllocator session, int xfb, int pname, int index, long[] param) {
-        var seg = session.allocateArray(JAVA_LONG, param.length);
+    public static void getTransformFeedbacki64_v(SegmentAllocator allocator, int xfb, int pname, int index, long[] param) {
+        var seg = allocator.allocateArray(JAVA_LONG, param.length);
         getTransformFeedbacki64_v(xfb, pname, index, seg);
         RuntimeHelper.toArray(seg, param);
     }
@@ -1085,8 +1085,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTransformFeedbacki_v(SegmentAllocator session, int xfb, int pname, int index, int[] param) {
-        var seg = session.allocateArray(JAVA_INT, param.length);
+    public static void getTransformFeedbacki_v(SegmentAllocator allocator, int xfb, int pname, int index, int[] param) {
+        var seg = allocator.allocateArray(JAVA_INT, param.length);
         getTransformFeedbacki_v(xfb, pname, index, seg);
         RuntimeHelper.toArray(seg, param);
     }
@@ -1099,8 +1099,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTransformFeedbackiv(SegmentAllocator session, int xfb, int pname, int[] param) {
-        var seg = session.allocateArray(JAVA_INT, param.length);
+    public static void getTransformFeedbackiv(SegmentAllocator allocator, int xfb, int pname, int[] param) {
+        var seg = allocator.allocateArray(JAVA_INT, param.length);
         getTransformFeedbackiv(xfb, pname, seg);
         RuntimeHelper.toArray(seg, param);
     }
@@ -1189,26 +1189,26 @@ public sealed class GL45C extends GL44C permits GL46C {
         getnTexImage(target, level, format, type, (int) pixels.byteSize(), pixels);
     }
 
-    public static void getnTexImage(SegmentAllocator session, int target, int level, int format, int type, byte[] pixels) {
-        var seg = session.allocateArray(JAVA_BYTE, pixels.length);
+    public static void getnTexImage(SegmentAllocator allocator, int target, int level, int format, int type, byte[] pixels) {
+        var seg = allocator.allocateArray(JAVA_BYTE, pixels.length);
         getnTexImage(target, level, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getnTexImage(SegmentAllocator session, int target, int level, int format, int type, short[] pixels) {
-        var seg = session.allocateArray(JAVA_SHORT, pixels.length);
+    public static void getnTexImage(SegmentAllocator allocator, int target, int level, int format, int type, short[] pixels) {
+        var seg = allocator.allocateArray(JAVA_SHORT, pixels.length);
         getnTexImage(target, level, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getnTexImage(SegmentAllocator session, int target, int level, int format, int type, int[] pixels) {
-        var seg = session.allocateArray(JAVA_INT, pixels.length);
+    public static void getnTexImage(SegmentAllocator allocator, int target, int level, int format, int type, int[] pixels) {
+        var seg = allocator.allocateArray(JAVA_INT, pixels.length);
         getnTexImage(target, level, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getnTexImage(SegmentAllocator session, int target, int level, int format, int type, float[] pixels) {
-        var seg = session.allocateArray(JAVA_FLOAT, pixels.length);
+    public static void getnTexImage(SegmentAllocator allocator, int target, int level, int format, int type, float[] pixels) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, pixels.length);
         getnTexImage(target, level, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
@@ -1225,8 +1225,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         getnUniformdv(program, location, (int) params.byteSize(), params);
     }
 
-    public static void getnUniformdv(SegmentAllocator session, int program, int location, double[] params) {
-        var seg = session.allocateArray(JAVA_DOUBLE, params.length);
+    public static void getnUniformdv(SegmentAllocator allocator, int program, int location, double[] params) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, params.length);
         getnUniformdv(program, location, params.length, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -1243,8 +1243,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         getnUniformfv(program, location, (int) params.byteSize(), params);
     }
 
-    public static void getnUniformfv(SegmentAllocator session, int program, int location, float[] params) {
-        var seg = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getnUniformfv(SegmentAllocator allocator, int program, int location, float[] params) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, params.length);
         getnUniformfv(program, location, params.length, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -1261,8 +1261,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         getnUniformiv(program, location, (int) params.byteSize(), params);
     }
 
-    public static void getnUniformiv(SegmentAllocator session, int program, int location, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getnUniformiv(SegmentAllocator allocator, int program, int location, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getnUniformiv(program, location, params.length, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -1279,8 +1279,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         getnUniformuiv(program, location, (int) params.byteSize(), params);
     }
 
-    public static void getnUniformuiv(SegmentAllocator session, int program, int location, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getnUniformuiv(SegmentAllocator allocator, int program, int location, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getnUniformuiv(program, location, params.length, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -1293,8 +1293,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void invalidateNamedFramebufferData(SegmentAllocator session, int framebuffer, int[] attachments) {
-        invalidateNamedFramebufferData(framebuffer, attachments.length, session.allocateArray(JAVA_INT, attachments));
+    public static void invalidateNamedFramebufferData(SegmentAllocator allocator, int framebuffer, int[] attachments) {
+        invalidateNamedFramebufferData(framebuffer, attachments.length, allocator.allocateArray(JAVA_INT, attachments));
     }
 
     public static void invalidateNamedFramebufferData(int framebuffer, int attachment) {
@@ -1317,8 +1317,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void invalidateNamedFramebufferSubData(SegmentAllocator session, int framebuffer, int[] attachments, int x, int y, int width, int height) {
-        invalidateNamedFramebufferSubData(framebuffer, attachments.length, session.allocateArray(JAVA_INT, attachments), x, y, width, height);
+    public static void invalidateNamedFramebufferSubData(SegmentAllocator allocator, int framebuffer, int[] attachments, int x, int y, int width, int height) {
+        invalidateNamedFramebufferSubData(framebuffer, attachments.length, allocator.allocateArray(JAVA_INT, attachments), x, y, width, height);
     }
 
     public static void invalidateNamedFramebufferSubData(int framebuffer, int attachment, int x, int y, int width, int height) {
@@ -1377,28 +1377,28 @@ public sealed class GL45C extends GL44C permits GL46C {
         namedBufferData(buffer, size, MemoryAddress.NULL, usage);
     }
 
-    public static void namedBufferData(SegmentAllocator session, int buffer, byte[] data, int usage) {
-        namedBufferData(buffer, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), usage);
+    public static void namedBufferData(SegmentAllocator allocator, int buffer, byte[] data, int usage) {
+        namedBufferData(buffer, Integer.toUnsignedLong(data.length), allocator.allocateArray(JAVA_BYTE, data), usage);
     }
 
-    public static void namedBufferData(SegmentAllocator session, int buffer, short[] data, int usage) {
-        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), usage);
+    public static void namedBufferData(SegmentAllocator allocator, int buffer, short[] data, int usage) {
+        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 1, allocator.allocateArray(JAVA_SHORT, data), usage);
     }
 
-    public static void namedBufferData(SegmentAllocator session, int buffer, int[] data, int usage) {
-        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), usage);
+    public static void namedBufferData(SegmentAllocator allocator, int buffer, int[] data, int usage) {
+        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_INT, data), usage);
     }
 
-    public static void namedBufferData(SegmentAllocator session, int buffer, long[] data, int usage) {
-        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), usage);
+    public static void namedBufferData(SegmentAllocator allocator, int buffer, long[] data, int usage) {
+        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_LONG, data), usage);
     }
 
-    public static void namedBufferData(SegmentAllocator session, int buffer, float[] data, int usage) {
-        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), usage);
+    public static void namedBufferData(SegmentAllocator allocator, int buffer, float[] data, int usage) {
+        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_FLOAT, data), usage);
     }
 
-    public static void namedBufferData(SegmentAllocator session, int buffer, double[] data, int usage) {
-        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), usage);
+    public static void namedBufferData(SegmentAllocator allocator, int buffer, double[] data, int usage) {
+        namedBufferData(buffer, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data), usage);
     }
 
     public static void namedBufferStorage(int buffer, long size, Addressable data, int flags) {
@@ -1413,28 +1413,28 @@ public sealed class GL45C extends GL44C permits GL46C {
         namedBufferStorage(buffer, size, MemoryAddress.NULL, flags);
     }
 
-    public static void namedBufferStorage(SegmentAllocator session, int buffer, byte[] data, int flags) {
-        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), flags);
+    public static void namedBufferStorage(SegmentAllocator allocator, int buffer, byte[] data, int flags) {
+        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length), allocator.allocateArray(JAVA_BYTE, data), flags);
     }
 
-    public static void namedBufferStorage(SegmentAllocator session, int buffer, short[] data, int flags) {
-        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), flags);
+    public static void namedBufferStorage(SegmentAllocator allocator, int buffer, short[] data, int flags) {
+        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 1, allocator.allocateArray(JAVA_SHORT, data), flags);
     }
 
-    public static void namedBufferStorage(SegmentAllocator session, int buffer, int[] data, int flags) {
-        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), flags);
+    public static void namedBufferStorage(SegmentAllocator allocator, int buffer, int[] data, int flags) {
+        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_INT, data), flags);
     }
 
-    public static void namedBufferStorage(SegmentAllocator session, int buffer, long[] data, int flags) {
-        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), flags);
+    public static void namedBufferStorage(SegmentAllocator allocator, int buffer, long[] data, int flags) {
+        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_LONG, data), flags);
     }
 
-    public static void namedBufferStorage(SegmentAllocator session, int buffer, float[] data, int flags) {
-        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), flags);
+    public static void namedBufferStorage(SegmentAllocator allocator, int buffer, float[] data, int flags) {
+        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_FLOAT, data), flags);
     }
 
-    public static void namedBufferStorage(SegmentAllocator session, int buffer, double[] data, int flags) {
-        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), flags);
+    public static void namedBufferStorage(SegmentAllocator allocator, int buffer, double[] data, int flags) {
+        namedBufferStorage(buffer, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data), flags);
     }
 
     public static void namedBufferSubData(int buffer, long offset, long size, Addressable data) {
@@ -1453,28 +1453,28 @@ public sealed class GL45C extends GL44C permits GL46C {
         namedBufferSubData(buffer, offset, data.offset(), data.address());
     }
 
-    public static void namedBufferSubData(SegmentAllocator session, int buffer, long offset, byte[] data) {
-        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data));
+    public static void namedBufferSubData(SegmentAllocator allocator, int buffer, long offset, byte[] data) {
+        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length), allocator.allocateArray(JAVA_BYTE, data));
     }
 
-    public static void namedBufferSubData(SegmentAllocator session, int buffer, long offset, short[] data) {
-        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
+    public static void namedBufferSubData(SegmentAllocator allocator, int buffer, long offset, short[] data) {
+        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 1, allocator.allocateArray(JAVA_SHORT, data));
     }
 
-    public static void namedBufferSubData(SegmentAllocator session, int buffer, long offset, int[] data) {
-        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
+    public static void namedBufferSubData(SegmentAllocator allocator, int buffer, long offset, int[] data) {
+        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_INT, data));
     }
 
-    public static void namedBufferSubData(SegmentAllocator session, int buffer, long offset, long[] data) {
-        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
+    public static void namedBufferSubData(SegmentAllocator allocator, int buffer, long offset, long[] data) {
+        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_LONG, data));
     }
 
-    public static void namedBufferSubData(SegmentAllocator session, int buffer, long offset, float[] data) {
-        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
+    public static void namedBufferSubData(SegmentAllocator allocator, int buffer, long offset, float[] data) {
+        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static void namedBufferSubData(SegmentAllocator session, int buffer, long offset, double[] data) {
-        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
+    public static void namedBufferSubData(SegmentAllocator allocator, int buffer, long offset, double[] data) {
+        namedBufferSubData(buffer, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data));
     }
 
     public static void namedFramebufferDrawBuffer(int framebuffer, int buf) {
@@ -1493,8 +1493,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void namedFramebufferDrawBuffers(SegmentAllocator session, int framebuffer, int[] bufs) {
-        namedFramebufferDrawBuffers(framebuffer, bufs.length, session.allocateArray(JAVA_INT, bufs));
+    public static void namedFramebufferDrawBuffers(SegmentAllocator allocator, int framebuffer, int[] bufs) {
+        namedFramebufferDrawBuffers(framebuffer, bufs.length, allocator.allocateArray(JAVA_INT, bufs));
     }
 
     public static void namedFramebufferParameteri(int framebuffer, int pname, int param) {
@@ -1565,26 +1565,26 @@ public sealed class GL45C extends GL44C permits GL46C {
         readnPixels(x, y, width, height, format, type, (int) data.byteSize(), data);
     }
 
-    public static void readnPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, byte[] data) {
-        var seg = session.allocateArray(JAVA_BYTE, data.length);
+    public static void readnPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, byte[] data) {
+        var seg = allocator.allocateArray(JAVA_BYTE, data.length);
         readnPixels(x, y, width, height, format, type, data.length, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void readnPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, short[] data) {
-        var seg = session.allocateArray(JAVA_SHORT, data.length);
+    public static void readnPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, short[] data) {
+        var seg = allocator.allocateArray(JAVA_SHORT, data.length);
         readnPixels(x, y, width, height, format, type, data.length, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void readnPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, int[] data) {
-        var seg = session.allocateArray(JAVA_INT, data.length);
+    public static void readnPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, int[] data) {
+        var seg = allocator.allocateArray(JAVA_INT, data.length);
         readnPixels(x, y, width, height, format, type, data.length, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void readnPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, float[] data) {
-        var seg = session.allocateArray(JAVA_FLOAT, data.length);
+    public static void readnPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, float[] data) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, data.length);
         readnPixels(x, y, width, height, format, type, data.length, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -1621,8 +1621,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureParameterIiv(SegmentAllocator session, int texture, int pname, int[] params) {
-        textureParameterIiv(texture, pname, session.allocateArray(JAVA_INT, params));
+    public static void textureParameterIiv(SegmentAllocator allocator, int texture, int pname, int[] params) {
+        textureParameterIiv(texture, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void textureParameterIuiv(int texture, int pname, Addressable params) {
@@ -1633,8 +1633,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureParameterIuiv(SegmentAllocator session, int texture, int pname, int[] params) {
-        textureParameterIuiv(texture, pname, session.allocateArray(JAVA_INT, params));
+    public static void textureParameterIuiv(SegmentAllocator allocator, int texture, int pname, int[] params) {
+        textureParameterIuiv(texture, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void textureParameterf(int texture, int pname, float param) {
@@ -1653,8 +1653,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureParameterfv(SegmentAllocator session, int texture, int pname, float[] params) {
-        textureParameterfv(texture, pname, session.allocateArray(JAVA_FLOAT, params));
+    public static void textureParameterfv(SegmentAllocator allocator, int texture, int pname, float[] params) {
+        textureParameterfv(texture, pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void textureParameteri(int texture, int pname, int param) {
@@ -1673,8 +1673,8 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureParameteriv(SegmentAllocator session, int texture, int pname, int[] params) {
-        textureParameteriv(texture, pname, session.allocateArray(JAVA_INT, params));
+    public static void textureParameteriv(SegmentAllocator allocator, int texture, int pname, int[] params) {
+        textureParameteriv(texture, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void textureStorage1D(int texture, int levels, int internalFormat, int width) {
@@ -1725,20 +1725,20 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureSubImage1D(SegmentAllocator session, int texture, int level, int xoffset, int width, int format, int type, byte[] pixels) {
-        textureSubImage1D(texture, level, xoffset, width, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void textureSubImage1D(SegmentAllocator allocator, int texture, int level, int xoffset, int width, int format, int type, byte[] pixels) {
+        textureSubImage1D(texture, level, xoffset, width, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void textureSubImage1D(SegmentAllocator session, int texture, int level, int xoffset, int width, int format, int type, short[] pixels) {
-        textureSubImage1D(texture, level, xoffset, width, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void textureSubImage1D(SegmentAllocator allocator, int texture, int level, int xoffset, int width, int format, int type, short[] pixels) {
+        textureSubImage1D(texture, level, xoffset, width, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void textureSubImage1D(SegmentAllocator session, int texture, int level, int xoffset, int width, int format, int type, int[] pixels) {
-        textureSubImage1D(texture, level, xoffset, width, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void textureSubImage1D(SegmentAllocator allocator, int texture, int level, int xoffset, int width, int format, int type, int[] pixels) {
+        textureSubImage1D(texture, level, xoffset, width, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void textureSubImage1D(SegmentAllocator session, int texture, int level, int xoffset, int width, int format, int type, float[] pixels) {
-        textureSubImage1D(texture, level, xoffset, width, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void textureSubImage1D(SegmentAllocator allocator, int texture, int level, int xoffset, int width, int format, int type, float[] pixels) {
+        textureSubImage1D(texture, level, xoffset, width, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void textureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
@@ -1749,20 +1749,20 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureSubImage2D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
-        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void textureSubImage2D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
+        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void textureSubImage2D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
-        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void textureSubImage2D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
+        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void textureSubImage2D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
-        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void textureSubImage2D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
+        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void textureSubImage2D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
-        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void textureSubImage2D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
+        textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void textureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
@@ -1773,20 +1773,20 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void textureSubImage3D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
-        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void textureSubImage3D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
+        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void textureSubImage3D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
-        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void textureSubImage3D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
+        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void textureSubImage3D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
-        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void textureSubImage3D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
+        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void textureSubImage3D(SegmentAllocator session, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
-        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void textureSubImage3D(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
+        textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void transformFeedbackBufferBase(int xfb, int index, int buffer) {
@@ -1877,7 +1877,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void vertexArrayVertexBuffers(SegmentAllocator session, int vaobj, int first, int count, int[] buffers, long[] offsets, int[] strides) {
-        vertexArrayVertexBuffers(vaobj, first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_INT, strides));
+    public static void vertexArrayVertexBuffers(SegmentAllocator allocator, int vaobj, int first, int count, int[] buffers, long[] offsets, int[] strides) {
+        vertexArrayVertexBuffers(vaobj, first, count, allocator.allocateArray(JAVA_INT, buffers), allocator.allocateArray(JAVA_LONG, offsets), allocator.allocateArray(JAVA_INT, strides));
     }
 }

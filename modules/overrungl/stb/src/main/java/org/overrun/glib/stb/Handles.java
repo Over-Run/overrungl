@@ -25,7 +25,6 @@
 package org.overrun.glib.stb;
 
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.GameLib;
 import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.SymbolLookup;
@@ -50,8 +49,6 @@ final class Handles {
     public static void initialize() {
         if (loaded) return;
         loaded = true;
-        lookup = GameLib.load("stb",
-            "stb",
-            "0.1.0");
+        lookup = RuntimeHelper.load("stb", "stb", "0.1.0");
     }
 }

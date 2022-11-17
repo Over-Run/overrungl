@@ -45,7 +45,7 @@ public class GLAMDFramebufferMultisampleAdvanced {
         glNamedRenderbufferStorageMultisampleAdvancedAMD, glRenderbufferStorageMultisampleAdvancedAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_framebuffer_multisample_advanced) return;
+        if (GLExtCaps.Flags.GL_AMD_framebuffer_multisample_advanced.no()) return;
         glNamedRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glNamedRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
         glRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
     }

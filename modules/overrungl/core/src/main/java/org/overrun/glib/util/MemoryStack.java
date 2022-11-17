@@ -66,7 +66,6 @@ public class MemoryStack extends Pointer implements AutoCloseable {
 
     private final long size;
 
-    // TODO: 2022/11/13 Long
     private long pointer;
 
     private long[] frames;
@@ -194,6 +193,8 @@ public class MemoryStack extends Pointer implements AutoCloseable {
 
     /**
      * Stores the method that pushed a frame and checks if it is the same method when the frame is popped.
+     *
+     * @since 0.1.0
      */
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
@@ -321,16 +322,6 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     }
 
     /**
-     * Calls {@link #nmalloc(long, long)} with {@code alignment} equal to {@link ValueLayout#byteSize() POINTER_SIZE}.
-     *
-     * @param size the allocation size
-     * @return the memory address on the stack for the requested allocation
-     */
-    public MemoryAddress nmalloc(long size) {
-        return nmalloc(ADDRESS.byteSize(), size);
-    }
-
-    /**
      * Allocates a block of {@code size} bytes of memory on the stack. The content of the newly allocated block of memory is not initialized, remaining with
      * indeterminate values.
      *
@@ -396,11 +387,15 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Allocates a {@link MemoryAddress} on the stack with {@code alignment} equal to {@link ValueLayout#byteSize() POINTER_SIZE}.
      *
-     * @param size the number of elements in the buffer
-     * @return the allocated buffer
+     * @param size the allocation size
+     * @return the memory address on the stack for the requested allocation
      */
     public MemoryAddress malloc(long size) {
         return nmalloc(ADDRESS.byteSize(), size);
+    }
+
+    public MemoryAddress malloc(MemoryLayout layout) {
+        return malloc(layout.byteSize());
     }
 
     /**
@@ -408,10 +403,6 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      */
     public MemoryAddress calloc(long size) {
         return ncalloc(ADDRESS.byteSize(), size, 1);
-    }
-
-    public MemoryAddress malloc(MemoryLayout layout) {
-        return malloc(layout.byteSize());
     }
 
     public MemoryAddress calloc(MemoryLayout layout, long num) {
@@ -449,13 +440,6 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      */
     public static MemoryStack stackPop() {
         return stackGet().pop();
-    }
-
-    /**
-     * Thread-local version of {@link #nmalloc(long)}.
-     */
-    public static MemoryAddress nstackMalloc(long size) {
-        return stackGet().nmalloc(size);
     }
 
     /**

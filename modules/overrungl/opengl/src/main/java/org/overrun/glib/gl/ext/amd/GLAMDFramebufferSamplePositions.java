@@ -51,7 +51,7 @@ public class GLAMDFramebufferSamplePositions {
         glNamedFramebufferSamplePositionsfvAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_framebuffer_sample_positions) return;
+        if (GLExtCaps.Flags.GL_AMD_framebuffer_sample_positions.no()) return;
         glFramebufferSamplePositionsfvAMD = load.invoke("glFramebufferSamplePositionsfvAMD", IIIPV);
         glGetFramebufferParameterfvAMD = load.invoke("glGetFramebufferParameterfvAMD", IIIIIPV);
         glGetNamedFramebufferParameterfvAMD = load.invoke("glGetNamedFramebufferParameterfvAMD", IIIIIPV);
@@ -66,8 +66,8 @@ public class GLAMDFramebufferSamplePositions {
         }
     }
 
-    public static void glFramebufferSamplePositionsfvAMD(SegmentAllocator session, int target, int numSamples, int pixelIndex, float[] values) {
-        glFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, session.allocateArray(JAVA_FLOAT, values));
+    public static void glFramebufferSamplePositionsfvAMD(SegmentAllocator allocator, int target, int numSamples, int pixelIndex, float[] values) {
+        glFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, allocator.allocateArray(JAVA_FLOAT, values));
     }
 
     public static void glGetFramebufferParameterfvAMD(int target, int pname, int numSamples, int pixelIndex, int size, Addressable values) {
@@ -78,8 +78,8 @@ public class GLAMDFramebufferSamplePositions {
         }
     }
 
-    public static void glGetFramebufferParameterfvAMD(SegmentAllocator session, int target, int pname, int numSamples, int pixelIndex, int size, float[] values) {
-        var seg = session.allocateArray(JAVA_FLOAT, values.length);
+    public static void glGetFramebufferParameterfvAMD(SegmentAllocator allocator, int target, int pname, int numSamples, int pixelIndex, int size, float[] values) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, values.length);
         glGetFramebufferParameterfvAMD(target, pname, numSamples, pixelIndex, size, seg);
         RuntimeHelper.toArray(seg, values);
     }
@@ -92,8 +92,8 @@ public class GLAMDFramebufferSamplePositions {
         }
     }
 
-    public static void glGetNamedFramebufferParameterfvAMD(SegmentAllocator session, int framebuffer, int pname, int numSamples, int pixelIndex, int size, float[] values) {
-        var seg = session.allocateArray(JAVA_FLOAT, values.length);
+    public static void glGetNamedFramebufferParameterfvAMD(SegmentAllocator allocator, int framebuffer, int pname, int numSamples, int pixelIndex, int size, float[] values) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, values.length);
         glGetNamedFramebufferParameterfvAMD(framebuffer, pname, numSamples, pixelIndex, size, seg);
         RuntimeHelper.toArray(seg, values);
     }
@@ -106,7 +106,7 @@ public class GLAMDFramebufferSamplePositions {
         }
     }
 
-    public static void glNamedFramebufferSamplePositionsfvAMD(SegmentAllocator session, int target, int numSamples, int pixelIndex, float[] values) {
-        glNamedFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, session.allocateArray(JAVA_FLOAT, values));
+    public static void glNamedFramebufferSamplePositionsfvAMD(SegmentAllocator allocator, int target, int numSamples, int pixelIndex, float[] values) {
+        glNamedFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, allocator.allocateArray(JAVA_FLOAT, values));
     }
 }

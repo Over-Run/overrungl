@@ -36,12 +36,14 @@ import static org.overrun.glib.util.MemoryUtil.*;
  * This is a vertex buffer builder with standard C memory allocator.
  * <p>
  * This simulates the old NIO buffers, but more efficient, since it used the native memory.
+ * <p>
+ * The put byte must be aligned.
  *
  * @author squid233
  * @since 0.1.0
  */
 public class BufferBuilder implements AutoCloseable, HasAddress {
-    private MemoryAddress address;
+    private MemoryAddress address = MemoryAddress.NULL;
     private long capacity;
     private long offset, count;
     private long stride;
@@ -81,6 +83,11 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         void accept(MemoryAddress address, T layout, long offset);
     }
 
+    /**
+     * Reset the offset and count.
+     *
+     * @return this
+     */
     public BufferBuilder begin() {
         offset = 0;
         count = 0;
@@ -88,6 +95,13 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
+    /**
+     * Grow to the given capacity and reset the offset and count.
+     *
+     * @param initialCapacity the capacity
+     * @return this
+     * @see #begin()
+     */
     public BufferBuilder begin(long initialCapacity) {
         return this.ensureCapacity(initialCapacity).begin();
     }
@@ -106,23 +120,20 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     private long grow(long size) {
+        if (offset + size > capacity) {
+            this.ensureCapacity(offset + size, capacity + (capacity >> 1) + 1);
+        }
         return size;
     }
 
     private long grow(ValueLayout layout) {
-        long size = layout.byteSize();
-        if (offset + size > capacity) {
-            this.ensureCapacity(offset + size, capacity + (capacity >> 1) + 1);
-        }
-        return size;
+        return grow(layout.byteSize());
     }
 
     private long grow(ValueLayout layout, long count) {
-        long size = layout.byteSize() * count;
-        if (offset + size > capacity) {
-            this.ensureCapacity(offset + size, capacity + (capacity >> 1) + 1);
-        }
-        return layout.byteSize();
+        final long lsz = layout.byteSize();
+        grow(lsz * count);
+        return lsz;
     }
 
     public <T extends ValueLayout>
@@ -289,7 +300,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     @Override
     public void close() {
         free(address);
-        address = null;
+        address = MemoryAddress.NULL;
         capacity = 0;
     }
 

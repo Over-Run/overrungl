@@ -96,12 +96,12 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void multiDrawArrays(SegmentAllocator session, int mode, int[] first, int[] count, int drawCount) {
-        multiDrawArrays(mode, session.allocateArray(JAVA_INT, first), session.allocateArray(JAVA_INT, count), drawCount);
+    public static void multiDrawArrays(SegmentAllocator allocator, int mode, int[] first, int[] count, int drawCount) {
+        multiDrawArrays(mode, allocator.allocateArray(JAVA_INT, first), allocator.allocateArray(JAVA_INT, count), drawCount);
     }
 
-    public static void multiDrawArrays(SegmentAllocator session, int mode, int[] first, int[] count) {
-        multiDrawArrays(session, mode, first, count, first.length);
+    public static void multiDrawArrays(SegmentAllocator allocator, int mode, int[] first, int[] count) {
+        multiDrawArrays(allocator, mode, first, count, first.length);
     }
 
     public static void multiDrawElements(int mode, Addressable count, int type, Addressable indices, int drawCount) {
@@ -112,40 +112,40 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void multiDrawElements(SegmentAllocator session, int mode, int[] count, int type, byte[][] indices, int drawCount) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices, int drawCount) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_BYTE, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_BYTE, indices[i]));
         }
-        multiDrawElements(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount);
+        multiDrawElements(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount);
     }
 
-    public static void multiDrawElements(SegmentAllocator session, int mode, int[] count, int type, byte[][] indices) {
-        multiDrawElements(session, mode, count, type, indices, count.length);
+    public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices) {
+        multiDrawElements(allocator, mode, count, type, indices, count.length);
     }
 
-    public static void multiDrawElements(SegmentAllocator session, int mode, int[] count, int type, short[][] indices, int drawCount) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices, int drawCount) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_SHORT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_SHORT, indices[i]));
         }
-        multiDrawElements(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount);
+        multiDrawElements(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount);
     }
 
-    public static void multiDrawElements(SegmentAllocator session, int mode, int[] count, int type, short[][] indices) {
-        multiDrawElements(session, mode, count, type, indices, count.length);
+    public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices) {
+        multiDrawElements(allocator, mode, count, type, indices, count.length);
     }
 
-    public static void multiDrawElements(SegmentAllocator session, int mode, int[] count, int type, int[][] indices, int drawCount) {
-        var seg = session.allocateArray(ADDRESS, indices.length);
+    public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices, int drawCount) {
+        var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateArray(JAVA_INT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_INT, indices[i]));
         }
-        multiDrawElements(mode, session.allocateArray(JAVA_INT, count), type, seg, drawCount);
+        multiDrawElements(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount);
     }
 
-    public static void multiDrawElements(SegmentAllocator session, int mode, int[] count, int type, int[][] indices) {
-        multiDrawElements(session, mode, count, type, indices, count.length);
+    public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices) {
+        multiDrawElements(allocator, mode, count, type, indices, count.length);
     }
 
     public static void pointParameterf(int pname, float param) {
@@ -164,8 +164,8 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void pointParameterfv(SegmentAllocator session, int pname, float[] params) {
-        pointParameterfv(pname, session.allocateArray(JAVA_FLOAT, params));
+    public static void pointParameterfv(SegmentAllocator allocator, int pname, float[] params) {
+        pointParameterfv(pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void pointParameteri(int pname, int param) {
@@ -184,7 +184,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void pointParameteriv(SegmentAllocator session, int pname, int[] params) {
-        pointParameteriv(pname, session.allocateArray(JAVA_INT, params));
+    public static void pointParameteriv(SegmentAllocator allocator, int pname, int[] params) {
+        pointParameteriv(pname, allocator.allocateArray(JAVA_INT, params));
     }
 }

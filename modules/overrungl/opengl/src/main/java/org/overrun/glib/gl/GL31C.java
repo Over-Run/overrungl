@@ -98,16 +98,16 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static void drawElementsInstanced(SegmentAllocator session, int mode, int count, int type, byte[] indices, int instanceCount) {
-        drawElementsInstanced(mode, count, type, session.allocateArray(JAVA_BYTE, indices), instanceCount);
+    public static void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount) {
+        drawElementsInstanced(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), instanceCount);
     }
 
-    public static void drawElementsInstanced(SegmentAllocator session, int mode, int count, int type, short[] indices, int instanceCount) {
-        drawElementsInstanced(mode, count, type, session.allocateArray(JAVA_SHORT, indices), instanceCount);
+    public static void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount) {
+        drawElementsInstanced(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), instanceCount);
     }
 
-    public static void drawElementsInstanced(SegmentAllocator session, int mode, int count, int type, int[] indices, int instanceCount) {
-        drawElementsInstanced(mode, count, type, session.allocateArray(JAVA_INT, indices), instanceCount);
+    public static void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount) {
+        drawElementsInstanced(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount);
     }
 
     public static void getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, Addressable length, Addressable uniformBlockName) {
@@ -118,9 +118,9 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static void getActiveUniformBlockName(SegmentAllocator session, int program, int uniformBlockIndex, int bufSize, int @Nullable [] length, String[] uniformBlockName) {
-        var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-        var pName = session.allocateArray(JAVA_BYTE, bufSize);
+    public static void getActiveUniformBlockName(SegmentAllocator allocator, int program, int uniformBlockIndex, int bufSize, int @Nullable [] length, String[] uniformBlockName) {
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getActiveUniformBlockName(program, uniformBlockIndex, bufSize, pLen, pName);
         if (length != null && length.length > 0) {
             length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
@@ -128,8 +128,8 @@ public sealed class GL31C extends GL30C permits GL32C {
         uniformBlockName[0] = pName.getUtf8String(0);
     }
 
-    public static String getActiveUniformBlockName(SegmentAllocator session, int program, int uniformBlockIndex, int bufSize) {
-        var pName = session.allocateArray(JAVA_BYTE, bufSize);
+    public static String getActiveUniformBlockName(SegmentAllocator allocator, int program, int uniformBlockIndex, int bufSize) {
+        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getActiveUniformBlockName(program, uniformBlockIndex, bufSize, MemoryAddress.NULL, pName);
         return pName.getUtf8String(0);
     }
@@ -142,8 +142,8 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static void getActiveUniformBlockiv(SegmentAllocator session, int program, int uniformBlockIndex, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getActiveUniformBlockiv(SegmentAllocator allocator, int program, int uniformBlockIndex, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getActiveUniformBlockiv(program, uniformBlockIndex, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -156,9 +156,9 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static void getActiveUniformName(SegmentAllocator session, int program, int uniformIndex, int bufSize, int @Nullable [] length, String[] uniformName) {
-        var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-        var pName = session.allocateArray(JAVA_BYTE, bufSize);
+    public static void getActiveUniformName(SegmentAllocator allocator, int program, int uniformIndex, int bufSize, int @Nullable [] length, String[] uniformName) {
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getActiveUniformName(program, uniformIndex, bufSize, pLen, pName);
         if (length != null && length.length > 0) {
             length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
@@ -166,8 +166,8 @@ public sealed class GL31C extends GL30C permits GL32C {
         uniformName[0] = pName.getUtf8String(0);
     }
 
-    public static String getActiveUniformName(SegmentAllocator session, int program, int uniformIndex, int bufSize) {
-        var pName = session.allocateArray(JAVA_BYTE, bufSize);
+    public static String getActiveUniformName(SegmentAllocator allocator, int program, int uniformIndex, int bufSize) {
+        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getActiveUniformName(program, uniformIndex, bufSize, MemoryAddress.NULL, pName);
         return pName.getUtf8String(0);
     }
@@ -180,10 +180,10 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static void getActiveUniformsiv(SegmentAllocator session, int program, int[] uniformIndices, int pname, int[] params) {
+    public static void getActiveUniformsiv(SegmentAllocator allocator, int program, int[] uniformIndices, int pname, int[] params) {
         final int count = uniformIndices.length;
-        var seg = session.allocateArray(JAVA_INT, count);
-        getActiveUniformsiv(program, count, session.allocateArray(JAVA_INT, uniformIndices), pname, seg);
+        var seg = allocator.allocateArray(JAVA_INT, count);
+        getActiveUniformsiv(program, count, allocator.allocateArray(JAVA_INT, uniformIndices), pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
 
@@ -209,8 +209,8 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static int getUniformBlockIndex(SegmentAllocator session, int program, String uniformBlockName) {
-        return getUniformBlockIndex(program, session.allocateUtf8String(uniformBlockName));
+    public static int getUniformBlockIndex(SegmentAllocator allocator, int program, String uniformBlockName) {
+        return getUniformBlockIndex(program, allocator.allocateUtf8String(uniformBlockName));
     }
 
     public static void getUniformIndices(int program, int uniformCount, Addressable uniformNames, Addressable uniformIndices) {
@@ -221,20 +221,20 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static void getUniformIndices(SegmentAllocator session, int program, String[] uniformNames, int[] uniformIndices) {
+    public static void getUniformIndices(SegmentAllocator allocator, int program, String[] uniformNames, int[] uniformIndices) {
         final int count = uniformNames.length;
-        var pNames = session.allocateArray(ADDRESS, count);
+        var pNames = allocator.allocateArray(ADDRESS, count);
         for (int i = 0; i < count; i++) {
-            pNames.setAtIndex(ADDRESS, i, session.allocateUtf8String(uniformNames[i]));
+            pNames.setAtIndex(ADDRESS, i, allocator.allocateUtf8String(uniformNames[i]));
         }
-        var pIndices = session.allocateArray(JAVA_INT, count);
+        var pIndices = allocator.allocateArray(JAVA_INT, count);
         getUniformIndices(program, count, pNames, pIndices);
         RuntimeHelper.toArray(pIndices, uniformIndices);
     }
 
-    public static int getUniformIndex(SegmentAllocator session, int program, String uniformName) {
-        var seg = session.allocate(JAVA_INT);
-        getUniformIndices(program, 1, session.allocateUtf8String(uniformName), seg);
+    public static int getUniformIndex(SegmentAllocator allocator, int program, String uniformName) {
+        var seg = allocator.allocate(JAVA_INT);
+        getUniformIndices(program, 1, allocator.allocateUtf8String(uniformName), seg);
         return seg.get(JAVA_INT, 0);
     }
 

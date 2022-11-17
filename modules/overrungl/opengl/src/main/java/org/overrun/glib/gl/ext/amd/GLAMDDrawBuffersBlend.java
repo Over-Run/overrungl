@@ -45,7 +45,7 @@ public class GLAMDDrawBuffersBlend {
         glBlendEquationIndexedAMD, glBlendEquationSeparateIndexedAMD, glBlendFuncIndexedAMD, glBlendFuncSeparateIndexedAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_draw_buffers_blend) return;
+        if (GLExtCaps.Flags.GL_AMD_draw_buffers_blend.no()) return;
         glBlendEquationIndexedAMD = load.invoke("glBlendEquationIndexedAMD", IIV);
         glBlendEquationSeparateIndexedAMD = load.invoke("glBlendEquationSeparateIndexedAMD", IIIV);
         glBlendFuncIndexedAMD = load.invoke("glBlendFuncIndexedAMD", IIIV);

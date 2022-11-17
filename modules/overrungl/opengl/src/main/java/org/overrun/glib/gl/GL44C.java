@@ -73,8 +73,8 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void bindBuffersBase(SegmentAllocator session, int target, int first, int count, int[] buffers) {
-        bindBuffersBase(target, first, count, session.allocateArray(JAVA_INT, buffers));
+    public static void bindBuffersBase(SegmentAllocator allocator, int target, int first, int count, int[] buffers) {
+        bindBuffersBase(target, first, count, allocator.allocateArray(JAVA_INT, buffers));
     }
 
     public static void bindBuffersRange(int target, int first, int count, Addressable buffers, Addressable offsets, Addressable sizes) {
@@ -85,8 +85,8 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void bindBuffersRange(SegmentAllocator session, int target, int first, int count, int[] buffers, long[] offsets, long[] sizes) {
-        bindBuffersRange(target, first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_LONG, sizes));
+    public static void bindBuffersRange(SegmentAllocator allocator, int target, int first, int count, int[] buffers, long[] offsets, long[] sizes) {
+        bindBuffersRange(target, first, count, allocator.allocateArray(JAVA_INT, buffers), allocator.allocateArray(JAVA_LONG, offsets), allocator.allocateArray(JAVA_LONG, sizes));
     }
 
     public static void bindImageTextures(int first, int count, Addressable textures) {
@@ -97,8 +97,8 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void bindImageTextures(SegmentAllocator session, int first, int count, int[] textures) {
-        bindImageTextures(first, count, session.allocateArray(JAVA_INT, textures));
+    public static void bindImageTextures(SegmentAllocator allocator, int first, int count, int[] textures) {
+        bindImageTextures(first, count, allocator.allocateArray(JAVA_INT, textures));
     }
 
     public static void bindSamplers(int first, int count, Addressable samplers) {
@@ -109,8 +109,8 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void bindSamplers(SegmentAllocator session, int first, int count, int[] samplers) {
-        bindSamplers(first, count, session.allocateArray(JAVA_INT, samplers));
+    public static void bindSamplers(SegmentAllocator allocator, int first, int count, int[] samplers) {
+        bindSamplers(first, count, allocator.allocateArray(JAVA_INT, samplers));
     }
 
     public static void bindTextures(int first, int count, Addressable textures) {
@@ -121,8 +121,8 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void bindTextures(SegmentAllocator session, int first, int count, int[] textures) {
-        bindTextures(first, count, session.allocateArray(JAVA_INT, textures));
+    public static void bindTextures(SegmentAllocator allocator, int first, int count, int[] textures) {
+        bindTextures(first, count, allocator.allocateArray(JAVA_INT, textures));
     }
 
     public static void bindVertexBuffers(int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
@@ -133,8 +133,8 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void bindVertexBuffers(SegmentAllocator session, int first, int count, int[] buffers, long[] offsets, long[] strides) {
-        bindVertexBuffers(first, count, session.allocateArray(JAVA_INT, buffers), session.allocateArray(JAVA_LONG, offsets), session.allocateArray(JAVA_LONG, strides));
+    public static void bindVertexBuffers(SegmentAllocator allocator, int first, int count, int[] buffers, long[] offsets, long[] strides) {
+        bindVertexBuffers(first, count, allocator.allocateArray(JAVA_INT, buffers), allocator.allocateArray(JAVA_LONG, offsets), allocator.allocateArray(JAVA_LONG, strides));
     }
 
     public static void bufferStorage(int target, long size, Addressable data, int flags) {
@@ -149,28 +149,28 @@ public sealed class GL44C extends GL43C permits GL45C {
         bufferStorage(target, size, MemoryAddress.NULL, flags);
     }
 
-    public static void bufferStorage(SegmentAllocator session, int target, byte[] data, int flags) {
-        bufferStorage(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), flags);
+    public static void bufferStorage(SegmentAllocator allocator, int target, byte[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length), allocator.allocateArray(JAVA_BYTE, data), flags);
     }
 
-    public static void bufferStorage(SegmentAllocator session, int target, short[] data, int flags) {
-        bufferStorage(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), flags);
+    public static void bufferStorage(SegmentAllocator allocator, int target, short[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 1, allocator.allocateArray(JAVA_SHORT, data), flags);
     }
 
-    public static void bufferStorage(SegmentAllocator session, int target, int[] data, int flags) {
-        bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), flags);
+    public static void bufferStorage(SegmentAllocator allocator, int target, int[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_INT, data), flags);
     }
 
-    public static void bufferStorage(SegmentAllocator session, int target, long[] data, int flags) {
-        bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), flags);
+    public static void bufferStorage(SegmentAllocator allocator, int target, long[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_LONG, data), flags);
     }
 
-    public static void bufferStorage(SegmentAllocator session, int target, float[] data, int flags) {
-        bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), flags);
+    public static void bufferStorage(SegmentAllocator allocator, int target, float[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_FLOAT, data), flags);
     }
 
-    public static void bufferStorage(SegmentAllocator session, int target, double[] data, int flags) {
-        bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), flags);
+    public static void bufferStorage(SegmentAllocator allocator, int target, double[] data, int flags) {
+        bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data), flags);
     }
 
     public static void clearTexImage(int texture, int level, int format, int type, Addressable data) {

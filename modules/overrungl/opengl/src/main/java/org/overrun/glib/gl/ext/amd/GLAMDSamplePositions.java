@@ -46,7 +46,7 @@ public class GLAMDSamplePositions {
     public static MethodHandle glSetMultisamplefvAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_sample_positions) return;
+        if (GLExtCaps.Flags.GL_AMD_sample_positions.no()) return;
         glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", FunctionDescriptors.IIPV);
     }
 
@@ -58,7 +58,7 @@ public class GLAMDSamplePositions {
         }
     }
 
-    public static void glSetMultisamplefvAMD(SegmentAllocator session, int pname, int index, float[] val) {
-        glSetMultisamplefvAMD(pname, index, session.allocateArray(ValueLayout.JAVA_FLOAT, val));
+    public static void glSetMultisamplefvAMD(SegmentAllocator allocator, int pname, int index, float[] val) {
+        glSetMultisamplefvAMD(pname, index, allocator.allocateArray(ValueLayout.JAVA_FLOAT, val));
     }
 }

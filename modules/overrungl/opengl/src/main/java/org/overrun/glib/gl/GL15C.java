@@ -114,28 +114,28 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferData(target, size, MemoryAddress.NULL, usage);
     }
 
-    public static void bufferData(SegmentAllocator session, int target, byte[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data), usage);
+    public static void bufferData(SegmentAllocator allocator, int target, byte[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length), allocator.allocateArray(JAVA_BYTE, data), usage);
     }
 
-    public static void bufferData(SegmentAllocator session, int target, short[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data), usage);
+    public static void bufferData(SegmentAllocator allocator, int target, short[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 1, allocator.allocateArray(JAVA_SHORT, data), usage);
     }
 
-    public static void bufferData(SegmentAllocator session, int target, int[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data), usage);
+    public static void bufferData(SegmentAllocator allocator, int target, int[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_INT, data), usage);
     }
 
-    public static void bufferData(SegmentAllocator session, int target, long[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data), usage);
+    public static void bufferData(SegmentAllocator allocator, int target, long[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_LONG, data), usage);
     }
 
-    public static void bufferData(SegmentAllocator session, int target, float[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data), usage);
+    public static void bufferData(SegmentAllocator allocator, int target, float[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_FLOAT, data), usage);
     }
 
-    public static void bufferData(SegmentAllocator session, int target, double[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data), usage);
+    public static void bufferData(SegmentAllocator allocator, int target, double[] data, int usage) {
+        bufferData(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data), usage);
     }
 
     public static void bufferSubData(int target, long offset, long size, Addressable data) {
@@ -154,28 +154,28 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferSubData(target, offset, data.offset(), data.address());
     }
 
-    public static void bufferSubData(SegmentAllocator session, int target, long offset, byte[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length), session.allocateArray(JAVA_BYTE, data));
+    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, byte[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length), allocator.allocateArray(JAVA_BYTE, data));
     }
 
-    public static void bufferSubData(SegmentAllocator session, int target, long offset, short[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, session.allocateArray(JAVA_SHORT, data));
+    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, short[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, allocator.allocateArray(JAVA_SHORT, data));
     }
 
-    public static void bufferSubData(SegmentAllocator session, int target, long offset, int[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_INT, data));
+    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, int[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_INT, data));
     }
 
-    public static void bufferSubData(SegmentAllocator session, int target, long offset, long[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_LONG, data));
+    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, long[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_LONG, data));
     }
 
-    public static void bufferSubData(SegmentAllocator session, int target, long offset, float[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, session.allocateArray(JAVA_FLOAT, data));
+    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, float[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static void bufferSubData(SegmentAllocator session, int target, long offset, double[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, session.allocateArray(JAVA_DOUBLE, data));
+    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, double[] data) {
+        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data));
     }
 
     public static void deleteBuffers(int n, Addressable buffers) {
@@ -186,8 +186,8 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void deleteBuffers(SegmentAllocator session, int[] buffers) {
-        deleteBuffers(buffers.length, session.allocateArray(JAVA_INT, buffers));
+    public static void deleteBuffers(SegmentAllocator allocator, int[] buffers) {
+        deleteBuffers(buffers.length, allocator.allocateArray(JAVA_INT, buffers));
     }
 
     public static void deleteBuffer(int buffer) {
@@ -210,8 +210,8 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void deleteQueries(SegmentAllocator session, int[] ids) {
-        deleteQueries(ids.length, session.allocateArray(JAVA_INT, ids));
+    public static void deleteQueries(SegmentAllocator allocator, int[] ids) {
+        deleteQueries(ids.length, allocator.allocateArray(JAVA_INT, ids));
     }
 
     public static void deleteQuery(int id) {
@@ -242,8 +242,8 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void genBuffers(SegmentAllocator session, int[] buffers) {
-        var seg = session.allocateArray(JAVA_INT, buffers.length);
+    public static void genBuffers(SegmentAllocator allocator, int[] buffers) {
+        var seg = allocator.allocateArray(JAVA_INT, buffers.length);
         genBuffers(buffers.length, seg);
         RuntimeHelper.toArray(seg, buffers);
     }
@@ -268,8 +268,8 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void genQueries(SegmentAllocator session, int[] ids) {
-        var seg = session.allocateArray(JAVA_INT, ids.length);
+    public static void genQueries(SegmentAllocator allocator, int[] ids) {
+        var seg = allocator.allocateArray(JAVA_INT, ids.length);
         genQueries(ids.length, seg);
         RuntimeHelper.toArray(seg, ids);
     }
@@ -334,38 +334,38 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getBufferSubData(SegmentAllocator session, int target, long offset, byte[] data) {
-        var seg = session.allocateArray(JAVA_BYTE, data.length);
+    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, byte[] data) {
+        var seg = allocator.allocateArray(JAVA_BYTE, data.length);
         getBufferSubData(target, offset, Integer.toUnsignedLong(data.length), seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator session, int target, long offset, short[] data) {
-        var seg = session.allocateArray(JAVA_SHORT, data.length);
+    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, short[] data) {
+        var seg = allocator.allocateArray(JAVA_SHORT, data.length);
         getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator session, int target, long offset, int[] data) {
-        var seg = session.allocateArray(JAVA_INT, data.length);
+    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, int[] data) {
+        var seg = allocator.allocateArray(JAVA_INT, data.length);
         getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator session, int target, long offset, long[] data) {
-        var seg = session.allocateArray(JAVA_LONG, data.length);
+    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, long[] data) {
+        var seg = allocator.allocateArray(JAVA_LONG, data.length);
         getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator session, int target, long offset, float[] data) {
-        var seg = session.allocateArray(JAVA_FLOAT, data.length);
+    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, float[] data) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, data.length);
         getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator session, int target, long offset, double[] data) {
-        var seg = session.allocateArray(JAVA_DOUBLE, data.length);
+    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, double[] data) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, data.length);
         getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
         RuntimeHelper.toArray(seg, data);
     }

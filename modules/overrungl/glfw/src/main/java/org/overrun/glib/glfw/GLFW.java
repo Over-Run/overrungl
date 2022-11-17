@@ -2037,13 +2037,13 @@ public class GLFW {
     /**
      * Sets the specified window hint to the desired value.
      *
-     * @param session The allocator.
-     * @param hint    The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
-     * @param value   The new value of the window hint.
+     * @param allocator The value allocator.
+     * @param hint      The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value     The new value of the window hint.
      * @see #nwindowHintString(int, Addressable) nwindowHintString
      */
-    public static void windowHintString(SegmentAllocator session, int hint, String value) {
-        nwindowHintString(hint, session.allocateUtf8String(value));
+    public static void windowHintString(SegmentAllocator allocator, int hint, String value) {
+        nwindowHintString(hint, allocator.allocateUtf8String(value));
     }
 
     /**
@@ -2208,22 +2208,22 @@ public class GLFW {
     /**
      * Creates a window and its associated context.
      *
-     * @param session The allocator.
-     * @param width   The desired width, in screen coordinates, of the window.
-     *                This must be greater than zero.
-     * @param height  The desired height, in screen coordinates, of the window.
-     *                This must be greater than zero.
-     * @param title   The initial, UTF-8 encoded window title.
-     * @param monitor The monitor to use for full screen mode, or {@link MemoryAddress#NULL NULL} for
-     *                windowed mode.
-     * @param share   The window whose context to share resources with, or {@link MemoryAddress#NULL NULL}
-     *                to not share resources.
+     * @param allocator The title allocator.
+     * @param width     The desired width, in screen coordinates, of the window.
+     *                  This must be greater than zero.
+     * @param height    The desired height, in screen coordinates, of the window.
+     *                  This must be greater than zero.
+     * @param title     The initial, UTF-8 encoded window title.
+     * @param monitor   The monitor to use for full screen mode, or {@link MemoryAddress#NULL NULL} for
+     *                  windowed mode.
+     * @param share     The window whose context to share resources with, or {@link MemoryAddress#NULL NULL}
+     *                  to not share resources.
      * @return The handle of the created window, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateWindow(int, int, Addressable, Addressable, Addressable) ncreateWindow
      */
-    public static MemoryAddress createWindow(SegmentAllocator session, int width, int height, String title, Addressable monitor, Addressable share) {
-        return ncreateWindow(width, height, session.allocateUtf8String(title), monitor, share);
+    public static MemoryAddress createWindow(SegmentAllocator allocator, int width, int height, String title, Addressable monitor, Addressable share) {
+        return ncreateWindow(width, height, allocator.allocateUtf8String(title), monitor, share);
     }
 
     /**
@@ -2317,13 +2317,13 @@ public class GLFW {
     /**
      * Sets the title of the specified window.
      *
-     * @param session The allocator.
-     * @param window  The window whose title to change.
-     * @param title   The UTF-8 encoded window title.
+     * @param allocator The title allocator.
+     * @param window    The window whose title to change.
+     * @param title     The UTF-8 encoded window title.
      * @see #nsetWindowTitle(Addressable, Addressable) nsetWindowTitle
      */
-    public static void setWindowTitle(SegmentAllocator session, Addressable window, String title) {
-        nsetWindowTitle(window, session.allocateUtf8String(title));
+    public static void setWindowTitle(SegmentAllocator allocator, Addressable window, String title) {
+        nsetWindowTitle(window, allocator.allocateUtf8String(title));
     }
 
     /**
@@ -5311,14 +5311,14 @@ public class GLFW {
     /**
      * Adds the specified SDL_GameControllerDB gamepad mappings.
      *
-     * @param session The allocator.
-     * @param string  The string containing the gamepad mappings.
+     * @param allocator The string allocator.
+     * @param string    The string containing the gamepad mappings.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(Addressable) nupdateGamepadMappings
      */
-    public static boolean updateGamepadMappings(SegmentAllocator session, String string) {
-        return nupdateGamepadMappings(session.allocateUtf8String(string));
+    public static boolean updateGamepadMappings(SegmentAllocator allocator, String string) {
+        return nupdateGamepadMappings(allocator.allocateUtf8String(string));
     }
 
     /**
@@ -5443,13 +5443,13 @@ public class GLFW {
     /**
      * Sets the clipboard to the specified string.
      *
-     * @param session The allocator.
-     * @param window  Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
-     * @param string  A UTF-8 encoded string.
+     * @param allocator The string allocator.
+     * @param window    Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
+     * @param string    A UTF-8 encoded string.
      * @see #nsetClipboardString(Addressable, Addressable) nsetClipboardString
      */
-    public static void setClipboardString(SegmentAllocator session, @Deprecated Addressable window, String string) {
-        nsetClipboardString(window, session.allocateUtf8String(string));
+    public static void setClipboardString(SegmentAllocator allocator, @Deprecated Addressable window, String string) {
+        nsetClipboardString(window, allocator.allocateUtf8String(string));
     }
 
     /**
@@ -5761,14 +5761,14 @@ public class GLFW {
     /**
      * Returns whether the specified extension is available.
      *
-     * @param session   The allocator.
+     * @param allocator The extension string allocator.
      * @param extension The ASCII encoded name of the extension.
      * @return {@code true} if the extension is available, or {@code false}
      * otherwise.
      * @see #nextensionSupported(Addressable) nextensionSupported
      */
-    public static boolean extensionSupported(SegmentAllocator session, String extension) {
-        return nextensionSupported(session.allocateUtf8String(extension));
+    public static boolean extensionSupported(SegmentAllocator allocator, String extension) {
+        return nextensionSupported(allocator.allocateUtf8String(extension));
     }
 
     /**

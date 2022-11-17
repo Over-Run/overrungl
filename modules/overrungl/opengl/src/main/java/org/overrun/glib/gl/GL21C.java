@@ -69,12 +69,12 @@ public sealed class GL21C extends GL20C permits GL30C {
         }
     }
 
-    public static void uniformMatrix2x3fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix2x3fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
+    public static void uniformMatrix2x3fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix2x3fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix2x3fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
-        uniformMatrix2x3fv(session, location, value.length / 6, transpose, value);
+    public static void uniformMatrix2x3fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
+        uniformMatrix2x3fv(allocator, location, value.length / 6, transpose, value);
     }
 
     public static void uniformMatrix2x4fv(int location, int count, boolean transpose, Addressable value) {
@@ -85,12 +85,12 @@ public sealed class GL21C extends GL20C permits GL30C {
         }
     }
 
-    public static void uniformMatrix2x4fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix2x4fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
+    public static void uniformMatrix2x4fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix2x4fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix2x4fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
-        uniformMatrix2x4fv(session, location, value.length >> 3, transpose, value);
+    public static void uniformMatrix2x4fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
+        uniformMatrix2x4fv(allocator, location, value.length >> 3, transpose, value);
     }
 
     public static void uniformMatrix3x2fv(int location, int count, boolean transpose, Addressable value) {
@@ -101,12 +101,12 @@ public sealed class GL21C extends GL20C permits GL30C {
         }
     }
 
-    public static void uniformMatrix3x2fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix3x2fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
+    public static void uniformMatrix3x2fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix3x2fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix3x2fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
-        uniformMatrix3x2fv(session, location, value.length / 6, transpose, value);
+    public static void uniformMatrix3x2fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
+        uniformMatrix3x2fv(allocator, location, value.length / 6, transpose, value);
     }
 
     public static void uniformMatrix3x4fv(int location, int count, boolean transpose, Addressable value) {
@@ -117,12 +117,12 @@ public sealed class GL21C extends GL20C permits GL30C {
         }
     }
 
-    public static void uniformMatrix3x4fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix3x4fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
+    public static void uniformMatrix3x4fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix3x4fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix3x4fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
-        uniformMatrix3x4fv(session, location, value.length / 12, transpose, value);
+    public static void uniformMatrix3x4fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
+        uniformMatrix3x4fv(allocator, location, value.length / 12, transpose, value);
     }
 
     public static void uniformMatrix4x2fv(int location, int count, boolean transpose, Addressable value) {
@@ -133,12 +133,12 @@ public sealed class GL21C extends GL20C permits GL30C {
         }
     }
 
-    public static void uniformMatrix4x2fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix4x2fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
+    public static void uniformMatrix4x2fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix4x2fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix4x2fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
-        uniformMatrix4x2fv(session, location, value.length >> 3, transpose, value);
+    public static void uniformMatrix4x2fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
+        uniformMatrix4x2fv(allocator, location, value.length >> 3, transpose, value);
     }
 
     public static void uniformMatrix4x3fv(int location, int count, boolean transpose, Addressable value) {
@@ -149,11 +149,11 @@ public sealed class GL21C extends GL20C permits GL30C {
         }
     }
 
-    public static void uniformMatrix4x3fv(SegmentAllocator session, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix4x3fv(location, count, transpose, session.allocateArray(JAVA_FLOAT, value));
+    public static void uniformMatrix4x3fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
+        uniformMatrix4x3fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void uniformMatrix4x3fv(SegmentAllocator session, int location, boolean transpose, float[] value) {
-        uniformMatrix4x3fv(session, location, value.length / 12, transpose, value);
+    public static void uniformMatrix4x3fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
+        uniformMatrix4x3fv(allocator, location, value.length / 12, transpose, value);
     }
 }

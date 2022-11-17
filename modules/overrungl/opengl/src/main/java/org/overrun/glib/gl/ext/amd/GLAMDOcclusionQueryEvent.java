@@ -43,7 +43,7 @@ public class GLAMDOcclusionQueryEvent {
     public static MethodHandle glQueryObjectParameteruiAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_occlusion_query_event) return;
+        if (GLExtCaps.Flags.GL_AMD_occlusion_query_event.no()) return;
         glQueryObjectParameteruiAMD = load.invoke("glQueryObjectParameteruiAMD", FunctionDescriptors.IIIIV);
     }
 

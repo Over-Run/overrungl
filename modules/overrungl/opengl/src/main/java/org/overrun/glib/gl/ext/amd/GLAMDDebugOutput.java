@@ -52,7 +52,7 @@ public class GLAMDDebugOutput {
         glDebugMessageCallbackAMD, glDebugMessageEnableAMD, glDebugMessageInsertAMD, glGetDebugMessageLogAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_debug_output) return;
+        if (GLExtCaps.Flags.GL_AMD_debug_output.no()) return;
         glDebugMessageCallbackAMD = load.invoke("glDebugMessageCallbackAMD", PPV);
         glDebugMessageEnableAMD = load.invoke("glDebugMessageEnableAMD", IIIPZV);
         glDebugMessageInsertAMD = load.invoke("glDebugMessageInsertAMD", IIIIPV);
@@ -79,8 +79,8 @@ public class GLAMDDebugOutput {
         }
     }
 
-    public static void glDebugMessageEnableAMD(SegmentAllocator session, int category, int severity, int[] ids, boolean enabled) {
-        glDebugMessageEnableAMD(category, severity, ids.length, session.allocateArray(JAVA_INT, ids), enabled);
+    public static void glDebugMessageEnableAMD(SegmentAllocator allocator, int category, int severity, int[] ids, boolean enabled) {
+        glDebugMessageEnableAMD(category, severity, ids.length, allocator.allocateArray(JAVA_INT, ids), enabled);
     }
 
     public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, Addressable buf) {
@@ -91,8 +91,8 @@ public class GLAMDDebugOutput {
         }
     }
 
-    public static void glDebugMessageInsertAMD(SegmentAllocator session, int category, int severity, int id, String buf) {
-        glDebugMessageInsertAMD(category, severity, id, 0, session.allocateUtf8String(buf));
+    public static void glDebugMessageInsertAMD(SegmentAllocator allocator, int category, int severity, int id, String buf) {
+        glDebugMessageInsertAMD(category, severity, id, 0, allocator.allocateUtf8String(buf));
     }
 
     public static int glGetDebugMessageLogAMD(int count, int bufSize, Addressable categories, Addressable severities, Addressable ids, Addressable lengths, Addressable message) {
@@ -107,12 +107,12 @@ public class GLAMDDebugOutput {
         return glGetDebugMessageLogAMD(count, (int) messageLog.byteSize(), categories, severities, ids, lengths, messageLog);
     }
 
-    public static int glGetDebugMessageLogAMD(SegmentAllocator session, int count, int bufSize, int[] categories, int[] severities, int[] ids, int[] lengths, String[] messageLog) {
-        var pCgr = session.allocateArray(JAVA_INT, categories.length);
-        var pSvr = session.allocateArray(JAVA_INT, severities.length);
-        var pIds = session.allocateArray(JAVA_INT, ids.length);
-        var pLen = session.allocateArray(JAVA_INT, lengths.length);
-        var pLog = session.allocateArray(JAVA_BYTE, bufSize);
+    public static int glGetDebugMessageLogAMD(SegmentAllocator allocator, int count, int bufSize, int[] categories, int[] severities, int[] ids, int[] lengths, String[] messageLog) {
+        var pCgr = allocator.allocateArray(JAVA_INT, categories.length);
+        var pSvr = allocator.allocateArray(JAVA_INT, severities.length);
+        var pIds = allocator.allocateArray(JAVA_INT, ids.length);
+        var pLen = allocator.allocateArray(JAVA_INT, lengths.length);
+        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
         int num = glGetDebugMessageLogAMD(count, bufSize, pCgr, pSvr, pIds, pLen, pLog);
         RuntimeHelper.toArray(pCgr, categories);
         RuntimeHelper.toArray(pSvr, severities);

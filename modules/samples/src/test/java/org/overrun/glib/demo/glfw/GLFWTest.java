@@ -48,6 +48,7 @@ public final class GLFWTest {
     public void run() {
         try (var session = MemorySession.openShared()) {
             init(session);
+            load();
         }
         loop();
 
@@ -92,12 +93,14 @@ public final class GLFWTest {
         GLFW.showWindow(window);
     }
 
-    private void loop() {
+    private void load() {
         if (GLCaps.loadShared(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+    }
 
+    private void loop() {
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

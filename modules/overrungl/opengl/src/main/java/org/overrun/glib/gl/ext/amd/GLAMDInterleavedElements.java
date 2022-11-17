@@ -43,7 +43,7 @@ public class GLAMDInterleavedElements {
     public static MethodHandle glVertexAttribParameteriAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_interleaved_elements) return;
+        if (GLExtCaps.Flags.GL_AMD_interleaved_elements.no()) return;
         glVertexAttribParameteriAMD = load.invoke("glVertexAttribParameteriAMD", FunctionDescriptors.IIIV);
     }
 

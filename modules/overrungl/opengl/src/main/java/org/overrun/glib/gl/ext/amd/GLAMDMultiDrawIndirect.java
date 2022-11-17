@@ -45,7 +45,7 @@ public class GLAMDMultiDrawIndirect {
     public static MethodHandle glMultiDrawArraysIndirectAMD, glMultiDrawElementsIndirectAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_multi_draw_indirect) return;
+        if (GLExtCaps.Flags.GL_AMD_multi_draw_indirect.no()) return;
         glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
         glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
     }

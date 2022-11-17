@@ -192,11 +192,11 @@ public class STBImage {
         }
     }
 
-    public static boolean info(SegmentAllocator session, String filename, int[] x, int[] y, int[] comp) {
-        var px = session.allocate(JAVA_INT);
-        var py = session.allocate(JAVA_INT);
-        var pc = session.allocate(JAVA_INT);
-        boolean b = ninfo(session.allocateUtf8String(filename), px, py, pc);
+    public static boolean info(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] comp) {
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        boolean b = ninfo(allocator.allocateUtf8String(filename), px, py, pc);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         comp[0] = pc.get(JAVA_INT, 0);
@@ -278,8 +278,8 @@ public class STBImage {
         }
     }
 
-    public static boolean infoFromMemory(SegmentAllocator session, byte[] buffer, int[] x, int[] y, int[] comp) {
-        return infoFromMemory(session.allocateArray(JAVA_BYTE, buffer), x, y, comp);
+    public static boolean infoFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] comp) {
+        return infoFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), x, y, comp);
     }
 
     public static boolean nis16Bit(Addressable filename) {
@@ -290,8 +290,8 @@ public class STBImage {
         }
     }
 
-    public static boolean is16Bit(SegmentAllocator session, String filename) {
-        return nis16Bit(session.allocateUtf8String(filename));
+    public static boolean is16Bit(SegmentAllocator allocator, String filename) {
+        return nis16Bit(allocator.allocateUtf8String(filename));
     }
 
     public static boolean nis16BitFromCallbacks(Addressable clbk, Addressable user) {
@@ -326,8 +326,8 @@ public class STBImage {
         return nis16BitFromMemory(buffer, (int) buffer.byteSize());
     }
 
-    public static boolean is16BitFromMemory(SegmentAllocator session, byte[] buffer) {
-        return is16BitFromMemory(session.allocateArray(JAVA_BYTE, buffer));
+    public static boolean is16BitFromMemory(SegmentAllocator allocator, byte[] buffer) {
+        return is16BitFromMemory(allocator.allocateArray(JAVA_BYTE, buffer));
     }
 
     public static boolean nisHdr(Addressable filename) {
@@ -338,8 +338,8 @@ public class STBImage {
         }
     }
 
-    public static boolean isHdr(SegmentAllocator session, String filename) {
-        return nisHdr(session.allocateUtf8String(filename));
+    public static boolean isHdr(SegmentAllocator allocator, String filename) {
+        return nisHdr(allocator.allocateUtf8String(filename));
     }
 
     public static boolean nisHdrFromCallbacks(Addressable clbk, Addressable user) {
@@ -374,8 +374,8 @@ public class STBImage {
         return nisHdrFromMemory(buffer, (int) buffer.byteSize());
     }
 
-    public static boolean isHdrFromMemory(SegmentAllocator session, byte[] buffer) {
-        return isHdrFromMemory(session.allocateArray(JAVA_BYTE, buffer));
+    public static boolean isHdrFromMemory(SegmentAllocator allocator, byte[] buffer) {
+        return isHdrFromMemory(allocator.allocateArray(JAVA_BYTE, buffer));
     }
 
     public static void ldrToHdrGamma(float gamma) {
@@ -402,11 +402,11 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress load(SegmentAllocator session, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = session.allocate(JAVA_INT);
-        var py = session.allocate(JAVA_INT);
-        var pc = session.allocate(JAVA_INT);
-        var addr = nload(session.allocateUtf8String(filename), px, py, pc, desiredChannels);
+    public static MemoryAddress load(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = nload(allocator.allocateUtf8String(filename), px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -421,11 +421,11 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress load16(SegmentAllocator session, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = session.allocate(JAVA_INT);
-        var py = session.allocate(JAVA_INT);
-        var pc = session.allocate(JAVA_INT);
-        var addr = nload16(session.allocateUtf8String(filename), px, py, pc, desiredChannels);
+    public static MemoryAddress load16(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = nload16(allocator.allocateUtf8String(filename), px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -482,8 +482,8 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress load16FromMemory(SegmentAllocator session, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        return load16FromMemory(session.allocateArray(JAVA_BYTE, buffer), x, y, channelsInFile, desiredChannels);
+    public static MemoryAddress load16FromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        return load16FromMemory(allocator.allocateArray(JAVA_BYTE, buffer), x, y, channelsInFile, desiredChannels);
     }
 
     public static MemoryAddress nloadFromCallbacks(Addressable clbk, Addressable user, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
@@ -586,11 +586,11 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress loadFromMemory(SegmentAllocator session, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = session.allocate(JAVA_INT);
-        var py = session.allocate(JAVA_INT);
-        var pc = session.allocate(JAVA_INT);
-        var addr = nloadFromMemory(session.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
+    public static MemoryAddress loadFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = nloadFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -627,8 +627,8 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress loadGifFromMemory(SegmentAllocator session, byte[] buffer, int[][] delays, int[] x, int[] y, int[] z, int[] comp, int reqComp) {
-        return loadGifFromMemory(session.allocateArray(JAVA_BYTE, buffer), delays, x, y, z, comp, reqComp);
+    public static MemoryAddress loadGifFromMemory(SegmentAllocator allocator, byte[] buffer, int[][] delays, int[] x, int[] y, int[] z, int[] comp, int reqComp) {
+        return loadGifFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), delays, x, y, z, comp, reqComp);
     }
 
     public static MemoryAddress nloadf(Addressable filename, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
@@ -639,11 +639,11 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress loadf(SegmentAllocator session, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = session.allocate(JAVA_INT);
-        var py = session.allocate(JAVA_INT);
-        var pc = session.allocate(JAVA_INT);
-        var addr = nloadf(session.allocateUtf8String(filename), px, py, pc, desiredChannels);
+    public static MemoryAddress loadf(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = nloadf(allocator.allocateUtf8String(filename), px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -725,11 +725,11 @@ public class STBImage {
         }
     }
 
-    public static MemoryAddress loadfFromMemory(SegmentAllocator session, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = session.allocate(JAVA_INT);
-        var py = session.allocate(JAVA_INT);
-        var pc = session.allocate(JAVA_INT);
-        var addr = nloadfFromMemory(session.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
+    public static MemoryAddress loadfFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = nloadfFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);

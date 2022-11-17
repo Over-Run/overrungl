@@ -43,7 +43,7 @@ public class GLAMDStencilOperationExtended {
     public static MethodHandle glStencilOpValueAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_stencil_operation_extended) return;
+        if (GLExtCaps.Flags.GL_AMD_stencil_operation_extended.no()) return;
         glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", FunctionDescriptors.IIV);
     }
 

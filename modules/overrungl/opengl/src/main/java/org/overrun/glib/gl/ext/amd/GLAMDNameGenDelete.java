@@ -49,7 +49,7 @@ public class GLAMDNameGenDelete {
     public static MethodHandle glDeleteNamesAMD, glGenNamesAMD, glIsNameAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_name_gen_delete) return;
+        if (GLExtCaps.Flags.GL_AMD_name_gen_delete.no()) return;
         glDeleteNamesAMD = load.invoke("glDeleteNamesAMD", FunctionDescriptors.IIPV);
         glGenNamesAMD = load.invoke("glGenNamesAMD", FunctionDescriptors.IIPV);
         glIsNameAMD = load.invoke("glIsNameAMD", FunctionDescriptors.IIZ);
@@ -63,8 +63,8 @@ public class GLAMDNameGenDelete {
         }
     }
 
-    public static void glDeleteNamesAMD(SegmentAllocator session, int identifier, int[] names) {
-        glDeleteNamesAMD(identifier, names.length, session.allocateArray(JAVA_INT, names));
+    public static void glDeleteNamesAMD(SegmentAllocator allocator, int identifier, int[] names) {
+        glDeleteNamesAMD(identifier, names.length, allocator.allocateArray(JAVA_INT, names));
     }
 
     public static void glDeleteNameAMD(int identifier, int name) {
@@ -87,8 +87,8 @@ public class GLAMDNameGenDelete {
         }
     }
 
-    public static void glGenNamesAMD(SegmentAllocator session, int identifier, int[] names) {
-        var seg = session.allocateArray(JAVA_INT, names.length);
+    public static void glGenNamesAMD(SegmentAllocator allocator, int identifier, int[] names) {
+        var seg = allocator.allocateArray(JAVA_INT, names.length);
         glGenNamesAMD(identifier, names.length, seg);
         RuntimeHelper.toArray(seg, names);
     }

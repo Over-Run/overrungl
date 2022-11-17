@@ -88,17 +88,17 @@ public sealed class GL46C extends GL45C permits GL {
         }
     }
 
-    public static void specializeShader(SegmentAllocator session, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
+    public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
         specializeShader(shader,
-            pEntryPoint != null ? session.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
+            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
             pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
-            pConstantIndex != null ? session.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemoryAddress.NULL,
-            pConstantValue != null ? session.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemoryAddress.NULL);
+            pConstantIndex != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemoryAddress.NULL,
+            pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemoryAddress.NULL);
     }
 
-    public static void specializeShader(SegmentAllocator session, int shader, @Nullable String pEntryPoint) {
+    public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint) {
         specializeShader(shader,
-            pEntryPoint != null ? session.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
+            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
             0,
             MemoryAddress.NULL,
             MemoryAddress.NULL);

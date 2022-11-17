@@ -24,6 +24,8 @@
 
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.util.MemoryStack;
+
 import java.lang.foreign.*;
 
 import static org.overrun.glib.glfw.Handles.*;
@@ -213,10 +215,16 @@ public class GLFWVulkan {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nglfwCreateWindowSurface(Addressable, Addressable, Addressable, Addressable) nglfwCreateWindowSurface
      */
-    public static int glfwCreateWindowSurface(SegmentAllocator session, Addressable instance, Addressable window, Addressable allocator, long[] surface) {
-        var pSurface = session.allocate(ValueLayout.JAVA_LONG);
-        int result = nglfwCreateWindowSurface(instance, window, allocator, pSurface);
-        surface[0] = pSurface.get(ValueLayout.JAVA_LONG, 0);
-        return result;
+    public static int glfwCreateWindowSurface(Addressable instance, Addressable window, Addressable allocator, long[] surface) {
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var pSurface = stack.calloc(ValueLayout.JAVA_LONG);
+            int result = nglfwCreateWindowSurface(instance, window, allocator, pSurface);
+            surface[0] = pSurface.get(ValueLayout.JAVA_LONG, 0);
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 }

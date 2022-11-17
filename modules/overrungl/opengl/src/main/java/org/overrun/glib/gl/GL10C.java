@@ -248,8 +248,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getBooleanv(SegmentAllocator session, int pname, boolean[] data) {
-        var pData = session.allocateArray(JAVA_BOOLEAN, data.length);
+    public static void getBooleanv(SegmentAllocator allocator, int pname, boolean[] data) {
+        var pData = allocator.allocateArray(JAVA_BOOLEAN, data.length);
         getBooleanv(pname, pData);
         RuntimeHelper.toArray(pData, data);
     }
@@ -274,8 +274,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getDoublev(SegmentAllocator session, int pname, double[] data) {
-        var pData = session.allocateArray(JAVA_DOUBLE, data.length);
+    public static void getDoublev(SegmentAllocator allocator, int pname, double[] data) {
+        var pData = allocator.allocateArray(JAVA_DOUBLE, data.length);
         getDoublev(pname, pData);
         RuntimeHelper.toArray(pData, data);
     }
@@ -308,8 +308,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getFloatv(SegmentAllocator session, int pname, float[] data) {
-        var pData = session.allocateArray(JAVA_FLOAT, data.length);
+    public static void getFloatv(SegmentAllocator allocator, int pname, float[] data) {
+        var pData = allocator.allocateArray(JAVA_FLOAT, data.length);
         getFloatv(pname, pData);
         RuntimeHelper.toArray(pData, data);
     }
@@ -334,8 +334,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getIntegerv(SegmentAllocator session, int pname, int[] data) {
-        var pData = session.allocateArray(JAVA_INT, data.length);
+    public static void getIntegerv(SegmentAllocator allocator, int pname, int[] data) {
+        var pData = allocator.allocateArray(JAVA_INT, data.length);
         getIntegerv(pname, pData);
         RuntimeHelper.toArray(pData, data);
     }
@@ -382,8 +382,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexLevelParameterfv(SegmentAllocator session, int target, int level, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getTexLevelParameterfv(SegmentAllocator allocator, int target, int level, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getTexLevelParameterfv(target, level, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -408,8 +408,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexLevelParameteriv(SegmentAllocator session, int target, int level, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getTexLevelParameteriv(SegmentAllocator allocator, int target, int level, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getTexLevelParameteriv(target, level, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -434,8 +434,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexParameterfv(SegmentAllocator session, int target, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getTexParameterfv(SegmentAllocator allocator, int target, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getTexParameterfv(target, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -460,8 +460,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexParameteriv(SegmentAllocator session, int target, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getTexParameteriv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getTexParameteriv(target, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -558,26 +558,26 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, byte[] pixels) {
-        var seg = session.allocateArray(JAVA_BYTE, pixels.length);
+    public static void readPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, byte[] pixels) {
+        var seg = allocator.allocateArray(JAVA_BYTE, pixels.length);
         readPixels(x, y, width, height, format, type, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, short[] pixels) {
-        var seg = session.allocateArray(JAVA_SHORT, pixels.length);
+    public static void readPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, short[] pixels) {
+        var seg = allocator.allocateArray(JAVA_SHORT, pixels.length);
         readPixels(x, y, width, height, format, type, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, int[] pixels) {
-        var seg = session.allocateArray(JAVA_INT, pixels.length);
+    public static void readPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, int[] pixels) {
+        var seg = allocator.allocateArray(JAVA_INT, pixels.length);
         readPixels(x, y, width, height, format, type, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void readPixels(SegmentAllocator session, int x, int y, int width, int height, int format, int type, float[] pixels) {
-        var seg = session.allocateArray(JAVA_FLOAT, pixels.length);
+    public static void readPixels(SegmentAllocator allocator, int x, int y, int width, int height, int format, int type, float[] pixels) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, pixels.length);
         readPixels(x, y, width, height, format, type, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
@@ -622,20 +622,20 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, byte[] pixels) {
-        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void texImage1D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int border, int format, int type, byte[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, short[] pixels) {
-        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void texImage1D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int border, int format, int type, short[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, int[] pixels) {
-        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void texImage1D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int border, int format, int type, int[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texImage1D(SegmentAllocator session, int target, int level, int internalFormat, int width, int border, int format, int type, float[] pixels) {
-        texImage1D(target, level, internalFormat, width, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void texImage1D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int border, int format, int type, float[] pixels) {
+        texImage1D(target, level, internalFormat, width, border, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, Addressable pixels) {
@@ -646,20 +646,20 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, byte[] pixels) {
-        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void texImage2D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int border, int format, int type, byte[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, short[] pixels) {
-        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void texImage2D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int border, int format, int type, short[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, int[] pixels) {
-        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void texImage2D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int border, int format, int type, int[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texImage2D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int border, int format, int type, float[] pixels) {
-        texImage2D(target, level, internalFormat, width, height, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void texImage2D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int border, int format, int type, float[] pixels) {
+        texImage2D(target, level, internalFormat, width, height, border, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texParameterf(int target, int pname, float param) {
@@ -678,8 +678,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texParameterfv(SegmentAllocator session, int target, int pname, float[] params) {
-        texParameterfv(target, pname, session.allocateArray(JAVA_FLOAT, params));
+    public static void texParameterfv(SegmentAllocator allocator, int target, int pname, float[] params) {
+        texParameterfv(target, pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void texParameteri(int target, int pname, int param) {
@@ -698,8 +698,8 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texParameteriv(SegmentAllocator session, int target, int pname, int[] params) {
-        texParameteriv(target, pname, session.allocateArray(JAVA_INT, params));
+    public static void texParameteriv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        texParameteriv(target, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void viewport(int x, int y, int width, int height) {

@@ -73,16 +73,16 @@ public sealed class GL12C extends GL11C permits GL13C {
         }
     }
 
-    public static void drawRangeElements(SegmentAllocator session, int mode, int start, int end, int count, int type, byte[] indices) {
-        drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_BYTE, indices));
+    public static void drawRangeElements(SegmentAllocator allocator, int mode, int start, int end, int count, int type, byte[] indices) {
+        drawRangeElements(mode, start, end, count, type, allocator.allocateArray(JAVA_BYTE, indices));
     }
 
-    public static void drawRangeElements(SegmentAllocator session, int mode, int start, int end, int count, int type, short[] indices) {
-        drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_SHORT, indices));
+    public static void drawRangeElements(SegmentAllocator allocator, int mode, int start, int end, int count, int type, short[] indices) {
+        drawRangeElements(mode, start, end, count, type, allocator.allocateArray(JAVA_SHORT, indices));
     }
 
-    public static void drawRangeElements(SegmentAllocator session, int mode, int start, int end, int count, int type, int[] indices) {
-        drawRangeElements(mode, start, end, count, type, session.allocateArray(JAVA_INT, indices));
+    public static void drawRangeElements(SegmentAllocator allocator, int mode, int start, int end, int count, int type, int[] indices) {
+        drawRangeElements(mode, start, end, count, type, allocator.allocateArray(JAVA_INT, indices));
     }
 
     public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, Addressable pixels) {
@@ -93,20 +93,20 @@ public sealed class GL12C extends GL11C permits GL13C {
         }
     }
 
-    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, byte[] pixels) {
-        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void texImage3D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, byte[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, short[] pixels) {
-        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void texImage3D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, short[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, int[] pixels) {
-        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void texImage3D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, int[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texImage3D(SegmentAllocator session, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, float[] pixels) {
-        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void texImage3D(SegmentAllocator allocator, int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, float[] pixels) {
+        texImage3D(target, level, internalFormat, width, height, depth, border, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
     public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
@@ -117,19 +117,19 @@ public sealed class GL12C extends GL11C permits GL13C {
         }
     }
 
-    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
-        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_BYTE, pixels));
+    public static void texSubImage3D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
     }
 
-    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
-        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_SHORT, pixels));
+    public static void texSubImage3D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
     }
 
-    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
-        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_INT, pixels));
+    public static void texSubImage3D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_INT, pixels));
     }
 
-    public static void texSubImage3D(SegmentAllocator session, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
-        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, session.allocateArray(JAVA_FLOAT, pixels));
+    public static void texSubImage3D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
+        texSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 }

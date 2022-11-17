@@ -25,7 +25,6 @@
 package org.overrun.glib.glfw;
 
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.GameLib;
 import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.SymbolLookup;
@@ -85,8 +84,7 @@ final class Handles {
         if (initialized) return;
         initialized = true;
 
-        lookup = GameLib.load("glfw",
-            "glfw3",
+        lookup = RuntimeHelper.load("glfw", "glfw3",
             GLFW.VERSION_MAJOR + "." + GLFW.VERSION_MINOR + "." + GLFW.VERSION_REVISION);
         glfwInit = downcall("glfwInit", I);
         glfwTerminate = downcall("glfwTerminate", V);

@@ -150,7 +150,7 @@ public final class BufferBuilderTest {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         int stride;
-        try (var builder = new BufferBuilder(4 * 3 * 3 + 3 * 3)) {
+        try (var builder = new BufferBuilder(4 * 3 * 3 + 4 * 3)) {
             builder.begin()
                 .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)

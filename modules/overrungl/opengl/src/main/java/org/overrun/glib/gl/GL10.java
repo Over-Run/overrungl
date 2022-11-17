@@ -29,7 +29,6 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
@@ -418,8 +417,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void clipPlane(SegmentAllocator session, int plane, double[] equation) {
-        var pEq = session.allocateArray(JAVA_DOUBLE, equation);
+    public static void clipPlane(SegmentAllocator allocator, int plane, double[] equation) {
+        var pEq = allocator.allocateArray(JAVA_DOUBLE, equation);
         clipPlane(plane, pEq);
     }
 
@@ -440,8 +439,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3bv(SegmentAllocator session, byte[] v) {
-        var pv = session.allocateArray(JAVA_BYTE, v);
+    public static void color3bv(SegmentAllocator allocator, byte[] v) {
+        var pv = allocator.allocateArray(JAVA_BYTE, v);
         color3bv(pv);
     }
 
@@ -461,8 +460,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3dv(SegmentAllocator session, double[] v) {
-        var pv = session.allocateArray(JAVA_DOUBLE, v);
+    public static void color3dv(SegmentAllocator allocator, double[] v) {
+        var pv = allocator.allocateArray(JAVA_DOUBLE, v);
         color3dv(pv);
     }
 
@@ -482,8 +481,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3fv(SegmentAllocator session, float[] v) {
-        var pv = session.allocateArray(JAVA_FLOAT, v);
+    public static void color3fv(SegmentAllocator allocator, float[] v) {
+        var pv = allocator.allocateArray(JAVA_FLOAT, v);
         color3fv(pv);
     }
 
@@ -503,8 +502,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3iv(SegmentAllocator session, int[] v) {
-        var pv = session.allocateArray(JAVA_INT, v);
+    public static void color3iv(SegmentAllocator allocator, int[] v) {
+        var pv = allocator.allocateArray(JAVA_INT, v);
         color3iv(pv);
     }
 
@@ -524,8 +523,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3sv(SegmentAllocator session, short[] v) {
-        var pv = session.allocateArray(JAVA_SHORT, v);
+    public static void color3sv(SegmentAllocator allocator, short[] v) {
+        var pv = allocator.allocateArray(JAVA_SHORT, v);
         color3sv(pv);
     }
 
@@ -545,8 +544,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3ubv(SegmentAllocator session, byte[] v) {
-        var pv = session.allocateArray(JAVA_BYTE, v);
+    public static void color3ubv(SegmentAllocator allocator, byte[] v) {
+        var pv = allocator.allocateArray(JAVA_BYTE, v);
         color3ubv(pv);
     }
 
@@ -566,8 +565,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3uiv(SegmentAllocator session, int[] v) {
-        var pv = session.allocateArray(JAVA_INT, v);
+    public static void color3uiv(SegmentAllocator allocator, int[] v) {
+        var pv = allocator.allocateArray(JAVA_INT, v);
         color3uiv(pv);
     }
 
@@ -587,8 +586,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3usv(SegmentAllocator session, short[] v) {
-        var pv = session.allocateArray(JAVA_SHORT, v);
+    public static void color3usv(SegmentAllocator allocator, short[] v) {
+        var pv = allocator.allocateArray(JAVA_SHORT, v);
         color3usv(pv);
     }
 
@@ -608,8 +607,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4bv(SegmentAllocator session, byte[] v) {
-        var pv = session.allocateArray(JAVA_BYTE, v);
+    public static void color4bv(SegmentAllocator allocator, byte[] v) {
+        var pv = allocator.allocateArray(JAVA_BYTE, v);
         color4bv(pv);
     }
 
@@ -629,8 +628,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4dv(SegmentAllocator session, double[] v) {
-        var pv = session.allocateArray(JAVA_DOUBLE, v);
+    public static void color4dv(SegmentAllocator allocator, double[] v) {
+        var pv = allocator.allocateArray(JAVA_DOUBLE, v);
         color4dv(pv);
     }
 
@@ -650,8 +649,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4fv(SegmentAllocator session, float[] v) {
-        var pv = session.allocateArray(JAVA_FLOAT, v);
+    public static void color4fv(SegmentAllocator allocator, float[] v) {
+        var pv = allocator.allocateArray(JAVA_FLOAT, v);
         color4fv(pv);
     }
 
@@ -671,8 +670,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4iv(SegmentAllocator session, int[] v) {
-        var pv = session.allocateArray(JAVA_INT, v);
+    public static void color4iv(SegmentAllocator allocator, int[] v) {
+        var pv = allocator.allocateArray(JAVA_INT, v);
         color4iv(pv);
     }
 
@@ -692,8 +691,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4sv(SegmentAllocator session, short[] v) {
-        var pv = session.allocateArray(JAVA_SHORT, v);
+    public static void color4sv(SegmentAllocator allocator, short[] v) {
+        var pv = allocator.allocateArray(JAVA_SHORT, v);
         color4sv(pv);
     }
 
@@ -713,8 +712,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4ubv(SegmentAllocator session, byte[] v) {
-        var pv = session.allocateArray(JAVA_BYTE, v);
+    public static void color4ubv(SegmentAllocator allocator, byte[] v) {
+        var pv = allocator.allocateArray(JAVA_BYTE, v);
         color4ubv(pv);
     }
 
@@ -734,8 +733,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4uiv(SegmentAllocator session, int[] v) {
-        var pv = session.allocateArray(JAVA_INT, v);
+    public static void color4uiv(SegmentAllocator allocator, int[] v) {
+        var pv = allocator.allocateArray(JAVA_INT, v);
         color4uiv(pv);
     }
 
@@ -755,8 +754,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4usv(SegmentAllocator session, short[] v) {
-        var pv = session.allocateArray(JAVA_SHORT, v);
+    public static void color4usv(SegmentAllocator allocator, short[] v) {
+        var pv = allocator.allocateArray(JAVA_SHORT, v);
         color4usv(pv);
     }
 
@@ -808,8 +807,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void edgeFlagv(SegmentAllocator session, boolean[] flag) {
-        var pFlag = session.allocateArray(JAVA_BOOLEAN, flag.length);
+    public static void edgeFlagv(SegmentAllocator allocator, boolean[] flag) {
+        var pFlag = allocator.allocateArray(JAVA_BOOLEAN, flag.length);
         for (int i = 0; i < flag.length; i++) {
             pFlag.set(JAVA_BOOLEAN, i, flag[i]);
         }
@@ -848,8 +847,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord1dv(SegmentAllocator session, double[] u) {
-        var pu = session.allocateArray(JAVA_DOUBLE, u);
+    public static void evalCoord1dv(SegmentAllocator allocator, double[] u) {
+        var pu = allocator.allocateArray(JAVA_DOUBLE, u);
         evalCoord1dv(pu);
     }
 
@@ -869,8 +868,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord1fv(SegmentAllocator session, float[] u) {
-        var pu = session.allocateArray(JAVA_FLOAT, u);
+    public static void evalCoord1fv(SegmentAllocator allocator, float[] u) {
+        var pu = allocator.allocateArray(JAVA_FLOAT, u);
         evalCoord1fv(pu);
     }
 
@@ -890,8 +889,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord2dv(SegmentAllocator session, double[] u) {
-        var pu = session.allocateArray(JAVA_DOUBLE, u);
+    public static void evalCoord2dv(SegmentAllocator allocator, double[] u) {
+        var pu = allocator.allocateArray(JAVA_DOUBLE, u);
         evalCoord2dv(pu);
     }
 
@@ -911,8 +910,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord2fv(SegmentAllocator session, float[] u) {
-        var pu = session.allocateArray(JAVA_FLOAT, u);
+    public static void evalCoord2fv(SegmentAllocator allocator, float[] u) {
+        var pu = allocator.allocateArray(JAVA_FLOAT, u);
         evalCoord2fv(pu);
     }
 
@@ -956,8 +955,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void feedbackBuffer(SegmentAllocator session, int type, float[] buffer) {
-        var pBuffer = session.allocateArray(JAVA_FLOAT, buffer.length);
+    public static void feedbackBuffer(SegmentAllocator allocator, int type, float[] buffer) {
+        var pBuffer = allocator.allocateArray(JAVA_FLOAT, buffer.length);
         feedbackBuffer(buffer.length, type, pBuffer);
         RuntimeHelper.toArray(pBuffer, buffer);
     }
@@ -978,8 +977,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void fogfv(SegmentAllocator session, int pname, float[] params) {
-        var pParam = session.allocateArray(JAVA_FLOAT, params);
+    public static void fogfv(SegmentAllocator allocator, int pname, float[] params) {
+        var pParam = allocator.allocateArray(JAVA_FLOAT, params);
         fogfv(pname, pParam);
     }
 
@@ -999,8 +998,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void fogiv(SegmentAllocator session, int pname, int[] params) {
-        var pParam = session.allocateArray(JAVA_INT, params);
+    public static void fogiv(SegmentAllocator allocator, int pname, int[] params) {
+        var pParam = allocator.allocateArray(JAVA_INT, params);
         fogiv(pname, pParam);
     }
 
@@ -1053,8 +1052,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getLightfv(SegmentAllocator session, int light, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getLightfv(SegmentAllocator allocator, int light, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getLightfv(light, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1079,8 +1078,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getLightiv(SegmentAllocator session, int light, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getLightiv(SegmentAllocator allocator, int light, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getLightiv(light, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1105,8 +1104,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMapdv(SegmentAllocator session, int target, int query, double[] v) {
-        var pv = session.allocateArray(JAVA_DOUBLE, v.length);
+    public static void getMapdv(SegmentAllocator allocator, int target, int query, double[] v) {
+        var pv = allocator.allocateArray(JAVA_DOUBLE, v.length);
         getMapdv(target, query, pv);
         RuntimeHelper.toArray(pv, v);
     }
@@ -1131,8 +1130,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMapfv(SegmentAllocator session, int target, int query, float[] v) {
-        var pv = session.allocateArray(JAVA_FLOAT, v.length);
+    public static void getMapfv(SegmentAllocator allocator, int target, int query, float[] v) {
+        var pv = allocator.allocateArray(JAVA_FLOAT, v.length);
         getMapfv(target, query, pv);
         RuntimeHelper.toArray(pv, v);
     }
@@ -1157,8 +1156,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMapiv(SegmentAllocator session, int target, int query, int[] v) {
-        var pv = session.allocateArray(JAVA_INT, v.length);
+    public static void getMapiv(SegmentAllocator allocator, int target, int query, int[] v) {
+        var pv = allocator.allocateArray(JAVA_INT, v.length);
         getMapiv(target, query, pv);
         RuntimeHelper.toArray(pv, v);
     }
@@ -1183,8 +1182,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMaterialfv(SegmentAllocator session, int face, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getMaterialfv(SegmentAllocator allocator, int face, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getMaterialfv(face, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1209,8 +1208,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMaterialiv(SegmentAllocator session, int face, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getMaterialiv(SegmentAllocator allocator, int face, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getMaterialiv(face, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1235,8 +1234,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getPixelMapfv(SegmentAllocator session, int map, float[] values) {
-        var pValues = session.allocateArray(JAVA_FLOAT, values.length);
+    public static void getPixelMapfv(SegmentAllocator allocator, int map, float[] values) {
+        var pValues = allocator.allocateArray(JAVA_FLOAT, values.length);
         getPixelMapfv(map, pValues);
         RuntimeHelper.toArray(pValues, values);
     }
@@ -1249,8 +1248,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getPixelMapuiv(SegmentAllocator session, int map, int[] values) {
-        var pValues = session.allocateArray(JAVA_INT, values.length);
+    public static void getPixelMapuiv(SegmentAllocator allocator, int map, int[] values) {
+        var pValues = allocator.allocateArray(JAVA_INT, values.length);
         getPixelMapuiv(map, pValues);
         RuntimeHelper.toArray(pValues, values);
     }
@@ -1263,8 +1262,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getPixelMapusv(SegmentAllocator session, int map, short[] values) {
-        var pValues = session.allocateArray(JAVA_SHORT, values.length);
+    public static void getPixelMapusv(SegmentAllocator allocator, int map, short[] values) {
+        var pValues = allocator.allocateArray(JAVA_SHORT, values.length);
         getPixelMapusv(map, pValues);
         RuntimeHelper.toArray(pValues, values);
     }
@@ -1277,8 +1276,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getPolygonStipple(SegmentAllocator session, byte[] mask) {
-        var pMask = session.allocateArray(JAVA_BYTE, mask.length);
+    public static void getPolygonStipple(SegmentAllocator allocator, byte[] mask) {
+        var pMask = allocator.allocateArray(JAVA_BYTE, mask.length);
         getPolygonStipple(pMask);
         RuntimeHelper.toArray(pMask, mask);
     }
@@ -1291,8 +1290,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexEnvfv(SegmentAllocator session, int target, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getTexEnvfv(SegmentAllocator allocator, int target, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getTexEnvfv(target, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1317,8 +1316,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexEnviv(SegmentAllocator session, int target, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getTexEnviv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getTexEnviv(target, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1343,8 +1342,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexGendv(SegmentAllocator session, int coord, int pname, double[] params) {
-        var pParams = session.allocateArray(JAVA_DOUBLE, params.length);
+    public static void getTexGendv(SegmentAllocator allocator, int coord, int pname, double[] params) {
+        var pParams = allocator.allocateArray(JAVA_DOUBLE, params.length);
         getTexGendv(coord, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1357,8 +1356,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexGenfv(SegmentAllocator session, int coord, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params.length);
+    public static void getTexGenfv(SegmentAllocator allocator, int coord, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
         getTexGenfv(coord, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1371,8 +1370,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexGeniv(SegmentAllocator session, int coord, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params.length);
+    public static void getTexGeniv(SegmentAllocator allocator, int coord, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params.length);
         getTexGeniv(coord, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1401,8 +1400,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexdv(SegmentAllocator session, double[] c) {
-        var pc = session.allocateArray(JAVA_DOUBLE, c);
+    public static void indexdv(SegmentAllocator allocator, double[] c) {
+        var pc = allocator.allocateArray(JAVA_DOUBLE, c);
         indexdv(pc);
     }
 
@@ -1422,8 +1421,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexfv(SegmentAllocator session, float[] c) {
-        var pc = session.allocateArray(JAVA_FLOAT, c);
+    public static void indexfv(SegmentAllocator allocator, float[] c) {
+        var pc = allocator.allocateArray(JAVA_FLOAT, c);
         indexfv(pc);
     }
 
@@ -1443,8 +1442,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexiv(SegmentAllocator session, int[] c) {
-        var pc = session.allocateArray(JAVA_INT, c);
+    public static void indexiv(SegmentAllocator allocator, int[] c) {
+        var pc = allocator.allocateArray(JAVA_INT, c);
         indexiv(pc);
     }
 
@@ -1464,8 +1463,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexsv(SegmentAllocator session, short[] c) {
-        var pc = session.allocateArray(JAVA_SHORT, c);
+    public static void indexsv(SegmentAllocator allocator, short[] c) {
+        var pc = allocator.allocateArray(JAVA_SHORT, c);
         indexsv(pc);
     }
 
@@ -1501,8 +1500,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightModelfv(SegmentAllocator session, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params);
+    public static void lightModelfv(SegmentAllocator allocator, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params);
         lightModelfv(pname, pParams);
     }
 
@@ -1522,8 +1521,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightModeliv(SegmentAllocator session, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params);
+    public static void lightModeliv(SegmentAllocator allocator, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params);
         lightModeliv(pname, pParams);
     }
 
@@ -1543,8 +1542,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightfv(SegmentAllocator session, int light, int pname, float[] params) {
-        var pParams = session.allocateArray(JAVA_FLOAT, params);
+    public static void lightfv(SegmentAllocator allocator, int light, int pname, float[] params) {
+        var pParams = allocator.allocateArray(JAVA_FLOAT, params);
         lightfv(light, pname, pParams);
     }
 
@@ -1564,8 +1563,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightiv(SegmentAllocator session, int light, int pname, int[] params) {
-        var pParams = session.allocateArray(JAVA_INT, params);
+    public static void lightiv(SegmentAllocator allocator, int light, int pname, int[] params) {
+        var pParams = allocator.allocateArray(JAVA_INT, params);
         lightiv(light, pname, pParams);
     }
 
@@ -1601,8 +1600,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void loadMatrixd(SegmentAllocator session, double[] m) {
-        var pm = session.allocateArray(JAVA_DOUBLE, m);
+    public static void loadMatrixd(SegmentAllocator allocator, double[] m) {
+        var pm = allocator.allocateArray(JAVA_DOUBLE, m);
         loadMatrixd(pm);
     }
 
@@ -1614,8 +1613,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void loadMatrixf(SegmentAllocator session, float[] m) {
-        var pm = session.allocateArray(JAVA_FLOAT, m);
+    public static void loadMatrixf(SegmentAllocator allocator, float[] m) {
+        var pm = allocator.allocateArray(JAVA_FLOAT, m);
         loadMatrixf(pm);
     }
 
@@ -1635,8 +1634,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void map1d(SegmentAllocator session, int target, double u1, double u2, int stride, int order, double[] points) {
-        var pp = session.allocateArray(JAVA_DOUBLE, points);
+    public static void map1d(SegmentAllocator allocator, int target, double u1, double u2, int stride, int order, double[] points) {
+        var pp = allocator.allocateArray(JAVA_DOUBLE, points);
         map1d(target, u1, u2, stride, order, pp);
     }
 
@@ -1648,8 +1647,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void map1f(SegmentAllocator session, int target, float u1, float u2, int stride, int order, float[] points) {
-        var pp = session.allocateArray(JAVA_FLOAT, points);
+    public static void map1f(SegmentAllocator allocator, int target, float u1, float u2, int stride, int order, float[] points) {
+        var pp = allocator.allocateArray(JAVA_FLOAT, points);
         map1f(target, u1, u2, stride, order, pp);
     }
 
@@ -1661,8 +1660,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void map2d(SegmentAllocator session, int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
-        var pp = session.allocateArray(JAVA_DOUBLE, points);
+    public static void map2d(SegmentAllocator allocator, int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
+        var pp = allocator.allocateArray(JAVA_DOUBLE, points);
         map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp);
     }
 
@@ -1674,8 +1673,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void map2f(SegmentAllocator session, int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
-        var pp = session.allocateArray(JAVA_FLOAT, points);
+    public static void map2f(SegmentAllocator allocator, int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
+        var pp = allocator.allocateArray(JAVA_FLOAT, points);
         map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp);
     }
 
@@ -1727,8 +1726,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void materialfv(SegmentAllocator session, int face, int pname, float[] params) {
-        var seg = session.allocateArray(JAVA_FLOAT, params);
+    public static void materialfv(SegmentAllocator allocator, int face, int pname, float[] params) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, params);
         materialfv(face, pname, seg);
     }
 
@@ -1748,8 +1747,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void materialiv(SegmentAllocator session, int face, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params);
+    public static void materialiv(SegmentAllocator allocator, int face, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params);
         materialiv(face, pname, seg);
     }
 
@@ -1769,8 +1768,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void multMatrixd(SegmentAllocator session, double[] m) {
-        var seg = session.allocateArray(JAVA_DOUBLE, m);
+    public static void multMatrixd(SegmentAllocator allocator, double[] m) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, m);
         multMatrixd(seg);
     }
 
@@ -1782,8 +1781,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void multMatrixf(SegmentAllocator session, float[] m) {
-        var seg = session.allocateArray(JAVA_FLOAT, m);
+    public static void multMatrixf(SegmentAllocator allocator, float[] m) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, m);
         multMatrixf(seg);
     }
 
@@ -1811,8 +1810,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3bv(SegmentAllocator session, byte[] v) {
-        var seg = session.allocateArray(JAVA_BYTE, v);
+    public static void normal3bv(SegmentAllocator allocator, byte[] v) {
+        var seg = allocator.allocateArray(JAVA_BYTE, v);
         normal3bv(seg);
     }
 
@@ -1832,8 +1831,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void normal3dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         normal3dv(seg);
     }
 
@@ -1853,8 +1852,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void normal3fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         normal3fv(seg);
     }
 
@@ -1874,8 +1873,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void normal3iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         normal3iv(seg);
     }
 
@@ -1895,8 +1894,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void normal3sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         normal3sv(seg);
     }
 
@@ -1924,16 +1923,16 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void pixelMapfv(SegmentAllocator session, int map, int mapSize, float[] values) {
-        var seg = session.allocateArray(JAVA_FLOAT, mapSize);
+    public static void pixelMapfv(SegmentAllocator allocator, int map, int mapSize, float[] values) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, mapSize);
         for (int i = 0; i < mapSize; i++) {
             seg.setAtIndex(JAVA_FLOAT, i, values[i]);
         }
         pixelMapfv(map, mapSize, seg);
     }
 
-    public static void pixelMapfv(SegmentAllocator session, int map, float[] values) {
-        var seg = session.allocateArray(JAVA_FLOAT, values);
+    public static void pixelMapfv(SegmentAllocator allocator, int map, float[] values) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, values);
         pixelMapfv(map, values.length, seg);
     }
 
@@ -1945,16 +1944,16 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void pixelMapuiv(SegmentAllocator session, int map, int mapSize, int[] values) {
-        var seg = session.allocateArray(JAVA_INT, mapSize);
+    public static void pixelMapuiv(SegmentAllocator allocator, int map, int mapSize, int[] values) {
+        var seg = allocator.allocateArray(JAVA_INT, mapSize);
         for (int i = 0; i < mapSize; i++) {
             seg.setAtIndex(JAVA_INT, i, values[i]);
         }
         pixelMapuiv(map, mapSize, seg);
     }
 
-    public static void pixelMapuiv(SegmentAllocator session, int map, int[] values) {
-        var seg = session.allocateArray(JAVA_INT, values);
+    public static void pixelMapuiv(SegmentAllocator allocator, int map, int[] values) {
+        var seg = allocator.allocateArray(JAVA_INT, values);
         pixelMapuiv(map, values.length, seg);
     }
 
@@ -1966,16 +1965,16 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void pixelMapusv(SegmentAllocator session, int map, int mapSize, short[] values) {
-        var seg = session.allocateArray(JAVA_SHORT, mapSize);
+    public static void pixelMapusv(SegmentAllocator allocator, int map, int mapSize, short[] values) {
+        var seg = allocator.allocateArray(JAVA_SHORT, mapSize);
         for (int i = 0; i < mapSize; i++) {
             seg.setAtIndex(JAVA_SHORT, i, values[i]);
         }
         pixelMapusv(map, mapSize, seg);
     }
 
-    public static void pixelMapusv(SegmentAllocator session, int map, short[] values) {
-        var seg = session.allocateArray(JAVA_SHORT, values);
+    public static void pixelMapusv(SegmentAllocator allocator, int map, short[] values) {
+        var seg = allocator.allocateArray(JAVA_SHORT, values);
         pixelMapusv(map, values.length, seg);
     }
 
@@ -2011,8 +2010,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void polygonStipple(SegmentAllocator session, byte[] mask) {
-        var seg = session.allocateArray(JAVA_BYTE, mask);
+    public static void polygonStipple(SegmentAllocator allocator, byte[] mask) {
+        var seg = allocator.allocateArray(JAVA_BYTE, mask);
         polygonStipple(seg);
     }
 
@@ -2080,8 +2079,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void rasterPos2dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         rasterPos2dv(seg);
     }
 
@@ -2101,8 +2100,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void rasterPos2fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         rasterPos2fv(seg);
     }
 
@@ -2122,8 +2121,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void rasterPos2iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         rasterPos2iv(seg);
     }
 
@@ -2143,8 +2142,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void rasterPos2sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         rasterPos2sv(seg);
     }
 
@@ -2164,8 +2163,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void rasterPos3dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         rasterPos3dv(seg);
     }
 
@@ -2185,8 +2184,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void rasterPos3fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         rasterPos3fv(seg);
     }
 
@@ -2206,8 +2205,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void rasterPos3iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         rasterPos3iv(seg);
     }
 
@@ -2227,8 +2226,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void rasterPos3sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         rasterPos3sv(seg);
     }
 
@@ -2248,8 +2247,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void rasterPos4dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         rasterPos4dv(seg);
     }
 
@@ -2269,8 +2268,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void rasterPos4fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         rasterPos4fv(seg);
     }
 
@@ -2290,8 +2289,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void rasterPos4iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         rasterPos4iv(seg);
     }
 
@@ -2311,8 +2310,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void rasterPos4sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         rasterPos4sv(seg);
     }
 
@@ -2332,9 +2331,9 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectdv(SegmentAllocator session, double[] v1, double[] v2) {
-        var seg1 = session.allocateArray(JAVA_DOUBLE, v1);
-        var seg2 = session.allocateArray(JAVA_DOUBLE, v2);
+    public static void rectdv(SegmentAllocator allocator, double[] v1, double[] v2) {
+        var seg1 = allocator.allocateArray(JAVA_DOUBLE, v1);
+        var seg2 = allocator.allocateArray(JAVA_DOUBLE, v2);
         rectdv(seg1, seg2);
     }
 
@@ -2354,9 +2353,9 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectfv(SegmentAllocator session, float[] v1, float[] v2) {
-        var seg1 = session.allocateArray(JAVA_FLOAT, v1);
-        var seg2 = session.allocateArray(JAVA_FLOAT, v2);
+    public static void rectfv(SegmentAllocator allocator, float[] v1, float[] v2) {
+        var seg1 = allocator.allocateArray(JAVA_FLOAT, v1);
+        var seg2 = allocator.allocateArray(JAVA_FLOAT, v2);
         rectfv(seg1, seg2);
     }
 
@@ -2376,9 +2375,9 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectiv(SegmentAllocator session, int[] v1, int[] v2) {
-        var seg1 = session.allocateArray(JAVA_INT, v1);
-        var seg2 = session.allocateArray(JAVA_INT, v2);
+    public static void rectiv(SegmentAllocator allocator, int[] v1, int[] v2) {
+        var seg1 = allocator.allocateArray(JAVA_INT, v1);
+        var seg2 = allocator.allocateArray(JAVA_INT, v2);
         rectiv(seg1, seg2);
     }
 
@@ -2398,9 +2397,9 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectsv(SegmentAllocator session, short[] v1, short[] v2) {
-        var seg1 = session.allocateArray(JAVA_SHORT, v1);
-        var seg2 = session.allocateArray(JAVA_SHORT, v2);
+    public static void rectsv(SegmentAllocator allocator, short[] v1, short[] v2) {
+        var seg1 = allocator.allocateArray(JAVA_SHORT, v1);
+        var seg2 = allocator.allocateArray(JAVA_SHORT, v2);
         rectsv(seg1, seg2);
     }
 
@@ -2452,8 +2451,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void selectBuffer(SegmentAllocator session, int[] buffer) {
-        var seg = session.allocateArray(JAVA_INT, buffer.length);
+    public static void selectBuffer(SegmentAllocator allocator, int[] buffer) {
+        var seg = allocator.allocateArray(JAVA_INT, buffer.length);
         selectBuffer(buffer.length, seg);
         RuntimeHelper.toArray(seg, buffer);
     }
@@ -2482,8 +2481,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void texCoord1dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         texCoord1dv(seg);
     }
 
@@ -2503,8 +2502,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void texCoord1fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         texCoord1fv(seg);
     }
 
@@ -2524,8 +2523,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void texCoord1iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         texCoord1iv(seg);
     }
 
@@ -2545,8 +2544,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void texCoord1sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         texCoord1sv(seg);
     }
 
@@ -2566,8 +2565,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void texCoord2dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         texCoord2dv(seg);
     }
 
@@ -2587,8 +2586,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void texCoord2fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         texCoord2fv(seg);
     }
 
@@ -2608,8 +2607,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void texCoord2iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         texCoord2iv(seg);
     }
 
@@ -2629,8 +2628,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void texCoord2sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         texCoord2sv(seg);
     }
 
@@ -2650,8 +2649,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void texCoord3dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         texCoord3dv(seg);
     }
 
@@ -2671,8 +2670,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void texCoord3fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         texCoord3fv(seg);
     }
 
@@ -2692,8 +2691,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void texCoord3iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         texCoord3iv(seg);
     }
 
@@ -2713,8 +2712,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void texCoord3sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         texCoord3sv(seg);
     }
 
@@ -2734,8 +2733,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void texCoord4dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         texCoord4dv(seg);
     }
 
@@ -2755,8 +2754,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void texCoord4fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         texCoord4fv(seg);
     }
 
@@ -2776,8 +2775,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void texCoord4iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         texCoord4iv(seg);
     }
 
@@ -2797,8 +2796,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void texCoord4sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         texCoord4sv(seg);
     }
 
@@ -2818,8 +2817,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texEnvfv(SegmentAllocator session, int target, int pname, float[] params) {
-        var seg = session.allocateArray(JAVA_FLOAT, params);
+    public static void texEnvfv(SegmentAllocator allocator, int target, int pname, float[] params) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, params);
         texEnvfv(target, pname, seg);
     }
 
@@ -2839,8 +2838,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texEnviv(SegmentAllocator session, int target, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params);
+    public static void texEnviv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params);
         texEnviv(target, pname, seg);
     }
 
@@ -2860,8 +2859,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texGendv(SegmentAllocator session, int coord, int pname, double[] params) {
-        var seg = session.allocateArray(JAVA_DOUBLE, params);
+    public static void texGendv(SegmentAllocator allocator, int coord, int pname, double[] params) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, params);
         texGendv(coord, pname, seg);
     }
 
@@ -2881,8 +2880,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texGenfv(SegmentAllocator session, int coord, int pname, float[] params) {
-        var seg = session.allocateArray(JAVA_FLOAT, params);
+    public static void texGenfv(SegmentAllocator allocator, int coord, int pname, float[] params) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, params);
         texGenfv(coord, pname, seg);
     }
 
@@ -2902,8 +2901,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texGeniv(SegmentAllocator session, int coord, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params);
+    public static void texGeniv(SegmentAllocator allocator, int coord, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params);
         texGeniv(coord, pname, seg);
     }
 
@@ -2939,8 +2938,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void vertex2dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         vertex2dv(seg);
     }
 
@@ -2960,8 +2959,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void vertex2fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         vertex2fv(seg);
     }
 
@@ -2981,8 +2980,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void vertex2iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         vertex2iv(seg);
     }
 
@@ -3002,8 +3001,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void vertex2sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         vertex2sv(seg);
     }
 
@@ -3023,8 +3022,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void vertex3dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         vertex3dv(seg);
     }
 
@@ -3044,8 +3043,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void vertex3fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         vertex3fv(seg);
     }
 
@@ -3065,8 +3064,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void vertex3iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         vertex3iv(seg);
     }
 
@@ -3086,8 +3085,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void vertex3sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         vertex3sv(seg);
     }
 
@@ -3107,8 +3106,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4dv(SegmentAllocator session, double[] v) {
-        var seg = session.allocateArray(JAVA_DOUBLE, v);
+    public static void vertex4dv(SegmentAllocator allocator, double[] v) {
+        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
         vertex4dv(seg);
     }
 
@@ -3128,8 +3127,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4fv(SegmentAllocator session, float[] v) {
-        var seg = session.allocateArray(JAVA_FLOAT, v);
+    public static void vertex4fv(SegmentAllocator allocator, float[] v) {
+        var seg = allocator.allocateArray(JAVA_FLOAT, v);
         vertex4fv(seg);
     }
 
@@ -3149,8 +3148,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4iv(SegmentAllocator session, int[] v) {
-        var seg = session.allocateArray(JAVA_INT, v);
+    public static void vertex4iv(SegmentAllocator allocator, int[] v) {
+        var seg = allocator.allocateArray(JAVA_INT, v);
         vertex4iv(seg);
     }
 
@@ -3170,8 +3169,8 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4sv(SegmentAllocator session, short[] v) {
-        var seg = session.allocateArray(JAVA_SHORT, v);
+    public static void vertex4sv(SegmentAllocator allocator, short[] v) {
+        var seg = allocator.allocateArray(JAVA_SHORT, v);
         vertex4sv(seg);
     }
 }

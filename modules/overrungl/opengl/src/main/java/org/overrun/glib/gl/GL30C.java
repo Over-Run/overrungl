@@ -210,8 +210,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void bindFragDataLocation(SegmentAllocator session, int program, int color, String name) {
-        bindFragDataLocation(program, color, session.allocateUtf8String(name));
+    public static void bindFragDataLocation(SegmentAllocator allocator, int program, int color, String name) {
+        bindFragDataLocation(program, color, allocator.allocateUtf8String(name));
     }
 
     public static void bindFramebuffer(int target, int framebuffer) {
@@ -278,8 +278,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void clearBufferfv(SegmentAllocator session, int buffer, int drawBuffer, float[] value) {
-        clearBufferfv(buffer, drawBuffer, session.allocateArray(JAVA_FLOAT, value));
+    public static void clearBufferfv(SegmentAllocator allocator, int buffer, int drawBuffer, float[] value) {
+        clearBufferfv(buffer, drawBuffer, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void clearBufferiv(int buffer, int drawBuffer, Addressable value) {
@@ -290,8 +290,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void clearBufferiv(SegmentAllocator session, int buffer, int drawBuffer, int[] value) {
-        clearBufferiv(buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
+    public static void clearBufferiv(SegmentAllocator allocator, int buffer, int drawBuffer, int[] value) {
+        clearBufferiv(buffer, drawBuffer, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void clearBufferuiv(int buffer, int drawBuffer, Addressable value) {
@@ -302,8 +302,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void clearBufferuiv(SegmentAllocator session, int buffer, int drawBuffer, int[] value) {
-        clearBufferuiv(buffer, drawBuffer, session.allocateArray(JAVA_INT, value));
+    public static void clearBufferuiv(SegmentAllocator allocator, int buffer, int drawBuffer, int[] value) {
+        clearBufferuiv(buffer, drawBuffer, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void colorMaski(int index, boolean r, boolean g, boolean b, boolean a) {
@@ -322,8 +322,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void deleteFramebuffers(SegmentAllocator session, int[] framebuffers) {
-        deleteFramebuffers(framebuffers.length, session.allocateArray(JAVA_INT, framebuffers));
+    public static void deleteFramebuffers(SegmentAllocator allocator, int[] framebuffers) {
+        deleteFramebuffers(framebuffers.length, allocator.allocateArray(JAVA_INT, framebuffers));
     }
 
     public static void deleteFramebuffer(int framebuffer) {
@@ -346,8 +346,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void deleteRenderbuffers(SegmentAllocator session, int[] renderbuffers) {
-        deleteRenderbuffers(renderbuffers.length, session.allocateArray(JAVA_INT, renderbuffers));
+    public static void deleteRenderbuffers(SegmentAllocator allocator, int[] renderbuffers) {
+        deleteRenderbuffers(renderbuffers.length, allocator.allocateArray(JAVA_INT, renderbuffers));
     }
 
     public static void deleteRenderbuffer(int renderbuffer) {
@@ -370,8 +370,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void deleteVertexArrays(SegmentAllocator session, int[] arrays) {
-        deleteVertexArrays(arrays.length, session.allocateArray(JAVA_INT, arrays));
+    public static void deleteVertexArrays(SegmentAllocator allocator, int[] arrays) {
+        deleteVertexArrays(arrays.length, allocator.allocateArray(JAVA_INT, arrays));
     }
 
     public static void deleteVertexArray(int array) {
@@ -474,8 +474,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void genFramebuffers(SegmentAllocator session, int[] framebuffers) {
-        var seg = session.allocateArray(JAVA_INT, framebuffers.length);
+    public static void genFramebuffers(SegmentAllocator allocator, int[] framebuffers) {
+        var seg = allocator.allocateArray(JAVA_INT, framebuffers.length);
         genFramebuffers(framebuffers.length, seg);
         RuntimeHelper.toArray(seg, framebuffers);
     }
@@ -500,8 +500,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void genRenderbuffers(SegmentAllocator session, int[] renderbuffers) {
-        var seg = session.allocateArray(JAVA_INT, renderbuffers.length);
+    public static void genRenderbuffers(SegmentAllocator allocator, int[] renderbuffers) {
+        var seg = allocator.allocateArray(JAVA_INT, renderbuffers.length);
         genRenderbuffers(renderbuffers.length, seg);
         RuntimeHelper.toArray(seg, renderbuffers);
     }
@@ -526,8 +526,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void genVertexArrays(SegmentAllocator session, int[] arrays) {
-        var seg = session.allocateArray(JAVA_INT, arrays.length);
+    public static void genVertexArrays(SegmentAllocator allocator, int[] arrays) {
+        var seg = allocator.allocateArray(JAVA_INT, arrays.length);
         genVertexArrays(arrays.length, seg);
         RuntimeHelper.toArray(seg, arrays);
     }
@@ -560,8 +560,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getBooleani_v(SegmentAllocator session, int target, int index, boolean[] data) {
-        var seg = session.allocateArray(JAVA_BOOLEAN, data.length);
+    public static void getBooleani_v(SegmentAllocator allocator, int target, int index, boolean[] data) {
+        var seg = allocator.allocateArray(JAVA_BOOLEAN, data.length);
         getBooleani_v(target, index, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -586,8 +586,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static int getFragDataLocation(SegmentAllocator session, int program, String name) {
-        return getFragDataLocation(program, session.allocateUtf8String(name));
+    public static int getFragDataLocation(SegmentAllocator allocator, int program, String name) {
+        return getFragDataLocation(program, allocator.allocateUtf8String(name));
     }
 
     public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, Addressable params) {
@@ -618,8 +618,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getIntegeri_v(SegmentAllocator session, int target, int index, int[] data) {
-        var seg = session.allocateArray(JAVA_INT, data.length);
+    public static void getIntegeri_v(SegmentAllocator allocator, int target, int index, int[] data) {
+        var seg = allocator.allocateArray(JAVA_INT, data.length);
         getIntegeri_v(target, index, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -690,8 +690,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getTexParameterIiv(SegmentAllocator session, int target, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getTexParameterIiv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getTexParameterIiv(target, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -716,8 +716,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getTexParameterIuiv(SegmentAllocator session, int target, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getTexParameterIuiv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getTexParameterIuiv(target, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -742,11 +742,11 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getTransformFeedbackVarying(SegmentAllocator session, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
-        var pLen = length != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
-        var pSz = session.allocate(JAVA_INT);
-        var pType = session.allocate(JAVA_INT);
-        var pName = session.allocateArray(JAVA_BYTE, bufSize);
+    public static void getTransformFeedbackVarying(SegmentAllocator allocator, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pSz = allocator.allocate(JAVA_INT);
+        var pType = allocator.allocate(JAVA_INT);
+        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
         if (length != null && length.length > 0) {
             length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
@@ -764,8 +764,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getUniformuiv(SegmentAllocator session, int program, int location, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getUniformuiv(SegmentAllocator allocator, int program, int location, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getUniformuiv(program, location, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -790,8 +790,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getVertexAttribIiv(SegmentAllocator session, int index, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getVertexAttribIiv(SegmentAllocator allocator, int index, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getVertexAttribIiv(index, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -816,8 +816,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getVertexAttribIuiv(SegmentAllocator session, int index, int pname, int[] params) {
-        var seg = session.allocateArray(JAVA_INT, params.length);
+    public static void getVertexAttribIuiv(SegmentAllocator allocator, int index, int pname, int[] params) {
+        var seg = allocator.allocateArray(JAVA_INT, params.length);
         getVertexAttribIuiv(index, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -898,8 +898,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void texParameterIiv(SegmentAllocator session, int target, int pname, int[] params) {
-        texParameterIiv(target, pname, session.allocateArray(JAVA_INT, params));
+    public static void texParameterIiv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        texParameterIiv(target, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void texParameterIuiv(int target, int pname, Addressable params) {
@@ -910,8 +910,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void texParameterIuiv(SegmentAllocator session, int target, int pname, int[] params) {
-        texParameterIuiv(target, pname, session.allocateArray(JAVA_INT, params));
+    public static void texParameterIuiv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        texParameterIuiv(target, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void transformFeedbackVaryings(int program, int count, Addressable varyings, int bufferMode) {
@@ -922,10 +922,10 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void transformFeedbackVaryings(SegmentAllocator session, int program, String[] varyings, int bufferMode) {
-        var seg = session.allocateArray(ADDRESS, varyings.length);
+    public static void transformFeedbackVaryings(SegmentAllocator allocator, int program, String[] varyings, int bufferMode) {
+        var seg = allocator.allocateArray(ADDRESS, varyings.length);
         for (int i = 0; i < varyings.length; i++) {
-            seg.setAtIndex(ADDRESS, i, session.allocateUtf8String(varyings[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateUtf8String(varyings[i]));
         }
         transformFeedbackVaryings(program, varyings.length, seg, bufferMode);
     }
@@ -946,8 +946,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform1uiv(SegmentAllocator session, int location, int[] value) {
-        uniform1uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+    public static void uniform1uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform1uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform2ui(int location, int v0, int v1) {
@@ -966,8 +966,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform2uiv(SegmentAllocator session, int location, int[] value) {
-        uniform2uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+    public static void uniform2uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform2uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform3ui(int location, int v0, int v1, int v2) {
@@ -986,8 +986,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform3uiv(SegmentAllocator session, int location, int[] value) {
-        uniform3uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+    public static void uniform3uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform3uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
@@ -1006,8 +1006,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform4uiv(SegmentAllocator session, int location, int[] value) {
-        uniform4uiv(location, value.length, session.allocateArray(JAVA_INT, value));
+    public static void uniform4uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform4uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribI1i(int index, int x) {
@@ -1026,8 +1026,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI1iv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI1iv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI1iv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI1iv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI1ui(int index, int x) {
@@ -1046,8 +1046,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI1uiv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI1uiv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI1uiv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI1uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI2i(int index, int x, int y) {
@@ -1066,8 +1066,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI2iv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI2iv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI2iv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI2iv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI2ui(int index, int x, int y) {
@@ -1086,8 +1086,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI2uiv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI2uiv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI2uiv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI2uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI3i(int index, int x, int y, int z) {
@@ -1106,8 +1106,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI3iv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI3iv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI3iv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI3iv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI3ui(int index, int x, int y, int z) {
@@ -1126,8 +1126,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI3uiv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI3uiv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI3uiv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI3uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI4bv(int index, Addressable v) {
@@ -1138,8 +1138,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4bv(SegmentAllocator session, int index, byte[] v) {
-        vertexAttribI4bv(index, session.allocateArray(JAVA_BYTE, v));
+    public static void vertexAttribI4bv(SegmentAllocator allocator, int index, byte[] v) {
+        vertexAttribI4bv(index, allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void vertexAttribI4i(int index, int x, int y, int z, int w) {
@@ -1158,8 +1158,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4iv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI4iv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI4iv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI4iv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI4sv(int index, Addressable v) {
@@ -1170,8 +1170,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4sv(SegmentAllocator session, int index, short[] v) {
-        vertexAttribI4sv(index, session.allocateArray(JAVA_SHORT, v));
+    public static void vertexAttribI4sv(SegmentAllocator allocator, int index, short[] v) {
+        vertexAttribI4sv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void vertexAttribI4ubv(int index, Addressable v) {
@@ -1182,8 +1182,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4ubv(SegmentAllocator session, int index, byte[] v) {
-        vertexAttribI4ubv(index, session.allocateArray(JAVA_BYTE, v));
+    public static void vertexAttribI4ubv(SegmentAllocator allocator, int index, byte[] v) {
+        vertexAttribI4ubv(index, allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void vertexAttribI4ui(int index, int x, int y, int z, int w) {
@@ -1202,8 +1202,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4uiv(SegmentAllocator session, int index, int[] v) {
-        vertexAttribI4uiv(index, session.allocateArray(JAVA_INT, v));
+    public static void vertexAttribI4uiv(SegmentAllocator allocator, int index, int[] v) {
+        vertexAttribI4uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertexAttribI4usv(int index, Addressable v) {
@@ -1214,8 +1214,8 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4usv(SegmentAllocator session, int index, short[] v) {
-        vertexAttribI4usv(index, session.allocateArray(JAVA_SHORT, v));
+    public static void vertexAttribI4usv(SegmentAllocator allocator, int index, short[] v) {
+        vertexAttribI4usv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void vertexAttribIPointer(int index, int size, int type, int stride, Addressable pointer) {
@@ -1226,15 +1226,15 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribIPointer(SegmentAllocator session, int index, int size, int type, int stride, byte[] pointer) {
-        vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
+    public static void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, byte[] pointer) {
+        vertexAttribIPointer(index, size, type, stride, allocator.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void vertexAttribIPointer(SegmentAllocator session, int index, int size, int type, int stride, short[] pointer) {
-        vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
+    public static void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, short[] pointer) {
+        vertexAttribIPointer(index, size, type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void vertexAttribIPointer(SegmentAllocator session, int index, int size, int type, int stride, int[] pointer) {
-        vertexAttribIPointer(index, size, type, stride, session.allocateArray(JAVA_INT, pointer));
+    public static void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, int[] pointer) {
+        vertexAttribIPointer(index, size, type, stride, allocator.allocateArray(JAVA_INT, pointer));
     }
 }

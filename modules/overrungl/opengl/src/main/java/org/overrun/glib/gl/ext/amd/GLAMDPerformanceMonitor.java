@@ -54,7 +54,7 @@ public class GLAMDPerformanceMonitor {
         glSelectPerfMonitorCountersAMD;
 
     public static void load(GLLoadFunc load) {
-        if (!GLExtCaps.GL_AMD_performance_monitor) return;
+        if (GLExtCaps.Flags.GL_AMD_performance_monitor.no()) return;
         glBeginPerfMonitorAMD = load.invoke("glBeginPerfMonitorAMD", IV);
         glDeletePerfMonitorsAMD = load.invoke("glDeletePerfMonitorsAMD", IPV);
         glEndPerfMonitorAMD = load.invoke("glEndPerfMonitorAMD", IV);
@@ -84,8 +84,8 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glDeletePerfMonitorsAMD(SegmentAllocator session, int[] monitors) {
-        glDeletePerfMonitorsAMD(monitors.length, session.allocateArray(JAVA_INT, monitors));
+    public static void glDeletePerfMonitorsAMD(SegmentAllocator allocator, int[] monitors) {
+        glDeletePerfMonitorsAMD(monitors.length, allocator.allocateArray(JAVA_INT, monitors));
     }
 
     public static void glDeletePerfMonitorAMD(int monitor) {
@@ -116,8 +116,8 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGenPerfMonitorsAMD(SegmentAllocator session, int[] monitors) {
-        var seg = session.allocateArray(JAVA_INT, monitors.length);
+    public static void glGenPerfMonitorsAMD(SegmentAllocator allocator, int[] monitors) {
+        var seg = allocator.allocateArray(JAVA_INT, monitors.length);
         glGenPerfMonitorsAMD(monitors.length, seg);
         RuntimeHelper.toArray(seg, monitors);
     }
@@ -142,9 +142,9 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGetPerfMonitorCounterDataAMD(SegmentAllocator session, int monitor, int pname, int[] data, int @Nullable [] bytesWritten) {
-        var pData = session.allocateArray(JAVA_INT, data.length);
-        var pNum = bytesWritten != null ? session.allocateArray(JAVA_INT, bytesWritten.length) : MemoryAddress.NULL;
+    public static void glGetPerfMonitorCounterDataAMD(SegmentAllocator allocator, int monitor, int pname, int[] data, int @Nullable [] bytesWritten) {
+        var pData = allocator.allocateArray(JAVA_INT, data.length);
+        var pNum = bytesWritten != null ? allocator.allocateArray(JAVA_INT, bytesWritten.length) : MemoryAddress.NULL;
         glGetPerfMonitorCounterDataAMD(monitor, pname, data.length, pData, pNum);
         RuntimeHelper.toArray(pData, data);
         if (bytesWritten != null && bytesWritten.length > 0) {
@@ -168,8 +168,8 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static String glGetPerfMonitorCounterStringAMD(SegmentAllocator session, int group, int counter, int bufSize) {
-        var seg = session.allocateArray(JAVA_BYTE, bufSize);
+    public static String glGetPerfMonitorCounterStringAMD(SegmentAllocator allocator, int group, int counter, int bufSize) {
+        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
         glGetPerfMonitorCounterStringAMD(group, counter, bufSize, MemoryAddress.NULL, seg);
         return seg.getUtf8String(0);
     }
@@ -182,15 +182,15 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGetPerfMonitorCountersAMD(SegmentAllocator session, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int counterSize, int @Nullable [] counters) {
-        var pNum = numCounters != null ? session.allocateArray(JAVA_INT, numCounters.length) : MemoryAddress.NULL;
-        var pMax = maxActiveCounters != null ? session.allocateArray(JAVA_INT, maxActiveCounters.length) : MemoryAddress.NULL;
-        var pc = counters != null ? session.allocateArray(JAVA_INT, counters.length) : MemoryAddress.NULL;
+    public static void glGetPerfMonitorCountersAMD(SegmentAllocator allocator, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int counterSize, int @Nullable [] counters) {
+        var pNum = numCounters != null ? allocator.allocateArray(JAVA_INT, numCounters.length) : MemoryAddress.NULL;
+        var pMax = maxActiveCounters != null ? allocator.allocateArray(JAVA_INT, maxActiveCounters.length) : MemoryAddress.NULL;
+        var pc = counters != null ? allocator.allocateArray(JAVA_INT, counters.length) : MemoryAddress.NULL;
         glGetPerfMonitorCountersAMD(group, pNum, pMax, counters != null ? counters.length : counterSize, pc);
     }
 
-    public static void glGetPerfMonitorCountersAMD(SegmentAllocator session, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int @NotNull [] counters) {
-        glGetPerfMonitorCountersAMD(session, group, numCounters, maxActiveCounters, counters.length, counters);
+    public static void glGetPerfMonitorCountersAMD(SegmentAllocator allocator, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int @NotNull [] counters) {
+        glGetPerfMonitorCountersAMD(allocator, group, numCounters, maxActiveCounters, counters.length, counters);
     }
 
     public static void glGetPerfMonitorGroupStringAMD(int group, int bufSize, Addressable length, Addressable groupString) {
@@ -201,8 +201,8 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static String glGetPerfMonitorGroupStringAMD(SegmentAllocator session, int group, int bufSize) {
-        var seg = session.allocateArray(JAVA_BYTE, bufSize);
+    public static String glGetPerfMonitorGroupStringAMD(SegmentAllocator allocator, int group, int bufSize) {
+        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
         glGetPerfMonitorGroupStringAMD(group, bufSize, MemoryAddress.NULL, seg);
         return seg.getUtf8String(0);
     }
@@ -215,10 +215,10 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGetPerfMonitorGroupsAMD(SegmentAllocator session, int @Nullable [] numGroups, int @Nullable [] groups) {
-        var pn = numGroups != null ? session.allocate(JAVA_INT) : MemoryAddress.NULL;
+    public static void glGetPerfMonitorGroupsAMD(SegmentAllocator allocator, int @Nullable [] numGroups, int @Nullable [] groups) {
+        var pn = numGroups != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
         final boolean hasGroups = groups != null;
-        var pg = groups != null ? session.allocateArray(JAVA_INT, groups.length) : MemoryAddress.NULL;
+        var pg = groups != null ? allocator.allocateArray(JAVA_INT, groups.length) : MemoryAddress.NULL;
         glGetPerfMonitorGroupsAMD(pn, groups != null ? groups.length : 0, pg);
         if (numGroups != null && numGroups.length > 0) {
             numGroups[0] = ((MemorySegment) pn).get(JAVA_INT, 0);
@@ -236,7 +236,7 @@ public class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glSelectPerfMonitorCountersAMD(SegmentAllocator session, int monitor, boolean enable, int group, int[] counterList) {
-        glSelectPerfMonitorCountersAMD(monitor, enable, group, counterList.length, session.allocateArray(JAVA_INT, counterList));
+    public static void glSelectPerfMonitorCountersAMD(SegmentAllocator allocator, int monitor, boolean enable, int group, int[] counterList) {
+        glSelectPerfMonitorCountersAMD(monitor, enable, group, counterList.length, allocator.allocateArray(JAVA_INT, counterList));
     }
 }

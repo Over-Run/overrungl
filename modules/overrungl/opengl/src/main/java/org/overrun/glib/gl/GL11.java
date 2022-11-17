@@ -76,10 +76,10 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static boolean areTexturesResident(SegmentAllocator session, int[] textures, boolean[] residences) {
+    public static boolean areTexturesResident(SegmentAllocator allocator, int[] textures, boolean[] residences) {
         final int n = textures.length;
-        var pTex = session.allocateArray(JAVA_INT, n);
-        var pRes = session.allocateArray(JAVA_BOOLEAN, n);
+        var pTex = allocator.allocateArray(JAVA_INT, n);
+        var pRes = allocator.allocateArray(JAVA_BOOLEAN, n);
         boolean b = areTexturesResident(n, pTex, pRes);
         for (int i = 0; i < n; i++) {
             textures[i] = pTex.getAtIndex(JAVA_INT, i);
@@ -104,24 +104,24 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, byte[] pointer) {
-        colorPointer(size, type, stride, session.allocateArray(JAVA_BYTE, pointer));
+    public static void colorPointer(SegmentAllocator allocator, int size, int type, int stride, byte[] pointer) {
+        colorPointer(size, type, stride, allocator.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
-        colorPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
+    public static void colorPointer(SegmentAllocator allocator, int size, int type, int stride, short[] pointer) {
+        colorPointer(size, type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
-        colorPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
+    public static void colorPointer(SegmentAllocator allocator, int size, int type, int stride, int[] pointer) {
+        colorPointer(size, type, stride, allocator.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
-        colorPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
+    public static void colorPointer(SegmentAllocator allocator, int size, int type, int stride, float[] pointer) {
+        colorPointer(size, type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void colorPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
-        colorPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
+    public static void colorPointer(SegmentAllocator allocator, int size, int type, int stride, double[] pointer) {
+        colorPointer(size, type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void disableClientState(int array) {
@@ -156,24 +156,24 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void indexPointer(SegmentAllocator session, int type, int stride, byte[] pointer) {
-        indexPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
+    public static void indexPointer(SegmentAllocator allocator, int type, int stride, byte[] pointer) {
+        indexPointer(type, stride, allocator.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void indexPointer(SegmentAllocator session, int type, int stride, short[] pointer) {
-        indexPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
+    public static void indexPointer(SegmentAllocator allocator, int type, int stride, short[] pointer) {
+        indexPointer(type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void indexPointer(SegmentAllocator session, int type, int stride, int[] pointer) {
-        indexPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
+    public static void indexPointer(SegmentAllocator allocator, int type, int stride, int[] pointer) {
+        indexPointer(type, stride, allocator.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void indexPointer(SegmentAllocator session, int type, int stride, float[] pointer) {
-        indexPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
+    public static void indexPointer(SegmentAllocator allocator, int type, int stride, float[] pointer) {
+        indexPointer(type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void indexPointer(SegmentAllocator session, int type, int stride, double[] pointer) {
-        indexPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
+    public static void indexPointer(SegmentAllocator allocator, int type, int stride, double[] pointer) {
+        indexPointer(type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void indexub(byte c) {
@@ -192,8 +192,8 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void indexubv(SegmentAllocator session, byte[] c) {
-        var pc = session.allocateArray(JAVA_BYTE, c);
+    public static void indexubv(SegmentAllocator allocator, byte[] c) {
+        var pc = allocator.allocateArray(JAVA_BYTE, c);
         indexubv(pc);
     }
 
@@ -205,8 +205,8 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void interleavedArrays(SegmentAllocator session, int format, int stride, float[] pointer) {
-        var pp = session.allocateArray(JAVA_FLOAT, pointer);
+    public static void interleavedArrays(SegmentAllocator allocator, int format, int stride, float[] pointer) {
+        var pp = allocator.allocateArray(JAVA_FLOAT, pointer);
         interleavedArrays(format, stride, pp);
     }
 
@@ -218,24 +218,24 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void normalPointer(SegmentAllocator session, int type, int stride, byte[] pointer) {
-        normalPointer(type, stride, session.allocateArray(JAVA_BYTE, pointer));
+    public static void normalPointer(SegmentAllocator allocator, int type, int stride, byte[] pointer) {
+        normalPointer(type, stride, allocator.allocateArray(JAVA_BYTE, pointer));
     }
 
-    public static void normalPointer(SegmentAllocator session, int type, int stride, short[] pointer) {
-        normalPointer(type, stride, session.allocateArray(JAVA_SHORT, pointer));
+    public static void normalPointer(SegmentAllocator allocator, int type, int stride, short[] pointer) {
+        normalPointer(type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void normalPointer(SegmentAllocator session, int type, int stride, int[] pointer) {
-        normalPointer(type, stride, session.allocateArray(JAVA_INT, pointer));
+    public static void normalPointer(SegmentAllocator allocator, int type, int stride, int[] pointer) {
+        normalPointer(type, stride, allocator.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void normalPointer(SegmentAllocator session, int type, int stride, float[] pointer) {
-        normalPointer(type, stride, session.allocateArray(JAVA_FLOAT, pointer));
+    public static void normalPointer(SegmentAllocator allocator, int type, int stride, float[] pointer) {
+        normalPointer(type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void normalPointer(SegmentAllocator session, int type, int stride, double[] pointer) {
-        normalPointer(type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
+    public static void normalPointer(SegmentAllocator allocator, int type, int stride, double[] pointer) {
+        normalPointer(type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void popClientAttrib() {
@@ -254,10 +254,10 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void prioritizeTextures(SegmentAllocator session, int[] textures, float[] priorities) {
+    public static void prioritizeTextures(SegmentAllocator allocator, int[] textures, float[] priorities) {
         final int n = textures.length;
-        var pTex = session.allocateArray(JAVA_INT, n);
-        var pPri = session.allocateArray(JAVA_FLOAT, n);
+        var pTex = allocator.allocateArray(JAVA_INT, n);
+        var pPri = allocator.allocateArray(JAVA_FLOAT, n);
         for (int i = 0; i < n; i++) {
             pTex.setAtIndex(JAVA_INT, i, textures[i]);
             pPri.setAtIndex(JAVA_FLOAT, i, priorities[i]);
@@ -281,20 +281,20 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
-        texCoordPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
+    public static void texCoordPointer(SegmentAllocator allocator, int size, int type, int stride, short[] pointer) {
+        texCoordPointer(size, type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
-        texCoordPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
+    public static void texCoordPointer(SegmentAllocator allocator, int size, int type, int stride, int[] pointer) {
+        texCoordPointer(size, type, stride, allocator.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
-        texCoordPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
+    public static void texCoordPointer(SegmentAllocator allocator, int size, int type, int stride, float[] pointer) {
+        texCoordPointer(size, type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void texCoordPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
-        texCoordPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
+    public static void texCoordPointer(SegmentAllocator allocator, int size, int type, int stride, double[] pointer) {
+        texCoordPointer(size, type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
     }
 
     public static void vertexPointer(int size, int type, int stride, Addressable pointer) {
@@ -305,19 +305,19 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, short[] pointer) {
-        vertexPointer(size, type, stride, session.allocateArray(JAVA_SHORT, pointer));
+    public static void vertexPointer(SegmentAllocator allocator, int size, int type, int stride, short[] pointer) {
+        vertexPointer(size, type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
     }
 
-    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, int[] pointer) {
-        vertexPointer(size, type, stride, session.allocateArray(JAVA_INT, pointer));
+    public static void vertexPointer(SegmentAllocator allocator, int size, int type, int stride, int[] pointer) {
+        vertexPointer(size, type, stride, allocator.allocateArray(JAVA_INT, pointer));
     }
 
-    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, float[] pointer) {
-        vertexPointer(size, type, stride, session.allocateArray(JAVA_FLOAT, pointer));
+    public static void vertexPointer(SegmentAllocator allocator, int size, int type, int stride, float[] pointer) {
+        vertexPointer(size, type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
     }
 
-    public static void vertexPointer(SegmentAllocator session, int size, int type, int stride, double[] pointer) {
-        vertexPointer(size, type, stride, session.allocateArray(JAVA_DOUBLE, pointer));
+    public static void vertexPointer(SegmentAllocator allocator, int size, int type, int stride, double[] pointer) {
+        vertexPointer(size, type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
     }
 }

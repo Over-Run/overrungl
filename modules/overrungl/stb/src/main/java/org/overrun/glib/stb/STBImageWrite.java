@@ -170,24 +170,24 @@ public class STBImageWrite {
         }
     }
 
-    public static boolean png(SegmentAllocator session, String filename, int w, int h, int comp, Addressable data, int strideInBytes) {
-        return npng(session.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
+    public static boolean png(SegmentAllocator allocator, String filename, int w, int h, int comp, Addressable data, int strideInBytes) {
+        return npng(allocator.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmp(SegmentAllocator session, String filename, int w, int h, int comp, Addressable data) {
-        return nbmp(session.allocateUtf8String(filename), w, h, comp, data);
+    public static boolean bmp(SegmentAllocator allocator, String filename, int w, int h, int comp, Addressable data) {
+        return nbmp(allocator.allocateUtf8String(filename), w, h, comp, data);
     }
 
-    public static boolean tga(SegmentAllocator session, String filename, int w, int h, int comp, Addressable data) {
-        return ntga(session.allocateUtf8String(filename), w, h, comp, data);
+    public static boolean tga(SegmentAllocator allocator, String filename, int w, int h, int comp, Addressable data) {
+        return ntga(allocator.allocateUtf8String(filename), w, h, comp, data);
     }
 
-    public static boolean hdr(SegmentAllocator session, String filename, int w, int h, int comp, float[] data) {
-        return nhdr(session.allocateUtf8String(filename), w, h, comp, session.allocateArray(JAVA_FLOAT, data));
+    public static boolean hdr(SegmentAllocator allocator, String filename, int w, int h, int comp, float[] data) {
+        return nhdr(allocator.allocateUtf8String(filename), w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpg(SegmentAllocator session, String filename, int x, int y, int comp, Addressable data, int quality) {
-        return njpg(session.allocateUtf8String(filename), x, y, comp, data, quality);
+    public static boolean jpg(SegmentAllocator allocator, String filename, int x, int y, int comp, Addressable data, int quality) {
+        return njpg(allocator.allocateUtf8String(filename), x, y, comp, data, quality);
     }
 
     public static boolean npngToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
@@ -266,9 +266,9 @@ public class STBImageWrite {
         }
     }
 
-    public static byte[] pngToMem(SegmentAllocator session, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
-        var pl = session.allocate(JAVA_INT);
-        var p = pngToMem(session.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
+    public static byte[] pngToMem(SegmentAllocator allocator, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
+        var pl = allocator.allocate(JAVA_INT);
+        var p = pngToMem(allocator.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);
@@ -282,9 +282,9 @@ public class STBImageWrite {
         }
     }
 
-    public static byte[] zlibCompress(SegmentAllocator session, byte[] data, int[] outLen, int quality) {
-        var pl = session.allocate(JAVA_INT);
-        var p = zlibCompress(session.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
+    public static byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int[] outLen, int quality) {
+        var pl = allocator.allocate(JAVA_INT);
+        var p = zlibCompress(allocator.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);
