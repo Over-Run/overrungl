@@ -34,7 +34,7 @@ package org.overrun.glib.util.value;
  * @author squid233
  * @since 0.1.0
  */
-public record Value2<T, U>(T x, U y) {
+public /* value */ record Value2<T, U>(T x, U y) {
     /**
      * A value object with 2 integers.
      *
