@@ -7,7 +7,7 @@ group = projGroupId
 version = projVersion
 
 project(":core").ext.subName = ''
-for (String p : ['glfw', 'opengl', 'stb',
+for (String p : ['glfw', 'joml', 'opengl', 'stb',
                  'samples']) {
     project(":$p").ext.subName = "-$p"
 }
@@ -92,13 +92,16 @@ enum NativeBinding {
 enum Artifact {
     CORE("overrungl", "OverrunGL",
         "The OverrunGL core library.",
-        ":core", "Core", null),
+        ":core", "Core"),
     GLFW("overrungl-glfw", "OverrunGL - GLFW bindings",
         "A multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.",
         ":glfw", "Glfw", NativeBinding.GLFW),
+    JOML('overrungl-joml', 'OverrunGL - JOML native access',
+        'A Java math library for OpenGL rendering calculations',
+        ':joml', 'Joml'),
     OPENGL("overrungl-opengl", "OverrunGL - OpenGL bindings",
         "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
-        ":opengl", "Opengl", null),
+        ":opengl", "Opengl"),
     STB("overrungl-stb", "OverrunGL - stb bindings",
         "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
         ":stb", "Stb", NativeBinding.STB),
@@ -114,7 +117,7 @@ enum Artifact {
     private final NativeBinding nativeBinding
 
     Artifact(String artifactName, String projectName, String projectDescription,
-             String subprojectName, String mavenName, NativeBinding nativeBinding) {
+             String subprojectName, String mavenName, NativeBinding nativeBinding = null) {
         this.artifactName = artifactName
         this.projectName = projectName
         this.projectDescription = projectDescription
@@ -229,7 +232,7 @@ subprojects {
         options.encoding 'UTF-8'
         options.charSet 'UTF-8'
         options.author true
-        options.locale 'en-US'
+        options.locale 'en_US'
         options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
         options.windowTitle "OverrunGL $projVersion Javadoc"
     }
@@ -249,7 +252,7 @@ void setupPom(MavenPom pom, String pomName, String pomDescription, String pomPac
     pom.packaging = pomPackaging
     pom.licenses {
         license {
-            name.set 'The MIT License'
+            name.set 'MIT'
             url.set "https://raw.githubusercontent.com/$projVcs/$projBranch/LICENSE"
         }
     }
@@ -269,9 +272,9 @@ void setupPom(MavenPom pom, String pomName, String pomDescription, String pomPac
         }
     }
     pom.scm {
-        connection.set "https://github.com/${projVcs}.git"
-        developerConnection.set "https://github.com/${projVcs}.git"
-        url.set "https://github.com/$projVcs"
+        connection.set "scm:git:https://github.com/${projVcs}.git"
+        developerConnection.set "scm:git:https://github.com/${projVcs}.git"
+        url.set "https://github.com/${projVcs}.git"
     }
 }
 

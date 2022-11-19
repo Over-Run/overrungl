@@ -52,8 +52,8 @@ public final class BufferBuilderTest {
         try (var session = MemorySession.openShared()) {
             init(session);
             load(session);
-            loop();
         }
+        loop();
 
         GL.deleteProgram(program);
         GL.deleteVertexArray(vao);

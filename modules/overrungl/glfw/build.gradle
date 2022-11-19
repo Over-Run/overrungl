@@ -1,12 +1,12 @@
 tasks.withType(Javadoc).configureEach {
     if (options instanceof StandardJavadocDocletOptions) {
-        options.tags += 'errors:m:Errors:'
-        options.tags += 'remark:m:Remarks:'
-        options.tags += 'thread_safety:m:Thread safety:'
-        options.tags += 'warning:m:Warning:'
-        options.tags += 'reentrancy:m:Reentrancy:'
-        options.tags += 'pointer_lifetime:m:Pointer lifetime:'
-        options.tags += 'callback_signature:m:Callback signature:'
-        options.tags += 'note:m:Note:'
+        options.tags += 'glfw.errors:m:Errors:'
+        options.tags += 'glfw.remark:m:Remarks:'
+        options.tags += 'glfw.thread_safety:m:"Thread safety:"'
+        options.tags += 'glfw.warning:m:Warning:'
+        options.tags += 'glfw.reentrancy:m:Reentrancy:'
+        options.tags += 'glfw.pointer_lifetime:m:"Pointer lifetime:"'
+        options.tags += 'glfw.callback_signature:m:"Callback signature:"'
+        options.tags += 'glfw.note:m:Note:'
     }
 }

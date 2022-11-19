@@ -75,11 +75,11 @@ public class GLFWVulkan {
      *  @param procName The ASCII encoded name of the function.
      *  @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
      *  <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     *  @errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
+     *  @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
      *  {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}.
-     *  @pointer_lifetime The returned function pointer is valid until the library
+     *  @glfw.pointer_lifetime The returned function pointer is valid until the library
      *  is terminated.
-     *  @thread_safety This function may be called from any thread.
+     *  @glfw.thread_safety This function may be called from any thread.
      */
     public static MemoryAddress nglfwGetInstanceProcAddress(Addressable instance, Addressable procName) {
         try {
@@ -123,12 +123,12 @@ public class GLFWVulkan {
      * @param queueFamily The index of the queue family to query.
      * @return {@code true} if the queue family supports presentation, or
      * {@code false} otherwise.
-     * @errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED},
      * {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE} and {@link GLFW#PLATFORM_ERROR PLATFORM_ERROR}.
-     * @remark <b>macOS:</b> This function currently always returns {@code true}, as the
+     * @glfw.remark <b>macOS:</b> This function currently always returns {@code true}, as the
      * {@code VK_MVK_macos_surface} and {@code VK_EXT_metal_surface} extensions do not provide
      * a {@code vkGetPhysicalDevice*PresentationSupport} type function.
-     * @thread_safety This function may be called from any thread.  For
+     * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
      */
     public static boolean glfwGetPhysicalDevicePresentationSupport(Addressable instance, Addressable device, int queueFamily) {
@@ -174,10 +174,10 @@ public class GLFWVulkan {
      *                  to {@code VK_NULL_HANDLE} if an error occurred.
      * @return {@code VK_SUCCESS} if successful, or a Vulkan error code if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED},
      * {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}, {@link GLFW#PLATFORM_ERROR PLATFORM_ERROR}
      * and {@link GLFW#INVALID_VALUE INVALID_VALUE}.
-     * @remark If an error occurs before the creation call is made, GLFW returns
+     * @glfw.remark If an error occurs before the creation call is made, GLFW returns
      * the Vulkan error code most appropriate for the error.  Appropriate use of
      * {@link GLFW#vulkanSupported() vulkanSupported} and
      * {@link GLFW#ngetRequiredInstanceExtensions(Addressable) getRequiredInstanceExtensions} should
@@ -190,7 +190,7 @@ public class GLFWVulkan {
      * <p>
      * <b>macOS:</b> This function creates and sets a {@code CAMetalLayer} instance for
      * the window content view, which is required for MoltenVK to function.
-     * @thread_safety This function may be called from any thread.  For
+     * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
      * @see GLFW#ngetRequiredInstanceExtensions(Addressable) getRequiredInstanceExtensions
      */

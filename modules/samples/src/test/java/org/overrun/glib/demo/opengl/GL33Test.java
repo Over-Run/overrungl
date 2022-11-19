@@ -24,18 +24,18 @@
 
 package org.overrun.glib.demo.opengl;
 
+import org.joml.Matrix4f;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLCaps;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
+import org.overrun.glib.joml.Matrixn;
 
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySession;
 
-import static java.lang.foreign.MemoryLayout.PathElement.sequenceElement;
-import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.gl.GLConstC.*;
 
 /**
@@ -45,12 +45,16 @@ import static org.overrun.glib.gl.GLConstC.*;
  * @since 0.1.0
  */
 public class GL33Test {
-    private static final int INSTANCE_COUNT = 10 * 10;
+    private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
     private MemoryAddress window;
     private int program;
     private int rotationMat;
     private int vao, vbo, ebo, mbo;
+
+    private static int square(int x) {
+        return x * x;
+    }
 
     public void run() {
         try (var session = MemorySession.openShared()) {
@@ -177,18 +181,11 @@ public class GL33Test {
         GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12));
         mbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
+        var mat = new Matrix4f();
         var iseq = MemoryLayout.sequenceLayout(
             INSTANCE_COUNT,
-            MemoryLayout.sequenceLayout(4 * 4, JAVA_FLOAT)
+            Matrixn.MAT4F
         );
-        //region Var handles
-        var handle00 = iseq.varHandle(sequenceElement(), sequenceElement(0));
-        var handle11 = iseq.varHandle(sequenceElement(), sequenceElement(5));
-        var handle22 = iseq.varHandle(sequenceElement(), sequenceElement(10));
-        var handle30 = iseq.varHandle(sequenceElement(), sequenceElement(12));
-        var handle31 = iseq.varHandle(sequenceElement(), sequenceElement(13));
-        var handle33 = iseq.varHandle(sequenceElement(), sequenceElement(15));
-        //endregion
         var matrices = session.allocate(iseq);
         float mul = (float) Math.sqrt(INSTANCE_COUNT);
         float scaling = 1f / mul;
@@ -202,12 +199,10 @@ public class GL33Test {
             }
         }
         for (int i = 0; i < INSTANCE_COUNT; i++) {
-            handle00.set(matrices, i, scaling);
-            handle11.set(matrices, i, scaling);
-            handle22.set(matrices, i, 1.0f);
-            handle30.set(matrices, i, translations[i * 2]);
-            handle31.set(matrices, i, translations[i * 2 + 1]);
-            handle33.set(matrices, i, 1.0f);
+            Matrixn.put(mat.translation(translations[i * 2], translations[i * 2 + 1], 1.0f)
+                    .scale(scaling, scaling, 1.0f),
+                i * Matrixn.MAT4F.byteSize(),
+                matrices);
         }
         GL.bufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(2);
@@ -227,12 +222,8 @@ public class GL33Test {
     }
 
     private void loop() {
-        var pRotationMat = MemorySession.openImplicit().allocateArray(JAVA_FLOAT,
-            1f, 0f, 0f, 0f,
-            0f, 1f, 0f, 0f,
-            0f, 0f, 1f, 0f,
-            0f, 0f, 0f, 1f
-        );
+        var matrix = new Matrix4f();
+        var pRotationMat = Matrixn.allocate(MemorySession.openImplicit(), matrix);
 
         double lastTime;
         double time;
@@ -246,23 +237,8 @@ public class GL33Test {
             // Draw triangle
             GL.useProgram(program);
 
-            double rotXY = dt;
-            //region Rotation matrix
-            float sin = (float) Math.sin(rotXY);
-            float cos = (float) Math.cos(rotXY);
-            float nm00 = pRotationMat.get(JAVA_FLOAT, 0) * cos + pRotationMat.get(JAVA_FLOAT, 16) * sin;
-            float nm01 = pRotationMat.get(JAVA_FLOAT, 4) * cos + pRotationMat.get(JAVA_FLOAT, 20) * sin;
-            float nm02 = pRotationMat.get(JAVA_FLOAT, 8) * cos + pRotationMat.get(JAVA_FLOAT, 24) * sin;
-            float nm03 = pRotationMat.get(JAVA_FLOAT, 12) * cos + pRotationMat.get(JAVA_FLOAT, 28) * sin;
-            pRotationMat.set(JAVA_FLOAT, 16, pRotationMat.get(JAVA_FLOAT, 0) * -sin + pRotationMat.get(JAVA_FLOAT, 16) * cos);
-            pRotationMat.set(JAVA_FLOAT, 20, pRotationMat.get(JAVA_FLOAT, 4) * -sin + pRotationMat.get(JAVA_FLOAT, 20) * cos);
-            pRotationMat.set(JAVA_FLOAT, 24, pRotationMat.get(JAVA_FLOAT, 8) * -sin + pRotationMat.get(JAVA_FLOAT, 24) * cos);
-            pRotationMat.set(JAVA_FLOAT, 28, pRotationMat.get(JAVA_FLOAT, 12) * -sin + pRotationMat.get(JAVA_FLOAT, 28) * cos);
-            pRotationMat.set(JAVA_FLOAT, 0, nm00);
-            pRotationMat.set(JAVA_FLOAT, 4, nm01);
-            pRotationMat.set(JAVA_FLOAT, 8, nm02);
-            pRotationMat.set(JAVA_FLOAT, 12, nm03);
-            //endregion
+            matrix.rotateZ((float) dt);
+            Matrixn.put(matrix, pRotationMat);
 
             GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
             GL.bindVertexArray(vao);

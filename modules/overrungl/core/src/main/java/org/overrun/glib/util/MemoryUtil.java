@@ -56,6 +56,13 @@ public final class MemoryUtil {
     }
 
     /**
+     * constructor
+     */
+    private MemoryUtil() {
+        throw new IllegalStateException("Do not construct instance");
+    }
+
+    /**
      * Allocates memory blocks.
      * <p>
      * The {@code malloc} function allocates a memory block of at least <i>{@code size}</i> bytes. The block may be

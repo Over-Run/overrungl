@@ -8,3 +8,4 @@ Added
 - STB Image
 - C memory function
 - Vertex buffer builder
+- Native memory access for JOML

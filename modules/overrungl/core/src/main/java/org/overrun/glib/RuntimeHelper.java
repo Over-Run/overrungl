@@ -57,6 +57,13 @@ public final class RuntimeHelper {
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 
     /**
+     * constructor
+     */
+    private RuntimeHelper() {
+        throw new IllegalStateException("Do not construct instance");
+    }
+
+    /**
      * Sets the API logger.
      *
      * @param logger the logger. pass {@code null} to reset to the default logger
@@ -191,8 +198,10 @@ public final class RuntimeHelper {
     /**
      * Gets the objects from an address array.
      *
-     * @param addr the memory address contains objects. native type: {@code void**}
-     * @param arr  the array to hold the result
+     * @param <T>       the array type
+     * @param addr      the memory address contains objects. native type: {@code void**}
+     * @param arr       the array to hold the result
+     * @param generator the generator, to convert to the array type
      * @return arr
      */
     public static <T> T[] toArray(Addressable addr, T[] arr,

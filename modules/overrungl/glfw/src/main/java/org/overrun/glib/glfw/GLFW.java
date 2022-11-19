@@ -903,8 +903,8 @@ public class GLFW {
      *
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #PLATFORM_ERROR}.
-     * @remark <b>macOS:</b> This function will change the current directory of the
+     * @glfw.errors Possible errors include {@link #PLATFORM_ERROR}.
+     * @glfw.remark <b>macOS:</b> This function will change the current directory of the
      * application to the {@code Contents/Resources} subdirectory of the application's
      * bundle, if present.  This can be disabled with the
      * {@link #COCOA_CHDIR_RESOURCES} init hint.<br>
@@ -912,7 +912,7 @@ public class GLFW {
      * <b>X11:</b> This function will set the {@code LC_CTYPE} category of the
      * application locale according to the current environment if that category is
      * still "C".  This is because the "C" locale breaks Unicode text input.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #terminate
      */
     public static boolean init() {
@@ -938,12 +938,12 @@ public class GLFW {
      * <p>
      * This function has no effect if GLFW is not initialized.
      *
-     * @errors Possible errors include {@link #PLATFORM_ERROR}.
-     * @remark This function may be called before {@link #init}.
-     * @warning The contexts of any remaining windows must not be current on any
+     * @glfw.errors Possible errors include {@link #PLATFORM_ERROR}.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.warning The contexts of any remaining windows must not be current on any
      * other thread when this function is called.
-     * @reentrancy This function must not be called from a callback.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.reentrancy This function must not be called from a callback.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #init
      */
     public static void terminate() {
@@ -969,9 +969,9 @@ public class GLFW {
      *
      * @param hint  The <a href="https://www.glfw.org/docs/latest/intro_guide.html#init_hints">init hint</a> to set.
      * @param value The new value of the init hint.
-     * @errors Possible errors include {@link #INVALID_ENUM} and {@link #INVALID_VALUE}.
-     * @remark This function may be called before {@link #init}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #INVALID_ENUM} and {@link #INVALID_VALUE}.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #init() init
      */
     public static void initHint(int hint, int value) {
@@ -994,9 +994,9 @@ public class GLFW {
      * @param major Where to store the major version number, or {@link MemoryAddress#NULL NULL}.
      * @param minor Where to store the minor version number, or {@link MemoryAddress#NULL NULL}.
      * @param rev   Where to store the revision number, or {@link MemoryAddress#NULL NULL}.
-     * @errors None.
-     * @remark This function may be called before {@link #init}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.errors None.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetVersionString() getVersionString
      */
     public static void ngetVersion(Addressable major, Addressable minor, Addressable rev) {
@@ -1073,9 +1073,9 @@ public class GLFW {
      * binary in numerical format.
      *
      * @return The ASCII encoded GLFW version string.
-     * @errors None.
-     * @remark This function may be called before {@link #init}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.errors None.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetVersion(Addressable, Addressable, Addressable) getVersion
      */
     public static MemoryAddress ngetVersionString() {
@@ -1107,12 +1107,12 @@ public class GLFW {
      *
      * @param description Where to store the error description pointer, or {@link MemoryAddress#NULL NULL}.
      * @return The last error code for the calling thread, or {@link #NO_ERROR} (zero).
-     * @errors None.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.errors None.
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is guaranteed to be valid only until the
      * next error occurs or the library is terminated.
-     * @remark This function may be called before {@link #init}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #nsetErrorCallback(Addressable) setErrorCallback
      */
     public static int ngetError(Addressable description) {
@@ -1177,9 +1177,9 @@ public class GLFW {
      *
      * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set.
-     * @errors None.
-     * @remark This function may be called before {@link #init}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors None.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetError(Addressable) getError
      */
     public static MemoryAddress nsetErrorCallback(Addressable callback) {
@@ -1212,11 +1212,11 @@ public class GLFW {
      *              This is set to zero if an error occurred.
      * @return An array of monitor handles, or {@link MemoryAddress#NULL NULL} if no monitors were found or
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      * should not free it yourself.  It is guaranteed to be valid only until the
      * monitor configuration changes or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getPrimaryMonitor() getPrimaryMonitor
      */
     public static MemoryAddress ngetMonitors(Addressable count) {
@@ -1257,9 +1257,9 @@ public class GLFW {
      *
      * @return The primary monitor, or {@link MemoryAddress#NULL NULL} if no monitors were found or if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
-     * @remark The primary monitor is always first in the array returned by
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
+     * @glfw.remark The primary monitor is always first in the array returned by
      * {@link #ngetMonitors(Addressable) getMonitors}.
      * @see #ngetMonitors(Addressable) getMonitors
      */
@@ -1283,9 +1283,9 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @param xpos    Where to store the monitor x-coordinate, or {@link MemoryAddress#NULL NULL}.
      * @param ypos    Where to store the monitor y-coordinate, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void ngetMonitorPos(Addressable monitor, Addressable xpos, Addressable ypos) {
         try {
@@ -1359,9 +1359,9 @@ public class GLFW {
      * @param ypos    Where to store the monitor y-coordinate, or {@link MemoryAddress#NULL NULL}.
      * @param width   Where to store the monitor width, or {@link MemoryAddress#NULL NULL}.
      * @param height  Where to store the monitor height, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void ngetMonitorWorkarea(Addressable monitor, Addressable xpos, Addressable ypos, Addressable width, Addressable height) {
         try {
@@ -1451,10 +1451,10 @@ public class GLFW {
      *                 monitor's display area, or {@link MemoryAddress#NULL NULL}.
      * @param heightMM Where to store the height, in millimetres, of the
      *                 monitor's display area, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @remark <b>Windows:</b> On Windows 8 and earlier the physical size is calculated from
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.remark <b>Windows:</b> On Windows 8 and earlier the physical size is calculated from
      * the current resolution and system DPI instead of querying the monitor EDID data.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void ngetMonitorPhysicalSize(Addressable monitor, Addressable widthMM, Addressable heightMM) {
         try {
@@ -1530,9 +1530,9 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @param xscale  Where to store the x-axis content scale, or {@link MemoryAddress#NULL NULL}.
      * @param yscale  Where to store the y-axis content scale, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(Addressable, Addressable, Addressable) getWindowContentScale
      */
     public static void ngetMonitorContentScale(Addressable monitor, Addressable xscale, Addressable yscale) {
@@ -1599,11 +1599,11 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @return The UTF-8 encoded name of the monitor, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified monitor is
      * disconnected or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetMonitorName(Addressable monitor) {
         try {
@@ -1639,8 +1639,8 @@ public class GLFW {
      *
      * @param monitor The monitor whose pointer to set.
      * @param pointer The new value.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      * @see #getMonitorUserPointer(Addressable) getMonitorUserPointer
      */
@@ -1662,8 +1662,8 @@ public class GLFW {
      * that is being disconnected.
      *
      * @param monitor The monitor whose pointer to return.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      * @see #setMonitorUserPointer(Addressable, Addressable) setMonitorUserPointer
      */
@@ -1686,11 +1686,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWmonitor* monitor, int event)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWmonitor* monitor, int event)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWMonitorFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetMonitorCallback(Addressable callback) {
         try {
@@ -1727,13 +1727,13 @@ public class GLFW {
      *                array.  This is set to zero if an error occurred.
      * @return An array of video modes, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified monitor is
      * disconnected, this function is called again for that monitor or the library
      * is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetVideoMode(Addressable) getVideoMode
      */
     public static MemoryAddress ngetVideoModes(Addressable monitor, Addressable count) {
@@ -1778,12 +1778,12 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @return The current mode of the monitor, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified monitor is
      * disconnected or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetVideoModes(Addressable, Addressable) getVideoModes
      */
     public static MemoryAddress ngetVideoMode(Addressable monitor) {
@@ -1829,11 +1829,11 @@ public class GLFW {
      *
      * @param monitor The monitor whose gamma ramp to set.
      * @param gamma   The desired exponent.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
+     * @glfw.remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
      * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void setGamma(Addressable monitor, float gamma) {
         try {
@@ -1851,16 +1851,16 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @return The current gamma ramp, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
+     * @glfw.remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
      * will thus never be implemented and emits {@link #PLATFORM_ERROR} while
      * returning {@link MemoryAddress#NULL NULL}.
-     * @pointer_lifetime The returned structure and its arrays are allocated and
+     * @glfw.pointer_lifetime The returned structure and its arrays are allocated and
      * freed by GLFW.  You should not free them yourself.  They are valid until the
      * specified monitor is disconnected, this function is called again for that
      * monitor or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetGammaRamp(Addressable monitor) {
         try {
@@ -1902,18 +1902,18 @@ public class GLFW {
      *
      * @param monitor The monitor whose gamma ramp to set.
      * @param ramp    The gamma ramp to use.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark The size of the specified gamma ramp should match the size of the
+     * @glfw.remark The size of the specified gamma ramp should match the size of the
      * current ramp for that monitor.
      * <p>
      * <b>Windows:</b> The gamma ramp size must be 256.
      * <p>
      * <b>Wayland:</b> Gamma handling is a privileged protocol, this function
      * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The specified gamma ramp is copied before this function
+     * @glfw.pointer_lifetime The specified gamma ramp is copied before this function
      * returns.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void nsetGammaRamp(Addressable monitor, Addressable ramp) {
         try {
@@ -1940,8 +1940,8 @@ public class GLFW {
      * This function resets all window hints to their
      * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints_values">default values</a>.
      *
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #windowHint(int, int) windowHint
      * @see #nwindowHintString(int, Addressable) windowHintString
      */
@@ -1973,9 +1973,9 @@ public class GLFW {
      *
      * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
      * @param value The new value of the window hint.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nwindowHintString(int, Addressable) windowHintString
      * @see #defaultWindowHints
      */
@@ -2018,11 +2018,11 @@ public class GLFW {
      *
      * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
      * @param value The new value of the window hint.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @pointer_lifetime The specified string is copied before this function
+     * @glfw.pointer_lifetime The specified string is copied before this function
      * returns.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #windowHint(int, int) windowHint
      * @see #defaultWindowHints
      */
@@ -2116,11 +2116,11 @@ public class GLFW {
      *                to not share resources.
      * @return The handle of the created window, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM}, {@link #INVALID_VALUE}, {@link #API_UNAVAILABLE},
      * {@link #VERSION_UNAVAILABLE}, {@link #FORMAT_UNAVAILABLE} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Windows:</b> Window creation will fail if the Microsoft GDI software
+     * @glfw.remark <b>Windows:</b> Window creation will fail if the Microsoft GDI software
      * OpenGL implementation is the only one available.
      * <p>
      * <b>Windows:</b> If the executable has an icon resource named {@code GLFW_ICON}, it
@@ -2194,7 +2194,7 @@ public class GLFW {
      * <p>
      * <b>Wayland:</b> Screensaver inhibition requires the idle-inhibit protocol
      * to be implemented in the user's compositor.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #destroyWindow
      */
     public static MemoryAddress ncreateWindow(int width, int height, Addressable title, Addressable monitor, Addressable share) {
@@ -2236,12 +2236,12 @@ public class GLFW {
      * detached before being destroyed.
      *
      * @param window The window to destroy.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @note The context of the specified window must not be current on any other
+     * @glfw.note The context of the specified window must not be current on any other
      * thread when this function is called.
-     * @reentrancy This function must not be called from a callback.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.reentrancy This function must not be called from a callback.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateWindow(int, int, Addressable, Addressable, Addressable) createWindow
      */
     public static void destroyWindow(Addressable window) {
@@ -2259,8 +2259,8 @@ public class GLFW {
      *
      * @param window The window to query.
      * @return The value of the close flag.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
     public static boolean windowShouldClose(Addressable window) {
@@ -2280,8 +2280,8 @@ public class GLFW {
      *
      * @param window The window whose flag to change.
      * @param value  The new value.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
     public static void setWindowShouldClose(Addressable window, boolean value) {
@@ -2300,11 +2300,11 @@ public class GLFW {
      *
      * @param window The window whose title to change.
      * @param title  The UTF-8 encoded window title.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>macOS:</b> The window title will not be updated until the next time you
+     * @glfw.remark <b>macOS:</b> The window title will not be updated until the next time you
      * process events.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void nsetWindowTitle(Addressable window, Addressable title) {
         try {
@@ -2347,11 +2347,11 @@ public class GLFW {
      *               revert to the default window icon.
      * @param images The images to create the icon from.  This is ignored if
      *               count is zero.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The specified image data is copied before this function
+     * @glfw.pointer_lifetime The specified image data is copied before this function
      * returns.
-     * @remark <b>macOS:</b> The GLFW window has no icon, as it is not a document
+     * @glfw.remark <b>macOS:</b> The GLFW window has no icon, as it is not a document
      * window, so this function does nothing.  The dock icon will be the same as
      * the application bundle's icon.  For more information on bundles, see the
      * <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/">Bundle Programming Guide</a>
@@ -2360,7 +2360,7 @@ public class GLFW {
      * <b>Wayland:</b> There is no existing protocol to change an icon, the
      * window will thus inherit the one defined in the application's desktop file.
      * This function always emits {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void nsetWindowIcon(Addressable window, int count, Addressable images) {
         try {
@@ -2418,12 +2418,12 @@ public class GLFW {
      *               the content area, or {@link MemoryAddress#NULL NULL}.
      * @param ypos   Where to store the y-coordinate of the upper-left corner of
      *               the content area, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> There is no way for an application to retrieve the global
+     * @glfw.remark <b>Wayland:</b> There is no way for an application to retrieve the global
      * position of its windows, this function will always emit
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowPos(Addressable, int, int) setWindowPos
      */
     public static void ngetWindowPos(Addressable window, Addressable xpos, Addressable ypos) {
@@ -2496,12 +2496,12 @@ public class GLFW {
      * @param window The window to query.
      * @param xpos   The x-coordinate of the upper-left corner of the content area.
      * @param ypos   The y-coordinate of the upper-left corner of the content area.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> There is no way for an application to set the global
+     * @glfw.remark <b>Wayland:</b> There is no way for an application to set the global
      * position of its windows, this function will always emit
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowPos(Addressable, Addressable, Addressable) getWindowPos
      */
     public static void setWindowPos(Addressable window, int xpos, int ypos) {
@@ -2528,9 +2528,9 @@ public class GLFW {
      *               content area, or {@link MemoryAddress#NULL NULL}.
      * @param height Where to store the height, in screen coordinates, of the
      *               content area, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowSize(Addressable, int, int) setWindowSize
      */
     public static void ngetWindowSize(Addressable window, Addressable width, Addressable height) {
@@ -2612,14 +2612,14 @@ public class GLFW {
      *                  area, or {@link #DONT_CARE}.
      * @param maxHeight The maximum height, in screen coordinates, of the
      *                  content area, or {@link #DONT_CARE}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @remark If you set size limits and an aspect ratio that conflict, the
+     * @glfw.remark If you set size limits and an aspect ratio that conflict, the
      * results are undefined.
      * <p>
      * <b>Wayland:</b> The size limits will not be applied until the window is
      * actually resized, either by the user or by the compositor.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowAspectRatio(Addressable, int, int) setWindowAspectRatio
      */
     public static void setWindowSizeLimits(Addressable window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
@@ -2653,14 +2653,14 @@ public class GLFW {
      *               {@link #DONT_CARE}.
      * @param denom  The denominator of the desired aspect ratio, or
      *               {@link #DONT_CARE}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @remark If you set size limits and an aspect ratio that conflict, the
+     * @glfw.remark If you set size limits and an aspect ratio that conflict, the
      * results are undefined.
      * <p>
      * <b>Wayland:</b> The aspect ratio will not be applied until the window is
      * actually resized, either by the user or by the compositor.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowSizeLimits(Addressable, int, int, int, int) setWindowSizeLimits
      */
     public static void setWindowAspectRatio(Addressable window, int numer, int denom) {
@@ -2694,11 +2694,11 @@ public class GLFW {
      *               content area.
      * @param height The desired height, in screen coordinates, of the window
      *               content area.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> A full screen window will not attempt to change the mode,
+     * @glfw.remark <b>Wayland:</b> A full screen window will not attempt to change the mode,
      * no matter what the requested size.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowSize(Addressable, Addressable, Addressable) getWindowSize
      * @see #setWindowMonitor(Addressable, Addressable, int, int, int, int, int) setWindowMonitor
      */
@@ -2725,9 +2725,9 @@ public class GLFW {
      *               or {@link MemoryAddress#NULL NULL}.
      * @param height Where to store the height, in pixels, of the framebuffer,
      *               or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetFramebufferSizeCallback(Addressable, Addressable) setFramebufferSizeCallback
      */
     public static void ngetFramebufferSize(Addressable window, Addressable width, Addressable height) {
@@ -2811,9 +2811,9 @@ public class GLFW {
      *               right edge of the window frame, or {@link MemoryAddress#NULL NULL}.
      * @param bottom Where to store the size, in screen coordinates, of the
      *               bottom edge of the window frame, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void ngetWindowFrameSize(Addressable window, Addressable left, Addressable top, Addressable right, Addressable bottom) {
         try {
@@ -2907,9 +2907,9 @@ public class GLFW {
      * @param window The window to query.
      * @param xscale Where to store the x-axis content scale, or {@link MemoryAddress#NULL NULL}.
      * @param yscale Where to store the y-axis content scale, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetWindowContentScaleCallback(Addressable, Addressable) setWindowContentScaleCallback
      * @see #ngetMonitorContentScale(Addressable, Addressable, Addressable) getMonitorContentScale
      */
@@ -2980,9 +2980,9 @@ public class GLFW {
      *
      * @param window The window to query.
      * @return The opacity value of the specified window.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowOpacity(Addressable, float) setWindowOpacity
      */
     public static float getWindowOpacity(Addressable window) {
@@ -3008,9 +3008,9 @@ public class GLFW {
      *
      * @param window  The window to set the opacity for.
      * @param opacity The desired opacity of the specified window.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowOpacity(Addressable) getWindowOpacity
      */
     public static void setWindowOpacity(Addressable window, float opacity) {
@@ -3033,9 +3033,9 @@ public class GLFW {
      * when the window is restored.
      *
      * @param window The window to iconify.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #restoreWindow(Addressable) restoreWindow
      * @see #maximizeWindow(Addressable) maximizeWindow
      */
@@ -3058,9 +3058,9 @@ public class GLFW {
      * video mode is set again for its monitor when the window is restored.
      *
      * @param window The window to restore.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #iconifyWindow(Addressable) iconifyWindow
      * @see #maximizeWindow(Addressable) maximizeWindow
      */
@@ -3081,9 +3081,9 @@ public class GLFW {
      * If the specified window is a full screen window, this function does nothing.
      *
      * @param window The window to maximize.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function may only be called from the main thread.
+     * @glfw.thread_safety This function may only be called from the main thread.
      * @see #iconifyWindow(Addressable) iconifyWindow
      * @see #restoreWindow(Addressable) restoreWindow
      */
@@ -3108,13 +3108,13 @@ public class GLFW {
      * behavior for an existing window with {@link #setWindowAttrib}.
      *
      * @param window The window to make visible.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> Because Wayland wants every frame of the desktop to be
+     * @glfw.remark <b>Wayland:</b> Because Wayland wants every frame of the desktop to be
      * complete, this function does not immediately make the window visible.
      * Instead, it will become visible the next time the window framebuffer is
      * updated after this call.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #hideWindow(Addressable) hideWindow
      */
     public static void showWindow(Addressable window) {
@@ -3133,9 +3133,9 @@ public class GLFW {
      * nothing.
      *
      * @param window The window to hide.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #showWindow(Addressable) showWindow
      */
     public static void hideWindow(Addressable window) {
@@ -3168,11 +3168,11 @@ public class GLFW {
      * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_attention">attention requests</a>.
      *
      * @param window The window to give input focus.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> It is not possible for an application to bring its windows
+     * @glfw.remark <b>Wayland:</b> It is not possible for an application to bring its windows
      * to front, this function will always emit {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void focusWindow(Addressable window) {
         try {
@@ -3193,11 +3193,11 @@ public class GLFW {
      * application, the system will end the request automatically.
      *
      * @param window The window to request attention to.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>macOS:</b> Attention is requested to the application as a whole, not the
+     * @glfw.remark <b>macOS:</b> Attention is requested to the application as a whole, not the
      * specific window.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void requestWindowAttention(Addressable window) {
         try {
@@ -3216,8 +3216,8 @@ public class GLFW {
      * @param window The window to query.
      * @return The monitor, or {@link MemoryAddress#NULL NULL} if the window is in windowed mode or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowMonitor(Addressable, Addressable, int, int, int, int, int) setWindowMonitor
      */
     public static MemoryAddress getWindowMonitor(Addressable window) {
@@ -3261,9 +3261,9 @@ public class GLFW {
      *                    area or video mode.
      * @param refreshRate The desired refresh rate, in Hz, of the video mode,
      *                    or {@link #DONT_CARE}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark The OpenGL or OpenGL ES context will not be destroyed or otherwise
+     * @glfw.remark The OpenGL or OpenGL ES context will not be destroyed or otherwise
      * affected by any resizing or mode switching, although you may need to update
      * your viewport if the framebuffer size has changed.
      * <p>
@@ -3272,7 +3272,7 @@ public class GLFW {
      * <p>
      * <b>Wayland:</b> Setting the window to full screen will not attempt to
      * change the mode, no matter what the requested size or refresh rate.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowMonitor(Addressable) getWindowMonitor
      * @see #setWindowSize(Addressable, int, int) setWindowSize
      */
@@ -3295,12 +3295,12 @@ public class GLFW {
      *               whose value to return.
      * @return The value of the attribute, or zero if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @remark Framebuffer related hints are not window attributes.  See
+     * @glfw.remark Framebuffer related hints are not window attributes.  See
      * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_attribs_fb">Framebuffer related attributes</a>
      * for more information.
-     * @remark Zero is a valid value for many window and context related
+     * @glfw.remark Zero is a valid value for many window and context related
      * attributes, so you cannot use a return value of zero as an indication of
      * errors.  However, this function should not fail as long as it is passed
      * valid arguments and the library has been
@@ -3308,7 +3308,7 @@ public class GLFW {
      * <p>
      * <b>Wayland:</b> The Wayland protocol provides no way to check whether a
      * window is iconfied, so {@link #ICONIFIED} always returns {@link #FALSE}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowAttrib(Addressable, int, boolean) setWindowAttrib
      */
     public static int getWindowAttrib(Addressable window, int attrib) {
@@ -3339,11 +3339,11 @@ public class GLFW {
      * @param window The window to set the attribute for.
      * @param attrib A supported window attribute.
      * @param value  {@code true} of {@code false}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM}, {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @remark Calling {@link #getWindowAttrib} will always return the latest
+     * @glfw.remark Calling {@link #getWindowAttrib} will always return the latest
      * value, even if that value is ignored by the current mode of the window.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowAttrib(Addressable, int) getWindowAttrib
      */
     public static void setWindowAttrib(Addressable window, int attrib, boolean value) {
@@ -3363,8 +3363,8 @@ public class GLFW {
      *
      * @param window  The window whose pointer to set.
      * @param pointer The new value.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      * @see #getWindowUserPointer(Addressable) getWindowUserPointer
      */
@@ -3383,8 +3383,8 @@ public class GLFW {
      * specified window.  The initial value is {@link MemoryAddress#NULL NULL}.
      *
      * @param window The window whose pointer to return.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      * @see #setWindowUserPointer(Addressable, Addressable) setWindowUserPointer
      */
@@ -3409,13 +3409,13 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int xpos, int ypos)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int xpos, int ypos)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowPosFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @remark <b>Wayland:</b> This callback will never be called, as there is no way for
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.remark <b>Wayland:</b> This callback will never be called, as there is no way for
      * an application to know its global position.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowPosCallback(Addressable window, Addressable callback) {
         try {
@@ -3451,11 +3451,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowSizeFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowSizeCallback(Addressable window, Addressable callback) {
         try {
@@ -3496,13 +3496,13 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowCloseFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @remark <b>macOS:</b> Selecting Quit from the application menu will trigger the
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.remark <b>macOS:</b> Selecting Quit from the application menu will trigger the
      * close callback for all windows.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowCloseCallback(Addressable window, Addressable callback) {
         try {
@@ -3542,11 +3542,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window);}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window);}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowRefreshFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowRefreshCallback(Addressable window, Addressable callback) {
         try {
@@ -3587,11 +3587,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int focused)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int focused)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowFocusFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowFocusCallback(Addressable window, Addressable callback) {
         try {
@@ -3626,13 +3626,13 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int iconified)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int iconified)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowIconifyFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @remark <b>Wayland:</b> The XDG-shell protocol has no event for iconification, so
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.remark <b>Wayland:</b> The XDG-shell protocol has no event for iconification, so
      * this callback will never be called.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowIconifyCallback(Addressable window, Addressable callback) {
         try {
@@ -3667,11 +3667,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int maximized)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int maximized)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowMaximizeFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetWindowMaximizeCallback(Addressable window, Addressable callback) {
         try {
@@ -3706,11 +3706,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWFramebufferSizeFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetFramebufferSizeCallback(Addressable window, Addressable callback) {
         try {
@@ -3745,11 +3745,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, float xscale, float yscale)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, float xscale, float yscale)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWWindowContentScaleFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(Addressable, Addressable, Addressable) getWindowContentScale
      */
     public static MemoryAddress nsetWindowContentScaleCallback(Addressable window, Addressable callback) {
@@ -3797,10 +3797,10 @@ public class GLFW {
      * <p>
      * Event processing is not required for joystick input to work.
      *
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @reentrancy This function must not be called from a callback.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.reentrancy This function must not be called from a callback.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #waitEvents() waitEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
@@ -3841,10 +3841,10 @@ public class GLFW {
      * <p>
      * Event processing is not required for joystick input to work.
      *
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @reentrancy This function must not be called from a callback.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.reentrancy This function must not be called from a callback.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #pollEvents() pollEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
@@ -3888,10 +3888,10 @@ public class GLFW {
      * Event processing is not required for joystick input to work.
      *
      * @param timeout The maximum amount of time, in seconds, to wait.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @reentrancy This function must not be called from a callback.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.reentrancy This function must not be called from a callback.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #pollEvents() pollEvents
      * @see #waitEvents() waitEvents
      */
@@ -3909,9 +3909,9 @@ public class GLFW {
      * This function posts an empty event from the current thread to the event
      * queue, causing {@link #waitEvents} or {@link #waitEventsTimeout} to return.
      *
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #waitEvents() waitEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
@@ -3935,9 +3935,9 @@ public class GLFW {
      * @param mode   One of {@code CURSOR}, {@code STICKY_KEYS},
      *               {@code STICKY_MOUSE_BUTTONS}, {@code LOCK_KEY_MODS} or
      *               {@code RAW_MOUSE_MOTION}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(Addressable, int, int) setInputMode
      */
     public static int getInputMode(Addressable window, int mode) {
@@ -3999,9 +3999,9 @@ public class GLFW {
      *               {@code STICKY_MOUSE_BUTTONS}, {@code LOCK_KEY_MODS} or
      *               {@code RAW_MOUSE_MOTION}.
      * @param value  The new value of the specified input mode.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getInputMode(Addressable, int) getInputMode
      */
     public static void setInputMode(Addressable window, int mode, int value) {
@@ -4028,8 +4028,8 @@ public class GLFW {
      *
      * @return {@link #TRUE} if raw mouse motion is supported on the current machine,
      * or {@link #FALSE} otherwise.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(Addressable, int, int) setInputMode
      */
     public static boolean rawMouseMotionSupported() {
@@ -4093,13 +4093,13 @@ public class GLFW {
      * @param key      The key to query, or {@link #KEY_UNKNOWN}.
      * @param scancode The scancode of the key to query.
      * @return The UTF-8 encoded, layout-specific name of the key, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark The contents of the returned string may change when a keyboard
+     * @glfw.remark The contents of the returned string may change when a keyboard
      * layout change event is received.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetKeyName(int key, int scancode) {
         try {
@@ -4134,9 +4134,9 @@ public class GLFW {
      * @param key Any <a href="https://www.glfw.org/docs/latest/group__keys.html">named key</a>.
      * @return The platform-specific scancode for the key, or {@code -1} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      */
     public static int getKeyScancode(int key) {
         try {
@@ -4173,9 +4173,9 @@ public class GLFW {
      * @param key    The desired <a href="https://www.glfw.org/docs/latest/group__keys.html">keyboard key</a>.
      *               {@code KEY_UNKNOWN} is not a valid key for this function.
      * @return One of {@code PRESS} or {@code RELEASE}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static int getKey(Addressable window, int key) {
         try {
@@ -4200,9 +4200,9 @@ public class GLFW {
      * @param window The desired window.
      * @param button The desired <a href="https://www.glfw.org/docs/latest/group__buttons.html">mouse button</a>.
      * @return One of {@code PRESS} or {@code RELEASE}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static int getMouseButton(Addressable window, int button) {
         try {
@@ -4236,9 +4236,9 @@ public class GLFW {
      *               left edge of the content area, or {@link MemoryAddress#NULL NULL}.
      * @param ypos   Where to store the cursor y-coordinate, relative to the to
      *               top edge of the content area, or {@link MemoryAddress#NULL NULL}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setCursorPos(Addressable, double, double) setCursorPos
      */
     public static void ngetCursorPos(Addressable window, Addressable xpos, Addressable ypos) {
@@ -4322,11 +4322,11 @@ public class GLFW {
      *               content area.
      * @param ypos   The desired y-coordinate, relative to the top edge of the
      *               content area.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @remark <b>Wayland:</b> This function will only work when the cursor mode is
+     * @glfw.remark <b>Wayland:</b> This function will only work when the cursor mode is
      * {@link #CURSOR_DISABLED}, otherwise it will do nothing.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetCursorPos(Addressable, Addressable, Addressable) getCursorPos
      */
     public static void setCursorPos(Addressable window, double xpos, double ypos) {
@@ -4357,11 +4357,11 @@ public class GLFW {
      * @param yhot  The desired y-coordinate, in pixels, of the cursor hotspot.
      * @return The handle of the created cursor, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The specified image data is copied before this function
+     * @glfw.pointer_lifetime The specified image data is copied before this function
      * returns.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #destroyCursor(Addressable) destroyCursor
      * @see #createStandardCursor(int) createStandardCursor
      */
@@ -4397,9 +4397,9 @@ public class GLFW {
      * @return A new cursor ready to use or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(Addressable, int, int) createCursor
      */
     public static MemoryAddress createStandardCursor(int shape) {
@@ -4421,10 +4421,10 @@ public class GLFW {
      * reverted to the default cursor.  This does not affect the cursor mode.
      *
      * @param cursor The cursor object to destroy.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @reentrancy This function must not be called from a callback.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.reentrancy This function must not be called from a callback.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(Addressable, int, int) createCursor
      */
     public static void destroyCursor(Addressable cursor) {
@@ -4449,9 +4449,9 @@ public class GLFW {
      * @param window The window to set the cursor for.
      * @param cursor The cursor to set, or {@link MemoryAddress#NULL NULL} to switch
      *               back to the default arrow cursor.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static void setCursor(Addressable window, Addressable cursor) {
         try {
@@ -4492,11 +4492,11 @@ public class GLFW {
      *                 set callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int key, int scancode, int action, int mods)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int key, int scancode, int action, int mods)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWKeyFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetKeyCallback(Addressable window, Addressable callback) {
         try {
@@ -4543,11 +4543,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWCharFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetCharCallback(Addressable window, Addressable callback) {
         try {
@@ -4592,11 +4592,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint, int mods)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint, int mods)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWCharModsFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @deprecated Scheduled for removal in version 4.0.
      */
     @Deprecated(forRemoval = true)
@@ -4641,11 +4641,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int button, int action, int mods)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int button, int action, int mods)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWMouseButtonFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetMouseButtonCallback(Addressable window, Addressable callback) {
         try {
@@ -4682,11 +4682,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, double xpos, double ypos);}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, double xpos, double ypos);}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWCursorPosFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetCursorPosCallback(Addressable window, Addressable callback) {
         try {
@@ -4722,11 +4722,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int entered)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int entered)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWCursorEnterFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetCursorEnterCallback(Addressable window, Addressable callback) {
         try {
@@ -4765,11 +4765,11 @@ public class GLFW {
      *                 currently set callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, double xoffset, double yoffset)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, double xoffset, double yoffset)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWScrollFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetScrollCallback(Addressable window, Addressable callback) {
         try {
@@ -4809,12 +4809,12 @@ public class GLFW {
      *                 currently set callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(GLFWwindow* window, int path_count, const char* paths[])}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int path_count, const char* paths[])}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWDropFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @remark <b>Wayland:</b> File drop is currently unimplemented.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.remark <b>Wayland:</b> File drop is currently unimplemented.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetDropCallback(Addressable window, Addressable callback) {
         try {
@@ -4849,9 +4849,9 @@ public class GLFW {
      *
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
      * @return {@code true} if the joystick is present, or {@code false} otherwise.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static boolean joystickPresent(int jid) {
         try {
@@ -4878,12 +4878,12 @@ public class GLFW {
      * @return An array of axis values, or {@link MemoryAddress#NULL NULL} if the
      * joystick is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified joystick is
      * disconnected or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetJoystickAxes(int jid, Addressable count) {
         try {
@@ -4941,12 +4941,12 @@ public class GLFW {
      *              occurred.
      * @return An array of button states, or {@link MemoryAddress#NULL NULL} if the joystick is not present
      * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified joystick is
      * disconnected or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetJoystickButtons(int jid, Addressable count) {
         try {
@@ -5022,13 +5022,13 @@ public class GLFW {
      *  occurred.
      *  @return An array of hat states, or {@link MemoryAddress#NULL NULL} if the joystick is not present
      *  or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     *  @errors Possible errors include {@link #NOT_INITIALIZED},
+     *  @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      *  {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     *  @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     *  @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      *  should not free it yourself.  It is valid until the specified joystick is
      *  disconnected, this function is called again for that joystick or the library
      *  is terminated.
-     *  @thread_safety This function must only be called from the main thread.
+     *  @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetJoystickHats(int jid, Addressable count) {
         try {
@@ -5072,12 +5072,12 @@ public class GLFW {
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
      * @return The UTF-8 encoded name of the joystick, or {@link MemoryAddress#NULL NULL} if the joystick
      * is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified joystick is
      * disconnected or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetJoystickName(int jid) {
         try {
@@ -5125,12 +5125,12 @@ public class GLFW {
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
      * @return The UTF-8 encoded GUID of the joystick, or {@link MemoryAddress#NULL NULL} if the joystick
      * is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified joystick is
      * disconnected or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress ngetJoystickGUID(int jid) {
         try {
@@ -5166,8 +5166,8 @@ public class GLFW {
      *
      * @param jid     The joystick whose pointer to set.
      * @param pointer The new value.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      * @see #getJoystickUserPointer(int) getJoystickUserPointer
      */
@@ -5189,8 +5189,8 @@ public class GLFW {
      * that is being disconnected.
      *
      * @param jid The joystick whose pointer to return.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Access is not
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      * @see #setJoystickUserPointer(int, Addressable) setJoystickUserPointer
      */
@@ -5216,9 +5216,9 @@ public class GLFW {
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
      * @return {@code true} if a joystick is both present and has a gamepad mapping,
      * or {@code false} otherwise.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetGamepadState(int, Addressable) getGamepadState
      */
     public static boolean joystickIsGamepad(int jid) {
@@ -5247,11 +5247,11 @@ public class GLFW {
      *                 callback.
      * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
-     * @callback_signature <pre>{@code void function_name(int jid, int event)}</pre>
+     * @glfw.callback_signature <pre>{@code void function_name(int jid, int event)}</pre>
      * For more information about the callback parameters, see the
      * {@link IGLFWJoystickFun function pointer type}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemoryAddress nsetJoystickCallback(Addressable callback) {
         try {
@@ -5294,9 +5294,9 @@ public class GLFW {
      * @param string The string containing the gamepad mappings.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_VALUE}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #joystickIsGamepad(int) joystickIsGamepad
      * @see #ngetGamepadName(int) getGamepadName
      */
@@ -5336,11 +5336,11 @@ public class GLFW {
      * @return The UTF-8 encoded name of the gamepad, or {@link MemoryAddress#NULL NULL} if the
      * joystick is not present, does not have a mapping or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and {@link #INVALID_ENUM}.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and {@link #INVALID_ENUM}.
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the specified joystick is
      * disconnected, the gamepad mappings are updated or the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
     public static MemoryAddress ngetGamepadName(int jid) {
@@ -5389,9 +5389,9 @@ public class GLFW {
      * @return {@code true} if successful, or {@code false} if no joystick is
      * connected, it has no gamepad mapping or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_ENUM}.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nupdateGamepadMappings(Addressable) updateGamepadMappings
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
@@ -5425,11 +5425,11 @@ public class GLFW {
      *
      * @param window Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
      * @param string A UTF-8 encoded string.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The specified string is copied before this function
+     * @glfw.pointer_lifetime The specified string is copied before this function
      * returns.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetClipboardString(Addressable) getClipboardString
      */
     public static void nsetClipboardString(@Deprecated Addressable window, Addressable string) {
@@ -5463,14 +5463,14 @@ public class GLFW {
      * @param window Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
      * @return The contents of the clipboard as a UTF-8 encoded string, or {@link MemoryAddress#NULL NULL}
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #FORMAT_UNAVAILABLE} and {@link #PLATFORM_ERROR}.
-     * @pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the next call to
      * {@link #ngetClipboardString(Addressable) getClipboardString} or
      * {@link #nsetClipboardString(Addressable, Addressable) setClipboardString},
      * or until the library is terminated.
-     * @thread_safety This function must only be called from the main thread.
+     * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetClipboardString(Addressable, Addressable) setClipboardString
      */
     public static MemoryAddress ngetClipboardString(@Deprecated Addressable window) {
@@ -5510,8 +5510,8 @@ public class GLFW {
      *
      * @return The current time, in seconds, or zero if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.  Reading and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.  Reading and
      * writing of the internal base time is not atomic, so it needs to be
      * externally synchronized with calls to {@link #setTime}.
      */
@@ -5534,12 +5534,12 @@ public class GLFW {
      * {@link #getTimerFrequency} and {@link #getTimerValue}.
      *
      * @param time The new value, in seconds.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #INVALID_VALUE}.
-     * @remark The upper limit of GLFW time is calculated as
+     * @glfw.remark The upper limit of GLFW time is calculated as
      * floor((2<sup>64</sup> - 1) / 10<sup>9</sup>) and is due to implementations
      * storing nanoseconds in 64 bits.  The limit may be increased in the future.
-     * @thread_safety This function may be called from any thread.  Reading and
+     * @glfw.thread_safety This function may be called from any thread.  Reading and
      * writing of the internal base time is not atomic, so it needs to be
      * externally synchronized with calls to {@link #getTime}.
      */
@@ -5560,8 +5560,8 @@ public class GLFW {
      *
      * @return The value of the timer, or zero if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #getTimerFrequency
      */
     public static long getTimerValue() {
@@ -5579,8 +5579,8 @@ public class GLFW {
      *
      * @return The frequency of the timer, in Hz, or zero if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #getTimerValue
      */
     public static long getTimerFrequency() {
@@ -5615,9 +5615,9 @@ public class GLFW {
      *
      * @param window The window whose context to make current, or {@link MemoryAddress#NULL NULL} to
      *               detach the current context.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_WINDOW_CONTEXT} and {@link #PLATFORM_ERROR}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #getCurrentContext
      */
     public static void makeContextCurrent(Addressable window) {
@@ -5636,8 +5636,8 @@ public class GLFW {
      *
      * @return The window whose context is current, or {@link MemoryAddress#NULL NULL} if no window's
      * context is current.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #makeContextCurrent
      */
     public static MemoryAddress getCurrentContext() {
@@ -5663,11 +5663,11 @@ public class GLFW {
      * see {@code vkQueuePresentKHR} instead.
      *
      * @param window The window whose buffers to swap.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_WINDOW_CONTEXT} and {@link #PLATFORM_ERROR}.
-     * @remark <b>EGL:</b> The context of the specified window must be current on the
+     * @glfw.remark <b>EGL:</b> The context of the specified window must be current on the
      * calling thread.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #swapInterval
      */
     public static void swapBuffers(Addressable window) {
@@ -5701,16 +5701,16 @@ public class GLFW {
      *
      * @param interval The minimum number of screen updates to wait for
      *                 until the buffers are swapped by {@link #swapBuffers}.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_CURRENT_CONTEXT} and {@link #PLATFORM_ERROR}.
-     * @remark This function is not called during context creation, leaving the
+     * @glfw.remark This function is not called during context creation, leaving the
      * swap interval set to whatever is the default on that platform.  This is done
      * because some swap interval extensions used by GLFW do not allow the swap
      * interval to be reset to zero once it has been set to a non-zero value.
-     * @remark Some GPU drivers do not honor the requested swap interval, either
+     * @glfw.remark Some GPU drivers do not honor the requested swap interval, either
      * because of a user setting that overrides the application's request or due to
      * bugs in the driver.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #swapBuffers
      */
     public static void swapInterval(int interval) {
@@ -5744,10 +5744,10 @@ public class GLFW {
      * @param extension The ASCII encoded name of the extension.
      * @return {@code true} if the extension is available, or {@code false}
      * otherwise.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_CURRENT_CONTEXT}, {@link #INVALID_VALUE} and
      * {@link #PLATFORM_ERROR}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetProcAddress
      */
     public static boolean nextensionSupported(Addressable extension) {
@@ -5789,17 +5789,17 @@ public class GLFW {
      * @param procName The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED},
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_CURRENT_CONTEXT} and {@link #PLATFORM_ERROR}.
-     * @remark The address of a given function is not guaranteed to be the same
+     * @glfw.remark The address of a given function is not guaranteed to be the same
      * between contexts.
      * <p>
      * This function may return a non-{@link MemoryAddress#NULL NULL} address despite the
      * associated version or extension not being available.  Always check the
      * context version or extension string first.
-     * @pointer_lifetime The returned function pointer is valid until the context
+     * @glfw.pointer_lifetime The returned function pointer is valid until the context
      * is destroyed or the library is terminated.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      * @see #nextensionSupported
      */
     public static MemoryAddress ngetProcAddress(Addressable procName) {
@@ -5838,8 +5838,8 @@ public class GLFW {
      *
      * @return {@code true} if Vulkan is minimally available, or {@code false}
      * otherwise.
-     * @errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.
      */
     public static boolean vulkanSupported() {
         try {
@@ -5870,16 +5870,16 @@ public class GLFW {
      *              array.  This is set to zero if an error occurred.
      * @return An array of ASCII encoded extension names, or {@link MemoryAddress#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @errors Possible errors include {@link #NOT_INITIALIZED} and
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #API_UNAVAILABLE}.
-     * @remark Additional extensions may be required by future versions of GLFW.
+     * @glfw.remark Additional extensions may be required by future versions of GLFW.
      * You should check if any extensions you wish to enable are already in the
      * returned array, as it is an error to specify an extension more than once in
      * the {@code VkInstanceCreateInfo} struct.
-     * @pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
      * should not free it yourself.  It is guaranteed to be valid only until the
      * library is terminated.
-     * @thread_safety This function may be called from any thread.
+     * @glfw.thread_safety This function may be called from any thread.
      */
     public static MemoryAddress ngetRequiredInstanceExtensions(Addressable count) {
         try {

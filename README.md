@@ -1,5 +1,10 @@
 # OverrunGL
 
+![License](https://img.shields.io/github/license/Over-Run/overrungl)
+
+![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
+![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)
+
 Overrun Game Library is a set of C/C++ library bindings and native accessor.
 
 ## Goals

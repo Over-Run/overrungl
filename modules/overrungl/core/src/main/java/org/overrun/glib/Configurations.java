@@ -51,6 +51,11 @@ public final class Configurations {
      * The default value is {@code false}.
      */
     public static final Entry<Boolean> DEBUG_STACK = new Entry<>(() -> false);
+    /**
+     * Enable checks.
+     * <p>
+     * The default value is {@code true}.
+     */
     public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
 
     /**
