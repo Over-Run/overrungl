@@ -52,9 +52,9 @@ public final class GL30Test {
     private int tex;
 
     public void run() {
-        try (var session = MemorySession.openShared()) {
-            init(session);
-            load(session);
+        try (var arena = MemorySession.openShared()) {
+            init(arena);
+            load(arena);
         }
         loop();
 
@@ -70,7 +70,7 @@ public final class GL30Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession session) {
+    private void init(MemorySession arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -78,7 +78,7 @@ public final class GL30Test {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(session, 640, 480, "OpenGL 3.0", MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(arena, 640, 480, "OpenGL 3.0", MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -88,7 +88,7 @@ public final class GL30Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -104,7 +104,7 @@ public final class GL30Test {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession session) {
+    private void load(MemorySession arena) {
         if (GLCaps.loadShared(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -117,7 +117,7 @@ public final class GL30Test {
         try (var is = ClassLoader.getSystemResourceAsStream("image.png")) {
             byte[] bytes = Objects.requireNonNull(is).readNBytes(256);
             int[] px = new int[1], py = new int[1], pc = new int[1];
-            var data = STBImage.loadFromMemory(session, bytes, px, py, pc, STBImage.RGB);
+            var data = STBImage.loadFromMemory(arena, bytes, px, py, pc, STBImage.RGB);
             GL.texImage2D(GL_TEXTURE_2D,
                 0,
                 GL_RGB,
@@ -135,7 +135,7 @@ public final class GL30Test {
         program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
-        GL.shaderSource(session, vsh, """
+        GL.shaderSource(arena, vsh, """
             #version 130
 
             in vec3 position;
@@ -148,7 +148,7 @@ public final class GL30Test {
                 texCoord = uv;
             }
             """);
-        GL.shaderSource(session, fsh, """
+        GL.shaderSource(arena, fsh, """
             #version 130
 
             in vec2 texCoord;
@@ -166,22 +166,22 @@ public final class GL30Test {
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
         GL.attachShader(program, fsh);
-        GL.bindAttribLocation(session, program, 0, "position");
-        GL.bindAttribLocation(session, program, 1, "uv");
+        GL.bindAttribLocation(arena, program, 0, "position");
+        GL.bindAttribLocation(arena, program, 1, "uv");
         GL.linkProgram(program);
         GL.detachShader(program, vsh);
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
         GL.useProgram(program);
-        GL.uniform1i(GL.getUniformLocation(session, program, "sampler"), 0);
+        GL.uniform1i(GL.getUniformLocation(arena, program, "sampler"), 0);
         GL.useProgram(0);
 
         vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL.bufferData(session, GL_ARRAY_BUFFER, new float[]{
+        GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
             // Vertex          UV
             -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
@@ -190,7 +190,7 @@ public final class GL30Test {
         }, GL_STATIC_DRAW);
         int ebo = GL.genBuffer();
         GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        GL.bufferData(session, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
+        GL.bufferData(arena, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 0, 2, 3
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
@@ -200,7 +200,7 @@ public final class GL30Test {
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
 
-        colorFactor = GL.getUniformLocation(session, program, "colorFactor");
+        colorFactor = GL.getUniformLocation(arena, program, "colorFactor");
     }
 
     private void loop() {

@@ -29,10 +29,7 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.value.*;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.*;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
@@ -44,7 +41,7 @@ import static org.overrun.glib.util.MemoryUtil.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFW {
+public final class GLFW {
     /**
      * The major version number of the GLFW header.
      * <p>
@@ -989,11 +986,11 @@ public class GLFW {
      * library.  It is intended for when you are using GLFW as a shared library and
      * want to ensure that you are using the minimum required version.
      * <p>
-     * Any or all of the version arguments may be {@link MemoryAddress#NULL NULL}.
+     * Any or all of the version arguments may be {@link MemorySegment#NULL NULL}.
      *
-     * @param major Where to store the major version number, or {@link MemoryAddress#NULL NULL}.
-     * @param minor Where to store the minor version number, or {@link MemoryAddress#NULL NULL}.
-     * @param rev   Where to store the revision number, or {@link MemoryAddress#NULL NULL}.
+     * @param major Where to store the major version number, or {@link MemorySegment#NULL NULL}.
+     * @param minor Where to store the minor version number, or {@link MemorySegment#NULL NULL}.
+     * @param rev   Where to store the revision number, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors None.
      * @glfw.remark This function may be called before {@link #init}.
      * @glfw.thread_safety This function may be called from any thread.
@@ -1103,9 +1100,9 @@ public class GLFW {
      * of the last error that occurred on the calling thread, and optionally a UTF-8 encoded
      * human-readable description of it.  If no error has occurred since the last
      * call, it returns {@link #NO_ERROR} (zero) and the description pointer is
-     * set to {@link MemoryAddress#NULL NULL}.
+     * set to {@link MemorySegment#NULL NULL}.
      *
-     * @param description Where to store the error description pointer, or {@link MemoryAddress#NULL NULL}.
+     * @param description Where to store the error description pointer, or {@link MemorySegment#NULL NULL}.
      * @return The last error code for the calling thread, or {@link #NO_ERROR} (zero).
      * @glfw.errors None.
      * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
@@ -1175,8 +1172,8 @@ public class GLFW {
      * Once set, the error callback remains set even after the library has been
      * terminated.
      *
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set.
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set callback.
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      * @glfw.errors None.
      * @glfw.remark This function may be called before {@link #init}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -1194,7 +1191,7 @@ public class GLFW {
      * Sets the error callback.
      *
      * @param callback The new callback, or {@code null} to remove the currently set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set.
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      * @see #nsetErrorCallback(Addressable) nsetErrorCallback
      */
     public static MemoryAddress setErrorCallback(@Nullable IGLFWErrorFun callback) {
@@ -1206,11 +1203,11 @@ public class GLFW {
      * <p>
      * This function returns an array of handles for all currently connected
      * monitors.  The primary monitor is always first in the returned array.  If no
-     * monitors were found, this function returns {@link MemoryAddress#NULL NULL}.
+     * monitors were found, this function returns {@link MemorySegment#NULL NULL}.
      *
      * @param count Where to store the number of monitors in the returned array.
      *              This is set to zero if an error occurred.
-     * @return An array of monitor handles, or {@link MemoryAddress#NULL NULL} if no monitors were found or
+     * @return An array of monitor handles, or {@link MemorySegment#NULL NULL} if no monitors were found or
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
@@ -1255,7 +1252,7 @@ public class GLFW {
      * This function returns the primary monitor.  This is usually the monitor
      * where elements like the task bar or global menu bar are located.
      *
-     * @return The primary monitor, or {@link MemoryAddress#NULL NULL} if no monitors were found or if an
+     * @return The primary monitor, or {@link MemorySegment#NULL NULL} if no monitors were found or if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -1277,12 +1274,12 @@ public class GLFW {
      * This function returns the position, in screen coordinates, of the upper-left
      * corner of the specified monitor.
      * <p>
-     * Any or all of the position arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
-     * non-{@link MemoryAddress#NULL NULL} position arguments will be set to zero.
+     * Any or all of the position arguments may be {@link MemorySegment#NULL NULL}.  If an error occurs, all
+     * non-{@link MemorySegment#NULL NULL} position arguments will be set to zero.
      *
      * @param monitor The monitor to query.
-     * @param xpos    Where to store the monitor x-coordinate, or {@link MemoryAddress#NULL NULL}.
-     * @param ypos    Where to store the monitor y-coordinate, or {@link MemoryAddress#NULL NULL}.
+     * @param xpos    Where to store the monitor x-coordinate, or {@link MemorySegment#NULL NULL}.
+     * @param ypos    Where to store the monitor y-coordinate, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -1351,14 +1348,14 @@ public class GLFW {
      * task bar exists then the work area is the monitor resolution in screen
      * coordinates.
      * <p>
-     * Any or all of the position and size arguments may be {@link MemoryAddress#NULL NULL}.  If an error
-     * occurs, all non-{@link MemoryAddress#NULL NULL} position and size arguments will be set to zero.
+     * Any or all of the position and size arguments may be {@link MemorySegment#NULL NULL}.  If an error
+     * occurs, all non-{@link MemorySegment#NULL NULL} position and size arguments will be set to zero.
      *
      * @param monitor The monitor to query.
-     * @param xpos    Where to store the monitor x-coordinate, or {@link MemoryAddress#NULL NULL}.
-     * @param ypos    Where to store the monitor y-coordinate, or {@link MemoryAddress#NULL NULL}.
-     * @param width   Where to store the monitor width, or {@link MemoryAddress#NULL NULL}.
-     * @param height  Where to store the monitor height, or {@link MemoryAddress#NULL NULL}.
+     * @param xpos    Where to store the monitor x-coordinate, or {@link MemorySegment#NULL NULL}.
+     * @param ypos    Where to store the monitor y-coordinate, or {@link MemorySegment#NULL NULL}.
+     * @param width   Where to store the monitor width, or {@link MemorySegment#NULL NULL}.
+     * @param height  Where to store the monitor height, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -1443,14 +1440,14 @@ public class GLFW {
      * <a href="https://en.wikipedia.org/wiki/Extended_display_identification_data">EDID</a>
      * data is incorrect or because the driver does not report it accurately.
      * <p>
-     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
-     * non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     * Any or all of the size arguments may be {@link MemorySegment#NULL NULL}.  If an error occurs, all
+     * non-{@link MemorySegment#NULL NULL} size arguments will be set to zero.
      *
      * @param monitor  The monitor to query.
      * @param widthMM  Where to store the width, in millimetres, of the
-     *                 monitor's display area, or {@link MemoryAddress#NULL NULL}.
+     *                 monitor's display area, or {@link MemorySegment#NULL NULL}.
      * @param heightMM Where to store the height, in millimetres, of the
-     *                 monitor's display area, or {@link MemoryAddress#NULL NULL}.
+     *                 monitor's display area, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.remark <b>Windows:</b> On Windows 8 and earlier the physical size is calculated from
      * the current resolution and system DPI instead of querying the monitor EDID data.
@@ -1528,8 +1525,8 @@ public class GLFW {
      * calculated from the physical size and current resolution.
      *
      * @param monitor The monitor to query.
-     * @param xscale  Where to store the x-axis content scale, or {@link MemoryAddress#NULL NULL}.
-     * @param yscale  Where to store the y-axis content scale, or {@link MemoryAddress#NULL NULL}.
+     * @param xscale  Where to store the x-axis content scale, or {@link MemorySegment#NULL NULL}.
+     * @param yscale  Where to store the y-axis content scale, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -1597,7 +1594,7 @@ public class GLFW {
      * monitor and is not guaranteed to be unique among the connected monitors.
      *
      * @param monitor The monitor to query.
-     * @return The UTF-8 encoded name of the monitor, or {@link MemoryAddress#NULL NULL} if an
+     * @return The UTF-8 encoded name of the monitor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
@@ -1632,7 +1629,7 @@ public class GLFW {
      * <p>
      * This function sets the user-defined pointer of the specified monitor.  The
      * current value is retained until the monitor is disconnected.  The initial
-     * value is {@link MemoryAddress#NULL NULL}.
+     * value is {@link MemorySegment#NULL NULL}.
      * <p>
      * This function may be called from the monitor callback, even for a monitor
      * that is being disconnected.
@@ -1656,7 +1653,7 @@ public class GLFW {
      * Returns the user pointer of the specified monitor.
      * <p>
      * This function returns the current value of the user-defined pointer of the
-     * specified monitor.  The initial value is {@link MemoryAddress#NULL NULL}.
+     * specified monitor.  The initial value is {@link MemorySegment#NULL NULL}.
      * <p>
      * This function may be called from the monitor callback, even for a monitor
      * that is being disconnected.
@@ -1682,9 +1679,9 @@ public class GLFW {
      * currently set callback.  This is called when a monitor is connected to or
      * disconnected from the system.
      *
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWmonitor* monitor, int event)}</pre>
      * For more information about the callback parameters, see the
@@ -1705,7 +1702,7 @@ public class GLFW {
      *
      * @param callback The new callback, or {@code null}  to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMonitorCallback(Addressable) nsetMonitorCallback
      */
@@ -1725,7 +1722,7 @@ public class GLFW {
      * @param monitor The monitor to query.
      * @param count   Where to store the number of video modes in the returned
      *                array.  This is set to zero if an error occurred.
-     * @return An array of video modes, or {@link MemoryAddress#NULL NULL} if an
+     * @return An array of video modes, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
@@ -1747,13 +1744,13 @@ public class GLFW {
     /**
      * Returns the available video modes for the specified monitor.
      *
-     * @param session The memory session to hold the result.
+     * @param scope   The segment scope to hold the result.
      * @param monitor The monitor to query.
      * @return An array of video modes, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(Addressable, Addressable) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemorySession session, Addressable monitor) {
+    public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(MemorySession scope, Addressable monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1762,7 +1759,7 @@ public class GLFW {
             if (pModes == MemoryAddress.NULL) {
                 return null;
             }
-            return new GLFWVidMode.Buffer(pModes, session, pCount.get(JAVA_INT, 0)).toSegmented();
+            return new GLFWVidMode.Buffer(pModes, scope, pCount.get(JAVA_INT, 0)).toSegmented();
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1776,7 +1773,7 @@ public class GLFW {
      * will depend on whether that window is iconified.
      *
      * @param monitor The monitor to query.
-     * @return The current mode of the monitor, or {@link MemoryAddress#NULL NULL} if an
+     * @return The current mode of the monitor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
@@ -1797,19 +1794,19 @@ public class GLFW {
     /**
      * Returns the current mode of the specified monitor.
      *
-     * @param session The memory session to hold the result.
+     * @param scope   The segment scope to hold the result.
      * @param monitor The monitor to query.
      * @return The current mode of the monitor, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoMode(Addressable) ngetVideoMode
      */
     @Nullable
-    public static GLFWVidMode.Value getVideoMode(MemorySession session, Addressable monitor) {
+    public static GLFWVidMode.Value getVideoMode(MemorySession scope, Addressable monitor) {
         var pMode = ngetVideoMode(monitor);
         if (pMode == MemoryAddress.NULL) {
             return null;
         }
-        return new GLFWVidMode(pMode, session).constCast();
+        return new GLFWVidMode(pMode, scope).constCast();
     }
 
     /**
@@ -1849,13 +1846,13 @@ public class GLFW {
      * This function returns the current gamma ramp of the specified monitor.
      *
      * @param monitor The monitor to query.
-     * @return The current gamma ramp, or {@link MemoryAddress#NULL NULL} if an
+     * @return The current gamma ramp, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
      * will thus never be implemented and emits {@link #PLATFORM_ERROR} while
-     * returning {@link MemoryAddress#NULL NULL}.
+     * returning {@link MemorySegment#NULL NULL}.
      * @glfw.pointer_lifetime The returned structure and its arrays are allocated and
      * freed by GLFW.  You should not free them yourself.  They are valid until the
      * specified monitor is disconnected, this function is called again for that
@@ -1873,16 +1870,16 @@ public class GLFW {
     /**
      * Returns the current gamma ramp for the specified monitor.
      *
-     * @param session The memory session to hold the result.
+     * @param scope   The segment scope to hold the result.
      * @param monitor The monitor to query.
      * @return The current gamma ramp, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetGammaRamp(Addressable) ngetGammaRamp
      */
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(MemorySession session, Addressable monitor) {
+    public static GLFWGammaRamp getGammaRamp(MemorySession scope, Addressable monitor) {
         var pRamp = ngetGammaRamp(monitor);
-        return pRamp != MemoryAddress.NULL ? new GLFWGammaRamp(pRamp, session) : null;
+        return pRamp != MemoryAddress.NULL ? new GLFWGammaRamp(pRamp, scope) : null;
     }
 
     /**
@@ -2110,11 +2107,11 @@ public class GLFW {
      * @param height  The desired height, in screen coordinates, of the window.
      *                This must be greater than zero.
      * @param title   The initial, UTF-8 encoded window title.
-     * @param monitor The monitor to use for full screen mode, or {@link MemoryAddress#NULL NULL} for
+     * @param monitor The monitor to use for full screen mode, or {@link MemorySegment#NULL NULL} for
      *                windowed mode.
-     * @param share   The window whose context to share resources with, or {@link MemoryAddress#NULL NULL}
+     * @param share   The window whose context to share resources with, or {@link MemorySegment#NULL NULL}
      *                to not share resources.
-     * @return The handle of the created window, or {@link MemoryAddress#NULL NULL} if an
+     * @return The handle of the created window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM}, {@link #INVALID_VALUE}, {@link #API_UNAVAILABLE},
@@ -2214,11 +2211,11 @@ public class GLFW {
      * @param height    The desired height, in screen coordinates, of the window.
      *                  This must be greater than zero.
      * @param title     The initial, UTF-8 encoded window title.
-     * @param monitor   The monitor to use for full screen mode, or {@link MemoryAddress#NULL NULL} for
+     * @param monitor   The monitor to use for full screen mode, or {@link MemorySegment#NULL NULL} for
      *                  windowed mode.
-     * @param share     The window whose context to share resources with, or {@link MemoryAddress#NULL NULL}
+     * @param share     The window whose context to share resources with, or {@link MemorySegment#NULL NULL}
      *                  to not share resources.
-     * @return The handle of the created window, or {@link MemoryAddress#NULL NULL} if an
+     * @return The handle of the created window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateWindow(int, int, Addressable, Addressable, Addressable) ncreateWindow
      */
@@ -2410,14 +2407,14 @@ public class GLFW {
      * This function retrieves the position, in screen coordinates, of the
      * upper-left corner of the content area of the specified window.
      * <p>
-     * Any or all of the position arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
-     * non-{@link MemoryAddress#NULL NULL} position arguments will be set to zero.
+     * Any or all of the position arguments may be {@link MemorySegment#NULL NULL}.  If an error occurs, all
+     * non-{@link MemorySegment#NULL NULL} position arguments will be set to zero.
      *
      * @param window The window to query.
      * @param xpos   Where to store the x-coordinate of the upper-left corner of
-     *               the content area, or {@link MemoryAddress#NULL NULL}.
+     *               the content area, or {@link MemorySegment#NULL NULL}.
      * @param ypos   Where to store the y-coordinate of the upper-left corner of
-     *               the content area, or {@link MemoryAddress#NULL NULL}.
+     *               the content area, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.remark <b>Wayland:</b> There is no way for an application to retrieve the global
@@ -2520,14 +2517,14 @@ public class GLFW {
      * framebuffer of the window in pixels, see
      * {@link #ngetFramebufferSize(Addressable, Addressable, Addressable) getFramebufferSize}.
      * <p>
-     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
-     * non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     * Any or all of the size arguments may be {@link MemorySegment#NULL NULL}.  If an error occurs, all
+     * non-{@link MemorySegment#NULL NULL} size arguments will be set to zero.
      *
      * @param window The window whose size to retrieve.
      * @param width  Where to store the width, in screen coordinates, of the
-     *               content area, or {@link MemoryAddress#NULL NULL}.
+     *               content area, or {@link MemorySegment#NULL NULL}.
      * @param height Where to store the height, in screen coordinates, of the
-     *               content area, or {@link MemoryAddress#NULL NULL}.
+     *               content area, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -2717,14 +2714,14 @@ public class GLFW {
      * specified window.  If you wish to retrieve the size of the window in screen
      * coordinates, see {@link #ngetWindowSize(Addressable, Addressable, Addressable) getWindowSize}.
      * <p>
-     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
-     * non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     * Any or all of the size arguments may be {@link MemorySegment#NULL NULL}.  If an error occurs, all
+     * non-{@link MemorySegment#NULL NULL} size arguments will be set to zero.
      *
      * @param window The window whose framebuffer to query.
      * @param width  Where to store the width, in pixels, of the framebuffer,
-     *               or {@link MemoryAddress#NULL NULL}.
+     *               or {@link MemorySegment#NULL NULL}.
      * @param height Where to store the height, in pixels, of the framebuffer,
-     *               or {@link MemoryAddress#NULL NULL}.
+     *               or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -2799,18 +2796,18 @@ public class GLFW {
      * the offset along a particular coordinate axis, the retrieved values will
      * always be zero or positive.
      * <p>
-     * Any or all of the size arguments may be {@link MemoryAddress#NULL NULL}.
-     * If an error occurs, all non-{@link MemoryAddress#NULL NULL} size arguments will be set to zero.
+     * Any or all of the size arguments may be {@link MemorySegment#NULL NULL}.
+     * If an error occurs, all non-{@link MemorySegment#NULL NULL} size arguments will be set to zero.
      *
      * @param window The window whose frame size to query.
      * @param left   Where to store the size, in screen coordinates, of the left
-     *               edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     *               edge of the window frame, or {@link MemorySegment#NULL NULL}.
      * @param top    Where to store the size, in screen coordinates, of the top
-     *               edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     *               edge of the window frame, or {@link MemorySegment#NULL NULL}.
      * @param right  Where to store the size, in screen coordinates, of the
-     *               right edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     *               right edge of the window frame, or {@link MemorySegment#NULL NULL}.
      * @param bottom Where to store the size, in screen coordinates, of the
-     *               bottom edge of the window frame, or {@link MemoryAddress#NULL NULL}.
+     *               bottom edge of the window frame, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -2905,8 +2902,8 @@ public class GLFW {
      * to be on.
      *
      * @param window The window to query.
-     * @param xscale Where to store the x-axis content scale, or {@link MemoryAddress#NULL NULL}.
-     * @param yscale Where to store the y-axis content scale, or {@link MemoryAddress#NULL NULL}.
+     * @param xscale Where to store the x-axis content scale, or {@link MemorySegment#NULL NULL}.
+     * @param yscale Where to store the y-axis content scale, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -3214,7 +3211,7 @@ public class GLFW {
      * in full screen on.
      *
      * @param window The window to query.
-     * @return The monitor, or {@link MemoryAddress#NULL NULL} if the window is in windowed mode or an
+     * @return The monitor, or {@link MemorySegment#NULL NULL} if the window is in windowed mode or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -3232,13 +3229,13 @@ public class GLFW {
      * Sets the mode, monitor, video mode and placement of a window.
      * <p>
      * This function sets the monitor that the window uses for full screen mode or,
-     * if the monitor is {@link MemoryAddress#NULL NULL}, makes it windowed mode.
+     * if the monitor is {@link MemorySegment#NULL NULL}, makes it windowed mode.
      * <p>
      * When setting a monitor, this function updates the width, height and refresh
      * rate of the desired video mode and switches to the video mode closest to it.
      * The window position is ignored when setting a monitor.
      * <p>
-     * When the monitor is {@link MemoryAddress#NULL NULL}, the position,
+     * When the monitor is {@link MemorySegment#NULL NULL}, the position,
      * width and height are used to place the window content area.
      * The refresh rate is ignored when no monitor is specified.
      * <p>
@@ -3250,7 +3247,7 @@ public class GLFW {
      * floating, resizable, has size or aspect ratio limits, etc.
      *
      * @param window      The window whose monitor, size or video mode to set.
-     * @param monitor     The desired monitor, or {@link MemoryAddress#NULL NULL} to set windowed mode.
+     * @param monitor     The desired monitor, or {@link MemorySegment#NULL NULL} to set windowed mode.
      * @param xpos        The desired x-coordinate of the upper-left corner of the
      *                    content area.
      * @param ypos        The desired y-coordinate of the upper-left corner of the
@@ -3359,7 +3356,7 @@ public class GLFW {
      * <p>
      * This function sets the user-defined pointer of the specified window.  The
      * current value is retained until the window is destroyed.  The initial value
-     * is {@link MemoryAddress#NULL NULL}.
+     * is {@link MemorySegment#NULL NULL}.
      *
      * @param window  The window whose pointer to set.
      * @param pointer The new value.
@@ -3380,7 +3377,7 @@ public class GLFW {
      * Returns the user pointer of the specified window.
      * <p>
      * This function returns the current value of the user-defined pointer of the
-     * specified window.  The initial value is {@link MemoryAddress#NULL NULL}.
+     * specified window.  The initial value is {@link MemorySegment#NULL NULL}.
      *
      * @param window The window whose pointer to return.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
@@ -3405,9 +3402,9 @@ public class GLFW {
      * area of the window.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int xpos, int ypos)}</pre>
      * For more information about the callback parameters, see the
@@ -3431,7 +3428,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowPosCallback(Addressable, Addressable) nsetWindowPosCallback
      */
@@ -3447,9 +3444,9 @@ public class GLFW {
      * in screen coordinates, of the content area of the window.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
      * For more information about the callback parameters, see the
@@ -3471,7 +3468,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowSizeCallback(Addressable, Addressable) nsetWindowSizeCallback
      */
@@ -3492,9 +3489,9 @@ public class GLFW {
      * The close callback is not triggered by {@link #destroyWindow}.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window)}</pre>
      * For more information about the callback parameters, see the
@@ -3518,7 +3515,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowCloseCallback(Addressable, Addressable) nsetWindowCloseCallback
      */
@@ -3538,9 +3535,9 @@ public class GLFW {
      * very infrequently or never at all.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window);}</pre>
      * For more information about the callback parameters, see the
@@ -3562,7 +3559,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowRefreshCallback(Addressable, Addressable) nsetWindowRefreshCallback
      */
@@ -3583,9 +3580,9 @@ public class GLFW {
      * and {@link #nsetMouseButtonCallback(Addressable, Addressable) setMouseButtonCallback}.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int focused)}</pre>
      * For more information about the callback parameters, see the
@@ -3607,7 +3604,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowFocusCallback(Addressable, Addressable) nsetWindowFocusCallback
      */
@@ -3622,9 +3619,9 @@ public class GLFW {
      * is called when the window is iconified or restored.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int iconified)}</pre>
      * For more information about the callback parameters, see the
@@ -3648,7 +3645,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowIconifyCallback(Addressable, Addressable) nsetWindowIconifyCallback
      */
@@ -3663,9 +3660,9 @@ public class GLFW {
      * is called when the window is maximized or restored.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int maximized)}</pre>
      * For more information about the callback parameters, see the
@@ -3687,7 +3684,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowMaximizeCallback(Addressable, Addressable) nsetWindowMaximizeCallback
      */
@@ -3702,9 +3699,9 @@ public class GLFW {
      * which is called when the framebuffer of the specified window is resized.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
      * For more information about the callback parameters, see the
@@ -3726,7 +3723,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetFramebufferSizeCallback(Addressable, Addressable) nsetFramebufferSizeCallback
      */
@@ -3741,9 +3738,9 @@ public class GLFW {
      * which is called when the content scale of the specified window changes.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, float xscale, float yscale)}</pre>
      * For more information about the callback parameters, see the
@@ -3766,7 +3763,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowContentScaleCallback(Addressable, Addressable) nsetWindowContentScaleCallback
      */
@@ -4055,7 +4052,7 @@ public class GLFW {
      * If the key is {@link #KEY_UNKNOWN}, the scancode is used to identify the key,
      * otherwise the scancode is ignored.  If you specify a non-printable key, or
      * {@link #KEY_UNKNOWN} and a scancode that maps to a non-printable key, this
-     * function returns {@link MemoryAddress#NULL NULL} but does not emit an error.
+     * function returns {@link MemorySegment#NULL NULL} but does not emit an error.
      * <p>
      * This behavior allows you to always pass in the arguments in the
      * <a href="https://www.glfw.org/docs/latest/input_guide.html#input_key">key callback</a>
@@ -4092,7 +4089,7 @@ public class GLFW {
      *
      * @param key      The key to query, or {@link #KEY_UNKNOWN}.
      * @param scancode The scancode of the key to query.
-     * @return The UTF-8 encoded, layout-specific name of the key, or {@link MemoryAddress#NULL NULL}.
+     * @return The UTF-8 encoded, layout-specific name of the key, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.remark The contents of the returned string may change when a keyboard
@@ -4228,14 +4225,14 @@ public class GLFW {
      * {@code floor} function.  Casting directly to an integer type works for positive
      * coordinates, but fails for negative ones.
      * <p>
-     * Any or all of the position arguments may be {@link MemoryAddress#NULL NULL}.  If an error occurs, all
-     * non-{@link MemoryAddress#NULL NULL} position arguments will be set to zero.
+     * Any or all of the position arguments may be {@link MemorySegment#NULL NULL}.  If an error occurs, all
+     * non-{@link MemorySegment#NULL NULL} position arguments will be set to zero.
      *
      * @param window The desired window.
      * @param xpos   Where to store the cursor x-coordinate, relative to the
-     *               left edge of the content area, or {@link MemoryAddress#NULL NULL}.
+     *               left edge of the content area, or {@link MemorySegment#NULL NULL}.
      * @param ypos   Where to store the cursor y-coordinate, relative to the to
-     *               top edge of the content area, or {@link MemoryAddress#NULL NULL}.
+     *               top edge of the content area, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -4355,7 +4352,7 @@ public class GLFW {
      * @param image The desired cursor image.
      * @param xhot  The desired x-coordinate, in pixels, of the cursor hotspot.
      * @param yhot  The desired y-coordinate, in pixels, of the cursor hotspot.
-     * @return The handle of the created cursor, or {@link MemoryAddress#NULL NULL} if an
+     * @return The handle of the created cursor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
@@ -4379,7 +4376,7 @@ public class GLFW {
      * @param image The desired cursor image.
      * @param xhot  The desired x-coordinate, in pixels, of the cursor hotspot.
      * @param yhot  The desired y-coordinate, in pixels, of the cursor hotspot.
-     * @return The handle of the created cursor, or {@link MemoryAddress#NULL NULL} if an
+     * @return The handle of the created cursor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateCursor(Addressable, int, int) ncreateCursor
      */
@@ -4394,7 +4391,7 @@ public class GLFW {
      * that can be set for a window with {@link #setCursor}.
      *
      * @param shape One of the <a href="https://www.glfw.org/docs/latest/group__shapes.html">standard shapes</a>.
-     * @return A new cursor ready to use or {@link MemoryAddress#NULL NULL} if an
+     * @return A new cursor ready to use or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
@@ -4447,7 +4444,7 @@ public class GLFW {
      * has input focus.
      *
      * @param window The window to set the cursor for.
-     * @param cursor The cursor to set, or {@link MemoryAddress#NULL NULL} to switch
+     * @param cursor The cursor to set, or {@link MemorySegment#NULL NULL} to switch
      *               back to the default arrow cursor.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
@@ -4488,9 +4485,9 @@ public class GLFW {
      * scancode may be zero.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new key callback, or {@link MemoryAddress#NULL NULL} to remove the currently
+     * @param callback The new key callback, or {@link MemorySegment#NULL NULL} to remove the currently
      *                 set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int key, int scancode, int action, int mods)}</pre>
      * For more information about the callback parameters, see the
@@ -4512,7 +4509,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new key callback, or {@code null} to remove the currently
      *                 set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetKeyCallback(Addressable, Addressable) nsetKeyCallback
      */
@@ -4539,9 +4536,9 @@ public class GLFW {
      * on Windows.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint)}</pre>
      * For more information about the callback parameters, see the
@@ -4563,7 +4560,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCharCallback(Addressable, Addressable) nsetCharCallback
      */
@@ -4588,9 +4585,9 @@ public class GLFW {
      * {@link #nsetKeyCallback(Addressable, Addressable) key callback} instead.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or an
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint, int mods)}</pre>
      * For more information about the callback parameters, see the
@@ -4614,7 +4611,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or an
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nsetCharModsCallback(Addressable, Addressable) nsetCharModsCallback
      * @deprecated Scheduled for removal in version 4.0.
@@ -4637,9 +4634,9 @@ public class GLFW {
      * {@link #nsetWindowFocusCallback(Addressable, Addressable) window focus callback} has been called.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int button, int action, int mods)}</pre>
      * For more information about the callback parameters, see the
@@ -4661,7 +4658,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMouseButtonCallback(Addressable, Addressable) nsetMouseButtonCallback
      */
@@ -4678,9 +4675,9 @@ public class GLFW {
      * content area of the window.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, double xpos, double ypos);}</pre>
      * For more information about the callback parameters, see the
@@ -4702,7 +4699,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorPosCallback(Addressable, Addressable) nsetCursorPosCallback
      */
@@ -4718,9 +4715,9 @@ public class GLFW {
      * the window.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int entered)}</pre>
      * For more information about the callback parameters, see the
@@ -4742,7 +4739,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorEnterCallback(Addressable, Addressable) nsetCursorEnterCallback
      */
@@ -4761,9 +4758,9 @@ public class GLFW {
      * wheel or a touchpad scrolling area.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new scroll callback, or {@link MemoryAddress#NULL NULL} to remove the
+     * @param callback The new scroll callback, or {@link MemorySegment#NULL NULL} to remove the
      *                 currently set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, double xoffset, double yoffset)}</pre>
      * For more information about the callback parameters, see the
@@ -4785,7 +4782,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new scroll callback, or {@code null} to remove the
      *                 currently set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetScrollCallback(Addressable, Addressable) nsetScrollCallback
      */
@@ -4805,9 +4802,9 @@ public class GLFW {
      * make a deep copy.
      *
      * @param window   The window whose callback to set.
-     * @param callback The new file drop callback, or {@link MemoryAddress#NULL NULL} to remove the
+     * @param callback The new file drop callback, or {@link MemorySegment#NULL NULL} to remove the
      *                 currently set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int path_count, const char* paths[])}</pre>
      * For more information about the callback parameters, see the
@@ -4830,7 +4827,7 @@ public class GLFW {
      * @param window   The window whose callback to set.
      * @param callback The new file drop callback, or {@code null} to remove the
      *                 currently set callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetDropCallback(Addressable, Addressable) nsetDropCallback
      */
@@ -4867,7 +4864,7 @@ public class GLFW {
      * This function returns the values of all axes of the specified joystick.
      * Each element in the array is a value between -1.0 and 1.0.
      * <p>
-     * If the specified joystick is not present this function will return {@link MemoryAddress#NULL NULL}
+     * If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
      * but will not generate an error.  This can be used instead of first calling
      * {@link #joystickPresent}.
      *
@@ -4875,7 +4872,7 @@ public class GLFW {
      * @param count Where to store the number of axis values in the returned
      *              array.  This is set to zero if the joystick is not present or an error
      *              occurred.
-     * @return An array of axis values, or {@link MemoryAddress#NULL NULL} if the
+     * @return An array of axis values, or {@link MemorySegment#NULL NULL} if the
      * joystick is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
@@ -4931,7 +4928,7 @@ public class GLFW {
      * <i>left</i>.  To disable these extra buttons, set the
      * {@link #JOYSTICK_HAT_BUTTONS} init hint before initialization.
      * <p>
-     * If the specified joystick is not present this function will return {@link MemoryAddress#NULL NULL}
+     * If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
      * but will not generate an error.  This can be used instead of first calling
      * {@link #joystickPresent}.
      *
@@ -4939,7 +4936,7 @@ public class GLFW {
      * @param count Where to store the number of button states in the returned
      *              array.  This is set to zero if the joystick is not present or an error
      *              occurred.
-     * @return An array of button states, or {@link MemoryAddress#NULL NULL} if the joystick is not present
+     * @return An array of button states, or {@link MemorySegment#NULL NULL} if the joystick is not present
      * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
@@ -5012,7 +5009,7 @@ public class GLFW {
      *      // State of hat 2 could be right-up, right or right-down
      *  }}</pre>
      * <p>
-     *  If the specified joystick is not present this function will return {@link MemoryAddress#NULL NULL}
+     *  If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
      *  but will not generate an error.  This can be used instead of first calling
      *  {@link #joystickPresent}.
      * <!-- todo don't leave a blank line -->
@@ -5020,7 +5017,7 @@ public class GLFW {
      *  @param count Where to store the number of hat states in the returned
      *  array.  This is set to zero if the joystick is not present or an error
      *  occurred.
-     *  @return An array of hat states, or {@link MemoryAddress#NULL NULL} if the joystick is not present
+     *  @return An array of hat states, or {@link MemorySegment#NULL NULL} if the joystick is not present
      *  or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      *  @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      *  {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
@@ -5065,12 +5062,12 @@ public class GLFW {
      * The returned string is allocated and freed by GLFW.  You should not free it
      * yourself.
      * <p>
-     * If the specified joystick is not present this function will return {@link MemoryAddress#NULL NULL}
+     * If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
      * but will not generate an error.  This can be used instead of first calling
      * {@link #joystickPresent}.
      *
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
-     * @return The UTF-8 encoded name of the joystick, or {@link MemoryAddress#NULL NULL} if the joystick
+     * @return The UTF-8 encoded name of the joystick, or {@link MemorySegment#NULL NULL} if the joystick
      * is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
@@ -5112,7 +5109,7 @@ public class GLFW {
      * joystick will always have a GUID even if there is no gamepad mapping
      * assigned to it.
      * <p>
-     * If the specified joystick is not present this function will return {@link MemoryAddress#NULL NULL}
+     * If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
      * but will not generate an error.  This can be used instead of first calling
      * {@link #joystickPresent}.
      * <p>
@@ -5123,7 +5120,7 @@ public class GLFW {
      * depending on what hardware information the platform specific APIs provide.
      *
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
-     * @return The UTF-8 encoded GUID of the joystick, or {@link MemoryAddress#NULL NULL} if the joystick
+     * @return The UTF-8 encoded GUID of the joystick, or {@link MemorySegment#NULL NULL} if the joystick
      * is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
@@ -5159,7 +5156,7 @@ public class GLFW {
      * <p>
      * This function sets the user-defined pointer of the specified joystick.  The
      * current value is retained until the joystick is disconnected.  The initial
-     * value is {@link MemoryAddress#NULL NULL}.
+     * value is {@link MemorySegment#NULL NULL}.
      * <p>
      * This function may be called from the joystick callback, even for a joystick
      * that is being disconnected.
@@ -5183,7 +5180,7 @@ public class GLFW {
      * Returns the user pointer of the specified joystick.
      * <p>
      * This function returns the current value of the user-defined pointer of the
-     * specified joystick.  The initial value is {@link MemoryAddress#NULL NULL}.
+     * specified joystick.  The initial value is {@link MemorySegment#NULL NULL}.
      * <p>
      * This function may be called from the joystick callback, even for a joystick
      * that is being disconnected.
@@ -5243,9 +5240,9 @@ public class GLFW {
      * called by joystick functions.  The function will then return whatever it
      * returns if the joystick is not present.
      *
-     * @param callback The new callback, or {@link MemoryAddress#NULL NULL} to remove the currently set
+     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(int jid, int event)}</pre>
      * For more information about the callback parameters, see the
@@ -5266,7 +5263,7 @@ public class GLFW {
      *
      * @param callback The new callback, or {@code null} to remove the currently set
      *                 callback.
-     * @return The previously set callback, or {@link MemoryAddress#NULL NULL} if no callback was set or the
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or the
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetJoystickCallback(Addressable) nsetJoystickCallback
      */
@@ -5328,12 +5325,12 @@ public class GLFW {
      * gamepad mapping assigned to the specified joystick.
      * <p>
      * If the specified joystick is not present or does not have a gamepad mapping
-     * this function will return {@link MemoryAddress#NULL NULL} but will not generate an error.  Call
+     * this function will return {@link MemorySegment#NULL NULL} but will not generate an error.  Call
      * {@link #joystickPresent} to check whether it is present regardless of
      * whether it has a mapping.
      *
      * @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
-     * @return The UTF-8 encoded name of the gamepad, or {@link MemoryAddress#NULL NULL} if the
+     * @return The UTF-8 encoded name of the gamepad, or {@link MemorySegment#NULL NULL} if the
      * joystick is not present, does not have a mapping or an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and {@link #INVALID_ENUM}.
@@ -5423,7 +5420,7 @@ public class GLFW {
      * This function sets the system clipboard to the specified, UTF-8 encoded
      * string.
      *
-     * @param window Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
+     * @param window Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
      * @param string A UTF-8 encoded string.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
@@ -5444,7 +5441,7 @@ public class GLFW {
      * Sets the clipboard to the specified string.
      *
      * @param allocator The string allocator.
-     * @param window    Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
+     * @param window    Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
      * @param string    A UTF-8 encoded string.
      * @see #nsetClipboardString(Addressable, Addressable) nsetClipboardString
      */
@@ -5457,11 +5454,11 @@ public class GLFW {
      * <p>
      * This function returns the contents of the system clipboard, if it contains
      * or is convertible to a UTF-8 encoded string.  If the clipboard is empty or
-     * if its contents cannot be converted, {@link MemoryAddress#NULL NULL} is returned and a
+     * if its contents cannot be converted, {@link MemorySegment#NULL NULL} is returned and a
      * {@link #FORMAT_UNAVAILABLE} error is generated.
      *
-     * @param window Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
-     * @return The contents of the clipboard as a UTF-8 encoded string, or {@link MemoryAddress#NULL NULL}
+     * @param window Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
+     * @return The contents of the clipboard as a UTF-8 encoded string, or {@link MemorySegment#NULL NULL}
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #FORMAT_UNAVAILABLE} and {@link #PLATFORM_ERROR}.
@@ -5484,7 +5481,7 @@ public class GLFW {
     /**
      * Returns the contents of the clipboard as a string.
      *
-     * @param window Deprecated.  Any valid window or {@link MemoryAddress#NULL NULL}.
+     * @param window Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
      * @return The contents of the clipboard as a UTF-8 encoded string, or {@code null}
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      */
@@ -5613,7 +5610,7 @@ public class GLFW {
      * a window without a context will generate a {@link #NO_WINDOW_CONTEXT}
      * error.
      *
-     * @param window The window whose context to make current, or {@link MemoryAddress#NULL NULL} to
+     * @param window The window whose context to make current, or {@link MemorySegment#NULL NULL} to
      *               detach the current context.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_WINDOW_CONTEXT} and {@link #PLATFORM_ERROR}.
@@ -5634,7 +5631,7 @@ public class GLFW {
      * This function returns the window whose OpenGL or OpenGL ES context is
      * current on the calling thread.
      *
-     * @return The window whose context is current, or {@link MemoryAddress#NULL NULL} if no window's
+     * @return The window whose context is current, or {@link MemorySegment#NULL NULL} if no window's
      * context is current.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function may be called from any thread.
@@ -5787,14 +5784,14 @@ public class GLFW {
      * {@code vkGetInstanceProcAddr} and {@code vkGetDeviceProcAddr} instead.
      *
      * @param procName The ASCII encoded name of the function.
-     * @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
+     * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_CURRENT_CONTEXT} and {@link #PLATFORM_ERROR}.
      * @glfw.remark The address of a given function is not guaranteed to be the same
      * between contexts.
      * <p>
-     * This function may return a non-{@link MemoryAddress#NULL NULL} address despite the
+     * This function may return a non-{@link MemorySegment#NULL NULL} address despite the
      * associated version or extension not being available.  Always check the
      * context version or extension string first.
      * @glfw.pointer_lifetime The returned function pointer is valid until the context
@@ -5814,13 +5811,13 @@ public class GLFW {
      * Returns the address of the specified function for the current
      * context.
      *
-     * @param session  The memory session to allocate the string.
-     * @param procName The ASCII encoded name of the function.
-     * @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
+     * @param allocator The segment allocator to allocate the string.
+     * @param procName  The ASCII encoded name of the function.
+     * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      */
-    public static MemoryAddress getProcAddress(MemorySession session, String procName) {
-        return ngetProcAddress(session.allocateUtf8String(procName));
+    public static MemoryAddress getProcAddress(SegmentAllocator allocator, String procName) {
+        return ngetProcAddress(allocator.allocateUtf8String(procName));
     }
 
     /**
@@ -5858,17 +5855,17 @@ public class GLFW {
      * additional extensions you can pass this list directly to the
      * {@code VkInstanceCreateInfo} struct.
      * <p>
-     * If Vulkan is not available on the machine, this function returns {@link MemoryAddress#NULL NULL} and
+     * If Vulkan is not available on the machine, this function returns {@link MemorySegment#NULL NULL} and
      * generates a {@link #API_UNAVAILABLE} error.  Call {@link #vulkanSupported}
      * to check whether Vulkan is at least minimally available.
      * <p>
      * If Vulkan is available but no set of extensions allowing window surface
-     * creation was found, this function returns {@link MemoryAddress#NULL NULL}.  You may still use Vulkan
+     * creation was found, this function returns {@link MemorySegment#NULL NULL}.  You may still use Vulkan
      * for off-screen rendering and compute work.
      *
      * @param count Where to store the number of extensions in the returned
      *              array.  This is set to zero if an error occurred.
-     * @return An array of ASCII encoded extension names, or {@link MemoryAddress#NULL NULL} if an
+     * @return An array of ASCII encoded extension names, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #API_UNAVAILABLE}.
@@ -5892,7 +5889,7 @@ public class GLFW {
     /**
      * Returns the Vulkan instance extensions required by GLFW.
      *
-     * @return An array of ASCII encoded extension names, or {@link MemoryAddress#NULL NULL} if an
+     * @return An array of ASCII encoded extension names, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetRequiredInstanceExtensions(Addressable) ngetRequiredInstanceExtensions
      */

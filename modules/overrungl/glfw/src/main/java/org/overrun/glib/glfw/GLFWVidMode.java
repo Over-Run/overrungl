@@ -73,31 +73,31 @@ public class GLFWVidMode extends Pointer {
      * Create a {@code GLFWvidmode} instance.
      *
      * @param address the address
-     * @param session the memory session
+     * @param scope   the segment scope
      */
-    public GLFWVidMode(Addressable address, MemorySession session) {
-        super(address, session);
+    public GLFWVidMode(Addressable address, MemorySession scope) {
+        super(address, scope);
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given memory session.
+     * Creates a {@code GLFWvidmode} instance with the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWVidMode create(MemorySession session) {
-        return new GLFWVidMode(session.allocate(LAYOUT), session);
+    public static GLFWVidMode create(MemorySession scope) {
+        return new GLFWVidMode(scope.allocate(LAYOUT), scope);
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given memory session and count.
+     * Creates a {@code GLFWvidmode} instance with the given segment scope and count.
      *
-     * @param session the memory session
-     * @param count   the count
+     * @param scope the segment scope
+     * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession session, long count) {
-        return new Buffer(session.allocateArray(LAYOUT, count), session, count);
+    public static Buffer create(MemorySession scope, long count) {
+        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
     }
 
     /**
@@ -106,7 +106,7 @@ public class GLFWVidMode extends Pointer {
      * @return the immutable state
      */
     public Value constCast() {
-        return new Value(rawAddress(), session(), this);
+        return new Value(rawAddress(), scope(), this);
     }
 
     /**
@@ -115,7 +115,7 @@ public class GLFWVidMode extends Pointer {
      * @return The width, in screen coordinates, of the video mode.
      */
     public int width() {
-        return (int) pWidth.get(segment(LAYOUT, session));
+        return (int) pWidth.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -124,7 +124,7 @@ public class GLFWVidMode extends Pointer {
      * @return The height, in screen coordinates, of the video mode.
      */
     public int height() {
-        return (int) pHeight.get(segment(LAYOUT, session));
+        return (int) pHeight.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -133,7 +133,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the red channel of the video mode.
      */
     public int redBits() {
-        return (int) pRedBits.get(segment(LAYOUT, session));
+        return (int) pRedBits.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -142,7 +142,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the green channel of the video mode.
      */
     public int greenBits() {
-        return (int) pGreenBits.get(segment(LAYOUT, session));
+        return (int) pGreenBits.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -151,7 +151,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the blue channel of the video mode.
      */
     public int blueBits() {
-        return (int) pBlueBits.get(segment(LAYOUT, session));
+        return (int) pBlueBits.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -160,7 +160,7 @@ public class GLFWVidMode extends Pointer {
      * @return The refresh rate, in Hz, of the video mode.
      */
     public int refreshRate() {
-        return (int) pRefreshRate.get(segment(LAYOUT, session));
+        return (int) pRefreshRate.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -177,8 +177,8 @@ public class GLFWVidMode extends Pointer {
         private final int blueBits;
         private final int refreshRate;
 
-        private Value(Addressable address, MemorySession session, GLFWVidMode mode) {
-            super(address, session);
+        private Value(Addressable address, MemorySession scope, GLFWVidMode mode) {
+            super(address, scope);
             this.width = mode.width();
             this.height = mode.height();
             this.redBits = mode.redBits();
@@ -248,11 +248,11 @@ public class GLFWVidMode extends Pointer {
          * Create a {@code GLFWvidmode.Buffer} instance.
          *
          * @param address      the address
-         * @param session      the memory session
+         * @param scope        the segment scope
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession session, long elementCount) {
-            super(address, session);
+        public Buffer(Addressable address, MemorySession scope, long elementCount) {
+            super(address, scope);
             this.elementCount = elementCount;
         }
 
@@ -271,7 +271,7 @@ public class GLFWVidMode extends Pointer {
          * @return The {@link Buffer} with instanced memory segment.
          */
         public Segmented toSegmented() {
-            return new Segmented(rawAddress(), session(), elementCount());
+            return new Segmented(rawAddress(), scope(), elementCount());
         }
 
         /**
@@ -281,7 +281,7 @@ public class GLFWVidMode extends Pointer {
          * @return The width, in screen coordinates, of the video mode.
          */
         public int widthAt(long index) {
-            return (int) pWidth.get(segment(LAYOUT, session), index);
+            return (int) pWidth.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -291,7 +291,7 @@ public class GLFWVidMode extends Pointer {
          * @return The height, in screen coordinates, of the video mode.
          */
         public int heightAt(long index) {
-            return (int) pHeight.get(segment(LAYOUT, session), index);
+            return (int) pHeight.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -301,7 +301,7 @@ public class GLFWVidMode extends Pointer {
          * @return The bit depth of the red channel of the video mode.
          */
         public int redBitsAt(long index) {
-            return (int) pRedBits.get(segment(LAYOUT, session), index);
+            return (int) pRedBits.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -311,7 +311,7 @@ public class GLFWVidMode extends Pointer {
          * @return The bit depth of the green channel of the video mode.
          */
         public int greenBitsAt(long index) {
-            return (int) pGreenBits.get(segment(LAYOUT, session), index);
+            return (int) pGreenBits.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -321,7 +321,7 @@ public class GLFWVidMode extends Pointer {
          * @return The bit depth of the blue channel of the video mode.
          */
         public int blueBitsAt(long index) {
-            return (int) pBlueBits.get(segment(LAYOUT, session), index);
+            return (int) pBlueBits.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -331,7 +331,7 @@ public class GLFWVidMode extends Pointer {
          * @return The refresh rate, in Hz, of the video mode.
          */
         public int refreshRateAt(long index) {
-            return (int) pRefreshRate.get(segment(LAYOUT, session), index);
+            return (int) pRefreshRate.get(segment(LAYOUT, scope), index);
         }
 
         @Override
@@ -373,13 +373,13 @@ public class GLFWVidMode extends Pointer {
         public static final class Segmented extends Buffer {
             private final MemorySegment segment;
 
-            private Segmented(Addressable address, MemorySession session, long elementCount) {
-                super(address, session, elementCount);
-                segment = segment(LAYOUT, session);
+            private Segmented(Addressable address, MemorySession scope, long elementCount) {
+                super(address, scope, elementCount);
+                segment = segment(LAYOUT, scope);
             }
 
             @Override
-            public MemorySegment segment(MemoryLayout layout, MemorySession session) {
+            public MemorySegment segment(MemoryLayout layout, MemorySession scope) {
                 return segment;
             }
         }

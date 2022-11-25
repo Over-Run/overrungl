@@ -38,7 +38,7 @@ import java.lang.invoke.MethodHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class GL3DFXTbuffer {
+public final class GL3DFXTbuffer {
     @Nullable
     public static MethodHandle glTbufferMask3DFX;
 

@@ -49,9 +49,9 @@ public final class BufferBuilderTest {
     private int program, vao, vbo;
 
     public void run() {
-        try (var session = MemorySession.openShared()) {
-            init(session);
-            load(session);
+        try (var arena = MemorySession.openShared()) {
+            init(arena);
+            load(arena);
         }
         loop();
 
@@ -66,7 +66,7 @@ public final class BufferBuilderTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession session) {
+    private void init(MemorySession arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -74,7 +74,7 @@ public final class BufferBuilderTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(session, 300, 300, "BufferBuilder Test", MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(arena, 300, 300, "BufferBuilder Test", MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -84,7 +84,7 @@ public final class BufferBuilderTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -100,7 +100,7 @@ public final class BufferBuilderTest {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession session) {
+    private void load(MemorySession arena) {
         if (GLCaps.loadShared(GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -109,7 +109,7 @@ public final class BufferBuilderTest {
         program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
-        GL.shaderSource(session, vsh, """
+        GL.shaderSource(arena, vsh, """
             #version 130
 
             in vec3 position;
@@ -122,7 +122,7 @@ public final class BufferBuilderTest {
                 vertexColor = color;
             }
             """);
-        GL.shaderSource(session, fsh, """
+        GL.shaderSource(arena, fsh, """
             #version 130
 
             in vec3 vertexColor;
@@ -137,8 +137,8 @@ public final class BufferBuilderTest {
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
         GL.attachShader(program, fsh);
-        GL.bindAttribLocation(session, program, 0, "position");
-        GL.bindAttribLocation(session, program, 1, "color");
+        GL.bindAttribLocation(arena, program, 0, "position");
+        GL.bindAttribLocation(arena, program, 1, "color");
         GL.linkProgram(program);
         GL.detachShader(program, vsh);
         GL.detachShader(program, fsh);

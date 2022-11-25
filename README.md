@@ -7,6 +7,22 @@
 
 Overrun Game Library is a set of C/C++ library bindings and native accessor.
 
+## Using as a Dependency
+
+The libraries are available on Maven Central.
+
+You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
+
+### Using -SNAPSHOT Versions
+
+We publish `-SNAPSHOT` versions frequently.
+
+For `-SNAPSHOT` versions, you can use the [list of available versions](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/over-run/overrungl/maven-metadata.xml) and include this maven repository:
+
+```groovy
+maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
+```
+
 ## Goals
 
 Our goal is to support these libraries with full document:

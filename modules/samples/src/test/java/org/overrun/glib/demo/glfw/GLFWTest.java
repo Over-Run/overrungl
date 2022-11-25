@@ -46,8 +46,8 @@ public final class GLFWTest {
     private MemoryAddress window;
 
     public void run() {
-        try (var session = MemorySession.openShared()) {
-            init(session);
+        try (var arena = MemorySession.openShared()) {
+            init(arena);
             load();
         }
         loop();
@@ -59,7 +59,7 @@ public final class GLFWTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession session) {
+    private void init(MemorySession arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -67,7 +67,7 @@ public final class GLFWTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(session, 300, 300, "Hello World!", MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(arena, 300, 300, "Hello World!", MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -77,7 +77,7 @@ public final class GLFWTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(

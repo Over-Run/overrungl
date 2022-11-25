@@ -26,7 +26,6 @@ package org.overrun.glib.glfw;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySession;
-import java.lang.ref.Cleaner;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,27 +35,28 @@ import java.util.Map;
  * @author squid233
  * @since 0.1.0
  */
-public class Callbacks {
-    private static final Map<Addressable, MemorySession> SESSION_MAP = new HashMap<>();
+public final class Callbacks {
+    private static final Map<Addressable, MemorySession> ARENA_MAP = new HashMap<>();
 
     /**
-     * Creates a memory session for the given window.
+     * Creates an arena for the given window. The lifetime of the callbacks are available
+     * until {@link #free(Addressable)} has been called.
      *
      * @param window the window address
-     * @return the memory session
+     * @return the arena
      */
     public static MemorySession create(Addressable window) {
-        return SESSION_MAP.computeIfAbsent(window, k -> MemorySession.openShared(Cleaner.create()));
+        return ARENA_MAP.computeIfAbsent(window, k -> MemorySession.openShared());
     }
 
     /**
-     * Free the memory session for the given window.
+     * Free the arena for the given window.
      *
      * @param window the window
      */
     public static void free(Addressable window) {
-        if (SESSION_MAP.containsKey(window)) {
-            SESSION_MAP.remove(window).close();
+        if (ARENA_MAP.containsKey(window)) {
+            ARENA_MAP.remove(window).close();
         }
     }
 }

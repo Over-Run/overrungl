@@ -35,7 +35,6 @@ import java.lang.foreign.ValueLayout;
 import java.util.Arrays;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
-import static org.overrun.glib.Configurations.*;
 
 /**
  * An off-heap memory stack.
@@ -50,7 +49,10 @@ import static org.overrun.glib.Configurations.*;
  * @since 0.1.0
  */
 public class MemoryStack extends Pointer implements AutoCloseable {
-    private static final long DEFAULT_STACK_SIZE = STACK_SIZE.get() * 1024;
+    private static final boolean CHECKS = Configurations.CHECKS.get();
+    private static final boolean DEBUG = Configurations.DEBUG.get();
+    private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
+    private static final long DEFAULT_STACK_SIZE = Configurations.STACK_SIZE.get() * 1024;
     private static final int DEFAULT_STACK_FRAMES = 8;
     private static final ThreadLocal<MemoryStack> TLS = ThreadLocal.withInitial(MemoryStack::create);
 
@@ -120,7 +122,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      */
     public static MemoryStack create(MemoryAddress buffer, long size) {
         var address = buffer.address();
-        return DEBUG_STACK.get()
+        return DEBUG_STACK
             ? new DebugMemoryStack(buffer, address, size)
             : new MemoryStack(buffer, address, size);
     }
@@ -134,7 +136,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param size    the backing memory size
      */
     public static MemoryStack ncreate(MemoryAddress address, long size) {
-        return DEBUG_STACK.get()
+        return DEBUG_STACK
             ? new DebugMemoryStack(null, address, size)
             : new MemoryStack(null, address, size);
     }
@@ -164,7 +166,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     }
 
     private void frameOverflow() {
-        if (DEBUG.get()) {
+        if (DEBUG) {
             RuntimeHelper.apiLog("[WARNING] Out of frame stack space (" + frames.length + ") in thread: " + Thread.currentThread());
         }
         frames = Arrays.copyOf(frames, frames.length * 3 / 2);
@@ -302,7 +304,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * cases or in auto-generated code.</p>
      */
     public void setPointer(long pointer) {
-        if (CHECKS.get()) {
+        if (CHECKS) {
             checkPointer(pointer);
         }
 
@@ -335,7 +337,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
         long address = (rawLong + pointer - size) & -alignment;
 
         pointer = address - rawLong;
-        if (CHECKS.get() && pointer < 0) {
+        if (CHECKS && pointer < 0) {
             throw new OutOfMemoryError("Out of stack space.");
         }
 
@@ -368,7 +370,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @return the allocated buffer
      */
     public MemoryAddress malloc(long alignment, long size) {
-        if (DEBUG.get()) {
+        if (DEBUG) {
             checkAlignment(alignment);
         }
         return nmalloc(alignment, size);
@@ -378,7 +380,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * Calloc version of {@link #malloc(long, long)}.
      */
     public MemoryAddress calloc(long alignment, long size) {
-        if (DEBUG.get()) {
+        if (DEBUG) {
             checkAlignment(alignment);
         }
         return ncalloc(alignment, size, 1);

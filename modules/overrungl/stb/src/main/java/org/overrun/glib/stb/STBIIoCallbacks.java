@@ -68,10 +68,10 @@ public class STBIIoCallbacks extends Pointer {
      * Create a {@code stbi_io_callbacks} instance.
      *
      * @param address the address
-     * @param session the memory session
+     * @param scope   the segment scope
      */
-    public STBIIoCallbacks(Addressable address, MemorySession session) {
-        super(address, session);
+    public STBIIoCallbacks(Addressable address, MemorySession scope) {
+        super(address, scope);
     }
 
     /**
@@ -167,13 +167,13 @@ public class STBIIoCallbacks extends Pointer {
     }
 
     /**
-     * Creates a {@code stbi_io_callbacks} instance with the given memory session.
+     * Creates a {@code stbi_io_callbacks} instance with the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return the instance
      */
-    public static STBIIoCallbacks create(MemorySession session) {
-        return new STBIIoCallbacks(session.allocate(LAYOUT), session);
+    public static STBIIoCallbacks create(MemorySession scope) {
+        return new STBIIoCallbacks(scope.allocate(LAYOUT), scope);
     }
 
     /**
@@ -182,7 +182,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the read callback
      */
     public MemoryAddress read() {
-        return (MemoryAddress) pRead.get(segment(LAYOUT, session));
+        return (MemoryAddress) pRead.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -191,7 +191,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the skip callback
      */
     public MemoryAddress skip() {
-        return (MemoryAddress) pSkip.get(segment(LAYOUT, session));
+        return (MemoryAddress) pSkip.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -200,7 +200,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the eof callback
      */
     public MemoryAddress eof() {
-        return (MemoryAddress) pEof.get(segment(LAYOUT, session));
+        return (MemoryAddress) pEof.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -210,7 +210,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks read(Read read) {
-        pRead.set(segment(LAYOUT, session), read.address(session));
+        pRead.set(segment(LAYOUT, scope), read.address(scope));
         return this;
     }
 
@@ -221,7 +221,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks skip(Skip skip) {
-        pSkip.set(segment(LAYOUT, session), skip.address(session));
+        pSkip.set(segment(LAYOUT, scope), skip.address(scope));
         return this;
     }
 
@@ -232,7 +232,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks eof(Eof eof) {
-        pEof.set(segment(LAYOUT, session), eof.address(session));
+        pEof.set(segment(LAYOUT, scope), eof.address(scope));
         return this;
     }
 }

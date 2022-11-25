@@ -59,31 +59,31 @@ public class DrawElementsIndirectCommand extends Pointer {
      * Create the pointer instance.
      *
      * @param address the address
-     * @param session the memory session
+     * @param scope   the segment scope
      */
-    public DrawElementsIndirectCommand(Addressable address, MemorySession session) {
-        super(address, session);
+    public DrawElementsIndirectCommand(Addressable address, MemorySession scope) {
+        super(address, scope);
     }
 
     /**
-     * Creates a command instance with the given memory session.
+     * Creates a command instance with the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return the instance
      */
-    public static DrawElementsIndirectCommand create(MemorySession session) {
-        return new DrawElementsIndirectCommand(session.allocate(LAYOUT), session);
+    public static DrawElementsIndirectCommand create(MemorySession scope) {
+        return new DrawElementsIndirectCommand(scope.allocate(LAYOUT), scope);
     }
 
     /**
-     * Creates a command instance with the given memory session and count.
+     * Creates a command instance with the given segment scope and count.
      *
-     * @param session the memory session
-     * @param count   the count
+     * @param scope the segment scope
+     * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession session, long count) {
-        return new Buffer(session.allocateArray(LAYOUT, count), session, count);
+    public static Buffer create(MemorySession scope, long count) {
+        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
     }
 
     /**
@@ -93,7 +93,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand count(int count) {
-        pCount.set(segment(LAYOUT, session), count);
+        pCount.set(segment(LAYOUT, scope), count);
         return this;
     }
 
@@ -104,7 +104,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand primCount(int primCount) {
-        pPrimCount.set(segment(LAYOUT, session), primCount);
+        pPrimCount.set(segment(LAYOUT, scope), primCount);
         return this;
     }
 
@@ -115,7 +115,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand firstIndex(int firstIndex) {
-        pFirstIndex.set(segment(LAYOUT, session), firstIndex);
+        pFirstIndex.set(segment(LAYOUT, scope), firstIndex);
         return this;
     }
 
@@ -126,7 +126,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseVertex(int baseVertex) {
-        pBaseVertex.set(segment(LAYOUT, session), baseVertex);
+        pBaseVertex.set(segment(LAYOUT, scope), baseVertex);
         return this;
     }
 
@@ -137,7 +137,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(segment(LAYOUT, session), baseInstance);
+        pBaseInstance.set(segment(LAYOUT, scope), baseInstance);
         return this;
     }
 
@@ -147,7 +147,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        return (int) pCount.get(segment(LAYOUT, session));
+        return (int) pCount.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -156,7 +156,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        return (int) pPrimCount.get(segment(LAYOUT, session));
+        return (int) pPrimCount.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -165,7 +165,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the first index
      */
     public int firstIndex() {
-        return (int) pFirstIndex.get(segment(LAYOUT, session));
+        return (int) pFirstIndex.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -174,7 +174,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base vertex
      */
     public int baseVertex() {
-        return (int) pBaseVertex.get(segment(LAYOUT, session));
+        return (int) pBaseVertex.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -183,7 +183,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(segment(LAYOUT, session));
+        return (int) pBaseInstance.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -205,11 +205,11 @@ public class DrawElementsIndirectCommand extends Pointer {
          * Create the pointer instance.
          *
          * @param address      the address
-         * @param session      the memory session
+         * @param scope        the segment scope
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession session, long elementCount) {
-            super(address, session);
+        public Buffer(Addressable address, MemorySession scope, long elementCount) {
+            super(address, scope);
             this.elementCount = elementCount;
         }
 
@@ -230,7 +230,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer count(long index, int count) {
-            pCount.set(segment(LAYOUT, session), index, count);
+            pCount.set(segment(LAYOUT, scope), index, count);
             return this;
         }
 
@@ -242,7 +242,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer primCount(long index, int primCount) {
-            pPrimCount.set(segment(LAYOUT, session), index, primCount);
+            pPrimCount.set(segment(LAYOUT, scope), index, primCount);
             return this;
         }
 
@@ -254,7 +254,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer firstIndex(long index, int firstIndex) {
-            pFirstIndex.set(segment(LAYOUT, session), index, firstIndex);
+            pFirstIndex.set(segment(LAYOUT, scope), index, firstIndex);
             return this;
         }
 
@@ -266,7 +266,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer baseVertex(long index, int baseVertex) {
-            pBaseVertex.set(segment(LAYOUT, session), index, baseVertex);
+            pBaseVertex.set(segment(LAYOUT, scope), index, baseVertex);
             return this;
         }
 
@@ -278,7 +278,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer baseInstance(long index, int baseInstance) {
-            pBaseInstance.set(segment(LAYOUT, session), index, baseInstance);
+            pBaseInstance.set(segment(LAYOUT, scope), index, baseInstance);
             return this;
         }
 
@@ -314,7 +314,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the count
          */
         public int countAt(long index) {
-            return (int) pCount.get(segment(LAYOUT, session), index);
+            return (int) pCount.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -324,7 +324,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the primitive count
          */
         public int primCountAt(long index) {
-            return (int) pPrimCount.get(segment(LAYOUT, session), index);
+            return (int) pPrimCount.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -334,7 +334,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the first index
          */
         public int firstIndexAt(long index) {
-            return (int) pFirstIndex.get(segment(LAYOUT, session), index);
+            return (int) pFirstIndex.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -344,7 +344,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the base vertex
          */
         public int baseVertexAt(long index) {
-            return (int) pBaseVertex.get(segment(LAYOUT, session), index);
+            return (int) pBaseVertex.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -354,7 +354,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the base instance
          */
         public int baseInstanceAt(long index) {
-            return (int) pBaseInstance.get(segment(LAYOUT, session), index);
+            return (int) pBaseInstance.get(segment(LAYOUT, scope), index);
         }
 
         @Override

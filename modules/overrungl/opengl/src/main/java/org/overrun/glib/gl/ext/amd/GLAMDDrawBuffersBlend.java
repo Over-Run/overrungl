@@ -39,7 +39,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDDrawBuffersBlend {
+public final class GLAMDDrawBuffersBlend {
     @Nullable
     public static MethodHandle
         glBlendEquationIndexedAMD, glBlendEquationSeparateIndexedAMD, glBlendFuncIndexedAMD, glBlendFuncSeparateIndexedAMD;

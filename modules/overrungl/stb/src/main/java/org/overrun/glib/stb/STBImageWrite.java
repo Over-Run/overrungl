@@ -43,7 +43,7 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @author squid233
  * @since 0.1.0
  */
-public class STBImageWrite {
+public final class STBImageWrite {
     private static MethodHandle
         stbi_flip_vertically_on_write, stbi_get_write_force_png_filter, stbi_get_write_png_compression_level,
         stbi_get_write_tga_with_rle, stbi_set_write_force_png_filter, stbi_set_write_png_compression_level,
@@ -230,24 +230,24 @@ public class STBImageWrite {
         }
     }
 
-    public static boolean pngToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
-        return npngToFunc(func.address(session), context, w, h, comp, data, strideInBytes);
+    public static boolean pngToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
+        return npngToFunc(func.address(scope), context, w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmpToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
-        return nbmpToFunc(func.address(session), context, w, h, comp, data);
+    public static boolean bmpToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
+        return nbmpToFunc(func.address(scope), context, w, h, comp, data);
     }
 
-    public static boolean tgaToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
-        return ntgaToFunc(func.address(session), context, w, h, comp, data);
+    public static boolean tgaToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
+        return ntgaToFunc(func.address(scope), context, w, h, comp, data);
     }
 
-    public static boolean hdrToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(session), context, w, h, comp, session.allocateArray(JAVA_FLOAT, data));
+    public static boolean hdrToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, float[] data) {
+        return nhdrToFunc(func.address(scope), context, w, h, comp, scope.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpgToFunc(MemorySession session, STBIWriteFunc func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
-        return njpgToFunc(func.address(session), context, x, y, comp, data, quality);
+    public static boolean jpgToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
+        return njpgToFunc(func.address(scope), context, x, y, comp, data, quality);
     }
 
     public static void flipVerticallyOnWrite(boolean flip) {

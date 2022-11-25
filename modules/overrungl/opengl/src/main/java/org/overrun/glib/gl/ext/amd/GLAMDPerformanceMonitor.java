@@ -45,7 +45,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDPerformanceMonitor {
+public final class GLAMDPerformanceMonitor {
     @Nullable
     public static MethodHandle
         glBeginPerfMonitorAMD, glDeletePerfMonitorsAMD, glEndPerfMonitorAMD, glGenPerfMonitorsAMD,

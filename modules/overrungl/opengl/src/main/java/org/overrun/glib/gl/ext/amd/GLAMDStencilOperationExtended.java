@@ -38,7 +38,7 @@ import java.lang.invoke.MethodHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDStencilOperationExtended {
+public final class GLAMDStencilOperationExtended {
     @Nullable
     public static MethodHandle glStencilOpValueAMD;
 

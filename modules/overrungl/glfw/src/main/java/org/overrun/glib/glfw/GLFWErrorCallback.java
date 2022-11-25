@@ -35,7 +35,7 @@ import java.util.function.Consumer;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWErrorCallback {
+public final class GLFWErrorCallback {
     /**
      * Returns a {@link IGLFWErrorFun} instance that throws an {@link IllegalStateException} when an error occurs.
      *

@@ -73,7 +73,7 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Gets the API logger. Defaults to {@link System#out}
+     * Gets the API logger. Defaults to {@link System#out}.
      *
      * @return the API logger
      */
@@ -144,7 +144,7 @@ public final class RuntimeHelper {
             }
             uri = file.toURI();
         }
-        // Load library by the path with the global session
+        // Load library by the path with the global segment scope
         return SymbolLookup.libraryLookup(Path.of(uri), MemorySession.global());
     }
 
@@ -153,7 +153,7 @@ public final class RuntimeHelper {
      *
      * @param symbol   the address of the target function.
      * @param function the function descriptor of the target function.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
+     * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
     public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
@@ -177,7 +177,7 @@ public final class RuntimeHelper {
      *
      * @param symbol   the address of the target function.
      * @param function the function descriptor of the target function.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
+     * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
     public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptors function) {

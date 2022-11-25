@@ -42,7 +42,7 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @author squid233
  * @since 0.1.0
  */
-public class STBImage {
+public final class STBImage {
     private static MethodHandle
         stbi__unpremultiply_on_load_thread, stbi_convert_iphone_png_to_rgb, stbi_convert_iphone_png_to_rgb_thread,
         stbi_failure_reason, stbi_hdr_to_ldr_gamma, stbi_hdr_to_ldr_scale, stbi_image_free, stbi_info,

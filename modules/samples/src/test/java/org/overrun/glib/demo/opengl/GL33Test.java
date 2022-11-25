@@ -35,6 +35,7 @@ import org.overrun.glib.joml.Matrixn;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -57,9 +58,9 @@ public class GL33Test {
     }
 
     public void run() {
-        try (var session = MemorySession.openShared()) {
-            init(session);
-            load(session);
+        try (var arena = MemorySession.openShared()) {
+            init(arena);
+            load(arena);
         }
         loop();
 
@@ -76,7 +77,7 @@ public class GL33Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession session) {
+    private void init(MemorySession arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -87,7 +88,7 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-        window = GLFW.createWindow(session, 640, 480, WND_TITLE, MemoryAddress.NULL, MemoryAddress.NULL);
+        window = GLFW.createWindow(arena, 640, 480, WND_TITLE, MemoryAddress.NULL, MemoryAddress.NULL);
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
@@ -97,7 +98,7 @@ public class GL33Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(session, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -113,7 +114,7 @@ public class GL33Test {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession session) {
+    private void load(MemorySession arena) {
         if (GLCaps.loadShared(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -121,7 +122,7 @@ public class GL33Test {
         program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
-        GL.shaderSource(session, vsh, """
+        GL.shaderSource(arena, vsh, """
             #version 330
 
             layout (location = 0) in vec3 position;
@@ -137,7 +138,7 @@ public class GL33Test {
                 vertexColor = color;
             }
             """);
-        GL.shaderSource(session, fsh, """
+        GL.shaderSource(arena, fsh, """
             #version 330
 
             in vec3 vertexColor;
@@ -157,13 +158,13 @@ public class GL33Test {
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
-        rotationMat = GL.getUniformLocation(session, program, "rotationMat");
+        rotationMat = GL.getUniformLocation(arena, program, "rotationMat");
 
         vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL.bufferData(session, GL_ARRAY_BUFFER, new float[]{
+        GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
             // Vertex          Color
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
@@ -172,7 +173,7 @@ public class GL33Test {
         }, GL_STATIC_DRAW);
         ebo = GL.genBuffer();
         GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        GL.bufferData(session, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
+        GL.bufferData(arena, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 2, 3, 0
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
@@ -186,7 +187,7 @@ public class GL33Test {
             INSTANCE_COUNT,
             Matrixn.MAT4F
         );
-        var matrices = session.allocate(iseq);
+        var matrices = arena.allocate(iseq);
         float mul = (float) Math.sqrt(INSTANCE_COUNT);
         float scaling = 1f / mul;
         float[] translations = new float[2 * INSTANCE_COUNT];
@@ -223,7 +224,7 @@ public class GL33Test {
 
     private void loop() {
         var matrix = new Matrix4f();
-        var pRotationMat = Matrixn.allocate(MemorySession.openImplicit(), matrix);
+        var pRotationMat = Matrixn.allocate(SegmentAllocator.implicitAllocator(), matrix);
 
         double lastTime;
         double time;
@@ -253,8 +254,8 @@ public class GL33Test {
             lastTime = time;
             time = GLFW.getTime();
             dt = time - lastTime;
-            try (var session = MemorySession.openShared()) {
-                GLFW.setWindowTitle(session, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
+            try (var arena = MemorySession.openShared()) {
+                GLFW.setWindowTitle(arena, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
             }
         }
     }

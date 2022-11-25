@@ -66,31 +66,31 @@ public class GLFWGamepadState extends Pointer {
      * Create a {@code GLFWgamepadstate} instance.
      *
      * @param address the address
-     * @param session the memory session
+     * @param scope   the segment scope
      */
-    public GLFWGamepadState(Addressable address, MemorySession session) {
-        super(address, session);
+    public GLFWGamepadState(Addressable address, MemorySession scope) {
+        super(address, scope);
     }
 
     /**
-     * Creates a {@code GLFWgamepadstate} instance with the given memory session.
+     * Creates a {@code GLFWgamepadstate} instance with the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWGamepadState create(MemorySession session) {
-        return new GLFWGamepadState(session.allocate(LAYOUT), session);
+    public static GLFWGamepadState create(MemorySession scope) {
+        return new GLFWGamepadState(scope.allocate(LAYOUT), scope);
     }
 
     /**
-     * Gets the button state array by the memory session.
+     * Gets the button state array by the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
      * {@code PRESS} or {@code RELEASE}.
      */
-    public byte[] buttons(MemorySession session) {
-        var seg = segment(LAYOUT, session);
+    public byte[] buttons(MemorySession scope) {
+        var seg = segment(LAYOUT, scope);
         byte[] arr = new byte[15];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (byte) pButtons.get(seg, (long) i);
@@ -105,7 +105,7 @@ public class GLFWGamepadState extends Pointer {
      * {@code PRESS} or {@code RELEASE}.
      */
     public byte[] buttons() {
-        return buttons(session);
+        return buttons(scope);
     }
 
     /**
@@ -115,19 +115,19 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        var seg = segment(LAYOUT, session);
+        var seg = segment(LAYOUT, scope);
         return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
     }
 
     /**
-     * Gets the axe state array by the memory session.
+     * Gets the axe state array by the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
      * in the range -1.0 to 1.0 inclusive.
      */
-    public float[] axes(MemorySession session) {
-        var seg = segment(LAYOUT, session);
+    public float[] axes(MemorySession scope) {
+        var seg = segment(LAYOUT, scope);
         float[] arr = new float[6];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (float) pAxes.get(seg, (long) i);
@@ -142,7 +142,7 @@ public class GLFWGamepadState extends Pointer {
      * in the range -1.0 to 1.0 inclusive.
      */
     public float[] axes() {
-        return axes(session);
+        return axes(scope);
     }
 
     /**
@@ -152,7 +152,7 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        var seg = segment(LAYOUT, session);
+        var seg = segment(LAYOUT, scope);
         return (float) pAxes.get(seg, (long) index);
     }
 }

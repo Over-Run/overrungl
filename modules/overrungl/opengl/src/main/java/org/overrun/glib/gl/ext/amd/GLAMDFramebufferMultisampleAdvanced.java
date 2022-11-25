@@ -39,7 +39,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDFramebufferMultisampleAdvanced {
+public final class GLAMDFramebufferMultisampleAdvanced {
     @Nullable
     public static MethodHandle
         glNamedRenderbufferStorageMultisampleAdvancedAMD, glRenderbufferStorageMultisampleAdvancedAMD;

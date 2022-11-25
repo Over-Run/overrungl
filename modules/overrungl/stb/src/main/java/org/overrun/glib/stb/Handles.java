@@ -42,8 +42,7 @@ final class Handles {
 
     static MethodHandle downcall(String name,
                                  FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(lookup.lookup(name),
-            function.descriptor());
+        return RuntimeHelper.downcallThrow(lookup.lookup(name), function);
     }
 
     public static void initialize() {

@@ -828,6 +828,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix2fc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, mat.m00());
         dest.set(JAVA_FLOAT, offset + 4, mat.m01());
@@ -844,6 +845,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix2dc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, mat.m00());
         dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
@@ -860,6 +862,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3x2fc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, mat.m00());
         dest.set(JAVA_FLOAT, offset + 4, mat.m01());
@@ -878,6 +881,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3x2dc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, mat.m00());
         dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
@@ -896,6 +900,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3fc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, mat.m00());
         dest.set(JAVA_FLOAT, offset + 4, mat.m01());
@@ -917,6 +922,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3dc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, mat.m00());
         dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
@@ -938,6 +944,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4x3fc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, mat.m00());
         dest.set(JAVA_FLOAT, offset + 4, mat.m01());
@@ -962,6 +969,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4x3dc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, mat.m00());
         dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
@@ -986,6 +994,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4fc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, mat.m00());
         dest.set(JAVA_FLOAT, offset + 4, mat.m01());
@@ -1014,6 +1023,7 @@ public final class Matrixn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4dc mat, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, mat.m00());
         dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
@@ -1041,6 +1051,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix2fc mat, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, mat.m00());
         dest.set(JAVA_FLOAT, 4, mat.m01());
@@ -1056,6 +1067,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix2dc mat, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, mat.m00());
         dest.set(JAVA_DOUBLE, 8, mat.m01());
@@ -1071,6 +1083,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3x2fc mat, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, mat.m00());
         dest.set(JAVA_FLOAT, 4, mat.m01());
@@ -1088,6 +1101,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3x2dc mat, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, mat.m00());
         dest.set(JAVA_DOUBLE, 8, mat.m01());
@@ -1105,6 +1119,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3fc mat, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, mat.m00());
         dest.set(JAVA_FLOAT, 4, mat.m01());
@@ -1125,6 +1140,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix3dc mat, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, mat.m00());
         dest.set(JAVA_DOUBLE, 8, mat.m01());
@@ -1145,6 +1161,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4x3fc mat, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, mat.m00());
         dest.set(JAVA_FLOAT, 4, mat.m01());
@@ -1168,6 +1185,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4x3dc mat, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, mat.m00());
         dest.set(JAVA_DOUBLE, 8, mat.m01());
@@ -1191,6 +1209,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4fc mat, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, mat.m00());
         dest.set(JAVA_FLOAT, 4, mat.m01());
@@ -1218,6 +1237,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Matrix4dc mat, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, mat.m00());
         dest.set(JAVA_DOUBLE, 8, mat.m01());

@@ -27,10 +27,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.gl.ext.GL3DFXTbuffer;
 import org.overrun.glib.gl.ext.amd.*;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.*;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -41,7 +38,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @author squid233
  * @since 0.1.0
  */
-public class GLExtCaps {
+public final class GLExtCaps {
     /**
      * The extension flags.
      *
@@ -225,7 +222,7 @@ public class GLExtCaps {
         }
     }
 
-    private static boolean getExtensions(MemorySession session,
+    private static boolean getExtensions(SegmentAllocator allocator,
                                          int version,
                                          MemorySegment outExts,
                                          MemorySegment outNumExtsI,
@@ -242,14 +239,14 @@ public class GLExtCaps {
             int numExtsI = GL10C.getInteger(GLConstC.GL_NUM_EXTENSIONS);
             Addressable extsI = MemoryAddress.NULL;
             if (numExtsI > 0) {
-                extsI = session.allocateArray(ADDRESS, numExtsI);
+                extsI = allocator.allocateArray(ADDRESS, numExtsI);
             }
             if (extsI == MemoryAddress.NULL) {
                 return false;
             }
             for (int index = 0; index < numExtsI; index++) {
                 var glStrTmp = GL30C.getStringi(GLConstC.GL_EXTENSIONS, index);
-                ((MemorySegment) extsI).setAtIndex(ADDRESS, index, session.allocateUtf8String(glStrTmp));
+                ((MemorySegment) extsI).setAtIndex(ADDRESS, index, allocator.allocateUtf8String(glStrTmp));
             }
             outNumExtsI.set(JAVA_INT, 0, numExtsI);
             outExtsI[0] = (MemorySegment) extsI;
@@ -264,21 +261,20 @@ public class GLExtCaps {
                 return false;
             }
             return exts.contains(ext);
-        } else {
-            for (int index = 0; index < numExtsI; index++) {
-                if (extsI[index].equals(ext)) {
-                    return true;
-                }
+        }
+        for (int index = 0; index < numExtsI; index++) {
+            if (extsI[index].equals(ext)) {
+                return true;
             }
         }
         return false;
     }
 
-    static boolean findExtensionsGL(int version, MemorySession session) {
-        var pExts = session.allocate(ADDRESS);
-        var pNumExtsI = session.allocate(JAVA_INT);
+    static boolean findExtensionsGL(int version, SegmentAllocator allocator) {
+        var pExts = allocator.allocate(ADDRESS);
+        var pNumExtsI = allocator.allocate(JAVA_INT);
         var pExtsI = new MemorySegment[1];
-        if (!getExtensions(session, version, pExts, pNumExtsI, pExtsI)) return false;
+        if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI)) return false;
 
         String exts = pExts.getUtf8String(0);
         int numExtsI = pNumExtsI.get(JAVA_INT, 0);

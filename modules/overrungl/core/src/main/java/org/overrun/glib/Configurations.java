@@ -65,7 +65,7 @@ public final class Configurations {
      * @author squid233
      * @since 0.1.0
      */
-    public static final class Entry<T> {
+    public static final class Entry<T> implements Supplier<T> {
         private T value;
         private final Supplier<T> defaultValue;
 
@@ -87,6 +87,7 @@ public final class Configurations {
          *
          * @return the value, or the default value if it is {@code null}
          */
+        @Override
         public T get() {
             if (value == null) {
                 value = defaultValue.get();

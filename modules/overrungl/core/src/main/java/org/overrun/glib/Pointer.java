@@ -14,19 +14,19 @@ public class Pointer implements HasAddress {
      */
     protected final Addressable address;
     /**
-     * The pointer memory session.
+     * The pointer segment scope.
      */
-    protected final MemorySession session;
+    protected final MemorySession scope;
 
     /**
      * Create the pointer instance.
      *
      * @param address the address
-     * @param session the memory session
+     * @param scope   the segment scope
      */
-    public Pointer(Addressable address, MemorySession session) {
+    public Pointer(Addressable address, MemorySession scope) {
         this.address = address;
-        this.session = session;
+        this.scope = scope;
     }
 
     /**
@@ -50,36 +50,36 @@ public class Pointer implements HasAddress {
     }
 
     /**
-     * Gets the memory session.
+     * Gets the segment scope.
      *
-     * @return the memory session
+     * @return the segment scope
      */
-    public MemorySession session() {
-        return session;
+    public MemorySession scope() {
+        return scope;
     }
 
     /**
      * Gets as memory segment.
      *
      * @param bytesSize the bytes size
-     * @param session   the memory session to allocate
+     * @param scope     the segment scope to allocate
      * @return the memory segment
      */
-    public MemorySegment segment(long bytesSize, MemorySession session) {
+    public MemorySegment segment(long bytesSize, MemorySession scope) {
         if (rawAddress() instanceof MemorySegment segment) {
             return segment;
         }
-        return MemorySegment.ofAddress(address(), bytesSize, session);
+        return MemorySegment.ofAddress(address(), bytesSize, scope);
     }
 
     /**
      * Gets as memory segment.
      *
-     * @param layout  the memory layout
-     * @param session the memory session to allocate
+     * @param layout the memory layout
+     * @param scope  the segment scope to allocate
      * @return the memory segment
      */
-    public MemorySegment segment(MemoryLayout layout, MemorySession session) {
-        return segment(layout.byteSize(), session);
+    public MemorySegment segment(MemoryLayout layout, MemorySession scope) {
+        return segment(layout.byteSize(), scope);
     }
 }

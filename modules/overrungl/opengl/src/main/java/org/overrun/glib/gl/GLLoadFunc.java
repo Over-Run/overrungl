@@ -27,11 +27,13 @@ package org.overrun.glib.gl;
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.util.value.Value2;
 
 import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
-import java.lang.ref.Cleaner;
 import java.util.function.BiFunction;
 
 /**
@@ -46,55 +48,52 @@ import java.util.function.BiFunction;
  * @author squid233
  * @since 0.1.0
  */
-public interface GLLoadFunc extends AutoCloseable, BiFunction<MemorySession, String, MemoryAddress> {
+public interface GLLoadFunc extends BiFunction<SegmentAllocator, String, MemoryAddress> {
     /**
-     * Creates a load function with shared memory session.
+     * Creates a load function with shared arena.
      *
      * @param function the function pointer getter
-     * @return the load function
+     * @return the load function and the arena
      */
-    static GLLoadFunc ofShared(Getter function) {
-        return of(MemorySession.openShared(Cleaner.create()), function);
+    static Value2<GLLoadFunc, MemorySession> ofShared(Getter function) {
+        final var arena = MemorySession.openShared();
+        return new Value2<>(of(arena, function), arena);
     }
 
     /**
-     * Creates a load function with given memory session.
+     * Creates a load function with given segment allocator.
      *
-     * @param session  the memory session. will be <b>auto-closed</b>
-     * @param function the function pointer getter
+     * @param allocator the segment allocator.
+     * @param function  the function pointer getter
      * @return the load function
      */
-    static GLLoadFunc of(MemorySession session, Getter function) {
-        return new GLLoadFunc.Delegate(session, function);
+    static GLLoadFunc of(SegmentAllocator allocator, Getter function) {
+        return new GLLoadFunc.Delegate(allocator, function);
     }
 
     @Override
-    default MemoryAddress apply(MemorySession session, String s) {
-        return invoke(session, s);
+    default MemoryAddress apply(SegmentAllocator allocator, String s) {
+        return invoke(allocator, s);
     }
 
     /**
      * Load a function by the given name.
      *
-     * @param session  the memory session to allocate function name string
-     * @param procName the function name
+     * @param allocator the segment allocator to allocate function name string
+     * @param procName  the function name
      * @return the function address
      */
-    MemoryAddress invoke(MemorySession session, String procName);
+    MemoryAddress invoke(SegmentAllocator allocator, String procName);
 
     /**
      * Load a function by the given name and creates a downcall handle or {@code null}.
      *
      * @param procName the function name
      * @param function the function descriptor of the target function.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemoryAddress#NULL}
+     * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
     MethodHandle invoke(String procName, FunctionDescriptors function);
-
-    @Override
-    default void close() {
-    }
 
     /**
      * The function pointer getter.
@@ -103,46 +102,39 @@ public interface GLLoadFunc extends AutoCloseable, BiFunction<MemorySession, Str
      * @since 0.1.0
      */
     @FunctionalInterface
-    interface Getter extends BiFunction<MemorySession, String, MemoryAddress> {
+    interface Getter extends BiFunction<SegmentAllocator, String, MemoryAddress> {
     }
 
     /**
-     * The delegate contained a memory session and the callback.
+     * The delegate contained a segment allocator and the callback.
      *
      * @author squid233
      * @since 0.1.0
      */
     class Delegate implements GLLoadFunc {
-        private final MemorySession session;
+        private final SegmentAllocator allocator;
         private final Getter func;
 
         /**
          * Creates a delegate.
          *
-         * @param session the memory session
-         * @param func    the loading function
+         * @param allocator the segment allocator
+         * @param func      the loading function
          */
-        public Delegate(MemorySession session,
+        public Delegate(SegmentAllocator allocator,
                         Getter func) {
-            this.session = session;
+            this.allocator = allocator;
             this.func = func;
         }
 
         @Override
-        public MemoryAddress invoke(MemorySession session, String procName) {
-            return func.apply(session, procName);
+        public MemoryAddress invoke(SegmentAllocator allocator, String procName) {
+            return func.apply(allocator, procName);
         }
 
         @Override
         public @Nullable MethodHandle invoke(String procName, FunctionDescriptors function) {
-            return RuntimeHelper.downcallSafe(invoke(session, procName), function);
-        }
-
-        @Override
-        public void close() {
-            if (session.isCloseable()) {
-                session.close();
-            }
+            return RuntimeHelper.downcallSafe(invoke(allocator, procName), function);
         }
     }
 }

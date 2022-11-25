@@ -41,7 +41,7 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @author squid233
  * @since 0.1.0
  */
-public class STBImageResize {
+public final class STBImageResize {
     private static MethodHandle
         stbir_resize, stbir_resize_float, stbir_resize_float_generic, stbir_resize_region, stbir_resize_subpixel,
         stbir_resize_uint16_generic, stbir_resize_uint8, stbir_resize_uint8_generic, stbir_resize_uint8_srgb,

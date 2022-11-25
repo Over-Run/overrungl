@@ -1,6 +1,5 @@
 package org.overrun.glib;
 
-import java.lang.foreign.Addressable;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
@@ -9,20 +8,20 @@ import java.lang.invoke.MethodHandles;
 
 /**
  * The upcall stub which can be passed to other foreign functions as a function pointer,
- * with the given memory session.
+ * with the given segment scope.
  *
  * @author squid233
  * @since 0.1.0
  */
 public interface ICallback {
     /**
-     * Gets the address with the given memory session.
+     * Gets the address with the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return the memory address
      */
-    default Addressable address(MemorySession session) {
-        return segment(session, descriptor());
+    default MemorySegment address(MemorySession scope) {
+        return segment(scope, descriptor());
     }
 
     /**
@@ -44,16 +43,16 @@ public interface ICallback {
     MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException;
 
     /**
-     * Gets the memory segment of the upcall stub with the given memory session.
+     * Gets the memory segment of the upcall stub with the given segment scope.
      *
-     * @param session  the memory session
+     * @param scope    the segment scope
      * @param function the function descriptor
      * @return the memory segment
      */
-    default MemorySegment segment(MemorySession session,
+    default MemorySegment segment(MemorySession scope,
                                   FunctionDescriptor function) {
         try {
-            return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, session);
+            return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, scope);
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }

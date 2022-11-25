@@ -29,16 +29,17 @@ import org.jetbrains.annotations.NotNull;
 import org.overrun.glib.FunctionDescriptors;
 
 import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 import java.util.regex.Pattern;
 
 /**
- * The OpenGL loader.
+ * The OpenGL capabilities loader.
  *
  * @author squid233
  * @since 0.1.0
  */
-public class GLCaps {
+public final class GLCaps {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
 
     /**
@@ -103,20 +104,21 @@ public class GLCaps {
     }
 
     /**
-     * Load OpenGL compatibility profile by the given load function with shared memory session.
+     * Load OpenGL compatibility profile by the given load function with shared arena.
      *
      * @param getter the function pointer getter
      * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
      * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public static int loadShared(GLLoadFunc.Getter getter) {
-        try (var load = GLLoadFunc.ofShared(getter)) {
-            return load(load);
+        var value = GLLoadFunc.ofShared(getter);
+        try (var ignored = value.y()) {
+            return load(value.x());
         }
     }
 
     /**
-     * Load OpenGL by the given load function with shared memory session.
+     * Load OpenGL by the given load function with shared arena.
      *
      * @param forwardCompatible If {@code true}, only loading core profile functions.
      * @param getter            the function pointer getter
@@ -124,38 +126,35 @@ public class GLCaps {
      * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public static int loadShared(boolean forwardCompatible, GLLoadFunc.Getter getter) {
-        try (var load = GLLoadFunc.ofShared(getter)) {
-            return load(forwardCompatible, load);
+        var value = GLLoadFunc.ofShared(getter);
+        try (var ignored = value.y()) {
+            return load(forwardCompatible, value.x());
         }
     }
 
     /**
-     * Load OpenGL compatibility profile by the given load function with the given memory session.
+     * Load OpenGL compatibility profile by the given load function with the given segment allocator.
      *
-     * @param getter  the function pointer getter
-     * @param session the memory session. will be <b>auto-closed</b>
+     * @param allocator the segment allocator.
+     * @param getter    the function pointer getter
      * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
      * no guaranteed to actually supported version, please use {@code Ver##}
      */
-    public static int load(MemorySession session, GLLoadFunc.Getter getter) {
-        try (var load = GLLoadFunc.of(session, getter)) {
-            return load(load);
-        }
+    public static int load(SegmentAllocator allocator, GLLoadFunc.Getter getter) {
+        return load(GLLoadFunc.of(allocator, getter));
     }
 
     /**
-     * Load OpenGL by the given load function with the given memory session.
+     * Load OpenGL by the given load function with the given segment allocator.
      *
      * @param forwardCompatible If {@code true}, only loading core profile functions.
-     * @param session           the memory session. will be <b>auto-closed</b>
+     * @param allocator         the segment allocator.
      * @param getter            the function pointer getter
      * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
      * no guaranteed to actually supported version, please use {@code Ver##}
      */
-    public static int load(boolean forwardCompatible, MemorySession session, GLLoadFunc.Getter getter) {
-        try (var load = GLLoadFunc.of(session, getter)) {
-            return load(forwardCompatible, load);
-        }
+    public static int load(boolean forwardCompatible, SegmentAllocator allocator, GLLoadFunc.Getter getter) {
+        return load(forwardCompatible, GLLoadFunc.of(allocator, getter));
     }
 
     /**
@@ -212,8 +211,8 @@ public class GLCaps {
             GL14.load(load);
         }
 
-        try (var session = MemorySession.openShared()) {
-            if (!GLExtCaps.findExtensionsGL(version, session)) return 0;
+        try (var arena = MemorySession.openShared()) {
+            if (!GLExtCaps.findExtensionsGL(version, arena)) return 0;
         }
         GLExtCaps.load(load);
 

@@ -24,6 +24,8 @@
 
 package org.overrun.glib.demo.mem;
 
+import org.overrun.glib.Configurations;
+import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
 import java.lang.foreign.MemorySession;
@@ -42,33 +44,33 @@ public final class MemoryUtilTest {
         StringBuilder sb;
         long start, end, delta;
 
-        // MemorySession inside loop
+        // Arena inside loop
         sb = new StringBuilder();
         start = System.nanoTime();
         for (int i = 0; i < ALLOC_COUNT; i++) {
-            try (var session = MemorySession.openShared()) {
-                var seg = session.allocate(ValueLayout.JAVA_INT);
+            try (var arena = MemorySession.openShared()) {
+                var seg = arena.allocate(ValueLayout.JAVA_INT);
                 seg.set(ValueLayout.JAVA_INT, 0, i);
                 sb.append(seg.get(ValueLayout.JAVA_INT, 0));
             }
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemorySession  in elapsed time (in nanoseconds): " + delta);
+        System.out.println("Arena       in     elapsed time (in nanoseconds): " + delta);
 
-        // MemorySession outside loop
+        // Arena outside loop
         sb = new StringBuilder();
         start = System.nanoTime();
-        try (var session = MemorySession.openShared()) {
+        try (var arena = MemorySession.openShared()) {
             for (int i = 0; i < ALLOC_COUNT; i++) {
-                var seg = session.allocate(ValueLayout.JAVA_INT);
+                var seg = arena.allocate(ValueLayout.JAVA_INT);
                 seg.set(ValueLayout.JAVA_INT, 0, i);
                 sb.append(seg.get(ValueLayout.JAVA_INT, 0));
             }
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemorySession out elapsed time (in nanoseconds): " + delta);
+        System.out.println("Arena       out    elapsed time (in nanoseconds): " + delta);
 
         // MemoryUtil malloc
         sb = new StringBuilder();
@@ -81,7 +83,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemoryUtil malloc elapsed time (in nanoseconds): " + delta);
+        System.out.println("MemoryUtil  malloc elapsed time (in nanoseconds): " + delta);
 
         // MemoryUtil calloc
         sb = new StringBuilder();
@@ -94,10 +96,39 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemoryUtil calloc elapsed time (in nanoseconds): " + delta);
+        System.out.println("MemoryUtil  calloc elapsed time (in nanoseconds): " + delta);
+
+        // MemoryStack malloc
+        sb = new StringBuilder();
+        start = System.nanoTime();
+        try (var stack = MemoryStack.stackPush()) {
+            for (int i = 0; i < ALLOC_COUNT; i++) {
+                var seg = stack.malloc(ValueLayout.JAVA_INT);
+                seg.set(ValueLayout.JAVA_INT, 0, i);
+                sb.append(seg.get(ValueLayout.JAVA_INT, 0));
+            }
+        }
+        end = System.nanoTime();
+        delta = end - start;
+        System.out.println("MemoryStack malloc elapsed time (in nanoseconds): " + delta);
+
+        // MemoryStack calloc
+        sb = new StringBuilder();
+        start = System.nanoTime();
+        try (var stack = MemoryStack.stackPush()) {
+            for (int i = 0; i < ALLOC_COUNT; i++) {
+                var seg = stack.calloc(ValueLayout.JAVA_INT);
+                seg.set(ValueLayout.JAVA_INT, 0, i);
+                sb.append(seg.get(ValueLayout.JAVA_INT, 0));
+            }
+        }
+        end = System.nanoTime();
+        delta = end - start;
+        System.out.println("MemoryStack calloc elapsed time (in nanoseconds): " + delta);
     }
 
     public static void main(String[] args) {
+        Configurations.STACK_SIZE.set((long) Math.ceilDiv(ALLOC_COUNT, 1024 / 4) * 1024 / 4);
         // Prepare
         MemoryUtil.free(MemoryUtil.malloc(1));
         new MemoryUtilTest().run();

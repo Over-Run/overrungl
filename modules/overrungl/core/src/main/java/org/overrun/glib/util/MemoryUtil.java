@@ -31,6 +31,7 @@ import org.overrun.glib.RuntimeHelper;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
@@ -73,7 +74,7 @@ public final class MemoryUtil {
      * information.
      *
      * @param size Bytes to allocate.
-     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemoryAddress#NULL NULL}
+     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemorySegment#NULL NULL}
      * if there is insufficient memory available. The storage space pointed to by the return value is suitably aligned
      * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
      * alignment.
@@ -95,7 +96,7 @@ public final class MemoryUtil {
      * information.
      *
      * @param layout Bytes to allocate.
-     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemoryAddress#NULL NULL}
+     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemorySegment#NULL NULL}
      * if there is insufficient memory available. The storage space pointed to by the return value is suitably aligned
      * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
      * alignment.

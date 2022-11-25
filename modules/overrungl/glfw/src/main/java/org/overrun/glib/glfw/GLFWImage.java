@@ -63,31 +63,31 @@ public class GLFWImage extends Pointer {
      * Create a {@code GLFWimage} instance.
      *
      * @param address the address
-     * @param session the memory session
+     * @param scope   the segment scope
      */
-    public GLFWImage(Addressable address, MemorySession session) {
-        super(address, session);
+    public GLFWImage(Addressable address, MemorySession scope) {
+        super(address, scope);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given memory session.
+     * Creates a {@code GLFWimage} instance with the given segment scope.
      *
-     * @param session the memory session
+     * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWImage create(MemorySession session) {
-        return new GLFWImage(session.allocate(LAYOUT), session);
+    public static GLFWImage create(MemorySession scope) {
+        return new GLFWImage(scope.allocate(LAYOUT), scope);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given memory session and count.
+     * Creates a {@code GLFWimage} instance with the given segment scope and count.
      *
-     * @param session the memory session
-     * @param count   the count
+     * @param scope the segment scope
+     * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession session, long count) {
-        return new Buffer(session.allocateArray(LAYOUT, count), session, count);
+    public static Buffer create(MemorySession scope, long count) {
+        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
     }
 
     /**
@@ -97,7 +97,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage width(int width) {
-        pWidth.set(segment(LAYOUT, session), width);
+        pWidth.set(segment(LAYOUT, scope), width);
         return this;
     }
 
@@ -108,7 +108,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage height(int height) {
-        pHeight.set(segment(LAYOUT, session), height);
+        pHeight.set(segment(LAYOUT, scope), height);
         return this;
     }
 
@@ -119,7 +119,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage pixels(Addressable pixels) {
-        pPixels.set(segment(LAYOUT, session), pixels);
+        pPixels.set(segment(LAYOUT, scope), pixels);
         return this;
     }
 
@@ -129,7 +129,7 @@ public class GLFWImage extends Pointer {
      * @return The width, in pixels, of this image.
      */
     public int width() {
-        return (int) pWidth.get(segment(LAYOUT, session));
+        return (int) pWidth.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -138,7 +138,7 @@ public class GLFWImage extends Pointer {
      * @return The height, in pixels, of this image.
      */
     public int height() {
-        return (int) pHeight.get(segment(LAYOUT, session));
+        return (int) pHeight.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -147,7 +147,7 @@ public class GLFWImage extends Pointer {
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
     public MemoryAddress pixels() {
-        return (MemoryAddress) pPixels.get(segment(LAYOUT, session));
+        return (MemoryAddress) pPixels.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -167,11 +167,11 @@ public class GLFWImage extends Pointer {
          * Create a {@code GLFWimage.Buffer} instance.
          *
          * @param address      the address
-         * @param session      the memory session
+         * @param scope        the segment scope
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession session, long elementCount) {
-            super(address, session);
+        public Buffer(Addressable address, MemorySession scope, long elementCount) {
+            super(address, scope);
             this.elementCount = elementCount;
         }
 
@@ -192,7 +192,7 @@ public class GLFWImage extends Pointer {
          * @return this
          */
         public Buffer width(long index, int width) {
-            pWidth.set(segment(LAYOUT, session), index, width);
+            pWidth.set(segment(LAYOUT, scope), index, width);
             return this;
         }
 
@@ -204,7 +204,7 @@ public class GLFWImage extends Pointer {
          * @return this
          */
         public Buffer height(long index, int height) {
-            pHeight.set(segment(LAYOUT, session), index, height);
+            pHeight.set(segment(LAYOUT, scope), index, height);
             return this;
         }
 
@@ -216,7 +216,7 @@ public class GLFWImage extends Pointer {
          * @return this
          */
         public Buffer pixels(long index, Addressable pixels) {
-            pPixels.set(segment(LAYOUT, session), index, pixels);
+            pPixels.set(segment(LAYOUT, scope), index, pixels);
             return this;
         }
 
@@ -242,7 +242,7 @@ public class GLFWImage extends Pointer {
          * @return The width, in pixels, of this image.
          */
         public int widthAt(long index) {
-            return (int) pWidth.get(segment(LAYOUT, session), index);
+            return (int) pWidth.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -252,7 +252,7 @@ public class GLFWImage extends Pointer {
          * @return The height, in pixels, of this image.
          */
         public int heightAt(long index) {
-            return (int) pHeight.get(segment(LAYOUT, session), index);
+            return (int) pHeight.get(segment(LAYOUT, scope), index);
         }
 
         /**
@@ -262,7 +262,7 @@ public class GLFWImage extends Pointer {
          * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
          */
         public MemoryAddress pixelsAt(long index) {
-            return (MemoryAddress) pPixels.get(segment(LAYOUT, session), index);
+            return (MemoryAddress) pPixels.get(segment(LAYOUT, scope), index);
         }
 
         @Override

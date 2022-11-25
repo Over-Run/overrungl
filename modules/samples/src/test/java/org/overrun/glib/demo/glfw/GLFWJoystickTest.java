@@ -61,8 +61,8 @@ public final class GLFWJoystickTest {
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         GLFW.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        try (var session = MemorySession.openShared()) {
-            window = GLFW.createWindow(session, 200, 100, "Holder", MemoryAddress.NULL, MemoryAddress.NULL);
+        try (var arena = MemorySession.openShared()) {
+            window = GLFW.createWindow(arena, 200, 100, "Holder", MemoryAddress.NULL, MemoryAddress.NULL);
         }
         if (window == MemoryAddress.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
@@ -91,7 +91,7 @@ public final class GLFWJoystickTest {
             states[i] = GLFWGamepadState.create(MemorySession.global());
         }
         while (!GLFW.windowShouldClose(window)) {
-//            try (var session = MemorySession.openShared()) {
+//            try (var arena = Arena.openShared()) {
             for (int i = 0; i <= GLFW.JOYSTICK_LAST; i++) {
                 if (GLFW.joystickPresent(i)) {
                     if (GLFW.joystickIsGamepad(i)) {

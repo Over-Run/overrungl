@@ -158,8 +158,8 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void debugMessageCallback(MemorySession session, GLDebugProc callback, Addressable userParam) {
-        debugMessageCallback(callback.address(session), userParam);
+    public static void debugMessageCallback(MemorySession scope, GLDebugProc callback, Addressable userParam) {
+        debugMessageCallback(callback.address(scope), userParam);
     }
 
     public static void debugMessageControl(int source, int type, int severity, int count, Addressable ids, boolean enabled) {

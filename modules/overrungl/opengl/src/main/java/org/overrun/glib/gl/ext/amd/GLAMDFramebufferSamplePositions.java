@@ -44,7 +44,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDFramebufferSamplePositions {
+public final class GLAMDFramebufferSamplePositions {
     @Nullable
     public static MethodHandle
         glFramebufferSamplePositionsfvAMD, glGetFramebufferParameterfvAMD, glGetNamedFramebufferParameterfvAMD,

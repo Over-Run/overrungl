@@ -41,7 +41,7 @@ import java.lang.invoke.MethodHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDSamplePositions {
+public final class GLAMDSamplePositions {
     @Nullable
     public static MethodHandle glSetMultisamplefvAMD;
 

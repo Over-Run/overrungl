@@ -40,7 +40,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDMultiDrawIndirect {
+public final class GLAMDMultiDrawIndirect {
     @Nullable
     public static MethodHandle glMultiDrawArraysIndirectAMD, glMultiDrawElementsIndirectAMD;
 

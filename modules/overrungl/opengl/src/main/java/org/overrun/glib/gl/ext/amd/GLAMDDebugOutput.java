@@ -46,7 +46,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDDebugOutput {
+public final class GLAMDDebugOutput {
     @Nullable
     public static MethodHandle
         glDebugMessageCallbackAMD, glDebugMessageEnableAMD, glDebugMessageInsertAMD, glGetDebugMessageLogAMD;
@@ -67,8 +67,8 @@ public class GLAMDDebugOutput {
         }
     }
 
-    public static void glDebugMessageCallbackAMD(MemorySession session, GLDebugProcAMD callback, Addressable userParam) {
-        glDebugMessageCallbackAMD(callback.address(session), userParam);
+    public static void glDebugMessageCallbackAMD(MemorySession arena, GLDebugProcAMD callback, Addressable userParam) {
+        glDebugMessageCallbackAMD(callback.address(arena), userParam);
     }
 
     public static void glDebugMessageEnableAMD(int category, int severity, int count, Addressable ids, boolean enabled) {

@@ -634,6 +634,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector2ic vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_INT, offset, vec.x());
         dest.set(JAVA_INT, offset + 4, vec.y());
@@ -648,6 +649,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector2fc vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, vec.x());
         dest.set(JAVA_FLOAT, offset + 4, vec.y());
@@ -662,6 +664,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector2dc vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, vec.x());
         dest.set(JAVA_DOUBLE, offset + 8, vec.y());
@@ -676,6 +679,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector3ic vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_INT, offset, vec.x());
         dest.set(JAVA_INT, offset + 4, vec.y());
@@ -691,6 +695,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector3fc vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, vec.x());
         dest.set(JAVA_FLOAT, offset + 4, vec.y());
@@ -706,6 +711,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector3dc vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, vec.x());
         dest.set(JAVA_DOUBLE, offset + 8, vec.y());
@@ -721,6 +727,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector4ic vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_INT, offset, vec.x());
         dest.set(JAVA_INT, offset + 4, vec.y());
@@ -737,6 +744,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector4fc vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, vec.x());
         dest.set(JAVA_FLOAT, offset + 4, vec.y());
@@ -753,6 +761,7 @@ public final class Vectorn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector4dc vec, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, vec.x());
         dest.set(JAVA_DOUBLE, offset + 8, vec.y());
@@ -768,6 +777,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector2ic vec, MemoryAddress dest) {
         dest.set(JAVA_INT, 0, vec.x());
         dest.set(JAVA_INT, 4, vec.y());
@@ -781,6 +791,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector2fc vec, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, vec.x());
         dest.set(JAVA_FLOAT, 4, vec.y());
@@ -794,6 +805,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector2dc vec, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, vec.x());
         dest.set(JAVA_DOUBLE, 8, vec.y());
@@ -807,6 +819,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector3ic vec, MemoryAddress dest) {
         dest.set(JAVA_INT, 0, vec.x());
         dest.set(JAVA_INT, 4, vec.y());
@@ -821,6 +834,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector3fc vec, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, vec.x());
         dest.set(JAVA_FLOAT, 4, vec.y());
@@ -835,6 +849,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector3dc vec, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, vec.x());
         dest.set(JAVA_DOUBLE, 8, vec.y());
@@ -849,6 +864,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector4ic vec, MemoryAddress dest) {
         dest.set(JAVA_INT, 0, vec.x());
         dest.set(JAVA_INT, 4, vec.y());
@@ -864,6 +880,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector4fc vec, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, vec.x());
         dest.set(JAVA_FLOAT, 4, vec.y());
@@ -879,6 +896,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Vector4dc vec, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, vec.x());
         dest.set(JAVA_DOUBLE, 8, vec.y());

@@ -93,7 +93,6 @@ public final class Quaternionn {
         return put(q, MemoryUtil.malloc(Q4D));
     }
 
-
     /**
      * Allocates the quaternion on stack.
      *
@@ -186,6 +185,7 @@ public final class Quaternionn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Quaternionfc q, long offset, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, offset, q.x());
         dest.set(JAVA_FLOAT, offset + 4, q.y());
@@ -202,6 +202,7 @@ public final class Quaternionn {
      * @param dest   the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Quaterniondc q, long offset, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, offset, q.x());
         dest.set(JAVA_DOUBLE, offset + 8, q.y());
@@ -217,6 +218,7 @@ public final class Quaternionn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Quaternionfc q, MemoryAddress dest) {
         dest.set(JAVA_FLOAT, 0, q.x());
         dest.set(JAVA_FLOAT, 4, q.y());
@@ -232,6 +234,7 @@ public final class Quaternionn {
      * @param dest the destination
      * @return the destination
      */
+    @Deprecated(since = "20", forRemoval = true)
     public static MemoryAddress put(Quaterniondc q, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, q.x());
         dest.set(JAVA_DOUBLE, 8, q.y());

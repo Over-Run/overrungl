@@ -52,7 +52,7 @@ public class GLFWVulkan {
      * Returns the address of the specified Vulkan instance function.
      * <p>
      * This function returns the address of the specified Vulkan core or extension
-     * function for the specified instance.  If instance is set to {@link MemoryAddress#NULL NULL} it can
+     * function for the specified instance.  If instance is set to {@link MemorySegment#NULL NULL} it can
      * return any function exported from the Vulkan loader, including at least the
      * following functions:
      *
@@ -63,17 +63,17 @@ public class GLFWVulkan {
      *     <li>{@code vkGetInstanceProcAddr}</li>
      * </ul>
      * <p>
-     *  If Vulkan is not available on the machine, this function returns {@link MemoryAddress#NULL NULL} and
+     *  If Vulkan is not available on the machine, this function returns {@link MemorySegment#NULL NULL} and
      *  generates a {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE} error.  Call {@link GLFW#vulkanSupported vulkanSupported}
      *  to check whether Vulkan is at least minimally available.
      * <p>
      *  This function is equivalent to calling {@code vkGetInstanceProcAddr} with
      *  a platform-specific query of the Vulkan loader as a fallback.
      * <!-- todo don't leave a blank line -->
-     *  @param instance The Vulkan instance to query, or {@link MemoryAddress#NULL NULL} to retrieve
+     *  @param instance The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
      *  functions related to instance creation.
      *  @param procName The ASCII encoded name of the function.
-     *  @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
+     *  @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      *  <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      *  @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
      *  {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}.
@@ -92,16 +92,16 @@ public class GLFWVulkan {
     /**
      * Returns the address of the specified Vulkan instance function.
      *
-     * @param session  The memory session to allocate function name string.
-     * @param instance The Vulkan instance to query, or {@link MemoryAddress#NULL NULL} to retrieve
-     *                 functions related to instance creation.
-     * @param procName The ASCII encoded name of the function.
-     * @return The address of the function, or {@link MemoryAddress#NULL NULL} if an
+     * @param allocator The segment allocator to allocate function name string.
+     * @param instance  The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
+     *                  functions related to instance creation.
+     * @param procName  The ASCII encoded name of the function.
+     * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nglfwGetInstanceProcAddress(Addressable, Addressable) nglfwGetInstanceProcAddress
      */
-    public static MemoryAddress glfwGetInstanceProcAddress(MemorySession session, Addressable instance, String procName) {
-        return nglfwGetInstanceProcAddress(instance, session.allocateUtf8String(procName));
+    public static MemoryAddress glfwGetInstanceProcAddress(SegmentAllocator allocator, Addressable instance, String procName) {
+        return nglfwGetInstanceProcAddress(instance, allocator.allocateUtf8String(procName));
     }
 
     /**
@@ -168,7 +168,7 @@ public class GLFWVulkan {
      *
      * @param instance  The Vulkan instance to create the surface in.
      * @param window    The window to create the surface for.
-     * @param allocator The allocator to use, or {@link MemoryAddress#NULL NULL} to use the default
+     * @param allocator The allocator to use, or {@link MemorySegment#NULL NULL} to use the default
      *                  allocator.
      * @param surface   Where to store the handle of the surface.  This is set
      *                  to {@code VK_NULL_HANDLE} if an error occurred.
@@ -207,7 +207,7 @@ public class GLFWVulkan {
      *
      * @param instance  The Vulkan instance to create the surface in.
      * @param window    The window to create the surface for.
-     * @param allocator The allocator to use, or {@link MemoryAddress#NULL NULL} to use the default
+     * @param allocator The allocator to use, or {@link MemorySegment#NULL NULL} to use the default
      *                  allocator.
      * @param surface   Where to store the handle of the surface.  This is set
      *                  to {@code VK_NULL_HANDLE} if an error occurred.

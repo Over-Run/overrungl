@@ -39,7 +39,7 @@ import static org.overrun.glib.gl.GLCaps.check;
  * @author squid233
  * @since 0.1.0
  */
-public class GLAMDSparseTexture {
+public final class GLAMDSparseTexture {
     @Nullable
     public static MethodHandle glTexStorageSparseAMD, glTextureStorageSparseAMD;
 
