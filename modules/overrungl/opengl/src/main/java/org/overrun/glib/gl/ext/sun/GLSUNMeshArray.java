@@ -24,13 +24,10 @@
 
 package org.overrun.glib.gl.ext.sun;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 /**
  * {@code GL_SUN_mesh_array}
@@ -39,17 +36,15 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 public final class GLSUNMeshArray {
-    @Nullable
-    public static MethodHandle glDrawMeshArraysSUN;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_SUN_mesh_array.no()) return;
-        glDrawMeshArraysSUN = load.invoke("glDrawMeshArraysSUN", FunctionDescriptors.IIIIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_SUN_mesh_array) return;
+        ext.glDrawMeshArraysSUN = load.invoke("glDrawMeshArraysSUN", FunctionDescriptors.IIIIV);
     }
 
     public static void glDrawMeshArraysSUN(int mode, int first, int count, int width) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(glDrawMeshArraysSUN).invokeExact(mode, first, count, width);
+            GLLoader.check(ext.glDrawMeshArraysSUN).invokeExact(mode, first, count, width);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

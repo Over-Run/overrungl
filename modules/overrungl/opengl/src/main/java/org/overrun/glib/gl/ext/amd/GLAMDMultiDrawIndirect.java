@@ -24,13 +24,12 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
-import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.gl.GLLoader.check;
 
@@ -41,26 +40,25 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDMultiDrawIndirect {
-    @Nullable
-    public static MethodHandle glMultiDrawArraysIndirectAMD, glMultiDrawElementsIndirectAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_multi_draw_indirect.no()) return;
-        glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
-        glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_multi_draw_indirect) return;
+        ext.glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
+        ext.glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
     }
 
     public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
+            check(ext.glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);
+            check(ext.glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

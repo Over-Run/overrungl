@@ -24,12 +24,10 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.gl.GLLoader.check;
 
@@ -40,26 +38,25 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDVertexShaderTessellator {
-    @Nullable
-    public static MethodHandle glTessellationFactorAMD, glTessellationModeAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_vertex_shader_tessellator.no()) return;
-        glTessellationFactorAMD = load.invoke("glTessellationFactorAMD", FunctionDescriptors.FV);
-        glTessellationModeAMD = load.invoke("glTessellationModeAMD", FunctionDescriptors.IV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_vertex_shader_tessellator) return;
+        ext.glTessellationFactorAMD = load.invoke("glTessellationFactorAMD", FunctionDescriptors.FV);
+        ext.glTessellationModeAMD = load.invoke("glTessellationModeAMD", FunctionDescriptors.IV);
     }
 
     public static void glTessellationFactorAMD(float factor) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glTessellationFactorAMD).invokeExact(factor);
+            check(ext.glTessellationFactorAMD).invokeExact(factor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glTessellationModeAMD(int mode) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glTessellationModeAMD).invokeExact(mode);
+            check(ext.glTessellationModeAMD).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

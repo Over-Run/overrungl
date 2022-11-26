@@ -290,6 +290,10 @@ public class GLCapabilities {
      * Forward compatible flag. {@code false} for deprecated and removed function.
      */
     public boolean forwardCompatible;
+    /**
+     * The OpenGL extension capabilities.
+     */
+    public GLExtCaps ext;
 
     /**
      * Constructs <i>incomplete</i> OpenGL capabilities.
@@ -340,12 +344,14 @@ public class GLCapabilities {
             GL14.load(this, load);
         }
 
+        ext = new GLExtCaps(this);
+
         try (var arena = MemorySession.openShared()) {
-            if (!GLExtCaps.findExtensionsGL(version, arena, this)) return 0;
+            if (!ext.findExtensionsGL(version, arena, this)) return 0;
             findCoreGL(true);
         }
         // TODO: 2022/11/26 Load extension with GLCapabilities
-        GLExtCaps.load(this, load);
+        ext.load(load);
 
         return version;
     }

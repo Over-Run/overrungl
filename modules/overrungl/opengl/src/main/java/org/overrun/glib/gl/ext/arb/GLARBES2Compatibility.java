@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.gl.GLCapabilities;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -42,13 +41,13 @@ import static org.overrun.glib.gl.GL41C.*;
  * @since 0.1.0
  */
 public final class GLARBES2Compatibility {
-    public static void load(GLCapabilities caps, GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_ARB_ES2_compatibility.no()) return;
-        caps.glClearDepthf = load.invoke("glClearDepthf", FV);
-        caps.glDepthRangef = load.invoke("glDepthRangef", FFV);
-        caps.glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
-        caps.glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
-        caps.glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_ARB_ES2_compatibility) return;
+        ext.caps.glClearDepthf = load.invoke("glClearDepthf", FV);
+        ext.caps.glDepthRangef = load.invoke("glDepthRangef", FFV);
+        ext.caps.glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
+        ext.caps.glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
+        ext.caps.glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
     }
 
     public static void glClearDepthf(float d) {

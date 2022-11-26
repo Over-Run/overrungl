@@ -24,16 +24,14 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
 
 /**
  * {@code GL_AMD_sample_positions}
@@ -42,17 +40,15 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 public final class GLAMDSamplePositions {
-    @Nullable
-    public static MethodHandle glSetMultisamplefvAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_sample_positions.no()) return;
-        glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", FunctionDescriptors.IIPV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_sample_positions) return;
+        ext.glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", FunctionDescriptors.IIPV);
     }
 
     public static void glSetMultisamplefvAMD(int pname, int index, Addressable val) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(glSetMultisamplefvAMD).invokeExact(pname, index, val);
+            GLLoader.check(ext.glSetMultisamplefvAMD).invokeExact(pname, index, val);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

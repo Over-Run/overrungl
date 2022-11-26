@@ -24,16 +24,15 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -47,21 +46,18 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDDebugOutput {
-    @Nullable
-    public static MethodHandle glDebugMessageCallbackAMD, glDebugMessageEnableAMD, glDebugMessageInsertAMD,
-        glGetDebugMessageLogAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_debug_output.no()) return;
-        glDebugMessageCallbackAMD = load.invoke("glDebugMessageCallbackAMD", PPV);
-        glDebugMessageEnableAMD = load.invoke("glDebugMessageEnableAMD", IIIPZV);
-        glDebugMessageInsertAMD = load.invoke("glDebugMessageInsertAMD", IIIIPV);
-        glGetDebugMessageLogAMD = load.invoke("glGetDebugMessageLogAMD", IIPPPPPI);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_debug_output) return;
+        ext.glDebugMessageCallbackAMD = load.invoke("glDebugMessageCallbackAMD", PPV);
+        ext.glDebugMessageEnableAMD = load.invoke("glDebugMessageEnableAMD", IIIPZV);
+        ext.glDebugMessageInsertAMD = load.invoke("glDebugMessageInsertAMD", IIIIPV);
+        ext.glGetDebugMessageLogAMD = load.invoke("glGetDebugMessageLogAMD", IIPPPPPI);
     }
 
     public static void glDebugMessageCallbackAMD(Addressable callback, Addressable userParam) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDebugMessageCallbackAMD).invokeExact(callback, userParam);
+            check(ext.glDebugMessageCallbackAMD).invokeExact(callback, userParam);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -72,8 +68,9 @@ public final class GLAMDDebugOutput {
     }
 
     public static void glDebugMessageEnableAMD(int category, int severity, int count, Addressable ids, boolean enabled) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
+            check(ext.glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -84,8 +81,9 @@ public final class GLAMDDebugOutput {
     }
 
     public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, Addressable buf) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
+            check(ext.glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -96,8 +94,9 @@ public final class GLAMDDebugOutput {
     }
 
     public static int glGetDebugMessageLogAMD(int count, int bufSize, Addressable categories, Addressable severities, Addressable ids, Addressable lengths, Addressable message) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (int) check(glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);
+            return (int) check(ext.glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

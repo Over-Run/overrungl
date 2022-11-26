@@ -24,16 +24,15 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.gl.GLLoader.check;
@@ -45,19 +44,17 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDNameGenDelete {
-    @Nullable
-    public static MethodHandle glDeleteNamesAMD, glGenNamesAMD, glIsNameAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_name_gen_delete.no()) return;
-        glDeleteNamesAMD = load.invoke("glDeleteNamesAMD", FunctionDescriptors.IIPV);
-        glGenNamesAMD = load.invoke("glGenNamesAMD", FunctionDescriptors.IIPV);
-        glIsNameAMD = load.invoke("glIsNameAMD", FunctionDescriptors.IIZ);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_name_gen_delete) return;
+        ext.glDeleteNamesAMD = load.invoke("glDeleteNamesAMD", FunctionDescriptors.IIPV);
+        ext.glGenNamesAMD = load.invoke("glGenNamesAMD", FunctionDescriptors.IIPV);
+        ext.glIsNameAMD = load.invoke("glIsNameAMD", FunctionDescriptors.IIZ);
     }
 
     public static void glDeleteNamesAMD(int identifier, int num, Addressable names) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDeleteNamesAMD).invokeExact(identifier, num, names);
+            check(ext.glDeleteNamesAMD).invokeExact(identifier, num, names);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -80,8 +77,9 @@ public final class GLAMDNameGenDelete {
     }
 
     public static void glGenNamesAMD(int identifier, int num, Addressable names) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGenNamesAMD).invokeExact(identifier, num, names);
+            check(ext.glGenNamesAMD).invokeExact(identifier, num, names);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -106,8 +104,9 @@ public final class GLAMDNameGenDelete {
     }
 
     public static boolean glIsNameAMD(int identifier, int name) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (boolean) check(glIsNameAMD).invokeExact(identifier, name);
+            return (boolean) check(ext.glIsNameAMD).invokeExact(identifier, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

@@ -75,9 +75,9 @@ public final class GLUtil {
      */
     @Nullable
     public static MemorySession setupDebugMessageCallback(Consumer<String> logger) {
-         var caps = GLLoader.getCapabilities();
+        var caps = GLLoader.getCapabilities();
 
-        if (caps.Ver43 || GLExtCaps.Flags.GL_KHR_debug.value()) {
+        if (caps.Ver43 || caps.ext.GL_KHR_debug) {
             if (caps.Ver43) {
                 apiLog("[GL] Using OpenGL 4.3 for error logging.");
             } else {
@@ -110,7 +110,7 @@ public final class GLUtil {
             return arena;
         }
 
-        if (GLExtCaps.Flags.GL_ARB_debug_output.value()) {
+        if (caps.ext.GL_ARB_debug_output) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
             var arena = MemorySession.openConfined();
             GLDebugProc proc = (source, type, id, severity, message, userParam) -> {
@@ -133,7 +133,7 @@ public final class GLUtil {
             return arena;
         }
 
-        if (GLExtCaps.Flags.GL_AMD_debug_output.value()) {
+        if (caps.ext.GL_AMD_debug_output) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
             var arena = MemorySession.openConfined();
             GLDebugProcAMD proc = (id, category, severity, message, userParam) -> {

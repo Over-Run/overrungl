@@ -24,13 +24,12 @@
 
 package org.overrun.glib.gl.ext.sun;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -43,40 +42,39 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLSUNTriangleList {
-    @Nullable
-    public static MethodHandle glReplacementCodePointerSUN, glReplacementCodeubSUN, glReplacementCodeubvSUN,
-        glReplacementCodeuiSUN, glReplacementCodeuivSUN, glReplacementCodeusSUN, glReplacementCodeusvSUN;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_SUN_triangle_list.no()) return;
-        glReplacementCodePointerSUN = load.invoke("glReplacementCodePointerSUN", IIPV);
-        glReplacementCodeubSUN = load.invoke("glReplacementCodeubSUN", BV);
-        glReplacementCodeubvSUN = load.invoke("glReplacementCodeubvSUN", PV);
-        glReplacementCodeuiSUN = load.invoke("glReplacementCodeuiSUN", IV);
-        glReplacementCodeuivSUN = load.invoke("glReplacementCodeuivSUN", PV);
-        glReplacementCodeusSUN = load.invoke("glReplacementCodeusSUN", SV);
-        glReplacementCodeusvSUN = load.invoke("glReplacementCodeusvSUN", PV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_SUN_triangle_list) return;
+        ext.glReplacementCodePointerSUN = load.invoke("glReplacementCodePointerSUN", IIPV);
+        ext.glReplacementCodeubSUN = load.invoke("glReplacementCodeubSUN", BV);
+        ext.glReplacementCodeubvSUN = load.invoke("glReplacementCodeubvSUN", PV);
+        ext.glReplacementCodeuiSUN = load.invoke("glReplacementCodeuiSUN", IV);
+        ext.glReplacementCodeuivSUN = load.invoke("glReplacementCodeuivSUN", PV);
+        ext.glReplacementCodeusSUN = load.invoke("glReplacementCodeusSUN", SV);
+        ext.glReplacementCodeusvSUN = load.invoke("glReplacementCodeusvSUN", PV);
     }
 
     public static void glReplacementCodePointerSUN(int type, int stride, Addressable pointer) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodePointerSUN).invokeExact(type, stride, pointer);
+            check(ext.glReplacementCodePointerSUN).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glReplacementCodeubSUN(byte code) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodeubSUN).invokeExact(code);
+            check(ext.glReplacementCodeubSUN).invokeExact(code);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glReplacementCodeubvSUN(Addressable code) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodeubvSUN).invokeExact(code);
+            check(ext.glReplacementCodeubvSUN).invokeExact(code);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -87,16 +85,18 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeuiSUN(int code) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodeuiSUN).invokeExact(code);
+            check(ext.glReplacementCodeuiSUN).invokeExact(code);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glReplacementCodeuivSUN(Addressable code) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodeuivSUN).invokeExact(code);
+            check(ext.glReplacementCodeuivSUN).invokeExact(code);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -107,16 +107,18 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeusSUN(short code) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodeusSUN).invokeExact(code);
+            check(ext.glReplacementCodeusSUN).invokeExact(code);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glReplacementCodeusvSUN(Addressable code) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glReplacementCodeusvSUN).invokeExact(code);
+            check(ext.glReplacementCodeusvSUN).invokeExact(code);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

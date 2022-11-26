@@ -73,10 +73,21 @@ public final class GLLoader {
     /**
      * Returns the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
      *
+     * @return the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
     public static GLCapabilities getCapabilities() {
         return checkCapabilities(capabilitiesTLS.get());
+    }
+
+    /**
+     * Returns the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     *
+     * @return the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
+     */
+    public static GLExtCaps getExtCapabilities() {
+        return getCapabilities().ext;
     }
 
     private static GLCapabilities checkCapabilities(@Nullable GLCapabilities caps) {
