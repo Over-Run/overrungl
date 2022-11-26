@@ -24,15 +24,14 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.gl.GLLoader.check;
 
@@ -43,19 +42,17 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLEObjectPurgeable {
-    @Nullable
-    public static MethodHandle glGetObjectParameterivAPPLE, glObjectPurgeableAPPLE, glObjectUnpurgeableAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_object_purgeable.no()) return;
-        glGetObjectParameterivAPPLE = load.invoke("glGetObjectParameterivAPPLE", FunctionDescriptors.IIIPV);
-        glObjectPurgeableAPPLE = load.invoke("glObjectPurgeableAPPLE", FunctionDescriptors.IIII);
-        glObjectUnpurgeableAPPLE = load.invoke("glObjectUnpurgeableAPPLE", FunctionDescriptors.IIII);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_object_purgeable) return;
+        ext.glGetObjectParameterivAPPLE = load.invoke("glGetObjectParameterivAPPLE", FunctionDescriptors.IIIPV);
+        ext.glObjectPurgeableAPPLE = load.invoke("glObjectPurgeableAPPLE", FunctionDescriptors.IIII);
+        ext.glObjectUnpurgeableAPPLE = load.invoke("glObjectUnpurgeableAPPLE", FunctionDescriptors.IIII);
     }
 
     public static void glGetObjectParameterivAPPLE(int objectType, int name, int pname, Addressable params) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetObjectParameterivAPPLE).invokeExact(objectType, name, pname, params);
+            check(ext.glGetObjectParameterivAPPLE).invokeExact(objectType, name, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -66,16 +63,18 @@ public final class GLAPPLEObjectPurgeable {
     }
 
     public static int glObjectPurgeableAPPLE(int objectType, int name, int option) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (int) check(glObjectPurgeableAPPLE).invokeExact(objectType, name, option);
+            return (int) check(ext.glObjectPurgeableAPPLE).invokeExact(objectType, name, option);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int glObjectUnpurgeableAPPLE(int objectType, int name, int option) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (int) check(glObjectUnpurgeableAPPLE).invokeExact(objectType, name, option);
+            return (int) check(ext.glObjectUnpurgeableAPPLE).invokeExact(objectType, name, option);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

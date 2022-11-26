@@ -24,13 +24,10 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 /**
  * {@code GL_AMD_stencil_operation_extended}
@@ -39,17 +36,15 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 public final class GLAMDStencilOperationExtended {
-    @Nullable
-    public static MethodHandle glStencilOpValueAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_stencil_operation_extended.no()) return;
-        glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", FunctionDescriptors.IIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_stencil_operation_extended) return;
+        ext.glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", FunctionDescriptors.IIV);
     }
 
     public static void glStencilOpValueAMD(int face, int value) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(glStencilOpValueAMD).invokeExact(face, value);
+            GLLoader.check(ext.glStencilOpValueAMD).invokeExact(face, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

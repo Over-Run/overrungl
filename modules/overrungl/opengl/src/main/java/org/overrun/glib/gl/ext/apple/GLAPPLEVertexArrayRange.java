@@ -24,13 +24,12 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
-import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.gl.GLLoader.check;
 
@@ -41,35 +40,35 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLEVertexArrayRange {
-    @Nullable
-    public static MethodHandle glFlushVertexArrayRangeAPPLE, glVertexArrayParameteriAPPLE, glVertexArrayRangeAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_vertex_array_range.no()) return;
-        glFlushVertexArrayRangeAPPLE = load.invoke("glFlushVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
-        glVertexArrayParameteriAPPLE = load.invoke("glVertexArrayParameteriAPPLE", FunctionDescriptors.IIV);
-        glVertexArrayRangeAPPLE = load.invoke("glVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_vertex_array_range) return;
+        ext.glFlushVertexArrayRangeAPPLE = load.invoke("glFlushVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
+        ext.glVertexArrayParameteriAPPLE = load.invoke("glVertexArrayParameteriAPPLE", FunctionDescriptors.IIV);
+        ext.glVertexArrayRangeAPPLE = load.invoke("glVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
     }
 
     public static void glFlushVertexArrayRangeAPPLE(int length, Addressable pointer) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glFlushVertexArrayRangeAPPLE).invokeExact(length, pointer);
+            check(ext.glFlushVertexArrayRangeAPPLE).invokeExact(length, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glVertexArrayParameteriAPPLE(int pname, int param) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glVertexArrayParameteriAPPLE).invokeExact(pname, param);
+            check(ext.glVertexArrayParameteriAPPLE).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glVertexArrayRangeAPPLE(int length, Addressable pointer) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glVertexArrayRangeAPPLE).invokeExact(length, pointer);
+            check(ext.glVertexArrayRangeAPPLE).invokeExact(length, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

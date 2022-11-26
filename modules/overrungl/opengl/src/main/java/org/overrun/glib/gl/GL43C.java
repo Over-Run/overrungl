@@ -29,7 +29,6 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -43,116 +42,104 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL43C extends GL42C permits GL44C {
-    @Nullable
-    public static MethodHandle
-        glBindVertexBuffer, glClearBufferData, glClearBufferSubData, glCopyImageSubData, glDebugMessageCallback,
-        glDebugMessageControl, glDebugMessageInsert, glDispatchCompute, glDispatchComputeIndirect,
-        glFramebufferParameteri, glGetDebugMessageLog, glGetFramebufferParameteriv, glGetInternalformati64v,
-        glGetObjectLabel, glGetObjectPtrLabel, glGetProgramInterfaceiv, glGetProgramResourceIndex,
-        glGetProgramResourceLocation, glGetProgramResourceLocationIndex, glGetProgramResourceName,
-        glGetProgramResourceiv, glInvalidateBufferData, glInvalidateBufferSubData, glInvalidateFramebuffer,
-        glInvalidateSubFramebuffer, glInvalidateTexImage, glInvalidateTexSubImage, glMultiDrawArraysIndirect,
-        glMultiDrawElementsIndirect, glObjectLabel, glObjectPtrLabel, glPopDebugGroup, glPushDebugGroup,
-        glShaderStorageBlockBinding, glTexBufferRange, glTexStorage2DMultisample, glTexStorage3DMultisample,
-        glTextureView, glVertexAttribBinding, glVertexAttribFormat, glVertexAttribIFormat, glVertexAttribLFormat,
-        glVertexBindingDivisor;
-
-    static boolean isSupported() {
-        return checkAll(glBindVertexBuffer, glClearBufferData, glClearBufferSubData, glCopyImageSubData,
-            glDebugMessageCallback, glDebugMessageControl, glDebugMessageInsert, glDispatchCompute,
-            glDispatchComputeIndirect, glFramebufferParameteri, glGetDebugMessageLog, glGetFramebufferParameteriv,
-            glGetInternalformati64v, glGetObjectLabel, glGetObjectPtrLabel, glGetPointerv, glGetProgramInterfaceiv,
-            glGetProgramResourceIndex, glGetProgramResourceLocation, glGetProgramResourceLocationIndex,
-            glGetProgramResourceName, glGetProgramResourceiv, glInvalidateBufferData, glInvalidateBufferSubData,
-            glInvalidateFramebuffer, glInvalidateSubFramebuffer, glInvalidateTexImage, glInvalidateTexSubImage,
-            glMultiDrawArraysIndirect, glMultiDrawElementsIndirect, glObjectLabel, glObjectPtrLabel, glPopDebugGroup,
-            glPushDebugGroup, glShaderStorageBlockBinding, glTexBufferRange, glTexStorage2DMultisample,
-            glTexStorage3DMultisample, glTextureView, glVertexAttribBinding, glVertexAttribFormat,
-            glVertexAttribIFormat, glVertexAttribLFormat, glVertexBindingDivisor);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBindVertexBuffer, caps.glClearBufferData, caps.glClearBufferSubData, caps.glCopyImageSubData, caps.glDebugMessageCallback, caps.glDebugMessageControl,
+            caps.glDebugMessageInsert, caps.glDispatchCompute, caps.glDispatchComputeIndirect, caps.glFramebufferParameteri, caps.glGetDebugMessageLog, caps.glGetFramebufferParameteriv,
+            caps.glGetInternalformati64v, caps.glGetObjectLabel, caps.glGetObjectPtrLabel, caps.glGetPointerv, caps.glGetProgramInterfaceiv, caps.glGetProgramResourceIndex,
+            caps.glGetProgramResourceLocation, caps.glGetProgramResourceLocationIndex, caps.glGetProgramResourceName, caps.glGetProgramResourceiv, caps.glInvalidateBufferData, caps.glInvalidateBufferSubData,
+            caps.glInvalidateFramebuffer, caps.glInvalidateSubFramebuffer, caps.glInvalidateTexImage, caps.glInvalidateTexSubImage, caps.glMultiDrawArraysIndirect, caps.glMultiDrawElementsIndirect,
+            caps.glObjectLabel, caps.glObjectPtrLabel, caps.glPopDebugGroup, caps.glPushDebugGroup, caps.glShaderStorageBlockBinding, caps.glTexBufferRange,
+            caps.glTexStorage2DMultisample, caps.glTexStorage3DMultisample, caps.glTextureView, caps.glVertexAttribBinding, caps.glVertexAttribFormat, caps.glVertexAttribIFormat,
+            caps.glVertexAttribLFormat, caps.glVertexBindingDivisor);
     }
 
-    static void load(GLLoadFunc load) {
-        glBindVertexBuffer = load.invoke("glBindVertexBuffer", IIJIV);
-        glClearBufferData = load.invoke("glClearBufferData", IIIIPV);
-        glClearBufferSubData = load.invoke("glClearBufferSubData", IIJJIIPV);
-        glCopyImageSubData = load.invoke("glCopyImageSubData", IIIIIIIIIIIIIIIV);
-        glDebugMessageCallback = load.invoke("glDebugMessageCallback", PPV);
-        glDebugMessageControl = load.invoke("glDebugMessageControl", IIIIPZV);
-        glDebugMessageInsert = load.invoke("glDebugMessageInsert", IIIIIPV);
-        glDispatchCompute = load.invoke("glDispatchCompute", IIIV);
-        glDispatchComputeIndirect = load.invoke("glDispatchComputeIndirect", JV);
-        glFramebufferParameteri = load.invoke("glFramebufferParameteri", IIIV);
-        glGetDebugMessageLog = load.invoke("glGetDebugMessageLog", IIPPPPPPI);
-        glGetFramebufferParameteriv = load.invoke("glGetFramebufferParameteriv", IIPV);
-        glGetInternalformati64v = load.invoke("glGetInternalformati64v", IIIIPV);
-        glGetObjectLabel = load.invoke("glGetObjectLabel", IIIPPV);
-        glGetObjectPtrLabel = load.invoke("glGetObjectPtrLabel", PIPPV);
-        glGetPointerv = load.invoke("glGetPointerv", IPV);
-        glGetProgramInterfaceiv = load.invoke("glGetProgramInterfaceiv", IIIPV);
-        glGetProgramResourceIndex = load.invoke("glGetProgramResourceIndex", IIPI);
-        glGetProgramResourceLocation = load.invoke("glGetProgramResourceLocation", IIPI);
-        glGetProgramResourceLocationIndex = load.invoke("glGetProgramResourceLocationIndex", IIPI);
-        glGetProgramResourceName = load.invoke("glGetProgramResourceName", IIIIPPV);
-        glGetProgramResourceiv = load.invoke("glGetProgramResourceiv", IIIIPIPPV);
-        glInvalidateBufferData = load.invoke("glInvalidateBufferData", IV);
-        glInvalidateBufferSubData = load.invoke("glInvalidateBufferSubData", IJJV);
-        glInvalidateFramebuffer = load.invoke("glInvalidateFramebuffer", IIPV);
-        glInvalidateSubFramebuffer = load.invoke("glInvalidateSubFramebuffer", IIPIIIIV);
-        glInvalidateTexImage = load.invoke("glInvalidateTexImage", IIV);
-        glInvalidateTexSubImage = load.invoke("glInvalidateTexSubImage", IIIIIIIIV);
-        glMultiDrawArraysIndirect = load.invoke("glMultiDrawArraysIndirect", IPIIV);
-        glMultiDrawElementsIndirect = load.invoke("glMultiDrawElementsIndirect", IIPIIV);
-        glObjectLabel = load.invoke("glObjectLabel", IIIPV);
-        glObjectPtrLabel = load.invoke("glObjectPtrLabel", PIPV);
-        glPopDebugGroup = load.invoke("glPopDebugGroup", V);
-        glPushDebugGroup = load.invoke("glPushDebugGroup", IIIPV);
-        glShaderStorageBlockBinding = load.invoke("glShaderStorageBlockBinding", IIIV);
-        glTexBufferRange = load.invoke("glTexBufferRange", IIIJJV);
-        glTexStorage2DMultisample = load.invoke("glTexStorage2DMultisample", IIIIIZV);
-        glTexStorage3DMultisample = load.invoke("glTexStorage3DMultisample", IIIIIIZV);
-        glTextureView = load.invoke("glTextureView", IIIIIIIIV);
-        glVertexAttribBinding = load.invoke("glVertexAttribBinding", IIV);
-        glVertexAttribFormat = load.invoke("glVertexAttribFormat", IIIZIV);
-        glVertexAttribIFormat = load.invoke("glVertexAttribIFormat", IIIIV);
-        glVertexAttribLFormat = load.invoke("glVertexAttribLFormat", IIIIV);
-        glVertexBindingDivisor = load.invoke("glVertexBindingDivisor", IIV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBindVertexBuffer = load.invoke("glBindVertexBuffer", IIJIV);
+        caps.glClearBufferData = load.invoke("glClearBufferData", IIIIPV);
+        caps.glClearBufferSubData = load.invoke("glClearBufferSubData", IIJJIIPV);
+        caps.glCopyImageSubData = load.invoke("glCopyImageSubData", IIIIIIIIIIIIIIIV);
+        caps.glDebugMessageCallback = load.invoke("glDebugMessageCallback", PPV);
+        caps.glDebugMessageControl = load.invoke("glDebugMessageControl", IIIIPZV);
+        caps.glDebugMessageInsert = load.invoke("glDebugMessageInsert", IIIIIPV);
+        caps.glDispatchCompute = load.invoke("glDispatchCompute", IIIV);
+        caps.glDispatchComputeIndirect = load.invoke("glDispatchComputeIndirect", JV);
+        caps.glFramebufferParameteri = load.invoke("glFramebufferParameteri", IIIV);
+        caps.glGetDebugMessageLog = load.invoke("glGetDebugMessageLog", IIPPPPPPI);
+        caps.glGetFramebufferParameteriv = load.invoke("glGetFramebufferParameteriv", IIPV);
+        caps.glGetInternalformati64v = load.invoke("glGetInternalformati64v", IIIIPV);
+        caps.glGetObjectLabel = load.invoke("glGetObjectLabel", IIIPPV);
+        caps.glGetObjectPtrLabel = load.invoke("glGetObjectPtrLabel", PIPPV);
+        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
+        caps.glGetProgramInterfaceiv = load.invoke("glGetProgramInterfaceiv", IIIPV);
+        caps.glGetProgramResourceIndex = load.invoke("glGetProgramResourceIndex", IIPI);
+        caps.glGetProgramResourceLocation = load.invoke("glGetProgramResourceLocation", IIPI);
+        caps.glGetProgramResourceLocationIndex = load.invoke("glGetProgramResourceLocationIndex", IIPI);
+        caps.glGetProgramResourceName = load.invoke("glGetProgramResourceName", IIIIPPV);
+        caps.glGetProgramResourceiv = load.invoke("glGetProgramResourceiv", IIIIPIPPV);
+        caps.glInvalidateBufferData = load.invoke("glInvalidateBufferData", IV);
+        caps.glInvalidateBufferSubData = load.invoke("glInvalidateBufferSubData", IJJV);
+        caps.glInvalidateFramebuffer = load.invoke("glInvalidateFramebuffer", IIPV);
+        caps.glInvalidateSubFramebuffer = load.invoke("glInvalidateSubFramebuffer", IIPIIIIV);
+        caps.glInvalidateTexImage = load.invoke("glInvalidateTexImage", IIV);
+        caps.glInvalidateTexSubImage = load.invoke("glInvalidateTexSubImage", IIIIIIIIV);
+        caps.glMultiDrawArraysIndirect = load.invoke("glMultiDrawArraysIndirect", IPIIV);
+        caps.glMultiDrawElementsIndirect = load.invoke("glMultiDrawElementsIndirect", IIPIIV);
+        caps.glObjectLabel = load.invoke("glObjectLabel", IIIPV);
+        caps.glObjectPtrLabel = load.invoke("glObjectPtrLabel", PIPV);
+        caps.glPopDebugGroup = load.invoke("glPopDebugGroup", V);
+        caps.glPushDebugGroup = load.invoke("glPushDebugGroup", IIIPV);
+        caps.glShaderStorageBlockBinding = load.invoke("glShaderStorageBlockBinding", IIIV);
+        caps.glTexBufferRange = load.invoke("glTexBufferRange", IIIJJV);
+        caps.glTexStorage2DMultisample = load.invoke("glTexStorage2DMultisample", IIIIIZV);
+        caps.glTexStorage3DMultisample = load.invoke("glTexStorage3DMultisample", IIIIIIZV);
+        caps.glTextureView = load.invoke("glTextureView", IIIIIIIIV);
+        caps.glVertexAttribBinding = load.invoke("glVertexAttribBinding", IIV);
+        caps.glVertexAttribFormat = load.invoke("glVertexAttribFormat", IIIZIV);
+        caps.glVertexAttribIFormat = load.invoke("glVertexAttribIFormat", IIIIV);
+        caps.glVertexAttribLFormat = load.invoke("glVertexAttribLFormat", IIIIV);
+        caps.glVertexBindingDivisor = load.invoke("glVertexBindingDivisor", IIV);
     }
 
     public static void bindVertexBuffer(int bindingIndex, int buffer, long offset, int stride) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindVertexBuffer).invokeExact(bindingIndex, buffer, offset, stride);
+            check(caps.glBindVertexBuffer).invokeExact(bindingIndex, buffer, offset, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearBufferData(int target, int internalFormat, int format, int type, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearBufferData).invokeExact(target, internalFormat, format, type, data);
+            check(caps.glClearBufferData).invokeExact(target, internalFormat, format, type, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearBufferSubData).invokeExact(target, internalFormat, offset, size, format, type, data);
+            check(caps.glClearBufferSubData).invokeExact(target, internalFormat, offset, size, format, type, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyImageSubData(int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyImageSubData).invokeExact(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+            check(caps.glCopyImageSubData).invokeExact(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void debugMessageCallback(Addressable callback, Addressable userParam) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDebugMessageCallback).invokeExact(callback, userParam);
+            check(caps.glDebugMessageCallback).invokeExact(callback, userParam);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -163,8 +150,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageControl(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDebugMessageControl).invokeExact(source, type, severity, count, ids, enabled);
+            check(caps.glDebugMessageControl).invokeExact(source, type, severity, count, ids, enabled);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -175,8 +163,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageInsert(int source, int type, int id, int severity, int length, Addressable buf) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDebugMessageInsert).invokeExact(source, type, id, severity, length, buf);
+            check(caps.glDebugMessageInsert).invokeExact(source, type, id, severity, length, buf);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -187,32 +176,36 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void dispatchCompute(int numGroupsX, int numGroupsY, int numGroupsZ) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDispatchCompute).invokeExact(numGroupsX, numGroupsY, numGroupsZ);
+            check(caps.glDispatchCompute).invokeExact(numGroupsX, numGroupsY, numGroupsZ);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void dispatchComputeIndirect(long indirect) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDispatchComputeIndirect).invokeExact(indirect);
+            check(caps.glDispatchComputeIndirect).invokeExact(indirect);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferParameteri(int target, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferParameteri).invokeExact(target, pname, param);
+            check(caps.glFramebufferParameteri).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int getDebugMessageLog(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetDebugMessageLog).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
+            return (int) check(caps.glGetDebugMessageLog).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -240,8 +233,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getFramebufferParameteriv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetFramebufferParameteriv).invokeExact(target, pname, params);
+            check(caps.glGetFramebufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -260,8 +254,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getInternalformati64v(int target, int internalFormat, int pname, int count, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetInternalformati64v).invokeExact(target, internalFormat, pname, count, params);
+            check(caps.glGetInternalformati64v).invokeExact(target, internalFormat, pname, count, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -286,8 +281,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getObjectLabel(int identifier, int name, int bufSize, Addressable length, Addressable label) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetObjectLabel).invokeExact(identifier, name, bufSize, length, label);
+            check(caps.glGetObjectLabel).invokeExact(identifier, name, bufSize, length, label);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -312,8 +308,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getObjectPtrLabel(MemoryAddress ptr, int bufSize, Addressable length, Addressable label) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetObjectPtrLabel).invokeExact(ptr, bufSize, length, label);
+            check(caps.glGetObjectPtrLabel).invokeExact(ptr, bufSize, length, label);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -338,8 +335,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramInterfaceiv(int program, int programInterface, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetProgramInterfaceiv).invokeExact(program, programInterface, pname, params);
+            check(caps.glGetProgramInterfaceiv).invokeExact(program, programInterface, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -358,8 +356,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramResourceIndex(int program, int programInterface, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetProgramResourceIndex).invokeExact(program, programInterface, name);
+            return (int) check(caps.glGetProgramResourceIndex).invokeExact(program, programInterface, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -370,8 +369,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramResourceLocation(int program, int programInterface, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetProgramResourceLocation).invokeExact(program, programInterface, name);
+            return (int) check(caps.glGetProgramResourceLocation).invokeExact(program, programInterface, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -382,8 +382,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramResourceLocationIndex(int program, int programInterface, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetProgramResourceLocationIndex).invokeExact(program, programInterface, name);
+            return (int) check(caps.glGetProgramResourceLocationIndex).invokeExact(program, programInterface, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -394,8 +395,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramResourceName(int program, int programInterface, int index, int bufSize, Addressable length, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetProgramResourceName).invokeExact(program, programInterface, index, bufSize, length, name);
+            check(caps.glGetProgramResourceName).invokeExact(program, programInterface, index, bufSize, length, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -420,8 +422,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramResourceiv(int program, int programInterface, int index, int propCount, Addressable props, int count, Addressable length, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetProgramResourceiv).invokeExact(program, programInterface, index, propCount, props, count, length, params);
+            check(caps.glGetProgramResourceiv).invokeExact(program, programInterface, index, propCount, props, count, length, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -448,24 +451,27 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateBufferData(int buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInvalidateBufferData).invokeExact(buffer);
+            check(caps.glInvalidateBufferData).invokeExact(buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void invalidateBufferSubData(int buffer, long offset, long length) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInvalidateBufferSubData).invokeExact(buffer, offset, length);
+            check(caps.glInvalidateBufferSubData).invokeExact(buffer, offset, length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void invalidateFramebuffer(int target, int numAttachments, Addressable attachments) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInvalidateFramebuffer).invokeExact(target, numAttachments, attachments);
+            check(caps.glInvalidateFramebuffer).invokeExact(target, numAttachments, attachments);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -488,8 +494,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateSubFramebuffer(int target, int numAttachments, Addressable attachments, int x, int y, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInvalidateSubFramebuffer).invokeExact(target, numAttachments, attachments, x, y, width, height);
+            check(caps.glInvalidateSubFramebuffer).invokeExact(target, numAttachments, attachments, x, y, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -512,24 +519,27 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateTexImage(int texture, int level) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInvalidateTexImage).invokeExact(texture, level);
+            check(caps.glInvalidateTexImage).invokeExact(texture, level);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void invalidateTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInvalidateTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth);
+            check(caps.glInvalidateTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiDrawArraysIndirect(int mode, Addressable indirect, int drawCount, int stride) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawArraysIndirect).invokeExact(mode, indirect, drawCount, stride);
+            check(caps.glMultiDrawArraysIndirect).invokeExact(mode, indirect, drawCount, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -540,8 +550,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void multiDrawElementsIndirect(int mode, int type, Addressable indirect, int drawCount, int stride) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawElementsIndirect).invokeExact(mode, type, indirect, drawCount, stride);
+            check(caps.glMultiDrawElementsIndirect).invokeExact(mode, type, indirect, drawCount, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -552,8 +563,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void objectLabel(int identifier, int name, int length, Addressable label) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glObjectLabel).invokeExact(identifier, name, length, label);
+            check(caps.glObjectLabel).invokeExact(identifier, name, length, label);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -564,8 +576,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void objectPtrLabel(MemoryAddress ptr, int length, Addressable label) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glObjectPtrLabel).invokeExact(ptr, length, label);
+            check(caps.glObjectPtrLabel).invokeExact(ptr, length, label);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -576,16 +589,18 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void popDebugGroup() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPopDebugGroup).invokeExact();
+            check(caps.glPopDebugGroup).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pushDebugGroup(int source, int id, int length, Addressable message) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPushDebugGroup).invokeExact(source, id, length, message);
+            check(caps.glPushDebugGroup).invokeExact(source, id, length, message);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -596,80 +611,90 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void shaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glShaderStorageBlockBinding).invokeExact(program, storageBlockIndex, storageBlockBinding);
+            check(caps.glShaderStorageBlockBinding).invokeExact(program, storageBlockIndex, storageBlockBinding);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texBufferRange(int target, int internalFormat, int buffer, long offset, long size) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexBufferRange).invokeExact(target, internalFormat, buffer, offset, size);
+            check(caps.glTexBufferRange).invokeExact(target, internalFormat, buffer, offset, size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage2DMultisample(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexStorage2DMultisample).invokeExact(target, samples, internalFormat, width, height, fixedSampleLocations);
+            check(caps.glTexStorage2DMultisample).invokeExact(target, samples, internalFormat, width, height, fixedSampleLocations);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage3DMultisample(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexStorage3DMultisample).invokeExact(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
+            check(caps.glTexStorage3DMultisample).invokeExact(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void textureView(int texture, int target, int origTexture, int internalFormat, int minLevel, int numLevels, int minLayer, int numLayers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTextureView).invokeExact(texture, target, origTexture, internalFormat, minLevel, numLevels, minLayer, numLayers);
+            check(caps.glTextureView).invokeExact(texture, target, origTexture, internalFormat, minLevel, numLevels, minLayer, numLayers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribBinding(int attribIndex, int bindingIndex) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribBinding).invokeExact(attribIndex, bindingIndex);
+            check(caps.glVertexAttribBinding).invokeExact(attribIndex, bindingIndex);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribFormat(int attribIndex, int size, int type, boolean normalized, int relativeOffset) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribFormat).invokeExact(attribIndex, size, type, normalized, relativeOffset);
+            check(caps.glVertexAttribFormat).invokeExact(attribIndex, size, type, normalized, relativeOffset);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribIFormat(int attribIndex, int size, int type, int relativeOffset) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribIFormat).invokeExact(attribIndex, size, type, relativeOffset);
+            check(caps.glVertexAttribIFormat).invokeExact(attribIndex, size, type, relativeOffset);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribLFormat(int attribIndex, int size, int type, int relativeOffset) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribLFormat).invokeExact(attribIndex, size, type, relativeOffset);
+            check(caps.glVertexAttribLFormat).invokeExact(attribIndex, size, type, relativeOffset);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexBindingDivisor(int bindingIndex, int divisor) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexBindingDivisor).invokeExact(bindingIndex, divisor);
+            check(caps.glVertexBindingDivisor).invokeExact(bindingIndex, divisor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

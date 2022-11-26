@@ -24,17 +24,16 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLDebugProc;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -48,21 +47,18 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLARBDebugOutput {
-    @Nullable
-    public static MethodHandle glDebugMessageCallbackARB, glDebugMessageControlARB, glDebugMessageInsertARB,
-        glGetDebugMessageLogARB;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_ARB_debug_output.no()) return;
-        glDebugMessageCallbackARB = load.invoke("glDebugMessageCallbackARB", PPV);
-        glDebugMessageControlARB = load.invoke("glDebugMessageControlARB", IIIIPZV);
-        glDebugMessageInsertARB = load.invoke("glDebugMessageInsertARB", IIIIIPV);
-        glGetDebugMessageLogARB = load.invoke("glGetDebugMessageLogARB", IIPPPPPPI);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_ARB_debug_output) return;
+        ext.glDebugMessageCallbackARB = load.invoke("glDebugMessageCallbackARB", PPV);
+        ext.glDebugMessageControlARB = load.invoke("glDebugMessageControlARB", IIIIPZV);
+        ext.glDebugMessageInsertARB = load.invoke("glDebugMessageInsertARB", IIIIIPV);
+        ext.glGetDebugMessageLogARB = load.invoke("glGetDebugMessageLogARB", IIPPPPPPI);
     }
 
     public static void glDebugMessageCallbackARB(Addressable callback, Addressable userParam) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDebugMessageCallbackARB).invokeExact(callback, userParam);
+            check(ext.glDebugMessageCallbackARB).invokeExact(callback, userParam);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -73,8 +69,9 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageControlARB(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDebugMessageControlARB).invokeExact(source, type, severity, count, ids, enabled);
+            check(ext.glDebugMessageControlARB).invokeExact(source, type, severity, count, ids, enabled);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -85,8 +82,9 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageInsertARB(int source, int type, int id, int severity, int length, Addressable buf) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDebugMessageInsertARB).invokeExact(source, type, id, severity, length, buf);
+            check(ext.glDebugMessageInsertARB).invokeExact(source, type, id, severity, length, buf);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -97,8 +95,9 @@ public final class GLARBDebugOutput {
     }
 
     public static int glGetDebugMessageLogARB(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (int) check(glGetDebugMessageLogARB).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
+            return (int) check(ext.glGetDebugMessageLogARB).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

@@ -24,11 +24,9 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.FunctionDescriptors.IIIIIIV;
 import static org.overrun.glib.gl.GLLoader.check;
@@ -40,27 +38,25 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDFramebufferMultisampleAdvanced {
-    @Nullable
-    public static MethodHandle
-        glNamedRenderbufferStorageMultisampleAdvancedAMD, glRenderbufferStorageMultisampleAdvancedAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_framebuffer_multisample_advanced.no()) return;
-        glNamedRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glNamedRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
-        glRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_framebuffer_multisample_advanced) return;
+        ext.glNamedRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glNamedRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
+        ext.glRenderbufferStorageMultisampleAdvancedAMD = load.invoke("glRenderbufferStorageMultisampleAdvancedAMD", IIIIIIV);
     }
 
     public static void glNamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalFormat, int width, int height) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glNamedRenderbufferStorageMultisampleAdvancedAMD).invokeExact(renderbuffer, samples, storageSamples, internalFormat, width, height);
+            check(ext.glNamedRenderbufferStorageMultisampleAdvancedAMD).invokeExact(renderbuffer, samples, storageSamples, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glRenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalFormat, int width, int height) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glRenderbufferStorageMultisampleAdvancedAMD).invokeExact(target, samples, storageSamples, internalFormat, width, height);
+            check(ext.glRenderbufferStorageMultisampleAdvancedAMD).invokeExact(target, samples, storageSamples, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

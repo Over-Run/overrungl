@@ -118,7 +118,7 @@ public class GL33Test {
     }
 
     private void load(MemorySession arena) {
-        if (GLLoader.loadShared(true, GLFW::getProcAddress) == 0)
+        if (GLLoader.loadShared(true, GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();

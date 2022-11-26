@@ -29,10 +29,13 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -46,39 +49,34 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDPerformanceMonitor {
-    @Nullable
-    public static MethodHandle
-        glBeginPerfMonitorAMD, glDeletePerfMonitorsAMD, glEndPerfMonitorAMD, glGenPerfMonitorsAMD,
-        glGetPerfMonitorCounterDataAMD, glGetPerfMonitorCounterInfoAMD, glGetPerfMonitorCounterStringAMD,
-        glGetPerfMonitorCountersAMD, glGetPerfMonitorGroupStringAMD, glGetPerfMonitorGroupsAMD,
-        glSelectPerfMonitorCountersAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_performance_monitor.no()) return;
-        glBeginPerfMonitorAMD = load.invoke("glBeginPerfMonitorAMD", IV);
-        glDeletePerfMonitorsAMD = load.invoke("glDeletePerfMonitorsAMD", IPV);
-        glEndPerfMonitorAMD = load.invoke("glEndPerfMonitorAMD", IV);
-        glGenPerfMonitorsAMD = load.invoke("glGenPerfMonitorsAMD", IPV);
-        glGetPerfMonitorCounterDataAMD = load.invoke("glGetPerfMonitorCounterDataAMD", IIIPPV);
-        glGetPerfMonitorCounterInfoAMD = load.invoke("glGetPerfMonitorCounterInfoAMD", IIIPV);
-        glGetPerfMonitorCounterStringAMD = load.invoke("glGetPerfMonitorCounterStringAMD", IIIPPV);
-        glGetPerfMonitorCountersAMD = load.invoke("glGetPerfMonitorCountersAMD", IPPIPV);
-        glGetPerfMonitorGroupStringAMD = load.invoke("glGetPerfMonitorGroupStringAMD", IIPPV);
-        glGetPerfMonitorGroupsAMD = load.invoke("glGetPerfMonitorGroupsAMD", PIPV);
-        glSelectPerfMonitorCountersAMD = load.invoke("glSelectPerfMonitorCountersAMD", IZIIPV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_performance_monitor) return;
+        ext.glBeginPerfMonitorAMD = load.invoke("glBeginPerfMonitorAMD", IV);
+        ext.glDeletePerfMonitorsAMD = load.invoke("glDeletePerfMonitorsAMD", IPV);
+        ext.glEndPerfMonitorAMD = load.invoke("glEndPerfMonitorAMD", IV);
+        ext.glGenPerfMonitorsAMD = load.invoke("glGenPerfMonitorsAMD", IPV);
+        ext.glGetPerfMonitorCounterDataAMD = load.invoke("glGetPerfMonitorCounterDataAMD", IIIPPV);
+        ext.glGetPerfMonitorCounterInfoAMD = load.invoke("glGetPerfMonitorCounterInfoAMD", IIIPV);
+        ext.glGetPerfMonitorCounterStringAMD = load.invoke("glGetPerfMonitorCounterStringAMD", IIIPPV);
+        ext.glGetPerfMonitorCountersAMD = load.invoke("glGetPerfMonitorCountersAMD", IPPIPV);
+        ext.glGetPerfMonitorGroupStringAMD = load.invoke("glGetPerfMonitorGroupStringAMD", IIPPV);
+        ext.glGetPerfMonitorGroupsAMD = load.invoke("glGetPerfMonitorGroupsAMD", PIPV);
+        ext.glSelectPerfMonitorCountersAMD = load.invoke("glSelectPerfMonitorCountersAMD", IZIIPV);
     }
 
     public static void glBeginPerfMonitorAMD(int monitor) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBeginPerfMonitorAMD).invokeExact(monitor);
+            check(ext.glBeginPerfMonitorAMD).invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glDeletePerfMonitorsAMD(int n, Addressable monitors) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDeletePerfMonitorsAMD).invokeExact(n, monitors);
+            check(ext.glDeletePerfMonitorsAMD).invokeExact(n, monitors);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -101,16 +99,18 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glEndPerfMonitorAMD(int monitor) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glEndPerfMonitorAMD).invokeExact(monitor);
+            check(ext.glEndPerfMonitorAMD).invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glGenPerfMonitorsAMD(int n, Addressable monitors) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGenPerfMonitorsAMD).invokeExact(n, monitors);
+            check(ext.glGenPerfMonitorsAMD).invokeExact(n, monitors);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -135,8 +135,9 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, Addressable data, Addressable bytesWritten) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetPerfMonitorCounterDataAMD).invokeExact(monitor, pname, dataSize, data, bytesWritten);
+            check(ext.glGetPerfMonitorCounterDataAMD).invokeExact(monitor, pname, dataSize, data, bytesWritten);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -153,16 +154,18 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorCounterInfoAMD(int group, int counter, int pname, Addressable data) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetPerfMonitorCounterInfoAMD).invokeExact(group, counter, pname, data);
+            check(ext.glGetPerfMonitorCounterInfoAMD).invokeExact(group, counter, pname, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, Addressable length, Addressable counterString) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetPerfMonitorCounterStringAMD).invokeExact(group, counter, bufSize, length, counterString);
+            check(ext.glGetPerfMonitorCounterStringAMD).invokeExact(group, counter, bufSize, length, counterString);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -175,8 +178,9 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorCountersAMD(int group, Addressable numCounters, Addressable maxActiveCounters, int counterSize, Addressable counters) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetPerfMonitorCountersAMD).invokeExact(group, numCounters, maxActiveCounters, counterSize, counters);
+            check(ext.glGetPerfMonitorCountersAMD).invokeExact(group, numCounters, maxActiveCounters, counterSize, counters);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -194,8 +198,9 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorGroupStringAMD(int group, int bufSize, Addressable length, Addressable groupString) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetPerfMonitorGroupStringAMD).invokeExact(group, bufSize, length, groupString);
+            check(ext.glGetPerfMonitorGroupStringAMD).invokeExact(group, bufSize, length, groupString);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -208,8 +213,9 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorGroupsAMD(Addressable numGroups, int groupsSize, Addressable groups) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetPerfMonitorGroupsAMD).invokeExact(numGroups, groupsSize, groups);
+            check(ext.glGetPerfMonitorGroupsAMD).invokeExact(numGroups, groupsSize, groups);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -229,8 +235,9 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, Addressable counterList) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glSelectPerfMonitorCountersAMD).invokeExact(monitor, enable, group, numCounters, counterList);
+            check(ext.glSelectPerfMonitorCountersAMD).invokeExact(monitor, enable, group, numCounters, counterList);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

@@ -24,12 +24,11 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
-import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.FunctionDescriptors.IIPV;
 import static org.overrun.glib.gl.GLLoader.check;
@@ -41,26 +40,25 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLETextureRange {
-    @Nullable
-    public static MethodHandle glGetTexParameterPointervAPPLE, glTextureRangeAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_texture_range.no()) return;
-        glGetTexParameterPointervAPPLE = load.invoke("glGetTexParameterPointervAPPLE", IIPV);
-        glTextureRangeAPPLE = load.invoke("glTextureRangeAPPLE", IIPV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_texture_range) return;
+        ext.glGetTexParameterPointervAPPLE = load.invoke("glGetTexParameterPointervAPPLE", IIPV);
+        ext.glTextureRangeAPPLE = load.invoke("glTextureRangeAPPLE", IIPV);
     }
 
     public static void glGetTexParameterPointervAPPLE(int target, int pname, Addressable params) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGetTexParameterPointervAPPLE).invokeExact(target, pname, params);
+            check(ext.glGetTexParameterPointervAPPLE).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glTextureRangeAPPLE(int target, int length, Addressable pointer) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glTextureRangeAPPLE).invokeExact(target, length, pointer);
+            check(ext.glTextureRangeAPPLE).invokeExact(target, length, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

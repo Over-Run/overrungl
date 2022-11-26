@@ -42,14 +42,15 @@ public final class GLAMDOcclusionQueryEvent {
     @Nullable
     public static MethodHandle glQueryObjectParameteruiAMD;
 
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_occlusion_query_event.no()) return;
-        glQueryObjectParameteruiAMD = load.invoke("glQueryObjectParameteruiAMD", FunctionDescriptors.IIIIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_occlusion_query_event) return;
+        ext.glQueryObjectParameteruiAMD = load.invoke("glQueryObjectParameteruiAMD", FunctionDescriptors.IIIIV);
     }
 
     public static void glQueryObjectParameteruiAMD(int target, int id, int pname, int param) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(glQueryObjectParameteruiAMD).invokeExact(target, id, pname, param);
+            GLLoader.check(ext.glQueryObjectParameteruiAMD).invokeExact(target, id, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

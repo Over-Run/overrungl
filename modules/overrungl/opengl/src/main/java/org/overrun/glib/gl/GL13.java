@@ -24,15 +24,11 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.Ver13;
 import static org.overrun.glib.gl.GLLoader.check;
 
 /**
@@ -42,69 +38,60 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GL13 extends GL13C {
-    @Nullable
-    public static MethodHandle
-        glClientActiveTexture, glLoadTransposeMatrixd, glLoadTransposeMatrixf, glMultTransposeMatrixd,
-        glMultTransposeMatrixf, glMultiTexCoord1d, glMultiTexCoord1dv, glMultiTexCoord1f, glMultiTexCoord1fv,
-        glMultiTexCoord1i, glMultiTexCoord1iv, glMultiTexCoord1s, glMultiTexCoord1sv, glMultiTexCoord2d,
-        glMultiTexCoord2dv, glMultiTexCoord2f, glMultiTexCoord2fv, glMultiTexCoord2i, glMultiTexCoord2iv,
-        glMultiTexCoord2s, glMultiTexCoord2sv, glMultiTexCoord3d, glMultiTexCoord3dv, glMultiTexCoord3f,
-        glMultiTexCoord3fv, glMultiTexCoord3i, glMultiTexCoord3iv, glMultiTexCoord3s, glMultiTexCoord3sv,
-        glMultiTexCoord4d, glMultiTexCoord4dv, glMultiTexCoord4f, glMultiTexCoord4fv, glMultiTexCoord4i,
-        glMultiTexCoord4iv, glMultiTexCoord4s, glMultiTexCoord4sv;
-
-    static void load(GLLoadFunc load) {
-        if (!Ver13) return;
-        glClientActiveTexture = load.invoke("glClientActiveTexture", IV);
-        glLoadTransposeMatrixd = load.invoke("glLoadTransposeMatrixd", PV);
-        glLoadTransposeMatrixf = load.invoke("glLoadTransposeMatrixf", PV);
-        glMultTransposeMatrixd = load.invoke("glMultTransposeMatrixd", PV);
-        glMultTransposeMatrixf = load.invoke("glMultTransposeMatrixf", PV);
-        glMultiTexCoord1d = load.invoke("glMultiTexCoord1d", IDV);
-        glMultiTexCoord1dv = load.invoke("glMultiTexCoord1dv", IPV);
-        glMultiTexCoord1f = load.invoke("glMultiTexCoord1f", IFV);
-        glMultiTexCoord1fv = load.invoke("glMultiTexCoord1fv", IPV);
-        glMultiTexCoord1i = load.invoke("glMultiTexCoord1i", IIV);
-        glMultiTexCoord1iv = load.invoke("glMultiTexCoord1iv", IPV);
-        glMultiTexCoord1s = load.invoke("glMultiTexCoord1s", ISV);
-        glMultiTexCoord1sv = load.invoke("glMultiTexCoord1sv", IPV);
-        glMultiTexCoord2d = load.invoke("glMultiTexCoord2d", IDDV);
-        glMultiTexCoord2dv = load.invoke("glMultiTexCoord2dv", IPV);
-        glMultiTexCoord2f = load.invoke("glMultiTexCoord2f", IFFV);
-        glMultiTexCoord2fv = load.invoke("glMultiTexCoord2fv", IPV);
-        glMultiTexCoord2i = load.invoke("glMultiTexCoord2i", IIIV);
-        glMultiTexCoord2iv = load.invoke("glMultiTexCoord2iv", IPV);
-        glMultiTexCoord2s = load.invoke("glMultiTexCoord2s", ISSV);
-        glMultiTexCoord2sv = load.invoke("glMultiTexCoord2sv", IPV);
-        glMultiTexCoord3d = load.invoke("glMultiTexCoord3d", IDDDV);
-        glMultiTexCoord3dv = load.invoke("glMultiTexCoord3dv", IPV);
-        glMultiTexCoord3f = load.invoke("glMultiTexCoord3f", IFFFV);
-        glMultiTexCoord3fv = load.invoke("glMultiTexCoord3fv", IPV);
-        glMultiTexCoord3i = load.invoke("glMultiTexCoord3i", IIIIV);
-        glMultiTexCoord3iv = load.invoke("glMultiTexCoord3iv", IPV);
-        glMultiTexCoord3s = load.invoke("glMultiTexCoord3s", ISSSV);
-        glMultiTexCoord3sv = load.invoke("glMultiTexCoord3sv", IPV);
-        glMultiTexCoord4d = load.invoke("glMultiTexCoord4d", IDDDDV);
-        glMultiTexCoord4dv = load.invoke("glMultiTexCoord4dv", IPV);
-        glMultiTexCoord4f = load.invoke("glMultiTexCoord4f", IFFFFV);
-        glMultiTexCoord4fv = load.invoke("glMultiTexCoord4fv", IPV);
-        glMultiTexCoord4i = load.invoke("glMultiTexCoord4i", IIIIIV);
-        glMultiTexCoord4iv = load.invoke("glMultiTexCoord4iv", IPV);
-        glMultiTexCoord4s = load.invoke("glMultiTexCoord4s", ISSSSV);
-        glMultiTexCoord4sv = load.invoke("glMultiTexCoord4sv", IPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        if (!caps.Ver13) return;
+        caps.glClientActiveTexture = load.invoke("glClientActiveTexture", IV);
+        caps.glLoadTransposeMatrixd = load.invoke("glLoadTransposeMatrixd", PV);
+        caps.glLoadTransposeMatrixf = load.invoke("glLoadTransposeMatrixf", PV);
+        caps.glMultTransposeMatrixd = load.invoke("glMultTransposeMatrixd", PV);
+        caps.glMultTransposeMatrixf = load.invoke("glMultTransposeMatrixf", PV);
+        caps.glMultiTexCoord1d = load.invoke("glMultiTexCoord1d", IDV);
+        caps.glMultiTexCoord1dv = load.invoke("glMultiTexCoord1dv", IPV);
+        caps.glMultiTexCoord1f = load.invoke("glMultiTexCoord1f", IFV);
+        caps.glMultiTexCoord1fv = load.invoke("glMultiTexCoord1fv", IPV);
+        caps.glMultiTexCoord1i = load.invoke("glMultiTexCoord1i", IIV);
+        caps.glMultiTexCoord1iv = load.invoke("glMultiTexCoord1iv", IPV);
+        caps.glMultiTexCoord1s = load.invoke("glMultiTexCoord1s", ISV);
+        caps.glMultiTexCoord1sv = load.invoke("glMultiTexCoord1sv", IPV);
+        caps.glMultiTexCoord2d = load.invoke("glMultiTexCoord2d", IDDV);
+        caps.glMultiTexCoord2dv = load.invoke("glMultiTexCoord2dv", IPV);
+        caps.glMultiTexCoord2f = load.invoke("glMultiTexCoord2f", IFFV);
+        caps.glMultiTexCoord2fv = load.invoke("glMultiTexCoord2fv", IPV);
+        caps.glMultiTexCoord2i = load.invoke("glMultiTexCoord2i", IIIV);
+        caps.glMultiTexCoord2iv = load.invoke("glMultiTexCoord2iv", IPV);
+        caps.glMultiTexCoord2s = load.invoke("glMultiTexCoord2s", ISSV);
+        caps.glMultiTexCoord2sv = load.invoke("glMultiTexCoord2sv", IPV);
+        caps.glMultiTexCoord3d = load.invoke("glMultiTexCoord3d", IDDDV);
+        caps.glMultiTexCoord3dv = load.invoke("glMultiTexCoord3dv", IPV);
+        caps.glMultiTexCoord3f = load.invoke("glMultiTexCoord3f", IFFFV);
+        caps.glMultiTexCoord3fv = load.invoke("glMultiTexCoord3fv", IPV);
+        caps.glMultiTexCoord3i = load.invoke("glMultiTexCoord3i", IIIIV);
+        caps.glMultiTexCoord3iv = load.invoke("glMultiTexCoord3iv", IPV);
+        caps.glMultiTexCoord3s = load.invoke("glMultiTexCoord3s", ISSSV);
+        caps.glMultiTexCoord3sv = load.invoke("glMultiTexCoord3sv", IPV);
+        caps.glMultiTexCoord4d = load.invoke("glMultiTexCoord4d", IDDDDV);
+        caps.glMultiTexCoord4dv = load.invoke("glMultiTexCoord4dv", IPV);
+        caps.glMultiTexCoord4f = load.invoke("glMultiTexCoord4f", IFFFFV);
+        caps.glMultiTexCoord4fv = load.invoke("glMultiTexCoord4fv", IPV);
+        caps.glMultiTexCoord4i = load.invoke("glMultiTexCoord4i", IIIIIV);
+        caps.glMultiTexCoord4iv = load.invoke("glMultiTexCoord4iv", IPV);
+        caps.glMultiTexCoord4s = load.invoke("glMultiTexCoord4s", ISSSSV);
+        caps.glMultiTexCoord4sv = load.invoke("glMultiTexCoord4sv", IPV);
     }
 
     public static void clientActiveTexture(int texture) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClientActiveTexture).invokeExact(texture);
+            check(caps.glClientActiveTexture).invokeExact(texture);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void loadTransposeMatrixd(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLoadTransposeMatrixd).invokeExact(m);
+            check(caps.glLoadTransposeMatrixd).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -115,8 +102,9 @@ public final class GL13 extends GL13C {
     }
 
     public static void loadTransposeMatrixf(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLoadTransposeMatrixf).invokeExact(m);
+            check(caps.glLoadTransposeMatrixf).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -127,8 +115,9 @@ public final class GL13 extends GL13C {
     }
 
     public static void multTransposeMatrixd(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultTransposeMatrixd).invokeExact(m);
+            check(caps.glMultTransposeMatrixd).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -139,8 +128,9 @@ public final class GL13 extends GL13C {
     }
 
     public static void multTransposeMatrixf(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultTransposeMatrixf).invokeExact(m);
+            check(caps.glMultTransposeMatrixf).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -151,16 +141,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1d(int target, double s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1d).invokeExact(target, s);
+            check(caps.glMultiTexCoord1d).invokeExact(target, s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1dv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1dv).invokeExact(target, v);
+            check(caps.glMultiTexCoord1dv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -171,16 +163,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1f(int target, float s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1f).invokeExact(target, s);
+            check(caps.glMultiTexCoord1f).invokeExact(target, s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1fv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1fv).invokeExact(target, v);
+            check(caps.glMultiTexCoord1fv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -191,16 +185,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1i(int target, int s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1i).invokeExact(target, s);
+            check(caps.glMultiTexCoord1i).invokeExact(target, s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1iv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1iv).invokeExact(target, v);
+            check(caps.glMultiTexCoord1iv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -211,16 +207,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1s(int target, short s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1s).invokeExact(target, s);
+            check(caps.glMultiTexCoord1s).invokeExact(target, s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord1sv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord1sv).invokeExact(target, v);
+            check(caps.glMultiTexCoord1sv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -231,16 +229,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2d(int target, double s, double t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2d).invokeExact(target, s, t);
+            check(caps.glMultiTexCoord2d).invokeExact(target, s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2dv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2dv).invokeExact(target, v);
+            check(caps.glMultiTexCoord2dv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -251,16 +251,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2f(int target, float s, float t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2f).invokeExact(target, s, t);
+            check(caps.glMultiTexCoord2f).invokeExact(target, s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2fv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2fv).invokeExact(target, v);
+            check(caps.glMultiTexCoord2fv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -271,16 +273,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2i(int target, int s, int t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2i).invokeExact(target, s, t);
+            check(caps.glMultiTexCoord2i).invokeExact(target, s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2iv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2iv).invokeExact(target, v);
+            check(caps.glMultiTexCoord2iv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -291,16 +295,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2s(int target, short s, short t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2s).invokeExact(target, s, t);
+            check(caps.glMultiTexCoord2s).invokeExact(target, s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord2sv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord2sv).invokeExact(target, v);
+            check(caps.glMultiTexCoord2sv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -311,16 +317,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3d(int target, double s, double t, double r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3d).invokeExact(target, s, t, r);
+            check(caps.glMultiTexCoord3d).invokeExact(target, s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3dv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3dv).invokeExact(target, v);
+            check(caps.glMultiTexCoord3dv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -331,16 +339,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3f(int target, float s, float t, float r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3f).invokeExact(target, s, t, r);
+            check(caps.glMultiTexCoord3f).invokeExact(target, s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3fv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3fv).invokeExact(target, v);
+            check(caps.glMultiTexCoord3fv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -351,16 +361,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3i(int target, int s, int t, int r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3i).invokeExact(target, s, t, r);
+            check(caps.glMultiTexCoord3i).invokeExact(target, s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3iv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3iv).invokeExact(target, v);
+            check(caps.glMultiTexCoord3iv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -371,16 +383,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3s(int target, short s, short t, short r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3s).invokeExact(target, s, t, r);
+            check(caps.glMultiTexCoord3s).invokeExact(target, s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord3sv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord3sv).invokeExact(target, v);
+            check(caps.glMultiTexCoord3sv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -391,16 +405,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4d(int target, double s, double t, double r, double q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4d).invokeExact(target, s, t, r, q);
+            check(caps.glMultiTexCoord4d).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4dv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4dv).invokeExact(target, v);
+            check(caps.glMultiTexCoord4dv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -411,16 +427,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4f(int target, float s, float t, float r, float q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4f).invokeExact(target, s, t, r, q);
+            check(caps.glMultiTexCoord4f).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4fv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4fv).invokeExact(target, v);
+            check(caps.glMultiTexCoord4fv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -431,16 +449,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4i(int target, int s, int t, int r, int q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4i).invokeExact(target, s, t, r, q);
+            check(caps.glMultiTexCoord4i).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4iv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4iv).invokeExact(target, v);
+            check(caps.glMultiTexCoord4iv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -451,16 +471,18 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4s(int target, short s, short t, short r, short q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4s).invokeExact(target, s, t, r, q);
+            check(caps.glMultiTexCoord4s).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiTexCoord4sv(int target, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiTexCoord4sv).invokeExact(target, v);
+            check(caps.glMultiTexCoord4sv).invokeExact(target, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

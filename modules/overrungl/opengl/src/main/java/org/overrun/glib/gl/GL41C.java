@@ -32,7 +32,6 @@ import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -46,169 +45,146 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL41C extends GL40C permits GL42C {
-    @Nullable
-    public static MethodHandle
-        glActiveShaderProgram, glBindProgramPipeline, glClearDepthf, glCreateShaderProgramv, glDeleteProgramPipelines,
-        glDepthRangeArrayv, glDepthRangeIndexed, glDepthRangef, glGenProgramPipelines, glGetDoublei_v, glGetFloati_v,
-        glGetProgramBinary, glGetProgramPipelineInfoLog, glGetProgramPipelineiv, glGetShaderPrecisionFormat,
-        glGetVertexAttribLdv, glIsProgramPipeline, glProgramBinary, glProgramParameteri, glProgramUniform1d,
-        glProgramUniform1dv, glProgramUniform1f, glProgramUniform1fv, glProgramUniform1i, glProgramUniform1iv,
-        glProgramUniform1ui, glProgramUniform1uiv, glProgramUniform2d, glProgramUniform2dv, glProgramUniform2f,
-        glProgramUniform2fv, glProgramUniform2i, glProgramUniform2iv, glProgramUniform2ui, glProgramUniform2uiv,
-        glProgramUniform3d, glProgramUniform3dv, glProgramUniform3f, glProgramUniform3fv, glProgramUniform3i,
-        glProgramUniform3iv, glProgramUniform3ui, glProgramUniform3uiv, glProgramUniform4d, glProgramUniform4dv,
-        glProgramUniform4f, glProgramUniform4fv, glProgramUniform4i, glProgramUniform4iv, glProgramUniform4ui,
-        glProgramUniform4uiv, glProgramUniformMatrix2dv, glProgramUniformMatrix2fv, glProgramUniformMatrix2x3dv,
-        glProgramUniformMatrix2x3fv, glProgramUniformMatrix2x4dv, glProgramUniformMatrix2x4fv,
-        glProgramUniformMatrix3dv, glProgramUniformMatrix3fv, glProgramUniformMatrix3x2dv, glProgramUniformMatrix3x2fv,
-        glProgramUniformMatrix3x4dv, glProgramUniformMatrix3x4fv, glProgramUniformMatrix4dv, glProgramUniformMatrix4fv,
-        glProgramUniformMatrix4x2dv, glProgramUniformMatrix4x2fv, glProgramUniformMatrix4x3dv,
-        glProgramUniformMatrix4x3fv, glReleaseShaderCompiler, glScissorArrayv, glScissorIndexed, glScissorIndexedv,
-        glShaderBinary, glUseProgramStages, glValidateProgramPipeline, glVertexAttribL1d, glVertexAttribL1dv,
-        glVertexAttribL2d, glVertexAttribL2dv, glVertexAttribL3d, glVertexAttribL3dv, glVertexAttribL4d,
-        glVertexAttribL4dv, glVertexAttribLPointer, glViewportArrayv, glViewportIndexedf, glViewportIndexedfv;
-
-    static boolean isSupported() {
-        return checkAll(glActiveShaderProgram, glBindProgramPipeline, glClearDepthf, glCreateShaderProgramv,
-            glDeleteProgramPipelines, glDepthRangeArrayv, glDepthRangeIndexed, glDepthRangef, glGenProgramPipelines,
-            glGetDoublei_v, glGetFloati_v, glGetProgramBinary, glGetProgramPipelineInfoLog, glGetProgramPipelineiv,
-            glGetShaderPrecisionFormat, glGetVertexAttribLdv, glIsProgramPipeline, glProgramBinary, glProgramParameteri,
-            glProgramUniform1d, glProgramUniform1dv, glProgramUniform1f, glProgramUniform1fv, glProgramUniform1i,
-            glProgramUniform1iv, glProgramUniform1ui, glProgramUniform1uiv, glProgramUniform2d, glProgramUniform2dv,
-            glProgramUniform2f, glProgramUniform2fv, glProgramUniform2i, glProgramUniform2iv, glProgramUniform2ui,
-            glProgramUniform2uiv, glProgramUniform3d, glProgramUniform3dv, glProgramUniform3f, glProgramUniform3fv,
-            glProgramUniform3i, glProgramUniform3iv, glProgramUniform3ui, glProgramUniform3uiv, glProgramUniform4d,
-            glProgramUniform4dv, glProgramUniform4f, glProgramUniform4fv, glProgramUniform4i, glProgramUniform4iv,
-            glProgramUniform4ui, glProgramUniform4uiv, glProgramUniformMatrix2dv, glProgramUniformMatrix2fv,
-            glProgramUniformMatrix2x3dv, glProgramUniformMatrix2x3fv, glProgramUniformMatrix2x4dv,
-            glProgramUniformMatrix2x4fv, glProgramUniformMatrix3dv, glProgramUniformMatrix3fv,
-            glProgramUniformMatrix3x2dv, glProgramUniformMatrix3x2fv, glProgramUniformMatrix3x4dv,
-            glProgramUniformMatrix3x4fv, glProgramUniformMatrix4dv, glProgramUniformMatrix4fv,
-            glProgramUniformMatrix4x2dv, glProgramUniformMatrix4x2fv, glProgramUniformMatrix4x3dv,
-            glProgramUniformMatrix4x3fv, glReleaseShaderCompiler, glScissorArrayv, glScissorIndexed, glScissorIndexedv,
-            glShaderBinary, glUseProgramStages, glValidateProgramPipeline, glVertexAttribL1d, glVertexAttribL1dv,
-            glVertexAttribL2d, glVertexAttribL2dv, glVertexAttribL3d, glVertexAttribL3dv, glVertexAttribL4d,
-            glVertexAttribL4dv, glVertexAttribLPointer, glViewportArrayv, glViewportIndexedf, glViewportIndexedfv);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glActiveShaderProgram, caps.glBindProgramPipeline, caps.glClearDepthf, caps.glCreateShaderProgramv, caps.glDeleteProgramPipelines, caps.glDepthRangeArrayv,
+            caps.glDepthRangeIndexed, caps.glDepthRangef, caps.glGenProgramPipelines, caps.glGetDoublei_v, caps.glGetFloati_v, caps.glGetProgramBinary,
+            caps.glGetProgramPipelineInfoLog, caps.glGetProgramPipelineiv, caps.glGetShaderPrecisionFormat, caps.glGetVertexAttribLdv, caps.glIsProgramPipeline, caps.glProgramBinary,
+            caps.glProgramParameteri, caps.glProgramUniform1d, caps.glProgramUniform1dv, caps.glProgramUniform1f, caps.glProgramUniform1fv, caps.glProgramUniform1i,
+            caps.glProgramUniform1iv, caps.glProgramUniform1ui, caps.glProgramUniform1uiv, caps.glProgramUniform2d, caps.glProgramUniform2dv, caps.glProgramUniform2f,
+            caps.glProgramUniform2fv, caps.glProgramUniform2i, caps.glProgramUniform2iv, caps.glProgramUniform2ui, caps.glProgramUniform2uiv, caps.glProgramUniform3d,
+            caps.glProgramUniform3dv, caps.glProgramUniform3f, caps.glProgramUniform3fv, caps.glProgramUniform3i, caps.glProgramUniform3iv, caps.glProgramUniform3ui,
+            caps.glProgramUniform3uiv, caps.glProgramUniform4d, caps.glProgramUniform4dv, caps.glProgramUniform4f, caps.glProgramUniform4fv, caps.glProgramUniform4i,
+            caps.glProgramUniform4iv, caps.glProgramUniform4ui, caps.glProgramUniform4uiv, caps.glProgramUniformMatrix2dv, caps.glProgramUniformMatrix2fv, caps.glProgramUniformMatrix2x3dv,
+            caps.glProgramUniformMatrix2x3fv, caps.glProgramUniformMatrix2x4dv, caps.glProgramUniformMatrix2x4fv, caps.glProgramUniformMatrix3dv, caps.glProgramUniformMatrix3fv, caps.glProgramUniformMatrix3x2dv,
+            caps.glProgramUniformMatrix3x2fv, caps.glProgramUniformMatrix3x4dv, caps.glProgramUniformMatrix3x4fv, caps.glProgramUniformMatrix4dv, caps.glProgramUniformMatrix4fv, caps.glProgramUniformMatrix4x2dv,
+            caps.glProgramUniformMatrix4x2fv, caps.glProgramUniformMatrix4x3dv, caps.glProgramUniformMatrix4x3fv, caps.glReleaseShaderCompiler, caps.glScissorArrayv, caps.glScissorIndexed,
+            caps.glScissorIndexedv, caps.glShaderBinary, caps.glUseProgramStages, caps.glValidateProgramPipeline, caps.glVertexAttribL1d, caps.glVertexAttribL1dv,
+            caps.glVertexAttribL2d, caps.glVertexAttribL2dv, caps.glVertexAttribL3d, caps.glVertexAttribL3dv, caps.glVertexAttribL4d, caps.glVertexAttribL4dv,
+            caps.glVertexAttribLPointer, caps.glViewportArrayv, caps.glViewportIndexedf, caps.glViewportIndexedfv);
     }
 
-    static void load(GLLoadFunc load) {
-        glActiveShaderProgram = load.invoke("glActiveShaderProgram", IIV);
-        glBindProgramPipeline = load.invoke("glBindProgramPipeline", IV);
-        glClearDepthf = load.invoke("glClearDepthf", FV);
-        glCreateShaderProgramv = load.invoke("glCreateShaderProgramv", IIPI);
-        glDeleteProgramPipelines = load.invoke("glDeleteProgramPipelines", IPV);
-        glDepthRangeArrayv = load.invoke("glDepthRangeArrayv", IIPV);
-        glDepthRangeIndexed = load.invoke("glDepthRangeIndexed", IDDV);
-        glDepthRangef = load.invoke("glDepthRangef", FFV);
-        glGenProgramPipelines = load.invoke("glGenProgramPipelines", IPV);
-        glGetDoublei_v = load.invoke("glGetDoublei_v", IIPV);
-        glGetFloati_v = load.invoke("glGetFloati_v", IIPV);
-        glGetProgramBinary = load.invoke("glGetProgramBinary", IIPPPV);
-        glGetProgramPipelineInfoLog = load.invoke("glGetProgramPipelineInfoLog", IIPPV);
-        glGetProgramPipelineiv = load.invoke("glGetProgramPipelineiv", IIPV);
-        glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
-        glGetVertexAttribLdv = load.invoke("glGetVertexAttribLdv", IIPV);
-        glIsProgramPipeline = load.invoke("glIsProgramPipeline", IZ);
-        glProgramBinary = load.invoke("glProgramBinary", IIPIV);
-        glProgramParameteri = load.invoke("glProgramParameteri", IIIV);
-        glProgramUniform1d = load.invoke("glProgramUniform1d", IIDV);
-        glProgramUniform1dv = load.invoke("glProgramUniform1dv", IIIPV);
-        glProgramUniform1f = load.invoke("glProgramUniform1f", IIFV);
-        glProgramUniform1fv = load.invoke("glProgramUniform1fv", IIIPV);
-        glProgramUniform1i = load.invoke("glProgramUniform1i", IIIV);
-        glProgramUniform1iv = load.invoke("glProgramUniform1iv", IIIPV);
-        glProgramUniform1ui = load.invoke("glProgramUniform1ui", IIIV);
-        glProgramUniform1uiv = load.invoke("glProgramUniform1uiv", IIIPV);
-        glProgramUniform2d = load.invoke("glProgramUniform2d", IIDDV);
-        glProgramUniform2dv = load.invoke("glProgramUniform2dv", IIIPV);
-        glProgramUniform2f = load.invoke("glProgramUniform2f", IIFFV);
-        glProgramUniform2fv = load.invoke("glProgramUniform2fv", IIIPV);
-        glProgramUniform2i = load.invoke("glProgramUniform2i", IIIIV);
-        glProgramUniform2iv = load.invoke("glProgramUniform2iv", IIIPV);
-        glProgramUniform2ui = load.invoke("glProgramUniform2ui", IIIIV);
-        glProgramUniform2uiv = load.invoke("glProgramUniform2uiv", IIIPV);
-        glProgramUniform3d = load.invoke("glProgramUniform3d", IIDDDV);
-        glProgramUniform3dv = load.invoke("glProgramUniform3dv", IIIPV);
-        glProgramUniform3f = load.invoke("glProgramUniform3f", IIFFFV);
-        glProgramUniform3fv = load.invoke("glProgramUniform3fv", IIIPV);
-        glProgramUniform3i = load.invoke("glProgramUniform3i", IIIIIV);
-        glProgramUniform3iv = load.invoke("glProgramUniform3iv", IIIPV);
-        glProgramUniform3ui = load.invoke("glProgramUniform3ui", IIIIIV);
-        glProgramUniform3uiv = load.invoke("glProgramUniform3uiv", IIIPV);
-        glProgramUniform4d = load.invoke("glProgramUniform4d", IIDDDDV);
-        glProgramUniform4dv = load.invoke("glProgramUniform4dv", IIIPV);
-        glProgramUniform4f = load.invoke("glProgramUniform4f", IIFFFFV);
-        glProgramUniform4fv = load.invoke("glProgramUniform4fv", IIIPV);
-        glProgramUniform4i = load.invoke("glProgramUniform4i", IIIIIIV);
-        glProgramUniform4iv = load.invoke("glProgramUniform4iv", IIIPV);
-        glProgramUniform4ui = load.invoke("glProgramUniform4ui", IIIIIIV);
-        glProgramUniform4uiv = load.invoke("glProgramUniform4uiv", IIIPV);
-        glProgramUniformMatrix2dv = load.invoke("glProgramUniformMatrix2dv", IIIZPV);
-        glProgramUniformMatrix2fv = load.invoke("glProgramUniformMatrix2fv", IIIZPV);
-        glProgramUniformMatrix2x3dv = load.invoke("glProgramUniformMatrix2x3dv", IIIZPV);
-        glProgramUniformMatrix2x3fv = load.invoke("glProgramUniformMatrix2x3fv", IIIZPV);
-        glProgramUniformMatrix2x4dv = load.invoke("glProgramUniformMatrix2x4dv", IIIZPV);
-        glProgramUniformMatrix2x4fv = load.invoke("glProgramUniformMatrix2x4fv", IIIZPV);
-        glProgramUniformMatrix3dv = load.invoke("glProgramUniformMatrix3dv", IIIZPV);
-        glProgramUniformMatrix3fv = load.invoke("glProgramUniformMatrix3fv", IIIZPV);
-        glProgramUniformMatrix3x2dv = load.invoke("glProgramUniformMatrix3x2dv", IIIZPV);
-        glProgramUniformMatrix3x2fv = load.invoke("glProgramUniformMatrix3x2fv", IIIZPV);
-        glProgramUniformMatrix3x4dv = load.invoke("glProgramUniformMatrix3x4dv", IIIZPV);
-        glProgramUniformMatrix3x4fv = load.invoke("glProgramUniformMatrix3x4fv", IIIZPV);
-        glProgramUniformMatrix4dv = load.invoke("glProgramUniformMatrix4dv", IIIZPV);
-        glProgramUniformMatrix4fv = load.invoke("glProgramUniformMatrix4fv", IIIZPV);
-        glProgramUniformMatrix4x2dv = load.invoke("glProgramUniformMatrix4x2dv", IIIZPV);
-        glProgramUniformMatrix4x2fv = load.invoke("glProgramUniformMatrix4x2fv", IIIZPV);
-        glProgramUniformMatrix4x3dv = load.invoke("glProgramUniformMatrix4x3dv", IIIZPV);
-        glProgramUniformMatrix4x3fv = load.invoke("glProgramUniformMatrix4x3fv", IIIZPV);
-        glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
-        glScissorArrayv = load.invoke("glScissorArrayv", IIPV);
-        glScissorIndexed = load.invoke("glScissorIndexed", IIIIIV);
-        glScissorIndexedv = load.invoke("glScissorIndexedv", IPV);
-        glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
-        glUseProgramStages = load.invoke("glUseProgramStages", IIIV);
-        glValidateProgramPipeline = load.invoke("glValidateProgramPipeline", IV);
-        glVertexAttribL1d = load.invoke("glVertexAttribL1d", IDV);
-        glVertexAttribL1dv = load.invoke("glVertexAttribL1dv", IPV);
-        glVertexAttribL2d = load.invoke("glVertexAttribL2d", IDDV);
-        glVertexAttribL2dv = load.invoke("glVertexAttribL2dv", IPV);
-        glVertexAttribL3d = load.invoke("glVertexAttribL3d", IDDDV);
-        glVertexAttribL3dv = load.invoke("glVertexAttribL3dv", IPV);
-        glVertexAttribL4d = load.invoke("glVertexAttribL4d", IDDDDV);
-        glVertexAttribL4dv = load.invoke("glVertexAttribL4dv", IPV);
-        glVertexAttribLPointer = load.invoke("glVertexAttribLPointer", IIIIPV);
-        glViewportArrayv = load.invoke("glViewportArrayv", IIPV);
-        glViewportIndexedf = load.invoke("glViewportIndexedf", IFFFFV);
-        glViewportIndexedfv = load.invoke("glViewportIndexedfv", IPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glActiveShaderProgram = load.invoke("glActiveShaderProgram", IIV);
+        caps.glBindProgramPipeline = load.invoke("glBindProgramPipeline", IV);
+        caps.glClearDepthf = load.invoke("glClearDepthf", FV);
+        caps.glCreateShaderProgramv = load.invoke("glCreateShaderProgramv", IIPI);
+        caps.glDeleteProgramPipelines = load.invoke("glDeleteProgramPipelines", IPV);
+        caps.glDepthRangeArrayv = load.invoke("glDepthRangeArrayv", IIPV);
+        caps.glDepthRangeIndexed = load.invoke("glDepthRangeIndexed", IDDV);
+        caps.glDepthRangef = load.invoke("glDepthRangef", FFV);
+        caps.glGenProgramPipelines = load.invoke("glGenProgramPipelines", IPV);
+        caps.glGetDoublei_v = load.invoke("glGetDoublei_v", IIPV);
+        caps.glGetFloati_v = load.invoke("glGetFloati_v", IIPV);
+        caps.glGetProgramBinary = load.invoke("glGetProgramBinary", IIPPPV);
+        caps.glGetProgramPipelineInfoLog = load.invoke("glGetProgramPipelineInfoLog", IIPPV);
+        caps.glGetProgramPipelineiv = load.invoke("glGetProgramPipelineiv", IIPV);
+        caps.glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
+        caps.glGetVertexAttribLdv = load.invoke("glGetVertexAttribLdv", IIPV);
+        caps.glIsProgramPipeline = load.invoke("glIsProgramPipeline", IZ);
+        caps.glProgramBinary = load.invoke("glProgramBinary", IIPIV);
+        caps.glProgramParameteri = load.invoke("glProgramParameteri", IIIV);
+        caps.glProgramUniform1d = load.invoke("glProgramUniform1d", IIDV);
+        caps.glProgramUniform1dv = load.invoke("glProgramUniform1dv", IIIPV);
+        caps.glProgramUniform1f = load.invoke("glProgramUniform1f", IIFV);
+        caps.glProgramUniform1fv = load.invoke("glProgramUniform1fv", IIIPV);
+        caps.glProgramUniform1i = load.invoke("glProgramUniform1i", IIIV);
+        caps.glProgramUniform1iv = load.invoke("glProgramUniform1iv", IIIPV);
+        caps.glProgramUniform1ui = load.invoke("glProgramUniform1ui", IIIV);
+        caps.glProgramUniform1uiv = load.invoke("glProgramUniform1uiv", IIIPV);
+        caps.glProgramUniform2d = load.invoke("glProgramUniform2d", IIDDV);
+        caps.glProgramUniform2dv = load.invoke("glProgramUniform2dv", IIIPV);
+        caps.glProgramUniform2f = load.invoke("glProgramUniform2f", IIFFV);
+        caps.glProgramUniform2fv = load.invoke("glProgramUniform2fv", IIIPV);
+        caps.glProgramUniform2i = load.invoke("glProgramUniform2i", IIIIV);
+        caps.glProgramUniform2iv = load.invoke("glProgramUniform2iv", IIIPV);
+        caps.glProgramUniform2ui = load.invoke("glProgramUniform2ui", IIIIV);
+        caps.glProgramUniform2uiv = load.invoke("glProgramUniform2uiv", IIIPV);
+        caps.glProgramUniform3d = load.invoke("glProgramUniform3d", IIDDDV);
+        caps.glProgramUniform3dv = load.invoke("glProgramUniform3dv", IIIPV);
+        caps.glProgramUniform3f = load.invoke("glProgramUniform3f", IIFFFV);
+        caps.glProgramUniform3fv = load.invoke("glProgramUniform3fv", IIIPV);
+        caps.glProgramUniform3i = load.invoke("glProgramUniform3i", IIIIIV);
+        caps.glProgramUniform3iv = load.invoke("glProgramUniform3iv", IIIPV);
+        caps.glProgramUniform3ui = load.invoke("glProgramUniform3ui", IIIIIV);
+        caps.glProgramUniform3uiv = load.invoke("glProgramUniform3uiv", IIIPV);
+        caps.glProgramUniform4d = load.invoke("glProgramUniform4d", IIDDDDV);
+        caps.glProgramUniform4dv = load.invoke("glProgramUniform4dv", IIIPV);
+        caps.glProgramUniform4f = load.invoke("glProgramUniform4f", IIFFFFV);
+        caps.glProgramUniform4fv = load.invoke("glProgramUniform4fv", IIIPV);
+        caps.glProgramUniform4i = load.invoke("glProgramUniform4i", IIIIIIV);
+        caps.glProgramUniform4iv = load.invoke("glProgramUniform4iv", IIIPV);
+        caps.glProgramUniform4ui = load.invoke("glProgramUniform4ui", IIIIIIV);
+        caps.glProgramUniform4uiv = load.invoke("glProgramUniform4uiv", IIIPV);
+        caps.glProgramUniformMatrix2dv = load.invoke("glProgramUniformMatrix2dv", IIIZPV);
+        caps.glProgramUniformMatrix2fv = load.invoke("glProgramUniformMatrix2fv", IIIZPV);
+        caps.glProgramUniformMatrix2x3dv = load.invoke("glProgramUniformMatrix2x3dv", IIIZPV);
+        caps.glProgramUniformMatrix2x3fv = load.invoke("glProgramUniformMatrix2x3fv", IIIZPV);
+        caps.glProgramUniformMatrix2x4dv = load.invoke("glProgramUniformMatrix2x4dv", IIIZPV);
+        caps.glProgramUniformMatrix2x4fv = load.invoke("glProgramUniformMatrix2x4fv", IIIZPV);
+        caps.glProgramUniformMatrix3dv = load.invoke("glProgramUniformMatrix3dv", IIIZPV);
+        caps.glProgramUniformMatrix3fv = load.invoke("glProgramUniformMatrix3fv", IIIZPV);
+        caps.glProgramUniformMatrix3x2dv = load.invoke("glProgramUniformMatrix3x2dv", IIIZPV);
+        caps.glProgramUniformMatrix3x2fv = load.invoke("glProgramUniformMatrix3x2fv", IIIZPV);
+        caps.glProgramUniformMatrix3x4dv = load.invoke("glProgramUniformMatrix3x4dv", IIIZPV);
+        caps.glProgramUniformMatrix3x4fv = load.invoke("glProgramUniformMatrix3x4fv", IIIZPV);
+        caps.glProgramUniformMatrix4dv = load.invoke("glProgramUniformMatrix4dv", IIIZPV);
+        caps.glProgramUniformMatrix4fv = load.invoke("glProgramUniformMatrix4fv", IIIZPV);
+        caps.glProgramUniformMatrix4x2dv = load.invoke("glProgramUniformMatrix4x2dv", IIIZPV);
+        caps.glProgramUniformMatrix4x2fv = load.invoke("glProgramUniformMatrix4x2fv", IIIZPV);
+        caps.glProgramUniformMatrix4x3dv = load.invoke("glProgramUniformMatrix4x3dv", IIIZPV);
+        caps.glProgramUniformMatrix4x3fv = load.invoke("glProgramUniformMatrix4x3fv", IIIZPV);
+        caps.glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
+        caps.glScissorArrayv = load.invoke("glScissorArrayv", IIPV);
+        caps.glScissorIndexed = load.invoke("glScissorIndexed", IIIIIV);
+        caps.glScissorIndexedv = load.invoke("glScissorIndexedv", IPV);
+        caps.glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
+        caps.glUseProgramStages = load.invoke("glUseProgramStages", IIIV);
+        caps.glValidateProgramPipeline = load.invoke("glValidateProgramPipeline", IV);
+        caps.glVertexAttribL1d = load.invoke("glVertexAttribL1d", IDV);
+        caps.glVertexAttribL1dv = load.invoke("glVertexAttribL1dv", IPV);
+        caps.glVertexAttribL2d = load.invoke("glVertexAttribL2d", IDDV);
+        caps.glVertexAttribL2dv = load.invoke("glVertexAttribL2dv", IPV);
+        caps.glVertexAttribL3d = load.invoke("glVertexAttribL3d", IDDDV);
+        caps.glVertexAttribL3dv = load.invoke("glVertexAttribL3dv", IPV);
+        caps.glVertexAttribL4d = load.invoke("glVertexAttribL4d", IDDDDV);
+        caps.glVertexAttribL4dv = load.invoke("glVertexAttribL4dv", IPV);
+        caps.glVertexAttribLPointer = load.invoke("glVertexAttribLPointer", IIIIPV);
+        caps.glViewportArrayv = load.invoke("glViewportArrayv", IIPV);
+        caps.glViewportIndexedf = load.invoke("glViewportIndexedf", IFFFFV);
+        caps.glViewportIndexedfv = load.invoke("glViewportIndexedfv", IPV);
     }
 
     public static void activeShaderProgram(int pipeline, int program) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glActiveShaderProgram).invokeExact(pipeline, program);
+            check(caps.glActiveShaderProgram).invokeExact(pipeline, program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindProgramPipeline(int pipeline) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindProgramPipeline).invokeExact(pipeline);
+            check(caps.glBindProgramPipeline).invokeExact(pipeline);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearDepthf(float d) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearDepthf).invokeExact(d);
+            check(caps.glClearDepthf).invokeExact(d);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int createShaderProgramv(int type, int count, Addressable strings) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glCreateShaderProgramv).invokeExact(type, count, strings);
+            return (int) check(caps.glCreateShaderProgramv).invokeExact(type, count, strings);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -227,8 +203,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void deleteProgramPipelines(int n, Addressable pipelines) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteProgramPipelines).invokeExact(n, pipelines);
+            check(caps.glDeleteProgramPipelines).invokeExact(n, pipelines);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -251,8 +228,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void depthRangeArrayv(int first, int count, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDepthRangeArrayv).invokeExact(first, count, v);
+            check(caps.glDepthRangeArrayv).invokeExact(first, count, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -263,24 +241,27 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void depthRangeIndexed(int index, double n, double f) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDepthRangeIndexed).invokeExact(index, n, f);
+            check(caps.glDepthRangeIndexed).invokeExact(index, n, f);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthRangef(float n, float f) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDepthRangef).invokeExact(n, f);
+            check(caps.glDepthRangef).invokeExact(n, f);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void genProgramPipelines(int n, Addressable pipelines) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenProgramPipelines).invokeExact(n, pipelines);
+            check(caps.glGenProgramPipelines).invokeExact(n, pipelines);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -305,8 +286,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getDoublei_v(int target, int index, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetDoublei_v).invokeExact(target, index, data);
+            check(caps.glGetDoublei_v).invokeExact(target, index, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -331,8 +313,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getFloati_v(int target, int index, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetFloati_v).invokeExact(target, index, data);
+            check(caps.glGetFloati_v).invokeExact(target, index, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -357,8 +340,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramBinary(int program, int bufSize, Addressable length, Addressable binaryFormat, Addressable binary) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetProgramBinary).invokeExact(program, bufSize, length, binaryFormat, binary);
+            check(caps.glGetProgramBinary).invokeExact(program, bufSize, length, binaryFormat, binary);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -385,8 +369,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramPipelineInfoLog(int pipeline, int bufSize, Addressable length, Addressable infoLog) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetProgramPipelineInfoLog).invokeExact(pipeline, bufSize, length, infoLog);
+            check(caps.glGetProgramPipelineInfoLog).invokeExact(pipeline, bufSize, length, infoLog);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -410,8 +395,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramPipelineiv(int pipeline, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetProgramPipelineiv).invokeExact(pipeline, pname, params);
+            check(caps.glGetProgramPipelineiv).invokeExact(pipeline, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -430,8 +416,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getShaderPrecisionFormat(int shaderType, int precisionType, Addressable range, Addressable precision) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetShaderPrecisionFormat).invokeExact(shaderType, precisionType, range, precision);
+            check(caps.glGetShaderPrecisionFormat).invokeExact(shaderType, precisionType, range, precision);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -446,8 +433,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getVertexAttribLdv(int index, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetVertexAttribLdv).invokeExact(index, pname, params);
+            check(caps.glGetVertexAttribLdv).invokeExact(index, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -460,16 +448,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static boolean isProgramPipeline(int pipeline) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsProgramPipeline).invokeExact(pipeline);
+            return (boolean) check(caps.glIsProgramPipeline).invokeExact(pipeline);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programBinary(int program, int binaryFormat, Addressable binary, int length) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramBinary).invokeExact(program, binaryFormat, binary, length);
+            check(caps.glProgramBinary).invokeExact(program, binaryFormat, binary, length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -480,24 +470,27 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programParameteri(int program, int pname, int value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramParameteri).invokeExact(program, pname, value);
+            check(caps.glProgramParameteri).invokeExact(program, pname, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform1d(int program, int location, double v0) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1d).invokeExact(program, location, v0);
+            check(caps.glProgramUniform1d).invokeExact(program, location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform1dv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1dv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform1dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -508,16 +501,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1f(int program, int location, float v0) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1f).invokeExact(program, location, v0);
+            check(caps.glProgramUniform1f).invokeExact(program, location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform1fv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1fv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform1fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -528,16 +523,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1i(int program, int location, int v0) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1i).invokeExact(program, location, v0);
+            check(caps.glProgramUniform1i).invokeExact(program, location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform1iv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1iv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform1iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -548,16 +545,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1ui(int program, int location, int v0) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1ui).invokeExact(program, location, v0);
+            check(caps.glProgramUniform1ui).invokeExact(program, location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform1uiv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform1uiv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform1uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -568,16 +567,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2d(int program, int location, double v0, double v1) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2d).invokeExact(program, location, v0, v1);
+            check(caps.glProgramUniform2d).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform2dv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2dv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform2dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -588,16 +589,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2f(int program, int location, float v0, float v1) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2f).invokeExact(program, location, v0, v1);
+            check(caps.glProgramUniform2f).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform2fv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2fv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform2fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -608,16 +611,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2i(int program, int location, int v0, int v1) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2i).invokeExact(program, location, v0, v1);
+            check(caps.glProgramUniform2i).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform2iv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2iv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform2iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -628,16 +633,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2ui(int program, int location, int v0, int v1) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2ui).invokeExact(program, location, v0, v1);
+            check(caps.glProgramUniform2ui).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform2uiv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform2uiv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform2uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -648,16 +655,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3d(int program, int location, double v0, double v1, double v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3d).invokeExact(program, location, v0, v1, v2);
+            check(caps.glProgramUniform3d).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform3dv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3dv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform3dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -668,16 +677,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3f(int program, int location, float v0, float v1, float v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3f).invokeExact(program, location, v0, v1, v2);
+            check(caps.glProgramUniform3f).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform3fv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3fv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform3fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -688,16 +699,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3i(int program, int location, int v0, int v1, int v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3i).invokeExact(program, location, v0, v1, v2);
+            check(caps.glProgramUniform3i).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform3iv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3iv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform3iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -708,16 +721,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3ui(int program, int location, int v0, int v1, int v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3ui).invokeExact(program, location, v0, v1, v2);
+            check(caps.glProgramUniform3ui).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform3uiv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform3uiv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform3uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -728,16 +743,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4d(int program, int location, double v0, double v1, double v2, double v3) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4d).invokeExact(program, location, v0, v1, v2, v3);
+            check(caps.glProgramUniform4d).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform4dv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4dv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform4dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -748,16 +765,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4f(int program, int location, float v0, float v1, float v2, float v3) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4f).invokeExact(program, location, v0, v1, v2, v3);
+            check(caps.glProgramUniform4f).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform4fv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4fv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform4fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -768,16 +787,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4i(int program, int location, int v0, int v1, int v2, int v3) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4i).invokeExact(program, location, v0, v1, v2, v3);
+            check(caps.glProgramUniform4i).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform4iv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4iv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform4iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -788,16 +809,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4ui(int program, int location, int v0, int v1, int v2, int v3) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4ui).invokeExact(program, location, v0, v1, v2, v3);
+            check(caps.glProgramUniform4ui).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void programUniform4uiv(int program, int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniform4uiv).invokeExact(program, location, count, value);
+            check(caps.glProgramUniform4uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -808,8 +831,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix2dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix2dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -824,8 +848,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix2fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix2fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -840,8 +865,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x3dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix2x3dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix2x3dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -856,8 +882,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x3fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix2x3fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix2x3fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -872,8 +899,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x4dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix2x4dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix2x4dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -888,8 +916,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x4fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix2x4fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix2x4fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -904,8 +933,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix3dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix3dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -920,8 +950,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix3fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix3fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -936,8 +967,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x2dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix3x2dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix3x2dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -952,8 +984,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x2fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix3x2fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix3x2fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -968,8 +1001,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x4dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix3x4dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix3x4dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -984,8 +1018,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x4fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix3x4fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix3x4fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1000,8 +1035,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix4dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix4dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1016,8 +1052,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix4fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix4fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1032,8 +1069,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x2dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix4x2dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix4x2dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1048,8 +1086,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x2fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix4x2fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix4x2fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1064,8 +1103,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x3dv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix4x3dv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix4x3dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1080,8 +1120,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x3fv(int program, int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProgramUniformMatrix4x3fv).invokeExact(program, location, count, transpose, value);
+            check(caps.glProgramUniformMatrix4x3fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1096,16 +1137,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void releaseShaderCompiler() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glReleaseShaderCompiler).invokeExact();
+            check(caps.glReleaseShaderCompiler).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void scissorArrayv(int first, int count, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glScissorArrayv).invokeExact(first, count, v);
+            check(caps.glScissorArrayv).invokeExact(first, count, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1116,16 +1159,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void scissorIndexed(int index, int left, int bottom, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glScissorIndexed).invokeExact(index, left, bottom, width, height);
+            check(caps.glScissorIndexed).invokeExact(index, left, bottom, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void scissorIndexedv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glScissorIndexedv).invokeExact(index, v);
+            check(caps.glScissorIndexedv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1136,8 +1181,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void shaderBinary(int count, Addressable shaders, int binaryFormat, Addressable binary, int length) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glShaderBinary).invokeExact(count, shaders, binaryFormat, binary, length);
+            check(caps.glShaderBinary).invokeExact(count, shaders, binaryFormat, binary, length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1152,32 +1198,36 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void useProgramStages(int pipeline, int stages, int program) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUseProgramStages).invokeExact(pipeline, stages, program);
+            check(caps.glUseProgramStages).invokeExact(pipeline, stages, program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void validateProgramPipeline(int pipeline) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glValidateProgramPipeline).invokeExact(pipeline);
+            check(caps.glValidateProgramPipeline).invokeExact(pipeline);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribL1d(int index, double x) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL1d).invokeExact(index, x);
+            check(caps.glVertexAttribL1d).invokeExact(index, x);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribL1dv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL1dv).invokeExact(index, v);
+            check(caps.glVertexAttribL1dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1188,16 +1238,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL2d(int index, double x, double y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL2d).invokeExact(index, x, y);
+            check(caps.glVertexAttribL2d).invokeExact(index, x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribL2dv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL2dv).invokeExact(index, v);
+            check(caps.glVertexAttribL2dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1208,16 +1260,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL3d(int index, double x, double y, double z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL3d).invokeExact(index, x, y, z);
+            check(caps.glVertexAttribL3d).invokeExact(index, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribL3dv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL3dv).invokeExact(index, v);
+            check(caps.glVertexAttribL3dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1228,16 +1282,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL4d(int index, double x, double y, double z, double w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL4d).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttribL4d).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribL4dv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribL4dv).invokeExact(index, v);
+            check(caps.glVertexAttribL4dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1248,8 +1304,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribLPointer(int index, int size, int type, int stride, Addressable pointer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribLPointer).invokeExact(index, size, type, stride, pointer);
+            check(caps.glVertexAttribLPointer).invokeExact(index, size, type, stride, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1260,8 +1317,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportArrayv(int first, int count, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glViewportArrayv).invokeExact(first, count, v);
+            check(caps.glViewportArrayv).invokeExact(first, count, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1272,16 +1330,18 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportIndexedf(int index, float x, float y, float w, float h) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glViewportIndexedf).invokeExact(index, x, y, w, h);
+            check(caps.glViewportIndexedf).invokeExact(index, x, y, w, h);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void viewportIndexedfv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glViewportIndexedfv).invokeExact(index, v);
+            check(caps.glViewportIndexedfv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

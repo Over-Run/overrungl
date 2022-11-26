@@ -105,7 +105,7 @@ public final class GL30Test {
     }
 
     private void load(MemorySession arena) {
-        if (GLLoader.loadShared(true, GLFW::getProcAddress) == 0)
+        if (GLLoader.loadShared(true, GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

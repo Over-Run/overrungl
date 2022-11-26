@@ -24,15 +24,14 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -45,29 +44,27 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLEVertexArrayObject {
-    @Nullable
-    public static MethodHandle glBindVertexArrayAPPLE, glDeleteVertexArraysAPPLE, glGenVertexArraysAPPLE,
-        glIsVertexArrayAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_vertex_array_object.no()) return;
-        glBindVertexArrayAPPLE = load.invoke("glBindVertexArrayAPPLE", IV);
-        glDeleteVertexArraysAPPLE = load.invoke("glDeleteVertexArraysAPPLE", IPV);
-        glGenVertexArraysAPPLE = load.invoke("glGenVertexArraysAPPLE", IPV);
-        glIsVertexArrayAPPLE = load.invoke("glIsVertexArrayAPPLE", IZ);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_vertex_array_object) return;
+        ext.glBindVertexArrayAPPLE = load.invoke("glBindVertexArrayAPPLE", IV);
+        ext.glDeleteVertexArraysAPPLE = load.invoke("glDeleteVertexArraysAPPLE", IPV);
+        ext.glGenVertexArraysAPPLE = load.invoke("glGenVertexArraysAPPLE", IPV);
+        ext.glIsVertexArrayAPPLE = load.invoke("glIsVertexArrayAPPLE", IZ);
     }
 
     public static void glBindVertexArrayAPPLE(int array) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBindVertexArrayAPPLE).invokeExact(array);
+            check(ext.glBindVertexArrayAPPLE).invokeExact(array);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glDeleteVertexArraysAPPLE(int n, Addressable arrays) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
+            check(ext.glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -82,8 +79,9 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static void glGenVertexArraysAPPLE(int n, Addressable arrays) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGenVertexArraysAPPLE).invokeExact(n, arrays);
+            check(ext.glGenVertexArraysAPPLE).invokeExact(n, arrays);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -108,8 +106,9 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static boolean glIsVertexArrayAPPLE(int array) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (boolean) check(glIsVertexArrayAPPLE).invokeExact(array);
+            return (boolean) check(ext.glIsVertexArrayAPPLE).invokeExact(array);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

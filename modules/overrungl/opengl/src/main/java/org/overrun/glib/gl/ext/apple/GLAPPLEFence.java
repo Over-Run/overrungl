@@ -24,14 +24,13 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -44,25 +43,22 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLEFence {
-    @Nullable
-    public static MethodHandle glDeleteFencesAPPLE, glFinishFenceAPPLE, glFinishObjectAPPLE, glGenFencesAPPLE,
-        glIsFenceAPPLE, glSetFenceAPPLE, glTestFenceAPPLE, glTestObjectAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_fence.no()) return;
-        glDeleteFencesAPPLE = load.invoke("glDeleteFencesAPPLE", IPV);
-        glFinishFenceAPPLE = load.invoke("glFinishFenceAPPLE", IV);
-        glFinishObjectAPPLE = load.invoke("glFinishObjectAPPLE", IIV);
-        glGenFencesAPPLE = load.invoke("glGenFencesAPPLE", IPV);
-        glIsFenceAPPLE = load.invoke("glIsFenceAPPLE", IZ);
-        glSetFenceAPPLE = load.invoke("glSetFenceAPPLE", IV);
-        glTestFenceAPPLE = load.invoke("glTestFenceAPPLE", IZ);
-        glTestObjectAPPLE = load.invoke("glTestObjectAPPLE", IIZ);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_fence) return;
+        ext.glDeleteFencesAPPLE = load.invoke("glDeleteFencesAPPLE", IPV);
+        ext.glFinishFenceAPPLE = load.invoke("glFinishFenceAPPLE", IV);
+        ext.glFinishObjectAPPLE = load.invoke("glFinishObjectAPPLE", IIV);
+        ext.glGenFencesAPPLE = load.invoke("glGenFencesAPPLE", IPV);
+        ext.glIsFenceAPPLE = load.invoke("glIsFenceAPPLE", IZ);
+        ext.glSetFenceAPPLE = load.invoke("glSetFenceAPPLE", IV);
+        ext.glTestFenceAPPLE = load.invoke("glTestFenceAPPLE", IZ);
+        ext.glTestObjectAPPLE = load.invoke("glTestObjectAPPLE", IIZ);
     }
 
     public static void glDeleteFencesAPPLE(int n, Addressable fences) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDeleteFencesAPPLE).invokeExact(n, fences);
+            check(ext.glDeleteFencesAPPLE).invokeExact(n, fences);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -73,24 +69,27 @@ public final class GLAPPLEFence {
     }
 
     public static void glFinishFenceAPPLE(int fence) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glFinishFenceAPPLE).invokeExact(fence);
+            check(ext.glFinishFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glFinishObjectAPPLE(int object, int name) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glFinishObjectAPPLE).invokeExact(object, name);
+            check(ext.glFinishObjectAPPLE).invokeExact(object, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glGenFencesAPPLE(int n, Addressable fences) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glGenFencesAPPLE).invokeExact(n, fences);
+            check(ext.glGenFencesAPPLE).invokeExact(n, fences);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -113,32 +112,36 @@ public final class GLAPPLEFence {
     }
 
     public static boolean glIsFenceAPPLE(int fence) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (boolean) check(glIsFenceAPPLE).invokeExact(fence);
+            return (boolean) check(ext.glIsFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glSetFenceAPPLE(int fence) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glSetFenceAPPLE).invokeExact(fence);
+            check(ext.glSetFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean glTestFenceAPPLE(int fence) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (boolean) check(glTestFenceAPPLE).invokeExact(fence);
+            return (boolean) check(ext.glTestFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean glTestObjectAPPLE(int object, int name) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (boolean) check(glTestObjectAPPLE).invokeExact(object, name);
+            return (boolean) check(ext.glTestObjectAPPLE).invokeExact(object, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

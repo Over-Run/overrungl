@@ -28,8 +28,10 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -43,56 +45,52 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL31C extends GL30C permits GL32C {
-    @Nullable
-    public static MethodHandle
-        glCopyBufferSubData, glDrawArraysInstanced, glDrawElementsInstanced, glGetActiveUniformBlockName,
-        glGetActiveUniformBlockiv, glGetActiveUniformName, glGetActiveUniformsiv, glGetUniformBlockIndex,
-        glGetUniformIndices, glPrimitiveRestartIndex, glTexBuffer, glUniformBlockBinding;
-
-    static boolean isSupported() {
-        return checkAll(glBindBufferBase, glBindBufferRange, glCopyBufferSubData, glDrawArraysInstanced,
-            glDrawElementsInstanced, glGetActiveUniformBlockName, glGetActiveUniformBlockiv, glGetActiveUniformName,
-            glGetActiveUniformsiv, glGetIntegeri_v, glGetUniformBlockIndex, glGetUniformIndices,
-            glPrimitiveRestartIndex, glTexBuffer, glUniformBlockBinding);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBindBufferBase, caps.glBindBufferRange, caps.glCopyBufferSubData, caps.glDrawArraysInstanced, caps.glDrawElementsInstanced, caps.glGetActiveUniformBlockName,
+            caps.glGetActiveUniformBlockiv, caps.glGetActiveUniformName, caps.glGetActiveUniformsiv, caps.glGetIntegeri_v, caps.glGetUniformBlockIndex, caps.glGetUniformIndices,
+            caps.glPrimitiveRestartIndex, caps.glTexBuffer, caps.glUniformBlockBinding);
     }
 
-    static void load(GLLoadFunc load) {
-        glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
-        glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
-        glCopyBufferSubData = load.invoke("glCopyBufferSubData", IIJJJV);
-        glDrawArraysInstanced = load.invoke("glDrawArraysInstanced", IIIIV);
-        glDrawElementsInstanced = load.invoke("glDrawElementsInstanced", IIIPIV);
-        glGetActiveUniformBlockName = load.invoke("glGetActiveUniformBlockName", IIIPPV);
-        glGetActiveUniformBlockiv = load.invoke("glGetActiveUniformBlockiv", IIIPV);
-        glGetActiveUniformName = load.invoke("glGetActiveUniformName", IIIPPV);
-        glGetActiveUniformsiv = load.invoke("glGetActiveUniformsiv", IIPIPV);
-        glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
-        glGetUniformBlockIndex = load.invoke("glGetUniformBlockIndex", IPI);
-        glGetUniformIndices = load.invoke("glGetUniformIndices", IIPPV);
-        glPrimitiveRestartIndex = load.invoke("glPrimitiveRestartIndex", IV);
-        glTexBuffer = load.invoke("glTexBuffer", IIIV);
-        glUniformBlockBinding = load.invoke("glUniformBlockBinding", IIIV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
+        caps.glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
+        caps.glCopyBufferSubData = load.invoke("glCopyBufferSubData", IIJJJV);
+        caps.glDrawArraysInstanced = load.invoke("glDrawArraysInstanced", IIIIV);
+        caps.glDrawElementsInstanced = load.invoke("glDrawElementsInstanced", IIIPIV);
+        caps.glGetActiveUniformBlockName = load.invoke("glGetActiveUniformBlockName", IIIPPV);
+        caps.glGetActiveUniformBlockiv = load.invoke("glGetActiveUniformBlockiv", IIIPV);
+        caps.glGetActiveUniformName = load.invoke("glGetActiveUniformName", IIIPPV);
+        caps.glGetActiveUniformsiv = load.invoke("glGetActiveUniformsiv", IIPIPV);
+        caps.glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
+        caps.glGetUniformBlockIndex = load.invoke("glGetUniformBlockIndex", IPI);
+        caps.glGetUniformIndices = load.invoke("glGetUniformIndices", IIPPV);
+        caps.glPrimitiveRestartIndex = load.invoke("glPrimitiveRestartIndex", IV);
+        caps.glTexBuffer = load.invoke("glTexBuffer", IIIV);
+        caps.glUniformBlockBinding = load.invoke("glUniformBlockBinding", IIIV);
     }
 
     public static void copyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyBufferSubData).invokeExact(readTarget, writeTarget, readOffset, writeOffset, size);
+            check(caps.glCopyBufferSubData).invokeExact(readTarget, writeTarget, readOffset, writeOffset, size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawArraysInstanced(int mode, int first, int count, int instanceCount) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawArraysInstanced).invokeExact(mode, first, count, instanceCount);
+            check(caps.glDrawArraysInstanced).invokeExact(mode, first, count, instanceCount);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawElementsInstanced(int mode, int count, int type, Addressable indices, int instanceCount) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawElementsInstanced).invokeExact(mode, count, type, indices, instanceCount);
+            check(caps.glDrawElementsInstanced).invokeExact(mode, count, type, indices, instanceCount);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -111,8 +109,9 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, Addressable length, Addressable uniformBlockName) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetActiveUniformBlockName).invokeExact(program, uniformBlockIndex, bufSize, length, uniformBlockName);
+            check(caps.glGetActiveUniformBlockName).invokeExact(program, uniformBlockIndex, bufSize, length, uniformBlockName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -135,8 +134,9 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetActiveUniformBlockiv).invokeExact(program, uniformBlockIndex, pname, params);
+            check(caps.glGetActiveUniformBlockiv).invokeExact(program, uniformBlockIndex, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -149,8 +149,9 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformName(int program, int uniformIndex, int bufSize, Addressable length, Addressable uniformName) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetActiveUniformName).invokeExact(program, uniformIndex, bufSize, length, uniformName);
+            check(caps.glGetActiveUniformName).invokeExact(program, uniformIndex, bufSize, length, uniformName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -173,8 +174,9 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformsiv(int program, int uniformCount, Addressable uniformIndices, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetActiveUniformsiv).invokeExact(program, uniformCount, uniformIndices, pname, params);
+            check(caps.glGetActiveUniformsiv).invokeExact(program, uniformCount, uniformIndices, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -202,8 +204,9 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static int getUniformBlockIndex(int program, Addressable uniformBlockName) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetUniformBlockIndex).invokeExact(program, uniformBlockName);
+            return (int) check(caps.glGetUniformBlockIndex).invokeExact(program, uniformBlockName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -214,8 +217,9 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getUniformIndices(int program, int uniformCount, Addressable uniformNames, Addressable uniformIndices) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetUniformIndices).invokeExact(program, uniformCount, uniformNames, uniformIndices);
+            check(caps.glGetUniformIndices).invokeExact(program, uniformCount, uniformNames, uniformIndices);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -239,24 +243,27 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void primitiveRestartIndex(int index) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPrimitiveRestartIndex).invokeExact(index);
+            check(caps.glPrimitiveRestartIndex).invokeExact(index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texBuffer(int target, int internalFormat, int buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexBuffer).invokeExact(target, internalFormat, buffer);
+            check(caps.glTexBuffer).invokeExact(target, internalFormat, buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformBlockBinding).invokeExact(program, uniformBlockIndex, uniformBlockBinding);
+            check(caps.glUniformBlockBinding).invokeExact(program, uniformBlockIndex, uniformBlockBinding);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

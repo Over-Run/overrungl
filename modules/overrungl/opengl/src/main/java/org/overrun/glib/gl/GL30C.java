@@ -28,8 +28,10 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -43,168 +45,150 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL30C extends GL21C permits GL31C {
-    @Nullable
-    public static MethodHandle
-        glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange, glBindFragDataLocation,
-        glBindFramebuffer, glBindRenderbuffer, glBindVertexArray, glBlitFramebuffer, glCheckFramebufferStatus,
-        glClampColor, glClearBufferfi, glClearBufferfv, glClearBufferiv, glClearBufferuiv, glColorMaski,
-        glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays, glDisablei, glEnablei,
-        glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange, glFramebufferRenderbuffer,
-        glFramebufferTexture1D, glFramebufferTexture2D, glFramebufferTexture3D, glFramebufferTextureLayer,
-        glGenFramebuffers, glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v,
-        glGetFragDataLocation, glGetFramebufferAttachmentParameteriv, glGetIntegeri_v, glGetRenderbufferParameteriv,
-        glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv, glGetTransformFeedbackVarying, glGetUniformuiv,
-        glGetVertexAttribIiv, glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer, glIsVertexArray,
-        glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample, glTexParameterIiv,
-        glTexParameterIuiv, glTransformFeedbackVaryings, glUniform1ui, glUniform1uiv, glUniform2ui, glUniform2uiv,
-        glUniform3ui, glUniform3uiv, glUniform4ui, glUniform4uiv, glVertexAttribI1i, glVertexAttribI1iv,
-        glVertexAttribI1ui, glVertexAttribI1uiv, glVertexAttribI2i, glVertexAttribI2iv, glVertexAttribI2ui,
-        glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv, glVertexAttribI3ui, glVertexAttribI3uiv,
-        glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv, glVertexAttribI4sv, glVertexAttribI4ubv,
-        glVertexAttribI4ui, glVertexAttribI4uiv, glVertexAttribI4usv, glVertexAttribIPointer;
-
-    static boolean isSupported() {
-        return checkAll(glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange,
-            glBindFragDataLocation, glBindFramebuffer, glBindRenderbuffer, glBindVertexArray, glBlitFramebuffer,
-            glCheckFramebufferStatus, glClampColor, glClearBufferfi, glClearBufferfv, glClearBufferiv, glClearBufferuiv,
-            glColorMaski, glDeleteFramebuffers, glDeleteRenderbuffers, glDeleteVertexArrays, glDisablei, glEnablei,
-            glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange, glFramebufferRenderbuffer,
-            glFramebufferTexture1D, glFramebufferTexture2D, glFramebufferTexture3D, glFramebufferTextureLayer,
-            glGenFramebuffers, glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v,
-            glGetFragDataLocation, glGetFramebufferAttachmentParameteriv, glGetIntegeri_v, glGetRenderbufferParameteriv,
-            glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv, glGetTransformFeedbackVarying, glGetUniformuiv,
-            glGetVertexAttribIiv, glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer,
-            glIsVertexArray, glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample,
-            glTexParameterIiv, glTexParameterIuiv, glTransformFeedbackVaryings, glUniform1ui, glUniform1uiv,
-            glUniform2ui, glUniform2uiv, glUniform3ui, glUniform3uiv, glUniform4ui, glUniform4uiv, glVertexAttribI1i,
-            glVertexAttribI1iv, glVertexAttribI1ui, glVertexAttribI1uiv, glVertexAttribI2i, glVertexAttribI2iv,
-            glVertexAttribI2ui, glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv, glVertexAttribI3ui,
-            glVertexAttribI3uiv, glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv, glVertexAttribI4sv,
-            glVertexAttribI4ubv, glVertexAttribI4ui, glVertexAttribI4uiv, glVertexAttribI4usv, glVertexAttribIPointer);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBeginConditionalRender, caps.glBeginTransformFeedback, caps.glBindBufferBase, caps.glBindBufferRange, caps.glBindFragDataLocation, caps.glBindFramebuffer,
+            caps.glBindRenderbuffer, caps.glBindVertexArray, caps.glBlitFramebuffer, caps.glCheckFramebufferStatus, caps.glClampColor, caps.glClearBufferfi,
+            caps.glClearBufferfv, caps.glClearBufferiv, caps.glClearBufferuiv, caps.glColorMaski, caps.glDeleteFramebuffers, caps.glDeleteRenderbuffers,
+            caps.glDeleteVertexArrays, caps.glDisablei, caps.glEnablei, caps.glEndConditionalRender, caps.glEndTransformFeedback, caps.glFlushMappedBufferRange,
+            caps.glFramebufferRenderbuffer, caps.glFramebufferTexture1D, caps.glFramebufferTexture2D, caps.glFramebufferTexture3D, caps.glFramebufferTextureLayer, caps.glGenFramebuffers,
+            caps.glGenRenderbuffers, caps.glGenVertexArrays, caps.glGenerateMipmap, caps.glGetBooleani_v, caps.glGetFragDataLocation, caps.glGetFramebufferAttachmentParameteriv,
+            caps.glGetIntegeri_v, caps.glGetRenderbufferParameteriv, caps.glGetStringi, caps.glGetTexParameterIiv, caps.glGetTexParameterIuiv, caps.glGetTransformFeedbackVarying,
+            caps.glGetUniformuiv, caps.glGetVertexAttribIiv, caps.glGetVertexAttribIuiv, caps.glIsEnabledi, caps.glIsFramebuffer, caps.glIsRenderbuffer,
+            caps.glIsVertexArray, caps.glMapBufferRange, caps.glRenderbufferStorage, caps.glRenderbufferStorageMultisample, caps.glTexParameterIiv, caps.glTexParameterIuiv,
+            caps.glTransformFeedbackVaryings, caps.glUniform1ui, caps.glUniform1uiv, caps.glUniform2ui, caps.glUniform2uiv, caps.glUniform3ui,
+            caps.glUniform3uiv, caps.glUniform4ui, caps.glUniform4uiv, caps.glVertexAttribI1i, caps.glVertexAttribI1iv, caps.glVertexAttribI1ui,
+            caps.glVertexAttribI1uiv, caps.glVertexAttribI2i, caps.glVertexAttribI2iv, caps.glVertexAttribI2ui, caps.glVertexAttribI2uiv, caps.glVertexAttribI3i,
+            caps.glVertexAttribI3iv, caps.glVertexAttribI3ui, caps.glVertexAttribI3uiv, caps.glVertexAttribI4bv, caps.glVertexAttribI4i, caps.glVertexAttribI4iv,
+            caps.glVertexAttribI4sv, caps.glVertexAttribI4ubv, caps.glVertexAttribI4ui, caps.glVertexAttribI4uiv, caps.glVertexAttribI4usv, caps.glVertexAttribIPointer);
     }
 
-    static void load(GLLoadFunc load) {
-        glBeginConditionalRender = load.invoke("glBeginConditionalRender", IIV);
-        glBeginTransformFeedback = load.invoke("glBeginTransformFeedback", IV);
-        glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
-        glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
-        glBindFragDataLocation = load.invoke("glBindFragDataLocation", IIPV);
-        glBindFramebuffer = load.invoke("glBindFramebuffer", IIV);
-        glBindRenderbuffer = load.invoke("glBindRenderbuffer", IIV);
-        glBindVertexArray = load.invoke("glBindVertexArray", IV);
-        glBlitFramebuffer = load.invoke("glBlitFramebuffer", IIIIIIIIIIV);
-        glCheckFramebufferStatus = load.invoke("glCheckFramebufferStatus", II);
-        glClampColor = load.invoke("glClampColor", IIV);
-        glClearBufferfi = load.invoke("glClearBufferfi", IIFIV);
-        glClearBufferfv = load.invoke("glClearBufferfv", IIPV);
-        glClearBufferiv = load.invoke("glClearBufferiv", IIPV);
-        glClearBufferuiv = load.invoke("glClearBufferuiv", IIPV);
-        glColorMaski = load.invoke("glColorMaski", IZZZZV);
-        glDeleteFramebuffers = load.invoke("glDeleteFramebuffers", IPV);
-        glDeleteRenderbuffers = load.invoke("glDeleteRenderbuffers", IPV);
-        glDeleteVertexArrays = load.invoke("glDeleteVertexArrays", IPV);
-        glDisablei = load.invoke("glDisablei", IIV);
-        glEnablei = load.invoke("glEnablei", IIV);
-        glEndConditionalRender = load.invoke("glEndConditionalRender", V);
-        glEndTransformFeedback = load.invoke("glEndTransformFeedback", V);
-        glFlushMappedBufferRange = load.invoke("glFlushMappedBufferRange", IJJV);
-        glFramebufferRenderbuffer = load.invoke("glFramebufferRenderbuffer", IIIIV);
-        glFramebufferTexture1D = load.invoke("glFramebufferTexture1D", IIIIIV);
-        glFramebufferTexture2D = load.invoke("glFramebufferTexture2D", IIIIIV);
-        glFramebufferTexture3D = load.invoke("glFramebufferTexture3D", IIIIIIV);
-        glFramebufferTextureLayer = load.invoke("glFramebufferTextureLayer", IIIIIV);
-        glGenFramebuffers = load.invoke("glGenFramebuffers", IPV);
-        glGenRenderbuffers = load.invoke("glGenRenderbuffers", IPV);
-        glGenVertexArrays = load.invoke("glGenVertexArrays", IPV);
-        glGenerateMipmap = load.invoke("glGenerateMipmap", IV);
-        glGetBooleani_v = load.invoke("glGetBooleani_v", IIPV);
-        glGetFragDataLocation = load.invoke("glGetFragDataLocation", IPI);
-        glGetFramebufferAttachmentParameteriv = load.invoke("glGetFramebufferAttachmentParameteriv", IIIPV);
-        glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
-        glGetRenderbufferParameteriv = load.invoke("glGetRenderbufferParameteriv", IIPV);
-        glGetStringi = load.invoke("glGetStringi", IIP);
-        glGetTexParameterIiv = load.invoke("glGetTexParameterIiv", IIPV);
-        glGetTexParameterIuiv = load.invoke("glGetTexParameterIuiv", IIPV);
-        glGetTransformFeedbackVarying = load.invoke("glGetTransformFeedbackVarying", IIIPPPPV);
-        glGetUniformuiv = load.invoke("glGetUniformuiv", IIPV);
-        glGetVertexAttribIiv = load.invoke("glGetVertexAttribIiv", IIPV);
-        glGetVertexAttribIuiv = load.invoke("glGetVertexAttribIuiv", IIPV);
-        glIsEnabledi = load.invoke("glIsEnabledi", IIZ);
-        glIsFramebuffer = load.invoke("glIsFramebuffer", IZ);
-        glIsRenderbuffer = load.invoke("glIsRenderbuffer", IZ);
-        glIsVertexArray = load.invoke("glIsVertexArray", IZ);
-        glMapBufferRange = load.invoke("glMapBufferRange", IJJIP);
-        glRenderbufferStorage = load.invoke("glRenderbufferStorage", IIIIV);
-        glRenderbufferStorageMultisample = load.invoke("glRenderbufferStorageMultisample", IIIIIV);
-        glTexParameterIiv = load.invoke("glTexParameterIiv", IIPV);
-        glTexParameterIuiv = load.invoke("glTexParameterIuiv", IIPV);
-        glTransformFeedbackVaryings = load.invoke("glTransformFeedbackVaryings", IIPIV);
-        glUniform1ui = load.invoke("glUniform1ui", IIV);
-        glUniform1uiv = load.invoke("glUniform1uiv", IIPV);
-        glUniform2ui = load.invoke("glUniform2ui", IIIV);
-        glUniform2uiv = load.invoke("glUniform2uiv", IIPV);
-        glUniform3ui = load.invoke("glUniform3ui", IIIIV);
-        glUniform3uiv = load.invoke("glUniform3uiv", IIPV);
-        glUniform4ui = load.invoke("glUniform4ui", IIIIIV);
-        glUniform4uiv = load.invoke("glUniform4uiv", IIPV);
-        glVertexAttribI1i = load.invoke("glVertexAttribI1i", IIV);
-        glVertexAttribI1iv = load.invoke("glVertexAttribI1iv", IPV);
-        glVertexAttribI1ui = load.invoke("glVertexAttribI1ui", IIV);
-        glVertexAttribI1uiv = load.invoke("glVertexAttribI1uiv", IPV);
-        glVertexAttribI2i = load.invoke("glVertexAttribI2i", IIIV);
-        glVertexAttribI2iv = load.invoke("glVertexAttribI2iv", IPV);
-        glVertexAttribI2ui = load.invoke("glVertexAttribI2ui", IIIV);
-        glVertexAttribI2uiv = load.invoke("glVertexAttribI2uiv", IPV);
-        glVertexAttribI3i = load.invoke("glVertexAttribI3i", IIIIV);
-        glVertexAttribI3iv = load.invoke("glVertexAttribI3iv", IPV);
-        glVertexAttribI3ui = load.invoke("glVertexAttribI3ui", IIIIV);
-        glVertexAttribI3uiv = load.invoke("glVertexAttribI3uiv", IPV);
-        glVertexAttribI4bv = load.invoke("glVertexAttribI4bv", IPV);
-        glVertexAttribI4i = load.invoke("glVertexAttribI4i", IIIIIV);
-        glVertexAttribI4iv = load.invoke("glVertexAttribI4iv", IPV);
-        glVertexAttribI4sv = load.invoke("glVertexAttribI4sv", IPV);
-        glVertexAttribI4ubv = load.invoke("glVertexAttribI4ubv", IPV);
-        glVertexAttribI4ui = load.invoke("glVertexAttribI4ui", IIIIIV);
-        glVertexAttribI4uiv = load.invoke("glVertexAttribI4uiv", IPV);
-        glVertexAttribI4usv = load.invoke("glVertexAttribI4usv", IPV);
-        glVertexAttribIPointer = load.invoke("glVertexAttribIPointer", IIIIPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBeginConditionalRender = load.invoke("glBeginConditionalRender", IIV);
+        caps.glBeginTransformFeedback = load.invoke("glBeginTransformFeedback", IV);
+        caps.glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
+        caps.glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
+        caps.glBindFragDataLocation = load.invoke("glBindFragDataLocation", IIPV);
+        caps.glBindFramebuffer = load.invoke("glBindFramebuffer", IIV);
+        caps.glBindRenderbuffer = load.invoke("glBindRenderbuffer", IIV);
+        caps.glBindVertexArray = load.invoke("glBindVertexArray", IV);
+        caps.glBlitFramebuffer = load.invoke("glBlitFramebuffer", IIIIIIIIIIV);
+        caps.glCheckFramebufferStatus = load.invoke("glCheckFramebufferStatus", II);
+        caps.glClampColor = load.invoke("glClampColor", IIV);
+        caps.glClearBufferfi = load.invoke("glClearBufferfi", IIFIV);
+        caps.glClearBufferfv = load.invoke("glClearBufferfv", IIPV);
+        caps.glClearBufferiv = load.invoke("glClearBufferiv", IIPV);
+        caps.glClearBufferuiv = load.invoke("glClearBufferuiv", IIPV);
+        caps.glColorMaski = load.invoke("glColorMaski", IZZZZV);
+        caps.glDeleteFramebuffers = load.invoke("glDeleteFramebuffers", IPV);
+        caps.glDeleteRenderbuffers = load.invoke("glDeleteRenderbuffers", IPV);
+        caps.glDeleteVertexArrays = load.invoke("glDeleteVertexArrays", IPV);
+        caps.glDisablei = load.invoke("glDisablei", IIV);
+        caps.glEnablei = load.invoke("glEnablei", IIV);
+        caps.glEndConditionalRender = load.invoke("glEndConditionalRender", V);
+        caps.glEndTransformFeedback = load.invoke("glEndTransformFeedback", V);
+        caps.glFlushMappedBufferRange = load.invoke("glFlushMappedBufferRange", IJJV);
+        caps.glFramebufferRenderbuffer = load.invoke("glFramebufferRenderbuffer", IIIIV);
+        caps.glFramebufferTexture1D = load.invoke("glFramebufferTexture1D", IIIIIV);
+        caps.glFramebufferTexture2D = load.invoke("glFramebufferTexture2D", IIIIIV);
+        caps.glFramebufferTexture3D = load.invoke("glFramebufferTexture3D", IIIIIIV);
+        caps.glFramebufferTextureLayer = load.invoke("glFramebufferTextureLayer", IIIIIV);
+        caps.glGenFramebuffers = load.invoke("glGenFramebuffers", IPV);
+        caps.glGenRenderbuffers = load.invoke("glGenRenderbuffers", IPV);
+        caps.glGenVertexArrays = load.invoke("glGenVertexArrays", IPV);
+        caps.glGenerateMipmap = load.invoke("glGenerateMipmap", IV);
+        caps.glGetBooleani_v = load.invoke("glGetBooleani_v", IIPV);
+        caps.glGetFragDataLocation = load.invoke("glGetFragDataLocation", IPI);
+        caps.glGetFramebufferAttachmentParameteriv = load.invoke("glGetFramebufferAttachmentParameteriv", IIIPV);
+        caps.glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
+        caps.glGetRenderbufferParameteriv = load.invoke("glGetRenderbufferParameteriv", IIPV);
+        caps.glGetStringi = load.invoke("glGetStringi", IIP);
+        caps.glGetTexParameterIiv = load.invoke("glGetTexParameterIiv", IIPV);
+        caps.glGetTexParameterIuiv = load.invoke("glGetTexParameterIuiv", IIPV);
+        caps.glGetTransformFeedbackVarying = load.invoke("glGetTransformFeedbackVarying", IIIPPPPV);
+        caps.glGetUniformuiv = load.invoke("glGetUniformuiv", IIPV);
+        caps.glGetVertexAttribIiv = load.invoke("glGetVertexAttribIiv", IIPV);
+        caps.glGetVertexAttribIuiv = load.invoke("glGetVertexAttribIuiv", IIPV);
+        caps.glIsEnabledi = load.invoke("glIsEnabledi", IIZ);
+        caps.glIsFramebuffer = load.invoke("glIsFramebuffer", IZ);
+        caps.glIsRenderbuffer = load.invoke("glIsRenderbuffer", IZ);
+        caps.glIsVertexArray = load.invoke("glIsVertexArray", IZ);
+        caps.glMapBufferRange = load.invoke("glMapBufferRange", IJJIP);
+        caps.glRenderbufferStorage = load.invoke("glRenderbufferStorage", IIIIV);
+        caps.glRenderbufferStorageMultisample = load.invoke("glRenderbufferStorageMultisample", IIIIIV);
+        caps.glTexParameterIiv = load.invoke("glTexParameterIiv", IIPV);
+        caps.glTexParameterIuiv = load.invoke("glTexParameterIuiv", IIPV);
+        caps.glTransformFeedbackVaryings = load.invoke("glTransformFeedbackVaryings", IIPIV);
+        caps.glUniform1ui = load.invoke("glUniform1ui", IIV);
+        caps.glUniform1uiv = load.invoke("glUniform1uiv", IIPV);
+        caps.glUniform2ui = load.invoke("glUniform2ui", IIIV);
+        caps.glUniform2uiv = load.invoke("glUniform2uiv", IIPV);
+        caps.glUniform3ui = load.invoke("glUniform3ui", IIIIV);
+        caps.glUniform3uiv = load.invoke("glUniform3uiv", IIPV);
+        caps.glUniform4ui = load.invoke("glUniform4ui", IIIIIV);
+        caps.glUniform4uiv = load.invoke("glUniform4uiv", IIPV);
+        caps.glVertexAttribI1i = load.invoke("glVertexAttribI1i", IIV);
+        caps.glVertexAttribI1iv = load.invoke("glVertexAttribI1iv", IPV);
+        caps.glVertexAttribI1ui = load.invoke("glVertexAttribI1ui", IIV);
+        caps.glVertexAttribI1uiv = load.invoke("glVertexAttribI1uiv", IPV);
+        caps.glVertexAttribI2i = load.invoke("glVertexAttribI2i", IIIV);
+        caps.glVertexAttribI2iv = load.invoke("glVertexAttribI2iv", IPV);
+        caps.glVertexAttribI2ui = load.invoke("glVertexAttribI2ui", IIIV);
+        caps.glVertexAttribI2uiv = load.invoke("glVertexAttribI2uiv", IPV);
+        caps.glVertexAttribI3i = load.invoke("glVertexAttribI3i", IIIIV);
+        caps.glVertexAttribI3iv = load.invoke("glVertexAttribI3iv", IPV);
+        caps.glVertexAttribI3ui = load.invoke("glVertexAttribI3ui", IIIIV);
+        caps.glVertexAttribI3uiv = load.invoke("glVertexAttribI3uiv", IPV);
+        caps.glVertexAttribI4bv = load.invoke("glVertexAttribI4bv", IPV);
+        caps.glVertexAttribI4i = load.invoke("glVertexAttribI4i", IIIIIV);
+        caps.glVertexAttribI4iv = load.invoke("glVertexAttribI4iv", IPV);
+        caps.glVertexAttribI4sv = load.invoke("glVertexAttribI4sv", IPV);
+        caps.glVertexAttribI4ubv = load.invoke("glVertexAttribI4ubv", IPV);
+        caps.glVertexAttribI4ui = load.invoke("glVertexAttribI4ui", IIIIIV);
+        caps.glVertexAttribI4uiv = load.invoke("glVertexAttribI4uiv", IPV);
+        caps.glVertexAttribI4usv = load.invoke("glVertexAttribI4usv", IPV);
+        caps.glVertexAttribIPointer = load.invoke("glVertexAttribIPointer", IIIIPV);
     }
 
     public static void beginConditionalRender(int id, int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBeginConditionalRender).invokeExact(id, mode);
+            check(caps.glBeginConditionalRender).invokeExact(id, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void beginTransformFeedback(int primitiveMode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBeginTransformFeedback).invokeExact(primitiveMode);
+            check(caps.glBeginTransformFeedback).invokeExact(primitiveMode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindBufferBase(int target, int index, int buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindBufferBase).invokeExact(target, index, buffer);
+            check(caps.glBindBufferBase).invokeExact(target, index, buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindBufferRange(int target, int index, int buffer, long offset, long size) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindBufferRange).invokeExact(target, index, buffer, offset, size);
+            check(caps.glBindBufferRange).invokeExact(target, index, buffer, offset, size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindFragDataLocation(int program, int color, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindFragDataLocation).invokeExact(program, color, name);
+            check(caps.glBindFragDataLocation).invokeExact(program, color, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -215,64 +199,72 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindFramebuffer(int target, int framebuffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindFramebuffer).invokeExact(target, framebuffer);
+            check(caps.glBindFramebuffer).invokeExact(target, framebuffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindRenderbuffer(int target, int renderbuffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindRenderbuffer).invokeExact(target, renderbuffer);
+            check(caps.glBindRenderbuffer).invokeExact(target, renderbuffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindVertexArray(int array) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindVertexArray).invokeExact(array);
+            check(caps.glBindVertexArray).invokeExact(array);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBlitFramebuffer).invokeExact(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+            check(caps.glBlitFramebuffer).invokeExact(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int checkFramebufferStatus(int target) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glCheckFramebufferStatus).invokeExact(target);
+            return (int) check(caps.glCheckFramebufferStatus).invokeExact(target);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clampColor(int target, int clamp) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClampColor).invokeExact(target, clamp);
+            check(caps.glClampColor).invokeExact(target, clamp);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearBufferfi(int buffer, int drawBuffer, float depth, int stencil) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearBufferfi).invokeExact(buffer, drawBuffer, depth, stencil);
+            check(caps.glClearBufferfi).invokeExact(buffer, drawBuffer, depth, stencil);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearBufferfv(int buffer, int drawBuffer, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearBufferfv).invokeExact(buffer, drawBuffer, value);
+            check(caps.glClearBufferfv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -283,8 +275,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clearBufferiv(int buffer, int drawBuffer, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearBufferiv).invokeExact(buffer, drawBuffer, value);
+            check(caps.glClearBufferiv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -295,8 +288,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clearBufferuiv(int buffer, int drawBuffer, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearBufferuiv).invokeExact(buffer, drawBuffer, value);
+            check(caps.glClearBufferuiv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -307,16 +301,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void colorMaski(int index, boolean r, boolean g, boolean b, boolean a) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColorMaski).invokeExact(index, r, g, b, a);
+            check(caps.glColorMaski).invokeExact(index, r, g, b, a);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteFramebuffers(int n, Addressable framebuffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteFramebuffers).invokeExact(n, framebuffers);
+            check(caps.glDeleteFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -339,8 +335,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteRenderbuffers(int n, Addressable renderbuffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteRenderbuffers).invokeExact(n, renderbuffers);
+            check(caps.glDeleteRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -363,8 +360,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteVertexArrays(int n, Addressable arrays) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteVertexArrays).invokeExact(n, arrays);
+            check(caps.glDeleteVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -387,88 +385,99 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void disablei(int target, int index) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDisablei).invokeExact(target, index);
+            check(caps.glDisablei).invokeExact(target, index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void enablei(int target, int index) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEnablei).invokeExact(target, index);
+            check(caps.glEnablei).invokeExact(target, index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void endConditionalRender() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEndConditionalRender).invokeExact();
+            check(caps.glEndConditionalRender).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void endTransformFeedback() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEndTransformFeedback).invokeExact();
+            check(caps.glEndTransformFeedback).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void flushMappedBufferRange(int target, long offset, long length) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFlushMappedBufferRange).invokeExact(target, offset, length);
+            check(caps.glFlushMappedBufferRange).invokeExact(target, offset, length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderbuffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferRenderbuffer).invokeExact(target, attachment, renderbufferTarget, renderbuffer);
+            check(caps.glFramebufferRenderbuffer).invokeExact(target, attachment, renderbufferTarget, renderbuffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture1D(int target, int attachment, int texTarget, int texture, int level) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferTexture1D).invokeExact(target, attachment, texTarget, texture, level);
+            check(caps.glFramebufferTexture1D).invokeExact(target, attachment, texTarget, texture, level);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture2D(int target, int attachment, int texTarget, int texture, int level) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferTexture2D).invokeExact(target, attachment, texTarget, texture, level);
+            check(caps.glFramebufferTexture2D).invokeExact(target, attachment, texTarget, texture, level);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture3D(int target, int attachment, int texTarget, int texture, int level, int zoffset) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferTexture3D).invokeExact(target, attachment, texTarget, texture, level, zoffset);
+            check(caps.glFramebufferTexture3D).invokeExact(target, attachment, texTarget, texture, level, zoffset);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferTextureLayer).invokeExact(target, attachment, texture, level, layer);
+            check(caps.glFramebufferTextureLayer).invokeExact(target, attachment, texture, level, layer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void genFramebuffers(int n, Addressable framebuffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenFramebuffers).invokeExact(n, framebuffers);
+            check(caps.glGenFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -493,8 +502,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void genRenderbuffers(int n, Addressable renderbuffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenRenderbuffers).invokeExact(n, renderbuffers);
+            check(caps.glGenRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -519,8 +529,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void genVertexArrays(int n, Addressable arrays) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenVertexArrays).invokeExact(n, arrays);
+            check(caps.glGenVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -545,16 +556,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void generateMipmap(int target) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenerateMipmap).invokeExact(target);
+            check(caps.glGenerateMipmap).invokeExact(target);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getBooleani_v(int target, int index, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetBooleani_v).invokeExact(target, index, data);
+            check(caps.glGetBooleani_v).invokeExact(target, index, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -579,8 +592,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getFragDataLocation(int program, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetFragDataLocation).invokeExact(program, name);
+            return (int) check(caps.glGetFragDataLocation).invokeExact(program, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -591,8 +605,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetFramebufferAttachmentParameteriv).invokeExact(target, attachment, pname, params);
+            check(caps.glGetFramebufferAttachmentParameteriv).invokeExact(target, attachment, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -611,8 +626,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getIntegeri_v(int target, int index, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetIntegeri_v).invokeExact(target, index, data);
+            check(caps.glGetIntegeri_v).invokeExact(target, index, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -637,8 +653,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getRenderbufferParameteriv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetRenderbufferParameteriv).invokeExact(target, pname, params);
+            check(caps.glGetRenderbufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -669,8 +686,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static MemoryAddress ngetStringi(int pname, int index) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (MemoryAddress) check(glGetStringi).invokeExact(pname, index);
+            return (MemoryAddress) check(caps.glGetStringi).invokeExact(pname, index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -683,8 +701,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTexParameterIiv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexParameterIiv).invokeExact(target, pname, params);
+            check(caps.glGetTexParameterIiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -709,8 +728,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTexParameterIuiv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexParameterIuiv).invokeExact(target, pname, params);
+            check(caps.glGetTexParameterIuiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -735,8 +755,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTransformFeedbackVarying(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTransformFeedbackVarying).invokeExact(program, index, bufSize, length, size, type, name);
+            check(caps.glGetTransformFeedbackVarying).invokeExact(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -757,8 +778,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getUniformuiv(int program, int location, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetUniformuiv).invokeExact(program, location, params);
+            check(caps.glGetUniformuiv).invokeExact(program, location, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -783,8 +805,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getVertexAttribIiv(int index, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetVertexAttribIiv).invokeExact(index, pname, params);
+            check(caps.glGetVertexAttribIiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -809,8 +832,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getVertexAttribIuiv(int index, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetVertexAttribIuiv).invokeExact(index, pname, params);
+            check(caps.glGetVertexAttribIuiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -835,64 +859,72 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static boolean isEnabledi(int target, int index) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsEnabledi).invokeExact(target, index);
+            return (boolean) check(caps.glIsEnabledi).invokeExact(target, index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isFramebuffer(int framebuffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsFramebuffer).invokeExact(framebuffer);
+            return (boolean) check(caps.glIsFramebuffer).invokeExact(framebuffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isRenderbuffer(int renderbuffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsRenderbuffer).invokeExact(renderbuffer);
+            return (boolean) check(caps.glIsRenderbuffer).invokeExact(renderbuffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isVertexArray(int array) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsVertexArray).invokeExact(array);
+            return (boolean) check(caps.glIsVertexArray).invokeExact(array);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static MemoryAddress mapBufferRange(int target, long offset, long length, int access) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (MemoryAddress) check(glMapBufferRange).invokeExact(target, offset, length, access);
+            return (MemoryAddress) check(caps.glMapBufferRange).invokeExact(target, offset, length, access);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void renderbufferStorage(int target, int internalFormat, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRenderbufferStorage).invokeExact(target, internalFormat, width, height);
+            check(caps.glRenderbufferStorage).invokeExact(target, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void renderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRenderbufferStorageMultisample).invokeExact(target, samples, internalFormat, width, height);
+            check(caps.glRenderbufferStorageMultisample).invokeExact(target, samples, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texParameterIiv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexParameterIiv).invokeExact(target, pname, params);
+            check(caps.glTexParameterIiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -903,8 +935,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void texParameterIuiv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexParameterIuiv).invokeExact(target, pname, params);
+            check(caps.glTexParameterIuiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -915,8 +948,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void transformFeedbackVaryings(int program, int count, Addressable varyings, int bufferMode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTransformFeedbackVaryings).invokeExact(program, count, varyings, bufferMode);
+            check(caps.glTransformFeedbackVaryings).invokeExact(program, count, varyings, bufferMode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -931,16 +965,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform1ui(int location, int v0) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform1ui).invokeExact(location, v0);
+            check(caps.glUniform1ui).invokeExact(location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1uiv(int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform1uiv).invokeExact(location, count, value);
+            check(caps.glUniform1uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -951,16 +987,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform2ui(int location, int v0, int v1) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform2ui).invokeExact(location, v0, v1);
+            check(caps.glUniform2ui).invokeExact(location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform2uiv(int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform2uiv).invokeExact(location, count, value);
+            check(caps.glUniform2uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -971,16 +1009,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform3ui(int location, int v0, int v1, int v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform3ui).invokeExact(location, v0, v1, v2);
+            check(caps.glUniform3ui).invokeExact(location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform3uiv(int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform3uiv).invokeExact(location, count, value);
+            check(caps.glUniform3uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -991,16 +1031,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform4ui).invokeExact(location, v0, v1, v2, v3);
+            check(caps.glUniform4ui).invokeExact(location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform4uiv(int location, int count, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniform4uiv).invokeExact(location, count, value);
+            check(caps.glUniform4uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1011,16 +1053,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI1i(int index, int x) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI1i).invokeExact(index, x);
+            check(caps.glVertexAttribI1i).invokeExact(index, x);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI1iv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI1iv).invokeExact(index, v);
+            check(caps.glVertexAttribI1iv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1031,16 +1075,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI1ui(int index, int x) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI1ui).invokeExact(index, x);
+            check(caps.glVertexAttribI1ui).invokeExact(index, x);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI1uiv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI1uiv).invokeExact(index, v);
+            check(caps.glVertexAttribI1uiv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1051,16 +1097,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI2i(int index, int x, int y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI2i).invokeExact(index, x, y);
+            check(caps.glVertexAttribI2i).invokeExact(index, x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI2iv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI2iv).invokeExact(index, v);
+            check(caps.glVertexAttribI2iv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1071,16 +1119,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI2ui(int index, int x, int y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI2ui).invokeExact(index, x, y);
+            check(caps.glVertexAttribI2ui).invokeExact(index, x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI2uiv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI2uiv).invokeExact(index, v);
+            check(caps.glVertexAttribI2uiv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1091,16 +1141,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI3i(int index, int x, int y, int z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI3i).invokeExact(index, x, y, z);
+            check(caps.glVertexAttribI3i).invokeExact(index, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI3iv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI3iv).invokeExact(index, v);
+            check(caps.glVertexAttribI3iv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1111,16 +1163,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI3ui(int index, int x, int y, int z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI3ui).invokeExact(index, x, y, z);
+            check(caps.glVertexAttribI3ui).invokeExact(index, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI3uiv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI3uiv).invokeExact(index, v);
+            check(caps.glVertexAttribI3uiv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1131,8 +1185,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4bv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4bv).invokeExact(index, v);
+            check(caps.glVertexAttribI4bv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1143,16 +1198,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4i(int index, int x, int y, int z, int w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4i).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttribI4i).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI4iv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4iv).invokeExact(index, v);
+            check(caps.glVertexAttribI4iv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1163,8 +1220,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4sv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4sv).invokeExact(index, v);
+            check(caps.glVertexAttribI4sv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1175,8 +1233,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4ubv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4ubv).invokeExact(index, v);
+            check(caps.glVertexAttribI4ubv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1187,16 +1246,18 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4ui(int index, int x, int y, int z, int w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4ui).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttribI4ui).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribI4uiv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4uiv).invokeExact(index, v);
+            check(caps.glVertexAttribI4uiv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1207,8 +1268,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4usv(int index, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribI4usv).invokeExact(index, v);
+            check(caps.glVertexAttribI4usv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1219,8 +1281,9 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribIPointer(int index, int size, int type, int stride, Addressable pointer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribIPointer).invokeExact(index, size, type, stride, pointer);
+            check(caps.glVertexAttribIPointer).invokeExact(index, size, type, stride, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

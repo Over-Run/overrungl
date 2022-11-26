@@ -24,13 +24,10 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 /**
  * {@code GL_ARB_ES3_1_compatibility}
@@ -39,17 +36,15 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 public final class GLARBES32Compatibility {
-    @Nullable
-    public static MethodHandle glPrimitiveBoundingBoxARB;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_ARB_ES3_2_compatibility.no()) return;
-        glPrimitiveBoundingBoxARB = load.invoke("glPrimitiveBoundingBoxARB", FunctionDescriptors.FFFFFFFFV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_ARB_ES3_2_compatibility) return;
+        ext.glPrimitiveBoundingBoxARB = load.invoke("glPrimitiveBoundingBoxARB", FunctionDescriptors.FFFFFFFFV);
     }
 
     public static void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(glPrimitiveBoundingBoxARB).invokeExact(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW);
+            GLLoader.check(ext.glPrimitiveBoundingBoxARB).invokeExact(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

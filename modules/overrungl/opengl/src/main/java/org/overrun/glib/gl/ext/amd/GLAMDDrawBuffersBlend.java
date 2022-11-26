@@ -24,11 +24,9 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
@@ -40,45 +38,45 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDDrawBuffersBlend {
-    @Nullable
-    public static MethodHandle
-        glBlendEquationIndexedAMD, glBlendEquationSeparateIndexedAMD, glBlendFuncIndexedAMD, glBlendFuncSeparateIndexedAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_draw_buffers_blend.no()) return;
-        glBlendEquationIndexedAMD = load.invoke("glBlendEquationIndexedAMD", IIV);
-        glBlendEquationSeparateIndexedAMD = load.invoke("glBlendEquationSeparateIndexedAMD", IIIV);
-        glBlendFuncIndexedAMD = load.invoke("glBlendFuncIndexedAMD", IIIV);
-        glBlendFuncSeparateIndexedAMD = load.invoke("glBlendFuncSeparateIndexedAMD", IIIIIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_draw_buffers_blend) return;
+        ext.glBlendEquationIndexedAMD = load.invoke("glBlendEquationIndexedAMD", IIV);
+        ext.glBlendEquationSeparateIndexedAMD = load.invoke("glBlendEquationSeparateIndexedAMD", IIIV);
+        ext.glBlendFuncIndexedAMD = load.invoke("glBlendFuncIndexedAMD", IIIV);
+        ext.glBlendFuncSeparateIndexedAMD = load.invoke("glBlendFuncSeparateIndexedAMD", IIIIIV);
     }
 
     public static void glBlendEquationIndexedAMD(int buf, int mode) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBlendEquationIndexedAMD).invokeExact(buf, mode);
+            check(ext.glBlendEquationIndexedAMD).invokeExact(buf, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glBlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBlendEquationSeparateIndexedAMD).invokeExact(buf, modeRGB, modeAlpha);
+            check(ext.glBlendEquationSeparateIndexedAMD).invokeExact(buf, modeRGB, modeAlpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glBlendFuncIndexedAMD(int buf, int src, int dst) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBlendFuncIndexedAMD).invokeExact(buf, src, dst);
+            check(ext.glBlendFuncIndexedAMD).invokeExact(buf, src, dst);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glBlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBlendFuncSeparateIndexedAMD).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+            check(ext.glBlendFuncSeparateIndexedAMD).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

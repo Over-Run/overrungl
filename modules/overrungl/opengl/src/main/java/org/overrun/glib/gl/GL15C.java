@@ -24,13 +24,14 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.BufferBuilder;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -44,59 +45,57 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL15C extends GL14C permits GL20C {
-    @Nullable
-    public static MethodHandle
-        glBeginQuery, glBindBuffer, glBufferData, glBufferSubData, glDeleteBuffers, glDeleteQueries, glEndQuery,
-        glGenBuffers, glGenQueries, glGetBufferParameteriv, glGetBufferPointerv, glGetBufferSubData, glGetQueryObjectiv,
-        glGetQueryObjectuiv, glGetQueryiv, glIsBuffer, glIsQuery, glMapBuffer, glUnmapBuffer;
-
-    static boolean isSupported() {
-        return checkAll(glBeginQuery, glBindBuffer, glBufferData, glBufferSubData, glDeleteBuffers, glDeleteQueries,
-            glEndQuery, glGenBuffers, glGenQueries, glGetBufferParameteriv, glGetBufferPointerv, glGetBufferSubData,
-            glGetQueryObjectiv, glGetQueryObjectuiv, glGetQueryiv, glIsBuffer, glIsQuery, glMapBuffer, glUnmapBuffer);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBeginQuery, caps.glBindBuffer, caps.glBufferData, caps.glBufferSubData, caps.glDeleteBuffers, caps.glDeleteQueries,
+            caps.glEndQuery, caps.glGenBuffers, caps.glGenQueries, caps.glGetBufferParameteriv, caps.glGetBufferPointerv, caps.glGetBufferSubData,
+            caps.glGetQueryObjectiv, caps.glGetQueryObjectuiv, caps.glGetQueryiv, caps.glIsBuffer, caps.glIsQuery, caps.glMapBuffer,
+            caps.glUnmapBuffer);
     }
 
-    static void load(GLLoadFunc load) {
-        glBeginQuery = load.invoke("glBeginQuery", IIV);
-        glBindBuffer = load.invoke("glBindBuffer", IIV);
-        glBufferData = load.invoke("glBufferData", IJPIV);
-        glBufferSubData = load.invoke("glBufferSubData", IJJPV);
-        glDeleteBuffers = load.invoke("glDeleteBuffers", IPV);
-        glDeleteQueries = load.invoke("glDeleteQueries", IPV);
-        glEndQuery = load.invoke("glEndQuery", IV);
-        glGenBuffers = load.invoke("glGenBuffers", IPV);
-        glGenQueries = load.invoke("glGenQueries", IPV);
-        glGetBufferParameteriv = load.invoke("glGetBufferParameteriv", IIPV);
-        glGetBufferPointerv = load.invoke("glGetBufferPointerv", IIPV);
-        glGetBufferSubData = load.invoke("glGetBufferSubData", IJJPV);
-        glGetQueryObjectiv = load.invoke("glGetQueryObjectiv", IIPV);
-        glGetQueryObjectuiv = load.invoke("glGetQueryObjectuiv", IIPV);
-        glGetQueryiv = load.invoke("glGetQueryiv", IIPV);
-        glIsBuffer = load.invoke("glIsBuffer", IZ);
-        glIsQuery = load.invoke("glIsQuery", IZ);
-        glMapBuffer = load.invoke("glMapBuffer", IIP);
-        glUnmapBuffer = load.invoke("glUnmapBuffer", IZ);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBeginQuery = load.invoke("glBeginQuery", IIV);
+        caps.glBindBuffer = load.invoke("glBindBuffer", IIV);
+        caps.glBufferData = load.invoke("glBufferData", IJPIV);
+        caps.glBufferSubData = load.invoke("glBufferSubData", IJJPV);
+        caps.glDeleteBuffers = load.invoke("glDeleteBuffers", IPV);
+        caps.glDeleteQueries = load.invoke("glDeleteQueries", IPV);
+        caps.glEndQuery = load.invoke("glEndQuery", IV);
+        caps.glGenBuffers = load.invoke("glGenBuffers", IPV);
+        caps.glGenQueries = load.invoke("glGenQueries", IPV);
+        caps.glGetBufferParameteriv = load.invoke("glGetBufferParameteriv", IIPV);
+        caps.glGetBufferPointerv = load.invoke("glGetBufferPointerv", IIPV);
+        caps.glGetBufferSubData = load.invoke("glGetBufferSubData", IJJPV);
+        caps.glGetQueryObjectiv = load.invoke("glGetQueryObjectiv", IIPV);
+        caps.glGetQueryObjectuiv = load.invoke("glGetQueryObjectuiv", IIPV);
+        caps.glGetQueryiv = load.invoke("glGetQueryiv", IIPV);
+        caps.glIsBuffer = load.invoke("glIsBuffer", IZ);
+        caps.glIsQuery = load.invoke("glIsQuery", IZ);
+        caps.glMapBuffer = load.invoke("glMapBuffer", IIP);
+        caps.glUnmapBuffer = load.invoke("glUnmapBuffer", IZ);
     }
 
     public static void beginQuery(int target, int id) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBeginQuery).invokeExact(target, id);
+            check(caps.glBeginQuery).invokeExact(target, id);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindBuffer(int target, int buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindBuffer).invokeExact(target, buffer);
+            check(caps.glBindBuffer).invokeExact(target, buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bufferData(int target, long size, Addressable data, int usage) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBufferData).invokeExact(target, size, data, usage);
+            check(caps.glBufferData).invokeExact(target, size, data, usage);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -139,8 +138,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void bufferSubData(int target, long offset, long size, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBufferSubData).invokeExact(target, offset, size, data);
+            check(caps.glBufferSubData).invokeExact(target, offset, size, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -179,8 +179,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void deleteBuffers(int n, Addressable buffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteBuffers).invokeExact(n, buffers);
+            check(caps.glDeleteBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -203,8 +204,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void deleteQueries(int n, Addressable ids) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteQueries).invokeExact(n, ids);
+            check(caps.glDeleteQueries).invokeExact(n, ids);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -227,16 +229,18 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void endQuery(int target) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEndQuery).invokeExact(target);
+            check(caps.glEndQuery).invokeExact(target);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void genBuffers(int n, Addressable buffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenBuffers).invokeExact(n, buffers);
+            check(caps.glGenBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -261,8 +265,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void genQueries(int n, Addressable ids) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenQueries).invokeExact(n, ids);
+            check(caps.glGenQueries).invokeExact(n, ids);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -287,8 +292,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getBufferParameteriv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetBufferParameteriv).invokeExact(target, pname, params);
+            check(caps.glGetBufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -307,8 +313,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getBufferPointerv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetBufferPointerv).invokeExact(target, pname, params);
+            check(caps.glGetBufferPointerv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -327,8 +334,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getBufferSubData(int target, long offset, long size, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetBufferSubData).invokeExact(target, offset, size, data);
+            check(caps.glGetBufferSubData).invokeExact(target, offset, size, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -371,8 +379,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getQueryObjectiv(int id, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetQueryObjectiv).invokeExact(id, pname, params);
+            check(caps.glGetQueryObjectiv).invokeExact(id, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -391,8 +400,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getQueryObjectuiv(int id, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetQueryObjectuiv).invokeExact(id, pname, params);
+            check(caps.glGetQueryObjectuiv).invokeExact(id, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -411,8 +421,9 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getQueryiv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetQueryiv).invokeExact(target, pname, params);
+            check(caps.glGetQueryiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -431,32 +442,36 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static boolean isBuffer(int buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsBuffer).invokeExact(buffer);
+            return (boolean) check(caps.glIsBuffer).invokeExact(buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isQuery(int buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsQuery).invokeExact(buffer);
+            return (boolean) check(caps.glIsQuery).invokeExact(buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static MemoryAddress mapBuffer(int target, int access) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (MemoryAddress) check(glMapBuffer).invokeExact(target, access);
+            return (MemoryAddress) check(caps.glMapBuffer).invokeExact(target, access);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean unmapBuffer(int target) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glUnmapBuffer).invokeExact(target);
+            return (boolean) check(caps.glUnmapBuffer).invokeExact(target);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

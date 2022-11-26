@@ -24,12 +24,10 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.gl.GLLoader.check;
 
@@ -40,26 +38,25 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAMDSparseTexture {
-    @Nullable
-    public static MethodHandle glTexStorageSparseAMD, glTextureStorageSparseAMD;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_AMD_sparse_texture.no()) return;
-        glTexStorageSparseAMD = load.invoke("glTexStorageSparseAMD", FunctionDescriptors.IIIIIIIV);
-        glTextureStorageSparseAMD = load.invoke("glTextureStorageSparseAMD", FunctionDescriptors.IIIIIIIIV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_AMD_sparse_texture) return;
+        ext.glTexStorageSparseAMD = load.invoke("glTexStorageSparseAMD", FunctionDescriptors.IIIIIIIV);
+        ext.glTextureStorageSparseAMD = load.invoke("glTextureStorageSparseAMD", FunctionDescriptors.IIIIIIIIV);
     }
 
     public static void glTexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glTexStorageSparseAMD).invokeExact(target, internalFormat, width, height, depth, layers, flags);
+            check(ext.glTexStorageSparseAMD).invokeExact(target, internalFormat, width, height, depth, layers, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glTexStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glTexStorageSparseAMD).invokeExact(texture, target, internalFormat, width, height, depth, layers, flags);
+            check(ext.glTexStorageSparseAMD).invokeExact(texture, target, internalFormat, width, height, depth, layers, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

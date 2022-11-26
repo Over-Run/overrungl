@@ -24,11 +24,8 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -42,32 +39,30 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL12C extends GL11C permits GL13C {
-    @Nullable
-    public static MethodHandle
-        glCopyTexSubImage3D, glDrawRangeElements, glTexImage3D, glTexSubImage3D;
-
-    static boolean isSupported() {
-        return checkAll(glCopyTexSubImage3D, glDrawRangeElements, glTexImage3D, glTexSubImage3D);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glCopyTexSubImage3D, caps.glDrawRangeElements, caps.glTexImage3D, caps.glTexSubImage3D);
     }
 
-    static void load(GLLoadFunc load) {
-        glCopyTexSubImage3D = load.invoke("glCopyTexSubImage3D", IIIIIIIIIV);
-        glDrawRangeElements = load.invoke("glDrawRangeElements", IIIIIPV);
-        glTexImage3D = load.invoke("glTexImage3D", IIIIIIIIIPV);
-        glTexSubImage3D = load.invoke("glTexSubImage3D", IIIIIIIIIIPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glCopyTexSubImage3D = load.invoke("glCopyTexSubImage3D", IIIIIIIIIV);
+        caps.glDrawRangeElements = load.invoke("glDrawRangeElements", IIIIIPV);
+        caps.glTexImage3D = load.invoke("glTexImage3D", IIIIIIIIIPV);
+        caps.glTexSubImage3D = load.invoke("glTexSubImage3D", IIIIIIIIIIPV);
     }
 
     public static void copyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+            check(caps.glCopyTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, x, y, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawRangeElements(int mode, int start, int end, int count, int type, Addressable indices) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawRangeElements).invokeExact(mode, start, end, count, type, indices);
+            check(caps.glDrawRangeElements).invokeExact(mode, start, end, count, type, indices);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -86,8 +81,9 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, format, type, pixels);
+            check(caps.glTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -110,8 +106,9 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+            check(caps.glTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

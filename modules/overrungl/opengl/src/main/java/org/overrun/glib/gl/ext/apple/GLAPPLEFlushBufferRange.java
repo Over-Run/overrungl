@@ -24,12 +24,10 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.gl.GLLoader.check;
 
@@ -40,26 +38,25 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLEFlushBufferRange {
-    @Nullable
-    public static MethodHandle glBufferParameteriAPPLE, glFlushMappedBufferRangeAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_flush_buffer_range.no()) return;
-        glBufferParameteriAPPLE = load.invoke("glBufferParameteriAPPLE", FunctionDescriptors.IIIV);
-        glFlushMappedBufferRangeAPPLE = load.invoke("glFlushMappedBufferRangeAPPLE", FunctionDescriptors.IJJV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_flush_buffer_range) return;
+        ext.glBufferParameteriAPPLE = load.invoke("glBufferParameteriAPPLE", FunctionDescriptors.IIIV);
+        ext.glFlushMappedBufferRangeAPPLE = load.invoke("glFlushMappedBufferRangeAPPLE", FunctionDescriptors.IJJV);
     }
 
     public static void glBufferParameteriAPPLE(int target, int pname, int param) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glBufferParameteriAPPLE).invokeExact(target, pname, param);
+            check(ext.glBufferParameteriAPPLE).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glFlushMappedBufferRangeAPPLE(int target, long offset, long size) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glFlushMappedBufferRangeAPPLE).invokeExact(target, offset, size);
+            check(ext.glFlushMappedBufferRangeAPPLE).invokeExact(target, offset, size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

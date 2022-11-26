@@ -26,35 +26,170 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.overrun.glib.FunctionDescriptors;
+import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.Configurations;
 
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
-import java.util.regex.Pattern;
 
 /**
- * The OpenGL capabilities loader.
+ * This class must be used before any OpenGL function is called. It has the following responsibilities:
+ * <ul>
+ * <li>Loads the OpenGL native library into the JVM process.</li>
+ * <li>Creates instances of {@link GLCapabilities} classes. A {@code GLCapabilities} instance contains flags for functionality that is available in an OpenGL
+ * context. Internally, it also contains function pointers that are only valid in that specific OpenGL context.</li>
+ * <li>Maintains thread-local state for {@code GLCapabilities} instances, corresponding to OpenGL contexts that are current in those threads.</li>
+ * </ul>
+ *
+ * <h2>GLCapabilities creation</h2>
+ * <p>Instances of {@code GLCapabilities} can be created with the {@link #load(boolean, GLLoadFunc) load} method. An OpenGL context must be current in the current thread
+ * before it is called. Calling this method is expensive, so the {@code GLCapabilities} instance should be associated with the OpenGL context and reused as
+ * necessary.</p>
+ *
+ * <h2>Thread-local state</h2>
+ * <p>Before a function for a given OpenGL context can be called, the corresponding {@code GLCapabilities} instance must be passed to the
+ * {@link #setCapabilities} method. The user is also responsible for clearing the current {@code GLCapabilities} instance when the context is destroyed or made
+ * current in another thread.</p>
+ *
+ * <p>Note that the {@link #load(boolean, GLLoadFunc) load} method implicitly calls {@link #setCapabilities} with the newly created instance.</p>
  *
  * @author squid233
  * @since 0.1.0
  */
 public final class GLLoader {
-    private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
+    private static final boolean CHECKS = Configurations.CHECKS.get();
+    private static final ThreadLocal<GLCapabilities> capabilitiesTLS = new ThreadLocal<>();
 
-//    private static final ThreadLocal<GLCapabilities> CAPABILITIES_LOCAL = new ThreadLocal<>();
     /**
-     * The OpenGL context version flags
+     * Sets the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
+     *
+     * <p>This {@code GLCapabilities} instance will be used by any OpenGL call in the current thread, until {@code setCapabilities} is called again with a
+     * different value.</p>
      */
-    public static boolean
-        Ver10, Ver11, Ver12, Ver13, Ver14, Ver15,
-        Ver20, Ver21,
-        Ver30, Ver31, Ver32, Ver33,
-        Ver40, Ver41, Ver42, Ver43, Ver44, Ver45, Ver46;
+    public static void setCapabilities(@Nullable GLCapabilities caps) {
+        capabilitiesTLS.set(caps);
+    }
+
     /**
-     * Forward compatible flag. {@code false} for deprecated and removed function.
+     * Returns the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
+     *
+     * @return the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
+     * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
-    public static boolean forwardCompatible;
+    public static GLCapabilities getCapabilities() {
+        return checkCapabilities(capabilitiesTLS.get());
+    }
+
+    /**
+     * Returns the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     *
+     * @return the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
+     */
+    public static GLExtCaps getExtCapabilities() {
+        return getCapabilities().ext;
+    }
+
+    private static GLCapabilities checkCapabilities(@Nullable GLCapabilities caps) {
+        if (CHECKS && caps == null) {
+            throw new IllegalStateException(
+                """
+                    No GLCapabilities instance set for the current thread. Possible solutions:
+                    \ta) Call GLLoader.load() after making a context current in the current thread.
+                    \tb) Call GLLoader.setCapabilities() if a GLCapabilities instance already exists for the current context."""
+            );
+        }
+        return caps;
+    }
+
+    /**
+     * Load OpenGL compatibility profile by the given load function with shared arena.
+     *
+     * @param getter the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities loadShared(GLLoadFunc.Getter getter) {
+        var value = GLLoadFunc.ofShared(getter);
+        try (var ignored = value.y()) {
+            return load(value.x());
+        }
+    }
+
+    /**
+     * Load OpenGL by the given load function with shared arena.
+     *
+     * @param forwardCompatible If {@code true}, only loads core profile functions.
+     * @param getter            the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities loadShared(boolean forwardCompatible, GLLoadFunc.Getter getter) {
+        var value = GLLoadFunc.ofShared(getter);
+        try (var ignored = value.y()) {
+            return load(forwardCompatible, value.x());
+        }
+    }
+
+    /**
+     * Load OpenGL compatibility profile by the given load function with the given segment allocator.
+     *
+     * @param allocator the segment allocator.
+     * @param getter    the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities load(SegmentAllocator allocator, GLLoadFunc.Getter getter) {
+        return load(GLLoadFunc.of(allocator, getter));
+    }
+
+    /**
+     * Load OpenGL by the given load function with the given segment allocator.
+     *
+     * @param forwardCompatible If {@code true}, only loads core profile functions.
+     * @param allocator         the segment allocator.
+     * @param getter            the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities load(boolean forwardCompatible, SegmentAllocator allocator, GLLoadFunc.Getter getter) {
+        return load(forwardCompatible, GLLoadFunc.of(allocator, getter));
+    }
+
+    /**
+     * Load OpenGL compatibility profile by the given load function.
+     *
+     * @param load the load function
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities load(GLLoadFunc load) {
+        return load(false, load);
+    }
+
+    /**
+     * Load OpenGL by the given load function.
+     *
+     * @param forwardCompatible If {@code true}, only loads core profile functions.
+     * @param load              the load function
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities load(boolean forwardCompatible, GLLoadFunc load) {
+        var caps = new GLCapabilities(forwardCompatible);
+        setCapabilities(caps);
+        if (caps.load(load) != 0) {
+            return caps;
+        }
+        setCapabilities(null);
+        return null;
+    }
 
     @NotNull
     @Contract(value = "null -> fail; !null -> param1", pure = true)
@@ -102,191 +237,5 @@ public final class GLLoader {
      */
     public static int versionMinor(int version) {
         return version % 10000;
-    }
-
-    /**
-     * Load OpenGL compatibility profile by the given load function with shared arena.
-     *
-     * @param getter the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
-     */
-    public static int loadShared(GLLoadFunc.Getter getter) {
-        var value = GLLoadFunc.ofShared(getter);
-        try (var ignored = value.y()) {
-            return load(value.x());
-        }
-    }
-
-    /**
-     * Load OpenGL by the given load function with shared arena.
-     *
-     * @param forwardCompatible If {@code true}, only loading core profile functions.
-     * @param getter            the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
-     */
-    public static int loadShared(boolean forwardCompatible, GLLoadFunc.Getter getter) {
-        var value = GLLoadFunc.ofShared(getter);
-        try (var ignored = value.y()) {
-            return load(forwardCompatible, value.x());
-        }
-    }
-
-    /**
-     * Load OpenGL compatibility profile by the given load function with the given segment allocator.
-     *
-     * @param allocator the segment allocator.
-     * @param getter    the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
-     */
-    public static int load(SegmentAllocator allocator, GLLoadFunc.Getter getter) {
-        return load(GLLoadFunc.of(allocator, getter));
-    }
-
-    /**
-     * Load OpenGL by the given load function with the given segment allocator.
-     *
-     * @param forwardCompatible If {@code true}, only loading core profile functions.
-     * @param allocator         the segment allocator.
-     * @param getter            the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
-     */
-    public static int load(boolean forwardCompatible, SegmentAllocator allocator, GLLoadFunc.Getter getter) {
-        return load(forwardCompatible, GLLoadFunc.of(allocator, getter));
-    }
-
-    /**
-     * Load OpenGL compatibility profile by the given load function.
-     *
-     * @param load the load function
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
-     */
-    public static int load(GLLoadFunc load) {
-        return load(false, load);
-    }
-
-    /**
-     * Load OpenGL by the given load function.
-     *
-     * @param forwardCompatible If {@code true}, only loading core profile functions.
-     * @param load              the load function
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
-     */
-    public static int load(boolean forwardCompatible, GLLoadFunc load) {
-        GL10C.glGetString = load.invoke("glGetString", FunctionDescriptors.IP);
-        if (GL10C.glGetString == null) return 0;
-        if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
-
-        GLLoader.forwardCompatible = forwardCompatible;
-
-        GL10C.load(load);
-        GL11C.load(load);
-        GL12C.load(load);
-        GL13C.load(load);
-        GL14C.load(load);
-        GL15C.load(load);
-        GL20C.load(load);
-        GL21C.load(load);
-        GL30C.load(load);
-        GL31C.load(load);
-        GL32C.load(load);
-        GL33C.load(load);
-        GL40C.load(load);
-        GL41C.load(load);
-        GL42C.load(load);
-        GL43C.load(load);
-        GL44C.load(load);
-        GL45C.load(load);
-        GL46C.load(load);
-
-        int version = findCoreGL(false);
-        if (!forwardCompatible) {
-            GL10.load(load);
-            GL11.load(load);
-            GL13.load(load);
-            GL14.load(load);
-        }
-
-        try (var arena = MemorySession.openShared()) {
-            if (!GLExtCaps.findExtensionsGL(version, arena)) return 0;
-            findCoreGL(true);
-        }
-        GLExtCaps.load(load);
-
-        return version;
-    }
-
-    private static int findCoreGL(boolean checkAll) {
-        if (checkAll) {
-            Ver10 = Ver10 || GL10C.isSupported();
-            Ver11 = Ver11 || GL11C.isSupported();
-            Ver12 = Ver12 || GL12C.isSupported();
-            Ver13 = Ver13 || GL13C.isSupported();
-            Ver14 = Ver14 || GL14C.isSupported();
-            Ver15 = Ver15 || GL15C.isSupported();
-            Ver20 = Ver20 || GL20C.isSupported();
-            Ver21 = Ver21 || GL21C.isSupported();
-            Ver30 = Ver30 || GL30C.isSupported();
-            Ver31 = Ver31 || GL31C.isSupported();
-            Ver32 = Ver32 || GL32C.isSupported();
-            Ver33 = Ver33 || GL33C.isSupported();
-            Ver40 = Ver40 || GL40C.isSupported();
-            Ver41 = Ver41 || GL41C.isSupported();
-            Ver42 = Ver42 || GL42C.isSupported();
-            Ver43 = Ver43 || GL43C.isSupported();
-            Ver44 = Ver44 || GL44C.isSupported();
-            Ver45 = Ver45 || GL45C.isSupported();
-            Ver46 = Ver46 || GL46C.isSupported();
-            return -1;
-        }
-        final String[] prefixes = {
-            "OpenGL ES-CM ",
-            "OpenGL ES-CL ",
-            "OpenGL ES ",
-            "OpenGL SC "
-        };
-        var version = GL10C.getString(GLConstC.GL_VERSION);
-        if (version == null) return 0;
-        for (var prefix : prefixes) {
-            int len = prefix.length();
-            if (version.startsWith(prefix)) {
-                version = version.substring(len);
-                break;
-            }
-        }
-        var matcher = VERSION_PATTERN.matcher(version);
-        int major, minor;
-        if (matcher.find()) {
-            major = Integer.parseInt(matcher.group(1));
-            minor = Integer.parseInt(matcher.group(2));
-        } else {
-            major = 0;
-            minor = 0;
-        }
-        Ver10 = (major == 1 && minor >= 0) || major > 1;
-        Ver11 = (major == 1 && minor >= 1) || major > 1;
-        Ver12 = (major == 1 && minor >= 2) || major > 1;
-        Ver13 = (major == 1 && minor >= 3) || major > 1;
-        Ver14 = (major == 1 && minor >= 4) || major > 1;
-        Ver15 = (major == 1 && minor >= 5) || major > 1;
-        Ver20 = (major == 2 && minor >= 0) || major > 2;
-        Ver21 = (major == 2 && minor >= 1) || major > 2;
-        Ver30 = (major == 3 && minor >= 0) || major > 3;
-        Ver31 = (major == 3 && minor >= 1) || major > 3;
-        Ver32 = (major == 3 && minor >= 2) || major > 3;
-        Ver33 = (major == 3 && minor >= 3) || major > 3;
-        Ver40 = (major == 4 && minor >= 0) || major > 4;
-        Ver41 = (major == 4 && minor >= 1) || major > 4;
-        Ver42 = (major == 4 && minor >= 2) || major > 4;
-        Ver43 = (major == 4 && minor >= 3) || major > 4;
-        Ver44 = (major == 4 && minor >= 4) || major > 4;
-        Ver45 = (major == 4 && minor >= 5) || major > 4;
-        Ver46 = (major == 4 && minor >= 6) || major > 4;
-        return makeVersion(major, minor);
     }
 }

@@ -24,13 +24,12 @@
 
 package org.overrun.glib.gl.ext.apple;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -44,48 +43,48 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GLAPPLEVertexProgramEvaluators {
-    @Nullable
-    public static MethodHandle glDisableVertexAttribAPPLE, glEnableVertexAttribAPPLE, glIsVertexAttribEnabledAPPLE,
-        glMapVertexAttrib1dAPPLE, glMapVertexAttrib1fAPPLE, glMapVertexAttrib2dAPPLE, glMapVertexAttrib2fAPPLE;
-
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_APPLE_vertex_program_evaluators.no()) return;
-        glDisableVertexAttribAPPLE = load.invoke("glDisableVertexAttribAPPLE", IIV);
-        glEnableVertexAttribAPPLE = load.invoke("glEnableVertexAttribAPPLE", IIV);
-        glIsVertexAttribEnabledAPPLE = load.invoke("glIsVertexAttribEnabledAPPLE", IIZ);
-        glMapVertexAttrib1dAPPLE = load.invoke("glMapVertexAttrib1dAPPLE", IIDDIIPV);
-        glMapVertexAttrib1fAPPLE = load.invoke("glMapVertexAttrib1fAPPLE", IIFFIIPV);
-        glMapVertexAttrib2dAPPLE = load.invoke("glMapVertexAttrib2dAPPLE", IIDDIIDDIIPV);
-        glMapVertexAttrib2fAPPLE = load.invoke("glMapVertexAttrib2fAPPLE", IIFFIIFFIIPV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_APPLE_vertex_program_evaluators) return;
+        ext.glDisableVertexAttribAPPLE = load.invoke("glDisableVertexAttribAPPLE", IIV);
+        ext.glEnableVertexAttribAPPLE = load.invoke("glEnableVertexAttribAPPLE", IIV);
+        ext.glIsVertexAttribEnabledAPPLE = load.invoke("glIsVertexAttribEnabledAPPLE", IIZ);
+        ext.glMapVertexAttrib1dAPPLE = load.invoke("glMapVertexAttrib1dAPPLE", IIDDIIPV);
+        ext.glMapVertexAttrib1fAPPLE = load.invoke("glMapVertexAttrib1fAPPLE", IIFFIIPV);
+        ext.glMapVertexAttrib2dAPPLE = load.invoke("glMapVertexAttrib2dAPPLE", IIDDIIDDIIPV);
+        ext.glMapVertexAttrib2fAPPLE = load.invoke("glMapVertexAttrib2fAPPLE", IIFFIIFFIIPV);
     }
 
     public static void glDisableVertexAttribAPPLE(int index, int pname) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glDisableVertexAttribAPPLE).invokeExact(index, pname);
+            check(ext.glDisableVertexAttribAPPLE).invokeExact(index, pname);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glEnableVertexAttribAPPLE(int index, int pname) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glEnableVertexAttribAPPLE).invokeExact(index, pname);
+            check(ext.glEnableVertexAttribAPPLE).invokeExact(index, pname);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean glIsVertexAttribEnabledAPPLE(int index, int pname) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            return (boolean) check(glIsVertexAttribEnabledAPPLE).invokeExact(index, pname);
+            return (boolean) check(ext.glIsVertexAttribEnabledAPPLE).invokeExact(index, pname);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, Addressable points) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glMapVertexAttrib1dAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
+            check(ext.glMapVertexAttrib1dAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -96,8 +95,9 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, Addressable points) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glMapVertexAttrib1fAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
+            check(ext.glMapVertexAttrib1fAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -108,8 +108,9 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glMapVertexAttrib2dAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+            check(ext.glMapVertexAttrib2dAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -120,8 +121,9 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
+        var ext = GLLoader.getExtCapabilities();
         try {
-            check(glMapVertexAttrib2fAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+            check(ext.glMapVertexAttrib2fAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

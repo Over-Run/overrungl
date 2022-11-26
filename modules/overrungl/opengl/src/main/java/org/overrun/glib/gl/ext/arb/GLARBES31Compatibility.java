@@ -36,9 +36,9 @@ import org.overrun.glib.gl.GLLoadFunc;
  * @since 0.1.0
  */
 public final class GLARBES31Compatibility {
-    public static void load(GLLoadFunc load) {
-        if (GLExtCaps.Flags.GL_ARB_ES3_1_compatibility.no()) return;
-        GL45C.glMemoryBarrierByRegion = load.invoke("glMemoryBarrierByRegion", FunctionDescriptors.IV);
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_ARB_ES3_1_compatibility) return;
+        ext.caps.glMemoryBarrierByRegion = load.invoke("glMemoryBarrierByRegion", FunctionDescriptors.IV);
     }
 
     public static void glMemoryBarrierByRegion(int barriers) {
