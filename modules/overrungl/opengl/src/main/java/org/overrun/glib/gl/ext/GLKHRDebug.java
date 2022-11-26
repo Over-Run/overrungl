@@ -25,6 +25,7 @@
 package org.overrun.glib.gl.ext;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.gl.GLCapabilities;
 import org.overrun.glib.gl.GLDebugProc;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -41,19 +42,19 @@ import static org.overrun.glib.gl.GL43C.*;
  * @since 0.1.0
  */
 public final class GLKHRDebug {
-    public static void load(GLLoadFunc load) {
+    public static void load(GLCapabilities caps, GLLoadFunc load) {
         if (GLExtCaps.Flags.GL_KHR_debug.no()) return;
-        glDebugMessageCallback = load.invoke("glDebugMessageCallback", PPV);
-        glDebugMessageControl = load.invoke("glDebugMessageControl", IIIIPZV);
-        glDebugMessageInsert = load.invoke("glDebugMessageInsert", IIIIIPV);
-        glGetDebugMessageLog = load.invoke("glGetDebugMessageLog", IIPPPPPPI);
-        glGetObjectLabel = load.invoke("glGetObjectLabel", IIIPPV);
-        glGetObjectPtrLabel = load.invoke("glGetObjectPtrLabel", PIPPV);
-        glGetPointerv = load.invoke("glGetPointerv", IPV);
-        glObjectLabel = load.invoke("glObjectLabel", IIIPV);
-        glObjectPtrLabel = load.invoke("glObjectPtrLabel", PIPV);
-        glPopDebugGroup = load.invoke("glPopDebugGroup", V);
-        glPushDebugGroup = load.invoke("glPushDebugGroup", IIIPV);
+        caps.glDebugMessageCallback = load.invoke("glDebugMessageCallback", PPV);
+        caps.glDebugMessageControl = load.invoke("glDebugMessageControl", IIIIPZV);
+        caps.glDebugMessageInsert = load.invoke("glDebugMessageInsert", IIIIIPV);
+        caps.glGetDebugMessageLog = load.invoke("glGetDebugMessageLog", IIPPPPPPI);
+        caps.glGetObjectLabel = load.invoke("glGetObjectLabel", IIIPPV);
+        caps.glGetObjectPtrLabel = load.invoke("glGetObjectPtrLabel", PIPPV);
+        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
+        caps.glObjectLabel = load.invoke("glObjectLabel", IIIPV);
+        caps.glObjectPtrLabel = load.invoke("glObjectPtrLabel", PIPV);
+        caps.glPopDebugGroup = load.invoke("glPopDebugGroup", V);
+        caps.glPushDebugGroup = load.invoke("glPushDebugGroup", IIIPV);
     }
 
     public static void glDebugMessageCallback(Addressable callback, Addressable userParam) {

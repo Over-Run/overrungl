@@ -75,10 +75,10 @@ public final class GLUtil {
      */
     @Nullable
     public static MemorySession setupDebugMessageCallback(Consumer<String> logger) {
-        // var caps = GLLoader.getCapabilities();
+         var caps = GLLoader.getCapabilities();
 
-        if (GLLoader.Ver43 || GLExtCaps.Flags.GL_KHR_debug.value()) {
-            if (GLLoader.Ver43) {
+        if (caps.Ver43 || GLExtCaps.Flags.GL_KHR_debug.value()) {
+            if (caps.Ver43) {
                 apiLog("[GL] Using OpenGL 4.3 for error logging.");
             } else {
                 apiLog("[GL] Using KHR_debug for error logging.");
@@ -102,7 +102,7 @@ public final class GLUtil {
             };
             GL.debugMessageCallback(arena, proc, MemoryAddress.NULL);
             // no need GLKHRDebug
-            if ((GLLoader.Ver43 || GLLoader.Ver30) &&
+            if ((caps.Ver43 || caps.Ver30) &&
                 (GL.getInteger(GL_CONTEXT_FLAGS) & GL_CONTEXT_FLAG_DEBUG_BIT) == 0) {
                 apiLog("[GL] Warning: A non-debug context may not produce any debug output.");
                 GL.enable(GL_DEBUG_OUTPUT);

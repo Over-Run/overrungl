@@ -241,14 +241,15 @@ public final class GLExtCaps {
                                          int version,
                                          MemorySegment outExts,
                                          MemorySegment outNumExtsI,
-                                         MemorySegment[] outExtsI) {
+                                         MemorySegment[] outExtsI,
+                                         GLCapabilities caps) {
         if (GLLoader.versionMajor(version) < 3) {
-            if (GL10C.glGetString == null) {
+            if (caps.glGetString == null) {
                 return false;
             }
             outExts.set(ADDRESS, 0, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
         } else {
-            if (GL30C.glGetStringi == null || GL10C.glGetIntegerv == null) {
+            if (caps.glGetStringi == null || caps.glGetIntegerv == null) {
                 return false;
             }
             int numExtsI = GL10C.getInteger(GLConstC.GL_NUM_EXTENSIONS);
@@ -285,11 +286,11 @@ public final class GLExtCaps {
         return false;
     }
 
-    static boolean findExtensionsGL(int version, SegmentAllocator allocator) {
+    static boolean findExtensionsGL(int version, SegmentAllocator allocator, GLCapabilities caps) {
         var pExts = allocator.allocate(ADDRESS);
         var pNumExtsI = allocator.allocate(JAVA_INT);
         var pExtsI = new MemorySegment[1];
-        if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI)) return false;
+        if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI, caps)) return false;
 
         String exts = pExts.getUtf8String(0);
         int numExtsI = pNumExtsI.get(JAVA_INT, 0);
@@ -304,7 +305,7 @@ public final class GLExtCaps {
         return true;
     }
 
-    static void load(GLLoadFunc load) {
+    static void load(GLCapabilities caps, GLLoadFunc load) {
         // TODO: 32/307 extensions
         GL3DFXTbuffer.load(load);
         GLAMDDebugOutput.load(load);
@@ -329,8 +330,8 @@ public final class GLExtCaps {
         GLAPPLEVertexArrayObject.load(load);
         GLAPPLEVertexArrayRange.load(load);
         GLAPPLEVertexProgramEvaluators.load(load);
-        GLARBES2Compatibility.load(load);
-        GLARBES31Compatibility.load(load);
+        GLARBES2Compatibility.load(caps, load);
+        GLARBES31Compatibility.load(caps, load);
         GLARBES32Compatibility.load(load);
         // GLARBBase_instance.load(load);
         // GLARBBindless_texture.load(load);
@@ -509,7 +510,7 @@ public final class GLExtCaps {
         // GLINTEL_parallel_arrays.load(load);
         // GLINTEL_performance_query.load(load);
         // GLKHR_blend_equation_advanced.load(load);
-        GLKHRDebug.load(load);
+        GLKHRDebug.load(caps, load);
         // GLKHR_parallel_shader_compile.load(load);
         // GLKHR_robustness.load(load);
         // GLMESA_framebuffer_flip_y.load(load);

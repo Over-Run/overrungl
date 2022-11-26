@@ -26,8 +26,10 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
@@ -40,49 +42,48 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL46C extends GL45C permits GL {
-    @Nullable
-    public static MethodHandle
-        glMultiDrawArraysIndirectCount, glMultiDrawElementsIndirectCount, glPolygonOffsetClamp, glSpecializeShader;
-
-    static boolean isSupported() {
-        return checkAll(glMultiDrawArraysIndirectCount, glMultiDrawElementsIndirectCount, glPolygonOffsetClamp,
-            glSpecializeShader);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glMultiDrawArraysIndirectCount, caps.glMultiDrawElementsIndirectCount, caps.glPolygonOffsetClamp, caps.glSpecializeShader);
     }
 
-    static void load(GLLoadFunc load) {
-        glMultiDrawArraysIndirectCount = load.invoke("glMultiDrawArraysIndirectCount", IPJIIV);
-        glMultiDrawElementsIndirectCount = load.invoke("glMultiDrawElementsIndirectCount", IIPJIIV);
-        glPolygonOffsetClamp = load.invoke("glPolygonOffsetClamp", FFFV);
-        glSpecializeShader = load.invoke("glSpecializeShader", IPIPPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glMultiDrawArraysIndirectCount = load.invoke("glMultiDrawArraysIndirectCount", IPJIIV);
+        caps.glMultiDrawElementsIndirectCount = load.invoke("glMultiDrawElementsIndirectCount", IIPJIIV);
+        caps.glPolygonOffsetClamp = load.invoke("glPolygonOffsetClamp", FFFV);
+        caps.glSpecializeShader = load.invoke("glSpecializeShader", IPIPPV);
     }
 
     public static void multiDrawArraysIndirectCount(int mode, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawArraysIndirectCount).invokeExact(mode, indirect, drawCount, maxDrawCount, stride);
+            check(caps.glMultiDrawArraysIndirectCount).invokeExact(mode, indirect, drawCount, maxDrawCount, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiDrawElementsIndirectCount(int mode, int type, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawElementsIndirectCount).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride);
+            check(caps.glMultiDrawElementsIndirectCount).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonOffsetClamp(float factor, float units, float clamp) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPolygonOffsetClamp).invokeExact(factor, units, clamp);
+            check(caps.glPolygonOffsetClamp).invokeExact(factor, units, clamp);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void specializeShader(int shader, Addressable pEntryPoint, int numSpecializationConstants, Addressable pConstantIndex, Addressable pConstantValue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSpecializeShader).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+            check(caps.glSpecializeShader).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

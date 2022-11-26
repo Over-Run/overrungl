@@ -24,13 +24,11 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.Addressable;
-import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.*;
+import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.checkAll;
 
 /**
  * The OpenGL 1.3 forward compatible functions.
@@ -39,97 +37,99 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL13C extends GL12C permits GL13, GL14C {
-    @Nullable
-    public static MethodHandle
-        glActiveTexture, glCompressedTexImage1D, glCompressedTexImage2D, glCompressedTexImage3D,
-        glCompressedTexSubImage1D, glCompressedTexSubImage2D, glCompressedTexSubImage3D, glGetCompressedTexImage,
-        glSampleCoverage;
-
-    static boolean isSupported() {
-        return checkAll(glActiveTexture, glCompressedTexImage1D, glCompressedTexImage2D, glCompressedTexImage3D,
-            glCompressedTexSubImage1D, glCompressedTexSubImage2D, glCompressedTexSubImage3D, glGetCompressedTexImage,
-            glSampleCoverage);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glActiveTexture, caps.glCompressedTexImage1D, caps.glCompressedTexImage2D, caps.glCompressedTexImage3D, caps.glCompressedTexSubImage1D, caps.glCompressedTexSubImage2D,
+            caps.glCompressedTexSubImage3D, caps.glGetCompressedTexImage, caps.glSampleCoverage);
     }
 
-    static void load(GLLoadFunc load) {
-        glActiveTexture = load.invoke("glActiveTexture", IV);
-        glCompressedTexImage1D = load.invoke("glCompressedTexImage1D", IIIIIIPV);
-        glCompressedTexImage2D = load.invoke("glCompressedTexImage2D", IIIIIIIPV);
-        glCompressedTexImage3D = load.invoke("glCompressedTexImage3D", IIIIIIIIPV);
-        glCompressedTexSubImage1D = load.invoke("glCompressedTexSubImage1D", IIIIIIPV);
-        glCompressedTexSubImage2D = load.invoke("glCompressedTexSubImage2D", IIIIIIIIPV);
-        glCompressedTexSubImage3D = load.invoke("glCompressedTexSubImage3D", IIIIIIIIIIPV);
-        glGetCompressedTexImage = load.invoke("glGetCompressedTexImage", IIPV);
-        glSampleCoverage = load.invoke("glSampleCoverage", FZV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glActiveTexture = load.invoke("glActiveTexture", IV);
+        caps.glCompressedTexImage1D = load.invoke("glCompressedTexImage1D", IIIIIIPV);
+        caps.glCompressedTexImage2D = load.invoke("glCompressedTexImage2D", IIIIIIIPV);
+        caps.glCompressedTexImage3D = load.invoke("glCompressedTexImage3D", IIIIIIIIPV);
+        caps.glCompressedTexSubImage1D = load.invoke("glCompressedTexSubImage1D", IIIIIIPV);
+        caps.glCompressedTexSubImage2D = load.invoke("glCompressedTexSubImage2D", IIIIIIIIPV);
+        caps.glCompressedTexSubImage3D = load.invoke("glCompressedTexSubImage3D", IIIIIIIIIIPV);
+        caps.glGetCompressedTexImage = load.invoke("glGetCompressedTexImage", IIPV);
+        caps.glSampleCoverage = load.invoke("glSampleCoverage", FZV);
     }
 
     public static void activeTexture(int texture) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glActiveTexture).invokeExact(texture);
+            check(caps.glActiveTexture).invokeExact(texture);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexImage1D(int target, int level, int internalFormat, int width, int border, int imageSize, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCompressedTexImage1D).invokeExact(target, level, internalFormat, width, border, imageSize, data);
+            check(caps.glCompressedTexImage1D).invokeExact(target, level, internalFormat, width, border, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int imageSize, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCompressedTexImage2D).invokeExact(target, level, internalFormat, width, height, border, imageSize, data);
+            check(caps.glCompressedTexImage2D).invokeExact(target, level, internalFormat, width, height, border, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCompressedTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, imageSize, data);
+            check(caps.glCompressedTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCompressedTexSubImage1D).invokeExact(target, level, xoffset, width, format, imageSize, data);
+            check(caps.glCompressedTexSubImage1D).invokeExact(target, level, xoffset, width, format, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCompressedTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+            check(caps.glCompressedTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCompressedTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+            check(caps.glCompressedTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getCompressedTexImage(int target, int level, Addressable img) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetCompressedTexImage).invokeExact(target, level, img);
+            check(caps.glGetCompressedTexImage).invokeExact(target, level, img);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void sampleCoverage(float value, boolean invert) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSampleCoverage).invokeExact(value, invert);
+            check(caps.glSampleCoverage).invokeExact(value, invert);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

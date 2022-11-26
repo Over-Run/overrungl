@@ -24,17 +24,14 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.Ver10;
 import static org.overrun.glib.gl.GLLoader.check;
 
 /**
@@ -44,764 +41,755 @@ import static org.overrun.glib.gl.GLLoader.check;
  * @since 0.1.0
  */
 public final class GL10 extends GL10C {
-    /**
-     * Method handles
-     */
-    @Nullable
-    public static MethodHandle
-        glAccum, glAlphaFunc, glBegin, glBitmap, glCallList, glCallLists, glClearAccum, glClearIndex, glClipPlane,
-        glColor3b, glColor3bv, glColor3d, glColor3dv, glColor3f, glColor3fv, glColor3i, glColor3iv, glColor3s,
-        glColor3sv, glColor3ub, glColor3ubv, glColor3ui, glColor3uiv, glColor3us, glColor3usv, glColor4b, glColor4bv,
-        glColor4d, glColor4dv, glColor4f, glColor4fv, glColor4i, glColor4iv, glColor4s, glColor4sv, glColor4ub,
-        glColor4ubv, glColor4ui, glColor4uiv, glColor4us, glColor4usv, glColorMaterial, glCopyPixels, glDeleteLists,
-        glDrawPixels, glEdgeFlag, glEdgeFlagv, glEnd, glEndList, glEvalCoord1d, glEvalCoord1dv, glEvalCoord1f,
-        glEvalCoord1fv, glEvalCoord2d, glEvalCoord2dv, glEvalCoord2f, glEvalCoord2fv, glEvalMesh1, glEvalMesh2,
-        glEvalPoint1, glEvalPoint2, glFeedbackBuffer, glFogf, glFogfv, glFogi, glFogiv, glFrustum, glGenLists,
-        glGetClipPlane, glGetLightfv, glGetLightiv, glGetMapdv, glGetMapfv, glGetMapiv, glGetMaterialfv,
-        glGetMaterialiv, glGetPixelMapfv, glGetPixelMapuiv, glGetPixelMapusv, glGetPolygonStipple, glGetTexEnvfv,
-        glGetTexEnviv, glGetTexGendv, glGetTexGenfv, glGetTexGeniv, glIndexMask, glIndexd, glIndexdv, glIndexf,
-        glIndexfv, glIndexi, glIndexiv, glIndexs, glIndexsv, glInitNames, glIsList, glLightModelf, glLightModelfv,
-        glLightModeli, glLightModeliv, glLightf, glLightfv, glLighti, glLightiv, glLineStipple, glListBase,
-        glLoadIdentity, glLoadMatrixd, glLoadMatrixf, glLoadName, glMap1d, glMap1f, glMap2d, glMap2f, glMapGrid1d,
-        glMapGrid1f, glMapGrid2d, glMapGrid2f, glMaterialf, glMaterialfv, glMateriali, glMaterialiv, glMatrixMode,
-        glMultMatrixd, glMultMatrixf, glNewList, glNormal3b, glNormal3bv, glNormal3d, glNormal3dv, glNormal3f,
-        glNormal3fv, glNormal3i, glNormal3iv, glNormal3s, glNormal3sv, glOrtho, glPassThrough, glPixelMapfv,
-        glPixelMapuiv, glPixelMapusv, glPixelTransferf, glPixelTransferi, glPixelZoom, glPolygonStipple, glPopAttrib,
-        glPopMatrix, glPopName, glPushAttrib, glPushMatrix, glPushName, glRasterPos2d, glRasterPos2dv, glRasterPos2f,
-        glRasterPos2fv, glRasterPos2i, glRasterPos2iv, glRasterPos2s, glRasterPos2sv, glRasterPos3d, glRasterPos3dv,
-        glRasterPos3f, glRasterPos3fv, glRasterPos3i, glRasterPos3iv, glRasterPos3s, glRasterPos3sv, glRasterPos4d,
-        glRasterPos4dv, glRasterPos4f, glRasterPos4fv, glRasterPos4i, glRasterPos4iv, glRasterPos4s, glRasterPos4sv,
-        glRectd, glRectdv, glRectf, glRectfv, glRecti, glRectiv, glRects, glRectsv, glRenderMode, glRotated, glRotatef,
-        glScaled, glScalef, glSelectBuffer, glShadeModel, glTexCoord1d, glTexCoord1dv, glTexCoord1f, glTexCoord1fv,
-        glTexCoord1i, glTexCoord1iv, glTexCoord1s, glTexCoord1sv, glTexCoord2d, glTexCoord2dv, glTexCoord2f,
-        glTexCoord2fv, glTexCoord2i, glTexCoord2iv, glTexCoord2s, glTexCoord2sv, glTexCoord3d, glTexCoord3dv,
-        glTexCoord3f, glTexCoord3fv, glTexCoord3i, glTexCoord3iv, glTexCoord3s, glTexCoord3sv, glTexCoord4d,
-        glTexCoord4dv, glTexCoord4f, glTexCoord4fv, glTexCoord4i, glTexCoord4iv, glTexCoord4s, glTexCoord4sv,
-        glTexEnvf, glTexEnvfv, glTexEnvi, glTexEnviv, glTexGend, glTexGendv, glTexGenf, glTexGenfv, glTexGeni,
-        glTexGeniv, glTranslated, glTranslatef, glVertex2d, glVertex2dv, glVertex2f, glVertex2fv, glVertex2i,
-        glVertex2iv, glVertex2s, glVertex2sv, glVertex3d, glVertex3dv, glVertex3f, glVertex3fv, glVertex3i, glVertex3iv,
-        glVertex3s, glVertex3sv, glVertex4d, glVertex4dv, glVertex4f, glVertex4fv, glVertex4i, glVertex4iv, glVertex4s,
-        glVertex4sv;
-
-    static void load(GLLoadFunc load) {
-        if (!Ver10) return;
-        glAccum = load.invoke("glAccum", IFV);
-        glAlphaFunc = load.invoke("glAlphaFunc", IFV);
-        glBegin = load.invoke("glBegin", IV);
-        glBitmap = load.invoke("glBitmap", IIFFFFPV);
-        glCallList = load.invoke("glCallList", IV);
-        glCallLists = load.invoke("glCallLists", IIPV);
-        glClearAccum = load.invoke("glClearAccum", FFFFV);
-        glClearIndex = load.invoke("glClearIndex", FV);
-        glClipPlane = load.invoke("glClipPlane", IPV);
-        glColor3b = load.invoke("glColor3b", BBBV);
-        glColor3bv = load.invoke("glColor3bv", PV);
-        glColor3d = load.invoke("glColor3d", DDDV);
-        glColor3dv = load.invoke("glColor3dv", PV);
-        glColor3f = load.invoke("glColor3f", FFFV);
-        glColor3fv = load.invoke("glColor3fv", PV);
-        glColor3i = load.invoke("glColor3i", IIIV);
-        glColor3iv = load.invoke("glColor3iv", PV);
-        glColor3s = load.invoke("glColor3s", SSSV);
-        glColor3sv = load.invoke("glColor3sv", PV);
-        glColor3ub = load.invoke("glColor3ub", BBBV);
-        glColor3ubv = load.invoke("glColor3ubv", PV);
-        glColor3ui = load.invoke("glColor3ui", IIIV);
-        glColor3uiv = load.invoke("glColor3uiv", PV);
-        glColor3us = load.invoke("glColor3us", SSSV);
-        glColor3usv = load.invoke("glColor3usv", PV);
-        glColor4b = load.invoke("glColor4b", BBBBV);
-        glColor4bv = load.invoke("glColor4bv", PV);
-        glColor4d = load.invoke("glColor4d", DDDDV);
-        glColor4dv = load.invoke("glColor4dv", PV);
-        glColor4f = load.invoke("glColor4f", FFFFV);
-        glColor4fv = load.invoke("glColor4fv", PV);
-        glColor4i = load.invoke("glColor4i", IIIIV);
-        glColor4iv = load.invoke("glColor4iv", PV);
-        glColor4s = load.invoke("glColor4s", SSSSV);
-        glColor4sv = load.invoke("glColor4sv", PV);
-        glColor4ub = load.invoke("glColor4ub", BBBBV);
-        glColor4ubv = load.invoke("glColor4ubv", PV);
-        glColor4ui = load.invoke("glColor4ui", IIIIV);
-        glColor4uiv = load.invoke("glColor4uiv", PV);
-        glColor4us = load.invoke("glColor4us", SSSSV);
-        glColor4usv = load.invoke("glColor4usv", PV);
-        glColorMaterial = load.invoke("glColorMaterial", IIV);
-        glCopyPixels = load.invoke("glCopyPixels", IIIIIV);
-        glDeleteLists = load.invoke("glDeleteLists", IIV);
-        glDrawPixels = load.invoke("glDrawPixels", IIIIPV);
-        glEdgeFlag = load.invoke("glEdgeFlag", ZV);
-        glEdgeFlagv = load.invoke("glEdgeFlagv", PV);
-        glEnd = load.invoke("glEnd", V);
-        glEndList = load.invoke("glEndList", V);
-        glEvalCoord1d = load.invoke("glEvalCoord1d", DV);
-        glEvalCoord1dv = load.invoke("glEvalCoord1dv", PV);
-        glEvalCoord1f = load.invoke("glEvalCoord1f", FV);
-        glEvalCoord1fv = load.invoke("glEvalCoord1fv", PV);
-        glEvalCoord2d = load.invoke("glEvalCoord2d", DDV);
-        glEvalCoord2dv = load.invoke("glEvalCoord2dv", PV);
-        glEvalCoord2f = load.invoke("glEvalCoord2f", FFV);
-        glEvalCoord2fv = load.invoke("glEvalCoord2fv", PV);
-        glEvalMesh1 = load.invoke("glEvalMesh1", IIIV);
-        glEvalMesh2 = load.invoke("glEvalMesh2", IIIIIV);
-        glEvalPoint1 = load.invoke("glEvalPoint1", IV);
-        glEvalPoint2 = load.invoke("glEvalPoint2", IIV);
-        glFeedbackBuffer = load.invoke("glFeedbackBuffer", IIPV);
-        glFogf = load.invoke("glFogf", IFV);
-        glFogfv = load.invoke("glFogfv", IPV);
-        glFogi = load.invoke("glFogi", IIV);
-        glFogiv = load.invoke("glFogiv", IPV);
-        glFrustum = load.invoke("glFrustum", DDDDDDV);
-        glGenLists = load.invoke("glGenLists", II);
-        glGetClipPlane = load.invoke("glGetClipPlane", IPV);
-        glGetLightfv = load.invoke("glGetLightfv", IIPV);
-        glGetLightiv = load.invoke("glGetLightiv", IIPV);
-        glGetMapdv = load.invoke("glGetMapdv", IIPV);
-        glGetMapfv = load.invoke("glGetMapfv", IIPV);
-        glGetMapiv = load.invoke("glGetMapiv", IIPV);
-        glGetMaterialfv = load.invoke("glGetMaterialfv", IIPV);
-        glGetMaterialiv = load.invoke("glGetMaterialiv", IIPV);
-        glGetPixelMapfv = load.invoke("glGetPixelMapfv", IPV);
-        glGetPixelMapuiv = load.invoke("glGetPixelMapuiv", IPV);
-        glGetPixelMapusv = load.invoke("glGetPixelMapusv", IPV);
-        glGetPolygonStipple = load.invoke("glGetPolygonStipple", PV);
-        glGetTexEnvfv = load.invoke("glGetTexEnvfv", IIPV);
-        glGetTexEnviv = load.invoke("glGetTexEnviv", IIPV);
-        glGetTexGendv = load.invoke("glGetTexGendv", IIPV);
-        glGetTexGenfv = load.invoke("glGetTexGenfv", IIPV);
-        glGetTexGeniv = load.invoke("glGetTexGeniv", IIPV);
-        glIndexMask = load.invoke("glIndexMask", IV);
-        glIndexd = load.invoke("glIndexd", DV);
-        glIndexdv = load.invoke("glIndexdv", PV);
-        glIndexf = load.invoke("glIndexf", FV);
-        glIndexfv = load.invoke("glIndexfv", PV);
-        glIndexi = load.invoke("glIndexi", IV);
-        glIndexiv = load.invoke("glIndexiv", PV);
-        glIndexs = load.invoke("glIndexs", SV);
-        glIndexsv = load.invoke("glIndexsv", PV);
-        glInitNames = load.invoke("glInitNames", V);
-        glIsList = load.invoke("glIsList", IZ);
-        glLightModelf = load.invoke("glLightModelf", IFV);
-        glLightModelfv = load.invoke("glLightModelfv", IPV);
-        glLightModeli = load.invoke("glLightModeli", IIV);
-        glLightModeliv = load.invoke("glLightModeliv", IPV);
-        glLightf = load.invoke("glLightf", IIFV);
-        glLightfv = load.invoke("glLightfv", IIPV);
-        glLighti = load.invoke("glLighti", IIIV);
-        glLightiv = load.invoke("glLightiv", IIPV);
-        glLineStipple = load.invoke("glLineStipple", ISV);
-        glListBase = load.invoke("glListBase", IV);
-        glLoadIdentity = load.invoke("glLoadIdentity", V);
-        glLoadMatrixd = load.invoke("glLoadMatrixd", PV);
-        glLoadMatrixf = load.invoke("glLoadMatrixf", PV);
-        glLoadName = load.invoke("glLoadName", IV);
-        glMap1d = load.invoke("glMap1d", IDDIIPV);
-        glMap1f = load.invoke("glMap1f", IFFIIPV);
-        glMap2d = load.invoke("glMap2d", IDDIIDDIIPV);
-        glMap2f = load.invoke("glMap2f", IFFIIFFIIPV);
-        glMapGrid1d = load.invoke("glMapGrid1d", IDDV);
-        glMapGrid1f = load.invoke("glMapGrid1f", IFFV);
-        glMapGrid2d = load.invoke("glMapGrid2d", IDDIDDV);
-        glMapGrid2f = load.invoke("glMapGrid2f", IFFIFFV);
-        glMaterialf = load.invoke("glMaterialf", IIFV);
-        glMaterialfv = load.invoke("glMaterialfv", IIPV);
-        glMateriali = load.invoke("glMateriali", IIIV);
-        glMaterialiv = load.invoke("glMaterialiv", IIPV);
-        glMatrixMode = load.invoke("glMatrixMode", IV);
-        glMultMatrixd = load.invoke("glMultMatrixd", PV);
-        glMultMatrixf = load.invoke("glMultMatrixf", PV);
-        glNewList = load.invoke("glNewList", IIV);
-        glNormal3b = load.invoke("glNormal3b", BBBV);
-        glNormal3bv = load.invoke("glNormal3bv", PV);
-        glNormal3d = load.invoke("glNormal3d", DDDV);
-        glNormal3dv = load.invoke("glNormal3dv", PV);
-        glNormal3f = load.invoke("glNormal3f", FFFV);
-        glNormal3fv = load.invoke("glNormal3fv", PV);
-        glNormal3i = load.invoke("glNormal3i", IIIV);
-        glNormal3iv = load.invoke("glNormal3iv", PV);
-        glNormal3s = load.invoke("glNormal3s", SSSV);
-        glNormal3sv = load.invoke("glNormal3sv", PV);
-        glOrtho = load.invoke("glOrtho", DDDDDDV);
-        glPassThrough = load.invoke("glPassThrough", FV);
-        glPixelMapfv = load.invoke("glPixelMapfv", IIPV);
-        glPixelMapuiv = load.invoke("glPixelMapuiv", IIPV);
-        glPixelMapusv = load.invoke("glPixelMapusv", IIPV);
-        glPixelTransferf = load.invoke("glPixelTransferf", IFV);
-        glPixelTransferi = load.invoke("glPixelTransferi", IIV);
-        glPixelZoom = load.invoke("glPixelZoom", FFV);
-        glPolygonStipple = load.invoke("glPolygonStipple", PV);
-        glPopAttrib = load.invoke("glPopAttrib", V);
-        glPopMatrix = load.invoke("glPopMatrix", V);
-        glPopName = load.invoke("glPopName", V);
-        glPushAttrib = load.invoke("glPushAttrib", IV);
-        glPushMatrix = load.invoke("glPushMatrix", V);
-        glPushName = load.invoke("glPushName", IV);
-        glRasterPos2d = load.invoke("glRasterPos2d", DDV);
-        glRasterPos2dv = load.invoke("glRasterPos2dv", PV);
-        glRasterPos2f = load.invoke("glRasterPos2f", FFV);
-        glRasterPos2fv = load.invoke("glRasterPos2fv", PV);
-        glRasterPos2i = load.invoke("glRasterPos2i", IIV);
-        glRasterPos2iv = load.invoke("glRasterPos2iv", PV);
-        glRasterPos2s = load.invoke("glRasterPos2s", SSV);
-        glRasterPos2sv = load.invoke("glRasterPos2sv", PV);
-        glRasterPos3d = load.invoke("glRasterPos3d", DDDV);
-        glRasterPos3dv = load.invoke("glRasterPos3dv", PV);
-        glRasterPos3f = load.invoke("glRasterPos3f", FFFV);
-        glRasterPos3fv = load.invoke("glRasterPos3fv", PV);
-        glRasterPos3i = load.invoke("glRasterPos3i", IIIV);
-        glRasterPos3iv = load.invoke("glRasterPos3iv", PV);
-        glRasterPos3s = load.invoke("glRasterPos3s", SSSV);
-        glRasterPos3sv = load.invoke("glRasterPos3sv", PV);
-        glRasterPos4d = load.invoke("glRasterPos4d", DDDDV);
-        glRasterPos4dv = load.invoke("glRasterPos4dv", PV);
-        glRasterPos4f = load.invoke("glRasterPos4f", FFFFV);
-        glRasterPos4fv = load.invoke("glRasterPos4fv", PV);
-        glRasterPos4i = load.invoke("glRasterPos4i", IIIIV);
-        glRasterPos4iv = load.invoke("glRasterPos4iv", PV);
-        glRasterPos4s = load.invoke("glRasterPos4s", SSSSV);
-        glRasterPos4sv = load.invoke("glRasterPos4sv", PV);
-        glRectd = load.invoke("glRectd", DDDDV);
-        glRectdv = load.invoke("glRectdv", PPV);
-        glRectf = load.invoke("glRectf", FFFFV);
-        glRectfv = load.invoke("glRectfv", PPV);
-        glRecti = load.invoke("glRecti", IIIIV);
-        glRectiv = load.invoke("glRectiv", PPV);
-        glRects = load.invoke("glRects", SSSSV);
-        glRectsv = load.invoke("glRectsv", PPV);
-        glRenderMode = load.invoke("glRenderMode", II);
-        glRotated = load.invoke("glRotated", DDDDV);
-        glRotatef = load.invoke("glRotatef", FFFFV);
-        glScaled = load.invoke("glScaled", DDDV);
-        glScalef = load.invoke("glScalef", FFFV);
-        glSelectBuffer = load.invoke("glSelectBuffer", IPV);
-        glShadeModel = load.invoke("glShadeModel", IV);
-        glTexCoord1d = load.invoke("glTexCoord1d", DV);
-        glTexCoord1dv = load.invoke("glTexCoord1dv", PV);
-        glTexCoord1f = load.invoke("glTexCoord1f", FV);
-        glTexCoord1fv = load.invoke("glTexCoord1fv", PV);
-        glTexCoord1i = load.invoke("glTexCoord1i", IV);
-        glTexCoord1iv = load.invoke("glTexCoord1iv", PV);
-        glTexCoord1s = load.invoke("glTexCoord1s", SV);
-        glTexCoord1sv = load.invoke("glTexCoord1sv", PV);
-        glTexCoord2d = load.invoke("glTexCoord2d", DDV);
-        glTexCoord2dv = load.invoke("glTexCoord2dv", PV);
-        glTexCoord2f = load.invoke("glTexCoord2f", FFV);
-        glTexCoord2fv = load.invoke("glTexCoord2fv", PV);
-        glTexCoord2i = load.invoke("glTexCoord2i", IIV);
-        glTexCoord2iv = load.invoke("glTexCoord2iv", PV);
-        glTexCoord2s = load.invoke("glTexCoord2s", SSV);
-        glTexCoord2sv = load.invoke("glTexCoord2sv", PV);
-        glTexCoord3d = load.invoke("glTexCoord3d", DDDV);
-        glTexCoord3dv = load.invoke("glTexCoord3dv", PV);
-        glTexCoord3f = load.invoke("glTexCoord3f", FFFV);
-        glTexCoord3fv = load.invoke("glTexCoord3fv", PV);
-        glTexCoord3i = load.invoke("glTexCoord3i", IIIV);
-        glTexCoord3iv = load.invoke("glTexCoord3iv", PV);
-        glTexCoord3s = load.invoke("glTexCoord3s", SSSV);
-        glTexCoord3sv = load.invoke("glTexCoord3sv", PV);
-        glTexCoord4d = load.invoke("glTexCoord4d", DDDDV);
-        glTexCoord4dv = load.invoke("glTexCoord4dv", PV);
-        glTexCoord4f = load.invoke("glTexCoord4f", FFFFV);
-        glTexCoord4fv = load.invoke("glTexCoord4fv", PV);
-        glTexCoord4i = load.invoke("glTexCoord4i", IIIIV);
-        glTexCoord4iv = load.invoke("glTexCoord4iv", PV);
-        glTexCoord4s = load.invoke("glTexCoord4s", SSSSV);
-        glTexCoord4sv = load.invoke("glTexCoord4sv", PV);
-        glTexEnvf = load.invoke("glTexEnvf", IIFV);
-        glTexEnvfv = load.invoke("glTexEnvfv", IIPV);
-        glTexEnvi = load.invoke("glTexEnvi", IIIV);
-        glTexEnviv = load.invoke("glTexEnviv", IIPV);
-        glTexGend = load.invoke("glTexGend", IIDV);
-        glTexGendv = load.invoke("glTexGendv", IIPV);
-        glTexGenf = load.invoke("glTexGenf", IIFV);
-        glTexGenfv = load.invoke("glTexGenfv", IIPV);
-        glTexGeni = load.invoke("glTexGeni", IIIV);
-        glTexGeniv = load.invoke("glTexGeniv", IIPV);
-        glTranslated = load.invoke("glTranslated", DDDV);
-        glTranslatef = load.invoke("glTranslatef", FFFV);
-        glVertex2d = load.invoke("glVertex2d", DDV);
-        glVertex2dv = load.invoke("glVertex2dv", PV);
-        glVertex2f = load.invoke("glVertex2f", FFV);
-        glVertex2fv = load.invoke("glVertex2fv", PV);
-        glVertex2i = load.invoke("glVertex2i", IIV);
-        glVertex2iv = load.invoke("glVertex2iv", PV);
-        glVertex2s = load.invoke("glVertex2s", SSV);
-        glVertex2sv = load.invoke("glVertex2sv", PV);
-        glVertex3d = load.invoke("glVertex3d", DDDV);
-        glVertex3dv = load.invoke("glVertex3dv", PV);
-        glVertex3f = load.invoke("glVertex3f", FFFV);
-        glVertex3fv = load.invoke("glVertex3fv", PV);
-        glVertex3i = load.invoke("glVertex3i", IIIV);
-        glVertex3iv = load.invoke("glVertex3iv", PV);
-        glVertex3s = load.invoke("glVertex3s", SSSV);
-        glVertex3sv = load.invoke("glVertex3sv", PV);
-        glVertex4d = load.invoke("glVertex4d", DDDDV);
-        glVertex4dv = load.invoke("glVertex4dv", PV);
-        glVertex4f = load.invoke("glVertex4f", FFFFV);
-        glVertex4fv = load.invoke("glVertex4fv", PV);
-        glVertex4i = load.invoke("glVertex4i", IIIIV);
-        glVertex4iv = load.invoke("glVertex4iv", PV);
-        glVertex4s = load.invoke("glVertex4s", SSSSV);
-        glVertex4sv = load.invoke("glVertex4sv", PV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        if (!caps.Ver10) return;
+        caps.glAccum = load.invoke("glAccum", IFV);
+        caps.glAlphaFunc = load.invoke("glAlphaFunc", IFV);
+        caps.glBegin = load.invoke("glBegin", IV);
+        caps.glBitmap = load.invoke("glBitmap", IIFFFFPV);
+        caps.glCallList = load.invoke("glCallList", IV);
+        caps.glCallLists = load.invoke("glCallLists", IIPV);
+        caps.glClearAccum = load.invoke("glClearAccum", FFFFV);
+        caps.glClearIndex = load.invoke("glClearIndex", FV);
+        caps.glClipPlane = load.invoke("glClipPlane", IPV);
+        caps.glColor3b = load.invoke("glColor3b", BBBV);
+        caps.glColor3bv = load.invoke("glColor3bv", PV);
+        caps.glColor3d = load.invoke("glColor3d", DDDV);
+        caps.glColor3dv = load.invoke("glColor3dv", PV);
+        caps.glColor3f = load.invoke("glColor3f", FFFV);
+        caps.glColor3fv = load.invoke("glColor3fv", PV);
+        caps.glColor3i = load.invoke("glColor3i", IIIV);
+        caps.glColor3iv = load.invoke("glColor3iv", PV);
+        caps.glColor3s = load.invoke("glColor3s", SSSV);
+        caps.glColor3sv = load.invoke("glColor3sv", PV);
+        caps.glColor3ub = load.invoke("glColor3ub", BBBV);
+        caps.glColor3ubv = load.invoke("glColor3ubv", PV);
+        caps.glColor3ui = load.invoke("glColor3ui", IIIV);
+        caps.glColor3uiv = load.invoke("glColor3uiv", PV);
+        caps.glColor3us = load.invoke("glColor3us", SSSV);
+        caps.glColor3usv = load.invoke("glColor3usv", PV);
+        caps.glColor4b = load.invoke("glColor4b", BBBBV);
+        caps.glColor4bv = load.invoke("glColor4bv", PV);
+        caps.glColor4d = load.invoke("glColor4d", DDDDV);
+        caps.glColor4dv = load.invoke("glColor4dv", PV);
+        caps.glColor4f = load.invoke("glColor4f", FFFFV);
+        caps.glColor4fv = load.invoke("glColor4fv", PV);
+        caps.glColor4i = load.invoke("glColor4i", IIIIV);
+        caps.glColor4iv = load.invoke("glColor4iv", PV);
+        caps.glColor4s = load.invoke("glColor4s", SSSSV);
+        caps.glColor4sv = load.invoke("glColor4sv", PV);
+        caps.glColor4ub = load.invoke("glColor4ub", BBBBV);
+        caps.glColor4ubv = load.invoke("glColor4ubv", PV);
+        caps.glColor4ui = load.invoke("glColor4ui", IIIIV);
+        caps.glColor4uiv = load.invoke("glColor4uiv", PV);
+        caps.glColor4us = load.invoke("glColor4us", SSSSV);
+        caps.glColor4usv = load.invoke("glColor4usv", PV);
+        caps.glColorMaterial = load.invoke("glColorMaterial", IIV);
+        caps.glCopyPixels = load.invoke("glCopyPixels", IIIIIV);
+        caps.glDeleteLists = load.invoke("glDeleteLists", IIV);
+        caps.glDrawPixels = load.invoke("glDrawPixels", IIIIPV);
+        caps.glEdgeFlag = load.invoke("glEdgeFlag", ZV);
+        caps.glEdgeFlagv = load.invoke("glEdgeFlagv", PV);
+        caps.glEnd = load.invoke("glEnd", V);
+        caps.glEndList = load.invoke("glEndList", V);
+        caps.glEvalCoord1d = load.invoke("glEvalCoord1d", DV);
+        caps.glEvalCoord1dv = load.invoke("glEvalCoord1dv", PV);
+        caps.glEvalCoord1f = load.invoke("glEvalCoord1f", FV);
+        caps.glEvalCoord1fv = load.invoke("glEvalCoord1fv", PV);
+        caps.glEvalCoord2d = load.invoke("glEvalCoord2d", DDV);
+        caps.glEvalCoord2dv = load.invoke("glEvalCoord2dv", PV);
+        caps.glEvalCoord2f = load.invoke("glEvalCoord2f", FFV);
+        caps.glEvalCoord2fv = load.invoke("glEvalCoord2fv", PV);
+        caps.glEvalMesh1 = load.invoke("glEvalMesh1", IIIV);
+        caps.glEvalMesh2 = load.invoke("glEvalMesh2", IIIIIV);
+        caps.glEvalPoint1 = load.invoke("glEvalPoint1", IV);
+        caps.glEvalPoint2 = load.invoke("glEvalPoint2", IIV);
+        caps.glFeedbackBuffer = load.invoke("glFeedbackBuffer", IIPV);
+        caps.glFogf = load.invoke("glFogf", IFV);
+        caps.glFogfv = load.invoke("glFogfv", IPV);
+        caps.glFogi = load.invoke("glFogi", IIV);
+        caps.glFogiv = load.invoke("glFogiv", IPV);
+        caps.glFrustum = load.invoke("glFrustum", DDDDDDV);
+        caps.glGenLists = load.invoke("glGenLists", II);
+        caps.glGetClipPlane = load.invoke("glGetClipPlane", IPV);
+        caps.glGetLightfv = load.invoke("glGetLightfv", IIPV);
+        caps.glGetLightiv = load.invoke("glGetLightiv", IIPV);
+        caps.glGetMapdv = load.invoke("glGetMapdv", IIPV);
+        caps.glGetMapfv = load.invoke("glGetMapfv", IIPV);
+        caps.glGetMapiv = load.invoke("glGetMapiv", IIPV);
+        caps.glGetMaterialfv = load.invoke("glGetMaterialfv", IIPV);
+        caps.glGetMaterialiv = load.invoke("glGetMaterialiv", IIPV);
+        caps.glGetPixelMapfv = load.invoke("glGetPixelMapfv", IPV);
+        caps.glGetPixelMapuiv = load.invoke("glGetPixelMapuiv", IPV);
+        caps.glGetPixelMapusv = load.invoke("glGetPixelMapusv", IPV);
+        caps.glGetPolygonStipple = load.invoke("glGetPolygonStipple", PV);
+        caps.glGetTexEnvfv = load.invoke("glGetTexEnvfv", IIPV);
+        caps.glGetTexEnviv = load.invoke("glGetTexEnviv", IIPV);
+        caps.glGetTexGendv = load.invoke("glGetTexGendv", IIPV);
+        caps.glGetTexGenfv = load.invoke("glGetTexGenfv", IIPV);
+        caps.glGetTexGeniv = load.invoke("glGetTexGeniv", IIPV);
+        caps.glIndexMask = load.invoke("glIndexMask", IV);
+        caps.glIndexd = load.invoke("glIndexd", DV);
+        caps.glIndexdv = load.invoke("glIndexdv", PV);
+        caps.glIndexf = load.invoke("glIndexf", FV);
+        caps.glIndexfv = load.invoke("glIndexfv", PV);
+        caps.glIndexi = load.invoke("glIndexi", IV);
+        caps.glIndexiv = load.invoke("glIndexiv", PV);
+        caps.glIndexs = load.invoke("glIndexs", SV);
+        caps.glIndexsv = load.invoke("glIndexsv", PV);
+        caps.glInitNames = load.invoke("glInitNames", V);
+        caps.glIsList = load.invoke("glIsList", IZ);
+        caps.glLightModelf = load.invoke("glLightModelf", IFV);
+        caps.glLightModelfv = load.invoke("glLightModelfv", IPV);
+        caps.glLightModeli = load.invoke("glLightModeli", IIV);
+        caps.glLightModeliv = load.invoke("glLightModeliv", IPV);
+        caps.glLightf = load.invoke("glLightf", IIFV);
+        caps.glLightfv = load.invoke("glLightfv", IIPV);
+        caps.glLighti = load.invoke("glLighti", IIIV);
+        caps.glLightiv = load.invoke("glLightiv", IIPV);
+        caps.glLineStipple = load.invoke("glLineStipple", ISV);
+        caps.glListBase = load.invoke("glListBase", IV);
+        caps.glLoadIdentity = load.invoke("glLoadIdentity", V);
+        caps.glLoadMatrixd = load.invoke("glLoadMatrixd", PV);
+        caps.glLoadMatrixf = load.invoke("glLoadMatrixf", PV);
+        caps.glLoadName = load.invoke("glLoadName", IV);
+        caps.glMap1d = load.invoke("glMap1d", IDDIIPV);
+        caps.glMap1f = load.invoke("glMap1f", IFFIIPV);
+        caps.glMap2d = load.invoke("glMap2d", IDDIIDDIIPV);
+        caps.glMap2f = load.invoke("glMap2f", IFFIIFFIIPV);
+        caps.glMapGrid1d = load.invoke("glMapGrid1d", IDDV);
+        caps.glMapGrid1f = load.invoke("glMapGrid1f", IFFV);
+        caps.glMapGrid2d = load.invoke("glMapGrid2d", IDDIDDV);
+        caps.glMapGrid2f = load.invoke("glMapGrid2f", IFFIFFV);
+        caps.glMaterialf = load.invoke("glMaterialf", IIFV);
+        caps.glMaterialfv = load.invoke("glMaterialfv", IIPV);
+        caps.glMateriali = load.invoke("glMateriali", IIIV);
+        caps.glMaterialiv = load.invoke("glMaterialiv", IIPV);
+        caps.glMatrixMode = load.invoke("glMatrixMode", IV);
+        caps.glMultMatrixd = load.invoke("glMultMatrixd", PV);
+        caps.glMultMatrixf = load.invoke("glMultMatrixf", PV);
+        caps.glNewList = load.invoke("glNewList", IIV);
+        caps.glNormal3b = load.invoke("glNormal3b", BBBV);
+        caps.glNormal3bv = load.invoke("glNormal3bv", PV);
+        caps.glNormal3d = load.invoke("glNormal3d", DDDV);
+        caps.glNormal3dv = load.invoke("glNormal3dv", PV);
+        caps.glNormal3f = load.invoke("glNormal3f", FFFV);
+        caps.glNormal3fv = load.invoke("glNormal3fv", PV);
+        caps.glNormal3i = load.invoke("glNormal3i", IIIV);
+        caps.glNormal3iv = load.invoke("glNormal3iv", PV);
+        caps.glNormal3s = load.invoke("glNormal3s", SSSV);
+        caps.glNormal3sv = load.invoke("glNormal3sv", PV);
+        caps.glOrtho = load.invoke("glOrtho", DDDDDDV);
+        caps.glPassThrough = load.invoke("glPassThrough", FV);
+        caps.glPixelMapfv = load.invoke("glPixelMapfv", IIPV);
+        caps.glPixelMapuiv = load.invoke("glPixelMapuiv", IIPV);
+        caps.glPixelMapusv = load.invoke("glPixelMapusv", IIPV);
+        caps.glPixelTransferf = load.invoke("glPixelTransferf", IFV);
+        caps.glPixelTransferi = load.invoke("glPixelTransferi", IIV);
+        caps.glPixelZoom = load.invoke("glPixelZoom", FFV);
+        caps.glPolygonStipple = load.invoke("glPolygonStipple", PV);
+        caps.glPopAttrib = load.invoke("glPopAttrib", V);
+        caps.glPopMatrix = load.invoke("glPopMatrix", V);
+        caps.glPopName = load.invoke("glPopName", V);
+        caps.glPushAttrib = load.invoke("glPushAttrib", IV);
+        caps.glPushMatrix = load.invoke("glPushMatrix", V);
+        caps.glPushName = load.invoke("glPushName", IV);
+        caps.glRasterPos2d = load.invoke("glRasterPos2d", DDV);
+        caps.glRasterPos2dv = load.invoke("glRasterPos2dv", PV);
+        caps.glRasterPos2f = load.invoke("glRasterPos2f", FFV);
+        caps.glRasterPos2fv = load.invoke("glRasterPos2fv", PV);
+        caps.glRasterPos2i = load.invoke("glRasterPos2i", IIV);
+        caps.glRasterPos2iv = load.invoke("glRasterPos2iv", PV);
+        caps.glRasterPos2s = load.invoke("glRasterPos2s", SSV);
+        caps.glRasterPos2sv = load.invoke("glRasterPos2sv", PV);
+        caps.glRasterPos3d = load.invoke("glRasterPos3d", DDDV);
+        caps.glRasterPos3dv = load.invoke("glRasterPos3dv", PV);
+        caps.glRasterPos3f = load.invoke("glRasterPos3f", FFFV);
+        caps.glRasterPos3fv = load.invoke("glRasterPos3fv", PV);
+        caps.glRasterPos3i = load.invoke("glRasterPos3i", IIIV);
+        caps.glRasterPos3iv = load.invoke("glRasterPos3iv", PV);
+        caps.glRasterPos3s = load.invoke("glRasterPos3s", SSSV);
+        caps.glRasterPos3sv = load.invoke("glRasterPos3sv", PV);
+        caps.glRasterPos4d = load.invoke("glRasterPos4d", DDDDV);
+        caps.glRasterPos4dv = load.invoke("glRasterPos4dv", PV);
+        caps.glRasterPos4f = load.invoke("glRasterPos4f", FFFFV);
+        caps.glRasterPos4fv = load.invoke("glRasterPos4fv", PV);
+        caps.glRasterPos4i = load.invoke("glRasterPos4i", IIIIV);
+        caps.glRasterPos4iv = load.invoke("glRasterPos4iv", PV);
+        caps.glRasterPos4s = load.invoke("glRasterPos4s", SSSSV);
+        caps.glRasterPos4sv = load.invoke("glRasterPos4sv", PV);
+        caps.glRectd = load.invoke("glRectd", DDDDV);
+        caps.glRectdv = load.invoke("glRectdv", PPV);
+        caps.glRectf = load.invoke("glRectf", FFFFV);
+        caps.glRectfv = load.invoke("glRectfv", PPV);
+        caps.glRecti = load.invoke("glRecti", IIIIV);
+        caps.glRectiv = load.invoke("glRectiv", PPV);
+        caps.glRects = load.invoke("glRects", SSSSV);
+        caps.glRectsv = load.invoke("glRectsv", PPV);
+        caps.glRenderMode = load.invoke("glRenderMode", II);
+        caps.glRotated = load.invoke("glRotated", DDDDV);
+        caps.glRotatef = load.invoke("glRotatef", FFFFV);
+        caps.glScaled = load.invoke("glScaled", DDDV);
+        caps.glScalef = load.invoke("glScalef", FFFV);
+        caps.glSelectBuffer = load.invoke("glSelectBuffer", IPV);
+        caps.glShadeModel = load.invoke("glShadeModel", IV);
+        caps.glTexCoord1d = load.invoke("glTexCoord1d", DV);
+        caps.glTexCoord1dv = load.invoke("glTexCoord1dv", PV);
+        caps.glTexCoord1f = load.invoke("glTexCoord1f", FV);
+        caps.glTexCoord1fv = load.invoke("glTexCoord1fv", PV);
+        caps.glTexCoord1i = load.invoke("glTexCoord1i", IV);
+        caps.glTexCoord1iv = load.invoke("glTexCoord1iv", PV);
+        caps.glTexCoord1s = load.invoke("glTexCoord1s", SV);
+        caps.glTexCoord1sv = load.invoke("glTexCoord1sv", PV);
+        caps.glTexCoord2d = load.invoke("glTexCoord2d", DDV);
+        caps.glTexCoord2dv = load.invoke("glTexCoord2dv", PV);
+        caps.glTexCoord2f = load.invoke("glTexCoord2f", FFV);
+        caps.glTexCoord2fv = load.invoke("glTexCoord2fv", PV);
+        caps.glTexCoord2i = load.invoke("glTexCoord2i", IIV);
+        caps.glTexCoord2iv = load.invoke("glTexCoord2iv", PV);
+        caps.glTexCoord2s = load.invoke("glTexCoord2s", SSV);
+        caps.glTexCoord2sv = load.invoke("glTexCoord2sv", PV);
+        caps.glTexCoord3d = load.invoke("glTexCoord3d", DDDV);
+        caps.glTexCoord3dv = load.invoke("glTexCoord3dv", PV);
+        caps.glTexCoord3f = load.invoke("glTexCoord3f", FFFV);
+        caps.glTexCoord3fv = load.invoke("glTexCoord3fv", PV);
+        caps.glTexCoord3i = load.invoke("glTexCoord3i", IIIV);
+        caps.glTexCoord3iv = load.invoke("glTexCoord3iv", PV);
+        caps.glTexCoord3s = load.invoke("glTexCoord3s", SSSV);
+        caps.glTexCoord3sv = load.invoke("glTexCoord3sv", PV);
+        caps.glTexCoord4d = load.invoke("glTexCoord4d", DDDDV);
+        caps.glTexCoord4dv = load.invoke("glTexCoord4dv", PV);
+        caps.glTexCoord4f = load.invoke("glTexCoord4f", FFFFV);
+        caps.glTexCoord4fv = load.invoke("glTexCoord4fv", PV);
+        caps.glTexCoord4i = load.invoke("glTexCoord4i", IIIIV);
+        caps.glTexCoord4iv = load.invoke("glTexCoord4iv", PV);
+        caps.glTexCoord4s = load.invoke("glTexCoord4s", SSSSV);
+        caps.glTexCoord4sv = load.invoke("glTexCoord4sv", PV);
+        caps.glTexEnvf = load.invoke("glTexEnvf", IIFV);
+        caps.glTexEnvfv = load.invoke("glTexEnvfv", IIPV);
+        caps.glTexEnvi = load.invoke("glTexEnvi", IIIV);
+        caps.glTexEnviv = load.invoke("glTexEnviv", IIPV);
+        caps.glTexGend = load.invoke("glTexGend", IIDV);
+        caps.glTexGendv = load.invoke("glTexGendv", IIPV);
+        caps.glTexGenf = load.invoke("glTexGenf", IIFV);
+        caps.glTexGenfv = load.invoke("glTexGenfv", IIPV);
+        caps.glTexGeni = load.invoke("glTexGeni", IIIV);
+        caps.glTexGeniv = load.invoke("glTexGeniv", IIPV);
+        caps.glTranslated = load.invoke("glTranslated", DDDV);
+        caps.glTranslatef = load.invoke("glTranslatef", FFFV);
+        caps.glVertex2d = load.invoke("glVertex2d", DDV);
+        caps.glVertex2dv = load.invoke("glVertex2dv", PV);
+        caps.glVertex2f = load.invoke("glVertex2f", FFV);
+        caps.glVertex2fv = load.invoke("glVertex2fv", PV);
+        caps.glVertex2i = load.invoke("glVertex2i", IIV);
+        caps.glVertex2iv = load.invoke("glVertex2iv", PV);
+        caps.glVertex2s = load.invoke("glVertex2s", SSV);
+        caps.glVertex2sv = load.invoke("glVertex2sv", PV);
+        caps.glVertex3d = load.invoke("glVertex3d", DDDV);
+        caps.glVertex3dv = load.invoke("glVertex3dv", PV);
+        caps.glVertex3f = load.invoke("glVertex3f", FFFV);
+        caps.glVertex3fv = load.invoke("glVertex3fv", PV);
+        caps.glVertex3i = load.invoke("glVertex3i", IIIV);
+        caps.glVertex3iv = load.invoke("glVertex3iv", PV);
+        caps.glVertex3s = load.invoke("glVertex3s", SSSV);
+        caps.glVertex3sv = load.invoke("glVertex3sv", PV);
+        caps.glVertex4d = load.invoke("glVertex4d", DDDDV);
+        caps.glVertex4dv = load.invoke("glVertex4dv", PV);
+        caps.glVertex4f = load.invoke("glVertex4f", FFFFV);
+        caps.glVertex4fv = load.invoke("glVertex4fv", PV);
+        caps.glVertex4i = load.invoke("glVertex4i", IIIIV);
+        caps.glVertex4iv = load.invoke("glVertex4iv", PV);
+        caps.glVertex4s = load.invoke("glVertex4s", SSSSV);
+        caps.glVertex4sv = load.invoke("glVertex4sv", PV);
     }
 
     public static void accum(int op, float value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glAccum).invokeExact(op, value);
+            check(caps.glAccum).invokeExact(op, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void alphaFunc(int func, float ref) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glAlphaFunc).invokeExact(func, ref);
+            check(caps.glAlphaFunc).invokeExact(func, ref);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void begin(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBegin).invokeExact(mode);
+            check(caps.glBegin).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, Addressable bitmap) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBitmap).invokeExact(width, height, xorig, yorig, xmove, ymove, bitmap);
+            check(caps.glBitmap).invokeExact(width, height, xorig, yorig, xmove, ymove, bitmap);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void callList(int list) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCallList).invokeExact(list);
+            check(caps.glCallList).invokeExact(list);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void callLists(int n, int type, Addressable lists) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCallLists).invokeExact(n, type, lists);
+            check(caps.glCallLists).invokeExact(n, type, lists);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearAccum(float red, float green, float blue, float alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearAccum).invokeExact(red, green, blue, alpha);
+            check(caps.glClearAccum).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearIndex(float c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearIndex).invokeExact(c);
+            check(caps.glClearIndex).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clipPlane(int plane, Addressable equation) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClipPlane).invokeExact(plane, equation);
+            check(caps.glClipPlane).invokeExact(plane, equation);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clipPlane(SegmentAllocator allocator, int plane, double[] equation) {
-        var pEq = allocator.allocateArray(JAVA_DOUBLE, equation);
-        clipPlane(plane, pEq);
+        clipPlane(plane, allocator.allocateArray(JAVA_DOUBLE, equation));
     }
 
 
     public static void color3b(byte red, byte green, byte blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3b).invokeExact(red, green, blue);
+            check(caps.glColor3b).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3bv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3bv).invokeExact(v);
+            check(caps.glColor3bv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3bv(SegmentAllocator allocator, byte[] v) {
-        var pv = allocator.allocateArray(JAVA_BYTE, v);
-        color3bv(pv);
+        color3bv(allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void color3d(double red, double green, double blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3d).invokeExact(red, green, blue);
+            check(caps.glColor3d).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3dv).invokeExact(v);
+            check(caps.glColor3dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3dv(SegmentAllocator allocator, double[] v) {
-        var pv = allocator.allocateArray(JAVA_DOUBLE, v);
-        color3dv(pv);
+        color3dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void color3f(float red, float green, float blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3f).invokeExact(red, green, blue);
+            check(caps.glColor3f).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3fv).invokeExact(v);
+            check(caps.glColor3fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3fv(SegmentAllocator allocator, float[] v) {
-        var pv = allocator.allocateArray(JAVA_FLOAT, v);
-        color3fv(pv);
+        color3fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void color3i(int red, int green, int blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3i).invokeExact(red, green, blue);
+            check(caps.glColor3i).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3iv).invokeExact(v);
+            check(caps.glColor3iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3iv(SegmentAllocator allocator, int[] v) {
-        var pv = allocator.allocateArray(JAVA_INT, v);
-        color3iv(pv);
+        color3iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void color3s(short red, short green, short blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3s).invokeExact(red, green, blue);
+            check(caps.glColor3s).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3sv).invokeExact(v);
+            check(caps.glColor3sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3sv(SegmentAllocator allocator, short[] v) {
-        var pv = allocator.allocateArray(JAVA_SHORT, v);
-        color3sv(pv);
+        color3sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void color3ub(byte red, byte green, byte blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3ub).invokeExact(red, green, blue);
+            check(caps.glColor3ub).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3ubv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3ubv).invokeExact(v);
+            check(caps.glColor3ubv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3ubv(SegmentAllocator allocator, byte[] v) {
-        var pv = allocator.allocateArray(JAVA_BYTE, v);
-        color3ubv(pv);
+        color3ubv(allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void color3ui(int red, int green, int blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3ui).invokeExact(red, green, blue);
+            check(caps.glColor3ui).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3uiv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3uiv).invokeExact(v);
+            check(caps.glColor3uiv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3uiv(SegmentAllocator allocator, int[] v) {
-        var pv = allocator.allocateArray(JAVA_INT, v);
-        color3uiv(pv);
+        color3uiv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void color3us(short red, short green, short blue) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3us).invokeExact(red, green, blue);
+            check(caps.glColor3us).invokeExact(red, green, blue);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3usv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor3usv).invokeExact(v);
+            check(caps.glColor3usv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color3usv(SegmentAllocator allocator, short[] v) {
-        var pv = allocator.allocateArray(JAVA_SHORT, v);
-        color3usv(pv);
+        color3usv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void color4b(byte red, byte green, byte blue, byte alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4b).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4b).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4bv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4bv).invokeExact(v);
+            check(caps.glColor4bv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4bv(SegmentAllocator allocator, byte[] v) {
-        var pv = allocator.allocateArray(JAVA_BYTE, v);
-        color4bv(pv);
+        color4bv(allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void color4d(double red, double green, double blue, double alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4d).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4d).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4dv).invokeExact(v);
+            check(caps.glColor4dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4dv(SegmentAllocator allocator, double[] v) {
-        var pv = allocator.allocateArray(JAVA_DOUBLE, v);
-        color4dv(pv);
+        color4dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void color4f(float red, float green, float blue, float alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4f).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4f).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4fv).invokeExact(v);
+            check(caps.glColor4fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4fv(SegmentAllocator allocator, float[] v) {
-        var pv = allocator.allocateArray(JAVA_FLOAT, v);
-        color4fv(pv);
+        color4fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void color4i(int red, int green, int blue, int alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4i).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4i).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4iv).invokeExact(v);
+            check(caps.glColor4iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4iv(SegmentAllocator allocator, int[] v) {
-        var pv = allocator.allocateArray(JAVA_INT, v);
-        color4iv(pv);
+        color4iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void color4s(short red, short green, short blue, short alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4s).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4s).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4sv).invokeExact(v);
+            check(caps.glColor4sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4sv(SegmentAllocator allocator, short[] v) {
-        var pv = allocator.allocateArray(JAVA_SHORT, v);
-        color4sv(pv);
+        color4sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void color4ub(byte red, byte green, byte blue, byte alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4ub).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4ub).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4ubv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4ubv).invokeExact(v);
+            check(caps.glColor4ubv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4ubv(SegmentAllocator allocator, byte[] v) {
-        var pv = allocator.allocateArray(JAVA_BYTE, v);
-        color4ubv(pv);
+        color4ubv(allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void color4ui(int red, int green, int blue, int alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4ui).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4ui).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4uiv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4uiv).invokeExact(v);
+            check(caps.glColor4uiv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4uiv(SegmentAllocator allocator, int[] v) {
-        var pv = allocator.allocateArray(JAVA_INT, v);
-        color4uiv(pv);
+        color4uiv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void color4us(short red, short green, short blue, short alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4us).invokeExact(red, green, blue, alpha);
+            check(caps.glColor4us).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4usv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColor4usv).invokeExact(v);
+            check(caps.glColor4usv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void color4usv(SegmentAllocator allocator, short[] v) {
-        var pv = allocator.allocateArray(JAVA_SHORT, v);
-        color4usv(pv);
+        color4usv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void colorMaterial(int face, int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColorMaterial).invokeExact(face, mode);
+            check(caps.glColorMaterial).invokeExact(face, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyPixels(int x, int y, int width, int height, int type) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyPixels).invokeExact(x, y, width, height, type);
+            check(caps.glCopyPixels).invokeExact(x, y, width, height, type);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteLists(int list, int range) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteLists).invokeExact(list, range);
+            check(caps.glDeleteLists).invokeExact(list, range);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawPixels(int width, int height, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawPixels).invokeExact(width, height, format, type, pixels);
+            check(caps.glDrawPixels).invokeExact(width, height, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void edgeFlag(boolean flag) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEdgeFlag).invokeExact(flag);
+            check(caps.glEdgeFlag).invokeExact(flag);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void edgeFlagv(Addressable flag) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEdgeFlagv).invokeExact(flag);
+            check(caps.glEdgeFlagv).invokeExact(flag);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -816,140 +804,151 @@ public final class GL10 extends GL10C {
     }
 
     public static void end() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEnd).invokeExact();
+            check(caps.glEnd).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void endList() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEndList).invokeExact();
+            check(caps.glEndList).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord1d(double u) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord1d).invokeExact(u);
+            check(caps.glEvalCoord1d).invokeExact(u);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord1dv(Addressable u) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord1dv).invokeExact(u);
+            check(caps.glEvalCoord1dv).invokeExact(u);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord1dv(SegmentAllocator allocator, double[] u) {
-        var pu = allocator.allocateArray(JAVA_DOUBLE, u);
-        evalCoord1dv(pu);
+        evalCoord1dv(allocator.allocateArray(JAVA_DOUBLE, u));
     }
 
     public static void evalCoord1f(float u) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord1f).invokeExact(u);
+            check(caps.glEvalCoord1f).invokeExact(u);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord1fv(Addressable u) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord1fv).invokeExact(u);
+            check(caps.glEvalCoord1fv).invokeExact(u);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord1fv(SegmentAllocator allocator, float[] u) {
-        var pu = allocator.allocateArray(JAVA_FLOAT, u);
-        evalCoord1fv(pu);
+        evalCoord1fv(allocator.allocateArray(JAVA_FLOAT, u));
     }
 
     public static void evalCoord2d(double u, double v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord2d).invokeExact(u, v);
+            check(caps.glEvalCoord2d).invokeExact(u, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord2dv(Addressable u) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord2dv).invokeExact(u);
+            check(caps.glEvalCoord2dv).invokeExact(u);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord2dv(SegmentAllocator allocator, double[] u) {
-        var pu = allocator.allocateArray(JAVA_DOUBLE, u);
-        evalCoord2dv(pu);
+        evalCoord2dv(allocator.allocateArray(JAVA_DOUBLE, u));
     }
 
     public static void evalCoord2f(float u, float v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord2f).invokeExact(u, v);
+            check(caps.glEvalCoord2f).invokeExact(u, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord2fv(Addressable u) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalCoord2fv).invokeExact(u);
+            check(caps.glEvalCoord2fv).invokeExact(u);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalCoord2fv(SegmentAllocator allocator, float[] u) {
-        var pu = allocator.allocateArray(JAVA_FLOAT, u);
-        evalCoord2fv(pu);
+        evalCoord2fv(allocator.allocateArray(JAVA_FLOAT, u));
     }
 
     public static void evalMesh1(int mode, int i1, int i2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalMesh1).invokeExact(mode, i1, i2);
+            check(caps.glEvalMesh1).invokeExact(mode, i1, i2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalMesh2(int mode, int i1, int i2, int j1, int j2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalMesh2).invokeExact(mode, i1, i2, j1, j2);
+            check(caps.glEvalMesh2).invokeExact(mode, i1, i2, j1, j2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalPoint1(int mode, int i) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalPoint1).invokeExact(mode, i);
+            check(caps.glEvalPoint1).invokeExact(mode, i);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void evalPoint2(int mode, int i, int j) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEvalPoint2).invokeExact(mode, i, j);
+            check(caps.glEvalPoint2).invokeExact(mode, i, j);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void feedbackBuffer(int size, int type, Addressable buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFeedbackBuffer).invokeExact(size, type, buffer);
+            check(caps.glFeedbackBuffer).invokeExact(size, type, buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -962,66 +961,71 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogf(int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFogf).invokeExact(pname, param);
+            check(caps.glFogf).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void fogfv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFogfv).invokeExact(pname, params);
+            check(caps.glFogfv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void fogfv(SegmentAllocator allocator, int pname, float[] params) {
-        var pParam = allocator.allocateArray(JAVA_FLOAT, params);
-        fogfv(pname, pParam);
+        fogfv(pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void fogi(int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFogi).invokeExact(pname, param);
+            check(caps.glFogi).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void fogiv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFogiv).invokeExact(pname, params);
+            check(caps.glFogiv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void fogiv(SegmentAllocator allocator, int pname, int[] params) {
-        var pParam = allocator.allocateArray(JAVA_INT, params);
-        fogiv(pname, pParam);
+        fogiv(pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void frustum(double left, double right, double bottom, double top, double zNear, double zFar) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFrustum).invokeExact(left, right, bottom, top, zNear, zFar);
+            check(caps.glFrustum).invokeExact(left, right, bottom, top, zNear, zFar);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int genLists(int range) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGenLists).invokeExact(range);
+            return (int) check(caps.glGenLists).invokeExact(range);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getClipPlane(int plane, Addressable equation) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetClipPlane).invokeExact(plane, equation);
+            check(caps.glGetClipPlane).invokeExact(plane, equation);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1045,8 +1049,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getLightfv(int light, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetLightfv).invokeExact(light, pname, params);
+            check(caps.glGetLightfv).invokeExact(light, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1071,8 +1076,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getLightiv(int light, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetLightiv).invokeExact(light, pname, params);
+            check(caps.glGetLightiv).invokeExact(light, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1097,8 +1103,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapdv(int target, int query, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetMapdv).invokeExact(target, query, v);
+            check(caps.glGetMapdv).invokeExact(target, query, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1123,8 +1130,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapfv(int target, int query, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetMapfv).invokeExact(target, query, v);
+            check(caps.glGetMapfv).invokeExact(target, query, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1149,8 +1157,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapiv(int target, int query, Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetMapiv).invokeExact(target, query, v);
+            check(caps.glGetMapiv).invokeExact(target, query, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1175,8 +1184,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMaterialfv(int face, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetMaterialfv).invokeExact(face, pname, params);
+            check(caps.glGetMaterialfv).invokeExact(face, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1201,8 +1211,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMaterialiv(int face, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetMaterialiv).invokeExact(face, pname, params);
+            check(caps.glGetMaterialiv).invokeExact(face, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1227,8 +1238,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapfv(int map, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetPixelMapfv).invokeExact(map, values);
+            check(caps.glGetPixelMapfv).invokeExact(map, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1241,8 +1253,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapuiv(int map, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetPixelMapuiv).invokeExact(map, values);
+            check(caps.glGetPixelMapuiv).invokeExact(map, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1255,8 +1268,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapusv(int map, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetPixelMapusv).invokeExact(map, values);
+            check(caps.glGetPixelMapusv).invokeExact(map, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1269,8 +1283,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPolygonStipple(Addressable mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetPolygonStipple).invokeExact(mask);
+            check(caps.glGetPolygonStipple).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1283,8 +1298,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexEnvfv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexEnvfv).invokeExact(target, pname, params);
+            check(caps.glGetTexEnvfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1309,8 +1325,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexEnviv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexEnviv).invokeExact(target, pname, params);
+            check(caps.glGetTexEnviv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1335,8 +1352,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGendv(int coord, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexGendv).invokeExact(coord, pname, params);
+            check(caps.glGetTexGendv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1349,8 +1367,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGenfv(int coord, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexGenfv).invokeExact(coord, pname, params);
+            check(caps.glGetTexGenfv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1363,8 +1382,9 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGeniv(int coord, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexGeniv).invokeExact(coord, pname, params);
+            check(caps.glGetTexGeniv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1377,1075 +1397,1108 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexMask(int mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexMask).invokeExact(mask);
+            check(caps.glIndexMask).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexd(double c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexd).invokeExact(c);
+            check(caps.glIndexd).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexdv(Addressable c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexdv).invokeExact(c);
+            check(caps.glIndexdv).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexdv(SegmentAllocator allocator, double[] c) {
-        var pc = allocator.allocateArray(JAVA_DOUBLE, c);
-        indexdv(pc);
+        indexdv(allocator.allocateArray(JAVA_DOUBLE, c));
     }
 
     public static void indexf(float c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexf).invokeExact(c);
+            check(caps.glIndexf).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexfv(Addressable c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexfv).invokeExact(c);
+            check(caps.glIndexfv).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexfv(SegmentAllocator allocator, float[] c) {
-        var pc = allocator.allocateArray(JAVA_FLOAT, c);
-        indexfv(pc);
+        indexfv(allocator.allocateArray(JAVA_FLOAT, c));
     }
 
     public static void indexi(int c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexi).invokeExact(c);
+            check(caps.glIndexi).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexiv(Addressable c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexiv).invokeExact(c);
+            check(caps.glIndexiv).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexiv(SegmentAllocator allocator, int[] c) {
-        var pc = allocator.allocateArray(JAVA_INT, c);
-        indexiv(pc);
+        indexiv(allocator.allocateArray(JAVA_INT, c));
     }
 
     public static void indexs(short c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexs).invokeExact(c);
+            check(caps.glIndexs).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexsv(Addressable c) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glIndexsv).invokeExact(c);
+            check(caps.glIndexsv).invokeExact(c);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void indexsv(SegmentAllocator allocator, short[] c) {
-        var pc = allocator.allocateArray(JAVA_SHORT, c);
-        indexsv(pc);
+        indexsv(allocator.allocateArray(JAVA_SHORT, c));
     }
 
     public static void initNames() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glInitNames).invokeExact();
+            check(caps.glInitNames).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isList(int list) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsList).invokeExact(list);
+            return (boolean) check(caps.glIsList).invokeExact(list);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightModelf(int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightModelf).invokeExact(pname, param);
+            check(caps.glLightModelf).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightModelfv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightModelfv).invokeExact(pname, params);
+            check(caps.glLightModelfv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightModelfv(SegmentAllocator allocator, int pname, float[] params) {
-        var pParams = allocator.allocateArray(JAVA_FLOAT, params);
-        lightModelfv(pname, pParams);
+        lightModelfv(pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void lightModeli(int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightModeli).invokeExact(pname, param);
+            check(caps.glLightModeli).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightModeliv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightModeliv).invokeExact(pname, params);
+            check(caps.glLightModeliv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightModeliv(SegmentAllocator allocator, int pname, int[] params) {
-        var pParams = allocator.allocateArray(JAVA_INT, params);
-        lightModeliv(pname, pParams);
+        lightModeliv(pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void lightf(int light, int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightf).invokeExact(light, pname, param);
+            check(caps.glLightf).invokeExact(light, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightfv(int light, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightfv).invokeExact(light, pname, params);
+            check(caps.glLightfv).invokeExact(light, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightfv(SegmentAllocator allocator, int light, int pname, float[] params) {
-        var pParams = allocator.allocateArray(JAVA_FLOAT, params);
-        lightfv(light, pname, pParams);
+        lightfv(light, pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void lighti(int light, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLighti).invokeExact(light, pname, param);
+            check(caps.glLighti).invokeExact(light, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightiv(int light, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLightiv).invokeExact(light, pname, params);
+            check(caps.glLightiv).invokeExact(light, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lightiv(SegmentAllocator allocator, int light, int pname, int[] params) {
-        var pParams = allocator.allocateArray(JAVA_INT, params);
-        lightiv(light, pname, pParams);
+        lightiv(light, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void lineStipple(int factor, short pattern) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLineStipple).invokeExact(factor, pattern);
+            check(caps.glLineStipple).invokeExact(factor, pattern);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void listBase(int base) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glListBase).invokeExact(base);
+            check(caps.glListBase).invokeExact(base);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void loadIdentity() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLoadIdentity).invokeExact();
+            check(caps.glLoadIdentity).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void loadMatrixd(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLoadMatrixd).invokeExact(m);
+            check(caps.glLoadMatrixd).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void loadMatrixd(SegmentAllocator allocator, double[] m) {
-        var pm = allocator.allocateArray(JAVA_DOUBLE, m);
-        loadMatrixd(pm);
+        loadMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
     }
 
     public static void loadMatrixf(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLoadMatrixf).invokeExact(m);
+            check(caps.glLoadMatrixf).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void loadMatrixf(SegmentAllocator allocator, float[] m) {
-        var pm = allocator.allocateArray(JAVA_FLOAT, m);
-        loadMatrixf(pm);
+        loadMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
     }
 
     public static void loadName(int name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLoadName).invokeExact(name);
+            check(caps.glLoadName).invokeExact(name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void map1d(int target, double u1, double u2, int stride, int order, Addressable points) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMap1d).invokeExact(target, u1, u2, stride, order, points);
+            check(caps.glMap1d).invokeExact(target, u1, u2, stride, order, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void map1d(SegmentAllocator allocator, int target, double u1, double u2, int stride, int order, double[] points) {
-        var pp = allocator.allocateArray(JAVA_DOUBLE, points);
-        map1d(target, u1, u2, stride, order, pp);
+        map1d(target, u1, u2, stride, order, allocator.allocateArray(JAVA_DOUBLE, points));
     }
 
     public static void map1f(int target, float u1, float u2, int stride, int order, Addressable points) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMap1f).invokeExact(target, u1, u2, stride, order, points);
+            check(caps.glMap1f).invokeExact(target, u1, u2, stride, order, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void map1f(SegmentAllocator allocator, int target, float u1, float u2, int stride, int order, float[] points) {
-        var pp = allocator.allocateArray(JAVA_FLOAT, points);
-        map1f(target, u1, u2, stride, order, pp);
+        map1f(target, u1, u2, stride, order, allocator.allocateArray(JAVA_FLOAT, points));
     }
 
     public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMap2d).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+            check(caps.glMap2d).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void map2d(SegmentAllocator allocator, int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
-        var pp = allocator.allocateArray(JAVA_DOUBLE, points);
-        map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp);
+        map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_DOUBLE, points));
     }
 
     public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMap2f).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+            check(caps.glMap2f).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void map2f(SegmentAllocator allocator, int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
-        var pp = allocator.allocateArray(JAVA_FLOAT, points);
-        map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, pp);
+        map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_FLOAT, points));
     }
 
     public static void mapGrid1d(int un, double u1, double u2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMapGrid1d).invokeExact(un, u1, u2);
+            check(caps.glMapGrid1d).invokeExact(un, u1, u2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void mapGrid1f(int un, float u1, float u2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMapGrid1f).invokeExact(un, u1, u2);
+            check(caps.glMapGrid1f).invokeExact(un, u1, u2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void mapGrid2d(int un, double u1, double u2, int vn, double v1, double v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMapGrid2d).invokeExact(un, u1, u2, vn, v1, v2);
+            check(caps.glMapGrid2d).invokeExact(un, u1, u2, vn, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void mapGrid2f(int un, float u1, float u2, int vn, float v1, float v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMapGrid2f).invokeExact(un, u1, u2, vn, v1, v2);
+            check(caps.glMapGrid2f).invokeExact(un, u1, u2, vn, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void materialf(int face, int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMaterialf).invokeExact(face, pname, param);
+            check(caps.glMaterialf).invokeExact(face, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void materialfv(int face, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMaterialfv).invokeExact(face, pname, params);
+            check(caps.glMaterialfv).invokeExact(face, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void materialfv(SegmentAllocator allocator, int face, int pname, float[] params) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, params);
-        materialfv(face, pname, seg);
+        materialfv(face, pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void materiali(int face, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMateriali).invokeExact(face, pname, param);
+            check(caps.glMateriali).invokeExact(face, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void materialiv(int face, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMaterialiv).invokeExact(face, pname, params);
+            check(caps.glMaterialiv).invokeExact(face, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void materialiv(SegmentAllocator allocator, int face, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params);
-        materialiv(face, pname, seg);
+        materialiv(face, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void matrixMode(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMatrixMode).invokeExact(mode);
+            check(caps.glMatrixMode).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multMatrixd(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultMatrixd).invokeExact(m);
+            check(caps.glMultMatrixd).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multMatrixd(SegmentAllocator allocator, double[] m) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, m);
-        multMatrixd(seg);
+        multMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
     }
 
     public static void multMatrixf(Addressable m) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultMatrixf).invokeExact(m);
+            check(caps.glMultMatrixf).invokeExact(m);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multMatrixf(SegmentAllocator allocator, float[] m) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, m);
-        multMatrixf(seg);
+        multMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
     }
 
     public static void newList(int list, int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNewList).invokeExact(list, mode);
+            check(caps.glNewList).invokeExact(list, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3b(byte nx, byte ny, byte nz) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3b).invokeExact(nx, ny, nz);
+            check(caps.glNormal3b).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3bv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3bv).invokeExact(v);
+            check(caps.glNormal3bv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3bv(SegmentAllocator allocator, byte[] v) {
-        var seg = allocator.allocateArray(JAVA_BYTE, v);
-        normal3bv(seg);
+        normal3bv(allocator.allocateArray(JAVA_BYTE, v));
     }
 
     public static void normal3d(double nx, double ny, double nz) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3d).invokeExact(nx, ny, nz);
+            check(caps.glNormal3d).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3dv).invokeExact(v);
+            check(caps.glNormal3dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        normal3dv(seg);
+        normal3dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void normal3f(float nx, float ny, float nz) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3f).invokeExact(nx, ny, nz);
+            check(caps.glNormal3f).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3fv).invokeExact(v);
+            check(caps.glNormal3fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        normal3fv(seg);
+        normal3fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void normal3i(int nx, int ny, int nz) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3i).invokeExact(nx, ny, nz);
+            check(caps.glNormal3i).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3iv).invokeExact(v);
+            check(caps.glNormal3iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        normal3iv(seg);
+        normal3iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void normal3s(short nx, short ny, short nz) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3s).invokeExact(nx, ny, nz);
+            check(caps.glNormal3s).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glNormal3sv).invokeExact(v);
+            check(caps.glNormal3sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void normal3sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        normal3sv(seg);
+        normal3sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glOrtho).invokeExact(left, right, bottom, top, zNear, zFar);
+            check(caps.glOrtho).invokeExact(left, right, bottom, top, zNear, zFar);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void passThrough(float token) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPassThrough).invokeExact(token);
+            check(caps.glPassThrough).invokeExact(token);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelMapfv(int map, int mapSize, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelMapfv).invokeExact(map, mapSize, values);
+            check(caps.glPixelMapfv).invokeExact(map, mapSize, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void pixelMapfv(SegmentAllocator allocator, int map, int mapSize, float[] values) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, mapSize);
-        for (int i = 0; i < mapSize; i++) {
-            seg.setAtIndex(JAVA_FLOAT, i, values[i]);
-        }
-        pixelMapfv(map, mapSize, seg);
     }
 
     public static void pixelMapfv(SegmentAllocator allocator, int map, float[] values) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, values);
-        pixelMapfv(map, values.length, seg);
+        pixelMapfv(map, values.length, allocator.allocateArray(JAVA_FLOAT, values));
     }
 
     public static void pixelMapuiv(int map, int mapSize, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelMapuiv).invokeExact(map, mapSize, values);
+            check(caps.glPixelMapuiv).invokeExact(map, mapSize, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void pixelMapuiv(SegmentAllocator allocator, int map, int mapSize, int[] values) {
-        var seg = allocator.allocateArray(JAVA_INT, mapSize);
-        for (int i = 0; i < mapSize; i++) {
-            seg.setAtIndex(JAVA_INT, i, values[i]);
-        }
-        pixelMapuiv(map, mapSize, seg);
     }
 
     public static void pixelMapuiv(SegmentAllocator allocator, int map, int[] values) {
-        var seg = allocator.allocateArray(JAVA_INT, values);
-        pixelMapuiv(map, values.length, seg);
+        pixelMapuiv(map, values.length, allocator.allocateArray(JAVA_INT, values));
     }
 
     public static void pixelMapusv(int map, int mapSize, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelMapusv).invokeExact(map, mapSize, values);
+            check(caps.glPixelMapusv).invokeExact(map, mapSize, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void pixelMapusv(SegmentAllocator allocator, int map, int mapSize, short[] values) {
-        var seg = allocator.allocateArray(JAVA_SHORT, mapSize);
-        for (int i = 0; i < mapSize; i++) {
-            seg.setAtIndex(JAVA_SHORT, i, values[i]);
-        }
-        pixelMapusv(map, mapSize, seg);
-    }
-
     public static void pixelMapusv(SegmentAllocator allocator, int map, short[] values) {
-        var seg = allocator.allocateArray(JAVA_SHORT, values);
-        pixelMapusv(map, values.length, seg);
+        pixelMapusv(map, values.length, allocator.allocateArray(JAVA_SHORT, values));
     }
 
     public static void pixelTransferf(int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelTransferf).invokeExact(pname, param);
+            check(caps.glPixelTransferf).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelTransferi(int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelTransferi).invokeExact(pname, param);
+            check(caps.glPixelTransferi).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelZoom(float xfactor, float yfactor) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelZoom).invokeExact(xfactor, yfactor);
+            check(caps.glPixelZoom).invokeExact(xfactor, yfactor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonStipple(Addressable mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPolygonStipple).invokeExact(mask);
+            check(caps.glPolygonStipple).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonStipple(SegmentAllocator allocator, byte[] mask) {
-        var seg = allocator.allocateArray(JAVA_BYTE, mask);
-        polygonStipple(seg);
+        polygonStipple(allocator.allocateArray(JAVA_BYTE, mask));
     }
 
     public static void popAttrib() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPopAttrib).invokeExact();
+            check(caps.glPopAttrib).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void popMatrix() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPopMatrix).invokeExact();
+            check(caps.glPopMatrix).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void popName() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPopName).invokeExact();
+            check(caps.glPopName).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pushAttrib(int mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPushAttrib).invokeExact(mask);
+            check(caps.glPushAttrib).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pushMatrix() {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPushMatrix).invokeExact();
+            check(caps.glPushMatrix).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pushName(int name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPushName).invokeExact(name);
+            check(caps.glPushName).invokeExact(name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2d(double x, double y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2d).invokeExact(x, y);
+            check(caps.glRasterPos2d).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2dv).invokeExact(v);
+            check(caps.glRasterPos2dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        rasterPos2dv(seg);
+        rasterPos2dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void rasterPos2f(float x, float y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2f).invokeExact(x, y);
+            check(caps.glRasterPos2f).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2fv).invokeExact(v);
+            check(caps.glRasterPos2fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        rasterPos2fv(seg);
+        rasterPos2fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void rasterPos2i(int x, int y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2i).invokeExact(x, y);
+            check(caps.glRasterPos2i).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2iv).invokeExact(v);
+            check(caps.glRasterPos2iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        rasterPos2iv(seg);
+        rasterPos2iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void rasterPos2s(short x, short y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2s).invokeExact(x, y);
+            check(caps.glRasterPos2s).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos2sv).invokeExact(v);
+            check(caps.glRasterPos2sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos2sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        rasterPos2sv(seg);
+        rasterPos2sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void rasterPos3d(double x, double y, double z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3d).invokeExact(x, y, z);
+            check(caps.glRasterPos3d).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3dv).invokeExact(v);
+            check(caps.glRasterPos3dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        rasterPos3dv(seg);
+        rasterPos3dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void rasterPos3f(float x, float y, float z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3f).invokeExact(x, y, z);
+            check(caps.glRasterPos3f).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3fv).invokeExact(v);
+            check(caps.glRasterPos3fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        rasterPos3fv(seg);
+        rasterPos3fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void rasterPos3i(int x, int y, int z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3i).invokeExact(x, y, z);
+            check(caps.glRasterPos3i).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3iv).invokeExact(v);
+            check(caps.glRasterPos3iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        rasterPos3iv(seg);
+        rasterPos3iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void rasterPos3s(short x, short y, short z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3s).invokeExact(x, y, z);
+            check(caps.glRasterPos3s).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos3sv).invokeExact(v);
+            check(caps.glRasterPos3sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos3sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        rasterPos3sv(seg);
+        rasterPos3sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void rasterPos4d(double x, double y, double z, double w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4d).invokeExact(x, y, z, w);
+            check(caps.glRasterPos4d).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4dv).invokeExact(v);
+            check(caps.glRasterPos4dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        rasterPos4dv(seg);
+        rasterPos4dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void rasterPos4f(float x, float y, float z, float w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4f).invokeExact(x, y, z, w);
+            check(caps.glRasterPos4f).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4fv).invokeExact(v);
+            check(caps.glRasterPos4fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        rasterPos4fv(seg);
+        rasterPos4fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void rasterPos4i(int x, int y, int z, int w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4i).invokeExact(x, y, z, w);
+            check(caps.glRasterPos4i).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4iv).invokeExact(v);
+            check(caps.glRasterPos4iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        rasterPos4iv(seg);
+        rasterPos4iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void rasterPos4s(short x, short y, short z, short w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4s).invokeExact(x, y, z, w);
+            check(caps.glRasterPos4s).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRasterPos4sv).invokeExact(v);
+            check(caps.glRasterPos4sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rasterPos4sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        rasterPos4sv(seg);
+        rasterPos4sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void rectd(double x1, double y1, double x2, double y2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRectd).invokeExact(x1, y1, x2, y2);
+            check(caps.glRectd).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectdv(Addressable v1, Addressable v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRectdv).invokeExact(v1, v2);
+            check(caps.glRectdv).invokeExact(v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectdv(SegmentAllocator allocator, double[] v1, double[] v2) {
-        var seg1 = allocator.allocateArray(JAVA_DOUBLE, v1);
-        var seg2 = allocator.allocateArray(JAVA_DOUBLE, v2);
-        rectdv(seg1, seg2);
+        rectdv(allocator.allocateArray(JAVA_DOUBLE, v1), allocator.allocateArray(JAVA_DOUBLE, v2));
     }
 
     public static void rectf(float x1, float y1, float x2, float y2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRectf).invokeExact(x1, y1, x2, y2);
+            check(caps.glRectf).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectfv(Addressable v1, Addressable v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRectfv).invokeExact(v1, v2);
+            check(caps.glRectfv).invokeExact(v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectfv(SegmentAllocator allocator, float[] v1, float[] v2) {
-        var seg1 = allocator.allocateArray(JAVA_FLOAT, v1);
-        var seg2 = allocator.allocateArray(JAVA_FLOAT, v2);
-        rectfv(seg1, seg2);
+        rectfv(allocator.allocateArray(JAVA_FLOAT, v1), allocator.allocateArray(JAVA_FLOAT, v2));
     }
 
     public static void recti(int x1, int y1, int x2, int y2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRecti).invokeExact(x1, y1, x2, y2);
+            check(caps.glRecti).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectiv(Addressable v1, Addressable v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRectiv).invokeExact(v1, v2);
+            check(caps.glRectiv).invokeExact(v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectiv(SegmentAllocator allocator, int[] v1, int[] v2) {
-        var seg1 = allocator.allocateArray(JAVA_INT, v1);
-        var seg2 = allocator.allocateArray(JAVA_INT, v2);
-        rectiv(seg1, seg2);
+        rectiv(allocator.allocateArray(JAVA_INT, v1), allocator.allocateArray(JAVA_INT, v2));
     }
 
     public static void rects(short x1, short y1, short x2, short y2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRects).invokeExact(x1, y1, x2, y2);
+            check(caps.glRects).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectsv(Addressable v1, Addressable v2) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRectsv).invokeExact(v1, v2);
+            check(caps.glRectsv).invokeExact(v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rectsv(SegmentAllocator allocator, short[] v1, short[] v2) {
-        var seg1 = allocator.allocateArray(JAVA_SHORT, v1);
-        var seg2 = allocator.allocateArray(JAVA_SHORT, v2);
-        rectsv(seg1, seg2);
+        rectsv(allocator.allocateArray(JAVA_SHORT, v1), allocator.allocateArray(JAVA_SHORT, v2));
     }
 
     public static int renderMode(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glRenderMode).invokeExact(mode);
+            return (int) check(caps.glRenderMode).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rotated(double angle, double x, double y, double z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRotated).invokeExact(angle, x, y, z);
+            check(caps.glRotated).invokeExact(angle, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void rotatef(float angle, float x, float y, float z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glRotatef).invokeExact(angle, x, y, z);
+            check(caps.glRotatef).invokeExact(angle, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void scaled(double x, double y, double z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glScaled).invokeExact(x, y, z);
+            check(caps.glScaled).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void scalef(float x, float y, float z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glScalef).invokeExact(x, y, z);
+            check(caps.glScalef).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void selectBuffer(int size, Addressable buffer) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSelectBuffer).invokeExact(size, buffer);
+            check(caps.glSelectBuffer).invokeExact(size, buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2458,719 +2511,755 @@ public final class GL10 extends GL10C {
     }
 
     public static void shadeModel(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glShadeModel).invokeExact(mode);
+            check(caps.glShadeModel).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1d(double s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1d).invokeExact(s);
+            check(caps.glTexCoord1d).invokeExact(s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1dv).invokeExact(v);
+            check(caps.glTexCoord1dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        texCoord1dv(seg);
+        texCoord1dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void texCoord1f(float s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1f).invokeExact(s);
+            check(caps.glTexCoord1f).invokeExact(s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1fv).invokeExact(v);
+            check(caps.glTexCoord1fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        texCoord1fv(seg);
+        texCoord1fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void texCoord1i(int s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1i).invokeExact(s);
+            check(caps.glTexCoord1i).invokeExact(s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1iv).invokeExact(v);
+            check(caps.glTexCoord1iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        texCoord1iv(seg);
+        texCoord1iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void texCoord1s(short s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1s).invokeExact(s);
+            check(caps.glTexCoord1s).invokeExact(s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord1sv).invokeExact(v);
+            check(caps.glTexCoord1sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord1sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        texCoord1sv(seg);
+        texCoord1sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void texCoord2d(double s, double t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2d).invokeExact(s, t);
+            check(caps.glTexCoord2d).invokeExact(s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2dv).invokeExact(v);
+            check(caps.glTexCoord2dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        texCoord2dv(seg);
+        texCoord2dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void texCoord2f(float s, float t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2f).invokeExact(s, t);
+            check(caps.glTexCoord2f).invokeExact(s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2fv).invokeExact(v);
+            check(caps.glTexCoord2fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        texCoord2fv(seg);
+        texCoord2fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void texCoord2i(int s, int t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2i).invokeExact(s, t);
+            check(caps.glTexCoord2i).invokeExact(s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2iv).invokeExact(v);
+            check(caps.glTexCoord2iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        texCoord2iv(seg);
+        texCoord2iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void texCoord2s(short s, short t) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2s).invokeExact(s, t);
+            check(caps.glTexCoord2s).invokeExact(s, t);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord2sv).invokeExact(v);
+            check(caps.glTexCoord2sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord2sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        texCoord2sv(seg);
+        texCoord2sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void texCoord3d(double s, double t, double r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3d).invokeExact(s, t, r);
+            check(caps.glTexCoord3d).invokeExact(s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3dv).invokeExact(v);
+            check(caps.glTexCoord3dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        texCoord3dv(seg);
+        texCoord3dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void texCoord3f(float s, float t, float r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3f).invokeExact(s, t, r);
+            check(caps.glTexCoord3f).invokeExact(s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3fv).invokeExact(v);
+            check(caps.glTexCoord3fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        texCoord3fv(seg);
+        texCoord3fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void texCoord3i(int s, int t, int r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3i).invokeExact(s, t, r);
+            check(caps.glTexCoord3i).invokeExact(s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3iv).invokeExact(v);
+            check(caps.glTexCoord3iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        texCoord3iv(seg);
+        texCoord3iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void texCoord3s(short s, short t, short r) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3s).invokeExact(s, t, r);
+            check(caps.glTexCoord3s).invokeExact(s, t, r);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord3sv).invokeExact(v);
+            check(caps.glTexCoord3sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord3sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        texCoord3sv(seg);
+        texCoord3sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void texCoord4d(double s, double t, double r, double q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4d).invokeExact(s, t, r, q);
+            check(caps.glTexCoord4d).invokeExact(s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4dv).invokeExact(v);
+            check(caps.glTexCoord4dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        texCoord4dv(seg);
+        texCoord4dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void texCoord4f(float s, float t, float r, float q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4f).invokeExact(s, t, r, q);
+            check(caps.glTexCoord4f).invokeExact(s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4fv).invokeExact(v);
+            check(caps.glTexCoord4fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        texCoord4fv(seg);
+        texCoord4fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void texCoord4i(int s, int t, int r, int q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4i).invokeExact(s, t, r, q);
+            check(caps.glTexCoord4i).invokeExact(s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4iv).invokeExact(v);
+            check(caps.glTexCoord4iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        texCoord4iv(seg);
+        texCoord4iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void texCoord4s(short s, short t, short r, short q) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4s).invokeExact(s, t, r, q);
+            check(caps.glTexCoord4s).invokeExact(s, t, r, q);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexCoord4sv).invokeExact(v);
+            check(caps.glTexCoord4sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texCoord4sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        texCoord4sv(seg);
+        texCoord4sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void texEnvf(int target, int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexEnvf).invokeExact(target, pname, param);
+            check(caps.glTexEnvf).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texEnvfv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexEnvfv).invokeExact(target, pname, params);
+            check(caps.glTexEnvfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texEnvfv(SegmentAllocator allocator, int target, int pname, float[] params) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, params);
-        texEnvfv(target, pname, seg);
+        texEnvfv(target, pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void texEnvi(int target, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexEnvi).invokeExact(target, pname, param);
+            check(caps.glTexEnvi).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texEnviv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexEnviv).invokeExact(target, pname, params);
+            check(caps.glTexEnviv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texEnviv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params);
-        texEnviv(target, pname, seg);
+        texEnviv(target, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void texGend(int coord, int pname, double param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexGend).invokeExact(coord, pname, param);
+            check(caps.glTexGend).invokeExact(coord, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texGendv(int coord, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexGendv).invokeExact(coord, pname, params);
+            check(caps.glTexGendv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texGendv(SegmentAllocator allocator, int coord, int pname, double[] params) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, params);
-        texGendv(coord, pname, seg);
+        texGendv(coord, pname, allocator.allocateArray(JAVA_DOUBLE, params));
     }
 
     public static void texGenf(int coord, int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexGenf).invokeExact(coord, pname, param);
+            check(caps.glTexGenf).invokeExact(coord, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texGenfv(int coord, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexGenfv).invokeExact(coord, pname, params);
+            check(caps.glTexGenfv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texGenfv(SegmentAllocator allocator, int coord, int pname, float[] params) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, params);
-        texGenfv(coord, pname, seg);
+        texGenfv(coord, pname, allocator.allocateArray(JAVA_FLOAT, params));
     }
 
     public static void texGeni(int coord, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexGeni).invokeExact(coord, pname, param);
+            check(caps.glTexGeni).invokeExact(coord, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texGeniv(int coord, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexGeniv).invokeExact(coord, pname, params);
+            check(caps.glTexGeniv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texGeniv(SegmentAllocator allocator, int coord, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params);
-        texGeniv(coord, pname, seg);
+        texGeniv(coord, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
     public static void translated(double x, double y, double z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTranslated).invokeExact(x, y, z);
+            check(caps.glTranslated).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void translatef(float x, float y, float z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTranslatef).invokeExact(x, y, z);
+            check(caps.glTranslatef).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2d(double x, double y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2d).invokeExact(x, y);
+            check(caps.glVertex2d).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2dv).invokeExact(v);
+            check(caps.glVertex2dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        vertex2dv(seg);
+        vertex2dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void vertex2f(float x, float y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2f).invokeExact(x, y);
+            check(caps.glVertex2f).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2fv).invokeExact(v);
+            check(caps.glVertex2fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        vertex2fv(seg);
+        vertex2fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void vertex2i(int x, int y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2i).invokeExact(x, y);
+            check(caps.glVertex2i).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2iv).invokeExact(v);
+            check(caps.glVertex2iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        vertex2iv(seg);
+        vertex2iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertex2s(short x, short y) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2s).invokeExact(x, y);
+            check(caps.glVertex2s).invokeExact(x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex2sv).invokeExact(v);
+            check(caps.glVertex2sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex2sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        vertex2sv(seg);
+        vertex2sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void vertex3d(double x, double y, double z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3d).invokeExact(x, y, z);
+            check(caps.glVertex3d).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3dv).invokeExact(v);
+            check(caps.glVertex3dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        vertex3dv(seg);
+        vertex3dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void vertex3f(float x, float y, float z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3f).invokeExact(x, y, z);
+            check(caps.glVertex3f).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3fv).invokeExact(v);
+            check(caps.glVertex3fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        vertex3fv(seg);
+        vertex3fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void vertex3i(int x, int y, int z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3i).invokeExact(x, y, z);
+            check(caps.glVertex3i).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3iv).invokeExact(v);
+            check(caps.glVertex3iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        vertex3iv(seg);
+        vertex3iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertex3s(short x, short y, short z) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3s).invokeExact(x, y, z);
+            check(caps.glVertex3s).invokeExact(x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex3sv).invokeExact(v);
+            check(caps.glVertex3sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex3sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        vertex3sv(seg);
+        vertex3sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
     public static void vertex4d(double x, double y, double z, double w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4d).invokeExact(x, y, z, w);
+            check(caps.glVertex4d).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4dv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4dv).invokeExact(v);
+            check(caps.glVertex4dv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4dv(SegmentAllocator allocator, double[] v) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, v);
-        vertex4dv(seg);
+        vertex4dv(allocator.allocateArray(JAVA_DOUBLE, v));
     }
 
     public static void vertex4f(float x, float y, float z, float w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4f).invokeExact(x, y, z, w);
+            check(caps.glVertex4f).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4fv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4fv).invokeExact(v);
+            check(caps.glVertex4fv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4fv(SegmentAllocator allocator, float[] v) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, v);
-        vertex4fv(seg);
+        vertex4fv(allocator.allocateArray(JAVA_FLOAT, v));
     }
 
     public static void vertex4i(int x, int y, int z, int w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4i).invokeExact(x, y, z, w);
+            check(caps.glVertex4i).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4iv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4iv).invokeExact(v);
+            check(caps.glVertex4iv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4iv(SegmentAllocator allocator, int[] v) {
-        var seg = allocator.allocateArray(JAVA_INT, v);
-        vertex4iv(seg);
+        vertex4iv(allocator.allocateArray(JAVA_INT, v));
     }
 
     public static void vertex4s(short x, short y, short z, short w) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4s).invokeExact(x, y, z, w);
+            check(caps.glVertex4s).invokeExact(x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4sv(Addressable v) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertex4sv).invokeExact(v);
+            check(caps.glVertex4sv).invokeExact(v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertex4sv(SegmentAllocator allocator, short[] v) {
-        var seg = allocator.allocateArray(JAVA_SHORT, v);
-        vertex4sv(seg);
+        vertex4sv(allocator.allocateArray(JAVA_SHORT, v));
     }
 }

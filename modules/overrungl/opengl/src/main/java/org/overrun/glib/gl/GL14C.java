@@ -24,11 +24,8 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -42,55 +39,54 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL14C extends GL13C permits GL14, GL15C {
-    @Nullable
-    public static MethodHandle
-        glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays, glMultiDrawElements, glPointParameterf,
-        glPointParameterfv, glPointParameteri, glPointParameteriv;
-
-    static boolean isSupported() {
-        return checkAll(glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays, glMultiDrawElements,
-            glPointParameterf, glPointParameterfv, glPointParameteri, glPointParameteriv);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBlendColor, caps.glBlendEquation, caps.glBlendFuncSeparate, caps.glMultiDrawArrays, caps.glMultiDrawElements, caps.glPointParameterf,
+            caps.glPointParameterfv, caps.glPointParameteri, caps.glPointParameteriv);
     }
 
-    static void load(GLLoadFunc load) {
-        glBlendColor = load.invoke("glBlendColor", FFFFV);
-        glBlendEquation = load.invoke("glBlendEquation", IV);
-        glBlendFuncSeparate = load.invoke("glBlendFuncSeparate", IIIIV);
-        glMultiDrawArrays = load.invoke("glMultiDrawArrays", IPPIV);
-        glMultiDrawElements = load.invoke("glMultiDrawElements", IPIPIV);
-        glPointParameterf = load.invoke("glPointParameterf", IFV);
-        glPointParameterfv = load.invoke("glPointParameterfv", IPV);
-        glPointParameteri = load.invoke("glPointParameteri", IIV);
-        glPointParameteriv = load.invoke("glPointParameteriv", IPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBlendColor = load.invoke("glBlendColor", FFFFV);
+        caps.glBlendEquation = load.invoke("glBlendEquation", IV);
+        caps.glBlendFuncSeparate = load.invoke("glBlendFuncSeparate", IIIIV);
+        caps.glMultiDrawArrays = load.invoke("glMultiDrawArrays", IPPIV);
+        caps.glMultiDrawElements = load.invoke("glMultiDrawElements", IPIPIV);
+        caps.glPointParameterf = load.invoke("glPointParameterf", IFV);
+        caps.glPointParameterfv = load.invoke("glPointParameterfv", IPV);
+        caps.glPointParameteri = load.invoke("glPointParameteri", IIV);
+        caps.glPointParameteriv = load.invoke("glPointParameteriv", IPV);
     }
 
     public static void blendColor(float red, float green, float blue, float alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBlendColor).invokeExact(red, green, blue, alpha);
+            check(caps.glBlendColor).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blendEquation(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBlendEquation).invokeExact(mode);
+            check(caps.glBlendEquation).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void blendFuncSeparate(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBlendFuncSeparate).invokeExact(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+            check(caps.glBlendFuncSeparate).invokeExact(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiDrawArrays(int mode, Addressable first, Addressable count, int drawCount) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawArrays).invokeExact(mode, first, count, drawCount);
+            check(caps.glMultiDrawArrays).invokeExact(mode, first, count, drawCount);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -105,8 +101,9 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(int mode, Addressable count, int type, Addressable indices, int drawCount) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawElements).invokeExact(mode, count, type, indices, drawCount);
+            check(caps.glMultiDrawElements).invokeExact(mode, count, type, indices, drawCount);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -149,16 +146,18 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameterf(int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPointParameterf).invokeExact(pname, param);
+            check(caps.glPointParameterf).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void pointParameterfv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPointParameterfv).invokeExact(pname, params);
+            check(caps.glPointParameterfv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -169,16 +168,18 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameteri(int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPointParameteri).invokeExact(pname, param);
+            check(caps.glPointParameteri).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void pointParameteriv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPointParameteriv).invokeExact(pname, params);
+            check(caps.glPointParameteriv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

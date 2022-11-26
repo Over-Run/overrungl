@@ -31,7 +31,6 @@ import org.overrun.glib.util.MemoryStack;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -45,204 +44,220 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL10C permits GL10, GL11C {
-    @Nullable
-    public static MethodHandle
-        glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil, glColorMask, glCullFace, glDepthFunc,
-        glDepthMask, glDepthRange, glDisable, glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace, glGetBooleanv,
-        glGetDoublev, glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage, glGetTexLevelParameterfv,
-        glGetTexLevelParameteriv, glGetTexParameterfv, glGetTexParameteriv, glHint, glIsEnabled, glLineWidth, glLogicOp,
-        glPixelStoref, glPixelStorei, glPointSize, glPolygonMode, glReadBuffer, glReadPixels, glScissor, glStencilFunc,
-        glStencilMask, glStencilOp, glTexImage1D, glTexImage2D, glTexParameterf, glTexParameterfv, glTexParameteri,
-        glTexParameteriv, glViewport;
-
     protected GL10C() {
         throw new IllegalStateException("Do not construct instance");
     }
 
-    static boolean isSupported() {
-        return checkAll(glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil, glColorMask, glCullFace,
-            glDepthFunc, glDepthMask, glDepthRange, glDisable, glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace,
-            glGetBooleanv, glGetDoublev, glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage,
-            glGetTexLevelParameterfv, glGetTexLevelParameteriv, glGetTexParameterfv, glGetTexParameteriv, glHint,
-            glIsEnabled, glLineWidth, glLogicOp, glPixelStoref, glPixelStorei, glPointSize, glPolygonMode, glReadBuffer,
-            glReadPixels, glScissor, glStencilFunc, glStencilMask, glStencilOp, glTexImage1D, glTexImage2D,
-            glTexParameterf, glTexParameterfv, glTexParameteri, glTexParameteriv, glViewport);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBlendFunc, caps.glClear, caps.glClearColor, caps.glClearDepth, caps.glClearStencil, caps.glColorMask,
+            caps.glCullFace, caps.glDepthFunc, caps.glDepthMask, caps.glDepthRange, caps.glDisable, caps.glDrawBuffer,
+            caps.glEnable, caps.glFinish, caps.glFlush, caps.glFrontFace, caps.glGetBooleanv, caps.glGetDoublev,
+            caps.glGetError, caps.glGetFloatv, caps.glGetIntegerv, caps.glGetString, caps.glGetTexImage, caps.glGetTexLevelParameterfv,
+            caps.glGetTexLevelParameteriv, caps.glGetTexParameterfv, caps.glGetTexParameteriv, caps.glHint, caps.glIsEnabled, caps.glLineWidth,
+            caps.glLogicOp, caps.glPixelStoref, caps.glPixelStorei, caps.glPointSize, caps.glPolygonMode, caps.glReadBuffer,
+            caps.glReadPixels, caps.glScissor, caps.glStencilFunc, caps.glStencilMask, caps.glStencilOp, caps.glTexImage1D,
+            caps.glTexImage2D, caps.glTexParameterf, caps.glTexParameterfv, caps.glTexParameteri, caps.glTexParameteriv, caps.glViewport);
     }
 
-    static void load(GLLoadFunc load) {
-        glBlendFunc = load.invoke("glBlendFunc", IIV);
-        glClear = load.invoke("glClear", IV);
-        glClearColor = load.invoke("glClearColor", FFFFV);
-        glClearDepth = load.invoke("glClearDepth", DV);
-        glClearStencil = load.invoke("glClearStencil", IV);
-        glColorMask = load.invoke("glColorMask", ZZZZV);
-        glCullFace = load.invoke("glCullFace", IV);
-        glDepthFunc = load.invoke("glDepthFunc", IV);
-        glDepthMask = load.invoke("glDepthMask", ZV);
-        glDepthRange = load.invoke("glDepthRange", DDV);
-        glDisable = load.invoke("glDisable", IV);
-        glDrawBuffer = load.invoke("glDrawBuffer", IV);
-        glEnable = load.invoke("glEnable", IV);
-        glFinish = load.invoke("glFinish", V);
-        glFlush = load.invoke("glFlush", V);
-        glFrontFace = load.invoke("glFrontFace", IV);
-        glGetBooleanv = load.invoke("glGetBooleanv", IPV);
-        glGetDoublev = load.invoke("glGetDoublev", IPV);
-        glGetError = load.invoke("glGetError", I);
-        glGetFloatv = load.invoke("glGetFloatv", IPV);
-        glGetIntegerv = load.invoke("glGetIntegerv", IPV);
-        glGetString = load.invoke("glGetString", IP);
-        glGetTexImage = load.invoke("glGetTexImage", IIIIPV);
-        glGetTexLevelParameterfv = load.invoke("glGetTexLevelParameterfv", IIIPV);
-        glGetTexLevelParameteriv = load.invoke("glGetTexLevelParameteriv", IIIPV);
-        glGetTexParameterfv = load.invoke("glGetTexParameterfv", IIPV);
-        glGetTexParameteriv = load.invoke("glGetTexParameteriv", IIPV);
-        glHint = load.invoke("glHint", IIV);
-        glIsEnabled = load.invoke("glIsEnabled", IZ);
-        glLineWidth = load.invoke("glLineWidth", FV);
-        glLogicOp = load.invoke("glLogicOp", IV);
-        glPixelStoref = load.invoke("glPixelStoref", IFV);
-        glPixelStorei = load.invoke("glPixelStorei", IIV);
-        glPointSize = load.invoke("glPointSize", FV);
-        glPolygonMode = load.invoke("glPolygonMode", IIV);
-        glReadBuffer = load.invoke("glReadBuffer", IV);
-        glReadPixels = load.invoke("glReadPixels", IIIIIIPV);
-        glScissor = load.invoke("glScissor", IIIIV);
-        glStencilFunc = load.invoke("glStencilFunc", IIIV);
-        glStencilMask = load.invoke("glStencilMask", IV);
-        glStencilOp = load.invoke("glStencilOp", IIIV);
-        glTexImage1D = load.invoke("glTexImage1D", IIIIIIIPV);
-        glTexImage2D = load.invoke("glTexImage2D", IIIIIIIIPV);
-        glTexParameterf = load.invoke("glTexParameterf", IIFV);
-        glTexParameterfv = load.invoke("glTexParameterfv", IIPV);
-        glTexParameteri = load.invoke("glTexParameteri", IIIV);
-        glTexParameteriv = load.invoke("glTexParameteriv", IIPV);
-        glViewport = load.invoke("glViewport", IIIIV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBlendFunc = load.invoke("glBlendFunc", IIV);
+        caps.glClear = load.invoke("glClear", IV);
+        caps.glClearColor = load.invoke("glClearColor", FFFFV);
+        caps.glClearDepth = load.invoke("glClearDepth", DV);
+        caps.glClearStencil = load.invoke("glClearStencil", IV);
+        caps.glColorMask = load.invoke("glColorMask", ZZZZV);
+        caps.glCullFace = load.invoke("glCullFace", IV);
+        caps.glDepthFunc = load.invoke("glDepthFunc", IV);
+        caps.glDepthMask = load.invoke("glDepthMask", ZV);
+        caps.glDepthRange = load.invoke("glDepthRange", DDV);
+        caps.glDisable = load.invoke("glDisable", IV);
+        caps.glDrawBuffer = load.invoke("glDrawBuffer", IV);
+        caps.glEnable = load.invoke("glEnable", IV);
+        caps.glFinish = load.invoke("glFinish", V);
+        caps.glFlush = load.invoke("glFlush", V);
+        caps.glFrontFace = load.invoke("glFrontFace", IV);
+        caps.glGetBooleanv = load.invoke("glGetBooleanv", IPV);
+        caps.glGetDoublev = load.invoke("glGetDoublev", IPV);
+        caps.glGetError = load.invoke("glGetError", I);
+        caps.glGetFloatv = load.invoke("glGetFloatv", IPV);
+        caps.glGetIntegerv = load.invoke("glGetIntegerv", IPV);
+        caps.glGetString = load.invoke("glGetString", IP);
+        caps.glGetTexImage = load.invoke("glGetTexImage", IIIIPV);
+        caps.glGetTexLevelParameterfv = load.invoke("glGetTexLevelParameterfv", IIIPV);
+        caps.glGetTexLevelParameteriv = load.invoke("glGetTexLevelParameteriv", IIIPV);
+        caps.glGetTexParameterfv = load.invoke("glGetTexParameterfv", IIPV);
+        caps.glGetTexParameteriv = load.invoke("glGetTexParameteriv", IIPV);
+        caps.glHint = load.invoke("glHint", IIV);
+        caps.glIsEnabled = load.invoke("glIsEnabled", IZ);
+        caps.glLineWidth = load.invoke("glLineWidth", FV);
+        caps.glLogicOp = load.invoke("glLogicOp", IV);
+        caps.glPixelStoref = load.invoke("glPixelStoref", IFV);
+        caps.glPixelStorei = load.invoke("glPixelStorei", IIV);
+        caps.glPointSize = load.invoke("glPointSize", FV);
+        caps.glPolygonMode = load.invoke("glPolygonMode", IIV);
+        caps.glReadBuffer = load.invoke("glReadBuffer", IV);
+        caps.glReadPixels = load.invoke("glReadPixels", IIIIIIPV);
+        caps.glScissor = load.invoke("glScissor", IIIIV);
+        caps.glStencilFunc = load.invoke("glStencilFunc", IIIV);
+        caps.glStencilMask = load.invoke("glStencilMask", IV);
+        caps.glStencilOp = load.invoke("glStencilOp", IIIV);
+        caps.glTexImage1D = load.invoke("glTexImage1D", IIIIIIIPV);
+        caps.glTexImage2D = load.invoke("glTexImage2D", IIIIIIIIPV);
+        caps.glTexParameterf = load.invoke("glTexParameterf", IIFV);
+        caps.glTexParameterfv = load.invoke("glTexParameterfv", IIPV);
+        caps.glTexParameteri = load.invoke("glTexParameteri", IIIV);
+        caps.glTexParameteriv = load.invoke("glTexParameteriv", IIPV);
+        caps.glViewport = load.invoke("glViewport", IIIIV);
     }
 
     public static void blendFunc(int sfactor, int dfactor) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBlendFunc).invokeExact(sfactor, dfactor);
+            check(caps.glBlendFunc).invokeExact(sfactor, dfactor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clear(int mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClear).invokeExact(mask);
+            check(caps.glClear).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearColor(float red, float green, float blue, float alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearColor).invokeExact(red, green, blue, alpha);
+            check(caps.glClearColor).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearDepth(double depth) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearDepth).invokeExact(depth);
+            check(caps.glClearDepth).invokeExact(depth);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearStencil(int s) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearStencil).invokeExact(s);
+            check(caps.glClearStencil).invokeExact(s);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void colorMask(boolean red, boolean green, boolean blue, boolean alpha) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glColorMask).invokeExact(red, green, blue, alpha);
+            check(caps.glColorMask).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void cullFace(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCullFace).invokeExact(mode);
+            check(caps.glCullFace).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthFunc(int func) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDepthFunc).invokeExact(func);
+            check(caps.glDepthFunc).invokeExact(func);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthMask(boolean flag) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDepthMask).invokeExact(flag);
+            check(caps.glDepthMask).invokeExact(flag);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void depthRange(double n, double f) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDepthRange).invokeExact(n, f);
+            check(caps.glDepthRange).invokeExact(n, f);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void disable(int cap) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDisable).invokeExact(cap);
+            check(caps.glDisable).invokeExact(cap);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawBuffer(int buf) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawBuffer).invokeExact(buf);
+            check(caps.glDrawBuffer).invokeExact(buf);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void enable(int cap) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glEnable).invokeExact(cap);
+            check(caps.glEnable).invokeExact(cap);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void finish() {
-        check(glFinish);
+        var caps = GLLoader.getCapabilities();
+        try {
+            check(caps.glFinish).invokeExact();
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
     }
 
     public static void flush() {
-        check(glFlush);
+        var caps = GLLoader.getCapabilities();
+        try {
+            check(caps.glFlush).invokeExact();
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
     }
 
     public static void frontFace(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFrontFace).invokeExact(mode);
+            check(caps.glFrontFace).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getBooleanv(int pname, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetBooleanv).invokeExact(pname, data);
+            check(caps.glGetBooleanv).invokeExact(pname, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -267,8 +282,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getDoublev(int pname, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetDoublev).invokeExact(pname, data);
+            check(caps.glGetDoublev).invokeExact(pname, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -293,16 +309,18 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static int getError() {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetError).invokeExact();
+            return (int) check(caps.glGetError).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getFloatv(int pname, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetFloatv).invokeExact(pname, data);
+            check(caps.glGetFloatv).invokeExact(pname, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -327,8 +345,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getIntegerv(int pname, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetIntegerv).invokeExact(pname, data);
+            check(caps.glGetIntegerv).invokeExact(pname, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -353,8 +372,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static MemoryAddress ngetString(int name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (MemoryAddress) check(glGetString).invokeExact(name);
+            return (MemoryAddress) check(caps.glGetString).invokeExact(name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -367,16 +387,18 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexImage(int target, int level, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexImage).invokeExact(target, level, format, type, pixels);
+            check(caps.glGetTexImage).invokeExact(target, level, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getTexLevelParameterfv(int target, int level, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexLevelParameterfv).invokeExact(target, level, pname, params);
+            check(caps.glGetTexLevelParameterfv).invokeExact(target, level, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -401,8 +423,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexLevelParameteriv(int target, int level, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexLevelParameteriv).invokeExact(target, level, pname, params);
+            check(caps.glGetTexLevelParameteriv).invokeExact(target, level, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -427,8 +450,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexParameterfv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexParameterfv).invokeExact(target, pname, params);
+            check(caps.glGetTexParameterfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -453,8 +477,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexParameteriv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetTexParameteriv).invokeExact(target, pname, params);
+            check(caps.glGetTexParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -479,80 +504,90 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void hint(int target, int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glHint).invokeExact(target, mode);
+            check(caps.glHint).invokeExact(target, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isEnabled(int cap) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsEnabled).invokeExact(cap);
+            return (boolean) check(caps.glIsEnabled).invokeExact(cap);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void lineWidth(float width) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLineWidth).invokeExact(width);
+            check(caps.glLineWidth).invokeExact(width);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void logicOp(int opcode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glLogicOp).invokeExact(opcode);
+            check(caps.glLogicOp).invokeExact(opcode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelStoref(int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelStoref).invokeExact(pname, param);
+            check(caps.glPixelStoref).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pixelStorei(int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPixelStorei).invokeExact(pname, param);
+            check(caps.glPixelStorei).invokeExact(pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void pointSize(float size) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPointSize).invokeExact(size);
+            check(caps.glPointSize).invokeExact(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonMode(int face, int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPolygonMode).invokeExact(face, mode);
+            check(caps.glPolygonMode).invokeExact(face, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void readBuffer(int src) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glReadBuffer).invokeExact(src);
+            check(caps.glReadBuffer).invokeExact(src);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void readPixels(int x, int y, int width, int height, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glReadPixels).invokeExact(x, y, width, height, format, type, pixels);
+            check(caps.glReadPixels).invokeExact(x, y, width, height, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -583,40 +618,45 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void scissor(int x, int y, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glScissor).invokeExact(x, y, width, height);
+            check(caps.glScissor).invokeExact(x, y, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilFunc(int func, int ref, int mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glStencilFunc).invokeExact(func, ref, mask);
+            check(caps.glStencilFunc).invokeExact(func, ref, mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilMask(int mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glStencilMask).invokeExact(mask);
+            check(caps.glStencilMask).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilOp(int fail, int zfail, int zpass) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glStencilOp).invokeExact(fail, zfail, zpass);
+            check(caps.glStencilOp).invokeExact(fail, zfail, zpass);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexImage1D).invokeExact(target, level, internalFormat, width, border, format, type, pixels);
+            check(caps.glTexImage1D).invokeExact(target, level, internalFormat, width, border, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -639,8 +679,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexImage2D).invokeExact(target, level, internalFormat, width, height, border, format, type, pixels);
+            check(caps.glTexImage2D).invokeExact(target, level, internalFormat, width, height, border, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -663,16 +704,18 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texParameterf(int target, int pname, float param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexParameterf).invokeExact(target, pname, param);
+            check(caps.glTexParameterf).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texParameterfv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexParameterfv).invokeExact(target, pname, params);
+            check(caps.glTexParameterfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -683,16 +726,18 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texParameteri(int target, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexParameteri).invokeExact(target, pname, param);
+            check(caps.glTexParameteri).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texParameteriv(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexParameteriv).invokeExact(target, pname, params);
+            check(caps.glTexParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -703,8 +748,9 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void viewport(int x, int y, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glViewport).invokeExact(x, y, width, height);
+            check(caps.glViewport).invokeExact(x, y, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

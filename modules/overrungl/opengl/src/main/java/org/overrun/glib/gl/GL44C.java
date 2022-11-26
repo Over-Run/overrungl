@@ -24,12 +24,9 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -43,31 +40,27 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL44C extends GL43C permits GL45C {
-    @Nullable
-    public static MethodHandle
-        glBindBuffersBase, glBindBuffersRange, glBindImageTextures, glBindSamplers, glBindTextures, glBindVertexBuffers,
-        glBufferStorage, glClearTexImage, glClearTexSubImage;
-
-    static boolean isSupported() {
-        return checkAll(glBindBuffersBase, glBindBuffersRange, glBindImageTextures, glBindSamplers, glBindTextures,
-            glBindVertexBuffers, glBufferStorage, glClearTexImage, glClearTexSubImage);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBindBuffersBase, caps.glBindBuffersRange, caps.glBindImageTextures, caps.glBindSamplers, caps.glBindTextures, caps.glBindVertexBuffers,
+            caps.glBufferStorage, caps.glClearTexImage, caps.glClearTexSubImage);
     }
 
-    static void load(GLLoadFunc load) {
-        glBindBuffersBase = load.invoke("glBindBuffersBase", IIIPV);
-        glBindBuffersRange = load.invoke("glBindBuffersRange", IIIPPPV);
-        glBindImageTextures = load.invoke("glBindImageTextures", IIPV);
-        glBindSamplers = load.invoke("glBindSamplers", IIPV);
-        glBindTextures = load.invoke("glBindTextures", IIPV);
-        glBindVertexBuffers = load.invoke("glBindVertexBuffers", IIPPPV);
-        glBufferStorage = load.invoke("glBufferStorage", IJPIV);
-        glClearTexImage = load.invoke("glClearTexImage", IIIIPV);
-        glClearTexSubImage = load.invoke("glClearTexSubImage", IIIIIIIIIIPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBindBuffersBase = load.invoke("glBindBuffersBase", IIIPV);
+        caps.glBindBuffersRange = load.invoke("glBindBuffersRange", IIIPPPV);
+        caps.glBindImageTextures = load.invoke("glBindImageTextures", IIPV);
+        caps.glBindSamplers = load.invoke("glBindSamplers", IIPV);
+        caps.glBindTextures = load.invoke("glBindTextures", IIPV);
+        caps.glBindVertexBuffers = load.invoke("glBindVertexBuffers", IIPPPV);
+        caps.glBufferStorage = load.invoke("glBufferStorage", IJPIV);
+        caps.glClearTexImage = load.invoke("glClearTexImage", IIIIPV);
+        caps.glClearTexSubImage = load.invoke("glClearTexSubImage", IIIIIIIIIIPV);
     }
 
     public static void bindBuffersBase(int target, int first, int count, Addressable buffers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindBuffersBase).invokeExact(target, first, count, buffers);
+            check(caps.glBindBuffersBase).invokeExact(target, first, count, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -78,8 +71,9 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindBuffersRange(int target, int first, int count, Addressable buffers, Addressable offsets, Addressable sizes) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindBuffersRange).invokeExact(target, first, count, buffers, offsets, sizes);
+            check(caps.glBindBuffersRange).invokeExact(target, first, count, buffers, offsets, sizes);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -90,8 +84,9 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindImageTextures(int first, int count, Addressable textures) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindImageTextures).invokeExact(first, count, textures);
+            check(caps.glBindImageTextures).invokeExact(first, count, textures);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -102,8 +97,9 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindSamplers(int first, int count, Addressable samplers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindSamplers).invokeExact(first, count, samplers);
+            check(caps.glBindSamplers).invokeExact(first, count, samplers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -114,8 +110,9 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindTextures(int first, int count, Addressable textures) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindTextures).invokeExact(first, count, textures);
+            check(caps.glBindTextures).invokeExact(first, count, textures);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -126,8 +123,9 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindVertexBuffers(int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindVertexBuffers).invokeExact(first, count, buffers, offsets, strides);
+            check(caps.glBindVertexBuffers).invokeExact(first, count, buffers, offsets, strides);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -138,8 +136,9 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bufferStorage(int target, long size, Addressable data, int flags) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBufferStorage).invokeExact(target, size, data, flags);
+            check(caps.glBufferStorage).invokeExact(target, size, data, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -174,16 +173,18 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void clearTexImage(int texture, int level, int format, int type, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearTexImage).invokeExact(texture, level, format, type, data);
+            check(caps.glClearTexImage).invokeExact(texture, level, format, type, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void clearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glClearTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+            check(caps.glClearTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

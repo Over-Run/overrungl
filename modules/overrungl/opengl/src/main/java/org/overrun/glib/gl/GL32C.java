@@ -28,8 +28,10 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -43,62 +45,57 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL32C extends GL31C permits GL33C {
-    @Nullable
-    public static MethodHandle
-        glClientWaitSync, glDeleteSync, glDrawElementsBaseVertex, glDrawElementsInstancedBaseVertex,
-        glDrawRangeElementsBaseVertex, glFenceSync, glFramebufferTexture, glGetBufferParameteri64v, glGetInteger64i_v,
-        glGetInteger64v, glGetMultisamplefv, glGetSynciv, glIsSync, glMultiDrawElementsBaseVertex, glProvokingVertex,
-        glSampleMaski, glTexImage2DMultisample, glTexImage3DMultisample, glWaitSync;
-
-    static boolean isSupported() {
-        return checkAll(glClientWaitSync, glDeleteSync, glDrawElementsBaseVertex, glDrawElementsInstancedBaseVertex,
-            glDrawRangeElementsBaseVertex, glFenceSync, glFramebufferTexture, glGetBufferParameteri64v,
-            glGetInteger64i_v, glGetInteger64v, glGetMultisamplefv, glGetSynciv, glIsSync,
-            glMultiDrawElementsBaseVertex, glProvokingVertex, glSampleMaski, glTexImage2DMultisample,
-            glTexImage3DMultisample, glWaitSync);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glClientWaitSync, caps.glDeleteSync, caps.glDrawElementsBaseVertex, caps.glDrawElementsInstancedBaseVertex, caps.glDrawRangeElementsBaseVertex, caps.glFenceSync,
+            caps.glFramebufferTexture, caps.glGetBufferParameteri64v, caps.glGetInteger64i_v, caps.glGetInteger64v, caps.glGetMultisamplefv, caps.glGetSynciv,
+            caps.glIsSync, caps.glMultiDrawElementsBaseVertex, caps.glProvokingVertex, caps.glSampleMaski, caps.glTexImage2DMultisample, caps.glTexImage3DMultisample,
+            caps.glWaitSync);
     }
 
-    static void load(GLLoadFunc load) {
-        glClientWaitSync = load.invoke("glClientWaitSync", PIJI);
-        glDeleteSync = load.invoke("glDeleteSync", PV);
-        glDrawElementsBaseVertex = load.invoke("glDrawElementsBaseVertex", IIIPIV);
-        glDrawElementsInstancedBaseVertex = load.invoke("glDrawElementsInstancedBaseVertex", IIIPIIV);
-        glDrawRangeElementsBaseVertex = load.invoke("glDrawRangeElementsBaseVertex", IIIIIPIV);
-        glFenceSync = load.invoke("glFenceSync", IIP);
-        glFramebufferTexture = load.invoke("glFramebufferTexture", IIIIV);
-        glGetBufferParameteri64v = load.invoke("glGetBufferParameteri64v", IIPV);
-        glGetInteger64i_v = load.invoke("glGetInteger64i_v", IIPV);
-        glGetInteger64v = load.invoke("glGetInteger64v", IPV);
-        glGetMultisamplefv = load.invoke("glGetMultisamplefv", IIPV);
-        glGetSynciv = load.invoke("glGetSynciv", PIIPPV);
-        glIsSync = load.invoke("glIsSync", PZ);
-        glMultiDrawElementsBaseVertex = load.invoke("glMultiDrawElementsBaseVertex", IPIPIPV);
-        glProvokingVertex = load.invoke("glProvokingVertex", IV);
-        glSampleMaski = load.invoke("glSampleMaski", IIV);
-        glTexImage2DMultisample = load.invoke("glTexImage2DMultisample", IIIIIZV);
-        glTexImage3DMultisample = load.invoke("glTexImage3DMultisample", IIIIIIZV);
-        glWaitSync = load.invoke("glWaitSync", PIJV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glClientWaitSync = load.invoke("glClientWaitSync", PIJI);
+        caps.glDeleteSync = load.invoke("glDeleteSync", PV);
+        caps.glDrawElementsBaseVertex = load.invoke("glDrawElementsBaseVertex", IIIPIV);
+        caps.glDrawElementsInstancedBaseVertex = load.invoke("glDrawElementsInstancedBaseVertex", IIIPIIV);
+        caps.glDrawRangeElementsBaseVertex = load.invoke("glDrawRangeElementsBaseVertex", IIIIIPIV);
+        caps.glFenceSync = load.invoke("glFenceSync", IIP);
+        caps.glFramebufferTexture = load.invoke("glFramebufferTexture", IIIIV);
+        caps.glGetBufferParameteri64v = load.invoke("glGetBufferParameteri64v", IIPV);
+        caps.glGetInteger64i_v = load.invoke("glGetInteger64i_v", IIPV);
+        caps.glGetInteger64v = load.invoke("glGetInteger64v", IPV);
+        caps.glGetMultisamplefv = load.invoke("glGetMultisamplefv", IIPV);
+        caps.glGetSynciv = load.invoke("glGetSynciv", PIIPPV);
+        caps.glIsSync = load.invoke("glIsSync", PZ);
+        caps.glMultiDrawElementsBaseVertex = load.invoke("glMultiDrawElementsBaseVertex", IPIPIPV);
+        caps.glProvokingVertex = load.invoke("glProvokingVertex", IV);
+        caps.glSampleMaski = load.invoke("glSampleMaski", IIV);
+        caps.glTexImage2DMultisample = load.invoke("glTexImage2DMultisample", IIIIIZV);
+        caps.glTexImage3DMultisample = load.invoke("glTexImage3DMultisample", IIIIIIZV);
+        caps.glWaitSync = load.invoke("glWaitSync", PIJV);
     }
 
     public static int clientWaitSync(MemoryAddress sync, int flags, long timeout) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glClientWaitSync).invokeExact(sync, flags, timeout);
+            return (int) check(caps.glClientWaitSync).invokeExact(sync, flags, timeout);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteSync(MemoryAddress sync) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteSync).invokeExact(sync);
+            check(caps.glDeleteSync).invokeExact(sync);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawElementsBaseVertex(int mode, int count, int type, Addressable indices, int baseVertex) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawElementsBaseVertex).invokeExact(mode, count, type, indices, baseVertex);
+            check(caps.glDrawElementsBaseVertex).invokeExact(mode, count, type, indices, baseVertex);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -117,8 +114,9 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawElementsInstancedBaseVertex(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawElementsInstancedBaseVertex).invokeExact(mode, count, type, indices, instanceCount, baseVertex);
+            check(caps.glDrawElementsInstancedBaseVertex).invokeExact(mode, count, type, indices, instanceCount, baseVertex);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -137,8 +135,9 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, Addressable indices, int baseVertex) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawRangeElementsBaseVertex).invokeExact(mode, start, end, count, type, indices, baseVertex);
+            check(caps.glDrawRangeElementsBaseVertex).invokeExact(mode, start, end, count, type, indices, baseVertex);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -157,24 +156,27 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static MemoryAddress fenceSync(int condition, int flags) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (MemoryAddress) check(glFenceSync).invokeExact(condition, flags);
+            return (MemoryAddress) check(caps.glFenceSync).invokeExact(condition, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void framebufferTexture(int target, int attachment, int texture, int level) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glFramebufferTexture).invokeExact(target, attachment, texture, level);
+            check(caps.glFramebufferTexture).invokeExact(target, attachment, texture, level);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getBufferParameteri64v(int target, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetBufferParameteri64v).invokeExact(target, pname, params);
+            check(caps.glGetBufferParameteri64v).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -193,8 +195,9 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getInteger64i_v(int target, int index, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetInteger64i_v).invokeExact(target, index, data);
+            check(caps.glGetInteger64i_v).invokeExact(target, index, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -219,8 +222,9 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getInteger64v(int pname, Addressable data) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetInteger64v).invokeExact(pname, data);
+            check(caps.glGetInteger64v).invokeExact(pname, data);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -245,8 +249,9 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getMultisamplefv(int pname, int index, Addressable val) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetMultisamplefv).invokeExact(pname, index, val);
+            check(caps.glGetMultisamplefv).invokeExact(pname, index, val);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -265,8 +270,9 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getSynciv(MemoryAddress sync, int pname, int count, Addressable length, Addressable values) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetSynciv).invokeExact(sync, pname, count, length, values);
+            check(caps.glGetSynciv).invokeExact(sync, pname, count, length, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -295,16 +301,18 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static boolean isSync(MemoryAddress sync) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsSync).invokeExact(sync);
+            return (boolean) check(caps.glIsSync).invokeExact(sync);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void multiDrawElementsBaseVertex(int mode, Addressable count, int type, Addressable indices, int drawCount, Addressable baseVertex) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMultiDrawElementsBaseVertex).invokeExact(mode, count, type, indices, drawCount, baseVertex);
+            check(caps.glMultiDrawElementsBaseVertex).invokeExact(mode, count, type, indices, drawCount, baseVertex);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -343,40 +351,45 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void provokingVertex(int mode) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glProvokingVertex).invokeExact(mode);
+            check(caps.glProvokingVertex).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void sampleMaski(int maskNumber, int mask) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSampleMaski).invokeExact(maskNumber, mask);
+            check(caps.glSampleMaski).invokeExact(maskNumber, mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texImage2DMultisample(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexImage2DMultisample).invokeExact(target, samples, internalFormat, width, height, fixedSampleLocations);
+            check(caps.glTexImage2DMultisample).invokeExact(target, samples, internalFormat, width, height, fixedSampleLocations);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texImage3DMultisample(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexImage3DMultisample).invokeExact(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
+            check(caps.glTexImage3DMultisample).invokeExact(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void waitSync(MemoryAddress sync, int flags, long timeout) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glWaitSync).invokeExact(sync, flags, timeout);
+            check(caps.glWaitSync).invokeExact(sync, flags, timeout);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

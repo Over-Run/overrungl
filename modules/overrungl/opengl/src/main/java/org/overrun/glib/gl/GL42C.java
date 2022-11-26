@@ -24,13 +24,11 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -44,54 +42,48 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL42C extends GL41C permits GL43C {
-    @Nullable
-    public static MethodHandle
-        glBindImageTexture, glDrawArraysInstancedBaseInstance, glDrawElementsInstancedBaseInstance,
-        glDrawElementsInstancedBaseVertexBaseInstance, glDrawTransformFeedbackInstanced,
-        glDrawTransformFeedbackStreamInstanced, glGetActiveAtomicCounterBufferiv, glGetInternalformativ,
-        glMemoryBarrier, glTexStorage1D, glTexStorage2D, glTexStorage3D;
-
-    static boolean isSupported() {
-        return checkAll(glBindImageTexture, glDrawArraysInstancedBaseInstance, glDrawElementsInstancedBaseInstance,
-            glDrawElementsInstancedBaseVertexBaseInstance, glDrawTransformFeedbackInstanced,
-            glDrawTransformFeedbackStreamInstanced, glGetActiveAtomicCounterBufferiv, glGetInternalformativ,
-            glMemoryBarrier, glTexStorage1D, glTexStorage2D, glTexStorage3D);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBindImageTexture, caps.glDrawArraysInstancedBaseInstance, caps.glDrawElementsInstancedBaseInstance, caps.glDrawElementsInstancedBaseVertexBaseInstance, caps.glDrawTransformFeedbackInstanced, caps.glDrawTransformFeedbackStreamInstanced,
+            caps.glGetActiveAtomicCounterBufferiv, caps.glGetInternalformativ, caps.glMemoryBarrier, caps.glTexStorage1D, caps.glTexStorage2D, caps.glTexStorage3D);
     }
 
-    static void load(GLLoadFunc load) {
-        glBindImageTexture = load.invoke("glBindImageTexture", IIIZIIIV);
-        glDrawArraysInstancedBaseInstance = load.invoke("glDrawArraysInstancedBaseInstance", IIIIIV);
-        glDrawElementsInstancedBaseInstance = load.invoke("glDrawElementsInstancedBaseInstance", IIIPIIV);
-        glDrawElementsInstancedBaseVertexBaseInstance = load.invoke("glDrawElementsInstancedBaseVertexBaseInstance", IIIPIIIV);
-        glDrawTransformFeedbackInstanced = load.invoke("glDrawTransformFeedbackInstanced", IIIV);
-        glDrawTransformFeedbackStreamInstanced = load.invoke("glDrawTransformFeedbackStreamInstanced", IIIIV);
-        glGetActiveAtomicCounterBufferiv = load.invoke("glGetActiveAtomicCounterBufferiv", IIIPV);
-        glGetInternalformativ = load.invoke("glGetInternalformativ", IIIIPV);
-        glMemoryBarrier = load.invoke("glMemoryBarrier", IV);
-        glTexStorage1D = load.invoke("glTexStorage1D", IIIIV);
-        glTexStorage2D = load.invoke("glTexStorage2D", IIIIIV);
-        glTexStorage3D = load.invoke("glTexStorage3D", IIIIIIV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBindImageTexture = load.invoke("glBindImageTexture", IIIZIIIV);
+        caps.glDrawArraysInstancedBaseInstance = load.invoke("glDrawArraysInstancedBaseInstance", IIIIIV);
+        caps.glDrawElementsInstancedBaseInstance = load.invoke("glDrawElementsInstancedBaseInstance", IIIPIIV);
+        caps.glDrawElementsInstancedBaseVertexBaseInstance = load.invoke("glDrawElementsInstancedBaseVertexBaseInstance", IIIPIIIV);
+        caps.glDrawTransformFeedbackInstanced = load.invoke("glDrawTransformFeedbackInstanced", IIIV);
+        caps.glDrawTransformFeedbackStreamInstanced = load.invoke("glDrawTransformFeedbackStreamInstanced", IIIIV);
+        caps.glGetActiveAtomicCounterBufferiv = load.invoke("glGetActiveAtomicCounterBufferiv", IIIPV);
+        caps.glGetInternalformativ = load.invoke("glGetInternalformativ", IIIIPV);
+        caps.glMemoryBarrier = load.invoke("glMemoryBarrier", IV);
+        caps.glTexStorage1D = load.invoke("glTexStorage1D", IIIIV);
+        caps.glTexStorage2D = load.invoke("glTexStorage2D", IIIIIV);
+        caps.glTexStorage3D = load.invoke("glTexStorage3D", IIIIIIV);
     }
 
     public static void bindImageTexture(int unit, int texture, int level, boolean layered, int layer, int access, int format) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindImageTexture).invokeExact(unit, texture, level, layered, layer, access, format);
+            check(caps.glBindImageTexture).invokeExact(unit, texture, level, layered, layer, access, format);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawArraysInstancedBaseInstance(int mode, int first, int count, int instanceCount, int baseInstance) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawArraysInstancedBaseInstance).invokeExact(mode, first, count, instanceCount, baseInstance);
+            check(caps.glDrawArraysInstancedBaseInstance).invokeExact(mode, first, count, instanceCount, baseInstance);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawElementsInstancedBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseInstance) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawElementsInstancedBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseInstance);
+            check(caps.glDrawElementsInstancedBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseInstance);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -110,8 +102,9 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex, int baseInstance) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawElementsInstancedBaseVertexBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseVertex, baseInstance);
+            check(caps.glDrawElementsInstancedBaseVertexBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseVertex, baseInstance);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -130,24 +123,27 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void drawTransformFeedbackInstanced(int mode, int id, int instanceCount) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawTransformFeedbackInstanced).invokeExact(mode, id, instanceCount);
+            check(caps.glDrawTransformFeedbackInstanced).invokeExact(mode, id, instanceCount);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawTransformFeedbackStreamInstanced(int mode, int id, int stream, int instanceCount) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawTransformFeedbackStreamInstanced).invokeExact(mode, id, stream, instanceCount);
+            check(caps.glDrawTransformFeedbackStreamInstanced).invokeExact(mode, id, stream, instanceCount);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetActiveAtomicCounterBufferiv).invokeExact(program, bufferIndex, pname, params);
+            check(caps.glGetActiveAtomicCounterBufferiv).invokeExact(program, bufferIndex, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -172,8 +168,9 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void getInternalformativ(int target, int internalFormat, int pname, int count, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetInternalformativ).invokeExact(target, internalFormat, pname, count, params);
+            check(caps.glGetInternalformativ).invokeExact(target, internalFormat, pname, count, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -198,32 +195,36 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void memoryBarrier(int barriers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glMemoryBarrier).invokeExact(barriers);
+            check(caps.glMemoryBarrier).invokeExact(barriers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage1D(int target, int levels, int internalFormat, int width) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexStorage1D).invokeExact(target, levels, internalFormat, width);
+            check(caps.glTexStorage1D).invokeExact(target, levels, internalFormat, width);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage2D(int target, int levels, int internalFormat, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexStorage2D).invokeExact(target, levels, internalFormat, width, height);
+            check(caps.glTexStorage2D).invokeExact(target, levels, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texStorage3D(int target, int levels, int internalFormat, int width, int height, int depth) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexStorage3D).invokeExact(target, levels, internalFormat, width, height, depth);
+            check(caps.glTexStorage3D).invokeExact(target, levels, internalFormat, width, height, depth);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

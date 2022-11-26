@@ -24,14 +24,12 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -45,78 +43,78 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL11C extends GL10C permits GL11, GL12C {
-    @Nullable
-    public static MethodHandle
-        glBindTexture, glCopyTexImage1D, glCopyTexImage2D, glCopyTexSubImage1D, glCopyTexSubImage2D, glDeleteTextures,
-        glDrawArrays, glDrawElements, glGenTextures, glGetPointerv, glIsTexture, glPolygonOffset, glTexSubImage1D,
-        glTexSubImage2D;
-
-    static boolean isSupported() {
-        return checkAll(glBindTexture, glCopyTexImage1D, glCopyTexImage2D, glCopyTexSubImage1D, glCopyTexSubImage2D,
-            glDeleteTextures, glDrawArrays, glDrawElements, glGenTextures, glGetPointerv, glIsTexture, glPolygonOffset,
-            glTexSubImage1D, glTexSubImage2D);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBindTexture, caps.glCopyTexImage1D, caps.glCopyTexImage2D, caps.glCopyTexSubImage1D, caps.glCopyTexSubImage2D, caps.glDeleteTextures,
+            caps.glDrawArrays, caps.glDrawElements, caps.glGenTextures, caps.glGetPointerv, caps.glIsTexture, caps.glPolygonOffset,
+            caps.glTexSubImage1D, caps.glTexSubImage2D);
     }
 
-    static void load(GLLoadFunc load) {
-        glBindTexture = load.invoke("glBindTexture", IIV);
-        glCopyTexImage1D = load.invoke("glCopyTexImage1D", IIIIIIIV);
-        glCopyTexImage2D = load.invoke("glCopyTexImage2D", IIIIIIIIV);
-        glCopyTexSubImage1D = load.invoke("glCopyTexSubImage1D", IIIIIIV);
-        glCopyTexSubImage2D = load.invoke("glCopyTexSubImage2D", IIIIIIIIV);
-        glDeleteTextures = load.invoke("glDeleteTextures", IPV);
-        glDrawArrays = load.invoke("glDrawArrays", IIIV);
-        glDrawElements = load.invoke("glDrawElements", IIIPV);
-        glGenTextures = load.invoke("glGenTextures", IPV);
-        glGetPointerv = load.invoke("glGetPointerv", IPV);
-        glIsTexture = load.invoke("glIsTexture", IZ);
-        glPolygonOffset = load.invoke("glPolygonOffset", FFV);
-        glTexSubImage1D = load.invoke("glTexSubImage1D", IIIIIIPV);
-        glTexSubImage2D = load.invoke("glTexSubImage2D", IIIIIIIIPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBindTexture = load.invoke("glBindTexture", IIV);
+        caps.glCopyTexImage1D = load.invoke("glCopyTexImage1D", IIIIIIIV);
+        caps.glCopyTexImage2D = load.invoke("glCopyTexImage2D", IIIIIIIIV);
+        caps.glCopyTexSubImage1D = load.invoke("glCopyTexSubImage1D", IIIIIIV);
+        caps.glCopyTexSubImage2D = load.invoke("glCopyTexSubImage2D", IIIIIIIIV);
+        caps.glDeleteTextures = load.invoke("glDeleteTextures", IPV);
+        caps.glDrawArrays = load.invoke("glDrawArrays", IIIV);
+        caps.glDrawElements = load.invoke("glDrawElements", IIIPV);
+        caps.glGenTextures = load.invoke("glGenTextures", IPV);
+        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
+        caps.glIsTexture = load.invoke("glIsTexture", IZ);
+        caps.glPolygonOffset = load.invoke("glPolygonOffset", FFV);
+        caps.glTexSubImage1D = load.invoke("glTexSubImage1D", IIIIIIPV);
+        caps.glTexSubImage2D = load.invoke("glTexSubImage2D", IIIIIIIIPV);
     }
 
     public static void bindTexture(int target, int texture) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindTexture).invokeExact(target, texture);
+            check(caps.glBindTexture).invokeExact(target, texture);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexImage1D(int target, int level, int internalFormat, int x, int y, int width, int border) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyTexImage1D).invokeExact(target, level, internalFormat, x, y, width, border);
+            check(caps.glCopyTexImage1D).invokeExact(target, level, internalFormat, x, y, width, border);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height, int border) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyTexImage2D).invokeExact(target, level, internalFormat, x, y, width, height, border);
+            check(caps.glCopyTexImage2D).invokeExact(target, level, internalFormat, x, y, width, height, border);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyTexSubImage1D).invokeExact(target, level, xoffset, x, y, width);
+            check(caps.glCopyTexSubImage1D).invokeExact(target, level, xoffset, x, y, width);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void copyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glCopyTexSubImage2D).invokeExact(target, level, xoffset, yoffset, x, y, width, height);
+            check(caps.glCopyTexSubImage2D).invokeExact(target, level, xoffset, yoffset, x, y, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteTextures(int n, Addressable textures) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteTextures).invokeExact(n, textures);
+            check(caps.glDeleteTextures).invokeExact(n, textures);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -140,16 +138,18 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void drawArrays(int mode, int first, int count) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawArrays).invokeExact(mode, first, count);
+            check(caps.glDrawArrays).invokeExact(mode, first, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawElements(int mode, int count, int type, Addressable indices) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDrawElements).invokeExact(mode, count, type, indices);
+            check(caps.glDrawElements).invokeExact(mode, count, type, indices);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -171,8 +171,9 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void genTextures(int n, Addressable textures) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenTextures).invokeExact(n, textures);
+            check(caps.glGenTextures).invokeExact(n, textures);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -198,8 +199,9 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void getPointerv(int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetPointerv).invokeExact(pname, params);
+            check(caps.glGetPointerv).invokeExact(pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -218,24 +220,27 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static boolean isTexture(int texture) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsTexture).invokeExact(texture);
+            return (boolean) check(caps.glIsTexture).invokeExact(texture);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void polygonOffset(float factor, float units) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glPolygonOffset).invokeExact(factor, units);
+            check(caps.glPolygonOffset).invokeExact(factor, units);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
+            check(caps.glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -258,8 +263,9 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);
+            check(caps.glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

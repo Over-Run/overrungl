@@ -24,11 +24,8 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.FunctionDescriptors.IIZPV;
@@ -42,28 +39,23 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL21C extends GL20C permits GL30C {
-    @Nullable
-    public static MethodHandle
-        glUniformMatrix2x3fv, glUniformMatrix2x4fv, glUniformMatrix3x2fv, glUniformMatrix3x4fv, glUniformMatrix4x2fv,
-        glUniformMatrix4x3fv;
-
-    static boolean isSupported() {
-        return checkAll(glUniformMatrix2x3fv, glUniformMatrix2x4fv, glUniformMatrix3x2fv, glUniformMatrix3x4fv,
-            glUniformMatrix4x2fv, glUniformMatrix4x3fv);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glUniformMatrix2x3fv, caps.glUniformMatrix2x4fv, caps.glUniformMatrix3x2fv, caps.glUniformMatrix3x4fv, caps.glUniformMatrix4x2fv, caps.glUniformMatrix4x3fv);
     }
 
-    static void load(GLLoadFunc load) {
-        glUniformMatrix2x3fv = load.invoke("glUniformMatrix2x3fv", IIZPV);
-        glUniformMatrix2x4fv = load.invoke("glUniformMatrix2x4fv", IIZPV);
-        glUniformMatrix3x2fv = load.invoke("glUniformMatrix3x2fv", IIZPV);
-        glUniformMatrix3x4fv = load.invoke("glUniformMatrix3x4fv", IIZPV);
-        glUniformMatrix4x2fv = load.invoke("glUniformMatrix4x2fv", IIZPV);
-        glUniformMatrix4x3fv = load.invoke("glUniformMatrix4x3fv", IIZPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glUniformMatrix2x3fv = load.invoke("glUniformMatrix2x3fv", IIZPV);
+        caps.glUniformMatrix2x4fv = load.invoke("glUniformMatrix2x4fv", IIZPV);
+        caps.glUniformMatrix3x2fv = load.invoke("glUniformMatrix3x2fv", IIZPV);
+        caps.glUniformMatrix3x4fv = load.invoke("glUniformMatrix3x4fv", IIZPV);
+        caps.glUniformMatrix4x2fv = load.invoke("glUniformMatrix4x2fv", IIZPV);
+        caps.glUniformMatrix4x3fv = load.invoke("glUniformMatrix4x3fv", IIZPV);
     }
 
     public static void uniformMatrix2x3fv(int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformMatrix2x3fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix2x3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -78,8 +70,9 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix2x4fv(int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformMatrix2x4fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix2x4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -94,8 +87,9 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix3x2fv(int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformMatrix3x2fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix3x2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -110,8 +104,9 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix3x4fv(int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformMatrix3x4fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix3x4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -126,8 +121,9 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix4x2fv(int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformMatrix4x2fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix4x2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -142,8 +138,9 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix4x3fv(int location, int count, boolean transpose, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glUniformMatrix4x3fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix4x3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

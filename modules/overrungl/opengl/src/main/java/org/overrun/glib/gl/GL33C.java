@@ -24,13 +24,11 @@
 
 package org.overrun.glib.gl;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -44,59 +42,49 @@ import static org.overrun.glib.gl.GLLoader.checkAll;
  * @since 0.1.0
  */
 public sealed class GL33C extends GL32C permits GL40C {
-    @Nullable
-    public static MethodHandle
-        glBindFragDataLocationIndexed, glBindSampler, glDeleteSamplers, glGenSamplers, glGetFragDataIndex,
-        glGetQueryObjecti64v, glGetQueryObjectui64v, glGetSamplerParameterIiv, glGetSamplerParameterIuiv,
-        glGetSamplerParameterfv, glGetSamplerParameteriv, glIsSampler, glQueryCounter, glSamplerParameterIiv,
-        glSamplerParameterIuiv, glSamplerParameterf, glSamplerParameterfv, glSamplerParameteri, glSamplerParameteriv,
-        glVertexAttribDivisor, glVertexAttribP1ui, glVertexAttribP1uiv, glVertexAttribP2ui, glVertexAttribP2uiv,
-        glVertexAttribP3ui, glVertexAttribP3uiv, glVertexAttribP4ui, glVertexAttribP4uiv;
-
-    static boolean isSupported() {
-        return checkAll(glBindFragDataLocationIndexed, glBindSampler, glDeleteSamplers, glGenSamplers,
-            glGetFragDataIndex, glGetQueryObjecti64v, glGetQueryObjectui64v, glGetSamplerParameterIiv,
-            glGetSamplerParameterIuiv, glGetSamplerParameterfv, glGetSamplerParameteriv, glIsSampler, glQueryCounter,
-            glSamplerParameterIiv, glSamplerParameterIuiv, glSamplerParameterf, glSamplerParameterfv,
-            glSamplerParameteri, glSamplerParameteriv, glVertexAttribDivisor, glVertexAttribP1ui, glVertexAttribP1uiv,
-            glVertexAttribP2ui, glVertexAttribP2uiv, glVertexAttribP3ui, glVertexAttribP3uiv, glVertexAttribP4ui,
-            glVertexAttribP4uiv);
+    static boolean isSupported(GLCapabilities caps) {
+        return checkAll(caps.glBindFragDataLocationIndexed, caps.glBindSampler, caps.glDeleteSamplers, caps.glGenSamplers, caps.glGetFragDataIndex, caps.glGetQueryObjecti64v,
+            caps.glGetQueryObjectui64v, caps.glGetSamplerParameterIiv, caps.glGetSamplerParameterIuiv, caps.glGetSamplerParameterfv, caps.glGetSamplerParameteriv, caps.glIsSampler,
+            caps.glQueryCounter, caps.glSamplerParameterIiv, caps.glSamplerParameterIuiv, caps.glSamplerParameterf, caps.glSamplerParameterfv, caps.glSamplerParameteri,
+            caps.glSamplerParameteriv, caps.glVertexAttribDivisor, caps.glVertexAttribP1ui, caps.glVertexAttribP1uiv, caps.glVertexAttribP2ui, caps.glVertexAttribP2uiv,
+            caps.glVertexAttribP3ui, caps.glVertexAttribP3uiv, caps.glVertexAttribP4ui, caps.glVertexAttribP4uiv);
     }
 
-    static void load(GLLoadFunc load) {
-        glBindFragDataLocationIndexed = load.invoke("glBindFragDataLocationIndexed", IIIPV);
-        glBindSampler = load.invoke("glBindSampler", IIV);
-        glDeleteSamplers = load.invoke("glDeleteSamplers", IPV);
-        glGenSamplers = load.invoke("glGenSamplers", IIP);
-        glGetFragDataIndex = load.invoke("glGetFragDataIndex", IPI);
-        glGetQueryObjecti64v = load.invoke("glGetQueryObjecti64v", IIPV);
-        glGetQueryObjectui64v = load.invoke("glGetQueryObjectui64v", IIPV);
-        glGetSamplerParameterIiv = load.invoke("glGetSamplerParameterIiv", IIPV);
-        glGetSamplerParameterIuiv = load.invoke("glGetSamplerParameterIuiv", IIPV);
-        glGetSamplerParameterfv = load.invoke("glGetSamplerParameterfv", IIPV);
-        glGetSamplerParameteriv = load.invoke("glGetSamplerParameteriv", IIPV);
-        glIsSampler = load.invoke("glIsSampler", IZ);
-        glQueryCounter = load.invoke("glQueryCounter", IIV);
-        glSamplerParameterIiv = load.invoke("glSamplerParameterIiv", IIPV);
-        glSamplerParameterIuiv = load.invoke("glSamplerParameterIuiv", IIPV);
-        glSamplerParameterf = load.invoke("glSamplerParameterf", IIFV);
-        glSamplerParameterfv = load.invoke("glSamplerParameterfv", IIPV);
-        glSamplerParameteri = load.invoke("glSamplerParameteri", IIIV);
-        glSamplerParameteriv = load.invoke("glSamplerParameteriv", IIPV);
-        glVertexAttribDivisor = load.invoke("glVertexAttribDivisor", IIV);
-        glVertexAttribP1ui = load.invoke("glVertexAttribP1ui", IIZIV);
-        glVertexAttribP1uiv = load.invoke("glVertexAttribP1uiv", IIZPV);
-        glVertexAttribP2ui = load.invoke("glVertexAttribP2ui", IIZIV);
-        glVertexAttribP2uiv = load.invoke("glVertexAttribP2uiv", IIZPV);
-        glVertexAttribP3ui = load.invoke("glVertexAttribP3ui", IIZIV);
-        glVertexAttribP3uiv = load.invoke("glVertexAttribP3uiv", IIZPV);
-        glVertexAttribP4ui = load.invoke("glVertexAttribP4ui", IIZIV);
-        glVertexAttribP4uiv = load.invoke("glVertexAttribP4uiv", IIZPV);
+    static void load(GLCapabilities caps, GLLoadFunc load) {
+        caps.glBindFragDataLocationIndexed = load.invoke("glBindFragDataLocationIndexed", IIIPV);
+        caps.glBindSampler = load.invoke("glBindSampler", IIV);
+        caps.glDeleteSamplers = load.invoke("glDeleteSamplers", IPV);
+        caps.glGenSamplers = load.invoke("glGenSamplers", IIP);
+        caps.glGetFragDataIndex = load.invoke("glGetFragDataIndex", IPI);
+        caps.glGetQueryObjecti64v = load.invoke("glGetQueryObjecti64v", IIPV);
+        caps.glGetQueryObjectui64v = load.invoke("glGetQueryObjectui64v", IIPV);
+        caps.glGetSamplerParameterIiv = load.invoke("glGetSamplerParameterIiv", IIPV);
+        caps.glGetSamplerParameterIuiv = load.invoke("glGetSamplerParameterIuiv", IIPV);
+        caps.glGetSamplerParameterfv = load.invoke("glGetSamplerParameterfv", IIPV);
+        caps.glGetSamplerParameteriv = load.invoke("glGetSamplerParameteriv", IIPV);
+        caps.glIsSampler = load.invoke("glIsSampler", IZ);
+        caps.glQueryCounter = load.invoke("glQueryCounter", IIV);
+        caps.glSamplerParameterIiv = load.invoke("glSamplerParameterIiv", IIPV);
+        caps.glSamplerParameterIuiv = load.invoke("glSamplerParameterIuiv", IIPV);
+        caps.glSamplerParameterf = load.invoke("glSamplerParameterf", IIFV);
+        caps.glSamplerParameterfv = load.invoke("glSamplerParameterfv", IIPV);
+        caps.glSamplerParameteri = load.invoke("glSamplerParameteri", IIIV);
+        caps.glSamplerParameteriv = load.invoke("glSamplerParameteriv", IIPV);
+        caps.glVertexAttribDivisor = load.invoke("glVertexAttribDivisor", IIV);
+        caps.glVertexAttribP1ui = load.invoke("glVertexAttribP1ui", IIZIV);
+        caps.glVertexAttribP1uiv = load.invoke("glVertexAttribP1uiv", IIZPV);
+        caps.glVertexAttribP2ui = load.invoke("glVertexAttribP2ui", IIZIV);
+        caps.glVertexAttribP2uiv = load.invoke("glVertexAttribP2uiv", IIZPV);
+        caps.glVertexAttribP3ui = load.invoke("glVertexAttribP3ui", IIZIV);
+        caps.glVertexAttribP3uiv = load.invoke("glVertexAttribP3uiv", IIZPV);
+        caps.glVertexAttribP4ui = load.invoke("glVertexAttribP4ui", IIZIV);
+        caps.glVertexAttribP4uiv = load.invoke("glVertexAttribP4uiv", IIZPV);
     }
 
     public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindFragDataLocationIndexed).invokeExact(program, colorNumber, index, name);
+            check(caps.glBindFragDataLocationIndexed).invokeExact(program, colorNumber, index, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -107,16 +95,18 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void bindSampler(int unit, int sampler) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glBindSampler).invokeExact(unit, sampler);
+            check(caps.glBindSampler).invokeExact(unit, sampler);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteSamplers(int count, Addressable samplers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glDeleteSamplers).invokeExact(count, samplers);
+            check(caps.glDeleteSamplers).invokeExact(count, samplers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -139,8 +129,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void genSamplers(int count, Addressable samplers) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGenSamplers).invokeExact(count, samplers);
+            check(caps.glGenSamplers).invokeExact(count, samplers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -165,8 +156,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static int getFragDataIndex(int program, Addressable name) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (int) check(glGetFragDataIndex).invokeExact(program, name);
+            return (int) check(caps.glGetFragDataIndex).invokeExact(program, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -177,8 +169,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getQueryObjecti64v(int id, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetQueryObjecti64v).invokeExact(id, pname, params);
+            check(caps.glGetQueryObjecti64v).invokeExact(id, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -197,8 +190,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getQueryObjectui64v(int id, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetQueryObjectui64v).invokeExact(id, pname, params);
+            check(caps.glGetQueryObjectui64v).invokeExact(id, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -217,8 +211,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameterIiv(int sampler, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetSamplerParameterIiv).invokeExact(sampler, pname, params);
+            check(caps.glGetSamplerParameterIiv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -243,8 +238,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameterIuiv(int sampler, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetSamplerParameterIuiv).invokeExact(sampler, pname, params);
+            check(caps.glGetSamplerParameterIuiv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -269,8 +265,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameterfv(int sampler, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetSamplerParameterfv).invokeExact(sampler, pname, params);
+            check(caps.glGetSamplerParameterfv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -295,8 +292,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameteriv(int sampler, int pname, Addressable params) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glGetSamplerParameteriv).invokeExact(sampler, pname, params);
+            check(caps.glGetSamplerParameteriv).invokeExact(sampler, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -321,24 +319,27 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static boolean isSampler(int sampler) {
+        var caps = GLLoader.getCapabilities();
         try {
-            return (boolean) check(glIsSampler).invokeExact(sampler);
+            return (boolean) check(caps.glIsSampler).invokeExact(sampler);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void queryCounter(int id, int target) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glQueryCounter).invokeExact(id, target);
+            check(caps.glQueryCounter).invokeExact(id, target);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void samplerParameterIiv(int sampler, int pname, Addressable param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSamplerParameterIiv).invokeExact(sampler, pname, param);
+            check(caps.glSamplerParameterIiv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -349,8 +350,9 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameterIuiv(int sampler, int pname, Addressable param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSamplerParameterIuiv).invokeExact(sampler, pname, param);
+            check(caps.glSamplerParameterIuiv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -361,16 +363,18 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameterf(int sampler, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSamplerParameterf).invokeExact(sampler, pname, param);
+            check(caps.glSamplerParameterf).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void samplerParameterfv(int sampler, int pname, Addressable param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSamplerParameterfv).invokeExact(sampler, pname, param);
+            check(caps.glSamplerParameterfv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -381,16 +385,18 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameteri(int sampler, int pname, int param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSamplerParameteri).invokeExact(sampler, pname, param);
+            check(caps.glSamplerParameteri).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void samplerParameteriv(int sampler, int pname, Addressable param) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glSamplerParameteriv).invokeExact(sampler, pname, param);
+            check(caps.glSamplerParameteriv).invokeExact(sampler, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -401,24 +407,27 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribDivisor(int index, int divisor) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribDivisor).invokeExact(index, divisor);
+            check(caps.glVertexAttribDivisor).invokeExact(index, divisor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP1ui(int index, int type, boolean normalized, int value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP1ui).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP1ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP1uiv(int index, int type, boolean normalized, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP1uiv).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP1uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -429,16 +438,18 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP2ui(int index, int type, boolean normalized, int value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP2ui).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP2ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP2uiv(int index, int type, boolean normalized, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP2uiv).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP2uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -449,16 +460,18 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP3ui(int index, int type, boolean normalized, int value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP3ui).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP3ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP3uiv(int index, int type, boolean normalized, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP3uiv).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP3uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -469,16 +482,18 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP4ui(int index, int type, boolean normalized, int value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP4ui).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP4ui).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttribP4uiv(int index, int type, boolean normalized, Addressable value) {
+        var caps = GLLoader.getCapabilities();
         try {
-            check(glVertexAttribP4uiv).invokeExact(index, type, normalized, value);
+            check(caps.glVertexAttribP4uiv).invokeExact(index, type, normalized, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
