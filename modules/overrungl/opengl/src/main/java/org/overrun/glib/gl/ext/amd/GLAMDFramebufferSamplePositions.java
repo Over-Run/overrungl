@@ -36,7 +36,7 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.FunctionDescriptors.IIIIIPV;
 import static org.overrun.glib.FunctionDescriptors.IIIPV;
-import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * {@code GL_AMD_framebuffer_sample_positions}

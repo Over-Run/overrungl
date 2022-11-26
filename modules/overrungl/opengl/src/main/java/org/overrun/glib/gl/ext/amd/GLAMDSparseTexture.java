@@ -31,7 +31,7 @@ import org.overrun.glib.gl.GLLoadFunc;
 
 import java.lang.invoke.MethodHandle;
 
-import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * {@code GL_AMD_sparse_texture}

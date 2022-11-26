@@ -98,22 +98,22 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     /**
-     * The consumer, accepts a memory address function.
+     * The performer, accepts a memory segment function.
      *
      * @param <T> The value layout type.
      * @author squid233
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Consumer<T extends ValueLayout> {
+    public interface Performer<T extends ValueLayout> {
         /**
          * Performs this operation on the given argument.
          *
-         * @param address The memory address.
+         * @param segment The memory segment.
          * @param layout  The value layout.
          * @param offset  The offset in bytes.
          */
-        void accept(MemoryAddress address, T layout, long offset);
+        void accept(MemoryAddress segment, T layout, long offset);
     }
 
     /**
@@ -184,9 +184,9 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     public <T extends ValueLayout>
-    BufferBuilder put(T layout, long offset, Consumer<T> consumer) {
+    BufferBuilder put(T layout, long offset, Performer<T> performer) {
         grow(layout);
-        consumer.accept(address, layout, offset);
+        performer.accept(address, layout, offset);
         count++;
         return this;
     }
@@ -294,8 +294,8 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     public <T extends ValueLayout>
-    BufferBuilder put(T layout, Consumer<T> consumer) {
-        this.put(layout, offset, consumer);
+    BufferBuilder put(T layout, Performer<T> performer) {
+        this.put(layout, offset, performer);
         offset += layout.byteSize();
         return this;
     }
@@ -433,6 +433,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     private void internalPutAll(MemoryLayout layout, long srcOffset, Addressable address) {
+        // TODO: Replace with switch pattern matching
         if (layout.isPadding()) {
             for (long i = 0; i < layout.byteSize(); i++) {
                 this.put(ValueLayout.JAVA_BYTE, (byte) 0);
@@ -469,6 +470,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
+    @Deprecated(since = "20", forRemoval = true)
     private void internalPutAll(MemoryLayout layout, long srcOffset, MemoryAddress address) {
         switch (layout) {
             case ValueLayout.OfByte valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));

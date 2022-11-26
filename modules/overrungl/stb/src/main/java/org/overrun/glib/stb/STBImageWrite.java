@@ -78,7 +78,7 @@ public final class STBImageWrite {
         stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIP);
     }
 
-    protected STBImageWrite() {
+    private STBImageWrite() {
         throw new IllegalStateException("Do not construct instance");
     }
 

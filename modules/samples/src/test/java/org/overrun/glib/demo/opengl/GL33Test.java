@@ -26,7 +26,8 @@ package org.overrun.glib.demo.opengl;
 
 import org.joml.Matrix4f;
 import org.overrun.glib.gl.GL;
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLLoader;
+import org.overrun.glib.gl.GLUtil;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
@@ -52,6 +53,7 @@ public class GL33Test {
     private int program;
     private int rotationMat;
     private int vao, vbo, ebo, mbo;
+    private MemorySession debugProc;
 
     private static int square(int x) {
         return x * x;
@@ -72,6 +74,7 @@ public class GL33Test {
 
         Callbacks.free(window);
         GLFW.destroyWindow(window);
+        debugProc.close();
 
         GLFW.terminate();
         GLFW.setErrorCallback(null);
@@ -115,9 +118,10 @@ public class GL33Test {
     }
 
     private void load(MemorySession arena) {
-        if (GLCaps.loadShared(true, GLFW::getProcAddress) == 0)
+        if (GLLoader.loadShared(true, GLFW::getProcAddress) == 0)
             throw new IllegalStateException("Failed to load OpenGL");
 
+        debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = GL.createProgram();
         int vsh = GL.createShader(GL_VERTEX_SHADER);

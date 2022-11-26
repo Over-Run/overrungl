@@ -39,9 +39,10 @@ import java.util.regex.Pattern;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLCaps {
+public final class GLLoader {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
 
+//    private static final ThreadLocal<GLCapabilities> CAPABILITIES_LOCAL = new ThreadLocal<>();
     /**
      * The OpenGL context version flags
      */
@@ -181,7 +182,7 @@ public final class GLCaps {
         if (GL10C.glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
 
-        GLCaps.forwardCompatible = forwardCompatible;
+        GLLoader.forwardCompatible = forwardCompatible;
 
         GL10C.load(load);
         GL11C.load(load);
@@ -203,7 +204,7 @@ public final class GLCaps {
         GL45C.load(load);
         GL46C.load(load);
 
-        int version = findCoreGL();
+        int version = findCoreGL(false);
         if (!forwardCompatible) {
             GL10.load(load);
             GL11.load(load);
@@ -213,13 +214,36 @@ public final class GLCaps {
 
         try (var arena = MemorySession.openShared()) {
             if (!GLExtCaps.findExtensionsGL(version, arena)) return 0;
+            findCoreGL(true);
         }
         GLExtCaps.load(load);
 
         return version;
     }
 
-    private static int findCoreGL() {
+    private static int findCoreGL(boolean checkAll) {
+        if (checkAll) {
+            Ver10 = Ver10 || GL10C.isSupported();
+            Ver11 = Ver11 || GL11C.isSupported();
+            Ver12 = Ver12 || GL12C.isSupported();
+            Ver13 = Ver13 || GL13C.isSupported();
+            Ver14 = Ver14 || GL14C.isSupported();
+            Ver15 = Ver15 || GL15C.isSupported();
+            Ver20 = Ver20 || GL20C.isSupported();
+            Ver21 = Ver21 || GL21C.isSupported();
+            Ver30 = Ver30 || GL30C.isSupported();
+            Ver31 = Ver31 || GL31C.isSupported();
+            Ver32 = Ver32 || GL32C.isSupported();
+            Ver33 = Ver33 || GL33C.isSupported();
+            Ver40 = Ver40 || GL40C.isSupported();
+            Ver41 = Ver41 || GL41C.isSupported();
+            Ver42 = Ver42 || GL42C.isSupported();
+            Ver43 = Ver43 || GL43C.isSupported();
+            Ver44 = Ver44 || GL44C.isSupported();
+            Ver45 = Ver45 || GL45C.isSupported();
+            Ver46 = Ver46 || GL46C.isSupported();
+            return -1;
+        }
         final String[] prefixes = {
             "OpenGL ES-CM ",
             "OpenGL ES-CL ",
@@ -244,25 +268,25 @@ public final class GLCaps {
             major = 0;
             minor = 0;
         }
-        Ver10 = (major == 1 && minor >= 0) || major > 1 || GL10C.isSupported();
-        Ver11 = (major == 1 && minor >= 1) || major > 1 || GL11C.isSupported();
-        Ver12 = (major == 1 && minor >= 2) || major > 1 || GL12C.isSupported();
-        Ver13 = (major == 1 && minor >= 3) || major > 1 || GL13C.isSupported();
-        Ver14 = (major == 1 && minor >= 4) || major > 1 || GL14C.isSupported();
-        Ver15 = (major == 1 && minor >= 5) || major > 1 || GL15C.isSupported();
-        Ver20 = (major == 2 && minor >= 0) || major > 2 || GL20C.isSupported();
-        Ver21 = (major == 2 && minor >= 1) || major > 2 || GL21C.isSupported();
-        Ver30 = (major == 3 && minor >= 0) || major > 3 || GL30C.isSupported();
-        Ver31 = (major == 3 && minor >= 1) || major > 3 || GL31C.isSupported();
-        Ver32 = (major == 3 && minor >= 2) || major > 3 || GL32C.isSupported();
-        Ver33 = (major == 3 && minor >= 3) || major > 3 || GL33C.isSupported();
-        Ver40 = (major == 4 && minor >= 0) || major > 4 || GL40C.isSupported();
-        Ver41 = (major == 4 && minor >= 1) || major > 4 || GL41C.isSupported();
-        Ver42 = (major == 4 && minor >= 2) || major > 4 || GL42C.isSupported();
-        Ver43 = (major == 4 && minor >= 3) || major > 4 || GL43C.isSupported();
-        Ver44 = (major == 4 && minor >= 4) || major > 4 || GL44C.isSupported();
-        Ver45 = (major == 4 && minor >= 5) || major > 4 || GL45C.isSupported();
-        Ver46 = (major == 4 && minor >= 6) || major > 4 || GL46C.isSupported();
+        Ver10 = (major == 1 && minor >= 0) || major > 1;
+        Ver11 = (major == 1 && minor >= 1) || major > 1;
+        Ver12 = (major == 1 && minor >= 2) || major > 1;
+        Ver13 = (major == 1 && minor >= 3) || major > 1;
+        Ver14 = (major == 1 && minor >= 4) || major > 1;
+        Ver15 = (major == 1 && minor >= 5) || major > 1;
+        Ver20 = (major == 2 && minor >= 0) || major > 2;
+        Ver21 = (major == 2 && minor >= 1) || major > 2;
+        Ver30 = (major == 3 && minor >= 0) || major > 3;
+        Ver31 = (major == 3 && minor >= 1) || major > 3;
+        Ver32 = (major == 3 && minor >= 2) || major > 3;
+        Ver33 = (major == 3 && minor >= 3) || major > 3;
+        Ver40 = (major == 4 && minor >= 0) || major > 4;
+        Ver41 = (major == 4 && minor >= 1) || major > 4;
+        Ver42 = (major == 4 && minor >= 2) || major > 4;
+        Ver43 = (major == 4 && minor >= 3) || major > 4;
+        Ver44 = (major == 4 && minor >= 4) || major > 4;
+        Ver45 = (major == 4 && minor >= 5) || major > 4;
+        Ver46 = (major == 4 && minor >= 6) || major > 4;
         return makeVersion(major, minor);
     }
 }

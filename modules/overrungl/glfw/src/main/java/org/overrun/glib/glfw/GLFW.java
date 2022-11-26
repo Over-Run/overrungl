@@ -854,10 +854,7 @@ public final class GLFW {
         create();
     }
 
-    /**
-     * constructor
-     */
-    protected GLFW() {
+    private GLFW() {
         throw new IllegalStateException("Do not construct instance");
     }
 
@@ -880,7 +877,7 @@ public final class GLFW {
             case PLATFORM_ERROR -> "PLATFORM_ERROR";
             case FORMAT_UNAVAILABLE -> "FORMAT_UNAVAILABLE";
             case NO_WINDOW_CONTEXT -> "NO_WINDOW_CONTEXT";
-            default -> "UNKNOWN_ERROR";
+            default -> RuntimeHelper.unknownToken(errorCode);
         };
     }
 

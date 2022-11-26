@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -49,7 +49,7 @@ public final class GLAMDInterleavedElements {
 
     public static void glVertexAttribParameteriAMD(int index, int pname, int param) {
         try {
-            GLCaps.check(glVertexAttribParameteriAMD).invokeExact(index, pname, param);
+            GLLoader.check(glVertexAttribParameteriAMD).invokeExact(index, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

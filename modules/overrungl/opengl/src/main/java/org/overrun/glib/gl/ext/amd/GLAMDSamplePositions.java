@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -52,7 +52,7 @@ public final class GLAMDSamplePositions {
 
     public static void glSetMultisamplefvAMD(int pname, int index, Addressable val) {
         try {
-            GLCaps.check(glSetMultisamplefvAMD).invokeExact(pname, index, val);
+            GLLoader.check(glSetMultisamplefvAMD).invokeExact(pname, index, val);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

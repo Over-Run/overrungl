@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -49,7 +49,7 @@ public final class GLAMDStencilOperationExtended {
 
     public static void glStencilOpValueAMD(int face, int value) {
         try {
-            GLCaps.check(glStencilOpValueAMD).invokeExact(face, value);
+            GLLoader.check(glStencilOpValueAMD).invokeExact(face, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

@@ -118,7 +118,7 @@ public final class STBImage {
         stbi_zlib_decode_noheader_malloc = downcall("stbi_zlib_decode_noheader_malloc", PIPP);
     }
 
-    protected STBImage() {
+    private STBImage() {
         throw new IllegalStateException("Do not construct instance");
     }
 

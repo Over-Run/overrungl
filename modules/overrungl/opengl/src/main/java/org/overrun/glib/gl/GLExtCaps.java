@@ -25,9 +25,19 @@
 package org.overrun.glib.gl;
 
 import org.overrun.glib.gl.ext.GL3DFXTbuffer;
+import org.overrun.glib.gl.ext.GLKHRDebug;
 import org.overrun.glib.gl.ext.amd.*;
+import org.overrun.glib.gl.ext.apple.*;
+import org.overrun.glib.gl.ext.arb.GLARBDebugOutput;
+import org.overrun.glib.gl.ext.arb.GLARBES2Compatibility;
+import org.overrun.glib.gl.ext.arb.GLARBES31Compatibility;
+import org.overrun.glib.gl.ext.arb.GLARBES32Compatibility;
+import org.overrun.glib.gl.ext.sun.*;
 
-import java.lang.foreign.*;
+import java.lang.foreign.Addressable;
+import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -220,6 +230,11 @@ public final class GLExtCaps {
         public boolean no() {
             return !value;
         }
+
+        @Override
+        public String toString() {
+            return name() + "=" + value;
+        }
     }
 
     private static boolean getExtensions(SegmentAllocator allocator,
@@ -227,7 +242,7 @@ public final class GLExtCaps {
                                          MemorySegment outExts,
                                          MemorySegment outNumExtsI,
                                          MemorySegment[] outExtsI) {
-        if (GLCaps.versionMajor(version) < 3) {
+        if (GLLoader.versionMajor(version) < 3) {
             if (GL10C.glGetString == null) {
                 return false;
             }
@@ -256,7 +271,7 @@ public final class GLExtCaps {
     }
 
     private static boolean hasExtension(int version, String exts, int numExtsI, String[] extsI, String ext) {
-        if (GLCaps.versionMajor(version) < 3) {
+        if (GLLoader.versionMajor(version) < 3) {
             if (exts == null || ext == null) {
                 return false;
             }
@@ -290,7 +305,7 @@ public final class GLExtCaps {
     }
 
     static void load(GLLoadFunc load) {
-        // TODO: 14/307 extensions
+        // TODO: 32/307 extensions
         GL3DFXTbuffer.load(load);
         GLAMDDebugOutput.load(load);
         GLAMDDrawBuffersBlend.load(load);
@@ -306,5 +321,297 @@ public final class GLExtCaps {
         GLAMDSparseTexture.load(load);
         GLAMDStencilOperationExtended.load(load);
         GLAMDVertexShaderTessellator.load(load);
+        GLAPPLEElementArray.load(load);
+        GLAPPLEFence.load(load);
+        GLAPPLEFlushBufferRange.load(load);
+        GLAPPLEObjectPurgeable.load(load);
+        GLAPPLETextureRange.load(load);
+        GLAPPLEVertexArrayObject.load(load);
+        GLAPPLEVertexArrayRange.load(load);
+        GLAPPLEVertexProgramEvaluators.load(load);
+        GLARBES2Compatibility.load(load);
+        GLARBES31Compatibility.load(load);
+        GLARBES32Compatibility.load(load);
+        // GLARBBase_instance.load(load);
+        // GLARBBindless_texture.load(load);
+        // GLARBBlend_func_extended.load(load);
+        // GLARBBuffer_storage.load(load);
+        // GLARBCl_event.load(load);
+        // GLARBClear_buffer_object.load(load);
+        // GLARBClear_texture.load(load);
+        // GLARBClip_control.load(load);
+        // GLARBColor_buffer_float.load(load);
+        // GLARBCompute_shader.load(load);
+        // GLARBCompute_variable_group_size.load(load);
+        // GLARBCopy_buffer.load(load);
+        // GLARBCopy_image.load(load);
+        GLARBDebugOutput.load(load);
+        // GLARBDirect_state_access.load(load);
+        // GLARBDraw_buffers.load(load);
+        // GLARBDraw_buffers_blend.load(load);
+        // GLARBDraw_elements_base_vertex.load(load);
+        // GLARBDraw_indirect.load(load);
+        // GLARBDraw_instanced.load(load);
+        // GLARBFragment_program.load(load);
+        // GLARBFramebuffer_no_attachments.load(load);
+        // GLARBFramebuffer_object.load(load);
+        // GLARBGeometry_shader4.load(load);
+        // GLARBGet_program_binary.load(load);
+        // GLARBGet_texture_sub_image.load(load);
+        // GLARBGl_spirv.load(load);
+        // GLARBGpu_shader_fp64.load(load);
+        // GLARBGpu_shader_int64.load(load);
+        // GLARBImaging.load(load);
+        // GLARBIndirect_parameters.load(load);
+        // GLARBInstanced_arrays.load(load);
+        // GLARBInternalformat_query.load(load);
+        // GLARBInternalformat_query2.load(load);
+        // GLARBInvalidate_subdata.load(load);
+        // GLARBMap_buffer_range.load(load);
+        // GLARBMatrix_palette.load(load);
+        // GLARBMulti_bind.load(load);
+        // GLARBMulti_draw_indirect.load(load);
+        // GLARBMultisample.load(load);
+        // GLARBMultitexture.load(load);
+        // GLARBOcclusion_query.load(load);
+        // GLARBParallel_shader_compile.load(load);
+        // GLARBPoint_parameters.load(load);
+        // GLARBPolygon_offset_clamp.load(load);
+        // GLARBProgram_interface_query.load(load);
+        // GLARBProvoking_vertex.load(load);
+        // GLARBBobustness.load(load);
+        // GLARBSample_locations.load(load);
+        // GLARBSample_shading.load(load);
+        // GLARBSampler_objects.load(load);
+        // GLARBSeparate_shader_objects.load(load);
+        // GLARBShader_atomic_counters.load(load);
+        // GLARBShader_image_load_store.load(load);
+        // GLARBShader_objects.load(load);
+        // GLARBShader_storage_buffer_object.load(load);
+        // GLARBShader_subroutine.load(load);
+        // GLARBShading_language_include.load(load);
+        // GLARBSparse_buffer.load(load);
+        // GLARBSparse_texture.load(load);
+        // GLARBSync.load(load);
+        // GLARBTessellation_shader.load(load);
+        // GLARBTexture_barrier.load(load);
+        // GLARBTexture_buffer_object.load(load);
+        // GLARBTexture_buffer_range.load(load);
+        // GLARBTexture_compression.load(load);
+        // GLARBTexture_multisample.load(load);
+        // GLARBTexture_storage.load(load);
+        // GLARBTexture_storage_multisample.load(load);
+        // GLARBTexture_view.load(load);
+        // GLARBTimer_query.load(load);
+        // GLARBTransform_feedback2.load(load);
+        // GLARBTransform_feedback3.load(load);
+        // GLARBTransform_feedback_instanced.load(load);
+        // GLARBTranspose_matrix.load(load);
+        // GLARBUniform_buffer_object.load(load);
+        // GLARBVertex_array_object.load(load);
+        // GLARBVertex_attrib_64bit.load(load);
+        // GLARBVertex_attrib_binding.load(load);
+        // GLARBVertex_blend.load(load);
+        // GLARBVertex_buffer_object.load(load);
+        // GLARBVertex_program.load(load);
+        // GLARBVertex_shader.load(load);
+        // GLARBVertex_type_2_10_10_10_rev.load(load);
+        // GLARBViewport_array.load(load);
+        // GLARBWindow_pos.load(load);
+        // GLATIDraw_buffers.load(load);
+        // GLATIElement_array.load(load);
+        // GLATIEnvmap_bumpmap.load(load);
+        // GLATIFragment_shader.load(load);
+        // GLATIMap_object_buffer.load(load);
+        // GLATIPn_triangles.load(load);
+        // GLATISeparate_stencil.load(load);
+        // GLATIVertex_array_object.load(load);
+        // GLATIVertex_attrib_array_object.load(load);
+        // GLATIVertex_streams.load(load);
+        // GLEXT_EGL_image_storage.load(load);
+        // GLEXT_bindable_uniform.load(load);
+        // GLEXT_blend_color.load(load);
+        // GLEXT_blend_equation_separate.load(load);
+        // GLEXT_blend_func_separate.load(load);
+        // GLEXT_blend_minmax.load(load);
+        // GLEXT_color_subtable.load(load);
+        // GLEXT_compiled_vertex_array.load(load);
+        // GLEXT_convolution.load(load);
+        // GLEXT_coordinate_frame.load(load);
+        // GLEXT_copy_texture.load(load);
+        // GLEXT_cull_vertex.load(load);
+        // GLEXT_debug_label.load(load);
+        // GLEXT_debug_marker.load(load);
+        // GLEXT_depth_bounds_test.load(load);
+        // GLEXT_direct_state_access.load(load);
+        // GLEXT_draw_buffers2.load(load);
+        // GLEXT_draw_instanced.load(load);
+        // GLEXT_draw_range_elements.load(load);
+        // GLEXT_external_buffer.load(load);
+        // GLEXT_fog_coord.load(load);
+        // GLEXT_framebuffer_blit.load(load);
+        // GLEXT_framebuffer_multisample.load(load);
+        // GLEXT_framebuffer_object.load(load);
+        // GLEXT_geometry_shader4.load(load);
+        // GLEXT_gpu_program_parameters.load(load);
+        // GLEXT_gpu_shader4.load(load);
+        // GLEXT_histogram.load(load);
+        // GLEXT_index_func.load(load);
+        // GLEXT_index_material.load(load);
+        // GLEXT_light_texture.load(load);
+        // GLEXT_memory_object.load(load);
+        // GLEXT_memory_object_fd.load(load);
+        // GLEXT_memory_object_win32.load(load);
+        // GLEXT_multi_draw_arrays.load(load);
+        // GLEXT_multisample.load(load);
+        // GLEXT_paletted_texture.load(load);
+        // GLEXT_pixel_transform.load(load);
+        // GLEXT_point_parameters.load(load);
+        // GLEXT_polygon_offset.load(load);
+        // GLEXT_polygon_offset_clamp.load(load);
+        // GLEXT_provoking_vertex.load(load);
+        // GLEXT_raster_multisample.load(load);
+        // GLEXT_secondary_color.load(load);
+        // GLEXT_semaphore.load(load);
+        // GLEXT_semaphore_fd.load(load);
+        // GLEXT_semaphore_win32.load(load);
+        // GLEXT_separate_shader_objects.load(load);
+        // GLEXT_shader_framebuffer_fetch_non_coherent.load(load);
+        // GLEXT_shader_image_load_store.load(load);
+        // GLEXT_stencil_clear_tag.load(load);
+        // GLEXT_stencil_two_side.load(load);
+        // GLEXT_subtexture.load(load);
+        // GLEXT_texture3D.load(load);
+        // GLEXT_texture_array.load(load);
+        // GLEXT_texture_buffer_object.load(load);
+        // GLEXT_texture_integer.load(load);
+        // GLEXT_texture_object.load(load);
+        // GLEXT_texture_perturb_normal.load(load);
+        // GLEXT_texture_storage.load(load);
+        // GLEXT_timer_query.load(load);
+        // GLEXT_transform_feedback.load(load);
+        // GLEXT_vertex_array.load(load);
+        // GLEXT_vertex_attrib_64bit.load(load);
+        // GLEXT_vertex_shader.load(load);
+        // GLEXT_vertex_weighting.load(load);
+        // GLEXT_win32_keyed_mutex.load(load);
+        // GLEXT_window_rectangles.load(load);
+        // GLEXT_x11_sync_object.load(load);
+        // GLGREMEDY_frame_terminator.load(load);
+        // GLGREMEDY_string_marker.load(load);
+        // GLHP_image_transform.load(load);
+        // GLIBM_multimode_draw_arrays.load(load);
+        // GLIBM_static_data.load(load);
+        // GLIBM_vertex_array_lists.load(load);
+        // GLINGR_blend_func_separate.load(load);
+        // GLINTEL_framebuffer_CMAA.load(load);
+        // GLINTEL_map_texture.load(load);
+        // GLINTEL_parallel_arrays.load(load);
+        // GLINTEL_performance_query.load(load);
+        // GLKHR_blend_equation_advanced.load(load);
+        GLKHRDebug.load(load);
+        // GLKHR_parallel_shader_compile.load(load);
+        // GLKHR_robustness.load(load);
+        // GLMESA_framebuffer_flip_y.load(load);
+        // GLMESA_resize_buffers.load(load);
+        // GLMESA_window_pos.load(load);
+        // GLNVX_conditional_render.load(load);
+        // GLNVX_gpu_multicast2.load(load);
+        // GLNVX_linked_gpu_multicast.load(load);
+        // GLNVX_progress_fence.load(load);
+        // GLNV_alpha_to_coverage_dither_control.load(load);
+        // GLNV_bindless_multi_draw_indirect.load(load);
+        // GLNV_bindless_multi_draw_indirect_count.load(load);
+        // GLNV_bindless_texture.load(load);
+        // GLNV_blend_equation_advanced.load(load);
+        // GLNV_clip_space_w_scaling.load(load);
+        // GLNV_command_list.load(load);
+        // GLNV_conditional_render.load(load);
+        // GLNV_conservative_raster.load(load);
+        // GLNV_conservative_raster_dilate.load(load);
+        // GLNV_conservative_raster_pre_snap_triangles.load(load);
+        // GLNV_copy_image.load(load);
+        // GLNV_depth_buffer_float.load(load);
+        // GLNV_draw_texture.load(load);
+        // GLNV_draw_vulkan_image.load(load);
+        // GLNV_evaluators.load(load);
+        // GLNV_explicit_multisample.load(load);
+        // GLNV_fence.load(load);
+        // GLNV_fragment_coverage_to_color.load(load);
+        // GLNV_fragment_program.load(load);
+        // GLNV_framebuffer_mixed_samples.load(load);
+        // GLNV_framebuffer_multisample_coverage.load(load);
+        // GLNV_geometry_program4.load(load);
+        // GLNV_gpu_multicast.load(load);
+        // GLNV_gpu_program4.load(load);
+        // GLNV_gpu_program5.load(load);
+        // GLNV_gpu_shader5.load(load);
+        // GLNV_half_float.load(load);
+        // GLNV_internalformat_sample_query.load(load);
+        // GLNV_memory_attachment.load(load);
+        // GLNV_memory_object_sparse.load(load);
+        // GLNV_mesh_shader.load(load);
+        // GLNV_occlusion_query.load(load);
+        // GLNV_parameter_buffer_object.load(load);
+        // GLNV_path_rendering.load(load);
+        // GLNV_pixel_data_range.load(load);
+        // GLNV_point_sprite.load(load);
+        // GLNV_present_video.load(load);
+        // GLNV_primitive_restart.load(load);
+        // GLNV_query_resource.load(load);
+        // GLNV_query_resource_tag.load(load);
+        // GLNV_register_combiners.load(load);
+        // GLNV_register_combiners2.load(load);
+        // GLNV_sample_locations.load(load);
+        // GLNV_scissor_exclusive.load(load);
+        // GLNV_shader_buffer_load.load(load);
+        // GLNV_shading_rate_image.load(load);
+        // GLNV_texture_barrier.load(load);
+        // GLNV_texture_multisample.load(load);
+        // GLNV_timeline_semaphore.load(load);
+        // GLNV_transform_feedback.load(load);
+        // GLNV_transform_feedback2.load(load);
+        // GLNV_vdpau_interop.load(load);
+        // GLNV_vdpau_interop2.load(load);
+        // GLNV_vertex_array_range.load(load);
+        // GLNV_vertex_attrib_integer_64bit.load(load);
+        // GLNV_vertex_buffer_unified_memory.load(load);
+        // GLNV_vertex_program.load(load);
+        // GLNV_vertex_program4.load(load);
+        // GLNV_video_capture.load(load);
+        // GLNV_viewport_swizzle.load(load);
+        // GLOES_byte_coordinates.load(load);
+        // GLOES_fixed_point.load(load);
+        // GLOES_query_matrix.load(load);
+        // GLOES_single_precision.load(load);
+        // GLOVR_multiview.load(load);
+        // GLPGIMiscHints.load(load);
+        // GLSGISDetailTexture.load(load);
+        // GLSGISFogFunction.load(load);
+        // GLSGISMultisample.load(load);
+        // GLSGISPixelTexture.load(load);
+        // GLSGISPointParameters.load(load);
+        // GLSGISSharpenTexture.load(load);
+        // GLSGISTexture4D.load(load);
+        // GLSGISTextureColorMask.load(load);
+        // GLSGISTextureFilter4.load(load);
+        // GLSGIXAsync.load(load);
+        // GLSGIXFlushRaster.load(load);
+        // GLSGIXFragmentLighting.load(load);
+        // GLSGIXFramezoom.load(load);
+        // GLSGIXIglooInterface.load(load);
+        // GLSGIXInstruments.load(load);
+        // GLSGIXListPriority.load(load);
+        // GLSGIXPixelTexture.load(load);
+        // GLSGIXPolynomialFfd.load(load);
+        // GLSGIXReferencePlane.load(load);
+        // GLSGIXSprite.load(load);
+        // GLSGIXTagSampleBuffer.load(load);
+        // GLSGIColorTable.load(load);
+        GLSUNXConstantData.load(load);
+        GLSUNGlobalAlpha.load(load);
+        GLSUNMeshArray.load(load);
+        GLSUNTriangleList.load(load);
+        GLSUNVertex.load(load);
     }
 }

@@ -30,7 +30,7 @@ import java.lang.foreign.Addressable;
 import java.lang.invoke.MethodHandle;
 
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.*;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.3 forward compatible functions.

@@ -32,8 +32,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.FunctionDescriptors.IIZPV;
-import static org.overrun.glib.gl.GLCaps.check;
-import static org.overrun.glib.gl.GLCaps.checkAll;
+import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.checkAll;
 
 /**
  * The OpenGL 2.1 forward compatible functions.

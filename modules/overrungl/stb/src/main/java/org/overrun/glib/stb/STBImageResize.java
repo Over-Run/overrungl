@@ -65,7 +65,7 @@ public final class STBImageResize {
         stbir_resize_uint8_srgb_edgemode = downcall("stbir_resize_uint8_srgb_edgemode", PIIIPIIIIIIII);
     }
 
-    protected STBImageResize() {
+    private STBImageResize() {
         throw new IllegalStateException("Do not construct instance");
     }
 

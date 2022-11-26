@@ -37,7 +37,7 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * {@code GL_AMD_performance_monitor}

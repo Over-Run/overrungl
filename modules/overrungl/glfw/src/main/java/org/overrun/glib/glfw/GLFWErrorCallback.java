@@ -54,8 +54,19 @@ public final class GLFWErrorCallback {
      */
     public static IGLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
-            logger.accept("[OverrunGL] GLFW Error " + errorCode + " (" + GLFW.getErrorString(errorCode) + ")");
-            logger.accept("\tDescription: " + description);
+            var sb = new StringBuilder(512);
+            sb.append("[OverrunGL] GLFW_")
+                .append(GLFW.getErrorString(errorCode))
+                .append(" error: ")
+                .append(description)
+                .append("\n");
+            var stack = Thread.currentThread().getStackTrace();
+            for (int i = 3; i < stack.length; i++) {
+                sb.append("    at ")
+                    .append(stack[i])
+                    .append("\n");
+            }
+            logger.accept(sb.toString());
         };
     }
 

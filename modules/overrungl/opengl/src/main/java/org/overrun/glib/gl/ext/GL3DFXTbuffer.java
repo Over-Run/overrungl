@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -49,7 +49,7 @@ public final class GL3DFXTbuffer {
 
     public static void glTbufferMask3DFX(int mask) {
         try {
-            GLCaps.check(glTbufferMask3DFX).invokeExact(mask);
+            GLLoader.check(glTbufferMask3DFX).invokeExact(mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

@@ -33,6 +33,8 @@ Our goal is to support these libraries with full document:
 - [ ] [Vulkan](https://www.vulkan.org/) (Currently 0%)
 - [ ] [OpenAL](https://www.openal.org/) (Currently 0%)
 
+Checked item means it has full functional but might be not documented.
+
 |                         Total Progress                         |
 |:--------------------------------------------------------------:|
 | ![total progress](https://progress-bar.dev/32/?title=progress) |

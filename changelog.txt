@@ -3,7 +3,7 @@
 Added
 - GLFW 3.3.8
 - OpenGL 1.0 ~ 4.6 functions and constants
-- OpenGL 14/307 extensions
+- OpenGL 32/307 extensions
 - OpenGL Loader
 - STB Image
 - C memory function

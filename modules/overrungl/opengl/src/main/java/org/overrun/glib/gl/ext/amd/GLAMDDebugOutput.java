@@ -38,7 +38,7 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * {@code GL_AMD_debug_output}
@@ -48,8 +48,8 @@ import static org.overrun.glib.gl.GLCaps.check;
  */
 public final class GLAMDDebugOutput {
     @Nullable
-    public static MethodHandle
-        glDebugMessageCallbackAMD, glDebugMessageEnableAMD, glDebugMessageInsertAMD, glGetDebugMessageLogAMD;
+    public static MethodHandle glDebugMessageCallbackAMD, glDebugMessageEnableAMD, glDebugMessageInsertAMD,
+        glGetDebugMessageLogAMD;
 
     public static void load(GLLoadFunc load) {
         if (GLExtCaps.Flags.GL_AMD_debug_output.no()) return;

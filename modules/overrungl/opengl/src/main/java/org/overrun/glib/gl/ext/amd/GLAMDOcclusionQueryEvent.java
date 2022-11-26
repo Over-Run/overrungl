@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext.amd;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLCaps;
+import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -49,7 +49,7 @@ public final class GLAMDOcclusionQueryEvent {
 
     public static void glQueryObjectParameteruiAMD(int target, int id, int pname, int param) {
         try {
-            GLCaps.check(glQueryObjectParameteruiAMD).invokeExact(target, id, pname, param);
+            GLLoader.check(glQueryObjectParameteruiAMD).invokeExact(target, id, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

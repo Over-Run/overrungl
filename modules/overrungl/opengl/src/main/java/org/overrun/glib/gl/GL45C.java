@@ -34,7 +34,7 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * The OpenGL 4.5 core profile functions.
@@ -75,7 +75,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         glVertexArrayVertexBuffers;
 
     static boolean isSupported() {
-        return GLCaps.checkAll(glBindTextureUnit, glBlitNamedFramebuffer, glCheckNamedFramebufferStatus,
+        return GLLoader.checkAll(glBindTextureUnit, glBlitNamedFramebuffer, glCheckNamedFramebufferStatus,
             glClearNamedBufferData, glClearNamedBufferSubData, glClearNamedFramebufferfi, glClearNamedFramebufferfv,
             glClearNamedFramebufferiv, glClearNamedFramebufferuiv, glClipControl, glCompressedTextureSubImage1D,
             glCompressedTextureSubImage2D, glCompressedTextureSubImage3D, glCopyNamedBufferSubData,

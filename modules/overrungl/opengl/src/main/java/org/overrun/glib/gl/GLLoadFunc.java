@@ -41,7 +41,7 @@ import java.util.function.BiFunction;
  *
  * <h2>Example</h2>
  * <pre>{@code
- * if (GLCaps.loadShared(GLFW::getProcAddress) == 0)
+ * if (GLLoader.loadShared(GLFW::getProcAddress) == 0)
  *     throw new IllegalStateException("Failed to load OpenGL");
  * }</pre>
  *

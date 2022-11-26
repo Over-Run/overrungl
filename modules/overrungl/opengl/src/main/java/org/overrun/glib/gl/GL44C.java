@@ -33,8 +33,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.check;
-import static org.overrun.glib.gl.GLCaps.checkAll;
+import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.checkAll;
 
 /**
  * The OpenGL 4.4 core profile functions.

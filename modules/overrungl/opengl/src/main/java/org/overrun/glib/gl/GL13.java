@@ -32,8 +32,8 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLCaps.Ver13;
-import static org.overrun.glib.gl.GLCaps.check;
+import static org.overrun.glib.gl.GLLoader.Ver13;
+import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * The OpenGL 1.3 functions.

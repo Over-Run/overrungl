@@ -101,6 +101,27 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Generates a string for unknown token.
+     *
+     * @param token the token.
+     * @return the string formatted in {@code Unknown [0x\{toHexString(token)}]}.
+     */
+    public static String unknownToken(int token) {
+        return unknownToken("Unknown", token);
+    }
+
+    /**
+     * Generates a string for unknown token.
+     *
+     * @param description the description. default to {@code Unknown}
+     * @param token       the token.
+     * @return the string formatted in {@code \{description} [0x\{toHexString(token)}]}.
+     */
+    public static String unknownToken(String description, int token) {
+        return description + " [0x" + Integer.toHexString(token) + "]";
+    }
+
+    /**
      * Load a library from classpath or local.
      *
      * @param module   the module name like {@code glfw}
@@ -199,19 +220,19 @@ public final class RuntimeHelper {
      * Gets the objects from an address array.
      *
      * @param <T>       the array type
-     * @param addr      the memory address contains objects. native type: {@code void**}
+     * @param seg       the memory address contains objects. native type: {@code void**}
      * @param arr       the array to hold the result
      * @param generator the generator, to convert to the array type
      * @return arr
      */
-    public static <T> T[] toArray(Addressable addr, T[] arr,
+    public static <T> T[] toArray(Addressable seg, T[] arr,
                                   Function<MemoryAddress, T> generator) {
-        if (addr instanceof MemorySegment pp) {
+        if (seg instanceof MemorySegment pp) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = generator.apply(pp.getAtIndex(ADDRESS, i));
             }
         } else {
-            var pp = addr.address();
+            var pp = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = generator.apply(pp.getAtIndex(ADDRESS, i));
             }
@@ -222,39 +243,39 @@ public final class RuntimeHelper {
     /**
      * Gets the addresses from an address array.
      *
-     * @param addr the memory address contains addresses. native type: {@code void**}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains addresses. native type: {@code void**}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static MemoryAddress[] toArray(Addressable addr, MemoryAddress[] arr) {
-        return toArray(addr, arr, Function.identity());
+    public static MemoryAddress[] toArray(Addressable seg, MemoryAddress[] arr) {
+        return toArray(seg, arr, Function.identity());
     }
 
     /**
      * Gets the strings from an address array.
      *
-     * @param addr the memory address contains strings. native type: {@code char**}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains strings. native type: {@code char**}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static String[] toArray(Addressable addr, String[] arr) {
-        return toArray(addr, arr, p -> p.getUtf8String(0));
+    public static String[] toArray(Addressable seg, String[] arr) {
+        return toArray(seg, arr, p -> p.getUtf8String(0));
     }
 
     /**
      * Gets the booleans from a boolean array.
      *
-     * @param addr the memory address contains booleans. native type: {@code boolean*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains booleans. native type: {@code boolean*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static boolean[] toArray(Addressable addr, boolean[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static boolean[] toArray(Addressable seg, boolean[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.get(JAVA_BOOLEAN, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.get(JAVA_BOOLEAN, i);
             }
@@ -265,17 +286,17 @@ public final class RuntimeHelper {
     /**
      * Gets the bytes from a byte array.
      *
-     * @param addr the memory address contains bytes. native type: {@code byte*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains bytes. native type: {@code byte*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static byte[] toArray(Addressable addr, byte[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static byte[] toArray(Addressable seg, byte[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.get(JAVA_BYTE, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.get(JAVA_BYTE, i);
             }
@@ -286,17 +307,17 @@ public final class RuntimeHelper {
     /**
      * Gets the shorts from a short array.
      *
-     * @param addr the memory address contains shorts. native type: {@code short*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains shorts. native type: {@code short*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static short[] toArray(Addressable addr, short[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static short[] toArray(Addressable seg, short[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_SHORT, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_SHORT, i);
             }
@@ -307,17 +328,17 @@ public final class RuntimeHelper {
     /**
      * Gets the ints from an int array.
      *
-     * @param addr the memory address contains ints. native type: {@code int*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains ints. native type: {@code int*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static int[] toArray(Addressable addr, int[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static int[] toArray(Addressable seg, int[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_INT, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_INT, i);
             }
@@ -328,17 +349,17 @@ public final class RuntimeHelper {
     /**
      * Gets the longs from a long array.
      *
-     * @param addr the memory address contains longs. native type: {@code long*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains longs. native type: {@code long*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static long[] toArray(Addressable addr, long[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static long[] toArray(Addressable seg, long[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_LONG, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_LONG, i);
             }
@@ -349,17 +370,17 @@ public final class RuntimeHelper {
     /**
      * Gets the floats from a float array.
      *
-     * @param addr the memory address contains floats. native type: {@code float*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains floats. native type: {@code float*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static float[] toArray(Addressable addr, float[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static float[] toArray(Addressable seg, float[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_FLOAT, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_FLOAT, i);
             }
@@ -370,17 +391,17 @@ public final class RuntimeHelper {
     /**
      * Gets the doubles from a double array.
      *
-     * @param addr the memory address contains doubles. native type: {@code double*}
-     * @param arr  the array to hold the result
+     * @param seg the memory address contains doubles. native type: {@code double*}
+     * @param arr the array to hold the result
      * @return arr
      */
-    public static double[] toArray(Addressable addr, double[] arr) {
-        if (addr instanceof MemorySegment p) {
+    public static double[] toArray(Addressable seg, double[] arr) {
+        if (seg instanceof MemorySegment p) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_DOUBLE, i);
             }
         } else {
-            var p = addr.address();
+            var p = seg.address();
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = p.getAtIndex(JAVA_DOUBLE, i);
             }
