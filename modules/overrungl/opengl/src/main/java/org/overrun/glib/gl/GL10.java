@@ -33,6 +33,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getCapabilities;
 
 /**
  * The OpenGL 1.0 functions.
@@ -304,7 +305,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void accum(int op, float value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glAccum).invokeExact(op, value);
         } catch (Throwable e) {
@@ -313,7 +314,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void alphaFunc(int func, float ref) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glAlphaFunc).invokeExact(func, ref);
         } catch (Throwable e) {
@@ -322,7 +323,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void begin(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBegin).invokeExact(mode);
         } catch (Throwable e) {
@@ -331,7 +332,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, Addressable bitmap) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBitmap).invokeExact(width, height, xorig, yorig, xmove, ymove, bitmap);
         } catch (Throwable e) {
@@ -340,7 +341,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void callList(int list) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCallList).invokeExact(list);
         } catch (Throwable e) {
@@ -349,7 +350,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void callLists(int n, int type, Addressable lists) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCallLists).invokeExact(n, type, lists);
         } catch (Throwable e) {
@@ -358,7 +359,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void clearAccum(float red, float green, float blue, float alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearAccum).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -367,7 +368,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void clearIndex(float c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearIndex).invokeExact(c);
         } catch (Throwable e) {
@@ -376,7 +377,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void clipPlane(int plane, Addressable equation) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClipPlane).invokeExact(plane, equation);
         } catch (Throwable e) {
@@ -390,7 +391,7 @@ public final class GL10 extends GL10C {
 
 
     public static void color3b(byte red, byte green, byte blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3b).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -399,7 +400,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3bv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3bv).invokeExact(v);
         } catch (Throwable e) {
@@ -412,7 +413,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3d(double red, double green, double blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3d).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -421,7 +422,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -434,7 +435,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3f(float red, float green, float blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3f).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -443,7 +444,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -456,7 +457,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3i(int red, int green, int blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3i).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -465,7 +466,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -478,7 +479,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3s(short red, short green, short blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3s).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -487,7 +488,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3sv).invokeExact(v);
         } catch (Throwable e) {
@@ -500,7 +501,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3ub(byte red, byte green, byte blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3ub).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -509,7 +510,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3ubv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3ubv).invokeExact(v);
         } catch (Throwable e) {
@@ -522,7 +523,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3ui(int red, int green, int blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3ui).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -531,7 +532,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3uiv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3uiv).invokeExact(v);
         } catch (Throwable e) {
@@ -544,7 +545,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3us(short red, short green, short blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3us).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -553,7 +554,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3usv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor3usv).invokeExact(v);
         } catch (Throwable e) {
@@ -566,7 +567,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4b(byte red, byte green, byte blue, byte alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4b).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -575,7 +576,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4bv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4bv).invokeExact(v);
         } catch (Throwable e) {
@@ -588,7 +589,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4d(double red, double green, double blue, double alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4d).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -597,7 +598,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4dv).invokeExact(v);
         } catch (Throwable e) {
@@ -610,7 +611,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4f(float red, float green, float blue, float alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4f).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -619,7 +620,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4fv).invokeExact(v);
         } catch (Throwable e) {
@@ -632,7 +633,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4i(int red, int green, int blue, int alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4i).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -641,7 +642,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4iv).invokeExact(v);
         } catch (Throwable e) {
@@ -654,7 +655,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4s(short red, short green, short blue, short alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4s).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -663,7 +664,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4sv).invokeExact(v);
         } catch (Throwable e) {
@@ -676,7 +677,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4ub(byte red, byte green, byte blue, byte alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4ub).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -685,7 +686,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4ubv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4ubv).invokeExact(v);
         } catch (Throwable e) {
@@ -698,7 +699,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4ui(int red, int green, int blue, int alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4ui).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -707,7 +708,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4uiv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4uiv).invokeExact(v);
         } catch (Throwable e) {
@@ -720,7 +721,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4us(short red, short green, short blue, short alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4us).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -729,7 +730,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4usv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColor4usv).invokeExact(v);
         } catch (Throwable e) {
@@ -742,7 +743,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void colorMaterial(int face, int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColorMaterial).invokeExact(face, mode);
         } catch (Throwable e) {
@@ -751,7 +752,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void copyPixels(int x, int y, int width, int height, int type) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyPixels).invokeExact(x, y, width, height, type);
         } catch (Throwable e) {
@@ -760,7 +761,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void deleteLists(int list, int range) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteLists).invokeExact(list, range);
         } catch (Throwable e) {
@@ -769,7 +770,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void drawPixels(int width, int height, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawPixels).invokeExact(width, height, format, type, pixels);
         } catch (Throwable e) {
@@ -778,7 +779,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void edgeFlag(boolean flag) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEdgeFlag).invokeExact(flag);
         } catch (Throwable e) {
@@ -787,7 +788,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void edgeFlagv(Addressable flag) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEdgeFlagv).invokeExact(flag);
         } catch (Throwable e) {
@@ -804,7 +805,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void end() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEnd).invokeExact();
         } catch (Throwable e) {
@@ -813,7 +814,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void endList() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEndList).invokeExact();
         } catch (Throwable e) {
@@ -822,7 +823,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord1d(double u) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord1d).invokeExact(u);
         } catch (Throwable e) {
@@ -831,7 +832,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord1dv(Addressable u) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord1dv).invokeExact(u);
         } catch (Throwable e) {
@@ -844,7 +845,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord1f(float u) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord1f).invokeExact(u);
         } catch (Throwable e) {
@@ -853,7 +854,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord1fv(Addressable u) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord1fv).invokeExact(u);
         } catch (Throwable e) {
@@ -866,7 +867,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord2d(double u, double v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord2d).invokeExact(u, v);
         } catch (Throwable e) {
@@ -875,7 +876,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord2dv(Addressable u) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord2dv).invokeExact(u);
         } catch (Throwable e) {
@@ -888,7 +889,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord2f(float u, float v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord2f).invokeExact(u, v);
         } catch (Throwable e) {
@@ -897,7 +898,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord2fv(Addressable u) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalCoord2fv).invokeExact(u);
         } catch (Throwable e) {
@@ -910,7 +911,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalMesh1(int mode, int i1, int i2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalMesh1).invokeExact(mode, i1, i2);
         } catch (Throwable e) {
@@ -919,7 +920,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalMesh2(int mode, int i1, int i2, int j1, int j2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalMesh2).invokeExact(mode, i1, i2, j1, j2);
         } catch (Throwable e) {
@@ -928,7 +929,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalPoint1(int mode, int i) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalPoint1).invokeExact(mode, i);
         } catch (Throwable e) {
@@ -937,7 +938,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalPoint2(int mode, int i, int j) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEvalPoint2).invokeExact(mode, i, j);
         } catch (Throwable e) {
@@ -946,7 +947,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void feedbackBuffer(int size, int type, Addressable buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFeedbackBuffer).invokeExact(size, type, buffer);
         } catch (Throwable e) {
@@ -961,7 +962,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogf(int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogf).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -970,7 +971,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogfv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogfv).invokeExact(pname, params);
         } catch (Throwable e) {
@@ -983,7 +984,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogi(int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogi).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -992,7 +993,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogiv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogiv).invokeExact(pname, params);
         } catch (Throwable e) {
@@ -1005,7 +1006,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void frustum(double left, double right, double bottom, double top, double zNear, double zFar) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFrustum).invokeExact(left, right, bottom, top, zNear, zFar);
         } catch (Throwable e) {
@@ -1014,7 +1015,7 @@ public final class GL10 extends GL10C {
     }
 
     public static int genLists(int range) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGenLists).invokeExact(range);
         } catch (Throwable e) {
@@ -1023,7 +1024,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getClipPlane(int plane, Addressable equation) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetClipPlane).invokeExact(plane, equation);
         } catch (Throwable e) {
@@ -1049,7 +1050,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getLightfv(int light, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetLightfv).invokeExact(light, pname, params);
         } catch (Throwable e) {
@@ -1076,7 +1077,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getLightiv(int light, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetLightiv).invokeExact(light, pname, params);
         } catch (Throwable e) {
@@ -1103,7 +1104,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapdv(int target, int query, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetMapdv).invokeExact(target, query, v);
         } catch (Throwable e) {
@@ -1130,7 +1131,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapfv(int target, int query, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetMapfv).invokeExact(target, query, v);
         } catch (Throwable e) {
@@ -1157,7 +1158,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapiv(int target, int query, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetMapiv).invokeExact(target, query, v);
         } catch (Throwable e) {
@@ -1184,7 +1185,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMaterialfv(int face, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetMaterialfv).invokeExact(face, pname, params);
         } catch (Throwable e) {
@@ -1211,7 +1212,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMaterialiv(int face, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetMaterialiv).invokeExact(face, pname, params);
         } catch (Throwable e) {
@@ -1238,7 +1239,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapfv(int map, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetPixelMapfv).invokeExact(map, values);
         } catch (Throwable e) {
@@ -1253,7 +1254,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapuiv(int map, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetPixelMapuiv).invokeExact(map, values);
         } catch (Throwable e) {
@@ -1268,7 +1269,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapusv(int map, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetPixelMapusv).invokeExact(map, values);
         } catch (Throwable e) {
@@ -1283,7 +1284,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPolygonStipple(Addressable mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetPolygonStipple).invokeExact(mask);
         } catch (Throwable e) {
@@ -1298,7 +1299,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexEnvfv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexEnvfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -1325,7 +1326,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexEnviv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexEnviv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -1352,7 +1353,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGendv(int coord, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexGendv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
@@ -1367,7 +1368,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGenfv(int coord, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexGenfv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
@@ -1382,7 +1383,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGeniv(int coord, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexGeniv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
@@ -1397,7 +1398,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexMask(int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexMask).invokeExact(mask);
         } catch (Throwable e) {
@@ -1406,7 +1407,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexd(double c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexd).invokeExact(c);
         } catch (Throwable e) {
@@ -1415,7 +1416,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexdv(Addressable c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexdv).invokeExact(c);
         } catch (Throwable e) {
@@ -1428,7 +1429,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexf(float c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexf).invokeExact(c);
         } catch (Throwable e) {
@@ -1437,7 +1438,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexfv(Addressable c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexfv).invokeExact(c);
         } catch (Throwable e) {
@@ -1450,7 +1451,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexi(int c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexi).invokeExact(c);
         } catch (Throwable e) {
@@ -1459,7 +1460,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexiv(Addressable c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexiv).invokeExact(c);
         } catch (Throwable e) {
@@ -1472,7 +1473,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexs(short c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexs).invokeExact(c);
         } catch (Throwable e) {
@@ -1481,7 +1482,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexsv(Addressable c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexsv).invokeExact(c);
         } catch (Throwable e) {
@@ -1494,7 +1495,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void initNames() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInitNames).invokeExact();
         } catch (Throwable e) {
@@ -1503,7 +1504,7 @@ public final class GL10 extends GL10C {
     }
 
     public static boolean isList(int list) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsList).invokeExact(list);
         } catch (Throwable e) {
@@ -1512,7 +1513,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightModelf(int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightModelf).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -1521,7 +1522,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightModelfv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightModelfv).invokeExact(pname, params);
         } catch (Throwable e) {
@@ -1534,7 +1535,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightModeli(int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightModeli).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -1543,7 +1544,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightModeliv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightModeliv).invokeExact(pname, params);
         } catch (Throwable e) {
@@ -1556,7 +1557,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightf(int light, int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightf).invokeExact(light, pname, param);
         } catch (Throwable e) {
@@ -1565,7 +1566,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightfv(int light, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightfv).invokeExact(light, pname, params);
         } catch (Throwable e) {
@@ -1578,7 +1579,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lighti(int light, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLighti).invokeExact(light, pname, param);
         } catch (Throwable e) {
@@ -1587,7 +1588,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightiv(int light, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLightiv).invokeExact(light, pname, params);
         } catch (Throwable e) {
@@ -1600,7 +1601,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lineStipple(int factor, short pattern) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLineStipple).invokeExact(factor, pattern);
         } catch (Throwable e) {
@@ -1609,7 +1610,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void listBase(int base) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glListBase).invokeExact(base);
         } catch (Throwable e) {
@@ -1618,7 +1619,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void loadIdentity() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLoadIdentity).invokeExact();
         } catch (Throwable e) {
@@ -1627,7 +1628,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void loadMatrixd(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLoadMatrixd).invokeExact(m);
         } catch (Throwable e) {
@@ -1640,7 +1641,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void loadMatrixf(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLoadMatrixf).invokeExact(m);
         } catch (Throwable e) {
@@ -1653,7 +1654,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void loadName(int name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLoadName).invokeExact(name);
         } catch (Throwable e) {
@@ -1662,7 +1663,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map1d(int target, double u1, double u2, int stride, int order, Addressable points) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMap1d).invokeExact(target, u1, u2, stride, order, points);
         } catch (Throwable e) {
@@ -1675,7 +1676,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map1f(int target, float u1, float u2, int stride, int order, Addressable points) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMap1f).invokeExact(target, u1, u2, stride, order, points);
         } catch (Throwable e) {
@@ -1688,7 +1689,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMap2d).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
@@ -1701,7 +1702,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMap2f).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
@@ -1714,7 +1715,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void mapGrid1d(int un, double u1, double u2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMapGrid1d).invokeExact(un, u1, u2);
         } catch (Throwable e) {
@@ -1723,7 +1724,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void mapGrid1f(int un, float u1, float u2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMapGrid1f).invokeExact(un, u1, u2);
         } catch (Throwable e) {
@@ -1732,7 +1733,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void mapGrid2d(int un, double u1, double u2, int vn, double v1, double v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMapGrid2d).invokeExact(un, u1, u2, vn, v1, v2);
         } catch (Throwable e) {
@@ -1741,7 +1742,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void mapGrid2f(int un, float u1, float u2, int vn, float v1, float v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMapGrid2f).invokeExact(un, u1, u2, vn, v1, v2);
         } catch (Throwable e) {
@@ -1750,7 +1751,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void materialf(int face, int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMaterialf).invokeExact(face, pname, param);
         } catch (Throwable e) {
@@ -1759,7 +1760,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void materialfv(int face, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMaterialfv).invokeExact(face, pname, params);
         } catch (Throwable e) {
@@ -1772,7 +1773,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void materiali(int face, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMateriali).invokeExact(face, pname, param);
         } catch (Throwable e) {
@@ -1781,7 +1782,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void materialiv(int face, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMaterialiv).invokeExact(face, pname, params);
         } catch (Throwable e) {
@@ -1794,7 +1795,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void matrixMode(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMatrixMode).invokeExact(mode);
         } catch (Throwable e) {
@@ -1803,7 +1804,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void multMatrixd(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultMatrixd).invokeExact(m);
         } catch (Throwable e) {
@@ -1816,7 +1817,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void multMatrixf(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultMatrixf).invokeExact(m);
         } catch (Throwable e) {
@@ -1829,7 +1830,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void newList(int list, int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNewList).invokeExact(list, mode);
         } catch (Throwable e) {
@@ -1838,7 +1839,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3b(byte nx, byte ny, byte nz) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3b).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
@@ -1847,7 +1848,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3bv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3bv).invokeExact(v);
         } catch (Throwable e) {
@@ -1860,7 +1861,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3d(double nx, double ny, double nz) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3d).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
@@ -1869,7 +1870,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -1882,7 +1883,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3f(float nx, float ny, float nz) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3f).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
@@ -1891,7 +1892,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -1904,7 +1905,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3i(int nx, int ny, int nz) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3i).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
@@ -1913,7 +1914,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -1926,7 +1927,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3s(short nx, short ny, short nz) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3s).invokeExact(nx, ny, nz);
         } catch (Throwable e) {
@@ -1935,7 +1936,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormal3sv).invokeExact(v);
         } catch (Throwable e) {
@@ -1948,7 +1949,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glOrtho).invokeExact(left, right, bottom, top, zNear, zFar);
         } catch (Throwable e) {
@@ -1957,7 +1958,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void passThrough(float token) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPassThrough).invokeExact(token);
         } catch (Throwable e) {
@@ -1966,7 +1967,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelMapfv(int map, int mapSize, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelMapfv).invokeExact(map, mapSize, values);
         } catch (Throwable e) {
@@ -1979,7 +1980,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelMapuiv(int map, int mapSize, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelMapuiv).invokeExact(map, mapSize, values);
         } catch (Throwable e) {
@@ -1992,7 +1993,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelMapusv(int map, int mapSize, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelMapusv).invokeExact(map, mapSize, values);
         } catch (Throwable e) {
@@ -2005,7 +2006,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelTransferf(int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelTransferf).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -2014,7 +2015,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelTransferi(int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelTransferi).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -2023,7 +2024,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelZoom(float xfactor, float yfactor) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelZoom).invokeExact(xfactor, yfactor);
         } catch (Throwable e) {
@@ -2032,7 +2033,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void polygonStipple(Addressable mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPolygonStipple).invokeExact(mask);
         } catch (Throwable e) {
@@ -2045,7 +2046,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void popAttrib() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPopAttrib).invokeExact();
         } catch (Throwable e) {
@@ -2054,7 +2055,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void popMatrix() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPopMatrix).invokeExact();
         } catch (Throwable e) {
@@ -2063,7 +2064,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void popName() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPopName).invokeExact();
         } catch (Throwable e) {
@@ -2072,7 +2073,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pushAttrib(int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPushAttrib).invokeExact(mask);
         } catch (Throwable e) {
@@ -2081,7 +2082,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pushMatrix() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPushMatrix).invokeExact();
         } catch (Throwable e) {
@@ -2090,7 +2091,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pushName(int name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPushName).invokeExact(name);
         } catch (Throwable e) {
@@ -2099,7 +2100,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2d(double x, double y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2d).invokeExact(x, y);
         } catch (Throwable e) {
@@ -2108,7 +2109,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2121,7 +2122,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2f(float x, float y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2f).invokeExact(x, y);
         } catch (Throwable e) {
@@ -2130,7 +2131,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2143,7 +2144,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2i(int x, int y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2i).invokeExact(x, y);
         } catch (Throwable e) {
@@ -2152,7 +2153,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2165,7 +2166,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2s(short x, short y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2s).invokeExact(x, y);
         } catch (Throwable e) {
@@ -2174,7 +2175,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos2sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2187,7 +2188,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3d(double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3d).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2196,7 +2197,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2209,7 +2210,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3f(float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3f).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2218,7 +2219,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2231,7 +2232,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3i(int x, int y, int z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3i).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2240,7 +2241,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2253,7 +2254,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3s(short x, short y, short z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3s).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2262,7 +2263,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos3sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2275,7 +2276,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4d(double x, double y, double z, double w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4d).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -2284,7 +2285,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2297,7 +2298,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4f(float x, float y, float z, float w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4f).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -2306,7 +2307,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2319,7 +2320,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4i(int x, int y, int z, int w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4i).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -2328,7 +2329,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2341,7 +2342,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4s(short x, short y, short z, short w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4s).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -2350,7 +2351,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRasterPos4sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2363,7 +2364,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectd(double x1, double y1, double x2, double y2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRectd).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
@@ -2372,7 +2373,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectdv(Addressable v1, Addressable v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRectdv).invokeExact(v1, v2);
         } catch (Throwable e) {
@@ -2385,7 +2386,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectf(float x1, float y1, float x2, float y2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRectf).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
@@ -2394,7 +2395,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectfv(Addressable v1, Addressable v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRectfv).invokeExact(v1, v2);
         } catch (Throwable e) {
@@ -2407,7 +2408,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void recti(int x1, int y1, int x2, int y2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRecti).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
@@ -2416,7 +2417,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectiv(Addressable v1, Addressable v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRectiv).invokeExact(v1, v2);
         } catch (Throwable e) {
@@ -2429,7 +2430,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rects(short x1, short y1, short x2, short y2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRects).invokeExact(x1, y1, x2, y2);
         } catch (Throwable e) {
@@ -2438,7 +2439,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectsv(Addressable v1, Addressable v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRectsv).invokeExact(v1, v2);
         } catch (Throwable e) {
@@ -2451,7 +2452,7 @@ public final class GL10 extends GL10C {
     }
 
     public static int renderMode(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glRenderMode).invokeExact(mode);
         } catch (Throwable e) {
@@ -2460,7 +2461,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rotated(double angle, double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRotated).invokeExact(angle, x, y, z);
         } catch (Throwable e) {
@@ -2469,7 +2470,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rotatef(float angle, float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRotatef).invokeExact(angle, x, y, z);
         } catch (Throwable e) {
@@ -2478,7 +2479,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void scaled(double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glScaled).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2487,7 +2488,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void scalef(float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glScalef).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2496,7 +2497,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void selectBuffer(int size, Addressable buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSelectBuffer).invokeExact(size, buffer);
         } catch (Throwable e) {
@@ -2511,7 +2512,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void shadeModel(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glShadeModel).invokeExact(mode);
         } catch (Throwable e) {
@@ -2520,7 +2521,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1d(double s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1d).invokeExact(s);
         } catch (Throwable e) {
@@ -2529,7 +2530,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2542,7 +2543,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1f(float s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1f).invokeExact(s);
         } catch (Throwable e) {
@@ -2551,7 +2552,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2564,7 +2565,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1i(int s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1i).invokeExact(s);
         } catch (Throwable e) {
@@ -2573,7 +2574,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2586,7 +2587,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1s(short s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1s).invokeExact(s);
         } catch (Throwable e) {
@@ -2595,7 +2596,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord1sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2608,7 +2609,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2d(double s, double t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2d).invokeExact(s, t);
         } catch (Throwable e) {
@@ -2617,7 +2618,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2630,7 +2631,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2f(float s, float t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2f).invokeExact(s, t);
         } catch (Throwable e) {
@@ -2639,7 +2640,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2652,7 +2653,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2i(int s, int t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2i).invokeExact(s, t);
         } catch (Throwable e) {
@@ -2661,7 +2662,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2674,7 +2675,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2s(short s, short t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2s).invokeExact(s, t);
         } catch (Throwable e) {
@@ -2683,7 +2684,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord2sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2696,7 +2697,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3d(double s, double t, double r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3d).invokeExact(s, t, r);
         } catch (Throwable e) {
@@ -2705,7 +2706,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2718,7 +2719,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3f(float s, float t, float r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3f).invokeExact(s, t, r);
         } catch (Throwable e) {
@@ -2727,7 +2728,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2740,7 +2741,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3i(int s, int t, int r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3i).invokeExact(s, t, r);
         } catch (Throwable e) {
@@ -2749,7 +2750,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2762,7 +2763,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3s(short s, short t, short r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3s).invokeExact(s, t, r);
         } catch (Throwable e) {
@@ -2771,7 +2772,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord3sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2784,7 +2785,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4d(double s, double t, double r, double q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4d).invokeExact(s, t, r, q);
         } catch (Throwable e) {
@@ -2793,7 +2794,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4dv).invokeExact(v);
         } catch (Throwable e) {
@@ -2806,7 +2807,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4f(float s, float t, float r, float q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4f).invokeExact(s, t, r, q);
         } catch (Throwable e) {
@@ -2815,7 +2816,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4fv).invokeExact(v);
         } catch (Throwable e) {
@@ -2828,7 +2829,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4i(int s, int t, int r, int q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4i).invokeExact(s, t, r, q);
         } catch (Throwable e) {
@@ -2837,7 +2838,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4iv).invokeExact(v);
         } catch (Throwable e) {
@@ -2850,7 +2851,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4s(short s, short t, short r, short q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4s).invokeExact(s, t, r, q);
         } catch (Throwable e) {
@@ -2859,7 +2860,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoord4sv).invokeExact(v);
         } catch (Throwable e) {
@@ -2872,7 +2873,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texEnvf(int target, int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexEnvf).invokeExact(target, pname, param);
         } catch (Throwable e) {
@@ -2881,7 +2882,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texEnvfv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexEnvfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -2894,7 +2895,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texEnvi(int target, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexEnvi).invokeExact(target, pname, param);
         } catch (Throwable e) {
@@ -2903,7 +2904,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texEnviv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexEnviv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -2916,7 +2917,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGend(int coord, int pname, double param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexGend).invokeExact(coord, pname, param);
         } catch (Throwable e) {
@@ -2925,7 +2926,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGendv(int coord, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexGendv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
@@ -2938,7 +2939,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGenf(int coord, int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexGenf).invokeExact(coord, pname, param);
         } catch (Throwable e) {
@@ -2947,7 +2948,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGenfv(int coord, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexGenfv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
@@ -2960,7 +2961,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGeni(int coord, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexGeni).invokeExact(coord, pname, param);
         } catch (Throwable e) {
@@ -2969,7 +2970,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGeniv(int coord, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexGeniv).invokeExact(coord, pname, params);
         } catch (Throwable e) {
@@ -2982,7 +2983,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void translated(double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTranslated).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -2991,7 +2992,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void translatef(float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTranslatef).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -3000,7 +3001,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2d(double x, double y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2d).invokeExact(x, y);
         } catch (Throwable e) {
@@ -3009,7 +3010,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2dv).invokeExact(v);
         } catch (Throwable e) {
@@ -3022,7 +3023,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2f(float x, float y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2f).invokeExact(x, y);
         } catch (Throwable e) {
@@ -3031,7 +3032,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2fv).invokeExact(v);
         } catch (Throwable e) {
@@ -3044,7 +3045,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2i(int x, int y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2i).invokeExact(x, y);
         } catch (Throwable e) {
@@ -3053,7 +3054,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2iv).invokeExact(v);
         } catch (Throwable e) {
@@ -3066,7 +3067,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2s(short x, short y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2s).invokeExact(x, y);
         } catch (Throwable e) {
@@ -3075,7 +3076,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex2sv).invokeExact(v);
         } catch (Throwable e) {
@@ -3088,7 +3089,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3d(double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3d).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -3097,7 +3098,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -3110,7 +3111,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3f(float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3f).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -3119,7 +3120,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -3132,7 +3133,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3i(int x, int y, int z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3i).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -3141,7 +3142,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -3154,7 +3155,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3s(short x, short y, short z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3s).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -3163,7 +3164,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex3sv).invokeExact(v);
         } catch (Throwable e) {
@@ -3176,7 +3177,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4d(double x, double y, double z, double w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4d).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -3185,7 +3186,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4dv).invokeExact(v);
         } catch (Throwable e) {
@@ -3198,7 +3199,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4f(float x, float y, float z, float w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4f).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -3207,7 +3208,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4fv).invokeExact(v);
         } catch (Throwable e) {
@@ -3220,7 +3221,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4i(int x, int y, int z, int w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4i).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -3229,7 +3230,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4iv).invokeExact(v);
         } catch (Throwable e) {
@@ -3242,7 +3243,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4s(short x, short y, short z, short w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4s).invokeExact(x, y, z, w);
         } catch (Throwable e) {
@@ -3251,7 +3252,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertex4sv).invokeExact(v);
         } catch (Throwable e) {

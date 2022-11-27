@@ -33,8 +33,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.0 core profile functions.
@@ -104,7 +103,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void beginQueryIndexed(int target, int index, int id) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBeginQueryIndexed).invokeExact(target, index, id);
         } catch (Throwable e) {
@@ -113,7 +112,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void bindTransformFeedback(int target, int id) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindTransformFeedback).invokeExact(target, id);
         } catch (Throwable e) {
@@ -122,7 +121,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void blendEquationSeparatei(int buf, int modeRGB, int modeAlpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendEquationSeparatei).invokeExact(buf, modeRGB, modeAlpha);
         } catch (Throwable e) {
@@ -131,7 +130,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void blendEquationi(int buf, int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendEquationi).invokeExact(buf, mode);
         } catch (Throwable e) {
@@ -140,7 +139,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void blendEquationSeparatei(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendEquationSeparatei).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
         } catch (Throwable e) {
@@ -149,7 +148,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void blendFunci(int buf, int src, int dst) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendFunci).invokeExact(buf, src, dst);
         } catch (Throwable e) {
@@ -158,7 +157,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void deleteTransformFeedbacks(int n, Addressable ids) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteTransformFeedbacks).invokeExact(n, ids);
         } catch (Throwable e) {
@@ -183,7 +182,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawArraysIndirect(int mode, Addressable indirect) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawArraysIndirect).invokeExact(mode, indirect);
         } catch (Throwable e) {
@@ -200,7 +199,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawElementsIndirect(int mode, int type, Addressable indirect) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawElementsIndirect).invokeExact(mode, type, indirect);
         } catch (Throwable e) {
@@ -217,7 +216,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawTransformFeedback(int mode, int id) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawTransformFeedback).invokeExact(mode, id);
         } catch (Throwable e) {
@@ -226,7 +225,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawTransformFeedbackStream(int mode, int id, int stream) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawTransformFeedbackStream).invokeExact(mode, id, stream);
         } catch (Throwable e) {
@@ -235,7 +234,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void endQueryIndexed(int target, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEndQueryIndexed).invokeExact(target, index);
         } catch (Throwable e) {
@@ -244,7 +243,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void genTransformFeedbacks(int n, Addressable ids) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenTransformFeedbacks).invokeExact(n, ids);
         } catch (Throwable e) {
@@ -271,7 +270,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getActiveSubroutineName(int program, int shaderType, int index, int bufSize, Addressable length, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveSubroutineName).invokeExact(program, shaderType, index, bufSize, length, name);
         } catch (Throwable e) {
@@ -286,7 +285,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, Addressable length, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveSubroutineUniformName).invokeExact(program, shaderType, index, bufSize, length, name);
         } catch (Throwable e) {
@@ -301,7 +300,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveSubroutineUniformiv).invokeExact(program, shaderType, index, pname, values);
         } catch (Throwable e) {
@@ -328,7 +327,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getProgramStageiv(int program, int shaderType, int pname, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramStageiv).invokeExact(program, shaderType, pname, values);
         } catch (Throwable e) {
@@ -349,7 +348,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getQueryIndexediv(int target, int index, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryIndexediv).invokeExact(target, index, pname, params);
         } catch (Throwable e) {
@@ -370,7 +369,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static int getSubroutineIndex(int program, int shaderType, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetSubroutineIndex).invokeExact(program, shaderType, name);
         } catch (Throwable e) {
@@ -383,7 +382,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static int getSubroutineUniformLocation(int program, int shaderType, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetSubroutineUniformLocation).invokeExact(program, shaderType, name);
         } catch (Throwable e) {
@@ -396,7 +395,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getUniformSubroutineuiv(int shaderType, int location, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetUniformSubroutineuiv).invokeExact(shaderType, location, params);
         } catch (Throwable e) {
@@ -411,7 +410,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getUniformdv(int program, int location, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetUniformdv).invokeExact(program, location, params);
         } catch (Throwable e) {
@@ -438,7 +437,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static boolean isTransformFeedback(int id) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsTransformFeedback).invokeExact(id);
         } catch (Throwable e) {
@@ -447,7 +446,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void minSampleShading(float value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMinSampleShading).invokeExact(value);
         } catch (Throwable e) {
@@ -456,7 +455,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void patchParameterfv(int pname, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPatchParameterfv).invokeExact(pname, values);
         } catch (Throwable e) {
@@ -469,7 +468,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void patchParameteri(int pname, int value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPatchParameteri).invokeExact(pname, value);
         } catch (Throwable e) {
@@ -478,7 +477,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void pauseTransformFeedback() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPauseTransformFeedback).invokeExact();
         } catch (Throwable e) {
@@ -487,7 +486,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void resumeTransformFeedback() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glResumeTransformFeedback).invokeExact();
         } catch (Throwable e) {
@@ -496,7 +495,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform1d(int location, double x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform1d).invokeExact(location, x);
         } catch (Throwable e) {
@@ -505,7 +504,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform1dv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform1dv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -518,7 +517,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform2d(int location, double x, double y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform2d).invokeExact(location, x, y);
         } catch (Throwable e) {
@@ -527,7 +526,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform2dv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform2dv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -540,7 +539,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform3d(int location, double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform3d).invokeExact(location, x, y, z);
         } catch (Throwable e) {
@@ -549,7 +548,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform3dv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform3dv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -562,7 +561,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform4d(int location, double x, double y, double z, double w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform4d).invokeExact(location, x, y, z, w);
         } catch (Throwable e) {
@@ -571,7 +570,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform4dv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform4dv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -584,7 +583,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix2dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -601,7 +600,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix2x3dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x3dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -618,7 +617,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix2x4dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x4dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -635,7 +634,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix3dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -652,7 +651,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix3x2dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x2dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -669,7 +668,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix3x4dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x4dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -686,7 +685,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix4dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -703,7 +702,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix4x2dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x2dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -720,7 +719,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix4x3dv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x3dv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -737,7 +736,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformSubroutinesuiv(int shaderType, int count, Addressable indices) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformSubroutinesuiv).invokeExact(shaderType, count, indices);
         } catch (Throwable e) {

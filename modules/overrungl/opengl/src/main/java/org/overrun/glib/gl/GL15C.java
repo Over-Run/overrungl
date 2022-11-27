@@ -35,8 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.5 forward compatible functions.
@@ -75,7 +74,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void beginQuery(int target, int id) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBeginQuery).invokeExact(target, id);
         } catch (Throwable e) {
@@ -84,7 +83,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void bindBuffer(int target, int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindBuffer).invokeExact(target, buffer);
         } catch (Throwable e) {
@@ -93,7 +92,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void bufferData(int target, long size, Addressable data, int usage) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBufferData).invokeExact(target, size, data, usage);
         } catch (Throwable e) {
@@ -138,7 +137,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void bufferSubData(int target, long offset, long size, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBufferSubData).invokeExact(target, offset, size, data);
         } catch (Throwable e) {
@@ -179,7 +178,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void deleteBuffers(int n, Addressable buffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
@@ -204,7 +203,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void deleteQueries(int n, Addressable ids) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteQueries).invokeExact(n, ids);
         } catch (Throwable e) {
@@ -229,7 +228,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void endQuery(int target) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEndQuery).invokeExact(target);
         } catch (Throwable e) {
@@ -238,7 +237,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void genBuffers(int n, Addressable buffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
@@ -265,7 +264,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void genQueries(int n, Addressable ids) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenQueries).invokeExact(n, ids);
         } catch (Throwable e) {
@@ -292,7 +291,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getBufferParameteriv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetBufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -313,7 +312,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getBufferPointerv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetBufferPointerv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -334,7 +333,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getBufferSubData(int target, long offset, long size, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetBufferSubData).invokeExact(target, offset, size, data);
         } catch (Throwable e) {
@@ -379,7 +378,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getQueryObjectiv(int id, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryObjectiv).invokeExact(id, pname, params);
         } catch (Throwable e) {
@@ -400,7 +399,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getQueryObjectuiv(int id, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryObjectuiv).invokeExact(id, pname, params);
         } catch (Throwable e) {
@@ -421,7 +420,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void getQueryiv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -442,7 +441,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static boolean isBuffer(int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsBuffer).invokeExact(buffer);
         } catch (Throwable e) {
@@ -451,7 +450,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static boolean isQuery(int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsQuery).invokeExact(buffer);
         } catch (Throwable e) {
@@ -460,7 +459,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static MemoryAddress mapBuffer(int target, int access) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glMapBuffer).invokeExact(target, access);
         } catch (Throwable e) {
@@ -469,7 +468,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static boolean unmapBuffer(int target) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glUnmapBuffer).invokeExact(target);
         } catch (Throwable e) {

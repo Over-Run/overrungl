@@ -27,7 +27,6 @@ package org.overrun.glib.gl.ext.apple;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
@@ -36,6 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_APPLE_vertex_array_object}
@@ -53,7 +53,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static void glBindVertexArrayAPPLE(int array) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glBindVertexArrayAPPLE).invokeExact(array);
         } catch (Throwable e) {
@@ -62,7 +62,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static void glDeleteVertexArraysAPPLE(int n, Addressable arrays) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
         } catch (Throwable e) {
@@ -79,7 +79,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static void glGenVertexArraysAPPLE(int n, Addressable arrays) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGenVertexArraysAPPLE).invokeExact(n, arrays);
         } catch (Throwable e) {
@@ -106,7 +106,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static boolean glIsVertexArrayAPPLE(int array) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (boolean) check(ext.glIsVertexArrayAPPLE).invokeExact(array);
         } catch (Throwable e) {

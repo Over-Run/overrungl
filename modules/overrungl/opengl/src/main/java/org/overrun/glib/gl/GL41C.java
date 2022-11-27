@@ -35,8 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.1 core profile functions.
@@ -155,7 +154,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void activeShaderProgram(int pipeline, int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glActiveShaderProgram).invokeExact(pipeline, program);
         } catch (Throwable e) {
@@ -164,7 +163,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void bindProgramPipeline(int pipeline) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindProgramPipeline).invokeExact(pipeline);
         } catch (Throwable e) {
@@ -173,7 +172,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void clearDepthf(float d) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearDepthf).invokeExact(d);
         } catch (Throwable e) {
@@ -182,7 +181,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static int createShaderProgramv(int type, int count, Addressable strings) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glCreateShaderProgramv).invokeExact(type, count, strings);
         } catch (Throwable e) {
@@ -203,7 +202,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void deleteProgramPipelines(int n, Addressable pipelines) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteProgramPipelines).invokeExact(n, pipelines);
         } catch (Throwable e) {
@@ -228,7 +227,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void depthRangeArrayv(int first, int count, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDepthRangeArrayv).invokeExact(first, count, v);
         } catch (Throwable e) {
@@ -241,7 +240,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void depthRangeIndexed(int index, double n, double f) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDepthRangeIndexed).invokeExact(index, n, f);
         } catch (Throwable e) {
@@ -250,7 +249,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void depthRangef(float n, float f) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDepthRangef).invokeExact(n, f);
         } catch (Throwable e) {
@@ -259,7 +258,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void genProgramPipelines(int n, Addressable pipelines) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenProgramPipelines).invokeExact(n, pipelines);
         } catch (Throwable e) {
@@ -286,7 +285,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getDoublei_v(int target, int index, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetDoublei_v).invokeExact(target, index, data);
         } catch (Throwable e) {
@@ -313,7 +312,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getFloati_v(int target, int index, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetFloati_v).invokeExact(target, index, data);
         } catch (Throwable e) {
@@ -340,7 +339,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramBinary(int program, int bufSize, Addressable length, Addressable binaryFormat, Addressable binary) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramBinary).invokeExact(program, bufSize, length, binaryFormat, binary);
         } catch (Throwable e) {
@@ -369,7 +368,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramPipelineInfoLog(int pipeline, int bufSize, Addressable length, Addressable infoLog) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramPipelineInfoLog).invokeExact(pipeline, bufSize, length, infoLog);
         } catch (Throwable e) {
@@ -395,7 +394,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getProgramPipelineiv(int pipeline, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramPipelineiv).invokeExact(pipeline, pname, params);
         } catch (Throwable e) {
@@ -416,7 +415,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getShaderPrecisionFormat(int shaderType, int precisionType, Addressable range, Addressable precision) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetShaderPrecisionFormat).invokeExact(shaderType, precisionType, range, precision);
         } catch (Throwable e) {
@@ -433,7 +432,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getVertexAttribLdv(int index, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribLdv).invokeExact(index, pname, params);
         } catch (Throwable e) {
@@ -448,7 +447,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static boolean isProgramPipeline(int pipeline) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsProgramPipeline).invokeExact(pipeline);
         } catch (Throwable e) {
@@ -457,7 +456,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programBinary(int program, int binaryFormat, Addressable binary, int length) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramBinary).invokeExact(program, binaryFormat, binary, length);
         } catch (Throwable e) {
@@ -470,7 +469,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programParameteri(int program, int pname, int value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramParameteri).invokeExact(program, pname, value);
         } catch (Throwable e) {
@@ -479,7 +478,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1d(int program, int location, double v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1d).invokeExact(program, location, v0);
         } catch (Throwable e) {
@@ -488,7 +487,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1dv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -501,7 +500,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1f(int program, int location, float v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1f).invokeExact(program, location, v0);
         } catch (Throwable e) {
@@ -510,7 +509,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1fv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -523,7 +522,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1i(int program, int location, int v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1i).invokeExact(program, location, v0);
         } catch (Throwable e) {
@@ -532,7 +531,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1iv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -545,7 +544,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1ui(int program, int location, int v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1ui).invokeExact(program, location, v0);
         } catch (Throwable e) {
@@ -554,7 +553,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1uiv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform1uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -567,7 +566,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2d(int program, int location, double v0, double v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2d).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
@@ -576,7 +575,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2dv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -589,7 +588,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2f(int program, int location, float v0, float v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2f).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
@@ -598,7 +597,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2fv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -611,7 +610,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2i(int program, int location, int v0, int v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2i).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
@@ -620,7 +619,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2iv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -633,7 +632,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2ui(int program, int location, int v0, int v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2ui).invokeExact(program, location, v0, v1);
         } catch (Throwable e) {
@@ -642,7 +641,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2uiv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform2uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -655,7 +654,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3d(int program, int location, double v0, double v1, double v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3d).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
@@ -664,7 +663,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3dv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -677,7 +676,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3f(int program, int location, float v0, float v1, float v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3f).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
@@ -686,7 +685,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3fv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -699,7 +698,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3i(int program, int location, int v0, int v1, int v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3i).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
@@ -708,7 +707,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3iv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -721,7 +720,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3ui(int program, int location, int v0, int v1, int v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3ui).invokeExact(program, location, v0, v1, v2);
         } catch (Throwable e) {
@@ -730,7 +729,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3uiv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform3uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -743,7 +742,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4d(int program, int location, double v0, double v1, double v2, double v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4d).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
@@ -752,7 +751,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4dv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4dv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -765,7 +764,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4f(int program, int location, float v0, float v1, float v2, float v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4f).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
@@ -774,7 +773,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4fv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4fv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -787,7 +786,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4i(int program, int location, int v0, int v1, int v2, int v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4i).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
@@ -796,7 +795,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4iv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4iv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -809,7 +808,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4ui(int program, int location, int v0, int v1, int v2, int v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4ui).invokeExact(program, location, v0, v1, v2, v3);
         } catch (Throwable e) {
@@ -818,7 +817,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4uiv(int program, int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniform4uiv).invokeExact(program, location, count, value);
         } catch (Throwable e) {
@@ -831,7 +830,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix2dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -848,7 +847,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix2fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -865,7 +864,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x3dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix2x3dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -882,7 +881,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x3fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix2x3fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -899,7 +898,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x4dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix2x4dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -916,7 +915,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x4fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix2x4fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -933,7 +932,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix3dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -950,7 +949,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix3fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -967,7 +966,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x2dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix3x2dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -984,7 +983,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x2fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix3x2fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1001,7 +1000,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x4dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix3x4dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1018,7 +1017,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x4fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix3x4fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1035,7 +1034,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix4dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1052,7 +1051,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix4fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1069,7 +1068,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x2dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix4x2dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1086,7 +1085,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x2fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix4x2fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1103,7 +1102,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x3dv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix4x3dv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1120,7 +1119,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x3fv(int program, int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProgramUniformMatrix4x3fv).invokeExact(program, location, count, transpose, value);
         } catch (Throwable e) {
@@ -1137,7 +1136,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void releaseShaderCompiler() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glReleaseShaderCompiler).invokeExact();
         } catch (Throwable e) {
@@ -1146,7 +1145,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void scissorArrayv(int first, int count, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glScissorArrayv).invokeExact(first, count, v);
         } catch (Throwable e) {
@@ -1159,7 +1158,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void scissorIndexed(int index, int left, int bottom, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glScissorIndexed).invokeExact(index, left, bottom, width, height);
         } catch (Throwable e) {
@@ -1168,7 +1167,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void scissorIndexedv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glScissorIndexedv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1181,7 +1180,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void shaderBinary(int count, Addressable shaders, int binaryFormat, Addressable binary, int length) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glShaderBinary).invokeExact(count, shaders, binaryFormat, binary, length);
         } catch (Throwable e) {
@@ -1198,7 +1197,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void useProgramStages(int pipeline, int stages, int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUseProgramStages).invokeExact(pipeline, stages, program);
         } catch (Throwable e) {
@@ -1207,7 +1206,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void validateProgramPipeline(int pipeline) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glValidateProgramPipeline).invokeExact(pipeline);
         } catch (Throwable e) {
@@ -1216,7 +1215,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL1d(int index, double x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL1d).invokeExact(index, x);
         } catch (Throwable e) {
@@ -1225,7 +1224,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL1dv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL1dv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1238,7 +1237,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL2d(int index, double x, double y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL2d).invokeExact(index, x, y);
         } catch (Throwable e) {
@@ -1247,7 +1246,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL2dv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL2dv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1260,7 +1259,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL3d(int index, double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL3d).invokeExact(index, x, y, z);
         } catch (Throwable e) {
@@ -1269,7 +1268,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL3dv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL3dv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1282,7 +1281,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL4d(int index, double x, double y, double z, double w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL4d).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
@@ -1291,7 +1290,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL4dv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribL4dv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1304,7 +1303,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribLPointer(int index, int size, int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribLPointer).invokeExact(index, size, type, stride, pointer);
         } catch (Throwable e) {
@@ -1317,7 +1316,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportArrayv(int first, int count, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glViewportArrayv).invokeExact(first, count, v);
         } catch (Throwable e) {
@@ -1330,7 +1329,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportIndexedf(int index, float x, float y, float w, float h) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glViewportIndexedf).invokeExact(index, x, y, w, h);
         } catch (Throwable e) {
@@ -1339,7 +1338,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportIndexedfv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glViewportIndexedfv).invokeExact(index, v);
         } catch (Throwable e) {

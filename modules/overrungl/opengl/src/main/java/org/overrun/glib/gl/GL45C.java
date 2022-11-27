@@ -35,7 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.5 core profile functions.
@@ -45,7 +45,7 @@ import static org.overrun.glib.gl.GLLoader.check;
  */
 public sealed class GL45C extends GL44C permits GL46C {
     static boolean isSupported(GLCapabilities caps) {
-        return GLLoader.checkAll(caps.glBindTextureUnit, caps.glBlitNamedFramebuffer, caps.glCheckNamedFramebufferStatus, caps.glClearNamedBufferData, caps.glClearNamedBufferSubData, caps.glClearNamedFramebufferfi,
+        return checkAll(caps.glBindTextureUnit, caps.glBlitNamedFramebuffer, caps.glCheckNamedFramebufferStatus, caps.glClearNamedBufferData, caps.glClearNamedBufferSubData, caps.glClearNamedFramebufferfi,
             caps.glClearNamedFramebufferfv, caps.glClearNamedFramebufferiv, caps.glClearNamedFramebufferuiv, caps.glClipControl, caps.glCompressedTextureSubImage1D, caps.glCompressedTextureSubImage2D,
             caps.glCompressedTextureSubImage3D, caps.glCopyNamedBufferSubData, caps.glCopyTextureSubImage1D, caps.glCopyTextureSubImage2D, caps.glCopyTextureSubImage3D, caps.glCreateBuffers,
             caps.glCreateFramebuffers, caps.glCreateProgramPipelines, caps.glCreateQueries, caps.glCreateRenderbuffers, caps.glCreateSamplers, caps.glCreateTextures,
@@ -180,7 +180,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void bindTextureUnit(int unit, int texture) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindTextureUnit).invokeExact(unit, texture);
         } catch (Throwable e) {
@@ -189,7 +189,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void blitNamedFramebuffer(int readFramebuffer, int drawFramebuffer, int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlitNamedFramebuffer).invokeExact(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         } catch (Throwable e) {
@@ -198,7 +198,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int checkNamedFramebufferStatus(int framebuffer, int target) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glCheckNamedFramebufferStatus).invokeExact(framebuffer, target);
         } catch (Throwable e) {
@@ -207,7 +207,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clearNamedBufferData(int buffer, int internalFormat, int format, int type, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearNamedBufferData).invokeExact(buffer, internalFormat, format, type, data);
         } catch (Throwable e) {
@@ -216,7 +216,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clearNamedBufferSubData(int buffer, int internalFormat, long offset, long size, int format, int type, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearNamedBufferSubData).invokeExact(buffer, internalFormat, offset, size, format, type, data);
         } catch (Throwable e) {
@@ -225,7 +225,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clearNamedFramebufferfi(int framebuffer, int buffer, int drawBuffer, float depth, int stencil) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearNamedFramebufferfi).invokeExact(framebuffer, buffer, drawBuffer, depth, stencil);
         } catch (Throwable e) {
@@ -234,7 +234,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clearNamedFramebufferfv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearNamedFramebufferfv).invokeExact(framebuffer, buffer, drawBuffer, value);
         } catch (Throwable e) {
@@ -247,7 +247,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clearNamedFramebufferiv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearNamedFramebufferiv).invokeExact(framebuffer, buffer, drawBuffer, value);
         } catch (Throwable e) {
@@ -260,7 +260,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clearNamedFramebufferuiv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearNamedFramebufferuiv).invokeExact(framebuffer, buffer, drawBuffer, value);
         } catch (Throwable e) {
@@ -273,7 +273,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void clipControl(int origin, int depth) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClipControl).invokeExact(origin, depth);
         } catch (Throwable e) {
@@ -282,7 +282,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void compressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTextureSubImage1D).invokeExact(texture, level, xoffset, width, format, imageSize, data);
         } catch (Throwable e) {
@@ -291,7 +291,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void compressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTextureSubImage2D).invokeExact(texture, level, xoffset, yoffset, width, height, format, imageSize, data);
         } catch (Throwable e) {
@@ -300,7 +300,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void compressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTextureSubImage3D).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
         } catch (Throwable e) {
@@ -309,7 +309,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void copyNamedBufferSubData(int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyNamedBufferSubData).invokeExact(readBuffer, writeBuffer, readOffset, writeOffset, size);
         } catch (Throwable e) {
@@ -318,7 +318,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void copyTextureSubImage1D(int texture, int level, int xoffset, int x, int y, int width) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTextureSubImage1D).invokeExact(texture, level, xoffset, x, y, width);
         } catch (Throwable e) {
@@ -327,7 +327,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void copyTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTextureSubImage2D).invokeExact(texture, level, xoffset, yoffset, x, y, width, height);
         } catch (Throwable e) {
@@ -336,7 +336,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void copyTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTextureSubImage3D).invokeExact(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
         } catch (Throwable e) {
@@ -345,7 +345,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createBuffers(int n, Addressable buffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateBuffers).invokeExact(n, buffers);
         } catch (Throwable e) {
@@ -372,7 +372,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createFramebuffers(int n, Addressable framebuffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
@@ -399,7 +399,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createProgramPipelines(int n, Addressable pipelines) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateProgramPipelines).invokeExact(n, pipelines);
         } catch (Throwable e) {
@@ -426,7 +426,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createQueries(int target, int n, Addressable ids) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateQueries).invokeExact(target, n, ids);
         } catch (Throwable e) {
@@ -453,7 +453,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createRenderbuffers(int n, Addressable renderbuffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
@@ -480,7 +480,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createSamplers(int n, Addressable samplers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateSamplers).invokeExact(n, samplers);
         } catch (Throwable e) {
@@ -507,7 +507,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createTextures(int target, int n, Addressable textures) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateTextures).invokeExact(target, n, textures);
         } catch (Throwable e) {
@@ -535,7 +535,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createTransformFeedbacks(int n, Addressable ids) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateTransformFeedbacks).invokeExact(n, ids);
         } catch (Throwable e) {
@@ -562,7 +562,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void createVertexArrays(int n, Addressable arrays) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCreateVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
@@ -589,7 +589,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void disableVertexArrayAttrib(int vaobj, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDisableVertexArrayAttrib).invokeExact(vaobj, index);
         } catch (Throwable e) {
@@ -598,7 +598,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void enableVertexArrayAttrib(int vaobj, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEnableVertexArrayAttrib).invokeExact(vaobj, index);
         } catch (Throwable e) {
@@ -607,7 +607,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void flushMappedNamedBufferRange(int buffer, long offset, long length) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFlushMappedNamedBufferRange).invokeExact(buffer, offset, length);
         } catch (Throwable e) {
@@ -616,7 +616,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void generateTextureMipmap(int texture) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenerateTextureMipmap).invokeExact(texture);
         } catch (Throwable e) {
@@ -625,7 +625,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getCompressedTextureImage(int texture, int level, int bufSize, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetCompressedTextureImage).invokeExact(texture, level, bufSize, pixels);
         } catch (Throwable e) {
@@ -634,7 +634,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getCompressedTextureSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int bufSize, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetCompressedTextureSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels);
         } catch (Throwable e) {
@@ -643,7 +643,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static int getGraphicsResetStatus() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetGraphicsResetStatus).invokeExact();
         } catch (Throwable e) {
@@ -652,7 +652,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedBufferParameteri64v(int buffer, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedBufferParameteri64v).invokeExact(buffer, pname, params);
         } catch (Throwable e) {
@@ -673,7 +673,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedBufferParameteriv(int buffer, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedBufferParameteriv).invokeExact(buffer, pname, params);
         } catch (Throwable e) {
@@ -694,7 +694,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedBufferPointerv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedBufferPointerv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -715,7 +715,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedBufferSubData(int buffer, long offset, long size, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedBufferSubData).invokeExact(buffer, offset, size, data);
         } catch (Throwable e) {
@@ -760,7 +760,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedFramebufferAttachmentParameteriv).invokeExact(framebuffer, attachment, pname, params);
         } catch (Throwable e) {
@@ -781,7 +781,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedFramebufferParameteriv(int framebuffer, int pname, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedFramebufferParameteriv).invokeExact(framebuffer, pname, param);
         } catch (Throwable e) {
@@ -802,7 +802,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getNamedRenderbufferParameteriv(int renderbuffer, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetNamedRenderbufferParameteriv).invokeExact(renderbuffer, pname, params);
         } catch (Throwable e) {
@@ -835,7 +835,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getQueryBufferObjecti64v(int id, int buffer, int pname, long offset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryBufferObjecti64v).invokeExact(id, buffer, pname, offset);
         } catch (Throwable e) {
@@ -844,7 +844,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getQueryBufferObjectiv(int id, int buffer, int pname, long offset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryBufferObjectiv).invokeExact(id, buffer, pname, offset);
         } catch (Throwable e) {
@@ -853,7 +853,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getQueryBufferObjectui64v(int id, int buffer, int pname, long offset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryBufferObjectui64v).invokeExact(id, buffer, pname, offset);
         } catch (Throwable e) {
@@ -862,7 +862,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getQueryBufferObjectuiv(int id, int buffer, int pname, long offset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetQueryBufferObjectuiv).invokeExact(id, buffer, pname, offset);
         } catch (Throwable e) {
@@ -871,7 +871,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureImage(int texture, int level, int format, int type, int bufSize, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureImage).invokeExact(texture, level, format, type, bufSize, pixels);
         } catch (Throwable e) {
@@ -880,7 +880,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureLevelParameterfv(int texture, int level, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureLevelParameterfv).invokeExact(texture, level, pname, params);
         } catch (Throwable e) {
@@ -907,7 +907,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureLevelParameteriv(int texture, int level, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureLevelParameteriv).invokeExact(texture, level, pname, params);
         } catch (Throwable e) {
@@ -934,7 +934,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureParameterIiv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureParameterIiv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -961,7 +961,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureParameterIuiv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureParameterIuiv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -988,7 +988,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureParameterfv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureParameterfv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -1015,7 +1015,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureParameteriv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureParameteriv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -1042,7 +1042,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTextureSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTextureSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels);
         } catch (Throwable e) {
@@ -1075,7 +1075,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTransformFeedbacki64_v(int xfb, int pname, int index, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTransformFeedbacki64_v).invokeExact(xfb, pname, index, param);
         } catch (Throwable e) {
@@ -1090,7 +1090,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTransformFeedbacki_v(int xfb, int pname, int index, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTransformFeedbacki_v).invokeExact(xfb, pname, index, param);
         } catch (Throwable e) {
@@ -1105,7 +1105,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getTransformFeedbackiv(int xfb, int pname, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTransformFeedbackiv).invokeExact(xfb, pname, param);
         } catch (Throwable e) {
@@ -1120,7 +1120,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getVertexArrayIndexed64iv(int vaobj, int index, int pname, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetVertexArrayIndexed64iv).invokeExact(vaobj, index, pname, param);
         } catch (Throwable e) {
@@ -1141,7 +1141,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getVertexArrayIndexediv(int vaobj, int index, int pname, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetVertexArrayIndexediv).invokeExact(vaobj, index, pname, param);
         } catch (Throwable e) {
@@ -1162,7 +1162,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getVertexArrayiv(int vaobj, int pname, Addressable param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetVertexArrayiv).invokeExact(vaobj, pname, param);
         } catch (Throwable e) {
@@ -1183,7 +1183,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getnCompressedTexImage(int target, int lod, int bufSize, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetnCompressedTexImage).invokeExact(target, lod, bufSize, pixels);
         } catch (Throwable e) {
@@ -1196,7 +1196,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getnTexImage(int target, int level, int format, int type, int bufSize, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetnTexImage).invokeExact(target, level, format, type, bufSize, pixels);
         } catch (Throwable e) {
@@ -1233,7 +1233,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getnUniformdv(int program, int location, int bufSize, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetnUniformdv).invokeExact(program, location, bufSize, params);
         } catch (Throwable e) {
@@ -1252,7 +1252,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getnUniformfv(int program, int location, int bufSize, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetnUniformfv).invokeExact(program, location, bufSize, params);
         } catch (Throwable e) {
@@ -1271,7 +1271,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getnUniformiv(int program, int location, int bufSize, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetnUniformiv).invokeExact(program, location, bufSize, params);
         } catch (Throwable e) {
@@ -1290,7 +1290,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void getnUniformuiv(int program, int location, int bufSize, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetnUniformuiv).invokeExact(program, location, bufSize, params);
         } catch (Throwable e) {
@@ -1309,7 +1309,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void invalidateNamedFramebufferData(int framebuffer, int numAttachments, Addressable attachments) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateNamedFramebufferData).invokeExact(framebuffer, numAttachments, attachments);
         } catch (Throwable e) {
@@ -1334,7 +1334,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void invalidateNamedFramebufferSubData(int framebuffer, int numAttachments, Addressable attachments, int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateNamedFramebufferSubData).invokeExact(framebuffer, numAttachments, attachments, x, y, width, height);
         } catch (Throwable e) {
@@ -1359,7 +1359,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static MemoryAddress mapNamedBuffer(int buffer, int access) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glMapNamedBuffer).invokeExact(buffer, access);
         } catch (Throwable e) {
@@ -1368,7 +1368,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static MemoryAddress mapNamedBufferRange(int buffer, long offset, long length, int access) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glMapNamedBufferRange).invokeExact(buffer, offset, length, access);
         } catch (Throwable e) {
@@ -1377,7 +1377,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void memoryBarrierByRegion(int barriers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMemoryBarrierByRegion).invokeExact(barriers);
         } catch (Throwable e) {
@@ -1386,7 +1386,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedBufferData(int buffer, long size, Addressable data, int usage) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedBufferData).invokeExact(buffer, size, data, usage);
         } catch (Throwable e) {
@@ -1431,7 +1431,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedBufferStorage(int buffer, long size, Addressable data, int flags) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedBufferStorage).invokeExact(buffer, size, data, flags);
         } catch (Throwable e) {
@@ -1468,7 +1468,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedBufferSubData(int buffer, long offset, long size, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedBufferSubData).invokeExact(buffer, offset, size, data);
         } catch (Throwable e) {
@@ -1509,7 +1509,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferDrawBuffer(int framebuffer, int buf) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferDrawBuffer).invokeExact(framebuffer, buf);
         } catch (Throwable e) {
@@ -1518,7 +1518,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferDrawBuffers(int framebuffer, int n, Addressable bufs) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferDrawBuffers).invokeExact(framebuffer, n, bufs);
         } catch (Throwable e) {
@@ -1531,7 +1531,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferParameteri(int framebuffer, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferParameteri).invokeExact(framebuffer, pname, param);
         } catch (Throwable e) {
@@ -1540,7 +1540,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferReadBuffer(int framebuffer, int src) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferReadBuffer).invokeExact(framebuffer, src);
         } catch (Throwable e) {
@@ -1549,7 +1549,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferRenderbuffer(int framebuffer, int attachment, int renderbufferTarget, int renderbuffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferRenderbuffer).invokeExact(framebuffer, attachment, renderbufferTarget, renderbuffer);
         } catch (Throwable e) {
@@ -1558,7 +1558,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferTexture(int framebuffer, int attachment, int texture, int level) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferTexture).invokeExact(framebuffer, attachment, texture, level);
         } catch (Throwable e) {
@@ -1567,7 +1567,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedFramebufferTextureLayer(int framebuffer, int attachment, int texture, int level, int layer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedFramebufferTextureLayer).invokeExact(framebuffer, attachment, texture, level, layer);
         } catch (Throwable e) {
@@ -1576,7 +1576,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedRenderbufferStorage(int renderbuffer, int internalFormat, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedRenderbufferStorage).invokeExact(renderbuffer, internalFormat, width, height);
         } catch (Throwable e) {
@@ -1585,7 +1585,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedRenderbufferStorageMultisample(int renderbuffer, int samples, int internalFormat, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNamedRenderbufferStorageMultisample).invokeExact(renderbuffer, samples, internalFormat, width, height);
         } catch (Throwable e) {
@@ -1594,7 +1594,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void readnPixels(int x, int y, int width, int height, int format, int type, int bufSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glReadnPixels).invokeExact(x, y, width, height, format, type, bufSize, data);
         } catch (Throwable e) {
@@ -1631,7 +1631,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureBarrier() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureBarrier).invokeExact();
         } catch (Throwable e) {
@@ -1640,7 +1640,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureBuffer(int texture, int internalFormat, int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureBuffer).invokeExact(texture, internalFormat, buffer);
         } catch (Throwable e) {
@@ -1649,7 +1649,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureBufferRange(int texture, int internalFormat, int buffer, long offset, long size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureBufferRange).invokeExact(texture, internalFormat, buffer, offset, size);
         } catch (Throwable e) {
@@ -1658,7 +1658,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureParameterIiv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureParameterIiv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -1671,7 +1671,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureParameterIuiv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureParameterIuiv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -1684,7 +1684,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureParameterf(int texture, int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureParameterf).invokeExact(texture, pname, param);
         } catch (Throwable e) {
@@ -1693,7 +1693,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureParameterfv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureParameterfv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -1706,7 +1706,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureParameteri(int texture, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureParameteri).invokeExact(texture, pname, param);
         } catch (Throwable e) {
@@ -1715,7 +1715,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureParameteriv(int texture, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureParameteriv).invokeExact(texture, pname, params);
         } catch (Throwable e) {
@@ -1728,7 +1728,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureStorage1D(int texture, int levels, int internalFormat, int width) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureStorage1D).invokeExact(texture, levels, internalFormat, width);
         } catch (Throwable e) {
@@ -1737,7 +1737,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureStorage2D(int texture, int levels, int internalFormat, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureStorage2D).invokeExact(texture, levels, internalFormat, width, height);
         } catch (Throwable e) {
@@ -1746,7 +1746,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureStorage2DMultisample(int texture, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureStorage2DMultisample).invokeExact(texture, samples, internalFormat, width, height, fixedSampleLocations);
         } catch (Throwable e) {
@@ -1755,7 +1755,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureStorage3D(int texture, int levels, int internalFormat, int width, int height, int depth) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureStorage3D).invokeExact(texture, levels, internalFormat, width, height, depth);
         } catch (Throwable e) {
@@ -1764,7 +1764,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureStorage3DMultisample(int texture, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureStorage3DMultisample).invokeExact(texture, samples, internalFormat, width, height, depth, fixedSampleLocations);
         } catch (Throwable e) {
@@ -1773,7 +1773,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureSubImage1D).invokeExact(texture, level, xoffset, width, format, type, pixels);
         } catch (Throwable e) {
@@ -1798,7 +1798,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureSubImage2D).invokeExact(texture, level, xoffset, yoffset, width, height, format, type, pixels);
         } catch (Throwable e) {
@@ -1823,7 +1823,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void textureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureSubImage3D).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
         } catch (Throwable e) {
@@ -1848,7 +1848,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void transformFeedbackBufferBase(int xfb, int index, int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTransformFeedbackBufferBase).invokeExact(xfb, index, buffer);
         } catch (Throwable e) {
@@ -1857,7 +1857,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void transformFeedbackBufferRange(int xfb, int index, int buffer, long offset, long size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTransformFeedbackBufferRange).invokeExact(xfb, index, buffer, offset, size);
         } catch (Throwable e) {
@@ -1866,7 +1866,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static boolean unmapNamedBuffer(int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glUnmapNamedBuffer).invokeExact(buffer);
         } catch (Throwable e) {
@@ -1875,7 +1875,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayAttribBinding(int vaobj, int attribIndex, int bindingIndex) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayAttribBinding).invokeExact(vaobj, attribIndex, bindingIndex);
         } catch (Throwable e) {
@@ -1884,7 +1884,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayAttribFormat(int vaobj, int attribIndex, int size, int type, boolean normalized, int relativeOffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayAttribFormat).invokeExact(vaobj, attribIndex, size, type, normalized, relativeOffset);
         } catch (Throwable e) {
@@ -1893,7 +1893,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayAttribIFormat(int vaobj, int attribIndex, int size, int type, int relativeOffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayAttribIFormat).invokeExact(vaobj, attribIndex, size, type, relativeOffset);
         } catch (Throwable e) {
@@ -1902,7 +1902,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayAttribLFormat(int vaobj, int attribIndex, int size, int type, int relativeOffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayAttribLFormat).invokeExact(vaobj, attribIndex, size, type, relativeOffset);
         } catch (Throwable e) {
@@ -1911,7 +1911,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayBindingDivisor(int vaobj, int bindingIndex, int divisor) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayBindingDivisor).invokeExact(vaobj, bindingIndex, divisor);
         } catch (Throwable e) {
@@ -1920,7 +1920,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayElementBuffer(int vaobj, int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayElementBuffer).invokeExact(vaobj, buffer);
         } catch (Throwable e) {
@@ -1929,7 +1929,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayVertexBuffer(int vaobj, int bindingIndex, int buffer, long offset, int stride) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayVertexBuffer).invokeExact(vaobj, bindingIndex, buffer, offset, stride);
         } catch (Throwable e) {
@@ -1938,7 +1938,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void vertexArrayVertexBuffers(int vaobj, int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexArrayVertexBuffers).invokeExact(vaobj, first, count, buffers, offsets, strides);
         } catch (Throwable e) {

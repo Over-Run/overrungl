@@ -22,43 +22,26 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext.amd;
+package org.overrun.glib.gl.ext.arb;
 
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GL45C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
-
-import java.lang.foreign.Addressable;
 
 /**
- * {@code GL_AMD_multi_draw_indirect}
+ * {@code GL_ARB_clip_control}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLAMDMultiDrawIndirect {
+public final class GLARBClipControl {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_multi_draw_indirect) return;
-        ext.glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
-        ext.glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
+        if (!ext.GL_ARB_clip_control) return;
+        ext.caps.glClipControl = load.invoke("glClipControl", FunctionDescriptors.IIV);
     }
 
-    public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    public static void glClipControl(int origin, int depth) {
+        GL45C.clipControl(origin, depth);
     }
 }

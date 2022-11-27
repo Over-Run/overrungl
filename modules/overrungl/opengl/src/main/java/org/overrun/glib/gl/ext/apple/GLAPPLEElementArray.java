@@ -26,7 +26,6 @@ package org.overrun.glib.gl.ext.apple;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
@@ -34,6 +33,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_APPLE_element_array}
@@ -52,7 +52,7 @@ public final class GLAPPLEElementArray {
     }
 
     public static void glDrawElementArrayAPPLE(int mode, int first, int count) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDrawElementArrayAPPLE).invokeExact(mode, first, count);
         } catch (Throwable e) {
@@ -61,7 +61,7 @@ public final class GLAPPLEElementArray {
     }
 
     public static void glDrawRangeElementArrayAPPLE(int mode, int start, int end, int first, int count) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count);
         } catch (Throwable e) {
@@ -70,7 +70,7 @@ public final class GLAPPLEElementArray {
     }
 
     public static void glElementPointerAPPLE(int type, Addressable pointer) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glElementPointerAPPLE).invokeExact(type, pointer);
         } catch (Throwable e) {
@@ -79,7 +79,7 @@ public final class GLAPPLEElementArray {
     }
 
     public static void glMultiDrawElementArrayAPPLE(int mode, Addressable first, Addressable count, int primCount) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glMultiDrawElementArrayAPPLE).invokeExact(mode, first, count, primCount);
         } catch (Throwable e) {
@@ -92,7 +92,7 @@ public final class GLAPPLEElementArray {
     }
 
     public static void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, Addressable first, Addressable count, int primCount) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glMultiDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count, primCount);
         } catch (Throwable e) {

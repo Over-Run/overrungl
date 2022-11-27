@@ -26,10 +26,10 @@ package org.overrun.glib.gl.ext.sun;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_SUN_global_alpha}
@@ -51,7 +51,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactorbSUN(byte factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactorbSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -60,7 +60,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactordSUN(double factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactordSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -69,7 +69,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactorfSUN(float factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactorfSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -78,7 +78,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactoriSUN(int factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactoriSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -87,7 +87,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactorsSUN(short factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactorsSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -96,7 +96,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactorubSUN(byte factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactorubSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -105,7 +105,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactoruiSUN(int factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactoruiSUN).invokeExact(factor);
         } catch (Throwable e) {
@@ -114,7 +114,7 @@ public final class GLSUNGlobalAlpha {
     }
 
     public static void glGlobalAlphaFactorusSUN(short factor) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGlobalAlphaFactorusSUN).invokeExact(factor);
         } catch (Throwable e) {

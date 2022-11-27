@@ -28,10 +28,7 @@ import org.overrun.glib.gl.ext.GL3DFXTbuffer;
 import org.overrun.glib.gl.ext.GLKHRDebug;
 import org.overrun.glib.gl.ext.amd.*;
 import org.overrun.glib.gl.ext.apple.*;
-import org.overrun.glib.gl.ext.arb.GLARBDebugOutput;
-import org.overrun.glib.gl.ext.arb.GLARBES2Compatibility;
-import org.overrun.glib.gl.ext.arb.GLARBES31Compatibility;
-import org.overrun.glib.gl.ext.arb.GLARBES32Compatibility;
+import org.overrun.glib.gl.ext.arb.*;
 import org.overrun.glib.gl.ext.sun.*;
 
 import java.lang.foreign.Addressable;
@@ -332,6 +329,24 @@ public final class GLExtCaps {
      * {@code GL_ARB_ES3_1_compatibility} extensions method handles.
      */
     public MethodHandle glPrimitiveBoundingBoxARB;
+    /**
+     * {@code GL_ARB_bindless_texture} extensions method handles.
+     */
+    public MethodHandle glGetImageHandleARB, glGetTextureHandleARB, glGetTextureSamplerHandleARB, glGetVertexAttribLui64vARB, glIsImageHandleResidentARB,
+        glIsTextureHandleResidentARB, glMakeImageHandleNonResidentARB, glMakeImageHandleResidentARB, glMakeTextureHandleNonResidentARB, glMakeTextureHandleResidentARB,
+        glProgramUniformHandleui64ARB, glProgramUniformHandleui64vARB, glUniformHandleui64ARB, glUniformHandleui64vARB, glVertexAttribL1ui64ARB, glVertexAttribL1ui64vARB;
+    /**
+     * {@code GL_ARB_cl_event} extensions method handles.
+     */
+    public MethodHandle glCreateSyncFromCLeventARB;
+    /**
+     * {@code GL_ARB_color_buffer_float} extensions method handles.
+     */
+    public MethodHandle glClampColorARB;
+    /**
+     * {@code GL_ARB_compute_variable_group_size} extensions method handles.
+     */
+    public MethodHandle glDispatchComputeGroupSizeARB;
 
     // endregion
 
@@ -1067,7 +1082,7 @@ public final class GLExtCaps {
     }
 
     void load(GLLoadFunc load) {
-        // TODO: 32/307 extensions
+        // TODO: 45/307 extensions
         GL3DFXTbuffer.load(this, load);
         GLAMDDebugOutput.load(this, load);
         GLAMDDrawBuffersBlend.load(this, load);
@@ -1094,19 +1109,19 @@ public final class GLExtCaps {
         GLARBES2Compatibility.load(this, load);
         GLARBES31Compatibility.load(this, load);
         GLARBES32Compatibility.load(this, load);
-        // GLARBBase_instance.load(load);
-        // GLARBBindless_texture.load(load);
-        // GLARBBlend_func_extended.load(load);
-        // GLARBBuffer_storage.load(load);
-        // GLARBCl_event.load(load);
-        // GLARBClear_buffer_object.load(load);
-        // GLARBClear_texture.load(load);
-        // GLARBClip_control.load(load);
-        // GLARBColor_buffer_float.load(load);
-        // GLARBCompute_shader.load(load);
-        // GLARBCompute_variable_group_size.load(load);
-        // GLARBCopy_buffer.load(load);
-        // GLARBCopy_image.load(load);
+        GLARBBaseInstance.load(this, load);
+        GLARBBindlessTexture.load(this, load);
+        GLARBBlendFuncExtended.load(this, load);
+        GLARBBufferStorage.load(this, load);
+        GLARBCLEvent.load(this, load);
+        GLARBClearBufferObject.load(this, load);
+        GLARBClearTexture.load(this, load);
+        GLARBClipControl.load(this, load);
+        GLARBColorBufferFloat.load(this, load);
+        GLARBComputeShader.load(this, load);
+        GLARBComputeVariableGroupSize.load(this, load);
+        GLARBCopyBuffer.load(this, load);
+        GLARBCopyImage.load(this, load);
         GLARBDebugOutput.load(this, load);
         // GLARBDirect_state_access.load(load);
         // GLARBDraw_buffers.load(load);

@@ -35,8 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.2 core profile functions.
@@ -75,7 +74,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static int clientWaitSync(MemoryAddress sync, int flags, long timeout) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glClientWaitSync).invokeExact(sync, flags, timeout);
         } catch (Throwable e) {
@@ -84,7 +83,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void deleteSync(MemoryAddress sync) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteSync).invokeExact(sync);
         } catch (Throwable e) {
@@ -93,7 +92,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawElementsBaseVertex(int mode, int count, int type, Addressable indices, int baseVertex) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawElementsBaseVertex).invokeExact(mode, count, type, indices, baseVertex);
         } catch (Throwable e) {
@@ -114,7 +113,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawElementsInstancedBaseVertex(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawElementsInstancedBaseVertex).invokeExact(mode, count, type, indices, instanceCount, baseVertex);
         } catch (Throwable e) {
@@ -135,7 +134,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, Addressable indices, int baseVertex) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawRangeElementsBaseVertex).invokeExact(mode, start, end, count, type, indices, baseVertex);
         } catch (Throwable e) {
@@ -156,7 +155,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static MemoryAddress fenceSync(int condition, int flags) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glFenceSync).invokeExact(condition, flags);
         } catch (Throwable e) {
@@ -165,7 +164,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void framebufferTexture(int target, int attachment, int texture, int level) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferTexture).invokeExact(target, attachment, texture, level);
         } catch (Throwable e) {
@@ -174,7 +173,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getBufferParameteri64v(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetBufferParameteri64v).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -195,7 +194,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getInteger64i_v(int target, int index, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetInteger64i_v).invokeExact(target, index, data);
         } catch (Throwable e) {
@@ -222,7 +221,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getInteger64v(int pname, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetInteger64v).invokeExact(pname, data);
         } catch (Throwable e) {
@@ -249,7 +248,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getMultisamplefv(int pname, int index, Addressable val) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetMultisamplefv).invokeExact(pname, index, val);
         } catch (Throwable e) {
@@ -270,7 +269,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getSynciv(MemoryAddress sync, int pname, int count, Addressable length, Addressable values) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetSynciv).invokeExact(sync, pname, count, length, values);
         } catch (Throwable e) {
@@ -301,7 +300,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static boolean isSync(MemoryAddress sync) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsSync).invokeExact(sync);
         } catch (Throwable e) {
@@ -310,7 +309,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void multiDrawElementsBaseVertex(int mode, Addressable count, int type, Addressable indices, int drawCount, Addressable baseVertex) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElementsBaseVertex).invokeExact(mode, count, type, indices, drawCount, baseVertex);
         } catch (Throwable e) {
@@ -351,7 +350,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void provokingVertex(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glProvokingVertex).invokeExact(mode);
         } catch (Throwable e) {
@@ -360,7 +359,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void sampleMaski(int maskNumber, int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSampleMaski).invokeExact(maskNumber, mask);
         } catch (Throwable e) {
@@ -369,7 +368,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void texImage2DMultisample(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexImage2DMultisample).invokeExact(target, samples, internalFormat, width, height, fixedSampleLocations);
         } catch (Throwable e) {
@@ -378,7 +377,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void texImage3DMultisample(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexImage3DMultisample).invokeExact(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
         } catch (Throwable e) {
@@ -387,7 +386,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void waitSync(MemoryAddress sync, int flags, long timeout) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWaitSync).invokeExact(sync, flags, timeout);
         } catch (Throwable e) {

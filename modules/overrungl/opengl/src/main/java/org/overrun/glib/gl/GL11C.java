@@ -33,8 +33,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.1 forward compatible functions.
@@ -67,7 +66,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void bindTexture(int target, int texture) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindTexture).invokeExact(target, texture);
         } catch (Throwable e) {
@@ -76,7 +75,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void copyTexImage1D(int target, int level, int internalFormat, int x, int y, int width, int border) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTexImage1D).invokeExact(target, level, internalFormat, x, y, width, border);
         } catch (Throwable e) {
@@ -85,7 +84,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void copyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height, int border) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTexImage2D).invokeExact(target, level, internalFormat, x, y, width, height, border);
         } catch (Throwable e) {
@@ -94,7 +93,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void copyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTexSubImage1D).invokeExact(target, level, xoffset, x, y, width);
         } catch (Throwable e) {
@@ -103,7 +102,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void copyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTexSubImage2D).invokeExact(target, level, xoffset, yoffset, x, y, width, height);
         } catch (Throwable e) {
@@ -112,7 +111,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void deleteTextures(int n, Addressable textures) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteTextures).invokeExact(n, textures);
         } catch (Throwable e) {
@@ -138,7 +137,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void drawArrays(int mode, int first, int count) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawArrays).invokeExact(mode, first, count);
         } catch (Throwable e) {
@@ -147,7 +146,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void drawElements(int mode, int count, int type, Addressable indices) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawElements).invokeExact(mode, count, type, indices);
         } catch (Throwable e) {
@@ -171,7 +170,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void genTextures(int n, Addressable textures) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenTextures).invokeExact(n, textures);
         } catch (Throwable e) {
@@ -199,7 +198,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void getPointerv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetPointerv).invokeExact(pname, params);
         } catch (Throwable e) {
@@ -220,7 +219,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static boolean isTexture(int texture) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsTexture).invokeExact(texture);
         } catch (Throwable e) {
@@ -229,7 +228,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void polygonOffset(float factor, float units) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPolygonOffset).invokeExact(factor, units);
         } catch (Throwable e) {
@@ -238,7 +237,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
         } catch (Throwable e) {
@@ -263,7 +262,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);
         } catch (Throwable e) {

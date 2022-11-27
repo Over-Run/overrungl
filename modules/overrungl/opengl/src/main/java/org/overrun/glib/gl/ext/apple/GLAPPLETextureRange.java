@@ -31,7 +31,6 @@ import org.overrun.glib.gl.GLLoader;
 import java.lang.foreign.Addressable;
 
 import static org.overrun.glib.FunctionDescriptors.IIPV;
-import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * {@code GL_APPLE_texture_range}
@@ -49,7 +48,7 @@ public final class GLAPPLETextureRange {
     public static void glGetTexParameterPointervAPPLE(int target, int pname, Addressable params) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glGetTexParameterPointervAPPLE).invokeExact(target, pname, params);
+            GLLoader.check(ext.glGetTexParameterPointervAPPLE).invokeExact(target, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -58,7 +57,7 @@ public final class GLAPPLETextureRange {
     public static void glTextureRangeAPPLE(int target, int length, Addressable pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glTextureRangeAPPLE).invokeExact(target, length, pointer);
+            GLLoader.check(ext.glTextureRangeAPPLE).invokeExact(target, length, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

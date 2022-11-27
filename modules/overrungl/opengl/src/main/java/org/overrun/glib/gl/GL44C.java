@@ -30,8 +30,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.4 core profile functions.
@@ -58,7 +57,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindBuffersBase(int target, int first, int count, Addressable buffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindBuffersBase).invokeExact(target, first, count, buffers);
         } catch (Throwable e) {
@@ -71,7 +70,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindBuffersRange(int target, int first, int count, Addressable buffers, Addressable offsets, Addressable sizes) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindBuffersRange).invokeExact(target, first, count, buffers, offsets, sizes);
         } catch (Throwable e) {
@@ -84,7 +83,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindImageTextures(int first, int count, Addressable textures) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindImageTextures).invokeExact(first, count, textures);
         } catch (Throwable e) {
@@ -97,7 +96,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindSamplers(int first, int count, Addressable samplers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindSamplers).invokeExact(first, count, samplers);
         } catch (Throwable e) {
@@ -110,7 +109,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindTextures(int first, int count, Addressable textures) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindTextures).invokeExact(first, count, textures);
         } catch (Throwable e) {
@@ -123,7 +122,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bindVertexBuffers(int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindVertexBuffers).invokeExact(first, count, buffers, offsets, strides);
         } catch (Throwable e) {
@@ -136,7 +135,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bufferStorage(int target, long size, Addressable data, int flags) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBufferStorage).invokeExact(target, size, data, flags);
         } catch (Throwable e) {
@@ -173,7 +172,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void clearTexImage(int texture, int level, int format, int type, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearTexImage).invokeExact(texture, level, format, type, data);
         } catch (Throwable e) {
@@ -182,7 +181,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void clearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
         } catch (Throwable e) {

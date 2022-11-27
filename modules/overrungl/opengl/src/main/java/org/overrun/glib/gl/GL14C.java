@@ -29,8 +29,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.4 forward compatible functions.
@@ -57,7 +56,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void blendColor(float red, float green, float blue, float alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendColor).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -66,7 +65,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void blendEquation(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendEquation).invokeExact(mode);
         } catch (Throwable e) {
@@ -75,7 +74,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void blendFuncSeparate(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendFuncSeparate).invokeExact(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
         } catch (Throwable e) {
@@ -84,7 +83,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawArrays(int mode, Addressable first, Addressable count, int drawCount) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArrays).invokeExact(mode, first, count, drawCount);
         } catch (Throwable e) {
@@ -101,7 +100,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(int mode, Addressable count, int type, Addressable indices, int drawCount) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElements).invokeExact(mode, count, type, indices, drawCount);
         } catch (Throwable e) {
@@ -146,7 +145,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameterf(int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPointParameterf).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -155,7 +154,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameterfv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPointParameterfv).invokeExact(pname, params);
         } catch (Throwable e) {
@@ -168,7 +167,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameteri(int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPointParameteri).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -177,7 +176,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameteriv(int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPointParameteriv).invokeExact(pname, params);
         } catch (Throwable e) {

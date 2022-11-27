@@ -29,8 +29,6 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import static org.overrun.glib.gl.GLLoader.check;
-
 /**
  * {@code GL_AMD_vertex_shader_tessellator}
  *
@@ -47,7 +45,7 @@ public final class GLAMDVertexShaderTessellator {
     public static void glTessellationFactorAMD(float factor) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glTessellationFactorAMD).invokeExact(factor);
+            GLLoader.check(ext.glTessellationFactorAMD).invokeExact(factor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -56,7 +54,7 @@ public final class GLAMDVertexShaderTessellator {
     public static void glTessellationModeAMD(int mode) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glTessellationModeAMD).invokeExact(mode);
+            GLLoader.check(ext.glTessellationModeAMD).invokeExact(mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

@@ -35,8 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.0 core profile functions.
@@ -150,7 +149,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void beginConditionalRender(int id, int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBeginConditionalRender).invokeExact(id, mode);
         } catch (Throwable e) {
@@ -159,7 +158,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void beginTransformFeedback(int primitiveMode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBeginTransformFeedback).invokeExact(primitiveMode);
         } catch (Throwable e) {
@@ -168,7 +167,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindBufferBase(int target, int index, int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindBufferBase).invokeExact(target, index, buffer);
         } catch (Throwable e) {
@@ -177,7 +176,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindBufferRange(int target, int index, int buffer, long offset, long size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindBufferRange).invokeExact(target, index, buffer, offset, size);
         } catch (Throwable e) {
@@ -186,7 +185,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindFragDataLocation(int program, int color, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindFragDataLocation).invokeExact(program, color, name);
         } catch (Throwable e) {
@@ -199,7 +198,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindFramebuffer(int target, int framebuffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindFramebuffer).invokeExact(target, framebuffer);
         } catch (Throwable e) {
@@ -208,7 +207,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindRenderbuffer(int target, int renderbuffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindRenderbuffer).invokeExact(target, renderbuffer);
         } catch (Throwable e) {
@@ -217,7 +216,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void bindVertexArray(int array) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindVertexArray).invokeExact(array);
         } catch (Throwable e) {
@@ -226,7 +225,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void blitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlitFramebuffer).invokeExact(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         } catch (Throwable e) {
@@ -235,7 +234,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int checkFramebufferStatus(int target) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glCheckFramebufferStatus).invokeExact(target);
         } catch (Throwable e) {
@@ -244,7 +243,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clampColor(int target, int clamp) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClampColor).invokeExact(target, clamp);
         } catch (Throwable e) {
@@ -253,7 +252,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clearBufferfi(int buffer, int drawBuffer, float depth, int stencil) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearBufferfi).invokeExact(buffer, drawBuffer, depth, stencil);
         } catch (Throwable e) {
@@ -262,7 +261,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clearBufferfv(int buffer, int drawBuffer, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearBufferfv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
@@ -275,7 +274,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clearBufferiv(int buffer, int drawBuffer, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearBufferiv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
@@ -288,7 +287,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void clearBufferuiv(int buffer, int drawBuffer, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearBufferuiv).invokeExact(buffer, drawBuffer, value);
         } catch (Throwable e) {
@@ -301,7 +300,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void colorMaski(int index, boolean r, boolean g, boolean b, boolean a) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColorMaski).invokeExact(index, r, g, b, a);
         } catch (Throwable e) {
@@ -310,7 +309,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteFramebuffers(int n, Addressable framebuffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
@@ -335,7 +334,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteRenderbuffers(int n, Addressable renderbuffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
@@ -360,7 +359,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void deleteVertexArrays(int n, Addressable arrays) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDeleteVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
@@ -385,7 +384,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void disablei(int target, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDisablei).invokeExact(target, index);
         } catch (Throwable e) {
@@ -394,7 +393,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void enablei(int target, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEnablei).invokeExact(target, index);
         } catch (Throwable e) {
@@ -403,7 +402,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void endConditionalRender() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEndConditionalRender).invokeExact();
         } catch (Throwable e) {
@@ -412,7 +411,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void endTransformFeedback() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEndTransformFeedback).invokeExact();
         } catch (Throwable e) {
@@ -421,7 +420,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void flushMappedBufferRange(int target, long offset, long length) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFlushMappedBufferRange).invokeExact(target, offset, length);
         } catch (Throwable e) {
@@ -430,7 +429,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void framebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderbuffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferRenderbuffer).invokeExact(target, attachment, renderbufferTarget, renderbuffer);
         } catch (Throwable e) {
@@ -439,7 +438,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void framebufferTexture1D(int target, int attachment, int texTarget, int texture, int level) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferTexture1D).invokeExact(target, attachment, texTarget, texture, level);
         } catch (Throwable e) {
@@ -448,7 +447,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void framebufferTexture2D(int target, int attachment, int texTarget, int texture, int level) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferTexture2D).invokeExact(target, attachment, texTarget, texture, level);
         } catch (Throwable e) {
@@ -457,7 +456,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void framebufferTexture3D(int target, int attachment, int texTarget, int texture, int level, int zoffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferTexture3D).invokeExact(target, attachment, texTarget, texture, level, zoffset);
         } catch (Throwable e) {
@@ -466,7 +465,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void framebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferTextureLayer).invokeExact(target, attachment, texture, level, layer);
         } catch (Throwable e) {
@@ -475,7 +474,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void genFramebuffers(int n, Addressable framebuffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenFramebuffers).invokeExact(n, framebuffers);
         } catch (Throwable e) {
@@ -502,7 +501,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void genRenderbuffers(int n, Addressable renderbuffers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenRenderbuffers).invokeExact(n, renderbuffers);
         } catch (Throwable e) {
@@ -529,7 +528,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void genVertexArrays(int n, Addressable arrays) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenVertexArrays).invokeExact(n, arrays);
         } catch (Throwable e) {
@@ -556,7 +555,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void generateMipmap(int target) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGenerateMipmap).invokeExact(target);
         } catch (Throwable e) {
@@ -565,7 +564,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getBooleani_v(int target, int index, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetBooleani_v).invokeExact(target, index, data);
         } catch (Throwable e) {
@@ -592,7 +591,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static int getFragDataLocation(int program, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetFragDataLocation).invokeExact(program, name);
         } catch (Throwable e) {
@@ -605,7 +604,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetFramebufferAttachmentParameteriv).invokeExact(target, attachment, pname, params);
         } catch (Throwable e) {
@@ -626,7 +625,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getIntegeri_v(int target, int index, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetIntegeri_v).invokeExact(target, index, data);
         } catch (Throwable e) {
@@ -653,7 +652,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getRenderbufferParameteriv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetRenderbufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -686,7 +685,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static MemoryAddress ngetStringi(int pname, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glGetStringi).invokeExact(pname, index);
         } catch (Throwable e) {
@@ -701,7 +700,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTexParameterIiv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexParameterIiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -728,7 +727,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTexParameterIuiv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexParameterIuiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -755,7 +754,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTransformFeedbackVarying(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTransformFeedbackVarying).invokeExact(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
@@ -778,7 +777,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getUniformuiv(int program, int location, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetUniformuiv).invokeExact(program, location, params);
         } catch (Throwable e) {
@@ -805,7 +804,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getVertexAttribIiv(int index, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribIiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
@@ -832,7 +831,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getVertexAttribIuiv(int index, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribIuiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
@@ -859,7 +858,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static boolean isEnabledi(int target, int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsEnabledi).invokeExact(target, index);
         } catch (Throwable e) {
@@ -868,7 +867,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static boolean isFramebuffer(int framebuffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsFramebuffer).invokeExact(framebuffer);
         } catch (Throwable e) {
@@ -877,7 +876,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static boolean isRenderbuffer(int renderbuffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsRenderbuffer).invokeExact(renderbuffer);
         } catch (Throwable e) {
@@ -886,7 +885,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static boolean isVertexArray(int array) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsVertexArray).invokeExact(array);
         } catch (Throwable e) {
@@ -895,7 +894,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static MemoryAddress mapBufferRange(int target, long offset, long length, int access) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glMapBufferRange).invokeExact(target, offset, length, access);
         } catch (Throwable e) {
@@ -904,7 +903,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void renderbufferStorage(int target, int internalFormat, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRenderbufferStorage).invokeExact(target, internalFormat, width, height);
         } catch (Throwable e) {
@@ -913,7 +912,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void renderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glRenderbufferStorageMultisample).invokeExact(target, samples, internalFormat, width, height);
         } catch (Throwable e) {
@@ -922,7 +921,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void texParameterIiv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexParameterIiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -935,7 +934,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void texParameterIuiv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexParameterIuiv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -948,7 +947,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void transformFeedbackVaryings(int program, int count, Addressable varyings, int bufferMode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTransformFeedbackVaryings).invokeExact(program, count, varyings, bufferMode);
         } catch (Throwable e) {
@@ -965,7 +964,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform1ui(int location, int v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform1ui).invokeExact(location, v0);
         } catch (Throwable e) {
@@ -974,7 +973,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform1uiv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform1uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -987,7 +986,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform2ui(int location, int v0, int v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform2ui).invokeExact(location, v0, v1);
         } catch (Throwable e) {
@@ -996,7 +995,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform2uiv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform2uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -1009,7 +1008,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform3ui(int location, int v0, int v1, int v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform3ui).invokeExact(location, v0, v1, v2);
         } catch (Throwable e) {
@@ -1018,7 +1017,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform3uiv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform3uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -1031,7 +1030,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform4ui).invokeExact(location, v0, v1, v2, v3);
         } catch (Throwable e) {
@@ -1040,7 +1039,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform4uiv(int location, int count, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniform4uiv).invokeExact(location, count, value);
         } catch (Throwable e) {
@@ -1053,7 +1052,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI1i(int index, int x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI1i).invokeExact(index, x);
         } catch (Throwable e) {
@@ -1062,7 +1061,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI1iv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI1iv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1075,7 +1074,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI1ui(int index, int x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI1ui).invokeExact(index, x);
         } catch (Throwable e) {
@@ -1084,7 +1083,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI1uiv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI1uiv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1097,7 +1096,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI2i(int index, int x, int y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI2i).invokeExact(index, x, y);
         } catch (Throwable e) {
@@ -1106,7 +1105,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI2iv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI2iv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1119,7 +1118,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI2ui(int index, int x, int y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI2ui).invokeExact(index, x, y);
         } catch (Throwable e) {
@@ -1128,7 +1127,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI2uiv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI2uiv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1141,7 +1140,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI3i(int index, int x, int y, int z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI3i).invokeExact(index, x, y, z);
         } catch (Throwable e) {
@@ -1150,7 +1149,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI3iv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI3iv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1163,7 +1162,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI3ui(int index, int x, int y, int z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI3ui).invokeExact(index, x, y, z);
         } catch (Throwable e) {
@@ -1172,7 +1171,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI3uiv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI3uiv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1185,7 +1184,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4bv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4bv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1198,7 +1197,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4i(int index, int x, int y, int z, int w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4i).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
@@ -1207,7 +1206,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4iv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4iv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1220,7 +1219,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4sv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4sv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1233,7 +1232,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4ubv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4ubv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1246,7 +1245,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4ui(int index, int x, int y, int z, int w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4ui).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
@@ -1255,7 +1254,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4uiv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4uiv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1268,7 +1267,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribI4usv(int index, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4usv).invokeExact(index, v);
         } catch (Throwable e) {
@@ -1281,7 +1280,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void vertexAttribIPointer(int index, int size, int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribIPointer).invokeExact(index, size, type, stride, pointer);
         } catch (Throwable e) {

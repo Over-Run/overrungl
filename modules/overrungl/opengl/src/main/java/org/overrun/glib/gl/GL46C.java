@@ -32,8 +32,7 @@ import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.6 core profile functions.
@@ -54,7 +53,7 @@ public sealed class GL46C extends GL45C permits GL {
     }
 
     public static void multiDrawArraysIndirectCount(int mode, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArraysIndirectCount).invokeExact(mode, indirect, drawCount, maxDrawCount, stride);
         } catch (Throwable e) {
@@ -63,7 +62,7 @@ public sealed class GL46C extends GL45C permits GL {
     }
 
     public static void multiDrawElementsIndirectCount(int mode, int type, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElementsIndirectCount).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride);
         } catch (Throwable e) {
@@ -72,7 +71,7 @@ public sealed class GL46C extends GL45C permits GL {
     }
 
     public static void polygonOffsetClamp(float factor, float units, float clamp) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPolygonOffsetClamp).invokeExact(factor, units, clamp);
         } catch (Throwable e) {
@@ -81,7 +80,7 @@ public sealed class GL46C extends GL45C permits GL {
     }
 
     public static void specializeShader(int shader, Addressable pEntryPoint, int numSpecializationConstants, Addressable pConstantIndex, Addressable pConstantValue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSpecializeShader).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
         } catch (Throwable e) {

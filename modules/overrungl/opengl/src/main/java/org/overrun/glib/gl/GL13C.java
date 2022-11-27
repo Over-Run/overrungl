@@ -27,8 +27,7 @@ package org.overrun.glib.gl;
 import java.lang.foreign.Addressable;
 
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.3 forward compatible functions.
@@ -55,7 +54,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void activeTexture(int texture) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glActiveTexture).invokeExact(texture);
         } catch (Throwable e) {
@@ -64,7 +63,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void compressedTexImage1D(int target, int level, int internalFormat, int width, int border, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTexImage1D).invokeExact(target, level, internalFormat, width, border, imageSize, data);
         } catch (Throwable e) {
@@ -73,7 +72,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void compressedTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTexImage2D).invokeExact(target, level, internalFormat, width, height, border, imageSize, data);
         } catch (Throwable e) {
@@ -82,7 +81,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void compressedTexImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, imageSize, data);
         } catch (Throwable e) {
@@ -91,7 +90,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void compressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTexSubImage1D).invokeExact(target, level, xoffset, width, format, imageSize, data);
         } catch (Throwable e) {
@@ -100,7 +99,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void compressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, imageSize, data);
         } catch (Throwable e) {
@@ -109,7 +108,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void compressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCompressedTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
         } catch (Throwable e) {
@@ -118,7 +117,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void getCompressedTexImage(int target, int level, Addressable img) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetCompressedTexImage).invokeExact(target, level, img);
         } catch (Throwable e) {
@@ -127,7 +126,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     public static void sampleCoverage(float value, boolean invert) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSampleCoverage).invokeExact(value, invert);
         } catch (Throwable e) {

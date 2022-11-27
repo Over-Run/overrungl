@@ -30,6 +30,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getCapabilities;
 
 /**
  * The OpenGL 1.1 functions.
@@ -59,7 +60,7 @@ public final class GL11 extends GL11C {
     }
 
     public static boolean areTexturesResident(int n, Addressable textures, Addressable residences) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glAreTexturesResident).invokeExact(n, textures, residences);
         } catch (Throwable e) {
@@ -80,7 +81,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void arrayElement(int i) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glArrayElement).invokeExact(i);
         } catch (Throwable e) {
@@ -89,7 +90,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void colorPointer(int size, int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColorPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
@@ -118,7 +119,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void disableClientState(int array) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDisableClientState).invokeExact(array);
         } catch (Throwable e) {
@@ -127,7 +128,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void edgeFlagPointer(int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEdgeFlagPointer).invokeExact(stride, pointer);
         } catch (Throwable e) {
@@ -136,7 +137,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void enableClientState(int array) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEnableClientState).invokeExact(array);
         } catch (Throwable e) {
@@ -145,7 +146,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void indexPointer(int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexPointer).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
@@ -174,7 +175,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void indexub(byte c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexub).invokeExact(c);
         } catch (Throwable e) {
@@ -183,7 +184,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void indexubv(Addressable c) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glIndexubv).invokeExact(c);
         } catch (Throwable e) {
@@ -197,7 +198,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void interleavedArrays(int format, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInterleavedArrays).invokeExact(format, stride, pointer);
         } catch (Throwable e) {
@@ -211,7 +212,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void normalPointer(int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glNormalPointer).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
@@ -240,7 +241,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void popClientAttrib() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPopClientAttrib).invokeExact();
         } catch (Throwable e) {
@@ -249,7 +250,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void prioritizeTextures(int n, Addressable textures, Addressable priorities) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPrioritizeTextures).invokeExact(n, textures, priorities);
         } catch (Throwable e) {
@@ -269,7 +270,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void pushClientAttrib(int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPushClientAttrib).invokeExact(mask);
         } catch (Throwable e) {
@@ -278,7 +279,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void texCoordPointer(int size, int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexCoordPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
@@ -303,7 +304,7 @@ public final class GL11 extends GL11C {
     }
 
     public static void vertexPointer(int size, int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {

@@ -22,43 +22,42 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext.amd;
+package org.overrun.glib.gl.ext.arb;
 
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GL33C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
+import java.lang.foreign.SegmentAllocator;
 
 /**
- * {@code GL_AMD_multi_draw_indirect}
+ * {@code GL_ARB_blend_func_extended}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLAMDMultiDrawIndirect {
+public final class GLARBBlendFuncExtended {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_multi_draw_indirect) return;
-        ext.glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
-        ext.glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
+        if (!ext.GL_ARB_blend_func_extended) return;
+        ext.caps.glBindFragDataLocationIndexed = load.invoke("glBindFragDataLocationIndexed", FunctionDescriptors.IIIPV);
+        ext.caps.glGetFragDataIndex = load.invoke("glGetFragDataIndex", FunctionDescriptors.IPI);
     }
 
-    public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    public static void glBindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {
+        GL33C.bindFragDataLocationIndexed(program, colorNumber, index, name);
     }
 
-    public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    public static void glBindFragDataLocationIndexed(SegmentAllocator allocator, int program, int colorNumber, int index, String name) {
+        GL33C.bindFragDataLocationIndexed(allocator, program, colorNumber, index, name);
+    }
+
+    public static int glGetFragDataIndex(int program, Addressable name) {
+        return GL33C.getFragDataIndex(program, name);
+    }
+
+    public static int glGetFragDataIndex(SegmentAllocator allocator, int program, String name) {
+        return GL33C.getFragDataIndex(allocator, program, name);
     }
 }

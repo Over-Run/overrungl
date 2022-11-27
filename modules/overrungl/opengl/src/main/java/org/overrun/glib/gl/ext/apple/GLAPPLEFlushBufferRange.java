@@ -29,8 +29,6 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import static org.overrun.glib.gl.GLLoader.check;
-
 /**
  * {@code GL_APPLE_flush_buffer_range}
  *
@@ -47,7 +45,7 @@ public final class GLAPPLEFlushBufferRange {
     public static void glBufferParameteriAPPLE(int target, int pname, int param) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glBufferParameteriAPPLE).invokeExact(target, pname, param);
+            GLLoader.check(ext.glBufferParameteriAPPLE).invokeExact(target, pname, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -56,7 +54,7 @@ public final class GLAPPLEFlushBufferRange {
     public static void glFlushMappedBufferRangeAPPLE(int target, long offset, long size) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glFlushMappedBufferRangeAPPLE).invokeExact(target, offset, size);
+            GLLoader.check(ext.glFlushMappedBufferRangeAPPLE).invokeExact(target, offset, size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

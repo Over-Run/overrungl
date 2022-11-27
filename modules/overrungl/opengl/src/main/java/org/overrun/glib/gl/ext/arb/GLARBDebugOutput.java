@@ -28,7 +28,6 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLDebugProc;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
@@ -39,6 +38,7 @@ import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_ARB_debug_output}
@@ -56,7 +56,7 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageCallbackARB(Addressable callback, Addressable userParam) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageCallbackARB).invokeExact(callback, userParam);
         } catch (Throwable e) {
@@ -69,7 +69,7 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageControlARB(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageControlARB).invokeExact(source, type, severity, count, ids, enabled);
         } catch (Throwable e) {
@@ -82,7 +82,7 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageInsertARB(int source, int type, int id, int severity, int length, Addressable buf) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageInsertARB).invokeExact(source, type, id, severity, length, buf);
         } catch (Throwable e) {
@@ -95,7 +95,7 @@ public final class GLARBDebugOutput {
     }
 
     public static int glGetDebugMessageLogARB(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (int) check(ext.glGetDebugMessageLogARB).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
         } catch (Throwable e) {

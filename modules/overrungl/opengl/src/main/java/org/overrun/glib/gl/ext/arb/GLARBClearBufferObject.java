@@ -22,43 +22,33 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext.amd;
+package org.overrun.glib.gl.ext.arb;
 
 import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GL43C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 
 /**
- * {@code GL_AMD_multi_draw_indirect}
+ * {@code GL_ARB_clear_buffer_object}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLAMDMultiDrawIndirect {
+public final class GLARBClearBufferObject {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_multi_draw_indirect) return;
-        ext.glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", FunctionDescriptors.IPIIV);
-        ext.glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
+        if (!ext.GL_ARB_clear_buffer_object) return;
+        ext.caps.glClearBufferData = load.invoke("glClearBufferData", FunctionDescriptors.IIIIPV);
+        ext.caps.glClearBufferSubData = load.invoke("glClearBufferSubData", FunctionDescriptors.IIJJIIPV);
     }
 
-    public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    public static void glClearBufferData(int target, int internalFormat, int format, int type, Addressable data) {
+        GL43C.clearBufferData(target, internalFormat, format, type, data);
     }
 
-    public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    public static void glClearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, Addressable data) {
+        GL43C.clearBufferSubData(target, internalFormat, offset, size, format, type, data);
     }
 }

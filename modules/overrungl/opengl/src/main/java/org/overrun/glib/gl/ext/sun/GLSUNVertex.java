@@ -26,7 +26,6 @@ package org.overrun.glib.gl.ext.sun;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
@@ -34,6 +33,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_SUN_vertex}
@@ -87,7 +87,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor3fVertex3fSUN(float r, float g, float b, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor3fVertex3fSUN).invokeExact(r, g, b, x, y, z);
         } catch (Throwable e) {
@@ -96,7 +96,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor3fVertex3fvSUN(Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor3fVertex3fvSUN).invokeExact(c, v);
         } catch (Throwable e) {
@@ -109,7 +109,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor4fNormal3fVertex3fSUN(float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor4fNormal3fVertex3fSUN).invokeExact(r, g, b, a, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -118,7 +118,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor4fNormal3fVertex3fvSUN(Addressable c, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor4fNormal3fVertex3fvSUN).invokeExact(c, n, v);
         } catch (Throwable e) {
@@ -131,7 +131,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor4ubVertex2fSUN(byte r, byte g, byte b, byte a, float x, float y) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor4ubVertex2fSUN).invokeExact(r, g, b, a, x, y);
         } catch (Throwable e) {
@@ -140,7 +140,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor4ubVertex2fvSUN(Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor4ubVertex2fvSUN).invokeExact(c, v);
         } catch (Throwable e) {
@@ -153,7 +153,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor4ubVertex3fSUN(byte r, byte g, byte b, byte a, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor4ubVertex3fSUN).invokeExact(r, g, b, a, x, y, z);
         } catch (Throwable e) {
@@ -162,7 +162,7 @@ public final class GLSUNVertex {
     }
 
     public static void glColor4ubVertex3fvSUN(Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glColor4ubVertex3fvSUN).invokeExact(c, v);
         } catch (Throwable e) {
@@ -175,7 +175,7 @@ public final class GLSUNVertex {
     }
 
     public static void glNormal3fVertex3fSUN(float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glNormal3fVertex3fSUN).invokeExact(nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -184,7 +184,7 @@ public final class GLSUNVertex {
     }
 
     public static void glNormal3fVertex3fvSUN(Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glNormal3fVertex3fvSUN).invokeExact(n, v);
         } catch (Throwable e) {
@@ -197,7 +197,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiColor3fVertex3fSUN(int rc, float r, float g, float b, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor3fVertex3fSUN).invokeExact(rc, r, g, b, x, y, z);
         } catch (Throwable e) {
@@ -206,7 +206,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiColor3fVertex3fvSUN(Addressable rc, Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor3fVertex3fvSUN).invokeExact(rc, c, v);
         } catch (Throwable e) {
@@ -219,7 +219,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiColor4fNormal3fVertex3fSUN(int rc, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor4fNormal3fVertex3fSUN).invokeExact(rc, r, g, b, a, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -228,7 +228,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiColor4fNormal3fVertex3fvSUN(Addressable rc, Addressable c, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor4fNormal3fVertex3fvSUN).invokeExact(rc, c, n, v);
         } catch (Throwable e) {
@@ -241,7 +241,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiColor4ubVertex3fSUN(int rc, byte r, byte g, byte b, byte a, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor4ubVertex3fSUN).invokeExact(rc, r, g, b, a, x, y, z);
         } catch (Throwable e) {
@@ -250,7 +250,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiColor4ubVertex3fvSUN(Addressable rc, Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor4ubVertex3fvSUN).invokeExact(rc, c, v);
         } catch (Throwable e) {
@@ -263,7 +263,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiNormal3fVertex3fSUN(int rc, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiNormal3fVertex3fSUN).invokeExact(rc, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -272,7 +272,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiNormal3fVertex3fvSUN(Addressable rc, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiNormal3fVertex3fvSUN).invokeExact(rc, n, v);
         } catch (Throwable e) {
@@ -285,7 +285,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(int rc, float s, float t, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN).invokeExact(rc, s, t, r, g, b, a, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -294,7 +294,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(Addressable rc, Addressable tc, Addressable c, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN).invokeExact(rc, tc, c, n, v);
         } catch (Throwable e) {
@@ -307,7 +307,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(int rc, float s, float t, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN).invokeExact(rc, s, t, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -316,7 +316,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(Addressable rc, Addressable tc, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN).invokeExact(rc, tc, n, v);
         } catch (Throwable e) {
@@ -329,7 +329,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiTexCoord2fVertex3fSUN(int rc, float s, float t, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fVertex3fSUN).invokeExact(rc, s, t, x, y, z);
         } catch (Throwable e) {
@@ -338,7 +338,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiTexCoord2fVertex3fvSUN(Addressable rc, Addressable tc, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fVertex3fvSUN).invokeExact(rc, tc, v);
         } catch (Throwable e) {
@@ -351,7 +351,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiVertex3fSUN(int rc, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiVertex3fSUN).invokeExact(rc, x, y, z);
         } catch (Throwable e) {
@@ -360,7 +360,7 @@ public final class GLSUNVertex {
     }
 
     public static void glReplacementCodeuiVertex3fvSUN(Addressable rc, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiVertex3fvSUN).invokeExact(rc, v);
         } catch (Throwable e) {
@@ -373,7 +373,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fColor3fVertex3fSUN(float s, float t, float r, float g, float b, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor3fVertex3fSUN).invokeExact(s, t, r, g, b, x, y, z);
         } catch (Throwable e) {
@@ -382,7 +382,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fColor3fVertex3fvSUN(Addressable tc, Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor3fVertex3fvSUN).invokeExact(tc, c, v);
         } catch (Throwable e) {
@@ -395,7 +395,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fColor4fNormal3fVertex3fSUN(float s, float t, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor4fNormal3fVertex3fSUN).invokeExact(s, t, r, g, b, a, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -404,7 +404,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fColor4fNormal3fVertex3fvSUN(Addressable tc, Addressable c, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor4fNormal3fVertex3fvSUN).invokeExact(tc, c, n, v);
         } catch (Throwable e) {
@@ -417,7 +417,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fColor4ubVertex3fSUN(float s, float t, byte r, byte g, byte b, byte a, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor4ubVertex3fSUN).invokeExact(s, t, r, g, b, a, x, y, z);
         } catch (Throwable e) {
@@ -426,7 +426,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fColor4ubVertex3fvSUN(Addressable tc, Addressable c, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor4ubVertex3fvSUN).invokeExact(tc, c, v);
         } catch (Throwable e) {
@@ -439,7 +439,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fNormal3fVertex3fSUN(float s, float t, float nx, float ny, float nz, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fNormal3fVertex3fSUN).invokeExact(s, t, nx, ny, nz, x, y, z);
         } catch (Throwable e) {
@@ -448,7 +448,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fNormal3fVertex3fvSUN(Addressable tc, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fNormal3fVertex3fvSUN).invokeExact(tc, n, v);
         } catch (Throwable e) {
@@ -461,7 +461,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fVertex3fSUN(float s, float t, float x, float y, float z) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fVertex3fSUN).invokeExact(s, t, x, y, z);
         } catch (Throwable e) {
@@ -470,7 +470,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord2fVertex3fvSUN(Addressable tc, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fVertex3fvSUN).invokeExact(tc, v);
         } catch (Throwable e) {
@@ -483,7 +483,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord4fColor4fNormal3fVertex4fSUN(float s, float t, float p, float q, float r, float g, float b, float a, float nx, float ny, float nz, float x, float y, float z, float w) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord4fColor4fNormal3fVertex4fSUN).invokeExact(s, t, p, q, r, g, b, a, nx, ny, nz, x, y, z, w);
         } catch (Throwable e) {
@@ -492,7 +492,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord4fColor4fNormal3fVertex4fvSUN(Addressable tc, Addressable c, Addressable n, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord4fColor4fNormal3fVertex4fvSUN).invokeExact(tc, c, n, v);
         } catch (Throwable e) {
@@ -505,7 +505,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord4fVertex4fSUN(float s, float t, float p, float q, float x, float y, float z, float w) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord4fVertex4fSUN).invokeExact(s, t, p, q, x, y, z, w);
         } catch (Throwable e) {
@@ -514,7 +514,7 @@ public final class GLSUNVertex {
     }
 
     public static void glTexCoord4fVertex4fvSUN(Addressable tc, Addressable v) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord4fVertex4fvSUN).invokeExact(tc, v);
         } catch (Throwable e) {

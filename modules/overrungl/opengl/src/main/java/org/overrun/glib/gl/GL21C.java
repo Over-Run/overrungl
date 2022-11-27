@@ -29,8 +29,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.FunctionDescriptors.IIZPV;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 2.1 forward compatible functions.
@@ -53,7 +52,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix2x3fv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -70,7 +69,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix2x4fv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -87,7 +86,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix3x2fv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -104,7 +103,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix3x4fv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -121,7 +120,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix4x2fv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
@@ -138,7 +137,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix4x3fv(int location, int count, boolean transpose, Addressable value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {

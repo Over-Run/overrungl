@@ -34,8 +34,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.0 forward compatible functions.
@@ -111,7 +110,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void blendFunc(int sfactor, int dfactor) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBlendFunc).invokeExact(sfactor, dfactor);
         } catch (Throwable e) {
@@ -120,7 +119,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void clear(int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClear).invokeExact(mask);
         } catch (Throwable e) {
@@ -129,7 +128,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void clearColor(float red, float green, float blue, float alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearColor).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -138,7 +137,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void clearDepth(double depth) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearDepth).invokeExact(depth);
         } catch (Throwable e) {
@@ -147,7 +146,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void clearStencil(int s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearStencil).invokeExact(s);
         } catch (Throwable e) {
@@ -156,7 +155,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void colorMask(boolean red, boolean green, boolean blue, boolean alpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glColorMask).invokeExact(red, green, blue, alpha);
         } catch (Throwable e) {
@@ -165,7 +164,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void cullFace(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCullFace).invokeExact(mode);
         } catch (Throwable e) {
@@ -174,7 +173,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void depthFunc(int func) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDepthFunc).invokeExact(func);
         } catch (Throwable e) {
@@ -183,7 +182,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void depthMask(boolean flag) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDepthMask).invokeExact(flag);
         } catch (Throwable e) {
@@ -192,7 +191,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void depthRange(double n, double f) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDepthRange).invokeExact(n, f);
         } catch (Throwable e) {
@@ -201,7 +200,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void disable(int cap) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDisable).invokeExact(cap);
         } catch (Throwable e) {
@@ -210,7 +209,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void drawBuffer(int buf) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawBuffer).invokeExact(buf);
         } catch (Throwable e) {
@@ -219,7 +218,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void enable(int cap) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glEnable).invokeExact(cap);
         } catch (Throwable e) {
@@ -228,7 +227,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void finish() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFinish).invokeExact();
         } catch (Throwable e) {
@@ -237,7 +236,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void flush() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFlush).invokeExact();
         } catch (Throwable e) {
@@ -246,7 +245,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void frontFace(int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFrontFace).invokeExact(mode);
         } catch (Throwable e) {
@@ -255,7 +254,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getBooleanv(int pname, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetBooleanv).invokeExact(pname, data);
         } catch (Throwable e) {
@@ -282,7 +281,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getDoublev(int pname, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetDoublev).invokeExact(pname, data);
         } catch (Throwable e) {
@@ -309,7 +308,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static int getError() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetError).invokeExact();
         } catch (Throwable e) {
@@ -318,7 +317,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getFloatv(int pname, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetFloatv).invokeExact(pname, data);
         } catch (Throwable e) {
@@ -345,7 +344,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getIntegerv(int pname, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetIntegerv).invokeExact(pname, data);
         } catch (Throwable e) {
@@ -372,7 +371,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static MemoryAddress ngetString(int name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (MemoryAddress) check(caps.glGetString).invokeExact(name);
         } catch (Throwable e) {
@@ -387,7 +386,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexImage(int target, int level, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexImage).invokeExact(target, level, format, type, pixels);
         } catch (Throwable e) {
@@ -396,7 +395,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexLevelParameterfv(int target, int level, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexLevelParameterfv).invokeExact(target, level, pname, params);
         } catch (Throwable e) {
@@ -423,7 +422,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexLevelParameteriv(int target, int level, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexLevelParameteriv).invokeExact(target, level, pname, params);
         } catch (Throwable e) {
@@ -450,7 +449,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexParameterfv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexParameterfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -477,7 +476,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void getTexParameteriv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetTexParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -504,7 +503,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void hint(int target, int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glHint).invokeExact(target, mode);
         } catch (Throwable e) {
@@ -513,7 +512,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static boolean isEnabled(int cap) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsEnabled).invokeExact(cap);
         } catch (Throwable e) {
@@ -522,7 +521,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void lineWidth(float width) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLineWidth).invokeExact(width);
         } catch (Throwable e) {
@@ -531,7 +530,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void logicOp(int opcode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLogicOp).invokeExact(opcode);
         } catch (Throwable e) {
@@ -540,7 +539,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void pixelStoref(int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelStoref).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -549,7 +548,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void pixelStorei(int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPixelStorei).invokeExact(pname, param);
         } catch (Throwable e) {
@@ -558,7 +557,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void pointSize(float size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPointSize).invokeExact(size);
         } catch (Throwable e) {
@@ -567,7 +566,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void polygonMode(int face, int mode) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPolygonMode).invokeExact(face, mode);
         } catch (Throwable e) {
@@ -576,7 +575,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void readBuffer(int src) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glReadBuffer).invokeExact(src);
         } catch (Throwable e) {
@@ -585,7 +584,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void readPixels(int x, int y, int width, int height, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glReadPixels).invokeExact(x, y, width, height, format, type, pixels);
         } catch (Throwable e) {
@@ -618,7 +617,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void scissor(int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glScissor).invokeExact(x, y, width, height);
         } catch (Throwable e) {
@@ -627,7 +626,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void stencilFunc(int func, int ref, int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glStencilFunc).invokeExact(func, ref, mask);
         } catch (Throwable e) {
@@ -636,7 +635,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void stencilMask(int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glStencilMask).invokeExact(mask);
         } catch (Throwable e) {
@@ -645,7 +644,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void stencilOp(int fail, int zfail, int zpass) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glStencilOp).invokeExact(fail, zfail, zpass);
         } catch (Throwable e) {
@@ -654,7 +653,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexImage1D).invokeExact(target, level, internalFormat, width, border, format, type, pixels);
         } catch (Throwable e) {
@@ -679,7 +678,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexImage2D).invokeExact(target, level, internalFormat, width, height, border, format, type, pixels);
         } catch (Throwable e) {
@@ -704,7 +703,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texParameterf(int target, int pname, float param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexParameterf).invokeExact(target, pname, param);
         } catch (Throwable e) {
@@ -713,7 +712,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texParameterfv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexParameterfv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -726,7 +725,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texParameteri(int target, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexParameteri).invokeExact(target, pname, param);
         } catch (Throwable e) {
@@ -735,7 +734,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void texParameteriv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -748,7 +747,7 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     public static void viewport(int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glViewport).invokeExact(x, y, width, height);
         } catch (Throwable e) {

@@ -26,7 +26,6 @@ package org.overrun.glib.gl.ext.sun;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
@@ -34,6 +33,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_SUN_triangle_list}
@@ -54,7 +54,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodePointerSUN(int type, int stride, Addressable pointer) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodePointerSUN).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
@@ -63,7 +63,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeubSUN(byte code) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeubSUN).invokeExact(code);
         } catch (Throwable e) {
@@ -72,7 +72,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeubvSUN(Addressable code) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeubvSUN).invokeExact(code);
         } catch (Throwable e) {
@@ -85,7 +85,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeuiSUN(int code) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiSUN).invokeExact(code);
         } catch (Throwable e) {
@@ -94,7 +94,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeuivSUN(Addressable code) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuivSUN).invokeExact(code);
         } catch (Throwable e) {
@@ -107,7 +107,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeusSUN(short code) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeusSUN).invokeExact(code);
         } catch (Throwable e) {
@@ -116,7 +116,7 @@ public final class GLSUNTriangleList {
     }
 
     public static void glReplacementCodeusvSUN(Addressable code) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeusvSUN).invokeExact(code);
         } catch (Throwable e) {

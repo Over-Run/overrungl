@@ -32,8 +32,7 @@ import java.lang.foreign.*;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.3 core profile functions.
@@ -101,7 +100,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void bindVertexBuffer(int bindingIndex, int buffer, long offset, int stride) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glBindVertexBuffer).invokeExact(bindingIndex, buffer, offset, stride);
         } catch (Throwable e) {
@@ -110,7 +109,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void clearBufferData(int target, int internalFormat, int format, int type, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearBufferData).invokeExact(target, internalFormat, format, type, data);
         } catch (Throwable e) {
@@ -119,7 +118,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void clearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, Addressable data) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClearBufferSubData).invokeExact(target, internalFormat, offset, size, format, type, data);
         } catch (Throwable e) {
@@ -128,7 +127,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void copyImageSubData(int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyImageSubData).invokeExact(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
         } catch (Throwable e) {
@@ -137,7 +136,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageCallback(Addressable callback, Addressable userParam) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDebugMessageCallback).invokeExact(callback, userParam);
         } catch (Throwable e) {
@@ -150,7 +149,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageControl(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDebugMessageControl).invokeExact(source, type, severity, count, ids, enabled);
         } catch (Throwable e) {
@@ -163,7 +162,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageInsert(int source, int type, int id, int severity, int length, Addressable buf) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDebugMessageInsert).invokeExact(source, type, id, severity, length, buf);
         } catch (Throwable e) {
@@ -176,7 +175,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void dispatchCompute(int numGroupsX, int numGroupsY, int numGroupsZ) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDispatchCompute).invokeExact(numGroupsX, numGroupsY, numGroupsZ);
         } catch (Throwable e) {
@@ -185,7 +184,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void dispatchComputeIndirect(long indirect) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDispatchComputeIndirect).invokeExact(indirect);
         } catch (Throwable e) {
@@ -194,7 +193,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void framebufferParameteri(int target, int pname, int param) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFramebufferParameteri).invokeExact(target, pname, param);
         } catch (Throwable e) {
@@ -203,7 +202,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getDebugMessageLog(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetDebugMessageLog).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
         } catch (Throwable e) {
@@ -233,7 +232,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getFramebufferParameteriv(int target, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetFramebufferParameteriv).invokeExact(target, pname, params);
         } catch (Throwable e) {
@@ -254,7 +253,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getInternalformati64v(int target, int internalFormat, int pname, int count, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetInternalformati64v).invokeExact(target, internalFormat, pname, count, params);
         } catch (Throwable e) {
@@ -281,7 +280,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getObjectLabel(int identifier, int name, int bufSize, Addressable length, Addressable label) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetObjectLabel).invokeExact(identifier, name, bufSize, length, label);
         } catch (Throwable e) {
@@ -308,7 +307,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getObjectPtrLabel(MemoryAddress ptr, int bufSize, Addressable length, Addressable label) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetObjectPtrLabel).invokeExact(ptr, bufSize, length, label);
         } catch (Throwable e) {
@@ -335,7 +334,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramInterfaceiv(int program, int programInterface, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramInterfaceiv).invokeExact(program, programInterface, pname, params);
         } catch (Throwable e) {
@@ -356,7 +355,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramResourceIndex(int program, int programInterface, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetProgramResourceIndex).invokeExact(program, programInterface, name);
         } catch (Throwable e) {
@@ -369,7 +368,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramResourceLocation(int program, int programInterface, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetProgramResourceLocation).invokeExact(program, programInterface, name);
         } catch (Throwable e) {
@@ -382,7 +381,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getProgramResourceLocationIndex(int program, int programInterface, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetProgramResourceLocationIndex).invokeExact(program, programInterface, name);
         } catch (Throwable e) {
@@ -395,7 +394,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramResourceName(int program, int programInterface, int index, int bufSize, Addressable length, Addressable name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramResourceName).invokeExact(program, programInterface, index, bufSize, length, name);
         } catch (Throwable e) {
@@ -422,7 +421,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramResourceiv(int program, int programInterface, int index, int propCount, Addressable props, int count, Addressable length, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetProgramResourceiv).invokeExact(program, programInterface, index, propCount, props, count, length, params);
         } catch (Throwable e) {
@@ -451,7 +450,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateBufferData(int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateBufferData).invokeExact(buffer);
         } catch (Throwable e) {
@@ -460,7 +459,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateBufferSubData(int buffer, long offset, long length) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateBufferSubData).invokeExact(buffer, offset, length);
         } catch (Throwable e) {
@@ -469,7 +468,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateFramebuffer(int target, int numAttachments, Addressable attachments) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateFramebuffer).invokeExact(target, numAttachments, attachments);
         } catch (Throwable e) {
@@ -494,7 +493,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateSubFramebuffer(int target, int numAttachments, Addressable attachments, int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateSubFramebuffer).invokeExact(target, numAttachments, attachments, x, y, width, height);
         } catch (Throwable e) {
@@ -519,7 +518,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateTexImage(int texture, int level) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateTexImage).invokeExact(texture, level);
         } catch (Throwable e) {
@@ -528,7 +527,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glInvalidateTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth);
         } catch (Throwable e) {
@@ -537,7 +536,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void multiDrawArraysIndirect(int mode, Addressable indirect, int drawCount, int stride) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArraysIndirect).invokeExact(mode, indirect, drawCount, stride);
         } catch (Throwable e) {
@@ -550,7 +549,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void multiDrawElementsIndirect(int mode, int type, Addressable indirect, int drawCount, int stride) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElementsIndirect).invokeExact(mode, type, indirect, drawCount, stride);
         } catch (Throwable e) {
@@ -563,7 +562,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void objectLabel(int identifier, int name, int length, Addressable label) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glObjectLabel).invokeExact(identifier, name, length, label);
         } catch (Throwable e) {
@@ -576,7 +575,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void objectPtrLabel(MemoryAddress ptr, int length, Addressable label) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glObjectPtrLabel).invokeExact(ptr, length, label);
         } catch (Throwable e) {
@@ -589,7 +588,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void popDebugGroup() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPopDebugGroup).invokeExact();
         } catch (Throwable e) {
@@ -598,7 +597,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void pushDebugGroup(int source, int id, int length, Addressable message) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPushDebugGroup).invokeExact(source, id, length, message);
         } catch (Throwable e) {
@@ -611,7 +610,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void shaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glShaderStorageBlockBinding).invokeExact(program, storageBlockIndex, storageBlockBinding);
         } catch (Throwable e) {
@@ -620,7 +619,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void texBufferRange(int target, int internalFormat, int buffer, long offset, long size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexBufferRange).invokeExact(target, internalFormat, buffer, offset, size);
         } catch (Throwable e) {
@@ -629,7 +628,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void texStorage2DMultisample(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexStorage2DMultisample).invokeExact(target, samples, internalFormat, width, height, fixedSampleLocations);
         } catch (Throwable e) {
@@ -638,7 +637,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void texStorage3DMultisample(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexStorage3DMultisample).invokeExact(target, samples, internalFormat, width, height, depth, fixedSampleLocations);
         } catch (Throwable e) {
@@ -647,7 +646,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void textureView(int texture, int target, int origTexture, int internalFormat, int minLevel, int numLevels, int minLayer, int numLayers) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTextureView).invokeExact(texture, target, origTexture, internalFormat, minLevel, numLevels, minLayer, numLayers);
         } catch (Throwable e) {
@@ -656,7 +655,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void vertexAttribBinding(int attribIndex, int bindingIndex) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribBinding).invokeExact(attribIndex, bindingIndex);
         } catch (Throwable e) {
@@ -665,7 +664,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void vertexAttribFormat(int attribIndex, int size, int type, boolean normalized, int relativeOffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribFormat).invokeExact(attribIndex, size, type, normalized, relativeOffset);
         } catch (Throwable e) {
@@ -674,7 +673,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void vertexAttribIFormat(int attribIndex, int size, int type, int relativeOffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribIFormat).invokeExact(attribIndex, size, type, relativeOffset);
         } catch (Throwable e) {
@@ -683,7 +682,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void vertexAttribLFormat(int attribIndex, int size, int type, int relativeOffset) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexAttribLFormat).invokeExact(attribIndex, size, type, relativeOffset);
         } catch (Throwable e) {
@@ -692,7 +691,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void vertexBindingDivisor(int bindingIndex, int divisor) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glVertexBindingDivisor).invokeExact(bindingIndex, divisor);
         } catch (Throwable e) {

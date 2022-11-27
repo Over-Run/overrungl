@@ -22,51 +22,29 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext.apple;
+package org.overrun.glib.gl.ext.arb;
 
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
-
 /**
- * {@code GL_APPLE_vertex_array_range}
+ * {@code GL_ARB_color_buffer_float}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLAPPLEVertexArrayRange {
+public final class GLARBColorBufferFloat {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_APPLE_vertex_array_range) return;
-        ext.glFlushVertexArrayRangeAPPLE = load.invoke("glFlushVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
-        ext.glVertexArrayParameteriAPPLE = load.invoke("glVertexArrayParameteriAPPLE", FunctionDescriptors.IIV);
-        ext.glVertexArrayRangeAPPLE = load.invoke("glVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
+        if (!ext.GL_ARB_color_buffer_float) return;
+        ext.glClampColorARB = load.invoke("glClampColorARB", FunctionDescriptors.IIV);
     }
 
-    public static void glFlushVertexArrayRangeAPPLE(int length, Addressable pointer) {
+    public static void glClampColorARB(int target, int clamp) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(ext.glFlushVertexArrayRangeAPPLE).invokeExact(length, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glVertexArrayParameteriAPPLE(int pname, int param) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glVertexArrayParameteriAPPLE).invokeExact(pname, param);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glVertexArrayRangeAPPLE(int length, Addressable pointer) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glVertexArrayRangeAPPLE).invokeExact(length, pointer);
+            GLLoader.check(ext.glClampColorARB).invokeExact(target, clamp);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

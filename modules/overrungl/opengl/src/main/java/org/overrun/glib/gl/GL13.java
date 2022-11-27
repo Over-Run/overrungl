@@ -30,6 +30,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getCapabilities;
 
 /**
  * The OpenGL 1.3 functions.
@@ -80,7 +81,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void clientActiveTexture(int texture) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glClientActiveTexture).invokeExact(texture);
         } catch (Throwable e) {
@@ -89,7 +90,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void loadTransposeMatrixd(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLoadTransposeMatrixd).invokeExact(m);
         } catch (Throwable e) {
@@ -102,7 +103,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void loadTransposeMatrixf(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glLoadTransposeMatrixf).invokeExact(m);
         } catch (Throwable e) {
@@ -115,7 +116,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multTransposeMatrixd(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultTransposeMatrixd).invokeExact(m);
         } catch (Throwable e) {
@@ -128,7 +129,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multTransposeMatrixf(Addressable m) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultTransposeMatrixf).invokeExact(m);
         } catch (Throwable e) {
@@ -141,7 +142,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1d(int target, double s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1d).invokeExact(target, s);
         } catch (Throwable e) {
@@ -150,7 +151,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1dv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1dv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -163,7 +164,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1f(int target, float s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1f).invokeExact(target, s);
         } catch (Throwable e) {
@@ -172,7 +173,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1fv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1fv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -185,7 +186,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1i(int target, int s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1i).invokeExact(target, s);
         } catch (Throwable e) {
@@ -194,7 +195,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1iv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1iv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -207,7 +208,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1s(int target, short s) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1s).invokeExact(target, s);
         } catch (Throwable e) {
@@ -216,7 +217,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1sv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1sv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -229,7 +230,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2d(int target, double s, double t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2d).invokeExact(target, s, t);
         } catch (Throwable e) {
@@ -238,7 +239,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2dv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2dv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -251,7 +252,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2f(int target, float s, float t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2f).invokeExact(target, s, t);
         } catch (Throwable e) {
@@ -260,7 +261,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2fv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2fv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -273,7 +274,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2i(int target, int s, int t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2i).invokeExact(target, s, t);
         } catch (Throwable e) {
@@ -282,7 +283,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2iv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2iv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -295,7 +296,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2s(int target, short s, short t) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2s).invokeExact(target, s, t);
         } catch (Throwable e) {
@@ -304,7 +305,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2sv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2sv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -317,7 +318,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3d(int target, double s, double t, double r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3d).invokeExact(target, s, t, r);
         } catch (Throwable e) {
@@ -326,7 +327,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3dv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3dv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -339,7 +340,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3f(int target, float s, float t, float r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3f).invokeExact(target, s, t, r);
         } catch (Throwable e) {
@@ -348,7 +349,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3fv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3fv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -361,7 +362,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3i(int target, int s, int t, int r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3i).invokeExact(target, s, t, r);
         } catch (Throwable e) {
@@ -370,7 +371,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3iv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3iv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -383,7 +384,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3s(int target, short s, short t, short r) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3s).invokeExact(target, s, t, r);
         } catch (Throwable e) {
@@ -392,7 +393,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3sv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3sv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -405,7 +406,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4d(int target, double s, double t, double r, double q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4d).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
@@ -414,7 +415,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4dv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4dv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -427,7 +428,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4f(int target, float s, float t, float r, float q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4f).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
@@ -436,7 +437,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4fv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4fv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -449,7 +450,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4i(int target, int s, int t, int r, int q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4i).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
@@ -458,7 +459,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4iv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4iv).invokeExact(target, v);
         } catch (Throwable e) {
@@ -471,7 +472,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4s(int target, short s, short t, short r, short q) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4s).invokeExact(target, s, t, r, q);
         } catch (Throwable e) {
@@ -480,7 +481,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4sv(int target, Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4sv).invokeExact(target, v);
         } catch (Throwable e) {

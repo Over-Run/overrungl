@@ -30,6 +30,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getCapabilities;
 
 /**
  * The OpenGL 1.4 functions.
@@ -81,7 +82,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoordPointer(int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogCoordPointer).invokeExact(type, stride, pointer);
         } catch (Throwable e) {
@@ -98,7 +99,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoordd(double coord) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogCoordd).invokeExact(coord);
         } catch (Throwable e) {
@@ -107,7 +108,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoorddv(Addressable coord) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogCoorddv).invokeExact(coord);
         } catch (Throwable e) {
@@ -120,7 +121,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoordf(float coord) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogCoordf).invokeExact(coord);
         } catch (Throwable e) {
@@ -129,7 +130,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoordfv(Addressable coord) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glFogCoordfv).invokeExact(coord);
         } catch (Throwable e) {
@@ -142,7 +143,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3b(byte red, byte green, byte blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3b).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -151,7 +152,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3bv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3bv).invokeExact(v);
         } catch (Throwable e) {
@@ -164,7 +165,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3d(double red, double green, double blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3d).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -173,7 +174,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -186,7 +187,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3f(float red, float green, float blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3f).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -195,7 +196,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -208,7 +209,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3i(int red, int green, int blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3i).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -217,7 +218,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -230,7 +231,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3s(short red, short green, short blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3s).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -239,7 +240,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3sv).invokeExact(v);
         } catch (Throwable e) {
@@ -252,7 +253,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3ub(byte red, byte green, byte blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3ub).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -261,7 +262,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3ubv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3ubv).invokeExact(v);
         } catch (Throwable e) {
@@ -274,7 +275,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3ui(int red, int green, int blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3ui).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -283,7 +284,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3uiv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3uiv).invokeExact(v);
         } catch (Throwable e) {
@@ -296,7 +297,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3us(short red, short green, short blue) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3us).invokeExact(red, green, blue);
         } catch (Throwable e) {
@@ -305,7 +306,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3usv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3usv).invokeExact(v);
         } catch (Throwable e) {
@@ -318,7 +319,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColorPointer(int size, int type, int stride, Addressable pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glSecondaryColorPointer).invokeExact(size, type, stride, pointer);
         } catch (Throwable e) {
@@ -347,7 +348,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2d(double x, double y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2d).invokeExact(x, y);
         } catch (Throwable e) {
@@ -356,7 +357,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2dv).invokeExact(v);
         } catch (Throwable e) {
@@ -369,7 +370,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2f(float x, float y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2f).invokeExact(x, y);
         } catch (Throwable e) {
@@ -378,7 +379,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2fv).invokeExact(v);
         } catch (Throwable e) {
@@ -391,7 +392,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2i(int x, int y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2i).invokeExact(x, y);
         } catch (Throwable e) {
@@ -400,7 +401,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2iv).invokeExact(v);
         } catch (Throwable e) {
@@ -413,7 +414,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2s(short x, short y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2s).invokeExact(x, y);
         } catch (Throwable e) {
@@ -422,7 +423,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos2sv).invokeExact(v);
         } catch (Throwable e) {
@@ -435,7 +436,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3d(double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3d).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -444,7 +445,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3dv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3dv).invokeExact(v);
         } catch (Throwable e) {
@@ -457,7 +458,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3f(float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3f).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -466,7 +467,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3fv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3fv).invokeExact(v);
         } catch (Throwable e) {
@@ -479,7 +480,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3i(int x, int y, int z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3i).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -488,7 +489,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3iv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3iv).invokeExact(v);
         } catch (Throwable e) {
@@ -501,7 +502,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3s(short x, short y, short z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3s).invokeExact(x, y, z);
         } catch (Throwable e) {
@@ -510,7 +511,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3sv(Addressable v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glWindowPos3sv).invokeExact(v);
         } catch (Throwable e) {

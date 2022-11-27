@@ -35,8 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.1 core profile functions.
@@ -70,7 +69,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void copyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyBufferSubData).invokeExact(readTarget, writeTarget, readOffset, writeOffset, size);
         } catch (Throwable e) {
@@ -79,7 +78,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void drawArraysInstanced(int mode, int first, int count, int instanceCount) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawArraysInstanced).invokeExact(mode, first, count, instanceCount);
         } catch (Throwable e) {
@@ -88,7 +87,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void drawElementsInstanced(int mode, int count, int type, Addressable indices, int instanceCount) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawElementsInstanced).invokeExact(mode, count, type, indices, instanceCount);
         } catch (Throwable e) {
@@ -109,7 +108,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, Addressable length, Addressable uniformBlockName) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveUniformBlockName).invokeExact(program, uniformBlockIndex, bufSize, length, uniformBlockName);
         } catch (Throwable e) {
@@ -134,7 +133,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveUniformBlockiv).invokeExact(program, uniformBlockIndex, pname, params);
         } catch (Throwable e) {
@@ -149,7 +148,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformName(int program, int uniformIndex, int bufSize, Addressable length, Addressable uniformName) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveUniformName).invokeExact(program, uniformIndex, bufSize, length, uniformName);
         } catch (Throwable e) {
@@ -174,7 +173,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getActiveUniformsiv(int program, int uniformCount, Addressable uniformIndices, int pname, Addressable params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetActiveUniformsiv).invokeExact(program, uniformCount, uniformIndices, pname, params);
         } catch (Throwable e) {
@@ -204,7 +203,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static int getUniformBlockIndex(int program, Addressable uniformBlockName) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             return (int) check(caps.glGetUniformBlockIndex).invokeExact(program, uniformBlockName);
         } catch (Throwable e) {
@@ -217,7 +216,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void getUniformIndices(int program, int uniformCount, Addressable uniformNames, Addressable uniformIndices) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glGetUniformIndices).invokeExact(program, uniformCount, uniformNames, uniformIndices);
         } catch (Throwable e) {
@@ -243,7 +242,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void primitiveRestartIndex(int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glPrimitiveRestartIndex).invokeExact(index);
         } catch (Throwable e) {
@@ -252,7 +251,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void texBuffer(int target, int internalFormat, int buffer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexBuffer).invokeExact(target, internalFormat, buffer);
         } catch (Throwable e) {
@@ -261,7 +260,7 @@ public sealed class GL31C extends GL30C permits GL32C {
     }
 
     public static void uniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glUniformBlockBinding).invokeExact(program, uniformBlockIndex, uniformBlockBinding);
         } catch (Throwable e) {

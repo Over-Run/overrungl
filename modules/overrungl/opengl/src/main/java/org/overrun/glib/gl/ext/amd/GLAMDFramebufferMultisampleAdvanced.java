@@ -29,7 +29,6 @@ import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.FunctionDescriptors.IIIIIIV;
-import static org.overrun.glib.gl.GLLoader.check;
 
 /**
  * {@code GL_AMD_framebuffer_multisample_advanced}
@@ -47,7 +46,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     public static void glNamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalFormat, int width, int height) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glNamedRenderbufferStorageMultisampleAdvancedAMD).invokeExact(renderbuffer, samples, storageSamples, internalFormat, width, height);
+            GLLoader.check(ext.glNamedRenderbufferStorageMultisampleAdvancedAMD).invokeExact(renderbuffer, samples, storageSamples, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -56,7 +55,7 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     public static void glRenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalFormat, int width, int height) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            check(ext.glRenderbufferStorageMultisampleAdvancedAMD).invokeExact(target, samples, storageSamples, internalFormat, width, height);
+            GLLoader.check(ext.glRenderbufferStorageMultisampleAdvancedAMD).invokeExact(target, samples, storageSamples, internalFormat, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

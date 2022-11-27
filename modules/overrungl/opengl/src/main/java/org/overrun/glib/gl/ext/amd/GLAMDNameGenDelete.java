@@ -28,7 +28,6 @@ import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
@@ -36,6 +35,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_AMD_name_gen_delete}
@@ -52,7 +52,7 @@ public final class GLAMDNameGenDelete {
     }
 
     public static void glDeleteNamesAMD(int identifier, int num, Addressable names) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDeleteNamesAMD).invokeExact(identifier, num, names);
         } catch (Throwable e) {
@@ -77,7 +77,7 @@ public final class GLAMDNameGenDelete {
     }
 
     public static void glGenNamesAMD(int identifier, int num, Addressable names) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGenNamesAMD).invokeExact(identifier, num, names);
         } catch (Throwable e) {
@@ -104,7 +104,7 @@ public final class GLAMDNameGenDelete {
     }
 
     public static boolean glIsNameAMD(int identifier, int name) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (boolean) check(ext.glIsNameAMD).invokeExact(identifier, name);
         } catch (Throwable e) {

@@ -26,7 +26,6 @@ package org.overrun.glib.gl.ext.apple;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
@@ -35,6 +34,7 @@ import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_APPLE_vertex_program_evaluators}
@@ -55,7 +55,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glDisableVertexAttribAPPLE(int index, int pname) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDisableVertexAttribAPPLE).invokeExact(index, pname);
         } catch (Throwable e) {
@@ -64,7 +64,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glEnableVertexAttribAPPLE(int index, int pname) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glEnableVertexAttribAPPLE).invokeExact(index, pname);
         } catch (Throwable e) {
@@ -73,7 +73,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static boolean glIsVertexAttribEnabledAPPLE(int index, int pname) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (boolean) check(ext.glIsVertexAttribEnabledAPPLE).invokeExact(index, pname);
         } catch (Throwable e) {
@@ -82,7 +82,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, Addressable points) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib1dAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
         } catch (Throwable e) {
@@ -95,7 +95,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, Addressable points) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib1fAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
         } catch (Throwable e) {
@@ -108,7 +108,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib2dAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {
@@ -121,7 +121,7 @@ public final class GLAPPLEVertexProgramEvaluators {
     }
 
     public static void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib2fAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
         } catch (Throwable e) {

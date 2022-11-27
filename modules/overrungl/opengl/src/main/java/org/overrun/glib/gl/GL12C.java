@@ -29,8 +29,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
-import static org.overrun.glib.gl.GLLoader.check;
-import static org.overrun.glib.gl.GLLoader.checkAll;
+import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.2 forward compatible functions.
@@ -51,7 +50,7 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     public static void copyTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glCopyTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, x, y, width, height);
         } catch (Throwable e) {
@@ -60,7 +59,7 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     public static void drawRangeElements(int mode, int start, int end, int count, int type, Addressable indices) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glDrawRangeElements).invokeExact(mode, start, end, count, type, indices);
         } catch (Throwable e) {
@@ -81,7 +80,7 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, format, type, pixels);
         } catch (Throwable e) {
@@ -106,7 +105,7 @@ public sealed class GL12C extends GL11C permits GL13C {
     }
 
     public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
             check(caps.glTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
         } catch (Throwable e) {

@@ -26,10 +26,10 @@ package org.overrun.glib.gl.ext.amd;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_AMD_draw_buffers_blend}
@@ -47,7 +47,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     public static void glBlendEquationIndexedAMD(int buf, int mode) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glBlendEquationIndexedAMD).invokeExact(buf, mode);
         } catch (Throwable e) {
@@ -56,7 +56,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     public static void glBlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glBlendEquationSeparateIndexedAMD).invokeExact(buf, modeRGB, modeAlpha);
         } catch (Throwable e) {
@@ -65,7 +65,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     public static void glBlendFuncIndexedAMD(int buf, int src, int dst) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glBlendFuncIndexedAMD).invokeExact(buf, src, dst);
         } catch (Throwable e) {
@@ -74,7 +74,7 @@ public final class GLAMDDrawBuffersBlend {
     }
 
     public static void glBlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glBlendFuncSeparateIndexedAMD).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
         } catch (Throwable e) {

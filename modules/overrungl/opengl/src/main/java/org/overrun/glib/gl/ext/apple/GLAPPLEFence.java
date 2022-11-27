@@ -26,7 +26,6 @@ package org.overrun.glib.gl.ext.apple;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.Addressable;
@@ -35,6 +34,7 @@ import java.lang.foreign.SegmentAllocator;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
+import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
 
 /**
  * {@code GL_APPLE_fence}
@@ -56,7 +56,7 @@ public final class GLAPPLEFence {
     }
 
     public static void glDeleteFencesAPPLE(int n, Addressable fences) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glDeleteFencesAPPLE).invokeExact(n, fences);
         } catch (Throwable e) {
@@ -69,7 +69,7 @@ public final class GLAPPLEFence {
     }
 
     public static void glFinishFenceAPPLE(int fence) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glFinishFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
@@ -78,7 +78,7 @@ public final class GLAPPLEFence {
     }
 
     public static void glFinishObjectAPPLE(int object, int name) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glFinishObjectAPPLE).invokeExact(object, name);
         } catch (Throwable e) {
@@ -87,7 +87,7 @@ public final class GLAPPLEFence {
     }
 
     public static void glGenFencesAPPLE(int n, Addressable fences) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glGenFencesAPPLE).invokeExact(n, fences);
         } catch (Throwable e) {
@@ -112,7 +112,7 @@ public final class GLAPPLEFence {
     }
 
     public static boolean glIsFenceAPPLE(int fence) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (boolean) check(ext.glIsFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
@@ -121,7 +121,7 @@ public final class GLAPPLEFence {
     }
 
     public static void glSetFenceAPPLE(int fence) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             check(ext.glSetFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
@@ -130,7 +130,7 @@ public final class GLAPPLEFence {
     }
 
     public static boolean glTestFenceAPPLE(int fence) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (boolean) check(ext.glTestFenceAPPLE).invokeExact(fence);
         } catch (Throwable e) {
@@ -139,7 +139,7 @@ public final class GLAPPLEFence {
     }
 
     public static boolean glTestObjectAPPLE(int object, int name) {
-        var ext = GLLoader.getExtCapabilities();
+        var ext = getExtCapabilities();
         try {
             return (boolean) check(ext.glTestObjectAPPLE).invokeExact(object, name);
         } catch (Throwable e) {
