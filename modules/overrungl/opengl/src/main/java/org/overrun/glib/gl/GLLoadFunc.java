@@ -61,6 +61,17 @@ public interface GLLoadFunc extends BiFunction<SegmentAllocator, String, MemoryA
     }
 
     /**
+     * Creates a load function with confined arena.
+     *
+     * @param function the function pointer getter
+     * @return the load function and the arena
+     */
+    static Value2<GLLoadFunc, MemorySession> ofConfined(Getter function) {
+        final var arena = MemorySession.openConfined();
+        return new Value2<>(of(arena, function), arena);
+    }
+
+    /**
      * Creates a load function with given segment allocator.
      *
      * @param allocator the segment allocator.

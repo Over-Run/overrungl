@@ -24,6 +24,7 @@
 
 package org.overrun.glib.demo.opengl;
 
+import org.overrun.glib.demo.util.IOUtil;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.glfw.Callbacks;
@@ -34,8 +35,8 @@ import org.overrun.glib.stb.STBImage;
 import java.io.IOException;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySession;
-import java.util.Objects;
 
+import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.gl.GLConstC.*;
 
 /**
@@ -105,7 +106,7 @@ public final class GL30Test {
     }
 
     private void load(MemorySession arena) {
-        if (GLLoader.loadShared(true, GLFW::getProcAddress) == null)
+        if (GLLoader.loadConfined(true, GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
@@ -114,15 +115,19 @@ public final class GL30Test {
         GL.bindTexture(GL_TEXTURE_2D, tex);
         GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        try (var is = ClassLoader.getSystemResourceAsStream("image.png")) {
-            byte[] bytes = Objects.requireNonNull(is).readNBytes(256);
-            int[] px = new int[1], py = new int[1], pc = new int[1];
-            var data = STBImage.loadFromMemory(arena, bytes, px, py, pc, STBImage.RGB);
+        try {
+            var px = arena.allocate(JAVA_INT);
+            var py = arena.allocate(JAVA_INT);
+            var pc = arena.allocate(JAVA_INT);
+            var data = STBImage.loadFromMemory(
+                IOUtil.ioResourceToSegment(arena, "image.png", 256),
+                px, py, pc, STBImage.RGB
+            );
             GL.texImage2D(GL_TEXTURE_2D,
                 0,
                 GL_RGB,
-                px[0],
-                py[0],
+                px.get(JAVA_INT, 0),
+                py.get(JAVA_INT, 0),
                 0,
                 GL_RGB,
                 GL_UNSIGNED_BYTE,

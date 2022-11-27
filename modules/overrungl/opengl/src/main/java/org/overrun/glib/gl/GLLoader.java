@@ -82,6 +82,11 @@ public final class GLLoader {
 
     /**
      * Returns the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     * <p>
+     * This is equivalent to the following code:
+     * <pre><code>
+     * {@link #getCapabilities()}.{@link GLCapabilities#ext ext}
+     * </code></pre>
      *
      * @return the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
@@ -112,8 +117,10 @@ public final class GLLoader {
     @Nullable
     public static GLCapabilities loadShared(GLLoadFunc.Getter getter) {
         var value = GLLoadFunc.ofShared(getter);
-        try (var ignored = value.y()) {
+        try {
             return load(value.x());
+        } finally {
+            value.y().close();
         }
     }
 
@@ -128,8 +135,45 @@ public final class GLLoader {
     @Nullable
     public static GLCapabilities loadShared(boolean forwardCompatible, GLLoadFunc.Getter getter) {
         var value = GLLoadFunc.ofShared(getter);
-        try (var ignored = value.y()) {
+        try {
             return load(forwardCompatible, value.x());
+        } finally {
+            value.y().close();
+        }
+    }
+
+    /**
+     * Load OpenGL compatibility profile by the given load function with confined arena.
+     *
+     * @param getter the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities loadConfined(GLLoadFunc.Getter getter) {
+        var value = GLLoadFunc.ofConfined(getter);
+        try {
+            return load(value.x());
+        } finally {
+            value.y().close();
+        }
+    }
+
+    /**
+     * Load OpenGL by the given load function with confined arena.
+     *
+     * @param forwardCompatible If {@code true}, only loads core profile functions.
+     * @param getter            the function pointer getter
+     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
+     * no guaranteed to actually supported version, please use {@code Ver##}
+     */
+    @Nullable
+    public static GLCapabilities loadConfined(boolean forwardCompatible, GLLoadFunc.Getter getter) {
+        var value = GLLoadFunc.ofConfined(getter);
+        try {
+            return load(forwardCompatible, value.x());
+        } finally {
+            value.y().close();
         }
     }
 

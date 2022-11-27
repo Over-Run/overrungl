@@ -261,25 +261,19 @@ public final class STBImage {
         }
     }
 
-    public static boolean infoFromMemory(MemorySegment buffer, int[] x, int[] y, int[] comp) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
-            boolean b = ninfoFromMemory(buffer, (int) buffer.byteSize(), px, py, pc);
-            x[0] = px.get(JAVA_INT, 0);
-            y[0] = py.get(JAVA_INT, 0);
-            comp[0] = pc.get(JAVA_INT, 0);
-            return b;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    public static boolean infoFromMemory(MemorySegment buffer, Addressable x, Addressable y, Addressable comp) {
+        return ninfoFromMemory(buffer, (int) buffer.byteSize(), x, y, comp);
     }
 
     public static boolean infoFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] comp) {
-        return infoFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), x, y, comp);
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        boolean b = infoFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), px, py, pc);
+        x[0] = px.get(JAVA_INT, 0);
+        y[0] = py.get(JAVA_INT, 0);
+        comp[0] = pc.get(JAVA_INT, 0);
+        return b;
     }
 
     public static boolean nis16Bit(Addressable filename) {
@@ -465,25 +459,19 @@ public final class STBImage {
         }
     }
 
-    public static MemoryAddress load16FromMemory(MemorySegment buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
-            var addr = nload16FromMemory(buffer, (int) buffer.byteSize(), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0);
-            y[0] = py.get(JAVA_INT, 0);
-            channelsInFile[0] = pc.get(JAVA_INT, 0);
-            return addr;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    public static MemoryAddress load16FromMemory(MemorySegment buffer, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
+        return nload16FromMemory(buffer, (int) buffer.byteSize(), x, y, channelsInFile, desiredChannels);
     }
 
     public static MemoryAddress load16FromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        return load16FromMemory(allocator.allocateArray(JAVA_BYTE, buffer), x, y, channelsInFile, desiredChannels);
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = load16FromMemory(allocator.allocateArray(JAVA_BYTE, buffer), px, py, pc, desiredChannels);
+        x[0] = px.get(JAVA_INT, 0);
+        y[0] = py.get(JAVA_INT, 0);
+        channelsInFile[0] = pc.get(JAVA_INT, 0);
+        return addr;
     }
 
     public static MemoryAddress nloadFromCallbacks(Addressable clbk, Addressable user, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
@@ -569,21 +557,8 @@ public final class STBImage {
         }
     }
 
-    public static MemoryAddress loadFromMemory(MemorySegment buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
-            var addr = nloadFromMemory(buffer, (int) buffer.byteSize(), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0);
-            y[0] = py.get(JAVA_INT, 0);
-            channelsInFile[0] = pc.get(JAVA_INT, 0);
-            return addr;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    public static MemoryAddress loadFromMemory(MemorySegment buffer, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
+        return nloadFromMemory(buffer, (int) buffer.byteSize(), x, y, channelsInFile, desiredChannels);
     }
 
     public static MemoryAddress loadFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
@@ -605,30 +580,24 @@ public final class STBImage {
         }
     }
 
-    public static MemoryAddress loadGifFromMemory(MemorySegment buffer, int[][] delays, int[] x, int[] y, int[] z, int[] comp, int reqComp) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pd = stack.calloc(ADDRESS);
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pz = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
-            var addr = nloadGifFromMemory(buffer, (int) buffer.byteSize(), pd, px, py, pz, pc, reqComp);
-            x[0] = px.get(JAVA_INT, 0);
-            y[0] = py.get(JAVA_INT, 0);
-            final int layers = pz.get(JAVA_INT, 0);
-            z[0] = layers;
-            comp[0] = pc.get(JAVA_INT, 0);
-            delays[0] = RuntimeHelper.toArray(pd.get(ADDRESS, 0), new int[layers]);
-            return addr;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    public static MemoryAddress loadGifFromMemory(MemorySegment buffer, Addressable delays, Addressable x, Addressable y, Addressable z, Addressable comp, int reqComp) {
+        return nloadGifFromMemory(buffer, (int) buffer.byteSize(), delays, x, y, z, comp, reqComp);
     }
 
     public static MemoryAddress loadGifFromMemory(SegmentAllocator allocator, byte[] buffer, int[][] delays, int[] x, int[] y, int[] z, int[] comp, int reqComp) {
-        return loadGifFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), delays, x, y, z, comp, reqComp);
+        var pd = allocator.allocate(ADDRESS);
+        var px = allocator.allocate(JAVA_INT);
+        var py = allocator.allocate(JAVA_INT);
+        var pz = allocator.allocate(JAVA_INT);
+        var pc = allocator.allocate(JAVA_INT);
+        var addr = loadGifFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), pd, px, py, pz, pc, reqComp);
+        x[0] = px.get(JAVA_INT, 0);
+        y[0] = py.get(JAVA_INT, 0);
+        final int layers = pz.get(JAVA_INT, 0);
+        z[0] = layers;
+        comp[0] = pc.get(JAVA_INT, 0);
+        delays[0] = RuntimeHelper.toArray(pd.get(ADDRESS, 0), new int[layers]);
+        return addr;
     }
 
     public static MemoryAddress nloadf(Addressable filename, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
@@ -708,21 +677,8 @@ public final class STBImage {
         }
     }
 
-    public static MemoryAddress loadfFromMemory(MemorySegment buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
-            var addr = nloadfFromMemory(buffer, (int) buffer.byteSize(), px, py, pc, desiredChannels);
-            x[0] = px.get(JAVA_INT, 0);
-            y[0] = py.get(JAVA_INT, 0);
-            channelsInFile[0] = pc.get(JAVA_INT, 0);
-            return addr;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    public static MemoryAddress loadfFromMemory(MemorySegment buffer, Addressable x, Addressable y, Addressable channelsInFile, int desiredChannels) {
+        return nloadfFromMemory(buffer, (int) buffer.byteSize(), x, y, channelsInFile, desiredChannels);
     }
 
     public static MemoryAddress loadfFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
