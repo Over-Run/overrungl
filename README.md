@@ -52,6 +52,11 @@ The tree structure of libraries is:
 ```text
 Natives
 ├─ glfw
+│  ├─ linux
+│  │  ├─ amd64
+│  │  │  └─ libglfw3.so
+│  │  └─ arm64
+│  │     └─ libglfw3.so
 │  ├─ os x
 │  │  ├─ amd64
 │  │  │  └─ libglfw3.dylib

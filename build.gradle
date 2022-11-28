@@ -16,6 +16,8 @@ enum NativePlatform {
     WIN_32("windows", "i386", "windows-x86", "", ".dll", "Win32"),
     WIN_64("windows", "amd64", "windows", "", ".dll", "Win64"),
     WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
+    LINUX_64("linux", "amd64", "linux", "lib", ".so", "Linux64"),
+    LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
     MACOS("os x", "amd64", "macos", "lib", ".dylib", "Macos"),
     MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64"),
 
@@ -62,8 +64,12 @@ enum NativePlatform {
 }
 
 enum NativeBinding {
-    GLFW("glfw", "glfw3", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
-    STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.WIN_ARM64, NativePlatform.MACOS),
+    GLFW("glfw", "glfw3",
+        NativePlatform.WIN_32, NativePlatform.WIN_64,
+        NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
+        NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
+    STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64,
+        NativePlatform.WIN_ARM64, NativePlatform.MACOS),
 
     private final String name
     private final String basename
