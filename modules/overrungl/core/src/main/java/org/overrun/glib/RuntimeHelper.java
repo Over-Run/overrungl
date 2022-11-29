@@ -26,6 +26,7 @@ package org.overrun.glib;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.os.OperatingSystem;
+import org.overrun.glib.os.OperatingSystems;
 
 import java.io.File;
 import java.lang.foreign.*;
@@ -124,7 +125,7 @@ public final class RuntimeHelper {
     /**
      * Load a library from classpath or local.
      *
-     * @param module   the module name like {@code glfw}
+     * @param module   the module name. e.x. {@code glfw}
      * @param basename the basename of the library (without extensions)
      * @param version  the version suffix
      * @return the {@link SymbolLookup}
@@ -133,7 +134,8 @@ public final class RuntimeHelper {
     public static SymbolLookup load(String module, String basename, String version)
         throws RuntimeException {
         final var os = OperatingSystem.current();
-        final var path = basename + os.getSharedLibrarySuffix();
+        final var suffix = os.getSharedLibrarySuffix();
+        final var path = basename + suffix;
         URI uri;
         // 1. Load from classpath
         try {
@@ -147,11 +149,11 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, basename + "-" + version + os.getSharedLibrarySuffix());
+            var libFile = new File(file, basename + "-" + version + suffix);
             if (!libFile.exists()) {
                 // Extract
                 try (var is = ClassLoader.getSystemResourceAsStream(
-                    module + "/" + os.getFamilyName() + "/" + os.getArch() + "/" + path
+                    module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" +path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 }

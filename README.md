@@ -53,30 +53,39 @@ The tree structure of libraries is:
 Natives
 ├─ glfw
 │  ├─ linux
-│  │  ├─ amd64
+│  │  ├─ arm64
 │  │  │  └─ libglfw3.so
-│  │  └─ arm64
+│  │  └─ x64
 │  │     └─ libglfw3.so
 │  ├─ os x
-│  │  ├─ amd64
+│  │  ├─ arm64
 │  │  │  └─ libglfw3.dylib
-│  │  └─ arm64
+│  │  └─ x64
 │  │     └─ libglfw3.dylib
 │  └─ windows
-│     ├─ amd64
+│     ├─ x64
 │     │  └─ glfw3.dll
-│     └─ i386
+│     └─ x86
 │        └─ glfw3.dll
 └─ stb https://github.com/Over-Run/stb-ci
+   ├─ linux
+   │  ├─ arm32
+   │  │  └─ libstb.so
+   │  ├─ arm64
+   │  │  └─ libstb.so
+   │  └─ x64
+   │     └─ libstb.so
    ├─ os x
-   │  └─ amd64
+   │  ├─ arm64
+   │  │  └─ libstb.dylib
+   │  └─ x64
    │     └─ libstb.dylib
    └─ windows
-      ├─ amd64
-      │  └─ stb.dll
       ├─ arm64
       │  └─ stb.dll
-      └─ i386
+      ├─ x64
+      │  └─ stb.dll
+      └─ x86
          └─ stb.dll
 ```
 

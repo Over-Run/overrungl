@@ -13,12 +13,13 @@ for (String p : ['glfw', 'joml', 'opengl', 'stb',
 }
 
 enum NativePlatform {
-    WIN_32("windows", "i386", "windows-x86", "", ".dll", "Win32"),
-    WIN_64("windows", "amd64", "windows", "", ".dll", "Win64"),
+    WIN_32("windows", "x86", "windows-x86", "", ".dll", "Win32"),
+    WIN_64("windows", "x64", "windows", "", ".dll", "Win64"),
     WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
-    LINUX_64("linux", "amd64", "linux", "lib", ".so", "Linux64"),
+    LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
+    LINUX_ARM32("linux", "arm32", "linux-arm32", "lib", ".so", "LinuxArm32"),
     LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
-    MACOS("os x", "amd64", "macos", "lib", ".dylib", "Macos"),
+    MACOS("os x", "x64", "macos", "lib", ".dylib", "Macos"),
     MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64"),
 
     private final String osFamilyName
@@ -68,8 +69,9 @@ enum NativeBinding {
         NativePlatform.WIN_32, NativePlatform.WIN_64,
         NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
-    STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64,
-        NativePlatform.WIN_ARM64, NativePlatform.MACOS),
+    STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.WIN_ARM64,
+        NativePlatform.LINUX_64, NativePlatform.LINUX_ARM32, NativePlatform.LINUX_ARM64,
+        NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
 
     private final String name
     private final String basename
