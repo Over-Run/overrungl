@@ -135,7 +135,7 @@ public final class RuntimeHelper {
         throws RuntimeException {
         final var os = OperatingSystem.current();
         final var suffix = os.getSharedLibrarySuffix();
-        final var path = basename + suffix;
+        final var path = os.getSharedLibraryName(basename);
         URI uri;
         // 1. Load from classpath
         try {
@@ -153,7 +153,7 @@ public final class RuntimeHelper {
             if (!libFile.exists()) {
                 // Extract
                 try (var is = ClassLoader.getSystemResourceAsStream(
-                    module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" +path
+                    module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" + path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 }
