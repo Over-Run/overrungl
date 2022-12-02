@@ -279,13 +279,17 @@ public class GLCapabilities {
     public MethodHandle glMultiDrawArraysIndirectCount, glMultiDrawElementsIndirectCount, glPolygonOffsetClamp, glSpecializeShader;
 
     /**
-     * The OpenGL context version flags
+     * The OpenGL context version flags.
      */
     public boolean
         Ver10, Ver11, Ver12, Ver13, Ver14, Ver15,
         Ver20, Ver21,
         Ver30, Ver31, Ver32, Ver33,
         Ver40, Ver41, Ver42, Ver43, Ver44, Ver45, Ver46;
+    /**
+     * The raw OpenGL version value.
+     */
+    public int rawGLVersion;
     /**
      * Forward compatible flag. {@code false} for deprecated and removed function.
      */
@@ -350,8 +354,9 @@ public class GLCapabilities {
             if (!ext.findExtensionsGL(version, arena, this)) return 0;
             findCoreGL(true);
         }
-        // TODO: 2022/11/26 Load extension with GLCapabilities
         ext.load(load);
+
+        rawGLVersion = version;
 
         return version;
     }

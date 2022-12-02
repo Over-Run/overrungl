@@ -49,7 +49,7 @@ public final class GL30Test {
     private MemoryAddress window;
     private int program;
     private int colorFactor;
-    private int vao, vbo;
+    private int vao, vbo, ebo;
     private int tex;
 
     public void run() {
@@ -62,6 +62,7 @@ public final class GL30Test {
         GL.deleteProgram(program);
         GL.deleteVertexArray(vao);
         GL.deleteBuffer(vbo);
+        GL.deleteBuffer(ebo);
         GL.deleteTexture(tex);
 
         Callbacks.free(window);
@@ -193,7 +194,7 @@ public final class GL30Test {
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
             0.5f, 0.5f, 0.0f, 1.0f, 0.0f
         }, GL_STATIC_DRAW);
-        int ebo = GL.genBuffer();
+        ebo = GL.genBuffer();
         GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
         GL.bufferData(arena, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 0, 2, 3
@@ -209,7 +210,6 @@ public final class GL30Test {
     }
 
     private void loop() {
-
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

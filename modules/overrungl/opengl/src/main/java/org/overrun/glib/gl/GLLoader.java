@@ -111,8 +111,7 @@ public final class GLLoader {
      * Load OpenGL compatibility profile by the given load function with shared arena.
      *
      * @param getter the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities loadShared(GLLoadFunc.Getter getter) {
@@ -129,8 +128,7 @@ public final class GLLoader {
      *
      * @param forwardCompatible If {@code true}, only loads core profile functions.
      * @param getter            the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities loadShared(boolean forwardCompatible, GLLoadFunc.Getter getter) {
@@ -146,8 +144,7 @@ public final class GLLoader {
      * Load OpenGL compatibility profile by the given load function with confined arena.
      *
      * @param getter the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities loadConfined(GLLoadFunc.Getter getter) {
@@ -164,8 +161,7 @@ public final class GLLoader {
      *
      * @param forwardCompatible If {@code true}, only loads core profile functions.
      * @param getter            the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities loadConfined(boolean forwardCompatible, GLLoadFunc.Getter getter) {
@@ -182,8 +178,7 @@ public final class GLLoader {
      *
      * @param allocator the segment allocator.
      * @param getter    the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities load(SegmentAllocator allocator, GLLoadFunc.Getter getter) {
@@ -196,8 +191,7 @@ public final class GLLoader {
      * @param forwardCompatible If {@code true}, only loads core profile functions.
      * @param allocator         the segment allocator.
      * @param getter            the function pointer getter
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities load(boolean forwardCompatible, SegmentAllocator allocator, GLLoadFunc.Getter getter) {
@@ -208,8 +202,7 @@ public final class GLLoader {
      * Load OpenGL compatibility profile by the given load function.
      *
      * @param load the load function
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities load(GLLoadFunc load) {
@@ -221,16 +214,17 @@ public final class GLLoader {
      *
      * @param forwardCompatible If {@code true}, only loads core profile functions.
      * @param load              the load function
-     * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
+     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities load(boolean forwardCompatible, GLLoadFunc load) {
         var caps = new GLCapabilities(forwardCompatible);
+        // preset
         setCapabilities(caps);
         if (caps.load(load) != 0) {
             return caps;
         }
+        // reset if failed to load
         setCapabilities(null);
         return null;
     }
