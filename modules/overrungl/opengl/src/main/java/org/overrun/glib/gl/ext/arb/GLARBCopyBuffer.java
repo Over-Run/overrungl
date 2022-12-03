@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL31C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -37,8 +36,6 @@ import org.overrun.glib.gl.GLLoadFunc;
  */
 public final class GLARBCopyBuffer {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_copy_buffer) return;
-        ext.caps.glCopyBufferSubData = load.invoke("glCopyBufferSubData", FunctionDescriptors.IIJJJV);
     }
 
     public static void glCopyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {

@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL33C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -40,9 +39,6 @@ import java.lang.foreign.SegmentAllocator;
  */
 public final class GLARBBlendFuncExtended {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_blend_func_extended) return;
-        ext.caps.glBindFragDataLocationIndexed = load.invoke("glBindFragDataLocationIndexed", FunctionDescriptors.IIIPV);
-        ext.caps.glGetFragDataIndex = load.invoke("glGetFragDataIndex", FunctionDescriptors.IPI);
     }
 
     public static void glBindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {

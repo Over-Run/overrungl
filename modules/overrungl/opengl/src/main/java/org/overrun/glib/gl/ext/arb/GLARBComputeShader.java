@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL43C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -37,9 +36,6 @@ import org.overrun.glib.gl.GLLoadFunc;
  */
 public final class GLARBComputeShader {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_compute_shader) return;
-        ext.caps.glDispatchCompute = load.invoke("glDispatchCompute", FunctionDescriptors.IIIV);
-        ext.caps.glDispatchComputeIndirect = load.invoke("glDispatchComputeIndirect", FunctionDescriptors.JV);
     }
 
     public static void glDispatchCompute(int numGroupsX, int numGroupsY, int numGroupsZ) {

@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL45C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -37,8 +36,6 @@ import org.overrun.glib.gl.GLLoadFunc;
  */
 public final class GLARBClipControl {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_clip_control) return;
-        ext.caps.glClipControl = load.invoke("glClipControl", FunctionDescriptors.IIV);
     }
 
     public static void glClipControl(int origin, int depth) {

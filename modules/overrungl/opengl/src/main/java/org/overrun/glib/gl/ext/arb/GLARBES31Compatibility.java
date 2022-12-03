@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL45C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -37,8 +36,6 @@ import org.overrun.glib.gl.GLLoadFunc;
  */
 public final class GLARBES31Compatibility {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_ES3_1_compatibility) return;
-        ext.caps.glMemoryBarrierByRegion = load.invoke("glMemoryBarrierByRegion", FunctionDescriptors.IV);
     }
 
     public static void glMemoryBarrierByRegion(int barriers) {

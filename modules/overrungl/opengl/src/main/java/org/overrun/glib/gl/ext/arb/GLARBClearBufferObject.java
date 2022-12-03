@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL43C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -39,9 +38,6 @@ import java.lang.foreign.Addressable;
  */
 public final class GLARBClearBufferObject {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_clear_buffer_object) return;
-        ext.caps.glClearBufferData = load.invoke("glClearBufferData", FunctionDescriptors.IIIIPV);
-        ext.caps.glClearBufferSubData = load.invoke("glClearBufferSubData", FunctionDescriptors.IIJJIIPV);
     }
 
     public static void glClearBufferData(int target, int internalFormat, int format, int type, Addressable data) {

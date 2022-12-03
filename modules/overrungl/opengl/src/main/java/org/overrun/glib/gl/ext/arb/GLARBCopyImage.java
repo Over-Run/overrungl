@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GL43C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
@@ -37,8 +36,6 @@ import org.overrun.glib.gl.GLLoadFunc;
  */
 public final class GLARBCopyImage {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_copy_image) return;
-        ext.caps.glCopyImageSubData = load.invoke("glCopyImageSubData", FunctionDescriptors.IIIIIIIIIIIIIIIV);
     }
 
     public static void glCopyImageSubData(int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth) {

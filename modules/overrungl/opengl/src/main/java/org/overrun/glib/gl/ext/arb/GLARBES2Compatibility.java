@@ -31,7 +31,6 @@ import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
-import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GL41C.*;
 
 /**
@@ -42,12 +41,6 @@ import static org.overrun.glib.gl.GL41C.*;
  */
 public final class GLARBES2Compatibility {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_ES2_compatibility) return;
-        ext.caps.glClearDepthf = load.invoke("glClearDepthf", FV);
-        ext.caps.glDepthRangef = load.invoke("glDepthRangef", FFV);
-        ext.caps.glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
-        ext.caps.glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
-        ext.caps.glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
     }
 
     public static void glClearDepthf(float d) {

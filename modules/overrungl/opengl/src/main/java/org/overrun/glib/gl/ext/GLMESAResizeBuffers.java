@@ -22,29 +22,31 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext.arb;
+package org.overrun.glib.gl.ext;
 
-import org.overrun.glib.gl.GL44C;
+import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.foreign.Addressable;
+import org.overrun.glib.gl.GLLoader;
 
 /**
- * {@code GL_ARB_clear_texture}
+ * {@code GL_MESA_resize_buffers}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLARBClearTexture {
+public final class GLMESAResizeBuffers {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_MESA_resize_buffers) return;
+        ext.glResizeBuffersMESA = load.invoke("glResizeBuffersMESA", FunctionDescriptors.V);
     }
 
-    public static void glClearTexImage(int texture, int level, int format, int type, Addressable data) {
-        GL44C.clearTexImage(texture, level, format, type, data);
-    }
-
-    public static void glClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
-        GL44C.clearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+    public static void glResizeBuffersMESA() {
+        var ext = GLLoader.getExtCapabilities();
+        try {
+            GLLoader.check(ext.glResizeBuffersMESA).invokeExact();
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
     }
 }

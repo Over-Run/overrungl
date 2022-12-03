@@ -24,27 +24,42 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.gl.GL44C;
-import org.overrun.glib.gl.GLExtCaps;
-import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.*;
 
 import java.lang.foreign.Addressable;
+import java.lang.foreign.SegmentAllocator;
 
 /**
- * {@code GL_ARB_clear_texture}
+ * {@code GL_ARB_draw_indirect}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLARBClearTexture {
+public final class GLARBDrawIndirect {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glClearTexImage(int texture, int level, int format, int type, Addressable data) {
-        GL44C.clearTexImage(texture, level, format, type, data);
+    public static void glDrawArraysIndirect(int mode, Addressable indirect) {
+        GL40C.drawArraysIndirect(mode, indirect);
     }
 
-    public static void glClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
-        GL44C.clearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
+    public static void glDrawArraysIndirect(int mode, DrawArraysIndirectCommand indirect) {
+        GL40C.drawArraysIndirect(mode, indirect);
+    }
+
+    public static void glDrawArraysIndirect(SegmentAllocator allocator, int mode, int[] indirect) {
+        GL40C.drawArraysIndirect(allocator, mode, indirect);
+    }
+
+    public static void glDrawElementsIndirect(int mode, int type, Addressable indirect) {
+        GL40C.drawElementsIndirect(mode, type, indirect);
+    }
+
+    public static void glDrawElementsIndirect(int mode, int type, DrawElementsIndirectCommand indirect) {
+        GL40C.drawElementsIndirect(mode, type, indirect);
+    }
+
+    public static void glDrawElementsIndirect(SegmentAllocator allocator, int mode, int type, int[] indirect) {
+        GL40C.drawElementsIndirect(allocator, mode, type, indirect);
     }
 }

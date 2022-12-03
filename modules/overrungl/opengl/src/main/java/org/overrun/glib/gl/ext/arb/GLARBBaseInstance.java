@@ -30,7 +30,6 @@ import org.overrun.glib.gl.GLLoadFunc;
 import java.lang.foreign.Addressable;
 import java.lang.foreign.SegmentAllocator;
 
-import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GL42C.*;
 
 /**
@@ -41,10 +40,6 @@ import static org.overrun.glib.gl.GL42C.*;
  */
 public final class GLARBBaseInstance {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_base_instance) return;
-        ext.caps.glDrawArraysInstancedBaseInstance = load.invoke("glDrawArraysInstancedBaseInstance", IIIIIV);
-        ext.caps.glDrawElementsInstancedBaseInstance = load.invoke("glDrawElementsInstancedBaseInstance", IIIPIIV);
-        ext.caps.glDrawElementsInstancedBaseVertexBaseInstance = load.invoke("glDrawElementsInstancedBaseVertexBaseInstance", IIIPIIIV);
     }
 
     public static void glDrawArraysInstancedBaseInstance(int mode, int first, int count, int instanceCount, int baseInstance) {

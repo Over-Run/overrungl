@@ -24,7 +24,6 @@
 
 package org.overrun.glib.gl.ext.arb;
 
-import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
@@ -41,8 +40,6 @@ import static org.overrun.glib.gl.GL44C.bufferStorage;
  */
 public final class GLARBBufferStorage {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_buffer_storage) return;
-        ext.caps.glBufferStorage = load.invoke("glBufferStorage", FunctionDescriptors.IJPIV);
     }
 
     public static void glBufferStorage(int target, long size, Addressable data, int flags) {

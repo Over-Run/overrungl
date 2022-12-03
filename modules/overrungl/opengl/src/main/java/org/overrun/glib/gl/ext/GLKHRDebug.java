@@ -31,7 +31,6 @@ import org.overrun.glib.gl.GLLoadFunc;
 
 import java.lang.foreign.*;
 
-import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GL43C.*;
 
 /**
@@ -42,18 +41,6 @@ import static org.overrun.glib.gl.GL43C.*;
  */
 public final class GLKHRDebug {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_KHR_debug) return;
-        ext.caps.glDebugMessageCallback = load.invoke("glDebugMessageCallback", PPV);
-        ext.caps.glDebugMessageControl = load.invoke("glDebugMessageControl", IIIIPZV);
-        ext.caps.glDebugMessageInsert = load.invoke("glDebugMessageInsert", IIIIIPV);
-        ext.caps.glGetDebugMessageLog = load.invoke("glGetDebugMessageLog", IIPPPPPPI);
-        ext.caps.glGetObjectLabel = load.invoke("glGetObjectLabel", IIIPPV);
-        ext.caps.glGetObjectPtrLabel = load.invoke("glGetObjectPtrLabel", PIPPV);
-        ext.caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
-        ext.caps.glObjectLabel = load.invoke("glObjectLabel", IIIPV);
-        ext.caps.glObjectPtrLabel = load.invoke("glObjectPtrLabel", PIPV);
-        ext.caps.glPopDebugGroup = load.invoke("glPopDebugGroup", V);
-        ext.caps.glPushDebugGroup = load.invoke("glPushDebugGroup", IIIPV);
     }
 
     public static void glDebugMessageCallback(Addressable callback, Addressable userParam) {

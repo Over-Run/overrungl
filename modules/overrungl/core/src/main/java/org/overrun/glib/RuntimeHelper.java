@@ -132,7 +132,7 @@ public final class RuntimeHelper {
      * @throws RuntimeException if file not found
      */
     public static SymbolLookup load(String module, String basename, String version)
-        throws RuntimeException {
+            throws RuntimeException {
         final var os = OperatingSystem.current();
         final var suffix = os.getSharedLibrarySuffix();
         final var path = os.getSharedLibraryName(basename);
@@ -153,7 +153,7 @@ public final class RuntimeHelper {
             if (!libFile.exists()) {
                 // Extract
                 try (var is = ClassLoader.getSystemResourceAsStream(
-                    module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" + path
+                        module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" + path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 }
@@ -222,7 +222,7 @@ public final class RuntimeHelper {
      * Gets the objects from an address array.
      *
      * @param <T>       the array type
-     * @param seg       the memory address contains objects. native type: {@code void**}
+     * @param seg       the memory segment contained objects. native type: {@code void**}
      * @param arr       the array to hold the result
      * @param generator the generator, to convert to the array type
      * @return arr
@@ -245,7 +245,7 @@ public final class RuntimeHelper {
     /**
      * Gets the addresses from an address array.
      *
-     * @param seg the memory address contains addresses. native type: {@code void**}
+     * @param seg the memory segment contained addresses. native type: {@code void**}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -256,7 +256,7 @@ public final class RuntimeHelper {
     /**
      * Gets the strings from an address array.
      *
-     * @param seg the memory address contains strings. native type: {@code char**}
+     * @param seg the memory segment contained strings. native type: {@code char**}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -267,7 +267,7 @@ public final class RuntimeHelper {
     /**
      * Gets the booleans from a boolean array.
      *
-     * @param seg the memory address contains booleans. native type: {@code boolean*}
+     * @param seg the memory segment contained booleans. native type: {@code boolean*}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -288,7 +288,7 @@ public final class RuntimeHelper {
     /**
      * Gets the bytes from a byte array.
      *
-     * @param seg the memory address contains bytes. native type: {@code byte*}
+     * @param seg the memory segment contained bytes. native type: {@code byte*}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -309,7 +309,7 @@ public final class RuntimeHelper {
     /**
      * Gets the shorts from a short array.
      *
-     * @param seg the memory address contains shorts. native type: {@code short*}
+     * @param seg the memory segment contained shorts. native type: {@code short*}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -330,7 +330,7 @@ public final class RuntimeHelper {
     /**
      * Gets the ints from an int array.
      *
-     * @param seg the memory address contains ints. native type: {@code int*}
+     * @param seg the memory segment contained ints. native type: {@code int*}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -351,7 +351,7 @@ public final class RuntimeHelper {
     /**
      * Gets the longs from a long array.
      *
-     * @param seg the memory address contains longs. native type: {@code long*}
+     * @param seg the memory segment contained longs. native type: {@code long*}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -372,7 +372,7 @@ public final class RuntimeHelper {
     /**
      * Gets the floats from a float array.
      *
-     * @param seg the memory address contains floats. native type: {@code float*}
+     * @param seg the memory segment contained floats. native type: {@code float*}
      * @param arr the array to hold the result
      * @return arr
      */
@@ -393,7 +393,7 @@ public final class RuntimeHelper {
     /**
      * Gets the doubles from a double array.
      *
-     * @param seg the memory address contains doubles. native type: {@code double*}
+     * @param seg the memory segment contained doubles. native type: {@code double*}
      * @param arr the array to hold the result
      * @return arr
      */
