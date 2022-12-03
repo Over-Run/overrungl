@@ -125,6 +125,8 @@ public enum FunctionDescriptors {
             case 'Z' -> JAVA_BOOLEAN;
             case 'F' -> JAVA_FLOAT;
             case 'D' -> JAVA_DOUBLE;
+//            case 'P' -> ADDRESS;
+//            case 'p' -> ADDRESS.asUnbounded();
             default -> ADDRESS;
         };
     }

@@ -1,17 +1,22 @@
-# OverrunGL
-
 ![License](https://img.shields.io/github/license/Over-Run/overrungl)
 
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)
 
-Overrun Game Library is a set of C/C++ library bindings and native accessor.
+![GitHub repo size](https://img.shields.io/github/repo-size/Over-Run/overrungl)
+
+# OverrunGL - Overrun Game Library
+
+Overrun Game Library is a high performance library that implemented with Java 19,
+enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ## Using as a Dependency
 
-The libraries are available on Maven Central.
+~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very unstable, so you have to use the -SNAPSHOT version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
+
+We will provide a module customizer soon.
 
 ### Using -SNAPSHOT Versions
 
@@ -22,6 +27,11 @@ For `-SNAPSHOT` versions, you can use the [list of available versions](https://s
 ```groovy
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 ```
+
+## Contact
+
+- [Forum](https://github.com/Over-Run/overrungl/discussions)
+- [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
 
 ## Goals
 
@@ -39,7 +49,7 @@ Checked item means it has full functional but might be not documented.
 |:--------------------------------------------------------------:|
 | ![total progress](https://progress-bar.dev/32/?title=progress) |
 
-## Publishing
+## Publishing (for internal member)
 
 To publish this library, you need a GPG key and the write permission of Maven Central.
 
