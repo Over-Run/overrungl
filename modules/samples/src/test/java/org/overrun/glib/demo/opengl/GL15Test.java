@@ -84,14 +84,14 @@ public final class GL15Test {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-                GL.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
-                    window,
-                    (vidMode.width() - size.x()) / 2,
-                    (vidMode.height() - size.y()) / 2
+                window,
+                (vidMode.width() - size.x()) / 2,
+                (vidMode.height() - size.y()) / 2
             );
         }
 
@@ -111,10 +111,10 @@ public final class GL15Test {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
-                // Vertex          Color             Tex-coord
-                0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-                -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-                0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f
+            // Vertex          Color             Tex-coord
+            0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f
         }, GL_STATIC_DRAW);
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -127,18 +127,18 @@ public final class GL15Test {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                    IOUtil.ioResourceToSegment(arena, "image.png", 256),
-                    px, py, pc, STBImage.RGB
+                IOUtil.ioResourceToSegment(arena, "image.png", 256),
+                px, py, pc, STBImage.RGB
             );
             GL.texImage2D(GL_TEXTURE_2D,
-                    0,
-                    GL_RGB,
-                    px.get(JAVA_INT, 0),
-                    py.get(JAVA_INT, 0),
-                    0,
-                    GL_RGB,
-                    GL_UNSIGNED_BYTE,
-                    data);
+                0,
+                GL_RGB,
+                px.get(JAVA_INT, 0),
+                py.get(JAVA_INT, 0),
+                0,
+                GL_RGB,
+                GL_UNSIGNED_BYTE,
+                data);
             STBImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);

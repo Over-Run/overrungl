@@ -89,14 +89,14 @@ public final class GL30Test {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-                GL.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
-                    window,
-                    (vidMode.width() - size.x()) / 2,
-                    (vidMode.height() - size.y()) / 2
+                window,
+                (vidMode.width() - size.x()) / 2,
+                (vidMode.height() - size.y()) / 2
             );
         }
 
@@ -121,18 +121,18 @@ public final class GL30Test {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                    IOUtil.ioResourceToSegment(arena, "image.png", 256),
-                    px, py, pc, STBImage.RGB
+                IOUtil.ioResourceToSegment(arena, "image.png", 256),
+                px, py, pc, STBImage.RGB
             );
             GL.texImage2D(GL_TEXTURE_2D,
-                    0,
-                    GL_RGB,
-                    px.get(JAVA_INT, 0),
-                    py.get(JAVA_INT, 0),
-                    0,
-                    GL_RGB,
-                    GL_UNSIGNED_BYTE,
-                    data);
+                0,
+                GL_RGB,
+                px.get(JAVA_INT, 0),
+                py.get(JAVA_INT, 0),
+                0,
+                GL_RGB,
+                GL_UNSIGNED_BYTE,
+                data);
             STBImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -142,32 +142,32 @@ public final class GL30Test {
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
         GL.shaderSource(arena, vsh, """
-                #version 130
+            #version 130
 
-                in vec3 position;
-                in vec2 uv;
+            in vec3 position;
+            in vec2 uv;
 
-                out vec2 texCoord;
+            out vec2 texCoord;
 
-                void main() {
-                    gl_Position = vec4(position, 1.0);
-                    texCoord = uv;
-                }
-                """);
+            void main() {
+                gl_Position = vec4(position, 1.0);
+                texCoord = uv;
+            }
+            """);
         GL.shaderSource(arena, fsh, """
-                #version 130
+            #version 130
 
-                in vec2 texCoord;
+            in vec2 texCoord;
 
-                out vec4 fragColor;
+            out vec4 fragColor;
 
-                uniform sampler2D sampler;
-                uniform float colorFactor;
+            uniform sampler2D sampler;
+            uniform float colorFactor;
 
-                void main() {
-                    fragColor = colorFactor * texture(sampler, texCoord);
-                }
-                """);
+            void main() {
+                fragColor = colorFactor * texture(sampler, texCoord);
+            }
+            """);
         GL.compileShader(vsh);
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
@@ -188,16 +188,16 @@ public final class GL30Test {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
-                // Vertex          UV
-                -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
-                -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
-                0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
-                0.5f, 0.5f, 0.0f, 1.0f, 0.0f
+            // Vertex          UV
+            -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
+            -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
+            0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+            0.5f, 0.5f, 0.0f, 1.0f, 0.0f
         }, GL_STATIC_DRAW);
         ebo = GL.genBuffer();
         GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
         GL.bufferData(arena, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
-                0, 1, 2, 0, 2, 3
+            0, 1, 2, 0, 2, 3
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);

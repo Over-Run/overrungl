@@ -85,111 +85,111 @@ public final class Matrixn {
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix2fc mat) {
-        return put(mat, allocator.allocate(MAT2F));
+    public static MemorySegment allocate(MemorySession scope, Matrix2fc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT2F, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix2dc mat) {
-        return put(mat, allocator.allocate(MAT2D));
+    public static MemorySegment allocate(MemorySession scope, Matrix2dc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT2D, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix3x2fc mat) {
-        return put(mat, allocator.allocate(MAT3X2F));
+    public static MemorySegment allocate(MemorySession scope, Matrix3x2fc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT3X2F, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix3x2dc mat) {
-        return put(mat, allocator.allocate(MAT3X2D));
+    public static MemorySegment allocate(MemorySession scope, Matrix3x2dc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT3X2D, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix3fc mat) {
-        return put(mat, allocator.allocate(MAT3F));
+    public static MemorySegment allocate(MemorySession scope, Matrix3fc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT3F, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix3dc mat) {
-        return put(mat, allocator.allocate(MAT3D));
+    public static MemorySegment allocate(MemorySession scope, Matrix3dc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT3D, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix4x3fc mat) {
-        return put(mat, allocator.allocate(MAT4X3F));
+    public static MemorySegment allocate(MemorySession scope, Matrix4x3fc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT4X3F, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix4x3dc mat) {
-        return put(mat, allocator.allocate(MAT4X3D));
+    public static MemorySegment allocate(MemorySession scope, Matrix4x3dc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT4X3D, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix4fc mat) {
-        return put(mat, allocator.allocate(MAT4F));
+    public static MemorySegment allocate(MemorySession scope, Matrix4fc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT4F, scope));
     }
 
     /**
      * Allocates the matrix.
      *
-     * @param allocator the segment allocator
-     * @param mat       the matrix
+     * @param scope the segment scope
+     * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Matrix4dc mat) {
-        return put(mat, allocator.allocate(MAT4D));
+    public static MemorySegment allocate(MemorySession scope, Matrix4dc mat) {
+        return put(mat, MemorySegment.allocateNative(MAT4D, scope));
     }
 
     /**

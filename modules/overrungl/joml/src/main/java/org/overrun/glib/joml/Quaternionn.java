@@ -54,23 +54,23 @@ public final class Quaternionn {
     /**
      * Allocates the quaternion.
      *
-     * @param allocator the segment allocator
-     * @param q         the quaternion
+     * @param scope the segment scope
+     * @param q     the quaternion
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Quaternionfc q) {
-        return put(q, allocator.allocate(Q4F));
+    public static MemorySegment allocate(MemorySession scope, Quaternionfc q) {
+        return put(q, MemorySegment.allocateNative(Q4F, scope));
     }
 
     /**
      * Allocates the quaternion.
      *
-     * @param allocator the segment allocator
-     * @param q         the quaternion
+     * @param scope the segment scope
+     * @param q     the quaternion
      * @return the segment
      */
-    public static MemorySegment allocate(SegmentAllocator allocator, Quaterniondc q) {
-        return put(q, allocator.allocate(Q4D));
+    public static MemorySegment allocate(MemorySession scope, Quaterniondc q) {
+        return put(q, MemorySegment.allocateNative(Q4D, scope));
     }
 
     /**

@@ -81,13 +81,13 @@ public final class GLFWWindowIconTest {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                    IOUtil.ioResourceToSegment(arena, "image.png", 256),
-                    px, py, pc, STBImage.RGB_ALPHA
+                IOUtil.ioResourceToSegment(arena, "image.png", 256),
+                px, py, pc, STBImage.RGB_ALPHA
             );
             GLFW.setWindowIcon(window, GLFWImage.create(arena, 1)
-                    .width(px.get(JAVA_INT, 0))
-                    .height(py.get(JAVA_INT, 0))
-                    .pixels(data));
+                .width(px.get(JAVA_INT, 0))
+                .height(py.get(JAVA_INT, 0))
+                .pixels(data));
             STBImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -99,14 +99,14 @@ public final class GLFWWindowIconTest {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-                GL.viewport(0, 0, width, height));
+            GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
-                    window,
-                    (vidMode.width() - size.x()) / 2,
-                    (vidMode.height() - size.y()) / 2
+                window,
+                (vidMode.width() - size.x()) / 2,
+                (vidMode.height() - size.y()) / 2
             );
         }
 

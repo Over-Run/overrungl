@@ -50,21 +50,22 @@ public final class GLFWErrorCallback {
     /**
      * Returns a {@link IGLFWErrorFun} instance that logs a message when an error occurs.
      *
+     * @param logger the logger function
      * @return the {@code GLFWerrorCallback}
      */
     public static IGLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
             sb.append("[OverrunGL] GLFW_")
-                .append(GLFW.getErrorString(errorCode))
-                .append(" error: ")
-                .append(description)
-                .append("\n");
+                    .append(GLFW.getErrorString(errorCode))
+                    .append(" error: ")
+                    .append(description)
+                    .append("\n");
             var stack = Thread.currentThread().getStackTrace();
             for (int i = 3; i < stack.length; i++) {
                 sb.append("    at ")
-                    .append(stack[i])
-                    .append("\n");
+                        .append(stack[i])
+                        .append("\n");
             }
             logger.accept(sb.toString());
         };
@@ -73,6 +74,7 @@ public final class GLFWErrorCallback {
     /**
      * Returns a {@link IGLFWErrorFun} instance that prints a message when an error occurs.
      *
+     * @param stream the logger stream
      * @return the {@code GLFWerrorCallback}
      * @see #createPrint()
      */

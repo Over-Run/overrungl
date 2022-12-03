@@ -4,6 +4,7 @@
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Over-Run/overrungl)
+[![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
 
 # OverrunGL - Overrun Game Library
 
