@@ -41,19 +41,19 @@ public class DrawElementsIndirectCommand extends Pointer {
      * The struct layout.
      */
     public static final GroupLayout LAYOUT =
-        MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("count"),
-            ValueLayout.JAVA_INT.withName("primCount"),
-            ValueLayout.JAVA_INT.withName("firstIndex"),
-            ValueLayout.JAVA_INT.withName("baseVertex"),
-            ValueLayout.JAVA_INT.withName("baseInstance")
-        ).withName("DrawElementsIndirectCommand");
+            MemoryLayout.structLayout(
+                    ValueLayout.JAVA_INT.withName("count"),
+                    ValueLayout.JAVA_INT.withName("primCount"),
+                    ValueLayout.JAVA_INT.withName("firstIndex"),
+                    ValueLayout.JAVA_INT.withName("baseVertex"),
+                    ValueLayout.JAVA_INT.withName("baseInstance")
+            ).withName("DrawElementsIndirectCommand");
     private static final VarHandle
-        pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
-        pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
-        pFirstIndex = LAYOUT.varHandle(PathElement.groupElement("firstIndex")),
-        pBaseVertex = LAYOUT.varHandle(PathElement.groupElement("baseVertex")),
-        pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
+            pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
+            pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
+            pFirstIndex = LAYOUT.varHandle(PathElement.groupElement("firstIndex")),
+            pBaseVertex = LAYOUT.varHandle(PathElement.groupElement("baseVertex")),
+            pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
 
     /**
      * Create the pointer instance.
@@ -193,13 +193,8 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @since 0.1.0
      */
     public static class Buffer extends DrawElementsIndirectCommand {
-        private static final VarHandle
-            pCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count")),
-            pPrimCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount")),
-            pFirstIndex = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex")),
-            pBaseVertex = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseVertex")),
-            pBaseInstance = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
         private final long elementCount;
+        private final VarHandle pCount, pPrimCount, pFirstIndex, pBaseVertex, pBaseInstance;
 
         /**
          * Create the pointer instance.
@@ -211,6 +206,12 @@ public class DrawElementsIndirectCommand extends Pointer {
         public Buffer(Addressable address, MemorySession scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
+            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
+            pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
+            pFirstIndex = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex"));
+            pBaseVertex = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseVertex"));
+            pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
         }
 
         /**

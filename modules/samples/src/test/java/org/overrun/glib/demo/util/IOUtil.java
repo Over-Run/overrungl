@@ -27,10 +27,11 @@ package org.overrun.glib.demo.util;
 import java.io.IOException;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
-import java.nio.channels.Channels;
+import java.lang.foreign.ValueLayout;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 
 /**
  * IO utilities
@@ -42,7 +43,7 @@ public final class IOUtil {
     private IOUtil() {
     }
 
-    private static MemorySegment resizeSegment(MemorySession scope, MemorySegment segment, int newCapacity) {
+    private static MemorySegment resizeSegment(MemorySession scope, MemorySegment segment, long newCapacity) {
         return MemorySegment.allocateNative(newCapacity, scope).copyFrom(segment);
     }
 
@@ -56,28 +57,35 @@ public final class IOUtil {
      * @return the resource data
      * @throws IOException if an IO error occurs
      */
-    public static MemorySegment ioResourceToSegment(MemorySession arena, String resource, int segmentSize) throws IOException {
+    public static MemorySegment ioResourceToSegment(MemorySession arena, String resource, long segmentSize) throws IOException {
         MemorySegment segment;
 
         var path = Path.of(resource);
+        // Check whether on local
         if (Files.isReadable(path)) {
             try (var fc = FileChannel.open(path)) {
                 segment = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena);
             }
         } else {
-            try (var is = IOUtil.class.getClassLoader().getResourceAsStream(resource);
-                 var rbc = Channels.newChannel(is)) {
+            // On classpath
+            try (var is = IOUtil.class.getClassLoader().getResourceAsStream(resource)) {
+                Objects.requireNonNull(is, "Failed to load resource '" + resource + "'!");
                 segment = MemorySegment.allocateNative(segmentSize, arena);
-                var buffer = segment.asByteBuffer();
+
+                long pos = 0;
                 while (true) {
-                    int bytes = rbc.read(buffer);
-                    if (bytes == -1) {
+                    // (segment size - pos) may overflow, choose the min value
+                    final int readCount = (int) Math.min(Integer.MAX_VALUE, segment.byteSize() - pos);
+                    // try to read at least 1 byte
+                    byte[] bytes = is.readNBytes(Math.max(readCount, 1));
+                    if (bytes.length == 0) {
                         break;
                     }
-                    if (buffer.remaining() == 0) {
-                        segment = resizeSegment(arena, segment, buffer.capacity() * 3 / 2); // 50%
-                        buffer = segment.asByteBuffer();
+                    if (pos >= segment.byteSize()) {
+                        segment = resizeSegment(arena, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
                     }
+                    MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, bytes.length);
+                    pos += bytes.length;
                 }
             }
         }

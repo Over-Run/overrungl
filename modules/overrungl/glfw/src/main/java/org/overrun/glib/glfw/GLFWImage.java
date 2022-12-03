@@ -50,14 +50,14 @@ public class GLFWImage extends Pointer {
      * The struct layout.
      */
     public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.ADDRESS.withName("pixels")
+            ValueLayout.JAVA_INT.withName("width"),
+            ValueLayout.JAVA_INT.withName("height"),
+            ValueLayout.ADDRESS.withName("pixels")
     ).withName("GLFWimage");
     private static final VarHandle
-        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
-        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
-        pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
+            pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
+            pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
+            pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
 
     /**
      * Create a {@code GLFWimage} instance.
@@ -157,11 +157,8 @@ public class GLFWImage extends Pointer {
      * @since 0.1.0
      */
     public static class Buffer extends GLFWImage {
-        private static final VarHandle
-            pWidth = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width")),
-            pHeight = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height")),
-            pPixels = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
         private final long elementCount;
+        private final VarHandle pWidth, pHeight, pPixels;
 
         /**
          * Create a {@code GLFWimage.Buffer} instance.
@@ -173,6 +170,10 @@ public class GLFWImage extends Pointer {
         public Buffer(Addressable address, MemorySession scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
+            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
+            pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
+            pPixels = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
         }
 
         /**

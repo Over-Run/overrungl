@@ -76,14 +76,14 @@ public final class GLFWTest {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL.viewport(0, 0, width, height));
+                GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
-                window,
-                (vidMode.width() - size.x()) / 2,
-                (vidMode.height() - size.y()) / 2
+                    window,
+                    (vidMode.width() - size.x()) / 2,
+                    (vidMode.height() - size.y()) / 2
             );
         }
 

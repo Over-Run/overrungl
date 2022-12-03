@@ -235,14 +235,8 @@ public class GLFWVidMode extends Pointer {
      * @since 0.1.0
      */
     public static class Buffer extends GLFWVidMode {
-        private static final VarHandle
-            pWidth = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width")),
-            pHeight = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height")),
-            pRedBits = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits")),
-            pGreenBits = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits")),
-            pBlueBits = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits")),
-            pRefreshRate = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
         private final long elementCount;
+        private final VarHandle pWidth, pHeight, pRedBits, pGreenBits, pBlueBits, pRefreshRate;
 
         /**
          * Create a {@code GLFWvidmode.Buffer} instance.
@@ -254,6 +248,13 @@ public class GLFWVidMode extends Pointer {
         public Buffer(Addressable address, MemorySession scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
+            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
+            pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
+            pRedBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits"));
+            pGreenBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
+            pBlueBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
+            pRefreshRate = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
         }
 
         /**

@@ -98,34 +98,34 @@ public final class GLFWJoystickTest {
                         var state = states[i];
                         if (GLFW.getGamepadState(i, state)) {
                             System.out.printf(
-                                "Get gamepad state for [jid=%d,name=%s] successful:" +
-                                " Buttons: [A(Cross)=%b, B(Circle)=%b, X(Square)=%b, Y(Triangle)=%b," +
-                                " Left bumper=%b, Right bumper=%b, Back=%b, Start=%b, Guide=%b, Left thumb=%b, Right thumb=%b," +
-                                " DPAD(up=%b, right=%b, down=%b, left=%b)]%n," +
-                                " Axis: [Left(x=%f, y=%f), Right(x=%f, y=%f), Trigger(left=%f, right%f)] %n",
-                                i,
-                                GLFW.getGamepadName(i),
-                                state.button(GLFW.GAMEPAD_BUTTON_A),
-                                state.button(GLFW.GAMEPAD_BUTTON_B),
-                                state.button(GLFW.GAMEPAD_BUTTON_X),
-                                state.button(GLFW.GAMEPAD_BUTTON_Y),
-                                state.button(GLFW.GAMEPAD_BUTTON_LEFT_BUMPER),
-                                state.button(GLFW.GAMEPAD_BUTTON_RIGHT_BUMPER),
-                                state.button(GLFW.GAMEPAD_BUTTON_BACK),
-                                state.button(GLFW.GAMEPAD_BUTTON_START),
-                                state.button(GLFW.GAMEPAD_BUTTON_GUIDE),
-                                state.button(GLFW.GAMEPAD_BUTTON_LEFT_THUMB),
-                                state.button(GLFW.GAMEPAD_BUTTON_RIGHT_THUMB),
-                                state.button(GLFW.GAMEPAD_BUTTON_DPAD_UP),
-                                state.button(GLFW.GAMEPAD_BUTTON_DPAD_RIGHT),
-                                state.button(GLFW.GAMEPAD_BUTTON_DPAD_DOWN),
-                                state.button(GLFW.GAMEPAD_BUTTON_DPAD_LEFT),
-                                state.axe(GLFW.GAMEPAD_AXIS_LEFT_X),
-                                state.axe(GLFW.GAMEPAD_AXIS_LEFT_Y),
-                                state.axe(GLFW.GAMEPAD_AXIS_RIGHT_X),
-                                state.axe(GLFW.GAMEPAD_AXIS_RIGHT_Y),
-                                state.axe(GLFW.GAMEPAD_AXIS_LEFT_TRIGGER),
-                                state.axe(GLFW.GAMEPAD_AXIS_RIGHT_TRIGGER));
+                                    "Get gamepad state for [jid=%d,name=%s] successful:" +
+                                    " Buttons: [A(Cross)=%b, B(Circle)=%b, X(Square)=%b, Y(Triangle)=%b," +
+                                    " Left bumper=%b, Right bumper=%b, Back=%b, Start=%b, Guide=%b, Left thumb=%b, Right thumb=%b," +
+                                    " DPAD(up=%b, right=%b, down=%b, left=%b)]%n," +
+                                    " Axis: [Left(x=%f, y=%f), Right(x=%f, y=%f), Trigger(left=%f, right%f)] %n",
+                                    i,
+                                    GLFW.getGamepadName(i),
+                                    state.button(GLFW.GAMEPAD_BUTTON_A),
+                                    state.button(GLFW.GAMEPAD_BUTTON_B),
+                                    state.button(GLFW.GAMEPAD_BUTTON_X),
+                                    state.button(GLFW.GAMEPAD_BUTTON_Y),
+                                    state.button(GLFW.GAMEPAD_BUTTON_LEFT_BUMPER),
+                                    state.button(GLFW.GAMEPAD_BUTTON_RIGHT_BUMPER),
+                                    state.button(GLFW.GAMEPAD_BUTTON_BACK),
+                                    state.button(GLFW.GAMEPAD_BUTTON_START),
+                                    state.button(GLFW.GAMEPAD_BUTTON_GUIDE),
+                                    state.button(GLFW.GAMEPAD_BUTTON_LEFT_THUMB),
+                                    state.button(GLFW.GAMEPAD_BUTTON_RIGHT_THUMB),
+                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_UP),
+                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_RIGHT),
+                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_DOWN),
+                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_LEFT),
+                                    state.axe(GLFW.GAMEPAD_AXIS_LEFT_X),
+                                    state.axe(GLFW.GAMEPAD_AXIS_LEFT_Y),
+                                    state.axe(GLFW.GAMEPAD_AXIS_RIGHT_X),
+                                    state.axe(GLFW.GAMEPAD_AXIS_RIGHT_Y),
+                                    state.axe(GLFW.GAMEPAD_AXIS_LEFT_TRIGGER),
+                                    state.axe(GLFW.GAMEPAD_AXIS_RIGHT_TRIGGER));
                         }
                     }
                 }

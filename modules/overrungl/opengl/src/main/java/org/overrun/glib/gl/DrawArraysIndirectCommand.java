@@ -51,17 +51,17 @@ public class DrawArraysIndirectCommand extends Pointer {
      * The struct layout.
      */
     public static final GroupLayout LAYOUT =
-        MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("count"),
-            ValueLayout.JAVA_INT.withName("primCount"),
-            ValueLayout.JAVA_INT.withName("first"),
-            ValueLayout.JAVA_INT.withName("baseInstance")
-        ).withName("DrawArraysIndirectCommand");
+            MemoryLayout.structLayout(
+                    ValueLayout.JAVA_INT.withName("count"),
+                    ValueLayout.JAVA_INT.withName("primCount"),
+                    ValueLayout.JAVA_INT.withName("first"),
+                    ValueLayout.JAVA_INT.withName("baseInstance")
+            ).withName("DrawArraysIndirectCommand");
     private static final VarHandle
-        pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
-        pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
-        pFirst = LAYOUT.varHandle(PathElement.groupElement("first")),
-        pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
+            pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
+            pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
+            pFirst = LAYOUT.varHandle(PathElement.groupElement("first")),
+            pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
 
     /**
      * Create the pointer instance.
@@ -181,12 +181,8 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @since 0.1.0
      */
     public static class Buffer extends DrawArraysIndirectCommand {
-        private static final VarHandle
-            pCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count")),
-            pPrimCount = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount")),
-            pFirst = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("first")),
-            pBaseInstance = LAYOUT.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
         private final long elementCount;
+        private final VarHandle pCount, pPrimCount, pFirst, pBaseInstance;
 
         /**
          * Create the pointer instance.
@@ -198,6 +194,11 @@ public class DrawArraysIndirectCommand extends Pointer {
         public Buffer(Addressable address, MemorySession scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
+            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
+            pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
+            pFirst = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));
+            pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
         }
 
         /**

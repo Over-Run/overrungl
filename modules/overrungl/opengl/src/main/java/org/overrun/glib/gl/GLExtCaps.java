@@ -482,6 +482,13 @@ public final class GLExtCaps {
      * {@code GL_MESA_resize_buffers} extension method handles.
      */
     public MethodHandle glResizeBuffersMESA;
+    /**
+     * {@code GL_MESA_window_pos} extension method handles.
+     */
+    public MethodHandle glWindowPos2dMESA, glWindowPos2dvMESA, glWindowPos2fMESA, glWindowPos2fvMESA, glWindowPos2iMESA, glWindowPos2ivMESA,
+            glWindowPos2sMESA, glWindowPos2svMESA, glWindowPos3dMESA, glWindowPos3dvMESA, glWindowPos3fMESA, glWindowPos3fvMESA,
+            glWindowPos3iMESA, glWindowPos3ivMESA, glWindowPos3sMESA, glWindowPos3svMESA, glWindowPos4dMESA, glWindowPos4dvMESA,
+            glWindowPos4fMESA, glWindowPos4fvMESA, glWindowPos4iMESA, glWindowPos4ivMESA, glWindowPos4sMESA, glWindowPos4svMESA;
 
     // endregion
 
@@ -1257,7 +1264,7 @@ public final class GLExtCaps {
     }
 
     void load(GLLoadFunc load) {
-        // TODO: 69/307 extensions
+        // TODO: 70/307 extensions
         GL3DFXTbuffer.load(this, load);
         GLAMDDebugOutput.load(this, load);
         GLAMDDrawBuffersBlend.load(this, load);
@@ -1466,7 +1473,7 @@ public final class GLExtCaps {
         GLKHRRobustness.load(this, load);
         GLMESAFramebufferFlipY.load(this, load);
         GLMESAResizeBuffers.load(this, load);
-        // GLMESA_window_pos.load(load);
+        GLMESAWindowPos.load(this, load);
         // GLNVX_conditional_render.load(load);
         // GLNVX_gpu_multicast2.load(load);
         // GLNVX_linked_gpu_multicast.load(load);

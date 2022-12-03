@@ -83,14 +83,14 @@ public final class BufferBuilderTest {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL.viewport(0, 0, width, height));
+                GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
-                window,
-                (vidMode.width() - size.x()) / 2,
-                (vidMode.height() - size.y()) / 2
+                    window,
+                    (vidMode.width() - size.x()) / 2,
+                    (vidMode.height() - size.y()) / 2
             );
         }
 
@@ -110,29 +110,29 @@ public final class BufferBuilderTest {
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
         GL.shaderSource(arena, vsh, """
-            #version 130
+                #version 130
 
-            in vec3 position;
-            in vec3 color;
+                in vec3 position;
+                in vec3 color;
 
-            out vec3 vertexColor;
+                out vec3 vertexColor;
 
-            void main() {
-                gl_Position = vec4(position, 1.0);
-                vertexColor = color;
-            }
-            """);
+                void main() {
+                    gl_Position = vec4(position, 1.0);
+                    vertexColor = color;
+                }
+                """);
         GL.shaderSource(arena, fsh, """
-            #version 130
+                #version 130
 
-            in vec3 vertexColor;
+                in vec3 vertexColor;
 
-            out vec4 fragColor;
+                out vec4 fragColor;
 
-            void main() {
-                fragColor = vec4(vertexColor, 1.0);
-            }
-            """);
+                void main() {
+                    fragColor = vec4(vertexColor, 1.0);
+                }
+                """);
         GL.compileShader(vsh);
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
@@ -152,20 +152,20 @@ public final class BufferBuilderTest {
         int stride;
         try (var builder = new BufferBuilder(4 * 3 * 3 + 4 * 3)) {
             builder.begin()
-                .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
-                .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)
-                // For alignment reason, we put a padding byte
-                .put(JAVA_BYTE, (byte) 0)
-                .emit()
-                .putAll(JAVA_FLOAT, -0.5f, -0.5f, 0.0f)
-                .putAll(JAVA_BYTE, (byte) 0, (byte) 0xff, (byte) 0)
-                .put(JAVA_BYTE, (byte) 0)
-                .emit()
-                .putAll(JAVA_FLOAT, 0.5f, -0.5f, 0.0f)
-                .putAll(JAVA_BYTE, (byte) 0, (byte) 0, (byte) 0xff)
-                .put(JAVA_BYTE, (byte) 0)
-                .emit()
-                .end();
+                    .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
+                    .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)
+                    // For alignment reason, we put a padding byte
+                    .put(JAVA_BYTE, (byte) 0)
+                    .emit()
+                    .putAll(JAVA_FLOAT, -0.5f, -0.5f, 0.0f)
+                    .putAll(JAVA_BYTE, (byte) 0, (byte) 0xff, (byte) 0)
+                    .put(JAVA_BYTE, (byte) 0)
+                    .emit()
+                    .putAll(JAVA_FLOAT, 0.5f, -0.5f, 0.0f)
+                    .putAll(JAVA_BYTE, (byte) 0, (byte) 0, (byte) 0xff)
+                    .put(JAVA_BYTE, (byte) 0)
+                    .emit()
+                    .end();
             GL.bufferData(GL_ARRAY_BUFFER, builder, GL_STATIC_DRAW);
             stride = (int) builder.stride();
         }

@@ -100,14 +100,14 @@ public class GL33Test {
             }
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL.viewport(0, 0, width, height));
+                GL.viewport(0, 0, width, height));
         var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
-                window,
-                (vidMode.width() - size.x()) / 2,
-                (vidMode.height() - size.y()) / 2
+                    window,
+                    (vidMode.width() - size.x()) / 2,
+                    (vidMode.height() - size.y()) / 2
             );
         }
 
@@ -127,32 +127,32 @@ public class GL33Test {
         int vsh = GL.createShader(GL_VERTEX_SHADER);
         int fsh = GL.createShader(GL_FRAGMENT_SHADER);
         GL.shaderSource(arena, vsh, """
-            #version 330
+                #version 330
 
-            layout (location = 0) in vec3 position;
-            layout (location = 1) in vec3 color;
-            layout (location = 2) in mat4 modelMat;
+                layout (location = 0) in vec3 position;
+                layout (location = 1) in vec3 color;
+                layout (location = 2) in mat4 modelMat;
 
-            out vec3 vertexColor;
+                out vec3 vertexColor;
 
-            uniform mat4 rotationMat;
+                uniform mat4 rotationMat;
 
-            void main() {
-                gl_Position = modelMat * rotationMat * vec4(position, 1.0);
-                vertexColor = color;
-            }
-            """);
+                void main() {
+                    gl_Position = modelMat * rotationMat * vec4(position, 1.0);
+                    vertexColor = color;
+                }
+                """);
         GL.shaderSource(arena, fsh, """
-            #version 330
+                #version 330
 
-            in vec3 vertexColor;
+                in vec3 vertexColor;
 
-            out vec4 fragColor;
+                out vec4 fragColor;
 
-            void main() {
-                fragColor = vec4(vertexColor, 1.0);
-            }
-            """);
+                void main() {
+                    fragColor = vec4(vertexColor, 1.0);
+                }
+                """);
         GL.compileShader(vsh);
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
@@ -169,16 +169,16 @@ public class GL33Test {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
-            // Vertex          Color
-            -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
-            0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
-            0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
+                // Vertex          Color
+                -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
+                -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
+                0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
+                0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
         }, GL_STATIC_DRAW);
         ebo = GL.genBuffer();
         GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
         GL.bufferData(arena, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
-            0, 1, 2, 2, 3, 0
+                0, 1, 2, 2, 3, 0
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
@@ -188,8 +188,8 @@ public class GL33Test {
         GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
         var mat = new Matrix4f();
         var iseq = MemoryLayout.sequenceLayout(
-            INSTANCE_COUNT,
-            Matrixn.MAT4F
+                INSTANCE_COUNT,
+                Matrixn.MAT4F
         );
         var matrices = arena.allocate(iseq);
         float mul = (float) Math.sqrt(INSTANCE_COUNT);
@@ -205,9 +205,9 @@ public class GL33Test {
         }
         for (int i = 0; i < INSTANCE_COUNT; i++) {
             Matrixn.put(mat.translation(translations[i * 2], translations[i * 2 + 1], 1.0f)
-                    .scale(scaling, scaling, 1.0f),
-                i * Matrixn.MAT4F.byteSize(),
-                matrices);
+                            .scale(scaling, scaling, 1.0f),
+                    i * Matrixn.MAT4F.byteSize(),
+                    matrices);
         }
         GL.bufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(2);

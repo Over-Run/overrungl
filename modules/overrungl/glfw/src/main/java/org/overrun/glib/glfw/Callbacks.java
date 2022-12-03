@@ -50,7 +50,7 @@ public final class Callbacks {
     }
 
     /**
-     * Free the arena for the given window.
+     * Close the arena for the given window.
      *
      * @param window the window
      */
