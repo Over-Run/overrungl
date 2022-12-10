@@ -24,14 +24,13 @@
 
 package org.overrun.glib.gl;
 
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.ext.*;
 import org.overrun.glib.gl.ext.amd.*;
 import org.overrun.glib.gl.ext.apple.*;
 import org.overrun.glib.gl.ext.arb.*;
 import org.overrun.glib.gl.ext.sun.*;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
@@ -600,19 +599,19 @@ public final class GLExtCaps {
                 return false;
             }
             int numExtsI = GL10C.getInteger(GLConstC.GL_NUM_EXTENSIONS);
-            Addressable extsI = MemoryAddress.NULL;
+            var extsI = MemorySegment.NULL;
             if (numExtsI > 0) {
                 extsI = allocator.allocateArray(ADDRESS, numExtsI);
             }
-            if (extsI == MemoryAddress.NULL) {
+            if (extsI.address() == RuntimeHelper.NULL_ADDR) {
                 return false;
             }
             for (int index = 0; index < numExtsI; index++) {
                 var glStrTmp = GL30C.getStringi(GLConstC.GL_EXTENSIONS, index);
-                ((MemorySegment) extsI).setAtIndex(ADDRESS, index, allocator.allocateUtf8String(glStrTmp));
+                extsI.setAtIndex(ADDRESS, index, allocator.allocateUtf8String(glStrTmp));
             }
             outNumExtsI.set(JAVA_INT, 0, numExtsI);
-            outExtsI[0] = (MemorySegment) extsI;
+            outExtsI[0] = extsI;
         }
 
         return true;

@@ -29,10 +29,9 @@ import org.overrun.glib.gl.GLDebugProc;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -55,7 +54,7 @@ public final class GLARBDebugOutput {
         ext.glGetDebugMessageLogARB = load.invoke("glGetDebugMessageLogARB", IIPPPPPPI);
     }
 
-    public static void glDebugMessageCallbackARB(Addressable callback, Addressable userParam) {
+    public static void glDebugMessageCallbackARB(MemorySegment callback, MemorySegment userParam) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageCallbackARB).invokeExact(callback, userParam);
@@ -64,11 +63,11 @@ public final class GLARBDebugOutput {
         }
     }
 
-    public static void glDebugMessageCallbackARB(MemorySession scope, GLDebugProc callback, Addressable userParam) {
+    public static void glDebugMessageCallbackARB(SegmentScope scope, GLDebugProc callback, MemorySegment userParam) {
         glDebugMessageCallbackARB(callback.address(scope), userParam);
     }
 
-    public static void glDebugMessageControlARB(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
+    public static void glDebugMessageControlARB(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageControlARB).invokeExact(source, type, severity, count, ids, enabled);
@@ -81,7 +80,7 @@ public final class GLARBDebugOutput {
         glDebugMessageControlARB(source, type, severity, count, allocator.allocateArray(JAVA_INT, ids), enabled);
     }
 
-    public static void glDebugMessageInsertARB(int source, int type, int id, int severity, int length, Addressable buf) {
+    public static void glDebugMessageInsertARB(int source, int type, int id, int severity, int length, MemorySegment buf) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageInsertARB).invokeExact(source, type, id, severity, length, buf);
@@ -94,7 +93,7 @@ public final class GLARBDebugOutput {
         glDebugMessageInsertARB(source, type, id, severity, -1, allocator.allocateUtf8String(buf));
     }
 
-    public static int glGetDebugMessageLogARB(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
+    public static int glGetDebugMessageLogARB(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
         var ext = getExtCapabilities();
         try {
             return (int) check(ext.glGetDebugMessageLogARB).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);

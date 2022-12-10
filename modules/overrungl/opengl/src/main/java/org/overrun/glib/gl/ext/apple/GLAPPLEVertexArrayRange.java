@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@code GL_APPLE_vertex_array_range}
@@ -45,7 +45,7 @@ public final class GLAPPLEVertexArrayRange {
         ext.glVertexArrayRangeAPPLE = load.invoke("glVertexArrayRangeAPPLE", FunctionDescriptors.IPV);
     }
 
-    public static void glFlushVertexArrayRangeAPPLE(int length, Addressable pointer) {
+    public static void glFlushVertexArrayRangeAPPLE(int length, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glFlushVertexArrayRangeAPPLE).invokeExact(length, pointer);
@@ -63,7 +63,7 @@ public final class GLAPPLEVertexArrayRange {
         }
     }
 
-    public static void glVertexArrayRangeAPPLE(int length, Addressable pointer) {
+    public static void glVertexArrayRangeAPPLE(int length, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glVertexArrayRangeAPPLE).invokeExact(length, pointer);

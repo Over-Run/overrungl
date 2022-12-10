@@ -26,7 +26,8 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +47,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWJoystickFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, int.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for joystick configuration callbacks.

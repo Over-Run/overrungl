@@ -24,13 +24,15 @@
 
 package org.overrun.glib.demo.glfw;
 
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.glfw.GLFWGamepadState;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentScope;
 
 /**
  * Tests GLFW joystick
@@ -39,7 +41,7 @@ import java.lang.foreign.MemorySession;
  * @since 0.1.0
  */
 public final class GLFWJoystickTest {
-    private MemoryAddress window;
+    private MemorySegment window;
 
     public void run() {
         init();
@@ -61,10 +63,10 @@ public final class GLFWJoystickTest {
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         GLFW.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        try (var arena = MemorySession.openShared()) {
-            window = GLFW.createWindow(arena, 200, 100, "Holder", MemoryAddress.NULL, MemoryAddress.NULL);
+        try (var arena = Arena.openShared()) {
+            window = GLFW.createWindow(arena, 200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         }
-        if (window == MemoryAddress.NULL)
+        if (window.address() == RuntimeHelper.NULL_ADDR)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -88,7 +90,7 @@ public final class GLFWJoystickTest {
     private void loop() {
         var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
         for (int i = 0; i < states.length; i++) {
-            states[i] = GLFWGamepadState.create(MemorySession.global());
+            states[i] = GLFWGamepadState.create(SegmentScope.global());
         }
         while (!GLFW.windowShouldClose(window)) {
 //            try (var arena = Arena.openShared()) {

@@ -24,6 +24,7 @@
 
 package org.overrun.glib.demo.glfw;
 
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.demo.util.IOUtil;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLLoader;
@@ -34,8 +35,8 @@ import org.overrun.glib.glfw.GLFWImage;
 import org.overrun.glib.stb.STBImage;
 
 import java.io.IOException;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.gl.GLConstC.GL_COLOR_BUFFER_BIT;
@@ -48,10 +49,10 @@ import static org.overrun.glib.gl.GLConstC.GL_DEPTH_BUFFER_BIT;
  * @since 0.1.0
  */
 public final class GLFWWindowIconTest {
-    private MemoryAddress window;
+    private MemorySegment window;
 
     public void run() {
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             init(arena);
             load();
         }
@@ -64,7 +65,7 @@ public final class GLFWWindowIconTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession arena) {
+    private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -72,8 +73,8 @@ public final class GLFWWindowIconTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 300, 300, "Hello World!", MemoryAddress.NULL, MemoryAddress.NULL);
-        if (window == MemoryAddress.NULL)
+        window = GLFW.createWindow(arena, 300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == RuntimeHelper.NULL_ADDR)
             throw new RuntimeException("Failed to create the GLFW window");
 
         try {
@@ -81,10 +82,10 @@ public final class GLFWWindowIconTest {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena, "image.png", 256),
+                IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256),
                 px, py, pc, STBImage.RGB_ALPHA
             );
-            GLFW.setWindowIcon(window, GLFWImage.create(arena, 1)
+            GLFW.setWindowIcon(window, GLFWImage.create(arena.scope(), 1)
                 .width(px.get(JAVA_INT, 0))
                 .height(py.get(JAVA_INT, 0))
                 .pixels(data));
@@ -100,7 +101,7 @@ public final class GLFWWindowIconTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(

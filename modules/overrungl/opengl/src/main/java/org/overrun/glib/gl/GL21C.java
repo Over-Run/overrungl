@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -51,7 +51,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         caps.glUniformMatrix4x3fv = load.invoke("glUniformMatrix4x3fv", IIZPV);
     }
 
-    public static void uniformMatrix2x3fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix2x3fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x3fv).invokeExact(location, count, transpose, value);
@@ -68,7 +68,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         uniformMatrix2x3fv(allocator, location, value.length / 6, transpose, value);
     }
 
-    public static void uniformMatrix2x4fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix2x4fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x4fv).invokeExact(location, count, transpose, value);
@@ -85,7 +85,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         uniformMatrix2x4fv(allocator, location, value.length >> 3, transpose, value);
     }
 
-    public static void uniformMatrix3x2fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix3x2fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x2fv).invokeExact(location, count, transpose, value);
@@ -102,7 +102,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         uniformMatrix3x2fv(allocator, location, value.length / 6, transpose, value);
     }
 
-    public static void uniformMatrix3x4fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix3x4fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x4fv).invokeExact(location, count, transpose, value);
@@ -119,7 +119,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         uniformMatrix3x4fv(allocator, location, value.length / 12, transpose, value);
     }
 
-    public static void uniformMatrix4x2fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix4x2fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x2fv).invokeExact(location, count, transpose, value);
@@ -136,7 +136,7 @@ public sealed class GL21C extends GL20C permits GL30C {
         uniformMatrix4x2fv(allocator, location, value.length >> 3, transpose, value);
     }
 
-    public static void uniformMatrix4x3fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix4x3fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x3fv).invokeExact(location, count, transpose, value);

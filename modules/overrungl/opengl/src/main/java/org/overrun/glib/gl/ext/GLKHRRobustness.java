@@ -27,7 +27,6 @@ package org.overrun.glib.gl.ext;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -47,7 +46,7 @@ public final class GLKHRRobustness {
         return getGraphicsResetStatus();
     }
 
-    public static void glGetnUniformfv(int program, int location, int bufSize, Addressable params) {
+    public static void glGetnUniformfv(int program, int location, int bufSize, MemorySegment params) {
         getnUniformfv(program, location, bufSize, params);
     }
 
@@ -59,7 +58,7 @@ public final class GLKHRRobustness {
         getnUniformfv(allocator, program, location, params);
     }
 
-    public static void glGetnUniformiv(int program, int location, int bufSize, Addressable params) {
+    public static void glGetnUniformiv(int program, int location, int bufSize, MemorySegment params) {
         getnUniformiv(program, location, bufSize, params);
     }
 
@@ -71,7 +70,7 @@ public final class GLKHRRobustness {
         getnUniformiv(allocator, program, location, params);
     }
 
-    public static void glGetnUniformuiv(int program, int location, int bufSize, Addressable params) {
+    public static void glGetnUniformuiv(int program, int location, int bufSize, MemorySegment params) {
         getnUniformuiv(program, location, bufSize, params);
     }
 
@@ -83,7 +82,7 @@ public final class GLKHRRobustness {
         getnUniformuiv(allocator, program, location, params);
     }
 
-    public static void glReadnPixels(int x, int y, int width, int height, int format, int type, int bufSize, Addressable data) {
+    public static void glReadnPixels(int x, int y, int width, int height, int format, int type, int bufSize, MemorySegment data) {
         readnPixels(x, y, width, height, format, type, bufSize, data);
     }
 

@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.apple;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
@@ -81,7 +81,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         }
     }
 
-    public static void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, Addressable points) {
+    public static void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, MemorySegment points) {
         var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib1dAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
@@ -94,7 +94,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         glMapVertexAttrib1dAPPLE(index, size, u1, u2, stride, order, allocator.allocateArray(JAVA_DOUBLE, points));
     }
 
-    public static void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, Addressable points) {
+    public static void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, MemorySegment points) {
         var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib1fAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
@@ -107,7 +107,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         glMapVertexAttrib1fAPPLE(index, size, u1, u2, stride, order, allocator.allocateArray(JAVA_FLOAT, points));
     }
 
-    public static void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
+    public static void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
         var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib2dAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
@@ -120,7 +120,7 @@ public final class GLAPPLEVertexProgramEvaluators {
         glMapVertexAttrib2dAPPLE(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_DOUBLE, points));
     }
 
-    public static void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
+    public static void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
         var ext = getExtCapabilities();
         try {
             check(ext.glMapVertexAttrib2fAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);

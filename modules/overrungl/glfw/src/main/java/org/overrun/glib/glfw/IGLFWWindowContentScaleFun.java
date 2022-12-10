@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWWindowContentScaleFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, float.class, float.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for window content scale callbacks.
@@ -55,7 +57,7 @@ public interface IGLFWWindowContentScaleFun extends ICallback {
      * @param xscale The new x-axis content scale of the window.
      * @param yscale The new y-axis content scale of the window.
      */
-    void invoke(MemoryAddress window, float xscale, float yscale);
+    void invoke(MemorySegment window, float xscale, float yscale);
 
     @Override
     default FunctionDescriptor descriptor() {

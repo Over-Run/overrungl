@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWCharFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for Unicode character callbacks.
@@ -54,7 +56,7 @@ public interface IGLFWCharFun extends ICallback {
      * @param window    The window that received the event.
      * @param codepoint The Unicode code point of the character.
      */
-    void invoke(MemoryAddress window, int codepoint);
+    void invoke(MemorySegment window, int codepoint);
 
     @Override
     default FunctionDescriptor descriptor() {

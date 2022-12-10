@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWWindowFocusFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for window focus callbacks.
@@ -55,9 +57,9 @@ public interface IGLFWWindowFocusFun extends ICallback {
      * @param focused {@code true} if the window was given input focus, or
      *                {@code false} if it lost it.
      */
-    void invoke(MemoryAddress window, boolean focused);
+    void invoke(MemorySegment window, boolean focused);
 
-    default void ninvoke(MemoryAddress window, int focused) {
+    default void ninvoke(MemorySegment window, int focused) {
         invoke(window, focused == GLFW.TRUE);
     }
 

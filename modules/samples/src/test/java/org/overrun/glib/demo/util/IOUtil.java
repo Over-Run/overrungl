@@ -26,7 +26,7 @@ package org.overrun.glib.demo.util;
 
 import java.io.IOException;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentScope;
 import java.lang.foreign.ValueLayout;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
@@ -43,7 +43,7 @@ public final class IOUtil {
     private IOUtil() {
     }
 
-    private static MemorySegment resizeSegment(MemorySession scope, MemorySegment segment, long newCapacity) {
+    private static MemorySegment resizeSegment(SegmentScope scope, MemorySegment segment, long newCapacity) {
         return MemorySegment.allocateNative(newCapacity, scope).copyFrom(segment);
     }
 
@@ -51,26 +51,26 @@ public final class IOUtil {
     /**
      * Reads the specified resource and returns the raw data as a MemorySegment.
      *
-     * @param arena       the arena
+     * @param scope       the segment scope
      * @param resource    the resource to read
      * @param segmentSize the initial segment size
      * @return the resource data
      * @throws IOException if an IO error occurs
      */
-    public static MemorySegment ioResourceToSegment(MemorySession arena, String resource, long segmentSize) throws IOException {
+    public static MemorySegment ioResourceToSegment(SegmentScope scope, String resource, long segmentSize) throws IOException {
         MemorySegment segment;
 
         var path = Path.of(resource);
         // Check whether on local
         if (Files.isReadable(path)) {
             try (var fc = FileChannel.open(path)) {
-                segment = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena);
+                segment = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), scope);
             }
         } else {
             // On classpath
             try (var is = IOUtil.class.getClassLoader().getResourceAsStream(resource)) {
                 Objects.requireNonNull(is, "Failed to load resource '" + resource + "'!");
-                segment = MemorySegment.allocateNative(segmentSize, arena);
+                segment = MemorySegment.allocateNative(segmentSize, scope);
 
                 long pos = 0;
                 while (true) {

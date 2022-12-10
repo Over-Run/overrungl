@@ -28,7 +28,7 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -52,7 +52,7 @@ public final class GLAMDFramebufferSamplePositions {
         ext.glNamedFramebufferSamplePositionsfvAMD = load.invoke("glNamedFramebufferSamplePositionsfvAMD", IIIPV);
     }
 
-    public static void glFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, Addressable values) {
+    public static void glFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, MemorySegment values) {
         var ext = getExtCapabilities();
         try {
             check(ext.glFramebufferSamplePositionsfvAMD).invokeExact(target, numSamples, pixelIndex, values);
@@ -65,7 +65,7 @@ public final class GLAMDFramebufferSamplePositions {
         glFramebufferSamplePositionsfvAMD(target, numSamples, pixelIndex, allocator.allocateArray(JAVA_FLOAT, values));
     }
 
-    public static void glGetFramebufferParameterfvAMD(int target, int pname, int numSamples, int pixelIndex, int size, Addressable values) {
+    public static void glGetFramebufferParameterfvAMD(int target, int pname, int numSamples, int pixelIndex, int size, MemorySegment values) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetFramebufferParameterfvAMD).invokeExact(target, pname, numSamples, pixelIndex, size, values);
@@ -80,7 +80,7 @@ public final class GLAMDFramebufferSamplePositions {
         RuntimeHelper.toArray(seg, values);
     }
 
-    public static void glGetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numSamples, int pixelIndex, int size, Addressable values) {
+    public static void glGetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numSamples, int pixelIndex, int size, MemorySegment values) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetNamedFramebufferParameterfvAMD).invokeExact(framebuffer, pname, numSamples, pixelIndex, size, values);
@@ -95,7 +95,7 @@ public final class GLAMDFramebufferSamplePositions {
         RuntimeHelper.toArray(seg, values);
     }
 
-    public static void glNamedFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, Addressable values) {
+    public static void glNamedFramebufferSamplePositionsfvAMD(int target, int numSamples, int pixelIndex, MemorySegment values) {
         var ext = getExtCapabilities();
         try {
             check(ext.glNamedFramebufferSamplePositionsfvAMD).invokeExact(target, numSamples, pixelIndex, values);

@@ -25,6 +25,7 @@
 package org.overrun.glib.demo.opengl;
 
 import org.joml.Matrix4f;
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLUtil;
@@ -33,10 +34,12 @@ import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.joml.Matrixn;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.MemorySession;
-import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SegmentScope;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -49,18 +52,18 @@ import static org.overrun.glib.gl.GLConstC.*;
 public class GL33Test {
     private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
-    private MemoryAddress window;
+    private MemorySegment window;
     private int program;
     private int rotationMat;
     private int vao, vbo, ebo, mbo;
-    private MemorySession debugProc;
+    private Arena debugProc;
 
     private static int square(int x) {
         return x * x;
     }
 
     public void run() {
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             init(arena);
             load(arena);
         }
@@ -80,7 +83,7 @@ public class GL33Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession arena) {
+    private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -91,8 +94,8 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-        window = GLFW.createWindow(arena, 640, 480, WND_TITLE, MemoryAddress.NULL, MemoryAddress.NULL);
-        if (window == MemoryAddress.NULL)
+        window = GLFW.createWindow(arena, 640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == RuntimeHelper.NULL_ADDR)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -117,7 +120,7 @@ public class GL33Test {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession arena) {
+    private void load(Arena arena) {
         if (GLLoader.loadConfined(true, GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -182,8 +185,8 @@ public class GL33Test {
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemoryAddress.NULL);
-        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemoryAddress.ofLong(12));
+        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemorySegment.NULL);
+        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemorySegment.ofAddress(12));
         mbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
         var mat = new Matrix4f();
@@ -214,10 +217,10 @@ public class GL33Test {
         GL.enableVertexAttribArray(3);
         GL.enableVertexAttribArray(4);
         GL.enableVertexAttribArray(5);
-        GL.vertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemoryAddress.NULL);
-        GL.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(16));
-        GL.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(32));
-        GL.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemoryAddress.ofLong(48));
+        GL.vertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemorySegment.NULL);
+        GL.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(16));
+        GL.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(32));
+        GL.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(48));
         GL.vertexAttribDivisor(2, 1);
         GL.vertexAttribDivisor(3, 1);
         GL.vertexAttribDivisor(4, 1);
@@ -228,7 +231,7 @@ public class GL33Test {
 
     private void loop() {
         var matrix = new Matrix4f();
-        var pRotationMat = Matrixn.allocate(SegmentAllocator.implicitAllocator(), matrix);
+        var pRotationMat = Matrixn.allocate(SegmentScope.auto(), matrix);
 
         double lastTime;
         double time;
@@ -247,7 +250,7 @@ public class GL33Test {
 
             GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
             GL.bindVertexArray(vao);
-            GL.drawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemoryAddress.NULL, INSTANCE_COUNT);
+            GL.drawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
             GL.bindVertexArray(0);
             GL.useProgram(0);
 
@@ -258,7 +261,7 @@ public class GL33Test {
             lastTime = time;
             time = GLFW.getTime();
             dt = time - lastTime;
-            try (var arena = MemorySession.openShared()) {
+            try (var arena = Arena.openShared()) {
                 GLFW.setWindowTitle(arena, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
             }
         }

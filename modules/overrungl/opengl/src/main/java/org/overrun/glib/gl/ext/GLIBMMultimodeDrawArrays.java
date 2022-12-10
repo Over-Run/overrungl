@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -47,7 +47,7 @@ public final class GLIBMMultimodeDrawArrays {
         ext.glMultiModeDrawElementsIBM = load.invoke("glMultiModeDrawElementsIBM", FunctionDescriptors.PPIPIIV);
     }
 
-    public static void glMultiModeDrawArraysIBM(Addressable mode, Addressable first, Addressable count, int primCount, int modeStride) {
+    public static void glMultiModeDrawArraysIBM(MemorySegment mode, MemorySegment first, MemorySegment count, int primCount, int modeStride) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glMultiModeDrawArraysIBM).invokeExact(mode, first, count, primCount, modeStride);
@@ -60,7 +60,7 @@ public final class GLIBMMultimodeDrawArrays {
         glMultiModeDrawArraysIBM(allocator.allocateArray(JAVA_INT, mode), allocator.allocateArray(JAVA_INT, first), allocator.allocateArray(JAVA_INT, count), primCount, modeStride);
     }
 
-    public static void glMultiModeDrawElementsIBM(Addressable mode, Addressable count, int type, Addressable indices, int primCount, int modeStride) {
+    public static void glMultiModeDrawElementsIBM(MemorySegment mode, MemorySegment count, int type, MemorySegment indices, int primCount, int modeStride) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glMultiModeDrawElementsIBM).invokeExact(mode, count, type, indices, primCount, modeStride);

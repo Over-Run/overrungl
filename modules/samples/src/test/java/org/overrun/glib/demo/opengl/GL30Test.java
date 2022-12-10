@@ -24,6 +24,7 @@
 
 package org.overrun.glib.demo.opengl;
 
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.demo.util.IOUtil;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLLoader;
@@ -33,8 +34,8 @@ import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.stb.STBImage;
 
 import java.io.IOException;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static org.overrun.glib.gl.GLConstC.*;
@@ -46,14 +47,14 @@ import static org.overrun.glib.gl.GLConstC.*;
  * @since 0.1.0
  */
 public final class GL30Test {
-    private MemoryAddress window;
+    private MemorySegment window;
     private int program;
     private int colorFactor;
     private int vao, vbo, ebo;
     private int tex;
 
     public void run() {
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             init(arena);
             load(arena);
         }
@@ -72,7 +73,7 @@ public final class GL30Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession arena) {
+    private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -80,8 +81,8 @@ public final class GL30Test {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 640, 480, "OpenGL 3.0", MemoryAddress.NULL, MemoryAddress.NULL);
-        if (window == MemoryAddress.NULL)
+        window = GLFW.createWindow(arena, 640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == RuntimeHelper.NULL_ADDR)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -90,7 +91,7 @@ public final class GL30Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -106,7 +107,7 @@ public final class GL30Test {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession arena) {
+    private void load(Arena arena) {
         if (GLLoader.loadConfined(true, GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -121,7 +122,7 @@ public final class GL30Test {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena, "image.png", 256),
+                IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256),
                 px, py, pc, STBImage.RGB
             );
             GL.texImage2D(GL_TEXTURE_2D,
@@ -201,8 +202,8 @@ public final class GL30Test {
         }, GL_STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 20, MemoryAddress.NULL);
-        GL.vertexAttribPointer(1, 2, GL_FLOAT, false, 20, MemoryAddress.ofLong(12));
+        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 20, MemorySegment.NULL);
+        GL.vertexAttribPointer(1, 2, GL_FLOAT, false, 20, MemorySegment.ofAddress(12));
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
 
@@ -218,7 +219,7 @@ public final class GL30Test {
             GL.useProgram(program);
             GL.uniform1f(colorFactor, (float) ((Math.sin(GLFW.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
             GL.bindVertexArray(vao);
-            GL.drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemoryAddress.NULL);
+            GL.drawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemorySegment.NULL);
             GL.bindVertexArray(0);
             GL.useProgram(0);
             GL.bindTexture(GL_TEXTURE_2D, 0);

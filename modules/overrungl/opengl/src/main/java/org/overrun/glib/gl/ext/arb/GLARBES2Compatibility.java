@@ -27,7 +27,6 @@ package org.overrun.glib.gl.ext.arb;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -51,7 +50,7 @@ public final class GLARBES2Compatibility {
         depthRangef(n, f);
     }
 
-    public static void glGetShaderPrecisionFormat(int shaderType, int precisionType, Addressable range, Addressable precision) {
+    public static void glGetShaderPrecisionFormat(int shaderType, int precisionType, MemorySegment range, MemorySegment precision) {
         getShaderPrecisionFormat(shaderType, precisionType, range, precision);
     }
 
@@ -63,11 +62,11 @@ public final class GLARBES2Compatibility {
         releaseShaderCompiler();
     }
 
-    public static void glShaderBinary(int count, Addressable shaders, int binaryFormat, Addressable binary, int length) {
+    public static void glShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
         shaderBinary(count, shaders, binaryFormat, binary, length);
     }
 
-    public static void glShaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, Addressable binary, int length) {
+    public static void glShaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary, int length) {
         shaderBinary(allocator, shaders, binaryFormat, binary, length);
     }
 

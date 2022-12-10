@@ -169,7 +169,7 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'signing'
 
-    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_19
+    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_20
 
     group = projGroupId
     archivesBaseName = "$projArtifactId$subName"

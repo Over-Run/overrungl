@@ -27,8 +27,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -110,7 +109,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void deleteTextures(int n, Addressable textures) {
+    public static void deleteTextures(int n, MemorySegment textures) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteTextures).invokeExact(n, textures);
@@ -145,7 +144,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void drawElements(int mode, int count, int type, Addressable indices) {
+    public static void drawElements(int mode, int count, int type, MemorySegment indices) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElements).invokeExact(mode, count, type, indices);
@@ -169,7 +168,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         drawElements(mode, count, type, seg);
     }
 
-    public static void genTextures(int n, Addressable textures) {
+    public static void genTextures(int n, MemorySegment textures) {
         var caps = getCapabilities();
         try {
             check(caps.glGenTextures).invokeExact(n, textures);
@@ -197,7 +196,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void getPointerv(int pname, Addressable params) {
+    public static void getPointerv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetPointerv).invokeExact(pname, params);
@@ -206,7 +205,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static MemoryAddress getPointer(int pname) {
+    public static MemorySegment getPointer(int pname) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -236,7 +235,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, Addressable pixels) {
+    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
@@ -261,7 +260,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
+    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);

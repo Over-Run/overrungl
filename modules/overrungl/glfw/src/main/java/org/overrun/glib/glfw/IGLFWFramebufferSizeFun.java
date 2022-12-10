@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWFramebufferSizeFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for framebuffer size callbacks.
@@ -55,7 +57,7 @@ public interface IGLFWFramebufferSizeFun extends ICallback {
      * @param width  The new width, in pixels, of the framebuffer.
      * @param height The new height, in pixels, of the framebuffer.
      */
-    void invoke(MemoryAddress window, int width, int height);
+    void invoke(MemorySegment window, int width, int height);
 
     @Override
     default FunctionDescriptor descriptor() {

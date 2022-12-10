@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -58,7 +58,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         }
     }
 
-    public static void drawRangeElements(int mode, int start, int end, int count, int type, Addressable indices) {
+    public static void drawRangeElements(int mode, int start, int end, int count, int type, MemorySegment indices) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawRangeElements).invokeExact(mode, start, end, count, type, indices);
@@ -79,7 +79,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         drawRangeElements(mode, start, end, count, type, allocator.allocateArray(JAVA_INT, indices));
     }
 
-    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, Addressable pixels) {
+    public static void texImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, format, type, pixels);
@@ -104,7 +104,7 @@ public sealed class GL12C extends GL11C permits GL13C {
         texImage3D(target, level, internalFormat, width, height, depth, border, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
-    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
+    public static void texSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);

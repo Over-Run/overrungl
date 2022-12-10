@@ -28,8 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
@@ -56,7 +54,7 @@ public final class MemoryUtil {
         m_memset = downcall("memset", PIJP);
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(LOOKUP.lookup(name), function);
+        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
     /**
@@ -80,9 +78,9 @@ public final class MemoryUtil {
      * alignment.
      * @see #malloc(MemoryLayout)
      */
-    public static MemoryAddress malloc(long size) {
+    public static MemorySegment malloc(long size) {
         try {
-            return (MemoryAddress) m_malloc.invokeExact(size);
+            return MemorySegment.ofAddress(((MemorySegment) m_malloc.invokeExact(size)).address(), size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -102,7 +100,7 @@ public final class MemoryUtil {
      * alignment.
      * @see #malloc(long)
      */
-    public static MemoryAddress malloc(MemoryLayout layout) {
+    public static MemorySegment malloc(MemoryLayout layout) {
         return malloc(layout.byteSize());
     }
 
@@ -118,9 +116,9 @@ public final class MemoryUtil {
      * return value is suitably aligned for storage of any type of object.
      * @see #calloc(long, MemoryLayout)
      */
-    public static MemoryAddress calloc(long number, long size) {
+    public static MemorySegment calloc(long number, long size) {
         try {
-            return (MemoryAddress) m_calloc.invokeExact(number, size);
+            return MemorySegment.ofAddress(((MemorySegment) m_calloc.invokeExact(number, size)).address(), number * size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -138,7 +136,7 @@ public final class MemoryUtil {
      * return value is suitably aligned for storage of any type of object.
      * @see #calloc(long, long)
      */
-    public static MemoryAddress calloc(long number, MemoryLayout layout) {
+    public static MemorySegment calloc(long number, MemoryLayout layout) {
         return calloc(number, layout.byteSize());
     }
 
@@ -170,11 +168,11 @@ public final class MemoryUtil {
      * <p>
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
-    public static MemoryAddress realloc(@Nullable Addressable memblock, long size) {
+    public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
         try {
-            return (MemoryAddress) m_realloc.invokeExact(
-                Objects.requireNonNullElse(memblock, MemoryAddress.NULL),
-                size);
+            return MemorySegment.ofAddress(((MemorySegment) m_realloc.invokeExact(
+                Objects.requireNonNullElse(memblock, MemorySegment.NULL),
+                size)).address(), size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -193,8 +191,8 @@ public final class MemoryUtil {
      *
      * @param memblock Previously allocated memory block to be freed.
      */
-    public static void free(@Nullable Addressable memblock) {
-        if (memblock == null) return;
+    public static void free(@Nullable MemorySegment memblock) {
+        if (memblock == null || memblock.address() == RuntimeHelper.NULL_ADDR) return;
         try {
             m_free.invokeExact(memblock);
         } catch (Throwable e) {
@@ -216,9 +214,9 @@ public final class MemoryUtil {
      * @param count Number of characters to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memcpy(Addressable dest, Addressable src, long count) {
+    public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            return (MemoryAddress) m_memcpy.invokeExact(dest, src, count);
+            return MemorySegment.ofAddress(((MemorySegment) m_memcpy.invokeExact(dest, src, count)).address(), dest.byteSize());
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -240,9 +238,9 @@ public final class MemoryUtil {
      * @param count Number of bytes to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memmove(Addressable dest, Addressable src, long count) {
+    public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            return (MemoryAddress) m_memmove.invokeExact(dest, src, count);
+            return MemorySegment.ofAddress(((MemorySegment) m_memmove.invokeExact(dest, src, count)).address(), dest.byteSize());
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -262,9 +260,9 @@ public final class MemoryUtil {
      * @param count Number of characters.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memset(Addressable dest, int c, long count) {
+    public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            return (MemoryAddress) m_memset.invokeExact(dest, c, count);
+            return MemorySegment.ofAddress(((MemorySegment) m_memset.invokeExact(dest, c, count)).address(), dest.byteSize());
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

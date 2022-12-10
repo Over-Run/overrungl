@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.apple;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -69,7 +69,7 @@ public final class GLAPPLEElementArray {
         }
     }
 
-    public static void glElementPointerAPPLE(int type, Addressable pointer) {
+    public static void glElementPointerAPPLE(int type, MemorySegment pointer) {
         var ext = getExtCapabilities();
         try {
             check(ext.glElementPointerAPPLE).invokeExact(type, pointer);
@@ -78,7 +78,7 @@ public final class GLAPPLEElementArray {
         }
     }
 
-    public static void glMultiDrawElementArrayAPPLE(int mode, Addressable first, Addressable count, int primCount) {
+    public static void glMultiDrawElementArrayAPPLE(int mode, MemorySegment first, MemorySegment count, int primCount) {
         var ext = getExtCapabilities();
         try {
             check(ext.glMultiDrawElementArrayAPPLE).invokeExact(mode, first, count, primCount);
@@ -91,7 +91,7 @@ public final class GLAPPLEElementArray {
         glMultiDrawElementArrayAPPLE(mode, allocator.allocateArray(JAVA_INT, first), allocator.allocateArray(JAVA_INT, count), primCount);
     }
 
-    public static void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, Addressable first, Addressable count, int primCount) {
+    public static void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, MemorySegment first, MemorySegment count, int primCount) {
         var ext = getExtCapabilities();
         try {
             check(ext.glMultiDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count, primCount);

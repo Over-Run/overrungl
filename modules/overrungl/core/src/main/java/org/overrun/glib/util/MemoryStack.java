@@ -29,8 +29,8 @@ import org.overrun.glib.Configurations;
 import org.overrun.glib.Pointer;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.util.Arrays;
 
@@ -64,7 +64,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     @Nullable
-    private final MemoryAddress container;
+    private final MemorySegment container;
 
     private final long size;
 
@@ -82,7 +82,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param address   the backing memory address
      * @param size      the backing memory size
      */
-    protected MemoryStack(@Nullable MemoryAddress container, MemoryAddress address, long size) {
+    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size) {
         super(address, null);
         this.container = container;
 
@@ -120,11 +120,10 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param buffer the backing memory buffer
      * @param size   the memory buffer size
      */
-    public static MemoryStack create(MemoryAddress buffer, long size) {
-        var address = buffer.address();
+    public static MemoryStack create(MemorySegment buffer, long size) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(buffer, address, size)
-            : new MemoryStack(buffer, address, size);
+            ? new DebugMemoryStack(buffer, buffer, size)
+            : new MemoryStack(buffer, buffer, size);
     }
 
     /**
@@ -135,7 +134,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param address the backing memory address
      * @param size    the backing memory size
      */
-    public static MemoryStack ncreate(MemoryAddress address, long size) {
+    public static MemoryStack ncreate(MemorySegment address, long size) {
         return DEBUG_STACK
             ? new DebugMemoryStack(null, address, size)
             : new MemoryStack(null, address, size);
@@ -201,7 +200,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
 
-        DebugMemoryStack(@Nullable MemoryAddress buffer, MemoryAddress address, long size) {
+        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size) {
             super(buffer, address, size);
             debugFrames = new Object[DEFAULT_STACK_FRAMES];
         }
@@ -256,7 +255,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * <p>The stack grows "downwards", so the bottom of the stack is at {@code address + size}, while the top is at {@code address}.</p>
      */
     @Override
-    public MemoryAddress address() {
+    public MemorySegment address() {
         return super.address();
     }
 
@@ -281,8 +280,8 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Returns the memory address at the current stack pointer.
      */
-    public MemoryAddress getPointerAddress() {
-        return address().addOffset(pointer);
+    public MemorySegment getPointerAddress() {
+        return address().asSlice(pointer);
     }
 
     /**
@@ -331,9 +330,9 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param size      the allocation size
      * @return the memory address on the stack for the requested allocation
      */
-    public MemoryAddress nmalloc(long alignment, long size) {
+    public MemorySegment nmalloc(long alignment, long size) {
         // Align address to the specified alignment
-        long rawLong = address().toRawLongValue();
+        long rawLong = address().address();
         long address = (rawLong + pointer - size) & -alignment;
 
         pointer = address - rawLong;
@@ -341,7 +340,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
             throw new OutOfMemoryError("Out of stack space.");
         }
 
-        return MemoryAddress.ofLong(address);
+        return MemorySegment.ofAddress(address, size);
     }
 
     /**
@@ -353,7 +352,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param size      the size of each element
      * @return the memory address on the stack for the requested allocation
      */
-    public MemoryAddress ncalloc(long alignment, long num, long size) {
+    public MemorySegment ncalloc(long alignment, long num, long size) {
         long bytes = num * size;
         var address = nmalloc(alignment, bytes);
         MemoryUtil.memset(address, 0, bytes);
@@ -363,13 +362,13 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     // -------------------------------------------------
 
     /**
-     * Allocates an aligned {@link MemoryAddress} on the stack.
+     * Allocates an aligned {@link MemorySegment} on the stack.
      *
      * @param alignment the required buffer alignment
      * @param size      the number of elements in the buffer
      * @return the allocated buffer
      */
-    public MemoryAddress malloc(long alignment, long size) {
+    public MemorySegment malloc(long alignment, long size) {
         if (DEBUG) {
             checkAlignment(alignment);
         }
@@ -379,7 +378,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Calloc version of {@link #malloc(long, long)}.
      */
-    public MemoryAddress calloc(long alignment, long size) {
+    public MemorySegment calloc(long alignment, long size) {
         if (DEBUG) {
             checkAlignment(alignment);
         }
@@ -387,31 +386,31 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     }
 
     /**
-     * Allocates a {@link MemoryAddress} on the stack with {@code alignment} equal to {@link ValueLayout#byteSize() POINTER_SIZE}.
+     * Allocates a {@link MemorySegment} on the stack with {@code alignment} equal to {@link ValueLayout#byteSize() POINTER_SIZE}.
      *
      * @param size the allocation size
      * @return the memory address on the stack for the requested allocation
      */
-    public MemoryAddress malloc(long size) {
+    public MemorySegment malloc(long size) {
         return nmalloc(ADDRESS.byteSize(), size);
     }
 
-    public MemoryAddress malloc(MemoryLayout layout) {
+    public MemorySegment malloc(MemoryLayout layout) {
         return malloc(layout.byteSize());
     }
 
     /**
      * Calloc version of {@link #malloc(long)}.
      */
-    public MemoryAddress calloc(long size) {
+    public MemorySegment calloc(long size) {
         return ncalloc(ADDRESS.byteSize(), size, 1);
     }
 
-    public MemoryAddress calloc(MemoryLayout layout, long num) {
+    public MemorySegment calloc(MemoryLayout layout, long num) {
         return ncalloc(ADDRESS.byteSize(), num, layout.byteSize());
     }
 
-    public MemoryAddress calloc(MemoryLayout layout) {
+    public MemorySegment calloc(MemoryLayout layout) {
         return calloc(layout, 1);
     }
 
@@ -447,14 +446,14 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Thread-local version of {@link #nmalloc(long, long)}.
      */
-    public static MemoryAddress nstackMalloc(long alignment, long size) {
+    public static MemorySegment nstackMalloc(long alignment, long size) {
         return stackGet().nmalloc(alignment, size);
     }
 
     /**
      * Thread-local version of {@link #ncalloc}.
      */
-    public static MemoryAddress nstackCalloc(long alignment, long num, long size) {
+    public static MemorySegment nstackCalloc(long alignment, long num, long size) {
         return stackGet().ncalloc(alignment, num, size);
     }
 
@@ -463,14 +462,14 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Thread-local version of {@link #malloc(long) malloc}.
      */
-    public static MemoryAddress stackMalloc(long size) {
+    public static MemorySegment stackMalloc(long size) {
         return stackGet().malloc(size);
     }
 
     /**
      * Thread-local version of {@link #calloc(long) calloc}.
      */
-    public static MemoryAddress stackCalloc(long size) {
+    public static MemorySegment stackCalloc(long size) {
         return stackGet().calloc(size);
     }
 }

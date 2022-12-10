@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWScrollFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, double.class, double.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for scroll callbacks.
@@ -55,7 +57,7 @@ public interface IGLFWScrollFun extends ICallback {
      * @param xoffset The scroll offset along the x-axis.
      * @param yoffset The scroll offset along the y-axis.
      */
-    void invoke(MemoryAddress window, double xoffset, double yoffset);
+    void invoke(MemorySegment window, double xoffset, double yoffset);
 
     @Override
     default FunctionDescriptor descriptor() {

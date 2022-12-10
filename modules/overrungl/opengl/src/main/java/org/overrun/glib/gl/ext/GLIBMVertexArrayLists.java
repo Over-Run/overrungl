@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.check;
@@ -52,7 +52,7 @@ public final class GLIBMVertexArrayLists {
         ext.glVertexPointerListIBM = load.invoke("glVertexPointerListIBM", IIIPIV);
     }
 
-    public static void glColorPointerListIBM(int size, int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glColorPointerListIBM(int size, int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glColorPointerListIBM).invokeExact(size, type, stride, pointer, ptrStride);
@@ -61,7 +61,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glEdgeFlagPointerListIBM(int stride, Addressable pointer, int ptrStride) {
+    public static void glEdgeFlagPointerListIBM(int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glEdgeFlagPointerListIBM).invokeExact(stride, pointer, ptrStride);
@@ -70,7 +70,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glFogCoordPointerListIBM(int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glFogCoordPointerListIBM(int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glFogCoordPointerListIBM).invokeExact(type, stride, pointer, ptrStride);
@@ -79,7 +79,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glIndexPointerListIBM(int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glIndexPointerListIBM(int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glIndexPointerListIBM).invokeExact(type, stride, pointer, ptrStride);
@@ -88,7 +88,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glNormalPointerListIBM(int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glNormalPointerListIBM(int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glNormalPointerListIBM).invokeExact(type, stride, pointer, ptrStride);
@@ -97,7 +97,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glSecondaryColorPointerListIBM(int size, int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glSecondaryColorPointerListIBM(int size, int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glSecondaryColorPointerListIBM).invokeExact(size, type, stride, pointer, ptrStride);
@@ -106,7 +106,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glTexCoordPointerListIBM(int size, int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glTexCoordPointerListIBM(int size, int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoordPointerListIBM).invokeExact(size, type, stride, pointer, ptrStride);
@@ -115,7 +115,7 @@ public final class GLIBMVertexArrayLists {
         }
     }
 
-    public static void glVertexPointerListIBM(int size, int type, int stride, Addressable pointer, int ptrStride) {
+    public static void glVertexPointerListIBM(int size, int type, int stride, MemorySegment pointer, int ptrStride) {
         var ext = getExtCapabilities();
         try {
             check(ext.glVertexPointerListIBM).invokeExact(size, type, stride, pointer, ptrStride);

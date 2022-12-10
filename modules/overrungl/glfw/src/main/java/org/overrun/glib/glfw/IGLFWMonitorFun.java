@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWMonitorFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for monitor configuration callbacks.
@@ -55,7 +57,7 @@ public interface IGLFWMonitorFun extends ICallback {
      * @param event   One of {@code CONNECTED} or {@code DISCONNECTED}. Future
      *                releases may add more events.
      */
-    void invoke(MemoryAddress monitor, int event);
+    void invoke(MemorySegment monitor, int event);
 
     @Override
     default FunctionDescriptor descriptor() {

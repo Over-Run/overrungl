@@ -24,6 +24,7 @@
 
 package org.overrun.glib.demo.opengl;
 
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.glfw.Callbacks;
@@ -31,8 +32,8 @@ import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.util.BufferBuilder;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -45,11 +46,11 @@ import static org.overrun.glib.gl.GLConstC.*;
  * @since 0.1.0
  */
 public final class BufferBuilderTest {
-    private MemoryAddress window;
+    private MemorySegment window;
     private int program, vao, vbo;
 
     public void run() {
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             init(arena);
             load(arena);
         }
@@ -66,7 +67,7 @@ public final class BufferBuilderTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession arena) {
+    private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -74,8 +75,8 @@ public final class BufferBuilderTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 300, 300, "BufferBuilder Test", MemoryAddress.NULL, MemoryAddress.NULL);
-        if (window == MemoryAddress.NULL)
+        window = GLFW.createWindow(arena, 300, 300, "BufferBuilder Test", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == RuntimeHelper.NULL_ADDR)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -84,7 +85,7 @@ public final class BufferBuilderTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -100,7 +101,7 @@ public final class BufferBuilderTest {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession arena) {
+    private void load(Arena arena) {
         if (GLLoader.loadConfined(GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
@@ -171,8 +172,8 @@ public final class BufferBuilderTest {
         }
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, stride, MemoryAddress.NULL);
-        GL.vertexAttribPointer(1, 3, GL_UNSIGNED_BYTE, true, stride, MemoryAddress.ofLong(12));
+        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, stride, MemorySegment.NULL);
+        GL.vertexAttribPointer(1, 3, GL_UNSIGNED_BYTE, true, stride, MemorySegment.ofAddress(12));
         GL.bindBuffer(GL_ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
     }

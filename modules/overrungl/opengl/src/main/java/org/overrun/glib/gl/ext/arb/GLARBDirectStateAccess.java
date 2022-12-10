@@ -28,8 +28,6 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.BufferBuilder;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -57,11 +55,11 @@ public final class GLARBDirectStateAccess {
         return checkNamedFramebufferStatus(framebuffer, target);
     }
 
-    public static void glClearNamedBufferData(int buffer, int internalFormat, int format, int type, Addressable data) {
+    public static void glClearNamedBufferData(int buffer, int internalFormat, int format, int type, MemorySegment data) {
         clearNamedBufferData(buffer, internalFormat, format, type, data);
     }
 
-    public static void glClearNamedBufferSubData(int buffer, int internalFormat, long offset, long size, int format, int type, Addressable data) {
+    public static void glClearNamedBufferSubData(int buffer, int internalFormat, long offset, long size, int format, int type, MemorySegment data) {
         clearNamedBufferSubData(buffer, internalFormat, offset, size, format, type, data);
     }
 
@@ -69,7 +67,7 @@ public final class GLARBDirectStateAccess {
         clearNamedFramebufferfi(framebuffer, buffer, drawBuffer, depth, stencil);
     }
 
-    public static void glClearNamedFramebufferfv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
+    public static void glClearNamedFramebufferfv(int framebuffer, int buffer, int drawBuffer, MemorySegment value) {
         clearNamedFramebufferfv(framebuffer, buffer, drawBuffer, value);
     }
 
@@ -77,7 +75,7 @@ public final class GLARBDirectStateAccess {
         clearNamedFramebufferfv(allocator, framebuffer, buffer, drawBuffer, value);
     }
 
-    public static void glClearNamedFramebufferiv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
+    public static void glClearNamedFramebufferiv(int framebuffer, int buffer, int drawBuffer, MemorySegment value) {
         clearNamedFramebufferiv(framebuffer, buffer, drawBuffer, value);
     }
 
@@ -85,7 +83,7 @@ public final class GLARBDirectStateAccess {
         clearNamedFramebufferiv(allocator, framebuffer, buffer, drawBuffer, value);
     }
 
-    public static void glClearNamedFramebufferuiv(int framebuffer, int buffer, int drawBuffer, Addressable value) {
+    public static void glClearNamedFramebufferuiv(int framebuffer, int buffer, int drawBuffer, MemorySegment value) {
         clearNamedFramebufferuiv(framebuffer, buffer, drawBuffer, value);
     }
 
@@ -93,15 +91,15 @@ public final class GLARBDirectStateAccess {
         clearNamedFramebufferuiv(allocator, framebuffer, buffer, drawBuffer, value);
     }
 
-    public static void glCompressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, Addressable data) {
+    public static void glCompressedTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
         compressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data);
     }
 
-    public static void glCompressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, Addressable data) {
+    public static void glCompressedTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
         compressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data);
     }
 
-    public static void glCompressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
+    public static void glCompressedTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
         compressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
     }
 
@@ -121,7 +119,7 @@ public final class GLARBDirectStateAccess {
         copyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
     }
 
-    public static void glCreateBuffers(int n, Addressable buffers) {
+    public static void glCreateBuffers(int n, MemorySegment buffers) {
         createBuffers(n, buffers);
     }
 
@@ -133,7 +131,7 @@ public final class GLARBDirectStateAccess {
         return createBuffer();
     }
 
-    public static void glCreateFramebuffers(int n, Addressable framebuffers) {
+    public static void glCreateFramebuffers(int n, MemorySegment framebuffers) {
         createFramebuffers(n, framebuffers);
     }
 
@@ -145,7 +143,7 @@ public final class GLARBDirectStateAccess {
         return createFramebuffer();
     }
 
-    public static void glCreateProgramPipelines(int n, Addressable pipelines) {
+    public static void glCreateProgramPipelines(int n, MemorySegment pipelines) {
         createProgramPipelines(n, pipelines);
     }
 
@@ -157,7 +155,7 @@ public final class GLARBDirectStateAccess {
         return createProgramPipeline();
     }
 
-    public static void glCreateQueries(int target, int n, Addressable ids) {
+    public static void glCreateQueries(int target, int n, MemorySegment ids) {
         createQueries(target, n, ids);
     }
 
@@ -169,7 +167,7 @@ public final class GLARBDirectStateAccess {
         return createQuery(target);
     }
 
-    public static void glCreateRenderbuffers(int n, Addressable renderbuffers) {
+    public static void glCreateRenderbuffers(int n, MemorySegment renderbuffers) {
         createRenderbuffers(n, renderbuffers);
     }
 
@@ -181,7 +179,7 @@ public final class GLARBDirectStateAccess {
         return createRenderbuffer();
     }
 
-    public static void glCreateSamplers(int n, Addressable samplers) {
+    public static void glCreateSamplers(int n, MemorySegment samplers) {
         createSamplers(n, samplers);
     }
 
@@ -193,7 +191,7 @@ public final class GLARBDirectStateAccess {
         return createSampler();
     }
 
-    public static void glCreateTextures(int target, int n, Addressable textures) {
+    public static void glCreateTextures(int target, int n, MemorySegment textures) {
         createTextures(target, n, textures);
     }
 
@@ -205,7 +203,7 @@ public final class GLARBDirectStateAccess {
         return createTexture(target);
     }
 
-    public static void glCreateTransformFeedbacks(int n, Addressable ids) {
+    public static void glCreateTransformFeedbacks(int n, MemorySegment ids) {
         createTransformFeedbacks(n, ids);
     }
 
@@ -217,7 +215,7 @@ public final class GLARBDirectStateAccess {
         return createTransformFeedback();
     }
 
-    public static void glCreateVertexArrays(int n, Addressable arrays) {
+    public static void glCreateVertexArrays(int n, MemorySegment arrays) {
         createVertexArrays(n, arrays);
     }
 
@@ -245,11 +243,11 @@ public final class GLARBDirectStateAccess {
         generateTextureMipmap(texture);
     }
 
-    public static void glGetCompressedTextureImage(int texture, int level, int bufSize, Addressable pixels) {
+    public static void glGetCompressedTextureImage(int texture, int level, int bufSize, MemorySegment pixels) {
         getCompressedTextureImage(texture, level, bufSize, pixels);
     }
 
-    public static void glGetNamedBufferParameteri64v(int buffer, int pname, Addressable params) {
+    public static void glGetNamedBufferParameteri64v(int buffer, int pname, MemorySegment params) {
         getNamedBufferParameteri64v(buffer, pname, params);
     }
 
@@ -257,7 +255,7 @@ public final class GLARBDirectStateAccess {
         return getNamedBufferParameteri64(buffer, pname);
     }
 
-    public static void glGetNamedBufferParameteriv(int buffer, int pname, Addressable params) {
+    public static void glGetNamedBufferParameteriv(int buffer, int pname, MemorySegment params) {
         getNamedBufferParameteriv(buffer, pname, params);
     }
 
@@ -265,15 +263,15 @@ public final class GLARBDirectStateAccess {
         return getNamedBufferParameteri(buffer, pname);
     }
 
-    public static void glGetNamedBufferPointerv(int target, int pname, Addressable params) {
+    public static void glGetNamedBufferPointerv(int target, int pname, MemorySegment params) {
         getNamedBufferPointerv(target, pname, params);
     }
 
-    public static MemoryAddress glGetNamedBufferPointer(int target, int pname) {
+    public static MemorySegment glGetNamedBufferPointer(int target, int pname) {
         return getNamedBufferPointer(target, pname);
     }
 
-    public static void glGetNamedBufferSubData(int buffer, long offset, long size, Addressable data) {
+    public static void glGetNamedBufferSubData(int buffer, long offset, long size, MemorySegment data) {
         getNamedBufferSubData(buffer, offset, size, data);
     }
 
@@ -301,7 +299,7 @@ public final class GLARBDirectStateAccess {
         getNamedBufferSubData(allocator, buffer, offset, data);
     }
 
-    public static void glGetNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, Addressable params) {
+    public static void glGetNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname, MemorySegment params) {
         getNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, params);
     }
 
@@ -309,7 +307,7 @@ public final class GLARBDirectStateAccess {
         return getNamedFramebufferAttachmentParameteri(framebuffer, attachment, pname);
     }
 
-    public static void glGetNamedFramebufferParameteriv(int framebuffer, int pname, Addressable param) {
+    public static void glGetNamedFramebufferParameteriv(int framebuffer, int pname, MemorySegment param) {
         getNamedFramebufferParameteriv(framebuffer, pname, param);
     }
 
@@ -317,7 +315,7 @@ public final class GLARBDirectStateAccess {
         return getNamedFramebufferParameteri(framebuffer, pname);
     }
 
-    public static void glGetNamedRenderbufferParameteriv(int renderbuffer, int pname, Addressable params) {
+    public static void glGetNamedRenderbufferParameteriv(int renderbuffer, int pname, MemorySegment params) {
         getNamedRenderbufferParameteriv(renderbuffer, pname, params);
     }
 
@@ -345,11 +343,11 @@ public final class GLARBDirectStateAccess {
         getQueryBufferObjectuiv(id, buffer, pname, offset);
     }
 
-    public static void glGetTextureImage(int texture, int level, int format, int type, int bufSize, Addressable pixels) {
+    public static void glGetTextureImage(int texture, int level, int format, int type, int bufSize, MemorySegment pixels) {
         getTextureImage(texture, level, format, type, bufSize, pixels);
     }
 
-    public static void glGetTextureLevelParameterfv(int texture, int level, int pname, Addressable params) {
+    public static void glGetTextureLevelParameterfv(int texture, int level, int pname, MemorySegment params) {
         getTextureLevelParameterfv(texture, level, pname, params);
     }
 
@@ -361,7 +359,7 @@ public final class GLARBDirectStateAccess {
         return getTextureLevelParameterf(texture, level, pname);
     }
 
-    public static void glGetTextureLevelParameteriv(int texture, int level, int pname, Addressable params) {
+    public static void glGetTextureLevelParameteriv(int texture, int level, int pname, MemorySegment params) {
         getTextureLevelParameteriv(texture, level, pname, params);
     }
 
@@ -373,7 +371,7 @@ public final class GLARBDirectStateAccess {
         return getTextureLevelParameteri(texture, level, pname);
     }
 
-    public static void glGetTextureParameterIiv(int texture, int pname, Addressable params) {
+    public static void glGetTextureParameterIiv(int texture, int pname, MemorySegment params) {
         getTextureParameterIiv(texture, pname, params);
     }
 
@@ -385,7 +383,7 @@ public final class GLARBDirectStateAccess {
         return getTextureParameterIi(texture, pname);
     }
 
-    public static void glGetTextureParameterIuiv(int texture, int pname, Addressable params) {
+    public static void glGetTextureParameterIuiv(int texture, int pname, MemorySegment params) {
         getTextureParameterIuiv(texture, pname, params);
     }
 
@@ -397,7 +395,7 @@ public final class GLARBDirectStateAccess {
         return getTextureParameterIui(texture, pname);
     }
 
-    public static void glGetTextureParameterfv(int texture, int pname, Addressable params) {
+    public static void glGetTextureParameterfv(int texture, int pname, MemorySegment params) {
         getTextureParameterfv(texture, pname, params);
     }
 
@@ -409,7 +407,7 @@ public final class GLARBDirectStateAccess {
         return getTextureParameterf(texture, pname);
     }
 
-    public static void glGetTextureParameteriv(int texture, int pname, Addressable params) {
+    public static void glGetTextureParameteriv(int texture, int pname, MemorySegment params) {
         getTextureParameteriv(texture, pname, params);
     }
 
@@ -421,7 +419,7 @@ public final class GLARBDirectStateAccess {
         return getTextureParameteri(texture, pname);
     }
 
-    public static void glGetTransformFeedbacki64_v(int xfb, int pname, int index, Addressable param) {
+    public static void glGetTransformFeedbacki64_v(int xfb, int pname, int index, MemorySegment param) {
         getTransformFeedbacki64_v(xfb, pname, index, param);
     }
 
@@ -429,7 +427,7 @@ public final class GLARBDirectStateAccess {
         getTransformFeedbacki64_v(allocator, xfb, pname, index, param);
     }
 
-    public static void glGetTransformFeedbacki_v(int xfb, int pname, int index, Addressable param) {
+    public static void glGetTransformFeedbacki_v(int xfb, int pname, int index, MemorySegment param) {
         getTransformFeedbacki_v(xfb, pname, index, param);
     }
 
@@ -437,7 +435,7 @@ public final class GLARBDirectStateAccess {
         getTransformFeedbacki_v(allocator, xfb, pname, index, param);
     }
 
-    public static void glGetTransformFeedbackiv(int xfb, int pname, Addressable param) {
+    public static void glGetTransformFeedbackiv(int xfb, int pname, MemorySegment param) {
         getTransformFeedbackiv(xfb, pname, param);
     }
 
@@ -445,7 +443,7 @@ public final class GLARBDirectStateAccess {
         getTransformFeedbackiv(allocator, xfb, pname, param);
     }
 
-    public static void glGetVertexArrayIndexed64iv(int vaobj, int index, int pname, Addressable param) {
+    public static void glGetVertexArrayIndexed64iv(int vaobj, int index, int pname, MemorySegment param) {
         getVertexArrayIndexed64iv(vaobj, index, pname, param);
     }
 
@@ -453,7 +451,7 @@ public final class GLARBDirectStateAccess {
         return getVertexArrayIndexed64i(vaobj, index, pname);
     }
 
-    public static void glGetVertexArrayIndexediv(int vaobj, int index, int pname, Addressable param) {
+    public static void glGetVertexArrayIndexediv(int vaobj, int index, int pname, MemorySegment param) {
         getVertexArrayIndexediv(vaobj, index, pname, param);
     }
 
@@ -461,7 +459,7 @@ public final class GLARBDirectStateAccess {
         return getVertexArrayIndexedi(vaobj, index, pname);
     }
 
-    public static void glGetVertexArrayiv(int vaobj, int pname, Addressable param) {
+    public static void glGetVertexArrayiv(int vaobj, int pname, MemorySegment param) {
         getVertexArrayiv(vaobj, pname, param);
     }
 
@@ -469,7 +467,7 @@ public final class GLARBDirectStateAccess {
         return getVertexArrayi(vaobj, pname);
     }
 
-    public static void glInvalidateNamedFramebufferData(int framebuffer, int numAttachments, Addressable attachments) {
+    public static void glInvalidateNamedFramebufferData(int framebuffer, int numAttachments, MemorySegment attachments) {
         invalidateNamedFramebufferData(framebuffer, numAttachments, attachments);
     }
 
@@ -481,7 +479,7 @@ public final class GLARBDirectStateAccess {
         invalidateNamedFramebufferData(framebuffer, attachment);
     }
 
-    public static void glInvalidateNamedFramebufferSubData(int framebuffer, int numAttachments, Addressable attachments, int x, int y, int width, int height) {
+    public static void glInvalidateNamedFramebufferSubData(int framebuffer, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
         invalidateNamedFramebufferSubData(framebuffer, numAttachments, attachments, x, y, width, height);
     }
 
@@ -493,15 +491,15 @@ public final class GLARBDirectStateAccess {
         invalidateNamedFramebufferSubData(framebuffer, attachment, x, y, width, height);
     }
 
-    public static MemoryAddress glMapNamedBuffer(int buffer, int access) {
+    public static MemorySegment glMapNamedBuffer(int buffer, int access) {
         return mapNamedBuffer(buffer, access);
     }
 
-    public static MemoryAddress glMapNamedBufferRange(int buffer, long offset, long length, int access) {
+    public static MemorySegment glMapNamedBufferRange(int buffer, long offset, long length, int access) {
         return mapNamedBufferRange(buffer, offset, length, access);
     }
 
-    public static void glNamedBufferData(int buffer, long size, Addressable data, int usage) {
+    public static void glNamedBufferData(int buffer, long size, MemorySegment data, int usage) {
         namedBufferData(buffer, size, data, usage);
     }
 
@@ -541,7 +539,7 @@ public final class GLARBDirectStateAccess {
         namedBufferData(allocator, buffer, data, usage);
     }
 
-    public static void glNamedBufferStorage(int buffer, long size, Addressable data, int flags) {
+    public static void glNamedBufferStorage(int buffer, long size, MemorySegment data, int flags) {
         namedBufferStorage(buffer, size, data, flags);
     }
 
@@ -573,7 +571,7 @@ public final class GLARBDirectStateAccess {
         namedBufferStorage(allocator, buffer, data, flags);
     }
 
-    public static void glNamedBufferSubData(int buffer, long offset, long size, Addressable data) {
+    public static void glNamedBufferSubData(int buffer, long offset, long size, MemorySegment data) {
         namedBufferSubData(buffer, offset, size, data);
     }
 
@@ -613,7 +611,7 @@ public final class GLARBDirectStateAccess {
         namedFramebufferDrawBuffer(framebuffer, buf);
     }
 
-    public static void glNamedFramebufferDrawBuffers(int framebuffer, int n, Addressable bufs) {
+    public static void glNamedFramebufferDrawBuffers(int framebuffer, int n, MemorySegment bufs) {
         namedFramebufferDrawBuffers(framebuffer, n, bufs);
     }
 
@@ -657,7 +655,7 @@ public final class GLARBDirectStateAccess {
         textureBufferRange(texture, internalFormat, buffer, offset, size);
     }
 
-    public static void glTextureParameterIiv(int texture, int pname, Addressable params) {
+    public static void glTextureParameterIiv(int texture, int pname, MemorySegment params) {
         textureParameterIiv(texture, pname, params);
     }
 
@@ -665,7 +663,7 @@ public final class GLARBDirectStateAccess {
         textureParameterIiv(allocator, texture, pname, params);
     }
 
-    public static void glTextureParameterIuiv(int texture, int pname, Addressable params) {
+    public static void glTextureParameterIuiv(int texture, int pname, MemorySegment params) {
         textureParameterIuiv(texture, pname, params);
     }
 
@@ -677,7 +675,7 @@ public final class GLARBDirectStateAccess {
         textureParameterf(texture, pname, param);
     }
 
-    public static void glTextureParameterfv(int texture, int pname, Addressable params) {
+    public static void glTextureParameterfv(int texture, int pname, MemorySegment params) {
         textureParameterfv(texture, pname, params);
     }
 
@@ -689,7 +687,7 @@ public final class GLARBDirectStateAccess {
         textureParameteri(texture, pname, param);
     }
 
-    public static void glTextureParameteriv(int texture, int pname, Addressable params) {
+    public static void glTextureParameteriv(int texture, int pname, MemorySegment params) {
         textureParameteriv(texture, pname, params);
     }
 
@@ -717,7 +715,7 @@ public final class GLARBDirectStateAccess {
         textureStorage3DMultisample(texture, samples, internalFormat, width, height, depth, fixedSampleLocations);
     }
 
-    public static void glTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, Addressable pixels) {
+    public static void glTextureSubImage1D(int texture, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         textureSubImage1D(texture, level, xoffset, width, format, type, pixels);
     }
 
@@ -737,7 +735,7 @@ public final class GLARBDirectStateAccess {
         textureSubImage1D(allocator, texture, level, xoffset, width, format, type, pixels);
     }
 
-    public static void glTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
+    public static void glTextureSubImage2D(int texture, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         textureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
     }
 
@@ -757,7 +755,7 @@ public final class GLARBDirectStateAccess {
         textureSubImage2D(allocator, texture, level, xoffset, yoffset, width, height, format, type, pixels);
     }
 
-    public static void glTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable pixels) {
+    public static void glTextureSubImage3D(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         textureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
     }
 
@@ -817,7 +815,7 @@ public final class GLARBDirectStateAccess {
         vertexArrayVertexBuffer(vaobj, bindingIndex, buffer, offset, stride);
     }
 
-    public static void glVertexArrayVertexBuffers(int vaobj, int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
+    public static void glVertexArrayVertexBuffers(int vaobj, int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment strides) {
         vertexArrayVertexBuffers(vaobj, first, count, buffers, offsets, strides);
     }
 

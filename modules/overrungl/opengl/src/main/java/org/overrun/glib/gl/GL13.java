@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -89,7 +89,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void loadTransposeMatrixd(Addressable m) {
+    public static void loadTransposeMatrixd(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glLoadTransposeMatrixd).invokeExact(m);
@@ -102,7 +102,7 @@ public final class GL13 extends GL13C {
         loadTransposeMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
     }
 
-    public static void loadTransposeMatrixf(Addressable m) {
+    public static void loadTransposeMatrixf(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glLoadTransposeMatrixf).invokeExact(m);
@@ -115,7 +115,7 @@ public final class GL13 extends GL13C {
         loadTransposeMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
     }
 
-    public static void multTransposeMatrixd(Addressable m) {
+    public static void multTransposeMatrixd(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glMultTransposeMatrixd).invokeExact(m);
@@ -128,7 +128,7 @@ public final class GL13 extends GL13C {
         multTransposeMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
     }
 
-    public static void multTransposeMatrixf(Addressable m) {
+    public static void multTransposeMatrixf(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glMultTransposeMatrixf).invokeExact(m);
@@ -150,7 +150,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord1dv(int target, Addressable v) {
+    public static void multiTexCoord1dv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1dv).invokeExact(target, v);
@@ -172,7 +172,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord1fv(int target, Addressable v) {
+    public static void multiTexCoord1fv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1fv).invokeExact(target, v);
@@ -194,7 +194,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord1iv(int target, Addressable v) {
+    public static void multiTexCoord1iv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1iv).invokeExact(target, v);
@@ -216,7 +216,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord1sv(int target, Addressable v) {
+    public static void multiTexCoord1sv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord1sv).invokeExact(target, v);
@@ -238,7 +238,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord2dv(int target, Addressable v) {
+    public static void multiTexCoord2dv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2dv).invokeExact(target, v);
@@ -260,7 +260,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord2fv(int target, Addressable v) {
+    public static void multiTexCoord2fv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2fv).invokeExact(target, v);
@@ -282,7 +282,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord2iv(int target, Addressable v) {
+    public static void multiTexCoord2iv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2iv).invokeExact(target, v);
@@ -304,7 +304,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord2sv(int target, Addressable v) {
+    public static void multiTexCoord2sv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord2sv).invokeExact(target, v);
@@ -326,7 +326,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord3dv(int target, Addressable v) {
+    public static void multiTexCoord3dv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3dv).invokeExact(target, v);
@@ -348,7 +348,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord3fv(int target, Addressable v) {
+    public static void multiTexCoord3fv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3fv).invokeExact(target, v);
@@ -370,7 +370,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord3iv(int target, Addressable v) {
+    public static void multiTexCoord3iv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3iv).invokeExact(target, v);
@@ -392,7 +392,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord3sv(int target, Addressable v) {
+    public static void multiTexCoord3sv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord3sv).invokeExact(target, v);
@@ -414,7 +414,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord4dv(int target, Addressable v) {
+    public static void multiTexCoord4dv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4dv).invokeExact(target, v);
@@ -436,7 +436,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord4fv(int target, Addressable v) {
+    public static void multiTexCoord4fv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4fv).invokeExact(target, v);
@@ -458,7 +458,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord4iv(int target, Addressable v) {
+    public static void multiTexCoord4iv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4iv).invokeExact(target, v);
@@ -480,7 +480,7 @@ public final class GL13 extends GL13C {
         }
     }
 
-    public static void multiTexCoord4sv(int target, Addressable v) {
+    public static void multiTexCoord4sv(int target, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiTexCoord4sv).invokeExact(target, v);

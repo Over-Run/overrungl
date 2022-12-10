@@ -25,14 +25,14 @@
 package org.overrun.glib.gl;
 
 import org.overrun.glib.ICallback;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
@@ -43,8 +43,8 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  */
 @FunctionalInterface
 public interface GLDebugProc extends ICallback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, int.class, int.class, int.class, int.class, int.class, MemoryAddress.class, MemoryAddress.class);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED, RuntimeHelper.ADDRESS_UNBOUNDED);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * debug callback
@@ -57,9 +57,9 @@ public interface GLDebugProc extends ICallback {
      * @param userParam will be set to the value passed in the {@code userParam}
      *                  parameter to the most recent call to {@code glDebugMessageCallback}.
      */
-    void invoke(int source, int type, int id, int severity, String message, MemoryAddress userParam);
+    void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
 
-    default void ninvoke(int source, int type, int id, int severity, int length, MemoryAddress message, MemoryAddress userParam) {
+    default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
         invoke(source, type, id, severity, message.getUtf8String(0), userParam);
     }
 

@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWCursorPosFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, double.class, double.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for cursor position callbacks.
@@ -55,7 +57,7 @@ public interface IGLFWCursorPosFun extends ICallback {
      * @param xpos   The new cursor x-coordinate, relative to the left edge of the content area.
      * @param ypos   The new cursor y-coordinate, relative to the top edge of the content area.
      */
-    void invoke(MemoryAddress window, double xpos, double ypos);
+    void invoke(MemorySegment window, double xpos, double ypos);
 
     @Override
     default FunctionDescriptor descriptor() {

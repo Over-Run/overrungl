@@ -28,8 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -39,6 +38,7 @@ import static org.overrun.glib.gl.GLLoader.*;
 /**
  * The OpenGL 1.0 forward compatible functions.
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -80,7 +80,7 @@ public sealed class GL10C permits GL10, GL11C {
         caps.glGetError = load.invoke("glGetError", I);
         caps.glGetFloatv = load.invoke("glGetFloatv", IPV);
         caps.glGetIntegerv = load.invoke("glGetIntegerv", IPV);
-        caps.glGetString = load.invoke("glGetString", IP);
+        caps.glGetString = load.invoke("glGetString", Ip);
         caps.glGetTexImage = load.invoke("glGetTexImage", IIIIPV);
         caps.glGetTexLevelParameterfv = load.invoke("glGetTexLevelParameterfv", IIIPV);
         caps.glGetTexLevelParameteriv = load.invoke("glGetTexLevelParameteriv", IIIPV);
@@ -253,7 +253,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getBooleanv(int pname, Addressable data) {
+    public static void getBooleanv(int pname, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetBooleanv).invokeExact(pname, data);
@@ -280,7 +280,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getDoublev(int pname, Addressable data) {
+    public static void getDoublev(int pname, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetDoublev).invokeExact(pname, data);
@@ -316,7 +316,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getFloatv(int pname, Addressable data) {
+    public static void getFloatv(int pname, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetFloatv).invokeExact(pname, data);
@@ -343,7 +343,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getIntegerv(int pname, Addressable data) {
+    public static void getIntegerv(int pname, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetIntegerv).invokeExact(pname, data);
@@ -370,10 +370,10 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static MemoryAddress ngetString(int name) {
+    public static MemorySegment ngetString(int name) {
         var caps = getCapabilities();
         try {
-            return (MemoryAddress) check(caps.glGetString).invokeExact(name);
+            return (MemorySegment) check(caps.glGetString).invokeExact(name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -382,10 +382,10 @@ public sealed class GL10C permits GL10, GL11C {
     @Nullable
     public static String getString(int name) {
         var pStr = ngetString(name);
-        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0) : null;
+        return pStr != MemorySegment.NULL ? pStr.getUtf8String(0) : null;
     }
 
-    public static void getTexImage(int target, int level, int format, int type, Addressable pixels) {
+    public static void getTexImage(int target, int level, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexImage).invokeExact(target, level, format, type, pixels);
@@ -394,7 +394,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexLevelParameterfv(int target, int level, int pname, Addressable params) {
+    public static void getTexLevelParameterfv(int target, int level, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexLevelParameterfv).invokeExact(target, level, pname, params);
@@ -421,7 +421,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexLevelParameteriv(int target, int level, int pname, Addressable params) {
+    public static void getTexLevelParameteriv(int target, int level, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexLevelParameteriv).invokeExact(target, level, pname, params);
@@ -448,7 +448,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexParameterfv(int target, int pname, Addressable params) {
+    public static void getTexParameterfv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexParameterfv).invokeExact(target, pname, params);
@@ -475,7 +475,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void getTexParameteriv(int target, int pname, Addressable params) {
+    public static void getTexParameteriv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexParameteriv).invokeExact(target, pname, params);
@@ -583,7 +583,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void readPixels(int x, int y, int width, int height, int format, int type, Addressable pixels) {
+    public static void readPixels(int x, int y, int width, int height, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glReadPixels).invokeExact(x, y, width, height, format, type, pixels);
@@ -652,7 +652,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, Addressable pixels) {
+    public static void texImage1D(int target, int level, int internalFormat, int width, int border, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexImage1D).invokeExact(target, level, internalFormat, width, border, format, type, pixels);
@@ -677,7 +677,7 @@ public sealed class GL10C permits GL10, GL11C {
         texImage1D(target, level, internalFormat, width, border, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
-    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, Addressable pixels) {
+    public static void texImage2D(int target, int level, int internalFormat, int width, int height, int border, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexImage2D).invokeExact(target, level, internalFormat, width, height, border, format, type, pixels);
@@ -711,7 +711,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texParameterfv(int target, int pname, Addressable params) {
+    public static void texParameterfv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexParameterfv).invokeExact(target, pname, params);
@@ -733,7 +733,7 @@ public sealed class GL10C permits GL10, GL11C {
         }
     }
 
-    public static void texParameteriv(int target, int pname, Addressable params) {
+    public static void texParameteriv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexParameteriv).invokeExact(target, pname, params);

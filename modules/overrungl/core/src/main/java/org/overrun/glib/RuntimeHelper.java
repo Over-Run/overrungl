@@ -56,6 +56,14 @@ public final class RuntimeHelper {
     private static final File tmpdir = new File(System.getProperty("java.io.tmpdir"));
     private static final Consumer<String> DEFAULT_LOGGER = System.out::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
+    /**
+     * The address of {@code NULL}.
+     */
+    public static final long NULL_ADDR = 0x0L;
+    /**
+     * An unbounded address layout.
+     */
+    public static final ValueLayout.OfAddress ADDRESS_UNBOUNDED = ADDRESS.asUnbounded();
 
     /**
      * constructor
@@ -119,7 +127,7 @@ public final class RuntimeHelper {
      * @return the string formatted in {@code \{description} [0x\{toHexString(token)}]}.
      */
     public static String unknownToken(String description, int token) {
-        return description + " [0x" + Integer.toHexString(token) + "]";
+        return description + " [0x" + Integer.toHexString(token) + ']';
     }
 
     /**
@@ -132,7 +140,7 @@ public final class RuntimeHelper {
      * @throws RuntimeException if file not found
      */
     public static SymbolLookup load(String module, String basename, String version)
-            throws RuntimeException {
+        throws RuntimeException {
         final var os = OperatingSystem.current();
         final var suffix = os.getSharedLibrarySuffix();
         final var path = os.getSharedLibraryName(basename);
@@ -149,11 +157,11 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, basename + "-" + version + suffix);
+            var libFile = new File(file, basename + '-' + version + suffix);
             if (!libFile.exists()) {
                 // Extract
                 try (var is = ClassLoader.getSystemResourceAsStream(
-                        module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" + path
+                    module + '/' + os.getFamilyName() + '/' + OperatingSystems.getNativeLibArch() + '/' + path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 }
@@ -161,14 +169,14 @@ public final class RuntimeHelper {
             uri = libFile.toURI();
         } catch (Exception e) {
             // 2. Load from natives directory
-            var file = new File(System.getProperty("overrungl.natives", ".") + "/" + path);
+            var file = new File(System.getProperty("overrungl.natives", ".") + '/' + path);
             if (!file.exists()) {
                 throw new RuntimeException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
             }
             uri = file.toURI();
         }
         // Load library by the path with the global segment scope
-        return SymbolLookup.libraryLookup(Path.of(uri), MemorySession.global());
+        return SymbolLookup.libraryLookup(Path.of(uri), SegmentScope.global());
     }
 
     /**
@@ -179,8 +187,8 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
-        if (symbol.address() == MemoryAddress.NULL) return null;
+    public static MethodHandle downcallSafe(MemorySegment symbol, FunctionDescriptor function) {
+        if (symbol.address() == NULL_ADDR) return null;
         return LINKER.downcallHandle(symbol, function);
     }
 
@@ -203,7 +211,7 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptors function) {
+    public static MethodHandle downcallSafe(MemorySegment symbol, FunctionDescriptors function) {
         return downcallSafe(symbol, function.descriptor());
     }
 
@@ -227,17 +235,10 @@ public final class RuntimeHelper {
      * @param generator the generator, to convert to the array type
      * @return arr
      */
-    public static <T> T[] toArray(Addressable seg, T[] arr,
-                                  Function<MemoryAddress, T> generator) {
-        if (seg instanceof MemorySegment pp) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = generator.apply(pp.getAtIndex(ADDRESS, i));
-            }
-        } else {
-            var pp = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = generator.apply(pp.getAtIndex(ADDRESS, i));
-            }
+    public static <T> T[] toArray(MemorySegment seg, T[] arr,
+                                  Function<MemorySegment, T> generator) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.apply(seg.getAtIndex(ADDRESS, i));
         }
         return arr;
     }
@@ -249,19 +250,23 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static MemoryAddress[] toArray(Addressable seg, MemoryAddress[] arr) {
+    public static MemorySegment[] toArray(MemorySegment seg, MemorySegment[] arr) {
         return toArray(seg, arr, Function.identity());
     }
 
+    public static String[] toArray(MemorySegment seg, String[] arr) {
+        return toArray(seg, arr, p -> p.getUtf8String(0));
+    }
+
     /**
-     * Gets the strings from an address array.
+     * Gets the strings from an unbounded address array.
      *
      * @param seg the memory segment contained strings. native type: {@code char**}
      * @param arr the array to hold the result
      * @return arr
      */
-    public static String[] toArray(Addressable seg, String[] arr) {
-        return toArray(seg, arr, p -> p.getUtf8String(0));
+    public static String[] toUnboundedArray(MemorySegment seg, String[] arr) {
+        return toArray(seg, arr, p -> MemorySegment.ofAddress(p.address(), Long.MAX_VALUE).getUtf8String(0));
     }
 
     /**
@@ -271,16 +276,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static boolean[] toArray(Addressable seg, boolean[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BOOLEAN, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BOOLEAN, i);
-            }
+    public static boolean[] toArray(MemorySegment seg, boolean[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.get(JAVA_BOOLEAN, i);
         }
         return arr;
     }
@@ -292,16 +290,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static byte[] toArray(Addressable seg, byte[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BYTE, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BYTE, i);
-            }
+    public static byte[] toArray(MemorySegment seg, byte[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.get(JAVA_BYTE, i);
         }
         return arr;
     }
@@ -313,16 +304,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static short[] toArray(Addressable seg, short[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_SHORT, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_SHORT, i);
-            }
+    public static short[] toArray(MemorySegment seg, short[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.getAtIndex(JAVA_SHORT, i);
         }
         return arr;
     }
@@ -334,16 +318,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static int[] toArray(Addressable seg, int[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_INT, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_INT, i);
-            }
+    public static int[] toArray(MemorySegment seg, int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.getAtIndex(JAVA_INT, i);
         }
         return arr;
     }
@@ -355,16 +332,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static long[] toArray(Addressable seg, long[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_LONG, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_LONG, i);
-            }
+    public static long[] toArray(MemorySegment seg, long[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.getAtIndex(JAVA_LONG, i);
         }
         return arr;
     }
@@ -376,16 +346,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static float[] toArray(Addressable seg, float[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_FLOAT, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_FLOAT, i);
-            }
+    public static float[] toArray(MemorySegment seg, float[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.getAtIndex(JAVA_FLOAT, i);
         }
         return arr;
     }
@@ -397,16 +360,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static double[] toArray(Addressable seg, double[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_DOUBLE, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_DOUBLE, i);
-            }
+    public static double[] toArray(MemorySegment seg, double[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.getAtIndex(JAVA_DOUBLE, i);
         }
         return arr;
     }

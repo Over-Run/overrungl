@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GL44C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@code GL_ARB_clear_texture}
@@ -40,11 +40,11 @@ public final class GLARBClearTexture {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glClearTexImage(int texture, int level, int format, int type, Addressable data) {
+    public static void glClearTexImage(int texture, int level, int format, int type, MemorySegment data) {
         GL44C.clearTexImage(texture, level, format, type, data);
     }
 
-    public static void glClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
+    public static void glClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment data) {
         GL44C.clearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
     }
 }

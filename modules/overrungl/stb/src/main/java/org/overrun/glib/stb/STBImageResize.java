@@ -26,7 +26,7 @@ package org.overrun.glib.stb;
 
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
@@ -69,8 +69,8 @@ public final class STBImageResize {
         throw new IllegalStateException("Do not construct instance");
     }
 
-    public static boolean stbi_resize_uint8(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                            Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_uint8(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                            MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                             int numChannels) {
         try {
             return (int) stbir_resize_uint8.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
@@ -93,8 +93,8 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize_float(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                            Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_float(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                            MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                             int numChannels) {
         try {
             return (int) stbir_resize_float.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
@@ -117,8 +117,8 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize_uint8_srgb(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                                 Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_uint8_srgb(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                                 MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                  int numChannels, int alphaChannel, int flags) {
         try {
             return (int) stbir_resize_uint8_srgb.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
@@ -141,8 +141,8 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize_uint8_srgb_edgemode(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                                          Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_uint8_srgb_edgemode(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                                          MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                           int numChannels, int alphaChannel, int flags,
                                                           int edgeWrapMode) {
         try {
@@ -169,11 +169,11 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize_uint8_generic(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                                    Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_uint8_generic(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                                    MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                     int numChannels, int alphaChannel, int flags,
                                                     int edgeWrapMode, int filter, int space,
-                                                    Addressable allocContext) {
+                                                    MemorySegment allocContext) {
         try {
             return (int) stbir_resize_uint8_generic.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
                 outputPixels, outputW, outputH, outputStrideInBytes,
@@ -190,7 +190,7 @@ public final class STBImageResize {
                                                     byte[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                     int numChannels, int alphaChannel, int flags,
                                                     STBIREdge edgeWrapMode, STBIRFilter filter, STBIRColorspace space,
-                                                    Addressable allocContext) {
+                                                    MemorySegment allocContext) {
         var seg = allocator.allocateArray(JAVA_BYTE, outputPixels.length);
         boolean b = stbi_resize_uint8_generic(allocator.allocateArray(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
@@ -201,11 +201,11 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize_uint16_generic(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                                     Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_uint16_generic(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                                     MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                      int numChannels, int alphaChannel, int flags,
                                                      int edgeWrapMode, int filter, int space,
-                                                     Addressable allocContext) {
+                                                     MemorySegment allocContext) {
         try {
             return (int) stbir_resize_uint16_generic.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
                 outputPixels, outputW, outputH, outputStrideInBytes,
@@ -222,7 +222,7 @@ public final class STBImageResize {
                                                      short[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                      int numChannels, int alphaChannel, int flags,
                                                      STBIREdge edgeWrapMode, STBIRFilter filter, STBIRColorspace space,
-                                                     Addressable allocContext) {
+                                                     MemorySegment allocContext) {
         var seg = allocator.allocateArray(JAVA_SHORT, outputPixels.length);
         boolean b = stbi_resize_uint16_generic(allocator.allocateArray(JAVA_SHORT, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
@@ -233,11 +233,11 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize_float_generic(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                                    Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_float_generic(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                                    MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                     int numChannels, int alphaChannel, int flags,
                                                     int edgeWrapMode, int filter, int space,
-                                                    Addressable allocContext) {
+                                                    MemorySegment allocContext) {
         try {
             return (int) stbir_resize_float_generic.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
                 outputPixels, outputW, outputH, outputStrideInBytes,
@@ -254,7 +254,7 @@ public final class STBImageResize {
                                                     float[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                     int numChannels, int alphaChannel, int flags,
                                                     STBIREdge edgeWrapMode, STBIRFilter filter, STBIRColorspace space,
-                                                    Addressable allocContext) {
+                                                    MemorySegment allocContext) {
         var seg = allocator.allocateArray(JAVA_FLOAT, outputPixels.length);
         boolean b = stbi_resize_float_generic(allocator.allocateArray(JAVA_FLOAT, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
@@ -265,13 +265,13 @@ public final class STBImageResize {
         return b;
     }
 
-    public static boolean stbi_resize(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                      Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                      MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                       int datatype,
                                       int numChannels, int alphaChannel, int flags,
                                       int edgeModeHorizontal, int edgeModeVertical,
                                       int filterHorizontal, int filterVertical,
-                                      int space, Addressable allocContext) {
+                                      int space, MemorySegment allocContext) {
         try {
             return (int) stbir_resize.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
                 outputPixels, outputW, outputH, outputStrideInBytes,
@@ -285,13 +285,13 @@ public final class STBImageResize {
         }
     }
 
-    public static boolean stbi_resize(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                      Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                      MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                       STBIRDatatype datatype,
                                       int numChannels, int alphaChannel, int flags,
                                       STBIREdge edgeModeHorizontal, STBIREdge edgeModeVertical,
                                       STBIRFilter filterHorizontal, STBIRFilter filterVertical,
-                                      STBIRColorspace space, Addressable allocContext) {
+                                      STBIRColorspace space, MemorySegment allocContext) {
         return stbi_resize(inputPixels, inputW, inputH, inputStrideInBytes,
             outputPixels, outputW, outputH, outputStrideInBytes,
             datatype.ordinal(),
@@ -301,13 +301,13 @@ public final class STBImageResize {
             space.ordinal(), allocContext);
     }
 
-    public static boolean stbi_resize_subpixel(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                               Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_subpixel(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                               MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                int datatype,
                                                int numChannels, int alphaChannel, int flags,
                                                int edgeModeHorizontal, int edgeModeVertical,
                                                int filterHorizontal, int filterVertical,
-                                               int space, Addressable allocContext,
+                                               int space, MemorySegment allocContext,
                                                float xScale, float yScale,
                                                float xOffset, float yOffset) {
         try {
@@ -325,13 +325,13 @@ public final class STBImageResize {
         }
     }
 
-    public static boolean stbi_resize_subpixel(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                               Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_subpixel(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                               MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                STBIRDatatype datatype,
                                                int numChannels, int alphaChannel, int flags,
                                                STBIREdge edgeModeHorizontal, STBIREdge edgeModeVertical,
                                                STBIRFilter filterHorizontal, STBIRFilter filterVertical,
-                                               STBIRColorspace space, Addressable allocContext,
+                                               STBIRColorspace space, MemorySegment allocContext,
                                                float xScale, float yScale,
                                                float xOffset, float yOffset) {
         return stbi_resize_subpixel(inputPixels, inputW, inputH, inputStrideInBytes,
@@ -345,13 +345,13 @@ public final class STBImageResize {
             xOffset, yOffset);
     }
 
-    public static boolean stbi_resize_region(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                             Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_region(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                             MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                              int datatype,
                                              int numChannels, int alphaChannel, int flags,
                                              int edgeModeHorizontal, int edgeModeVertical,
                                              int filterHorizontal, int filterVertical,
-                                             int space, Addressable allocContext,
+                                             int space, MemorySegment allocContext,
                                              float s0, float t0, float s1, float t1) {
         try {
             return (int) stbir_resize_region.invokeExact(inputPixels, inputW, inputH, inputStrideInBytes,
@@ -367,13 +367,13 @@ public final class STBImageResize {
         }
     }
 
-    public static boolean stbi_resize_region(Addressable inputPixels, int inputW, int inputH, int inputStrideInBytes,
-                                             Addressable outputPixels, int outputW, int outputH, int outputStrideInBytes,
+    public static boolean stbi_resize_region(MemorySegment inputPixels, int inputW, int inputH, int inputStrideInBytes,
+                                             MemorySegment outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                              STBIRDatatype datatype,
                                              int numChannels, int alphaChannel, int flags,
                                              STBIREdge edgeModeHorizontal, STBIREdge edgeModeVertical,
                                              STBIRFilter filterHorizontal, STBIRFilter filterVertical,
-                                             STBIRColorspace space, Addressable allocContext,
+                                             STBIRColorspace space, MemorySegment allocContext,
                                              float s0, float t0, float s1, float t1) {
         return stbi_resize_region(inputPixels, inputW, inputH, inputStrideInBytes,
             outputPixels, outputW, outputH, outputStrideInBytes,

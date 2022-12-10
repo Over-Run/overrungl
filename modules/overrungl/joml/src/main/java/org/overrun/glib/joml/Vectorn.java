@@ -29,7 +29,10 @@ import org.overrun.glib.util.BufferBuilder;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentScope;
+import java.lang.foreign.SequenceLayout;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -84,7 +87,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector2ic vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector2ic vec) {
         return put(vec, MemorySegment.allocateNative(VEC2I, scope));
     }
 
@@ -95,7 +98,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector2fc vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector2fc vec) {
         return put(vec, MemorySegment.allocateNative(VEC2F, scope));
     }
 
@@ -106,7 +109,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector2dc vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector2dc vec) {
         return put(vec, MemorySegment.allocateNative(VEC2D, scope));
     }
 
@@ -117,7 +120,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector3ic vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector3ic vec) {
         return put(vec, MemorySegment.allocateNative(VEC3I, scope));
     }
 
@@ -128,7 +131,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector3fc vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector3fc vec) {
         return put(vec, MemorySegment.allocateNative(VEC3F, scope));
     }
 
@@ -139,7 +142,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector3dc vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector3dc vec) {
         return put(vec, MemorySegment.allocateNative(VEC3D, scope));
     }
 
@@ -150,7 +153,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector4ic vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector4ic vec) {
         return put(vec, MemorySegment.allocateNative(VEC4I, scope));
     }
 
@@ -161,7 +164,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector4fc vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector4fc vec) {
         return put(vec, MemorySegment.allocateNative(VEC4F, scope));
     }
 
@@ -172,7 +175,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Vector4dc vec) {
+    public static MemorySegment allocate(SegmentScope scope, Vector4dc vec) {
         return put(vec, MemorySegment.allocateNative(VEC4D, scope));
     }
 
@@ -182,7 +185,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector2ic vec) {
+    public static MemorySegment malloc(Vector2ic vec) {
         return put(vec, MemoryUtil.malloc(VEC2I));
     }
 
@@ -192,7 +195,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector2fc vec) {
+    public static MemorySegment malloc(Vector2fc vec) {
         return put(vec, MemoryUtil.malloc(VEC2F));
     }
 
@@ -202,7 +205,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector2dc vec) {
+    public static MemorySegment malloc(Vector2dc vec) {
         return put(vec, MemoryUtil.malloc(VEC2D));
     }
 
@@ -212,7 +215,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector3ic vec) {
+    public static MemorySegment malloc(Vector3ic vec) {
         return put(vec, MemoryUtil.malloc(VEC3I));
     }
 
@@ -222,7 +225,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector3fc vec) {
+    public static MemorySegment malloc(Vector3fc vec) {
         return put(vec, MemoryUtil.malloc(VEC3F));
     }
 
@@ -232,7 +235,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector3dc vec) {
+    public static MemorySegment malloc(Vector3dc vec) {
         return put(vec, MemoryUtil.malloc(VEC3D));
     }
 
@@ -242,7 +245,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector4ic vec) {
+    public static MemorySegment malloc(Vector4ic vec) {
         return put(vec, MemoryUtil.malloc(VEC4I));
     }
 
@@ -252,7 +255,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector4fc vec) {
+    public static MemorySegment malloc(Vector4fc vec) {
         return put(vec, MemoryUtil.malloc(VEC4F));
     }
 
@@ -262,7 +265,7 @@ public final class Vectorn {
      * @param vec the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(Vector4dc vec) {
+    public static MemorySegment malloc(Vector4dc vec) {
         return put(vec, MemoryUtil.malloc(VEC4D));
     }
 
@@ -273,7 +276,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector2ic vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector2ic vec) {
         return put(vec, stack.malloc(VEC2I));
     }
 
@@ -284,7 +287,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector2fc vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector2fc vec) {
         return put(vec, stack.malloc(VEC2F));
     }
 
@@ -295,7 +298,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector2dc vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector2dc vec) {
         return put(vec, stack.malloc(VEC2D));
     }
 
@@ -306,7 +309,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector3ic vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector3ic vec) {
         return put(vec, stack.malloc(VEC3I));
     }
 
@@ -317,7 +320,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector3fc vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector3fc vec) {
         return put(vec, stack.malloc(VEC3F));
     }
 
@@ -328,7 +331,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector3dc vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector3dc vec) {
         return put(vec, stack.malloc(VEC3D));
     }
 
@@ -339,7 +342,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector4ic vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector4ic vec) {
         return put(vec, stack.malloc(VEC4I));
     }
 
@@ -350,7 +353,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector4fc vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector4fc vec) {
         return put(vec, stack.malloc(VEC4F));
     }
 
@@ -361,7 +364,7 @@ public final class Vectorn {
      * @param vec   the vector
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Vector4dc vec) {
+    public static MemorySegment malloc(MemoryStack stack, Vector4dc vec) {
         return put(vec, stack.malloc(VEC4D));
     }
 
@@ -619,285 +622,6 @@ public final class Vectorn {
      * @return the destination
      */
     public static MemorySegment put(Vector4dc vec, MemorySegment dest) {
-        dest.set(JAVA_DOUBLE, 0, vec.x());
-        dest.set(JAVA_DOUBLE, 8, vec.y());
-        dest.set(JAVA_DOUBLE, 16, vec.z());
-        dest.set(JAVA_DOUBLE, 24, vec.w());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector2ic vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_INT, offset, vec.x());
-        dest.set(JAVA_INT, offset + 4, vec.y());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector2fc vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, vec.x());
-        dest.set(JAVA_FLOAT, offset + 4, vec.y());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector2dc vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, vec.x());
-        dest.set(JAVA_DOUBLE, offset + 8, vec.y());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector3ic vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_INT, offset, vec.x());
-        dest.set(JAVA_INT, offset + 4, vec.y());
-        dest.set(JAVA_INT, offset + 8, vec.z());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector3fc vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, vec.x());
-        dest.set(JAVA_FLOAT, offset + 4, vec.y());
-        dest.set(JAVA_FLOAT, offset + 8, vec.z());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector3dc vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, vec.x());
-        dest.set(JAVA_DOUBLE, offset + 8, vec.y());
-        dest.set(JAVA_DOUBLE, offset + 16, vec.z());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector4ic vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_INT, offset, vec.x());
-        dest.set(JAVA_INT, offset + 4, vec.y());
-        dest.set(JAVA_INT, offset + 8, vec.z());
-        dest.set(JAVA_INT, offset + 12, vec.w());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector4fc vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, vec.x());
-        dest.set(JAVA_FLOAT, offset + 4, vec.y());
-        dest.set(JAVA_FLOAT, offset + 8, vec.z());
-        dest.set(JAVA_FLOAT, offset + 12, vec.w());
-        return dest;
-    }
-
-    /**
-     * Puts the vector at the given offset.
-     *
-     * @param vec    the vector
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector4dc vec, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, vec.x());
-        dest.set(JAVA_DOUBLE, offset + 8, vec.y());
-        dest.set(JAVA_DOUBLE, offset + 16, vec.z());
-        dest.set(JAVA_DOUBLE, offset + 24, vec.w());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector2ic vec, MemoryAddress dest) {
-        dest.set(JAVA_INT, 0, vec.x());
-        dest.set(JAVA_INT, 4, vec.y());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector2fc vec, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, vec.x());
-        dest.set(JAVA_FLOAT, 4, vec.y());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector2dc vec, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, 0, vec.x());
-        dest.set(JAVA_DOUBLE, 8, vec.y());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector3ic vec, MemoryAddress dest) {
-        dest.set(JAVA_INT, 0, vec.x());
-        dest.set(JAVA_INT, 4, vec.y());
-        dest.set(JAVA_INT, 8, vec.z());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector3fc vec, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, vec.x());
-        dest.set(JAVA_FLOAT, 4, vec.y());
-        dest.set(JAVA_FLOAT, 8, vec.z());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector3dc vec, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, 0, vec.x());
-        dest.set(JAVA_DOUBLE, 8, vec.y());
-        dest.set(JAVA_DOUBLE, 16, vec.z());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector4ic vec, MemoryAddress dest) {
-        dest.set(JAVA_INT, 0, vec.x());
-        dest.set(JAVA_INT, 4, vec.y());
-        dest.set(JAVA_INT, 8, vec.z());
-        dest.set(JAVA_INT, 12, vec.w());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector4fc vec, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, vec.x());
-        dest.set(JAVA_FLOAT, 4, vec.y());
-        dest.set(JAVA_FLOAT, 8, vec.z());
-        dest.set(JAVA_FLOAT, 12, vec.w());
-        return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Vector4dc vec, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, vec.x());
         dest.set(JAVA_DOUBLE, 8, vec.y());
         dest.set(JAVA_DOUBLE, 16, vec.z());

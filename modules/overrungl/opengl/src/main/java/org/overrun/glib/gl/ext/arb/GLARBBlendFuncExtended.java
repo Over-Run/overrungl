@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GL33C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 /**
@@ -41,7 +41,7 @@ public final class GLARBBlendFuncExtended {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glBindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {
+    public static void glBindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
         GL33C.bindFragDataLocationIndexed(program, colorNumber, index, name);
     }
 
@@ -49,7 +49,7 @@ public final class GLARBBlendFuncExtended {
         GL33C.bindFragDataLocationIndexed(allocator, program, colorNumber, index, name);
     }
 
-    public static int glGetFragDataIndex(int program, Addressable name) {
+    public static int glGetFragDataIndex(int program, MemorySegment name) {
         return GL33C.getFragDataIndex(program, name);
     }
 

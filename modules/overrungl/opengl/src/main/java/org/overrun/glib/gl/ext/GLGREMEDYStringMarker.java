@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@code GL_GREMEDY_string_marker}
@@ -43,7 +43,7 @@ public final class GLGREMEDYStringMarker {
         ext.glStringMarkerGREMEDY = load.invoke("glStringMarkerGREMEDY", FunctionDescriptors.IPV);
     }
 
-    public static void glStringMarkerGREMEDY(int len, Addressable string) {
+    public static void glStringMarkerGREMEDY(int len, MemorySegment string) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glStringMarkerGREMEDY).invokeExact(len, string);

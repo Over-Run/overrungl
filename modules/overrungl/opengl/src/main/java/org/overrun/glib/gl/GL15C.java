@@ -28,8 +28,6 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.BufferBuilder;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -69,7 +67,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         caps.glGetQueryiv = load.invoke("glGetQueryiv", IIPV);
         caps.glIsBuffer = load.invoke("glIsBuffer", IZ);
         caps.glIsQuery = load.invoke("glIsQuery", IZ);
-        caps.glMapBuffer = load.invoke("glMapBuffer", IIP);
+        caps.glMapBuffer = load.invoke("glMapBuffer", IIp);
         caps.glUnmapBuffer = load.invoke("glUnmapBuffer", IZ);
     }
 
@@ -91,7 +89,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void bufferData(int target, long size, Addressable data, int usage) {
+    public static void bufferData(int target, long size, MemorySegment data, int usage) {
         var caps = getCapabilities();
         try {
             check(caps.glBufferData).invokeExact(target, size, data, usage);
@@ -109,7 +107,7 @@ public sealed class GL15C extends GL14C permits GL20C {
     }
 
     public static void bufferData(int target, long size, int usage) {
-        bufferData(target, size, MemoryAddress.NULL, usage);
+        bufferData(target, size, MemorySegment.NULL, usage);
     }
 
     public static void bufferData(SegmentAllocator allocator, int target, byte[] data, int usage) {
@@ -136,7 +134,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferData(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data), usage);
     }
 
-    public static void bufferSubData(int target, long offset, long size, Addressable data) {
+    public static void bufferSubData(int target, long offset, long size, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glBufferSubData).invokeExact(target, offset, size, data);
@@ -177,7 +175,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data));
     }
 
-    public static void deleteBuffers(int n, Addressable buffers) {
+    public static void deleteBuffers(int n, MemorySegment buffers) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteBuffers).invokeExact(n, buffers);
@@ -202,7 +200,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void deleteQueries(int n, Addressable ids) {
+    public static void deleteQueries(int n, MemorySegment ids) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteQueries).invokeExact(n, ids);
@@ -236,7 +234,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void genBuffers(int n, Addressable buffers) {
+    public static void genBuffers(int n, MemorySegment buffers) {
         var caps = getCapabilities();
         try {
             check(caps.glGenBuffers).invokeExact(n, buffers);
@@ -263,7 +261,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void genQueries(int n, Addressable ids) {
+    public static void genQueries(int n, MemorySegment ids) {
         var caps = getCapabilities();
         try {
             check(caps.glGenQueries).invokeExact(n, ids);
@@ -290,7 +288,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getBufferParameteriv(int target, int pname, Addressable params) {
+    public static void getBufferParameteriv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetBufferParameteriv).invokeExact(target, pname, params);
@@ -311,7 +309,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getBufferPointerv(int target, int pname, Addressable params) {
+    public static void getBufferPointerv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetBufferPointerv).invokeExact(target, pname, params);
@@ -320,7 +318,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static MemoryAddress getBufferPointer(int target, int pname) {
+    public static MemorySegment getBufferPointer(int target, int pname) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -332,7 +330,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getBufferSubData(int target, long offset, long size, Addressable data) {
+    public static void getBufferSubData(int target, long offset, long size, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetBufferSubData).invokeExact(target, offset, size, data);
@@ -377,7 +375,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         RuntimeHelper.toArray(seg, data);
     }
 
-    public static void getQueryObjectiv(int id, int pname, Addressable params) {
+    public static void getQueryObjectiv(int id, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetQueryObjectiv).invokeExact(id, pname, params);
@@ -398,7 +396,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getQueryObjectuiv(int id, int pname, Addressable params) {
+    public static void getQueryObjectuiv(int id, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetQueryObjectuiv).invokeExact(id, pname, params);
@@ -419,7 +417,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static void getQueryiv(int target, int pname, Addressable params) {
+    public static void getQueryiv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetQueryiv).invokeExact(target, pname, params);
@@ -458,10 +456,11 @@ public sealed class GL15C extends GL14C permits GL20C {
         }
     }
 
-    public static MemoryAddress mapBuffer(int target, int access) {
+    public static MemorySegment mapBuffer(int target, int access) {
         var caps = getCapabilities();
         try {
-            return (MemoryAddress) check(caps.glMapBuffer).invokeExact(target, access);
+            final var seg = (MemorySegment) check(caps.glMapBuffer).invokeExact(target, access);
+            return access == GLConstC.GL_READ_ONLY ? seg.asReadOnly() : seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

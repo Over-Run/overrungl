@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -59,7 +59,7 @@ public final class GL11 extends GL11C {
         caps.glVertexPointer = load.invoke("glVertexPointer", IIIPV);
     }
 
-    public static boolean areTexturesResident(int n, Addressable textures, Addressable residences) {
+    public static boolean areTexturesResident(int n, MemorySegment textures, MemorySegment residences) {
         var caps = getCapabilities();
         try {
             return (boolean) check(caps.glAreTexturesResident).invokeExact(n, textures, residences);
@@ -89,7 +89,7 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void colorPointer(int size, int type, int stride, Addressable pointer) {
+    public static void colorPointer(int size, int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glColorPointer).invokeExact(size, type, stride, pointer);
@@ -127,7 +127,7 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void edgeFlagPointer(int stride, Addressable pointer) {
+    public static void edgeFlagPointer(int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glEdgeFlagPointer).invokeExact(stride, pointer);
@@ -145,7 +145,7 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void indexPointer(int type, int stride, Addressable pointer) {
+    public static void indexPointer(int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glIndexPointer).invokeExact(type, stride, pointer);
@@ -183,7 +183,7 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void indexubv(Addressable c) {
+    public static void indexubv(MemorySegment c) {
         var caps = getCapabilities();
         try {
             check(caps.glIndexubv).invokeExact(c);
@@ -197,7 +197,7 @@ public final class GL11 extends GL11C {
         indexubv(pc);
     }
 
-    public static void interleavedArrays(int format, int stride, Addressable pointer) {
+    public static void interleavedArrays(int format, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glInterleavedArrays).invokeExact(format, stride, pointer);
@@ -211,7 +211,7 @@ public final class GL11 extends GL11C {
         interleavedArrays(format, stride, pp);
     }
 
-    public static void normalPointer(int type, int stride, Addressable pointer) {
+    public static void normalPointer(int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glNormalPointer).invokeExact(type, stride, pointer);
@@ -249,7 +249,7 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void prioritizeTextures(int n, Addressable textures, Addressable priorities) {
+    public static void prioritizeTextures(int n, MemorySegment textures, MemorySegment priorities) {
         var caps = getCapabilities();
         try {
             check(caps.glPrioritizeTextures).invokeExact(n, textures, priorities);
@@ -278,7 +278,7 @@ public final class GL11 extends GL11C {
         }
     }
 
-    public static void texCoordPointer(int size, int type, int stride, Addressable pointer) {
+    public static void texCoordPointer(int size, int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoordPointer).invokeExact(size, type, stride, pointer);
@@ -303,7 +303,7 @@ public final class GL11 extends GL11C {
         texCoordPointer(size, type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
     }
 
-    public static void vertexPointer(int size, int type, int stride, Addressable pointer) {
+    public static void vertexPointer(int size, int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexPointer).invokeExact(size, type, stride, pointer);

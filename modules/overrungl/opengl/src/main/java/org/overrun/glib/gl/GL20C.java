@@ -28,8 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -168,7 +166,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void bindAttribLocation(int program, int index, Addressable name) {
+    public static void bindAttribLocation(int program, int index, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glBindAttribLocation).invokeExact(program, index, name);
@@ -253,7 +251,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void drawBuffers(int n, Addressable bufs) {
+    public static void drawBuffers(int n, MemorySegment bufs) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawBuffers).invokeExact(n, bufs);
@@ -275,7 +273,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void getActiveAttrib(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
+    public static void getActiveAttrib(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glGetActiveAttrib).invokeExact(program, index, bufSize, length, size, type, name);
@@ -285,20 +283,20 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getActiveAttrib(SegmentAllocator allocator, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pSz = allocator.allocate(JAVA_INT);
         var pType = allocator.allocate(JAVA_INT);
         var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getActiveAttrib(program, index, bufSize, pLen, pSz, pType, pName);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         size[0] = pSz.get(JAVA_INT, 0);
         type[0] = pType.get(JAVA_INT, 0);
         name[0] = pName.getUtf8String(0);
     }
 
-    public static void getActiveUniform(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
+    public static void getActiveUniform(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glGetActiveUniform).invokeExact(program, index, bufSize, length, size, type, name);
@@ -308,20 +306,20 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getActiveUniform(SegmentAllocator allocator, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pSz = allocator.allocate(JAVA_INT);
         var pType = allocator.allocate(JAVA_INT);
         var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getActiveUniform(program, index, bufSize, pLen, pSz, pType, pName);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         size[0] = pSz.get(JAVA_INT, 0);
         type[0] = pType.get(JAVA_INT, 0);
         name[0] = pName.getUtf8String(0);
     }
 
-    public static void getAttachedShaders(int program, int maxCount, Addressable count, Addressable shaders) {
+    public static void getAttachedShaders(int program, int maxCount, MemorySegment count, MemorySegment shaders) {
         var caps = getCapabilities();
         try {
             check(caps.glGetAttachedShaders).invokeExact(program, maxCount, count, shaders);
@@ -331,16 +329,16 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getAttachedShaders(SegmentAllocator allocator, int program, int @Nullable [] count, int[] shaders) {
-        var pCount = count != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pCount = count != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pShaders = allocator.allocateArray(JAVA_INT, shaders.length);
         getAttachedShaders(program, shaders.length, pCount, pShaders);
         if (count != null && count.length > 0) {
-            count[0] = ((MemorySegment) pCount).get(JAVA_INT, 0);
+            count[0] = pCount.get(JAVA_INT, 0);
         }
         RuntimeHelper.toArray(pShaders, shaders);
     }
 
-    public static int getAttribLocation(int program, Addressable name) {
+    public static int getAttribLocation(int program, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetAttribLocation).invokeExact(program, name);
@@ -353,7 +351,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         return getAttribLocation(program, allocator.allocateUtf8String(name));
     }
 
-    public static void getProgramInfoLog(int program, int bufSize, Addressable length, Addressable infoLog) {
+    public static void getProgramInfoLog(int program, int bufSize, MemorySegment length, MemorySegment infoLog) {
         var caps = getCapabilities();
         try {
             check(caps.glGetProgramInfoLog).invokeExact(program, bufSize, length, infoLog);
@@ -363,11 +361,11 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getProgramInfoLog(SegmentAllocator allocator, int program, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
         getProgramInfoLog(program, bufSize, pLen, pLog);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         return pLog.getUtf8String(0);
     }
@@ -376,7 +374,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         return getProgramInfoLog(allocator, program, getProgrami(program, GLConstC.GL_INFO_LOG_LENGTH), null);
     }
 
-    public static void getProgramiv(int program, int pname, Addressable params) {
+    public static void getProgramiv(int program, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetProgramiv).invokeExact(program, pname, params);
@@ -403,7 +401,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void getShaderInfoLog(int shader, int bufSize, Addressable length, Addressable infoLog) {
+    public static void getShaderInfoLog(int shader, int bufSize, MemorySegment length, MemorySegment infoLog) {
         var caps = getCapabilities();
         try {
             check(caps.glGetShaderInfoLog).invokeExact(shader, bufSize, length, infoLog);
@@ -413,11 +411,11 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getShaderInfoLog(SegmentAllocator allocator, int shader, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
         getShaderInfoLog(shader, bufSize, pLen, pLog);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         return pLog.getUtf8String(0);
     }
@@ -426,7 +424,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         return getShaderInfoLog(allocator, shader, getShaderi(shader, GLConstC.GL_INFO_LOG_LENGTH), null);
     }
 
-    public static void getShaderSource(int shader, int bufSize, Addressable length, Addressable source) {
+    public static void getShaderSource(int shader, int bufSize, MemorySegment length, MemorySegment source) {
         var caps = getCapabilities();
         try {
             check(caps.glGetShaderSource).invokeExact(shader, bufSize, length, source);
@@ -436,11 +434,11 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getShaderSource(SegmentAllocator allocator, int shader, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pSrc = allocator.allocateArray(JAVA_BYTE, bufSize);
         getShaderSource(shader, bufSize, pLen, pSrc);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         return pSrc.getUtf8String(0);
     }
@@ -449,7 +447,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         return getShaderSource(allocator, shader, getShaderi(shader, GLConstC.GL_SHADER_SOURCE_LENGTH), null);
     }
 
-    public static void getShaderiv(int shader, int pname, Addressable params) {
+    public static void getShaderiv(int shader, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetShaderiv).invokeExact(shader, pname, params);
@@ -476,7 +474,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static int getUniformLocation(int program, Addressable name) {
+    public static int getUniformLocation(int program, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetUniformLocation).invokeExact(program, name);
@@ -489,7 +487,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         return getUniformLocation(program, allocator.allocateUtf8String(name));
     }
 
-    public static void getUniformfv(int program, int location, Addressable params) {
+    public static void getUniformfv(int program, int location, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetUniformfv).invokeExact(program, location, params);
@@ -516,7 +514,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void getUniformiv(int program, int location, Addressable params) {
+    public static void getUniformiv(int program, int location, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetUniformiv).invokeExact(program, location, params);
@@ -543,7 +541,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void getVertexAttribPointerv(int index, int pname, Addressable pointer) {
+    public static void getVertexAttribPointerv(int index, int pname, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribPointerv).invokeExact(index, pname, pointer);
@@ -582,7 +580,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         RuntimeHelper.toArray(seg, pointer);
     }
 
-    public static void getVertexAttribdv(int index, int pname, Addressable params) {
+    public static void getVertexAttribdv(int index, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribdv).invokeExact(index, pname, params);
@@ -609,7 +607,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void getVertexAttribfv(int index, int pname, Addressable params) {
+    public static void getVertexAttribfv(int index, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribfv).invokeExact(index, pname, params);
@@ -636,7 +634,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void getVertexAttribiv(int index, int pname, Addressable params) {
+    public static void getVertexAttribiv(int index, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribiv).invokeExact(index, pname, params);
@@ -690,7 +688,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void shaderSource(int shader, int count, Addressable string, Addressable length) {
+    public static void shaderSource(int shader, int count, MemorySegment string, MemorySegment length) {
         var caps = getCapabilities();
         try {
             check(caps.glShaderSource).invokeExact(shader, count, string, length);
@@ -749,7 +747,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform1fv(int location, int count, Addressable value) {
+    public static void uniform1fv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform1fv).invokeExact(location, count, value);
@@ -771,7 +769,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform1iv(int location, int count, Addressable value) {
+    public static void uniform1iv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform1iv).invokeExact(location, count, value);
@@ -793,7 +791,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform2fv(int location, int count, Addressable value) {
+    public static void uniform2fv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform2fv).invokeExact(location, count, value);
@@ -815,7 +813,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform2iv(int location, int count, Addressable value) {
+    public static void uniform2iv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform2iv).invokeExact(location, count, value);
@@ -837,7 +835,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform3fv(int location, int count, Addressable value) {
+    public static void uniform3fv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform3fv).invokeExact(location, count, value);
@@ -859,7 +857,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform3iv(int location, int count, Addressable value) {
+    public static void uniform3iv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform3iv).invokeExact(location, count, value);
@@ -881,7 +879,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform4fv(int location, int count, Addressable value) {
+    public static void uniform4fv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform4fv).invokeExact(location, count, value);
@@ -903,7 +901,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void uniform4iv(int location, int count, Addressable value) {
+    public static void uniform4iv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform4iv).invokeExact(location, count, value);
@@ -916,7 +914,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         uniform4iv(location, value.length, allocator.allocateArray(JAVA_INT, value));
     }
 
-    public static void uniformMatrix2fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix2fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2fv).invokeExact(location, count, transpose, value);
@@ -933,7 +931,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         uniformMatrix2fv(allocator, location, value.length >> 2, transpose, value);
     }
 
-    public static void uniformMatrix3fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix3fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3fv).invokeExact(location, count, transpose, value);
@@ -950,7 +948,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         uniformMatrix3fv(allocator, location, value.length / 9, transpose, value);
     }
 
-    public static void uniformMatrix4fv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix4fv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4fv).invokeExact(location, count, transpose, value);
@@ -994,7 +992,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib1dv(int index, Addressable v) {
+    public static void vertexAttrib1dv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib1dv).invokeExact(index, v);
@@ -1016,7 +1014,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib1fv(int index, Addressable v) {
+    public static void vertexAttrib1fv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib1fv).invokeExact(index, v);
@@ -1038,7 +1036,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib1sv(int index, Addressable v) {
+    public static void vertexAttrib1sv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib1sv).invokeExact(index, v);
@@ -1060,7 +1058,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib2dv(int index, Addressable v) {
+    public static void vertexAttrib2dv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib2dv).invokeExact(index, v);
@@ -1082,7 +1080,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib2fv(int index, Addressable v) {
+    public static void vertexAttrib2fv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib2fv).invokeExact(index, v);
@@ -1104,7 +1102,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib2sv(int index, Addressable v) {
+    public static void vertexAttrib2sv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib2sv).invokeExact(index, v);
@@ -1126,7 +1124,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib3dv(int index, Addressable v) {
+    public static void vertexAttrib3dv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib3dv).invokeExact(index, v);
@@ -1148,7 +1146,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib3fv(int index, Addressable v) {
+    public static void vertexAttrib3fv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib3fv).invokeExact(index, v);
@@ -1170,7 +1168,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib3sv(int index, Addressable v) {
+    public static void vertexAttrib3sv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib3sv).invokeExact(index, v);
@@ -1183,7 +1181,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib3sv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void vertexAttrib4Nbv(int index, Addressable v) {
+    public static void vertexAttrib4Nbv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4Nbv).invokeExact(index, v);
@@ -1196,7 +1194,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4Nbv(index, allocator.allocateArray(JAVA_BYTE, v));
     }
 
-    public static void vertexAttrib4Niv(int index, Addressable v) {
+    public static void vertexAttrib4Niv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4Niv).invokeExact(index, v);
@@ -1209,7 +1207,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4Niv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
-    public static void vertexAttrib4Nsv(int index, Addressable v) {
+    public static void vertexAttrib4Nsv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4Nsv).invokeExact(index, v);
@@ -1231,7 +1229,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib4Nubv(int index, Addressable v) {
+    public static void vertexAttrib4Nubv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4Nubv).invokeExact(index, v);
@@ -1244,7 +1242,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4Nubv(index, allocator.allocateArray(JAVA_BYTE, v));
     }
 
-    public static void vertexAttrib4Nuiv(int index, Addressable v) {
+    public static void vertexAttrib4Nuiv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4Nuiv).invokeExact(index, v);
@@ -1257,7 +1255,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4Nuiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
-    public static void vertexAttrib4Nusv(int index, Addressable v) {
+    public static void vertexAttrib4Nusv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4Nusv).invokeExact(index, v);
@@ -1270,7 +1268,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4Nusv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void vertexAttrib4bv(int index, Addressable v) {
+    public static void vertexAttrib4bv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4bv).invokeExact(index, v);
@@ -1292,7 +1290,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib4dv(int index, Addressable v) {
+    public static void vertexAttrib4dv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4dv).invokeExact(index, v);
@@ -1314,7 +1312,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib4fv(int index, Addressable v) {
+    public static void vertexAttrib4fv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4fv).invokeExact(index, v);
@@ -1327,7 +1325,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4fv(index, allocator.allocateArray(JAVA_FLOAT, v));
     }
 
-    public static void vertexAttrib4iv(int index, Addressable v) {
+    public static void vertexAttrib4iv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4iv).invokeExact(index, v);
@@ -1349,7 +1347,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void vertexAttrib4sv(int index, Addressable v) {
+    public static void vertexAttrib4sv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4sv).invokeExact(index, v);
@@ -1362,7 +1360,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4sv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void vertexAttrib4ubv(int index, Addressable v) {
+    public static void vertexAttrib4ubv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4ubv).invokeExact(index, v);
@@ -1375,7 +1373,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4ubv(index, allocator.allocateArray(JAVA_BYTE, v));
     }
 
-    public static void vertexAttrib4uiv(int index, Addressable v) {
+    public static void vertexAttrib4uiv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4uiv).invokeExact(index, v);
@@ -1388,7 +1386,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
-    public static void vertexAttrib4usv(int index, Addressable v) {
+    public static void vertexAttrib4usv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttrib4usv).invokeExact(index, v);
@@ -1401,7 +1399,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         vertexAttrib4usv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void vertexAttribPointer(int index, int size, int type, boolean normalized, int stride, Addressable pointer) {
+    public static void vertexAttribPointer(int index, int size, int type, boolean normalized, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribPointer).invokeExact(index, size, type, normalized, stride, pointer);

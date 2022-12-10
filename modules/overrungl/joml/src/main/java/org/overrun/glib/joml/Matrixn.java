@@ -89,7 +89,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix2fc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix2fc mat) {
         return put(mat, MemorySegment.allocateNative(MAT2F, scope));
     }
 
@@ -100,7 +100,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix2dc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix2dc mat) {
         return put(mat, MemorySegment.allocateNative(MAT2D, scope));
     }
 
@@ -111,7 +111,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix3x2fc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix3x2fc mat) {
         return put(mat, MemorySegment.allocateNative(MAT3X2F, scope));
     }
 
@@ -122,7 +122,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix3x2dc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix3x2dc mat) {
         return put(mat, MemorySegment.allocateNative(MAT3X2D, scope));
     }
 
@@ -133,7 +133,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix3fc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix3fc mat) {
         return put(mat, MemorySegment.allocateNative(MAT3F, scope));
     }
 
@@ -144,7 +144,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix3dc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix3dc mat) {
         return put(mat, MemorySegment.allocateNative(MAT3D, scope));
     }
 
@@ -155,7 +155,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix4x3fc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix4x3fc mat) {
         return put(mat, MemorySegment.allocateNative(MAT4X3F, scope));
     }
 
@@ -166,7 +166,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix4x3dc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix4x3dc mat) {
         return put(mat, MemorySegment.allocateNative(MAT4X3D, scope));
     }
 
@@ -177,7 +177,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix4fc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix4fc mat) {
         return put(mat, MemorySegment.allocateNative(MAT4F, scope));
     }
 
@@ -188,7 +188,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Matrix4dc mat) {
+    public static MemorySegment allocate(SegmentScope scope, Matrix4dc mat) {
         return put(mat, MemorySegment.allocateNative(MAT4D, scope));
     }
 
@@ -198,7 +198,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix2fc mat) {
+    public static MemorySegment malloc(Matrix2fc mat) {
         return put(mat, MemoryUtil.malloc(MAT2F));
     }
 
@@ -208,7 +208,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix2dc mat) {
+    public static MemorySegment malloc(Matrix2dc mat) {
         return put(mat, MemoryUtil.malloc(MAT2D));
     }
 
@@ -218,7 +218,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix3x2fc mat) {
+    public static MemorySegment malloc(Matrix3x2fc mat) {
         return put(mat, MemoryUtil.malloc(MAT3X2F));
     }
 
@@ -228,7 +228,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix3x2dc mat) {
+    public static MemorySegment malloc(Matrix3x2dc mat) {
         return put(mat, MemoryUtil.malloc(MAT3X2D));
     }
 
@@ -238,7 +238,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix3fc mat) {
+    public static MemorySegment malloc(Matrix3fc mat) {
         return put(mat, MemoryUtil.malloc(MAT3F));
     }
 
@@ -248,7 +248,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix3dc mat) {
+    public static MemorySegment malloc(Matrix3dc mat) {
         return put(mat, MemoryUtil.malloc(MAT3D));
     }
 
@@ -258,7 +258,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix4x3fc mat) {
+    public static MemorySegment malloc(Matrix4x3fc mat) {
         return put(mat, MemoryUtil.malloc(MAT4X3F));
     }
 
@@ -268,7 +268,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix4x3dc mat) {
+    public static MemorySegment malloc(Matrix4x3dc mat) {
         return put(mat, MemoryUtil.malloc(MAT4X3D));
     }
 
@@ -278,7 +278,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix4fc mat) {
+    public static MemorySegment malloc(Matrix4fc mat) {
         return put(mat, MemoryUtil.malloc(MAT4F));
     }
 
@@ -288,7 +288,7 @@ public final class Matrixn {
      * @param mat the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(Matrix4dc mat) {
+    public static MemorySegment malloc(Matrix4dc mat) {
         return put(mat, MemoryUtil.malloc(MAT4D));
     }
 
@@ -299,7 +299,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix2fc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix2fc mat) {
         return put(mat, stack.malloc(MAT2F));
     }
 
@@ -310,7 +310,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix2dc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix2dc mat) {
         return put(mat, stack.malloc(MAT2D));
     }
 
@@ -321,7 +321,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix3x2fc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix3x2fc mat) {
         return put(mat, stack.malloc(MAT3X2F));
     }
 
@@ -332,7 +332,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix3x2dc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix3x2dc mat) {
         return put(mat, stack.malloc(MAT3X2D));
     }
 
@@ -343,7 +343,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix3fc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix3fc mat) {
         return put(mat, stack.malloc(MAT3F));
     }
 
@@ -354,7 +354,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix3dc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix3dc mat) {
         return put(mat, stack.malloc(MAT3D));
     }
 
@@ -365,7 +365,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix4x3fc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix4x3fc mat) {
         return put(mat, stack.malloc(MAT4X3F));
     }
 
@@ -376,7 +376,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix4x3dc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix4x3dc mat) {
         return put(mat, stack.malloc(MAT4X3D));
     }
 
@@ -387,7 +387,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix4fc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix4fc mat) {
         return put(mat, stack.malloc(MAT4F));
     }
 
@@ -398,7 +398,7 @@ public final class Matrixn {
      * @param mat   the matrix
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Matrix4dc mat) {
+    public static MemorySegment malloc(MemoryStack stack, Matrix4dc mat) {
         return put(mat, stack.malloc(MAT4D));
     }
 
@@ -801,444 +801,6 @@ public final class Matrixn {
      * @return the destination
      */
     public static MemorySegment put(Matrix4dc mat, MemorySegment dest) {
-        dest.set(JAVA_DOUBLE, 0, mat.m00());
-        dest.set(JAVA_DOUBLE, 8, mat.m01());
-        dest.set(JAVA_DOUBLE, 16, mat.m02());
-        dest.set(JAVA_DOUBLE, 24, mat.m03());
-        dest.set(JAVA_DOUBLE, 32, mat.m10());
-        dest.set(JAVA_DOUBLE, 40, mat.m11());
-        dest.set(JAVA_DOUBLE, 48, mat.m12());
-        dest.set(JAVA_DOUBLE, 56, mat.m13());
-        dest.set(JAVA_DOUBLE, 64, mat.m20());
-        dest.set(JAVA_DOUBLE, 72, mat.m21());
-        dest.set(JAVA_DOUBLE, 80, mat.m22());
-        dest.set(JAVA_DOUBLE, 88, mat.m23());
-        dest.set(JAVA_DOUBLE, 96, mat.m30());
-        dest.set(JAVA_DOUBLE, 104, mat.m31());
-        dest.set(JAVA_DOUBLE, 112, mat.m32());
-        dest.set(JAVA_DOUBLE, 120, mat.m33());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix2fc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, mat.m00());
-        dest.set(JAVA_FLOAT, offset + 4, mat.m01());
-        dest.set(JAVA_FLOAT, offset + 8, mat.m10());
-        dest.set(JAVA_FLOAT, offset + 12, mat.m11());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix2dc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, mat.m00());
-        dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
-        dest.set(JAVA_DOUBLE, offset + 16, mat.m10());
-        dest.set(JAVA_DOUBLE, offset + 24, mat.m11());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3x2fc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, mat.m00());
-        dest.set(JAVA_FLOAT, offset + 4, mat.m01());
-        dest.set(JAVA_FLOAT, offset + 8, mat.m10());
-        dest.set(JAVA_FLOAT, offset + 12, mat.m11());
-        dest.set(JAVA_FLOAT, offset + 16, mat.m20());
-        dest.set(JAVA_FLOAT, offset + 20, mat.m21());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3x2dc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, mat.m00());
-        dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
-        dest.set(JAVA_DOUBLE, offset + 16, mat.m10());
-        dest.set(JAVA_DOUBLE, offset + 24, mat.m11());
-        dest.set(JAVA_DOUBLE, offset + 32, mat.m20());
-        dest.set(JAVA_DOUBLE, offset + 40, mat.m21());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3fc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, mat.m00());
-        dest.set(JAVA_FLOAT, offset + 4, mat.m01());
-        dest.set(JAVA_FLOAT, offset + 8, mat.m02());
-        dest.set(JAVA_FLOAT, offset + 12, mat.m10());
-        dest.set(JAVA_FLOAT, offset + 16, mat.m11());
-        dest.set(JAVA_FLOAT, offset + 20, mat.m12());
-        dest.set(JAVA_FLOAT, offset + 24, mat.m20());
-        dest.set(JAVA_FLOAT, offset + 28, mat.m21());
-        dest.set(JAVA_FLOAT, offset + 32, mat.m22());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3dc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, mat.m00());
-        dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
-        dest.set(JAVA_DOUBLE, offset + 16, mat.m02());
-        dest.set(JAVA_DOUBLE, offset + 24, mat.m10());
-        dest.set(JAVA_DOUBLE, offset + 32, mat.m11());
-        dest.set(JAVA_DOUBLE, offset + 40, mat.m12());
-        dest.set(JAVA_DOUBLE, offset + 48, mat.m20());
-        dest.set(JAVA_DOUBLE, offset + 56, mat.m21());
-        dest.set(JAVA_DOUBLE, offset + 64, mat.m22());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4x3fc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, mat.m00());
-        dest.set(JAVA_FLOAT, offset + 4, mat.m01());
-        dest.set(JAVA_FLOAT, offset + 8, mat.m02());
-        dest.set(JAVA_FLOAT, offset + 12, mat.m10());
-        dest.set(JAVA_FLOAT, offset + 16, mat.m11());
-        dest.set(JAVA_FLOAT, offset + 20, mat.m12());
-        dest.set(JAVA_FLOAT, offset + 24, mat.m20());
-        dest.set(JAVA_FLOAT, offset + 28, mat.m21());
-        dest.set(JAVA_FLOAT, offset + 32, mat.m22());
-        dest.set(JAVA_FLOAT, offset + 36, mat.m30());
-        dest.set(JAVA_FLOAT, offset + 40, mat.m31());
-        dest.set(JAVA_FLOAT, offset + 44, mat.m32());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4x3dc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, mat.m00());
-        dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
-        dest.set(JAVA_DOUBLE, offset + 16, mat.m02());
-        dest.set(JAVA_DOUBLE, offset + 24, mat.m10());
-        dest.set(JAVA_DOUBLE, offset + 32, mat.m11());
-        dest.set(JAVA_DOUBLE, offset + 40, mat.m12());
-        dest.set(JAVA_DOUBLE, offset + 48, mat.m20());
-        dest.set(JAVA_DOUBLE, offset + 56, mat.m21());
-        dest.set(JAVA_DOUBLE, offset + 64, mat.m22());
-        dest.set(JAVA_DOUBLE, offset + 72, mat.m30());
-        dest.set(JAVA_DOUBLE, offset + 80, mat.m31());
-        dest.set(JAVA_DOUBLE, offset + 88, mat.m32());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4fc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, mat.m00());
-        dest.set(JAVA_FLOAT, offset + 4, mat.m01());
-        dest.set(JAVA_FLOAT, offset + 8, mat.m02());
-        dest.set(JAVA_FLOAT, offset + 12, mat.m03());
-        dest.set(JAVA_FLOAT, offset + 16, mat.m10());
-        dest.set(JAVA_FLOAT, offset + 20, mat.m11());
-        dest.set(JAVA_FLOAT, offset + 24, mat.m12());
-        dest.set(JAVA_FLOAT, offset + 28, mat.m13());
-        dest.set(JAVA_FLOAT, offset + 32, mat.m20());
-        dest.set(JAVA_FLOAT, offset + 36, mat.m21());
-        dest.set(JAVA_FLOAT, offset + 40, mat.m22());
-        dest.set(JAVA_FLOAT, offset + 44, mat.m23());
-        dest.set(JAVA_FLOAT, offset + 48, mat.m30());
-        dest.set(JAVA_FLOAT, offset + 52, mat.m31());
-        dest.set(JAVA_FLOAT, offset + 56, mat.m32());
-        dest.set(JAVA_FLOAT, offset + 60, mat.m33());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix at the given offset.
-     *
-     * @param mat    the matrix
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4dc mat, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, mat.m00());
-        dest.set(JAVA_DOUBLE, offset + 8, mat.m01());
-        dest.set(JAVA_DOUBLE, offset + 16, mat.m02());
-        dest.set(JAVA_DOUBLE, offset + 24, mat.m03());
-        dest.set(JAVA_DOUBLE, offset + 32, mat.m10());
-        dest.set(JAVA_DOUBLE, offset + 40, mat.m11());
-        dest.set(JAVA_DOUBLE, offset + 48, mat.m12());
-        dest.set(JAVA_DOUBLE, offset + 56, mat.m13());
-        dest.set(JAVA_DOUBLE, offset + 64, mat.m20());
-        dest.set(JAVA_DOUBLE, offset + 72, mat.m21());
-        dest.set(JAVA_DOUBLE, offset + 80, mat.m22());
-        dest.set(JAVA_DOUBLE, offset + 88, mat.m23());
-        dest.set(JAVA_DOUBLE, offset + 96, mat.m30());
-        dest.set(JAVA_DOUBLE, offset + 104, mat.m31());
-        dest.set(JAVA_DOUBLE, offset + 112, mat.m32());
-        dest.set(JAVA_DOUBLE, offset + 120, mat.m33());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix2fc mat, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, mat.m00());
-        dest.set(JAVA_FLOAT, 4, mat.m01());
-        dest.set(JAVA_FLOAT, 8, mat.m10());
-        dest.set(JAVA_FLOAT, 12, mat.m11());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix2dc mat, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, 0, mat.m00());
-        dest.set(JAVA_DOUBLE, 8, mat.m01());
-        dest.set(JAVA_DOUBLE, 16, mat.m10());
-        dest.set(JAVA_DOUBLE, 24, mat.m11());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3x2fc mat, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, mat.m00());
-        dest.set(JAVA_FLOAT, 4, mat.m01());
-        dest.set(JAVA_FLOAT, 8, mat.m10());
-        dest.set(JAVA_FLOAT, 12, mat.m11());
-        dest.set(JAVA_FLOAT, 16, mat.m20());
-        dest.set(JAVA_FLOAT, 20, mat.m21());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3x2dc mat, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, 0, mat.m00());
-        dest.set(JAVA_DOUBLE, 8, mat.m01());
-        dest.set(JAVA_DOUBLE, 16, mat.m10());
-        dest.set(JAVA_DOUBLE, 24, mat.m11());
-        dest.set(JAVA_DOUBLE, 32, mat.m20());
-        dest.set(JAVA_DOUBLE, 40, mat.m21());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3fc mat, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, mat.m00());
-        dest.set(JAVA_FLOAT, 4, mat.m01());
-        dest.set(JAVA_FLOAT, 8, mat.m02());
-        dest.set(JAVA_FLOAT, 12, mat.m10());
-        dest.set(JAVA_FLOAT, 16, mat.m11());
-        dest.set(JAVA_FLOAT, 20, mat.m12());
-        dest.set(JAVA_FLOAT, 24, mat.m20());
-        dest.set(JAVA_FLOAT, 28, mat.m21());
-        dest.set(JAVA_FLOAT, 32, mat.m22());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix3dc mat, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, 0, mat.m00());
-        dest.set(JAVA_DOUBLE, 8, mat.m01());
-        dest.set(JAVA_DOUBLE, 16, mat.m02());
-        dest.set(JAVA_DOUBLE, 24, mat.m10());
-        dest.set(JAVA_DOUBLE, 32, mat.m11());
-        dest.set(JAVA_DOUBLE, 40, mat.m12());
-        dest.set(JAVA_DOUBLE, 48, mat.m20());
-        dest.set(JAVA_DOUBLE, 56, mat.m21());
-        dest.set(JAVA_DOUBLE, 64, mat.m22());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4x3fc mat, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, mat.m00());
-        dest.set(JAVA_FLOAT, 4, mat.m01());
-        dest.set(JAVA_FLOAT, 8, mat.m02());
-        dest.set(JAVA_FLOAT, 12, mat.m10());
-        dest.set(JAVA_FLOAT, 16, mat.m11());
-        dest.set(JAVA_FLOAT, 20, mat.m12());
-        dest.set(JAVA_FLOAT, 24, mat.m20());
-        dest.set(JAVA_FLOAT, 28, mat.m21());
-        dest.set(JAVA_FLOAT, 32, mat.m22());
-        dest.set(JAVA_FLOAT, 36, mat.m30());
-        dest.set(JAVA_FLOAT, 40, mat.m31());
-        dest.set(JAVA_FLOAT, 44, mat.m32());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4x3dc mat, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, 0, mat.m00());
-        dest.set(JAVA_DOUBLE, 8, mat.m01());
-        dest.set(JAVA_DOUBLE, 16, mat.m02());
-        dest.set(JAVA_DOUBLE, 24, mat.m10());
-        dest.set(JAVA_DOUBLE, 32, mat.m11());
-        dest.set(JAVA_DOUBLE, 40, mat.m12());
-        dest.set(JAVA_DOUBLE, 48, mat.m20());
-        dest.set(JAVA_DOUBLE, 56, mat.m21());
-        dest.set(JAVA_DOUBLE, 64, mat.m22());
-        dest.set(JAVA_DOUBLE, 72, mat.m30());
-        dest.set(JAVA_DOUBLE, 80, mat.m31());
-        dest.set(JAVA_DOUBLE, 88, mat.m32());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4fc mat, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, mat.m00());
-        dest.set(JAVA_FLOAT, 4, mat.m01());
-        dest.set(JAVA_FLOAT, 8, mat.m02());
-        dest.set(JAVA_FLOAT, 12, mat.m03());
-        dest.set(JAVA_FLOAT, 16, mat.m10());
-        dest.set(JAVA_FLOAT, 20, mat.m11());
-        dest.set(JAVA_FLOAT, 24, mat.m12());
-        dest.set(JAVA_FLOAT, 28, mat.m13());
-        dest.set(JAVA_FLOAT, 32, mat.m20());
-        dest.set(JAVA_FLOAT, 36, mat.m21());
-        dest.set(JAVA_FLOAT, 40, mat.m22());
-        dest.set(JAVA_FLOAT, 44, mat.m23());
-        dest.set(JAVA_FLOAT, 48, mat.m30());
-        dest.set(JAVA_FLOAT, 52, mat.m31());
-        dest.set(JAVA_FLOAT, 56, mat.m32());
-        dest.set(JAVA_FLOAT, 60, mat.m33());
-        return dest;
-    }
-
-    /**
-     * Puts the matrix.
-     *
-     * @param mat  the matrix
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Matrix4dc mat, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, mat.m00());
         dest.set(JAVA_DOUBLE, 8, mat.m01());
         dest.set(JAVA_DOUBLE, 16, mat.m02());

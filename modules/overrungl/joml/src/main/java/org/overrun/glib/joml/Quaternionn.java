@@ -30,7 +30,10 @@ import org.overrun.glib.util.BufferBuilder;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentScope;
+import java.lang.foreign.SequenceLayout;
 
 import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
@@ -58,7 +61,7 @@ public final class Quaternionn {
      * @param q     the quaternion
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Quaternionfc q) {
+    public static MemorySegment allocate(SegmentScope scope, Quaternionfc q) {
         return put(q, MemorySegment.allocateNative(Q4F, scope));
     }
 
@@ -69,7 +72,7 @@ public final class Quaternionn {
      * @param q     the quaternion
      * @return the segment
      */
-    public static MemorySegment allocate(MemorySession scope, Quaterniondc q) {
+    public static MemorySegment allocate(SegmentScope scope, Quaterniondc q) {
         return put(q, MemorySegment.allocateNative(Q4D, scope));
     }
 
@@ -79,7 +82,7 @@ public final class Quaternionn {
      * @param q the quaternion
      * @return the memory address
      */
-    public static MemoryAddress malloc(Quaternionfc q) {
+    public static MemorySegment malloc(Quaternionfc q) {
         return put(q, MemoryUtil.malloc(Q4F));
     }
 
@@ -89,7 +92,7 @@ public final class Quaternionn {
      * @param q the quaternion
      * @return the memory address
      */
-    public static MemoryAddress malloc(Quaterniondc q) {
+    public static MemorySegment malloc(Quaterniondc q) {
         return put(q, MemoryUtil.malloc(Q4D));
     }
 
@@ -100,7 +103,7 @@ public final class Quaternionn {
      * @param q     the quaternion
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Quaternionfc q) {
+    public static MemorySegment malloc(MemoryStack stack, Quaternionfc q) {
         return put(q, stack.malloc(Q4F));
     }
 
@@ -111,7 +114,7 @@ public final class Quaternionn {
      * @param q     the quaternion
      * @return the memory address
      */
-    public static MemoryAddress malloc(MemoryStack stack, Quaterniondc q) {
+    public static MemorySegment malloc(MemoryStack stack, Quaterniondc q) {
         return put(q, stack.malloc(Q4D));
     }
 
@@ -170,72 +173,6 @@ public final class Quaternionn {
      * @return the destination
      */
     public static MemorySegment put(Quaterniondc q, MemorySegment dest) {
-        dest.set(JAVA_DOUBLE, 0, q.x());
-        dest.set(JAVA_DOUBLE, 8, q.y());
-        dest.set(JAVA_DOUBLE, 16, q.z());
-        dest.set(JAVA_DOUBLE, 24, q.w());
-        return dest;
-    }
-
-    /**
-     * Puts the quaternion at the given offset.
-     *
-     * @param q      the quaternion
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Quaternionfc q, long offset, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, offset, q.x());
-        dest.set(JAVA_FLOAT, offset + 4, q.y());
-        dest.set(JAVA_FLOAT, offset + 8, q.z());
-        dest.set(JAVA_FLOAT, offset + 12, q.w());
-        return dest;
-    }
-
-    /**
-     * Puts the quaternion at the given offset.
-     *
-     * @param q      the quaternion
-     * @param offset the offset
-     * @param dest   the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Quaterniondc q, long offset, MemoryAddress dest) {
-        dest.set(JAVA_DOUBLE, offset, q.x());
-        dest.set(JAVA_DOUBLE, offset + 8, q.y());
-        dest.set(JAVA_DOUBLE, offset + 16, q.z());
-        dest.set(JAVA_DOUBLE, offset + 24, q.w());
-        return dest;
-    }
-
-    /**
-     * Puts the quaternion.
-     *
-     * @param q    the quaternion
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Quaternionfc q, MemoryAddress dest) {
-        dest.set(JAVA_FLOAT, 0, q.x());
-        dest.set(JAVA_FLOAT, 4, q.y());
-        dest.set(JAVA_FLOAT, 8, q.z());
-        dest.set(JAVA_FLOAT, 12, q.w());
-        return dest;
-    }
-
-    /**
-     * Puts the quaternion.
-     *
-     * @param q    the quaternion
-     * @param dest the destination
-     * @return the destination
-     */
-    @Deprecated(since = "20", forRemoval = true)
-    public static MemoryAddress put(Quaterniondc q, MemoryAddress dest) {
         dest.set(JAVA_DOUBLE, 0, q.x());
         dest.set(JAVA_DOUBLE, 8, q.y());
         dest.set(JAVA_DOUBLE, 16, q.z());

@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.arb;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static org.overrun.glib.gl.GL44C.bufferStorage;
@@ -42,7 +42,7 @@ public final class GLARBBufferStorage {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glBufferStorage(int target, long size, Addressable data, int flags) {
+    public static void glBufferStorage(int target, long size, MemorySegment data, int flags) {
         bufferStorage(target, size, data, flags);
     }
 

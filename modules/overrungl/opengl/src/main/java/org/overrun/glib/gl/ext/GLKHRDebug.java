@@ -29,7 +29,9 @@ import org.overrun.glib.gl.GLDebugProc;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SegmentScope;
 
 import static org.overrun.glib.gl.GL43C.*;
 
@@ -43,15 +45,15 @@ public final class GLKHRDebug {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glDebugMessageCallback(Addressable callback, Addressable userParam) {
+    public static void glDebugMessageCallback(MemorySegment callback, MemorySegment userParam) {
         debugMessageCallback(callback, userParam);
     }
 
-    public static void glDebugMessageCallback(MemorySession scope, GLDebugProc callback, Addressable userParam) {
+    public static void glDebugMessageCallback(SegmentScope scope, GLDebugProc callback, MemorySegment userParam) {
         debugMessageCallback(scope, callback, userParam);
     }
 
-    public static void glDebugMessageControl(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
+    public static void glDebugMessageControl(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
         debugMessageControl(source, type, severity, count, ids, enabled);
     }
 
@@ -59,7 +61,7 @@ public final class GLKHRDebug {
         debugMessageControl(allocator, source, type, severity, count, ids, enabled);
     }
 
-    public static void glDebugMessageInsert(int source, int type, int id, int severity, int length, Addressable buf) {
+    public static void glDebugMessageInsert(int source, int type, int id, int severity, int length, MemorySegment buf) {
         debugMessageInsert(source, type, id, severity, length, buf);
     }
 
@@ -67,7 +69,7 @@ public final class GLKHRDebug {
         debugMessageInsert(allocator, source, type, id, severity, buf);
     }
 
-    public static int glGetDebugMessageLog(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
+    public static int glGetDebugMessageLog(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
         return getDebugMessageLog(count, bufSize, sources, types, ids, severities, lengths, messageLog);
     }
 
@@ -79,11 +81,11 @@ public final class GLKHRDebug {
         return getDebugMessageLog(allocator, count, bufSize, sources, types, ids, severities, lengths, messageLog);
     }
 
-    public static void glGetObjectLabel(int identifier, int name, int bufSize, Addressable length, Addressable label) {
+    public static void glGetObjectLabel(int identifier, int name, int bufSize, MemorySegment length, MemorySegment label) {
         getObjectLabel(identifier, name, bufSize, length, label);
     }
 
-    public static void glGetObjectLabel(int identifier, int name, Addressable length, MemorySegment label) {
+    public static void glGetObjectLabel(int identifier, int name, MemorySegment length, MemorySegment label) {
         getObjectLabel(identifier, name, length, label);
     }
 
@@ -95,31 +97,31 @@ public final class GLKHRDebug {
         return getObjectLabel(allocator, identifier, name, length);
     }
 
-    public static void glGetObjectPtrLabel(MemoryAddress ptr, int bufSize, Addressable length, Addressable label) {
+    public static void glGetObjectPtrLabel(MemorySegment ptr, int bufSize, MemorySegment length, MemorySegment label) {
         getObjectPtrLabel(ptr, bufSize, length, label);
     }
 
-    public static void glGetObjectPtrLabel(MemoryAddress ptr, Addressable length, MemorySegment label) {
+    public static void glGetObjectPtrLabel(MemorySegment ptr, MemorySegment length, MemorySegment label) {
         getObjectPtrLabel(ptr, length, label);
     }
 
-    public static String glGetObjectPtrLabel(SegmentAllocator allocator, MemoryAddress ptr, int bufSize, int @Nullable [] length) {
+    public static String glGetObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, int bufSize, int @Nullable [] length) {
         return getObjectPtrLabel(allocator, ptr, bufSize, length);
     }
 
-    public static String glGetObjectPtrLabel(SegmentAllocator allocator, MemoryAddress ptr, int @Nullable [] length) {
+    public static String glGetObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, int @Nullable [] length) {
         return getObjectPtrLabel(allocator, ptr, length);
     }
 
-    public static void glGetPointerv(int pname, Addressable params) {
+    public static void glGetPointerv(int pname, MemorySegment params) {
         getPointerv(pname, params);
     }
 
-    public static MemoryAddress glGetPointer(int pname) {
+    public static MemorySegment glGetPointer(int pname) {
         return getPointer(pname);
     }
 
-    public static void glObjectLabel(int identifier, int name, int length, Addressable label) {
+    public static void glObjectLabel(int identifier, int name, int length, MemorySegment label) {
         objectLabel(identifier, name, length, label);
     }
 
@@ -127,11 +129,11 @@ public final class GLKHRDebug {
         objectLabel(allocator, identifier, name, label);
     }
 
-    public static void glObjectPtrLabel(MemoryAddress ptr, int length, Addressable label) {
+    public static void glObjectPtrLabel(MemorySegment ptr, int length, MemorySegment label) {
         objectPtrLabel(ptr, length, label);
     }
 
-    public static void glObjectPtrLabel(SegmentAllocator allocator, MemoryAddress ptr, String label) {
+    public static void glObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, String label) {
         objectPtrLabel(allocator, ptr, label);
     }
 
@@ -139,7 +141,7 @@ public final class GLKHRDebug {
         popDebugGroup();
     }
 
-    public static void glPushDebugGroup(int source, int id, int length, Addressable message) {
+    public static void glPushDebugGroup(int source, int id, int length, MemorySegment message) {
         pushDebugGroup(source, id, length, message);
     }
 

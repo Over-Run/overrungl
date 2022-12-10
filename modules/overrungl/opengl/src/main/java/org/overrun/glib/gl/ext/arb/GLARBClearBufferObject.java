@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GL43C;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@code GL_ARB_clear_buffer_object}
@@ -40,11 +40,11 @@ public final class GLARBClearBufferObject {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glClearBufferData(int target, int internalFormat, int format, int type, Addressable data) {
+    public static void glClearBufferData(int target, int internalFormat, int format, int type, MemorySegment data) {
         GL43C.clearBufferData(target, internalFormat, format, type, data);
     }
 
-    public static void glClearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, Addressable data) {
+    public static void glClearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, MemorySegment data) {
         GL43C.clearBufferSubData(target, internalFormat, offset, size, format, type, data);
     }
 }

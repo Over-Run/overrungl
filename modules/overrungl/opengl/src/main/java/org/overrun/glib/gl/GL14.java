@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -81,7 +81,7 @@ public final class GL14 extends GL14C {
         caps.glWindowPos3sv = load.invoke("glWindowPos3sv", PV);
     }
 
-    public static void fogCoordPointer(int type, int stride, Addressable pointer) {
+    public static void fogCoordPointer(int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glFogCoordPointer).invokeExact(type, stride, pointer);
@@ -107,7 +107,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void fogCoorddv(Addressable coord) {
+    public static void fogCoorddv(MemorySegment coord) {
         var caps = getCapabilities();
         try {
             check(caps.glFogCoorddv).invokeExact(coord);
@@ -129,7 +129,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void fogCoordfv(Addressable coord) {
+    public static void fogCoordfv(MemorySegment coord) {
         var caps = getCapabilities();
         try {
             check(caps.glFogCoordfv).invokeExact(coord);
@@ -151,7 +151,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3bv(Addressable v) {
+    public static void secondaryColor3bv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3bv).invokeExact(v);
@@ -173,7 +173,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3dv(Addressable v) {
+    public static void secondaryColor3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3dv).invokeExact(v);
@@ -195,7 +195,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3fv(Addressable v) {
+    public static void secondaryColor3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3fv).invokeExact(v);
@@ -217,7 +217,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3iv(Addressable v) {
+    public static void secondaryColor3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3iv).invokeExact(v);
@@ -239,7 +239,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3sv(Addressable v) {
+    public static void secondaryColor3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3sv).invokeExact(v);
@@ -261,7 +261,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3ubv(Addressable v) {
+    public static void secondaryColor3ubv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3ubv).invokeExact(v);
@@ -283,7 +283,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3uiv(Addressable v) {
+    public static void secondaryColor3uiv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3uiv).invokeExact(v);
@@ -305,7 +305,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void secondaryColor3usv(Addressable v) {
+    public static void secondaryColor3usv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColor3usv).invokeExact(v);
@@ -318,7 +318,7 @@ public final class GL14 extends GL14C {
         secondaryColor3usv(allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void secondaryColorPointer(int size, int type, int stride, Addressable pointer) {
+    public static void secondaryColorPointer(int size, int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glSecondaryColorPointer).invokeExact(size, type, stride, pointer);
@@ -356,7 +356,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos2dv(Addressable v) {
+    public static void windowPos2dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos2dv).invokeExact(v);
@@ -378,7 +378,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos2fv(Addressable v) {
+    public static void windowPos2fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos2fv).invokeExact(v);
@@ -400,7 +400,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos2iv(Addressable v) {
+    public static void windowPos2iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos2iv).invokeExact(v);
@@ -422,7 +422,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos2sv(Addressable v) {
+    public static void windowPos2sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos2sv).invokeExact(v);
@@ -444,7 +444,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos3dv(Addressable v) {
+    public static void windowPos3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos3dv).invokeExact(v);
@@ -466,7 +466,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos3fv(Addressable v) {
+    public static void windowPos3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos3fv).invokeExact(v);
@@ -488,7 +488,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos3iv(Addressable v) {
+    public static void windowPos3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos3iv).invokeExact(v);
@@ -510,7 +510,7 @@ public final class GL14 extends GL14C {
         }
     }
 
-    public static void windowPos3sv(Addressable v) {
+    public static void windowPos3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glWindowPos3sv).invokeExact(v);

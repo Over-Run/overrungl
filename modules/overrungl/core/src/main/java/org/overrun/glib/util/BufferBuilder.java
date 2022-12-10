@@ -34,8 +34,6 @@ import static org.overrun.glib.util.MemoryUtil.*;
  * This is a vertex buffer builder with standard C memory allocator.
  * <p>
  * This simulates the old NIO buffers, but more efficient, since it used the native memory.
- * <p>
- * The byte put must be aligned.
  *
  * <h2>Example</h2>
  * Using with OpenGL:
@@ -57,7 +55,7 @@ import static org.overrun.glib.util.MemoryUtil.*;
  * @since 0.1.0
  */
 public class BufferBuilder implements AutoCloseable, HasAddress {
-    private MemoryAddress address = MemoryAddress.NULL;
+    private MemorySegment address = MemorySegment.NULL;
     private long capacity;
     private long offset, count;
     private long stride;
@@ -113,7 +111,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
          * @param layout  The value layout.
          * @param offset  The offset in bytes.
          */
-        void accept(MemoryAddress segment, T layout, long offset);
+        void accept(MemorySegment segment, T layout, long offset);
     }
 
     /**
@@ -432,59 +430,42 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    private void internalPutAll(MemoryLayout layout, long srcOffset, Addressable address) {
-        // TODO: Replace with switch pattern matching
-        if (layout.isPadding()) {
-            for (long i = 0; i < layout.byteSize(); i++) {
-                this.put(ValueLayout.JAVA_BYTE, (byte) 0);
+    private void internalPutAll(MemoryLayout layout, long srcOffset, MemorySegment address) {
+        switch (layout) {
+            // TODO: 2022/12/10 Replace with _
+            case PaddingLayout ignored -> {
+                for (long i = 0; i < layout.byteSize(); i++) {
+                    this.put(ValueLayout.JAVA_BYTE, (byte) 0);
+                }
             }
-        } else if (layout instanceof GroupLayout groupLayout) {
-            if (groupLayout.isStruct()) {
-                for (var layout1 : groupLayout.memberLayouts()) {
+            case StructLayout structLayout -> {
+                for (var layout1 : structLayout.memberLayouts()) {
                     internalPutAll(layout1, srcOffset, address);
                     srcOffset += layout1.byteSize();
                 }
-            } else if (groupLayout.isUnion()) {
-                for (var layout1 : groupLayout.memberLayouts()) {
+            }
+            case UnionLayout unionLayout -> {
+                for (var layout1 : unionLayout.memberLayouts()) {
                     internalPutAll(layout1, srcOffset, address);
                 }
             }
-        } else if (layout instanceof SequenceLayout sequenceLayout) {
-            var elementLayout = sequenceLayout.elementLayout();
-            long sz = elementLayout.byteSize();
-            for (long i = 0; i < sequenceLayout.elementCount(); i++) {
-                internalPutAll(elementLayout, srcOffset + sz * i, address);
-            }
-        } else {
-            switch (address) {
-                case MemoryAddress memoryAddress -> internalPutAll(layout, srcOffset, memoryAddress);
-                case MemorySegment memorySegment -> internalPutAll(layout, srcOffset, memorySegment);
-                default -> {
+            case SequenceLayout sequenceLayout -> {
+                var elementLayout = sequenceLayout.elementLayout();
+                long sz = elementLayout.byteSize();
+                for (long i = 0; i < sequenceLayout.elementCount(); i++) {
+                    internalPutAll(elementLayout, srcOffset + sz * i, address);
                 }
             }
+            case ValueLayout valueLayout -> internalPutValue(valueLayout, srcOffset, address);
         }
     }
 
-    public BufferBuilder putAll(MemoryLayout layout, Addressable address) {
+    public BufferBuilder putAll(MemoryLayout layout, MemorySegment address) {
         internalPutAll(layout, 0, address);
         return this;
     }
 
-    @Deprecated(since = "20", forRemoval = true)
-    private void internalPutAll(MemoryLayout layout, long srcOffset, MemoryAddress address) {
-        switch (layout) {
-            case ValueLayout.OfByte valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
-            case ValueLayout.OfShort valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
-            case ValueLayout.OfInt valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
-            case ValueLayout.OfLong valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
-            case ValueLayout.OfFloat valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
-            case ValueLayout.OfDouble valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
-            default -> {
-            }
-        }
-    }
-
-    private void internalPutAll(MemoryLayout layout, long srcOffset, MemorySegment address) {
+    private void internalPutValue(ValueLayout layout, long srcOffset, MemorySegment address) {
         switch (layout) {
             case ValueLayout.OfByte valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
             case ValueLayout.OfShort valueLayout -> this.put(valueLayout, address.get(valueLayout, srcOffset));
@@ -556,17 +537,12 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     @Override
     public void close() {
         free(address);
-        address = MemoryAddress.NULL;
+        address = MemorySegment.NULL;
         capacity = 0;
     }
 
     @Override
-    public final Addressable rawAddress() {
-        return address;
-    }
-
-    @Override
-    public final MemoryAddress address() {
+    public final MemorySegment address() {
         return address;
     }
 }
