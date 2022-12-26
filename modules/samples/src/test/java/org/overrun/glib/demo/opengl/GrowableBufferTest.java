@@ -30,7 +30,7 @@ import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
-import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.GrowableBuffer;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -40,12 +40,12 @@ import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static org.overrun.glib.gl.GLConstC.*;
 
 /**
- * Tests {@link BufferBuilder}
+ * Tests {@link GrowableBuffer}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class BufferBuilderTest {
+public final class GrowableBufferTest {
     private MemorySegment window;
     private int program, vao, vbo;
 
@@ -75,8 +75,8 @@ public final class BufferBuilderTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 300, 300, "BufferBuilder Test", MemorySegment.NULL, MemorySegment.NULL);
-        if (window.address() == RuntimeHelper.NULL_ADDR)
+        window = GLFW.createWindow(arena, 300, 300, "GrowableBuffer Test", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == RuntimeHelper.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -151,8 +151,8 @@ public final class BufferBuilderTest {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
         int stride;
-        try (var builder = new BufferBuilder(4 * 3 * 3 + 4 * 3)) {
-            builder.begin()
+        try (var buffer = new GrowableBuffer(4 * 3 * 3 + 4 * 3)) {
+            buffer.begin()
                 .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)
                 // For alignment reason, we put a padding byte
@@ -167,8 +167,8 @@ public final class BufferBuilderTest {
                 .put(JAVA_BYTE, (byte) 0)
                 .emit()
                 .end();
-            GL.bufferData(GL_ARRAY_BUFFER, builder, GL_STATIC_DRAW);
-            stride = (int) builder.stride();
+            GL.bufferData(GL_ARRAY_BUFFER, buffer, GL_STATIC_DRAW);
+            stride = (int) buffer.stride();
         }
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
@@ -196,6 +196,6 @@ public final class BufferBuilderTest {
     }
 
     public static void main(String[] args) {
-        new BufferBuilderTest().run();
+        new GrowableBufferTest().run();
     }
 }

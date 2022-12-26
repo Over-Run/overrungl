@@ -603,7 +603,7 @@ public final class GLExtCaps {
             if (numExtsI > 0) {
                 extsI = allocator.allocateArray(ADDRESS, numExtsI);
             }
-            if (extsI.address() == RuntimeHelper.NULL_ADDR) {
+            if (extsI.address() == RuntimeHelper.NULL) {
                 return false;
             }
             for (int index = 0; index < numExtsI; index++) {

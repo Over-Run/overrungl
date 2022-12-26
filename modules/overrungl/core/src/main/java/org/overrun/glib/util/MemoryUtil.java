@@ -25,6 +25,7 @@
 package org.overrun.glib.util;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.Configurations;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
@@ -52,6 +53,7 @@ public final class MemoryUtil {
         m_memcpy = downcall("memcpy", PPJP),
         m_memmove = downcall("memmove", PPJP),
         m_memset = downcall("memset", PIJP);
+    private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
@@ -80,7 +82,10 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) m_malloc.invokeExact(size)).address(), size);
+            long address = ((MemorySegment) m_malloc.invokeExact(size)).address();
+            MemorySegment segment = MemorySegment.ofAddress(address, size);
+            if (DEBUG) DebugAllocator.track(address, size);
+            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -118,7 +123,11 @@ public final class MemoryUtil {
      */
     public static MemorySegment calloc(long number, long size) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) m_calloc.invokeExact(number, size)).address(), number * size);
+            long address = ((MemorySegment) m_calloc.invokeExact(number, size)).address();
+            long bytesSize = number * size;
+            MemorySegment segment = MemorySegment.ofAddress(address, bytesSize);
+            if (DEBUG) DebugAllocator.track(address, bytesSize);
+            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -169,10 +178,24 @@ public final class MemoryUtil {
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
+        long ptr = RuntimeHelper.NULL;
+        long oldSize = 0;
+        if (DEBUG) {
+            ptr = memblock != null ? memblock.address() : RuntimeHelper.NULL;
+            oldSize = DebugAllocator.untrack(ptr);
+        }
         try {
-            return MemorySegment.ofAddress(((MemorySegment) m_realloc.invokeExact(
+            MemorySegment segment = MemorySegment.ofAddress(((MemorySegment) m_realloc.invokeExact(
                 Objects.requireNonNullElse(memblock, MemorySegment.NULL),
                 size)).address(), size);
+            if (DEBUG) {
+                if (segment.address() != RuntimeHelper.NULL) {
+                    DebugAllocator.track(segment.address(), size);
+                } else if (size != 0L) {
+                    DebugAllocator.track(ptr, oldSize);
+                }
+            }
+            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -192,7 +215,8 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (memblock == null || memblock.address() == RuntimeHelper.NULL_ADDR) return;
+        if (DEBUG) DebugAllocator.untrack(memblock != null ? RuntimeHelper.NULL : memblock.address());
+        if (memblock == null || memblock.address() == RuntimeHelper.NULL) return;
         try {
             m_free.invokeExact(memblock);
         } catch (Throwable e) {
@@ -216,7 +240,8 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) m_memcpy.invokeExact(dest, src, count)).address(), dest.byteSize());
+            m_memcpy.invokeExact(dest, src, count);
+            return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -240,7 +265,8 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) m_memmove.invokeExact(dest, src, count)).address(), dest.byteSize());
+            m_memmove.invokeExact(dest, src, count);
+            return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -262,7 +288,8 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) m_memset.invokeExact(dest, c, count)).address(), dest.byteSize());
+            m_memset.invokeExact(dest, c, count);
+            return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

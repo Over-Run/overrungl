@@ -95,7 +95,7 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
         window = GLFW.createWindow(arena, 640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
-        if (window.address() == RuntimeHelper.NULL_ADDR)
+        if (window.address() == RuntimeHelper.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {

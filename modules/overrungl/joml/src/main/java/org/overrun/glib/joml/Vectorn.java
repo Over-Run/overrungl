@@ -25,7 +25,7 @@
 package org.overrun.glib.joml;
 
 import org.joml.*;
-import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.GrowableBuffer;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
@@ -636,7 +636,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector2ic vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector2ic vec, GrowableBuffer dest) {
         return dest.put(JAVA_INT, vec.x())
             .put(JAVA_INT, vec.y());
     }
@@ -648,7 +648,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector2fc vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector2fc vec, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, vec.x())
             .put(JAVA_FLOAT, vec.y());
     }
@@ -660,7 +660,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector2dc vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector2dc vec, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, vec.x())
             .put(JAVA_DOUBLE, vec.y());
     }
@@ -672,7 +672,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector3ic vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector3ic vec, GrowableBuffer dest) {
         return dest.put(JAVA_INT, vec.x())
             .put(JAVA_INT, vec.y())
             .put(JAVA_INT, vec.z());
@@ -685,7 +685,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector3fc vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector3fc vec, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, vec.x())
             .put(JAVA_FLOAT, vec.y())
             .put(JAVA_FLOAT, vec.z());
@@ -698,7 +698,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector3dc vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector3dc vec, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, vec.x())
             .put(JAVA_DOUBLE, vec.y())
             .put(JAVA_DOUBLE, vec.z());
@@ -711,7 +711,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector4ic vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector4ic vec, GrowableBuffer dest) {
         return dest.put(JAVA_INT, vec.x())
             .put(JAVA_INT, vec.y())
             .put(JAVA_INT, vec.z())
@@ -725,7 +725,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector4fc vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector4fc vec, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, vec.x())
             .put(JAVA_FLOAT, vec.y())
             .put(JAVA_FLOAT, vec.z())
@@ -739,7 +739,7 @@ public final class Vectorn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Vector4dc vec, BufferBuilder dest) {
+    public static GrowableBuffer put(Vector4dc vec, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, vec.x())
             .put(JAVA_DOUBLE, vec.y())
             .put(JAVA_DOUBLE, vec.z())

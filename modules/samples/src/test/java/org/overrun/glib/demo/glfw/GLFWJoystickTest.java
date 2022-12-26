@@ -66,7 +66,7 @@ public final class GLFWJoystickTest {
         try (var arena = Arena.openShared()) {
             window = GLFW.createWindow(arena, 200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         }
-        if (window.address() == RuntimeHelper.NULL_ADDR)
+        if (window.address() == RuntimeHelper.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {

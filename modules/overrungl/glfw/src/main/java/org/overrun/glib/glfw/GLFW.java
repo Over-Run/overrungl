@@ -1800,7 +1800,7 @@ public final class GLFW {
     @Nullable
     public static GLFWVidMode.Value getVideoMode(SegmentScope scope, MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
-        if (pMode.address() == RuntimeHelper.NULL_ADDR) {
+        if (pMode.address() == RuntimeHelper.NULL) {
             return null;
         }
         return new GLFWVidMode(pMode, scope).constCast();
@@ -1876,7 +1876,7 @@ public final class GLFW {
     @Nullable
     public static GLFWGammaRamp getGammaRamp(SegmentScope scope, MemorySegment monitor) {
         var pRamp = ngetGammaRamp(monitor);
-        return pRamp.address() != RuntimeHelper.NULL_ADDR ? new GLFWGammaRamp(pRamp, scope) : null;
+        return pRamp.address() != RuntimeHelper.NULL ? new GLFWGammaRamp(pRamp, scope) : null;
     }
 
     /**

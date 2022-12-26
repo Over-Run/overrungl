@@ -31,30 +31,30 @@ import java.lang.foreign.*;
 import static org.overrun.glib.util.MemoryUtil.*;
 
 /**
- * This is a vertex buffer builder with standard C memory allocator.
+ * This is a growable buffer with standard C memory allocator.
  * <p>
  * This simulates the old NIO buffers, but more efficient, since it used the native memory.
  *
  * <h2>Example</h2>
  * Using with OpenGL:
  * <pre>{@code
- * var builder = new BufferBuilder();
- * builder.begin()
+ * var buffer = new GrowableBuffer();
+ * buffer.begin()
  *     .put(JAVA_FLOAT, 0.0f)
  *     .put(JAVA_FLOAT, 0.0f)
  *     .put(JAVA_FLOAT, 0.0f)
  *     .end();
  * GL.bufferData(GL_ARRAY_BUFFER, builder, GL_STATIC_DRAW);
  * }</pre>
- * with JOML:
+ * or JOML:
  * <pre>{@code
- * Vectorn.put(texCoord, Vectorn.put(color, Vectorn.put(position, builder)));
+ * Vectorn.put(texCoord, Vectorn.put(color, Vectorn.put(position, buffer)));
  * }</pre>
  *
  * @author squid233
  * @since 0.1.0
  */
-public class BufferBuilder implements AutoCloseable, HasAddress {
+public class GrowableBuffer implements AutoCloseable, HasAddress {
     private MemorySegment address = MemorySegment.NULL;
     private long capacity;
     private long offset, count;
@@ -64,20 +64,20 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     /**
      * Creates an empty buffer builder instance.
      *
-     * @see #BufferBuilder(long)
-     * @see #BufferBuilder(MemoryLayout)
+     * @see #GrowableBuffer(long)
+     * @see #GrowableBuffer(MemoryLayout)
      */
-    public BufferBuilder() {
+    public GrowableBuffer() {
     }
 
     /**
      * Creates a buffer builder instance and allocate the buffer with the given capacity.
      *
      * @param initialCapacity the initial capacity.
-     * @see #BufferBuilder()
-     * @see #BufferBuilder(MemoryLayout)
+     * @see #GrowableBuffer()
+     * @see #GrowableBuffer(MemoryLayout)
      */
-    public BufferBuilder(long initialCapacity) {
+    public GrowableBuffer(long initialCapacity) {
         this();
         capacity = initialCapacity;
         grew = true;
@@ -88,10 +88,10 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * Creates a buffer builder instance and allocate the buffer with the given layout.
      *
      * @param layout the memory layout.
-     * @see #BufferBuilder()
-     * @see #BufferBuilder(long)
+     * @see #GrowableBuffer()
+     * @see #GrowableBuffer(long)
      */
-    public BufferBuilder(MemoryLayout layout) {
+    public GrowableBuffer(MemoryLayout layout) {
         this(layout.byteSize());
     }
 
@@ -121,7 +121,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @see #begin(long)
      * @see #begin(MemoryLayout)
      */
-    public BufferBuilder begin() {
+    public GrowableBuffer begin() {
         offset = 0;
         count = 0;
         stride = 0;
@@ -136,7 +136,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @see #begin()
      * @see #begin(MemoryLayout)
      */
-    public BufferBuilder begin(long initialCapacity) {
+    public GrowableBuffer begin(long initialCapacity) {
         return this.ensureCapacity(initialCapacity).begin();
     }
 
@@ -148,20 +148,21 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @see #begin()
      * @see #begin(long)
      */
-    public BufferBuilder begin(MemoryLayout layout) {
+    public GrowableBuffer begin(MemoryLayout layout) {
         return begin(layout.byteSize());
     }
 
-    public BufferBuilder ensureCapacity(long minCapacity, long newCapacity) {
+    public GrowableBuffer ensureCapacity(long minCapacity, long newCapacity) {
         if (minCapacity > capacity) {
-            address = realloc(address, Math.max(minCapacity, newCapacity));
-            capacity = minCapacity;
+            long c = Math.max(minCapacity, newCapacity);
+            address = realloc(address, c);
+            capacity = c;
             grew = true;
         }
         return this;
     }
 
-    public BufferBuilder ensureCapacity(long minCapacity) {
+    public GrowableBuffer ensureCapacity(long minCapacity) {
         return ensureCapacity(minCapacity, minCapacity);
     }
 
@@ -182,7 +183,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     public <T extends ValueLayout>
-    BufferBuilder put(T layout, long offset, Performer<T> performer) {
+    GrowableBuffer put(T layout, long offset, Performer<T> performer) {
         grow(layout);
         performer.accept(address, layout, offset);
         count++;
@@ -199,7 +200,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @param value  The byte value to be written
      * @return this
      */
-    public BufferBuilder put(ValueLayout.OfByte layout, long offset, byte value) {
+    public GrowableBuffer put(ValueLayout.OfByte layout, long offset, byte value) {
         grow(layout);
         address.set(layout, offset, value);
         count++;
@@ -216,7 +217,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @param value  The short value to be written
      * @return this
      */
-    public BufferBuilder put(ValueLayout.OfShort layout, long offset, short value) {
+    public GrowableBuffer put(ValueLayout.OfShort layout, long offset, short value) {
         grow(layout);
         address.set(layout, offset, value);
         count++;
@@ -233,7 +234,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @param value  The int value to be written
      * @return this
      */
-    public BufferBuilder put(ValueLayout.OfInt layout, long offset, int value) {
+    public GrowableBuffer put(ValueLayout.OfInt layout, long offset, int value) {
         grow(layout);
         address.set(layout, offset, value);
         count++;
@@ -250,7 +251,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @param value  The long value to be written
      * @return this
      */
-    public BufferBuilder put(ValueLayout.OfLong layout, long offset, long value) {
+    public GrowableBuffer put(ValueLayout.OfLong layout, long offset, long value) {
         grow(layout);
         address.set(layout, offset, value);
         count++;
@@ -267,7 +268,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @param value  The float value to be written
      * @return this
      */
-    public BufferBuilder put(ValueLayout.OfFloat layout, long offset, float value) {
+    public GrowableBuffer put(ValueLayout.OfFloat layout, long offset, float value) {
         grow(layout);
         address.set(layout, offset, value);
         count++;
@@ -284,7 +285,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      * @param value  The double value to be written
      * @return this
      */
-    public BufferBuilder put(ValueLayout.OfDouble layout, long offset, double value) {
+    public GrowableBuffer put(ValueLayout.OfDouble layout, long offset, double value) {
         grow(layout);
         address.set(layout, offset, value);
         count++;
@@ -292,49 +293,49 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
     }
 
     public <T extends ValueLayout>
-    BufferBuilder put(T layout, Performer<T> performer) {
+    GrowableBuffer put(T layout, Performer<T> performer) {
         this.put(layout, offset, performer);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder put(ValueLayout.OfByte layout, byte value) {
+    public GrowableBuffer put(ValueLayout.OfByte layout, byte value) {
         this.put(layout, offset, value);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder put(ValueLayout.OfShort layout, short value) {
+    public GrowableBuffer put(ValueLayout.OfShort layout, short value) {
         this.put(layout, offset, value);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder put(ValueLayout.OfInt layout, int value) {
+    public GrowableBuffer put(ValueLayout.OfInt layout, int value) {
         this.put(layout, offset, value);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder put(ValueLayout.OfLong layout, long value) {
+    public GrowableBuffer put(ValueLayout.OfLong layout, long value) {
         this.put(layout, offset, value);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder put(ValueLayout.OfFloat layout, float value) {
+    public GrowableBuffer put(ValueLayout.OfFloat layout, float value) {
         this.put(layout, offset, value);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder put(ValueLayout.OfDouble layout, double value) {
+    public GrowableBuffer put(ValueLayout.OfDouble layout, double value) {
         this.put(layout, offset, value);
         offset += layout.byteSize();
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfByte layout, long offset, byte... values) {
+    public GrowableBuffer putAll(ValueLayout.OfByte layout, long offset, byte... values) {
         long size = grow(layout, values.length);
         for (var value : values) {
             address.set(layout, offset, value);
@@ -344,7 +345,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfShort layout, long offset, short... values) {
+    public GrowableBuffer putAll(ValueLayout.OfShort layout, long offset, short... values) {
         long size = grow(layout, values.length);
         for (var value : values) {
             address.set(layout, offset, value);
@@ -354,7 +355,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfInt layout, long offset, int... values) {
+    public GrowableBuffer putAll(ValueLayout.OfInt layout, long offset, int... values) {
         long size = grow(layout, values.length);
         for (var value : values) {
             address.set(layout, offset, value);
@@ -364,7 +365,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfLong layout, long offset, long... values) {
+    public GrowableBuffer putAll(ValueLayout.OfLong layout, long offset, long... values) {
         long size = grow(layout, values.length);
         for (var value : values) {
             address.set(layout, offset, value);
@@ -374,7 +375,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfFloat layout, long offset, float... values) {
+    public GrowableBuffer putAll(ValueLayout.OfFloat layout, long offset, float... values) {
         long size = grow(layout, values.length);
         for (var value : values) {
             address.set(layout, offset, value);
@@ -384,7 +385,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfDouble layout, long offset, double... values) {
+    public GrowableBuffer putAll(ValueLayout.OfDouble layout, long offset, double... values) {
         long size = grow(layout, values.length);
         for (var value : values) {
             address.set(layout, offset, value);
@@ -394,37 +395,37 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfByte layout, byte... values) {
+    public GrowableBuffer putAll(ValueLayout.OfByte layout, byte... values) {
         this.putAll(layout, offset, values);
         offset += layout.byteSize() * values.length;
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfShort layout, short... values) {
+    public GrowableBuffer putAll(ValueLayout.OfShort layout, short... values) {
         this.putAll(layout, offset, values);
         offset += layout.byteSize() * values.length;
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfInt layout, int... values) {
+    public GrowableBuffer putAll(ValueLayout.OfInt layout, int... values) {
         this.putAll(layout, offset, values);
         offset += layout.byteSize() * values.length;
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfLong layout, long... values) {
+    public GrowableBuffer putAll(ValueLayout.OfLong layout, long... values) {
         this.putAll(layout, offset, values);
         offset += layout.byteSize() * values.length;
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfFloat layout, float... values) {
+    public GrowableBuffer putAll(ValueLayout.OfFloat layout, float... values) {
         this.putAll(layout, offset, values);
         offset += layout.byteSize() * values.length;
         return this;
     }
 
-    public BufferBuilder putAll(ValueLayout.OfDouble layout, double... values) {
+    public GrowableBuffer putAll(ValueLayout.OfDouble layout, double... values) {
         this.putAll(layout, offset, values);
         offset += layout.byteSize() * values.length;
         return this;
@@ -460,7 +461,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         }
     }
 
-    public BufferBuilder putAll(MemoryLayout layout, MemorySegment address) {
+    public GrowableBuffer putAll(MemoryLayout layout, MemorySegment address) {
         internalPutAll(layout, 0, address);
         return this;
     }
@@ -485,7 +486,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
      *
      * @return the stride
      */
-    public BufferBuilder emit() {
+    public GrowableBuffer emit() {
         if (stride <= 0) {
             stride = offset;
         }
@@ -503,7 +504,7 @@ public class BufferBuilder implements AutoCloseable, HasAddress {
         return g;
     }
 
-    public final BufferBuilder offset(long offset) {
+    public final GrowableBuffer offset(long offset) {
         this.offset = offset;
         return this;
     }

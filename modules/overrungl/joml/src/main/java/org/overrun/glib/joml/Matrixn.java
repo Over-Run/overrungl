@@ -25,7 +25,7 @@
 package org.overrun.glib.joml;
 
 import org.joml.*;
-import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.GrowableBuffer;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
@@ -827,7 +827,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix2fc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix2fc mat, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, mat.m00())
             .put(JAVA_FLOAT, mat.m01())
             .put(JAVA_FLOAT, mat.m10())
@@ -841,7 +841,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix2dc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix2dc mat, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, mat.m00())
             .put(JAVA_DOUBLE, mat.m01())
             .put(JAVA_DOUBLE, mat.m10())
@@ -855,7 +855,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix3x2fc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix3x2fc mat, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, mat.m00())
             .put(JAVA_FLOAT, mat.m01())
             .put(JAVA_FLOAT, mat.m10())
@@ -871,7 +871,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix3x2dc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix3x2dc mat, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, mat.m00())
             .put(JAVA_DOUBLE, mat.m01())
             .put(JAVA_DOUBLE, mat.m10())
@@ -887,7 +887,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix3fc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix3fc mat, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, mat.m00())
             .put(JAVA_FLOAT, mat.m01())
             .put(JAVA_FLOAT, mat.m02())
@@ -906,7 +906,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix3dc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix3dc mat, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, mat.m00())
             .put(JAVA_DOUBLE, mat.m01())
             .put(JAVA_DOUBLE, mat.m02())
@@ -925,7 +925,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix4x3fc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix4x3fc mat, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, mat.m00())
             .put(JAVA_FLOAT, mat.m01())
             .put(JAVA_FLOAT, mat.m02())
@@ -947,7 +947,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix4x3dc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix4x3dc mat, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, mat.m00())
             .put(JAVA_DOUBLE, mat.m01())
             .put(JAVA_DOUBLE, mat.m02())
@@ -969,7 +969,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix4fc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix4fc mat, GrowableBuffer dest) {
         return dest.put(JAVA_FLOAT, mat.m00())
             .put(JAVA_FLOAT, mat.m01())
             .put(JAVA_FLOAT, mat.m02())
@@ -995,7 +995,7 @@ public final class Matrixn {
      * @param dest the destination
      * @return the destination
      */
-    public static BufferBuilder put(Matrix4dc mat, BufferBuilder dest) {
+    public static GrowableBuffer put(Matrix4dc mat, GrowableBuffer dest) {
         return dest.put(JAVA_DOUBLE, mat.m00())
             .put(JAVA_DOUBLE, mat.m01())
             .put(JAVA_DOUBLE, mat.m02())

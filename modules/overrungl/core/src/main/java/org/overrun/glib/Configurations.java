@@ -52,6 +52,18 @@ public final class Configurations {
      */
     public static final Entry<Boolean> DEBUG_STACK = new Entry<>(() -> false);
     /**
+     * Enable debug memory util to check memory leaks.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> DEBUG_MEM_UTIL = new Entry<>(() -> false);
+    /**
+     * Disable stacktrace in debug allocator.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> DEBUG_MEM_UTIL_FAST = new Entry<>(() -> false);
+    /**
      * Enable checks.
      * <p>
      * The default value is {@code true}.

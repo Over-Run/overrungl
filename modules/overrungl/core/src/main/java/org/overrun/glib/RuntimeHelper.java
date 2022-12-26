@@ -59,7 +59,7 @@ public final class RuntimeHelper {
     /**
      * The address of {@code NULL}.
      */
-    public static final long NULL_ADDR = 0x0L;
+    public static final long NULL = 0x0L;
     /**
      * An unbounded address layout.
      */
@@ -188,7 +188,7 @@ public final class RuntimeHelper {
      */
     @Nullable
     public static MethodHandle downcallSafe(MemorySegment symbol, FunctionDescriptor function) {
-        if (symbol.address() == NULL_ADDR) return null;
+        if (symbol.address() == NULL) return null;
         return LINKER.downcallHandle(symbol, function);
     }
 

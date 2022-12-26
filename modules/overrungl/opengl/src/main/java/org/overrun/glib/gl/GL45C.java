@@ -25,7 +25,7 @@
 package org.overrun.glib.gl;
 
 import org.overrun.glib.RuntimeHelper;
-import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.GrowableBuffer;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -1397,7 +1397,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         namedBufferData(buffer, data.byteSize(), data, usage);
     }
 
-    public static void namedBufferData(int buffer, BufferBuilder data, int usage) {
+    public static void namedBufferData(int buffer, GrowableBuffer data, int usage) {
         namedBufferData(buffer, data.offset(), data.address(), usage);
     }
 
@@ -1479,7 +1479,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         namedBufferSubData(buffer, offset, data.byteSize(), data);
     }
 
-    public static void namedBufferSubData(int buffer, long offset, BufferBuilder data) {
+    public static void namedBufferSubData(int buffer, long offset, GrowableBuffer data) {
         namedBufferSubData(buffer, offset, data.offset(), data.address());
     }
 

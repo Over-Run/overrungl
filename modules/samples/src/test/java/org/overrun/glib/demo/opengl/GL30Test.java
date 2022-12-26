@@ -82,7 +82,7 @@ public final class GL30Test {
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         window = GLFW.createWindow(arena, 640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
-        if (window.address() == RuntimeHelper.NULL_ADDR)
+        if (window.address() == RuntimeHelper.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {

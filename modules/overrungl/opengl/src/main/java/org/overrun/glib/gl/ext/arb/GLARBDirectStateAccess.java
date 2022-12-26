@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext.arb;
 
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.GrowableBuffer;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -507,7 +507,7 @@ public final class GLARBDirectStateAccess {
         namedBufferData(buffer, data, usage);
     }
 
-    public static void glNamedBufferData(int buffer, BufferBuilder data, int usage) {
+    public static void glNamedBufferData(int buffer, GrowableBuffer data, int usage) {
         namedBufferData(buffer, data, usage);
     }
 
@@ -579,7 +579,7 @@ public final class GLARBDirectStateAccess {
         namedBufferSubData(buffer, offset, data);
     }
 
-    public static void glNamedBufferSubData(int buffer, long offset, BufferBuilder data) {
+    public static void glNamedBufferSubData(int buffer, long offset, GrowableBuffer data) {
         namedBufferSubData(buffer, offset, data);
     }
 
