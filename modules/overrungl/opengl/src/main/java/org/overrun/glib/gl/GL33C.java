@@ -27,7 +27,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -53,7 +53,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         caps.glBindFragDataLocationIndexed = load.invoke("glBindFragDataLocationIndexed", IIIPV);
         caps.glBindSampler = load.invoke("glBindSampler", IIV);
         caps.glDeleteSamplers = load.invoke("glDeleteSamplers", IPV);
-        caps.glGenSamplers = load.invoke("glGenSamplers", IIP);
+        caps.glGenSamplers = load.invoke("glGenSamplers", IIPV);
         caps.glGetFragDataIndex = load.invoke("glGetFragDataIndex", IPI);
         caps.glGetQueryObjecti64v = load.invoke("glGetQueryObjecti64v", IIPV);
         caps.glGetQueryObjectui64v = load.invoke("glGetQueryObjectui64v", IIPV);
@@ -80,7 +80,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         caps.glVertexAttribP4uiv = load.invoke("glVertexAttribP4uiv", IIZPV);
     }
 
-    public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, Addressable name) {
+    public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glBindFragDataLocationIndexed).invokeExact(program, colorNumber, index, name);
@@ -102,7 +102,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void deleteSamplers(int count, Addressable samplers) {
+    public static void deleteSamplers(int count, MemorySegment samplers) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteSamplers).invokeExact(count, samplers);
@@ -127,7 +127,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void genSamplers(int count, Addressable samplers) {
+    public static void genSamplers(int count, MemorySegment samplers) {
         var caps = getCapabilities();
         try {
             check(caps.glGenSamplers).invokeExact(count, samplers);
@@ -154,7 +154,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static int getFragDataIndex(int program, Addressable name) {
+    public static int getFragDataIndex(int program, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetFragDataIndex).invokeExact(program, name);
@@ -167,7 +167,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         return getFragDataIndex(program, allocator.allocateUtf8String(name));
     }
 
-    public static void getQueryObjecti64v(int id, int pname, Addressable params) {
+    public static void getQueryObjecti64v(int id, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetQueryObjecti64v).invokeExact(id, pname, params);
@@ -188,7 +188,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void getQueryObjectui64v(int id, int pname, Addressable params) {
+    public static void getQueryObjectui64v(int id, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetQueryObjectui64v).invokeExact(id, pname, params);
@@ -209,7 +209,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void getSamplerParameterIiv(int sampler, int pname, Addressable params) {
+    public static void getSamplerParameterIiv(int sampler, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetSamplerParameterIiv).invokeExact(sampler, pname, params);
@@ -236,7 +236,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void getSamplerParameterIuiv(int sampler, int pname, Addressable params) {
+    public static void getSamplerParameterIuiv(int sampler, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetSamplerParameterIuiv).invokeExact(sampler, pname, params);
@@ -263,7 +263,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void getSamplerParameterfv(int sampler, int pname, Addressable params) {
+    public static void getSamplerParameterfv(int sampler, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetSamplerParameterfv).invokeExact(sampler, pname, params);
@@ -290,7 +290,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void getSamplerParameteriv(int sampler, int pname, Addressable params) {
+    public static void getSamplerParameteriv(int sampler, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetSamplerParameteriv).invokeExact(sampler, pname, params);
@@ -335,7 +335,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void samplerParameterIiv(int sampler, int pname, Addressable param) {
+    public static void samplerParameterIiv(int sampler, int pname, MemorySegment param) {
         var caps = getCapabilities();
         try {
             check(caps.glSamplerParameterIiv).invokeExact(sampler, pname, param);
@@ -348,7 +348,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         samplerParameterIiv(sampler, pname, allocator.allocateArray(JAVA_INT, param));
     }
 
-    public static void samplerParameterIuiv(int sampler, int pname, Addressable param) {
+    public static void samplerParameterIuiv(int sampler, int pname, MemorySegment param) {
         var caps = getCapabilities();
         try {
             check(caps.glSamplerParameterIuiv).invokeExact(sampler, pname, param);
@@ -370,7 +370,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void samplerParameterfv(int sampler, int pname, Addressable param) {
+    public static void samplerParameterfv(int sampler, int pname, MemorySegment param) {
         var caps = getCapabilities();
         try {
             check(caps.glSamplerParameterfv).invokeExact(sampler, pname, param);
@@ -392,7 +392,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void samplerParameteriv(int sampler, int pname, Addressable param) {
+    public static void samplerParameteriv(int sampler, int pname, MemorySegment param) {
         var caps = getCapabilities();
         try {
             check(caps.glSamplerParameteriv).invokeExact(sampler, pname, param);
@@ -423,7 +423,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void vertexAttribP1uiv(int index, int type, boolean normalized, Addressable value) {
+    public static void vertexAttribP1uiv(int index, int type, boolean normalized, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribP1uiv).invokeExact(index, type, normalized, value);
@@ -445,7 +445,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void vertexAttribP2uiv(int index, int type, boolean normalized, Addressable value) {
+    public static void vertexAttribP2uiv(int index, int type, boolean normalized, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribP2uiv).invokeExact(index, type, normalized, value);
@@ -467,7 +467,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void vertexAttribP3uiv(int index, int type, boolean normalized, Addressable value) {
+    public static void vertexAttribP3uiv(int index, int type, boolean normalized, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribP3uiv).invokeExact(index, type, normalized, value);
@@ -489,7 +489,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void vertexAttribP4uiv(int index, int type, boolean normalized, Addressable value) {
+    public static void vertexAttribP4uiv(int index, int type, boolean normalized, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribP4uiv).invokeExact(index, type, normalized, value);

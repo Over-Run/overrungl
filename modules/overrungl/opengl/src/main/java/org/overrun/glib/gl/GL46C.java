@@ -26,8 +26,7 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -52,7 +51,7 @@ public sealed class GL46C extends GL45C permits GL {
         caps.glSpecializeShader = load.invoke("glSpecializeShader", IPIPPV);
     }
 
-    public static void multiDrawArraysIndirectCount(int mode, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
+    public static void multiDrawArraysIndirectCount(int mode, MemorySegment indirect, long drawCount, int maxDrawCount, int stride) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArraysIndirectCount).invokeExact(mode, indirect, drawCount, maxDrawCount, stride);
@@ -61,7 +60,7 @@ public sealed class GL46C extends GL45C permits GL {
         }
     }
 
-    public static void multiDrawElementsIndirectCount(int mode, int type, Addressable indirect, long drawCount, int maxDrawCount, int stride) {
+    public static void multiDrawElementsIndirectCount(int mode, int type, MemorySegment indirect, long drawCount, int maxDrawCount, int stride) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElementsIndirectCount).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride);
@@ -79,7 +78,7 @@ public sealed class GL46C extends GL45C permits GL {
         }
     }
 
-    public static void specializeShader(int shader, Addressable pEntryPoint, int numSpecializationConstants, Addressable pConstantIndex, Addressable pConstantValue) {
+    public static void specializeShader(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
         var caps = getCapabilities();
         try {
             check(caps.glSpecializeShader).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
@@ -90,17 +89,17 @@ public sealed class GL46C extends GL45C permits GL {
 
     public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
         specializeShader(shader,
-            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
+            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
             pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
-            pConstantIndex != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemoryAddress.NULL,
-            pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemoryAddress.NULL);
+            pConstantIndex != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
+            pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
     }
 
     public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint) {
         specializeShader(shader,
-            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemoryAddress.NULL,
+            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
             0,
-            MemoryAddress.NULL,
-            MemoryAddress.NULL);
+            MemorySegment.NULL,
+            MemorySegment.NULL);
     }
 }

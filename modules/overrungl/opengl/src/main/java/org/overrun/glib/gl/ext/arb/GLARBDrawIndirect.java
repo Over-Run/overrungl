@@ -26,7 +26,7 @@ package org.overrun.glib.gl.ext.arb;
 
 import org.overrun.glib.gl.*;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 /**
@@ -39,7 +39,7 @@ public final class GLARBDrawIndirect {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glDrawArraysIndirect(int mode, Addressable indirect) {
+    public static void glDrawArraysIndirect(int mode, MemorySegment indirect) {
         GL40C.drawArraysIndirect(mode, indirect);
     }
 
@@ -51,7 +51,7 @@ public final class GLARBDrawIndirect {
         GL40C.drawArraysIndirect(allocator, mode, indirect);
     }
 
-    public static void glDrawElementsIndirect(int mode, int type, Addressable indirect) {
+    public static void glDrawElementsIndirect(int mode, int type, MemorySegment indirect) {
         GL40C.drawElementsIndirect(mode, type, indirect);
     }
 

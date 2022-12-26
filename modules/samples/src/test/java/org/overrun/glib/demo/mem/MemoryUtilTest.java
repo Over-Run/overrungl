@@ -28,7 +28,7 @@ import org.overrun.glib.Configurations;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
 import java.lang.foreign.ValueLayout;
 
 /**
@@ -48,7 +48,7 @@ public final class MemoryUtilTest {
         sb = new StringBuilder();
         start = System.nanoTime();
         for (int i = 0; i < ALLOC_COUNT; i++) {
-            try (var arena = MemorySession.openShared()) {
+            try (var arena = Arena.openShared()) {
                 var seg = arena.allocate(ValueLayout.JAVA_INT);
                 seg.set(ValueLayout.JAVA_INT, 0, i);
                 sb.append(seg.get(ValueLayout.JAVA_INT, 0));
@@ -61,7 +61,7 @@ public final class MemoryUtilTest {
         // Arena outside loop
         sb = new StringBuilder();
         start = System.nanoTime();
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             for (int i = 0; i < ALLOC_COUNT; i++) {
                 var seg = arena.allocate(ValueLayout.JAVA_INT);
                 seg.set(ValueLayout.JAVA_INT, 0, i);

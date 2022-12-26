@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -45,7 +45,7 @@ public final class GLAMDSamplePositions {
         ext.glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", FunctionDescriptors.IIPV);
     }
 
-    public static void glSetMultisamplefvAMD(int pname, int index, Addressable val) {
+    public static void glSetMultisamplefvAMD(int pname, int index, MemorySegment val) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glSetMultisamplefvAMD).invokeExact(pname, index, val);

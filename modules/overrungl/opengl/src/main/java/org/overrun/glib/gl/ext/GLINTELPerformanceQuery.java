@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -66,7 +66,7 @@ public final class GLINTELPerformanceQuery {
         }
     }
 
-    public static void glCreatePerfQueryINTEL(int queryId, Addressable queryHandle) {
+    public static void glCreatePerfQueryINTEL(int queryId, MemorySegment queryHandle) {
         var ext = getExtCapabilities();
         try {
             check(ext.glCreatePerfQueryINTEL).invokeExact(queryId, queryHandle);
@@ -105,7 +105,7 @@ public final class GLINTELPerformanceQuery {
         }
     }
 
-    public static void glGetFirstPerfQueryIdINTEL(Addressable queryId) {
+    public static void glGetFirstPerfQueryIdINTEL(MemorySegment queryId) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetFirstPerfQueryIdINTEL).invokeExact(queryId);
@@ -126,7 +126,7 @@ public final class GLINTELPerformanceQuery {
         }
     }
 
-    public static void glGetNextPerfQueryIdINTEL(int queryId, Addressable nextQueryId) {
+    public static void glGetNextPerfQueryIdINTEL(int queryId, MemorySegment nextQueryId) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetNextPerfQueryIdINTEL).invokeExact(queryId, nextQueryId);
@@ -148,10 +148,10 @@ public final class GLINTELPerformanceQuery {
     }
 
     public static void glGetPerfCounterInfoINTEL(int queryId, int counterId,
-                                                 int counterNameLength, Addressable counterName,
-                                                 int counterDescLength, Addressable counterDesc,
-                                                 Addressable counterOffset, Addressable counterDataSize, Addressable counterTypeEnum,
-                                                 Addressable counterDataTypeEnum, Addressable rawCounterMaxValue) {
+                                                 int counterNameLength, MemorySegment counterName,
+                                                 int counterDescLength, MemorySegment counterDesc,
+                                                 MemorySegment counterOffset, MemorySegment counterDataSize, MemorySegment counterTypeEnum,
+                                                 MemorySegment counterDataTypeEnum, MemorySegment rawCounterMaxValue) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfCounterInfoINTEL).invokeExact(queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue);
@@ -183,7 +183,7 @@ public final class GLINTELPerformanceQuery {
         rawCounterMaxValue[0] = pv.get(JAVA_LONG, 0);
     }
 
-    public static void glGetPerfQueryDataINTEL(int queryHandle, int flags, int dataSize, Addressable data, Addressable bytesWritten) {
+    public static void glGetPerfQueryDataINTEL(int queryHandle, int flags, int dataSize, MemorySegment data, MemorySegment bytesWritten) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfQueryDataINTEL).invokeExact(queryHandle, flags, dataSize, data, bytesWritten);
@@ -192,13 +192,13 @@ public final class GLINTELPerformanceQuery {
         }
     }
 
-    public static void glGetPerfQueryDataINTEL(SegmentAllocator allocator, int queryHandle, int flags, int dataSize, Addressable data, int[] bytesWritten) {
+    public static void glGetPerfQueryDataINTEL(SegmentAllocator allocator, int queryHandle, int flags, int dataSize, MemorySegment data, int[] bytesWritten) {
         var seg = allocator.allocate(JAVA_INT);
         glGetPerfQueryDataINTEL(queryHandle, flags, dataSize, data, seg);
         bytesWritten[0] = seg.get(JAVA_INT, 0);
     }
 
-    public static void glGetPerfQueryIdByNameINTEL(Addressable queryName, Addressable queryId) {
+    public static void glGetPerfQueryIdByNameINTEL(MemorySegment queryName, MemorySegment queryId) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfQueryIdByNameINTEL).invokeExact(queryName, queryId);
@@ -213,7 +213,7 @@ public final class GLINTELPerformanceQuery {
         return seg.get(JAVA_INT, 0);
     }
 
-    public static void glGetPerfQueryInfoINTEL(int queryId, int queryNameLength, Addressable queryName, Addressable dataSize, Addressable noCounters, Addressable noInstances, Addressable capsMask) {
+    public static void glGetPerfQueryInfoINTEL(int queryId, int queryNameLength, MemorySegment queryName, MemorySegment dataSize, MemorySegment noCounters, MemorySegment noInstances, MemorySegment capsMask) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfQueryInfoINTEL).invokeExact(queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask);

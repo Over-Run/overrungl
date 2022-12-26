@@ -25,8 +25,11 @@
 package org.overrun.glib.stb;
 
 import org.overrun.glib.ICallback;
+import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -39,10 +42,10 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 public interface STBIWriteFunc extends ICallback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, MemoryAddress.class, int.class);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
+    MethodType MTYPE = DESC.toMethodType();
 
-    void invoke(MemoryAddress context, MemoryAddress data, int size);
+    void invoke(MemorySegment context, MemorySegment data, int size);
 
     @Override
     default FunctionDescriptor descriptor() {

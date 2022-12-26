@@ -27,7 +27,9 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.ICallback;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -49,8 +51,8 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 public interface IGLFWDropFun extends ICallback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, MemoryAddress.class);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for path drop callbacks.
@@ -58,9 +60,9 @@ public interface IGLFWDropFun extends ICallback {
      * @param window    The window that received the event.
      * @param paths     The UTF-8 encoded file and/or directory path names.
      */
-    void invoke(MemoryAddress window, String[] paths);
+    void invoke(MemorySegment window, String[] paths);
 
-    default void ninvoke(MemoryAddress window, int pathCount, MemoryAddress paths) {
+    default void ninvoke(MemorySegment window, int pathCount, MemorySegment paths) {
         invoke(window, RuntimeHelper.toArray(paths, new String[pathCount]));
     }
 

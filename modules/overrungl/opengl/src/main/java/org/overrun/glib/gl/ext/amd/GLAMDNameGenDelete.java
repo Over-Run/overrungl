@@ -30,7 +30,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -51,7 +51,7 @@ public final class GLAMDNameGenDelete {
         ext.glIsNameAMD = load.invoke("glIsNameAMD", FunctionDescriptors.IIZ);
     }
 
-    public static void glDeleteNamesAMD(int identifier, int num, Addressable names) {
+    public static void glDeleteNamesAMD(int identifier, int num, MemorySegment names) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDeleteNamesAMD).invokeExact(identifier, num, names);
@@ -76,7 +76,7 @@ public final class GLAMDNameGenDelete {
         }
     }
 
-    public static void glGenNamesAMD(int identifier, int num, Addressable names) {
+    public static void glGenNamesAMD(int identifier, int num, MemorySegment names) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGenNamesAMD).invokeExact(identifier, num, names);

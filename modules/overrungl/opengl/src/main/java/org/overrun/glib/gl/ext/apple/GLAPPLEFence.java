@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -55,7 +55,7 @@ public final class GLAPPLEFence {
         ext.glTestObjectAPPLE = load.invoke("glTestObjectAPPLE", IIZ);
     }
 
-    public static void glDeleteFencesAPPLE(int n, Addressable fences) {
+    public static void glDeleteFencesAPPLE(int n, MemorySegment fences) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDeleteFencesAPPLE).invokeExact(n, fences);
@@ -86,7 +86,7 @@ public final class GLAPPLEFence {
         }
     }
 
-    public static void glGenFencesAPPLE(int n, Addressable fences) {
+    public static void glGenFencesAPPLE(int n, MemorySegment fences) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGenFencesAPPLE).invokeExact(n, fences);

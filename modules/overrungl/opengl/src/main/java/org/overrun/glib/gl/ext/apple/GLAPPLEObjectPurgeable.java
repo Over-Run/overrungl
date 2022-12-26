@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -47,7 +47,7 @@ public final class GLAPPLEObjectPurgeable {
         ext.glObjectUnpurgeableAPPLE = load.invoke("glObjectUnpurgeableAPPLE", FunctionDescriptors.IIII);
     }
 
-    public static void glGetObjectParameterivAPPLE(int objectType, int name, int pname, Addressable params) {
+    public static void glGetObjectParameterivAPPLE(int objectType, int name, int pname, MemorySegment params) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glGetObjectParameterivAPPLE).invokeExact(objectType, name, pname, params);

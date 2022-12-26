@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -82,7 +82,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void multiDrawArrays(int mode, Addressable first, Addressable count, int drawCount) {
+    public static void multiDrawArrays(int mode, MemorySegment first, MemorySegment count, int drawCount) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArrays).invokeExact(mode, first, count, drawCount);
@@ -99,7 +99,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         multiDrawArrays(allocator, mode, first, count, first.length);
     }
 
-    public static void multiDrawElements(int mode, Addressable count, int type, Addressable indices, int drawCount) {
+    public static void multiDrawElements(int mode, MemorySegment count, int type, MemorySegment indices, int drawCount) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElements).invokeExact(mode, count, type, indices, drawCount);
@@ -153,7 +153,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void pointParameterfv(int pname, Addressable params) {
+    public static void pointParameterfv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glPointParameterfv).invokeExact(pname, params);
@@ -175,7 +175,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void pointParameteriv(int pname, Addressable params) {
+    public static void pointParameteriv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glPointParameteriv).invokeExact(pname, params);

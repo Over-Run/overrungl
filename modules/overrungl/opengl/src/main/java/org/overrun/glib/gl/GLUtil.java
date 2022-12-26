@@ -30,8 +30,8 @@ import org.overrun.glib.gl.ext.amd.GLAMDDebugOutput;
 import org.overrun.glib.gl.ext.amd.GLDebugProcAMD;
 import org.overrun.glib.gl.ext.arb.GLARBDebugOutput;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 import java.util.Locale;
 import java.util.function.Consumer;
 
@@ -52,14 +52,14 @@ public final class GLUtil {
      * Detects the best debug output functionality to use and creates a callback that prints information to
      * {@link RuntimeHelper#apiLogger() API Logger}.
      * <p>
-     * The callback function is returned as a {@link MemorySession Arena},
-     * that should reset to NULL and be {@link MemorySession#close() freed} when no longer needed, which is often after
+     * The callback function is returned as a {@link Arena},
+     * that should reset to NULL and be {@link Arena#close() freed} when no longer needed, which is often after
      * destroy GL context.
      *
      * @return the arena.
      */
     @Nullable
-    public static MemorySession setupDebugMessageCallback() {
+    public static Arena setupDebugMessageCallback() {
         return setupDebugMessageCallback(apiLogger());
     }
 
@@ -67,14 +67,14 @@ public final class GLUtil {
      * Detects the best debug output functionality to use and creates a callback that prints information to the specified
      * logger.
      * <p>
-     * The callback function is returned as a {@link MemorySession Arena}, that should reset to NULL and be
-     * {@link MemorySession#close() freed} when no longer needed, which is often after destroy GL context.
+     * The callback function is returned as a {@link Arena}, that should reset to NULL and be
+     * {@link Arena#close() freed} when no longer needed, which is often after destroy GL context.
      *
      * @param logger the output logger.
      * @return the arena.
      */
     @Nullable
-    public static MemorySession setupDebugMessageCallback(Consumer<String> logger) {
+    public static Arena setupDebugMessageCallback(Consumer<String> logger) {
         var caps = GLLoader.getCapabilities();
 
         if (caps.Ver43 || caps.ext.GL_KHR_debug) {
@@ -83,7 +83,7 @@ public final class GLUtil {
             } else {
                 apiLog("[GL] Using KHR_debug for error logging.");
             }
-            var arena = MemorySession.openConfined();
+            var arena = Arena.openConfined();
             GLDebugProc proc = (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(512);
                 sb.append("[OverrunGL] OpenGL debug message\n");
@@ -100,7 +100,7 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            GL.debugMessageCallback(arena, proc, MemoryAddress.NULL);
+            GL.debugMessageCallback(arena.scope(), proc, MemorySegment.NULL);
             // no need GLKHRDebug
             if ((caps.Ver43 || caps.Ver30) &&
                 (GL.getInteger(GL_CONTEXT_FLAGS) & GL_CONTEXT_FLAG_DEBUG_BIT) == 0) {
@@ -112,7 +112,7 @@ public final class GLUtil {
 
         if (caps.ext.GL_ARB_debug_output) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
-            var arena = MemorySession.openConfined();
+            var arena = Arena.openConfined();
             GLDebugProc proc = (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(512);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
@@ -129,13 +129,13 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            GLARBDebugOutput.glDebugMessageCallbackARB(arena, proc, MemoryAddress.NULL);
+            GLARBDebugOutput.glDebugMessageCallbackARB(arena.scope(), proc, MemorySegment.NULL);
             return arena;
         }
 
         if (caps.ext.GL_AMD_debug_output) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
-            var arena = MemorySession.openConfined();
+            var arena = Arena.openConfined();
             GLDebugProcAMD proc = (id, category, severity, message, userParam) -> {
                 var sb = new StringBuilder(512);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
@@ -151,7 +151,7 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            GLAMDDebugOutput.glDebugMessageCallbackAMD(arena, proc, MemoryAddress.NULL);
+            GLAMDDebugOutput.glDebugMessageCallbackAMD(arena.scope(), proc, MemorySegment.NULL);
             return arena;
         }
 

@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -79,7 +79,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos2dvMESA(Addressable v) {
+    public static void glWindowPos2dvMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos2dvMESA).invokeExact(v);
@@ -101,7 +101,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos2fvMESA(Addressable v) {
+    public static void glWindowPos2fvMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos2fvMESA).invokeExact(v);
@@ -123,7 +123,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos2ivMESA(Addressable v) {
+    public static void glWindowPos2ivMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos2ivMESA).invokeExact(v);
@@ -145,7 +145,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos2svMESA(Addressable v) {
+    public static void glWindowPos2svMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos2svMESA).invokeExact(v);
@@ -167,7 +167,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos3dvMESA(Addressable v) {
+    public static void glWindowPos3dvMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos3dvMESA).invokeExact(v);
@@ -189,7 +189,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos3fvMESA(Addressable v) {
+    public static void glWindowPos3fvMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos3fvMESA).invokeExact(v);
@@ -211,7 +211,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos3ivMESA(Addressable v) {
+    public static void glWindowPos3ivMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos3ivMESA).invokeExact(v);
@@ -233,7 +233,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos3svMESA(Addressable v) {
+    public static void glWindowPos3svMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos3svMESA).invokeExact(v);
@@ -255,7 +255,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos4dvMESA(Addressable v) {
+    public static void glWindowPos4dvMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos4dvMESA).invokeExact(v);
@@ -277,7 +277,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos4fvMESA(Addressable v) {
+    public static void glWindowPos4fvMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos4fvMESA).invokeExact(v);
@@ -299,7 +299,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos4ivMESA(Addressable v) {
+    public static void glWindowPos4ivMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos4ivMESA).invokeExact(v);
@@ -321,7 +321,7 @@ public final class GLMESAWindowPos {
         }
     }
 
-    public static void glWindowPos4svMESA(Addressable v) {
+    public static void glWindowPos4svMESA(MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glWindowPos4svMESA).invokeExact(v);

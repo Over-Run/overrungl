@@ -50,14 +50,14 @@ public class GLFWImage extends Pointer {
      * The struct layout.
      */
     public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("width"),
-            ValueLayout.JAVA_INT.withName("height"),
-            ValueLayout.ADDRESS.withName("pixels")
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.ADDRESS.withName("pixels")
     ).withName("GLFWimage");
     private static final VarHandle
-            pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
-            pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
-            pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
+        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
+        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
+        pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
 
     /**
      * Create a {@code GLFWimage} instance.
@@ -65,7 +65,7 @@ public class GLFWImage extends Pointer {
      * @param address the address
      * @param scope   the segment scope
      */
-    public GLFWImage(Addressable address, MemorySession scope) {
+    public GLFWImage(MemorySegment address, SegmentScope scope) {
         super(address, scope);
     }
 
@@ -75,8 +75,8 @@ public class GLFWImage extends Pointer {
      * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWImage create(MemorySession scope) {
-        return new GLFWImage(scope.allocate(LAYOUT), scope);
+    public static GLFWImage create(SegmentScope scope) {
+        return new GLFWImage(MemorySegment.allocateNative(LAYOUT, scope), scope);
     }
 
     /**
@@ -86,8 +86,8 @@ public class GLFWImage extends Pointer {
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession scope, long count) {
-        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
+    public static Buffer create(SegmentScope scope, long count) {
+        return new Buffer(MemorySegment.allocateNative(MemoryLayout.sequenceLayout(count, LAYOUT), scope), scope, count);
     }
 
     /**
@@ -118,7 +118,7 @@ public class GLFWImage extends Pointer {
      * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
      * @return this
      */
-    public GLFWImage pixels(Addressable pixels) {
+    public GLFWImage pixels(MemorySegment pixels) {
         pPixels.set(segment(LAYOUT, scope), pixels);
         return this;
     }
@@ -146,8 +146,8 @@ public class GLFWImage extends Pointer {
      *
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
-    public MemoryAddress pixels() {
-        return (MemoryAddress) pPixels.get(segment(LAYOUT, scope));
+    public MemorySegment pixels() {
+        return (MemorySegment) pPixels.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -167,7 +167,7 @@ public class GLFWImage extends Pointer {
          * @param scope        the segment scope
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession scope, long elementCount) {
+        public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
             var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
@@ -216,7 +216,7 @@ public class GLFWImage extends Pointer {
          * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
          * @return this
          */
-        public Buffer pixels(long index, Addressable pixels) {
+        public Buffer pixels(long index, MemorySegment pixels) {
             pPixels.set(segment(LAYOUT, scope), index, pixels);
             return this;
         }
@@ -232,7 +232,7 @@ public class GLFWImage extends Pointer {
         }
 
         @Override
-        public Buffer pixels(Addressable pixels) {
+        public Buffer pixels(MemorySegment pixels) {
             return pixels(0, pixels);
         }
 
@@ -262,8 +262,8 @@ public class GLFWImage extends Pointer {
          * @param index the index
          * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
          */
-        public MemoryAddress pixelsAt(long index) {
-            return (MemoryAddress) pPixels.get(segment(LAYOUT, scope), index);
+        public MemorySegment pixelsAt(long index) {
+            return (MemorySegment) pPixels.get(segment(LAYOUT, scope), index);
         }
 
         @Override
@@ -277,7 +277,7 @@ public class GLFWImage extends Pointer {
         }
 
         @Override
-        public MemoryAddress pixels() {
+        public MemorySegment pixels() {
             return pixelsAt(0);
         }
     }

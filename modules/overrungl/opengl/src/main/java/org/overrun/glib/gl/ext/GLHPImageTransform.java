@@ -28,7 +28,7 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -53,7 +53,7 @@ public final class GLHPImageTransform {
         ext.glImageTransformParameterivHP = load.invoke("glImageTransformParameterivHP", IIPV);
     }
 
-    public static void glGetImageTransformParameterfvHP(int target, int pname, Addressable params) {
+    public static void glGetImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetImageTransformParameterfvHP).invokeExact(target, pname, params);
@@ -68,7 +68,7 @@ public final class GLHPImageTransform {
         RuntimeHelper.toArray(seg, params);
     }
 
-    public static void glGetImageTransformParameterivHP(int target, int pname, Addressable params) {
+    public static void glGetImageTransformParameterivHP(int target, int pname, MemorySegment params) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetImageTransformParameterivHP).invokeExact(target, pname, params);
@@ -92,7 +92,7 @@ public final class GLHPImageTransform {
         }
     }
 
-    public static void glImageTransformParameterfvHP(int target, int pname, Addressable params) {
+    public static void glImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
         var ext = getExtCapabilities();
         try {
             check(ext.glImageTransformParameterfvHP).invokeExact(target, pname, params);
@@ -114,7 +114,7 @@ public final class GLHPImageTransform {
         }
     }
 
-    public static void glImageTransformParameterivHP(int target, int pname, Addressable params) {
+    public static void glImageTransformParameterivHP(int target, int pname, MemorySegment params) {
         var ext = getExtCapabilities();
         try {
             check(ext.glImageTransformParameterivHP).invokeExact(target, pname, params);

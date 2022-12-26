@@ -31,8 +31,6 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -73,7 +71,7 @@ public final class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glDeletePerfMonitorsAMD(int n, Addressable monitors) {
+    public static void glDeletePerfMonitorsAMD(int n, MemorySegment monitors) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDeletePerfMonitorsAMD).invokeExact(n, monitors);
@@ -107,7 +105,7 @@ public final class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGenPerfMonitorsAMD(int n, Addressable monitors) {
+    public static void glGenPerfMonitorsAMD(int n, MemorySegment monitors) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGenPerfMonitorsAMD).invokeExact(n, monitors);
@@ -134,7 +132,7 @@ public final class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, Addressable data, Addressable bytesWritten) {
+    public static void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, MemorySegment data, MemorySegment bytesWritten) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfMonitorCounterDataAMD).invokeExact(monitor, pname, dataSize, data, bytesWritten);
@@ -145,15 +143,15 @@ public final class GLAMDPerformanceMonitor {
 
     public static void glGetPerfMonitorCounterDataAMD(SegmentAllocator allocator, int monitor, int pname, int[] data, int @Nullable [] bytesWritten) {
         var pData = allocator.allocateArray(JAVA_INT, data.length);
-        var pNum = bytesWritten != null ? allocator.allocateArray(JAVA_INT, bytesWritten.length) : MemoryAddress.NULL;
+        var pNum = bytesWritten != null ? allocator.allocateArray(JAVA_INT, bytesWritten.length) : MemorySegment.NULL;
         glGetPerfMonitorCounterDataAMD(monitor, pname, data.length, pData, pNum);
         RuntimeHelper.toArray(pData, data);
         if (bytesWritten != null && bytesWritten.length > 0) {
-            bytesWritten[0] = ((MemorySegment) pNum).get(JAVA_INT, 0);
+            bytesWritten[0] = pNum.get(JAVA_INT, 0);
         }
     }
 
-    public static void glGetPerfMonitorCounterInfoAMD(int group, int counter, int pname, Addressable data) {
+    public static void glGetPerfMonitorCounterInfoAMD(int group, int counter, int pname, MemorySegment data) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfMonitorCounterInfoAMD).invokeExact(group, counter, pname, data);
@@ -162,7 +160,7 @@ public final class GLAMDPerformanceMonitor {
         }
     }
 
-    public static void glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, Addressable length, Addressable counterString) {
+    public static void glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, MemorySegment length, MemorySegment counterString) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfMonitorCounterStringAMD).invokeExact(group, counter, bufSize, length, counterString);
@@ -173,11 +171,11 @@ public final class GLAMDPerformanceMonitor {
 
     public static String glGetPerfMonitorCounterStringAMD(SegmentAllocator allocator, int group, int counter, int bufSize) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        glGetPerfMonitorCounterStringAMD(group, counter, bufSize, MemoryAddress.NULL, seg);
+        glGetPerfMonitorCounterStringAMD(group, counter, bufSize, MemorySegment.NULL, seg);
         return seg.getUtf8String(0);
     }
 
-    public static void glGetPerfMonitorCountersAMD(int group, Addressable numCounters, Addressable maxActiveCounters, int counterSize, Addressable counters) {
+    public static void glGetPerfMonitorCountersAMD(int group, MemorySegment numCounters, MemorySegment maxActiveCounters, int counterSize, MemorySegment counters) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfMonitorCountersAMD).invokeExact(group, numCounters, maxActiveCounters, counterSize, counters);
@@ -187,9 +185,9 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorCountersAMD(SegmentAllocator allocator, int group, int @Nullable [] numCounters, int @Nullable [] maxActiveCounters, int counterSize, int @Nullable [] counters) {
-        var pNum = numCounters != null ? allocator.allocateArray(JAVA_INT, numCounters.length) : MemoryAddress.NULL;
-        var pMax = maxActiveCounters != null ? allocator.allocateArray(JAVA_INT, maxActiveCounters.length) : MemoryAddress.NULL;
-        var pc = counters != null ? allocator.allocateArray(JAVA_INT, counters.length) : MemoryAddress.NULL;
+        var pNum = numCounters != null ? allocator.allocateArray(JAVA_INT, numCounters.length) : MemorySegment.NULL;
+        var pMax = maxActiveCounters != null ? allocator.allocateArray(JAVA_INT, maxActiveCounters.length) : MemorySegment.NULL;
+        var pc = counters != null ? allocator.allocateArray(JAVA_INT, counters.length) : MemorySegment.NULL;
         glGetPerfMonitorCountersAMD(group, pNum, pMax, counters != null ? counters.length : counterSize, pc);
     }
 
@@ -197,7 +195,7 @@ public final class GLAMDPerformanceMonitor {
         glGetPerfMonitorCountersAMD(allocator, group, numCounters, maxActiveCounters, counters.length, counters);
     }
 
-    public static void glGetPerfMonitorGroupStringAMD(int group, int bufSize, Addressable length, Addressable groupString) {
+    public static void glGetPerfMonitorGroupStringAMD(int group, int bufSize, MemorySegment length, MemorySegment groupString) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfMonitorGroupStringAMD).invokeExact(group, bufSize, length, groupString);
@@ -208,11 +206,11 @@ public final class GLAMDPerformanceMonitor {
 
     public static String glGetPerfMonitorGroupStringAMD(SegmentAllocator allocator, int group, int bufSize) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        glGetPerfMonitorGroupStringAMD(group, bufSize, MemoryAddress.NULL, seg);
+        glGetPerfMonitorGroupStringAMD(group, bufSize, MemorySegment.NULL, seg);
         return seg.getUtf8String(0);
     }
 
-    public static void glGetPerfMonitorGroupsAMD(Addressable numGroups, int groupsSize, Addressable groups) {
+    public static void glGetPerfMonitorGroupsAMD(MemorySegment numGroups, int groupsSize, MemorySegment groups) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetPerfMonitorGroupsAMD).invokeExact(numGroups, groupsSize, groups);
@@ -222,19 +220,19 @@ public final class GLAMDPerformanceMonitor {
     }
 
     public static void glGetPerfMonitorGroupsAMD(SegmentAllocator allocator, int @Nullable [] numGroups, int @Nullable [] groups) {
-        var pn = numGroups != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pn = numGroups != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         final boolean hasGroups = groups != null;
-        var pg = groups != null ? allocator.allocateArray(JAVA_INT, groups.length) : MemoryAddress.NULL;
+        var pg = groups != null ? allocator.allocateArray(JAVA_INT, groups.length) : MemorySegment.NULL;
         glGetPerfMonitorGroupsAMD(pn, groups != null ? groups.length : 0, pg);
         if (numGroups != null && numGroups.length > 0) {
-            numGroups[0] = ((MemorySegment) pn).get(JAVA_INT, 0);
+            numGroups[0] = pn.get(JAVA_INT, 0);
         }
         if (hasGroups) {
             RuntimeHelper.toArray(pg, groups);
         }
     }
 
-    public static void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, Addressable counterList) {
+    public static void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, MemorySegment counterList) {
         var ext = getExtCapabilities();
         try {
             check(ext.glSelectPerfMonitorCountersAMD).invokeExact(monitor, enable, group, numCounters, counterList);

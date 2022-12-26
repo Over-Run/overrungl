@@ -69,7 +69,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @param address the address
      * @param scope   the segment scope
      */
-    public DrawArraysIndirectCommand(Addressable address, MemorySession scope) {
+    public DrawArraysIndirectCommand(MemorySegment address, SegmentScope scope) {
         super(address, scope);
     }
 
@@ -79,8 +79,8 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @param scope the segment scope
      * @return the instance
      */
-    public static DrawArraysIndirectCommand create(MemorySession scope) {
-        return new DrawArraysIndirectCommand(scope.allocate(LAYOUT), scope);
+    public static DrawArraysIndirectCommand create(SegmentScope scope) {
+        return new DrawArraysIndirectCommand(MemorySegment.allocateNative(LAYOUT, scope), scope);
     }
 
     /**
@@ -90,8 +90,8 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession scope, long count) {
-        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
+    public static Buffer create(SegmentScope scope, long count) {
+        return new Buffer(MemorySegment.allocateNative(MemoryLayout.sequenceLayout(count, LAYOUT), scope), scope, count);
     }
 
     /**
@@ -191,7 +191,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @param scope        the segment scope
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession scope, long elementCount) {
+        public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
             var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);

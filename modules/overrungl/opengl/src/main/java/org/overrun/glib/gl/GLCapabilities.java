@@ -24,10 +24,12 @@
 
 package org.overrun.glib.gl;
 
+import org.overrun.glib.Configurations;
 import org.overrun.glib.FunctionDescriptors;
 
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 /**
@@ -316,7 +318,7 @@ public class GLCapabilities {
      * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public int load(GLLoadFunc load) {
-        glGetString = load.invoke("glGetString", FunctionDescriptors.IP);
+        glGetString = load.invoke("glGetString", FunctionDescriptors.Ip);
         if (glGetString == null) return 0;
         if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
 
@@ -350,7 +352,7 @@ public class GLCapabilities {
 
         ext = new GLExtCaps(this);
 
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             if (!ext.findExtensionsGL(version, arena, this)) return 0;
             findCoreGL(true);
         }
@@ -361,27 +363,33 @@ public class GLCapabilities {
         return version;
     }
 
+    private boolean check(boolean checkAll, boolean b, Predicate<GLCapabilities> checkFunc) {
+        return checkAll ? checkFunc.test(this) : (b || checkFunc.test(this));
+    }
+
     private int findCoreGL(boolean checkAll) {
         if (checkAll) {
-            Ver10 = Ver10 || GL10C.isSupported(this);
-            Ver11 = Ver11 || GL11C.isSupported(this);
-            Ver12 = Ver12 || GL12C.isSupported(this);
-            Ver13 = Ver13 || GL13C.isSupported(this);
-            Ver14 = Ver14 || GL14C.isSupported(this);
-            Ver15 = Ver15 || GL15C.isSupported(this);
-            Ver20 = Ver20 || GL20C.isSupported(this);
-            Ver21 = Ver21 || GL21C.isSupported(this);
-            Ver30 = Ver30 || GL30C.isSupported(this);
-            Ver31 = Ver31 || GL31C.isSupported(this);
-            Ver32 = Ver32 || GL32C.isSupported(this);
-            Ver33 = Ver33 || GL33C.isSupported(this);
-            Ver40 = Ver40 || GL40C.isSupported(this);
-            Ver41 = Ver41 || GL41C.isSupported(this);
-            Ver42 = Ver42 || GL42C.isSupported(this);
-            Ver43 = Ver43 || GL43C.isSupported(this);
-            Ver44 = Ver44 || GL44C.isSupported(this);
-            Ver45 = Ver45 || GL45C.isSupported(this);
-            Ver46 = Ver46 || GL46C.isSupported(this);
+            boolean forceCheckAll = Configurations.GL_FORCE_CHECK_ALL.get();
+            // Note: use Predicate to avoid side effects
+            Ver10 = check(forceCheckAll, Ver10, GL10C::isSupported);
+            Ver11 = check(forceCheckAll, Ver11, GL11C::isSupported);
+            Ver12 = check(forceCheckAll, Ver12, GL12C::isSupported);
+            Ver13 = check(forceCheckAll, Ver13, GL13C::isSupported);
+            Ver14 = check(forceCheckAll, Ver14, GL14C::isSupported);
+            Ver15 = check(forceCheckAll, Ver15, GL15C::isSupported);
+            Ver20 = check(forceCheckAll, Ver20, GL20C::isSupported);
+            Ver21 = check(forceCheckAll, Ver21, GL21C::isSupported);
+            Ver30 = check(forceCheckAll, Ver30, GL30C::isSupported);
+            Ver31 = check(forceCheckAll, Ver31, GL31C::isSupported);
+            Ver32 = check(forceCheckAll, Ver32, GL32C::isSupported);
+            Ver33 = check(forceCheckAll, Ver33, GL33C::isSupported);
+            Ver40 = check(forceCheckAll, Ver40, GL40C::isSupported);
+            Ver41 = check(forceCheckAll, Ver41, GL41C::isSupported);
+            Ver42 = check(forceCheckAll, Ver42, GL42C::isSupported);
+            Ver43 = check(forceCheckAll, Ver43, GL43C::isSupported);
+            Ver44 = check(forceCheckAll, Ver44, GL44C::isSupported);
+            Ver45 = check(forceCheckAll, Ver45, GL45C::isSupported);
+            Ver46 = check(forceCheckAll, Ver46, GL46C::isSupported);
             return -1;
         }
         final String[] prefixes = {

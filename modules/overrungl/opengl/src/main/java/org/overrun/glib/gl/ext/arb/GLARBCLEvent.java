@@ -29,8 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@code GL_ARB_cl_event}
@@ -44,10 +43,10 @@ public final class GLARBCLEvent {
         ext.glCreateSyncFromCLeventARB = load.invoke("glCreateSyncFromCLeventARB", FunctionDescriptors.PPIP);
     }
 
-    public static MemoryAddress glCreateSyncFromCLeventARB(Addressable context, Addressable event, int flags) {
+    public static MemorySegment glCreateSyncFromCLeventARB(MemorySegment context, MemorySegment event, int flags) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            return (MemoryAddress) GLLoader.check(ext.glCreateSyncFromCLeventARB).invokeExact(context, event, flags);
+            return (MemorySegment) GLLoader.check(ext.glCreateSyncFromCLeventARB).invokeExact(context, event, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

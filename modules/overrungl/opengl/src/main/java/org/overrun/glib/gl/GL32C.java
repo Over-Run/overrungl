@@ -28,8 +28,6 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -73,7 +71,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         caps.glWaitSync = load.invoke("glWaitSync", PIJV);
     }
 
-    public static int clientWaitSync(MemoryAddress sync, int flags, long timeout) {
+    public static int clientWaitSync(MemorySegment sync, int flags, long timeout) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glClientWaitSync).invokeExact(sync, flags, timeout);
@@ -82,7 +80,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void deleteSync(MemoryAddress sync) {
+    public static void deleteSync(MemorySegment sync) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteSync).invokeExact(sync);
@@ -91,7 +89,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void drawElementsBaseVertex(int mode, int count, int type, Addressable indices, int baseVertex) {
+    public static void drawElementsBaseVertex(int mode, int count, int type, MemorySegment indices, int baseVertex) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElementsBaseVertex).invokeExact(mode, count, type, indices, baseVertex);
@@ -112,7 +110,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_INT, indices), baseVertex);
     }
 
-    public static void drawElementsInstancedBaseVertex(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex) {
+    public static void drawElementsInstancedBaseVertex(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseVertex) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElementsInstancedBaseVertex).invokeExact(mode, count, type, indices, instanceCount, baseVertex);
@@ -133,7 +131,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount, baseVertex);
     }
 
-    public static void drawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, Addressable indices, int baseVertex) {
+    public static void drawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, MemorySegment indices, int baseVertex) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawRangeElementsBaseVertex).invokeExact(mode, start, end, count, type, indices, baseVertex);
@@ -154,10 +152,10 @@ public sealed class GL32C extends GL31C permits GL33C {
         drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_INT, indices), baseVertex);
     }
 
-    public static MemoryAddress fenceSync(int condition, int flags) {
+    public static MemorySegment fenceSync(int condition, int flags) {
         var caps = getCapabilities();
         try {
-            return (MemoryAddress) check(caps.glFenceSync).invokeExact(condition, flags);
+            return (MemorySegment) check(caps.glFenceSync).invokeExact(condition, flags);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -172,7 +170,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getBufferParameteri64v(int target, int pname, Addressable params) {
+    public static void getBufferParameteri64v(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetBufferParameteri64v).invokeExact(target, pname, params);
@@ -193,7 +191,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getInteger64i_v(int target, int index, Addressable data) {
+    public static void getInteger64i_v(int target, int index, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetInteger64i_v).invokeExact(target, index, data);
@@ -220,7 +218,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getInteger64v(int pname, Addressable data) {
+    public static void getInteger64v(int pname, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetInteger64v).invokeExact(pname, data);
@@ -247,7 +245,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getMultisamplefv(int pname, int index, Addressable val) {
+    public static void getMultisamplefv(int pname, int index, MemorySegment val) {
         var caps = getCapabilities();
         try {
             check(caps.glGetMultisamplefv).invokeExact(pname, index, val);
@@ -268,7 +266,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         return new float[]{seg.get(JAVA_FLOAT, 0), seg.getAtIndex(JAVA_FLOAT, 1)};
     }
 
-    public static void getSynciv(MemoryAddress sync, int pname, int count, Addressable length, Addressable values) {
+    public static void getSynciv(MemorySegment sync, int pname, int count, MemorySegment length, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glGetSynciv).invokeExact(sync, pname, count, length, values);
@@ -277,29 +275,29 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void getSynciv(SegmentAllocator allocator, MemoryAddress sync, int pname, int @Nullable [] length, int[] values) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+    public static void getSynciv(SegmentAllocator allocator, MemorySegment sync, int pname, int @Nullable [] length, int[] values) {
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pVal = allocator.allocateArray(JAVA_INT, values.length);
         getSynciv(sync, pname, values.length, pLen, pVal);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         RuntimeHelper.toArray(pVal, values);
     }
 
-    public static int getSynci(MemoryAddress sync, int pname) {
+    public static int getSynci(MemorySegment sync, int pname) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var seg = stack.calloc(JAVA_INT);
-            getSynciv(sync, pname, 1, MemoryAddress.NULL, seg);
+            getSynciv(sync, pname, 1, MemorySegment.NULL, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
-    public static boolean isSync(MemoryAddress sync) {
+    public static boolean isSync(MemorySegment sync) {
         var caps = getCapabilities();
         try {
             return (boolean) check(caps.glIsSync).invokeExact(sync);
@@ -308,7 +306,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void multiDrawElementsBaseVertex(int mode, Addressable count, int type, Addressable indices, int drawCount, Addressable baseVertex) {
+    public static void multiDrawElementsBaseVertex(int mode, MemorySegment count, int type, MemorySegment indices, int drawCount, MemorySegment baseVertex) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElementsBaseVertex).invokeExact(mode, count, type, indices, drawCount, baseVertex);
@@ -317,7 +315,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, Addressable[] indices, int drawCount, int[] baseVertex) {
+    public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, MemorySegment[] indices, int drawCount, int[] baseVertex) {
         var seg = allocator.allocateArray(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
             seg.setAtIndex(ADDRESS, i, indices[i]);
@@ -385,7 +383,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         }
     }
 
-    public static void waitSync(MemoryAddress sync, int flags, long timeout) {
+    public static void waitSync(MemorySegment sync, int flags, long timeout) {
         var caps = getCapabilities();
         try {
             check(caps.glWaitSync).invokeExact(sync, flags, timeout);

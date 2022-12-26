@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 import static org.overrun.glib.FunctionDescriptors.IIPV;
 import static org.overrun.glib.FunctionDescriptors.IV;
@@ -48,7 +48,7 @@ public final class GLINTELParallelArrays {
         ext.glVertexPointervINTEL = load.invoke("glVertexPointervINTEL", IIPV);
     }
 
-    public static void glColorPointervINTEL(int size, int type, Addressable pointer) {
+    public static void glColorPointervINTEL(int size, int type, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glColorPointervINTEL).invokeExact(size, type, pointer);
@@ -57,7 +57,7 @@ public final class GLINTELParallelArrays {
         }
     }
 
-    public static void glNormalPointervINTEL(int type, Addressable pointer) {
+    public static void glNormalPointervINTEL(int type, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glNormalPointervINTEL).invokeExact(type, pointer);
@@ -66,7 +66,7 @@ public final class GLINTELParallelArrays {
         }
     }
 
-    public static void glTexCoordPointervINTEL(int size, int type, Addressable pointer) {
+    public static void glTexCoordPointervINTEL(int size, int type, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glTexCoordPointervINTEL).invokeExact(size, type, pointer);
@@ -75,7 +75,7 @@ public final class GLINTELParallelArrays {
         }
     }
 
-    public static void glVertexPointervINTEL(int size, int type, Addressable pointer) {
+    public static void glVertexPointervINTEL(int size, int type, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glVertexPointervINTEL).invokeExact(size, type, pointer);

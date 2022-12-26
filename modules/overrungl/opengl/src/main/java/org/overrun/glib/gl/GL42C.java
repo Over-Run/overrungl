@@ -27,7 +27,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -79,7 +79,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         }
     }
 
-    public static void drawElementsInstancedBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseInstance) {
+    public static void drawElementsInstancedBaseInstance(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseInstance) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElementsInstancedBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseInstance);
@@ -100,7 +100,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount, baseInstance);
     }
 
-    public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex, int baseInstance) {
+    public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseVertex, int baseInstance) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElementsInstancedBaseVertexBaseInstance).invokeExact(mode, count, type, indices, instanceCount, baseVertex, baseInstance);
@@ -139,7 +139,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         }
     }
 
-    public static void getActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, Addressable params) {
+    public static void getActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetActiveAtomicCounterBufferiv).invokeExact(program, bufferIndex, pname, params);
@@ -166,7 +166,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         }
     }
 
-    public static void getInternalformativ(int target, int internalFormat, int pname, int count, Addressable params) {
+    public static void getInternalformativ(int target, int internalFormat, int pname, int count, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetInternalformativ).invokeExact(target, internalFormat, pname, count, params);

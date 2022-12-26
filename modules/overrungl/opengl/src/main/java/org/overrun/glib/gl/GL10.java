@@ -27,7 +27,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -331,7 +331,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, Addressable bitmap) {
+    public static void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, MemorySegment bitmap) {
         var caps = getCapabilities();
         try {
             check(caps.glBitmap).invokeExact(width, height, xorig, yorig, xmove, ymove, bitmap);
@@ -349,7 +349,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void callLists(int n, int type, Addressable lists) {
+    public static void callLists(int n, int type, MemorySegment lists) {
         var caps = getCapabilities();
         try {
             check(caps.glCallLists).invokeExact(n, type, lists);
@@ -376,7 +376,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void clipPlane(int plane, Addressable equation) {
+    public static void clipPlane(int plane, MemorySegment equation) {
         var caps = getCapabilities();
         try {
             check(caps.glClipPlane).invokeExact(plane, equation);
@@ -399,7 +399,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3bv(Addressable v) {
+    public static void color3bv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3bv).invokeExact(v);
@@ -421,7 +421,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3dv(Addressable v) {
+    public static void color3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3dv).invokeExact(v);
@@ -443,7 +443,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3fv(Addressable v) {
+    public static void color3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3fv).invokeExact(v);
@@ -465,7 +465,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3iv(Addressable v) {
+    public static void color3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3iv).invokeExact(v);
@@ -487,7 +487,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3sv(Addressable v) {
+    public static void color3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3sv).invokeExact(v);
@@ -509,7 +509,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3ubv(Addressable v) {
+    public static void color3ubv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3ubv).invokeExact(v);
@@ -531,7 +531,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3uiv(Addressable v) {
+    public static void color3uiv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3uiv).invokeExact(v);
@@ -553,7 +553,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color3usv(Addressable v) {
+    public static void color3usv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor3usv).invokeExact(v);
@@ -575,7 +575,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4bv(Addressable v) {
+    public static void color4bv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4bv).invokeExact(v);
@@ -597,7 +597,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4dv(Addressable v) {
+    public static void color4dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4dv).invokeExact(v);
@@ -619,7 +619,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4fv(Addressable v) {
+    public static void color4fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4fv).invokeExact(v);
@@ -641,7 +641,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4iv(Addressable v) {
+    public static void color4iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4iv).invokeExact(v);
@@ -663,7 +663,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4sv(Addressable v) {
+    public static void color4sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4sv).invokeExact(v);
@@ -685,7 +685,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4ubv(Addressable v) {
+    public static void color4ubv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4ubv).invokeExact(v);
@@ -707,7 +707,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4uiv(Addressable v) {
+    public static void color4uiv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4uiv).invokeExact(v);
@@ -729,7 +729,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void color4usv(Addressable v) {
+    public static void color4usv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glColor4usv).invokeExact(v);
@@ -769,7 +769,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void drawPixels(int width, int height, int format, int type, Addressable pixels) {
+    public static void drawPixels(int width, int height, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawPixels).invokeExact(width, height, format, type, pixels);
@@ -787,7 +787,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void edgeFlagv(Addressable flag) {
+    public static void edgeFlagv(MemorySegment flag) {
         var caps = getCapabilities();
         try {
             check(caps.glEdgeFlagv).invokeExact(flag);
@@ -831,7 +831,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord1dv(Addressable u) {
+    public static void evalCoord1dv(MemorySegment u) {
         var caps = getCapabilities();
         try {
             check(caps.glEvalCoord1dv).invokeExact(u);
@@ -853,7 +853,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord1fv(Addressable u) {
+    public static void evalCoord1fv(MemorySegment u) {
         var caps = getCapabilities();
         try {
             check(caps.glEvalCoord1fv).invokeExact(u);
@@ -875,7 +875,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord2dv(Addressable u) {
+    public static void evalCoord2dv(MemorySegment u) {
         var caps = getCapabilities();
         try {
             check(caps.glEvalCoord2dv).invokeExact(u);
@@ -897,7 +897,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void evalCoord2fv(Addressable u) {
+    public static void evalCoord2fv(MemorySegment u) {
         var caps = getCapabilities();
         try {
             check(caps.glEvalCoord2fv).invokeExact(u);
@@ -946,7 +946,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void feedbackBuffer(int size, int type, Addressable buffer) {
+    public static void feedbackBuffer(int size, int type, MemorySegment buffer) {
         var caps = getCapabilities();
         try {
             check(caps.glFeedbackBuffer).invokeExact(size, type, buffer);
@@ -970,7 +970,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void fogfv(int pname, Addressable params) {
+    public static void fogfv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glFogfv).invokeExact(pname, params);
@@ -992,7 +992,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void fogiv(int pname, Addressable params) {
+    public static void fogiv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glFogiv).invokeExact(pname, params);
@@ -1023,7 +1023,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getClipPlane(int plane, Addressable equation) {
+    public static void getClipPlane(int plane, MemorySegment equation) {
         var caps = getCapabilities();
         try {
             check(caps.glGetClipPlane).invokeExact(plane, equation);
@@ -1049,7 +1049,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getLightfv(int light, int pname, Addressable params) {
+    public static void getLightfv(int light, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetLightfv).invokeExact(light, pname, params);
@@ -1076,7 +1076,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getLightiv(int light, int pname, Addressable params) {
+    public static void getLightiv(int light, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetLightiv).invokeExact(light, pname, params);
@@ -1103,7 +1103,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMapdv(int target, int query, Addressable v) {
+    public static void getMapdv(int target, int query, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glGetMapdv).invokeExact(target, query, v);
@@ -1130,7 +1130,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMapfv(int target, int query, Addressable v) {
+    public static void getMapfv(int target, int query, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glGetMapfv).invokeExact(target, query, v);
@@ -1157,7 +1157,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMapiv(int target, int query, Addressable v) {
+    public static void getMapiv(int target, int query, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glGetMapiv).invokeExact(target, query, v);
@@ -1184,7 +1184,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMaterialfv(int face, int pname, Addressable params) {
+    public static void getMaterialfv(int face, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetMaterialfv).invokeExact(face, pname, params);
@@ -1211,7 +1211,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getMaterialiv(int face, int pname, Addressable params) {
+    public static void getMaterialiv(int face, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetMaterialiv).invokeExact(face, pname, params);
@@ -1238,7 +1238,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getPixelMapfv(int map, Addressable values) {
+    public static void getPixelMapfv(int map, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glGetPixelMapfv).invokeExact(map, values);
@@ -1253,7 +1253,7 @@ public final class GL10 extends GL10C {
         RuntimeHelper.toArray(pValues, values);
     }
 
-    public static void getPixelMapuiv(int map, Addressable values) {
+    public static void getPixelMapuiv(int map, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glGetPixelMapuiv).invokeExact(map, values);
@@ -1268,7 +1268,7 @@ public final class GL10 extends GL10C {
         RuntimeHelper.toArray(pValues, values);
     }
 
-    public static void getPixelMapusv(int map, Addressable values) {
+    public static void getPixelMapusv(int map, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glGetPixelMapusv).invokeExact(map, values);
@@ -1283,7 +1283,7 @@ public final class GL10 extends GL10C {
         RuntimeHelper.toArray(pValues, values);
     }
 
-    public static void getPolygonStipple(Addressable mask) {
+    public static void getPolygonStipple(MemorySegment mask) {
         var caps = getCapabilities();
         try {
             check(caps.glGetPolygonStipple).invokeExact(mask);
@@ -1298,7 +1298,7 @@ public final class GL10 extends GL10C {
         RuntimeHelper.toArray(pMask, mask);
     }
 
-    public static void getTexEnvfv(int target, int pname, Addressable params) {
+    public static void getTexEnvfv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexEnvfv).invokeExact(target, pname, params);
@@ -1325,7 +1325,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexEnviv(int target, int pname, Addressable params) {
+    public static void getTexEnviv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexEnviv).invokeExact(target, pname, params);
@@ -1352,7 +1352,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void getTexGendv(int coord, int pname, Addressable params) {
+    public static void getTexGendv(int coord, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexGendv).invokeExact(coord, pname, params);
@@ -1367,7 +1367,7 @@ public final class GL10 extends GL10C {
         RuntimeHelper.toArray(pParams, params);
     }
 
-    public static void getTexGenfv(int coord, int pname, Addressable params) {
+    public static void getTexGenfv(int coord, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexGenfv).invokeExact(coord, pname, params);
@@ -1382,7 +1382,7 @@ public final class GL10 extends GL10C {
         RuntimeHelper.toArray(pParams, params);
     }
 
-    public static void getTexGeniv(int coord, int pname, Addressable params) {
+    public static void getTexGeniv(int coord, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexGeniv).invokeExact(coord, pname, params);
@@ -1415,7 +1415,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexdv(Addressable c) {
+    public static void indexdv(MemorySegment c) {
         var caps = getCapabilities();
         try {
             check(caps.glIndexdv).invokeExact(c);
@@ -1437,7 +1437,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexfv(Addressable c) {
+    public static void indexfv(MemorySegment c) {
         var caps = getCapabilities();
         try {
             check(caps.glIndexfv).invokeExact(c);
@@ -1459,7 +1459,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexiv(Addressable c) {
+    public static void indexiv(MemorySegment c) {
         var caps = getCapabilities();
         try {
             check(caps.glIndexiv).invokeExact(c);
@@ -1481,7 +1481,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void indexsv(Addressable c) {
+    public static void indexsv(MemorySegment c) {
         var caps = getCapabilities();
         try {
             check(caps.glIndexsv).invokeExact(c);
@@ -1521,7 +1521,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightModelfv(int pname, Addressable params) {
+    public static void lightModelfv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glLightModelfv).invokeExact(pname, params);
@@ -1543,7 +1543,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightModeliv(int pname, Addressable params) {
+    public static void lightModeliv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glLightModeliv).invokeExact(pname, params);
@@ -1565,7 +1565,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightfv(int light, int pname, Addressable params) {
+    public static void lightfv(int light, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glLightfv).invokeExact(light, pname, params);
@@ -1587,7 +1587,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void lightiv(int light, int pname, Addressable params) {
+    public static void lightiv(int light, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glLightiv).invokeExact(light, pname, params);
@@ -1627,7 +1627,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void loadMatrixd(Addressable m) {
+    public static void loadMatrixd(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glLoadMatrixd).invokeExact(m);
@@ -1640,7 +1640,7 @@ public final class GL10 extends GL10C {
         loadMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
     }
 
-    public static void loadMatrixf(Addressable m) {
+    public static void loadMatrixf(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glLoadMatrixf).invokeExact(m);
@@ -1662,7 +1662,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void map1d(int target, double u1, double u2, int stride, int order, Addressable points) {
+    public static void map1d(int target, double u1, double u2, int stride, int order, MemorySegment points) {
         var caps = getCapabilities();
         try {
             check(caps.glMap1d).invokeExact(target, u1, u2, stride, order, points);
@@ -1675,7 +1675,7 @@ public final class GL10 extends GL10C {
         map1d(target, u1, u2, stride, order, allocator.allocateArray(JAVA_DOUBLE, points));
     }
 
-    public static void map1f(int target, float u1, float u2, int stride, int order, Addressable points) {
+    public static void map1f(int target, float u1, float u2, int stride, int order, MemorySegment points) {
         var caps = getCapabilities();
         try {
             check(caps.glMap1f).invokeExact(target, u1, u2, stride, order, points);
@@ -1688,7 +1688,7 @@ public final class GL10 extends GL10C {
         map1f(target, u1, u2, stride, order, allocator.allocateArray(JAVA_FLOAT, points));
     }
 
-    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, Addressable points) {
+    public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
         var caps = getCapabilities();
         try {
             check(caps.glMap2d).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
@@ -1701,7 +1701,7 @@ public final class GL10 extends GL10C {
         map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_DOUBLE, points));
     }
 
-    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, Addressable points) {
+    public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
         var caps = getCapabilities();
         try {
             check(caps.glMap2f).invokeExact(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
@@ -1759,7 +1759,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void materialfv(int face, int pname, Addressable params) {
+    public static void materialfv(int face, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glMaterialfv).invokeExact(face, pname, params);
@@ -1781,7 +1781,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void materialiv(int face, int pname, Addressable params) {
+    public static void materialiv(int face, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glMaterialiv).invokeExact(face, pname, params);
@@ -1803,7 +1803,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void multMatrixd(Addressable m) {
+    public static void multMatrixd(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glMultMatrixd).invokeExact(m);
@@ -1816,7 +1816,7 @@ public final class GL10 extends GL10C {
         multMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
     }
 
-    public static void multMatrixf(Addressable m) {
+    public static void multMatrixf(MemorySegment m) {
         var caps = getCapabilities();
         try {
             check(caps.glMultMatrixf).invokeExact(m);
@@ -1847,7 +1847,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3bv(Addressable v) {
+    public static void normal3bv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glNormal3bv).invokeExact(v);
@@ -1869,7 +1869,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3dv(Addressable v) {
+    public static void normal3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glNormal3dv).invokeExact(v);
@@ -1891,7 +1891,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3fv(Addressable v) {
+    public static void normal3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glNormal3fv).invokeExact(v);
@@ -1913,7 +1913,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3iv(Addressable v) {
+    public static void normal3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glNormal3iv).invokeExact(v);
@@ -1935,7 +1935,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void normal3sv(Addressable v) {
+    public static void normal3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glNormal3sv).invokeExact(v);
@@ -1966,7 +1966,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void pixelMapfv(int map, int mapSize, Addressable values) {
+    public static void pixelMapfv(int map, int mapSize, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glPixelMapfv).invokeExact(map, mapSize, values);
@@ -1979,7 +1979,7 @@ public final class GL10 extends GL10C {
         pixelMapfv(map, values.length, allocator.allocateArray(JAVA_FLOAT, values));
     }
 
-    public static void pixelMapuiv(int map, int mapSize, Addressable values) {
+    public static void pixelMapuiv(int map, int mapSize, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glPixelMapuiv).invokeExact(map, mapSize, values);
@@ -1992,7 +1992,7 @@ public final class GL10 extends GL10C {
         pixelMapuiv(map, values.length, allocator.allocateArray(JAVA_INT, values));
     }
 
-    public static void pixelMapusv(int map, int mapSize, Addressable values) {
+    public static void pixelMapusv(int map, int mapSize, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glPixelMapusv).invokeExact(map, mapSize, values);
@@ -2032,7 +2032,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void polygonStipple(Addressable mask) {
+    public static void polygonStipple(MemorySegment mask) {
         var caps = getCapabilities();
         try {
             check(caps.glPolygonStipple).invokeExact(mask);
@@ -2108,7 +2108,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2dv(Addressable v) {
+    public static void rasterPos2dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos2dv).invokeExact(v);
@@ -2130,7 +2130,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2fv(Addressable v) {
+    public static void rasterPos2fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos2fv).invokeExact(v);
@@ -2152,7 +2152,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2iv(Addressable v) {
+    public static void rasterPos2iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos2iv).invokeExact(v);
@@ -2174,7 +2174,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos2sv(Addressable v) {
+    public static void rasterPos2sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos2sv).invokeExact(v);
@@ -2196,7 +2196,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3dv(Addressable v) {
+    public static void rasterPos3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos3dv).invokeExact(v);
@@ -2218,7 +2218,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3fv(Addressable v) {
+    public static void rasterPos3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos3fv).invokeExact(v);
@@ -2240,7 +2240,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3iv(Addressable v) {
+    public static void rasterPos3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos3iv).invokeExact(v);
@@ -2262,7 +2262,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos3sv(Addressable v) {
+    public static void rasterPos3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos3sv).invokeExact(v);
@@ -2284,7 +2284,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4dv(Addressable v) {
+    public static void rasterPos4dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos4dv).invokeExact(v);
@@ -2306,7 +2306,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4fv(Addressable v) {
+    public static void rasterPos4fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos4fv).invokeExact(v);
@@ -2328,7 +2328,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4iv(Addressable v) {
+    public static void rasterPos4iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos4iv).invokeExact(v);
@@ -2350,7 +2350,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rasterPos4sv(Addressable v) {
+    public static void rasterPos4sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glRasterPos4sv).invokeExact(v);
@@ -2372,7 +2372,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectdv(Addressable v1, Addressable v2) {
+    public static void rectdv(MemorySegment v1, MemorySegment v2) {
         var caps = getCapabilities();
         try {
             check(caps.glRectdv).invokeExact(v1, v2);
@@ -2394,7 +2394,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectfv(Addressable v1, Addressable v2) {
+    public static void rectfv(MemorySegment v1, MemorySegment v2) {
         var caps = getCapabilities();
         try {
             check(caps.glRectfv).invokeExact(v1, v2);
@@ -2416,7 +2416,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectiv(Addressable v1, Addressable v2) {
+    public static void rectiv(MemorySegment v1, MemorySegment v2) {
         var caps = getCapabilities();
         try {
             check(caps.glRectiv).invokeExact(v1, v2);
@@ -2438,7 +2438,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void rectsv(Addressable v1, Addressable v2) {
+    public static void rectsv(MemorySegment v1, MemorySegment v2) {
         var caps = getCapabilities();
         try {
             check(caps.glRectsv).invokeExact(v1, v2);
@@ -2496,7 +2496,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void selectBuffer(int size, Addressable buffer) {
+    public static void selectBuffer(int size, MemorySegment buffer) {
         var caps = getCapabilities();
         try {
             check(caps.glSelectBuffer).invokeExact(size, buffer);
@@ -2529,7 +2529,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1dv(Addressable v) {
+    public static void texCoord1dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord1dv).invokeExact(v);
@@ -2551,7 +2551,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1fv(Addressable v) {
+    public static void texCoord1fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord1fv).invokeExact(v);
@@ -2573,7 +2573,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1iv(Addressable v) {
+    public static void texCoord1iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord1iv).invokeExact(v);
@@ -2595,7 +2595,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord1sv(Addressable v) {
+    public static void texCoord1sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord1sv).invokeExact(v);
@@ -2617,7 +2617,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2dv(Addressable v) {
+    public static void texCoord2dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord2dv).invokeExact(v);
@@ -2639,7 +2639,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2fv(Addressable v) {
+    public static void texCoord2fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord2fv).invokeExact(v);
@@ -2661,7 +2661,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2iv(Addressable v) {
+    public static void texCoord2iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord2iv).invokeExact(v);
@@ -2683,7 +2683,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord2sv(Addressable v) {
+    public static void texCoord2sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord2sv).invokeExact(v);
@@ -2705,7 +2705,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3dv(Addressable v) {
+    public static void texCoord3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord3dv).invokeExact(v);
@@ -2727,7 +2727,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3fv(Addressable v) {
+    public static void texCoord3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord3fv).invokeExact(v);
@@ -2749,7 +2749,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3iv(Addressable v) {
+    public static void texCoord3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord3iv).invokeExact(v);
@@ -2771,7 +2771,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord3sv(Addressable v) {
+    public static void texCoord3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord3sv).invokeExact(v);
@@ -2793,7 +2793,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4dv(Addressable v) {
+    public static void texCoord4dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord4dv).invokeExact(v);
@@ -2815,7 +2815,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4fv(Addressable v) {
+    public static void texCoord4fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord4fv).invokeExact(v);
@@ -2837,7 +2837,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4iv(Addressable v) {
+    public static void texCoord4iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord4iv).invokeExact(v);
@@ -2859,7 +2859,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texCoord4sv(Addressable v) {
+    public static void texCoord4sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glTexCoord4sv).invokeExact(v);
@@ -2881,7 +2881,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texEnvfv(int target, int pname, Addressable params) {
+    public static void texEnvfv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexEnvfv).invokeExact(target, pname, params);
@@ -2903,7 +2903,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texEnviv(int target, int pname, Addressable params) {
+    public static void texEnviv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexEnviv).invokeExact(target, pname, params);
@@ -2925,7 +2925,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texGendv(int coord, int pname, Addressable params) {
+    public static void texGendv(int coord, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexGendv).invokeExact(coord, pname, params);
@@ -2947,7 +2947,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texGenfv(int coord, int pname, Addressable params) {
+    public static void texGenfv(int coord, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexGenfv).invokeExact(coord, pname, params);
@@ -2969,7 +2969,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void texGeniv(int coord, int pname, Addressable params) {
+    public static void texGeniv(int coord, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexGeniv).invokeExact(coord, pname, params);
@@ -3009,7 +3009,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2dv(Addressable v) {
+    public static void vertex2dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex2dv).invokeExact(v);
@@ -3031,7 +3031,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2fv(Addressable v) {
+    public static void vertex2fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex2fv).invokeExact(v);
@@ -3053,7 +3053,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2iv(Addressable v) {
+    public static void vertex2iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex2iv).invokeExact(v);
@@ -3075,7 +3075,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex2sv(Addressable v) {
+    public static void vertex2sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex2sv).invokeExact(v);
@@ -3097,7 +3097,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3dv(Addressable v) {
+    public static void vertex3dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex3dv).invokeExact(v);
@@ -3119,7 +3119,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3fv(Addressable v) {
+    public static void vertex3fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex3fv).invokeExact(v);
@@ -3141,7 +3141,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3iv(Addressable v) {
+    public static void vertex3iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex3iv).invokeExact(v);
@@ -3163,7 +3163,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex3sv(Addressable v) {
+    public static void vertex3sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex3sv).invokeExact(v);
@@ -3185,7 +3185,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4dv(Addressable v) {
+    public static void vertex4dv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex4dv).invokeExact(v);
@@ -3207,7 +3207,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4fv(Addressable v) {
+    public static void vertex4fv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex4fv).invokeExact(v);
@@ -3229,7 +3229,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4iv(Addressable v) {
+    public static void vertex4iv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex4iv).invokeExact(v);
@@ -3251,7 +3251,7 @@ public final class GL10 extends GL10C {
         }
     }
 
-    public static void vertex4sv(Addressable v) {
+    public static void vertex4sv(MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertex4sv).invokeExact(v);

@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -61,7 +61,7 @@ public final class GLAPPLEVertexArrayObject {
         }
     }
 
-    public static void glDeleteVertexArraysAPPLE(int n, Addressable arrays) {
+    public static void glDeleteVertexArraysAPPLE(int n, MemorySegment arrays) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
@@ -78,7 +78,7 @@ public final class GLAPPLEVertexArrayObject {
         glDeleteVertexArraysAPPLE(1, allocator.allocate(JAVA_INT, array));
     }
 
-    public static void glGenVertexArraysAPPLE(int n, Addressable arrays) {
+    public static void glGenVertexArraysAPPLE(int n, MemorySegment arrays) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGenVertexArraysAPPLE).invokeExact(n, arrays);

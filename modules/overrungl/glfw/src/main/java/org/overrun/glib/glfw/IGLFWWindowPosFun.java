@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWWindowPosFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for window position callbacks.
@@ -57,7 +59,7 @@ public interface IGLFWWindowPosFun extends ICallback {
      * @param ypos   The new y-coordinate, in screen coordinates, of the
      *               upper-left corner of the content area of the window.
      */
-    void invoke(MemoryAddress window, int xpos, int ypos);
+    void invoke(MemorySegment window, int xpos, int ypos);
 
     @Override
     default FunctionDescriptor descriptor() {

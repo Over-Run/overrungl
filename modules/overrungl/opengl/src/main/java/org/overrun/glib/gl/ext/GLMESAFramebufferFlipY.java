@@ -31,7 +31,7 @@ import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -57,7 +57,7 @@ public final class GLMESAFramebufferFlipY {
         }
     }
 
-    public static void glGetFramebufferParameterivMESA(int target, int pname, Addressable params) {
+    public static void glGetFramebufferParameterivMESA(int target, int pname, MemorySegment params) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glGetFramebufferParameterivMESA).invokeExact(target, pname, params);

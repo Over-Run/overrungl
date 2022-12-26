@@ -75,7 +75,7 @@ public class GLFWVidMode extends Pointer {
      * @param address the address
      * @param scope   the segment scope
      */
-    public GLFWVidMode(Addressable address, MemorySession scope) {
+    public GLFWVidMode(MemorySegment address, SegmentScope scope) {
         super(address, scope);
     }
 
@@ -85,8 +85,8 @@ public class GLFWVidMode extends Pointer {
      * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWVidMode create(MemorySession scope) {
-        return new GLFWVidMode(scope.allocate(LAYOUT), scope);
+    public static GLFWVidMode create(SegmentScope scope) {
+        return new GLFWVidMode(MemorySegment.allocateNative(LAYOUT, scope), scope);
     }
 
     /**
@@ -96,8 +96,8 @@ public class GLFWVidMode extends Pointer {
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession scope, long count) {
-        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
+    public static Buffer create(SegmentScope scope, long count) {
+        return new Buffer(MemorySegment.allocateNative(MemoryLayout.sequenceLayout(count, LAYOUT), scope), scope, count);
     }
 
     /**
@@ -106,7 +106,7 @@ public class GLFWVidMode extends Pointer {
      * @return the immutable state
      */
     public Value constCast() {
-        return new Value(rawAddress(), scope(), this);
+        return new Value(address(), scope(), this);
     }
 
     /**
@@ -177,7 +177,7 @@ public class GLFWVidMode extends Pointer {
         private final int blueBits;
         private final int refreshRate;
 
-        private Value(Addressable address, MemorySession scope, GLFWVidMode mode) {
+        private Value(MemorySegment address, SegmentScope scope, GLFWVidMode mode) {
             super(address, scope);
             this.width = mode.width();
             this.height = mode.height();
@@ -245,7 +245,7 @@ public class GLFWVidMode extends Pointer {
          * @param scope        the segment scope
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession scope, long elementCount) {
+        public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
             var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
@@ -272,7 +272,7 @@ public class GLFWVidMode extends Pointer {
          * @return The {@link Buffer} with instanced memory segment.
          */
         public Segmented toSegmented() {
-            return new Segmented(rawAddress(), scope(), elementCount());
+            return new Segmented(address(), scope(), elementCount());
         }
 
         /**
@@ -374,13 +374,13 @@ public class GLFWVidMode extends Pointer {
         public static final class Segmented extends Buffer {
             private final MemorySegment segment;
 
-            private Segmented(Addressable address, MemorySession scope, long elementCount) {
+            private Segmented(MemorySegment address, SegmentScope scope, long elementCount) {
                 super(address, scope, elementCount);
                 segment = segment(LAYOUT, scope);
             }
 
             @Override
-            public MemorySegment segment(MemoryLayout layout, MemorySession scope) {
+            public MemorySegment segment(MemoryLayout layout, SegmentScope scope) {
                 return segment;
             }
         }

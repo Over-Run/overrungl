@@ -28,7 +28,9 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -108,7 +110,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void clearBufferData(int target, int internalFormat, int format, int type, Addressable data) {
+    public static void clearBufferData(int target, int internalFormat, int format, int type, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glClearBufferData).invokeExact(target, internalFormat, format, type, data);
@@ -117,7 +119,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void clearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, Addressable data) {
+    public static void clearBufferSubData(int target, int internalFormat, long offset, long size, int format, int type, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glClearBufferSubData).invokeExact(target, internalFormat, offset, size, format, type, data);
@@ -135,7 +137,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void debugMessageCallback(Addressable callback, Addressable userParam) {
+    public static void debugMessageCallback(MemorySegment callback, MemorySegment userParam) {
         var caps = getCapabilities();
         try {
             check(caps.glDebugMessageCallback).invokeExact(callback, userParam);
@@ -144,11 +146,11 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void debugMessageCallback(MemorySession scope, GLDebugProc callback, Addressable userParam) {
+    public static void debugMessageCallback(SegmentScope scope, GLDebugProc callback, MemorySegment userParam) {
         debugMessageCallback(callback.address(scope), userParam);
     }
 
-    public static void debugMessageControl(int source, int type, int severity, int count, Addressable ids, boolean enabled) {
+    public static void debugMessageControl(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
         var caps = getCapabilities();
         try {
             check(caps.glDebugMessageControl).invokeExact(source, type, severity, count, ids, enabled);
@@ -161,7 +163,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         debugMessageControl(source, type, severity, count, allocator.allocateArray(JAVA_INT, ids), enabled);
     }
 
-    public static void debugMessageInsert(int source, int type, int id, int severity, int length, Addressable buf) {
+    public static void debugMessageInsert(int source, int type, int id, int severity, int length, MemorySegment buf) {
         var caps = getCapabilities();
         try {
             check(caps.glDebugMessageInsert).invokeExact(source, type, id, severity, length, buf);
@@ -201,7 +203,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static int getDebugMessageLog(int count, int bufSize, Addressable sources, Addressable types, Addressable ids, Addressable severities, Addressable lengths, Addressable messageLog) {
+    public static int getDebugMessageLog(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetDebugMessageLog).invokeExact(count, bufSize, sources, types, ids, severities, lengths, messageLog);
@@ -231,7 +233,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         return num;
     }
 
-    public static void getFramebufferParameteriv(int target, int pname, Addressable params) {
+    public static void getFramebufferParameteriv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetFramebufferParameteriv).invokeExact(target, pname, params);
@@ -252,7 +254,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void getInternalformati64v(int target, int internalFormat, int pname, int count, Addressable params) {
+    public static void getInternalformati64v(int target, int internalFormat, int pname, int count, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetInternalformati64v).invokeExact(target, internalFormat, pname, count, params);
@@ -279,7 +281,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void getObjectLabel(int identifier, int name, int bufSize, Addressable length, Addressable label) {
+    public static void getObjectLabel(int identifier, int name, int bufSize, MemorySegment length, MemorySegment label) {
         var caps = getCapabilities();
         try {
             check(caps.glGetObjectLabel).invokeExact(identifier, name, bufSize, length, label);
@@ -288,16 +290,16 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void getObjectLabel(int identifier, int name, Addressable length, MemorySegment label) {
+    public static void getObjectLabel(int identifier, int name, MemorySegment length, MemorySegment label) {
         getObjectLabel(identifier, name, (int) label.byteSize(), length, label);
     }
 
     public static String getObjectLabel(SegmentAllocator allocator, int identifier, int name, int bufSize, int @Nullable [] length) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getObjectLabel(identifier, name, bufSize, seg, pLen);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         return seg.getUtf8String(0);
     }
@@ -306,7 +308,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         return getObjectLabel(allocator, identifier, name, 1024, length);
     }
 
-    public static void getObjectPtrLabel(MemoryAddress ptr, int bufSize, Addressable length, Addressable label) {
+    public static void getObjectPtrLabel(MemorySegment ptr, int bufSize, MemorySegment length, MemorySegment label) {
         var caps = getCapabilities();
         try {
             check(caps.glGetObjectPtrLabel).invokeExact(ptr, bufSize, length, label);
@@ -315,25 +317,25 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void getObjectPtrLabel(MemoryAddress ptr, Addressable length, MemorySegment label) {
+    public static void getObjectPtrLabel(MemorySegment ptr, MemorySegment length, MemorySegment label) {
         getObjectPtrLabel(ptr, (int) label.byteSize(), length, label);
     }
 
-    public static String getObjectPtrLabel(SegmentAllocator allocator, MemoryAddress ptr, int bufSize, int @Nullable [] length) {
+    public static String getObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, int bufSize, int @Nullable [] length) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getObjectPtrLabel(ptr, bufSize, seg, pLen);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         return seg.getUtf8String(0);
     }
 
-    public static String getObjectPtrLabel(SegmentAllocator allocator, MemoryAddress ptr, int @Nullable [] length) {
+    public static String getObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, int @Nullable [] length) {
         return getObjectPtrLabel(allocator, ptr, 1024, length);
     }
 
-    public static void getProgramInterfaceiv(int program, int programInterface, int pname, Addressable params) {
+    public static void getProgramInterfaceiv(int program, int programInterface, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetProgramInterfaceiv).invokeExact(program, programInterface, pname, params);
@@ -354,7 +356,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static int getProgramResourceIndex(int program, int programInterface, Addressable name) {
+    public static int getProgramResourceIndex(int program, int programInterface, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetProgramResourceIndex).invokeExact(program, programInterface, name);
@@ -367,7 +369,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         return getProgramResourceIndex(program, programInterface, allocator.allocateUtf8String(name));
     }
 
-    public static int getProgramResourceLocation(int program, int programInterface, Addressable name) {
+    public static int getProgramResourceLocation(int program, int programInterface, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetProgramResourceLocation).invokeExact(program, programInterface, name);
@@ -380,7 +382,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         return getProgramResourceLocation(program, programInterface, allocator.allocateUtf8String(name));
     }
 
-    public static int getProgramResourceLocationIndex(int program, int programInterface, Addressable name) {
+    public static int getProgramResourceLocationIndex(int program, int programInterface, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetProgramResourceLocationIndex).invokeExact(program, programInterface, name);
@@ -393,7 +395,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         return getProgramResourceLocationIndex(program, programInterface, allocator.allocateUtf8String(name));
     }
 
-    public static void getProgramResourceName(int program, int programInterface, int index, int bufSize, Addressable length, Addressable name) {
+    public static void getProgramResourceName(int program, int programInterface, int index, int bufSize, MemorySegment length, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glGetProgramResourceName).invokeExact(program, programInterface, index, bufSize, length, name);
@@ -402,16 +404,16 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void getProgramResourceName(int program, int programInterface, int index, Addressable length, MemorySegment name) {
+    public static void getProgramResourceName(int program, int programInterface, int index, MemorySegment length, MemorySegment name) {
         getProgramResourceName(program, programInterface, index, (int) name.byteSize(), length, name);
     }
 
     public static String getProgramResourceName(SegmentAllocator allocator, int program, int programInterface, int index, int bufSize, int @Nullable [] length) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getProgramResourceName(program, programInterface, index, bufSize, pLen, seg);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         return seg.getUtf8String(0);
     }
@@ -420,7 +422,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         return getProgramResourceName(allocator, program, programInterface, index, 1024, length);
     }
 
-    public static void getProgramResourceiv(int program, int programInterface, int index, int propCount, Addressable props, int count, Addressable length, Addressable params) {
+    public static void getProgramResourceiv(int program, int programInterface, int index, int propCount, MemorySegment props, int count, MemorySegment length, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetProgramResourceiv).invokeExact(program, programInterface, index, propCount, props, count, length, params);
@@ -429,23 +431,23 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void getProgramResourceiv(int program, int programInterface, int index, MemorySegment props, Addressable length, MemorySegment params) {
+    public static void getProgramResourceiv(int program, int programInterface, int index, MemorySegment props, MemorySegment length, MemorySegment params) {
         getProgramResourceiv(program, programInterface, index, (int) (props.byteSize() >> 2), props, (int) params.byteSize(), length, params);
     }
 
     public static void getProgramResourceiv(SegmentAllocator allocator, int program, int programInterface, int index, int[] props, int @Nullable [] length, int[] params) {
         var seg = allocator.allocateArray(JAVA_INT, params.length);
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateArray(JAVA_INT, props), params.length, pLen, seg);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         RuntimeHelper.toArray(seg, params);
     }
 
     public static int getProgramResourceiv(SegmentAllocator allocator, int program, int programInterface, int index, int[] props) {
         var seg = allocator.allocate(JAVA_INT);
-        getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateArray(JAVA_INT, props), 1, MemoryAddress.NULL, seg);
+        getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateArray(JAVA_INT, props), 1, MemorySegment.NULL, seg);
         return seg.get(JAVA_INT, 0);
     }
 
@@ -467,7 +469,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void invalidateFramebuffer(int target, int numAttachments, Addressable attachments) {
+    public static void invalidateFramebuffer(int target, int numAttachments, MemorySegment attachments) {
         var caps = getCapabilities();
         try {
             check(caps.glInvalidateFramebuffer).invokeExact(target, numAttachments, attachments);
@@ -492,7 +494,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void invalidateSubFramebuffer(int target, int numAttachments, Addressable attachments, int x, int y, int width, int height) {
+    public static void invalidateSubFramebuffer(int target, int numAttachments, MemorySegment attachments, int x, int y, int width, int height) {
         var caps = getCapabilities();
         try {
             check(caps.glInvalidateSubFramebuffer).invokeExact(target, numAttachments, attachments, x, y, width, height);
@@ -535,7 +537,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void multiDrawArraysIndirect(int mode, Addressable indirect, int drawCount, int stride) {
+    public static void multiDrawArraysIndirect(int mode, MemorySegment indirect, int drawCount, int stride) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArraysIndirect).invokeExact(mode, indirect, drawCount, stride);
@@ -545,10 +547,10 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void multiDrawArraysIndirect(int mode, DrawArraysIndirectCommand.Buffer indirect, int drawCount, int stride) {
-        multiDrawArraysIndirect(mode, indirect.rawAddress(), drawCount, stride);
+        multiDrawArraysIndirect(mode, indirect.address(), drawCount, stride);
     }
 
-    public static void multiDrawElementsIndirect(int mode, int type, Addressable indirect, int drawCount, int stride) {
+    public static void multiDrawElementsIndirect(int mode, int type, MemorySegment indirect, int drawCount, int stride) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElementsIndirect).invokeExact(mode, type, indirect, drawCount, stride);
@@ -558,10 +560,10 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void multiDrawElementsIndirect(int mode, int type, DrawElementsIndirectCommand.Buffer indirect, int drawCount, int stride) {
-        multiDrawElementsIndirect(mode, type, indirect.rawAddress(), drawCount, stride);
+        multiDrawElementsIndirect(mode, type, indirect.address(), drawCount, stride);
     }
 
-    public static void objectLabel(int identifier, int name, int length, Addressable label) {
+    public static void objectLabel(int identifier, int name, int length, MemorySegment label) {
         var caps = getCapabilities();
         try {
             check(caps.glObjectLabel).invokeExact(identifier, name, length, label);
@@ -574,7 +576,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         objectLabel(identifier, name, -1, allocator.allocateUtf8String(label));
     }
 
-    public static void objectPtrLabel(MemoryAddress ptr, int length, Addressable label) {
+    public static void objectPtrLabel(MemorySegment ptr, int length, MemorySegment label) {
         var caps = getCapabilities();
         try {
             check(caps.glObjectPtrLabel).invokeExact(ptr, length, label);
@@ -583,7 +585,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void objectPtrLabel(SegmentAllocator allocator, MemoryAddress ptr, String label) {
+    public static void objectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, String label) {
         objectPtrLabel(ptr, -1, allocator.allocateUtf8String(label));
     }
 
@@ -596,7 +598,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void pushDebugGroup(int source, int id, int length, Addressable message) {
+    public static void pushDebugGroup(int source, int id, int length, MemorySegment message) {
         var caps = getCapabilities();
         try {
             check(caps.glPushDebugGroup).invokeExact(source, id, length, message);

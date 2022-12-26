@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.sun;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -95,7 +95,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glColor3fVertex3fvSUN(Addressable c, Addressable v) {
+    public static void glColor3fVertex3fvSUN(MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glColor3fVertex3fvSUN).invokeExact(c, v);
@@ -117,7 +117,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glColor4fNormal3fVertex3fvSUN(Addressable c, Addressable n, Addressable v) {
+    public static void glColor4fNormal3fVertex3fvSUN(MemorySegment c, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glColor4fNormal3fVertex3fvSUN).invokeExact(c, n, v);
@@ -139,7 +139,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glColor4ubVertex2fvSUN(Addressable c, Addressable v) {
+    public static void glColor4ubVertex2fvSUN(MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glColor4ubVertex2fvSUN).invokeExact(c, v);
@@ -161,7 +161,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glColor4ubVertex3fvSUN(Addressable c, Addressable v) {
+    public static void glColor4ubVertex3fvSUN(MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glColor4ubVertex3fvSUN).invokeExact(c, v);
@@ -183,7 +183,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glNormal3fVertex3fvSUN(Addressable n, Addressable v) {
+    public static void glNormal3fVertex3fvSUN(MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glNormal3fVertex3fvSUN).invokeExact(n, v);
@@ -205,7 +205,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiColor3fVertex3fvSUN(Addressable rc, Addressable c, Addressable v) {
+    public static void glReplacementCodeuiColor3fVertex3fvSUN(MemorySegment rc, MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor3fVertex3fvSUN).invokeExact(rc, c, v);
@@ -227,7 +227,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiColor4fNormal3fVertex3fvSUN(Addressable rc, Addressable c, Addressable n, Addressable v) {
+    public static void glReplacementCodeuiColor4fNormal3fVertex3fvSUN(MemorySegment rc, MemorySegment c, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor4fNormal3fVertex3fvSUN).invokeExact(rc, c, n, v);
@@ -249,7 +249,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiColor4ubVertex3fvSUN(Addressable rc, Addressable c, Addressable v) {
+    public static void glReplacementCodeuiColor4ubVertex3fvSUN(MemorySegment rc, MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiColor4ubVertex3fvSUN).invokeExact(rc, c, v);
@@ -271,7 +271,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiNormal3fVertex3fvSUN(Addressable rc, Addressable n, Addressable v) {
+    public static void glReplacementCodeuiNormal3fVertex3fvSUN(MemorySegment rc, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiNormal3fVertex3fvSUN).invokeExact(rc, n, v);
@@ -293,7 +293,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(Addressable rc, Addressable tc, Addressable c, Addressable n, Addressable v) {
+    public static void glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(MemorySegment rc, MemorySegment tc, MemorySegment c, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN).invokeExact(rc, tc, c, n, v);
@@ -315,7 +315,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(Addressable rc, Addressable tc, Addressable n, Addressable v) {
+    public static void glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(MemorySegment rc, MemorySegment tc, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN).invokeExact(rc, tc, n, v);
@@ -337,7 +337,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiTexCoord2fVertex3fvSUN(Addressable rc, Addressable tc, Addressable v) {
+    public static void glReplacementCodeuiTexCoord2fVertex3fvSUN(MemorySegment rc, MemorySegment tc, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiTexCoord2fVertex3fvSUN).invokeExact(rc, tc, v);
@@ -359,7 +359,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glReplacementCodeuiVertex3fvSUN(Addressable rc, Addressable v) {
+    public static void glReplacementCodeuiVertex3fvSUN(MemorySegment rc, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuiVertex3fvSUN).invokeExact(rc, v);
@@ -381,7 +381,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord2fColor3fVertex3fvSUN(Addressable tc, Addressable c, Addressable v) {
+    public static void glTexCoord2fColor3fVertex3fvSUN(MemorySegment tc, MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor3fVertex3fvSUN).invokeExact(tc, c, v);
@@ -403,7 +403,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord2fColor4fNormal3fVertex3fvSUN(Addressable tc, Addressable c, Addressable n, Addressable v) {
+    public static void glTexCoord2fColor4fNormal3fVertex3fvSUN(MemorySegment tc, MemorySegment c, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor4fNormal3fVertex3fvSUN).invokeExact(tc, c, n, v);
@@ -425,7 +425,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord2fColor4ubVertex3fvSUN(Addressable tc, Addressable c, Addressable v) {
+    public static void glTexCoord2fColor4ubVertex3fvSUN(MemorySegment tc, MemorySegment c, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fColor4ubVertex3fvSUN).invokeExact(tc, c, v);
@@ -447,7 +447,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord2fNormal3fVertex3fvSUN(Addressable tc, Addressable n, Addressable v) {
+    public static void glTexCoord2fNormal3fVertex3fvSUN(MemorySegment tc, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fNormal3fVertex3fvSUN).invokeExact(tc, n, v);
@@ -469,7 +469,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord2fVertex3fvSUN(Addressable tc, Addressable v) {
+    public static void glTexCoord2fVertex3fvSUN(MemorySegment tc, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord2fVertex3fvSUN).invokeExact(tc, v);
@@ -491,7 +491,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord4fColor4fNormal3fVertex4fvSUN(Addressable tc, Addressable c, Addressable n, Addressable v) {
+    public static void glTexCoord4fColor4fNormal3fVertex4fvSUN(MemorySegment tc, MemorySegment c, MemorySegment n, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord4fColor4fNormal3fVertex4fvSUN).invokeExact(tc, c, n, v);
@@ -513,7 +513,7 @@ public final class GLSUNVertex {
         }
     }
 
-    public static void glTexCoord4fVertex4fvSUN(Addressable tc, Addressable v) {
+    public static void glTexCoord4fVertex4fvSUN(MemorySegment tc, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glTexCoord4fVertex4fvSUN).invokeExact(tc, v);

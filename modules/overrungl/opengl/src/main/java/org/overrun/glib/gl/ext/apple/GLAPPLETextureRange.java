@@ -28,7 +28,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 import static org.overrun.glib.FunctionDescriptors.IIPV;
 
@@ -45,7 +45,7 @@ public final class GLAPPLETextureRange {
         ext.glTextureRangeAPPLE = load.invoke("glTextureRangeAPPLE", IIPV);
     }
 
-    public static void glGetTexParameterPointervAPPLE(int target, int pname, Addressable params) {
+    public static void glGetTexParameterPointervAPPLE(int target, int pname, MemorySegment params) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glGetTexParameterPointervAPPLE).invokeExact(target, pname, params);
@@ -54,7 +54,7 @@ public final class GLAPPLETextureRange {
         }
     }
 
-    public static void glTextureRangeAPPLE(int target, int length, Addressable pointer) {
+    public static void glTextureRangeAPPLE(int target, int length, MemorySegment pointer) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glTextureRangeAPPLE).invokeExact(target, length, pointer);

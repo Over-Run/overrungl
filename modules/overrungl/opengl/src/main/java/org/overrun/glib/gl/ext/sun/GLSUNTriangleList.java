@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.sun;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -53,7 +53,7 @@ public final class GLSUNTriangleList {
         ext.glReplacementCodeusvSUN = load.invoke("glReplacementCodeusvSUN", PV);
     }
 
-    public static void glReplacementCodePointerSUN(int type, int stride, Addressable pointer) {
+    public static void glReplacementCodePointerSUN(int type, int stride, MemorySegment pointer) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodePointerSUN).invokeExact(type, stride, pointer);
@@ -71,7 +71,7 @@ public final class GLSUNTriangleList {
         }
     }
 
-    public static void glReplacementCodeubvSUN(Addressable code) {
+    public static void glReplacementCodeubvSUN(MemorySegment code) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeubvSUN).invokeExact(code);
@@ -93,7 +93,7 @@ public final class GLSUNTriangleList {
         }
     }
 
-    public static void glReplacementCodeuivSUN(Addressable code) {
+    public static void glReplacementCodeuivSUN(MemorySegment code) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeuivSUN).invokeExact(code);
@@ -115,7 +115,7 @@ public final class GLSUNTriangleList {
         }
     }
 
-    public static void glReplacementCodeusvSUN(Addressable code) {
+    public static void glReplacementCodeusvSUN(MemorySegment code) {
         var ext = getExtCapabilities();
         try {
             check(ext.glReplacementCodeusvSUN).invokeExact(code);

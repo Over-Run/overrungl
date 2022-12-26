@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.ICallback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -46,7 +48,7 @@ import java.lang.invoke.MethodType;
 @FunctionalInterface
 public interface IGLFWCursorEnterFun extends ICallback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for cursor enter/leave callbacks.
@@ -55,9 +57,9 @@ public interface IGLFWCursorEnterFun extends ICallback {
      * @param entered {@code true} if the cursor entered the window's content
      *                area, or {@code false} if it left it.
      */
-    void invoke(MemoryAddress window, boolean entered);
+    void invoke(MemorySegment window, boolean entered);
 
-    default void ninvoke(MemoryAddress window, int entered) {
+    default void ninvoke(MemorySegment window, int entered) {
         invoke(window, entered == GLFW.TRUE);
     }
 

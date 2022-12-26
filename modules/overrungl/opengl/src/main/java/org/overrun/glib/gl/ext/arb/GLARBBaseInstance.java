@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.arb;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static org.overrun.glib.gl.GL42C.*;
@@ -46,7 +46,7 @@ public final class GLARBBaseInstance {
         drawArraysInstancedBaseInstance(mode, first, count, instanceCount, baseInstance);
     }
 
-    public static void glDrawElementsInstancedBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseInstance) {
+    public static void glDrawElementsInstancedBaseInstance(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseInstance) {
         drawElementsInstancedBaseInstance(mode, count, type, indices, instanceCount, baseInstance);
     }
 
@@ -62,7 +62,7 @@ public final class GLARBBaseInstance {
         drawElementsInstancedBaseInstance(allocator, mode, count, type, indices, instanceCount, baseInstance);
     }
 
-    public static void glDrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex, int baseInstance) {
+    public static void glDrawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseVertex, int baseInstance) {
         drawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, instanceCount, baseVertex, baseInstance);
     }
 

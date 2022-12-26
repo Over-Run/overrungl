@@ -26,6 +26,7 @@ package org.overrun.glib.stb;
 
 import org.overrun.glib.ICallback;
 import org.overrun.glib.Pointer;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -70,7 +71,7 @@ public class STBIIoCallbacks extends Pointer {
      * @param address the address
      * @param scope   the segment scope
      */
-    public STBIIoCallbacks(Addressable address, MemorySession scope) {
+    public STBIIoCallbacks(MemorySegment address, SegmentScope scope) {
         super(address, scope);
     }
 
@@ -82,8 +83,8 @@ public class STBIIoCallbacks extends Pointer {
      */
     @FunctionalInterface
     public interface Read extends ICallback {
-        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        MethodType MTYPE = MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class, int.class);
+        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED, RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
+        MethodType MTYPE = DESC.toMethodType();
 
         /**
          * Fill {@code data} with {@code size} bytes.
@@ -93,7 +94,7 @@ public class STBIIoCallbacks extends Pointer {
          * @param size bytes size to fill
          * @return number of bytes actually read
          */
-        int invoke(MemoryAddress user, MemoryAddress data, int size);
+        int invoke(MemorySegment user, MemorySegment data, int size);
 
         @Override
         default FunctionDescriptor descriptor() {
@@ -114,8 +115,8 @@ public class STBIIoCallbacks extends Pointer {
      */
     @FunctionalInterface
     public interface Skip extends ICallback {
-        FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class);
+        FunctionDescriptor DESC = FunctionDescriptor.ofVoid(RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
+        MethodType MTYPE = DESC.toMethodType();
 
         /**
          * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
@@ -123,7 +124,7 @@ public class STBIIoCallbacks extends Pointer {
          * @param user userdata
          * @param n    bytes size to skip
          */
-        void invoke(MemoryAddress user, int n);
+        void invoke(MemorySegment user, int n);
 
         @Override
         default FunctionDescriptor descriptor() {
@@ -144,8 +145,8 @@ public class STBIIoCallbacks extends Pointer {
      */
     @FunctionalInterface
     public interface Eof extends ICallback {
-        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        MethodType MTYPE = MethodType.methodType(int.class, MemoryAddress.class);
+        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED);
+        MethodType MTYPE = DESC.toMethodType();
 
         /**
          * Returns nonzero if we are at end of file/data
@@ -153,7 +154,7 @@ public class STBIIoCallbacks extends Pointer {
          * @param user userdata
          * @return nonzero if we are at end of file/data
          */
-        int invoke(MemoryAddress user);
+        int invoke(MemorySegment user);
 
         @Override
         default FunctionDescriptor descriptor() {
@@ -172,8 +173,8 @@ public class STBIIoCallbacks extends Pointer {
      * @param scope the segment scope
      * @return the instance
      */
-    public static STBIIoCallbacks create(MemorySession scope) {
-        return new STBIIoCallbacks(scope.allocate(LAYOUT), scope);
+    public static STBIIoCallbacks create(SegmentScope scope) {
+        return new STBIIoCallbacks(MemorySegment.allocateNative(LAYOUT, scope), scope);
     }
 
     /**
@@ -181,8 +182,8 @@ public class STBIIoCallbacks extends Pointer {
      *
      * @return the read callback
      */
-    public MemoryAddress read() {
-        return (MemoryAddress) pRead.get(segment(LAYOUT, scope));
+    public MemorySegment read() {
+        return (MemorySegment) pRead.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -190,8 +191,8 @@ public class STBIIoCallbacks extends Pointer {
      *
      * @return the skip callback
      */
-    public MemoryAddress skip() {
-        return (MemoryAddress) pSkip.get(segment(LAYOUT, scope));
+    public MemorySegment skip() {
+        return (MemorySegment) pSkip.get(segment(LAYOUT, scope));
     }
 
     /**
@@ -199,8 +200,8 @@ public class STBIIoCallbacks extends Pointer {
      *
      * @return the eof callback
      */
-    public MemoryAddress eof() {
-        return (MemoryAddress) pEof.get(segment(LAYOUT, scope));
+    public MemorySegment eof() {
+        return (MemorySegment) pEof.get(segment(LAYOUT, scope));
     }
 
     /**

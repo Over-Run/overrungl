@@ -24,10 +24,10 @@
 
 package org.overrun.glib;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
- * An object that has an {@link Addressable} value.
+ * An object that has a {@link MemorySegment} value.
  *
  * @author squid233
  * @since 0.1.0
@@ -35,18 +35,9 @@ import java.lang.foreign.Addressable;
 @FunctionalInterface
 public interface HasAddress {
     /**
-     * The raw address value.
+     * The address value.
      *
      * @return the address
      */
-    Addressable rawAddress();
-
-    /**
-     * The address value. Defaulted to the {@link #rawAddress() raw address}.
-     *
-     * @return the address
-     */
-    default Addressable address() {
-        return rawAddress().address();
-    }
+    MemorySegment address();
 }

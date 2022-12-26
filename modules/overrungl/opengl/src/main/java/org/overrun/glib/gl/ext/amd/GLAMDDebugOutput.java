@@ -28,10 +28,9 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -54,7 +53,7 @@ public final class GLAMDDebugOutput {
         ext.glGetDebugMessageLogAMD = load.invoke("glGetDebugMessageLogAMD", IIPPPPPI);
     }
 
-    public static void glDebugMessageCallbackAMD(Addressable callback, Addressable userParam) {
+    public static void glDebugMessageCallbackAMD(MemorySegment callback, MemorySegment userParam) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageCallbackAMD).invokeExact(callback, userParam);
@@ -63,11 +62,11 @@ public final class GLAMDDebugOutput {
         }
     }
 
-    public static void glDebugMessageCallbackAMD(MemorySession arena, GLDebugProcAMD callback, Addressable userParam) {
-        glDebugMessageCallbackAMD(callback.address(arena), userParam);
+    public static void glDebugMessageCallbackAMD(SegmentScope scope, GLDebugProcAMD callback, MemorySegment userParam) {
+        glDebugMessageCallbackAMD(callback.address(scope), userParam);
     }
 
-    public static void glDebugMessageEnableAMD(int category, int severity, int count, Addressable ids, boolean enabled) {
+    public static void glDebugMessageEnableAMD(int category, int severity, int count, MemorySegment ids, boolean enabled) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
@@ -80,7 +79,7 @@ public final class GLAMDDebugOutput {
         glDebugMessageEnableAMD(category, severity, ids.length, allocator.allocateArray(JAVA_INT, ids), enabled);
     }
 
-    public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, Addressable buf) {
+    public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, MemorySegment buf) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
@@ -93,7 +92,7 @@ public final class GLAMDDebugOutput {
         glDebugMessageInsertAMD(category, severity, id, 0, allocator.allocateUtf8String(buf));
     }
 
-    public static int glGetDebugMessageLogAMD(int count, int bufSize, Addressable categories, Addressable severities, Addressable ids, Addressable lengths, Addressable message) {
+    public static int glGetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {
         var ext = getExtCapabilities();
         try {
             return (int) check(ext.glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);

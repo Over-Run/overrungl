@@ -28,8 +28,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -49,16 +48,16 @@ public final class GLINTELMapTexture {
         ext.glUnmapTexture2DINTEL = load.invoke("glUnmapTexture2DINTEL", IIV);
     }
 
-    public static MemoryAddress glMapTexture2DINTEL(int texture, int level, int access, Addressable stride, Addressable layout) {
+    public static MemorySegment glMapTexture2DINTEL(int texture, int level, int access, MemorySegment stride, MemorySegment layout) {
         var ext = GLLoader.getExtCapabilities();
         try {
-            return (MemoryAddress) GLLoader.check(ext.glMapTexture2DINTEL).invokeExact(texture, level, access, stride, layout);
+            return (MemorySegment) GLLoader.check(ext.glMapTexture2DINTEL).invokeExact(texture, level, access, stride, layout);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static MemoryAddress glMapTexture2DINTEL(SegmentAllocator allocator, int texture, int level, int access, int[] stride, int[] layout) {
+    public static MemorySegment glMapTexture2DINTEL(SegmentAllocator allocator, int texture, int level, int access, int[] stride, int[] layout) {
         var pStride = allocator.allocate(ValueLayout.JAVA_INT);
         var pLayout = allocator.allocate(ValueLayout.JAVA_INT);
         var result = glMapTexture2DINTEL(texture, level, access, pStride, pLayout);

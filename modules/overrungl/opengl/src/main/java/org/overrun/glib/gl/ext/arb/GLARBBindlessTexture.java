@@ -28,7 +28,7 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_LONG;
@@ -90,7 +90,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glGetVertexAttribLui64vARB(int index, int pname, Addressable params) {
+    public static void glGetVertexAttribLui64vARB(int index, int pname, MemorySegment params) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetVertexAttribLui64vARB).invokeExact(index, pname, params);
@@ -168,7 +168,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glProgramUniformHandleui64vARB(int program, int location, int count, Addressable values) {
+    public static void glProgramUniformHandleui64vARB(int program, int location, int count, MemorySegment values) {
         var ext = getExtCapabilities();
         try {
             check(ext.glProgramUniformHandleui64vARB).invokeExact(program, location, count, values);
@@ -190,7 +190,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glUniformHandleui64vARB(int location, int count, Addressable value) {
+    public static void glUniformHandleui64vARB(int location, int count, MemorySegment value) {
         var ext = getExtCapabilities();
         try {
             check(ext.glUniformHandleui64vARB).invokeExact(location, count, value);
@@ -212,7 +212,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glVertexAttribL1ui64vARB(int index, Addressable v) {
+    public static void glVertexAttribL1ui64vARB(int index, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glVertexAttribL1ui64vARB).invokeExact(index, v);

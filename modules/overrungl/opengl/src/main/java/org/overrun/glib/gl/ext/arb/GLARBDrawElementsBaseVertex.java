@@ -27,7 +27,7 @@ package org.overrun.glib.gl.ext.arb;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static org.overrun.glib.gl.GL32C.*;
@@ -42,7 +42,7 @@ public final class GLARBDrawElementsBaseVertex {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
     }
 
-    public static void glDrawElementsBaseVertex(int mode, int count, int type, Addressable indices, int baseVertex) {
+    public static void glDrawElementsBaseVertex(int mode, int count, int type, MemorySegment indices, int baseVertex) {
         drawElementsBaseVertex(mode, count, type, indices, baseVertex);
     }
 
@@ -58,7 +58,7 @@ public final class GLARBDrawElementsBaseVertex {
         drawElementsBaseVertex(allocator, mode, count, type, indices, baseVertex);
     }
 
-    public static void glDrawElementsInstancedBaseVertex(int mode, int count, int type, Addressable indices, int instanceCount, int baseVertex) {
+    public static void glDrawElementsInstancedBaseVertex(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseVertex) {
         drawElementsInstancedBaseVertex(mode, count, type, indices, instanceCount, baseVertex);
     }
 
@@ -74,7 +74,7 @@ public final class GLARBDrawElementsBaseVertex {
         drawElementsInstancedBaseVertex(allocator, mode, count, type, indices, instanceCount, baseVertex);
     }
 
-    public static void glDrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, Addressable indices, int baseVertex) {
+    public static void glDrawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, MemorySegment indices, int baseVertex) {
         drawRangeElementsBaseVertex(mode, start, end, count, type, indices, baseVertex);
     }
 
@@ -90,11 +90,11 @@ public final class GLARBDrawElementsBaseVertex {
         drawRangeElementsBaseVertex(allocator, mode, start, end, count, type, indices, baseVertex);
     }
 
-    public static void glMultiDrawElementsBaseVertex(int mode, Addressable count, int type, Addressable indices, int drawCount, Addressable baseVertex) {
+    public static void glMultiDrawElementsBaseVertex(int mode, MemorySegment count, int type, MemorySegment indices, int drawCount, MemorySegment baseVertex) {
         multiDrawElementsBaseVertex(mode, count, type, indices, drawCount, baseVertex);
     }
 
-    public static void glMultiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, Addressable[] indices, int drawCount, int[] baseVertex) {
+    public static void glMultiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, MemorySegment[] indices, int drawCount, int[] baseVertex) {
         multiDrawElementsBaseVertex(allocator, mode, count, type, indices, drawCount, baseVertex);
     }
 

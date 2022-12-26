@@ -74,18 +74,18 @@ public class GLFWGammaRamp extends Pointer {
      * @param address the address
      * @param scope   the segment scope
      */
-    public GLFWGammaRamp(Addressable address, MemorySession scope) {
+    public GLFWGammaRamp(MemorySegment address, SegmentScope scope) {
         super(address, scope);
     }
 
     /**
-     * Creates a {@code GLFWgammaramp} instance with the given memory session.
+     * Creates a {@code GLFWgammaramp} instance with the given segment scope.
      *
      * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWGammaRamp create(MemorySession scope) {
-        return new GLFWGammaRamp(scope.allocate(LAYOUT), scope);
+    public static GLFWGammaRamp create(SegmentScope scope) {
+        return new GLFWGammaRamp(MemorySegment.allocateNative(LAYOUT, scope), scope);
     }
 
     /**
@@ -95,7 +95,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        ppRed.set(segment(LAYOUT, scope), scope.allocateArray(JAVA_SHORT, reds));
+        var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(reds.length, JAVA_SHORT), scope);
+        MemorySegment.copy(reds, 0, seg, JAVA_SHORT, 0, reds.length);
+        ppRed.set(segment(LAYOUT, scope()), seg);
         return this;
     }
 
@@ -106,7 +108,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        ppGreen.set(segment(LAYOUT, scope), scope.allocateArray(JAVA_SHORT, greens));
+        var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(greens.length, JAVA_SHORT), scope);
+        MemorySegment.copy(greens, 0, seg, JAVA_SHORT, 0, greens.length);
+        ppGreen.set(segment(LAYOUT, scope()), seg);
         return this;
     }
 
@@ -117,7 +121,9 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        ppBlue.set(segment(LAYOUT, scope), scope.allocateArray(JAVA_SHORT, blues));
+        var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(blues.length, JAVA_SHORT), scope);
+        MemorySegment.copy(blues, 0, seg, JAVA_SHORT, 0, blues.length);
+        ppBlue.set(segment(LAYOUT, scope()), seg);
         return this;
     }
 
@@ -128,7 +134,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        pSize.set(segment(LAYOUT, scope), size);
+        pSize.set(segment(LAYOUT, scope()), size);
         return this;
     }
 
@@ -139,7 +145,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the red value
      */
     public short red(int index) {
-        return (short) pRed.get(segment(LAYOUT, scope), (long) index);
+        return (short) pRed.get(segment(LAYOUT, scope()), (long) index);
     }
 
     /**
@@ -149,7 +155,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the green value
      */
     public short green(int index) {
-        return (short) pGreen.get(segment(LAYOUT, scope), (long) index);
+        return (short) pGreen.get(segment(LAYOUT, scope()), (long) index);
     }
 
     /**
@@ -159,7 +165,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the blue value
      */
     public short blue(int index) {
-        return (short) pBlue.get(segment(LAYOUT, scope), (long) index);
+        return (short) pBlue.get(segment(LAYOUT, scope()), (long) index);
     }
 
     /**
@@ -225,18 +231,18 @@ public class GLFWGammaRamp extends Pointer {
      * @return The number of elements in each array.
      */
     public int size() {
-        return (int) pSize.get(segment(LAYOUT, scope));
+        return (int) pSize.get(segment(LAYOUT, scope()));
     }
 
-    public MemoryAddress nred() {
-        return (MemoryAddress) ppRed.get(segment(LAYOUT, scope));
+    public MemorySegment nred() {
+        return (MemorySegment) ppRed.get(segment(LAYOUT, scope()));
     }
 
-    public MemoryAddress ngreen() {
-        return (MemoryAddress) ppGreen.get(segment(LAYOUT, scope));
+    public MemorySegment ngreen() {
+        return (MemorySegment) ppGreen.get(segment(LAYOUT, scope()));
     }
 
-    public MemoryAddress nblue() {
-        return (MemoryAddress) ppBlue.get(segment(LAYOUT, scope));
+    public MemorySegment nblue() {
+        return (MemorySegment) ppBlue.get(segment(LAYOUT, scope()));
     }
 }

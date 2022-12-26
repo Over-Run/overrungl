@@ -7,5 +7,5 @@ Added
 - OpenGL Loader
 - STB Image
 - C memory function
-- Vertex buffer builder
+- Growable buffer
 - Native memory access for JOML

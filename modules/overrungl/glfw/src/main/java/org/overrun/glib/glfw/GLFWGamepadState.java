@@ -68,7 +68,7 @@ public class GLFWGamepadState extends Pointer {
      * @param address the address
      * @param scope   the segment scope
      */
-    public GLFWGamepadState(Addressable address, MemorySession scope) {
+    public GLFWGamepadState(MemorySegment address, SegmentScope scope) {
         super(address, scope);
     }
 
@@ -78,8 +78,8 @@ public class GLFWGamepadState extends Pointer {
      * @param scope the segment scope
      * @return the instance
      */
-    public static GLFWGamepadState create(MemorySession scope) {
-        return new GLFWGamepadState(scope.allocate(LAYOUT), scope);
+    public static GLFWGamepadState create(SegmentScope scope) {
+        return new GLFWGamepadState(MemorySegment.allocateNative(LAYOUT, scope), scope);
     }
 
     /**
@@ -89,7 +89,7 @@ public class GLFWGamepadState extends Pointer {
      * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
      * {@code PRESS} or {@code RELEASE}.
      */
-    public byte[] buttons(MemorySession scope) {
+    public byte[] buttons(SegmentScope scope) {
         var seg = segment(LAYOUT, scope);
         byte[] arr = new byte[15];
         for (int i = 0; i < arr.length; i++) {
@@ -105,7 +105,7 @@ public class GLFWGamepadState extends Pointer {
      * {@code PRESS} or {@code RELEASE}.
      */
     public byte[] buttons() {
-        return buttons(scope);
+        return buttons(scope());
     }
 
     /**
@@ -115,7 +115,7 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        var seg = segment(LAYOUT, scope);
+        var seg = segment(LAYOUT, scope());
         return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
     }
 
@@ -126,7 +126,7 @@ public class GLFWGamepadState extends Pointer {
      * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
      * in the range -1.0 to 1.0 inclusive.
      */
-    public float[] axes(MemorySession scope) {
+    public float[] axes(SegmentScope scope) {
         var seg = segment(LAYOUT, scope);
         float[] arr = new float[6];
         for (int i = 0; i < arr.length; i++) {
@@ -142,7 +142,7 @@ public class GLFWGamepadState extends Pointer {
      * in the range -1.0 to 1.0 inclusive.
      */
     public float[] axes() {
-        return axes(scope);
+        return axes(scope());
     }
 
     /**
@@ -152,7 +152,7 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        var seg = segment(LAYOUT, scope);
+        var seg = segment(LAYOUT, scope());
         return (float) pAxes.get(seg, (long) index);
     }
 }

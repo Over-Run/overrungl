@@ -26,6 +26,8 @@ package org.overrun.glib.util;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+
 /**
  * @author Spasi
  * @author lwjgl3
@@ -33,6 +35,15 @@ import org.jetbrains.annotations.Nullable;
  */
 final class StackWalkUtil {
     private static final StackWalker STACKWALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+
+    private StackWalkUtil() {
+    }
+
+    static StackTraceElement[] stackWalkArray(Object[] a) {
+        return Arrays.stream(((StackWalker.StackFrame[]) a))
+            .map(StackWalker.StackFrame::toStackTraceElement)
+            .toArray(StackTraceElement[]::new);
+    }
 
     static Object stackWalkGetMethod(Class<?> after) {
         return STACKWALKER.walk(s -> {
@@ -98,5 +109,17 @@ final class StackWalkUtil {
 
             return element;
         });
+    }
+
+    static Object[] stackWalkGetTrace() {
+        return StackWalker.getInstance()
+            .walk(s -> s
+                .skip(2)
+                .dropWhile(f -> {
+                    String name = f.getClassName();
+                    return name.equals(MemoryUtil.class.getName()) || name.equals(DebugAllocator.class.getName());
+                })
+                .toArray(StackWalker.StackFrame[]::new)
+            );
     }
 }

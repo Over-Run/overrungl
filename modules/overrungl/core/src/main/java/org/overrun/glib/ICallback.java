@@ -2,7 +2,7 @@ package org.overrun.glib;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.SegmentScope;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 
@@ -20,7 +20,7 @@ public interface ICallback {
      * @param scope the segment scope
      * @return the memory address
      */
-    default MemorySegment address(MemorySession scope) {
+    default MemorySegment address(SegmentScope scope) {
         return segment(scope, descriptor());
     }
 
@@ -49,7 +49,7 @@ public interface ICallback {
      * @param function the function descriptor
      * @return the memory segment
      */
-    default MemorySegment segment(MemorySession scope,
+    default MemorySegment segment(SegmentScope scope,
                                   FunctionDescriptor function) {
         try {
             return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, scope);

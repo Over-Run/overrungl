@@ -1,9 +1,13 @@
 package org.overrun.glib;
 
-import java.lang.foreign.*;
+import org.jetbrains.annotations.Nullable;
+
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentScope;
 
 /**
- * A {@link MemoryAddress} wrapper.
+ * A {@link MemorySegment} wrapper.
  *
  * @author squid233
  * @since 0.1.0
@@ -12,11 +16,15 @@ public class Pointer implements HasAddress {
     /**
      * The pointer address.
      */
-    protected final Addressable address;
+    protected final MemorySegment address;
     /**
      * The pointer segment scope.
      */
-    protected final MemorySession scope;
+    protected final SegmentScope scope;
+    /**
+     * The managed memory segment.
+     */
+    protected @Nullable MemorySegment managed;
 
     /**
      * Create the pointer instance.
@@ -24,19 +32,9 @@ public class Pointer implements HasAddress {
      * @param address the address
      * @param scope   the segment scope
      */
-    public Pointer(Addressable address, MemorySession scope) {
+    public Pointer(MemorySegment address, SegmentScope scope) {
         this.address = address;
         this.scope = scope;
-    }
-
-    /**
-     * Gets the address as {@link Addressable}.
-     *
-     * @return the address
-     */
-    @Override
-    public Addressable rawAddress() {
-        return address;
     }
 
     /**
@@ -45,8 +43,8 @@ public class Pointer implements HasAddress {
      * @return the memory address
      */
     @Override
-    public MemoryAddress address() {
-        return rawAddress().address();
+    public MemorySegment address() {
+        return address;
     }
 
     /**
@@ -54,7 +52,7 @@ public class Pointer implements HasAddress {
      *
      * @return the segment scope
      */
-    public MemorySession scope() {
+    public SegmentScope scope() {
         return scope;
     }
 
@@ -65,11 +63,11 @@ public class Pointer implements HasAddress {
      * @param scope     the segment scope to allocate
      * @return the memory segment
      */
-    public MemorySegment segment(long bytesSize, MemorySession scope) {
-        if (rawAddress() instanceof MemorySegment segment) {
-            return segment;
+    public MemorySegment segment(long bytesSize, SegmentScope scope) {
+        if (address().byteSize() == 0) {
+            return MemorySegment.ofAddress(address().address(), bytesSize, scope);
         }
-        return MemorySegment.ofAddress(address(), bytesSize, scope);
+        return address();
     }
 
     /**
@@ -79,7 +77,7 @@ public class Pointer implements HasAddress {
      * @param scope  the segment scope to allocate
      * @return the memory segment
      */
-    public MemorySegment segment(MemoryLayout layout, MemorySession scope) {
+    public MemorySegment segment(MemoryLayout layout, SegmentScope scope) {
         return segment(layout.byteSize(), scope);
     }
 }
