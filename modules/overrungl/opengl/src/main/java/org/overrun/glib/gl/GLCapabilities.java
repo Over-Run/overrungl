@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -353,7 +353,7 @@ public class GLCapabilities {
         ext = new GLExtCaps(this);
 
         try (var arena = Arena.openShared()) {
-            if (!ext.findExtensionsGL(version, arena, this)) return 0;
+            if (!GLExtFinder.findExtensionsGL(ext, version, arena, this)) return 0;
             findCoreGL(true);
         }
         ext.load(load);

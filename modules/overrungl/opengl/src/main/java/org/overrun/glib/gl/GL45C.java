@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1323,9 +1323,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, attachment);
-            invalidateNamedFramebufferData(framebuffer, 1, mem);
+            invalidateNamedFramebufferData(framebuffer, 1, stack.ints(attachment));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1348,9 +1346,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, attachment);
-            invalidateNamedFramebufferSubData(framebuffer, 1, mem, x, y, width, height);
+            invalidateNamedFramebufferSubData(framebuffer, 1, stack.ints(attachment), x, y, width, height);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1402,7 +1398,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     }
 
     public static void namedBufferData(int buffer, long size, int usage) {
-        namedBufferData(buffer, size, MemoryAddress.NULL, usage);
+        namedBufferData(buffer, size, MemorySegment.NULL, usage);
     }
 
     public static void namedBufferData(SegmentAllocator allocator, int buffer, byte[] data, int usage) {

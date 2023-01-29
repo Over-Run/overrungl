@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -191,9 +191,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         long stackPointer = stack.getPointer();
         try {
             var seg = stack.calloc(JAVA_INT);
-            var pi = stack.calloc(JAVA_INT);
-            pi.set(JAVA_INT, 0, uniformIndex);
-            getActiveUniformsiv(program, 1, pi, pname, seg);
+            getActiveUniformsiv(program, 1, stack.ints(uniformIndex), pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
             stack.setPointer(stackPointer);

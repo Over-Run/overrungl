@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -114,7 +114,7 @@ final class DebugAllocator {
     private static void trackAbortPrint(Allocation allocation, String name, String address) {
         StringBuilder sb = new StringBuilder(512);
 
-        sb.append("[LWJGL] ")
+        sb.append("[OverrunGL] ")
             .append(name)
             .append(" allocation with size ")
             .append(allocation.size)

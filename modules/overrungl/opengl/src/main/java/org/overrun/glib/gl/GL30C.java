@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -323,9 +323,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, framebuffer);
-            deleteFramebuffers(1, mem);
+            deleteFramebuffers(1, stack.ints(framebuffer));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -348,9 +346,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, renderbuffer);
-            deleteRenderbuffers(1, mem);
+            deleteRenderbuffers(1, stack.ints(renderbuffer));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -373,9 +369,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, array);
-            deleteVertexArrays(1, mem);
+            deleteVertexArrays(1, stack.ints(array));
         } finally {
             stack.setPointer(stackPointer);
         }

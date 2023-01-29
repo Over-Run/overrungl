@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,10 @@ import org.overrun.glib.Configurations;
 import org.overrun.glib.Pointer;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.util.Arrays;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
+import static java.lang.foreign.ValueLayout.*;
 
 /**
  * An off-heap memory stack.
@@ -48,7 +46,7 @@ import static java.lang.foreign.ValueLayout.ADDRESS;
  * @see Configurations#DEBUG_STACK
  * @since 0.1.0
  */
-public class MemoryStack extends Pointer implements AutoCloseable {
+public class MemoryStack extends Pointer implements SegmentAllocator, AutoCloseable {
     private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
@@ -109,7 +107,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param capacity the maximum number of bytes that may be allocated on the stack
      */
     public static MemoryStack create(long capacity) {
-        return create(MemoryUtil.malloc(capacity), capacity);
+        return create(MemorySegment.allocateNative(capacity, SegmentScope.global()), capacity);
     }
 
     /**
@@ -412,6 +410,382 @@ public class MemoryStack extends Pointer implements AutoCloseable {
 
     public MemorySegment calloc(MemoryLayout layout) {
         return calloc(layout, 1);
+    }
+
+    @Override
+    public MemorySegment allocate(long byteSize, long byteAlignment) {
+        return calloc(byteAlignment, byteSize);
+    }
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 1);
+        segment.set(JAVA_BYTE, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x, byte y) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 2);
+        segment.set(JAVA_BYTE, 0, x);
+        segment.set(JAVA_BYTE, 1, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x, byte y, byte z) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 3);
+        segment.set(JAVA_BYTE, 0, x);
+        segment.set(JAVA_BYTE, 1, y);
+        segment.set(JAVA_BYTE, 2, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x, byte y, byte z, byte w) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 4);
+        segment.set(JAVA_BYTE, 0, x);
+        segment.set(JAVA_BYTE, 1, y);
+        segment.set(JAVA_BYTE, 2, z);
+        segment.set(JAVA_BYTE, 3, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte... values) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), values.length);
+        MemorySegment.copy(values, 0, segment, JAVA_BYTE, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 2);
+        segment.set(JAVA_SHORT, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x, short y) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 4);
+        segment.set(JAVA_SHORT, 0, x);
+        segment.set(JAVA_SHORT, 2, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x, short y, short z) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 6);
+        segment.set(JAVA_SHORT, 0, x);
+        segment.set(JAVA_SHORT, 2, y);
+        segment.set(JAVA_SHORT, 4, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x, short y, short z, short w) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 8);
+        segment.set(JAVA_SHORT, 0, x);
+        segment.set(JAVA_SHORT, 2, y);
+        segment.set(JAVA_SHORT, 4, z);
+        segment.set(JAVA_SHORT, 6, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short... values) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), (long) values.length << 1);
+        MemorySegment.copy(values, 0, segment, JAVA_SHORT, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 4);
+        segment.set(JAVA_INT, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x, int y) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 8);
+        segment.set(JAVA_INT, 0, x);
+        segment.set(JAVA_INT, 4, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x, int y, int z) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 12);
+        segment.set(JAVA_INT, 0, x);
+        segment.set(JAVA_INT, 4, y);
+        segment.set(JAVA_INT, 8, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x, int y, int z, int w) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 16);
+        segment.set(JAVA_INT, 0, x);
+        segment.set(JAVA_INT, 4, y);
+        segment.set(JAVA_INT, 8, z);
+        segment.set(JAVA_INT, 12, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment ints(int... values) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), (long) values.length << 2);
+        MemorySegment.copy(values, 0, segment, JAVA_INT, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 8);
+        segment.set(JAVA_LONG, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x, long y) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 16);
+        segment.set(JAVA_LONG, 0, x);
+        segment.set(JAVA_LONG, 8, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x, long y, long z) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 24);
+        segment.set(JAVA_LONG, 0, x);
+        segment.set(JAVA_LONG, 8, y);
+        segment.set(JAVA_LONG, 16, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x, long y, long z, long w) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 32);
+        segment.set(JAVA_LONG, 0, x);
+        segment.set(JAVA_LONG, 8, y);
+        segment.set(JAVA_LONG, 16, z);
+        segment.set(JAVA_LONG, 24, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment longs(long... values) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), (long) values.length << 3);
+        MemorySegment.copy(values, 0, segment, JAVA_LONG, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 4);
+        segment.set(JAVA_FLOAT, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x, float y) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 8);
+        segment.set(JAVA_FLOAT, 0, x);
+        segment.set(JAVA_FLOAT, 4, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x, float y, float z) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 12);
+        segment.set(JAVA_FLOAT, 0, x);
+        segment.set(JAVA_FLOAT, 4, y);
+        segment.set(JAVA_FLOAT, 8, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x, float y, float z, float w) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 16);
+        segment.set(JAVA_FLOAT, 0, x);
+        segment.set(JAVA_FLOAT, 4, y);
+        segment.set(JAVA_FLOAT, 8, z);
+        segment.set(JAVA_FLOAT, 12, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment floats(float... values) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), (long) values.length << 2);
+        MemorySegment.copy(values, 0, segment, JAVA_FLOAT, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 8);
+        segment.set(JAVA_DOUBLE, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x, double y) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 16);
+        segment.set(JAVA_DOUBLE, 0, x);
+        segment.set(JAVA_DOUBLE, 8, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x, double y, double z) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 24);
+        segment.set(JAVA_DOUBLE, 0, x);
+        segment.set(JAVA_DOUBLE, 8, y);
+        segment.set(JAVA_DOUBLE, 16, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x, double y, double z, double w) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 32);
+        segment.set(JAVA_DOUBLE, 0, x);
+        segment.set(JAVA_DOUBLE, 8, y);
+        segment.set(JAVA_DOUBLE, 16, z);
+        segment.set(JAVA_DOUBLE, 24, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double... values) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), (long) values.length << 3);
+        MemorySegment.copy(values, 0, segment, JAVA_DOUBLE, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize());
+        segment.set(ADDRESS, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x, MemorySegment y) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * 2);
+        segment.set(ADDRESS, 0, x);
+        segment.setAtIndex(ADDRESS, 1, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x, MemorySegment y, MemorySegment z) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * 3);
+        segment.set(ADDRESS, 0, x);
+        segment.setAtIndex(ADDRESS, 1, y);
+        segment.setAtIndex(ADDRESS, 2, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x, MemorySegment y, MemorySegment z, MemorySegment w) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * 4);
+        segment.set(ADDRESS, 0, x);
+        segment.setAtIndex(ADDRESS, 1, y);
+        segment.setAtIndex(ADDRESS, 2, z);
+        segment.setAtIndex(ADDRESS, 3, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment... values) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * values.length);
+        for (int i = 0; i < values.length; i++) {
+            segment.setAtIndex(ADDRESS, i, values[i]);
+        }
+        return segment;
     }
 
     // -----------------------------------------------------

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * The function descriptors.
  *
- * <h2>Char-table</h2>
+ * <h2>Mappings</h2>
  * <pre>{@code
  * switch (c) {
  *     case 'B' -> JAVA_BYTE;

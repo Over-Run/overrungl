@@ -169,10 +169,7 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'signing'
 
-    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_20
-
     group = projGroupId
-    archivesBaseName = "$projArtifactId$subName"
     version = projVersion
 
     repositories {
@@ -190,9 +187,23 @@ subprojects {
         }
     }
 
+    def targetJavaVersion = 20
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
         options.compilerArgs += '--enable-preview'
+        if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+            options.release.set(targetJavaVersion)
+        }
+    }
+
+    java {
+        def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+        if (JavaVersion.current() < javaVersion) {
+            toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
+        }
+        archivesBaseName = "$projArtifactId$subName"
+        withJavadocJar()
+        withSourcesJar()
     }
 
     tasks.withType(Javadoc).configureEach {
@@ -200,6 +211,13 @@ subprojects {
             options.addBooleanOption('-enable-preview', true)
             options.addStringOption('source', sourceCompatibility.toString())
         }
+        failOnError = false
+        options.encoding 'UTF-8'
+        options.charSet 'UTF-8'
+        options.author true
+        options.locale 'en_US'
+        options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
+        options.windowTitle "OverrunGL $projVersion Javadoc"
     }
 
     jar {
@@ -216,33 +234,20 @@ subprojects {
         )
     }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
+    sourcesJar {
+        dependsOn classes
         archiveClassifier.set 'sources'
         from sourceSets.main.allSource, 'LICENSE'
     }
 
-    task javadocJar(type: Jar, dependsOn: javadoc) {
+    javadocJar {
+        dependsOn javadoc
         archiveClassifier.set 'javadoc'
         from javadoc, 'LICENSE'
     }
 
     artifacts {
         archives javadocJar, sourcesJar
-    }
-
-    java {
-        withJavadocJar()
-        withSourcesJar()
-    }
-
-    javadoc {
-        failOnError = false
-        options.encoding 'UTF-8'
-        options.charSet 'UTF-8'
-        options.author true
-        options.locale 'en_US'
-        options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
-        options.windowTitle "OverrunGL $projVersion Javadoc"
     }
 
     signing {

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -88,9 +88,7 @@ public final class GLAMDPerformanceMonitor {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, monitor);
-            glDeletePerfMonitorsAMD(1, mem);
+            glDeletePerfMonitorsAMD(1, stack.ints(monitor));
         } finally {
             stack.setPointer(stackPointer);
         }

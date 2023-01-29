@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,13 +49,13 @@ public final class IOUtil {
 
 
     /**
-     * Reads the specified resource and returns the raw data as a MemorySegment.
+     * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
      *
-     * @param scope       the segment scope
-     * @param resource    the resource to read
-     * @param segmentSize the initial segment size
-     * @return the resource data
-     * @throws IOException if an IO error occurs
+     * @param scope       the segment scope. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
+     * @param resource    the resource to read.
+     * @param segmentSize the initial segment size.
+     * @return the resource data.
+     * @throws IOException if an IO error occurs.
      */
     public static MemorySegment ioResourceToSegment(SegmentScope scope, String resource, long segmentSize) throws IOException {
         MemorySegment segment;
@@ -82,7 +82,7 @@ public final class IOUtil {
                         break;
                     }
                     if (pos >= segment.byteSize()) {
-                        segment = resizeSegment(arena, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
+                        segment = resizeSegment(scope, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
                     }
                     MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, bytes.length);
                     pos += bytes.length;

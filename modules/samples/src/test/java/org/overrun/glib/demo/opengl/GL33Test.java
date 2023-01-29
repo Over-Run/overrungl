@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,10 +35,8 @@ import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.joml.Matrixn;
 
 import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentScope;
 
 import static org.overrun.glib.gl.GLConstC.*;
@@ -104,7 +102,7 @@ public class GL33Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(

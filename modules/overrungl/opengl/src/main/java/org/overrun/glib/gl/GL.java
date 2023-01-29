@@ -31,4 +31,7 @@ package org.overrun.glib.gl;
  * @since 0.1.0
  */
 public final class GL extends GL46C {
+    private GL() {
+        super();
+    }
 }

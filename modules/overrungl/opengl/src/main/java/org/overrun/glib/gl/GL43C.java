@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -486,9 +486,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, attachment);
-            invalidateFramebuffer(target, 1, mem);
+            invalidateFramebuffer(target, 1, stack.ints(attachment));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -511,9 +509,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, attachment);
-            invalidateSubFramebuffer(target, 1, mem, x, y, width, height);
+            invalidateSubFramebuffer(target, 1, stack.ints(attachment), x, y, width, height);
         } finally {
             stack.setPointer(stackPointer);
         }

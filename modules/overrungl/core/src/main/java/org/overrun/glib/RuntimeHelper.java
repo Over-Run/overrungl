@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,6 +70,16 @@ public final class RuntimeHelper {
      */
     private RuntimeHelper() {
         throw new IllegalStateException("Do not construct instance");
+    }
+
+    /**
+     * Make sure a method handle is returned as the specified type to deal with {@code MethodHandle::invokeExact}.
+     *
+     * @param t   the invoke method.
+     * @param <T> the return type.
+     */
+    @SuppressWarnings("unused")
+    public static <T> void consume(T t) {
     }
 
     /**
@@ -291,9 +301,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static byte[] toArray(MemorySegment seg, byte[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.get(JAVA_BYTE, i);
-        }
+        MemorySegment.copy(seg, JAVA_BYTE, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -305,9 +313,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static short[] toArray(MemorySegment seg, short[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.getAtIndex(JAVA_SHORT, i);
-        }
+        MemorySegment.copy(seg, JAVA_SHORT, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -319,9 +325,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static int[] toArray(MemorySegment seg, int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.getAtIndex(JAVA_INT, i);
-        }
+        MemorySegment.copy(seg, JAVA_INT, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -333,9 +337,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static long[] toArray(MemorySegment seg, long[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.getAtIndex(JAVA_LONG, i);
-        }
+        MemorySegment.copy(seg, JAVA_LONG, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -347,9 +349,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static float[] toArray(MemorySegment seg, float[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.getAtIndex(JAVA_FLOAT, i);
-        }
+        MemorySegment.copy(seg, JAVA_FLOAT, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -361,9 +361,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static double[] toArray(MemorySegment seg, double[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.getAtIndex(JAVA_DOUBLE, i);
-        }
+        MemorySegment.copy(seg, JAVA_DOUBLE, 0, arr, 0, arr.length);
         return arr;
     }
 }

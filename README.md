@@ -35,21 +35,9 @@ maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 - [Forum](https://github.com/Over-Run/overrungl/discussions)
 - [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
 
-## Goals
+## Release Notes
 
-Our goal is to support these libraries with full document:
-
-- [x] [GLFW](https://www.glfw.org/) 3.3.8 (Currently 100%)
-- [ ] [OpenGL](https://www.khronos.org/opengl/) 4.6 (Currently 39%)
-- [ ] [STB](https://github.com/nothings/stb) (Currently 22%)
-- [ ] [Vulkan](https://www.vulkan.org/) (Currently 0%)
-- [ ] [OpenAL](https://www.openal.org/) (Currently 0%)
-
-Checked item means it has full functional but might be not documented.
-
-|                         Total Progress                         |
-|:--------------------------------------------------------------:|
-| ![total progress](https://progress-bar.dev/32/?title=progress) |
+See [doc/notes](doc/notes/README.md).
 
 ## Publishing (for internal member)
 
