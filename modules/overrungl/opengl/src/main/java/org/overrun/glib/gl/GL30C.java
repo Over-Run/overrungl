@@ -888,7 +888,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     public static MemorySegment mapBufferRange(int target, long offset, long length, int access) {
         var caps = getCapabilities();
         try {
-            return MemorySegment.ofAddress(((MemorySegment) check(caps.glMapBufferRange).invokeExact(target, offset, length, access)).address(), length);
+            return RuntimeHelper.sizedSegment((MemorySegment) check(caps.glMapBufferRange).invokeExact(target, offset, length, access), length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

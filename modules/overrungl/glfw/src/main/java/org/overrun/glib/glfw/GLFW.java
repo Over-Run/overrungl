@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,13 @@ package org.overrun.glib.glfw;
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
-import org.overrun.glib.util.value.*;
+import org.overrun.glib.util.value.Value2;
+import org.overrun.glib.util.value.ValueInt3;
+import org.overrun.glib.util.value.ValueInt4;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
@@ -1782,7 +1786,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetVideoMode(MemorySegment monitor) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) glfwGetVideoMode.invokeExact(monitor)).address(), GLFWVidMode.LAYOUT.byteSize());
+            return RuntimeHelper.sizedSegment((MemorySegment) glfwGetVideoMode.invokeExact(monitor), GLFWVidMode.LAYOUT.byteSize());
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1858,7 +1862,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetGammaRamp(MemorySegment monitor) {
         try {
-            return MemorySegment.ofAddress(((MemorySegment) glfwGetGammaRamp.invokeExact(monitor)).address(), GLFWGammaRamp.LAYOUT.byteSize());
+            return RuntimeHelper.sizedSegment((MemorySegment) glfwGetGammaRamp.invokeExact(monitor), GLFWGammaRamp.LAYOUT.byteSize());
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

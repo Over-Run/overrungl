@@ -1,6 +1,28 @@
-package org.overrun.glib;
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022-2023 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
-import org.jetbrains.annotations.Nullable;
+package org.overrun.glib;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -21,10 +43,6 @@ public class Pointer implements HasAddress {
      * The pointer segment scope.
      */
     protected final SegmentScope scope;
-    /**
-     * The managed memory segment.
-     */
-    protected @Nullable MemorySegment managed;
 
     /**
      * Create the pointer instance.
@@ -57,15 +75,15 @@ public class Pointer implements HasAddress {
     }
 
     /**
-     * Gets as memory segment.
+     * Gets as a memory segment.
      *
-     * @param bytesSize the bytes size
-     * @param scope     the segment scope to allocate
-     * @return the memory segment
+     * @param bytesSize the bytes size of the segment.
+     * @param scope     the segment associated with the returned native segment.
+     * @return the memory segment.
      */
     public MemorySegment segment(long bytesSize, SegmentScope scope) {
         if (address().byteSize() == 0) {
-            return MemorySegment.ofAddress(address().address(), bytesSize, scope);
+            return RuntimeHelper.sizedSegment(address(), bytesSize, scope);
         }
         return address();
     }

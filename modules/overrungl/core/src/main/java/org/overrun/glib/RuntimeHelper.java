@@ -73,6 +73,40 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Creates an unbounded native segment with the given segment.
+     *
+     * @param segment the segment address.
+     * @return an unbounded native segment with the given address
+     */
+    public static MemorySegment unbound(MemorySegment segment) {
+        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE);
+    }
+
+    /**
+     * Creates a sized native segment with the given segment and size.
+     * The returned segment is associated with the {@linkplain SegmentScope#global() global scope}.
+     *
+     * @param segment  the segment address.
+     * @param byteSize the desired size.
+     * @return a native segment with the given address and size.
+     */
+    public static MemorySegment sizedSegment(MemorySegment segment, long byteSize) {
+        return MemorySegment.ofAddress(segment.address(), byteSize);
+    }
+
+    /**
+     * Creates a sized native segment with the given segment, size and scope.
+     *
+     * @param segment  the segment address.
+     * @param byteSize the desired size.
+     * @param scope    the scope associated with the returned native segment.
+     * @return a native segment with the given address, size and scope.
+     */
+    public static MemorySegment sizedSegment(MemorySegment segment, long byteSize, SegmentScope scope) {
+        return MemorySegment.ofAddress(segment.address(), byteSize, scope);
+    }
+
+    /**
      * Make sure a method handle is returned as the specified type to deal with {@code MethodHandle::invokeExact}.
      *
      * @param t   the invoke method.
@@ -101,9 +135,9 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Log a message.
+     * Logs a message with the current {@linkplain #apiLogger() API logger}.
      *
-     * @param message the message
+     * @param message the message to be logged.
      */
     public static void apiLog(String message) {
         apiLogger.accept(message);
@@ -141,16 +175,16 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Load a library from classpath or local.
+     * Loads a library from classpath or local.
      *
      * @param module   the module name. e.x. {@code glfw}
-     * @param basename the basename of the library (without extensions)
+     * @param basename the basename of the library (without file extensions)
      * @param version  the version suffix
      * @return the {@link SymbolLookup}
-     * @throws RuntimeException if file not found
+     * @throws IllegalStateException if file not found
      */
     public static SymbolLookup load(String module, String basename, String version)
-        throws RuntimeException {
+        throws IllegalStateException {
         final var os = OperatingSystem.current();
         final var suffix = os.getSharedLibrarySuffix();
         final var path = os.getSharedLibraryName(basename);
@@ -170,7 +204,7 @@ public final class RuntimeHelper {
             var libFile = new File(file, basename + '-' + version + suffix);
             if (!libFile.exists()) {
                 // Extract
-                try (var is = ClassLoader.getSystemResourceAsStream(
+                try (var is = RuntimeHelper.class.getClassLoader().getResourceAsStream(
                     module + '/' + os.getFamilyName() + '/' + OperatingSystems.getNativeLibArch() + '/' + path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
@@ -181,7 +215,9 @@ public final class RuntimeHelper {
             // 2. Load from natives directory
             var file = new File(System.getProperty("overrungl.natives", ".") + '/' + path);
             if (!file.exists()) {
-                throw new RuntimeException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
+                var exception = new IllegalStateException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
+                exception.addSuppressed(e);
+                throw exception;
             }
             uri = file.toURI();
         }
@@ -276,7 +312,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static String[] toUnboundedArray(MemorySegment seg, String[] arr) {
-        return toArray(seg, arr, p -> MemorySegment.ofAddress(p.address(), Long.MAX_VALUE).getUtf8String(0));
+        return toArray(seg, arr, p -> unbound(p).getUtf8String(0));
     }
 
     /**

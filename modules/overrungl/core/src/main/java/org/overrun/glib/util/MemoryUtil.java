@@ -185,9 +185,9 @@ public final class MemoryUtil {
             oldSize = DebugAllocator.untrack(ptr);
         }
         try {
-            MemorySegment segment = MemorySegment.ofAddress(((MemorySegment) m_realloc.invokeExact(
+            MemorySegment segment = RuntimeHelper.sizedSegment((MemorySegment) m_realloc.invokeExact(
                 Objects.requireNonNullElse(memblock, MemorySegment.NULL),
-                size)).address(), size);
+                size), size);
             if (DEBUG) {
                 if (segment.address() != RuntimeHelper.NULL) {
                     DebugAllocator.track(segment.address(), size);

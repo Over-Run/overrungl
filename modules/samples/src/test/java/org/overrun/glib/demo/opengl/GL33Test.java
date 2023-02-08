@@ -34,10 +34,7 @@ import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.joml.Matrixn;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
+import java.lang.foreign.*;
 
 import static org.overrun.glib.gl.GLConstC.*;
 
@@ -229,7 +226,7 @@ public class GL33Test {
 
     private void loop() {
         var matrix = new Matrix4f();
-        var pRotationMat = Matrixn.allocate(SegmentScope.auto(), matrix);
+        var pRotationMat = Matrixn.allocate(SegmentAllocator.nativeAllocator(SegmentScope.auto()), matrix);
 
         double lastTime;
         double time;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import org.overrun.glib.util.MemoryUtil;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.SequenceLayout;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -83,100 +83,100 @@ public final class Vectorn {
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector2ic vec) {
-        return put(vec, MemorySegment.allocateNative(VEC2I, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector2ic vec) {
+        return put(vec, allocator.allocate(VEC2I));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector2fc vec) {
-        return put(vec, MemorySegment.allocateNative(VEC2F, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector2fc vec) {
+        return put(vec, allocator.allocate(VEC2F));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector2dc vec) {
-        return put(vec, MemorySegment.allocateNative(VEC2D, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector2dc vec) {
+        return put(vec, allocator.allocate(VEC2D));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector3ic vec) {
-        return put(vec, MemorySegment.allocateNative(VEC3I, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector3ic vec) {
+        return put(vec, allocator.allocate(VEC3I));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector3fc vec) {
-        return put(vec, MemorySegment.allocateNative(VEC3F, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector3fc vec) {
+        return put(vec, allocator.allocate(VEC3F));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector3dc vec) {
-        return put(vec, MemorySegment.allocateNative(VEC3D, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector3dc vec) {
+        return put(vec, allocator.allocate(VEC3D));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector4ic vec) {
-        return put(vec, MemorySegment.allocateNative(VEC4I, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector4ic vec) {
+        return put(vec, allocator.allocate(VEC4I));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector4fc vec) {
-        return put(vec, MemorySegment.allocateNative(VEC4F, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector4fc vec) {
+        return put(vec, allocator.allocate(VEC4F));
     }
 
     /**
      * Allocates the vector.
      *
-     * @param scope the segment scope
-     * @param vec   the vector
-     * @return the segment
+     * @param allocator the segment allocator.
+     * @param vec       the vector.
+     * @return the segment.
      */
-    public static MemorySegment allocate(SegmentScope scope, Vector4dc vec) {
-        return put(vec, MemorySegment.allocateNative(VEC4D, scope));
+    public static MemorySegment allocate(SegmentAllocator allocator, Vector4dc vec) {
+        return put(vec, allocator.allocate(VEC4D));
     }
 
     /**
