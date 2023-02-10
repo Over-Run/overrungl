@@ -73,13 +73,14 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Creates an unbounded native segment with the given segment.
+     * Creates an unbounded native segment with the given segment and scope.
      *
      * @param segment the segment address.
-     * @return an unbounded native segment with the given address
+     * @param scope   the scope associated with the returned native segment.
+     * @return an unbounded native segment with the given address.
      */
-    public static MemorySegment unbound(MemorySegment segment) {
-        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE);
+    public static MemorySegment unbound(MemorySegment segment, SegmentScope scope) {
+        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE, scope);
     }
 
     /**
@@ -305,6 +306,18 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Gets the strings from an unbounded address array with the given segment scope.
+     *
+     * @param scope the scope associated with the returned native segment.
+     * @param seg   the memory segment contained strings. native type: {@code char**}
+     * @param arr   the array to hold the result
+     * @return arr
+     */
+    public static String[] toUnboundedArray(SegmentScope scope, MemorySegment seg, String[] arr) {
+        return toArray(seg, arr, p -> unbound(p, scope).getUtf8String(0));
+    }
+
+    /**
      * Gets the strings from an unbounded address array.
      *
      * @param seg the memory segment contained strings. native type: {@code char**}
@@ -312,7 +325,9 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static String[] toUnboundedArray(MemorySegment seg, String[] arr) {
-        return toArray(seg, arr, p -> unbound(p).getUtf8String(0));
+        try (Arena arena = Arena.openShared()) {
+            return toUnboundedArray(arena.scope(), seg, arr);
+        }
     }
 
     /**

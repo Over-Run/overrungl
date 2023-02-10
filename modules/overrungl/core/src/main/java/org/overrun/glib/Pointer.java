@@ -29,12 +29,12 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentScope;
 
 /**
- * A {@link MemorySegment} wrapper.
+ * A {@link MemorySegment} wrapper with a segment scope.
  *
  * @author squid233
  * @since 0.1.0
  */
-public class Pointer implements HasAddress {
+public class Pointer implements Addressable {
     /**
      * The pointer address.
      */
@@ -47,8 +47,8 @@ public class Pointer implements HasAddress {
     /**
      * Create the pointer instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
     public Pointer(MemorySegment address, SegmentScope scope) {
         this.address = address;
@@ -75,11 +75,13 @@ public class Pointer implements HasAddress {
     }
 
     /**
-     * Gets as a memory segment.
+     * Gets the native segment of this pointer, or creates a new one with the given scope
+     * if the segment of this pointer is zero-length.
      *
      * @param bytesSize the bytes size of the segment.
      * @param scope     the segment associated with the returned native segment.
      * @return the memory segment.
+     * @see #segment(MemoryLayout, SegmentScope)
      */
     public MemorySegment segment(long bytesSize, SegmentScope scope) {
         if (address().byteSize() == 0) {
@@ -94,6 +96,7 @@ public class Pointer implements HasAddress {
      * @param layout the memory layout
      * @param scope  the segment scope to allocate
      * @return the memory segment
+     * @see #segment(long, SegmentScope)
      */
     public MemorySegment segment(MemoryLayout layout, SegmentScope scope) {
         return segment(layout.byteSize(), scope);

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,48 +22,58 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.glfw;
+package org.overrun.glib;
 
-import org.overrun.glib.Callback;
-
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
+import java.lang.foreign.SegmentScope;
 
 /**
- * This is the function pointer type for window close callbacks. A window
- * close callback function has the following signature:
- * {@snippet :
- * @Invoker(IGLFWWindowCloseFun::invoke)
- * void functionName(MemoryAddress window);
- * }
+ * The C struct wrapper.
  *
  * @author squid233
- * @see GLFW#setWindowCloseCallback
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface IGLFWWindowCloseFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-    MethodType MTYPE = DESC.toMethodType();
+public abstract class Struct extends Pointer {
+    /**
+     * The managed native segment that is not zero-length.
+     * <p>
+     * This field is not modified with {@code final} since the layout might be null in construction.
+     */
+    protected MemorySegment managedSegment;
 
     /**
-     * The function pointer type for window close callbacks.
+     * Create the struct instance.
      *
-     * @param window The window that the user attempted to close.
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
-    void invoke(MemorySegment window);
-
-    @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
+    public Struct(MemorySegment address, SegmentScope scope) {
+        super(address, scope);
+        final MemoryLayout layout = layout();
+        if (layout != null) {
+            managedSegment = segment(layout, scope);
+        }
     }
 
     @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowCloseFun.class, "invoke", MTYPE);
+    public MemorySegment segment(long bytesSize, SegmentScope scope) {
+        return managedSegment;
+    }
+
+    /**
+     * Gets the layout of this struct.
+     *
+     * @return the layout of this struct.
+     */
+    public abstract MemoryLayout layout();
+
+    /**
+     * Gets the struct size in bytes.
+     *
+     * @return the struct size in bytes.
+     */
+    public long sizeof() {
+        return layout().byteSize();
     }
 }

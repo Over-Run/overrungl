@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.Pointer;
+import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -49,18 +49,18 @@ import java.lang.invoke.VarHandle;
  * @see GLFW#getVideoModes
  * @since 0.1.0
  */
-public class GLFWVidMode extends Pointer {
+public class GLFWVidMode extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
         ValueLayout.JAVA_INT.withName("width"),
         ValueLayout.JAVA_INT.withName("height"),
         ValueLayout.JAVA_INT.withName("redBits"),
         ValueLayout.JAVA_INT.withName("greenBits"),
         ValueLayout.JAVA_INT.withName("blueBits"),
         ValueLayout.JAVA_INT.withName("refreshRate")
-    ).withName("GLFWvidmode");
+    );
     private static final VarHandle
         pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
         pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
@@ -72,8 +72,8 @@ public class GLFWVidMode extends Pointer {
     /**
      * Create a {@code GLFWvidmode} instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
     public GLFWVidMode(MemorySegment address, SegmentScope scope) {
         super(address, scope);
@@ -115,7 +115,7 @@ public class GLFWVidMode extends Pointer {
      * @return The width, in screen coordinates, of the video mode.
      */
     public int width() {
-        return (int) pWidth.get(segment(LAYOUT, scope));
+        return (int) pWidth.get(managedSegment);
     }
 
     /**
@@ -124,7 +124,7 @@ public class GLFWVidMode extends Pointer {
      * @return The height, in screen coordinates, of the video mode.
      */
     public int height() {
-        return (int) pHeight.get(segment(LAYOUT, scope));
+        return (int) pHeight.get(managedSegment);
     }
 
     /**
@@ -133,7 +133,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the red channel of the video mode.
      */
     public int redBits() {
-        return (int) pRedBits.get(segment(LAYOUT, scope));
+        return (int) pRedBits.get(managedSegment);
     }
 
     /**
@@ -142,7 +142,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the green channel of the video mode.
      */
     public int greenBits() {
-        return (int) pGreenBits.get(segment(LAYOUT, scope));
+        return (int) pGreenBits.get(managedSegment);
     }
 
     /**
@@ -151,7 +151,7 @@ public class GLFWVidMode extends Pointer {
      * @return The bit depth of the blue channel of the video mode.
      */
     public int blueBits() {
-        return (int) pBlueBits.get(segment(LAYOUT, scope));
+        return (int) pBlueBits.get(managedSegment);
     }
 
     /**
@@ -160,7 +160,12 @@ public class GLFWVidMode extends Pointer {
      * @return The refresh rate, in Hz, of the video mode.
      */
     public int refreshRate() {
-        return (int) pRefreshRate.get(segment(LAYOUT, scope));
+        return (int) pRefreshRate.get(managedSegment);
+    }
+
+    @Override
+    public MemoryLayout layout() {
+        return LAYOUT;
     }
 
     /**
@@ -237,24 +242,26 @@ public class GLFWVidMode extends Pointer {
     public static class Buffer extends GLFWVidMode {
         private final long elementCount;
         private final VarHandle pWidth, pHeight, pRedBits, pGreenBits, pBlueBits, pRefreshRate;
+        private final SequenceLayout layout;
 
         /**
          * Create a {@code GLFWvidmode.Buffer} instance.
          *
-         * @param address      the address
-         * @param scope        the segment scope
+         * @param address      the address.
+         * @param scope        the segment scope of this address.
          * @param elementCount the element count
          */
         public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
-            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pRedBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits"));
             pGreenBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
             pBlueBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
             pRefreshRate = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
+            managedSegment = segment(layout, scope);
         }
 
         /**
@@ -267,22 +274,13 @@ public class GLFWVidMode extends Pointer {
         }
 
         /**
-         * Converts to the {@link Segmented segmented buffer}.
-         *
-         * @return The {@link Buffer} with instanced memory segment.
-         */
-        public Segmented toSegmented() {
-            return new Segmented(address(), scope(), elementCount());
-        }
-
-        /**
          * Gets the width at the given index.
          *
          * @param index the index
          * @return The width, in screen coordinates, of the video mode.
          */
         public int widthAt(long index) {
-            return (int) pWidth.get(segment(LAYOUT, scope), index);
+            return (int) pWidth.get(managedSegment, index);
         }
 
         /**
@@ -292,7 +290,7 @@ public class GLFWVidMode extends Pointer {
          * @return The height, in screen coordinates, of the video mode.
          */
         public int heightAt(long index) {
-            return (int) pHeight.get(segment(LAYOUT, scope), index);
+            return (int) pHeight.get(managedSegment, index);
         }
 
         /**
@@ -302,7 +300,7 @@ public class GLFWVidMode extends Pointer {
          * @return The bit depth of the red channel of the video mode.
          */
         public int redBitsAt(long index) {
-            return (int) pRedBits.get(segment(LAYOUT, scope), index);
+            return (int) pRedBits.get(managedSegment, index);
         }
 
         /**
@@ -312,7 +310,7 @@ public class GLFWVidMode extends Pointer {
          * @return The bit depth of the green channel of the video mode.
          */
         public int greenBitsAt(long index) {
-            return (int) pGreenBits.get(segment(LAYOUT, scope), index);
+            return (int) pGreenBits.get(managedSegment, index);
         }
 
         /**
@@ -322,7 +320,7 @@ public class GLFWVidMode extends Pointer {
          * @return The bit depth of the blue channel of the video mode.
          */
         public int blueBitsAt(long index) {
-            return (int) pBlueBits.get(segment(LAYOUT, scope), index);
+            return (int) pBlueBits.get(managedSegment, index);
         }
 
         /**
@@ -332,7 +330,7 @@ public class GLFWVidMode extends Pointer {
          * @return The refresh rate, in Hz, of the video mode.
          */
         public int refreshRateAt(long index) {
-            return (int) pRefreshRate.get(segment(LAYOUT, scope), index);
+            return (int) pRefreshRate.get(managedSegment, index);
         }
 
         @Override
@@ -365,24 +363,9 @@ public class GLFWVidMode extends Pointer {
             return refreshRateAt(0);
         }
 
-        /**
-         * The {@link Buffer} with instanced memory segment.
-         *
-         * @author squid233
-         * @since 0.1.0
-         */
-        public static final class Segmented extends Buffer {
-            private final MemorySegment segment;
-
-            private Segmented(MemorySegment address, SegmentScope scope, long elementCount) {
-                super(address, scope, elementCount);
-                segment = segment(LAYOUT, scope);
-            }
-
-            @Override
-            public MemorySegment segment(MemoryLayout layout, SegmentScope scope) {
-                return segment;
-            }
+        @Override
+        public SequenceLayout layout() {
+            return layout;
         }
     }
 }

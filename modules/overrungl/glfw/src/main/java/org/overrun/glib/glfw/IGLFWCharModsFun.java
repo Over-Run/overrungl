@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.ICallback;
+import org.overrun.glib.Callback;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
@@ -50,7 +50,7 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 @Deprecated(forRemoval = true)
-public interface IGLFWCharModsFun extends ICallback {
+public interface IGLFWCharModsFun extends Callback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
     MethodType MTYPE = DESC.toMethodType();
 

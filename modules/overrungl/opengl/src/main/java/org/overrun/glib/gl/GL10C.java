@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -382,7 +382,7 @@ public sealed class GL10C permits GL10, GL11C {
     @Nullable
     public static String getString(int name) {
         var pStr = ngetString(name);
-        return pStr != MemorySegment.NULL ? pStr.getUtf8String(0) : null;
+        return pStr.address() != RuntimeHelper.NULL ? pStr.getUtf8String(0) : null;
     }
 
     public static void getTexImage(int target, int level, int format, int type, MemorySegment pixels) {

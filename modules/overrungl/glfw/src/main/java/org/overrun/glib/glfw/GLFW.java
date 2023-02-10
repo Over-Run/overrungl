@@ -1238,7 +1238,7 @@ public final class GLFW {
         try {
             var pCount = stack.calloc(JAVA_INT);
             var pMonitors = ngetMonitors(pCount);
-            if (pMonitors == MemorySegment.NULL) {
+            if (pMonitors.address() == RuntimeHelper.NULL) {
                 return null;
             }
             return RuntimeHelper.toArray(pMonitors, new MemorySegment[pCount.get(JAVA_INT, 0)]);
@@ -1622,7 +1622,7 @@ public final class GLFW {
     @Nullable
     public static String getMonitorName(MemorySegment monitor) {
         var pName = ngetMonitorName(monitor);
-        return pName != MemorySegment.NULL ? pName.getUtf8String(0) : null;
+        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
     }
 
     /**
@@ -1751,16 +1751,16 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer.Segmented getVideoModes(SegmentScope scope, MemorySegment monitor) {
+    public static @Nullable GLFWVidMode.Buffer getVideoModes(SegmentScope scope, MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var pCount = stack.calloc(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
-            if (pModes == MemorySegment.NULL) {
+            if (pModes.address() == RuntimeHelper.NULL) {
                 return null;
             }
-            return new GLFWVidMode.Buffer(pModes, scope, pCount.get(JAVA_INT, 0)).toSegmented();
+            return new GLFWVidMode.Buffer(pModes, scope, pCount.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2398,7 +2398,7 @@ public final class GLFW {
         if (images == null) {
             nsetWindowIcon(window, 0, MemorySegment.NULL);
         } else {
-            setWindowIcon(window, (int) images.elementCount(), images);
+            setWindowIcon(window, (int) Math.min(images.elementCount(), Integer.MAX_VALUE), images);
         }
     }
 
@@ -4118,7 +4118,7 @@ public final class GLFW {
     @Nullable
     public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
-        return pName != MemorySegment.NULL ? pName.getUtf8String(0) : null;
+        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
     }
 
     /**
@@ -5096,7 +5096,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
-        return pName != MemorySegment.NULL ? pName.getUtf8String(0) : null;
+        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
     }
 
     /**
@@ -5149,7 +5149,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
-        return pGUID != MemorySegment.NULL ? pGUID.getUtf8String(0) : null;
+        return pGUID.address() != RuntimeHelper.NULL ? pGUID.getUtf8String(0) : null;
     }
 
     /**
@@ -5361,7 +5361,7 @@ public final class GLFW {
     @Nullable
     public static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
-        return pName != MemorySegment.NULL ? pName.getUtf8String(0) : null;
+        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
     }
 
     /**
@@ -5489,7 +5489,7 @@ public final class GLFW {
     @Nullable
     public static String getClipboardString(@Deprecated MemorySegment window) {
         var pString = ngetClipboardString(window);
-        return pString != MemorySegment.NULL ? pString.getUtf8String(0) : null;
+        return pString.address() != RuntimeHelper.NULL ? pString.getUtf8String(0) : null;
     }
 
     /**

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.Pointer;
+import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -43,7 +43,7 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWGamepadState extends Pointer {
+public class GLFWGamepadState extends Struct {
     /**
      * The struct member layout.
      */
@@ -53,11 +53,11 @@ public class GLFWGamepadState extends Pointer {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
         BUTTONS_LAYOUT,
         MemoryLayout.paddingLayout(8),
         AXES_LAYOUT
-    ).withName("GLFWgamepadstate");
+    );
     private static final VarHandle
         pButtons = LAYOUT.varHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement()),
         pAxes = LAYOUT.varHandle(PathElement.groupElement("axes"), PathElement.sequenceElement());
@@ -65,8 +65,8 @@ public class GLFWGamepadState extends Pointer {
     /**
      * Create a {@code GLFWgamepadstate} instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
     public GLFWGamepadState(MemorySegment address, SegmentScope scope) {
         super(address, scope);
@@ -83,29 +83,17 @@ public class GLFWGamepadState extends Pointer {
     }
 
     /**
-     * Gets the button state array by the given segment scope.
-     *
-     * @param scope the segment scope
-     * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
-     * {@code PRESS} or {@code RELEASE}.
-     */
-    public byte[] buttons(SegmentScope scope) {
-        var seg = segment(LAYOUT, scope);
-        byte[] arr = new byte[15];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (byte) pButtons.get(seg, (long) i);
-        }
-        return arr;
-    }
-
-    /**
      * Gets the button state array.
      *
      * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
      * {@code PRESS} or {@code RELEASE}.
      */
     public byte[] buttons() {
-        return buttons(scope());
+        byte[] arr = new byte[15];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (byte) pButtons.get(managedSegment, (long) i);
+        }
+        return arr;
     }
 
     /**
@@ -115,24 +103,7 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        var seg = segment(LAYOUT, scope());
-        return (byte) pButtons.get(seg, (long) index) == GLFW.PRESS;
-    }
-
-    /**
-     * Gets the axe state array by the given segment scope.
-     *
-     * @param scope the segment scope
-     * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
-     * in the range -1.0 to 1.0 inclusive.
-     */
-    public float[] axes(SegmentScope scope) {
-        var seg = segment(LAYOUT, scope);
-        float[] arr = new float[6];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (float) pAxes.get(seg, (long) i);
-        }
-        return arr;
+        return (byte) pButtons.get(managedSegment, (long) index) == GLFW.PRESS;
     }
 
     /**
@@ -142,7 +113,11 @@ public class GLFWGamepadState extends Pointer {
      * in the range -1.0 to 1.0 inclusive.
      */
     public float[] axes() {
-        return axes(scope());
+        float[] arr = new float[6];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (float) pAxes.get(managedSegment, (long) i);
+        }
+        return arr;
     }
 
     /**
@@ -152,7 +127,11 @@ public class GLFWGamepadState extends Pointer {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        var seg = segment(LAYOUT, scope());
-        return (float) pAxes.get(seg, (long) index);
+        return (float) pAxes.get(managedSegment, (long) index);
+    }
+
+    @Override
+    public StructLayout layout() {
+        return LAYOUT;
     }
 }

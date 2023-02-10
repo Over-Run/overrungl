@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl;
 
-import org.overrun.glib.Pointer;
+import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -46,28 +46,27 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class DrawArraysIndirectCommand extends Pointer {
+public class DrawArraysIndirectCommand extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT =
-            MemoryLayout.structLayout(
-                    ValueLayout.JAVA_INT.withName("count"),
-                    ValueLayout.JAVA_INT.withName("primCount"),
-                    ValueLayout.JAVA_INT.withName("first"),
-                    ValueLayout.JAVA_INT.withName("baseInstance")
-            ).withName("DrawArraysIndirectCommand");
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("count"),
+        ValueLayout.JAVA_INT.withName("primCount"),
+        ValueLayout.JAVA_INT.withName("first"),
+        ValueLayout.JAVA_INT.withName("baseInstance")
+    );
     private static final VarHandle
-            pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
-            pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
-            pFirst = LAYOUT.varHandle(PathElement.groupElement("first")),
-            pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
+        pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
+        pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
+        pFirst = LAYOUT.varHandle(PathElement.groupElement("first")),
+        pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
 
     /**
      * Create the pointer instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
     public DrawArraysIndirectCommand(MemorySegment address, SegmentScope scope) {
         super(address, scope);
@@ -101,7 +100,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand count(int count) {
-        pCount.set(segment(LAYOUT, scope), count);
+        pCount.set(managedSegment, count);
         return this;
     }
 
@@ -112,7 +111,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand primCount(int primCount) {
-        pPrimCount.set(segment(LAYOUT, scope), primCount);
+        pPrimCount.set(managedSegment, primCount);
         return this;
     }
 
@@ -123,7 +122,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand first(int first) {
-        pFirst.set(segment(LAYOUT, scope), first);
+        pFirst.set(managedSegment, first);
         return this;
     }
 
@@ -134,7 +133,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return this
      */
     public DrawArraysIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(segment(LAYOUT, scope), baseInstance);
+        pBaseInstance.set(managedSegment, baseInstance);
         return this;
     }
 
@@ -144,7 +143,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        return (int) pCount.get(segment(LAYOUT, scope));
+        return (int) pCount.get(managedSegment);
     }
 
     /**
@@ -153,7 +152,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        return (int) pPrimCount.get(segment(LAYOUT, scope));
+        return (int) pPrimCount.get(managedSegment);
     }
 
     /**
@@ -162,7 +161,7 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the first
      */
     public int first() {
-        return (int) pFirst.get(segment(LAYOUT, scope));
+        return (int) pFirst.get(managedSegment);
     }
 
     /**
@@ -171,7 +170,12 @@ public class DrawArraysIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(segment(LAYOUT, scope));
+        return (int) pBaseInstance.get(managedSegment);
+    }
+
+    @Override
+    public MemoryLayout layout() {
+        return LAYOUT;
     }
 
     /**
@@ -183,22 +187,24 @@ public class DrawArraysIndirectCommand extends Pointer {
     public static class Buffer extends DrawArraysIndirectCommand {
         private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirst, pBaseInstance;
+        private final SequenceLayout layout;
 
         /**
          * Create the pointer instance.
          *
-         * @param address      the address
-         * @param scope        the segment scope
+         * @param address      the address.
+         * @param scope        the segment scope of this address.
          * @param elementCount the element count
          */
         public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
             super(address, scope);
             this.elementCount = elementCount;
-            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
             pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
             pFirst = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));
             pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
+            managedSegment = segment(layout, scope);
         }
 
         /**
@@ -218,7 +224,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer count(long index, int count) {
-            pCount.set(segment(LAYOUT, scope), index, count);
+            pCount.set(managedSegment, index, count);
             return this;
         }
 
@@ -230,7 +236,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer primCount(long index, int primCount) {
-            pPrimCount.set(segment(LAYOUT, scope), index, primCount);
+            pPrimCount.set(managedSegment, index, primCount);
             return this;
         }
 
@@ -242,7 +248,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer first(long index, int first) {
-            pFirst.set(segment(LAYOUT, scope), index, first);
+            pFirst.set(managedSegment, index, first);
             return this;
         }
 
@@ -254,7 +260,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer baseInstance(long index, int baseInstance) {
-            pBaseInstance.set(segment(LAYOUT, scope), index, baseInstance);
+            pBaseInstance.set(managedSegment, index, baseInstance);
             return this;
         }
 
@@ -285,7 +291,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return the count
          */
         public int countAt(long index) {
-            return (int) pCount.get(segment(LAYOUT, scope), index);
+            return (int) pCount.get(managedSegment, index);
         }
 
         /**
@@ -295,7 +301,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return the primitive count
          */
         public int primCountAt(long index) {
-            return (int) pPrimCount.get(segment(LAYOUT, scope), index);
+            return (int) pPrimCount.get(managedSegment, index);
         }
 
         /**
@@ -305,7 +311,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return the first
          */
         public int firstAt(long index) {
-            return (int) pFirst.get(segment(LAYOUT, scope), index);
+            return (int) pFirst.get(managedSegment, index);
         }
 
         /**
@@ -315,7 +321,7 @@ public class DrawArraysIndirectCommand extends Pointer {
          * @return the base instance
          */
         public int baseInstanceAt(long index) {
-            return (int) pBaseInstance.get(segment(LAYOUT, scope), index);
+            return (int) pBaseInstance.get(managedSegment, index);
         }
 
         @Override
@@ -336,6 +342,11 @@ public class DrawArraysIndirectCommand extends Pointer {
         @Override
         public int baseInstance() {
             return baseInstanceAt(0);
+        }
+
+        @Override
+        public SequenceLayout layout() {
+            return layout;
         }
     }
 }

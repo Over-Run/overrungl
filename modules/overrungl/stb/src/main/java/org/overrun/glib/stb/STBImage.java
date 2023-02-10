@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -158,7 +158,7 @@ public final class STBImage {
     @Nullable
     public static String failureReason() {
         var pReason = nfailureReason();
-        return pReason != MemorySegment.NULL ? pReason.getUtf8String(0) : null;
+        return pReason.address() != RuntimeHelper.NULL ? pReason.getUtf8String(0) : null;
     }
 
     public static void hdrToLdrGamma(float gamma) {

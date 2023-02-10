@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.ICallback;
+import org.overrun.glib.Callback;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
@@ -45,7 +45,7 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWJoystickFun extends ICallback {
+public interface IGLFWJoystickFun extends Callback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
     MethodType MTYPE = DESC.toMethodType();
 

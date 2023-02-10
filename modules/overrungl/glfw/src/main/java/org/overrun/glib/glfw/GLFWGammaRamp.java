@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,13 @@
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.Pointer;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.Struct;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentScope;
+import java.lang.foreign.StructLayout;
 import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -49,16 +52,16 @@ import static java.lang.foreign.ValueLayout.*;
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
-public class GLFWGammaRamp extends Pointer {
+public class GLFWGammaRamp extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
         ADDRESS.withName("red"),
         ADDRESS.withName("green"),
         ADDRESS.withName("blue"),
         JAVA_INT.withName("size")
-    ).withName("GLFWgammaramp");
+    );
     private static final VarHandle
         ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
         ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),
@@ -71,8 +74,8 @@ public class GLFWGammaRamp extends Pointer {
     /**
      * Create a {@code GLFWgammaramp const} instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
     public GLFWGammaRamp(MemorySegment address, SegmentScope scope) {
         super(address, scope);
@@ -97,7 +100,7 @@ public class GLFWGammaRamp extends Pointer {
     public GLFWGammaRamp red(short[] reds) {
         var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(reds.length, JAVA_SHORT), scope);
         MemorySegment.copy(reds, 0, seg, JAVA_SHORT, 0, reds.length);
-        ppRed.set(segment(LAYOUT, scope()), seg);
+        ppRed.set(managedSegment, seg);
         return this;
     }
 
@@ -110,7 +113,7 @@ public class GLFWGammaRamp extends Pointer {
     public GLFWGammaRamp green(short[] greens) {
         var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(greens.length, JAVA_SHORT), scope);
         MemorySegment.copy(greens, 0, seg, JAVA_SHORT, 0, greens.length);
-        ppGreen.set(segment(LAYOUT, scope()), seg);
+        ppGreen.set(managedSegment, seg);
         return this;
     }
 
@@ -123,7 +126,7 @@ public class GLFWGammaRamp extends Pointer {
     public GLFWGammaRamp blue(short[] blues) {
         var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(blues.length, JAVA_SHORT), scope);
         MemorySegment.copy(blues, 0, seg, JAVA_SHORT, 0, blues.length);
-        ppBlue.set(segment(LAYOUT, scope()), seg);
+        ppBlue.set(managedSegment, seg);
         return this;
     }
 
@@ -134,7 +137,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        pSize.set(segment(LAYOUT, scope()), size);
+        pSize.set(managedSegment, size);
         return this;
     }
 
@@ -145,7 +148,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the red value
      */
     public short red(int index) {
-        return (short) pRed.get(segment(LAYOUT, scope()), (long) index);
+        return (short) pRed.get(managedSegment, (long) index);
     }
 
     /**
@@ -155,7 +158,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the green value
      */
     public short green(int index) {
-        return (short) pGreen.get(segment(LAYOUT, scope()), (long) index);
+        return (short) pGreen.get(managedSegment, (long) index);
     }
 
     /**
@@ -165,7 +168,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the blue value
      */
     public short blue(int index) {
-        return (short) pBlue.get(segment(LAYOUT, scope()), (long) index);
+        return (short) pBlue.get(managedSegment, (long) index);
     }
 
     /**
@@ -231,18 +234,23 @@ public class GLFWGammaRamp extends Pointer {
      * @return The number of elements in each array.
      */
     public int size() {
-        return (int) pSize.get(segment(LAYOUT, scope()));
+        return (int) pSize.get(managedSegment);
     }
 
     public MemorySegment nred() {
-        return (MemorySegment) ppRed.get(segment(LAYOUT, scope()));
+        return (MemorySegment) ppRed.get(managedSegment);
     }
 
     public MemorySegment ngreen() {
-        return (MemorySegment) ppGreen.get(segment(LAYOUT, scope()));
+        return (MemorySegment) ppGreen.get(managedSegment);
     }
 
     public MemorySegment nblue() {
-        return (MemorySegment) ppBlue.get(segment(LAYOUT, scope()));
+        return (MemorySegment) ppBlue.get(managedSegment);
+    }
+
+    @Override
+    public StructLayout layout() {
+        return LAYOUT;
     }
 }

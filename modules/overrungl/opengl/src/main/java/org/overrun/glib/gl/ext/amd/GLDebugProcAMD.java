@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.overrun.glib.ICallback;
+import org.overrun.glib.Callback;
 import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -42,7 +42,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface GLDebugProcAMD extends ICallback {
+public interface GLDebugProcAMD extends Callback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED, RuntimeHelper.ADDRESS_UNBOUNDED);
     MethodType MTYPE = DESC.toMethodType();
 

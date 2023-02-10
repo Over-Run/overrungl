@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +24,9 @@
 
 package org.overrun.glib.stb;
 
-import org.overrun.glib.ICallback;
-import org.overrun.glib.Pointer;
+import org.overrun.glib.Callback;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -50,16 +50,15 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class STBIIoCallbacks extends Pointer {
+public class STBIIoCallbacks extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT =
-        MemoryLayout.structLayout(
-            ValueLayout.ADDRESS.withName("read"),
-            ValueLayout.ADDRESS.withName("skip"),
-            ValueLayout.ADDRESS.withName("eof")
-        ).withName("stbi_io_callbacks");
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
+        ValueLayout.ADDRESS.withName("read"),
+        ValueLayout.ADDRESS.withName("skip"),
+        ValueLayout.ADDRESS.withName("eof")
+    );
     private static final VarHandle
         pRead = LAYOUT.varHandle(PathElement.groupElement("read")),
         pSkip = LAYOUT.varHandle(PathElement.groupElement("skip")),
@@ -68,8 +67,8 @@ public class STBIIoCallbacks extends Pointer {
     /**
      * Create a {@code stbi_io_callbacks} instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param scope   the segment scope of this address.
      */
     public STBIIoCallbacks(MemorySegment address, SegmentScope scope) {
         super(address, scope);
@@ -82,7 +81,7 @@ public class STBIIoCallbacks extends Pointer {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Read extends ICallback {
+    public interface Read extends Callback {
         FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED, RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
         MethodType MTYPE = DESC.toMethodType();
 
@@ -114,7 +113,7 @@ public class STBIIoCallbacks extends Pointer {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Skip extends ICallback {
+    public interface Skip extends Callback {
         FunctionDescriptor DESC = FunctionDescriptor.ofVoid(RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
         MethodType MTYPE = DESC.toMethodType();
 
@@ -144,7 +143,7 @@ public class STBIIoCallbacks extends Pointer {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Eof extends ICallback {
+    public interface Eof extends Callback {
         FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED);
         MethodType MTYPE = DESC.toMethodType();
 
@@ -183,7 +182,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the read callback
      */
     public MemorySegment read() {
-        return (MemorySegment) pRead.get(segment(LAYOUT, scope));
+        return (MemorySegment) pRead.get(managedSegment);
     }
 
     /**
@@ -192,7 +191,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the skip callback
      */
     public MemorySegment skip() {
-        return (MemorySegment) pSkip.get(segment(LAYOUT, scope));
+        return (MemorySegment) pSkip.get(managedSegment);
     }
 
     /**
@@ -201,7 +200,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return the eof callback
      */
     public MemorySegment eof() {
-        return (MemorySegment) pEof.get(segment(LAYOUT, scope));
+        return (MemorySegment) pEof.get(managedSegment);
     }
 
     /**
@@ -211,7 +210,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks read(Read read) {
-        pRead.set(segment(LAYOUT, scope), read.address(scope));
+        pRead.set(managedSegment, read.address(scope));
         return this;
     }
 
@@ -222,7 +221,7 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks skip(Skip skip) {
-        pSkip.set(segment(LAYOUT, scope), skip.address(scope));
+        pSkip.set(managedSegment, skip.address(scope));
         return this;
     }
 
@@ -233,7 +232,12 @@ public class STBIIoCallbacks extends Pointer {
      * @return this
      */
     public STBIIoCallbacks eof(Eof eof) {
-        pEof.set(segment(LAYOUT, scope), eof.address(scope));
+        pEof.set(managedSegment, eof.address(scope));
         return this;
+    }
+
+    @Override
+    public StructLayout layout() {
+        return LAYOUT;
     }
 }

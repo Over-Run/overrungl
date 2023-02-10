@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
 package org.overrun.glib.util;
 
-import org.overrun.glib.HasAddress;
+import org.overrun.glib.Addressable;
 
 import java.lang.foreign.*;
 
@@ -54,7 +54,7 @@ import static org.overrun.glib.util.MemoryUtil.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GrowableBuffer implements AutoCloseable, HasAddress {
+public class GrowableBuffer implements AutoCloseable, Addressable {
     private MemorySegment address = MemorySegment.NULL;
     private long capacity;
     private long offset, count;
