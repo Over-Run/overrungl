@@ -38,6 +38,25 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.3 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_clear_buffer_object</li>
+ *     <li>GL_ARB_compute_shader</li>
+ *     <li>GL_ARB_copy_image</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBDebugOutput GL_ARB_debug_output}</li>
+ *     <li>GL_ARB_framebuffer_no_attachments</li>
+ *     <li>GL_ARB_internalformat_query2</li>
+ *     <li>GL_ARB_invalidate_subdata</li>
+ *     <li>GL_ARB_multi_draw_indirect</li>
+ *     <li>GL_ARB_program_interface_query</li>
+ *     <li>GL_ARB_shader_storage_buffer_object</li>
+ *     <li>GL_ARB_texture_buffer_range</li>
+ *     <li>GL_ARB_texture_storage_multisample</li>
+ *     <li>GL_ARB_texture_view</li>
+ *     <li>GL_ARB_vertex_attrib_binding</li>
+ *     <li>GL_KHR_debug</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

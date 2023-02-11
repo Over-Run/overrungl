@@ -37,6 +37,12 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.1 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_copy_buffer</li>
+ *     <li>GL_ARB_uniform_buffer_object</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

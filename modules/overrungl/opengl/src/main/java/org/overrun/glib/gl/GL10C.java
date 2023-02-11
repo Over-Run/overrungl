@@ -38,7 +38,6 @@ import static org.overrun.glib.gl.GLLoader.*;
 /**
  * The OpenGL 1.0 forward compatible functions.
  *
- * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

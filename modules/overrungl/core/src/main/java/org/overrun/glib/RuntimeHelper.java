@@ -73,6 +73,22 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Checks whether <i>{@code alignment}</i> is greater than 0 and is a power-of-two value.
+     *
+     * @param alignment the alignment, in bytes.
+     * @throws IllegalArgumentException if <i>{@code alignment}</i> {@code <= 0},
+     *                                  or if <i>{@code alignment}</i> is not a power of 2.
+     */
+    public static void checkAlignment(long alignment) throws IllegalArgumentException {
+        if (alignment <= 0) {
+            throw new IllegalArgumentException("Alignment must be > 0.");
+        }
+        if (Long.bitCount(alignment) != 1) {
+            throw new IllegalArgumentException("Alignment must be a power-of-two value.");
+        }
+    }
+
+    /**
      * Creates an unbounded native segment with the given segment and scope.
      *
      * @param segment the segment address.

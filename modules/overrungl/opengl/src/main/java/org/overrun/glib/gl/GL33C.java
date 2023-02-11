@@ -36,6 +36,15 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.3 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_blend_func_extended</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBInstancedArrays GL_ARB_instanced_arrays}</li>
+ *     <li>GL_ARB_sampler_objects</li>
+ *     <li>GL_ARB_timer_query</li>
+ *     <li>GL_ARB_vertex_type_2_10_10_10_rev</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

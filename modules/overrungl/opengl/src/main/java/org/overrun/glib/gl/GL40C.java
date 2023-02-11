@@ -36,6 +36,17 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.0 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBDrawBuffersBlend GL_ARB_draw_buffers_blend}</li>
+ *     <li>GL_ARB_draw_indirect</li>
+ *     <li>GL_ARB_gpu_shader_fp64</li>
+ *     <li>GL_ARB_shader_subroutine</li>
+ *     <li>GL_ARB_tessellation_shader</li>
+ *     <li>GL_ARB_transform_feedback2</li>
+ *     <li>GL_ARB_transform_feedback3</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

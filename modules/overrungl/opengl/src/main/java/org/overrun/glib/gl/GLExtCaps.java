@@ -24,19 +24,13 @@
 
 package org.overrun.glib.gl;
 
-import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.ext.*;
 import org.overrun.glib.gl.ext.amd.*;
 import org.overrun.glib.gl.ext.apple.*;
 import org.overrun.glib.gl.ext.arb.*;
 import org.overrun.glib.gl.ext.sun.*;
 
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
-
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
  * The OpenGL extension capabilities.
@@ -363,6 +357,39 @@ public final class GLExtCaps {
     public MethodHandle glBindProgramARB, glDeleteProgramsARB, glGenProgramsARB, glGetProgramEnvParameterdvARB, glGetProgramEnvParameterfvARB, glGetProgramLocalParameterdvARB,
         glGetProgramLocalParameterfvARB, glGetProgramStringARB, glGetProgramivARB, glIsProgramARB, glProgramEnvParameter4dARB, glProgramEnvParameter4dvARB, glProgramEnvParameter4fARB,
         glProgramEnvParameter4fvARB, glProgramLocalParameter4dARB, glProgramLocalParameter4dvARB, glProgramLocalParameter4fARB, glProgramLocalParameter4fvARB, glProgramStringARB;
+    /**
+     * {@code GL_ARB_geometry_shader4} extension method handles.
+     */
+    public MethodHandle glFramebufferTextureARB, glFramebufferTextureFaceARB, glFramebufferTextureLayerARB, glProgramParameteriARB;
+    /**
+     * {@code GL_ARB_gl_spirv} extension method handles.
+     */
+    public MethodHandle glSpecializeShaderARB;
+    /**
+     * {@code GL_ARB_gpu_shader_int64} extension method handles.
+     */
+    public MethodHandle glGetUniformi64vARB, glGetUniformui64vARB, glGetnUniformi64vARB, glGetnUniformui64vARB, glProgramUniform1i64ARB, glProgramUniform1i64vARB,
+        glProgramUniform1ui64ARB, glProgramUniform1ui64vARB, glProgramUniform2i64ARB, glProgramUniform2i64vARB, glProgramUniform2ui64ARB, glProgramUniform2ui64vARB,
+        glProgramUniform3i64ARB, glProgramUniform3i64vARB, glProgramUniform3ui64ARB, glProgramUniform3ui64vARB, glProgramUniform4i64ARB, glProgramUniform4i64vARB,
+        glProgramUniform4ui64ARB, glProgramUniform4ui64vARB, glUniform1i64ARB, glUniform1i64vARB, glUniform1ui64ARB, glUniform1ui64vARB,
+        glUniform2i64ARB, glUniform2i64vARB, glUniform2ui64ARB, glUniform2ui64vARB, glUniform3i64ARB, glUniform3i64vARB,
+        glUniform3ui64ARB, glUniform3ui64vARB, glUniform4i64ARB, glUniform4i64vARB, glUniform4ui64ARB, glUniform4ui64vARB;
+    /**
+     * {@code GL_ARB_indirect_parameters} extension method handles.
+     */
+    public MethodHandle glMultiDrawArraysIndirectCountARB, glMultiDrawElementsIndirectCountARB;
+    /**
+     * {@code GL_ARB_instanced_arrays} extension method handles.
+     */
+    public MethodHandle glVertexAttribDivisorARB;
+    /**
+     * {@code GL_ARB_matrix_palette} extension method handles.
+     */
+    public MethodHandle glCurrentPaletteMatrixARB, glMatrixIndexPointerARB, glMatrixIndexubvARB, glMatrixIndexuivARB, glMatrixIndexusvARB;
+    /**
+     * {@code GL_ARB_multisample} extension method handles.
+     */
+    public MethodHandle glSampleCoverageARB;
 
     // endregion
 
@@ -590,7 +617,6 @@ public final class GLExtCaps {
     }
 
     void load(GLLoadFunc load) {
-        // TODO: 77/307 extensions
         GL3DFXTbuffer.load(this, load);
         GLAMDDebugOutput.load(this, load);
         GLAMDDrawBuffersBlend.load(this, load);
@@ -614,94 +640,42 @@ public final class GLExtCaps {
         GLAPPLEVertexArrayObject.load(this, load);
         GLAPPLEVertexArrayRange.load(this, load);
         GLAPPLEVertexProgramEvaluators.load(this, load);
-        GLARBES2Compatibility.load(this, load);
-        GLARBES31Compatibility.load(this, load);
         GLARBES32Compatibility.load(this, load);
-        GLARBBaseInstance.load(this, load);
         GLARBBindlessTexture.load(this, load);
-        GLARBBlendFuncExtended.load(this, load);
-        GLARBBufferStorage.load(this, load);
         GLARBCLEvent.load(this, load);
-        GLARBClearBufferObject.load(this, load);
-        GLARBClearTexture.load(this, load);
-        GLARBClipControl.load(this, load);
         GLARBColorBufferFloat.load(this, load);
-        GLARBComputeShader.load(this, load);
         GLARBComputeVariableGroupSize.load(this, load);
-        GLARBCopyBuffer.load(this, load);
-        GLARBCopyImage.load(this, load);
         GLARBDebugOutput.load(this, load);
-        GLARBDirectStateAccess.load(this, load);
         GLARBDrawBuffers.load(this, load);
         GLARBDrawBuffersBlend.load(this, load);
-        GLARBDrawElementsBaseVertex.load(this, load);
-        GLARBDrawIndirect.load(this, load);
         GLARBDrawInstanced.load(this, load);
         GLARBFragmentProgram.load(this, load);
-        GLARBFramebufferNoAttachments.load(this, load);
-        GLARBFramebufferObject.load(this, load);
         GLARBGeometryShader4.load(this, load);
-        GLARBGetProgramBinary.load(this, load);
-        GLARBGetTextureSubImage.load(this, load);
-        GLARBGlSpirv.load(this, load);
-        // GLARBGpu_shader_fp64.load(load);
-        // GLARBGpu_shader_int64.load(load);
-        // GLARBImaging.load(load);
-        // GLARBIndirect_parameters.load(load);
-        // GLARBInstanced_arrays.load(load);
-        // GLARBInternalformat_query.load(load);
-        // GLARBInternalformat_query2.load(load);
-        // GLARBInvalidate_subdata.load(load);
-        // GLARBMap_buffer_range.load(load);
-        // GLARBMatrix_palette.load(load);
-        // GLARBMulti_bind.load(load);
-        // GLARBMulti_draw_indirect.load(load);
-        // GLARBMultisample.load(load);
+        GLARBGLSpirv.load(this, load);
+        GLARBGPUShaderInt64.load(this, load);
+        GLARBIndirectParameters.load(this, load);
+        GLARBInstancedArrays.load(this, load);
+        GLARBMatrixPalette.load(this, load);
+        GLARBMultisample.load(this, load);
         // GLARBMultitexture.load(load);
         // GLARBOcclusion_query.load(load);
         // GLARBParallel_shader_compile.load(load);
         // GLARBPoint_parameters.load(load);
-        // GLARBPolygon_offset_clamp.load(load);
-        // GLARBProgram_interface_query.load(load);
-        // GLARBProvoking_vertex.load(load);
-        // GLARBBobustness.load(load);
+        // GLARBRobustness.load(load);
         // GLARBSample_locations.load(load);
         // GLARBSample_shading.load(load);
-        // GLARBSampler_objects.load(load);
-        // GLARBSeparate_shader_objects.load(load);
-        // GLARBShader_atomic_counters.load(load);
-        // GLARBShader_image_load_store.load(load);
         // GLARBShader_objects.load(load);
-        // GLARBShader_storage_buffer_object.load(load);
-        // GLARBShader_subroutine.load(load);
         // GLARBShading_language_include.load(load);
         // GLARBSparse_buffer.load(load);
         // GLARBSparse_texture.load(load);
-        // GLARBSync.load(load);
-        // GLARBTessellation_shader.load(load);
-        // GLARBTexture_barrier.load(load);
         // GLARBTexture_buffer_object.load(load);
-        // GLARBTexture_buffer_range.load(load);
         // GLARBTexture_compression.load(load);
         // GLARBTexture_multisample.load(load);
-        // GLARBTexture_storage.load(load);
-        // GLARBTexture_storage_multisample.load(load);
-        // GLARBTexture_view.load(load);
-        // GLARBTimer_query.load(load);
-        // GLARBTransform_feedback2.load(load);
-        // GLARBTransform_feedback3.load(load);
-        // GLARBTransform_feedback_instanced.load(load);
         // GLARBTranspose_matrix.load(load);
-        // GLARBUniform_buffer_object.load(load);
-        // GLARBVertex_array_object.load(load);
-        // GLARBVertex_attrib_64bit.load(load);
-        // GLARBVertex_attrib_binding.load(load);
         // GLARBVertex_blend.load(load);
         // GLARBVertex_buffer_object.load(load);
         // GLARBVertex_program.load(load);
         // GLARBVertex_shader.load(load);
-        // GLARBVertex_type_2_10_10_10_rev.load(load);
-        // GLARBViewport_array.load(load);
         // GLARBWindow_pos.load(load);
         // GLATIDraw_buffers.load(load);
         // GLATIElement_array.load(load);
@@ -794,9 +768,7 @@ public final class GLExtCaps {
         GLINTELParallelArrays.load(this, load);
         GLINTELPerformanceQuery.load(this, load);
         GLKHRBlendEquationAdvanced.load(this, load);
-        GLKHRDebug.load(this, load);
         GLKHRParallelShaderCompile.load(this, load);
-        GLKHRRobustness.load(this, load);
         GLMESAFramebufferFlipY.load(this, load);
         GLMESAResizeBuffers.load(this, load);
         GLMESAWindowPos.load(this, load);

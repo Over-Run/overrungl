@@ -27,6 +27,7 @@ package org.overrun.glib.gl;
 /**
  * The latest OpenGL functions.
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,13 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.6 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBGLSpirv GL_ARB_gl_spirv}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBIndirectParameters GL_ARB_indirect_parameters}</li>
+ *     <li>GL_ARB_polygon_offset_clamp</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

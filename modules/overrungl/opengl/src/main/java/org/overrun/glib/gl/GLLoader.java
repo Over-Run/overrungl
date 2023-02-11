@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -219,7 +219,7 @@ public final class GLLoader {
     @Nullable
     public static GLCapabilities load(boolean forwardCompatible, GLLoadFunc load) {
         var caps = new GLCapabilities(forwardCompatible);
-        // preset
+        // set the global capabilities first
         setCapabilities(caps);
         if (caps.load(load) != 0) {
             return caps;
@@ -229,9 +229,17 @@ public final class GLLoader {
         return null;
     }
 
+    /**
+     * Checks whether the given GL function is available in this context.
+     * This method raises an {@link IllegalStateException} rather than {@link NullPointerException}.
+     *
+     * @param handle the method handle to be checked.
+     * @return <i>{@code handle}</i>
+     * @throws IllegalStateException if <i>{@code handle}</i> is {@code null}.
+     */
     @NotNull
     @Contract(value = "null -> fail; !null -> param1", pure = true)
-    public static MethodHandle check(MethodHandle handle) {
+    public static MethodHandle check(@Nullable MethodHandle handle) throws IllegalStateException {
         if (handle == null)
             throw new IllegalStateException("The argument 'handle' is null; may be no context or function exists.");
         return handle;

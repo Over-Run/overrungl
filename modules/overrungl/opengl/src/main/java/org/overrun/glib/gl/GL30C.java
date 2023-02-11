@@ -37,6 +37,14 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.0 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBColorBufferFloat GL_ARB_color_buffer_float}</li>
+ *     <li>GL_ARB_framebuffer_object</li>
+ *     <li>GL_ARB_map_buffer_range</li>
+ *     <li>GL_ARB_vertex_array_object</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

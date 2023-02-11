@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,16 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.2 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_base_instance</li>
+ *     <li>GL_ARB_internalformat_query</li>
+ *     <li>GL_ARB_shader_atomic_counters</li>
+ *     <li>GL_ARB_shader_image_load_store</li>
+ *     <li>GL_ARB_texture_storage</li>
+ *     <li>GL_ARB_transform_feedback_instanced</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

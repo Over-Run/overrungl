@@ -37,6 +37,16 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.5 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_clip_control</li>
+ *     <li>GL_ARB_direct_state_access</li>
+ *     <li>GL_ARB_ES3_1_compatibility</li>
+ *     <li>GL_ARB_get_texture_sub_image</li>
+ *     <li>GL_ARB_texture_barrier</li>
+ *     <li>GL_KHR_robustness</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0
@@ -1048,27 +1058,27 @@ public sealed class GL45C extends GL44C permits GL46C {
         }
     }
 
-    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, byte[] pixels) {
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, byte[] pixels) {
         var seg = allocator.allocateArray(JAVA_BYTE, pixels.length);
-        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
+        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, short[] pixels) {
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, short[] pixels) {
         var seg = allocator.allocateArray(JAVA_SHORT, pixels.length);
-        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
+        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, int[] pixels) {
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int[] pixels) {
         var seg = allocator.allocateArray(JAVA_INT, pixels.length);
-        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
+        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 
-    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, int bufSize, float[] pixels) {
+    public static void getTextureSubImage(SegmentAllocator allocator, int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, float[] pixels) {
         var seg = allocator.allocateArray(JAVA_FLOAT, pixels.length);
-        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, seg);
+        getTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels.length, seg);
         RuntimeHelper.toArray(seg, pixels);
     }
 

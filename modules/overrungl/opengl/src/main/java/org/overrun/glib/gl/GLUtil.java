@@ -101,7 +101,7 @@ public final class GLUtil {
                 logger.accept(sb.toString());
             };
             GL.debugMessageCallback(arena.scope(), proc, MemorySegment.NULL);
-            // no need GLKHRDebug
+            // no need GL_KHR_debug
             if ((caps.Ver43 || caps.Ver30) &&
                 (GL.getInteger(GL_CONTEXT_FLAGS) & GL_CONTEXT_FLAG_DEBUG_BIT) == 0) {
                 apiLog("[GL] Warning: A non-debug context may not produce any debug output.");

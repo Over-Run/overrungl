@@ -79,9 +79,10 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * @param container the backing memory buffer, may be null
      * @param address   the backing memory address
      * @param size      the backing memory size
+     * @param scope     the backing segment scope
      */
-    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size) {
-        super(address, null);
+    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size, SegmentScope scope) {
+        super(address, scope);
         this.container = container;
 
         this.size = size;
@@ -107,7 +108,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * @param capacity the maximum number of bytes that may be allocated on the stack
      */
     public static MemoryStack create(long capacity) {
-        return create(MemorySegment.allocateNative(capacity, SegmentScope.global()), capacity);
+        return create(MemorySegment.allocateNative(capacity, SegmentScope.global()), capacity, SegmentScope.global());
     }
 
     /**
@@ -117,11 +118,12 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      *
      * @param buffer the backing memory buffer
      * @param size   the memory buffer size
+     * @param scope  the backing segment scope
      */
-    public static MemoryStack create(MemorySegment buffer, long size) {
+    public static MemoryStack create(MemorySegment buffer, long size, SegmentScope scope) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(buffer, buffer, size)
-            : new MemoryStack(buffer, buffer, size);
+            ? new DebugMemoryStack(buffer, buffer, size, scope)
+            : new MemoryStack(buffer, buffer, size, scope);
     }
 
     /**
@@ -131,11 +133,12 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      *
      * @param address the backing memory address
      * @param size    the backing memory size
+     * @param scope   the backing segment scope
      */
-    public static MemoryStack ncreate(MemorySegment address, long size) {
+    public static MemoryStack ncreate(MemorySegment address, long size, SegmentScope scope) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(null, address, size)
-            : new MemoryStack(null, address, size);
+            ? new DebugMemoryStack(null, address, size, scope)
+            : new MemoryStack(null, address, size, scope);
     }
 
     /**
@@ -198,8 +201,8 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
 
-        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size) {
-            super(buffer, address, size);
+        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size, SegmentScope scope) {
+            super(buffer, address, size, scope);
             debugFrames = new Object[DEFAULT_STACK_FRAMES];
         }
 
@@ -314,12 +317,6 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
         }
     }
 
-    private static void checkAlignment(long alignment) {
-        if (Long.bitCount(alignment) != 1) {
-            throw new IllegalArgumentException("Alignment must be a power-of-two value.");
-        }
-    }
-
     /**
      * Allocates a block of {@code size} bytes of memory on the stack. The content of the newly allocated block of memory is not initialized, remaining with
      * indeterminate values.
@@ -368,7 +365,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      */
     public MemorySegment malloc(long alignment, long size) {
         if (DEBUG) {
-            checkAlignment(alignment);
+            RuntimeHelper.checkAlignment(alignment);
         }
         return nmalloc(alignment, size);
     }
@@ -378,9 +375,9 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      */
     public MemorySegment calloc(long alignment, long size) {
         if (DEBUG) {
-            checkAlignment(alignment);
+            RuntimeHelper.checkAlignment(alignment);
         }
-        return ncalloc(alignment, size, 1);
+        return ncalloc(alignment, 1, size);
     }
 
     /**
@@ -401,7 +398,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * Calloc version of {@link #malloc(long)}.
      */
     public MemorySegment calloc(long size) {
-        return ncalloc(ADDRESS.byteSize(), size, 1);
+        return ncalloc(ADDRESS.byteSize(), 1, size);
     }
 
     public MemorySegment calloc(MemoryLayout layout, long num) {
@@ -413,7 +410,11 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     }
 
     @Override
-    public MemorySegment allocate(long byteSize, long byteAlignment) {
+    public MemorySegment allocate(long byteSize, long byteAlignment) throws IllegalArgumentException {
+        if (byteSize < 0) {
+            throw new IllegalArgumentException("byteSize must be >= 0.");
+        }
+        RuntimeHelper.checkAlignment(byteAlignment);
         return calloc(byteAlignment, byteSize);
     }
 
