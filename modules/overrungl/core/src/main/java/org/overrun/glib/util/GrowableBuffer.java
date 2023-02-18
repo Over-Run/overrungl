@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.util;
@@ -431,6 +423,11 @@ public class GrowableBuffer implements AutoCloseable, Addressable {
         return this;
     }
 
+    public GrowableBuffer putAll(MemoryLayout layout, MemorySegment address) {
+        internalPutAll(layout, 0, address);
+        return this;
+    }
+
     private void internalPutAll(MemoryLayout layout, long srcOffset, MemorySegment address) {
         switch (layout) {
             // TODO: 2022/12/10 Replace with _
@@ -459,11 +456,6 @@ public class GrowableBuffer implements AutoCloseable, Addressable {
             }
             case ValueLayout valueLayout -> internalPutValue(valueLayout, srcOffset, address);
         }
-    }
-
-    public GrowableBuffer putAll(MemoryLayout layout, MemorySegment address) {
-        internalPutAll(layout, 0, address);
-        return this;
     }
 
     private void internalPutValue(ValueLayout layout, long srcOffset, MemorySegment address) {

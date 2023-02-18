@@ -1,3 +1,5 @@
+# OverrunGL - Overrun Game Library
+
 ![License](https://img.shields.io/github/license/Over-Run/overrungl)
 [![GitHub contributors](https://img.shields.io/github/contributors/Over-Run/overrungl)](https://github.com/Over-Run/overrungl/graphs/contributors)
 
@@ -7,7 +9,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/Over-Run/overrungl)
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
 
-# OverrunGL - Overrun Game Library
+## Introduction
 
 Overrun Game Library is a high performance library that implemented with Java 20,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
@@ -30,9 +32,13 @@ For `-SNAPSHOT` versions, you can use the [list of available versions](https://s
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 ```
 
+## Getting Started
+
+You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or the [samples](modules/samples/src/test/java/org/overrun/glib/demo).
+
 ## Contact
 
-- [Forum](https://github.com/Over-Run/overrungl/discussions)
+- [Discussions](https://github.com/Over-Run/overrungl/discussions)
 - [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
 
 ## Release Notes
