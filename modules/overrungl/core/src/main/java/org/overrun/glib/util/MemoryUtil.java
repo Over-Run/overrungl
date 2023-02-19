@@ -92,17 +92,10 @@ public final class MemoryUtil {
     }
 
     /**
-     * Allocates memory blocks.
-     * <p>
-     * The {@code malloc} function allocates a memory block of at least <i>{@code size}</i> bytes. The block may be
-     * larger than <i>{@code size}</i> bytes because of the space that's required for alignment and maintenance
-     * information.
+     * The layout version of {@link #malloc(long)}.
      *
-     * @param layout Bytes to allocate.
-     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemorySegment#NULL NULL}
-     * if there is insufficient memory available. The storage space pointed to by the return value is suitably aligned
-     * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
-     * alignment.
+     * @param layout the memory layout.
+     * @return the allocated space.
      * @see #malloc(long)
      */
     public static MemorySegment malloc(MemoryLayout layout) {

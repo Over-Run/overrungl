@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.demo.opengl;
@@ -128,7 +120,7 @@ public final class GL15Test {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256),
+                IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256, 128),
                 px, py, pc, STBImage.RGB
             );
             GL.texImage2D(GL_TEXTURE_2D,
@@ -154,18 +146,18 @@ public final class GL15Test {
             // Draw triangle
             GL.bindTexture(GL_TEXTURE_2D, tex);
             GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-            GL11.enableClientState(GL_VERTEX_ARRAY);
-            GL11.enableClientState(GL_COLOR_ARRAY);
-            GL11.enableClientState(GL_TEXTURE_COORD_ARRAY);
+            GL11.enableClientState(GL11.VERTEX_ARRAY);
+            GL11.enableClientState(GL11.COLOR_ARRAY);
+            GL11.enableClientState(GL11.TEXTURE_COORD_ARRAY);
             // 8 double words = 32 bytes
             final int stride = 8 << 2;
             GL11.vertexPointer(3, GL_FLOAT, stride, MemorySegment.NULL);
             GL11.colorPointer(3, GL_FLOAT, stride, MemorySegment.ofAddress(3 << 2));
             GL11.texCoordPointer(2, GL_FLOAT, stride, MemorySegment.ofAddress(6 << 2));
             GL.drawArrays(GL_TRIANGLES, 0, 3);
-            GL11.disableClientState(GL_VERTEX_ARRAY);
-            GL11.disableClientState(GL_COLOR_ARRAY);
-            GL11.disableClientState(GL_TEXTURE_COORD_ARRAY);
+            GL11.disableClientState(GL11.VERTEX_ARRAY);
+            GL11.disableClientState(GL11.COLOR_ARRAY);
+            GL11.disableClientState(GL11.TEXTURE_COORD_ARRAY);
             GL.bindBuffer(GL_ARRAY_BUFFER, 0);
             GL.bindTexture(GL_TEXTURE_2D, 0);
 

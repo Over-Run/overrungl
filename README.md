@@ -14,9 +14,22 @@
 Overrun Game Library is a high performance library that implemented with Java 20,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
+### OverrunGL vs. LWJGL
+
+[LWJGL3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
+
+LWJGL3 uses JNI to access native functions, but OverrunGL uses [FFM API](https://openjdk.org/jeps/434), which has better
+performance.
+
+## Getting Started
+
+You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
+the [samples](modules/samples/src/test/java/org/overrun/glib/demo).
+
 ## Using as a Dependency
 
-~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very unstable, so you have to use the -SNAPSHOT version.
+~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very
+unstable, so you have to use the -SNAPSHOT version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
@@ -26,15 +39,13 @@ We will provide a module customizer soon.
 
 We publish `-SNAPSHOT` versions frequently.
 
-For `-SNAPSHOT` versions, you can use the [list of available versions](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/over-run/overrungl/maven-metadata.xml) and include this maven repository:
+For `-SNAPSHOT` versions, you can use
+the [list of available versions](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/over-run/overrungl/maven-metadata.xml)
+and include this maven repository:
 
 ```groovy
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 ```
-
-## Getting Started
-
-You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or the [samples](modules/samples/src/test/java/org/overrun/glib/demo).
 
 ## Contact
 
@@ -45,18 +56,22 @@ You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or the [sam
 
 See [doc/notes](doc/notes/README.md).
 
-## Publishing (for internal member)
+## Additional
+
+OpenGL docs can be found [here](https://docs.gl/).
+
+### Publishing (for internal member)
 
 To publish this library, you need a GPG key and the write permission of Maven Central.
 
-### Packing Natives
+#### Packing Natives
 
 The build script can put the native libraries into jars.
 
 The tree structure of libraries is:
 
 ```text
-Natives
+natives
 ├─ glfw
 │  ├─ linux
 │  │  ├─ arm64
@@ -94,7 +109,3 @@ Natives
       └─ x86
          └─ stb.dll
 ```
-
-## Additional
-
-OpenGL docs can be found [here](https://docs.gl/).

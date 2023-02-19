@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.stb;
@@ -45,17 +37,16 @@ import static org.overrun.glib.stb.Handles.initialize;
  */
 public final class STBImage {
     private static MethodHandle
-        stbi__unpremultiply_on_load_thread, stbi_convert_iphone_png_to_rgb, stbi_convert_iphone_png_to_rgb_thread,
-        stbi_failure_reason, stbi_hdr_to_ldr_gamma, stbi_hdr_to_ldr_scale, stbi_image_free, stbi_info,
-        stbi_info_from_callbacks, stbi_info_from_file, stbi_info_from_memory, stbi_is_16_bit,
-        stbi_is_16_bit_from_callbacks, stbi_is_16_bit_from_file, stbi_is_16_bit_from_memory, stbi_is_hdr,
-        stbi_is_hdr_from_callbacks, stbi_is_hdr_from_file, stbi_is_hdr_from_memory, stbi_ldr_to_hdr_gamma,
-        stbi_ldr_to_hdr_scale, stbi_load, stbi_load_16, stbi_load_16_from_callbacks, stbi_load_16_from_memory,
-        stbi_load_from_callbacks, stbi_load_from_file, stbi_load_from_file_16, stbi_load_from_memory,
-        stbi_load_gif_from_memory, stbi_loadf, stbi_loadf_from_callbacks, stbi_loadf_from_file, stbi_loadf_from_memory,
-        stbi_set_flip_vertically_on_load, stbi_set_flip_vertically_on_load_thread, stbi_set_unpremultiply_on_load,
-        stbi_zlib_decode_buffer, stbi_zlib_decode_malloc, stbi_zlib_decode_malloc_guesssize,
-        stbi_zlib_decode_malloc_guesssize_headerflag, stbi_zlib_decode_noheader_buffer, stbi_zlib_decode_noheader_malloc;
+        stbi_convert_iphone_png_to_rgb, stbi_convert_iphone_png_to_rgb_thread, stbi_failure_reason, stbi_hdr_to_ldr_gamma,
+        stbi_hdr_to_ldr_scale, stbi_image_free, stbi_info, stbi_info_from_callbacks, stbi_info_from_file, stbi_info_from_memory,
+        stbi_is_16_bit, stbi_is_16_bit_from_callbacks, stbi_is_16_bit_from_file, stbi_is_16_bit_from_memory, stbi_is_hdr,
+        stbi_is_hdr_from_callbacks, stbi_is_hdr_from_file, stbi_is_hdr_from_memory, stbi_ldr_to_hdr_gamma, stbi_ldr_to_hdr_scale,
+        stbi_load, stbi_load_16, stbi_load_16_from_callbacks, stbi_load_16_from_memory, stbi_load_from_callbacks, stbi_load_from_file,
+        stbi_load_from_file_16, stbi_load_from_memory, stbi_load_gif_from_memory, stbi_loadf, stbi_loadf_from_callbacks,
+        stbi_loadf_from_file, stbi_loadf_from_memory, stbi_set_flip_vertically_on_load, stbi_set_flip_vertically_on_load_thread,
+        stbi_set_unpremultiply_on_load, stbi_set_unpremultiply_on_load_thread, stbi_zlib_decode_buffer, stbi_zlib_decode_malloc,
+        stbi_zlib_decode_malloc_guesssize, stbi_zlib_decode_malloc_guesssize_headerflag, stbi_zlib_decode_noheader_buffer,
+        stbi_zlib_decode_noheader_malloc;
 
     // only used for desiredChannels
     /**
@@ -74,7 +65,6 @@ public final class STBImage {
     }
 
     private static void create() {
-        stbi__unpremultiply_on_load_thread = downcall("stbi__unpremultiply_on_load_thread", IV);
         stbi_convert_iphone_png_to_rgb = downcall("stbi_convert_iphone_png_to_rgb", IV);
         stbi_convert_iphone_png_to_rgb_thread = downcall("stbi_convert_iphone_png_to_rgb_thread", IV);
         stbi_failure_reason = downcall("stbi_failure_reason", p);
@@ -111,6 +101,7 @@ public final class STBImage {
         stbi_set_flip_vertically_on_load = downcall("stbi_set_flip_vertically_on_load", IV);
         stbi_set_flip_vertically_on_load_thread = downcall("stbi_set_flip_vertically_on_load_thread", IV);
         stbi_set_unpremultiply_on_load = downcall("stbi_set_unpremultiply_on_load", IV);
+        stbi_set_unpremultiply_on_load_thread = downcall("stbi_set_unpremultiply_on_load_thread", IV);
         stbi_zlib_decode_buffer = downcall("stbi_zlib_decode_buffer", PIPII);
         stbi_zlib_decode_malloc = downcall("stbi_zlib_decode_malloc", PIPp);
         stbi_zlib_decode_malloc_guesssize = downcall("stbi_zlib_decode_malloc_guesssize", PIIPp);
@@ -123,25 +114,17 @@ public final class STBImage {
         throw new IllegalStateException("Do not construct instance");
     }
 
-    public static void setUnpremultiplyOnLoadThread(boolean flagTrueIfShouldUnpremultiply) {
+    public static void convertIphonePngToRgb(boolean shouldConvert) {
         try {
-            stbi__unpremultiply_on_load_thread.invokeExact(flagTrueIfShouldUnpremultiply ? 1 : 0);
+            stbi_convert_iphone_png_to_rgb.invokeExact(shouldConvert ? 1 : 0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void convertIphonePngToRgb(boolean flagTrueIfShouldConvert) {
+    public static void convertIphonePngToRgbThread(boolean shouldConvert) {
         try {
-            stbi_convert_iphone_png_to_rgb.invokeExact(flagTrueIfShouldConvert ? 1 : 0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void convertIphonePngToRgbThread(boolean flagTrueIfShouldConvert) {
-        try {
-            stbi_convert_iphone_png_to_rgb_thread.invokeExact(flagTrueIfShouldConvert ? 1 : 0);
+            stbi_convert_iphone_png_to_rgb_thread.invokeExact(shouldConvert ? 1 : 0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -597,7 +580,7 @@ public final class STBImage {
         final int layers = pz.get(JAVA_INT, 0);
         z[0] = layers;
         comp[0] = pc.get(JAVA_INT, 0);
-        delays[0] = RuntimeHelper.toArray(pd.get(ADDRESS, 0), new int[layers]);
+        delays[0] = RuntimeHelper.toArray(pd.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0), new int[layers]);
         return addr;
     }
 
@@ -693,25 +676,33 @@ public final class STBImage {
         return addr;
     }
 
-    public static void setFlipVerticallyOnLoad(boolean flagTrueIfShouldFlip) {
+    public static void setFlipVerticallyOnLoad(boolean shouldFlip) {
         try {
-            stbi_set_flip_vertically_on_load.invokeExact(flagTrueIfShouldFlip ? 1 : 0);
+            stbi_set_flip_vertically_on_load.invokeExact(shouldFlip ? 1 : 0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void setFlipVerticallyOnLoadThread(boolean flagTrueIfShouldFlip) {
+    public static void setFlipVerticallyOnLoadThread(boolean shouldFlip) {
         try {
-            stbi_set_flip_vertically_on_load_thread.invokeExact(flagTrueIfShouldFlip ? 1 : 0);
+            stbi_set_flip_vertically_on_load_thread.invokeExact(shouldFlip ? 1 : 0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
-    public static void setUnpremultiplyOnLoad(boolean flagTrueIfShouldUnpremultiply) {
+    public static void setUnpremultiplyOnLoad(boolean shouldUnpremultiply) {
         try {
-            stbi_set_unpremultiply_on_load.invokeExact(flagTrueIfShouldUnpremultiply ? 1 : 0);
+            stbi_set_unpremultiply_on_load.invokeExact(shouldUnpremultiply ? 1 : 0);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static void setUnpremultiplyOnLoadThread(boolean shouldUnpremultiply) {
+        try {
+            stbi_set_unpremultiply_on_load_thread.invokeExact(shouldUnpremultiply ? 1 : 0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

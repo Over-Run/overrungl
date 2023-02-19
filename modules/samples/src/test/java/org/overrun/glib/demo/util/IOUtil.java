@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.demo.util;
@@ -47,6 +39,45 @@ public final class IOUtil {
         return MemorySegment.allocateNative(newCapacity, scope).copyFrom(segment);
     }
 
+    /**
+     * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
+     *
+     * @param scope       the segment scope. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
+     * @param resource    the resource to read.
+     * @param segmentSize the initial segment size.
+     * @param bufferSize  the buffer size for reading file.
+     * @return the resource data.
+     * @throws IOException if an IO error occurs.
+     */
+    public static MemorySegment ioResourceToSegment(SegmentScope scope, String resource, long segmentSize, int bufferSize) throws IOException {
+        final Path path = Path.of(resource);
+
+        // Check whether on local
+        if (Files.isReadable(path)) {
+            try (var fc = FileChannel.open(path)) {
+                return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), scope);
+            }
+        }
+
+        // On classpath
+        try (var is = IOUtil.class.getClassLoader().getResourceAsStream(resource)) {
+            Objects.requireNonNull(is, "Failed to load resource '" + resource + "'!");
+            MemorySegment segment = MemorySegment.allocateNative(segmentSize, scope);
+
+            // Creates a byte array to avoid creating it per loop
+            final byte[] bytes = new byte[bufferSize];
+            long pos = 0;
+            int count;
+            while ((count = is.read(bytes)) > 0) {
+                if (pos >= segment.byteSize()) {
+                    segment = resizeSegment(scope, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
+                }
+                MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, count);
+                pos += count;
+            }
+            return segment;
+        }
+    }
 
     /**
      * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
@@ -58,38 +89,6 @@ public final class IOUtil {
      * @throws IOException if an IO error occurs.
      */
     public static MemorySegment ioResourceToSegment(SegmentScope scope, String resource, long segmentSize) throws IOException {
-        MemorySegment segment;
-
-        var path = Path.of(resource);
-        // Check whether on local
-        if (Files.isReadable(path)) {
-            try (var fc = FileChannel.open(path)) {
-                segment = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), scope);
-            }
-        } else {
-            // On classpath
-            try (var is = IOUtil.class.getClassLoader().getResourceAsStream(resource)) {
-                Objects.requireNonNull(is, "Failed to load resource '" + resource + "'!");
-                segment = MemorySegment.allocateNative(segmentSize, scope);
-
-                long pos = 0;
-                while (true) {
-                    // (segment size - pos) may overflow, choose the min value
-                    final int readCount = (int) Math.min(Integer.MAX_VALUE, segment.byteSize() - pos);
-                    // try to read at least 1 byte
-                    byte[] bytes = is.readNBytes(Math.max(readCount, 1));
-                    if (bytes.length == 0) {
-                        break;
-                    }
-                    if (pos >= segment.byteSize()) {
-                        segment = resizeSegment(scope, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
-                    }
-                    MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, bytes.length);
-                    pos += bytes.length;
-                }
-            }
-        }
-
-        return segment;
+        return ioResourceToSegment(scope, resource, segmentSize, 8192);
     }
 }

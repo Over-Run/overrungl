@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.demo.opengl;
@@ -33,6 +25,7 @@ import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.joml.Matrixn;
+import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.*;
 
@@ -66,9 +59,10 @@ public class GL33Test {
 
         GL.deleteProgram(program);
         GL.deleteVertexArray(vao);
-        GL.deleteBuffer(vbo);
-        GL.deleteBuffer(ebo);
-        GL.deleteBuffer(mbo);
+        // Optimization when many buffer objects need to be deleted
+        try (final MemoryStack stack = MemoryStack.stackPush()) {
+            GL.deleteBuffers(3, stack.ints(vbo, ebo, mbo));
+        }
 
         Callbacks.free(window);
         GLFW.destroyWindow(window);
@@ -256,7 +250,7 @@ public class GL33Test {
             lastTime = time;
             time = GLFW.getTime();
             dt = time - lastTime;
-            try (var arena = Arena.openShared()) {
+            try (var arena = Arena.openConfined()) {
                 GLFW.setWindowTitle(arena, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
             }
         }

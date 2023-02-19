@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib;
@@ -54,7 +46,7 @@ public final class RuntimeHelper {
      */
     public static final Linker LINKER = Linker.nativeLinker();
     private static final File tmpdir = new File(System.getProperty("java.io.tmpdir"));
-    private static final Consumer<String> DEFAULT_LOGGER = System.out::println;
+    private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
     /**
      * The address of {@code NULL}.
@@ -96,7 +88,7 @@ public final class RuntimeHelper {
      * @return an unbounded native segment with the given address.
      */
     public static MemorySegment unbound(MemorySegment segment, SegmentScope scope) {
-        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE, scope);
+        return sizedSegment(segment, Long.MAX_VALUE, scope);
     }
 
     /**
@@ -136,16 +128,16 @@ public final class RuntimeHelper {
     /**
      * Sets the API logger.
      *
-     * @param logger the logger. pass {@code null} to reset to the default logger
+     * @param logger the logger. pass {@code null} to reset to the default logger.
      */
     public static void setApiLogger(Consumer<String> logger) {
         apiLogger = Objects.requireNonNullElse(logger, DEFAULT_LOGGER);
     }
 
     /**
-     * Gets the API logger. Defaults to {@link System#out}.
+     * Gets the API logger. Defaults to {@link System#err}.
      *
-     * @return the API logger
+     * @return the API logger.
      */
     public static Consumer<String> apiLogger() {
         return apiLogger;
@@ -250,8 +242,8 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(MemorySegment symbol, FunctionDescriptor function) {
-        if (symbol.address() == NULL) return null;
+    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function) {
+        if (symbol == null || symbol.address() == NULL) return null;
         return LINKER.downcallHandle(symbol, function);
     }
 
@@ -274,7 +266,7 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(MemorySegment symbol, FunctionDescriptors function) {
+    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptors function) {
         return downcallSafe(symbol, function.descriptor());
     }
 
@@ -295,7 +287,7 @@ public final class RuntimeHelper {
      * @param <T>       the array type
      * @param seg       the memory segment contained objects. native type: {@code void**}
      * @param arr       the array to hold the result
-     * @param generator the generator, to convert to the array type
+     * @param generator the generator, from a zero-length address to the array type
      * @return arr
      */
     public static <T> T[] toArray(MemorySegment seg, T[] arr,
@@ -307,30 +299,31 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Gets the objects from an address array.
+     *
+     * @param <T>       the array type
+     * @param seg       the memory segment contained objects. native type: {@code void**}
+     * @param arr       the array to hold the result
+     * @param generator the generator, from an unbounded address to the array type
+     * @return arr
+     */
+    public static <T> T[] toUnboundedArray(MemorySegment seg, T[] arr,
+                                           Function<MemorySegment, T> generator) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.apply(seg.getAtIndex(ADDRESS_UNBOUNDED, i));
+        }
+        return arr;
+    }
+
+    /**
      * Gets the addresses from an address array.
      *
      * @param seg the memory segment contained addresses. native type: {@code void**}
      * @param arr the array to hold the result
-     * @return arr
+     * @return an array of the zero-length addresses.
      */
     public static MemorySegment[] toArray(MemorySegment seg, MemorySegment[] arr) {
         return toArray(seg, arr, Function.identity());
-    }
-
-    public static String[] toArray(MemorySegment seg, String[] arr) {
-        return toArray(seg, arr, p -> p.getUtf8String(0));
-    }
-
-    /**
-     * Gets the strings from an unbounded address array with the given segment scope.
-     *
-     * @param scope the scope associated with the returned native segment.
-     * @param seg   the memory segment contained strings. native type: {@code char**}
-     * @param arr   the array to hold the result
-     * @return arr
-     */
-    public static String[] toUnboundedArray(SegmentScope scope, MemorySegment seg, String[] arr) {
-        return toArray(seg, arr, p -> unbound(p, scope).getUtf8String(0));
     }
 
     /**
@@ -341,9 +334,7 @@ public final class RuntimeHelper {
      * @return arr
      */
     public static String[] toUnboundedArray(MemorySegment seg, String[] arr) {
-        try (Arena arena = Arena.openShared()) {
-            return toUnboundedArray(arena.scope(), seg, arr);
-        }
+        return toUnboundedArray(seg, arr, p -> p.getUtf8String(0));
     }
 
     /**

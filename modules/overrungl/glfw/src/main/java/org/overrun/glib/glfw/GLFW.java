@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
@@ -1129,13 +1121,18 @@ public final class GLFW {
      * @see #ngetError(MemorySegment) ngetError
      */
     public static int getError(String @Nullable [] description) {
-        var pDesc = description != null ? malloc(ADDRESS) : MemorySegment.NULL;
-        int err = ngetError(pDesc);
-        if (description != null && description.length > 0) {
-            description[0] = pDesc.get(ADDRESS, 0).getUtf8String(0);
-            free(pDesc);
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = description != null ? stack.malloc(ADDRESS) : MemorySegment.NULL;
+            final int err = ngetError(seg);
+            if (description != null && description.length > 0) {
+                description[0] = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0).getUtf8String(0);
+            }
+            return err;
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return err;
     }
 
     /**
@@ -1145,11 +1142,16 @@ public final class GLFW {
      * @see #ngetError(MemorySegment) ngetError
      */
     public static Value2.OfObjInt<String> getError() {
-        var pDesc = malloc(ADDRESS);
-        int err = ngetError(pDesc);
-        String desc = pDesc.get(ADDRESS, 0).getUtf8String(0);
-        free(pDesc);
-        return new Value2.OfObjInt<>(desc, err);
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.malloc(ADDRESS);
+            final int err = ngetError(seg);
+            final String desc = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0).getUtf8String(0);
+            return new Value2.OfObjInt<>(desc, err);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -5907,6 +5909,6 @@ public final class GLFW {
             stack.setPointer(stackPointer);
         }
         if (count == 0) return null;
-        return RuntimeHelper.toArray(pExt, new String[count]);
+        return RuntimeHelper.toUnboundedArray(pExt, new String[count]);
     }
 }

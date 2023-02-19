@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
@@ -27,6 +19,7 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 
@@ -75,9 +68,23 @@ final class Handles {
     static MethodHandle
         glfwGetInstanceProcAddress, glfwGetPhysicalDevicePresentationSupport, glfwCreateWindowSurface;
 
+    // GLFW Native
+    static MethodHandle
+        glfwGetWin32Adapter, glfwGetWin32Monitor;
+
     private static MethodHandle downcall(String name,
                                          FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(lookup.find(name), function);
+    }
+
+    private static MethodHandle downcallNative(String name,
+                                               FunctionDescriptors function) {
+        return RuntimeHelper.downcallSafe(lookup.find(name).orElse(MemorySegment.NULL), function);
+    }
+
+    private static void createNative() {
+        glfwGetWin32Adapter = downcallNative("glfwGetWin32Adapter", Pp);
+        glfwGetWin32Monitor = downcallNative("glfwGetWin32Monitor", Pp);
     }
 
     static void create() {
@@ -207,5 +214,8 @@ final class Handles {
         glfwGetInstanceProcAddress = downcall("glfwGetInstanceProcAddress", PPP);
         glfwGetPhysicalDevicePresentationSupport = downcall("glfwGetPhysicalDevicePresentationSupport", PPII);
         glfwCreateWindowSurface = downcall("glfwCreateWindowSurface", PPPPI);
+
+        // GLFW Native
+        createNative();
     }
 }
