@@ -39,30 +39,24 @@ final class Handles {
         glfwGetMonitors, glfwGetPrimaryMonitor, glfwGetMonitorPos, glfwGetMonitorWorkarea, glfwGetMonitorPhysicalSize,
         glfwGetMonitorContentScale, glfwGetMonitorName, glfwSetMonitorUserPointer, glfwGetMonitorUserPointer,
         glfwSetMonitorCallback, glfwGetVideoModes, glfwGetVideoMode, glfwSetGamma, glfwGetGammaRamp, glfwSetGammaRamp,
-        glfwDefaultWindowHints, glfwWindowHint, glfwWindowHintString, glfwCreateWindow, glfwDestroyWindow,
-        glfwWindowShouldClose, glfwSetWindowShouldClose, glfwSetWindowTitle, glfwSetWindowIcon, glfwGetWindowPos,
-        glfwSetWindowPos, glfwGetWindowSize, glfwSetWindowSizeLimits, glfwSetWindowAspectRatio, glfwSetWindowSize,
-        glfwGetFramebufferSize, glfwGetWindowFrameSize, glfwGetWindowContentScale, glfwGetWindowOpacity,
-        glfwSetWindowOpacity, glfwIconifyWindow, glfwRestoreWindow, glfwMaximizeWindow, glfwShowWindow, glfwHideWindow,
-        glfwFocusWindow, glfwRequestWindowAttention, glfwGetWindowMonitor, glfwSetWindowMonitor, glfwGetWindowAttrib,
-        glfwSetWindowAttrib, glfwSetWindowUserPointer, glfwGetWindowUserPointer, glfwSetWindowPosCallback,
-        glfwSetWindowSizeCallback, glfwSetWindowCloseCallback, glfwSetWindowRefreshCallback, glfwSetWindowFocusCallback,
-        glfwSetWindowIconifyCallback, glfwSetWindowMaximizeCallback, glfwSetFramebufferSizeCallback,
+        glfwDefaultWindowHints, glfwWindowHint, glfwWindowHintString, glfwCreateWindow, glfwDestroyWindow, glfwWindowShouldClose,
+        glfwSetWindowShouldClose, glfwSetWindowTitle, glfwSetWindowIcon, glfwGetWindowPos, glfwSetWindowPos, glfwGetWindowSize,
+        glfwSetWindowSizeLimits, glfwSetWindowAspectRatio, glfwSetWindowSize, glfwGetFramebufferSize, glfwGetWindowFrameSize,
+        glfwGetWindowContentScale, glfwGetWindowOpacity, glfwSetWindowOpacity, glfwIconifyWindow, glfwRestoreWindow,
+        glfwMaximizeWindow, glfwShowWindow, glfwHideWindow, glfwFocusWindow, glfwRequestWindowAttention, glfwGetWindowMonitor,
+        glfwSetWindowMonitor, glfwGetWindowAttrib, glfwSetWindowAttrib, glfwSetWindowUserPointer, glfwGetWindowUserPointer,
+        glfwSetWindowPosCallback, glfwSetWindowSizeCallback, glfwSetWindowCloseCallback, glfwSetWindowRefreshCallback,
+        glfwSetWindowFocusCallback, glfwSetWindowIconifyCallback, glfwSetWindowMaximizeCallback, glfwSetFramebufferSizeCallback,
         glfwSetWindowContentScaleCallback, glfwPollEvents, glfwWaitEvents, glfwWaitEventsTimeout, glfwPostEmptyEvent,
         glfwGetInputMode, glfwSetInputMode, glfwRawMouseMotionSupported, glfwGetKeyName, glfwGetKeyScancode, glfwGetKey,
-        glfwGetMouseButton, glfwGetCursorPos, glfwSetCursorPos, glfwCreateCursor, glfwCreateStandardCursor,
-        glfwDestroyCursor, glfwSetCursor, glfwSetKeyCallback, glfwSetCharCallback;
-    @Deprecated(forRemoval = true)
-    static MethodHandle glfwSetCharModsCallback;
-    static MethodHandle
-        glfwSetMouseButtonCallback, glfwSetCursorPosCallback, glfwSetCursorEnterCallback, glfwSetScrollCallback,
-        glfwSetDropCallback, glfwJoystickPresent, glfwGetJoystickAxes, glfwGetJoystickButtons, glfwGetJoystickHats,
-        glfwGetJoystickName, glfwGetJoystickGUID, glfwSetJoystickUserPointer, glfwGetJoystickUserPointer,
-        glfwJoystickIsGamepad, glfwSetJoystickCallback, glfwUpdateGamepadMappings, glfwGetGamepadName,
-        glfwGetGamepadState, glfwSetClipboardString, glfwGetClipboardString, glfwGetTime, glfwSetTime,
-        glfwGetTimerValue, glfwGetTimerFrequency, glfwMakeContextCurrent, glfwGetCurrentContext, glfwSwapBuffers,
-        glfwSwapInterval, glfwExtensionSupported, glfwGetProcAddress, glfwVulkanSupported,
-        glfwGetRequiredInstanceExtensions;
+        glfwGetMouseButton, glfwGetCursorPos, glfwSetCursorPos, glfwCreateCursor, glfwCreateStandardCursor, glfwDestroyCursor,
+        glfwSetCursor, glfwSetKeyCallback, glfwSetCharCallback, glfwSetMouseButtonCallback, glfwSetCursorPosCallback,
+        glfwSetCursorEnterCallback, glfwSetScrollCallback, glfwSetDropCallback, glfwJoystickPresent, glfwGetJoystickAxes,
+        glfwGetJoystickButtons, glfwGetJoystickHats, glfwGetJoystickName, glfwGetJoystickGUID, glfwSetJoystickUserPointer,
+        glfwGetJoystickUserPointer, glfwJoystickIsGamepad, glfwSetJoystickCallback, glfwUpdateGamepadMappings, glfwGetGamepadName,
+        glfwGetGamepadState, glfwSetClipboardString, glfwGetClipboardString, glfwGetTime, glfwSetTime, glfwGetTimerValue,
+        glfwGetTimerFrequency, glfwMakeContextCurrent, glfwGetCurrentContext, glfwSwapBuffers, glfwSwapInterval,
+        glfwExtensionSupported, glfwGetProcAddress, glfwVulkanSupported, glfwGetRequiredInstanceExtensions;
 
     // GLFW Vulkan
     static MethodHandle
@@ -70,7 +64,10 @@ final class Handles {
 
     // GLFW Native
     static MethodHandle
-        glfwGetWin32Adapter, glfwGetWin32Monitor;
+        glfwGetWin32Adapter, glfwGetWin32Monitor, glfwGetWin32Window, glfwGetWGLContext, glfwGetCocoaMonitor, glfwGetCocoaWindow,
+        glfwGetNSGLContext, glfwGetX11Display, glfwGetX11Adapter, glfwGetX11Monitor, glfwGetX11Window, glfwSetX11SelectionString,
+        glfwGetX11SelectionString, glfwGetGLXContext, glfwGetGLXWindow, glfwGetWaylandDisplay, glfwGetWaylandMonitor, glfwGetWaylandWindow,
+        glfwGetEGLDisplay, glfwGetEGLContext, glfwGetEGLSurface, glfwGetOSMesaColorBuffer, glfwGetOSMesaDepthBuffer, glfwGetOSMesaContext;
 
     private static MethodHandle downcall(String name,
                                          FunctionDescriptors function) {
@@ -85,6 +82,28 @@ final class Handles {
     private static void createNative() {
         glfwGetWin32Adapter = downcallNative("glfwGetWin32Adapter", Pp);
         glfwGetWin32Monitor = downcallNative("glfwGetWin32Monitor", Pp);
+        glfwGetWin32Window = downcallNative("glfwGetWin32Window", PP);
+        glfwGetWGLContext = downcallNative("glfwGetWGLContext", PP);
+        glfwGetCocoaMonitor = downcallNative("glfwGetCocoaMonitor", fd_PI);
+        glfwGetCocoaWindow = downcallNative("glfwGetCocoaWindow", PP);
+        glfwGetNSGLContext = downcallNative("glfwGetNSGLContext", PP);
+        glfwGetX11Display = downcallNative("glfwGetX11Display", P);
+        glfwGetX11Adapter = downcallNative("glfwGetX11Adapter", PJ);
+        glfwGetX11Monitor = downcallNative("glfwGetX11Monitor", PJ);
+        glfwGetX11Window = downcallNative("glfwGetX11Window", PJ);
+        glfwSetX11SelectionString = downcallNative("glfwSetX11SelectionString", PV);
+        glfwGetX11SelectionString = downcallNative("glfwGetX11SelectionString", p);
+        glfwGetGLXContext = downcallNative("glfwGetGLXContext", PP);
+        glfwGetGLXWindow = downcallNative("glfwGetGLXWindow", PJ);
+        glfwGetWaylandDisplay = downcallNative("glfwGetWaylandDisplay", P);
+        glfwGetWaylandMonitor = downcallNative("glfwGetWaylandMonitor", PP);
+        glfwGetWaylandWindow = downcallNative("glfwGetWaylandWindow", PP);
+        glfwGetEGLDisplay = downcallNative("glfwGetEGLDisplay", P);
+        glfwGetEGLContext = downcallNative("glfwGetEGLContext", PP);
+        glfwGetEGLSurface = downcallNative("glfwGetEGLSurface", PP);
+        glfwGetOSMesaColorBuffer = downcallNative("glfwGetOSMesaColorBuffer", PPPPPI);
+        glfwGetOSMesaDepthBuffer = downcallNative("glfwGetOSMesaDepthBuffer", PPPPPI);
+        glfwGetOSMesaContext = downcallNative("glfwGetOSMesaContext", PP);
     }
 
     static void create() {
@@ -176,7 +195,6 @@ final class Handles {
         glfwSetCursor = downcall("glfwSetCursor", PPV);
         glfwSetKeyCallback = downcall("glfwSetKeyCallback", PPP);
         glfwSetCharCallback = downcall("glfwSetCharCallback", PPP);
-        glfwSetCharModsCallback = downcall("glfwSetCharModsCallback", PPP);
         glfwSetMouseButtonCallback = downcall("glfwSetMouseButtonCallback", PPP);
         glfwSetCursorPosCallback = downcall("glfwSetCursorPosCallback", PPP);
         glfwSetCursorEnterCallback = downcall("glfwSetCursorEnterCallback", PPP);

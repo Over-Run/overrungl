@@ -602,7 +602,7 @@ public final class GLFW {
      * will cause the application to segfault. Stick to one API or the other on Linux for now.<br>
      * <b>OSMesa:</b> As its name implies, an OpenGL context created with OSMesa does not update the window contents
      * when its buffers are swapped. Use OpenGL functions or the OSMesa native access functions
-     * {@link GLFWNative#getOSMesaColorBuffer getOSMesaColorBuffer} and {@link GLFWNative#getOSMesaDepthBuffer getOSMesaDepthBuffer}
+     * {@link GLFWNative#ngetOSMesaColorBuffer getOSMesaColorBuffer} and {@link GLFWNative#ngetOSMesaDepthBuffer getOSMesaDepthBuffer}
      * to retrieve the framebuffer contents.
      * </li>
      * <li>{@link #CONTEXT_VERSION_MAJOR} and {@link #CONTEXT_VERSION_MINOR}: specify the client API version
@@ -4569,59 +4569,6 @@ public final class GLFW {
      */
     public static MemorySegment setCharCallback(MemorySegment window, @Nullable IGLFWCharFun callback) {
         return nsetCharCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
-    }
-
-    /**
-     * Sets the Unicode character with modifiers callback.
-     * <p>
-     * This function sets the character with modifiers callback of the specified
-     * window, which is called when a Unicode character is input regardless of what
-     * modifier keys are used.
-     * <p>
-     * The character with modifiers callback is intended for implementing custom
-     * Unicode character input.  For regular Unicode text input, see the
-     * {@link #nsetCharCallback(MemorySegment, MemorySegment) character callback}.  Like the character
-     * callback, the character with modifiers callback deals with characters and is
-     * keyboard layout dependent.  Characters do not map 1:1 to physical keys, as
-     * a key may produce zero, one or more characters.  If you want to know whether
-     * a specific physical key was pressed or released, see the
-     * {@link #nsetKeyCallback(MemorySegment, MemorySegment) key callback} instead.
-     *
-     * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@link MemorySegment#NULL NULL} to remove the currently set
-     *                 callback.
-     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or an
-     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint, int mods)}</pre>
-     * For more information about the callback parameters, see the
-     * {@link IGLFWCharModsFun function pointer type}.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @glfw.thread_safety This function must only be called from the main thread.
-     * @deprecated Scheduled for removal in version 4.0.
-     */
-    @Deprecated(forRemoval = true)
-    public static MemorySegment nsetCharModsCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetCharModsCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    /**
-     * Sets the Unicode character with modifiers callback.
-     *
-     * @param window   The window whose callback to set.
-     * @param callback The new callback, or {@code null} to remove the currently set
-     *                 callback.
-     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set or an
-     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @see #nsetCharModsCallback(MemorySegment, MemorySegment) nsetCharModsCallback
-     * @deprecated Scheduled for removal in version 4.0.
-     */
-    @Deprecated(forRemoval = true)
-    public static MemorySegment setCharModsCallback(MemorySegment window, @Nullable IGLFWCharModsFun callback) {
-        return nsetCharModsCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
     }
 
     /**

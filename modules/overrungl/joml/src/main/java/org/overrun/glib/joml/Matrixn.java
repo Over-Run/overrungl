@@ -85,6 +85,10 @@ public final class Matrixn {
      */
     public static final SequenceLayout MAT4D = MemoryLayout.sequenceLayout(16, JAVA_DOUBLE);
 
+    private Matrixn() {
+        //no instance
+    }
+
     /**
      * Allocates the matrix.
      *

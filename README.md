@@ -47,6 +47,16 @@ and include this maven repository:
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 ```
 
+## Supported Bindings
+
+Basic graphics:
+
+| Module | Functionality                         |
+|--------|---------------------------------------|
+| GLFW   | Full (Core and native)                |
+| OpenGL | Partial (Core and partial extensions) |
+| STB    | Partial (Image, perlin noise)         |
+
 ## Contact
 
 - [Discussions](https://github.com/Over-Run/overrungl/discussions)

@@ -30,6 +30,10 @@ import java.util.Map;
 public final class Callbacks {
     private static final Map<MemorySegment, Arena> ARENA_MAP = new HashMap<>();
 
+    private Callbacks() {
+        //no instance
+    }
+
     /**
      * Creates an arena for the given window. The callbacks are available until {@link #free(MemorySegment)}
      * has been called.

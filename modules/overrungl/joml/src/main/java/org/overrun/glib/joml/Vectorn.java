@@ -80,6 +80,10 @@ public final class Vectorn {
      */
     public static final SequenceLayout VEC4D = MemoryLayout.sequenceLayout(4, JAVA_DOUBLE);
 
+    private Vectorn() {
+        //no instance
+    }
+
     /**
      * Allocates the vector.
      *

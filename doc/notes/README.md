@@ -10,7 +10,7 @@ These features are purposed to target:
 
 These features are candidates:
 
-- (?) ?
+- (0.1.0) STB easy font, true-type
 
 ### Goals
 
@@ -18,7 +18,7 @@ Our goal is to support these libraries with full document:
 
 - [x] [GLFW](https://www.glfw.org/) 3.3.8 (Currently 100%)
 - [ ] [OpenGL](https://www.khronos.org/opengl/) 4.6 (Currently 39%)
-- [ ] [STB](https://github.com/nothings/stb) (Currently 22%)
+- [ ] [STB](https://github.com/nothings/stb) (Currently 23%)
 - [ ] [Vulkan](https://www.vulkan.org/) (Currently 0%)
 - [ ] [OpenAL](https://www.openal.org/) (Currently 0%)
 - [ ] [FreeType](https://freetype.org/) (Currently 0%)

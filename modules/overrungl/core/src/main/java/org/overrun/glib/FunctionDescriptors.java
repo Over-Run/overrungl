@@ -52,7 +52,7 @@ public enum FunctionDescriptors {
      * Make it doesn't confuse with {@link Math#PI}.
      */
     fd_PI("PI"),
-    PP, Pp, PV, PZ, SV, ZV,
+    PJ, PP, Pp, PV, PZ, SV, ZV,
     // 3
     DDV, FFV, FZV, IDV, IFV, III, IIJ, IIP, IIp, IIV, IIZ, IJV, IPI, IPP, IPp, IPV, ISV, JIV, JJP, PFV, PII, PIV, PJP, PPI,
     PPP, PPp, PPV, SSV,
