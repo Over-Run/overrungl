@@ -29,7 +29,6 @@ import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
-import static org.overrun.glib.util.MemoryUtil.*;
 
 /**
  * The GLFW binding.
@@ -4950,32 +4949,32 @@ public final class GLFW {
      *     <tr><td>{@code HAT_LEFT_DOWN}</td><td>{@code HAT_LEFT | HAT_DOWN}</td></tr>
      * </table>
      * <p>
-     *  The diagonal directions are bitwise combinations of the primary (up, right,
-     *  down and left) directions, and you can test for these individually by ANDing
-     *  it with the corresponding direction.
+     * The diagonal directions are bitwise combinations of the primary (up, right,
+     * down and left) directions, and you can test for these individually by ANDing
+     * it with the corresponding direction.
      *
      * <pre>{@code
-     *  if (hats[2] & HAT_RIGHT) {
-     *      // State of hat 2 could be right-up, right or right-down
-     *  }}</pre>
+     * if (hats[2] & HAT_RIGHT) {
+     *     // State of hat 2 could be right-up, right or right-down
+     * }}</pre>
      * <p>
-     *  If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
-     *  but will not generate an error.  This can be used instead of first calling
-     *  {@link #joystickPresent}.
-     * <!-- todo don't leave a blank line -->
-     *  @param jid The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
-     *  @param count Where to store the number of hat states in the returned
-     *  array.  This is set to zero if the joystick is not present or an error
-     *  occurred.
-     *  @return An array of hat states, or {@link MemorySegment#NULL NULL} if the joystick is not present
-     *  or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     *  @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     *  {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
-     *  @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
-     *  should not free it yourself.  It is valid until the specified joystick is
-     *  disconnected, this function is called again for that joystick or the library
-     *  is terminated.
-     *  @glfw.thread_safety This function must only be called from the main thread.
+     * If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
+     * but will not generate an error.  This can be used instead of first calling
+     * {@link #joystickPresent}.
+     *
+     * @param jid   The <a href="https://www.glfw.org/docs/latest/group__joysticks.html">joystick</a> to query.
+     * @param count Where to store the number of hat states in the returned
+     *              array.  This is set to zero if the joystick is not present or an error
+     *              occurred.
+     * @return An array of hat states, or {@link MemorySegment#NULL NULL} if the joystick is not present
+     * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the specified joystick is
+     * disconnected, this function is called again for that joystick or the library
+     * is terminated.
+     * @glfw.thread_safety This function must only be called from the main thread.
      */
     public static MemorySegment ngetJoystickHats(int jid, MemorySegment count) {
         try {

@@ -38,7 +38,7 @@ import static org.overrun.glib.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWVulkan {
+public final class GLFWVulkan {
     static {
         create();
     }
@@ -46,7 +46,7 @@ public class GLFWVulkan {
     /**
      * constructor
      */
-    protected GLFWVulkan() {
+    private GLFWVulkan() {
         throw new IllegalStateException("Do not construct instance");
     }
 
@@ -65,23 +65,23 @@ public class GLFWVulkan {
      *     <li>{@code vkGetInstanceProcAddr}</li>
      * </ul>
      * <p>
-     *  If Vulkan is not available on the machine, this function returns {@link MemorySegment#NULL NULL} and
-     *  generates a {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE} error.  Call {@link GLFW#vulkanSupported vulkanSupported}
-     *  to check whether Vulkan is at least minimally available.
+     * If Vulkan is not available on the machine, this function returns {@link MemorySegment#NULL NULL} and
+     * generates a {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE} error.  Call {@link GLFW#vulkanSupported vulkanSupported}
+     * to check whether Vulkan is at least minimally available.
      * <p>
-     *  This function is equivalent to calling {@code vkGetInstanceProcAddr} with
-     *  a platform-specific query of the Vulkan loader as a fallback.
-     * <!-- todo don't leave a blank line -->
-     *  @param instance The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
-     *  functions related to instance creation.
-     *  @param procName The ASCII encoded name of the function.
-     *  @return The address of the function, or {@link MemorySegment#NULL NULL} if an
-     *  <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     *  @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
-     *  {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}.
-     *  @glfw.pointer_lifetime The returned function pointer is valid until the library
-     *  is terminated.
-     *  @glfw.thread_safety This function may be called from any thread.
+     * This function is equivalent to calling {@code vkGetInstanceProcAddr} with
+     * a platform-specific query of the Vulkan loader as a fallback.
+     *
+     * @param instance The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
+     *                 functions related to instance creation.
+     * @param procName The ASCII encoded name of the function.
+     * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
+     * {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}.
+     * @glfw.pointer_lifetime The returned function pointer is valid until the library
+     * is terminated.
+     * @glfw.thread_safety This function may be called from any thread.
      */
     public static MemorySegment nglfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procName) {
         try {

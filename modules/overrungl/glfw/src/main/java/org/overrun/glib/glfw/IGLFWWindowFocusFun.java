@@ -30,7 +30,7 @@ import java.lang.invoke.MethodType;
  * focus callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWWindowFocusFun::invoke)
- * void functionName(MemoryAddress window, boolean focused);
+ * void functionName(MemorySegment window, boolean focused);
  * }
  *
  * @author squid233

@@ -30,7 +30,7 @@ import java.lang.invoke.MethodType;
  * A cursor enter/leave callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWCursorEnterFun::invoke)
- * void functionName(MemoryAddress window, boolean entered);
+ * void functionName(MemorySegment window, boolean entered);
  * }
  *
  * @author squid233

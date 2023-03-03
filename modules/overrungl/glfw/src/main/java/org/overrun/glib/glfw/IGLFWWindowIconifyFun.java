@@ -30,7 +30,7 @@ import java.lang.invoke.MethodType;
  * iconify callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWWindowIconifyFun::invoke)
- * void functionName(MemoryAddress window, boolean iconified);
+ * void functionName(MemorySegment window, boolean iconified);
  * }
  *
  * @author squid233

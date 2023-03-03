@@ -43,6 +43,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author lwjgl3
  * @author squid233
  * @see Configurations#STACK_SIZE
+ * @see Configurations#STACK_FRAMES
  * @see Configurations#DEBUG_STACK
  * @since 0.1.0
  */
@@ -51,7 +52,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
     private static final long DEFAULT_STACK_SIZE = Configurations.STACK_SIZE.get() * 1024;
-    private static final int DEFAULT_STACK_FRAMES = 8;
+    private static final int DEFAULT_STACK_FRAMES = Configurations.STACK_FRAMES.get();
     private static final ThreadLocal<MemoryStack> TLS = ThreadLocal.withInitial(MemoryStack::create);
 
     static {
@@ -335,7 +336,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
             throw new OutOfMemoryError("Out of stack space.");
         }
 
-        return MemorySegment.ofAddress(address, size);
+        return MemorySegment.ofAddress(address, size, scope());
     }
 
     /**

@@ -31,7 +31,7 @@ import java.lang.invoke.MethodType;
  * callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWDropFun::invoke)
- * void functionName(MemoryAddress window, String[] paths);
+ * void functionName(MemorySegment window, String[] paths);
  * }
  *
  * <h2>Pointer lifetime</h2>

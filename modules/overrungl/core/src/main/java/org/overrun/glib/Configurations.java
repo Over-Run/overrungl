@@ -32,6 +32,12 @@ public final class Configurations {
      */
     public static final Entry<Long> STACK_SIZE = new Entry<>(() -> 64L);
     /**
+     * The default stack frames of {@link org.overrun.glib.util.MemoryStack MemoryStack}.
+     * <p>
+     * The default value is {@code 8}.
+     */
+    public static final Entry<Integer> STACK_FRAMES = new Entry<>(() -> 8);
+    /**
      * Enable debug messages and prints to {@link RuntimeHelper#apiLogger()}.
      * <p>
      * The default value is {@code false}.

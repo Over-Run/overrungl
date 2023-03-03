@@ -30,7 +30,7 @@ import java.lang.invoke.MethodType;
  * maximize callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWWindowMaximizeFun::invoke)
- * void functionName(MemoryAddress window, boolean maximized);
+ * void functionName(MemorySegment window, boolean maximized);
  * }
  *
  * @author squid233
