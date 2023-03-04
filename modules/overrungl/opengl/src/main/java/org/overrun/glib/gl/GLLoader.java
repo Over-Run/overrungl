@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -81,14 +73,14 @@ public final class GLLoader {
     }
 
     /**
-     * Returns the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     * Returns the current {@link GLExtCaps} of the OpenGL context in the current thread.
      * <p>
      * This is equivalent to the following code:
      * <pre><code>
      * {@link #getCapabilities()}.{@link GLCapabilities#ext ext}
      * </code></pre>
      *
-     * @return the {@link GLExtCaps} of the OpenGL context that is current in the current thread.
+     * @return the current {@link GLExtCaps} of the OpenGL context in the current thread.
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
     public static GLExtCaps getExtCapabilities() {

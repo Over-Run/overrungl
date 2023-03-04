@@ -27,6 +27,7 @@ import static org.overrun.glib.glfw.Handles.*;
 
 /**
  * This is the header file of the native access functions.
+ *
  * <h2>Native access</h2>
  * <strong>By using the native access functions you assert that you know what you're
  * doing and how to fix problems caused by using them.  If you don't, you

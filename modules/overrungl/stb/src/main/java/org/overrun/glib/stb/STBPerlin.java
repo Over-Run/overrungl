@@ -30,8 +30,7 @@ import static org.overrun.glib.stb.Handles.initialize;
  */
 public final class STBPerlin {
     private static MethodHandle
-        stb_perlin_noise3, stb_perlin_noise3_seed, stb_perlin_ridge_noise3,
-        stb_perlin_fbm_noise3, stb_perlin_turbulence_noise3, stb_perlin_noise3_wrap_nonpow2;
+        stb_perlin_noise3, stb_perlin_noise3_seed, stb_perlin_ridge_noise3, stb_perlin_fbm_noise3, stb_perlin_turbulence_noise3, stb_perlin_noise3_wrap_nonpow2;
 
     static {
         initialize();

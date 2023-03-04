@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -48,6 +40,87 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL20C extends GL15C permits GL21C {
+    public static final int BLEND_EQUATION_RGB = 0x8009;
+    public static final int VERTEX_ATTRIB_ARRAY_ENABLED = 0x8622;
+    public static final int VERTEX_ATTRIB_ARRAY_SIZE = 0x8623;
+    public static final int VERTEX_ATTRIB_ARRAY_STRIDE = 0x8624;
+    public static final int VERTEX_ATTRIB_ARRAY_TYPE = 0x8625;
+    public static final int CURRENT_VERTEX_ATTRIB = 0x8626;
+    public static final int VERTEX_PROGRAM_POINT_SIZE = 0x8642;
+    public static final int VERTEX_ATTRIB_ARRAY_POINTER = 0x8645;
+    public static final int STENCIL_BACK_FUNC = 0x8800;
+    public static final int STENCIL_BACK_FAIL = 0x8801;
+    public static final int STENCIL_BACK_PASS_DEPTH_FAIL = 0x8802;
+    public static final int STENCIL_BACK_PASS_DEPTH_PASS = 0x8803;
+    public static final int MAX_DRAW_BUFFERS = 0x8824;
+    public static final int DRAW_BUFFER0 = 0x8825;
+    public static final int DRAW_BUFFER1 = 0x8826;
+    public static final int DRAW_BUFFER2 = 0x8827;
+    public static final int DRAW_BUFFER3 = 0x8828;
+    public static final int DRAW_BUFFER4 = 0x8829;
+    public static final int DRAW_BUFFER5 = 0x882A;
+    public static final int DRAW_BUFFER6 = 0x882B;
+    public static final int DRAW_BUFFER7 = 0x882C;
+    public static final int DRAW_BUFFER8 = 0x882D;
+    public static final int DRAW_BUFFER9 = 0x882E;
+    public static final int DRAW_BUFFER10 = 0x882F;
+    public static final int DRAW_BUFFER11 = 0x8830;
+    public static final int DRAW_BUFFER12 = 0x8831;
+    public static final int DRAW_BUFFER13 = 0x8832;
+    public static final int DRAW_BUFFER14 = 0x8833;
+    public static final int DRAW_BUFFER15 = 0x8834;
+    public static final int BLEND_EQUATION_ALPHA = 0x883D;
+    public static final int MAX_VERTEX_ATTRIBS = 0x8869;
+    public static final int VERTEX_ATTRIB_ARRAY_NORMALIZED = 0x886A;
+    public static final int MAX_TEXTURE_IMAGE_UNITS = 0x8872;
+    public static final int FRAGMENT_SHADER = 0x8B30;
+    public static final int VERTEX_SHADER = 0x8B31;
+    public static final int MAX_FRAGMENT_UNIFORM_COMPONENTS = 0x8B49;
+    public static final int MAX_VERTEX_UNIFORM_COMPONENTS = 0x8B4A;
+    public static final int MAX_VARYING_FLOATS = 0x8B4B;
+    public static final int MAX_VERTEX_TEXTURE_IMAGE_UNITS = 0x8B4C;
+    public static final int MAX_COMBINED_TEXTURE_IMAGE_UNITS = 0x8B4D;
+    public static final int SHADER_TYPE = 0x8B4F;
+    public static final int FLOAT_VEC2 = 0x8B50;
+    public static final int FLOAT_VEC3 = 0x8B51;
+    public static final int FLOAT_VEC4 = 0x8B52;
+    public static final int INT_VEC2 = 0x8B53;
+    public static final int INT_VEC3 = 0x8B54;
+    public static final int INT_VEC4 = 0x8B55;
+    public static final int BOOL = 0x8B56;
+    public static final int BOOL_VEC2 = 0x8B57;
+    public static final int BOOL_VEC3 = 0x8B58;
+    public static final int BOOL_VEC4 = 0x8B59;
+    public static final int FLOAT_MAT2 = 0x8B5A;
+    public static final int FLOAT_MAT3 = 0x8B5B;
+    public static final int FLOAT_MAT4 = 0x8B5C;
+    public static final int SAMPLER_1D = 0x8B5D;
+    public static final int SAMPLER_2D = 0x8B5E;
+    public static final int SAMPLER_3D = 0x8B5F;
+    public static final int SAMPLER_CUBE = 0x8B60;
+    public static final int SAMPLER_1D_SHADOW = 0x8B61;
+    public static final int SAMPLER_2D_SHADOW = 0x8B62;
+    public static final int DELETE_STATUS = 0x8B80;
+    public static final int COMPILE_STATUS = 0x8B81;
+    public static final int LINK_STATUS = 0x8B82;
+    public static final int VALIDATE_STATUS = 0x8B83;
+    public static final int INFO_LOG_LENGTH = 0x8B84;
+    public static final int ATTACHED_SHADERS = 0x8B85;
+    public static final int ACTIVE_UNIFORMS = 0x8B86;
+    public static final int ACTIVE_UNIFORM_MAX_LENGTH = 0x8B87;
+    public static final int SHADER_SOURCE_LENGTH = 0x8B88;
+    public static final int ACTIVE_ATTRIBUTES = 0x8B89;
+    public static final int ACTIVE_ATTRIBUTE_MAX_LENGTH = 0x8B8A;
+    public static final int FRAGMENT_SHADER_DERIVATIVE_HINT = 0x8B8B;
+    public static final int SHADING_LANGUAGE_VERSION = 0x8B8C;
+    public static final int CURRENT_PROGRAM = 0x8B8D;
+    public static final int POINT_SPRITE_COORD_ORIGIN = 0x8CA0;
+    public static final int LOWER_LEFT = 0x8CA1;
+    public static final int UPPER_LEFT = 0x8CA2;
+    public static final int STENCIL_BACK_REF = 0x8CA3;
+    public static final int STENCIL_BACK_VALUE_MASK = 0x8CA4;
+    public static final int STENCIL_BACK_WRITEMASK = 0x8CA5;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glAttachShader, caps.glBindAttribLocation, caps.glBlendEquationSeparate, caps.glCompileShader, caps.glCreateProgram, caps.glCreateShader,
             caps.glDeleteProgram, caps.glDeleteShader, caps.glDetachShader, caps.glDisableVertexAttribArray, caps.glDrawBuffers, caps.glEnableVertexAttribArray,
@@ -377,7 +450,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getProgramInfoLog(SegmentAllocator allocator, int program) {
-        return getProgramInfoLog(allocator, program, getProgrami(program, GLConstC.GL_INFO_LOG_LENGTH), null);
+        return getProgramInfoLog(allocator, program, getProgrami(program, INFO_LOG_LENGTH), null);
     }
 
     public static void getProgramiv(int program, int pname, MemorySegment params) {
@@ -427,7 +500,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getShaderInfoLog(SegmentAllocator allocator, int shader) {
-        return getShaderInfoLog(allocator, shader, getShaderi(shader, GLConstC.GL_INFO_LOG_LENGTH), null);
+        return getShaderInfoLog(allocator, shader, getShaderi(shader, INFO_LOG_LENGTH), null);
     }
 
     public static void getShaderSource(int shader, int bufSize, MemorySegment length, MemorySegment source) {
@@ -450,7 +523,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static String getShaderSource(SegmentAllocator allocator, int shader) {
-        return getShaderSource(allocator, shader, getShaderi(shader, GLConstC.GL_SHADER_SOURCE_LENGTH), null);
+        return getShaderSource(allocator, shader, getShaderi(shader, SHADER_SOURCE_LENGTH), null);
     }
 
     public static void getShaderiv(int shader, int pname, MemorySegment params) {

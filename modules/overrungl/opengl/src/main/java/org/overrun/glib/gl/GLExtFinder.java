@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -49,12 +41,12 @@ final class GLExtFinder {
             if (caps.glGetString == null) {
                 return false;
             }
-            outExts.set(ADDRESS, 0, GL10C.ngetString(GLConstC.GL_EXTENSIONS));
+            outExts.set(ADDRESS, 0, GL10C.ngetString(GL10C.EXTENSIONS));
         } else {
             if (caps.glGetStringi == null || caps.glGetIntegerv == null) {
                 return false;
             }
-            int numExtsI = GL10C.getInteger(GLConstC.GL_NUM_EXTENSIONS);
+            int numExtsI = GL10C.getInteger(GL30C.NUM_EXTENSIONS);
             var extsI = MemorySegment.NULL;
             if (numExtsI > 0) {
                 extsI = allocator.allocateArray(ADDRESS, numExtsI);
@@ -63,7 +55,7 @@ final class GLExtFinder {
                 return false;
             }
             for (int index = 0; index < numExtsI; index++) {
-                var glStrTmp = GL30C.getStringi(GLConstC.GL_EXTENSIONS, index);
+                var glStrTmp = GL30C.getStringi(GL10C.EXTENSIONS, index);
                 extsI.setAtIndex(ADDRESS, index, allocator.allocateUtf8String(glStrTmp));
             }
             outNumExtsI.set(JAVA_INT, 0, numExtsI);

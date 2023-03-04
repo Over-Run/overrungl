@@ -1,6 +1,6 @@
 ## Version History
 
-- [0.x](0/README.md)
+- [0.x](0.x/README.md)
 
 ### Features
 
@@ -10,7 +10,7 @@ These features are purposed to target:
 
 These features are candidates:
 
-- (0.1.0) STB easy font, true-type
+- (0.1.0) STB true-type
 
 ### Goals
 

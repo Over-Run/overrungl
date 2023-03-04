@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl.ext;
@@ -43,6 +35,27 @@ import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
  * @since 0.1.0
  */
 public final class GLINTELPerformanceQuery {
+    public static final int GL_PERFQUERY_SINGLE_CONTEXT_INTEL = 0x00000000;
+    public static final int GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = 0x00000001;
+    public static final int GL_PERFQUERY_WAIT_INTEL = 0x83FB;
+    public static final int GL_PERFQUERY_FLUSH_INTEL = 0x83FA;
+    public static final int GL_PERFQUERY_DONOT_FLUSH_INTEL = 0x83F9;
+    public static final int GL_PERFQUERY_COUNTER_EVENT_INTEL = 0x94F0;
+    public static final int GL_PERFQUERY_COUNTER_DURATION_NORM_INTEL = 0x94F1;
+    public static final int GL_PERFQUERY_COUNTER_DURATION_RAW_INTEL = 0x94F2;
+    public static final int GL_PERFQUERY_COUNTER_THROUGHPUT_INTEL = 0x94F3;
+    public static final int GL_PERFQUERY_COUNTER_RAW_INTEL = 0x94F4;
+    public static final int GL_PERFQUERY_COUNTER_TIMESTAMP_INTEL = 0x94F5;
+    public static final int GL_PERFQUERY_COUNTER_DATA_UINT32_INTEL = 0x94F8;
+    public static final int GL_PERFQUERY_COUNTER_DATA_UINT64_INTEL = 0x94F9;
+    public static final int GL_PERFQUERY_COUNTER_DATA_FLOAT_INTEL = 0x94FA;
+    public static final int GL_PERFQUERY_COUNTER_DATA_DOUBLE_INTEL = 0x94FB;
+    public static final int GL_PERFQUERY_COUNTER_DATA_BOOL32_INTEL = 0x94FC;
+    public static final int GL_PERFQUERY_QUERY_NAME_LENGTH_MAX_INTEL = 0x94FD;
+    public static final int GL_PERFQUERY_COUNTER_NAME_LENGTH_MAX_INTEL = 0x94FE;
+    public static final int GL_PERFQUERY_COUNTER_DESC_LENGTH_MAX_INTEL = 0x94FF;
+    public static final int GL_PERFQUERY_GPA_EXTENDED_COUNTERS_INTEL = 0x9500;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_INTEL_performance_query) return;
         ext.glBeginPerfQueryINTEL = load.invoke("glBeginPerfQueryINTEL", IV);

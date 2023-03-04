@@ -31,7 +31,6 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
-import static org.overrun.glib.gl.GLConst.*;
 
 /**
  * Tests OpenGL 1.5 buffers
@@ -99,22 +98,22 @@ public final class GL15Test {
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        GL.enable(GL_TEXTURE_2D);
+        GL.enable(GL.TEXTURE_2D);
 
         vbo = GL.genBuffer();
-        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
+        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
+        GL.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
             // Vertex          Color             Tex-coord
             0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f
-        }, GL_STATIC_DRAW);
-        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+        }, GL.STATIC_DRAW);
+        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
 
         tex = GL.genTexture();
-        GL.bindTexture(GL_TEXTURE_2D, tex);
-        GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        GL.texParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        GL.bindTexture(GL.TEXTURE_2D, tex);
+        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
+        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
         try {
             var px = arena.allocate(JAVA_INT);
             var py = arena.allocate(JAVA_INT);
@@ -123,43 +122,43 @@ public final class GL15Test {
                 IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256, 128),
                 px, py, pc, STBImage.RGB
             );
-            GL.texImage2D(GL_TEXTURE_2D,
+            GL.texImage2D(GL.TEXTURE_2D,
                 0,
-                GL_RGB,
+                GL.RGB,
                 px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
                 0,
-                GL_RGB,
-                GL_UNSIGNED_BYTE,
+                GL.RGB,
+                GL.UNSIGNED_BYTE,
                 data);
             STBImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        GL.bindTexture(GL_TEXTURE_2D, 0);
+        GL.bindTexture(GL.TEXTURE_2D, 0);
     }
 
     private void loop() {
         while (!GLFW.windowShouldClose(window)) {
-            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL.bindTexture(GL_TEXTURE_2D, tex);
-            GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
+            GL.bindTexture(GL.TEXTURE_2D, tex);
+            GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
             GL11.enableClientState(GL11.VERTEX_ARRAY);
             GL11.enableClientState(GL11.COLOR_ARRAY);
             GL11.enableClientState(GL11.TEXTURE_COORD_ARRAY);
             // 8 double words = 32 bytes
             final int stride = 8 << 2;
-            GL11.vertexPointer(3, GL_FLOAT, stride, MemorySegment.NULL);
-            GL11.colorPointer(3, GL_FLOAT, stride, MemorySegment.ofAddress(3 << 2));
-            GL11.texCoordPointer(2, GL_FLOAT, stride, MemorySegment.ofAddress(6 << 2));
-            GL.drawArrays(GL_TRIANGLES, 0, 3);
+            GL11.vertexPointer(3, GL.FLOAT, stride, MemorySegment.NULL);
+            GL11.colorPointer(3, GL.FLOAT, stride, MemorySegment.ofAddress(3 << 2));
+            GL11.texCoordPointer(2, GL.FLOAT, stride, MemorySegment.ofAddress(6 << 2));
+            GL.drawArrays(GL.TRIANGLES, 0, 3);
             GL11.disableClientState(GL11.VERTEX_ARRAY);
             GL11.disableClientState(GL11.COLOR_ARRAY);
             GL11.disableClientState(GL11.TEXTURE_COORD_ARRAY);
-            GL.bindBuffer(GL_ARRAY_BUFFER, 0);
-            GL.bindTexture(GL_TEXTURE_2D, 0);
+            GL.bindBuffer(GL.ARRAY_BUFFER, 0);
+            GL.bindTexture(GL.TEXTURE_2D, 0);
 
             GLFW.swapBuffers(window);
 

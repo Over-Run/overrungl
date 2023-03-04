@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -45,6 +37,26 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL44C extends GL43C permits GL45C {
+    public static final int MAX_VERTEX_ATTRIB_STRIDE = 0x82E5;
+    public static final int PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221;
+    public static final int TEXTURE_BUFFER_BINDING = 0x8C2A;
+    public static final int MAP_PERSISTENT_BIT = 0x0040;
+    public static final int MAP_COHERENT_BIT = 0x0080;
+    public static final int DYNAMIC_STORAGE_BIT = 0x0100;
+    public static final int CLIENT_STORAGE_BIT = 0x0200;
+    public static final int CLIENT_MAPPED_BUFFER_BARRIER_BIT = 0x00004000;
+    public static final int BUFFER_IMMUTABLE_STORAGE = 0x821F;
+    public static final int BUFFER_STORAGE_FLAGS = 0x8220;
+    public static final int CLEAR_TEXTURE = 0x9365;
+    public static final int LOCATION_COMPONENT = 0x934A;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_INDEX = 0x934B;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C;
+    public static final int QUERY_BUFFER = 0x9192;
+    public static final int QUERY_BUFFER_BARRIER_BIT = 0x00008000;
+    public static final int QUERY_BUFFER_BINDING = 0x9193;
+    public static final int QUERY_RESULT_NO_WAIT = 0x9194;
+    public static final int MIRROR_CLAMP_TO_EDGE = 0x8743;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindBuffersBase, caps.glBindBuffersRange, caps.glBindImageTextures, caps.glBindSamplers, caps.glBindTextures, caps.glBindVertexBuffers,
             caps.glBufferStorage, caps.glClearTexImage, caps.glClearTexSubImage);

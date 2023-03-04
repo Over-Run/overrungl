@@ -63,13 +63,13 @@ public final class STBImageWrite {
         stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV);
         stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV);
         stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV);
-        stbi_write_bmp = downcall("stbi_write_bmp", PIIIP);
+        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI);
         stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP);
-        stbi_write_hdr = downcall("stbi_write_hdr", PIIIP);
+        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI);
         stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP);
-        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPI);
+        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII);
         stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI);
-        stbi_write_png = downcall("stbi_write_png", PIIIPI);
+        stbi_write_png = downcall("stbi_write_png", PIIIPII);
         stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI);
         stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp);
         stbi_write_tga = downcall("stbi_write_tga", PIIIP);

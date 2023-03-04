@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -42,6 +34,180 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL10C permits GL10, GL11C {
+    public static final int DEPTH_BUFFER_BIT = 0x00000100;
+    public static final int STENCIL_BUFFER_BIT = 0x00000400;
+    public static final int COLOR_BUFFER_BIT = 0x00004000;
+    public static final int FALSE = 0;
+    public static final int TRUE = 1;
+    public static final int POINTS = 0x0000;
+    public static final int LINES = 0x0001;
+    public static final int LINE_LOOP = 0x0002;
+    public static final int LINE_STRIP = 0x0003;
+    public static final int TRIANGLES = 0x0004;
+    public static final int TRIANGLE_STRIP = 0x0005;
+    public static final int TRIANGLE_FAN = 0x0006;
+    public static final int QUADS = 0x0007;
+    public static final int NEVER = 0x0200;
+    public static final int LESS = 0x0201;
+    public static final int EQUAL = 0x0202;
+    public static final int LEQUAL = 0x0203;
+    public static final int GREATER = 0x0204;
+    public static final int NOTEQUAL = 0x0205;
+    public static final int GEQUAL = 0x0206;
+    public static final int ALWAYS = 0x0207;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
+    public static final int SRC_COLOR = 0x0300;
+    public static final int ONE_MINUS_SRC_COLOR = 0x0301;
+    public static final int SRC_ALPHA = 0x0302;
+    public static final int ONE_MINUS_SRC_ALPHA = 0x0303;
+    public static final int DST_ALPHA = 0x0304;
+    public static final int ONE_MINUS_DST_ALPHA = 0x0305;
+    public static final int DST_COLOR = 0x0306;
+    public static final int ONE_MINUS_DST_COLOR = 0x0307;
+    public static final int SRC_ALPHA_SATURATE = 0x0308;
+    public static final int NONE = 0;
+    public static final int FRONT_LEFT = 0x0400;
+    public static final int FRONT_RIGHT = 0x0401;
+    public static final int BACK_LEFT = 0x0402;
+    public static final int BACK_RIGHT = 0x0403;
+    public static final int FRONT = 0x0404;
+    public static final int BACK = 0x0405;
+    public static final int LEFT = 0x0406;
+    public static final int RIGHT = 0x0407;
+    public static final int FRONT_AND_BACK = 0x0408;
+    public static final int NO_ERROR = 0;
+    public static final int INVALID_ENUM = 0x0500;
+    public static final int INVALID_VALUE = 0x0501;
+    public static final int INVALID_OPERATION = 0x0502;
+    public static final int OUT_OF_MEMORY = 0x0505;
+    public static final int CW = 0x0900;
+    public static final int CCW = 0x0901;
+    public static final int POINT_SIZE = 0x0B11;
+    public static final int POINT_SIZE_RANGE = 0x0B12;
+    public static final int POINT_SIZE_GRANULARITY = 0x0B13;
+    public static final int LINE_SMOOTH = 0x0B20;
+    public static final int LINE_WIDTH = 0x0B21;
+    public static final int LINE_WIDTH_RANGE = 0x0B22;
+    public static final int LINE_WIDTH_GRANULARITY = 0x0B23;
+    public static final int POLYGON_MODE = 0x0B40;
+    public static final int POLYGON_SMOOTH = 0x0B41;
+    public static final int CULL_FACE = 0x0B44;
+    public static final int CULL_FACE_MODE = 0x0B45;
+    public static final int FRONT_FACE = 0x0B46;
+    public static final int DEPTH_RANGE = 0x0B70;
+    public static final int DEPTH_TEST = 0x0B71;
+    public static final int DEPTH_WRITEMASK = 0x0B72;
+    public static final int DEPTH_CLEAR_VALUE = 0x0B73;
+    public static final int DEPTH_FUNC = 0x0B74;
+    public static final int STENCIL_TEST = 0x0B90;
+    public static final int STENCIL_CLEAR_VALUE = 0x0B91;
+    public static final int STENCIL_FUNC = 0x0B92;
+    public static final int STENCIL_VALUE_MASK = 0x0B93;
+    public static final int STENCIL_FAIL = 0x0B94;
+    public static final int STENCIL_PASS_DEPTH_FAIL = 0x0B95;
+    public static final int STENCIL_PASS_DEPTH_PASS = 0x0B96;
+    public static final int STENCIL_REF = 0x0B97;
+    public static final int STENCIL_WRITEMASK = 0x0B98;
+    public static final int VIEWPORT = 0x0BA2;
+    public static final int DITHER = 0x0BD0;
+    public static final int BLEND_DST = 0x0BE0;
+    public static final int BLEND_SRC = 0x0BE1;
+    public static final int BLEND = 0x0BE2;
+    public static final int LOGIC_OP_MODE = 0x0BF0;
+    public static final int DRAW_BUFFER = 0x0C01;
+    public static final int READ_BUFFER = 0x0C02;
+    public static final int SCISSOR_BOX = 0x0C10;
+    public static final int SCISSOR_TEST = 0x0C11;
+    public static final int COLOR_CLEAR_VALUE = 0x0C22;
+    public static final int COLOR_WRITEMASK = 0x0C23;
+    public static final int DOUBLEBUFFER = 0x0C32;
+    public static final int STEREO = 0x0C33;
+    public static final int LINE_SMOOTH_HINT = 0x0C52;
+    public static final int POLYGON_SMOOTH_HINT = 0x0C53;
+    public static final int UNPACK_SWAP_BYTES = 0x0CF0;
+    public static final int UNPACK_LSB_FIRST = 0x0CF1;
+    public static final int UNPACK_ROW_LENGTH = 0x0CF2;
+    public static final int UNPACK_SKIP_ROWS = 0x0CF3;
+    public static final int UNPACK_SKIP_PIXELS = 0x0CF4;
+    public static final int UNPACK_ALIGNMENT = 0x0CF5;
+    public static final int PACK_SWAP_BYTES = 0x0D00;
+    public static final int PACK_LSB_FIRST = 0x0D01;
+    public static final int PACK_ROW_LENGTH = 0x0D02;
+    public static final int PACK_SKIP_ROWS = 0x0D03;
+    public static final int PACK_SKIP_PIXELS = 0x0D04;
+    public static final int PACK_ALIGNMENT = 0x0D05;
+    public static final int MAX_TEXTURE_SIZE = 0x0D33;
+    public static final int MAX_VIEWPORT_DIMS = 0x0D3A;
+    public static final int SUBPIXEL_BITS = 0x0D50;
+    public static final int TEXTURE_1D = 0x0DE0;
+    public static final int TEXTURE_2D = 0x0DE1;
+    public static final int TEXTURE_WIDTH = 0x1000;
+    public static final int TEXTURE_HEIGHT = 0x1001;
+    public static final int TEXTURE_BORDER_COLOR = 0x1004;
+    public static final int DONT_CARE = 0x1100;
+    public static final int FASTEST = 0x1101;
+    public static final int NICEST = 0x1102;
+    public static final int BYTE = 0x1400;
+    public static final int UNSIGNED_BYTE = 0x1401;
+    public static final int SHORT = 0x1402;
+    public static final int UNSIGNED_SHORT = 0x1403;
+    public static final int INT = 0x1404;
+    public static final int UNSIGNED_INT = 0x1405;
+    public static final int FLOAT = 0x1406;
+    public static final int STACK_OVERFLOW = 0x0503;
+    public static final int STACK_UNDERFLOW = 0x0504;
+    public static final int CLEAR = 0x1500;
+    public static final int AND = 0x1501;
+    public static final int AND_REVERSE = 0x1502;
+    public static final int COPY = 0x1503;
+    public static final int AND_INVERTED = 0x1504;
+    public static final int NOOP = 0x1505;
+    public static final int XOR = 0x1506;
+    public static final int OR = 0x1507;
+    public static final int NOR = 0x1508;
+    public static final int EQUIV = 0x1509;
+    public static final int INVERT = 0x150A;
+    public static final int OR_REVERSE = 0x150B;
+    public static final int COPY_INVERTED = 0x150C;
+    public static final int OR_INVERTED = 0x150D;
+    public static final int NAND = 0x150E;
+    public static final int SET = 0x150F;
+    public static final int TEXTURE = 0x1702;
+    public static final int COLOR = 0x1800;
+    public static final int DEPTH = 0x1801;
+    public static final int STENCIL = 0x1802;
+    public static final int STENCIL_INDEX = 0x1901;
+    public static final int DEPTH_COMPONENT = 0x1902;
+    public static final int RED = 0x1903;
+    public static final int GREEN = 0x1904;
+    public static final int BLUE = 0x1905;
+    public static final int ALPHA = 0x1906;
+    public static final int RGB = 0x1907;
+    public static final int RGBA = 0x1908;
+    public static final int POINT = 0x1B00;
+    public static final int LINE = 0x1B01;
+    public static final int FILL = 0x1B02;
+    public static final int KEEP = 0x1E00;
+    public static final int REPLACE = 0x1E01;
+    public static final int INCR = 0x1E02;
+    public static final int DECR = 0x1E03;
+    public static final int VENDOR = 0x1F00;
+    public static final int RENDERER = 0x1F01;
+    public static final int VERSION = 0x1F02;
+    public static final int EXTENSIONS = 0x1F03;
+    public static final int NEAREST = 0x2600;
+    public static final int LINEAR = 0x2601;
+    public static final int NEAREST_MIPMAP_NEAREST = 0x2700;
+    public static final int LINEAR_MIPMAP_NEAREST = 0x2701;
+    public static final int NEAREST_MIPMAP_LINEAR = 0x2702;
+    public static final int LINEAR_MIPMAP_LINEAR = 0x2703;
+    public static final int TEXTURE_MAG_FILTER = 0x2800;
+    public static final int TEXTURE_MIN_FILTER = 0x2801;
+    public static final int TEXTURE_WRAP_S = 0x2802;
+    public static final int TEXTURE_WRAP_T = 0x2803;
+    public static final int REPEAT = 0x2901;
+
     protected GL10C() {
         throw new IllegalStateException("Do not construct instance");
     }

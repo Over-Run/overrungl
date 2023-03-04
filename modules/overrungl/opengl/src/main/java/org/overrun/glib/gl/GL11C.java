@@ -33,6 +33,38 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL11C extends GL10C permits GL11, GL12C {
+    public static final int COLOR_LOGIC_OP = 0x0BF2;
+    public static final int POLYGON_OFFSET_UNITS = 0x2A00;
+    public static final int POLYGON_OFFSET_POINT = 0x2A01;
+    public static final int POLYGON_OFFSET_LINE = 0x2A02;
+    public static final int POLYGON_OFFSET_FILL = 0x8037;
+    public static final int POLYGON_OFFSET_FACTOR = 0x8038;
+    public static final int TEXTURE_BINDING_1D = 0x8068;
+    public static final int TEXTURE_BINDING_2D = 0x8069;
+    public static final int TEXTURE_INTERNAL_FORMAT = 0x1003;
+    public static final int TEXTURE_RED_SIZE = 0x805C;
+    public static final int TEXTURE_GREEN_SIZE = 0x805D;
+    public static final int TEXTURE_BLUE_SIZE = 0x805E;
+    public static final int TEXTURE_ALPHA_SIZE = 0x805F;
+    public static final int DOUBLE = 0x140A;
+    public static final int PROXY_TEXTURE_1D = 0x8063;
+    public static final int PROXY_TEXTURE_2D = 0x8064;
+    public static final int R3_G3_B2 = 0x2A10;
+    public static final int RGB4 = 0x804F;
+    public static final int RGB5 = 0x8050;
+    public static final int RGB8 = 0x8051;
+    public static final int RGB10 = 0x8052;
+    public static final int RGB12 = 0x8053;
+    public static final int RGB16 = 0x8054;
+    public static final int RGBA2 = 0x8055;
+    public static final int RGBA4 = 0x8056;
+    public static final int RGB5_A1 = 0x8057;
+    public static final int RGBA8 = 0x8058;
+    public static final int RGB10_A2 = 0x8059;
+    public static final int RGBA12 = 0x805A;
+    public static final int RGBA16 = 0x805B;
+    public static final int VERTEX_ARRAY = 0x8074;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindTexture, caps.glCopyTexImage1D, caps.glCopyTexImage2D, caps.glCopyTexSubImage1D, caps.glCopyTexSubImage2D, caps.glDeleteTextures,
             caps.glDrawArrays, caps.glDrawElements, caps.glGenTextures, caps.glGetPointerv, caps.glIsTexture, caps.glPolygonOffset,

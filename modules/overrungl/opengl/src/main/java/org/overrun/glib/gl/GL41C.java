@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -51,6 +43,42 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL41C extends GL40C permits GL42C {
+    public static final int FIXED = 0x140C;
+    public static final int IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
+    public static final int IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;
+    public static final int LOW_FLOAT = 0x8DF0;
+    public static final int MEDIUM_FLOAT = 0x8DF1;
+    public static final int HIGH_FLOAT = 0x8DF2;
+    public static final int LOW_INT = 0x8DF3;
+    public static final int MEDIUM_INT = 0x8DF4;
+    public static final int HIGH_INT = 0x8DF5;
+    public static final int SHADER_COMPILER = 0x8DFA;
+    public static final int SHADER_BINARY_FORMATS = 0x8DF8;
+    public static final int NUM_SHADER_BINARY_FORMATS = 0x8DF9;
+    public static final int MAX_VERTEX_UNIFORM_VECTORS = 0x8DFB;
+    public static final int MAX_VARYING_VECTORS = 0x8DFC;
+    public static final int MAX_FRAGMENT_UNIFORM_VECTORS = 0x8DFD;
+    public static final int RGB565 = 0x8D62;
+    public static final int PROGRAM_BINARY_RETRIEVABLE_HINT = 0x8257;
+    public static final int PROGRAM_BINARY_LENGTH = 0x8741;
+    public static final int NUM_PROGRAM_BINARY_FORMATS = 0x87FE;
+    public static final int PROGRAM_BINARY_FORMATS = 0x87FF;
+    public static final int VERTEX_SHADER_BIT = 0x00000001;
+    public static final int FRAGMENT_SHADER_BIT = 0x00000002;
+    public static final int GEOMETRY_SHADER_BIT = 0x00000004;
+    public static final int TESS_CONTROL_SHADER_BIT = 0x00000008;
+    public static final int TESS_EVALUATION_SHADER_BIT = 0x00000010;
+    public static final int ALL_SHADER_BITS = 0xFFFFFFFF;
+    public static final int PROGRAM_SEPARABLE = 0x8258;
+    public static final int ACTIVE_PROGRAM = 0x8259;
+    public static final int PROGRAM_PIPELINE_BINDING = 0x825A;
+    public static final int MAX_VIEWPORTS = 0x825B;
+    public static final int VIEWPORT_SUBPIXEL_BITS = 0x825C;
+    public static final int VIEWPORT_BOUNDS_RANGE = 0x825D;
+    public static final int LAYER_PROVOKING_VERTEX = 0x825E;
+    public static final int VIEWPORT_INDEX_PROVOKING_VERTEX = 0x825F;
+    public static final int UNDEFINED_VERTEX = 0x8260;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glActiveShaderProgram, caps.glBindProgramPipeline, caps.glClearDepthf, caps.glCreateShaderProgramv, caps.glDeleteProgramPipelines, caps.glDepthRangeArrayv,
             caps.glDepthRangeIndexed, caps.glDepthRangef, caps.glGenProgramPipelines, caps.glGetDoublei_v, caps.glGetFloati_v, caps.glGetProgramBinary,
@@ -392,7 +420,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static String getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline) {
-        final int sz = getProgramPipelinei(pipeline, GLConstC.GL_INFO_LOG_LENGTH);
+        final int sz = getProgramPipelinei(pipeline, INFO_LOG_LENGTH);
         var pi = allocator.allocateArray(JAVA_BYTE, sz);
         getProgramPipelineInfoLog(pipeline, sz, MemorySegment.NULL, pi);
         return pi.getUtf8String(0);

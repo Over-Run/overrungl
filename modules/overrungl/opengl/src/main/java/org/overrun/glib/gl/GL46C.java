@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -47,6 +39,29 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL46C extends GL45C permits GL {
+    public static final int SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
+    public static final int SPIR_V_BINARY = 0x9552;
+    public static final int PARAMETER_BUFFER = 0x80EE;
+    public static final int PARAMETER_BUFFER_BINDING = 0x80EF;
+    public static final int CONTEXT_FLAG_NO_ERROR_BIT = 0x00000008;
+    public static final int VERTICES_SUBMITTED = 0x82EE;
+    public static final int PRIMITIVES_SUBMITTED = 0x82EF;
+    public static final int VERTEX_SHADER_INVOCATIONS = 0x82F0;
+    public static final int TESS_CONTROL_SHADER_PATCHES = 0x82F1;
+    public static final int TESS_EVALUATION_SHADER_INVOCATIONS = 0x82F2;
+    public static final int GEOMETRY_SHADER_PRIMITIVES_EMITTED = 0x82F3;
+    public static final int FRAGMENT_SHADER_INVOCATIONS = 0x82F4;
+    public static final int COMPUTE_SHADER_INVOCATIONS = 0x82F5;
+    public static final int CLIPPING_INPUT_PRIMITIVES = 0x82F6;
+    public static final int CLIPPING_OUTPUT_PRIMITIVES = 0x82F7;
+    public static final int POLYGON_OFFSET_CLAMP = 0x8E1B;
+    public static final int SPIR_V_EXTENSIONS = 0x9553;
+    public static final int NUM_SPIR_V_EXTENSIONS = 0x9554;
+    public static final int TEXTURE_MAX_ANISOTROPY = 0x84FE;
+    public static final int MAX_TEXTURE_MAX_ANISOTROPY = 0x84FF;
+    public static final int TRANSFORM_FEEDBACK_OVERFLOW = 0x82EC;
+    public static final int TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glMultiDrawArraysIndirectCount, caps.glMultiDrawElementsIndirectCount, caps.glPolygonOffsetClamp, caps.glSpecializeShader);
     }

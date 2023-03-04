@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -50,6 +42,23 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL33C extends GL32C permits GL40C {
+    public static final int VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE;
+    public static final int SRC1_COLOR = 0x88F9;
+    public static final int ONE_MINUS_SRC1_COLOR = 0x88FA;
+    public static final int ONE_MINUS_SRC1_ALPHA = 0x88FB;
+    public static final int MAX_DUAL_SOURCE_DRAW_BUFFERS = 0x88FC;
+    public static final int ANY_SAMPLES_PASSED = 0x8C2F;
+    public static final int SAMPLER_BINDING = 0x8919;
+    public static final int RGB10_A2UI = 0x906F;
+    public static final int TEXTURE_SWIZZLE_R = 0x8E42;
+    public static final int TEXTURE_SWIZZLE_G = 0x8E43;
+    public static final int TEXTURE_SWIZZLE_B = 0x8E44;
+    public static final int TEXTURE_SWIZZLE_A = 0x8E45;
+    public static final int TEXTURE_SWIZZLE_RGBA = 0x8E46;
+    public static final int TIME_ELAPSED = 0x88BF;
+    public static final int TIMESTAMP = 0x8E28;
+    public static final int INT_2_10_10_10_REV = 0x8D9F;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindFragDataLocationIndexed, caps.glBindSampler, caps.glDeleteSamplers, caps.glGenSamplers, caps.glGetFragDataIndex, caps.glGetQueryObjecti64v,
             caps.glGetQueryObjectui64v, caps.glGetSamplerParameterIiv, caps.glGetSamplerParameterIuiv, caps.glGetSamplerParameterfv, caps.glGetSamplerParameteriv, caps.glIsSampler,

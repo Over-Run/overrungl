@@ -22,6 +22,7 @@ package org.overrun.glib.gl;
  * @author squid233
  * @since 0.1.0
  */
+@Deprecated(since = "0.1.0")
 public final class GLConst extends GLConstC {
     public static final int GL_2_BYTES_NV = 0x1407;
     public static final int GL_3_BYTES_NV = 0x1408;

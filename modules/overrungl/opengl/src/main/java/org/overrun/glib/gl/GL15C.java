@@ -34,6 +34,35 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL15C extends GL14C permits GL20C {
+    public static final int BUFFER_SIZE = 0x8764;
+    public static final int BUFFER_USAGE = 0x8765;
+    public static final int QUERY_COUNTER_BITS = 0x8864;
+    public static final int CURRENT_QUERY = 0x8865;
+    public static final int QUERY_RESULT = 0x8866;
+    public static final int QUERY_RESULT_AVAILABLE = 0x8867;
+    public static final int ARRAY_BUFFER = 0x8892;
+    public static final int ELEMENT_ARRAY_BUFFER = 0x8893;
+    public static final int ARRAY_BUFFER_BINDING = 0x8894;
+    public static final int ELEMENT_ARRAY_BUFFER_BINDING = 0x8895;
+    public static final int VERTEX_ATTRIB_ARRAY_BUFFER_BINDING = 0x889F;
+    public static final int READ_ONLY = 0x88B8;
+    public static final int WRITE_ONLY = 0x88B9;
+    public static final int READ_WRITE = 0x88BA;
+    public static final int BUFFER_ACCESS = 0x88BB;
+    public static final int BUFFER_MAPPED = 0x88BC;
+    public static final int BUFFER_MAP_POINTER = 0x88BD;
+    public static final int STREAM_DRAW = 0x88E0;
+    public static final int STREAM_READ = 0x88E1;
+    public static final int STREAM_COPY = 0x88E2;
+    public static final int STATIC_DRAW = 0x88E4;
+    public static final int STATIC_READ = 0x88E5;
+    public static final int STATIC_COPY = 0x88E6;
+    public static final int DYNAMIC_DRAW = 0x88E8;
+    public static final int DYNAMIC_READ = 0x88E9;
+    public static final int DYNAMIC_COPY = 0x88EA;
+    public static final int SAMPLES_PASSED = 0x8914;
+    public static final int SRC1_ALPHA = 0x8589;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBeginQuery, caps.glBindBuffer, caps.glBufferData, caps.glBufferSubData, caps.glDeleteBuffers, caps.glDeleteQueries,
             caps.glEndQuery, caps.glGenBuffers, caps.glGenQueries, caps.glGetBufferParameteriv, caps.glGetBufferPointerv, caps.glGetBufferSubData,
@@ -448,7 +477,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var caps = getCapabilities();
         try {
             final var seg = (MemorySegment) check(caps.glMapBuffer).invokeExact(target, access);
-            return access == GLConstC.GL_READ_ONLY ? seg.asReadOnly() : seg;
+            return access == READ_ONLY ? seg.asReadOnly() : seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

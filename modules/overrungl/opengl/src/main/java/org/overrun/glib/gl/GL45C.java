@@ -44,6 +44,29 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL45C extends GL44C permits GL46C {
+    public static final int CONTEXT_LOST = 0x0507;
+    public static final int NEGATIVE_ONE_TO_ONE = 0x935E;
+    public static final int ZERO_TO_ONE = 0x935F;
+    public static final int CLIP_ORIGIN = 0x935C;
+    public static final int CLIP_DEPTH_MODE = 0x935D;
+    public static final int QUERY_WAIT_INVERTED = 0x8E17;
+    public static final int QUERY_NO_WAIT_INVERTED = 0x8E18;
+    public static final int QUERY_BY_REGION_WAIT_INVERTED = 0x8E19;
+    public static final int QUERY_BY_REGION_NO_WAIT_INVERTED = 0x8E1A;
+    public static final int MAX_CULL_DISTANCES = 0x82F9;
+    public static final int MAX_COMBINED_CLIP_AND_CULL_DISTANCES = 0x82FA;
+    public static final int TEXTURE_TARGET = 0x1006;
+    public static final int QUERY_TARGET = 0x82EA;
+    public static final int GUILTY_CONTEXT_RESET = 0x8253;
+    public static final int INNOCENT_CONTEXT_RESET = 0x8254;
+    public static final int UNKNOWN_CONTEXT_RESET = 0x8255;
+    public static final int RESET_NOTIFICATION_STRATEGY = 0x8256;
+    public static final int LOSE_CONTEXT_ON_RESET = 0x8252;
+    public static final int NO_RESET_NOTIFICATION = 0x8261;
+    public static final int CONTEXT_FLAG_ROBUST_ACCESS_BIT = 0x00000004;
+    public static final int CONTEXT_RELEASE_BEHAVIOR = 0x82FB;
+    public static final int CONTEXT_RELEASE_BEHAVIOR_FLUSH = 0x82FC;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindTextureUnit, caps.glBlitNamedFramebuffer, caps.glCheckNamedFramebufferStatus, caps.glClearNamedBufferData, caps.glClearNamedBufferSubData, caps.glClearNamedFramebufferfi,
             caps.glClearNamedFramebufferfv, caps.glClearNamedFramebufferiv, caps.glClearNamedFramebufferuiv, caps.glClipControl, caps.glCompressedTextureSubImage1D, caps.glCompressedTextureSubImage2D,
@@ -1358,7 +1381,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var caps = getCapabilities();
         try {
             final var seg = (MemorySegment) check(caps.glMapNamedBuffer).invokeExact(buffer, access);
-            return access == GLConstC.GL_READ_ONLY ? seg.asReadOnly() : seg;
+            return access == READ_ONLY ? seg.asReadOnly() : seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

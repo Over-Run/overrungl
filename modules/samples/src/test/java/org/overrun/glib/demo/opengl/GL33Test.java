@@ -29,8 +29,6 @@ import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.*;
 
-import static org.overrun.glib.gl.GLConstC.*;
-
 /**
  * Tests OpenGL 3.3 instanced rendering
  *
@@ -116,8 +114,8 @@ public class GL33Test {
         debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = GL.createProgram();
-        int vsh = GL.createShader(GL_VERTEX_SHADER);
-        int fsh = GL.createShader(GL_FRAGMENT_SHADER);
+        int vsh = GL.createShader(GL.VERTEX_SHADER);
+        int fsh = GL.createShader(GL.FRAGMENT_SHADER);
         GL.shaderSource(arena, vsh, """
             #version 330
 
@@ -159,25 +157,25 @@ public class GL33Test {
         vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
         vbo = GL.genBuffer();
-        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        GL.bufferData(arena, GL_ARRAY_BUFFER, new float[]{
+        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
+        GL.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
             // Vertex          Color
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
             0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
-        }, GL_STATIC_DRAW);
+        }, GL.STATIC_DRAW);
         ebo = GL.genBuffer();
-        GL.bindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-        GL.bufferData(arena, GL_ELEMENT_ARRAY_BUFFER, new byte[]{
+        GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, ebo);
+        GL.bufferData(arena, GL.ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 2, 3, 0
-        }, GL_STATIC_DRAW);
+        }, GL.STATIC_DRAW);
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemorySegment.NULL);
-        GL.vertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemorySegment.ofAddress(12));
+        GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 24, MemorySegment.NULL);
+        GL.vertexAttribPointer(1, 3, GL.FLOAT, false, 24, MemorySegment.ofAddress(12));
         mbo = GL.genBuffer();
-        GL.bindBuffer(GL_ARRAY_BUFFER, mbo);
+        GL.bindBuffer(GL.ARRAY_BUFFER, mbo);
         var mat = new Matrix4f();
         var iseq = MemoryLayout.sequenceLayout(
             INSTANCE_COUNT,
@@ -201,20 +199,20 @@ public class GL33Test {
                 i * Matrixn.MAT4F.byteSize(),
                 matrices);
         }
-        GL.bufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
+        GL.bufferData(GL.ARRAY_BUFFER, matrices, GL.STATIC_DRAW);
         GL.enableVertexAttribArray(2);
         GL.enableVertexAttribArray(3);
         GL.enableVertexAttribArray(4);
         GL.enableVertexAttribArray(5);
-        GL.vertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemorySegment.NULL);
-        GL.vertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(16));
-        GL.vertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(32));
-        GL.vertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(48));
+        GL.vertexAttribPointer(2, 4, GL.FLOAT, false, 64, MemorySegment.NULL);
+        GL.vertexAttribPointer(3, 4, GL.FLOAT, false, 64, MemorySegment.ofAddress(16));
+        GL.vertexAttribPointer(4, 4, GL.FLOAT, false, 64, MemorySegment.ofAddress(32));
+        GL.vertexAttribPointer(5, 4, GL.FLOAT, false, 64, MemorySegment.ofAddress(48));
         GL.vertexAttribDivisor(2, 1);
         GL.vertexAttribDivisor(3, 1);
         GL.vertexAttribDivisor(4, 1);
         GL.vertexAttribDivisor(5, 1);
-        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
     }
 
@@ -229,7 +227,7 @@ public class GL33Test {
         while (!GLFW.windowShouldClose(window)) {
             time = GLFW.getTime();
 
-            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
             GL.useProgram(program);
@@ -239,7 +237,7 @@ public class GL33Test {
 
             GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
             GL.bindVertexArray(vao);
-            GL.drawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
+            GL.drawElementsInstanced(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
             GL.bindVertexArray(0);
             GL.useProgram(0);
 

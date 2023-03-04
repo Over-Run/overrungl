@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl.ext.arb;
@@ -38,6 +30,25 @@ import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
  * @since 0.1.0
  */
 public final class GLARBGeometryShader4 {
+    public static final int GL_LINES_ADJACENCY_ARB = 0x000A;
+    public static final int GL_LINE_STRIP_ADJACENCY_ARB = 0x000B;
+    public static final int GL_TRIANGLES_ADJACENCY_ARB = 0x000C;
+    public static final int GL_TRIANGLE_STRIP_ADJACENCY_ARB = 0x000D;
+    public static final int GL_PROGRAM_POINT_SIZE_ARB = 0x8642;
+    public static final int GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_ARB = 0x8C29;
+    public static final int GL_FRAMEBUFFER_ATTACHMENT_LAYERED_ARB = 0x8DA7;
+    public static final int GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_ARB = 0x8DA8;
+    public static final int GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_ARB = 0x8DA9;
+    public static final int GL_GEOMETRY_SHADER_ARB = 0x8DD9;
+    public static final int GL_GEOMETRY_VERTICES_OUT_ARB = 0x8DDA;
+    public static final int GL_GEOMETRY_INPUT_TYPE_ARB = 0x8DDB;
+    public static final int GL_GEOMETRY_OUTPUT_TYPE_ARB = 0x8DDC;
+    public static final int GL_MAX_GEOMETRY_VARYING_COMPONENTS_ARB = 0x8DDD;
+    public static final int GL_MAX_VERTEX_VARYING_COMPONENTS_ARB = 0x8DDE;
+    public static final int GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_ARB = 0x8DDF;
+    public static final int GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB = 0x8DE0;
+    public static final int GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB = 0x8DE1;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_geometry_shader4) return;
         ext.glFramebufferTextureARB = load.invoke("glFramebufferTextureARB", IIIIV);

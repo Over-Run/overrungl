@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -48,6 +40,68 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL31C extends GL30C permits GL32C {
+    public static final int SAMPLER_2D_RECT = 0x8B63;
+    public static final int SAMPLER_2D_RECT_SHADOW = 0x8B64;
+    public static final int SAMPLER_BUFFER = 0x8DC2;
+    public static final int INT_SAMPLER_2D_RECT = 0x8DCD;
+    public static final int INT_SAMPLER_BUFFER = 0x8DD0;
+    public static final int UNSIGNED_INT_SAMPLER_2D_RECT = 0x8DD5;
+    public static final int UNSIGNED_INT_SAMPLER_BUFFER = 0x8DD8;
+    public static final int TEXTURE_BUFFER = 0x8C2A;
+    public static final int MAX_TEXTURE_BUFFER_SIZE = 0x8C2B;
+    public static final int TEXTURE_BINDING_BUFFER = 0x8C2C;
+    public static final int TEXTURE_BUFFER_DATA_STORE_BINDING = 0x8C2D;
+    public static final int TEXTURE_RECTANGLE = 0x84F5;
+    public static final int TEXTURE_BINDING_RECTANGLE = 0x84F6;
+    public static final int PROXY_TEXTURE_RECTANGLE = 0x84F7;
+    public static final int MAX_RECTANGLE_TEXTURE_SIZE = 0x84F8;
+    public static final int R8_SNORM = 0x8F94;
+    public static final int RG8_SNORM = 0x8F95;
+    public static final int RGB8_SNORM = 0x8F96;
+    public static final int RGBA8_SNORM = 0x8F97;
+    public static final int R16_SNORM = 0x8F98;
+    public static final int RG16_SNORM = 0x8F99;
+    public static final int RGB16_SNORM = 0x8F9A;
+    public static final int RGBA16_SNORM = 0x8F9B;
+    public static final int SIGNED_NORMALIZED = 0x8F9C;
+    public static final int PRIMITIVE_RESTART = 0x8F9D;
+    public static final int PRIMITIVE_RESTART_INDEX = 0x8F9E;
+    public static final int COPY_READ_BUFFER = 0x8F36;
+    public static final int COPY_WRITE_BUFFER = 0x8F37;
+    public static final int UNIFORM_BUFFER = 0x8A11;
+    public static final int UNIFORM_BUFFER_BINDING = 0x8A28;
+    public static final int UNIFORM_BUFFER_START = 0x8A29;
+    public static final int UNIFORM_BUFFER_SIZE = 0x8A2A;
+    public static final int MAX_VERTEX_UNIFORM_BLOCKS = 0x8A2B;
+    public static final int MAX_GEOMETRY_UNIFORM_BLOCKS = 0x8A2C;
+    public static final int MAX_FRAGMENT_UNIFORM_BLOCKS = 0x8A2D;
+    public static final int MAX_COMBINED_UNIFORM_BLOCKS = 0x8A2E;
+    public static final int MAX_UNIFORM_BUFFER_BINDINGS = 0x8A2F;
+    public static final int MAX_UNIFORM_BLOCK_SIZE = 0x8A30;
+    public static final int MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS = 0x8A31;
+    public static final int MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS = 0x8A32;
+    public static final int MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS = 0x8A33;
+    public static final int UNIFORM_BUFFER_OFFSET_ALIGNMENT = 0x8A34;
+    public static final int ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH = 0x8A35;
+    public static final int ACTIVE_UNIFORM_BLOCKS = 0x8A36;
+    public static final int UNIFORM_TYPE = 0x8A37;
+    public static final int UNIFORM_SIZE = 0x8A38;
+    public static final int UNIFORM_NAME_LENGTH = 0x8A39;
+    public static final int UNIFORM_BLOCK_INDEX = 0x8A3A;
+    public static final int UNIFORM_OFFSET = 0x8A3B;
+    public static final int UNIFORM_ARRAY_STRIDE = 0x8A3C;
+    public static final int UNIFORM_MATRIX_STRIDE = 0x8A3D;
+    public static final int UNIFORM_IS_ROW_MAJOR = 0x8A3E;
+    public static final int UNIFORM_BLOCK_BINDING = 0x8A3F;
+    public static final int UNIFORM_BLOCK_DATA_SIZE = 0x8A40;
+    public static final int UNIFORM_BLOCK_NAME_LENGTH = 0x8A41;
+    public static final int UNIFORM_BLOCK_ACTIVE_UNIFORMS = 0x8A42;
+    public static final int UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x8A43;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x8A44;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_GEOMETRY_SHADER = 0x8A45;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x8A46;
+    public static final int INVALID_INDEX = 0xFFFFFFFF;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindBufferBase, caps.glBindBufferRange, caps.glCopyBufferSubData, caps.glDrawArraysInstanced, caps.glDrawElementsInstanced, caps.glGetActiveUniformBlockName,
             caps.glGetActiveUniformBlockiv, caps.glGetActiveUniformName, caps.glGetActiveUniformsiv, caps.glGetIntegeri_v, caps.glGetUniformBlockIndex, caps.glGetUniformIndices,

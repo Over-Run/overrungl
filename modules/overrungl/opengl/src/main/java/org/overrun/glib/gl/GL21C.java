@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -38,6 +30,23 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL21C extends GL20C permits GL30C {
+    public static final int PIXEL_PACK_BUFFER = 0x88EB;
+    public static final int PIXEL_UNPACK_BUFFER = 0x88EC;
+    public static final int PIXEL_PACK_BUFFER_BINDING = 0x88ED;
+    public static final int PIXEL_UNPACK_BUFFER_BINDING = 0x88EF;
+    public static final int FLOAT_MAT2x3 = 0x8B65;
+    public static final int FLOAT_MAT2x4 = 0x8B66;
+    public static final int FLOAT_MAT3x2 = 0x8B67;
+    public static final int FLOAT_MAT3x4 = 0x8B68;
+    public static final int FLOAT_MAT4x2 = 0x8B69;
+    public static final int FLOAT_MAT4x3 = 0x8B6A;
+    public static final int SRGB = 0x8C40;
+    public static final int SRGB8 = 0x8C41;
+    public static final int SRGB_ALPHA = 0x8C42;
+    public static final int SRGB8_ALPHA8 = 0x8C43;
+    public static final int COMPRESSED_SRGB = 0x8C48;
+    public static final int COMPRESSED_SRGB_ALPHA = 0x8C49;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glUniformMatrix2x3fv, caps.glUniformMatrix2x4fv, caps.glUniformMatrix3x2fv, caps.glUniformMatrix3x4fv, caps.glUniformMatrix4x2fv, caps.glUniformMatrix4x3fv);
     }

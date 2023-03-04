@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -50,6 +42,71 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL32C extends GL31C permits GL33C {
+    public static final int CONTEXT_CORE_PROFILE_BIT = 0x00000001;
+    public static final int CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002;
+    public static final int LINES_ADJACENCY = 0x000A;
+    public static final int LINE_STRIP_ADJACENCY = 0x000B;
+    public static final int TRIANGLES_ADJACENCY = 0x000C;
+    public static final int TRIANGLE_STRIP_ADJACENCY = 0x000D;
+    public static final int PROGRAM_POINT_SIZE = 0x8642;
+    public static final int MAX_GEOMETRY_TEXTURE_IMAGE_UNITS = 0x8C29;
+    public static final int FRAMEBUFFER_ATTACHMENT_LAYERED = 0x8DA7;
+    public static final int FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS = 0x8DA8;
+    public static final int GEOMETRY_SHADER = 0x8DD9;
+    public static final int GEOMETRY_VERTICES_OUT = 0x8916;
+    public static final int GEOMETRY_INPUT_TYPE = 0x8917;
+    public static final int GEOMETRY_OUTPUT_TYPE = 0x8918;
+    public static final int MAX_GEOMETRY_UNIFORM_COMPONENTS = 0x8DDF;
+    public static final int MAX_GEOMETRY_OUTPUT_VERTICES = 0x8DE0;
+    public static final int MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS = 0x8DE1;
+    public static final int MAX_VERTEX_OUTPUT_COMPONENTS = 0x9122;
+    public static final int MAX_GEOMETRY_INPUT_COMPONENTS = 0x9123;
+    public static final int MAX_GEOMETRY_OUTPUT_COMPONENTS = 0x9124;
+    public static final int MAX_FRAGMENT_INPUT_COMPONENTS = 0x9125;
+    public static final int CONTEXT_PROFILE_MASK = 0x9126;
+    public static final int DEPTH_CLAMP = 0x864F;
+    public static final int QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION = 0x8E4C;
+    public static final int FIRST_VERTEX_CONVENTION = 0x8E4D;
+    public static final int LAST_VERTEX_CONVENTION = 0x8E4E;
+    public static final int PROVOKING_VERTEX = 0x8E4F;
+    public static final int TEXTURE_CUBE_MAP_SEAMLESS = 0x884F;
+    public static final int MAX_SERVER_WAIT_TIMEOUT = 0x9111;
+    public static final int OBJECT_TYPE = 0x9112;
+    public static final int SYNC_CONDITION = 0x9113;
+    public static final int SYNC_STATUS = 0x9114;
+    public static final int SYNC_FLAGS = 0x9115;
+    public static final int SYNC_FENCE = 0x9116;
+    public static final int SYNC_GPU_COMMANDS_COMPLETE = 0x9117;
+    public static final int UNSIGNALED = 0x9118;
+    public static final int SIGNALED = 0x9119;
+    public static final int ALREADY_SIGNALED = 0x911A;
+    public static final int TIMEOUT_EXPIRED = 0x911B;
+    public static final int CONDITION_SATISFIED = 0x911C;
+    public static final int WAIT_FAILED = 0x911D;
+    public static final long TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFL;
+    public static final int SYNC_FLUSH_COMMANDS_BIT = 0x00000001;
+    public static final int SAMPLE_POSITION = 0x8E50;
+    public static final int SAMPLE_MASK = 0x8E51;
+    public static final int SAMPLE_MASK_VALUE = 0x8E52;
+    public static final int MAX_SAMPLE_MASK_WORDS = 0x8E59;
+    public static final int TEXTURE_2D_MULTISAMPLE = 0x9100;
+    public static final int PROXY_TEXTURE_2D_MULTISAMPLE = 0x9101;
+    public static final int TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9102;
+    public static final int PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = 0x9103;
+    public static final int TEXTURE_BINDING_2D_MULTISAMPLE = 0x9104;
+    public static final int TEXTURE_BINDING_2D_MULTISAMPLE_ARRAY = 0x9105;
+    public static final int TEXTURE_SAMPLES = 0x9106;
+    public static final int TEXTURE_FIXED_SAMPLE_LOCATIONS = 0x9107;
+    public static final int SAMPLER_2D_MULTISAMPLE = 0x9108;
+    public static final int INT_SAMPLER_2D_MULTISAMPLE = 0x9109;
+    public static final int UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = 0x910A;
+    public static final int SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910B;
+    public static final int INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910C;
+    public static final int UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE_ARRAY = 0x910D;
+    public static final int MAX_COLOR_TEXTURE_SAMPLES = 0x910E;
+    public static final int MAX_DEPTH_TEXTURE_SAMPLES = 0x910F;
+    public static final int MAX_INTEGER_SAMPLES = 0x9110;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glClientWaitSync, caps.glDeleteSync, caps.glDrawElementsBaseVertex, caps.glDrawElementsInstancedBaseVertex, caps.glDrawRangeElementsBaseVertex, caps.glFenceSync,
             caps.glFramebufferTexture, caps.glGetBufferParameteri64v, caps.glGetInteger64i_v, caps.glGetInteger64v, caps.glGetMultisamplefv, caps.glGetSynciv,

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -28,7 +20,6 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.ext.amd.GLAMDDebugOutput;
 import org.overrun.glib.gl.ext.amd.GLDebugProcAMD;
-import org.overrun.glib.gl.ext.arb.GLARBDebugOutput;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -37,6 +28,7 @@ import java.util.function.Consumer;
 
 import static org.overrun.glib.RuntimeHelper.*;
 import static org.overrun.glib.gl.GLConstC.*;
+import static org.overrun.glib.gl.ext.arb.GLARBDebugOutput.*;
 
 /**
  * OpenGL utilities.
@@ -103,9 +95,9 @@ public final class GLUtil {
             GL.debugMessageCallback(arena.scope(), proc, MemorySegment.NULL);
             // no need GL_KHR_debug
             if ((caps.Ver43 || caps.Ver30) &&
-                (GL.getInteger(GL_CONTEXT_FLAGS) & GL_CONTEXT_FLAG_DEBUG_BIT) == 0) {
+                (GL.getInteger(GL.CONTEXT_FLAGS) & GL.CONTEXT_FLAG_DEBUG_BIT) == 0) {
                 apiLog("[GL] Warning: A non-debug context may not produce any debug output.");
-                GL.enable(GL_DEBUG_OUTPUT);
+                GL.enable(GL.DEBUG_OUTPUT);
             }
             return arena;
         }
@@ -129,7 +121,7 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            GLARBDebugOutput.glDebugMessageCallbackARB(arena.scope(), proc, MemorySegment.NULL);
+            glDebugMessageCallbackARB(arena.scope(), proc, MemorySegment.NULL);
             return arena;
         }
 
@@ -169,35 +161,35 @@ public final class GLUtil {
 
     private static String getDebugSource(int source) {
         return switch (source) {
-            case GL_DEBUG_SOURCE_API -> "API";
-            case GL_DEBUG_SOURCE_WINDOW_SYSTEM -> "WINDOW SYSTEM";
-            case GL_DEBUG_SOURCE_SHADER_COMPILER -> "SHADER COMPILER";
-            case GL_DEBUG_SOURCE_THIRD_PARTY -> "THIRD PARTY";
-            case GL_DEBUG_SOURCE_APPLICATION -> "APPLICATION";
-            case GL_DEBUG_SOURCE_OTHER -> "OTHER";
+            case GL.DEBUG_SOURCE_API -> "API";
+            case GL.DEBUG_SOURCE_WINDOW_SYSTEM -> "WINDOW SYSTEM";
+            case GL.DEBUG_SOURCE_SHADER_COMPILER -> "SHADER COMPILER";
+            case GL.DEBUG_SOURCE_THIRD_PARTY -> "THIRD PARTY";
+            case GL.DEBUG_SOURCE_APPLICATION -> "APPLICATION";
+            case GL.DEBUG_SOURCE_OTHER -> "OTHER";
             default -> unknownToken(source);
         };
     }
 
     private static String getDebugType(int type) {
         return switch (type) {
-            case GL_DEBUG_TYPE_ERROR -> "ERROR";
-            case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR -> "DEPRECATED BEHAVIOR";
-            case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR -> "UNDEFINED BEHAVIOR";
-            case GL_DEBUG_TYPE_PORTABILITY -> "PORTABILITY";
-            case GL_DEBUG_TYPE_PERFORMANCE -> "PERFORMANCE";
-            case GL_DEBUG_TYPE_OTHER -> "OTHER";
-            case GL_DEBUG_TYPE_MARKER -> "MARKER";
+            case GL.DEBUG_TYPE_ERROR -> "ERROR";
+            case GL.DEBUG_TYPE_DEPRECATED_BEHAVIOR -> "DEPRECATED BEHAVIOR";
+            case GL.DEBUG_TYPE_UNDEFINED_BEHAVIOR -> "UNDEFINED BEHAVIOR";
+            case GL.DEBUG_TYPE_PORTABILITY -> "PORTABILITY";
+            case GL.DEBUG_TYPE_PERFORMANCE -> "PERFORMANCE";
+            case GL.DEBUG_TYPE_OTHER -> "OTHER";
+            case GL.DEBUG_TYPE_MARKER -> "MARKER";
             default -> unknownToken(type);
         };
     }
 
     private static String getDebugSeverity(int severity) {
         return switch (severity) {
-            case GL_DEBUG_SEVERITY_HIGH -> "HIGH";
-            case GL_DEBUG_SEVERITY_MEDIUM -> "MEDIUM";
-            case GL_DEBUG_SEVERITY_LOW -> "LOW";
-            case GL_DEBUG_SEVERITY_NOTIFICATION -> "NOTIFICATION";
+            case GL.DEBUG_SEVERITY_HIGH -> "HIGH";
+            case GL.DEBUG_SEVERITY_MEDIUM -> "MEDIUM";
+            case GL.DEBUG_SEVERITY_LOW -> "LOW";
+            case GL.DEBUG_SEVERITY_NOTIFICATION -> "NOTIFICATION";
             default -> unknownToken(severity);
         };
     }

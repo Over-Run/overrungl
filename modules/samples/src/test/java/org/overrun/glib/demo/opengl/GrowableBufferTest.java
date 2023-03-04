@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.demo.opengl;
@@ -37,7 +29,6 @@ import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
-import static org.overrun.glib.gl.GLConstC.*;
 
 /**
  * Tests {@link GrowableBuffer}
@@ -108,8 +99,8 @@ public final class GrowableBufferTest {
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
         program = GL.createProgram();
-        int vsh = GL.createShader(GL_VERTEX_SHADER);
-        int fsh = GL.createShader(GL_FRAGMENT_SHADER);
+        int vsh = GL.createShader(GL.VERTEX_SHADER);
+        int fsh = GL.createShader(GL.FRAGMENT_SHADER);
         GL.shaderSource(arena, vsh, """
             #version 130
 
@@ -149,7 +140,7 @@ public final class GrowableBufferTest {
         vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
         vbo = GL.genBuffer();
-        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
+        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
         int stride;
         try (var buffer = new GrowableBuffer(4 * 3 * 3 + 4 * 3)) {
             buffer.begin()
@@ -167,25 +158,25 @@ public final class GrowableBufferTest {
                 .put(JAVA_BYTE, (byte) 0)
                 .emit()
                 .end();
-            GL.bufferData(GL_ARRAY_BUFFER, buffer, GL_STATIC_DRAW);
+            GL.bufferData(GL.ARRAY_BUFFER, buffer, GL.STATIC_DRAW);
             stride = (int) buffer.stride();
         }
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, stride, MemorySegment.NULL);
-        GL.vertexAttribPointer(1, 3, GL_UNSIGNED_BYTE, true, stride, MemorySegment.ofAddress(12));
-        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+        GL.vertexAttribPointer(0, 3, GL.FLOAT, false, stride, MemorySegment.NULL);
+        GL.vertexAttribPointer(1, 3, GL.UNSIGNED_BYTE, true, stride, MemorySegment.ofAddress(12));
+        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
     }
 
     private void loop() {
         while (!GLFW.windowShouldClose(window)) {
-            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
             GL.useProgram(program);
             GL.bindVertexArray(vao);
-            GL.drawArrays(GL_TRIANGLES, 0, 3);
+            GL.drawArrays(GL.TRIANGLES, 0, 3);
             GL.bindVertexArray(0);
             GL.useProgram(0);
 

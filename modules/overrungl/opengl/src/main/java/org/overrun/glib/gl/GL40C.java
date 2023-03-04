@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -52,6 +44,84 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL40C extends GL33C permits GL41C {
+    public static final int SAMPLE_SHADING = 0x8C36;
+    public static final int MIN_SAMPLE_SHADING_VALUE = 0x8C37;
+    public static final int MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E;
+    public static final int MAX_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5F;
+    public static final int TEXTURE_CUBE_MAP_ARRAY = 0x9009;
+    public static final int TEXTURE_BINDING_CUBE_MAP_ARRAY = 0x900A;
+    public static final int PROXY_TEXTURE_CUBE_MAP_ARRAY = 0x900B;
+    public static final int SAMPLER_CUBE_MAP_ARRAY = 0x900C;
+    public static final int SAMPLER_CUBE_MAP_ARRAY_SHADOW = 0x900D;
+    public static final int INT_SAMPLER_CUBE_MAP_ARRAY = 0x900E;
+    public static final int UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F;
+    public static final int DRAW_INDIRECT_BUFFER = 0x8F3F;
+    public static final int DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
+    public static final int GEOMETRY_SHADER_INVOCATIONS = 0x887F;
+    public static final int MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A;
+    public static final int MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B;
+    public static final int MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C;
+    public static final int FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D;
+    public static final int MAX_VERTEX_STREAMS = 0x8E71;
+    public static final int DOUBLE_VEC2 = 0x8FFC;
+    public static final int DOUBLE_VEC3 = 0x8FFD;
+    public static final int DOUBLE_VEC4 = 0x8FFE;
+    public static final int DOUBLE_MAT2 = 0x8F46;
+    public static final int DOUBLE_MAT3 = 0x8F47;
+    public static final int DOUBLE_MAT4 = 0x8F48;
+    public static final int DOUBLE_MAT2x3 = 0x8F49;
+    public static final int DOUBLE_MAT2x4 = 0x8F4A;
+    public static final int DOUBLE_MAT3x2 = 0x8F4B;
+    public static final int DOUBLE_MAT3x4 = 0x8F4C;
+    public static final int DOUBLE_MAT4x2 = 0x8F4D;
+    public static final int DOUBLE_MAT4x3 = 0x8F4E;
+    public static final int ACTIVE_SUBROUTINES = 0x8DE5;
+    public static final int ACTIVE_SUBROUTINE_UNIFORMS = 0x8DE6;
+    public static final int ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS = 0x8E47;
+    public static final int ACTIVE_SUBROUTINE_MAX_LENGTH = 0x8E48;
+    public static final int ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH = 0x8E49;
+    public static final int MAX_SUBROUTINES = 0x8DE7;
+    public static final int MAX_SUBROUTINE_UNIFORM_LOCATIONS = 0x8DE8;
+    public static final int NUM_COMPATIBLE_SUBROUTINES = 0x8E4A;
+    public static final int COMPATIBLE_SUBROUTINES = 0x8E4B;
+    public static final int PATCHES = 0x000E;
+    public static final int PATCH_VERTICES = 0x8E72;
+    public static final int PATCH_DEFAULT_INNER_LEVEL = 0x8E73;
+    public static final int PATCH_DEFAULT_OUTER_LEVEL = 0x8E74;
+    public static final int TESS_CONTROL_OUTPUT_VERTICES = 0x8E75;
+    public static final int TESS_GEN_MODE = 0x8E76;
+    public static final int TESS_GEN_SPACING = 0x8E77;
+    public static final int TESS_GEN_VERTEX_ORDER = 0x8E78;
+    public static final int TESS_GEN_POINT_MODE = 0x8E79;
+    public static final int ISOLINES = 0x8E7A;
+    public static final int FRACTIONAL_ODD = 0x8E7B;
+    public static final int FRACTIONAL_EVEN = 0x8E7C;
+    public static final int MAX_PATCH_VERTICES = 0x8E7D;
+    public static final int MAX_TESS_GEN_LEVEL = 0x8E7E;
+    public static final int MAX_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E7F;
+    public static final int MAX_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E80;
+    public static final int MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS = 0x8E81;
+    public static final int MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS = 0x8E82;
+    public static final int MAX_TESS_CONTROL_OUTPUT_COMPONENTS = 0x8E83;
+    public static final int MAX_TESS_PATCH_COMPONENTS = 0x8E84;
+    public static final int MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS = 0x8E85;
+    public static final int MAX_TESS_EVALUATION_OUTPUT_COMPONENTS = 0x8E86;
+    public static final int MAX_TESS_CONTROL_UNIFORM_BLOCKS = 0x8E89;
+    public static final int MAX_TESS_EVALUATION_UNIFORM_BLOCKS = 0x8E8A;
+    public static final int MAX_TESS_CONTROL_INPUT_COMPONENTS = 0x886C;
+    public static final int MAX_TESS_EVALUATION_INPUT_COMPONENTS = 0x886D;
+    public static final int MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E1E;
+    public static final int MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E1F;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_TESS_CONTROL_SHADER = 0x84F0;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x84F1;
+    public static final int TESS_EVALUATION_SHADER = 0x8E87;
+    public static final int TESS_CONTROL_SHADER = 0x8E88;
+    public static final int TRANSFORM_FEEDBACK = 0x8E22;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_PAUSED = 0x8E23;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_ACTIVE = 0x8E24;
+    public static final int TRANSFORM_FEEDBACK_BINDING = 0x8E25;
+    public static final int MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBeginQueryIndexed, caps.glBindTransformFeedback, caps.glBlendEquationSeparatei, caps.glBlendEquationi, caps.glBlendFuncSeparatei, caps.glBlendFunci,
             caps.glDeleteTransformFeedbacks, caps.glDrawArraysIndirect, caps.glDrawElementsIndirect, caps.glDrawTransformFeedback, caps.glDrawTransformFeedbackStream, caps.glEndQueryIndexed,

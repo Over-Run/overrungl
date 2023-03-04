@@ -59,6 +59,9 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
         if (DEFAULT_STACK_SIZE < 0) {
             throw new IllegalStateException("Invalid stack size.");
         }
+        if (DEFAULT_STACK_FRAMES < 0) {
+            throw new IllegalStateException("Invalid stack frames.");
+        }
     }
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})

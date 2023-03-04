@@ -320,7 +320,7 @@ public class GLCapabilities {
     public int load(GLLoadFunc load) {
         glGetString = load.invoke("glGetString", FunctionDescriptors.Ip);
         if (glGetString == null) return 0;
-        if (GL10C.getString(GLConstC.GL_VERSION) == null) return 0;
+        if (GL10C.getString(GL10C.VERSION) == null) return 0;
 
         GL10C.load(this, load);
         GL11C.load(this, load);
@@ -398,7 +398,7 @@ public class GLCapabilities {
             "OpenGL ES ",
             "OpenGL SC "
         };
-        var version = GL10C.getString(GLConstC.GL_VERSION);
+        var version = GL10C.getString(GL10C.VERSION);
         if (version == null) return 0;
         for (var prefix : prefixes) {
             int len = prefix.length();
