@@ -65,6 +65,18 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Checks whether <i>{@code byteSize}</i> is greater than 0 or equals to 0.
+     *
+     * @param byteSize the size, in bytes.
+     * @throws IllegalArgumentException if <i>{@code byteSize}</i> {@code < 0}.
+     */
+    public static void checkByteSize(long byteSize) {
+        if (byteSize < 0) {
+            throw new IllegalArgumentException("byteSize must be >= 0.");
+        }
+    }
+
+    /**
      * Checks whether <i>{@code alignment}</i> is greater than 0 and is a power-of-two value.
      *
      * @param alignment the alignment, in bytes.

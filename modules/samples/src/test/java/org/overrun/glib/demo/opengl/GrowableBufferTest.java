@@ -22,6 +22,7 @@ import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
+import org.overrun.glib.util.CustomScope;
 import org.overrun.glib.util.GrowableBuffer;
 
 import java.lang.foreign.Arena;
@@ -141,25 +142,21 @@ public final class GrowableBufferTest {
         GL.bindVertexArray(vao);
         vbo = GL.genBuffer();
         GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
-        int stride;
-        try (var buffer = new GrowableBuffer(4 * 3 * 3 + 4 * 3)) {
-            buffer.begin()
+        final int stride = (int) (JAVA_FLOAT.byteSize() * 3 + JAVA_BYTE.byteSize() * 4);
+        try (CustomScope scope = CustomScope.delegated(Arena.openConfined())) {
+            var buffer = new GrowableBuffer(scope, 2);
+            buffer.clear()
                 .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)
                 // For alignment reason, we put a padding byte
                 .put(JAVA_BYTE, (byte) 0)
-                .emit()
                 .putAll(JAVA_FLOAT, -0.5f, -0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0, (byte) 0xff, (byte) 0)
                 .put(JAVA_BYTE, (byte) 0)
-                .emit()
                 .putAll(JAVA_FLOAT, 0.5f, -0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0, (byte) 0, (byte) 0xff)
-                .put(JAVA_BYTE, (byte) 0)
-                .emit()
-                .end();
+                .put(JAVA_BYTE, (byte) 0);
             GL.bufferData(GL.ARRAY_BUFFER, buffer, GL.STATIC_DRAW);
-            stride = (int) buffer.stride();
         }
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);

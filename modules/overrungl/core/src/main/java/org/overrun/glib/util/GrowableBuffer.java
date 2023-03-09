@@ -20,23 +20,22 @@ import org.overrun.glib.Addressable;
 
 import java.lang.foreign.*;
 
-import static org.overrun.glib.util.MemoryUtil.*;
-
 /**
- * This is a growable buffer with standard C memory allocator.
+ * This is a growable buffer with a {@linkplain CustomScope custom scope}.
  * <p>
- * This simulates the old NIO buffers, but more efficient, since it used the native memory.
+ * This simulates the old NIO buffers, but it's more efficient, since it used the native memory.
  *
  * <h2>Example</h2>
  * Using with OpenGL:
  * <pre>{@code
  * var buffer = new GrowableBuffer();
- * buffer.begin()
+ * buffer.clear()
  *     .put(JAVA_FLOAT, 0.0f)
  *     .put(JAVA_FLOAT, 0.0f)
- *     .put(JAVA_FLOAT, 0.0f)
- *     .end();
- * GL.bufferData(GL_ARRAY_BUFFER, builder, GL_STATIC_DRAW);
+ *     .put(JAVA_FLOAT, 0.0f);
+ * if (buffer.hasGrown()) {
+ *     GL.bufferData(GL.ARRAY_BUFFER, buffer, GL.STATIC_DRAW);
+ * }
  * }</pre>
  * or JOML:
  * <pre>{@code
@@ -46,20 +45,35 @@ import static org.overrun.glib.util.MemoryUtil.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GrowableBuffer implements AutoCloseable, Addressable {
+public class GrowableBuffer implements Addressable {
+    private final CustomScope scope;
     private MemorySegment address = MemorySegment.NULL;
     private long capacity;
     private long offset, count;
-    private long stride;
     private boolean grew;
+    private boolean cleared = false;
 
     /**
-     * Creates an empty buffer builder instance.
+     * Creates an empty buffer builder instance with an implicit allocator.
      *
-     * @see #GrowableBuffer(long)
-     * @see #GrowableBuffer(MemoryLayout)
+     * @see #GrowableBuffer(CustomScope)
+     * @see #GrowableBuffer(CustomScope, long)
+     * @see #GrowableBuffer(CustomScope, MemoryLayout)
      */
     public GrowableBuffer() {
+        this(CustomScope.scoped(SegmentScope.auto()));
+    }
+
+    /**
+     * Creates a buffer builder instance with the given scope.
+     *
+     * @param scope the memory scope.
+     * @see #GrowableBuffer()
+     * @see #GrowableBuffer(CustomScope, long)
+     * @see #GrowableBuffer(CustomScope, MemoryLayout)
+     */
+    public GrowableBuffer(CustomScope scope) {
+        this.scope = scope;
     }
 
     /**
@@ -67,13 +81,14 @@ public class GrowableBuffer implements AutoCloseable, Addressable {
      *
      * @param initialCapacity the initial capacity.
      * @see #GrowableBuffer()
-     * @see #GrowableBuffer(MemoryLayout)
+     * @see #GrowableBuffer(CustomScope)
+     * @see #GrowableBuffer(CustomScope, MemoryLayout)
      */
-    public GrowableBuffer(long initialCapacity) {
-        this();
-        capacity = initialCapacity;
-        grew = true;
-        address = malloc(initialCapacity);
+    public GrowableBuffer(CustomScope scope, long initialCapacity) {
+        this(scope);
+        this.capacity = initialCapacity;
+        this.grew = true;
+        this.address = scope.allocate(initialCapacity);
     }
 
     /**
@@ -81,10 +96,11 @@ public class GrowableBuffer implements AutoCloseable, Addressable {
      *
      * @param layout the memory layout.
      * @see #GrowableBuffer()
-     * @see #GrowableBuffer(long)
+     * @see #GrowableBuffer(CustomScope)
+     * @see #GrowableBuffer(CustomScope, long)
      */
-    public GrowableBuffer(MemoryLayout layout) {
-        this(layout.byteSize());
+    public GrowableBuffer(CustomScope scope, MemoryLayout layout) {
+        this(scope, layout.byteSize());
     }
 
     /**
@@ -107,47 +123,50 @@ public class GrowableBuffer implements AutoCloseable, Addressable {
     }
 
     /**
-     * Reset the offset and count.
+     * Resets the offset and count.
      *
      * @return this
-     * @see #begin(long)
-     * @see #begin(MemoryLayout)
+     * @see #clear(long)
+     * @see #clear(MemoryLayout)
      */
-    public GrowableBuffer begin() {
+    public GrowableBuffer clear() {
         offset = 0;
         count = 0;
-        stride = 0;
+        if (cleared) {
+            grew = false;
+        }
+        cleared = true;
         return this;
     }
 
     /**
-     * Grow to the given capacity and reset the offset and count.
+     * Grows to the given capacity and reset the offset and count.
      *
      * @param initialCapacity the capacity
      * @return this
-     * @see #begin()
-     * @see #begin(MemoryLayout)
+     * @see #clear()
+     * @see #clear(MemoryLayout)
      */
-    public GrowableBuffer begin(long initialCapacity) {
-        return this.ensureCapacity(initialCapacity).begin();
+    public GrowableBuffer clear(long initialCapacity) {
+        return this.ensureCapacity(initialCapacity).clear();
     }
 
     /**
-     * Grow to the size of the given layout and reset the offset and count.
+     * Grows to the size of the given layout and reset the offset and count.
      *
      * @param layout the memory layout.
      * @return this
-     * @see #begin()
-     * @see #begin(long)
+     * @see #clear()
+     * @see #clear(long)
      */
-    public GrowableBuffer begin(MemoryLayout layout) {
-        return begin(layout.byteSize());
+    public GrowableBuffer clear(MemoryLayout layout) {
+        return clear(layout.byteSize());
     }
 
     public GrowableBuffer ensureCapacity(long minCapacity, long newCapacity) {
         if (minCapacity > capacity) {
             long c = Math.max(minCapacity, newCapacity);
-            address = realloc(address, c);
+            address = scope.reallocate(address, c);
             capacity = c;
             grew = true;
         }
@@ -472,66 +491,50 @@ public class GrowableBuffer implements AutoCloseable, Addressable {
     }
 
     /**
-     * Computes the stride.
-     * <p>
-     * This operation is not necessary.
+     * Returns {@code true} if this buffer has grown.
      *
-     * @return the stride
+     * @return {@code true} if this buffer has grown.
      */
-    public GrowableBuffer emit() {
-        if (stride <= 0) {
-            stride = offset;
-        }
-        return this;
+    public boolean hasGrown() {
+        return grew;
     }
 
     /**
-     * End the operation.
+     * Sets the offset of this buffer.
      *
-     * @return true, if the buffer has grown
+     * @param offset the new offset.
+     * @return this.
      */
-    public boolean end() {
-        boolean g = grew;
-        grew = false;
-        return g;
-    }
-
     public final GrowableBuffer offset(long offset) {
         this.offset = offset;
         return this;
     }
 
+    /**
+     * Returns the capacity of this buffer.
+     *
+     * @return the capacity of this buffer.
+     */
     public final long capacity() {
         return capacity;
     }
 
     /**
-     * Returns the offset of the buffer
+     * Returns the offset of this buffer.
      *
-     * @return the offset of the buffer
+     * @return the offset of this buffer.
      */
     public final long offset() {
         return offset;
     }
 
     /**
-     * Returns the performed put count
+     * Returns the performed put count.
      *
-     * @return the performed put count
+     * @return the performed put count.
      */
     public final long count() {
         return count;
-    }
-
-    public final long stride() {
-        return stride;
-    }
-
-    @Override
-    public void close() {
-        free(address);
-        address = MemorySegment.NULL;
-        capacity = 0;
     }
 
     @Override
