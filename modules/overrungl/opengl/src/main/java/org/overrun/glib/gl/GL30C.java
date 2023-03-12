@@ -1228,7 +1228,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform2uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform2uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform2uiv(location, value.length >> 1, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform3ui(int location, int v0, int v1, int v2) {
@@ -1250,7 +1250,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform3uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform3uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform3uiv(location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
@@ -1272,7 +1272,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform4uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform4uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform4uiv(location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribI1i(int index, int x) {

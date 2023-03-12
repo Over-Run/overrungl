@@ -617,7 +617,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform2dv(program, location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform2dv(program, location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void programUniform2f(int program, int location, float v0, float v1) {
@@ -639,7 +639,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform2fv(program, location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform2fv(program, location, value.length >> 2, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void programUniform2i(int program, int location, int v0, int v1) {
@@ -661,7 +661,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform2iv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform2iv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void programUniform2ui(int program, int location, int v0, int v1) {
@@ -683,7 +683,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform2uiv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform2uiv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void programUniform3d(int program, int location, double v0, double v1, double v2) {
@@ -705,7 +705,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform3dv(program, location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform3dv(program, location, value.length / 3, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void programUniform3f(int program, int location, float v0, float v1, float v2) {
@@ -727,7 +727,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform3fv(program, location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform3fv(program, location, value.length / 3, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void programUniform3i(int program, int location, int v0, int v1, int v2) {
@@ -749,7 +749,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform3iv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform3iv(program, location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void programUniform3ui(int program, int location, int v0, int v1, int v2) {
@@ -771,7 +771,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform3uiv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform3uiv(program, location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void programUniform4d(int program, int location, double v0, double v1, double v2, double v3) {
@@ -793,7 +793,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform4dv(program, location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform4dv(program, location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void programUniform4f(int program, int location, float v0, float v1, float v2, float v3) {
@@ -815,7 +815,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform4fv(program, location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform4fv(program, location, value.length >> 2, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void programUniform4i(int program, int location, int v0, int v1, int v2, int v3) {
@@ -837,7 +837,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform4iv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform4iv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void programUniform4ui(int program, int location, int v0, int v1, int v2, int v3) {
@@ -859,7 +859,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform4uiv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform4uiv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void programUniformMatrix2dv(int program, int location, int count, boolean transpose, MemorySegment value) {

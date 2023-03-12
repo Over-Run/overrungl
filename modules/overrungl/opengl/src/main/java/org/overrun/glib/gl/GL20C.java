@@ -880,7 +880,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform2fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform2fv(location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform2fv(location, value.length >> 1, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void uniform2i(int location, int v0, int v1) {
@@ -902,7 +902,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform2iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform2iv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform2iv(location, value.length >> 1, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform3f(int location, float v0, float v1, float v2) {
@@ -924,7 +924,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform3fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform3fv(location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform3fv(location, value.length / 3, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void uniform3i(int location, int v0, int v1, int v2) {
@@ -946,7 +946,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform3iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform3iv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform3iv(location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform4f(int location, float v0, float v1, float v2, float v3) {
@@ -968,7 +968,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform4fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform4fv(location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform4fv(location, value.length >> 2, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
     public static void uniform4i(int location, int v0, int v1, int v2, int v3) {
@@ -990,7 +990,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform4iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform4iv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform4iv(location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniformMatrix2fv(int location, int count, boolean transpose, MemorySegment value) {

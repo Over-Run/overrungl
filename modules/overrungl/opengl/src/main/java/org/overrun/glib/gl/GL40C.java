@@ -613,7 +613,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform2dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform2dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform2dv(location, value.length >> 1, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform3d(int location, double x, double y, double z) {
@@ -635,7 +635,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform3dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform3dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform3dv(location, value.length / 3, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform4d(int location, double x, double y, double z, double w) {
@@ -657,7 +657,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform4dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform4dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform4dv(location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
