@@ -16,9 +16,9 @@
 
 package org.overrun.glib;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
 
 /**
  * The C struct wrapper.
@@ -38,19 +38,19 @@ public abstract class Struct extends Pointer {
      * Create the struct instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public Struct(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public Struct(MemorySegment address, Arena arena) {
+        super(address, arena);
         final MemoryLayout layout = layout();
         if (layout != null) {
-            managedSegment = segment(layout, scope);
+            managedSegment = segment(layout, arena);
         }
     }
 
     @Override
-    public MemorySegment segment(long bytesSize, SegmentScope scope) {
-        return managedSegment != null ? managedSegment : super.segment(bytesSize, scope);
+    public MemorySegment segment(long bytesSize, Arena arena) {
+        return managedSegment != null ? managedSegment : super.segment(bytesSize, arena);
     }
 
     /**

@@ -75,10 +75,10 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * @param container the backing memory buffer, may be null
      * @param address   the backing memory address
      * @param size      the backing memory size
-     * @param scope     the backing segment scope
+     * @param arena     the backing arena
      */
-    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size, SegmentScope scope) {
-        super(address, scope);
+    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size, Arena arena) {
+        super(address, arena);
         this.container = container;
 
         this.size = size;
@@ -104,7 +104,8 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * @param capacity the maximum number of bytes that may be allocated on the stack
      */
     public static MemoryStack create(long capacity) {
-        return create(MemorySegment.allocateNative(capacity, SegmentScope.global()), capacity, SegmentScope.global());
+        final Arena arena = RuntimeHelper.autoArena();
+        return create(arena.allocate(capacity), capacity, arena);
     }
 
     /**
@@ -114,12 +115,12 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      *
      * @param buffer the backing memory buffer
      * @param size   the memory buffer size
-     * @param scope  the backing segment scope
+     * @param arena  the backing arena
      */
-    public static MemoryStack create(MemorySegment buffer, long size, SegmentScope scope) {
+    public static MemoryStack create(MemorySegment buffer, long size, Arena arena) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(buffer, buffer, size, scope)
-            : new MemoryStack(buffer, buffer, size, scope);
+            ? new DebugMemoryStack(buffer, buffer, size, arena)
+            : new MemoryStack(buffer, buffer, size, arena);
     }
 
     /**
@@ -129,12 +130,12 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      *
      * @param address the backing memory address
      * @param size    the backing memory size
-     * @param scope   the backing segment scope
+     * @param arena   the backing arena
      */
-    public static MemoryStack ncreate(MemorySegment address, long size, SegmentScope scope) {
+    public static MemoryStack ncreate(MemorySegment address, long size, Arena arena) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(null, address, size, scope)
-            : new MemoryStack(null, address, size, scope);
+            ? new DebugMemoryStack(null, address, size, arena)
+            : new MemoryStack(null, address, size, arena);
     }
 
     /**
@@ -197,8 +198,8 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
 
-        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size, SegmentScope scope) {
-            super(buffer, address, size, scope);
+        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size, Arena arena) {
+            super(buffer, address, size, arena);
             debugFrames = new Object[DEFAULT_STACK_FRAMES];
         }
 
@@ -331,7 +332,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
             throw new OutOfMemoryError("Out of stack space.");
         }
 
-        return MemorySegment.ofAddress(address, size, scope());
+        return MemorySegment.ofAddress(address, size, arena.scope());
     }
 
     /**

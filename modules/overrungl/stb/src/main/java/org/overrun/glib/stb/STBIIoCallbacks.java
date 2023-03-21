@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.stb;
@@ -68,10 +60,10 @@ public class STBIIoCallbacks extends Struct {
      * Create a {@code stbi_io_callbacks} instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public STBIIoCallbacks(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public STBIIoCallbacks(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
@@ -167,13 +159,13 @@ public class STBIIoCallbacks extends Struct {
     }
 
     /**
-     * Creates a {@code stbi_io_callbacks} instance with the given segment scope.
+     * Creates a {@code stbi_io_callbacks} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static STBIIoCallbacks create(SegmentScope scope) {
-        return new STBIIoCallbacks(MemorySegment.allocateNative(LAYOUT, scope), scope);
+    public static STBIIoCallbacks create(Arena arena) {
+        return new STBIIoCallbacks(arena.allocate(LAYOUT), arena);
     }
 
     /**
@@ -210,7 +202,7 @@ public class STBIIoCallbacks extends Struct {
      * @return this
      */
     public STBIIoCallbacks read(Read read) {
-        pRead.set(managedSegment, read.address(scope));
+        pRead.set(managedSegment, read.address(arena));
         return this;
     }
 
@@ -221,7 +213,7 @@ public class STBIIoCallbacks extends Struct {
      * @return this
      */
     public STBIIoCallbacks skip(Skip skip) {
-        pSkip.set(managedSegment, skip.address(scope));
+        pSkip.set(managedSegment, skip.address(arena));
         return this;
     }
 
@@ -232,7 +224,7 @@ public class STBIIoCallbacks extends Struct {
      * @return this
      */
     public STBIIoCallbacks eof(Eof eof) {
-        pEof.set(managedSegment, eof.address(scope));
+        pEof.set(managedSegment, eof.address(arena));
         return this;
     }
 

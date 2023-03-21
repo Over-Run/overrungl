@@ -21,9 +21,9 @@ import org.overrun.glib.gl.GLDebugProc;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -78,8 +78,8 @@ public final class GLARBDebugOutput {
         }
     }
 
-    public static void glDebugMessageCallbackARB(SegmentScope scope, GLDebugProc callback, MemorySegment userParam) {
-        glDebugMessageCallbackARB(callback.address(scope), userParam);
+    public static void glDebugMessageCallbackARB(Arena arena, GLDebugProc callback, MemorySegment userParam) {
+        glDebugMessageCallbackARB(callback.address(arena), userParam);
     }
 
     public static void glDebugMessageControlARB(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {

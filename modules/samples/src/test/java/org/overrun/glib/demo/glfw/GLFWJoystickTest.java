@@ -24,7 +24,6 @@ import org.overrun.glib.glfw.GLFWGamepadState;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
 
 /**
  * Tests GLFW joystick
@@ -82,7 +81,7 @@ public final class GLFWJoystickTest {
     private void loop() {
         var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
         for (int i = 0; i < states.length; i++) {
-            states[i] = GLFWGamepadState.create(SegmentScope.global());
+            states[i] = GLFWGamepadState.create(RuntimeHelper.globalArena());
         }
         while (!GLFW.windowShouldClose(window)) {
 //            try (var arena = Arena.openShared()) {

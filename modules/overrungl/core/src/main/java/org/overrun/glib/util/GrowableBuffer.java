@@ -17,11 +17,12 @@
 package org.overrun.glib.util;
 
 import org.overrun.glib.Addressable;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.*;
 
 /**
- * This is a growable buffer with a {@linkplain CustomScope custom scope}.
+ * This is a growable buffer with a {@linkplain CustomArena custom arena}.
  * <p>
  * This simulates the old NIO buffers, but it's more efficient, since it used the native memory.
  *
@@ -46,7 +47,7 @@ import java.lang.foreign.*;
  * @since 0.1.0
  */
 public class GrowableBuffer implements Addressable {
-    private final CustomScope scope;
+    private final CustomArena arena;
     private MemorySegment address = MemorySegment.NULL;
     private long capacity;
     private long offset, count;
@@ -56,51 +57,53 @@ public class GrowableBuffer implements Addressable {
     /**
      * Creates an empty buffer builder instance with an implicit allocator.
      *
-     * @see #GrowableBuffer(CustomScope)
-     * @see #GrowableBuffer(CustomScope, long)
-     * @see #GrowableBuffer(CustomScope, MemoryLayout)
+     * @see #GrowableBuffer(CustomArena)
+     * @see #GrowableBuffer(CustomArena, long)
+     * @see #GrowableBuffer(CustomArena, MemoryLayout)
      */
     public GrowableBuffer() {
-        this(CustomScope.scoped(SegmentScope.auto()));
+        this(CustomArena.delegated(RuntimeHelper.autoArena()));
     }
 
     /**
-     * Creates a buffer builder instance with the given scope.
+     * Creates a buffer builder instance with the given custom arena.
      *
-     * @param scope the memory scope.
+     * @param arena the custom arena.
      * @see #GrowableBuffer()
-     * @see #GrowableBuffer(CustomScope, long)
-     * @see #GrowableBuffer(CustomScope, MemoryLayout)
+     * @see #GrowableBuffer(CustomArena, long)
+     * @see #GrowableBuffer(CustomArena, MemoryLayout)
      */
-    public GrowableBuffer(CustomScope scope) {
-        this.scope = scope;
+    public GrowableBuffer(CustomArena arena) {
+        this.arena = arena;
     }
 
     /**
      * Creates a buffer builder instance and allocate the buffer with the given capacity.
      *
+     * @param arena the custom arena.
      * @param initialCapacity the initial capacity.
      * @see #GrowableBuffer()
-     * @see #GrowableBuffer(CustomScope)
-     * @see #GrowableBuffer(CustomScope, MemoryLayout)
+     * @see #GrowableBuffer(CustomArena)
+     * @see #GrowableBuffer(CustomArena, MemoryLayout)
      */
-    public GrowableBuffer(CustomScope scope, long initialCapacity) {
-        this(scope);
+    public GrowableBuffer(CustomArena arena, long initialCapacity) {
+        this(arena);
         this.capacity = initialCapacity;
         this.grew = true;
-        this.address = scope.allocate(initialCapacity);
+        this.address = arena.allocate(initialCapacity);
     }
 
     /**
      * Creates a buffer builder instance and allocate the buffer with the given layout.
      *
+     * @param arena the custom arena.
      * @param layout the memory layout.
      * @see #GrowableBuffer()
-     * @see #GrowableBuffer(CustomScope)
-     * @see #GrowableBuffer(CustomScope, long)
+     * @see #GrowableBuffer(CustomArena)
+     * @see #GrowableBuffer(CustomArena, long)
      */
-    public GrowableBuffer(CustomScope scope, MemoryLayout layout) {
-        this(scope, layout.byteSize());
+    public GrowableBuffer(CustomArena arena, MemoryLayout layout) {
+        this(arena, layout.byteSize());
     }
 
     /**
@@ -166,7 +169,7 @@ public class GrowableBuffer implements Addressable {
     public GrowableBuffer ensureCapacity(long minCapacity, long newCapacity) {
         if (minCapacity > capacity) {
             long c = Math.max(minCapacity, newCapacity);
-            address = scope.reallocate(address, c);
+            address = arena.reallocate(address, c);
             capacity = c;
             grew = true;
         }

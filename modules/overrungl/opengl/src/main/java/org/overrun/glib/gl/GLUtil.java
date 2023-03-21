@@ -92,7 +92,7 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            GL.debugMessageCallback(arena.scope(), proc, MemorySegment.NULL);
+            GL.debugMessageCallback(arena, proc, MemorySegment.NULL);
             // no need GL_KHR_debug
             if ((caps.Ver43 || caps.Ver30) &&
                 (GL.getInteger(GL.CONTEXT_FLAGS) & GL.CONTEXT_FLAG_DEBUG_BIT) == 0) {
@@ -121,7 +121,7 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            glDebugMessageCallbackARB(arena.scope(), proc, MemorySegment.NULL);
+            glDebugMessageCallbackARB(arena, proc, MemorySegment.NULL);
             return arena;
         }
 
@@ -143,7 +143,7 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             };
-            GLAMDDebugOutput.glDebugMessageCallbackAMD(arena.scope(), proc, MemorySegment.NULL);
+            GLAMDDebugOutput.glDebugMessageCallbackAMD(arena, proc, MemorySegment.NULL);
             return arena;
         }
 

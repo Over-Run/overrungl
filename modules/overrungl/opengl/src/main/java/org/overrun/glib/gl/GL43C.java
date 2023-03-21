@@ -20,9 +20,9 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.FunctionDescriptors.*;
@@ -416,8 +416,8 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void debugMessageCallback(SegmentScope scope, GLDebugProc callback, MemorySegment userParam) {
-        debugMessageCallback(callback.address(scope), userParam);
+    public static void debugMessageCallback(Arena arena, GLDebugProc callback, MemorySegment userParam) {
+        debugMessageCallback(callback.address(arena), userParam);
     }
 
     public static void debugMessageControl(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {

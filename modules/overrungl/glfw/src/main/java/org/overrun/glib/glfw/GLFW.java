@@ -23,9 +23,9 @@ import org.overrun.glib.util.value.Value2;
 import org.overrun.glib.util.value.ValueInt3;
 import org.overrun.glib.util.value.ValueInt4;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SegmentScope;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
@@ -1197,7 +1197,7 @@ public final class GLFW {
      * @see #nsetErrorCallback(MemorySegment) nsetErrorCallback
      */
     public static MemorySegment setErrorCallback(@Nullable IGLFWErrorFun callback) {
-        return nsetErrorCallback(callback != null ? callback.address(SegmentScope.global()) : MemorySegment.NULL);
+        return nsetErrorCallback(callback != null ? callback.address(RuntimeHelper.globalArena()) : MemorySegment.NULL);
     }
 
     /**
@@ -1709,7 +1709,7 @@ public final class GLFW {
      * @see #nsetMonitorCallback(MemorySegment) nsetMonitorCallback
      */
     public static MemorySegment setMonitorCallback(@Nullable IGLFWMonitorFun callback) {
-        return nsetMonitorCallback(callback != null ? callback.address(SegmentScope.global()) : MemorySegment.NULL);
+        return nsetMonitorCallback(callback != null ? callback.address(RuntimeHelper.globalArena()) : MemorySegment.NULL);
     }
 
     /**
@@ -1746,13 +1746,13 @@ public final class GLFW {
     /**
      * Returns the available video modes for the specified monitor.
      *
-     * @param scope   The segment scope to hold the result.
+     * @param arena   The arena that holds the result.
      * @param monitor The monitor to query.
      * @return An array of video modes, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer getVideoModes(SegmentScope scope, MemorySegment monitor) {
+    public static @Nullable GLFWVidMode.Buffer getVideoModes(Arena arena, MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1761,7 +1761,7 @@ public final class GLFW {
             if (pModes.address() == RuntimeHelper.NULL) {
                 return null;
             }
-            return new GLFWVidMode.Buffer(pModes, scope, pCount.get(JAVA_INT, 0));
+            return new GLFWVidMode.Buffer(pModes, arena, pCount.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1796,19 +1796,19 @@ public final class GLFW {
     /**
      * Returns the current mode of the specified monitor.
      *
-     * @param scope   The segment scope to hold the result.
+     * @param arena   The arena that holds the result.
      * @param monitor The monitor to query.
      * @return The current mode of the monitor, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoMode(MemorySegment) ngetVideoMode
      */
     @Nullable
-    public static GLFWVidMode.Value getVideoMode(SegmentScope scope, MemorySegment monitor) {
+    public static GLFWVidMode.Value getVideoMode(Arena arena, MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
         if (pMode.address() == RuntimeHelper.NULL) {
             return null;
         }
-        return new GLFWVidMode(pMode, scope).constCast();
+        return new GLFWVidMode(pMode, arena).constCast();
     }
 
     /**
@@ -1872,16 +1872,16 @@ public final class GLFW {
     /**
      * Returns the current gamma ramp for the specified monitor.
      *
-     * @param scope   The segment scope to hold the result.
+     * @param arena   The arena that holds the result.
      * @param monitor The monitor to query.
      * @return The current gamma ramp, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetGammaRamp(MemorySegment) ngetGammaRamp
      */
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(SegmentScope scope, MemorySegment monitor) {
+    public static GLFWGammaRamp getGammaRamp(Arena arena, MemorySegment monitor) {
         var pRamp = ngetGammaRamp(monitor);
-        return pRamp.address() != RuntimeHelper.NULL ? new GLFWGammaRamp(pRamp, scope) : null;
+        return pRamp.address() != RuntimeHelper.NULL ? new GLFWGammaRamp(pRamp, arena) : null;
     }
 
     /**
@@ -3435,7 +3435,7 @@ public final class GLFW {
      * @see #nsetWindowPosCallback(MemorySegment, MemorySegment) nsetWindowPosCallback
      */
     public static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable IGLFWWindowPosFun callback) {
-        return nsetWindowPosCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3475,7 +3475,7 @@ public final class GLFW {
      * @see #nsetWindowSizeCallback(MemorySegment, MemorySegment) nsetWindowSizeCallback
      */
     public static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable IGLFWWindowSizeFun callback) {
-        return nsetWindowSizeCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3522,7 +3522,7 @@ public final class GLFW {
      * @see #nsetWindowCloseCallback(MemorySegment, MemorySegment) nsetWindowCloseCallback
      */
     public static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable IGLFWWindowCloseFun callback) {
-        return nsetWindowCloseCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowCloseCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3566,7 +3566,7 @@ public final class GLFW {
      * @see #nsetWindowRefreshCallback(MemorySegment, MemorySegment) nsetWindowRefreshCallback
      */
     public static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable IGLFWWindowRefreshFun callback) {
-        return nsetWindowRefreshCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowRefreshCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3611,7 +3611,7 @@ public final class GLFW {
      * @see #nsetWindowFocusCallback(MemorySegment, MemorySegment) nsetWindowFocusCallback
      */
     public static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable IGLFWWindowFocusFun callback) {
-        return nsetWindowFocusCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowFocusCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3652,7 +3652,7 @@ public final class GLFW {
      * @see #nsetWindowIconifyCallback(MemorySegment, MemorySegment) nsetWindowIconifyCallback
      */
     public static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable IGLFWWindowIconifyFun callback) {
-        return nsetWindowIconifyCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowIconifyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3691,7 +3691,7 @@ public final class GLFW {
      * @see #nsetWindowMaximizeCallback(MemorySegment, MemorySegment) nsetWindowMaximizeCallback
      */
     public static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable IGLFWWindowMaximizeFun callback) {
-        return nsetWindowMaximizeCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowMaximizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3730,7 +3730,7 @@ public final class GLFW {
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) nsetFramebufferSizeCallback
      */
     public static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable IGLFWFramebufferSizeFun callback) {
-        return nsetFramebufferSizeCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetFramebufferSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3770,7 +3770,7 @@ public final class GLFW {
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) nsetWindowContentScaleCallback
      */
     public static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable IGLFWWindowContentScaleFun callback) {
-        return nsetWindowContentScaleCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetWindowContentScaleCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4516,7 +4516,7 @@ public final class GLFW {
      * @see #nsetKeyCallback(MemorySegment, MemorySegment) nsetKeyCallback
      */
     public static MemorySegment setKeyCallback(MemorySegment window, @Nullable IGLFWKeyFun callback) {
-        return nsetKeyCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetKeyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4567,7 +4567,7 @@ public final class GLFW {
      * @see #nsetCharCallback(MemorySegment, MemorySegment) nsetCharCallback
      */
     public static MemorySegment setCharCallback(MemorySegment window, @Nullable IGLFWCharFun callback) {
-        return nsetCharCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetCharCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4612,7 +4612,7 @@ public final class GLFW {
      * @see #nsetMouseButtonCallback(MemorySegment, MemorySegment) nsetMouseButtonCallback
      */
     public static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable IGLFWMouseButtonFun callback) {
-        return nsetMouseButtonCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetMouseButtonCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4653,7 +4653,7 @@ public final class GLFW {
      * @see #nsetCursorPosCallback(MemorySegment, MemorySegment) nsetCursorPosCallback
      */
     public static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable IGLFWCursorPosFun callback) {
-        return nsetCursorPosCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetCursorPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4693,7 +4693,7 @@ public final class GLFW {
      * @see #nsetCursorEnterCallback(MemorySegment, MemorySegment) nsetCursorEnterCallback
      */
     public static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable IGLFWCursorEnterFun callback) {
-        return nsetCursorEnterCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetCursorEnterCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4736,7 +4736,7 @@ public final class GLFW {
      * @see #nsetScrollCallback(MemorySegment, MemorySegment) nsetScrollCallback
      */
     public static MemorySegment setScrollCallback(MemorySegment window, @Nullable IGLFWScrollFun callback) {
-        return nsetScrollCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetScrollCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4781,7 +4781,7 @@ public final class GLFW {
      * @see #nsetDropCallback(MemorySegment, MemorySegment) nsetDropCallback
      */
     public static MemorySegment setDropCallback(MemorySegment window, @Nullable IGLFWDropFun callback) {
-        return nsetDropCallback(window, callback != null ? callback.address(Callbacks.create(window).scope()) : MemorySegment.NULL);
+        return nsetDropCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -5217,7 +5217,7 @@ public final class GLFW {
      * @see #nsetJoystickCallback(MemorySegment) nsetJoystickCallback
      */
     public static MemorySegment setJoystickCallback(@Nullable IGLFWJoystickFun callback) {
-        return nsetJoystickCallback(callback != null ? callback.address(SegmentScope.global()) : MemorySegment.NULL);
+        return nsetJoystickCallback(callback != null ? callback.address(RuntimeHelper.globalArena()) : MemorySegment.NULL);
     }
 
     /**

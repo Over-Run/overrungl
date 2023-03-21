@@ -12,40 +12,32 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 
 /**
  * The upcall stub which can be passed to other foreign functions as a function pointer,
- * with the given segment scope.
+ * with the given arena.
  *
  * @author squid233
  * @since 0.1.0
  */
 public interface Callback {
     /**
-     * Gets the address with the given segment scope.
+     * Gets the address with the given arena.
      *
-     * @param scope the segment scope
-     * @return the memory address
+     * @param arena the arena.
+     * @return the memory address.
      */
-    default MemorySegment address(SegmentScope scope) {
-        return segment(scope, descriptor());
+    default MemorySegment address(Arena arena) {
+        return segment(arena, descriptor());
     }
 
     /**
@@ -67,16 +59,16 @@ public interface Callback {
     MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException;
 
     /**
-     * Gets the memory segment of the upcall stub with the given segment scope.
+     * Gets the memory segment of the upcall stub with the given arena.
      *
-     * @param scope    the segment scope
-     * @param function the function descriptor
-     * @return the memory segment
+     * @param arena    the arena.
+     * @param function the function descriptor.
+     * @return the memory segment.
      */
-    default MemorySegment segment(SegmentScope scope,
+    default MemorySegment segment(Arena arena,
                                   FunctionDescriptor function) {
         try {
-            return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, scope);
+            return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, arena.scope());
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }

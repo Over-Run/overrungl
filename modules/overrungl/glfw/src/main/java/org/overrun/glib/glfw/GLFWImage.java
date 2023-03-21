@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
@@ -63,31 +55,31 @@ public class GLFWImage extends Struct {
      * Create a {@code GLFWimage} instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public GLFWImage(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public GLFWImage(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given segment scope.
+     * Creates a {@code GLFWimage} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static GLFWImage create(SegmentScope scope) {
-        return new GLFWImage(MemorySegment.allocateNative(LAYOUT, scope), scope);
+    public static GLFWImage create(Arena arena) {
+        return new GLFWImage(arena.allocate(LAYOUT), arena);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given segment scope and count.
+     * Creates a {@code GLFWimage} instance with the given arena and count.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(SegmentScope scope, long count) {
-        return new Buffer(MemorySegment.allocateNative(MemoryLayout.sequenceLayout(count, LAYOUT), scope), scope, count);
+    public static Buffer create(Arena arena, long count) {
+        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
     }
 
     /**
@@ -170,17 +162,17 @@ public class GLFWImage extends Struct {
          * Create a {@code GLFWimage.Buffer} instance.
          *
          * @param address      the address.
-         * @param scope        the segment scope of this address.
+         * @param arena        the arena of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
-            super(address, scope);
+        public Buffer(MemorySegment address, Arena arena, long elementCount) {
+            super(address, arena);
             this.elementCount = elementCount;
             this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pPixels = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
-            managedSegment = segment(layout, scope);
+            managedSegment = segment(layout, arena);
         }
 
         /**

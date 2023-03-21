@@ -72,10 +72,10 @@ public final class GLFWWindowIconTest {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256),
+                IOUtil.ioResourceToSegment(arena, "image.png", 256),
                 px, py, pc, STBImage.RGB_ALPHA
             );
-            GLFW.setWindowIcon(window, GLFWImage.create(arena.scope(), 1)
+            GLFW.setWindowIcon(window, GLFWImage.create(arena, 1)
                 .width(px.get(JAVA_INT, 0))
                 .height(py.get(JAVA_INT, 0))
                 .pixels(data));
@@ -91,7 +91,7 @@ public final class GLFWWindowIconTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(

@@ -12,24 +12,16 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
 
 /**
- * A {@link MemorySegment} wrapper with a segment scope.
+ * A {@link MemorySegment} wrapper with an arena.
  *
  * @author squid233
  * @since 0.1.0
@@ -40,25 +32,25 @@ public class Pointer implements Addressable {
      */
     protected final MemorySegment address;
     /**
-     * The pointer segment scope.
+     * The arena of this pointer.
      */
-    protected final SegmentScope scope;
+    protected final Arena arena;
 
     /**
      * Create the pointer instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public Pointer(MemorySegment address, SegmentScope scope) {
+    public Pointer(MemorySegment address, Arena arena) {
         this.address = address;
-        this.scope = scope;
+        this.arena = arena;
     }
 
     /**
      * Gets the address.
      *
-     * @return the memory address
+     * @return the memory address.
      */
     @Override
     public MemorySegment address() {
@@ -66,26 +58,26 @@ public class Pointer implements Addressable {
     }
 
     /**
-     * Gets the segment scope.
+     * Gets the arena of this pointer.
      *
-     * @return the segment scope
+     * @return the arena of this pointer.
      */
-    public SegmentScope scope() {
-        return scope;
+    public Arena arena() {
+        return arena;
     }
 
     /**
-     * Gets the native segment of this pointer, or creates a new one with the given scope
+     * Gets the native segment of this pointer, or creates a new one with the given arena
      * if the segment of this pointer is zero-length.
      *
      * @param bytesSize the bytes size of the segment.
-     * @param scope     the segment associated with the returned native segment.
+     * @param arena     the arena associated with the returned native segment.
      * @return the memory segment.
-     * @see #segment(MemoryLayout, SegmentScope)
+     * @see #segment(MemoryLayout, Arena)
      */
-    public MemorySegment segment(long bytesSize, SegmentScope scope) {
+    public MemorySegment segment(long bytesSize, Arena arena) {
         if (address().byteSize() == 0) {
-            return RuntimeHelper.sizedSegment(address(), bytesSize, scope);
+            return RuntimeHelper.sizedSegment(address(), bytesSize);
         }
         return address();
     }
@@ -94,11 +86,11 @@ public class Pointer implements Addressable {
      * Gets as memory segment.
      *
      * @param layout the memory layout
-     * @param scope  the segment scope to allocate
+     * @param arena  the arena associated with the returned native segment.
      * @return the memory segment
-     * @see #segment(long, SegmentScope)
+     * @see #segment(long, Arena)
      */
-    public MemorySegment segment(MemoryLayout layout, SegmentScope scope) {
-        return segment(layout.byteSize(), scope);
+    public MemorySegment segment(MemoryLayout layout, Arena arena) {
+        return segment(layout.byteSize(), arena);
     }
 }

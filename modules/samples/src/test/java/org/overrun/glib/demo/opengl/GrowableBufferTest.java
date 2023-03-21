@@ -22,7 +22,7 @@ import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
-import org.overrun.glib.util.CustomScope;
+import org.overrun.glib.util.CustomArena;
 import org.overrun.glib.util.GrowableBuffer;
 
 import java.lang.foreign.Arena;
@@ -77,7 +77,7 @@ public final class GrowableBufferTest {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -143,8 +143,8 @@ public final class GrowableBufferTest {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
         final int stride = (int) (JAVA_FLOAT.byteSize() * 3 + JAVA_BYTE.byteSize() * 4);
-        try (CustomScope scope = CustomScope.delegated(Arena.openConfined())) {
-            var buffer = new GrowableBuffer(scope, 2);
+        try (CustomArena customArena = CustomArena.delegated(Arena.openConfined())) {
+            var buffer = new GrowableBuffer(customArena, 2);
             buffer.clear()
                 .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)

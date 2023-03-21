@@ -82,7 +82,7 @@ public final class GL30Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena.scope(), GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -113,7 +113,7 @@ public final class GL30Test {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena.scope(), "image.png", 256),
+                IOUtil.ioResourceToSegment(arena, "image.png", 256),
                 px, py, pc, STBImage.RGB
             );
             GL.texImage2D(GL.TEXTURE_2D,

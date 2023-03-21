@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
@@ -73,31 +65,31 @@ public class GLFWVidMode extends Struct {
      * Create a {@code GLFWvidmode} instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public GLFWVidMode(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public GLFWVidMode(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given segment scope.
+     * Creates a {@code GLFWvidmode} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static GLFWVidMode create(SegmentScope scope) {
-        return new GLFWVidMode(MemorySegment.allocateNative(LAYOUT, scope), scope);
+    public static GLFWVidMode create(Arena arena) {
+        return new GLFWVidMode(arena.allocate(LAYOUT), arena);
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given segment scope and count.
+     * Creates a {@code GLFWvidmode} instance with the given arena and count.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(SegmentScope scope, long count) {
-        return new Buffer(MemorySegment.allocateNative(MemoryLayout.sequenceLayout(count, LAYOUT), scope), scope, count);
+    public static Buffer create(Arena arena, long count) {
+        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
     }
 
     /**
@@ -106,7 +98,7 @@ public class GLFWVidMode extends Struct {
      * @return the immutable state
      */
     public Value constCast() {
-        return new Value(address(), scope(), this);
+        return new Value(address(), arena(), this);
     }
 
     /**
@@ -182,8 +174,8 @@ public class GLFWVidMode extends Struct {
         private final int blueBits;
         private final int refreshRate;
 
-        private Value(MemorySegment address, SegmentScope scope, GLFWVidMode mode) {
-            super(address, scope);
+        private Value(MemorySegment address, Arena arena, GLFWVidMode mode) {
+            super(address, arena);
             this.width = mode.width();
             this.height = mode.height();
             this.redBits = mode.redBits();
@@ -248,11 +240,11 @@ public class GLFWVidMode extends Struct {
          * Create a {@code GLFWvidmode.Buffer} instance.
          *
          * @param address      the address.
-         * @param scope        the segment scope of this address.
+         * @param arena        the arena of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
-            super(address, scope);
+        public Buffer(MemorySegment address, Arena arena, long elementCount) {
+            super(address, arena);
             this.elementCount = elementCount;
             this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
@@ -261,7 +253,7 @@ public class GLFWVidMode extends Struct {
             pGreenBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
             pBlueBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
             pRefreshRate = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
-            managedSegment = segment(layout, scope);
+            managedSegment = segment(layout, arena);
         }
 
         /**

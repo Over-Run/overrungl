@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
@@ -66,20 +58,20 @@ public class GLFWGamepadState extends Struct {
      * Create a {@code GLFWgamepadstate} instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public GLFWGamepadState(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public GLFWGamepadState(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a {@code GLFWgamepadstate} instance with the given segment scope.
+     * Creates a {@code GLFWgamepadstate} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static GLFWGamepadState create(SegmentScope scope) {
-        return new GLFWGamepadState(MemorySegment.allocateNative(LAYOUT, scope), scope);
+    public static GLFWGamepadState create(Arena arena) {
+        return new GLFWGamepadState(arena.allocate(LAYOUT), arena);
     }
 
     /**

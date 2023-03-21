@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
@@ -27,9 +19,9 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.Struct;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
 import java.lang.foreign.StructLayout;
 import java.lang.invoke.VarHandle;
 
@@ -75,20 +67,20 @@ public class GLFWGammaRamp extends Struct {
      * Create a {@code GLFWgammaramp const} instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public GLFWGammaRamp(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public GLFWGammaRamp(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a {@code GLFWgammaramp} instance with the given segment scope.
+     * Creates a {@code GLFWgammaramp} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static GLFWGammaRamp create(SegmentScope scope) {
-        return new GLFWGammaRamp(MemorySegment.allocateNative(LAYOUT, scope), scope);
+    public static GLFWGammaRamp create(Arena arena) {
+        return new GLFWGammaRamp(arena.allocate(LAYOUT), arena);
     }
 
     /**
@@ -98,9 +90,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(reds.length, JAVA_SHORT), scope);
-        MemorySegment.copy(reds, 0, seg, JAVA_SHORT, 0, reds.length);
-        ppRed.set(managedSegment, seg);
+        ppRed.set(managedSegment, arena.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
@@ -111,9 +101,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(greens.length, JAVA_SHORT), scope);
-        MemorySegment.copy(greens, 0, seg, JAVA_SHORT, 0, greens.length);
-        ppGreen.set(managedSegment, seg);
+        ppGreen.set(managedSegment, arena.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
@@ -124,9 +112,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        var seg = MemorySegment.allocateNative(MemoryLayout.sequenceLayout(blues.length, JAVA_SHORT), scope);
-        MemorySegment.copy(blues, 0, seg, JAVA_SHORT, 0, blues.length);
-        ppBlue.set(managedSegment, seg);
+        ppBlue.set(managedSegment, arena.allocateArray(JAVA_SHORT, blues.length));
         return this;
     }
 

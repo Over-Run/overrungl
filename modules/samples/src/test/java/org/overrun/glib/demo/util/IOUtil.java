@@ -17,6 +17,7 @@
 package org.overrun.glib.demo.util;
 
 import java.io.IOException;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentScope;
 import java.lang.foreign.ValueLayout;
@@ -35,60 +36,61 @@ public final class IOUtil {
     private IOUtil() {
     }
 
-    private static MemorySegment resizeSegment(SegmentScope scope, MemorySegment segment, long newCapacity) {
-        return MemorySegment.allocateNative(newCapacity, scope).copyFrom(segment);
+    private static MemorySegment resizeSegment(Arena arena, MemorySegment segment, long newCapacity) {
+        return arena.allocate(newCapacity).copyFrom(segment);
     }
 
     /**
      * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
      *
-     * @param scope       the segment scope. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
+     * @param arena       the arena. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
      * @param resource    the resource to read.
      * @param segmentSize the initial segment size.
      * @param bufferSize  the buffer size for reading file.
      * @return the resource data.
      * @throws IOException if an IO error occurs.
      */
-    public static MemorySegment ioResourceToSegment(SegmentScope scope, String resource, long segmentSize, int bufferSize) throws IOException {
+    public static MemorySegment ioResourceToSegment(Arena arena, String resource, long segmentSize, int bufferSize) throws IOException {
         final Path path = Path.of(resource);
 
         // Check whether on local
         if (Files.isReadable(path)) {
             try (var fc = FileChannel.open(path)) {
-                return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), scope);
+                return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena.scope());
             }
         }
 
         // On classpath
-        try (var is = IOUtil.class.getClassLoader().getResourceAsStream(resource)) {
-            Objects.requireNonNull(is, "Failed to load resource '" + resource + "'!");
-            MemorySegment segment = MemorySegment.allocateNative(segmentSize, scope);
+        try (var is = Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
+            "Failed to load resource '" + resource + "'!")) {
+            MemorySegment segment = arena.allocate(segmentSize);
 
-            // Creates a byte array to avoid creating it per loop
+            // Creates a byte array to avoid creating it each loop
             final byte[] bytes = new byte[bufferSize];
             long pos = 0;
             int count;
             while ((count = is.read(bytes)) > 0) {
-                if (pos >= segment.byteSize()) {
-                    segment = resizeSegment(scope, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
+                if (pos + count >= segment.byteSize()) {
+                    segment = resizeSegment(arena, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
                 }
                 MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, count);
                 pos += count;
             }
-            return segment;
+
+            return segment.asSlice(0, pos);
         }
     }
 
     /**
      * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
      *
-     * @param scope       the segment scope. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
+     * @param arena       the arena. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
      * @param resource    the resource to read.
      * @param segmentSize the initial segment size.
      * @return the resource data.
      * @throws IOException if an IO error occurs.
      */
-    public static MemorySegment ioResourceToSegment(SegmentScope scope, String resource, long segmentSize) throws IOException {
-        return ioResourceToSegment(scope, resource, segmentSize, 8192);
+    public static MemorySegment ioResourceToSegment(Arena arena, String resource, long segmentSize) throws IOException {
+        return ioResourceToSegment(arena, resource, segmentSize, 8192);
     }
 }

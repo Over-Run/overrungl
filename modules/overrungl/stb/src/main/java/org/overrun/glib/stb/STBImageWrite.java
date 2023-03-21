@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,23 +12,15 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.stb;
 
 import org.overrun.glib.RuntimeHelper;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SegmentScope;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -229,24 +221,24 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean pngToFunc(SegmentScope scope, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {
-        return npngToFunc(func.address(scope), context, w, h, comp, data, strideInBytes);
+    public static boolean pngToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {
+        return npngToFunc(func.address(arena), context, w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmpToFunc(SegmentScope scope, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        return nbmpToFunc(func.address(scope), context, w, h, comp, data);
+    public static boolean bmpToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
+        return nbmpToFunc(func.address(arena), context, w, h, comp, data);
     }
 
-    public static boolean tgaToFunc(SegmentScope scope, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        return ntgaToFunc(func.address(scope), context, w, h, comp, data);
+    public static boolean tgaToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
+        return ntgaToFunc(func.address(arena), context, w, h, comp, data);
     }
 
-    public static boolean hdrToFunc(SegmentAllocator allocator, SegmentScope scope, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(scope), context, w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
+    public static boolean hdrToFunc(SegmentAllocator allocator, Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
+        return nhdrToFunc(func.address(arena), context, w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpgToFunc(SegmentScope scope, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
-        return njpgToFunc(func.address(scope), context, x, y, comp, data, quality);
+    public static boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
+        return njpgToFunc(func.address(arena), context, x, y, comp, data, quality);
     }
 
     public static void flipVerticallyOnWrite(boolean flip) {

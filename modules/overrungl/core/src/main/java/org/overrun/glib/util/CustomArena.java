@@ -20,19 +20,18 @@ import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.SegmentScope;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * A custom memory allocator scope.
+ * A custom arena.
  *
  * @author squid233
  * @since 0.1.0
  */
-public interface CustomScope extends SegmentAllocator, AutoCloseable {
+public interface CustomArena extends SegmentAllocator, AutoCloseable {
     @Override
     MemorySegment allocate(long byteSize, long byteAlignment);
 
@@ -49,12 +48,12 @@ public interface CustomScope extends SegmentAllocator, AutoCloseable {
     void close();
 
     /**
-     * Creates a custom scope with {@link MemoryUtil}.
+     * Creates a custom arena with {@link MemoryUtil}.
      *
-     * @return the custom scope.
+     * @return the custom arena.
      */
-    static CustomScope standard() {
-        return new CustomScope() {
+    static CustomArena standard() {
+        return new CustomArena() {
             private final List<MemorySegment> segments = Collections.synchronizedList(new ArrayList<>());
 
             @Override
@@ -84,16 +83,16 @@ public interface CustomScope extends SegmentAllocator, AutoCloseable {
     }
 
     /**
-     * Creates a custom scope delegated by the given allocator.
+     * Creates a custom arena delegated by the given allocator.
      * <p>
      * If <i>{@code allocator}</i> is {@link AutoCloseable}, the segments are auto-released after {@link #close()}.
      *
      * @param allocator the memory segment allocator e.g. {@link java.lang.foreign.Arena Arena}.
-     * @return the custom scope.
+     * @return the custom arena.
      */
-    static CustomScope delegated(SegmentAllocator allocator) {
+    static CustomArena delegated(SegmentAllocator allocator) {
         Objects.requireNonNull(allocator);
-        return new CustomScope() {
+        return new CustomArena() {
             @Override
             public MemorySegment allocate(long byteSize, long byteAlignment) {
                 return allocator.allocate(byteSize, byteAlignment);
@@ -114,20 +113,10 @@ public interface CustomScope extends SegmentAllocator, AutoCloseable {
                     try {
                         closeable.close();
                     } catch (Exception e) {
-                        throw new AssertionError("should not reach here", e);
+                        throw new IllegalStateException("Failed to close the custom arena", e);
                     }
                 }
             }
         };
-    }
-
-    /**
-     * Creates a custom scope delegated by the given scope.
-     *
-     * @param scope the memory segment scope.
-     * @return the custom scope.
-     */
-    static CustomScope scoped(SegmentScope scope) {
-        return delegated(SegmentAllocator.nativeAllocator(scope));
     }
 }

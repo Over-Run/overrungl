@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -66,31 +58,31 @@ public class DrawArraysIndirectCommand extends Struct {
      * Create the pointer instance.
      *
      * @param address the address.
-     * @param scope   the segment scope of this address.
+     * @param arena   the arena of this address.
      */
-    public DrawArraysIndirectCommand(MemorySegment address, SegmentScope scope) {
-        super(address, scope);
+    public DrawArraysIndirectCommand(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a command instance with the given segment scope.
+     * Creates a command instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static DrawArraysIndirectCommand create(SegmentScope scope) {
-        return new DrawArraysIndirectCommand(MemorySegment.allocateNative(LAYOUT, scope), scope);
+    public static DrawArraysIndirectCommand create(Arena arena) {
+        return new DrawArraysIndirectCommand(arena.allocate(LAYOUT), arena);
     }
 
     /**
-     * Creates a command instance with the given segment scope and count.
+     * Creates a command instance with the given arena and count.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(SegmentScope scope, long count) {
-        return new Buffer(MemorySegment.allocateNative(MemoryLayout.sequenceLayout(count, LAYOUT), scope), scope, count);
+    public static Buffer create(Arena arena, long count) {
+        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
     }
 
     /**
@@ -193,18 +185,18 @@ public class DrawArraysIndirectCommand extends Struct {
          * Create the pointer instance.
          *
          * @param address      the address.
-         * @param scope        the segment scope of this address.
+         * @param arena        the arena of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentScope scope, long elementCount) {
-            super(address, scope);
+        public Buffer(MemorySegment address, Arena arena, long elementCount) {
+            super(address, arena);
             this.elementCount = elementCount;
             this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
             pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
             pFirst = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));
             pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
-            managedSegment = segment(layout, scope);
+            managedSegment = segment(layout, arena);
         }
 
         /**

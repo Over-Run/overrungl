@@ -54,7 +54,10 @@ public final class RuntimeHelper {
     public static final long NULL = 0x0L;
     /**
      * An unbounded address layout.
+     *
+     * @deprecated this layout will be removed in JDK 21.
      */
+    @Deprecated(since = "0.1.0")
     public static final ValueLayout.OfAddress ADDRESS_UNBOUNDED = ADDRESS.asUnbounded();
 
     /**
@@ -70,7 +73,7 @@ public final class RuntimeHelper {
      * @param byteSize the size, in bytes.
      * @throws IllegalArgumentException if <i>{@code byteSize}</i> {@code < 0}.
      */
-    public static void checkByteSize(long byteSize) {
+    public static void checkByteSize(long byteSize) throws IllegalArgumentException {
         if (byteSize < 0) {
             throw new IllegalArgumentException("byteSize must be >= 0.");
         }
@@ -92,39 +95,68 @@ public final class RuntimeHelper {
         }
     }
 
+    @Deprecated(since = "0.1.0")
+    public static Arena globalArena() {
+        return new Arena() {
+            @Override
+            public SegmentScope scope() {
+                return SegmentScope.global();
+            }
+
+            @Override
+            public void close() {
+            }
+
+            @Override
+            public boolean isCloseableBy(Thread thread) {
+                return false;
+            }
+        };
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Arena autoArena() {
+        return new Arena() {
+            private final SegmentScope scope = SegmentScope.auto();
+
+            @Override
+            public SegmentScope scope() {
+                return scope;
+            }
+
+            @Override
+            public void close() {
+            }
+
+            @Override
+            public boolean isCloseableBy(Thread thread) {
+                return false;
+            }
+        };
+    }
+
     /**
-     * Creates an unbounded native segment with the given segment and scope.
+     * Creates an unbounded native segment with the given segment.
      *
      * @param segment the segment address.
-     * @param scope   the scope associated with the returned native segment.
      * @return an unbounded native segment with the given address.
      */
-    public static MemorySegment unbound(MemorySegment segment, SegmentScope scope) {
-        return sizedSegment(segment, Long.MAX_VALUE, scope);
+    public static MemorySegment unbound(MemorySegment segment) {
+        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE, segment.scope());
     }
 
     /**
      * Creates a sized native segment with the given segment and size.
-     * The returned segment is associated with the {@linkplain SegmentScope#global() global scope}.
+     * The returned segment is associated with the scope of the given segment.
      *
      * @param segment  the segment address.
      * @param byteSize the desired size.
      * @return a native segment with the given address and size.
+     * @deprecated this method will be replaced with {@code MemorySegment::reinterpret} in JDK 21.
      */
+    @Deprecated(since = "0.1.0")
     public static MemorySegment sizedSegment(MemorySegment segment, long byteSize) {
-        return MemorySegment.ofAddress(segment.address(), byteSize);
-    }
-
-    /**
-     * Creates a sized native segment with the given segment, size and scope.
-     *
-     * @param segment  the segment address.
-     * @param byteSize the desired size.
-     * @param scope    the scope associated with the returned native segment.
-     * @return a native segment with the given address, size and scope.
-     */
-    public static MemorySegment sizedSegment(MemorySegment segment, long byteSize, SegmentScope scope) {
-        return MemorySegment.ofAddress(segment.address(), byteSize, scope);
+        return MemorySegment.ofAddress(segment.address(), byteSize, segment.scope());
     }
 
     /**
@@ -242,7 +274,7 @@ public final class RuntimeHelper {
             }
             uri = file.toURI();
         }
-        // Load library by the path with the global segment scope
+        // Load library by the path with the global arena
         return SymbolLookup.libraryLookup(Path.of(uri), SegmentScope.global());
     }
 
