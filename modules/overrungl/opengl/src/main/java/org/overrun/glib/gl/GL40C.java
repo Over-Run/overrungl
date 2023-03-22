@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -27,8 +19,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -37,11 +28,100 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.0 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBDrawBuffersBlend GL_ARB_draw_buffers_blend}</li>
+ *     <li>GL_ARB_draw_indirect</li>
+ *     <li>GL_ARB_gpu_shader_fp64</li>
+ *     <li>GL_ARB_shader_subroutine</li>
+ *     <li>GL_ARB_tessellation_shader</li>
+ *     <li>GL_ARB_transform_feedback2</li>
+ *     <li>GL_ARB_transform_feedback3</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
 public sealed class GL40C extends GL33C permits GL41C {
+    public static final int SAMPLE_SHADING = 0x8C36;
+    public static final int MIN_SAMPLE_SHADING_VALUE = 0x8C37;
+    public static final int MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E;
+    public static final int MAX_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5F;
+    public static final int TEXTURE_CUBE_MAP_ARRAY = 0x9009;
+    public static final int TEXTURE_BINDING_CUBE_MAP_ARRAY = 0x900A;
+    public static final int PROXY_TEXTURE_CUBE_MAP_ARRAY = 0x900B;
+    public static final int SAMPLER_CUBE_MAP_ARRAY = 0x900C;
+    public static final int SAMPLER_CUBE_MAP_ARRAY_SHADOW = 0x900D;
+    public static final int INT_SAMPLER_CUBE_MAP_ARRAY = 0x900E;
+    public static final int UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F;
+    public static final int DRAW_INDIRECT_BUFFER = 0x8F3F;
+    public static final int DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
+    public static final int GEOMETRY_SHADER_INVOCATIONS = 0x887F;
+    public static final int MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A;
+    public static final int MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B;
+    public static final int MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C;
+    public static final int FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D;
+    public static final int MAX_VERTEX_STREAMS = 0x8E71;
+    public static final int DOUBLE_VEC2 = 0x8FFC;
+    public static final int DOUBLE_VEC3 = 0x8FFD;
+    public static final int DOUBLE_VEC4 = 0x8FFE;
+    public static final int DOUBLE_MAT2 = 0x8F46;
+    public static final int DOUBLE_MAT3 = 0x8F47;
+    public static final int DOUBLE_MAT4 = 0x8F48;
+    public static final int DOUBLE_MAT2x3 = 0x8F49;
+    public static final int DOUBLE_MAT2x4 = 0x8F4A;
+    public static final int DOUBLE_MAT3x2 = 0x8F4B;
+    public static final int DOUBLE_MAT3x4 = 0x8F4C;
+    public static final int DOUBLE_MAT4x2 = 0x8F4D;
+    public static final int DOUBLE_MAT4x3 = 0x8F4E;
+    public static final int ACTIVE_SUBROUTINES = 0x8DE5;
+    public static final int ACTIVE_SUBROUTINE_UNIFORMS = 0x8DE6;
+    public static final int ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS = 0x8E47;
+    public static final int ACTIVE_SUBROUTINE_MAX_LENGTH = 0x8E48;
+    public static final int ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH = 0x8E49;
+    public static final int MAX_SUBROUTINES = 0x8DE7;
+    public static final int MAX_SUBROUTINE_UNIFORM_LOCATIONS = 0x8DE8;
+    public static final int NUM_COMPATIBLE_SUBROUTINES = 0x8E4A;
+    public static final int COMPATIBLE_SUBROUTINES = 0x8E4B;
+    public static final int PATCHES = 0x000E;
+    public static final int PATCH_VERTICES = 0x8E72;
+    public static final int PATCH_DEFAULT_INNER_LEVEL = 0x8E73;
+    public static final int PATCH_DEFAULT_OUTER_LEVEL = 0x8E74;
+    public static final int TESS_CONTROL_OUTPUT_VERTICES = 0x8E75;
+    public static final int TESS_GEN_MODE = 0x8E76;
+    public static final int TESS_GEN_SPACING = 0x8E77;
+    public static final int TESS_GEN_VERTEX_ORDER = 0x8E78;
+    public static final int TESS_GEN_POINT_MODE = 0x8E79;
+    public static final int ISOLINES = 0x8E7A;
+    public static final int FRACTIONAL_ODD = 0x8E7B;
+    public static final int FRACTIONAL_EVEN = 0x8E7C;
+    public static final int MAX_PATCH_VERTICES = 0x8E7D;
+    public static final int MAX_TESS_GEN_LEVEL = 0x8E7E;
+    public static final int MAX_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E7F;
+    public static final int MAX_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E80;
+    public static final int MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS = 0x8E81;
+    public static final int MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS = 0x8E82;
+    public static final int MAX_TESS_CONTROL_OUTPUT_COMPONENTS = 0x8E83;
+    public static final int MAX_TESS_PATCH_COMPONENTS = 0x8E84;
+    public static final int MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS = 0x8E85;
+    public static final int MAX_TESS_EVALUATION_OUTPUT_COMPONENTS = 0x8E86;
+    public static final int MAX_TESS_CONTROL_UNIFORM_BLOCKS = 0x8E89;
+    public static final int MAX_TESS_EVALUATION_UNIFORM_BLOCKS = 0x8E8A;
+    public static final int MAX_TESS_CONTROL_INPUT_COMPONENTS = 0x886C;
+    public static final int MAX_TESS_EVALUATION_INPUT_COMPONENTS = 0x886D;
+    public static final int MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E1E;
+    public static final int MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E1F;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_TESS_CONTROL_SHADER = 0x84F0;
+    public static final int UNIFORM_BLOCK_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x84F1;
+    public static final int TESS_EVALUATION_SHADER = 0x8E87;
+    public static final int TESS_CONTROL_SHADER = 0x8E88;
+    public static final int TRANSFORM_FEEDBACK = 0x8E22;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_PAUSED = 0x8E23;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_ACTIVE = 0x8E24;
+    public static final int TRANSFORM_FEEDBACK_BINDING = 0x8E25;
+    public static final int MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBeginQueryIndexed, caps.glBindTransformFeedback, caps.glBlendEquationSeparatei, caps.glBlendEquationi, caps.glBlendFuncSeparatei, caps.glBlendFunci,
             caps.glDeleteTransformFeedbacks, caps.glDrawArraysIndirect, caps.glDrawElementsIndirect, caps.glDrawTransformFeedback, caps.glDrawTransformFeedbackStream, caps.glEndQueryIndexed,
@@ -156,7 +236,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void deleteTransformFeedbacks(int n, Addressable ids) {
+    public static void deleteTransformFeedbacks(int n, MemorySegment ids) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteTransformFeedbacks).invokeExact(n, ids);
@@ -173,15 +253,13 @@ public sealed class GL40C extends GL33C permits GL41C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.calloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, id);
-            deleteTransformFeedbacks(1, mem);
+            deleteTransformFeedbacks(1, stack.ints(id));
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
-    public static void drawArraysIndirect(int mode, Addressable indirect) {
+    public static void drawArraysIndirect(int mode, MemorySegment indirect) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawArraysIndirect).invokeExact(mode, indirect);
@@ -191,14 +269,14 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawArraysIndirect(int mode, DrawArraysIndirectCommand indirect) {
-        drawArraysIndirect(mode, indirect.rawAddress());
+        drawArraysIndirect(mode, indirect.address());
     }
 
     public static void drawArraysIndirect(SegmentAllocator allocator, int mode, int[] indirect) {
         drawArraysIndirect(mode, allocator.allocateArray(JAVA_INT, indirect));
     }
 
-    public static void drawElementsIndirect(int mode, int type, Addressable indirect) {
+    public static void drawElementsIndirect(int mode, int type, MemorySegment indirect) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElementsIndirect).invokeExact(mode, type, indirect);
@@ -208,7 +286,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawElementsIndirect(int mode, int type, DrawElementsIndirectCommand indirect) {
-        drawElementsIndirect(mode, type, indirect.rawAddress());
+        drawElementsIndirect(mode, type, indirect.address());
     }
 
     public static void drawElementsIndirect(SegmentAllocator allocator, int mode, int type, int[] indirect) {
@@ -242,7 +320,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void genTransformFeedbacks(int n, Addressable ids) {
+    public static void genTransformFeedbacks(int n, MemorySegment ids) {
         var caps = getCapabilities();
         try {
             check(caps.glGenTransformFeedbacks).invokeExact(n, ids);
@@ -269,7 +347,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void getActiveSubroutineName(int program, int shaderType, int index, int bufSize, Addressable length, Addressable name) {
+    public static void getActiveSubroutineName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glGetActiveSubroutineName).invokeExact(program, shaderType, index, bufSize, length, name);
@@ -280,11 +358,11 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static String getActiveSubroutineName(SegmentAllocator allocator, int program, int shaderType, int index, int bufSize) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        getActiveSubroutineName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
+        getActiveSubroutineName(program, shaderType, index, bufSize, MemorySegment.NULL, seg);
         return seg.getUtf8String(0);
     }
 
-    public static void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, Addressable length, Addressable name) {
+    public static void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glGetActiveSubroutineUniformName).invokeExact(program, shaderType, index, bufSize, length, name);
@@ -295,11 +373,11 @@ public sealed class GL40C extends GL33C permits GL41C {
 
     public static String getActiveSubroutineUniformName(SegmentAllocator allocator, int program, int shaderType, int index, int bufSize) {
         var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
-        getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemoryAddress.NULL, seg);
+        getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemorySegment.NULL, seg);
         return seg.getUtf8String(0);
     }
 
-    public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, Addressable values) {
+    public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glGetActiveSubroutineUniformiv).invokeExact(program, shaderType, index, pname, values);
@@ -326,7 +404,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void getProgramStageiv(int program, int shaderType, int pname, Addressable values) {
+    public static void getProgramStageiv(int program, int shaderType, int pname, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glGetProgramStageiv).invokeExact(program, shaderType, pname, values);
@@ -347,7 +425,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void getQueryIndexediv(int target, int index, int pname, Addressable params) {
+    public static void getQueryIndexediv(int target, int index, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetQueryIndexediv).invokeExact(target, index, pname, params);
@@ -368,7 +446,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static int getSubroutineIndex(int program, int shaderType, Addressable name) {
+    public static int getSubroutineIndex(int program, int shaderType, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetSubroutineIndex).invokeExact(program, shaderType, name);
@@ -381,7 +459,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         return getSubroutineIndex(program, shaderType, allocator.allocateUtf8String(name));
     }
 
-    public static int getSubroutineUniformLocation(int program, int shaderType, Addressable name) {
+    public static int getSubroutineUniformLocation(int program, int shaderType, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetSubroutineUniformLocation).invokeExact(program, shaderType, name);
@@ -394,7 +472,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         return getSubroutineUniformLocation(program, shaderType, allocator.allocateUtf8String(name));
     }
 
-    public static void getUniformSubroutineuiv(int shaderType, int location, Addressable params) {
+    public static void getUniformSubroutineuiv(int shaderType, int location, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetUniformSubroutineuiv).invokeExact(shaderType, location, params);
@@ -409,7 +487,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         RuntimeHelper.toArray(seg, params);
     }
 
-    public static void getUniformdv(int program, int location, Addressable params) {
+    public static void getUniformdv(int program, int location, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetUniformdv).invokeExact(program, location, params);
@@ -454,7 +532,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void patchParameterfv(int pname, Addressable values) {
+    public static void patchParameterfv(int pname, MemorySegment values) {
         var caps = getCapabilities();
         try {
             check(caps.glPatchParameterfv).invokeExact(pname, values);
@@ -503,7 +581,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void uniform1dv(int location, int count, Addressable value) {
+    public static void uniform1dv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform1dv).invokeExact(location, count, value);
@@ -525,7 +603,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void uniform2dv(int location, int count, Addressable value) {
+    public static void uniform2dv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform2dv).invokeExact(location, count, value);
@@ -535,7 +613,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform2dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform2dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform2dv(location, value.length >> 1, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform3d(int location, double x, double y, double z) {
@@ -547,7 +625,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void uniform3dv(int location, int count, Addressable value) {
+    public static void uniform3dv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform3dv).invokeExact(location, count, value);
@@ -557,7 +635,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform3dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform3dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform3dv(location, value.length / 3, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
     public static void uniform4d(int location, double x, double y, double z, double w) {
@@ -569,7 +647,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static void uniform4dv(int location, int count, Addressable value) {
+    public static void uniform4dv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform4dv).invokeExact(location, count, value);
@@ -579,10 +657,10 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform4dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform4dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform4dv(location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
     }
 
-    public static void uniformMatrix2dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2dv).invokeExact(location, count, transpose, value);
@@ -599,7 +677,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix2dv(allocator, location, value.length >> 2, transpose, value);
     }
 
-    public static void uniformMatrix2x3dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix2x3dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x3dv).invokeExact(location, count, transpose, value);
@@ -616,7 +694,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix2x3dv(allocator, location, value.length / 6, transpose, value);
     }
 
-    public static void uniformMatrix2x4dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix2x4dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix2x4dv).invokeExact(location, count, transpose, value);
@@ -633,7 +711,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix2x4dv(allocator, location, value.length >> 3, transpose, value);
     }
 
-    public static void uniformMatrix3dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix3dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3dv).invokeExact(location, count, transpose, value);
@@ -650,7 +728,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix3dv(allocator, location, value.length / 9, transpose, value);
     }
 
-    public static void uniformMatrix3x2dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix3x2dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x2dv).invokeExact(location, count, transpose, value);
@@ -667,7 +745,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix3x2dv(allocator, location, value.length / 6, transpose, value);
     }
 
-    public static void uniformMatrix3x4dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix3x4dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix3x4dv).invokeExact(location, count, transpose, value);
@@ -684,7 +762,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix3x4dv(allocator, location, value.length / 12, transpose, value);
     }
 
-    public static void uniformMatrix4dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix4dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4dv).invokeExact(location, count, transpose, value);
@@ -701,7 +779,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix4dv(allocator, location, value.length >> 4, transpose, value);
     }
 
-    public static void uniformMatrix4x2dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix4x2dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x2dv).invokeExact(location, count, transpose, value);
@@ -718,7 +796,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix4x2dv(allocator, location, value.length >> 3, transpose, value);
     }
 
-    public static void uniformMatrix4x3dv(int location, int count, boolean transpose, Addressable value) {
+    public static void uniformMatrix4x3dv(int location, int count, boolean transpose, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformMatrix4x3dv).invokeExact(location, count, transpose, value);
@@ -735,7 +813,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         uniformMatrix4x3dv(allocator, location, value.length / 12, transpose, value);
     }
 
-    public static void uniformSubroutinesuiv(int shaderType, int count, Addressable indices) {
+    public static void uniformSubroutinesuiv(int shaderType, int count, MemorySegment indices) {
         var caps = getCapabilities();
         try {
             check(caps.glUniformSubroutinesuiv).invokeExact(shaderType, count, indices);

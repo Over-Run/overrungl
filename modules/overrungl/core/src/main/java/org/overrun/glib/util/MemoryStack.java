@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.util;
@@ -29,12 +21,10 @@ import org.overrun.glib.Configurations;
 import org.overrun.glib.Pointer;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.util.Arrays;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
+import static java.lang.foreign.ValueLayout.*;
 
 /**
  * An off-heap memory stack.
@@ -45,26 +35,30 @@ import static java.lang.foreign.ValueLayout.ADDRESS;
  * @author lwjgl3
  * @author squid233
  * @see Configurations#STACK_SIZE
+ * @see Configurations#STACK_FRAMES
  * @see Configurations#DEBUG_STACK
  * @since 0.1.0
  */
-public class MemoryStack extends Pointer implements AutoCloseable {
+public class MemoryStack extends Pointer implements SegmentAllocator, AutoCloseable {
     private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
     private static final long DEFAULT_STACK_SIZE = Configurations.STACK_SIZE.get() * 1024;
-    private static final int DEFAULT_STACK_FRAMES = 8;
+    private static final int DEFAULT_STACK_FRAMES = Configurations.STACK_FRAMES.get();
     private static final ThreadLocal<MemoryStack> TLS = ThreadLocal.withInitial(MemoryStack::create);
 
     static {
         if (DEFAULT_STACK_SIZE < 0) {
             throw new IllegalStateException("Invalid stack size.");
         }
+        if (DEFAULT_STACK_FRAMES < 0) {
+            throw new IllegalStateException("Invalid stack frames.");
+        }
     }
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     @Nullable
-    private final MemoryAddress container;
+    private final MemorySegment container;
 
     private final long size;
 
@@ -81,9 +75,10 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param container the backing memory buffer, may be null
      * @param address   the backing memory address
      * @param size      the backing memory size
+     * @param arena     the backing arena
      */
-    protected MemoryStack(@Nullable MemoryAddress container, MemoryAddress address, long size) {
-        super(address, null);
+    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size, Arena arena) {
+        super(address, arena);
         this.container = container;
 
         this.size = size;
@@ -109,7 +104,8 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param capacity the maximum number of bytes that may be allocated on the stack
      */
     public static MemoryStack create(long capacity) {
-        return create(MemoryUtil.malloc(capacity), capacity);
+        final Arena arena = RuntimeHelper.autoArena();
+        return create(arena.allocate(capacity), capacity, arena);
     }
 
     /**
@@ -119,12 +115,12 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      *
      * @param buffer the backing memory buffer
      * @param size   the memory buffer size
+     * @param arena  the backing arena
      */
-    public static MemoryStack create(MemoryAddress buffer, long size) {
-        var address = buffer.address();
+    public static MemoryStack create(MemorySegment buffer, long size, Arena arena) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(buffer, address, size)
-            : new MemoryStack(buffer, address, size);
+            ? new DebugMemoryStack(buffer, buffer, size, arena)
+            : new MemoryStack(buffer, buffer, size, arena);
     }
 
     /**
@@ -134,11 +130,12 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      *
      * @param address the backing memory address
      * @param size    the backing memory size
+     * @param arena   the backing arena
      */
-    public static MemoryStack ncreate(MemoryAddress address, long size) {
+    public static MemoryStack ncreate(MemorySegment address, long size, Arena arena) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(null, address, size)
-            : new MemoryStack(null, address, size);
+            ? new DebugMemoryStack(null, address, size, arena)
+            : new MemoryStack(null, address, size, arena);
     }
 
     /**
@@ -201,8 +198,8 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
 
-        DebugMemoryStack(@Nullable MemoryAddress buffer, MemoryAddress address, long size) {
-            super(buffer, address, size);
+        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size, Arena arena) {
+            super(buffer, address, size, arena);
             debugFrames = new Object[DEFAULT_STACK_FRAMES];
         }
 
@@ -256,7 +253,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * <p>The stack grows "downwards", so the bottom of the stack is at {@code address + size}, while the top is at {@code address}.</p>
      */
     @Override
-    public MemoryAddress address() {
+    public MemorySegment address() {
         return super.address();
     }
 
@@ -281,8 +278,8 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Returns the memory address at the current stack pointer.
      */
-    public MemoryAddress getPointerAddress() {
-        return address().addOffset(pointer);
+    public MemorySegment getPointerAddress() {
+        return address().asSlice(pointer);
     }
 
     /**
@@ -317,12 +314,6 @@ public class MemoryStack extends Pointer implements AutoCloseable {
         }
     }
 
-    private static void checkAlignment(long alignment) {
-        if (Long.bitCount(alignment) != 1) {
-            throw new IllegalArgumentException("Alignment must be a power-of-two value.");
-        }
-    }
-
     /**
      * Allocates a block of {@code size} bytes of memory on the stack. The content of the newly allocated block of memory is not initialized, remaining with
      * indeterminate values.
@@ -331,9 +322,9 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param size      the allocation size
      * @return the memory address on the stack for the requested allocation
      */
-    public MemoryAddress nmalloc(long alignment, long size) {
+    public MemorySegment nmalloc(long alignment, long size) {
         // Align address to the specified alignment
-        long rawLong = address().toRawLongValue();
+        long rawLong = address().address();
         long address = (rawLong + pointer - size) & -alignment;
 
         pointer = address - rawLong;
@@ -341,7 +332,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
             throw new OutOfMemoryError("Out of stack space.");
         }
 
-        return MemoryAddress.ofLong(address);
+        return MemorySegment.ofAddress(address, size, arena.scope());
     }
 
     /**
@@ -353,7 +344,7 @@ public class MemoryStack extends Pointer implements AutoCloseable {
      * @param size      the size of each element
      * @return the memory address on the stack for the requested allocation
      */
-    public MemoryAddress ncalloc(long alignment, long num, long size) {
+    public MemorySegment ncalloc(long alignment, long num, long size) {
         long bytes = num * size;
         var address = nmalloc(alignment, bytes);
         MemoryUtil.memset(address, 0, bytes);
@@ -363,15 +354,15 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     // -------------------------------------------------
 
     /**
-     * Allocates an aligned {@link MemoryAddress} on the stack.
+     * Allocates an aligned {@link MemorySegment} on the stack.
      *
      * @param alignment the required buffer alignment
      * @param size      the number of elements in the buffer
      * @return the allocated buffer
      */
-    public MemoryAddress malloc(long alignment, long size) {
+    public MemorySegment malloc(long alignment, long size) {
         if (DEBUG) {
-            checkAlignment(alignment);
+            RuntimeHelper.checkAlignment(alignment);
         }
         return nmalloc(alignment, size);
     }
@@ -379,40 +370,418 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Calloc version of {@link #malloc(long, long)}.
      */
-    public MemoryAddress calloc(long alignment, long size) {
+    public MemorySegment calloc(long alignment, long size) {
         if (DEBUG) {
-            checkAlignment(alignment);
+            RuntimeHelper.checkAlignment(alignment);
         }
-        return ncalloc(alignment, size, 1);
+        return ncalloc(alignment, 1, size);
     }
 
     /**
-     * Allocates a {@link MemoryAddress} on the stack with {@code alignment} equal to {@link ValueLayout#byteSize() POINTER_SIZE}.
+     * Allocates a {@link MemorySegment} on the stack with {@code alignment} equal to {@link ValueLayout#byteSize() POINTER_SIZE}.
      *
      * @param size the allocation size
      * @return the memory address on the stack for the requested allocation
      */
-    public MemoryAddress malloc(long size) {
+    public MemorySegment malloc(long size) {
         return nmalloc(ADDRESS.byteSize(), size);
     }
 
-    public MemoryAddress malloc(MemoryLayout layout) {
+    public MemorySegment malloc(MemoryLayout layout) {
         return malloc(layout.byteSize());
     }
 
     /**
      * Calloc version of {@link #malloc(long)}.
      */
-    public MemoryAddress calloc(long size) {
-        return ncalloc(ADDRESS.byteSize(), size, 1);
+    public MemorySegment calloc(long size) {
+        return ncalloc(ADDRESS.byteSize(), 1, size);
     }
 
-    public MemoryAddress calloc(MemoryLayout layout, long num) {
+    public MemorySegment calloc(MemoryLayout layout, long num) {
         return ncalloc(ADDRESS.byteSize(), num, layout.byteSize());
     }
 
-    public MemoryAddress calloc(MemoryLayout layout) {
+    public MemorySegment calloc(MemoryLayout layout) {
         return calloc(layout, 1);
+    }
+
+    @Override
+    public MemorySegment allocate(long byteSize, long byteAlignment) throws IllegalArgumentException {
+        RuntimeHelper.checkByteSize(byteSize);
+        RuntimeHelper.checkAlignment(byteAlignment);
+        return calloc(byteAlignment, byteSize);
+    }
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 1);
+        segment.set(JAVA_BYTE, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x, byte y) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 2);
+        segment.set(JAVA_BYTE, 0, x);
+        segment.set(JAVA_BYTE, 1, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x, byte y, byte z) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 3);
+        segment.set(JAVA_BYTE, 0, x);
+        segment.set(JAVA_BYTE, 1, y);
+        segment.set(JAVA_BYTE, 2, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte x, byte y, byte z, byte w) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), 4);
+        segment.set(JAVA_BYTE, 0, x);
+        segment.set(JAVA_BYTE, 1, y);
+        segment.set(JAVA_BYTE, 2, z);
+        segment.set(JAVA_BYTE, 3, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment bytes(byte... values) {
+        MemorySegment segment = malloc(JAVA_BYTE.byteAlignment(), values.length);
+        MemorySegment.copy(values, 0, segment, JAVA_BYTE, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 2);
+        segment.set(JAVA_SHORT, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x, short y) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 4);
+        segment.set(JAVA_SHORT, 0, x);
+        segment.set(JAVA_SHORT, 2, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x, short y, short z) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 6);
+        segment.set(JAVA_SHORT, 0, x);
+        segment.set(JAVA_SHORT, 2, y);
+        segment.set(JAVA_SHORT, 4, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short x, short y, short z, short w) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), 8);
+        segment.set(JAVA_SHORT, 0, x);
+        segment.set(JAVA_SHORT, 2, y);
+        segment.set(JAVA_SHORT, 4, z);
+        segment.set(JAVA_SHORT, 6, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment shorts(short... values) {
+        MemorySegment segment = malloc(JAVA_SHORT.byteAlignment(), (long) values.length << 1);
+        MemorySegment.copy(values, 0, segment, JAVA_SHORT, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 4);
+        segment.set(JAVA_INT, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x, int y) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 8);
+        segment.set(JAVA_INT, 0, x);
+        segment.set(JAVA_INT, 4, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x, int y, int z) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 12);
+        segment.set(JAVA_INT, 0, x);
+        segment.set(JAVA_INT, 4, y);
+        segment.set(JAVA_INT, 8, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment ints(int x, int y, int z, int w) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), 16);
+        segment.set(JAVA_INT, 0, x);
+        segment.set(JAVA_INT, 4, y);
+        segment.set(JAVA_INT, 8, z);
+        segment.set(JAVA_INT, 12, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment ints(int... values) {
+        MemorySegment segment = malloc(JAVA_INT.byteAlignment(), (long) values.length << 2);
+        MemorySegment.copy(values, 0, segment, JAVA_INT, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 8);
+        segment.set(JAVA_LONG, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x, long y) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 16);
+        segment.set(JAVA_LONG, 0, x);
+        segment.set(JAVA_LONG, 8, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x, long y, long z) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 24);
+        segment.set(JAVA_LONG, 0, x);
+        segment.set(JAVA_LONG, 8, y);
+        segment.set(JAVA_LONG, 16, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment longs(long x, long y, long z, long w) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), 32);
+        segment.set(JAVA_LONG, 0, x);
+        segment.set(JAVA_LONG, 8, y);
+        segment.set(JAVA_LONG, 16, z);
+        segment.set(JAVA_LONG, 24, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment longs(long... values) {
+        MemorySegment segment = malloc(JAVA_LONG.byteAlignment(), (long) values.length << 3);
+        MemorySegment.copy(values, 0, segment, JAVA_LONG, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 4);
+        segment.set(JAVA_FLOAT, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x, float y) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 8);
+        segment.set(JAVA_FLOAT, 0, x);
+        segment.set(JAVA_FLOAT, 4, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x, float y, float z) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 12);
+        segment.set(JAVA_FLOAT, 0, x);
+        segment.set(JAVA_FLOAT, 4, y);
+        segment.set(JAVA_FLOAT, 8, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment floats(float x, float y, float z, float w) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), 16);
+        segment.set(JAVA_FLOAT, 0, x);
+        segment.set(JAVA_FLOAT, 4, y);
+        segment.set(JAVA_FLOAT, 8, z);
+        segment.set(JAVA_FLOAT, 12, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment floats(float... values) {
+        MemorySegment segment = malloc(JAVA_FLOAT.byteAlignment(), (long) values.length << 2);
+        MemorySegment.copy(values, 0, segment, JAVA_FLOAT, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 8);
+        segment.set(JAVA_DOUBLE, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x, double y) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 16);
+        segment.set(JAVA_DOUBLE, 0, x);
+        segment.set(JAVA_DOUBLE, 8, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x, double y, double z) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 24);
+        segment.set(JAVA_DOUBLE, 0, x);
+        segment.set(JAVA_DOUBLE, 8, y);
+        segment.set(JAVA_DOUBLE, 16, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double x, double y, double z, double w) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), 32);
+        segment.set(JAVA_DOUBLE, 0, x);
+        segment.set(JAVA_DOUBLE, 8, y);
+        segment.set(JAVA_DOUBLE, 16, z);
+        segment.set(JAVA_DOUBLE, 24, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment doubles(double... values) {
+        MemorySegment segment = malloc(JAVA_DOUBLE.byteAlignment(), (long) values.length << 3);
+        MemorySegment.copy(values, 0, segment, JAVA_DOUBLE, 0, values.length);
+        return segment;
+    }
+
+    // -------------------------------------------------
+
+    /**
+     * Single value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize());
+        segment.set(ADDRESS, 0, x);
+        return segment;
+    }
+
+    /**
+     * Two value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x, MemorySegment y) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * 2);
+        segment.set(ADDRESS, 0, x);
+        segment.setAtIndex(ADDRESS, 1, y);
+        return segment;
+    }
+
+    /**
+     * Three value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x, MemorySegment y, MemorySegment z) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * 3);
+        segment.set(ADDRESS, 0, x);
+        segment.setAtIndex(ADDRESS, 1, y);
+        segment.setAtIndex(ADDRESS, 2, z);
+        return segment;
+    }
+
+    /**
+     * Four value version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment x, MemorySegment y, MemorySegment z, MemorySegment w) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * 4);
+        segment.set(ADDRESS, 0, x);
+        segment.setAtIndex(ADDRESS, 1, y);
+        segment.setAtIndex(ADDRESS, 2, z);
+        segment.setAtIndex(ADDRESS, 3, w);
+        return segment;
+    }
+
+    /**
+     * Vararg version of {@link #malloc}.
+     */
+    public MemorySegment pointers(MemorySegment... values) {
+        MemorySegment segment = malloc(ADDRESS.byteAlignment(), ADDRESS.byteSize() * values.length);
+        for (int i = 0; i < values.length; i++) {
+            segment.setAtIndex(ADDRESS, i, values[i]);
+        }
+        return segment;
     }
 
     // -----------------------------------------------------
@@ -447,14 +816,14 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Thread-local version of {@link #nmalloc(long, long)}.
      */
-    public static MemoryAddress nstackMalloc(long alignment, long size) {
+    public static MemorySegment nstackMalloc(long alignment, long size) {
         return stackGet().nmalloc(alignment, size);
     }
 
     /**
      * Thread-local version of {@link #ncalloc}.
      */
-    public static MemoryAddress nstackCalloc(long alignment, long num, long size) {
+    public static MemorySegment nstackCalloc(long alignment, long num, long size) {
         return stackGet().ncalloc(alignment, num, size);
     }
 
@@ -463,14 +832,14 @@ public class MemoryStack extends Pointer implements AutoCloseable {
     /**
      * Thread-local version of {@link #malloc(long) malloc}.
      */
-    public static MemoryAddress stackMalloc(long size) {
+    public static MemorySegment stackMalloc(long size) {
         return stackGet().malloc(size);
     }
 
     /**
      * Thread-local version of {@link #calloc(long) calloc}.
      */
-    public static MemoryAddress stackCalloc(long size) {
+    public static MemorySegment stackCalloc(long size) {
         return stackGet().calloc(size);
     }
 }

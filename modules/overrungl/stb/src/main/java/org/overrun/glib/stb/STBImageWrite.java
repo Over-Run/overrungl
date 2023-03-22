@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,23 +12,14 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.stb;
 
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
@@ -64,18 +55,18 @@ public final class STBImageWrite {
         stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV);
         stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV);
         stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV);
-        stbi_write_bmp = downcall("stbi_write_bmp", PIIIP);
+        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI);
         stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP);
-        stbi_write_hdr = downcall("stbi_write_hdr", PIIIP);
+        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI);
         stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP);
-        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPI);
+        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII);
         stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI);
-        stbi_write_png = downcall("stbi_write_png", PIIIPI);
+        stbi_write_png = downcall("stbi_write_png", PIIIPII);
         stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI);
-        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPP);
+        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp);
         stbi_write_tga = downcall("stbi_write_tga", PIIIP);
         stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP);
-        stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIP);
+        stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIp);
     }
 
     private STBImageWrite() {
@@ -130,7 +121,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean npng(Addressable filename, int w, int h, int comp, Addressable data, int strideInBytes) {
+    public static boolean npng(MemorySegment filename, int w, int h, int comp, MemorySegment data, int strideInBytes) {
         try {
             return (int) stbi_write_png.invokeExact(filename, w, h, comp, data, strideInBytes) != 0;
         } catch (Throwable e) {
@@ -138,7 +129,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean nbmp(Addressable filename, int w, int h, int comp, Addressable data) {
+    public static boolean nbmp(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
         try {
             return (int) stbi_write_bmp.invokeExact(filename, w, h, comp, data) != 0;
         } catch (Throwable e) {
@@ -146,7 +137,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean ntga(Addressable filename, int w, int h, int comp, Addressable data) {
+    public static boolean ntga(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
         try {
             return (int) stbi_write_tga.invokeExact(filename, w, h, comp, data) != 0;
         } catch (Throwable e) {
@@ -154,7 +145,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean nhdr(Addressable filename, int w, int h, int comp, Addressable data) {
+    public static boolean nhdr(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
         try {
             return (int) stbi_write_hdr.invokeExact(filename, w, h, comp, data) != 0;
         } catch (Throwable e) {
@@ -162,7 +153,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean njpg(Addressable filename, int x, int y, int comp, Addressable data, int quality) {
+    public static boolean njpg(MemorySegment filename, int x, int y, int comp, MemorySegment data, int quality) {
         try {
             return (int) stbi_write_jpg.invokeExact(filename, x, y, comp, data, quality) != 0;
         } catch (Throwable e) {
@@ -170,15 +161,15 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean png(SegmentAllocator allocator, String filename, int w, int h, int comp, Addressable data, int strideInBytes) {
+    public static boolean png(SegmentAllocator allocator, String filename, int w, int h, int comp, MemorySegment data, int strideInBytes) {
         return npng(allocator.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmp(SegmentAllocator allocator, String filename, int w, int h, int comp, Addressable data) {
+    public static boolean bmp(SegmentAllocator allocator, String filename, int w, int h, int comp, MemorySegment data) {
         return nbmp(allocator.allocateUtf8String(filename), w, h, comp, data);
     }
 
-    public static boolean tga(SegmentAllocator allocator, String filename, int w, int h, int comp, Addressable data) {
+    public static boolean tga(SegmentAllocator allocator, String filename, int w, int h, int comp, MemorySegment data) {
         return ntga(allocator.allocateUtf8String(filename), w, h, comp, data);
     }
 
@@ -186,11 +177,11 @@ public final class STBImageWrite {
         return nhdr(allocator.allocateUtf8String(filename), w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpg(SegmentAllocator allocator, String filename, int x, int y, int comp, Addressable data, int quality) {
+    public static boolean jpg(SegmentAllocator allocator, String filename, int x, int y, int comp, MemorySegment data, int quality) {
         return njpg(allocator.allocateUtf8String(filename), x, y, comp, data, quality);
     }
 
-    public static boolean npngToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
+    public static boolean npngToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {
         try {
             return (int) stbi_write_png_to_func.invokeExact(func, context, w, h, comp, data, strideInBytes) != 0;
         } catch (Throwable e) {
@@ -198,7 +189,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean nbmpToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data) {
+    public static boolean nbmpToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
         try {
             return (int) stbi_write_bmp_to_func.invokeExact(func, context, w, h, comp, data) != 0;
         } catch (Throwable e) {
@@ -206,7 +197,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean ntgaToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data) {
+    public static boolean ntgaToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
         try {
             return (int) stbi_write_tga_to_func.invokeExact(func, context, w, h, comp, data) != 0;
         } catch (Throwable e) {
@@ -214,7 +205,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean nhdrToFunc(Addressable func, Addressable context, int w, int h, int comp, Addressable data) {
+    public static boolean nhdrToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
         try {
             return (int) stbi_write_hdr_to_func.invokeExact(func, context, w, h, comp, data) != 0;
         } catch (Throwable e) {
@@ -222,7 +213,7 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean njpgToFunc(Addressable func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
+    public static boolean njpgToFunc(MemorySegment func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
         try {
             return (int) stbi_write_jpg_to_func.invokeExact(func, context, x, y, comp, data, quality) != 0;
         } catch (Throwable e) {
@@ -230,24 +221,24 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean pngToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data, int strideInBytes) {
-        return npngToFunc(func.address(scope), context, w, h, comp, data, strideInBytes);
+    public static boolean pngToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {
+        return npngToFunc(func.address(arena), context, w, h, comp, data, strideInBytes);
     }
 
-    public static boolean bmpToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
-        return nbmpToFunc(func.address(scope), context, w, h, comp, data);
+    public static boolean bmpToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
+        return nbmpToFunc(func.address(arena), context, w, h, comp, data);
     }
 
-    public static boolean tgaToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, Addressable data) {
-        return ntgaToFunc(func.address(scope), context, w, h, comp, data);
+    public static boolean tgaToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
+        return ntgaToFunc(func.address(arena), context, w, h, comp, data);
     }
 
-    public static boolean hdrToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(scope), context, w, h, comp, scope.allocateArray(JAVA_FLOAT, data));
+    public static boolean hdrToFunc(SegmentAllocator allocator, Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
+        return nhdrToFunc(func.address(arena), context, w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpgToFunc(MemorySession scope, STBIWriteFunc func, Addressable context, int x, int y, int comp, Addressable data, int quality) {
-        return njpgToFunc(func.address(scope), context, x, y, comp, data, quality);
+    public static boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
+        return njpgToFunc(func.address(arena), context, x, y, comp, data, quality);
     }
 
     public static void flipVerticallyOnWrite(boolean flip) {
@@ -258,9 +249,9 @@ public final class STBImageWrite {
         }
     }
 
-    public static MemoryAddress pngToMem(Addressable pixels, int strideInBytes, int x, int y, int n, Addressable outLen) {
+    public static MemorySegment npngToMem(MemorySegment pixels, int strideInBytes, int x, int y, int n, MemorySegment outLen) {
         try {
-            return (MemoryAddress) stbi_write_png_to_mem.invokeExact(pixels, strideInBytes, x, y, n, outLen);
+            return (MemorySegment) stbi_write_png_to_mem.invokeExact(pixels, strideInBytes, x, y, n, outLen);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -268,15 +259,15 @@ public final class STBImageWrite {
 
     public static byte[] pngToMem(SegmentAllocator allocator, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
         var pl = allocator.allocate(JAVA_INT);
-        var p = pngToMem(allocator.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
+        var p = npngToMem(allocator.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);
     }
 
-    public static MemoryAddress zlibCompress(Addressable data, int dataLen, Addressable outLen, int quality) {
+    public static MemorySegment nzlibCompress(MemorySegment data, int dataLen, MemorySegment outLen, int quality) {
         try {
-            return (MemoryAddress) stbi_zlib_compress.invokeExact(data, dataLen, outLen, quality);
+            return (MemorySegment) stbi_zlib_compress.invokeExact(data, dataLen, outLen, quality);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -284,7 +275,7 @@ public final class STBImageWrite {
 
     public static byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int[] outLen, int quality) {
         var pl = allocator.allocate(JAVA_INT);
-        var p = zlibCompress(allocator.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
+        var p = nzlibCompress(allocator.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);

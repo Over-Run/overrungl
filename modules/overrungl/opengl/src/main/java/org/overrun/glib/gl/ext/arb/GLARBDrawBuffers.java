@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
@@ -45,7 +45,7 @@ public final class GLARBDrawBuffers {
         ext.glDrawBuffersARB = load.invoke("glDrawBuffersARB", FunctionDescriptors.IPV);
     }
 
-    public static void glDrawBuffersARB(int n, Addressable bufs) {
+    public static void glDrawBuffersARB(int n, MemorySegment bufs) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glDrawBuffersARB).invokeExact(n, bufs);

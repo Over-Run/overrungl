@@ -26,7 +26,9 @@ package org.overrun.glib.glfw;
 
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 
 import static org.overrun.glib.glfw.Handles.*;
 
@@ -36,7 +38,7 @@ import static org.overrun.glib.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWVulkan {
+public final class GLFWVulkan {
     static {
         create();
     }
@@ -44,7 +46,7 @@ public class GLFWVulkan {
     /**
      * constructor
      */
-    protected GLFWVulkan() {
+    private GLFWVulkan() {
         throw new IllegalStateException("Do not construct instance");
     }
 
@@ -63,27 +65,27 @@ public class GLFWVulkan {
      *     <li>{@code vkGetInstanceProcAddr}</li>
      * </ul>
      * <p>
-     *  If Vulkan is not available on the machine, this function returns {@link MemorySegment#NULL NULL} and
-     *  generates a {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE} error.  Call {@link GLFW#vulkanSupported vulkanSupported}
-     *  to check whether Vulkan is at least minimally available.
+     * If Vulkan is not available on the machine, this function returns {@link MemorySegment#NULL NULL} and
+     * generates a {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE} error.  Call {@link GLFW#vulkanSupported vulkanSupported}
+     * to check whether Vulkan is at least minimally available.
      * <p>
-     *  This function is equivalent to calling {@code vkGetInstanceProcAddr} with
-     *  a platform-specific query of the Vulkan loader as a fallback.
-     * <!-- todo don't leave a blank line -->
-     *  @param instance The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
-     *  functions related to instance creation.
-     *  @param procName The ASCII encoded name of the function.
-     *  @return The address of the function, or {@link MemorySegment#NULL NULL} if an
-     *  <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     *  @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
-     *  {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}.
-     *  @glfw.pointer_lifetime The returned function pointer is valid until the library
-     *  is terminated.
-     *  @glfw.thread_safety This function may be called from any thread.
+     * This function is equivalent to calling {@code vkGetInstanceProcAddr} with
+     * a platform-specific query of the Vulkan loader as a fallback.
+     *
+     * @param instance The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
+     *                 functions related to instance creation.
+     * @param procName The ASCII encoded name of the function.
+     * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED NOT_INITIALIZED} and
+     * {@link GLFW#API_UNAVAILABLE API_UNAVAILABLE}.
+     * @glfw.pointer_lifetime The returned function pointer is valid until the library
+     * is terminated.
+     * @glfw.thread_safety This function may be called from any thread.
      */
-    public static MemoryAddress nglfwGetInstanceProcAddress(Addressable instance, Addressable procName) {
+    public static MemorySegment nglfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procName) {
         try {
-            return (MemoryAddress) glfwGetInstanceProcAddress.invokeExact(instance, procName);
+            return (MemorySegment) glfwGetInstanceProcAddress.invokeExact(instance, procName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -98,9 +100,9 @@ public class GLFWVulkan {
      * @param procName  The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @see #nglfwGetInstanceProcAddress(Addressable, Addressable) nglfwGetInstanceProcAddress
+     * @see #nglfwGetInstanceProcAddress(MemorySegment, MemorySegment) nglfwGetInstanceProcAddress
      */
-    public static MemoryAddress glfwGetInstanceProcAddress(SegmentAllocator allocator, Addressable instance, String procName) {
+    public static MemorySegment glfwGetInstanceProcAddress(SegmentAllocator allocator, MemorySegment instance, String procName) {
         return nglfwGetInstanceProcAddress(instance, allocator.allocateUtf8String(procName));
     }
 
@@ -131,7 +133,7 @@ public class GLFWVulkan {
      * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
      */
-    public static boolean glfwGetPhysicalDevicePresentationSupport(Addressable instance, Addressable device, int queueFamily) {
+    public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queueFamily) {
         try {
             return (int) glfwGetPhysicalDevicePresentationSupport.invokeExact(instance, device, queueFamily) != GLFW.FALSE;
         } catch (Throwable e) {
@@ -180,21 +182,21 @@ public class GLFWVulkan {
      * @glfw.remark If an error occurs before the creation call is made, GLFW returns
      * the Vulkan error code most appropriate for the error.  Appropriate use of
      * {@link GLFW#vulkanSupported() vulkanSupported} and
-     * {@link GLFW#ngetRequiredInstanceExtensions(Addressable) getRequiredInstanceExtensions} should
+     * {@link GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions} should
      * eliminate almost all occurrences of these errors.
      * <p>
      * <b>macOS:</b> GLFW prefers the {@code VK_EXT_metal_surface} extension, with the
      * {@code VK_MVK_macos_surface} extension as a fallback.  The name of the selected
      * extension, if any, is included in the array returned by
-     * {@link GLFW#ngetRequiredInstanceExtensions(Addressable) getRequiredInstanceExtensions}.
+     * {@link GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions}.
      * <p>
      * <b>macOS:</b> This function creates and sets a {@code CAMetalLayer} instance for
      * the window content view, which is required for MoltenVK to function.
      * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
-     * @see GLFW#ngetRequiredInstanceExtensions(Addressable) getRequiredInstanceExtensions
+     * @see GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions
      */
-    public static int nglfwCreateWindowSurface(Addressable instance, Addressable window, Addressable allocator, Addressable surface) {
+    public static int nglfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface) {
         try {
             return (int) glfwCreateWindowSurface.invokeExact(instance, window, allocator, surface);
         } catch (Throwable e) {
@@ -213,9 +215,9 @@ public class GLFWVulkan {
      *                  to {@code VK_NULL_HANDLE} if an error occurred.
      * @return {@code VK_SUCCESS} if successful, or a Vulkan error code if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @see #nglfwCreateWindowSurface(Addressable, Addressable, Addressable, Addressable) nglfwCreateWindowSurface
+     * @see #nglfwCreateWindowSurface(MemorySegment, MemorySegment, MemorySegment, MemorySegment) nglfwCreateWindowSurface
      */
-    public static int glfwCreateWindowSurface(Addressable instance, Addressable window, Addressable allocator, long[] surface) {
+    public static int glfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, long[] surface) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {

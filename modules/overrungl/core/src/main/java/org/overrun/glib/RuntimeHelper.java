@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib;
@@ -54,8 +46,19 @@ public final class RuntimeHelper {
      */
     public static final Linker LINKER = Linker.nativeLinker();
     private static final File tmpdir = new File(System.getProperty("java.io.tmpdir"));
-    private static final Consumer<String> DEFAULT_LOGGER = System.out::println;
+    private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
+    /**
+     * The address of {@code NULL}.
+     */
+    public static final long NULL = 0x0L;
+    /**
+     * An unbounded address layout.
+     *
+     * @deprecated this layout will be removed in JDK 21.
+     */
+    @Deprecated(since = "0.1.0")
+    public static final ValueLayout.OfAddress ADDRESS_UNBOUNDED = ADDRESS.asUnbounded();
 
     /**
      * constructor
@@ -65,27 +68,129 @@ public final class RuntimeHelper {
     }
 
     /**
+     * Checks whether <i>{@code byteSize}</i> is greater than 0 or equals to 0.
+     *
+     * @param byteSize the size, in bytes.
+     * @throws IllegalArgumentException if <i>{@code byteSize}</i> {@code < 0}.
+     */
+    public static void checkByteSize(long byteSize) throws IllegalArgumentException {
+        if (byteSize < 0) {
+            throw new IllegalArgumentException("byteSize must be >= 0.");
+        }
+    }
+
+    /**
+     * Checks whether <i>{@code alignment}</i> is greater than 0 and is a power-of-two value.
+     *
+     * @param alignment the alignment, in bytes.
+     * @throws IllegalArgumentException if <i>{@code alignment}</i> {@code <= 0},
+     *                                  or if <i>{@code alignment}</i> is not a power of 2.
+     */
+    public static void checkAlignment(long alignment) throws IllegalArgumentException {
+        if (alignment <= 0) {
+            throw new IllegalArgumentException("Alignment must be > 0.");
+        }
+        if (Long.bitCount(alignment) != 1) {
+            throw new IllegalArgumentException("Alignment must be a power-of-two value.");
+        }
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Arena globalArena() {
+        return new Arena() {
+            @Override
+            public SegmentScope scope() {
+                return SegmentScope.global();
+            }
+
+            @Override
+            public void close() {
+            }
+
+            @Override
+            public boolean isCloseableBy(Thread thread) {
+                return false;
+            }
+        };
+    }
+
+    @Deprecated(since = "0.1.0")
+    public static Arena autoArena() {
+        return new Arena() {
+            private final SegmentScope scope = SegmentScope.auto();
+
+            @Override
+            public SegmentScope scope() {
+                return scope;
+            }
+
+            @Override
+            public void close() {
+            }
+
+            @Override
+            public boolean isCloseableBy(Thread thread) {
+                return false;
+            }
+        };
+    }
+
+    /**
+     * Creates an unbounded native segment with the given segment.
+     *
+     * @param segment the segment address.
+     * @return an unbounded native segment with the given address.
+     */
+    public static MemorySegment unbound(MemorySegment segment) {
+        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE, segment.scope());
+    }
+
+    /**
+     * Creates a sized native segment with the given segment and size.
+     * The returned segment is associated with the scope of the given segment.
+     *
+     * @param segment  the segment address.
+     * @param byteSize the desired size.
+     * @return a native segment with the given address and size.
+     * @deprecated this method will be replaced with {@code MemorySegment::reinterpret} in JDK 21.
+     */
+    @Deprecated(since = "0.1.0")
+    public static MemorySegment sizedSegment(MemorySegment segment, long byteSize) {
+        return MemorySegment.ofAddress(segment.address(), byteSize, segment.scope());
+    }
+
+    /**
+     * Make sure a method handle is returned as the specified type to deal with {@code MethodHandle::invokeExact}.
+     *
+     * @param t   the invoke method.
+     * @param <T> the return type.
+     */
+    @SuppressWarnings("unused")
+    public static <T> void consume(T t) {
+    }
+
+    /**
      * Sets the API logger.
      *
-     * @param logger the logger. pass {@code null} to reset to the default logger
+     * @param logger the logger. pass {@code null} to reset to the default logger.
      */
     public static void setApiLogger(Consumer<String> logger) {
         apiLogger = Objects.requireNonNullElse(logger, DEFAULT_LOGGER);
     }
 
     /**
-     * Gets the API logger. Defaults to {@link System#out}.
+     * Gets the API logger. Defaults to {@link System#err}.
      *
-     * @return the API logger
+     * @return the API logger.
      */
     public static Consumer<String> apiLogger() {
         return apiLogger;
     }
 
     /**
-     * Log a message.
+     * Logs a message with the current {@linkplain #apiLogger() API logger}.
      *
-     * @param message the message
+     * @param message the message to be logged.
      */
     public static void apiLog(String message) {
         apiLogger.accept(message);
@@ -119,20 +224,20 @@ public final class RuntimeHelper {
      * @return the string formatted in {@code \{description} [0x\{toHexString(token)}]}.
      */
     public static String unknownToken(String description, int token) {
-        return description + " [0x" + Integer.toHexString(token) + "]";
+        return description + " [0x" + Integer.toHexString(token) + ']';
     }
 
     /**
-     * Load a library from classpath or local.
+     * Loads a library from classpath or local.
      *
      * @param module   the module name. e.x. {@code glfw}
-     * @param basename the basename of the library (without extensions)
+     * @param basename the basename of the library (without file extensions)
      * @param version  the version suffix
      * @return the {@link SymbolLookup}
-     * @throws RuntimeException if file not found
+     * @throws IllegalStateException if file not found
      */
     public static SymbolLookup load(String module, String basename, String version)
-            throws RuntimeException {
+        throws IllegalStateException {
         final var os = OperatingSystem.current();
         final var suffix = os.getSharedLibrarySuffix();
         final var path = os.getSharedLibraryName(basename);
@@ -149,11 +254,11 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, basename + "-" + version + suffix);
+            var libFile = new File(file, basename + '-' + version + suffix);
             if (!libFile.exists()) {
                 // Extract
-                try (var is = ClassLoader.getSystemResourceAsStream(
-                        module + "/" + os.getFamilyName() + "/" + OperatingSystems.getNativeLibArch() + "/" + path
+                try (var is = RuntimeHelper.class.getClassLoader().getResourceAsStream(
+                    module + '/' + os.getFamilyName() + '/' + OperatingSystems.getNativeLibArch() + '/' + path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 }
@@ -161,14 +266,16 @@ public final class RuntimeHelper {
             uri = libFile.toURI();
         } catch (Exception e) {
             // 2. Load from natives directory
-            var file = new File(System.getProperty("overrungl.natives", ".") + "/" + path);
+            var file = new File(System.getProperty("overrungl.natives", ".") + '/' + path);
             if (!file.exists()) {
-                throw new RuntimeException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
+                var exception = new IllegalStateException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
+                exception.addSuppressed(e);
+                throw exception;
             }
             uri = file.toURI();
         }
-        // Load library by the path with the global segment scope
-        return SymbolLookup.libraryLookup(Path.of(uri), MemorySession.global());
+        // Load library by the path with the global arena
+        return SymbolLookup.libraryLookup(Path.of(uri), SegmentScope.global());
     }
 
     /**
@@ -179,8 +286,8 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptor function) {
-        if (symbol.address() == MemoryAddress.NULL) return null;
+    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function) {
+        if (symbol == null || symbol.address() == NULL) return null;
         return LINKER.downcallHandle(symbol, function);
     }
 
@@ -203,7 +310,7 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(Addressable symbol, FunctionDescriptors function) {
+    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptors function) {
         return downcallSafe(symbol, function.descriptor());
     }
 
@@ -224,20 +331,30 @@ public final class RuntimeHelper {
      * @param <T>       the array type
      * @param seg       the memory segment contained objects. native type: {@code void**}
      * @param arr       the array to hold the result
-     * @param generator the generator, to convert to the array type
+     * @param generator the generator, from a zero-length address to the array type
      * @return arr
      */
-    public static <T> T[] toArray(Addressable seg, T[] arr,
-                                  Function<MemoryAddress, T> generator) {
-        if (seg instanceof MemorySegment pp) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = generator.apply(pp.getAtIndex(ADDRESS, i));
-            }
-        } else {
-            var pp = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = generator.apply(pp.getAtIndex(ADDRESS, i));
-            }
+    public static <T> T[] toArray(MemorySegment seg, T[] arr,
+                                  Function<MemorySegment, T> generator) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.apply(seg.getAtIndex(ADDRESS, i));
+        }
+        return arr;
+    }
+
+    /**
+     * Gets the objects from an address array.
+     *
+     * @param <T>       the array type
+     * @param seg       the memory segment contained objects. native type: {@code void**}
+     * @param arr       the array to hold the result
+     * @param generator the generator, from an unbounded address to the array type
+     * @return arr
+     */
+    public static <T> T[] toUnboundedArray(MemorySegment seg, T[] arr,
+                                           Function<MemorySegment, T> generator) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = generator.apply(seg.getAtIndex(ADDRESS_UNBOUNDED, i));
         }
         return arr;
     }
@@ -247,21 +364,21 @@ public final class RuntimeHelper {
      *
      * @param seg the memory segment contained addresses. native type: {@code void**}
      * @param arr the array to hold the result
-     * @return arr
+     * @return an array of the zero-length addresses.
      */
-    public static MemoryAddress[] toArray(Addressable seg, MemoryAddress[] arr) {
+    public static MemorySegment[] toArray(MemorySegment seg, MemorySegment[] arr) {
         return toArray(seg, arr, Function.identity());
     }
 
     /**
-     * Gets the strings from an address array.
+     * Gets the strings from an unbounded address array.
      *
      * @param seg the memory segment contained strings. native type: {@code char**}
      * @param arr the array to hold the result
      * @return arr
      */
-    public static String[] toArray(Addressable seg, String[] arr) {
-        return toArray(seg, arr, p -> p.getUtf8String(0));
+    public static String[] toUnboundedArray(MemorySegment seg, String[] arr) {
+        return toUnboundedArray(seg, arr, p -> p.getUtf8String(0));
     }
 
     /**
@@ -271,16 +388,9 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static boolean[] toArray(Addressable seg, boolean[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BOOLEAN, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BOOLEAN, i);
-            }
+    public static boolean[] toArray(MemorySegment seg, boolean[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = seg.get(JAVA_BOOLEAN, i);
         }
         return arr;
     }
@@ -292,17 +402,8 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static byte[] toArray(Addressable seg, byte[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BYTE, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.get(JAVA_BYTE, i);
-            }
-        }
+    public static byte[] toArray(MemorySegment seg, byte[] arr) {
+        MemorySegment.copy(seg, JAVA_BYTE, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -313,17 +414,8 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static short[] toArray(Addressable seg, short[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_SHORT, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_SHORT, i);
-            }
-        }
+    public static short[] toArray(MemorySegment seg, short[] arr) {
+        MemorySegment.copy(seg, JAVA_SHORT, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -334,17 +426,8 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static int[] toArray(Addressable seg, int[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_INT, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_INT, i);
-            }
-        }
+    public static int[] toArray(MemorySegment seg, int[] arr) {
+        MemorySegment.copy(seg, JAVA_INT, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -355,17 +438,8 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static long[] toArray(Addressable seg, long[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_LONG, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_LONG, i);
-            }
-        }
+    public static long[] toArray(MemorySegment seg, long[] arr) {
+        MemorySegment.copy(seg, JAVA_LONG, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -376,17 +450,8 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static float[] toArray(Addressable seg, float[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_FLOAT, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_FLOAT, i);
-            }
-        }
+    public static float[] toArray(MemorySegment seg, float[] arr) {
+        MemorySegment.copy(seg, JAVA_FLOAT, 0, arr, 0, arr.length);
         return arr;
     }
 
@@ -397,17 +462,8 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
-    public static double[] toArray(Addressable seg, double[] arr) {
-        if (seg instanceof MemorySegment p) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_DOUBLE, i);
-            }
-        } else {
-            var p = seg.address();
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = p.getAtIndex(JAVA_DOUBLE, i);
-            }
-        }
+    public static double[] toArray(MemorySegment seg, double[] arr) {
+        MemorySegment.copy(seg, JAVA_DOUBLE, 0, arr, 0, arr.length);
         return arr;
     }
 }

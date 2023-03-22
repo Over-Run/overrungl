@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,22 +12,17 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.Pointer;
 import org.overrun.glib.RuntimeHelper;
+import org.overrun.glib.Struct;
 
-import java.lang.foreign.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.StructLayout;
 import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -49,16 +44,16 @@ import static java.lang.foreign.ValueLayout.*;
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
-public class GLFWGammaRamp extends Pointer {
+public class GLFWGammaRamp extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
         ADDRESS.withName("red"),
         ADDRESS.withName("green"),
         ADDRESS.withName("blue"),
         JAVA_INT.withName("size")
-    ).withName("GLFWgammaramp");
+    );
     private static final VarHandle
         ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
         ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),
@@ -71,21 +66,21 @@ public class GLFWGammaRamp extends Pointer {
     /**
      * Create a {@code GLFWgammaramp const} instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param arena   the arena of this address.
      */
-    public GLFWGammaRamp(Addressable address, MemorySession scope) {
-        super(address, scope);
+    public GLFWGammaRamp(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a {@code GLFWgammaramp} instance with the given memory session.
+     * Creates a {@code GLFWgammaramp} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static GLFWGammaRamp create(MemorySession scope) {
-        return new GLFWGammaRamp(scope.allocate(LAYOUT), scope);
+    public static GLFWGammaRamp create(Arena arena) {
+        return new GLFWGammaRamp(arena.allocate(LAYOUT), arena);
     }
 
     /**
@@ -95,7 +90,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        ppRed.set(segment(LAYOUT, scope), scope.allocateArray(JAVA_SHORT, reds));
+        ppRed.set(managedSegment, arena.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
@@ -106,7 +101,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        ppGreen.set(segment(LAYOUT, scope), scope.allocateArray(JAVA_SHORT, greens));
+        ppGreen.set(managedSegment, arena.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
@@ -117,7 +112,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        ppBlue.set(segment(LAYOUT, scope), scope.allocateArray(JAVA_SHORT, blues));
+        ppBlue.set(managedSegment, arena.allocateArray(JAVA_SHORT, blues.length));
         return this;
     }
 
@@ -128,7 +123,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        pSize.set(segment(LAYOUT, scope), size);
+        pSize.set(managedSegment, size);
         return this;
     }
 
@@ -139,7 +134,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the red value
      */
     public short red(int index) {
-        return (short) pRed.get(segment(LAYOUT, scope), (long) index);
+        return (short) pRed.get(managedSegment, (long) index);
     }
 
     /**
@@ -149,7 +144,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the green value
      */
     public short green(int index) {
-        return (short) pGreen.get(segment(LAYOUT, scope), (long) index);
+        return (short) pGreen.get(managedSegment, (long) index);
     }
 
     /**
@@ -159,7 +154,7 @@ public class GLFWGammaRamp extends Pointer {
      * @return the blue value
      */
     public short blue(int index) {
-        return (short) pBlue.get(segment(LAYOUT, scope), (long) index);
+        return (short) pBlue.get(managedSegment, (long) index);
     }
 
     /**
@@ -225,18 +220,23 @@ public class GLFWGammaRamp extends Pointer {
      * @return The number of elements in each array.
      */
     public int size() {
-        return (int) pSize.get(segment(LAYOUT, scope));
+        return (int) pSize.get(managedSegment);
     }
 
-    public MemoryAddress nred() {
-        return (MemoryAddress) ppRed.get(segment(LAYOUT, scope));
+    public MemorySegment nred() {
+        return (MemorySegment) ppRed.get(managedSegment);
     }
 
-    public MemoryAddress ngreen() {
-        return (MemoryAddress) ppGreen.get(segment(LAYOUT, scope));
+    public MemorySegment ngreen() {
+        return (MemorySegment) ppGreen.get(managedSegment);
     }
 
-    public MemoryAddress nblue() {
-        return (MemoryAddress) ppBlue.get(segment(LAYOUT, scope));
+    public MemorySegment nblue() {
+        return (MemorySegment) ppBlue.get(managedSegment);
+    }
+
+    @Override
+    public StructLayout layout() {
+        return LAYOUT;
     }
 }

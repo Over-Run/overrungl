@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,19 +12,11 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -33,11 +25,44 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.4 forward compatible functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_imaging</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
 public sealed class GL14C extends GL13C permits GL14, GL15C {
+    public static final int BLEND_DST_RGB = 0x80C8;
+    public static final int BLEND_SRC_RGB = 0x80C9;
+    public static final int BLEND_DST_ALPHA = 0x80CA;
+    public static final int BLEND_SRC_ALPHA = 0x80CB;
+    public static final int POINT_FADE_THRESHOLD_SIZE = 0x8128;
+    public static final int DEPTH_COMPONENT16 = 0x81A5;
+    public static final int DEPTH_COMPONENT24 = 0x81A6;
+    public static final int DEPTH_COMPONENT32 = 0x81A7;
+    public static final int MIRRORED_REPEAT = 0x8370;
+    public static final int MAX_TEXTURE_LOD_BIAS = 0x84FD;
+    public static final int TEXTURE_LOD_BIAS = 0x8501;
+    public static final int INCR_WRAP = 0x8507;
+    public static final int DECR_WRAP = 0x8508;
+    public static final int TEXTURE_DEPTH_SIZE = 0x884A;
+    public static final int TEXTURE_COMPARE_MODE = 0x884C;
+    public static final int TEXTURE_COMPARE_FUNC = 0x884D;
+    public static final int BLEND_COLOR = 0x8005;
+    public static final int BLEND_EQUATION = 0x8009;
+    public static final int CONSTANT_COLOR = 0x8001;
+    public static final int ONE_MINUS_CONSTANT_COLOR = 0x8002;
+    public static final int CONSTANT_ALPHA = 0x8003;
+    public static final int ONE_MINUS_CONSTANT_ALPHA = 0x8004;
+    public static final int FUNC_ADD = 0x8006;
+    public static final int FUNC_REVERSE_SUBTRACT = 0x800B;
+    public static final int FUNC_SUBTRACT = 0x800A;
+    public static final int MIN = 0x8007;
+    public static final int MAX = 0x8008;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBlendColor, caps.glBlendEquation, caps.glBlendFuncSeparate, caps.glMultiDrawArrays, caps.glMultiDrawElements, caps.glPointParameterf,
             caps.glPointParameterfv, caps.glPointParameteri, caps.glPointParameteriv);
@@ -82,7 +107,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void multiDrawArrays(int mode, Addressable first, Addressable count, int drawCount) {
+    public static void multiDrawArrays(int mode, MemorySegment first, MemorySegment count, int drawCount) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawArrays).invokeExact(mode, first, count, drawCount);
@@ -99,7 +124,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         multiDrawArrays(allocator, mode, first, count, first.length);
     }
 
-    public static void multiDrawElements(int mode, Addressable count, int type, Addressable indices, int drawCount) {
+    public static void multiDrawElements(int mode, MemorySegment count, int type, MemorySegment indices, int drawCount) {
         var caps = getCapabilities();
         try {
             check(caps.glMultiDrawElements).invokeExact(mode, count, type, indices, drawCount);
@@ -153,7 +178,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void pointParameterfv(int pname, Addressable params) {
+    public static void pointParameterfv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glPointParameterfv).invokeExact(pname, params);
@@ -175,7 +200,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
         }
     }
 
-    public static void pointParameteriv(int pname, Addressable params) {
+    public static void pointParameteriv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glPointParameteriv).invokeExact(pname, params);

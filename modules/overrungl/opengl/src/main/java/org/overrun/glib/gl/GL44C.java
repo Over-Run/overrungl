@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,20 +12,11 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -34,11 +25,38 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 4.4 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>GL_ARB_buffer_storage</li>
+ *     <li>GL_ARB_clear_texture</li>
+ *     <li>GL_ARB_multi_bind</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
 public sealed class GL44C extends GL43C permits GL45C {
+    public static final int MAX_VERTEX_ATTRIB_STRIDE = 0x82E5;
+    public static final int PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221;
+    public static final int TEXTURE_BUFFER_BINDING = 0x8C2A;
+    public static final int MAP_PERSISTENT_BIT = 0x0040;
+    public static final int MAP_COHERENT_BIT = 0x0080;
+    public static final int DYNAMIC_STORAGE_BIT = 0x0100;
+    public static final int CLIENT_STORAGE_BIT = 0x0200;
+    public static final int CLIENT_MAPPED_BUFFER_BARRIER_BIT = 0x00004000;
+    public static final int BUFFER_IMMUTABLE_STORAGE = 0x821F;
+    public static final int BUFFER_STORAGE_FLAGS = 0x8220;
+    public static final int CLEAR_TEXTURE = 0x9365;
+    public static final int LOCATION_COMPONENT = 0x934A;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_INDEX = 0x934B;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_STRIDE = 0x934C;
+    public static final int QUERY_BUFFER = 0x9192;
+    public static final int QUERY_BUFFER_BARRIER_BIT = 0x00008000;
+    public static final int QUERY_BUFFER_BINDING = 0x9193;
+    public static final int QUERY_RESULT_NO_WAIT = 0x9194;
+    public static final int MIRROR_CLAMP_TO_EDGE = 0x8743;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindBuffersBase, caps.glBindBuffersRange, caps.glBindImageTextures, caps.glBindSamplers, caps.glBindTextures, caps.glBindVertexBuffers,
             caps.glBufferStorage, caps.glClearTexImage, caps.glClearTexSubImage);
@@ -56,7 +74,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         caps.glClearTexSubImage = load.invoke("glClearTexSubImage", IIIIIIIIIIPV);
     }
 
-    public static void bindBuffersBase(int target, int first, int count, Addressable buffers) {
+    public static void bindBuffersBase(int target, int first, int count, MemorySegment buffers) {
         var caps = getCapabilities();
         try {
             check(caps.glBindBuffersBase).invokeExact(target, first, count, buffers);
@@ -69,7 +87,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bindBuffersBase(target, first, count, allocator.allocateArray(JAVA_INT, buffers));
     }
 
-    public static void bindBuffersRange(int target, int first, int count, Addressable buffers, Addressable offsets, Addressable sizes) {
+    public static void bindBuffersRange(int target, int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment sizes) {
         var caps = getCapabilities();
         try {
             check(caps.glBindBuffersRange).invokeExact(target, first, count, buffers, offsets, sizes);
@@ -82,7 +100,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bindBuffersRange(target, first, count, allocator.allocateArray(JAVA_INT, buffers), allocator.allocateArray(JAVA_LONG, offsets), allocator.allocateArray(JAVA_LONG, sizes));
     }
 
-    public static void bindImageTextures(int first, int count, Addressable textures) {
+    public static void bindImageTextures(int first, int count, MemorySegment textures) {
         var caps = getCapabilities();
         try {
             check(caps.glBindImageTextures).invokeExact(first, count, textures);
@@ -95,7 +113,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bindImageTextures(first, count, allocator.allocateArray(JAVA_INT, textures));
     }
 
-    public static void bindSamplers(int first, int count, Addressable samplers) {
+    public static void bindSamplers(int first, int count, MemorySegment samplers) {
         var caps = getCapabilities();
         try {
             check(caps.glBindSamplers).invokeExact(first, count, samplers);
@@ -108,7 +126,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bindSamplers(first, count, allocator.allocateArray(JAVA_INT, samplers));
     }
 
-    public static void bindTextures(int first, int count, Addressable textures) {
+    public static void bindTextures(int first, int count, MemorySegment textures) {
         var caps = getCapabilities();
         try {
             check(caps.glBindTextures).invokeExact(first, count, textures);
@@ -121,7 +139,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bindTextures(first, count, allocator.allocateArray(JAVA_INT, textures));
     }
 
-    public static void bindVertexBuffers(int first, int count, Addressable buffers, Addressable offsets, Addressable strides) {
+    public static void bindVertexBuffers(int first, int count, MemorySegment buffers, MemorySegment offsets, MemorySegment strides) {
         var caps = getCapabilities();
         try {
             check(caps.glBindVertexBuffers).invokeExact(first, count, buffers, offsets, strides);
@@ -134,7 +152,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bindVertexBuffers(first, count, allocator.allocateArray(JAVA_INT, buffers), allocator.allocateArray(JAVA_LONG, offsets), allocator.allocateArray(JAVA_LONG, strides));
     }
 
-    public static void bufferStorage(int target, long size, Addressable data, int flags) {
+    public static void bufferStorage(int target, long size, MemorySegment data, int flags) {
         var caps = getCapabilities();
         try {
             check(caps.glBufferStorage).invokeExact(target, size, data, flags);
@@ -144,7 +162,7 @@ public sealed class GL44C extends GL43C permits GL45C {
     }
 
     public static void bufferStorage(int target, long size, int flags) {
-        bufferStorage(target, size, MemoryAddress.NULL, flags);
+        bufferStorage(target, size, MemorySegment.NULL, flags);
     }
 
     public static void bufferStorage(SegmentAllocator allocator, int target, byte[] data, int flags) {
@@ -171,7 +189,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         bufferStorage(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateArray(JAVA_DOUBLE, data), flags);
     }
 
-    public static void clearTexImage(int texture, int level, int format, int type, Addressable data) {
+    public static void clearTexImage(int texture, int level, int format, int type, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glClearTexImage).invokeExact(texture, level, format, type, data);
@@ -180,7 +198,7 @@ public sealed class GL44C extends GL43C permits GL45C {
         }
     }
 
-    public static void clearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
+    public static void clearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glClearTexSubImage).invokeExact(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);

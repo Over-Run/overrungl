@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl.ext.arb;
@@ -28,7 +20,7 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_LONG;
@@ -43,6 +35,8 @@ import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
  * @since 0.1.0
  */
 public final class GLARBBindlessTexture {
+    public static final int GL_UNSIGNED_INT64_ARB = 0x140F;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_bindless_texture) return;
         ext.glGetImageHandleARB = load.invoke("glGetImageHandleARB", IIZIIJ);
@@ -90,7 +84,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glGetVertexAttribLui64vARB(int index, int pname, Addressable params) {
+    public static void glGetVertexAttribLui64vARB(int index, int pname, MemorySegment params) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGetVertexAttribLui64vARB).invokeExact(index, pname, params);
@@ -168,7 +162,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glProgramUniformHandleui64vARB(int program, int location, int count, Addressable values) {
+    public static void glProgramUniformHandleui64vARB(int program, int location, int count, MemorySegment values) {
         var ext = getExtCapabilities();
         try {
             check(ext.glProgramUniformHandleui64vARB).invokeExact(program, location, count, values);
@@ -190,7 +184,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glUniformHandleui64vARB(int location, int count, Addressable value) {
+    public static void glUniformHandleui64vARB(int location, int count, MemorySegment value) {
         var ext = getExtCapabilities();
         try {
             check(ext.glUniformHandleui64vARB).invokeExact(location, count, value);
@@ -212,7 +206,7 @@ public final class GLARBBindlessTexture {
         }
     }
 
-    public static void glVertexAttribL1ui64vARB(int index, Addressable v) {
+    public static void glVertexAttribL1ui64vARB(int index, MemorySegment v) {
         var ext = getExtCapabilities();
         try {
             check(ext.glVertexAttribL1ui64vARB).invokeExact(index, v);

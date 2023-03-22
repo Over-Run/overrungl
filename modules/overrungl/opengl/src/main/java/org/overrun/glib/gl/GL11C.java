@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -27,8 +19,7 @@ package org.overrun.glib.gl;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -42,6 +33,38 @@ import static org.overrun.glib.gl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed class GL11C extends GL10C permits GL11, GL12C {
+    public static final int COLOR_LOGIC_OP = 0x0BF2;
+    public static final int POLYGON_OFFSET_UNITS = 0x2A00;
+    public static final int POLYGON_OFFSET_POINT = 0x2A01;
+    public static final int POLYGON_OFFSET_LINE = 0x2A02;
+    public static final int POLYGON_OFFSET_FILL = 0x8037;
+    public static final int POLYGON_OFFSET_FACTOR = 0x8038;
+    public static final int TEXTURE_BINDING_1D = 0x8068;
+    public static final int TEXTURE_BINDING_2D = 0x8069;
+    public static final int TEXTURE_INTERNAL_FORMAT = 0x1003;
+    public static final int TEXTURE_RED_SIZE = 0x805C;
+    public static final int TEXTURE_GREEN_SIZE = 0x805D;
+    public static final int TEXTURE_BLUE_SIZE = 0x805E;
+    public static final int TEXTURE_ALPHA_SIZE = 0x805F;
+    public static final int DOUBLE = 0x140A;
+    public static final int PROXY_TEXTURE_1D = 0x8063;
+    public static final int PROXY_TEXTURE_2D = 0x8064;
+    public static final int R3_G3_B2 = 0x2A10;
+    public static final int RGB4 = 0x804F;
+    public static final int RGB5 = 0x8050;
+    public static final int RGB8 = 0x8051;
+    public static final int RGB10 = 0x8052;
+    public static final int RGB12 = 0x8053;
+    public static final int RGB16 = 0x8054;
+    public static final int RGBA2 = 0x8055;
+    public static final int RGBA4 = 0x8056;
+    public static final int RGB5_A1 = 0x8057;
+    public static final int RGBA8 = 0x8058;
+    public static final int RGB10_A2 = 0x8059;
+    public static final int RGBA12 = 0x805A;
+    public static final int RGBA16 = 0x805B;
+    public static final int VERTEX_ARRAY = 0x8074;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBindTexture, caps.glCopyTexImage1D, caps.glCopyTexImage2D, caps.glCopyTexSubImage1D, caps.glCopyTexSubImage2D, caps.glDeleteTextures,
             caps.glDrawArrays, caps.glDrawElements, caps.glGenTextures, caps.glGetPointerv, caps.glIsTexture, caps.glPolygonOffset,
@@ -110,7 +133,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void deleteTextures(int n, Addressable textures) {
+    public static void deleteTextures(int n, MemorySegment textures) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteTextures).invokeExact(n, textures);
@@ -119,18 +142,15 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void deleteTextures(SegmentAllocator allocator, int n, int[] textures) {
-        var pTex = allocator.allocateArray(JAVA_INT, textures);
-        deleteTextures(n, pTex);
+    public static void deleteTextures(SegmentAllocator allocator, int[] textures) {
+        deleteTextures(textures.length, allocator.allocateArray(JAVA_INT, textures));
     }
 
     public static void deleteTexture(int texture) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, texture);
-            deleteTextures(1, mem);
+            deleteTextures(1, stack.ints(texture));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -145,7 +165,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void drawElements(int mode, int count, int type, Addressable indices) {
+    public static void drawElements(int mode, int count, int type, MemorySegment indices) {
         var caps = getCapabilities();
         try {
             check(caps.glDrawElements).invokeExact(mode, count, type, indices);
@@ -169,7 +189,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         drawElements(mode, count, type, seg);
     }
 
-    public static void genTextures(int n, Addressable textures) {
+    public static void genTextures(int n, MemorySegment textures) {
         var caps = getCapabilities();
         try {
             check(caps.glGenTextures).invokeExact(n, textures);
@@ -197,7 +217,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void getPointerv(int pname, Addressable params) {
+    public static void getPointerv(int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetPointerv).invokeExact(pname, params);
@@ -206,13 +226,13 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static MemoryAddress getPointer(int pname) {
+    public static MemorySegment getPointer(int pname) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var pParams = stack.calloc(ADDRESS);
             getPointerv(pname, pParams);
-            return pParams.get(ADDRESS, 0);
+            return pParams.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -236,7 +256,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         }
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, Addressable pixels) {
+    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
@@ -261,7 +281,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, Addressable pixels) {
+    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
         var caps = getCapabilities();
         try {
             check(caps.glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);

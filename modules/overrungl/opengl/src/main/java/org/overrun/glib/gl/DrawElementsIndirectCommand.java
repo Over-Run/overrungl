@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,19 +12,11 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
 
-import org.overrun.glib.Pointer;
+import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -36,54 +28,53 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class DrawElementsIndirectCommand extends Pointer {
+public class DrawElementsIndirectCommand extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT =
-            MemoryLayout.structLayout(
-                    ValueLayout.JAVA_INT.withName("count"),
-                    ValueLayout.JAVA_INT.withName("primCount"),
-                    ValueLayout.JAVA_INT.withName("firstIndex"),
-                    ValueLayout.JAVA_INT.withName("baseVertex"),
-                    ValueLayout.JAVA_INT.withName("baseInstance")
-            ).withName("DrawElementsIndirectCommand");
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("count"),
+        ValueLayout.JAVA_INT.withName("primCount"),
+        ValueLayout.JAVA_INT.withName("firstIndex"),
+        ValueLayout.JAVA_INT.withName("baseVertex"),
+        ValueLayout.JAVA_INT.withName("baseInstance")
+    );
     private static final VarHandle
-            pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
-            pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
-            pFirstIndex = LAYOUT.varHandle(PathElement.groupElement("firstIndex")),
-            pBaseVertex = LAYOUT.varHandle(PathElement.groupElement("baseVertex")),
-            pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
+        pCount = LAYOUT.varHandle(PathElement.groupElement("count")),
+        pPrimCount = LAYOUT.varHandle(PathElement.groupElement("primCount")),
+        pFirstIndex = LAYOUT.varHandle(PathElement.groupElement("firstIndex")),
+        pBaseVertex = LAYOUT.varHandle(PathElement.groupElement("baseVertex")),
+        pBaseInstance = LAYOUT.varHandle(PathElement.groupElement("baseInstance"));
 
     /**
      * Create the pointer instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param arena   the arena of this address.
      */
-    public DrawElementsIndirectCommand(Addressable address, MemorySession scope) {
-        super(address, scope);
+    public DrawElementsIndirectCommand(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a command instance with the given segment scope.
+     * Creates a command instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static DrawElementsIndirectCommand create(MemorySession scope) {
-        return new DrawElementsIndirectCommand(scope.allocate(LAYOUT), scope);
+    public static DrawElementsIndirectCommand create(Arena arena) {
+        return new DrawElementsIndirectCommand(arena.allocate(LAYOUT), arena);
     }
 
     /**
-     * Creates a command instance with the given segment scope and count.
+     * Creates a command instance with the given arena and count.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession scope, long count) {
-        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
+    public static Buffer create(Arena arena, long count) {
+        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
     }
 
     /**
@@ -93,7 +84,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand count(int count) {
-        pCount.set(segment(LAYOUT, scope), count);
+        pCount.set(managedSegment, count);
         return this;
     }
 
@@ -104,7 +95,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand primCount(int primCount) {
-        pPrimCount.set(segment(LAYOUT, scope), primCount);
+        pPrimCount.set(managedSegment, primCount);
         return this;
     }
 
@@ -115,7 +106,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand firstIndex(int firstIndex) {
-        pFirstIndex.set(segment(LAYOUT, scope), firstIndex);
+        pFirstIndex.set(managedSegment, firstIndex);
         return this;
     }
 
@@ -126,7 +117,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseVertex(int baseVertex) {
-        pBaseVertex.set(segment(LAYOUT, scope), baseVertex);
+        pBaseVertex.set(managedSegment, baseVertex);
         return this;
     }
 
@@ -137,7 +128,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return this
      */
     public DrawElementsIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(segment(LAYOUT, scope), baseInstance);
+        pBaseInstance.set(managedSegment, baseInstance);
         return this;
     }
 
@@ -147,7 +138,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the count
      */
     public int count() {
-        return (int) pCount.get(segment(LAYOUT, scope));
+        return (int) pCount.get(managedSegment);
     }
 
     /**
@@ -156,7 +147,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the primitive count
      */
     public int primCount() {
-        return (int) pPrimCount.get(segment(LAYOUT, scope));
+        return (int) pPrimCount.get(managedSegment);
     }
 
     /**
@@ -165,7 +156,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the first index
      */
     public int firstIndex() {
-        return (int) pFirstIndex.get(segment(LAYOUT, scope));
+        return (int) pFirstIndex.get(managedSegment);
     }
 
     /**
@@ -174,7 +165,7 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base vertex
      */
     public int baseVertex() {
-        return (int) pBaseVertex.get(segment(LAYOUT, scope));
+        return (int) pBaseVertex.get(managedSegment);
     }
 
     /**
@@ -183,7 +174,12 @@ public class DrawElementsIndirectCommand extends Pointer {
      * @return the base instance
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(segment(LAYOUT, scope));
+        return (int) pBaseInstance.get(managedSegment);
+    }
+
+    @Override
+    public MemoryLayout layout() {
+        return LAYOUT;
     }
 
     /**
@@ -195,23 +191,25 @@ public class DrawElementsIndirectCommand extends Pointer {
     public static class Buffer extends DrawElementsIndirectCommand {
         private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirstIndex, pBaseVertex, pBaseInstance;
+        private final SequenceLayout layout;
 
         /**
          * Create the pointer instance.
          *
-         * @param address      the address
-         * @param scope        the segment scope
+         * @param address      the address.
+         * @param arena        the arena of this address.
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession scope, long elementCount) {
-            super(address, scope);
+        public Buffer(MemorySegment address, Arena arena, long elementCount) {
+            super(address, arena);
             this.elementCount = elementCount;
-            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
             pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
             pFirstIndex = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex"));
             pBaseVertex = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseVertex"));
             pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
+            managedSegment = segment(layout, arena);
         }
 
         /**
@@ -231,7 +229,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer count(long index, int count) {
-            pCount.set(segment(LAYOUT, scope), index, count);
+            pCount.set(managedSegment, index, count);
             return this;
         }
 
@@ -243,7 +241,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer primCount(long index, int primCount) {
-            pPrimCount.set(segment(LAYOUT, scope), index, primCount);
+            pPrimCount.set(managedSegment, index, primCount);
             return this;
         }
 
@@ -255,7 +253,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer firstIndex(long index, int firstIndex) {
-            pFirstIndex.set(segment(LAYOUT, scope), index, firstIndex);
+            pFirstIndex.set(managedSegment, index, firstIndex);
             return this;
         }
 
@@ -267,7 +265,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer baseVertex(long index, int baseVertex) {
-            pBaseVertex.set(segment(LAYOUT, scope), index, baseVertex);
+            pBaseVertex.set(managedSegment, index, baseVertex);
             return this;
         }
 
@@ -279,7 +277,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return this
          */
         public Buffer baseInstance(long index, int baseInstance) {
-            pBaseInstance.set(segment(LAYOUT, scope), index, baseInstance);
+            pBaseInstance.set(managedSegment, index, baseInstance);
             return this;
         }
 
@@ -315,7 +313,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the count
          */
         public int countAt(long index) {
-            return (int) pCount.get(segment(LAYOUT, scope), index);
+            return (int) pCount.get(managedSegment, index);
         }
 
         /**
@@ -325,7 +323,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the primitive count
          */
         public int primCountAt(long index) {
-            return (int) pPrimCount.get(segment(LAYOUT, scope), index);
+            return (int) pPrimCount.get(managedSegment, index);
         }
 
         /**
@@ -335,7 +333,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the first index
          */
         public int firstIndexAt(long index) {
-            return (int) pFirstIndex.get(segment(LAYOUT, scope), index);
+            return (int) pFirstIndex.get(managedSegment, index);
         }
 
         /**
@@ -345,7 +343,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the base vertex
          */
         public int baseVertexAt(long index) {
-            return (int) pBaseVertex.get(segment(LAYOUT, scope), index);
+            return (int) pBaseVertex.get(managedSegment, index);
         }
 
         /**
@@ -355,7 +353,7 @@ public class DrawElementsIndirectCommand extends Pointer {
          * @return the base instance
          */
         public int baseInstanceAt(long index) {
-            return (int) pBaseInstance.get(segment(LAYOUT, scope), index);
+            return (int) pBaseInstance.get(managedSegment, index);
         }
 
         @Override
@@ -381,6 +379,11 @@ public class DrawElementsIndirectCommand extends Pointer {
         @Override
         public int baseInstance() {
             return baseInstanceAt(0);
+        }
+
+        @Override
+        public SequenceLayout layout() {
+            return layout;
         }
     }
 }

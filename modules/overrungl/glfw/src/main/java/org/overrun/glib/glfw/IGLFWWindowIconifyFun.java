@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,21 +12,15 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.ICallback;
+import org.overrun.glib.Callback;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -36,7 +30,7 @@ import java.lang.invoke.MethodType;
  * iconify callback function has the following signature:
  * {@snippet :
  * @Invoker(IGLFWWindowIconifyFun::invoke)
- * void functionName(MemoryAddress window, boolean iconified);
+ * void functionName(MemorySegment window, boolean iconified);
  * }
  *
  * @author squid233
@@ -44,9 +38,9 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWWindowIconifyFun extends ICallback {
+public interface IGLFWWindowIconifyFun extends Callback {
     FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = MethodType.methodType(void.class, MemoryAddress.class, int.class);
+    MethodType MTYPE = DESC.toMethodType();
 
     /**
      * The function pointer type for window iconify callbacks.
@@ -55,10 +49,10 @@ public interface IGLFWWindowIconifyFun extends ICallback {
      * @param iconified {@code true} if the window was iconified, or
      *                  {@code false} if it was restored.
      */
-    void invoke(MemoryAddress window, boolean iconified);
+    void invoke(MemorySegment window, boolean iconified);
 
-    default void ninvoke(MemoryAddress window, int iconified) {
-        invoke(window, iconified == GLFW.TRUE);
+    default void ninvoke(MemorySegment window, int iconified) {
+        invoke(window, iconified != GLFW.FALSE);
     }
 
     @Override

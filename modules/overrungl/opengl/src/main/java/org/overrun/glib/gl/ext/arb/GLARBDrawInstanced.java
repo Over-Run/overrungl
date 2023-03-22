@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -56,7 +56,7 @@ public final class GLARBDrawInstanced {
         }
     }
 
-    public static void glDrawElementsInstancedARB(int mode, int count, int type, Addressable indices, int primCount) {
+    public static void glDrawElementsInstancedARB(int mode, int count, int type, MemorySegment indices, int primCount) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glDrawElementsInstancedARB).invokeExact(mode, count, type, indices, primCount);

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -51,7 +51,7 @@ public final class GLAMDNameGenDelete {
         ext.glIsNameAMD = load.invoke("glIsNameAMD", FunctionDescriptors.IIZ);
     }
 
-    public static void glDeleteNamesAMD(int identifier, int num, Addressable names) {
+    public static void glDeleteNamesAMD(int identifier, int num, MemorySegment names) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDeleteNamesAMD).invokeExact(identifier, num, names);
@@ -68,15 +68,13 @@ public final class GLAMDNameGenDelete {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, name);
-            glDeleteNamesAMD(identifier, 1, mem);
+            glDeleteNamesAMD(identifier, 1, stack.ints(name));
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
-    public static void glGenNamesAMD(int identifier, int num, Addressable names) {
+    public static void glGenNamesAMD(int identifier, int num, MemorySegment names) {
         var ext = getExtCapabilities();
         try {
             check(ext.glGenNamesAMD).invokeExact(identifier, num, names);

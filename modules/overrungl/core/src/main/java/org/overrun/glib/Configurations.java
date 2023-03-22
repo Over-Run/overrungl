@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib;
@@ -34,11 +26,17 @@ import java.util.function.Supplier;
  */
 public final class Configurations {
     /**
-     * The stack size configuration for {@link org.overrun.glib.util.MemoryStack MemoryStack}.
+     * The default stack size in KiB of {@link org.overrun.glib.util.MemoryStack MemoryStack}.
      * <p>
      * The default value is {@code 64}.
      */
     public static final Entry<Long> STACK_SIZE = new Entry<>(() -> 64L);
+    /**
+     * The default stack frames of {@link org.overrun.glib.util.MemoryStack MemoryStack}.
+     * <p>
+     * The default value is {@code 8}.
+     */
+    public static final Entry<Integer> STACK_FRAMES = new Entry<>(() -> 8);
     /**
      * Enable debug messages and prints to {@link RuntimeHelper#apiLogger()}.
      * <p>
@@ -52,11 +50,29 @@ public final class Configurations {
      */
     public static final Entry<Boolean> DEBUG_STACK = new Entry<>(() -> false);
     /**
+     * Enable debug memory util to check memory leaks.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> DEBUG_MEM_UTIL = new Entry<>(() -> false);
+    /**
+     * Disable stacktrace in debug allocator.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> DEBUG_MEM_UTIL_FAST = new Entry<>(() -> false);
+    /**
      * Enable checks.
      * <p>
      * The default value is {@code true}.
      */
     public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
+    /**
+     * Forcing check all method handles for GL.
+     * <p>
+     * The default value is {@code false}.
+     */
+    public static final Entry<Boolean> GL_FORCE_CHECK_ALL = new Entry<>(() -> false);
 
     /**
      * A configuration entry.

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl.ext.amd;
@@ -28,9 +20,8 @@ import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
@@ -54,7 +45,7 @@ public final class GLAMDDebugOutput {
         ext.glGetDebugMessageLogAMD = load.invoke("glGetDebugMessageLogAMD", IIPPPPPI);
     }
 
-    public static void glDebugMessageCallbackAMD(Addressable callback, Addressable userParam) {
+    public static void glDebugMessageCallbackAMD(MemorySegment callback, MemorySegment userParam) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageCallbackAMD).invokeExact(callback, userParam);
@@ -63,11 +54,11 @@ public final class GLAMDDebugOutput {
         }
     }
 
-    public static void glDebugMessageCallbackAMD(MemorySession arena, GLDebugProcAMD callback, Addressable userParam) {
+    public static void glDebugMessageCallbackAMD(Arena arena, GLDebugProcAMD callback, MemorySegment userParam) {
         glDebugMessageCallbackAMD(callback.address(arena), userParam);
     }
 
-    public static void glDebugMessageEnableAMD(int category, int severity, int count, Addressable ids, boolean enabled) {
+    public static void glDebugMessageEnableAMD(int category, int severity, int count, MemorySegment ids, boolean enabled) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
@@ -80,7 +71,7 @@ public final class GLAMDDebugOutput {
         glDebugMessageEnableAMD(category, severity, ids.length, allocator.allocateArray(JAVA_INT, ids), enabled);
     }
 
-    public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, Addressable buf) {
+    public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, MemorySegment buf) {
         var ext = getExtCapabilities();
         try {
             check(ext.glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
@@ -93,7 +84,7 @@ public final class GLAMDDebugOutput {
         glDebugMessageInsertAMD(category, severity, id, 0, allocator.allocateUtf8String(buf));
     }
 
-    public static int glGetDebugMessageLogAMD(int count, int bufSize, Addressable categories, Addressable severities, Addressable ids, Addressable lengths, Addressable message) {
+    public static int glGetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {
         var ext = getExtCapabilities();
         try {
             return (int) check(ext.glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,20 +12,12 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,25 +28,29 @@ import java.util.Map;
  * @since 0.1.0
  */
 public final class Callbacks {
-    private static final Map<Addressable, MemorySession> ARENA_MAP = new HashMap<>();
+    private static final Map<MemorySegment, Arena> ARENA_MAP = new HashMap<>();
 
-    /**
-     * Creates an arena for the given window. The lifetime of the callbacks are available
-     * until {@link #free(Addressable)} has been called.
-     *
-     * @param window the window address
-     * @return the arena
-     */
-    public static MemorySession create(Addressable window) {
-        return ARENA_MAP.computeIfAbsent(window, k -> MemorySession.openShared());
+    private Callbacks() {
+        //no instance
     }
 
     /**
-     * Close the arena for the given window.
+     * Creates an arena for the given window. The callbacks are available until {@link #free(MemorySegment)}
+     * has been called.
      *
-     * @param window the window
+     * @param window the window address.
+     * @return the arena.
      */
-    public static void free(Addressable window) {
+    public static Arena create(MemorySegment window) {
+        return ARENA_MAP.computeIfAbsent(window, k -> Arena.openConfined());
+    }
+
+    /**
+     * Closes the arena for the given window.
+     *
+     * @param window the window address.
+     */
+    public static void free(MemorySegment window) {
         if (ARENA_MAP.containsKey(window)) {
             ARENA_MAP.remove(window).close();
         }

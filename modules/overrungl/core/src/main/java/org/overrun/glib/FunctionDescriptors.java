@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib;
@@ -32,7 +24,7 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * The function descriptors.
  *
- * <h2>Char-table</h2>
+ * <h2>Mappings</h2>
  * <pre>{@code
  * switch (c) {
  *     case 'B' -> JAVA_BYTE;
@@ -43,7 +35,9 @@ import static java.lang.foreign.ValueLayout.*;
  *     case 'Z' -> JAVA_BOOLEAN;
  *     case 'F' -> JAVA_FLOAT;
  *     case 'D' -> JAVA_DOUBLE;
- *     default -> ADDRESS;
+ *     case 'P' -> ADDRESS;
+ *     case 'p' -> RuntimeHelper.ADDRESS_UNBOUNDED;
+ *     default -> throw();
  * }}</pre>
  *
  * @author squid233
@@ -51,38 +45,38 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public enum FunctionDescriptors {
     // 1
-    D, I, J, P, V,
+    D, F, I, J, P, p, V,
     // 2
-    BV, DV, FV, II, IJ, IP, IV, IZ, JP, JV, JZ, PF,
+    BV, DV, FV, II, IJ, IP, Ip, IV, IZ, JP, JV, JZ, PF,
     /**
      * Make it doesn't confuse with {@link Math#PI}.
      */
     fd_PI("PI"),
-    PP, PV, PZ, SV, ZV,
+    PJ, PP, Pp, PV, PZ, SV, ZV,
     // 3
-    DDV, FFV, FZV, IDV, IFV, III, IIJ, IIP, IIV, IIZ, IJV, IPI, IPP, IPV, ISV, JIV, JJP, PFV, PII, PIV, PJP, PPI, PPP, PPV,
-    SSV,
+    DDV, FFV, FZV, IDV, IFV, III, IIJ, IIP, IIp, IIV, IIZ, IJV, IPI, IPP, IPp, IPV, ISV, JIV, JJP, PFV, PII, PIV, PJP, PPI,
+    PPP, PPp, PPV, SSV,
     // 4
     BBBV, DDDV, FFFV, IDDV, IFFV, IIDV, IIFV, IIII, IIIV, IIJV, IIPI, IIPV, IJJV, IPIV, IPPV, IPPZ, ISSV, PDDV, PIIP, PIIV,
-    PIJI, PIJP, PIJV, PIPP, PIPV, PPII, PPIP, PPJP, PPPV, SSSV,
+    PIJI, PIJP, PIJV, PIPp, PIPV, PPII, PPIP, PPJP, PPPV, SSSV,
     // 5
-    BBBBV, DDDDV, FFFFV, IDDDV, IFFFV, IIDDV, IIFFV, IIFIV, IIIIV, IIIJV, IIIPV, IIJIV, IIPIV, IIPPV, IIZIV, IIZPV, IJJIP,
-    IJJPV, IJPIV, IPIIV, IPPIV, ISSSV, PIIIP, PIIPP, PIPII, PIPIP, PIPPV, PPPPI, PPPPV, SSSSV, ZZZZV,
+    BBBBV, DDDDV, FFFFV, IDDDV, IFFFV, IIDDV, IIFFV, IIFIV, IIIIV, IIIJV, IIIPV, IIJIV, IIJJV, IIPIV, IIPPV, IIZIV, IIZPV,
+    IJJIP, IJJJV, IJJPV, IJPIV, IPIIV, IPPIV, ISSSV, PIIIP, PIIPp, PIPII, PIPIp, PIPPV, PPPPI, PPPPV, SSSSV, ZZZZV,
     // 6
     FFFFFV, IBBBBV, IDDDDV, IFFFFV, IIDDDV, IIFFFV, IIIFIV, IIIIIV, IIIIPV, IIIJIV, IIIJJV, IIIPIV, IIIPPP, IIIPPV, IIIPZV,
-    IIIZIV, IIIZPV, IIJJJV, IIPIIV, IIPIPV, IIPPPP, IIPPPV, IIZIIJ, IPIPIV, IPIPPV, IPJIIV, IPPIPV, ISSSSV, IZIIPV, IZZZZV,
-    PIIIIV, PIIIPI, PIIPIP, PIIPPV, PIPPPI, PPIIIP, PPPIIV, PPPPIP, PPPPPI, PPPPPV,
+    IIIZIV, IIIZPV, IIJJJV, IIPIIV, IIPIPV, IIPPPP, IIPPPV, IIZIIJ, IJJJJV, IPIPIV, IPIPPV, IPJIIV, IPPIPV, ISSSSV, IZIIPV,
+    IZZZZV, PIIIIV, PIIIPI, PIIPIp, PIIPPV, PIPPPI, PPIIIP, PPPIIV, PPPPIp, PPPPPI, PPPPPV,
     // 7
-    BBBBFFV, DDDDDDV, FFFFFFV, IDDIDDV, IDDIIPV, IFFFFFV, IFFIFFV, IFFIIPV, IIDDDDV, IIFFFFV, IIIIIIV, IIIIIPV, IIIIIZV,
-    IIIIPPV, IIIIPZV, IIIIZIV, IIIPIIV, IIIPPIV, IIIPPPV, IIIZIPV, IIPJIIV, IPIPIPV, PIIIIPP, PIPPPIP, PPIIIPI, PPIPIIV,
-    PPPPPIP,
+    BBBBFFV, DDDDDDV, FFFFFFV, FFFFFIF, FFFIIIF, FFPPPII, IDDIDDV, IDDIIPV, IFFFFFV, IFFIFFV, IFFIIPV, IIDDDDV, IIFFFFV,
+    IIIIIIV, IIIIIPV, IIIIIZV, IIIIPPV, IIIIPZV, IIIIZIV, IIIPIIV, IIIPPIV, IIIPPPV, IIIZIPV, IIJJJJV, IIPJIIV, IPIPIPV,
+    PIIIIPp, PIIIPII, PIPPPIp, PPIIIPI, PPIPIIV, PPPPPIp,
     // 8
-    BBBBFFFV, IFFFFFFV, IIDDIIPV, IIFFFFPV, IIFFIIPV, IIIIIIIV, IIIIIIPV, IIIIIIZV, IIIIIPIV, IIIPIIIV, IIIPPPPV, IIIZIIIV,
-    IIJJIIPV, IIPIIIIV, IIPPPPPI, IIPPPPPV, PPIIIIIV,
+    BBBBFFFV, FFFFFFIF, FFFIIIBF, FFFIIIIF, IFFFFFFV, IIDDIIPV, IIFFFFPV, IIFFIIPV, IIIIIIIV, IIIIIIPV, IIIIIIZV, IIIIIPIV,
+    IIIPIIIV, IIIPPPPV, IIIZIIIV, IIJJIIPV, IIPIIIIV, IIPPPPPI, IIPPPPPV, PPIIIIIV,
     // 9
-    FFFFFFFFV, IBBBBFFFV, IIIIIIIIV, IIIIIIIPV, IIIIPIPPV, IIPPPPPPI, PIPPPPPIP,
+    FFFFFFFFV, IBBBBFFFV, IIIIIIIIV, IIIIIIIPV, IIIIPIPPV, IIPPPPPPI, PIPPPPPIp,
     // 10
-    FFBBBBFFFV, IFFFFFFFFV, IIIIIIIIIV, IIIIIIIIPV, PIIIPIIIII,
+    FFBBBBFFFV, FFPIIPPIII, IFFFFFFFFV, IIIIIIIIIV, IIIIIIIIPV, PIIIPIIIII,
     // 11
     FFFFFFFFFFV, IDDIIDDIIPV, IFFIIFFIIPV, IIIIIIIIIIV, IIIIIIIIIPV,
     // 12
@@ -110,12 +104,13 @@ public enum FunctionDescriptors {
     }
 
     /**
-     * Gets the value layout of the specified char.
+     * Gets the value layout of the specified character.
      *
      * @param c the character
      * @return the value layout
+     * @throws IllegalArgumentException if <i>{@code c}</i> is not a value layout mark.
      */
-    public static ValueLayout ofValue(char c) {
+    public static ValueLayout ofValue(char c) throws IllegalArgumentException {
         return switch (c) {
             case 'B' -> JAVA_BYTE;
             case 'S' -> JAVA_SHORT;
@@ -125,9 +120,12 @@ public enum FunctionDescriptors {
             case 'Z' -> JAVA_BOOLEAN;
             case 'F' -> JAVA_FLOAT;
             case 'D' -> JAVA_DOUBLE;
-//            case 'P' -> ADDRESS;
-//            case 'p' -> ADDRESS.asUnbounded();
-            default -> ADDRESS;
+            case 'P' -> ADDRESS;
+            case 'p' -> RuntimeHelper.ADDRESS_UNBOUNDED;
+            default ->
+                throw new IllegalArgumentException(
+                    "Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '" + c + '\''
+                );
         };
     }
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,44 +12,37 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.demo.opengl;
 
+import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.gl.GL;
 import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
-import org.overrun.glib.util.BufferBuilder;
+import org.overrun.glib.util.CustomArena;
+import org.overrun.glib.util.GrowableBuffer;
 
-import java.lang.foreign.MemoryAddress;
-import java.lang.foreign.MemorySession;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
-import static org.overrun.glib.gl.GLConstC.*;
 
 /**
- * Tests {@link BufferBuilder}
+ * Tests {@link GrowableBuffer}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class BufferBuilderTest {
-    private MemoryAddress window;
+public final class GrowableBufferTest {
+    private MemorySegment window;
     private int program, vao, vbo;
 
     public void run() {
-        try (var arena = MemorySession.openShared()) {
+        try (var arena = Arena.openShared()) {
             init(arena);
             load(arena);
         }
@@ -66,7 +59,7 @@ public final class BufferBuilderTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(MemorySession arena) {
+    private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
         if (!GLFW.init()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -74,8 +67,8 @@ public final class BufferBuilderTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 300, 300, "BufferBuilder Test", MemoryAddress.NULL, MemoryAddress.NULL);
-        if (window == MemoryAddress.NULL)
+        window = GLFW.createWindow(arena, 300, 300, "GrowableBuffer Test", MemorySegment.NULL, MemorySegment.NULL);
+        if (window.address() == RuntimeHelper.NULL)
             throw new RuntimeException("Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -100,15 +93,15 @@ public final class BufferBuilderTest {
         GLFW.showWindow(window);
     }
 
-    private void load(MemorySession arena) {
+    private void load(Arena arena) {
         if (GLLoader.loadConfined(GLFW::getProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
         program = GL.createProgram();
-        int vsh = GL.createShader(GL_VERTEX_SHADER);
-        int fsh = GL.createShader(GL_FRAGMENT_SHADER);
+        int vsh = GL.createShader(GL.VERTEX_SHADER);
+        int fsh = GL.createShader(GL.FRAGMENT_SHADER);
         GL.shaderSource(arena, vsh, """
             #version 130
 
@@ -148,43 +141,39 @@ public final class BufferBuilderTest {
         vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
         vbo = GL.genBuffer();
-        GL.bindBuffer(GL_ARRAY_BUFFER, vbo);
-        int stride;
-        try (var builder = new BufferBuilder(4 * 3 * 3 + 4 * 3)) {
-            builder.begin()
+        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
+        final int stride = (int) (JAVA_FLOAT.byteSize() * 3 + JAVA_BYTE.byteSize() * 4);
+        try (CustomArena customArena = CustomArena.delegated(Arena.openConfined())) {
+            var buffer = new GrowableBuffer(customArena, 2);
+            buffer.clear()
                 .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0xff, (byte) 0, (byte) 0)
                 // For alignment reason, we put a padding byte
                 .put(JAVA_BYTE, (byte) 0)
-                .emit()
                 .putAll(JAVA_FLOAT, -0.5f, -0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0, (byte) 0xff, (byte) 0)
                 .put(JAVA_BYTE, (byte) 0)
-                .emit()
                 .putAll(JAVA_FLOAT, 0.5f, -0.5f, 0.0f)
                 .putAll(JAVA_BYTE, (byte) 0, (byte) 0, (byte) 0xff)
-                .put(JAVA_BYTE, (byte) 0)
-                .emit()
-                .end();
-            GL.bufferData(GL_ARRAY_BUFFER, builder, GL_STATIC_DRAW);
-            stride = (int) builder.stride();
+                .put(JAVA_BYTE, (byte) 0);
+            GL.bufferData(GL.ARRAY_BUFFER, buffer, GL.STATIC_DRAW);
         }
         GL.enableVertexAttribArray(0);
         GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL_FLOAT, false, stride, MemoryAddress.NULL);
-        GL.vertexAttribPointer(1, 3, GL_UNSIGNED_BYTE, true, stride, MemoryAddress.ofLong(12));
-        GL.bindBuffer(GL_ARRAY_BUFFER, 0);
+        GL.vertexAttribPointer(0, 3, GL.FLOAT, false, stride, MemorySegment.NULL);
+        GL.vertexAttribPointer(1, 3, GL.UNSIGNED_BYTE, true, stride, MemorySegment.ofAddress(12));
+        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
     }
 
     private void loop() {
         while (!GLFW.windowShouldClose(window)) {
-            GL.clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
             GL.useProgram(program);
             GL.bindVertexArray(vao);
-            GL.drawArrays(GL_TRIANGLES, 0, 3);
+            GL.drawArrays(GL.TRIANGLES, 0, 3);
             GL.bindVertexArray(0);
             GL.useProgram(0);
 
@@ -195,6 +184,6 @@ public final class BufferBuilderTest {
     }
 
     public static void main(String[] args) {
-        new BufferBuilderTest().run();
+        new GrowableBufferTest().run();
     }
 }

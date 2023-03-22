@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,10 @@
 
 package org.overrun.glib.gl.ext.amd;
 
-import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.gl.GLLoader;
 import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.invoke.MethodHandle;
+import org.overrun.glib.gl.GLLoader;
 
 /**
  * {@code GL_AMD_occlusion_query_event}
@@ -39,9 +36,6 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 public final class GLAMDOcclusionQueryEvent {
-    @Nullable
-    public static MethodHandle glQueryObjectParameteruiAMD;
-
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_occlusion_query_event) return;
         ext.glQueryObjectParameteruiAMD = load.invoke("glQueryObjectParameteruiAMD", FunctionDescriptors.IIIIV);

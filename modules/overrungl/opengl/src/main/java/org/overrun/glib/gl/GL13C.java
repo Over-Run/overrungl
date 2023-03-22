@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,30 +12,87 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 import static org.overrun.glib.FunctionDescriptors.*;
 import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.3 forward compatible functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBMultisample GL_ARB_multisample}</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
 public sealed class GL13C extends GL12C permits GL13, GL14C {
+    public static final int TEXTURE0 = 0x84C0;
+    public static final int TEXTURE1 = 0x84C1;
+    public static final int TEXTURE2 = 0x84C2;
+    public static final int TEXTURE3 = 0x84C3;
+    public static final int TEXTURE4 = 0x84C4;
+    public static final int TEXTURE5 = 0x84C5;
+    public static final int TEXTURE6 = 0x84C6;
+    public static final int TEXTURE7 = 0x84C7;
+    public static final int TEXTURE8 = 0x84C8;
+    public static final int TEXTURE9 = 0x84C9;
+    public static final int TEXTURE10 = 0x84CA;
+    public static final int TEXTURE11 = 0x84CB;
+    public static final int TEXTURE12 = 0x84CC;
+    public static final int TEXTURE13 = 0x84CD;
+    public static final int TEXTURE14 = 0x84CE;
+    public static final int TEXTURE15 = 0x84CF;
+    public static final int TEXTURE16 = 0x84D0;
+    public static final int TEXTURE17 = 0x84D1;
+    public static final int TEXTURE18 = 0x84D2;
+    public static final int TEXTURE19 = 0x84D3;
+    public static final int TEXTURE20 = 0x84D4;
+    public static final int TEXTURE21 = 0x84D5;
+    public static final int TEXTURE22 = 0x84D6;
+    public static final int TEXTURE23 = 0x84D7;
+    public static final int TEXTURE24 = 0x84D8;
+    public static final int TEXTURE25 = 0x84D9;
+    public static final int TEXTURE26 = 0x84DA;
+    public static final int TEXTURE27 = 0x84DB;
+    public static final int TEXTURE28 = 0x84DC;
+    public static final int TEXTURE29 = 0x84DD;
+    public static final int TEXTURE30 = 0x84DE;
+    public static final int TEXTURE31 = 0x84DF;
+    public static final int ACTIVE_TEXTURE = 0x84E0;
+    public static final int MULTISAMPLE = 0x809D;
+    public static final int SAMPLE_ALPHA_TO_COVERAGE = 0x809E;
+    public static final int SAMPLE_ALPHA_TO_ONE = 0x809F;
+    public static final int SAMPLE_COVERAGE = 0x80A0;
+    public static final int SAMPLE_BUFFERS = 0x80A8;
+    public static final int SAMPLES = 0x80A9;
+    public static final int SAMPLE_COVERAGE_VALUE = 0x80AA;
+    public static final int SAMPLE_COVERAGE_INVERT = 0x80AB;
+    public static final int TEXTURE_CUBE_MAP = 0x8513;
+    public static final int TEXTURE_BINDING_CUBE_MAP = 0x8514;
+    public static final int TEXTURE_CUBE_MAP_POSITIVE_X = 0x8515;
+    public static final int TEXTURE_CUBE_MAP_NEGATIVE_X = 0x8516;
+    public static final int TEXTURE_CUBE_MAP_POSITIVE_Y = 0x8517;
+    public static final int TEXTURE_CUBE_MAP_NEGATIVE_Y = 0x8518;
+    public static final int TEXTURE_CUBE_MAP_POSITIVE_Z = 0x8519;
+    public static final int TEXTURE_CUBE_MAP_NEGATIVE_Z = 0x851A;
+    public static final int PROXY_TEXTURE_CUBE_MAP = 0x851B;
+    public static final int MAX_CUBE_MAP_TEXTURE_SIZE = 0x851C;
+    public static final int COMPRESSED_RGB = 0x84ED;
+    public static final int COMPRESSED_RGBA = 0x84EE;
+    public static final int TEXTURE_COMPRESSION_HINT = 0x84EF;
+    public static final int TEXTURE_COMPRESSED_IMAGE_SIZE = 0x86A0;
+    public static final int TEXTURE_COMPRESSED = 0x86A1;
+    public static final int NUM_COMPRESSED_TEXTURE_FORMATS = 0x86A2;
+    public static final int COMPRESSED_TEXTURE_FORMATS = 0x86A3;
+    public static final int CLAMP_TO_BORDER = 0x812D;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glActiveTexture, caps.glCompressedTexImage1D, caps.glCompressedTexImage2D, caps.glCompressedTexImage3D, caps.glCompressedTexSubImage1D, caps.glCompressedTexSubImage2D,
             caps.glCompressedTexSubImage3D, caps.glGetCompressedTexImage, caps.glSampleCoverage);
@@ -62,7 +119,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexImage1D(int target, int level, int internalFormat, int width, int border, int imageSize, Addressable data) {
+    public static void compressedTexImage1D(int target, int level, int internalFormat, int width, int border, int imageSize, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glCompressedTexImage1D).invokeExact(target, level, internalFormat, width, border, imageSize, data);
@@ -71,7 +128,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int imageSize, Addressable data) {
+    public static void compressedTexImage2D(int target, int level, int internalFormat, int width, int height, int border, int imageSize, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glCompressedTexImage2D).invokeExact(target, level, internalFormat, width, height, border, imageSize, data);
@@ -80,7 +137,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, Addressable data) {
+    public static void compressedTexImage3D(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glCompressedTexImage3D).invokeExact(target, level, internalFormat, width, height, depth, border, imageSize, data);
@@ -89,7 +146,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, Addressable data) {
+    public static void compressedTexSubImage1D(int target, int level, int xoffset, int width, int format, int imageSize, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glCompressedTexSubImage1D).invokeExact(target, level, xoffset, width, format, imageSize, data);
@@ -98,7 +155,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, Addressable data) {
+    public static void compressedTexSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glCompressedTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, imageSize, data);
@@ -107,7 +164,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void compressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, Addressable data) {
+    public static void compressedTexSubImage3D(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glCompressedTexSubImage3D).invokeExact(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
@@ -116,7 +173,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         }
     }
 
-    public static void getCompressedTexImage(int target, int level, Addressable img) {
+    public static void getCompressedTexImage(int target, int level, MemorySegment img) {
         var caps = getCapabilities();
         try {
             check(caps.glGetCompressedTexImage).invokeExact(target, level, img);

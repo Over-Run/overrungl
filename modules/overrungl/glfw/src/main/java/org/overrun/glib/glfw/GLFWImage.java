@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,19 +12,11 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.glfw;
 
-import org.overrun.glib.Pointer;
+import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -45,49 +37,49 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWImage extends Pointer {
+public class GLFWImage extends Struct {
     /**
      * The struct layout.
      */
-    public static final GroupLayout LAYOUT = MemoryLayout.structLayout(
-            ValueLayout.JAVA_INT.withName("width"),
-            ValueLayout.JAVA_INT.withName("height"),
-            ValueLayout.ADDRESS.withName("pixels")
-    ).withName("GLFWimage");
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.ADDRESS.withName("pixels")
+    );
     private static final VarHandle
-            pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
-            pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
-            pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
+        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
+        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
+        pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
 
     /**
      * Create a {@code GLFWimage} instance.
      *
-     * @param address the address
-     * @param scope   the segment scope
+     * @param address the address.
+     * @param arena   the arena of this address.
      */
-    public GLFWImage(Addressable address, MemorySession scope) {
-        super(address, scope);
+    public GLFWImage(MemorySegment address, Arena arena) {
+        super(address, arena);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given segment scope.
+     * Creates a {@code GLFWimage} instance with the given arena.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @return the instance
      */
-    public static GLFWImage create(MemorySession scope) {
-        return new GLFWImage(scope.allocate(LAYOUT), scope);
+    public static GLFWImage create(Arena arena) {
+        return new GLFWImage(arena.allocate(LAYOUT), arena);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given segment scope and count.
+     * Creates a {@code GLFWimage} instance with the given arena and count.
      *
-     * @param scope the segment scope
+     * @param arena the arena
      * @param count the count
      * @return the instance
      */
-    public static Buffer create(MemorySession scope, long count) {
-        return new Buffer(scope.allocateArray(LAYOUT, count), scope, count);
+    public static Buffer create(Arena arena, long count) {
+        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
     }
 
     /**
@@ -97,7 +89,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage width(int width) {
-        pWidth.set(segment(LAYOUT, scope), width);
+        pWidth.set(managedSegment, width);
         return this;
     }
 
@@ -108,7 +100,7 @@ public class GLFWImage extends Pointer {
      * @return this
      */
     public GLFWImage height(int height) {
-        pHeight.set(segment(LAYOUT, scope), height);
+        pHeight.set(managedSegment, height);
         return this;
     }
 
@@ -118,8 +110,8 @@ public class GLFWImage extends Pointer {
      * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
      * @return this
      */
-    public GLFWImage pixels(Addressable pixels) {
-        pPixels.set(segment(LAYOUT, scope), pixels);
+    public GLFWImage pixels(MemorySegment pixels) {
+        pPixels.set(managedSegment, pixels);
         return this;
     }
 
@@ -129,7 +121,7 @@ public class GLFWImage extends Pointer {
      * @return The width, in pixels, of this image.
      */
     public int width() {
-        return (int) pWidth.get(segment(LAYOUT, scope));
+        return (int) pWidth.get(managedSegment);
     }
 
     /**
@@ -138,7 +130,7 @@ public class GLFWImage extends Pointer {
      * @return The height, in pixels, of this image.
      */
     public int height() {
-        return (int) pHeight.get(segment(LAYOUT, scope));
+        return (int) pHeight.get(managedSegment);
     }
 
     /**
@@ -146,8 +138,13 @@ public class GLFWImage extends Pointer {
      *
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
-    public MemoryAddress pixels() {
-        return (MemoryAddress) pPixels.get(segment(LAYOUT, scope));
+    public MemorySegment pixels() {
+        return (MemorySegment) pPixels.get(managedSegment);
+    }
+
+    @Override
+    public MemoryLayout layout() {
+        return LAYOUT;
     }
 
     /**
@@ -159,21 +156,23 @@ public class GLFWImage extends Pointer {
     public static class Buffer extends GLFWImage {
         private final long elementCount;
         private final VarHandle pWidth, pHeight, pPixels;
+        private final SequenceLayout layout;
 
         /**
          * Create a {@code GLFWimage.Buffer} instance.
          *
-         * @param address      the address
-         * @param scope        the segment scope
+         * @param address      the address.
+         * @param arena        the arena of this address.
          * @param elementCount the element count
          */
-        public Buffer(Addressable address, MemorySession scope, long elementCount) {
-            super(address, scope);
+        public Buffer(MemorySegment address, Arena arena, long elementCount) {
+            super(address, arena);
             this.elementCount = elementCount;
-            var layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
+            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
             pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pPixels = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
+            managedSegment = segment(layout, arena);
         }
 
         /**
@@ -193,7 +192,7 @@ public class GLFWImage extends Pointer {
          * @return this
          */
         public Buffer width(long index, int width) {
-            pWidth.set(segment(LAYOUT, scope), index, width);
+            pWidth.set(managedSegment, index, width);
             return this;
         }
 
@@ -205,7 +204,7 @@ public class GLFWImage extends Pointer {
          * @return this
          */
         public Buffer height(long index, int height) {
-            pHeight.set(segment(LAYOUT, scope), index, height);
+            pHeight.set(managedSegment, index, height);
             return this;
         }
 
@@ -216,8 +215,8 @@ public class GLFWImage extends Pointer {
          * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
          * @return this
          */
-        public Buffer pixels(long index, Addressable pixels) {
-            pPixels.set(segment(LAYOUT, scope), index, pixels);
+        public Buffer pixels(long index, MemorySegment pixels) {
+            pPixels.set(managedSegment, index, pixels);
             return this;
         }
 
@@ -232,7 +231,7 @@ public class GLFWImage extends Pointer {
         }
 
         @Override
-        public Buffer pixels(Addressable pixels) {
+        public Buffer pixels(MemorySegment pixels) {
             return pixels(0, pixels);
         }
 
@@ -243,7 +242,7 @@ public class GLFWImage extends Pointer {
          * @return The width, in pixels, of this image.
          */
         public int widthAt(long index) {
-            return (int) pWidth.get(segment(LAYOUT, scope), index);
+            return (int) pWidth.get(managedSegment, index);
         }
 
         /**
@@ -253,7 +252,7 @@ public class GLFWImage extends Pointer {
          * @return The height, in pixels, of this image.
          */
         public int heightAt(long index) {
-            return (int) pHeight.get(segment(LAYOUT, scope), index);
+            return (int) pHeight.get(managedSegment, index);
         }
 
         /**
@@ -262,8 +261,8 @@ public class GLFWImage extends Pointer {
          * @param index the index
          * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
          */
-        public MemoryAddress pixelsAt(long index) {
-            return (MemoryAddress) pPixels.get(segment(LAYOUT, scope), index);
+        public MemorySegment pixelsAt(long index) {
+            return (MemorySegment) pPixels.get(managedSegment, index);
         }
 
         @Override
@@ -277,8 +276,13 @@ public class GLFWImage extends Pointer {
         }
 
         @Override
-        public MemoryAddress pixels() {
+        public MemorySegment pixels() {
             return pixelsAt(0);
+        }
+
+        @Override
+        public SequenceLayout layout() {
+            return layout;
         }
     }
 }

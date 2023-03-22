@@ -7,10 +7,10 @@ group = projGroupId
 version = projVersion
 
 project(":core").ext.subName = ''
-for (String p : ['glfw', 'joml', 'opengl', 'stb',
-                 'samples']) {
-    project(":$p").ext.subName = "-$p"
+for (Artifact module : Artifact.VALUES) {
+    project(module.subprojectName).ext.subName = "-${module.subprojectName.substring(1)}"
 }
+project(":samples").ext.subName = "samples"
 
 enum NativePlatform {
     WIN_32("windows", "x86", "windows-x86", "", ".dll", "Win32"),
@@ -21,6 +21,8 @@ enum NativePlatform {
     LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
     MACOS("os x", "x64", "macos", "lib", ".dylib", "Macos"),
     MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64"),
+
+    static final NativePlatform[] ALL = values()
 
     private final String osFamilyName
     private final String osArch
@@ -69,9 +71,7 @@ enum NativeBinding {
         NativePlatform.WIN_32, NativePlatform.WIN_64,
         NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
-    STB("stb", "stb", NativePlatform.WIN_32, NativePlatform.WIN_64, NativePlatform.WIN_ARM64,
-        NativePlatform.LINUX_64, NativePlatform.LINUX_ARM32, NativePlatform.LINUX_ARM64,
-        NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
+    STB("stb", "stb", NativePlatform.ALL),
 
     private final String name
     private final String basename
@@ -117,6 +117,7 @@ enum Artifact {
     //    "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
     //    ":vulkan", "Vulkan", null),
 
+    static final Artifact[] VALUES = values()
     private final String artifactName
     private final String projectName
     private final String projectDescription
@@ -169,10 +170,7 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'signing'
 
-    sourceCompatibility = targetCompatibility = JavaVersion.VERSION_19
-
     group = projGroupId
-    archivesBaseName = "$projArtifactId$subName"
     version = projVersion
 
     repositories {
@@ -184,15 +182,29 @@ subprojects {
     }
 
     dependencies {
-        compileOnly 'org.jetbrains:annotations:23.0.0'
+        compileOnly 'org.jetbrains:annotations:24.0.1'
         if (project.name != "core") {
             implementation project(':core')
         }
     }
 
+    def targetJavaVersion = 20
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
         options.compilerArgs += '--enable-preview'
+        if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+            options.release.set(targetJavaVersion)
+        }
+    }
+
+    java {
+        def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+        if (JavaVersion.current() < javaVersion) {
+            toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
+        }
+        archivesBaseName = "$projArtifactId$subName"
+        withJavadocJar()
+        withSourcesJar()
     }
 
     tasks.withType(Javadoc).configureEach {
@@ -200,6 +212,13 @@ subprojects {
             options.addBooleanOption('-enable-preview', true)
             options.addStringOption('source', sourceCompatibility.toString())
         }
+        failOnError = false
+        options.encoding 'UTF-8'
+        options.charSet 'UTF-8'
+        options.author true
+        options.locale 'en_US'
+        options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
+        options.windowTitle "OverrunGL $projVersion Javadoc"
     }
 
     jar {
@@ -216,33 +235,20 @@ subprojects {
         )
     }
 
-    task sourcesJar(type: Jar, dependsOn: classes) {
+    sourcesJar {
+        dependsOn classes
         archiveClassifier.set 'sources'
         from sourceSets.main.allSource, 'LICENSE'
     }
 
-    task javadocJar(type: Jar, dependsOn: javadoc) {
+    javadocJar {
+        dependsOn javadoc
         archiveClassifier.set 'javadoc'
         from javadoc, 'LICENSE'
     }
 
     artifacts {
         archives javadocJar, sourcesJar
-    }
-
-    java {
-        withJavadocJar()
-        withSourcesJar()
-    }
-
-    javadoc {
-        failOnError = false
-        options.encoding 'UTF-8'
-        options.charSet 'UTF-8'
-        options.author true
-        options.locale 'en_US'
-        options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
-        options.windowTitle "OverrunGL $projVersion Javadoc"
     }
 
     signing {
@@ -305,7 +311,7 @@ void appendBOM(org.w3c.dom.Node dependencies, NativePlatform platform, Artifact 
 }
 
 publishing.publications {
-    for (Artifact module : Artifact.values()) {
+    for (Artifact module : Artifact.VALUES) {
         create("maven${module.mavenName}", MavenPublication) {
             groupId = projGroupId
             artifactId = module.artifactName
@@ -360,7 +366,7 @@ publishing.publications {
             withXml {
                 def dependencyManagement = asElement().getElementsByTagName("dependencyManagement").item(0)
                 def dependencies = asElement().getElementsByTagName("dependencies").item(0)
-                for (Artifact module : Artifact.values()) {
+                for (Artifact module : Artifact.VALUES) {
                     if (module.nativeBinding != null) {
                         for (NativePlatform platform : module.nativeBinding.platforms) {
                             appendBOM(dependencies, platform, module)
@@ -395,7 +401,7 @@ publishing.repositories {
 
 dependencies {
     constraints {
-        for (Artifact module : Artifact.values()) {
+        for (Artifact module : Artifact.VALUES) {
             api "io.github.over-run:${module.artifactName}:$version"
         }
     }

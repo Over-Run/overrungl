@@ -1,7 +1,7 @@
 name: Bug report
 description: Create a report to help us improve
-title: "[GLib-#] "
-labels: [ "bug", "P4" ]
+title: "[Core-#] "
+labels: [ "bug", "P3", "Status: Draft" ]
 assignees:
   - "squid233"
 body:

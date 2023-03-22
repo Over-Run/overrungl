@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,31 +22,33 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib;
+package org.overrun.glib.gl.ext.arb;
 
-import java.lang.foreign.Addressable;
+import org.overrun.glib.FunctionDescriptors;
+import org.overrun.glib.gl.GLExtCaps;
+import org.overrun.glib.gl.GLLoadFunc;
+import org.overrun.glib.gl.GLLoader;
+
+import java.lang.foreign.MemorySegment;
 
 /**
- * An object that has an {@link Addressable} value.
+ * {@code GL_ARB_gl_spirv}
  *
  * @author squid233
  * @since 0.1.0
  */
-@FunctionalInterface
-public interface HasAddress {
-    /**
-     * The raw address value.
-     *
-     * @return the address
-     */
-    Addressable rawAddress();
+public final class GLARBGLSpirv {
+    public static void load(GLExtCaps ext, GLLoadFunc load) {
+        if (!ext.GL_ARB_gl_spirv) return;
+        ext.glSpecializeShaderARB = load.invoke("glSpecializeShaderARB", FunctionDescriptors.IPIPPV);
+    }
 
-    /**
-     * The address value. Defaulted to the {@link #rawAddress() raw address}.
-     *
-     * @return the address
-     */
-    default Addressable address() {
-        return rawAddress().address();
+    public static void glSpecializeShaderARB(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
+        var ext = GLLoader.getExtCapabilities();
+        try {
+            GLLoader.check(ext.glSpecializeShaderARB).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
     }
 }

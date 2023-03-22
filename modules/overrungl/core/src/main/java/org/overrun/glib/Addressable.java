@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,29 +22,22 @@
  * SOFTWARE.
  */
 
-package org.overrun.glib.gl.ext.arb;
+package org.overrun.glib;
 
-import org.overrun.glib.gl.GL44C;
-import org.overrun.glib.gl.GLExtCaps;
-import org.overrun.glib.gl.GLLoadFunc;
-
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
- * {@code GL_ARB_clear_texture}
+ * An object that has a {@link MemorySegment} value.
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLARBClearTexture {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-    }
-
-    public static void glClearTexImage(int texture, int level, int format, int type, Addressable data) {
-        GL44C.clearTexImage(texture, level, format, type, data);
-    }
-
-    public static void glClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, Addressable data) {
-        GL44C.clearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
-    }
+@FunctionalInterface
+public interface Addressable {
+    /**
+     * The address value.
+     *
+     * @return the address
+     */
+    MemorySegment address();
 }

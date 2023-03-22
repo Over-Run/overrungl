@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -28,8 +20,6 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -39,11 +29,251 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 3.0 core profile functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBColorBufferFloat GL_ARB_color_buffer_float}</li>
+ *     <li>GL_ARB_framebuffer_object</li>
+ *     <li>GL_ARB_map_buffer_range</li>
+ *     <li>GL_ARB_vertex_array_object</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
 public sealed class GL30C extends GL21C permits GL31C {
+    public static final int COMPARE_REF_TO_TEXTURE = 0x884E;
+    public static final int CLIP_DISTANCE0 = 0x3000;
+    public static final int CLIP_DISTANCE1 = 0x3001;
+    public static final int CLIP_DISTANCE2 = 0x3002;
+    public static final int CLIP_DISTANCE3 = 0x3003;
+    public static final int CLIP_DISTANCE4 = 0x3004;
+    public static final int CLIP_DISTANCE5 = 0x3005;
+    public static final int CLIP_DISTANCE6 = 0x3006;
+    public static final int CLIP_DISTANCE7 = 0x3007;
+    public static final int MAX_CLIP_DISTANCES = 0x0D32;
+    public static final int MAJOR_VERSION = 0x821B;
+    public static final int MINOR_VERSION = 0x821C;
+    public static final int NUM_EXTENSIONS = 0x821D;
+    public static final int CONTEXT_FLAGS = 0x821E;
+    public static final int COMPRESSED_RED = 0x8225;
+    public static final int COMPRESSED_RG = 0x8226;
+    public static final int CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001;
+    public static final int RGBA32F = 0x8814;
+    public static final int RGB32F = 0x8815;
+    public static final int RGBA16F = 0x881A;
+    public static final int RGB16F = 0x881B;
+    public static final int VERTEX_ATTRIB_ARRAY_INTEGER = 0x88FD;
+    public static final int MAX_ARRAY_TEXTURE_LAYERS = 0x88FF;
+    public static final int MIN_PROGRAM_TEXEL_OFFSET = 0x8904;
+    public static final int MAX_PROGRAM_TEXEL_OFFSET = 0x8905;
+    public static final int CLAMP_READ_COLOR = 0x891C;
+    public static final int FIXED_ONLY = 0x891D;
+    public static final int MAX_VARYING_COMPONENTS = 0x8B4B;
+    public static final int TEXTURE_1D_ARRAY = 0x8C18;
+    public static final int PROXY_TEXTURE_1D_ARRAY = 0x8C19;
+    public static final int TEXTURE_2D_ARRAY = 0x8C1A;
+    public static final int PROXY_TEXTURE_2D_ARRAY = 0x8C1B;
+    public static final int TEXTURE_BINDING_1D_ARRAY = 0x8C1C;
+    public static final int TEXTURE_BINDING_2D_ARRAY = 0x8C1D;
+    public static final int R11F_G11F_B10F = 0x8C3A;
+    public static final int UNSIGNED_INT_10F_11F_11F_REV = 0x8C3B;
+    public static final int RGB9_E5 = 0x8C3D;
+    public static final int UNSIGNED_INT_5_9_9_9_REV = 0x8C3E;
+    public static final int TEXTURE_SHARED_SIZE = 0x8C3F;
+    public static final int TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH = 0x8C76;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_MODE = 0x8C7F;
+    public static final int MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS = 0x8C80;
+    public static final int TRANSFORM_FEEDBACK_VARYINGS = 0x8C83;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_START = 0x8C84;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_SIZE = 0x8C85;
+    public static final int PRIMITIVES_GENERATED = 0x8C87;
+    public static final int TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN = 0x8C88;
+    public static final int RASTERIZER_DISCARD = 0x8C89;
+    public static final int MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS = 0x8C8A;
+    public static final int MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS = 0x8C8B;
+    public static final int INTERLEAVED_ATTRIBS = 0x8C8C;
+    public static final int SEPARATE_ATTRIBS = 0x8C8D;
+    public static final int TRANSFORM_FEEDBACK_BUFFER = 0x8C8E;
+    public static final int TRANSFORM_FEEDBACK_BUFFER_BINDING = 0x8C8F;
+    public static final int RGBA32UI = 0x8D70;
+    public static final int RGB32UI = 0x8D71;
+    public static final int RGBA16UI = 0x8D76;
+    public static final int RGB16UI = 0x8D77;
+    public static final int RGBA8UI = 0x8D7C;
+    public static final int RGB8UI = 0x8D7D;
+    public static final int RGBA32I = 0x8D82;
+    public static final int RGB32I = 0x8D83;
+    public static final int RGBA16I = 0x8D88;
+    public static final int RGB16I = 0x8D89;
+    public static final int RGBA8I = 0x8D8E;
+    public static final int RGB8I = 0x8D8F;
+    public static final int RED_INTEGER = 0x8D94;
+    public static final int GREEN_INTEGER = 0x8D95;
+    public static final int BLUE_INTEGER = 0x8D96;
+    public static final int RGB_INTEGER = 0x8D98;
+    public static final int RGBA_INTEGER = 0x8D99;
+    public static final int BGR_INTEGER = 0x8D9A;
+    public static final int BGRA_INTEGER = 0x8D9B;
+    public static final int SAMPLER_1D_ARRAY = 0x8DC0;
+    public static final int SAMPLER_2D_ARRAY = 0x8DC1;
+    public static final int SAMPLER_1D_ARRAY_SHADOW = 0x8DC3;
+    public static final int SAMPLER_2D_ARRAY_SHADOW = 0x8DC4;
+    public static final int SAMPLER_CUBE_SHADOW = 0x8DC5;
+    public static final int UNSIGNED_INT_VEC2 = 0x8DC6;
+    public static final int UNSIGNED_INT_VEC3 = 0x8DC7;
+    public static final int UNSIGNED_INT_VEC4 = 0x8DC8;
+    public static final int INT_SAMPLER_1D = 0x8DC9;
+    public static final int INT_SAMPLER_2D = 0x8DCA;
+    public static final int INT_SAMPLER_3D = 0x8DCB;
+    public static final int INT_SAMPLER_CUBE = 0x8DCC;
+    public static final int INT_SAMPLER_1D_ARRAY = 0x8DCE;
+    public static final int INT_SAMPLER_2D_ARRAY = 0x8DCF;
+    public static final int UNSIGNED_INT_SAMPLER_1D = 0x8DD1;
+    public static final int UNSIGNED_INT_SAMPLER_2D = 0x8DD2;
+    public static final int UNSIGNED_INT_SAMPLER_3D = 0x8DD3;
+    public static final int UNSIGNED_INT_SAMPLER_CUBE = 0x8DD4;
+    public static final int UNSIGNED_INT_SAMPLER_1D_ARRAY = 0x8DD6;
+    public static final int UNSIGNED_INT_SAMPLER_2D_ARRAY = 0x8DD7;
+    public static final int QUERY_WAIT = 0x8E13;
+    public static final int QUERY_NO_WAIT = 0x8E14;
+    public static final int QUERY_BY_REGION_WAIT = 0x8E15;
+    public static final int QUERY_BY_REGION_NO_WAIT = 0x8E16;
+    public static final int BUFFER_ACCESS_FLAGS = 0x911F;
+    public static final int BUFFER_MAP_LENGTH = 0x9120;
+    public static final int BUFFER_MAP_OFFSET = 0x9121;
+    public static final int DEPTH_COMPONENT32F = 0x8CAC;
+    public static final int DEPTH32F_STENCIL8 = 0x8CAD;
+    public static final int FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD;
+    public static final int INVALID_FRAMEBUFFER_OPERATION = 0x0506;
+    public static final int FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 0x8210;
+    public static final int FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE = 0x8211;
+    public static final int FRAMEBUFFER_ATTACHMENT_RED_SIZE = 0x8212;
+    public static final int FRAMEBUFFER_ATTACHMENT_GREEN_SIZE = 0x8213;
+    public static final int FRAMEBUFFER_ATTACHMENT_BLUE_SIZE = 0x8214;
+    public static final int FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE = 0x8215;
+    public static final int FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE = 0x8216;
+    public static final int FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE = 0x8217;
+    public static final int FRAMEBUFFER_DEFAULT = 0x8218;
+    public static final int FRAMEBUFFER_UNDEFINED = 0x8219;
+    public static final int DEPTH_STENCIL_ATTACHMENT = 0x821A;
+    public static final int MAX_RENDERBUFFER_SIZE = 0x84E8;
+    public static final int DEPTH_STENCIL = 0x84F9;
+    public static final int UNSIGNED_INT_24_8 = 0x84FA;
+    public static final int DEPTH24_STENCIL8 = 0x88F0;
+    public static final int TEXTURE_STENCIL_SIZE = 0x88F1;
+    public static final int TEXTURE_RED_TYPE = 0x8C10;
+    public static final int TEXTURE_GREEN_TYPE = 0x8C11;
+    public static final int TEXTURE_BLUE_TYPE = 0x8C12;
+    public static final int TEXTURE_ALPHA_TYPE = 0x8C13;
+    public static final int TEXTURE_DEPTH_TYPE = 0x8C16;
+    public static final int UNSIGNED_NORMALIZED = 0x8C17;
+    public static final int FRAMEBUFFER_BINDING = 0x8CA6;
+    public static final int DRAW_FRAMEBUFFER_BINDING = 0x8CA6;
+    public static final int RENDERBUFFER_BINDING = 0x8CA7;
+    public static final int READ_FRAMEBUFFER = 0x8CA8;
+    public static final int DRAW_FRAMEBUFFER = 0x8CA9;
+    public static final int READ_FRAMEBUFFER_BINDING = 0x8CAA;
+    public static final int RENDERBUFFER_SAMPLES = 0x8CAB;
+    public static final int FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE = 0x8CD0;
+    public static final int FRAMEBUFFER_ATTACHMENT_OBJECT_NAME = 0x8CD1;
+    public static final int FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL = 0x8CD2;
+    public static final int FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE = 0x8CD3;
+    public static final int FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER = 0x8CD4;
+    public static final int FRAMEBUFFER_COMPLETE = 0x8CD5;
+    public static final int FRAMEBUFFER_INCOMPLETE_ATTACHMENT = 0x8CD6;
+    public static final int FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT = 0x8CD7;
+    public static final int FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER = 0x8CDB;
+    public static final int FRAMEBUFFER_INCOMPLETE_READ_BUFFER = 0x8CDC;
+    public static final int FRAMEBUFFER_UNSUPPORTED = 0x8CDD;
+    public static final int MAX_COLOR_ATTACHMENTS = 0x8CDF;
+    public static final int COLOR_ATTACHMENT0 = 0x8CE0;
+    public static final int COLOR_ATTACHMENT1 = 0x8CE1;
+    public static final int COLOR_ATTACHMENT2 = 0x8CE2;
+    public static final int COLOR_ATTACHMENT3 = 0x8CE3;
+    public static final int COLOR_ATTACHMENT4 = 0x8CE4;
+    public static final int COLOR_ATTACHMENT5 = 0x8CE5;
+    public static final int COLOR_ATTACHMENT6 = 0x8CE6;
+    public static final int COLOR_ATTACHMENT7 = 0x8CE7;
+    public static final int COLOR_ATTACHMENT8 = 0x8CE8;
+    public static final int COLOR_ATTACHMENT9 = 0x8CE9;
+    public static final int COLOR_ATTACHMENT10 = 0x8CEA;
+    public static final int COLOR_ATTACHMENT11 = 0x8CEB;
+    public static final int COLOR_ATTACHMENT12 = 0x8CEC;
+    public static final int COLOR_ATTACHMENT13 = 0x8CED;
+    public static final int COLOR_ATTACHMENT14 = 0x8CEE;
+    public static final int COLOR_ATTACHMENT15 = 0x8CEF;
+    public static final int COLOR_ATTACHMENT16 = 0x8CF0;
+    public static final int COLOR_ATTACHMENT17 = 0x8CF1;
+    public static final int COLOR_ATTACHMENT18 = 0x8CF2;
+    public static final int COLOR_ATTACHMENT19 = 0x8CF3;
+    public static final int COLOR_ATTACHMENT20 = 0x8CF4;
+    public static final int COLOR_ATTACHMENT21 = 0x8CF5;
+    public static final int COLOR_ATTACHMENT22 = 0x8CF6;
+    public static final int COLOR_ATTACHMENT23 = 0x8CF7;
+    public static final int COLOR_ATTACHMENT24 = 0x8CF8;
+    public static final int COLOR_ATTACHMENT25 = 0x8CF9;
+    public static final int COLOR_ATTACHMENT26 = 0x8CFA;
+    public static final int COLOR_ATTACHMENT27 = 0x8CFB;
+    public static final int COLOR_ATTACHMENT28 = 0x8CFC;
+    public static final int COLOR_ATTACHMENT29 = 0x8CFD;
+    public static final int COLOR_ATTACHMENT30 = 0x8CFE;
+    public static final int COLOR_ATTACHMENT31 = 0x8CFF;
+    public static final int DEPTH_ATTACHMENT = 0x8D00;
+    public static final int STENCIL_ATTACHMENT = 0x8D20;
+    public static final int FRAMEBUFFER = 0x8D40;
+    public static final int RENDERBUFFER = 0x8D41;
+    public static final int RENDERBUFFER_WIDTH = 0x8D42;
+    public static final int RENDERBUFFER_HEIGHT = 0x8D43;
+    public static final int RENDERBUFFER_INTERNAL_FORMAT = 0x8D44;
+    public static final int STENCIL_INDEX1 = 0x8D46;
+    public static final int STENCIL_INDEX4 = 0x8D47;
+    public static final int STENCIL_INDEX8 = 0x8D48;
+    public static final int STENCIL_INDEX16 = 0x8D49;
+    public static final int RENDERBUFFER_RED_SIZE = 0x8D50;
+    public static final int RENDERBUFFER_GREEN_SIZE = 0x8D51;
+    public static final int RENDERBUFFER_BLUE_SIZE = 0x8D52;
+    public static final int RENDERBUFFER_ALPHA_SIZE = 0x8D53;
+    public static final int RENDERBUFFER_DEPTH_SIZE = 0x8D54;
+    public static final int RENDERBUFFER_STENCIL_SIZE = 0x8D55;
+    public static final int FRAMEBUFFER_INCOMPLETE_MULTISAMPLE = 0x8D56;
+    public static final int MAX_SAMPLES = 0x8D57;
+    public static final int FRAMEBUFFER_SRGB = 0x8DB9;
+    public static final int HALF_FLOAT = 0x140B;
+    public static final int MAP_READ_BIT = 0x0001;
+    public static final int MAP_WRITE_BIT = 0x0002;
+    public static final int MAP_INVALIDATE_RANGE_BIT = 0x0004;
+    public static final int MAP_INVALIDATE_BUFFER_BIT = 0x0008;
+    public static final int MAP_FLUSH_EXPLICIT_BIT = 0x0010;
+    public static final int MAP_UNSYNCHRONIZED_BIT = 0x0020;
+    public static final int COMPRESSED_RED_RGTC1 = 0x8DBB;
+    public static final int COMPRESSED_SIGNED_RED_RGTC1 = 0x8DBC;
+    public static final int COMPRESSED_RG_RGTC2 = 0x8DBD;
+    public static final int COMPRESSED_SIGNED_RG_RGTC2 = 0x8DBE;
+    public static final int RG = 0x8227;
+    public static final int RG_INTEGER = 0x8228;
+    public static final int R8 = 0x8229;
+    public static final int R16 = 0x822A;
+    public static final int RG8 = 0x822B;
+    public static final int RG16 = 0x822C;
+    public static final int R16F = 0x822D;
+    public static final int R32F = 0x822E;
+    public static final int RG16F = 0x822F;
+    public static final int RG32F = 0x8230;
+    public static final int R8I = 0x8231;
+    public static final int R8UI = 0x8232;
+    public static final int R16I = 0x8233;
+    public static final int R16UI = 0x8234;
+    public static final int R32I = 0x8235;
+    public static final int R32UI = 0x8236;
+    public static final int RG8I = 0x8237;
+    public static final int RG8UI = 0x8238;
+    public static final int RG16I = 0x8239;
+    public static final int RG16UI = 0x823A;
+    public static final int RG32I = 0x823B;
+    public static final int RG32UI = 0x823C;
+    public static final int VERTEX_ARRAY_BINDING = 0x85B5;
+
     static boolean isSupported(GLCapabilities caps) {
         return checkAll(caps.glBeginConditionalRender, caps.glBeginTransformFeedback, caps.glBindBufferBase, caps.glBindBufferRange, caps.glBindFragDataLocation, caps.glBindFramebuffer,
             caps.glBindRenderbuffer, caps.glBindVertexArray, caps.glBlitFramebuffer, caps.glCheckFramebufferStatus, caps.glClampColor, caps.glClearBufferfi,
@@ -100,7 +330,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         caps.glGetFramebufferAttachmentParameteriv = load.invoke("glGetFramebufferAttachmentParameteriv", IIIPV);
         caps.glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
         caps.glGetRenderbufferParameteriv = load.invoke("glGetRenderbufferParameteriv", IIPV);
-        caps.glGetStringi = load.invoke("glGetStringi", IIP);
+        caps.glGetStringi = load.invoke("glGetStringi", IIp);
         caps.glGetTexParameterIiv = load.invoke("glGetTexParameterIiv", IIPV);
         caps.glGetTexParameterIuiv = load.invoke("glGetTexParameterIuiv", IIPV);
         caps.glGetTransformFeedbackVarying = load.invoke("glGetTransformFeedbackVarying", IIIPPPPV);
@@ -184,7 +414,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void bindFragDataLocation(int program, int color, Addressable name) {
+    public static void bindFragDataLocation(int program, int color, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glBindFragDataLocation).invokeExact(program, color, name);
@@ -260,7 +490,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void clearBufferfv(int buffer, int drawBuffer, Addressable value) {
+    public static void clearBufferfv(int buffer, int drawBuffer, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glClearBufferfv).invokeExact(buffer, drawBuffer, value);
@@ -273,7 +503,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         clearBufferfv(buffer, drawBuffer, allocator.allocateArray(JAVA_FLOAT, value));
     }
 
-    public static void clearBufferiv(int buffer, int drawBuffer, Addressable value) {
+    public static void clearBufferiv(int buffer, int drawBuffer, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glClearBufferiv).invokeExact(buffer, drawBuffer, value);
@@ -286,7 +516,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         clearBufferiv(buffer, drawBuffer, allocator.allocateArray(JAVA_INT, value));
     }
 
-    public static void clearBufferuiv(int buffer, int drawBuffer, Addressable value) {
+    public static void clearBufferuiv(int buffer, int drawBuffer, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glClearBufferuiv).invokeExact(buffer, drawBuffer, value);
@@ -308,7 +538,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void deleteFramebuffers(int n, Addressable framebuffers) {
+    public static void deleteFramebuffers(int n, MemorySegment framebuffers) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteFramebuffers).invokeExact(n, framebuffers);
@@ -325,15 +555,13 @@ public sealed class GL30C extends GL21C permits GL31C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, framebuffer);
-            deleteFramebuffers(1, mem);
+            deleteFramebuffers(1, stack.ints(framebuffer));
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
-    public static void deleteRenderbuffers(int n, Addressable renderbuffers) {
+    public static void deleteRenderbuffers(int n, MemorySegment renderbuffers) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteRenderbuffers).invokeExact(n, renderbuffers);
@@ -350,15 +578,13 @@ public sealed class GL30C extends GL21C permits GL31C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, renderbuffer);
-            deleteRenderbuffers(1, mem);
+            deleteRenderbuffers(1, stack.ints(renderbuffer));
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
-    public static void deleteVertexArrays(int n, Addressable arrays) {
+    public static void deleteVertexArrays(int n, MemorySegment arrays) {
         var caps = getCapabilities();
         try {
             check(caps.glDeleteVertexArrays).invokeExact(n, arrays);
@@ -375,9 +601,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var mem = stack.malloc(JAVA_INT);
-            mem.set(JAVA_INT, 0, array);
-            deleteVertexArrays(1, mem);
+            deleteVertexArrays(1, stack.ints(array));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -473,7 +697,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void genFramebuffers(int n, Addressable framebuffers) {
+    public static void genFramebuffers(int n, MemorySegment framebuffers) {
         var caps = getCapabilities();
         try {
             check(caps.glGenFramebuffers).invokeExact(n, framebuffers);
@@ -500,7 +724,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void genRenderbuffers(int n, Addressable renderbuffers) {
+    public static void genRenderbuffers(int n, MemorySegment renderbuffers) {
         var caps = getCapabilities();
         try {
             check(caps.glGenRenderbuffers).invokeExact(n, renderbuffers);
@@ -527,7 +751,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void genVertexArrays(int n, Addressable arrays) {
+    public static void genVertexArrays(int n, MemorySegment arrays) {
         var caps = getCapabilities();
         try {
             check(caps.glGenVertexArrays).invokeExact(n, arrays);
@@ -563,7 +787,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getBooleani_v(int target, int index, Addressable data) {
+    public static void getBooleani_v(int target, int index, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetBooleani_v).invokeExact(target, index, data);
@@ -590,7 +814,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static int getFragDataLocation(int program, Addressable name) {
+    public static int getFragDataLocation(int program, MemorySegment name) {
         var caps = getCapabilities();
         try {
             return (int) check(caps.glGetFragDataLocation).invokeExact(program, name);
@@ -603,7 +827,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         return getFragDataLocation(program, allocator.allocateUtf8String(name));
     }
 
-    public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, Addressable params) {
+    public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetFramebufferAttachmentParameteriv).invokeExact(target, attachment, pname, params);
@@ -624,7 +848,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getIntegeri_v(int target, int index, Addressable data) {
+    public static void getIntegeri_v(int target, int index, MemorySegment data) {
         var caps = getCapabilities();
         try {
             check(caps.glGetIntegeri_v).invokeExact(target, index, data);
@@ -651,7 +875,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getRenderbufferParameteriv(int target, int pname, Addressable params) {
+    public static void getRenderbufferParameteriv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetRenderbufferParameteriv).invokeExact(target, pname, params);
@@ -684,10 +908,10 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static MemoryAddress ngetStringi(int pname, int index) {
+    public static MemorySegment ngetStringi(int pname, int index) {
         var caps = getCapabilities();
         try {
-            return (MemoryAddress) check(caps.glGetStringi).invokeExact(pname, index);
+            return (MemorySegment) check(caps.glGetStringi).invokeExact(pname, index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -696,10 +920,10 @@ public sealed class GL30C extends GL21C permits GL31C {
     @Nullable
     public static String getStringi(int pname, int index) {
         var pStr = ngetStringi(pname, index);
-        return pStr != MemoryAddress.NULL ? pStr.getUtf8String(0) : null;
+        return pStr.address() != RuntimeHelper.NULL ? pStr.getUtf8String(0) : null;
     }
 
-    public static void getTexParameterIiv(int target, int pname, Addressable params) {
+    public static void getTexParameterIiv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexParameterIiv).invokeExact(target, pname, params);
@@ -726,7 +950,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getTexParameterIuiv(int target, int pname, Addressable params) {
+    public static void getTexParameterIuiv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTexParameterIuiv).invokeExact(target, pname, params);
@@ -753,7 +977,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getTransformFeedbackVarying(int program, int index, int bufSize, Addressable length, Addressable size, Addressable type, Addressable name) {
+    public static void getTransformFeedbackVarying(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         var caps = getCapabilities();
         try {
             check(caps.glGetTransformFeedbackVarying).invokeExact(program, index, bufSize, length, size, type, name);
@@ -763,20 +987,20 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void getTransformFeedbackVarying(SegmentAllocator allocator, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemoryAddress.NULL;
+        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pSz = allocator.allocate(JAVA_INT);
         var pType = allocator.allocate(JAVA_INT);
         var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
         getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
         if (length != null && length.length > 0) {
-            length[0] = ((MemorySegment) pLen).get(JAVA_INT, 0);
+            length[0] = pLen.get(JAVA_INT, 0);
         }
         size[0] = pSz.get(JAVA_INT, 0);
         type[0] = pType.get(JAVA_INT, 0);
         name[0] = pName.getUtf8String(0);
     }
 
-    public static void getUniformuiv(int program, int location, Addressable params) {
+    public static void getUniformuiv(int program, int location, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetUniformuiv).invokeExact(program, location, params);
@@ -803,7 +1027,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getVertexAttribIiv(int index, int pname, Addressable params) {
+    public static void getVertexAttribIiv(int index, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribIiv).invokeExact(index, pname, params);
@@ -830,7 +1054,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void getVertexAttribIuiv(int index, int pname, Addressable params) {
+    public static void getVertexAttribIuiv(int index, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glGetVertexAttribIuiv).invokeExact(index, pname, params);
@@ -893,10 +1117,10 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static MemoryAddress mapBufferRange(int target, long offset, long length, int access) {
+    public static MemorySegment mapBufferRange(int target, long offset, long length, int access) {
         var caps = getCapabilities();
         try {
-            return (MemoryAddress) check(caps.glMapBufferRange).invokeExact(target, offset, length, access);
+            return RuntimeHelper.sizedSegment((MemorySegment) check(caps.glMapBufferRange).invokeExact(target, offset, length, access), length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -920,7 +1144,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void texParameterIiv(int target, int pname, Addressable params) {
+    public static void texParameterIiv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexParameterIiv).invokeExact(target, pname, params);
@@ -933,7 +1157,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         texParameterIiv(target, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
-    public static void texParameterIuiv(int target, int pname, Addressable params) {
+    public static void texParameterIuiv(int target, int pname, MemorySegment params) {
         var caps = getCapabilities();
         try {
             check(caps.glTexParameterIuiv).invokeExact(target, pname, params);
@@ -946,7 +1170,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         texParameterIuiv(target, pname, allocator.allocateArray(JAVA_INT, params));
     }
 
-    public static void transformFeedbackVaryings(int program, int count, Addressable varyings, int bufferMode) {
+    public static void transformFeedbackVaryings(int program, int count, MemorySegment varyings, int bufferMode) {
         var caps = getCapabilities();
         try {
             check(caps.glTransformFeedbackVaryings).invokeExact(program, count, varyings, bufferMode);
@@ -972,7 +1196,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform1uiv(int location, int count, Addressable value) {
+    public static void uniform1uiv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform1uiv).invokeExact(location, count, value);
@@ -994,7 +1218,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform2uiv(int location, int count, Addressable value) {
+    public static void uniform2uiv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform2uiv).invokeExact(location, count, value);
@@ -1004,7 +1228,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform2uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform2uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform2uiv(location, value.length >> 1, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform3ui(int location, int v0, int v1, int v2) {
@@ -1016,7 +1240,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform3uiv(int location, int count, Addressable value) {
+    public static void uniform3uiv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform3uiv).invokeExact(location, count, value);
@@ -1026,7 +1250,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform3uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform3uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform3uiv(location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
@@ -1038,7 +1262,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void uniform4uiv(int location, int count, Addressable value) {
+    public static void uniform4uiv(int location, int count, MemorySegment value) {
         var caps = getCapabilities();
         try {
             check(caps.glUniform4uiv).invokeExact(location, count, value);
@@ -1048,7 +1272,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     }
 
     public static void uniform4uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform4uiv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform4uiv(location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
     }
 
     public static void vertexAttribI1i(int index, int x) {
@@ -1060,7 +1284,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI1iv(int index, Addressable v) {
+    public static void vertexAttribI1iv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI1iv).invokeExact(index, v);
@@ -1082,7 +1306,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI1uiv(int index, Addressable v) {
+    public static void vertexAttribI1uiv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI1uiv).invokeExact(index, v);
@@ -1104,7 +1328,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI2iv(int index, Addressable v) {
+    public static void vertexAttribI2iv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI2iv).invokeExact(index, v);
@@ -1126,7 +1350,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI2uiv(int index, Addressable v) {
+    public static void vertexAttribI2uiv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI2uiv).invokeExact(index, v);
@@ -1148,7 +1372,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI3iv(int index, Addressable v) {
+    public static void vertexAttribI3iv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI3iv).invokeExact(index, v);
@@ -1170,7 +1394,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI3uiv(int index, Addressable v) {
+    public static void vertexAttribI3uiv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI3uiv).invokeExact(index, v);
@@ -1183,7 +1407,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         vertexAttribI3uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
-    public static void vertexAttribI4bv(int index, Addressable v) {
+    public static void vertexAttribI4bv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4bv).invokeExact(index, v);
@@ -1205,7 +1429,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4iv(int index, Addressable v) {
+    public static void vertexAttribI4iv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4iv).invokeExact(index, v);
@@ -1218,7 +1442,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         vertexAttribI4iv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
-    public static void vertexAttribI4sv(int index, Addressable v) {
+    public static void vertexAttribI4sv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4sv).invokeExact(index, v);
@@ -1231,7 +1455,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         vertexAttribI4sv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void vertexAttribI4ubv(int index, Addressable v) {
+    public static void vertexAttribI4ubv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4ubv).invokeExact(index, v);
@@ -1253,7 +1477,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void vertexAttribI4uiv(int index, Addressable v) {
+    public static void vertexAttribI4uiv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4uiv).invokeExact(index, v);
@@ -1266,7 +1490,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         vertexAttribI4uiv(index, allocator.allocateArray(JAVA_INT, v));
     }
 
-    public static void vertexAttribI4usv(int index, Addressable v) {
+    public static void vertexAttribI4usv(int index, MemorySegment v) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribI4usv).invokeExact(index, v);
@@ -1279,7 +1503,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         vertexAttribI4usv(index, allocator.allocateArray(JAVA_SHORT, v));
     }
 
-    public static void vertexAttribIPointer(int index, int size, int type, int stride, Addressable pointer) {
+    public static void vertexAttribIPointer(int index, int size, int type, int stride, MemorySegment pointer) {
         var caps = getCapabilities();
         try {
             check(caps.glVertexAttribIPointer).invokeExact(index, size, type, stride, pointer);

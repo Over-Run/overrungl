@@ -29,7 +29,7 @@ import org.overrun.glib.gl.GLExtCaps;
 import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
-import java.lang.foreign.Addressable;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@code GL_AMD_multi_draw_indirect}
@@ -44,7 +44,7 @@ public final class GLAMDMultiDrawIndirect {
         ext.glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", FunctionDescriptors.IIPIIV);
     }
 
-    public static void glMultiDrawArraysIndirectAMD(int mode, Addressable indirect, int primCount, int stride) {
+    public static void glMultiDrawArraysIndirectAMD(int mode, MemorySegment indirect, int primCount, int stride) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primCount, stride);
@@ -53,7 +53,7 @@ public final class GLAMDMultiDrawIndirect {
         }
     }
 
-    public static void glMultiDrawElementsIndirectAMD(int mode, int type, Addressable indirect, int primCount, int stride) {
+    public static void glMultiDrawElementsIndirectAMD(int mode, int type, MemorySegment indirect, int primCount, int stride) {
         var ext = GLLoader.getExtCapabilities();
         try {
             GLLoader.check(ext.glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primCount, stride);

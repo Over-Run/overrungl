@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022 Overrun Organization
+ * Copyright (c) 2022-2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -12,24 +12,15 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.util;
 
 import org.jetbrains.annotations.Nullable;
+import org.overrun.glib.Configurations;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
-import java.lang.foreign.Addressable;
-import java.lang.foreign.MemoryAddress;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
@@ -54,9 +45,10 @@ public final class MemoryUtil {
         m_memcpy = downcall("memcpy", PPJP),
         m_memmove = downcall("memmove", PPJP),
         m_memset = downcall("memset", PIJP);
+    private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(LOOKUP.lookup(name), function);
+        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
     /**
@@ -80,29 +72,25 @@ public final class MemoryUtil {
      * alignment.
      * @see #malloc(MemoryLayout)
      */
-    public static MemoryAddress malloc(long size) {
+    public static MemorySegment malloc(long size) {
         try {
-            return (MemoryAddress) m_malloc.invokeExact(size);
+            long address = ((MemorySegment) m_malloc.invokeExact(size)).address();
+            MemorySegment segment = MemorySegment.ofAddress(address, size);
+            if (DEBUG) DebugAllocator.track(address, size);
+            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     /**
-     * Allocates memory blocks.
-     * <p>
-     * The {@code malloc} function allocates a memory block of at least <i>{@code size}</i> bytes. The block may be
-     * larger than <i>{@code size}</i> bytes because of the space that's required for alignment and maintenance
-     * information.
+     * The layout version of {@link #malloc(long)}.
      *
-     * @param layout Bytes to allocate.
-     * @return {@code malloc} returns a void pointer to the allocated space, or {@link MemorySegment#NULL NULL}
-     * if there is insufficient memory available. The storage space pointed to by the return value is suitably aligned
-     * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
-     * alignment.
+     * @param layout the memory layout.
+     * @return the allocated space.
      * @see #malloc(long)
      */
-    public static MemoryAddress malloc(MemoryLayout layout) {
+    public static MemorySegment malloc(MemoryLayout layout) {
         return malloc(layout.byteSize());
     }
 
@@ -118,9 +106,13 @@ public final class MemoryUtil {
      * return value is suitably aligned for storage of any type of object.
      * @see #calloc(long, MemoryLayout)
      */
-    public static MemoryAddress calloc(long number, long size) {
+    public static MemorySegment calloc(long number, long size) {
         try {
-            return (MemoryAddress) m_calloc.invokeExact(number, size);
+            long address = ((MemorySegment) m_calloc.invokeExact(number, size)).address();
+            long bytesSize = number * size;
+            MemorySegment segment = MemorySegment.ofAddress(address, bytesSize);
+            if (DEBUG) DebugAllocator.track(address, bytesSize);
+            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -138,7 +130,7 @@ public final class MemoryUtil {
      * return value is suitably aligned for storage of any type of object.
      * @see #calloc(long, long)
      */
-    public static MemoryAddress calloc(long number, MemoryLayout layout) {
+    public static MemorySegment calloc(long number, MemoryLayout layout) {
         return calloc(number, layout.byteSize());
     }
 
@@ -160,7 +152,7 @@ public final class MemoryUtil {
      *
      * @param memblock Pointer to previously allocated memory block.
      * @param size     New size in bytes.
-     * @return {@code realloc} returns a {@code void} pointer to the reallocated (and possibly moved) memory block.
+     * @return {@code realloc} returns a {@link MemorySegment} to the reallocated (and possibly moved) memory block.
      * <p>
      * If there is not enough available memory to expand the block to the given size,
      * the original block is left unchanged, and {@code NULL} is returned.
@@ -170,11 +162,25 @@ public final class MemoryUtil {
      * <p>
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
-    public static MemoryAddress realloc(@Nullable Addressable memblock, long size) {
+    public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
+        long ptr = RuntimeHelper.NULL;
+        long oldSize = 0;
+        if (DEBUG) {
+            ptr = memblock != null ? memblock.address() : RuntimeHelper.NULL;
+            oldSize = DebugAllocator.untrack(ptr);
+        }
         try {
-            return (MemoryAddress) m_realloc.invokeExact(
-                Objects.requireNonNullElse(memblock, MemoryAddress.NULL),
-                size);
+            MemorySegment segment = RuntimeHelper.sizedSegment((MemorySegment) m_realloc.invokeExact(
+                Objects.requireNonNullElse(memblock, MemorySegment.NULL),
+                size), size);
+            if (DEBUG) {
+                if (segment.address() != RuntimeHelper.NULL) {
+                    DebugAllocator.track(segment.address(), size);
+                } else if (size != 0L) {
+                    DebugAllocator.track(ptr, oldSize);
+                }
+            }
+            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -193,8 +199,9 @@ public final class MemoryUtil {
      *
      * @param memblock Previously allocated memory block to be freed.
      */
-    public static void free(@Nullable Addressable memblock) {
-        if (memblock == null) return;
+    public static void free(@Nullable MemorySegment memblock) {
+        if (DEBUG) DebugAllocator.untrack(memblock != null ? memblock.address() : RuntimeHelper.NULL);
+        if (memblock == null || memblock.address() == RuntimeHelper.NULL) return;
         try {
             m_free.invokeExact(memblock);
         } catch (Throwable e) {
@@ -216,9 +223,10 @@ public final class MemoryUtil {
      * @param count Number of characters to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memcpy(Addressable dest, Addressable src, long count) {
+    public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            return (MemoryAddress) m_memcpy.invokeExact(dest, src, count);
+            RuntimeHelper.consume((MemorySegment) m_memcpy.invokeExact(dest, src, count));
+            return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -240,9 +248,10 @@ public final class MemoryUtil {
      * @param count Number of bytes to copy.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memmove(Addressable dest, Addressable src, long count) {
+    public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            return (MemoryAddress) m_memmove.invokeExact(dest, src, count);
+            RuntimeHelper.consume((MemorySegment) m_memmove.invokeExact(dest, src, count));
+            return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -262,9 +271,10 @@ public final class MemoryUtil {
      * @param count Number of characters.
      * @return The value of <i>{@code dest}</i>.
      */
-    public static MemoryAddress memset(Addressable dest, int c, long count) {
+    public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            return (MemoryAddress) m_memset.invokeExact(dest, c, count);
+            RuntimeHelper.consume((MemorySegment) m_memset.invokeExact(dest, c, count));
+            return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
