@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         java: [
-          20-ea
+          20
         ]
         os: [ ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
@@ -33,7 +33,7 @@ jobs:
         with:
           arguments: build
       - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '20-ea' }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '20' }}
         uses: actions/upload-artifact@v3
         with:
           name: Artifacts
