@@ -37,6 +37,21 @@ import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
  * @since 0.1.0
  */
 public final class GLAMDDebugOutput {
+    public static final int GL_MAX_DEBUG_MESSAGE_LENGTH_AMD = 0x9143;
+    public static final int GL_MAX_DEBUG_LOGGED_MESSAGES_AMD = 0x9144;
+    public static final int GL_DEBUG_LOGGED_MESSAGES_AMD = 0x9145;
+    public static final int GL_DEBUG_SEVERITY_HIGH_AMD = 0x9146;
+    public static final int GL_DEBUG_SEVERITY_MEDIUM_AMD = 0x9147;
+    public static final int GL_DEBUG_SEVERITY_LOW_AMD = 0x9148;
+    public static final int GL_DEBUG_CATEGORY_API_ERROR_AMD = 0x9149;
+    public static final int GL_DEBUG_CATEGORY_WINDOW_SYSTEM_AMD = 0x914A;
+    public static final int GL_DEBUG_CATEGORY_DEPRECATION_AMD = 0x914B;
+    public static final int GL_DEBUG_CATEGORY_UNDEFINED_BEHAVIOR_AMD = 0x914C;
+    public static final int GL_DEBUG_CATEGORY_PERFORMANCE_AMD = 0x914D;
+    public static final int GL_DEBUG_CATEGORY_SHADER_COMPILER_AMD = 0x914E;
+    public static final int GL_DEBUG_CATEGORY_APPLICATION_AMD = 0x914F;
+    public static final int GL_DEBUG_CATEGORY_OTHER_AMD = 0x9150;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_debug_output) return;
         ext.glDebugMessageCallbackAMD = load.invoke("glDebugMessageCallbackAMD", PPV);

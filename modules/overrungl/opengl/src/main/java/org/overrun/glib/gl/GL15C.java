@@ -29,6 +29,11 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 1.5 forward compatible functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBOcclusionQuery GL_ARB_occlusion_query}</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

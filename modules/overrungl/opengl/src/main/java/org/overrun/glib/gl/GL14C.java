@@ -29,6 +29,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  * These extensions are promoted in this version:
  * <ul>
  *     <li>GL_ARB_imaging</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBPointParameters GL_ARB_point_parameters}</li>
  * </ul>
  *
  * @author squid233

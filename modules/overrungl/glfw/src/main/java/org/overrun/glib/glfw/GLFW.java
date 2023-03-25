@@ -854,10 +854,10 @@ public final class GLFW {
     }
 
     /**
-     * Converts error code to readable string.
+     * Converts the given error code to a readable string.
      *
-     * @param errorCode the error code
-     * @return the error string
+     * @param errorCode the error code.
+     * @return the error string.
      */
     public static String getErrorString(int errorCode) {
         return switch (errorCode) {
@@ -1652,7 +1652,7 @@ public final class GLFW {
     }
 
     /**
-     * Returns the user pointer of the specified monitor.
+     * {@return the user pointer of the specified monitor.}
      * <p>
      * This function returns the current value of the user-defined pointer of the
      * specified monitor.  The initial value is {@link MemorySegment#NULL NULL}.
@@ -3376,7 +3376,7 @@ public final class GLFW {
     }
 
     /**
-     * Returns the user pointer of the specified window.
+     * {@return the user pointer of the specified window.}
      * <p>
      * This function returns the current value of the user-defined pointer of the
      * specified window.  The initial value is {@link MemorySegment#NULL NULL}.
@@ -3923,7 +3923,7 @@ public final class GLFW {
     }
 
     /**
-     * Returns the value of an input option for the specified window.
+     * {@return the value of an input option for the specified window.}
      * <p>
      * This function returns the value of an input option for the specified window.
      * The mode must be one of {@link #CURSOR}, {@link #STICKY_KEYS},
@@ -4937,6 +4937,7 @@ public final class GLFW {
      * Each element in the array is one of the following values:
      *
      * <table>
+     *     <caption>Values Table</caption>
      *     <tr><th>Name</th><th>Value</th></tr>
      *     <tr><td>{@code HAT_CENTERED}</td><td>0</td></tr>
      *     <tr><td>{@code HAT_UP}</td><td>1</td></tr>
@@ -5126,7 +5127,7 @@ public final class GLFW {
     }
 
     /**
-     * Returns the user pointer of the specified joystick.
+     * {@return the user pointer of the specified joystick.}
      * <p>
      * This function returns the current value of the user-defined pointer of the
      * specified joystick.  The initial value is {@link MemorySegment#NULL NULL}.

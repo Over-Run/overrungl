@@ -18,8 +18,6 @@ package org.overrun.glib.gl;
 
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
-import org.overrun.glib.gl.ext.amd.GLAMDDebugOutput;
-import org.overrun.glib.gl.ext.amd.GLDebugProcAMD;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -27,7 +25,7 @@ import java.util.Locale;
 import java.util.function.Consumer;
 
 import static org.overrun.glib.RuntimeHelper.*;
-import static org.overrun.glib.gl.GLConstC.*;
+import static org.overrun.glib.gl.ext.amd.GLAMDDebugOutput.*;
 import static org.overrun.glib.gl.ext.arb.GLARBDebugOutput.*;
 
 /**
@@ -44,7 +42,7 @@ public final class GLUtil {
      * Detects the best debug output functionality to use and creates a callback that prints information to
      * {@link RuntimeHelper#apiLogger() API Logger}.
      * <p>
-     * The callback function is returned as a {@link Arena},
+     * The callback function is returned as an {@link Arena},
      * that should reset to NULL and be {@link Arena#close() freed} when no longer needed, which is often after
      * destroy GL context.
      *
@@ -76,7 +74,7 @@ public final class GLUtil {
                 apiLog("[GL] Using KHR_debug for error logging.");
             }
             var arena = Arena.openConfined();
-            GLDebugProc proc = (source, type, id, severity, message, userParam) -> {
+            GL.debugMessageCallback(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(512);
                 sb.append("[OverrunGL] OpenGL debug message\n");
                 printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
@@ -91,8 +89,7 @@ public final class GLUtil {
                         .append("\n");
                 }
                 logger.accept(sb.toString());
-            };
-            GL.debugMessageCallback(arena, proc, MemorySegment.NULL);
+            }, MemorySegment.NULL);
             // no need GL_KHR_debug
             if ((caps.Ver43 || caps.Ver30) &&
                 (GL.getInteger(GL.CONTEXT_FLAGS) & GL.CONTEXT_FLAG_DEBUG_BIT) == 0) {
@@ -105,7 +102,7 @@ public final class GLUtil {
         if (caps.ext.GL_ARB_debug_output) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
             var arena = Arena.openConfined();
-            GLDebugProc proc = (source, type, id, severity, message, userParam) -> {
+            glDebugMessageCallbackARB(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(512);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
                 printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
@@ -120,15 +117,14 @@ public final class GLUtil {
                         .append("\n");
                 }
                 logger.accept(sb.toString());
-            };
-            glDebugMessageCallbackARB(arena, proc, MemorySegment.NULL);
+            }, MemorySegment.NULL);
             return arena;
         }
 
         if (caps.ext.GL_AMD_debug_output) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
             var arena = Arena.openConfined();
-            GLDebugProcAMD proc = (id, category, severity, message, userParam) -> {
+            glDebugMessageCallbackAMD(arena, (id, category, severity, message, userParam) -> {
                 var sb = new StringBuilder(512);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
                 printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
@@ -142,8 +138,7 @@ public final class GLUtil {
                         .append("\n");
                 }
                 logger.accept(sb.toString());
-            };
-            GLAMDDebugOutput.glDebugMessageCallbackAMD(arena, proc, MemorySegment.NULL);
+            }, MemorySegment.NULL);
             return arena;
         }
 

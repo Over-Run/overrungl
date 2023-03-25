@@ -32,6 +32,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  * <ul>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBGLSpirv GL_ARB_gl_spirv}</li>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBIndirectParameters GL_ARB_indirect_parameters}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBPipelineStatisticsQuery GL_ARB_pipeline_statistics_query}</li>
  *     <li>GL_ARB_polygon_offset_clamp</li>
  * </ul>
  *

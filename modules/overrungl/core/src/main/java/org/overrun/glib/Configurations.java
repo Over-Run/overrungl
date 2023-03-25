@@ -74,6 +74,10 @@ public final class Configurations {
      */
     public static final Entry<Boolean> GL_FORCE_CHECK_ALL = new Entry<>(() -> false);
 
+    private Configurations() {
+        //no instance
+    }
+
     /**
      * A configuration entry.
      *

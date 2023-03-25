@@ -38,6 +38,9 @@ import java.lang.foreign.MemorySegment;
  * @since 0.1.0
  */
 public final class GLARBGLSpirv {
+    public static final int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
+    public static final int GL_SPIR_V_BINARY_ARB = 0x9552;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_gl_spirv) return;
         ext.glSpecializeShaderARB = load.invoke("glSpecializeShaderARB", FunctionDescriptors.IPIPPV);

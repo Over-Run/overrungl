@@ -65,6 +65,10 @@ public final class STBEasyFont {
         create();
     }
 
+    private STBEasyFont() {
+        //no instance
+    }
+
     private static void create() {
         stb_easy_font_draw_segs = downcall("stb_easy_font_draw_segs", FFPIIPPIII);
         stb_easy_font_get_spacing = downcall("stb_easy_font_get_spacing", F);

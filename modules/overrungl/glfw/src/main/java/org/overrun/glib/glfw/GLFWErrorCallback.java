@@ -30,12 +30,16 @@ import java.io.PrintStream;
 import java.util.function.Consumer;
 
 /**
- * The GLFW error callback.
+ * The {@linkplain IGLFWErrorFun GLFW error callback} creator.
  *
  * @author squid233
  * @since 0.1.0
  */
 public final class GLFWErrorCallback {
+    private GLFWErrorCallback() {
+        //no instance
+    }
+
     /**
      * Returns a {@link IGLFWErrorFun} instance that throws an {@link IllegalStateException} when an error occurs.
      *
@@ -56,16 +60,16 @@ public final class GLFWErrorCallback {
     public static IGLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
-            sb.append("[OverrunGL] GLFW_")
-                    .append(GLFW.getErrorString(errorCode))
-                    .append(" error: ")
-                    .append(description)
-                    .append("\n");
+            sb.append("[OverrunGL] GLFW ")
+                .append(GLFW.getErrorString(errorCode))
+                .append(" error: ")
+                .append(description)
+                .append("\n");
             var stack = Thread.currentThread().getStackTrace();
             for (int i = 3; i < stack.length; i++) {
                 sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    .append(stack[i])
+                    .append("\n");
             }
             logger.accept(sb.toString());
         };

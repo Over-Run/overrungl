@@ -38,7 +38,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  *     <li>GL_ARB_copy_image</li>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBDebugOutput GL_ARB_debug_output}</li>
  *     <li>GL_ARB_framebuffer_no_attachments</li>
- *     <li>GL_ARB_internalformat_query2</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBInternalformatQuery2 GL_ARB_internalformat_query2}</li>
  *     <li>GL_ARB_invalidate_subdata</li>
  *     <li>GL_ARB_multi_draw_indirect</li>
  *     <li>GL_ARB_program_interface_query</li>

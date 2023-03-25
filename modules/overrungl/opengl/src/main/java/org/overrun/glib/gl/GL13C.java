@@ -27,6 +27,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  * These extensions are promoted in this version:
  * <ul>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBMultisample GL_ARB_multisample}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBMultitexture GL_ARB_multitexture}</li>
  * </ul>
  *
  * @author squid233

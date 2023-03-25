@@ -25,6 +25,11 @@ import static org.overrun.glib.gl.GLLoader.*;
 
 /**
  * The OpenGL 2.1 forward compatible functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBPixelBufferObject GL_ARB_pixel_buffer_object}</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

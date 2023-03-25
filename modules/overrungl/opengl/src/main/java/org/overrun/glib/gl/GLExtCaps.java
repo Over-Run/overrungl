@@ -390,6 +390,28 @@ public final class GLExtCaps {
      * {@code GL_ARB_multisample} extension method handles.
      */
     public MethodHandle glSampleCoverageARB;
+    /**
+     * {@code GL_ARB_multitexture} extension method handles.
+     */
+    public MethodHandle glActiveTextureARB, glClientActiveTextureARB, glMultiTexCoord1dARB, glMultiTexCoord1dvARB,
+        glMultiTexCoord1fARB, glMultiTexCoord1fvARB, glMultiTexCoord1iARB, glMultiTexCoord1ivARB, glMultiTexCoord1sARB, glMultiTexCoord1svARB,
+        glMultiTexCoord2dARB, glMultiTexCoord2dvARB, glMultiTexCoord2fARB, glMultiTexCoord2fvARB, glMultiTexCoord2iARB, glMultiTexCoord2ivARB,
+        glMultiTexCoord2sARB, glMultiTexCoord2svARB, glMultiTexCoord3dARB, glMultiTexCoord3dvARB, glMultiTexCoord3fARB, glMultiTexCoord3fvARB,
+        glMultiTexCoord3iARB, glMultiTexCoord3ivARB, glMultiTexCoord3sARB, glMultiTexCoord3svARB, glMultiTexCoord4dARB, glMultiTexCoord4dvARB,
+        glMultiTexCoord4fARB, glMultiTexCoord4fvARB, glMultiTexCoord4iARB, glMultiTexCoord4ivARB, glMultiTexCoord4sARB, glMultiTexCoord4svARB;
+    /**
+     * {@code GL_ARB_occlusion_query} extension method handles.
+     */
+    public MethodHandle glBeginQueryARB, glDeleteQueriesARB, glEndQueryARB, glGenQueriesARB, glGetQueryObjectivARB,
+        glGetQueryObjectuivARB, glGetQueryivARB, glIsQueryARB;
+    /**
+     * {@code GL_ARB_parallel_shader_compile} extension method handles.
+     */
+    public MethodHandle glMaxShaderCompilerThreadsARB;
+    /**
+     * {@code GL_ARB_point_parameters} extension method handles.
+     */
+    public MethodHandle glPointParameterfARB, glPointParameterfvARB;
 
     // endregion
 
@@ -657,10 +679,10 @@ public final class GLExtCaps {
         GLARBInstancedArrays.load(this, load);
         GLARBMatrixPalette.load(this, load);
         GLARBMultisample.load(this, load);
-        // GLARBMultitexture.load(load);
-        // GLARBOcclusion_query.load(load);
-        // GLARBParallel_shader_compile.load(load);
-        // GLARBPoint_parameters.load(load);
+        GLARBMultitexture.load(this, load);
+        GLARBOcclusionQuery.load(this, load);
+        GLARBParallelShaderCompile.load(this, load);
+        GLARBPointParameters.load(this, load);
         // GLARBRobustness.load(load);
         // GLARBSample_locations.load(load);
         // GLARBSample_shading.load(load);

@@ -40,6 +40,14 @@ import static org.overrun.glib.gl.GLLoader.getExtCapabilities;
  * @since 0.1.0
  */
 public final class GLARBGPUShaderInt64 {
+    public static final int GL_INT64_ARB = 0x140E;
+    public static final int GL_INT64_VEC2_ARB = 0x8FE9;
+    public static final int GL_INT64_VEC3_ARB = 0x8FEA;
+    public static final int GL_INT64_VEC4_ARB = 0x8FEB;
+    public static final int GL_UNSIGNED_INT64_VEC2_ARB = 0x8FF5;
+    public static final int GL_UNSIGNED_INT64_VEC3_ARB = 0x8FF6;
+    public static final int GL_UNSIGNED_INT64_VEC4_ARB = 0x8FF7;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_gpu_shader_int64) return;
         ext.glGetUniformi64vARB = load.invoke("glGetUniformi64vARB", IIPV);

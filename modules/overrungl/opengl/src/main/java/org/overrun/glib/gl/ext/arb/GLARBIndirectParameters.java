@@ -38,6 +38,9 @@ import java.lang.foreign.MemorySegment;
  * @since 0.1.0
  */
 public final class GLARBIndirectParameters {
+    public static final int GL_PARAMETER_BUFFER_ARB = 0x80EE;
+    public static final int GL_PARAMETER_BUFFER_BINDING_ARB = 0x80EF;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_indirect_parameters) return;
         ext.glMultiDrawArraysIndirectCountARB = load.invoke("glMultiDrawArraysIndirectCountARB", FunctionDescriptors.IPJIIV);

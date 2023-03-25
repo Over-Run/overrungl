@@ -41,6 +41,10 @@ public final class GLFWNative {
         create();
     }
 
+    private GLFWNative() {
+        //no instance
+    }
+
     /**
      * Returns the adapter device name of the specified monitor.
      *
@@ -297,7 +301,8 @@ public final class GLFWNative {
     /**
      * Sets the current primary selection to the specified string.
      *
-     * @param string string A UTF-8 encoded string.
+     * @param allocator the allocator of <i>{@code string}</i>.
+     * @param string A UTF-8 encoded string.
      * @see #nsetX11SelectionString(MemorySegment) nsetX11SelectionString
      */
     public static void setX11SelectionString(SegmentAllocator allocator, String string) {
@@ -397,7 +402,7 @@ public final class GLFWNative {
     /**
      * Returns the {@code struct wl_output*} of the specified monitor.
      *
-     * @param monitor the monitor
+     * @param monitor the monitor.
      * @return The {@code struct wl_output*} of the specified monitor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.

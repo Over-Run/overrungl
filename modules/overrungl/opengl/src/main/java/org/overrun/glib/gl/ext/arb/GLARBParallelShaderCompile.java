@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl.ext.arb;
@@ -30,23 +22,24 @@ import org.overrun.glib.gl.GLLoadFunc;
 import org.overrun.glib.gl.GLLoader;
 
 /**
- * {@code GL_ARB_instanced_arrays}
+ * {@code GL_ARB_parallel_shader_compile}
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLARBInstancedArrays {
-    public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
+public final class GLARBParallelShaderCompile {
+    public static final int GL_MAX_SHADER_COMPILER_THREADS_ARB = 0x91B0;
+    public static final int GL_COMPLETION_STATUS_ARB = 0x91B1;
 
     public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_instanced_arrays) return;
-        ext.glVertexAttribDivisorARB = load.invoke("glVertexAttribDivisorARB", FunctionDescriptors.IIV);
+        if (!ext.GL_ARB_parallel_shader_compile) return;
+        ext.glMaxShaderCompilerThreadsARB = load.invoke("glMaxShaderCompilerThreadsARB", FunctionDescriptors.IV);
     }
 
-    public static void glVertexAttribDivisorARB(int index, int divisor) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMaxShaderCompilerThreadsARB(int count) {
+        final var ext = GLLoader.getExtCapabilities();
         try {
-            GLLoader.check(ext.glVertexAttribDivisorARB).invokeExact(index, divisor);
+            GLLoader.check(ext.glMaxShaderCompilerThreadsARB).invokeExact(count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
