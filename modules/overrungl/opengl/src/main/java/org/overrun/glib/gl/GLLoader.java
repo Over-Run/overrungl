@@ -21,6 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.Configurations;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
@@ -46,9 +47,11 @@ import java.lang.invoke.MethodHandle;
  * <p>Note that the {@link #load(boolean, GLLoadFunc) load} method implicitly calls {@link #setCapabilities} with the newly created instance.</p>
  *
  * @author squid233
+ * @see GLLoadFunc
  * @since 0.1.0
  */
 public final class GLLoader {
+    private static final boolean DEFAULT_COMPATIBLE = false;
     private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final ThreadLocal<GLCapabilities> capabilitiesTLS = new ThreadLocal<>();
 
@@ -63,9 +66,8 @@ public final class GLLoader {
     }
 
     /**
-     * Returns the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
+     * {@return the {@link GLCapabilities} of the OpenGL context that is current in the current thread}.
      *
-     * @return the {@link GLCapabilities} of the OpenGL context that is current in the current thread.
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
     public static GLCapabilities getCapabilities() {
@@ -73,14 +75,13 @@ public final class GLLoader {
     }
 
     /**
-     * Returns the current {@link GLExtCaps} of the OpenGL context in the current thread.
+     * {@return the current {@link GLExtCaps} of the OpenGL context in the current thread}
      * <p>
      * This is equivalent to the following code:
      * <pre><code>
      * {@link #getCapabilities()}.{@link GLCapabilities#ext ext}
      * </code></pre>
      *
-     * @return the current {@link GLExtCaps} of the OpenGL context in the current thread.
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
     public static GLExtCaps getExtCapabilities() {
@@ -100,39 +101,6 @@ public final class GLLoader {
     }
 
     /**
-     * Load OpenGL compatibility profile by the given load function with shared arena.
-     *
-     * @param getter the function pointer getter
-     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLCapabilities loadShared(GLLoadFunc.Getter getter) {
-        var value = GLLoadFunc.ofShared(getter);
-        try {
-            return load(value.x());
-        } finally {
-            value.y().close();
-        }
-    }
-
-    /**
-     * Load OpenGL by the given load function with shared arena.
-     *
-     * @param forwardCompatible If {@code true}, only loads core profile functions.
-     * @param getter            the function pointer getter
-     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLCapabilities loadShared(boolean forwardCompatible, GLLoadFunc.Getter getter) {
-        var value = GLLoadFunc.ofShared(getter);
-        try {
-            return load(forwardCompatible, value.x());
-        } finally {
-            value.y().close();
-        }
-    }
-
-    /**
      * Load OpenGL compatibility profile by the given load function with confined arena.
      *
      * @param getter the function pointer getter
@@ -140,12 +108,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLCapabilities loadConfined(GLLoadFunc.Getter getter) {
-        var value = GLLoadFunc.ofConfined(getter);
-        try {
-            return load(value.x());
-        } finally {
-            value.y().close();
-        }
+        return loadConfined(DEFAULT_COMPATIBLE, getter);
     }
 
     /**
@@ -157,11 +120,8 @@ public final class GLLoader {
      */
     @Nullable
     public static GLCapabilities loadConfined(boolean forwardCompatible, GLLoadFunc.Getter getter) {
-        var value = GLLoadFunc.ofConfined(getter);
-        try {
-            return load(forwardCompatible, value.x());
-        } finally {
-            value.y().close();
+        try (Arena arena = Arena.openConfined()) {
+            return load(forwardCompatible, arena, getter);
         }
     }
 
@@ -174,7 +134,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLCapabilities load(SegmentAllocator allocator, GLLoadFunc.Getter getter) {
-        return load(GLLoadFunc.of(allocator, getter));
+        return load(DEFAULT_COMPATIBLE, allocator, getter);
     }
 
     /**
@@ -198,7 +158,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLCapabilities load(GLLoadFunc load) {
-        return load(false, load);
+        return load(DEFAULT_COMPATIBLE, load);
     }
 
     /**
@@ -223,7 +183,7 @@ public final class GLLoader {
 
     /**
      * Checks whether the given GL function is available in this context.
-     * This method raises an {@link IllegalStateException} rather than {@link NullPointerException}.
+     * This method raises an {@link IllegalStateException} rather than a {@link NullPointerException}.
      *
      * @param handle the method handle to be checked.
      * @return <i>{@code handle}</i>
@@ -233,7 +193,7 @@ public final class GLLoader {
     @Contract(value = "null -> fail; !null -> param1", pure = true)
     public static MethodHandle check(@Nullable MethodHandle handle) throws IllegalStateException {
         if (handle == null)
-            throw new IllegalStateException("The argument 'handle' is null; may be no context or function exists.");
+            throw new IllegalStateException("handle is null; maybe no context or function exists.");
         return handle;
     }
 
@@ -258,20 +218,18 @@ public final class GLLoader {
     }
 
     /**
-     * Gets the major version.
+     * {@return the major version}
      *
      * @param version the packed version
-     * @return the major version
      */
     public static int versionMajor(int version) {
         return version / 10000;
     }
 
     /**
-     * Gets the minor version.
+     * {@return the minor version}
      *
      * @param version the packed version
-     * @return the minor version
      */
     public static int versionMinor(int version) {
         return version % 10000;

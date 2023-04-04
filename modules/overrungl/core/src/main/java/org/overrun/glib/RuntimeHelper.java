@@ -179,9 +179,7 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Gets the API logger. Defaults to {@link System#err}.
-     *
-     * @return the API logger.
+     * {@return the API logger} Defaults to {@link System#err}.
      */
     public static Consumer<String> apiLogger() {
         return apiLogger;
@@ -197,10 +195,9 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Gets the length of the null-terminated string encoded in UTF8.
+     * {@return the length of the null-terminated string encoded in UTF8}
      *
      * @param s the string
-     * @return the length
      */
     public static int utf8StringCLength(String s) {
         return s.getBytes(StandardCharsets.UTF_8).length + 1;

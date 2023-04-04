@@ -99,7 +99,7 @@ public final class GL30Test {
     }
 
     private void load(Arena arena) {
-        if (GLLoader.loadConfined(true, GLFW::getProcAddress) == null)
+        if (GLLoader.loadConfined(true, GLFW::ngetProcAddress) == null)
             throw new IllegalStateException("Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

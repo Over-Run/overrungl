@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,30 +14,17 @@
  * copies or substantial portions of the Software.
  */
 
-package org.overrun.glib.stb;
+package org.overrun.glib;
 
 /**
- * The STB image resizer edge
+ * An array pointer.
  *
  * @author squid233
  * @since 0.1.0
  */
-public enum STBIREdge {
-    CLAMP(1),
-    REFLECT(2),
-    WRAP(3),
-    ZERO(4);
-
-    private final int value;
-
-    STBIREdge(int value) {
-        this.value = value;
-    }
-
+public interface ArrayPointer extends Addressable {
     /**
-     * {@return the enum value}
+     * {@return the count of the elements in this array}
      */
-    public int getValue() {
-        return value;
-    }
+    long elementCount();
 }

@@ -103,9 +103,7 @@ public final class Configurations {
         }
 
         /**
-         * Gets the value.
-         *
-         * @return the value, or the default value if it is {@code null}
+         * {@return the value, or the default value if it is {@code null}}
          */
         @Override
         public T get() {

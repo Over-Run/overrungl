@@ -102,54 +102,42 @@ public class GLFWVidMode extends Struct {
     }
 
     /**
-     * Gets the width.
-     *
-     * @return The width, in screen coordinates, of the video mode.
+     * {@return the width, in screen coordinates, of the video mode}
      */
     public int width() {
         return (int) pWidth.get(managedSegment);
     }
 
     /**
-     * Gets the height.
-     *
-     * @return The height, in screen coordinates, of the video mode.
+     * {@return the height, in screen coordinates, of the video mode}
      */
     public int height() {
         return (int) pHeight.get(managedSegment);
     }
 
     /**
-     * Gets the red bits.
-     *
-     * @return The bit depth of the red channel of the video mode.
+     * {@return the bit depth of the red channel of the video mode}
      */
     public int redBits() {
         return (int) pRedBits.get(managedSegment);
     }
 
     /**
-     * Gets the green bits.
-     *
-     * @return The bit depth of the green channel of the video mode.
+     * {@return the bit depth of the green channel of the video mode}
      */
     public int greenBits() {
         return (int) pGreenBits.get(managedSegment);
     }
 
     /**
-     * Gets the blue bits.
-     *
-     * @return The bit depth of the blue channel of the video mode.
+     * {@return the bit depth of the blue channel of the video mode}
      */
     public int blueBits() {
         return (int) pBlueBits.get(managedSegment);
     }
 
     /**
-     * Gets the refresh rate.
-     *
-     * @return The refresh rate, in Hz, of the video mode.
+     * {@return the refresh rate, in Hz, of the video mode}
      */
     public int refreshRate() {
         return (int) pRefreshRate.get(managedSegment);
@@ -185,9 +173,7 @@ public class GLFWVidMode extends Struct {
         }
 
         /**
-         * returns this
-         *
-         * @return this
+         * {@return this}
          */
         @Override
         public Value constCast() {
@@ -257,9 +243,7 @@ public class GLFWVidMode extends Struct {
         }
 
         /**
-         * Gets the element count.
-         *
-         * @return the element count
+         * {@return the element count}
          */
         public long elementCount() {
             return elementCount;

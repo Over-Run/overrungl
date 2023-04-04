@@ -140,10 +140,9 @@ public class STBIIoCallbacks extends Struct {
         MethodType MTYPE = DESC.toMethodType();
 
         /**
-         * Returns nonzero if we are at end of file/data
+         * {@return nonzero if we are at end of file/data}
          *
          * @param user userdata
-         * @return nonzero if we are at end of file/data
          */
         int invoke(MemorySegment user);
 
@@ -169,27 +168,21 @@ public class STBIIoCallbacks extends Struct {
     }
 
     /**
-     * Returns the read callback
-     *
-     * @return the read callback
+     * {@return the read callback}
      */
     public MemorySegment read() {
         return (MemorySegment) pRead.get(managedSegment);
     }
 
     /**
-     * Returns the skip callback
-     *
-     * @return the skip callback
+     * {@return the skip callback}
      */
     public MemorySegment skip() {
         return (MemorySegment) pSkip.get(managedSegment);
     }
 
     /**
-     * Returns the eof callback
-     *
-     * @return the eof callback
+     * {@return the eof callback}
      */
     public MemorySegment eof() {
         return (MemorySegment) pEof.get(managedSegment);

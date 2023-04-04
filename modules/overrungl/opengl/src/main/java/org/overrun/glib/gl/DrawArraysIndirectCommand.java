@@ -16,6 +16,7 @@
 
 package org.overrun.glib.gl;
 
+import org.overrun.glib.ArrayPointer;
 import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
@@ -130,36 +131,28 @@ public class DrawArraysIndirectCommand extends Struct {
     }
 
     /**
-     * Gets the count.
-     *
-     * @return the count
+     * {@return the count}
      */
     public int count() {
         return (int) pCount.get(managedSegment);
     }
 
     /**
-     * Gets the primitive count.
-     *
-     * @return the primitive count
+     * {@return the primitive count}
      */
     public int primCount() {
         return (int) pPrimCount.get(managedSegment);
     }
 
     /**
-     * Gets the first.
-     *
-     * @return the first
+     * {@return the first}
      */
     public int first() {
         return (int) pFirst.get(managedSegment);
     }
 
     /**
-     * Gets the base instance.
-     *
-     * @return the base instance
+     * {@return the base instance}
      */
     public int baseInstance() {
         return (int) pBaseInstance.get(managedSegment);
@@ -176,7 +169,7 @@ public class DrawArraysIndirectCommand extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends DrawArraysIndirectCommand {
+    public static class Buffer extends DrawArraysIndirectCommand implements ArrayPointer {
         private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirst, pBaseInstance;
         private final SequenceLayout layout;
@@ -199,11 +192,7 @@ public class DrawArraysIndirectCommand extends Struct {
             managedSegment = segment(layout, arena);
         }
 
-        /**
-         * Gets the element count.
-         *
-         * @return the element count
-         */
+        @Override
         public long elementCount() {
             return elementCount;
         }

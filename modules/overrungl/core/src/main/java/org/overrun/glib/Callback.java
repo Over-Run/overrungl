@@ -41,14 +41,12 @@ public interface Callback {
     }
 
     /**
-     * Returns the function descriptor of this callback.
-     *
-     * @return the function descriptor
+     * {@return the function descriptor of this callback}
      */
     FunctionDescriptor descriptor();
 
     /**
-     * Find the method handle from the given method handles lookup.
+     * Finds the method handle from the given method handles lookup.
      *
      * @param lookup the lookup
      * @return the method handle

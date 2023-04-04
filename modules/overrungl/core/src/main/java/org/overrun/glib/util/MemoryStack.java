@@ -248,7 +248,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     }
 
     /**
-     * Returns the address of the backing off-heap memory.
+     * {@return the address of the backing off-heap memory}
      *
      * <p>The stack grows "downwards", so the bottom of the stack is at {@code address + size}, while the top is at {@code address}.</p>
      */
@@ -258,7 +258,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     }
 
     /**
-     * Returns the size of the backing off-heap memory.
+     * {@return the size of the backing off-heap memory}
      *
      * <p>This is the maximum number of bytes that may be allocated on the stack.</p>
      */
@@ -267,7 +267,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     }
 
     /**
-     * Returns the current frame index.
+     * {@return the current frame index}
      *
      * <p>This is the current number of nested {@link #push} calls.</p>
      */
@@ -276,14 +276,14 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     }
 
     /**
-     * Returns the memory address at the current stack pointer.
+     * {@return the memory address at the current stack pointer}
      */
     public MemorySegment getPointerAddress() {
         return address().asSlice(pointer);
     }
 
     /**
-     * Returns the current stack pointer.
+     * {@return the current stack pointer}
      *
      * <p>The stack grows "downwards", so when the stack is empty {@code pointer} is equal to {@code size}. On every allocation {@code pointer} is reduced by
      * the allocated size (after alignment) and {@code address + pointer} points to the first byte of the last allocation.</p>
@@ -340,7 +340,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * zero.
      *
      * @param alignment the required element alignment
-     * @param num       num  the number of elements to allocate
+     * @param num       the number of elements to allocate
      * @param size      the size of each element
      * @return the memory address on the stack for the requested allocation
      */
@@ -789,7 +789,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     // -----------------------------------------------------
 
     /**
-     * Returns the stack of the current thread.
+     * {@return the stack of the current thread}
      */
     public static MemoryStack stackGet() {
         return TLS.get();

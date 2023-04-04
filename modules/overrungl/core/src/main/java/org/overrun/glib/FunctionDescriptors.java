@@ -104,10 +104,9 @@ public enum FunctionDescriptors {
     }
 
     /**
-     * Gets the value layout of the specified character.
+     * {@return the value layout of the specified character}
      *
      * @param c the character
-     * @return the value layout
      * @throws IllegalArgumentException if <i>{@code c}</i> is not a value layout mark.
      */
     public static ValueLayout ofValue(char c) throws IllegalArgumentException {
@@ -130,7 +129,7 @@ public enum FunctionDescriptors {
     }
 
     /**
-     * Create the function descriptor of the string.
+     * Creates the function descriptor of the string.
      *
      * @param str the string
      * @return the function descriptor
@@ -148,9 +147,7 @@ public enum FunctionDescriptors {
     }
 
     /**
-     * Gets the function descriptor.
-     *
-     * @return the function descriptor
+     * {@return the function descriptor}
      */
     public FunctionDescriptor descriptor() {
         return descriptor;

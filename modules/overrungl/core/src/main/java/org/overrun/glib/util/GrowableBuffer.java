@@ -494,9 +494,7 @@ public class GrowableBuffer implements Addressable {
     }
 
     /**
-     * Returns {@code true} if this buffer has grown.
-     *
-     * @return {@code true} if this buffer has grown.
+     * {@return {@code true} if this buffer has grown}
      */
     public boolean hasGrown() {
         return grew;
@@ -514,27 +512,21 @@ public class GrowableBuffer implements Addressable {
     }
 
     /**
-     * Returns the capacity of this buffer.
-     *
-     * @return the capacity of this buffer.
+     * {@return the capacity of this buffer}
      */
     public final long capacity() {
         return capacity;
     }
 
     /**
-     * Returns the offset of this buffer.
-     *
-     * @return the offset of this buffer.
+     * {@return the offset of this buffer}
      */
     public final long offset() {
         return offset;
     }
 
     /**
-     * Returns the performed put count.
-     *
-     * @return the performed put count.
+     * {@return the performed put count}
      */
     public final long count() {
         return count;

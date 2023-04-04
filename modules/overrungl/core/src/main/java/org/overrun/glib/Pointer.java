@@ -47,20 +47,13 @@ public class Pointer implements Addressable {
         this.arena = arena;
     }
 
-    /**
-     * Gets the address.
-     *
-     * @return the memory address.
-     */
     @Override
     public MemorySegment address() {
         return address;
     }
 
     /**
-     * Gets the arena of this pointer.
-     *
-     * @return the arena of this pointer.
+     * {@return the arena of this pointer}
      */
     public Arena arena() {
         return arena;

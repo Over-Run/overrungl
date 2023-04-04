@@ -5765,6 +5765,7 @@ public final class GLFW {
      * @param procName  The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetProcAddress(MemorySegment) ngetProcAddress
      */
     public static MemorySegment getProcAddress(SegmentAllocator allocator, String procName) {
         return ngetProcAddress(allocator.allocateUtf8String(procName));

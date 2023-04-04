@@ -233,8 +233,8 @@ public final class STBImageWrite {
         return ntgaToFunc(func.address(arena), context, w, h, comp, data);
     }
 
-    public static boolean hdrToFunc(SegmentAllocator allocator, Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(arena), context, w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
+    public static boolean hdrToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
+        return nhdrToFunc(func.address(arena), context, w, h, comp, arena.allocateArray(JAVA_FLOAT, data));
     }
 
     public static boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {

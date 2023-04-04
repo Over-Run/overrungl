@@ -16,6 +16,7 @@
 
 package org.overrun.glib.gl;
 
+import org.overrun.glib.ArrayPointer;
 import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
@@ -133,45 +134,35 @@ public class DrawElementsIndirectCommand extends Struct {
     }
 
     /**
-     * Gets the count.
-     *
-     * @return the count
+     * {@return the count}
      */
     public int count() {
         return (int) pCount.get(managedSegment);
     }
 
     /**
-     * Gets the primitive count.
-     *
-     * @return the primitive count
+     * {@return the primitive count}
      */
     public int primCount() {
         return (int) pPrimCount.get(managedSegment);
     }
 
     /**
-     * Gets the first index.
-     *
-     * @return the first index
+     * {@return the first index}
      */
     public int firstIndex() {
         return (int) pFirstIndex.get(managedSegment);
     }
 
     /**
-     * Gets the base vertex.
-     *
-     * @return the base vertex
+     * {@return the base vertex}
      */
     public int baseVertex() {
         return (int) pBaseVertex.get(managedSegment);
     }
 
     /**
-     * Gets the base instance.
-     *
-     * @return the base instance
+     * {@return the base instance}
      */
     public int baseInstance() {
         return (int) pBaseInstance.get(managedSegment);
@@ -188,7 +179,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends DrawElementsIndirectCommand {
+    public static class Buffer extends DrawElementsIndirectCommand implements ArrayPointer {
         private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirstIndex, pBaseVertex, pBaseInstance;
         private final SequenceLayout layout;
@@ -212,11 +203,7 @@ public class DrawElementsIndirectCommand extends Struct {
             managedSegment = segment(layout, arena);
         }
 
-        /**
-         * Gets the element count.
-         *
-         * @return the element count
-         */
+        @Override
         public long elementCount() {
             return elementCount;
         }

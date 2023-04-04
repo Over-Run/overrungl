@@ -16,6 +16,7 @@
 
 package org.overrun.glib.glfw;
 
+import org.overrun.glib.ArrayPointer;
 import org.overrun.glib.Struct;
 
 import java.lang.foreign.*;
@@ -153,7 +154,7 @@ public class GLFWImage extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends GLFWImage {
+    public static class Buffer extends GLFWImage implements ArrayPointer {
         private final long elementCount;
         private final VarHandle pWidth, pHeight, pPixels;
         private final SequenceLayout layout;
@@ -175,11 +176,7 @@ public class GLFWImage extends Struct {
             managedSegment = segment(layout, arena);
         }
 
-        /**
-         * Gets the element count.
-         *
-         * @return the element count
-         */
+        @Override
         public long elementCount() {
             return elementCount;
         }

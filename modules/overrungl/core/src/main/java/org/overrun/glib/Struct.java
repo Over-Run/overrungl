@@ -54,16 +54,12 @@ public abstract class Struct extends Pointer {
     }
 
     /**
-     * Gets the layout of this struct.
-     *
-     * @return the layout of this struct.
+     * {@return the layout of this struct}
      */
     public abstract MemoryLayout layout();
 
     /**
-     * Gets the struct size in bytes.
-     *
-     * @return the struct size in bytes.
+     * {@return the struct size in bytes}
      */
     public long sizeof() {
         return layout().byteSize();

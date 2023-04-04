@@ -158,30 +158,27 @@ public class GLFWGammaRamp extends Struct {
     }
 
     /**
-     * Gets the red value array.
+     * {@return the red value array}
      *
      * @param size the array size
-     * @return the array
      */
     public short[] reds(int size) {
         return RuntimeHelper.toArray(nred(), new short[size]);
     }
 
     /**
-     * Gets the green value array.
+     * {@return the green value array}
      *
      * @param size the array size
-     * @return the array
      */
     public short[] greens(int size) {
         return RuntimeHelper.toArray(ngreen(), new short[size]);
     }
 
     /**
-     * Gets the blue value array.
+     * {@return the blue value array}
      *
      * @param size the array size
-     * @return the array
      */
     public short[] blues(int size) {
         return RuntimeHelper.toArray(nblue(), new short[size]);
