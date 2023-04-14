@@ -174,7 +174,7 @@ public final class MemoryUtil {
                 Objects.requireNonNullElse(memblock, MemorySegment.NULL),
                 size), size);
             if (DEBUG) {
-                if (segment.address() != RuntimeHelper.NULL) {
+                if (!RuntimeHelper.isNullptr(segment)) {
                     DebugAllocator.track(segment.address(), size);
                 } else if (size != 0L) {
                     DebugAllocator.track(ptr, oldSize);
@@ -200,8 +200,8 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (DEBUG) DebugAllocator.untrack(memblock != null ? memblock.address() : RuntimeHelper.NULL);
-        if (memblock == null || memblock.address() == RuntimeHelper.NULL) return;
+        if (RuntimeHelper.isNullptr(memblock)) return;
+        if (DEBUG) DebugAllocator.untrack(memblock.address());
         try {
             m_free.invokeExact(memblock);
         } catch (Throwable e) {

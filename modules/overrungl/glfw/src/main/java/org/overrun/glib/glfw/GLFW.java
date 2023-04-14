@@ -1239,10 +1239,9 @@ public final class GLFW {
         try {
             var pCount = stack.calloc(JAVA_INT);
             var pMonitors = ngetMonitors(pCount);
-            if (pMonitors.address() == RuntimeHelper.NULL) {
-                return null;
-            }
-            return RuntimeHelper.toArray(pMonitors, new MemorySegment[pCount.get(JAVA_INT, 0)]);
+            return RuntimeHelper.isNullptr(pMonitors) ?
+                null :
+                RuntimeHelper.toArray(pMonitors, new MemorySegment[pCount.get(JAVA_INT, 0)]);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1623,7 +1622,7 @@ public final class GLFW {
     @Nullable
     public static String getMonitorName(MemorySegment monitor) {
         var pName = ngetMonitorName(monitor);
-        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
     }
 
     /**
@@ -1758,10 +1757,9 @@ public final class GLFW {
         try {
             var pCount = stack.calloc(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
-            if (pModes.address() == RuntimeHelper.NULL) {
-                return null;
-            }
-            return new GLFWVidMode.Buffer(pModes, arena, pCount.get(JAVA_INT, 0));
+            return RuntimeHelper.isNullptr(pModes) ?
+                null :
+                new GLFWVidMode.Buffer(pModes, arena, pCount.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1805,10 +1803,9 @@ public final class GLFW {
     @Nullable
     public static GLFWVidMode.Value getVideoMode(Arena arena, MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
-        if (pMode.address() == RuntimeHelper.NULL) {
-            return null;
-        }
-        return new GLFWVidMode(pMode, arena).constCast();
+        return RuntimeHelper.isNullptr(pMode) ?
+            null :
+            new GLFWVidMode(pMode, arena).constCast();
     }
 
     /**
@@ -1881,7 +1878,7 @@ public final class GLFW {
     @Nullable
     public static GLFWGammaRamp getGammaRamp(Arena arena, MemorySegment monitor) {
         var pRamp = ngetGammaRamp(monitor);
-        return pRamp.address() != RuntimeHelper.NULL ? new GLFWGammaRamp(pRamp, arena) : null;
+        return RuntimeHelper.isNullptr(pRamp) ? null : new GLFWGammaRamp(pRamp, arena);
     }
 
     /**
@@ -4119,7 +4116,7 @@ public final class GLFW {
     @Nullable
     public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
-        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
     }
 
     /**
@@ -5045,7 +5042,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
-        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
     }
 
     /**
@@ -5098,7 +5095,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
-        return pGUID.address() != RuntimeHelper.NULL ? pGUID.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getUtf8String(0);
     }
 
     /**
@@ -5310,7 +5307,7 @@ public final class GLFW {
     @Nullable
     public static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
-        return pName.address() != RuntimeHelper.NULL ? pName.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
     }
 
     /**
@@ -5438,7 +5435,7 @@ public final class GLFW {
     @Nullable
     public static String getClipboardString(@Deprecated MemorySegment window) {
         var pString = ngetClipboardString(window);
-        return pString.address() != RuntimeHelper.NULL ? pString.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pString) ? null : pString.getUtf8String(0);
     }
 
     /**

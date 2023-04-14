@@ -72,9 +72,7 @@ public class GL33Test {
 
     private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
-        if (!GLFW.init()) {
-            throw new IllegalStateException("Unable to initialize GLFW");
-        }
+        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
@@ -82,8 +80,7 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
         window = GLFW.createWindow(arena, 640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
-        if (window.address() == RuntimeHelper.NULL)
-            throw new RuntimeException("Failed to create the GLFW window");
+        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);
@@ -108,8 +105,8 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        if (GLLoader.loadConfined(true, GLFW::ngetProcAddress) == null)
-            throw new IllegalStateException("Failed to load OpenGL");
+        RuntimeHelper.check(GLLoader.loadConfined(true, GLFW::ngetProcAddress) != null,
+            "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

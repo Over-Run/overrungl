@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.Configurations;
+import org.overrun.glib.RuntimeHelper;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.SegmentAllocator;
@@ -89,14 +90,10 @@ public final class GLLoader {
     }
 
     private static GLCapabilities checkCapabilities(@Nullable GLCapabilities caps) {
-        if (CHECKS && caps == null) {
-            throw new IllegalStateException(
-                """
-                    No GLCapabilities instance set for the current thread. Possible solutions:
-                    \ta) Call GLLoader.load() after making a context current in the current thread.
-                    \tb) Call GLLoader.setCapabilities() if a GLCapabilities instance already exists for the current context."""
-            );
-        }
+        RuntimeHelper.check(!CHECKS || caps != null, """
+            No GLCapabilities instance set for the current thread. Possible solutions:
+            \ta) Call GLLoader.load() after making a context current in the current thread.
+            \tb) Call GLLoader.setCapabilities() if a GLCapabilities instance already exists for the current context.""");
         return caps;
     }
 
@@ -192,8 +189,7 @@ public final class GLLoader {
     @NotNull
     @Contract(value = "null -> fail; !null -> param1", pure = true)
     public static MethodHandle check(@Nullable MethodHandle handle) throws IllegalStateException {
-        if (handle == null)
-            throw new IllegalStateException("handle is null; maybe no context or function exists.");
+        RuntimeHelper.check(handle != null, "handle is null; maybe no context or function exists.");
         return handle;
     }
 

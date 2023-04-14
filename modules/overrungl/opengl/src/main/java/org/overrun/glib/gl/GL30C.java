@@ -920,7 +920,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     @Nullable
     public static String getStringi(int pname, int index) {
         var pStr = ngetStringi(pname, index);
-        return pStr.address() != RuntimeHelper.NULL ? pStr.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pStr) ? null : pStr.getUtf8String(0);
     }
 
     public static void getTexParameterIiv(int target, int pname, MemorySegment params) {

@@ -4,7 +4,7 @@ You are welcome to contribute to OverrunGL.
 
 ## Code of Conduct
 
-You must abide by the [Code of Conduct](CODE_OF_CONDUCT.md).
+You must respect the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Issues
 
@@ -12,19 +12,18 @@ To start with [issues](https://github.com/Over-Run/overrungl/issues), we recomme
 
 ## Pull Requests
 
-The pull requests will be reviewed in 1-2 workweeks. Please note that the code must be formatted.
+The pull requests will be reviewed in 1-5 workweeks. Please note that the code must be formatted.
 
 ### Formatted Code
 
 The formatted code:
 
-- Java files header **MUST** contain the copy [LICENSE](LICENSE). The copy **MUST** be ended without empty line and commented with block style.
-- Class names **MUST** be CamelCase
-- Method and field names _should_ be camelCase
-- File encoding **MUST** be UTF-8
-- File line separator **MUST** be LF
-
-Some rules are configured with [.editorconfig](.editorconfig).
+- Except auto-generated files, Java files header **MUST** contain the copy [LICENSE](LICENSE). The copy **MUST** be ended without empty line and commented with block style;
+- The class names **MUST** be CamelCase;
+- The method and field names _should_ be camelCase;
+- The file encoding **MUST** be UTF-8;
+- The file line separator **MUST** be LF;
+- Other rules specified by [.editorconfig](.editorconfig).
 
 Example:
 
@@ -54,5 +53,5 @@ public class Example /* Space */ {
 
 ## Discussions
 
-You can visit our [forum](https://github.com/Over-Run/overrungl/discussions) and create your post, sharing your experience
+You can visit our [forum](https://github.com/Over-Run/overrungl/discussions) and create your post, share your experience
 or just ask some questions.

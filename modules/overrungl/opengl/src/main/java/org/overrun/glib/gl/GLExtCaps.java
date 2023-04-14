@@ -412,6 +412,15 @@ public final class GLExtCaps {
      * {@code GL_ARB_point_parameters} extension method handles.
      */
     public MethodHandle glPointParameterfARB, glPointParameterfvARB;
+    /**
+     * {@code GL_ARB_robustness} extension method handles.
+     */
+    public MethodHandle glGetGraphicsResetStatusARB, glGetnCompressedTexImageARB, glGetnTexImageARB, glGetnUniformdvARB,
+        glGetnUniformfvARB, glGetnUniformivARB, glGetnUniformuivARB, glReadnPixelsARB;
+    /**
+     * {@code GL_ARB_sample_locations} extension method handles.
+     */
+    public MethodHandle glEvaluateDepthValuesARB, glFramebufferSampleLocationsfvARB, glNamedFramebufferSampleLocationsfvARB;
 
     // endregion
 
@@ -683,7 +692,7 @@ public final class GLExtCaps {
         GLARBOcclusionQuery.load(this, load);
         GLARBParallelShaderCompile.load(this, load);
         GLARBPointParameters.load(this, load);
-        // GLARBRobustness.load(load);
+        GLARBRobustness.load(this, load);
         // GLARBSample_locations.load(load);
         // GLARBSample_shading.load(load);
         // GLARBShader_objects.load(load);

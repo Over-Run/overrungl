@@ -21,6 +21,8 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentScope;
 import java.lang.foreign.ValueLayout;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -51,18 +53,23 @@ public final class IOUtil {
      * @throws IOException if an IO error occurs.
      */
     public static MemorySegment ioResourceToSegment(Arena arena, String resource, long segmentSize, int bufferSize) throws IOException {
-        final Path path = Path.of(resource);
+        final boolean isHttp = resource.startsWith("http");
+        final Path path = isHttp ? null : Path.of(resource);
 
         // Check whether on local
-        if (Files.isReadable(path)) {
+        if (path != null && Files.isReadable(path)) {
             try (var fc = FileChannel.open(path)) {
                 return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena.scope());
             }
         }
 
         // On classpath
-        try (var is = Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
-            "Failed to load resource '" + resource + "'!")) {
+        try (
+            var is = isHttp ?
+                new URI(resource).toURL().openStream() :
+                Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
+                    "Failed to load resource '" + resource + "'!")
+        ) {
             MemorySegment segment = arena.allocate(segmentSize);
 
             // Creates a byte array to avoid creating it each loop
@@ -78,6 +85,8 @@ public final class IOUtil {
             }
 
             return segment.asSlice(0, pos);
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException("Illegal URI: " + resource, e);
         }
     }
 

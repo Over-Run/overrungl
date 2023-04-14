@@ -100,7 +100,7 @@ public interface CustomArena extends SegmentAllocator, AutoCloseable {
 
             @Override
             public MemorySegment reallocate(MemorySegment segment, long byteSize) {
-                if (segment == null || segment.address() == RuntimeHelper.NULL) return allocate(byteSize);
+                if (RuntimeHelper.isNullptr(segment)) return allocate(byteSize);
                 if (byteSize == 0) return segment;
                 final MemorySegment seg = allocator.allocate(byteSize);
                 MemorySegment.copy(segment, 0, seg, 0, Math.min(byteSize, segment.byteSize()));

@@ -52,15 +52,12 @@ public final class GLFWTest {
 
     private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
-        if (!GLFW.init()) {
-            throw new IllegalStateException("Unable to initialize GLFW");
-        }
+        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         window = GLFW.createWindow(arena, 300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
-        if (window.address() == RuntimeHelper.NULL)
-            throw new RuntimeException("Failed to create the GLFW window");
+        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);
@@ -85,8 +82,8 @@ public final class GLFWTest {
     }
 
     private void load() {
-        if (GLLoader.loadConfined(GLFW::ngetProcAddress) == null)
-            throw new IllegalStateException("Failed to load OpenGL");
+        RuntimeHelper.check(GLLoader.loadConfined(GLFW::ngetProcAddress) != null,
+            "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }

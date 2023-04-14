@@ -47,9 +47,7 @@ public final class GLFWJoystickTest {
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        if (!GLFW.init()) {
-            throw new IllegalStateException("Unable to initialize GLFW");
-        }
+        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
@@ -57,8 +55,7 @@ public final class GLFWJoystickTest {
         try (var arena = Arena.openConfined()) {
             window = GLFW.createWindow(arena, 200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         }
-        if (window.address() == RuntimeHelper.NULL)
-            throw new RuntimeException("Failed to create the GLFW window");
+        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);

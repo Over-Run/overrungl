@@ -48,12 +48,8 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
     private static final ThreadLocal<MemoryStack> TLS = ThreadLocal.withInitial(MemoryStack::create);
 
     static {
-        if (DEFAULT_STACK_SIZE < 0) {
-            throw new IllegalStateException("Invalid stack size.");
-        }
-        if (DEFAULT_STACK_FRAMES < 0) {
-            throw new IllegalStateException("Invalid stack frames.");
-        }
+        RuntimeHelper.check(DEFAULT_STACK_SIZE > 0, "Invalid stack size.");
+        RuntimeHelper.check(DEFAULT_STACK_FRAMES > 0, "Invalid stack frames.");
     }
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})

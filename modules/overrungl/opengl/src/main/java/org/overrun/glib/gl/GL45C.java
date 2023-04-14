@@ -36,6 +36,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  *     <li>GL_ARB_direct_state_access</li>
  *     <li>GL_ARB_ES3_1_compatibility</li>
  *     <li>GL_ARB_get_texture_sub_image</li>
+ *     <li>GL_ARB_robustness</li>
  *     <li>GL_ARB_texture_barrier</li>
  *     <li>GL_KHR_robustness</li>
  * </ul>

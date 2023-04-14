@@ -547,7 +547,7 @@ public sealed class GL10C permits GL10, GL11C {
     @Nullable
     public static String getString(int name) {
         var pStr = ngetString(name);
-        return pStr.address() != RuntimeHelper.NULL ? pStr.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pStr) ? null : pStr.getUtf8String(0);
     }
 
     public static void getTexImage(int target, int level, int format, int type, MemorySegment pixels) {

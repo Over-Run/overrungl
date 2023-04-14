@@ -141,7 +141,7 @@ public final class STBImage {
     @Nullable
     public static String failureReason() {
         var pReason = nfailureReason();
-        return pReason.address() != RuntimeHelper.NULL ? pReason.getUtf8String(0) : null;
+        return RuntimeHelper.isNullptr(pReason) ? null : pReason.getUtf8String(0);
     }
 
     public static void hdrToLdrGamma(float gamma) {

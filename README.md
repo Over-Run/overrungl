@@ -57,6 +57,13 @@ Basic graphics:
 | OpenGL | Partial (Core and partial extensions) |
 | STB    | Partial (Image, perlin noise)         |
 
+Utilities:
+
+| Module | Functionality            |
+|--------|--------------------------|
+| JOML   | Full (Vector and Matrix) |
+
+
 ## Contact
 
 - [Discussions](https://github.com/Over-Run/overrungl/discussions)

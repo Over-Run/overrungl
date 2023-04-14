@@ -51,7 +51,7 @@ final class GLExtFinder {
             if (numExtsI > 0) {
                 extsI = allocator.allocateArray(ADDRESS, numExtsI);
             }
-            if (extsI.address() == RuntimeHelper.NULL) {
+            if (RuntimeHelper.isNullptr(extsI)) {
                 return false;
             }
             for (int index = 0; index < numExtsI; index++) {

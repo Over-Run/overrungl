@@ -31,6 +31,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -276,6 +277,63 @@ public final class RuntimeHelper {
     }
 
     /**
+     * {@return {@code true} if <i>{@code segment}</i> is a null pointer}
+     *
+     * @param segment the segment.
+     */
+    public static boolean isNullptr(@Nullable MemorySegment segment) {
+        return segment == null || segment.equals(MemorySegment.NULL);
+    }
+
+    /**
+     * {@return {@code true} if <i>{@code address}</i> is {@value NULL}}
+     *
+     * @param address the address.
+     */
+    public static boolean isNullptr(long address) {
+        return address == NULL;
+    }
+
+    /**
+     * Checks whether the given condition is {@code true}.
+     *
+     * @param condition the condition.
+     * @throws IllegalStateException if <i>{@code condition}</i> is {@code false}.
+     * @see #check(boolean, Supplier)
+     * @see #check(boolean, String)
+     */
+    public static void check(boolean condition) throws IllegalStateException {
+        check(condition, "condition == false");
+    }
+
+    /**
+     * Checks whether the given condition is {@code true}. The message of the exception is wrapped in a supplier
+     * to avoid side effect.
+     *
+     * @param condition       the condition.
+     * @param messageSupplier the message supplier of the exception.
+     * @throws IllegalStateException if <i>{@code condition}</i> is {@code false}.
+     * @see #check(boolean)
+     * @see #check(boolean, String)
+     */
+    public static void check(boolean condition, Supplier<String> messageSupplier) throws IllegalStateException {
+        if (!condition) throw new IllegalStateException(messageSupplier.get());
+    }
+
+    /**
+     * Checks whether the given condition is {@code true}.
+     *
+     * @param condition the condition.
+     * @param message   the message of the exception.
+     * @throws IllegalStateException if <i>{@code condition}</i> is {@code false}.
+     * @see #check(boolean)
+     * @see #check(boolean, Supplier)
+     */
+    public static void check(boolean condition, String message) throws IllegalStateException {
+        if (!condition) throw new IllegalStateException(message);
+    }
+
+    /**
      * Creates a downcall handle or {@code null}.
      *
      * @param symbol   the address of the target function.
@@ -284,8 +342,7 @@ public final class RuntimeHelper {
      */
     @Nullable
     public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function) {
-        if (symbol == null || symbol.address() == NULL) return null;
-        return LINKER.downcallHandle(symbol, function);
+        return isNullptr(symbol) ? null : LINKER.downcallHandle(symbol, function);
     }
 
     /**
