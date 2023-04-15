@@ -1,21 +1,10 @@
 sourceSets {
     generator
-    generated {
-        def core = project(":core")
-        compileClasspath += main.output
-        compileClasspath += core.sourceSets.main.output
-        runtimeClasspath += main.output
-        runtimeClasspath += core.sourceSets.main.output
-    }
-    main {
-        compileClasspath += generated.output
-        runtimeClasspath += generated.output
-    }
 }
 
 tasks.register("generate", JavaExec) {
     classpath sourceSets.generator.runtimeClasspath
     jvmArgs += "--enable-preview"
     mainClass = "org.overrun.glib.gl.OpenGLGenerator"
-    workingDir = file("src/generated/java/org/overrun/glib/gl")
+    workingDir = file("src/main/java/org/overrun/glib/gl")
 }
