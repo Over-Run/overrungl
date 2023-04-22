@@ -60,15 +60,13 @@ public class Pointer implements Addressable {
     }
 
     /**
-     * Gets the native segment of this pointer, or creates a new one with the given arena
-     * if the segment of this pointer is zero-length.
+     * Gets the native segment of this pointer, or creates a new one if the segment of this pointer is zero-length.
      *
      * @param bytesSize the bytes size of the segment.
-     * @param arena     the arena associated with the returned native segment.
      * @return the memory segment.
-     * @see #segment(MemoryLayout, Arena)
+     * @see #segment(MemoryLayout)
      */
-    public MemorySegment segment(long bytesSize, Arena arena) {
+    public MemorySegment segment(long bytesSize) {
         if (address().byteSize() == 0) {
             return RuntimeHelper.sizedSegment(address(), bytesSize);
         }
@@ -76,14 +74,13 @@ public class Pointer implements Addressable {
     }
 
     /**
-     * Gets as memory segment.
+     * Gets the native segment of this pointer, or creates a new one if the segment of this pointer is zero-length.
      *
-     * @param layout the memory layout
-     * @param arena  the arena associated with the returned native segment.
-     * @return the memory segment
-     * @see #segment(long, Arena)
+     * @param layout the memory layout of the segment.
+     * @return the memory segment.
+     * @see #segment(long)
      */
-    public MemorySegment segment(MemoryLayout layout, Arena arena) {
-        return segment(layout.byteSize(), arena);
+    public MemorySegment segment(MemoryLayout layout) {
+        return segment(layout.byteSize());
     }
 }

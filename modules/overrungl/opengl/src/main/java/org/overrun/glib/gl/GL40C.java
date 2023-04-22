@@ -38,6 +38,9 @@ import static org.overrun.glib.gl.GLLoader.*;
  *     <li>GL_ARB_tessellation_shader</li>
  *     <li>GL_ARB_transform_feedback2</li>
  *     <li>GL_ARB_transform_feedback3</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBSampleShading GL_ARB_sample_shading}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureCubeMapArray GL_ARB_texture_cube_map_array}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureGather GL_ARB_texture_gather}</li>
  * </ul>
  *
  * @author squid233

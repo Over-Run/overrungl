@@ -70,7 +70,7 @@ public class GLFWGammaRamp extends Struct {
      * @param arena   the arena of this address.
      */
     public GLFWGammaRamp(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
     }
 
     /**
@@ -90,7 +90,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        ppRed.set(managedSegment, arena.allocateArray(JAVA_SHORT, reds));
+        ppRed.set(segment(), arena.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
@@ -101,7 +101,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        ppGreen.set(managedSegment, arena.allocateArray(JAVA_SHORT, greens));
+        ppGreen.set(segment(), arena.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
@@ -112,7 +112,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        ppBlue.set(managedSegment, arena.allocateArray(JAVA_SHORT, blues.length));
+        ppBlue.set(segment(), arena.allocateArray(JAVA_SHORT, blues.length));
         return this;
     }
 
@@ -123,7 +123,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp size(int size) {
-        pSize.set(managedSegment, size);
+        pSize.set(segment(), size);
         return this;
     }
 
@@ -134,7 +134,7 @@ public class GLFWGammaRamp extends Struct {
      * @return the red value
      */
     public short red(int index) {
-        return (short) pRed.get(managedSegment, (long) index);
+        return (short) pRed.get(segment(), (long) index);
     }
 
     /**
@@ -144,7 +144,7 @@ public class GLFWGammaRamp extends Struct {
      * @return the green value
      */
     public short green(int index) {
-        return (short) pGreen.get(managedSegment, (long) index);
+        return (short) pGreen.get(segment(), (long) index);
     }
 
     /**
@@ -154,7 +154,7 @@ public class GLFWGammaRamp extends Struct {
      * @return the blue value
      */
     public short blue(int index) {
-        return (short) pBlue.get(managedSegment, (long) index);
+        return (short) pBlue.get(segment(), (long) index);
     }
 
     /**
@@ -217,23 +217,18 @@ public class GLFWGammaRamp extends Struct {
      * @return The number of elements in each array.
      */
     public int size() {
-        return (int) pSize.get(managedSegment);
+        return (int) pSize.get(segment());
     }
 
     public MemorySegment nred() {
-        return (MemorySegment) ppRed.get(managedSegment);
+        return (MemorySegment) ppRed.get(segment());
     }
 
     public MemorySegment ngreen() {
-        return (MemorySegment) ppGreen.get(managedSegment);
+        return (MemorySegment) ppGreen.get(segment());
     }
 
     public MemorySegment nblue() {
-        return (MemorySegment) ppBlue.get(managedSegment);
-    }
-
-    @Override
-    public StructLayout layout() {
-        return LAYOUT;
+        return (MemorySegment) ppBlue.get(segment());
     }
 }

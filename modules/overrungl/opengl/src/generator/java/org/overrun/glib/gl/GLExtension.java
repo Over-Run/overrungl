@@ -16,9 +16,11 @@
 
 package org.overrun.glib.gl;
 
+import java.util.Map;
+
 /**
  * @author squid233
  * @since 0.1.0
  */
-public record GLExtension(String name, GLExtFunc[] functions) {
+public record GLExtension(String name, Map<String, String> constants, GLExtFunc[] functions) {
 }

@@ -35,6 +35,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBColorBufferFloat GL_ARB_color_buffer_float}</li>
  *     <li>GL_ARB_framebuffer_object</li>
  *     <li>GL_ARB_map_buffer_range</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureFloat GL_ARB_texture_float}</li>
  *     <li>GL_ARB_vertex_array_object</li>
  * </ul>
  *

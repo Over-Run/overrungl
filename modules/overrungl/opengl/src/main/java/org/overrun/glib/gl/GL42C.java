@@ -37,6 +37,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  *     <li>GL_ARB_shader_image_load_store</li>
  *     <li>GL_ARB_texture_storage</li>
  *     <li>GL_ARB_transform_feedback_instanced</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureCompressionBptc GL_ARB_texture_compression_bptc}</li>
  * </ul>
  *
  * @author squid233

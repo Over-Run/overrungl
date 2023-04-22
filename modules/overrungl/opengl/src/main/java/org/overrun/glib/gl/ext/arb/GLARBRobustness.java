@@ -10,6 +10,14 @@ import static org.overrun.glib.FunctionDescriptors.*;
  * {@code GL_ARB_robustness}
  */
 public final class GLARBRobustness {
+    public static final int GL_NO_RESET_NOTIFICATION_ARB = 0x8261;
+    public static final int GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256;
+    public static final int GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = 0x00000004;
+    public static final int GL_UNKNOWN_CONTEXT_RESET_ARB = 0x8255;
+    public static final int GL_LOSE_CONTEXT_ON_RESET_ARB = 0x8252;
+    public static final int GL_INNOCENT_CONTEXT_RESET_ARB = 0x8254;
+    public static final int GL_GUILTY_CONTEXT_RESET_ARB = 0x8253;
+
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_robustness) return;
         ext.glGetGraphicsResetStatusARB = load.invoke("glGetGraphicsResetStatusARB", I);
@@ -30,7 +38,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glGetnCompressedTexImageARB(int target, int lod, int bufSize, MemorySegment img) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -39,7 +46,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glGetnTexImageARB(int target, int level, int format, int type, int bufSize, MemorySegment img) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -48,7 +54,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glGetnUniformdvARB(int program, int location, int bufSize, MemorySegment params) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -57,7 +62,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glGetnUniformfvARB(int program, int location, int bufSize, MemorySegment params) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -66,7 +70,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glGetnUniformivARB(int program, int location, int bufSize, MemorySegment params) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -75,7 +78,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glGetnUniformuivARB(int program, int location, int bufSize, MemorySegment params) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -84,7 +86,6 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
     public static void glReadnPixelsARB(int x, int y, int width, int height, int format, int type, int bufSize, MemorySegment data) {
         final var ext = GLLoader.getExtCapabilities();
         try {
@@ -93,5 +94,4 @@ public final class GLARBRobustness {
             throw new AssertionError("should not reach here", e);
         }
     }
-
 }

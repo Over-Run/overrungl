@@ -28,6 +28,9 @@ import static org.overrun.glib.gl.GLLoader.*;
  * <ul>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBMultisample GL_ARB_multisample}</li>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBMultitexture GL_ARB_multitexture}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureBorderClamp GL_ARB_texture_border_clamp}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureCompression GL_ARB_texture_compression}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureCubeMap GL_ARB_texture_cube_map}</li>
  * </ul>
  *
  * @author squid233

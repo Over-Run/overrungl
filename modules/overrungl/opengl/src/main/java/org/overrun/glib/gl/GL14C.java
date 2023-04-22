@@ -30,6 +30,8 @@ import static org.overrun.glib.gl.GLLoader.*;
  * <ul>
  *     <li>GL_ARB_imaging</li>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBPointParameters GL_ARB_point_parameters}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBShadow GL_ARB_shadow}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureMirroredRepeat GL_ARB_texture_mirrored_repeat}</li>
  * </ul>
  *
  * @author squid233

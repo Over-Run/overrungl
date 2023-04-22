@@ -54,7 +54,18 @@ public class DrawElementsIndirectCommand extends Struct {
      * @param arena   the arena of this address.
      */
     public DrawElementsIndirectCommand(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
+    }
+
+    /**
+     * Creates a struct instance with the given memory layout.
+     *
+     * @param address the address.
+     * @param arena   the arena of this address.
+     * @param layout  the memory layout of this struct.
+     */
+    protected DrawElementsIndirectCommand(MemorySegment address, Arena arena, MemoryLayout layout) {
+        super(address, arena, layout);
     }
 
     /**
@@ -85,7 +96,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return this
      */
     public DrawElementsIndirectCommand count(int count) {
-        pCount.set(managedSegment, count);
+        pCount.set(segment(), count);
         return this;
     }
 
@@ -96,7 +107,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return this
      */
     public DrawElementsIndirectCommand primCount(int primCount) {
-        pPrimCount.set(managedSegment, primCount);
+        pPrimCount.set(segment(), primCount);
         return this;
     }
 
@@ -107,7 +118,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return this
      */
     public DrawElementsIndirectCommand firstIndex(int firstIndex) {
-        pFirstIndex.set(managedSegment, firstIndex);
+        pFirstIndex.set(segment(), firstIndex);
         return this;
     }
 
@@ -118,7 +129,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return this
      */
     public DrawElementsIndirectCommand baseVertex(int baseVertex) {
-        pBaseVertex.set(managedSegment, baseVertex);
+        pBaseVertex.set(segment(), baseVertex);
         return this;
     }
 
@@ -129,7 +140,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return this
      */
     public DrawElementsIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(managedSegment, baseInstance);
+        pBaseInstance.set(segment(), baseInstance);
         return this;
     }
 
@@ -137,40 +148,35 @@ public class DrawElementsIndirectCommand extends Struct {
      * {@return the count}
      */
     public int count() {
-        return (int) pCount.get(managedSegment);
+        return (int) pCount.get(segment());
     }
 
     /**
      * {@return the primitive count}
      */
     public int primCount() {
-        return (int) pPrimCount.get(managedSegment);
+        return (int) pPrimCount.get(segment());
     }
 
     /**
      * {@return the first index}
      */
     public int firstIndex() {
-        return (int) pFirstIndex.get(managedSegment);
+        return (int) pFirstIndex.get(segment());
     }
 
     /**
      * {@return the base vertex}
      */
     public int baseVertex() {
-        return (int) pBaseVertex.get(managedSegment);
+        return (int) pBaseVertex.get(segment());
     }
 
     /**
      * {@return the base instance}
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(managedSegment);
-    }
-
-    @Override
-    public MemoryLayout layout() {
-        return LAYOUT;
+        return (int) pBaseInstance.get(segment());
     }
 
     /**
@@ -182,7 +188,6 @@ public class DrawElementsIndirectCommand extends Struct {
     public static class Buffer extends DrawElementsIndirectCommand implements ArrayPointer {
         private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirstIndex, pBaseVertex, pBaseInstance;
-        private final SequenceLayout layout;
 
         /**
          * Create the pointer instance.
@@ -192,15 +197,13 @@ public class DrawElementsIndirectCommand extends Struct {
          * @param elementCount the element count
          */
         public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena);
+            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             this.elementCount = elementCount;
-            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
-            pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
-            pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
-            pFirstIndex = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex"));
-            pBaseVertex = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseVertex"));
-            pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
-            managedSegment = segment(layout, arena);
+            pCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
+            pPrimCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
+            pFirstIndex = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex"));
+            pBaseVertex = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseVertex"));
+            pBaseInstance = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
         }
 
         @Override
@@ -216,7 +219,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return this
          */
         public Buffer count(long index, int count) {
-            pCount.set(managedSegment, index, count);
+            pCount.set(segment(), index, count);
             return this;
         }
 
@@ -228,7 +231,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return this
          */
         public Buffer primCount(long index, int primCount) {
-            pPrimCount.set(managedSegment, index, primCount);
+            pPrimCount.set(segment(), index, primCount);
             return this;
         }
 
@@ -240,7 +243,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return this
          */
         public Buffer firstIndex(long index, int firstIndex) {
-            pFirstIndex.set(managedSegment, index, firstIndex);
+            pFirstIndex.set(segment(), index, firstIndex);
             return this;
         }
 
@@ -252,7 +255,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return this
          */
         public Buffer baseVertex(long index, int baseVertex) {
-            pBaseVertex.set(managedSegment, index, baseVertex);
+            pBaseVertex.set(segment(), index, baseVertex);
             return this;
         }
 
@@ -264,7 +267,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return this
          */
         public Buffer baseInstance(long index, int baseInstance) {
-            pBaseInstance.set(managedSegment, index, baseInstance);
+            pBaseInstance.set(segment(), index, baseInstance);
             return this;
         }
 
@@ -300,7 +303,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return the count
          */
         public int countAt(long index) {
-            return (int) pCount.get(managedSegment, index);
+            return (int) pCount.get(segment(), index);
         }
 
         /**
@@ -310,7 +313,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return the primitive count
          */
         public int primCountAt(long index) {
-            return (int) pPrimCount.get(managedSegment, index);
+            return (int) pPrimCount.get(segment(), index);
         }
 
         /**
@@ -320,7 +323,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return the first index
          */
         public int firstIndexAt(long index) {
-            return (int) pFirstIndex.get(managedSegment, index);
+            return (int) pFirstIndex.get(segment(), index);
         }
 
         /**
@@ -330,7 +333,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return the base vertex
          */
         public int baseVertexAt(long index) {
-            return (int) pBaseVertex.get(managedSegment, index);
+            return (int) pBaseVertex.get(segment(), index);
         }
 
         /**
@@ -340,7 +343,7 @@ public class DrawElementsIndirectCommand extends Struct {
          * @return the base instance
          */
         public int baseInstanceAt(long index) {
-            return (int) pBaseInstance.get(managedSegment, index);
+            return (int) pBaseInstance.get(segment(), index);
         }
 
         @Override
@@ -366,11 +369,6 @@ public class DrawElementsIndirectCommand extends Struct {
         @Override
         public int baseInstance() {
             return baseInstanceAt(0);
-        }
-
-        @Override
-        public SequenceLayout layout() {
-            return layout;
         }
     }
 }

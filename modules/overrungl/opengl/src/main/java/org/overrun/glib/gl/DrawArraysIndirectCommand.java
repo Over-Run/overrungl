@@ -62,7 +62,18 @@ public class DrawArraysIndirectCommand extends Struct {
      * @param arena   the arena of this address.
      */
     public DrawArraysIndirectCommand(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
+    }
+
+    /**
+     * Creates a struct instance with the given memory layout.
+     *
+     * @param address the address.
+     * @param arena   the arena of this address.
+     * @param layout  the memory layout of this struct.
+     */
+    protected DrawArraysIndirectCommand(MemorySegment address, Arena arena, MemoryLayout layout) {
+        super(address, arena, layout);
     }
 
     /**
@@ -93,7 +104,7 @@ public class DrawArraysIndirectCommand extends Struct {
      * @return this
      */
     public DrawArraysIndirectCommand count(int count) {
-        pCount.set(managedSegment, count);
+        pCount.set(segment(), count);
         return this;
     }
 
@@ -104,7 +115,7 @@ public class DrawArraysIndirectCommand extends Struct {
      * @return this
      */
     public DrawArraysIndirectCommand primCount(int primCount) {
-        pPrimCount.set(managedSegment, primCount);
+        pPrimCount.set(segment(), primCount);
         return this;
     }
 
@@ -115,7 +126,7 @@ public class DrawArraysIndirectCommand extends Struct {
      * @return this
      */
     public DrawArraysIndirectCommand first(int first) {
-        pFirst.set(managedSegment, first);
+        pFirst.set(segment(), first);
         return this;
     }
 
@@ -126,7 +137,7 @@ public class DrawArraysIndirectCommand extends Struct {
      * @return this
      */
     public DrawArraysIndirectCommand baseInstance(int baseInstance) {
-        pBaseInstance.set(managedSegment, baseInstance);
+        pBaseInstance.set(segment(), baseInstance);
         return this;
     }
 
@@ -134,33 +145,28 @@ public class DrawArraysIndirectCommand extends Struct {
      * {@return the count}
      */
     public int count() {
-        return (int) pCount.get(managedSegment);
+        return (int) pCount.get(segment());
     }
 
     /**
      * {@return the primitive count}
      */
     public int primCount() {
-        return (int) pPrimCount.get(managedSegment);
+        return (int) pPrimCount.get(segment());
     }
 
     /**
      * {@return the first}
      */
     public int first() {
-        return (int) pFirst.get(managedSegment);
+        return (int) pFirst.get(segment());
     }
 
     /**
      * {@return the base instance}
      */
     public int baseInstance() {
-        return (int) pBaseInstance.get(managedSegment);
-    }
-
-    @Override
-    public MemoryLayout layout() {
-        return LAYOUT;
+        return (int) pBaseInstance.get(segment());
     }
 
     /**
@@ -172,7 +178,6 @@ public class DrawArraysIndirectCommand extends Struct {
     public static class Buffer extends DrawArraysIndirectCommand implements ArrayPointer {
         private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirst, pBaseInstance;
-        private final SequenceLayout layout;
 
         /**
          * Create the pointer instance.
@@ -182,14 +187,12 @@ public class DrawArraysIndirectCommand extends Struct {
          * @param elementCount the element count
          */
         public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena);
+            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             this.elementCount = elementCount;
-            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
-            pCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
-            pPrimCount = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
-            pFirst = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));
-            pBaseInstance = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
-            managedSegment = segment(layout, arena);
+            pCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
+            pPrimCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
+            pFirst = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));
+            pBaseInstance = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
         }
 
         @Override
@@ -205,7 +208,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return this
          */
         public Buffer count(long index, int count) {
-            pCount.set(managedSegment, index, count);
+            pCount.set(segment(), index, count);
             return this;
         }
 
@@ -217,7 +220,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return this
          */
         public Buffer primCount(long index, int primCount) {
-            pPrimCount.set(managedSegment, index, primCount);
+            pPrimCount.set(segment(), index, primCount);
             return this;
         }
 
@@ -229,7 +232,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return this
          */
         public Buffer first(long index, int first) {
-            pFirst.set(managedSegment, index, first);
+            pFirst.set(segment(), index, first);
             return this;
         }
 
@@ -241,7 +244,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return this
          */
         public Buffer baseInstance(long index, int baseInstance) {
-            pBaseInstance.set(managedSegment, index, baseInstance);
+            pBaseInstance.set(segment(), index, baseInstance);
             return this;
         }
 
@@ -272,7 +275,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return the count
          */
         public int countAt(long index) {
-            return (int) pCount.get(managedSegment, index);
+            return (int) pCount.get(segment(), index);
         }
 
         /**
@@ -282,7 +285,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return the primitive count
          */
         public int primCountAt(long index) {
-            return (int) pPrimCount.get(managedSegment, index);
+            return (int) pPrimCount.get(segment(), index);
         }
 
         /**
@@ -292,7 +295,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return the first
          */
         public int firstAt(long index) {
-            return (int) pFirst.get(managedSegment, index);
+            return (int) pFirst.get(segment(), index);
         }
 
         /**
@@ -302,7 +305,7 @@ public class DrawArraysIndirectCommand extends Struct {
          * @return the base instance
          */
         public int baseInstanceAt(long index) {
-            return (int) pBaseInstance.get(managedSegment, index);
+            return (int) pBaseInstance.get(segment(), index);
         }
 
         @Override
@@ -323,11 +326,6 @@ public class DrawArraysIndirectCommand extends Struct {
         @Override
         public int baseInstance() {
             return baseInstanceAt(0);
-        }
-
-        @Override
-        public SequenceLayout layout() {
-            return layout;
         }
     }
 }

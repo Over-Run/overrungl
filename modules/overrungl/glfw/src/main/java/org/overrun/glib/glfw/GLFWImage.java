@@ -59,7 +59,18 @@ public class GLFWImage extends Struct {
      * @param arena   the arena of this address.
      */
     public GLFWImage(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
+    }
+
+    /**
+     * Creates a struct instance with the given memory layout.
+     *
+     * @param address the address.
+     * @param arena   the arena of this address.
+     * @param layout  the memory layout of this struct.
+     */
+    protected GLFWImage(MemorySegment address, Arena arena, MemoryLayout layout) {
+        super(address, arena, layout);
     }
 
     /**
@@ -90,7 +101,7 @@ public class GLFWImage extends Struct {
      * @return this
      */
     public GLFWImage width(int width) {
-        pWidth.set(managedSegment, width);
+        pWidth.set(segment(), width);
         return this;
     }
 
@@ -101,7 +112,7 @@ public class GLFWImage extends Struct {
      * @return this
      */
     public GLFWImage height(int height) {
-        pHeight.set(managedSegment, height);
+        pHeight.set(segment(), height);
         return this;
     }
 
@@ -112,7 +123,7 @@ public class GLFWImage extends Struct {
      * @return this
      */
     public GLFWImage pixels(MemorySegment pixels) {
-        pPixels.set(managedSegment, pixels);
+        pPixels.set(segment(), pixels);
         return this;
     }
 
@@ -122,7 +133,7 @@ public class GLFWImage extends Struct {
      * @return The width, in pixels, of this image.
      */
     public int width() {
-        return (int) pWidth.get(managedSegment);
+        return (int) pWidth.get(segment());
     }
 
     /**
@@ -131,7 +142,7 @@ public class GLFWImage extends Struct {
      * @return The height, in pixels, of this image.
      */
     public int height() {
-        return (int) pHeight.get(managedSegment);
+        return (int) pHeight.get(segment());
     }
 
     /**
@@ -140,12 +151,7 @@ public class GLFWImage extends Struct {
      * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
     public MemorySegment pixels() {
-        return (MemorySegment) pPixels.get(managedSegment);
-    }
-
-    @Override
-    public MemoryLayout layout() {
-        return LAYOUT;
+        return (MemorySegment) pPixels.get(segment());
     }
 
     /**
@@ -157,23 +163,20 @@ public class GLFWImage extends Struct {
     public static class Buffer extends GLFWImage implements ArrayPointer {
         private final long elementCount;
         private final VarHandle pWidth, pHeight, pPixels;
-        private final SequenceLayout layout;
 
         /**
-         * Create a {@code GLFWimage.Buffer} instance.
+         * Create a {@code GLFWImage.Buffer} instance.
          *
          * @param address      the address.
          * @param arena        the arena of this address.
          * @param elementCount the element count
          */
         public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena);
+            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             this.elementCount = elementCount;
-            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
-            pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
-            pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
-            pPixels = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
-            managedSegment = segment(layout, arena);
+            pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
+            pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
+            pPixels = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
         }
 
         @Override
@@ -189,7 +192,7 @@ public class GLFWImage extends Struct {
          * @return this
          */
         public Buffer width(long index, int width) {
-            pWidth.set(managedSegment, index, width);
+            pWidth.set(segment(), index, width);
             return this;
         }
 
@@ -201,7 +204,7 @@ public class GLFWImage extends Struct {
          * @return this
          */
         public Buffer height(long index, int height) {
-            pHeight.set(managedSegment, index, height);
+            pHeight.set(segment(), index, height);
             return this;
         }
 
@@ -213,7 +216,7 @@ public class GLFWImage extends Struct {
          * @return this
          */
         public Buffer pixels(long index, MemorySegment pixels) {
-            pPixels.set(managedSegment, index, pixels);
+            pPixels.set(segment(), index, pixels);
             return this;
         }
 
@@ -239,7 +242,7 @@ public class GLFWImage extends Struct {
          * @return The width, in pixels, of this image.
          */
         public int widthAt(long index) {
-            return (int) pWidth.get(managedSegment, index);
+            return (int) pWidth.get(segment(), index);
         }
 
         /**
@@ -249,7 +252,7 @@ public class GLFWImage extends Struct {
          * @return The height, in pixels, of this image.
          */
         public int heightAt(long index) {
-            return (int) pHeight.get(managedSegment, index);
+            return (int) pHeight.get(segment(), index);
         }
 
         /**
@@ -259,7 +262,7 @@ public class GLFWImage extends Struct {
          * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
          */
         public MemorySegment pixelsAt(long index) {
-            return (MemorySegment) pPixels.get(managedSegment, index);
+            return (MemorySegment) pPixels.get(segment(), index);
         }
 
         @Override
@@ -275,11 +278,6 @@ public class GLFWImage extends Struct {
         @Override
         public MemorySegment pixels() {
             return pixelsAt(0);
-        }
-
-        @Override
-        public SequenceLayout layout() {
-            return layout;
         }
     }
 }

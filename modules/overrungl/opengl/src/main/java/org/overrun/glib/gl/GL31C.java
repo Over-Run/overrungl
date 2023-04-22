@@ -33,6 +33,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  * These extensions are promoted in this version:
  * <ul>
  *     <li>GL_ARB_copy_buffer</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTextureRectangle GL_ARB_texture_rectangle}</li>
  *     <li>GL_ARB_uniform_buffer_object</li>
  * </ul>
  *

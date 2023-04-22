@@ -47,7 +47,7 @@ public class GLFWGamepadState extends Struct {
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
         BUTTONS_LAYOUT,
-        MemoryLayout.paddingLayout(8),
+        MemoryLayout.paddingLayout(8), // padding needed. will FFM API adds padding automatically in the future?
         AXES_LAYOUT
     );
     private static final VarHandle
@@ -61,7 +61,7 @@ public class GLFWGamepadState extends Struct {
      * @param arena   the arena of this address.
      */
     public GLFWGamepadState(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
     }
 
     /**
@@ -83,7 +83,7 @@ public class GLFWGamepadState extends Struct {
     public byte[] buttons() {
         byte[] arr = new byte[15];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (byte) pButtons.get(managedSegment, (long) i);
+            arr[i] = (byte) pButtons.get(segment(), (long) i);
         }
         return arr;
     }
@@ -95,7 +95,7 @@ public class GLFWGamepadState extends Struct {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        return (byte) pButtons.get(managedSegment, (long) index) == GLFW.PRESS;
+        return (byte) pButtons.get(segment(), (long) index) == GLFW.PRESS;
     }
 
     /**
@@ -107,7 +107,7 @@ public class GLFWGamepadState extends Struct {
     public float[] axes() {
         float[] arr = new float[6];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (float) pAxes.get(managedSegment, (long) i);
+            arr[i] = (float) pAxes.get(segment(), (long) i);
         }
         return arr;
     }
@@ -119,11 +119,6 @@ public class GLFWGamepadState extends Struct {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        return (float) pAxes.get(managedSegment, (long) index);
-    }
-
-    @Override
-    public StructLayout layout() {
-        return LAYOUT;
+        return (float) pAxes.get(segment(), (long) index);
     }
 }

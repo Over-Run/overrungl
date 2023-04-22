@@ -34,6 +34,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  * <ul>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBDrawBuffers GL_ARB_draw_buffers}</li>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBFragmentProgram GL_ARB_fragment_program}</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBShaderObjects GL_ARB_shader_objects}</li>
  * </ul>
  *
  * @author squid233

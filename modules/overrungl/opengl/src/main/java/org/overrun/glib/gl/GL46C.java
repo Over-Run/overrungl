@@ -34,6 +34,7 @@ import static org.overrun.glib.gl.GLLoader.*;
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBIndirectParameters GL_ARB_indirect_parameters}</li>
  *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBPipelineStatisticsQuery GL_ARB_pipeline_statistics_query}</li>
  *     <li>GL_ARB_polygon_offset_clamp</li>
+ *     <li>{@linkplain org.overrun.glib.gl.ext.arb.GLARBTransformFeedbackOverflowQuery GL_ARB_transform_feedback_overflow_query}</li>
  * </ul>
  *
  * @author squid233

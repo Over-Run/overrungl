@@ -68,7 +68,18 @@ public class GLFWVidMode extends Struct {
      * @param arena   the arena of this address.
      */
     public GLFWVidMode(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
+    }
+
+    /**
+     * Creates a struct instance with the given memory layout.
+     *
+     * @param address the address.
+     * @param arena   the arena of this address.
+     * @param layout  the memory layout of this struct.
+     */
+    protected GLFWVidMode(MemorySegment address, Arena arena, MemoryLayout layout) {
+        super(address, arena, layout);
     }
 
     /**
@@ -105,47 +116,42 @@ public class GLFWVidMode extends Struct {
      * {@return the width, in screen coordinates, of the video mode}
      */
     public int width() {
-        return (int) pWidth.get(managedSegment);
+        return (int) pWidth.get(segment());
     }
 
     /**
      * {@return the height, in screen coordinates, of the video mode}
      */
     public int height() {
-        return (int) pHeight.get(managedSegment);
+        return (int) pHeight.get(segment());
     }
 
     /**
      * {@return the bit depth of the red channel of the video mode}
      */
     public int redBits() {
-        return (int) pRedBits.get(managedSegment);
+        return (int) pRedBits.get(segment());
     }
 
     /**
      * {@return the bit depth of the green channel of the video mode}
      */
     public int greenBits() {
-        return (int) pGreenBits.get(managedSegment);
+        return (int) pGreenBits.get(segment());
     }
 
     /**
      * {@return the bit depth of the blue channel of the video mode}
      */
     public int blueBits() {
-        return (int) pBlueBits.get(managedSegment);
+        return (int) pBlueBits.get(segment());
     }
 
     /**
      * {@return the refresh rate, in Hz, of the video mode}
      */
     public int refreshRate() {
-        return (int) pRefreshRate.get(managedSegment);
-    }
-
-    @Override
-    public MemoryLayout layout() {
-        return LAYOUT;
+        return (int) pRefreshRate.get(segment());
     }
 
     /**
@@ -154,7 +160,7 @@ public class GLFWVidMode extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static final class Value extends GLFWVidMode {
+    public static final /* value */ class Value extends GLFWVidMode {
         private final int width;
         private final int height;
         private final int redBits;
@@ -220,7 +226,6 @@ public class GLFWVidMode extends Struct {
     public static class Buffer extends GLFWVidMode {
         private final long elementCount;
         private final VarHandle pWidth, pHeight, pRedBits, pGreenBits, pBlueBits, pRefreshRate;
-        private final SequenceLayout layout;
 
         /**
          * Create a {@code GLFWvidmode.Buffer} instance.
@@ -230,16 +235,14 @@ public class GLFWVidMode extends Struct {
          * @param elementCount the element count
          */
         public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena);
+            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             this.elementCount = elementCount;
-            this.layout = MemoryLayout.sequenceLayout(elementCount, LAYOUT);
-            pWidth = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
-            pHeight = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
-            pRedBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits"));
-            pGreenBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
-            pBlueBits = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
-            pRefreshRate = layout.varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
-            managedSegment = segment(layout, arena);
+            pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
+            pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
+            pRedBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits"));
+            pGreenBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
+            pBlueBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
+            pRefreshRate = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
         }
 
         /**
@@ -256,7 +259,7 @@ public class GLFWVidMode extends Struct {
          * @return The width, in screen coordinates, of the video mode.
          */
         public int widthAt(long index) {
-            return (int) pWidth.get(managedSegment, index);
+            return (int) pWidth.get(segment(), index);
         }
 
         /**
@@ -266,7 +269,7 @@ public class GLFWVidMode extends Struct {
          * @return The height, in screen coordinates, of the video mode.
          */
         public int heightAt(long index) {
-            return (int) pHeight.get(managedSegment, index);
+            return (int) pHeight.get(segment(), index);
         }
 
         /**
@@ -276,7 +279,7 @@ public class GLFWVidMode extends Struct {
          * @return The bit depth of the red channel of the video mode.
          */
         public int redBitsAt(long index) {
-            return (int) pRedBits.get(managedSegment, index);
+            return (int) pRedBits.get(segment(), index);
         }
 
         /**
@@ -286,7 +289,7 @@ public class GLFWVidMode extends Struct {
          * @return The bit depth of the green channel of the video mode.
          */
         public int greenBitsAt(long index) {
-            return (int) pGreenBits.get(managedSegment, index);
+            return (int) pGreenBits.get(segment(), index);
         }
 
         /**
@@ -296,7 +299,7 @@ public class GLFWVidMode extends Struct {
          * @return The bit depth of the blue channel of the video mode.
          */
         public int blueBitsAt(long index) {
-            return (int) pBlueBits.get(managedSegment, index);
+            return (int) pBlueBits.get(segment(), index);
         }
 
         /**
@@ -306,7 +309,7 @@ public class GLFWVidMode extends Struct {
          * @return The refresh rate, in Hz, of the video mode.
          */
         public int refreshRateAt(long index) {
-            return (int) pRefreshRate.get(managedSegment, index);
+            return (int) pRefreshRate.get(segment(), index);
         }
 
         @Override
@@ -337,11 +340,6 @@ public class GLFWVidMode extends Struct {
         @Override
         public int refreshRate() {
             return refreshRateAt(0);
-        }
-
-        @Override
-        public SequenceLayout layout() {
-            return layout;
         }
     }
 }

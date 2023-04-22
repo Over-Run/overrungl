@@ -63,7 +63,7 @@ public class STBIIoCallbacks extends Struct {
      * @param arena   the arena of this address.
      */
     public STBIIoCallbacks(MemorySegment address, Arena arena) {
-        super(address, arena);
+        super(address, arena, LAYOUT);
     }
 
     /**
@@ -171,21 +171,21 @@ public class STBIIoCallbacks extends Struct {
      * {@return the read callback}
      */
     public MemorySegment read() {
-        return (MemorySegment) pRead.get(managedSegment);
+        return (MemorySegment) pRead.get(segment());
     }
 
     /**
      * {@return the skip callback}
      */
     public MemorySegment skip() {
-        return (MemorySegment) pSkip.get(managedSegment);
+        return (MemorySegment) pSkip.get(segment());
     }
 
     /**
      * {@return the eof callback}
      */
     public MemorySegment eof() {
-        return (MemorySegment) pEof.get(managedSegment);
+        return (MemorySegment) pEof.get(segment());
     }
 
     /**
@@ -195,7 +195,7 @@ public class STBIIoCallbacks extends Struct {
      * @return this
      */
     public STBIIoCallbacks read(Read read) {
-        pRead.set(managedSegment, read.address(arena));
+        pRead.set(segment(), read.address(arena));
         return this;
     }
 
@@ -206,7 +206,7 @@ public class STBIIoCallbacks extends Struct {
      * @return this
      */
     public STBIIoCallbacks skip(Skip skip) {
-        pSkip.set(managedSegment, skip.address(arena));
+        pSkip.set(segment(), skip.address(arena));
         return this;
     }
 
@@ -217,12 +217,7 @@ public class STBIIoCallbacks extends Struct {
      * @return this
      */
     public STBIIoCallbacks eof(Eof eof) {
-        pEof.set(managedSegment, eof.address(arena));
+        pEof.set(segment(), eof.address(arena));
         return this;
-    }
-
-    @Override
-    public StructLayout layout() {
-        return LAYOUT;
     }
 }

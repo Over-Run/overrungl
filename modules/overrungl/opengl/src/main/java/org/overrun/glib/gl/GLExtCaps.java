@@ -421,6 +421,35 @@ public final class GLExtCaps {
      * {@code GL_ARB_sample_locations} extension method handles.
      */
     public MethodHandle glEvaluateDepthValuesARB, glFramebufferSampleLocationsfvARB, glNamedFramebufferSampleLocationsfvARB;
+    /**
+     * {@code GL_ARB_sample_shading} extension method handles.
+     */
+    public MethodHandle glMinSampleShadingARB;
+    /**
+     * {@code GL_ARB_shader_objects} extension method handles.
+     */
+    public MethodHandle glDeleteObjectARB, glGetHandleARB, glDetachObjectARB, glCreateShaderObjectARB, glShaderSourceARB, glCompileShaderARB,
+        glCreateProgramObjectARB, glAttachObjectARB, glLinkProgramARB, glUseProgramObjectARB, glValidateProgramARB, glUniform1fARB,
+        glUniform2fARB, glUniform3fARB, glUniform4fARB, glUniform1iARB, glUniform2iARB, glUniform3iARB, glUniform4iARB, glUniform1fvARB,
+        glUniform2fvARB, glUniform3fvARB, glUniform4fvARB, glUniform1ivARB, glUniform2ivARB, glUniform3ivARB, glUniform4ivARB,
+        glUniformMatrix2fvARB, glUniformMatrix3fvARB, glUniformMatrix4fvARB, glGetObjectParameterfvARB, glGetObjectParameterivARB, glGetInfoLogARB,
+        glGetAttachedObjectsARB, glGetUniformLocationARB, glGetActiveUniformARB, glGetUniformfvARB, glGetUniformivARB, glGetShaderSourceARB;
+    /**
+     * {@code GL_ARB_shading_language_include} extension method handles.
+     */
+    public MethodHandle glNamedStringARB, glDeleteNamedStringARB, glCompileShaderIncludeARB, glIsNamedStringARB, glGetNamedStringARB, glGetNamedStringivARB;
+    /**
+     * {@code GL_ARB_sparse_buffer} extension method handles.
+     */
+    public MethodHandle glBufferPageCommitmentARB, glNamedBufferPageCommitmentEXT, glNamedBufferPageCommitmentARB;
+    /**
+     * {@code GL_ARB_sparse_texture} extension method handles.
+     */
+    public MethodHandle glTexPageCommitmentARB;
+    /**
+     * {@code GL_ARB_texture_buffer_object} extension method handles.
+     */
+    public MethodHandle glTexBufferARB;
 
     // endregion
 
@@ -693,15 +722,14 @@ public final class GLExtCaps {
         GLARBParallelShaderCompile.load(this, load);
         GLARBPointParameters.load(this, load);
         GLARBRobustness.load(this, load);
-        // GLARBSample_locations.load(load);
-        // GLARBSample_shading.load(load);
-        // GLARBShader_objects.load(load);
-        // GLARBShading_language_include.load(load);
-        // GLARBSparse_buffer.load(load);
-        // GLARBSparse_texture.load(load);
-        // GLARBTexture_buffer_object.load(load);
-        // GLARBTexture_compression.load(load);
-        // GLARBTexture_multisample.load(load);
+        GLARBSampleLocations.load(this, load);
+        GLARBSampleShading.load(this, load);
+        GLARBShaderObjects.load(this, load);
+        GLARBShadingLanguageInclude.load(this, load);
+        GLARBSparseBuffer.load(this, load);
+        GLARBSparseTexture.load(this, load);
+        GLARBTextureBufferObject.load(this, load);
+        GLARBTextureCompression.load(this, load);
         // GLARBTranspose_matrix.load(load);
         // GLARBVertex_blend.load(load);
         // GLARBVertex_buffer_object.load(load);
