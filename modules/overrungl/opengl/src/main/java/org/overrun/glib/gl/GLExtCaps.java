@@ -450,6 +450,15 @@ public final class GLExtCaps {
      * {@code GL_ARB_texture_buffer_object} extension method handles.
      */
     public MethodHandle glTexBufferARB;
+    /**
+     * {@code GL_ARB_texture_compression} extension method handles.
+     */
+    public MethodHandle glCompressedTexImage3DARB, glCompressedTexImage2DARB, glCompressedTexImage1DARB, glCompressedTexSubImage3DARB,
+        glCompressedTexSubImage2DARB, glCompressedTexSubImage1DARB, glGetCompressedTexImageARB;
+    /**
+     * {@code GL_ARB_transpose_matrix} extension method handles.
+     */
+    public MethodHandle glLoadTransposeMatrixfARB, glLoadTransposeMatrixdARB, glMultTransposeMatrixfARB, glMultTransposeMatrixdARB;
 
     // endregion
 
