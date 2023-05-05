@@ -68,7 +68,7 @@ public class Pointer implements Addressable {
      */
     public MemorySegment segment(long bytesSize) {
         if (address().byteSize() == 0) {
-            return RuntimeHelper.sizedSegment(address(), bytesSize);
+            return address().reinterpret(bytesSize);
         }
         return address();
     }

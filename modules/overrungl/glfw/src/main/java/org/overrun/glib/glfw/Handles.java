@@ -19,10 +19,12 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.FunctionDescriptors;
 import org.overrun.glib.RuntimeHelper;
 
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 
+import static java.lang.foreign.ValueLayout.ADDRESS;
 import static org.overrun.glib.FunctionDescriptors.*;
 
 /**
@@ -68,6 +70,11 @@ final class Handles {
         glfwGetNSGLContext, glfwGetX11Display, glfwGetX11Adapter, glfwGetX11Monitor, glfwGetX11Window, glfwSetX11SelectionString,
         glfwGetX11SelectionString, glfwGetGLXContext, glfwGetGLXWindow, glfwGetWaylandDisplay, glfwGetWaylandMonitor, glfwGetWaylandWindow,
         glfwGetEGLDisplay, glfwGetEGLContext, glfwGetEGLSurface, glfwGetOSMesaColorBuffer, glfwGetOSMesaDepthBuffer, glfwGetOSMesaContext;
+
+    private static MethodHandle downcall(String name,
+                                         FunctionDescriptor function) {
+        return RuntimeHelper.downcallThrow(lookup.find(name), function);
+    }
 
     private static MethodHandle downcall(String name,
                                          FunctionDescriptors function) {
@@ -130,9 +137,9 @@ final class Handles {
         glfwGetMonitorUserPointer = downcall("glfwGetMonitorUserPointer", PP);
         glfwSetMonitorCallback = downcall("glfwSetMonitorCallback", PP);
         glfwGetVideoModes = downcall("glfwGetVideoModes", PPp);
-        glfwGetVideoMode = downcall("glfwGetVideoMode", PP);
+        glfwGetVideoMode = downcall("glfwGetVideoMode", FunctionDescriptor.of(ADDRESS.withTargetLayout(GLFWVidMode.LAYOUT), ADDRESS));
         glfwSetGamma = downcall("glfwSetGamma", PFV);
-        glfwGetGammaRamp = downcall("glfwGetGammaRamp", PP);
+        glfwGetGammaRamp = downcall("glfwGetGammaRamp", FunctionDescriptor.of(ADDRESS.withTargetLayout(GLFWGammaRamp.LAYOUT), ADDRESS));
         glfwSetGammaRamp = downcall("glfwSetGammaRamp", PPV);
         glfwDefaultWindowHints = downcall("glfwDefaultWindowHints", V);
         glfwWindowHint = downcall("glfwWindowHint", IIV);

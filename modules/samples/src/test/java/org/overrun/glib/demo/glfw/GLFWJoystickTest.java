@@ -52,7 +52,7 @@ public final class GLFWJoystickTest {
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         GLFW.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        try (var arena = Arena.openConfined()) {
+        try (var arena = Arena.ofConfined()) {
             window = GLFW.createWindow(arena, 200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         }
         RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
@@ -78,7 +78,7 @@ public final class GLFWJoystickTest {
     private void loop() {
         var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
         for (int i = 0; i < states.length; i++) {
-            states[i] = GLFWGamepadState.create(RuntimeHelper.globalArena());
+            states[i] = GLFWGamepadState.create(Arena.global());
         }
         while (!GLFW.windowShouldClose(window)) {
 //            try (var arena = Arena.openShared()) {

@@ -62,7 +62,7 @@ public class GrowableBuffer implements Addressable {
      * @see #GrowableBuffer(CustomArena, MemoryLayout)
      */
     public GrowableBuffer() {
-        this(CustomArena.delegated(RuntimeHelper.autoArena()));
+        this(CustomArena.delegated(Arena.ofAuto()));
     }
 
     /**

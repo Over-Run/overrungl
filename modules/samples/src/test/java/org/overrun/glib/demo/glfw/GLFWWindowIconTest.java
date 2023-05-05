@@ -42,7 +42,7 @@ public final class GLFWWindowIconTest {
     private MemorySegment window;
 
     public void run() {
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofShared()) {
             init(arena);
             load();
         }

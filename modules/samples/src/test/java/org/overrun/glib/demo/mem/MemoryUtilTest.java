@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.demo.mem;
@@ -49,7 +41,7 @@ public final class MemoryUtilTest {
         sb = new StringBuilder();
         start = System.nanoTime();
         for (int i = 0; i < ALLOC_COUNT; i++) {
-            try (var arena = Arena.openShared()) {
+            try (var arena = Arena.ofShared()) {
                 var seg = arena.allocate(ValueLayout.JAVA_INT);
                 seg.set(ValueLayout.JAVA_INT, 0, i);
                 sb.append(seg.get(ValueLayout.JAVA_INT, 0));
@@ -62,7 +54,7 @@ public final class MemoryUtilTest {
         // Arena outside loop
         sb = new StringBuilder();
         start = System.nanoTime();
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofShared()) {
             for (int i = 0; i < ALLOC_COUNT; i++) {
                 var seg = arena.allocate(ValueLayout.JAVA_INT);
                 seg.set(ValueLayout.JAVA_INT, 0, i);
@@ -131,9 +123,9 @@ public final class MemoryUtilTest {
     public static void main(String[] args) {
         Configurations.STACK_SIZE.set((long) Math.ceilDiv(ALLOC_COUNT, 1024 / 4) * 1024 / 4);
         // Prepare
-        try (Arena out = Arena.openShared()) {
+        try (Arena out = Arena.ofShared()) {
             for (int i = 0; i < 100; i++) {
-                try (Arena in = Arena.openShared()) {
+                try (Arena in = Arena.ofShared()) {
                     in.allocate(1);
                 }
                 out.allocate(1);

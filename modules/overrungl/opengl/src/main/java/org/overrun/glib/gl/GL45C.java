@@ -1391,7 +1391,7 @@ public sealed class GL45C extends GL44C permits GL46C {
     public static MemorySegment mapNamedBufferRange(int buffer, long offset, long length, int access) {
         var caps = getCapabilities();
         try {
-            return RuntimeHelper.sizedSegment((MemorySegment) check(caps.glMapNamedBufferRange).invokeExact(buffer, offset, length, access), length);
+            return ((MemorySegment) check(caps.glMapNamedBufferRange).invokeExact(buffer, offset, length, access)).reinterpret(length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

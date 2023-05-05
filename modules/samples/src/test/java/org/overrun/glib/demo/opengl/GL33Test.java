@@ -49,7 +49,7 @@ public class GL33Test {
     }
 
     public void run() {
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofShared()) {
             init(arena);
             load(arena);
         }
@@ -215,7 +215,7 @@ public class GL33Test {
 
     private void loop() {
         var matrix = new Matrix4f();
-        var pRotationMat = Matrixn.allocate(SegmentAllocator.nativeAllocator(SegmentScope.auto()), matrix);
+        var pRotationMat = Matrixn.allocate(Arena.ofAuto(), matrix);
 
         double lastTime;
         double time;
@@ -245,8 +245,8 @@ public class GL33Test {
             lastTime = time;
             time = GLFW.getTime();
             dt = time - lastTime;
-            try (var arena = Arena.openConfined()) {
-                GLFW.setWindowTitle(arena, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
+            try (MemoryStack stack = MemoryStack.stackPush()) {
+                GLFW.setWindowTitle(stack, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
             }
         }
     }

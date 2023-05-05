@@ -45,7 +45,7 @@ public final class GL30Test {
     private int tex;
 
     public void run() {
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofShared()) {
             init(arena);
             load(arena);
         }

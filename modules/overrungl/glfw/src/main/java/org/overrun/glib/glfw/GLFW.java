@@ -26,6 +26,7 @@ import org.overrun.glib.util.value.ValueInt4;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
@@ -1126,7 +1127,7 @@ public final class GLFW {
             final MemorySegment seg = description != null ? stack.malloc(ADDRESS) : MemorySegment.NULL;
             final int err = ngetError(seg);
             if (description != null && description.length > 0) {
-                description[0] = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0).getUtf8String(0);
+                description[0] = RuntimeHelper.unboundPointerString(seg);
             }
             return err;
         } finally {
@@ -1146,8 +1147,7 @@ public final class GLFW {
         try {
             final MemorySegment seg = stack.malloc(ADDRESS);
             final int err = ngetError(seg);
-            final String desc = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0).getUtf8String(0);
-            return new Value2.OfObjInt<>(desc, err);
+            return new Value2.OfObjInt<>(RuntimeHelper.unboundPointerString(seg), err);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1197,7 +1197,7 @@ public final class GLFW {
      * @see #nsetErrorCallback(MemorySegment) nsetErrorCallback
      */
     public static MemorySegment setErrorCallback(@Nullable IGLFWErrorFun callback) {
-        return nsetErrorCallback(callback != null ? callback.address(RuntimeHelper.globalArena()) : MemorySegment.NULL);
+        return nsetErrorCallback(callback != null ? callback.address(Arena.global()) : MemorySegment.NULL);
     }
 
     /**
@@ -1708,7 +1708,7 @@ public final class GLFW {
      * @see #nsetMonitorCallback(MemorySegment) nsetMonitorCallback
      */
     public static MemorySegment setMonitorCallback(@Nullable IGLFWMonitorFun callback) {
-        return nsetMonitorCallback(callback != null ? callback.address(RuntimeHelper.globalArena()) : MemorySegment.NULL);
+        return nsetMonitorCallback(callback != null ? callback.address(Arena.global()) : MemorySegment.NULL);
     }
 
     /**
@@ -1785,7 +1785,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetVideoMode(MemorySegment monitor) {
         try {
-            return RuntimeHelper.sizedSegment((MemorySegment) glfwGetVideoMode.invokeExact(monitor), GLFWVidMode.LAYOUT.byteSize());
+            return (MemorySegment) glfwGetVideoMode.invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1860,7 +1860,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetGammaRamp(MemorySegment monitor) {
         try {
-            return RuntimeHelper.sizedSegment((MemorySegment) glfwGetGammaRamp.invokeExact(monitor), GLFWGammaRamp.LAYOUT.byteSize());
+            return (MemorySegment) glfwGetGammaRamp.invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5215,7 +5215,7 @@ public final class GLFW {
      * @see #nsetJoystickCallback(MemorySegment) nsetJoystickCallback
      */
     public static MemorySegment setJoystickCallback(@Nullable IGLFWJoystickFun callback) {
-        return nsetJoystickCallback(callback != null ? callback.address(RuntimeHelper.globalArena()) : MemorySegment.NULL);
+        return nsetJoystickCallback(callback != null ? callback.address(Arena.global()) : MemorySegment.NULL);
     }
 
     /**

@@ -117,7 +117,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLCapabilities loadConfined(boolean forwardCompatible, GLLoadFunc.Getter getter) {
-        try (Arena arena = Arena.openConfined()) {
+        try (Arena arena = Arena.ofConfined()) {
             return load(forwardCompatible, arena, getter);
         }
     }

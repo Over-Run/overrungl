@@ -73,7 +73,7 @@ final class GLExtFinder {
             return exts.contains(ext);
         }
         for (int index = 0; index < numExtsI; index++) {
-            if (extsI.getAtIndex(RuntimeHelper.ADDRESS_UNBOUNDED, index).getUtf8String(0).equals(ext)) {
+            if (RuntimeHelper.unboundPointerString(extsI, index).equals(ext)) {
                 return true;
             }
         }

@@ -12,14 +12,6 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.gl;
@@ -33,6 +25,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 
+import static java.lang.foreign.ValueLayout.ADDRESS;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
@@ -43,7 +36,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  */
 @FunctionalInterface
 public interface GLDebugProc extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED, RuntimeHelper.ADDRESS_UNBOUNDED);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, RuntimeHelper.ADDRESS_UNBOUNDED);
     MethodType MTYPE = DESC.toMethodType();
 
     /**
@@ -60,7 +53,7 @@ public interface GLDebugProc extends Callback {
     void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
 
     default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
-        invoke(source, type, id, severity, message.getUtf8String(0), userParam);
+        invoke(source, type, id, severity, message.reinterpret(length + 1).getUtf8String(0), userParam);
     }
 
     @Override

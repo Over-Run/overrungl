@@ -42,7 +42,7 @@ public final class GrowableBufferTest {
     private int program, vao, vbo;
 
     public void run() {
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofShared()) {
             init(arena);
             load(arena);
         }
@@ -140,7 +140,7 @@ public final class GrowableBufferTest {
         vbo = GL.genBuffer();
         GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
         final int stride = (int) (JAVA_FLOAT.byteSize() * 3 + JAVA_BYTE.byteSize() * 4);
-        try (CustomArena customArena = CustomArena.delegated(Arena.openConfined())) {
+        try (CustomArena customArena = CustomArena.delegated(Arena.ofConfined())) {
             var buffer = new GrowableBuffer(customArena, 2);
             buffer.clear()
                 .putAll(JAVA_FLOAT, 0.0f, 0.5f, 0.0f)

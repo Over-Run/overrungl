@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 
+import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
@@ -580,7 +581,7 @@ public final class STBImage {
         final int layers = pz.get(JAVA_INT, 0);
         z[0] = layers;
         comp[0] = pc.get(JAVA_INT, 0);
-        delays[0] = RuntimeHelper.toArray(pd.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0), new int[layers]);
+        delays[0] = RuntimeHelper.toArray(pd.get(ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(layers, JAVA_INT)), 0), new int[layers]);
         return addr;
     }
 

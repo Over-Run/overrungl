@@ -43,7 +43,7 @@ public final class GL15Test {
     private int vbo, tex;
 
     public void run() {
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofShared()) {
             init(arena);
             load(arena);
         }

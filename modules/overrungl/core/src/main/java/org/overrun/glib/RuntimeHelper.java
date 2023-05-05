@@ -55,11 +55,8 @@ public final class RuntimeHelper {
     public static final long NULL = 0x0L;
     /**
      * An unbounded address layout.
-     *
-     * @deprecated this layout will be removed in JDK 21.
      */
-    @Deprecated(since = "0.1.0")
-    public static final ValueLayout.OfAddress ADDRESS_UNBOUNDED = ADDRESS.asUnbounded();
+    public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE));
 
     /**
      * constructor
@@ -96,46 +93,6 @@ public final class RuntimeHelper {
         }
     }
 
-    @Deprecated(since = "0.1.0")
-    public static Arena globalArena() {
-        return new Arena() {
-            @Override
-            public SegmentScope scope() {
-                return SegmentScope.global();
-            }
-
-            @Override
-            public void close() {
-            }
-
-            @Override
-            public boolean isCloseableBy(Thread thread) {
-                return false;
-            }
-        };
-    }
-
-    @Deprecated(since = "0.1.0")
-    public static Arena autoArena() {
-        return new Arena() {
-            private final SegmentScope scope = SegmentScope.auto();
-
-            @Override
-            public SegmentScope scope() {
-                return scope;
-            }
-
-            @Override
-            public void close() {
-            }
-
-            @Override
-            public boolean isCloseableBy(Thread thread) {
-                return false;
-            }
-        };
-    }
-
     /**
      * Creates an unbounded native segment with the given segment.
      *
@@ -143,21 +100,27 @@ public final class RuntimeHelper {
      * @return an unbounded native segment with the given address.
      */
     public static MemorySegment unbound(MemorySegment segment) {
-        return MemorySegment.ofAddress(segment.address(), Long.MAX_VALUE, segment.scope());
+        return segment.reinterpret(Long.MAX_VALUE);
     }
 
     /**
-     * Creates a sized native segment with the given segment and size.
-     * The returned segment is associated with the scope of the given segment.
+     * Gets a string from the given pointer of a string.
      *
-     * @param segment  the segment address.
-     * @param byteSize the desired size.
-     * @return a native segment with the given address and size.
-     * @deprecated this method will be replaced with {@code MemorySegment::reinterpret} in JDK 21.
+     * @param segment the memory segment.
+     * @return the string.
      */
-    @Deprecated(since = "0.1.0")
-    public static MemorySegment sizedSegment(MemorySegment segment, long byteSize) {
-        return MemorySegment.ofAddress(segment.address(), byteSize, segment.scope());
+    public static String unboundPointerString(MemorySegment segment) {
+        return segment.get(ADDRESS_UNBOUNDED, 0).getUtf8String(0);
+    }
+
+    /**
+     * Gets a string from the given pointer of a string at the given index.
+     *
+     * @param segment the memory segment.
+     * @return the string.
+     */
+    public static String unboundPointerString(MemorySegment segment, int index) {
+        return segment.getAtIndex(ADDRESS_UNBOUNDED, index).getUtf8String(0);
     }
 
     /**
@@ -273,7 +236,7 @@ public final class RuntimeHelper {
             uri = file.toURI();
         }
         // Load library by the path with the global arena
-        return SymbolLookup.libraryLookup(Path.of(uri), SegmentScope.global());
+        return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());
     }
 
     /**

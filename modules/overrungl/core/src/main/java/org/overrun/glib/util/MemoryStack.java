@@ -100,7 +100,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
      * @param capacity the maximum number of bytes that may be allocated on the stack
      */
     public static MemoryStack create(long capacity) {
-        final Arena arena = RuntimeHelper.autoArena();
+        final Arena arena = Arena.ofAuto();
         return create(arena.allocate(capacity), capacity, arena);
     }
 
@@ -328,7 +328,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
             throw new OutOfMemoryError("Out of stack space.");
         }
 
-        return MemorySegment.ofAddress(address, size, arena.scope());
+        return MemorySegment.ofAddress(address).reinterpret(size, arena, null);
     }
 
     /**

@@ -63,10 +63,9 @@ public interface Callback {
      * @param function the function descriptor.
      * @return the memory segment.
      */
-    default MemorySegment segment(Arena arena,
-                                  FunctionDescriptor function) {
+    default MemorySegment segment(Arena arena, FunctionDescriptor function) {
         try {
-            return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, arena.scope());
+            return RuntimeHelper.LINKER.upcallStub(handle(MethodHandles.publicLookup()).bindTo(this), function, arena);
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }

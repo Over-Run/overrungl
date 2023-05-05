@@ -49,7 +49,7 @@ public final class STBPerlinTest {
     }
 
     public static void main(String[] args) {
-        try (Arena arena = Arena.openConfined()) {
+        try (Arena arena = Arena.ofConfined()) {
             float[][] noise3 = new float[HEIGHT][WIDTH];
             float[][] noise3seed = new float[HEIGHT][WIDTH];
             float[][] fbmNoise3 = new float[HEIGHT][WIDTH];

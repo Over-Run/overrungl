@@ -19,7 +19,6 @@ package org.overrun.glib.demo.util;
 import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentScope;
 import java.lang.foreign.ValueLayout;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -45,7 +44,7 @@ public final class IOUtil {
     /**
      * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
      *
-     * @param arena       the arena. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
+     * @param arena       the arena. must be {@link MemorySegment.Scope#isAlive() alive} until the data is no longer used.
      * @param resource    the resource to read.
      * @param segmentSize the initial segment size.
      * @param bufferSize  the buffer size for reading file.
@@ -59,7 +58,7 @@ public final class IOUtil {
         // Check whether on local
         if (path != null && Files.isReadable(path)) {
             try (var fc = FileChannel.open(path)) {
-                return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena.scope());
+                return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena);
             }
         }
 
@@ -93,7 +92,7 @@ public final class IOUtil {
     /**
      * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
      *
-     * @param arena       the arena. must be {@link SegmentScope#isAlive() alive} until the data is no longer used.
+     * @param arena       the arena. must be {@link MemorySegment.Scope#isAlive() alive} until the data is no longer used.
      * @param resource    the resource to read.
      * @param segmentSize the initial segment size.
      * @return the resource data.

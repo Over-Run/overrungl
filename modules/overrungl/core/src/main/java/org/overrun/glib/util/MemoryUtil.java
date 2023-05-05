@@ -74,10 +74,9 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            long address = ((MemorySegment) m_malloc.invokeExact(size)).address();
-            MemorySegment segment = MemorySegment.ofAddress(address, size);
-            if (DEBUG) DebugAllocator.track(address, size);
-            return segment;
+            final MemorySegment seg = ((MemorySegment) m_malloc.invokeExact(size)).reinterpret(size);
+            if (DEBUG) DebugAllocator.track(seg.address(), size);
+            return seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -108,11 +107,10 @@ public final class MemoryUtil {
      */
     public static MemorySegment calloc(long number, long size) {
         try {
-            long address = ((MemorySegment) m_calloc.invokeExact(number, size)).address();
             long bytesSize = number * size;
-            MemorySegment segment = MemorySegment.ofAddress(address, bytesSize);
-            if (DEBUG) DebugAllocator.track(address, bytesSize);
-            return segment;
+            final MemorySegment seg = ((MemorySegment) m_calloc.invokeExact(number, size)).reinterpret(bytesSize);
+            if (DEBUG) DebugAllocator.track(seg.address(), bytesSize);
+            return seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -170,9 +168,9 @@ public final class MemoryUtil {
             oldSize = DebugAllocator.untrack(ptr);
         }
         try {
-            MemorySegment segment = RuntimeHelper.sizedSegment((MemorySegment) m_realloc.invokeExact(
+            MemorySegment segment = ((MemorySegment) m_realloc.invokeExact(
                 Objects.requireNonNullElse(memblock, MemorySegment.NULL),
-                size), size);
+                size)).reinterpret(size);
             if (DEBUG) {
                 if (!RuntimeHelper.isNullptr(segment)) {
                     DebugAllocator.track(segment.address(), size);

@@ -42,7 +42,7 @@ public final class Callbacks {
      * @return the arena.
      */
     public static Arena create(MemorySegment window) {
-        return ARENA_MAP.computeIfAbsent(window, k -> Arena.openConfined());
+        return ARENA_MAP.computeIfAbsent(window, k -> Arena.ofConfined());
     }
 
     /**

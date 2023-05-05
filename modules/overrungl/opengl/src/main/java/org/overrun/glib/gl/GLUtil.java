@@ -73,7 +73,7 @@ public final class GLUtil {
             } else {
                 apiLog("[GL] Using KHR_debug for error logging.");
             }
-            var arena = Arena.openConfined();
+            var arena = Arena.ofConfined();
             GL.debugMessageCallback(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] OpenGL debug message\n");
@@ -101,7 +101,7 @@ public final class GLUtil {
 
         if (caps.ext.GL_ARB_debug_output) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
-            var arena = Arena.openConfined();
+            var arena = Arena.ofConfined();
             glDebugMessageCallbackARB(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
@@ -123,7 +123,7 @@ public final class GLUtil {
 
         if (caps.ext.GL_AMD_debug_output) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
-            var arena = Arena.openConfined();
+            var arena = Arena.ofConfined();
             glDebugMessageCallbackAMD(arena, (id, category, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] AMD_debug_output message\n");

@@ -352,7 +352,7 @@ public class GLCapabilities {
 
         ext = new GLExtCaps(this);
 
-        try (var arena = Arena.openShared()) {
+        try (var arena = Arena.ofConfined()) {
             if (!GLExtFinder.findExtensionsGL(ext, version, arena, this)) return 0;
             findCoreGL(true);
         }

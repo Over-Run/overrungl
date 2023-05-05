@@ -188,7 +188,7 @@ subprojects {
         }
     }
 
-    def targetJavaVersion = 20
+    def targetJavaVersion = 21
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
         options.compilerArgs += '--enable-preview'

@@ -43,7 +43,7 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 public interface IGLFWDropFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     MethodType MTYPE = DESC.toMethodType();
 
     /**
