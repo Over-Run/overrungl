@@ -176,7 +176,6 @@ public class DrawArraysIndirectCommand extends Struct {
      * @since 0.1.0
      */
     public static class Buffer extends DrawArraysIndirectCommand implements ArrayPointer {
-        private final long elementCount;
         private final VarHandle pCount, pPrimCount, pFirst, pBaseInstance;
 
         /**
@@ -188,16 +187,10 @@ public class DrawArraysIndirectCommand extends Struct {
          */
         public Buffer(MemorySegment address, Arena arena, long elementCount) {
             super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-            this.elementCount = elementCount;
             pCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
             pPrimCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
             pFirst = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));
             pBaseInstance = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("baseInstance"));
-        }
-
-        @Override
-        public long elementCount() {
-            return elementCount;
         }
 
         /**

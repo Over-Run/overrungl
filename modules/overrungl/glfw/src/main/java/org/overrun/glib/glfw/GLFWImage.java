@@ -23,6 +23,8 @@ import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.VarHandle;
 
+import static java.lang.foreign.ValueLayout.*;
+
 /**
  * This describes a single 2D image. See the documentation for each related
  * function what the expected pixel format is.
@@ -43,9 +45,9 @@ public class GLFWImage extends Struct {
      * The struct layout.
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.ADDRESS.withName("pixels")
+        JAVA_INT.withName("width"),
+        JAVA_INT.withName("height"),
+        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE)).withName("pixels")
     );
     private static final VarHandle
         pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
@@ -161,7 +163,6 @@ public class GLFWImage extends Struct {
      * @since 0.1.0
      */
     public static class Buffer extends GLFWImage implements ArrayPointer {
-        private final long elementCount;
         private final VarHandle pWidth, pHeight, pPixels;
 
         /**
@@ -173,15 +174,9 @@ public class GLFWImage extends Struct {
          */
         public Buffer(MemorySegment address, Arena arena, long elementCount) {
             super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-            this.elementCount = elementCount;
             pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pPixels = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
-        }
-
-        @Override
-        public long elementCount() {
-            return elementCount;
         }
 
         /**

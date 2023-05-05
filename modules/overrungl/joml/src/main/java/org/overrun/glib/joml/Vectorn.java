@@ -12,20 +12,11 @@
  *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
  */
 
 package org.overrun.glib.joml;
 
 import org.joml.*;
-import org.overrun.glib.util.GrowableBuffer;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.MemoryUtil;
 
@@ -631,122 +622,5 @@ public final class Vectorn {
         dest.set(JAVA_DOUBLE, 16, vec.z());
         dest.set(JAVA_DOUBLE, 24, vec.w());
         return dest;
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector2ic vec, GrowableBuffer dest) {
-        return dest.put(JAVA_INT, vec.x())
-            .put(JAVA_INT, vec.y());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector2fc vec, GrowableBuffer dest) {
-        return dest.put(JAVA_FLOAT, vec.x())
-            .put(JAVA_FLOAT, vec.y());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector2dc vec, GrowableBuffer dest) {
-        return dest.put(JAVA_DOUBLE, vec.x())
-            .put(JAVA_DOUBLE, vec.y());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector3ic vec, GrowableBuffer dest) {
-        return dest.put(JAVA_INT, vec.x())
-            .put(JAVA_INT, vec.y())
-            .put(JAVA_INT, vec.z());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector3fc vec, GrowableBuffer dest) {
-        return dest.put(JAVA_FLOAT, vec.x())
-            .put(JAVA_FLOAT, vec.y())
-            .put(JAVA_FLOAT, vec.z());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector3dc vec, GrowableBuffer dest) {
-        return dest.put(JAVA_DOUBLE, vec.x())
-            .put(JAVA_DOUBLE, vec.y())
-            .put(JAVA_DOUBLE, vec.z());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector4ic vec, GrowableBuffer dest) {
-        return dest.put(JAVA_INT, vec.x())
-            .put(JAVA_INT, vec.y())
-            .put(JAVA_INT, vec.z())
-            .put(JAVA_INT, vec.w());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector4fc vec, GrowableBuffer dest) {
-        return dest.put(JAVA_FLOAT, vec.x())
-            .put(JAVA_FLOAT, vec.y())
-            .put(JAVA_FLOAT, vec.z())
-            .put(JAVA_FLOAT, vec.w());
-    }
-
-    /**
-     * Puts the vector.
-     *
-     * @param vec  the vector
-     * @param dest the destination
-     * @return the destination
-     */
-    public static GrowableBuffer put(Vector4dc vec, GrowableBuffer dest) {
-        return dest.put(JAVA_DOUBLE, vec.x())
-            .put(JAVA_DOUBLE, vec.y())
-            .put(JAVA_DOUBLE, vec.z())
-            .put(JAVA_DOUBLE, vec.w());
     }
 }

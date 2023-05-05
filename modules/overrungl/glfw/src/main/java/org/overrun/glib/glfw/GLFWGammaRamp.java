@@ -49,18 +49,18 @@ public class GLFWGammaRamp extends Struct {
      * The struct layout.
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withName("red"),
-        ADDRESS.withName("green"),
-        ADDRESS.withName("blue"),
+        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT)).withName("red"),
+        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT)).withName("green"),
+        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT)).withName("blue"),
         JAVA_INT.withName("size")
     );
     private static final VarHandle
         ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
         ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),
         ppBlue = LAYOUT.varHandle(PathElement.groupElement("blue")),
-        pRed = LAYOUT.varHandle(PathElement.groupElement("red"), PathElement.sequenceElement()),
-        pGreen = LAYOUT.varHandle(PathElement.groupElement("green"), PathElement.sequenceElement()),
-        pBlue = LAYOUT.varHandle(PathElement.groupElement("blue"), PathElement.sequenceElement()),
+        pRed = LAYOUT.varHandle(PathElement.groupElement("red"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
+        pGreen = LAYOUT.varHandle(PathElement.groupElement("green"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
+        pBlue = LAYOUT.varHandle(PathElement.groupElement("blue"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
         pSize = LAYOUT.varHandle(PathElement.groupElement("size"));
 
     /**
@@ -112,7 +112,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        ppBlue.set(segment(), arena.allocateArray(JAVA_SHORT, blues.length));
+        ppBlue.set(segment(), arena.allocateArray(JAVA_SHORT, blues));
         return this;
     }
 

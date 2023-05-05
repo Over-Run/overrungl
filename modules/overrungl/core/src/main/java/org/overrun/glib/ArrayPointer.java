@@ -16,6 +16,8 @@
 
 package org.overrun.glib;
 
+import java.lang.foreign.SequenceLayout;
+
 /**
  * An array pointer.
  *
@@ -26,5 +28,11 @@ public interface ArrayPointer extends Addressable {
     /**
      * {@return the count of the elements in this array}
      */
-    long elementCount();
+    default long elementCount() {
+        if (this instanceof Struct struct &&
+            struct.layout() instanceof SequenceLayout sequenceLayout) {
+            return sequenceLayout.elementCount();
+        }
+        throw new UnsupportedOperationException();
+    }
 }

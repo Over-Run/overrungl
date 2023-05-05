@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Overrun Game Library is a high performance library that implemented with Java 20,
+Overrun Game Library is a high performance library that implemented with Java 21,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL

@@ -17,7 +17,6 @@
 package org.overrun.glib.gl;
 
 import org.overrun.glib.RuntimeHelper;
-import org.overrun.glib.util.GrowableBuffer;
 import org.overrun.glib.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -128,10 +127,6 @@ public sealed class GL15C extends GL14C permits GL20C {
         bufferData(target, data.byteSize(), data, usage);
     }
 
-    public static void bufferData(int target, GrowableBuffer data, int usage) {
-        bufferData(target, data.offset(), data.address(), usage);
-    }
-
     public static void bufferData(int target, long size, int usage) {
         bufferData(target, size, MemorySegment.NULL, usage);
     }
@@ -171,10 +166,6 @@ public sealed class GL15C extends GL14C permits GL20C {
 
     public static void bufferSubData(int target, long offset, MemorySegment data) {
         bufferSubData(target, offset, data.byteSize(), data);
-    }
-
-    public static void bufferSubData(int target, long offset, GrowableBuffer data) {
-        bufferSubData(target, offset, data.offset(), data.address());
     }
 
     public static void bufferSubData(SegmentAllocator allocator, int target, long offset, byte[] data) {

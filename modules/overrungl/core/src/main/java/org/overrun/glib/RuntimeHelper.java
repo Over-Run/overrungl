@@ -24,7 +24,6 @@ import java.io.File;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
@@ -159,15 +158,6 @@ public final class RuntimeHelper {
     }
 
     /**
-     * {@return the length of the null-terminated string encoded in UTF8}
-     *
-     * @param s the string
-     */
-    public static int utf8StringCLength(String s) {
-        return s.getBytes(StandardCharsets.UTF_8).length + 1;
-    }
-
-    /**
      * Generates a string for unknown token.
      *
      * @param token the token.
@@ -182,7 +172,7 @@ public final class RuntimeHelper {
      *
      * @param description the description. default to {@code Unknown}
      * @param token       the token.
-     * @return the string formatted in {@code \{description} [0x\{toHexString(token)}]}.
+     * @return the string is formatted in {@code \{description} [0x\{toHexString(token)}]}.
      */
     public static String unknownToken(String description, int token) {
         return description + " [0x" + Integer.toHexString(token) + ']';
