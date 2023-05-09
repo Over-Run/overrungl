@@ -57,43 +57,43 @@ public class GLFWImage extends Struct {
     /**
      * Create a {@code GLFWimage} instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public GLFWImage(MemorySegment address, Arena arena) {
-        super(address, arena, LAYOUT);
+    public GLFWImage(MemorySegment address, SegmentAllocator allocator) {
+        super(address, allocator, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
-     * @param layout  the memory layout of this struct.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
+     * @param layout    the memory layout of this struct.
      */
-    protected GLFWImage(MemorySegment address, Arena arena, MemoryLayout layout) {
-        super(address, arena, layout);
+    protected GLFWImage(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
+        super(address, allocator, layout);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given arena.
+     * Creates a {@code GLFWimage} instance with the given allocator.
      *
-     * @param arena the arena
+     * @param allocator the allocator
      * @return the instance
      */
-    public static GLFWImage create(Arena arena) {
-        return new GLFWImage(arena.allocate(LAYOUT), arena);
+    public static GLFWImage create(SegmentAllocator allocator) {
+        return new GLFWImage(allocator.allocate(LAYOUT), allocator);
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given arena and count.
+     * Creates a {@code GLFWimage} instance with the given allocator and count.
      *
-     * @param arena the arena
-     * @param count the count
+     * @param allocator the allocator
+     * @param count     the count
      * @return the instance
      */
-    public static Buffer create(Arena arena, long count) {
-        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
+    public static Buffer create(SegmentAllocator allocator, long count) {
+        return new Buffer(allocator.allocateArray(LAYOUT, count), allocator, count);
     }
 
     /**
@@ -169,11 +169,11 @@ public class GLFWImage extends Struct {
          * Create a {@code GLFWImage.Buffer} instance.
          *
          * @param address      the address.
-         * @param arena        the arena of this address.
+         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
+            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pPixels = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));

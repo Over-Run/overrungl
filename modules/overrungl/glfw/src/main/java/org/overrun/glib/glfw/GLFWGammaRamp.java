@@ -19,10 +19,7 @@ package org.overrun.glib.glfw;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.Struct;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.StructLayout;
+import java.lang.foreign.*;
 import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -66,21 +63,21 @@ public class GLFWGammaRamp extends Struct {
     /**
      * Create a {@code GLFWgammaramp const} instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public GLFWGammaRamp(MemorySegment address, Arena arena) {
-        super(address, arena, LAYOUT);
+    public GLFWGammaRamp(MemorySegment address, SegmentAllocator allocator) {
+        super(address, allocator, LAYOUT);
     }
 
     /**
-     * Creates a {@code GLFWgammaramp} instance with the given arena.
+     * Creates a {@code GLFWgammaramp} instance with the given allocator.
      *
-     * @param arena the arena
+     * @param allocator the allocator
      * @return the instance
      */
-    public static GLFWGammaRamp create(Arena arena) {
-        return new GLFWGammaRamp(arena.allocate(LAYOUT), arena);
+    public static GLFWGammaRamp create(SegmentAllocator allocator) {
+        return new GLFWGammaRamp(allocator.allocate(LAYOUT), allocator);
     }
 
     /**
@@ -90,7 +87,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp red(short[] reds) {
-        ppRed.set(segment(), arena.allocateArray(JAVA_SHORT, reds));
+        ppRed.set(segment(), allocator().allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
@@ -101,7 +98,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp green(short[] greens) {
-        ppGreen.set(segment(), arena.allocateArray(JAVA_SHORT, greens));
+        ppGreen.set(segment(), allocator().allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
@@ -112,7 +109,7 @@ public class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp blue(short[] blues) {
-        ppBlue.set(segment(), arena.allocateArray(JAVA_SHORT, blues));
+        ppBlue.set(segment(), allocator().allocateArray(JAVA_SHORT, blues));
         return this;
     }
 

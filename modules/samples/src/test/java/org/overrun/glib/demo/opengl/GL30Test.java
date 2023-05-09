@@ -24,6 +24,7 @@ import org.overrun.glib.glfw.Callbacks;
 import org.overrun.glib.glfw.GLFW;
 import org.overrun.glib.glfw.GLFWErrorCallback;
 import org.overrun.glib.stb.STBImage;
+import org.overrun.glib.util.MemoryStack;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -79,7 +80,7 @@ public final class GL30Test {
         });
         GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(arena, GLFW.getPrimaryMonitor());
+        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
         if (vidMode != null) {
             var size = GLFW.getWindowSize(window);
             GLFW.setWindowPos(
@@ -105,10 +106,10 @@ public final class GL30Test {
         GL.bindTexture(GL.TEXTURE_2D, tex);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
-        try {
-            var px = arena.allocate(JAVA_INT);
-            var py = arena.allocate(JAVA_INT);
-            var pc = arena.allocate(JAVA_INT);
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
+            var pc = stack.allocate(JAVA_INT);
             var data = STBImage.loadFromMemory(
                 IOUtil.ioResourceToSegment(arena, "image.png", 256),
                 px, py, pc, STBImage.RGB

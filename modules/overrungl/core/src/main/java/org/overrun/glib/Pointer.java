@@ -16,12 +16,12 @@
 
 package org.overrun.glib;
 
-import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 
 /**
- * A {@link MemorySegment} wrapper with an arena.
+ * A {@link MemorySegment} wrapper with a segment allocator.
  *
  * @author squid233
  * @since 0.1.0
@@ -32,19 +32,25 @@ public class Pointer implements Addressable {
      */
     protected final MemorySegment address;
     /**
-     * The arena of this pointer.
+     * The allocator of this pointer.
      */
-    protected final Arena arena;
+    protected final SegmentAllocator allocator;
+    /**
+     * The managed native segment that is not zero-length.
+     * <p>
+     * This field is not modified with {@code final} since the layout might be null in construction.
+     */
+    protected MemorySegment managedSegment;
 
     /**
      * Create the pointer instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public Pointer(MemorySegment address, Arena arena) {
+    public Pointer(MemorySegment address, SegmentAllocator allocator) {
         this.address = address;
-        this.arena = arena;
+        this.allocator = allocator;
     }
 
     @Override
@@ -53,10 +59,10 @@ public class Pointer implements Addressable {
     }
 
     /**
-     * {@return the arena of this pointer}
+     * {@return the allocator of this pointer}
      */
-    public Arena arena() {
-        return arena;
+    public SegmentAllocator allocator() {
+        return allocator;
     }
 
     /**
@@ -67,10 +73,10 @@ public class Pointer implements Addressable {
      * @see #segment(MemoryLayout)
      */
     public MemorySegment segment(long bytesSize) {
-        if (address().byteSize() == 0) {
-            return address().reinterpret(bytesSize);
+        if (managedSegment == null) {
+            managedSegment = address().reinterpret(bytesSize);
         }
-        return address();
+        return managedSegment;
     }
 
     /**

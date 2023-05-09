@@ -64,43 +64,43 @@ public class GLFWVidMode extends Struct {
     /**
      * Create a {@code GLFWvidmode} instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public GLFWVidMode(MemorySegment address, Arena arena) {
-        super(address, arena, LAYOUT);
+    public GLFWVidMode(MemorySegment address, SegmentAllocator allocator) {
+        super(address, allocator, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
-     * @param layout  the memory layout of this struct.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
+     * @param layout    the memory layout of this struct.
      */
-    protected GLFWVidMode(MemorySegment address, Arena arena, MemoryLayout layout) {
-        super(address, arena, layout);
+    protected GLFWVidMode(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
+        super(address, allocator, layout);
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given arena.
+     * Creates a {@code GLFWvidmode} instance with the given allocator.
      *
-     * @param arena the arena
+     * @param allocator the allocator
      * @return the instance
      */
-    public static GLFWVidMode create(Arena arena) {
-        return new GLFWVidMode(arena.allocate(LAYOUT), arena);
+    public static GLFWVidMode create(SegmentAllocator allocator) {
+        return new GLFWVidMode(allocator.allocate(LAYOUT), allocator);
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given arena and count.
+     * Creates a {@code GLFWvidmode} instance with the given allocator and count.
      *
-     * @param arena the arena
-     * @param count the count
+     * @param allocator the allocator
+     * @param count     the count
      * @return the instance
      */
-    public static Buffer create(Arena arena, long count) {
-        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
+    public static Buffer create(SegmentAllocator allocator, long count) {
+        return new Buffer(allocator.allocateArray(LAYOUT, count), allocator, count);
     }
 
     /**
@@ -109,7 +109,7 @@ public class GLFWVidMode extends Struct {
      * @return the immutable state
      */
     public Value constCast() {
-        return new Value(address(), arena(), this);
+        return new Value(address(), allocator(), this);
     }
 
     /**
@@ -168,8 +168,8 @@ public class GLFWVidMode extends Struct {
         private final int blueBits;
         private final int refreshRate;
 
-        private Value(MemorySegment address, Arena arena, GLFWVidMode mode) {
-            super(address, arena);
+        private Value(MemorySegment address, SegmentAllocator allocator, GLFWVidMode mode) {
+            super(address, allocator);
             this.width = mode.width();
             this.height = mode.height();
             this.redBits = mode.redBits();
@@ -231,11 +231,11 @@ public class GLFWVidMode extends Struct {
          * Create a {@code GLFWvidmode.Buffer} instance.
          *
          * @param address      the address.
-         * @param arena        the arena of this address.
+         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
+            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             this.elementCount = elementCount;
             pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));

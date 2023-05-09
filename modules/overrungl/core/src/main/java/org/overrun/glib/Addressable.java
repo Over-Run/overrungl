@@ -27,7 +27,7 @@ import java.lang.foreign.MemorySegment;
 @FunctionalInterface
 public interface Addressable {
     /**
-     * {@return the address value}
+     * {@return the raw address value}
      */
     MemorySegment address();
 }

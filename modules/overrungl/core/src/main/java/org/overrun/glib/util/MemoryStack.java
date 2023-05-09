@@ -39,7 +39,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @see Configurations#DEBUG_STACK
  * @since 0.1.0
  */
-public class MemoryStack extends Pointer implements SegmentAllocator, AutoCloseable {
+public sealed class MemoryStack extends Pointer implements SegmentAllocator, AutoCloseable {
     private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
@@ -328,7 +328,7 @@ public class MemoryStack extends Pointer implements SegmentAllocator, AutoClosea
             throw new OutOfMemoryError("Out of stack space.");
         }
 
-        return MemorySegment.ofAddress(address).reinterpret(size, arena, null);
+        return address().asSlice(pointer, size);
     }
 
     /**

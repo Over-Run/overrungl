@@ -58,43 +58,43 @@ public class DrawArraysIndirectCommand extends Struct {
     /**
      * Create the pointer instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public DrawArraysIndirectCommand(MemorySegment address, Arena arena) {
-        super(address, arena, LAYOUT);
+    public DrawArraysIndirectCommand(MemorySegment address, SegmentAllocator allocator) {
+        super(address, allocator, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
-     * @param layout  the memory layout of this struct.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
+     * @param layout    the memory layout of this struct.
      */
-    protected DrawArraysIndirectCommand(MemorySegment address, Arena arena, MemoryLayout layout) {
-        super(address, arena, layout);
+    protected DrawArraysIndirectCommand(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
+        super(address, allocator, layout);
     }
 
     /**
-     * Creates a command instance with the given arena.
+     * Creates a command instance with the given allocator.
      *
-     * @param arena the arena
+     * @param allocator the allocator
      * @return the instance
      */
-    public static DrawArraysIndirectCommand create(Arena arena) {
-        return new DrawArraysIndirectCommand(arena.allocate(LAYOUT), arena);
+    public static DrawArraysIndirectCommand create(SegmentAllocator allocator) {
+        return new DrawArraysIndirectCommand(allocator.allocate(LAYOUT), allocator);
     }
 
     /**
-     * Creates a command instance with the given arena and count.
+     * Creates a command instance with the given allocator and count.
      *
-     * @param arena the arena
-     * @param count the count
+     * @param allocator the allocator
+     * @param count     the count
      * @return the instance
      */
-    public static Buffer create(Arena arena, long count) {
-        return new Buffer(arena.allocateArray(LAYOUT, count), arena, count);
+    public static Buffer create(SegmentAllocator allocator, long count) {
+        return new Buffer(allocator.allocateArray(LAYOUT, count), allocator, count);
     }
 
     /**
@@ -182,11 +182,11 @@ public class DrawArraysIndirectCommand extends Struct {
          * Create the pointer instance.
          *
          * @param address      the address.
-         * @param arena        the arena of this address.
+         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, Arena arena, long elementCount) {
-            super(address, arena, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
+            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             pCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
             pPrimCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
             pFirst = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("first"));

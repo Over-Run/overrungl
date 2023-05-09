@@ -57,21 +57,21 @@ public class GLFWGamepadState extends Struct {
     /**
      * Create a {@code GLFWgamepadstate} instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public GLFWGamepadState(MemorySegment address, Arena arena) {
-        super(address, arena, LAYOUT);
+    public GLFWGamepadState(MemorySegment address, SegmentAllocator allocator) {
+        super(address, allocator, LAYOUT);
     }
 
     /**
-     * Creates a {@code GLFWgamepadstate} instance with the given arena.
+     * Creates a {@code GLFWgamepadstate} instance with the given allocator.
      *
-     * @param arena the arena
+     * @param allocator the allocator
      * @return the instance
      */
-    public static GLFWGamepadState create(Arena arena) {
-        return new GLFWGamepadState(arena.allocate(LAYOUT), arena);
+    public static GLFWGamepadState create(SegmentAllocator allocator) {
+        return new GLFWGamepadState(allocator.allocate(LAYOUT), allocator);
     }
 
     /**

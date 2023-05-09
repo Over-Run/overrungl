@@ -116,6 +116,7 @@ public final class RuntimeHelper {
      * Gets a string from the given pointer of a string at the given index.
      *
      * @param segment the memory segment.
+     * @param index   the index.
      * @return the string.
      */
     public static String unboundPointerString(MemorySegment segment, int index) {

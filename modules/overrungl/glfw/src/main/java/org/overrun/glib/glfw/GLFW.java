@@ -26,7 +26,6 @@ import org.overrun.glib.util.value.ValueInt4;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.glib.glfw.Handles.*;
@@ -1745,13 +1744,13 @@ public final class GLFW {
     /**
      * Returns the available video modes for the specified monitor.
      *
-     * @param arena   The arena that holds the result.
-     * @param monitor The monitor to query.
+     * @param allocator The allocator that allocates the result.
+     * @param monitor   The monitor to query.
      * @return An array of video modes, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer getVideoModes(Arena arena, MemorySegment monitor) {
+    public static @Nullable GLFWVidMode.Buffer getVideoModes(SegmentAllocator allocator, MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1759,7 +1758,7 @@ public final class GLFW {
             var pModes = ngetVideoModes(monitor, pCount);
             return RuntimeHelper.isNullptr(pModes) ?
                 null :
-                new GLFWVidMode.Buffer(pModes, arena, pCount.get(JAVA_INT, 0));
+                new GLFWVidMode.Buffer(pModes, allocator, pCount.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1794,18 +1793,18 @@ public final class GLFW {
     /**
      * Returns the current mode of the specified monitor.
      *
-     * @param arena   The arena that holds the result.
      * @param monitor The monitor to query.
      * @return The current mode of the monitor, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoMode(MemorySegment) ngetVideoMode
      */
     @Nullable
-    public static GLFWVidMode.Value getVideoMode(Arena arena, MemorySegment monitor) {
+    public static GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
-        return RuntimeHelper.isNullptr(pMode) ?
-            null :
-            new GLFWVidMode(pMode, arena).constCast();
+        if (RuntimeHelper.isNullptr(pMode)) return null;
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            return new GLFWVidMode(pMode, stack).constCast();
+        }
     }
 
     /**
@@ -1869,16 +1868,18 @@ public final class GLFW {
     /**
      * Returns the current gamma ramp for the specified monitor.
      *
-     * @param arena   The arena that holds the result.
      * @param monitor The monitor to query.
      * @return The current gamma ramp, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetGammaRamp(MemorySegment) ngetGammaRamp
      */
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(Arena arena, MemorySegment monitor) {
+    public static GLFWGammaRamp getGammaRamp(MemorySegment monitor) {
         var pRamp = ngetGammaRamp(monitor);
-        return RuntimeHelper.isNullptr(pRamp) ? null : new GLFWGammaRamp(pRamp, arena);
+        if (RuntimeHelper.isNullptr(pRamp)) return null;
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            return new GLFWGammaRamp(pRamp, stack);
+        }
     }
 
     /**

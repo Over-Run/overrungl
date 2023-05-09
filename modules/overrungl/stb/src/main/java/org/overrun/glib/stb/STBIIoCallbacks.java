@@ -59,11 +59,11 @@ public class STBIIoCallbacks extends Struct {
     /**
      * Create a {@code stbi_io_callbacks} instance.
      *
-     * @param address the address.
-     * @param arena   the arena of this address.
+     * @param address   the address.
+     * @param allocator the allocator of this address.
      */
-    public STBIIoCallbacks(MemorySegment address, Arena arena) {
-        super(address, arena, LAYOUT);
+    public STBIIoCallbacks(MemorySegment address, SegmentAllocator allocator) {
+        super(address, allocator, LAYOUT);
     }
 
     /**
@@ -158,13 +158,13 @@ public class STBIIoCallbacks extends Struct {
     }
 
     /**
-     * Creates a {@code stbi_io_callbacks} instance with the given arena.
+     * Creates a {@code stbi_io_callbacks} instance with the given allocator.
      *
-     * @param arena the arena
+     * @param allocator the allocator
      * @return the instance
      */
-    public static STBIIoCallbacks create(Arena arena) {
-        return new STBIIoCallbacks(arena.allocate(LAYOUT), arena);
+    public static STBIIoCallbacks create(SegmentAllocator allocator) {
+        return new STBIIoCallbacks(allocator.allocate(LAYOUT), allocator);
     }
 
     /**
@@ -191,10 +191,11 @@ public class STBIIoCallbacks extends Struct {
     /**
      * Sets the read callback.
      *
-     * @param read the read callback
+     * @param arena the arena of the callback.
+     * @param read  the read callback
      * @return this
      */
-    public STBIIoCallbacks read(Read read) {
+    public STBIIoCallbacks read(Arena arena, Read read) {
         pRead.set(segment(), read.address(arena));
         return this;
     }
@@ -202,10 +203,11 @@ public class STBIIoCallbacks extends Struct {
     /**
      * Sets the skip callback.
      *
-     * @param skip the skip callback
+     * @param arena the arena of the callback.
+     * @param skip  the skip callback
      * @return this
      */
-    public STBIIoCallbacks skip(Skip skip) {
+    public STBIIoCallbacks skip(Arena arena, Skip skip) {
         pSkip.set(segment(), skip.address(arena));
         return this;
     }
@@ -213,10 +215,11 @@ public class STBIIoCallbacks extends Struct {
     /**
      * Sets the eof callback.
      *
-     * @param eof the eof callback
+     * @param arena the arena of the callback.
+     * @param eof   the eof callback
      * @return this
      */
-    public STBIIoCallbacks eof(Eof eof) {
+    public STBIIoCallbacks eof(Arena arena, Eof eof) {
         pEof.set(segment(), eof.address(arena));
         return this;
     }
