@@ -118,7 +118,7 @@ final class Handles {
         initialized = true;
 
         lookup = RuntimeHelper.load("glfw", "glfw3",
-            GLFW.VERSION_MAJOR + "." + GLFW.VERSION_MINOR + "." + GLFW.VERSION_REVISION);
+            STR."\{GLFW.VERSION_MAJOR}.\{GLFW.VERSION_MINOR}.\{GLFW.VERSION_REVISION}");
         glfwInit = downcall("glfwInit", I);
         glfwTerminate = downcall("glfwTerminate", V);
         glfwInitHint = downcall("glfwInitHint", IIV);

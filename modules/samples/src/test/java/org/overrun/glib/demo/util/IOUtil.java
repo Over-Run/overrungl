@@ -67,7 +67,7 @@ public final class IOUtil {
             var is = isHttp ?
                 new URI(resource).toURL().openStream() :
                 Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
-                    "Failed to load resource '" + resource + "'!")
+                    STR."Failed to load resource '\{resource}'!")
         ) {
             MemorySegment segment = arena.allocate(segmentSize);
 
@@ -85,7 +85,7 @@ public final class IOUtil {
 
             return segment.asSlice(0, pos);
         } catch (URISyntaxException e) {
-            throw new IllegalArgumentException("Illegal URI: " + resource, e);
+            throw new IllegalArgumentException(STR."Illegal URI: \{resource}", e);
         }
     }
 

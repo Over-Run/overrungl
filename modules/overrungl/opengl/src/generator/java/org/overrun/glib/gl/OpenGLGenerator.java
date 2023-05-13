@@ -34,7 +34,7 @@ public final class OpenGLGenerator {
     private static Map<String, String> constants(String... strings) {
         final int length = strings.length;
         if (length % 2 != 0) {
-            throw new IllegalArgumentException("strings.length must be an even; got " + length);
+            throw new IllegalArgumentException(STR."strings.length must be an even; got \{length}");
         }
         Map.Entry<String, String>[] entries = new Map.Entry[length / 2];
         for (int i = 0; i < entries.length; i++) {
@@ -477,6 +477,6 @@ public final class OpenGLGenerator {
         } else {
             prefix = "";
         }
-        Files.writeString(Path.of("ext/" + prefix + filename + ".java"), sb);
+        Files.writeString(Path.of(STR."ext/\{prefix}\{filename}.java"), sb);
     }
 }

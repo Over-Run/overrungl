@@ -246,7 +246,7 @@ public class GL33Test {
             time = GLFW.getTime();
             dt = time - lastTime;
             try (MemoryStack stack = MemoryStack.stackPush()) {
-                GLFW.setWindowTitle(stack, window, WND_TITLE + " Delta time: " + dt + ", Frequency: " + (int) (1.0 / dt));
+                GLFW.setWindowTitle(stack, window, STR."\{WND_TITLE} Delta time: \{dt}, Frequency: \{(int) (1.0 / dt)}");
             }
         }
     }

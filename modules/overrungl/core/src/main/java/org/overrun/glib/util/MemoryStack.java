@@ -160,7 +160,7 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
 
     private void frameOverflow() {
         if (DEBUG) {
-            RuntimeHelper.apiLog("[WARNING] Out of frame stack space (" + frames.length + ") in thread: " + Thread.currentThread());
+            RuntimeHelper.apiLog(STR."[WARNING] Out of frame stack space (\{frames.length}) in thread: \{Thread.currentThread()}");
         }
         frames = Arrays.copyOf(frames, frames.length * 3 / 2);
     }

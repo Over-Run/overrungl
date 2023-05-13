@@ -49,7 +49,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("Arena       inside loop  " + delta);
+        System.out.println(STR."Arena       inside loop  \{delta}");
 
         // Arena outside loop
         sb = new StringBuilder();
@@ -63,7 +63,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("Arena       outside loop " + delta);
+        System.out.println(STR."Arena       outside loop \{delta}");
 
         // MemoryUtil malloc
         sb = new StringBuilder();
@@ -76,7 +76,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemoryUtil  malloc       " + delta);
+        System.out.println(STR."MemoryUtil  malloc       \{delta}");
 
         // MemoryUtil calloc
         sb = new StringBuilder();
@@ -89,7 +89,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemoryUtil  calloc       " + delta);
+        System.out.println(STR."MemoryUtil  calloc       \{delta}");
 
         // MemoryStack malloc
         sb = new StringBuilder();
@@ -103,7 +103,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemoryStack malloc       " + delta);
+        System.out.println(STR."MemoryStack malloc       \{delta}");
 
         // MemoryStack calloc
         sb = new StringBuilder();
@@ -117,7 +117,7 @@ public final class MemoryUtilTest {
         }
         end = System.nanoTime();
         delta = end - start;
-        System.out.println("MemoryStack calloc       " + delta);
+        System.out.println(STR."MemoryStack calloc       \{delta}");
     }
 
     public static void main(String[] args) {

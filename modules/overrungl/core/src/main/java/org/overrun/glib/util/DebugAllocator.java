@@ -100,7 +100,7 @@ final class DebugAllocator {
         trackAbortPrint(allocationOld, "Old", addressHex);
         trackAbortPrint(allocationNew, "New", addressHex);
 
-        throw new IllegalStateException("The memory address specified is already being tracked: 0x" + addressHex);
+        throw new IllegalStateException(STR."The memory address specified is already being tracked: 0x\{addressHex}");
     }
 
     private static void trackAbortPrint(Allocation allocation, String name, String address) {
@@ -147,7 +147,7 @@ final class DebugAllocator {
     private static void untrackAbort(long address) {
         String addressHex = Long.toHexString(address).toUpperCase();
 
-        throw new IllegalStateException("The memory address specified is not being tracked: 0x" + addressHex);
+        throw new IllegalStateException(STR."The memory address specified is not being tracked: 0x\{addressHex}");
     }
 
     private record Allocation(long address, long size, long threadId, @Nullable Object[] stacktrace) {

@@ -124,7 +124,7 @@ public enum FunctionDescriptors {
             case 'p' -> RuntimeHelper.ADDRESS_UNBOUNDED;
             default ->
                 throw new IllegalArgumentException(
-                    "Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '" + c + '\''
+                    STR."Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '\{c}'"
                 );
         };
     }

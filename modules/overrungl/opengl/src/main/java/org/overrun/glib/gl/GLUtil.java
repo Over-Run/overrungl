@@ -77,7 +77,7 @@ public final class GLUtil {
             GL.debugMessageCallback(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] OpenGL debug message\n");
-                printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
+                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
                 printDetail(sb, "Source", getDebugSource(source));
                 printDetail(sb, "Type", getDebugType(type));
                 printDetail(sb, "Severity", getDebugSeverity(severity));
@@ -105,7 +105,7 @@ public final class GLUtil {
             glDebugMessageCallbackARB(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
-                printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
+                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
                 printDetail(sb, "Source", getSourceARB(source));
                 printDetail(sb, "Type", getTypeARB(type));
                 printDetail(sb, "Severity", getSeverityARB(severity));
@@ -127,7 +127,7 @@ public final class GLUtil {
             glDebugMessageCallbackAMD(arena, (id, category, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
-                printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
+                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
                 printDetail(sb, "Category", getCategoryAMD(category));
                 printDetail(sb, "Severity", getSeverityAMD(severity));
                 printDetail(sb, "Message", message);

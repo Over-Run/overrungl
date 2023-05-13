@@ -173,10 +173,10 @@ public final class RuntimeHelper {
      *
      * @param description the description. default to {@code Unknown}
      * @param token       the token.
-     * @return the string is formatted in {@code \{description} [0x\{toHexString(token)}]}.
+     * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
      */
     public static String unknownToken(String description, int token) {
-        return description + " [0x" + Integer.toHexString(token) + ']';
+        return STR."\{description} [0x\{Integer.toHexString(token)}]";
     }
 
     /**
@@ -196,7 +196,7 @@ public final class RuntimeHelper {
         URI uri;
         // 1. Load from classpath
         try {
-            var file = new File(tmpdir, "overrungl" + System.getProperty("user.name"));
+            var file = new File(tmpdir, STR."overrungl\{System.getProperty("user.name")}");
             if (!file.exists()) {
                 // Create directory
                 file.mkdir();
@@ -206,11 +206,11 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, basename + '-' + version + suffix);
+            var libFile = new File(file, STR."\{basename}-\{version}\{suffix}");
             if (!libFile.exists()) {
                 // Extract
                 try (var is = RuntimeHelper.class.getClassLoader().getResourceAsStream(
-                    module + '/' + os.getFamilyName() + '/' + OperatingSystems.getNativeLibArch() + '/' + path
+                    STR."\{module}/\{os.getFamilyName()}/\{OperatingSystems.getNativeLibArch()}/\{path}"
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 }
@@ -218,9 +218,9 @@ public final class RuntimeHelper {
             uri = libFile.toURI();
         } catch (Exception e) {
             // 2. Load from natives directory
-            var file = new File(System.getProperty("overrungl.natives", ".") + '/' + path);
+            var file = new File(STR."\{System.getProperty("overrungl.natives", ".")}/\{path}");
             if (!file.exists()) {
-                var exception = new IllegalStateException("File not found: " + file + "; Try to set property -Doverrungl.natives to a valid path");
+                var exception = new IllegalStateException(STR."File not found: \{file}; Try to set property -Doverrungl.natives to a valid path");
                 exception.addSuppressed(e);
                 throw exception;
             }

@@ -52,6 +52,6 @@ public final class OperatingSystems {
         if (os == WINDOWS) {
             return arch.contains("64") ? (arch.startsWith("aarch64") ? "arm64" : "x64") : "x86";
         }
-        throw new IllegalStateException("Doesn't support to os " + os + "; only support to Linux, macOS and Windows");
+        throw new IllegalStateException(STR."Doesn't support to os \{os}; only support to Linux, macOS and Windows");
     }
 }
