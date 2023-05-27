@@ -13,7 +13,6 @@ for (Artifact module : Artifact.VALUES) {
 project(":samples").ext.subName = "samples"
 
 enum NativePlatform {
-    WIN_32("windows", "x86", "windows-x86", "", ".dll", "Win32"),
     WIN_64("windows", "x64", "windows", "", ".dll", "Win64"),
     WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
     LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
@@ -68,7 +67,7 @@ enum NativePlatform {
 
 enum NativeBinding {
     GLFW("glfw", "glfw3",
-        NativePlatform.WIN_32, NativePlatform.WIN_64,
+        NativePlatform.WIN_64,
         NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
     STB("stb", "stb", NativePlatform.ALL),

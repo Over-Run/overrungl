@@ -101,9 +101,7 @@ natives
 │  │  └─ x64
 │  │     └─ libglfw3.dylib
 │  └─ windows
-│     ├─ x64
-│     │  └─ glfw3.dll
-│     └─ x86
+│     └─ x64
 │        └─ glfw3.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
@@ -121,8 +119,6 @@ natives
    └─ windows
       ├─ arm64
       │  └─ stb.dll
-      ├─ x64
-      │  └─ stb.dll
-      └─ x86
+      └─ x64
          └─ stb.dll
 ```
