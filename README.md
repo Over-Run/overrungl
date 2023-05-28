@@ -75,7 +75,7 @@ See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
-OpenGL docs can be found [here](https://docs.gl/).
+Documentations of OpenGL can be found [here](https://docs.gl/).
 
 ### Publishing (for internal member)
 
@@ -103,6 +103,24 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
+│─ openal https://github.com/Over-Run/openal-soft-ci
+│  ├─ linux
+│  │  ├─ arm32
+│  │  │  └─ libopenal.so
+│  │  ├─ arm64
+│  │  │  └─ libopenal.so
+│  │  └─ x64
+│  │     └─ libopenal.so
+│  ├─ os x
+│  │  ├─ arm64
+│  │  │  └─ libopenal.dylib
+│  │  └─ x64
+│  │     └─ libopenal.dylib
+│  └─ windows
+│     ├─ arm64
+│     │  └─ openal.dll
+│     └─ x64
+│        └─ openal.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
    │  ├─ arm32

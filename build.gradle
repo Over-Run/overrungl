@@ -70,6 +70,7 @@ enum NativeBinding {
         NativePlatform.WIN_64,
         NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
+    OPENAL("openal", "openal", NativePlatform.ALL),
     STB("stb", "stb", NativePlatform.ALL),
 
     private final String name
@@ -103,9 +104,12 @@ enum Artifact {
     GLFW("overrungl-glfw", "OverrunGL - GLFW bindings",
         "A multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.",
         ":glfw", "Glfw", NativeBinding.GLFW),
-    JOML('overrungl-joml', 'OverrunGL - JOML native access',
-        'A Java math library for OpenGL rendering calculations',
-        ':joml', 'Joml'),
+    JOML("overrungl-joml", "OverrunGL - JOML native access",
+        "A Java math library for OpenGL rendering calculations",
+        ":joml", "Joml"),
+    OPENAL("overrun-openal", "OverrunGL - OpenAL bindings",
+        "A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications.",
+        ":openal", "Openal", NativeBinding.OPENAL),
     OPENGL("overrungl-opengl", "OverrunGL - OpenGL bindings",
         "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
         ":opengl", "Opengl"),

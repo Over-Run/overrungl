@@ -42,6 +42,10 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public final class RuntimeHelper {
     /**
+     * The version of OverrunGL.
+     */
+    public static final String VERSION = "0.1.0";
+    /**
      * The native linker.
      */
     public static final Linker LINKER = Linker.nativeLinker();
