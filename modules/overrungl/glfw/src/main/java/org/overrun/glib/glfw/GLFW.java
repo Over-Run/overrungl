@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
 import org.overrun.glib.util.value.Value2;
-import org.overrun.glib.util.value.ValueInt3;
+import org.overrun.glib.util.value.Value3;
 import org.overrun.glib.util.value.ValueInt4;
 
 import java.lang.foreign.Arena;
@@ -1032,7 +1032,7 @@ public final class GLFW {
      * @return the major, minor and revision version number
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) ngetVersion
      */
-    public static ValueInt3 getVersion() {
+    public static Value3.OfInt getVersion() {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1040,7 +1040,7 @@ public final class GLFW {
             var pMinor = stack.calloc(JAVA_INT);
             var pRev = stack.calloc(JAVA_INT);
             ngetVersion(pMajor, pMinor, pRev);
-            return new ValueInt3(pMajor.get(JAVA_INT, 0),
+            return new Value3.OfInt(pMajor.get(JAVA_INT, 0),
                 pMinor.get(JAVA_INT, 0),
                 pRev.get(JAVA_INT, 0));
         } finally {
