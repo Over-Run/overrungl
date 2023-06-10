@@ -37,6 +37,11 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @since 0.1.0
  */
 public final class STBImage {
+    static {
+        initialize();
+        create();
+    }
+
     private static MethodHandle
         stbi_convert_iphone_png_to_rgb, stbi_convert_iphone_png_to_rgb_thread, stbi_failure_reason, stbi_hdr_to_ldr_gamma,
         stbi_hdr_to_ldr_scale, stbi_image_free, stbi_info, stbi_info_from_callbacks, stbi_info_from_file, stbi_info_from_memory,
@@ -59,11 +64,6 @@ public final class STBImage {
         GREY_ALPHA = 2,
         RGB = 3,
         RGB_ALPHA = 4;
-
-    static {
-        initialize();
-        create();
-    }
 
     private static void create() {
         stbi_convert_iphone_png_to_rgb = downcall("stbi_convert_iphone_png_to_rgb", IV);

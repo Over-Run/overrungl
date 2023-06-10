@@ -57,13 +57,13 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @since 0.1.0
  */
 public final class STBEasyFont {
-    private static MethodHandle
-        stb_easy_font_draw_segs, stb_easy_font_get_spacing, stb_easy_font_spacing, stb_easy_font_print, stb_easy_font_width, stb_easy_font_height;
-
     static {
         initialize();
         create();
     }
+
+    private static MethodHandle
+        stb_easy_font_draw_segs, stb_easy_font_get_spacing, stb_easy_font_spacing, stb_easy_font_print, stb_easy_font_width, stb_easy_font_height;
 
     private STBEasyFont() {
         //no instance

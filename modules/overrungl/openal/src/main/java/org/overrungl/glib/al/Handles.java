@@ -35,6 +35,9 @@ import static org.overrun.glib.FunctionDescriptors.FV;
 final class Handles {
     private static boolean initialized;
     static SymbolLookup lookup;
+    /**
+     * AL
+     */
     static MethodHandle
         alEnable, alDisable, alIsEnabled, alDopplerFactor, alDopplerVelocity, alSpeedOfSound, alDistanceModel, alGetString,
         alGetBooleanv, alGetIntegerv, alGetFloatv, alGetDoublev, alGetBoolean, alGetInteger, alGetFloat, alGetDouble, alGetError,
@@ -45,6 +48,13 @@ final class Handles {
         alSourceRewind, alSourcePause, alSourcePlayv, alSourceStopv, alSourceRewindv, alSourcePausev, alSourceQueueBuffers,
         alSourceUnqueueBuffers, alGenBuffers, alDeleteBuffers, alIsBuffer, alBufferData, alBufferf, alBuffer3f, alBufferfv,
         alBufferi, alBuffer3i, alBufferiv, alGetBufferf, alGetBuffer3f, alGetBufferfv, alGetBufferi, alGetBuffer3i, alGetBufferiv;
+    /**
+     * ALC
+     */
+    static MethodHandle
+        alcCreateContext, alcMakeContextCurrent, alcProcessContext, alcSuspendContext, alcDestroyContext, alcGetCurrentContext,
+        alcGetContextsDevice, alcOpenDevice, alcCloseDevice, alcGetError, alcIsExtensionPresent, alcGetProcAddress, alcGetEnumValue,
+        alcGetString, alcGetIntegerv, alcCaptureOpenDevice, alcCaptureCloseDevice, alcCaptureStart, alcCaptureStop, alcCaptureSamples;
 
     private static MethodHandle downcall(String name,
                                          FunctionDescriptor function) {
@@ -56,11 +66,7 @@ final class Handles {
         return RuntimeHelper.downcallThrow(lookup.find(name), function);
     }
 
-    static void create() {
-        if (initialized) return;
-        initialized = true;
-
-        lookup = RuntimeHelper.load("openal", "openal", RuntimeHelper.VERSION);
+    private static void createAL() {
         alEnable = downcall("alEnable", IV);
         alDisable = downcall("alDisable", IV);
         alIsEnabled = downcall("alIsEnabled", IZ);
@@ -134,5 +140,37 @@ final class Handles {
         alGetBufferi = downcall("alGetBufferi", IIPV);
         alGetBuffer3i = downcall("alGetBuffer3i", IIPPPV);
         alGetBufferiv = downcall("alGetBufferiv", IIPV);
+    }
+
+    private static void createALC() {
+        alcCreateContext = downcall("alcCreateContext", PPP);
+        alcMakeContextCurrent = downcall("alcMakeContextCurrent", PZ);
+        alcProcessContext = downcall("alcProcessContext", PV);
+        alcSuspendContext = downcall("alcSuspendContext", PV);
+        alcDestroyContext = downcall("alcDestroyContext", PV);
+        alcGetCurrentContext = downcall("alcGetCurrentContext", P);
+        alcGetContextsDevice = downcall("alcGetContextsDevice", PP);
+        alcOpenDevice = downcall("alcOpenDevice", PP);
+        alcCloseDevice = downcall("alcCloseDevice", PZ);
+        alcGetError = downcall("alcGetError", fd_PI);
+        alcIsExtensionPresent = downcall("alcIsExtensionPresent", PPZ);
+        alcGetProcAddress = downcall("alcGetProcAddress", PPP);
+        alcGetEnumValue = downcall("alcGetEnumValue", PPI);
+        alcGetString = downcall("alcGetString", PIp);
+        alcGetIntegerv = downcall("alcGetIntegerv", PIIPV);
+        alcCaptureOpenDevice = downcall("alcCaptureOpenDevice", PIIIP);
+        alcCaptureCloseDevice = downcall("alcCaptureCloseDevice", PZ);
+        alcCaptureStart = downcall("alcCaptureStart", PV);
+        alcCaptureStop = downcall("alcCaptureStop", PV);
+        alcCaptureSamples = downcall("alcCaptureSamples", PPIV);
+    }
+
+    static void create() {
+        if (initialized) return;
+        initialized = true;
+
+        lookup = RuntimeHelper.load("openal", "openal", RuntimeHelper.VERSION);
+        createAL();
+        createALC();
     }
 }

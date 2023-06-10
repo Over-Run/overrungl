@@ -37,6 +37,10 @@ import static org.overrun.glib.glfw.Handles.*;
  * @since 0.1.0
  */
 public final class GLFW {
+    static {
+        create();
+    }
+
     /**
      * The major version number of the GLFW header.
      * <p>
@@ -844,10 +848,6 @@ public final class GLFW {
      * Don't care value.
      */
     public static final int DONT_CARE = -1;
-
-    static {
-        create();
-    }
 
     private GLFW() {
         throw new IllegalStateException("Do not construct instance");

@@ -35,17 +35,17 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @since 0.1.0
  */
 public final class STBImageWrite {
+    static {
+        initialize();
+        create();
+    }
+
     private static MethodHandle
         stbi_flip_vertically_on_write, stbi_get_write_force_png_filter, stbi_get_write_png_compression_level,
         stbi_get_write_tga_with_rle, stbi_set_write_force_png_filter, stbi_set_write_png_compression_level,
         stbi_set_write_tga_with_rle, stbi_write_bmp, stbi_write_bmp_to_func, stbi_write_hdr, stbi_write_hdr_to_func,
         stbi_write_jpg, stbi_write_jpg_to_func, stbi_write_png, stbi_write_png_to_func, stbi_write_png_to_mem,
         stbi_write_tga, stbi_write_tga_to_func, stbi_zlib_compress;
-
-    static {
-        initialize();
-        create();
-    }
 
     private static void create() {
         stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV);

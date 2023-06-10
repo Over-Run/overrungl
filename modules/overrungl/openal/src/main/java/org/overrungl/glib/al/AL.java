@@ -33,6 +33,10 @@ import static org.overrungl.glib.al.Handles.*;
  * @since 0.1.0
  */
 public final class AL {
+    static {
+        create();
+    }
+
     /**
      * No distance model or no buffer
      */
@@ -421,10 +425,6 @@ public final class AL {
         AL_EXPONENT_DISTANCE = 0xD005,
         AL_EXPONENT_DISTANCE_CLAMPED = 0xD006;
 
-    static {
-        create();
-    }
-
     public static void enable(int capability) {
         try {
             alEnable.invokeExact(capability);
@@ -581,6 +581,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Obtain the first error generated in the AL context since the last call to
+     * this function.
+     *
+     * @return the error code
+     */
     public static int getError() {
         try {
             return (int) alGetError.invokeExact();
@@ -589,6 +595,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Query for the presence of an extension on the AL context.
+     *
+     * @param extName the name of the extension
+     * @return the presence of the given extension
+     */
     public static boolean nisExtensionPresent(MemorySegment extName) {
         try {
             return (boolean) alIsExtensionPresent.invokeExact(extName);
@@ -597,10 +609,24 @@ public final class AL {
         }
     }
 
+    /**
+     * Query for the presence of an extension on the AL context.
+     *
+     * @param extName the name of the extension
+     * @return the presence of the given extension
+     * @see #nisExtensionPresent(MemorySegment) nisExtensionPresent
+     */
     public static boolean isExtensionPresent(SegmentAllocator allocator, String extName) {
         return nisExtensionPresent(allocator.allocateUtf8String(extName));
     }
 
+    /**
+     * Retrieve the address of a function.
+     * The returned function may be context-specific.
+     *
+     * @param fname the name of the function
+     * @return the address of the given function
+     */
     public static MemorySegment ngetProcAddress(MemorySegment fname) {
         try {
             return (MemorySegment) alGetProcAddress.invokeExact(fname);
@@ -609,10 +635,24 @@ public final class AL {
         }
     }
 
+    /**
+     * Retrieve the address of a function.
+     * The returned function may be context-specific.
+     *
+     * @param fname the name of the function
+     * @return the address of the given function
+     * @see #ngetProcAddress(MemorySegment) ngetProcAddress
+     */
     public static MemorySegment getProcAddress(SegmentAllocator allocator, String fname) {
         return ngetProcAddress(allocator.allocateUtf8String(fname));
     }
 
+    /**
+     * Retrieve the value of an enum. The returned value may be context-specific.
+     *
+     * @param ename the name of the enum
+     * @return the value of the given enum
+     */
     public static int ngetEnumValue(MemorySegment ename) {
         try {
             return (int) alGetEnumValue.invokeExact(ename);
@@ -621,6 +661,13 @@ public final class AL {
         }
     }
 
+    /**
+     * Retrieve the value of an enum. The returned value may be context-specific.
+     *
+     * @param ename the name of the enum
+     * @return the value of the given enum
+     * @see #ngetEnumValue(MemorySegment) ngetEnumValue
+     */
     public static int getEnumValue(SegmentAllocator allocator, String ename) {
         return ngetEnumValue(allocator.allocateUtf8String(ename));
     }
@@ -793,6 +840,12 @@ public final class AL {
         RuntimeHelper.toArray(seg, values);
     }
 
+    /**
+     * Create source objects.
+     *
+     * @param n       the count of the objects.
+     * @param sources a buffer that retrieves the objects.
+     */
     public static void ngenSources(int n, MemorySegment sources) {
         try {
             alGenSources.invokeExact(n, sources);
@@ -801,12 +854,25 @@ public final class AL {
         }
     }
 
+    /**
+     * Create source objects.
+     *
+     * @param allocator the allocator of the buffer.
+     * @param sources   an array that retrieves the objects.
+     * @see #ngenSources(int, MemorySegment) ngenSources
+     */
     public static void genSources(SegmentAllocator allocator, int[] sources) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, sources.length);
         ngenSources(sources.length, seg);
         RuntimeHelper.toArray(seg, sources);
     }
 
+    /**
+     * Create a source object.
+     *
+     * @return the object.
+     * @see #ngenSources(int, MemorySegment) ngenSources
+     */
     public static int genSource() {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
@@ -819,6 +885,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Delete source objects.
+     *
+     * @param n       the count of the objects.
+     * @param sources the objects.
+     */
     public static void ndeleteSources(int n, MemorySegment sources) {
         try {
             alDeleteSources.invokeExact(n, sources);
@@ -827,10 +899,23 @@ public final class AL {
         }
     }
 
+    /**
+     * Delete source objects.
+     *
+     * @param allocator the allocator of the buffer.
+     * @param sources   the objects.
+     * @see #ndeleteSources(int, MemorySegment) ndeleteSources
+     */
     public static void deleteSources(SegmentAllocator allocator, int[] sources) {
         ndeleteSources(sources.length, allocator.allocateArray(JAVA_INT, sources));
     }
 
+    /**
+     * Delete a source object.
+     *
+     * @param source the object.
+     * @see #ndeleteSources(int, MemorySegment) ndeleteSources
+     */
     public static void deleteSource(int source) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
@@ -841,6 +926,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Verify an ID is for a valid source.
+     *
+     * @param source an ID of a source
+     * @return the result
+     */
     public static boolean isSource(int source) {
         try {
             return (boolean) alIsSource.invokeExact(source);
@@ -1017,6 +1108,11 @@ public final class AL {
         RuntimeHelper.toArray(seg, values);
     }
 
+    /**
+     * Play, restart, or resume a source, setting its state to {@link #AL_PLAYING}.
+     *
+     * @param source the ID of the source
+     */
     public static void sourcePlay(int source) {
         try {
             alSourcePlay.invokeExact(source);
@@ -1025,6 +1121,11 @@ public final class AL {
         }
     }
 
+    /**
+     * Stop a source, setting its state to {@link #AL_STOPPED} if playing or paused.
+     *
+     * @param source the ID of the source
+     */
     public static void sourceStop(int source) {
         try {
             alSourceStop.invokeExact(source);
@@ -1033,6 +1134,11 @@ public final class AL {
         }
     }
 
+    /**
+     * Rewind a source, setting its state to {@link #AL_INITIAL}.
+     *
+     * @param source the ID of the source
+     */
     public static void sourceRewind(int source) {
         try {
             alSourceRewind.invokeExact(source);
@@ -1041,6 +1147,11 @@ public final class AL {
         }
     }
 
+    /**
+     * Pause a source, setting its state to {@link #AL_PAUSED} if playing.
+     *
+     * @param source the ID of the source
+     */
     public static void sourcePause(int source) {
         try {
             alSourcePause.invokeExact(source);
@@ -1049,6 +1160,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Play, restart, or resume a list of sources atomically.
+     *
+     * @param n       the count of the sources
+     * @param sources the sources
+     */
     public static void nsourcePlayv(int n, MemorySegment sources) {
         try {
             alSourcePlayv.invokeExact(n, sources);
@@ -1057,12 +1174,25 @@ public final class AL {
         }
     }
 
+    /**
+     * Play, restart, or resume a list of sources atomically.
+     *
+     * @param allocator the allocator of the sources
+     * @param sources   the sources
+     * @see #nsourcePlayv(int, MemorySegment) nsourcePlayv
+     */
     public static void sourcePlayv(SegmentAllocator allocator, int[] sources) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, sources.length);
         nsourcePlayv(sources.length, seg);
         RuntimeHelper.toArray(seg, sources);
     }
 
+    /**
+     * Stop a list of sources atomically.
+     *
+     * @param n       the count of the sources
+     * @param sources the sources
+     */
     public static void nsourceStopv(int n, MemorySegment sources) {
         try {
             alSourceStopv.invokeExact(n, sources);
@@ -1071,12 +1201,25 @@ public final class AL {
         }
     }
 
+    /**
+     * Stop a list of sources atomically.
+     *
+     * @param allocator the allocator of the sources
+     * @param sources   the sources
+     * @see #nsourcePlayv(int, MemorySegment) nsourcePlayv
+     */
     public static void sourceStopv(SegmentAllocator allocator, int[] sources) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, sources.length);
         nsourceStopv(sources.length, seg);
         RuntimeHelper.toArray(seg, sources);
     }
 
+    /**
+     * Rewind a list of sources atomically.
+     *
+     * @param n       the count of the sources
+     * @param sources the sources
+     */
     public static void nsourceRewindv(int n, MemorySegment sources) {
         try {
             alSourceRewindv.invokeExact(n, sources);
@@ -1085,12 +1228,25 @@ public final class AL {
         }
     }
 
+    /**
+     * Rewind a list of sources atomically.
+     *
+     * @param allocator the allocator of the sources
+     * @param sources   the sources
+     * @see #nsourcePlayv(int, MemorySegment) nsourcePlayv
+     */
     public static void sourceRewindv(SegmentAllocator allocator, int[] sources) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, sources.length);
         nsourceRewindv(sources.length, seg);
         RuntimeHelper.toArray(seg, sources);
     }
 
+    /**
+     * Pause a list of sources atomically.
+     *
+     * @param n       the count of the sources
+     * @param sources the sources
+     */
     public static void nsourcePausev(int n, MemorySegment sources) {
         try {
             alSourcePausev.invokeExact(n, sources);
@@ -1099,12 +1255,26 @@ public final class AL {
         }
     }
 
+    /**
+     * Pause a list of sources atomically.
+     *
+     * @param allocator the allocator of the sources
+     * @param sources   the sources
+     * @see #nsourcePlayv(int, MemorySegment) nsourcePlayv
+     */
     public static void sourcePausev(SegmentAllocator allocator, int[] sources) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, sources.length);
         nsourcePausev(sources.length, seg);
         RuntimeHelper.toArray(seg, sources);
     }
 
+    /**
+     * Queue buffers onto a source
+     *
+     * @param source  the source
+     * @param nb      the count of the buffers
+     * @param buffers the buffers
+     */
     public static void nsourceQueueBuffers(int source, int nb, MemorySegment buffers) {
         try {
             alSourceQueueBuffers.invokeExact(source, nb, buffers);
@@ -1113,10 +1283,24 @@ public final class AL {
         }
     }
 
+    /**
+     * Queue buffers onto a source
+     *
+     * @param allocator the allocator of the buffers
+     * @param source    the source
+     * @param buffers   the buffers
+     */
     public static void sourceQueueBuffers(SegmentAllocator allocator, int source, int[] buffers) {
         nsourceQueueBuffers(source, buffers.length, allocator.allocateArray(JAVA_INT, buffers));
     }
 
+    /**
+     * Unqueue processed buffers from a source
+     *
+     * @param source  the source
+     * @param nb      the count of the buffers
+     * @param buffers the buffers
+     */
     public static void nsourceUnqueueBuffers(int source, int nb, MemorySegment buffers) {
         try {
             alSourceUnqueueBuffers.invokeExact(source, nb, buffers);
@@ -1125,12 +1309,25 @@ public final class AL {
         }
     }
 
+    /**
+     * Unqueue processed buffers from a source
+     *
+     * @param allocator the allocator of the buffers
+     * @param source    the source
+     * @param buffers   the buffers
+     */
     public static void sourceUnqueueBuffers(SegmentAllocator allocator, int source, int[] buffers) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, buffers);
         nsourceUnqueueBuffers(source, buffers.length, seg);
         RuntimeHelper.toArray(seg, buffers);
     }
 
+    /**
+     * Create buffer objects.
+     *
+     * @param n       the count of the objects.
+     * @param buffers a buffer that retrieves the objects.
+     */
     public static void ngenBuffers(int n, MemorySegment buffers) {
         try {
             alGenBuffers.invokeExact(n, buffers);
@@ -1139,12 +1336,25 @@ public final class AL {
         }
     }
 
+    /**
+     * Create buffer objects.
+     *
+     * @param allocator the allocator of the buffer.
+     * @param buffers   an array that retrieves the objects.
+     * @see #ngenBuffers(int, MemorySegment) ngenBuffers
+     */
     public static void genBuffers(SegmentAllocator allocator, int[] buffers) {
         final MemorySegment seg = allocator.allocateArray(JAVA_INT, buffers.length);
         ngenBuffers(buffers.length, seg);
         RuntimeHelper.toArray(seg, buffers);
     }
 
+    /**
+     * Create a buffer object.
+     *
+     * @return the object.
+     * @see #ngenBuffers(int, MemorySegment) ngenBuffers
+     */
     public static int genBuffer() {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
@@ -1157,6 +1367,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Delete buffer objects.
+     *
+     * @param n       the count of the objects.
+     * @param buffers the objects.
+     */
     public static void ndeleteBuffers(int n, MemorySegment buffers) {
         try {
             alDeleteBuffers.invokeExact(n, buffers);
@@ -1165,10 +1381,23 @@ public final class AL {
         }
     }
 
+    /**
+     * Delete buffer objects.
+     *
+     * @param allocator the allocator of the buffer.
+     * @param buffers   the objects.
+     * @see #ndeleteBuffers(int, MemorySegment) ndeleteBuffers
+     */
     public static void deleteBuffers(SegmentAllocator allocator, int[] buffers) {
         ndeleteBuffers(buffers.length, allocator.allocateArray(JAVA_INT, buffers));
     }
 
+    /**
+     * Delete a buffer object.
+     *
+     * @param buffer the object.
+     * @see #ndeleteBuffers(int, MemorySegment) ndeleteBuffers
+     */
     public static void deleteBuffer(int buffer) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
@@ -1179,6 +1408,12 @@ public final class AL {
         }
     }
 
+    /**
+     * Verify an ID is a valid buffer (including the NULL buffer).
+     *
+     * @param buffer an ID of a buffer
+     * @return the result
+     */
     public static boolean isBuffer(int buffer) {
         try {
             return (boolean) alIsBuffer.invokeExact(buffer);
@@ -1187,6 +1422,16 @@ public final class AL {
         }
     }
 
+    /**
+     * Copies data into the buffer, interpreting it using the specified format and
+     * sample-rate.
+     *
+     * @param buffer     the buffer ID
+     * @param format     the data format
+     * @param data       the data
+     * @param size       the data size
+     * @param sampleRate the sample-rate
+     */
     public static void bufferData(int buffer, int format, MemorySegment data, int size, int sampleRate) {
         try {
             alBufferData.invokeExact(buffer, format, data, size, sampleRate);

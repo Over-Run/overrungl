@@ -34,15 +34,15 @@ import static org.overrun.glib.stb.Handles.initialize;
  * @since 0.1.0
  */
 public final class STBImageResize {
-    private static MethodHandle
-        stbir_resize, stbir_resize_float, stbir_resize_float_generic, stbir_resize_region, stbir_resize_subpixel,
-        stbir_resize_uint16_generic, stbir_resize_uint8, stbir_resize_uint8_generic, stbir_resize_uint8_srgb,
-        stbir_resize_uint8_srgb_edgemode;
-
     static {
         initialize();
         create();
     }
+
+    private static MethodHandle
+        stbir_resize, stbir_resize_float, stbir_resize_float_generic, stbir_resize_region, stbir_resize_subpixel,
+        stbir_resize_uint16_generic, stbir_resize_uint8, stbir_resize_uint8_generic, stbir_resize_uint8_srgb,
+        stbir_resize_uint8_srgb_edgemode;
 
     private static void create() {
         stbir_resize = downcall("stbir_resize", PIIIPIIIIIIIIIIIIPI);
