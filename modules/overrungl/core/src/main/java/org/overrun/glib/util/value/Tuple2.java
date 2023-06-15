@@ -17,7 +17,7 @@
 package org.overrun.glib.util.value;
 
 /**
- * A value object with 2 objects.
+ * A tuple of 2 objects.
  *
  * @param <T> the first type.
  * @param <U> the second type.
@@ -26,7 +26,7 @@ package org.overrun.glib.util.value;
  * @author squid233
  * @since 0.1.0
  */
-public /* value */ record Value2<T, U>(T x, U y) {
+public /* value */ record Tuple2<T, U>(T x, U y) {
     /**
      * {@return {@link #x}}
      */
@@ -67,39 +67,6 @@ public /* value */ record Value2<T, U>(T x, U y) {
      */
     public U value() {
         return y;
-    }
-
-    /**
-     * A value object with 2 integers.
-     *
-     * @param x the first value.
-     * @param y the second value.
-     * @author squid233
-     * @since 0.1.0
-     */
-    public record OfInt(int x, int y) {
-    }
-
-    /**
-     * A value object with 2 floats.
-     *
-     * @param x the first value.
-     * @param y the second value.
-     * @author squid233
-     * @since 0.1.0
-     */
-    public record OfFloat(float x, float y) {
-    }
-
-    /**
-     * A value object with 2 doubles.
-     *
-     * @param x the first value.
-     * @param y the second value.
-     * @author squid233
-     * @since 0.1.0
-     */
-    public record OfDouble(double x, double y) {
     }
 
     /**

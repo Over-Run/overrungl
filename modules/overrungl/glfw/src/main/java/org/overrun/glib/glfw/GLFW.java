@@ -19,9 +19,10 @@ package org.overrun.glib.glfw;
 import org.jetbrains.annotations.Nullable;
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
-import org.overrun.glib.util.value.Value2;
-import org.overrun.glib.util.value.ValueInt3;
-import org.overrun.glib.util.value.ValueInt4;
+import org.overrun.glib.util.value.Pair;
+import org.overrun.glib.util.value.Quad;
+import org.overrun.glib.util.value.Triplet;
+import org.overrun.glib.util.value.Tuple2;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -1032,7 +1033,7 @@ public final class GLFW {
      * @return the major, minor and revision version number
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) ngetVersion
      */
-    public static ValueInt3 getVersion() {
+    public static Triplet.OfInt getVersion() {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1040,7 +1041,7 @@ public final class GLFW {
             var pMinor = stack.calloc(JAVA_INT);
             var pRev = stack.calloc(JAVA_INT);
             ngetVersion(pMajor, pMinor, pRev);
-            return new ValueInt3(pMajor.get(JAVA_INT, 0),
+            return new Triplet.OfInt(pMajor.get(JAVA_INT, 0),
                 pMinor.get(JAVA_INT, 0),
                 pRev.get(JAVA_INT, 0));
         } finally {
@@ -1140,13 +1141,13 @@ public final class GLFW {
      * @return the error description pointer. and the last error code for the calling thread, or {@link #NO_ERROR} (zero)
      * @see #ngetError(MemorySegment) ngetError
      */
-    public static Value2.OfObjInt<String> getError() {
+    public static Tuple2.OfObjInt<String> getError() {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
             final MemorySegment seg = stack.malloc(ADDRESS);
             final int err = ngetError(seg);
-            return new Value2.OfObjInt<>(RuntimeHelper.unboundPointerString(seg), err);
+            return new Tuple2.OfObjInt<>(RuntimeHelper.unboundPointerString(seg), err);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1325,14 +1326,14 @@ public final class GLFW {
      * @return the monitor xy-coordinate
      * @see #ngetMonitorPos(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPos
      */
-    public static Value2.OfInt getMonitorPos(MemorySegment monitor) {
+    public static Pair.OfInt getMonitorPos(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var px = stack.calloc(JAVA_INT);
             var py = stack.calloc(JAVA_INT);
             ngetMonitorPos(monitor, px, py);
-            return new Value2.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+            return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1411,7 +1412,7 @@ public final class GLFW {
      * @return the monitor xy-coordinate, the monitor width and the monitor height
      * @see #ngetMonitorWorkarea(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetMonitorWorkarea
      */
-    public static ValueInt4 getMonitorWorkarea(MemorySegment monitor) {
+    public static Quad.OfInt getMonitorWorkarea(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1420,7 +1421,7 @@ public final class GLFW {
             var pw = stack.calloc(JAVA_INT);
             var ph = stack.calloc(JAVA_INT);
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
-            return new ValueInt4(px.get(JAVA_INT, 0),
+            return new Quad.OfInt(px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
                 pw.get(JAVA_INT, 0),
                 ph.get(JAVA_INT, 0));
@@ -1496,14 +1497,14 @@ public final class GLFW {
      * @return the width and height, in millimetres, of the monitor's display area.
      * @see #ngetMonitorPhysicalSize(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPhysicalSize
      */
-    public static Value2.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
+    public static Pair.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var pw = stack.calloc(JAVA_INT);
             var ph = stack.calloc(JAVA_INT);
             ngetMonitorPhysicalSize(monitor, pw, ph);
-            return new Value2.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+            return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1573,14 +1574,14 @@ public final class GLFW {
      * @return the xy-axis content scale
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) ngetMonitorContentScale
      */
-    public static Value2.OfFloat getMonitorContentScale(MemorySegment monitor) {
+    public static Pair.OfFloat getMonitorContentScale(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var px = stack.calloc(JAVA_FLOAT);
             var py = stack.calloc(JAVA_FLOAT);
             ngetMonitorContentScale(monitor, px, py);
-            return new Value2.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
+            return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2464,14 +2465,14 @@ public final class GLFW {
      * @param window The window to query.
      * @return the xy-coordinate of the upper-left corner of the content area.
      */
-    public static Value2.OfInt getWindowPos(MemorySegment window) {
+    public static Pair.OfInt getWindowPos(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var px = stack.calloc(JAVA_INT);
             var py = stack.calloc(JAVA_INT);
             ngetWindowPos(window, px, py);
-            return new Value2.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
+            return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2573,14 +2574,14 @@ public final class GLFW {
      * @return the width and height, in screen coordinates, of the content area.
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) ngetWindowSize
      */
-    public static Value2.OfInt getWindowSize(MemorySegment window) {
+    public static Pair.OfInt getWindowSize(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var pw = stack.calloc(JAVA_INT);
             var ph = stack.calloc(JAVA_INT);
             ngetWindowSize(window, pw, ph);
-            return new Value2.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+            return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2770,14 +2771,14 @@ public final class GLFW {
      * @return the width and height, in pixels, of the framebuffer.
      * @see #ngetFramebufferSize(MemorySegment, MemorySegment, MemorySegment) ngetFramebufferSize
      */
-    public static Value2.OfInt getFramebufferSize(MemorySegment window) {
+    public static Pair.OfInt getFramebufferSize(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var pw = stack.calloc(JAVA_INT);
             var ph = stack.calloc(JAVA_INT);
             ngetFramebufferSize(window, pw, ph);
-            return new Value2.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
+            return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2868,7 +2869,7 @@ public final class GLFW {
      * edge of the window frame.
      * @see #ngetWindowFrameSize(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetWindowFrameSize
      */
-    public static ValueInt4 getWindowFrameSize(MemorySegment window) {
+    public static Quad.OfInt getWindowFrameSize(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2877,7 +2878,7 @@ public final class GLFW {
             var pr = stack.calloc(JAVA_INT);
             var pb = stack.calloc(JAVA_INT);
             ngetWindowFrameSize(window, pl, pt, pr, pb);
-            return new ValueInt4(pl.get(JAVA_INT, 0),
+            return new Quad.OfInt(pl.get(JAVA_INT, 0),
                 pt.get(JAVA_INT, 0),
                 pr.get(JAVA_INT, 0),
                 pb.get(JAVA_INT, 0));
@@ -2951,14 +2952,14 @@ public final class GLFW {
      * @return the xy-axis content scale.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) ngetWindowContentScale
      */
-    public static Value2.OfFloat getWindowContentScale(MemorySegment window) {
+    public static Pair.OfFloat getWindowContentScale(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var px = stack.calloc(JAVA_FLOAT);
             var py = stack.calloc(JAVA_FLOAT);
             ngetWindowContentScale(window, px, py);
-            return new Value2.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
+            return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -4283,14 +4284,14 @@ public final class GLFW {
      * @return the cursor xy-coordinate, relative to the left and top edge of the content area.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) ngetCursorPos
      */
-    public static Value2.OfDouble getCursorPos(MemorySegment window) {
+    public static Pair.OfDouble getCursorPos(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
             var px = stack.calloc(JAVA_DOUBLE);
             var py = stack.calloc(JAVA_DOUBLE);
             ngetCursorPos(window, px, py);
-            return new Value2.OfDouble(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
+            return new Pair.OfDouble(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
