@@ -130,7 +130,7 @@ public final class RuntimeHelper {
     /**
      * Make sure a method handle is returned as the specified type to deal with {@code MethodHandle::invokeExact}.
      *
-     * @param t   the invoke method.
+     * @param t   the invoking method.
      * @param <T> the return type.
      */
     @SuppressWarnings("unused")
@@ -190,7 +190,7 @@ public final class RuntimeHelper {
      * @param basename the basename of the library (without file extensions)
      * @param version  the version suffix
      * @return the {@link SymbolLookup}
-     * @throws IllegalStateException if file not found
+     * @throws IllegalStateException if file isn't found
      */
     public static SymbolLookup load(String module, String basename, String version)
         throws IllegalStateException {
@@ -230,7 +230,7 @@ public final class RuntimeHelper {
             }
             uri = file.toURI();
         }
-        // Load library by the path with the global arena
+        // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());
     }
 

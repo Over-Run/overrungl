@@ -18,7 +18,7 @@ package org.overrungl.glib.al;
 
 import org.overrun.glib.RuntimeHelper;
 import org.overrun.glib.util.MemoryStack;
-import org.overrun.glib.util.value.Value3;
+import org.overrun.glib.util.value.Triplet;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -756,7 +756,7 @@ public final class AL {
         }
     }
 
-    public static Value3.OfFloat getListener3f(int param) {
+    public static Triplet.OfFloat getListener3f(int param) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -764,7 +764,7 @@ public final class AL {
             final MemorySegment seg2 = stack.calloc(JAVA_FLOAT);
             final MemorySegment seg3 = stack.calloc(JAVA_FLOAT);
             ngetListener3f(param, seg1, seg2, seg3);
-            return new Value3.OfFloat(seg1.get(JAVA_FLOAT, 0), seg2.get(JAVA_FLOAT, 0), seg3.get(JAVA_FLOAT, 0));
+            return new Triplet.OfFloat(seg1.get(JAVA_FLOAT, 0), seg2.get(JAVA_FLOAT, 0), seg3.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -812,7 +812,7 @@ public final class AL {
         }
     }
 
-    public static Value3.OfInt getListener3i(int param) {
+    public static Triplet.OfInt getListener3i(int param) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -820,7 +820,7 @@ public final class AL {
             final MemorySegment seg2 = stack.calloc(JAVA_INT);
             final MemorySegment seg3 = stack.calloc(JAVA_INT);
             ngetListener3i(param, seg1, seg2, seg3);
-            return new Value3.OfInt(seg1.get(JAVA_INT, 0), seg2.get(JAVA_INT, 0), seg3.get(JAVA_INT, 0));
+            return new Triplet.OfInt(seg1.get(JAVA_INT, 0), seg2.get(JAVA_INT, 0), seg3.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1024,7 +1024,7 @@ public final class AL {
         }
     }
 
-    public static Value3.OfFloat getSource3f(int source, int param) {
+    public static Triplet.OfFloat getSource3f(int source, int param) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -1032,7 +1032,7 @@ public final class AL {
             final MemorySegment seg2 = stack.calloc(JAVA_FLOAT);
             final MemorySegment seg3 = stack.calloc(JAVA_FLOAT);
             ngetSource3f(source, param, seg1, seg2, seg3);
-            return new Value3.OfFloat(seg1.get(JAVA_FLOAT, 0), seg2.get(JAVA_FLOAT, 0), seg3.get(JAVA_FLOAT, 0));
+            return new Triplet.OfFloat(seg1.get(JAVA_FLOAT, 0), seg2.get(JAVA_FLOAT, 0), seg3.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1080,7 +1080,7 @@ public final class AL {
         }
     }
 
-    public static Value3.OfInt getSource3i(int source, int param) {
+    public static Triplet.OfInt getSource3i(int source, int param) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -1088,7 +1088,7 @@ public final class AL {
             final MemorySegment seg2 = stack.calloc(JAVA_INT);
             final MemorySegment seg3 = stack.calloc(JAVA_INT);
             ngetSource3i(source, param, seg1, seg2, seg3);
-            return new Value3.OfInt(seg1.get(JAVA_INT, 0), seg2.get(JAVA_INT, 0), seg3.get(JAVA_INT, 0));
+            return new Triplet.OfInt(seg1.get(JAVA_INT, 0), seg2.get(JAVA_INT, 0), seg3.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1524,7 +1524,7 @@ public final class AL {
         }
     }
 
-    public static Value3.OfFloat getBuffer3f(int buffer, int param) {
+    public static Triplet.OfFloat getBuffer3f(int buffer, int param) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -1532,7 +1532,7 @@ public final class AL {
             final MemorySegment seg2 = stack.calloc(JAVA_FLOAT);
             final MemorySegment seg3 = stack.calloc(JAVA_FLOAT);
             ngetBuffer3f(buffer, param, seg1, seg2, seg3);
-            return new Value3.OfFloat(seg1.get(JAVA_FLOAT, 0), seg2.get(JAVA_FLOAT, 0), seg3.get(JAVA_FLOAT, 0));
+            return new Triplet.OfFloat(seg1.get(JAVA_FLOAT, 0), seg2.get(JAVA_FLOAT, 0), seg3.get(JAVA_FLOAT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1580,7 +1580,7 @@ public final class AL {
         }
     }
 
-    public static Value3.OfInt getBuffer3i(int buffer, int param) {
+    public static Triplet.OfInt getBuffer3i(int buffer, int param) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -1588,7 +1588,7 @@ public final class AL {
             final MemorySegment seg2 = stack.calloc(JAVA_INT);
             final MemorySegment seg3 = stack.calloc(JAVA_INT);
             ngetBuffer3i(buffer, param, seg1, seg2, seg3);
-            return new Value3.OfInt(seg1.get(JAVA_INT, 0), seg2.get(JAVA_INT, 0), seg3.get(JAVA_INT, 0));
+            return new Triplet.OfInt(seg1.get(JAVA_INT, 0), seg2.get(JAVA_INT, 0), seg3.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
