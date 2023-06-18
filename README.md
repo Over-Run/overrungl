@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Overrun Game Library is a high performance library that implemented with Java 21,
+Overrun Game Library is a high-performance library that implemented with Java 21,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
@@ -24,7 +24,7 @@ performance.
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/org/overrun/glib/demo).
+the [samples](modules/samples/src/test/java/org/overrun/gl/demo).
 
 ## Using as a Dependency
 
@@ -75,7 +75,7 @@ See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
-OpenGL docs can be found [here](https://docs.gl/).
+The documentation of OpenGL can be found [here](https://docs.gl/).
 
 ### Publishing (for internal member)
 
@@ -103,6 +103,24 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
+├─ nativefiledialog
+│  ├─ linux
+│  │  ├─ arm32
+│  │  │  └─ libnativefiledialog.so
+│  │  ├─ arm64
+│  │  │  └─ libnativefiledialog.so
+│  │  └─ x64
+│  │     └─ libnativefiledialog.so
+│  ├─ os x
+│  │  ├─ arm64
+│  │  │  └─ libnativefiledialog.dylib
+│  │  └─ x64
+│  │     └─ libnativefiledialog.dylib
+│  └─ windows
+│     ├─ arm64
+│     │  └─ nativefiledialog.dll
+│     └─ x64
+│        └─ nativefiledialog.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
    │  ├─ arm32

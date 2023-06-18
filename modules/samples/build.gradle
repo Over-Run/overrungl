@@ -1,5 +1,5 @@
 dependencies {
-    for (String proj : [':glfw', ':joml', ':nativefiledialog', ':opengl', ':stb']) {
+    for (String proj : [':core', ':glfw', ':joml', ':nativefiledialog', ':opengl', ':stb']) {
         implementation project(proj)
     }
 }
