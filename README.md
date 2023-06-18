@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Overrun Game Library is a high performance library that implemented with Java 21,
+Overrun Game Library is a high-performance library that implemented with Java 21,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
@@ -24,7 +24,7 @@ performance.
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/org/overrun/glib/demo).
+the [samples](modules/samples/src/test/java/org/overrun/gl/demo).
 
 ## Using as a Dependency
 
@@ -57,6 +57,13 @@ Basic graphics:
 | OpenGL | Partial (Core and partial extensions) |
 | STB    | Partial (Image, perlin noise)         |
 
+Basic sounds:
+
+| Module | Functionality |
+|--------|---------------|
+| OpenAL | Partial       |
+
+
 Utilities:
 
 | Module | Functionality            |
@@ -75,7 +82,7 @@ See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
-Documentations of OpenGL can be found [here](https://docs.gl/).
+The documentation of OpenGL can be found [here](https://docs.gl/).
 
 ### Publishing (for internal member)
 

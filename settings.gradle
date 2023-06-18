@@ -9,9 +9,9 @@ pluginManagement {
 
 rootProject.name = projName
 
-file('modules/overrungl/').eachDir { dir ->
-    include "$dir.name"
-    project(":$dir.name").projectDir = dir
+['core', 'glfw', 'joml', 'openal', 'opengl', 'stb'].forEach {
+    include it
+    project(":$it").projectDir = file("modules/overrungl/$it")
 }
 
 include 'samples'
