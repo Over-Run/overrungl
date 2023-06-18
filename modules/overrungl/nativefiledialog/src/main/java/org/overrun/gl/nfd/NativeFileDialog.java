@@ -17,14 +17,14 @@
 package org.overrun.gl.nfd;
 
 import org.jetbrains.annotations.Nullable;
-import org.overrun.glib.FunctionDescriptors;
-import org.overrun.glib.RuntimeHelper;
+import org.overrun.gl.FunctionDescriptors;
+import org.overrun.gl.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
-import static org.overrun.glib.FunctionDescriptors.*;
+import static org.overrun.gl.FunctionDescriptors.*;
 
 /**
  * The Native File Dialog binding.
