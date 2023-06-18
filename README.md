@@ -29,7 +29,7 @@ the [samples](modules/samples/src/test/java/org/overrun/gl/demo).
 ## Using as a Dependency
 
 ~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very
-unstable, so you have to use the -SNAPSHOT version.
+unstable, so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
@@ -47,22 +47,36 @@ and include this maven repository:
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 ```
 
-## Supported Bindings
+## List of Supported Bindings
 
-Basic graphics:
+### Khronos APIs
 
-| Module | Functionality                         |
-|--------|---------------------------------------|
-| GLFW   | Full (Core and native)                |
-| OpenGL | Partial (Core and partial extensions) |
-| STB    | Partial (Image, perlin noise)         |
+| Library                                   | Description                                                                                                                                 |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| [OpenGL](https://www.khronos.org/opengl/) | The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms. |
 
-Utilities:
+### Display and Input
 
-| Module | Functionality            |
-|--------|--------------------------|
-| JOML   | Full (Vector and Matrix) |
+| Library                                                                          | Description                                                                                                                                                                                                                                |
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [GLFW](http://www.glfw.org/)                                                     | Create multiple windows, handle user input (keyboard, mouse, gaming peripherals) and manage contexts. Also features multi-monitor support, clipboard access, file drag-n-drop, and [much more](http://www.glfw.org/docs/latest/news.html). |
+| [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.                                                                                                                                             |
 
+### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
+
+| Library          | Description                                                                     |
+|------------------|---------------------------------------------------------------------------------|
+| stb_easy_font    | 	Quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc.       |
+| stb_image        | Image loading/decoding from file/memory: JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC |
+| stb_image_resize | Resize images larger/smaller with good quality.                                 |
+| stb_image_write  | 	Image writing to disk: PNG, TGA, BMP                                           |
+| stb_perlin       | Revised Perlin noise (3D input, 1D output).                                     |
+
+### Other
+
+| Library                                 | Description                                           |
+|-----------------------------------------|-------------------------------------------------------|
+| [JOML](https://github.com/JOML-CI/JOML) | A Java math library for OpenGL rendering calculations |
 
 ## Contact
 
@@ -103,7 +117,7 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
-├─ nativefiledialog
+├─ nativefiledialog https://github.com/Over-Run/nativefiledialog-ci
 │  ├─ linux
 │  │  ├─ arm32
 │  │  │  └─ libnativefiledialog.so
