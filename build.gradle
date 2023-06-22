@@ -70,7 +70,7 @@ enum NativeBinding {
         NativePlatform.WIN_64,
         NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
-    NATIVEFILEDIALOG("nativefiledialog", "nativefiledialog", NativePlatform.ALL),
+    NFD("nfd", "nfd", NativePlatform.ALL),
     STB("stb", "stb", NativePlatform.ALL),
 
     private final String name
@@ -107,9 +107,9 @@ enum Artifact {
     JOML('overrungl-joml', 'OverrunGL - JOML native access',
         'A Java math library for OpenGL rendering calculations',
         ':joml', 'Joml'),
-    NATIVEFILEDIALOG('overrungl-nativefiledialog', 'OverrunGL - Native File Dialog',
+    NFD('overrungl-nfd', 'OverrunGL - Native File Dialog',
         'A tiny, neat C library that portably invokes native file open and save dialogs.',
-        ':nativefiledialog', 'Nativefiledialog', NativeBinding.NATIVEFILEDIALOG),
+        ':nfd', 'Nfd', NativeBinding.NFD),
     OPENGL("overrungl-opengl", "OverrunGL - OpenGL bindings",
         "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
         ":opengl", "Opengl"),

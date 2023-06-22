@@ -36,8 +36,7 @@ import java.lang.invoke.VarHandle;
  *     int (*{@link #read() read})(void* user, char* data, int size);
  *     void (*{@link #skip() skip})(void* user, int n);
  *     int (*{@link #eof() eof})(void* user);
- * }
- * </code></pre>
+ * }</code></pre>
  *
  * @author squid233
  * @since 0.1.0

@@ -117,24 +117,24 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
-├─ nativefiledialog https://github.com/Over-Run/nativefiledialog-ci
+├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
 │  ├─ linux
 │  │  ├─ arm32
-│  │  │  └─ libnativefiledialog.so
+│  │  │  └─ libnfd.so
 │  │  ├─ arm64
-│  │  │  └─ libnativefiledialog.so
+│  │  │  └─ libnfd.so
 │  │  └─ x64
-│  │     └─ libnativefiledialog.so
+│  │     └─ libnfd.so
 │  ├─ os x
 │  │  ├─ arm64
-│  │  │  └─ libnativefiledialog.dylib
+│  │  │  └─ libnfd.dylib
 │  │  └─ x64
-│  │     └─ libnativefiledialog.dylib
+│  │     └─ libnfd.dylib
 │  └─ windows
 │     ├─ arm64
-│     │  └─ nativefiledialog.dll
+│     │  └─ nfd.dll
 │     └─ x64
-│        └─ nativefiledialog.dll
+│        └─ nfd.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
    │  ├─ arm32

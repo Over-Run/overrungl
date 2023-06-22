@@ -9,7 +9,7 @@ pluginManagement {
 
 rootProject.name = projName
 
-['core', 'glfw', 'nativefiledialog', 'joml', 'opengl', 'stb'].forEach {
+['core', 'glfw', 'nfd', 'joml', 'opengl', 'stb'].forEach {
     include it
     project(":$it").projectDir = file("modules/overrungl/$it")
 }
