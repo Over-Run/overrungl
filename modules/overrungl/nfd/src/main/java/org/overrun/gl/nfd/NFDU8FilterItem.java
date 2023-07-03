@@ -27,7 +27,7 @@ import java.lang.invoke.VarHandle;
 /**
  * <h2>Layout</h2>
  * <pre><code>
- * struct nfdnfilteritem_t {
+ * struct nfdu8filteritem_t {
  *     const nfdnchar_t* {@link #name() name};
  *     const nfdnchar_t* {@link #spec() spec};
  * }</code></pre>
@@ -35,7 +35,7 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class NFDNFilterItem extends Struct {
+public class NFDU8FilterItem extends Struct {
     /**
      * The struct layout.
      */
@@ -48,12 +48,12 @@ public class NFDNFilterItem extends Struct {
         pSpec = LAYOUT.varHandle(PathElement.groupElement("spec"));
 
     /**
-     * Create a {@code NFDNFilterItem} instance.
+     * Create a {@code NFDU8FilterItem} instance.
      *
      * @param address   the address.
      * @param allocator the allocator of this address.
      */
-    public NFDNFilterItem(MemorySegment address, SegmentAllocator allocator) {
+    public NFDU8FilterItem(MemorySegment address, SegmentAllocator allocator) {
         super(address, allocator, LAYOUT);
     }
 
@@ -64,27 +64,27 @@ public class NFDNFilterItem extends Struct {
      * @param allocator the allocator of this address.
      * @param layout    the memory layout of this struct.
      */
-    protected NFDNFilterItem(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
+    protected NFDU8FilterItem(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
         super(address, allocator, layout);
     }
 
     /**
-     * Creates a {@code NFDNFilterItem} instance with the given allocator.
+     * Creates a {@code NFDU8FilterItem} instance with the given allocator.
      *
      * @param allocator the allocator
      * @param name      the name of the filter
      * @param spec      the specification of the filter
      * @return the instance
      */
-    public static NFDNFilterItem create(SegmentAllocator allocator, String name, String spec) {
-        final NFDNFilterItem item = new NFDNFilterItem(allocator.allocate(LAYOUT), allocator);
-        pName.set(item.segment(), NFD.allocateString(allocator, name));
-        pSpec.set(item.segment(), NFD.allocateString(allocator, spec));
+    public static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
+        final NFDU8FilterItem item = new NFDU8FilterItem(allocator.allocate(LAYOUT), allocator);
+        pName.set(item.segment(), allocator.allocateUtf8String(name));
+        pSpec.set(item.segment(), allocator.allocateUtf8String(spec));
         return item;
     }
 
     /**
-     * Creates a {@code NFDNFilterItem.Buffer} instance with the given allocator and items.
+     * Creates a {@code NFDU8FilterItem.Buffer} instance with the given allocator and items.
      *
      * @param allocator the allocator
      * @param items     the items
@@ -95,8 +95,8 @@ public class NFDNFilterItem extends Struct {
         final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), allocator, items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
-            buffer.pName.set(buffer.segment(), (long) i, NFD.allocateString(allocator, item.key()));
-            buffer.pSpec.set(buffer.segment(), (long) i, NFD.allocateString(allocator, item.value()));
+            buffer.pName.set(buffer.segment(), (long) i, allocator.allocateUtf8String(item.key()));
+            buffer.pSpec.set(buffer.segment(), (long) i, allocator.allocateUtf8String(item.value()));
         }
         return buffer;
     }
@@ -114,7 +114,7 @@ public class NFDNFilterItem extends Struct {
      * @see #nname()
      */
     public String name() {
-        return NFD.getString(nname(), 0);
+        return nname().getUtf8String(0);
     }
 
     /**
@@ -130,18 +130,18 @@ public class NFDNFilterItem extends Struct {
      * @see #nspec()
      */
     public String spec() {
-        return NFD.getString(nspec(), 0);
+        return nspec().getUtf8String(0);
     }
 
     /**
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends NFDNFilterItem implements ArrayPointer {
+    public static class Buffer extends NFDU8FilterItem implements ArrayPointer {
         private final VarHandle pName, pSpec;
 
         /**
-         * Create a {@code NFDNFilterItem.Buffer} instance.
+         * Create a {@code NFDU8FilterItem.Buffer} instance.
          *
          * @param address      the address.
          * @param allocator    the allocator of this address.
@@ -168,7 +168,7 @@ public class NFDNFilterItem extends Struct {
          * @param index the index
          */
         public String nameAt(long index) {
-            return NFD.getString(nnameAt(index), 0);
+            return nnameAt(index).getUtf8String(0);
         }
 
         /**
@@ -186,7 +186,7 @@ public class NFDNFilterItem extends Struct {
          * @param index the index
          */
         public String specAt(long index) {
-            return NFD.getString(nspecAt(index), 0);
+            return nspecAt(index).getUtf8String(0);
         }
 
         @Override
