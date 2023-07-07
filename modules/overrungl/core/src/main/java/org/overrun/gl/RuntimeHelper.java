@@ -24,6 +24,7 @@ import java.io.File;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
@@ -94,6 +95,34 @@ public final class RuntimeHelper {
         if (Long.bitCount(alignment) != 1) {
             throw new IllegalArgumentException("Alignment must be a power-of-two value.");
         }
+    }
+
+    @Deprecated(since = "22")
+    public static MemorySegment allocateUtf16LEString(SegmentAllocator allocator, String str) {
+        Objects.requireNonNull(allocator);
+        Objects.requireNonNull(str);
+        final byte[] bytes = str.getBytes(StandardCharsets.UTF_16LE);
+        final MemorySegment seg = allocator.allocate(bytes.length + 2);
+        MemorySegment.copy(bytes, 0, seg, JAVA_BYTE, 0, bytes.length);
+        return seg;
+    }
+
+    @Deprecated(since = "22")
+    public static String getUtf16LEString(MemorySegment segment, long offset) {
+        long len = strlen(segment, offset);
+        byte[] bytes = new byte[(int) len];
+        MemorySegment.copy(segment, JAVA_BYTE, offset, bytes, 0, (int) len);
+        return new String(bytes, StandardCharsets.UTF_16LE);
+    }
+
+    private static int strlen(MemorySegment segment, long start) {
+        for (int offset = 0; offset >= 0; offset += 2) {
+            short curr = segment.get(JAVA_SHORT, start + offset);
+            if (curr == 0) {
+                return offset;
+            }
+        }
+        throw new IllegalArgumentException("String too large");
     }
 
     /**

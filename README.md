@@ -57,9 +57,10 @@ maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 
 ### Display and Input
 
-| Library                      | Description                                                                                                                                                                                                                                |
-|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [GLFW](http://www.glfw.org/) | Create multiple windows, handle user input (keyboard, mouse, gaming peripherals) and manage contexts. Also features multi-monitor support, clipboard access, file drag-n-drop, and [much more](http://www.glfw.org/docs/latest/news.html). |
+| Library                                                                          | Description                                                                                                                                                                                                                                |
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [GLFW](http://www.glfw.org/)                                                     | Create multiple windows, handle user input (keyboard, mouse, gaming peripherals) and manage contexts. Also features multi-monitor support, clipboard access, file drag-n-drop, and [much more](http://www.glfw.org/docs/latest/news.html). |
+| [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.                                                                                                                                             |
 
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 
@@ -116,6 +117,24 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
+├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
+│  ├─ linux
+│  │  ├─ arm32
+│  │  │  └─ libnfd.so
+│  │  ├─ arm64
+│  │  │  └─ libnfd.so
+│  │  └─ x64
+│  │     └─ libnfd.so
+│  ├─ os x
+│  │  ├─ arm64
+│  │  │  └─ libnfd.dylib
+│  │  └─ x64
+│  │     └─ libnfd.dylib
+│  └─ windows
+│     ├─ arm64
+│     │  └─ nfd.dll
+│     └─ x64
+│        └─ nfd.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
    │  ├─ arm32

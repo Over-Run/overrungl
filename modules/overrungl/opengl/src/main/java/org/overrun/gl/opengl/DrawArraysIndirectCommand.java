@@ -33,8 +33,7 @@ import java.lang.invoke.VarHandle;
  *     unsigned int {@link #primCount() primCount};
  *     unsigned int {@link #first() first};
  *     unsigned int {@link #baseInstance() baseInstance};
- * }
- * </code></pre>
+ * }</code></pre>
  *
  * @author squid233
  * @since 0.1.0

@@ -107,9 +107,9 @@ public final class MemoryUtil {
      */
     public static MemorySegment calloc(long number, long size) {
         try {
-            long bytesSize = number * size;
-            final MemorySegment seg = ((MemorySegment) m_calloc.invokeExact(number, size)).reinterpret(bytesSize);
-            if (DEBUG) DebugAllocator.track(seg.address(), bytesSize);
+            long byteSize = number * size;
+            final MemorySegment seg = ((MemorySegment) m_calloc.invokeExact(number, size)).reinterpret(byteSize);
+            if (DEBUG) DebugAllocator.track(seg.address(), byteSize);
             return seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);

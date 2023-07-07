@@ -26,6 +26,16 @@ import java.lang.invoke.VarHandle;
 /**
  * The OpenGL 4.2 draw elements indirect command.
  *
+ * <h2>Layout</h2>
+ * <pre><code>
+ * struct DrawElementsIndirectCommand {
+ *     unsigned int {@link #count() count};
+ *     unsigned int {@link #primCount() primCount};
+ *     unsigned int {@link #firstIndex() firstIndex};
+ *     unsigned int {@link #baseVertex() baseVertex};
+ *     unsigned int {@link #baseInstance() baseInstance};
+ * }</code></pre>
+ *
  * @author squid233
  * @since 0.1.0
  */

@@ -36,8 +36,7 @@ import java.lang.invoke.VarHandle;
  *     int (*{@link #read() read})(void* user, char* data, int size);
  *     void (*{@link #skip() skip})(void* user, int n);
  *     int (*{@link #eof() eof})(void* user);
- * }
- * </code></pre>
+ * }</code></pre>
  *
  * @author squid233
  * @since 0.1.0
@@ -82,7 +81,7 @@ public class STBIIoCallbacks extends Struct {
          *
          * @param user userdata
          * @param data data buffer to be filled
-         * @param size bytes size to fill
+         * @param size byte size to fill
          * @return number of bytes actually read
          */
         int invoke(MemorySegment user, MemorySegment data, int size);
@@ -113,7 +112,7 @@ public class STBIIoCallbacks extends Struct {
          * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
          *
          * @param user userdata
-         * @param n    bytes size to skip
+         * @param n    byte size to skip
          */
         void invoke(MemorySegment user, int n);
 

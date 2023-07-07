@@ -16,6 +16,7 @@
 
 package org.overrun.gl.glfw;
 
+import org.overrun.gl.ArrayPointer;
 import org.overrun.gl.Struct;
 
 import java.lang.foreign.*;
@@ -83,7 +84,7 @@ public class GLFWVidMode extends Struct {
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given allocator.
+     * Creates a {@code GLFWVidMode} instance with the given allocator.
      *
      * @param allocator the allocator
      * @return the instance
@@ -93,7 +94,7 @@ public class GLFWVidMode extends Struct {
     }
 
     /**
-     * Creates a {@code GLFWvidmode} instance with the given allocator and count.
+     * Creates a {@code GLFWVidMode.Buffer} instance with the given allocator and count.
      *
      * @param allocator the allocator
      * @param count     the count
@@ -223,8 +224,7 @@ public class GLFWVidMode extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends GLFWVidMode {
-        private final long elementCount;
+    public static class Buffer extends GLFWVidMode implements ArrayPointer {
         private final VarHandle pWidth, pHeight, pRedBits, pGreenBits, pBlueBits, pRefreshRate;
 
         /**
@@ -236,20 +236,12 @@ public class GLFWVidMode extends Struct {
          */
         public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
             super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-            this.elementCount = elementCount;
             pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pRedBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits"));
             pGreenBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
             pBlueBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
             pRefreshRate = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
-        }
-
-        /**
-         * {@return the element count}
-         */
-        public long elementCount() {
-            return elementCount;
         }
 
         /**

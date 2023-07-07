@@ -80,4 +80,16 @@ public /* value */ record Tuple2<T, U>(T x, U y) {
      */
     public record OfObjInt<T>(T x, int y) {
     }
+
+    /**
+     * A tuple of an object and a long.
+     *
+     * @param x   the first value.
+     * @param y   the second value.
+     * @param <T> the first type.
+     * @author squid233
+     * @since 0.1.0
+     */
+    public record OfObjLong<T>(T x, long y) {
+    }
 }
