@@ -98,22 +98,21 @@ public final class RuntimeHelper {
     }
 
     @Deprecated(since = "22")
-    public static MemorySegment allocateUtf16String(SegmentAllocator allocator, String str) {
+    public static MemorySegment allocateUtf16LEString(SegmentAllocator allocator, String str) {
         Objects.requireNonNull(allocator);
         Objects.requireNonNull(str);
-        final byte[] bytes = str.getBytes(StandardCharsets.UTF_16);
+        final byte[] bytes = str.getBytes(StandardCharsets.UTF_16LE);
         final MemorySegment seg = allocator.allocate(bytes.length + 2);
         MemorySegment.copy(bytes, 0, seg, JAVA_BYTE, 0, bytes.length);
-        seg.set(JAVA_SHORT, bytes.length, (short) 0);
         return seg;
     }
 
     @Deprecated(since = "22")
-    public static String getUtf16String(MemorySegment segment, long offset) {
-        int len = strlen(segment, offset);
-        byte[] bytes = new byte[len];
-        MemorySegment.copy(segment, JAVA_BYTE, offset, bytes, 0, len);
-        return new String(bytes, StandardCharsets.UTF_16);
+    public static String getUtf16LEString(MemorySegment segment, long offset) {
+        long len = strlen(segment, offset);
+        byte[] bytes = new byte[(int) len];
+        MemorySegment.copy(segment, JAVA_BYTE, offset, bytes, 0, (int) len);
+        return new String(bytes, StandardCharsets.UTF_16LE);
     }
 
     private static int strlen(MemorySegment segment, long start) {
@@ -210,7 +209,7 @@ public final class RuntimeHelper {
      * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
      */
     public static String unknownToken(String description, int token) {
-        return STR. "\{description} [0x\{Integer.toHexString(token)}]";
+        return STR."\{description} [0x\{Integer.toHexString(token)}]";
     }
 
     /**

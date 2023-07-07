@@ -68,13 +68,13 @@ public class Pointer implements Addressable {
     /**
      * Gets the native segment of this pointer, or creates a new one if the segment of this pointer is zero-length.
      *
-     * @param bytesSize the bytes size of the segment.
+     * @param byteSize the byte size of the segment.
      * @return the memory segment.
      * @see #segment(MemoryLayout)
      */
-    public MemorySegment segment(long bytesSize) {
+    public MemorySegment segment(long byteSize) {
         if (managedSegment == null) {
-            managedSegment = address().reinterpret(bytesSize);
+            managedSegment = address().reinterpret(byteSize);
         }
         return managedSegment;
     }

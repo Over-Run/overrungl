@@ -76,7 +76,7 @@ public class GLFWImage extends Struct {
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given allocator.
+     * Creates a {@code GLFWImage} instance with the given allocator.
      *
      * @param allocator the allocator
      * @return the instance
@@ -86,7 +86,7 @@ public class GLFWImage extends Struct {
     }
 
     /**
-     * Creates a {@code GLFWimage} instance with the given allocator and count.
+     * Creates a {@code GLFWImage.Buffer} instance with the given allocator and count.
      *
      * @param allocator the allocator
      * @param count     the count

@@ -28,8 +28,8 @@ import java.lang.invoke.VarHandle;
  * <h2>Layout</h2>
  * <pre><code>
  * struct nfdu8filteritem_t {
- *     const nfdnchar_t* {@link #name() name};
- *     const nfdnchar_t* {@link #spec() spec};
+ *     const nfdu8char_t* {@link #name() name};
+ *     const nfdu8char_t* {@link #spec() spec};
  * }</code></pre>
  *
  * @author squid233

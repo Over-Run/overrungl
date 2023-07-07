@@ -17,9 +17,11 @@
 package org.overrun.gl.nfd;
 
 import org.overrun.gl.FunctionDescriptors;
+import org.overrun.gl.NativeType;
 import org.overrun.gl.RuntimeHelper;
 import org.overrun.gl.os.OperatingSystem;
 import org.overrun.gl.util.MemoryStack;
+import org.overrun.gl.util.value.Tuple2;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -35,11 +37,13 @@ import static org.overrun.gl.FunctionDescriptors.*;
  */
 public final class NFD {
     private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", "0.1.0");
+    private static final OperatingSystem os = OperatingSystem.current();
+    private static final boolean isOsWin = os.isWindows();
+    private static final boolean isOsWinOrApple = os.isWindows() || os.isMacOsX();
     public static final ValueLayout PATH_SET_SIZE;
 
     static {
-        final OperatingSystem os = OperatingSystem.current();
-        PATH_SET_SIZE = (os.isWindows() || os.isMacOsX()) ? JAVA_LONG : JAVA_INT;
+        PATH_SET_SIZE = isOsWinOrApple ? JAVA_LONG : JAVA_INT;
     }
 
     private static final MethodHandle
@@ -66,7 +70,6 @@ public final class NFD {
         NFD_PickFolderU8 = downcallSafe("NFD_PickFolderU8", PPI),
         NFD_PathSet_GetPathU8 = downcallSafe("NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)),
         NFD_PathSet_EnumNextU8 = downcallSafe("NFD_PathSet_EnumNextU8", PPI);
-    public static final StructLayout PATH_SET_ENUM = MemoryLayout.structLayout(ADDRESS.withName("ptr"));
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
@@ -85,25 +88,21 @@ public final class NFD {
     }
 
     static MemorySegment allocateString(SegmentAllocator allocator, String str) {
-        if (OperatingSystem.current().isWindows()) return RuntimeHelper.allocateUtf16String(allocator, str);
+        if (isOsWin) return RuntimeHelper.allocateUtf16LEString(allocator, str);
         return allocator.allocateUtf8String(str);
     }
 
     static String getString(MemorySegment segment, long offset) {
-        if (OperatingSystem.current().isWindows()) return RuntimeHelper.getUtf16String(segment, offset);
+        if (isOsWin) return RuntimeHelper.getUtf16LEString(segment, offset);
         return segment.getUtf8String(offset);
     }
 
-    public static void nfreePathN(MemorySegment filePath) {
+    public static void freePathN(@NativeType("nfdnchar_t*") MemorySegment filePath) {
         try {
             NFD_FreePathN.invokeExact(filePath);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
-    }
-
-    public static void freePathN(SegmentAllocator allocator, String filePath) {
-        nfreePathN(allocateString(allocator, filePath));
     }
 
     public static NFDResult init() {
@@ -122,7 +121,7 @@ public final class NFD {
         }
     }
 
-    public static NFDResult nopenDialogN(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
+    public static NFDResult nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnfilteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return NFDResult.of((int) NFD_OpenDialogN.invokeExact(outPath, filterList, filterCount, defaultPath));
         } catch (Throwable e) {
@@ -140,9 +139,9 @@ public final class NFD {
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS.withTargetLayout(ADDRESS_UNALIGNED), 0);
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = getString(path, 0);
-                nfreePathN(path);
+                freePathN(path);
             }
             return result;
         } finally {
@@ -150,7 +149,7 @@ public final class NFD {
         }
     }
 
-    public static NFDResult nopenDialogMultipleN(MemorySegment outPaths, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
+    public static NFDResult nopenDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, @NativeType("const nfdnfilteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return NFDResult.of((int) NFD_OpenDialogMultipleN.invokeExact(outPaths, filterList, filterCount, defaultPath));
         } catch (Throwable e) {
@@ -158,14 +157,14 @@ public final class NFD {
         }
     }
 
-    public static NFDResult openDialogMultipleN(SegmentAllocator allocator, MemorySegment outPaths, NFDNFilterItem.Buffer filterList, String defaultPath) {
+    public static NFDResult openDialogMultipleN(SegmentAllocator allocator, @NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem.Buffer filterList, String defaultPath) {
         return nopenDialogMultipleN(outPaths,
             filterList != null ? filterList.address() : MemorySegment.NULL,
             filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
             defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL);
     }
 
-    public static NFDResult nsaveDialogN(MemorySegment outPath, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment defaultName) {
+    public static NFDResult nsaveDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnfilteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath, @NativeType("const nfdnchar_t*") MemorySegment defaultName) {
         try {
             return NFDResult.of((int) NFD_SaveDialogN.invokeExact(outPath, filterList, filterCount, defaultPath, defaultName));
         } catch (Throwable e) {
@@ -184,9 +183,9 @@ public final class NFD {
                 defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL,
                 defaultName != null ? allocateString(allocator, defaultName) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS.withTargetLayout(ADDRESS_UNALIGNED), 0);
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = getString(path, 0);
-                nfreePathN(path);
+                freePathN(path);
             }
             return result;
         } finally {
@@ -194,7 +193,7 @@ public final class NFD {
         }
     }
 
-    public static NFDResult npickFolderN(MemorySegment outPath, MemorySegment defaultPath) {
+    public static NFDResult npickFolderN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnchar_t*") MemorySegment defaultPath) {
         try {
             return NFDResult.of((int) NFD_PickFolderN.invokeExact(outPath, defaultPath));
         } catch (Throwable e) {
@@ -209,9 +208,9 @@ public final class NFD {
             final MemorySegment seg = stack.calloc(ADDRESS);
             final NFDResult result = npickFolderN(seg, defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS.withTargetLayout(ADDRESS_UNALIGNED), 0);
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = getString(path, 0);
-                nfreePathN(path);
+                freePathN(path);
             }
             return result;
         } finally {
@@ -219,7 +218,7 @@ public final class NFD {
         }
     }
 
-    public static MemorySegment ngetError() {
+    public static @NativeType("const char*") MemorySegment ngetError() {
         try {
             return (MemorySegment) NFD_GetError.invokeExact();
         } catch (Throwable e) {
@@ -238,5 +237,318 @@ public final class NFD {
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
+    }
+
+    public static NFDResult npathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetsize_t*") MemorySegment count) {
+        try {
+            return NFDResult.of((int) NFD_PathSet_GetCount.invokeExact(pathSet, count));
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static NFDResult pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long[] count) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(PATH_SET_SIZE);
+            final NFDResult result = npathSetGetCount(pathSet, seg);
+            count[0] = switch (PATH_SET_SIZE) {
+                case ValueLayout.OfLong layout -> seg.get(layout, 0);
+                case ValueLayout.OfInt layout -> Integer.toUnsignedLong(seg.get(layout, 0));
+                default -> throw new AssertionError("should not reach here");
+            };
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static Tuple2.OfObjLong<NFDResult> pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(PATH_SET_SIZE);
+            final NFDResult result = npathSetGetCount(pathSet, seg);
+            return new Tuple2.OfObjLong<>(result, switch (PATH_SET_SIZE) {
+                case ValueLayout.OfLong layout -> seg.get(layout, 0);
+                case ValueLayout.OfInt layout -> Integer.toUnsignedLong(seg.get(layout, 0));
+                default -> throw new AssertionError("should not reach here");
+            });
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static NFDResult npathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdnchar_t**") MemorySegment outPath) {
+        try {
+            return switch (PATH_SET_SIZE) {
+                case OfLong _ -> NFDResult.of((int) NFD_PathSet_GetPathN.invokeExact(pathSet, index, outPath));
+                case OfInt _ ->
+                    NFDResult.of((int) NFD_PathSet_GetPathN.invokeExact(pathSet, Math.toIntExact(index), outPath));
+                default -> throw new AssertionError("should not reach here");
+            };
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static NFDResult pathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = npathSetGetPathN(pathSet, index, seg);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                outPath[0] = getString(path, 0);
+                pathSetFreePathN(path);
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static void pathSetFreePathN(@NativeType("const nfdnchar_t*") MemorySegment filePath) {
+        if (isOsWinOrApple) {
+            freePathN(filePath);
+        } else try {
+            NFD_PathSet_FreePathN.invokeExact(filePath);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static NFDResult pathSetGetEnum(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetenum_t*") MemorySegment outEnumerator) {
+        try {
+            return NFDResult.of((int) NFD_PathSet_GetEnum.invokeExact(pathSet, outEnumerator));
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static void pathSetFreeEnum(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator) {
+        try {
+            NFD_PathSet_FreeEnum.invokeExact(enumerator);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static NFDResult npathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdnchar_t**") MemorySegment outPath) {
+        try {
+            return NFDResult.of((int) NFD_PathSet_EnumNextN.invokeExact(enumerator, outPath));
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static NFDResult pathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = npathSetEnumNextN(enumerator, seg);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                if (!RuntimeHelper.isNullptr(path)) {
+                    outPath[0] = getString(path, 0);
+                    pathSetFreePathN(path);
+                }
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static void pathSetFree(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
+        try {
+            NFD_PathSet_Free.invokeExact(pathSet);
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    public static void freePathU8(@NativeType("nfdu8char_t*") MemorySegment filePath) {
+        if (isOsWin) {
+            try {
+                NFD_FreePathU8.invokeExact(filePath);
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else freePathN(filePath);
+    }
+
+    public static NFDResult nopenDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8filteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
+        if (isOsWin) {
+            try {
+                return NFDResult.of((int) NFD_OpenDialogU8.invokeExact(outPath, filterList, filterCount, defaultPath));
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else return nopenDialogN(outPath, filterList, filterCount, defaultPath);
+    }
+
+    public static NFDResult openDialogU8(SegmentAllocator allocator, String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = nopenDialogU8(seg,
+                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
+                defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                outPath[0] = path.getUtf8String(0);
+                freePathU8(path);
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static NFDResult nopenDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, @NativeType("const nfdu8filteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
+        if (isOsWin) {
+            try {
+                return NFDResult.of((int) NFD_OpenDialogMultipleU8.invokeExact(outPaths, filterList, filterCount, defaultPath));
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else return nopenDialogMultipleN(outPaths, filterList, filterCount, defaultPath);
+    }
+
+    public static NFDResult openDialogMultipleU8(SegmentAllocator allocator, @NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem.Buffer filterList, String defaultPath) {
+        return nopenDialogMultipleU8(outPaths,
+            filterList != null ? filterList.address() : MemorySegment.NULL,
+            filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
+            defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+    }
+
+    public static NFDResult nsaveDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8filteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath, @NativeType("const nfdu8char_t*") MemorySegment defaultName) {
+        if (isOsWin) {
+            try {
+                return NFDResult.of((int) NFD_SaveDialogU8.invokeExact(outPath, filterList, filterCount, defaultPath, defaultName));
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else return nsaveDialogN(outPath, filterList, filterCount, defaultPath, defaultName);
+    }
+
+    public static NFDResult saveDialogU8(SegmentAllocator allocator, String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath, String defaultName) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = nsaveDialogU8(seg,
+                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
+                defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL,
+                defaultName != null ? allocator.allocateUtf8String(defaultName) : MemorySegment.NULL);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                outPath[0] = path.getUtf8String(0);
+                freePathU8(path);
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static NFDResult npickFolderU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
+        if (isOsWin) {
+            try {
+                return NFDResult.of((int) NFD_PickFolderU8.invokeExact(outPath, defaultPath));
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else return npickFolderN(outPath, defaultPath);
+    }
+
+    public static NFDResult pickFolderU8(SegmentAllocator allocator, String[] outPath, String defaultPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = npickFolderU8(seg, defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                outPath[0] = path.getUtf8String(0);
+                freePathU8(path);
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static NFDResult npathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdu8char_t**") MemorySegment outPath) {
+        if (isOsWin) {
+            try {
+                return switch (PATH_SET_SIZE) {
+                    case OfLong _ -> NFDResult.of((int) NFD_PathSet_GetPathU8.invokeExact(pathSet, index, outPath));
+                    case OfInt _ ->
+                        NFDResult.of((int) NFD_PathSet_GetPathU8.invokeExact(pathSet, Math.toIntExact(index), outPath));
+                    default -> throw new AssertionError("should not reach here");
+                };
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else return npathSetGetPathN(pathSet, index, outPath);
+    }
+
+    public static NFDResult pathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = npathSetGetPathU8(pathSet, index, seg);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                outPath[0] = path.getUtf8String(0);
+                pathSetFreePathU8(path);
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static NFDResult npathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdu8char_t**") MemorySegment outPath) {
+        if (isOsWin) {
+            try {
+                return NFDResult.of((int) NFD_PathSet_EnumNextU8.invokeExact(enumerator, outPath));
+            } catch (Throwable e) {
+                throw new AssertionError("should not reach here", e);
+            }
+        } else return npathSetEnumNextN(enumerator, outPath);
+    }
+
+    public static NFDResult pathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            final MemorySegment seg = stack.calloc(ADDRESS);
+            final NFDResult result = npathSetEnumNextU8(enumerator, seg);
+            if (result == NFDResult.OKAY) {
+                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                if (!RuntimeHelper.isNullptr(path)) {
+                    outPath[0] = path.getUtf8String(0);
+                    pathSetFreePathU8(path);
+                }
+            }
+            return result;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
+    }
+
+    public static void pathSetFreePathU8(MemorySegment filePath) {
+        if (isOsWin) freePathU8(filePath);
+        else pathSetFreePathN(filePath);
     }
 }
