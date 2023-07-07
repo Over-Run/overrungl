@@ -13,7 +13,6 @@ for (Artifact module : Artifact.VALUES) {
 project(":samples").ext.subName = "samples"
 
 enum NativePlatform {
-    WIN_32("windows", "x86", "windows-x86", "", ".dll", "Win32"),
     WIN_64("windows", "x64", "windows", "", ".dll", "Win64"),
     WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
     LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
@@ -68,9 +67,10 @@ enum NativePlatform {
 
 enum NativeBinding {
     GLFW("glfw", "glfw3",
-        NativePlatform.WIN_32, NativePlatform.WIN_64,
+        NativePlatform.WIN_64,
         NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64),
+    NFD("nfd", "nfd", NativePlatform.ALL),
     STB("stb", "stb", NativePlatform.ALL),
 
     private final String name
@@ -107,6 +107,9 @@ enum Artifact {
     JOML('overrungl-joml', 'OverrunGL - JOML native access',
         'A Java math library for OpenGL rendering calculations',
         ':joml', 'Joml'),
+    NFD('overrungl-nfd', 'OverrunGL - Native File Dialog',
+        'A tiny, neat C library that portably invokes native file open and save dialogs.',
+        ':nfd', 'Nfd', NativeBinding.NFD),
     OPENGL("overrungl-opengl", "OverrunGL - OpenGL bindings",
         "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
         ":opengl", "Opengl"),
@@ -188,7 +191,7 @@ subprojects {
         }
     }
 
-    def targetJavaVersion = 20
+    def targetJavaVersion = 21
     tasks.withType(JavaCompile).configureEach {
         options.encoding = 'UTF-8'
         options.compilerArgs += '--enable-preview'
