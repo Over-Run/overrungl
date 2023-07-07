@@ -30,7 +30,88 @@ import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.gl.FunctionDescriptors.*;
 
 /**
- * The Native File Dialog binding.
+ * <h2>Native File Dialog Extended</h2>
+ * <p>
+ * A small C library with that portably invokes native file open, folder select and file save dialogs.
+ * Write dialog code once and have it pop up native dialogs on all supported platforms.
+ * Avoid linking large dependencies like wxWidgets and Qt.
+ * <p>
+ * Features:
+ * <ul>
+ *     <li>Supports Windows, MacOS, and Linux</li>
+ *     <li>Friendly names for filters (e.g. {@code Java Source files (*.java;*.kt)} instead of {@code (*.java;*.kt)}) on platforms that support it</li>
+ *     <li>Automatically append file extension on platforms where users expect it</li>
+ *     <li>Support for setting a default folder path</li>
+ *     <li>Support for setting a default file name (e.g. {@code Untitled.java})</li>
+ *     <li>Consistent UTF-8 support on all platforms</li>
+ *     <li>Native character set (UTF-16LE) support on Windows</li>
+ *     <li>Initialization and de-initialization of platform library (e.g. COM (Windows) / GTK (Linux GTK) / D-Bus (Linux portal)) decoupled from dialog functions, so applications can choose when to initialize/de-initialize</li>
+ *     <li>Multiple file selection support (for file open dialog)</li>
+ *     <li>No third party dependencies</li>
+ * </ul>
+ *
+ * <h3>Basic Usages</h3>
+ * {@snippet lang = java:
+ * import org.overrun.gl.util.value.Pair;
+ * void main() {
+ *     NFD.init();
+ *
+ *     try (MemoryStack stack = MemoryStack.stackPush()) {
+ *         String[] outPath = new String[1];
+ *         var filterItem = NFDNFilterItem.create(stack,
+ *             new Pair<>("Source code", "java"),
+ *             new Pair<>("Image file", "png,jpg"));
+ *         var result = NFD.openDialogN(stack, outPath, filterItem, null);
+ *         switch (result) {
+ *             case ERROR -> System.err.println("Error: " + NFD.getError());
+ *             case OKAY -> System.out.println("Success! " + outPath[0]);
+ *             case CANCEL -> System.out.println("User pressed cancel.");
+ *         }
+ *     }
+ *
+ *     NFD.quit();
+ * }}
+ *
+ * <h3>File Filter Syntax</h3>
+ * Files can be filtered by file extension groups:
+ * <pre>{@code
+ * var filterItem = NFDNFilterItem.create(allocator,
+ *     new Pair<>("Source code", "java"),
+ *     new Pair<>("Image file", "png,jpg"));}</pre>
+ * <p>
+ * A file filter is a pair of strings comprising the friendly name and the specification
+ * (multiple file extensions are comma-separated).
+ * <p>
+ * A list of file filters can be passed as an argument when invoking the library.
+ * <p>
+ * A wildcard filter is always added to every dialog.
+ * <p>
+ * <i>Note: On MacOS, the file dialogs do not have friendly names and there is no way to switch between filters, so the filter specifications are combined (e.g. "java,kt,png,jpg"). The filter specification is also never explicitly shown to the user. This is usual MacOS behaviour and users expect it.</i>
+ * <p>
+ * <i>Note 2: You must ensure that the specification string is non-empty and that every file extension has at least one character. Otherwise, bad things might ensue (i.e. undefined behaviour).</i>
+ * <p>
+ * <i>Note 3: On Linux, the file extension is appended (if missing) when the user presses down the "Save" button. The appended file extension will remain visible to the user, even if an overwrite prompt is shown and the user then presses "Cancel".</i>
+ * <p>
+ * <i>Note 4: On Windows, the default folder parameter is only used if there is no recently used folder available. Otherwise, the default folder will be the folder that was last used. Internally, the Windows implementation calls <a href="https://docs.microsoft.com/en-us/windows/desktop/api/shobjidl_core/nf-shobjidl_core-ifiledialog-setdefaultfolder">IFileDialog::SetDefaultFolder(IShellItem)</a>. This is usual Windows behaviour and users expect it.</i>
+ *
+ * <h3>Iterating Over PathSets</h3>
+ * A file open dialog that supports multiple selection produces a PathSet,
+ * which is a thin abstraction over the platform-specific collection.
+ * There are two ways to iterate over a PathSet:
+ *
+ * <h4>Accessing by index</h4>
+ * This method does array-like access on the PathSet, and is the easiest to use.
+ * However, on certain platforms (Linux, and possibly Windows),
+ * it takes O(N²) time in total to iterate the entire PathSet,
+ * because the underlying platform-specific implementation uses a linked list.
+ *
+ * <h4>Using an enumerator (experimental)</h4>
+ * This method uses an enumerator object to iterate the paths in the PathSet.
+ * It is guaranteed to take O(N) time in total to iterate the entire PathSet.
+ * <p>
+ * See {@link NFDEnumerator}.
+ * <p>
+ * This API is experimental, and subject to change.
  *
  * @author squid233
  * @since 0.1.0
