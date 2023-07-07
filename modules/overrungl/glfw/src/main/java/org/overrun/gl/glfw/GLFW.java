@@ -759,10 +759,9 @@ public final class GLFW {
      * <p>
      * If you wish to implement mouse motion based camera controls or other input schemes
      * that require unlimited mouse movement, set the cursor mode to {@code CURSOR_DISABLED}.
-     * <!-- todo don't use snippet because some bugs -->
-     * <pre>{@code
+     * {@snippet lang = java:
      * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_DISABLED);
-     * }</pre>
+     * }
      * This will hide the cursor and lock it to the specified window. GLFW will then take care of all the details of cursor re-centering
      * and offset calculation and providing the application with a virtual cursor position. This virtual position is provided normally
      * via both the cursor position callback and through polling.

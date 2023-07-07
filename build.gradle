@@ -3,6 +3,8 @@ plugins {
     id 'maven-publish'
 }
 
+def jdkEABuildDoc = "jdk21"
+
 group = projGroupId
 version = projVersion
 
@@ -220,7 +222,11 @@ subprojects {
         options.charSet 'UTF-8'
         options.author true
         options.locale 'en_US'
-        options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
+        if (jdkEABuildDoc == null) {
+            options.links "https://docs.oracle.com/en/java/javase/${sourceCompatibility}/docs/api/"
+        } else {
+            options.links "https://download.java.net/java/early_access/$jdkEABuildDoc/docs/api/"
+        }
         options.windowTitle "OverrunGL $projVersion Javadoc"
     }
 
