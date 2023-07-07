@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Overrun Game Library is a high performance library that implemented with Java 20,
+Overrun Game Library is a high-performance library that implemented with Java 21,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
@@ -24,12 +24,12 @@ performance.
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/org/overrun/glib/demo).
+the [samples](modules/samples/src/test/java/org/overrun/gl/demo).
 
 ## Using as a Dependency
 
 ~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very
-unstable, so you have to use the -SNAPSHOT version.
+unstable, so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
@@ -47,15 +47,36 @@ and include this maven repository:
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 ```
 
-## Supported Bindings
+## List of Supported Bindings
 
-Basic graphics:
+### Khronos APIs
 
-| Module | Functionality                         |
-|--------|---------------------------------------|
-| GLFW   | Full (Core and native)                |
-| OpenGL | Partial (Core and partial extensions) |
-| STB    | Partial (Image, perlin noise)         |
+| Library                                   | Description                                                                                                                                 |
+|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| [OpenGL](https://www.khronos.org/opengl/) | The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms. |
+
+### Display and Input
+
+| Library                                                                          | Description                                                                                                                                                                                                                                |
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [GLFW](http://www.glfw.org/)                                                     | Create multiple windows, handle user input (keyboard, mouse, gaming peripherals) and manage contexts. Also features multi-monitor support, clipboard access, file drag-n-drop, and [much more](http://www.glfw.org/docs/latest/news.html). |
+| [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.                                                                                                                                             |
+
+### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
+
+| Library          | Description                                                                     |
+|------------------|---------------------------------------------------------------------------------|
+| stb_easy_font    | 	Quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc.       |
+| stb_image        | Image loading/decoding from file/memory: JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC |
+| stb_image_resize | Resize images larger/smaller with good quality.                                 |
+| stb_image_write  | 	Image writing to disk: PNG, TGA, BMP                                           |
+| stb_perlin       | Revised Perlin noise (3D input, 1D output).                                     |
+
+### Other
+
+| Library                                 | Description                                           |
+|-----------------------------------------|-------------------------------------------------------|
+| [JOML](https://github.com/JOML-CI/JOML) | A Java math library for OpenGL rendering calculations |
 
 ## Contact
 
@@ -68,7 +89,7 @@ See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
-OpenGL docs can be found [here](https://docs.gl/).
+The documentation of OpenGL can be found [here](https://docs.gl/).
 
 ### Publishing (for internal member)
 
@@ -94,10 +115,26 @@ natives
 │  │  └─ x64
 │  │     └─ libglfw3.dylib
 │  └─ windows
-│     ├─ x64
-│     │  └─ glfw3.dll
-│     └─ x86
+│     └─ x64
 │        └─ glfw3.dll
+├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
+│  ├─ linux
+│  │  ├─ arm32
+│  │  │  └─ libnfd.so
+│  │  ├─ arm64
+│  │  │  └─ libnfd.so
+│  │  └─ x64
+│  │     └─ libnfd.so
+│  ├─ os x
+│  │  ├─ arm64
+│  │  │  └─ libnfd.dylib
+│  │  └─ x64
+│  │     └─ libnfd.dylib
+│  └─ windows
+│     ├─ arm64
+│     │  └─ nfd.dll
+│     └─ x64
+│        └─ nfd.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
    │  ├─ arm32
@@ -114,8 +151,6 @@ natives
    └─ windows
       ├─ arm64
       │  └─ stb.dll
-      ├─ x64
-      │  └─ stb.dll
-      └─ x86
+      └─ x64
          └─ stb.dll
 ```
