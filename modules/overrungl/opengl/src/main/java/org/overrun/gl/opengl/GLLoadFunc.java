@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import org.overrun.gl.FunctionDescriptors;
 import org.overrun.gl.RuntimeHelper;
 
+import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
@@ -62,10 +63,22 @@ public interface GLLoadFunc {
      *
      * @param procName the function name
      * @param function the function descriptor of the target function.
+     * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
      */
     @Nullable
-    MethodHandle invoke(String procName, FunctionDescriptors function);
+    MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options);
+
+    /**
+     * Load a trivial function by the given name and creates a downcall handle or {@code null}.
+     *
+     * @param procName the function name
+     * @param function the function descriptor of the target function.
+     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
+     */
+    default MethodHandle trivialHandle(String procName, FunctionDescriptors function) {
+        return invoke(procName, function, Linker.Option.isTrivial());
+    }
 
     /**
      * The GL function pointer getter.
@@ -87,33 +100,20 @@ public interface GLLoadFunc {
     /**
      * The delegate contained a segment allocator and the callback.
      *
+     * @param allocator the segment allocator
+     * @param func      the loading function
      * @author squid233
      * @since 0.1.0
      */
-    class Delegate implements GLLoadFunc {
-        private final SegmentAllocator allocator;
-        private final Getter func;
-
-        /**
-         * Creates a delegate.
-         *
-         * @param allocator the segment allocator
-         * @param func      the loading function
-         */
-        public Delegate(SegmentAllocator allocator,
-                        Getter func) {
-            this.allocator = allocator;
-            this.func = func;
-        }
-
+    record Delegate(SegmentAllocator allocator, Getter func) implements GLLoadFunc {
         @Override
         public MemorySegment invoke(MemorySegment string) {
             return func.get(string);
         }
 
         @Override
-        public @Nullable MethodHandle invoke(String procName, FunctionDescriptors function) {
-            return RuntimeHelper.downcallSafe(invoke(allocator.allocateUtf8String(procName)), function);
+        public @Nullable MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
+            return RuntimeHelper.downcallSafe(invoke(allocator.allocateUtf8String(procName)), function, options);
         }
     }
 }

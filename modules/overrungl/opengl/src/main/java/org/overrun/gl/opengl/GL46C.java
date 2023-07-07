@@ -75,7 +75,7 @@ public sealed class GL46C extends GL45C permits GL {
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glMultiDrawArraysIndirectCount = load.invoke("glMultiDrawArraysIndirectCount", IPJIIV);
         caps.glMultiDrawElementsIndirectCount = load.invoke("glMultiDrawElementsIndirectCount", IIPJIIV);
-        caps.glPolygonOffsetClamp = load.invoke("glPolygonOffsetClamp", FFFV);
+        caps.glPolygonOffsetClamp = load.trivialHandle("glPolygonOffsetClamp", FFFV);
         caps.glSpecializeShader = load.invoke("glSpecializeShader", IPIPPV);
     }
 

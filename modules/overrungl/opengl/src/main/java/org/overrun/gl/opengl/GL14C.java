@@ -76,15 +76,15 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBlendColor = load.invoke("glBlendColor", FFFFV);
-        caps.glBlendEquation = load.invoke("glBlendEquation", IV);
-        caps.glBlendFuncSeparate = load.invoke("glBlendFuncSeparate", IIIIV);
+        caps.glBlendColor = load.trivialHandle("glBlendColor", FFFFV);
+        caps.glBlendEquation = load.trivialHandle("glBlendEquation", IV);
+        caps.glBlendFuncSeparate = load.trivialHandle("glBlendFuncSeparate", IIIIV);
         caps.glMultiDrawArrays = load.invoke("glMultiDrawArrays", IPPIV);
         caps.glMultiDrawElements = load.invoke("glMultiDrawElements", IPIPIV);
-        caps.glPointParameterf = load.invoke("glPointParameterf", IFV);
-        caps.glPointParameterfv = load.invoke("glPointParameterfv", IPV);
-        caps.glPointParameteri = load.invoke("glPointParameteri", IIV);
-        caps.glPointParameteriv = load.invoke("glPointParameteriv", IPV);
+        caps.glPointParameterf = load.trivialHandle("glPointParameterf", IFV);
+        caps.glPointParameterfv = load.trivialHandle("glPointParameterfv", IPV);
+        caps.glPointParameteri = load.trivialHandle("glPointParameteri", IIV);
+        caps.glPointParameteriv = load.trivialHandle("glPointParameteriv", IPV);
     }
 
     public static void blendColor(float red, float green, float blue, float alpha) {

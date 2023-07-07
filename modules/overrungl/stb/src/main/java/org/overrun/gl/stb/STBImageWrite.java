@@ -25,8 +25,7 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static org.overrun.gl.FunctionDescriptors.*;
-import static org.overrun.gl.stb.Handles.downcall;
-import static org.overrun.gl.stb.Handles.initialize;
+import static org.overrun.gl.stb.Handles.*;
 
 /**
  * The STB image writer.
@@ -48,13 +47,13 @@ public final class STBImageWrite {
     }
 
     private static void create() {
-        stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV);
-        stbi_get_write_force_png_filter = downcall("stbi_get_write_force_png_filter", I);
-        stbi_get_write_png_compression_level = downcall("stbi_get_write_png_compression_level", I);
-        stbi_get_write_tga_with_rle = downcall("stbi_get_write_tga_with_rle", I);
-        stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV);
-        stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV);
-        stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV);
+        stbi_flip_vertically_on_write = downcallTrivial("stbi_flip_vertically_on_write", IV);
+        stbi_get_write_force_png_filter = downcallTrivial("stbi_get_write_force_png_filter", I);
+        stbi_get_write_png_compression_level = downcallTrivial("stbi_get_write_png_compression_level", I);
+        stbi_get_write_tga_with_rle = downcallTrivial("stbi_get_write_tga_with_rle", I);
+        stbi_set_write_force_png_filter = downcallTrivial("stbi_set_write_force_png_filter", IV);
+        stbi_set_write_png_compression_level = downcallTrivial("stbi_set_write_png_compression_level", IV);
+        stbi_set_write_tga_with_rle = downcallTrivial("stbi_set_write_tga_with_rle", IV);
         stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI);
         stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP);
         stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI);
