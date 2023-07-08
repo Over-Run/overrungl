@@ -191,6 +191,8 @@ subprojects {
         if (project.name != "core") {
             implementation project(':core')
         }
+
+        testImplementation 'io.github.over-run:timer:0.2.0'
     }
 
     def targetJavaVersion = 21

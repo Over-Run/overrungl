@@ -26,6 +26,7 @@ import org.overrun.gl.glfw.GLFW;
 import org.overrun.gl.glfw.GLFWErrorCallback;
 import org.overrun.gl.joml.Matrixn;
 import org.overrun.gl.util.MemoryStack;
+import org.overrun.timer.Timer;
 
 import java.lang.foreign.*;
 
@@ -38,6 +39,7 @@ import java.lang.foreign.*;
 public class GL33Test {
     private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
+    private static final boolean VSYNC = true;
     private MemorySegment window;
     private int program;
     private int rotationMat;
@@ -99,7 +101,7 @@ public class GL33Test {
         }
 
         GLFW.makeContextCurrent(window);
-        GLFW.swapInterval(1);
+        if (VSYNC) GLFW.swapInterval(1);
 
         GLFW.showWindow(window);
     }
@@ -181,6 +183,7 @@ public class GL33Test {
         var matrices = arena.allocate(iseq);
         float mul = (float) Math.sqrt(INSTANCE_COUNT);
         float scaling = 1f / mul;
+        // TODO: 2023/7/8 Value object
         float[] translations = new float[2 * INSTANCE_COUNT];
         for (int i = 0; i < 2 * INSTANCE_COUNT; ) {
             for (int y = (int) -mul; y < mul; y += 2) {
@@ -217,19 +220,18 @@ public class GL33Test {
         var matrix = new Matrix4f();
         var pRotationMat = Matrixn.allocate(Arena.ofAuto(), matrix);
 
-        double lastTime;
-        double time;
-        double dt = 0;
+        var timer = Timer.ofGetter(20, GLFW::getTime);
 
         while (!GLFW.windowShouldClose(window)) {
-            time = GLFW.getTime();
+            timer.advanceTime();
+            timer.performTicks(null);
 
             GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
             GL.useProgram(program);
 
-            matrix.rotateZ((float) dt);
+            matrix.rotateZ((float) Math.toRadians(180*timer.deltaTime()));
             Matrixn.put(matrix, pRotationMat);
 
             GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
@@ -242,12 +244,12 @@ public class GL33Test {
 
             GLFW.pollEvents();
 
-            lastTime = time;
-            time = GLFW.getTime();
-            dt = time - lastTime;
-            try (MemoryStack stack = MemoryStack.stackPush()) {
-                GLFW.setWindowTitle(stack, window, STR."\{WND_TITLE} Delta time: \{dt}, Frequency: \{(int) (1.0 / dt)}");
-            }
+            // using lambda gets higher FPS ??
+            timer.calcFPS(fps -> {
+                try (MemoryStack stack = MemoryStack.stackPush()) {
+                    GLFW.setWindowTitle(stack, window, STR."\{WND_TITLE} FPS: \{fps}");
+                }
+            });
         }
     }
 
