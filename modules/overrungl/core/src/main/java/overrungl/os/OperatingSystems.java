@@ -46,11 +46,8 @@ public final class OperatingSystems {
                 (arch.contains("64") || arch.startsWith("armv8") ? "arm64" : "arm32") :
                 "x64";
         }
-        if (os == MAC_OS) {
+        if (os == MAC_OS || (os == WINDOWS && arch.contains("64"))) {
             return arch.startsWith("aarch64") ? "arm64" : "x64";
-        }
-        if (os == WINDOWS) {
-            if (arch.contains("64")) return arch.startsWith("aarch64") ? "arm64" : "x64";
         }
         throw new IllegalStateException(STR."Doesn't support to os \{os} or arch \{arch}; only support to Linux, macOS and Windows");
     }

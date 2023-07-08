@@ -155,6 +155,10 @@ public final class NFD {
         NFD_PathSet_GetPathU8 = downcallSafe("NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)),
         NFD_PathSet_EnumNextU8 = downcallSafe("NFD_PathSet_EnumNextU8", PPI);
 
+    private NFD() {
+        //no instance
+    }
+
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
