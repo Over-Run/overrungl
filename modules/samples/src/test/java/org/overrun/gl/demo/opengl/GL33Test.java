@@ -231,7 +231,8 @@ public class GL33Test {
             // Draw triangle
             GL.useProgram(program);
 
-            matrix.rotateZ((float) Math.toRadians(180*timer.deltaTime()));
+            // rotate 90deg per second
+            matrix.rotateZ((float) Math.toRadians(90 * timer.deltaTime()));
             Matrixn.put(matrix, pRotationMat);
 
             GL.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
