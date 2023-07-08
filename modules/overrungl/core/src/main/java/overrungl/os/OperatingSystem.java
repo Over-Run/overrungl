@@ -25,6 +25,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static overrungl.os.OperatingSystems.*;
+
 /**
  * The operating system.
  *
@@ -60,18 +62,18 @@ public abstract class OperatingSystem {
     public static OperatingSystem forName(String os) {
         String osName = os.toLowerCase();
         if (osName.contains("windows")) {
-            return OperatingSystems.WINDOWS;
+            return WINDOWS;
         } else if (osName.contains("mac os x") || osName.contains("darwin") || osName.contains("osx")) {
-            return OperatingSystems.MAC_OS;
+            return MAC_OS;
         } else if (osName.contains("sunos") || osName.contains("solaris")) {
-            return OperatingSystems.SOLARIS;
+            return SOLARIS;
         } else if (osName.contains("linux")) {
-            return OperatingSystems.LINUX;
+            return LINUX;
         } else if (osName.contains("freebsd")) {
-            return OperatingSystems.FREE_BSD;
+            return FREE_BSD;
         } else {
             // Not strictly true
-            return OperatingSystems.UNIX;
+            return UNIX;
         }
     }
 

@@ -29,6 +29,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrungl.glfw.Handles.*;
 
 /**
  * The GLFW binding.
@@ -845,7 +846,7 @@ public final class GLFW {
     public static final int DONT_CARE = -1;
 
     static {
-        Handles.create();
+        create();
     }
 
     private GLFW() {
@@ -905,7 +906,7 @@ public final class GLFW {
      */
     public static boolean init() {
         try {
-            return (int) Handles.glfwInit.invokeExact() != FALSE;
+            return (int) glfwInit.invokeExact() != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -936,7 +937,7 @@ public final class GLFW {
      */
     public static void terminate() {
         try {
-            Handles.glfwTerminate.invokeExact();
+            glfwTerminate.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -964,7 +965,7 @@ public final class GLFW {
      */
     public static void initHint(int hint, int value) {
         try {
-            Handles.glfwInitHint.invokeExact(hint, value);
+            glfwInitHint.invokeExact(hint, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -989,7 +990,7 @@ public final class GLFW {
      */
     public static void ngetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev) {
         try {
-            Handles.glfwGetVersion.invokeExact(major, minor, rev);
+            glfwGetVersion.invokeExact(major, minor, rev);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1068,7 +1069,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetVersionString() {
         try {
-            return (MemorySegment) Handles.glfwGetVersionString.invokeExact();
+            return (MemorySegment) glfwGetVersionString.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1105,7 +1106,7 @@ public final class GLFW {
      */
     public static int ngetError(MemorySegment description) {
         try {
-            return (int) Handles.glfwGetError.invokeExact(description);
+            return (int) glfwGetError.invokeExact(description);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1181,7 +1182,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetErrorCallback(MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetErrorCallback.invokeExact(callback);
+            return (MemorySegment) glfwSetErrorCallback.invokeExact(callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1218,7 +1219,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetMonitors(MemorySegment count) {
         try {
-            return (MemorySegment) Handles.glfwGetMonitors.invokeExact(count);
+            return (MemorySegment) glfwGetMonitors.invokeExact(count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1261,7 +1262,7 @@ public final class GLFW {
      */
     public static MemorySegment getPrimaryMonitor() {
         try {
-            return (MemorySegment) Handles.glfwGetPrimaryMonitor.invokeExact();
+            return (MemorySegment) glfwGetPrimaryMonitor.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1285,7 +1286,7 @@ public final class GLFW {
      */
     public static void ngetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos) {
         try {
-            Handles.glfwGetMonitorPos.invokeExact(monitor, xpos, ypos);
+            glfwGetMonitorPos.invokeExact(monitor, xpos, ypos);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1361,7 +1362,7 @@ public final class GLFW {
      */
     public static void ngetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height) {
         try {
-            Handles.glfwGetMonitorWorkarea.invokeExact(monitor, xpos, ypos, width, height);
+            glfwGetMonitorWorkarea.invokeExact(monitor, xpos, ypos, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1454,7 +1455,7 @@ public final class GLFW {
      */
     public static void ngetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM) {
         try {
-            Handles.glfwGetMonitorPhysicalSize.invokeExact(monitor, widthMM, heightMM);
+            glfwGetMonitorPhysicalSize.invokeExact(monitor, widthMM, heightMM);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1533,7 +1534,7 @@ public final class GLFW {
      */
     public static void ngetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale) {
         try {
-            Handles.glfwGetMonitorContentScale.invokeExact(monitor, xscale, yscale);
+            glfwGetMonitorContentScale.invokeExact(monitor, xscale, yscale);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1603,7 +1604,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetMonitorName(MemorySegment monitor) {
         try {
-            return (MemorySegment) Handles.glfwGetMonitorName.invokeExact(monitor);
+            return (MemorySegment) glfwGetMonitorName.invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1642,7 +1643,7 @@ public final class GLFW {
      */
     public static void setMonitorUserPointer(MemorySegment monitor, MemorySegment pointer) {
         try {
-            Handles.glfwSetMonitorUserPointer.invokeExact(monitor, pointer);
+            glfwSetMonitorUserPointer.invokeExact(monitor, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1665,7 +1666,7 @@ public final class GLFW {
      */
     public static MemorySegment getMonitorUserPointer(MemorySegment monitor) {
         try {
-            return (MemorySegment) Handles.glfwGetMonitorUserPointer.invokeExact(monitor);
+            return (MemorySegment) glfwGetMonitorUserPointer.invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1690,7 +1691,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetMonitorCallback(MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetMonitorCallback.invokeExact(callback);
+            return (MemorySegment) glfwSetMonitorCallback.invokeExact(callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1734,7 +1735,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetVideoModes(MemorySegment monitor, MemorySegment count) {
         try {
-            return (MemorySegment) Handles.glfwGetVideoModes.invokeExact(monitor, count);
+            return (MemorySegment) glfwGetVideoModes.invokeExact(monitor, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1783,7 +1784,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetVideoMode(MemorySegment monitor) {
         try {
-            return (MemorySegment) Handles.glfwGetVideoMode.invokeExact(monitor);
+            return (MemorySegment) glfwGetVideoMode.invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1831,7 +1832,7 @@ public final class GLFW {
      */
     public static void setGamma(MemorySegment monitor, float gamma) {
         try {
-            Handles.glfwSetGamma.invokeExact(monitor, gamma);
+            glfwSetGamma.invokeExact(monitor, gamma);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1858,7 +1859,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetGammaRamp(MemorySegment monitor) {
         try {
-            return (MemorySegment) Handles.glfwGetGammaRamp.invokeExact(monitor);
+            return (MemorySegment) glfwGetGammaRamp.invokeExact(monitor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1913,7 +1914,7 @@ public final class GLFW {
      */
     public static void nsetGammaRamp(MemorySegment monitor, MemorySegment ramp) {
         try {
-            Handles.glfwSetGammaRamp.invokeExact(monitor, ramp);
+            glfwSetGammaRamp.invokeExact(monitor, ramp);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1943,7 +1944,7 @@ public final class GLFW {
      */
     public static void defaultWindowHints() {
         try {
-            Handles.glfwDefaultWindowHints.invokeExact();
+            glfwDefaultWindowHints.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1977,7 +1978,7 @@ public final class GLFW {
      */
     public static void windowHint(int hint, int value) {
         try {
-            Handles.glfwWindowHint.invokeExact(hint, value);
+            glfwWindowHint.invokeExact(hint, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2024,7 +2025,7 @@ public final class GLFW {
      */
     public static void nwindowHintString(int hint, MemorySegment value) {
         try {
-            Handles.glfwWindowHintString.invokeExact(hint, value);
+            glfwWindowHintString.invokeExact(hint, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2195,7 +2196,7 @@ public final class GLFW {
      */
     public static MemorySegment ncreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share) {
         try {
-            return (MemorySegment) Handles.glfwCreateWindow.invokeExact(width, height, title, monitor, share);
+            return (MemorySegment) glfwCreateWindow.invokeExact(width, height, title, monitor, share);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2242,7 +2243,7 @@ public final class GLFW {
      */
     public static void destroyWindow(MemorySegment window) {
         try {
-            Handles.glfwDestroyWindow.invokeExact(window);
+            glfwDestroyWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2261,7 +2262,7 @@ public final class GLFW {
      */
     public static boolean windowShouldClose(MemorySegment window) {
         try {
-            return (int) Handles.glfwWindowShouldClose.invokeExact(window) != FALSE;
+            return (int) glfwWindowShouldClose.invokeExact(window) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2282,7 +2283,7 @@ public final class GLFW {
      */
     public static void setWindowShouldClose(MemorySegment window, boolean value) {
         try {
-            Handles.glfwSetWindowShouldClose.invokeExact(window, value ? TRUE : FALSE);
+            glfwSetWindowShouldClose.invokeExact(window, value ? TRUE : FALSE);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2304,7 +2305,7 @@ public final class GLFW {
      */
     public static void nsetWindowTitle(MemorySegment window, MemorySegment title) {
         try {
-            Handles.glfwSetWindowTitle.invokeExact(window, title);
+            glfwSetWindowTitle.invokeExact(window, title);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2360,7 +2361,7 @@ public final class GLFW {
      */
     public static void nsetWindowIcon(MemorySegment window, int count, MemorySegment images) {
         try {
-            Handles.glfwSetWindowIcon.invokeExact(window, count, images);
+            glfwSetWindowIcon.invokeExact(window, count, images);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2424,7 +2425,7 @@ public final class GLFW {
      */
     public static void ngetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
         try {
-            Handles.glfwGetWindowPos.invokeExact(window, xpos, ypos);
+            glfwGetWindowPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2502,7 +2503,7 @@ public final class GLFW {
      */
     public static void setWindowPos(MemorySegment window, int xpos, int ypos) {
         try {
-            Handles.glfwSetWindowPos.invokeExact(window, xpos, ypos);
+            glfwSetWindowPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2531,7 +2532,7 @@ public final class GLFW {
      */
     public static void ngetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height) {
         try {
-            Handles.glfwGetWindowSize.invokeExact(window, width, height);
+            glfwGetWindowSize.invokeExact(window, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2620,7 +2621,7 @@ public final class GLFW {
      */
     public static void setWindowSizeLimits(MemorySegment window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
         try {
-            Handles.glfwSetWindowSizeLimits.invokeExact(window, minWidth, minHeight, maxWidth, maxHeight);
+            glfwSetWindowSizeLimits.invokeExact(window, minWidth, minHeight, maxWidth, maxHeight);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2661,7 +2662,7 @@ public final class GLFW {
      */
     public static void setWindowAspectRatio(MemorySegment window, int numer, int denom) {
         try {
-            Handles.glfwSetWindowAspectRatio.invokeExact(window, numer, denom);
+            glfwSetWindowAspectRatio.invokeExact(window, numer, denom);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2700,7 +2701,7 @@ public final class GLFW {
      */
     public static void setWindowSize(MemorySegment window, int width, int height) {
         try {
-            Handles.glfwSetWindowSize.invokeExact(window, width, height);
+            glfwSetWindowSize.invokeExact(window, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2728,7 +2729,7 @@ public final class GLFW {
      */
     public static void ngetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height) {
         try {
-            Handles.glfwGetFramebufferSize.invokeExact(window, width, height);
+            glfwGetFramebufferSize.invokeExact(window, width, height);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2813,7 +2814,7 @@ public final class GLFW {
      */
     public static void ngetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom) {
         try {
-            Handles.glfwGetWindowFrameSize.invokeExact(window, left, top, right, bottom);
+            glfwGetWindowFrameSize.invokeExact(window, left, top, right, bottom);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2911,7 +2912,7 @@ public final class GLFW {
      */
     public static void ngetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale) {
         try {
-            Handles.glfwGetWindowContentScale.invokeExact(window, xscale, yscale);
+            glfwGetWindowContentScale.invokeExact(window, xscale, yscale);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -2983,7 +2984,7 @@ public final class GLFW {
      */
     public static float getWindowOpacity(MemorySegment window) {
         try {
-            return (float) Handles.glfwGetWindowOpacity.invokeExact(window);
+            return (float) glfwGetWindowOpacity.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3011,7 +3012,7 @@ public final class GLFW {
      */
     public static void setWindowOpacity(MemorySegment window, float opacity) {
         try {
-            Handles.glfwSetWindowOpacity.invokeExact(window, opacity);
+            glfwSetWindowOpacity.invokeExact(window, opacity);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3037,7 +3038,7 @@ public final class GLFW {
      */
     public static void iconifyWindow(MemorySegment window) {
         try {
-            Handles.glfwIconifyWindow.invokeExact(window);
+            glfwIconifyWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3062,7 +3063,7 @@ public final class GLFW {
      */
     public static void restoreWindow(MemorySegment window) {
         try {
-            Handles.glfwRestoreWindow.invokeExact(window);
+            glfwRestoreWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3085,7 +3086,7 @@ public final class GLFW {
      */
     public static void maximizeWindow(MemorySegment window) {
         try {
-            Handles.glfwMaximizeWindow.invokeExact(window);
+            glfwMaximizeWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3115,7 +3116,7 @@ public final class GLFW {
      */
     public static void showWindow(MemorySegment window) {
         try {
-            Handles.glfwShowWindow.invokeExact(window);
+            glfwShowWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3136,7 +3137,7 @@ public final class GLFW {
      */
     public static void hideWindow(MemorySegment window) {
         try {
-            Handles.glfwHideWindow.invokeExact(window);
+            glfwHideWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3172,7 +3173,7 @@ public final class GLFW {
      */
     public static void focusWindow(MemorySegment window) {
         try {
-            Handles.glfwFocusWindow.invokeExact(window);
+            glfwFocusWindow.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3197,7 +3198,7 @@ public final class GLFW {
      */
     public static void requestWindowAttention(MemorySegment window) {
         try {
-            Handles.glfwRequestWindowAttention.invokeExact(window);
+            glfwRequestWindowAttention.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3218,7 +3219,7 @@ public final class GLFW {
      */
     public static MemorySegment getWindowMonitor(MemorySegment window) {
         try {
-            return (MemorySegment) Handles.glfwGetWindowMonitor.invokeExact(window);
+            return (MemorySegment) glfwGetWindowMonitor.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3274,7 +3275,7 @@ public final class GLFW {
      */
     public static void setWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
         try {
-            Handles.glfwGetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
+            glfwGetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3309,7 +3310,7 @@ public final class GLFW {
      */
     public static int getWindowAttrib(MemorySegment window, int attrib) {
         try {
-            return (int) Handles.glfwGetWindowAttrib.invokeExact(window, attrib);
+            return (int) glfwGetWindowAttrib.invokeExact(window, attrib);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3344,7 +3345,7 @@ public final class GLFW {
      */
     public static void setWindowAttrib(MemorySegment window, int attrib, boolean value) {
         try {
-            Handles.glfwSetWindowAttrib.invokeExact(window, attrib, value ? TRUE : FALSE);
+            glfwSetWindowAttrib.invokeExact(window, attrib, value ? TRUE : FALSE);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3366,7 +3367,7 @@ public final class GLFW {
      */
     public static void setWindowUserPointer(MemorySegment window, MemorySegment pointer) {
         try {
-            Handles.glfwSetWindowUserPointer.invokeExact(window, pointer);
+            glfwSetWindowUserPointer.invokeExact(window, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3386,7 +3387,7 @@ public final class GLFW {
      */
     public static MemorySegment getWindowUserPointer(MemorySegment window) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowUserPointer.invokeExact(window);
+            return (MemorySegment) glfwSetWindowUserPointer.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3415,7 +3416,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowPosCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowPosCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowPosCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3455,7 +3456,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowSizeCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowSizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3502,7 +3503,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowCloseCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowCloseCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3546,7 +3547,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowRefreshCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowRefreshCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3591,7 +3592,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowFocusCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowFocusCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3632,7 +3633,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowIconifyCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowIconifyCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3671,7 +3672,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowMaximizeCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowMaximizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3710,7 +3711,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetFramebufferSizeCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetFramebufferSizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3750,7 +3751,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetWindowContentScaleCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetWindowContentScaleCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3802,7 +3803,7 @@ public final class GLFW {
      */
     public static void pollEvents() {
         try {
-            Handles.glfwPollEvents.invokeExact();
+            glfwPollEvents.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3846,7 +3847,7 @@ public final class GLFW {
      */
     public static void waitEvents() {
         try {
-            Handles.glfwWaitEvents.invokeExact();
+            glfwWaitEvents.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3893,7 +3894,7 @@ public final class GLFW {
      */
     public static void waitEventsTimeout(double timeout) {
         try {
-            Handles.glfwWaitEventsTimeout.invokeExact(timeout);
+            glfwWaitEventsTimeout.invokeExact(timeout);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3913,7 +3914,7 @@ public final class GLFW {
      */
     public static void postEmptyEvents() {
         try {
-            Handles.glfwPostEmptyEvent.invokeExact();
+            glfwPostEmptyEvent.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3938,7 +3939,7 @@ public final class GLFW {
      */
     public static int getInputMode(MemorySegment window, int mode) {
         try {
-            return (int) Handles.glfwGetInputMode.invokeExact(window, mode);
+            return (int) glfwGetInputMode.invokeExact(window, mode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4002,7 +4003,7 @@ public final class GLFW {
      */
     public static void setInputMode(MemorySegment window, int mode, int value) {
         try {
-            Handles.glfwSetInputMode.invokeExact(window, mode, value);
+            glfwSetInputMode.invokeExact(window, mode, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4030,7 +4031,7 @@ public final class GLFW {
      */
     public static boolean rawMouseMotionSupported() {
         try {
-            return (int) Handles.glfwRawMouseMotionSupported.invokeExact() != FALSE;
+            return (int) glfwRawMouseMotionSupported.invokeExact() != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4099,7 +4100,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetKeyName(int key, int scancode) {
         try {
-            return (MemorySegment) Handles.glfwGetKeyName.invokeExact(key, scancode);
+            return (MemorySegment) glfwGetKeyName.invokeExact(key, scancode);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4136,7 +4137,7 @@ public final class GLFW {
      */
     public static int getKeyScancode(int key) {
         try {
-            return (int) Handles.glfwGetKeyScancode.invokeExact(key);
+            return (int) glfwGetKeyScancode.invokeExact(key);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4175,7 +4176,7 @@ public final class GLFW {
      */
     public static int getKey(MemorySegment window, int key) {
         try {
-            return (int) Handles.glfwGetKey.invokeExact(window, key);
+            return (int) glfwGetKey.invokeExact(window, key);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4202,7 +4203,7 @@ public final class GLFW {
      */
     public static int getMouseButton(MemorySegment window, int button) {
         try {
-            return (int) Handles.glfwGetMouseButton.invokeExact(window, button);
+            return (int) glfwGetMouseButton.invokeExact(window, button);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4239,7 +4240,7 @@ public final class GLFW {
      */
     public static void ngetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
         try {
-            Handles.glfwGetCursorPos.invokeExact(window, xpos, ypos);
+            glfwGetCursorPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4327,7 +4328,7 @@ public final class GLFW {
      */
     public static void setCursorPos(MemorySegment window, double xpos, double ypos) {
         try {
-            Handles.glfwSetCursorPos.invokeExact(window, xpos, ypos);
+            glfwSetCursorPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4363,7 +4364,7 @@ public final class GLFW {
      */
     public static MemorySegment ncreateCursor(MemorySegment image, int xhot, int yhot) {
         try {
-            return (MemorySegment) Handles.glfwCreateCursor.invokeExact(image, xhot, yhot);
+            return (MemorySegment) glfwCreateCursor.invokeExact(image, xhot, yhot);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4400,7 +4401,7 @@ public final class GLFW {
      */
     public static MemorySegment createStandardCursor(int shape) {
         try {
-            return (MemorySegment) Handles.glfwCreateStandardCursor.invokeExact(shape);
+            return (MemorySegment) glfwCreateStandardCursor.invokeExact(shape);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4425,7 +4426,7 @@ public final class GLFW {
      */
     public static void destroyCursor(MemorySegment cursor) {
         try {
-            Handles.glfwDestroyCursor.invokeExact(cursor);
+            glfwDestroyCursor.invokeExact(cursor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4451,7 +4452,7 @@ public final class GLFW {
      */
     public static void setCursor(MemorySegment window, MemorySegment cursor) {
         try {
-            Handles.glfwSetCursor.invokeExact(window, cursor);
+            glfwSetCursor.invokeExact(window, cursor);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4496,7 +4497,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetKeyCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetKeyCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetKeyCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4547,7 +4548,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetCharCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetCharCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetCharCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4592,7 +4593,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetMouseButtonCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetMouseButtonCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4633,7 +4634,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetCursorPosCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetCursorPosCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetCursorPosCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4673,7 +4674,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetCursorEnterCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetCursorEnterCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4716,7 +4717,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetScrollCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetScrollCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetScrollCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4761,7 +4762,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetDropCallback(MemorySegment window, MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetDropCallback.invokeExact(window, callback);
+            return (MemorySegment) glfwSetDropCallback.invokeExact(window, callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4798,7 +4799,7 @@ public final class GLFW {
      */
     public static boolean joystickPresent(int jid) {
         try {
-            return (int) Handles.glfwJoystickPresent.invokeExact(jid) != FALSE;
+            return (int) glfwJoystickPresent.invokeExact(jid) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4830,7 +4831,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetJoystickAxes(int jid, MemorySegment count) {
         try {
-            return (MemorySegment) Handles.glfwGetJoystickAxes.invokeExact(jid, count);
+            return (MemorySegment) glfwGetJoystickAxes.invokeExact(jid, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4893,7 +4894,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetJoystickButtons(int jid, MemorySegment count) {
         try {
-            return (MemorySegment) Handles.glfwGetJoystickButtons.invokeExact(jid, count);
+            return (MemorySegment) glfwGetJoystickButtons.invokeExact(jid, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -4976,7 +4977,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetJoystickHats(int jid, MemorySegment count) {
         try {
-            return (MemorySegment) Handles.glfwGetJoystickHats.invokeExact(jid, count);
+            return (MemorySegment) glfwGetJoystickHats.invokeExact(jid, count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5025,7 +5026,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetJoystickName(int jid) {
         try {
-            return (MemorySegment) Handles.glfwGetJoystickName.invokeExact(jid);
+            return (MemorySegment) glfwGetJoystickName.invokeExact(jid);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5078,7 +5079,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetJoystickGUID(int jid) {
         try {
-            return (MemorySegment) Handles.glfwGetJoystickGUID.invokeExact(jid);
+            return (MemorySegment) glfwGetJoystickGUID.invokeExact(jid);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5117,7 +5118,7 @@ public final class GLFW {
      */
     public static void setJoystickUserPointer(int jid, MemorySegment pointer) {
         try {
-            Handles.glfwSetJoystickUserPointer.invokeExact(jid, pointer);
+            glfwSetJoystickUserPointer.invokeExact(jid, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5140,7 +5141,7 @@ public final class GLFW {
      */
     public static MemorySegment getJoystickUserPointer(int jid) {
         try {
-            return (MemorySegment) Handles.glfwGetJoystickUserPointer.invokeExact(jid);
+            return (MemorySegment) glfwGetJoystickUserPointer.invokeExact(jid);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5167,7 +5168,7 @@ public final class GLFW {
      */
     public static boolean joystickIsGamepad(int jid) {
         try {
-            return (int) Handles.glfwJoystickIsGamepad.invokeExact(jid) != FALSE;
+            return (int) glfwJoystickIsGamepad.invokeExact(jid) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5199,7 +5200,7 @@ public final class GLFW {
      */
     public static MemorySegment nsetJoystickCallback(MemorySegment callback) {
         try {
-            return (MemorySegment) Handles.glfwSetJoystickCallback.invokeExact(callback);
+            return (MemorySegment) glfwSetJoystickCallback.invokeExact(callback);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5246,7 +5247,7 @@ public final class GLFW {
      */
     public static boolean nupdateGamepadMappings(MemorySegment string) {
         try {
-            return (int) Handles.glfwUpdateGamepadMappings.invokeExact(string) != FALSE;
+            return (int) glfwUpdateGamepadMappings.invokeExact(string) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5289,7 +5290,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetGamepadName(int jid) {
         try {
-            return (MemorySegment) Handles.glfwGetGamepadName.invokeExact(jid);
+            return (MemorySegment) glfwGetGamepadName.invokeExact(jid);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5341,7 +5342,7 @@ public final class GLFW {
      */
     public static boolean ngetGamepadState(int jid, MemorySegment state) {
         try {
-            return (int) Handles.glfwGetGamepadState.invokeExact(jid, state) != FALSE;
+            return (int) glfwGetGamepadState.invokeExact(jid, state) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5378,7 +5379,7 @@ public final class GLFW {
      */
     public static void nsetClipboardString(@Deprecated MemorySegment window, MemorySegment string) {
         try {
-            Handles.glfwSetClipboardString.invokeExact(window, string);
+            glfwSetClipboardString.invokeExact(window, string);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5419,7 +5420,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetClipboardString(@Deprecated MemorySegment window) {
         try {
-            return (MemorySegment) Handles.glfwGetClipboardString.invokeExact(window);
+            return (MemorySegment) glfwGetClipboardString.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5461,7 +5462,7 @@ public final class GLFW {
      */
     public static double getTime() {
         try {
-            return (double) Handles.glfwGetTime.invokeExact();
+            return (double) glfwGetTime.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5489,7 +5490,7 @@ public final class GLFW {
      */
     public static void setTime(double time) {
         try {
-            Handles.glfwSetTime.invokeExact(time);
+            glfwSetTime.invokeExact(time);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5510,7 +5511,7 @@ public final class GLFW {
      */
     public static long getTimerValue() {
         try {
-            return (long) Handles.glfwGetTimerValue.invokeExact();
+            return (long) glfwGetTimerValue.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5529,7 +5530,7 @@ public final class GLFW {
      */
     public static long getTimerFrequency() {
         try {
-            return (long) Handles.glfwGetTimerFrequency.invokeExact();
+            return (long) glfwGetTimerFrequency.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5566,7 +5567,7 @@ public final class GLFW {
      */
     public static void makeContextCurrent(MemorySegment window) {
         try {
-            Handles.glfwMakeContextCurrent.invokeExact(window);
+            glfwMakeContextCurrent.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5586,7 +5587,7 @@ public final class GLFW {
      */
     public static MemorySegment getCurrentContext() {
         try {
-            return (MemorySegment) Handles.glfwGetCurrentContext.invokeExact();
+            return (MemorySegment) glfwGetCurrentContext.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5616,7 +5617,7 @@ public final class GLFW {
      */
     public static void swapBuffers(MemorySegment window) {
         try {
-            Handles.glfwSwapBuffers.invokeExact(window);
+            glfwSwapBuffers.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5659,7 +5660,7 @@ public final class GLFW {
      */
     public static void swapInterval(int interval) {
         try {
-            Handles.glfwSwapInterval.invokeExact(interval);
+            glfwSwapInterval.invokeExact(interval);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5696,7 +5697,7 @@ public final class GLFW {
      */
     public static boolean nextensionSupported(MemorySegment extension) {
         try {
-            return (int) Handles.glfwExtensionSupported.invokeExact(extension) != FALSE;
+            return (int) glfwExtensionSupported.invokeExact(extension) != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5748,7 +5749,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetProcAddress(MemorySegment procName) {
         try {
-            return (MemorySegment) Handles.glfwGetProcAddress.invokeExact(procName);
+            return (MemorySegment) glfwGetProcAddress.invokeExact(procName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5788,7 +5789,7 @@ public final class GLFW {
      */
     public static boolean vulkanSupported() {
         try {
-            return (int) Handles.glfwVulkanSupported.invokeExact() != FALSE;
+            return (int) glfwVulkanSupported.invokeExact() != FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5828,7 +5829,7 @@ public final class GLFW {
      */
     public static MemorySegment ngetRequiredInstanceExtensions(MemorySegment count) {
         try {
-            return (MemorySegment) Handles.glfwGetRequiredInstanceExtensions.invokeExact(count);
+            return (MemorySegment) glfwGetRequiredInstanceExtensions.invokeExact(count);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

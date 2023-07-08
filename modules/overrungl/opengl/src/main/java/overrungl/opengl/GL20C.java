@@ -28,6 +28,7 @@ import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.FunctionDescriptors.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * The OpenGL 2.0 forward compatible functions.
@@ -125,7 +126,7 @@ public sealed class GL20C extends GL15C permits GL21C {
     public static final int STENCIL_BACK_WRITEMASK = 0x8CA5;
 
     static boolean isSupported(GLCapabilities caps) {
-        return GLLoader.checkAll(caps.glAttachShader, caps.glBindAttribLocation, caps.glBlendEquationSeparate, caps.glCompileShader, caps.glCreateProgram, caps.glCreateShader,
+        return checkAll(caps.glAttachShader, caps.glBindAttribLocation, caps.glBlendEquationSeparate, caps.glCompileShader, caps.glCreateProgram, caps.glCreateShader,
             caps.glDeleteProgram, caps.glDeleteShader, caps.glDetachShader, caps.glDisableVertexAttribArray, caps.glDrawBuffers, caps.glEnableVertexAttribArray,
             caps.glGetActiveAttrib, caps.glGetActiveUniform, caps.glGetAttachedShaders, caps.glGetAttribLocation, caps.glGetProgramInfoLog, caps.glGetProgramiv,
             caps.glGetShaderInfoLog, caps.glGetShaderSource, caps.glGetShaderiv, caps.glGetUniformLocation, caps.glGetUniformfv, caps.glGetUniformiv,
@@ -240,18 +241,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void attachShader(int program, int shader) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glAttachShader).invokeExact(program, shader);
+            check(caps.glAttachShader).invokeExact(program, shader);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void bindAttribLocation(int program, int index, MemorySegment name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glBindAttribLocation).invokeExact(program, index, name);
+            check(caps.glBindAttribLocation).invokeExact(program, index, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -262,81 +263,81 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void blendEquationSeparate(int modeRGB, int modeAlpha) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glBlendEquationSeparate).invokeExact(modeRGB, modeAlpha);
+            check(caps.glBlendEquationSeparate).invokeExact(modeRGB, modeAlpha);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void compileShader(int shader) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glCompileShader).invokeExact(shader);
+            check(caps.glCompileShader).invokeExact(shader);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int createProgram() {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            return (int) GLLoader.check(caps.glCreateProgram).invokeExact();
+            return (int) check(caps.glCreateProgram).invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static int createShader(int type) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            return (int) GLLoader.check(caps.glCreateShader).invokeExact(type);
+            return (int) check(caps.glCreateShader).invokeExact(type);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteProgram(int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glDeleteProgram).invokeExact(program);
+            check(caps.glDeleteProgram).invokeExact(program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void deleteShader(int shader) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glDeleteShader).invokeExact(shader);
+            check(caps.glDeleteShader).invokeExact(shader);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void detachShader(int program, int shader) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glDetachShader).invokeExact(program, shader);
+            check(caps.glDetachShader).invokeExact(program, shader);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void disableVertexAttribArray(int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glDisableVertexAttribArray).invokeExact(index);
+            check(caps.glDisableVertexAttribArray).invokeExact(index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void drawBuffers(int n, MemorySegment bufs) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glDrawBuffers).invokeExact(n, bufs);
+            check(caps.glDrawBuffers).invokeExact(n, bufs);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -347,18 +348,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void enableVertexAttribArray(int index) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glEnableVertexAttribArray).invokeExact(index);
+            check(caps.glEnableVertexAttribArray).invokeExact(index);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void getActiveAttrib(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetActiveAttrib).invokeExact(program, index, bufSize, length, size, type, name);
+            check(caps.glGetActiveAttrib).invokeExact(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -379,9 +380,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getActiveUniform(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetActiveUniform).invokeExact(program, index, bufSize, length, size, type, name);
+            check(caps.glGetActiveUniform).invokeExact(program, index, bufSize, length, size, type, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -402,9 +403,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getAttachedShaders(int program, int maxCount, MemorySegment count, MemorySegment shaders) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetAttachedShaders).invokeExact(program, maxCount, count, shaders);
+            check(caps.glGetAttachedShaders).invokeExact(program, maxCount, count, shaders);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -421,9 +422,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static int getAttribLocation(int program, MemorySegment name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            return (int) GLLoader.check(caps.glGetAttribLocation).invokeExact(program, name);
+            return (int) check(caps.glGetAttribLocation).invokeExact(program, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -434,9 +435,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getProgramInfoLog(int program, int bufSize, MemorySegment length, MemorySegment infoLog) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetProgramInfoLog).invokeExact(program, bufSize, length, infoLog);
+            check(caps.glGetProgramInfoLog).invokeExact(program, bufSize, length, infoLog);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -457,9 +458,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getProgramiv(int program, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetProgramiv).invokeExact(program, pname, params);
+            check(caps.glGetProgramiv).invokeExact(program, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -484,9 +485,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getShaderInfoLog(int shader, int bufSize, MemorySegment length, MemorySegment infoLog) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetShaderInfoLog).invokeExact(shader, bufSize, length, infoLog);
+            check(caps.glGetShaderInfoLog).invokeExact(shader, bufSize, length, infoLog);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -507,9 +508,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getShaderSource(int shader, int bufSize, MemorySegment length, MemorySegment source) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetShaderSource).invokeExact(shader, bufSize, length, source);
+            check(caps.glGetShaderSource).invokeExact(shader, bufSize, length, source);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -530,9 +531,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getShaderiv(int shader, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetShaderiv).invokeExact(shader, pname, params);
+            check(caps.glGetShaderiv).invokeExact(shader, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -557,9 +558,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static int getUniformLocation(int program, MemorySegment name) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            return (int) GLLoader.check(caps.glGetUniformLocation).invokeExact(program, name);
+            return (int) check(caps.glGetUniformLocation).invokeExact(program, name);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -570,9 +571,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getUniformfv(int program, int location, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetUniformfv).invokeExact(program, location, params);
+            check(caps.glGetUniformfv).invokeExact(program, location, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -597,9 +598,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getUniformiv(int program, int location, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetUniformiv).invokeExact(program, location, params);
+            check(caps.glGetUniformiv).invokeExact(program, location, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -624,9 +625,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getVertexAttribPointerv(int index, int pname, MemorySegment pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetVertexAttribPointerv).invokeExact(index, pname, pointer);
+            check(caps.glGetVertexAttribPointerv).invokeExact(index, pname, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -663,9 +664,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getVertexAttribdv(int index, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetVertexAttribdv).invokeExact(index, pname, params);
+            check(caps.glGetVertexAttribdv).invokeExact(index, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -690,9 +691,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getVertexAttribfv(int index, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetVertexAttribfv).invokeExact(index, pname, params);
+            check(caps.glGetVertexAttribfv).invokeExact(index, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -717,9 +718,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void getVertexAttribiv(int index, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glGetVertexAttribiv).invokeExact(index, pname, params);
+            check(caps.glGetVertexAttribiv).invokeExact(index, pname, params);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -744,36 +745,36 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static boolean isProgram(int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            return (boolean) GLLoader.check(caps.glIsProgram).invokeExact(program);
+            return (boolean) check(caps.glIsProgram).invokeExact(program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static boolean isShader(int shader) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            return (boolean) GLLoader.check(caps.glIsShader).invokeExact(shader);
+            return (boolean) check(caps.glIsShader).invokeExact(shader);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void linkProgram(int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glLinkProgram).invokeExact(program);
+            check(caps.glLinkProgram).invokeExact(program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void shaderSource(int shader, int count, MemorySegment string, MemorySegment length) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glShaderSource).invokeExact(shader, count, string, length);
+            check(caps.glShaderSource).invokeExact(shader, count, string, length);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -794,45 +795,45 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void stencilFuncSeparate(int face, int func, int ref, int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glStencilFuncSeparate).invokeExact(face, func, ref, mask);
+            check(caps.glStencilFuncSeparate).invokeExact(face, func, ref, mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilMaskSeparate(int face, int mask) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glStencilMaskSeparate).invokeExact(face, mask);
+            check(caps.glStencilMaskSeparate).invokeExact(face, mask);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void stencilOpSeparate(int face, int sfail, int dpfail, int dppass) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glStencilOpSeparate).invokeExact(face, sfail, dpfail, dppass);
+            check(caps.glStencilOpSeparate).invokeExact(face, sfail, dpfail, dppass);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1f(int location, float v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform1f).invokeExact(location, v0);
+            check(caps.glUniform1f).invokeExact(location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1fv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform1fv).invokeExact(location, count, value);
+            check(caps.glUniform1fv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -843,18 +844,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform1i(int location, int v0) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform1i).invokeExact(location, v0);
+            check(caps.glUniform1i).invokeExact(location, v0);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform1iv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform1iv).invokeExact(location, count, value);
+            check(caps.glUniform1iv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -865,18 +866,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform2f(int location, float v0, float v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform2f).invokeExact(location, v0, v1);
+            check(caps.glUniform2f).invokeExact(location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform2fv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform2fv).invokeExact(location, count, value);
+            check(caps.glUniform2fv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -887,18 +888,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform2i(int location, int v0, int v1) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform2i).invokeExact(location, v0, v1);
+            check(caps.glUniform2i).invokeExact(location, v0, v1);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform2iv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform2iv).invokeExact(location, count, value);
+            check(caps.glUniform2iv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -909,18 +910,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform3f(int location, float v0, float v1, float v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform3f).invokeExact(location, v0, v1, v2);
+            check(caps.glUniform3f).invokeExact(location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform3fv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform3fv).invokeExact(location, count, value);
+            check(caps.glUniform3fv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -931,18 +932,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform3i(int location, int v0, int v1, int v2) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform3i).invokeExact(location, v0, v1, v2);
+            check(caps.glUniform3i).invokeExact(location, v0, v1, v2);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform3iv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform3iv).invokeExact(location, count, value);
+            check(caps.glUniform3iv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -953,18 +954,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform4f(int location, float v0, float v1, float v2, float v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform4f).invokeExact(location, v0, v1, v2, v3);
+            check(caps.glUniform4f).invokeExact(location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform4fv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform4fv).invokeExact(location, count, value);
+            check(caps.glUniform4fv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -975,18 +976,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniform4i(int location, int v0, int v1, int v2, int v3) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform4i).invokeExact(location, v0, v1, v2, v3);
+            check(caps.glUniform4i).invokeExact(location, v0, v1, v2, v3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void uniform4iv(int location, int count, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniform4iv).invokeExact(location, count, value);
+            check(caps.glUniform4iv).invokeExact(location, count, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -997,9 +998,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniformMatrix2fv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniformMatrix2fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix2fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1014,9 +1015,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniformMatrix3fv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniformMatrix3fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix3fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1031,9 +1032,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void uniformMatrix4fv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUniformMatrix4fv).invokeExact(location, count, transpose, value);
+            check(caps.glUniformMatrix4fv).invokeExact(location, count, transpose, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1048,36 +1049,36 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void useProgram(int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glUseProgram).invokeExact(program);
+            check(caps.glUseProgram).invokeExact(program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void validateProgram(int program) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glValidateProgram).invokeExact(program);
+            check(caps.glValidateProgram).invokeExact(program);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib1d(int index, double x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib1d).invokeExact(index, x);
+            check(caps.glVertexAttrib1d).invokeExact(index, x);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib1dv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib1dv).invokeExact(index, v);
+            check(caps.glVertexAttrib1dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1088,18 +1089,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib1f(int index, float x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib1f).invokeExact(index, x);
+            check(caps.glVertexAttrib1f).invokeExact(index, x);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib1fv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib1fv).invokeExact(index, v);
+            check(caps.glVertexAttrib1fv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1110,18 +1111,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib1s(int index, short x) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib1s).invokeExact(index, x);
+            check(caps.glVertexAttrib1s).invokeExact(index, x);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib1sv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib1sv).invokeExact(index, v);
+            check(caps.glVertexAttrib1sv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1132,18 +1133,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib2d(int index, double x, double y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib2d).invokeExact(index, x, y);
+            check(caps.glVertexAttrib2d).invokeExact(index, x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib2dv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib2dv).invokeExact(index, v);
+            check(caps.glVertexAttrib2dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1154,18 +1155,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib2f(int index, float x, float y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib2f).invokeExact(index, x, y);
+            check(caps.glVertexAttrib2f).invokeExact(index, x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib2fv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib2fv).invokeExact(index, v);
+            check(caps.glVertexAttrib2fv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1176,18 +1177,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib2s(int index, short x, short y) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib2s).invokeExact(index, x, y);
+            check(caps.glVertexAttrib2s).invokeExact(index, x, y);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib2sv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib2sv).invokeExact(index, v);
+            check(caps.glVertexAttrib2sv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1198,18 +1199,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib3d(int index, double x, double y, double z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib3d).invokeExact(index, x, y, z);
+            check(caps.glVertexAttrib3d).invokeExact(index, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib3dv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib3dv).invokeExact(index, v);
+            check(caps.glVertexAttrib3dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1220,18 +1221,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib3f(int index, float x, float y, float z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib3f).invokeExact(index, x, y, z);
+            check(caps.glVertexAttrib3f).invokeExact(index, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib3fv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib3fv).invokeExact(index, v);
+            check(caps.glVertexAttrib3fv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1242,18 +1243,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib3s(int index, short x, short y, short z) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib3s).invokeExact(index, x, y, z);
+            check(caps.glVertexAttrib3s).invokeExact(index, x, y, z);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib3sv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib3sv).invokeExact(index, v);
+            check(caps.glVertexAttrib3sv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1264,9 +1265,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4Nbv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Nbv).invokeExact(index, v);
+            check(caps.glVertexAttrib4Nbv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1277,9 +1278,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4Niv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Niv).invokeExact(index, v);
+            check(caps.glVertexAttrib4Niv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1290,9 +1291,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4Nsv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Nsv).invokeExact(index, v);
+            check(caps.glVertexAttrib4Nsv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1303,18 +1304,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4Nub(int index, byte x, byte y, byte z, byte w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Nub).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttrib4Nub).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib4Nubv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Nubv).invokeExact(index, v);
+            check(caps.glVertexAttrib4Nubv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1325,9 +1326,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4Nuiv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Nuiv).invokeExact(index, v);
+            check(caps.glVertexAttrib4Nuiv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1338,9 +1339,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4Nusv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4Nusv).invokeExact(index, v);
+            check(caps.glVertexAttrib4Nusv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1351,9 +1352,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4bv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4bv).invokeExact(index, v);
+            check(caps.glVertexAttrib4bv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1364,18 +1365,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4d(int index, double x, double y, double z, double w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4d).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttrib4d).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib4dv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4dv).invokeExact(index, v);
+            check(caps.glVertexAttrib4dv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1386,18 +1387,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4f(int index, float x, float y, float z, float w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4f).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttrib4f).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib4fv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4fv).invokeExact(index, v);
+            check(caps.glVertexAttrib4fv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1408,9 +1409,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4iv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4iv).invokeExact(index, v);
+            check(caps.glVertexAttrib4iv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1421,18 +1422,18 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4s(int index, short x, short y, short z, short w) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4s).invokeExact(index, x, y, z, w);
+            check(caps.glVertexAttrib4s).invokeExact(index, x, y, z, w);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
     }
 
     public static void vertexAttrib4sv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4sv).invokeExact(index, v);
+            check(caps.glVertexAttrib4sv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1443,9 +1444,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4ubv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4ubv).invokeExact(index, v);
+            check(caps.glVertexAttrib4ubv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1456,9 +1457,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4uiv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4uiv).invokeExact(index, v);
+            check(caps.glVertexAttrib4uiv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1469,9 +1470,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttrib4usv(int index, MemorySegment v) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttrib4usv).invokeExact(index, v);
+            check(caps.glVertexAttrib4usv).invokeExact(index, v);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1482,9 +1483,9 @@ public sealed class GL20C extends GL15C permits GL21C {
     }
 
     public static void vertexAttribPointer(int index, int size, int type, boolean normalized, int stride, MemorySegment pointer) {
-        var caps = GLLoader.getCapabilities();
+        var caps = getCapabilities();
         try {
-            GLLoader.check(caps.glVertexAttribPointer).invokeExact(index, size, type, normalized, stride, pointer);
+            check(caps.glVertexAttribPointer).invokeExact(index, size, type, normalized, stride, pointer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

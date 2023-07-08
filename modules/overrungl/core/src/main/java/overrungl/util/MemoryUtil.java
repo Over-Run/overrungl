@@ -27,6 +27,8 @@ import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
+import static overrungl.FunctionDescriptors.*;
+
 /**
  * The standard-C memory allocator.
  *
@@ -36,13 +38,13 @@ import java.util.Objects;
 public final class MemoryUtil {
     private static final SymbolLookup LOOKUP = RuntimeHelper.LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", FunctionDescriptors.JP),
-        m_calloc = downcall("calloc", FunctionDescriptors.JJP),
-        m_realloc = downcall("realloc", FunctionDescriptors.PJP),
-        m_free = downcall("free", FunctionDescriptors.PV),
-        m_memcpy = downcall("memcpy", FunctionDescriptors.PPJP),
-        m_memmove = downcall("memmove", FunctionDescriptors.PPJP),
-        m_memset = downcall("memset", FunctionDescriptors.PIJP);
+        m_malloc = downcall("malloc", JP),
+        m_calloc = downcall("calloc", JJP),
+        m_realloc = downcall("realloc", PJP),
+        m_free = downcall("free", PV),
+        m_memcpy = downcall("memcpy", PPJP),
+        m_memmove = downcall("memmove", PPJP),
+        m_memset = downcall("memset", PIJP);
     private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {

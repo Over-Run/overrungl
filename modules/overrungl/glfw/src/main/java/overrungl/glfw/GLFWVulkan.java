@@ -22,6 +22,8 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
+import static overrungl.glfw.Handles.*;
+
 /**
  * The GLFW Vulkan binding.
  *
@@ -30,7 +32,7 @@ import java.lang.foreign.ValueLayout;
  */
 public final class GLFWVulkan {
     static {
-        Handles.create();
+        create();
     }
 
     /**
@@ -75,7 +77,7 @@ public final class GLFWVulkan {
      */
     public static MemorySegment nglfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procName) {
         try {
-            return (MemorySegment) Handles.glfwGetInstanceProcAddress.invokeExact(instance, procName);
+            return (MemorySegment) glfwGetInstanceProcAddress.invokeExact(instance, procName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -125,7 +127,7 @@ public final class GLFWVulkan {
      */
     public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queueFamily) {
         try {
-            return (int) Handles.glfwGetPhysicalDevicePresentationSupport.invokeExact(instance, device, queueFamily) != GLFW.FALSE;
+            return (int) glfwGetPhysicalDevicePresentationSupport.invokeExact(instance, device, queueFamily) != GLFW.FALSE;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -188,7 +190,7 @@ public final class GLFWVulkan {
      */
     public static int nglfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface) {
         try {
-            return (int) Handles.glfwCreateWindowSurface.invokeExact(instance, window, allocator, surface);
+            return (int) glfwCreateWindowSurface.invokeExact(instance, window, allocator, surface);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

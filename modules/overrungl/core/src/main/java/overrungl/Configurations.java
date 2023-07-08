@@ -16,8 +16,6 @@
 
 package overrungl;
 
-import overrungl.util.MemoryStack;
-
 import java.util.function.Supplier;
 
 /**
@@ -28,13 +26,13 @@ import java.util.function.Supplier;
  */
 public final class Configurations {
     /**
-     * The default stack size in KiB of {@link MemoryStack MemoryStack}.
+     * The default stack size in KiB of {@link overrungl.util.MemoryStack MemoryStack}.
      * <p>
      * The default value is {@code 64}.
      */
     public static final Entry<Long> STACK_SIZE = new Entry<>(() -> 64L);
     /**
-     * The default stack frames of {@link MemoryStack MemoryStack}.
+     * The default stack frames of {@link overrungl.util.MemoryStack MemoryStack}.
      * <p>
      * The default value is {@code 8}.
      */

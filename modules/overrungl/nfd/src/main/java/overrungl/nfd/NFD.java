@@ -52,7 +52,7 @@ import static overrungl.FunctionDescriptors.*;
  *
  * <h3>Basic Usages</h3>
  * {@snippet lang = java:
- * import value.util.overrungl.Pair;
+ * import overrungl.util.value.Pair;
  * void main() {
  *     NFD.init();
  *
