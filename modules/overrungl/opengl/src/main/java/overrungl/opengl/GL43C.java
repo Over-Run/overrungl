@@ -338,11 +338,11 @@ public sealed class GL43C extends GL42C permits GL44C {
         caps.glDispatchComputeIndirect = load.invoke("glDispatchComputeIndirect", JV);
         caps.glFramebufferParameteri = load.invoke("glFramebufferParameteri", IIIV);
         caps.glGetDebugMessageLog = load.invoke("glGetDebugMessageLog", IIPPPPPPI);
-        caps.glGetFramebufferParameteriv = load.invoke("glGetFramebufferParameteriv", IIPV);
-        caps.glGetInternalformati64v = load.invoke("glGetInternalformati64v", IIIIPV);
-        caps.glGetObjectLabel = load.invoke("glGetObjectLabel", IIIPPV);
-        caps.glGetObjectPtrLabel = load.invoke("glGetObjectPtrLabel", PIPPV);
-        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
+        caps.glGetFramebufferParameteriv = load.trivialHandle("glGetFramebufferParameteriv", IIPV);
+        caps.glGetInternalformati64v = load.trivialHandle("glGetInternalformati64v", IIIIPV);
+        caps.glGetObjectLabel = load.trivialHandle("glGetObjectLabel", IIIPPV);
+        caps.glGetObjectPtrLabel = load.trivialHandle("glGetObjectPtrLabel", PIPPV);
+        caps.glGetPointerv = load.trivialHandle("glGetPointerv", IPV);
         caps.glGetProgramInterfaceiv = load.invoke("glGetProgramInterfaceiv", IIIPV);
         caps.glGetProgramResourceIndex = load.invoke("glGetProgramResourceIndex", IIPI);
         caps.glGetProgramResourceLocation = load.invoke("glGetProgramResourceLocation", IIPI);

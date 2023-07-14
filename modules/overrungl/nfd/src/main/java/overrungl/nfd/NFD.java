@@ -131,23 +131,23 @@ public final class NFD {
     }
 
     private static final MethodHandle
-        NFD_FreePathN = downcall("NFD_FreePathN", PV),
+        NFD_FreePathN = downcallTrivial("NFD_FreePathN", PV),
         NFD_Init = downcall("NFD_Init", I),
         NFD_Quit = downcall("NFD_Quit", V),
         NFD_OpenDialogN = downcall("NFD_OpenDialogN", PPIPI),
         NFD_OpenDialogMultipleN = downcall("NFD_OpenDialogMultipleN", PPIPI),
         NFD_SaveDialogN = downcall("NFD_SaveDialogN", PPIPPI),
         NFD_PickFolderN = downcall("NFD_PickFolderN", PPI),
-        NFD_GetError = downcall("NFD_GetError", p),
-        NFD_ClearError = downcall("NFD_ClearError", V),
+        NFD_GetError = downcallTrivial("NFD_GetError", p),
+        NFD_ClearError = downcallTrivial("NFD_ClearError", V),
         NFD_PathSet_GetCount = downcall("NFD_PathSet_GetCount", PPI),
         NFD_PathSet_GetPathN = downcall("NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)),
-        NFD_PathSet_FreePathN = downcallSafe("NFD_PathSet_FreePathN", PV),
+        NFD_PathSet_FreePathN = downcallSafeTrivial("NFD_PathSet_FreePathN", PV),
         NFD_PathSet_GetEnum = downcall("NFD_PathSet_GetEnum", PPI),
         NFD_PathSet_FreeEnum = downcall("NFD_PathSet_FreeEnum", PV),
         NFD_PathSet_EnumNextN = downcall("NFD_PathSet_EnumNextN", PPI),
-        NFD_PathSet_Free = downcall("NFD_PathSet_Free", PV),
-        NFD_FreePathU8 = downcallSafe("NFD_FreePathU8", PV),
+        NFD_PathSet_Free = downcallTrivial("NFD_PathSet_Free", PV),
+        NFD_FreePathU8 = downcallSafeTrivial("NFD_FreePathU8", PV),
         NFD_OpenDialogU8 = downcallSafe("NFD_OpenDialogU8", PPIPI),
         NFD_OpenDialogMultipleU8 = downcallSafe("NFD_OpenDialogMultipleU8", PPIPI),
         NFD_SaveDialogU8 = downcallSafe("NFD_SaveDialogU8", PPIPPI),
@@ -159,16 +159,24 @@ public final class NFD {
         //no instance
     }
 
-    private static MethodHandle downcall(String name, FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
+    private static MethodHandle downcall(String name, FunctionDescriptors function, Linker.Option... options) {
+        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function, options);
+    }
+
+    private static MethodHandle downcallTrivial(String name, FunctionDescriptors function) {
+        return downcall(name, function, Linker.Option.isTrivial());
     }
 
     private static MethodHandle downcall(String name, FunctionDescriptor function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
-    private static MethodHandle downcallSafe(String name, FunctionDescriptors function) {
-        return RuntimeHelper.downcallSafe(LOOKUP.find(name).orElse(MemorySegment.NULL), function);
+    private static MethodHandle downcallSafe(String name, FunctionDescriptors function, Linker.Option... options) {
+        return RuntimeHelper.downcallSafe(LOOKUP.find(name).orElse(MemorySegment.NULL), function, options);
+    }
+
+    private static MethodHandle downcallSafeTrivial(String name, FunctionDescriptors function) {
+        return downcallSafe(name, function, Linker.Option.isTrivial());
     }
 
     private static MethodHandle downcallSafe(String name, FunctionDescriptor function) {

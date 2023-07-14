@@ -20,6 +20,7 @@ import overrungl.FunctionDescriptors;
 import overrungl.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
@@ -72,13 +73,20 @@ final class Handles {
         glfwGetEGLDisplay, glfwGetEGLContext, glfwGetEGLSurface, glfwGetOSMesaColorBuffer, glfwGetOSMesaDepthBuffer, glfwGetOSMesaContext;
 
     private static MethodHandle downcall(String name,
-                                         FunctionDescriptor function) {
-        return RuntimeHelper.downcallThrow(lookup.find(name), function);
+                                         FunctionDescriptor function,
+                                         Linker.Option... options) {
+        return RuntimeHelper.downcallThrow(lookup.find(name), function, options);
     }
 
     private static MethodHandle downcall(String name,
-                                         FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(lookup.find(name), function);
+                                         FunctionDescriptors function,
+                                         Linker.Option... options) {
+        return RuntimeHelper.downcallThrow(lookup.find(name), function, options);
+    }
+
+    private static MethodHandle downcallTrivial(String name,
+                                                FunctionDescriptors function) {
+        return downcall(name, function, Linker.Option.isTrivial());
     }
 
     private static MethodHandle downcallNative(String name,
@@ -121,59 +129,59 @@ final class Handles {
             STR."\{GLFW.VERSION_MAJOR}.\{GLFW.VERSION_MINOR}.\{GLFW.VERSION_REVISION}");
         glfwInit = downcall("glfwInit", I);
         glfwTerminate = downcall("glfwTerminate", V);
-        glfwInitHint = downcall("glfwInitHint", IIV);
-        glfwGetVersion = downcall("glfwGetVersion", PPPV);
-        glfwGetVersionString = downcall("glfwGetVersionString", p);
-        glfwGetError = downcall("glfwGetError", fd_PI);
+        glfwInitHint = downcallTrivial("glfwInitHint", IIV);
+        glfwGetVersion = downcallTrivial("glfwGetVersion", PPPV);
+        glfwGetVersionString = downcallTrivial("glfwGetVersionString", p);
+        glfwGetError = downcallTrivial("glfwGetError", fd_PI);
         glfwSetErrorCallback = downcall("glfwSetErrorCallback", PP);
-        glfwGetMonitors = downcall("glfwGetMonitors", Pp);
-        glfwGetPrimaryMonitor = downcall("glfwGetPrimaryMonitor", P);
-        glfwGetMonitorPos = downcall("glfwGetMonitorPos", PPPV);
-        glfwGetMonitorWorkarea = downcall("glfwGetMonitorWorkarea", PPPPPV);
-        glfwGetMonitorPhysicalSize = downcall("glfwGetMonitorPhysicalSize", PPPV);
-        glfwGetMonitorContentScale = downcall("glfwGetMonitorContentScale", PPPV);
-        glfwGetMonitorName = downcall("glfwGetMonitorName", Pp);
-        glfwSetMonitorUserPointer = downcall("glfwSetMonitorUserPointer", PPV);
-        glfwGetMonitorUserPointer = downcall("glfwGetMonitorUserPointer", PP);
+        glfwGetMonitors = downcallTrivial("glfwGetMonitors", Pp);
+        glfwGetPrimaryMonitor = downcallTrivial("glfwGetPrimaryMonitor", P);
+        glfwGetMonitorPos = downcallTrivial("glfwGetMonitorPos", PPPV);
+        glfwGetMonitorWorkarea = downcallTrivial("glfwGetMonitorWorkarea", PPPPPV);
+        glfwGetMonitorPhysicalSize = downcallTrivial("glfwGetMonitorPhysicalSize", PPPV);
+        glfwGetMonitorContentScale = downcallTrivial("glfwGetMonitorContentScale", PPPV);
+        glfwGetMonitorName = downcallTrivial("glfwGetMonitorName", Pp);
+        glfwSetMonitorUserPointer = downcallTrivial("glfwSetMonitorUserPointer", PPV);
+        glfwGetMonitorUserPointer = downcallTrivial("glfwGetMonitorUserPointer", PP);
         glfwSetMonitorCallback = downcall("glfwSetMonitorCallback", PP);
-        glfwGetVideoModes = downcall("glfwGetVideoModes", PPp);
-        glfwGetVideoMode = downcall("glfwGetVideoMode", FunctionDescriptor.of(ADDRESS.withTargetLayout(GLFWVidMode.LAYOUT), ADDRESS));
-        glfwSetGamma = downcall("glfwSetGamma", PFV);
-        glfwGetGammaRamp = downcall("glfwGetGammaRamp", FunctionDescriptor.of(ADDRESS.withTargetLayout(GLFWGammaRamp.LAYOUT), ADDRESS));
-        glfwSetGammaRamp = downcall("glfwSetGammaRamp", PPV);
-        glfwDefaultWindowHints = downcall("glfwDefaultWindowHints", V);
-        glfwWindowHint = downcall("glfwWindowHint", IIV);
-        glfwWindowHintString = downcall("glfwWindowHintString", IPV);
+        glfwGetVideoModes = downcallTrivial("glfwGetVideoModes", PPp);
+        glfwGetVideoMode = downcall("glfwGetVideoMode", FunctionDescriptor.of(ADDRESS.withTargetLayout(GLFWVidMode.LAYOUT), ADDRESS), Linker.Option.isTrivial());
+        glfwSetGamma = downcallTrivial("glfwSetGamma", PFV);
+        glfwGetGammaRamp = downcall("glfwGetGammaRamp", FunctionDescriptor.of(ADDRESS.withTargetLayout(GLFWGammaRamp.LAYOUT), ADDRESS), Linker.Option.isTrivial());
+        glfwSetGammaRamp = downcallTrivial("glfwSetGammaRamp", PPV);
+        glfwDefaultWindowHints = downcallTrivial("glfwDefaultWindowHints", V);
+        glfwWindowHint = downcallTrivial("glfwWindowHint", IIV);
+        glfwWindowHintString = downcallTrivial("glfwWindowHintString", IPV);
         glfwCreateWindow = downcall("glfwCreateWindow", IIPPPP);
         glfwDestroyWindow = downcall("glfwDestroyWindow", PV);
-        glfwWindowShouldClose = downcall("glfwWindowShouldClose", fd_PI);
-        glfwSetWindowShouldClose = downcall("glfwSetWindowShouldClose", PIV);
-        glfwSetWindowTitle = downcall("glfwSetWindowTitle", PPV);
-        glfwSetWindowIcon = downcall("glfwSetWindowIcon", PIPV);
-        glfwGetWindowPos = downcall("glfwGetWindowPos", PPPV);
-        glfwSetWindowPos = downcall("glfwSetWindowPos", PIIV);
-        glfwGetWindowSize = downcall("glfwGetWindowSize", PPPV);
-        glfwSetWindowSizeLimits = downcall("glfwSetWindowSizeLimits", PIIIIV);
-        glfwSetWindowAspectRatio = downcall("glfwSetWindowAspectRatio", PIIV);
-        glfwSetWindowSize = downcall("glfwSetWindowSize", PIIV);
-        glfwGetFramebufferSize = downcall("glfwGetFramebufferSize", PPPV);
-        glfwGetWindowFrameSize = downcall("glfwGetWindowFrameSize", PPPPPV);
-        glfwGetWindowContentScale = downcall("glfwGetWindowContentScale", PPPV);
-        glfwGetWindowOpacity = downcall("glfwGetWindowOpacity", PF);
-        glfwSetWindowOpacity = downcall("glfwSetWindowOpacity", PFV);
-        glfwIconifyWindow = downcall("glfwIconifyWindow", PV);
-        glfwRestoreWindow = downcall("glfwRestoreWindow", PV);
-        glfwMaximizeWindow = downcall("glfwMaximizeWindow", PV);
-        glfwShowWindow = downcall("glfwShowWindow", PV);
-        glfwHideWindow = downcall("glfwHideWindow", PV);
-        glfwFocusWindow = downcall("glfwFocusWindow", PV);
-        glfwRequestWindowAttention = downcall("glfwRequestWindowAttention", PV);
-        glfwGetWindowMonitor = downcall("glfwGetWindowMonitor", PP);
-        glfwSetWindowMonitor = downcall("glfwSetWindowMonitor", PPIIIIIV);
-        glfwGetWindowAttrib = downcall("glfwGetWindowAttrib", PII);
-        glfwSetWindowAttrib = downcall("glfwSetWindowAttrib", PIIV);
-        glfwSetWindowUserPointer = downcall("glfwSetWindowUserPointer", PPV);
-        glfwGetWindowUserPointer = downcall("glfwGetWindowUserPointer", PP);
+        glfwWindowShouldClose = downcallTrivial("glfwWindowShouldClose", fd_PI);
+        glfwSetWindowShouldClose = downcallTrivial("glfwSetWindowShouldClose", PIV);
+        glfwSetWindowTitle = downcallTrivial("glfwSetWindowTitle", PPV);
+        glfwSetWindowIcon = downcallTrivial("glfwSetWindowIcon", PIPV);
+        glfwGetWindowPos = downcallTrivial("glfwGetWindowPos", PPPV);
+        glfwSetWindowPos = downcallTrivial("glfwSetWindowPos", PIIV);
+        glfwGetWindowSize = downcallTrivial("glfwGetWindowSize", PPPV);
+        glfwSetWindowSizeLimits = downcallTrivial("glfwSetWindowSizeLimits", PIIIIV);
+        glfwSetWindowAspectRatio = downcallTrivial("glfwSetWindowAspectRatio", PIIV);
+        glfwSetWindowSize = downcallTrivial("glfwSetWindowSize", PIIV);
+        glfwGetFramebufferSize = downcallTrivial("glfwGetFramebufferSize", PPPV);
+        glfwGetWindowFrameSize = downcallTrivial("glfwGetWindowFrameSize", PPPPPV);
+        glfwGetWindowContentScale = downcallTrivial("glfwGetWindowContentScale", PPPV);
+        glfwGetWindowOpacity = downcallTrivial("glfwGetWindowOpacity", PF);
+        glfwSetWindowOpacity = downcallTrivial("glfwSetWindowOpacity", PFV);
+        glfwIconifyWindow = downcallTrivial("glfwIconifyWindow", PV);
+        glfwRestoreWindow = downcallTrivial("glfwRestoreWindow", PV);
+        glfwMaximizeWindow = downcallTrivial("glfwMaximizeWindow", PV);
+        glfwShowWindow = downcallTrivial("glfwShowWindow", PV);
+        glfwHideWindow = downcallTrivial("glfwHideWindow", PV);
+        glfwFocusWindow = downcallTrivial("glfwFocusWindow", PV);
+        glfwRequestWindowAttention = downcallTrivial("glfwRequestWindowAttention", PV);
+        glfwGetWindowMonitor = downcallTrivial("glfwGetWindowMonitor", PP);
+        glfwSetWindowMonitor = downcallTrivial("glfwSetWindowMonitor", PPIIIIIV);
+        glfwGetWindowAttrib = downcallTrivial("glfwGetWindowAttrib", PII);
+        glfwSetWindowAttrib = downcallTrivial("glfwSetWindowAttrib", PIIV);
+        glfwSetWindowUserPointer = downcallTrivial("glfwSetWindowUserPointer", PPV);
+        glfwGetWindowUserPointer = downcallTrivial("glfwGetWindowUserPointer", PP);
         glfwSetWindowPosCallback = downcall("glfwSetWindowPosCallback", PPP);
         glfwSetWindowSizeCallback = downcall("glfwSetWindowSizeCallback", PPP);
         glfwSetWindowCloseCallback = downcall("glfwSetWindowCloseCallback", PPP);
@@ -186,20 +194,20 @@ final class Handles {
         glfwPollEvents = downcall("glfwPollEvents", V);
         glfwWaitEvents = downcall("glfwWaitEvents", V);
         glfwWaitEventsTimeout = downcall("glfwWaitEventsTimeout", DV);
-        glfwPostEmptyEvent = downcall("glfwPostEmptyEvent", V);
-        glfwGetInputMode = downcall("glfwGetInputMode", PII);
-        glfwSetInputMode = downcall("glfwSetInputMode", PIIV);
-        glfwRawMouseMotionSupported = downcall("glfwRawMouseMotionSupported", I);
-        glfwGetKeyName = downcall("glfwGetKeyName", IIp);
-        glfwGetKeyScancode = downcall("glfwGetKeyScancode", II);
-        glfwGetKey = downcall("glfwGetKey", PII);
-        glfwGetMouseButton = downcall("glfwGetMouseButton", PII);
-        glfwGetCursorPos = downcall("glfwGetCursorPos", PPPV);
-        glfwSetCursorPos = downcall("glfwSetCursorPos", PDDV);
-        glfwCreateCursor = downcall("glfwCreateCursor", PIIP);
-        glfwCreateStandardCursor = downcall("glfwCreateStandardCursor", IP);
-        glfwDestroyCursor = downcall("glfwDestroyCursor", PV);
-        glfwSetCursor = downcall("glfwSetCursor", PPV);
+        glfwPostEmptyEvent = downcallTrivial("glfwPostEmptyEvent", V);
+        glfwGetInputMode = downcallTrivial("glfwGetInputMode", PII);
+        glfwSetInputMode = downcallTrivial("glfwSetInputMode", PIIV);
+        glfwRawMouseMotionSupported = downcallTrivial("glfwRawMouseMotionSupported", I);
+        glfwGetKeyName = downcallTrivial("glfwGetKeyName", IIp);
+        glfwGetKeyScancode = downcallTrivial("glfwGetKeyScancode", II);
+        glfwGetKey = downcallTrivial("glfwGetKey", PII);
+        glfwGetMouseButton = downcallTrivial("glfwGetMouseButton", PII);
+        glfwGetCursorPos = downcallTrivial("glfwGetCursorPos", PPPV);
+        glfwSetCursorPos = downcallTrivial("glfwSetCursorPos", PDDV);
+        glfwCreateCursor = downcallTrivial("glfwCreateCursor", PIIP);
+        glfwCreateStandardCursor = downcallTrivial("glfwCreateStandardCursor", IP);
+        glfwDestroyCursor = downcallTrivial("glfwDestroyCursor", PV);
+        glfwSetCursor = downcallTrivial("glfwSetCursor", PPV);
         glfwSetKeyCallback = downcall("glfwSetKeyCallback", PPP);
         glfwSetCharCallback = downcall("glfwSetCharCallback", PPP);
         glfwSetMouseButtonCallback = downcall("glfwSetMouseButtonCallback", PPP);
@@ -207,33 +215,33 @@ final class Handles {
         glfwSetCursorEnterCallback = downcall("glfwSetCursorEnterCallback", PPP);
         glfwSetScrollCallback = downcall("glfwSetScrollCallback", PPP);
         glfwSetDropCallback = downcall("glfwSetDropCallback", PPP);
-        glfwJoystickPresent = downcall("glfwJoystickPresent", II);
-        glfwGetJoystickAxes = downcall("glfwGetJoystickAxes", IPp);
-        glfwGetJoystickButtons = downcall("glfwGetJoystickButtons", IPp);
-        glfwGetJoystickHats = downcall("glfwGetJoystickHats", IPP);
-        glfwGetJoystickName = downcall("glfwGetJoystickName", Ip);
-        glfwGetJoystickGUID = downcall("glfwGetJoystickGUID", Ip);
-        glfwSetJoystickUserPointer = downcall("glfwSetJoystickUserPointer", IPV);
-        glfwGetJoystickUserPointer = downcall("glfwGetJoystickUserPointer", IP);
-        glfwJoystickIsGamepad = downcall("glfwJoystickIsGamepad", II);
+        glfwJoystickPresent = downcallTrivial("glfwJoystickPresent", II);
+        glfwGetJoystickAxes = downcallTrivial("glfwGetJoystickAxes", IPp);
+        glfwGetJoystickButtons = downcallTrivial("glfwGetJoystickButtons", IPp);
+        glfwGetJoystickHats = downcallTrivial("glfwGetJoystickHats", IPP);
+        glfwGetJoystickName = downcallTrivial("glfwGetJoystickName", Ip);
+        glfwGetJoystickGUID = downcallTrivial("glfwGetJoystickGUID", Ip);
+        glfwSetJoystickUserPointer = downcallTrivial("glfwSetJoystickUserPointer", IPV);
+        glfwGetJoystickUserPointer = downcallTrivial("glfwGetJoystickUserPointer", IP);
+        glfwJoystickIsGamepad = downcallTrivial("glfwJoystickIsGamepad", II);
         glfwSetJoystickCallback = downcall("glfwSetJoystickCallback", PP);
         glfwUpdateGamepadMappings = downcall("glfwUpdateGamepadMappings", fd_PI);
-        glfwGetGamepadName = downcall("glfwGetGamepadName", Ip);
-        glfwGetGamepadState = downcall("glfwGetGamepadState", IPI);
-        glfwSetClipboardString = downcall("glfwSetClipboardString", PPV);
-        glfwGetClipboardString = downcall("glfwGetClipboardString", Pp);
-        glfwGetTime = downcall("glfwGetTime", D);
-        glfwSetTime = downcall("glfwSetTime", DV);
-        glfwGetTimerValue = downcall("glfwGetTimerValue", J);
-        glfwGetTimerFrequency = downcall("glfwGetTimerFrequency", J);
+        glfwGetGamepadName = downcallTrivial("glfwGetGamepadName", Ip);
+        glfwGetGamepadState = downcallTrivial("glfwGetGamepadState", IPI);
+        glfwSetClipboardString = downcallTrivial("glfwSetClipboardString", PPV);
+        glfwGetClipboardString = downcallTrivial("glfwGetClipboardString", Pp);
+        glfwGetTime = downcallTrivial("glfwGetTime", D);
+        glfwSetTime = downcallTrivial("glfwSetTime", DV);
+        glfwGetTimerValue = downcallTrivial("glfwGetTimerValue", J);
+        glfwGetTimerFrequency = downcallTrivial("glfwGetTimerFrequency", J);
         glfwMakeContextCurrent = downcall("glfwMakeContextCurrent", PV);
-        glfwGetCurrentContext = downcall("glfwGetCurrentContext", P);
+        glfwGetCurrentContext = downcallTrivial("glfwGetCurrentContext", P);
         glfwSwapBuffers = downcall("glfwSwapBuffers", PV);
-        glfwSwapInterval = downcall("glfwSwapInterval", IV);
-        glfwExtensionSupported = downcall("glfwExtensionSupported", fd_PI);
+        glfwSwapInterval = downcallTrivial("glfwSwapInterval", IV);
+        glfwExtensionSupported = downcallTrivial("glfwExtensionSupported", fd_PI);
         glfwGetProcAddress = downcall("glfwGetProcAddress", PP);
-        glfwVulkanSupported = downcall("glfwVulkanSupported", I);
-        glfwGetRequiredInstanceExtensions = downcall("glfwGetRequiredInstanceExtensions", Pp);
+        glfwVulkanSupported = downcallTrivial("glfwVulkanSupported", I);
+        glfwGetRequiredInstanceExtensions = downcallTrivial("glfwGetRequiredInstanceExtensions", Pp);
 
         // GLFW Vulkan
         glfwGetInstanceProcAddress = downcall("glfwGetInstanceProcAddress", PPP);

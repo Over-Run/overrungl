@@ -19,6 +19,7 @@ package overrungl.stb;
 import overrungl.FunctionDescriptors;
 import overrungl.RuntimeHelper;
 
+import java.lang.foreign.Linker;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 
@@ -33,8 +34,14 @@ final class Handles {
     private static SymbolLookup lookup;
 
     static MethodHandle downcall(String name,
-                                 FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(lookup.find(name), function);
+                                 FunctionDescriptors function,
+                                 Linker.Option... options) {
+        return RuntimeHelper.downcallThrow(lookup.find(name), function, options);
+    }
+
+    static MethodHandle downcallTrivial(String name,
+                                        FunctionDescriptors function) {
+        return downcall(name, function, Linker.Option.isTrivial());
     }
 
     public static void initialize() {

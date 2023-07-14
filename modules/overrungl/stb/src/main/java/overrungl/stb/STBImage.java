@@ -27,8 +27,7 @@ import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.FunctionDescriptors.*;
-import static overrungl.stb.Handles.downcall;
-import static overrungl.stb.Handles.initialize;
+import static overrungl.stb.Handles.*;
 
 /**
  * The STB image reader.
@@ -66,12 +65,12 @@ public final class STBImage {
     }
 
     private static void create() {
-        stbi_convert_iphone_png_to_rgb = downcall("stbi_convert_iphone_png_to_rgb", IV);
-        stbi_convert_iphone_png_to_rgb_thread = downcall("stbi_convert_iphone_png_to_rgb_thread", IV);
-        stbi_failure_reason = downcall("stbi_failure_reason", p);
-        stbi_hdr_to_ldr_gamma = downcall("stbi_hdr_to_ldr_gamma", FV);
-        stbi_hdr_to_ldr_scale = downcall("stbi_hdr_to_ldr_scale", FV);
-        stbi_image_free = downcall("stbi_image_free", PV);
+        stbi_convert_iphone_png_to_rgb = downcallTrivial("stbi_convert_iphone_png_to_rgb", IV);
+        stbi_convert_iphone_png_to_rgb_thread = downcallTrivial("stbi_convert_iphone_png_to_rgb_thread", IV);
+        stbi_failure_reason = downcallTrivial("stbi_failure_reason", p);
+        stbi_hdr_to_ldr_gamma = downcallTrivial("stbi_hdr_to_ldr_gamma", FV);
+        stbi_hdr_to_ldr_scale = downcallTrivial("stbi_hdr_to_ldr_scale", FV);
+        stbi_image_free = downcallTrivial("stbi_image_free", PV);
         stbi_info = downcall("stbi_info", PPPPI);
         stbi_info_from_callbacks = downcall("stbi_info_from_callbacks", PPPPPI);
         stbi_info_from_file = downcall("stbi_info_from_file", PPPPI);
@@ -99,9 +98,9 @@ public final class STBImage {
         stbi_loadf_from_callbacks = downcall("stbi_loadf_from_callbacks", PPPPPIp);
         stbi_loadf_from_file = downcall("stbi_loadf_from_file", PPPPIp);
         stbi_loadf_from_memory = downcall("stbi_loadf_from_memory", PIPPPIp);
-        stbi_set_flip_vertically_on_load = downcall("stbi_set_flip_vertically_on_load", IV);
+        stbi_set_flip_vertically_on_load = downcallTrivial("stbi_set_flip_vertically_on_load", IV);
         stbi_set_flip_vertically_on_load_thread = downcall("stbi_set_flip_vertically_on_load_thread", IV);
-        stbi_set_unpremultiply_on_load = downcall("stbi_set_unpremultiply_on_load", IV);
+        stbi_set_unpremultiply_on_load = downcallTrivial("stbi_set_unpremultiply_on_load", IV);
         stbi_set_unpremultiply_on_load_thread = downcall("stbi_set_unpremultiply_on_load_thread", IV);
         stbi_zlib_decode_buffer = downcall("stbi_zlib_decode_buffer", PIPII);
         stbi_zlib_decode_malloc = downcall("stbi_zlib_decode_malloc", PIPp);

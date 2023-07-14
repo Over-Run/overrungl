@@ -105,7 +105,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
     }
 
     static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glActiveTexture = load.invoke("glActiveTexture", IV);
+        caps.glActiveTexture = load.trivialHandle("glActiveTexture", IV);
         caps.glCompressedTexImage1D = load.invoke("glCompressedTexImage1D", IIIIIIPV);
         caps.glCompressedTexImage2D = load.invoke("glCompressedTexImage2D", IIIIIIIPV);
         caps.glCompressedTexImage3D = load.invoke("glCompressedTexImage3D", IIIIIIIIPV);
@@ -113,7 +113,7 @@ public sealed class GL13C extends GL12C permits GL13, GL14C {
         caps.glCompressedTexSubImage2D = load.invoke("glCompressedTexSubImage2D", IIIIIIIIPV);
         caps.glCompressedTexSubImage3D = load.invoke("glCompressedTexSubImage3D", IIIIIIIIIIPV);
         caps.glGetCompressedTexImage = load.invoke("glGetCompressedTexImage", IIPV);
-        caps.glSampleCoverage = load.invoke("glSampleCoverage", FZV);
+        caps.glSampleCoverage = load.trivialHandle("glSampleCoverage", FZV);
     }
 
     public static void activeTexture(int texture) {

@@ -325,11 +325,12 @@ public final class RuntimeHelper {
      *
      * @param symbol   the address of the target function.
      * @param function the function descriptor of the target function.
+     * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function) {
-        return isNullptr(symbol) ? null : LINKER.downcallHandle(symbol, function);
+    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function, Linker.Option... options) {
+        return isNullptr(symbol) ? null : LINKER.downcallHandle(symbol, function, options);
     }
 
     /**
@@ -337,10 +338,11 @@ public final class RuntimeHelper {
      *
      * @param optional the optional contained the address of the target function.
      * @param function the function descriptor of the target function.
+     * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle.
      */
-    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptor function) {
-        return LINKER.downcallHandle(optional.orElseThrow(), function);
+    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptor function, Linker.Option... options) {
+        return LINKER.downcallHandle(optional.orElseThrow(), function, options);
     }
 
     /**
@@ -348,11 +350,12 @@ public final class RuntimeHelper {
      *
      * @param symbol   the address of the target function.
      * @param function the function descriptor of the target function.
+     * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
-    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptors function) {
-        return downcallSafe(symbol, function.descriptor());
+    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptors function, Linker.Option... options) {
+        return downcallSafe(symbol, function.descriptor(), options);
     }
 
     /**
@@ -360,10 +363,11 @@ public final class RuntimeHelper {
      *
      * @param optional the optional contained the address of the target function.
      * @param function the function descriptor of the target function.
+     * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle.
      */
-    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptors function) {
-        return downcallThrow(optional, function.descriptor());
+    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptors function, Linker.Option... options) {
+        return downcallThrow(optional, function.descriptor(), options);
     }
 
     /**
