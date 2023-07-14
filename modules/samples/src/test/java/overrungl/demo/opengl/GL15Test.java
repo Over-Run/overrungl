@@ -18,12 +18,12 @@ package overrungl.demo.opengl;
 
 import overrungl.RuntimeHelper;
 import overrungl.demo.util.IOUtil;
-import overrungl.opengl.GL;
-import overrungl.opengl.GL11;
-import overrungl.opengl.GLLoader;
 import overrungl.glfw.Callbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
+import overrungl.opengl.GL;
+import overrungl.opengl.GL11;
+import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
 
 import java.io.IOException;
