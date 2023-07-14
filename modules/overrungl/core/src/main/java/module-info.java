@@ -24,5 +24,5 @@ module overrungl.core {
     exports overrungl.util;
     exports overrungl.util.value;
 
-    requires transitive org.jetbrains.annotations;
+    requires static transitive org.jetbrains.annotations;
 }
