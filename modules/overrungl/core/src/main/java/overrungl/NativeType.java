@@ -26,7 +26,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.PARAMETER, ElementType.METHOD})
+@Target(ElementType.TYPE_USE)
 public @interface NativeType {
     /**
      * {@return the name of the native type}
