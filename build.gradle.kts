@@ -4,6 +4,7 @@ plugins {
     `java-platform`
     `maven-publish`
     signing
+    id("me.champeau.jmh") version "0.7.1" apply false
 }
 
 val projGroupId: String by project
@@ -116,6 +117,7 @@ enum class Artifact(
 subprojects {
     apply(plugin = "java-library")
     apply(plugin = "idea")
+    apply(plugin = "me.champeau.jmh")
 
     group = projGroupId
     version = projVersion
@@ -132,12 +134,16 @@ subprojects {
     val compileOnly by configurations
     val implementation by configurations
     val testImplementation by configurations
+    val jmh by configurations
+    val jmhAnnotationProcessor by configurations
     dependencies {
         compileOnly("org.jetbrains:annotations:24.0.1")
         if (project.name != "core") {
             implementation(project(":core"))
         }
         testImplementation("io.github.over-run:timer:0.3.0")
+        jmh("org.openjdk.jmh:jmh-core:1.36")
+        jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.36")
     }
 
     val targetJavaVersion = 21
