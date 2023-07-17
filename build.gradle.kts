@@ -147,6 +147,10 @@ subprojects {
         options.release.set(targetJavaVersion)
     }
 
+    tasks.withType<Test> {
+        if (enablePreview) jvmArgs("--enable-preview")
+    }
+
     extensions.configure<JavaPluginExtension>("java") {
         val javaVersion = JavaVersion.toVersion(targetJavaVersion)
         if (JavaVersion.current() < javaVersion) {
