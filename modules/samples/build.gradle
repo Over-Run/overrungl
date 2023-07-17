@@ -1,5 +1,0 @@
-dependencies {
-    for (String proj : [':core', ':glfw', ':joml', ':openal', ':opengl', ':stb']) {
-        implementation project(proj)
-    }
-}
