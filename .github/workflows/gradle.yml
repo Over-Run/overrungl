@@ -39,7 +39,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-reports
-          path: build/reports/
+          path: |
+            modules/overrungl/**/build/reports/
+            modules/**/build/reports/
       - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '21-ea' }}
         uses: actions/upload-artifact@v3
