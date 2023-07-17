@@ -34,7 +34,13 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build
-      - name: capture build artifacts
+      - name: Upload build reports
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-reports
+          path: build/reports/
+      - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '21-ea' }}
         uses: actions/upload-artifact@v3
         with:
