@@ -8,9 +8,11 @@ pluginManagement {
 }
 
 val projName: String by settings
+val projModules: String by settings
+
 rootProject.name = projName
 
-listOf("core", "glfw", "nfd", "joml", "opengl", "stb").forEach {
+projModules.split(',').map { it.trim() }.forEach {
     include(it)
     project(":$it").projectDir = file("modules/overrungl/$it/")
 }
