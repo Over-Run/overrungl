@@ -17,7 +17,6 @@
 /**
  * The OpenGL binding.
  *
- * @moduleGraph
  * @author squid233
  * @since 0.1.0
  */

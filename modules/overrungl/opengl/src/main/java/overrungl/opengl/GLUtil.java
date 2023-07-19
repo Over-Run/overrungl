@@ -17,14 +17,15 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.RuntimeHelper;
+import overrungl.OverrunGL;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.util.Locale;
 import java.util.function.Consumer;
 
-import static overrungl.RuntimeHelper.*;
+import static overrungl.OverrunGL.apiLog;
+import static overrungl.internal.RuntimeHelper.unknownToken;
 import static overrungl.opengl.ext.amd.GLAMDDebugOutput.*;
 import static overrungl.opengl.ext.arb.GLARBDebugOutput.*;
 
@@ -40,17 +41,17 @@ public final class GLUtil {
 
     /**
      * Detects the best debug output functionality to use and creates a callback that prints information to
-     * {@link RuntimeHelper#apiLogger() API Logger}.
+     * {@link OverrunGL#apiLogger() API Logger}.
      * <p>
      * The callback function is returned as an {@link Arena},
      * that should reset to NULL and be {@link Arena#close() freed} when no longer needed, which is often after
-     * destroy GL context.
+     * destroying GL context.
      *
      * @return the arena.
      */
     @Nullable
     public static Arena setupDebugMessageCallback() {
-        return setupDebugMessageCallback(apiLogger());
+        return setupDebugMessageCallback(OverrunGL.apiLogger());
     }
 
     /**

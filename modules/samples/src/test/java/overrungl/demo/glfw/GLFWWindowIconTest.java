@@ -16,15 +16,15 @@
 
 package overrungl.demo.glfw;
 
-import overrungl.RuntimeHelper;
 import overrungl.demo.util.IOUtil;
-import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
 import overrungl.glfw.Callbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWImage;
+import overrungl.opengl.GL;
+import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
+import overrungl.util.CheckUtil;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -57,12 +57,12 @@ public final class GLFWWindowIconTest {
 
     private void init(Arena arena) {
         GLFWErrorCallback.createPrint().set();
-        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
+        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         window = GLFW.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
-        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
+        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
 
         try {
             var px = arena.allocate(JAVA_INT);
@@ -105,7 +105,7 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress, true) != null,
+        CheckUtil.check(GLLoader.load(GLFW::getProcAddress, true) != null,
             "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

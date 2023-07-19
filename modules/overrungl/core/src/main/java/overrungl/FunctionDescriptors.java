@@ -16,6 +16,8 @@
 
 package overrungl;
 
+import overrungl.internal.RuntimeHelper;
+
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
 

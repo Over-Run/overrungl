@@ -18,7 +18,7 @@ package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.opengl.ext.arb.GLARBTextureRectangle;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;

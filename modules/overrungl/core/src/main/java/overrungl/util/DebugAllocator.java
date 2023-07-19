@@ -19,7 +19,7 @@ package overrungl.util;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
-import overrungl.RuntimeHelper;
+import overrungl.OverrunGL;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -65,13 +65,17 @@ final class DebugAllocator {
                     missingStacktrace = true;
                 }
 
-                RuntimeHelper.apiLog(sb.toString());
+                OverrunGL.apiLog(sb.toString());
             }
 
             if (missingStacktrace) {
-                RuntimeHelper.apiLog("[OverrunGL] Reminder: disable Configurations.DEBUG_MEM_UTIL_FAST to get stacktrace of leaking allocations.\n");
+                OverrunGL.apiLog("[OverrunGL] Reminder: disable Configurations.DEBUG_MEM_UTIL_FAST to get stacktrace of leaking allocations.\n");
             }
         }));
+    }
+
+    private DebugAllocator() {
+        //no instance
     }
 
     static long track(long address, long size) {
@@ -127,7 +131,7 @@ final class DebugAllocator {
             }
         }
 
-        RuntimeHelper.apiLog(sb.toString());
+        OverrunGL.apiLog(sb.toString());
     }
 
     static long untrack(long address) {

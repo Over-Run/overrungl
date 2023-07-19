@@ -35,6 +35,10 @@ public final class OperatingSystems {
     public static final FreeBSD FREE_BSD = new FreeBSD();
     public static final Unix UNIX = new Unix();
 
+    private OperatingSystems() {
+        //no instance
+    }
+
     /**
      * {@return the arch in native library path}
      */

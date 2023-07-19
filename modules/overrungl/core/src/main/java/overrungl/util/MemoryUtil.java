@@ -19,17 +19,12 @@ package overrungl.util;
 import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
-import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static overrungl.FunctionDescriptors.*;
 
 /**
@@ -56,15 +51,12 @@ public final class MemoryUtil {
     /**
      * An unbounded address layout.
      */
-    public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE));
+    public static final AddressLayout ADDRESS_UNBOUNDED = ValueLayout.ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(ValueLayout.JAVA_BYTE));
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
-    /**
-     * constructor
-     */
     private MemoryUtil() {
         throw new IllegalStateException("Do not construct instance");
     }
@@ -85,6 +77,34 @@ public final class MemoryUtil {
      */
     public static boolean isNullptr(long address) {
         return address == NULL;
+    }
+
+    /**
+     * Checks whether <i>{@code byteSize}</i> is greater than 0 or equals to 0.
+     *
+     * @param byteSize the size, in bytes.
+     * @throws IllegalArgumentException if <i>{@code byteSize}</i> {@code < 0}.
+     */
+    public static void checkByteSize(long byteSize) throws IllegalArgumentException {
+        if (byteSize < 0) {
+            throw new IllegalArgumentException("byteSize must be >= 0.");
+        }
+    }
+
+    /**
+     * Checks whether <i>{@code alignment}</i> is greater than 0 and is a power-of-two value.
+     *
+     * @param alignment the alignment, in bytes.
+     * @throws IllegalArgumentException if <i>{@code alignment}</i> {@code <= 0},
+     *                                  or if <i>{@code alignment}</i> is not a power of 2.
+     */
+    public static void checkAlignment(long alignment) throws IllegalArgumentException {
+        if (alignment <= 0) {
+            throw new IllegalArgumentException("Alignment must be > 0.");
+        }
+        if (Long.bitCount(alignment) != 1) {
+            throw new IllegalArgumentException("Alignment must be a power-of-two value.");
+        }
     }
 
     /**
@@ -201,7 +221,7 @@ public final class MemoryUtil {
                 Objects.requireNonNullElse(memblock, MemorySegment.NULL),
                 size)).reinterpret(size);
             if (DEBUG) {
-                if (!RuntimeHelper.isNullptr(segment)) {
+                if (!isNullptr(segment)) {
                     DebugAllocator.track(segment.address(), size);
                 } else if (size != 0L) {
                     DebugAllocator.track(ptr, oldSize);
@@ -227,7 +247,7 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (RuntimeHelper.isNullptr(memblock)) return;
+        if (isNullptr(memblock)) return;
         if (DEBUG) DebugAllocator.untrack(memblock.address());
         try {
             m_free.invokeExact(memblock);

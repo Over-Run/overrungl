@@ -16,7 +16,7 @@
 
 package overrungl.glfw;
 
-import overrungl.RuntimeHelper;
+import overrungl.OverrunGL;
 
 import java.io.PrintStream;
 import java.util.function.Consumer;
@@ -76,11 +76,11 @@ public final class GLFWErrorCallback {
 
     /**
      * {@return a {@link IGLFWErrorFun} instance that prints a message to
-     * {@link RuntimeHelper#apiLogger() default library logger} when an error occurs}
+     * {@link OverrunGL#apiLogger() default library logger} when an error occurs}
      *
      * @see #createPrint(PrintStream)
      */
     public static IGLFWErrorFun createPrint() {
-        return createLog(RuntimeHelper.apiLogger());
+        return createLog(OverrunGL.apiLogger());
     }
 }

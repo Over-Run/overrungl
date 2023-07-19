@@ -16,11 +16,11 @@
 
 package overrungl.demo.glfw;
 
-import overrungl.RuntimeHelper;
 import overrungl.glfw.Callbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWGamepadState;
+import overrungl.util.CheckUtil;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -47,13 +47,13 @@ public final class GLFWJoystickTest {
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
+        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         GLFW.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
         window = GLFW.createWindow(200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
-        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
+        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);

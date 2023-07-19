@@ -17,7 +17,7 @@
 package overrungl.opengl;
 
 import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;

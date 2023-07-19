@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import overrungl.opengl.ext.arb.GLARBDrawBuffers;
 import overrungl.opengl.ext.arb.GLARBFragmentProgram;
 import overrungl.opengl.ext.arb.GLARBShaderObjects;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;

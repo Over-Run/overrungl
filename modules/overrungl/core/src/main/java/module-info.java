@@ -17,7 +17,6 @@
 /**
  * The core module of OverrunGL.
  *
- * @moduleGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -26,6 +25,11 @@ module overrungl.core {
     exports overrungl.os;
     exports overrungl.util;
     exports overrungl.util.value;
+    exports overrungl.internal
+        to overrungl.glfw,
+        overrungl.nfd,
+        overrungl.opengl,
+        overrungl.stb;
 
     requires static org.jetbrains.annotations;
 }

@@ -19,7 +19,7 @@ package overrungl.opengl.ext.apple;
 import overrungl.opengl.GLExtCaps;
 import overrungl.opengl.GLLoadFunc;
 import overrungl.opengl.GLLoader;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
