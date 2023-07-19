@@ -22,8 +22,6 @@ import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
 import overrungl.RuntimeHelper;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
 /**
@@ -36,7 +34,7 @@ import java.lang.invoke.MethodHandle;
  * </ul>
  *
  * <h2>GLCapabilities creation</h2>
- * <p>Instances of {@code GLCapabilities} can be created with the {@link #load(boolean, GLLoadFunc) load} method. An OpenGL context must be current in the current thread
+ * <p>Instances of {@code GLCapabilities} can be created with the {@link #load(GLLoadFunc, boolean) load} method. An OpenGL context must be current in the current thread
  * before it is called. Calling this method is expensive, so the {@code GLCapabilities} instance should be associated with the OpenGL context and reused as
  * necessary.</p>
  *
@@ -45,7 +43,7 @@ import java.lang.invoke.MethodHandle;
  * {@link #setCapabilities} method. The user is also responsible for clearing the current {@code GLCapabilities} instance when the context is destroyed or made
  * current in another thread.</p>
  *
- * <p>Note that the {@link #load(boolean, GLLoadFunc) load} method implicitly calls {@link #setCapabilities} with the newly created instance.</p>
+ * <p>Note that the {@link #load(GLLoadFunc, boolean) load} method implicitly calls {@link #setCapabilities} with the newly created instance.</p>
  *
  * @author squid233
  * @see GLLoadFunc
@@ -80,13 +78,13 @@ public final class GLLoader {
      * <p>
      * This is equivalent to the following code:
      * <pre><code>
-     * {@link #getCapabilities()}.{@link GLCapabilities#ext ext}
+     * {@link #getCapabilities()}.{@link GLCapabilities#ext() ext()}
      * </code></pre>
      *
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
     public static GLExtCaps getExtCapabilities() {
-        return getCapabilities().ext;
+        return getCapabilities().ext();
     }
 
     private static GLCapabilities checkCapabilities(@Nullable GLCapabilities caps) {
@@ -98,75 +96,25 @@ public final class GLLoader {
     }
 
     /**
-     * Load OpenGL compatibility profile by the given load function with confined arena.
-     *
-     * @param getter the function pointer getter
-     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLCapabilities loadConfined(GLLoadFunc.Getter getter) {
-        return loadConfined(DEFAULT_COMPATIBLE, getter);
-    }
-
-    /**
-     * Load OpenGL by the given load function with confined arena.
-     *
-     * @param forwardCompatible If {@code true}, only loads core profile functions.
-     * @param getter            the function pointer getter
-     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLCapabilities loadConfined(boolean forwardCompatible, GLLoadFunc.Getter getter) {
-        try (Arena arena = Arena.ofConfined()) {
-            return load(forwardCompatible, arena, getter);
-        }
-    }
-
-    /**
-     * Load OpenGL compatibility profile by the given load function with the given segment allocator.
-     *
-     * @param allocator the segment allocator.
-     * @param getter    the function pointer getter
-     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLCapabilities load(SegmentAllocator allocator, GLLoadFunc.Getter getter) {
-        return load(DEFAULT_COMPATIBLE, allocator, getter);
-    }
-
-    /**
-     * Load OpenGL by the given load function with the given segment allocator.
-     *
-     * @param forwardCompatible If {@code true}, only loads core profile functions.
-     * @param allocator         the segment allocator.
-     * @param getter            the function pointer getter
-     * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLCapabilities load(boolean forwardCompatible, SegmentAllocator allocator, GLLoadFunc.Getter getter) {
-        return load(forwardCompatible, GLLoadFunc.of(allocator, getter));
-    }
-
-    /**
-     * Load OpenGL compatibility profile by the given load function.
+     * Loads OpenGL compatibility profile with the given load function.
      *
      * @param load the load function
      * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
     public static GLCapabilities load(GLLoadFunc load) {
-        return load(DEFAULT_COMPATIBLE, load);
+        return load(load, DEFAULT_COMPATIBLE);
     }
 
     /**
-     * Load OpenGL by the given load function.
+     * Loads OpenGL with the given load function.
      *
-     * @param forwardCompatible If {@code true}, only loads core profile functions.
      * @param load              the load function
+     * @param forwardCompatible If {@code true}, only loads core profile functions.
      * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
-    public static GLCapabilities load(boolean forwardCompatible, GLLoadFunc load) {
+    public static GLCapabilities load(GLLoadFunc load, boolean forwardCompatible) {
         var caps = new GLCapabilities(forwardCompatible);
         // set the global capabilities first
         setCapabilities(caps);

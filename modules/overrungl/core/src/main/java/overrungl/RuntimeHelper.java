@@ -268,17 +268,9 @@ public final class RuntimeHelper {
      *
      * @param segment the segment.
      */
+    @Deprecated
     public static boolean isNullptr(@Nullable MemorySegment segment) {
         return segment == null || segment.equals(MemorySegment.NULL);
-    }
-
-    /**
-     * {@return {@code true} if <i>{@code address}</i> is {@value NULL}}
-     *
-     * @param address the address.
-     */
-    public static boolean isNullptr(long address) {
-        return address == NULL;
     }
 
     /**

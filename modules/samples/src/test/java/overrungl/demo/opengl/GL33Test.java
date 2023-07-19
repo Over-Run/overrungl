@@ -107,7 +107,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        RuntimeHelper.check(GLLoader.loadConfined(true, GLFW::ngetProcAddress) != null,
+        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress, true) != null,
             "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();

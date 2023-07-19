@@ -117,7 +117,7 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class NFD {
-    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", "0.1.0");
+    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", RuntimeHelper.VERSION);
     private static final OperatingSystem os = OperatingSystem.current();
     private static final boolean isOsWin = os.isWindows();
     private static final boolean isOsWinOrApple = os.isWindows() || os.isMacOsX();

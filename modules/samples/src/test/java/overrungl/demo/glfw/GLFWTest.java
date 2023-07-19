@@ -79,7 +79,7 @@ public final class GLFWTest {
     }
 
     private void load() {
-        RuntimeHelper.check(GLLoader.loadConfined(GLFW::ngetProcAddress) != null,
+        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress) != null,
             "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

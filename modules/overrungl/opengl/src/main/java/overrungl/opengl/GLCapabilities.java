@@ -280,18 +280,9 @@ public class GLCapabilities {
         Ver20, Ver21,
         Ver30, Ver31, Ver32, Ver33,
         Ver40, Ver41, Ver42, Ver43, Ver44, Ver45, Ver46;
-    /**
-     * The raw OpenGL version value.
-     */
-    public int rawGLVersion;
-    /**
-     * Forward compatible flag. {@code false} for deprecated and removed function.
-     */
-    public boolean forwardCompatible;
-    /**
-     * The OpenGL extension capabilities.
-     */
-    public GLExtCaps ext;
+    private int rawGLVersion;
+    private final boolean forwardCompatible;
+    private GLExtCaps ext;
 
     /**
      * Constructs <i>incomplete</i> OpenGL capabilities.
@@ -307,7 +298,6 @@ public class GLCapabilities {
      *
      * @param load the load function.
      * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
-     * no guaranteed to actually supported version, please use {@code Ver##}
      */
     public int load(GLLoadFunc load) {
         glGetString = load.invoke("glGetString", FunctionDescriptors.Ip);
@@ -428,5 +418,28 @@ public class GLCapabilities {
         Ver45 = (major == 4 && minor >= 5) || major > 4;
         Ver46 = (major == 4 && minor >= 6) || major > 4;
         return GLLoader.makeVersion(major, minor);
+    }
+
+    /**
+     * {@return the raw OpenGL version value}
+     */
+    public int rawGLVersion() {
+        return rawGLVersion;
+    }
+
+    /**
+     * Forward compatible flag.
+     *
+     * @return {@code false} for deprecated and removed function.
+     */
+    public boolean forwardCompatible() {
+        return forwardCompatible;
+    }
+
+    /**
+     * {@return the OpenGL extension capabilities}
+     */
+    public GLExtCaps ext() {
+        return ext;
     }
 }
