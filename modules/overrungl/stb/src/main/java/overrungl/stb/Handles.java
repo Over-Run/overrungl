@@ -17,7 +17,8 @@
 package overrungl.stb;
 
 import overrungl.FunctionDescriptors;
-import overrungl.RuntimeHelper;
+import overrungl.OverrunGL;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.Linker;
 import java.lang.foreign.SymbolLookup;
@@ -33,6 +34,10 @@ final class Handles {
     private static boolean loaded = false;
     private static SymbolLookup lookup;
 
+    private Handles() {
+        //no instance
+    }
+
     static MethodHandle downcall(String name,
                                  FunctionDescriptors function,
                                  Linker.Option... options) {
@@ -47,6 +52,6 @@ final class Handles {
     public static void initialize() {
         if (loaded) return;
         loaded = true;
-        lookup = RuntimeHelper.load("stb", "stb", RuntimeHelper.VERSION);
+        lookup = RuntimeHelper.load("stb", "stb", OverrunGL.VERSION);
     }
 }

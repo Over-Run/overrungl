@@ -26,6 +26,11 @@ module overrungl.core {
     exports overrungl.os;
     exports overrungl.util;
     exports overrungl.util.value;
+    exports overrungl.internal
+        to overrungl.glfw,
+        overrungl.nfd,
+        overrungl.opengl,
+        overrungl.stb;
 
     requires static org.jetbrains.annotations;
 }

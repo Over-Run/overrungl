@@ -38,7 +38,7 @@ public final class Configurations {
      */
     public static final Entry<Integer> STACK_FRAMES = new Entry<>(() -> 8);
     /**
-     * Enable debug messages and prints to {@link RuntimeHelper#apiLogger()}.
+     * Enable debug messages and prints to {@link OverrunGL#apiLogger()}.
      * <p>
      * The default value is {@code false}.
      */

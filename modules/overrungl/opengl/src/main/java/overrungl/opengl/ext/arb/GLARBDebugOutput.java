@@ -20,7 +20,7 @@ import overrungl.opengl.GLDebugProc;
 import overrungl.opengl.GLExtCaps;
 import overrungl.opengl.GLLoadFunc;
 import overrungl.opengl.GLLoader;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;

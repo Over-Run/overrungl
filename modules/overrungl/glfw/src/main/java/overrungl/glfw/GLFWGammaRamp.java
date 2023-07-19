@@ -16,7 +16,7 @@
 
 package overrungl.glfw;
 
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.Struct;
 
 import java.lang.foreign.*;

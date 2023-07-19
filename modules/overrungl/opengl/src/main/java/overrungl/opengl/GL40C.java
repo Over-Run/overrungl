@@ -20,7 +20,7 @@ import overrungl.opengl.ext.arb.GLARBDrawBuffersBlend;
 import overrungl.opengl.ext.arb.GLARBSampleShading;
 import overrungl.opengl.ext.arb.GLARBTextureCubeMapArray;
 import overrungl.opengl.ext.arb.GLARBTextureGather;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;

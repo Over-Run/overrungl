@@ -17,7 +17,7 @@
 package overrungl.stb;
 
 import overrungl.Callback;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.Struct;
 
 import java.lang.foreign.*;

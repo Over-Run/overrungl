@@ -17,7 +17,7 @@
 package overrungl.glfw;
 
 import overrungl.FunctionDescriptors;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
@@ -71,6 +71,10 @@ final class Handles {
         glfwGetNSGLContext, glfwGetX11Display, glfwGetX11Adapter, glfwGetX11Monitor, glfwGetX11Window, glfwSetX11SelectionString,
         glfwGetX11SelectionString, glfwGetGLXContext, glfwGetGLXWindow, glfwGetWaylandDisplay, glfwGetWaylandMonitor, glfwGetWaylandWindow,
         glfwGetEGLDisplay, glfwGetEGLContext, glfwGetEGLSurface, glfwGetOSMesaColorBuffer, glfwGetOSMesaDepthBuffer, glfwGetOSMesaContext;
+
+    private Handles() {
+        //no instance
+    }
 
     private static MethodHandle downcall(String name,
                                          FunctionDescriptor function,

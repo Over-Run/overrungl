@@ -14,11 +14,13 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl;
+package overrungl.internal;
 
 import org.jetbrains.annotations.Nullable;
+import overrungl.FunctionDescriptors;
 import overrungl.os.OperatingSystem;
 import overrungl.os.OperatingSystems;
+import overrungl.util.MemoryUtil;
 
 import java.io.File;
 import java.lang.foreign.*;
@@ -29,72 +31,32 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static java.lang.foreign.ValueLayout.*;
 
 /**
- * The runtime helper.
+ * The runtime helper, for internal use.
  *
  * @author squid233
  * @since 0.1.0
  */
 public final class RuntimeHelper {
     /**
-     * The version of OverrunGL.
-     */
-    public static final String VERSION = "0.1.0";
-    /**
      * The native linker.
      */
     public static final Linker LINKER = Linker.nativeLinker();
     private static final File tmpdir = new File(System.getProperty("java.io.tmpdir"));
-    private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
-    private static Consumer<String> apiLogger = DEFAULT_LOGGER;
-    /**
-     * The address of {@code NULL}.
-     */
-    public static final long NULL = 0x0L;
     /**
      * An unbounded address layout.
      */
-    public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE));
+    public static final AddressLayout ADDRESS_UNBOUNDED = MemoryUtil.ADDRESS_UNBOUNDED;
 
     /**
      * constructor
      */
     private RuntimeHelper() {
         throw new IllegalStateException("Do not construct instance");
-    }
-
-    /**
-     * Checks whether <i>{@code byteSize}</i> is greater than 0 or equals to 0.
-     *
-     * @param byteSize the size, in bytes.
-     * @throws IllegalArgumentException if <i>{@code byteSize}</i> {@code < 0}.
-     */
-    public static void checkByteSize(long byteSize) throws IllegalArgumentException {
-        if (byteSize < 0) {
-            throw new IllegalArgumentException("byteSize must be >= 0.");
-        }
-    }
-
-    /**
-     * Checks whether <i>{@code alignment}</i> is greater than 0 and is a power-of-two value.
-     *
-     * @param alignment the alignment, in bytes.
-     * @throws IllegalArgumentException if <i>{@code alignment}</i> {@code <= 0},
-     *                                  or if <i>{@code alignment}</i> is not a power of 2.
-     */
-    public static void checkAlignment(long alignment) throws IllegalArgumentException {
-        if (alignment <= 0) {
-            throw new IllegalArgumentException("Alignment must be > 0.");
-        }
-        if (Long.bitCount(alignment) != 1) {
-            throw new IllegalArgumentException("Alignment must be a power-of-two value.");
-        }
     }
 
     @Deprecated(since = "22")
@@ -126,16 +88,6 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Creates an unbounded native segment with the given segment.
-     *
-     * @param segment the segment address.
-     * @return an unbounded native segment with the given address.
-     */
-    public static MemorySegment unbound(MemorySegment segment) {
-        return segment.reinterpret(Long.MAX_VALUE);
-    }
-
-    /**
      * Gets a string from the given pointer of a string.
      *
      * @param segment the memory segment.
@@ -164,31 +116,6 @@ public final class RuntimeHelper {
      */
     @SuppressWarnings("unused")
     public static <T> void consume(T t) {
-    }
-
-    /**
-     * Sets the API logger.
-     *
-     * @param logger the logger. pass {@code null} to reset to the default logger.
-     */
-    public static void setApiLogger(Consumer<String> logger) {
-        apiLogger = Objects.requireNonNullElse(logger, DEFAULT_LOGGER);
-    }
-
-    /**
-     * {@return the API logger} Defaults to {@link System#err}.
-     */
-    public static Consumer<String> apiLogger() {
-        return apiLogger;
-    }
-
-    /**
-     * Logs a message with the current {@linkplain #apiLogger() API logger}.
-     *
-     * @param message the message to be logged.
-     */
-    public static void apiLog(String message) {
-        apiLogger.accept(message);
     }
 
     /**
@@ -268,48 +195,8 @@ public final class RuntimeHelper {
      *
      * @param segment the segment.
      */
-    @Deprecated
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return segment == null || segment.equals(MemorySegment.NULL);
-    }
-
-    /**
-     * Checks whether the given condition is {@code true}.
-     *
-     * @param condition the condition.
-     * @throws IllegalStateException if <i>{@code condition}</i> is {@code false}.
-     * @see #check(boolean, Supplier)
-     * @see #check(boolean, String)
-     */
-    public static void check(boolean condition) throws IllegalStateException {
-        check(condition, "condition == false");
-    }
-
-    /**
-     * Checks whether the given condition is {@code true}. The message of the exception is wrapped in a supplier
-     * to avoid side effect.
-     *
-     * @param condition       the condition.
-     * @param messageSupplier the message supplier of the exception.
-     * @throws IllegalStateException if <i>{@code condition}</i> is {@code false}.
-     * @see #check(boolean)
-     * @see #check(boolean, String)
-     */
-    public static void check(boolean condition, Supplier<String> messageSupplier) throws IllegalStateException {
-        if (!condition) throw new IllegalStateException(messageSupplier.get());
-    }
-
-    /**
-     * Checks whether the given condition is {@code true}.
-     *
-     * @param condition the condition.
-     * @param message   the message of the exception.
-     * @throws IllegalStateException if <i>{@code condition}</i> is {@code false}.
-     * @see #check(boolean)
-     * @see #check(boolean, Supplier)
-     */
-    public static void check(boolean condition, String message) throws IllegalStateException {
-        if (!condition) throw new IllegalStateException(message);
+        return MemoryUtil.isNullptr(segment);
     }
 
     /**

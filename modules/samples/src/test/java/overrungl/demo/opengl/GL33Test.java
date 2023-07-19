@@ -17,18 +17,20 @@
 package overrungl.demo.opengl;
 
 import org.joml.Matrix4f;
-import overrungl.RuntimeHelper;
-import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
-import overrungl.opengl.GLUtil;
+import org.overrun.timer.Timer;
 import overrungl.glfw.Callbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.joml.Matrixn;
+import overrungl.opengl.GL;
+import overrungl.opengl.GLLoader;
+import overrungl.opengl.GLUtil;
 import overrungl.util.MemoryStack;
-import org.overrun.timer.Timer;
+import overrungl.util.CheckUtil;
 
-import java.lang.foreign.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.MemorySegment;
 
 /**
  * Tests OpenGL 3.3 instanced rendering
@@ -74,7 +76,7 @@ public class GL33Test {
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
+        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
@@ -82,7 +84,7 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
         window = GLFW.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
-        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
+        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);
@@ -107,7 +109,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress, true) != null,
+        CheckUtil.check(GLLoader.load(GLFW::getProcAddress, true) != null,
             "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();

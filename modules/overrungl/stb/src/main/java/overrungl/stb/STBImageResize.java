@@ -16,7 +16,7 @@
 
 package overrungl.stb;
 
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;

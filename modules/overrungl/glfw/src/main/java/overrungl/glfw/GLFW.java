@@ -17,7 +17,7 @@
 package overrungl.glfw;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;

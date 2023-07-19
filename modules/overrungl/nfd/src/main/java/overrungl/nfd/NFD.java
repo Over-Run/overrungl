@@ -18,7 +18,8 @@ package overrungl.nfd;
 
 import overrungl.FunctionDescriptors;
 import overrungl.NativeType;
-import overrungl.RuntimeHelper;
+import overrungl.OverrunGL;
+import overrungl.internal.RuntimeHelper;
 import overrungl.os.OperatingSystem;
 import overrungl.util.MemoryStack;
 import overrungl.util.value.Tuple2;
@@ -117,7 +118,7 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class NFD {
-    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", RuntimeHelper.VERSION);
+    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", OverrunGL.VERSION);
     private static final OperatingSystem os = OperatingSystem.current();
     private static final boolean isOsWin = os.isWindows();
     private static final boolean isOsWinOrApple = os.isWindows() || os.isMacOsX();

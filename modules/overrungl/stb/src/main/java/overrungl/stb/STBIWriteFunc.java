@@ -17,7 +17,7 @@
 package overrungl.stb;
 
 import overrungl.Callback;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;

@@ -17,7 +17,7 @@
 package overrungl.stb;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemoryLayout;

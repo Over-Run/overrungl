@@ -18,8 +18,8 @@ package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
+import overrungl.OverrunGL;
 import overrungl.Pointer;
-import overrungl.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.util.Arrays;
@@ -48,8 +48,8 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     private static final ThreadLocal<MemoryStack> TLS = ThreadLocal.withInitial(MemoryStack::create);
 
     static {
-        RuntimeHelper.check(DEFAULT_STACK_SIZE > 0, "Invalid stack size.");
-        RuntimeHelper.check(DEFAULT_STACK_FRAMES > 0, "Invalid stack frames.");
+        CheckUtil.check(DEFAULT_STACK_SIZE > 0, "Invalid stack size.");
+        CheckUtil.check(DEFAULT_STACK_FRAMES > 0, "Invalid stack frames.");
     }
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
@@ -160,7 +160,7 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
 
     private void frameOverflow() {
         if (DEBUG) {
-            RuntimeHelper.apiLog(STR."[WARNING] Out of frame stack space (\{frames.length}) in thread: \{Thread.currentThread()}");
+            OverrunGL.apiLog(STR."[WARNING] Out of frame stack space (\{frames.length}) in thread: \{Thread.currentThread()}");
         }
         frames = Arrays.copyOf(frames, frames.length * 3 / 2);
     }
@@ -234,7 +234,7 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
         }
 
         private static void reportAsymmetricPop(Object pushed, Object popped) {
-            RuntimeHelper.apiLog(String.format(
+            OverrunGL.apiLog(String.format(
                 "[OverrunGL] Asymmetric pop detected:\n\tPUSHED: %s\n\tPOPPED: %s\n\tTHREAD: %s\n",
                 pushed,
                 popped,
@@ -343,7 +343,7 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     public MemorySegment ncalloc(long alignment, long num, long size) {
         long bytes = num * size;
         var address = nmalloc(alignment, bytes);
-        MemoryUtil.memset(address, 0, bytes);
+        address.fill((byte) 0);
         return address;
     }
 
@@ -358,7 +358,7 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      */
     public MemorySegment malloc(long alignment, long size) {
         if (DEBUG) {
-            RuntimeHelper.checkAlignment(alignment);
+            MemoryUtil.checkAlignment(alignment);
         }
         return nmalloc(alignment, size);
     }
@@ -368,7 +368,7 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      */
     public MemorySegment calloc(long alignment, long size) {
         if (DEBUG) {
-            RuntimeHelper.checkAlignment(alignment);
+            MemoryUtil.checkAlignment(alignment);
         }
         return ncalloc(alignment, 1, size);
     }
@@ -404,8 +404,8 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
 
     @Override
     public MemorySegment allocate(long byteSize, long byteAlignment) throws IllegalArgumentException {
-        RuntimeHelper.checkByteSize(byteSize);
-        RuntimeHelper.checkAlignment(byteAlignment);
+        MemoryUtil.checkByteSize(byteSize);
+        MemoryUtil.checkAlignment(byteAlignment);
         return calloc(byteAlignment, byteSize);
     }
 

@@ -18,7 +18,7 @@ package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.FunctionDescriptors;
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
