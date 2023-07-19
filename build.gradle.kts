@@ -259,14 +259,16 @@ allprojects {
                         "glfw.note:m:Note:"
                     )
 
-                    bottom = "Copyright (c) 2022-2023 Overrun Organization"
+                    bottom = "<a href=\"https://github.com/Over-Run/overrungl-doc/issues\">Report a bug or suggest an enhancement</a><br>" +
+                        "Copyright © 2022-2023 Overrun Organization<br>" +
+                        "<b>$projVersion</b>"
                 }
             }
             encoding = "UTF-8"
             locale = "en_US"
-            windowTitle = "OverrunGL $projVersion Javadoc"
+            windowTitle = "OverrunGL $projVersion"
         }
-        title = "OverrunGL $projVersion Javadoc"
+        title = "OverrunGL $projVersion"
         isFailOnError = false
     }
 }
