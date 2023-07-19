@@ -42,8 +42,9 @@ import static overrungl.stb.Handles.*;
  * <h2>Sample Code</h2>
  * Here's sample code for old OpenGL; it's a lot more complicated
  * to make work on modern APIs, and that's your problem.
- * <pre>{@code
- * static MemorySegment buffer = allocateNative(99999, SegmentScope.global());
+ * {@snippet lang = java:
+ * import java.lang.foreign.Arena;
+ * static MemorySegment buffer = Arena.ofAuto().allocate(99999);
  * void printString(float x, float y, String text, float r, float g, float b) {
  *     int numQuads = STBEasyFont.print(x, y, text, MemorySegment.NULL, buffer, (int) buffer.byteSize());
  *     GL10.color3f(r, g, b);
@@ -52,7 +53,7 @@ import static overrungl.stb.Handles.*;
  *     GL.drawArrays(GL.QUADS, 0, numQuads * 4);
  *     GL11.disableClientState(GL.VERTEX_ARRAY);
  * }
- * }</pre>
+ * }
  *
  * @author squid233
  * @since 0.1.0

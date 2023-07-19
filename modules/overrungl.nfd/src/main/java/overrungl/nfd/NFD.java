@@ -75,10 +75,11 @@ import static overrungl.FunctionDescriptors.*;
  *
  * <h3>File Filter Syntax</h3>
  * Files can be filtered by file extension groups:
- * <pre>{@code
+ * {@snippet lang = java:
  * var filterItem = NFDNFilterItem.create(allocator,
  *     new Pair<>("Source code", "java"),
- *     new Pair<>("Image file", "png,jpg"));}</pre>
+ *     new Pair<>("Image file", "png,jpg"));
+ * }
  * <p>
  * A file filter is a pair of strings comprising the friendly name and the specification
  * (multiple file extensions are comma-separated).

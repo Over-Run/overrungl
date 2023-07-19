@@ -27,7 +27,7 @@ import static java.lang.foreign.ValueLayout.*;
  * The function descriptors.
  *
  * <h2>Mappings</h2>
- * <pre>{@code
+ * {@snippet lang = java:
  * switch (c) {
  *     case 'B' -> JAVA_BYTE;
  *     case 'S' -> JAVA_SHORT;
@@ -38,9 +38,9 @@ import static java.lang.foreign.ValueLayout.*;
  *     case 'F' -> JAVA_FLOAT;
  *     case 'D' -> JAVA_DOUBLE;
  *     case 'P' -> ADDRESS;
- *     case 'p' -> RuntimeHelper.ADDRESS_UNBOUNDED;
- *     default -> throw();
- * }}</pre>
+ *     case 'p' -> MemoryUtil.ADDRESS_UNBOUNDED;
+ *     default -> throw new IllegalStateException();
+ * }}
  *
  * @author squid233
  * @since 0.1.0

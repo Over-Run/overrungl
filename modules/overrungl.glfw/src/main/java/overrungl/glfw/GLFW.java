@@ -772,15 +772,15 @@ public final class GLFW {
      * <p>
      * If you only wish the cursor to become hidden when it is over a window but still want it to behave normally,
      * set the cursor mode to {@code CURSOR_HIDDEN}.
-     * <pre>{@code
+     * {@snippet lang = java:
      * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_HIDDEN);
-     * }</pre>
+     * }
      * This mode puts no limit on the motion of the cursor.
      * <p>
      * To exit out of either of these special modes, restore the {@code CURSOR_NORMAL} cursor mode.
-     * <pre>{@code
+     * {@snippet lang = java:
      * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_NORMAL);
-     * }</pre>
+     * }
      */
     public static final int CURSOR_NORMAL = 0x00034001,
         CURSOR_HIDDEN = 0x00034002,
@@ -1650,7 +1650,7 @@ public final class GLFW {
     }
 
     /**
-     * {@return the user pointer of the specified monitor.}
+     * {@return the user pointer of the specified monitor}
      * <p>
      * This function returns the current value of the user-defined pointer of the
      * specified monitor.  The initial value is {@link MemorySegment#NULL NULL}.
@@ -3393,7 +3393,7 @@ public final class GLFW {
     }
 
     /**
-     * {@return the user pointer of the specified window.}
+     * {@return the user pointer of the specified window}
      * <p>
      * This function returns the current value of the user-defined pointer of the
      * specified window.  The initial value is {@link MemorySegment#NULL NULL}.
@@ -3940,7 +3940,7 @@ public final class GLFW {
     }
 
     /**
-     * {@return the value of an input option for the specified window.}
+     * {@return the value of an input option for the specified window}
      * <p>
      * This function returns the value of an input option for the specified window.
      * The mode must be one of {@link #CURSOR}, {@link #STICKY_KEYS},
@@ -4971,10 +4971,10 @@ public final class GLFW {
      * down and left) directions, and you can test for these individually by ANDing
      * it with the corresponding direction.
      *
-     * <pre>{@code
+     * {@snippet lang = java:
      * if (hats[2] & HAT_RIGHT) {
      *     // State of hat 2 could be right-up, right or right-down
-     * }}</pre>
+     * }}
      * <p>
      * If the specified joystick is not present this function will return {@link MemorySegment#NULL NULL}
      * but will not generate an error.  This can be used instead of first calling
@@ -5144,7 +5144,7 @@ public final class GLFW {
     }
 
     /**
-     * {@return the user pointer of the specified joystick.}
+     * {@return the user pointer of the specified joystick}
      * <p>
      * This function returns the current value of the user-defined pointer of the
      * specified joystick.  The initial value is {@link MemorySegment#NULL NULL}.
