@@ -19,6 +19,7 @@ package overrungl.stb;
 import java.lang.invoke.MethodHandle;
 
 import static overrungl.FunctionDescriptors.*;
+import static overrungl.stb.Handles.*;
 
 /**
  * The STB perlin noise generator.
@@ -31,17 +32,17 @@ public final class STBPerlin {
         stb_perlin_noise3, stb_perlin_noise3_seed, stb_perlin_ridge_noise3, stb_perlin_fbm_noise3, stb_perlin_turbulence_noise3, stb_perlin_noise3_wrap_nonpow2;
 
     static {
-        Handles.initialize();
+        initialize();
         create();
     }
 
     private static void create() {
-        stb_perlin_noise3 = Handles.downcall("stb_perlin_noise3", FFFIIIF);
-        stb_perlin_noise3_seed = Handles.downcall("stb_perlin_noise3_seed", FFFIIIIF);
-        stb_perlin_ridge_noise3 = Handles.downcall("stb_perlin_ridge_noise3", FFFFFFIF);
-        stb_perlin_fbm_noise3 = Handles.downcall("stb_perlin_fbm_noise3", FFFFFIF);
-        stb_perlin_turbulence_noise3 = Handles.downcall("stb_perlin_turbulence_noise3", FFFFFIF);
-        stb_perlin_noise3_wrap_nonpow2 = Handles.downcall("stb_perlin_noise3_wrap_nonpow2", FFFIIIBF);
+        stb_perlin_noise3 = downcall("stb_perlin_noise3", FFFIIIF);
+        stb_perlin_noise3_seed = downcall("stb_perlin_noise3_seed", FFFIIIIF);
+        stb_perlin_ridge_noise3 = downcall("stb_perlin_ridge_noise3", FFFFFFIF);
+        stb_perlin_fbm_noise3 = downcall("stb_perlin_fbm_noise3", FFFFFIF);
+        stb_perlin_turbulence_noise3 = downcall("stb_perlin_turbulence_noise3", FFFFFIF);
+        stb_perlin_noise3_wrap_nonpow2 = downcall("stb_perlin_noise3_wrap_nonpow2", FFFIIIBF);
     }
 
     private STBPerlin() {

@@ -15,6 +15,9 @@
  */
 
 /**
+ * Utilities for JOML (Java OpenGL Math Library).
+ *
+ * @moduleGraph
  * @author squid233
  * @since 0.1.0
  */

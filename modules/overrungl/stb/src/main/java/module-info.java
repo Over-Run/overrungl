@@ -15,6 +15,9 @@
  */
 
 /**
+ * The STB binding.
+ *
+ * @moduleGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -22,4 +25,5 @@ module overrungl.stb {
     exports overrungl.stb;
 
     requires overrungl.core;
+    requires static org.jetbrains.annotations;
 }

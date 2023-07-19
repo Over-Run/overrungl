@@ -15,6 +15,9 @@
  */
 
 /**
+ * The OpenGL binding.
+ *
+ * @moduleGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -27,4 +30,5 @@ module overrungl.opengl {
     exports overrungl.opengl.ext.sun;
 
     requires overrungl.core;
+    requires static org.jetbrains.annotations;
 }
