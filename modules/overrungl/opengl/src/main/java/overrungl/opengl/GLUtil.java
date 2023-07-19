@@ -21,6 +21,7 @@ import overrungl.OverrunGL;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.util.Locale;
 import java.util.function.Consumer;
 
 import static overrungl.OverrunGL.apiLog;

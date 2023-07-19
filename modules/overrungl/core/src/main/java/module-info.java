@@ -17,7 +17,6 @@
 /**
  * The core module of OverrunGL.
  *
- * @moduleGraph
  * @author squid233
  * @since 0.1.0
  */
