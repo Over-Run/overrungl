@@ -41,6 +41,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBTextureCompressionBptc GL_ARB_texture_compression_bptc}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

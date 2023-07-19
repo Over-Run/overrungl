@@ -25,6 +25,7 @@ import static overrungl.FunctionDescriptors.*;
 /**
  * The OpenGL 1.4 functions.
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

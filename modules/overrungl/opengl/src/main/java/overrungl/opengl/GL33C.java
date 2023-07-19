@@ -39,6 +39,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_ARB_vertex_type_2_10_10_10_rev</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -108,8 +109,14 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static void bindFragDataLocationIndexed(SegmentAllocator allocator, int program, int colorNumber, int index, String name) {
-        bindFragDataLocationIndexed(program, colorNumber, index, allocator.allocateUtf8String(name));
+    public static void bindFragDataLocationIndexed(int program, int colorNumber, int index, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            bindFragDataLocationIndexed(program, colorNumber, index, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void bindSampler(int unit, int sampler) {
@@ -180,8 +187,14 @@ public sealed class GL33C extends GL32C permits GL40C {
         }
     }
 
-    public static int getFragDataIndex(SegmentAllocator allocator, int program, String name) {
-        return getFragDataIndex(program, allocator.allocateUtf8String(name));
+    public static int getFragDataIndex(int program, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getFragDataIndex(program, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getQueryObjecti64v(int id, int pname, MemorySegment params) {

@@ -19,6 +19,7 @@ package overrungl.opengl;
 /**
  * The OpenGL 1.2 constants.
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

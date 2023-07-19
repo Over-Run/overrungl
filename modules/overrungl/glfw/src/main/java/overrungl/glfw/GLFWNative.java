@@ -20,7 +20,6 @@ import org.jetbrains.annotations.Nullable;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
 import static overrungl.glfw.Handles.*;
@@ -288,7 +287,7 @@ public final class GLFWNative {
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetX11SelectionString() getX11SelectionString
-     * @see GLFW#nsetClipboardString(MemorySegment, MemorySegment) setClipboardString
+     * @see GLFW#nsetClipboardString(MemorySegment) setClipboardString
      */
     public static void nsetX11SelectionString(MemorySegment string) {
         try {
@@ -301,12 +300,17 @@ public final class GLFWNative {
     /**
      * Sets the current primary selection to the specified string.
      *
-     * @param allocator the allocator of <i>{@code string}</i>.
      * @param string A UTF-8 encoded string.
      * @see #nsetX11SelectionString(MemorySegment) nsetX11SelectionString
      */
-    public static void setX11SelectionString(SegmentAllocator allocator, String string) {
-        nsetX11SelectionString(allocator.allocateUtf8String(string));
+    public static void setX11SelectionString(String string) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            nsetX11SelectionString(stack.allocateUtf8String(string));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -324,7 +328,7 @@ public final class GLFWNative {
      * library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetX11SelectionString(MemorySegment) setX11SelectionString
-     * @see GLFW#ngetClipboardString(MemorySegment) getClipboardString
+     * @see GLFW#ngetClipboardString() getClipboardString
      */
     public static MemorySegment ngetX11SelectionString() {
         try {

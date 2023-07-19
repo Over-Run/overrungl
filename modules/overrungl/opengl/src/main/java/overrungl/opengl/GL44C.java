@@ -33,6 +33,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_ARB_multi_bind</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

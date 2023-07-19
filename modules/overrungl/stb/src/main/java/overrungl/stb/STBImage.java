@@ -176,15 +176,21 @@ public final class STBImage {
         }
     }
 
-    public static boolean info(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] comp) {
-        var px = allocator.allocate(JAVA_INT);
-        var py = allocator.allocate(JAVA_INT);
-        var pc = allocator.allocate(JAVA_INT);
-        boolean b = ninfo(allocator.allocateUtf8String(filename), px, py, pc);
-        x[0] = px.get(JAVA_INT, 0);
-        y[0] = py.get(JAVA_INT, 0);
-        comp[0] = pc.get(JAVA_INT, 0);
-        return b;
+    public static boolean info(String filename, int[] x, int[] y, int[] comp) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
+            var pc = stack.allocate(JAVA_INT);
+            boolean b = ninfo(stack.allocateUtf8String(filename), px, py, pc);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            comp[0] = pc.get(JAVA_INT, 0);
+            return b;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static boolean ninfoFromCallbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment comp) {
@@ -268,8 +274,14 @@ public final class STBImage {
         }
     }
 
-    public static boolean is16Bit(SegmentAllocator allocator, String filename) {
-        return nis16Bit(allocator.allocateUtf8String(filename));
+    public static boolean is16Bit(String filename) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nis16Bit(stack.allocateUtf8String(filename));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static boolean nis16BitFromCallbacks(MemorySegment clbk, MemorySegment user) {
@@ -316,8 +328,14 @@ public final class STBImage {
         }
     }
 
-    public static boolean isHdr(SegmentAllocator allocator, String filename) {
-        return nisHdr(allocator.allocateUtf8String(filename));
+    public static boolean isHdr(String filename) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nisHdr(stack.allocateUtf8String(filename));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static boolean nisHdrFromCallbacks(MemorySegment clbk, MemorySegment user) {
@@ -380,15 +398,21 @@ public final class STBImage {
         }
     }
 
-    public static MemorySegment load(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = allocator.allocate(JAVA_INT);
-        var py = allocator.allocate(JAVA_INT);
-        var pc = allocator.allocate(JAVA_INT);
-        var addr = nload(allocator.allocateUtf8String(filename), px, py, pc, desiredChannels);
-        x[0] = px.get(JAVA_INT, 0);
-        y[0] = py.get(JAVA_INT, 0);
-        channelsInFile[0] = pc.get(JAVA_INT, 0);
-        return addr;
+    public static MemorySegment load(String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
+            var pc = stack.allocate(JAVA_INT);
+            var addr = nload(stack.allocateUtf8String(filename), px, py, pc, desiredChannels);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
+            return addr;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static MemorySegment nload16(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment channelsInFile, int desiredChannels) {
@@ -399,15 +423,21 @@ public final class STBImage {
         }
     }
 
-    public static MemorySegment load16(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = allocator.allocate(JAVA_INT);
-        var py = allocator.allocate(JAVA_INT);
-        var pc = allocator.allocate(JAVA_INT);
-        var addr = nload16(allocator.allocateUtf8String(filename), px, py, pc, desiredChannels);
-        x[0] = px.get(JAVA_INT, 0);
-        y[0] = py.get(JAVA_INT, 0);
-        channelsInFile[0] = pc.get(JAVA_INT, 0);
-        return addr;
+    public static MemorySegment load16(String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
+            var pc = stack.allocate(JAVA_INT);
+            var addr = nload16(stack.allocateUtf8String(filename), px, py, pc, desiredChannels);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
+            return addr;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static MemorySegment nload16FromCallbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channelsInFile, int desiredChannels) {
@@ -592,15 +622,21 @@ public final class STBImage {
         }
     }
 
-    public static MemorySegment loadf(SegmentAllocator allocator, String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
-        var px = allocator.allocate(JAVA_INT);
-        var py = allocator.allocate(JAVA_INT);
-        var pc = allocator.allocate(JAVA_INT);
-        var addr = nloadf(allocator.allocateUtf8String(filename), px, py, pc, desiredChannels);
-        x[0] = px.get(JAVA_INT, 0);
-        y[0] = py.get(JAVA_INT, 0);
-        channelsInFile[0] = pc.get(JAVA_INT, 0);
-        return addr;
+    public static MemorySegment loadf(String filename, int[] x, int[] y, int[] channelsInFile, int desiredChannels) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
+            var pc = stack.allocate(JAVA_INT);
+            var addr = nloadf(stack.allocateUtf8String(filename), px, py, pc, desiredChannels);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            channelsInFile[0] = pc.get(JAVA_INT, 0);
+            return addr;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static MemorySegment nloadfFromCallbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment channelsInFile, int desiredChannels) {

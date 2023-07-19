@@ -21,6 +21,7 @@ import overrungl.opengl.ext.arb.GLARBGLSpirv;
 import overrungl.opengl.ext.arb.GLARBIndirectParameters;
 import overrungl.opengl.ext.arb.GLARBPipelineStatisticsQuery;
 import overrungl.opengl.ext.arb.GLARBTransformFeedbackOverflowQuery;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -41,6 +42,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBTransformFeedbackOverflowQuery GL_ARB_transform_feedback_overflow_query}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -123,11 +125,17 @@ public sealed class GL46C extends GL45C permits GL {
             pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
     }
 
-    public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint) {
-        specializeShader(shader,
-            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
-            0,
-            MemorySegment.NULL,
-            MemorySegment.NULL);
+    public static void specializeShader(int shader, @Nullable String pEntryPoint) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            specializeShader(shader,
+                pEntryPoint != null ? stack.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
+                0,
+                MemorySegment.NULL,
+                MemorySegment.NULL);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 }

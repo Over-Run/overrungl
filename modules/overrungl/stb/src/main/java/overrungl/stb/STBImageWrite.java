@@ -17,6 +17,7 @@
 package overrungl.stb;
 
 import overrungl.RuntimeHelper;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -160,24 +161,48 @@ public final class STBImageWrite {
         }
     }
 
-    public static boolean png(SegmentAllocator allocator, String filename, int w, int h, int comp, MemorySegment data, int strideInBytes) {
-        return npng(allocator.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
+    public static boolean png(String filename, int w, int h, int comp, MemorySegment data, int strideInBytes) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return npng(stack.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
-    public static boolean bmp(SegmentAllocator allocator, String filename, int w, int h, int comp, MemorySegment data) {
-        return nbmp(allocator.allocateUtf8String(filename), w, h, comp, data);
+    public static boolean bmp(String filename, int w, int h, int comp, MemorySegment data) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nbmp(stack.allocateUtf8String(filename), w, h, comp, data);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
-    public static boolean tga(SegmentAllocator allocator, String filename, int w, int h, int comp, MemorySegment data) {
-        return ntga(allocator.allocateUtf8String(filename), w, h, comp, data);
+    public static boolean tga(String filename, int w, int h, int comp, MemorySegment data) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return ntga(stack.allocateUtf8String(filename), w, h, comp, data);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static boolean hdr(SegmentAllocator allocator, String filename, int w, int h, int comp, float[] data) {
         return nhdr(allocator.allocateUtf8String(filename), w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
     }
 
-    public static boolean jpg(SegmentAllocator allocator, String filename, int x, int y, int comp, MemorySegment data, int quality) {
-        return njpg(allocator.allocateUtf8String(filename), x, y, comp, data, quality);
+    public static boolean jpg(String filename, int x, int y, int comp, MemorySegment data, int quality) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return njpg(stack.allocateUtf8String(filename), x, y, comp, data, quality);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static boolean npngToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {

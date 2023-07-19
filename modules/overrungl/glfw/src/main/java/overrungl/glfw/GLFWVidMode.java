@@ -105,12 +105,10 @@ public class GLFWVidMode extends Struct {
     }
 
     /**
-     * {@code const_cast<GLFWVidMode>(this)}
-     *
-     * @return the immutable state
+     * {@return an immutable state of this struct}
      */
-    public Value constCast() {
-        return new Value(address(), allocator(), this);
+    public Value value() {
+        return new Value(width(), height(), redBits(), greenBits(), blueBits(), refreshRate());
     }
 
     /**
@@ -158,64 +156,23 @@ public class GLFWVidMode extends Struct {
     /**
      * The immutable state of {@link GLFWVidMode}.
      *
+     * @param width       the width, in screen coordinates, of the video mode
+     * @param height      the height, in screen coordinates, of the video mode
+     * @param redBits     the bit depth of the red channel, of the video mode
+     * @param greenBits   the bit depth of the green channel, of the video mode
+     * @param blueBits    the bit depth of the blue channel, of the video mode
+     * @param refreshRate the refresh rate, in Hz, of the video mode
      * @author squid233
      * @since 0.1.0
      */
-    public static final /* value */ class Value extends GLFWVidMode {
-        private final int width;
-        private final int height;
-        private final int redBits;
-        private final int greenBits;
-        private final int blueBits;
-        private final int refreshRate;
-
-        private Value(MemorySegment address, SegmentAllocator allocator, GLFWVidMode mode) {
-            super(address, allocator);
-            this.width = mode.width();
-            this.height = mode.height();
-            this.redBits = mode.redBits();
-            this.greenBits = mode.greenBits();
-            this.blueBits = mode.blueBits();
-            this.refreshRate = mode.refreshRate();
-        }
-
-        /**
-         * {@return this}
-         */
-        @Override
-        public Value constCast() {
-            return this;
-        }
-
-        @Override
-        public int width() {
-            return width;
-        }
-
-        @Override
-        public int height() {
-            return height;
-        }
-
-        @Override
-        public int redBits() {
-            return redBits;
-        }
-
-        @Override
-        public int greenBits() {
-            return greenBits;
-        }
-
-        @Override
-        public int blueBits() {
-            return blueBits;
-        }
-
-        @Override
-        public int refreshRate() {
-            return refreshRate;
-        }
+    public /* value */ record Value(
+        int width,
+        int height,
+        int redBits,
+        int greenBits,
+        int blueBits,
+        int refreshRate
+    ) {
     }
 
     /**
@@ -268,7 +225,7 @@ public class GLFWVidMode extends Struct {
          * Gets the red bits at the given index.
          *
          * @param index the index
-         * @return The bit depth of the red channel of the video mode.
+         * @return The bit depth of the red channel, of the video mode.
          */
         public int redBitsAt(long index) {
             return (int) pRedBits.get(segment(), index);
@@ -278,7 +235,7 @@ public class GLFWVidMode extends Struct {
          * Gets the green bits at the given index.
          *
          * @param index the index
-         * @return The bit depth of the green channel of the video mode.
+         * @return The bit depth of the green channel, of the video mode.
          */
         public int greenBitsAt(long index) {
             return (int) pGreenBits.get(segment(), index);
@@ -288,7 +245,7 @@ public class GLFWVidMode extends Struct {
          * Gets the blue bits at the given index.
          *
          * @param index the index
-         * @return The bit depth of the blue channel of the video mode.
+         * @return The bit depth of the blue channel, of the video mode.
          */
         public int blueBitsAt(long index) {
             return (int) pBlueBits.get(segment(), index);

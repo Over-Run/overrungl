@@ -1802,8 +1802,12 @@ public final class GLFW {
     public static GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
         if (RuntimeHelper.isNullptr(pMode)) return null;
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            return new GLFWVidMode(pMode, stack).constCast();
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return new GLFWVidMode(pMode, stack).value();
+        } finally {
+            stack.setPointer(stackPointer);
         }
     }
 
@@ -2034,13 +2038,18 @@ public final class GLFW {
     /**
      * Sets the specified window hint to the desired value.
      *
-     * @param allocator The value allocator.
-     * @param hint      The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
-     * @param value     The new value of the window hint.
+     * @param hint  The <a href="https://www.glfw.org/docs/latest/window_guide.html#window_hints">window hint</a> to set.
+     * @param value The new value of the window hint.
      * @see #nwindowHintString(int, MemorySegment) nwindowHintString
      */
-    public static void windowHintString(SegmentAllocator allocator, int hint, String value) {
-        nwindowHintString(hint, allocator.allocateUtf8String(value));
+    public static void windowHintString(int hint, String value) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            nwindowHintString(hint, stack.allocateUtf8String(value));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -2205,22 +2214,27 @@ public final class GLFW {
     /**
      * Creates a window and its associated context.
      *
-     * @param allocator The title allocator.
-     * @param width     The desired width, in screen coordinates, of the window.
-     *                  This must be greater than zero.
-     * @param height    The desired height, in screen coordinates, of the window.
-     *                  This must be greater than zero.
-     * @param title     The initial, UTF-8 encoded window title.
-     * @param monitor   The monitor to use for full screen mode, or {@link MemorySegment#NULL NULL} for
-     *                  windowed mode.
-     * @param share     The window whose context to share resources with, or {@link MemorySegment#NULL NULL}
-     *                  to not share resources.
+     * @param width   The desired width, in screen coordinates, of the window.
+     *                This must be greater than zero.
+     * @param height  The desired height, in screen coordinates, of the window.
+     *                This must be greater than zero.
+     * @param title   The initial, UTF-8 encoded window title.
+     * @param monitor The monitor to use for full screen mode, or {@link MemorySegment#NULL NULL} for
+     *                windowed mode.
+     * @param share   The window whose context to share resources with, or {@link MemorySegment#NULL NULL}
+     *                to not share resources.
      * @return The handle of the created window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateWindow(int, int, MemorySegment, MemorySegment, MemorySegment) ncreateWindow
      */
-    public static MemorySegment createWindow(SegmentAllocator allocator, int width, int height, String title, MemorySegment monitor, MemorySegment share) {
-        return ncreateWindow(width, height, allocator.allocateUtf8String(title), monitor, share);
+    public static MemorySegment createWindow(int width, int height, String title, MemorySegment monitor, MemorySegment share) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return ncreateWindow(width, height, stack.allocateUtf8String(title), monitor, share);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -2314,13 +2328,18 @@ public final class GLFW {
     /**
      * Sets the title of the specified window.
      *
-     * @param allocator The title allocator.
-     * @param window    The window whose title to change.
-     * @param title     The UTF-8 encoded window title.
+     * @param window The window whose title to change.
+     * @param title  The UTF-8 encoded window title.
      * @see #nsetWindowTitle(MemorySegment, MemorySegment) nsetWindowTitle
      */
-    public static void setWindowTitle(SegmentAllocator allocator, MemorySegment window, String title) {
-        nsetWindowTitle(window, allocator.allocateUtf8String(title));
+    public static void setWindowTitle(MemorySegment window, String title) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            nsetWindowTitle(window, stack.allocateUtf8String(title));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -5256,14 +5275,19 @@ public final class GLFW {
     /**
      * Adds the specified SDL_GameControllerDB gamepad mappings.
      *
-     * @param allocator The string allocator.
-     * @param string    The string containing the gamepad mappings.
+     * @param string The string containing the gamepad mappings.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(MemorySegment) nupdateGamepadMappings
      */
-    public static boolean updateGamepadMappings(SegmentAllocator allocator, String string) {
-        return nupdateGamepadMappings(allocator.allocateUtf8String(string));
+    public static boolean updateGamepadMappings(String string) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nupdateGamepadMappings(stack.allocateUtf8String(string));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -5368,18 +5392,17 @@ public final class GLFW {
      * This function sets the system clipboard to the specified, UTF-8 encoded
      * string.
      *
-     * @param window Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
      * @param string A UTF-8 encoded string.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
      * @glfw.pointer_lifetime The specified string is copied before this function
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
-     * @see #ngetClipboardString(MemorySegment) getClipboardString
+     * @see #ngetClipboardString() getClipboardString
      */
-    public static void nsetClipboardString(@Deprecated MemorySegment window, MemorySegment string) {
+    public static void nsetClipboardString(MemorySegment string) {
         try {
-            glfwSetClipboardString.invokeExact(window, string);
+            glfwSetClipboardString.invokeExact(MemorySegment.NULL, string);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5388,13 +5411,17 @@ public final class GLFW {
     /**
      * Sets the clipboard to the specified string.
      *
-     * @param allocator The string allocator.
-     * @param window    Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
-     * @param string    A UTF-8 encoded string.
-     * @see #nsetClipboardString(MemorySegment, MemorySegment) nsetClipboardString
+     * @param string A UTF-8 encoded string.
+     * @see #nsetClipboardString(MemorySegment) nsetClipboardString
      */
-    public static void setClipboardString(SegmentAllocator allocator, @Deprecated MemorySegment window, String string) {
-        nsetClipboardString(window, allocator.allocateUtf8String(string));
+    public static void setClipboardString(String string) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            nsetClipboardString(stack.allocateUtf8String(string));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -5405,22 +5432,21 @@ public final class GLFW {
      * if its contents cannot be converted, {@link MemorySegment#NULL NULL} is returned and a
      * {@link #FORMAT_UNAVAILABLE} error is generated.
      *
-     * @param window Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
      * @return The contents of the clipboard as a UTF-8 encoded string, or {@link MemorySegment#NULL NULL}
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #FORMAT_UNAVAILABLE} and {@link #PLATFORM_ERROR}.
      * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the next call to
-     * {@link #ngetClipboardString(MemorySegment) getClipboardString} or
-     * {@link #nsetClipboardString(MemorySegment, MemorySegment) setClipboardString},
+     * {@code getClipboardString} or
+     * {@link #nsetClipboardString(MemorySegment) setClipboardString},
      * or until the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
-     * @see #nsetClipboardString(MemorySegment, MemorySegment) setClipboardString
+     * @see #nsetClipboardString(MemorySegment) setClipboardString
      */
-    public static MemorySegment ngetClipboardString(@Deprecated MemorySegment window) {
+    public static MemorySegment ngetClipboardString() {
         try {
-            return (MemorySegment) glfwGetClipboardString.invokeExact(window);
+            return (MemorySegment) glfwGetClipboardString.invokeExact(MemorySegment.NULL);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -5429,13 +5455,13 @@ public final class GLFW {
     /**
      * Returns the contents of the clipboard as a string.
      *
-     * @param window Deprecated.  Any valid window or {@link MemorySegment#NULL NULL}.
      * @return The contents of the clipboard as a UTF-8 encoded string, or {@code null}
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetClipboardString() ngetClipboardString
      */
     @Nullable
     public static String getClipboardString(@Deprecated MemorySegment window) {
-        var pString = ngetClipboardString(window);
+        var pString = ngetClipboardString();
         return RuntimeHelper.isNullptr(pString) ? null : pString.getUtf8String(0);
     }
 
@@ -5706,14 +5732,19 @@ public final class GLFW {
     /**
      * Returns whether the specified extension is available.
      *
-     * @param allocator The extension string allocator.
      * @param extension The ASCII encoded name of the extension.
      * @return {@code true} if the extension is available, or {@code false}
      * otherwise.
      * @see #nextensionSupported(MemorySegment) nextensionSupported
      */
-    public static boolean extensionSupported(SegmentAllocator allocator, String extension) {
-        return nextensionSupported(allocator.allocateUtf8String(extension));
+    public static boolean extensionSupported(String extension) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nextensionSupported(stack.allocateUtf8String(extension));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -5759,14 +5790,19 @@ public final class GLFW {
      * Returns the address of the specified function for the current
      * context.
      *
-     * @param allocator The segment allocator to allocate the string.
-     * @param procName  The ASCII encoded name of the function.
+     * @param procName The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetProcAddress(MemorySegment) ngetProcAddress
      */
-    public static MemorySegment getProcAddress(SegmentAllocator allocator, String procName) {
-        return ngetProcAddress(allocator.allocateUtf8String(procName));
+    public static MemorySegment getProcAddress(String procName) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return ngetProcAddress(stack.allocateUtf8String(procName));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**

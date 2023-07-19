@@ -16,6 +16,8 @@
 
 package overrungl.stb;
 
+import overrungl.util.MemoryStack;
+
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
@@ -125,8 +127,14 @@ public final class STBEasyFont {
         }
     }
 
-    public static int width(SegmentAllocator allocator, String text) {
-        return nwidth(allocator.allocateUtf8String(text));
+    public static int width(String text) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nwidth(stack.allocateUtf8String(text));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static int nheight(MemorySegment text) {
@@ -137,7 +145,13 @@ public final class STBEasyFont {
         }
     }
 
-    public static int height(SegmentAllocator allocator, String text) {
-        return nheight(allocator.allocateUtf8String(text));
+    public static int height(String text) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nheight(stack.allocateUtf8String(text));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 }

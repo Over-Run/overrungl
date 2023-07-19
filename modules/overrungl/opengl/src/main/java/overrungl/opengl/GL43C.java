@@ -52,6 +52,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_KHR_debug</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -444,8 +445,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void debugMessageInsert(SegmentAllocator allocator, int source, int type, int id, int severity, String buf) {
-        debugMessageInsert(source, type, id, severity, -1, allocator.allocateUtf8String(buf));
+    public static void debugMessageInsert(int source, int type, int id, int severity, String buf) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            debugMessageInsert(source, type, id, severity, buf.length(), stack.allocateUtf8String(buf));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void dispatchCompute(int numGroupsX, int numGroupsY, int numGroupsZ) {
@@ -637,8 +644,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static int getProgramResourceIndex(SegmentAllocator allocator, int program, int programInterface, String name) {
-        return getProgramResourceIndex(program, programInterface, allocator.allocateUtf8String(name));
+    public static int getProgramResourceIndex(int program, int programInterface, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getProgramResourceIndex(program, programInterface, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static int getProgramResourceLocation(int program, int programInterface, MemorySegment name) {
@@ -650,8 +663,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static int getProgramResourceLocation(SegmentAllocator allocator, int program, int programInterface, String name) {
-        return getProgramResourceLocation(program, programInterface, allocator.allocateUtf8String(name));
+    public static int getProgramResourceLocation(int program, int programInterface, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getProgramResourceLocation(program, programInterface, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static int getProgramResourceLocationIndex(int program, int programInterface, MemorySegment name) {
@@ -663,8 +682,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static int getProgramResourceLocationIndex(SegmentAllocator allocator, int program, int programInterface, String name) {
-        return getProgramResourceLocationIndex(program, programInterface, allocator.allocateUtf8String(name));
+    public static int getProgramResourceLocationIndex(int program, int programInterface, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getProgramResourceLocationIndex(program, programInterface, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getProgramResourceName(int program, int programInterface, int index, int bufSize, MemorySegment length, MemorySegment name) {
@@ -840,8 +865,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void objectLabel(SegmentAllocator allocator, int identifier, int name, String label) {
-        objectLabel(identifier, name, -1, allocator.allocateUtf8String(label));
+    public static void objectLabel(int identifier, int name, String label) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            objectLabel(identifier, name, label.length(), stack.allocateUtf8String(label));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void objectPtrLabel(MemorySegment ptr, int length, MemorySegment label) {
@@ -853,8 +884,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void objectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, String label) {
-        objectPtrLabel(ptr, -1, allocator.allocateUtf8String(label));
+    public static void objectPtrLabel(MemorySegment ptr, String label) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            objectPtrLabel(ptr, label.length(), stack.allocateUtf8String(label));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void popDebugGroup() {
@@ -875,8 +912,14 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void pushDebugGroup(SegmentAllocator allocator, int source, int id, String message) {
-        pushDebugGroup(source, id, -1, allocator.allocateUtf8String(message));
+    public static void pushDebugGroup(int source, int id, String message) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            pushDebugGroup(source, id, message.length(), stack.allocateUtf8String(message));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void shaderStorageBlockBinding(int program, int storageBlockIndex, int storageBlockBinding) {

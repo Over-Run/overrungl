@@ -29,6 +29,7 @@ import static overrungl.opengl.GLLoader.*;
 /**
  * The OpenGL 1.1 forward compatible functions.
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

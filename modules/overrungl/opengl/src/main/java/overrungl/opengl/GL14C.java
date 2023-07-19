@@ -38,6 +38,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBTextureMirroredRepeat GL_ARB_texture_mirrored_repeat}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

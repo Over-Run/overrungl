@@ -78,8 +78,8 @@ public class NFDNFilterItem extends Struct {
      */
     public static NFDNFilterItem create(SegmentAllocator allocator, String name, String spec) {
         final NFDNFilterItem item = new NFDNFilterItem(allocator.allocate(LAYOUT), allocator);
-        pName.set(item.segment(), NFD.allocateString(allocator, name));
-        pSpec.set(item.segment(), NFD.allocateString(allocator, spec));
+        pName.set(item.segment(), NFD.allocateString(name));
+        pSpec.set(item.segment(), NFD.allocateString(spec));
         return item;
     }
 
@@ -95,8 +95,8 @@ public class NFDNFilterItem extends Struct {
         final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), allocator, items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
-            buffer.pName.set(buffer.segment(), (long) i, NFD.allocateString(allocator, item.key()));
-            buffer.pSpec.set(buffer.segment(), (long) i, NFD.allocateString(allocator, item.value()));
+            buffer.pName.set(buffer.segment(), (long) i, NFD.allocateString(item.key()));
+            buffer.pSpec.set(buffer.segment(), (long) i, NFD.allocateString(item.value()));
         }
         return buffer;
     }

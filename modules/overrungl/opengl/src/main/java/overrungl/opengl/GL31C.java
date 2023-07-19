@@ -37,6 +37,7 @@ import static overrungl.FunctionDescriptors.*;
  *     <li>GL_ARB_uniform_buffer_object</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -268,8 +269,14 @@ public sealed class GL31C extends GL30C permits GL32C {
         }
     }
 
-    public static int getUniformBlockIndex(SegmentAllocator allocator, int program, String uniformBlockName) {
-        return getUniformBlockIndex(program, allocator.allocateUtf8String(uniformBlockName));
+    public static int getUniformBlockIndex(int program, String uniformBlockName) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getUniformBlockIndex(program, stack.allocateUtf8String(uniformBlockName));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getUniformIndices(int program, int uniformCount, MemorySegment uniformNames, MemorySegment uniformIndices) {
@@ -292,10 +299,16 @@ public sealed class GL31C extends GL30C permits GL32C {
         RuntimeHelper.toArray(pIndices, uniformIndices);
     }
 
-    public static int getUniformIndex(SegmentAllocator allocator, int program, String uniformName) {
-        var seg = allocator.allocate(JAVA_INT);
-        getUniformIndices(program, 1, allocator.allocateUtf8String(uniformName), seg);
-        return seg.get(JAVA_INT, 0);
+    public static int getUniformIndex(int program, String uniformName) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var seg = stack.allocate(JAVA_INT);
+            getUniformIndices(program, 1, stack.allocateUtf8String(uniformName), seg);
+            return seg.get(JAVA_INT, 0);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void primitiveRestartIndex(int index) {

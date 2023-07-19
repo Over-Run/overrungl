@@ -40,6 +40,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBShaderObjects GL_ARB_shader_objects}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -258,8 +259,14 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static void bindAttribLocation(SegmentAllocator allocator, int program, int index, String name) {
-        bindAttribLocation(program, index, allocator.allocateUtf8String(name));
+    public static void bindAttribLocation(int program, int index, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            bindAttribLocation(program, index, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void blendEquationSeparate(int modeRGB, int modeAlpha) {
@@ -430,8 +437,14 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static int getAttribLocation(SegmentAllocator allocator, int program, String name) {
-        return getAttribLocation(program, allocator.allocateUtf8String(name));
+    public static int getAttribLocation(int program, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getAttribLocation(program, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getProgramInfoLog(int program, int bufSize, MemorySegment length, MemorySegment infoLog) {
@@ -566,8 +579,14 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static int getUniformLocation(SegmentAllocator allocator, int program, String name) {
-        return getUniformLocation(program, allocator.allocateUtf8String(name));
+    public static int getUniformLocation(int program, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getUniformLocation(program, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getUniformfv(int program, int location, MemorySegment params) {
@@ -790,8 +809,14 @@ public sealed class GL20C extends GL15C permits GL21C {
         shaderSource(shader, string.length, pStr, pLen);
     }
 
-    public static void shaderSource(SegmentAllocator allocator, int shader, String string) {
-        shaderSource(shader, 1, allocator.allocate(ADDRESS, allocator.allocateUtf8String(string)), allocator.allocate(JAVA_INT, string.length()));
+    public static void shaderSource(int shader, String string) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            shaderSource(shader, 1, stack.allocate(ADDRESS, stack.allocateUtf8String(string)), stack.allocate(JAVA_INT, string.length()));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void stencilFuncSeparate(int face, int func, int ref, int mask) {
