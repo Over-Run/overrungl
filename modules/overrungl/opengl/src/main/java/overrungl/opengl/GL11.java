@@ -27,6 +27,7 @@ import static overrungl.opengl.GLLoader.getCapabilities;
 /**
  * The OpenGL 1.1 functions.
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

@@ -52,9 +52,7 @@ public final class GLFWJoystickTest {
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
         GLFW.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        try (var arena = Arena.ofConfined()) {
-            window = GLFW.createWindow(arena, 200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
-        }
+        window = GLFW.createWindow(200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {

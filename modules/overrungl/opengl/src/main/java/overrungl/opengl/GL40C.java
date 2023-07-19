@@ -47,6 +47,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBTextureGather GL_ARB_texture_gather}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -462,8 +463,14 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static int getSubroutineIndex(SegmentAllocator allocator, int program, int shaderType, String name) {
-        return getSubroutineIndex(program, shaderType, allocator.allocateUtf8String(name));
+    public static int getSubroutineIndex(int program, int shaderType, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getSubroutineIndex(program, shaderType, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static int getSubroutineUniformLocation(int program, int shaderType, MemorySegment name) {
@@ -475,8 +482,14 @@ public sealed class GL40C extends GL33C permits GL41C {
         }
     }
 
-    public static int getSubroutineUniformLocation(SegmentAllocator allocator, int program, int shaderType, String name) {
-        return getSubroutineUniformLocation(program, shaderType, allocator.allocateUtf8String(name));
+    public static int getSubroutineUniformLocation(int program, int shaderType, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getSubroutineUniformLocation(program, shaderType, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getUniformSubroutineuiv(int shaderType, int location, MemorySegment params) {

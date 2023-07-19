@@ -39,6 +39,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_ARB_viewport_array</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -232,8 +233,14 @@ public sealed class GL41C extends GL40C permits GL42C {
         return createShaderProgramv(type, strings.length, seg);
     }
 
-    public static int createShaderProgram(SegmentAllocator allocator, int type, String string) {
-        return createShaderProgramv(type, 1, allocator.allocate(ADDRESS, allocator.allocateUtf8String(string)));
+    public static int createShaderProgram(int type, String string) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return createShaderProgramv(type, 1, stack.allocate(ADDRESS, stack.allocateUtf8String(string)));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void deleteProgramPipelines(int n, MemorySegment pipelines) {

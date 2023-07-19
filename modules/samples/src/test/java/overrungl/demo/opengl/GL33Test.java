@@ -52,7 +52,7 @@ public class GL33Test {
 
     public void run() {
         try (var arena = Arena.ofShared()) {
-            init(arena);
+            init();
             load(arena);
         }
         loop();
@@ -72,7 +72,7 @@ public class GL33Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(Arena arena) {
+    private void init() {
         GLFWErrorCallback.createPrint().set();
         RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
@@ -81,7 +81,7 @@ public class GL33Test {
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
         GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-        window = GLFW.createWindow(arena, 640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
+        window = GLFW.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
         RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -107,7 +107,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        RuntimeHelper.check(GLLoader.loadConfined(true, GLFW::ngetProcAddress) != null,
+        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress, true) != null,
             "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();
@@ -115,7 +115,7 @@ public class GL33Test {
         program = GL.createProgram();
         int vsh = GL.createShader(GL.VERTEX_SHADER);
         int fsh = GL.createShader(GL.FRAGMENT_SHADER);
-        GL.shaderSource(arena, vsh, """
+        GL.shaderSource(vsh, """
             #version 330
 
             layout (location = 0) in vec3 position;
@@ -131,7 +131,7 @@ public class GL33Test {
                 vertexColor = color;
             }
             """);
-        GL.shaderSource(arena, fsh, """
+        GL.shaderSource(fsh, """
             #version 330
 
             in vec3 vertexColor;
@@ -151,7 +151,7 @@ public class GL33Test {
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
-        rotationMat = GL.getUniformLocation(arena, program, "rotationMat");
+        rotationMat = GL.getUniformLocation(program, "rotationMat");
 
         vao = GL.genVertexArray();
         GL.bindVertexArray(vao);
@@ -247,9 +247,7 @@ public class GL33Test {
 
             // using lambda gets higher FPS ??
             timer.calcFPS(fps -> {
-                try (MemoryStack stack = MemoryStack.stackPush()) {
-                    GLFW.setWindowTitle(stack, window, STR."\{WND_TITLE} FPS: \{fps}");
-                }
+                GLFW.setWindowTitle(window, STR."\{WND_TITLE} FPS: \{fps}");
             });
         }
     }

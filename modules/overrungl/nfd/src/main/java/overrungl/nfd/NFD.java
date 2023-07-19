@@ -61,7 +61,7 @@ import static overrungl.FunctionDescriptors.*;
  *         var filterItem = NFDNFilterItem.create(stack,
  *             new Pair<>("Source code", "java"),
  *             new Pair<>("Image file", "png,jpg"));
- *         var result = NFD.openDialogN(stack, outPath, filterItem, null);
+ *         var result = NFD.openDialogN(outPath, filterItem, null);
  *         switch (result) {
  *             case ERROR -> System.err.println("Error: " + NFD.getError());
  *             case OKAY -> System.out.println("Success! " + outPath[0]);
@@ -117,7 +117,7 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class NFD {
-    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", "0.1.0");
+    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", RuntimeHelper.VERSION);
     private static final OperatingSystem os = OperatingSystem.current();
     private static final boolean isOsWin = os.isWindows();
     private static final boolean isOsWinOrApple = os.isWindows() || os.isMacOsX();
@@ -183,9 +183,15 @@ public final class NFD {
         return RuntimeHelper.downcallSafe(LOOKUP.find(name).orElse(MemorySegment.NULL), function);
     }
 
-    static MemorySegment allocateString(SegmentAllocator allocator, String str) {
-        if (isOsWin) return RuntimeHelper.allocateUtf16LEString(allocator, str);
-        return allocator.allocateUtf8String(str);
+    static MemorySegment allocateString(String str) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            if (isOsWin) return RuntimeHelper.allocateUtf16LEString(stack, str);
+            return stack.allocateUtf8String(str);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     static String getString(MemorySegment segment, long offset) {
@@ -254,14 +260,13 @@ public final class NFD {
     /**
      * single file open dialog
      *
-     * @param allocator   the allocator of <i>{@code defaultPath}</i>
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      * @see #nopenDialogN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogN
      */
-    public static NFDResult openDialogN(SegmentAllocator allocator, String[] outPath, NFDNFilterItem.Buffer filterList, String defaultPath) {
+    public static NFDResult openDialogN(String[] outPath, NFDNFilterItem.Buffer filterList, String defaultPath) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -269,7 +274,7 @@ public final class NFD {
             final NFDResult result = nopenDialogN(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL);
+                defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = getString(path, 0);
@@ -302,7 +307,6 @@ public final class NFD {
     /**
      * multiple file open dialog
      *
-     * @param allocator   the allocator of <i>{@code defaultPath}</i>
      * @param outPaths    It is the caller's responsibility to free <i>{@code *outPaths}</i>
      *                    via {@link #pathSetFree} if this function returns {@link NFDResult#OKAY}
      * @param filterList  the filter list
@@ -310,11 +314,11 @@ public final class NFD {
      * @return the result
      * @see #nopenDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleN
      */
-    public static NFDResult openDialogMultipleN(SegmentAllocator allocator, @NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem.Buffer filterList, String defaultPath) {
+    public static NFDResult openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem.Buffer filterList, String defaultPath) {
         return nopenDialogMultipleN(outPaths,
             filterList != null ? filterList.address() : MemorySegment.NULL,
             filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-            defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL);
+            defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
     }
 
     /**
@@ -339,7 +343,6 @@ public final class NFD {
     /**
      * save dialog
      *
-     * @param allocator   the allocator of <i>{@code defaultPath}</i>
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
@@ -347,7 +350,7 @@ public final class NFD {
      * @return the result
      * @see #nopenDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleN
      */
-    public static NFDResult saveDialogN(SegmentAllocator allocator, String[] outPath, NFDNFilterItem.Buffer filterList, String defaultPath, String defaultName) {
+    public static NFDResult saveDialogN(String[] outPath, NFDNFilterItem.Buffer filterList, String defaultPath, String defaultName) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -355,8 +358,8 @@ public final class NFD {
             final NFDResult result = nsaveDialogN(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL,
-                defaultName != null ? allocateString(allocator, defaultName) : MemorySegment.NULL);
+                defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL,
+                defaultName != null ? allocateString(defaultName) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = getString(path, 0);
@@ -387,18 +390,17 @@ public final class NFD {
     /**
      * select folder dialog
      *
-     * @param allocator   the allocator of <i>{@code outPath}</i>
      * @param outPath     the out path
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      * @see #npickFolderN(MemorySegment, MemorySegment) npickFolderN
      */
-    public static NFDResult pickFolderN(SegmentAllocator allocator, String[] outPath, String defaultPath) {
+    public static NFDResult pickFolderN(String[] outPath, String defaultPath) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
             final MemorySegment seg = stack.calloc(ADDRESS);
-            final NFDResult result = npickFolderN(seg, defaultPath != null ? allocateString(allocator, defaultPath) : MemorySegment.NULL);
+            final NFDResult result = npickFolderN(seg, defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = getString(path, 0);
@@ -705,14 +707,13 @@ public final class NFD {
     /**
      * single file open dialog
      *
-     * @param allocator   the allocator of <i>{@code defaultPath}</i>
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      * @see #nopenDialogU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogU8
      */
-    public static NFDResult openDialogU8(SegmentAllocator allocator, String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath) {
+    public static NFDResult openDialogU8(String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -720,7 +721,7 @@ public final class NFD {
             final NFDResult result = nopenDialogU8(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+                defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = path.getUtf8String(0);
@@ -755,7 +756,6 @@ public final class NFD {
     /**
      * multiple file open dialog
      *
-     * @param allocator   the allocator of <i>{@code defaultPath}</i>
      * @param outPaths    It is the caller's responsibility to free <i>{@code *outPaths}</i>
      *                    via {@link #pathSetFree} if this function returns {@link NFDResult#OKAY}
      * @param filterList  the filter list
@@ -763,11 +763,17 @@ public final class NFD {
      * @return the result
      * @see #nopenDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleU8
      */
-    public static NFDResult openDialogMultipleU8(SegmentAllocator allocator, @NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem.Buffer filterList, String defaultPath) {
-        return nopenDialogMultipleU8(outPaths,
-            filterList != null ? filterList.address() : MemorySegment.NULL,
-            filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-            defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+    public static NFDResult openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem.Buffer filterList, String defaultPath) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nopenDialogMultipleU8(outPaths,
+                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
+                defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**
@@ -794,7 +800,6 @@ public final class NFD {
     /**
      * save dialog
      *
-     * @param allocator   the allocator of <i>{@code defaultPath}</i>
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
@@ -802,7 +807,7 @@ public final class NFD {
      * @return the result
      * @see #nopenDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleU8
      */
-    public static NFDResult saveDialogU8(SegmentAllocator allocator, String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath, String defaultName) {
+    public static NFDResult saveDialogU8(String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath, String defaultName) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -810,8 +815,8 @@ public final class NFD {
             final NFDResult result = nsaveDialogU8(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL,
-                defaultName != null ? allocator.allocateUtf8String(defaultName) : MemorySegment.NULL);
+                defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL,
+                defaultName != null ? stack.allocateUtf8String(defaultName) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = path.getUtf8String(0);
@@ -844,18 +849,17 @@ public final class NFD {
     /**
      * select folder dialog
      *
-     * @param allocator   the allocator of <i>{@code outPath}</i>
      * @param outPath     the out path
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      * @see #npickFolderU8(MemorySegment, MemorySegment) npickFolderU8
      */
-    public static NFDResult pickFolderU8(SegmentAllocator allocator, String[] outPath, String defaultPath) {
+    public static NFDResult pickFolderU8(String[] outPath, String defaultPath) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
             final MemorySegment seg = stack.calloc(ADDRESS);
-            final NFDResult result = npickFolderU8(seg, defaultPath != null ? allocator.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+            final NFDResult result = npickFolderU8(seg, defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
                 outPath[0] = path.getUtf8String(0);

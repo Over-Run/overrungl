@@ -34,6 +34,7 @@ import static overrungl.opengl.GLLoader.getCapabilities;
  *     <li>{@linkplain GLARBTransposeMatrix GL_ARB_transpose_matrix}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

@@ -41,6 +41,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_ARB_vertex_array_object</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
@@ -426,8 +427,14 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static void bindFragDataLocation(SegmentAllocator allocator, int program, int color, String name) {
-        bindFragDataLocation(program, color, allocator.allocateUtf8String(name));
+    public static void bindFragDataLocation(int program, int color, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            bindFragDataLocation(program, color, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void bindFramebuffer(int target, int framebuffer) {
@@ -826,8 +833,14 @@ public sealed class GL30C extends GL21C permits GL31C {
         }
     }
 
-    public static int getFragDataLocation(SegmentAllocator allocator, int program, String name) {
-        return getFragDataLocation(program, allocator.allocateUtf8String(name));
+    public static int getFragDataLocation(int program, String name) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return getFragDataLocation(program, stack.allocateUtf8String(name));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, MemorySegment params) {

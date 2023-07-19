@@ -33,6 +33,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBPixelBufferObject GL_ARB_pixel_buffer_object}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

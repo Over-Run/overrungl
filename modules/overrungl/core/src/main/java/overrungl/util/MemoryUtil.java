@@ -21,12 +21,15 @@ import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.RuntimeHelper;
 
+import java.lang.foreign.AddressLayout;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
+import static java.lang.foreign.ValueLayout.ADDRESS;
+import static java.lang.foreign.ValueLayout.JAVA_BYTE;
 import static overrungl.FunctionDescriptors.*;
 
 /**
@@ -46,6 +49,14 @@ public final class MemoryUtil {
         m_memmove = downcall("memmove", PPJP),
         m_memset = downcall("memset", PIJP);
     private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
+    /**
+     * The address of {@code NULL}.
+     */
+    public static final long NULL = 0x0L;
+    /**
+     * An unbounded address layout.
+     */
+    public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE));
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
@@ -56,6 +67,24 @@ public final class MemoryUtil {
      */
     private MemoryUtil() {
         throw new IllegalStateException("Do not construct instance");
+    }
+
+    /**
+     * {@return {@code true} if <i>{@code segment}</i> is a null pointer}
+     *
+     * @param segment the segment.
+     */
+    public static boolean isNullptr(@Nullable MemorySegment segment) {
+        return segment == null || segment.equals(MemorySegment.NULL);
+    }
+
+    /**
+     * {@return {@code true} if <i>{@code address}</i> is {@value NULL}}
+     *
+     * @param address the address.
+     */
+    public static boolean isNullptr(long address) {
+        return address == NULL;
     }
 
     /**
@@ -161,10 +190,10 @@ public final class MemoryUtil {
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
-        long ptr = RuntimeHelper.NULL;
+        long ptr = NULL;
         long oldSize = 0;
         if (DEBUG) {
-            ptr = memblock != null ? memblock.address() : RuntimeHelper.NULL;
+            ptr = memblock != null ? memblock.address() : NULL;
             oldSize = DebugAllocator.untrack(ptr);
         }
         try {

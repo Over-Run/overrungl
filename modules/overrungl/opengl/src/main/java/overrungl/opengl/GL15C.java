@@ -34,6 +34,7 @@ import static overrungl.FunctionDescriptors.*;
  *     <li>{@linkplain GLARBOcclusionQuery GL_ARB_occlusion_query}</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */

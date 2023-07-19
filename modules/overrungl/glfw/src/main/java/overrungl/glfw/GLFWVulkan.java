@@ -19,7 +19,6 @@ package overrungl.glfw;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
 
 import static overrungl.glfw.Handles.*;
@@ -86,16 +85,21 @@ public final class GLFWVulkan {
     /**
      * Returns the address of the specified Vulkan instance function.
      *
-     * @param allocator The segment allocator to allocate function name string.
-     * @param instance  The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
-     *                  functions related to instance creation.
-     * @param procName  The ASCII encoded name of the function.
+     * @param instance The Vulkan instance to query, or {@link MemorySegment#NULL NULL} to retrieve
+     *                 functions related to instance creation.
+     * @param procName The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nglfwGetInstanceProcAddress(MemorySegment, MemorySegment) nglfwGetInstanceProcAddress
      */
-    public static MemorySegment glfwGetInstanceProcAddress(SegmentAllocator allocator, MemorySegment instance, String procName) {
-        return nglfwGetInstanceProcAddress(instance, allocator.allocateUtf8String(procName));
+    public static MemorySegment glfwGetInstanceProcAddress(MemorySegment instance, String procName) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nglfwGetInstanceProcAddress(instance, stack.allocateUtf8String(procName));
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**

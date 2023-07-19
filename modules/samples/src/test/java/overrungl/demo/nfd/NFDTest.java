@@ -47,7 +47,7 @@ public final class NFDTest {
                 new Pair<>("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.openDialogN(stack, outPath, filterItem, null);
+            final NFDResult result = NFD.openDialogN(outPath, filterItem, null);
 
             switch (result) {
                 case ERROR -> System.err.println("Error: " + NFD.getError());
@@ -77,7 +77,7 @@ public final class NFDTest {
                 new Pair<>("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.openDialogMultipleN(stack, pOutPaths, filterItem, null);
+            final NFDResult result = NFD.openDialogMultipleN(pOutPaths, filterItem, null);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
@@ -117,7 +117,7 @@ public final class NFDTest {
                 new Pair<>("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.openDialogMultipleN(stack, pOutPaths, filterItem, null);
+            final NFDResult result = NFD.openDialogMultipleN(pOutPaths, filterItem, null);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
@@ -155,7 +155,7 @@ public final class NFDTest {
             String[] outPath = new String[1];
 
             // show the dialog
-            final NFDResult result = NFD.pickFolderN(stack, outPath, null);
+            final NFDResult result = NFD.pickFolderN(outPath, null);
             switch (result) {
                 case ERROR -> System.err.println("Error: " + NFD.getError());
                 case OKAY -> System.out.println("Success! " + outPath[0]);
@@ -183,7 +183,7 @@ public final class NFDTest {
                 new Pair<>("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.saveDialogN(stack, savePath, filterItem, null, "Untitled.java");
+            final NFDResult result = NFD.saveDialogN(savePath, filterItem, null, "Untitled.java");
             switch (result) {
                 case ERROR -> System.err.println("Error: " + NFD.getError());
                 case OKAY -> System.out.println("Success! " + savePath[0]);

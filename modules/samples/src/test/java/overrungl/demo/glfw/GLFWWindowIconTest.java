@@ -61,7 +61,7 @@ public final class GLFWWindowIconTest {
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
+        window = GLFW.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
         RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
 
         try {
@@ -105,7 +105,7 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        RuntimeHelper.check(GLLoader.loadConfined(true, GLFW::ngetProcAddress) != null,
+        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress, true) != null,
             "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

@@ -44,7 +44,7 @@ public final class GL15Test {
 
     public void run() {
         try (var arena = Arena.ofShared()) {
-            init(arena);
+            init();
             load(arena);
         }
         loop();
@@ -59,13 +59,13 @@ public final class GL15Test {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(Arena arena) {
+    private void init() {
         GLFWErrorCallback.createPrint().set();
         RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 640, 480, "OpenGL 1.5", MemorySegment.NULL, MemorySegment.NULL);
+        window = GLFW.createWindow(640, 480, "OpenGL 1.5", MemorySegment.NULL, MemorySegment.NULL);
         RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
@@ -91,7 +91,7 @@ public final class GL15Test {
     }
 
     private void load(Arena arena) {
-        RuntimeHelper.check(GLLoader.loadConfined(GLFW::ngetProcAddress) != null,
+        RuntimeHelper.check(GLLoader.load(GLFW::getProcAddress) != null,
             "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

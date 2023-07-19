@@ -37,6 +37,7 @@ import static overrungl.FunctionDescriptors.*;
  *     <li>GL_ARB_texture_multisample</li>
  * </ul>
  *
+ * @sealedGraph
  * @author squid233
  * @since 0.1.0
  */
