@@ -60,22 +60,20 @@ public class DrawElementsIndirectCommand extends Struct {
     /**
      * Create the pointer instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public DrawElementsIndirectCommand(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public DrawElementsIndirectCommand(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
-     * @param layout    the memory layout of this struct.
+     * @param address the address.
+     * @param layout  the memory layout of this struct.
      */
-    protected DrawElementsIndirectCommand(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
-        super(address, allocator, layout);
+    protected DrawElementsIndirectCommand(MemorySegment address, MemoryLayout layout) {
+        super(address, layout);
     }
 
     /**
@@ -85,7 +83,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return the instance
      */
     public static DrawElementsIndirectCommand create(SegmentAllocator allocator) {
-        return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT), allocator);
+        return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT));
     }
 
     /**
@@ -96,7 +94,7 @@ public class DrawElementsIndirectCommand extends Struct {
      * @return the instance
      */
     public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocateArray(LAYOUT, count), allocator, count);
+        return new Buffer(allocator.allocateArray(LAYOUT, count), count);
     }
 
     /**
@@ -202,11 +200,10 @@ public class DrawElementsIndirectCommand extends Struct {
          * Create the pointer instance.
          *
          * @param address      the address.
-         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
-            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, long elementCount) {
+            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             pCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("count"));
             pPrimCount = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("primCount"));
             pFirstIndex = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("firstIndex"));

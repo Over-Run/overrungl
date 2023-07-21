@@ -50,22 +50,20 @@ public class NFDNFilterItem extends Struct {
     /**
      * Create a {@code NFDNFilterItem} instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public NFDNFilterItem(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public NFDNFilterItem(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
-     * @param layout    the memory layout of this struct.
+     * @param address the address.
+     * @param layout  the memory layout of this struct.
      */
-    protected NFDNFilterItem(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
-        super(address, allocator, layout);
+    protected NFDNFilterItem(MemorySegment address, MemoryLayout layout) {
+        super(address, layout);
     }
 
     /**
@@ -77,7 +75,7 @@ public class NFDNFilterItem extends Struct {
      * @return the instance
      */
     public static NFDNFilterItem create(SegmentAllocator allocator, String name, String spec) {
-        final NFDNFilterItem item = new NFDNFilterItem(allocator.allocate(LAYOUT), allocator);
+        final NFDNFilterItem item = new NFDNFilterItem(allocator.allocate(LAYOUT));
         pName.set(item.segment(), NFD.allocateString(name));
         pSpec.set(item.segment(), NFD.allocateString(spec));
         return item;
@@ -92,7 +90,7 @@ public class NFDNFilterItem extends Struct {
      */
     @SafeVarargs
     public static Buffer create(SegmentAllocator allocator, Pair<String>... items) {
-        final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), allocator, items.length);
+        final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
             buffer.pName.set(buffer.segment(), (long) i, NFD.allocateString(item.key()));
@@ -144,11 +142,10 @@ public class NFDNFilterItem extends Struct {
          * Create a {@code NFDNFilterItem.Buffer} instance.
          *
          * @param address      the address.
-         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
-            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, long elementCount) {
+            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             pName = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("name"));
             pSpec = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("spec"));
         }

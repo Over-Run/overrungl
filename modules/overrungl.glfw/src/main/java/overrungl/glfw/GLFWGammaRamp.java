@@ -42,13 +42,14 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public class GLFWGammaRamp extends Struct {
+    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT));
     /**
      * The struct layout.
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT)).withName("red"),
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT)).withName("green"),
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT)).withName("blue"),
+        SHORT_ARRAY.withName("red"),
+        SHORT_ARRAY.withName("green"),
+        SHORT_ARRAY.withName("blue"),
         JAVA_INT.withName("size")
     );
     private static final VarHandle
@@ -63,11 +64,10 @@ public class GLFWGammaRamp extends Struct {
     /**
      * Create a {@code GLFWgammaramp const} instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public GLFWGammaRamp(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public GLFWGammaRamp(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
@@ -77,44 +77,47 @@ public class GLFWGammaRamp extends Struct {
      * @return the instance
      */
     public static GLFWGammaRamp create(SegmentAllocator allocator) {
-        return new GLFWGammaRamp(allocator.allocate(LAYOUT), allocator);
+        return new GLFWGammaRamp(allocator.allocate(LAYOUT));
     }
 
     /**
      * Sets the red value array.
      *
-     * @param reds the array
+     * @param allocator the allocator of the array.
+     * @param reds      the array
      * @return this
      */
-    public GLFWGammaRamp red(short[] reds) {
-        ppRed.set(segment(), allocator().allocateArray(JAVA_SHORT, reds));
+    public GLFWGammaRamp red(SegmentAllocator allocator, short[] reds) {
+        ppRed.set(segment(), allocator.allocateArray(JAVA_SHORT, reds));
         return this;
     }
 
     /**
      * Sets the green value array.
      *
-     * @param greens the array
+     * @param allocator the allocator of the array.
+     * @param greens    the array
      * @return this
      */
-    public GLFWGammaRamp green(short[] greens) {
-        ppGreen.set(segment(), allocator().allocateArray(JAVA_SHORT, greens));
+    public GLFWGammaRamp green(SegmentAllocator allocator, short[] greens) {
+        ppGreen.set(segment(), allocator.allocateArray(JAVA_SHORT, greens));
         return this;
     }
 
     /**
      * Sets the blue value array.
      *
-     * @param blues the array
+     * @param allocator the allocator of the array.
+     * @param blues     the array
      * @return this
      */
-    public GLFWGammaRamp blue(short[] blues) {
-        ppBlue.set(segment(), allocator().allocateArray(JAVA_SHORT, blues));
+    public GLFWGammaRamp blue(SegmentAllocator allocator, short[] blues) {
+        ppBlue.set(segment(), allocator.allocateArray(JAVA_SHORT, blues));
         return this;
     }
 
     /**
-     * Sets the arrays size.
+     * Sets the size of arrays.
      *
      * @param size The number of elements in each array.
      * @return this

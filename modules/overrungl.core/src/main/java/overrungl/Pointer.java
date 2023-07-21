@@ -18,7 +18,6 @@ package overrungl;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 
 /**
  * A {@link MemorySegment} wrapper with a segment allocator.
@@ -32,10 +31,6 @@ public class Pointer implements Addressable {
      */
     protected final MemorySegment address;
     /**
-     * The allocator of this pointer.
-     */
-    protected final SegmentAllocator allocator;
-    /**
      * The managed native segment that is not zero-length.
      * <p>
      * This field is not modified with {@code final} since the layout might be null in construction.
@@ -45,24 +40,15 @@ public class Pointer implements Addressable {
     /**
      * Create the pointer instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public Pointer(MemorySegment address, SegmentAllocator allocator) {
+    public Pointer(MemorySegment address) {
         this.address = address;
-        this.allocator = allocator;
     }
 
     @Override
     public MemorySegment address() {
         return address;
-    }
-
-    /**
-     * {@return the allocator of this pointer}
-     */
-    public SegmentAllocator allocator() {
-        return allocator;
     }
 
     /**

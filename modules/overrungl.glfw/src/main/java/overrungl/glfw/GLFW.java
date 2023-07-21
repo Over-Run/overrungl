@@ -26,7 +26,6 @@ import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.glfw.Handles.*;
@@ -1744,13 +1743,12 @@ public final class GLFW {
     /**
      * Returns the available video modes for the specified monitor.
      *
-     * @param allocator The allocator that allocates the result.
      * @param monitor   The monitor to query.
      * @return An array of video modes, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer getVideoModes(SegmentAllocator allocator, MemorySegment monitor) {
+    public static @Nullable GLFWVidMode.Buffer getVideoModes(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1758,7 +1756,7 @@ public final class GLFW {
             var pModes = ngetVideoModes(monitor, pCount);
             return RuntimeHelper.isNullptr(pModes) ?
                 null :
-                new GLFWVidMode.Buffer(pModes, allocator, pCount.get(JAVA_INT, 0));
+                new GLFWVidMode.Buffer(pModes, pCount.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1802,13 +1800,7 @@ public final class GLFW {
     public static GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
         if (RuntimeHelper.isNullptr(pMode)) return null;
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return new GLFWVidMode(pMode, stack).value();
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+        return new GLFWVidMode(pMode).value();
     }
 
     /**
@@ -1881,9 +1873,7 @@ public final class GLFW {
     public static GLFWGammaRamp getGammaRamp(MemorySegment monitor) {
         var pRamp = ngetGammaRamp(monitor);
         if (RuntimeHelper.isNullptr(pRamp)) return null;
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            return new GLFWGammaRamp(pRamp, stack);
-        }
+        return new GLFWGammaRamp(pRamp);
     }
 
     /**
