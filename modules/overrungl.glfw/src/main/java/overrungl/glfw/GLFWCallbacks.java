@@ -27,10 +27,10 @@ import java.util.Map;
  * @author squid233
  * @since 0.1.0
  */
-public final class Callbacks {
+public final class GLFWCallbacks {
     private static final Map<MemorySegment, Arena> ARENA_MAP = new HashMap<>();
 
-    private Callbacks() {
+    private GLFWCallbacks() {
         //no instance
     }
 

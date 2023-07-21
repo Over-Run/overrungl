@@ -17,7 +17,7 @@
 package overrungl.demo.opengl;
 
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
@@ -52,7 +52,7 @@ public final class GL15Test {
         GL.deleteBuffer(vbo);
         GL.deleteTexture(tex);
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
 
         GLFW.terminate();

@@ -16,7 +16,7 @@
 
 package overrungl.demo.glfw;
 
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWGamepadState;
@@ -38,7 +38,7 @@ public final class GLFWJoystickTest {
         init();
         loop();
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
 
         GLFW.terminate();

@@ -18,7 +18,7 @@ package overrungl.demo.opengl;
 
 import org.joml.Matrix4f;
 import org.overrun.timer.Timer;
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.joml.Matrixn;
@@ -66,7 +66,7 @@ public class GL33Test {
             GL.deleteBuffers(3, stack.ints(vbo, ebo, mbo));
         }
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
         debugProc.close();
 

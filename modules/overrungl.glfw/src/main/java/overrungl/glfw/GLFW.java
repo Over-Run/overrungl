@@ -3442,7 +3442,7 @@ public final class GLFW {
      * @see #nsetWindowPosCallback(MemorySegment, MemorySegment) nsetWindowPosCallback
      */
     public static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable IGLFWWindowPosFun callback) {
-        return nsetWindowPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowPosCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3482,7 +3482,7 @@ public final class GLFW {
      * @see #nsetWindowSizeCallback(MemorySegment, MemorySegment) nsetWindowSizeCallback
      */
     public static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable IGLFWWindowSizeFun callback) {
-        return nsetWindowSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowSizeCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3529,7 +3529,7 @@ public final class GLFW {
      * @see #nsetWindowCloseCallback(MemorySegment, MemorySegment) nsetWindowCloseCallback
      */
     public static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable IGLFWWindowCloseFun callback) {
-        return nsetWindowCloseCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowCloseCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3573,7 +3573,7 @@ public final class GLFW {
      * @see #nsetWindowRefreshCallback(MemorySegment, MemorySegment) nsetWindowRefreshCallback
      */
     public static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable IGLFWWindowRefreshFun callback) {
-        return nsetWindowRefreshCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowRefreshCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3618,7 +3618,7 @@ public final class GLFW {
      * @see #nsetWindowFocusCallback(MemorySegment, MemorySegment) nsetWindowFocusCallback
      */
     public static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable IGLFWWindowFocusFun callback) {
-        return nsetWindowFocusCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowFocusCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3659,7 +3659,7 @@ public final class GLFW {
      * @see #nsetWindowIconifyCallback(MemorySegment, MemorySegment) nsetWindowIconifyCallback
      */
     public static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable IGLFWWindowIconifyFun callback) {
-        return nsetWindowIconifyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowIconifyCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3698,7 +3698,7 @@ public final class GLFW {
      * @see #nsetWindowMaximizeCallback(MemorySegment, MemorySegment) nsetWindowMaximizeCallback
      */
     public static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable IGLFWWindowMaximizeFun callback) {
-        return nsetWindowMaximizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowMaximizeCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3737,7 +3737,7 @@ public final class GLFW {
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) nsetFramebufferSizeCallback
      */
     public static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable IGLFWFramebufferSizeFun callback) {
-        return nsetFramebufferSizeCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetFramebufferSizeCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3777,7 +3777,7 @@ public final class GLFW {
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) nsetWindowContentScaleCallback
      */
     public static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable IGLFWWindowContentScaleFun callback) {
-        return nsetWindowContentScaleCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetWindowContentScaleCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4523,7 +4523,7 @@ public final class GLFW {
      * @see #nsetKeyCallback(MemorySegment, MemorySegment) nsetKeyCallback
      */
     public static MemorySegment setKeyCallback(MemorySegment window, @Nullable IGLFWKeyFun callback) {
-        return nsetKeyCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetKeyCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4574,7 +4574,7 @@ public final class GLFW {
      * @see #nsetCharCallback(MemorySegment, MemorySegment) nsetCharCallback
      */
     public static MemorySegment setCharCallback(MemorySegment window, @Nullable IGLFWCharFun callback) {
-        return nsetCharCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetCharCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4619,7 +4619,7 @@ public final class GLFW {
      * @see #nsetMouseButtonCallback(MemorySegment, MemorySegment) nsetMouseButtonCallback
      */
     public static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable IGLFWMouseButtonFun callback) {
-        return nsetMouseButtonCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetMouseButtonCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4660,7 +4660,7 @@ public final class GLFW {
      * @see #nsetCursorPosCallback(MemorySegment, MemorySegment) nsetCursorPosCallback
      */
     public static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable IGLFWCursorPosFun callback) {
-        return nsetCursorPosCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetCursorPosCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4700,7 +4700,7 @@ public final class GLFW {
      * @see #nsetCursorEnterCallback(MemorySegment, MemorySegment) nsetCursorEnterCallback
      */
     public static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable IGLFWCursorEnterFun callback) {
-        return nsetCursorEnterCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetCursorEnterCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4743,7 +4743,7 @@ public final class GLFW {
      * @see #nsetScrollCallback(MemorySegment, MemorySegment) nsetScrollCallback
      */
     public static MemorySegment setScrollCallback(MemorySegment window, @Nullable IGLFWScrollFun callback) {
-        return nsetScrollCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetScrollCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4788,7 +4788,7 @@ public final class GLFW {
      * @see #nsetDropCallback(MemorySegment, MemorySegment) nsetDropCallback
      */
     public static MemorySegment setDropCallback(MemorySegment window, @Nullable IGLFWDropFun callback) {
-        return nsetDropCallback(window, callback != null ? callback.address(Callbacks.create(window)) : MemorySegment.NULL);
+        return nsetDropCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
