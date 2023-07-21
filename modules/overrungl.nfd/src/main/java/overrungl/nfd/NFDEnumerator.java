@@ -54,8 +54,8 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
     };
     private final Kind kind;
 
-    private NFDEnumerator(Kind kind, MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    private NFDEnumerator(Kind kind, MemorySegment address) {
+        super(address, LAYOUT);
         this.kind = kind;
     }
 
@@ -114,7 +114,7 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
         final NFDResult result = NFD.pathSetGetEnum(pathSet, seg);
         return new Tuple2<>(result,
             result == NFDResult.OKAY ?
-                new NFDEnumerator(kind, seg, allocator) :
+                new NFDEnumerator(kind, seg) :
                 null);
     }
 

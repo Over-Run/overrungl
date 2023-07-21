@@ -71,10 +71,9 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      * @param container the backing memory buffer, may be null
      * @param address   the backing memory address
      * @param size      the backing memory size
-     * @param arena     the backing arena
      */
-    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size, Arena arena) {
-        super(address, arena);
+    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size) {
+        super(address);
         this.container = container;
 
         this.size = size;
@@ -100,8 +99,19 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      * @param capacity the maximum number of bytes that may be allocated on the stack
      */
     public static MemoryStack create(long capacity) {
-        final Arena arena = Arena.ofAuto();
-        return create(arena.allocate(capacity), capacity, arena);
+        return create(capacity, Arena.ofAuto());
+    }
+
+    /**
+     * Creates a new {@code MemoryStack} with the specified size and arena.
+     *
+     * <p>In the initial state, there is no active stack frame. The {@link #push} method must be used before any allocations.</p>
+     *
+     * @param capacity the maximum number of bytes that may be allocated on the stack
+     * @param arena    the arena for allocating buffer
+     */
+    public static MemoryStack create(long capacity, Arena arena) {
+        return create(arena.allocate(capacity), capacity);
     }
 
     /**
@@ -111,12 +121,11 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      *
      * @param buffer the backing memory buffer
      * @param size   the memory buffer size
-     * @param arena  the backing arena
      */
-    public static MemoryStack create(MemorySegment buffer, long size, Arena arena) {
+    public static MemoryStack create(MemorySegment buffer, long size) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(buffer, buffer, size, arena)
-            : new MemoryStack(buffer, buffer, size, arena);
+            ? new DebugMemoryStack(buffer, buffer, size)
+            : new MemoryStack(buffer, buffer, size);
     }
 
     /**
@@ -126,12 +135,11 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      *
      * @param address the backing memory address
      * @param size    the backing memory size
-     * @param arena   the backing arena
      */
-    public static MemoryStack ncreate(MemorySegment address, long size, Arena arena) {
+    public static MemoryStack ncreate(MemorySegment address, long size) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(null, address, size, arena)
-            : new MemoryStack(null, address, size, arena);
+            ? new DebugMemoryStack(null, address, size)
+            : new MemoryStack(null, address, size);
     }
 
     /**
@@ -194,8 +202,8 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
 
-        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size, Arena arena) {
-            super(buffer, address, size, arena);
+        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size) {
+            super(buffer, address, size);
             debugFrames = new Object[DEFAULT_STACK_FRAMES];
         }
 

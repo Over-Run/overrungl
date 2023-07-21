@@ -58,11 +58,10 @@ public class STBIIoCallbacks extends Struct {
     /**
      * Create a {@code stbi_io_callbacks} instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public STBIIoCallbacks(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public STBIIoCallbacks(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
@@ -163,7 +162,7 @@ public class STBIIoCallbacks extends Struct {
      * @return the instance
      */
     public static STBIIoCallbacks create(SegmentAllocator allocator) {
-        return new STBIIoCallbacks(allocator.allocate(LAYOUT), allocator);
+        return new STBIIoCallbacks(allocator.allocate(LAYOUT));
     }
 
     /**

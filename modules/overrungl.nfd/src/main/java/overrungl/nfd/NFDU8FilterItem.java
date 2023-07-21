@@ -50,22 +50,20 @@ public class NFDU8FilterItem extends Struct {
     /**
      * Create a {@code NFDU8FilterItem} instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public NFDU8FilterItem(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public NFDU8FilterItem(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
-     * @param layout    the memory layout of this struct.
+     * @param address the address.
+     * @param layout  the memory layout of this struct.
      */
-    protected NFDU8FilterItem(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
-        super(address, allocator, layout);
+    protected NFDU8FilterItem(MemorySegment address, MemoryLayout layout) {
+        super(address, layout);
     }
 
     /**
@@ -77,7 +75,7 @@ public class NFDU8FilterItem extends Struct {
      * @return the instance
      */
     public static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
-        final NFDU8FilterItem item = new NFDU8FilterItem(allocator.allocate(LAYOUT), allocator);
+        final NFDU8FilterItem item = new NFDU8FilterItem(allocator.allocate(LAYOUT));
         pName.set(item.segment(), allocator.allocateUtf8String(name));
         pSpec.set(item.segment(), allocator.allocateUtf8String(spec));
         return item;
@@ -92,7 +90,7 @@ public class NFDU8FilterItem extends Struct {
      */
     @SafeVarargs
     public static Buffer create(SegmentAllocator allocator, Pair<String>... items) {
-        final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), allocator, items.length);
+        final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
             buffer.pName.set(buffer.segment(), (long) i, allocator.allocateUtf8String(item.key()));
@@ -144,11 +142,10 @@ public class NFDU8FilterItem extends Struct {
          * Create a {@code NFDU8FilterItem.Buffer} instance.
          *
          * @param address      the address.
-         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
-            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, long elementCount) {
+            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             pName = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("name"));
             pSpec = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("spec"));
         }

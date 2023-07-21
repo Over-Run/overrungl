@@ -57,22 +57,20 @@ public class GLFWImage extends Struct {
     /**
      * Create a {@code GLFWimage} instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public GLFWImage(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public GLFWImage(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
-     * @param layout    the memory layout of this struct.
+     * @param address the address.
+     * @param layout  the memory layout of this struct.
      */
-    protected GLFWImage(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
-        super(address, allocator, layout);
+    protected GLFWImage(MemorySegment address, MemoryLayout layout) {
+        super(address, layout);
     }
 
     /**
@@ -82,7 +80,7 @@ public class GLFWImage extends Struct {
      * @return the instance
      */
     public static GLFWImage create(SegmentAllocator allocator) {
-        return new GLFWImage(allocator.allocate(LAYOUT), allocator);
+        return new GLFWImage(allocator.allocate(LAYOUT));
     }
 
     /**
@@ -93,7 +91,7 @@ public class GLFWImage extends Struct {
      * @return the instance
      */
     public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocateArray(LAYOUT, count), allocator, count);
+        return new Buffer(allocator.allocateArray(LAYOUT, count), count);
     }
 
     /**
@@ -169,11 +167,10 @@ public class GLFWImage extends Struct {
          * Create a {@code GLFWImage.Buffer} instance.
          *
          * @param address      the address.
-         * @param allocator    the allocator of this address.
          * @param elementCount the element count
          */
-        public Buffer(MemorySegment address, SegmentAllocator allocator, long elementCount) {
-            super(address, allocator, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
+        public Buffer(MemorySegment address, long elementCount) {
+            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
             pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
             pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
             pPixels = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));

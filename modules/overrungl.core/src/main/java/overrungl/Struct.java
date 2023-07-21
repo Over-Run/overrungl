@@ -18,7 +18,6 @@ package overrungl;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 
 /**
  * The C struct wrapper.
@@ -37,12 +36,11 @@ public class Struct extends Pointer {
     /**
      * Creates a struct instance with the given memory layout.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
-     * @param layout    the memory layout of this struct.
+     * @param address the address.
+     * @param layout  the memory layout of this struct.
      */
-    public Struct(MemorySegment address, SegmentAllocator allocator, MemoryLayout layout) {
-        super(address, allocator);
+    public Struct(MemorySegment address, MemoryLayout layout) {
+        super(address);
         this.layout = layout;
         segment(layout);
     }
@@ -50,11 +48,10 @@ public class Struct extends Pointer {
     /**
      * Creates a struct instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public Struct(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator);
+    public Struct(MemorySegment address) {
+        super(address);
     }
 
     /**

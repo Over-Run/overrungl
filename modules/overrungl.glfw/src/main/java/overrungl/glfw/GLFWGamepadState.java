@@ -57,11 +57,10 @@ public class GLFWGamepadState extends Struct {
     /**
      * Create a {@code GLFWgamepadstate} instance.
      *
-     * @param address   the address.
-     * @param allocator the allocator of this address.
+     * @param address the address.
      */
-    public GLFWGamepadState(MemorySegment address, SegmentAllocator allocator) {
-        super(address, allocator, LAYOUT);
+    public GLFWGamepadState(MemorySegment address) {
+        super(address, LAYOUT);
     }
 
     /**
@@ -71,7 +70,7 @@ public class GLFWGamepadState extends Struct {
      * @return the instance
      */
     public static GLFWGamepadState create(SegmentAllocator allocator) {
-        return new GLFWGamepadState(allocator.allocate(LAYOUT), allocator);
+        return new GLFWGamepadState(allocator.allocate(LAYOUT));
     }
 
     /**
