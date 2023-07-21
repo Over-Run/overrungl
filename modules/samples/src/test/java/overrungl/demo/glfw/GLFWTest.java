@@ -79,8 +79,7 @@ public final class GLFWTest {
     }
 
     private void load() {
-        CheckUtil.check(GLLoader.load(GLFW::getProcAddress) != null,
-            "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }

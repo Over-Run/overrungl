@@ -29,9 +29,9 @@ import java.lang.invoke.MethodHandle;
  *
  * <h2>Example</h2>
  * {@snippet lang = java:
- * // loads OpenGL compatibility profile
- * if (GLLoader.load(GLFW::getProcAddress, true) == null)
- *     throw new IllegalStateException("Failed to load OpenGL");
+ * // loads OpenGL forward-compatible profile
+ * import overrungl.util.CheckUtil;
+ * CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
  * }
  *
  * @author squid233

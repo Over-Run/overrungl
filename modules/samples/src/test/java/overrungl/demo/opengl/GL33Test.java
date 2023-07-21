@@ -109,8 +109,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        CheckUtil.check(GLLoader.load(GLFW::getProcAddress, true) != null,
-            "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
