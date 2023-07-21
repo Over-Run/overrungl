@@ -89,6 +89,8 @@ See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
+Javadoc can be found [here](https://over-run.github.io/overrungl-doc/).
+
 The documentation of OpenGL can be found [here](https://docs.gl/).
 
 ### Publishing (for internal member)

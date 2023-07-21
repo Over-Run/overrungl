@@ -259,7 +259,7 @@ allprojects {
                         "glfw.note:m:Note:"
                     )
 
-                    bottom = "<a href=\"https://github.com/Over-Run/overrungl-doc/issues\">Report a bug or suggest an enhancement</a><br>" +
+                    bottom = "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
                         "Copyright © 2022-2023 Overrun Organization<br>" +
                         "<b>$projVersion</b>"
                 }
