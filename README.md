@@ -16,15 +16,15 @@ enables cross-platform access to a set of C/C++ library bindings, and provides s
 
 ### OverrunGL vs. LWJGL
 
-[LWJGL3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
+[LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
 
-LWJGL3 uses JNI to access native functions, but OverrunGL uses [FFM API](https://openjdk.org/jeps/434), which has better
-performance.
+LWJGL 3 uses JNI to access native functions,
+but OverrunGL uses [FFM API](https://openjdk.org/jeps/434), which has better performance.
 
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/org/overrun/gl/demo).
+the [samples](modules/samples/src/test/java/overrungl/demo).
 
 ## Using as a Dependency
 
