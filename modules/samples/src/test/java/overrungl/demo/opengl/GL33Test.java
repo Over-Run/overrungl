@@ -18,7 +18,7 @@ package overrungl.demo.opengl;
 
 import org.joml.Matrix4f;
 import org.overrun.timer.Timer;
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.joml.Matrixn;
@@ -66,7 +66,7 @@ public class GL33Test {
             GL.deleteBuffers(3, stack.ints(vbo, ebo, mbo));
         }
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
         debugProc.close();
 
@@ -109,8 +109,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        CheckUtil.check(GLLoader.load(GLFW::getProcAddress, true) != null,
-            "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

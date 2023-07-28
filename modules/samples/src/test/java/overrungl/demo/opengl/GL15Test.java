@@ -17,7 +17,7 @@
 package overrungl.demo.opengl;
 
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
@@ -52,7 +52,7 @@ public final class GL15Test {
         GL.deleteBuffer(vbo);
         GL.deleteTexture(tex);
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
 
         GLFW.terminate();
@@ -91,8 +91,7 @@ public final class GL15Test {
     }
 
     private void load(Arena arena) {
-        CheckUtil.check(GLLoader.load(GLFW::getProcAddress) != null,
-            "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         GL.enable(GL.TEXTURE_2D);

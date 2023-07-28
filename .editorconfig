@@ -11,5 +11,8 @@ insert_final_newline = true
 [*.md]
 trim_trailing_whitespace = false
 
-[{*.yml,*.json}]
+[*.{yml,json}]
 indent_size = 2
+
+[doc/legal/LICENSE_lwjgl3.md]
+insert_final_newline = false

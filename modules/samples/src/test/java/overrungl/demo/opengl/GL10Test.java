@@ -14,38 +14,30 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.demo.glfw;
+package overrungl.demo.opengl;
 
-import overrungl.demo.util.IOUtil;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
-import overrungl.glfw.GLFWImage;
 import overrungl.opengl.GL;
+import overrungl.opengl.GL10;
 import overrungl.opengl.GLLoader;
-import overrungl.stb.STBImage;
 import overrungl.util.CheckUtil;
 
-import java.io.IOException;
-import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
-import static java.lang.foreign.ValueLayout.JAVA_INT;
-
 /**
- * Tests GLFW window icon and STB image
+ * Tests basic GLFW and OpenGL
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFWWindowIconTest {
+public final class GL10Test {
     private MemorySegment window;
 
     public void run() {
-        try (var arena = Arena.ofShared()) {
-            init(arena);
-            load();
-        }
+        init();
+        load();
         loop();
 
         GLFWCallbacks.free(window);
@@ -55,7 +47,7 @@ public final class GLFWWindowIconTest {
         GLFW.setErrorCallback(null);
     }
 
-    private void init(Arena arena) {
+    private void init() {
         GLFWErrorCallback.createPrint().set();
         CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
@@ -63,24 +55,6 @@ public final class GLFWWindowIconTest {
         GLFW.windowHint(GLFW.RESIZABLE, true);
         window = GLFW.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
         CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
-
-        try {
-            var px = arena.allocate(JAVA_INT);
-            var py = arena.allocate(JAVA_INT);
-            var pc = arena.allocate(JAVA_INT);
-            var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena, "image.png", 256),
-                px, py, pc, STBImage.RGB_ALPHA
-            );
-            GLFW.setWindowIcon(window, GLFWImage.create(arena, 1)
-                .width(px.get(JAVA_INT, 0))
-                .height(py.get(JAVA_INT, 0))
-                .pixels(data));
-            STBImage.free(data);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);
@@ -105,7 +79,7 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }
@@ -114,6 +88,16 @@ public final class GLFWWindowIconTest {
         while (!GLFW.windowShouldClose(window)) {
             GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
+            // Draw triangle
+            GL10.begin(GL.TRIANGLES);
+            GL10.color3f(1f, 0f, 0f);
+            GL10.vertex2f(0.0f, 0.5f);
+            GL10.color3f(0f, 1f, 0f);
+            GL10.vertex2f(-0.5f, -0.5f);
+            GL10.color3f(0f, 0f, 1f);
+            GL10.vertex2f(0.5f, -0.5f);
+            GL10.end();
+
             GLFW.swapBuffers(window);
 
             GLFW.pollEvents();
@@ -121,6 +105,6 @@ public final class GLFWWindowIconTest {
     }
 
     public static void main(String[] args) {
-        new GLFWWindowIconTest().run();
+        new GL10Test().run();
     }
 }
