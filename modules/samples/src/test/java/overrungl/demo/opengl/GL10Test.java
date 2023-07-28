@@ -14,7 +14,7 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.demo.glfw;
+package overrungl.demo.opengl;
 
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
@@ -32,7 +32,7 @@ import java.lang.foreign.MemorySegment;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFWTest {
+public final class GL10Test {
     private MemorySegment window;
 
     public void run() {
@@ -105,6 +105,6 @@ public final class GLFWTest {
     }
 
     public static void main(String[] args) {
-        new GLFWTest().run();
+        new GL10Test().run();
     }
 }
