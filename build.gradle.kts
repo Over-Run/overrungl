@@ -19,8 +19,8 @@ val orgName: String by project
 val orgUrl: String by project
 val developers: String by project
 
-val jdkEABuildDoc: String? = "jdk21"
-val targetJavaVersion = 21
+val jdkEABuildDoc: String? = "jdk22"
+val targetJavaVersion = 22
 val enablePreview = true
 
 group = projGroupId

@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         java: [
-          21-ea
+          22-ea
         ]
         os: [ ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
@@ -43,7 +43,7 @@ jobs:
             modules/overrungl/**/build/reports/
             modules/**/build/reports/
       - name: Capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '21-ea' }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '22-ea' }}
         uses: actions/upload-artifact@v3
         with:
           name: Artifacts

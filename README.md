@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Overrun Game Library is a high-performance library that implemented with Java 21,
+Overrun Game Library is a high-performance library that implemented with Java 22,
 enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
@@ -19,12 +19,20 @@ enables cross-platform access to a set of C/C++ library bindings, and provides s
 [LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
 
 LWJGL 3 uses JNI to access native functions,
-but OverrunGL uses [FFM API](https://openjdk.org/jeps/434), which has better performance.
+but OverrunGL uses [FFM API](https://openjdk.org/jeps/8310626), which has better performance.
 
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
 the [samples](modules/samples/src/test/java/overrungl/demo).
+
+### Enable native access
+
+You must enable the access of OverrunGL by adding a VM argument or a manifest attribute.
+
+```
+--enable-preview-acecss=overrungl.core,...
+```
 
 ## Using as a Dependency
 
