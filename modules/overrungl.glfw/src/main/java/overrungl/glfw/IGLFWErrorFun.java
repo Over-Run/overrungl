@@ -29,11 +29,10 @@ import java.lang.invoke.MethodType;
 /**
  * This is the function pointer type for error callbacks. An error callback
  * function has the following signature:
- * {@snippet :
+ * {@snippet lang=java:
  * @Invoker(IGLFWErrorFun::invoke)
  * void callbackName(int errorCode, String description);
  * }
- *
  * <h2>Pointer lifetime</h2>
  * The error description string is valid until the callback
  * function returns.

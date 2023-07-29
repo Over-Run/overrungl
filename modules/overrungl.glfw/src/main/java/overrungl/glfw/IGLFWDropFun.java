@@ -29,11 +29,10 @@ import java.lang.invoke.MethodType;
 /**
  * This is the function pointer type for path drop callbacks. A path drop
  * callback function has the following signature:
- * {@snippet :
+ * {@snippet lang=java:
  * @Invoker(IGLFWDropFun::invoke)
  * void functionName(MemorySegment window, String[] paths);
  * }
- *
  * <h2>Pointer lifetime</h2>
  * The path array and its strings are valid until the callback function returns.
  *

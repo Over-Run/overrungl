@@ -68,7 +68,7 @@ public final class Configurations {
      */
     public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
     /**
-     * Forcing check all method handles for GL.
+     * Forcing to check all method handles for GL.
      * <p>
      * The default value is {@code false}.
      */

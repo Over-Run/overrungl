@@ -26,7 +26,6 @@ import static java.lang.foreign.ValueLayout.*;
 
 /**
  * This describes the gamma ramp for a monitor.
- *
  * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWgammaramp {

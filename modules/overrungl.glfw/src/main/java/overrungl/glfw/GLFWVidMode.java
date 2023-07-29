@@ -25,7 +25,6 @@ import java.lang.invoke.VarHandle;
 
 /**
  * This describes a single video mode.
- *
  * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWvidmode {

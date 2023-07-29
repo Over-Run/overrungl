@@ -17,11 +17,11 @@
 package overrungl.stb;
 
 import overrungl.NativeType;
+import overrungl.internal.Checks;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 import static overrungl.FunctionDescriptors.*;
@@ -39,7 +39,6 @@ import static overrungl.stb.Handles.*;
  * in a 3D app as quickly as possible.
  * <p>
  * Doesn't use any textures, instead builds characters out of quads.
- *
  * <h2>Sample Code</h2>
  * Here's sample code for old OpenGL; it's a lot more complicated
  * to make work on modern APIs, and that's your problem.
@@ -161,7 +160,6 @@ public final class STBEasyFont {
      * Takes a string (which can contain '\n') and fills out a
      * vertex buffer with renderable data to draw the string.
      *
-     * @param allocator    allocator of <i>{@code text}</i> and <i>{@code color}</i>
      * @param x            x
      * @param y            y
      * @param text         text
@@ -171,8 +169,17 @@ public final class STBEasyFont {
      * @return the number of quads.
      * @see #nprint(float, float, MemorySegment, MemorySegment, MemorySegment, int) nprint
      */
-    public static int print(SegmentAllocator allocator, float x, float y, String text, byte[] color, @NativeType("void*") MemorySegment vertexBuffer, int vbufSize) {
-        return nprint(x, y, allocator.allocateUtf8String(text), allocator.allocateArray(ValueLayout.JAVA_BYTE, color), vertexBuffer, vbufSize);
+    public static int print(float x, float y, String text, byte[] color, @NativeType("void*") MemorySegment vertexBuffer, int vbufSize) {
+        if (color != null && RuntimeHelper.CHECKS) {
+            Checks.arraySize(color, 4);
+        }
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            return nprint(x, y, stack.allocateUtf8String(text), color == null ? MemorySegment.NULL : stack.bytes(color), vertexBuffer, vbufSize);
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     /**

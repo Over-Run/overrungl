@@ -19,7 +19,7 @@ package overrungl.opengl;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import overrungl.Configurations;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.CheckUtil;
 
 import java.lang.invoke.MethodHandle;
@@ -32,12 +32,10 @@ import java.lang.invoke.MethodHandle;
  * context. Internally, it also contains function pointers that are only valid in that specific OpenGL context.</li>
  * <li>Maintains thread-local state for {@code GLCapabilities} instances, corresponding to OpenGL contexts that are current in those threads.</li>
  * </ul>
- *
  * <h2>GLCapabilities creation</h2>
  * <p>Instances of {@code GLCapabilities} can be created with the {@link #load(GLLoadFunc, boolean) load} method. An OpenGL context must be current in the current thread
  * before it is called. Calling this method is expensive, so the {@code GLCapabilities} instance should be associated with the OpenGL context and reused as
  * necessary.</p>
- *
  * <h2>Thread-local state</h2>
  * <p>Before a function for a given OpenGL context can be called, the corresponding {@code GLCapabilities} instance must be passed to the
  * {@link #setCapabilities} method. The user is also responsible for clearing the current {@code GLCapabilities} instance when the context is destroyed or made
@@ -51,7 +49,6 @@ import java.lang.invoke.MethodHandle;
  */
 public final class GLLoader {
     private static final boolean DEFAULT_COMPATIBLE = false;
-    private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final ThreadLocal<GLCapabilities> capabilitiesTLS = new ThreadLocal<>();
 
     /**
@@ -88,7 +85,7 @@ public final class GLLoader {
     }
 
     private static GLCapabilities checkCapabilities(@Nullable GLCapabilities caps) {
-        if (CHECKS)
+        if (RuntimeHelper.CHECKS)
             CheckUtil.check(caps != null, """
                 No GLCapabilities instance set for the current thread. Possible solutions:
                 \ta) Call GLLoader.load() after making a context current in the current thread.

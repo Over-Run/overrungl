@@ -26,7 +26,6 @@ import java.lang.invoke.MethodHandle;
 
 /**
  * The OpenGL loading function.
- *
  * <h2>Example</h2>
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile

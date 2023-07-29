@@ -20,6 +20,7 @@ import overrungl.FunctionDescriptors;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
@@ -40,6 +41,12 @@ final class Handles {
 
     static MethodHandle downcall(String name,
                                  FunctionDescriptors function,
+                                 Linker.Option... options) {
+        return RuntimeHelper.downcallThrow(lookup.find(name), function, options);
+    }
+
+    static MethodHandle downcall(String name,
+                                 FunctionDescriptor function,
                                  Linker.Option... options) {
         return RuntimeHelper.downcallThrow(lookup.find(name), function, options);
     }

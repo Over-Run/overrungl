@@ -17,6 +17,7 @@
 package overrungl.internal;
 
 import org.jetbrains.annotations.Nullable;
+import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.os.OperatingSystem;
 import overrungl.os.OperatingSystems;
@@ -51,6 +52,10 @@ public final class RuntimeHelper {
      * An unbounded address layout.
      */
     public static final AddressLayout ADDRESS_UNBOUNDED = MemoryUtil.ADDRESS_UNBOUNDED;
+    /**
+     * @see Configurations#CHECKS
+     */
+    public static final boolean CHECKS = Configurations.CHECKS.get();
 
     /**
      * constructor

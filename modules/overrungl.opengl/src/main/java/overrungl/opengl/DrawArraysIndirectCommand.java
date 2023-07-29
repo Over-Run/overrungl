@@ -25,7 +25,6 @@ import java.lang.invoke.VarHandle;
 
 /**
  * The OpenGL 4.2 draw arrays indirect command.
- *
  * <h2>Layout</h2>
  * <pre><code>
  * struct DrawArraysIndirectCommand {
