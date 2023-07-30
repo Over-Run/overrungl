@@ -111,7 +111,7 @@ natives
 │  │  │  └─ libglfw3.so
 │  │  └─ x64
 │  │     └─ libglfw3.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libglfw3.dylib
 │  │  └─ x64
@@ -127,7 +127,7 @@ natives
 │  │  │  └─ libnfd.so
 │  │  └─ x64
 │  │     └─ libnfd.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libnfd.dylib
 │  │  └─ x64
@@ -145,7 +145,7 @@ natives
    │  │  └─ libstb.so
    │  └─ x64
    │     └─ libstb.so
-   ├─ os x
+   ├─ macos
    │  ├─ arm64
    │  │  └─ libstb.dylib
    │  └─ x64

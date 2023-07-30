@@ -1,15 +1,5 @@
 We redistributed code from these libraries:
 
-## Gradle
-
-[Repository](https://github.com/gradle/gradle)
-
-[LICENSE](LICENSE_gradle)
-
-Files:
-
-- subprojects/base-services/src/main/java/org/gradle/internal/os/OperatingSystem.java -> [modules/overrungl.core/src/main/java/overrungl/os/OperatingSystem.java](../../modules/overrungl.core/src/main/java/overrungl/os/OperatingSystem.java)
-
 ## LWJGL 3
 
 [Repository](https://github.com/LWJGL/lwjgl3)

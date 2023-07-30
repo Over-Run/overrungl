@@ -43,8 +43,8 @@ enum class NativePlatform(
     LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
     LINUX_ARM32("linux", "arm32", "linux-arm32", "lib", ".so", "LinuxArm32"),
     LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
-    MACOS("os x", "x64", "macos", "lib", ".dylib", "Macos"),
-    MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
+    MACOS("macos", "x64", "macos", "lib", ".dylib", "Macos"),
+    MACOS_ARM64("macos", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
 
     companion object {
         val ALL = values()
