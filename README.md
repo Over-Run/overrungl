@@ -33,7 +33,7 @@ unstable, so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
-We will provide a module customizer soon.
+We have provided an artifacts customizer [here](https://over-run.github.io/overrungl-gen/).
 
 ### Using -SNAPSHOT Versions
 
