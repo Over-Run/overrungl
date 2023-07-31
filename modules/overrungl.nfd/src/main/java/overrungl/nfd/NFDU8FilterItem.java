@@ -35,7 +35,7 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class NFDU8FilterItem extends Struct {
+public sealed class NFDU8FilterItem extends Struct {
     /**
      * The struct layout.
      */
@@ -64,6 +64,13 @@ public class NFDU8FilterItem extends Struct {
      */
     protected NFDU8FilterItem(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**
@@ -135,7 +142,7 @@ public class NFDU8FilterItem extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends NFDU8FilterItem implements ArrayPointer {
+    public static final class Buffer extends NFDU8FilterItem implements ArrayPointer {
         private final VarHandle pName, pSpec;
 
         /**

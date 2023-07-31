@@ -20,7 +20,7 @@ import overrungl.FunctionDescriptors;
 import overrungl.NativeType;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
-import overrungl.os.OperatingSystem;
+import overrungl.os.Platform;
 import overrungl.util.MemoryStack;
 import overrungl.util.value.Tuple2;
 
@@ -120,9 +120,9 @@ import static overrungl.FunctionDescriptors.*;
  */
 public final class NFD {
     private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", OverrunGL.VERSION);
-    private static final OperatingSystem os = OperatingSystem.current();
-    private static final boolean isOsWin = os.isWindows();
-    private static final boolean isOsWinOrApple = os.isWindows() || os.isMacOsX();
+    private static final Platform os = Platform.current();
+    private static final boolean isOsWin = os instanceof Platform.Windows;
+    private static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOSX;
     /**
      * The type of the path-set size ({@code long} for Windows and Mac OS X, {@code int} for others).
      */

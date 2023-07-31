@@ -62,6 +62,17 @@ public final class MemoryUtil {
     }
 
     /**
+     * {@return a segment allocator of this}
+     * The returned memory must be released <strong>explicitly</strong> by {@link #free(MemorySegment)}.
+     */
+    public static SegmentAllocator segmentAllocator() {
+        class Holder {
+            private static final SegmentAllocator ALLOCATOR = (byteSize, byteAlignment) -> calloc(byteSize / byteAlignment, byteAlignment);
+        }
+        return Holder.ALLOCATOR;
+    }
+
+    /**
      * {@return {@code true} if <i>{@code segment}</i> is a null pointer}
      *
      * @param segment the segment.

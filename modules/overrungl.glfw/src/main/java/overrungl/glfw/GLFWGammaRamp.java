@@ -40,7 +40,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
-public class GLFWGammaRamp extends Struct {
+public final class GLFWGammaRamp extends Struct {
     private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT));
     /**
      * The struct layout.
@@ -67,6 +67,13 @@ public class GLFWGammaRamp extends Struct {
      */
     public GLFWGammaRamp(MemorySegment address) {
         super(address, LAYOUT);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**

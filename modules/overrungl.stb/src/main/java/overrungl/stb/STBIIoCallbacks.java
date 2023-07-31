@@ -40,7 +40,7 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class STBIIoCallbacks extends Struct {
+public final class STBIIoCallbacks extends Struct {
     /**
      * The struct layout.
      */
@@ -152,6 +152,13 @@ public class STBIIoCallbacks extends Struct {
         default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
             return lookup.findVirtual(Eof.class, "invoke", MTYPE);
         }
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**

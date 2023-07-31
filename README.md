@@ -33,7 +33,7 @@ unstable, so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
-We will provide a module customizer soon.
+We have provided an artifacts customizer [here](https://over-run.github.io/overrungl-gen/).
 
 ### Using -SNAPSHOT Versions
 
@@ -113,7 +113,7 @@ natives
 │  │  │  └─ libglfw3.so
 │  │  └─ x64
 │  │     └─ libglfw3.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libglfw3.dylib
 │  │  └─ x64
@@ -129,7 +129,7 @@ natives
 │  │  │  └─ libnfd.so
 │  │  └─ x64
 │  │     └─ libnfd.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libnfd.dylib
 │  │  └─ x64
@@ -147,7 +147,7 @@ natives
    │  │  └─ libstb.so
    │  └─ x64
    │     └─ libstb.so
-   ├─ os x
+   ├─ macos
    │  ├─ arm64
    │  │  └─ libstb.dylib
    │  └─ x64

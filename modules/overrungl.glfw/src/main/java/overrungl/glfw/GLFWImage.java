@@ -39,7 +39,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWImage extends Struct {
+public sealed class GLFWImage extends Struct {
     /**
      * The struct layout.
      */
@@ -54,7 +54,7 @@ public class GLFWImage extends Struct {
         pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
 
     /**
-     * Create a {@code GLFWimage} instance.
+     * Create a {@code GLFWImage} instance.
      *
      * @param address the address.
      */
@@ -70,6 +70,13 @@ public class GLFWImage extends Struct {
      */
     protected GLFWImage(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**
@@ -159,7 +166,7 @@ public class GLFWImage extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends GLFWImage implements ArrayPointer {
+    public static final class Buffer extends GLFWImage implements ArrayPointer {
         private final VarHandle pWidth, pHeight, pPixels;
 
         /**
