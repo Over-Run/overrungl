@@ -44,7 +44,7 @@ public final class STBPerlinTest {
             }
         }
         try (MemoryStack stack = MemoryStack.stackPush()) {
-            STBImageWrite.png(stack, fileName, WIDTH, HEIGHT, STBImage.GREY, buf, WIDTH);
+            STBImageWrite.png(fileName, WIDTH, HEIGHT, STBImage.GREY, buf, WIDTH);
         }
     }
 

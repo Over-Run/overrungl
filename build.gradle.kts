@@ -1,4 +1,6 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
+import java.nio.file.Files
+import kotlin.io.path.Path
 
 plugins {
     `java-platform`
@@ -18,6 +20,7 @@ val orgUrl: String by project
 val developers: String by project
 
 val jdkEABuildDoc: String? = "jdk21"
+val targetJavaVersion = 21
 val enablePreview = true
 
 group = projGroupId
@@ -40,8 +43,8 @@ enum class NativePlatform(
     LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
     LINUX_ARM32("linux", "arm32", "linux-arm32", "lib", ".so", "LinuxArm32"),
     LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
-    MACOS("os x", "x64", "macos", "lib", ".dylib", "Macos"),
-    MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
+    MACOS("macos", "x64", "macos", "lib", ".dylib", "Macos"),
+    MACOS_ARM64("macos", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
 
     companion object {
         val ALL = values()
@@ -146,7 +149,6 @@ subprojects {
         }
     }
 
-    val targetJavaVersion = 21
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
         if (enablePreview) options.compilerArgs.add("--enable-preview")
@@ -166,28 +168,6 @@ subprojects {
         withSourcesJar()
     }
 
-    tasks.withType<Javadoc> {
-        options {
-            if (this is CoreJavadocOptions) {
-                addBooleanOption("-enable-preview", true)
-                addStringOption("source", targetJavaVersion.toString())
-                if (this is StandardJavadocDocletOptions) {
-                    charSet = "UTF-8"
-                    isAuthor = true
-                    if (jdkEABuildDoc == null) {
-                        links("https://docs.oracle.com/en/java/javase/$targetJavaVersion/docs/api/")
-                    } else {
-                        links("https://download.java.net/java/early_access/$jdkEABuildDoc/docs/api/")
-                    }
-                }
-            }
-            encoding = "UTF-8"
-            locale = "en_US"
-            windowTitle = "OverrunGL $projVersion Javadoc"
-        }
-        isFailOnError = false
-    }
-
     tasks.named<Jar>("jar") {
         manifestContentCharset = "utf-8"
         metadataCharset = "utf-8"
@@ -204,8 +184,7 @@ subprojects {
     }
 
     tasks.named<Jar>("sourcesJar") {
-        val classes by tasks
-        dependsOn(classes)
+        dependsOn(tasks["classes"])
         archiveBaseName.set(artifactName)
         archiveClassifier.set("sources")
         from(sourceSets["main"].allSource, "LICENSE")
@@ -220,14 +199,83 @@ subprojects {
     }
 
     artifacts {
-        val javadocJar by tasks
-        val sourcesJar by tasks
-        archives(javadocJar)
-        archives(sourcesJar)
+        archives(tasks["sourcesJar"])
+        archives(tasks["javadocJar"])
     }
 
-    val idea: IdeaModel by extensions
-    idea.module.inheritOutputDirs = true
+    the<IdeaModel>().module.inheritOutputDirs = true
+}
+
+tasks.register("assembleJavadocArgs") {
+    group = "build"
+    val mspFile = Path("${rootProject.buildDir}/tmp/modulesourcepath.args")
+    outputs.file(mspFile)
+
+    doLast {
+        Files.deleteIfExists(mspFile)
+
+        Files.writeString(mspFile, """
+            --module-source-path
+            ${rootProject.projectDir.path}/modules/*/src/main/java
+        """.trimIndent())
+    }
+}
+
+tasks.register<Javadoc>("aggregateJavadoc") {
+    dependsOn(tasks["assembleJavadocArgs"])
+    group = "documentation"
+    outputs.upToDateWhen { false }
+    val projectsToDoc = Artifact.values().map { project(it.subprojectName) }
+    dependsOn(projectsToDoc.map { it.getTasksByName("classes", true) })
+    source(projectsToDoc.map { it.sourceSets["main"].java })
+    destinationDir = File("$buildDir/docs/javadoc")
+
+    classpath = files(projectsToDoc.map { it.configurations["compileClasspath"].files })
+
+    executable = project.findProperty("javadocExecutable") as String?
+
+    options.optionFiles = listOf(File("${rootProject.buildDir}/tmp/modulesourcepath.args"))
+}
+
+allprojects {
+    tasks.withType<Javadoc> {
+        options {
+            if (this is CoreJavadocOptions) {
+                addBooleanOption("-enable-preview", true)
+                addStringOption("source", targetJavaVersion.toString())
+                if (this is StandardJavadocDocletOptions) {
+                    charSet = "UTF-8"
+                    docEncoding = "UTF-8"
+                    isAuthor = true
+                    if (jdkEABuildDoc == null) {
+                        links("https://docs.oracle.com/en/java/javase/$targetJavaVersion/docs/api/")
+                    } else {
+                        links("https://download.java.net/java/early_access/$jdkEABuildDoc/docs/api/")
+                    }
+
+                    tags(
+                        "glfw.errors:m:Errors:",
+                        "glfw.remark:m:Remarks:",
+                        "glfw.thread_safety:m:Thread safety:",
+                        "glfw.warning:m:Warning:",
+                        "glfw.reentrancy:m:Reentrancy:",
+                        "glfw.pointer_lifetime:m:Pointer lifetime:",
+                        "glfw.callback_signature:m:Callback signature:",
+                        "glfw.note:m:Note:"
+                    )
+
+                    bottom = "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
+                        "Copyright © 2022-2023 Overrun Organization<br>" +
+                        "<b>$projVersion</b>"
+                }
+            }
+            encoding = "UTF-8"
+            locale = "en_US"
+            windowTitle = "OverrunGL $projVersion"
+        }
+        title = "OverrunGL $projVersion"
+        isFailOnError = false
+    }
 }
 
 publishing.publications {
@@ -271,18 +319,15 @@ publishing.publications {
             version = projVersion
             description = module.projectDescription
             project(module.subprojectName) {
-                val jar by tasks
-                val sourcesJar by tasks
-                val javadocJar by tasks
-                artifact(jar)
-                artifact(sourcesJar) { classifier = "sources" }
-                artifact(javadocJar) { classifier = "javadoc" }
+                artifact(tasks["jar"])
+                artifact(tasks["sourcesJar"]) { classifier = "sources" }
+                artifact(tasks["javadocJar"]) { classifier = "javadoc" }
             }
             module.nativeBinding?.platforms?.forEach {
                 val nativeName = module.nativeFileName(it)!!
-                val file = file("${rootProject.projectDir}/natives/$nativeName")
+                val file = File("${rootProject.projectDir}/natives/$nativeName")
                 if (file.exists()) {
-                    val nativeParent = file(nativeName).parent
+                    val nativeParent = File(nativeName).parent
                     artifact(tasks.create<Jar>("nativeJar${module.mavenName}${it.taskSuffix}") {
                         archiveBaseName.set(module.artifactName)
                         archiveClassifier.set(it.classifier)

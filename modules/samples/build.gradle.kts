@@ -1,5 +1,7 @@
+val projModules: String by project
+
 dependencies {
-    listOf("core", "glfw", "nfd", "joml", "openal", "opengl", "stb").forEach {
+    projModules.split(',').map { it.trim() }.forEach {
         implementation(project(":$it"))
     }
     testImplementation("io.github.over-run:timer:0.3.0")

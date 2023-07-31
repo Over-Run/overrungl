@@ -1,7 +1,7 @@
 name: Bug report
 description: Create a report to help us improve
-title: "[Core-#] "
-labels: [ "bug", "P3", "Status: Draft" ]
+title: "Bug: "
+labels: [ "bug", "P3" ]
 assignees:
   - "squid233"
 body:
@@ -36,7 +36,7 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/Over-Run/overrungl/blob/0.x/CODE_OF_CONDUCT.md)
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/Over-Run/overrungl/blob/main/CODE_OF_CONDUCT.md)
       options:
         - label: I agree to follow this project's Code of Conduct
           required: true

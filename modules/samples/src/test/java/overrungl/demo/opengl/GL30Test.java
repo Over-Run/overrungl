@@ -16,15 +16,15 @@
 
 package overrungl.demo.opengl;
 
-import overrungl.RuntimeHelper;
 import overrungl.demo.util.IOUtil;
-import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
+import overrungl.opengl.GL;
+import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
 import overrungl.util.MemoryStack;
+import overrungl.util.CheckUtil;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -47,7 +47,7 @@ public final class GL30Test {
 
     public void run() {
         try (var arena = Arena.ofShared()) {
-            init(arena);
+            init();
             load(arena);
         }
         loop();
@@ -58,21 +58,21 @@ public final class GL30Test {
         GL.deleteBuffer(ebo);
         GL.deleteTexture(tex);
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
 
         GLFW.terminate();
         GLFW.setErrorCallback(null);
     }
 
-    private void init(Arena arena) {
+    private void init() {
         GLFWErrorCallback.createPrint().set();
-        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
+        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
-        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
+        window = GLFW.createWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
+        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);
@@ -97,8 +97,7 @@ public final class GL30Test {
     }
 
     private void load(Arena arena) {
-        RuntimeHelper.check(GLLoader.loadConfined(true, GLFW::ngetProcAddress) != null,
-            "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
@@ -131,7 +130,7 @@ public final class GL30Test {
         program = GL.createProgram();
         int vsh = GL.createShader(GL.VERTEX_SHADER);
         int fsh = GL.createShader(GL.FRAGMENT_SHADER);
-        GL.shaderSource(arena, vsh, """
+        GL.shaderSource(vsh, """
             #version 130
 
             in vec3 position;
@@ -144,7 +143,7 @@ public final class GL30Test {
                 texCoord = uv;
             }
             """);
-        GL.shaderSource(arena, fsh, """
+        GL.shaderSource(fsh, """
             #version 130
 
             in vec2 texCoord;
@@ -162,15 +161,15 @@ public final class GL30Test {
         GL.compileShader(fsh);
         GL.attachShader(program, vsh);
         GL.attachShader(program, fsh);
-        GL.bindAttribLocation(arena, program, 0, "position");
-        GL.bindAttribLocation(arena, program, 1, "uv");
+        GL.bindAttribLocation(program, 0, "position");
+        GL.bindAttribLocation(program, 1, "uv");
         GL.linkProgram(program);
         GL.detachShader(program, vsh);
         GL.detachShader(program, fsh);
         GL.deleteShader(vsh);
         GL.deleteShader(fsh);
         GL.useProgram(program);
-        GL.uniform1i(GL.getUniformLocation(arena, program, "sampler"), 0);
+        GL.uniform1i(GL.getUniformLocation(program, "sampler"), 0);
         GL.useProgram(0);
 
         vao = GL.genVertexArray();
@@ -196,7 +195,7 @@ public final class GL30Test {
         GL.bindBuffer(GL.ARRAY_BUFFER, 0);
         GL.bindVertexArray(0);
 
-        colorFactor = GL.getUniformLocation(arena, program, "colorFactor");
+        colorFactor = GL.getUniformLocation(program, "colorFactor");
     }
 
     private void loop() {

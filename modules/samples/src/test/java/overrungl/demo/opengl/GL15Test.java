@@ -16,15 +16,15 @@
 
 package overrungl.demo.opengl;
 
-import overrungl.RuntimeHelper;
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.Callbacks;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GL11;
 import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
+import overrungl.util.CheckUtil;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -44,7 +44,7 @@ public final class GL15Test {
 
     public void run() {
         try (var arena = Arena.ofShared()) {
-            init(arena);
+            init();
             load(arena);
         }
         loop();
@@ -52,21 +52,21 @@ public final class GL15Test {
         GL.deleteBuffer(vbo);
         GL.deleteTexture(tex);
 
-        Callbacks.free(window);
+        GLFWCallbacks.free(window);
         GLFW.destroyWindow(window);
 
         GLFW.terminate();
         GLFW.setErrorCallback(null);
     }
 
-    private void init(Arena arena) {
+    private void init() {
         GLFWErrorCallback.createPrint().set();
-        RuntimeHelper.check(GLFW.init(), "Unable to initialize GLFW");
+        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
         GLFW.defaultWindowHints();
         GLFW.windowHint(GLFW.VISIBLE, false);
         GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(arena, 640, 480, "OpenGL 1.5", MemorySegment.NULL, MemorySegment.NULL);
-        RuntimeHelper.check(!RuntimeHelper.isNullptr(window), "Failed to create the GLFW window");
+        window = GLFW.createWindow(640, 480, "OpenGL 1.5", MemorySegment.NULL, MemorySegment.NULL);
+        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
         GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 GLFW.setWindowShouldClose(window, true);
@@ -91,8 +91,7 @@ public final class GL15Test {
     }
 
     private void load(Arena arena) {
-        RuntimeHelper.check(GLLoader.loadConfined(GLFW::ngetProcAddress) != null,
-            "Failed to load OpenGL");
+        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         GL.enable(GL.TEXTURE_2D);
