@@ -155,8 +155,12 @@ public final class RuntimeHelper {
         final var suffix = os.sharedLibrarySuffix();
         final var path = os.sharedLibraryName(basename);
         URI uri;
-        // 1. Load from classpath
-        try {
+        // 1. Load from natives directory
+        var localFile = new File(System.getProperty("overrungl.natives", "."), path);
+        if (localFile.exists()) {
+            uri = localFile.toURI();
+        } else {
+            // 2. Load from classpath
             var file = new File(tmpdir, "overrungl" + System.getProperty("user.name"));
             if (!file.exists()) {
                 // Create directory
@@ -174,18 +178,13 @@ public final class RuntimeHelper {
                     module + "/" + os.familyName() + "/" + Architecture.current() + "/" + path
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
+                } catch (Exception e) {
+                    var exception = new IllegalStateException("File not found: " + file + "; try setting property -Doverrungl.natives to a valid path");
+                    exception.addSuppressed(e);
+                    throw exception;
                 }
             }
             uri = libFile.toURI();
-        } catch (Exception e) {
-            // 2. Load from natives directory
-            var file = new File(System.getProperty("overrungl.natives", "."), path);
-            if (!file.exists()) {
-                var exception = new IllegalStateException("File not found: " + file + "; Try setting property -Doverrungl.natives to a valid path");
-                exception.addSuppressed(e);
-                throw exception;
-            }
-            uri = file.toURI();
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());
