@@ -17,7 +17,8 @@
 package overrungl.openal;
 
 import overrungl.FunctionDescriptors;
-import overrungl.RuntimeHelper;
+import overrungl.OverrunGL;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.SymbolLookup;
@@ -168,7 +169,7 @@ final class Handles {
         if (initialized) return;
         initialized = true;
 
-        lookup = RuntimeHelper.load("openal", "openal", RuntimeHelper.VERSION);
+        lookup = RuntimeHelper.load("openal", "openal", OverrunGL.VERSION);
         createAL();
         createALC();
     }

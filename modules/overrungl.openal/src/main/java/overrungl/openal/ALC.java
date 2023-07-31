@@ -16,11 +16,13 @@
 
 package overrungl.openal;
 
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
+
+import static overrungl.openal.Handles.*;
 
 /**
  * The OpenAL context binding.
@@ -30,7 +32,7 @@ import java.lang.foreign.ValueLayout;
  */
 public final class ALC {
     static {
-        Handles.create();
+        create();
     }
 
     /**
@@ -154,7 +156,7 @@ public final class ALC {
 
     public static MemorySegment ncreateContext(MemorySegment device, MemorySegment attrlist) {
         try {
-            return (MemorySegment) Handles.alcCreateContext.invokeExact(device, attrlist);
+            return (MemorySegment) alcCreateContext.invokeExact(device, attrlist);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -166,7 +168,7 @@ public final class ALC {
 
     public static boolean makeContextCurrent(MemorySegment context) {
         try {
-            return (boolean) Handles.alcMakeContextCurrent.invokeExact(context);
+            return (boolean) alcMakeContextCurrent.invokeExact(context);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -174,7 +176,7 @@ public final class ALC {
 
     public static void processContext(MemorySegment context) {
         try {
-            Handles.alcProcessContext.invokeExact(context);
+            alcProcessContext.invokeExact(context);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -182,7 +184,7 @@ public final class ALC {
 
     public static void suspendContext(MemorySegment context) {
         try {
-            Handles.alcSuspendContext.invokeExact(context);
+            alcSuspendContext.invokeExact(context);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -190,7 +192,7 @@ public final class ALC {
 
     public static void destroyContext(MemorySegment context) {
         try {
-            Handles.alcDestroyContext.invokeExact(context);
+            alcDestroyContext.invokeExact(context);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -198,7 +200,7 @@ public final class ALC {
 
     public static MemorySegment getCurrentContext() {
         try {
-            return (MemorySegment) Handles.alcGetCurrentContext.invokeExact();
+            return (MemorySegment) alcGetCurrentContext.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -206,7 +208,7 @@ public final class ALC {
 
     public static MemorySegment getContextsDevice(MemorySegment context) {
         try {
-            return (MemorySegment) Handles.alcGetContextsDevice.invokeExact(context);
+            return (MemorySegment) alcGetContextsDevice.invokeExact(context);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -214,7 +216,7 @@ public final class ALC {
 
     public static MemorySegment nopenDevice(MemorySegment deviceName) {
         try {
-            return (MemorySegment) Handles.alcOpenDevice.invokeExact(deviceName);
+            return (MemorySegment) alcOpenDevice.invokeExact(deviceName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -226,7 +228,7 @@ public final class ALC {
 
     public static boolean closeDevice(MemorySegment device) {
         try {
-            return (boolean) Handles.alcCloseDevice.invokeExact(device);
+            return (boolean) alcCloseDevice.invokeExact(device);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -234,7 +236,7 @@ public final class ALC {
 
     public static int getError(MemorySegment device) {
         try {
-            return (int) Handles.alcGetError.invokeExact(device);
+            return (int) alcGetError.invokeExact(device);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -242,7 +244,7 @@ public final class ALC {
 
     public static boolean nisExtensionPresent(MemorySegment device, MemorySegment extName) {
         try {
-            return (boolean) Handles.alcIsExtensionPresent.invokeExact(device, extName);
+            return (boolean) alcIsExtensionPresent.invokeExact(device, extName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -254,7 +256,7 @@ public final class ALC {
 
     public static MemorySegment ngetProcAddress(MemorySegment device, MemorySegment funcName) {
         try {
-            return (MemorySegment) Handles.alcGetProcAddress.invokeExact(device, funcName);
+            return (MemorySegment) alcGetProcAddress.invokeExact(device, funcName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -266,7 +268,7 @@ public final class ALC {
 
     public static int ngetEnumValue(MemorySegment device, MemorySegment enumName) {
         try {
-            return (int) Handles.alcGetEnumValue.invokeExact(device, enumName);
+            return (int) alcGetEnumValue.invokeExact(device, enumName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -278,7 +280,7 @@ public final class ALC {
 
     public static MemorySegment ngetString(MemorySegment device, int param) {
         try {
-            return (MemorySegment) Handles.alcGetString.invokeExact(device, param);
+            return (MemorySegment) alcGetString.invokeExact(device, param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -290,7 +292,7 @@ public final class ALC {
 
     public static void ngetIntegerv(MemorySegment device, int param, int size, MemorySegment values) {
         try {
-            Handles.alcGetIntegerv.invokeExact(device, param, size, values);
+            alcGetIntegerv.invokeExact(device, param, size, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -304,7 +306,7 @@ public final class ALC {
 
     public static MemorySegment ncaptureOpenDevice(MemorySegment deviceName, int frequency, int format, int bufferSize) {
         try {
-            return (MemorySegment) Handles.alcCaptureOpenDevice.invokeExact(deviceName, frequency, format, bufferSize);
+            return (MemorySegment) alcCaptureOpenDevice.invokeExact(deviceName, frequency, format, bufferSize);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -316,7 +318,7 @@ public final class ALC {
 
     public static boolean captureCloseDevice(MemorySegment device) {
         try {
-            return (boolean) Handles.alcCaptureCloseDevice.invokeExact(device);
+            return (boolean) alcCaptureCloseDevice.invokeExact(device);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -324,7 +326,7 @@ public final class ALC {
 
     public static void captureStart(MemorySegment device) {
         try {
-            Handles.alcCaptureStart.invokeExact(device);
+            alcCaptureStart.invokeExact(device);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -332,7 +334,7 @@ public final class ALC {
 
     public static void captureStop(MemorySegment device) {
         try {
-            Handles.alcCaptureStop.invokeExact(device);
+            alcCaptureStop.invokeExact(device);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -340,7 +342,7 @@ public final class ALC {
 
     public static void captureSamples(MemorySegment device, MemorySegment buffer, int samples) {
         try {
-            Handles.alcCaptureSamples.invokeExact(device, buffer, samples);
+            alcCaptureSamples.invokeExact(device, buffer, samples);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

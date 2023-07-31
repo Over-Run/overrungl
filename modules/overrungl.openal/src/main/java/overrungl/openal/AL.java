@@ -16,7 +16,7 @@
 
 package overrungl.openal;
 
-import overrungl.RuntimeHelper;
+import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 import overrungl.util.value.Triplet;
 
@@ -24,6 +24,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrungl.openal.Handles.*;
 
 /**
  * The OpenAL binding.
@@ -33,7 +34,7 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public final class AL {
     static {
-        Handles.create();
+        create();
     }
 
     /**
@@ -426,7 +427,7 @@ public final class AL {
 
     public static void enable(int capability) {
         try {
-            Handles.alEnable.invokeExact(capability);
+            alEnable.invokeExact(capability);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -434,7 +435,7 @@ public final class AL {
 
     public static void disable(int capability) {
         try {
-            Handles.alDisable.invokeExact(capability);
+            alDisable.invokeExact(capability);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -442,7 +443,7 @@ public final class AL {
 
     public static boolean isEnabled(int capability) {
         try {
-            return (boolean) Handles.alIsEnabled.invokeExact(capability);
+            return (boolean) alIsEnabled.invokeExact(capability);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -450,7 +451,7 @@ public final class AL {
 
     public static void dopplerFactor(float value) {
         try {
-            Handles.alDopplerFactor.invokeExact(value);
+            alDopplerFactor.invokeExact(value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -458,7 +459,7 @@ public final class AL {
 
     public static void dopplerVelocity(float value) {
         try {
-            Handles.alDopplerVelocity.invokeExact(value);
+            alDopplerVelocity.invokeExact(value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -466,7 +467,7 @@ public final class AL {
 
     public static void speedOfSound(float value) {
         try {
-            Handles.alSpeedOfSound.invokeExact(value);
+            alSpeedOfSound.invokeExact(value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -474,7 +475,7 @@ public final class AL {
 
     public static void distanceModel(int distanceModel) {
         try {
-            Handles.alDistanceModel.invokeExact(distanceModel);
+            alDistanceModel.invokeExact(distanceModel);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -482,7 +483,7 @@ public final class AL {
 
     public static MemorySegment ngetString(int param) {
         try {
-            return (MemorySegment) Handles.alGetString.invokeExact(param);
+            return (MemorySegment) alGetString.invokeExact(param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -494,7 +495,7 @@ public final class AL {
 
     public static void ngetBooleanv(int param, MemorySegment values) {
         try {
-            Handles.alGetBooleanv.invokeExact(param, values);
+            alGetBooleanv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -508,7 +509,7 @@ public final class AL {
 
     public static void ngetIntegerv(int param, MemorySegment values) {
         try {
-            Handles.alGetIntegerv.invokeExact(param, values);
+            alGetIntegerv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -522,7 +523,7 @@ public final class AL {
 
     public static void ngetFloatv(int param, MemorySegment values) {
         try {
-            Handles.alGetFloatv.invokeExact(param, values);
+            alGetFloatv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -536,7 +537,7 @@ public final class AL {
 
     public static void ngetDoublev(int param, MemorySegment values) {
         try {
-            Handles.alGetDoublev.invokeExact(param, values);
+            alGetDoublev.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -550,7 +551,7 @@ public final class AL {
 
     public static boolean getBoolean(int param) {
         try {
-            return (boolean) Handles.alGetBoolean.invokeExact(param);
+            return (boolean) alGetBoolean.invokeExact(param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -558,7 +559,7 @@ public final class AL {
 
     public static int getInteger(int param) {
         try {
-            return (int) Handles.alGetInteger.invokeExact(param);
+            return (int) alGetInteger.invokeExact(param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -566,7 +567,7 @@ public final class AL {
 
     public static float getFloat(int param) {
         try {
-            return (float) Handles.alGetFloat.invokeExact(param);
+            return (float) alGetFloat.invokeExact(param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -574,7 +575,7 @@ public final class AL {
 
     public static double getDouble(int param) {
         try {
-            return (double) Handles.alGetDouble.invokeExact(param);
+            return (double) alGetDouble.invokeExact(param);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -588,7 +589,7 @@ public final class AL {
      */
     public static int getError() {
         try {
-            return (int) Handles.alGetError.invokeExact();
+            return (int) alGetError.invokeExact();
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -602,7 +603,7 @@ public final class AL {
      */
     public static boolean nisExtensionPresent(MemorySegment extName) {
         try {
-            return (boolean) Handles.alIsExtensionPresent.invokeExact(extName);
+            return (boolean) alIsExtensionPresent.invokeExact(extName);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -628,7 +629,7 @@ public final class AL {
      */
     public static MemorySegment ngetProcAddress(MemorySegment fname) {
         try {
-            return (MemorySegment) Handles.alGetProcAddress.invokeExact(fname);
+            return (MemorySegment) alGetProcAddress.invokeExact(fname);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -654,7 +655,7 @@ public final class AL {
      */
     public static int ngetEnumValue(MemorySegment ename) {
         try {
-            return (int) Handles.alGetEnumValue.invokeExact(ename);
+            return (int) alGetEnumValue.invokeExact(ename);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -673,7 +674,7 @@ public final class AL {
 
     public static void listenerf(int param, float value) {
         try {
-            Handles.alListenerf.invokeExact(param, value);
+            alListenerf.invokeExact(param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -681,7 +682,7 @@ public final class AL {
 
     public static void listener3f(int param, float value1, float value2, float value3) {
         try {
-            Handles.alListener3f.invokeExact(param, value1, value2, value3);
+            alListener3f.invokeExact(param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -689,7 +690,7 @@ public final class AL {
 
     public static void nlistenerfv(int param, MemorySegment values) {
         try {
-            Handles.alListenerfv.invokeExact(param, values);
+            alListenerfv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -701,7 +702,7 @@ public final class AL {
 
     public static void listeneri(int param, int value) {
         try {
-            Handles.alListeneri.invokeExact(param, value);
+            alListeneri.invokeExact(param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -709,7 +710,7 @@ public final class AL {
 
     public static void listener3i(int param, int value1, int value2, int value3) {
         try {
-            Handles.alListener3i.invokeExact(param, value1, value2, value3);
+            alListener3i.invokeExact(param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -717,7 +718,7 @@ public final class AL {
 
     public static void nlisteneriv(int param, MemorySegment values) {
         try {
-            Handles.alListeneriv.invokeExact(param, values);
+            alListeneriv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -729,7 +730,7 @@ public final class AL {
 
     public static void ngetListenerf(int param, MemorySegment value) {
         try {
-            Handles.alGetListenerf.invokeExact(param, value);
+            alGetListenerf.invokeExact(param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -749,7 +750,7 @@ public final class AL {
 
     public static void ngetListener3f(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
-            Handles.alGetListener3f.invokeExact(param, value1, value2, value3);
+            alGetListener3f.invokeExact(param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -771,7 +772,7 @@ public final class AL {
 
     public static void ngetListenerfv(int param, MemorySegment values) {
         try {
-            Handles.alGetListenerfv.invokeExact(param, values);
+            alGetListenerfv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -785,7 +786,7 @@ public final class AL {
 
     public static void ngetListeneri(int param, MemorySegment value) {
         try {
-            Handles.alGetListeneri.invokeExact(param, value);
+            alGetListeneri.invokeExact(param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -805,7 +806,7 @@ public final class AL {
 
     public static void ngetListener3i(int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
-            Handles.alGetListener3i.invokeExact(param, value1, value2, value3);
+            alGetListener3i.invokeExact(param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -827,7 +828,7 @@ public final class AL {
 
     public static void ngetListeneriv(int param, MemorySegment values) {
         try {
-            Handles.alGetListeneriv.invokeExact(param, values);
+            alGetListeneriv.invokeExact(param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -847,7 +848,7 @@ public final class AL {
      */
     public static void ngenSources(int n, MemorySegment sources) {
         try {
-            Handles.alGenSources.invokeExact(n, sources);
+            alGenSources.invokeExact(n, sources);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -892,7 +893,7 @@ public final class AL {
      */
     public static void ndeleteSources(int n, MemorySegment sources) {
         try {
-            Handles.alDeleteSources.invokeExact(n, sources);
+            alDeleteSources.invokeExact(n, sources);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -933,7 +934,7 @@ public final class AL {
      */
     public static boolean isSource(int source) {
         try {
-            return (boolean) Handles.alIsSource.invokeExact(source);
+            return (boolean) alIsSource.invokeExact(source);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -941,7 +942,7 @@ public final class AL {
 
     public static void sourcef(int source, int param, float value) {
         try {
-            Handles.alSourcef.invokeExact(source, param, value);
+            alSourcef.invokeExact(source, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -949,7 +950,7 @@ public final class AL {
 
     public static void source3f(int source, int param, float value1, float value2, float value3) {
         try {
-            Handles.alSource3f.invokeExact(source, param, value1, value2, value3);
+            alSource3f.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -957,7 +958,7 @@ public final class AL {
 
     public static void nsourcefv(int source, int param, MemorySegment values) {
         try {
-            Handles.alSourcefv.invokeExact(source, param, values);
+            alSourcefv.invokeExact(source, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -969,7 +970,7 @@ public final class AL {
 
     public static void sourcei(int source, int param, int value) {
         try {
-            Handles.alSourcei.invokeExact(source, param, value);
+            alSourcei.invokeExact(source, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -977,7 +978,7 @@ public final class AL {
 
     public static void source3i(int source, int param, int value1, int value2, int value3) {
         try {
-            Handles.alSource3i.invokeExact(source, param, value1, value2, value3);
+            alSource3i.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -985,7 +986,7 @@ public final class AL {
 
     public static void nsourceiv(int source, int param, MemorySegment values) {
         try {
-            Handles.alSourceiv.invokeExact(source, param, values);
+            alSourceiv.invokeExact(source, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -997,7 +998,7 @@ public final class AL {
 
     public static void ngetSourcef(int source, int param, MemorySegment value) {
         try {
-            Handles.alGetSourcef.invokeExact(source, param, value);
+            alGetSourcef.invokeExact(source, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1017,7 +1018,7 @@ public final class AL {
 
     public static void ngetSource3f(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
-            Handles.alGetSource3f.invokeExact(source, param, value1, value2, value3);
+            alGetSource3f.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1039,7 +1040,7 @@ public final class AL {
 
     public static void ngetSourcefv(int source, int param, MemorySegment values) {
         try {
-            Handles.alGetSourcefv.invokeExact(source, param, values);
+            alGetSourcefv.invokeExact(source, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1053,7 +1054,7 @@ public final class AL {
 
     public static void ngetSourcei(int source, int param, MemorySegment value) {
         try {
-            Handles.alGetSourcei.invokeExact(source, param, value);
+            alGetSourcei.invokeExact(source, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1073,7 +1074,7 @@ public final class AL {
 
     public static void ngetSource3i(int source, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
-            Handles.alGetSource3i.invokeExact(source, param, value1, value2, value3);
+            alGetSource3i.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1095,7 +1096,7 @@ public final class AL {
 
     public static void ngetSourceiv(int source, int param, MemorySegment values) {
         try {
-            Handles.alGetSourceiv.invokeExact(source, param, values);
+            alGetSourceiv.invokeExact(source, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1114,7 +1115,7 @@ public final class AL {
      */
     public static void sourcePlay(int source) {
         try {
-            Handles.alSourcePlay.invokeExact(source);
+            alSourcePlay.invokeExact(source);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1127,7 +1128,7 @@ public final class AL {
      */
     public static void sourceStop(int source) {
         try {
-            Handles.alSourceStop.invokeExact(source);
+            alSourceStop.invokeExact(source);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1140,7 +1141,7 @@ public final class AL {
      */
     public static void sourceRewind(int source) {
         try {
-            Handles.alSourceRewind.invokeExact(source);
+            alSourceRewind.invokeExact(source);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1153,7 +1154,7 @@ public final class AL {
      */
     public static void sourcePause(int source) {
         try {
-            Handles.alSourcePause.invokeExact(source);
+            alSourcePause.invokeExact(source);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1167,7 +1168,7 @@ public final class AL {
      */
     public static void nsourcePlayv(int n, MemorySegment sources) {
         try {
-            Handles.alSourcePlayv.invokeExact(n, sources);
+            alSourcePlayv.invokeExact(n, sources);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1194,7 +1195,7 @@ public final class AL {
      */
     public static void nsourceStopv(int n, MemorySegment sources) {
         try {
-            Handles.alSourceStopv.invokeExact(n, sources);
+            alSourceStopv.invokeExact(n, sources);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1221,7 +1222,7 @@ public final class AL {
      */
     public static void nsourceRewindv(int n, MemorySegment sources) {
         try {
-            Handles.alSourceRewindv.invokeExact(n, sources);
+            alSourceRewindv.invokeExact(n, sources);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1248,7 +1249,7 @@ public final class AL {
      */
     public static void nsourcePausev(int n, MemorySegment sources) {
         try {
-            Handles.alSourcePausev.invokeExact(n, sources);
+            alSourcePausev.invokeExact(n, sources);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1276,7 +1277,7 @@ public final class AL {
      */
     public static void nsourceQueueBuffers(int source, int nb, MemorySegment buffers) {
         try {
-            Handles.alSourceQueueBuffers.invokeExact(source, nb, buffers);
+            alSourceQueueBuffers.invokeExact(source, nb, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1302,7 +1303,7 @@ public final class AL {
      */
     public static void nsourceUnqueueBuffers(int source, int nb, MemorySegment buffers) {
         try {
-            Handles.alSourceUnqueueBuffers.invokeExact(source, nb, buffers);
+            alSourceUnqueueBuffers.invokeExact(source, nb, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1329,7 +1330,7 @@ public final class AL {
      */
     public static void ngenBuffers(int n, MemorySegment buffers) {
         try {
-            Handles.alGenBuffers.invokeExact(n, buffers);
+            alGenBuffers.invokeExact(n, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1374,7 +1375,7 @@ public final class AL {
      */
     public static void ndeleteBuffers(int n, MemorySegment buffers) {
         try {
-            Handles.alDeleteBuffers.invokeExact(n, buffers);
+            alDeleteBuffers.invokeExact(n, buffers);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1415,7 +1416,7 @@ public final class AL {
      */
     public static boolean isBuffer(int buffer) {
         try {
-            return (boolean) Handles.alIsBuffer.invokeExact(buffer);
+            return (boolean) alIsBuffer.invokeExact(buffer);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1433,7 +1434,7 @@ public final class AL {
      */
     public static void bufferData(int buffer, int format, MemorySegment data, int size, int sampleRate) {
         try {
-            Handles.alBufferData.invokeExact(buffer, format, data, size, sampleRate);
+            alBufferData.invokeExact(buffer, format, data, size, sampleRate);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1441,7 +1442,7 @@ public final class AL {
 
     public static void bufferf(int buffer, int param, float value) {
         try {
-            Handles.alBufferf.invokeExact(buffer, param, value);
+            alBufferf.invokeExact(buffer, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1449,7 +1450,7 @@ public final class AL {
 
     public static void buffer3f(int buffer, int param, float value1, float value2, float value3) {
         try {
-            Handles.alBuffer3f.invokeExact(buffer, param, value1, value2, value3);
+            alBuffer3f.invokeExact(buffer, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1457,7 +1458,7 @@ public final class AL {
 
     public static void nbufferfv(int buffer, int param, MemorySegment values) {
         try {
-            Handles.alBufferfv.invokeExact(buffer, param, values);
+            alBufferfv.invokeExact(buffer, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1469,7 +1470,7 @@ public final class AL {
 
     public static void bufferi(int buffer, int param, int value) {
         try {
-            Handles.alBufferi.invokeExact(buffer, param, value);
+            alBufferi.invokeExact(buffer, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1477,7 +1478,7 @@ public final class AL {
 
     public static void buffer3i(int buffer, int param, int value1, int value2, int value3) {
         try {
-            Handles.alBuffer3i.invokeExact(buffer, param, value1, value2, value3);
+            alBuffer3i.invokeExact(buffer, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1485,7 +1486,7 @@ public final class AL {
 
     public static void nbufferiv(int buffer, int param, MemorySegment values) {
         try {
-            Handles.alBufferiv.invokeExact(buffer, param, values);
+            alBufferiv.invokeExact(buffer, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1497,7 +1498,7 @@ public final class AL {
 
     public static void ngetBufferf(int buffer, int param, MemorySegment value) {
         try {
-            Handles.alGetBufferf.invokeExact(buffer, param, value);
+            alGetBufferf.invokeExact(buffer, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1517,7 +1518,7 @@ public final class AL {
 
     public static void ngetBuffer3f(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
-            Handles.alGetBuffer3f.invokeExact(buffer, param, value1, value2, value3);
+            alGetBuffer3f.invokeExact(buffer, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1539,7 +1540,7 @@ public final class AL {
 
     public static void ngetBufferfv(int buffer, int param, MemorySegment values) {
         try {
-            Handles.alGetBufferfv.invokeExact(buffer, param, values);
+            alGetBufferfv.invokeExact(buffer, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1553,7 +1554,7 @@ public final class AL {
 
     public static void ngetBufferi(int buffer, int param, MemorySegment value) {
         try {
-            Handles.alGetBufferi.invokeExact(buffer, param, value);
+            alGetBufferi.invokeExact(buffer, param, value);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1573,7 +1574,7 @@ public final class AL {
 
     public static void ngetBuffer3i(int buffer, int param, MemorySegment value1, MemorySegment value2, MemorySegment value3) {
         try {
-            Handles.alGetBuffer3i.invokeExact(buffer, param, value1, value2, value3);
+            alGetBuffer3i.invokeExact(buffer, param, value1, value2, value3);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -1595,7 +1596,7 @@ public final class AL {
 
     public static void ngetBufferiv(int buffer, int param, MemorySegment values) {
         try {
-            Handles.alGetBufferiv.invokeExact(buffer, param, values);
+            alGetBufferiv.invokeExact(buffer, param, values);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
