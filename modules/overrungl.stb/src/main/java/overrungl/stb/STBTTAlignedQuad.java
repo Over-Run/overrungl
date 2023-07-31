@@ -67,6 +67,13 @@ public final class STBTTAlignedQuad extends Struct {
         super(address, LAYOUT);
     }
 
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
+    }
+
     public static STBTTAlignedQuad create(SegmentAllocator allocator) {
         return new STBTTAlignedQuad(allocator.allocate(LAYOUT));
     }

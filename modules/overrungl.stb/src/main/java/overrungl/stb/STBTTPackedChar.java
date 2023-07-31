@@ -67,12 +67,19 @@ public sealed class STBTTPackedChar extends Struct {
         xoff2 = LAYOUT.varHandle(PathElement.groupElement("xoff2")),
         yoff2 = LAYOUT.varHandle(PathElement.groupElement("yoff2"));
 
-    public STBTTPackedChar(MemorySegment address, MemoryLayout layout) {
+    protected STBTTPackedChar(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
     }
 
     public STBTTPackedChar(MemorySegment address) {
         super(address, LAYOUT);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     public static Buffer create(SegmentAllocator allocator, long count) {

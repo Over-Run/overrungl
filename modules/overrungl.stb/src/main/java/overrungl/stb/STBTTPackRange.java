@@ -65,12 +65,19 @@ public sealed class STBTTPackRange extends Struct {
         num_chars = LAYOUT.varHandle(PathElement.groupElement("num_chars")),
         chardata_for_range = LAYOUT.varHandle(PathElement.groupElement("chardata_for_range"));
 
-    public STBTTPackRange(MemorySegment address, MemoryLayout layout) {
+    protected STBTTPackRange(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
     }
 
     public STBTTPackRange(MemorySegment address) {
         super(address, LAYOUT);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     public static STBTTPackRange create(SegmentAllocator allocator) {

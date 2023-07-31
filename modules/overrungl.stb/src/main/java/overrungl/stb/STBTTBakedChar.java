@@ -62,12 +62,19 @@ public sealed class STBTTBakedChar extends Struct {
         yoff = LAYOUT.varHandle(PathElement.groupElement("yoff")),
         xadvance = LAYOUT.varHandle(PathElement.groupElement("xadvance"));
 
-    public STBTTBakedChar(MemorySegment address, MemoryLayout layout) {
+    protected STBTTBakedChar(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
     }
 
     public STBTTBakedChar(MemorySegment address) {
         super(address, LAYOUT);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     public static Buffer create(SegmentAllocator allocator, long count) {

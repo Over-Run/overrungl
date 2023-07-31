@@ -66,6 +66,13 @@ public final class STBTTVertex extends Struct {
         super(address, LAYOUT);
     }
 
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
+    }
+
     public short x() {
         return (short) x.get(segment());
     }

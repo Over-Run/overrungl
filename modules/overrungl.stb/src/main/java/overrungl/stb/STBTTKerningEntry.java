@@ -54,12 +54,19 @@ public sealed class STBTTKerningEntry extends Struct {
         glyph2 = LAYOUT.varHandle(PathElement.groupElement("glyph2")),
         advance = LAYOUT.varHandle(PathElement.groupElement("advance"));
 
-    public STBTTKerningEntry(MemorySegment address, MemoryLayout layout) {
+    protected STBTTKerningEntry(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
     }
 
     public STBTTKerningEntry(MemorySegment address) {
         super(address, LAYOUT);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     public int glyph1() {
