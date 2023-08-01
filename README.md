@@ -151,7 +151,7 @@ natives
 │  │  │  └─ libopenal.so
 │  │  └─ x64
 │  │     └─ libopenal.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libopenal.dylib
 │  │  └─ x64
