@@ -91,7 +91,7 @@ public final class GLINTELPerformanceQuery {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             glCreatePerfQueryINTEL(queryId, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -130,7 +130,7 @@ public final class GLINTELPerformanceQuery {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             glGetFirstPerfQueryIdINTEL(seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -151,7 +151,7 @@ public final class GLINTELPerformanceQuery {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             glGetNextPerfQueryIdINTEL(queryId, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

@@ -386,7 +386,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -413,7 +413,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -440,7 +440,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -467,7 +467,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createQueries(target, 1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -494,7 +494,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -521,7 +521,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createSamplers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -549,7 +549,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pTex = stack.calloc(JAVA_INT);
+            var pTex = stack.callocInt();
             createTextures(target, 1, pTex);
             return pTex.get(JAVA_INT, 0);
         } finally {
@@ -576,7 +576,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -603,7 +603,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -687,7 +687,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getNamedBufferParameteri64v(buffer, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -708,7 +708,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedBufferParameteriv(buffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -729,7 +729,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(ADDRESS);
+            var seg = stack.callocPointer();
             getNamedBufferPointerv(target, pname, seg);
             return seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
         } finally {
@@ -795,7 +795,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -816,7 +816,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedFramebufferParameteriv(framebuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -837,7 +837,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             params[0] = seg.get(JAVA_INT, 0);
         } finally {
@@ -849,7 +849,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -921,7 +921,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTextureLevelParameterfv(texture, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -948,7 +948,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTextureLevelParameteriv(texture, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -975,7 +975,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getTextureParameterIiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -1002,7 +1002,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getTextureParameterIuiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -1029,7 +1029,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTextureParameterfv(texture, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -1056,7 +1056,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTextureParameteriv(texture, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -1155,7 +1155,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getVertexArrayIndexed64iv(vaobj, index, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -1176,7 +1176,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getVertexArrayIndexediv(vaobj, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -1197,7 +1197,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getVertexArrayiv(vaobj, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

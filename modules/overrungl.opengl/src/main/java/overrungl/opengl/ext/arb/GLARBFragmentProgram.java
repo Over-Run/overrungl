@@ -106,7 +106,7 @@ public final class GLARBFragmentProgram {
         MemoryStack stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            MemorySegment segment = stack.calloc(JAVA_INT);
+            MemorySegment segment = stack.callocInt();
             glGenProgramsARB(1, segment);
             return segment.get(JAVA_INT, 0);
         } finally {

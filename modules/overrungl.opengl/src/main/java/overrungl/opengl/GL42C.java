@@ -275,7 +275,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -302,7 +302,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getInternalformativ(target, internalFormat, pname, 1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

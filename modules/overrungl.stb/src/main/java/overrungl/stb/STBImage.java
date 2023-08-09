@@ -205,9 +205,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             boolean b = ninfoFromCallbacks(clbk.address(), user, px, py, pc);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -230,9 +230,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             boolean b = ninfoFromFile(f, px, py, pc);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -256,14 +256,20 @@ public final class STBImage {
     }
 
     public static boolean infoFromMemory(SegmentAllocator allocator, byte[] buffer, int[] x, int[] y, int[] comp) {
-        var px = allocator.allocate(JAVA_INT);
-        var py = allocator.allocate(JAVA_INT);
-        var pc = allocator.allocate(JAVA_INT);
-        boolean b = infoFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), px, py, pc);
-        x[0] = px.get(JAVA_INT, 0);
-        y[0] = py.get(JAVA_INT, 0);
-        comp[0] = pc.get(JAVA_INT, 0);
-        return b;
+        var stack = MemoryStack.stackGet();
+        long stackPointer = stack.getPointer();
+        try {
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
+            boolean b = infoFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), px, py, pc);
+            x[0] = px.get(JAVA_INT, 0);
+            y[0] = py.get(JAVA_INT, 0);
+            comp[0] = pc.get(JAVA_INT, 0);
+            return b;
+        } finally {
+            stack.setPointer(stackPointer);
+        }
     }
 
     public static boolean nis16Bit(MemorySegment filename) {
@@ -452,9 +458,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             var addr = nload16FromCallbacks(clbk.address(), user, px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -500,9 +506,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             var addr = nloadFromCallbacks(clbk.address(), user, px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -525,9 +531,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             var addr = nloadFromFile(f, px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -550,9 +556,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             var addr = nloadFromFile16(f, px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -651,9 +657,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             var addr = nloadfFromCallbacks(clbk.address(), user, px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
@@ -676,9 +682,9 @@ public final class STBImage {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pc = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pc = stack.callocInt();
             var addr = nloadfFromFile(f, px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
