@@ -38,7 +38,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @see Configurations#DEBUG_STACK
  * @since 0.1.0
  */
-public sealed class MemoryStack extends Pointer implements SegmentAllocator, AutoCloseable {
+public sealed class MemoryStack extends Pointer implements Arena {
     private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
@@ -160,6 +160,11 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     public MemoryStack pop() {
         pointer = frames[--frameIndex];
         return this;
+    }
+
+    @Override
+    public MemorySegment.Scope scope() {
+        return address().scope();
     }
 
     /**
