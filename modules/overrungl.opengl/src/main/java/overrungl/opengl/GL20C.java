@@ -461,7 +461,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         final long stackPointer = stack.getPointer();
         try {
             var pLen = length != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            final SegmentAllocator allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
+            final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
             try {
                 var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
                 getProgramInfoLog(program, bufSize, pLen, pLog);
@@ -470,7 +470,7 @@ public sealed class GL20C extends GL15C permits GL21C {
                 }
                 return pLog.getUtf8String(0);
             } finally {
-                if (allocator instanceof Arena arena) arena.close();
+                if (!(allocator instanceof MemoryStack)) allocator.close();
             }
         } finally {
             stack.setPointer(stackPointer);
@@ -521,8 +521,8 @@ public sealed class GL20C extends GL15C permits GL21C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            var pLen = length != null ? stack.allocate(JAVA_INT) : MemorySegment.NULL;
-            final SegmentAllocator allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
+            var pLen = length != null ? stack.callocInt() : MemorySegment.NULL;
+            final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
             try {
                 var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
                 getShaderInfoLog(shader, bufSize, pLen, pLog);
@@ -531,7 +531,7 @@ public sealed class GL20C extends GL15C permits GL21C {
                 }
                 return pLog.getUtf8String(0);
             } finally {
-                if (allocator instanceof Arena arena) arena.close();
+                if (!(allocator instanceof MemoryStack)) allocator.close();
             }
         } finally {
             stack.setPointer(stackPointer);
