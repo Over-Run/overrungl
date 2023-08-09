@@ -26,12 +26,11 @@ import java.lang.invoke.MethodHandle;
 
 /**
  * The OpenGL loading function.
- *
  * <h2>Example</h2>
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
- * import overrungl.util.CheckUtil;
- * CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+ * import java.util.Objects;
+ * Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
  * }
  *
  * @author squid233
