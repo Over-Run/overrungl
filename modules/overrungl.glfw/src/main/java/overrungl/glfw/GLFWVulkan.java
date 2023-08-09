@@ -217,7 +217,7 @@ public final class GLFWVulkan {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pSurface = stack.calloc(ValueLayout.JAVA_LONG);
+            var pSurface = stack.callocLong();
             int result = nglfwCreateWindowSurface(instance, window, allocator, pSurface);
             surface[0] = pSurface.get(ValueLayout.JAVA_LONG, 0);
             return result;

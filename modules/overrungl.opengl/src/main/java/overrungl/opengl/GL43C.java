@@ -524,7 +524,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getFramebufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -551,7 +551,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getInternalformati64v(target, internalFormat, pname, 1, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -626,7 +626,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getProgramInterfaceiv(program, programInterface, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

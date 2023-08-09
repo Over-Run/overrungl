@@ -68,7 +68,7 @@ public final class NFDTest {
         NFD.init();
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.calloc(ValueLayout.ADDRESS);
+            MemorySegment pOutPaths = stack.callocPointer();
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
@@ -109,7 +109,7 @@ public final class NFDTest {
         NFD.init();
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.calloc(ValueLayout.ADDRESS);
+            MemorySegment pOutPaths = stack.callocPointer();
 
             // prepare filters for the dialog
             final NFDNFilterItem.Buffer filterItem = NFDNFilterItem.create(stack,

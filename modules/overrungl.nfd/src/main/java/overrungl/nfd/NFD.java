@@ -272,7 +272,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = nopenDialogN(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
@@ -356,7 +356,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = nsaveDialogN(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
@@ -401,7 +401,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npickFolderN(seg, defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
@@ -554,7 +554,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetGetPathN(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
@@ -643,7 +643,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetEnumNextN(enumerator, seg);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
@@ -719,7 +719,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = nopenDialogU8(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
@@ -813,7 +813,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = nsaveDialogU8(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
@@ -860,7 +860,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npickFolderU8(seg, defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
@@ -910,7 +910,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetGetPathU8(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
@@ -956,7 +956,7 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.calloc(ADDRESS);
+            final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetEnumNextU8(enumerator, seg);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);

@@ -315,7 +315,7 @@ public sealed class GL41C extends GL40C permits GL42C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -342,7 +342,7 @@ public sealed class GL41C extends GL40C permits GL42C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_DOUBLE);
+            var seg = stack.callocDouble();
             getDoublei_v(target, index, seg);
             return seg.get(JAVA_DOUBLE, 0);
         } finally {
@@ -369,7 +369,7 @@ public sealed class GL41C extends GL40C permits GL42C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_FLOAT);
+            var seg = stack.callocFloat();
             getFloati_v(target, index, seg);
             return seg.get(JAVA_FLOAT, 0);
         } finally {
@@ -390,8 +390,8 @@ public sealed class GL41C extends GL40C permits GL42C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pl = length != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pf = stack.calloc(JAVA_INT);
+            var pl = length != null ? stack.callocInt() : MemorySegment.NULL;
+            var pf = stack.callocInt();
             getProgramBinary(program, bufSize, pl, pf, binary);
             if (length != null && length.length > 0) {
                 length[0] = pl.get(JAVA_INT, 0);
@@ -445,7 +445,7 @@ public sealed class GL41C extends GL40C permits GL42C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getProgramPipelineiv(pipeline, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

@@ -113,7 +113,7 @@ public final class GLAMDPerformanceMonitor {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             glGenPerfMonitorsAMD(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

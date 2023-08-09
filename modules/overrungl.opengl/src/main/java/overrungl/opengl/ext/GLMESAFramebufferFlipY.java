@@ -68,11 +68,11 @@ public final class GLMESAFramebufferFlipY {
         RuntimeHelper.toArray(seg, params);
     }
 
-    public static int glGetFramebufferParameteriMESA(SegmentAllocator allocator, int target, int pname) {
+    public static int glGetFramebufferParameteriMESA(int target, int pname) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(ValueLayout.JAVA_INT);
+            var seg = stack.callocInt();
             glGetFramebufferParameterivMESA(target, pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         } finally {
