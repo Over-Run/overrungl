@@ -16,7 +16,6 @@
 
 package overrungl.util;
 
-import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.Pointer;
@@ -52,10 +51,6 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
         CheckUtil.check(DEFAULT_STACK_FRAMES > 0, "Invalid stack frames.");
     }
 
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
-    @Nullable
-    private final MemorySegment container;
-
     private final long size;
 
     private long pointer;
@@ -68,13 +63,11 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      *
      * <p>In the initial state, there is no active stack frame. The {@link #push} method must be used before any allocations.</p>
      *
-     * @param container the backing memory buffer, may be null
-     * @param address   the backing memory address
-     * @param size      the backing memory size
+     * @param address the backing memory address
+     * @param size    the backing memory size
      */
-    protected MemoryStack(@Nullable MemorySegment container, MemorySegment address, long size) {
+    protected MemoryStack(MemorySegment address, long size) {
         super(address);
-        this.container = container;
 
         this.size = size;
         this.pointer = size;
@@ -124,22 +117,8 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      */
     public static MemoryStack create(MemorySegment buffer, long size) {
         return DEBUG_STACK
-            ? new DebugMemoryStack(buffer, buffer, size)
-            : new MemoryStack(buffer, buffer, size);
-    }
-
-    /**
-     * Creates a new {@code MemoryStack} backed by the specified memory region.
-     *
-     * <p>In the initial state, there is no active stack frame. The {@link #push} method must be used before any allocations.</p>
-     *
-     * @param address the backing memory address
-     * @param size    the backing memory size
-     */
-    public static MemoryStack ncreate(MemorySegment address, long size) {
-        return DEBUG_STACK
-            ? new DebugMemoryStack(null, address, size)
-            : new MemoryStack(null, address, size);
+            ? new DebugMemoryStack(buffer, size)
+            : new MemoryStack(buffer, size);
     }
 
     /**
@@ -202,8 +181,8 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     private static final class DebugMemoryStack extends MemoryStack {
         private Object[] debugFrames;
 
-        DebugMemoryStack(@Nullable MemorySegment buffer, MemorySegment address, long size) {
-            super(buffer, address, size);
+        DebugMemoryStack(MemorySegment address, long size) {
+            super(address, size);
             debugFrames = new Object[DEFAULT_STACK_FRAMES];
         }
 
@@ -326,7 +305,11 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      * @param size      the allocation size
      * @return the memory address on the stack for the requested allocation
      */
-    public MemorySegment nmalloc(long alignment, long size) {
+    public MemorySegment malloc(long alignment, long size) {
+        if (DEBUG) {
+            MemoryUtil.checkAlignment(alignment);
+        }
+
         // Align address to the specified alignment
         long rawLong = address().address();
         long address = (rawLong + pointer - size) & -alignment;
@@ -349,8 +332,12 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      * @return the memory address on the stack for the requested allocation
      */
     public MemorySegment ncalloc(long alignment, long num, long size) {
+        if (DEBUG) {
+            MemoryUtil.checkAlignment(alignment);
+        }
+
         long bytes = num * size;
-        var address = nmalloc(alignment, bytes);
+        var address = malloc(alignment, bytes);
         address.fill((byte) 0);
         return address;
     }
@@ -358,26 +345,9 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     // -------------------------------------------------
 
     /**
-     * Allocates an aligned {@link MemorySegment} on the stack.
-     *
-     * @param alignment the required buffer alignment
-     * @param size      the number of elements in the buffer
-     * @return the allocated buffer
-     */
-    public MemorySegment malloc(long alignment, long size) {
-        if (DEBUG) {
-            MemoryUtil.checkAlignment(alignment);
-        }
-        return nmalloc(alignment, size);
-    }
-
-    /**
      * Calloc version of {@link #malloc(long, long)}.
      */
     public MemorySegment calloc(long alignment, long size) {
-        if (DEBUG) {
-            MemoryUtil.checkAlignment(alignment);
-        }
         return ncalloc(alignment, 1, size);
     }
 
@@ -388,26 +358,198 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
      * @return the memory address on the stack for the requested allocation
      */
     public MemorySegment malloc(long size) {
-        return nmalloc(ADDRESS.byteSize(), size);
+        return malloc(ADDRESS.byteAlignment(), size);
+    }
+
+    public MemorySegment malloc(MemoryLayout layout, long num) {
+        return malloc(layout.byteAlignment(), num * layout.byteSize());
     }
 
     public MemorySegment malloc(MemoryLayout layout) {
-        return malloc(layout.byteSize());
+        return malloc(layout.byteAlignment(), layout.byteSize());
     }
 
     /**
      * Calloc version of {@link #malloc(long)}.
      */
     public MemorySegment calloc(long size) {
-        return ncalloc(ADDRESS.byteSize(), 1, size);
+        return ncalloc(ADDRESS.byteAlignment(), 1, size);
     }
 
     public MemorySegment calloc(MemoryLayout layout, long num) {
-        return ncalloc(ADDRESS.byteSize(), num, layout.byteSize());
+        return ncalloc(layout.byteAlignment(), num, layout.byteSize());
     }
 
     public MemorySegment calloc(MemoryLayout layout) {
         return calloc(layout, 1);
+    }
+
+    /**
+     * Short version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocShort(long size) {
+        return malloc(JAVA_SHORT, size);
+    }
+
+    /**
+     * Short version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocShort(long size) {
+        return calloc(JAVA_SHORT, size);
+    }
+
+    /**
+     * Int version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocInt(long size) {
+        return malloc(JAVA_INT, size);
+    }
+
+    /**
+     * Int version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocInt(long size) {
+        return calloc(JAVA_INT, size);
+    }
+
+    /**
+     * Long version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocLong(long size) {
+        return malloc(JAVA_LONG, size);
+    }
+
+    /**
+     * Long version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocLong(long size) {
+        return calloc(JAVA_LONG, size);
+    }
+
+    /**
+     * Float version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocFloat(long size) {
+        return malloc(JAVA_FLOAT, size);
+    }
+
+    /**
+     * Float version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocFloat(long size) {
+        return calloc(JAVA_FLOAT, size);
+    }
+
+    /**
+     * Double version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocDouble(long size) {
+        return malloc(JAVA_DOUBLE, size);
+    }
+
+    /**
+     * Double version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocDouble(long size) {
+        return calloc(JAVA_DOUBLE, size);
+    }
+
+    /**
+     * Pointer version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocPointer(long size) {
+        return malloc(ADDRESS, size);
+    }
+
+    /**
+     * Pointer version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocPointer(long size) {
+        return calloc(ADDRESS, size);
+    }
+
+    /**
+     * Short version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocShort() {
+        return malloc(JAVA_SHORT, 1);
+    }
+
+    /**
+     * Short version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocShort() {
+        return calloc(JAVA_SHORT, 1);
+    }
+
+    /**
+     * Int version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocInt() {
+        return malloc(JAVA_INT, 1);
+    }
+
+    /**
+     * Int version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocInt() {
+        return calloc(JAVA_INT, 1);
+    }
+
+    /**
+     * Long version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocLong() {
+        return malloc(JAVA_LONG, 1);
+    }
+
+    /**
+     * Long version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocLong() {
+        return calloc(JAVA_LONG, 1);
+    }
+
+    /**
+     * Float version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocFloat() {
+        return malloc(JAVA_FLOAT, 1);
+    }
+
+    /**
+     * Float version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocFloat() {
+        return calloc(JAVA_FLOAT, 1);
+    }
+
+    /**
+     * Double version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocDouble() {
+        return malloc(JAVA_DOUBLE, 1);
+    }
+
+    /**
+     * Double version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocDouble() {
+        return calloc(JAVA_DOUBLE, 1);
+    }
+
+    /**
+     * Pointer version of {@link #malloc(long)}.
+     */
+    public MemorySegment mallocPointer() {
+        return malloc(ADDRESS, 1);
+    }
+
+    /**
+     * Pointer version of {@link #calloc(long)}.
+     */
+    public MemorySegment callocPointer() {
+        return calloc(ADDRESS, 1);
     }
 
     @Override
@@ -818,10 +960,10 @@ public sealed class MemoryStack extends Pointer implements SegmentAllocator, Aut
     }
 
     /**
-     * Thread-local version of {@link #nmalloc(long, long)}.
+     * Thread-local version of {@link #malloc(long, long)}.
      */
-    public static MemorySegment nstackMalloc(long alignment, long size) {
-        return stackGet().nmalloc(alignment, size);
+    public static MemorySegment stackMalloc(long alignment, long size) {
+        return stackGet().malloc(alignment, size);
     }
 
     /**

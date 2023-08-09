@@ -251,7 +251,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getActiveUniformsiv(program, 1, stack.ints(uniformIndex), pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

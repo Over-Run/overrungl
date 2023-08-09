@@ -26,6 +26,7 @@ import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.glfw.Handles.*;
@@ -1007,9 +1008,9 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pMajor = major != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pMinor = minor != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pRev = rev != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var pMajor = major != null ? stack.callocInt() : MemorySegment.NULL;
+            var pMinor = minor != null ? stack.callocInt() : MemorySegment.NULL;
+            var pRev = rev != null ? stack.callocInt() : MemorySegment.NULL;
             ngetVersion(pMajor, pMinor, pRev);
             if (major != null && major.length > 0) {
                 major[0] = pMajor.get(JAVA_INT, 0);
@@ -1035,9 +1036,9 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pMajor = stack.calloc(JAVA_INT);
-            var pMinor = stack.calloc(JAVA_INT);
-            var pRev = stack.calloc(JAVA_INT);
+            var pMajor = stack.callocInt();
+            var pMinor = stack.callocInt();
+            var pRev = stack.callocInt();
             ngetVersion(pMajor, pMinor, pRev);
             return new Triplet.OfInt(pMajor.get(JAVA_INT, 0),
                 pMinor.get(JAVA_INT, 0),
@@ -1122,7 +1123,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = description != null ? stack.malloc(ADDRESS) : MemorySegment.NULL;
+            final MemorySegment seg = description != null ? stack.mallocPointer() : MemorySegment.NULL;
             final int err = ngetError(seg);
             if (description != null && description.length > 0) {
                 description[0] = RuntimeHelper.unboundPointerString(seg);
@@ -1143,7 +1144,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment seg = stack.malloc(ADDRESS);
+            final MemorySegment seg = stack.mallocPointer();
             final int err = ngetError(seg);
             return new Tuple2.OfObjInt<>(RuntimeHelper.unboundPointerString(seg), err);
         } finally {
@@ -1235,7 +1236,7 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pCount = stack.calloc(JAVA_INT);
+            var pCount = stack.callocInt();
             var pMonitors = ngetMonitors(pCount);
             return RuntimeHelper.isNullptr(pMonitors) ?
                 null :
@@ -1303,8 +1304,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var py = ypos != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var px = xpos != null ? stack.callocInt() : MemorySegment.NULL;
+            var py = ypos != null ? stack.callocInt() : MemorySegment.NULL;
             ngetMonitorPos(monitor, px, py);
             if (xpos != null && xpos.length > 0) {
                 xpos[0] = px.get(JAVA_INT, 0);
@@ -1328,8 +1329,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
             ngetMonitorPos(monitor, px, py);
             return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         } finally {
@@ -1381,10 +1382,10 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var py = ypos != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pw = width != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var ph = height != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var px = xpos != null ? stack.callocInt() : MemorySegment.NULL;
+            var py = ypos != null ? stack.callocInt() : MemorySegment.NULL;
+            var pw = width != null ? stack.callocInt() : MemorySegment.NULL;
+            var ph = height != null ? stack.callocInt() : MemorySegment.NULL;
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             if (xpos != null && xpos.length > 0) {
                 xpos[0] = px.get(JAVA_INT, 0);
@@ -1414,10 +1415,10 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
-            var pw = stack.calloc(JAVA_INT);
-            var ph = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
+            var pw = stack.callocInt();
+            var ph = stack.callocInt();
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             return new Quad.OfInt(px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
@@ -1474,8 +1475,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = widthMM != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var ph = heightMM != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var pw = widthMM != null ? stack.callocInt() : MemorySegment.NULL;
+            var ph = heightMM != null ? stack.callocInt() : MemorySegment.NULL;
             ngetMonitorPhysicalSize(monitor, pw, ph);
             if (widthMM != null && widthMM.length > 0) {
                 widthMM[0] = pw.get(JAVA_INT, 0);
@@ -1499,8 +1500,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = stack.calloc(JAVA_INT);
-            var ph = stack.calloc(JAVA_INT);
+            var pw = stack.callocInt();
+            var ph = stack.callocInt();
             ngetMonitorPhysicalSize(monitor, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
@@ -1551,8 +1552,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xscale != null ? stack.calloc(JAVA_FLOAT) : MemorySegment.NULL;
-            var py = yscale != null ? stack.calloc(JAVA_FLOAT) : MemorySegment.NULL;
+            var px = xscale != null ? stack.callocFloat() : MemorySegment.NULL;
+            var py = yscale != null ? stack.callocFloat() : MemorySegment.NULL;
             ngetMonitorContentScale(monitor, px, py);
             if (xscale != null && xscale.length > 0) {
                 xscale[0] = px.get(JAVA_FLOAT, 0);
@@ -1576,8 +1577,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_FLOAT);
-            var py = stack.calloc(JAVA_FLOAT);
+            var px = stack.callocFloat();
+            var py = stack.callocFloat();
             ngetMonitorContentScale(monitor, px, py);
             return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         } finally {
@@ -1752,7 +1753,7 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pCount = stack.calloc(JAVA_INT);
+            var pCount = stack.callocInt();
             var pModes = ngetVideoModes(monitor, pCount);
             return RuntimeHelper.isNullptr(pModes) ?
                 null :
@@ -2453,8 +2454,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var py = ypos != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var px = xpos != null ? stack.callocInt() : MemorySegment.NULL;
+            var py = ypos != null ? stack.callocInt() : MemorySegment.NULL;
             ngetWindowPos(window, px, py);
             if (xpos != null && xpos.length > 1) {
                 xpos[0] = px.get(JAVA_INT, 0);
@@ -2477,8 +2478,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_INT);
-            var py = stack.calloc(JAVA_INT);
+            var px = stack.callocInt();
+            var py = stack.callocInt();
             ngetWindowPos(window, px, py);
             return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         } finally {
@@ -2561,8 +2562,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = width != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var ph = height != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var pw = width != null ? stack.callocInt() : MemorySegment.NULL;
+            var ph = height != null ? stack.callocInt() : MemorySegment.NULL;
             ngetWindowSize(window, pw, ph);
             if (width != null && width.length > 0) {
                 width[0] = pw.get(JAVA_INT, 0);
@@ -2586,8 +2587,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = stack.calloc(JAVA_INT);
-            var ph = stack.calloc(JAVA_INT);
+            var pw = stack.callocInt();
+            var ph = stack.callocInt();
             ngetWindowSize(window, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
@@ -2758,8 +2759,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = width != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var ph = height != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var pw = width != null ? stack.callocInt() : MemorySegment.NULL;
+            var ph = height != null ? stack.callocInt() : MemorySegment.NULL;
             ngetFramebufferSize(window, pw, ph);
             if (width != null && width.length > 0) {
                 width[0] = pw.get(JAVA_INT, 0);
@@ -2783,8 +2784,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pw = stack.calloc(JAVA_INT);
-            var ph = stack.calloc(JAVA_INT);
+            var pw = stack.callocInt();
+            var ph = stack.callocInt();
             ngetFramebufferSize(window, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         } finally {
@@ -2847,10 +2848,10 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pl = left != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pt = top != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pr = right != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
-            var pb = bottom != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            var pl = left != null ? stack.callocInt() : MemorySegment.NULL;
+            var pt = top != null ? stack.callocInt() : MemorySegment.NULL;
+            var pr = right != null ? stack.callocInt() : MemorySegment.NULL;
+            var pb = bottom != null ? stack.callocInt() : MemorySegment.NULL;
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             if (left != null && left.length > 0) {
                 left[0] = pl.get(JAVA_INT, 0);
@@ -2881,10 +2882,10 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pl = stack.calloc(JAVA_INT);
-            var pt = stack.calloc(JAVA_INT);
-            var pr = stack.calloc(JAVA_INT);
-            var pb = stack.calloc(JAVA_INT);
+            var pl = stack.callocInt();
+            var pt = stack.callocInt();
+            var pr = stack.callocInt();
+            var pb = stack.callocInt();
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             return new Quad.OfInt(pl.get(JAVA_INT, 0),
                 pt.get(JAVA_INT, 0),
@@ -2939,8 +2940,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xscale != null ? stack.calloc(JAVA_FLOAT) : MemorySegment.NULL;
-            var py = yscale != null ? stack.calloc(JAVA_FLOAT) : MemorySegment.NULL;
+            var px = xscale != null ? stack.callocFloat() : MemorySegment.NULL;
+            var py = yscale != null ? stack.callocFloat() : MemorySegment.NULL;
             ngetWindowContentScale(window, px, py);
             if (xscale != null && xscale.length > 0) {
                 xscale[0] = px.get(JAVA_FLOAT, 0);
@@ -2964,8 +2965,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_FLOAT);
-            var py = stack.calloc(JAVA_FLOAT);
+            var px = stack.callocFloat();
+            var py = stack.callocFloat();
             ngetWindowContentScale(window, px, py);
             return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         } finally {
@@ -4270,8 +4271,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = xpos != null ? stack.calloc(JAVA_DOUBLE) : MemorySegment.NULL;
-            var py = ypos != null ? stack.calloc(JAVA_DOUBLE) : MemorySegment.NULL;
+            var px = xpos != null ? stack.callocDouble() : MemorySegment.NULL;
+            var py = ypos != null ? stack.callocDouble() : MemorySegment.NULL;
             ngetCursorPos(window, px, py);
             if (xpos != null && xpos.length > 0) {
                 xpos[0] = px.get(JAVA_DOUBLE, 0);
@@ -4296,8 +4297,8 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var px = stack.calloc(JAVA_DOUBLE);
-            var py = stack.calloc(JAVA_DOUBLE);
+            var px = stack.callocDouble();
+            var py = stack.callocDouble();
             ngetCursorPos(window, px, py);
             return new Pair.OfDouble(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
         } finally {
@@ -4861,7 +4862,7 @@ public final class GLFW {
         MemorySegment pAxes;
         final int count;
         try {
-            var pCount = stack.calloc(JAVA_INT);
+            var pCount = stack.callocInt();
             pAxes = ngetJoystickAxes(jid, pCount);
             count = pCount.get(JAVA_INT, 0);
         } finally {
@@ -4923,7 +4924,7 @@ public final class GLFW {
         MemorySegment pButtons;
         final int count;
         try {
-            var pCount = stack.calloc(JAVA_INT);
+            var pCount = stack.callocInt();
             pButtons = ngetJoystickButtons(jid, pCount);
             count = pCount.get(JAVA_INT, 0);
         } finally {
@@ -5004,7 +5005,7 @@ public final class GLFW {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pCount = stack.calloc(JAVA_INT);
+            var pCount = stack.callocInt();
             var pHats = ngetJoystickHats(jid, pCount);
             return RuntimeHelper.toArray(pHats, new byte[pCount.get(JAVA_INT, 0)]);
         } finally {
@@ -5874,7 +5875,7 @@ public final class GLFW {
         MemorySegment pExt;
         final int count;
         try {
-            var pCount = stack.calloc(JAVA_INT);
+            var pCount = stack.callocInt();
             pExt = ngetRequiredInstanceExtensions(pCount);
             count = pCount.get(JAVA_INT, 0);
         } finally {

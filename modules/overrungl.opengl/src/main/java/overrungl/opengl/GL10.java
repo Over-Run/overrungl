@@ -1028,14 +1028,9 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pEq = stack.calloc(JAVA_DOUBLE, 4);
+            var pEq = stack.callocDouble(4);
             getClipPlane(plane, pEq);
-            return new double[]{
-                pEq.get(JAVA_DOUBLE, 0),
-                pEq.getAtIndex(JAVA_DOUBLE, 1),
-                pEq.getAtIndex(JAVA_DOUBLE, 2),
-                pEq.getAtIndex(JAVA_DOUBLE, 3)
-            };
+            return RuntimeHelper.toArray(pEq, new double[4]);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1060,7 +1055,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getLightfv(light, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -1087,7 +1082,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getLightiv(light, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -1114,7 +1109,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pv = stack.calloc(JAVA_DOUBLE);
+            var pv = stack.callocDouble();
             getMapdv(target, query, pv);
             return pv.get(JAVA_DOUBLE, 0);
         } finally {
@@ -1141,7 +1136,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pv = stack.calloc(JAVA_FLOAT);
+            var pv = stack.callocFloat();
             getMapfv(target, query, pv);
             return pv.get(JAVA_FLOAT, 0);
         } finally {
@@ -1168,7 +1163,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pv = stack.calloc(JAVA_INT);
+            var pv = stack.callocInt();
             getMapiv(target, query, pv);
             return pv.get(JAVA_INT, 0);
         } finally {
@@ -1195,7 +1190,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getMaterialfv(face, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -1222,7 +1217,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getMaterialiv(face, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -1309,7 +1304,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTexEnvfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -1336,7 +1331,7 @@ public final class GL10 extends GL10C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTexEnviv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {

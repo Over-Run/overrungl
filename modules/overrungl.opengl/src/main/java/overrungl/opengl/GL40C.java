@@ -346,7 +346,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -403,7 +403,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -424,7 +424,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getProgramStageiv(program, shaderType, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -445,7 +445,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryIndexediv(target, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -525,7 +525,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_DOUBLE);
+            var seg = stack.callocDouble();
             getUniformdv(program, location, seg);
             return seg.get(JAVA_DOUBLE, 0);
         } finally {

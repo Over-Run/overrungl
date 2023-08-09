@@ -488,7 +488,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getProgramiv(program, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -561,7 +561,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getShaderiv(shader, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -607,7 +607,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_FLOAT);
+            var seg = stack.callocFloat();
             getUniformfv(program, location, seg);
             return seg.get(JAVA_FLOAT, 0);
         } finally {
@@ -634,7 +634,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getUniformiv(program, location, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -700,7 +700,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_DOUBLE);
+            var seg = stack.callocDouble();
             getVertexAttribdv(index, pname, seg);
             return seg.get(JAVA_DOUBLE, 0);
         } finally {
@@ -727,7 +727,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_FLOAT);
+            var seg = stack.callocFloat();
             getVertexAttribfv(index, pname, seg);
             return seg.get(JAVA_FLOAT, 0);
         } finally {
@@ -754,7 +754,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getVertexAttribiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

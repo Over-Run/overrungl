@@ -464,7 +464,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_DOUBLE);
+            var pData = stack.callocDouble();
             getDoublev(pname, pData);
             return pData.get(JAVA_DOUBLE, 0);
         } finally {
@@ -500,7 +500,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_FLOAT);
+            var pData = stack.callocFloat();
             getFloatv(pname, pData);
             return pData.get(JAVA_FLOAT, 0);
         } finally {
@@ -527,7 +527,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_INT);
+            var pData = stack.callocInt();
             getIntegerv(pname, pData);
             return pData.get(JAVA_INT, 0);
         } finally {
@@ -578,7 +578,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTexLevelParameterfv(target, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -605,7 +605,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTexLevelParameteriv(target, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -632,7 +632,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTexParameterfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -659,7 +659,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTexParameteriv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
