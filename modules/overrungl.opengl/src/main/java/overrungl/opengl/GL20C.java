@@ -23,6 +23,7 @@ import overrungl.opengl.ext.arb.GLARBShaderObjects;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -455,18 +456,29 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static String getProgramInfoLog(SegmentAllocator allocator, int program, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
-        getProgramInfoLog(program, bufSize, pLen, pLog);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
+    public static String getProgramInfoLog(int program, int bufSize, int @Nullable [] length) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var pLen = length != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
+            try {
+                var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+                getProgramInfoLog(program, bufSize, pLen, pLog);
+                if (length != null && length.length > 0) {
+                    length[0] = pLen.get(JAVA_INT, 0);
+                }
+                return pLog.getUtf8String(0);
+            } finally {
+                if (!(allocator instanceof MemoryStack)) allocator.close();
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return pLog.getUtf8String(0);
     }
 
-    public static String getProgramInfoLog(SegmentAllocator allocator, int program) {
-        return getProgramInfoLog(allocator, program, getProgrami(program, INFO_LOG_LENGTH), null);
+    public static String getProgramInfoLog(int program) {
+        return getProgramInfoLog(program, getProgrami(program, INFO_LOG_LENGTH), null);
     }
 
     public static void getProgramiv(int program, int pname, MemorySegment params) {
@@ -505,18 +517,29 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static String getShaderInfoLog(SegmentAllocator allocator, int shader, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
-        getShaderInfoLog(shader, bufSize, pLen, pLog);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
+    public static String getShaderInfoLog(int shader, int bufSize, int @Nullable [] length) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var pLen = length != null ? stack.callocInt() : MemorySegment.NULL;
+            final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
+            try {
+                var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+                getShaderInfoLog(shader, bufSize, pLen, pLog);
+                if (length != null && length.length > 0) {
+                    length[0] = pLen.get(JAVA_INT, 0);
+                }
+                return pLog.getUtf8String(0);
+            } finally {
+                if (!(allocator instanceof MemoryStack)) allocator.close();
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return pLog.getUtf8String(0);
     }
 
-    public static String getShaderInfoLog(SegmentAllocator allocator, int shader) {
-        return getShaderInfoLog(allocator, shader, getShaderi(shader, INFO_LOG_LENGTH), null);
+    public static String getShaderInfoLog(int shader) {
+        return getShaderInfoLog(shader, getShaderi(shader, INFO_LOG_LENGTH), null);
     }
 
     public static void getShaderSource(int shader, int bufSize, MemorySegment length, MemorySegment source) {
