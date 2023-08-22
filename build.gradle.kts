@@ -202,7 +202,7 @@ subprojects {
 
 tasks.register("assembleJavadocArgs") {
     group = "build"
-    val mspFile = Path("${rootProject.buildDir}/tmp/modulesourcepath.args")
+    val mspFile = Path("${rootProject.layout.buildDirectory.get().asFile}/tmp/modulesourcepath.args")
     outputs.file(mspFile)
 
     doLast {
@@ -222,13 +222,13 @@ tasks.register<Javadoc>("aggregateJavadoc") {
     val projectsToDoc = Artifact.values().map { project(it.subprojectName) }
     dependsOn(projectsToDoc.map { it.getTasksByName("classes", true) })
     source(projectsToDoc.map { it.sourceSets["main"].java })
-    destinationDir = File("$buildDir/docs/javadoc")
+    destinationDir = File("${layout.buildDirectory.get().asFile}/docs/javadoc")
 
     classpath = files(projectsToDoc.map { it.configurations["compileClasspath"].files })
 
     executable = project.findProperty("javadocExecutable") as String?
 
-    options.optionFiles = listOf(File("${rootProject.buildDir}/tmp/modulesourcepath.args"))
+    options.optionFiles = listOf(File("${rootProject.layout.buildDirectory.get().asFile}/tmp/modulesourcepath.args"))
 }
 
 allprojects {
