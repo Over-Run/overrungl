@@ -1,4 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -7,6 +8,7 @@ plugins {
     `maven-publish`
     signing
     id("me.champeau.jmh") version "0.7.1" apply false
+    embeddedKotlin("jvm") apply false
 }
 
 val projGroupId: String by project
@@ -22,6 +24,7 @@ val developers: String by project
 val jdkEABuildDoc: String? = "jdk21"
 val targetJavaVersion = 21
 val enablePreview = true
+rootProject.ext["enablePreview"] = enablePreview
 
 group = projGroupId
 version = projVersion
@@ -121,6 +124,7 @@ subprojects {
     apply(plugin = "java-library")
     apply(plugin = "idea")
     apply(plugin = "me.champeau.jmh")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
     group = projGroupId
     version = projVersion
@@ -198,6 +202,8 @@ subprojects {
     }
 
     the<IdeaModel>().module.inheritOutputDirs = true
+
+    the<KotlinJvmProjectExtension>().jvmToolchain(20)
 }
 
 tasks.register("assembleJavadocArgs") {

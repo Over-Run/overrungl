@@ -451,6 +451,41 @@ public final class GLExtCaps {
      * {@code GL_ARB_transpose_matrix} extension method handles.
      */
     public MethodHandle glLoadTransposeMatrixfARB, glLoadTransposeMatrixdARB, glMultTransposeMatrixfARB, glMultTransposeMatrixdARB;
+    /**
+     * {@code GL_ARB_vertex_blend} extension method handles.
+     */
+    public MethodHandle glWeightbvARB, glWeightsvARB, glWeightivARB, glWeightfvARB, glWeightdvARB, glWeightubvARB, glWeightusvARB,
+        glWeightuivARB, glWeightPointerARB, glVertexBlendARB;
+    /**
+     * {@code GL_ARB_vertex_buffer_object} extension method handles.
+     */
+    public MethodHandle glBindBufferARB, glDeleteBuffersARB, glGenBuffersARB, glIsBufferARB, glBufferDataARB, glBufferSubDataARB,
+        glGetBufferSubDataARB, glMapBufferARB, glUnmapBufferARB, glGetBufferParameterivARB, glGetBufferPointervARB;
+    /**
+     * {@code GL_ARB_vertex_program} extension method handles.
+     */
+    public MethodHandle glVertexAttrib1dARB, glVertexAttrib1dvARB, glVertexAttrib1fARB, glVertexAttrib1fvARB, glVertexAttrib1sARB, glVertexAttrib1svARB,
+        glVertexAttrib2dARB, glVertexAttrib2dvARB, glVertexAttrib2fARB, glVertexAttrib2fvARB, glVertexAttrib2sARB, glVertexAttrib2svARB,
+        glVertexAttrib3dARB, glVertexAttrib3dvARB, glVertexAttrib3fARB, glVertexAttrib3fvARB, glVertexAttrib3sARB, glVertexAttrib3svARB,
+        glVertexAttrib4NbvARB, glVertexAttrib4NivARB, glVertexAttrib4NsvARB, glVertexAttrib4NubARB, glVertexAttrib4NubvARB, glVertexAttrib4NuivARB,
+        glVertexAttrib4NusvARB, glVertexAttrib4bvARB, glVertexAttrib4dARB, glVertexAttrib4dvARB, glVertexAttrib4fARB, glVertexAttrib4fvARB,
+        glVertexAttrib4ivARB, glVertexAttrib4sARB, glVertexAttrib4svARB, glVertexAttrib4ubvARB, glVertexAttrib4uivARB, glVertexAttrib4usvARB,
+        glVertexAttribPointerARB, glEnableVertexAttribArrayARB, glDisableVertexAttribArrayARB, glGetVertexAttribdvARB, glGetVertexAttribfvARB, glGetVertexAttribivARB,
+        glGetVertexAttribPointervARB;
+    /**
+     * {@code GL_ARB_vertex_shader} extension method handles.
+     */
+    public MethodHandle glBindAttribLocationARB, glGetActiveAttribARB, glGetAttribLocationARB;
+    /**
+     * {@code GL_ARB_viewport_array} extension method handles.
+     */
+    public MethodHandle glDepthRangeArraydvNV, glDepthRangeIndexeddNV;
+    /**
+     * {@code GL_ARB_window_pos} extension method handles.
+     */
+    public MethodHandle glWindowPos2dARB, glWindowPos2dvARB, glWindowPos2fARB, glWindowPos2fvARB, glWindowPos2iARB, glWindowPos2ivARB,
+        glWindowPos2sARB, glWindowPos2svARB, glWindowPos3dARB, glWindowPos3dvARB, glWindowPos3fARB, glWindowPos3fvARB,
+        glWindowPos3iARB, glWindowPos3ivARB, glWindowPos3sARB, glWindowPos3svARB;
 
     // endregion
 
@@ -731,12 +766,13 @@ public final class GLExtCaps {
         GLARBSparseTexture.load(this, load);
         GLARBTextureBufferObject.load(this, load);
         GLARBTextureCompression.load(this, load);
-        // GLARBTranspose_matrix.load(load);
-        // GLARBVertex_blend.load(load);
-        // GLARBVertex_buffer_object.load(load);
-        // GLARBVertex_program.load(load);
-        // GLARBVertex_shader.load(load);
-        // GLARBWindow_pos.load(load);
+        GLARBTransposeMatrix.load(this, load);
+        GLARBVertexBlend.load(this, load);
+        GLARBVertexBufferObject.load(this, load);
+        GLARBVertexProgram.load(this, load);
+        GLARBVertexShader.load(this, load);
+        GLARBViewportArray.load(this, load);
+        GLARBWindowPos.load(this, load);
         // GLATIDraw_buffers.load(load);
         // GLATIElement_array.load(load);
         // GLATIEnvmap_bumpmap.load(load);
