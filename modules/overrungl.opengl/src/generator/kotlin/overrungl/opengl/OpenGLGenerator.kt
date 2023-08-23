@@ -16,14 +16,14 @@
 
 package overrungl.opengl
 
-import overrungl.opengl.OpenGLExt.ARB
-import overrungl.opengl.OpenGLExt.CORE
+import overrungl.opengl.OpenGLExt.*
 import java.nio.file.Files
 import kotlin.io.path.Path
 
 enum class OpenGLExt(val dir: String, val packageName: String, val extName: String) {
     CORE("", "", ""),
-    ARB("ext/arb", ".ext.arb", "ARB")
+    ARB("ext/arb", ".ext.arb", "ARB"),
+    KHR("ext/khr", ".ext.khr", "KHR")
 }
 
 data class Type(val name: String, val layout: String?) {
@@ -185,11 +185,7 @@ fun file(
     }
 }
 
-/**
- * @author squid233
- * @since 0.1.0
- */
-fun main() {
+fun arb() {
     file("Robustness", ARB, "GL_ARB_robustness") {
         "GL_NO_RESET_NOTIFICATION_ARB"("0x8261")
         "GL_RESET_NOTIFICATION_STRATEGY_ARB"("0x8256")
@@ -823,4 +819,92 @@ fun main() {
         "glWindowPos3sARB"(void, GLshort("x"), GLshort("y"), GLshort("z"))
         "glWindowPos3svARB"(void, address("v", "const GLshort *"))
     }
+}
+
+fun khr() {
+    file("BlendEquationAdvanced", KHR, "GL_KHR_blend_equation_advanced") {
+        "GL_MULTIPLY_KHR"("0x9294")
+        "GL_SCREEN_KHR"("0x9295")
+        "GL_OVERLAY_KHR"("0x9296")
+        "GL_DARKEN_KHR"("0x9297")
+        "GL_LIGHTEN_KHR"("0x9298")
+        "GL_COLORDODGE_KHR"("0x9299")
+        "GL_COLORBURN_KHR"("0x929A")
+        "GL_HARDLIGHT_KHR"("0x929B")
+        "GL_SOFTLIGHT_KHR"("0x929C")
+        "GL_DIFFERENCE_KHR"("0x929E")
+        "GL_EXCLUSION_KHR"("0x92A0")
+        "GL_HSL_HUE_KHR"("0x92AD")
+        "GL_HSL_SATURATION_KHR"("0x92AE")
+        "GL_HSL_COLOR_KHR"("0x92AF")
+        "GL_HSL_LUMINOSITY_KHR"("0x92B0")
+        "glBlendBarrierKHR"(void)
+    }
+    file("BlendEquationAdvancedCoherent", KHR, "GL_KHR_blend_equation_advanced_coherent") {
+        "GL_BLEND_ADVANCED_COHERENT_KHR"("0x9285")
+    }
+    file("NoError", KHR, "GL_KHR_no_error") {
+        "GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR"("0x00000008")
+    }
+    file("ParallelShaderCompile", KHR, "GL_KHR_parallel_shader_compile") {
+        "GL_MAX_SHADER_COMPILER_THREADS_KHR"("0x91B0")
+        "GL_COMPLETION_STATUS_KHR"("0x91B1")
+        "glMaxShaderCompilerThreadsKHR"(void, GLuint("count"))
+    }
+    file("Robustness", KHR, "GL_KHR_robustness") {
+        "GL_CONTEXT_ROBUST_ACCESS"("0x90F3")
+    }
+    file("ShaderSubgroup", KHR, "GL_KHR_shader_subgroup") {
+        "GL_SUBGROUP_SIZE_KHR"("0x9532")
+        "GL_SUBGROUP_SUPPORTED_STAGES_KHR"("0x9533")
+        "GL_SUBGROUP_SUPPORTED_FEATURES_KHR"("0x9534")
+        "GL_SUBGROUP_QUAD_ALL_STAGES_KHR"("0x9535")
+        "GL_SUBGROUP_FEATURE_BASIC_BIT_KHR"("0x00000001")
+        "GL_SUBGROUP_FEATURE_VOTE_BIT_KHR"("0x00000002")
+        "GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR"("0x00000004")
+        "GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR"("0x00000008")
+        "GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR"("0x00000010")
+        "GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR"("0x00000020")
+        "GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR"("0x00000040")
+        "GL_SUBGROUP_FEATURE_QUAD_BIT_KHR"("0x00000080")
+    }
+    file("TextureCompressionAstcHdr", KHR, "GL_KHR_texture_compression_astc_hdr") {
+        "GL_COMPRESSED_RGBA_ASTC_4x4_KHR"("0x93B0")
+        "GL_COMPRESSED_RGBA_ASTC_5x4_KHR"("0x93B1")
+        "GL_COMPRESSED_RGBA_ASTC_5x5_KHR"("0x93B2")
+        "GL_COMPRESSED_RGBA_ASTC_6x5_KHR"("0x93B3")
+        "GL_COMPRESSED_RGBA_ASTC_6x6_KHR"("0x93B4")
+        "GL_COMPRESSED_RGBA_ASTC_8x5_KHR"("0x93B5")
+        "GL_COMPRESSED_RGBA_ASTC_8x6_KHR"("0x93B6")
+        "GL_COMPRESSED_RGBA_ASTC_8x8_KHR"("0x93B7")
+        "GL_COMPRESSED_RGBA_ASTC_10x5_KHR"("0x93B8")
+        "GL_COMPRESSED_RGBA_ASTC_10x6_KHR"("0x93B9")
+        "GL_COMPRESSED_RGBA_ASTC_10x8_KHR"("0x93BA")
+        "GL_COMPRESSED_RGBA_ASTC_10x10_KHR"("0x93BB")
+        "GL_COMPRESSED_RGBA_ASTC_12x10_KHR"("0x93BC")
+        "GL_COMPRESSED_RGBA_ASTC_12x12_KHR"("0x93BD")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR"("0x93D0")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR"("0x93D1")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR"("0x93D2")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR"("0x93D3")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR"("0x93D4")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR"("0x93D5")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR"("0x93D6")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR"("0x93D7")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR"("0x93D8")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR"("0x93D9")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR"("0x93DA")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR"("0x93DB")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR"("0x93DC")
+        "GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR"("0x93DD")
+    }
+}
+
+/**
+ * @author squid233
+ * @since 0.1.0
+ */
+fun main() {
+    arb()
+    khr()
 }

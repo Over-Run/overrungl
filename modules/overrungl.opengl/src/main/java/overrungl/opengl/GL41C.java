@@ -18,6 +18,7 @@ package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.internal.RuntimeHelper;
+import overrungl.opengl.ext.arb.GLARBViewportArray;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -36,7 +37,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_ARB_get_program_binary</li>
  *     <li>GL_ARB_separate_shader_objects</li>
  *     <li>GL_ARB_vertex_attrib_64bit</li>
- *     <li>GL_ARB_viewport_array</li>
+ *     <li>{@link GLARBViewportArray GL_ARB_viewport_array}</li>
  * </ul>
  *
  * @author squid233

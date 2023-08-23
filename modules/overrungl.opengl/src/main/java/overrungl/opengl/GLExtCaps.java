@@ -20,6 +20,8 @@ import overrungl.opengl.ext.*;
 import overrungl.opengl.ext.amd.*;
 import overrungl.opengl.ext.apple.*;
 import overrungl.opengl.ext.arb.*;
+import overrungl.opengl.ext.khr.GLKHRBlendEquationAdvanced;
+import overrungl.opengl.ext.khr.GLKHRParallelShaderCompile;
 import overrungl.opengl.ext.sun.*;
 
 import java.lang.invoke.MethodHandle;

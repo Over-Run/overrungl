@@ -17,10 +17,11 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrungl.internal.RuntimeHelper;
 import overrungl.opengl.ext.arb.GLARBDrawBuffers;
 import overrungl.opengl.ext.arb.GLARBFragmentProgram;
 import overrungl.opengl.ext.arb.GLARBShaderObjects;
-import overrungl.internal.RuntimeHelper;
+import overrungl.opengl.ext.arb.GLARBVertexProgram;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.Arena;
@@ -39,6 +40,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBDrawBuffers GL_ARB_draw_buffers}</li>
  *     <li>{@linkplain GLARBFragmentProgram GL_ARB_fragment_program}</li>
  *     <li>{@linkplain GLARBShaderObjects GL_ARB_shader_objects}</li>
+ *     <li>{@linkplain GLARBVertexProgram GL_ARB_vertex_program}</li>
  * </ul>
  *
  * @author squid233

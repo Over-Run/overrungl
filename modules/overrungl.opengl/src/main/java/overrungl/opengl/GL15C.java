@@ -16,8 +16,9 @@
 
 package overrungl.opengl;
 
-import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
 import overrungl.internal.RuntimeHelper;
+import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
+import overrungl.opengl.ext.arb.GLARBVertexBufferObject;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -32,6 +33,7 @@ import static overrungl.FunctionDescriptors.*;
  * These extensions are promoted in this version:
  * <ul>
  *     <li>{@linkplain GLARBOcclusionQuery GL_ARB_occlusion_query}</li>
+ *     <li>{@linkplain GLARBVertexBufferObject GL_ARB_vertex_buffer_object}</li>
  * </ul>
  *
  * @author squid233
