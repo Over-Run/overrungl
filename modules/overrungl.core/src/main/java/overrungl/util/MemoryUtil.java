@@ -34,6 +34,10 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class MemoryUtil {
+    /**
+     * An unbounded address layout.
+     */
+    public static final AddressLayout ADDRESS_UNBOUNDED = ValueLayout.ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(ValueLayout.JAVA_BYTE));
     private static final SymbolLookup LOOKUP = RuntimeHelper.LINKER.defaultLookup();
     private static final MethodHandle
         m_malloc = downcall("malloc", JP),
@@ -48,10 +52,6 @@ public final class MemoryUtil {
      * The address of {@code NULL}.
      */
     public static final long NULL = 0x0L;
-    /**
-     * An unbounded address layout.
-     */
-    public static final AddressLayout ADDRESS_UNBOUNDED = ValueLayout.ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(ValueLayout.JAVA_BYTE));
 
     private static MethodHandle downcall(String name, FunctionDescriptors function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
@@ -59,17 +59,6 @@ public final class MemoryUtil {
 
     private MemoryUtil() {
         throw new IllegalStateException("Do not construct instance");
-    }
-
-    /**
-     * {@return a segment allocator of this}
-     * The returned memory must be released <strong>explicitly</strong> by {@link #free(MemorySegment)}.
-     */
-    public static SegmentAllocator segmentAllocator() {
-        class Holder {
-            private static final SegmentAllocator ALLOCATOR = (byteSize, byteAlignment) -> calloc(byteSize / byteAlignment, byteAlignment);
-        }
-        return Holder.ALLOCATOR;
     }
 
     /**

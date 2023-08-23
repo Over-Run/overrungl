@@ -107,43 +107,4 @@ public final class CheckUtil {
     public static void checkNotNullptr(MemorySegment segment, String message) throws IllegalStateException {
         if (MemoryUtil.isNullptr(segment)) throw new IllegalStateException(message);
     }
-
-    /**
-     * Checks whether the given object is not {@code null}.
-     *
-     * @param o the object.
-     * @throws IllegalStateException if <i>{@code object}</i> is {@code null}.
-     * @see #checkNotNull(Object, Supplier)
-     * @see #checkNotNull(Object, String)
-     */
-    public static void checkNotNull(Object o) throws IllegalStateException {
-        checkNotNull(o, "condition == false");
-    }
-
-    /**
-     * Checks whether the given object is not {@code null}. The message of the exception is wrapped in a supplier
-     * to avoid side effect.
-     *
-     * @param o               the object.
-     * @param messageSupplier the message supplier of the exception.
-     * @throws IllegalStateException if <i>{@code object}</i> is {@code null}.
-     * @see #checkNotNull(Object)
-     * @see #checkNotNull(Object, String)
-     */
-    public static void checkNotNull(Object o, Supplier<String> messageSupplier) throws IllegalStateException {
-        if (o == null) throw new IllegalStateException(messageSupplier.get());
-    }
-
-    /**
-     * Checks whether the given object is not {@code null}.
-     *
-     * @param o       the object.
-     * @param message the message of the exception.
-     * @throws IllegalStateException if <i>{@code object}</i> is {@code null}.
-     * @see #checkNotNull(Object)
-     * @see #checkNotNull(Object, Supplier)
-     */
-    public static void checkNotNull(Object o, String message) throws IllegalStateException {
-        if (o == null) throw new IllegalStateException(message);
-    }
 }

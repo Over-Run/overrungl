@@ -31,6 +31,7 @@ import overrungl.util.CheckUtil;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
+import java.util.Objects;
 
 /**
  * Tests OpenGL 3.3 instanced rendering
@@ -109,7 +110,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);

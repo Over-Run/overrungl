@@ -266,7 +266,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -293,7 +293,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genQueries(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -314,7 +314,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getBufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -335,7 +335,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(ADDRESS);
+            var seg = stack.callocPointer();
             getBufferPointerv(target, pname, seg);
             return seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
         } finally {
@@ -401,7 +401,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryObjectiv(id, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -422,7 +422,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryObjectuiv(id, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -443,7 +443,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

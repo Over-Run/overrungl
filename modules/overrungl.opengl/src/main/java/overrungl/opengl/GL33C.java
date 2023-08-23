@@ -169,7 +169,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genSamplers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -209,7 +209,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getQueryObjecti64v(id, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -230,7 +230,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getQueryObjectui64v(id, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -257,7 +257,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getSamplerParameterIiv(sampler, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -284,7 +284,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getSamplerParameterIuiv(sampler, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -311,7 +311,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_FLOAT);
+            var seg = stack.callocFloat();
             getSamplerParameterfv(sampler, pname, seg);
             return seg.get(JAVA_FLOAT, 0);
         } finally {
@@ -338,7 +338,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getSamplerParameteriv(sampler, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

@@ -535,10 +535,10 @@ public final class GLFWNative {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment pWidth = width != null ? stack.calloc(ValueLayout.JAVA_INT) : MemorySegment.NULL;
-            final MemorySegment pHeight = height != null ? stack.calloc(ValueLayout.JAVA_INT) : MemorySegment.NULL;
-            final MemorySegment pFormat = format != null ? stack.calloc(ValueLayout.JAVA_INT) : MemorySegment.NULL;
-            final MemorySegment pBuffer = buffer != null ? stack.calloc(ValueLayout.ADDRESS) : MemorySegment.NULL;
+            final MemorySegment pWidth = width != null ? stack.callocInt() : MemorySegment.NULL;
+            final MemorySegment pHeight = height != null ? stack.callocInt() : MemorySegment.NULL;
+            final MemorySegment pFormat = format != null ? stack.callocInt() : MemorySegment.NULL;
+            final MemorySegment pBuffer = buffer != null ? stack.callocPointer() : MemorySegment.NULL;
             final boolean success = ngetOSMesaColorBuffer(window, pWidth, pHeight, pFormat, pBuffer);
             if (width != null && width.length > 0) {
                 width[0] = pWidth.get(ValueLayout.JAVA_INT, 0);
@@ -600,10 +600,10 @@ public final class GLFWNative {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            final MemorySegment pWidth = width != null ? stack.calloc(ValueLayout.JAVA_INT) : MemorySegment.NULL;
-            final MemorySegment pHeight = height != null ? stack.calloc(ValueLayout.JAVA_INT) : MemorySegment.NULL;
-            final MemorySegment pBPV = bytesPerValue != null ? stack.calloc(ValueLayout.JAVA_INT) : MemorySegment.NULL;
-            final MemorySegment pBuffer = buffer != null ? stack.calloc(ValueLayout.ADDRESS) : MemorySegment.NULL;
+            final MemorySegment pWidth = width != null ? stack.callocInt() : MemorySegment.NULL;
+            final MemorySegment pHeight = height != null ? stack.callocInt() : MemorySegment.NULL;
+            final MemorySegment pBPV = bytesPerValue != null ? stack.callocInt() : MemorySegment.NULL;
+            final MemorySegment pBuffer = buffer != null ? stack.callocPointer() : MemorySegment.NULL;
             final boolean success = ngetOSMesaDepthBuffer(window, pWidth, pHeight, pBPV, pBuffer);
             if (width != null && width.length > 0) {
                 width[0] = pWidth.get(ValueLayout.JAVA_INT, 0);

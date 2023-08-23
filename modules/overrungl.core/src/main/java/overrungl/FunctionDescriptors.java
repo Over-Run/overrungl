@@ -16,7 +16,7 @@
 
 package overrungl;
 
-import overrungl.internal.RuntimeHelper;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
@@ -122,7 +122,7 @@ public enum FunctionDescriptors {
             case 'F' -> JAVA_FLOAT;
             case 'D' -> JAVA_DOUBLE;
             case 'P' -> ADDRESS;
-            case 'p' -> RuntimeHelper.ADDRESS_UNBOUNDED;
+            case 'p' -> MemoryUtil.ADDRESS_UNBOUNDED;
             default ->
                 throw new IllegalArgumentException(
                     STR."Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '\{c}'"

@@ -29,6 +29,7 @@ import overrungl.util.CheckUtil;
 import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 
@@ -105,7 +106,7 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }

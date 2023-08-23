@@ -209,7 +209,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pTex = stack.calloc(JAVA_INT);
+            var pTex = stack.callocInt();
             genTextures(1, pTex);
             return pTex.get(JAVA_INT, 0);
         } finally {
@@ -230,7 +230,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(ADDRESS);
+            var pParams = stack.callocPointer();
             getPointerv(pname, pParams);
             return pParams.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
         } finally {
