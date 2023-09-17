@@ -855,6 +855,8 @@ public final class GLFW {
 
     /**
      * Converts the given error code to a readable string.
+     * <p>
+     * This method is created by OverrunGL and does not belong to the original GLFW library.
      *
      * @param errorCode the error code.
      * @return the error string.

@@ -16,6 +16,7 @@
 
 package overrungl;
 
+import overrungl.internal.Exceptions;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -38,7 +39,7 @@ import static java.lang.foreign.ValueLayout.*;
  *     case 'D' -> JAVA_DOUBLE;
  *     case 'P' -> ADDRESS;
  *     case 'p' -> MemoryUtil.ADDRESS_UNBOUNDED;
- *     default -> throw new IllegalStateException();
+ *     default -> throw new IllegalArgumentException();
  * }}
  *
  * @author squid233
@@ -124,9 +125,7 @@ public enum FunctionDescriptors {
             case 'P' -> ADDRESS;
             case 'p' -> MemoryUtil.ADDRESS_UNBOUNDED;
             default ->
-                throw new IllegalArgumentException(
-                    STR."Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '\{c}'"
-                );
+                throw Exceptions.IAE. "Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '\{ c }'" ;
         };
     }
 

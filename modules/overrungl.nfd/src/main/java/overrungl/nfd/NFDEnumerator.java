@@ -148,7 +148,7 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
     }
 
     private static IllegalStateException errorIterating() {
-        return new IllegalStateException("Error iterating: " + NFD.getError());
+        return new IllegalStateException(STR. "Error iterating: \{ NFD.getError() }" );
     }
 
     @NotNull

@@ -137,7 +137,7 @@ public final class RuntimeHelper {
      * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
      */
     public static String unknownToken(String description, int token) {
-        return description + "[0x" + Integer.toHexString(token) + "]";
+        return STR. "\{ description } [0x\{ Integer.toHexString(token) }]" ;
     }
 
     /**
@@ -161,7 +161,7 @@ public final class RuntimeHelper {
             uri = localFile.toURI();
         } else {
             // 2. Load from classpath
-            var file = new File(tmpdir, "overrungl" + System.getProperty("user.name"));
+            var file = new File(tmpdir, STR. "overrungl\{ System.getProperty("user.name") }" );
             if (!file.exists()) {
                 // Create directory
                 file.mkdir();
@@ -171,15 +171,15 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, basename + "-" + version + suffix);
+            var libFile = new File(file, STR. "\{ basename }-\{ version }\{ suffix }" );
             if (!libFile.exists()) {
                 // Extract
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(
-                    module + "/" + os.familyName() + "/" + Architecture.current() + "/" + path
+                    STR. "\{ module }/\{ os.familyName() }/\{ Architecture.current() }/\{ path }"
                 )) {
                     Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
                 } catch (Exception e) {
-                    var exception = new IllegalStateException("File not found: " + file + "; try setting property -Doverrungl.natives to a valid path");
+                    var exception = new IllegalStateException(STR. "File not found: \{ file }; try setting property -Doverrungl.natives to a valid path" );
                     exception.addSuppressed(e);
                     throw exception;
                 }

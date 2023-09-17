@@ -78,16 +78,14 @@ public final class GLUtil {
             GL.debugMessageCallback(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] OpenGL debug message\n");
-                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
+                printDetail(sb, "ID", STR. "0x\{ Integer.toHexString(id).toUpperCase(Locale.ROOT) }" );
                 printDetail(sb, "Source", getDebugSource(source));
                 printDetail(sb, "Type", getDebugType(type));
                 printDetail(sb, "Severity", getDebugSeverity(severity));
                 printDetail(sb, "Message", message);
                 var stack = Thread.currentThread().getStackTrace();
                 for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    sb.append(STR. "    at \{ stack[i] }\n" );
                 }
                 logger.accept(sb.toString());
             }, MemorySegment.NULL);
@@ -106,16 +104,14 @@ public final class GLUtil {
             glDebugMessageCallbackARB(arena, (source, type, id, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
-                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
+                printDetail(sb, "ID", STR. "0x\{ Integer.toHexString(id).toUpperCase(Locale.ROOT) }" );
                 printDetail(sb, "Source", getSourceARB(source));
                 printDetail(sb, "Type", getTypeARB(type));
                 printDetail(sb, "Severity", getSeverityARB(severity));
                 printDetail(sb, "Message", message);
                 var stack = Thread.currentThread().getStackTrace();
                 for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    sb.append(STR. "    at \{ stack[i] }\n" );
                 }
                 logger.accept(sb.toString());
             }, MemorySegment.NULL);
@@ -128,15 +124,13 @@ public final class GLUtil {
             glDebugMessageCallbackAMD(arena, (id, category, severity, message, userParam) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
-                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
+                printDetail(sb, "ID", STR. "0x\{ Integer.toHexString(id).toUpperCase(Locale.ROOT) }" );
                 printDetail(sb, "Category", getCategoryAMD(category));
                 printDetail(sb, "Severity", getSeverityAMD(severity));
                 printDetail(sb, "Message", message);
                 var stack = Thread.currentThread().getStackTrace();
                 for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    sb.append(STR. "    at \{ stack[i] }\n" );
                 }
                 logger.accept(sb.toString());
             }, MemorySegment.NULL);
@@ -148,11 +142,7 @@ public final class GLUtil {
     }
 
     private static void printDetail(StringBuilder sb, String type, String message) {
-        sb.append("    ")
-            .append(type)
-            .append(": ")
-            .append(message)
-            .append("\n");
+        sb.append(STR. "    \{ type }: \{ message }\n" );
     }
 
     private static String getDebugSource(int source) {
