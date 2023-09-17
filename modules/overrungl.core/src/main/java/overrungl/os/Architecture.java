@@ -16,6 +16,8 @@
 
 package overrungl.os;
 
+import overrungl.internal.Exceptions;
+
 import java.util.Locale;
 
 /**
@@ -28,6 +30,8 @@ public enum Architecture {
     X64,
     ARM64,
     ARM32;
+
+    private final String toStringValue = name().toLowerCase(Locale.ROOT);
 
     /**
      * {@return the current architecture of the current {@linkplain Platform platform}}
@@ -45,7 +49,7 @@ public enum Architecture {
                         X64;
                     case Platform.MacOSX _ -> arch.startsWith("aarch64") ? ARM64 : X64;
                     case Platform.Windows _ when arch.contains("64") -> arch.startsWith("aarch64") ? ARM64 : X64;
-                    default -> throw new IllegalStateException("Unrecognized or unsupported architecture: " + arch);
+                    default -> throw Exceptions.ISE. "Unrecognized or unsupported architecture: \{ arch }" ;
                 };
             }
         }
@@ -54,6 +58,6 @@ public enum Architecture {
 
     @Override
     public String toString() {
-        return name().toLowerCase(Locale.ROOT);
+        return toStringValue;
     }
 }

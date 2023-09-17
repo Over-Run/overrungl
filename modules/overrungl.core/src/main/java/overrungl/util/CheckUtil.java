@@ -78,7 +78,7 @@ public final class CheckUtil {
      * @see #checkNotNullptr(MemorySegment, String)
      */
     public static void checkNotNullptr(MemorySegment segment) throws IllegalStateException {
-        checkNotNullptr(segment, "condition == false");
+        checkNotNullptr(segment, "segment is NULL");
     }
 
     /**

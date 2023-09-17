@@ -64,8 +64,8 @@ import static overrungl.FunctionDescriptors.*;
  *             new Pair<>("Image file", "png,jpg"));
  *         var result = NFD.openDialogN(outPath, filterItem, null);
  *         switch (result) {
- *             case ERROR -> System.err.println("Error: " + NFD.getError());
- *             case OKAY -> System.out.println("Success! " + outPath[0]);
+ *             case ERROR -> System.err.println(STR. "Error: \{ NFD.getError() }" );
+ *             case OKAY -> System.out.println(STR. "Success! \{ outPath[0] }" );
  *             case CANCEL -> System.out.println("User pressed cancel.");
  *         }
  *     }

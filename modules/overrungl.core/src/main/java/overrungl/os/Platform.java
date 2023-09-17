@@ -16,6 +16,8 @@
 
 package overrungl.os;
 
+import overrungl.internal.Exceptions;
+
 /**
  * The native platform, identifying the operating system and the architecture.
  *
@@ -38,7 +40,7 @@ public sealed interface Platform {
                     CURRENT = MacOSX.INSTANCE;
                 else if (os.startsWith("Windows"))
                     CURRENT = Windows.INSTANCE;
-                else throw new IllegalStateException("Unrecognized or unsupported platform: " + os);
+                else throw Exceptions.ISE. "Unrecognized or unsupported platform: \{ os }" ;
             }
         }
         return Holder.CURRENT;
@@ -85,6 +87,11 @@ public sealed interface Platform {
         public String sharedLibraryName(String libraryName) {
             return Platform.unixSharedLibraryName(libraryName, sharedLibrarySuffix());
         }
+
+        @Override
+        public String toString() {
+            return familyName();
+        }
     }
 
     /**
@@ -109,6 +116,11 @@ public sealed interface Platform {
         @Override
         public String sharedLibraryName(String libraryName) {
             return Platform.unixSharedLibraryName(libraryName, sharedLibrarySuffix());
+        }
+
+        @Override
+        public String toString() {
+            return familyName();
         }
     }
 
@@ -135,6 +147,11 @@ public sealed interface Platform {
         public String sharedLibraryName(String libraryName) {
             return Platform.withExtension(libraryName, sharedLibrarySuffix());
         }
+
+        @Override
+        public String toString() {
+            return familyName();
+        }
     }
 
     private static String unixSharedLibraryName(String libraryName, String suffix) {
@@ -143,9 +160,9 @@ public sealed interface Platform {
         }
         int pos = libraryName.lastIndexOf('/');
         if (pos >= 0) {
-            return libraryName.substring(0, pos + 1) + "lib" + libraryName.substring(pos + 1) + suffix;
+            return STR. "\{ libraryName.substring(0, pos + 1) }lib\{ libraryName.substring(pos + 1) }\{ suffix }" ;
         }
-        return "lib" + libraryName + suffix;
+        return STR. "lib\{ libraryName }\{ suffix }" ;
     }
 
     /**
