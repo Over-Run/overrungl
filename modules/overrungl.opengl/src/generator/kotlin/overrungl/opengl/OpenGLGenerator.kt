@@ -118,8 +118,17 @@ data class Function(
     val name: String,
     val returnType: Type = void,
     val nativeType: String?,
-    val params: List<Parameter>
-)
+    val params: List<Parameter>,
+    val content: String? = null
+) {
+    private val _overloads = ArrayList<Function>()
+    val overloads: List<Function>
+        get() = _overloads
+
+    operator fun String.invoke(returnType: Type, content: String, vararg params: Parameter, nativeType: String? = null) {
+        _overloads.add(Function(this, returnType, nativeType, params.toList(), content))
+    }
+}
 
 class OpenGLFile(
     val name: String,
@@ -187,7 +196,7 @@ class OpenGLFile(
                 appendLine("    }")
                 appendLine()
                 // functions
-                functions.forEach { f ->
+                fun appendFuncHeader(f: Function) {
                     append("    public static ")
                     if (f.nativeType != null)
                         append("@NativeType(\"${f.nativeType}\") ")
@@ -199,6 +208,9 @@ class OpenGLFile(
                         append("${it.type} ${it.name}")
                     }
                     appendLine(") {")
+                }
+                functions.forEach { f ->
+                    appendFuncHeader(f)
                     appendLine("        final var ext = getExtCapabilities();")
                     appendLine("        try {")
                     if (f.returnType != void)
@@ -215,6 +227,15 @@ class OpenGLFile(
                 """.trimMargin()
                     )
                     appendLine()
+
+                    // overloads
+                    if (f.overloads.isNotEmpty()) {
+                        f.overloads.forEach { overload ->
+                            appendFuncHeader(overload)
+                            appendLine(overload.content!!.prependIndent("        "))
+                            appendLine("    }\n")
+                        }
+                    }
                 }
             }
             appendLine("}")
