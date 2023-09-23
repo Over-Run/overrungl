@@ -14,31 +14,30 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.opengl.ext;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.opengl.ext.mesa;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_MESA_resize_buffers}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_MESA_resize_buffers}
+  */
 public final class GLMESAResizeBuffers {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_MESA_resize_buffers) return;
-        ext.glResizeBuffersMESA = load.invoke("glResizeBuffersMESA", FunctionDescriptors.V);
+        ext.glResizeBuffersMESA = load.invoke("glResizeBuffersMESA", ofVoid());
     }
 
     public static void glResizeBuffersMESA() {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glResizeBuffersMESA).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glResizeBuffersMESA).invokeExact();
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

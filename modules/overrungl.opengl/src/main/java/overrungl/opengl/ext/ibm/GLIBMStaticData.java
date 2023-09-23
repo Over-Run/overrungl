@@ -14,31 +14,32 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.opengl.ext;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.opengl.ext.ibm;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_IBM_static_data}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_IBM_static_data}
+  */
 public final class GLIBMStaticData {
+    public static final int GL_ALL_STATIC_DATA_IBM = 103060;
+    public static final int GL_STATIC_VERTEX_ARRAY_IBM = 103061;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_IBM_static_data) return;
-        ext.glFlushStaticDataIBM = load.invoke("glFlushStaticDataIBM", FunctionDescriptors.IV);
+        ext.glFlushStaticDataIBM = load.invoke("glFlushStaticDataIBM", ofVoid(JAVA_INT));
     }
 
     public static void glFlushStaticDataIBM(int target) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glFlushStaticDataIBM).invokeExact(target);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glFlushStaticDataIBM).invokeExact(target);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

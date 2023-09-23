@@ -14,14 +14,22 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
 
 import overrungl.opengl.ext.*;
+import overrungl.opengl.ext.arb.*;
+import overrungl.opengl.ext.khr.*;
+import overrungl.opengl.ext.oes.*;
 import overrungl.opengl.ext.amd.*;
 import overrungl.opengl.ext.apple.*;
-import overrungl.opengl.ext.arb.*;
-import overrungl.opengl.ext.khr.GLKHRBlendEquationAdvanced;
-import overrungl.opengl.ext.khr.GLKHRParallelShaderCompile;
+//import overrungl.opengl.ext.ati.*;
+//import overrungl.opengl.ext.ext.*;
+import overrungl.opengl.ext.ibm.*;
+import overrungl.opengl.ext.intel.*;
+import overrungl.opengl.ext.mesa.*;
+//import overrungl.opengl.ext.nv.*;
+//import overrungl.opengl.ext.sgi.*;
 import overrungl.opengl.ext.sun.*;
 
 import java.lang.invoke.MethodHandle;
@@ -29,14 +37,10 @@ import java.lang.invoke.MethodHandle;
 /**
  * The OpenGL extension capabilities.
  *
- * @author squid233
  * @since 0.1.0
  */
 public final class GLExtCaps {
-    // region Flags
-    /**
-     * The OpenGL extension flags.
-     */
+    /** The OpenGL extension flags. */
     public boolean GL_3DFX_multisample, GL_3DFX_tbuffer, GL_3DFX_texture_compression_FXT1, GL_AMD_blend_minmax_factor,
         GL_AMD_conservative_depth, GL_AMD_debug_output, GL_AMD_depth_clamp_separate, GL_AMD_draw_buffers_blend,
         GL_AMD_framebuffer_multisample_advanced, GL_AMD_framebuffer_sample_positions, GL_AMD_gcn_shader,
@@ -185,524 +189,8 @@ public final class GLExtCaps {
         GL_SGIX_vertex_preclip, GL_SGIX_ycrcb, GL_SGIX_ycrcb_subsample, GL_SGIX_ycrcba, GL_SGI_color_matrix, GL_SGI_color_table,
         GL_SGI_texture_color_table, GL_SUNX_constant_data, GL_SUN_convolution_border_modes, GL_SUN_global_alpha, GL_SUN_mesh_array,
         GL_SUN_slice_accum, GL_SUN_triangle_list, GL_SUN_vertex, GL_WIN_phong_shading, GL_WIN_specular_fog;
-    // endregion
 
-    ///////////////////////////////////////////////////////////////////////////
-    // region 3DFX
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_3DFX_tbuffer} extension method handles.
-     */
-    public MethodHandle glTbufferMask3DFX;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region AMD
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_AMD_debug_output} extension method handles.
-     */
-    public MethodHandle glDebugMessageCallbackAMD, glDebugMessageEnableAMD, glDebugMessageInsertAMD, glGetDebugMessageLogAMD;
-    /**
-     * {@code GL_AMD_draw_buffers_blend} extension method handles.
-     */
-    public MethodHandle glBlendEquationIndexedAMD, glBlendEquationSeparateIndexedAMD, glBlendFuncIndexedAMD, glBlendFuncSeparateIndexedAMD;
-    /**
-     * {@code GL_AMD_framebuffer_multisample_advanced} extension method handles.
-     */
-    public MethodHandle glNamedRenderbufferStorageMultisampleAdvancedAMD, glRenderbufferStorageMultisampleAdvancedAMD;
-    /**
-     * {@code GL_AMD_framebuffer_sample_positions} extension method handles.
-     */
-    public MethodHandle glFramebufferSamplePositionsfvAMD, glGetFramebufferParameterfvAMD, glGetNamedFramebufferParameterfvAMD,
-        glNamedFramebufferSamplePositionsfvAMD;
-    /**
-     * {@code GL_AMD_interleaved_elements} extension method handles.
-     */
-    public MethodHandle glVertexAttribParameteriAMD;
-    /**
-     * {@code GL_AMD_multi_draw_indirect} extension method handles.
-     */
-    public MethodHandle glMultiDrawArraysIndirectAMD, glMultiDrawElementsIndirectAMD;
-    /**
-     * {@code GL_AMD_name_gen_delete} extension method handles.
-     */
-    public MethodHandle glDeleteNamesAMD, glGenNamesAMD, glIsNameAMD;
-    /**
-     * {@code GL_AMD_occlusion_query_event} extension method handles.
-     */
-    public MethodHandle glQueryObjectParameteruiAMD;
-    /**
-     * {@code GL_AMD_performance_monitor} extension method handles.
-     */
-    public MethodHandle glBeginPerfMonitorAMD, glDeletePerfMonitorsAMD, glEndPerfMonitorAMD, glGenPerfMonitorsAMD,
-        glGetPerfMonitorCounterDataAMD, glGetPerfMonitorCounterInfoAMD, glGetPerfMonitorCounterStringAMD,
-        glGetPerfMonitorCountersAMD, glGetPerfMonitorGroupStringAMD, glGetPerfMonitorGroupsAMD,
-        glSelectPerfMonitorCountersAMD;
-    /**
-     * {@code GL_AMD_sample_positions} extension method handles.
-     */
-    public MethodHandle glSetMultisamplefvAMD;
-    /**
-     * {@code GL_AMD_sparse_texture} extension method handles.
-     */
-    public MethodHandle glTexStorageSparseAMD, glTextureStorageSparseAMD;
-    /**
-     * {@code GL_AMD_stencil_operation_extended} extension method handles.
-     */
-    public MethodHandle glStencilOpValueAMD;
-    /**
-     * {@code GL_AMD_vertex_shader_tessellator} extension method handles.
-     */
-    public MethodHandle glTessellationFactorAMD, glTessellationModeAMD;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region APPLE
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_APPLE_element_array} extension method handles.
-     */
-    public MethodHandle glDrawElementArrayAPPLE, glDrawRangeElementArrayAPPLE, glElementPointerAPPLE,
-        glMultiDrawElementArrayAPPLE, glMultiDrawRangeElementArrayAPPLE;
-    /**
-     * {@code GL_APPLE_fence} extension method handles.
-     */
-    public MethodHandle glDeleteFencesAPPLE, glFinishFenceAPPLE, glFinishObjectAPPLE, glGenFencesAPPLE,
-        glIsFenceAPPLE, glSetFenceAPPLE, glTestFenceAPPLE, glTestObjectAPPLE;
-    /**
-     * {@code GL_APPLE_flush_buffer_range} extension method handles.
-     */
-    public MethodHandle glBufferParameteriAPPLE, glFlushMappedBufferRangeAPPLE;
-    /**
-     * {@code GL_APPLE_object_purgeable} extension method handles.
-     */
-    public MethodHandle glGetObjectParameterivAPPLE, glObjectPurgeableAPPLE, glObjectUnpurgeableAPPLE;
-    /**
-     * {@code GL_APPLE_texture_range} extension method handles.
-     */
-    public MethodHandle glGetTexParameterPointervAPPLE, glTextureRangeAPPLE;
-    /**
-     * {@code GL_APPLE_vertex_array_object} extension method handles.
-     */
-    public MethodHandle glBindVertexArrayAPPLE, glDeleteVertexArraysAPPLE, glGenVertexArraysAPPLE, glIsVertexArrayAPPLE;
-    /**
-     * {@code GL_APPLE_vertex_array_range} extension method handles.
-     */
-    public MethodHandle glFlushVertexArrayRangeAPPLE, glVertexArrayParameteriAPPLE, glVertexArrayRangeAPPLE;
-    /**
-     * {@code GL_APPLE_vertex_program_evaluators} extension method handles.
-     */
-    public MethodHandle glDisableVertexAttribAPPLE, glEnableVertexAttribAPPLE, glIsVertexAttribEnabledAPPLE,
-        glMapVertexAttrib1dAPPLE, glMapVertexAttrib1fAPPLE, glMapVertexAttrib2dAPPLE, glMapVertexAttrib2fAPPLE;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region ARB
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_ARB_debug_output} extension method handles.
-     */
-    public MethodHandle glDebugMessageCallbackARB, glDebugMessageControlARB, glDebugMessageInsertARB, glGetDebugMessageLogARB;
-    /**
-     * {@code GL_ARB_ES3_1_compatibility} extension method handles.
-     */
-    public MethodHandle glPrimitiveBoundingBoxARB;
-    /**
-     * {@code GL_ARB_bindless_texture} extension method handles.
-     */
-    public MethodHandle glGetImageHandleARB, glGetTextureHandleARB, glGetTextureSamplerHandleARB, glGetVertexAttribLui64vARB, glIsImageHandleResidentARB,
-        glIsTextureHandleResidentARB, glMakeImageHandleNonResidentARB, glMakeImageHandleResidentARB, glMakeTextureHandleNonResidentARB, glMakeTextureHandleResidentARB,
-        glProgramUniformHandleui64ARB, glProgramUniformHandleui64vARB, glUniformHandleui64ARB, glUniformHandleui64vARB, glVertexAttribL1ui64ARB, glVertexAttribL1ui64vARB;
-    /**
-     * {@code GL_ARB_cl_event} extension method handles.
-     */
-    public MethodHandle glCreateSyncFromCLeventARB;
-    /**
-     * {@code GL_ARB_color_buffer_float} extension method handles.
-     */
-    public MethodHandle glClampColorARB;
-    /**
-     * {@code GL_ARB_compute_variable_group_size} extension method handles.
-     */
-    public MethodHandle glDispatchComputeGroupSizeARB;
-    /**
-     * {@code GL_ARB_draw_buffers} extension method handles.
-     */
-    public MethodHandle glDrawBuffersARB;
-    /**
-     * {@code GL_ARB_draw_buffers_blend} extension method handles.
-     */
-    public MethodHandle glBlendEquationSeparateiARB, glBlendEquationiARB, glBlendFuncSeparateiARB, glBlendFunciARB;
-    /**
-     * {@code GL_ARB_draw_instanced} extension method handles.
-     */
-    public MethodHandle glDrawArraysInstancedARB, glDrawElementsInstancedARB;
-    /**
-     * {@code GL_ARB_fragment_program} extension method handles.
-     */
-    public MethodHandle glBindProgramARB, glDeleteProgramsARB, glGenProgramsARB, glGetProgramEnvParameterdvARB, glGetProgramEnvParameterfvARB, glGetProgramLocalParameterdvARB,
-        glGetProgramLocalParameterfvARB, glGetProgramStringARB, glGetProgramivARB, glIsProgramARB, glProgramEnvParameter4dARB, glProgramEnvParameter4dvARB, glProgramEnvParameter4fARB,
-        glProgramEnvParameter4fvARB, glProgramLocalParameter4dARB, glProgramLocalParameter4dvARB, glProgramLocalParameter4fARB, glProgramLocalParameter4fvARB, glProgramStringARB;
-    /**
-     * {@code GL_ARB_geometry_shader4} extension method handles.
-     */
-    public MethodHandle glFramebufferTextureARB, glFramebufferTextureFaceARB, glFramebufferTextureLayerARB, glProgramParameteriARB;
-    /**
-     * {@code GL_ARB_gl_spirv} extension method handles.
-     */
-    public MethodHandle glSpecializeShaderARB;
-    /**
-     * {@code GL_ARB_gpu_shader_int64} extension method handles.
-     */
-    public MethodHandle glGetUniformi64vARB, glGetUniformui64vARB, glGetnUniformi64vARB, glGetnUniformui64vARB, glProgramUniform1i64ARB, glProgramUniform1i64vARB,
-        glProgramUniform1ui64ARB, glProgramUniform1ui64vARB, glProgramUniform2i64ARB, glProgramUniform2i64vARB, glProgramUniform2ui64ARB, glProgramUniform2ui64vARB,
-        glProgramUniform3i64ARB, glProgramUniform3i64vARB, glProgramUniform3ui64ARB, glProgramUniform3ui64vARB, glProgramUniform4i64ARB, glProgramUniform4i64vARB,
-        glProgramUniform4ui64ARB, glProgramUniform4ui64vARB, glUniform1i64ARB, glUniform1i64vARB, glUniform1ui64ARB, glUniform1ui64vARB,
-        glUniform2i64ARB, glUniform2i64vARB, glUniform2ui64ARB, glUniform2ui64vARB, glUniform3i64ARB, glUniform3i64vARB,
-        glUniform3ui64ARB, glUniform3ui64vARB, glUniform4i64ARB, glUniform4i64vARB, glUniform4ui64ARB, glUniform4ui64vARB;
-    /**
-     * {@code GL_ARB_indirect_parameters} extension method handles.
-     */
-    public MethodHandle glMultiDrawArraysIndirectCountARB, glMultiDrawElementsIndirectCountARB;
-    /**
-     * {@code GL_ARB_instanced_arrays} extension method handles.
-     */
-    public MethodHandle glVertexAttribDivisorARB;
-    /**
-     * {@code GL_ARB_matrix_palette} extension method handles.
-     */
-    public MethodHandle glCurrentPaletteMatrixARB, glMatrixIndexPointerARB, glMatrixIndexubvARB, glMatrixIndexuivARB, glMatrixIndexusvARB;
-    /**
-     * {@code GL_ARB_multisample} extension method handles.
-     */
-    public MethodHandle glSampleCoverageARB;
-    /**
-     * {@code GL_ARB_multitexture} extension method handles.
-     */
-    public MethodHandle glActiveTextureARB, glClientActiveTextureARB, glMultiTexCoord1dARB, glMultiTexCoord1dvARB,
-        glMultiTexCoord1fARB, glMultiTexCoord1fvARB, glMultiTexCoord1iARB, glMultiTexCoord1ivARB, glMultiTexCoord1sARB, glMultiTexCoord1svARB,
-        glMultiTexCoord2dARB, glMultiTexCoord2dvARB, glMultiTexCoord2fARB, glMultiTexCoord2fvARB, glMultiTexCoord2iARB, glMultiTexCoord2ivARB,
-        glMultiTexCoord2sARB, glMultiTexCoord2svARB, glMultiTexCoord3dARB, glMultiTexCoord3dvARB, glMultiTexCoord3fARB, glMultiTexCoord3fvARB,
-        glMultiTexCoord3iARB, glMultiTexCoord3ivARB, glMultiTexCoord3sARB, glMultiTexCoord3svARB, glMultiTexCoord4dARB, glMultiTexCoord4dvARB,
-        glMultiTexCoord4fARB, glMultiTexCoord4fvARB, glMultiTexCoord4iARB, glMultiTexCoord4ivARB, glMultiTexCoord4sARB, glMultiTexCoord4svARB;
-    /**
-     * {@code GL_ARB_occlusion_query} extension method handles.
-     */
-    public MethodHandle glBeginQueryARB, glDeleteQueriesARB, glEndQueryARB, glGenQueriesARB, glGetQueryObjectivARB,
-        glGetQueryObjectuivARB, glGetQueryivARB, glIsQueryARB;
-    /**
-     * {@code GL_ARB_parallel_shader_compile} extension method handles.
-     */
-    public MethodHandle glMaxShaderCompilerThreadsARB;
-    /**
-     * {@code GL_ARB_point_parameters} extension method handles.
-     */
-    public MethodHandle glPointParameterfARB, glPointParameterfvARB;
-    /**
-     * {@code GL_ARB_robustness} extension method handles.
-     */
-    public MethodHandle glGetGraphicsResetStatusARB, glGetnCompressedTexImageARB, glGetnTexImageARB, glGetnUniformdvARB,
-        glGetnUniformfvARB, glGetnUniformivARB, glGetnUniformuivARB, glReadnPixelsARB;
-    /**
-     * {@code GL_ARB_sample_locations} extension method handles.
-     */
-    public MethodHandle glEvaluateDepthValuesARB, glFramebufferSampleLocationsfvARB, glNamedFramebufferSampleLocationsfvARB;
-    /**
-     * {@code GL_ARB_sample_shading} extension method handles.
-     */
-    public MethodHandle glMinSampleShadingARB;
-    /**
-     * {@code GL_ARB_shader_objects} extension method handles.
-     */
-    public MethodHandle glDeleteObjectARB, glGetHandleARB, glDetachObjectARB, glCreateShaderObjectARB, glShaderSourceARB, glCompileShaderARB,
-        glCreateProgramObjectARB, glAttachObjectARB, glLinkProgramARB, glUseProgramObjectARB, glValidateProgramARB, glUniform1fARB,
-        glUniform2fARB, glUniform3fARB, glUniform4fARB, glUniform1iARB, glUniform2iARB, glUniform3iARB, glUniform4iARB, glUniform1fvARB,
-        glUniform2fvARB, glUniform3fvARB, glUniform4fvARB, glUniform1ivARB, glUniform2ivARB, glUniform3ivARB, glUniform4ivARB,
-        glUniformMatrix2fvARB, glUniformMatrix3fvARB, glUniformMatrix4fvARB, glGetObjectParameterfvARB, glGetObjectParameterivARB, glGetInfoLogARB,
-        glGetAttachedObjectsARB, glGetUniformLocationARB, glGetActiveUniformARB, glGetUniformfvARB, glGetUniformivARB, glGetShaderSourceARB;
-    /**
-     * {@code GL_ARB_shading_language_include} extension method handles.
-     */
-    public MethodHandle glNamedStringARB, glDeleteNamedStringARB, glCompileShaderIncludeARB, glIsNamedStringARB, glGetNamedStringARB, glGetNamedStringivARB;
-    /**
-     * {@code GL_ARB_sparse_buffer} extension method handles.
-     */
-    public MethodHandle glBufferPageCommitmentARB, glNamedBufferPageCommitmentEXT, glNamedBufferPageCommitmentARB;
-    /**
-     * {@code GL_ARB_sparse_texture} extension method handles.
-     */
-    public MethodHandle glTexPageCommitmentARB;
-    /**
-     * {@code GL_ARB_texture_buffer_object} extension method handles.
-     */
-    public MethodHandle glTexBufferARB;
-    /**
-     * {@code GL_ARB_texture_compression} extension method handles.
-     */
-    public MethodHandle glCompressedTexImage3DARB, glCompressedTexImage2DARB, glCompressedTexImage1DARB, glCompressedTexSubImage3DARB,
-        glCompressedTexSubImage2DARB, glCompressedTexSubImage1DARB, glGetCompressedTexImageARB;
-    /**
-     * {@code GL_ARB_transpose_matrix} extension method handles.
-     */
-    public MethodHandle glLoadTransposeMatrixfARB, glLoadTransposeMatrixdARB, glMultTransposeMatrixfARB, glMultTransposeMatrixdARB;
-    /**
-     * {@code GL_ARB_vertex_blend} extension method handles.
-     */
-    public MethodHandle glWeightbvARB, glWeightsvARB, glWeightivARB, glWeightfvARB, glWeightdvARB, glWeightubvARB, glWeightusvARB,
-        glWeightuivARB, glWeightPointerARB, glVertexBlendARB;
-    /**
-     * {@code GL_ARB_vertex_buffer_object} extension method handles.
-     */
-    public MethodHandle glBindBufferARB, glDeleteBuffersARB, glGenBuffersARB, glIsBufferARB, glBufferDataARB, glBufferSubDataARB,
-        glGetBufferSubDataARB, glMapBufferARB, glUnmapBufferARB, glGetBufferParameterivARB, glGetBufferPointervARB;
-    /**
-     * {@code GL_ARB_vertex_program} extension method handles.
-     */
-    public MethodHandle glVertexAttrib1dARB, glVertexAttrib1dvARB, glVertexAttrib1fARB, glVertexAttrib1fvARB, glVertexAttrib1sARB, glVertexAttrib1svARB,
-        glVertexAttrib2dARB, glVertexAttrib2dvARB, glVertexAttrib2fARB, glVertexAttrib2fvARB, glVertexAttrib2sARB, glVertexAttrib2svARB,
-        glVertexAttrib3dARB, glVertexAttrib3dvARB, glVertexAttrib3fARB, glVertexAttrib3fvARB, glVertexAttrib3sARB, glVertexAttrib3svARB,
-        glVertexAttrib4NbvARB, glVertexAttrib4NivARB, glVertexAttrib4NsvARB, glVertexAttrib4NubARB, glVertexAttrib4NubvARB, glVertexAttrib4NuivARB,
-        glVertexAttrib4NusvARB, glVertexAttrib4bvARB, glVertexAttrib4dARB, glVertexAttrib4dvARB, glVertexAttrib4fARB, glVertexAttrib4fvARB,
-        glVertexAttrib4ivARB, glVertexAttrib4sARB, glVertexAttrib4svARB, glVertexAttrib4ubvARB, glVertexAttrib4uivARB, glVertexAttrib4usvARB,
-        glVertexAttribPointerARB, glEnableVertexAttribArrayARB, glDisableVertexAttribArrayARB, glGetVertexAttribdvARB, glGetVertexAttribfvARB, glGetVertexAttribivARB,
-        glGetVertexAttribPointervARB;
-    /**
-     * {@code GL_ARB_vertex_shader} extension method handles.
-     */
-    public MethodHandle glBindAttribLocationARB, glGetActiveAttribARB, glGetAttribLocationARB;
-    /**
-     * {@code GL_ARB_viewport_array} extension method handles.
-     */
-    public MethodHandle glDepthRangeArraydvNV, glDepthRangeIndexeddNV;
-    /**
-     * {@code GL_ARB_window_pos} extension method handles.
-     */
-    public MethodHandle glWindowPos2dARB, glWindowPos2dvARB, glWindowPos2fARB, glWindowPos2fvARB, glWindowPos2iARB, glWindowPos2ivARB,
-        glWindowPos2sARB, glWindowPos2svARB, glWindowPos3dARB, glWindowPos3dvARB, glWindowPos3fARB, glWindowPos3fvARB,
-        glWindowPos3iARB, glWindowPos3ivARB, glWindowPos3sARB, glWindowPos3svARB;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region ATI
-    ///////////////////////////////////////////////////////////////////////////
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region EXT
-    ///////////////////////////////////////////////////////////////////////////
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region GREMEDY
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_GREMEDY_frame_terminator} extension method handles.
-     */
-    public MethodHandle glFrameTerminatorGREMEDY;
-    /**
-     * {@code GL_GREMEDY_string_marker} extension method handles.
-     */
-    public MethodHandle glStringMarkerGREMEDY;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region HP
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_HP_image_transform} extension method handles.
-     */
-    public MethodHandle glGetImageTransformParameterfvHP, glGetImageTransformParameterivHP, glImageTransformParameterfHP,
-        glImageTransformParameterfvHP, glImageTransformParameteriHP, glImageTransformParameterivHP;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region IBM
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_IBM_multimode_draw_arrays} extension method handles.
-     */
-    public MethodHandle glMultiModeDrawArraysIBM, glMultiModeDrawElementsIBM;
-    /**
-     * {@code GL_IBM_static_data} extension method handles.
-     */
-    public MethodHandle glFlushStaticDataIBM;
-    /**
-     * {@code GL_IBM_vertex_array_lists} extension method handles.
-     */
-    public MethodHandle glColorPointerListIBM, glEdgeFlagPointerListIBM, glFogCoordPointerListIBM, glIndexPointerListIBM,
-        glNormalPointerListIBM, glSecondaryColorPointerListIBM, glTexCoordPointerListIBM, glVertexPointerListIBM;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region INGR
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_INGR_blend_func_separate} extension method handles.
-     */
-    public MethodHandle glBlendFuncSeparateINGR;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region INTEL
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_INTEL_framebuffer_CMAA} extension method handles.
-     */
-    public MethodHandle glApplyFramebufferAttachmentCMAAINTEL;
-    /**
-     * {@code GL_INTEL_map_texture} extension method handles.
-     */
-    public MethodHandle glMapTexture2DINTEL, glSyncTextureINTEL, glUnmapTexture2DINTEL;
-    /**
-     * {@code GL_INTEL_parallel_arrays} extension method handles.
-     */
-    public MethodHandle glColorPointervINTEL, glNormalPointervINTEL, glTexCoordPointervINTEL, glVertexPointervINTEL;
-    /**
-     * {@code GL_INTEL_performance_query} extension method handles.
-     */
-    public MethodHandle glBeginPerfQueryINTEL, glCreatePerfQueryINTEL, glDeletePerfQueryINTEL, glEndPerfQueryINTEL, glGetFirstPerfQueryIdINTEL,
-        glGetNextPerfQueryIdINTEL, glGetPerfCounterInfoINTEL, glGetPerfQueryDataINTEL, glGetPerfQueryIdByNameINTEL, glGetPerfQueryInfoINTEL;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region KHR
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_KHR_blend_equation_advanced} extension method handles.
-     */
-    public MethodHandle glBlendBarrierKHR;
-    /**
-     * {@code GL_KHR_parallel_shader_compile} extension method handles.
-     */
-    public MethodHandle glMaxShaderCompilerThreadsKHR;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region MESA
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_MESA_framebuffer_flip_y} extension method handles.
-     */
-    public MethodHandle glFramebufferParameteriMESA, glGetFramebufferParameterivMESA;
-    /**
-     * {@code GL_MESA_resize_buffers} extension method handles.
-     */
-    public MethodHandle glResizeBuffersMESA;
-    /**
-     * {@code GL_MESA_window_pos} extension method handles.
-     */
-    public MethodHandle glWindowPos2dMESA, glWindowPos2dvMESA, glWindowPos2fMESA, glWindowPos2fvMESA, glWindowPos2iMESA, glWindowPos2ivMESA,
-        glWindowPos2sMESA, glWindowPos2svMESA, glWindowPos3dMESA, glWindowPos3dvMESA, glWindowPos3fMESA, glWindowPos3fvMESA,
-        glWindowPos3iMESA, glWindowPos3ivMESA, glWindowPos3sMESA, glWindowPos3svMESA, glWindowPos4dMESA, glWindowPos4dvMESA,
-        glWindowPos4fMESA, glWindowPos4fvMESA, glWindowPos4iMESA, glWindowPos4ivMESA, glWindowPos4sMESA, glWindowPos4svMESA;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region NV
-    ///////////////////////////////////////////////////////////////////////////
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region OES
-    ///////////////////////////////////////////////////////////////////////////
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region OVR
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_OVR_multiview} extension method handles.
-     */
-    public MethodHandle glFramebufferTextureMultiviewOVR;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region PGI
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_PGI_misc_hints} extension method handles.
-     */
-    public MethodHandle glHintPGI;
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region SGI
-    ///////////////////////////////////////////////////////////////////////////
-
-    // endregion
-
-    ///////////////////////////////////////////////////////////////////////////
-    // region SUN
-    ///////////////////////////////////////////////////////////////////////////
-
-    /**
-     * {@code GL_SUNX_constant_data} extension method handles.
-     */
-    public MethodHandle glFinishTextureSUNX;
-    /**
-     * {@code GL_SUN_global_alpha} extension method handles.
-     */
-    public MethodHandle glGlobalAlphaFactorbSUN, glGlobalAlphaFactordSUN, glGlobalAlphaFactorfSUN, glGlobalAlphaFactoriSUN,
-        glGlobalAlphaFactorsSUN, glGlobalAlphaFactorubSUN, glGlobalAlphaFactoruiSUN, glGlobalAlphaFactorusSUN;
-    /**
-     * {@code GL_SUN_mesh_array} extension method handles.
-     */
-    public MethodHandle glDrawMeshArraysSUN;
-    /**
-     * {@code GL_SUN_triangle_list} extension method handles.
-     */
-    public MethodHandle glReplacementCodePointerSUN, glReplacementCodeubSUN, glReplacementCodeubvSUN,
-        glReplacementCodeuiSUN, glReplacementCodeuivSUN, glReplacementCodeusSUN, glReplacementCodeusvSUN;
-    /**
-     * {@code GL_SUN_vertex} extension method handles.
-     */
-    public MethodHandle glColor3fVertex3fSUN, glColor3fVertex3fvSUN, glColor4fNormal3fVertex3fSUN, glColor4fNormal3fVertex3fvSUN,
-        glColor4ubVertex2fSUN, glColor4ubVertex2fvSUN, glColor4ubVertex3fSUN, glColor4ubVertex3fvSUN, glNormal3fVertex3fSUN,
-        glNormal3fVertex3fvSUN, glReplacementCodeuiColor3fVertex3fSUN, glReplacementCodeuiColor3fVertex3fvSUN,
-        glReplacementCodeuiColor4fNormal3fVertex3fSUN, glReplacementCodeuiColor4fNormal3fVertex3fvSUN, glReplacementCodeuiColor4ubVertex3fSUN,
-        glReplacementCodeuiColor4ubVertex3fvSUN, glReplacementCodeuiNormal3fVertex3fSUN, glReplacementCodeuiNormal3fVertex3fvSUN,
-        glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN,
-        glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN,
-        glReplacementCodeuiTexCoord2fVertex3fSUN, glReplacementCodeuiTexCoord2fVertex3fvSUN, glReplacementCodeuiVertex3fSUN,
-        glReplacementCodeuiVertex3fvSUN, glTexCoord2fColor3fVertex3fSUN, glTexCoord2fColor3fVertex3fvSUN,
-        glTexCoord2fColor4fNormal3fVertex3fSUN, glTexCoord2fColor4fNormal3fVertex3fvSUN, glTexCoord2fColor4ubVertex3fSUN,
-        glTexCoord2fColor4ubVertex3fvSUN, glTexCoord2fNormal3fVertex3fSUN, glTexCoord2fNormal3fVertex3fvSUN,
-        glTexCoord2fVertex3fSUN, glTexCoord2fVertex3fvSUN, glTexCoord4fColor4fNormal3fVertex4fSUN,
-        glTexCoord4fColor4fNormal3fVertex4fvSUN, glTexCoord4fVertex4fSUN, glTexCoord4fVertex4fvSUN;
-
-    // endregion
-
+    /** GLCapabilities */
     public final GLCapabilities caps;
 
     /**
@@ -714,13 +202,71 @@ public final class GLExtCaps {
         this.caps = caps;
     }
 
+    /** Method handles. */
+    public MethodHandle
+        glGetGraphicsResetStatusARB, glGetnCompressedTexImageARB, glGetnTexImageARB, glGetnUniformdvARB, glGetnUniformfvARB, glGetnUniformivARB, glGetnUniformuivARB, glReadnPixelsARB, glEvaluateDepthValuesARB, glFramebufferSampleLocationsfvARB, glNamedFramebufferSampleLocationsfvARB, glMinSampleShadingARB, glDeleteObjectARB, glGetHandleARB, glDetachObjectARB, glCreateShaderObjectARB,
+        glShaderSourceARB, glCompileShaderARB, glCreateProgramObjectARB, glAttachObjectARB, glLinkProgramARB, glUseProgramObjectARB, glValidateProgramARB, glUniform1fARB, glUniform2fARB, glUniform3fARB, glUniform4fARB, glUniform1iARB, glUniform2iARB, glUniform3iARB, glUniform4iARB, glUniform1fvARB,
+        glUniform2fvARB, glUniform3fvARB, glUniform4fvARB, glUniform1ivARB, glUniform2ivARB, glUniform3ivARB, glUniform4ivARB, glUniformMatrix2fvARB, glUniformMatrix3fvARB, glUniformMatrix4fvARB, glGetObjectParameterfvARB, glGetObjectParameterivARB, glGetInfoLogARB, glGetAttachedObjectsARB, glGetUniformLocationARB, glGetActiveUniformARB,
+        glGetUniformfvARB, glGetUniformivARB, glGetShaderSourceARB, glNamedStringARB, glDeleteNamedStringARB, glCompileShaderIncludeARB, glIsNamedStringARB, glGetNamedStringARB, glGetNamedStringivARB, glBufferPageCommitmentARB, glNamedBufferPageCommitmentEXT, glNamedBufferPageCommitmentARB, glTexPageCommitmentARB, glTexBufferARB, glCompressedTexImage3DARB, glCompressedTexImage2DARB,
+        glCompressedTexImage1DARB, glCompressedTexSubImage3DARB, glCompressedTexSubImage2DARB, glCompressedTexSubImage1DARB, glGetCompressedTexImageARB, glLoadTransposeMatrixfARB, glLoadTransposeMatrixdARB, glMultTransposeMatrixfARB, glMultTransposeMatrixdARB, glWeightbvARB, glWeightsvARB, glWeightivARB, glWeightfvARB, glWeightdvARB, glWeightubvARB, glWeightusvARB,
+        glWeightuivARB, glWeightPointerARB, glVertexBlendARB, glBindBufferARB, glDeleteBuffersARB, glGenBuffersARB, glIsBufferARB, glBufferDataARB, glBufferSubDataARB, glGetBufferSubDataARB, glMapBufferARB, glUnmapBufferARB, glGetBufferParameterivARB, glGetBufferPointervARB, glVertexAttrib1dARB, glVertexAttrib1dvARB,
+        glVertexAttrib1fARB, glVertexAttrib1fvARB, glVertexAttrib1sARB, glVertexAttrib1svARB, glVertexAttrib2dARB, glVertexAttrib2dvARB, glVertexAttrib2fARB, glVertexAttrib2fvARB, glVertexAttrib2sARB, glVertexAttrib2svARB, glVertexAttrib3dARB, glVertexAttrib3dvARB, glVertexAttrib3fARB, glVertexAttrib3fvARB, glVertexAttrib3sARB, glVertexAttrib3svARB,
+        glVertexAttrib4NbvARB, glVertexAttrib4NivARB, glVertexAttrib4NsvARB, glVertexAttrib4NubARB, glVertexAttrib4NubvARB, glVertexAttrib4NuivARB, glVertexAttrib4NusvARB, glVertexAttrib4bvARB, glVertexAttrib4dARB, glVertexAttrib4dvARB, glVertexAttrib4fARB, glVertexAttrib4fvARB, glVertexAttrib4ivARB, glVertexAttrib4sARB, glVertexAttrib4svARB, glVertexAttrib4ubvARB,
+        glVertexAttrib4uivARB, glVertexAttrib4usvARB, glVertexAttribPointerARB, glEnableVertexAttribArrayARB, glDisableVertexAttribArrayARB, glGetVertexAttribdvARB, glGetVertexAttribfvARB, glGetVertexAttribivARB, glGetVertexAttribPointervARB, glBindAttribLocationARB, glGetActiveAttribARB, glGetAttribLocationARB, glDepthRangeArraydvNV, glDepthRangeIndexeddNV, glWindowPos2dARB, glWindowPos2dvARB,
+        glWindowPos2fARB, glWindowPos2fvARB, glWindowPos2iARB, glWindowPos2ivARB, glWindowPos2sARB, glWindowPos2svARB, glWindowPos3dARB, glWindowPos3dvARB, glWindowPos3fARB, glWindowPos3fvARB, glWindowPos3iARB, glWindowPos3ivARB, glWindowPos3sARB, glWindowPos3svARB, glBlendBarrierKHR, glMaxShaderCompilerThreadsKHR,
+        glMultiTexCoord1bOES, glMultiTexCoord1bvOES, glMultiTexCoord2bOES, glMultiTexCoord2bvOES, glMultiTexCoord3bOES, glMultiTexCoord3bvOES, glMultiTexCoord4bOES, glMultiTexCoord4bvOES, glTexCoord1bOES, glTexCoord1bvOES, glTexCoord2bOES, glTexCoord2bvOES, glTexCoord3bOES, glTexCoord3bvOES, glTexCoord4bOES, glTexCoord4bvOES,
+        glVertex2bOES, glVertex2bvOES, glVertex3bOES, glVertex3bvOES, glVertex4bOES, glVertex4bvOES, glAlphaFuncxOES, glClearColorxOES, glClearDepthxOES, glClipPlanexOES, glColor4xOES, glDepthRangexOES, glFogxOES, glFogxvOES, glFrustumxOES, glGetClipPlanexOES,
+        glGetFixedvOES, glGetTexEnvxvOES, glGetTexParameterxvOES, glLightModelxOES, glLightModelxvOES, glLightxOES, glLightxvOES, glLineWidthxOES, glLoadMatrixxOES, glMaterialxOES, glMaterialxvOES, glMultMatrixxOES, glMultiTexCoord4xOES, glNormal3xOES, glOrthoxOES, glPointParameterxvOES,
+        glPointSizexOES, glPolygonOffsetxOES, glRotatexOES, glScalexOES, glTexEnvxOES, glTexEnvxvOES, glTexParameterxOES, glTexParameterxvOES, glTranslatexOES, glAccumxOES, glBitmapxOES, glBlendColorxOES, glClearAccumxOES, glColor3xOES, glColor3xvOES, glColor4xvOES,
+        glConvolutionParameterxOES, glConvolutionParameterxvOES, glEvalCoord1xOES, glEvalCoord1xvOES, glEvalCoord2xOES, glEvalCoord2xvOES, glFeedbackBufferxOES, glGetConvolutionParameterxvOES, glGetHistogramParameterxvOES, glGetLightxOES, glGetMapxvOES, glGetMaterialxOES, glGetPixelMapxv, glGetTexGenxvOES, glGetTexLevelParameterxvOES, glIndexxOES,
+        glIndexxvOES, glLoadTransposeMatrixxOES, glMap1xOES, glMap2xOES, glMapGrid1xOES, glMapGrid2xOES, glMultTransposeMatrixxOES, glMultiTexCoord1xOES, glMultiTexCoord1xvOES, glMultiTexCoord2xOES, glMultiTexCoord2xvOES, glMultiTexCoord3xOES, glMultiTexCoord3xvOES, glMultiTexCoord4xvOES, glNormal3xvOES, glPassThroughxOES,
+        glPixelMapx, glPixelStorex, glPixelTransferxOES, glPixelZoomxOES, glPrioritizeTexturesxOES, glRasterPos2xOES, glRasterPos2xvOES, glRasterPos3xOES, glRasterPos3xvOES, glRasterPos4xOES, glRasterPos4xvOES, glRectxOES, glRectxvOES, glTexCoord1xOES, glTexCoord1xvOES, glTexCoord2xOES,
+        glTexCoord2xvOES, glTexCoord3xOES, glTexCoord3xvOES, glTexCoord4xOES, glTexCoord4xvOES, glTexGenxOES, glTexGenxvOES, glVertex2xOES, glVertex2xvOES, glVertex3xOES, glVertex3xvOES, glVertex4xOES, glVertex4xvOES, glQueryMatrixxOES, glClearDepthfOES, glClipPlanefOES,
+        glDepthRangefOES, glFrustumfOES, glGetClipPlanefOES, glOrthofOES, glTbufferMask3DFX, glDebugMessageEnableAMD, glDebugMessageInsertAMD, glDebugMessageCallbackAMD, glGetDebugMessageLogAMD, glBlendFuncIndexedAMD, glBlendFuncSeparateIndexedAMD, glBlendEquationIndexedAMD, glBlendEquationSeparateIndexedAMD, glRenderbufferStorageMultisampleAdvancedAMD, glNamedRenderbufferStorageMultisampleAdvancedAMD, glFramebufferSamplePositionsfvAMD,
+        glNamedFramebufferSamplePositionsfvAMD, glGetFramebufferParameterfvAMD, glGetNamedFramebufferParameterfvAMD, glUniform1i64NV, glUniform2i64NV, glUniform3i64NV, glUniform4i64NV, glUniform1i64vNV, glUniform2i64vNV, glUniform3i64vNV, glUniform4i64vNV, glUniform1ui64NV, glUniform2ui64NV, glUniform3ui64NV, glUniform4ui64NV, glUniform1ui64vNV,
+        glUniform2ui64vNV, glUniform3ui64vNV, glUniform4ui64vNV, glGetUniformi64vNV, glGetUniformui64vNV, glProgramUniform1i64NV, glProgramUniform2i64NV, glProgramUniform3i64NV, glProgramUniform4i64NV, glProgramUniform1i64vNV, glProgramUniform2i64vNV, glProgramUniform3i64vNV, glProgramUniform4i64vNV, glProgramUniform1ui64NV, glProgramUniform2ui64NV, glProgramUniform3ui64NV,
+        glProgramUniform4ui64NV, glProgramUniform1ui64vNV, glProgramUniform2ui64vNV, glProgramUniform3ui64vNV, glProgramUniform4ui64vNV, glVertexAttribParameteriAMD, glMultiDrawArraysIndirectAMD, glMultiDrawElementsIndirectAMD, glGenNamesAMD, glDeleteNamesAMD, glIsNameAMD, glQueryObjectParameteruiAMD, glGetPerfMonitorGroupsAMD, glGetPerfMonitorCountersAMD, glGetPerfMonitorGroupStringAMD, glGetPerfMonitorCounterStringAMD,
+        glGetPerfMonitorCounterInfoAMD, glGenPerfMonitorsAMD, glDeletePerfMonitorsAMD, glSelectPerfMonitorCountersAMD, glBeginPerfMonitorAMD, glEndPerfMonitorAMD, glGetPerfMonitorCounterDataAMD, glSetMultisamplefvAMD, glTexStorageSparseAMD, glTextureStorageSparseAMD, glStencilOpValueAMD, glTessellationFactorAMD, glTessellationModeAMD, glElementPointerAPPLE, glDrawElementArrayAPPLE, glDrawRangeElementArrayAPPLE,
+        glMultiDrawElementArrayAPPLE, glMultiDrawRangeElementArrayAPPLE, glGenFencesAPPLE, glDeleteFencesAPPLE, glSetFenceAPPLE, glIsFenceAPPLE, glTestFenceAPPLE, glFinishFenceAPPLE, glTestObjectAPPLE, glFinishObjectAPPLE, glBufferParameteriAPPLE, glFlushMappedBufferRangeAPPLE, glObjectPurgeableAPPLE, glObjectUnpurgeableAPPLE, glGetObjectParameterivAPPLE, glTextureRangeAPPLE,
+        glGetTexParameterPointervAPPLE, glBindVertexArrayAPPLE, glDeleteVertexArraysAPPLE, glGenVertexArraysAPPLE, glIsVertexArrayAPPLE, glVertexArrayRangeAPPLE, glFlushVertexArrayRangeAPPLE, glVertexArrayParameteriAPPLE, glEnableVertexAttribAPPLE, glDisableVertexAttribAPPLE, glIsVertexAttribEnabledAPPLE, glMapVertexAttrib1dAPPLE, glMapVertexAttrib1fAPPLE, glMapVertexAttrib2dAPPLE, glMapVertexAttrib2fAPPLE, glFrameTerminatorGREMEDY,
+        glStringMarkerGREMEDY, glImageTransformParameteriHP, glImageTransformParameterfHP, glImageTransformParameterivHP, glImageTransformParameterfvHP, glGetImageTransformParameterivHP, glGetImageTransformParameterfvHP, glMultiModeDrawArraysIBM, glMultiModeDrawElementsIBM, glFlushStaticDataIBM, glColorPointerListIBM, glSecondaryColorPointerListIBM, glEdgeFlagPointerListIBM, glFogCoordPointerListIBM, glIndexPointerListIBM, glNormalPointerListIBM,
+        glTexCoordPointerListIBM, glVertexPointerListIBM, glBlendFuncSeparateINGR, glApplyFramebufferAttachmentCMAAINTEL, glSyncTextureINTEL, glUnmapTexture2DINTEL, glMapTexture2DINTEL, glVertexPointervINTEL, glNormalPointervINTEL, glColorPointervINTEL, glTexCoordPointervINTEL, glBeginPerfQueryINTEL, glCreatePerfQueryINTEL, glDeletePerfQueryINTEL, glEndPerfQueryINTEL, glGetFirstPerfQueryIdINTEL,
+        glGetNextPerfQueryIdINTEL, glGetPerfCounterInfoINTEL, glGetPerfQueryDataINTEL, glGetPerfQueryIdByNameINTEL, glGetPerfQueryInfoINTEL, glFramebufferParameteriMESA, glGetFramebufferParameterivMESA, glResizeBuffersMESA, glWindowPos2dMESA, glWindowPos2dvMESA, glWindowPos2fMESA, glWindowPos2fvMESA, glWindowPos2iMESA, glWindowPos2ivMESA, glWindowPos2sMESA, glWindowPos2svMESA,
+        glWindowPos3dMESA, glWindowPos3dvMESA, glWindowPos3fMESA, glWindowPos3fvMESA, glWindowPos3iMESA, glWindowPos3ivMESA, glWindowPos3sMESA, glWindowPos3svMESA, glWindowPos4dMESA, glWindowPos4dvMESA, glWindowPos4fMESA, glWindowPos4fvMESA, glWindowPos4iMESA, glWindowPos4ivMESA, glWindowPos4sMESA, glWindowPos4svMESA,
+        glFramebufferTextureMultiviewOVR, glHintPGI, glFinishTextureSUNX, glGlobalAlphaFactorbSUN, glGlobalAlphaFactorsSUN, glGlobalAlphaFactoriSUN, glGlobalAlphaFactorfSUN, glGlobalAlphaFactordSUN, glGlobalAlphaFactorubSUN, glGlobalAlphaFactorusSUN, glGlobalAlphaFactoruiSUN, glDrawMeshArraysSUN, glReplacementCodeuiSUN, glReplacementCodeusSUN, glReplacementCodeubSUN, glReplacementCodeuivSUN,
+        glReplacementCodeusvSUN, glReplacementCodeubvSUN, glReplacementCodePointerSUN, glColor4ubVertex2fSUN, glColor4ubVertex2fvSUN, glColor4ubVertex3fSUN, glColor4ubVertex3fvSUN, glColor3fVertex3fSUN, glColor3fVertex3fvSUN, glNormal3fVertex3fSUN, glNormal3fVertex3fvSUN, glColor4fNormal3fVertex3fSUN, glColor4fNormal3fVertex3fvSUN, glTexCoord2fVertex3fSUN, glTexCoord2fVertex3fvSUN, glTexCoord4fVertex4fSUN,
+        glTexCoord4fVertex4fvSUN, glTexCoord2fColor4ubVertex3fSUN, glTexCoord2fColor4ubVertex3fvSUN, glTexCoord2fColor3fVertex3fSUN, glTexCoord2fColor3fVertex3fvSUN, glTexCoord2fNormal3fVertex3fSUN, glTexCoord2fNormal3fVertex3fvSUN, glTexCoord2fColor4fNormal3fVertex3fSUN, glTexCoord2fColor4fNormal3fVertex3fvSUN, glTexCoord4fColor4fNormal3fVertex4fSUN, glTexCoord4fColor4fNormal3fVertex4fvSUN, glReplacementCodeuiVertex3fSUN, glReplacementCodeuiVertex3fvSUN, glReplacementCodeuiColor4ubVertex3fSUN, glReplacementCodeuiColor4ubVertex3fvSUN, glReplacementCodeuiColor3fVertex3fSUN,
+        glReplacementCodeuiColor3fVertex3fvSUN, glReplacementCodeuiNormal3fVertex3fSUN, glReplacementCodeuiNormal3fVertex3fvSUN, glReplacementCodeuiColor4fNormal3fVertex3fSUN, glReplacementCodeuiColor4fNormal3fVertex3fvSUN, glReplacementCodeuiTexCoord2fVertex3fSUN, glReplacementCodeuiTexCoord2fVertex3fvSUN, glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
+
     void load(GLLoadFunc load) {
+        GLARBRobustness.load(this, load);
+        GLARBSampleLocations.load(this, load);
+        GLARBSampleShading.load(this, load);
+        GLARBShaderObjects.load(this, load);
+        GLARBShadingLanguageInclude.load(this, load);
+        GLARBSparseBuffer.load(this, load);
+        GLARBSparseTexture.load(this, load);
+        GLARBTextureBufferObject.load(this, load);
+        GLARBTextureCompression.load(this, load);
+        GLARBTransposeMatrix.load(this, load);
+        GLARBVertexBlend.load(this, load);
+        GLARBVertexBufferObject.load(this, load);
+        GLARBVertexProgram.load(this, load);
+        GLARBVertexShader.load(this, load);
+        GLARBViewportArray.load(this, load);
+        GLARBWindowPos.load(this, load);
+        GLKHRBlendEquationAdvanced.load(this, load);
+        GLKHRParallelShaderCompile.load(this, load);
+        GLOESByteCoordinates.load(this, load);
+        GLOESFixedPoint.load(this, load);
+        GLOESQueryMatrix.load(this, load);
+        GLOESSinglePrecision.load(this, load);
         GL3DFXTbuffer.load(this, load);
         GLAMDDebugOutput.load(this, load);
         GLAMDDrawBuffersBlend.load(this, load);
         GLAMDFramebufferMultisampleAdvanced.load(this, load);
         GLAMDFramebufferSamplePositions.load(this, load);
-        // TODO: GLAMDGpuShaderInt64.load(this, load);
+        GLAMDGpuShaderInt64.load(this, load);
         GLAMDInterleavedElements.load(this, load);
         GLAMDMultiDrawIndirect.load(this, load);
         GLAMDNameGenDelete.load(this, load);
@@ -738,122 +284,6 @@ public final class GLExtCaps {
         GLAPPLEVertexArrayObject.load(this, load);
         GLAPPLEVertexArrayRange.load(this, load);
         GLAPPLEVertexProgramEvaluators.load(this, load);
-        GLARBES32Compatibility.load(this, load);
-        GLARBBindlessTexture.load(this, load);
-        GLARBCLEvent.load(this, load);
-        GLARBColorBufferFloat.load(this, load);
-        GLARBComputeVariableGroupSize.load(this, load);
-        GLARBDebugOutput.load(this, load);
-        GLARBDrawBuffers.load(this, load);
-        GLARBDrawBuffersBlend.load(this, load);
-        GLARBDrawInstanced.load(this, load);
-        GLARBFragmentProgram.load(this, load);
-        GLARBGeometryShader4.load(this, load);
-        GLARBGLSpirv.load(this, load);
-        GLARBGPUShaderInt64.load(this, load);
-        GLARBIndirectParameters.load(this, load);
-        GLARBInstancedArrays.load(this, load);
-        GLARBMatrixPalette.load(this, load);
-        GLARBMultisample.load(this, load);
-        GLARBMultitexture.load(this, load);
-        GLARBOcclusionQuery.load(this, load);
-        GLARBParallelShaderCompile.load(this, load);
-        GLARBPointParameters.load(this, load);
-        GLARBRobustness.load(this, load);
-        GLARBSampleLocations.load(this, load);
-        GLARBSampleShading.load(this, load);
-        GLARBShaderObjects.load(this, load);
-        GLARBShadingLanguageInclude.load(this, load);
-        GLARBSparseBuffer.load(this, load);
-        GLARBSparseTexture.load(this, load);
-        GLARBTextureBufferObject.load(this, load);
-        GLARBTextureCompression.load(this, load);
-        GLARBTransposeMatrix.load(this, load);
-        GLARBVertexBlend.load(this, load);
-        GLARBVertexBufferObject.load(this, load);
-        GLARBVertexProgram.load(this, load);
-        GLARBVertexShader.load(this, load);
-        GLARBViewportArray.load(this, load);
-        GLARBWindowPos.load(this, load);
-        // GLATIDraw_buffers.load(load);
-        // GLATIElement_array.load(load);
-        // GLATIEnvmap_bumpmap.load(load);
-        // GLATIFragment_shader.load(load);
-        // GLATIMap_object_buffer.load(load);
-        // GLATIPn_triangles.load(load);
-        // GLATISeparate_stencil.load(load);
-        // GLATIVertex_array_object.load(load);
-        // GLATIVertex_attrib_array_object.load(load);
-        // GLATIVertex_streams.load(load);
-        // GLEXT_EGL_image_storage.load(load);
-        // GLEXT_bindable_uniform.load(load);
-        // GLEXT_blend_color.load(load);
-        // GLEXT_blend_equation_separate.load(load);
-        // GLEXT_blend_func_separate.load(load);
-        // GLEXT_blend_minmax.load(load);
-        // GLEXT_color_subtable.load(load);
-        // GLEXT_compiled_vertex_array.load(load);
-        // GLEXT_convolution.load(load);
-        // GLEXT_coordinate_frame.load(load);
-        // GLEXT_copy_texture.load(load);
-        // GLEXT_cull_vertex.load(load);
-        // GLEXT_debug_label.load(load);
-        // GLEXT_debug_marker.load(load);
-        // GLEXT_depth_bounds_test.load(load);
-        // GLEXT_direct_state_access.load(load);
-        // GLEXT_draw_buffers2.load(load);
-        // GLEXT_draw_instanced.load(load);
-        // GLEXT_draw_range_elements.load(load);
-        // GLEXT_external_buffer.load(load);
-        // GLEXT_fog_coord.load(load);
-        // GLEXT_framebuffer_blit.load(load);
-        // GLEXT_framebuffer_multisample.load(load);
-        // GLEXT_framebuffer_object.load(load);
-        // GLEXT_geometry_shader4.load(load);
-        // GLEXT_gpu_program_parameters.load(load);
-        // GLEXT_gpu_shader4.load(load);
-        // GLEXT_histogram.load(load);
-        // GLEXT_index_func.load(load);
-        // GLEXT_index_material.load(load);
-        // GLEXT_light_texture.load(load);
-        // GLEXT_memory_object.load(load);
-        // GLEXT_memory_object_fd.load(load);
-        // GLEXT_memory_object_win32.load(load);
-        // GLEXT_multi_draw_arrays.load(load);
-        // GLEXT_multisample.load(load);
-        // GLEXT_paletted_texture.load(load);
-        // GLEXT_pixel_transform.load(load);
-        // GLEXT_point_parameters.load(load);
-        // GLEXT_polygon_offset.load(load);
-        // GLEXT_polygon_offset_clamp.load(load);
-        // GLEXT_provoking_vertex.load(load);
-        // GLEXT_raster_multisample.load(load);
-        // GLEXT_secondary_color.load(load);
-        // GLEXT_semaphore.load(load);
-        // GLEXT_semaphore_fd.load(load);
-        // GLEXT_semaphore_win32.load(load);
-        // GLEXT_separate_shader_objects.load(load);
-        // GLEXT_shader_framebuffer_fetch_non_coherent.load(load);
-        // GLEXT_shader_image_load_store.load(load);
-        // GLEXT_stencil_clear_tag.load(load);
-        // GLEXT_stencil_two_side.load(load);
-        // GLEXT_subtexture.load(load);
-        // GLEXT_texture3D.load(load);
-        // GLEXT_texture_array.load(load);
-        // GLEXT_texture_buffer_object.load(load);
-        // GLEXT_texture_integer.load(load);
-        // GLEXT_texture_object.load(load);
-        // GLEXT_texture_perturb_normal.load(load);
-        // GLEXT_texture_storage.load(load);
-        // GLEXT_timer_query.load(load);
-        // GLEXT_transform_feedback.load(load);
-        // GLEXT_vertex_array.load(load);
-        // GLEXT_vertex_attrib_64bit.load(load);
-        // GLEXT_vertex_shader.load(load);
-        // GLEXT_vertex_weighting.load(load);
-        // GLEXT_win32_keyed_mutex.load(load);
-        // GLEXT_window_rectangles.load(load);
-        // GLEXT_x11_sync_object.load(load);
         GLGREMEDYFrameTerminator.load(this, load);
         GLGREMEDYStringMarker.load(this, load);
         GLHPImageTransform.load(this, load);
@@ -865,104 +295,11 @@ public final class GLExtCaps {
         GLINTELMapTexture.load(this, load);
         GLINTELParallelArrays.load(this, load);
         GLINTELPerformanceQuery.load(this, load);
-        GLKHRBlendEquationAdvanced.load(this, load);
-        GLKHRParallelShaderCompile.load(this, load);
         GLMESAFramebufferFlipY.load(this, load);
         GLMESAResizeBuffers.load(this, load);
         GLMESAWindowPos.load(this, load);
-        // GLNVX_conditional_render.load(load);
-        // GLNVX_gpu_multicast2.load(load);
-        // GLNVX_linked_gpu_multicast.load(load);
-        // GLNVX_progress_fence.load(load);
-        // GLNV_alpha_to_coverage_dither_control.load(load);
-        // GLNV_bindless_multi_draw_indirect.load(load);
-        // GLNV_bindless_multi_draw_indirect_count.load(load);
-        // GLNV_bindless_texture.load(load);
-        // GLNV_blend_equation_advanced.load(load);
-        // GLNV_clip_space_w_scaling.load(load);
-        // GLNV_command_list.load(load);
-        // GLNV_conditional_render.load(load);
-        // GLNV_conservative_raster.load(load);
-        // GLNV_conservative_raster_dilate.load(load);
-        // GLNV_conservative_raster_pre_snap_triangles.load(load);
-        // GLNV_copy_image.load(load);
-        // GLNV_depth_buffer_float.load(load);
-        // GLNV_draw_texture.load(load);
-        // GLNV_draw_vulkan_image.load(load);
-        // GLNV_evaluators.load(load);
-        // GLNV_explicit_multisample.load(load);
-        // GLNV_fence.load(load);
-        // GLNV_fragment_coverage_to_color.load(load);
-        // GLNV_fragment_program.load(load);
-        // GLNV_framebuffer_mixed_samples.load(load);
-        // GLNV_framebuffer_multisample_coverage.load(load);
-        // GLNV_geometry_program4.load(load);
-        // GLNV_gpu_multicast.load(load);
-        // GLNV_gpu_program4.load(load);
-        // GLNV_gpu_program5.load(load);
-        // GLNV_gpu_shader5.load(load);
-        // GLNV_half_float.load(load);
-        // GLNV_internalformat_sample_query.load(load);
-        // GLNV_memory_attachment.load(load);
-        // GLNV_memory_object_sparse.load(load);
-        // GLNV_mesh_shader.load(load);
-        // GLNV_occlusion_query.load(load);
-        // GLNV_parameter_buffer_object.load(load);
-        // GLNV_path_rendering.load(load);
-        // GLNV_pixel_data_range.load(load);
-        // GLNV_point_sprite.load(load);
-        // GLNV_present_video.load(load);
-        // GLNV_primitive_restart.load(load);
-        // GLNV_query_resource.load(load);
-        // GLNV_query_resource_tag.load(load);
-        // GLNV_register_combiners.load(load);
-        // GLNV_register_combiners2.load(load);
-        // GLNV_sample_locations.load(load);
-        // GLNV_scissor_exclusive.load(load);
-        // GLNV_shader_buffer_load.load(load);
-        // GLNV_shading_rate_image.load(load);
-        // GLNV_texture_barrier.load(load);
-        // GLNV_texture_multisample.load(load);
-        // GLNV_timeline_semaphore.load(load);
-        // GLNV_transform_feedback.load(load);
-        // GLNV_transform_feedback2.load(load);
-        // GLNV_vdpau_interop.load(load);
-        // GLNV_vdpau_interop2.load(load);
-        // GLNV_vertex_array_range.load(load);
-        // GLNV_vertex_attrib_integer_64bit.load(load);
-        // GLNV_vertex_buffer_unified_memory.load(load);
-        // GLNV_vertex_program.load(load);
-        // GLNV_vertex_program4.load(load);
-        // GLNV_video_capture.load(load);
-        // GLNV_viewport_swizzle.load(load);
-        // GLOES_byte_coordinates.load(load);
-        // GLOES_fixed_point.load(load);
-        // GLOES_query_matrix.load(load);
-        // GLOES_single_precision.load(load);
         GLOVRMultiview.load(this, load);
         GLPGIMiscHints.load(this, load);
-        // GLSGISDetailTexture.load(load);
-        // GLSGISFogFunction.load(load);
-        // GLSGISMultisample.load(load);
-        // GLSGISPixelTexture.load(load);
-        // GLSGISPointParameters.load(load);
-        // GLSGISSharpenTexture.load(load);
-        // GLSGISTexture4D.load(load);
-        // GLSGISTextureColorMask.load(load);
-        // GLSGISTextureFilter4.load(load);
-        // GLSGIXAsync.load(load);
-        // GLSGIXFlushRaster.load(load);
-        // GLSGIXFragmentLighting.load(load);
-        // GLSGIXFramezoom.load(load);
-        // GLSGIXIglooInterface.load(load);
-        // GLSGIXInstruments.load(load);
-        // GLSGIXListPriority.load(load);
-        // GLSGIXPixelTexture.load(load);
-        // GLSGIXPolynomialFfd.load(load);
-        // GLSGIXReferencePlane.load(load);
-        // GLSGIXSprite.load(load);
-        // GLSGIXTagSampleBuffer.load(load);
-        // GLSGIColorTable.load(load);
         GLSUNXConstantData.load(this, load);
         GLSUNGlobalAlpha.load(this, load);
         GLSUNMeshArray.load(this, load);

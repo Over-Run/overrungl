@@ -14,113 +14,89 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
-import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
-import static overrungl.FunctionDescriptors.*;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_APPLE_vertex_program_evaluators}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_APPLE_vertex_program_evaluators}
+  */
 public final class GLAPPLEVertexProgramEvaluators {
+    public static final int GL_VERTEX_ATTRIB_MAP1_APPLE = 0x8A00;
+    public static final int GL_VERTEX_ATTRIB_MAP2_APPLE = 0x8A01;
+    public static final int GL_VERTEX_ATTRIB_MAP1_SIZE_APPLE = 0x8A02;
+    public static final int GL_VERTEX_ATTRIB_MAP1_COEFF_APPLE = 0x8A03;
+    public static final int GL_VERTEX_ATTRIB_MAP1_ORDER_APPLE = 0x8A04;
+    public static final int GL_VERTEX_ATTRIB_MAP1_DOMAIN_APPLE = 0x8A05;
+    public static final int GL_VERTEX_ATTRIB_MAP2_SIZE_APPLE = 0x8A06;
+    public static final int GL_VERTEX_ATTRIB_MAP2_COEFF_APPLE = 0x8A07;
+    public static final int GL_VERTEX_ATTRIB_MAP2_ORDER_APPLE = 0x8A08;
+    public static final int GL_VERTEX_ATTRIB_MAP2_DOMAIN_APPLE = 0x8A09;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_APPLE_vertex_program_evaluators) return;
-        ext.glDisableVertexAttribAPPLE = load.invoke("glDisableVertexAttribAPPLE", IIV);
-        ext.glEnableVertexAttribAPPLE = load.invoke("glEnableVertexAttribAPPLE", IIV);
-        ext.glIsVertexAttribEnabledAPPLE = load.invoke("glIsVertexAttribEnabledAPPLE", IIZ);
-        ext.glMapVertexAttrib1dAPPLE = load.invoke("glMapVertexAttrib1dAPPLE", IIDDIIPV);
-        ext.glMapVertexAttrib1fAPPLE = load.invoke("glMapVertexAttrib1fAPPLE", IIFFIIPV);
-        ext.glMapVertexAttrib2dAPPLE = load.invoke("glMapVertexAttrib2dAPPLE", IIDDIIDDIIPV);
-        ext.glMapVertexAttrib2fAPPLE = load.invoke("glMapVertexAttrib2fAPPLE", IIFFIIFFIIPV);
-    }
-
-    public static void glDisableVertexAttribAPPLE(int index, int pname) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glDisableVertexAttribAPPLE).invokeExact(index, pname);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+        ext.glEnableVertexAttribAPPLE = load.invoke("glEnableVertexAttribAPPLE", ofVoid(JAVA_INT, JAVA_INT));
+        ext.glDisableVertexAttribAPPLE = load.invoke("glDisableVertexAttribAPPLE", ofVoid(JAVA_INT, JAVA_INT));
+        ext.glIsVertexAttribEnabledAPPLE = load.invoke("glIsVertexAttribEnabledAPPLE", of(JAVA_BYTE, JAVA_INT, JAVA_INT));
+        ext.glMapVertexAttrib1dAPPLE = load.invoke("glMapVertexAttrib1dAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_DOUBLE, JAVA_DOUBLE, JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glMapVertexAttrib1fAPPLE = load.invoke("glMapVertexAttrib1fAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_FLOAT, JAVA_FLOAT, JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glMapVertexAttrib2dAPPLE = load.invoke("glMapVertexAttrib2dAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_DOUBLE, JAVA_DOUBLE, JAVA_INT, JAVA_INT, JAVA_DOUBLE, JAVA_DOUBLE, JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glMapVertexAttrib2fAPPLE = load.invoke("glMapVertexAttrib2fAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_FLOAT, JAVA_FLOAT, JAVA_INT, JAVA_INT, JAVA_FLOAT, JAVA_FLOAT, JAVA_INT, JAVA_INT, ADDRESS));
     }
 
     public static void glEnableVertexAttribAPPLE(int index, int pname) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glEnableVertexAttribAPPLE).invokeExact(index, pname);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glEnableVertexAttribAPPLE).invokeExact(index, pname);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glDisableVertexAttribAPPLE(int index, int pname) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glDisableVertexAttribAPPLE).invokeExact(index, pname);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static boolean glIsVertexAttribEnabledAPPLE(int index, int pname) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            return (boolean) GLLoader.check(ext.glIsVertexAttribEnabledAPPLE).invokeExact(index, pname);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            return (boolean)
+            check(ext.glIsVertexAttribEnabledAPPLE).invokeExact(index, pname);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, MemorySegment points) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, @NativeType("const GLdouble *") MemorySegment points) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glMapVertexAttrib1dAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glMapVertexAttrib1dAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMapVertexAttrib1dAPPLE(SegmentAllocator allocator, int index, int size, double u1, double u2, int stride, int order, double[] points) {
-        glMapVertexAttrib1dAPPLE(index, size, u1, u2, stride, order, allocator.allocateArray(JAVA_DOUBLE, points));
-    }
-
-    public static void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, MemorySegment points) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, @NativeType("const GLfloat *") MemorySegment points) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glMapVertexAttrib1fAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glMapVertexAttrib1fAPPLE).invokeExact(index, size, u1, u2, stride, order, points);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMapVertexAttrib1fAPPLE(SegmentAllocator allocator, int index, int size, float u1, float u2, int stride, int order, float[] points) {
-        glMapVertexAttrib1fAPPLE(index, size, u1, u2, stride, order, allocator.allocateArray(JAVA_FLOAT, points));
-    }
-
-    public static void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, @NativeType("const GLdouble *") MemorySegment points) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glMapVertexAttrib2dAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glMapVertexAttrib2dAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMapVertexAttrib2dAPPLE(SegmentAllocator allocator, int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
-        glMapVertexAttrib2dAPPLE(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_DOUBLE, points));
-    }
-
-    public static void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, @NativeType("const GLfloat *") MemorySegment points) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glMapVertexAttrib2fAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glMapVertexAttrib2fAPPLE).invokeExact(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMapVertexAttrib2fAPPLE(SegmentAllocator allocator, int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
-        glMapVertexAttrib2fAPPLE(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_FLOAT, points));
-    }
 }

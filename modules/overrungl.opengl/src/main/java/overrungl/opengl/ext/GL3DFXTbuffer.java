@@ -14,31 +14,30 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_3DFX_tbuffer}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_3DFX_tbuffer}
+  */
 public final class GL3DFXTbuffer {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_3DFX_tbuffer) return;
-        ext.glTbufferMask3DFX = load.invoke("glTbufferMask3DFX", FunctionDescriptors.IV);
+        ext.glTbufferMask3DFX = load.invoke("glTbufferMask3DFX", ofVoid(JAVA_INT));
     }
 
     public static void glTbufferMask3DFX(int mask) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glTbufferMask3DFX).invokeExact(mask);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glTbufferMask3DFX).invokeExact(mask);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

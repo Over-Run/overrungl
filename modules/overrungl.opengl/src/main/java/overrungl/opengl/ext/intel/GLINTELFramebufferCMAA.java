@@ -14,31 +14,30 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.opengl.ext;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.opengl.ext.intel;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_INTEL_framebuffer_CMAA}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_INTEL_framebuffer_CMAA}
+  */
 public final class GLINTELFramebufferCMAA {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_INTEL_framebuffer_CMAA) return;
-        ext.glApplyFramebufferAttachmentCMAAINTEL = load.invoke("glApplyFramebufferAttachmentCMAAINTEL", FunctionDescriptors.V);
+        ext.glApplyFramebufferAttachmentCMAAINTEL = load.invoke("glApplyFramebufferAttachmentCMAAINTEL", ofVoid());
     }
 
     public static void glApplyFramebufferAttachmentCMAAINTEL() {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glApplyFramebufferAttachmentCMAAINTEL).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glApplyFramebufferAttachmentCMAAINTEL).invokeExact();
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

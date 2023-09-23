@@ -14,31 +14,32 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sun;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_SUNX_constant_data}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_SUNX_constant_data}
+  */
 public final class GLSUNXConstantData {
+    public static final int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
+    public static final int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_SUNX_constant_data) return;
-        ext.glFinishTextureSUNX = load.invoke("glFinishTextureSUNX", FunctionDescriptors.V);
+        ext.glFinishTextureSUNX = load.invoke("glFinishTextureSUNX", ofVoid());
     }
 
     public static void glFinishTextureSUNX() {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glFinishTextureSUNX).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glFinishTextureSUNX).invokeExact();
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

@@ -14,90 +14,52 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.JAVA_INT;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_AMD_name_gen_delete}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_AMD_name_gen_delete}
+  */
 public final class GLAMDNameGenDelete {
+    public static final int GL_DATA_BUFFER_AMD = 0x9151;
+    public static final int GL_PERFORMANCE_MONITOR_AMD = 0x9152;
+    public static final int GL_QUERY_OBJECT_AMD = 0x9153;
+    public static final int GL_VERTEX_ARRAY_OBJECT_AMD = 0x9154;
+    public static final int GL_SAMPLER_OBJECT_AMD = 0x9155;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_name_gen_delete) return;
-        ext.glDeleteNamesAMD = load.invoke("glDeleteNamesAMD", FunctionDescriptors.IIPV);
-        ext.glGenNamesAMD = load.invoke("glGenNamesAMD", FunctionDescriptors.IIPV);
-        ext.glIsNameAMD = load.invoke("glIsNameAMD", FunctionDescriptors.IIZ);
+        ext.glGenNamesAMD = load.invoke("glGenNamesAMD", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glDeleteNamesAMD = load.invoke("glDeleteNamesAMD", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glIsNameAMD = load.invoke("glIsNameAMD", of(JAVA_BYTE, JAVA_INT, JAVA_INT));
     }
 
-    public static void glDeleteNamesAMD(int identifier, int num, MemorySegment names) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glGenNamesAMD(int identifier, int num, @NativeType("GLuint *") MemorySegment names) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glDeleteNamesAMD).invokeExact(identifier, num, names);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glGenNamesAMD).invokeExact(identifier, num, names);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glDeleteNamesAMD(SegmentAllocator allocator, int identifier, int[] names) {
-        glDeleteNamesAMD(identifier, names.length, allocator.allocateArray(JAVA_INT, names));
-    }
-
-    public static void glDeleteNameAMD(int identifier, int name) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
+    public static void glDeleteNamesAMD(int identifier, int num, @NativeType("const GLuint *") MemorySegment names) {
+        final var ext = getExtCapabilities();
         try {
-            glDeleteNamesAMD(identifier, 1, stack.ints(name));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
-
-    public static void glGenNamesAMD(int identifier, int num, MemorySegment names) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glGenNamesAMD).invokeExact(identifier, num, names);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glGenNamesAMD(SegmentAllocator allocator, int identifier, int[] names) {
-        var seg = allocator.allocateArray(JAVA_INT, names.length);
-        glGenNamesAMD(identifier, names.length, seg);
-        RuntimeHelper.toArray(seg, names);
-    }
-
-    public static int glGenNameAMD(int identifier) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
-            glGenNamesAMD(identifier, 1, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+            check(ext.glDeleteNamesAMD).invokeExact(identifier, num, names);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static boolean glIsNameAMD(int identifier, int name) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            return (boolean) GLLoader.check(ext.glIsNameAMD).invokeExact(identifier, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            return (boolean)
+            check(ext.glIsNameAMD).invokeExact(identifier, name);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

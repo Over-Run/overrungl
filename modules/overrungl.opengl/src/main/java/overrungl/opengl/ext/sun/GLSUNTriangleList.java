@@ -14,108 +14,95 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sun;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_SUN_triangle_list}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_SUN_triangle_list}
+  */
 public final class GLSUNTriangleList {
+    public static final int GL_RESTART_SUN = 0x0001;
+    public static final int GL_REPLACE_MIDDLE_SUN = 0x0002;
+    public static final int GL_REPLACE_OLDEST_SUN = 0x0003;
+    public static final int GL_TRIANGLE_LIST_SUN = 0x81D7;
+    public static final int GL_REPLACEMENT_CODE_SUN = 0x81D8;
+    public static final int GL_REPLACEMENT_CODE_ARRAY_SUN = 0x85C0;
+    public static final int GL_REPLACEMENT_CODE_ARRAY_TYPE_SUN = 0x85C1;
+    public static final int GL_REPLACEMENT_CODE_ARRAY_STRIDE_SUN = 0x85C2;
+    public static final int GL_REPLACEMENT_CODE_ARRAY_POINTER_SUN = 0x85C3;
+    public static final int GL_R1UI_V3F_SUN = 0x85C4;
+    public static final int GL_R1UI_C4UB_V3F_SUN = 0x85C5;
+    public static final int GL_R1UI_C3F_V3F_SUN = 0x85C6;
+    public static final int GL_R1UI_N3F_V3F_SUN = 0x85C7;
+    public static final int GL_R1UI_C4F_N3F_V3F_SUN = 0x85C8;
+    public static final int GL_R1UI_T2F_V3F_SUN = 0x85C9;
+    public static final int GL_R1UI_T2F_N3F_V3F_SUN = 0x85CA;
+    public static final int GL_R1UI_T2F_C4F_N3F_V3F_SUN = 0x85CB;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_SUN_triangle_list) return;
-        ext.glReplacementCodePointerSUN = load.invoke("glReplacementCodePointerSUN", IIPV);
-        ext.glReplacementCodeubSUN = load.invoke("glReplacementCodeubSUN", BV);
-        ext.glReplacementCodeubvSUN = load.invoke("glReplacementCodeubvSUN", PV);
-        ext.glReplacementCodeuiSUN = load.invoke("glReplacementCodeuiSUN", IV);
-        ext.glReplacementCodeuivSUN = load.invoke("glReplacementCodeuivSUN", PV);
-        ext.glReplacementCodeusSUN = load.invoke("glReplacementCodeusSUN", SV);
-        ext.glReplacementCodeusvSUN = load.invoke("glReplacementCodeusvSUN", PV);
-    }
-
-    public static void glReplacementCodePointerSUN(int type, int stride, MemorySegment pointer) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glReplacementCodePointerSUN).invokeExact(type, stride, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glReplacementCodeubSUN(byte code) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glReplacementCodeubSUN).invokeExact(code);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glReplacementCodeubvSUN(MemorySegment code) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glReplacementCodeubvSUN).invokeExact(code);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glReplacementCodeubvSUN(SegmentAllocator allocator, byte[] code) {
-        glReplacementCodeubvSUN(allocator.allocateArray(JAVA_BYTE, code));
+        ext.glReplacementCodeuiSUN = load.invoke("glReplacementCodeuiSUN", ofVoid(JAVA_INT));
+        ext.glReplacementCodeusSUN = load.invoke("glReplacementCodeusSUN", ofVoid(JAVA_SHORT));
+        ext.glReplacementCodeubSUN = load.invoke("glReplacementCodeubSUN", ofVoid(JAVA_BYTE));
+        ext.glReplacementCodeuivSUN = load.invoke("glReplacementCodeuivSUN", ofVoid(ADDRESS));
+        ext.glReplacementCodeusvSUN = load.invoke("glReplacementCodeusvSUN", ofVoid(ADDRESS));
+        ext.glReplacementCodeubvSUN = load.invoke("glReplacementCodeubvSUN", ofVoid(ADDRESS));
+        ext.glReplacementCodePointerSUN = load.invoke("glReplacementCodePointerSUN", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
     }
 
     public static void glReplacementCodeuiSUN(int code) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glReplacementCodeuiSUN).invokeExact(code);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glReplacementCodeuivSUN(MemorySegment code) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glReplacementCodeuivSUN).invokeExact(code);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glReplacementCodeuivSUN(SegmentAllocator allocator, int[] code) {
-        glReplacementCodeuivSUN(allocator.allocateArray(JAVA_INT, code));
+            check(ext.glReplacementCodeuiSUN).invokeExact(code);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static void glReplacementCodeusSUN(short code) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glReplacementCodeusSUN).invokeExact(code);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glReplacementCodeusSUN).invokeExact(code);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glReplacementCodeusvSUN(MemorySegment code) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glReplacementCodeubSUN(byte code) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glReplacementCodeusvSUN).invokeExact(code);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glReplacementCodeubSUN).invokeExact(code);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glReplacementCodeusvSUN(SegmentAllocator allocator, short[] code) {
-        glReplacementCodeusvSUN(allocator.allocateArray(JAVA_SHORT, code));
+    public static void glReplacementCodeuivSUN(@NativeType("const GLuint *") MemorySegment code) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glReplacementCodeuivSUN).invokeExact(code);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
+    public static void glReplacementCodeusvSUN(@NativeType("const GLushort *") MemorySegment code) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glReplacementCodeusvSUN).invokeExact(code);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glReplacementCodeubvSUN(@NativeType("const GLubyte *") MemorySegment code) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glReplacementCodeubvSUN).invokeExact(code);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glReplacementCodePointerSUN(int type, int stride, @NativeType("const void **") MemorySegment pointer) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glReplacementCodePointerSUN).invokeExact(type, stride, pointer);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
 }

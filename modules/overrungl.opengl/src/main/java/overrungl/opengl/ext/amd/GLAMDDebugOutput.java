@@ -14,27 +14,19 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.internal.RuntimeHelper;
-
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.JAVA_BYTE;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
-import static overrungl.FunctionDescriptors.*;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
- * {@code GL_AMD_debug_output}
- *
- * @author squid233
- * @since 0.1.0
- */
+  * {@code GL_AMD_debug_output}
+  */
 public final class GLAMDDebugOutput {
     public static final int GL_MAX_DEBUG_MESSAGE_LENGTH_AMD = 0x9143;
     public static final int GL_MAX_DEBUG_LOGGED_MESSAGES_AMD = 0x9144;
@@ -50,79 +42,45 @@ public final class GLAMDDebugOutput {
     public static final int GL_DEBUG_CATEGORY_SHADER_COMPILER_AMD = 0x914E;
     public static final int GL_DEBUG_CATEGORY_APPLICATION_AMD = 0x914F;
     public static final int GL_DEBUG_CATEGORY_OTHER_AMD = 0x9150;
-
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_debug_output) return;
-        ext.glDebugMessageCallbackAMD = load.invoke("glDebugMessageCallbackAMD", PPV);
-        ext.glDebugMessageEnableAMD = load.invoke("glDebugMessageEnableAMD", IIIPZV);
-        ext.glDebugMessageInsertAMD = load.invoke("glDebugMessageInsertAMD", IIIIPV);
-        ext.glGetDebugMessageLogAMD = load.invoke("glGetDebugMessageLogAMD", IIPPPPPI);
+        ext.glDebugMessageEnableAMD = load.invoke("glDebugMessageEnableAMD", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, JAVA_BYTE));
+        ext.glDebugMessageInsertAMD = load.invoke("glDebugMessageInsertAMD", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glDebugMessageCallbackAMD = load.invoke("glDebugMessageCallbackAMD", ofVoid(ADDRESS, ADDRESS));
+        ext.glGetDebugMessageLogAMD = load.invoke("glGetDebugMessageLogAMD", of(JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS, ADDRESS, ADDRESS, ADDRESS));
     }
 
-    public static void glDebugMessageCallbackAMD(MemorySegment callback, MemorySegment userParam) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glDebugMessageEnableAMD(int category, int severity, int count, @NativeType("const GLuint *") MemorySegment ids, boolean enabled) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glDebugMessageCallbackAMD).invokeExact(callback, userParam);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glDebugMessageCallbackAMD(Arena arena, GLDebugProcAMD callback, MemorySegment userParam) {
+    public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, @NativeType("const GLchar *") MemorySegment buf) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glDebugMessageCallbackAMD(@NativeType("GLDEBUGPROCAMD") MemorySegment callback, @NativeType("void *") MemorySegment userParam) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glDebugMessageCallbackAMD).invokeExact(callback, userParam);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glDebugMessageCallbackAMD(Arena arena, GLDebugProcAMD callback, @NativeType("void *") MemorySegment userParam) {
         glDebugMessageCallbackAMD(callback.address(arena), userParam);
     }
 
-    public static void glDebugMessageEnableAMD(int category, int severity, int count, MemorySegment ids, boolean enabled) {
-        var ext = GLLoader.getExtCapabilities();
+    public static int glGetDebugMessageLogAMD(int count, int bufSize, @NativeType("GLenum *") MemorySegment categories, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment message) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glDebugMessageEnableAMD).invokeExact(category, severity, count, ids, enabled);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            return (int)
+            check(ext.glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glDebugMessageEnableAMD(SegmentAllocator allocator, int category, int severity, int[] ids, boolean enabled) {
-        glDebugMessageEnableAMD(category, severity, ids.length, allocator.allocateArray(JAVA_INT, ids), enabled);
-    }
-
-    public static void glDebugMessageInsertAMD(int category, int severity, int id, int length, MemorySegment buf) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glDebugMessageInsertAMD).invokeExact(category, severity, id, length, buf);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glDebugMessageInsertAMD(SegmentAllocator allocator, int category, int severity, int id, String buf) {
-        glDebugMessageInsertAMD(category, severity, id, 0, allocator.allocateUtf8String(buf));
-    }
-
-    public static int glGetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            return (int) GLLoader.check(ext.glGetDebugMessageLogAMD).invokeExact(count, bufSize, categories, severities, ids, lengths, message);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static int glGetDebugMessageLogAMD(int count, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment messageLog) {
-        return glGetDebugMessageLogAMD(count, (int) messageLog.byteSize(), categories, severities, ids, lengths, messageLog);
-    }
-
-    public static int glGetDebugMessageLogAMD(SegmentAllocator allocator, int count, int bufSize, int[] categories, int[] severities, int[] ids, int[] lengths, String[] messageLog) {
-        var pCgr = allocator.allocateArray(JAVA_INT, categories.length);
-        var pSvr = allocator.allocateArray(JAVA_INT, severities.length);
-        var pIds = allocator.allocateArray(JAVA_INT, ids.length);
-        var pLen = allocator.allocateArray(JAVA_INT, lengths.length);
-        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
-        int num = glGetDebugMessageLogAMD(count, bufSize, pCgr, pSvr, pIds, pLen, pLog);
-        RuntimeHelper.toArray(pCgr, categories);
-        RuntimeHelper.toArray(pSvr, severities);
-        RuntimeHelper.toArray(pIds, ids);
-        RuntimeHelper.toArray(pLen, lengths);
-        messageLog[0] = pLog.getUtf8String(0);
-        return num;
-    }
 }
