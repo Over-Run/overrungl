@@ -1976,25 +1976,416 @@ fun ati() {}
 
 fun ext() {}
 
-fun gremedy() {}
+fun gremedy() {
+    file("FrameTerminator", GREMEDY, "GL_GREMEDY_frame_terminator") {
+        "glFrameTerminatorGREMEDY"(void)
+    }
+    file("StringMarker", GREMEDY, "GL_GREMEDY_string_marker") {
+        "glStringMarkerGREMEDY"(void, GLsizei("len"), address("string", "const void *"))
+    }
+}
 
-fun hp() {}
+fun hp() {
+    file(
+        "ConvolutionBorderModes", HP, "GL_HP_convolution_border_modes",
+        "GL_IGNORE_BORDER_HP" to "0x8150",
+        "GL_CONSTANT_BORDER_HP" to "0x8151",
+        "GL_REPLICATE_BORDER_HP" to "0x8153",
+        "GL_CONVOLUTION_BORDER_COLOR_HP" to "0x8154"
+    )
+    file("ImageTransform", HP, "GL_HP_image_transform") {
+        "GL_IMAGE_SCALE_X_HP"("0x8155")
+        "GL_IMAGE_SCALE_Y_HP"("0x8156")
+        "GL_IMAGE_TRANSLATE_X_HP"("0x8157")
+        "GL_IMAGE_TRANSLATE_Y_HP"("0x8158")
+        "GL_IMAGE_ROTATE_ANGLE_HP"("0x8159")
+        "GL_IMAGE_ROTATE_ORIGIN_X_HP"("0x815A")
+        "GL_IMAGE_ROTATE_ORIGIN_Y_HP"("0x815B")
+        "GL_IMAGE_MAG_FILTER_HP"("0x815C")
+        "GL_IMAGE_MIN_FILTER_HP"("0x815D")
+        "GL_IMAGE_CUBIC_WEIGHT_HP"("0x815E")
+        "GL_CUBIC_HP"("0x815F")
+        "GL_AVERAGE_HP"("0x8160")
+        "GL_IMAGE_TRANSFORM_2D_HP"("0x8161")
+        "GL_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP"("0x8162")
+        "GL_PROXY_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP"("0x8163")
+        "glImageTransformParameteriHP"(void, GLenum("target"), GLenum("pname"), GLint("param"))
+        "glImageTransformParameterfHP"(void, GLenum("target"), GLenum("pname"), GLfloat("param"))
+        "glImageTransformParameterivHP"(void, GLenum("target"), GLenum("pname"), address("params", "const GLint *"))
+        "glImageTransformParameterfvHP"(void, GLenum("target"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glGetImageTransformParameterivHP"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetImageTransformParameterfvHP"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+    }
+    file(
+        "OcclusionTest", HP, "GL_HP_occlusion_test",
+        "GL_OCCLUSION_TEST_HP" to "0x8165",
+        "GL_OCCLUSION_TEST_RESULT_HP" to "0x8166"
+    )
+    file(
+        "TextureLighting", HP, "GL_HP_texture_lighting",
+        "GL_TEXTURE_LIGHTING_MODE_HP" to "0x8167",
+        "GL_TEXTURE_POST_SPECULAR_HP" to "0x8168",
+        "GL_TEXTURE_PRE_SPECULAR_HP" to "0x8169"
+    )
+}
 
-fun ibm() {}
+fun ibm() {
+    file("CullVertex", IBM, "GL_IBM_cull_vertex", "GL_CULL_VERTEX_IBM" to "103050")
+    file("MultimodeDrawArrays", IBM, "GL_IBM_multimode_draw_arrays") {
+        "glMultiModeDrawArraysIBM"(
+            void,
+            address("mode", "const GLenum *"),
+            address("first", "const GLint *"),
+            address("count", "const GLsizei *"),
+            GLsizei("primcount"),
+            GLint("modestride")
+        )
+        "glMultiModeDrawElementsIBM"(
+            void,
+            address("mode", "const GLenum *"),
+            address("count", "const GLsizei *"),
+            GLenum("type"),
+            address("indices", "const void *const*"),
+            GLsizei("primcount"),
+            GLint("modestride")
+        )
+    }
+    file("RasterposClip", IBM, "GL_IBM_rasterpos_clip", "GL_RASTER_POSITION_UNCLIPPED_IBM" to "0x19262")
+    file("StaticData", IBM, "GL_IBM_static_data") {
+        "GL_ALL_STATIC_DATA_IBM"("103060")
+        "GL_STATIC_VERTEX_ARRAY_IBM"("103061")
+        "glFlushStaticDataIBM"(void, GLenum("target"))
+    }
+    file("TextureMirroredRepeat", IBM, "GL_IBM_texture_mirrored_repeat", "GL_MIRRORED_REPEAT_IBM" to "0x8370")
+    file("VertexArrayLists", IBM, "GL_IBM_vertex_array_lists") {
+        "GL_VERTEX_ARRAY_LIST_IBM"("103070")
+        "GL_NORMAL_ARRAY_LIST_IBM"("103071")
+        "GL_COLOR_ARRAY_LIST_IBM"("103072")
+        "GL_INDEX_ARRAY_LIST_IBM"("103073")
+        "GL_TEXTURE_COORD_ARRAY_LIST_IBM"("103074")
+        "GL_EDGE_FLAG_ARRAY_LIST_IBM"("103075")
+        "GL_FOG_COORDINATE_ARRAY_LIST_IBM"("103076")
+        "GL_SECONDARY_COLOR_ARRAY_LIST_IBM"("103077")
+        "GL_VERTEX_ARRAY_LIST_STRIDE_IBM"("103080")
+        "GL_NORMAL_ARRAY_LIST_STRIDE_IBM"("103081")
+        "GL_COLOR_ARRAY_LIST_STRIDE_IBM"("103082")
+        "GL_INDEX_ARRAY_LIST_STRIDE_IBM"("103083")
+        "GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM"("103084")
+        "GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM"("103085")
+        "GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM"("103086")
+        "GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM"("103087")
+        "glColorPointerListIBM"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+        "glSecondaryColorPointerListIBM"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+        "glEdgeFlagPointerListIBM"(void, GLint("stride"), address("pointer", "const GLboolean **"), GLint("ptrstride"))
+        "glFogCoordPointerListIBM"(
+            void,
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+        "glIndexPointerListIBM"(
+            void,
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+        "glNormalPointerListIBM"(
+            void,
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+        "glTexCoordPointerListIBM"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+        "glVertexPointerListIBM"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLint("stride"),
+            address("pointer", "const void **"),
+            GLint("ptrstride")
+        )
+    }
+}
 
-fun ingr() {}
+fun ingr() {
+    file("BlendFuncSeparate", INGR, "GL_INGR_blend_func_separate") {
+        "glBlendFuncSeparateINGR"(
+            void,
+            GLenum("sfactorRGB"),
+            GLenum("dfactorRGB"),
+            GLenum("sfactorAlpha"),
+            GLenum("dfactorAlpha")
+        )
+    }
+    file(
+        "ColorClamp", INGR, "GL_INGR_color_clamp",
+        "GL_RED_MIN_CLAMP_INGR" to "0x8560",
+        "GL_GREEN_MIN_CLAMP_INGR" to "0x8561",
+        "GL_BLUE_MIN_CLAMP_INGR" to "0x8562",
+        "GL_ALPHA_MIN_CLAMP_INGR" to "0x8563",
+        "GL_RED_MAX_CLAMP_INGR" to "0x8564",
+        "GL_GREEN_MAX_CLAMP_INGR" to "0x8565",
+        "GL_BLUE_MAX_CLAMP_INGR" to "0x8566",
+        "GL_ALPHA_MAX_CLAMP_INGR" to "0x8567"
+    )
+    file("InterlaceRead", INGR, "GL_INGR_interlace_read", "GL_INTERLACE_READ_INGR" to "0x8568")
+}
 
-fun intel() {}
+fun intel() {
+    file("BlackholeRender", INTEL, "GL_INTEL_blackhole_render", "GL_BLACKHOLE_RENDER_INTEL" to "0x83FC")
+    file("ConservativeRasterization", INTEL, "GL_INTEL_conservative_rasterization", "GL_CONSERVATIVE_RASTERIZATION_INTEL" to "0x83FE")
+    file("FramebufferCMAA", INTEL, "GL_INTEL_framebuffer_CMAA") {
+        "glApplyFramebufferAttachmentCMAAINTEL"(void)
+    }
+    file("MapTexture", INTEL, "GL_INTEL_map_texture") {
+        "GL_TEXTURE_MEMORY_LAYOUT_INTEL"("0x83FF")
+        "GL_LAYOUT_DEFAULT_INTEL"("0")
+        "GL_LAYOUT_LINEAR_INTEL"("1")
+        "GL_LAYOUT_LINEAR_CPU_CACHED_INTEL"("2")
+        "glSyncTextureINTEL"(void, GLuint("texture"))
+        "glUnmapTexture2DINTEL"(void, GLuint("texture"), GLint("level"))
+        "glMapTexture2DINTEL"(
+            address,
+            GLuint("texture"),
+            GLint("level"),
+            GLbitfield("access"),
+            address("stride", "GLint *"),
+            address("layout", "GLenum *"),
+            nativeType = "void*"
+        )
+    }
+    file("ParallelArrays", INTEL, "GL_INTEL_parallel_arrays") {
+        "GL_PARALLEL_ARRAYS_INTEL"("0x83F4")
+        "GL_VERTEX_ARRAY_PARALLEL_POINTERS_INTEL"("0x83F5")
+        "GL_NORMAL_ARRAY_PARALLEL_POINTERS_INTEL"("0x83F6")
+        "GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL"("0x83F7")
+        "GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL"("0x83F8")
+        "glVertexPointervINTEL"(void, GLint("size"), GLenum("type"), address("pointer", "const void **"))
+        "glNormalPointervINTEL"(void, GLenum("type"), address("pointer", "const void **"))
+        "glColorPointervINTEL"(void, GLint("size"), GLenum("type"), address("pointer", "const void **"))
+        "glTexCoordPointervINTEL"(void, GLint("size"), GLenum("type"), address("pointer", "const void **"))
+    }
+    file("PerformanceQuery", INTEL, "GL_INTEL_performance_query") {
+        "GL_PERFQUERY_SINGLE_CONTEXT_INTEL"("0x00000000")
+        "GL_PERFQUERY_GLOBAL_CONTEXT_INTEL"("0x00000001")
+        "GL_PERFQUERY_WAIT_INTEL"("0x83FB")
+        "GL_PERFQUERY_FLUSH_INTEL"("0x83FA")
+        "GL_PERFQUERY_DONOT_FLUSH_INTEL"("0x83F9")
+        "GL_PERFQUERY_COUNTER_EVENT_INTEL"("0x94F0")
+        "GL_PERFQUERY_COUNTER_DURATION_NORM_INTEL"("0x94F1")
+        "GL_PERFQUERY_COUNTER_DURATION_RAW_INTEL"("0x94F2")
+        "GL_PERFQUERY_COUNTER_THROUGHPUT_INTEL"("0x94F3")
+        "GL_PERFQUERY_COUNTER_RAW_INTEL"("0x94F4")
+        "GL_PERFQUERY_COUNTER_TIMESTAMP_INTEL"("0x94F5")
+        "GL_PERFQUERY_COUNTER_DATA_UINT32_INTEL"("0x94F8")
+        "GL_PERFQUERY_COUNTER_DATA_UINT64_INTEL"("0x94F9")
+        "GL_PERFQUERY_COUNTER_DATA_FLOAT_INTEL"("0x94FA")
+        "GL_PERFQUERY_COUNTER_DATA_DOUBLE_INTEL"("0x94FB")
+        "GL_PERFQUERY_COUNTER_DATA_BOOL32_INTEL"("0x94FC")
+        "GL_PERFQUERY_QUERY_NAME_LENGTH_MAX_INTEL"("0x94FD")
+        "GL_PERFQUERY_COUNTER_NAME_LENGTH_MAX_INTEL"("0x94FE")
+        "GL_PERFQUERY_COUNTER_DESC_LENGTH_MAX_INTEL"("0x94FF")
+        "GL_PERFQUERY_GPA_EXTENDED_COUNTERS_INTEL"("0x9500")
+        "glBeginPerfQueryINTEL"(void, GLuint("queryHandle"))
+        "glCreatePerfQueryINTEL"(void, GLuint("queryId"), address("queryHandle", "GLuint *"))
+        "glDeletePerfQueryINTEL"(void, GLuint("queryHandle"))
+        "glEndPerfQueryINTEL"(void, GLuint("queryHandle"))
+        "glGetFirstPerfQueryIdINTEL"(void, address("queryId", "GLuint *"))
+        "glGetNextPerfQueryIdINTEL"(void, GLuint("queryId"), address("nextQueryId", "GLuint *"))
+        "glGetPerfCounterInfoINTEL"(
+            void,
+            GLuint("queryId"),
+            GLuint("counterId"),
+            GLuint("counterNameLength"),
+            address("counterName", "GLchar *"),
+            GLuint("counterDescLength"),
+            address("counterDesc", "GLchar *"),
+            address("counterOffset", "GLuint *"),
+            address("counterDataSize", "GLuint *"),
+            address("counterTypeEnum", "GLuint *"),
+            address("counterDataTypeEnum", "GLuint *"),
+            address("rawCounterMaxValue", "GLuint64 *")
+        )
+        "glGetPerfQueryDataINTEL"(
+            void,
+            GLuint("queryHandle"),
+            GLuint("flags"),
+            GLsizei("dataSize"),
+            address("data", "void *"),
+            address("bytesWritten", "GLuint *")
+        )
+        "glGetPerfQueryIdByNameINTEL"(void, address("queryName", "GLchar *"), address("queryId", "GLuint *"))
+        "glGetPerfQueryInfoINTEL"(
+            void,
+            GLuint("queryId"),
+            GLuint("queryNameLength"),
+            address("queryName", "GLchar *"),
+            address("dataSize", "GLuint *"),
+            address("noCounters", "GLuint *"),
+            address("noInstances", "GLuint *"),
+            address("capsMask", "GLuint *")
+        )
+    }
+}
 
-fun mesa() {}
+fun mesa() {
+    file(
+        "TextureStack", MESAX, "GL_MESAX_texture_stack",
+        "GL_TEXTURE_1D_STACK_MESAX" to "0x8759",
+        "GL_TEXTURE_2D_STACK_MESAX" to "0x875A",
+        "GL_PROXY_TEXTURE_1D_STACK_MESAX" to "0x875B",
+        "GL_PROXY_TEXTURE_2D_STACK_MESAX" to "0x875C",
+        "GL_TEXTURE_1D_STACK_BINDING_MESAX" to "0x875D",
+        "GL_TEXTURE_2D_STACK_BINDING_MESAX" to "0x875E"
+    )
+    file("FramebufferFlipX", MESA, "GL_MESA_framebuffer_flip_x", "GL_FRAMEBUFFER_FLIP_X_MESA" to "0x8BBC")
+    file("FramebufferFlipY", MESA, "GL_MESA_framebuffer_flip_y") {
+        "GL_FRAMEBUFFER_FLIP_Y_MESA"("0x8BBB")
+        "glFramebufferParameteriMESA"(void, GLenum("target"), GLenum("pname"), GLint("param"))
+        "glGetFramebufferParameterivMESA"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+    }
+    file("FramebufferSwapXY", MESA, "GL_MESA_framebuffer_swap_xy", "GL_FRAMEBUFFER_SWAP_XY_MESA" to "0x8BBD")
+    file("PackInvert", MESA, "GL_MESA_pack_invert", "GL_PACK_INVERT_MESA" to "0x8758")
+    file("ProgramBinaryFormats", MESA, "GL_MESA_program_binary_formats", "GL_PROGRAM_BINARY_FORMAT_MESA" to "0x875F")
+    file("ResizeBuffers", MESA, "GL_MESA_resize_buffers") {
+        "glResizeBuffersMESA"(void)
+    }
+    file(
+        "TileRasterOrder", MESA, "GL_MESA_tile_raster_order",
+        "GL_TILE_RASTER_ORDER_FIXED_MESA" to "0x8BB8",
+        "GL_TILE_RASTER_ORDER_INCREASING_X_MESA" to "0x8BB9",
+        "GL_TILE_RASTER_ORDER_INCREASING_Y_MESA" to "0x8BBA"
+    )
+    file("WindowPos", MESA, "GL_MESA_window_pos") {
+        "glWindowPos2dMESA"(void, GLdouble("x"), GLdouble("y"))
+        "glWindowPos2dvMESA"(void, address("v", "const GLdouble *"))
+        "glWindowPos2fMESA"(void, GLfloat("x"), GLfloat("y"))
+        "glWindowPos2fvMESA"(void, address("v", "const GLfloat *"))
+        "glWindowPos2iMESA"(void, GLint("x"), GLint("y"))
+        "glWindowPos2ivMESA"(void, address("v", "const GLint *"))
+        "glWindowPos2sMESA"(void, GLshort("x"), GLshort("y"))
+        "glWindowPos2svMESA"(void, address("v", "const GLshort *"))
+        "glWindowPos3dMESA"(void, GLdouble("x"), GLdouble("y"), GLdouble("z"))
+        "glWindowPos3dvMESA"(void, address("v", "const GLdouble *"))
+        "glWindowPos3fMESA"(void, GLfloat("x"), GLfloat("y"), GLfloat("z"))
+        "glWindowPos3fvMESA"(void, address("v", "const GLfloat *"))
+        "glWindowPos3iMESA"(void, GLint("x"), GLint("y"), GLint("z"))
+        "glWindowPos3ivMESA"(void, address("v", "const GLint *"))
+        "glWindowPos3sMESA"(void, GLshort("x"), GLshort("y"), GLshort("z"))
+        "glWindowPos3svMESA"(void, address("v", "const GLshort *"))
+        "glWindowPos4dMESA"(void, GLdouble("x"), GLdouble("y"), GLdouble("z"), GLdouble("w"))
+        "glWindowPos4dvMESA"(void, address("v", "const GLdouble *"))
+        "glWindowPos4fMESA"(void, GLfloat("x"), GLfloat("y"), GLfloat("z"), GLfloat("w"))
+        "glWindowPos4fvMESA"(void, address("v", "const GLfloat *"))
+        "glWindowPos4iMESA"(void, GLint("x"), GLint("y"), GLint("z"), GLint("w"))
+        "glWindowPos4ivMESA"(void, address("v", "const GLint *"))
+        "glWindowPos4sMESA"(void, GLshort("x"), GLshort("y"), GLshort("z"), GLshort("w"))
+        "glWindowPos4svMESA"(void, address("v", "const GLshort *"))
+    }
+    file(
+        "YcbcrTexture", MESA, "GL_MESA_ycbcr_texture",
+        "GL_UNSIGNED_SHORT_8_8_MESA" to "0x85BA",
+        "GL_UNSIGNED_SHORT_8_8_REV_MESA" to "0x85BB",
+        "GL_YCBCR_MESA" to "0x8757"
+    )
+}
 
 fun nv() {}
 
 fun oml() {}
 
-fun ovr() {}
+fun ovr() {
+    file("Multiview", OVR, "GL_OVR_multiview") {
+        "GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR"("0x9630")
+        "GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR"("0x9632")
+        "GL_MAX_VIEWS_OVR"("0x9631")
+        "GL_FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR"("0x9633")
+        "glFramebufferTextureMultiviewOVR"(
+            void,
+            GLenum("target"),
+            GLenum("attachment"),
+            GLuint("texture"),
+            GLint("level"),
+            GLint("baseViewIndex"),
+            GLsizei("numViews")
+        )
+    }
+}
 
-fun pgi() {}
+fun pgi() {
+    file("MiscHints", PGI, "GL_PGI_misc_hints") {
+        "GL_PREFER_DOUBLEBUFFER_HINT_PGI"("0x1A1F8")
+        "GL_CONSERVE_MEMORY_HINT_PGI"("0x1A1FD")
+        "GL_RECLAIM_MEMORY_HINT_PGI"("0x1A1FE")
+        "GL_NATIVE_GRAPHICS_HANDLE_PGI"("0x1A202")
+        "GL_NATIVE_GRAPHICS_BEGIN_HINT_PGI"("0x1A203")
+        "GL_NATIVE_GRAPHICS_END_HINT_PGI"("0x1A204")
+        "GL_ALWAYS_FAST_HINT_PGI"("0x1A20C")
+        "GL_ALWAYS_SOFT_HINT_PGI"("0x1A20D")
+        "GL_ALLOW_DRAW_OBJ_HINT_PGI"("0x1A20E")
+        "GL_ALLOW_DRAW_WIN_HINT_PGI"("0x1A20F")
+        "GL_ALLOW_DRAW_FRG_HINT_PGI"("0x1A210")
+        "GL_ALLOW_DRAW_MEM_HINT_PGI"("0x1A211")
+        "GL_STRICT_DEPTHFUNC_HINT_PGI"("0x1A216")
+        "GL_STRICT_LIGHTING_HINT_PGI"("0x1A217")
+        "GL_STRICT_SCISSOR_HINT_PGI"("0x1A218")
+        "GL_FULL_STIPPLE_HINT_PGI"("0x1A219")
+        "GL_CLIP_NEAR_HINT_PGI"("0x1A220")
+        "GL_CLIP_FAR_HINT_PGI"("0x1A221")
+        "GL_WIDE_LINE_HINT_PGI"("0x1A222")
+        "GL_BACK_NORMALS_HINT_PGI"("0x1A223")
+        "glHintPGI"(void, GLenum("target"), GLint("mode"))
+    }
+    file(
+        "VertexHints", PGI, "GL_PGI_vertex_hints",
+        "GL_VERTEX_DATA_HINT_PGI" to "0x1A22A",
+        "GL_VERTEX_CONSISTENT_HINT_PGI" to "0x1A22B",
+        "GL_MATERIAL_SIDE_HINT_PGI" to "0x1A22C",
+        "GL_MAX_VERTEX_HINT_PGI" to "0x1A22D",
+        "GL_COLOR3_BIT_PGI" to "0x00010000",
+        "GL_COLOR4_BIT_PGI" to "0x00020000",
+        "GL_EDGEFLAG_BIT_PGI" to "0x00040000",
+        "GL_INDEX_BIT_PGI" to "0x00080000",
+        "GL_MAT_AMBIENT_BIT_PGI" to "0x00100000",
+        "GL_MAT_AMBIENT_AND_DIFFUSE_BIT_PGI" to "0x00200000",
+        "GL_MAT_DIFFUSE_BIT_PGI" to "0x00400000",
+        "GL_MAT_EMISSION_BIT_PGI" to "0x00800000",
+        "GL_MAT_COLOR_INDEXES_BIT_PGI" to "0x01000000",
+        "GL_MAT_SHININESS_BIT_PGI" to "0x02000000",
+        "GL_MAT_SPECULAR_BIT_PGI" to "0x04000000",
+        "GL_NORMAL_BIT_PGI" to "0x08000000",
+        "GL_TEXCOORD1_BIT_PGI" to "0x10000000",
+        "GL_TEXCOORD2_BIT_PGI" to "0x20000000",
+        "GL_TEXCOORD3_BIT_PGI" to "0x40000000",
+        "GL_TEXCOORD4_BIT_PGI" to "0x80000000",
+        "GL_VERTEX23_BIT_PGI" to "0x00000004",
+        "GL_VERTEX4_BIT_PGI" to "0x00000008"
+    )
+}
 
 fun rend() {}
 
@@ -2380,8 +2771,16 @@ fun glExtCaps() {
             import overrungl.opengl.ext.*;
             import overrungl.opengl.ext.arb.*;
             import overrungl.opengl.ext.khr.*;
+            import overrungl.opengl.ext.oes.*;
             import overrungl.opengl.ext.amd.*;
             import overrungl.opengl.ext.apple.*;
+            //import overrungl.opengl.ext.ati.*;
+            //import overrungl.opengl.ext.ext.*;
+            import overrungl.opengl.ext.ibm.*;
+            import overrungl.opengl.ext.intel.*;
+            import overrungl.opengl.ext.mesa.*;
+            //import overrungl.opengl.ext.nv.*;
+            //import overrungl.opengl.ext.sgi.*;
             import overrungl.opengl.ext.sun.*;
 
             import java.lang.invoke.MethodHandle;
