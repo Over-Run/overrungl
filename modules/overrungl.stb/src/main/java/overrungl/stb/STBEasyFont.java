@@ -73,11 +73,11 @@ public final class STBEasyFont {
 
     private static void create() {
         stb_easy_font_draw_segs = downcall("stb_easy_font_draw_segs", FFPIIPPIII);
-        stb_easy_font_get_spacing = downcallTrivial("stb_easy_font_get_spacing", F);
-        stb_easy_font_spacing = downcallTrivial("stb_easy_font_spacing", FV);
+        stb_easy_font_get_spacing = downcall("stb_easy_font_get_spacing", F);
+        stb_easy_font_spacing = downcall("stb_easy_font_spacing", FV);
         stb_easy_font_print = downcall("stb_easy_font_print", FFPPPII);
-        stb_easy_font_width = downcallTrivial("stb_easy_font_width", fd_PI);
-        stb_easy_font_height = downcallTrivial("stb_easy_font_height", fd_PI);
+        stb_easy_font_width = downcall("stb_easy_font_width", fd_PI);
+        stb_easy_font_height = downcall("stb_easy_font_height", fd_PI);
     }
 
     public static int ndrawSegs(float x, float y, MemorySegment segs, int numSegs, boolean vertical, MemorySegment c, MemorySegment vbuf, int vbufSize, int offset) {

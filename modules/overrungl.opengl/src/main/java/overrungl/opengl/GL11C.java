@@ -77,13 +77,13 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         caps.glCopyTexImage2D = load.invoke("glCopyTexImage2D", IIIIIIIIV);
         caps.glCopyTexSubImage1D = load.invoke("glCopyTexSubImage1D", IIIIIIV);
         caps.glCopyTexSubImage2D = load.invoke("glCopyTexSubImage2D", IIIIIIIIV);
-        caps.glDeleteTextures = load.trivialHandle("glDeleteTextures", IPV);
+        caps.glDeleteTextures = load.invoke("glDeleteTextures", IPV);
         caps.glDrawArrays = load.invoke("glDrawArrays", IIIV);
         caps.glDrawElements = load.invoke("glDrawElements", IIIPV);
-        caps.glGenTextures = load.trivialHandle("glGenTextures", IPV);
-        caps.glGetPointerv = load.trivialHandle("glGetPointerv", IPV);
-        caps.glIsTexture = load.trivialHandle("glIsTexture", IZ);
-        caps.glPolygonOffset = load.trivialHandle("glPolygonOffset", FFV);
+        caps.glGenTextures = load.invoke("glGenTextures", IPV);
+        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
+        caps.glIsTexture = load.invoke("glIsTexture", IZ);
+        caps.glPolygonOffset = load.invoke("glPolygonOffset", FFV);
         caps.glTexSubImage1D = load.invoke("glTexSubImage1D", IIIIIIPV);
         caps.glTexSubImage2D = load.invoke("glTexSubImage2D", IIIIIIIIPV);
     }

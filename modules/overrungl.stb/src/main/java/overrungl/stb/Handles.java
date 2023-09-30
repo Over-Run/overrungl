@@ -17,7 +17,6 @@
 package overrungl.stb;
 
 import overrungl.FunctionDescriptors;
-import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.Linker;
@@ -52,6 +51,6 @@ final class Handles {
     public static void initialize() {
         if (loaded) return;
         loaded = true;
-        lookup = RuntimeHelper.load("stb", "stb", OverrunGL.VERSION);
+        lookup = RuntimeHelper.load("stb", "stb", "0.1.0.0");
     }
 }

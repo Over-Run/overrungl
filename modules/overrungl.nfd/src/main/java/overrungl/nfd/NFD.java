@@ -119,7 +119,7 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class NFD {
-    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", OverrunGL.VERSION);
+    private static final SymbolLookup LOOKUP = RuntimeHelper.load("nfd", "nfd", "0.1.0.0");
     private static final Platform os = Platform.current();
     private static final boolean isOsWin = os instanceof Platform.Windows;
     private static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOSX;
@@ -133,23 +133,23 @@ public final class NFD {
     }
 
     private static final MethodHandle
-        NFD_FreePathN = downcallTrivial("NFD_FreePathN", PV),
+        NFD_FreePathN = downcall("NFD_FreePathN", PV),
         NFD_Init = downcall("NFD_Init", I),
         NFD_Quit = downcall("NFD_Quit", V),
         NFD_OpenDialogN = downcall("NFD_OpenDialogN", PPIPI),
         NFD_OpenDialogMultipleN = downcall("NFD_OpenDialogMultipleN", PPIPI),
         NFD_SaveDialogN = downcall("NFD_SaveDialogN", PPIPPI),
         NFD_PickFolderN = downcall("NFD_PickFolderN", PPI),
-        NFD_GetError = downcallTrivial("NFD_GetError", p),
-        NFD_ClearError = downcallTrivial("NFD_ClearError", V),
+        NFD_GetError = downcall("NFD_GetError", p),
+        NFD_ClearError = downcall("NFD_ClearError", V),
         NFD_PathSet_GetCount = downcall("NFD_PathSet_GetCount", PPI),
         NFD_PathSet_GetPathN = downcall("NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)),
-        NFD_PathSet_FreePathN = downcallSafeTrivial("NFD_PathSet_FreePathN", PV),
+        NFD_PathSet_FreePathN = downcallSafe("NFD_PathSet_FreePathN", PV),
         NFD_PathSet_GetEnum = downcall("NFD_PathSet_GetEnum", PPI),
         NFD_PathSet_FreeEnum = downcall("NFD_PathSet_FreeEnum", PV),
         NFD_PathSet_EnumNextN = downcall("NFD_PathSet_EnumNextN", PPI),
-        NFD_PathSet_Free = downcallTrivial("NFD_PathSet_Free", PV),
-        NFD_FreePathU8 = downcallSafeTrivial("NFD_FreePathU8", PV),
+        NFD_PathSet_Free = downcall("NFD_PathSet_Free", PV),
+        NFD_FreePathU8 = downcallSafe("NFD_FreePathU8", PV),
         NFD_OpenDialogU8 = downcallSafe("NFD_OpenDialogU8", PPIPI),
         NFD_OpenDialogMultipleU8 = downcallSafe("NFD_OpenDialogMultipleU8", PPIPI),
         NFD_SaveDialogU8 = downcallSafe("NFD_SaveDialogU8", PPIPPI),
