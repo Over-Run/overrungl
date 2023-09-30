@@ -19,7 +19,7 @@ val orgName: String by project
 val orgUrl: String by project
 val developers: String by project
 
-val jdkEABuildDoc: String? = "jdk21"
+val jdkEABuildDoc: String? = null
 val targetJavaVersion = 21
 val enablePreview = true
 
