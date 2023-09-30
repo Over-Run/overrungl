@@ -174,14 +174,12 @@ public final class RuntimeHelper {
             var libFile = new File(file, STR. "\{ basename }-\{ version }\{ suffix }" );
             if (!libFile.exists()) {
                 // Extract
-                try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(
-                    STR. "\{ module }/\{ os.familyName() }/\{ Architecture.current() }/\{ path }"
-                )) {
-                    Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
+                final String fromPath = STR. "\{ module }/\{ os.familyName() }/\{ Architecture.current() }/\{ path }" ;
+                try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
+                    Files.copy(Objects.requireNonNull(is, STR. "File not found: \{ fromPath }" ),
+                        Path.of(libFile.getAbsolutePath()));
                 } catch (Exception e) {
-                    var exception = new IllegalStateException(STR. "File not found: \{ file }; try setting property -Doverrungl.natives to a valid path" );
-                    exception.addSuppressed(e);
-                    throw exception;
+                    throw new IllegalStateException(STR. "File not found: \{ file }; try setting property -Doverrungl.natives to a valid path" , e);
                 }
             }
             uri = libFile.toURI();

@@ -113,7 +113,7 @@ enum class Artifact(
 
     fun nativeFileName(platform: NativePlatform): String? {
         return if (nativeBinding == null) null
-        else "$nativeBinding/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
+        else "${nativeBinding.bindingName}/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
     }
 }
 
