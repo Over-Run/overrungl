@@ -21,7 +21,7 @@ val orgName: String by project
 val orgUrl: String by project
 val developers: String by project
 
-val jdkEABuildDoc: String? = "jdk21"
+val jdkEABuildDoc: String? = null
 val targetJavaVersion = 21
 val enablePreview = true
 rootProject.ext["enablePreview"] = enablePreview
@@ -116,7 +116,7 @@ enum class Artifact(
 
     fun nativeFileName(platform: NativePlatform): String? {
         return if (nativeBinding == null) null
-        else "$nativeBinding/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
+        else "${nativeBinding.bindingName}/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
     }
 }
 

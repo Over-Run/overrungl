@@ -34,4 +34,8 @@ public final class Exceptions {
      */
     public static final StringTemplate.Processor<IllegalArgumentException, RuntimeException> IAE = stringTemplate ->
         new IllegalArgumentException(stringTemplate.interpolate());
+
+    private Exceptions() {
+        //no instance
+    }
 }

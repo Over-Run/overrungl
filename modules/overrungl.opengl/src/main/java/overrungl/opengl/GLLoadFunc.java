@@ -72,15 +72,4 @@ public interface GLLoadFunc {
     default MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
         return RuntimeHelper.downcallSafe(invoke(procName), function, options);
     }
-
-    /**
-     * Load a trivial function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
-     */
-    default MethodHandle trivialHandle(String procName, FunctionDescriptors function) {
-        return invoke(procName, function, Linker.Option.isTrivial());
-    }
 }
