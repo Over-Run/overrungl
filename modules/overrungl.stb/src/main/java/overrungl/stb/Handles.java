@@ -16,6 +16,7 @@
 
 package overrungl.stb;
 
+import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.internal.RuntimeHelper;
 
@@ -30,8 +31,13 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 final class Handles {
-    private static boolean loaded = false;
-    private static SymbolLookup lookup;
+    private static final SymbolLookup lookup;
+
+    static {
+        final SymbolLookup lib = RuntimeHelper.load("stb", "stb", "0.1.0.0");
+        final var function = Configurations.STB_SYMBOL_LOOKUP.get();
+        lookup = function != null ? function.apply(lib) : lib;
+    }
 
     private Handles() {
         //no instance
@@ -46,11 +52,5 @@ final class Handles {
     static MethodHandle downcallTrivial(String name,
                                         FunctionDescriptors function) {
         return downcall(name, function, Linker.Option.isTrivial());
-    }
-
-    public static void initialize() {
-        if (loaded) return;
-        loaded = true;
-        lookup = RuntimeHelper.load("stb", "stb", "0.1.0.0");
     }
 }

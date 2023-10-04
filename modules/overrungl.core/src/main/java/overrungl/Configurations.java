@@ -16,6 +16,8 @@
 
 package overrungl;
 
+import java.lang.foreign.SymbolLookup;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -68,11 +70,32 @@ public final class Configurations {
      */
     public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
     /**
-     * Forcing check all method handles for GL.
+     * Forcing to check all method handles for OpenGL.
      * <p>
      * The default value is {@code false}.
      */
     public static final Entry<Boolean> GL_FORCE_CHECK_ALL = new Entry<>(() -> false);
+    /**
+     * The symbol lookup of GLFW.
+     * The returned value must not be null.
+     * <p>
+     * The default value is {@code null}.
+     */
+    public static final Entry<Function<SymbolLookup, SymbolLookup>> GLFW_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    /**
+     * The symbol lookup of NFD.
+     * The returned value must not be null.
+     * <p>
+     * The default value is {@code null}.
+     */
+    public static final Entry<Function<SymbolLookup, SymbolLookup>> NFD_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    /**
+     * The symbol lookup of STB.
+     * The returned value must not be null.
+     * <p>
+     * The default value is {@code null}.
+     */
+    public static final Entry<Function<SymbolLookup, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
 
     private Configurations() {
         //no instance

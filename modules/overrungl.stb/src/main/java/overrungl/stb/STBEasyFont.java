@@ -59,25 +59,16 @@ import static overrungl.stb.Handles.*;
  * @since 0.1.0
  */
 public final class STBEasyFont {
-    private static MethodHandle
-        stb_easy_font_draw_segs, stb_easy_font_get_spacing, stb_easy_font_spacing, stb_easy_font_print, stb_easy_font_width, stb_easy_font_height;
-
-    static {
-        initialize();
-        create();
-    }
+    private static final MethodHandle
+        stb_easy_font_draw_segs = downcall("stb_easy_font_draw_segs", FFPIIPPIII),
+        stb_easy_font_get_spacing = downcall("stb_easy_font_get_spacing", F),
+        stb_easy_font_spacing = downcall("stb_easy_font_spacing", FV),
+        stb_easy_font_print = downcall("stb_easy_font_print", FFPPPII),
+        stb_easy_font_width = downcall("stb_easy_font_width", fd_PI),
+        stb_easy_font_height = downcall("stb_easy_font_height", fd_PI);
 
     private STBEasyFont() {
         //no instance
-    }
-
-    private static void create() {
-        stb_easy_font_draw_segs = downcall("stb_easy_font_draw_segs", FFPIIPPIII);
-        stb_easy_font_get_spacing = downcall("stb_easy_font_get_spacing", F);
-        stb_easy_font_spacing = downcall("stb_easy_font_spacing", FV);
-        stb_easy_font_print = downcall("stb_easy_font_print", FFPPPII);
-        stb_easy_font_width = downcall("stb_easy_font_width", fd_PI);
-        stb_easy_font_height = downcall("stb_easy_font_height", fd_PI);
     }
 
     public static int ndrawSegs(float x, float y, MemorySegment segs, int numSegs, boolean vertical, MemorySegment c, MemorySegment vbuf, int vbufSize, int offset) {
