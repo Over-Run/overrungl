@@ -28,13 +28,13 @@ import static overrungl.stb.Handles.*;
  * @since 0.1.0
  */
 public final class STBPerlin {
-    private static MethodHandle
-        stb_perlin_noise3, stb_perlin_noise3_seed, stb_perlin_ridge_noise3, stb_perlin_fbm_noise3, stb_perlin_turbulence_noise3, stb_perlin_noise3_wrap_nonpow2;
-
     static {
         initialize();
         create();
     }
+
+    private static MethodHandle
+        stb_perlin_noise3, stb_perlin_noise3_seed, stb_perlin_ridge_noise3, stb_perlin_fbm_noise3, stb_perlin_turbulence_noise3, stb_perlin_noise3_wrap_nonpow2;
 
     private static void create() {
         stb_perlin_noise3 = downcall("stb_perlin_noise3", FFFIIIF);

@@ -65,6 +65,7 @@ enum class NativeBinding(
         NativePlatform.MACOS, NativePlatform.MACOS_ARM64
     ),
     NFD("nfd", "nfd", *NativePlatform.ALL),
+    OPENAL("openal", "openal", *NativePlatform.ALL),
     STB("stb", "stb", *NativePlatform.ALL)
 }
 
@@ -95,6 +96,11 @@ enum class Artifact(
         "overrungl-nfd", "OverrunGL - Native File Dialog",
         "A tiny, neat C library that portably invokes native file open and save dialogs.",
         ":nfd", "Nfd", NativeBinding.NFD
+    ),
+    OPENAL(
+        "overrun-openal", "OverrunGL - OpenAL bindings",
+        "A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications.",
+        ":openal", "Openal", NativeBinding.OPENAL
     ),
     OPENGL(
         "overrungl-opengl", "OverrunGL - OpenGL bindings",

@@ -62,6 +62,12 @@ maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 | [GLFW](http://www.glfw.org/)                                                     | Create multiple windows, handle user input (keyboard, mouse, gaming peripherals) and manage contexts. Also features multi-monitor support, clipboard access, file drag-n-drop, and [much more](http://www.glfw.org/docs/latest/news.html). |
 | [Native File Dialog Extended](https://github.com/btzy/nativefiledialog-extended) | A small C library that portably invokes native file open, folder select and file save dialogs.                                                                                                                                             |
 
+### Audio
+
+| Library                           | Description                                                                                                            |
+|-----------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| [OpenAL](https://www.openal.org/) | A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications. |
+
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 
 | Library          | Description                                                                     |
@@ -137,6 +143,24 @@ natives
 │     │  └─ nfd.dll
 │     └─ x64
 │        └─ nfd.dll
+│─ openal https://github.com/Over-Run/openal-soft-ci
+│  ├─ linux
+│  │  ├─ arm32
+│  │  │  └─ libopenal.so
+│  │  ├─ arm64
+│  │  │  └─ libopenal.so
+│  │  └─ x64
+│  │     └─ libopenal.so
+│  ├─ macos
+│  │  ├─ arm64
+│  │  │  └─ libopenal.dylib
+│  │  └─ x64
+│  │     └─ libopenal.dylib
+│  └─ windows
+│     ├─ arm64
+│     │  └─ openal.dll
+│     └─ x64
+│        └─ openal.dll
 └─ stb https://github.com/Over-Run/stb-ci
    ├─ linux
    │  ├─ arm32
