@@ -224,54 +224,54 @@ public sealed class GL10C permits GL10, GL11C {
     }
 
     static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBlendFunc = load.trivialHandle("glBlendFunc", IIV);
+        caps.glBlendFunc = load.invoke("glBlendFunc", IIV);
         caps.glClear = load.invoke("glClear", IV);
-        caps.glClearColor = load.trivialHandle("glClearColor", FFFFV);
-        caps.glClearDepth = load.trivialHandle("glClearDepth", DV);
-        caps.glClearStencil = load.trivialHandle("glClearStencil", IV);
-        caps.glColorMask = load.trivialHandle("glColorMask", ZZZZV);
-        caps.glCullFace = load.trivialHandle("glCullFace", IV);
-        caps.glDepthFunc = load.trivialHandle("glDepthFunc", IV);
-        caps.glDepthMask = load.trivialHandle("glDepthMask", ZV);
-        caps.glDepthRange = load.trivialHandle("glDepthRange", DDV);
-        caps.glDisable = load.trivialHandle("glDisable", IV);
+        caps.glClearColor = load.invoke("glClearColor", FFFFV);
+        caps.glClearDepth = load.invoke("glClearDepth", DV);
+        caps.glClearStencil = load.invoke("glClearStencil", IV);
+        caps.glColorMask = load.invoke("glColorMask", ZZZZV);
+        caps.glCullFace = load.invoke("glCullFace", IV);
+        caps.glDepthFunc = load.invoke("glDepthFunc", IV);
+        caps.glDepthMask = load.invoke("glDepthMask", ZV);
+        caps.glDepthRange = load.invoke("glDepthRange", DDV);
+        caps.glDisable = load.invoke("glDisable", IV);
         caps.glDrawBuffer = load.invoke("glDrawBuffer", IV);
-        caps.glEnable = load.trivialHandle("glEnable", IV);
+        caps.glEnable = load.invoke("glEnable", IV);
         caps.glFinish = load.invoke("glFinish", V);
         caps.glFlush = load.invoke("glFlush", V);
-        caps.glFrontFace = load.trivialHandle("glFrontFace", IV);
-        caps.glGetBooleanv = load.trivialHandle("glGetBooleanv", IPV);
-        caps.glGetDoublev = load.trivialHandle("glGetDoublev", IPV);
-        caps.glGetError = load.trivialHandle("glGetError", I);
-        caps.glGetFloatv = load.trivialHandle("glGetFloatv", IPV);
-        caps.glGetIntegerv = load.trivialHandle("glGetIntegerv", IPV);
-        caps.glGetString = load.trivialHandle("glGetString", Ip);
+        caps.glFrontFace = load.invoke("glFrontFace", IV);
+        caps.glGetBooleanv = load.invoke("glGetBooleanv", IPV);
+        caps.glGetDoublev = load.invoke("glGetDoublev", IPV);
+        caps.glGetError = load.invoke("glGetError", I);
+        caps.glGetFloatv = load.invoke("glGetFloatv", IPV);
+        caps.glGetIntegerv = load.invoke("glGetIntegerv", IPV);
+        caps.glGetString = load.invoke("glGetString", Ip);
         caps.glGetTexImage = load.invoke("glGetTexImage", IIIIPV);
-        caps.glGetTexLevelParameterfv = load.trivialHandle("glGetTexLevelParameterfv", IIIPV);
-        caps.glGetTexLevelParameteriv = load.trivialHandle("glGetTexLevelParameteriv", IIIPV);
-        caps.glGetTexParameterfv = load.trivialHandle("glGetTexParameterfv", IIPV);
-        caps.glGetTexParameteriv = load.trivialHandle("glGetTexParameteriv", IIPV);
-        caps.glHint = load.trivialHandle("glHint", IIV);
-        caps.glIsEnabled = load.trivialHandle("glIsEnabled", IZ);
-        caps.glLineWidth = load.trivialHandle("glLineWidth", FV);
-        caps.glLogicOp = load.trivialHandle("glLogicOp", IV);
-        caps.glPixelStoref = load.trivialHandle("glPixelStoref", IFV);
-        caps.glPixelStorei = load.trivialHandle("glPixelStorei", IIV);
-        caps.glPointSize = load.trivialHandle("glPointSize", FV);
-        caps.glPolygonMode = load.trivialHandle("glPolygonMode", IIV);
+        caps.glGetTexLevelParameterfv = load.invoke("glGetTexLevelParameterfv", IIIPV);
+        caps.glGetTexLevelParameteriv = load.invoke("glGetTexLevelParameteriv", IIIPV);
+        caps.glGetTexParameterfv = load.invoke("glGetTexParameterfv", IIPV);
+        caps.glGetTexParameteriv = load.invoke("glGetTexParameteriv", IIPV);
+        caps.glHint = load.invoke("glHint", IIV);
+        caps.glIsEnabled = load.invoke("glIsEnabled", IZ);
+        caps.glLineWidth = load.invoke("glLineWidth", FV);
+        caps.glLogicOp = load.invoke("glLogicOp", IV);
+        caps.glPixelStoref = load.invoke("glPixelStoref", IFV);
+        caps.glPixelStorei = load.invoke("glPixelStorei", IIV);
+        caps.glPointSize = load.invoke("glPointSize", FV);
+        caps.glPolygonMode = load.invoke("glPolygonMode", IIV);
         caps.glReadBuffer = load.invoke("glReadBuffer", IV);
         caps.glReadPixels = load.invoke("glReadPixels", IIIIIIPV);
-        caps.glScissor = load.trivialHandle("glScissor", IIIIV);
-        caps.glStencilFunc = load.trivialHandle("glStencilFunc", IIIV);
-        caps.glStencilMask = load.trivialHandle("glStencilMask", IV);
-        caps.glStencilOp = load.trivialHandle("glStencilOp", IIIV);
+        caps.glScissor = load.invoke("glScissor", IIIIV);
+        caps.glStencilFunc = load.invoke("glStencilFunc", IIIV);
+        caps.glStencilMask = load.invoke("glStencilMask", IV);
+        caps.glStencilOp = load.invoke("glStencilOp", IIIV);
         caps.glTexImage1D = load.invoke("glTexImage1D", IIIIIIIPV);
         caps.glTexImage2D = load.invoke("glTexImage2D", IIIIIIIIPV);
-        caps.glTexParameterf = load.trivialHandle("glTexParameterf", IIFV);
-        caps.glTexParameterfv = load.trivialHandle("glTexParameterfv", IIPV);
-        caps.glTexParameteri = load.trivialHandle("glTexParameteri", IIIV);
-        caps.glTexParameteriv = load.trivialHandle("glTexParameteriv", IIPV);
-        caps.glViewport = load.trivialHandle("glViewport", IIIIV);
+        caps.glTexParameterf = load.invoke("glTexParameterf", IIFV);
+        caps.glTexParameterfv = load.invoke("glTexParameterfv", IIPV);
+        caps.glTexParameteri = load.invoke("glTexParameteri", IIIV);
+        caps.glTexParameteriv = load.invoke("glTexParameteriv", IIPV);
+        caps.glViewport = load.invoke("glViewport", IIIIV);
     }
 
     public static void blendFunc(int sfactor, int dfactor) {
@@ -464,7 +464,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_DOUBLE);
+            var pData = stack.callocDouble();
             getDoublev(pname, pData);
             return pData.get(JAVA_DOUBLE, 0);
         } finally {
@@ -500,7 +500,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_FLOAT);
+            var pData = stack.callocFloat();
             getFloatv(pname, pData);
             return pData.get(JAVA_FLOAT, 0);
         } finally {
@@ -527,7 +527,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_INT);
+            var pData = stack.callocInt();
             getIntegerv(pname, pData);
             return pData.get(JAVA_INT, 0);
         } finally {
@@ -578,7 +578,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTexLevelParameterfv(target, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -605,7 +605,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTexLevelParameteriv(target, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -632,7 +632,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTexParameterfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -659,7 +659,7 @@ public sealed class GL10C permits GL10, GL11C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTexParameteriv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {

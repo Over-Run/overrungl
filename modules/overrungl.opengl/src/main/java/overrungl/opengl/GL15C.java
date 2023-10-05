@@ -79,19 +79,19 @@ public sealed class GL15C extends GL14C permits GL20C {
         caps.glBindBuffer = load.invoke("glBindBuffer", IIV);
         caps.glBufferData = load.invoke("glBufferData", IJPIV);
         caps.glBufferSubData = load.invoke("glBufferSubData", IJJPV);
-        caps.glDeleteBuffers = load.trivialHandle("glDeleteBuffers", IPV);
-        caps.glDeleteQueries = load.trivialHandle("glDeleteQueries", IPV);
+        caps.glDeleteBuffers = load.invoke("glDeleteBuffers", IPV);
+        caps.glDeleteQueries = load.invoke("glDeleteQueries", IPV);
         caps.glEndQuery = load.invoke("glEndQuery", IV);
-        caps.glGenBuffers = load.trivialHandle("glGenBuffers", IPV);
-        caps.glGenQueries = load.trivialHandle("glGenQueries", IPV);
-        caps.glGetBufferParameteriv = load.trivialHandle("glGetBufferParameteriv", IIPV);
-        caps.glGetBufferPointerv = load.trivialHandle("glGetBufferPointerv", IIPV);
+        caps.glGenBuffers = load.invoke("glGenBuffers", IPV);
+        caps.glGenQueries = load.invoke("glGenQueries", IPV);
+        caps.glGetBufferParameteriv = load.invoke("glGetBufferParameteriv", IIPV);
+        caps.glGetBufferPointerv = load.invoke("glGetBufferPointerv", IIPV);
         caps.glGetBufferSubData = load.invoke("glGetBufferSubData", IJJPV);
-        caps.glGetQueryObjectiv = load.trivialHandle("glGetQueryObjectiv", IIPV);
-        caps.glGetQueryObjectuiv = load.trivialHandle("glGetQueryObjectuiv", IIPV);
-        caps.glGetQueryiv = load.trivialHandle("glGetQueryiv", IIPV);
-        caps.glIsBuffer = load.trivialHandle("glIsBuffer", IZ);
-        caps.glIsQuery = load.trivialHandle("glIsQuery", IZ);
+        caps.glGetQueryObjectiv = load.invoke("glGetQueryObjectiv", IIPV);
+        caps.glGetQueryObjectuiv = load.invoke("glGetQueryObjectuiv", IIPV);
+        caps.glGetQueryiv = load.invoke("glGetQueryiv", IIPV);
+        caps.glIsBuffer = load.invoke("glIsBuffer", IZ);
+        caps.glIsQuery = load.invoke("glIsQuery", IZ);
         caps.glMapBuffer = load.invoke("glMapBuffer", IIp);
         caps.glUnmapBuffer = load.invoke("glUnmapBuffer", IZ);
     }
@@ -266,7 +266,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -293,7 +293,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             genQueries(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -314,7 +314,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getBufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -335,7 +335,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(ADDRESS);
+            var seg = stack.callocPointer();
             getBufferPointerv(target, pname, seg);
             return seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
         } finally {
@@ -401,7 +401,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryObjectiv(id, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -422,7 +422,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryObjectuiv(id, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -443,7 +443,7 @@ public sealed class GL15C extends GL14C permits GL20C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getQueryiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

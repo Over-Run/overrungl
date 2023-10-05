@@ -42,7 +42,7 @@ import java.lang.invoke.VarHandle;
  * @see GLFW#getVideoModes
  * @since 0.1.0
  */
-public class GLFWVidMode extends Struct {
+public sealed class GLFWVidMode extends Struct {
     /**
      * The struct layout.
      */
@@ -79,6 +79,13 @@ public class GLFWVidMode extends Struct {
      */
     protected GLFWVidMode(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**
@@ -179,7 +186,7 @@ public class GLFWVidMode extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends GLFWVidMode implements ArrayPointer {
+    public static final class Buffer extends GLFWVidMode implements ArrayPointer {
         private final VarHandle pWidth, pHeight, pRedBits, pGreenBits, pBlueBits, pRefreshRate;
 
         /**

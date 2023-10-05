@@ -35,7 +35,7 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class GLFWGamepadState extends Struct {
+public final class GLFWGamepadState extends Struct {
     /**
      * The struct member layout.
      */
@@ -61,6 +61,13 @@ public class GLFWGamepadState extends Struct {
      */
     public GLFWGamepadState(MemorySegment address) {
         super(address, LAYOUT);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**

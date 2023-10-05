@@ -17,6 +17,7 @@
 package overrungl.glfw;
 
 import overrungl.OverrunGL;
+import overrungl.internal.Exceptions;
 
 import java.io.PrintStream;
 import java.util.function.Consumer;
@@ -37,7 +38,7 @@ public final class GLFWErrorCallback {
      */
     public static IGLFWErrorFun createThrow() {
         return (errorCode, description) -> {
-            throw new IllegalStateException(String.format("GLFW error [0x%X]: %s", errorCode, description));
+            throw Exceptions.ISE. "GLFW error [0x\{ Integer.toHexString(errorCode) }]: \{ description }" ;
         };
     }
 
@@ -49,16 +50,10 @@ public final class GLFWErrorCallback {
     public static IGLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
-            sb.append("[OverrunGL] GLFW ")
-                .append(GLFW.getErrorString(errorCode))
-                .append(" error: ")
-                .append(description)
-                .append("\n");
+            sb.append(STR. "[OverrunGL] GLFW \{ GLFW.getErrorString(errorCode) } error: \{ description }\n" );
             var stack = Thread.currentThread().getStackTrace();
             for (int i = 3; i < stack.length; i++) {
-                sb.append("    at ")
-                    .append(stack[i])
-                    .append("\n");
+                sb.append(STR. "    at \{ stack[i] }\n" );
             }
             logger.accept(sb.toString());
         };

@@ -170,8 +170,8 @@ public sealed class GL42C extends GL41C permits GL43C {
         caps.glDrawElementsInstancedBaseVertexBaseInstance = load.invoke("glDrawElementsInstancedBaseVertexBaseInstance", IIIPIIIV);
         caps.glDrawTransformFeedbackInstanced = load.invoke("glDrawTransformFeedbackInstanced", IIIV);
         caps.glDrawTransformFeedbackStreamInstanced = load.invoke("glDrawTransformFeedbackStreamInstanced", IIIIV);
-        caps.glGetActiveAtomicCounterBufferiv = load.trivialHandle("glGetActiveAtomicCounterBufferiv", IIIPV);
-        caps.glGetInternalformativ = load.trivialHandle("glGetInternalformativ", IIIIPV);
+        caps.glGetActiveAtomicCounterBufferiv = load.invoke("glGetActiveAtomicCounterBufferiv", IIIPV);
+        caps.glGetInternalformativ = load.invoke("glGetInternalformativ", IIIIPV);
         caps.glMemoryBarrier = load.invoke("glMemoryBarrier", IV);
         caps.glTexStorage1D = load.invoke("glTexStorage1D", IIIIV);
         caps.glTexStorage2D = load.invoke("glTexStorage2D", IIIIIV);
@@ -275,7 +275,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -302,7 +302,7 @@ public sealed class GL42C extends GL41C permits GL43C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getInternalformativ(target, internalFormat, pname, 1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

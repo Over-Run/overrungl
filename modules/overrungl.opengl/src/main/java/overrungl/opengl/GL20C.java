@@ -23,6 +23,7 @@ import overrungl.opengl.ext.arb.GLARBShaderObjects;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -147,39 +148,39 @@ public sealed class GL20C extends GL15C permits GL21C {
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glAttachShader = load.invoke("glAttachShader", IIV);
         caps.glBindAttribLocation = load.invoke("glBindAttribLocation", IIPV);
-        caps.glBlendEquationSeparate = load.trivialHandle("glBlendEquationSeparate", IIV);
+        caps.glBlendEquationSeparate = load.invoke("glBlendEquationSeparate", IIV);
         caps.glCompileShader = load.invoke("glCompileShader", IV);
-        caps.glCreateProgram = load.trivialHandle("glCreateProgram", I);
-        caps.glCreateShader = load.trivialHandle("glCreateShader", II);
-        caps.glDeleteProgram = load.trivialHandle("glDeleteProgram", IV);
-        caps.glDeleteShader = load.trivialHandle("glDeleteShader", IV);
+        caps.glCreateProgram = load.invoke("glCreateProgram", I);
+        caps.glCreateShader = load.invoke("glCreateShader", II);
+        caps.glDeleteProgram = load.invoke("glDeleteProgram", IV);
+        caps.glDeleteShader = load.invoke("glDeleteShader", IV);
         caps.glDetachShader = load.invoke("glDetachShader", IIV);
-        caps.glDisableVertexAttribArray = load.trivialHandle("glDisableVertexAttribArray", IV);
+        caps.glDisableVertexAttribArray = load.invoke("glDisableVertexAttribArray", IV);
         caps.glDrawBuffers = load.invoke("glDrawBuffers", IPV);
-        caps.glEnableVertexAttribArray = load.trivialHandle("glEnableVertexAttribArray", IV);
-        caps.glGetActiveAttrib = load.trivialHandle("glGetActiveAttrib", IIIPPPPV);
-        caps.glGetActiveUniform = load.trivialHandle("glGetActiveUniform", IIIPPPPV);
-        caps.glGetAttachedShaders = load.trivialHandle("glGetAttachedShaders", IIPPV);
-        caps.glGetAttribLocation = load.trivialHandle("glGetAttribLocation", IPI);
+        caps.glEnableVertexAttribArray = load.invoke("glEnableVertexAttribArray", IV);
+        caps.glGetActiveAttrib = load.invoke("glGetActiveAttrib", IIIPPPPV);
+        caps.glGetActiveUniform = load.invoke("glGetActiveUniform", IIIPPPPV);
+        caps.glGetAttachedShaders = load.invoke("glGetAttachedShaders", IIPPV);
+        caps.glGetAttribLocation = load.invoke("glGetAttribLocation", IPI);
         caps.glGetProgramInfoLog = load.invoke("glGetProgramInfoLog", IIPPV);
-        caps.glGetProgramiv = load.trivialHandle("glGetProgramiv", IIPV);
+        caps.glGetProgramiv = load.invoke("glGetProgramiv", IIPV);
         caps.glGetShaderInfoLog = load.invoke("glGetShaderInfoLog", IIPPV);
         caps.glGetShaderSource = load.invoke("glGetShaderSource", IIPV);
-        caps.glGetShaderiv = load.trivialHandle("glGetShaderiv", IIPV);
-        caps.glGetUniformLocation = load.trivialHandle("glGetUniformLocation", IPI);
-        caps.glGetUniformfv = load.trivialHandle("glGetUniformfv", IIPV);
-        caps.glGetUniformiv = load.trivialHandle("glGetUniformiv", IIPV);
-        caps.glGetVertexAttribPointerv = load.trivialHandle("glGetVertexAttribPointerv", IIPV);
-        caps.glGetVertexAttribdv = load.trivialHandle("glGetVertexAttribdv", IIPV);
-        caps.glGetVertexAttribfv = load.trivialHandle("glGetVertexAttribfv", IIPV);
-        caps.glGetVertexAttribiv = load.trivialHandle("glGetVertexAttribiv", IIPV);
-        caps.glIsProgram = load.trivialHandle("glIsProgram", IZ);
-        caps.glIsShader = load.trivialHandle("glIsShader", IZ);
+        caps.glGetShaderiv = load.invoke("glGetShaderiv", IIPV);
+        caps.glGetUniformLocation = load.invoke("glGetUniformLocation", IPI);
+        caps.glGetUniformfv = load.invoke("glGetUniformfv", IIPV);
+        caps.glGetUniformiv = load.invoke("glGetUniformiv", IIPV);
+        caps.glGetVertexAttribPointerv = load.invoke("glGetVertexAttribPointerv", IIPV);
+        caps.glGetVertexAttribdv = load.invoke("glGetVertexAttribdv", IIPV);
+        caps.glGetVertexAttribfv = load.invoke("glGetVertexAttribfv", IIPV);
+        caps.glGetVertexAttribiv = load.invoke("glGetVertexAttribiv", IIPV);
+        caps.glIsProgram = load.invoke("glIsProgram", IZ);
+        caps.glIsShader = load.invoke("glIsShader", IZ);
         caps.glLinkProgram = load.invoke("glLinkProgram", IV);
         caps.glShaderSource = load.invoke("glShaderSource", IIPPV);
-        caps.glStencilFuncSeparate = load.trivialHandle("glStencilFuncSeparate", IIIIV);
-        caps.glStencilMaskSeparate = load.trivialHandle("glStencilMaskSeparate", IIV);
-        caps.glStencilOpSeparate = load.trivialHandle("glStencilOpSeparate", IIIIV);
+        caps.glStencilFuncSeparate = load.invoke("glStencilFuncSeparate", IIIIV);
+        caps.glStencilMaskSeparate = load.invoke("glStencilMaskSeparate", IIV);
+        caps.glStencilOpSeparate = load.invoke("glStencilOpSeparate", IIIIV);
         caps.glUniform1f = load.invoke("glUniform1f", IFV);
         caps.glUniform1fv = load.invoke("glUniform1fv", IIPV);
         caps.glUniform1i = load.invoke("glUniform1i", IIV);
@@ -455,18 +456,29 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static String getProgramInfoLog(SegmentAllocator allocator, int program, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
-        getProgramInfoLog(program, bufSize, pLen, pLog);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
+    public static String getProgramInfoLog(int program, int bufSize, int @Nullable [] length) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var pLen = length != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
+            final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
+            try {
+                var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+                getProgramInfoLog(program, bufSize, pLen, pLog);
+                if (length != null && length.length > 0) {
+                    length[0] = pLen.get(JAVA_INT, 0);
+                }
+                return pLog.getUtf8String(0);
+            } finally {
+                if (!(allocator instanceof MemoryStack)) allocator.close();
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return pLog.getUtf8String(0);
     }
 
-    public static String getProgramInfoLog(SegmentAllocator allocator, int program) {
-        return getProgramInfoLog(allocator, program, getProgrami(program, INFO_LOG_LENGTH), null);
+    public static String getProgramInfoLog(int program) {
+        return getProgramInfoLog(program, getProgrami(program, INFO_LOG_LENGTH), null);
     }
 
     public static void getProgramiv(int program, int pname, MemorySegment params) {
@@ -488,7 +500,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getProgramiv(program, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -505,18 +517,29 @@ public sealed class GL20C extends GL15C permits GL21C {
         }
     }
 
-    public static String getShaderInfoLog(SegmentAllocator allocator, int shader, int bufSize, int @Nullable [] length) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
-        getShaderInfoLog(shader, bufSize, pLen, pLog);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
+    public static String getShaderInfoLog(int shader, int bufSize, int @Nullable [] length) {
+        final MemoryStack stack = MemoryStack.stackGet();
+        final long stackPointer = stack.getPointer();
+        try {
+            var pLen = length != null ? stack.callocInt() : MemorySegment.NULL;
+            final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
+            try {
+                var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+                getShaderInfoLog(shader, bufSize, pLen, pLog);
+                if (length != null && length.length > 0) {
+                    length[0] = pLen.get(JAVA_INT, 0);
+                }
+                return pLog.getUtf8String(0);
+            } finally {
+                if (!(allocator instanceof MemoryStack)) allocator.close();
+            }
+        } finally {
+            stack.setPointer(stackPointer);
         }
-        return pLog.getUtf8String(0);
     }
 
-    public static String getShaderInfoLog(SegmentAllocator allocator, int shader) {
-        return getShaderInfoLog(allocator, shader, getShaderi(shader, INFO_LOG_LENGTH), null);
+    public static String getShaderInfoLog(int shader) {
+        return getShaderInfoLog(shader, getShaderi(shader, INFO_LOG_LENGTH), null);
     }
 
     public static void getShaderSource(int shader, int bufSize, MemorySegment length, MemorySegment source) {
@@ -561,7 +584,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getShaderiv(shader, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -607,7 +630,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_FLOAT);
+            var seg = stack.callocFloat();
             getUniformfv(program, location, seg);
             return seg.get(JAVA_FLOAT, 0);
         } finally {
@@ -634,7 +657,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getUniformiv(program, location, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -700,7 +723,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_DOUBLE);
+            var seg = stack.callocDouble();
             getVertexAttribdv(index, pname, seg);
             return seg.get(JAVA_DOUBLE, 0);
         } finally {
@@ -727,7 +750,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_FLOAT);
+            var seg = stack.callocFloat();
             getVertexAttribfv(index, pname, seg);
             return seg.get(JAVA_FLOAT, 0);
         } finally {
@@ -754,7 +777,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getVertexAttribiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

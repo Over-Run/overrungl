@@ -115,21 +115,21 @@ public sealed class GL32C extends GL31C permits GL33C {
 
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glClientWaitSync = load.invoke("glClientWaitSync", PIJI);
-        caps.glDeleteSync = load.trivialHandle("glDeleteSync", PV);
+        caps.glDeleteSync = load.invoke("glDeleteSync", PV);
         caps.glDrawElementsBaseVertex = load.invoke("glDrawElementsBaseVertex", IIIPIV);
         caps.glDrawElementsInstancedBaseVertex = load.invoke("glDrawElementsInstancedBaseVertex", IIIPIIV);
         caps.glDrawRangeElementsBaseVertex = load.invoke("glDrawRangeElementsBaseVertex", IIIIIPIV);
         caps.glFenceSync = load.invoke("glFenceSync", IIP);
         caps.glFramebufferTexture = load.invoke("glFramebufferTexture", IIIIV);
-        caps.glGetBufferParameteri64v = load.trivialHandle("glGetBufferParameteri64v", IIPV);
-        caps.glGetInteger64i_v = load.trivialHandle("glGetInteger64i_v", IIPV);
-        caps.glGetInteger64v = load.trivialHandle("glGetInteger64v", IPV);
-        caps.glGetMultisamplefv = load.trivialHandle("glGetMultisamplefv", IIPV);
-        caps.glGetSynciv = load.trivialHandle("glGetSynciv", PIIPPV);
-        caps.glIsSync = load.trivialHandle("glIsSync", PZ);
+        caps.glGetBufferParameteri64v = load.invoke("glGetBufferParameteri64v", IIPV);
+        caps.glGetInteger64i_v = load.invoke("glGetInteger64i_v", IIPV);
+        caps.glGetInteger64v = load.invoke("glGetInteger64v", IPV);
+        caps.glGetMultisamplefv = load.invoke("glGetMultisamplefv", IIPV);
+        caps.glGetSynciv = load.invoke("glGetSynciv", PIIPPV);
+        caps.glIsSync = load.invoke("glIsSync", PZ);
         caps.glMultiDrawElementsBaseVertex = load.invoke("glMultiDrawElementsBaseVertex", IPIPIPV);
-        caps.glProvokingVertex = load.trivialHandle("glProvokingVertex", IV);
-        caps.glSampleMaski = load.trivialHandle("glSampleMaski", IIV);
+        caps.glProvokingVertex = load.invoke("glProvokingVertex", IV);
+        caps.glSampleMaski = load.invoke("glSampleMaski", IIV);
         caps.glTexImage2DMultisample = load.invoke("glTexImage2DMultisample", IIIIIZV);
         caps.glTexImage3DMultisample = load.invoke("glTexImage3DMultisample", IIIIIIZV);
         caps.glWaitSync = load.invoke("glWaitSync", PIJV);
@@ -247,7 +247,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getBufferParameteri64v(target, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -274,7 +274,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getInteger64i_v(target, index, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -301,7 +301,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pData = stack.calloc(JAVA_LONG);
+            var pData = stack.callocLong();
             getInteger64v(pname, pData);
             return pData.get(JAVA_LONG, 0);
         } finally {
@@ -353,7 +353,7 @@ public sealed class GL32C extends GL31C permits GL33C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getSynciv(sync, pname, 1, MemorySegment.NULL, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

@@ -74,7 +74,7 @@ public class Struct extends Pointer {
     /**
      * {@return the elements size of this struct in bytes}
      */
-    public long sizeof() {
+    public long sizeofThis() {
         return layout() != null ? layout().byteSize() : 0;
     }
 }

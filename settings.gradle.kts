@@ -14,8 +14,8 @@ rootProject.name = projName
 
 projModules.split(',').map { it.trim() }.forEach {
     include(it)
-    project(":$it").projectDir = file("modules/overrungl.$it/")
+    project(":$it").projectDir = File("modules/overrungl.$it/")
 }
 
 include("samples")
-project(":samples").projectDir = file("modules/samples/")
+project(":samples").projectDir = File("modules/samples/")

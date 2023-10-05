@@ -43,8 +43,8 @@ enum class NativePlatform(
     LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
     LINUX_ARM32("linux", "arm32", "linux-arm32", "lib", ".so", "LinuxArm32"),
     LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
-    MACOS("os x", "x64", "macos", "lib", ".dylib", "Macos"),
-    MACOS_ARM64("os x", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
+    MACOS("macos", "x64", "macos", "lib", ".dylib", "Macos"),
+    MACOS_ARM64("macos", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
 
     companion object {
         val ALL = values()
@@ -113,7 +113,7 @@ enum class Artifact(
 
     fun nativeFileName(platform: NativePlatform): String? {
         return if (nativeBinding == null) null
-        else "$nativeBinding/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
+        else "${nativeBinding.bindingName}/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
     }
 }
 
@@ -197,13 +197,12 @@ subprojects {
         archives(tasks["javadocJar"])
     }
 
-    val idea: IdeaModel by extensions
-    idea.module.inheritOutputDirs = true
+    the<IdeaModel>().module.inheritOutputDirs = true
 }
 
 tasks.register("assembleJavadocArgs") {
     group = "build"
-    val mspFile = Path("${rootProject.buildDir}/tmp/modulesourcepath.args")
+    val mspFile = Path("${rootProject.layout.buildDirectory.get().asFile}/tmp/modulesourcepath.args")
     outputs.file(mspFile)
 
     doLast {
@@ -223,13 +222,13 @@ tasks.register<Javadoc>("aggregateJavadoc") {
     val projectsToDoc = Artifact.values().map { project(it.subprojectName) }
     dependsOn(projectsToDoc.map { it.getTasksByName("classes", true) })
     source(projectsToDoc.map { it.sourceSets["main"].java })
-    destinationDir = file("$buildDir/docs/javadoc")
+    destinationDir = File("${layout.buildDirectory.get().asFile}/docs/javadoc")
 
     classpath = files(projectsToDoc.map { it.configurations["compileClasspath"].files })
 
     executable = project.findProperty("javadocExecutable") as String?
 
-    options.optionFiles = listOf(file("${rootProject.buildDir}/tmp/modulesourcepath.args"))
+    options.optionFiles = listOf(File("${rootProject.layout.buildDirectory.get().asFile}/tmp/modulesourcepath.args"))
 }
 
 allprojects {
@@ -320,9 +319,9 @@ publishing.publications {
             }
             module.nativeBinding?.platforms?.forEach {
                 val nativeName = module.nativeFileName(it)!!
-                val file = file("${rootProject.projectDir}/natives/$nativeName")
+                val file = File("${rootProject.projectDir}/natives/$nativeName")
                 if (file.exists()) {
-                    val nativeParent = file(nativeName).parent
+                    val nativeParent = File(nativeName).parent
                     artifact(tasks.create<Jar>("nativeJar${module.mavenName}${it.taskSuffix}") {
                         archiveBaseName.set(module.artifactName)
                         archiveClassifier.set(it.classifier)

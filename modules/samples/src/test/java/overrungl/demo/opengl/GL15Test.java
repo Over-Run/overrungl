@@ -29,6 +29,7 @@ import overrungl.util.CheckUtil;
 import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 
@@ -91,7 +92,7 @@ public final class GL15Test {
     }
 
     private void load(Arena arena) {
-        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         GL.enable(GL.TEXTURE_2D);

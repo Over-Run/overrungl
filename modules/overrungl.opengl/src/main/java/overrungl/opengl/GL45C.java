@@ -107,47 +107,47 @@ public sealed class GL45C extends GL44C permits GL46C {
         caps.glCopyTextureSubImage1D = load.invoke("glCopyTextureSubImage1D", IIIIIIV);
         caps.glCopyTextureSubImage2D = load.invoke("glCopyTextureSubImage2D", IIIIIIIIV);
         caps.glCopyTextureSubImage3D = load.invoke("glCopyTextureSubImage3D", IIIIIIIIIV);
-        caps.glCreateBuffers = load.trivialHandle("glCreateBuffers", IPV);
-        caps.glCreateFramebuffers = load.trivialHandle("glCreateFramebuffers", IPV);
-        caps.glCreateProgramPipelines = load.trivialHandle("glCreateProgramPipelines", IPV);
-        caps.glCreateQueries = load.trivialHandle("glCreateQueries", IIPV);
-        caps.glCreateRenderbuffers = load.trivialHandle("glCreateRenderbuffers", IPV);
-        caps.glCreateSamplers = load.trivialHandle("glCreateSamplers", IPV);
-        caps.glCreateTextures = load.trivialHandle("glCreateTextures", IIPV);
-        caps.glCreateTransformFeedbacks = load.trivialHandle("glCreateTransformFeedbacks", IPV);
-        caps.glCreateVertexArrays = load.trivialHandle("glCreateVertexArrays", IPV);
-        caps.glDisableVertexArrayAttrib = load.trivialHandle("glDisableVertexArrayAttrib", IIV);
-        caps.glEnableVertexArrayAttrib = load.trivialHandle("glEnableVertexArrayAttrib", IIV);
+        caps.glCreateBuffers = load.invoke("glCreateBuffers", IPV);
+        caps.glCreateFramebuffers = load.invoke("glCreateFramebuffers", IPV);
+        caps.glCreateProgramPipelines = load.invoke("glCreateProgramPipelines", IPV);
+        caps.glCreateQueries = load.invoke("glCreateQueries", IIPV);
+        caps.glCreateRenderbuffers = load.invoke("glCreateRenderbuffers", IPV);
+        caps.glCreateSamplers = load.invoke("glCreateSamplers", IPV);
+        caps.glCreateTextures = load.invoke("glCreateTextures", IIPV);
+        caps.glCreateTransformFeedbacks = load.invoke("glCreateTransformFeedbacks", IPV);
+        caps.glCreateVertexArrays = load.invoke("glCreateVertexArrays", IPV);
+        caps.glDisableVertexArrayAttrib = load.invoke("glDisableVertexArrayAttrib", IIV);
+        caps.glEnableVertexArrayAttrib = load.invoke("glEnableVertexArrayAttrib", IIV);
         caps.glFlushMappedNamedBufferRange = load.invoke("glFlushMappedNamedBufferRange", IJJV);
         caps.glGenerateTextureMipmap = load.invoke("glGenerateTextureMipmap", IV);
         caps.glGetCompressedTextureImage = load.invoke("glGetCompressedTextureImage", IIIPV);
         caps.glGetCompressedTextureSubImage = load.invoke("glGetCompressedTextureSubImage", IIIIIIIIIPV);
         caps.glGetGraphicsResetStatus = load.invoke("glGetGraphicsResetStatus", I);
-        caps.glGetNamedBufferParameteri64v = load.trivialHandle("glGetNamedBufferParameteri64v", IIPV);
-        caps.glGetNamedBufferParameteriv = load.trivialHandle("glGetNamedBufferParameteriv", IIPV);
-        caps.glGetNamedBufferPointerv = load.trivialHandle("glGetNamedBufferPointerv", IIPV);
+        caps.glGetNamedBufferParameteri64v = load.invoke("glGetNamedBufferParameteri64v", IIPV);
+        caps.glGetNamedBufferParameteriv = load.invoke("glGetNamedBufferParameteriv", IIPV);
+        caps.glGetNamedBufferPointerv = load.invoke("glGetNamedBufferPointerv", IIPV);
         caps.glGetNamedBufferSubData = load.invoke("glGetNamedBufferSubData", IJJPV);
-        caps.glGetNamedFramebufferAttachmentParameteriv = load.trivialHandle("glGetNamedFramebufferAttachmentParameteriv", IIIPV);
-        caps.glGetNamedFramebufferParameteriv = load.trivialHandle("glGetNamedFramebufferParameteriv", IIPV);
-        caps.glGetNamedRenderbufferParameteriv = load.trivialHandle("glGetNamedRenderbufferParameteriv", IIPV);
-        caps.glGetQueryBufferObjecti64v = load.trivialHandle("glGetQueryBufferObjecti64v", IIIJV);
-        caps.glGetQueryBufferObjectiv = load.trivialHandle("glGetQueryBufferObjectiv", IIIJV);
-        caps.glGetQueryBufferObjectui64v = load.trivialHandle("glGetQueryBufferObjectui64v", IIIJV);
-        caps.glGetQueryBufferObjectuiv = load.trivialHandle("glGetQueryBufferObjectuiv", IIIJV);
+        caps.glGetNamedFramebufferAttachmentParameteriv = load.invoke("glGetNamedFramebufferAttachmentParameteriv", IIIPV);
+        caps.glGetNamedFramebufferParameteriv = load.invoke("glGetNamedFramebufferParameteriv", IIPV);
+        caps.glGetNamedRenderbufferParameteriv = load.invoke("glGetNamedRenderbufferParameteriv", IIPV);
+        caps.glGetQueryBufferObjecti64v = load.invoke("glGetQueryBufferObjecti64v", IIIJV);
+        caps.glGetQueryBufferObjectiv = load.invoke("glGetQueryBufferObjectiv", IIIJV);
+        caps.glGetQueryBufferObjectui64v = load.invoke("glGetQueryBufferObjectui64v", IIIJV);
+        caps.glGetQueryBufferObjectuiv = load.invoke("glGetQueryBufferObjectuiv", IIIJV);
         caps.glGetTextureImage = load.invoke("glGetTextureImage", IIIIIPV);
-        caps.glGetTextureLevelParameterfv = load.trivialHandle("glGetTextureLevelParameterfv", IIIPV);
-        caps.glGetTextureLevelParameteriv = load.trivialHandle("glGetTextureLevelParameteriv", IIIPV);
-        caps.glGetTextureParameterIiv = load.trivialHandle("glGetTextureParameterIiv", IIPV);
-        caps.glGetTextureParameterIuiv = load.trivialHandle("glGetTextureParameterIuiv", IIPV);
-        caps.glGetTextureParameterfv = load.trivialHandle("glGetTextureParameterfv", IIPV);
-        caps.glGetTextureParameteriv = load.trivialHandle("glGetTextureParameteriv", IIPV);
+        caps.glGetTextureLevelParameterfv = load.invoke("glGetTextureLevelParameterfv", IIIPV);
+        caps.glGetTextureLevelParameteriv = load.invoke("glGetTextureLevelParameteriv", IIIPV);
+        caps.glGetTextureParameterIiv = load.invoke("glGetTextureParameterIiv", IIPV);
+        caps.glGetTextureParameterIuiv = load.invoke("glGetTextureParameterIuiv", IIPV);
+        caps.glGetTextureParameterfv = load.invoke("glGetTextureParameterfv", IIPV);
+        caps.glGetTextureParameteriv = load.invoke("glGetTextureParameteriv", IIPV);
         caps.glGetTextureSubImage = load.invoke("glGetTextureSubImage", IIIIIIIIIIIPV);
-        caps.glGetTransformFeedbacki64_v = load.trivialHandle("glGetTransformFeedbacki64_v", IIIPV);
-        caps.glGetTransformFeedbacki_v = load.trivialHandle("glGetTransformFeedbacki_v", IIIPV);
-        caps.glGetTransformFeedbackiv = load.trivialHandle("glGetTransformFeedbackiv", IIPV);
-        caps.glGetVertexArrayIndexed64iv = load.trivialHandle("glGetVertexArrayIndexed64iv", IIIPV);
-        caps.glGetVertexArrayIndexediv = load.trivialHandle("glGetVertexArrayIndexediv", IIIPV);
-        caps.glGetVertexArrayiv = load.trivialHandle("glGetVertexArrayiv", IIPV);
+        caps.glGetTransformFeedbacki64_v = load.invoke("glGetTransformFeedbacki64_v", IIIPV);
+        caps.glGetTransformFeedbacki_v = load.invoke("glGetTransformFeedbacki_v", IIIPV);
+        caps.glGetTransformFeedbackiv = load.invoke("glGetTransformFeedbackiv", IIPV);
+        caps.glGetVertexArrayIndexed64iv = load.invoke("glGetVertexArrayIndexed64iv", IIIPV);
+        caps.glGetVertexArrayIndexediv = load.invoke("glGetVertexArrayIndexediv", IIIPV);
+        caps.glGetVertexArrayiv = load.invoke("glGetVertexArrayiv", IIPV);
         caps.glGetnCompressedTexImage = load.invoke("glGetnCompressedTexImage", IIIPV);
         caps.glGetnTexImage = load.invoke("glGetnTexImage", IIIIIPV);
         caps.glGetnUniformdv = load.invoke("glGetnUniformdv", IIIPV);
@@ -175,12 +175,12 @@ public sealed class GL45C extends GL44C permits GL46C {
         caps.glTextureBarrier = load.invoke("glTextureBarrier", V);
         caps.glTextureBuffer = load.invoke("glTextureBuffer", IIIV);
         caps.glTextureBufferRange = load.invoke("glTextureBufferRange", IIIJJV);
-        caps.glTextureParameterIiv = load.trivialHandle("glTextureParameterIiv", IIPV);
-        caps.glTextureParameterIuiv = load.trivialHandle("glTextureParameterIuiv", IIPV);
-        caps.glTextureParameterf = load.trivialHandle("glTextureParameterf", IIFV);
-        caps.glTextureParameterfv = load.trivialHandle("glTextureParameterfv", IIPV);
-        caps.glTextureParameteri = load.trivialHandle("glTextureParameteri", IIIV);
-        caps.glTextureParameteriv = load.trivialHandle("glTextureParameteriv", IIPV);
+        caps.glTextureParameterIiv = load.invoke("glTextureParameterIiv", IIPV);
+        caps.glTextureParameterIuiv = load.invoke("glTextureParameterIuiv", IIPV);
+        caps.glTextureParameterf = load.invoke("glTextureParameterf", IIFV);
+        caps.glTextureParameterfv = load.invoke("glTextureParameterfv", IIPV);
+        caps.glTextureParameteri = load.invoke("glTextureParameteri", IIIV);
+        caps.glTextureParameteriv = load.invoke("glTextureParameteriv", IIPV);
         caps.glTextureStorage1D = load.invoke("glTextureStorage1D", IIIIV);
         caps.glTextureStorage2D = load.invoke("glTextureStorage2D", IIIIIV);
         caps.glTextureStorage2DMultisample = load.invoke("glTextureStorage2DMultisample", IIIIIZV);
@@ -386,7 +386,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -413,7 +413,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -440,7 +440,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -467,7 +467,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createQueries(target, 1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -494,7 +494,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -521,7 +521,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createSamplers(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -549,7 +549,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pTex = stack.calloc(JAVA_INT);
+            var pTex = stack.callocInt();
             createTextures(target, 1, pTex);
             return pTex.get(JAVA_INT, 0);
         } finally {
@@ -576,7 +576,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -603,7 +603,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             createVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -687,7 +687,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getNamedBufferParameteri64v(buffer, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -708,7 +708,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedBufferParameteriv(buffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -729,7 +729,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(ADDRESS);
+            var seg = stack.callocPointer();
             getNamedBufferPointerv(target, pname, seg);
             return seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
         } finally {
@@ -795,7 +795,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -816,7 +816,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedFramebufferParameteriv(framebuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -837,7 +837,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             params[0] = seg.get(JAVA_INT, 0);
         } finally {
@@ -849,7 +849,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -921,7 +921,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTextureLevelParameterfv(texture, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -948,7 +948,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTextureLevelParameteriv(texture, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -975,7 +975,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getTextureParameterIiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -1002,7 +1002,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getTextureParameterIuiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -1029,7 +1029,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_FLOAT);
+            var pParams = stack.callocFloat();
             getTextureParameterfv(texture, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         } finally {
@@ -1056,7 +1056,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var pParams = stack.calloc(JAVA_INT);
+            var pParams = stack.callocInt();
             getTextureParameteriv(texture, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         } finally {
@@ -1155,7 +1155,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_LONG);
+            var seg = stack.callocLong();
             getVertexArrayIndexed64iv(vaobj, index, pname, seg);
             return seg.get(JAVA_LONG, 0);
         } finally {
@@ -1176,7 +1176,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getVertexArrayIndexediv(vaobj, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {
@@ -1197,7 +1197,7 @@ public sealed class GL45C extends GL44C permits GL46C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getVertexArrayiv(vaobj, pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

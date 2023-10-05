@@ -115,14 +115,14 @@ public sealed class GL31C extends GL30C permits GL32C {
         caps.glCopyBufferSubData = load.invoke("glCopyBufferSubData", IIJJJV);
         caps.glDrawArraysInstanced = load.invoke("glDrawArraysInstanced", IIIIV);
         caps.glDrawElementsInstanced = load.invoke("glDrawElementsInstanced", IIIPIV);
-        caps.glGetActiveUniformBlockName = load.trivialHandle("glGetActiveUniformBlockName", IIIPPV);
-        caps.glGetActiveUniformBlockiv = load.trivialHandle("glGetActiveUniformBlockiv", IIIPV);
-        caps.glGetActiveUniformName = load.trivialHandle("glGetActiveUniformName", IIIPPV);
-        caps.glGetActiveUniformsiv = load.trivialHandle("glGetActiveUniformsiv", IIPIPV);
-        caps.glGetIntegeri_v = load.trivialHandle("glGetIntegeri_v", IIPV);
-        caps.glGetUniformBlockIndex = load.trivialHandle("glGetUniformBlockIndex", IPI);
-        caps.glGetUniformIndices = load.trivialHandle("glGetUniformIndices", IIPPV);
-        caps.glPrimitiveRestartIndex = load.trivialHandle("glPrimitiveRestartIndex", IV);
+        caps.glGetActiveUniformBlockName = load.invoke("glGetActiveUniformBlockName", IIIPPV);
+        caps.glGetActiveUniformBlockiv = load.invoke("glGetActiveUniformBlockiv", IIIPV);
+        caps.glGetActiveUniformName = load.invoke("glGetActiveUniformName", IIIPPV);
+        caps.glGetActiveUniformsiv = load.invoke("glGetActiveUniformsiv", IIPIPV);
+        caps.glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
+        caps.glGetUniformBlockIndex = load.invoke("glGetUniformBlockIndex", IPI);
+        caps.glGetUniformIndices = load.invoke("glGetUniformIndices", IIPPV);
+        caps.glPrimitiveRestartIndex = load.invoke("glPrimitiveRestartIndex", IV);
         caps.glTexBuffer = load.invoke("glTexBuffer", IIIV);
         caps.glUniformBlockBinding = load.invoke("glUniformBlockBinding", IIIV);
     }
@@ -251,7 +251,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
-            var seg = stack.calloc(JAVA_INT);
+            var seg = stack.callocInt();
             getActiveUniformsiv(program, 1, stack.ints(uniformIndex), pname, seg);
             return seg.get(JAVA_INT, 0);
         } finally {

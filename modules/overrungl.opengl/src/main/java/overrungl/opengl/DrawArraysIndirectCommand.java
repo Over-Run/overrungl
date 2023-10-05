@@ -38,7 +38,7 @@ import java.lang.invoke.VarHandle;
  * @author squid233
  * @since 0.1.0
  */
-public class DrawArraysIndirectCommand extends Struct {
+public sealed class DrawArraysIndirectCommand extends Struct {
     /**
      * The struct layout.
      */
@@ -71,6 +71,13 @@ public class DrawArraysIndirectCommand extends Struct {
      */
     protected DrawArraysIndirectCommand(MemorySegment address, MemoryLayout layout) {
         super(address, layout);
+    }
+
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
     }
 
     /**
@@ -172,7 +179,7 @@ public class DrawArraysIndirectCommand extends Struct {
      * @author squid233
      * @since 0.1.0
      */
-    public static class Buffer extends DrawArraysIndirectCommand implements ArrayPointer {
+    public static final class Buffer extends DrawArraysIndirectCommand implements ArrayPointer {
         private final VarHandle pCount, pPrimCount, pFirst, pBaseInstance;
 
         /**

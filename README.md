@@ -19,7 +19,7 @@ enables cross-platform access to a set of C/C++ library bindings, and provides s
 [LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
 
 LWJGL 3 uses JNI to access native functions,
-but OverrunGL uses [FFM API](https://openjdk.org/jeps/8310626), which has better performance.
+but OverrunGL uses [FFM API](https://openjdk.org/jeps/454), which has better performance.
 
 ## Getting Started
 
@@ -41,7 +41,7 @@ unstable, so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
-We will provide a module customizer soon.
+We have provided an artifacts customizer [here](https://over-run.github.io/overrungl-gen/).
 
 ### Using -SNAPSHOT Versions
 
@@ -119,7 +119,7 @@ natives
 │  │  │  └─ libglfw3.so
 │  │  └─ x64
 │  │     └─ libglfw3.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libglfw3.dylib
 │  │  └─ x64
@@ -135,7 +135,7 @@ natives
 │  │  │  └─ libnfd.so
 │  │  └─ x64
 │  │     └─ libnfd.so
-│  ├─ os x
+│  ├─ macos
 │  │  ├─ arm64
 │  │  │  └─ libnfd.dylib
 │  │  └─ x64
@@ -153,7 +153,7 @@ natives
    │  │  └─ libstb.so
    │  └─ x64
    │     └─ libstb.so
-   ├─ os x
+   ├─ macos
    │  ├─ arm64
    │  │  └─ libstb.dylib
    │  └─ x64

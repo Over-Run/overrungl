@@ -18,8 +18,8 @@ package overrungl.internal;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.FunctionDescriptors;
-import overrungl.os.OperatingSystem;
-import overrungl.os.OperatingSystems;
+import overrungl.os.Architecture;
+import overrungl.os.Platform;
 import overrungl.util.MemoryUtil;
 
 import java.io.File;
@@ -51,6 +51,7 @@ public final class RuntimeHelper {
      * An unbounded address layout.
      */
     public static final AddressLayout ADDRESS_UNBOUNDED = MemoryUtil.ADDRESS_UNBOUNDED;
+    private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
 
     /**
      * constructor
@@ -136,7 +137,7 @@ public final class RuntimeHelper {
      * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
      */
     public static String unknownToken(String description, int token) {
-        return STR."\{description} [0x\{Integer.toHexString(token)}]";
+        return STR. "\{ description } [0x\{ Integer.toHexString(token) }]" ;
     }
 
     /**
@@ -150,13 +151,17 @@ public final class RuntimeHelper {
      */
     public static SymbolLookup load(String module, String basename, String version)
         throws IllegalStateException {
-        final var os = OperatingSystem.current();
-        final var suffix = os.getSharedLibrarySuffix();
-        final var path = os.getSharedLibraryName(basename);
+        final Platform os = Platform.current();
+        final var suffix = os.sharedLibrarySuffix();
+        final var path = os.sharedLibraryName(basename);
         URI uri;
-        // 1. Load from classpath
-        try {
-            var file = new File(tmpdir, STR."overrungl\{System.getProperty("user.name")}");
+        // 1. Load from natives directory
+        var localFile = new File(System.getProperty("overrungl.natives", "."), path);
+        if (localFile.exists()) {
+            uri = localFile.toURI();
+        } else {
+            // 2. Load from classpath
+            var file = new File(tmpdir, STR. "overrungl\{ System.getProperty("user.name") }" );
             if (!file.exists()) {
                 // Create directory
                 file.mkdir();
@@ -166,25 +171,18 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, STR."\{basename}-\{version}\{suffix}");
+            var libFile = new File(file, STR. "\{ basename }-\{ version }\{ suffix }" );
             if (!libFile.exists()) {
                 // Extract
-                try (var is = RuntimeHelper.class.getClassLoader().getResourceAsStream(
-                    STR."\{module}/\{os.getFamilyName()}/\{OperatingSystems.getNativeLibArch()}/\{path}"
-                )) {
-                    Files.copy(Objects.requireNonNull(is), Path.of(libFile.getAbsolutePath()));
+                final String fromPath = STR. "\{ module }/\{ os.familyName() }/\{ Architecture.current() }/\{ path }" ;
+                try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
+                    Files.copy(Objects.requireNonNull(is, STR. "File not found: \{ fromPath }" ),
+                        Path.of(libFile.getAbsolutePath()));
+                } catch (Exception e) {
+                    throw new IllegalStateException(STR. "File not found: \{ file }; try setting property -Doverrungl.natives to a valid path" , e);
                 }
             }
             uri = libFile.toURI();
-        } catch (Exception e) {
-            // 2. Load from natives directory
-            var file = new File(STR."\{System.getProperty("overrungl.natives", ".")}/\{path}");
-            if (!file.exists()) {
-                var exception = new IllegalStateException(STR."File not found: \{file}; Try to set property -Doverrungl.natives to a valid path");
-                exception.addSuppressed(e);
-                throw exception;
-            }
-            uri = file.toURI();
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());

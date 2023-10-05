@@ -26,12 +26,11 @@ import java.lang.invoke.MethodHandle;
 
 /**
  * The OpenGL loading function.
- *
  * <h2>Example</h2>
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
- * import overrungl.util.CheckUtil;
- * CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+ * import java.util.Objects;
+ * Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
  * }
  *
  * @author squid233
@@ -58,16 +57,5 @@ public interface GLLoadFunc {
     @Nullable
     default MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
         return RuntimeHelper.downcallSafe(invoke(procName), function, options);
-    }
-
-    /**
-     * Load a trivial function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
-     */
-    default MethodHandle trivialHandle(String procName, FunctionDescriptors function) {
-        return invoke(procName, function, Linker.Option.isTrivial());
     }
 }

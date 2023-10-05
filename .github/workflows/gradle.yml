@@ -7,14 +7,15 @@
 
 name: Java CI with Gradle
 
-on: [ push, pull_request ]
+on: [ push, pull_request, workflow_dispatch ]
 
 jobs:
   build:
     strategy:
       matrix:
         java: [
-          22-ea
+          22-ea,
+          21
         ]
         os: [ ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
@@ -25,7 +26,6 @@ jobs:
         with:
           java-version: |
             ${{ matrix.java }}
-            20
           distribution: 'temurin'
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}

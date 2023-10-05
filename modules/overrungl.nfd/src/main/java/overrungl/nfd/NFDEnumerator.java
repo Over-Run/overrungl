@@ -109,6 +109,13 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
         }
     }
 
+    /**
+     * {@return the elements size of this struct in bytes}
+     */
+    public static long sizeof() {
+        return LAYOUT.byteSize();
+    }
+
     private static Tuple2<NFDResult, NFDEnumerator> fromPathSet(Kind kind, SegmentAllocator allocator, MemorySegment pathSet) {
         final MemorySegment seg = allocator.allocate(ADDRESS);
         final NFDResult result = NFD.pathSetGetEnum(pathSet, seg);
@@ -141,7 +148,7 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
     }
 
     private static IllegalStateException errorIterating() {
-        return new IllegalStateException("Error iterating: " + NFD.getError());
+        return new IllegalStateException(STR. "Error iterating: \{ NFD.getError() }" );
     }
 
     @NotNull
