@@ -26,6 +26,7 @@ import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.FunctionDescriptors.*;
@@ -122,9 +123,9 @@ public final class NFD {
     private static final SymbolLookup LOOKUP;
 
     static {
-        final SymbolLookup lib = RuntimeHelper.load("nfd", "nfd", "0.1.0.0");
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", "0.1.0.0");
         final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
-        LOOKUP = function != null ? function.apply(lib) : lib;
+        LOOKUP = function != null ? function.apply(lib) : lib.get();
     }
 
     private static final Platform os = Platform.current();

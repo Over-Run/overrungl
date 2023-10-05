@@ -25,6 +25,7 @@ import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
 import static overrungl.FunctionDescriptors.*;
@@ -39,13 +40,13 @@ final class Handles {
     private static final SymbolLookup lookup;
 
     static {
-        final SymbolLookup lib = RuntimeHelper.load("glfw", "glfw3",
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw3",
             STR. "\{ GLFW.VERSION_MAJOR }.\{ GLFW.VERSION_MINOR }.\{ GLFW.VERSION_REVISION }" );
         final var function = Configurations.GLFW_SYMBOL_LOOKUP.get();
-        lookup = function != null ? function.apply(lib) : lib;
+        lookup = function != null ? function.apply(lib) : lib.get();
     }
 
-    static MethodHandle
+    static final MethodHandle
         glfwInit = downcall("glfwInit", I),
         glfwTerminate = downcall("glfwTerminate", V),
         glfwInitHint = downcall("glfwInitHint", IIV),
@@ -163,13 +164,13 @@ final class Handles {
         glfwGetRequiredInstanceExtensions = downcall("glfwGetRequiredInstanceExtensions", Pp);
 
     // GLFW Vulkan
-    static MethodHandle
+    static final MethodHandle
         glfwGetInstanceProcAddress = downcall("glfwGetInstanceProcAddress", PPP),
         glfwGetPhysicalDevicePresentationSupport = downcall("glfwGetPhysicalDevicePresentationSupport", PPII),
         glfwCreateWindowSurface = downcall("glfwCreateWindowSurface", PPPPI);
 
     // GLFW Native
-    static MethodHandle
+    static final MethodHandle
         glfwGetWin32Adapter = downcallNative("glfwGetWin32Adapter", Pp),
         glfwGetWin32Monitor = downcallNative("glfwGetWin32Monitor", Pp),
         glfwGetWin32Window = downcallNative("glfwGetWin32Window", PP),

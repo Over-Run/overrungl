@@ -81,21 +81,21 @@ public final class Configurations {
      * <p>
      * The default value is {@code null}.
      */
-    public static final Entry<Function<SymbolLookup, SymbolLookup>> GLFW_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> GLFW_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /**
      * The symbol lookup of NFD.
      * The returned value must not be null.
      * <p>
      * The default value is {@code null}.
      */
-    public static final Entry<Function<SymbolLookup, SymbolLookup>> NFD_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> NFD_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /**
      * The symbol lookup of STB.
      * The returned value must not be null.
      * <p>
      * The default value is {@code null}.
      */
-    public static final Entry<Function<SymbolLookup, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
 
     private Configurations() {
         //no instance
