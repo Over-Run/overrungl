@@ -30,10 +30,6 @@ import static overrungl.glfw.Handles.*;
  * @since 0.1.0
  */
 public final class GLFWVulkan {
-    static {
-        create();
-    }
-
     /**
      * constructor
      */
