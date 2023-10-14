@@ -18,8 +18,6 @@ package overrungl.opengl
 
 import overrungl.opengl.OpenGLExt.*
 import java.nio.file.Files
-import java.time.Clock
-import java.time.LocalDate
 import kotlin.io.path.Path
 
 enum class OpenGLExt(val dir: String, val packageName: String, val extName: String) {
@@ -62,7 +60,7 @@ data class Type(val name: String, val layout: String?) {
 val fileHeader = """/*
  * MIT License
  *
- * Copyright (c) 2022-${LocalDate.now(Clock.systemUTC()).year} Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1973,7 +1971,417 @@ fun apple() {
     file("Ycbcr422", APPLE, "GL_APPLE_ycbcr_422", "GL_YCBCR_422_APPLE" to "0x85B9")
 }
 
-fun ati() {}
+fun ati() {
+    file("DrawBuffers", ATI, "GL_ATI_draw_buffers") {
+        "GL_MAX_DRAW_BUFFERS_ATI"("0x8824")
+        "GL_DRAW_BUFFER0_ATI"("0x8825")
+        "GL_DRAW_BUFFER1_ATI"("0x8826")
+        "GL_DRAW_BUFFER2_ATI"("0x8827")
+        "GL_DRAW_BUFFER3_ATI"("0x8828")
+        "GL_DRAW_BUFFER4_ATI"("0x8829")
+        "GL_DRAW_BUFFER5_ATI"("0x882A")
+        "GL_DRAW_BUFFER6_ATI"("0x882B")
+        "GL_DRAW_BUFFER7_ATI"("0x882C")
+        "GL_DRAW_BUFFER8_ATI"("0x882D")
+        "GL_DRAW_BUFFER9_ATI"("0x882E")
+        "GL_DRAW_BUFFER10_ATI"("0x882F")
+        "GL_DRAW_BUFFER11_ATI"("0x8830")
+        "GL_DRAW_BUFFER12_ATI"("0x8831")
+        "GL_DRAW_BUFFER13_ATI"("0x8832")
+        "GL_DRAW_BUFFER14_ATI"("0x8833")
+        "GL_DRAW_BUFFER15_ATI"("0x8834")
+        "glDrawBuffersATI"(void, GLsizei("n"), address("bufs", "const GLenum *"))
+    }
+    file("ElementArray", ATI, "GL_ATI_element_array") {
+        "GL_ELEMENT_ARRAY_ATI"("0x8768")
+        "GL_ELEMENT_ARRAY_TYPE_ATI"("0x8769")
+        "GL_ELEMENT_ARRAY_POINTER_ATI"("0x876A")
+        "glElementPointerATI"(void, GLenum("type"), address("pointer", "const void *"))
+        "glDrawElementArrayATI"(void, GLenum("mode"), GLsizei("count"))
+        "glDrawRangeElementArrayATI"(void, GLenum("mode"), GLuint("start"), GLuint("end"), GLsizei("count"))
+    }
+    file("EnvmapBumpmap", ATI, "GL_ATI_envmap_bumpmap") {
+        "GL_BUMP_ROT_MATRIX_ATI"("0x8775")
+        "GL_BUMP_ROT_MATRIX_SIZE_ATI"("0x8776")
+        "GL_BUMP_NUM_TEX_UNITS_ATI"("0x8777")
+        "GL_BUMP_TEX_UNITS_ATI"("0x8778")
+        "GL_DUDV_ATI"("0x8779")
+        "GL_DU8DV8_ATI"("0x877A")
+        "GL_BUMP_ENVMAP_ATI"("0x877B")
+        "GL_BUMP_TARGET_ATI"("0x877C")
+        "glTexBumpParameterivATI"(void, GLenum("pname"), address("param", "const GLint *"))
+        "glTexBumpParameterfvATI"(void, GLenum("pname"), address("param", "const GLfloat *"))
+        "glGetTexBumpParameterivATI"(void, GLenum("pname"), address("param", "GLint *"))
+        "glGetTexBumpParameterfvATI"(void, GLenum("pname"), address("param", "GLfloat *"))
+    }
+    file("FragmentShader", ATI, "GL_ATI_fragment_shader") {
+        "GL_FRAGMENT_SHADER_ATI"("0x8920")
+        "GL_REG_0_ATI"("0x8921")
+        "GL_REG_1_ATI"("0x8922")
+        "GL_REG_2_ATI"("0x8923")
+        "GL_REG_3_ATI"("0x8924")
+        "GL_REG_4_ATI"("0x8925")
+        "GL_REG_5_ATI"("0x8926")
+        "GL_REG_6_ATI"("0x8927")
+        "GL_REG_7_ATI"("0x8928")
+        "GL_REG_8_ATI"("0x8929")
+        "GL_REG_9_ATI"("0x892A")
+        "GL_REG_10_ATI"("0x892B")
+        "GL_REG_11_ATI"("0x892C")
+        "GL_REG_12_ATI"("0x892D")
+        "GL_REG_13_ATI"("0x892E")
+        "GL_REG_14_ATI"("0x892F")
+        "GL_REG_15_ATI"("0x8930")
+        "GL_REG_16_ATI"("0x8931")
+        "GL_REG_17_ATI"("0x8932")
+        "GL_REG_18_ATI"("0x8933")
+        "GL_REG_19_ATI"("0x8934")
+        "GL_REG_20_ATI"("0x8935")
+        "GL_REG_21_ATI"("0x8936")
+        "GL_REG_22_ATI"("0x8937")
+        "GL_REG_23_ATI"("0x8938")
+        "GL_REG_24_ATI"("0x8939")
+        "GL_REG_25_ATI"("0x893A")
+        "GL_REG_26_ATI"("0x893B")
+        "GL_REG_27_ATI"("0x893C")
+        "GL_REG_28_ATI"("0x893D")
+        "GL_REG_29_ATI"("0x893E")
+        "GL_REG_30_ATI"("0x893F")
+        "GL_REG_31_ATI"("0x8940")
+        "GL_CON_0_ATI"("0x8941")
+        "GL_CON_1_ATI"("0x8942")
+        "GL_CON_2_ATI"("0x8943")
+        "GL_CON_3_ATI"("0x8944")
+        "GL_CON_4_ATI"("0x8945")
+        "GL_CON_5_ATI"("0x8946")
+        "GL_CON_6_ATI"("0x8947")
+        "GL_CON_7_ATI"("0x8948")
+        "GL_CON_8_ATI"("0x8949")
+        "GL_CON_9_ATI"("0x894A")
+        "GL_CON_10_ATI"("0x894B")
+        "GL_CON_11_ATI"("0x894C")
+        "GL_CON_12_ATI"("0x894D")
+        "GL_CON_13_ATI"("0x894E")
+        "GL_CON_14_ATI"("0x894F")
+        "GL_CON_15_ATI"("0x8950")
+        "GL_CON_16_ATI"("0x8951")
+        "GL_CON_17_ATI"("0x8952")
+        "GL_CON_18_ATI"("0x8953")
+        "GL_CON_19_ATI"("0x8954")
+        "GL_CON_20_ATI"("0x8955")
+        "GL_CON_21_ATI"("0x8956")
+        "GL_CON_22_ATI"("0x8957")
+        "GL_CON_23_ATI"("0x8958")
+        "GL_CON_24_ATI"("0x8959")
+        "GL_CON_25_ATI"("0x895A")
+        "GL_CON_26_ATI"("0x895B")
+        "GL_CON_27_ATI"("0x895C")
+        "GL_CON_28_ATI"("0x895D")
+        "GL_CON_29_ATI"("0x895E")
+        "GL_CON_30_ATI"("0x895F")
+        "GL_CON_31_ATI"("0x8960")
+        "GL_MOV_ATI"("0x8961")
+        "GL_ADD_ATI"("0x8963")
+        "GL_MUL_ATI"("0x8964")
+        "GL_SUB_ATI"("0x8965")
+        "GL_DOT3_ATI"("0x8966")
+        "GL_DOT4_ATI"("0x8967")
+        "GL_MAD_ATI"("0x8968")
+        "GL_LERP_ATI"("0x8969")
+        "GL_CND_ATI"("0x896A")
+        "GL_CND0_ATI"("0x896B")
+        "GL_DOT2_ADD_ATI"("0x896C")
+        "GL_SECONDARY_INTERPOLATOR_ATI"("0x896D")
+        "GL_NUM_FRAGMENT_REGISTERS_ATI"("0x896E")
+        "GL_NUM_FRAGMENT_CONSTANTS_ATI"("0x896F")
+        "GL_NUM_PASSES_ATI"("0x8970")
+        "GL_NUM_INSTRUCTIONS_PER_PASS_ATI"("0x8971")
+        "GL_NUM_INSTRUCTIONS_TOTAL_ATI"("0x8972")
+        "GL_NUM_INPUT_INTERPOLATOR_COMPONENTS_ATI"("0x8973")
+        "GL_NUM_LOOPBACK_COMPONENTS_ATI"("0x8974")
+        "GL_COLOR_ALPHA_PAIRING_ATI"("0x8975")
+        "GL_SWIZZLE_STR_ATI"("0x8976")
+        "GL_SWIZZLE_STQ_ATI"("0x8977")
+        "GL_SWIZZLE_STR_DR_ATI"("0x8978")
+        "GL_SWIZZLE_STQ_DQ_ATI"("0x8979")
+        "GL_SWIZZLE_STRQ_ATI"("0x897A")
+        "GL_SWIZZLE_STRQ_DQ_ATI"("0x897B")
+        "GL_RED_BIT_ATI"("0x00000001")
+        "GL_GREEN_BIT_ATI"("0x00000002")
+        "GL_BLUE_BIT_ATI"("0x00000004")
+        "GL_2X_BIT_ATI"("0x00000001")
+        "GL_4X_BIT_ATI"("0x00000002")
+        "GL_8X_BIT_ATI"("0x00000004")
+        "GL_HALF_BIT_ATI"("0x00000008")
+        "GL_QUARTER_BIT_ATI"("0x00000010")
+        "GL_EIGHTH_BIT_ATI"("0x00000020")
+        "GL_SATURATE_BIT_ATI"("0x00000040")
+        "GL_COMP_BIT_ATI"("0x00000002")
+        "GL_NEGATE_BIT_ATI"("0x00000004")
+        "GL_BIAS_BIT_ATI"("0x00000008")
+        "glGenFragmentShadersATI"(GLuint, GLuint("range"))
+        "glBindFragmentShaderATI"(void, GLuint("id"))
+        "glDeleteFragmentShaderATI"(void, GLuint("id"))
+        "glBeginFragmentShaderATI"(void)
+        "glEndFragmentShaderATI"(void)
+        "glPassTexCoordATI"(void, GLuint("dst"), GLuint("coord"), GLenum("swizzle"))
+        "glSampleMapATI"(void, GLuint("dst"), GLuint("interp"), GLenum("swizzle"))
+        "glColorFragmentOp1ATI"(
+            void,
+            GLenum("op"),
+            GLuint("dst"),
+            GLuint("dstMask"),
+            GLuint("dstMod"),
+            GLuint("arg1"),
+            GLuint("arg1Rep"),
+            GLuint("arg1Mod")
+        )
+        "glColorFragmentOp2ATI"(
+            void,
+            GLenum("op"),
+            GLuint("dst"),
+            GLuint("dstMask"),
+            GLuint("dstMod"),
+            GLuint("arg1"),
+            GLuint("arg1Rep"),
+            GLuint("arg1Mod"),
+            GLuint("arg2"),
+            GLuint("arg2Rep"),
+            GLuint("arg2Mod")
+        )
+        "glColorFragmentOp3ATI"(
+            void,
+            GLenum("op"),
+            GLuint("dst"),
+            GLuint("dstMask"),
+            GLuint("dstMod"),
+            GLuint("arg1"),
+            GLuint("arg1Rep"),
+            GLuint("arg1Mod"),
+            GLuint("arg2"),
+            GLuint("arg2Rep"),
+            GLuint("arg2Mod"),
+            GLuint("arg3"),
+            GLuint("arg3Rep"),
+            GLuint("arg3Mod")
+        )
+        "glAlphaFragmentOp1ATI"(
+            void,
+            GLenum("op"),
+            GLuint("dst"),
+            GLuint("dstMod"),
+            GLuint("arg1"),
+            GLuint("arg1Rep"),
+            GLuint("arg1Mod")
+        )
+        "glAlphaFragmentOp2ATI"(
+            void,
+            GLenum("op"),
+            GLuint("dst"),
+            GLuint("dstMod"),
+            GLuint("arg1"),
+            GLuint("arg1Rep"),
+            GLuint("arg1Mod"),
+            GLuint("arg2"),
+            GLuint("arg2Rep"),
+            GLuint("arg2Mod")
+        )
+        "glAlphaFragmentOp3ATI"(
+            void,
+            GLenum("op"),
+            GLuint("dst"),
+            GLuint("dstMod"),
+            GLuint("arg1"),
+            GLuint("arg1Rep"),
+            GLuint("arg1Mod"),
+            GLuint("arg2"),
+            GLuint("arg2Rep"),
+            GLuint("arg2Mod"),
+            GLuint("arg3"),
+            GLuint("arg3Rep"),
+            GLuint("arg3Mod")
+        )
+        "glSetFragmentShaderConstantATI"(void, GLuint("dst"), address("value", "const GLfloat *"))
+    }
+    file("MapObjectBuffer", ATI, "GL_ATI_map_object_buffer") {
+        "glMapObjectBufferATI"(address, GLuint("buffer"), nativeType = "void*")
+        "glUnmapObjectBufferATI"(void, GLuint("buffer"))
+    }
+    file(
+        "Meminfo", ATI, "GL_ATI_meminfo",
+        "GL_VBO_FREE_MEMORY_ATI" to "0x87FB",
+        "GL_TEXTURE_FREE_MEMORY_ATI" to "0x87FC",
+        "GL_RENDERBUFFER_FREE_MEMORY_ATI" to "0x87FD"
+    )
+    file(
+        "PixelFormatFloat", ATI, "GL_ATI_pixel_format_float",
+        "GL_RGBA_FLOAT_MODE_ATI" to "0x8820",
+        "GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI" to "0x8835"
+    )
+    file("PnTriangles", ATI, "GL_ATI_pn_triangles") {
+        "GL_PN_TRIANGLES_ATI"("0x87F0")
+        "GL_MAX_PN_TRIANGLES_TESSELATION_LEVEL_ATI"("0x87F1")
+        "GL_PN_TRIANGLES_POINT_MODE_ATI"("0x87F2")
+        "GL_PN_TRIANGLES_NORMAL_MODE_ATI"("0x87F3")
+        "GL_PN_TRIANGLES_TESSELATION_LEVEL_ATI"("0x87F4")
+        "GL_PN_TRIANGLES_POINT_MODE_LINEAR_ATI"("0x87F5")
+        "GL_PN_TRIANGLES_POINT_MODE_CUBIC_ATI"("0x87F6")
+        "GL_PN_TRIANGLES_NORMAL_MODE_LINEAR_ATI"("0x87F7")
+        "GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATI"("0x87F8")
+        "glPNTrianglesiATI"(void, GLenum("pname"), GLint("param"))
+        "glPNTrianglesfATI"(void, GLenum("pname"), GLfloat("param"))
+    }
+    file("SeparateStencil", ATI, "GL_ATI_separate_stencil") {
+        "GL_STENCIL_BACK_FUNC_ATI"("0x8800")
+        "GL_STENCIL_BACK_FAIL_ATI"("0x8801")
+        "GL_STENCIL_BACK_PASS_DEPTH_FAIL_ATI"("0x8802")
+        "GL_STENCIL_BACK_PASS_DEPTH_PASS_ATI"("0x8803")
+        "glStencilOpSeparateATI"(void, GLenum("face"), GLenum("sfail"), GLenum("dpfail"), GLenum("dppass"))
+        "glStencilFuncSeparateATI"(void, GLenum("frontfunc"), GLenum("backfunc"), GLint("ref"), GLuint("mask"))
+    }
+    file("TextFragmentShader", ATI, "GL_ATI_text_fragment_shader", "GL_TEXT_FRAGMENT_SHADER_ATI" to "0x8200")
+    file(
+        "TextureEnvCombine3", ATI, "GL_ATI_texture_env_combine3",
+        "GL_MODULATE_ADD_ATI" to "0x8744",
+        "GL_MODULATE_SIGNED_ADD_ATI" to "0x8745",
+        "GL_MODULATE_SUBTRACT_ATI" to "0x8746"
+    )
+    file(
+        "TextureFloat", ATI, "GL_ATI_texture_float",
+        "GL_RGBA_FLOAT32_ATI" to "0x8814",
+        "GL_RGB_FLOAT32_ATI" to "0x8815",
+        "GL_ALPHA_FLOAT32_ATI" to "0x8816",
+        "GL_INTENSITY_FLOAT32_ATI" to "0x8817",
+        "GL_LUMINANCE_FLOAT32_ATI" to "0x8818",
+        "GL_LUMINANCE_ALPHA_FLOAT32_ATI" to "0x8819",
+        "GL_RGBA_FLOAT16_ATI" to "0x881A",
+        "GL_RGB_FLOAT16_ATI" to "0x881B",
+        "GL_ALPHA_FLOAT16_ATI" to "0x881C",
+        "GL_INTENSITY_FLOAT16_ATI" to "0x881D",
+        "GL_LUMINANCE_FLOAT16_ATI" to "0x881E",
+        "GL_LUMINANCE_ALPHA_FLOAT16_ATI" to "0x881F"
+    )
+    file(
+        "TextureMirrorOnce", ATI, "GL_ATI_texture_mirror_once",
+        "GL_MIRROR_CLAMP_ATI" to "0x8742",
+        "GL_MIRROR_CLAMP_TO_EDGE_ATI" to "0x8743"
+    )
+    file("VertexArrayObject", ATI, "GL_ATI_vertex_array_object") {
+        "GL_STATIC_ATI"("0x8760")
+        "GL_DYNAMIC_ATI"("0x8761")
+        "GL_PRESERVE_ATI"("0x8762")
+        "GL_DISCARD_ATI"("0x8763")
+        "GL_OBJECT_BUFFER_SIZE_ATI"("0x8764")
+        "GL_OBJECT_BUFFER_USAGE_ATI"("0x8765")
+        "GL_ARRAY_OBJECT_BUFFER_ATI"("0x8766")
+        "GL_ARRAY_OBJECT_OFFSET_ATI"("0x8767")
+        "glNewObjectBufferATI"(GLuint, GLsizei("size"), address("pointer", "const void *"), GLenum("usage"))
+        "glIsObjectBufferATI"(GLboolean, GLuint("buffer"))
+        "glUpdateObjectBufferATI"(
+            void,
+            GLuint("buffer"),
+            GLuint("offset"),
+            GLsizei("size"),
+            address("pointer", "const void *"),
+            GLenum("preserve")
+        )
+        "glGetObjectBufferfvATI"(void, GLuint("buffer"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetObjectBufferivATI"(void, GLuint("buffer"), GLenum("pname"), address("params", "GLint *"))
+        "glFreeObjectBufferATI"(void, GLuint("buffer"))
+        "glArrayObjectATI"(
+            void,
+            GLenum("array"),
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            GLuint("buffer"),
+            GLuint("offset")
+        )
+        "glGetArrayObjectfvATI"(void, GLenum("array"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetArrayObjectivATI"(void, GLenum("array"), GLenum("pname"), address("params", "GLint *"))
+        "glVariantArrayObjectATI"(
+            void,
+            GLuint("id"),
+            GLenum("type"),
+            GLsizei("stride"),
+            GLuint("buffer"),
+            GLuint("offset")
+        )
+        "glGetVariantArrayObjectfvATI"(void, GLuint("id"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetVariantArrayObjectivATI"(void, GLuint("id"), GLenum("pname"), address("params", "GLint *"))
+    }
+    file("VertexAttribArrayObject", ATI, "GL_ATI_vertex_attrib_array_object") {
+        "glVertexAttribArrayObjectATI"(
+            void,
+            GLuint("index"),
+            GLint("size"),
+            GLenum("type"),
+            GLboolean("normalized"),
+            GLsizei("stride"),
+            GLuint("buffer"),
+            GLuint("offset")
+        )
+        "glGetVertexAttribArrayObjectfvATI"(void, GLuint("index"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetVertexAttribArrayObjectivATI"(void, GLuint("index"), GLenum("pname"), address("params", "GLint *"))
+    }
+    file("VertexStreams", ATI, "GL_ATI_vertex_streams") {
+        "GL_MAX_VERTEX_STREAMS_ATI"("0x876B")
+        "GL_VERTEX_STREAM0_ATI"("0x876C")
+        "GL_VERTEX_STREAM1_ATI"("0x876D")
+        "GL_VERTEX_STREAM2_ATI"("0x876E")
+        "GL_VERTEX_STREAM3_ATI"("0x876F")
+        "GL_VERTEX_STREAM4_ATI"("0x8770")
+        "GL_VERTEX_STREAM5_ATI"("0x8771")
+        "GL_VERTEX_STREAM6_ATI"("0x8772")
+        "GL_VERTEX_STREAM7_ATI"("0x8773")
+        "GL_VERTEX_SOURCE_ATI"("0x8774")
+        "glVertexStream1sATI"(void, GLenum("stream"), GLshort("x"))
+        "glVertexStream1svATI"(void, GLenum("stream"), address("coords", "const GLshort *"))
+        "glVertexStream1iATI"(void, GLenum("stream"), GLint("x"))
+        "glVertexStream1ivATI"(void, GLenum("stream"), address("coords", "const GLint *"))
+        "glVertexStream1fATI"(void, GLenum("stream"), GLfloat("x"))
+        "glVertexStream1fvATI"(void, GLenum("stream"), address("coords", "const GLfloat *"))
+        "glVertexStream1dATI"(void, GLenum("stream"), GLdouble("x"))
+        "glVertexStream1dvATI"(void, GLenum("stream"), address("coords", "const GLdouble *"))
+        "glVertexStream2sATI"(void, GLenum("stream"), GLshort("x"), GLshort("y"))
+        "glVertexStream2svATI"(void, GLenum("stream"), address("coords", "const GLshort *"))
+        "glVertexStream2iATI"(void, GLenum("stream"), GLint("x"), GLint("y"))
+        "glVertexStream2ivATI"(void, GLenum("stream"), address("coords", "const GLint *"))
+        "glVertexStream2fATI"(void, GLenum("stream"), GLfloat("x"), GLfloat("y"))
+        "glVertexStream2fvATI"(void, GLenum("stream"), address("coords", "const GLfloat *"))
+        "glVertexStream2dATI"(void, GLenum("stream"), GLdouble("x"), GLdouble("y"))
+        "glVertexStream2dvATI"(void, GLenum("stream"), address("coords", "const GLdouble *"))
+        "glVertexStream3sATI"(void, GLenum("stream"), GLshort("x"), GLshort("y"), GLshort("z"))
+        "glVertexStream3svATI"(void, GLenum("stream"), address("coords", "const GLshort *"))
+        "glVertexStream3iATI"(void, GLenum("stream"), GLint("x"), GLint("y"), GLint("z"))
+        "glVertexStream3ivATI"(void, GLenum("stream"), address("coords", "const GLint *"))
+        "glVertexStream3fATI"(void, GLenum("stream"), GLfloat("x"), GLfloat("y"), GLfloat("z"))
+        "glVertexStream3fvATI"(void, GLenum("stream"), address("coords", "const GLfloat *"))
+        "glVertexStream3dATI"(void, GLenum("stream"), GLdouble("x"), GLdouble("y"), GLdouble("z"))
+        "glVertexStream3dvATI"(void, GLenum("stream"), address("coords", "const GLdouble *"))
+        "glVertexStream4sATI"(void, GLenum("stream"), GLshort("x"), GLshort("y"), GLshort("z"), GLshort("w"))
+        "glVertexStream4svATI"(void, GLenum("stream"), address("coords", "const GLshort *"))
+        "glVertexStream4iATI"(void, GLenum("stream"), GLint("x"), GLint("y"), GLint("z"), GLint("w"))
+        "glVertexStream4ivATI"(void, GLenum("stream"), address("coords", "const GLint *"))
+        "glVertexStream4fATI"(void, GLenum("stream"), GLfloat("x"), GLfloat("y"), GLfloat("z"), GLfloat("w"))
+        "glVertexStream4fvATI"(void, GLenum("stream"), address("coords", "const GLfloat *"))
+        "glVertexStream4dATI"(void, GLenum("stream"), GLdouble("x"), GLdouble("y"), GLdouble("z"), GLdouble("w"))
+        "glVertexStream4dvATI"(void, GLenum("stream"), address("coords", "const GLdouble *"))
+        "glNormalStream3bATI"(void, GLenum("stream"), GLbyte("nx"), GLbyte("ny"), GLbyte("nz"))
+        "glNormalStream3bvATI"(void, GLenum("stream"), address("coords", "const GLbyte *"))
+        "glNormalStream3sATI"(void, GLenum("stream"), GLshort("nx"), GLshort("ny"), GLshort("nz"))
+        "glNormalStream3svATI"(void, GLenum("stream"), address("coords", "const GLshort *"))
+        "glNormalStream3iATI"(void, GLenum("stream"), GLint("nx"), GLint("ny"), GLint("nz"))
+        "glNormalStream3ivATI"(void, GLenum("stream"), address("coords", "const GLint *"))
+        "glNormalStream3fATI"(void, GLenum("stream"), GLfloat("nx"), GLfloat("ny"), GLfloat("nz"))
+        "glNormalStream3fvATI"(void, GLenum("stream"), address("coords", "const GLfloat *"))
+        "glNormalStream3dATI"(void, GLenum("stream"), GLdouble("nx"), GLdouble("ny"), GLdouble("nz"))
+        "glNormalStream3dvATI"(void, GLenum("stream"), address("coords", "const GLdouble *"))
+        "glClientActiveVertexStreamATI"(void, GLenum("stream"))
+        "glVertexBlendEnviATI"(void, GLenum("pname"), GLint("param"))
+        "glVertexBlendEnvfATI"(void, GLenum("pname"), GLfloat("param"))
+    }
+}
 
 fun ext() {}
 
@@ -2317,7 +2725,27 @@ fun mesa() {
 
 fun nv() {}
 
-fun oml() {}
+fun oml() {
+    file(
+        "Interlace", OML, "GL_OML_interlace",
+        "GL_INTERLACE_OML" to "0x8980",
+        "GL_INTERLACE_READ_OML" to "0x8981"
+    )
+    file(
+        "Resample", OML, "GL_OML_resample",
+        "GL_PACK_RESAMPLE_OML" to "0x8984",
+        "GL_UNPACK_RESAMPLE_OML" to "0x8985",
+        "GL_RESAMPLE_REPLICATE_OML" to "0x8986",
+        "GL_RESAMPLE_ZERO_FILL_OML" to "0x8987",
+        "GL_RESAMPLE_AVERAGE_OML" to "0x8988",
+        "GL_RESAMPLE_DECIMATE_OML" to "0x8989"
+    )
+    file(
+        "Subsample", OML, "GL_OML_subsample",
+        "GL_FORMAT_SUBSAMPLE_24_24_OML" to "0x8982",
+        "GL_FORMAT_SUBSAMPLE_244_244_OML" to "0x8983"
+    )
+}
 
 fun ovr() {
     file("Multiview", OVR, "GL_OVR_multiview") {
@@ -2388,11 +2816,52 @@ fun pgi() {
     )
 }
 
-fun rend() {}
+fun rend() {
+    file(
+        "ScreenCoordinates", REND, "GL_REND_screen_coordinates",
+        "GL_SCREEN_COORDINATES_REND" to "0x8490",
+        "GL_INVERTED_SCREEN_W_REND" to "0x8491"
+    )
+}
 
-fun s3() {}
+fun s3() {
+    file(
+        "S3tc", S3, "GL_S3_s3tc",
+        "GL_RGB_S3TC" to "0x83A0",
+        "GL_RGB4_S3TC" to "0x83A1",
+        "GL_RGBA_S3TC" to "0x83A2",
+        "GL_RGBA4_S3TC" to "0x83A3",
+        "GL_RGBA_DXT5_S3TC" to "0x83A4",
+        "GL_RGBA4_DXT5_S3TC" to "0x83A5"
+    )
+}
 
-fun sgi() {}
+fun sgi() {
+    file("DetailTexture", SGIS, "GL_SGIS_detail_texture") {
+        "GL_DETAIL_TEXTURE_2D_SGIS"("0x8095")
+        "GL_DETAIL_TEXTURE_2D_BINDING_SGIS"("0x8096")
+        "GL_LINEAR_DETAIL_SGIS"("0x8097")
+        "GL_LINEAR_DETAIL_ALPHA_SGIS"("0x8098")
+        "GL_LINEAR_DETAIL_COLOR_SGIS"("0x8099")
+        "GL_DETAIL_TEXTURE_LEVEL_SGIS"("0x809A")
+        "GL_DETAIL_TEXTURE_MODE_SGIS"("0x809B")
+        "GL_DETAIL_TEXTURE_FUNC_POINTS_SGIS"("0x809C")
+        "glDetailTexFuncSGIS"(void, GLenum("target"), GLsizei("n"), address("points", "const GLfloat *"))
+        "glGetDetailTexFuncSGIS"(void, GLenum("target"), address("points", "GLfloat *"))
+    }
+    file("FogFunction", SGIS, "GL_SGIS_fog_function") {
+        "GL_FOG_FUNC_SGIS"("0x812A")
+        "GL_FOG_FUNC_POINTS_SGIS"("0x812B")
+        "GL_MAX_FOG_FUNC_POINTS_SGIS"("0x812C")
+        "glFogFuncSGIS"(void, GLsizei("n"), address("points", "const GLfloat *"))
+        "glGetFogFuncSGIS"(void, address("points", "GLfloat *"))
+    }
+    file(
+        "GenerateMipmap", SGIS, "GL_SGIS_generate_mipmap",
+        "GL_GENERATE_MIPMAP_SGIS" to "0x8191",
+        "GL_GENERATE_MIPMAP_HINT_SGIS" to "0x8192"
+    )
+}
 
 fun sun() {
     file("ConstantData", SUNX, "GL_SUNX_constant_data") {
@@ -2763,29 +3232,654 @@ fun win() {
 }
 
 fun glExtCaps() {
+    val caps = arrayOf(
+        "GL_ARB_ES2_compatibility",
+        "GL_ARB_ES3_1_compatibility",
+        "GL_ARB_ES3_2_compatibility",
+        "GL_ARB_ES3_compatibility",
+        "GL_ARB_arrays_of_arrays",
+        "GL_ARB_base_instance",
+        "GL_ARB_bindless_texture",
+        "GL_ARB_blend_func_extended",
+        "GL_ARB_buffer_storage",
+        "GL_ARB_cl_event",
+        "GL_ARB_clear_buffer_object",
+        "GL_ARB_clear_texture",
+        "GL_ARB_clip_control",
+        "GL_ARB_color_buffer_float",
+        "GL_ARB_compatibility",
+        "GL_ARB_compressed_texture_pixel_storage",
+        "GL_ARB_compute_shader",
+        "GL_ARB_compute_variable_group_size",
+        "GL_ARB_conditional_render_inverted",
+        "GL_ARB_conservative_depth",
+        "GL_ARB_copy_buffer",
+        "GL_ARB_copy_image",
+        "GL_ARB_cull_distance",
+        "GL_ARB_debug_output",
+        "GL_ARB_depth_buffer_float",
+        "GL_ARB_depth_clamp",
+        "GL_ARB_depth_texture",
+        "GL_ARB_derivative_control",
+        "GL_ARB_direct_state_access",
+        "GL_ARB_draw_buffers",
+        "GL_ARB_draw_buffers_blend",
+        "GL_ARB_draw_elements_base_vertex",
+        "GL_ARB_draw_indirect",
+        "GL_ARB_draw_instanced",
+        "GL_ARB_enhanced_layouts",
+        "GL_ARB_explicit_attrib_location",
+        "GL_ARB_explicit_uniform_location",
+        "GL_ARB_fragment_coord_conventions",
+        "GL_ARB_fragment_layer_viewport",
+        "GL_ARB_fragment_program",
+        "GL_ARB_fragment_program_shadow",
+        "GL_ARB_fragment_shader",
+        "GL_ARB_fragment_shader_interlock",
+        "GL_ARB_framebuffer_no_attachments",
+        "GL_ARB_framebuffer_object",
+        "GL_ARB_framebuffer_sRGB",
+        "GL_ARB_geometry_shader4",
+        "GL_ARB_get_program_binary",
+        "GL_ARB_get_texture_sub_image",
+        "GL_ARB_gl_spirv",
+        "GL_ARB_gpu_shader5",
+        "GL_ARB_gpu_shader_fp64",
+        "GL_ARB_gpu_shader_int64",
+        "GL_ARB_half_float_pixel",
+        "GL_ARB_half_float_vertex",
+        "GL_ARB_imaging",
+        "GL_ARB_indirect_parameters",
+        "GL_ARB_instanced_arrays",
+        "GL_ARB_internalformat_query",
+        "GL_ARB_internalformat_query2",
+        "GL_ARB_invalidate_subdata",
+        "GL_ARB_map_buffer_alignment",
+        "GL_ARB_map_buffer_range",
+        "GL_ARB_matrix_palette",
+        "GL_ARB_multi_bind",
+        "GL_ARB_multi_draw_indirect",
+        "GL_ARB_multisample",
+        "GL_ARB_multitexture",
+        "GL_ARB_occlusion_query",
+        "GL_ARB_occlusion_query2",
+        "GL_ARB_parallel_shader_compile",
+        "GL_ARB_pipeline_statistics_query",
+        "GL_ARB_pixel_buffer_object",
+        "GL_ARB_point_parameters",
+        "GL_ARB_point_sprite",
+        "GL_ARB_polygon_offset_clamp",
+        "GL_ARB_post_depth_coverage",
+        "GL_ARB_program_interface_query",
+        "GL_ARB_provoking_vertex",
+        "GL_ARB_query_buffer_object",
+        "GL_ARB_robust_buffer_access_behavior",
+        "GL_ARB_robustness",
+        "GL_ARB_robustness_isolation",
+        "GL_ARB_sample_locations",
+        "GL_ARB_sample_shading",
+        "GL_ARB_sampler_objects",
+        "GL_ARB_seamless_cube_map",
+        "GL_ARB_seamless_cubemap_per_texture",
+        "GL_ARB_separate_shader_objects",
+        "GL_ARB_shader_atomic_counter_ops",
+        "GL_ARB_shader_atomic_counters",
+        "GL_ARB_shader_ballot",
+        "GL_ARB_shader_bit_encoding",
+        "GL_ARB_shader_clock",
+        "GL_ARB_shader_draw_parameters",
+        "GL_ARB_shader_group_vote",
+        "GL_ARB_shader_image_load_store",
+        "GL_ARB_shader_image_size",
+        "GL_ARB_shader_objects",
+        "GL_ARB_shader_precision",
+        "GL_ARB_shader_stencil_export",
+        "GL_ARB_shader_storage_buffer_object",
+        "GL_ARB_shader_subroutine",
+        "GL_ARB_shader_texture_image_samples",
+        "GL_ARB_shader_texture_lod",
+        "GL_ARB_shader_viewport_layer_array",
+        "GL_ARB_shading_language_100",
+        "GL_ARB_shading_language_420pack",
+        "GL_ARB_shading_language_include",
+        "GL_ARB_shading_language_packing",
+        "GL_ARB_shadow",
+        "GL_ARB_shadow_ambient",
+        "GL_ARB_sparse_buffer",
+        "GL_ARB_sparse_texture",
+        "GL_ARB_sparse_texture2",
+        "GL_ARB_sparse_texture_clamp",
+        "GL_ARB_spirv_extensions",
+        "GL_ARB_stencil_texturing",
+        "GL_ARB_sync",
+        "GL_ARB_tessellation_shader",
+        "GL_ARB_texture_barrier",
+        "GL_ARB_texture_border_clamp",
+        "GL_ARB_texture_buffer_object",
+        "GL_ARB_texture_buffer_object_rgb32",
+        "GL_ARB_texture_buffer_range",
+        "GL_ARB_texture_compression",
+        "GL_ARB_texture_compression_bptc",
+        "GL_ARB_texture_compression_rgtc",
+        "GL_ARB_texture_cube_map",
+        "GL_ARB_texture_cube_map_array",
+        "GL_ARB_texture_env_add",
+        "GL_ARB_texture_env_combine",
+        "GL_ARB_texture_env_crossbar",
+        "GL_ARB_texture_env_dot3",
+        "GL_ARB_texture_filter_anisotropic",
+        "GL_ARB_texture_filter_minmax",
+        "GL_ARB_texture_float",
+        "GL_ARB_texture_gather",
+        "GL_ARB_texture_mirror_clamp_to_edge",
+        "GL_ARB_texture_mirrored_repeat",
+        "GL_ARB_texture_multisample",
+        "GL_ARB_texture_non_power_of_two",
+        "GL_ARB_texture_query_levels",
+        "GL_ARB_texture_query_lod",
+        "GL_ARB_texture_rectangle",
+        "GL_ARB_texture_rg",
+        "GL_ARB_texture_rgb10_a2ui",
+        "GL_ARB_texture_stencil8",
+        "GL_ARB_texture_storage",
+        "GL_ARB_texture_storage_multisample",
+        "GL_ARB_texture_swizzle",
+        "GL_ARB_texture_view",
+        "GL_ARB_timer_query",
+        "GL_ARB_transform_feedback2",
+        "GL_ARB_transform_feedback3",
+        "GL_ARB_transform_feedback_instanced",
+        "GL_ARB_transform_feedback_overflow_query",
+        "GL_ARB_transpose_matrix",
+        "GL_ARB_uniform_buffer_object",
+        "GL_ARB_vertex_array_bgra",
+        "GL_ARB_vertex_array_object",
+        "GL_ARB_vertex_attrib_64bit",
+        "GL_ARB_vertex_attrib_binding",
+        "GL_ARB_vertex_blend",
+        "GL_ARB_vertex_buffer_object",
+        "GL_ARB_vertex_program",
+        "GL_ARB_vertex_shader",
+        "GL_ARB_vertex_type_10f_11f_11f_rev",
+        "GL_ARB_vertex_type_2_10_10_10_rev",
+        "GL_ARB_viewport_array",
+        "GL_ARB_window_pos",
+        "GL_KHR_blend_equation_advanced",
+        "GL_KHR_blend_equation_advanced_coherent",
+        "GL_KHR_context_flush_control",
+        "GL_KHR_debug",
+        "GL_KHR_no_error",
+        "GL_KHR_parallel_shader_compile",
+        "GL_KHR_robust_buffer_access_behavior",
+        "GL_KHR_robustness",
+        "GL_KHR_shader_subgroup",
+        "GL_KHR_texture_compression_astc_hdr",
+        "GL_KHR_texture_compression_astc_ldr",
+        "GL_KHR_texture_compression_astc_sliced_3d",
+        "GL_OES_byte_coordinates",
+        "GL_OES_compressed_paletted_texture",
+        "GL_OES_fixed_point",
+        "GL_OES_query_matrix",
+        "GL_OES_read_format",
+        "GL_OES_single_precision",
+        "GL_3DFX_multisample",
+        "GL_3DFX_tbuffer",
+        "GL_3DFX_texture_compression_FXT1",
+        "GL_AMD_blend_minmax_factor",
+        "GL_AMD_conservative_depth",
+        "GL_AMD_debug_output",
+        "GL_AMD_depth_clamp_separate",
+        "GL_AMD_draw_buffers_blend",
+        "GL_AMD_framebuffer_multisample_advanced",
+        "GL_AMD_framebuffer_sample_positions",
+        "GL_AMD_gcn_shader",
+        "GL_AMD_gpu_shader_half_float",
+        "GL_AMD_gpu_shader_int16",
+        "GL_AMD_gpu_shader_int64",
+        "GL_AMD_interleaved_elements",
+        "GL_AMD_multi_draw_indirect",
+        "GL_AMD_name_gen_delete",
+        "GL_AMD_occlusion_query_event",
+        "GL_AMD_performance_monitor",
+        "GL_AMD_pinned_memory",
+        "GL_AMD_query_buffer_object",
+        "GL_AMD_sample_positions",
+        "GL_AMD_seamless_cubemap_per_texture",
+        "GL_AMD_shader_atomic_counter_ops",
+        "GL_AMD_shader_ballot",
+        "GL_AMD_shader_explicit_vertex_parameter",
+        "GL_AMD_shader_gpu_shader_half_float_fetch",
+        "GL_AMD_shader_image_load_store_lod",
+        "GL_AMD_shader_stencil_export",
+        "GL_AMD_shader_trinary_minmax",
+        "GL_AMD_sparse_texture",
+        "GL_AMD_stencil_operation_extended",
+        "GL_AMD_texture_gather_bias_lod",
+        "GL_AMD_texture_texture4",
+        "GL_AMD_transform_feedback3_lines_triangles",
+        "GL_AMD_transform_feedback4",
+        "GL_AMD_vertex_shader_layer",
+        "GL_AMD_vertex_shader_tessellator",
+        "GL_AMD_vertex_shader_viewport_index",
+        "GL_APPLE_aux_depth_stencil",
+        "GL_APPLE_client_storage",
+        "GL_APPLE_element_array",
+        "GL_APPLE_fence",
+        "GL_APPLE_float_pixels",
+        "GL_APPLE_flush_buffer_range",
+        "GL_APPLE_object_purgeable",
+        "GL_APPLE_rgb_422",
+        "GL_APPLE_row_bytes",
+        "GL_APPLE_specular_vector",
+        "GL_APPLE_texture_range",
+        "GL_APPLE_transform_hint",
+        "GL_APPLE_vertex_array_object",
+        "GL_APPLE_vertex_array_range",
+        "GL_APPLE_vertex_program_evaluators",
+        "GL_APPLE_ycbcr_422",
+        "GL_ATI_draw_buffers",
+        "GL_ATI_element_array",
+        "GL_ATI_envmap_bumpmap",
+        "GL_ATI_fragment_shader",
+        "GL_ATI_map_object_buffer",
+        "GL_ATI_meminfo",
+        "GL_ATI_pixel_format_float",
+        "GL_ATI_pn_triangles",
+        "GL_ATI_separate_stencil",
+        "GL_ATI_text_fragment_shader",
+        "GL_ATI_texture_env_combine3",
+        "GL_ATI_texture_float",
+        "GL_ATI_texture_mirror_once",
+        "GL_ATI_vertex_array_object",
+        "GL_ATI_vertex_attrib_array_object",
+        "GL_ATI_vertex_streams",
+        "GL_EXT_422_pixels",
+        "GL_EXT_EGL_image_storage",
+        "GL_EXT_EGL_sync",
+        "GL_EXT_abgr",
+        "GL_EXT_bgra",
+        "GL_EXT_bindable_uniform",
+        "GL_EXT_blend_color",
+        "GL_EXT_blend_equation_separate",
+        "GL_EXT_blend_func_separate",
+        "GL_EXT_blend_logic_op",
+        "GL_EXT_blend_minmax",
+        "GL_EXT_blend_subtract",
+        "GL_EXT_clip_volume_hint",
+        "GL_EXT_cmyka",
+        "GL_EXT_color_subtable",
+        "GL_EXT_compiled_vertex_array",
+        "GL_EXT_convolution",
+        "GL_EXT_coordinate_frame",
+        "GL_EXT_copy_texture",
+        "GL_EXT_cull_vertex",
+        "GL_EXT_debug_label",
+        "GL_EXT_debug_marker",
+        "GL_EXT_depth_bounds_test",
+        "GL_EXT_direct_state_access",
+        "GL_EXT_draw_buffers2",
+        "GL_EXT_draw_instanced",
+        "GL_EXT_draw_range_elements",
+        "GL_EXT_external_buffer",
+        "GL_EXT_fog_coord",
+        "GL_EXT_framebuffer_blit",
+        "GL_EXT_framebuffer_blit_layers",
+        "GL_EXT_framebuffer_multisample",
+        "GL_EXT_framebuffer_multisample_blit_scaled",
+        "GL_EXT_framebuffer_object",
+        "GL_EXT_framebuffer_sRGB",
+        "GL_EXT_geometry_shader4",
+        "GL_EXT_gpu_program_parameters",
+        "GL_EXT_gpu_shader4",
+        "GL_EXT_histogram",
+        "GL_EXT_index_array_formats",
+        "GL_EXT_index_func",
+        "GL_EXT_index_material",
+        "GL_EXT_index_texture",
+        "GL_EXT_light_texture",
+        "GL_EXT_memory_object",
+        "GL_EXT_memory_object_fd",
+        "GL_EXT_memory_object_win32",
+        "GL_EXT_misc_attribute",
+        "GL_EXT_multi_draw_arrays",
+        "GL_EXT_multisample",
+        "GL_EXT_multiview_tessellation_geometry_shader",
+        "GL_EXT_multiview_texture_multisample",
+        "GL_EXT_multiview_timer_query",
+        "GL_EXT_packed_depth_stencil",
+        "GL_EXT_packed_float",
+        "GL_EXT_packed_pixels",
+        "GL_EXT_paletted_texture",
+        "GL_EXT_pixel_buffer_object",
+        "GL_EXT_pixel_transform",
+        "GL_EXT_pixel_transform_color_table",
+        "GL_EXT_point_parameters",
+        "GL_EXT_polygon_offset",
+        "GL_EXT_polygon_offset_clamp",
+        "GL_EXT_post_depth_coverage",
+        "GL_EXT_provoking_vertex",
+        "GL_EXT_raster_multisample",
+        "GL_EXT_rescale_normal",
+        "GL_EXT_secondary_color",
+        "GL_EXT_semaphore",
+        "GL_EXT_semaphore_fd",
+        "GL_EXT_semaphore_win32",
+        "GL_EXT_separate_shader_objects",
+        "GL_EXT_separate_specular_color",
+        "GL_EXT_shader_framebuffer_fetch",
+        "GL_EXT_shader_framebuffer_fetch_non_coherent",
+        "GL_EXT_shader_image_load_formatted",
+        "GL_EXT_shader_image_load_store",
+        "GL_EXT_shader_integer_mix",
+        "GL_EXT_shader_samples_identical",
+        "GL_EXT_shadow_funcs",
+        "GL_EXT_shared_texture_palette",
+        "GL_EXT_sparse_texture2",
+        "GL_EXT_stencil_clear_tag",
+        "GL_EXT_stencil_two_side",
+        "GL_EXT_stencil_wrap",
+        "GL_EXT_subtexture",
+        "GL_EXT_texture",
+        "GL_EXT_texture3D",
+        "GL_EXT_texture_array",
+        "GL_EXT_texture_buffer_object",
+        "GL_EXT_texture_compression_latc",
+        "GL_EXT_texture_compression_rgtc",
+        "GL_EXT_texture_compression_s3tc",
+        "GL_EXT_texture_cube_map",
+        "GL_EXT_texture_env_add",
+        "GL_EXT_texture_env_combine",
+        "GL_EXT_texture_env_dot3",
+        "GL_EXT_texture_filter_anisotropic",
+        "GL_EXT_texture_filter_minmax",
+        "GL_EXT_texture_integer",
+        "GL_EXT_texture_lod_bias",
+        "GL_EXT_texture_mirror_clamp",
+        "GL_EXT_texture_object",
+        "GL_EXT_texture_perturb_normal",
+        "GL_EXT_texture_sRGB",
+        "GL_EXT_texture_sRGB_R8",
+        "GL_EXT_texture_sRGB_RG8",
+        "GL_EXT_texture_sRGB_decode",
+        "GL_EXT_texture_shadow_lod",
+        "GL_EXT_texture_shared_exponent",
+        "GL_EXT_texture_snorm",
+        "GL_EXT_texture_storage",
+        "GL_EXT_texture_swizzle",
+        "GL_EXT_timer_query",
+        "GL_EXT_transform_feedback",
+        "GL_EXT_vertex_array",
+        "GL_EXT_vertex_array_bgra",
+        "GL_EXT_vertex_attrib_64bit",
+        "GL_EXT_vertex_shader",
+        "GL_EXT_vertex_weighting",
+        "GL_EXT_win32_keyed_mutex",
+        "GL_EXT_window_rectangles",
+        "GL_EXT_x11_sync_object",
+        "GL_GREMEDY_frame_terminator",
+        "GL_GREMEDY_string_marker",
+        "GL_HP_convolution_border_modes",
+        "GL_HP_image_transform",
+        "GL_HP_occlusion_test",
+        "GL_HP_texture_lighting",
+        "GL_IBM_cull_vertex",
+        "GL_IBM_multimode_draw_arrays",
+        "GL_IBM_rasterpos_clip",
+        "GL_IBM_static_data",
+        "GL_IBM_texture_mirrored_repeat",
+        "GL_IBM_vertex_array_lists",
+        "GL_INGR_blend_func_separate",
+        "GL_INGR_color_clamp",
+        "GL_INGR_interlace_read",
+        "GL_INTEL_blackhole_render",
+        "GL_INTEL_conservative_rasterization",
+        "GL_INTEL_fragment_shader_ordering",
+        "GL_INTEL_framebuffer_CMAA",
+        "GL_INTEL_map_texture",
+        "GL_INTEL_parallel_arrays",
+        "GL_INTEL_performance_query",
+        "GL_MESAX_texture_stack",
+        "GL_MESA_framebuffer_flip_x",
+        "GL_MESA_framebuffer_flip_y",
+        "GL_MESA_framebuffer_swap_xy",
+        "GL_MESA_pack_invert",
+        "GL_MESA_program_binary_formats",
+        "GL_MESA_resize_buffers",
+        "GL_MESA_shader_integer_functions",
+        "GL_MESA_tile_raster_order",
+        "GL_MESA_window_pos",
+        "GL_MESA_ycbcr_texture",
+        "GL_NVX_blend_equation_advanced_multi_draw_buffers",
+        "GL_NVX_conditional_render",
+        "GL_NVX_gpu_memory_info",
+        "GL_NVX_gpu_multicast2",
+        "GL_NVX_linked_gpu_multicast",
+        "GL_NVX_progress_fence",
+        "GL_NV_alpha_to_coverage_dither_control",
+        "GL_NV_bindless_multi_draw_indirect",
+        "GL_NV_bindless_multi_draw_indirect_count",
+        "GL_NV_bindless_texture",
+        "GL_NV_blend_equation_advanced",
+        "GL_NV_blend_equation_advanced_coherent",
+        "GL_NV_blend_minmax_factor",
+        "GL_NV_blend_square",
+        "GL_NV_clip_space_w_scaling",
+        "GL_NV_command_list",
+        "GL_NV_compute_program5",
+        "GL_NV_compute_shader_derivatives",
+        "GL_NV_conditional_render",
+        "GL_NV_conservative_raster",
+        "GL_NV_conservative_raster_dilate",
+        "GL_NV_conservative_raster_pre_snap",
+        "GL_NV_conservative_raster_pre_snap_triangles",
+        "GL_NV_conservative_raster_underestimation",
+        "GL_NV_copy_depth_to_color",
+        "GL_NV_copy_image",
+        "GL_NV_deep_texture3D",
+        "GL_NV_depth_buffer_float",
+        "GL_NV_depth_clamp",
+        "GL_NV_draw_texture",
+        "GL_NV_draw_vulkan_image",
+        "GL_NV_evaluators",
+        "GL_NV_explicit_multisample",
+        "GL_NV_fence",
+        "GL_NV_fill_rectangle",
+        "GL_NV_float_buffer",
+        "GL_NV_fog_distance",
+        "GL_NV_fragment_coverage_to_color",
+        "GL_NV_fragment_program",
+        "GL_NV_fragment_program2",
+        "GL_NV_fragment_program4",
+        "GL_NV_fragment_program_option",
+        "GL_NV_fragment_shader_barycentric",
+        "GL_NV_fragment_shader_interlock",
+        "GL_NV_framebuffer_mixed_samples",
+        "GL_NV_framebuffer_multisample_coverage",
+        "GL_NV_geometry_program4",
+        "GL_NV_geometry_shader4",
+        "GL_NV_geometry_shader_passthrough",
+        "GL_NV_gpu_multicast",
+        "GL_NV_gpu_program4",
+        "GL_NV_gpu_program5",
+        "GL_NV_gpu_program5_mem_extended",
+        "GL_NV_gpu_shader5",
+        "GL_NV_half_float",
+        "GL_NV_internalformat_sample_query",
+        "GL_NV_light_max_exponent",
+        "GL_NV_memory_attachment",
+        "GL_NV_memory_object_sparse",
+        "GL_NV_mesh_shader",
+        "GL_NV_multisample_coverage",
+        "GL_NV_multisample_filter_hint",
+        "GL_NV_occlusion_query",
+        "GL_NV_packed_depth_stencil",
+        "GL_NV_parameter_buffer_object",
+        "GL_NV_parameter_buffer_object2",
+        "GL_NV_path_rendering",
+        "GL_NV_path_rendering_shared_edge",
+        "GL_NV_pixel_data_range",
+        "GL_NV_point_sprite",
+        "GL_NV_present_video",
+        "GL_NV_primitive_restart",
+        "GL_NV_primitive_shading_rate",
+        "GL_NV_query_resource",
+        "GL_NV_query_resource_tag",
+        "GL_NV_register_combiners",
+        "GL_NV_register_combiners2",
+        "GL_NV_representative_fragment_test",
+        "GL_NV_robustness_video_memory_purge",
+        "GL_NV_sample_locations",
+        "GL_NV_sample_mask_override_coverage",
+        "GL_NV_scissor_exclusive",
+        "GL_NV_shader_atomic_counters",
+        "GL_NV_shader_atomic_float",
+        "GL_NV_shader_atomic_float64",
+        "GL_NV_shader_atomic_fp16_vector",
+        "GL_NV_shader_atomic_int64",
+        "GL_NV_shader_buffer_load",
+        "GL_NV_shader_buffer_store",
+        "GL_NV_shader_storage_buffer_object",
+        "GL_NV_shader_subgroup_partitioned",
+        "GL_NV_shader_texture_footprint",
+        "GL_NV_shader_thread_group",
+        "GL_NV_shader_thread_shuffle",
+        "GL_NV_shading_rate_image",
+        "GL_NV_stereo_view_rendering",
+        "GL_NV_tessellation_program5",
+        "GL_NV_texgen_emboss",
+        "GL_NV_texgen_reflection",
+        "GL_NV_texture_barrier",
+        "GL_NV_texture_compression_vtc",
+        "GL_NV_texture_env_combine4",
+        "GL_NV_texture_expand_normal",
+        "GL_NV_texture_multisample",
+        "GL_NV_texture_rectangle",
+        "GL_NV_texture_rectangle_compressed",
+        "GL_NV_texture_shader",
+        "GL_NV_texture_shader2",
+        "GL_NV_texture_shader3",
+        "GL_NV_timeline_semaphore",
+        "GL_NV_transform_feedback",
+        "GL_NV_transform_feedback2",
+        "GL_NV_uniform_buffer_unified_memory",
+        "GL_NV_vdpau_interop",
+        "GL_NV_vdpau_interop2",
+        "GL_NV_vertex_array_range",
+        "GL_NV_vertex_array_range2",
+        "GL_NV_vertex_attrib_integer_64bit",
+        "GL_NV_vertex_buffer_unified_memory",
+        "GL_NV_vertex_program",
+        "GL_NV_vertex_program1_1",
+        "GL_NV_vertex_program2",
+        "GL_NV_vertex_program2_option",
+        "GL_NV_vertex_program3",
+        "GL_NV_vertex_program4",
+        "GL_NV_video_capture",
+        "GL_NV_viewport_array2",
+        "GL_NV_viewport_swizzle",
+        "GL_OML_interlace",
+        "GL_OML_resample",
+        "GL_OML_subsample",
+        "GL_OVR_multiview",
+        "GL_OVR_multiview2",
+        "GL_PGI_misc_hints",
+        "GL_PGI_vertex_hints",
+        "GL_REND_screen_coordinates",
+        "GL_S3_s3tc",
+        "GL_SGIS_detail_texture",
+        "GL_SGIS_fog_function",
+        "GL_SGIS_generate_mipmap",
+        "GL_SGIS_multisample",
+        "GL_SGIS_pixel_texture",
+        "GL_SGIS_point_line_texgen",
+        "GL_SGIS_point_parameters",
+        "GL_SGIS_sharpen_texture",
+        "GL_SGIS_texture4D",
+        "GL_SGIS_texture_border_clamp",
+        "GL_SGIS_texture_color_mask",
+        "GL_SGIS_texture_edge_clamp",
+        "GL_SGIS_texture_filter4",
+        "GL_SGIS_texture_lod",
+        "GL_SGIS_texture_select",
+        "GL_SGIX_async",
+        "GL_SGIX_async_histogram",
+        "GL_SGIX_async_pixel",
+        "GL_SGIX_blend_alpha_minmax",
+        "GL_SGIX_calligraphic_fragment",
+        "GL_SGIX_clipmap",
+        "GL_SGIX_convolution_accuracy",
+        "GL_SGIX_depth_pass_instrument",
+        "GL_SGIX_depth_texture",
+        "GL_SGIX_flush_raster",
+        "GL_SGIX_fog_offset",
+        "GL_SGIX_fragment_lighting",
+        "GL_SGIX_framezoom",
+        "GL_SGIX_igloo_interface",
+        "GL_SGIX_instruments",
+        "GL_SGIX_interlace",
+        "GL_SGIX_ir_instrument1",
+        "GL_SGIX_list_priority",
+        "GL_SGIX_pixel_texture",
+        "GL_SGIX_pixel_tiles",
+        "GL_SGIX_polynomial_ffd",
+        "GL_SGIX_reference_plane",
+        "GL_SGIX_resample",
+        "GL_SGIX_scalebias_hint",
+        "GL_SGIX_shadow",
+        "GL_SGIX_shadow_ambient",
+        "GL_SGIX_sprite",
+        "GL_SGIX_subsample",
+        "GL_SGIX_tag_sample_buffer",
+        "GL_SGIX_texture_add_env",
+        "GL_SGIX_texture_coordinate_clamp",
+        "GL_SGIX_texture_lod_bias",
+        "GL_SGIX_texture_multi_buffer",
+        "GL_SGIX_texture_scale_bias",
+        "GL_SGIX_vertex_preclip",
+        "GL_SGIX_ycrcb",
+        "GL_SGIX_ycrcb_subsample",
+        "GL_SGIX_ycrcba",
+        "GL_SGI_color_matrix",
+        "GL_SGI_color_table",
+        "GL_SGI_texture_color_table",
+        "GL_SUNX_constant_data",
+        "GL_SUN_convolution_border_modes",
+        "GL_SUN_global_alpha",
+        "GL_SUN_mesh_array",
+        "GL_SUN_slice_accum",
+        "GL_SUN_triangle_list",
+        "GL_SUN_vertex",
+        "GL_WIN_phong_shading",
+        "GL_WIN_specular_fog"
+    )
     Files.writeString(Path("GLExtCaps.java"), buildString {
         append(
             """
             ${fileHeader.prependIndent("|")}
             |package overrungl.opengl;
-
+            |
             |import overrungl.opengl.ext.*;
             |import overrungl.opengl.ext.arb.*;
             |import overrungl.opengl.ext.khr.*;
             |import overrungl.opengl.ext.oes.*;
             |import overrungl.opengl.ext.amd.*;
             |import overrungl.opengl.ext.apple.*;
-            |//import overrungl.opengl.ext.ati.*;
+            |import overrungl.opengl.ext.ati.*;
             |//import overrungl.opengl.ext.ext.*;
             |import overrungl.opengl.ext.ibm.*;
             |import overrungl.opengl.ext.intel.*;
             |import overrungl.opengl.ext.mesa.*;
             |//import overrungl.opengl.ext.nv.*;
-            |//import overrungl.opengl.ext.sgi.*;
+            |import overrungl.opengl.ext.sgi.*;
             |import overrungl.opengl.ext.sun.*;
-
+            |
+            |import java.lang.foreign.MemorySegment;
+            |import java.lang.foreign.SegmentAllocator;
             |import java.lang.invoke.MethodHandle;
-
+            |
+            |import static java.lang.foreign.ValueLayout.*;
+            |import static overrungl.opengl.GLExtFinder.*;
+            |
             |/**
             | * The OpenGL extension capabilities.
             | *
@@ -2793,158 +3887,11 @@ fun glExtCaps() {
             | */
             |public final class GLExtCaps {
             |    /** The OpenGL extension flags. */
-            |    public boolean GL_3DFX_multisample, GL_3DFX_tbuffer, GL_3DFX_texture_compression_FXT1, GL_AMD_blend_minmax_factor,
-            |        GL_AMD_conservative_depth, GL_AMD_debug_output, GL_AMD_depth_clamp_separate, GL_AMD_draw_buffers_blend,
-            |        GL_AMD_framebuffer_multisample_advanced, GL_AMD_framebuffer_sample_positions, GL_AMD_gcn_shader,
-            |        GL_AMD_gpu_shader_half_float, GL_AMD_gpu_shader_int16, GL_AMD_gpu_shader_int64, GL_AMD_interleaved_elements,
-            |        GL_AMD_multi_draw_indirect, GL_AMD_name_gen_delete, GL_AMD_occlusion_query_event, GL_AMD_performance_monitor,
-            |        GL_AMD_pinned_memory, GL_AMD_query_buffer_object, GL_AMD_sample_positions, GL_AMD_seamless_cubemap_per_texture,
-            |        GL_AMD_shader_atomic_counter_ops, GL_AMD_shader_ballot, GL_AMD_shader_explicit_vertex_parameter,
-            |        GL_AMD_shader_gpu_shader_half_float_fetch, GL_AMD_shader_image_load_store_lod, GL_AMD_shader_stencil_export,
-            |        GL_AMD_shader_trinary_minmax, GL_AMD_sparse_texture, GL_AMD_stencil_operation_extended,
-            |        GL_AMD_texture_gather_bias_lod, GL_AMD_texture_texture4, GL_AMD_transform_feedback3_lines_triangles,
-            |        GL_AMD_transform_feedback4, GL_AMD_vertex_shader_layer, GL_AMD_vertex_shader_tessellator,
-            |        GL_AMD_vertex_shader_viewport_index, GL_APPLE_aux_depth_stencil, GL_APPLE_client_storage, GL_APPLE_element_array,
-            |        GL_APPLE_fence, GL_APPLE_float_pixels, GL_APPLE_flush_buffer_range, GL_APPLE_object_purgeable, GL_APPLE_rgb_422,
-            |        GL_APPLE_row_bytes, GL_APPLE_specular_vector, GL_APPLE_texture_range, GL_APPLE_transform_hint,
-            |        GL_APPLE_vertex_array_object, GL_APPLE_vertex_array_range, GL_APPLE_vertex_program_evaluators, GL_APPLE_ycbcr_422,
-            |        GL_ARB_ES2_compatibility, GL_ARB_ES3_1_compatibility, GL_ARB_ES3_2_compatibility, GL_ARB_ES3_compatibility,
-            |        GL_ARB_arrays_of_arrays, GL_ARB_base_instance, GL_ARB_bindless_texture, GL_ARB_blend_func_extended,
-            |        GL_ARB_buffer_storage, GL_ARB_cl_event, GL_ARB_clear_buffer_object, GL_ARB_clear_texture, GL_ARB_clip_control,
-            |        GL_ARB_color_buffer_float, GL_ARB_compatibility, GL_ARB_compressed_texture_pixel_storage, GL_ARB_compute_shader,
-            |        GL_ARB_compute_variable_group_size, GL_ARB_conditional_render_inverted, GL_ARB_conservative_depth, GL_ARB_copy_buffer,
-            |        GL_ARB_copy_image, GL_ARB_cull_distance, GL_ARB_debug_output, GL_ARB_depth_buffer_float, GL_ARB_depth_clamp,
-            |        GL_ARB_depth_texture, GL_ARB_derivative_control, GL_ARB_direct_state_access, GL_ARB_draw_buffers,
-            |        GL_ARB_draw_buffers_blend, GL_ARB_draw_elements_base_vertex, GL_ARB_draw_indirect, GL_ARB_draw_instanced,
-            |        GL_ARB_enhanced_layouts, GL_ARB_explicit_attrib_location, GL_ARB_explicit_uniform_location,
-            |        GL_ARB_fragment_coord_conventions, GL_ARB_fragment_layer_viewport, GL_ARB_fragment_program,
-            |        GL_ARB_fragment_program_shadow, GL_ARB_fragment_shader, GL_ARB_fragment_shader_interlock,
-            |        GL_ARB_framebuffer_no_attachments, GL_ARB_framebuffer_object, GL_ARB_framebuffer_sRGB, GL_ARB_geometry_shader4,
-            |        GL_ARB_get_program_binary, GL_ARB_get_texture_sub_image, GL_ARB_gl_spirv, GL_ARB_gpu_shader5, GL_ARB_gpu_shader_fp64,
-            |        GL_ARB_gpu_shader_int64, GL_ARB_half_float_pixel, GL_ARB_half_float_vertex, GL_ARB_imaging, GL_ARB_indirect_parameters,
-            |        GL_ARB_instanced_arrays, GL_ARB_internalformat_query, GL_ARB_internalformat_query2, GL_ARB_invalidate_subdata,
-            |        GL_ARB_map_buffer_alignment, GL_ARB_map_buffer_range, GL_ARB_matrix_palette, GL_ARB_multi_bind,
-            |        GL_ARB_multi_draw_indirect, GL_ARB_multisample, GL_ARB_multitexture, GL_ARB_occlusion_query, GL_ARB_occlusion_query2,
-            |        GL_ARB_parallel_shader_compile, GL_ARB_pipeline_statistics_query, GL_ARB_pixel_buffer_object, GL_ARB_point_parameters,
-            |        GL_ARB_point_sprite, GL_ARB_polygon_offset_clamp, GL_ARB_post_depth_coverage, GL_ARB_program_interface_query,
-            |        GL_ARB_provoking_vertex, GL_ARB_query_buffer_object, GL_ARB_robust_buffer_access_behavior, GL_ARB_robustness,
-            |        GL_ARB_robustness_isolation, GL_ARB_sample_locations, GL_ARB_sample_shading, GL_ARB_sampler_objects,
-            |        GL_ARB_seamless_cube_map, GL_ARB_seamless_cubemap_per_texture, GL_ARB_separate_shader_objects,
-            |        GL_ARB_shader_atomic_counter_ops, GL_ARB_shader_atomic_counters, GL_ARB_shader_ballot, GL_ARB_shader_bit_encoding,
-            |        GL_ARB_shader_clock, GL_ARB_shader_draw_parameters, GL_ARB_shader_group_vote, GL_ARB_shader_image_load_store,
-            |        GL_ARB_shader_image_size, GL_ARB_shader_objects, GL_ARB_shader_precision, GL_ARB_shader_stencil_export,
-            |        GL_ARB_shader_storage_buffer_object, GL_ARB_shader_subroutine, GL_ARB_shader_texture_image_samples,
-            |        GL_ARB_shader_texture_lod, GL_ARB_shader_viewport_layer_array, GL_ARB_shading_language_100,
-            |        GL_ARB_shading_language_420pack, GL_ARB_shading_language_include, GL_ARB_shading_language_packing, GL_ARB_shadow,
-            |        GL_ARB_shadow_ambient, GL_ARB_sparse_buffer, GL_ARB_sparse_texture, GL_ARB_sparse_texture2, GL_ARB_sparse_texture_clamp,
-            |        GL_ARB_spirv_extensions, GL_ARB_stencil_texturing, GL_ARB_sync, GL_ARB_tessellation_shader, GL_ARB_texture_barrier,
-            |        GL_ARB_texture_border_clamp, GL_ARB_texture_buffer_object, GL_ARB_texture_buffer_object_rgb32, GL_ARB_texture_buffer_range,
-            |        GL_ARB_texture_compression, GL_ARB_texture_compression_bptc, GL_ARB_texture_compression_rgtc,
-            |        GL_ARB_texture_cube_map, GL_ARB_texture_cube_map_array, GL_ARB_texture_env_add, GL_ARB_texture_env_combine,
-            |        GL_ARB_texture_env_crossbar, GL_ARB_texture_env_dot3, GL_ARB_texture_filter_anisotropic, GL_ARB_texture_filter_minmax,
-            |        GL_ARB_texture_float, GL_ARB_texture_gather, GL_ARB_texture_mirror_clamp_to_edge, GL_ARB_texture_mirrored_repeat,
-            |        GL_ARB_texture_multisample, GL_ARB_texture_non_power_of_two, GL_ARB_texture_query_levels, GL_ARB_texture_query_lod,
-            |        GL_ARB_texture_rectangle, GL_ARB_texture_rg, GL_ARB_texture_rgb10_a2ui, GL_ARB_texture_stencil8, GL_ARB_texture_storage,
-            |        GL_ARB_texture_storage_multisample, GL_ARB_texture_swizzle, GL_ARB_texture_view, GL_ARB_timer_query,
-            |        GL_ARB_transform_feedback2, GL_ARB_transform_feedback3, GL_ARB_transform_feedback_instanced,
-            |        GL_ARB_transform_feedback_overflow_query, GL_ARB_transpose_matrix, GL_ARB_uniform_buffer_object, GL_ARB_vertex_array_bgra,
-            |        GL_ARB_vertex_array_object, GL_ARB_vertex_attrib_64bit, GL_ARB_vertex_attrib_binding, GL_ARB_vertex_blend,
-            |        GL_ARB_vertex_buffer_object, GL_ARB_vertex_program, GL_ARB_vertex_shader, GL_ARB_vertex_type_10f_11f_11f_rev,
-            |        GL_ARB_vertex_type_2_10_10_10_rev, GL_ARB_viewport_array, GL_ARB_window_pos, GL_ATI_draw_buffers, GL_ATI_element_array,
-            |        GL_ATI_envmap_bumpmap, GL_ATI_fragment_shader, GL_ATI_map_object_buffer, GL_ATI_meminfo, GL_ATI_pixel_format_float,
-            |        GL_ATI_pn_triangles, GL_ATI_separate_stencil, GL_ATI_text_fragment_shader, GL_ATI_texture_env_combine3, GL_ATI_texture_float,
-            |        GL_ATI_texture_mirror_once, GL_ATI_vertex_array_object, GL_ATI_vertex_attrib_array_object, GL_ATI_vertex_streams,
-            |        GL_EXT_422_pixels, GL_EXT_EGL_image_storage, GL_EXT_EGL_sync, GL_EXT_abgr, GL_EXT_bgra, GL_EXT_bindable_uniform,
-            |        GL_EXT_blend_color, GL_EXT_blend_equation_separate, GL_EXT_blend_func_separate, GL_EXT_blend_logic_op, GL_EXT_blend_minmax,
-            |        GL_EXT_blend_subtract, GL_EXT_clip_volume_hint, GL_EXT_cmyka, GL_EXT_color_subtable, GL_EXT_compiled_vertex_array,
-            |        GL_EXT_convolution, GL_EXT_coordinate_frame, GL_EXT_copy_texture, GL_EXT_cull_vertex, GL_EXT_debug_label, GL_EXT_debug_marker,
-            |        GL_EXT_depth_bounds_test, GL_EXT_direct_state_access, GL_EXT_draw_buffers2, GL_EXT_draw_instanced, GL_EXT_draw_range_elements,
-            |        GL_EXT_external_buffer, GL_EXT_fog_coord, GL_EXT_framebuffer_blit, GL_EXT_framebuffer_multisample,
-            |        GL_EXT_framebuffer_multisample_blit_scaled, GL_EXT_framebuffer_object, GL_EXT_framebuffer_sRGB, GL_EXT_geometry_shader4,
-            |        GL_EXT_gpu_program_parameters, GL_EXT_gpu_shader4, GL_EXT_histogram, GL_EXT_index_array_formats, GL_EXT_index_func,
-            |        GL_EXT_index_material, GL_EXT_index_texture, GL_EXT_light_texture, GL_EXT_memory_object, GL_EXT_memory_object_fd,
-            |        GL_EXT_memory_object_win32, GL_EXT_misc_attribute, GL_EXT_multi_draw_arrays, GL_EXT_multisample,
-            |        GL_EXT_multiview_tessellation_geometry_shader, GL_EXT_multiview_texture_multisample, GL_EXT_multiview_timer_query,
-            |        GL_EXT_packed_depth_stencil, GL_EXT_packed_float, GL_EXT_packed_pixels, GL_EXT_paletted_texture,
-            |        GL_EXT_pixel_buffer_object, GL_EXT_pixel_transform, GL_EXT_pixel_transform_color_table, GL_EXT_point_parameters,
-            |        GL_EXT_polygon_offset, GL_EXT_polygon_offset_clamp, GL_EXT_post_depth_coverage, GL_EXT_provoking_vertex,
-            |        GL_EXT_raster_multisample, GL_EXT_rescale_normal, GL_EXT_secondary_color, GL_EXT_semaphore, GL_EXT_semaphore_fd,
-            |        GL_EXT_semaphore_win32, GL_EXT_separate_shader_objects, GL_EXT_separate_specular_color, GL_EXT_shader_framebuffer_fetch,
-            |        GL_EXT_shader_framebuffer_fetch_non_coherent, GL_EXT_shader_image_load_formatted, GL_EXT_shader_image_load_store,
-            |        GL_EXT_shader_integer_mix, GL_EXT_shadow_funcs, GL_EXT_shared_texture_palette, GL_EXT_sparse_texture2,
-            |        GL_EXT_stencil_clear_tag, GL_EXT_stencil_two_side, GL_EXT_stencil_wrap, GL_EXT_subtexture, GL_EXT_texture,
-            |        GL_EXT_texture3D, GL_EXT_texture_array, GL_EXT_texture_buffer_object, GL_EXT_texture_compression_latc,
-            |        GL_EXT_texture_compression_rgtc, GL_EXT_texture_compression_s3tc, GL_EXT_texture_cube_map, GL_EXT_texture_env_add,
-            |        GL_EXT_texture_env_combine, GL_EXT_texture_env_dot3, GL_EXT_texture_filter_anisotropic, GL_EXT_texture_filter_minmax,
-            |        GL_EXT_texture_integer, GL_EXT_texture_lod_bias, GL_EXT_texture_mirror_clamp, GL_EXT_texture_object,
-            |        GL_EXT_texture_perturb_normal, GL_EXT_texture_sRGB, GL_EXT_texture_sRGB_R8, GL_EXT_texture_sRGB_RG8,
-            |        GL_EXT_texture_sRGB_decode, GL_EXT_texture_shadow_lod, GL_EXT_texture_shared_exponent, GL_EXT_texture_snorm,
-            |        GL_EXT_texture_storage, GL_EXT_texture_swizzle, GL_EXT_timer_query, GL_EXT_transform_feedback, GL_EXT_vertex_array,
-            |        GL_EXT_vertex_array_bgra, GL_EXT_vertex_attrib_64bit, GL_EXT_vertex_shader, GL_EXT_vertex_weighting,
-            |        GL_EXT_win32_keyed_mutex, GL_EXT_window_rectangles, GL_EXT_x11_sync_object, GL_GREMEDY_frame_terminator,
-            |        GL_GREMEDY_string_marker, GL_HP_convolution_border_modes, GL_HP_image_transform, GL_HP_occlusion_test,
-            |        GL_HP_texture_lighting, GL_IBM_cull_vertex, GL_IBM_multimode_draw_arrays, GL_IBM_rasterpos_clip, GL_IBM_static_data,
-            |        GL_IBM_texture_mirrored_repeat, GL_IBM_vertex_array_lists, GL_INGR_blend_func_separate, GL_INGR_color_clamp,
-            |        GL_INGR_interlace_read, GL_INTEL_blackhole_render, GL_INTEL_conservative_rasterization, GL_INTEL_fragment_shader_ordering,
-            |        GL_INTEL_framebuffer_CMAA, GL_INTEL_map_texture, GL_INTEL_parallel_arrays, GL_INTEL_performance_query,
-            |        GL_KHR_blend_equation_advanced, GL_KHR_blend_equation_advanced_coherent, GL_KHR_context_flush_control, GL_KHR_debug,
-            |        GL_KHR_no_error, GL_KHR_parallel_shader_compile, GL_KHR_robust_buffer_access_behavior, GL_KHR_robustness,
-            |        GL_KHR_shader_subgroup, GL_KHR_texture_compression_astc_hdr, GL_KHR_texture_compression_astc_ldr,
-            |        GL_KHR_texture_compression_astc_sliced_3d, GL_MESAX_texture_stack, GL_MESA_framebuffer_flip_x, GL_MESA_framebuffer_flip_y,
-            |        GL_MESA_framebuffer_swap_xy, GL_MESA_pack_invert, GL_MESA_program_binary_formats, GL_MESA_resize_buffers,
-            |        GL_MESA_shader_integer_functions, GL_MESA_tile_raster_order, GL_MESA_window_pos, GL_MESA_ycbcr_texture,
-            |        GL_NVX_blend_equation_advanced_multi_draw_buffers, GL_NVX_conditional_render, GL_NVX_gpu_memory_info,
-            |        GL_NVX_gpu_multicast2, GL_NVX_linked_gpu_multicast, GL_NVX_progress_fence, GL_NV_alpha_to_coverage_dither_control,
-            |        GL_NV_bindless_multi_draw_indirect, GL_NV_bindless_multi_draw_indirect_count, GL_NV_bindless_texture,
-            |        GL_NV_blend_equation_advanced, GL_NV_blend_equation_advanced_coherent, GL_NV_blend_minmax_factor, GL_NV_blend_square,
-            |        GL_NV_clip_space_w_scaling, GL_NV_command_list, GL_NV_compute_program5, GL_NV_compute_shader_derivatives,
-            |        GL_NV_conditional_render, GL_NV_conservative_raster, GL_NV_conservative_raster_dilate, GL_NV_conservative_raster_pre_snap,
-            |        GL_NV_conservative_raster_pre_snap_triangles, GL_NV_conservative_raster_underestimation, GL_NV_copy_depth_to_color,
-            |        GL_NV_copy_image, GL_NV_deep_texture3D, GL_NV_depth_buffer_float, GL_NV_depth_clamp, GL_NV_draw_texture,
-            |        GL_NV_draw_vulkan_image, GL_NV_evaluators, GL_NV_explicit_multisample, GL_NV_fence, GL_NV_fill_rectangle,
-            |        GL_NV_float_buffer, GL_NV_fog_distance, GL_NV_fragment_coverage_to_color, GL_NV_fragment_program, GL_NV_fragment_program2,
-            |        GL_NV_fragment_program4, GL_NV_fragment_program_option, GL_NV_fragment_shader_barycentric, GL_NV_fragment_shader_interlock,
-            |        GL_NV_framebuffer_mixed_samples, GL_NV_framebuffer_multisample_coverage, GL_NV_geometry_program4, GL_NV_geometry_shader4,
-            |        GL_NV_geometry_shader_passthrough, GL_NV_gpu_multicast, GL_NV_gpu_program4, GL_NV_gpu_program5,
-            |        GL_NV_gpu_program5_mem_extended, GL_NV_gpu_shader5, GL_NV_half_float, GL_NV_internalformat_sample_query,
-            |        GL_NV_light_max_exponent, GL_NV_memory_attachment, GL_NV_memory_object_sparse, GL_NV_mesh_shader,
-            |        GL_NV_multisample_coverage, GL_NV_multisample_filter_hint, GL_NV_occlusion_query, GL_NV_packed_depth_stencil,
-            |        GL_NV_parameter_buffer_object, GL_NV_parameter_buffer_object2, GL_NV_path_rendering, GL_NV_path_rendering_shared_edge,
-            |        GL_NV_pixel_data_range, GL_NV_point_sprite, GL_NV_present_video, GL_NV_primitive_restart, GL_NV_primitive_shading_rate,
-            |        GL_NV_query_resource, GL_NV_query_resource_tag, GL_NV_register_combiners, GL_NV_register_combiners2,
-            |        GL_NV_representative_fragment_test, GL_NV_robustness_video_memory_purge, GL_NV_sample_locations,
-            |        GL_NV_sample_mask_override_coverage, GL_NV_scissor_exclusive, GL_NV_shader_atomic_counters, GL_NV_shader_atomic_float,
-            |        GL_NV_shader_atomic_float64, GL_NV_shader_atomic_fp16_vector, GL_NV_shader_atomic_int64, GL_NV_shader_buffer_load,
-            |        GL_NV_shader_buffer_store, GL_NV_shader_storage_buffer_object, GL_NV_shader_subgroup_partitioned,
-            |        GL_NV_shader_texture_footprint, GL_NV_shader_thread_group, GL_NV_shader_thread_shuffle, GL_NV_shading_rate_image,
-            |        GL_NV_stereo_view_rendering, GL_NV_tessellation_program5, GL_NV_texgen_emboss, GL_NV_texgen_reflection,
-            |        GL_NV_texture_barrier, GL_NV_texture_compression_vtc, GL_NV_texture_env_combine4, GL_NV_texture_expand_normal,
-            |        GL_NV_texture_multisample, GL_NV_texture_rectangle, GL_NV_texture_rectangle_compressed, GL_NV_texture_shader,
-            |        GL_NV_texture_shader2, GL_NV_texture_shader3, GL_NV_timeline_semaphore, GL_NV_transform_feedback,
-            |        GL_NV_transform_feedback2, GL_NV_uniform_buffer_unified_memory, GL_NV_vdpau_interop, GL_NV_vdpau_interop2,
-            |        GL_NV_vertex_array_range, GL_NV_vertex_array_range2, GL_NV_vertex_attrib_integer_64bit, GL_NV_vertex_buffer_unified_memory,
-            |        GL_NV_vertex_program, GL_NV_vertex_program1_1, GL_NV_vertex_program2, GL_NV_vertex_program2_option, GL_NV_vertex_program3,
-            |        GL_NV_vertex_program4, GL_NV_video_capture, GL_NV_viewport_array2, GL_NV_viewport_swizzle, GL_OES_byte_coordinates,
-            |        GL_OES_compressed_paletted_texture, GL_OES_fixed_point, GL_OES_query_matrix, GL_OES_read_format, GL_OES_single_precision,
-            |        GL_OML_interlace, GL_OML_resample, GL_OML_subsample, GL_OVR_multiview, GL_OVR_multiview2, GL_PGI_misc_hints,
-            |        GL_PGI_vertex_hints, GL_REND_screen_coordinates, GL_S3_s3tc, GL_SGIS_detail_texture, GL_SGIS_fog_function,
-            |        GL_SGIS_generate_mipmap, GL_SGIS_multisample, GL_SGIS_pixel_texture, GL_SGIS_point_line_texgen, GL_SGIS_point_parameters,
-            |        GL_SGIS_sharpen_texture, GL_SGIS_texture4D, GL_SGIS_texture_border_clamp, GL_SGIS_texture_color_mask,
-            |        GL_SGIS_texture_edge_clamp, GL_SGIS_texture_filter4, GL_SGIS_texture_lod, GL_SGIS_texture_select, GL_SGIX_async,
-            |        GL_SGIX_async_histogram, GL_SGIX_async_pixel, GL_SGIX_blend_alpha_minmax, GL_SGIX_calligraphic_fragment, GL_SGIX_clipmap,
-            |        GL_SGIX_convolution_accuracy, GL_SGIX_depth_pass_instrument, GL_SGIX_depth_texture, GL_SGIX_flush_raster,
-            |        GL_SGIX_fog_offset, GL_SGIX_fragment_lighting, GL_SGIX_framezoom, GL_SGIX_igloo_interface, GL_SGIX_instruments,
-            |        GL_SGIX_interlace, GL_SGIX_ir_instrument1, GL_SGIX_list_priority, GL_SGIX_pixel_texture, GL_SGIX_pixel_tiles,
-            |        GL_SGIX_polynomial_ffd, GL_SGIX_reference_plane, GL_SGIX_resample, GL_SGIX_scalebias_hint, GL_SGIX_shadow,
-            |        GL_SGIX_shadow_ambient, GL_SGIX_sprite, GL_SGIX_subsample, GL_SGIX_tag_sample_buffer, GL_SGIX_texture_add_env,
-            |        GL_SGIX_texture_coordinate_clamp, GL_SGIX_texture_lod_bias, GL_SGIX_texture_multi_buffer, GL_SGIX_texture_scale_bias,
-            |        GL_SGIX_vertex_preclip, GL_SGIX_ycrcb, GL_SGIX_ycrcb_subsample, GL_SGIX_ycrcba, GL_SGI_color_matrix, GL_SGI_color_table,
-            |        GL_SGI_texture_color_table, GL_SUNX_constant_data, GL_SUN_convolution_border_modes, GL_SUN_global_alpha, GL_SUN_mesh_array,
-            |        GL_SUN_slice_accum, GL_SUN_triangle_list, GL_SUN_vertex, GL_WIN_phong_shading, GL_WIN_specular_fog;
-
+            |    public boolean ${caps.joinToString()};
+            |
             |    /** GLCapabilities */
             |    public final GLCapabilities caps;
-
+            |
             |    /**
             |     * Construct <i>incomplete</i> OpenGL extension capabilities.
             |     *
@@ -2953,7 +3900,7 @@ fun glExtCaps() {
             |    public GLExtCaps(GLCapabilities caps) {
             |        this.caps = caps;
             |    }
-
+            |
             |    /** Method handles. */
             |    public MethodHandle
             """.trimMargin()
@@ -2962,15 +3909,33 @@ fun glExtCaps() {
             if (index.rem(16) == 0) {
                 if (index == 0) append("\n        ")
                 else append(",\n        ")
-            }
-            else append(", ")
+            } else append(", ")
             append(function.name)
         }
         appendLine(";\n\n    void load(GLLoadFunc load) {")
         generatedExtClasses.forEach {
             if (it.hasFunction) appendLine("        GL${it.ext.extName}${it.name}.load(this, load);")
         }
-        appendLine("    }\n}")
+        appendLine("    }\n")
+        appendLine(
+            """
+            |    boolean findExtensionsGL(int version, SegmentAllocator allocator) {
+            |        var pExts = allocator.allocate(ADDRESS);
+            |        var pNumExtsI = allocator.allocate(JAVA_INT);
+            |        var pExtsI = new MemorySegment[1];
+            |        if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI, caps)) return false;
+            |
+            |        String exts = pExts.getUtf8String(0);
+            |        int numExtsI = pNumExtsI.get(JAVA_INT, 0);
+            |        var extsI = pExtsI[0];
+            |
+            |        ${caps.map { "this.$it = hasExtension(version, exts, numExtsI, extsI, \"$it\");" }.joinToString(separator = "\n|        ")}
+            |
+            |        return true;
+            |    }
+        """.trimMargin()
+        )
+        appendLine("}")
     })
 }
 
