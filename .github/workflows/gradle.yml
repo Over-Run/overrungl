@@ -40,7 +40,6 @@ jobs:
         with:
           name: build-reports
           path: |
-            modules/overrungl/**/build/reports/
             modules/**/build/reports/
       - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '21' }}
@@ -48,4 +47,4 @@ jobs:
         with:
           name: Artifacts
           path: |
-            modules/overrungl/**/build/libs/
+            modules/**/build/libs/
