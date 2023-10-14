@@ -845,10 +845,6 @@ public final class GLFW {
      */
     public static final int DONT_CARE = -1;
 
-    static {
-        create();
-    }
-
     private GLFW() {
         throw new IllegalStateException("Do not construct instance");
     }
@@ -3287,7 +3283,7 @@ public final class GLFW {
      */
     public static void setWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
         try {
-            glfwGetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
+            glfwSetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -3399,7 +3395,7 @@ public final class GLFW {
      */
     public static MemorySegment getWindowUserPointer(MemorySegment window) {
         try {
-            return (MemorySegment) glfwSetWindowUserPointer.invokeExact(window);
+            return (MemorySegment) glfwGetWindowUserPointer.invokeExact(window);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

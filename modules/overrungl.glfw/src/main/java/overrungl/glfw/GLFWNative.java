@@ -36,10 +36,6 @@ import static overrungl.glfw.Handles.*;
  * @since 0.1.0
  */
 public final class GLFWNative {
-    static {
-        create();
-    }
-
     private GLFWNative() {
         //no instance
     }
