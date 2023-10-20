@@ -152,7 +152,7 @@ public final class STBImageWrite {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return npng(stack.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
+            return npng(stack.allocateFrom(filename), w, h, comp, data, strideInBytes);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -162,7 +162,7 @@ public final class STBImageWrite {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nbmp(stack.allocateUtf8String(filename), w, h, comp, data);
+            return nbmp(stack.allocateFrom(filename), w, h, comp, data);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -172,21 +172,21 @@ public final class STBImageWrite {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return ntga(stack.allocateUtf8String(filename), w, h, comp, data);
+            return ntga(stack.allocateFrom(filename), w, h, comp, data);
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
     public static boolean hdr(SegmentAllocator allocator, String filename, int w, int h, int comp, float[] data) {
-        return nhdr(allocator.allocateUtf8String(filename), w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
+        return nhdr(allocator.allocateFrom(filename), w, h, comp, allocator.allocateFrom(JAVA_FLOAT, data));
     }
 
     public static boolean jpg(String filename, int x, int y, int comp, MemorySegment data, int quality) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return njpg(stack.allocateUtf8String(filename), x, y, comp, data, quality);
+            return njpg(stack.allocateFrom(filename), x, y, comp, data, quality);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -245,7 +245,7 @@ public final class STBImageWrite {
     }
 
     public static boolean hdrToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(arena), context, w, h, comp, arena.allocateArray(JAVA_FLOAT, data));
+        return nhdrToFunc(func.address(arena), context, w, h, comp, arena.allocateFrom(JAVA_FLOAT, data));
     }
 
     public static boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
@@ -270,7 +270,7 @@ public final class STBImageWrite {
 
     public static byte[] pngToMem(SegmentAllocator allocator, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
         var pl = allocator.allocate(JAVA_INT);
-        var p = npngToMem(allocator.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
+        var p = npngToMem(allocator.allocateFrom(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);
@@ -286,7 +286,7 @@ public final class STBImageWrite {
 
     public static byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int[] outLen, int quality) {
         var pl = allocator.allocate(JAVA_INT);
-        var p = nzlibCompress(allocator.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
+        var p = nzlibCompress(allocator.allocateFrom(JAVA_BYTE, data), data.length, pl, quality);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);

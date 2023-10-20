@@ -221,7 +221,7 @@ public final class GLINTELPerformanceQuery {
 
     public static int glGetPerfQueryIdByNameINTEL(SegmentAllocator allocator, String queryName) {
         var seg = allocator.allocate(JAVA_INT);
-        glGetPerfQueryIdByNameINTEL(allocator.allocateUtf8String(queryName), seg);
+        glGetPerfQueryIdByNameINTEL(allocator.allocateFrom(queryName), seg);
         return seg.get(JAVA_INT, 0);
     }
 

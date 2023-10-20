@@ -165,7 +165,7 @@ public final class STBImage {
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
-            boolean b = ninfo(stack.allocateUtf8String(filename), px, py, pc);
+            boolean b = ninfo(stack.allocateFrom(filename), px, py, pc);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
             comp[0] = pc.get(JAVA_INT, 0);
@@ -266,7 +266,7 @@ public final class STBImage {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nis16Bit(stack.allocateUtf8String(filename));
+            return nis16Bit(stack.allocateFrom(filename));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -320,7 +320,7 @@ public final class STBImage {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nisHdr(stack.allocateUtf8String(filename));
+            return nisHdr(stack.allocateFrom(filename));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -393,7 +393,7 @@ public final class STBImage {
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
-            var addr = nload(stack.allocateUtf8String(filename), px, py, pc, desiredChannels);
+            var addr = nload(stack.allocateFrom(filename), px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
             channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -418,7 +418,7 @@ public final class STBImage {
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
-            var addr = nload16(stack.allocateUtf8String(filename), px, py, pc, desiredChannels);
+            var addr = nload16(stack.allocateFrom(filename), px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
             channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -617,7 +617,7 @@ public final class STBImage {
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
-            var addr = nloadf(stack.allocateUtf8String(filename), px, py, pc, desiredChannels);
+            var addr = nloadf(stack.allocateFrom(filename), px, py, pc, desiredChannels);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
             channelsInFile[0] = pc.get(JAVA_INT, 0);

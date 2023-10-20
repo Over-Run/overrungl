@@ -303,7 +303,7 @@ public final class GLFWNative {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nsetX11SelectionString(stack.allocateUtf8String(string));
+            nsetX11SelectionString(stack.allocateFrom(string));
         } finally {
             stack.setPointer(stackPointer);
         }

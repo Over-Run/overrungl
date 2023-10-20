@@ -106,7 +106,7 @@ public sealed class GLFWVidMode extends Struct {
      * @return the instance
      */
     public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocateArray(LAYOUT, count), count);
+        return new Buffer(allocator.allocate(LAYOUT, count), count);
     }
 
     /**

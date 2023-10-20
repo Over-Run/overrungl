@@ -266,19 +266,19 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_BYTE, pixels));
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_SHORT, pixels));
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_INT, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_INT, pixels));
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_FLOAT, pixels));
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
@@ -291,18 +291,18 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_BYTE, pixels));
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_SHORT, pixels));
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_INT, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_INT, pixels));
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_FLOAT, pixels));
     }
 }

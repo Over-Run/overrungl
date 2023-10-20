@@ -66,7 +66,7 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public static void glDeleteVertexArrayAPPLE(SegmentAllocator allocator, int array) {
-        glDeleteVertexArraysAPPLE(1, allocator.allocate(JAVA_INT, array));
+        glDeleteVertexArraysAPPLE(1, allocator.allocateFrom(JAVA_INT, array));
     }
 
     public static void glGenVertexArraysAPPLE(int n, MemorySegment arrays) {

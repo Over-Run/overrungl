@@ -108,7 +108,7 @@ public final class STBEasyFont {
     }
 
     public static int print(SegmentAllocator allocator, float x, float y, String text, byte[] color, MemorySegment vertexBuffer, int vbufSize) {
-        return nprint(x, y, allocator.allocateUtf8String(text), allocator.allocateArray(ValueLayout.JAVA_BYTE, color), vertexBuffer, vbufSize);
+        return nprint(x, y, allocator.allocateFrom(text), allocator.allocateArray(ValueLayout.JAVA_BYTE, color), vertexBuffer, vbufSize);
     }
 
     public static int nwidth(MemorySegment text) {
@@ -123,7 +123,7 @@ public final class STBEasyFont {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nwidth(stack.allocateUtf8String(text));
+            return nwidth(stack.allocateFrom(text));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -141,7 +141,7 @@ public final class STBEasyFont {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nheight(stack.allocateUtf8String(text));
+            return nheight(stack.allocateFrom(text));
         } finally {
             stack.setPointer(stackPointer);
         }

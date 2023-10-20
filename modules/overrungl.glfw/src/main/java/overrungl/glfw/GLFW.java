@@ -19,6 +19,7 @@ package overrungl.glfw;
 import org.jetbrains.annotations.Nullable;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;
 import overrungl.util.value.Triplet;
@@ -2035,7 +2036,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nwindowHintString(hint, stack.allocateUtf8String(value));
+            nwindowHintString(hint, stack.allocateFrom(value));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2220,7 +2221,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return ncreateWindow(width, height, stack.allocateUtf8String(title), monitor, share);
+            return ncreateWindow(width, height, stack.allocateFrom(title), monitor, share);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2325,7 +2326,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nsetWindowTitle(window, stack.allocateUtf8String(title));
+            nsetWindowTitle(window, stack.allocateFrom(title));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5273,7 +5274,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nupdateGamepadMappings(stack.allocateUtf8String(string));
+            return nupdateGamepadMappings(stack.allocateFrom(string));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5407,7 +5408,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nsetClipboardString(stack.allocateUtf8String(string));
+            nsetClipboardString(stack.allocateFrom(string));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5730,7 +5731,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nextensionSupported(stack.allocateUtf8String(extension));
+            return nextensionSupported(stack.allocateFrom(extension));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5788,7 +5789,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return ngetProcAddress(stack.allocateUtf8String(procName));
+            return ngetProcAddress(stack.allocateFrom(procName));
         } finally {
             stack.setPointer(stackPointer);
         }

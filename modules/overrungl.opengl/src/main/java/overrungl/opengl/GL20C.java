@@ -263,7 +263,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            bindAttribLocation(program, index, stack.allocateUtf8String(name));
+            bindAttribLocation(program, index, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -441,7 +441,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getAttribLocation(program, stack.allocateUtf8String(name));
+            return getAttribLocation(program, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -605,7 +605,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getUniformLocation(program, stack.allocateUtf8String(name));
+            return getUniformLocation(program, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -825,7 +825,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         var pStr = allocator.allocateArray(ADDRESS, string.length);
         var pLen = allocator.allocateArray(JAVA_INT, string.length);
         for (int i = 0; i < string.length; i++) {
-            pStr.setAtIndex(ADDRESS, i, allocator.allocateUtf8String(string[i]));
+            pStr.setAtIndex(ADDRESS, i, allocator.allocateFrom(string[i]));
             pLen.setAtIndex(JAVA_INT, i, string[i].length());
         }
         shaderSource(shader, string.length, pStr, pLen);
@@ -835,7 +835,7 @@ public sealed class GL20C extends GL15C permits GL21C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            shaderSource(shader, 1, stack.allocate(ADDRESS, stack.allocateUtf8String(string)), stack.allocate(JAVA_INT, string.length()));
+            shaderSource(shader, 1, stack.allocate(ADDRESS, stack.allocateFrom(string)), stack.allocateFrom(JAVA_INT, string.length()));
         } finally {
             stack.setPointer(stackPointer);
         }

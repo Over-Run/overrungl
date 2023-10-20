@@ -104,7 +104,7 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageInsertARB(SegmentAllocator allocator, int source, int type, int id, int severity, String buf) {
-        glDebugMessageInsertARB(source, type, id, severity, -1, allocator.allocateUtf8String(buf));
+        glDebugMessageInsertARB(source, type, id, severity, -1, allocator.allocateFrom(buf));
     }
 
     public static int glGetDebugMessageLogARB(int count, int bufSize, MemorySegment sources, MemorySegment types, MemorySegment ids, MemorySegment severities, MemorySegment lengths, MemorySegment messageLog) {

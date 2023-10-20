@@ -466,7 +466,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getSubroutineIndex(program, shaderType, stack.allocateUtf8String(name));
+            return getSubroutineIndex(program, shaderType, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -485,7 +485,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getSubroutineUniformLocation(program, shaderType, stack.allocateUtf8String(name));
+            return getSubroutineUniformLocation(program, shaderType, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }

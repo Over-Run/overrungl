@@ -430,7 +430,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            bindFragDataLocation(program, color, stack.allocateUtf8String(name));
+            bindFragDataLocation(program, color, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -836,7 +836,7 @@ public sealed class GL30C extends GL21C permits GL31C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getFragDataLocation(program, stack.allocateUtf8String(name));
+            return getFragDataLocation(program, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1197,7 +1197,7 @@ public sealed class GL30C extends GL21C permits GL31C {
     public static void transformFeedbackVaryings(SegmentAllocator allocator, int program, String[] varyings, int bufferMode) {
         var seg = allocator.allocateArray(ADDRESS, varyings.length);
         for (int i = 0; i < varyings.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateUtf8String(varyings[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(varyings[i]));
         }
         transformFeedbackVaryings(program, varyings.length, seg, bufferMode);
     }

@@ -31,7 +31,7 @@ the [samples](modules/samples/src/test/java/overrungl/demo).
 You must enable the access of OverrunGL by adding a VM argument or a manifest attribute.
 
 ```
---enable-preview-acecss=overrungl.core,...
+--enable-preview-access=overrungl.core,...
 ```
 
 ## Using as a Dependency

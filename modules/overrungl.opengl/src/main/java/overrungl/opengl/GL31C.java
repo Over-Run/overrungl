@@ -272,7 +272,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getUniformBlockIndex(program, stack.allocateUtf8String(uniformBlockName));
+            return getUniformBlockIndex(program, stack.allocateFrom(uniformBlockName));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -291,7 +291,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         final int count = uniformNames.length;
         var pNames = allocator.allocateArray(ADDRESS, count);
         for (int i = 0; i < count; i++) {
-            pNames.setAtIndex(ADDRESS, i, allocator.allocateUtf8String(uniformNames[i]));
+            pNames.setAtIndex(ADDRESS, i, allocator.allocateFrom(uniformNames[i]));
         }
         var pIndices = allocator.allocateArray(JAVA_INT, count);
         getUniformIndices(program, count, pNames, pIndices);
@@ -303,7 +303,7 @@ public sealed class GL31C extends GL30C permits GL32C {
         final long stackPointer = stack.getPointer();
         try {
             var seg = stack.allocate(JAVA_INT);
-            getUniformIndices(program, 1, stack.allocateUtf8String(uniformName), seg);
+            getUniformIndices(program, 1, stack.allocateFrom(uniformName), seg);
             return seg.get(JAVA_INT, 0);
         } finally {
             stack.setPointer(stackPointer);

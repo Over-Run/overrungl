@@ -118,7 +118,7 @@ public sealed class GL46C extends GL45C permits GL {
 
     public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
         specializeShader(shader,
-            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
+            pEntryPoint != null ? allocator.allocateFrom(pEntryPoint) : MemorySegment.NULL,
             pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
             pConstantIndex != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
             pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
@@ -129,7 +129,7 @@ public sealed class GL46C extends GL45C permits GL {
         final long stackPointer = stack.getPointer();
         try {
             specializeShader(shader,
-                pEntryPoint != null ? stack.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
+                pEntryPoint != null ? stack.allocateFrom(pEntryPoint) : MemorySegment.NULL,
                 0,
                 MemorySegment.NULL,
                 MemorySegment.NULL);

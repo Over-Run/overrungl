@@ -95,7 +95,7 @@ public final class GLAMDDebugOutput {
     }
 
     public static void glDebugMessageInsertAMD(SegmentAllocator allocator, int category, int severity, int id, String buf) {
-        glDebugMessageInsertAMD(category, severity, id, 0, allocator.allocateUtf8String(buf));
+        glDebugMessageInsertAMD(category, severity, id, 0, allocator.allocateFrom(buf));
     }
 
     public static int glGetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {

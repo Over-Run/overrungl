@@ -26,6 +26,7 @@ import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
+import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -173,20 +174,12 @@ public final class NFD {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function, options);
     }
 
-    private static MethodHandle downcallTrivial(String name, FunctionDescriptors function) {
-        return downcall(name, function, Linker.Option.isTrivial());
-    }
-
     private static MethodHandle downcall(String name, FunctionDescriptor function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
     private static MethodHandle downcallSafe(String name, FunctionDescriptors function, Linker.Option... options) {
         return RuntimeHelper.downcallSafe(LOOKUP.find(name).orElse(MemorySegment.NULL), function, options);
-    }
-
-    private static MethodHandle downcallSafeTrivial(String name, FunctionDescriptors function) {
-        return downcallSafe(name, function, Linker.Option.isTrivial());
     }
 
     private static MethodHandle downcallSafe(String name, FunctionDescriptor function) {
@@ -197,16 +190,17 @@ public final class NFD {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            if (isOsWin) return RuntimeHelper.allocateUtf16LEString(stack, str);
-            return stack.allocateUtf8String(str);
+            if (isOsWin) return stack.allocateFrom(str, StandardCharsets.UTF_16LE);
+            return stack.allocateFrom(str);
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
     static String getString(MemorySegment segment, long offset) {
-        if (isOsWin) return RuntimeHelper.getUtf16LEString(segment, offset);
-        return segment.getUtf8String(offset);
+        final MemorySegment segment1 = segment.byteSize() == 0 ? segment.reinterpret(Long.MAX_VALUE) : segment;
+        if (isOsWin) return segment1.getString(offset, StandardCharsets.UTF_16LE);
+        return segment1.getString(offset);
     }
 
     /**
@@ -286,7 +280,7 @@ public final class NFD {
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
                 outPath[0] = getString(path, 0);
                 freePathN(path);
             }
@@ -371,7 +365,7 @@ public final class NFD {
                 defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL,
                 defaultName != null ? allocateString(defaultName) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
                 outPath[0] = getString(path, 0);
                 freePathN(path);
             }
@@ -412,7 +406,7 @@ public final class NFD {
             final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npickFolderN(seg, defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
                 outPath[0] = getString(path, 0);
                 freePathN(path);
             }
@@ -447,7 +441,7 @@ public final class NFD {
      */
     public static String getError() {
         final MemorySegment seg = ngetError();
-        return RuntimeHelper.isNullptr(seg) ? null : seg.getUtf8String(0);
+        return RuntimeHelper.isNullptr(seg) ? null : seg.getString(0);
     }
 
     /**
@@ -565,7 +559,7 @@ public final class NFD {
             final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetGetPathN(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
                 outPath[0] = getString(path, 0);
                 pathSetFreePathN(path);
             }
@@ -654,7 +648,7 @@ public final class NFD {
             final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetEnumNextN(enumerator, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
                 if (!RuntimeHelper.isNullptr(path)) {
                     outPath[0] = getString(path, 0);
                     pathSetFreePathN(path);
@@ -731,10 +725,10 @@ public final class NFD {
             final NFDResult result = nopenDialogU8(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+                defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
-                outPath[0] = path.getUtf8String(0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
+                outPath[0] = RuntimeHelper.getString(path);
                 freePathU8(path);
             }
             return result;
@@ -780,7 +774,7 @@ public final class NFD {
             return nopenDialogMultipleU8(outPaths,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+                defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -825,11 +819,11 @@ public final class NFD {
             final NFDResult result = nsaveDialogU8(seg,
                 filterList != null ? filterList.address() : MemorySegment.NULL,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL,
-                defaultName != null ? stack.allocateUtf8String(defaultName) : MemorySegment.NULL);
+                defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL,
+                defaultName != null ? stack.allocateFrom(defaultName) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
-                outPath[0] = path.getUtf8String(0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
+                outPath[0] = RuntimeHelper.getString(path);
                 freePathU8(path);
             }
             return result;
@@ -869,10 +863,10 @@ public final class NFD {
         final long stackPointer = stack.getPointer();
         try {
             final MemorySegment seg = stack.callocPointer();
-            final NFDResult result = npickFolderU8(seg, defaultPath != null ? stack.allocateUtf8String(defaultPath) : MemorySegment.NULL);
+            final NFDResult result = npickFolderU8(seg, defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
-                outPath[0] = path.getUtf8String(0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
+                outPath[0] = RuntimeHelper.getString(path);
                 freePathU8(path);
             }
             return result;
@@ -921,8 +915,8 @@ public final class NFD {
             final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetGetPathU8(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
-                outPath[0] = path.getUtf8String(0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
+                outPath[0] = RuntimeHelper.getString(path);
                 pathSetFreePathU8(path);
             }
             return result;
@@ -967,9 +961,9 @@ public final class NFD {
             final MemorySegment seg = stack.callocPointer();
             final NFDResult result = npathSetEnumNextU8(enumerator, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
+                final MemorySegment path = seg.get(ADDRESS, 0);
                 if (!RuntimeHelper.isNullptr(path)) {
-                    outPath[0] = path.getUtf8String(0);
+                    outPath[0] = RuntimeHelper.getString(path);
                     pathSetFreePathU8(path);
                 }
             }

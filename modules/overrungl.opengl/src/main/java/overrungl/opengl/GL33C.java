@@ -112,7 +112,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            bindFragDataLocationIndexed(program, colorNumber, index, stack.allocateUtf8String(name));
+            bindFragDataLocationIndexed(program, colorNumber, index, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -190,7 +190,7 @@ public sealed class GL33C extends GL32C permits GL40C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getFragDataIndex(program, stack.allocateUtf8String(name));
+            return getFragDataIndex(program, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }

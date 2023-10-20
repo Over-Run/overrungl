@@ -95,7 +95,7 @@ public final class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp red(SegmentAllocator allocator, short[] reds) {
-        ppRed.set(segment(), allocator.allocateArray(JAVA_SHORT, reds));
+        ppRed.set(segment(), allocator.allocateFrom(JAVA_SHORT, reds));
         return this;
     }
 
@@ -107,7 +107,7 @@ public final class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp green(SegmentAllocator allocator, short[] greens) {
-        ppGreen.set(segment(), allocator.allocateArray(JAVA_SHORT, greens));
+        ppGreen.set(segment(), allocator.allocateFrom(JAVA_SHORT, greens));
         return this;
     }
 
@@ -119,7 +119,7 @@ public final class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp blue(SegmentAllocator allocator, short[] blues) {
-        ppBlue.set(segment(), allocator.allocateArray(JAVA_SHORT, blues));
+        ppBlue.set(segment(), allocator.allocateFrom(JAVA_SHORT, blues));
         return this;
     }
 

@@ -18,14 +18,14 @@ package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
-import overrungl.FunctionDescriptors;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.util.Objects;
 
-import static overrungl.FunctionDescriptors.*;
+import static java.lang.foreign.FunctionDescriptor.of;
+import static java.lang.foreign.ValueLayout.ADDRESS;
 
 /**
  * The standard-C memory allocator.
@@ -34,26 +34,23 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class MemoryUtil {
-    /**
-     * An unbounded address layout.
-     */
-    public static final AddressLayout ADDRESS_UNBOUNDED = ValueLayout.ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(ValueLayout.JAVA_BYTE));
     private static final SymbolLookup LOOKUP = RuntimeHelper.LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", JP),
-        m_calloc = downcall("calloc", JJP),
-        m_realloc = downcall("realloc", PJP),
-        m_free = downcall("free", PV),
-        m_memcpy = downcall("memcpy", PPJP),
-        m_memmove = downcall("memmove", PPJP),
-        m_memset = downcall("memset", PIJP);
+        m_malloc = downcall("malloc", of(ADDRESS, RuntimeHelper.SIZE_T)),
+        m_calloc = downcall("calloc", of(ADDRESS, RuntimeHelper.SIZE_T, RuntimeHelper.SIZE_T)),
+        m_realloc = downcall("realloc", of(ADDRESS, ADDRESS, RuntimeHelper.SIZE_T)),
+        m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
+        m_memcpy = downcall("memcpy", of(ADDRESS, ADDRESS, ADDRESS, RuntimeHelper.SIZE_T)),
+        m_memmove = downcall("memmove", of(ADDRESS, ADDRESS, ADDRESS, RuntimeHelper.SIZE_T)),
+        m_memset = downcall("memset", of(ADDRESS, ADDRESS, ValueLayout.JAVA_INT, RuntimeHelper.SIZE_T)),
+        strlen = downcall("strlen", of(RuntimeHelper.SIZE_T, ADDRESS));
     private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
     /**
      * The address of {@code NULL}.
      */
     public static final long NULL = 0x0L;
 
-    private static MethodHandle downcall(String name, FunctionDescriptors function) {
+    private static MethodHandle downcall(String name, FunctionDescriptor function) {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
@@ -67,7 +64,7 @@ public final class MemoryUtil {
      * @param segment the segment.
      */
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return segment == null || segment.equals(MemorySegment.NULL);
+        return RuntimeHelper.isNullptr(segment);
     }
 
     /**
@@ -322,6 +319,25 @@ public final class MemoryUtil {
         try {
             RuntimeHelper.consume((MemorySegment) m_memset.invokeExact(dest, c, count));
             return dest;
+        } catch (Throwable e) {
+            throw new AssertionError("should not reach here", e);
+        }
+    }
+
+    /**
+     * Gets the length of a string, by using the current locale or a specified locale.
+     * <p>
+     * {@code strlen} interprets the string as a single-byte character string,
+     * so its return value is always equal to the number of bytes,
+     * even if the string contains multibyte characters.
+     *
+     * @param str Null-terminated string.
+     * @return the number of characters in <i>{@code str}</i>, excluding the terminal null.
+     * No return value is reserved to indicate an error.
+     */
+    public static long strlen(MemorySegment str) {
+        try {
+            return (long) strlen.invokeExact(str);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

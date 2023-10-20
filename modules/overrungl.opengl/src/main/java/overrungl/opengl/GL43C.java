@@ -448,7 +448,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            debugMessageInsert(source, type, id, severity, buf.length(), stack.allocateUtf8String(buf));
+            debugMessageInsert(source, type, id, severity, buf.length(), stack.allocateFrom(buf));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -647,7 +647,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getProgramResourceIndex(program, programInterface, stack.allocateUtf8String(name));
+            return getProgramResourceIndex(program, programInterface, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -666,7 +666,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getProgramResourceLocation(program, programInterface, stack.allocateUtf8String(name));
+            return getProgramResourceLocation(program, programInterface, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -685,7 +685,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getProgramResourceLocationIndex(program, programInterface, stack.allocateUtf8String(name));
+            return getProgramResourceLocationIndex(program, programInterface, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -868,7 +868,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            objectLabel(identifier, name, label.length(), stack.allocateUtf8String(label));
+            objectLabel(identifier, name, label.length(), stack.allocateFrom(label));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -887,7 +887,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            objectPtrLabel(ptr, label.length(), stack.allocateUtf8String(label));
+            objectPtrLabel(ptr, label.length(), stack.allocateFrom(label));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -915,7 +915,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            pushDebugGroup(source, id, message.length(), stack.allocateUtf8String(message));
+            pushDebugGroup(source, id, message.length(), stack.allocateFrom(message));
         } finally {
             stack.setPointer(stackPointer);
         }

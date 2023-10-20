@@ -17,7 +17,6 @@
 package overrungl.opengl;
 
 import overrungl.Callback;
-import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
@@ -36,7 +35,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  */
 @FunctionalInterface
 public interface GLDebugProc extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, RuntimeHelper.ADDRESS_UNBOUNDED);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS);
     MethodType MTYPE = DESC.toMethodType();
 
     /**
@@ -53,7 +52,7 @@ public interface GLDebugProc extends Callback {
     void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
 
     default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
-        invoke(source, type, id, severity, message.reinterpret(length + 1).getUtf8String(0), userParam);
+        invoke(source, type, id, severity, message.reinterpret(length + 1).getString(0), userParam.reinterpret(Long.MAX_VALUE));
     }
 
     @Override
