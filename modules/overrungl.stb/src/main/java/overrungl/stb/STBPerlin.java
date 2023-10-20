@@ -28,22 +28,13 @@ import static overrungl.stb.Handles.*;
  * @since 0.1.0
  */
 public final class STBPerlin {
-    private static MethodHandle
-        stb_perlin_noise3, stb_perlin_noise3_seed, stb_perlin_ridge_noise3, stb_perlin_fbm_noise3, stb_perlin_turbulence_noise3, stb_perlin_noise3_wrap_nonpow2;
-
-    static {
-        initialize();
-        create();
-    }
-
-    private static void create() {
-        stb_perlin_noise3 = downcall("stb_perlin_noise3", FFFIIIF);
-        stb_perlin_noise3_seed = downcall("stb_perlin_noise3_seed", FFFIIIIF);
-        stb_perlin_ridge_noise3 = downcall("stb_perlin_ridge_noise3", FFFFFFIF);
-        stb_perlin_fbm_noise3 = downcall("stb_perlin_fbm_noise3", FFFFFIF);
-        stb_perlin_turbulence_noise3 = downcall("stb_perlin_turbulence_noise3", FFFFFIF);
+    private static final MethodHandle
+        stb_perlin_noise3 = downcall("stb_perlin_noise3", FFFIIIF),
+        stb_perlin_noise3_seed = downcall("stb_perlin_noise3_seed", FFFIIIIF),
+        stb_perlin_ridge_noise3 = downcall("stb_perlin_ridge_noise3", FFFFFFIF),
+        stb_perlin_fbm_noise3 = downcall("stb_perlin_fbm_noise3", FFFFFIF),
+        stb_perlin_turbulence_noise3 = downcall("stb_perlin_turbulence_noise3", FFFFFIF),
         stb_perlin_noise3_wrap_nonpow2 = downcall("stb_perlin_noise3_wrap_nonpow2", FFFIIIBF);
-    }
 
     private STBPerlin() {
         throw new IllegalStateException("Do not construct instance");

@@ -35,39 +35,26 @@ import static overrungl.stb.Handles.*;
  * @since 0.1.0
  */
 public final class STBImageWrite {
-    private static MethodHandle
-        stbi_flip_vertically_on_write, stbi_get_write_force_png_filter, stbi_get_write_png_compression_level,
-        stbi_get_write_tga_with_rle, stbi_set_write_force_png_filter, stbi_set_write_png_compression_level,
-        stbi_set_write_tga_with_rle, stbi_write_bmp, stbi_write_bmp_to_func, stbi_write_hdr, stbi_write_hdr_to_func,
-        stbi_write_jpg, stbi_write_jpg_to_func, stbi_write_png, stbi_write_png_to_func, stbi_write_png_to_mem,
-        stbi_write_tga, stbi_write_tga_to_func, stbi_zlib_compress;
-
-    static {
-        initialize();
-        create();
-    }
-
-    private static void create() {
-        stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV);
-        stbi_get_write_force_png_filter = downcall("stbi_get_write_force_png_filter", I);
-        stbi_get_write_png_compression_level = downcall("stbi_get_write_png_compression_level", I);
-        stbi_get_write_tga_with_rle = downcall("stbi_get_write_tga_with_rle", I);
-        stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV);
-        stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV);
-        stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV);
-        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI);
-        stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP);
-        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI);
-        stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP);
-        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII);
-        stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI);
-        stbi_write_png = downcall("stbi_write_png", PIIIPII);
-        stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI);
-        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp);
-        stbi_write_tga = downcall("stbi_write_tga", PIIIP);
-        stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP);
+    private static final MethodHandle
+        stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV),
+        stbi_get_write_force_png_filter = downcall("stbi_get_write_force_png_filter", I),
+        stbi_get_write_png_compression_level = downcall("stbi_get_write_png_compression_level", I),
+        stbi_get_write_tga_with_rle = downcall("stbi_get_write_tga_with_rle", I),
+        stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV),
+        stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV),
+        stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV),
+        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI),
+        stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP),
+        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI),
+        stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP),
+        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII),
+        stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI),
+        stbi_write_png = downcall("stbi_write_png", PIIIPII),
+        stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI),
+        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp),
+        stbi_write_tga = downcall("stbi_write_tga", PIIIP),
+        stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP),
         stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIp);
-    }
 
     private STBImageWrite() {
         throw new IllegalStateException("Do not construct instance");
