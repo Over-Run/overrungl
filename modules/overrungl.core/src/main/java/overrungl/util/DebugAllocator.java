@@ -74,7 +74,7 @@ final class DebugAllocator {
     }
 
     static long track(long address, long size) {
-        if (CStdio.isNullptr(address)) {
+        if (CStdlib.isNullptr(address)) {
             Thread t = Thread.currentThread();
             THREADS.putIfAbsent(t.threadId(), t.getName());
 
@@ -122,7 +122,7 @@ final class DebugAllocator {
     }
 
     static long untrack(long address) {
-        if (CStdio.isNullptr(address)) {
+        if (CStdlib.isNullptr(address)) {
             return 0L;
         }
 
