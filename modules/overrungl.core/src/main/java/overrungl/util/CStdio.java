@@ -28,12 +28,12 @@ import java.util.Objects;
 import static overrungl.FunctionDescriptors.*;
 
 /**
- * The standard-C memory allocator.
+ * The standard-C library functions.
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class MemoryUtil {
+public final class CStdio {
     /**
      * An unbounded address layout.
      */
@@ -57,7 +57,7 @@ public final class MemoryUtil {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
-    private MemoryUtil() {
+    private CStdio() {
         throw new IllegalStateException("Do not construct instance");
     }
 
