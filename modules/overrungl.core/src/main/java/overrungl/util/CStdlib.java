@@ -33,7 +33,7 @@ import static overrungl.FunctionDescriptors.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class CStdio {
+public final class CStdlib {
     /**
      * An unbounded address layout.
      */
@@ -57,7 +57,7 @@ public final class CStdio {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
-    private CStdio() {
+    private CStdlib() {
         throw new IllegalStateException("Do not construct instance");
     }
 
