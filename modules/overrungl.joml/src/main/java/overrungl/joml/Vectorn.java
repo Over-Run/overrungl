@@ -18,7 +18,7 @@ package overrungl.joml;
 
 import org.joml.*;
 import overrungl.util.MemoryStack;
-import overrungl.util.MemoryUtil;
+import overrungl.util.CStdio;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -181,7 +181,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector2ic vec) {
-        return put(vec, MemoryUtil.malloc(VEC2I));
+        return put(vec, CStdio.malloc(VEC2I));
     }
 
     /**
@@ -191,7 +191,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector2fc vec) {
-        return put(vec, MemoryUtil.malloc(VEC2F));
+        return put(vec, CStdio.malloc(VEC2F));
     }
 
     /**
@@ -201,7 +201,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector2dc vec) {
-        return put(vec, MemoryUtil.malloc(VEC2D));
+        return put(vec, CStdio.malloc(VEC2D));
     }
 
     /**
@@ -211,7 +211,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector3ic vec) {
-        return put(vec, MemoryUtil.malloc(VEC3I));
+        return put(vec, CStdio.malloc(VEC3I));
     }
 
     /**
@@ -221,7 +221,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector3fc vec) {
-        return put(vec, MemoryUtil.malloc(VEC3F));
+        return put(vec, CStdio.malloc(VEC3F));
     }
 
     /**
@@ -231,7 +231,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector3dc vec) {
-        return put(vec, MemoryUtil.malloc(VEC3D));
+        return put(vec, CStdio.malloc(VEC3D));
     }
 
     /**
@@ -241,7 +241,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector4ic vec) {
-        return put(vec, MemoryUtil.malloc(VEC4I));
+        return put(vec, CStdio.malloc(VEC4I));
     }
 
     /**
@@ -251,7 +251,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector4fc vec) {
-        return put(vec, MemoryUtil.malloc(VEC4F));
+        return put(vec, CStdio.malloc(VEC4F));
     }
 
     /**
@@ -261,7 +261,7 @@ public final class Vectorn {
      * @return the memory address
      */
     public static MemorySegment malloc(Vector4dc vec) {
-        return put(vec, MemoryUtil.malloc(VEC4D));
+        return put(vec, CStdio.malloc(VEC4D));
     }
 
     /**

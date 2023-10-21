@@ -92,7 +92,7 @@ public final class CheckUtil {
      * @see #checkNotNullptr(MemorySegment, String)
      */
     public static void checkNotNullptr(MemorySegment segment, Supplier<String> messageSupplier) throws IllegalStateException {
-        if (MemoryUtil.isNullptr(segment)) throw new IllegalStateException(messageSupplier.get());
+        if (CStdio.isNullptr(segment)) throw new IllegalStateException(messageSupplier.get());
     }
 
     /**
@@ -105,6 +105,6 @@ public final class CheckUtil {
      * @see #checkNotNullptr(MemorySegment, Supplier)
      */
     public static void checkNotNullptr(MemorySegment segment, String message) throws IllegalStateException {
-        if (MemoryUtil.isNullptr(segment)) throw new IllegalStateException(message);
+        if (CStdio.isNullptr(segment)) throw new IllegalStateException(message);
     }
 }

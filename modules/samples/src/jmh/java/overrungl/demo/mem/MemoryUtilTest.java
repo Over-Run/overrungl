@@ -25,7 +25,7 @@ import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import overrungl.util.MemoryUtil;
+import overrungl.util.CStdio;
 
 /**
  * Tests memory util
@@ -66,10 +66,10 @@ public class MemoryUtilTest {
     public MemorySegment memoryUtilMalloc() {
         MemorySegment seg = null;
         try {
-            seg = MemoryUtil.malloc(size);
+            seg = CStdio.malloc(size);
             return seg;
         } finally {
-            MemoryUtil.free(seg);
+            CStdio.free(seg);
         }
     }
 
@@ -77,10 +77,10 @@ public class MemoryUtilTest {
     public MemorySegment memoryUtilCalloc() {
         MemorySegment seg = null;
         try {
-            seg = MemoryUtil.calloc(1, size);
+            seg = CStdio.calloc(1, size);
             return seg;
         } finally {
-            MemoryUtil.free(seg);
+            CStdio.free(seg);
         }
     }
 

@@ -312,7 +312,7 @@ public sealed class MemoryStack extends Pointer implements Arena {
      */
     public MemorySegment malloc(long alignment, long size) {
         if (DEBUG) {
-            MemoryUtil.checkAlignment(alignment);
+            CStdio.checkAlignment(alignment);
         }
 
         // Align address to the specified alignment
@@ -338,7 +338,7 @@ public sealed class MemoryStack extends Pointer implements Arena {
      */
     public MemorySegment ncalloc(long alignment, long num, long size) {
         if (DEBUG) {
-            MemoryUtil.checkAlignment(alignment);
+            CStdio.checkAlignment(alignment);
         }
 
         long bytes = num * size;
@@ -559,8 +559,8 @@ public sealed class MemoryStack extends Pointer implements Arena {
 
     @Override
     public MemorySegment allocate(long byteSize, long byteAlignment) throws IllegalArgumentException {
-        MemoryUtil.checkByteSize(byteSize);
-        MemoryUtil.checkAlignment(byteAlignment);
+        CStdio.checkByteSize(byteSize);
+        CStdio.checkAlignment(byteAlignment);
         return calloc(byteAlignment, byteSize);
     }
 
