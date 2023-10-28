@@ -57,7 +57,7 @@ data class Type(val name: String, val layout: String?) {
     override fun toString(): String = name
 }
 
-val fileHeader = """/*
+const val fileHeader = """/*
  * MIT License
  *
  * Copyright (c) 2022-present Overrun Organization
@@ -2861,6 +2861,65 @@ fun sgi() {
         "GL_GENERATE_MIPMAP_SGIS" to "0x8191",
         "GL_GENERATE_MIPMAP_HINT_SGIS" to "0x8192"
     )
+    file("Multisample", SGIS, "GL_SGIS_multisample") {
+        "GL_MULTISAMPLE_SGIS"("0x809D")
+        "GL_SAMPLE_ALPHA_TO_MASK_SGIS"("0x809E")
+        "GL_SAMPLE_ALPHA_TO_ONE_SGIS"("0x809F")
+        "GL_SAMPLE_MASK_SGIS"("0x80A0")
+        "GL_1PASS_SGIS"("0x80A1")
+        "GL_2PASS_0_SGIS"("0x80A2")
+        "GL_2PASS_1_SGIS"("0x80A3")
+        "GL_4PASS_0_SGIS"("0x80A4")
+        "GL_4PASS_1_SGIS"("0x80A5")
+        "GL_4PASS_2_SGIS"("0x80A6")
+        "GL_4PASS_3_SGIS"("0x80A7")
+        "GL_SAMPLE_BUFFERS_SGIS"("0x80A8")
+        "GL_SAMPLES_SGIS"("0x80A9")
+        "GL_SAMPLE_MASK_VALUE_SGIS"("0x80AA")
+        "GL_SAMPLE_MASK_INVERT_SGIS"("0x80AB")
+        "GL_SAMPLE_PATTERN_SGIS"("0x80AC")
+        "glSampleMaskSGIS"(void, GLclampf("value"), GLboolean("invert"))
+        "glSamplePatternSGIS"(void, GLenum("pattern"))
+    }
+    file("PixelTexture", SGIS, "GL_SGIS_pixel_texture") {
+        "GL_PIXEL_TEXTURE_SGIS"("0x8353")
+        "GL_PIXEL_FRAGMENT_RGB_SOURCE_SGIS"("0x8354")
+        "GL_PIXEL_FRAGMENT_ALPHA_SOURCE_SGIS"("0x8355")
+        "GL_PIXEL_GROUP_COLOR_SGIS"("0x8356")
+        "glPixelTexGenParameteriSGIS"(void, GLenum("pname"), GLint("param"))
+        "glPixelTexGenParameterivSGIS"(void, GLenum("pname"), address("params", "const GLint *"))
+        "glPixelTexGenParameterfSGIS"(void, GLenum("pname"), GLfloat("param"))
+        "glPixelTexGenParameterfvSGIS"(void, GLenum("pname"), address("params", "const GLfloat *"))
+        "glGetPixelTexGenParameterivSGIS"(void, GLenum("pname"), address("params", "GLint *"))
+        "glGetPixelTexGenParameterfvSGIS"(void, GLenum("pname"), address("params", "GLfloat *"))
+    }
+    file(
+        "PointLineTexgen", SGIS, "GL_SGIS_point_line_texgen",
+        "GL_EYE_DISTANCE_TO_POINT_SGIS" to "0x81F0",
+        "GL_OBJECT_DISTANCE_TO_POINT_SGIS" to "0x81F1",
+        "GL_EYE_DISTANCE_TO_LINE_SGIS" to "0x81F2",
+        "GL_OBJECT_DISTANCE_TO_LINE_SGIS" to "0x81F3",
+        "GL_EYE_POINT_SGIS" to "0x81F4",
+        "GL_OBJECT_POINT_SGIS" to "0x81F5",
+        "GL_EYE_LINE_SGIS" to "0x81F6",
+        "GL_OBJECT_LINE_SGIS" to "0x81F7"
+    )
+    file("PointParameters", SGIS, "GL_SGIS_point_parameters") {
+        "GL_POINT_SIZE_MIN_SGIS"("0x8126")
+        "GL_POINT_SIZE_MAX_SGIS"("0x8127")
+        "GL_POINT_FADE_THRESHOLD_SIZE_SGIS"("0x8128")
+        "GL_DISTANCE_ATTENUATION_SGIS"("0x8129")
+        "glPointParameterfSGIS"(void, GLenum("pname"), GLfloat("param"))
+        "glPointParameterfvSGIS"(void, GLenum("pname"), address("params", "const GLfloat *"))
+    }
+    file("SharpenTexture", SGIS, "GL_SGIS_sharpen_texture") {
+        "GL_LINEAR_SHARPEN_SGIS"("0x80AD")
+        "GL_LINEAR_SHARPEN_ALPHA_SGIS"("0x80AE")
+        "GL_LINEAR_SHARPEN_COLOR_SGIS"("0x80AF")
+        "GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS"("0x80B0")
+        "glSharpenTexFuncSGIS"(void, GLenum("target"), GLsizei("n"), address("points", "const GLfloat *"))
+        "glGetSharpenTexFuncSGIS"(void, GLenum("target"), address("points", "GLfloat *"))
+    }
 }
 
 fun sun() {
