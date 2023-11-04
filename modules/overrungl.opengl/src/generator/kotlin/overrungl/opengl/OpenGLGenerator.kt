@@ -14,6 +14,10 @@
  * copies or substantial portions of the Software.
  */
 
+/* note: adding a new extension
+ * you need to add the extension in glExtCaps::caps
+ */
+
 package overrungl.opengl
 
 import overrungl.opengl.OpenGLExt.*
@@ -2383,7 +2387,15 @@ fun ati() {
     }
 }
 
-fun ext() {}
+fun ext() {
+    file(
+        "422Pixels", EXT, "GL_EXT_422_pixels",
+        "GL_422_EXT" to "0x80CC",
+        "GL_422_REV_EXT" to "0x80CD",
+        "GL_422_AVERAGE_EXT" to "0x80CE",
+        "GL_422_REV_AVERAGE_EXT" to "0x80CF"
+    )
+}
 
 fun gremedy() {
     file("FrameTerminator", GREMEDY, "GL_GREMEDY_frame_terminator") {
@@ -2723,7 +2735,12 @@ fun mesa() {
     )
 }
 
-fun nv() {}
+fun nv() {
+    file("ConditionalRender", NVX, "GL_NVX_conditional_render") {
+        "glBeginConditionalRenderNVX"(void, GLuint("id"))
+        "glEndConditionalRenderNVX"(void)
+    }
+}
 
 fun oml() {
     file(
@@ -2920,6 +2937,428 @@ fun sgi() {
         "glSharpenTexFuncSGIS"(void, GLenum("target"), GLsizei("n"), address("points", "const GLfloat *"))
         "glGetSharpenTexFuncSGIS"(void, GLenum("target"), address("points", "GLfloat *"))
     }
+    file("Texture4D", SGIS, "GL_SGIS_texture4D") {
+        "GL_PACK_SKIP_VOLUMES_SGIS"("0x8130")
+        "GL_PACK_IMAGE_DEPTH_SGIS"("0x8131")
+        "GL_UNPACK_SKIP_VOLUMES_SGIS"("0x8132")
+        "GL_UNPACK_IMAGE_DEPTH_SGIS"("0x8133")
+        "GL_TEXTURE_4D_SGIS"("0x8134")
+        "GL_PROXY_TEXTURE_4D_SGIS"("0x8135")
+        "GL_TEXTURE_4DSIZE_SGIS"("0x8136")
+        "GL_TEXTURE_WRAP_Q_SGIS"("0x8137")
+        "GL_MAX_4D_TEXTURE_SIZE_SGIS"("0x8138")
+        "GL_TEXTURE_4D_BINDING_SGIS"("0x814F")
+        "glTexImage4DSGIS"(
+            void,
+            GLenum("target"),
+            GLint("level"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLsizei("size4d"),
+            GLint("border"),
+            GLenum("format"),
+            GLenum("type"),
+            address("pixels", "const void *")
+        )
+        "glTexSubImage4DSGIS"(
+            void,
+            GLenum("target"),
+            GLint("level"),
+            GLint("xoffset"),
+            GLint("yoffset"),
+            GLint("zoffset"),
+            GLint("woffset"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLsizei("size4d"),
+            GLenum("format"),
+            GLenum("type"),
+            address("pixels", "const void *")
+        )
+    }
+    file("TextureBorderClamp", SGIS, "GL_SGIS_texture_border_clamp", "GL_CLAMP_TO_BORDER_SGIS" to "0x812D")
+    file("TextureColorMask", SGIS, "GL_SGIS_texture_color_mask") {
+        "GL_TEXTURE_COLOR_WRITEMASK_SGIS"("0x81EF")
+        "glTextureColorMaskSGIS"(void, GLboolean("red"), GLboolean("green"), GLboolean("blue"), GLboolean("alpha"))
+    }
+    file("TextureEdgeClamp", SGIS, "GL_SGIS_texture_edge_clamp", "GL_CLAMP_TO_EDGE_SGIS" to "0x812F")
+    file("TextureFilter4", SGIS, "GL_SGIS_texture_filter4") {
+        "GL_FILTER4_SGIS"("0x8146")
+        "GL_TEXTURE_FILTER4_SIZE_SGIS"("0x8147")
+        "glGetTexFilterFuncSGIS"(void, GLenum("target"), GLenum("filter"), address("weights", "GLfloat *"))
+        "glTexFilterFuncSGIS"(
+            void,
+            GLenum("target"),
+            GLenum("filter"),
+            GLsizei("n"),
+            address("weights", "const GLfloat *")
+        )
+    }
+    file(
+        "TextureLod", SGIS, "GL_SGIS_texture_lod",
+        "GL_TEXTURE_MIN_LOD_SGIS" to "0x813A",
+        "GL_TEXTURE_MAX_LOD_SGIS" to "0x813B",
+        "GL_TEXTURE_BASE_LEVEL_SGIS" to "0x813C",
+        "GL_TEXTURE_MAX_LEVEL_SGIS" to "0x813D"
+    )
+    file(
+        "TextureSelect", SGIS, "GL_SGIS_texture_select",
+        "GL_DUAL_ALPHA4_SGIS" to "0x8110",
+        "GL_DUAL_ALPHA8_SGIS" to "0x8111",
+        "GL_DUAL_ALPHA12_SGIS" to "0x8112",
+        "GL_DUAL_ALPHA16_SGIS" to "0x8113",
+        "GL_DUAL_LUMINANCE4_SGIS" to "0x8114",
+        "GL_DUAL_LUMINANCE8_SGIS" to "0x8115",
+        "GL_DUAL_LUMINANCE12_SGIS" to "0x8116",
+        "GL_DUAL_LUMINANCE16_SGIS" to "0x8117",
+        "GL_DUAL_INTENSITY4_SGIS" to "0x8118",
+        "GL_DUAL_INTENSITY8_SGIS" to "0x8119",
+        "GL_DUAL_INTENSITY12_SGIS" to "0x811A",
+        "GL_DUAL_INTENSITY16_SGIS" to "0x811B",
+        "GL_DUAL_LUMINANCE_ALPHA4_SGIS" to "0x811C",
+        "GL_DUAL_LUMINANCE_ALPHA8_SGIS" to "0x811D",
+        "GL_QUAD_ALPHA4_SGIS" to "0x811E",
+        "GL_QUAD_ALPHA8_SGIS" to "0x811F",
+        "GL_QUAD_LUMINANCE4_SGIS" to "0x8120",
+        "GL_QUAD_LUMINANCE8_SGIS" to "0x8121",
+        "GL_QUAD_INTENSITY4_SGIS" to "0x8122",
+        "GL_QUAD_INTENSITY8_SGIS" to "0x8123",
+        "GL_DUAL_TEXTURE_SELECT_SGIS" to "0x8124",
+        "GL_QUAD_TEXTURE_SELECT_SGIS" to "0x8125"
+    )
+    file("Async", SGIX, "GL_SGIX_async") {
+        "GL_ASYNC_MARKER_SGIX"("0x8329")
+        "glAsyncMarkerSGIX"(void, GLuint("marker"))
+        "glFinishAsyncSGIX"(GLint, address("markerp", "GLuint *"))
+        "glPollAsyncSGIX"(GLint, address("markerp", "GLuint *"))
+        "glGenAsyncMarkersSGIX"(GLuint, GLsizei("range"))
+        "glDeleteAsyncMarkersSGIX"(void, GLuint("marker"), GLsizei("range"))
+        "glIsAsyncMarkerSGIX"(GLboolean, GLuint("marker"))
+    }
+    file(
+        "AsyncHistogram", SGIX, "GL_SGIX_async_histogram",
+        "GL_ASYNC_HISTOGRAM_SGIX" to "0x832C",
+        "GL_MAX_ASYNC_HISTOGRAM_SGIX" to "0x832D"
+    )
+    file(
+        "AsyncPixel", SGIX, "GL_SGIX_async_pixel",
+        "GL_ASYNC_TEX_IMAGE_SGIX" to "0x835C",
+        "GL_ASYNC_DRAW_PIXELS_SGIX" to "0x835D",
+        "GL_ASYNC_READ_PIXELS_SGIX" to "0x835E",
+        "GL_MAX_ASYNC_TEX_IMAGE_SGIX" to "0x835F",
+        "GL_MAX_ASYNC_DRAW_PIXELS_SGIX" to "0x8360",
+        "GL_MAX_ASYNC_READ_PIXELS_SGIX" to "0x8361"
+    )
+    file(
+        "BlendAlphaMinmax", SGIX, "GL_SGIX_blend_alpha_minmax",
+        "GL_ALPHA_MIN_SGIX" to "0x8320",
+        "GL_ALPHA_MAX_SGIX" to "0x8321"
+    )
+    file("CalligraphicFragment", SGIX, "GL_SGIX_calligraphic_fragment", "GL_CALLIGRAPHIC_FRAGMENT_SGIX" to "0x8183")
+    file(
+        "Clipmap", SGIX, "GL_SGIX_clipmap",
+        "GL_LINEAR_CLIPMAP_LINEAR_SGIX" to "0x8170",
+        "GL_TEXTURE_CLIPMAP_CENTER_SGIX" to "0x8171",
+        "GL_TEXTURE_CLIPMAP_FRAME_SGIX" to "0x8172",
+        "GL_TEXTURE_CLIPMAP_OFFSET_SGIX" to "0x8173",
+        "GL_TEXTURE_CLIPMAP_VIRTUAL_DEPTH_SGIX" to "0x8174",
+        "GL_TEXTURE_CLIPMAP_LOD_OFFSET_SGIX" to "0x8175",
+        "GL_TEXTURE_CLIPMAP_DEPTH_SGIX" to "0x8176",
+        "GL_MAX_CLIPMAP_DEPTH_SGIX" to "0x8177",
+        "GL_MAX_CLIPMAP_VIRTUAL_DEPTH_SGIX" to "0x8178",
+        "GL_NEAREST_CLIPMAP_NEAREST_SGIX" to "0x844D",
+        "GL_NEAREST_CLIPMAP_LINEAR_SGIX" to "0x844E",
+        "GL_LINEAR_CLIPMAP_NEAREST_SGIX" to "0x844F"
+    )
+    file("ConvolutionAccuracy", SGIX, "GL_SGIX_convolution_accuracy", "GL_CONVOLUTION_HINT_SGIX" to "0x8316")
+    file(
+        "DepthTexture", SGIX, "GL_SGIX_depth_texture",
+        "GL_DEPTH_COMPONENT16_SGIX" to "0x81A5",
+        "GL_DEPTH_COMPONENT24_SGIX" to "0x81A6",
+        "GL_DEPTH_COMPONENT32_SGIX" to "0x81A7"
+    )
+    file("FlushRaster", SGIX, "GL_SGIX_flush_raster") {
+        "glFlushRasterSGIX"(void)
+    }
+    file(
+        "FogOffset", SGIX, "GL_SGIX_fog_offset",
+        "GL_FOG_OFFSET_SGIX" to "0x8198",
+        "GL_FOG_OFFSET_VALUE_SGIX" to "0x8199"
+    )
+    file("FragmentLighting", SGIX, "GL_SGIX_fragment_lighting") {
+        "GL_FRAGMENT_LIGHTING_SGIX"("0x8400")
+        "GL_FRAGMENT_COLOR_MATERIAL_SGIX"("0x8401")
+        "GL_FRAGMENT_COLOR_MATERIAL_FACE_SGIX"("0x8402")
+        "GL_FRAGMENT_COLOR_MATERIAL_PARAMETER_SGIX"("0x8403")
+        "GL_MAX_FRAGMENT_LIGHTS_SGIX"("0x8404")
+        "GL_MAX_ACTIVE_LIGHTS_SGIX"("0x8405")
+        "GL_CURRENT_RASTER_NORMAL_SGIX"("0x8406")
+        "GL_LIGHT_ENV_MODE_SGIX"("0x8407")
+        "GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_SGIX"("0x8408")
+        "GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX"("0x8409")
+        "GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX"("0x840A")
+        "GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX"("0x840B")
+        "GL_FRAGMENT_LIGHT0_SGIX"("0x840C")
+        "GL_FRAGMENT_LIGHT1_SGIX"("0x840D")
+        "GL_FRAGMENT_LIGHT2_SGIX"("0x840E")
+        "GL_FRAGMENT_LIGHT3_SGIX"("0x840F")
+        "GL_FRAGMENT_LIGHT4_SGIX"("0x8410")
+        "GL_FRAGMENT_LIGHT5_SGIX"("0x8411")
+        "GL_FRAGMENT_LIGHT6_SGIX"("0x8412")
+        "GL_FRAGMENT_LIGHT7_SGIX"("0x8413")
+        "glFragmentColorMaterialSGIX"(void, GLenum("face"), GLenum("mode"))
+        "glFragmentLightfSGIX"(void, GLenum("light"), GLenum("pname"), GLfloat("param"))
+        "glFragmentLightfvSGIX"(void, GLenum("light"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glFragmentLightiSGIX"(void, GLenum("light"), GLenum("pname"), GLint("param"))
+        "glFragmentLightivSGIX"(void, GLenum("light"), GLenum("pname"), address("params", "const GLint *"))
+        "glFragmentLightModelfSGIX"(void, GLenum("pname"), GLfloat("param"))
+        "glFragmentLightModelfvSGIX"(void, GLenum("pname"), address("params", "const GLfloat *"))
+        "glFragmentLightModeliSGIX"(void, GLenum("pname"), GLint("param"))
+        "glFragmentLightModelivSGIX"(void, GLenum("pname"), address("params", "const GLint *"))
+        "glFragmentMaterialfSGIX"(void, GLenum("face"), GLenum("pname"), GLfloat("param"))
+        "glFragmentMaterialfvSGIX"(void, GLenum("face"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glFragmentMaterialiSGIX"(void, GLenum("face"), GLenum("pname"), GLint("param"))
+        "glFragmentMaterialivSGIX"(void, GLenum("face"), GLenum("pname"), address("params", "const GLint *"))
+        "glGetFragmentLightfvSGIX"(void, GLenum("light"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetFragmentLightivSGIX"(void, GLenum("light"), GLenum("pname"), address("params", "GLint *"))
+        "glGetFragmentMaterialfvSGIX"(void, GLenum("face"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetFragmentMaterialivSGIX"(void, GLenum("face"), GLenum("pname"), address("params", "GLint *"))
+        "glLightEnviSGIX"(void, GLenum("pname"), GLint("param"))
+    }
+    file("Framezoom", SGIX, "GL_SGIX_framezoom") {
+        "GL_FRAMEZOOM_SGIX"("0x818B")
+        "GL_FRAMEZOOM_FACTOR_SGIX"("0x818C")
+        "GL_MAX_FRAMEZOOM_FACTOR_SGIX"("0x818D")
+        "glFrameZoomSGIX"(void, GLint("factor"))
+    }
+    file("IglooInterface", SGIX, "GL_SGIX_igloo_interface") {
+        "glIglooInterfaceSGIX"(void, GLenum("pname"), address("params", "const void *"))
+    }
+    file("Instruments", SGIX, "GL_SGIX_instruments") {
+        "GL_INSTRUMENT_BUFFER_POINTER_SGIX"("0x8180")
+        "GL_INSTRUMENT_MEASUREMENTS_SGIX"("0x8181")
+        "glGetInstrumentsSGIX"(GLint)
+        "glInstrumentsBufferSGIX"(void, GLsizei("size"), address("buffer", "GLint *"))
+        "glPollInstrumentsSGIX"(GLint, address("marker_p", "GLint *"))
+        "glReadInstrumentsSGIX"(void, GLint("marker"))
+        "glStartInstrumentsSGIX"(void)
+        "glStopInstrumentsSGIX"(void, GLint("marker"))
+    }
+    file("Interlace", SGIX, "GL_SGIX_interlace", "GL_INTERLACE_SGIX" to "0x8094")
+    file("IrInstrument1", SGIX, "GL_SGIX_ir_instrument1", "GL_IR_INSTRUMENT1_SGIX" to "0x817F")
+    file("ListPriority", SGIX, "GL_SGIX_list_priority") {
+        "GL_LIST_PRIORITY_SGIX"("0x8182")
+        "glGetListParameterfvSGIX"(void, GLuint("list"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetListParameterivSGIX"(void, GLuint("list"), GLenum("pname"), address("params", "GLint *"))
+        "glListParameterfSGIX"(void, GLuint("list"), GLenum("pname"), GLfloat("param"))
+        "glListParameterfvSGIX"(void, GLuint("list"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glListParameteriSGIX"(void, GLuint("list"), GLenum("pname"), GLint("param"))
+        "glListParameterivSGIX"(void, GLuint("list"), GLenum("pname"), address("params", "const GLint *"))
+    }
+    file("PixelTexture", SGIX, "GL_SGIX_pixel_texture") {
+        "GL_PIXEL_TEX_GEN_SGIX"("0x8139")
+        "GL_PIXEL_TEX_GEN_MODE_SGIX"("0x832B")
+        "glPixelTexGenSGIX"(void, GLenum("mode"))
+    }
+    file(
+        "PixelTiles", SGIX, "GL_SGIX_pixel_tiles",
+        "GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX" to "0x813E",
+        "GL_PIXEL_TILE_CACHE_INCREMENT_SGIX" to "0x813F",
+        "GL_PIXEL_TILE_WIDTH_SGIX" to "0x8140",
+        "GL_PIXEL_TILE_HEIGHT_SGIX" to "0x8141",
+        "GL_PIXEL_TILE_GRID_WIDTH_SGIX" to "0x8142",
+        "GL_PIXEL_TILE_GRID_HEIGHT_SGIX" to "0x8143",
+        "GL_PIXEL_TILE_GRID_DEPTH_SGIX" to "0x8144",
+        "GL_PIXEL_TILE_CACHE_SIZE_SGIX" to "0x8145"
+    )
+    file("PolynomialFFD", SGIX, "GL_SGIX_polynomial_ffd") {
+        "GL_TEXTURE_DEFORMATION_BIT_SGIX"("0x00000001")
+        "GL_GEOMETRY_DEFORMATION_BIT_SGIX"("0x00000002")
+        "GL_GEOMETRY_DEFORMATION_SGIX"("0x8194")
+        "GL_TEXTURE_DEFORMATION_SGIX"("0x8195")
+        "GL_DEFORMATIONS_MASK_SGIX"("0x8196")
+        "GL_MAX_DEFORMATION_ORDER_SGIX"("0x8197")
+        "glDeformationMap3dSGIX"(
+            void,
+            GLenum("target"),
+            GLdouble("u1"),
+            GLdouble("u2"),
+            GLint("ustride"),
+            GLint("uorder"),
+            GLdouble("v1"),
+            GLdouble("v2"),
+            GLint("vstride"),
+            GLint("vorder"),
+            GLdouble("w1"),
+            GLdouble("w2"),
+            GLint("wstride"),
+            GLint("worder"),
+            address("points", "const GLdouble *")
+        )
+        "glDeformationMap3fSGIX"(
+            void,
+            GLenum("target"),
+            GLfloat("u1"),
+            GLfloat("u2"),
+            GLint("ustride"),
+            GLint("uorder"),
+            GLfloat("v1"),
+            GLfloat("v2"),
+            GLint("vstride"),
+            GLint("vorder"),
+            GLfloat("w1"),
+            GLfloat("w2"),
+            GLint("wstride"),
+            GLint("worder"),
+            address("points", "const GLfloat *")
+        )
+        "glDeformSGIX"(void, GLbitfield("mask"))
+        "glLoadIdentityDeformationMapSGIX"(void, GLbitfield("mask"))
+    }
+    file("ReferencePlane", SGIX, "GL_SGIX_reference_plane") {
+        "GL_REFERENCE_PLANE_SGIX"("0x817D")
+        "GL_REFERENCE_PLANE_EQUATION_SGIX"("0x817E")
+        "glReferencePlaneSGIX"(void, address("equation", "const GLdouble *"))
+    }
+    file(
+        "Resample", SGIX, "GL_SGIX_resample",
+        "GL_PACK_RESAMPLE_SGIX" to "0x842E",
+        "GL_UNPACK_RESAMPLE_SGIX" to "0x842F",
+        "GL_RESAMPLE_REPLICATE_SGIX" to "0x8433",
+        "GL_RESAMPLE_ZERO_FILL_SGIX" to "0x8434",
+        "GL_RESAMPLE_DECIMATE_SGIX" to "0x8430"
+    )
+    file("ScalebiasHint", SGIX, "GL_SGIX_scalebias_hint", "GL_SCALEBIAS_HINT_SGIX" to "0x8322")
+    file(
+        "Shadow", SGIX, "GL_SGIX_shadow",
+        "GL_TEXTURE_COMPARE_SGIX" to "0x819A",
+        "GL_TEXTURE_COMPARE_OPERATOR_SGIX" to "0x819B",
+        "GL_TEXTURE_LEQUAL_R_SGIX" to "0x819C",
+        "GL_TEXTURE_GEQUAL_R_SGIX" to "0x819D"
+    )
+    file("ShadowAmbient", SGIX, "GL_SGIX_shadow_ambient", "GL_SHADOW_AMBIENT_SGIX" to "0x80BF")
+    file("Sprite", SGIX, "GL_SGIX_sprite") {
+        "GL_SPRITE_SGIX"("0x8148")
+        "GL_SPRITE_MODE_SGIX"("0x8149")
+        "GL_SPRITE_AXIS_SGIX"("0x814A")
+        "GL_SPRITE_TRANSLATION_SGIX"("0x814B")
+        "GL_SPRITE_AXIAL_SGIX"("0x814C")
+        "GL_SPRITE_OBJECT_ALIGNED_SGIX"("0x814D")
+        "GL_SPRITE_EYE_ALIGNED_SGIX"("0x814E")
+        "glSpriteParameterfSGIX"(void, GLenum("pname"), GLfloat("param"))
+        "glSpriteParameterfvSGIX"(void, GLenum("pname"), address("params", "const GLfloat *"))
+        "glSpriteParameteriSGIX"(void, GLenum("pname"), GLint("param"))
+        "glSpriteParameterivSGIX"(void, GLenum("pname"), address("params", "const GLint *"))
+    }
+    file(
+        "Subsample", SGIX, "GL_SGIX_subsample",
+        "GL_PACK_SUBSAMPLE_RATE_SGIX" to "0x85A0",
+        "GL_UNPACK_SUBSAMPLE_RATE_SGIX" to "0x85A1",
+        "GL_PIXEL_SUBSAMPLE_4444_SGIX" to "0x85A2",
+        "GL_PIXEL_SUBSAMPLE_2424_SGIX" to "0x85A3",
+        "GL_PIXEL_SUBSAMPLE_4242_SGIX" to "0x85A4"
+    )
+    file("TagSampleBuffer", SGIX, "GL_SGIX_tag_sample_buffer") {
+        "glTagSampleBufferSGIX"(void)
+    }
+    file("TextureAddEnv", SGIX, "GL_SGIX_texture_add_env", "GL_TEXTURE_ENV_BIAS_SGIX" to "0x80BE")
+    file(
+        "TextureCoordinateClamp", SGIX, "GL_SGIX_texture_coordinate_clamp",
+        "GL_TEXTURE_MAX_CLAMP_S_SGIX" to "0x8369",
+        "GL_TEXTURE_MAX_CLAMP_T_SGIX" to "0x836A",
+        "GL_TEXTURE_MAX_CLAMP_R_SGIX" to "0x836B"
+    )
+    file(
+        "TextureLodBias", SGIX, "GL_SGIX_texture_lod_bias",
+        "GL_TEXTURE_LOD_BIAS_S_SGIX" to "0x818E",
+        "GL_TEXTURE_LOD_BIAS_T_SGIX" to "0x818F",
+        "GL_TEXTURE_LOD_BIAS_R_SGIX" to "0x8190"
+    )
+    file("TextureMultiBuffer", SGIX, "GL_SGIX_texture_multi_buffer", "GL_TEXTURE_MULTI_BUFFER_HINT_SGIX" to "0x812E")
+    file(
+        "TextureScaleBias", SGIX, "GL_SGIX_texture_scale_bias",
+        "GL_POST_TEXTURE_FILTER_BIAS_SGIX" to "0x8179",
+        "GL_POST_TEXTURE_FILTER_SCALE_SGIX" to "0x817A",
+        "GL_POST_TEXTURE_FILTER_BIAS_RANGE_SGIX" to "0x817B",
+        "GL_POST_TEXTURE_FILTER_SCALE_RANGE_SGIX" to "0x817C"
+    )
+    file(
+        "VertexPreclip", SGIX, "GL_SGIX_vertex_preclip",
+        "GL_VERTEX_PRECLIP_SGIX" to "0x83EE",
+        "GL_VERTEX_PRECLIP_HINT_SGIX" to "0x83EF"
+    )
+    file(
+        "Ycrcb", SGIX, "GL_SGIX_ycrcb",
+        "GL_YCRCB_422_SGIX" to "0x81BB",
+        "GL_YCRCB_444_SGIX" to "0x81BC"
+    )
+    file(
+        "Ycrcba", SGIX, "GL_SGIX_ycrcba",
+        "GL_YCRCB_SGIX" to "0x8318",
+        "GL_YCRCBA_SGIX" to "0x8319"
+    )
+    file(
+        "ColorMatrix", SGI, "GL_SGI_color_matrix",
+        "GL_COLOR_MATRIX_SGI" to "0x80B1",
+        "GL_COLOR_MATRIX_STACK_DEPTH_SGI" to "0x80B2",
+        "GL_MAX_COLOR_MATRIX_STACK_DEPTH_SGI" to "0x80B3",
+        "GL_POST_COLOR_MATRIX_RED_SCALE_SGI" to "0x80B4",
+        "GL_POST_COLOR_MATRIX_GREEN_SCALE_SGI" to "0x80B5",
+        "GL_POST_COLOR_MATRIX_BLUE_SCALE_SGI" to "0x80B6",
+        "GL_POST_COLOR_MATRIX_ALPHA_SCALE_SGI" to "0x80B7",
+        "GL_POST_COLOR_MATRIX_RED_BIAS_SGI" to "0x80B8",
+        "GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI" to "0x80B9",
+        "GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI" to "0x80BA",
+        "GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI" to "0x80BB"
+    )
+    file("ColorTable", SGI, "GL_SGI_color_table") {
+        "GL_COLOR_TABLE_SGI"("0x80D0")
+        "GL_POST_CONVOLUTION_COLOR_TABLE_SGI"("0x80D1")
+        "GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI"("0x80D2")
+        "GL_PROXY_COLOR_TABLE_SGI"("0x80D3")
+        "GL_PROXY_POST_CONVOLUTION_COLOR_TABLE_SGI"("0x80D4")
+        "GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE_SGI"("0x80D5")
+        "GL_COLOR_TABLE_SCALE_SGI"("0x80D6")
+        "GL_COLOR_TABLE_BIAS_SGI"("0x80D7")
+        "GL_COLOR_TABLE_FORMAT_SGI"("0x80D8")
+        "GL_COLOR_TABLE_WIDTH_SGI"("0x80D9")
+        "GL_COLOR_TABLE_RED_SIZE_SGI"("0x80DA")
+        "GL_COLOR_TABLE_GREEN_SIZE_SGI"("0x80DB")
+        "GL_COLOR_TABLE_BLUE_SIZE_SGI"("0x80DC")
+        "GL_COLOR_TABLE_ALPHA_SIZE_SGI"("0x80DD")
+        "GL_COLOR_TABLE_LUMINANCE_SIZE_SGI"("0x80DE")
+        "GL_COLOR_TABLE_INTENSITY_SIZE_SGI"("0x80DF")
+        "glColorTableSGI"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLenum("format"),
+            GLenum("type"),
+            address("table", "const void *")
+        )
+        "glColorTableParameterfvSGI"(void, GLenum("target"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glColorTableParameterivSGI"(void, GLenum("target"), GLenum("pname"), address("params", "const GLint *"))
+        "glCopyColorTableSGI"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLint("x"),
+            GLint("y"),
+            GLsizei("width")
+        )
+        "glGetColorTableSGI"(void, GLenum("target"), GLenum("format"), GLenum("type"), address("table", "void *"))
+        "glGetColorTableParameterfvSGI"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetColorTableParameterivSGI"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+    }
+    file(
+        "TextureColorTable", SGI, "GL_SGI_texture_color_table",
+        "GL_TEXTURE_COLOR_TABLE_SGI" to "0x80BC",
+        "GL_PROXY_TEXTURE_COLOR_TABLE_SGI" to "0x80BD"
+    )
 }
 
 fun sun() {
@@ -3924,11 +4363,11 @@ fun glExtCaps() {
             |import overrungl.opengl.ext.amd.*;
             |import overrungl.opengl.ext.apple.*;
             |import overrungl.opengl.ext.ati.*;
-            |//import overrungl.opengl.ext.ext.*;
+            |import overrungl.opengl.ext.ext.*;
             |import overrungl.opengl.ext.ibm.*;
             |import overrungl.opengl.ext.intel.*;
             |import overrungl.opengl.ext.mesa.*;
-            |//import overrungl.opengl.ext.nv.*;
+            |import overrungl.opengl.ext.nv.*;
             |import overrungl.opengl.ext.sgi.*;
             |import overrungl.opengl.ext.sun.*;
             |
@@ -3988,7 +4427,7 @@ fun glExtCaps() {
             |        int numExtsI = pNumExtsI.get(JAVA_INT, 0);
             |        var extsI = pExtsI[0];
             |
-            |        ${caps.map { "this.$it = hasExtension(version, exts, numExtsI, extsI, \"$it\");" }.joinToString(separator = "\n|        ")}
+            |        ${caps.joinToString(separator = "\n|        ") { "this.$it = hasExtension(version, exts, numExtsI, extsI, \"$it\");" }}
             |
             |        return true;
             |    }

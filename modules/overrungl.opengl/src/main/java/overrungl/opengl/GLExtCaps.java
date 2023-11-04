@@ -24,11 +24,11 @@ import overrungl.opengl.ext.oes.*;
 import overrungl.opengl.ext.amd.*;
 import overrungl.opengl.ext.apple.*;
 import overrungl.opengl.ext.ati.*;
-//import overrungl.opengl.ext.ext.*;
+import overrungl.opengl.ext.ext.*;
 import overrungl.opengl.ext.ibm.*;
 import overrungl.opengl.ext.intel.*;
 import overrungl.opengl.ext.mesa.*;
-//import overrungl.opengl.ext.nv.*;
+import overrungl.opengl.ext.nv.*;
 import overrungl.opengl.ext.sgi.*;
 import overrungl.opengl.ext.sun.*;
 
@@ -96,11 +96,16 @@ public final class GLExtCaps {
         glMultiModeDrawElementsIBM, glFlushStaticDataIBM, glColorPointerListIBM, glSecondaryColorPointerListIBM, glEdgeFlagPointerListIBM, glFogCoordPointerListIBM, glIndexPointerListIBM, glNormalPointerListIBM, glTexCoordPointerListIBM, glVertexPointerListIBM, glBlendFuncSeparateINGR, glApplyFramebufferAttachmentCMAAINTEL, glSyncTextureINTEL, glUnmapTexture2DINTEL, glMapTexture2DINTEL, glVertexPointervINTEL,
         glNormalPointervINTEL, glColorPointervINTEL, glTexCoordPointervINTEL, glBeginPerfQueryINTEL, glCreatePerfQueryINTEL, glDeletePerfQueryINTEL, glEndPerfQueryINTEL, glGetFirstPerfQueryIdINTEL, glGetNextPerfQueryIdINTEL, glGetPerfCounterInfoINTEL, glGetPerfQueryDataINTEL, glGetPerfQueryIdByNameINTEL, glGetPerfQueryInfoINTEL, glFramebufferParameteriMESA, glGetFramebufferParameterivMESA, glResizeBuffersMESA,
         glWindowPos2dMESA, glWindowPos2dvMESA, glWindowPos2fMESA, glWindowPos2fvMESA, glWindowPos2iMESA, glWindowPos2ivMESA, glWindowPos2sMESA, glWindowPos2svMESA, glWindowPos3dMESA, glWindowPos3dvMESA, glWindowPos3fMESA, glWindowPos3fvMESA, glWindowPos3iMESA, glWindowPos3ivMESA, glWindowPos3sMESA, glWindowPos3svMESA,
-        glWindowPos4dMESA, glWindowPos4dvMESA, glWindowPos4fMESA, glWindowPos4fvMESA, glWindowPos4iMESA, glWindowPos4ivMESA, glWindowPos4sMESA, glWindowPos4svMESA, glFramebufferTextureMultiviewOVR, glHintPGI, glDetailTexFuncSGIS, glGetDetailTexFuncSGIS, glFogFuncSGIS, glGetFogFuncSGIS, glFinishTextureSUNX, glGlobalAlphaFactorbSUN,
-        glGlobalAlphaFactorsSUN, glGlobalAlphaFactoriSUN, glGlobalAlphaFactorfSUN, glGlobalAlphaFactordSUN, glGlobalAlphaFactorubSUN, glGlobalAlphaFactorusSUN, glGlobalAlphaFactoruiSUN, glDrawMeshArraysSUN, glReplacementCodeuiSUN, glReplacementCodeusSUN, glReplacementCodeubSUN, glReplacementCodeuivSUN, glReplacementCodeusvSUN, glReplacementCodeubvSUN, glReplacementCodePointerSUN, glColor4ubVertex2fSUN,
-        glColor4ubVertex2fvSUN, glColor4ubVertex3fSUN, glColor4ubVertex3fvSUN, glColor3fVertex3fSUN, glColor3fVertex3fvSUN, glNormal3fVertex3fSUN, glNormal3fVertex3fvSUN, glColor4fNormal3fVertex3fSUN, glColor4fNormal3fVertex3fvSUN, glTexCoord2fVertex3fSUN, glTexCoord2fVertex3fvSUN, glTexCoord4fVertex4fSUN, glTexCoord4fVertex4fvSUN, glTexCoord2fColor4ubVertex3fSUN, glTexCoord2fColor4ubVertex3fvSUN, glTexCoord2fColor3fVertex3fSUN,
-        glTexCoord2fColor3fVertex3fvSUN, glTexCoord2fNormal3fVertex3fSUN, glTexCoord2fNormal3fVertex3fvSUN, glTexCoord2fColor4fNormal3fVertex3fSUN, glTexCoord2fColor4fNormal3fVertex3fvSUN, glTexCoord4fColor4fNormal3fVertex4fSUN, glTexCoord4fColor4fNormal3fVertex4fvSUN, glReplacementCodeuiVertex3fSUN, glReplacementCodeuiVertex3fvSUN, glReplacementCodeuiColor4ubVertex3fSUN, glReplacementCodeuiColor4ubVertex3fvSUN, glReplacementCodeuiColor3fVertex3fSUN, glReplacementCodeuiColor3fVertex3fvSUN, glReplacementCodeuiNormal3fVertex3fSUN, glReplacementCodeuiNormal3fVertex3fvSUN, glReplacementCodeuiColor4fNormal3fVertex3fSUN,
-        glReplacementCodeuiColor4fNormal3fVertex3fvSUN, glReplacementCodeuiTexCoord2fVertex3fSUN, glReplacementCodeuiTexCoord2fVertex3fvSUN, glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
+        glWindowPos4dMESA, glWindowPos4dvMESA, glWindowPos4fMESA, glWindowPos4fvMESA, glWindowPos4iMESA, glWindowPos4ivMESA, glWindowPos4sMESA, glWindowPos4svMESA, glBeginConditionalRenderNVX, glEndConditionalRenderNVX, glFramebufferTextureMultiviewOVR, glHintPGI, glDetailTexFuncSGIS, glGetDetailTexFuncSGIS, glFogFuncSGIS, glGetFogFuncSGIS,
+        glSampleMaskSGIS, glSamplePatternSGIS, glPixelTexGenParameteriSGIS, glPixelTexGenParameterivSGIS, glPixelTexGenParameterfSGIS, glPixelTexGenParameterfvSGIS, glGetPixelTexGenParameterivSGIS, glGetPixelTexGenParameterfvSGIS, glPointParameterfSGIS, glPointParameterfvSGIS, glSharpenTexFuncSGIS, glGetSharpenTexFuncSGIS, glTexImage4DSGIS, glTexSubImage4DSGIS, glTextureColorMaskSGIS, glGetTexFilterFuncSGIS,
+        glTexFilterFuncSGIS, glAsyncMarkerSGIX, glFinishAsyncSGIX, glPollAsyncSGIX, glGenAsyncMarkersSGIX, glDeleteAsyncMarkersSGIX, glIsAsyncMarkerSGIX, glFlushRasterSGIX, glFragmentColorMaterialSGIX, glFragmentLightfSGIX, glFragmentLightfvSGIX, glFragmentLightiSGIX, glFragmentLightivSGIX, glFragmentLightModelfSGIX, glFragmentLightModelfvSGIX, glFragmentLightModeliSGIX,
+        glFragmentLightModelivSGIX, glFragmentMaterialfSGIX, glFragmentMaterialfvSGIX, glFragmentMaterialiSGIX, glFragmentMaterialivSGIX, glGetFragmentLightfvSGIX, glGetFragmentLightivSGIX, glGetFragmentMaterialfvSGIX, glGetFragmentMaterialivSGIX, glLightEnviSGIX, glFrameZoomSGIX, glIglooInterfaceSGIX, glGetInstrumentsSGIX, glInstrumentsBufferSGIX, glPollInstrumentsSGIX, glReadInstrumentsSGIX,
+        glStartInstrumentsSGIX, glStopInstrumentsSGIX, glGetListParameterfvSGIX, glGetListParameterivSGIX, glListParameterfSGIX, glListParameterfvSGIX, glListParameteriSGIX, glListParameterivSGIX, glPixelTexGenSGIX, glDeformationMap3dSGIX, glDeformationMap3fSGIX, glDeformSGIX, glLoadIdentityDeformationMapSGIX, glReferencePlaneSGIX, glSpriteParameterfSGIX, glSpriteParameterfvSGIX,
+        glSpriteParameteriSGIX, glSpriteParameterivSGIX, glTagSampleBufferSGIX, glColorTableSGI, glColorTableParameterfvSGI, glColorTableParameterivSGI, glCopyColorTableSGI, glGetColorTableSGI, glGetColorTableParameterfvSGI, glGetColorTableParameterivSGI, glFinishTextureSUNX, glGlobalAlphaFactorbSUN, glGlobalAlphaFactorsSUN, glGlobalAlphaFactoriSUN, glGlobalAlphaFactorfSUN, glGlobalAlphaFactordSUN,
+        glGlobalAlphaFactorubSUN, glGlobalAlphaFactorusSUN, glGlobalAlphaFactoruiSUN, glDrawMeshArraysSUN, glReplacementCodeuiSUN, glReplacementCodeusSUN, glReplacementCodeubSUN, glReplacementCodeuivSUN, glReplacementCodeusvSUN, glReplacementCodeubvSUN, glReplacementCodePointerSUN, glColor4ubVertex2fSUN, glColor4ubVertex2fvSUN, glColor4ubVertex3fSUN, glColor4ubVertex3fvSUN, glColor3fVertex3fSUN,
+        glColor3fVertex3fvSUN, glNormal3fVertex3fSUN, glNormal3fVertex3fvSUN, glColor4fNormal3fVertex3fSUN, glColor4fNormal3fVertex3fvSUN, glTexCoord2fVertex3fSUN, glTexCoord2fVertex3fvSUN, glTexCoord4fVertex4fSUN, glTexCoord4fVertex4fvSUN, glTexCoord2fColor4ubVertex3fSUN, glTexCoord2fColor4ubVertex3fvSUN, glTexCoord2fColor3fVertex3fSUN, glTexCoord2fColor3fVertex3fvSUN, glTexCoord2fNormal3fVertex3fSUN, glTexCoord2fNormal3fVertex3fvSUN, glTexCoord2fColor4fNormal3fVertex3fSUN,
+        glTexCoord2fColor4fNormal3fVertex3fvSUN, glTexCoord4fColor4fNormal3fVertex4fSUN, glTexCoord4fColor4fNormal3fVertex4fvSUN, glReplacementCodeuiVertex3fSUN, glReplacementCodeuiVertex3fvSUN, glReplacementCodeuiColor4ubVertex3fSUN, glReplacementCodeuiColor4ubVertex3fvSUN, glReplacementCodeuiColor3fVertex3fSUN, glReplacementCodeuiColor3fVertex3fvSUN, glReplacementCodeuiNormal3fVertex3fSUN, glReplacementCodeuiNormal3fVertex3fvSUN, glReplacementCodeuiColor4fNormal3fVertex3fSUN, glReplacementCodeuiColor4fNormal3fVertex3fvSUN, glReplacementCodeuiTexCoord2fVertex3fSUN, glReplacementCodeuiTexCoord2fVertex3fvSUN, glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN,
+        glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
 
     void load(GLLoadFunc load) {
         GLARBRobustness.load(this, load);
@@ -172,10 +177,31 @@ public final class GLExtCaps {
         GLMESAFramebufferFlipY.load(this, load);
         GLMESAResizeBuffers.load(this, load);
         GLMESAWindowPos.load(this, load);
+        GLNVXConditionalRender.load(this, load);
         GLOVRMultiview.load(this, load);
         GLPGIMiscHints.load(this, load);
         GLSGISDetailTexture.load(this, load);
         GLSGISFogFunction.load(this, load);
+        GLSGISMultisample.load(this, load);
+        GLSGISPixelTexture.load(this, load);
+        GLSGISPointParameters.load(this, load);
+        GLSGISSharpenTexture.load(this, load);
+        GLSGISTexture4D.load(this, load);
+        GLSGISTextureColorMask.load(this, load);
+        GLSGISTextureFilter4.load(this, load);
+        GLSGIXAsync.load(this, load);
+        GLSGIXFlushRaster.load(this, load);
+        GLSGIXFragmentLighting.load(this, load);
+        GLSGIXFramezoom.load(this, load);
+        GLSGIXIglooInterface.load(this, load);
+        GLSGIXInstruments.load(this, load);
+        GLSGIXListPriority.load(this, load);
+        GLSGIXPixelTexture.load(this, load);
+        GLSGIXPolynomialFFD.load(this, load);
+        GLSGIXReferencePlane.load(this, load);
+        GLSGIXSprite.load(this, load);
+        GLSGIXTagSampleBuffer.load(this, load);
+        GLSGIColorTable.load(this, load);
         GLSUNXConstantData.load(this, load);
         GLSUNGlobalAlpha.load(this, load);
         GLSUNMeshArray.load(this, load);
