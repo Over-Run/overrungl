@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_PGI_vertex_hints}
-  */
+ * {@code GL_PGI_vertex_hints}
+ */
 public final class GLPGIVertexHints {
     public static final int GL_VERTEX_DATA_HINT_PGI = 0x1A22A;
     public static final int GL_VERTEX_CONSISTENT_HINT_PGI = 0x1A22B;

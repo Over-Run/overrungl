@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_occlusion_query_event}
-  */
+ * {@code GL_AMD_occlusion_query_event}
+ */
 public final class GLAMDOcclusionQueryEvent {
     public static final int GL_OCCLUSION_QUERY_EVENT_MASK_AMD = 0x874F;
     public static final int GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD = 0x00000001;

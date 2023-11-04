@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_OVR_multiview}
-  */
+ * {@code GL_OVR_multiview}
+ */
 public final class GLOVRMultiview {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = 0x9630;
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR = 0x9632;

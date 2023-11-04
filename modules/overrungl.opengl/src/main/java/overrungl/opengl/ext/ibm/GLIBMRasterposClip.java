@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_IBM_rasterpos_clip}
-  */
+ * {@code GL_IBM_rasterpos_clip}
+ */
 public final class GLIBMRasterposClip {
     public static final int GL_RASTER_POSITION_UNCLIPPED_IBM = 0x19262;
 }

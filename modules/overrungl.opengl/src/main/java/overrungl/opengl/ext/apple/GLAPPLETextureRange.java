@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_texture_range}
-  */
+ * {@code GL_APPLE_texture_range}
+ */
 public final class GLAPPLETextureRange {
     public static final int GL_TEXTURE_RANGE_LENGTH_APPLE = 0x85B7;
     public static final int GL_TEXTURE_RANGE_POINTER_APPLE = 0x85B8;

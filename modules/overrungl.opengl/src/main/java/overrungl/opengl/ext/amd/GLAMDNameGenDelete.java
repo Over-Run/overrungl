@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_name_gen_delete}
-  */
+ * {@code GL_AMD_name_gen_delete}
+ */
 public final class GLAMDNameGenDelete {
     public static final int GL_DATA_BUFFER_AMD = 0x9151;
     public static final int GL_PERFORMANCE_MONITOR_AMD = 0x9152;

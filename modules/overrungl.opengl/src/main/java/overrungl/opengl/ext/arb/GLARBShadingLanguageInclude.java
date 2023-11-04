@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_shading_language_include}
-  */
+ * {@code GL_ARB_shading_language_include}
+ */
 public final class GLARBShadingLanguageInclude {
     public static final int GL_SHADER_INCLUDE_ARB = 0x8DAE;
     public static final int GL_NAMED_STRING_LENGTH_ARB = 0x8DE9;

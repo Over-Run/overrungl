@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_IBM_vertex_array_lists}
-  */
+ * {@code GL_IBM_vertex_array_lists}
+ */
 public final class GLIBMVertexArrayLists {
     public static final int GL_VERTEX_ARRAY_LIST_IBM = 103070;
     public static final int GL_NORMAL_ARRAY_LIST_IBM = 103071;

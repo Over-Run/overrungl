@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_env_combine}
-  */
+ * {@code GL_ARB_texture_env_combine}
+ */
 public final class GLARBTextureEnvCombine {
     public static final int GL_COMBINE_ARB = 0x8570;
     public static final int GL_COMBINE_RGB_ARB = 0x8571;

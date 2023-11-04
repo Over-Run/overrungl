@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_object_purgeable}
-  */
+ * {@code GL_APPLE_object_purgeable}
+ */
 public final class GLAPPLEObjectPurgeable {
     public static final int GL_BUFFER_OBJECT_APPLE = 0x85B3;
     public static final int GL_RELEASED_APPLE = 0x8A19;

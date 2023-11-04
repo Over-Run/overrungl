@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_async_pixel}
-  */
+ * {@code GL_SGIX_async_pixel}
+ */
 public final class GLSGIXAsyncPixel {
     public static final int GL_ASYNC_TEX_IMAGE_SGIX = 0x835C;
     public static final int GL_ASYNC_DRAW_PIXELS_SGIX = 0x835D;

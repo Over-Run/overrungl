@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_ir_instrument1}
-  */
+ * {@code GL_SGIX_ir_instrument1}
+ */
 public final class GLSGIXIrInstrument1 {
     public static final int GL_IR_INSTRUMENT1_SGIX = 0x817F;
 }

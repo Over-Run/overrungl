@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_sparse_texture}
-  */
+ * {@code GL_ARB_sparse_texture}
+ */
 public final class GLARBSparseTexture {
     public static final int GL_TEXTURE_SPARSE_ARB = 0x91A6;
     public static final int GL_VIRTUAL_PAGE_SIZE_INDEX_ARB = 0x91A7;

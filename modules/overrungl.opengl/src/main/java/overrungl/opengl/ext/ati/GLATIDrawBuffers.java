@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_draw_buffers}
-  */
+ * {@code GL_ATI_draw_buffers}
+ */
 public final class GLATIDrawBuffers {
     public static final int GL_MAX_DRAW_BUFFERS_ATI = 0x8824;
     public static final int GL_DRAW_BUFFER0_ATI = 0x8825;

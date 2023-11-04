@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_fence}
-  */
+ * {@code GL_APPLE_fence}
+ */
 public final class GLAPPLEFence {
     public static final int GL_DRAW_PIXELS_APPLE = 0x8A0A;
     public static final int GL_FENCE_APPLE = 0x8A0B;

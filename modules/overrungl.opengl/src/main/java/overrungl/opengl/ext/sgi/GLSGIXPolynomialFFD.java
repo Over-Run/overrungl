@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_polynomial_ffd}
-  */
+ * {@code GL_SGIX_polynomial_ffd}
+ */
 public final class GLSGIXPolynomialFFD {
     public static final int GL_TEXTURE_DEFORMATION_BIT_SGIX = 0x00000001;
     public static final int GL_GEOMETRY_DEFORMATION_BIT_SGIX = 0x00000002;

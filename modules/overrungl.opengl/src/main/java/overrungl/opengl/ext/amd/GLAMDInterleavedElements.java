@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_interleaved_elements}
-  */
+ * {@code GL_AMD_interleaved_elements}
+ */
 public final class GLAMDInterleavedElements {
     public static final int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
     public static final int GL_VERTEX_ID_SWIZZLE_AMD = 0x91A5;

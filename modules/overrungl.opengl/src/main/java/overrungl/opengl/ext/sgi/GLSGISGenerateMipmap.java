@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_generate_mipmap}
-  */
+ * {@code GL_SGIS_generate_mipmap}
+ */
 public final class GLSGISGenerateMipmap {
     public static final int GL_GENERATE_MIPMAP_SGIS = 0x8191;
     public static final int GL_GENERATE_MIPMAP_HINT_SGIS = 0x8192;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_point_line_texgen}
-  */
+ * {@code GL_SGIS_point_line_texgen}
+ */
 public final class GLSGISPointLineTexgen {
     public static final int GL_EYE_DISTANCE_TO_POINT_SGIS = 0x81F0;
     public static final int GL_OBJECT_DISTANCE_TO_POINT_SGIS = 0x81F1;

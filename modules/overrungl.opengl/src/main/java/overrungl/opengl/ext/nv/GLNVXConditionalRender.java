@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_NVX_conditional_render}
-  */
+ * {@code GL_NVX_conditional_render}
+ */
 public final class GLNVXConditionalRender {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_NVX_conditional_render) return;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_vertex_program}
-  */
+ * {@code GL_ARB_vertex_program}
+ */
 public final class GLARBVertexProgram {
     public static final int GL_COLOR_SUM_ARB = 0x8458;
     public static final int GL_VERTEX_PROGRAM_ARB = 0x8620;

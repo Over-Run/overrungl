@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_vertex_shader_tessellator}
-  */
+ * {@code GL_AMD_vertex_shader_tessellator}
+ */
 public final class GLAMDVertexShaderTessellator {
     public static final int GL_SAMPLER_BUFFER_AMD = 0x9001;
     public static final int GL_INT_SAMPLER_BUFFER_AMD = 0x9002;

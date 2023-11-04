@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_multi_draw_indirect}
-  */
+ * {@code GL_AMD_multi_draw_indirect}
+ */
 public final class GLAMDMultiDrawIndirect {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_multi_draw_indirect) return;

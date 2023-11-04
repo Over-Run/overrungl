@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_meminfo}
-  */
+ * {@code GL_ATI_meminfo}
+ */
 public final class GLATIMeminfo {
     public static final int GL_VBO_FREE_MEMORY_ATI = 0x87FB;
     public static final int GL_TEXTURE_FREE_MEMORY_ATI = 0x87FC;

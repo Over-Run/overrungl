@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_OES_compressed_paletted_texture}
-  */
+ * {@code GL_OES_compressed_paletted_texture}
+ */
 public final class GLOESCompressedPalettedTexture {
     public static final int GL_PALETTE4_RGB8_OES = 0x8B90;
     public static final int GL_PALETTE4_RGBA8_OES = 0x8B91;

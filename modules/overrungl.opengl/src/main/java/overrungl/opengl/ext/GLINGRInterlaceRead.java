@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INGR_interlace_read}
-  */
+ * {@code GL_INGR_interlace_read}
+ */
 public final class GLINGRInterlaceRead {
     public static final int GL_INTERLACE_READ_INGR = 0x8568;
 }

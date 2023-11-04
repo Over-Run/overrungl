@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SUN_mesh_array}
-  */
+ * {@code GL_SUN_mesh_array}
+ */
 public final class GLSUNMeshArray {
     public static final int GL_QUAD_MESH_SUN = 0x8614;
     public static final int GL_TRIANGLE_MESH_SUN = 0x8615;

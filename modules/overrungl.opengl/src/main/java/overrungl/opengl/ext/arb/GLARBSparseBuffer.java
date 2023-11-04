@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_sparse_buffer}
-  */
+ * {@code GL_ARB_sparse_buffer}
+ */
 public final class GLARBSparseBuffer {
     public static final int GL_SPARSE_STORAGE_BIT_ARB = 0x0400;
     public static final int GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_shadow_ambient}
-  */
+ * {@code GL_ARB_shadow_ambient}
+ */
 public final class GLARBShadowAmbient {
     public static final int GL_TEXTURE_COMPARE_FAIL_VALUE_ARB = 0x80BF;
 }

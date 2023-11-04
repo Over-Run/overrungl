@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_async_histogram}
-  */
+ * {@code GL_SGIX_async_histogram}
+ */
 public final class GLSGIXAsyncHistogram {
     public static final int GL_ASYNC_HISTOGRAM_SGIX = 0x832C;
     public static final int GL_MAX_ASYNC_HISTOGRAM_SGIX = 0x832D;

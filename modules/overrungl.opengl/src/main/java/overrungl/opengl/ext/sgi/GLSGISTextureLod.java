@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_texture_lod}
-  */
+ * {@code GL_SGIS_texture_lod}
+ */
 public final class GLSGISTextureLod {
     public static final int GL_TEXTURE_MIN_LOD_SGIS = 0x813A;
     public static final int GL_TEXTURE_MAX_LOD_SGIS = 0x813B;

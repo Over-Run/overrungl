@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_gpu_shader_int64}
-  */
+ * {@code GL_AMD_gpu_shader_int64}
+ */
 public final class GLAMDGpuShaderInt64 {
     public static final int GL_INT64_NV = 0x140E;
     public static final int GL_UNSIGNED_INT64_NV = 0x140F;

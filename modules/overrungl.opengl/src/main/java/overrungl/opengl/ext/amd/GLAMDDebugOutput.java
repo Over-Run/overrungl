@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_debug_output}
-  */
+ * {@code GL_AMD_debug_output}
+ */
 public final class GLAMDDebugOutput {
     public static final int GL_MAX_DEBUG_MESSAGE_LENGTH_AMD = 0x9143;
     public static final int GL_MAX_DEBUG_LOGGED_MESSAGES_AMD = 0x9144;

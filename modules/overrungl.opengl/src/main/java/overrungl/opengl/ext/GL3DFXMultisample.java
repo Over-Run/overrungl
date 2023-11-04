@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_3DFX_multisample}
-  */
+ * {@code GL_3DFX_multisample}
+ */
 public final class GL3DFXMultisample {
     public static final int GL_MULTISAMPLE_3DFX = 0x86B2;
     public static final int GL_SAMPLE_BUFFERS_3DFX = 0x86B3;

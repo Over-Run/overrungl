@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_list_priority}
-  */
+ * {@code GL_SGIX_list_priority}
+ */
 public final class GLSGIXListPriority {
     public static final int GL_LIST_PRIORITY_SGIX = 0x8182;
     public static void load(GLExtCaps ext, GLLoadFunc load) {

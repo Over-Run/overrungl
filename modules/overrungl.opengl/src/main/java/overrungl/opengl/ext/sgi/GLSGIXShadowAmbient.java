@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_shadow_ambient}
-  */
+ * {@code GL_SGIX_shadow_ambient}
+ */
 public final class GLSGIXShadowAmbient {
     public static final int GL_SHADOW_AMBIENT_SGIX = 0x80BF;
 }

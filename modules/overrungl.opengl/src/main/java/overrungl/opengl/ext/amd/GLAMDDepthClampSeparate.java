@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_depth_clamp_separate}
-  */
+ * {@code GL_AMD_depth_clamp_separate}
+ */
 public final class GLAMDDepthClampSeparate {
     public static final int GL_DEPTH_CLAMP_NEAR_AMD = 0x901E;
     public static final int GL_DEPTH_CLAMP_FAR_AMD = 0x901F;

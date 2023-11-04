@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_IBM_cull_vertex}
-  */
+ * {@code GL_IBM_cull_vertex}
+ */
 public final class GLIBMCullVertex {
     public static final int GL_CULL_VERTEX_IBM = 103050;
 }

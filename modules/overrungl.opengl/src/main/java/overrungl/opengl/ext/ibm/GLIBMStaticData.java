@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_IBM_static_data}
-  */
+ * {@code GL_IBM_static_data}
+ */
 public final class GLIBMStaticData {
     public static final int GL_ALL_STATIC_DATA_IBM = 103060;
     public static final int GL_STATIC_VERTEX_ARRAY_IBM = 103061;

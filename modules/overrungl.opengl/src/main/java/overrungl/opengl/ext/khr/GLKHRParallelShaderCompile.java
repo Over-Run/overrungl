@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_KHR_parallel_shader_compile}
-  */
+ * {@code GL_KHR_parallel_shader_compile}
+ */
 public final class GLKHRParallelShaderCompile {
     public static final int GL_MAX_SHADER_COMPILER_THREADS_KHR = 0x91B0;
     public static final int GL_COMPLETION_STATUS_KHR = 0x91B1;

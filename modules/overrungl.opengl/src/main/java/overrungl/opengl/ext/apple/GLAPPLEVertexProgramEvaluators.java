@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_vertex_program_evaluators}
-  */
+ * {@code GL_APPLE_vertex_program_evaluators}
+ */
 public final class GLAPPLEVertexProgramEvaluators {
     public static final int GL_VERTEX_ATTRIB_MAP1_APPLE = 0x8A00;
     public static final int GL_VERTEX_ATTRIB_MAP2_APPLE = 0x8A01;

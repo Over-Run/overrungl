@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_text_fragment_shader}
-  */
+ * {@code GL_ATI_text_fragment_shader}
+ */
 public final class GLATITextFragmentShader {
     public static final int GL_TEXT_FRAGMENT_SHADER_ATI = 0x8200;
 }

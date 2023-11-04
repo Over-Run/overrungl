@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_vertex_array_object}
-  */
+ * {@code GL_APPLE_vertex_array_object}
+ */
 public final class GLAPPLEVertexArrayObject {
     public static final int GL_VERTEX_ARRAY_BINDING_APPLE = 0x85B5;
     public static void load(GLExtCaps ext, GLLoadFunc load) {

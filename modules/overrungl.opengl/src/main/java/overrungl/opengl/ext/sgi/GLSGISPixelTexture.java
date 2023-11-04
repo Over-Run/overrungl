@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_pixel_texture}
-  */
+ * {@code GL_SGIS_pixel_texture}
+ */
 public final class GLSGISPixelTexture {
     public static final int GL_PIXEL_TEXTURE_SGIS = 0x8353;
     public static final int GL_PIXEL_FRAGMENT_RGB_SOURCE_SGIS = 0x8354;

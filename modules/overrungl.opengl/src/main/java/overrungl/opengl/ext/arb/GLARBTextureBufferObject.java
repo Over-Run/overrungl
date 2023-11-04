@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_buffer_object}
-  */
+ * {@code GL_ARB_texture_buffer_object}
+ */
 public final class GLARBTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_ARB = 0x8C2A;
     public static final int GL_MAX_TEXTURE_BUFFER_SIZE_ARB = 0x8C2B;

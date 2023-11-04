@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_vertex_preclip}
-  */
+ * {@code GL_SGIX_vertex_preclip}
+ */
 public final class GLSGIXVertexPreclip {
     public static final int GL_VERTEX_PRECLIP_SGIX = 0x83EE;
     public static final int GL_VERTEX_PRECLIP_HINT_SGIX = 0x83EF;

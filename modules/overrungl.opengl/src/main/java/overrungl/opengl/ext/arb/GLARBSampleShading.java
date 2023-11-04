@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_sample_shading}
-  */
+ * {@code GL_ARB_sample_shading}
+ */
 public final class GLARBSampleShading {
     public static final int GL_SAMPLE_SHADING_ARB = 0x8C36;
     public static final int GL_MIN_SAMPLE_SHADING_VALUE_ARB = 0x8C37;

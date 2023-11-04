@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_GREMEDY_frame_terminator}
-  */
+ * {@code GL_GREMEDY_frame_terminator}
+ */
 public final class GLGREMEDYFrameTerminator {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_GREMEDY_frame_terminator) return;

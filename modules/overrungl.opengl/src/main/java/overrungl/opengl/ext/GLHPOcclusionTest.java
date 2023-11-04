@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_HP_occlusion_test}
-  */
+ * {@code GL_HP_occlusion_test}
+ */
 public final class GLHPOcclusionTest {
     public static final int GL_OCCLUSION_TEST_HP = 0x8165;
     public static final int GL_OCCLUSION_TEST_RESULT_HP = 0x8166;

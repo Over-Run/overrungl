@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_MESA_window_pos}
-  */
+ * {@code GL_MESA_window_pos}
+ */
 public final class GLMESAWindowPos {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_MESA_window_pos) return;

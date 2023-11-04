@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_HP_texture_lighting}
-  */
+ * {@code GL_HP_texture_lighting}
+ */
 public final class GLHPTextureLighting {
     public static final int GL_TEXTURE_LIGHTING_MODE_HP = 0x8167;
     public static final int GL_TEXTURE_POST_SPECULAR_HP = 0x8168;

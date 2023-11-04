@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_S3_s3tc}
-  */
+ * {@code GL_S3_s3tc}
+ */
 public final class GLS3S3tc {
     public static final int GL_RGB_S3TC = 0x83A0;
     public static final int GL_RGB4_S3TC = 0x83A1;

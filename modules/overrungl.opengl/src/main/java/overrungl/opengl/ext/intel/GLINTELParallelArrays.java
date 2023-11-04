@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INTEL_parallel_arrays}
-  */
+ * {@code GL_INTEL_parallel_arrays}
+ */
 public final class GLINTELParallelArrays {
     public static final int GL_PARALLEL_ARRAYS_INTEL = 0x83F4;
     public static final int GL_VERTEX_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F5;

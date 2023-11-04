@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_MESA_framebuffer_swap_xy}
-  */
+ * {@code GL_MESA_framebuffer_swap_xy}
+ */
 public final class GLMESAFramebufferSwapXY {
     public static final int GL_FRAMEBUFFER_SWAP_XY_MESA = 0x8BBD;
 }

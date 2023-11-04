@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INTEL_conservative_rasterization}
-  */
+ * {@code GL_INTEL_conservative_rasterization}
+ */
 public final class GLINTELConservativeRasterization {
     public static final int GL_CONSERVATIVE_RASTERIZATION_INTEL = 0x83FE;
 }

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGI_color_matrix}
-  */
+ * {@code GL_SGI_color_matrix}
+ */
 public final class GLSGIColorMatrix {
     public static final int GL_COLOR_MATRIX_SGI = 0x80B1;
     public static final int GL_COLOR_MATRIX_STACK_DEPTH_SGI = 0x80B2;

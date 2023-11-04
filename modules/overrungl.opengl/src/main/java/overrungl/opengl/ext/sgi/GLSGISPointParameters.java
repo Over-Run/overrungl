@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_point_parameters}
-  */
+ * {@code GL_SGIS_point_parameters}
+ */
 public final class GLSGISPointParameters {
     public static final int GL_POINT_SIZE_MIN_SGIS = 0x8126;
     public static final int GL_POINT_SIZE_MAX_SGIS = 0x8127;

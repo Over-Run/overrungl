@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_texture_coordinate_clamp}
-  */
+ * {@code GL_SGIX_texture_coordinate_clamp}
+ */
 public final class GLSGIXTextureCoordinateClamp {
     public static final int GL_TEXTURE_MAX_CLAMP_S_SGIX = 0x8369;
     public static final int GL_TEXTURE_MAX_CLAMP_T_SGIX = 0x836A;

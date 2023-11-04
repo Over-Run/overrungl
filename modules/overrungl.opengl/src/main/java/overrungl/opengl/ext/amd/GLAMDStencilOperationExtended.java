@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_stencil_operation_extended}
-  */
+ * {@code GL_AMD_stencil_operation_extended}
+ */
 public final class GLAMDStencilOperationExtended {
     public static final int GL_SET_AMD = 0x874A;
     public static final int GL_REPLACE_VALUE_AMD = 0x874B;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_scalebias_hint}
-  */
+ * {@code GL_SGIX_scalebias_hint}
+ */
 public final class GLSGIXScalebiasHint {
     public static final int GL_SCALEBIAS_HINT_SGIX = 0x8322;
 }

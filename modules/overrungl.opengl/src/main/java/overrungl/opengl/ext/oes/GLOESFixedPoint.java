@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_OES_fixed_point}
-  */
+ * {@code GL_OES_fixed_point}
+ */
 public final class GLOESFixedPoint {
     public static final int GL_FIXED_OES = 0x140C;
     public static void load(GLExtCaps ext, GLLoadFunc load) {

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_texture_add_env}
-  */
+ * {@code GL_SGIX_texture_add_env}
+ */
 public final class GLSGIXTextureAddEnv {
     public static final int GL_TEXTURE_ENV_BIAS_SGIX = 0x80BE;
 }

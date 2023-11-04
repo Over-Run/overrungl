@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_float}
-  */
+ * {@code GL_ARB_texture_float}
+ */
 public final class GLARBTextureFloat {
     public static final int GL_TEXTURE_RED_TYPE_ARB = 0x8C10;
     public static final int GL_TEXTURE_GREEN_TYPE_ARB = 0x8C11;

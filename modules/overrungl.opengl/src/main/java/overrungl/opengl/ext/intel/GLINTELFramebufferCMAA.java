@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INTEL_framebuffer_CMAA}
-  */
+ * {@code GL_INTEL_framebuffer_CMAA}
+ */
 public final class GLINTELFramebufferCMAA {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_INTEL_framebuffer_CMAA) return;

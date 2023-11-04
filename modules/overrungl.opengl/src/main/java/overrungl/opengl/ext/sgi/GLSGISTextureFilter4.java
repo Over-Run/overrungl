@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_texture_filter4}
-  */
+ * {@code GL_SGIS_texture_filter4}
+ */
 public final class GLSGISTextureFilter4 {
     public static final int GL_FILTER4_SGIS = 0x8146;
     public static final int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_HP_convolution_border_modes}
-  */
+ * {@code GL_HP_convolution_border_modes}
+ */
 public final class GLHPConvolutionBorderModes {
     public static final int GL_IGNORE_BORDER_HP = 0x8150;
     public static final int GL_CONSTANT_BORDER_HP = 0x8151;

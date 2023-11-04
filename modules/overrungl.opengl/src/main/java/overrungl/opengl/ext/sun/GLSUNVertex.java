@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SUN_vertex}
-  */
+ * {@code GL_SUN_vertex}
+ */
 public final class GLSUNVertex {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_SUN_vertex) return;

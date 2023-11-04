@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_float_pixels}
-  */
+ * {@code GL_APPLE_float_pixels}
+ */
 public final class GLAPPLEFloatPixels {
     public static final int GL_HALF_APPLE = 0x140B;
     public static final int GL_RGBA_FLOAT32_APPLE = 0x8814;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGI_color_table}
-  */
+ * {@code GL_SGI_color_table}
+ */
 public final class GLSGIColorTable {
     public static final int GL_COLOR_TABLE_SGI = 0x80D0;
     public static final int GL_POST_CONVOLUTION_COLOR_TABLE_SGI = 0x80D1;

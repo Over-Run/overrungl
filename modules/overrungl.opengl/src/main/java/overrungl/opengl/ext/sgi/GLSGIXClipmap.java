@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_clipmap}
-  */
+ * {@code GL_SGIX_clipmap}
+ */
 public final class GLSGIXClipmap {
     public static final int GL_LINEAR_CLIPMAP_LINEAR_SGIX = 0x8170;
     public static final int GL_TEXTURE_CLIPMAP_CENTER_SGIX = 0x8171;

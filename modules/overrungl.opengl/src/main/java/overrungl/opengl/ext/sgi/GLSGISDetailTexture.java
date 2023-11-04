@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_detail_texture}
-  */
+ * {@code GL_SGIS_detail_texture}
+ */
 public final class GLSGISDetailTexture {
     public static final int GL_DETAIL_TEXTURE_2D_SGIS = 0x8095;
     public static final int GL_DETAIL_TEXTURE_2D_BINDING_SGIS = 0x8096;

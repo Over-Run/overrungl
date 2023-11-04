@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_3DFX_tbuffer}
-  */
+ * {@code GL_3DFX_tbuffer}
+ */
 public final class GL3DFXTbuffer {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_3DFX_tbuffer) return;

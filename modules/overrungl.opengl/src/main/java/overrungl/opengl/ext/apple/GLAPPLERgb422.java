@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_rgb_422}
-  */
+ * {@code GL_APPLE_rgb_422}
+ */
 public final class GLAPPLERgb422 {
     public static final int GL_RGB_422_APPLE = 0x8A1F;
     public static final int GL_UNSIGNED_SHORT_8_8_APPLE = 0x85BA;

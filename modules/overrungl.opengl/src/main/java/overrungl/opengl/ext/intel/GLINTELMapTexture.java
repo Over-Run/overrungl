@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INTEL_map_texture}
-  */
+ * {@code GL_INTEL_map_texture}
+ */
 public final class GLINTELMapTexture {
     public static final int GL_TEXTURE_MEMORY_LAYOUT_INTEL = 0x83FF;
     public static final int GL_LAYOUT_DEFAULT_INTEL = 0;

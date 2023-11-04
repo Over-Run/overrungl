@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_texture4D}
-  */
+ * {@code GL_SGIS_texture4D}
+ */
 public final class GLSGISTexture4D {
     public static final int GL_PACK_SKIP_VOLUMES_SGIS = 0x8130;
     public static final int GL_PACK_IMAGE_DEPTH_SGIS = 0x8131;

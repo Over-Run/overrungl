@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_vertex_attrib_array_object}
-  */
+ * {@code GL_ATI_vertex_attrib_array_object}
+ */
 public final class GLATIVertexAttribArrayObject {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ATI_vertex_attrib_array_object) return;

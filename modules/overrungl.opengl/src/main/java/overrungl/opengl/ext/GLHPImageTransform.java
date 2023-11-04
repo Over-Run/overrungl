@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_HP_image_transform}
-  */
+ * {@code GL_HP_image_transform}
+ */
 public final class GLHPImageTransform {
     public static final int GL_IMAGE_SCALE_X_HP = 0x8155;
     public static final int GL_IMAGE_SCALE_Y_HP = 0x8156;

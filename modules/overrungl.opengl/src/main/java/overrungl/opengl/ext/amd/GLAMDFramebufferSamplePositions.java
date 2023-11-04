@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_framebuffer_sample_positions}
-  */
+ * {@code GL_AMD_framebuffer_sample_positions}
+ */
 public final class GLAMDFramebufferSamplePositions {
     public static final int GL_SUBSAMPLE_DISTANCE_AMD = 0x883F;
     public static final int GL_PIXELS_PER_SAMPLE_PATTERN_X_AMD = 0x91AE;

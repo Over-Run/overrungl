@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_framebuffer_multisample_advanced}
-  */
+ * {@code GL_AMD_framebuffer_multisample_advanced}
+ */
 public final class GLAMDFramebufferMultisampleAdvanced {
     public static final int GL_RENDERBUFFER_STORAGE_SAMPLES_AMD = 0x91B2;
     public static final int GL_MAX_COLOR_FRAMEBUFFER_SAMPLES_AMD = 0x91B3;

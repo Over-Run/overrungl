@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_KHR_blend_equation_advanced_coherent}
-  */
+ * {@code GL_KHR_blend_equation_advanced_coherent}
+ */
 public final class GLKHRBlendEquationAdvancedCoherent {
     public static final int GL_BLEND_ADVANCED_COHERENT_KHR = 0x9285;
 }

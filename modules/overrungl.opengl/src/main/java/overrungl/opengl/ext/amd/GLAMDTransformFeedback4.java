@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_transform_feedback4}
-  */
+ * {@code GL_AMD_transform_feedback4}
+ */
 public final class GLAMDTransformFeedback4 {
     public static final int GL_STREAM_RASTERIZATION_AMD = 0x91A0;
 }

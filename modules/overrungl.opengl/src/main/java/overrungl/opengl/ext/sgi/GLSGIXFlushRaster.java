@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_flush_raster}
-  */
+ * {@code GL_SGIX_flush_raster}
+ */
 public final class GLSGIXFlushRaster {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_SGIX_flush_raster) return;

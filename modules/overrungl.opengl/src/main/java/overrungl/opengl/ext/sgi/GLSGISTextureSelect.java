@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_texture_select}
-  */
+ * {@code GL_SGIS_texture_select}
+ */
 public final class GLSGISTextureSelect {
     public static final int GL_DUAL_ALPHA4_SGIS = 0x8110;
     public static final int GL_DUAL_ALPHA8_SGIS = 0x8111;

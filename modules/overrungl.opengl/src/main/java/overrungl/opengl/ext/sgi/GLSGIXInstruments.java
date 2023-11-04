@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_instruments}
-  */
+ * {@code GL_SGIX_instruments}
+ */
 public final class GLSGIXInstruments {
     public static final int GL_INSTRUMENT_BUFFER_POINTER_SGIX = 0x8180;
     public static final int GL_INSTRUMENT_MEASUREMENTS_SGIX = 0x8181;

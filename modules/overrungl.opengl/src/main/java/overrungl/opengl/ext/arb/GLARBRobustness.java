@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_robustness}
-  */
+ * {@code GL_ARB_robustness}
+ */
 public final class GLARBRobustness {
     public static final int GL_NO_RESET_NOTIFICATION_ARB = 0x8261;
     public static final int GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256;

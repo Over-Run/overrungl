@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_element_array}
-  */
+ * {@code GL_ATI_element_array}
+ */
 public final class GLATIElementArray {
     public static final int GL_ELEMENT_ARRAY_ATI = 0x8768;
     public static final int GL_ELEMENT_ARRAY_TYPE_ATI = 0x8769;

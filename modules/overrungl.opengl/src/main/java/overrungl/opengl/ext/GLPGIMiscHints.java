@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_PGI_misc_hints}
-  */
+ * {@code GL_PGI_misc_hints}
+ */
 public final class GLPGIMiscHints {
     public static final int GL_PREFER_DOUBLEBUFFER_HINT_PGI = 0x1A1F8;
     public static final int GL_CONSERVE_MEMORY_HINT_PGI = 0x1A1FD;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_map_object_buffer}
-  */
+ * {@code GL_ATI_map_object_buffer}
+ */
 public final class GLATIMapObjectBuffer {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ATI_map_object_buffer) return;

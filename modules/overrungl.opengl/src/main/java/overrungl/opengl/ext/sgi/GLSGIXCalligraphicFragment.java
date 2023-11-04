@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_calligraphic_fragment}
-  */
+ * {@code GL_SGIX_calligraphic_fragment}
+ */
 public final class GLSGIXCalligraphicFragment {
     public static final int GL_CALLIGRAPHIC_FRAGMENT_SGIX = 0x8183;
 }

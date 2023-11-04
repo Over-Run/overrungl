@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_mirrored_repeat}
-  */
+ * {@code GL_ARB_texture_mirrored_repeat}
+ */
 public final class GLARBTextureMirroredRepeat {
     public static final int GL_MIRRORED_REPEAT_ARB = 0x8370;
 }

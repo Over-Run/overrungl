@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_sample_locations}
-  */
+ * {@code GL_ARB_sample_locations}
+ */
 public final class GLARBSampleLocations {
     public static final int GL_SAMPLE_LOCATION_SUBPIXEL_BITS_ARB = 0x933D;
     public static final int GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_ARB = 0x933E;

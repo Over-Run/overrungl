@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_fragment_lighting}
-  */
+ * {@code GL_SGIX_fragment_lighting}
+ */
 public final class GLSGIXFragmentLighting {
     public static final int GL_FRAGMENT_LIGHTING_SGIX = 0x8400;
     public static final int GL_FRAGMENT_COLOR_MATERIAL_SGIX = 0x8401;

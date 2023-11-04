@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_performance_monitor}
-  */
+ * {@code GL_AMD_performance_monitor}
+ */
 public final class GLAMDPerformanceMonitor {
     public static final int GL_COUNTER_TYPE_AMD = 0x8BC0;
     public static final int GL_COUNTER_RANGE_AMD = 0x8BC1;

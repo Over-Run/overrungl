@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_EXT_422_pixels}
-  */
+ * {@code GL_EXT_422_pixels}
+ */
 public final class GLEXT422Pixels {
     public static final int GL_422_EXT = 0x80CC;
     public static final int GL_422_REV_EXT = 0x80CD;

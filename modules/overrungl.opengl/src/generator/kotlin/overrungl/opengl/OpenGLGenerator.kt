@@ -114,6 +114,8 @@ val GLclampf = float
 val GLdouble = double
 val GLclampd = double
 val GLchar = byte
+val GLint64 = long
+val GLuint64 = long
 
 val GLsizeiptrARB = long
 val GLintptrARB = long
@@ -187,8 +189,8 @@ class OpenGLFile(
                 |import static overrungl.opengl.GLLoader.*;
 
                 |/**
-                |  * {@code $extName}
-                |  */
+                | * {@code $extName}
+                | */
                 |public final class GL${ext.extName}$name {
             """.trimMargin()
             )
@@ -287,6 +289,901 @@ fun file(
 }
 
 fun arb() {
+    file("ES32Compatibility", ARB, "GL_ARB_ES3_2_compatibility") {
+        "GL_PRIMITIVE_BOUNDING_BOX_ARB"("0x92BE")
+        "GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB"("0x9381")
+        "GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB"("0x9382")
+        "glPrimitiveBoundingBoxARB"(
+            void,
+            GLfloat("minX"),
+            GLfloat("minY"),
+            GLfloat("minZ"),
+            GLfloat("minW"),
+            GLfloat("maxX"),
+            GLfloat("maxY"),
+            GLfloat("maxZ"),
+            GLfloat("maxW")
+        )
+    }
+    file("BindlessTexture", ARB, "GL_ARB_bindless_texture") {
+        "GL_UNSIGNED_INT64_ARB"("0x140F")
+        "glGetTextureHandleARB"(GLuint64, GLuint("texture"))
+        "glGetTextureSamplerHandleARB"(GLuint64, GLuint("texture"), GLuint("sampler"))
+        "glMakeTextureHandleResidentARB"(void, GLuint64("handle"))
+        "glMakeTextureHandleNonResidentARB"(void, GLuint64("handle"))
+        "glGetImageHandleARB"(
+            GLuint64,
+            GLuint("texture"),
+            GLint("level"),
+            GLboolean("layered"),
+            GLint("layer"),
+            GLenum("format")
+        )
+        "glMakeImageHandleResidentARB"(void, GLuint64("handle"), GLenum("access"))
+        "glMakeImageHandleNonResidentARB"(void, GLuint64("handle"))
+        "glUniformHandleui64ARB"(void, GLint("location"), GLuint64("value"))
+        "glUniformHandleui64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint64 *"))
+        "glProgramUniformHandleui64ARB"(void, GLuint("program"), GLint("location"), GLuint64("value"))
+        "glProgramUniformHandleui64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("values", "const GLuint64 *")
+        )
+        "glIsTextureHandleResidentARB"(GLboolean, GLuint64("handle"))
+        "glIsImageHandleResidentARB"(GLboolean, GLuint64("handle"))
+        "glVertexAttribL1ui64ARB"(void, GLuint("index"), GLuint64EXT("x"))
+        "glVertexAttribL1ui64vARB"(void, GLuint("index"), address("v", "const GLuint64EXT *"))
+        "glGetVertexAttribLui64vARB"(void, GLuint("index"), GLenum("pname"), address("params", "GLuint64EXT *"))
+    }
+    file("CLEvent", ARB, "GL_ARB_cl_event") {
+        "GL_SYNC_CL_EVENT_ARB"("0x8240")
+        "GL_SYNC_CL_EVENT_COMPLETE_ARB"("0x8241")
+        "glCreateSyncFromCLeventARB"(
+            address,
+            address("context", "struct _cl_context *"),
+            address("event", "struct _cl_event *"),
+            GLbitfield("flags"),
+            nativeType = "GLsync"
+        )
+    }
+    file("ColorBufferFloat", ARB, "GL_ARB_color_buffer_float") {
+        "GL_RGBA_FLOAT_MODE_ARB"("0x8820")
+        "GL_CLAMP_VERTEX_COLOR_ARB"("0x891A")
+        "GL_CLAMP_FRAGMENT_COLOR_ARB"("0x891B")
+        "GL_CLAMP_READ_COLOR_ARB"("0x891C")
+        "GL_FIXED_ONLY_ARB"("0x891D")
+        "glClampColorARB"(void, GLenum("target"), GLenum("clamp"))
+    }
+    file("ComputeVariableGroupSize", ARB, "GL_ARB_compute_variable_group_size") {
+        "GL_MAX_COMPUTE_VARIABLE_GROUP_INVOCATIONS_ARB"("0x9344")
+        "GL_MAX_COMPUTE_FIXED_GROUP_INVOCATIONS_ARB"("0x90EB")
+        "GL_MAX_COMPUTE_VARIABLE_GROUP_SIZE_ARB"("0x9345")
+        "GL_MAX_COMPUTE_FIXED_GROUP_SIZE_ARB"("0x91BF")
+        "glDispatchComputeGroupSizeARB"(
+            void,
+            GLuint("num_groups_x"),
+            GLuint("num_groups_y"),
+            GLuint("num_groups_z"),
+            GLuint("group_size_x"),
+            GLuint("group_size_y"),
+            GLuint("group_size_z")
+        )
+    }
+    file("DebugOutput", ARB, "GL_ARB_debug_output") {
+        "GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB"("0x8242")
+        "GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB"("0x8243")
+        "GL_DEBUG_CALLBACK_FUNCTION_ARB"("0x8244")
+        "GL_DEBUG_CALLBACK_USER_PARAM_ARB"("0x8245")
+        "GL_DEBUG_SOURCE_API_ARB"("0x8246")
+        "GL_DEBUG_SOURCE_WINDOW_SYSTEM_ARB"("0x8247")
+        "GL_DEBUG_SOURCE_SHADER_COMPILER_ARB"("0x8248")
+        "GL_DEBUG_SOURCE_THIRD_PARTY_ARB"("0x8249")
+        "GL_DEBUG_SOURCE_APPLICATION_ARB"("0x824A")
+        "GL_DEBUG_SOURCE_OTHER_ARB"("0x824B")
+        "GL_DEBUG_TYPE_ERROR_ARB"("0x824C")
+        "GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR_ARB"("0x824D")
+        "GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR_ARB"("0x824E")
+        "GL_DEBUG_TYPE_PORTABILITY_ARB"("0x824F")
+        "GL_DEBUG_TYPE_PERFORMANCE_ARB"("0x8250")
+        "GL_DEBUG_TYPE_OTHER_ARB"("0x8251")
+        "GL_MAX_DEBUG_MESSAGE_LENGTH_ARB"("0x9143")
+        "GL_MAX_DEBUG_LOGGED_MESSAGES_ARB"("0x9144")
+        "GL_DEBUG_LOGGED_MESSAGES_ARB"("0x9145")
+        "GL_DEBUG_SEVERITY_HIGH_ARB"("0x9146")
+        "GL_DEBUG_SEVERITY_MEDIUM_ARB"("0x9147")
+        "GL_DEBUG_SEVERITY_LOW_ARB"("0x9148")
+        "glDebugMessageControlARB"(
+            void,
+            GLenum("source"),
+            GLenum("type"),
+            GLenum("severity"),
+            GLsizei("count"),
+            address("ids", "const GLuint *"),
+            GLboolean("enabled")
+        )
+        "glDebugMessageInsertARB"(
+            void,
+            GLenum("source"),
+            GLenum("type"),
+            GLuint("id"),
+            GLenum("severity"),
+            GLsizei("length"),
+            address("buf", "const GLchar *")
+        )
+        ("glDebugMessageCallbackARB"(
+            void,
+            address("callback", "GLDEBUGPROCARB"),
+            address("userParam", "const void *")
+        )) {
+            "glDebugMessageCallbackARB"(
+                void,
+                "glDebugMessageCallbackARB(callback.address(arena), userParam);",
+                arena("arena"),
+                Type("GLDebugProc", null)("callback"),
+                address("userParam", "const void *")
+            )
+        }
+        "glGetDebugMessageLogARB"(
+            GLuint,
+            GLuint("count"),
+            GLsizei("bufSize"),
+            address("sources", "GLenum *"),
+            address("types", "GLenum *"),
+            address("ids", "GLuint *"),
+            address("severities", "GLenum *"),
+            address("lengths", "GLsizei *"),
+            address("messageLog", "GLchar *")
+        )
+    }
+    file(
+        "DepthTexture", ARB, "GL_ARB_depth_texture",
+        "GL_DEPTH_COMPONENT16_ARB" to "0x81A5",
+        "GL_DEPTH_COMPONENT24_ARB" to "0x81A6",
+        "GL_DEPTH_COMPONENT32_ARB" to "0x81A7",
+        "GL_TEXTURE_DEPTH_SIZE_ARB" to "0x884A",
+        "GL_DEPTH_TEXTURE_MODE_ARB" to "0x884B"
+    )
+    file("DrawBuffers", ARB, "GL_ARB_draw_buffers") {
+        "GL_MAX_DRAW_BUFFERS_ARB"("0x8824")
+        "GL_DRAW_BUFFER0_ARB"("0x8825")
+        "GL_DRAW_BUFFER1_ARB"("0x8826")
+        "GL_DRAW_BUFFER2_ARB"("0x8827")
+        "GL_DRAW_BUFFER3_ARB"("0x8828")
+        "GL_DRAW_BUFFER4_ARB"("0x8829")
+        "GL_DRAW_BUFFER5_ARB"("0x882A")
+        "GL_DRAW_BUFFER6_ARB"("0x882B")
+        "GL_DRAW_BUFFER7_ARB"("0x882C")
+        "GL_DRAW_BUFFER8_ARB"("0x882D")
+        "GL_DRAW_BUFFER9_ARB"("0x882E")
+        "GL_DRAW_BUFFER10_ARB"("0x882F")
+        "GL_DRAW_BUFFER11_ARB"("0x8830")
+        "GL_DRAW_BUFFER12_ARB"("0x8831")
+        "GL_DRAW_BUFFER13_ARB"("0x8832")
+        "GL_DRAW_BUFFER14_ARB"("0x8833")
+        "GL_DRAW_BUFFER15_ARB"("0x8834")
+        "glDrawBuffersARB"(void, GLsizei("n"), address("bufs", "const GLenum *"))
+    }
+    file("DrawBuffersBlend", ARB, "GL_ARB_draw_buffers_blend") {
+        "glBlendEquationiARB"(void, GLuint("buf"), GLenum("mode"))
+        "glBlendEquationSeparateiARB"(void, GLuint("buf"), GLenum("modeRGB"), GLenum("modeAlpha"))
+        "glBlendFunciARB"(void, GLuint("buf"), GLenum("src"), GLenum("dst"))
+        "glBlendFuncSeparateiARB"(
+            void,
+            GLuint("buf"),
+            GLenum("srcRGB"),
+            GLenum("dstRGB"),
+            GLenum("srcAlpha"),
+            GLenum("dstAlpha")
+        )
+    }
+    file("DrawInstanced", ARB, "GL_ARB_draw_instanced") {
+        "glDrawArraysInstancedARB"(void, GLenum("mode"), GLint("first"), GLsizei("count"), GLsizei("primcount"))
+        "glDrawElementsInstancedARB"(
+            void,
+            GLenum("mode"),
+            GLsizei("count"),
+            GLenum("type"),
+            address("indices", "const void *"),
+            GLsizei("primcount")
+        )
+    }
+    file("FragmentProgram", ARB, "GL_ARB_fragment_program") {
+        "GL_FRAGMENT_PROGRAM_ARB"("0x8804")
+        "GL_PROGRAM_FORMAT_ASCII_ARB"("0x8875")
+        "GL_PROGRAM_LENGTH_ARB"("0x8627")
+        "GL_PROGRAM_FORMAT_ARB"("0x8876")
+        "GL_PROGRAM_BINDING_ARB"("0x8677")
+        "GL_PROGRAM_INSTRUCTIONS_ARB"("0x88A0")
+        "GL_MAX_PROGRAM_INSTRUCTIONS_ARB"("0x88A1")
+        "GL_PROGRAM_NATIVE_INSTRUCTIONS_ARB"("0x88A2")
+        "GL_MAX_PROGRAM_NATIVE_INSTRUCTIONS_ARB"("0x88A3")
+        "GL_PROGRAM_TEMPORARIES_ARB"("0x88A4")
+        "GL_MAX_PROGRAM_TEMPORARIES_ARB"("0x88A5")
+        "GL_PROGRAM_NATIVE_TEMPORARIES_ARB"("0x88A6")
+        "GL_MAX_PROGRAM_NATIVE_TEMPORARIES_ARB"("0x88A7")
+        "GL_PROGRAM_PARAMETERS_ARB"("0x88A8")
+        "GL_MAX_PROGRAM_PARAMETERS_ARB"("0x88A9")
+        "GL_PROGRAM_NATIVE_PARAMETERS_ARB"("0x88AA")
+        "GL_MAX_PROGRAM_NATIVE_PARAMETERS_ARB"("0x88AB")
+        "GL_PROGRAM_ATTRIBS_ARB"("0x88AC")
+        "GL_MAX_PROGRAM_ATTRIBS_ARB"("0x88AD")
+        "GL_PROGRAM_NATIVE_ATTRIBS_ARB"("0x88AE")
+        "GL_MAX_PROGRAM_NATIVE_ATTRIBS_ARB"("0x88AF")
+        "GL_MAX_PROGRAM_LOCAL_PARAMETERS_ARB"("0x88B4")
+        "GL_MAX_PROGRAM_ENV_PARAMETERS_ARB"("0x88B5")
+        "GL_PROGRAM_UNDER_NATIVE_LIMITS_ARB"("0x88B6")
+        "GL_PROGRAM_ALU_INSTRUCTIONS_ARB"("0x8805")
+        "GL_PROGRAM_TEX_INSTRUCTIONS_ARB"("0x8806")
+        "GL_PROGRAM_TEX_INDIRECTIONS_ARB"("0x8807")
+        "GL_PROGRAM_NATIVE_ALU_INSTRUCTIONS_ARB"("0x8808")
+        "GL_PROGRAM_NATIVE_TEX_INSTRUCTIONS_ARB"("0x8809")
+        "GL_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB"("0x880A")
+        "GL_MAX_PROGRAM_ALU_INSTRUCTIONS_ARB"("0x880B")
+        "GL_MAX_PROGRAM_TEX_INSTRUCTIONS_ARB"("0x880C")
+        "GL_MAX_PROGRAM_TEX_INDIRECTIONS_ARB"("0x880D")
+        "GL_MAX_PROGRAM_NATIVE_ALU_INSTRUCTIONS_ARB"("0x880E")
+        "GL_MAX_PROGRAM_NATIVE_TEX_INSTRUCTIONS_ARB"("0x880F")
+        "GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB"("0x8810")
+        "GL_PROGRAM_STRING_ARB"("0x8628")
+        "GL_PROGRAM_ERROR_POSITION_ARB"("0x864B")
+        "GL_CURRENT_MATRIX_ARB"("0x8641")
+        "GL_TRANSPOSE_CURRENT_MATRIX_ARB"("0x88B7")
+        "GL_CURRENT_MATRIX_STACK_DEPTH_ARB"("0x8640")
+        "GL_MAX_PROGRAM_MATRICES_ARB"("0x862F")
+        "GL_MAX_PROGRAM_MATRIX_STACK_DEPTH_ARB"("0x862E")
+        "GL_MAX_TEXTURE_COORDS_ARB"("0x8871")
+        "GL_MAX_TEXTURE_IMAGE_UNITS_ARB"("0x8872")
+        "GL_PROGRAM_ERROR_STRING_ARB"("0x8874")
+        "GL_MATRIX0_ARB"("0x88C0")
+        "GL_MATRIX1_ARB"("0x88C1")
+        "GL_MATRIX2_ARB"("0x88C2")
+        "GL_MATRIX3_ARB"("0x88C3")
+        "GL_MATRIX4_ARB"("0x88C4")
+        "GL_MATRIX5_ARB"("0x88C5")
+        "GL_MATRIX6_ARB"("0x88C6")
+        "GL_MATRIX7_ARB"("0x88C7")
+        "GL_MATRIX8_ARB"("0x88C8")
+        "GL_MATRIX9_ARB"("0x88C9")
+        "GL_MATRIX10_ARB"("0x88CA")
+        "GL_MATRIX11_ARB"("0x88CB")
+        "GL_MATRIX12_ARB"("0x88CC")
+        "GL_MATRIX13_ARB"("0x88CD")
+        "GL_MATRIX14_ARB"("0x88CE")
+        "GL_MATRIX15_ARB"("0x88CF")
+        "GL_MATRIX16_ARB"("0x88D0")
+        "GL_MATRIX17_ARB"("0x88D1")
+        "GL_MATRIX18_ARB"("0x88D2")
+        "GL_MATRIX19_ARB"("0x88D3")
+        "GL_MATRIX20_ARB"("0x88D4")
+        "GL_MATRIX21_ARB"("0x88D5")
+        "GL_MATRIX22_ARB"("0x88D6")
+        "GL_MATRIX23_ARB"("0x88D7")
+        "GL_MATRIX24_ARB"("0x88D8")
+        "GL_MATRIX25_ARB"("0x88D9")
+        "GL_MATRIX26_ARB"("0x88DA")
+        "GL_MATRIX27_ARB"("0x88DB")
+        "GL_MATRIX28_ARB"("0x88DC")
+        "GL_MATRIX29_ARB"("0x88DD")
+        "GL_MATRIX30_ARB"("0x88DE")
+        "GL_MATRIX31_ARB"("0x88DF")
+        "glProgramStringARB"(
+            void,
+            GLenum("target"),
+            GLenum("format"),
+            GLsizei("len"),
+            address("string", "const void *")
+        )
+        "glBindProgramARB"(void, GLenum("target"), GLuint("program"))
+        "glDeleteProgramsARB"(void, GLsizei("n"), address("programs", "const GLuint *"))
+        "glGenProgramsARB"(void, GLsizei("n"), address("programs", "GLuint *"))
+        "glProgramEnvParameter4dARB"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLdouble("x"),
+            GLdouble("y"),
+            GLdouble("z"),
+            GLdouble("w")
+        )
+        "glProgramEnvParameter4dvARB"(void, GLenum("target"), GLuint("index"), address("params", "const GLdouble *"))
+        "glProgramEnvParameter4fARB"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLfloat("x"),
+            GLfloat("y"),
+            GLfloat("z"),
+            GLfloat("w")
+        )
+        "glProgramEnvParameter4fvARB"(void, GLenum("target"), GLuint("index"), address("params", "const GLfloat *"))
+        "glProgramLocalParameter4dARB"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLdouble("x"),
+            GLdouble("y"),
+            GLdouble("z"),
+            GLdouble("w")
+        )
+        "glProgramLocalParameter4dvARB"(void, GLenum("target"), GLuint("index"), address("params", "const GLdouble *"))
+        "glProgramLocalParameter4fARB"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLfloat("x"),
+            GLfloat("y"),
+            GLfloat("z"),
+            GLfloat("w")
+        )
+        "glProgramLocalParameter4fvARB"(void, GLenum("target"), GLuint("index"), address("params", "const GLfloat *"))
+        "glGetProgramEnvParameterdvARB"(void, GLenum("target"), GLuint("index"), address("params", "GLdouble *"))
+        "glGetProgramEnvParameterfvARB"(void, GLenum("target"), GLuint("index"), address("params", "GLfloat *"))
+        "glGetProgramLocalParameterdvARB"(void, GLenum("target"), GLuint("index"), address("params", "GLdouble *"))
+        "glGetProgramLocalParameterfvARB"(void, GLenum("target"), GLuint("index"), address("params", "GLfloat *"))
+        "glGetProgramivARB"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetProgramStringARB"(void, GLenum("target"), GLenum("pname"), address("string", "void *"))
+        "glIsProgramARB"(GLboolean, GLuint("program"))
+    }
+    file(
+        "FragmentShader", ARB, "GL_ARB_fragment_shader",
+        "GL_FRAGMENT_SHADER_ARB" to "0x8B30",
+        "GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB" to "0x8B49",
+        "GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB" to "0x8B8B"
+    )
+    file("GeometryShader4", ARB, "GL_ARB_geometry_shader4") {
+        "GL_LINES_ADJACENCY_ARB"("0x000A")
+        "GL_LINE_STRIP_ADJACENCY_ARB"("0x000B")
+        "GL_TRIANGLES_ADJACENCY_ARB"("0x000C")
+        "GL_TRIANGLE_STRIP_ADJACENCY_ARB"("0x000D")
+        "GL_PROGRAM_POINT_SIZE_ARB"("0x8642")
+        "GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_ARB"("0x8C29")
+        "GL_FRAMEBUFFER_ATTACHMENT_LAYERED_ARB"("0x8DA7")
+        "GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_ARB"("0x8DA8")
+        "GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_ARB"("0x8DA9")
+        "GL_GEOMETRY_SHADER_ARB"("0x8DD9")
+        "GL_GEOMETRY_VERTICES_OUT_ARB"("0x8DDA")
+        "GL_GEOMETRY_INPUT_TYPE_ARB"("0x8DDB")
+        "GL_GEOMETRY_OUTPUT_TYPE_ARB"("0x8DDC")
+        "GL_MAX_GEOMETRY_VARYING_COMPONENTS_ARB"("0x8DDD")
+        "GL_MAX_VERTEX_VARYING_COMPONENTS_ARB"("0x8DDE")
+        "GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_ARB"("0x8DDF")
+        "GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB"("0x8DE0")
+        "GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB"("0x8DE1")
+        "glProgramParameteriARB"(void, GLuint("program"), GLenum("pname"), GLint("value"))
+        "glFramebufferTextureARB"(void, GLenum("target"), GLenum("attachment"), GLuint("texture"), GLint("level"))
+        "glFramebufferTextureLayerARB"(
+            void,
+            GLenum("target"),
+            GLenum("attachment"),
+            GLuint("texture"),
+            GLint("level"),
+            GLint("layer")
+        )
+        "glFramebufferTextureFaceARB"(
+            void,
+            GLenum("target"),
+            GLenum("attachment"),
+            GLuint("texture"),
+            GLint("level"),
+            GLenum("face")
+        )
+    }
+    file("GLSpirv", ARB, "GL_ARB_gl_spirv") {
+        "GL_SHADER_BINARY_FORMAT_SPIR_V_ARB"("0x9551")
+        "GL_SPIR_V_BINARY_ARB"("0x9552")
+        "glSpecializeShaderARB"(
+            void,
+            GLuint("shader"),
+            address("pEntryPoint", "const GLchar *"),
+            GLuint("numSpecializationConstants"),
+            address("pConstantIndex", "const GLuint *"),
+            address("pConstantValue", "const GLuint *")
+        )
+    }
+    file("GpuShaderInt64", ARB, "GL_ARB_gpu_shader_int64") {
+        "GL_INT64_ARB"("0x140E")
+        "GL_INT64_VEC2_ARB"("0x8FE9")
+        "GL_INT64_VEC3_ARB"("0x8FEA")
+        "GL_INT64_VEC4_ARB"("0x8FEB")
+        "GL_UNSIGNED_INT64_VEC2_ARB"("0x8FF5")
+        "GL_UNSIGNED_INT64_VEC3_ARB"("0x8FF6")
+        "GL_UNSIGNED_INT64_VEC4_ARB"("0x8FF7")
+        "glUniform1i64ARB"(void, GLint("location"), GLint64("x"))
+        "glUniform2i64ARB"(void, GLint("location"), GLint64("x"), GLint64("y"))
+        "glUniform3i64ARB"(void, GLint("location"), GLint64("x"), GLint64("y"), GLint64("z"))
+        "glUniform4i64ARB"(void, GLint("location"), GLint64("x"), GLint64("y"), GLint64("z"), GLint64("w"))
+        "glUniform1i64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLint64 *"))
+        "glUniform2i64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLint64 *"))
+        "glUniform3i64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLint64 *"))
+        "glUniform4i64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLint64 *"))
+        "glUniform1ui64ARB"(void, GLint("location"), GLuint64("x"))
+        "glUniform2ui64ARB"(void, GLint("location"), GLuint64("x"), GLuint64("y"))
+        "glUniform3ui64ARB"(void, GLint("location"), GLuint64("x"), GLuint64("y"), GLuint64("z"))
+        "glUniform4ui64ARB"(void, GLint("location"), GLuint64("x"), GLuint64("y"), GLuint64("z"), GLuint64("w"))
+        "glUniform1ui64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint64 *"))
+        "glUniform2ui64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint64 *"))
+        "glUniform3ui64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint64 *"))
+        "glUniform4ui64vARB"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint64 *"))
+        "glGetUniformi64vARB"(void, GLuint("program"), GLint("location"), address("params", "GLint64 *"))
+        "glGetUniformui64vARB"(void, GLuint("program"), GLint("location"), address("params", "GLuint64 *"))
+        "glGetnUniformi64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("bufSize"),
+            address("params", "GLint64 *")
+        )
+        "glGetnUniformui64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("bufSize"),
+            address("params", "GLuint64 *")
+        )
+        "glProgramUniform1i64ARB"(void, GLuint("program"), GLint("location"), GLint64("x"))
+        "glProgramUniform2i64ARB"(void, GLuint("program"), GLint("location"), GLint64("x"), GLint64("y"))
+        "glProgramUniform3i64ARB"(void, GLuint("program"), GLint("location"), GLint64("x"), GLint64("y"), GLint64("z"))
+        "glProgramUniform4i64ARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLint64("x"),
+            GLint64("y"),
+            GLint64("z"),
+            GLint64("w")
+        )
+        "glProgramUniform1i64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLint64 *")
+        )
+        "glProgramUniform2i64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLint64 *")
+        )
+        "glProgramUniform3i64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLint64 *")
+        )
+        "glProgramUniform4i64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLint64 *")
+        )
+        "glProgramUniform1ui64ARB"(void, GLuint("program"), GLint("location"), GLuint64("x"))
+        "glProgramUniform2ui64ARB"(void, GLuint("program"), GLint("location"), GLuint64("x"), GLuint64("y"))
+        "glProgramUniform3ui64ARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLuint64("x"),
+            GLuint64("y"),
+            GLuint64("z")
+        )
+        "glProgramUniform4ui64ARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLuint64("x"),
+            GLuint64("y"),
+            GLuint64("z"),
+            GLuint64("w")
+        )
+        "glProgramUniform1ui64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLuint64 *")
+        )
+        "glProgramUniform2ui64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLuint64 *")
+        )
+        "glProgramUniform3ui64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLuint64 *")
+        )
+        "glProgramUniform4ui64vARB"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLuint64 *")
+        )
+    }
+    file("HalfFloatPixel", ARB, "GL_ARB_half_float_pixel", "GL_HALF_FLOAT_ARB" to "0x140B")
+    file("Imaging", ARB, "GL_ARB_imaging") {
+        "GL_CONVOLUTION_BORDER_MODE"("0x8013")
+        "GL_CONVOLUTION_FILTER_SCALE"("0x8014")
+        "GL_CONVOLUTION_FILTER_BIAS"("0x8015")
+        "GL_REDUCE"("0x8016")
+        "GL_CONVOLUTION_FORMAT"("0x8017")
+        "GL_CONVOLUTION_WIDTH"("0x8018")
+        "GL_CONVOLUTION_HEIGHT"("0x8019")
+        "GL_MAX_CONVOLUTION_WIDTH"("0x801A")
+        "GL_MAX_CONVOLUTION_HEIGHT"("0x801B")
+        "GL_POST_CONVOLUTION_RED_SCALE"("0x801C")
+        "GL_POST_CONVOLUTION_GREEN_SCALE"("0x801D")
+        "GL_POST_CONVOLUTION_BLUE_SCALE"("0x801E")
+        "GL_POST_CONVOLUTION_ALPHA_SCALE"("0x801F")
+        "GL_POST_CONVOLUTION_RED_BIAS"("0x8020")
+        "GL_POST_CONVOLUTION_GREEN_BIAS"("0x8021")
+        "GL_POST_CONVOLUTION_BLUE_BIAS"("0x8022")
+        "GL_POST_CONVOLUTION_ALPHA_BIAS"("0x8023")
+        "GL_HISTOGRAM_WIDTH"("0x8026")
+        "GL_HISTOGRAM_FORMAT"("0x8027")
+        "GL_HISTOGRAM_RED_SIZE"("0x8028")
+        "GL_HISTOGRAM_GREEN_SIZE"("0x8029")
+        "GL_HISTOGRAM_BLUE_SIZE"("0x802A")
+        "GL_HISTOGRAM_ALPHA_SIZE"("0x802B")
+        "GL_HISTOGRAM_LUMINANCE_SIZE"("0x802C")
+        "GL_HISTOGRAM_SINK"("0x802D")
+        "GL_MINMAX_FORMAT"("0x802F")
+        "GL_MINMAX_SINK"("0x8030")
+        "GL_TABLE_TOO_LARGE"("0x8031")
+        "GL_COLOR_MATRIX"("0x80B1")
+        "GL_COLOR_MATRIX_STACK_DEPTH"("0x80B2")
+        "GL_MAX_COLOR_MATRIX_STACK_DEPTH"("0x80B3")
+        "GL_POST_COLOR_MATRIX_RED_SCALE"("0x80B4")
+        "GL_POST_COLOR_MATRIX_GREEN_SCALE"("0x80B5")
+        "GL_POST_COLOR_MATRIX_BLUE_SCALE"("0x80B6")
+        "GL_POST_COLOR_MATRIX_ALPHA_SCALE"("0x80B7")
+        "GL_POST_COLOR_MATRIX_RED_BIAS"("0x80B8")
+        "GL_POST_COLOR_MATRIX_GREEN_BIAS"("0x80B9")
+        "GL_POST_COLOR_MATRIX_BLUE_BIAS"("0x80BA")
+        "GL_POST_COLOR_MATRIX_ALPHA_BIAS"("0x80BB")
+        "GL_COLOR_TABLE_SCALE"("0x80D6")
+        "GL_COLOR_TABLE_BIAS"("0x80D7")
+        "GL_COLOR_TABLE_FORMAT"("0x80D8")
+        "GL_COLOR_TABLE_WIDTH"("0x80D9")
+        "GL_COLOR_TABLE_RED_SIZE"("0x80DA")
+        "GL_COLOR_TABLE_GREEN_SIZE"("0x80DB")
+        "GL_COLOR_TABLE_BLUE_SIZE"("0x80DC")
+        "GL_COLOR_TABLE_ALPHA_SIZE"("0x80DD")
+        "GL_COLOR_TABLE_LUMINANCE_SIZE"("0x80DE")
+        "GL_COLOR_TABLE_INTENSITY_SIZE"("0x80DF")
+        "GL_CONSTANT_BORDER"("0x8151")
+        "GL_REPLICATE_BORDER"("0x8153")
+        "GL_CONVOLUTION_BORDER_COLOR"("0x8154")
+        "glColorTable"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLenum("format"),
+            GLenum("type"),
+            address("table", "const void *")
+        )
+        "glColorTableParameterfv"(void, GLenum("target"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glColorTableParameteriv"(void, GLenum("target"), GLenum("pname"), address("params", "const GLint *"))
+        "glCopyColorTable"(void, GLenum("target"), GLenum("internalformat"), GLint("x"), GLint("y"), GLsizei("width"))
+        "glGetColorTable"(void, GLenum("target"), GLenum("format"), GLenum("type"), address("table", "void *"))
+        "glGetColorTableParameterfv"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetColorTableParameteriv"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glColorSubTable"(
+            void,
+            GLenum("target"),
+            GLsizei("start"),
+            GLsizei("count"),
+            GLenum("format"),
+            GLenum("type"),
+            address("data", "const void *")
+        )
+        "glCopyColorSubTable"(void, GLenum("target"), GLsizei("start"), GLint("x"), GLint("y"), GLsizei("width"))
+        "glConvolutionFilter1D"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLenum("format"),
+            GLenum("type"),
+            address("image", "const void *")
+        )
+        "glConvolutionFilter2D"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLenum("format"),
+            GLenum("type"),
+            address("image", "const void *")
+        )
+        "glConvolutionParameterf"(void, GLenum("target"), GLenum("pname"), GLfloat("params"))
+        "glConvolutionParameterfv"(void, GLenum("target"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glConvolutionParameteri"(void, GLenum("target"), GLenum("pname"), GLint("params"))
+        "glConvolutionParameteriv"(void, GLenum("target"), GLenum("pname"), address("params", "const GLint *"))
+        "glCopyConvolutionFilter1D"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLint("x"),
+            GLint("y"),
+            GLsizei("width")
+        )
+        "glCopyConvolutionFilter2D"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLint("x"),
+            GLint("y"),
+            GLsizei("width"),
+            GLsizei("height")
+        )
+        "glGetConvolutionFilter"(void, GLenum("target"), GLenum("format"), GLenum("type"), address("image", "void *"))
+        "glGetConvolutionParameterfv"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetConvolutionParameteriv"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetSeparableFilter"(
+            void,
+            GLenum("target"),
+            GLenum("format"),
+            GLenum("type"),
+            address("row", "void *"),
+            address("column", "void *"),
+            address("span", "void *")
+        )
+        "glSeparableFilter2D"(
+            void,
+            GLenum("target"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLenum("format"),
+            GLenum("type"),
+            address("row", "const void *"),
+            address("column", "const void *")
+        )
+        "glGetHistogram"(
+            void,
+            GLenum("target"),
+            GLboolean("reset"),
+            GLenum("format"),
+            GLenum("type"),
+            address("values", "void *")
+        )
+        "glGetHistogramParameterfv"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetHistogramParameteriv"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetMinmax"(
+            void,
+            GLenum("target"),
+            GLboolean("reset"),
+            GLenum("format"),
+            GLenum("type"),
+            address("values", "void *")
+        )
+        "glGetMinmaxParameterfv"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetMinmaxParameteriv"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glHistogram"(void, GLenum("target"), GLsizei("width"), GLenum("internalformat"), GLboolean("sink"))
+        "glMinmax"(void, GLenum("target"), GLenum("internalformat"), GLboolean("sink"))
+        "glResetHistogram"(void, GLenum("target"))
+        "glResetMinmax"(void, GLenum("target"))
+    }
+    file("IndirectParameters", ARB, "GL_ARB_indirect_parameters") {
+        "GL_PARAMETER_BUFFER_ARB"("0x80EE")
+        "GL_PARAMETER_BUFFER_BINDING_ARB"("0x80EF")
+        "glMultiDrawArraysIndirectCountARB"(
+            void,
+            GLenum("mode"),
+            address("indirect", "const void *"),
+            GLintptr("drawcount"),
+            GLsizei("maxdrawcount"),
+            GLsizei("stride")
+        )
+        "glMultiDrawElementsIndirectCountARB"(
+            void,
+            GLenum("mode"),
+            GLenum("type"),
+            address("indirect", "const void *"),
+            GLintptr("drawcount"),
+            GLsizei("maxdrawcount"),
+            GLsizei("stride")
+        )
+    }
+    file("InstancedArrays", ARB, "GL_ARB_instanced_arrays") {
+        "GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB"("0x88FE")
+        "glVertexAttribDivisorARB"(void, GLuint("index"), GLuint("divisor"))
+    }
+    file(
+        "InternalformatQuery2", ARB, "GL_ARB_internalformat_query2",
+        "GL_SRGB_DECODE_ARB" to "0x8299",
+        "GL_VIEW_CLASS_EAC_R11" to "0x9383",
+        "GL_VIEW_CLASS_EAC_RG11" to "0x9384",
+        "GL_VIEW_CLASS_ETC2_RGB" to "0x9385",
+        "GL_VIEW_CLASS_ETC2_RGBA" to "0x9386",
+        "GL_VIEW_CLASS_ETC2_EAC_RGBA" to "0x9387",
+        "GL_VIEW_CLASS_ASTC_4x4_RGBA" to "0x9388",
+        "GL_VIEW_CLASS_ASTC_5x4_RGBA" to "0x9389",
+        "GL_VIEW_CLASS_ASTC_5x5_RGBA" to "0x938A",
+        "GL_VIEW_CLASS_ASTC_6x5_RGBA" to "0x938B",
+        "GL_VIEW_CLASS_ASTC_6x6_RGBA" to "0x938C",
+        "GL_VIEW_CLASS_ASTC_8x5_RGBA" to "0x938D",
+        "GL_VIEW_CLASS_ASTC_8x6_RGBA" to "0x938E",
+        "GL_VIEW_CLASS_ASTC_8x8_RGBA" to "0x938F",
+        "GL_VIEW_CLASS_ASTC_10x5_RGBA" to "0x9390",
+        "GL_VIEW_CLASS_ASTC_10x6_RGBA" to "0x9391",
+        "GL_VIEW_CLASS_ASTC_10x8_RGBA" to "0x9392",
+        "GL_VIEW_CLASS_ASTC_10x10_RGBA" to "0x9393",
+        "GL_VIEW_CLASS_ASTC_12x10_RGBA" to "0x9394",
+        "GL_VIEW_CLASS_ASTC_12x12_RGBA" to "0x9395"
+    )
+    file("MatrixPalette", ARB, "GL_ARB_matrix_palette") {
+        "GL_MATRIX_PALETTE_ARB"("0x8840")
+        "GL_MAX_MATRIX_PALETTE_STACK_DEPTH_ARB"("0x8841")
+        "GL_MAX_PALETTE_MATRICES_ARB"("0x8842")
+        "GL_CURRENT_PALETTE_MATRIX_ARB"("0x8843")
+        "GL_MATRIX_INDEX_ARRAY_ARB"("0x8844")
+        "GL_CURRENT_MATRIX_INDEX_ARB"("0x8845")
+        "GL_MATRIX_INDEX_ARRAY_SIZE_ARB"("0x8846")
+        "GL_MATRIX_INDEX_ARRAY_TYPE_ARB"("0x8847")
+        "GL_MATRIX_INDEX_ARRAY_STRIDE_ARB"("0x8848")
+        "GL_MATRIX_INDEX_ARRAY_POINTER_ARB"("0x8849")
+        "glCurrentPaletteMatrixARB"(void, GLint("index"))
+        "glMatrixIndexubvARB"(void, GLint("size"), address("indices", "const GLubyte *"))
+        "glMatrixIndexusvARB"(void, GLint("size"), address("indices", "const GLushort *"))
+        "glMatrixIndexuivARB"(void, GLint("size"), address("indices", "const GLuint *"))
+        "glMatrixIndexPointerARB"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            address("pointer", "const void *")
+        )
+    }
+    file("Multisample", ARB, "GL_ARB_multisample") {
+        "GL_MULTISAMPLE_ARB"("0x809D")
+        "GL_SAMPLE_ALPHA_TO_COVERAGE_ARB"("0x809E")
+        "GL_SAMPLE_ALPHA_TO_ONE_ARB"("0x809F")
+        "GL_SAMPLE_COVERAGE_ARB"("0x80A0")
+        "GL_SAMPLE_BUFFERS_ARB"("0x80A8")
+        "GL_SAMPLES_ARB"("0x80A9")
+        "GL_SAMPLE_COVERAGE_VALUE_ARB"("0x80AA")
+        "GL_SAMPLE_COVERAGE_INVERT_ARB"("0x80AB")
+        "GL_MULTISAMPLE_BIT_ARB"("0x20000000")
+        "glSampleCoverageARB"(void, GLfloat("value"), GLboolean("invert"))
+    }
+    file("Multitexture", ARB, "GL_ARB_multitexture") {
+        "GL_TEXTURE0_ARB"("0x84C0")
+        "GL_TEXTURE1_ARB"("0x84C1")
+        "GL_TEXTURE2_ARB"("0x84C2")
+        "GL_TEXTURE3_ARB"("0x84C3")
+        "GL_TEXTURE4_ARB"("0x84C4")
+        "GL_TEXTURE5_ARB"("0x84C5")
+        "GL_TEXTURE6_ARB"("0x84C6")
+        "GL_TEXTURE7_ARB"("0x84C7")
+        "GL_TEXTURE8_ARB"("0x84C8")
+        "GL_TEXTURE9_ARB"("0x84C9")
+        "GL_TEXTURE10_ARB"("0x84CA")
+        "GL_TEXTURE11_ARB"("0x84CB")
+        "GL_TEXTURE12_ARB"("0x84CC")
+        "GL_TEXTURE13_ARB"("0x84CD")
+        "GL_TEXTURE14_ARB"("0x84CE")
+        "GL_TEXTURE15_ARB"("0x84CF")
+        "GL_TEXTURE16_ARB"("0x84D0")
+        "GL_TEXTURE17_ARB"("0x84D1")
+        "GL_TEXTURE18_ARB"("0x84D2")
+        "GL_TEXTURE19_ARB"("0x84D3")
+        "GL_TEXTURE20_ARB"("0x84D4")
+        "GL_TEXTURE21_ARB"("0x84D5")
+        "GL_TEXTURE22_ARB"("0x84D6")
+        "GL_TEXTURE23_ARB"("0x84D7")
+        "GL_TEXTURE24_ARB"("0x84D8")
+        "GL_TEXTURE25_ARB"("0x84D9")
+        "GL_TEXTURE26_ARB"("0x84DA")
+        "GL_TEXTURE27_ARB"("0x84DB")
+        "GL_TEXTURE28_ARB"("0x84DC")
+        "GL_TEXTURE29_ARB"("0x84DD")
+        "GL_TEXTURE30_ARB"("0x84DE")
+        "GL_TEXTURE31_ARB"("0x84DF")
+        "GL_ACTIVE_TEXTURE_ARB"("0x84E0")
+        "GL_CLIENT_ACTIVE_TEXTURE_ARB"("0x84E1")
+        "GL_MAX_TEXTURE_UNITS_ARB"("0x84E2")
+        "glActiveTextureARB"(void, GLenum("texture"))
+        "glClientActiveTextureARB"(void, GLenum("texture"))
+        "glMultiTexCoord1dARB"(void, GLenum("target"), GLdouble("s"))
+        "glMultiTexCoord1dvARB"(void, GLenum("target"), address("v", "const GLdouble *"))
+        "glMultiTexCoord1fARB"(void, GLenum("target"), GLfloat("s"))
+        "glMultiTexCoord1fvARB"(void, GLenum("target"), address("v", "const GLfloat *"))
+        "glMultiTexCoord1iARB"(void, GLenum("target"), GLint("s"))
+        "glMultiTexCoord1ivARB"(void, GLenum("target"), address("v", "const GLint *"))
+        "glMultiTexCoord1sARB"(void, GLenum("target"), GLshort("s"))
+        "glMultiTexCoord1svARB"(void, GLenum("target"), address("v", "const GLshort *"))
+        "glMultiTexCoord2dARB"(void, GLenum("target"), GLdouble("s"), GLdouble("t"))
+        "glMultiTexCoord2dvARB"(void, GLenum("target"), address("v", "const GLdouble *"))
+        "glMultiTexCoord2fARB"(void, GLenum("target"), GLfloat("s"), GLfloat("t"))
+        "glMultiTexCoord2fvARB"(void, GLenum("target"), address("v", "const GLfloat *"))
+        "glMultiTexCoord2iARB"(void, GLenum("target"), GLint("s"), GLint("t"))
+        "glMultiTexCoord2ivARB"(void, GLenum("target"), address("v", "const GLint *"))
+        "glMultiTexCoord2sARB"(void, GLenum("target"), GLshort("s"), GLshort("t"))
+        "glMultiTexCoord2svARB"(void, GLenum("target"), address("v", "const GLshort *"))
+        "glMultiTexCoord3dARB"(void, GLenum("target"), GLdouble("s"), GLdouble("t"), GLdouble("r"))
+        "glMultiTexCoord3dvARB"(void, GLenum("target"), address("v", "const GLdouble *"))
+        "glMultiTexCoord3fARB"(void, GLenum("target"), GLfloat("s"), GLfloat("t"), GLfloat("r"))
+        "glMultiTexCoord3fvARB"(void, GLenum("target"), address("v", "const GLfloat *"))
+        "glMultiTexCoord3iARB"(void, GLenum("target"), GLint("s"), GLint("t"), GLint("r"))
+        "glMultiTexCoord3ivARB"(void, GLenum("target"), address("v", "const GLint *"))
+        "glMultiTexCoord3sARB"(void, GLenum("target"), GLshort("s"), GLshort("t"), GLshort("r"))
+        "glMultiTexCoord3svARB"(void, GLenum("target"), address("v", "const GLshort *"))
+        "glMultiTexCoord4dARB"(void, GLenum("target"), GLdouble("s"), GLdouble("t"), GLdouble("r"), GLdouble("q"))
+        "glMultiTexCoord4dvARB"(void, GLenum("target"), address("v", "const GLdouble *"))
+        "glMultiTexCoord4fARB"(void, GLenum("target"), GLfloat("s"), GLfloat("t"), GLfloat("r"), GLfloat("q"))
+        "glMultiTexCoord4fvARB"(void, GLenum("target"), address("v", "const GLfloat *"))
+        "glMultiTexCoord4iARB"(void, GLenum("target"), GLint("s"), GLint("t"), GLint("r"), GLint("q"))
+        "glMultiTexCoord4ivARB"(void, GLenum("target"), address("v", "const GLint *"))
+        "glMultiTexCoord4sARB"(void, GLenum("target"), GLshort("s"), GLshort("t"), GLshort("r"), GLshort("q"))
+        "glMultiTexCoord4svARB"(void, GLenum("target"), address("v", "const GLshort *"))
+    }
+    file("OcclusionQuery", ARB, "GL_ARB_occlusion_query") {
+        "GL_QUERY_COUNTER_BITS_ARB"("0x8864")
+        "GL_CURRENT_QUERY_ARB"("0x8865")
+        "GL_QUERY_RESULT_ARB"("0x8866")
+        "GL_QUERY_RESULT_AVAILABLE_ARB"("0x8867")
+        "GL_SAMPLES_PASSED_ARB"("0x8914")
+        "glGenQueriesARB"(void, GLsizei("n"), address("ids", "GLuint *"))
+        "glDeleteQueriesARB"(void, GLsizei("n"), address("ids", "const GLuint *"))
+        "glIsQueryARB"(GLboolean, GLuint("id"))
+        "glBeginQueryARB"(void, GLenum("target"), GLuint("id"))
+        "glEndQueryARB"(void, GLenum("target"))
+        "glGetQueryivARB"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetQueryObjectivARB"(void, GLuint("id"), GLenum("pname"), address("params", "GLint *"))
+        "glGetQueryObjectuivARB"(void, GLuint("id"), GLenum("pname"), address("params", "GLuint *"))
+    }
+    file("ParallelShaderCompile", ARB, "GL_ARB_parallel_shader_compile") {
+        "GL_MAX_SHADER_COMPILER_THREADS_ARB"("0x91B0")
+        "GL_COMPLETION_STATUS_ARB"("0x91B1")
+        "glMaxShaderCompilerThreadsARB"(void, GLuint("count"))
+    }
+    file(
+        "PipelineStatisticsQuery", ARB, "GL_ARB_pipeline_statistics_query",
+        "GL_VERTICES_SUBMITTED_ARB" to "0x82EE",
+        "GL_PRIMITIVES_SUBMITTED_ARB" to "0x82EF",
+        "GL_VERTEX_SHADER_INVOCATIONS_ARB" to "0x82F0",
+        "GL_TESS_CONTROL_SHADER_PATCHES_ARB" to "0x82F1",
+        "GL_TESS_EVALUATION_SHADER_INVOCATIONS_ARB" to "0x82F2",
+        "GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED_ARB" to "0x82F3",
+        "GL_FRAGMENT_SHADER_INVOCATIONS_ARB" to "0x82F4",
+        "GL_COMPUTE_SHADER_INVOCATIONS_ARB" to "0x82F5",
+        "GL_CLIPPING_INPUT_PRIMITIVES_ARB" to "0x82F6",
+        "GL_CLIPPING_OUTPUT_PRIMITIVES_ARB" to "0x82F7"
+    )
+    file(
+        "PixelBufferObject", ARB, "GL_ARB_pixel_buffer_object",
+        "GL_PIXEL_PACK_BUFFER_ARB" to "0x88EB",
+        "GL_PIXEL_UNPACK_BUFFER_ARB" to "0x88EC",
+        "GL_PIXEL_PACK_BUFFER_BINDING_ARB" to "0x88ED",
+        "GL_PIXEL_UNPACK_BUFFER_BINDING_ARB" to "0x88EF"
+    )
+    file("PointParameters", ARB, "GL_ARB_point_parameters") {
+        "GL_POINT_SIZE_MIN_ARB"("0x8126")
+        "GL_POINT_SIZE_MAX_ARB"("0x8127")
+        "GL_POINT_FADE_THRESHOLD_SIZE_ARB"("0x8128")
+        "GL_POINT_DISTANCE_ATTENUATION_ARB"("0x8129")
+        "glPointParameterfARB"(void, GLenum("pname"), GLfloat("param"))
+        "glPointParameterfvARB"(void, GLenum("pname"), address("params", "const GLfloat *"))
+    }
+    file(
+        "PointSprite", ARB, "GL_ARB_point_sprite",
+        "GL_POINT_SPRITE_ARB" to "0x8861",
+        "GL_COORD_REPLACE_ARB" to "0x8862"
+    )
     file("Robustness", ARB, "GL_ARB_robustness") {
         "GL_NO_RESET_NOTIFICATION_ARB"("0x8261")
         "GL_RESET_NOTIFICATION_STRATEGY_ARB"("0x8256")
@@ -1319,7 +2216,7 @@ fun amd() {
         "GL_FACTOR_MIN_AMD" to "0x901C",
         "GL_FACTOR_MAX_AMD" to "0x901D"
     )
-    file("DebugOutput",AMD,"GL_AMD_debug_output") {
+    file("DebugOutput", AMD, "GL_AMD_debug_output") {
         "GL_MAX_DEBUG_MESSAGE_LENGTH_AMD"("0x9143")
         "GL_MAX_DEBUG_LOGGED_MESSAGES_AMD"("0x9144")
         "GL_DEBUG_LOGGED_MESSAGES_AMD"("0x9145")

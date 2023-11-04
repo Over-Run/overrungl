@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_MESA_ycbcr_texture}
-  */
+ * {@code GL_MESA_ycbcr_texture}
+ */
 public final class GLMESAYcbcrTexture {
     public static final int GL_UNSIGNED_SHORT_8_8_MESA = 0x85BA;
     public static final int GL_UNSIGNED_SHORT_8_8_REV_MESA = 0x85BB;

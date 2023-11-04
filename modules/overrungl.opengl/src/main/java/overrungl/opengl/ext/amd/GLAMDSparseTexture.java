@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_sparse_texture}
-  */
+ * {@code GL_AMD_sparse_texture}
+ */
 public final class GLAMDSparseTexture {
     public static final int GL_VIRTUAL_PAGE_SIZE_X_AMD = 0x9195;
     public static final int GL_VIRTUAL_PAGE_SIZE_Y_AMD = 0x9196;

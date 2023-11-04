@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_vertex_blend}
-  */
+ * {@code GL_ARB_vertex_blend}
+ */
 public final class GLARBVertexBlend {
     public static final int GL_MAX_VERTEX_UNITS_ARB = 0x86A4;
     public static final int GL_ACTIVE_VERTEX_UNITS_ARB = 0x86A5;

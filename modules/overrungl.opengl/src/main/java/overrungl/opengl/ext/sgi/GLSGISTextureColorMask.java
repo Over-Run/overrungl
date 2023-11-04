@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_texture_color_mask}
-  */
+ * {@code GL_SGIS_texture_color_mask}
+ */
 public final class GLSGISTextureColorMask {
     public static final int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
     public static void load(GLExtCaps ext, GLLoadFunc load) {

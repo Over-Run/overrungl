@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_KHR_blend_equation_advanced}
-  */
+ * {@code GL_KHR_blend_equation_advanced}
+ */
 public final class GLKHRBlendEquationAdvanced {
     public static final int GL_MULTIPLY_KHR = 0x9294;
     public static final int GL_SCREEN_KHR = 0x9295;

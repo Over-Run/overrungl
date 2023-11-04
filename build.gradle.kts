@@ -1,5 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -154,6 +154,10 @@ subprojects {
         options.release.set(targetJavaVersion)
     }
 
+    tasks.withType<KotlinCompile> {
+        kotlinOptions { jvmTarget = "20" }
+    }
+
     tasks.withType<Test> {
         if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
     }
@@ -203,8 +207,6 @@ subprojects {
     }
 
     the<IdeaModel>().module.inheritOutputDirs = true
-
-    the<KotlinJvmProjectExtension>().jvmToolchain(20)
 }
 
 tasks.register("assembleJavadocArgs") {

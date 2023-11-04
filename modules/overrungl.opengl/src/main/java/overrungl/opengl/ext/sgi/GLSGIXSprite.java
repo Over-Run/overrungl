@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_sprite}
-  */
+ * {@code GL_SGIX_sprite}
+ */
 public final class GLSGIXSprite {
     public static final int GL_SPRITE_SGIX = 0x8148;
     public static final int GL_SPRITE_MODE_SGIX = 0x8149;

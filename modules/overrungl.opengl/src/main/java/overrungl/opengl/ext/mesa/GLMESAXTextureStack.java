@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_MESAX_texture_stack}
-  */
+ * {@code GL_MESAX_texture_stack}
+ */
 public final class GLMESAXTextureStack {
     public static final int GL_TEXTURE_1D_STACK_MESAX = 0x8759;
     public static final int GL_TEXTURE_2D_STACK_MESAX = 0x875A;

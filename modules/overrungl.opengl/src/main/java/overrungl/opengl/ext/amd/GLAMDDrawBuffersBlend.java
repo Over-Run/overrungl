@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_draw_buffers_blend}
-  */
+ * {@code GL_AMD_draw_buffers_blend}
+ */
 public final class GLAMDDrawBuffersBlend {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_draw_buffers_blend) return;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_pixel_format_float}
-  */
+ * {@code GL_ATI_pixel_format_float}
+ */
 public final class GLATIPixelFormatFloat {
     public static final int GL_RGBA_FLOAT_MODE_ATI = 0x8820;
     public static final int GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI = 0x8835;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_compression}
-  */
+ * {@code GL_ARB_texture_compression}
+ */
 public final class GLARBTextureCompression {
     public static final int GL_COMPRESSED_ALPHA_ARB = 0x84E9;
     public static final int GL_COMPRESSED_LUMINANCE_ARB = 0x84EA;

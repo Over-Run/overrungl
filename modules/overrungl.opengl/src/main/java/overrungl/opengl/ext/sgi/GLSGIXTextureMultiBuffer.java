@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_texture_multi_buffer}
-  */
+ * {@code GL_SGIX_texture_multi_buffer}
+ */
 public final class GLSGIXTextureMultiBuffer {
     public static final int GL_TEXTURE_MULTI_BUFFER_HINT_SGIX = 0x812E;
 }

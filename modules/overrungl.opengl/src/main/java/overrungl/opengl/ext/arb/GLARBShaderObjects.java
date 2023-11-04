@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_shader_objects}
-  */
+ * {@code GL_ARB_shader_objects}
+ */
 public final class GLARBShaderObjects {
     public static final int GL_PROGRAM_OBJECT_ARB = 0x8B40;
     public static final int GL_SHADER_OBJECT_ARB = 0x8B48;

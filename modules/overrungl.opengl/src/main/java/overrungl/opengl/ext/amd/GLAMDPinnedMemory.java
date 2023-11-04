@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_pinned_memory}
-  */
+ * {@code GL_AMD_pinned_memory}
+ */
 public final class GLAMDPinnedMemory {
     public static final int GL_EXTERNAL_VIRTUAL_MEMORY_BUFFER_AMD = 0x9160;
 }

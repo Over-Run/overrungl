@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_sample_positions}
-  */
+ * {@code GL_AMD_sample_positions}
+ */
 public final class GLAMDSamplePositions {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_sample_positions) return;

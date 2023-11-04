@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_gpu_shader_half_float}
-  */
+ * {@code GL_AMD_gpu_shader_half_float}
+ */
 public final class GLAMDGpuShaderHalfFloat {
     public static final int GL_FLOAT16_NV = 0x8FF8;
     public static final int GL_FLOAT16_VEC2_NV = 0x8FF9;

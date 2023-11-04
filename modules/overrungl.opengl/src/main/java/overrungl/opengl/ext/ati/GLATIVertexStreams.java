@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_vertex_streams}
-  */
+ * {@code GL_ATI_vertex_streams}
+ */
 public final class GLATIVertexStreams {
     public static final int GL_MAX_VERTEX_STREAMS_ATI = 0x876B;
     public static final int GL_VERTEX_STREAM0_ATI = 0x876C;

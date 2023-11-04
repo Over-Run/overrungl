@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_AMD_blend_minmax_factor}
-  */
+ * {@code GL_AMD_blend_minmax_factor}
+ */
 public final class GLAMDBlendMinmaxFactor {
     public static final int GL_FACTOR_MIN_AMD = 0x901C;
     public static final int GL_FACTOR_MAX_AMD = 0x901D;

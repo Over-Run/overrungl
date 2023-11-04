@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_depth_texture}
-  */
+ * {@code GL_SGIX_depth_texture}
+ */
 public final class GLSGIXDepthTexture {
     public static final int GL_DEPTH_COMPONENT16_SGIX = 0x81A5;
     public static final int GL_DEPTH_COMPONENT24_SGIX = 0x81A6;

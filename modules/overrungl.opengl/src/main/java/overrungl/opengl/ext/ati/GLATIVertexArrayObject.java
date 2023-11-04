@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_vertex_array_object}
-  */
+ * {@code GL_ATI_vertex_array_object}
+ */
 public final class GLATIVertexArrayObject {
     public static final int GL_STATIC_ATI = 0x8760;
     public static final int GL_DYNAMIC_ATI = 0x8761;

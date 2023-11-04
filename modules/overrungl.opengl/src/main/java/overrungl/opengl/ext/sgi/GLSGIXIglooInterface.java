@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_igloo_interface}
-  */
+ * {@code GL_SGIX_igloo_interface}
+ */
 public final class GLSGIXIglooInterface {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_SGIX_igloo_interface) return;

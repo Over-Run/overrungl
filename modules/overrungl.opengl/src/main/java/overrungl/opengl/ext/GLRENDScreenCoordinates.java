@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_REND_screen_coordinates}
-  */
+ * {@code GL_REND_screen_coordinates}
+ */
 public final class GLRENDScreenCoordinates {
     public static final int GL_SCREEN_COORDINATES_REND = 0x8490;
     public static final int GL_INVERTED_SCREEN_W_REND = 0x8491;

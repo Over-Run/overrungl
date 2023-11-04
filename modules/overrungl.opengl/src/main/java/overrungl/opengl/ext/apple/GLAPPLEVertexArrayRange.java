@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_vertex_array_range}
-  */
+ * {@code GL_APPLE_vertex_array_range}
+ */
 public final class GLAPPLEVertexArrayRange {
     public static final int GL_VERTEX_ARRAY_RANGE_APPLE = 0x851D;
     public static final int GL_VERTEX_ARRAY_RANGE_LENGTH_APPLE = 0x851E;

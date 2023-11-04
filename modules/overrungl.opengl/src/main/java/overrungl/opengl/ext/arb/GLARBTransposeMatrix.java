@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_transpose_matrix}
-  */
+ * {@code GL_ARB_transpose_matrix}
+ */
 public final class GLARBTransposeMatrix {
     public static final int GL_TRANSPOSE_MODELVIEW_MATRIX_ARB = 0x84E3;
     public static final int GL_TRANSPOSE_PROJECTION_MATRIX_ARB = 0x84E4;

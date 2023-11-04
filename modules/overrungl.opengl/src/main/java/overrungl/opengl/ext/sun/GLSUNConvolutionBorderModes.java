@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SUN_convolution_border_modes}
-  */
+ * {@code GL_SUN_convolution_border_modes}
+ */
 public final class GLSUNConvolutionBorderModes {
     public static final int GL_WRAP_BORDER_SUN = 0x81D4;
 }

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_texture_lod_bias}
-  */
+ * {@code GL_SGIX_texture_lod_bias}
+ */
 public final class GLSGIXTextureLodBias {
     public static final int GL_TEXTURE_LOD_BIAS_S_SGIX = 0x818E;
     public static final int GL_TEXTURE_LOD_BIAS_T_SGIX = 0x818F;

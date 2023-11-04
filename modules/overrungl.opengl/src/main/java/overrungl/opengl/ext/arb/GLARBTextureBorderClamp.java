@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_border_clamp}
-  */
+ * {@code GL_ARB_texture_border_clamp}
+ */
 public final class GLARBTextureBorderClamp {
     public static final int GL_CLAMP_TO_BORDER_ARB = 0x812D;
 }

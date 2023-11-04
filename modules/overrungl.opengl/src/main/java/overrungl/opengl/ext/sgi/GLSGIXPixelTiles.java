@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_pixel_tiles}
-  */
+ * {@code GL_SGIX_pixel_tiles}
+ */
 public final class GLSGIXPixelTiles {
     public static final int GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX = 0x813E;
     public static final int GL_PIXEL_TILE_CACHE_INCREMENT_SGIX = 0x813F;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_sharpen_texture}
-  */
+ * {@code GL_SGIS_sharpen_texture}
+ */
 public final class GLSGISSharpenTexture {
     public static final int GL_LINEAR_SHARPEN_SGIS = 0x80AD;
     public static final int GL_LINEAR_SHARPEN_ALPHA_SGIS = 0x80AE;

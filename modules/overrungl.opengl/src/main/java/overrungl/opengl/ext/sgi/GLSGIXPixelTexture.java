@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_pixel_texture}
-  */
+ * {@code GL_SGIX_pixel_texture}
+ */
 public final class GLSGIXPixelTexture {
     public static final int GL_PIXEL_TEX_GEN_SGIX = 0x8139;
     public static final int GL_PIXEL_TEX_GEN_MODE_SGIX = 0x832B;

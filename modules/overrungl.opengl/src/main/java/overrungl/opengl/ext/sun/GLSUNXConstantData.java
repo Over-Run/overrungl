@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SUNX_constant_data}
-  */
+ * {@code GL_SUNX_constant_data}
+ */
 public final class GLSUNXConstantData {
     public static final int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
     public static final int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;

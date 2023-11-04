@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_texture_cube_map}
-  */
+ * {@code GL_ARB_texture_cube_map}
+ */
 public final class GLARBTextureCubeMap {
     public static final int GL_NORMAL_MAP_ARB = 0x8511;
     public static final int GL_REFLECTION_MAP_ARB = 0x8512;

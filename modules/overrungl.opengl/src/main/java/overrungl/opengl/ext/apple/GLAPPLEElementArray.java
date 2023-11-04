@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_element_array}
-  */
+ * {@code GL_APPLE_element_array}
+ */
 public final class GLAPPLEElementArray {
     public static final int GL_ELEMENT_ARRAY_APPLE = 0x8A0C;
     public static final int GL_ELEMENT_ARRAY_TYPE_APPLE = 0x8A0D;

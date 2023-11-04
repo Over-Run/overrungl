@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INGR_blend_func_separate}
-  */
+ * {@code GL_INGR_blend_func_separate}
+ */
 public final class GLINGRBlendFuncSeparate {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_INGR_blend_func_separate) return;

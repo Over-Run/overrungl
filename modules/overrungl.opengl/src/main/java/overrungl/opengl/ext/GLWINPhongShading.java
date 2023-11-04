@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_WIN_phong_shading}
-  */
+ * {@code GL_WIN_phong_shading}
+ */
 public final class GLWINPhongShading {
     public static final int GL_PHONG_WIN = 0x80EA;
     public static final int GL_PHONG_HINT_WIN = 0x80EB;

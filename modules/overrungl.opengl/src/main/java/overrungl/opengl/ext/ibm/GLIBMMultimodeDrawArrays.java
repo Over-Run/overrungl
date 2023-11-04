@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_IBM_multimode_draw_arrays}
-  */
+ * {@code GL_IBM_multimode_draw_arrays}
+ */
 public final class GLIBMMultimodeDrawArrays {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_IBM_multimode_draw_arrays) return;

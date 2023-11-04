@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_APPLE_client_storage}
-  */
+ * {@code GL_APPLE_client_storage}
+ */
 public final class GLAPPLEClientStorage {
     public static final int GL_UNPACK_CLIENT_STORAGE_APPLE = 0x85B2;
 }

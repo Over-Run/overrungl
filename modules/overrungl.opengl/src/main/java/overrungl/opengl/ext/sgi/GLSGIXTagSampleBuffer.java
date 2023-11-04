@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_tag_sample_buffer}
-  */
+ * {@code GL_SGIX_tag_sample_buffer}
+ */
 public final class GLSGIXTagSampleBuffer {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_SGIX_tag_sample_buffer) return;

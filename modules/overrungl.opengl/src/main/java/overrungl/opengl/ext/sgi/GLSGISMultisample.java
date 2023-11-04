@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_multisample}
-  */
+ * {@code GL_SGIS_multisample}
+ */
 public final class GLSGISMultisample {
     public static final int GL_MULTISAMPLE_SGIS = 0x809D;
     public static final int GL_SAMPLE_ALPHA_TO_MASK_SGIS = 0x809E;

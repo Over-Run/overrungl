@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_OES_single_precision}
-  */
+ * {@code GL_OES_single_precision}
+ */
 public final class GLOESSinglePrecision {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_OES_single_precision) return;

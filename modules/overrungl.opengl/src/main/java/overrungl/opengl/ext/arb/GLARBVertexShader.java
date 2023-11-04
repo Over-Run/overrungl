@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_vertex_shader}
-  */
+ * {@code GL_ARB_vertex_shader}
+ */
 public final class GLARBVertexShader {
     public static final int GL_VERTEX_SHADER_ARB = 0x8B31;
     public static final int GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB = 0x8B4A;

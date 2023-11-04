@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_reference_plane}
-  */
+ * {@code GL_SGIX_reference_plane}
+ */
 public final class GLSGIXReferencePlane {
     public static final int GL_REFERENCE_PLANE_SGIX = 0x817D;
     public static final int GL_REFERENCE_PLANE_EQUATION_SGIX = 0x817E;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_OML_resample}
-  */
+ * {@code GL_OML_resample}
+ */
 public final class GLOMLResample {
     public static final int GL_PACK_RESAMPLE_OML = 0x8984;
     public static final int GL_UNPACK_RESAMPLE_OML = 0x8985;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_fragment_shader}
-  */
+ * {@code GL_ATI_fragment_shader}
+ */
 public final class GLATIFragmentShader {
     public static final int GL_FRAGMENT_SHADER_ATI = 0x8920;
     public static final int GL_REG_0_ATI = 0x8921;

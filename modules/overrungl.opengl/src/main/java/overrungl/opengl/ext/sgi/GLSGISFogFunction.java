@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIS_fog_function}
-  */
+ * {@code GL_SGIS_fog_function}
+ */
 public final class GLSGISFogFunction {
     public static final int GL_FOG_FUNC_SGIS = 0x812A;
     public static final int GL_FOG_FUNC_POINTS_SGIS = 0x812B;

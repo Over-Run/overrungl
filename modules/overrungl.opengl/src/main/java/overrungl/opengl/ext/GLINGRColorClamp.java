@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INGR_color_clamp}
-  */
+ * {@code GL_INGR_color_clamp}
+ */
 public final class GLINGRColorClamp {
     public static final int GL_RED_MIN_CLAMP_INGR = 0x8560;
     public static final int GL_GREEN_MIN_CLAMP_INGR = 0x8561;

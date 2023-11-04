@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_pn_triangles}
-  */
+ * {@code GL_ATI_pn_triangles}
+ */
 public final class GLATIPnTriangles {
     public static final int GL_PN_TRIANGLES_ATI = 0x87F0;
     public static final int GL_MAX_PN_TRIANGLES_TESSELATION_LEVEL_ATI = 0x87F1;

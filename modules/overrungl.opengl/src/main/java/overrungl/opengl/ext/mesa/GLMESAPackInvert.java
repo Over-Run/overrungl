@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_MESA_pack_invert}
-  */
+ * {@code GL_MESA_pack_invert}
+ */
 public final class GLMESAPackInvert {
     public static final int GL_PACK_INVERT_MESA = 0x8758;
 }

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_framezoom}
-  */
+ * {@code GL_SGIX_framezoom}
+ */
 public final class GLSGIXFramezoom {
     public static final int GL_FRAMEZOOM_SGIX = 0x818B;
     public static final int GL_FRAMEZOOM_FACTOR_SGIX = 0x818C;

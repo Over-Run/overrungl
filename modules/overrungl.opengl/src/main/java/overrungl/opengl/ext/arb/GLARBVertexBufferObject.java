@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ARB_vertex_buffer_object}
-  */
+ * {@code GL_ARB_vertex_buffer_object}
+ */
 public final class GLARBVertexBufferObject {
     public static final int GL_BUFFER_SIZE_ARB = 0x8764;
     public static final int GL_BUFFER_USAGE_ARB = 0x8765;

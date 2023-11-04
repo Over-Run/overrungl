@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_MESA_framebuffer_flip_x}
-  */
+ * {@code GL_MESA_framebuffer_flip_x}
+ */
 public final class GLMESAFramebufferFlipX {
     public static final int GL_FRAMEBUFFER_FLIP_X_MESA = 0x8BBC;
 }

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SUN_triangle_list}
-  */
+ * {@code GL_SUN_triangle_list}
+ */
 public final class GLSUNTriangleList {
     public static final int GL_RESTART_SUN = 0x0001;
     public static final int GL_REPLACE_MIDDLE_SUN = 0x0002;

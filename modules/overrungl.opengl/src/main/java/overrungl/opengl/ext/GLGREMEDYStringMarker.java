@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_GREMEDY_string_marker}
-  */
+ * {@code GL_GREMEDY_string_marker}
+ */
 public final class GLGREMEDYStringMarker {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_GREMEDY_string_marker) return;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_resample}
-  */
+ * {@code GL_SGIX_resample}
+ */
 public final class GLSGIXResample {
     public static final int GL_PACK_RESAMPLE_SGIX = 0x842E;
     public static final int GL_UNPACK_RESAMPLE_SGIX = 0x842F;

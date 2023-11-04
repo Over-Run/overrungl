@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_INTEL_performance_query}
-  */
+ * {@code GL_INTEL_performance_query}
+ */
 public final class GLINTELPerformanceQuery {
     public static final int GL_PERFQUERY_SINGLE_CONTEXT_INTEL = 0x00000000;
     public static final int GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = 0x00000001;

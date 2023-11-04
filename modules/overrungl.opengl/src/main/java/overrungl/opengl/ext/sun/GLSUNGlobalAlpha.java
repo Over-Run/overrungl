@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SUN_global_alpha}
-  */
+ * {@code GL_SUN_global_alpha}
+ */
 public final class GLSUNGlobalAlpha {
     public static final int GL_GLOBAL_ALPHA_SUN = 0x81D9;
     public static final int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;

@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_envmap_bumpmap}
-  */
+ * {@code GL_ATI_envmap_bumpmap}
+ */
 public final class GLATIEnvmapBumpmap {
     public static final int GL_BUMP_ROT_MATRIX_ATI = 0x8775;
     public static final int GL_BUMP_ROT_MATRIX_SIZE_ATI = 0x8776;

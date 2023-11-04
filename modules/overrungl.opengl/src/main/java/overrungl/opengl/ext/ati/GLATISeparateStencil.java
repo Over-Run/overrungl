@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_separate_stencil}
-  */
+ * {@code GL_ATI_separate_stencil}
+ */
 public final class GLATISeparateStencil {
     public static final int GL_STENCIL_BACK_FUNC_ATI = 0x8800;
     public static final int GL_STENCIL_BACK_FAIL_ATI = 0x8801;

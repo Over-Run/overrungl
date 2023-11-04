@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_KHR_shader_subgroup}
-  */
+ * {@code GL_KHR_shader_subgroup}
+ */
 public final class GLKHRShaderSubgroup {
     public static final int GL_SUBGROUP_SIZE_KHR = 0x9532;
     public static final int GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533;

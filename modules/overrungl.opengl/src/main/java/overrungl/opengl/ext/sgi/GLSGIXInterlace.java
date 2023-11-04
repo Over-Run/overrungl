@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_interlace}
-  */
+ * {@code GL_SGIX_interlace}
+ */
 public final class GLSGIXInterlace {
     public static final int GL_INTERLACE_SGIX = 0x8094;
 }

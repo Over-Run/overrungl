@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_SGIX_shadow}
-  */
+ * {@code GL_SGIX_shadow}
+ */
 public final class GLSGIXShadow {
     public static final int GL_TEXTURE_COMPARE_SGIX = 0x819A;
     public static final int GL_TEXTURE_COMPARE_OPERATOR_SGIX = 0x819B;

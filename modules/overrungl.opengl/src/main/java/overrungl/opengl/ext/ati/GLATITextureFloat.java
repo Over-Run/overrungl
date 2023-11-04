@@ -25,8 +25,8 @@ import static java.lang.foreign.ValueLayout.*;
 import static overrungl.opengl.GLLoader.*;
 
 /**
-  * {@code GL_ATI_texture_float}
-  */
+ * {@code GL_ATI_texture_float}
+ */
 public final class GLATITextureFloat {
     public static final int GL_RGBA_FLOAT32_ATI = 0x8814;
     public static final int GL_RGB_FLOAT32_ATI = 0x8815;
