@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import overrungl.FunctionDescriptors;
 import overrungl.os.Architecture;
 import overrungl.os.Platform;
-import overrungl.util.CStdio;
+import overrungl.util.CStdlib;
 
 import java.io.File;
 import java.lang.foreign.*;
@@ -50,7 +50,7 @@ public final class RuntimeHelper {
     /**
      * An unbounded address layout.
      */
-    public static final AddressLayout ADDRESS_UNBOUNDED = CStdio.ADDRESS_UNBOUNDED;
+    public static final AddressLayout ADDRESS_UNBOUNDED = CStdlib.ADDRESS_UNBOUNDED;
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
 
     /**
@@ -194,7 +194,7 @@ public final class RuntimeHelper {
      * @param segment the segment.
      */
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return CStdio.isNullptr(segment);
+        return CStdlib.isNullptr(segment);
     }
 
     /**
