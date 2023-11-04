@@ -203,8 +203,6 @@ subprojects {
     }
 
     the<IdeaModel>().module.inheritOutputDirs = true
-
-    the<KotlinJvmProjectExtension>().jvmToolchain(20)
 }
 
 tasks.register("assembleJavadocArgs") {
