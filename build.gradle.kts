@@ -1,5 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -152,6 +152,10 @@ subprojects {
         options.encoding = "UTF-8"
         if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
         options.release.set(targetJavaVersion)
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions { jvmTarget = "20" }
     }
 
     tasks.withType<Test> {
