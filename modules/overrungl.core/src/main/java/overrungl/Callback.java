@@ -23,6 +23,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
+import java.util.function.Function;
 
 /**
  * The upcall stub which can be passed to other foreign functions as a function pointer,
@@ -59,6 +60,16 @@ public interface Callback {
     MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException;
 
     /**
+     * Creates a method handle that invokes a native function callback.
+     *
+     * @param segment the segment of the native function.
+     * @return the method handle
+     */
+    default MethodHandle nativeHandle(MemorySegment segment) {
+        return RuntimeHelper.LINKER.downcallHandle(segment, descriptor());
+    }
+
+    /**
      * Gets the memory segment of the upcall stub with the given arena.
      *
      * @param arena    the arena.
@@ -71,5 +82,14 @@ public interface Callback {
         } catch (NoSuchMethodException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Method handle getter.
+     *
+     * @author squid233
+     * @since 0.1.0
+     */
+    interface Native<T> extends Function<MemorySegment, T> {
     }
 }
