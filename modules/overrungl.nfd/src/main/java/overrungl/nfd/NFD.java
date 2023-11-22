@@ -19,6 +19,7 @@ package overrungl.nfd;
 import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.NativeType;
+import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 import overrungl.os.Platform;
 import overrungl.util.MemoryStack;
@@ -123,7 +124,7 @@ public final class NFD {
     private static final SymbolLookup LOOKUP;
 
     static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", "0.1.0.0");
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
         final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
         LOOKUP = function != null ? function.apply(lib) : lib.get();
     }

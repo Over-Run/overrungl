@@ -30,6 +30,18 @@ public final class OverrunGL {
      * The version of OverrunGL.
      */
     public static final String VERSION = "0.1.0";
+    /**
+     * The version of GLFW native libraries.
+     */
+    public static final String GLFW_VERSION = "3.3.8.0";
+    /**
+     * The version of NFD native libraries.
+     */
+    public static final String NFD_VERSION = "0.1.0.0";
+    /**
+     * The version of STB native libraries.
+     */
+    public static final String STB_VERSION = "0.1.0.0";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 
