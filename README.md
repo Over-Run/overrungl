@@ -119,7 +119,7 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
-├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
+├─ nfd https://github.com/Over-Run/nfd-ci
 │  ├─ linux
 │  │  ├─ arm32
 │  │  │  └─ libnfd.so
