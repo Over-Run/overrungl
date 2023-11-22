@@ -18,6 +18,7 @@ package overrungl.glfw;
 
 import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
+import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -40,8 +41,7 @@ final class Handles {
     private static final SymbolLookup lookup;
 
     static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw3",
-            STR. "\{ GLFW.VERSION_MAJOR }.\{ GLFW.VERSION_MINOR }.\{ GLFW.VERSION_REVISION }" );
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw3", OverrunGL.GLFW_VERSION);
         final var function = Configurations.GLFW_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();
     }

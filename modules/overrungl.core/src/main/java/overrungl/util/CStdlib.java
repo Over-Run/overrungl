@@ -326,4 +326,21 @@ public final class CStdlib {
             throw new AssertionError("should not reach here", e);
         }
     }
+
+    /**
+     * Allocates a string with {@link CStdlib}.
+     *
+     * @param s the string.
+     * @return the memory segment of the allocated string. <b>MUST</b> be released by {@link #free(MemorySegment)}.
+     */
+    public static MemorySegment newString(String s) {
+        class Holder {
+            private static final SegmentAllocator ALLOCATOR = (byteSize, byteAlignment) -> {
+                checkByteSize(byteSize);
+                checkAlignment(byteAlignment);
+                return calloc(1, byteSize);
+            };
+        }
+        return Holder.ALLOCATOR.allocateUtf8String(s);
+    }
 }
