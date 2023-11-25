@@ -1628,4 +1628,342 @@ fun nv() {
         "glGetPathTexGenfvNV"(void, GLenum("texCoordSet"), GLenum("pname"), address("value", "GLfloat *"))
     }
     file("PathRenderingSharedEdge", NV, "GL_NV_path_rendering_shared_edge", "GL_SHARED_EDGE_NV" to "0xC0")
+    file("PixelDataRange", NV, "GL_NV_pixel_data_range") {
+        "GL_WRITE_PIXEL_DATA_RANGE_NV"("0x8878")
+        "GL_READ_PIXEL_DATA_RANGE_NV"("0x8879")
+        "GL_WRITE_PIXEL_DATA_RANGE_LENGTH_NV"("0x887A")
+        "GL_READ_PIXEL_DATA_RANGE_LENGTH_NV"("0x887B")
+        "GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV"("0x887C")
+        "GL_READ_PIXEL_DATA_RANGE_POINTER_NV"("0x887D")
+        "glPixelDataRangeNV"(void, GLenum("target"), GLsizei("length"), address("pointer", "const void *"))
+        "glFlushPixelDataRangeNV"(void, GLenum("target"))
+    }
+    file("PointSprite", NV, "GL_NV_point_sprite") {
+        "GL_POINT_SPRITE_NV"("0x8861")
+        "GL_COORD_REPLACE_NV"("0x8862")
+        "GL_POINT_SPRITE_R_MODE_NV"("0x8863")
+        "glPointParameteriNV"(void, GLenum("pname"), GLint("param"))
+        "glPointParameterivNV"(void, GLenum("pname"), address("params", "const GLint *"))
+    }
+    file("PresentVideo", NV, "GL_NV_present_video") {
+        "GL_FRAME_NV"("0x8E26")
+        "GL_FIELDS_NV"("0x8E27")
+        "GL_CURRENT_TIME_NV"("0x8E28")
+        "GL_NUM_FILL_STREAMS_NV"("0x8E29")
+        "GL_PRESENT_TIME_NV"("0x8E2A")
+        "GL_PRESENT_DURATION_NV"("0x8E2B")
+        "glPresentFrameKeyedNV"(
+            void,
+            GLuint("video_slot"),
+            GLuint64EXT("minPresentTime"),
+            GLuint("beginPresentTimeId"),
+            GLuint("presentDurationId"),
+            GLenum("type"),
+            GLenum("target0"),
+            GLuint("fill0"),
+            GLuint("key0"),
+            GLenum("target1"),
+            GLuint("fill1"),
+            GLuint("key1")
+        )
+        "glPresentFrameDualFillNV"(
+            void,
+            GLuint("video_slot"),
+            GLuint64EXT("minPresentTime"),
+            GLuint("beginPresentTimeId"),
+            GLuint("presentDurationId"),
+            GLenum("type"),
+            GLenum("target0"),
+            GLuint("fill0"),
+            GLenum("target1"),
+            GLuint("fill1"),
+            GLenum("target2"),
+            GLuint("fill2"),
+            GLenum("target3"),
+            GLuint("fill3")
+        )
+        "glGetVideoivNV"(void, GLuint("video_slot"), GLenum("pname"), address("params", "GLint *"))
+        "glGetVideouivNV"(void, GLuint("video_slot"), GLenum("pname"), address("params", "GLuint *"))
+        "glGetVideoi64vNV"(void, GLuint("video_slot"), GLenum("pname"), address("params", "GLint64EXT *"))
+        "glGetVideoui64vNV"(void, GLuint("video_slot"), GLenum("pname"), address("params", "GLuint64EXT *"))
+    }
+    file("PrimitiveRestart", NV, "GL_NV_primitive_restart") {
+        "GL_PRIMITIVE_RESTART_NV"("0x8558")
+        "GL_PRIMITIVE_RESTART_INDEX_NV"("0x8559")
+        "glPrimitiveRestartNV"(void)
+        "glPrimitiveRestartIndexNV"(void, GLuint("index"))
+    }
+    file(
+        "PrimitiveShadingRate", NV, "GL_NV_primitive_shading_rate",
+        "GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV" to "0x95B1",
+        "GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV" to "0x95B2"
+    )
+    file("QueryResource", NV, "GL_NV_query_resource") {
+        "GL_QUERY_RESOURCE_TYPE_VIDMEM_ALLOC_NV"("0x9540")
+        "GL_QUERY_RESOURCE_MEMTYPE_VIDMEM_NV"("0x9542")
+        "GL_QUERY_RESOURCE_SYS_RESERVED_NV"("0x9544")
+        "GL_QUERY_RESOURCE_TEXTURE_NV"("0x9545")
+        "GL_QUERY_RESOURCE_RENDERBUFFER_NV"("0x9546")
+        "GL_QUERY_RESOURCE_BUFFEROBJECT_NV"("0x9547")
+        "glQueryResourceNV"(GLint, GLenum("queryType"), GLint("tagId"), GLuint("count"), address("buffer", "GLint *"))
+    }
+    file("QueryResourceTag", NV, "GL_NV_query_resource_tag") {
+        "glGenQueryResourceTagNV"(void, GLsizei("n"), address("tagIds", "GLint *"))
+        "glDeleteQueryResourceTagNV"(void, GLsizei("n"), address("tagIds", "const GLint *"))
+        "glQueryResourceTagNV"(void, GLint("tagId"), address("tagString", "const GLchar *"))
+    }
+    file("RegisterCombiners", NV, "GL_NV_register_combiners") {
+        "GL_REGISTER_COMBINERS_NV"("0x8522")
+        "GL_VARIABLE_A_NV"("0x8523")
+        "GL_VARIABLE_B_NV"("0x8524")
+        "GL_VARIABLE_C_NV"("0x8525")
+        "GL_VARIABLE_D_NV"("0x8526")
+        "GL_VARIABLE_E_NV"("0x8527")
+        "GL_VARIABLE_F_NV"("0x8528")
+        "GL_VARIABLE_G_NV"("0x8529")
+        "GL_CONSTANT_COLOR0_NV"("0x852A")
+        "GL_CONSTANT_COLOR1_NV"("0x852B")
+        "GL_SPARE0_NV"("0x852E")
+        "GL_SPARE1_NV"("0x852F")
+        "GL_DISCARD_NV"("0x8530")
+        "GL_E_TIMES_F_NV"("0x8531")
+        "GL_SPARE0_PLUS_SECONDARY_COLOR_NV"("0x8532")
+        "GL_UNSIGNED_IDENTITY_NV"("0x8536")
+        "GL_UNSIGNED_INVERT_NV"("0x8537")
+        "GL_EXPAND_NORMAL_NV"("0x8538")
+        "GL_EXPAND_NEGATE_NV"("0x8539")
+        "GL_HALF_BIAS_NORMAL_NV"("0x853A")
+        "GL_HALF_BIAS_NEGATE_NV"("0x853B")
+        "GL_SIGNED_IDENTITY_NV"("0x853C")
+        "GL_SIGNED_NEGATE_NV"("0x853D")
+        "GL_SCALE_BY_TWO_NV"("0x853E")
+        "GL_SCALE_BY_FOUR_NV"("0x853F")
+        "GL_SCALE_BY_ONE_HALF_NV"("0x8540")
+        "GL_BIAS_BY_NEGATIVE_ONE_HALF_NV"("0x8541")
+        "GL_COMBINER_INPUT_NV"("0x8542")
+        "GL_COMBINER_MAPPING_NV"("0x8543")
+        "GL_COMBINER_COMPONENT_USAGE_NV"("0x8544")
+        "GL_COMBINER_AB_DOT_PRODUCT_NV"("0x8545")
+        "GL_COMBINER_CD_DOT_PRODUCT_NV"("0x8546")
+        "GL_COMBINER_MUX_SUM_NV"("0x8547")
+        "GL_COMBINER_SCALE_NV"("0x8548")
+        "GL_COMBINER_BIAS_NV"("0x8549")
+        "GL_COMBINER_AB_OUTPUT_NV"("0x854A")
+        "GL_COMBINER_CD_OUTPUT_NV"("0x854B")
+        "GL_COMBINER_SUM_OUTPUT_NV"("0x854C")
+        "GL_MAX_GENERAL_COMBINERS_NV"("0x854D")
+        "GL_NUM_GENERAL_COMBINERS_NV"("0x854E")
+        "GL_COLOR_SUM_CLAMP_NV"("0x854F")
+        "GL_COMBINER0_NV"("0x8550")
+        "GL_COMBINER1_NV"("0x8551")
+        "GL_COMBINER2_NV"("0x8552")
+        "GL_COMBINER3_NV"("0x8553")
+        "GL_COMBINER4_NV"("0x8554")
+        "GL_COMBINER5_NV"("0x8555")
+        "GL_COMBINER6_NV"("0x8556")
+        "GL_COMBINER7_NV"("0x8557")
+        "glCombinerParameterfvNV"(void, GLenum("pname"), address("params", "const GLfloat *"))
+        "glCombinerParameterfNV"(void, GLenum("pname"), GLfloat("param"))
+        "glCombinerParameterivNV"(void, GLenum("pname"), address("params", "const GLint *"))
+        "glCombinerParameteriNV"(void, GLenum("pname"), GLint("param"))
+        "glCombinerInputNV"(
+            void,
+            GLenum("stage"),
+            GLenum("portion"),
+            GLenum("variable"),
+            GLenum("input"),
+            GLenum("mapping"),
+            GLenum("componentUsage")
+        )
+        "glCombinerOutputNV"(
+            void,
+            GLenum("stage"),
+            GLenum("portion"),
+            GLenum("abOutput"),
+            GLenum("cdOutput"),
+            GLenum("sumOutput"),
+            GLenum("scale"),
+            GLenum("bias"),
+            GLboolean("abDotProduct"),
+            GLboolean("cdDotProduct"),
+            GLboolean("muxSum")
+        )
+        "glFinalCombinerInputNV"(void, GLenum("variable"), GLenum("input"), GLenum("mapping"), GLenum("componentUsage"))
+        "glGetCombinerInputParameterfvNV"(
+            void,
+            GLenum("stage"),
+            GLenum("portion"),
+            GLenum("variable"),
+            GLenum("pname"),
+            address("params", "GLfloat *")
+        )
+        "glGetCombinerInputParameterivNV"(
+            void,
+            GLenum("stage"),
+            GLenum("portion"),
+            GLenum("variable"),
+            GLenum("pname"),
+            address("params", "GLint *")
+        )
+        "glGetCombinerOutputParameterfvNV"(
+            void,
+            GLenum("stage"),
+            GLenum("portion"),
+            GLenum("pname"),
+            address("params", "GLfloat *")
+        )
+        "glGetCombinerOutputParameterivNV"(
+            void,
+            GLenum("stage"),
+            GLenum("portion"),
+            GLenum("pname"),
+            address("params", "GLint *")
+        )
+        "glGetFinalCombinerInputParameterfvNV"(
+            void,
+            GLenum("variable"),
+            GLenum("pname"),
+            address("params", "GLfloat *")
+        )
+        "glGetFinalCombinerInputParameterivNV"(void, GLenum("variable"), GLenum("pname"), address("params", "GLint *"))
+    }
+    file("RegisterCombiners2", NV, "GL_NV_register_combiners2") {
+        "GL_PER_STAGE_CONSTANTS_NV"("0x8535")
+        "glCombinerStageParameterfvNV"(void, GLenum("stage"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glGetCombinerStageParameterfvNV"(void, GLenum("stage"), GLenum("pname"), address("params", "GLfloat *"))
+    }
+    file("RepresentativeFragmentTest", NV, "GL_NV_representative_fragment_test", "GL_REPRESENTATIVE_FRAGMENT_TEST_NV" to "0x937F")
+    file("RobustnessVideoMemoryPurge", NV, "GL_NV_robustness_video_memory_purge", "GL_PURGED_CONTEXT_RESET_NV" to "0x92BB")
+    file("SampleLocations", NV, "GL_NV_sample_locations") {
+        "GL_SAMPLE_LOCATION_SUBPIXEL_BITS_NV"("0x933D")
+        "GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_NV"("0x933E")
+        "GL_SAMPLE_LOCATION_PIXEL_GRID_HEIGHT_NV"("0x933F")
+        "GL_PROGRAMMABLE_SAMPLE_LOCATION_TABLE_SIZE_NV"("0x9340")
+        "GL_SAMPLE_LOCATION_NV"("0x8E50")
+        "GL_PROGRAMMABLE_SAMPLE_LOCATION_NV"("0x9341")
+        "GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_NV"("0x9342")
+        "GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV"("0x9343")
+        "glFramebufferSampleLocationsfvNV"(
+            void,
+            GLenum("target"),
+            GLuint("start"),
+            GLsizei("count"),
+            address("v", "const GLfloat *")
+        )
+        "glNamedFramebufferSampleLocationsfvNV"(
+            void,
+            GLuint("framebuffer"),
+            GLuint("start"),
+            GLsizei("count"),
+            address("v", "const GLfloat *")
+        )
+        "glResolveDepthValuesNV"(void)
+    }
+    file("ScissorExclusive", NV, "GL_NV_scissor_exclusive") {
+        "GL_SCISSOR_TEST_EXCLUSIVE_NV"("0x9555")
+        "GL_SCISSOR_BOX_EXCLUSIVE_NV"("0x9556")
+        "glScissorExclusiveNV"(void, GLint("x"), GLint("y"), GLsizei("width"), GLsizei("height"))
+        "glScissorExclusiveArrayvNV"(void, GLuint("first"), GLsizei("count"), address("v", "const GLint *"))
+    }
+    file("ShaderBufferLoad", NV, "GL_NV_shader_buffer_load") {
+        "GL_BUFFER_GPU_ADDRESS_NV"("0x8F1D")
+        "GL_GPU_ADDRESS_NV"("0x8F34")
+        "GL_MAX_SHADER_BUFFER_ADDRESS_NV"("0x8F35")
+        "glMakeBufferResidentNV"(void, GLenum("target"), GLenum("access"))
+        "glMakeBufferNonResidentNV"(void, GLenum("target"))
+        "glIsBufferResidentNV"(GLboolean, GLenum("target"))
+        "glMakeNamedBufferResidentNV"(void, GLuint("buffer"), GLenum("access"))
+        "glMakeNamedBufferNonResidentNV"(void, GLuint("buffer"))
+        "glIsNamedBufferResidentNV"(GLboolean, GLuint("buffer"))
+        "glGetBufferParameterui64vNV"(void, GLenum("target"), GLenum("pname"), address("params", "GLuint64EXT *"))
+        "glGetNamedBufferParameterui64vNV"(void, GLuint("buffer"), GLenum("pname"), address("params", "GLuint64EXT *"))
+        "glGetIntegerui64vNV"(void, GLenum("value"), address("result", "GLuint64EXT *"))
+        "glUniformui64NV"(void, GLint("location"), GLuint64EXT("value"))
+        "glUniformui64vNV"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint64EXT *"))
+        "glProgramUniformui64NV"(void, GLuint("program"), GLint("location"), GLuint64EXT("value"))
+        "glProgramUniformui64vNV"(
+            void,
+            GLuint("program"),
+            GLint("location"),
+            GLsizei("count"),
+            address("value", "const GLuint64EXT *")
+        )
+    }
+    file("ShaderBufferStore", NV, "GL_NV_shader_buffer_store", "GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV" to "0x00000010")
+    file("ShaderSubgroupPartitioned", NV, "GL_NV_shader_subgroup_partitioned", "GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV" to "0x00000100")
+    file(
+        "ShaderThreadGroup", NV, "GL_NV_shader_thread_group",
+        "GL_WARP_SIZE_NV" to "0x9339",
+        "GL_WARPS_PER_SM_NV" to "0x933A",
+        "GL_SM_COUNT_NV" to "0x933B",
+    )
+    file("ShadingRateImage", NV, "GL_NV_shading_rate_image") {
+        "GL_SHADING_RATE_IMAGE_NV"("0x9563")
+        "GL_SHADING_RATE_NO_INVOCATIONS_NV"("0x9564")
+        "GL_SHADING_RATE_1_INVOCATION_PER_PIXEL_NV"("0x9565")
+        "GL_SHADING_RATE_1_INVOCATION_PER_1X2_PIXELS_NV"("0x9566")
+        "GL_SHADING_RATE_1_INVOCATION_PER_2X1_PIXELS_NV"("0x9567")
+        "GL_SHADING_RATE_1_INVOCATION_PER_2X2_PIXELS_NV"("0x9568")
+        "GL_SHADING_RATE_1_INVOCATION_PER_2X4_PIXELS_NV"("0x9569")
+        "GL_SHADING_RATE_1_INVOCATION_PER_4X2_PIXELS_NV"("0x956A")
+        "GL_SHADING_RATE_1_INVOCATION_PER_4X4_PIXELS_NV"("0x956B")
+        "GL_SHADING_RATE_2_INVOCATIONS_PER_PIXEL_NV"("0x956C")
+        "GL_SHADING_RATE_4_INVOCATIONS_PER_PIXEL_NV"("0x956D")
+        "GL_SHADING_RATE_8_INVOCATIONS_PER_PIXEL_NV"("0x956E")
+        "GL_SHADING_RATE_16_INVOCATIONS_PER_PIXEL_NV"("0x956F")
+        "GL_SHADING_RATE_IMAGE_BINDING_NV"("0x955B")
+        "GL_SHADING_RATE_IMAGE_TEXEL_WIDTH_NV"("0x955C")
+        "GL_SHADING_RATE_IMAGE_TEXEL_HEIGHT_NV"("0x955D")
+        "GL_SHADING_RATE_IMAGE_PALETTE_SIZE_NV"("0x955E")
+        "GL_MAX_COARSE_FRAGMENT_SAMPLES_NV"("0x955F")
+        "GL_SHADING_RATE_SAMPLE_ORDER_DEFAULT_NV"("0x95AE")
+        "GL_SHADING_RATE_SAMPLE_ORDER_PIXEL_MAJOR_NV"("0x95AF")
+        "GL_SHADING_RATE_SAMPLE_ORDER_SAMPLE_MAJOR_NV"("0x95B0")
+        "glBindShadingRateImageNV"(void, GLuint("texture"))
+        "glGetShadingRateImagePaletteNV"(void, GLuint("viewport"), GLuint("entry"), address("rate", "GLenum *"))
+        "glGetShadingRateSampleLocationivNV"(
+            void,
+            GLenum("rate"),
+            GLuint("samples"),
+            GLuint("index"),
+            address("location", "GLint *")
+        )
+        "glShadingRateImageBarrierNV"(void, GLboolean("synchronize"))
+        "glShadingRateImagePaletteNV"(
+            void,
+            GLuint("viewport"),
+            GLuint("first"),
+            GLsizei("count"),
+            address("rates", "const GLenum *")
+        )
+        "glShadingRateSampleOrderNV"(void, GLenum("order"))
+        "glShadingRateSampleOrderCustomNV"(
+            void,
+            GLenum("rate"),
+            GLuint("samples"),
+            address("locations", "const GLint *")
+        )
+    }
+    file(
+        "TessellationProgram5", NV, "GL_NV_tessellation_program5",
+        "GL_MAX_PROGRAM_PATCH_ATTRIBS_NV" to "0x86D8",
+        "GL_TESS_CONTROL_PROGRAM_NV" to "0x891E",
+        "GL_TESS_EVALUATION_PROGRAM_NV" to "0x891F",
+        "GL_TESS_CONTROL_PROGRAM_PARAMETER_BUFFER_NV" to "0x8C74",
+        "GL_TESS_EVALUATION_PROGRAM_PARAMETER_BUFFER_NV" to "0x8C75"
+    )
+    file(
+        "TexgenEmboss", NV, "GL_NV_texgen_emboss",
+        "GL_EMBOSS_LIGHT_NV" to "0x855D",
+        "GL_EMBOSS_CONSTANT_NV" to "0x855E",
+        "GL_EMBOSS_MAP_NV" to "0x855F"
+    )
+    file(
+        "TexgenReflection", NV, "GL_NV_texgen_reflection",
+        "GL_NORMAL_MAP_NV" to "0x8511",
+        "GL_REFLECTION_MAP_NV" to "0x8512"
+    )
+    file("TextureBarrier", NV, "GL_NV_texture_barrier") {
+        "glTextureBarrierNV"(void)
+    }
 }
