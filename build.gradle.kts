@@ -142,7 +142,7 @@ subprojects {
     val compileOnly by configurations
     val implementation by configurations
     dependencies {
-        compileOnly("org.jetbrains:annotations:24.0.1")
+        compileOnly("org.jetbrains:annotations:24.1.0")
         if (project.name != "core") {
             implementation(project(":core"))
         }

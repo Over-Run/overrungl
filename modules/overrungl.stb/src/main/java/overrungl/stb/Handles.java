@@ -18,6 +18,7 @@ package overrungl.stb;
 
 import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
+import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.Linker;
@@ -35,7 +36,7 @@ final class Handles {
     private static final SymbolLookup lookup;
 
     static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", "0.1.0.0");
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
         final var function = Configurations.STB_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();
     }
