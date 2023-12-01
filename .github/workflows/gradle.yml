@@ -25,7 +25,7 @@ jobs:
         with:
           java-version: |
             ${{ matrix.java }}
-            20
+#            20
           distribution: 'temurin'
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}
