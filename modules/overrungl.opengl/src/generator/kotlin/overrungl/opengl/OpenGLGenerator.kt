@@ -124,6 +124,7 @@ val GLcharARB = byte
 val GLint64EXT = long
 val GLuint64EXT = long
 val GLhalfNV = short
+val GLvdpauSurfaceNV = GLintptr
 
 data class Parameter(
     val type: Type,

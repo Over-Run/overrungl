@@ -24,6 +24,7 @@ val developers: String by project
 val jdkVersion: String by rootProject
 val jdkEnablePreview: String by rootProject
 val jdkEarlyAccessDoc: String? by rootProject
+val kotlinTargetJdkVersion: String by rootProject
 
 val targetJavaVersion = jdkVersion.toInt()
 
@@ -155,7 +156,7 @@ subprojects {
     }
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions { jvmTarget = "20" }
+        kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
     }
 
     tasks.withType<Test> {

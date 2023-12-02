@@ -1,5 +1,6 @@
 val jdkVersion: String by rootProject
 val jdkEnablePreview: String by rootProject
+val kotlinTargetJdkVersion: String by rootProject
 
 sourceSets {
     create("generator")
@@ -7,7 +8,7 @@ sourceSets {
 
 tasks.named<JavaCompile>("compileGeneratorJava") {
     javaCompiler.set(javaToolchains.compilerFor {
-        targetCompatibility = "20"
+        targetCompatibility = kotlinTargetJdkVersion
         languageVersion.set(JavaLanguageVersion.of(jdkVersion))
     })
 }

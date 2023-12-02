@@ -1966,4 +1966,692 @@ fun nv() {
     file("TextureBarrier", NV, "GL_NV_texture_barrier") {
         "glTextureBarrierNV"(void)
     }
+    file(
+        "TextureEnvCombine4", NV, "GL_NV_texture_env_combine4",
+        "GL_COMBINE4_NV" to "0x8503",
+        "GL_SOURCE3_RGB_NV" to "0x8583",
+        "GL_SOURCE3_ALPHA_NV" to "0x858B",
+        "GL_OPERAND3_RGB_NV" to "0x8593",
+        "GL_OPERAND3_ALPHA_NV" to "0x859B"
+    )
+    file("TextureExpandNormal", NV, "GL_NV_texture_expand_normal", "GL_TEXTURE_UNSIGNED_REMAP_MODE_NV" to "0x888F")
+    file("TextureMultisample", NV, "GL_NV_texture_multisample") {
+        "GL_TEXTURE_COVERAGE_SAMPLES_NV"    ("0x9045")
+        "GL_TEXTURE_COLOR_SAMPLES_NV"       ("0x9046")
+        "glTexImage2DMultisampleCoverageNV" (void, GLenum ("target"), GLsizei ("coverageSamples"), GLsizei ("colorSamples"), GLint ("internalFormat"), GLsizei ("width"), GLsizei ("height"), GLboolean ("fixedSampleLocations"))
+        "glTexImage3DMultisampleCoverageNV" (void, GLenum ("target"), GLsizei ("coverageSamples"), GLsizei ("colorSamples"), GLint ("internalFormat"), GLsizei ("width"), GLsizei ("height"), GLsizei ("depth"), GLboolean ("fixedSampleLocations"))
+        "glTextureImage2DMultisampleNV" (void, GLuint ("texture"), GLenum ("target"), GLsizei ("samples"), GLint ("internalFormat"), GLsizei ("width"), GLsizei ("height"), GLboolean ("fixedSampleLocations"))
+        "glTextureImage3DMultisampleNV" (void, GLuint ("texture"), GLenum ("target"), GLsizei ("samples"), GLint ("internalFormat"), GLsizei ("width"), GLsizei ("height"), GLsizei ("depth"), GLboolean ("fixedSampleLocations"))
+        "glTextureImage2DMultisampleCoverageNV" (void, GLuint ("texture"), GLenum ("target"), GLsizei ("coverageSamples"), GLsizei ("colorSamples"), GLint ("internalFormat"), GLsizei ("width"), GLsizei ("height"), GLboolean ("fixedSampleLocations"))
+        "glTextureImage3DMultisampleCoverageNV" (void, GLuint ("texture"), GLenum ("target"), GLsizei ("coverageSamples"), GLsizei ("colorSamples"), GLint ("internalFormat"), GLsizei ("width"), GLsizei ("height"), GLsizei ("depth"), GLboolean ("fixedSampleLocations"))
+    }
+    file(
+        "TextureRectangle", NV, "GL_NV_texture_rectangle",
+        "GL_TEXTURE_RECTANGLE_NV" to "0x84F5",
+        "GL_TEXTURE_BINDING_RECTANGLE_NV" to "0x84F6",
+        "GL_PROXY_TEXTURE_RECTANGLE_NV" to "0x84F7",
+        "GL_MAX_RECTANGLE_TEXTURE_SIZE_NV" to "0x84F8"
+    )
+    file(
+        "TextureShader", NV, "GL_NV_texture_shader",
+        "GL_OFFSET_TEXTURE_RECTANGLE_NV" to "0x864C",
+        "GL_OFFSET_TEXTURE_RECTANGLE_SCALE_NV" to "0x864D",
+        "GL_DOT_PRODUCT_TEXTURE_RECTANGLE_NV" to "0x864E",
+        "GL_RGBA_UNSIGNED_DOT_PRODUCT_MAPPING_NV" to "0x86D9",
+        "GL_UNSIGNED_INT_S8_S8_8_8_NV" to "0x86DA",
+        "GL_UNSIGNED_INT_8_8_S8_S8_REV_NV" to "0x86DB",
+        "GL_DSDT_MAG_INTENSITY_NV" to "0x86DC",
+        "GL_SHADER_CONSISTENT_NV" to "0x86DD",
+        "GL_TEXTURE_SHADER_NV" to "0x86DE",
+        "GL_SHADER_OPERATION_NV" to "0x86DF",
+        "GL_CULL_MODES_NV" to "0x86E0",
+        "GL_OFFSET_TEXTURE_MATRIX_NV" to "0x86E1",
+        "GL_OFFSET_TEXTURE_SCALE_NV" to "0x86E2",
+        "GL_OFFSET_TEXTURE_BIAS_NV" to "0x86E3",
+        "GL_OFFSET_TEXTURE_2D_MATRIX_NV" to "0x86E1",
+        "GL_OFFSET_TEXTURE_2D_SCALE_NV" to "0x86E2",
+        "GL_OFFSET_TEXTURE_2D_BIAS_NV" to "0x86E3",
+        "GL_PREVIOUS_TEXTURE_INPUT_NV" to "0x86E4",
+        "GL_CONST_EYE_NV" to "0x86E5",
+        "GL_PASS_THROUGH_NV" to "0x86E6",
+        "GL_CULL_FRAGMENT_NV" to "0x86E7",
+        "GL_OFFSET_TEXTURE_2D_NV" to "0x86E8",
+        "GL_DEPENDENT_AR_TEXTURE_2D_NV" to "0x86E9",
+        "GL_DEPENDENT_GB_TEXTURE_2D_NV" to "0x86EA",
+        "GL_DOT_PRODUCT_NV" to "0x86EC",
+        "GL_DOT_PRODUCT_DEPTH_REPLACE_NV" to "0x86ED",
+        "GL_DOT_PRODUCT_TEXTURE_2D_NV" to "0x86EE",
+        "GL_DOT_PRODUCT_TEXTURE_CUBE_MAP_NV" to "0x86F0",
+        "GL_DOT_PRODUCT_DIFFUSE_CUBE_MAP_NV" to "0x86F1",
+        "GL_DOT_PRODUCT_REFLECT_CUBE_MAP_NV" to "0x86F2",
+        "GL_DOT_PRODUCT_CONST_EYE_REFLECT_CUBE_MAP_NV" to "0x86F3",
+        "GL_HILO_NV" to "0x86F4",
+        "GL_DSDT_NV" to "0x86F5",
+        "GL_DSDT_MAG_NV" to "0x86F6",
+        "GL_DSDT_MAG_VIB_NV" to "0x86F7",
+        "GL_HILO16_NV" to "0x86F8",
+        "GL_SIGNED_HILO_NV" to "0x86F9",
+        "GL_SIGNED_HILO16_NV" to "0x86FA",
+        "GL_SIGNED_RGBA_NV" to "0x86FB",
+        "GL_SIGNED_RGBA8_NV" to "0x86FC",
+        "GL_SIGNED_RGB_NV" to "0x86FE",
+        "GL_SIGNED_RGB8_NV" to "0x86FF",
+        "GL_SIGNED_LUMINANCE_NV" to "0x8701",
+        "GL_SIGNED_LUMINANCE8_NV" to "0x8702",
+        "GL_SIGNED_LUMINANCE_ALPHA_NV" to "0x8703",
+        "GL_SIGNED_LUMINANCE8_ALPHA8_NV" to "0x8704",
+        "GL_SIGNED_ALPHA_NV" to "0x8705",
+        "GL_SIGNED_ALPHA8_NV" to "0x8706",
+        "GL_SIGNED_INTENSITY_NV" to "0x8707",
+        "GL_SIGNED_INTENSITY8_NV" to "0x8708",
+        "GL_DSDT8_NV" to "0x8709",
+        "GL_DSDT8_MAG8_NV" to "0x870A",
+        "GL_DSDT8_MAG8_INTENSITY8_NV" to "0x870B",
+        "GL_SIGNED_RGB_UNSIGNED_ALPHA_NV" to "0x870C",
+        "GL_SIGNED_RGB8_UNSIGNED_ALPHA8_NV" to "0x870D",
+        "GL_HI_SCALE_NV" to "0x870E",
+        "GL_LO_SCALE_NV" to "0x870F",
+        "GL_DS_SCALE_NV" to "0x8710",
+        "GL_DT_SCALE_NV" to "0x8711",
+        "GL_MAGNITUDE_SCALE_NV" to "0x8712",
+        "GL_VIBRANCE_SCALE_NV" to "0x8713",
+        "GL_HI_BIAS_NV" to "0x8714",
+        "GL_LO_BIAS_NV" to "0x8715",
+        "GL_DS_BIAS_NV" to "0x8716",
+        "GL_DT_BIAS_NV" to "0x8717",
+        "GL_MAGNITUDE_BIAS_NV" to "0x8718",
+        "GL_VIBRANCE_BIAS_NV" to "0x8719",
+        "GL_TEXTURE_BORDER_VALUES_NV" to "0x871A",
+        "GL_TEXTURE_HI_SIZE_NV" to "0x871B",
+        "GL_TEXTURE_LO_SIZE_NV" to "0x871C",
+        "GL_TEXTURE_DS_SIZE_NV" to "0x871D",
+        "GL_TEXTURE_DT_SIZE_NV" to "0x871E",
+        "GL_TEXTURE_MAG_SIZE_NV" to "0x871F"
+    )
+    file("TextureShader2", NV, "GL_NV_texture_shader2", "GL_DOT_PRODUCT_TEXTURE_3D_NV" to "0x86EF")
+    file(
+        "TextureShader3", NV, "GL_NV_texture_shader3",
+        "GL_OFFSET_PROJECTIVE_TEXTURE_2D_NV" to "0x8850",
+        "GL_OFFSET_PROJECTIVE_TEXTURE_2D_SCALE_NV" to "0x8851",
+        "GL_OFFSET_PROJECTIVE_TEXTURE_RECTANGLE_NV" to "0x8852",
+        "GL_OFFSET_PROJECTIVE_TEXTURE_RECTANGLE_SCALE_NV" to "0x8853",
+        "GL_OFFSET_HILO_TEXTURE_2D_NV" to "0x8854",
+        "GL_OFFSET_HILO_TEXTURE_RECTANGLE_NV" to "0x8855",
+        "GL_OFFSET_HILO_PROJECTIVE_TEXTURE_2D_NV" to "0x8856",
+        "GL_OFFSET_HILO_PROJECTIVE_TEXTURE_RECTANGLE_NV" to "0x8857",
+        "GL_DEPENDENT_HILO_TEXTURE_2D_NV" to "0x8858",
+        "GL_DEPENDENT_RGB_TEXTURE_3D_NV" to "0x8859",
+        "GL_DEPENDENT_RGB_TEXTURE_CUBE_MAP_NV" to "0x885A",
+        "GL_DOT_PRODUCT_PASS_THROUGH_NV" to "0x885B",
+        "GL_DOT_PRODUCT_TEXTURE_1D_NV" to "0x885C",
+        "GL_DOT_PRODUCT_AFFINE_DEPTH_REPLACE_NV" to "0x885D",
+        "GL_HILO8_NV" to "0x885E",
+        "GL_SIGNED_HILO8_NV" to "0x885F",
+        "GL_FORCE_BLUE_TO_ONE_NV" to "0x8860"
+    )
+    file("TimelineSemaphore", NV, "GL_NV_timeline_semaphore") {
+        "GL_TIMELINE_SEMAPHORE_VALUE_NV"("0x9595")
+        "GL_SEMAPHORE_TYPE_NV"("0x95B3")
+        "GL_SEMAPHORE_TYPE_BINARY_NV"("0x95B4")
+        "GL_SEMAPHORE_TYPE_TIMELINE_NV"("0x95B5")
+        "GL_MAX_TIMELINE_SEMAPHORE_VALUE_DIFFERENCE_NV"("0x95B6")
+        "glCreateSemaphoresNV"(void, GLsizei("n"), address("semaphores", "GLuint *"))
+        "glSemaphoreParameterivNV"(void, GLuint("semaphore"), GLenum("pname"), address("params", "const GLint *"))
+        "glGetSemaphoreParameterivNV"(void, GLuint("semaphore"), GLenum("pname"), address("params", "GLint *"))
+    }
+    file("TransformFeedback", NV, "GL_NV_transform_feedback") {
+        "GL_BACK_PRIMARY_COLOR_NV"("0x8C77")
+        "GL_BACK_SECONDARY_COLOR_NV"("0x8C78")
+        "GL_TEXTURE_COORD_NV"("0x8C79")
+        "GL_CLIP_DISTANCE_NV"("0x8C7A")
+        "GL_VERTEX_ID_NV"("0x8C7B")
+        "GL_PRIMITIVE_ID_NV"("0x8C7C")
+        "GL_GENERIC_ATTRIB_NV"("0x8C7D")
+        "GL_TRANSFORM_FEEDBACK_ATTRIBS_NV"("0x8C7E")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_MODE_NV"("0x8C7F")
+        "GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS_NV"("0x8C80")
+        "GL_ACTIVE_VARYINGS_NV"("0x8C81")
+        "GL_ACTIVE_VARYING_MAX_LENGTH_NV"("0x8C82")
+        "GL_TRANSFORM_FEEDBACK_VARYINGS_NV"("0x8C83")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_START_NV"("0x8C84")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_SIZE_NV"("0x8C85")
+        "GL_TRANSFORM_FEEDBACK_RECORD_NV"("0x8C86")
+        "GL_PRIMITIVES_GENERATED_NV"("0x8C87")
+        "GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN_NV"("0x8C88")
+        "GL_RASTERIZER_DISCARD_NV"("0x8C89")
+        "GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS_NV"("0x8C8A")
+        "GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS_NV"("0x8C8B")
+        "GL_INTERLEAVED_ATTRIBS_NV"("0x8C8C")
+        "GL_SEPARATE_ATTRIBS_NV"("0x8C8D")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_NV"("0x8C8E")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_BINDING_NV"("0x8C8F")
+        "GL_LAYER_NV"("0x8DAA")
+        "GL_NEXT_BUFFER_NV"("-2")
+        "GL_SKIP_COMPONENTS4_NV"("-3")
+        "GL_SKIP_COMPONENTS3_NV"("-4")
+        "GL_SKIP_COMPONENTS2_NV"("-5")
+        "GL_SKIP_COMPONENTS1_NV"("-6")
+        "glBeginTransformFeedbackNV"(void, GLenum("primitiveMode"))
+        "glEndTransformFeedbackNV"(void)
+        "glTransformFeedbackAttribsNV"(
+            void,
+            GLsizei("count"),
+            address("attribs", "const GLint *"),
+            GLenum("bufferMode")
+        )
+        "glBindBufferRangeNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLuint("buffer"),
+            GLintptr("offset"),
+            GLsizeiptr("size")
+        )
+        "glBindBufferOffsetNV"(void, GLenum("target"), GLuint("index"), GLuint("buffer"), GLintptr("offset"))
+        "glBindBufferBaseNV"(void, GLenum("target"), GLuint("index"), GLuint("buffer"))
+        "glTransformFeedbackVaryingsNV"(
+            void,
+            GLuint("program"),
+            GLsizei("count"),
+            address("locations", "const GLint *"),
+            GLenum("bufferMode")
+        )
+        "glActiveVaryingNV"(void, GLuint("program"), address("name", "const GLchar *"))
+        "glGetVaryingLocationNV"(GLint, GLuint("program"), address("name", "const GLchar *"))
+        "glGetActiveVaryingNV"(
+            void,
+            GLuint("program"),
+            GLuint("index"),
+            GLsizei("bufSize"),
+            address("length", "GLsizei *"),
+            address("size", "GLsizei *"),
+            address("type", "GLenum *"),
+            address("name", "GLchar *")
+        )
+        "glGetTransformFeedbackVaryingNV"(void, GLuint("program"), GLuint("index"), address("location", "GLint *"))
+        "glTransformFeedbackStreamAttribsNV"(
+            void,
+            GLsizei("count"),
+            address("attribs", "const GLint *"),
+            GLsizei("nbuffers"),
+            address("bufstreams", "const GLint *"),
+            GLenum("bufferMode")
+        )
+    }
+    file("TransformFeedback2", NV, "GL_NV_transform_feedback2") {
+        "GL_TRANSFORM_FEEDBACK_NV"("0x8E22")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED_NV"("0x8E23")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE_NV"("0x8E24")
+        "GL_TRANSFORM_FEEDBACK_BINDING_NV"("0x8E25")
+        "glBindTransformFeedbackNV"(void, GLenum("target"), GLuint("id"))
+        "glDeleteTransformFeedbacksNV"(void, GLsizei("n"), address("ids", "const GLuint *"))
+        "glGenTransformFeedbacksNV"(void, GLsizei("n"), address("ids", "GLuint *"))
+        "glIsTransformFeedbackNV"(GLboolean, GLuint("id"))
+        "glPauseTransformFeedbackNV"(void)
+        "glResumeTransformFeedbackNV"(void)
+        "glDrawTransformFeedbackNV"(void, GLenum("mode"), GLuint("id"))
+    }
+    file(
+        "UniformBufferUnifiedMemory", NV, "GL_NV_uniform_buffer_unified_memory",
+        "GL_UNIFORM_BUFFER_UNIFIED_NV" to "0x936E",
+        "GL_UNIFORM_BUFFER_ADDRESS_NV" to "0x936F",
+        "GL_UNIFORM_BUFFER_LENGTH_NV" to "0x9370"
+    )
+    file("VDPAUInterop", NV, "GL_NV_vdpau_interop") {
+        "GL_SURFACE_STATE_NV"("0x86EB")
+        "GL_SURFACE_REGISTERED_NV"("0x86FD")
+        "GL_SURFACE_MAPPED_NV"("0x8700")
+        "GL_WRITE_DISCARD_NV"("0x88BE")
+        "glVDPAUInitNV"(void, address("vdpDevice", "const void *"), address("getProcAddress", "const void *"))
+        "glVDPAUFiniNV"(void)
+        "glVDPAURegisterVideoSurfaceNV"(
+            GLvdpauSurfaceNV,
+            address("vdpSurface", "const void *"),
+            GLenum("target"),
+            GLsizei("numTextureNames"),
+            address("textureNames", "const GLuint *")
+        )
+        "glVDPAURegisterOutputSurfaceNV"(
+            GLvdpauSurfaceNV,
+            address("vdpSurface", "const void *"),
+            GLenum("target"),
+            GLsizei("numTextureNames"),
+            address("textureNames", "const GLuint *")
+        )
+        "glVDPAUIsSurfaceNV"(GLboolean, GLvdpauSurfaceNV("surface"))
+        "glVDPAUUnregisterSurfaceNV"(void, GLvdpauSurfaceNV("surface"))
+        "glVDPAUGetSurfaceivNV"(
+            void,
+            GLvdpauSurfaceNV("surface"),
+            GLenum("pname"),
+            GLsizei("count"),
+            address("length", "GLsizei *"),
+            address("values", "GLint *")
+        )
+        "glVDPAUSurfaceAccessNV"(void, GLvdpauSurfaceNV("surface"), GLenum("access"))
+        "glVDPAUMapSurfacesNV"(void, GLsizei("numSurfaces"), address("surfaces", "const GLvdpauSurfaceNV *"))
+        "glVDPAUUnmapSurfacesNV"(void, GLsizei("numSurface"), address("surfaces", "const GLvdpauSurfaceNV *"))
+    }
+    file("VDPAUInterop2", NV, "GL_NV_vdpau_interop2") {
+        "glVDPAURegisterVideoSurfaceWithPictureStructureNV"(
+            GLvdpauSurfaceNV,
+            address("vdpSurface", "const void *"),
+            GLenum("target"),
+            GLsizei("numTextureNames"),
+            address("textureNames", "const GLuint *"),
+            GLboolean("isFrameStructure")
+        )
+    }
+    file("VertexArrayRange", NV, "GL_NV_vertex_array_range") {
+        "GL_VERTEX_ARRAY_RANGE_NV"("0x851D")
+        "GL_VERTEX_ARRAY_RANGE_LENGTH_NV"("0x851E")
+        "GL_VERTEX_ARRAY_RANGE_VALID_NV"("0x851F")
+        "GL_MAX_VERTEX_ARRAY_RANGE_ELEMENT_NV"("0x8520")
+        "GL_VERTEX_ARRAY_RANGE_POINTER_NV"("0x8521")
+        "glFlushVertexArrayRangeNV"(void)
+        "glVertexArrayRangeNV"(void, GLsizei("length"), address("pointer", "const void *"))
+    }
+    file("VertexArrayRange2", NV, "GL_NV_vertex_array_range2", "GL_VERTEX_ARRAY_RANGE_WITHOUT_FLUSH_NV" to "0x8533")
+    file("VertexAttribInteger64bit", NV, "GL_NV_vertex_attrib_integer_64bit") {
+        "glVertexAttribL1i64NV"(void, GLuint("index"), GLint64EXT("x"))
+        "glVertexAttribL2i64NV"(void, GLuint("index"), GLint64EXT("x"), GLint64EXT("y"))
+        "glVertexAttribL3i64NV"(void, GLuint("index"), GLint64EXT("x"), GLint64EXT("y"), GLint64EXT("z"))
+        "glVertexAttribL4i64NV"(
+            void,
+            GLuint("index"),
+            GLint64EXT("x"),
+            GLint64EXT("y"),
+            GLint64EXT("z"),
+            GLint64EXT("w")
+        )
+        "glVertexAttribL1i64vNV"(void, GLuint("index"), address("v", "const GLint64EXT *"))
+        "glVertexAttribL2i64vNV"(void, GLuint("index"), address("v", "const GLint64EXT *"))
+        "glVertexAttribL3i64vNV"(void, GLuint("index"), address("v", "const GLint64EXT *"))
+        "glVertexAttribL4i64vNV"(void, GLuint("index"), address("v", "const GLint64EXT *"))
+        "glVertexAttribL1ui64NV"(void, GLuint("index"), GLuint64EXT("x"))
+        "glVertexAttribL2ui64NV"(void, GLuint("index"), GLuint64EXT("x"), GLuint64EXT("y"))
+        "glVertexAttribL3ui64NV"(void, GLuint("index"), GLuint64EXT("x"), GLuint64EXT("y"), GLuint64EXT("z"))
+        "glVertexAttribL4ui64NV"(
+            void,
+            GLuint("index"),
+            GLuint64EXT("x"),
+            GLuint64EXT("y"),
+            GLuint64EXT("z"),
+            GLuint64EXT("w")
+        )
+        "glVertexAttribL1ui64vNV"(void, GLuint("index"), address("v", "const GLuint64EXT *"))
+        "glVertexAttribL2ui64vNV"(void, GLuint("index"), address("v", "const GLuint64EXT *"))
+        "glVertexAttribL3ui64vNV"(void, GLuint("index"), address("v", "const GLuint64EXT *"))
+        "glVertexAttribL4ui64vNV"(void, GLuint("index"), address("v", "const GLuint64EXT *"))
+        "glGetVertexAttribLi64vNV"(void, GLuint("index"), GLenum("pname"), address("params", "GLint64EXT *"))
+        "glGetVertexAttribLui64vNV"(void, GLuint("index"), GLenum("pname"), address("params", "GLuint64EXT *"))
+        "glVertexAttribLFormatNV"(void, GLuint("index"), GLint("size"), GLenum("type"), GLsizei("stride"))
+    }
+    file("VertexBufferUnifiedMemory", NV, "GL_NV_vertex_buffer_unified_memory") {
+        "GL_VERTEX_ATTRIB_ARRAY_UNIFIED_NV"("0x8F1E")
+        "GL_ELEMENT_ARRAY_UNIFIED_NV"("0x8F1F")
+        "GL_VERTEX_ATTRIB_ARRAY_ADDRESS_NV"("0x8F20")
+        "GL_VERTEX_ARRAY_ADDRESS_NV"("0x8F21")
+        "GL_NORMAL_ARRAY_ADDRESS_NV"("0x8F22")
+        "GL_COLOR_ARRAY_ADDRESS_NV"("0x8F23")
+        "GL_INDEX_ARRAY_ADDRESS_NV"("0x8F24")
+        "GL_TEXTURE_COORD_ARRAY_ADDRESS_NV"("0x8F25")
+        "GL_EDGE_FLAG_ARRAY_ADDRESS_NV"("0x8F26")
+        "GL_SECONDARY_COLOR_ARRAY_ADDRESS_NV"("0x8F27")
+        "GL_FOG_COORD_ARRAY_ADDRESS_NV"("0x8F28")
+        "GL_ELEMENT_ARRAY_ADDRESS_NV"("0x8F29")
+        "GL_VERTEX_ATTRIB_ARRAY_LENGTH_NV"("0x8F2A")
+        "GL_VERTEX_ARRAY_LENGTH_NV"("0x8F2B")
+        "GL_NORMAL_ARRAY_LENGTH_NV"("0x8F2C")
+        "GL_COLOR_ARRAY_LENGTH_NV"("0x8F2D")
+        "GL_INDEX_ARRAY_LENGTH_NV"("0x8F2E")
+        "GL_TEXTURE_COORD_ARRAY_LENGTH_NV"("0x8F2F")
+        "GL_EDGE_FLAG_ARRAY_LENGTH_NV"("0x8F30")
+        "GL_SECONDARY_COLOR_ARRAY_LENGTH_NV"("0x8F31")
+        "GL_FOG_COORD_ARRAY_LENGTH_NV"("0x8F32")
+        "GL_ELEMENT_ARRAY_LENGTH_NV"("0x8F33")
+        "GL_DRAW_INDIRECT_UNIFIED_NV"("0x8F40")
+        "GL_DRAW_INDIRECT_ADDRESS_NV"("0x8F41")
+        "GL_DRAW_INDIRECT_LENGTH_NV"("0x8F42")
+        "glBufferAddressRangeNV"(void, GLenum("pname"), GLuint("index"), GLuint64EXT("address"), GLsizeiptr("length"))
+        "glVertexFormatNV"(void, GLint("size"), GLenum("type"), GLsizei("stride"))
+        "glNormalFormatNV"(void, GLenum("type"), GLsizei("stride"))
+        "glColorFormatNV"(void, GLint("size"), GLenum("type"), GLsizei("stride"))
+        "glIndexFormatNV"(void, GLenum("type"), GLsizei("stride"))
+        "glTexCoordFormatNV"(void, GLint("size"), GLenum("type"), GLsizei("stride"))
+        "glEdgeFlagFormatNV"(void, GLsizei("stride"))
+        "glSecondaryColorFormatNV"(void, GLint("size"), GLenum("type"), GLsizei("stride"))
+        "glFogCoordFormatNV"(void, GLenum("type"), GLsizei("stride"))
+        "glVertexAttribFormatNV"(
+            void,
+            GLuint("index"),
+            GLint("size"),
+            GLenum("type"),
+            GLboolean("normalized"),
+            GLsizei("stride")
+        )
+        "glVertexAttribIFormatNV"(void, GLuint("index"), GLint("size"), GLenum("type"), GLsizei("stride"))
+        "glGetIntegerui64i_vNV"(void, GLenum("value"), GLuint("index"), address("result", "GLuint64EXT *"))
+    }
+    file("VertexProgram", NV, "GL_NV_vertex_program") {
+        "GL_VERTEX_PROGRAM_NV"("0x8620")
+        "GL_VERTEX_STATE_PROGRAM_NV"("0x8621")
+        "GL_ATTRIB_ARRAY_SIZE_NV"("0x8623")
+        "GL_ATTRIB_ARRAY_STRIDE_NV"("0x8624")
+        "GL_ATTRIB_ARRAY_TYPE_NV"("0x8625")
+        "GL_CURRENT_ATTRIB_NV"("0x8626")
+        "GL_PROGRAM_LENGTH_NV"("0x8627")
+        "GL_PROGRAM_STRING_NV"("0x8628")
+        "GL_MODELVIEW_PROJECTION_NV"("0x8629")
+        "GL_IDENTITY_NV"("0x862A")
+        "GL_INVERSE_NV"("0x862B")
+        "GL_TRANSPOSE_NV"("0x862C")
+        "GL_INVERSE_TRANSPOSE_NV"("0x862D")
+        "GL_MAX_TRACK_MATRIX_STACK_DEPTH_NV"("0x862E")
+        "GL_MAX_TRACK_MATRICES_NV"("0x862F")
+        "GL_MATRIX0_NV"("0x8630")
+        "GL_MATRIX1_NV"("0x8631")
+        "GL_MATRIX2_NV"("0x8632")
+        "GL_MATRIX3_NV"("0x8633")
+        "GL_MATRIX4_NV"("0x8634")
+        "GL_MATRIX5_NV"("0x8635")
+        "GL_MATRIX6_NV"("0x8636")
+        "GL_MATRIX7_NV"("0x8637")
+        "GL_CURRENT_MATRIX_STACK_DEPTH_NV"("0x8640")
+        "GL_CURRENT_MATRIX_NV"("0x8641")
+        "GL_VERTEX_PROGRAM_POINT_SIZE_NV"("0x8642")
+        "GL_VERTEX_PROGRAM_TWO_SIDE_NV"("0x8643")
+        "GL_PROGRAM_PARAMETER_NV"("0x8644")
+        "GL_ATTRIB_ARRAY_POINTER_NV"("0x8645")
+        "GL_PROGRAM_TARGET_NV"("0x8646")
+        "GL_PROGRAM_RESIDENT_NV"("0x8647")
+        "GL_TRACK_MATRIX_NV"("0x8648")
+        "GL_TRACK_MATRIX_TRANSFORM_NV"("0x8649")
+        "GL_VERTEX_PROGRAM_BINDING_NV"("0x864A")
+        "GL_PROGRAM_ERROR_POSITION_NV"("0x864B")
+        "GL_VERTEX_ATTRIB_ARRAY0_NV"("0x8650")
+        "GL_VERTEX_ATTRIB_ARRAY1_NV"("0x8651")
+        "GL_VERTEX_ATTRIB_ARRAY2_NV"("0x8652")
+        "GL_VERTEX_ATTRIB_ARRAY3_NV"("0x8653")
+        "GL_VERTEX_ATTRIB_ARRAY4_NV"("0x8654")
+        "GL_VERTEX_ATTRIB_ARRAY5_NV"("0x8655")
+        "GL_VERTEX_ATTRIB_ARRAY6_NV"("0x8656")
+        "GL_VERTEX_ATTRIB_ARRAY7_NV"("0x8657")
+        "GL_VERTEX_ATTRIB_ARRAY8_NV"("0x8658")
+        "GL_VERTEX_ATTRIB_ARRAY9_NV"("0x8659")
+        "GL_VERTEX_ATTRIB_ARRAY10_NV"("0x865A")
+        "GL_VERTEX_ATTRIB_ARRAY11_NV"("0x865B")
+        "GL_VERTEX_ATTRIB_ARRAY12_NV"("0x865C")
+        "GL_VERTEX_ATTRIB_ARRAY13_NV"("0x865D")
+        "GL_VERTEX_ATTRIB_ARRAY14_NV"("0x865E")
+        "GL_VERTEX_ATTRIB_ARRAY15_NV"("0x865F")
+        "GL_MAP1_VERTEX_ATTRIB0_4_NV"("0x8660")
+        "GL_MAP1_VERTEX_ATTRIB1_4_NV"("0x8661")
+        "GL_MAP1_VERTEX_ATTRIB2_4_NV"("0x8662")
+        "GL_MAP1_VERTEX_ATTRIB3_4_NV"("0x8663")
+        "GL_MAP1_VERTEX_ATTRIB4_4_NV"("0x8664")
+        "GL_MAP1_VERTEX_ATTRIB5_4_NV"("0x8665")
+        "GL_MAP1_VERTEX_ATTRIB6_4_NV"("0x8666")
+        "GL_MAP1_VERTEX_ATTRIB7_4_NV"("0x8667")
+        "GL_MAP1_VERTEX_ATTRIB8_4_NV"("0x8668")
+        "GL_MAP1_VERTEX_ATTRIB9_4_NV"("0x8669")
+        "GL_MAP1_VERTEX_ATTRIB10_4_NV"("0x866A")
+        "GL_MAP1_VERTEX_ATTRIB11_4_NV"("0x866B")
+        "GL_MAP1_VERTEX_ATTRIB12_4_NV"("0x866C")
+        "GL_MAP1_VERTEX_ATTRIB13_4_NV"("0x866D")
+        "GL_MAP1_VERTEX_ATTRIB14_4_NV"("0x866E")
+        "GL_MAP1_VERTEX_ATTRIB15_4_NV"("0x866F")
+        "GL_MAP2_VERTEX_ATTRIB0_4_NV"("0x8670")
+        "GL_MAP2_VERTEX_ATTRIB1_4_NV"("0x8671")
+        "GL_MAP2_VERTEX_ATTRIB2_4_NV"("0x8672")
+        "GL_MAP2_VERTEX_ATTRIB3_4_NV"("0x8673")
+        "GL_MAP2_VERTEX_ATTRIB4_4_NV"("0x8674")
+        "GL_MAP2_VERTEX_ATTRIB5_4_NV"("0x8675")
+        "GL_MAP2_VERTEX_ATTRIB6_4_NV"("0x8676")
+        "GL_MAP2_VERTEX_ATTRIB7_4_NV"("0x8677")
+        "GL_MAP2_VERTEX_ATTRIB8_4_NV"("0x8678")
+        "GL_MAP2_VERTEX_ATTRIB9_4_NV"("0x8679")
+        "GL_MAP2_VERTEX_ATTRIB10_4_NV"("0x867A")
+        "GL_MAP2_VERTEX_ATTRIB11_4_NV"("0x867B")
+        "GL_MAP2_VERTEX_ATTRIB12_4_NV"("0x867C")
+        "GL_MAP2_VERTEX_ATTRIB13_4_NV"("0x867D")
+        "GL_MAP2_VERTEX_ATTRIB14_4_NV"("0x867E")
+        "GL_MAP2_VERTEX_ATTRIB15_4_NV"("0x867F")
+        "glAreProgramsResidentNV"(
+            GLboolean,
+            GLsizei("n"),
+            address("programs", "const GLuint *"),
+            address("residences", "GLboolean *")
+        )
+        "glBindProgramNV"(void, GLenum("target"), GLuint("id"))
+        "glDeleteProgramsNV"(void, GLsizei("n"), address("programs", "const GLuint *"))
+        "glExecuteProgramNV"(void, GLenum("target"), GLuint("id"), address("params", "const GLfloat *"))
+        "glGenProgramsNV"(void, GLsizei("n"), address("programs", "GLuint *"))
+        "glGetProgramParameterdvNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLenum("pname"),
+            address("params", "GLdouble *")
+        )
+        "glGetProgramParameterfvNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLenum("pname"),
+            address("params", "GLfloat *")
+        )
+        "glGetProgramivNV"(void, GLuint("id"), GLenum("pname"), address("params", "GLint *"))
+        "glGetProgramStringNV"(void, GLuint("id"), GLenum("pname"), address("program", "GLubyte *"))
+        "glGetTrackMatrixivNV"(void, GLenum("target"), GLuint("address"), GLenum("pname"), address("params", "GLint *"))
+        "glGetVertexAttribdvNV"(void, GLuint("index"), GLenum("pname"), address("params", "GLdouble *"))
+        "glGetVertexAttribfvNV"(void, GLuint("index"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetVertexAttribivNV"(void, GLuint("index"), GLenum("pname"), address("params", "GLint *"))
+        "glGetVertexAttribPointervNV"(void, GLuint("index"), GLenum("pname"), address("pointer", "void **"))
+        "glIsProgramNV"(GLboolean, GLuint("id"))
+        "glLoadProgramNV"(void, GLenum("target"), GLuint("id"), GLsizei("len"), address("program", "const GLubyte *"))
+        "glProgramParameter4dNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLdouble("x"),
+            GLdouble("y"),
+            GLdouble("z"),
+            GLdouble("w")
+        )
+        "glProgramParameter4dvNV"(void, GLenum("target"), GLuint("index"), address("v", "const GLdouble *"))
+        "glProgramParameter4fNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLfloat("x"),
+            GLfloat("y"),
+            GLfloat("z"),
+            GLfloat("w")
+        )
+        "glProgramParameter4fvNV"(void, GLenum("target"), GLuint("index"), address("v", "const GLfloat *"))
+        "glProgramParameters4dvNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLsizei("count"),
+            address("v", "const GLdouble *")
+        )
+        "glProgramParameters4fvNV"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLsizei("count"),
+            address("v", "const GLfloat *")
+        )
+        "glRequestResidentProgramsNV"(void, GLsizei("n"), address("programs", "const GLuint *"))
+        "glTrackMatrixNV"(void, GLenum("target"), GLuint("address"), GLenum("matrix"), GLenum("transform"))
+        "glVertexAttribPointerNV"(
+            void,
+            GLuint("index"),
+            GLint("fsize"),
+            GLenum("type"),
+            GLsizei("stride"),
+            address("pointer", "const void *")
+        )
+        "glVertexAttrib1dNV"(void, GLuint("index"), GLdouble("x"))
+        "glVertexAttrib1dvNV"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttrib1fNV"(void, GLuint("index"), GLfloat("x"))
+        "glVertexAttrib1fvNV"(void, GLuint("index"), address("v", "const GLfloat *"))
+        "glVertexAttrib1sNV"(void, GLuint("index"), GLshort("x"))
+        "glVertexAttrib1svNV"(void, GLuint("index"), address("v", "const GLshort *"))
+        "glVertexAttrib2dNV"(void, GLuint("index"), GLdouble("x"), GLdouble("y"))
+        "glVertexAttrib2dvNV"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttrib2fNV"(void, GLuint("index"), GLfloat("x"), GLfloat("y"))
+        "glVertexAttrib2fvNV"(void, GLuint("index"), address("v", "const GLfloat *"))
+        "glVertexAttrib2sNV"(void, GLuint("index"), GLshort("x"), GLshort("y"))
+        "glVertexAttrib2svNV"(void, GLuint("index"), address("v", "const GLshort *"))
+        "glVertexAttrib3dNV"(void, GLuint("index"), GLdouble("x"), GLdouble("y"), GLdouble("z"))
+        "glVertexAttrib3dvNV"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttrib3fNV"(void, GLuint("index"), GLfloat("x"), GLfloat("y"), GLfloat("z"))
+        "glVertexAttrib3fvNV"(void, GLuint("index"), address("v", "const GLfloat *"))
+        "glVertexAttrib3sNV"(void, GLuint("index"), GLshort("x"), GLshort("y"), GLshort("z"))
+        "glVertexAttrib3svNV"(void, GLuint("index"), address("v", "const GLshort *"))
+        "glVertexAttrib4dNV"(void, GLuint("index"), GLdouble("x"), GLdouble("y"), GLdouble("z"), GLdouble("w"))
+        "glVertexAttrib4dvNV"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttrib4fNV"(void, GLuint("index"), GLfloat("x"), GLfloat("y"), GLfloat("z"), GLfloat("w"))
+        "glVertexAttrib4fvNV"(void, GLuint("index"), address("v", "const GLfloat *"))
+        "glVertexAttrib4sNV"(void, GLuint("index"), GLshort("x"), GLshort("y"), GLshort("z"), GLshort("w"))
+        "glVertexAttrib4svNV"(void, GLuint("index"), address("v", "const GLshort *"))
+        "glVertexAttrib4ubNV"(void, GLuint("index"), GLubyte("x"), GLubyte("y"), GLubyte("z"), GLubyte("w"))
+        "glVertexAttrib4ubvNV"(void, GLuint("index"), address("v", "const GLubyte *"))
+        "glVertexAttribs1dvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLdouble *"))
+        "glVertexAttribs1fvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLfloat *"))
+        "glVertexAttribs1svNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLshort *"))
+        "glVertexAttribs2dvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLdouble *"))
+        "glVertexAttribs2fvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLfloat *"))
+        "glVertexAttribs2svNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLshort *"))
+        "glVertexAttribs3dvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLdouble *"))
+        "glVertexAttribs3fvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLfloat *"))
+        "glVertexAttribs3svNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLshort *"))
+        "glVertexAttribs4dvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLdouble *"))
+        "glVertexAttribs4fvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLfloat *"))
+        "glVertexAttribs4svNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLshort *"))
+        "glVertexAttribs4ubvNV"(void, GLuint("index"), GLsizei("count"), address("v", "const GLubyte *"))
+    }
+    file("VertexProgram4", NV, "GL_NV_vertex_program4", "GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV" to "0x88FD")
+    file("VideoCapture", NV, "GL_NV_video_capture") {
+        "GL_VIDEO_BUFFER_NV"("0x9020")
+        "GL_VIDEO_BUFFER_BINDING_NV"("0x9021")
+        "GL_FIELD_UPPER_NV"("0x9022")
+        "GL_FIELD_LOWER_NV"("0x9023")
+        "GL_NUM_VIDEO_CAPTURE_STREAMS_NV"("0x9024")
+        "GL_NEXT_VIDEO_CAPTURE_BUFFER_STATUS_NV"("0x9025")
+        "GL_VIDEO_CAPTURE_TO_422_SUPPORTED_NV"("0x9026")
+        "GL_LAST_VIDEO_CAPTURE_STATUS_NV"("0x9027")
+        "GL_VIDEO_BUFFER_PITCH_NV"("0x9028")
+        "GL_VIDEO_COLOR_CONVERSION_MATRIX_NV"("0x9029")
+        "GL_VIDEO_COLOR_CONVERSION_MAX_NV"("0x902A")
+        "GL_VIDEO_COLOR_CONVERSION_MIN_NV"("0x902B")
+        "GL_VIDEO_COLOR_CONVERSION_OFFSET_NV"("0x902C")
+        "GL_VIDEO_BUFFER_INTERNAL_FORMAT_NV"("0x902D")
+        "GL_PARTIAL_SUCCESS_NV"("0x902E")
+        "GL_SUCCESS_NV"("0x902F")
+        "GL_FAILURE_NV"("0x9030")
+        "GL_YCBYCR8_422_NV"("0x9031")
+        "GL_YCBAYCR8A_4224_NV"("0x9032")
+        "GL_Z6Y10Z6CB10Z6Y10Z6CR10_422_NV"("0x9033")
+        "GL_Z6Y10Z6CB10Z6A10Z6Y10Z6CR10Z6A10_4224_NV"("0x9034")
+        "GL_Z4Y12Z4CB12Z4Y12Z4CR12_422_NV"("0x9035")
+        "GL_Z4Y12Z4CB12Z4A12Z4Y12Z4CR12Z4A12_4224_NV"("0x9036")
+        "GL_Z4Y12Z4CB12Z4CR12_444_NV"("0x9037")
+        "GL_VIDEO_CAPTURE_FRAME_WIDTH_NV"("0x9038")
+        "GL_VIDEO_CAPTURE_FRAME_HEIGHT_NV"("0x9039")
+        "GL_VIDEO_CAPTURE_FIELD_UPPER_HEIGHT_NV"("0x903A")
+        "GL_VIDEO_CAPTURE_FIELD_LOWER_HEIGHT_NV"("0x903B")
+        "GL_VIDEO_CAPTURE_SURFACE_ORIGIN_NV"("0x903C")
+        "glBeginVideoCaptureNV"(void, GLuint("video_capture_slot"))
+        "glBindVideoCaptureStreamBufferNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("frame_region"),
+            GLintptrARB("offset")
+        )
+        "glBindVideoCaptureStreamTextureNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("frame_region"),
+            GLenum("target"),
+            GLuint("texture")
+        )
+        "glEndVideoCaptureNV"(void, GLuint("video_capture_slot"))
+        "glGetVideoCaptureivNV"(void, GLuint("video_capture_slot"), GLenum("pname"), address("params", "GLint *"))
+        "glGetVideoCaptureStreamivNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("pname"),
+            address("params", "GLint *")
+        )
+        "glGetVideoCaptureStreamfvNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("pname"),
+            address("params", "GLfloat *")
+        )
+        "glGetVideoCaptureStreamdvNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("pname"),
+            address("params", "GLdouble *")
+        )
+        "glVideoCaptureNV"(
+            GLenum,
+            GLuint("video_capture_slot"),
+            address("sequence_num", "GLuint *"),
+            address("capture_time", "GLuint64EXT *")
+        )
+        "glVideoCaptureStreamParameterivNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("pname"),
+            address("params", "const GLint *")
+        )
+        "glVideoCaptureStreamParameterfvNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("pname"),
+            address("params", "const GLfloat *")
+        )
+        "glVideoCaptureStreamParameterdvNV"(
+            void,
+            GLuint("video_capture_slot"),
+            GLuint("stream"),
+            GLenum("pname"),
+            address("params", "const GLdouble *")
+        )
+    }
+    file("ViewportSwizzle", NV, "GL_NV_viewport_swizzle") {
+        "GL_VIEWPORT_SWIZZLE_POSITIVE_X_NV"("0x9350")
+        "GL_VIEWPORT_SWIZZLE_NEGATIVE_X_NV"("0x9351")
+        "GL_VIEWPORT_SWIZZLE_POSITIVE_Y_NV"("0x9352")
+        "GL_VIEWPORT_SWIZZLE_NEGATIVE_Y_NV"("0x9353")
+        "GL_VIEWPORT_SWIZZLE_POSITIVE_Z_NV"("0x9354")
+        "GL_VIEWPORT_SWIZZLE_NEGATIVE_Z_NV"("0x9355")
+        "GL_VIEWPORT_SWIZZLE_POSITIVE_W_NV"("0x9356")
+        "GL_VIEWPORT_SWIZZLE_NEGATIVE_W_NV"("0x9357")
+        "GL_VIEWPORT_SWIZZLE_X_NV"("0x9358")
+        "GL_VIEWPORT_SWIZZLE_Y_NV"("0x9359")
+        "GL_VIEWPORT_SWIZZLE_Z_NV"("0x935A")
+        "GL_VIEWPORT_SWIZZLE_W_NV"("0x935B")
+        "glViewportSwizzleNV"(
+            void,
+            GLuint("index"),
+            GLenum("swizzlex"),
+            GLenum("swizzley"),
+            GLenum("swizzlez"),
+            GLenum("swizzlew")
+        )
+    }
 }
