@@ -1199,16 +1199,6 @@ fun ati() {
     }
 }
 
-fun ext() {
-    file(
-        "422Pixels", EXT, "GL_EXT_422_pixels",
-        "GL_422_EXT" to "0x80CC",
-        "GL_422_REV_EXT" to "0x80CD",
-        "GL_422_AVERAGE_EXT" to "0x80CE",
-        "GL_422_REV_AVERAGE_EXT" to "0x80CF"
-    )
-}
-
 fun gremedy() {
     file("FrameTerminator", GREMEDY, "GL_GREMEDY_frame_terminator") {
         "glFrameTerminatorGREMEDY"(void)
