@@ -176,10 +176,14 @@ class OpenGLFile(
         }
 
     internal fun generate() {
-        Files.writeString(Path("${ext.dir}GL${ext.extName}$name.java"), buildString {
-            // file-header
-            appendLine(
-                """
+        Path(ext.dir).also {
+            if (!Files.exists(it)) {
+                Files.createDirectories(it)
+            }
+            Files.writeString(it.resolve("GL${ext.extName}$name.java"), buildString {
+                // file-header
+                appendLine(
+                    """
                 ${fileHeader.prependIndent("|")}
                 |package overrungl.opengl${ext.packageName};
 
@@ -195,72 +199,73 @@ class OpenGLFile(
                 | */
                 |public final class GL${ext.extName}$name {
             """.trimMargin()
-            )
-            // constants
-            constants.forEach { (name, value) ->
-                appendLine("    public static final int $name = $value;")
-            }
-            if (functions.isNotEmpty()) {
-                // loader
-                appendLine("    public static void load(GLExtCaps ext, GLLoadFunc load) {")
-                appendLine("        if (!ext.$extName) return;")
-                functions.forEach { f ->
-                    append("        ext.${f.name} = load.invoke(\"${f.name}\", ${if (f.returnType == void) "ofVoid" else "of"}(")
-                    if (f.returnType != void)
-                        append(f.returnType.layout)
-                    f.params.forEachIndexed { index, it ->
-                        if (index != 0 || f.returnType != void) append(", ")
-                        append(it.type.layout)
-                    }
-                    appendLine("));")
+                )
+                // constants
+                constants.forEach { (name, value) ->
+                    appendLine("    public static final int $name = $value;")
                 }
-                appendLine("    }")
-                appendLine()
-                // functions
-                fun appendFuncHeader(f: Function) {
-                    append("    public static ")
-                    if (f.nativeType != null)
-                        append("@NativeType(\"${f.nativeType}\") ")
-                    append("${f.returnType} ${f.name}(")
-                    f.params.forEachIndexed { index, it ->
-                        if (index != 0) append(", ")
-                        if (it.nativeType != null)
-                            append("@NativeType(\"${it.nativeType}\") ")
-                        append("${it.type} ${it.name}")
+                if (functions.isNotEmpty()) {
+                    // loader
+                    appendLine("    public static void load(GLExtCaps ext, GLLoadFunc load) {")
+                    appendLine("        if (!ext.$extName) return;")
+                    functions.forEach { f ->
+                        append("        ext.${f.name} = load.invoke(\"${f.name}\", ${if (f.returnType == void) "ofVoid" else "of"}(")
+                        if (f.returnType != void)
+                            append(f.returnType.layout)
+                        f.params.forEachIndexed { index, it ->
+                            if (index != 0 || f.returnType != void) append(", ")
+                            append(it.type.layout)
+                        }
+                        appendLine("));")
                     }
-                    appendLine(") {")
-                }
-                functions.forEach { f ->
-                    appendFuncHeader(f)
-                    appendLine("        final var ext = getExtCapabilities();")
-                    appendLine("        try {")
-                    if (f.returnType != void)
-                        appendLine("            return (${f.returnType})")
-                    append("            check(ext.${f.name}).invokeExact(")
-                    f.params.forEachIndexed { index, it ->
-                        if (index != 0) append(", ")
-                        append(it.name)
+                    appendLine("    }")
+                    appendLine()
+                    // functions
+                    fun appendFuncHeader(f: Function) {
+                        append("    public static ")
+                        if (f.nativeType != null)
+                            append("@NativeType(\"${f.nativeType}\") ")
+                        append("${f.returnType} ${f.name}(")
+                        f.params.forEachIndexed { index, it ->
+                            if (index != 0) append(", ")
+                            if (it.nativeType != null)
+                                append("@NativeType(\"${it.nativeType}\") ")
+                            append("${it.type} ${it.name}")
+                        }
+                        appendLine(") {")
                     }
-                    appendLine(
-                        """);
+                    functions.forEach { f ->
+                        appendFuncHeader(f)
+                        appendLine("        final var ext = getExtCapabilities();")
+                        appendLine("        try {")
+                        if (f.returnType != void)
+                            appendLine("            return (${f.returnType})")
+                        append("            check(ext.${f.name}).invokeExact(")
+                        f.params.forEachIndexed { index, it ->
+                            if (index != 0) append(", ")
+                            append(it.name)
+                        }
+                        appendLine(
+                            """);
                     |        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
                     |    }
                 """.trimMargin()
-                    )
-                    appendLine()
+                        )
+                        appendLine()
 
-                    // overloads
-                    if (f.overloads.isNotEmpty()) {
-                        f.overloads.forEach { overload ->
-                            appendFuncHeader(overload)
-                            appendLine(overload.content!!.prependIndent("        "))
-                            appendLine("    }\n")
+                        // overloads
+                        if (f.overloads.isNotEmpty()) {
+                            f.overloads.forEach { overload ->
+                                appendFuncHeader(overload)
+                                appendLine(overload.content!!.prependIndent("        "))
+                                appendLine("    }\n")
+                            }
                         }
                     }
                 }
-            }
-            appendLine("}")
-        })
+                appendLine("}")
+            })
+        }
     }
 }
 

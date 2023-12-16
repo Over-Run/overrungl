@@ -2173,4 +2173,492 @@ fun ext() {
         "GL_FRAMEBUFFER_SRGB_EXT" to "0x8DB9",
         "GL_FRAMEBUFFER_SRGB_CAPABLE_EXT" to "0x8DBA"
     )
+    file("GeometryShader4", EXT, "GL_EXT_geometry_shader4") {
+        "GL_GEOMETRY_SHADER_EXT"("0x8DD9")
+        "GL_GEOMETRY_VERTICES_OUT_EXT"("0x8DDA")
+        "GL_GEOMETRY_INPUT_TYPE_EXT"("0x8DDB")
+        "GL_GEOMETRY_OUTPUT_TYPE_EXT"("0x8DDC")
+        "GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_EXT"("0x8C29")
+        "GL_MAX_GEOMETRY_VARYING_COMPONENTS_EXT"("0x8DDD")
+        "GL_MAX_VERTEX_VARYING_COMPONENTS_EXT"("0x8DDE")
+        "GL_MAX_VARYING_COMPONENTS_EXT"("0x8B4B")
+        "GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_EXT"("0x8DDF")
+        "GL_MAX_GEOMETRY_OUTPUT_VERTICES_EXT"("0x8DE0")
+        "GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_EXT"("0x8DE1")
+        "GL_LINES_ADJACENCY_EXT"("0x000A")
+        "GL_LINE_STRIP_ADJACENCY_EXT"("0x000B")
+        "GL_TRIANGLES_ADJACENCY_EXT"("0x000C")
+        "GL_TRIANGLE_STRIP_ADJACENCY_EXT"("0x000D")
+        "GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_EXT"("0x8DA8")
+        "GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_EXT"("0x8DA9")
+        "GL_FRAMEBUFFER_ATTACHMENT_LAYERED_EXT"("0x8DA7")
+        "GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT"("0x8CD4")
+        "GL_PROGRAM_POINT_SIZE_EXT"("0x8642")
+        "glProgramParameteriEXT"(void, GLuint("program"), GLenum("pname"), GLint("value"))
+    }
+    file("GpuProgramParameters", EXT, "GL_EXT_gpu_program_parameters") {
+        "glProgramEnvParameters4fvEXT"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLsizei("count"),
+            address("params", "const GLfloat *")
+        )
+        "glProgramLocalParameters4fvEXT"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLsizei("count"),
+            address("params", "const GLfloat *")
+        )
+    }
+    file("GpuShader4", EXT, "GL_EXT_gpu_shader4") {
+        "GL_SAMPLER_1D_ARRAY_EXT"("0x8DC0")
+        "GL_SAMPLER_2D_ARRAY_EXT"("0x8DC1")
+        "GL_SAMPLER_BUFFER_EXT"("0x8DC2")
+        "GL_SAMPLER_1D_ARRAY_SHADOW_EXT"("0x8DC3")
+        "GL_SAMPLER_2D_ARRAY_SHADOW_EXT"("0x8DC4")
+        "GL_SAMPLER_CUBE_SHADOW_EXT"("0x8DC5")
+        "GL_UNSIGNED_INT_VEC2_EXT"("0x8DC6")
+        "GL_UNSIGNED_INT_VEC3_EXT"("0x8DC7")
+        "GL_UNSIGNED_INT_VEC4_EXT"("0x8DC8")
+        "GL_INT_SAMPLER_1D_EXT"("0x8DC9")
+        "GL_INT_SAMPLER_2D_EXT"("0x8DCA")
+        "GL_INT_SAMPLER_3D_EXT"("0x8DCB")
+        "GL_INT_SAMPLER_CUBE_EXT"("0x8DCC")
+        "GL_INT_SAMPLER_2D_RECT_EXT"("0x8DCD")
+        "GL_INT_SAMPLER_1D_ARRAY_EXT"("0x8DCE")
+        "GL_INT_SAMPLER_2D_ARRAY_EXT"("0x8DCF")
+        "GL_INT_SAMPLER_BUFFER_EXT"("0x8DD0")
+        "GL_UNSIGNED_INT_SAMPLER_1D_EXT"("0x8DD1")
+        "GL_UNSIGNED_INT_SAMPLER_2D_EXT"("0x8DD2")
+        "GL_UNSIGNED_INT_SAMPLER_3D_EXT"("0x8DD3")
+        "GL_UNSIGNED_INT_SAMPLER_CUBE_EXT"("0x8DD4")
+        "GL_UNSIGNED_INT_SAMPLER_2D_RECT_EXT"("0x8DD5")
+        "GL_UNSIGNED_INT_SAMPLER_1D_ARRAY_EXT"("0x8DD6")
+        "GL_UNSIGNED_INT_SAMPLER_2D_ARRAY_EXT"("0x8DD7")
+        "GL_UNSIGNED_INT_SAMPLER_BUFFER_EXT"("0x8DD8")
+        "GL_MIN_PROGRAM_TEXEL_OFFSET_EXT"("0x8904")
+        "GL_MAX_PROGRAM_TEXEL_OFFSET_EXT"("0x8905")
+        "GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT"("0x88FD")
+        "glGetUniformuivEXT"(void, GLuint("program"), GLint("location"), address("params", "GLuint *"))
+        "glBindFragDataLocationEXT"(void, GLuint("program"), GLuint("color"), address("name", "const GLchar *"))
+        "glGetFragDataLocationEXT"(GLint, GLuint("program"), address("name", "const GLchar *"))
+        "glUniform1uiEXT"(void, GLint("location"), GLuint("v0"))
+        "glUniform2uiEXT"(void, GLint("location"), GLuint("v0"), GLuint("v1"))
+        "glUniform3uiEXT"(void, GLint("location"), GLuint("v0"), GLuint("v1"), GLuint("v2"))
+        "glUniform4uiEXT"(void, GLint("location"), GLuint("v0"), GLuint("v1"), GLuint("v2"), GLuint("v3"))
+        "glUniform1uivEXT"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint *"))
+        "glUniform2uivEXT"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint *"))
+        "glUniform3uivEXT"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint *"))
+        "glUniform4uivEXT"(void, GLint("location"), GLsizei("count"), address("value", "const GLuint *"))
+        "glVertexAttribI1iEXT"(void, GLuint("index"), GLint("x"))
+        "glVertexAttribI2iEXT"(void, GLuint("index"), GLint("x"), GLint("y"))
+        "glVertexAttribI3iEXT"(void, GLuint("index"), GLint("x"), GLint("y"), GLint("z"))
+        "glVertexAttribI4iEXT"(void, GLuint("index"), GLint("x"), GLint("y"), GLint("z"), GLint("w"))
+        "glVertexAttribI1uiEXT"(void, GLuint("index"), GLuint("x"))
+        "glVertexAttribI2uiEXT"(void, GLuint("index"), GLuint("x"), GLuint("y"))
+        "glVertexAttribI3uiEXT"(void, GLuint("index"), GLuint("x"), GLuint("y"), GLuint("z"))
+        "glVertexAttribI4uiEXT"(void, GLuint("index"), GLuint("x"), GLuint("y"), GLuint("z"), GLuint("w"))
+        "glVertexAttribI1ivEXT"(void, GLuint("index"), address("v", "const GLint *"))
+        "glVertexAttribI2ivEXT"(void, GLuint("index"), address("v", "const GLint *"))
+        "glVertexAttribI3ivEXT"(void, GLuint("index"), address("v", "const GLint *"))
+        "glVertexAttribI4ivEXT"(void, GLuint("index"), address("v", "const GLint *"))
+        "glVertexAttribI1uivEXT"(void, GLuint("index"), address("v", "const GLuint *"))
+        "glVertexAttribI2uivEXT"(void, GLuint("index"), address("v", "const GLuint *"))
+        "glVertexAttribI3uivEXT"(void, GLuint("index"), address("v", "const GLuint *"))
+        "glVertexAttribI4uivEXT"(void, GLuint("index"), address("v", "const GLuint *"))
+        "glVertexAttribI4bvEXT"(void, GLuint("index"), address("v", "const GLbyte *"))
+        "glVertexAttribI4svEXT"(void, GLuint("index"), address("v", "const GLshort *"))
+        "glVertexAttribI4ubvEXT"(void, GLuint("index"), address("v", "const GLubyte *"))
+        "glVertexAttribI4usvEXT"(void, GLuint("index"), address("v", "const GLushort *"))
+        "glVertexAttribIPointerEXT"(
+            void,
+            GLuint("index"),
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            address("pointer", "const void *")
+        )
+        "glGetVertexAttribIivEXT"(void, GLuint("index"), GLenum("pname"), address("params", "GLint *"))
+        "glGetVertexAttribIuivEXT"(void, GLuint("index"), GLenum("pname"), address("params", "GLuint *"))
+    }
+    file("Histogram", EXT, "GL_EXT_histogram") {
+        "GL_HISTOGRAM_EXT"("0x8024")
+        "GL_PROXY_HISTOGRAM_EXT"("0x8025")
+        "GL_HISTOGRAM_WIDTH_EXT"("0x8026")
+        "GL_HISTOGRAM_FORMAT_EXT"("0x8027")
+        "GL_HISTOGRAM_RED_SIZE_EXT"("0x8028")
+        "GL_HISTOGRAM_GREEN_SIZE_EXT"("0x8029")
+        "GL_HISTOGRAM_BLUE_SIZE_EXT"("0x802A")
+        "GL_HISTOGRAM_ALPHA_SIZE_EXT"("0x802B")
+        "GL_HISTOGRAM_LUMINANCE_SIZE_EXT"("0x802C")
+        "GL_HISTOGRAM_SINK_EXT"("0x802D")
+        "GL_MINMAX_EXT"("0x802E")
+        "GL_MINMAX_FORMAT_EXT"("0x802F")
+        "GL_MINMAX_SINK_EXT"("0x8030")
+        "GL_TABLE_TOO_LARGE_EXT"("0x8031")
+        "glGetHistogramEXT"(
+            void,
+            GLenum("target"),
+            GLboolean("reset"),
+            GLenum("format"),
+            GLenum("type"),
+            address("values", "void *")
+        )
+        "glGetHistogramParameterfvEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetHistogramParameterivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetMinmaxEXT"(
+            void,
+            GLenum("target"),
+            GLboolean("reset"),
+            GLenum("format"),
+            GLenum("type"),
+            address("values", "void *")
+        )
+        "glGetMinmaxParameterfvEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+        "glGetMinmaxParameterivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glHistogramEXT"(void, GLenum("target"), GLsizei("width"), GLenum("internalformat"), GLboolean("sink"))
+        "glMinmaxEXT"(void, GLenum("target"), GLenum("internalformat"), GLboolean("sink"))
+        "glResetHistogramEXT"(void, GLenum("target"))
+        "glResetMinmaxEXT"(void, GLenum("target"))
+    }
+    file(
+        "IndexArrayFormats", EXT, "GL_EXT_index_array_formats",
+        "GL_IUI_V2F_EXT" to "0x81AD",
+        "GL_IUI_V3F_EXT" to "0x81AE",
+        "GL_IUI_N3F_V2F_EXT" to "0x81AF",
+        "GL_IUI_N3F_V3F_EXT" to "0x81B0",
+        "GL_T2F_IUI_V2F_EXT" to "0x81B1",
+        "GL_T2F_IUI_V3F_EXT" to "0x81B2",
+        "GL_T2F_IUI_N3F_V2F_EXT" to "0x81B3",
+        "GL_T2F_IUI_N3F_V3F_EXT" to "0x81B4"
+    )
+    file("IndexFunc", EXT, "GL_EXT_index_func") {
+        "GL_INDEX_TEST_EXT"("0x81B5")
+        "GL_INDEX_TEST_FUNC_EXT"("0x81B6")
+        "GL_INDEX_TEST_REF_EXT"("0x81B7")
+        "glIndexFuncEXT"(void, GLenum("func"), GLclampf("ref"))
+    }
+    file("IndexMaterial", EXT, "GL_EXT_index_material") {
+        "GL_INDEX_MATERIAL_EXT"("0x81B8")
+        "GL_INDEX_MATERIAL_PARAMETER_EXT"("0x81B9")
+        "GL_INDEX_MATERIAL_FACE_EXT"("0x81BA")
+        "glIndexMaterialEXT"(void, GLenum("face"), GLenum("mode"))
+    }
+    file("LightTexture", EXT, "GL_EXT_light_texture") {
+        "GL_FRAGMENT_MATERIAL_EXT"("0x8349")
+        "GL_FRAGMENT_NORMAL_EXT"("0x834A")
+        "GL_FRAGMENT_COLOR_EXT"("0x834C")
+        "GL_ATTENUATION_EXT"("0x834D")
+        "GL_SHADOW_ATTENUATION_EXT"("0x834E")
+        "GL_TEXTURE_APPLICATION_MODE_EXT"("0x834F")
+        "GL_TEXTURE_LIGHT_EXT"("0x8350")
+        "GL_TEXTURE_MATERIAL_FACE_EXT"("0x8351")
+        "GL_TEXTURE_MATERIAL_PARAMETER_EXT"("0x8352")
+        "glApplyTextureEXT"(void, GLenum("mode"))
+        "glTextureLightEXT"(void, GLenum("pname"))
+        "glTextureMaterialEXT"(void, GLenum("face"), GLenum("mode"))
+    }
+    file("MemoryObject", EXT, "GL_EXT_memory_object") {
+        "GL_TEXTURE_TILING_EXT"("0x9580")
+        "GL_DEDICATED_MEMORY_OBJECT_EXT"("0x9581")
+        "GL_PROTECTED_MEMORY_OBJECT_EXT"("0x959B")
+        "GL_NUM_TILING_TYPES_EXT"("0x9582")
+        "GL_TILING_TYPES_EXT"("0x9583")
+        "GL_OPTIMAL_TILING_EXT"("0x9584")
+        "GL_LINEAR_TILING_EXT"("0x9585")
+        "GL_NUM_DEVICE_UUIDS_EXT"("0x9596")
+        "GL_DEVICE_UUID_EXT"("0x9597")
+        "GL_DRIVER_UUID_EXT"("0x9598")
+        "GL_UUID_SIZE_EXT"("16")
+        "glGetUnsignedBytevEXT"(void, GLenum("pname"), address("data", "GLubyte *"))
+        "glGetUnsignedBytei_vEXT"(void, GLenum("target"), GLuint("index"), address("data", "GLubyte *"))
+        "glDeleteMemoryObjectsEXT"(void, GLsizei("n"), address("memoryObjects", "const GLuint *"))
+        "glIsMemoryObjectEXT"(GLboolean, GLuint("memoryObject"))
+        "glCreateMemoryObjectsEXT"(void, GLsizei("n"), address("memoryObjects", "GLuint *"))
+        "glMemoryObjectParameterivEXT"(
+            void,
+            GLuint("memoryObject"),
+            GLenum("pname"),
+            address("params", "const GLint *")
+        )
+        "glGetMemoryObjectParameterivEXT"(void, GLuint("memoryObject"), GLenum("pname"), address("params", "GLint *"))
+        "glTexStorageMem2DEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("levels"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTexStorageMem2DMultisampleEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("samples"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLboolean("fixedSampleLocations"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTexStorageMem3DEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("levels"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTexStorageMem3DMultisampleEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("samples"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLboolean("fixedSampleLocations"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glBufferStorageMemEXT"(void, GLenum("target"), GLsizeiptr("size"), GLuint("memory"), GLuint64("offset"))
+        "glTextureStorageMem2DEXT"(
+            void,
+            GLuint("texture"),
+            GLsizei("levels"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTextureStorageMem2DMultisampleEXT"(
+            void,
+            GLuint("texture"),
+            GLsizei("samples"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLboolean("fixedSampleLocations"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTextureStorageMem3DEXT"(
+            void,
+            GLuint("texture"),
+            GLsizei("levels"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTextureStorageMem3DMultisampleEXT"(
+            void,
+            GLuint("texture"),
+            GLsizei("samples"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLboolean("fixedSampleLocations"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glNamedBufferStorageMemEXT"(void, GLuint("buffer"), GLsizeiptr("size"), GLuint("memory"), GLuint64("offset"))
+        "glTexStorageMem1DEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("levels"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+        "glTextureStorageMem1DEXT"(
+            void,
+            GLuint("texture"),
+            GLsizei("levels"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLuint("memory"),
+            GLuint64("offset")
+        )
+    }
+    file("MemoryObjectFd", EXT, "GL_EXT_memory_object_fd") {
+        "GL_HANDLE_TYPE_OPAQUE_FD_EXT"("0x9586")
+        "glImportMemoryFdEXT"(void, GLuint("memory"), GLuint64("size"), GLenum("handleType"), GLint("fd"))
+    }
+    file("MemoryObjectWin32", EXT, "GL_EXT_memory_object_win32") {
+        "GL_HANDLE_TYPE_OPAQUE_WIN32_EXT"("0x9587")
+        "GL_HANDLE_TYPE_OPAQUE_WIN32_KMT_EXT"("0x9588")
+        "GL_DEVICE_LUID_EXT"("0x9599")
+        "GL_DEVICE_NODE_MASK_EXT"("0x959A")
+        "GL_LUID_SIZE_EXT"("8")
+        "GL_HANDLE_TYPE_D3D12_TILEPOOL_EXT"("0x9589")
+        "GL_HANDLE_TYPE_D3D12_RESOURCE_EXT"("0x958A")
+        "GL_HANDLE_TYPE_D3D11_IMAGE_EXT"("0x958B")
+        "GL_HANDLE_TYPE_D3D11_IMAGE_KMT_EXT"("0x958C")
+        "glImportMemoryWin32HandleEXT"(
+            void,
+            GLuint("memory"),
+            GLuint64("size"),
+            GLenum("handleType"),
+            address("handle", "void *")
+        )
+        "glImportMemoryWin32NameEXT"(
+            void,
+            GLuint("memory"),
+            GLuint64("size"),
+            GLenum("handleType"),
+            address("name", "const void *")
+        )
+    }
+    file("MultiDrawArrays", EXT, "GL_EXT_multi_draw_arrays") {
+        "glMultiDrawArraysEXT"(
+            void,
+            GLenum("mode"),
+            address("first", "const GLint *"),
+            address("count", "const GLsizei *"),
+            GLsizei("primcount")
+        )
+        "glMultiDrawElementsEXT"(
+            void,
+            GLenum("mode"),
+            address("count", "const GLsizei *"),
+            GLenum("type"),
+            address("indices", "const void *const*"),
+            GLsizei("primcount")
+        )
+    }
+    file("Multisample", EXT, "GL_EXT_multisample") {
+        "GL_MULTISAMPLE_EXT"("0x809D")
+        "GL_SAMPLE_ALPHA_TO_MASK_EXT"("0x809E")
+        "GL_SAMPLE_ALPHA_TO_ONE_EXT"("0x809F")
+        "GL_SAMPLE_MASK_EXT"("0x80A0")
+        "GL_1PASS_EXT"("0x80A1")
+        "GL_2PASS_0_EXT"("0x80A2")
+        "GL_2PASS_1_EXT"("0x80A3")
+        "GL_4PASS_0_EXT"("0x80A4")
+        "GL_4PASS_1_EXT"("0x80A5")
+        "GL_4PASS_2_EXT"("0x80A6")
+        "GL_4PASS_3_EXT"("0x80A7")
+        "GL_SAMPLE_BUFFERS_EXT"("0x80A8")
+        "GL_SAMPLES_EXT"("0x80A9")
+        "GL_SAMPLE_MASK_VALUE_EXT"("0x80AA")
+        "GL_SAMPLE_MASK_INVERT_EXT"("0x80AB")
+        "GL_SAMPLE_PATTERN_EXT"("0x80AC")
+        "GL_MULTISAMPLE_BIT_EXT"("0x20000000")
+        "glSampleMaskEXT"(void, GLclampf("value"), GLboolean("invert"))
+        "glSamplePatternEXT"(void, GLenum("pattern"))
+    }
+    file(
+        "PackedDepthStencil", EXT, "GL_EXT_packed_depth_stencil",
+        "GL_DEPTH_STENCIL_EXT" to "0x84F9",
+        "GL_UNSIGNED_INT_24_8_EXT" to "0x84FA",
+        "GL_DEPTH24_STENCIL8_EXT" to "0x88F0",
+        "GL_TEXTURE_STENCIL_SIZE_EXT" to "0x88F1"
+    )
+    file(
+        "PackedFloat", EXT, "GL_EXT_packed_float",
+        "GL_R11F_G11F_B10F_EXT" to "0x8C3A",
+        "GL_UNSIGNED_INT_10F_11F_11F_REV_EXT" to "0x8C3B",
+        "GL_RGBA_SIGNED_COMPONENTS_EXT" to "0x8C3C"
+    )
+    file(
+        "PackedPixels", EXT, "GL_EXT_packed_pixels",
+        "GL_UNSIGNED_BYTE_3_3_2_EXT" to "0x8032",
+        "GL_UNSIGNED_SHORT_4_4_4_4_EXT" to "0x8033",
+        "GL_UNSIGNED_SHORT_5_5_5_1_EXT" to "0x8034",
+        "GL_UNSIGNED_INT_8_8_8_8_EXT" to "0x8035",
+        "GL_UNSIGNED_INT_10_10_10_2_EXT" to "0x8036"
+    )
+    file("PalettedTexture", EXT, "GL_EXT_paletted_texture") {
+        "GL_COLOR_INDEX1_EXT"("0x80E2")
+        "GL_COLOR_INDEX2_EXT"("0x80E3")
+        "GL_COLOR_INDEX4_EXT"("0x80E4")
+        "GL_COLOR_INDEX8_EXT"("0x80E5")
+        "GL_COLOR_INDEX12_EXT"("0x80E6")
+        "GL_COLOR_INDEX16_EXT"("0x80E7")
+        "GL_TEXTURE_INDEX_SIZE_EXT"("0x80ED")
+        "glColorTableEXT"(
+            void,
+            GLenum("target"),
+            GLenum("internalFormat"),
+            GLsizei("width"),
+            GLenum("format"),
+            GLenum("type"),
+            address("table", "const void *")
+        )
+        "glGetColorTableEXT"(void, GLenum("target"), GLenum("format"), GLenum("type"), address("data", "void *"))
+        "glGetColorTableParameterivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetColorTableParameterfvEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+    }
+    file(
+        "PixelBufferObject", EXT, "GL_EXT_pixel_buffer_object",
+        "GL_PIXEL_PACK_BUFFER_EXT" to "0x88EB",
+        "GL_PIXEL_UNPACK_BUFFER_EXT" to "0x88EC",
+        "GL_PIXEL_PACK_BUFFER_BINDING_EXT" to "0x88ED",
+        "GL_PIXEL_UNPACK_BUFFER_BINDING_EXT" to "0x88EF"
+    )
+    file("PixelTransform", EXT, "GL_EXT_pixel_transform") {
+        "GL_PIXEL_TRANSFORM_2D_EXT"("0x8330")
+        "GL_PIXEL_MAG_FILTER_EXT"("0x8331")
+        "GL_PIXEL_MIN_FILTER_EXT"("0x8332")
+        "GL_PIXEL_CUBIC_WEIGHT_EXT"("0x8333")
+        "GL_CUBIC_EXT"("0x8334")
+        "GL_AVERAGE_EXT"("0x8335")
+        "GL_PIXEL_TRANSFORM_2D_STACK_DEPTH_EXT"("0x8336")
+        "GL_MAX_PIXEL_TRANSFORM_2D_STACK_DEPTH_EXT"("0x8337")
+        "GL_PIXEL_TRANSFORM_2D_MATRIX_EXT"("0x8338")
+        "glPixelTransformParameteriEXT"(void, GLenum("target"), GLenum("pname"), GLint("param"))
+        "glPixelTransformParameterfEXT"(void, GLenum("target"), GLenum("pname"), GLfloat("param"))
+        "glPixelTransformParameterivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "const GLint *"))
+        "glPixelTransformParameterfvEXT"(void, GLenum("target"), GLenum("pname"), address("params", "const GLfloat *"))
+        "glGetPixelTransformParameterivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetPixelTransformParameterfvEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLfloat *"))
+    }
+    file("PointParameters", EXT, "GL_EXT_point_parameters") {
+        "GL_POINT_SIZE_MIN_EXT"("0x8126")
+        "GL_POINT_SIZE_MAX_EXT"("0x8127")
+        "GL_POINT_FADE_THRESHOLD_SIZE_EXT"("0x8128")
+        "GL_DISTANCE_ATTENUATION_EXT"("0x8129")
+        "glPointParameterfEXT"(void, GLenum("pname"), GLfloat("param"))
+        "glPointParameterfvEXT"(void, GLenum("pname"), address("params", "const GLfloat *"))
+    }
+    file("PolygonOffset", EXT, "GL_EXT_polygon_offset") {
+        "GL_POLYGON_OFFSET_EXT"("0x8037")
+        "GL_POLYGON_OFFSET_FACTOR_EXT"("0x8038")
+        "GL_POLYGON_OFFSET_BIAS_EXT"("0x8039")
+        "glPolygonOffsetEXT"(void, GLfloat("factor"), GLfloat("bias"))
+    }
+    file("PolygonOffsetClamp", EXT, "GL_EXT_polygon_offset_clamp") {
+        "GL_POLYGON_OFFSET_CLAMP_EXT"("0x8E1B")
+        "glPolygonOffsetClampEXT"(void, GLfloat("factor"), GLfloat("units"), GLfloat("clamp"))
+    }
+    file("ProvokingVertex", EXT, "GL_EXT_provoking_vertex") {
+        "GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION_EXT"("0x8E4C")
+        "GL_FIRST_VERTEX_CONVENTION_EXT"("0x8E4D")
+        "GL_LAST_VERTEX_CONVENTION_EXT"("0x8E4E")
+        "GL_PROVOKING_VERTEX_EXT"("0x8E4F")
+        "glProvokingVertexEXT"(void, GLenum("mode"))
+    }
+    file("RasterMultisample", EXT, "GL_EXT_raster_multisample") {
+        "GL_RASTER_MULTISAMPLE_EXT"("0x9327")
+        "GL_RASTER_SAMPLES_EXT"("0x9328")
+        "GL_MAX_RASTER_SAMPLES_EXT"("0x9329")
+        "GL_RASTER_FIXED_SAMPLE_LOCATIONS_EXT"("0x932A")
+        "GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT"("0x932B")
+        "GL_EFFECTIVE_RASTER_SAMPLES_EXT"("0x932C")
+        "glRasterSamplesEXT"(void, GLuint("samples"), GLboolean("fixedsamplelocations"))
+    }
+    file("RescaleNormal", EXT, "GL_EXT_rescale_normal", "GL_RESCALE_NORMAL_EXT" to "0x803A")
 }
