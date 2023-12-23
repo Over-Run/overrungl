@@ -2661,4 +2661,84 @@ fun ext() {
         "glRasterSamplesEXT"(void, GLuint("samples"), GLboolean("fixedsamplelocations"))
     }
     file("RescaleNormal", EXT, "GL_EXT_rescale_normal", "GL_RESCALE_NORMAL_EXT" to "0x803A")
+    file("SecondaryColor", EXT, "GL_EXT_secondary_color") {
+        "GL_COLOR_SUM_EXT"("0x8458")
+        "GL_CURRENT_SECONDARY_COLOR_EXT"("0x8459")
+        "GL_SECONDARY_COLOR_ARRAY_SIZE_EXT"("0x845A")
+        "GL_SECONDARY_COLOR_ARRAY_TYPE_EXT"("0x845B")
+        "GL_SECONDARY_COLOR_ARRAY_STRIDE_EXT"("0x845C")
+        "GL_SECONDARY_COLOR_ARRAY_POINTER_EXT"("0x845D")
+        "GL_SECONDARY_COLOR_ARRAY_EXT"("0x845E")
+        "glSecondaryColor3bEXT"(void, GLbyte("red"), GLbyte("green"), GLbyte("blue"))
+        "glSecondaryColor3bvEXT"(void, address("v", "const GLbyte *"))
+        "glSecondaryColor3dEXT"(void, GLdouble("red"), GLdouble("green"), GLdouble("blue"))
+        "glSecondaryColor3dvEXT"(void, address("v", "const GLdouble *"))
+        "glSecondaryColor3fEXT"(void, GLfloat("red"), GLfloat("green"), GLfloat("blue"))
+        "glSecondaryColor3fvEXT"(void, address("v", "const GLfloat *"))
+        "glSecondaryColor3iEXT"(void, GLint("red"), GLint("green"), GLint("blue"))
+        "glSecondaryColor3ivEXT"(void, address("v", "const GLint *"))
+        "glSecondaryColor3sEXT"(void, GLshort("red"), GLshort("green"), GLshort("blue"))
+        "glSecondaryColor3svEXT"(void, address("v", "const GLshort *"))
+        "glSecondaryColor3ubEXT"(void, GLubyte("red"), GLubyte("green"), GLubyte("blue"))
+        "glSecondaryColor3ubvEXT"(void, address("v", "const GLubyte *"))
+        "glSecondaryColor3uiEXT"(void, GLuint("red"), GLuint("green"), GLuint("blue"))
+        "glSecondaryColor3uivEXT"(void, address("v", "const GLuint *"))
+        "glSecondaryColor3usEXT"(void, GLushort("red"), GLushort("green"), GLushort("blue"))
+        "glSecondaryColor3usvEXT"(void, address("v", "const GLushort *"))
+        "glSecondaryColorPointerEXT"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            address("pointer", "const void *")
+        )
+    }
+    file("Semaphore", EXT, "GL_EXT_semaphore") {
+        "GL_LAYOUT_GENERAL_EXT"("0x958D")
+        "GL_LAYOUT_COLOR_ATTACHMENT_EXT"("0x958E")
+        "GL_LAYOUT_DEPTH_STENCIL_ATTACHMENT_EXT"("0x958F")
+        "GL_LAYOUT_DEPTH_STENCIL_READ_ONLY_EXT"("0x9590")
+        "GL_LAYOUT_SHADER_READ_ONLY_EXT"("0x9591")
+        "GL_LAYOUT_TRANSFER_SRC_EXT"("0x9592")
+        "GL_LAYOUT_TRANSFER_DST_EXT"("0x9593")
+        "GL_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_EXT"("0x9530")
+        "GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT"("0x9531")
+        "glGenSemaphoresEXT"(void, GLsizei("n"), address("semaphores", "GLuint *"))
+        "glDeleteSemaphoresEXT"(void, GLsizei("n"), address("semaphores", "const GLuint *"))
+        "glIsSemaphoreEXT"(GLboolean, GLuint("semaphore"))
+        "glSemaphoreParameterui64vEXT"(
+            void,
+            GLuint("semaphore"),
+            GLenum("pname"),
+            address("params", "const GLuint64 *")
+        )
+        "glGetSemaphoreParameterui64vEXT"(void, GLuint("semaphore"), GLenum("pname"), address("params", "GLuint64 *"))
+        "glWaitSemaphoreEXT"(
+            void,
+            GLuint("semaphore"),
+            GLuint("numBufferBarriers"),
+            address("buffers", "const GLuint *"),
+            GLuint("numTextureBarriers"),
+            address("textures", "const GLuint *"),
+            address("srcLayouts", "const GLenum *")
+        )
+        "glSignalSemaphoreEXT"(
+            void,
+            GLuint("semaphore"),
+            GLuint("numBufferBarriers"),
+            address("buffers", "const GLuint *"),
+            GLuint("numTextureBarriers"),
+            address("textures", "const GLuint *"),
+            address("dstLayouts", "const GLenum *")
+        )
+    }
+    file("SemaphoreFd", EXT, "GL_EXT_semaphore_fd") {
+        "glImportSemaphoreFdEXT"(void, GLuint("semaphore"), GLenum("handleType"), GLint("fd"))
+    }
+    file("SemaphoreWin32", EXT, "GL_EXT_semaphore_win32") {
+        "GL_HANDLE_TYPE_D3D12_FENCE_EXT"("0x9594")
+        "GL_D3D12_FENCE_VALUE_EXT"("0x9595")
+        "glImportSemaphoreWin32HandleEXT"(void, GLuint("semaphore"), GLenum("handleType"), address("handle", "void * "))
+        "glImportSemaphoreWin32NameEXT"(void, GLuint("semaphore"), GLenum("handleType"), address("name", "const void *"))
+    }
 }
