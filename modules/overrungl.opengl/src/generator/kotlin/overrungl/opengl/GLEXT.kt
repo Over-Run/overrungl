@@ -2741,4 +2741,881 @@ fun ext() {
         "glImportSemaphoreWin32HandleEXT"(void, GLuint("semaphore"), GLenum("handleType"), address("handle", "void * "))
         "glImportSemaphoreWin32NameEXT"(void, GLuint("semaphore"), GLenum("handleType"), address("name", "const void *"))
     }
+    file("SeparateShaderObjects", EXT, "GL_EXT_separate_shader_objects") {
+        "GL_ACTIVE_PROGRAM_EXT"("0x8B8D")
+        "glUseShaderProgramEXT"(void, GLenum("type"), GLuint("program"))
+        "glActiveProgramEXT"(void, GLuint("program"))
+        "glCreateShaderProgramEXT"(GLuint, GLenum("type"), address("string", "const GLchar *"))
+    }
+    file(
+        "SeparateSpecularColor", EXT, "GL_EXT_separate_specular_color",
+        "GL_LIGHT_MODEL_COLOR_CONTROL_EXT" to "0x81F8",
+        "GL_SINGLE_COLOR_EXT" to "0x81F9",
+        "GL_SEPARATE_SPECULAR_COLOR_EXT" to "0x81FA"
+    )
+    file("ShaderFramebufferFetch", EXT, "GL_EXT_shader_framebuffer_fetch", "GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT" to "0x8A52")
+    file("ShaderFramebufferFetchNonCoherent", EXT, "GL_EXT_shader_framebuffer_fetch_non_coherent") {
+        "glFramebufferFetchBarrierEXT"(void)
+    }
+    file("ShaderImageLoadStore", EXT, "GL_EXT_shader_image_load_store") {
+        "GL_MAX_IMAGE_UNITS_EXT"("0x8F38")
+        "GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS_EXT"("0x8F39")
+        "GL_IMAGE_BINDING_NAME_EXT"("0x8F3A")
+        "GL_IMAGE_BINDING_LEVEL_EXT"("0x8F3B")
+        "GL_IMAGE_BINDING_LAYERED_EXT"("0x8F3C")
+        "GL_IMAGE_BINDING_LAYER_EXT"("0x8F3D")
+        "GL_IMAGE_BINDING_ACCESS_EXT"("0x8F3E")
+        "GL_IMAGE_1D_EXT"("0x904C")
+        "GL_IMAGE_2D_EXT"("0x904D")
+        "GL_IMAGE_3D_EXT"("0x904E")
+        "GL_IMAGE_2D_RECT_EXT"("0x904F")
+        "GL_IMAGE_CUBE_EXT"("0x9050")
+        "GL_IMAGE_BUFFER_EXT"("0x9051")
+        "GL_IMAGE_1D_ARRAY_EXT"("0x9052")
+        "GL_IMAGE_2D_ARRAY_EXT"("0x9053")
+        "GL_IMAGE_CUBE_MAP_ARRAY_EXT"("0x9054")
+        "GL_IMAGE_2D_MULTISAMPLE_EXT"("0x9055")
+        "GL_IMAGE_2D_MULTISAMPLE_ARRAY_EXT"("0x9056")
+        "GL_INT_IMAGE_1D_EXT"("0x9057")
+        "GL_INT_IMAGE_2D_EXT"("0x9058")
+        "GL_INT_IMAGE_3D_EXT"("0x9059")
+        "GL_INT_IMAGE_2D_RECT_EXT"("0x905A")
+        "GL_INT_IMAGE_CUBE_EXT"("0x905B")
+        "GL_INT_IMAGE_BUFFER_EXT"("0x905C")
+        "GL_INT_IMAGE_1D_ARRAY_EXT"("0x905D")
+        "GL_INT_IMAGE_2D_ARRAY_EXT"("0x905E")
+        "GL_INT_IMAGE_CUBE_MAP_ARRAY_EXT"("0x905F")
+        "GL_INT_IMAGE_2D_MULTISAMPLE_EXT"("0x9060")
+        "GL_INT_IMAGE_2D_MULTISAMPLE_ARRAY_EXT"("0x9061")
+        "GL_UNSIGNED_INT_IMAGE_1D_EXT"("0x9062")
+        "GL_UNSIGNED_INT_IMAGE_2D_EXT"("0x9063")
+        "GL_UNSIGNED_INT_IMAGE_3D_EXT"("0x9064")
+        "GL_UNSIGNED_INT_IMAGE_2D_RECT_EXT"("0x9065")
+        "GL_UNSIGNED_INT_IMAGE_CUBE_EXT"("0x9066")
+        "GL_UNSIGNED_INT_IMAGE_BUFFER_EXT"("0x9067")
+        "GL_UNSIGNED_INT_IMAGE_1D_ARRAY_EXT"("0x9068")
+        "GL_UNSIGNED_INT_IMAGE_2D_ARRAY_EXT"("0x9069")
+        "GL_UNSIGNED_INT_IMAGE_CUBE_MAP_ARRAY_EXT"("0x906A")
+        "GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_EXT"("0x906B")
+        "GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_ARRAY_EXT"("0x906C")
+        "GL_MAX_IMAGE_SAMPLES_EXT"("0x906D")
+        "GL_IMAGE_BINDING_FORMAT_EXT"("0x906E")
+        "GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT"("0x00000001")
+        "GL_ELEMENT_ARRAY_BARRIER_BIT_EXT"("0x00000002")
+        "GL_UNIFORM_BARRIER_BIT_EXT"("0x00000004")
+        "GL_TEXTURE_FETCH_BARRIER_BIT_EXT"("0x00000008")
+        "GL_SHADER_IMAGE_ACCESS_BARRIER_BIT_EXT"("0x00000020")
+        "GL_COMMAND_BARRIER_BIT_EXT"("0x00000040")
+        "GL_PIXEL_BUFFER_BARRIER_BIT_EXT"("0x00000080")
+        "GL_TEXTURE_UPDATE_BARRIER_BIT_EXT"("0x00000100")
+        "GL_BUFFER_UPDATE_BARRIER_BIT_EXT"("0x00000200")
+        "GL_FRAMEBUFFER_BARRIER_BIT_EXT"("0x00000400")
+        "GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT"("0x00000800")
+        "GL_ATOMIC_COUNTER_BARRIER_BIT_EXT"("0x00001000")
+        "GL_ALL_BARRIER_BITS_EXT"("0xFFFFFFFF")
+        "glBindImageTextureEXT"(
+            void,
+            GLuint("index"),
+            GLuint("texture"),
+            GLint("level"),
+            GLboolean("layered"),
+            GLint("layer"),
+            GLenum("access"),
+            GLint("format")
+        )
+        "glMemoryBarrierEXT"(void, GLbitfield("barriers"))
+    }
+    file("SharedTexturePalette", EXT, "GL_EXT_shared_texture_palette", "GL_SHARED_TEXTURE_PALETTE_EXT" to "0x81FB")
+    file("StencilClearTag", EXT, "GL_EXT_stencil_clear_tag") {
+        "GL_STENCIL_TAG_BITS_EXT"("0x88F2")
+        "GL_STENCIL_CLEAR_TAG_VALUE_EXT"("0x88F3")
+        "glStencilClearTagEXT"(void, GLsizei("stencilTagBits"), GLuint("stencilClearTag"))
+    }
+    file("StencilTwoSide", EXT, "GL_EXT_stencil_two_side") {
+        "GL_STENCIL_TEST_TWO_SIDE_EXT"("0x8910")
+        "GL_ACTIVE_STENCIL_FACE_EXT"("0x8911")
+        "glActiveStencilFaceEXT"(void, GLenum("face"))
+    }
+    file(
+        "StencilWrap", EXT, "GL_EXT_stencil_wrap",
+        "GL_INCR_WRAP_EXT" to "0x8507",
+        "GL_DECR_WRAP_EXT" to "0x8508"
+    )
+    file("Subtexture", EXT, "GL_EXT_subtexture") {
+        "glTexSubImage1DEXT"(
+            void,
+            GLenum("target"),
+            GLint("level"),
+            GLint("xoffset"),
+            GLsizei("width"),
+            GLenum("format"),
+            GLenum("type"),
+            address("pixels", "const void *")
+        )
+        "glTexSubImage2DEXT"(
+            void,
+            GLenum("target"),
+            GLint("level"),
+            GLint("xoffset"),
+            GLint("yoffset"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLenum("format"),
+            GLenum("type"),
+            address("pixels", "const void *")
+        )
+    }
+    file(
+        "Texture", EXT, "GL_EXT_texture",
+        "GL_ALPHA4_EXT" to "0x803B",
+        "GL_ALPHA8_EXT" to "0x803C",
+        "GL_ALPHA12_EXT" to "0x803D",
+        "GL_ALPHA16_EXT" to "0x803E",
+        "GL_LUMINANCE4_EXT" to "0x803F",
+        "GL_LUMINANCE8_EXT" to "0x8040",
+        "GL_LUMINANCE12_EXT" to "0x8041",
+        "GL_LUMINANCE16_EXT" to "0x8042",
+        "GL_LUMINANCE4_ALPHA4_EXT" to "0x8043",
+        "GL_LUMINANCE6_ALPHA2_EXT" to "0x8044",
+        "GL_LUMINANCE8_ALPHA8_EXT" to "0x8045",
+        "GL_LUMINANCE12_ALPHA4_EXT" to "0x8046",
+        "GL_LUMINANCE12_ALPHA12_EXT" to "0x8047",
+        "GL_LUMINANCE16_ALPHA16_EXT" to "0x8048",
+        "GL_INTENSITY_EXT" to "0x8049",
+        "GL_INTENSITY4_EXT" to "0x804A",
+        "GL_INTENSITY8_EXT" to "0x804B",
+        "GL_INTENSITY12_EXT" to "0x804C",
+        "GL_INTENSITY16_EXT" to "0x804D",
+        "GL_RGB2_EXT" to "0x804E",
+        "GL_RGB4_EXT" to "0x804F",
+        "GL_RGB5_EXT" to "0x8050",
+        "GL_RGB8_EXT" to "0x8051",
+        "GL_RGB10_EXT" to "0x8052",
+        "GL_RGB12_EXT" to "0x8053",
+        "GL_RGB16_EXT" to "0x8054",
+        "GL_RGBA2_EXT" to "0x8055",
+        "GL_RGBA4_EXT" to "0x8056",
+        "GL_RGB5_A1_EXT" to "0x8057",
+        "GL_RGBA8_EXT" to "0x8058",
+        "GL_RGB10_A2_EXT" to "0x8059",
+        "GL_RGBA12_EXT" to "0x805A",
+        "GL_RGBA16_EXT" to "0x805B",
+        "GL_TEXTURE_RED_SIZE_EXT" to "0x805C",
+        "GL_TEXTURE_GREEN_SIZE_EXT" to "0x805D",
+        "GL_TEXTURE_BLUE_SIZE_EXT" to "0x805E",
+        "GL_TEXTURE_ALPHA_SIZE_EXT" to "0x805F",
+        "GL_TEXTURE_LUMINANCE_SIZE_EXT" to "0x8060",
+        "GL_TEXTURE_INTENSITY_SIZE_EXT" to "0x8061",
+        "GL_REPLACE_EXT" to "0x8062",
+        "GL_PROXY_TEXTURE_1D_EXT" to "0x8063",
+        "GL_PROXY_TEXTURE_2D_EXT" to "0x8064",
+        "GL_TEXTURE_TOO_LARGE_EXT" to "0x8065"
+    )
+    file("Texture3D", EXT, "GL_EXT_texture3D") {
+        "GL_PACK_SKIP_IMAGES_EXT"("0x806B")
+        "GL_PACK_IMAGE_HEIGHT_EXT"("0x806C")
+        "GL_UNPACK_SKIP_IMAGES_EXT"("0x806D")
+        "GL_UNPACK_IMAGE_HEIGHT_EXT"("0x806E")
+        "GL_TEXTURE_3D_EXT"("0x806F")
+        "GL_PROXY_TEXTURE_3D_EXT"("0x8070")
+        "GL_TEXTURE_DEPTH_EXT"("0x8071")
+        "GL_TEXTURE_WRAP_R_EXT"("0x8072")
+        "GL_MAX_3D_TEXTURE_SIZE_EXT"("0x8073")
+        "glTexImage3DEXT"(
+            void,
+            GLenum("target"),
+            GLint("level"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLint("border"),
+            GLenum("format"),
+            GLenum("type"),
+            address("pixels", "const void *")
+        )
+        "glTexSubImage3DEXT"(
+            void,
+            GLenum("target"),
+            GLint("level"),
+            GLint("xoffset"),
+            GLint("yoffset"),
+            GLint("zoffset"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth"),
+            GLenum("format"),
+            GLenum("type"),
+            address("pixels", "const void *")
+        )
+    }
+    file("TextureArray", EXT, "GL_EXT_texture_array") {
+        "GL_TEXTURE_1D_ARRAY_EXT"("0x8C18")
+        "GL_PROXY_TEXTURE_1D_ARRAY_EXT"("0x8C19")
+        "GL_TEXTURE_2D_ARRAY_EXT"("0x8C1A")
+        "GL_PROXY_TEXTURE_2D_ARRAY_EXT"("0x8C1B")
+        "GL_TEXTURE_BINDING_1D_ARRAY_EXT"("0x8C1C")
+        "GL_TEXTURE_BINDING_2D_ARRAY_EXT"("0x8C1D")
+        "GL_MAX_ARRAY_TEXTURE_LAYERS_EXT"("0x88FF")
+        "GL_COMPARE_REF_DEPTH_TO_TEXTURE_EXT"("0x884E")
+        "glFramebufferTextureLayerEXT"(
+            void,
+            GLenum("target"),
+            GLenum("attachment"),
+            GLuint("texture"),
+            GLint("level"),
+            GLint("layer")
+        )
+    }
+    file("TextureBufferObject", EXT, "GL_EXT_texture_buffer_object") {
+        "GL_TEXTURE_BUFFER_EXT"("0x8C2A")
+        "GL_MAX_TEXTURE_BUFFER_SIZE_EXT"("0x8C2B")
+        "GL_TEXTURE_BINDING_BUFFER_EXT"("0x8C2C")
+        "GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT"("0x8C2D")
+        "GL_TEXTURE_BUFFER_FORMAT_EXT"("0x8C2E")
+        "glTexBufferEXT"(void, GLenum("target"), GLenum("internalformat"), GLuint("buffer"))
+    }
+    file(
+        "TextureCompressionLatc", EXT, "GL_EXT_texture_compression_latc",
+        "GL_COMPRESSED_LUMINANCE_LATC1_EXT" to "0x8C70",
+        "GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT" to "0x8C71",
+        "GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT" to "0x8C72",
+        "GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT" to "0x8C73"
+    )
+    file(
+        "TextureCompressionRgtc", EXT, "GL_EXT_texture_compression_rgtc",
+        "GL_COMPRESSED_RED_RGTC1_EXT" to "0x8DBB",
+        "GL_COMPRESSED_SIGNED_RED_RGTC1_EXT" to "0x8DBC",
+        "GL_COMPRESSED_RED_GREEN_RGTC2_EXT" to "0x8DBD",
+        "GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT" to "0x8DBE"
+    )
+    file(
+        "TextureCompressionS3tc", EXT, "GL_EXT_texture_compression_s3tc",
+        "GL_COMPRESSED_RGB_S3TC_DXT1_EXT" to "0x83F0",
+        "GL_COMPRESSED_RGBA_S3TC_DXT1_EXT" to "0x83F1",
+        "GL_COMPRESSED_RGBA_S3TC_DXT3_EXT" to "0x83F2",
+        "GL_COMPRESSED_RGBA_S3TC_DXT5_EXT" to "0x83F3"
+    )
+    file(
+        "TextureCubeMap", EXT, "GL_EXT_texture_cube_map",
+        "GL_NORMAL_MAP_EXT" to "0x8511",
+        "GL_REFLECTION_MAP_EXT" to "0x8512",
+        "GL_TEXTURE_CUBE_MAP_EXT" to "0x8513",
+        "GL_TEXTURE_BINDING_CUBE_MAP_EXT" to "0x8514",
+        "GL_TEXTURE_CUBE_MAP_POSITIVE_X_EXT" to "0x8515",
+        "GL_TEXTURE_CUBE_MAP_NEGATIVE_X_EXT" to "0x8516",
+        "GL_TEXTURE_CUBE_MAP_POSITIVE_Y_EXT" to "0x8517",
+        "GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_EXT" to "0x8518",
+        "GL_TEXTURE_CUBE_MAP_POSITIVE_Z_EXT" to "0x8519",
+        "GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_EXT" to "0x851A",
+        "GL_PROXY_TEXTURE_CUBE_MAP_EXT" to "0x851B",
+        "GL_MAX_CUBE_MAP_TEXTURE_SIZE_EXT" to "0x851C"
+    )
+    file(
+        "TextureEnvCombine", EXT, "GL_EXT_texture_env_combine",
+        "GL_COMBINE_EXT" to "0x8570",
+        "GL_COMBINE_RGB_EXT" to "0x8571",
+        "GL_COMBINE_ALPHA_EXT" to "0x8572",
+        "GL_RGB_SCALE_EXT" to "0x8573",
+        "GL_ADD_SIGNED_EXT" to "0x8574",
+        "GL_INTERPOLATE_EXT" to "0x8575",
+        "GL_CONSTANT_EXT" to "0x8576",
+        "GL_PRIMARY_COLOR_EXT" to "0x8577",
+        "GL_PREVIOUS_EXT" to "0x8578",
+        "GL_SOURCE0_RGB_EXT" to "0x8580",
+        "GL_SOURCE1_RGB_EXT" to "0x8581",
+        "GL_SOURCE2_RGB_EXT" to "0x8582",
+        "GL_SOURCE0_ALPHA_EXT" to "0x8588",
+        "GL_SOURCE1_ALPHA_EXT" to "0x8589",
+        "GL_SOURCE2_ALPHA_EXT" to "0x858A",
+        "GL_OPERAND0_RGB_EXT" to "0x8590",
+        "GL_OPERAND1_RGB_EXT" to "0x8591",
+        "GL_OPERAND2_RGB_EXT" to "0x8592",
+        "GL_OPERAND0_ALPHA_EXT" to "0x8598",
+        "GL_OPERAND1_ALPHA_EXT" to "0x8599",
+        "GL_OPERAND2_ALPHA_EXT" to "0x859A"
+    )
+    file(
+        "TextureEnvDot3", EXT, "GL_EXT_texture_env_dot3",
+        "GL_DOT3_RGB_EXT" to "0x8740",
+        "GL_DOT3_RGBA_EXT" to "0x8741"
+    )
+    file(
+        "TextureFilterAnisotropic", EXT, "GL_EXT_texture_filter_anisotropic",
+        "GL_TEXTURE_MAX_ANISOTROPY_EXT" to "0x84FE",
+        "GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT" to "0x84FF"
+    )
+    file(
+        "TextureFilterMinmax", EXT, "GL_EXT_texture_filter_minmax",
+        "GL_TEXTURE_REDUCTION_MODE_EXT" to "0x9366",
+        "GL_WEIGHTED_AVERAGE_EXT" to "0x9367"
+    )
+    file("TextureInteger", EXT, "GL_EXT_texture_integer") {
+        "GL_RGBA32UI_EXT"("0x8D70")
+        "GL_RGB32UI_EXT"("0x8D71")
+        "GL_ALPHA32UI_EXT"("0x8D72")
+        "GL_INTENSITY32UI_EXT"("0x8D73")
+        "GL_LUMINANCE32UI_EXT"("0x8D74")
+        "GL_LUMINANCE_ALPHA32UI_EXT"("0x8D75")
+        "GL_RGBA16UI_EXT"("0x8D76")
+        "GL_RGB16UI_EXT"("0x8D77")
+        "GL_ALPHA16UI_EXT"("0x8D78")
+        "GL_INTENSITY16UI_EXT"("0x8D79")
+        "GL_LUMINANCE16UI_EXT"("0x8D7A")
+        "GL_LUMINANCE_ALPHA16UI_EXT"("0x8D7B")
+        "GL_RGBA8UI_EXT"("0x8D7C")
+        "GL_RGB8UI_EXT"("0x8D7D")
+        "GL_ALPHA8UI_EXT"("0x8D7E")
+        "GL_INTENSITY8UI_EXT"("0x8D7F")
+        "GL_LUMINANCE8UI_EXT"("0x8D80")
+        "GL_LUMINANCE_ALPHA8UI_EXT"("0x8D81")
+        "GL_RGBA32I_EXT"("0x8D82")
+        "GL_RGB32I_EXT"("0x8D83")
+        "GL_ALPHA32I_EXT"("0x8D84")
+        "GL_INTENSITY32I_EXT"("0x8D85")
+        "GL_LUMINANCE32I_EXT"("0x8D86")
+        "GL_LUMINANCE_ALPHA32I_EXT"("0x8D87")
+        "GL_RGBA16I_EXT"("0x8D88")
+        "GL_RGB16I_EXT"("0x8D89")
+        "GL_ALPHA16I_EXT"("0x8D8A")
+        "GL_INTENSITY16I_EXT"("0x8D8B")
+        "GL_LUMINANCE16I_EXT"("0x8D8C")
+        "GL_LUMINANCE_ALPHA16I_EXT"("0x8D8D")
+        "GL_RGBA8I_EXT"("0x8D8E")
+        "GL_RGB8I_EXT"("0x8D8F")
+        "GL_ALPHA8I_EXT"("0x8D90")
+        "GL_INTENSITY8I_EXT"("0x8D91")
+        "GL_LUMINANCE8I_EXT"("0x8D92")
+        "GL_LUMINANCE_ALPHA8I_EXT"("0x8D93")
+        "GL_RED_INTEGER_EXT"("0x8D94")
+        "GL_GREEN_INTEGER_EXT"("0x8D95")
+        "GL_BLUE_INTEGER_EXT"("0x8D96")
+        "GL_ALPHA_INTEGER_EXT"("0x8D97")
+        "GL_RGB_INTEGER_EXT"("0x8D98")
+        "GL_RGBA_INTEGER_EXT"("0x8D99")
+        "GL_BGR_INTEGER_EXT"("0x8D9A")
+        "GL_BGRA_INTEGER_EXT"("0x8D9B")
+        "GL_LUMINANCE_INTEGER_EXT"("0x8D9C")
+        "GL_LUMINANCE_ALPHA_INTEGER_EXT"("0x8D9D")
+        "GL_RGBA_INTEGER_MODE_EXT"("0x8D9E")
+        "glTexParameterIivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "const GLint *"))
+        "glTexParameterIuivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "const GLuint *"))
+        "glGetTexParameterIivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLint *"))
+        "glGetTexParameterIuivEXT"(void, GLenum("target"), GLenum("pname"), address("params", "GLuint *"))
+        "glClearColorIiEXT"(void, GLint("red"), GLint("green"), GLint("blue"), GLint("alpha"))
+        "glClearColorIuiEXT"(void, GLuint("red"), GLuint("green"), GLuint("blue"), GLuint("alpha"))
+    }
+    file(
+        "TextureLodBias", EXT, "GL_EXT_texture_lod_bias",
+        "GL_MAX_TEXTURE_LOD_BIAS_EXT" to "0x84FD",
+        "GL_TEXTURE_FILTER_CONTROL_EXT" to "0x8500",
+        "GL_TEXTURE_LOD_BIAS_EXT" to "0x8501"
+    )
+    file(
+        "TextureMirrorClamp", EXT, "GL_EXT_texture_mirror_clamp",
+        "GL_MIRROR_CLAMP_EXT" to "0x8742",
+        "GL_MIRROR_CLAMP_TO_EDGE_EXT" to "0x8743",
+        "GL_MIRROR_CLAMP_TO_BORDER_EXT" to "0x8912"
+    )
+    file("TextureObject", EXT, "GL_EXT_texture_object") {
+        "GL_TEXTURE_PRIORITY_EXT"("0x8066")
+        "GL_TEXTURE_RESIDENT_EXT"("0x8067")
+        "GL_TEXTURE_1D_BINDING_EXT"("0x8068")
+        "GL_TEXTURE_2D_BINDING_EXT"("0x8069")
+        "GL_TEXTURE_3D_BINDING_EXT"("0x806A")
+        "glAreTexturesResidentEXT"(
+            GLboolean,
+            GLsizei("n"),
+            address("textures", "const GLuint *"),
+            address("residences", "GLboolean *")
+        )
+        "glBindTextureEXT"(void, GLenum("target"), GLuint("texture"))
+        "glDeleteTexturesEXT"(void, GLsizei("n"), address("textures", "const GLuint *"))
+        "glGenTexturesEXT"(void, GLsizei("n"), address("textures", "GLuint *"))
+        "glIsTextureEXT"(GLboolean, GLuint("texture"))
+        "glPrioritizeTexturesEXT"(
+            void,
+            GLsizei("n"),
+            address("textures", "const GLuint *"),
+            address("priorities", "const GLclampf *")
+        )
+    }
+    file("TexturePerturbNormal", EXT, "GL_EXT_texture_perturb_normal") {
+        "GL_PERTURB_EXT"("0x85AE")
+        "GL_TEXTURE_NORMAL_EXT"("0x85AF")
+        "glTextureNormalEXT"(void, GLenum("mode"))
+    }
+    file(
+        "TextureSrgb", EXT, "GL_EXT_texture_sRGB",
+        "GL_SRGB_EXT" to "0x8C40",
+        "GL_SRGB8_EXT" to "0x8C41",
+        "GL_SRGB_ALPHA_EXT" to "0x8C42",
+        "GL_SRGB8_ALPHA8_EXT" to "0x8C43",
+        "GL_SLUMINANCE_ALPHA_EXT" to "0x8C44",
+        "GL_SLUMINANCE8_ALPHA8_EXT" to "0x8C45",
+        "GL_SLUMINANCE_EXT" to "0x8C46",
+        "GL_SLUMINANCE8_EXT" to "0x8C47",
+        "GL_COMPRESSED_SRGB_EXT" to "0x8C48",
+        "GL_COMPRESSED_SRGB_ALPHA_EXT" to "0x8C49",
+        "GL_COMPRESSED_SLUMINANCE_EXT" to "0x8C4A",
+        "GL_COMPRESSED_SLUMINANCE_ALPHA_EXT" to "0x8C4B",
+        "GL_COMPRESSED_SRGB_S3TC_DXT1_EXT" to "0x8C4C",
+        "GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT" to "0x8C4D",
+        "GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT" to "0x8C4E",
+        "GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT" to "0x8C4F"
+    )
+    file("TextureSrgbR8", EXT, "GL_EXT_texture_sRGB_R8", "GL_SR8_EXT" to "0x8FBD")
+    file("TextureSrgbRGB", EXT, "GL_EXT_texture_sRGB_RG8", "GL_SRG8_EXT" to "0x8FBE")
+    file(
+        "TextureSrgbDecode", EXT, "GL_EXT_texture_sRGB_decode",
+        "GL_TEXTURE_SRGB_DECODE_EXT" to "0x8A48",
+        "GL_DECODE_EXT" to "0x8A49",
+        "GL_SKIP_DECODE_EXT" to "0x8A4A"
+    )
+    file(
+        "TextureSharedExponent", EXT, "GL_EXT_texture_shared_exponent",
+        "GL_RGB9_E5_EXT" to "0x8C3D",
+        "GL_UNSIGNED_INT_5_9_9_9_REV_EXT" to "0x8C3E",
+        "GL_TEXTURE_SHARED_SIZE_EXT" to "0x8C3F",
+    )
+    file(
+        "TextureSnorm", EXT, "GL_EXT_texture_snorm",
+        "GL_ALPHA_SNORM" to "0x9010",
+        "GL_LUMINANCE_SNORM" to "0x9011",
+        "GL_LUMINANCE_ALPHA_SNORM" to "0x9012",
+        "GL_INTENSITY_SNORM" to "0x9013",
+        "GL_ALPHA8_SNORM" to "0x9014",
+        "GL_LUMINANCE8_SNORM" to "0x9015",
+        "GL_LUMINANCE8_ALPHA8_SNORM" to "0x9016",
+        "GL_INTENSITY8_SNORM" to "0x9017",
+        "GL_ALPHA16_SNORM" to "0x9018",
+        "GL_LUMINANCE16_SNORM" to "0x9019",
+        "GL_LUMINANCE16_ALPHA16_SNORM" to "0x901A",
+        "GL_INTENSITY16_SNORM" to "0x901B",
+        "GL_RED_SNORM" to "0x8F90",
+        "GL_RG_SNORM" to "0x8F91",
+        "GL_RGB_SNORM" to "0x8F92",
+        "GL_RGBA_SNORM" to "0x8F93",
+    )
+    file("TextureStorage", EXT, "GL_EXT_texture_storage") {
+        "GL_TEXTURE_IMMUTABLE_FORMAT_EXT"("0x912F")
+        "GL_RGBA32F_EXT"("0x8814")
+        "GL_RGB32F_EXT"("0x8815")
+        "GL_ALPHA32F_EXT"("0x8816")
+        "GL_LUMINANCE32F_EXT"("0x8818")
+        "GL_LUMINANCE_ALPHA32F_EXT"("0x8819")
+        "GL_RGBA16F_EXT"("0x881A")
+        "GL_RGB16F_EXT"("0x881B")
+        "GL_ALPHA16F_EXT"("0x881C")
+        "GL_LUMINANCE16F_EXT"("0x881E")
+        "GL_LUMINANCE_ALPHA16F_EXT"("0x881F")
+        "GL_BGRA8_EXT"("0x93A1")
+        "GL_R8_EXT"("0x8229")
+        "GL_RG8_EXT"("0x822B")
+        "GL_R32F_EXT"("0x822E")
+        "GL_RG32F_EXT"("0x8230")
+        "GL_R16F_EXT"("0x822D")
+        "GL_RG16F_EXT"("0x822F")
+        "glTexStorage1DEXT"(void, GLenum("target"), GLsizei("levels"), GLenum("internalformat"), GLsizei("width"))
+        "glTexStorage2DEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("levels"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLsizei("height")
+        )
+        "glTexStorage3DEXT"(
+            void,
+            GLenum("target"),
+            GLsizei("levels"),
+            GLenum("internalformat"),
+            GLsizei("width"),
+            GLsizei("height"),
+            GLsizei("depth")
+        )
+    }
+    file(
+        "TextureSwizzle", EXT, "GL_EXT_texture_swizzle",
+        "GL_TEXTURE_SWIZZLE_R_EXT" to "0x8E42",
+        "GL_TEXTURE_SWIZZLE_G_EXT" to "0x8E43",
+        "GL_TEXTURE_SWIZZLE_B_EXT" to "0x8E44",
+        "GL_TEXTURE_SWIZZLE_A_EXT" to "0x8E45",
+        "GL_TEXTURE_SWIZZLE_RGBA_EXT" to "0x8E46"
+    )
+    file("TimerQuery", EXT, "GL_EXT_timer_query") {
+        "GL_TIME_ELAPSED_EXT"("0x88BF")
+        "glGetQueryObjecti64vEXT"(void, GLuint("id"), GLenum("pname"), address("params", "GLint64 *"))
+        "glGetQueryObjectui64vEXT"(void, GLuint("id"), GLenum("pname"), address("params", "GLuint64 *"))
+    }
+    file("TransformFeedback", EXT, "GL_EXT_transform_feedback") {
+        "GL_TRANSFORM_FEEDBACK_BUFFER_EXT"("0x8C8E")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_START_EXT"("0x8C84")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_SIZE_EXT"("0x8C85")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_BINDING_EXT"("0x8C8F")
+        "GL_INTERLEAVED_ATTRIBS_EXT"("0x8C8C")
+        "GL_SEPARATE_ATTRIBS_EXT"("0x8C8D")
+        "GL_PRIMITIVES_GENERATED_EXT"("0x8C87")
+        "GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN_EXT"("0x8C88")
+        "GL_RASTERIZER_DISCARD_EXT"("0x8C89")
+        "GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS_EXT"("0x8C8A")
+        "GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS_EXT"("0x8C8B")
+        "GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS_EXT"("0x8C80")
+        "GL_TRANSFORM_FEEDBACK_VARYINGS_EXT"("0x8C83")
+        "GL_TRANSFORM_FEEDBACK_BUFFER_MODE_EXT"("0x8C7F")
+        "GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH_EXT"("0x8C76")
+        "glBeginTransformFeedbackEXT"(void, GLenum("primitiveMode"))
+        "glEndTransformFeedbackEXT"(void)
+        "glBindBufferRangeEXT"(
+            void,
+            GLenum("target"),
+            GLuint("index"),
+            GLuint("buffer"),
+            GLintptr("offset"),
+            GLsizeiptr("size")
+        )
+        "glBindBufferOffsetEXT"(void, GLenum("target"), GLuint("index"), GLuint("buffer"), GLintptr("offset"))
+        "glBindBufferBaseEXT"(void, GLenum("target"), GLuint("index"), GLuint("buffer"))
+        "glTransformFeedbackVaryingsEXT"(
+            void,
+            GLuint("program"),
+            GLsizei("count"),
+            address("varyings", "const GLchar *const*"),
+            GLenum("bufferMode")
+        )
+        "glGetTransformFeedbackVaryingEXT"(
+            void,
+            GLuint("program"),
+            GLuint("index"),
+            GLsizei("bufSize"),
+            address("length", "GLsizei *"),
+            address("size", "GLsizei *"),
+            address("type", "GLenum *"),
+            address("name", "GLchar *")
+        )
+    }
+    file("VertexArray", EXT, "GL_EXT_vertex_array") {
+        "GL_VERTEX_ARRAY_EXT"("0x8074")
+        "GL_NORMAL_ARRAY_EXT"("0x8075")
+        "GL_COLOR_ARRAY_EXT"("0x8076")
+        "GL_INDEX_ARRAY_EXT"("0x8077")
+        "GL_TEXTURE_COORD_ARRAY_EXT"("0x8078")
+        "GL_EDGE_FLAG_ARRAY_EXT"("0x8079")
+        "GL_VERTEX_ARRAY_SIZE_EXT"("0x807A")
+        "GL_VERTEX_ARRAY_TYPE_EXT"("0x807B")
+        "GL_VERTEX_ARRAY_STRIDE_EXT"("0x807C")
+        "GL_VERTEX_ARRAY_COUNT_EXT"("0x807D")
+        "GL_NORMAL_ARRAY_TYPE_EXT"("0x807E")
+        "GL_NORMAL_ARRAY_STRIDE_EXT"("0x807F")
+        "GL_NORMAL_ARRAY_COUNT_EXT"("0x8080")
+        "GL_COLOR_ARRAY_SIZE_EXT"("0x8081")
+        "GL_COLOR_ARRAY_TYPE_EXT"("0x8082")
+        "GL_COLOR_ARRAY_STRIDE_EXT"("0x8083")
+        "GL_COLOR_ARRAY_COUNT_EXT"("0x8084")
+        "GL_INDEX_ARRAY_TYPE_EXT"("0x8085")
+        "GL_INDEX_ARRAY_STRIDE_EXT"("0x8086")
+        "GL_INDEX_ARRAY_COUNT_EXT"("0x8087")
+        "GL_TEXTURE_COORD_ARRAY_SIZE_EXT"("0x8088")
+        "GL_TEXTURE_COORD_ARRAY_TYPE_EXT"("0x8089")
+        "GL_TEXTURE_COORD_ARRAY_STRIDE_EXT"("0x808A")
+        "GL_TEXTURE_COORD_ARRAY_COUNT_EXT"("0x808B")
+        "GL_EDGE_FLAG_ARRAY_STRIDE_EXT"("0x808C")
+        "GL_EDGE_FLAG_ARRAY_COUNT_EXT"("0x808D")
+        "GL_VERTEX_ARRAY_POINTER_EXT"("0x808E")
+        "GL_NORMAL_ARRAY_POINTER_EXT"("0x808F")
+        "GL_COLOR_ARRAY_POINTER_EXT"("0x8090")
+        "GL_INDEX_ARRAY_POINTER_EXT"("0x8091")
+        "GL_TEXTURE_COORD_ARRAY_POINTER_EXT"("0x8092")
+        "GL_EDGE_FLAG_ARRAY_POINTER_EXT"("0x8093")
+        "glArrayElementEXT"(void, GLint("i"))
+        "glColorPointerEXT"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            GLsizei("count"),
+            address("pointer", "const void *")
+        )
+        "glDrawArraysEXT"(void, GLenum("mode"), GLint("first"), GLsizei("count"))
+        "glEdgeFlagPointerEXT"(void, GLsizei("stride"), GLsizei("count"), address("pointer", "const GLboolean *"))
+        "glGetPointervEXT"(void, GLenum("pname"), address("params", "void **"))
+        "glIndexPointerEXT"(
+            void,
+            GLenum("type"),
+            GLsizei("stride"),
+            GLsizei("count"),
+            address("pointer", "const void *")
+        )
+        "glNormalPointerEXT"(
+            void,
+            GLenum("type"),
+            GLsizei("stride"),
+            GLsizei("count"),
+            address("pointer", "const void *")
+        )
+        "glTexCoordPointerEXT"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            GLsizei("count"),
+            address("pointer", "const void *")
+        )
+        "glVertexPointerEXT"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            GLsizei("count"),
+            address("pointer", "const void *")
+        )
+    }
+    file("VertexAttrib64bit", EXT, "GL_EXT_vertex_attrib_64bit") {
+        "GL_DOUBLE_VEC2_EXT"("0x8FFC")
+        "GL_DOUBLE_VEC3_EXT"("0x8FFD")
+        "GL_DOUBLE_VEC4_EXT"("0x8FFE")
+        "GL_DOUBLE_MAT2_EXT"("0x8F46")
+        "GL_DOUBLE_MAT3_EXT"("0x8F47")
+        "GL_DOUBLE_MAT4_EXT"("0x8F48")
+        "GL_DOUBLE_MAT2x3_EXT"("0x8F49")
+        "GL_DOUBLE_MAT2x4_EXT"("0x8F4A")
+        "GL_DOUBLE_MAT3x2_EXT"("0x8F4B")
+        "GL_DOUBLE_MAT3x4_EXT"("0x8F4C")
+        "GL_DOUBLE_MAT4x2_EXT"("0x8F4D")
+        "GL_DOUBLE_MAT4x3_EXT"("0x8F4E")
+        "glVertexAttribL1dEXT"(void, GLuint("index"), GLdouble("x"))
+        "glVertexAttribL2dEXT"(void, GLuint("index"), GLdouble("x"), GLdouble("y"))
+        "glVertexAttribL3dEXT"(void, GLuint("index"), GLdouble("x"), GLdouble("y"), GLdouble("z"))
+        "glVertexAttribL4dEXT"(void, GLuint("index"), GLdouble("x"), GLdouble("y"), GLdouble("z"), GLdouble("w"))
+        "glVertexAttribL1dvEXT"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttribL2dvEXT"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttribL3dvEXT"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttribL4dvEXT"(void, GLuint("index"), address("v", "const GLdouble *"))
+        "glVertexAttribLPointerEXT"(
+            void,
+            GLuint("index"),
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            address("pointer", "const void *")
+        )
+        "glGetVertexAttribLdvEXT"(void, GLuint("index"), GLenum("pname"), address("params", "GLdouble *"))
+    }
+    file("VertexShader", EXT, "GL_EXT_vertex_shader") {
+        "GL_VERTEX_SHADER_EXT"("0x8780")
+        "GL_VERTEX_SHADER_BINDING_EXT"("0x8781")
+        "GL_OP_INDEX_EXT"("0x8782")
+        "GL_OP_NEGATE_EXT"("0x8783")
+        "GL_OP_DOT3_EXT"("0x8784")
+        "GL_OP_DOT4_EXT"("0x8785")
+        "GL_OP_MUL_EXT"("0x8786")
+        "GL_OP_ADD_EXT"("0x8787")
+        "GL_OP_MADD_EXT"("0x8788")
+        "GL_OP_FRAC_EXT"("0x8789")
+        "GL_OP_MAX_EXT"("0x878A")
+        "GL_OP_MIN_EXT"("0x878B")
+        "GL_OP_SET_GE_EXT"("0x878C")
+        "GL_OP_SET_LT_EXT"("0x878D")
+        "GL_OP_CLAMP_EXT"("0x878E")
+        "GL_OP_FLOOR_EXT"("0x878F")
+        "GL_OP_ROUND_EXT"("0x8790")
+        "GL_OP_EXP_BASE_2_EXT"("0x8791")
+        "GL_OP_LOG_BASE_2_EXT"("0x8792")
+        "GL_OP_POWER_EXT"("0x8793")
+        "GL_OP_RECIP_EXT"("0x8794")
+        "GL_OP_RECIP_SQRT_EXT"("0x8795")
+        "GL_OP_SUB_EXT"("0x8796")
+        "GL_OP_CROSS_PRODUCT_EXT"("0x8797")
+        "GL_OP_MULTIPLY_MATRIX_EXT"("0x8798")
+        "GL_OP_MOV_EXT"("0x8799")
+        "GL_OUTPUT_VERTEX_EXT"("0x879A")
+        "GL_OUTPUT_COLOR0_EXT"("0x879B")
+        "GL_OUTPUT_COLOR1_EXT"("0x879C")
+        "GL_OUTPUT_TEXTURE_COORD0_EXT"("0x879D")
+        "GL_OUTPUT_TEXTURE_COORD1_EXT"("0x879E")
+        "GL_OUTPUT_TEXTURE_COORD2_EXT"("0x879F")
+        "GL_OUTPUT_TEXTURE_COORD3_EXT"("0x87A0")
+        "GL_OUTPUT_TEXTURE_COORD4_EXT"("0x87A1")
+        "GL_OUTPUT_TEXTURE_COORD5_EXT"("0x87A2")
+        "GL_OUTPUT_TEXTURE_COORD6_EXT"("0x87A3")
+        "GL_OUTPUT_TEXTURE_COORD7_EXT"("0x87A4")
+        "GL_OUTPUT_TEXTURE_COORD8_EXT"("0x87A5")
+        "GL_OUTPUT_TEXTURE_COORD9_EXT"("0x87A6")
+        "GL_OUTPUT_TEXTURE_COORD10_EXT"("0x87A7")
+        "GL_OUTPUT_TEXTURE_COORD11_EXT"("0x87A8")
+        "GL_OUTPUT_TEXTURE_COORD12_EXT"("0x87A9")
+        "GL_OUTPUT_TEXTURE_COORD13_EXT"("0x87AA")
+        "GL_OUTPUT_TEXTURE_COORD14_EXT"("0x87AB")
+        "GL_OUTPUT_TEXTURE_COORD15_EXT"("0x87AC")
+        "GL_OUTPUT_TEXTURE_COORD16_EXT"("0x87AD")
+        "GL_OUTPUT_TEXTURE_COORD17_EXT"("0x87AE")
+        "GL_OUTPUT_TEXTURE_COORD18_EXT"("0x87AF")
+        "GL_OUTPUT_TEXTURE_COORD19_EXT"("0x87B0")
+        "GL_OUTPUT_TEXTURE_COORD20_EXT"("0x87B1")
+        "GL_OUTPUT_TEXTURE_COORD21_EXT"("0x87B2")
+        "GL_OUTPUT_TEXTURE_COORD22_EXT"("0x87B3")
+        "GL_OUTPUT_TEXTURE_COORD23_EXT"("0x87B4")
+        "GL_OUTPUT_TEXTURE_COORD24_EXT"("0x87B5")
+        "GL_OUTPUT_TEXTURE_COORD25_EXT"("0x87B6")
+        "GL_OUTPUT_TEXTURE_COORD26_EXT"("0x87B7")
+        "GL_OUTPUT_TEXTURE_COORD27_EXT"("0x87B8")
+        "GL_OUTPUT_TEXTURE_COORD28_EXT"("0x87B9")
+        "GL_OUTPUT_TEXTURE_COORD29_EXT"("0x87BA")
+        "GL_OUTPUT_TEXTURE_COORD30_EXT"("0x87BB")
+        "GL_OUTPUT_TEXTURE_COORD31_EXT"("0x87BC")
+        "GL_OUTPUT_FOG_EXT"("0x87BD")
+        "GL_SCALAR_EXT"("0x87BE")
+        "GL_VECTOR_EXT"("0x87BF")
+        "GL_MATRIX_EXT"("0x87C0")
+        "GL_VARIANT_EXT"("0x87C1")
+        "GL_INVARIANT_EXT"("0x87C2")
+        "GL_LOCAL_CONSTANT_EXT"("0x87C3")
+        "GL_LOCAL_EXT"("0x87C4")
+        "GL_MAX_VERTEX_SHADER_INSTRUCTIONS_EXT"("0x87C5")
+        "GL_MAX_VERTEX_SHADER_VARIANTS_EXT"("0x87C6")
+        "GL_MAX_VERTEX_SHADER_INVARIANTS_EXT"("0x87C7")
+        "GL_MAX_VERTEX_SHADER_LOCAL_CONSTANTS_EXT"("0x87C8")
+        "GL_MAX_VERTEX_SHADER_LOCALS_EXT"("0x87C9")
+        "GL_MAX_OPTIMIZED_VERTEX_SHADER_INSTRUCTIONS_EXT"("0x87CA")
+        "GL_MAX_OPTIMIZED_VERTEX_SHADER_VARIANTS_EXT"("0x87CB")
+        "GL_MAX_OPTIMIZED_VERTEX_SHADER_LOCAL_CONSTANTS_EXT"("0x87CC")
+        "GL_MAX_OPTIMIZED_VERTEX_SHADER_INVARIANTS_EXT"("0x87CD")
+        "GL_MAX_OPTIMIZED_VERTEX_SHADER_LOCALS_EXT"("0x87CE")
+        "GL_VERTEX_SHADER_INSTRUCTIONS_EXT"("0x87CF")
+        "GL_VERTEX_SHADER_VARIANTS_EXT"("0x87D0")
+        "GL_VERTEX_SHADER_INVARIANTS_EXT"("0x87D1")
+        "GL_VERTEX_SHADER_LOCAL_CONSTANTS_EXT"("0x87D2")
+        "GL_VERTEX_SHADER_LOCALS_EXT"("0x87D3")
+        "GL_VERTEX_SHADER_OPTIMIZED_EXT"("0x87D4")
+        "GL_X_EXT"("0x87D5")
+        "GL_Y_EXT"("0x87D6")
+        "GL_Z_EXT"("0x87D7")
+        "GL_W_EXT"("0x87D8")
+        "GL_NEGATIVE_X_EXT"("0x87D9")
+        "GL_NEGATIVE_Y_EXT"("0x87DA")
+        "GL_NEGATIVE_Z_EXT"("0x87DB")
+        "GL_NEGATIVE_W_EXT"("0x87DC")
+        "GL_ZERO_EXT"("0x87DD")
+        "GL_ONE_EXT"("0x87DE")
+        "GL_NEGATIVE_ONE_EXT"("0x87DF")
+        "GL_NORMALIZED_RANGE_EXT"("0x87E0")
+        "GL_FULL_RANGE_EXT"("0x87E1")
+        "GL_CURRENT_VERTEX_EXT"("0x87E2")
+        "GL_MVP_MATRIX_EXT"("0x87E3")
+        "GL_VARIANT_VALUE_EXT"("0x87E4")
+        "GL_VARIANT_DATATYPE_EXT"("0x87E5")
+        "GL_VARIANT_ARRAY_STRIDE_EXT"("0x87E6")
+        "GL_VARIANT_ARRAY_TYPE_EXT"("0x87E7")
+        "GL_VARIANT_ARRAY_EXT"("0x87E8")
+        "GL_VARIANT_ARRAY_POINTER_EXT"("0x87E9")
+        "GL_INVARIANT_VALUE_EXT"("0x87EA")
+        "GL_INVARIANT_DATATYPE_EXT"("0x87EB")
+        "GL_LOCAL_CONSTANT_VALUE_EXT"("0x87EC")
+        "GL_LOCAL_CONSTANT_DATATYPE_EXT"("0x87ED")
+        "glBeginVertexShaderEXT"(void)
+        "glEndVertexShaderEXT"(void)
+        "glBindVertexShaderEXT"(void, GLuint("id"))
+        "glGenVertexShadersEXT"(GLuint, GLuint("range"))
+        "glDeleteVertexShaderEXT"(void, GLuint("id"))
+        "glShaderOp1EXT"(void, GLenum("op"), GLuint("res"), GLuint("arg1"))
+        "glShaderOp2EXT"(void, GLenum("op"), GLuint("res"), GLuint("arg1"), GLuint("arg2"))
+        "glShaderOp3EXT"(void, GLenum("op"), GLuint("res"), GLuint("arg1"), GLuint("arg2"), GLuint("arg3"))
+        "glSwizzleEXT"(
+            void,
+            GLuint("res"),
+            GLuint("in"),
+            GLenum("outX"),
+            GLenum("outY"),
+            GLenum("outZ"),
+            GLenum("outW")
+        )
+        "glWriteMaskEXT"(
+            void,
+            GLuint("res"),
+            GLuint("in"),
+            GLenum("outX"),
+            GLenum("outY"),
+            GLenum("outZ"),
+            GLenum("outW")
+        )
+        "glInsertComponentEXT"(void, GLuint("res"), GLuint("src"), GLuint("num"))
+        "glExtractComponentEXT"(void, GLuint("res"), GLuint("src"), GLuint("num"))
+        "glGenSymbolsEXT"(GLuint, GLenum("datatype"), GLenum("storagetype"), GLenum("range"), GLuint("components"))
+        "glSetInvariantEXT"(void, GLuint("id"), GLenum("type"), address("addr", "const void *"))
+        "glSetLocalConstantEXT"(void, GLuint("id"), GLenum("type"), address("addr", "const void *"))
+        "glVariantbvEXT"(void, GLuint("id"), address("addr", "const GLbyte *"))
+        "glVariantsvEXT"(void, GLuint("id"), address("addr", "const GLshort *"))
+        "glVariantivEXT"(void, GLuint("id"), address("addr", "const GLint *"))
+        "glVariantfvEXT"(void, GLuint("id"), address("addr", "const GLfloat *"))
+        "glVariantdvEXT"(void, GLuint("id"), address("addr", "const GLdouble *"))
+        "glVariantubvEXT"(void, GLuint("id"), address("addr", "const GLubyte *"))
+        "glVariantusvEXT"(void, GLuint("id"), address("addr", "const GLushort *"))
+        "glVariantuivEXT"(void, GLuint("id"), address("addr", "const GLuint *"))
+        "glVariantPointerEXT"(void, GLuint("id"), GLenum("type"), GLuint("stride"), address("addr", "const void *"))
+        "glEnableVariantClientStateEXT"(void, GLuint("id"))
+        "glDisableVariantClientStateEXT"(void, GLuint("id"))
+        "glBindLightParameterEXT"(GLuint, GLenum("light"), GLenum("value"))
+        "glBindMaterialParameterEXT"(GLuint, GLenum("face"), GLenum("value"))
+        "glBindTexGenParameterEXT"(GLuint, GLenum("unit"), GLenum("coord"), GLenum("value"))
+        "glBindTextureUnitParameterEXT"(GLuint, GLenum("unit"), GLenum("value"))
+        "glBindParameterEXT"(GLuint, GLenum("value"))
+        "glIsVariantEnabledEXT"(GLboolean, GLuint("id"), GLenum("cap"))
+        "glGetVariantBooleanvEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLboolean *"))
+        "glGetVariantIntegervEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLint *"))
+        "glGetVariantFloatvEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLfloat *"))
+        "glGetVariantPointervEXT"(void, GLuint("id"), GLenum("value"), address("data", "void **"))
+        "glGetInvariantBooleanvEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLboolean *"))
+        "glGetInvariantIntegervEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLint *"))
+        "glGetInvariantFloatvEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLfloat *"))
+        "glGetLocalConstantBooleanvEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLboolean *"))
+        "glGetLocalConstantIntegervEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLint *"))
+        "glGetLocalConstantFloatvEXT"(void, GLuint("id"), GLenum("value"), address("data", "GLfloat *"))
+    }
+    file("VertexWeighting", EXT, "GL_EXT_vertex_weighting") {
+        "GL_MODELVIEW0_STACK_DEPTH_EXT"("0x0BA3")
+        "GL_MODELVIEW1_STACK_DEPTH_EXT"("0x8502")
+        "GL_MODELVIEW0_MATRIX_EXT"("0x0BA6")
+        "GL_MODELVIEW1_MATRIX_EXT"("0x8506")
+        "GL_VERTEX_WEIGHTING_EXT"("0x8509")
+        "GL_MODELVIEW0_EXT"("0x1700")
+        "GL_MODELVIEW1_EXT"("0x850A")
+        "GL_CURRENT_VERTEX_WEIGHT_EXT"("0x850B")
+        "GL_VERTEX_WEIGHT_ARRAY_EXT"("0x850C")
+        "GL_VERTEX_WEIGHT_ARRAY_SIZE_EXT"("0x850D")
+        "GL_VERTEX_WEIGHT_ARRAY_TYPE_EXT"("0x850E")
+        "GL_VERTEX_WEIGHT_ARRAY_STRIDE_EXT"("0x850F")
+        "GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT"("0x8510")
+        "glVertexWeightfEXT"(void, GLfloat("weight"))
+        "glVertexWeightfvEXT"(void, address("weight", "const GLfloat *"))
+        "glVertexWeightPointerEXT"(
+            void,
+            GLint("size"),
+            GLenum("type"),
+            GLsizei("stride"),
+            address("pointer", "const void *")
+        )
+    }
+    file("Win32KeyedMutex", EXT, "GL_EXT_win32_keyed_mutex") {
+        "glAcquireKeyedMutexWin32EXT"(GLboolean, GLuint("memory"), GLuint64("key"), GLuint("timeout"))
+        "glReleaseKeyedMutexWin32EXT"(GLboolean, GLuint("memory"), GLuint64("key"))
+    }
+    file("WindowRectangles", EXT, "GL_EXT_window_rectangles") {
+        "GL_INCLUSIVE_EXT"("0x8F10")
+        "GL_EXCLUSIVE_EXT"("0x8F11")
+        "GL_WINDOW_RECTANGLE_EXT"("0x8F12")
+        "GL_WINDOW_RECTANGLE_MODE_EXT"("0x8F13")
+        "GL_MAX_WINDOW_RECTANGLES_EXT"("0x8F14")
+        "GL_NUM_WINDOW_RECTANGLES_EXT"("0x8F15")
+        "glWindowRectanglesEXT"(void, GLenum("mode"), GLsizei("count"), address("box", "const GLint *"))
+    }
+    file("X11SyncObject", EXT, "GL_EXT_x11_sync_object") {
+        "GL_SYNC_X11_FENCE_EXT"("0x90E1")
+        "glImportSyncEXT"(
+            address,
+            GLenum("external_sync_type"),
+            GLintptr("external_sync"),
+            GLbitfield("flags"),
+            nativeType = "GLsync"
+        )
+    }
 }
