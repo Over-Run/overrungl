@@ -22,7 +22,6 @@
  */
 module overrungl.core {
     exports overrungl;
-    exports overrungl.os;
     exports overrungl.util;
     exports overrungl.util.value;
     exports overrungl.internal
@@ -31,5 +30,6 @@ module overrungl.core {
         overrungl.opengl,
         overrungl.stb;
 
+    requires io.github.overrun.platform;
     requires static org.jetbrains.annotations;
 }

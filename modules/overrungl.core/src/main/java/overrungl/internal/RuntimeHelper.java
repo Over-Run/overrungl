@@ -16,11 +16,11 @@
 
 package overrungl.internal;
 
+import io.github.overrun.platform.Architecture;
+import io.github.overrun.platform.Platform;
 import org.jetbrains.annotations.Nullable;
 import overrungl.FunctionDescriptors;
-import overrungl.os.Architecture;
-import overrungl.os.Platform;
-import overrungl.util.CStdlib;
+import overrungl.util.MemoryUtil;
 
 import java.io.File;
 import java.lang.foreign.*;
@@ -50,7 +50,7 @@ public final class RuntimeHelper {
     /**
      * An unbounded address layout.
      */
-    public static final AddressLayout ADDRESS_UNBOUNDED = CStdlib.ADDRESS_UNBOUNDED;
+    public static final AddressLayout ADDRESS_UNBOUNDED = MemoryUtil.ADDRESS_UNBOUNDED;
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
 
     /**
@@ -194,7 +194,7 @@ public final class RuntimeHelper {
      * @param segment the segment.
      */
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return CStdlib.isNullptr(segment);
+        return MemoryUtil.isNullptr(segment);
     }
 
     /**

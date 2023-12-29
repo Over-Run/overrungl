@@ -26,7 +26,6 @@ import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.glfw.Handles.*;
@@ -55,7 +54,7 @@ public final class GLFW {
      * <p>
      * This is incremented when a bug fix release is made that does not contain any API changes.
      */
-    public static final int VERSION_REVISION = 8;
+    public static final int VERSION_REVISION = 9;
 
     /**
      * One.
@@ -794,6 +793,9 @@ public final class GLFW {
     public static final int EGL_CONTEXT_API = 0x00036002;
     public static final int OSMESA_CONTEXT_API = 0x00036003;
 
+    public static final int WAYLAND_PREFER_LIBDECOR = 0x00038001;
+    public static final int WAYLAND_DISABLE_LIBDECOR = 0x00038002;
+
     /**
      * The regular arrow cursor.
      */
@@ -839,6 +841,14 @@ public final class GLFW {
      */
     public static final int COCOA_CHDIR_RESOURCES = 0x00051001,
         COCOA_MENUBAR = 0x00051002;
+    /**
+     * Wayland specific init hint.
+     * <p>
+     * {@link #WAYLAND_LIBDECOR} specifies whether to use <a href="https://gitlab.freedesktop.org/libdecor/libdecor">libdecor</a> for window decorations where available.
+     * Possible values are {@link #WAYLAND_PREFER_LIBDECOR} and {@link #WAYLAND_DISABLE_LIBDECOR}.
+     * This is ignored on other platforms.
+     */
+    public static final int WAYLAND_LIBDECOR = 0x00053001;
 
     /**
      * Don't care value.
@@ -4098,8 +4108,8 @@ public final class GLFW {
      * @param key      The key to query, or {@link #KEY_UNKNOWN}.
      * @param scancode The scancode of the key to query.
      * @return The UTF-8 encoded, layout-specific name of the key, or {@link MemorySegment#NULL NULL}.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}, {@link #INVALID_VALUE},
+     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
      * @glfw.remark The contents of the returned string may change when a keyboard
      * layout change event is received.
      * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
@@ -4133,14 +4143,16 @@ public final class GLFW {
      * <p>
      * This function returns the platform-specific scancode of the specified key.
      * <p>
-     * If the key is {@code KEY_UNKNOWN} or does not exist on the keyboard this
-     * method will return {@code -1}.
+     * If the specified key token corresponds to a physical key not
+     * supported on the current platform then this method will return {@code -1}.
+     * Calling this function with anything other than a key token will return {@code -1}
+     * and generate a {@link #INVALID_ENUM} error.
      *
-     * @param key Any <a href="https://www.glfw.org/docs/latest/group__keys.html">named key</a>.
-     * @return The platform-specific scancode for the key, or {@code -1} if an
-     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * @param key Any <a href="https://www.glfw.org/docs/latest/group__keys.html">key token</a>.
+     * @return The platform-specific scancode for the key, or {@code -1} if the key is
+     * not supported on the current platform
+     * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function may be called from any thread.
      */
     public static int getKeyScancode(int key) {
@@ -4478,9 +4490,9 @@ public final class GLFW {
      * use the {@link #nsetCharCallback(MemorySegment, MemorySegment) character callback} instead.
      * <p>
      * When a window loses input focus, it will generate synthetic key release
-     * events for all pressed keys.  You can tell these events from user-generated
-     * events by the fact that the synthetic ones are generated after the focus
-     * loss event has been processed, i.e. after the
+     * events for all pressed keys with associated key tokens.  You can tell these
+     * events from user-generated events by the fact that the synthetic ones are
+     * generated after the focus loss event has been processed, i.e. after the
      * {@link #nsetWindowFocusCallback(MemorySegment, MemorySegment) window focus callback}
      * has been called.
      * <p>
@@ -5556,12 +5568,16 @@ public final class GLFW {
      * thread.
      * <p>
      * This function makes the OpenGL or OpenGL ES context of the specified window
-     * current on the calling thread.  A context must only be made current on
-     * a single thread at a time and each thread can have only a single current
-     * context at a time.
+     * current on the calling thread.
+     * It can also detach the current context from
+     * the calling thread without making a new one current by passing in {@code NULL}.
      * <p>
-     * When moving a context between threads, you must make it non-current on the
-     * old thread before making it current on the new one.
+     * A context must only be made current on a single thread at a time and each
+     * thread can have only a single current context at a time.  Making a context
+     * current detaches any previously current context on the calling thread.
+     * <p>
+     * When moving a context between threads, you must detach it (make it
+     * non-current) on the old thread before making it current on the new one.
      * <p>
      * By default, making a context non-current implicitly forces a pipeline flush.
      * On machines that support {@code GL_KHR_context_flush_control}, you can control
@@ -5569,12 +5585,16 @@ public final class GLFW {
      * {@link #CONTEXT_RELEASE_BEHAVIOR}
      * hint.
      * <p>
-     * The specified window must have an OpenGL or OpenGL ES context.  Specifying
+     * The specified window must have an OpenGL or OpenGL ES context.
+     * Specifying
      * a window without a context will generate a {@link #NO_WINDOW_CONTEXT}
      * error.
      *
      * @param window The window whose context to make current, or {@link MemorySegment#NULL NULL} to
      *               detach the current context.
+     * @glfw.remark If the previously current context was created via a different
+     * context creation API than the one passed to this function, GLFW will still
+     * detach the previous one from its API before making the new one current.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_WINDOW_CONTEXT} and {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function may be called from any thread.

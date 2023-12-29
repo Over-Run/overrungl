@@ -18,7 +18,7 @@ package overrungl.joml;
 
 import org.joml.*;
 import overrungl.util.MemoryStack;
-import overrungl.util.CStdlib;
+import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -197,7 +197,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix2fc mat) {
-        return put(mat, CStdlib.malloc(MAT2F));
+        return put(mat, MemoryUtil.malloc(MAT2F));
     }
 
     /**
@@ -207,7 +207,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix2dc mat) {
-        return put(mat, CStdlib.malloc(MAT2D));
+        return put(mat, MemoryUtil.malloc(MAT2D));
     }
 
     /**
@@ -217,7 +217,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix3x2fc mat) {
-        return put(mat, CStdlib.malloc(MAT3X2F));
+        return put(mat, MemoryUtil.malloc(MAT3X2F));
     }
 
     /**
@@ -227,7 +227,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix3x2dc mat) {
-        return put(mat, CStdlib.malloc(MAT3X2D));
+        return put(mat, MemoryUtil.malloc(MAT3X2D));
     }
 
     /**
@@ -237,7 +237,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix3fc mat) {
-        return put(mat, CStdlib.malloc(MAT3F));
+        return put(mat, MemoryUtil.malloc(MAT3F));
     }
 
     /**
@@ -247,7 +247,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix3dc mat) {
-        return put(mat, CStdlib.malloc(MAT3D));
+        return put(mat, MemoryUtil.malloc(MAT3D));
     }
 
     /**
@@ -257,7 +257,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix4x3fc mat) {
-        return put(mat, CStdlib.malloc(MAT4X3F));
+        return put(mat, MemoryUtil.malloc(MAT4X3F));
     }
 
     /**
@@ -267,7 +267,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix4x3dc mat) {
-        return put(mat, CStdlib.malloc(MAT4X3D));
+        return put(mat, MemoryUtil.malloc(MAT4X3D));
     }
 
     /**
@@ -277,7 +277,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix4fc mat) {
-        return put(mat, CStdlib.malloc(MAT4F));
+        return put(mat, MemoryUtil.malloc(MAT4F));
     }
 
     /**
@@ -287,7 +287,7 @@ public final class Matrixn {
      * @return the memory address
      */
     public static MemorySegment malloc(Matrix4dc mat) {
-        return put(mat, CStdlib.malloc(MAT4D));
+        return put(mat, MemoryUtil.malloc(MAT4D));
     }
 
     /**

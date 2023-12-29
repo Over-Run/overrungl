@@ -24,5 +24,6 @@ module overrungl.nfd {
     exports overrungl.nfd;
 
     requires overrungl.core;
+    requires io.github.overrun.platform;
     requires static org.jetbrains.annotations;
 }
