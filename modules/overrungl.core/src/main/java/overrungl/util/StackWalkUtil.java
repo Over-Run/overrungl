@@ -109,7 +109,7 @@ final class StackWalkUtil {
                 .skip(2)
                 .dropWhile(f -> {
                     String name = f.getClassName();
-                    return name.equals(CStdlib.class.getName()) || name.equals(DebugAllocator.class.getName());
+                    return name.equals(MemoryUtil.class.getName()) || name.equals(DebugAllocator.class.getName());
                 })
                 .toArray(StackWalker.StackFrame[]::new)
             );

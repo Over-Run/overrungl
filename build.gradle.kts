@@ -17,6 +17,7 @@ val projName: String by project
 val projVersion: String by project
 val projVcs: String by project
 val projBranch: String by project
+val projLicenseYear: String by project
 val orgName: String by project
 val orgUrl: String by project
 val developers: String by project
@@ -269,7 +270,7 @@ allprojects {
                     )
 
                     bottom = "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
-                        "Copyright © 2022-2023 Overrun Organization<br>" +
+                        "Copyright © 2022-$projLicenseYear Overrun Organization<br>" +
                         "<b>$projVersion</b>"
                 }
             }

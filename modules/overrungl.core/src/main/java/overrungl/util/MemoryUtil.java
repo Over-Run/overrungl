@@ -28,12 +28,12 @@ import java.util.Objects;
 import static overrungl.FunctionDescriptors.*;
 
 /**
- * The standard-C library functions.
+ * The standard-C memory allocator.
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class CStdlib {
+public final class MemoryUtil {
     /**
      * An unbounded address layout.
      */
@@ -57,7 +57,7 @@ public final class CStdlib {
         return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
     }
 
-    private CStdlib() {
+    private MemoryUtil() {
         throw new IllegalStateException("Do not construct instance");
     }
 
@@ -328,19 +328,16 @@ public final class CStdlib {
     }
 
     /**
-     * Allocates a string with {@link CStdlib}.
+     * Creates a segment allocator with the given arena.
      *
-     * @param s the string.
-     * @return the memory segment of the allocated string. <b>MUST</b> be released by {@link #free(MemorySegment)}.
+     * @param arena the arena to be associated
+     * @return the segment allocator
      */
-    public static MemorySegment newString(String s) {
-        class Holder {
-            private static final SegmentAllocator ALLOCATOR = (byteSize, byteAlignment) -> {
-                checkByteSize(byteSize);
-                checkAlignment(byteAlignment);
-                return calloc(1, byteSize);
-            };
-        }
-        return Holder.ALLOCATOR.allocateUtf8String(s);
+    public static SegmentAllocator allocator(Arena arena) {
+        return (byteSize, byteAlignment) -> {
+            checkByteSize(byteSize);
+            checkAlignment(byteAlignment);
+            return calloc(1, byteSize).reinterpret(arena, MemoryUtil::free);
+        };
     }
 }
