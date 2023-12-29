@@ -36,7 +36,7 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL21C extends GL20C permits GL30C {
+public sealed class GL21C extends GL20C permits GL21, GL30C {
     public static final int PIXEL_PACK_BUFFER = 0x88EB;
     public static final int PIXEL_UNPACK_BUFFER = 0x88EC;
     public static final int PIXEL_PACK_BUFFER_BINDING = 0x88ED;

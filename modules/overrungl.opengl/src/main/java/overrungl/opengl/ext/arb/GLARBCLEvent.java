@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,36 +14,33 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
-
-import java.lang.foreign.MemorySegment;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_cl_event}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLARBCLEvent {
     public static final int GL_SYNC_CL_EVENT_ARB = 0x8240;
     public static final int GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241;
-
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_cl_event) return;
-        ext.glCreateSyncFromCLeventARB = load.invoke("glCreateSyncFromCLeventARB", FunctionDescriptors.PPIP);
+        ext.glCreateSyncFromCLeventARB = load.invoke("glCreateSyncFromCLeventARB", of(ADDRESS, ADDRESS, ADDRESS, JAVA_INT));
     }
 
-    public static MemorySegment glCreateSyncFromCLeventARB(MemorySegment context, MemorySegment event, int flags) {
-        var ext = GLLoader.getExtCapabilities();
+    public static @NativeType("GLsync") MemorySegment glCreateSyncFromCLeventARB(@NativeType("struct _cl_context *") MemorySegment context, @NativeType("struct _cl_event *") MemorySegment event, int flags) {
+        final var ext = getExtCapabilities();
         try {
-            return (MemorySegment) GLLoader.check(ext.glCreateSyncFromCLeventARB).invokeExact(context, event, flags);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            return (MemorySegment)
+            check(ext.glCreateSyncFromCLeventARB).invokeExact(context, event, flags);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

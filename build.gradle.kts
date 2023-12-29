@@ -1,4 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -7,6 +8,7 @@ plugins {
     `maven-publish`
     signing
     id("me.champeau.jmh") version "0.7.1" apply false
+    embeddedKotlin("jvm") apply false
 }
 
 val projGroupId: String by project
@@ -19,9 +21,12 @@ val orgName: String by project
 val orgUrl: String by project
 val developers: String by project
 
-val jdkEABuildDoc: String? = null
-val targetJavaVersion = 21
-val enablePreview = true
+val jdkVersion: String by rootProject
+val jdkEnablePreview: String by rootProject
+val jdkEarlyAccessDoc: String? by rootProject
+val kotlinTargetJdkVersion: String by rootProject
+
+val targetJavaVersion = jdkVersion.toInt()
 
 group = projGroupId
 version = projVersion
@@ -121,6 +126,7 @@ subprojects {
     apply(plugin = "java-library")
     apply(plugin = "idea")
     apply(plugin = "me.champeau.jmh")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
     group = projGroupId
     version = projVersion
@@ -145,12 +151,16 @@ subprojects {
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
-        if (enablePreview) options.compilerArgs.add("--enable-preview")
+        if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
         options.release.set(targetJavaVersion)
     }
 
+    tasks.withType<KotlinCompile> {
+        kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
+    }
+
     tasks.withType<Test> {
-        if (enablePreview) jvmArgs("--enable-preview")
+        if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
     }
 
     extensions.configure<JavaPluginExtension>("java") {
@@ -241,10 +251,10 @@ allprojects {
                     charSet = "UTF-8"
                     docEncoding = "UTF-8"
                     isAuthor = true
-                    if (jdkEABuildDoc == null) {
+                    if (jdkEarlyAccessDoc == null) {
                         links("https://docs.oracle.com/en/java/javase/$targetJavaVersion/docs/api/")
                     } else {
-                        links("https://download.java.net/java/early_access/$jdkEABuildDoc/docs/api/")
+                        links("https://download.java.net/java/early_access/$jdkEarlyAccessDoc/docs/api/")
                     }
 
                     tags(
@@ -287,17 +297,6 @@ publishing.publications {
         organization {
             name.set(orgName)
             url.set(orgUrl)
-        }
-        developers {
-            developers.split(',')
-                .map { it.split(':', limit = 3) }
-                .forEach { (id1, name1, email1) ->
-                    developer {
-                        id.set(id1)
-                        name.set(name1)
-                        email.set(email1)
-                    }
-                }
         }
         scm {
             connection.set("scm:git:https://github.com/${projVcs}.git")

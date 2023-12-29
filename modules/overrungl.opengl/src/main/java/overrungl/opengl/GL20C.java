@@ -17,10 +17,11 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrungl.internal.RuntimeHelper;
 import overrungl.opengl.ext.arb.GLARBDrawBuffers;
 import overrungl.opengl.ext.arb.GLARBFragmentProgram;
 import overrungl.opengl.ext.arb.GLARBShaderObjects;
-import overrungl.internal.RuntimeHelper;
+import overrungl.opengl.ext.arb.GLARBVertexProgram;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.Arena;
@@ -39,12 +40,13 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>{@linkplain GLARBDrawBuffers GL_ARB_draw_buffers}</li>
  *     <li>{@linkplain GLARBFragmentProgram GL_ARB_fragment_program}</li>
  *     <li>{@linkplain GLARBShaderObjects GL_ARB_shader_objects}</li>
+ *     <li>{@linkplain GLARBVertexProgram GL_ARB_vertex_program}</li>
  * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL20C extends GL15C permits GL21C {
+public sealed class GL20C extends GL15C permits GL20, GL21C {
     public static final int BLEND_EQUATION_RGB = 0x8009;
     public static final int VERTEX_ATTRIB_ARRAY_ENABLED = 0x8622;
     public static final int VERTEX_ATTRIB_ARRAY_SIZE = 0x8623;
