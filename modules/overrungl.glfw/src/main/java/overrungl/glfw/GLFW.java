@@ -5586,8 +5586,7 @@ public final class GLFW {
      * hint.
      * <p>
      * The specified window must have an OpenGL or OpenGL ES context.
-     * Specifying
-     * a window without a context will generate a {@link #NO_WINDOW_CONTEXT}
+     * Specifying a window without a context will generate a {@link #NO_WINDOW_CONTEXT}
      * error.
      *
      * @param window The window whose context to make current, or {@link MemorySegment#NULL NULL} to
