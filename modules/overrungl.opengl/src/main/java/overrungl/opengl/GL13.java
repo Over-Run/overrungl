@@ -38,6 +38,44 @@ import static overrungl.opengl.GLLoader.getCapabilities;
  * @since 0.1.0
  */
 public final class GL13 extends GL13C {
+    public static final int CLIENT_ACTIVE_TEXTURE = 0x84E1;
+    public static final int MAX_TEXTURE_UNITS = 0x84E2;
+    public static final int TRANSPOSE_MODELVIEW_MATRIX = 0x84E3;
+    public static final int TRANSPOSE_PROJECTION_MATRIX = 0x84E4;
+    public static final int TRANSPOSE_TEXTURE_MATRIX = 0x84E5;
+    public static final int TRANSPOSE_COLOR_MATRIX = 0x84E6;
+    public static final int MULTISAMPLE_BIT = 0x20000000;
+    public static final int NORMAL_MAP = 0x8511;
+    public static final int REFLECTION_MAP = 0x8512;
+    public static final int COMPRESSED_ALPHA = 0x84E9;
+    public static final int COMPRESSED_LUMINANCE = 0x84EA;
+    public static final int COMPRESSED_LUMINANCE_ALPHA = 0x84EB;
+    public static final int COMPRESSED_INTENSITY = 0x84EC;
+    public static final int COMBINE = 0x8570;
+    public static final int COMBINE_RGB = 0x8571;
+    public static final int COMBINE_ALPHA = 0x8572;
+    public static final int SOURCE0_RGB = 0x8580;
+    public static final int SOURCE1_RGB = 0x8581;
+    public static final int SOURCE2_RGB = 0x8582;
+    public static final int SOURCE0_ALPHA = 0x8588;
+    public static final int SOURCE1_ALPHA = 0x8589;
+    public static final int SOURCE2_ALPHA = 0x858A;
+    public static final int OPERAND0_RGB = 0x8590;
+    public static final int OPERAND1_RGB = 0x8591;
+    public static final int OPERAND2_RGB = 0x8592;
+    public static final int OPERAND0_ALPHA = 0x8598;
+    public static final int OPERAND1_ALPHA = 0x8599;
+    public static final int OPERAND2_ALPHA = 0x859A;
+    public static final int RGB_SCALE = 0x8573;
+    public static final int ADD_SIGNED = 0x8574;
+    public static final int INTERPOLATE = 0x8575;
+    public static final int SUBTRACT = 0x84E7;
+    public static final int CONSTANT = 0x8576;
+    public static final int PRIMARY_COLOR = 0x8577;
+    public static final int PREVIOUS = 0x8578;
+    public static final int DOT3_RGB = 0x86AE;
+    public static final int DOT3_RGBA = 0x86AF;
+
     static void load(GLCapabilities caps, GLLoadFunc load) {
         if (!caps.Ver13) return;
         caps.glClientActiveTexture = load.invoke("glClientActiveTexture", IV);

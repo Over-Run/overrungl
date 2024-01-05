@@ -342,4 +342,18 @@ public final class MemoryUtil {
             throw new AssertionError("should not reach here", e);
         }
     }
+
+    /**
+     * Creates a segment allocator with the given arena.
+     *
+     * @param arena the arena to be associated
+     * @return the segment allocator
+     */
+    public static SegmentAllocator allocator(Arena arena) {
+        return (byteSize, byteAlignment) -> {
+            checkByteSize(byteSize);
+            checkAlignment(byteAlignment);
+            return calloc(1, byteSize).reinterpret(arena, MemoryUtil::free);
+        };
+    }
 }

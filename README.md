@@ -11,8 +11,8 @@
 
 ## Introduction
 
-Overrun Game Library is a high-performance library that implemented with Java 22,
-enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
+Overrun Game Library is a high-performance library implemented with Java 22,
+which enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
 
@@ -127,7 +127,7 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
-├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
+├─ nfd https://github.com/Over-Run/nfd-ci
 │  ├─ linux
 │  │  ├─ arm32
 │  │  │  └─ libnfd.so

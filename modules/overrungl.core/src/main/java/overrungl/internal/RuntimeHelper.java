@@ -16,11 +16,11 @@
 
 package overrungl.internal;
 
+import io.github.overrun.platform.Architecture;
+import io.github.overrun.platform.Platform;
 import org.jetbrains.annotations.Nullable;
 import overrungl.FunctionDescriptors;
 import overrungl.NativeType;
-import overrungl.os.Architecture;
-import overrungl.os.Platform;
 import overrungl.util.MemoryUtil;
 
 import java.io.File;
@@ -271,11 +271,11 @@ public final class RuntimeHelper {
     /**
      * Gets the strings from an unbounded address array.
      *
-     * @param seg the memory segment contained strings. native type: {@code char**}
+     * @param seg the memory segment contained strings
      * @param arr the array to hold the result
      * @return arr
      */
-    public static String[] toUnboundedArray(@NativeType("const char* const* const") MemorySegment seg, String[] arr) {
+    public static String[] toUnboundedArray(@NativeType("char**") MemorySegment seg, String[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = unboundPointerString(seg, i);
         }

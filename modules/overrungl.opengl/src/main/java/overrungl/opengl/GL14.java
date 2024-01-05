@@ -16,6 +16,8 @@
 
 package overrungl.opengl;
 
+import overrungl.opengl.ext.arb.GLARBWindowPos;
+
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
@@ -24,6 +26,11 @@ import static overrungl.FunctionDescriptors.*;
 
 /**
  * The OpenGL 1.4 functions.
+ * <p>
+ * These extensions are promoted in this version:
+ * <ul>
+ *     <li>{@linkplain GLARBWindowPos GL_ARB_window_pos}</li>
+ * </ul>
  *
  * @author squid233
  * @since 0.1.0

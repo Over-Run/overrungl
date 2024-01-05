@@ -44,7 +44,7 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL30C extends GL21C permits GL31C {
+public sealed class GL30C extends GL21C permits GL30, GL31C {
     public static final int COMPARE_REF_TO_TEXTURE = 0x884E;
     public static final int CLIP_DISTANCE0 = 0x3000;
     public static final int CLIP_DISTANCE1 = 0x3001;

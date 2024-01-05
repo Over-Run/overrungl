@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,94 +14,56 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.JAVA_INT;
-import static overrungl.FunctionDescriptors.*;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_vertex_array_object}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLAPPLEVertexArrayObject {
+    public static final int GL_VERTEX_ARRAY_BINDING_APPLE = 0x85B5;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_APPLE_vertex_array_object) return;
-        ext.glBindVertexArrayAPPLE = load.invoke("glBindVertexArrayAPPLE", IV);
-        ext.glDeleteVertexArraysAPPLE = load.invoke("glDeleteVertexArraysAPPLE", IPV);
-        ext.glGenVertexArraysAPPLE = load.invoke("glGenVertexArraysAPPLE", IPV);
-        ext.glIsVertexArrayAPPLE = load.invoke("glIsVertexArrayAPPLE", IZ);
+        ext.glBindVertexArrayAPPLE = load.invoke("glBindVertexArrayAPPLE", ofVoid(JAVA_INT));
+        ext.glDeleteVertexArraysAPPLE = load.invoke("glDeleteVertexArraysAPPLE", ofVoid(JAVA_INT, ADDRESS));
+        ext.glGenVertexArraysAPPLE = load.invoke("glGenVertexArraysAPPLE", ofVoid(JAVA_INT, ADDRESS));
+        ext.glIsVertexArrayAPPLE = load.invoke("glIsVertexArrayAPPLE", of(JAVA_BYTE, JAVA_INT));
     }
 
     public static void glBindVertexArrayAPPLE(int array) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glBindVertexArrayAPPLE).invokeExact(array);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glBindVertexArrayAPPLE).invokeExact(array);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glDeleteVertexArraysAPPLE(int n, MemorySegment arrays) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glDeleteVertexArraysAPPLE(int n, @NativeType("const GLuint *") MemorySegment arrays) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glDeleteVertexArraysAPPLE(SegmentAllocator allocator, int[] arrays) {
-        glDeleteVertexArraysAPPLE(arrays.length, allocator.allocateArray(JAVA_INT, arrays));
-    }
-
-    public static void glDeleteVertexArrayAPPLE(SegmentAllocator allocator, int array) {
-        glDeleteVertexArraysAPPLE(1, allocator.allocateFrom(JAVA_INT, array));
-    }
-
-    public static void glGenVertexArraysAPPLE(int n, MemorySegment arrays) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glGenVertexArraysAPPLE(int n, @NativeType("GLuint *") MemorySegment arrays) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glGenVertexArraysAPPLE).invokeExact(n, arrays);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glGenVertexArraysAPPLE(SegmentAllocator allocator, int[] arrays) {
-        var seg = allocator.allocateArray(JAVA_INT, arrays.length);
-        glGenVertexArraysAPPLE(arrays.length, seg);
-        RuntimeHelper.toArray(seg, arrays);
-    }
-
-    public static int glGenVertexArrayAPPLE() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
-            glGenVertexArraysAPPLE(1, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+            check(ext.glGenVertexArraysAPPLE).invokeExact(n, arrays);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static boolean glIsVertexArrayAPPLE(int array) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            return (boolean) GLLoader.check(ext.glIsVertexArrayAPPLE).invokeExact(array);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            return (boolean)
+            check(ext.glIsVertexArrayAPPLE).invokeExact(array);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

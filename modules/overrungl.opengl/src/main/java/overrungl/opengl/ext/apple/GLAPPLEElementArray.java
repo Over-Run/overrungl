@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,84 +14,65 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.JAVA_INT;
-import static overrungl.FunctionDescriptors.*;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_element_array}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLAPPLEElementArray {
+    public static final int GL_ELEMENT_ARRAY_APPLE = 0x8A0C;
+    public static final int GL_ELEMENT_ARRAY_TYPE_APPLE = 0x8A0D;
+    public static final int GL_ELEMENT_ARRAY_POINTER_APPLE = 0x8A0E;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_APPLE_element_array) return;
-        ext.glDrawElementArrayAPPLE = load.invoke("glDrawElementArrayAPPLE", IIIV);
-        ext.glDrawRangeElementArrayAPPLE = load.invoke("glDrawRangeElementArrayAPPLE", IIIIIV);
-        ext.glElementPointerAPPLE = load.invoke("glElementPointerAPPLE", IPV);
-        ext.glMultiDrawElementArrayAPPLE = load.invoke("glMultiDrawElementArrayAPPLE", IPPIV);
-        ext.glMultiDrawRangeElementArrayAPPLE = load.invoke("glMultiDrawRangeElementArrayAPPLE", IIIPPIV);
+        ext.glElementPointerAPPLE = load.invoke("glElementPointerAPPLE", ofVoid(JAVA_INT, ADDRESS));
+        ext.glDrawElementArrayAPPLE = load.invoke("glDrawElementArrayAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
+        ext.glDrawRangeElementArrayAPPLE = load.invoke("glDrawRangeElementArrayAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
+        ext.glMultiDrawElementArrayAPPLE = load.invoke("glMultiDrawElementArrayAPPLE", ofVoid(JAVA_INT, ADDRESS, ADDRESS, JAVA_INT));
+        ext.glMultiDrawRangeElementArrayAPPLE = load.invoke("glMultiDrawRangeElementArrayAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS, JAVA_INT));
+    }
+
+    public static void glElementPointerAPPLE(int type, @NativeType("const void *") MemorySegment pointer) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glElementPointerAPPLE).invokeExact(type, pointer);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static void glDrawElementArrayAPPLE(int mode, int first, int count) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glDrawElementArrayAPPLE).invokeExact(mode, first, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glDrawElementArrayAPPLE).invokeExact(mode, first, count);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static void glDrawRangeElementArrayAPPLE(int mode, int start, int end, int first, int count) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glElementPointerAPPLE(int type, MemorySegment pointer) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMultiDrawElementArrayAPPLE(int mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glElementPointerAPPLE).invokeExact(type, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glMultiDrawElementArrayAPPLE).invokeExact(mode, first, count, primcount);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMultiDrawElementArrayAPPLE(int mode, MemorySegment first, MemorySegment count, int primCount) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glMultiDrawElementArrayAPPLE).invokeExact(mode, first, count, primCount);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glMultiDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count, primcount);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glMultiDrawElementArrayAPPLE(SegmentAllocator allocator, int mode, int[] first, int[] count, int primCount) {
-        glMultiDrawElementArrayAPPLE(mode, allocator.allocateArray(JAVA_INT, first), allocator.allocateArray(JAVA_INT, count), primCount);
-    }
-
-    public static void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, MemorySegment first, MemorySegment count, int primCount) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glMultiDrawRangeElementArrayAPPLE).invokeExact(mode, start, end, first, count, primCount);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glMultiDrawRangeElementArrayAPPLE(SegmentAllocator allocator, int mode, int start, int end, int[] first, int[] count, int primCount) {
-        glMultiDrawRangeElementArrayAPPLE(mode, start, end, allocator.allocateArray(JAVA_INT, first), allocator.allocateArray(JAVA_INT, count), primCount);
-    }
 }

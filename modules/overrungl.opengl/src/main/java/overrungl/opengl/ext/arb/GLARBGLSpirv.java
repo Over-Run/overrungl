@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,36 +14,32 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
-
-import java.lang.foreign.MemorySegment;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_gl_spirv}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLARBGLSpirv {
     public static final int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
     public static final int GL_SPIR_V_BINARY_ARB = 0x9552;
-
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_ARB_gl_spirv) return;
-        ext.glSpecializeShaderARB = load.invoke("glSpecializeShaderARB", FunctionDescriptors.IPIPPV);
+        ext.glSpecializeShaderARB = load.invoke("glSpecializeShaderARB", ofVoid(JAVA_INT, ADDRESS, JAVA_INT, ADDRESS, ADDRESS));
     }
 
-    public static void glSpecializeShaderARB(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glSpecializeShaderARB(int shader, @NativeType("const GLchar *") MemorySegment pEntryPoint, int numSpecializationConstants, @NativeType("const GLuint *") MemorySegment pConstantIndex, @NativeType("const GLuint *") MemorySegment pConstantValue) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glSpecializeShaderARB).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glSpecializeShaderARB).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

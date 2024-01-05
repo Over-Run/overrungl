@@ -16,8 +16,9 @@
 
 package overrungl.opengl;
 
-import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
 import overrungl.internal.RuntimeHelper;
+import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
+import overrungl.opengl.ext.arb.GLARBVertexBufferObject;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -32,12 +33,13 @@ import static overrungl.FunctionDescriptors.*;
  * These extensions are promoted in this version:
  * <ul>
  *     <li>{@linkplain GLARBOcclusionQuery GL_ARB_occlusion_query}</li>
+ *     <li>{@linkplain GLARBVertexBufferObject GL_ARB_vertex_buffer_object}</li>
  * </ul>
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL15C extends GL14C permits GL20C {
+public sealed class GL15C extends GL14C permits GL15, GL20C {
     public static final int BUFFER_SIZE = 0x8764;
     public static final int BUFFER_USAGE = 0x8765;
     public static final int QUERY_COUNTER_BITS = 0x8864;

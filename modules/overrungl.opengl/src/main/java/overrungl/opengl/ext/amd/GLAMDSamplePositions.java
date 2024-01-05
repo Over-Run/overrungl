@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,39 +14,30 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_sample_positions}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLAMDSamplePositions {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_sample_positions) return;
-        ext.glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", FunctionDescriptors.IIPV);
+        ext.glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
     }
 
-    public static void glSetMultisamplefvAMD(int pname, int index, MemorySegment val) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glSetMultisamplefvAMD(int pname, int index, @NativeType("const GLfloat *") MemorySegment val) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glSetMultisamplefvAMD).invokeExact(pname, index, val);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glSetMultisamplefvAMD).invokeExact(pname, index, val);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glSetMultisamplefvAMD(SegmentAllocator allocator, int pname, int index, float[] val) {
-        glSetMultisamplefvAMD(pname, index, allocator.allocateArray(ValueLayout.JAVA_FLOAT, val));
-    }
 }

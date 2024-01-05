@@ -16,11 +16,12 @@
 
 package overrungl.nfd;
 
+import io.github.overrun.platform.Platform;
 import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.NativeType;
+import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
-import overrungl.os.Platform;
 import overrungl.util.MemoryStack;
 import overrungl.util.value.Tuple2;
 
@@ -124,14 +125,14 @@ public final class NFD {
     private static final SymbolLookup LOOKUP;
 
     static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", "0.1.0.0");
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
         final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
         LOOKUP = function != null ? function.apply(lib) : lib.get();
     }
 
     private static final Platform os = Platform.current();
     private static final boolean isOsWin = os instanceof Platform.Windows;
-    private static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOSX;
+    private static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOS;
     /**
      * The type of the path-set size ({@code long} for Windows and Mac OS X, {@code int} for others).
      */

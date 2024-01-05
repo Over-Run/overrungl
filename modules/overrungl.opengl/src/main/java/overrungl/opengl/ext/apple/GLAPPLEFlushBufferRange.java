@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,41 +14,40 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_flush_buffer_range}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLAPPLEFlushBufferRange {
+    public static final int GL_BUFFER_SERIALIZED_MODIFY_APPLE = 0x8A12;
+    public static final int GL_BUFFER_FLUSHING_UNMAP_APPLE = 0x8A13;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_APPLE_flush_buffer_range) return;
-        ext.glBufferParameteriAPPLE = load.invoke("glBufferParameteriAPPLE", FunctionDescriptors.IIIV);
-        ext.glFlushMappedBufferRangeAPPLE = load.invoke("glFlushMappedBufferRangeAPPLE", FunctionDescriptors.IJJV);
+        ext.glBufferParameteriAPPLE = load.invoke("glBufferParameteriAPPLE", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
+        ext.glFlushMappedBufferRangeAPPLE = load.invoke("glFlushMappedBufferRangeAPPLE", ofVoid(JAVA_INT, JAVA_LONG, JAVA_LONG));
     }
 
     public static void glBufferParameteriAPPLE(int target, int pname, int param) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glBufferParameteriAPPLE).invokeExact(target, pname, param);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glBufferParameteriAPPLE).invokeExact(target, pname, param);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
     public static void glFlushMappedBufferRangeAPPLE(int target, long offset, long size) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glFlushMappedBufferRangeAPPLE).invokeExact(target, offset, size);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glFlushMappedBufferRangeAPPLE).invokeExact(target, offset, size);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }
