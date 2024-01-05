@@ -101,6 +101,10 @@ Javadoc can be found [here](https://over-run.github.io/overrungl-doc/).
 
 The documentation of OpenGL can be found [here](https://docs.gl/).
 
+### Credits
+
+[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)
+
 ### Publishing (for internal member)
 
 To publish this library, you need a GPG key and the write permission of Maven Central.
