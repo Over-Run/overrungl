@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -124,7 +124,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawArrays(SegmentAllocator allocator, int mode, int[] first, int[] count, int drawCount) {
-        multiDrawArrays(mode, allocator.allocateArray(JAVA_INT, first), allocator.allocateArray(JAVA_INT, count), drawCount);
+        multiDrawArrays(mode, allocator.allocateFrom(JAVA_INT, first), allocator.allocateFrom(JAVA_INT, count), drawCount);
     }
 
     public static void multiDrawArrays(SegmentAllocator allocator, int mode, int[] first, int[] count) {
@@ -141,11 +141,11 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices, int drawCount) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_BYTE, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(JAVA_BYTE, indices[i]));
         }
-        multiDrawElements(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount);
+        multiDrawElements(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount);
     }
 
     public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices) {
@@ -153,11 +153,11 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices, int drawCount) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_SHORT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(JAVA_SHORT, indices[i]));
         }
-        multiDrawElements(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount);
+        multiDrawElements(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount);
     }
 
     public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices) {
@@ -165,11 +165,11 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices, int drawCount) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_INT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(JAVA_INT, indices[i]));
         }
-        multiDrawElements(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount);
+        multiDrawElements(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount);
     }
 
     public static void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices) {
@@ -195,7 +195,7 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameterfv(SegmentAllocator allocator, int pname, float[] params) {
-        pointParameterfv(pname, allocator.allocateArray(JAVA_FLOAT, params));
+        pointParameterfv(pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void pointParameteri(int pname, int param) {
@@ -217,6 +217,6 @@ public sealed class GL14C extends GL13C permits GL14, GL15C {
     }
 
     public static void pointParameteriv(SegmentAllocator allocator, int pname, int[] params) {
-        pointParameteriv(pname, allocator.allocateArray(JAVA_INT, params));
+        pointParameteriv(pname, allocator.allocateFrom(JAVA_INT, params));
     }
 }

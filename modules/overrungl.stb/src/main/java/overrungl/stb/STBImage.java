@@ -123,7 +123,7 @@ public final class STBImage {
     @Nullable
     public static String failureReason() {
         var pReason = nfailureReason();
-        return RuntimeHelper.isNullptr(pReason) ? null : pReason.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pReason) ? null : pReason.getString(0);
     }
 
     public static void hdrToLdrGamma(float gamma) {
@@ -244,7 +244,7 @@ public final class STBImage {
             var px = stack.callocInt();
             var py = stack.callocInt();
             var pc = stack.callocInt();
-            boolean b = infoFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), px, py, pc);
+            boolean b = infoFromMemory(allocator.allocateFrom(JAVA_BYTE, buffer), px, py, pc);
             x[0] = px.get(JAVA_INT, 0);
             y[0] = py.get(JAVA_INT, 0);
             comp[0] = pc.get(JAVA_INT, 0);
@@ -305,7 +305,7 @@ public final class STBImage {
     }
 
     public static boolean is16BitFromMemory(SegmentAllocator allocator, byte[] buffer) {
-        return is16BitFromMemory(allocator.allocateArray(JAVA_BYTE, buffer));
+        return is16BitFromMemory(allocator.allocateFrom(JAVA_BYTE, buffer));
     }
 
     public static boolean nisHdr(MemorySegment filename) {
@@ -359,7 +359,7 @@ public final class STBImage {
     }
 
     public static boolean isHdrFromMemory(SegmentAllocator allocator, byte[] buffer) {
-        return isHdrFromMemory(allocator.allocateArray(JAVA_BYTE, buffer));
+        return isHdrFromMemory(allocator.allocateFrom(JAVA_BYTE, buffer));
     }
 
     public static void ldrToHdrGamma(float gamma) {
@@ -469,7 +469,7 @@ public final class STBImage {
         var px = allocator.allocate(JAVA_INT);
         var py = allocator.allocate(JAVA_INT);
         var pc = allocator.allocate(JAVA_INT);
-        var addr = load16FromMemory(allocator.allocateArray(JAVA_BYTE, buffer), px, py, pc, desiredChannels);
+        var addr = load16FromMemory(allocator.allocateFrom(JAVA_BYTE, buffer), px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -567,7 +567,7 @@ public final class STBImage {
         var px = allocator.allocate(JAVA_INT);
         var py = allocator.allocate(JAVA_INT);
         var pc = allocator.allocate(JAVA_INT);
-        var addr = nloadFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
+        var addr = nloadFromMemory(allocator.allocateFrom(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);
@@ -592,7 +592,7 @@ public final class STBImage {
         var py = allocator.allocate(JAVA_INT);
         var pz = allocator.allocate(JAVA_INT);
         var pc = allocator.allocate(JAVA_INT);
-        var addr = loadGifFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), pd, px, py, pz, pc, reqComp);
+        var addr = loadGifFromMemory(allocator.allocateFrom(JAVA_BYTE, buffer), pd, px, py, pz, pc, reqComp);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         final int layers = pz.get(JAVA_INT, 0);
@@ -693,7 +693,7 @@ public final class STBImage {
         var px = allocator.allocate(JAVA_INT);
         var py = allocator.allocate(JAVA_INT);
         var pc = allocator.allocate(JAVA_INT);
-        var addr = nloadfFromMemory(allocator.allocateArray(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
+        var addr = nloadfFromMemory(allocator.allocateFrom(JAVA_BYTE, buffer), buffer.length, px, py, pc, desiredChannels);
         x[0] = px.get(JAVA_INT, 0);
         y[0] = py.get(JAVA_INT, 0);
         channelsInFile[0] = pc.get(JAVA_INT, 0);

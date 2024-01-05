@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -120,8 +120,8 @@ public sealed class GL46C extends GL45C permits GL {
         specializeShader(shader,
             pEntryPoint != null ? allocator.allocateFrom(pEntryPoint) : MemorySegment.NULL,
             pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
-            pConstantIndex != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
-            pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
+            pConstantIndex != null ? allocator.allocateFrom(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
+            pConstantValue != null ? allocator.allocateFrom(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
     }
 
     public static void specializeShader(int shader, @Nullable String pEntryPoint) {

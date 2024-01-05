@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -88,11 +88,11 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoordPointer(SegmentAllocator allocator, int type, int stride, float[] pointer) {
-        fogCoordPointer(type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
+        fogCoordPointer(type, stride, allocator.allocateFrom(JAVA_FLOAT, pointer));
     }
 
     public static void fogCoordPointer(SegmentAllocator allocator, int type, int stride, double[] pointer) {
-        fogCoordPointer(type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
+        fogCoordPointer(type, stride, allocator.allocateFrom(JAVA_DOUBLE, pointer));
     }
 
     public static void fogCoordd(double coord) {
@@ -114,7 +114,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoorddv(SegmentAllocator allocator, double[] coord) {
-        fogCoorddv(allocator.allocateArray(JAVA_DOUBLE, coord));
+        fogCoorddv(allocator.allocateFrom(JAVA_DOUBLE, coord));
     }
 
     public static void fogCoordf(float coord) {
@@ -136,7 +136,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void fogCoordfv(SegmentAllocator allocator, float[] coord) {
-        fogCoordfv(allocator.allocateArray(JAVA_FLOAT, coord));
+        fogCoordfv(allocator.allocateFrom(JAVA_FLOAT, coord));
     }
 
     public static void secondaryColor3b(byte red, byte green, byte blue) {
@@ -158,7 +158,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3bv(SegmentAllocator allocator, byte[] v) {
-        secondaryColor3bv(allocator.allocateArray(JAVA_BYTE, v));
+        secondaryColor3bv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void secondaryColor3d(double red, double green, double blue) {
@@ -180,7 +180,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3dv(SegmentAllocator allocator, double[] v) {
-        secondaryColor3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        secondaryColor3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void secondaryColor3f(float red, float green, float blue) {
@@ -202,7 +202,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3fv(SegmentAllocator allocator, float[] v) {
-        secondaryColor3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        secondaryColor3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void secondaryColor3i(int red, int green, int blue) {
@@ -224,7 +224,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3iv(SegmentAllocator allocator, int[] v) {
-        secondaryColor3iv(allocator.allocateArray(JAVA_INT, v));
+        secondaryColor3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void secondaryColor3s(short red, short green, short blue) {
@@ -246,7 +246,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3sv(SegmentAllocator allocator, short[] v) {
-        secondaryColor3sv(allocator.allocateArray(JAVA_SHORT, v));
+        secondaryColor3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void secondaryColor3ub(byte red, byte green, byte blue) {
@@ -268,7 +268,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3ubv(SegmentAllocator allocator, byte[] v) {
-        secondaryColor3ubv(allocator.allocateArray(JAVA_BYTE, v));
+        secondaryColor3ubv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void secondaryColor3ui(int red, int green, int blue) {
@@ -290,7 +290,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3uiv(SegmentAllocator allocator, int[] v) {
-        secondaryColor3uiv(allocator.allocateArray(JAVA_INT, v));
+        secondaryColor3uiv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void secondaryColor3us(short red, short green, short blue) {
@@ -312,7 +312,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColor3usv(SegmentAllocator allocator, short[] v) {
-        secondaryColor3usv(allocator.allocateArray(JAVA_SHORT, v));
+        secondaryColor3usv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void secondaryColorPointer(int size, int type, int stride, MemorySegment pointer) {
@@ -325,23 +325,23 @@ public final class GL14 extends GL14C {
     }
 
     public static void secondaryColorPointer(SegmentAllocator allocator, int size, int type, int stride, byte[] pointer) {
-        secondaryColorPointer(size, type, stride, allocator.allocateArray(JAVA_BYTE, pointer));
+        secondaryColorPointer(size, type, stride, allocator.allocateFrom(JAVA_BYTE, pointer));
     }
 
     public static void secondaryColorPointer(SegmentAllocator allocator, int size, int type, int stride, short[] pointer) {
-        secondaryColorPointer(size, type, stride, allocator.allocateArray(JAVA_SHORT, pointer));
+        secondaryColorPointer(size, type, stride, allocator.allocateFrom(JAVA_SHORT, pointer));
     }
 
     public static void secondaryColorPointer(SegmentAllocator allocator, int size, int type, int stride, int[] pointer) {
-        secondaryColorPointer(size, type, stride, allocator.allocateArray(JAVA_INT, pointer));
+        secondaryColorPointer(size, type, stride, allocator.allocateFrom(JAVA_INT, pointer));
     }
 
     public static void secondaryColorPointer(SegmentAllocator allocator, int size, int type, int stride, float[] pointer) {
-        secondaryColorPointer(size, type, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
+        secondaryColorPointer(size, type, stride, allocator.allocateFrom(JAVA_FLOAT, pointer));
     }
 
     public static void secondaryColorPointer(SegmentAllocator allocator, int size, int type, int stride, double[] pointer) {
-        secondaryColorPointer(size, type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
+        secondaryColorPointer(size, type, stride, allocator.allocateFrom(JAVA_DOUBLE, pointer));
     }
 
     public static void windowPos2d(double x, double y) {
@@ -363,7 +363,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2dv(SegmentAllocator allocator, double[] v) {
-        windowPos2dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        windowPos2dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void windowPos2f(float x, float y) {
@@ -385,7 +385,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2fv(SegmentAllocator allocator, float[] v) {
-        windowPos2fv(allocator.allocateArray(JAVA_FLOAT, v));
+        windowPos2fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void windowPos2i(int x, int y) {
@@ -407,7 +407,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2iv(SegmentAllocator allocator, int[] v) {
-        windowPos2iv(allocator.allocateArray(JAVA_INT, v));
+        windowPos2iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void windowPos2s(short x, short y) {
@@ -429,7 +429,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos2sv(SegmentAllocator allocator, short[] v) {
-        windowPos2sv(allocator.allocateArray(JAVA_SHORT, v));
+        windowPos2sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void windowPos3d(double x, double y, double z) {
@@ -451,7 +451,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3dv(SegmentAllocator allocator, double[] v) {
-        windowPos3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        windowPos3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void windowPos3f(float x, float y, float z) {
@@ -473,7 +473,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3fv(SegmentAllocator allocator, float[] v) {
-        windowPos3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        windowPos3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void windowPos3i(int x, int y, int z) {
@@ -495,7 +495,7 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3iv(SegmentAllocator allocator, int[] v) {
-        windowPos3iv(allocator.allocateArray(JAVA_INT, v));
+        windowPos3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void windowPos3s(short x, short y, short z) {
@@ -517,6 +517,6 @@ public final class GL14 extends GL14C {
     }
 
     public static void windowPos3sv(SegmentAllocator allocator, short[] v) {
-        windowPos3sv(allocator.allocateArray(JAVA_SHORT, v));
+        windowPos3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 }

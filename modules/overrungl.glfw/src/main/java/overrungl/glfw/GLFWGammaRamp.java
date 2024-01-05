@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public final class GLFWGammaRamp extends Struct {
-    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT));
+    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Long.MAX_VALUE / JAVA_SHORT.byteSize(), JAVA_SHORT));
     /**
      * The struct layout.
      */

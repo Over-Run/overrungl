@@ -445,7 +445,7 @@ public final class GLExtCaps {
         var pExtsI = new MemorySegment[1];
         if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI, caps)) return false;
 
-        String exts = pExts.getUtf8String(0);
+        String exts = pExts.getString(0);
         int numExtsI = pNumExtsI.get(JAVA_INT, 0);
         var extsI = pExtsI[0];
 

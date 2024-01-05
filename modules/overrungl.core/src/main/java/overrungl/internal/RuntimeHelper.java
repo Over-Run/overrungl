@@ -78,7 +78,7 @@ public final class RuntimeHelper {
      * @return the string.
      */
     public static String unboundPointerString(MemorySegment segment) {
-        return reinterpreting(segment, 0, MemoryUtil::strlen).getString(0);
+        return unboundPointerString(segment, 0);
     }
 
     /**
@@ -89,7 +89,7 @@ public final class RuntimeHelper {
      * @return the string.
      */
     public static String unboundPointerString(MemorySegment segment, int index) {
-        return reinterpreting(segment, index, MemoryUtil::strlen).getString(0);
+        return reinterpreting(segment, index, str -> MemoryUtil.strlen(str) + 1).getString(0);
     }
 
     /**
@@ -99,7 +99,7 @@ public final class RuntimeHelper {
      * @return the string
      */
     public static String getString(MemorySegment segment) {
-        return segment.reinterpret(MemoryUtil.strlen(segment)).getString(0);
+        return segment.reinterpret(MemoryUtil.strlen(segment) + 1).getString(0);
     }
 
     /**
@@ -120,7 +120,7 @@ public final class RuntimeHelper {
      * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
      */
     public static String unknownToken(String description, int token) {
-        return STR. "\{ description } [0x\{ Integer.toHexString(token) }]" ;
+        return STR."\{description} [0x\{Integer.toHexString(token)}]";
     }
 
     /**
@@ -144,7 +144,7 @@ public final class RuntimeHelper {
             uri = localFile.toURI();
         } else {
             // 2. Load from classpath
-            var file = new File(tmpdir, STR. "overrungl\{ System.getProperty("user.name") }" );
+            var file = new File(tmpdir, STR."overrungl\{System.getProperty("user.name")}");
             if (!file.exists()) {
                 // Create directory
                 file.mkdir();
@@ -154,15 +154,15 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, STR. "\{ basename }-\{ version }\{ suffix }" );
+            var libFile = new File(file, STR."\{basename}-\{version}\{suffix}");
             if (!libFile.exists()) {
                 // Extract
-                final String fromPath = STR. "\{ module }/\{ os.familyName() }/\{ Architecture.current() }/\{ path }" ;
+                final String fromPath = STR."\{module}/\{os.familyName()}/\{Architecture.current()}/\{path}";
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
-                    Files.copy(Objects.requireNonNull(is, STR. "File not found: \{ fromPath }" ),
+                    Files.copy(Objects.requireNonNull(is, STR."File not found: \{fromPath}"),
                         Path.of(libFile.getAbsolutePath()));
                 } catch (Exception e) {
-                    throw new IllegalStateException(STR. "File not found: \{ file }; try setting property -Doverrungl.natives to a valid path" , e);
+                    throw new IllegalStateException(STR."File not found: \{file}; try setting property -Doverrungl.natives to a valid path", e);
                 }
             }
             uri = libFile.toURI();

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1091,7 +1091,7 @@ public final class GLFW {
      * @see #ngetVersionString() ngetVersionString
      */
     public static String getVersionString() {
-        return ngetVersionString().getUtf8String(0);
+        return ngetVersionString().getString(0);
     }
 
     /**
@@ -1630,7 +1630,7 @@ public final class GLFW {
     @Nullable
     public static String getMonitorName(MemorySegment monitor) {
         var pName = ngetMonitorName(monitor);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -4136,7 +4136,7 @@ public final class GLFW {
     @Nullable
     public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -5064,7 +5064,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -5117,7 +5117,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
-        return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getString(0);
     }
 
     /**
@@ -5334,7 +5334,7 @@ public final class GLFW {
     @Nullable
     public static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -5464,7 +5464,7 @@ public final class GLFW {
     @Nullable
     public static String getClipboardString(@Deprecated MemorySegment window) {
         var pString = ngetClipboardString();
-        return RuntimeHelper.isNullptr(pString) ? null : pString.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pString) ? null : pString.getString(0);
     }
 
     /**

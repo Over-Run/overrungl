@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,7 +143,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void deleteTextures(SegmentAllocator allocator, int[] textures) {
-        deleteTextures(textures.length, allocator.allocateArray(JAVA_INT, textures));
+        deleteTextures(textures.length, allocator.allocateFrom(JAVA_INT, textures));
     }
 
     public static void deleteTexture(int texture) {
@@ -175,17 +175,17 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, byte[] indices) {
-        var seg = allocator.allocateArray(JAVA_BYTE, indices);
+        var seg = allocator.allocateFrom(JAVA_BYTE, indices);
         drawElements(mode, count, type, seg);
     }
 
     public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, short[] indices) {
-        var seg = allocator.allocateArray(JAVA_SHORT, indices);
+        var seg = allocator.allocateFrom(JAVA_SHORT, indices);
         drawElements(mode, count, type, seg);
     }
 
     public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, int[] indices) {
-        var seg = allocator.allocateArray(JAVA_INT, indices);
+        var seg = allocator.allocateFrom(JAVA_INT, indices);
         drawElements(mode, count, type, seg);
     }
 
@@ -200,7 +200,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void genTextures(SegmentAllocator allocator, int[] textures) {
         final int n = textures.length;
-        var pTex = allocator.allocateArray(JAVA_INT, n);
+        var pTex = allocator.allocate(JAVA_INT, n);
         genTextures(n, pTex);
         RuntimeHelper.toArray(pTex, textures);
     }

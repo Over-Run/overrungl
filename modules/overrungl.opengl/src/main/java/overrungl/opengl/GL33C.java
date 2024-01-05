@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -137,7 +137,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void deleteSamplers(SegmentAllocator allocator, int[] samplers) {
-        deleteSamplers(samplers.length, allocator.allocateArray(JAVA_INT, samplers));
+        deleteSamplers(samplers.length, allocator.allocateFrom(JAVA_INT, samplers));
     }
 
     public static void deleteSampler(int sampler) {
@@ -160,7 +160,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void genSamplers(SegmentAllocator allocator, int[] samplers) {
-        var seg = allocator.allocateArray(JAVA_INT, samplers.length);
+        var seg = allocator.allocateFrom(JAVA_INT, samplers);
         genSamplers(samplers.length, seg);
         RuntimeHelper.toArray(seg, samplers);
     }
@@ -248,7 +248,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameterIiv(SegmentAllocator allocator, int sampler, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         getSamplerParameterIiv(sampler, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -275,7 +275,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameterIuiv(SegmentAllocator allocator, int sampler, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         getSamplerParameterIuiv(sampler, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -302,7 +302,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameterfv(SegmentAllocator allocator, int sampler, int pname, float[] params) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var seg = allocator.allocateFrom(JAVA_FLOAT, params);
         getSamplerParameterfv(sampler, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -329,7 +329,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void getSamplerParameteriv(SegmentAllocator allocator, int sampler, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         getSamplerParameteriv(sampler, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -374,7 +374,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameterIiv(SegmentAllocator allocator, int sampler, int pname, int[] param) {
-        samplerParameterIiv(sampler, pname, allocator.allocateArray(JAVA_INT, param));
+        samplerParameterIiv(sampler, pname, allocator.allocateFrom(JAVA_INT, param));
     }
 
     public static void samplerParameterIuiv(int sampler, int pname, MemorySegment param) {
@@ -387,7 +387,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameterIuiv(SegmentAllocator allocator, int sampler, int pname, int[] param) {
-        samplerParameterIuiv(sampler, pname, allocator.allocateArray(JAVA_INT, param));
+        samplerParameterIuiv(sampler, pname, allocator.allocateFrom(JAVA_INT, param));
     }
 
     public static void samplerParameterf(int sampler, int pname, int param) {
@@ -409,7 +409,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameterfv(SegmentAllocator allocator, int sampler, int pname, int[] param) {
-        samplerParameterfv(sampler, pname, allocator.allocateArray(JAVA_INT, param));
+        samplerParameterfv(sampler, pname, allocator.allocateFrom(JAVA_INT, param));
     }
 
     public static void samplerParameteri(int sampler, int pname, int param) {
@@ -431,7 +431,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void samplerParameteriv(SegmentAllocator allocator, int sampler, int pname, int[] param) {
-        samplerParameteriv(sampler, pname, allocator.allocateArray(JAVA_INT, param));
+        samplerParameteriv(sampler, pname, allocator.allocateFrom(JAVA_INT, param));
     }
 
     public static void vertexAttribDivisor(int index, int divisor) {
@@ -462,7 +462,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP1uiv(SegmentAllocator allocator, int index, int type, boolean normalized, int[] value) {
-        vertexAttribP1uiv(index, type, normalized, allocator.allocateArray(JAVA_INT, value));
+        vertexAttribP1uiv(index, type, normalized, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void vertexAttribP2ui(int index, int type, boolean normalized, int value) {
@@ -484,7 +484,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP2uiv(SegmentAllocator allocator, int index, int type, boolean normalized, int[] value) {
-        vertexAttribP2uiv(index, type, normalized, allocator.allocateArray(JAVA_INT, value));
+        vertexAttribP2uiv(index, type, normalized, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void vertexAttribP3ui(int index, int type, boolean normalized, int value) {
@@ -506,7 +506,7 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP3uiv(SegmentAllocator allocator, int index, int type, boolean normalized, int[] value) {
-        vertexAttribP3uiv(index, type, normalized, allocator.allocateArray(JAVA_INT, value));
+        vertexAttribP3uiv(index, type, normalized, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void vertexAttribP4ui(int index, int type, boolean normalized, int value) {
@@ -528,6 +528,6 @@ public sealed class GL33C extends GL32C permits GL40C {
     }
 
     public static void vertexAttribP4uiv(SegmentAllocator allocator, int index, int type, boolean normalized, int[] value) {
-        vertexAttribP4uiv(index, type, normalized, allocator.allocateArray(JAVA_INT, value));
+        vertexAttribP4uiv(index, type, normalized, allocator.allocateFrom(JAVA_INT, value));
     }
 }

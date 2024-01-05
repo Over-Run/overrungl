@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -53,6 +53,6 @@ final class Handles {
 
     static MethodHandle downcallTrivial(String name,
                                         FunctionDescriptors function) {
-        return downcall(name, function, Linker.Option.isTrivial());
+        return downcall(name, function, Linker.Option.critical(false));
     }
 }

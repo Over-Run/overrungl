@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -3224,7 +3224,7 @@ fun glExtCaps() {
             |        var pExtsI = new MemorySegment[1];
             |        if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI, caps)) return false;
             |
-            |        String exts = pExts.getUtf8String(0);
+            |        String exts = pExts.getString(0);
             |        int numExtsI = pNumExtsI.get(JAVA_INT, 0);
             |        var extsI = pExtsI[0];
             |

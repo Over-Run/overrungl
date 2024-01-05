@@ -49,7 +49,7 @@ final class GLExtFinder {
             int numExtsI = GL10C.getInteger(GL30C.NUM_EXTENSIONS);
             var extsI = MemorySegment.NULL;
             if (numExtsI > 0) {
-                extsI = allocator.allocateArray(ADDRESS, numExtsI);
+                extsI = allocator.allocate(ADDRESS, numExtsI);
             }
             if (RuntimeHelper.isNullptr(extsI)) {
                 return false;

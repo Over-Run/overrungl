@@ -250,7 +250,7 @@ allprojects {
         options {
             if (this is CoreJavadocOptions) {
                 if (jdkEnablePreview.toBoolean()) {
-                    addBooleanOption("-enable-preview")
+                    addBooleanOption("-enable-preview", true)
                 }
                 addStringOption("source", targetJavaVersion.toString())
                 if (this is StandardJavadocDocletOptions) {

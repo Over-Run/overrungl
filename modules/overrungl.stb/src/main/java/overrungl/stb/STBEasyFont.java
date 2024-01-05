@@ -80,7 +80,7 @@ public final class STBEasyFont {
     }
 
     public static int drawSegs(SegmentAllocator allocator, float x, float y, byte[] segs, boolean vertical, byte[] c, MemorySegment vbuf, int vbufSize, int offset) {
-        return ndrawSegs(x, y, allocator.allocateArray(ValueLayout.JAVA_BYTE, segs), segs.length, vertical, allocator.allocateArray(ValueLayout.JAVA_BYTE, c), vbuf, vbufSize, offset);
+        return ndrawSegs(x, y, allocator.allocateFrom(ValueLayout.JAVA_BYTE, segs), segs.length, vertical, allocator.allocateFrom(ValueLayout.JAVA_BYTE, c), vbuf, vbufSize, offset);
     }
 
     public static float getSpacing() {
@@ -108,7 +108,7 @@ public final class STBEasyFont {
     }
 
     public static int print(SegmentAllocator allocator, float x, float y, String text, byte[] color, MemorySegment vertexBuffer, int vbufSize) {
-        return nprint(x, y, allocator.allocateFrom(text), allocator.allocateArray(ValueLayout.JAVA_BYTE, color), vertexBuffer, vbufSize);
+        return nprint(x, y, allocator.allocateFrom(text), allocator.allocateFrom(ValueLayout.JAVA_BYTE, color), vertexBuffer, vbufSize);
     }
 
     public static int nwidth(MemorySegment text) {

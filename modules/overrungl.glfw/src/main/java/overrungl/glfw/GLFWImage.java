@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,7 @@ package overrungl.glfw;
 
 import overrungl.ArrayPointer;
 import overrungl.Struct;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
@@ -47,7 +48,7 @@ public sealed class GLFWImage extends Struct {
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
         JAVA_INT.withName("width"),
         JAVA_INT.withName("height"),
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE)).withName("pixels")
+        ADDRESS.withTargetLayout(RuntimeHelper.ADDRESS_UNBOUNDED).withName("pixels")
     );
     private static final VarHandle
         pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),

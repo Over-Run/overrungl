@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -353,7 +353,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void drawBuffers(SegmentAllocator allocator, int[] bufs) {
-        drawBuffers(bufs.length, allocator.allocateArray(JAVA_INT, bufs));
+        drawBuffers(bufs.length, allocator.allocateFrom(JAVA_INT, bufs));
     }
 
     public static void enableVertexAttribArray(int index) {
@@ -378,14 +378,14 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pSz = allocator.allocate(JAVA_INT);
         var pType = allocator.allocate(JAVA_INT);
-        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var pName = allocator.allocate(JAVA_BYTE, bufSize);
         getActiveAttrib(program, index, bufSize, pLen, pSz, pType, pName);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
         size[0] = pSz.get(JAVA_INT, 0);
         type[0] = pType.get(JAVA_INT, 0);
-        name[0] = pName.getUtf8String(0);
+        name[0] = pName.getString(0);
     }
 
     public static void getActiveUniform(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
@@ -401,14 +401,14 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         var pSz = allocator.allocate(JAVA_INT);
         var pType = allocator.allocate(JAVA_INT);
-        var pName = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var pName = allocator.allocate(JAVA_BYTE, bufSize);
         getActiveUniform(program, index, bufSize, pLen, pSz, pType, pName);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
         size[0] = pSz.get(JAVA_INT, 0);
         type[0] = pType.get(JAVA_INT, 0);
-        name[0] = pName.getUtf8String(0);
+        name[0] = pName.getString(0);
     }
 
     public static void getAttachedShaders(int program, int maxCount, MemorySegment count, MemorySegment shaders) {
@@ -422,7 +422,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
 
     public static void getAttachedShaders(SegmentAllocator allocator, int program, int @Nullable [] count, int[] shaders) {
         var pCount = count != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pShaders = allocator.allocateArray(JAVA_INT, shaders.length);
+        var pShaders = allocator.allocate(JAVA_INT, shaders.length);
         getAttachedShaders(program, shaders.length, pCount, pShaders);
         if (count != null && count.length > 0) {
             count[0] = pCount.get(JAVA_INT, 0);
@@ -465,12 +465,12 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
             var pLen = length != null ? stack.calloc(JAVA_INT) : MemorySegment.NULL;
             final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
             try {
-                var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+                var pLog = allocator.allocate(JAVA_BYTE, bufSize);
                 getProgramInfoLog(program, bufSize, pLen, pLog);
                 if (length != null && length.length > 0) {
                     length[0] = pLen.get(JAVA_INT, 0);
                 }
-                return pLog.getUtf8String(0);
+                return pLog.getString(0);
             } finally {
                 if (!(allocator instanceof MemoryStack)) allocator.close();
             }
@@ -493,7 +493,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getProgramiv(SegmentAllocator allocator, int program, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocate(JAVA_INT, params.length);
         getProgramiv(program, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -526,12 +526,12 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
             var pLen = length != null ? stack.callocInt() : MemorySegment.NULL;
             final Arena allocator = stack.getPointer() < bufSize ? Arena.ofConfined() : stack;
             try {
-                var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+                var pLog = allocator.allocate(JAVA_BYTE, bufSize);
                 getShaderInfoLog(shader, bufSize, pLen, pLog);
                 if (length != null && length.length > 0) {
                     length[0] = pLen.get(JAVA_INT, 0);
                 }
-                return pLog.getUtf8String(0);
+                return pLog.getString(0);
             } finally {
                 if (!(allocator instanceof MemoryStack)) allocator.close();
             }
@@ -555,12 +555,12 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
 
     public static String getShaderSource(SegmentAllocator allocator, int shader, int bufSize, int @Nullable [] length) {
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pSrc = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var pSrc = allocator.allocate(JAVA_BYTE, bufSize);
         getShaderSource(shader, bufSize, pLen, pSrc);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
-        return pSrc.getUtf8String(0);
+        return pSrc.getString(0);
     }
 
     public static String getShaderSource(SegmentAllocator allocator, int shader) {
@@ -577,7 +577,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getShaderiv(SegmentAllocator allocator, int shader, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocate(JAVA_INT, params.length);
         getShaderiv(shader, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -623,7 +623,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getUniformfv(SegmentAllocator allocator, int program, int location, float[] params) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var seg = allocator.allocate(JAVA_FLOAT, params.length);
         getUniformfv(program, location, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -650,7 +650,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getUniformiv(SegmentAllocator allocator, int program, int location, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocate(JAVA_INT, params.length);
         getUniformiv(program, location, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -677,31 +677,31 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getVertexAttribPointerv(SegmentAllocator allocator, int index, int pname, byte[] pointer) {
-        var seg = allocator.allocateArray(JAVA_BYTE, pointer.length);
+        var seg = allocator.allocate(JAVA_BYTE, pointer.length);
         getVertexAttribPointerv(index, pname, seg);
         RuntimeHelper.toArray(seg, pointer);
     }
 
     public static void getVertexAttribPointerv(SegmentAllocator allocator, int index, int pname, short[] pointer) {
-        var seg = allocator.allocateArray(JAVA_SHORT, pointer.length);
+        var seg = allocator.allocate(JAVA_SHORT, pointer.length);
         getVertexAttribPointerv(index, pname, seg);
         RuntimeHelper.toArray(seg, pointer);
     }
 
     public static void getVertexAttribPointerv(SegmentAllocator allocator, int index, int pname, int[] pointer) {
-        var seg = allocator.allocateArray(JAVA_INT, pointer.length);
+        var seg = allocator.allocate(JAVA_INT, pointer.length);
         getVertexAttribPointerv(index, pname, seg);
         RuntimeHelper.toArray(seg, pointer);
     }
 
     public static void getVertexAttribPointerv(SegmentAllocator allocator, int index, int pname, float[] pointer) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, pointer.length);
+        var seg = allocator.allocate(JAVA_FLOAT, pointer.length);
         getVertexAttribPointerv(index, pname, seg);
         RuntimeHelper.toArray(seg, pointer);
     }
 
     public static void getVertexAttribPointerv(SegmentAllocator allocator, int index, int pname, double[] pointer) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, pointer.length);
+        var seg = allocator.allocate(JAVA_DOUBLE, pointer.length);
         getVertexAttribPointerv(index, pname, seg);
         RuntimeHelper.toArray(seg, pointer);
     }
@@ -716,7 +716,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getVertexAttribdv(SegmentAllocator allocator, int index, int pname, double[] params) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, params.length);
+        var seg = allocator.allocate(JAVA_DOUBLE, params.length);
         getVertexAttribdv(index, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -743,7 +743,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getVertexAttribfv(SegmentAllocator allocator, int index, int pname, float[] params) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var seg = allocator.allocate(JAVA_FLOAT, params.length);
         getVertexAttribfv(index, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -770,7 +770,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void getVertexAttribiv(SegmentAllocator allocator, int index, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocate(JAVA_INT, params.length);
         getVertexAttribiv(index, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -824,8 +824,8 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void shaderSource(SegmentAllocator allocator, int shader, String[] string) {
-        var pStr = allocator.allocateArray(ADDRESS, string.length);
-        var pLen = allocator.allocateArray(JAVA_INT, string.length);
+        var pStr = allocator.allocate(ADDRESS, string.length);
+        var pLen = allocator.allocate(JAVA_INT, string.length);
         for (int i = 0; i < string.length; i++) {
             pStr.setAtIndex(ADDRESS, i, allocator.allocateFrom(string[i]));
             pLen.setAtIndex(JAVA_INT, i, string[i].length());
@@ -837,7 +837,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            shaderSource(shader, 1, stack.allocate(ADDRESS, stack.allocateFrom(string)), stack.allocateFrom(JAVA_INT, string.length()));
+            shaderSource(shader, 1, stack.allocateFrom(ADDRESS, stack.allocateFrom(string)), stack.allocateFrom(JAVA_INT, string.length()));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -889,7 +889,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform1fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform1fv(location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform1fv(location, value.length, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniform1i(int location, int v0) {
@@ -911,7 +911,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform1iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform1iv(location, value.length, allocator.allocateArray(JAVA_INT, value));
+        uniform1iv(location, value.length, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void uniform2f(int location, float v0, float v1) {
@@ -933,7 +933,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform2fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform2fv(location, value.length >> 1, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform2fv(location, value.length >> 1, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniform2i(int location, int v0, int v1) {
@@ -955,7 +955,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform2iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform2iv(location, value.length >> 1, allocator.allocateArray(JAVA_INT, value));
+        uniform2iv(location, value.length >> 1, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void uniform3f(int location, float v0, float v1, float v2) {
@@ -977,7 +977,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform3fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform3fv(location, value.length / 3, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform3fv(location, value.length / 3, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniform3i(int location, int v0, int v1, int v2) {
@@ -999,7 +999,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform3iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform3iv(location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
+        uniform3iv(location, value.length / 3, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void uniform4f(int location, float v0, float v1, float v2, float v3) {
@@ -1021,7 +1021,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform4fv(SegmentAllocator allocator, int location, float[] value) {
-        uniform4fv(location, value.length >> 2, allocator.allocateArray(JAVA_FLOAT, value));
+        uniform4fv(location, value.length >> 2, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniform4i(int location, int v0, int v1, int v2, int v3) {
@@ -1043,7 +1043,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniform4iv(SegmentAllocator allocator, int location, int[] value) {
-        uniform4iv(location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
+        uniform4iv(location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void uniformMatrix2fv(int location, int count, boolean transpose, MemorySegment value) {
@@ -1056,7 +1056,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniformMatrix2fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix2fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix2fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix2fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -1073,7 +1073,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniformMatrix3fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix3fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix3fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix3fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -1090,7 +1090,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void uniformMatrix4fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix4fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix4fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix4fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -1134,7 +1134,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib1dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttrib1dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttrib1dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttrib1f(int index, float x) {
@@ -1156,7 +1156,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib1fv(SegmentAllocator allocator, int index, float[] v) {
-        vertexAttrib1fv(index, allocator.allocateArray(JAVA_FLOAT, v));
+        vertexAttrib1fv(index, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertexAttrib1s(int index, short x) {
@@ -1178,7 +1178,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib1sv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib1sv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib1sv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttrib2d(int index, double x, double y) {
@@ -1200,7 +1200,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib2dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttrib2dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttrib2dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttrib2f(int index, float x, float y) {
@@ -1222,7 +1222,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib2fv(SegmentAllocator allocator, int index, float[] v) {
-        vertexAttrib2fv(index, allocator.allocateArray(JAVA_FLOAT, v));
+        vertexAttrib2fv(index, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertexAttrib2s(int index, short x, short y) {
@@ -1244,7 +1244,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib2sv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib2sv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib2sv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttrib3d(int index, double x, double y, double z) {
@@ -1266,7 +1266,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib3dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttrib3dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttrib3dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttrib3f(int index, float x, float y, float z) {
@@ -1288,7 +1288,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib3fv(SegmentAllocator allocator, int index, float[] v) {
-        vertexAttrib3fv(index, allocator.allocateArray(JAVA_FLOAT, v));
+        vertexAttrib3fv(index, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertexAttrib3s(int index, short x, short y, short z) {
@@ -1310,7 +1310,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib3sv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib3sv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib3sv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttrib4Nbv(int index, MemorySegment v) {
@@ -1323,7 +1323,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4Nbv(SegmentAllocator allocator, int index, byte[] v) {
-        vertexAttrib4Nbv(index, allocator.allocateArray(JAVA_BYTE, v));
+        vertexAttrib4Nbv(index, allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void vertexAttrib4Niv(int index, MemorySegment v) {
@@ -1336,7 +1336,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4Niv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttrib4Niv(index, allocator.allocateArray(JAVA_INT, v));
+        vertexAttrib4Niv(index, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertexAttrib4Nsv(int index, MemorySegment v) {
@@ -1349,7 +1349,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4Nsv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib4Nsv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib4Nsv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttrib4Nub(int index, byte x, byte y, byte z, byte w) {
@@ -1371,7 +1371,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4Nubv(SegmentAllocator allocator, int index, byte[] v) {
-        vertexAttrib4Nubv(index, allocator.allocateArray(JAVA_BYTE, v));
+        vertexAttrib4Nubv(index, allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void vertexAttrib4Nuiv(int index, MemorySegment v) {
@@ -1384,7 +1384,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4Nuiv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttrib4Nuiv(index, allocator.allocateArray(JAVA_INT, v));
+        vertexAttrib4Nuiv(index, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertexAttrib4Nusv(int index, MemorySegment v) {
@@ -1397,7 +1397,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4Nusv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib4Nusv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib4Nusv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttrib4bv(int index, MemorySegment v) {
@@ -1410,7 +1410,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4bv(SegmentAllocator allocator, int index, byte[] v) {
-        vertexAttrib4bv(index, allocator.allocateArray(JAVA_BYTE, v));
+        vertexAttrib4bv(index, allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void vertexAttrib4d(int index, double x, double y, double z, double w) {
@@ -1432,7 +1432,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttrib4dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttrib4dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttrib4f(int index, float x, float y, float z, float w) {
@@ -1454,7 +1454,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4fv(SegmentAllocator allocator, int index, float[] v) {
-        vertexAttrib4fv(index, allocator.allocateArray(JAVA_FLOAT, v));
+        vertexAttrib4fv(index, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertexAttrib4iv(int index, MemorySegment v) {
@@ -1467,7 +1467,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4iv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttrib4iv(index, allocator.allocateArray(JAVA_INT, v));
+        vertexAttrib4iv(index, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertexAttrib4s(int index, short x, short y, short z, short w) {
@@ -1489,7 +1489,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4sv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib4sv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib4sv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttrib4ubv(int index, MemorySegment v) {
@@ -1502,7 +1502,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4ubv(SegmentAllocator allocator, int index, byte[] v) {
-        vertexAttrib4ubv(index, allocator.allocateArray(JAVA_BYTE, v));
+        vertexAttrib4ubv(index, allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void vertexAttrib4uiv(int index, MemorySegment v) {
@@ -1515,7 +1515,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4uiv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttrib4uiv(index, allocator.allocateArray(JAVA_INT, v));
+        vertexAttrib4uiv(index, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertexAttrib4usv(int index, MemorySegment v) {
@@ -1528,7 +1528,7 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttrib4usv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttrib4usv(index, allocator.allocateArray(JAVA_SHORT, v));
+        vertexAttrib4usv(index, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertexAttribPointer(int index, int size, int type, boolean normalized, int stride, MemorySegment pointer) {
@@ -1541,22 +1541,22 @@ public sealed class GL20C extends GL15C permits GL20, GL21C {
     }
 
     public static void vertexAttribPointer(SegmentAllocator allocator, int index, int size, int type, boolean normalized, int stride, byte[] pointer) {
-        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateArray(JAVA_BYTE, pointer));
+        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateFrom(JAVA_BYTE, pointer));
     }
 
     public static void vertexAttribPointer(SegmentAllocator allocator, int index, int size, int type, boolean normalized, int stride, short[] pointer) {
-        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateArray(JAVA_SHORT, pointer));
+        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateFrom(JAVA_SHORT, pointer));
     }
 
     public static void vertexAttribPointer(SegmentAllocator allocator, int index, int size, int type, boolean normalized, int stride, int[] pointer) {
-        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateArray(JAVA_INT, pointer));
+        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateFrom(JAVA_INT, pointer));
     }
 
     public static void vertexAttribPointer(SegmentAllocator allocator, int index, int size, int type, boolean normalized, int stride, float[] pointer) {
-        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateArray(JAVA_FLOAT, pointer));
+        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateFrom(JAVA_FLOAT, pointer));
     }
 
     public static void vertexAttribPointer(SegmentAllocator allocator, int index, int size, int type, boolean normalized, int stride, double[] pointer) {
-        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
+        vertexAttribPointer(index, size, type, normalized, stride, allocator.allocateFrom(JAVA_DOUBLE, pointer));
     }
 }
