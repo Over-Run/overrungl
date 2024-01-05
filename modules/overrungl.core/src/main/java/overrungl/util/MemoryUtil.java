@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -269,7 +269,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            RuntimeHelper.consume((MemorySegment) m_memcpy.invokeExact(dest, src, count));
+            final var _ = (MemorySegment) m_memcpy.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -294,7 +294,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            RuntimeHelper.consume((MemorySegment) m_memmove.invokeExact(dest, src, count));
+            final var _ = (MemorySegment) m_memmove.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -317,7 +317,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            RuntimeHelper.consume((MemorySegment) m_memset.invokeExact(dest, c, count));
+            final var _ = (MemorySegment) m_memset.invokeExact(dest, c, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);

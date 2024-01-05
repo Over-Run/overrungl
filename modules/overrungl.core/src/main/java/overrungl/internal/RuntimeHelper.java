@@ -103,16 +103,6 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Make sure a method handle is returned as the specified type to deal with {@code MethodHandle::invokeExact}.
-     *
-     * @param t   the invoking method.
-     * @param <T> the return type.
-     */
-    @SuppressWarnings("unused")
-    public static <T> void consume(T t) {
-    }
-
-    /**
      * Generates a string for unknown token.
      *
      * @param token the token.
