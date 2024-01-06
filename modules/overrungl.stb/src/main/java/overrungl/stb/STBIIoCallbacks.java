@@ -71,8 +71,17 @@ public final class STBIIoCallbacks extends Struct {
      */
     @FunctionalInterface
     public interface Read extends Callback {
-        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED, RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
+        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         MethodType MTYPE = DESC.toMethodType();
+
+        /**
+         * Fill {@code data} with {@code size} bytes.
+         *
+         * @param user userdata
+         * @param data data buffer to be filled
+         * @return number of bytes actually read
+         */
+        int invoke(MemorySegment user, MemorySegment data);
 
         /**
          * Fill {@code data} with {@code size} bytes.
@@ -82,7 +91,9 @@ public final class STBIIoCallbacks extends Struct {
          * @param size byte size to fill
          * @return number of bytes actually read
          */
-        int invoke(MemorySegment user, MemorySegment data, int size);
+        default int ninvoke(MemorySegment user, MemorySegment data, int size) {
+            return invoke(user.reinterpret(Long.MAX_VALUE), data.reinterpret(size));
+        }
 
         @Override
         default FunctionDescriptor descriptor() {
@@ -91,7 +102,7 @@ public final class STBIIoCallbacks extends Struct {
 
         @Override
         default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Read.class, "invoke", MTYPE);
+            return lookup.findVirtual(Read.class, "ninvoke", MTYPE);
         }
     }
 
@@ -103,7 +114,7 @@ public final class STBIIoCallbacks extends Struct {
      */
     @FunctionalInterface
     public interface Skip extends Callback {
-        FunctionDescriptor DESC = FunctionDescriptor.ofVoid(RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
+        FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         MethodType MTYPE = DESC.toMethodType();
 
         /**
@@ -114,6 +125,16 @@ public final class STBIIoCallbacks extends Struct {
          */
         void invoke(MemorySegment user, int n);
 
+        /**
+         * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
+         *
+         * @param user userdata
+         * @param n    byte size to skip
+         */
+        default void ninvoke(MemorySegment user, int n) {
+            invoke(user.reinterpret(Long.MAX_VALUE), n);
+        }
+
         @Override
         default FunctionDescriptor descriptor() {
             return DESC;
@@ -121,7 +142,7 @@ public final class STBIIoCallbacks extends Struct {
 
         @Override
         default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Skip.class, "invoke", MTYPE);
+            return lookup.findVirtual(Skip.class, "ninvoke", MTYPE);
         }
     }
 
@@ -133,7 +154,7 @@ public final class STBIIoCallbacks extends Struct {
      */
     @FunctionalInterface
     public interface Eof extends Callback {
-        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED);
+        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         MethodType MTYPE = DESC.toMethodType();
 
         /**
@@ -143,6 +164,15 @@ public final class STBIIoCallbacks extends Struct {
          */
         int invoke(MemorySegment user);
 
+        /**
+         * {@return nonzero if we are at end of file/data}
+         *
+         * @param user userdata
+         */
+        default int ninvoke(MemorySegment user) {
+            return invoke(user.reinterpret(Long.MAX_VALUE));
+        }
+
         @Override
         default FunctionDescriptor descriptor() {
             return DESC;
@@ -150,7 +180,7 @@ public final class STBIIoCallbacks extends Struct {
 
         @Override
         default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Eof.class, "invoke", MTYPE);
+            return lookup.findVirtual(Eof.class, "ninvoke", MTYPE);
         }
     }
 

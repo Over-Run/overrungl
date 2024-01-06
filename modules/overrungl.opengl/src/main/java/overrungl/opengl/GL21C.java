@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL21C extends GL20C permits GL30C {
+public sealed class GL21C extends GL20C permits GL21, GL30C {
     public static final int PIXEL_PACK_BUFFER = 0x88EB;
     public static final int PIXEL_UNPACK_BUFFER = 0x88EC;
     public static final int PIXEL_PACK_BUFFER_BINDING = 0x88ED;
@@ -77,7 +77,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix2x3fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix2x3fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix2x3fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix2x3fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -94,7 +94,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix2x4fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix2x4fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix2x4fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix2x4fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -111,7 +111,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix3x2fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix3x2fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix3x2fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix3x2fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -128,7 +128,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix3x4fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix3x4fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix3x4fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix3x4fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -145,7 +145,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix4x2fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix4x2fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix4x2fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix4x2fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {
@@ -162,7 +162,7 @@ public sealed class GL21C extends GL20C permits GL30C {
     }
 
     public static void uniformMatrix4x3fv(SegmentAllocator allocator, int location, int count, boolean transpose, float[] value) {
-        uniformMatrix4x3fv(location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        uniformMatrix4x3fv(location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void uniformMatrix4x3fv(SegmentAllocator allocator, int location, boolean transpose, float[] value) {

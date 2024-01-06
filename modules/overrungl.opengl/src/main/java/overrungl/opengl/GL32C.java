@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -115,21 +115,21 @@ public sealed class GL32C extends GL31C permits GL33C {
 
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glClientWaitSync = load.invoke("glClientWaitSync", PIJI);
-        caps.glDeleteSync = load.trivialHandle("glDeleteSync", PV);
+        caps.glDeleteSync = load.invoke("glDeleteSync", PV);
         caps.glDrawElementsBaseVertex = load.invoke("glDrawElementsBaseVertex", IIIPIV);
         caps.glDrawElementsInstancedBaseVertex = load.invoke("glDrawElementsInstancedBaseVertex", IIIPIIV);
         caps.glDrawRangeElementsBaseVertex = load.invoke("glDrawRangeElementsBaseVertex", IIIIIPIV);
         caps.glFenceSync = load.invoke("glFenceSync", IIP);
         caps.glFramebufferTexture = load.invoke("glFramebufferTexture", IIIIV);
-        caps.glGetBufferParameteri64v = load.trivialHandle("glGetBufferParameteri64v", IIPV);
-        caps.glGetInteger64i_v = load.trivialHandle("glGetInteger64i_v", IIPV);
-        caps.glGetInteger64v = load.trivialHandle("glGetInteger64v", IPV);
-        caps.glGetMultisamplefv = load.trivialHandle("glGetMultisamplefv", IIPV);
-        caps.glGetSynciv = load.trivialHandle("glGetSynciv", PIIPPV);
-        caps.glIsSync = load.trivialHandle("glIsSync", PZ);
+        caps.glGetBufferParameteri64v = load.invoke("glGetBufferParameteri64v", IIPV);
+        caps.glGetInteger64i_v = load.invoke("glGetInteger64i_v", IIPV);
+        caps.glGetInteger64v = load.invoke("glGetInteger64v", IPV);
+        caps.glGetMultisamplefv = load.invoke("glGetMultisamplefv", IIPV);
+        caps.glGetSynciv = load.invoke("glGetSynciv", PIIPPV);
+        caps.glIsSync = load.invoke("glIsSync", PZ);
         caps.glMultiDrawElementsBaseVertex = load.invoke("glMultiDrawElementsBaseVertex", IPIPIPV);
-        caps.glProvokingVertex = load.trivialHandle("glProvokingVertex", IV);
-        caps.glSampleMaski = load.trivialHandle("glSampleMaski", IIV);
+        caps.glProvokingVertex = load.invoke("glProvokingVertex", IV);
+        caps.glSampleMaski = load.invoke("glSampleMaski", IIV);
         caps.glTexImage2DMultisample = load.invoke("glTexImage2DMultisample", IIIIIZV);
         caps.glTexImage3DMultisample = load.invoke("glTexImage3DMultisample", IIIIIIZV);
         caps.glWaitSync = load.invoke("glWaitSync", PIJV);
@@ -163,15 +163,15 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawElementsBaseVertex(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int baseVertex) {
-        drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), baseVertex);
+        drawElementsBaseVertex(mode, count, type, allocator.allocateFrom(JAVA_BYTE, indices), baseVertex);
     }
 
     public static void drawElementsBaseVertex(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int baseVertex) {
-        drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), baseVertex);
+        drawElementsBaseVertex(mode, count, type, allocator.allocateFrom(JAVA_SHORT, indices), baseVertex);
     }
 
     public static void drawElementsBaseVertex(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int baseVertex) {
-        drawElementsBaseVertex(mode, count, type, allocator.allocateArray(JAVA_INT, indices), baseVertex);
+        drawElementsBaseVertex(mode, count, type, allocator.allocateFrom(JAVA_INT, indices), baseVertex);
     }
 
     public static void drawElementsInstancedBaseVertex(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseVertex) {
@@ -184,15 +184,15 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawElementsInstancedBaseVertex(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount, int baseVertex) {
-        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), instanceCount, baseVertex);
+        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateFrom(JAVA_BYTE, indices), instanceCount, baseVertex);
     }
 
     public static void drawElementsInstancedBaseVertex(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount, int baseVertex) {
-        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), instanceCount, baseVertex);
+        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateFrom(JAVA_SHORT, indices), instanceCount, baseVertex);
     }
 
     public static void drawElementsInstancedBaseVertex(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount, int baseVertex) {
-        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount, baseVertex);
+        drawElementsInstancedBaseVertex(mode, count, type, allocator.allocateFrom(JAVA_INT, indices), instanceCount, baseVertex);
     }
 
     public static void drawRangeElementsBaseVertex(int mode, int start, int end, int count, int type, MemorySegment indices, int baseVertex) {
@@ -205,15 +205,15 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void drawRangeElementsBaseVertex(SegmentAllocator allocator, int mode, int start, int end, int count, int type, byte[] indices, int baseVertex) {
-        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_BYTE, indices), baseVertex);
+        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateFrom(JAVA_BYTE, indices), baseVertex);
     }
 
     public static void drawRangeElementsBaseVertex(SegmentAllocator allocator, int mode, int start, int end, int count, int type, short[] indices, int baseVertex) {
-        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_SHORT, indices), baseVertex);
+        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateFrom(JAVA_SHORT, indices), baseVertex);
     }
 
     public static void drawRangeElementsBaseVertex(SegmentAllocator allocator, int mode, int start, int end, int count, int type, int[] indices, int baseVertex) {
-        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateArray(JAVA_INT, indices), baseVertex);
+        drawRangeElementsBaseVertex(mode, start, end, count, type, allocator.allocateFrom(JAVA_INT, indices), baseVertex);
     }
 
     public static MemorySegment fenceSync(int condition, int flags) {
@@ -265,7 +265,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getInteger64i_v(SegmentAllocator allocator, int target, int index, long[] data) {
-        var seg = allocator.allocateArray(JAVA_LONG, data.length);
+        var seg = allocator.allocateFrom(JAVA_LONG, data);
         getInteger64i_v(target, index, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -292,7 +292,7 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getInteger64v(SegmentAllocator allocator, int pname, long[] data) {
-        var pData = allocator.allocateArray(JAVA_LONG, data.length);
+        var pData = allocator.allocateFrom(JAVA_LONG, data);
         getInteger64v(pname, pData);
         RuntimeHelper.toArray(pData, data);
     }
@@ -319,13 +319,13 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void getMultisamplefv(SegmentAllocator allocator, int pname, int index, float[] val) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, val.length);
+        var seg = allocator.allocateFrom(JAVA_FLOAT, val);
         getMultisamplefv(pname, index, seg);
         RuntimeHelper.toArray(seg, val);
     }
 
     public static float[] getMultisamplefv(SegmentAllocator allocator, int pname, int index) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, 2);
+        var seg = allocator.allocate(JAVA_FLOAT, 2);
         getMultisamplefv(pname, index, seg);
         return new float[]{seg.get(JAVA_FLOAT, 0), seg.getAtIndex(JAVA_FLOAT, 1)};
     }
@@ -341,7 +341,7 @@ public sealed class GL32C extends GL31C permits GL33C {
 
     public static void getSynciv(SegmentAllocator allocator, MemorySegment sync, int pname, int @Nullable [] length, int[] values) {
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pVal = allocator.allocateArray(JAVA_INT, values.length);
+        var pVal = allocator.allocateFrom(JAVA_INT, values);
         getSynciv(sync, pname, values.length, pLen, pVal);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
@@ -380,35 +380,35 @@ public sealed class GL32C extends GL31C permits GL33C {
     }
 
     public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, MemorySegment[] indices, int drawCount, int[] baseVertex) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
             seg.setAtIndex(ADDRESS, i, indices[i]);
         }
-        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount, allocator.allocateFrom(JAVA_INT, baseVertex));
     }
 
     public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices, int drawCount, int[] baseVertex) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_BYTE, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(JAVA_BYTE, indices[i]));
         }
-        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount, allocator.allocateFrom(JAVA_INT, baseVertex));
     }
 
     public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices, int drawCount, int[] baseVertex) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_SHORT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(JAVA_SHORT, indices[i]));
         }
-        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount, allocator.allocateFrom(JAVA_INT, baseVertex));
     }
 
     public static void multiDrawElementsBaseVertex(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices, int drawCount, int[] baseVertex) {
-        var seg = allocator.allocateArray(ADDRESS, indices.length);
+        var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateArray(JAVA_INT, indices[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(JAVA_INT, indices[i]));
         }
-        multiDrawElementsBaseVertex(mode, allocator.allocateArray(JAVA_INT, count), type, seg, drawCount, allocator.allocateArray(JAVA_INT, baseVertex));
+        multiDrawElementsBaseVertex(mode, allocator.allocateFrom(JAVA_INT, count), type, seg, drawCount, allocator.allocateFrom(JAVA_INT, baseVertex));
     }
 
     public static void provokingVertex(int mode) {

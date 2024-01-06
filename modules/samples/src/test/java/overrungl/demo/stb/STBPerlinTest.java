@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,7 +18,6 @@ package overrungl.demo.stb;
 
 import overrungl.stb.STBImage;
 import overrungl.stb.STBImageWrite;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
@@ -43,9 +42,7 @@ public final class STBPerlinTest {
                 buf.set(ValueLayout.JAVA_BYTE, y * HEIGHT + x, (byte) ((noise[y][x] + 1f) * .5f * 255f));
             }
         }
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            STBImageWrite.png(fileName, WIDTH, HEIGHT, STBImage.GREY, buf, WIDTH);
-        }
+        STBImageWrite.png(fileName, WIDTH, HEIGHT, STBImage.GREY, buf, WIDTH);
     }
 
     public static void main(String[] args) {

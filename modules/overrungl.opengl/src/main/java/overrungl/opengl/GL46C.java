@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ public sealed class GL46C extends GL45C permits GL {
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glMultiDrawArraysIndirectCount = load.invoke("glMultiDrawArraysIndirectCount", IPJIIV);
         caps.glMultiDrawElementsIndirectCount = load.invoke("glMultiDrawElementsIndirectCount", IIPJIIV);
-        caps.glPolygonOffsetClamp = load.trivialHandle("glPolygonOffsetClamp", FFFV);
+        caps.glPolygonOffsetClamp = load.invoke("glPolygonOffsetClamp", FFFV);
         caps.glSpecializeShader = load.invoke("glSpecializeShader", IPIPPV);
     }
 
@@ -118,10 +118,10 @@ public sealed class GL46C extends GL45C permits GL {
 
     public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
         specializeShader(shader,
-            pEntryPoint != null ? allocator.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
+            pEntryPoint != null ? allocator.allocateFrom(pEntryPoint) : MemorySegment.NULL,
             pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
-            pConstantIndex != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
-            pConstantValue != null ? allocator.allocateArray(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
+            pConstantIndex != null ? allocator.allocateFrom(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
+            pConstantValue != null ? allocator.allocateFrom(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
     }
 
     public static void specializeShader(int shader, @Nullable String pEntryPoint) {
@@ -129,7 +129,7 @@ public sealed class GL46C extends GL45C permits GL {
         final long stackPointer = stack.getPointer();
         try {
             specializeShader(shader,
-                pEntryPoint != null ? stack.allocateUtf8String(pEntryPoint) : MemorySegment.NULL,
+                pEntryPoint != null ? stack.allocateFrom(pEntryPoint) : MemorySegment.NULL,
                 0,
                 MemorySegment.NULL,
                 MemorySegment.NULL);

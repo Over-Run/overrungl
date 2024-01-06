@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import overrungl.FunctionDescriptors;
 import overrungl.internal.RuntimeHelper;
 
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
@@ -55,18 +56,20 @@ public interface GLLoadFunc {
      * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
      */
     @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
+    default MethodHandle invoke(String procName, FunctionDescriptor function, Linker.Option... options) {
         return RuntimeHelper.downcallSafe(invoke(procName), function, options);
     }
 
     /**
-     * Load a trivial function by the given name and creates a downcall handle or {@code null}.
+     * Load a function by the given name and creates a downcall handle or {@code null}.
      *
      * @param procName the function name
      * @param function the function descriptor of the target function.
+     * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
      */
-    default MethodHandle trivialHandle(String procName, FunctionDescriptors function) {
-        return invoke(procName, function, Linker.Option.isTrivial());
+    @Nullable
+    default MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
+        return RuntimeHelper.downcallSafe(invoke(procName), function, options);
     }
 }

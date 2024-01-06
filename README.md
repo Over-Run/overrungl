@@ -6,25 +6,33 @@
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Over-Run/overrungl)
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8279/badge)](https://www.bestpractices.dev/projects/8279)
 
 ## Introduction
 
-Overrun Game Library is a high-performance library that implemented with Java 21,
-enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
+Overrun Game Library is a high-performance library implemented with Java 22,
+which enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
 
 [LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
 
 LWJGL 3 uses JNI to access native functions,
-but OverrunGL uses [FFM API](https://openjdk.org/jeps/434), which has better performance.
+but OverrunGL uses [FFM API](https://openjdk.org/jeps/454), which has better performance.
 
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
 the [samples](modules/samples/src/test/java/overrungl/demo).
+
+### Enable native access
+
+You must enable the access of OverrunGL by adding a VM argument or a manifest attribute.
+
+```
+--enable-preview-access=overrungl.core,...
+```
 
 ## Using as a Dependency
 
@@ -95,6 +103,10 @@ Javadoc can be found [here](https://over-run.github.io/overrungl-doc/).
 
 The documentation of OpenGL can be found [here](https://docs.gl/).
 
+### Credits
+
+[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)
+
 ### Publishing (for internal member)
 
 To publish this library, you need a GPG key and the write permission of Maven Central.
@@ -121,7 +133,7 @@ natives
 │  └─ windows
 │     └─ x64
 │        └─ glfw3.dll
-├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
+├─ nfd https://github.com/Over-Run/nfd-ci
 │  ├─ linux
 │  │  ├─ arm32
 │  │  │  └─ libnfd.so

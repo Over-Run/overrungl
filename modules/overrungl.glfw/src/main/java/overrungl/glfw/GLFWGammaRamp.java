@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public final class GLFWGammaRamp extends Struct {
-    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT));
+    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Long.MAX_VALUE / JAVA_SHORT.byteSize(), JAVA_SHORT));
     /**
      * The struct layout.
      */
@@ -94,7 +94,7 @@ public final class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp red(SegmentAllocator allocator, short[] reds) {
-        ppRed.set(segment(), allocator.allocateArray(JAVA_SHORT, reds));
+        ppRed.set(segment(), allocator.allocateFrom(JAVA_SHORT, reds));
         return this;
     }
 
@@ -106,7 +106,7 @@ public final class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp green(SegmentAllocator allocator, short[] greens) {
-        ppGreen.set(segment(), allocator.allocateArray(JAVA_SHORT, greens));
+        ppGreen.set(segment(), allocator.allocateFrom(JAVA_SHORT, greens));
         return this;
     }
 
@@ -118,7 +118,7 @@ public final class GLFWGammaRamp extends Struct {
      * @return this
      */
     public GLFWGammaRamp blue(SegmentAllocator allocator, short[] blues) {
-        ppBlue.set(segment(), allocator.allocateArray(JAVA_SHORT, blues));
+        ppBlue.set(segment(), allocator.allocateFrom(JAVA_SHORT, blues));
         return this;
     }
 

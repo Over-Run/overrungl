@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,31 +14,30 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_GREMEDY_frame_terminator}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLGREMEDYFrameTerminator {
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_GREMEDY_frame_terminator) return;
-        ext.glFrameTerminatorGREMEDY = load.invoke("glFrameTerminatorGREMEDY", FunctionDescriptors.V);
+        ext.glFrameTerminatorGREMEDY = load.invoke("glFrameTerminatorGREMEDY", ofVoid());
     }
 
     public static void glFrameTerminatorGREMEDY() {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glFrameTerminatorGREMEDY).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glFrameTerminatorGREMEDY).invokeExact();
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

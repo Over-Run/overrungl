@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +38,44 @@ import static overrungl.opengl.GLLoader.getCapabilities;
  * @since 0.1.0
  */
 public final class GL13 extends GL13C {
+    public static final int CLIENT_ACTIVE_TEXTURE = 0x84E1;
+    public static final int MAX_TEXTURE_UNITS = 0x84E2;
+    public static final int TRANSPOSE_MODELVIEW_MATRIX = 0x84E3;
+    public static final int TRANSPOSE_PROJECTION_MATRIX = 0x84E4;
+    public static final int TRANSPOSE_TEXTURE_MATRIX = 0x84E5;
+    public static final int TRANSPOSE_COLOR_MATRIX = 0x84E6;
+    public static final int MULTISAMPLE_BIT = 0x20000000;
+    public static final int NORMAL_MAP = 0x8511;
+    public static final int REFLECTION_MAP = 0x8512;
+    public static final int COMPRESSED_ALPHA = 0x84E9;
+    public static final int COMPRESSED_LUMINANCE = 0x84EA;
+    public static final int COMPRESSED_LUMINANCE_ALPHA = 0x84EB;
+    public static final int COMPRESSED_INTENSITY = 0x84EC;
+    public static final int COMBINE = 0x8570;
+    public static final int COMBINE_RGB = 0x8571;
+    public static final int COMBINE_ALPHA = 0x8572;
+    public static final int SOURCE0_RGB = 0x8580;
+    public static final int SOURCE1_RGB = 0x8581;
+    public static final int SOURCE2_RGB = 0x8582;
+    public static final int SOURCE0_ALPHA = 0x8588;
+    public static final int SOURCE1_ALPHA = 0x8589;
+    public static final int SOURCE2_ALPHA = 0x858A;
+    public static final int OPERAND0_RGB = 0x8590;
+    public static final int OPERAND1_RGB = 0x8591;
+    public static final int OPERAND2_RGB = 0x8592;
+    public static final int OPERAND0_ALPHA = 0x8598;
+    public static final int OPERAND1_ALPHA = 0x8599;
+    public static final int OPERAND2_ALPHA = 0x859A;
+    public static final int RGB_SCALE = 0x8573;
+    public static final int ADD_SIGNED = 0x8574;
+    public static final int INTERPOLATE = 0x8575;
+    public static final int SUBTRACT = 0x84E7;
+    public static final int CONSTANT = 0x8576;
+    public static final int PRIMARY_COLOR = 0x8577;
+    public static final int PREVIOUS = 0x8578;
+    public static final int DOT3_RGB = 0x86AE;
+    public static final int DOT3_RGBA = 0x86AF;
+
     static void load(GLCapabilities caps, GLLoadFunc load) {
         if (!caps.Ver13) return;
         caps.glClientActiveTexture = load.invoke("glClientActiveTexture", IV);
@@ -98,7 +136,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void loadTransposeMatrixd(SegmentAllocator allocator, double[] m) {
-        loadTransposeMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
+        loadTransposeMatrixd(allocator.allocateFrom(JAVA_DOUBLE, m));
     }
 
     public static void loadTransposeMatrixf(MemorySegment m) {
@@ -111,7 +149,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void loadTransposeMatrixf(SegmentAllocator allocator, float[] m) {
-        loadTransposeMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
+        loadTransposeMatrixf(allocator.allocateFrom(JAVA_FLOAT, m));
     }
 
     public static void multTransposeMatrixd(MemorySegment m) {
@@ -124,7 +162,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multTransposeMatrixd(SegmentAllocator allocator, double[] m) {
-        multTransposeMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
+        multTransposeMatrixd(allocator.allocateFrom(JAVA_DOUBLE, m));
     }
 
     public static void multTransposeMatrixf(MemorySegment m) {
@@ -137,7 +175,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multTransposeMatrixf(SegmentAllocator allocator, float[] m) {
-        multTransposeMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
+        multTransposeMatrixf(allocator.allocateFrom(JAVA_FLOAT, m));
     }
 
     public static void multiTexCoord1d(int target, double s) {
@@ -159,7 +197,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1dv(SegmentAllocator allocator, int target, double[] v) {
-        multiTexCoord1dv(target, allocator.allocateArray(JAVA_DOUBLE, v));
+        multiTexCoord1dv(target, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord1f(int target, float s) {
@@ -181,7 +219,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1fv(SegmentAllocator allocator, int target, float[] v) {
-        multiTexCoord1fv(target, allocator.allocateArray(JAVA_FLOAT, v));
+        multiTexCoord1fv(target, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord1i(int target, int s) {
@@ -203,7 +241,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1iv(SegmentAllocator allocator, int target, int[] v) {
-        multiTexCoord1iv(target, allocator.allocateArray(JAVA_INT, v));
+        multiTexCoord1iv(target, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void multiTexCoord1s(int target, short s) {
@@ -225,7 +263,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord1sv(SegmentAllocator allocator, int target, short[] v) {
-        multiTexCoord1sv(target, allocator.allocateArray(JAVA_SHORT, v));
+        multiTexCoord1sv(target, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void multiTexCoord2d(int target, double s, double t) {
@@ -247,7 +285,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2dv(SegmentAllocator allocator, int target, double[] v) {
-        multiTexCoord2dv(target, allocator.allocateArray(JAVA_DOUBLE, v));
+        multiTexCoord2dv(target, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord2f(int target, float s, float t) {
@@ -269,7 +307,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2fv(SegmentAllocator allocator, int target, float[] v) {
-        multiTexCoord2fv(target, allocator.allocateArray(JAVA_FLOAT, v));
+        multiTexCoord2fv(target, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord2i(int target, int s, int t) {
@@ -291,7 +329,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2iv(SegmentAllocator allocator, int target, int[] v) {
-        multiTexCoord2iv(target, allocator.allocateArray(JAVA_INT, v));
+        multiTexCoord2iv(target, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void multiTexCoord2s(int target, short s, short t) {
@@ -313,7 +351,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord2sv(SegmentAllocator allocator, int target, short[] v) {
-        multiTexCoord2sv(target, allocator.allocateArray(JAVA_SHORT, v));
+        multiTexCoord2sv(target, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void multiTexCoord3d(int target, double s, double t, double r) {
@@ -335,7 +373,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3dv(SegmentAllocator allocator, int target, double[] v) {
-        multiTexCoord3dv(target, allocator.allocateArray(JAVA_DOUBLE, v));
+        multiTexCoord3dv(target, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord3f(int target, float s, float t, float r) {
@@ -357,7 +395,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3fv(SegmentAllocator allocator, int target, float[] v) {
-        multiTexCoord3fv(target, allocator.allocateArray(JAVA_FLOAT, v));
+        multiTexCoord3fv(target, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord3i(int target, int s, int t, int r) {
@@ -379,7 +417,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3iv(SegmentAllocator allocator, int target, int[] v) {
-        multiTexCoord3iv(target, allocator.allocateArray(JAVA_INT, v));
+        multiTexCoord3iv(target, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void multiTexCoord3s(int target, short s, short t, short r) {
@@ -401,7 +439,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord3sv(SegmentAllocator allocator, int target, short[] v) {
-        multiTexCoord3sv(target, allocator.allocateArray(JAVA_SHORT, v));
+        multiTexCoord3sv(target, allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void multiTexCoord4d(int target, double s, double t, double r, double q) {
@@ -423,7 +461,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4dv(SegmentAllocator allocator, int target, double[] v) {
-        multiTexCoord4dv(target, allocator.allocateArray(JAVA_DOUBLE, v));
+        multiTexCoord4dv(target, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void multiTexCoord4f(int target, float s, float t, float r, float q) {
@@ -445,7 +483,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4fv(SegmentAllocator allocator, int target, float[] v) {
-        multiTexCoord4fv(target, allocator.allocateArray(JAVA_FLOAT, v));
+        multiTexCoord4fv(target, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void multiTexCoord4i(int target, int s, int t, int r, int q) {
@@ -467,7 +505,7 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4iv(SegmentAllocator allocator, int target, int[] v) {
-        multiTexCoord4iv(target, allocator.allocateArray(JAVA_INT, v));
+        multiTexCoord4iv(target, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void multiTexCoord4s(int target, short s, short t, short r, short q) {
@@ -489,6 +527,6 @@ public final class GL13 extends GL13C {
     }
 
     public static void multiTexCoord4sv(SegmentAllocator allocator, int target, short[] v) {
-        multiTexCoord4sv(target, allocator.allocateArray(JAVA_SHORT, v));
+        multiTexCoord4sv(target, allocator.allocateFrom(JAVA_SHORT, v));
     }
 }

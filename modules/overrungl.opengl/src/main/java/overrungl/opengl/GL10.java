@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -378,7 +378,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void clipPlane(SegmentAllocator allocator, int plane, double[] equation) {
-        clipPlane(plane, allocator.allocateArray(JAVA_DOUBLE, equation));
+        clipPlane(plane, allocator.allocateFrom(JAVA_DOUBLE, equation));
     }
 
 
@@ -401,7 +401,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3bv(SegmentAllocator allocator, byte[] v) {
-        color3bv(allocator.allocateArray(JAVA_BYTE, v));
+        color3bv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void color3d(double red, double green, double blue) {
@@ -423,7 +423,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3dv(SegmentAllocator allocator, double[] v) {
-        color3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        color3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void color3f(float red, float green, float blue) {
@@ -445,7 +445,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3fv(SegmentAllocator allocator, float[] v) {
-        color3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        color3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void color3i(int red, int green, int blue) {
@@ -467,7 +467,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3iv(SegmentAllocator allocator, int[] v) {
-        color3iv(allocator.allocateArray(JAVA_INT, v));
+        color3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void color3s(short red, short green, short blue) {
@@ -489,7 +489,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3sv(SegmentAllocator allocator, short[] v) {
-        color3sv(allocator.allocateArray(JAVA_SHORT, v));
+        color3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void color3ub(byte red, byte green, byte blue) {
@@ -511,7 +511,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3ubv(SegmentAllocator allocator, byte[] v) {
-        color3ubv(allocator.allocateArray(JAVA_BYTE, v));
+        color3ubv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void color3ui(int red, int green, int blue) {
@@ -533,7 +533,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3uiv(SegmentAllocator allocator, int[] v) {
-        color3uiv(allocator.allocateArray(JAVA_INT, v));
+        color3uiv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void color3us(short red, short green, short blue) {
@@ -555,7 +555,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color3usv(SegmentAllocator allocator, short[] v) {
-        color3usv(allocator.allocateArray(JAVA_SHORT, v));
+        color3usv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void color4b(byte red, byte green, byte blue, byte alpha) {
@@ -577,7 +577,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4bv(SegmentAllocator allocator, byte[] v) {
-        color4bv(allocator.allocateArray(JAVA_BYTE, v));
+        color4bv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void color4d(double red, double green, double blue, double alpha) {
@@ -599,7 +599,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4dv(SegmentAllocator allocator, double[] v) {
-        color4dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        color4dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void color4f(float red, float green, float blue, float alpha) {
@@ -621,7 +621,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4fv(SegmentAllocator allocator, float[] v) {
-        color4fv(allocator.allocateArray(JAVA_FLOAT, v));
+        color4fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void color4i(int red, int green, int blue, int alpha) {
@@ -643,7 +643,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4iv(SegmentAllocator allocator, int[] v) {
-        color4iv(allocator.allocateArray(JAVA_INT, v));
+        color4iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void color4s(short red, short green, short blue, short alpha) {
@@ -665,7 +665,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4sv(SegmentAllocator allocator, short[] v) {
-        color4sv(allocator.allocateArray(JAVA_SHORT, v));
+        color4sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void color4ub(byte red, byte green, byte blue, byte alpha) {
@@ -687,7 +687,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4ubv(SegmentAllocator allocator, byte[] v) {
-        color4ubv(allocator.allocateArray(JAVA_BYTE, v));
+        color4ubv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void color4ui(int red, int green, int blue, int alpha) {
@@ -709,7 +709,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4uiv(SegmentAllocator allocator, int[] v) {
-        color4uiv(allocator.allocateArray(JAVA_INT, v));
+        color4uiv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void color4us(short red, short green, short blue, short alpha) {
@@ -731,7 +731,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void color4usv(SegmentAllocator allocator, short[] v) {
-        color4usv(allocator.allocateArray(JAVA_SHORT, v));
+        color4usv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void colorMaterial(int face, int mode) {
@@ -789,7 +789,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void edgeFlagv(SegmentAllocator allocator, boolean[] flag) {
-        var pFlag = allocator.allocateArray(JAVA_BOOLEAN, flag.length);
+        var pFlag = allocator.allocate(JAVA_BOOLEAN, flag.length);
         for (int i = 0; i < flag.length; i++) {
             pFlag.set(JAVA_BOOLEAN, i, flag[i]);
         }
@@ -833,7 +833,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord1dv(SegmentAllocator allocator, double[] u) {
-        evalCoord1dv(allocator.allocateArray(JAVA_DOUBLE, u));
+        evalCoord1dv(allocator.allocateFrom(JAVA_DOUBLE, u));
     }
 
     public static void evalCoord1f(float u) {
@@ -855,7 +855,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord1fv(SegmentAllocator allocator, float[] u) {
-        evalCoord1fv(allocator.allocateArray(JAVA_FLOAT, u));
+        evalCoord1fv(allocator.allocateFrom(JAVA_FLOAT, u));
     }
 
     public static void evalCoord2d(double u, double v) {
@@ -877,7 +877,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord2dv(SegmentAllocator allocator, double[] u) {
-        evalCoord2dv(allocator.allocateArray(JAVA_DOUBLE, u));
+        evalCoord2dv(allocator.allocateFrom(JAVA_DOUBLE, u));
     }
 
     public static void evalCoord2f(float u, float v) {
@@ -899,7 +899,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void evalCoord2fv(SegmentAllocator allocator, float[] u) {
-        evalCoord2fv(allocator.allocateArray(JAVA_FLOAT, u));
+        evalCoord2fv(allocator.allocateFrom(JAVA_FLOAT, u));
     }
 
     public static void evalMesh1(int mode, int i1, int i2) {
@@ -948,7 +948,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void feedbackBuffer(SegmentAllocator allocator, int type, float[] buffer) {
-        var pBuffer = allocator.allocateArray(JAVA_FLOAT, buffer.length);
+        var pBuffer = allocator.allocateFrom(JAVA_FLOAT, buffer);
         feedbackBuffer(buffer.length, type, pBuffer);
         RuntimeHelper.toArray(pBuffer, buffer);
     }
@@ -972,7 +972,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogfv(SegmentAllocator allocator, int pname, float[] params) {
-        fogfv(pname, allocator.allocateArray(JAVA_FLOAT, params));
+        fogfv(pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void fogi(int pname, int param) {
@@ -994,7 +994,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void fogiv(SegmentAllocator allocator, int pname, int[] params) {
-        fogiv(pname, allocator.allocateArray(JAVA_INT, params));
+        fogiv(pname, allocator.allocateFrom(JAVA_INT, params));
     }
 
     public static void frustum(double left, double right, double bottom, double top, double zNear, double zFar) {
@@ -1046,7 +1046,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getLightfv(SegmentAllocator allocator, int light, int pname, float[] params) {
-        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_FLOAT, params);
         getLightfv(light, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1073,7 +1073,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getLightiv(SegmentAllocator allocator, int light, int pname, int[] params) {
-        var pParams = allocator.allocateArray(JAVA_INT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_INT, params);
         getLightiv(light, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1100,7 +1100,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapdv(SegmentAllocator allocator, int target, int query, double[] v) {
-        var pv = allocator.allocateArray(JAVA_DOUBLE, v.length);
+        var pv = allocator.allocateFrom(JAVA_DOUBLE, v);
         getMapdv(target, query, pv);
         RuntimeHelper.toArray(pv, v);
     }
@@ -1127,7 +1127,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapfv(SegmentAllocator allocator, int target, int query, float[] v) {
-        var pv = allocator.allocateArray(JAVA_FLOAT, v.length);
+        var pv = allocator.allocateFrom(JAVA_FLOAT, v);
         getMapfv(target, query, pv);
         RuntimeHelper.toArray(pv, v);
     }
@@ -1154,7 +1154,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMapiv(SegmentAllocator allocator, int target, int query, int[] v) {
-        var pv = allocator.allocateArray(JAVA_INT, v.length);
+        var pv = allocator.allocateFrom(JAVA_INT, v);
         getMapiv(target, query, pv);
         RuntimeHelper.toArray(pv, v);
     }
@@ -1181,7 +1181,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMaterialfv(SegmentAllocator allocator, int face, int pname, float[] params) {
-        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_FLOAT, params);
         getMaterialfv(face, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1208,7 +1208,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getMaterialiv(SegmentAllocator allocator, int face, int pname, int[] params) {
-        var pParams = allocator.allocateArray(JAVA_INT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_INT, params);
         getMaterialiv(face, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1235,7 +1235,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapfv(SegmentAllocator allocator, int map, float[] values) {
-        var pValues = allocator.allocateArray(JAVA_FLOAT, values.length);
+        var pValues = allocator.allocateFrom(JAVA_FLOAT, values);
         getPixelMapfv(map, pValues);
         RuntimeHelper.toArray(pValues, values);
     }
@@ -1250,7 +1250,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapuiv(SegmentAllocator allocator, int map, int[] values) {
-        var pValues = allocator.allocateArray(JAVA_INT, values.length);
+        var pValues = allocator.allocateFrom(JAVA_INT, values);
         getPixelMapuiv(map, pValues);
         RuntimeHelper.toArray(pValues, values);
     }
@@ -1265,7 +1265,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPixelMapusv(SegmentAllocator allocator, int map, short[] values) {
-        var pValues = allocator.allocateArray(JAVA_SHORT, values.length);
+        var pValues = allocator.allocateFrom(JAVA_SHORT, values);
         getPixelMapusv(map, pValues);
         RuntimeHelper.toArray(pValues, values);
     }
@@ -1280,7 +1280,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getPolygonStipple(SegmentAllocator allocator, byte[] mask) {
-        var pMask = allocator.allocateArray(JAVA_BYTE, mask.length);
+        var pMask = allocator.allocateFrom(JAVA_BYTE, mask);
         getPolygonStipple(pMask);
         RuntimeHelper.toArray(pMask, mask);
     }
@@ -1295,7 +1295,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexEnvfv(SegmentAllocator allocator, int target, int pname, float[] params) {
-        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_FLOAT, params);
         getTexEnvfv(target, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1322,7 +1322,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexEnviv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        var pParams = allocator.allocateArray(JAVA_INT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_INT, params);
         getTexEnviv(target, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1349,7 +1349,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGendv(SegmentAllocator allocator, int coord, int pname, double[] params) {
-        var pParams = allocator.allocateArray(JAVA_DOUBLE, params.length);
+        var pParams = allocator.allocateFrom(JAVA_DOUBLE, params);
         getTexGendv(coord, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1364,7 +1364,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGenfv(SegmentAllocator allocator, int coord, int pname, float[] params) {
-        var pParams = allocator.allocateArray(JAVA_FLOAT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_FLOAT, params);
         getTexGenfv(coord, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1379,7 +1379,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void getTexGeniv(SegmentAllocator allocator, int coord, int pname, int[] params) {
-        var pParams = allocator.allocateArray(JAVA_INT, params.length);
+        var pParams = allocator.allocateFrom(JAVA_INT, params);
         getTexGeniv(coord, pname, pParams);
         RuntimeHelper.toArray(pParams, params);
     }
@@ -1412,7 +1412,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexdv(SegmentAllocator allocator, double[] c) {
-        indexdv(allocator.allocateArray(JAVA_DOUBLE, c));
+        indexdv(allocator.allocateFrom(JAVA_DOUBLE, c));
     }
 
     public static void indexf(float c) {
@@ -1434,7 +1434,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexfv(SegmentAllocator allocator, float[] c) {
-        indexfv(allocator.allocateArray(JAVA_FLOAT, c));
+        indexfv(allocator.allocateFrom(JAVA_FLOAT, c));
     }
 
     public static void indexi(int c) {
@@ -1456,7 +1456,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexiv(SegmentAllocator allocator, int[] c) {
-        indexiv(allocator.allocateArray(JAVA_INT, c));
+        indexiv(allocator.allocateFrom(JAVA_INT, c));
     }
 
     public static void indexs(short c) {
@@ -1478,7 +1478,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void indexsv(SegmentAllocator allocator, short[] c) {
-        indexsv(allocator.allocateArray(JAVA_SHORT, c));
+        indexsv(allocator.allocateFrom(JAVA_SHORT, c));
     }
 
     public static void initNames() {
@@ -1518,7 +1518,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightModelfv(SegmentAllocator allocator, int pname, float[] params) {
-        lightModelfv(pname, allocator.allocateArray(JAVA_FLOAT, params));
+        lightModelfv(pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void lightModeli(int pname, int param) {
@@ -1540,7 +1540,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightModeliv(SegmentAllocator allocator, int pname, int[] params) {
-        lightModeliv(pname, allocator.allocateArray(JAVA_INT, params));
+        lightModeliv(pname, allocator.allocateFrom(JAVA_INT, params));
     }
 
     public static void lightf(int light, int pname, float param) {
@@ -1562,7 +1562,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightfv(SegmentAllocator allocator, int light, int pname, float[] params) {
-        lightfv(light, pname, allocator.allocateArray(JAVA_FLOAT, params));
+        lightfv(light, pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void lighti(int light, int pname, int param) {
@@ -1584,7 +1584,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void lightiv(SegmentAllocator allocator, int light, int pname, int[] params) {
-        lightiv(light, pname, allocator.allocateArray(JAVA_INT, params));
+        lightiv(light, pname, allocator.allocateFrom(JAVA_INT, params));
     }
 
     public static void lineStipple(int factor, short pattern) {
@@ -1624,7 +1624,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void loadMatrixd(SegmentAllocator allocator, double[] m) {
-        loadMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
+        loadMatrixd(allocator.allocateFrom(JAVA_DOUBLE, m));
     }
 
     public static void loadMatrixf(MemorySegment m) {
@@ -1637,7 +1637,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void loadMatrixf(SegmentAllocator allocator, float[] m) {
-        loadMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
+        loadMatrixf(allocator.allocateFrom(JAVA_FLOAT, m));
     }
 
     public static void loadName(int name) {
@@ -1659,7 +1659,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map1d(SegmentAllocator allocator, int target, double u1, double u2, int stride, int order, double[] points) {
-        map1d(target, u1, u2, stride, order, allocator.allocateArray(JAVA_DOUBLE, points));
+        map1d(target, u1, u2, stride, order, allocator.allocateFrom(JAVA_DOUBLE, points));
     }
 
     public static void map1f(int target, float u1, float u2, int stride, int order, MemorySegment points) {
@@ -1672,7 +1672,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map1f(SegmentAllocator allocator, int target, float u1, float u2, int stride, int order, float[] points) {
-        map1f(target, u1, u2, stride, order, allocator.allocateArray(JAVA_FLOAT, points));
+        map1f(target, u1, u2, stride, order, allocator.allocateFrom(JAVA_FLOAT, points));
     }
 
     public static void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
@@ -1685,7 +1685,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map2d(SegmentAllocator allocator, int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
-        map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_DOUBLE, points));
+        map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateFrom(JAVA_DOUBLE, points));
     }
 
     public static void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
@@ -1698,7 +1698,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void map2f(SegmentAllocator allocator, int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
-        map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateArray(JAVA_FLOAT, points));
+        map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, allocator.allocateFrom(JAVA_FLOAT, points));
     }
 
     public static void mapGrid1d(int un, double u1, double u2) {
@@ -1756,7 +1756,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void materialfv(SegmentAllocator allocator, int face, int pname, float[] params) {
-        materialfv(face, pname, allocator.allocateArray(JAVA_FLOAT, params));
+        materialfv(face, pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void materiali(int face, int pname, int param) {
@@ -1778,7 +1778,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void materialiv(SegmentAllocator allocator, int face, int pname, int[] params) {
-        materialiv(face, pname, allocator.allocateArray(JAVA_INT, params));
+        materialiv(face, pname, allocator.allocateFrom(JAVA_INT, params));
     }
 
     public static void matrixMode(int mode) {
@@ -1800,7 +1800,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void multMatrixd(SegmentAllocator allocator, double[] m) {
-        multMatrixd(allocator.allocateArray(JAVA_DOUBLE, m));
+        multMatrixd(allocator.allocateFrom(JAVA_DOUBLE, m));
     }
 
     public static void multMatrixf(MemorySegment m) {
@@ -1813,7 +1813,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void multMatrixf(SegmentAllocator allocator, float[] m) {
-        multMatrixf(allocator.allocateArray(JAVA_FLOAT, m));
+        multMatrixf(allocator.allocateFrom(JAVA_FLOAT, m));
     }
 
     public static void newList(int list, int mode) {
@@ -1844,7 +1844,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3bv(SegmentAllocator allocator, byte[] v) {
-        normal3bv(allocator.allocateArray(JAVA_BYTE, v));
+        normal3bv(allocator.allocateFrom(JAVA_BYTE, v));
     }
 
     public static void normal3d(double nx, double ny, double nz) {
@@ -1866,7 +1866,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3dv(SegmentAllocator allocator, double[] v) {
-        normal3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        normal3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void normal3f(float nx, float ny, float nz) {
@@ -1888,7 +1888,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3fv(SegmentAllocator allocator, float[] v) {
-        normal3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        normal3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void normal3i(int nx, int ny, int nz) {
@@ -1910,7 +1910,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3iv(SegmentAllocator allocator, int[] v) {
-        normal3iv(allocator.allocateArray(JAVA_INT, v));
+        normal3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void normal3s(short nx, short ny, short nz) {
@@ -1932,7 +1932,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void normal3sv(SegmentAllocator allocator, short[] v) {
-        normal3sv(allocator.allocateArray(JAVA_SHORT, v));
+        normal3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void ortho(double left, double right, double bottom, double top, double zNear, double zFar) {
@@ -1963,7 +1963,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelMapfv(SegmentAllocator allocator, int map, float[] values) {
-        pixelMapfv(map, values.length, allocator.allocateArray(JAVA_FLOAT, values));
+        pixelMapfv(map, values.length, allocator.allocateFrom(JAVA_FLOAT, values));
     }
 
     public static void pixelMapuiv(int map, int mapSize, MemorySegment values) {
@@ -1976,7 +1976,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelMapuiv(SegmentAllocator allocator, int map, int[] values) {
-        pixelMapuiv(map, values.length, allocator.allocateArray(JAVA_INT, values));
+        pixelMapuiv(map, values.length, allocator.allocateFrom(JAVA_INT, values));
     }
 
     public static void pixelMapusv(int map, int mapSize, MemorySegment values) {
@@ -1989,7 +1989,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void pixelMapusv(SegmentAllocator allocator, int map, short[] values) {
-        pixelMapusv(map, values.length, allocator.allocateArray(JAVA_SHORT, values));
+        pixelMapusv(map, values.length, allocator.allocateFrom(JAVA_SHORT, values));
     }
 
     public static void pixelTransferf(int pname, float param) {
@@ -2029,7 +2029,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void polygonStipple(SegmentAllocator allocator, byte[] mask) {
-        polygonStipple(allocator.allocateArray(JAVA_BYTE, mask));
+        polygonStipple(allocator.allocateFrom(JAVA_BYTE, mask));
     }
 
     public static void popAttrib() {
@@ -2105,7 +2105,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2dv(SegmentAllocator allocator, double[] v) {
-        rasterPos2dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        rasterPos2dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void rasterPos2f(float x, float y) {
@@ -2127,7 +2127,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2fv(SegmentAllocator allocator, float[] v) {
-        rasterPos2fv(allocator.allocateArray(JAVA_FLOAT, v));
+        rasterPos2fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void rasterPos2i(int x, int y) {
@@ -2149,7 +2149,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2iv(SegmentAllocator allocator, int[] v) {
-        rasterPos2iv(allocator.allocateArray(JAVA_INT, v));
+        rasterPos2iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void rasterPos2s(short x, short y) {
@@ -2171,7 +2171,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos2sv(SegmentAllocator allocator, short[] v) {
-        rasterPos2sv(allocator.allocateArray(JAVA_SHORT, v));
+        rasterPos2sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void rasterPos3d(double x, double y, double z) {
@@ -2193,7 +2193,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3dv(SegmentAllocator allocator, double[] v) {
-        rasterPos3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        rasterPos3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void rasterPos3f(float x, float y, float z) {
@@ -2215,7 +2215,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3fv(SegmentAllocator allocator, float[] v) {
-        rasterPos3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        rasterPos3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void rasterPos3i(int x, int y, int z) {
@@ -2237,7 +2237,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3iv(SegmentAllocator allocator, int[] v) {
-        rasterPos3iv(allocator.allocateArray(JAVA_INT, v));
+        rasterPos3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void rasterPos3s(short x, short y, short z) {
@@ -2259,7 +2259,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos3sv(SegmentAllocator allocator, short[] v) {
-        rasterPos3sv(allocator.allocateArray(JAVA_SHORT, v));
+        rasterPos3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void rasterPos4d(double x, double y, double z, double w) {
@@ -2281,7 +2281,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4dv(SegmentAllocator allocator, double[] v) {
-        rasterPos4dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        rasterPos4dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void rasterPos4f(float x, float y, float z, float w) {
@@ -2303,7 +2303,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4fv(SegmentAllocator allocator, float[] v) {
-        rasterPos4fv(allocator.allocateArray(JAVA_FLOAT, v));
+        rasterPos4fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void rasterPos4i(int x, int y, int z, int w) {
@@ -2325,7 +2325,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4iv(SegmentAllocator allocator, int[] v) {
-        rasterPos4iv(allocator.allocateArray(JAVA_INT, v));
+        rasterPos4iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void rasterPos4s(short x, short y, short z, short w) {
@@ -2347,7 +2347,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rasterPos4sv(SegmentAllocator allocator, short[] v) {
-        rasterPos4sv(allocator.allocateArray(JAVA_SHORT, v));
+        rasterPos4sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void rectd(double x1, double y1, double x2, double y2) {
@@ -2369,7 +2369,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectdv(SegmentAllocator allocator, double[] v1, double[] v2) {
-        rectdv(allocator.allocateArray(JAVA_DOUBLE, v1), allocator.allocateArray(JAVA_DOUBLE, v2));
+        rectdv(allocator.allocateFrom(JAVA_DOUBLE, v1), allocator.allocateFrom(JAVA_DOUBLE, v2));
     }
 
     public static void rectf(float x1, float y1, float x2, float y2) {
@@ -2391,7 +2391,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectfv(SegmentAllocator allocator, float[] v1, float[] v2) {
-        rectfv(allocator.allocateArray(JAVA_FLOAT, v1), allocator.allocateArray(JAVA_FLOAT, v2));
+        rectfv(allocator.allocateFrom(JAVA_FLOAT, v1), allocator.allocateFrom(JAVA_FLOAT, v2));
     }
 
     public static void recti(int x1, int y1, int x2, int y2) {
@@ -2413,7 +2413,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectiv(SegmentAllocator allocator, int[] v1, int[] v2) {
-        rectiv(allocator.allocateArray(JAVA_INT, v1), allocator.allocateArray(JAVA_INT, v2));
+        rectiv(allocator.allocateFrom(JAVA_INT, v1), allocator.allocateFrom(JAVA_INT, v2));
     }
 
     public static void rects(short x1, short y1, short x2, short y2) {
@@ -2435,7 +2435,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void rectsv(SegmentAllocator allocator, short[] v1, short[] v2) {
-        rectsv(allocator.allocateArray(JAVA_SHORT, v1), allocator.allocateArray(JAVA_SHORT, v2));
+        rectsv(allocator.allocateFrom(JAVA_SHORT, v1), allocator.allocateFrom(JAVA_SHORT, v2));
     }
 
     public static int renderMode(int mode) {
@@ -2493,7 +2493,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void selectBuffer(SegmentAllocator allocator, int[] buffer) {
-        var seg = allocator.allocateArray(JAVA_INT, buffer.length);
+        var seg = allocator.allocateFrom(JAVA_INT, buffer);
         selectBuffer(buffer.length, seg);
         RuntimeHelper.toArray(seg, buffer);
     }
@@ -2526,7 +2526,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1dv(SegmentAllocator allocator, double[] v) {
-        texCoord1dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        texCoord1dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void texCoord1f(float s) {
@@ -2548,7 +2548,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1fv(SegmentAllocator allocator, float[] v) {
-        texCoord1fv(allocator.allocateArray(JAVA_FLOAT, v));
+        texCoord1fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void texCoord1i(int s) {
@@ -2570,7 +2570,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1iv(SegmentAllocator allocator, int[] v) {
-        texCoord1iv(allocator.allocateArray(JAVA_INT, v));
+        texCoord1iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void texCoord1s(short s) {
@@ -2592,7 +2592,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord1sv(SegmentAllocator allocator, short[] v) {
-        texCoord1sv(allocator.allocateArray(JAVA_SHORT, v));
+        texCoord1sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void texCoord2d(double s, double t) {
@@ -2614,7 +2614,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2dv(SegmentAllocator allocator, double[] v) {
-        texCoord2dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        texCoord2dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void texCoord2f(float s, float t) {
@@ -2636,7 +2636,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2fv(SegmentAllocator allocator, float[] v) {
-        texCoord2fv(allocator.allocateArray(JAVA_FLOAT, v));
+        texCoord2fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void texCoord2i(int s, int t) {
@@ -2658,7 +2658,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2iv(SegmentAllocator allocator, int[] v) {
-        texCoord2iv(allocator.allocateArray(JAVA_INT, v));
+        texCoord2iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void texCoord2s(short s, short t) {
@@ -2680,7 +2680,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord2sv(SegmentAllocator allocator, short[] v) {
-        texCoord2sv(allocator.allocateArray(JAVA_SHORT, v));
+        texCoord2sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void texCoord3d(double s, double t, double r) {
@@ -2702,7 +2702,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3dv(SegmentAllocator allocator, double[] v) {
-        texCoord3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        texCoord3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void texCoord3f(float s, float t, float r) {
@@ -2724,7 +2724,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3fv(SegmentAllocator allocator, float[] v) {
-        texCoord3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        texCoord3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void texCoord3i(int s, int t, int r) {
@@ -2746,7 +2746,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3iv(SegmentAllocator allocator, int[] v) {
-        texCoord3iv(allocator.allocateArray(JAVA_INT, v));
+        texCoord3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void texCoord3s(short s, short t, short r) {
@@ -2768,7 +2768,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord3sv(SegmentAllocator allocator, short[] v) {
-        texCoord3sv(allocator.allocateArray(JAVA_SHORT, v));
+        texCoord3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void texCoord4d(double s, double t, double r, double q) {
@@ -2790,7 +2790,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4dv(SegmentAllocator allocator, double[] v) {
-        texCoord4dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        texCoord4dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void texCoord4f(float s, float t, float r, float q) {
@@ -2812,7 +2812,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4fv(SegmentAllocator allocator, float[] v) {
-        texCoord4fv(allocator.allocateArray(JAVA_FLOAT, v));
+        texCoord4fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void texCoord4i(int s, int t, int r, int q) {
@@ -2834,7 +2834,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4iv(SegmentAllocator allocator, int[] v) {
-        texCoord4iv(allocator.allocateArray(JAVA_INT, v));
+        texCoord4iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void texCoord4s(short s, short t, short r, short q) {
@@ -2856,7 +2856,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texCoord4sv(SegmentAllocator allocator, short[] v) {
-        texCoord4sv(allocator.allocateArray(JAVA_SHORT, v));
+        texCoord4sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void texEnvf(int target, int pname, float param) {
@@ -2878,7 +2878,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texEnvfv(SegmentAllocator allocator, int target, int pname, float[] params) {
-        texEnvfv(target, pname, allocator.allocateArray(JAVA_FLOAT, params));
+        texEnvfv(target, pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void texEnvi(int target, int pname, int param) {
@@ -2900,7 +2900,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texEnviv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        texEnviv(target, pname, allocator.allocateArray(JAVA_INT, params));
+        texEnviv(target, pname, allocator.allocateFrom(JAVA_INT, params));
     }
 
     public static void texGend(int coord, int pname, double param) {
@@ -2922,7 +2922,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGendv(SegmentAllocator allocator, int coord, int pname, double[] params) {
-        texGendv(coord, pname, allocator.allocateArray(JAVA_DOUBLE, params));
+        texGendv(coord, pname, allocator.allocateFrom(JAVA_DOUBLE, params));
     }
 
     public static void texGenf(int coord, int pname, float param) {
@@ -2944,7 +2944,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGenfv(SegmentAllocator allocator, int coord, int pname, float[] params) {
-        texGenfv(coord, pname, allocator.allocateArray(JAVA_FLOAT, params));
+        texGenfv(coord, pname, allocator.allocateFrom(JAVA_FLOAT, params));
     }
 
     public static void texGeni(int coord, int pname, int param) {
@@ -2966,7 +2966,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void texGeniv(SegmentAllocator allocator, int coord, int pname, int[] params) {
-        texGeniv(coord, pname, allocator.allocateArray(JAVA_INT, params));
+        texGeniv(coord, pname, allocator.allocateFrom(JAVA_INT, params));
     }
 
     public static void translated(double x, double y, double z) {
@@ -3006,7 +3006,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2dv(SegmentAllocator allocator, double[] v) {
-        vertex2dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        vertex2dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertex2f(float x, float y) {
@@ -3028,7 +3028,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2fv(SegmentAllocator allocator, float[] v) {
-        vertex2fv(allocator.allocateArray(JAVA_FLOAT, v));
+        vertex2fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertex2i(int x, int y) {
@@ -3050,7 +3050,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2iv(SegmentAllocator allocator, int[] v) {
-        vertex2iv(allocator.allocateArray(JAVA_INT, v));
+        vertex2iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertex2s(short x, short y) {
@@ -3072,7 +3072,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex2sv(SegmentAllocator allocator, short[] v) {
-        vertex2sv(allocator.allocateArray(JAVA_SHORT, v));
+        vertex2sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertex3d(double x, double y, double z) {
@@ -3094,7 +3094,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3dv(SegmentAllocator allocator, double[] v) {
-        vertex3dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        vertex3dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertex3f(float x, float y, float z) {
@@ -3116,7 +3116,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3fv(SegmentAllocator allocator, float[] v) {
-        vertex3fv(allocator.allocateArray(JAVA_FLOAT, v));
+        vertex3fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertex3i(int x, int y, int z) {
@@ -3138,7 +3138,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3iv(SegmentAllocator allocator, int[] v) {
-        vertex3iv(allocator.allocateArray(JAVA_INT, v));
+        vertex3iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertex3s(short x, short y, short z) {
@@ -3160,7 +3160,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex3sv(SegmentAllocator allocator, short[] v) {
-        vertex3sv(allocator.allocateArray(JAVA_SHORT, v));
+        vertex3sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 
     public static void vertex4d(double x, double y, double z, double w) {
@@ -3182,7 +3182,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4dv(SegmentAllocator allocator, double[] v) {
-        vertex4dv(allocator.allocateArray(JAVA_DOUBLE, v));
+        vertex4dv(allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertex4f(float x, float y, float z, float w) {
@@ -3204,7 +3204,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4fv(SegmentAllocator allocator, float[] v) {
-        vertex4fv(allocator.allocateArray(JAVA_FLOAT, v));
+        vertex4fv(allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void vertex4i(int x, int y, int z, int w) {
@@ -3226,7 +3226,7 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4iv(SegmentAllocator allocator, int[] v) {
-        vertex4iv(allocator.allocateArray(JAVA_INT, v));
+        vertex4iv(allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void vertex4s(short x, short y, short z, short w) {
@@ -3248,6 +3248,6 @@ public final class GL10 extends GL10C {
     }
 
     public static void vertex4sv(SegmentAllocator allocator, short[] v) {
-        vertex4sv(allocator.allocateArray(JAVA_SHORT, v));
+        vertex4sv(allocator.allocateFrom(JAVA_SHORT, v));
     }
 }

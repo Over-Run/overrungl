@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,30 +143,30 @@ public sealed class GL40C extends GL33C permits GL41C {
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glBeginQueryIndexed = load.invoke("glBeginQueryIndexed", IIIV);
         caps.glBindTransformFeedback = load.invoke("glBindTransformFeedback", IIV);
-        caps.glBlendEquationSeparatei = load.trivialHandle("glBlendEquationSeparatei", IIIV);
-        caps.glBlendEquationi = load.trivialHandle("glBlendEquationi", IIV);
-        caps.glBlendFuncSeparatei = load.trivialHandle("glBlendFuncSeparatei", IIIIIV);
-        caps.glBlendFunci = load.trivialHandle("glBlendFunci", IIIV);
-        caps.glDeleteTransformFeedbacks = load.trivialHandle("glDeleteTransformFeedbacks", IPV);
+        caps.glBlendEquationSeparatei = load.invoke("glBlendEquationSeparatei", IIIV);
+        caps.glBlendEquationi = load.invoke("glBlendEquationi", IIV);
+        caps.glBlendFuncSeparatei = load.invoke("glBlendFuncSeparatei", IIIIIV);
+        caps.glBlendFunci = load.invoke("glBlendFunci", IIIV);
+        caps.glDeleteTransformFeedbacks = load.invoke("glDeleteTransformFeedbacks", IPV);
         caps.glDrawArraysIndirect = load.invoke("glDrawArraysIndirect", IPV);
         caps.glDrawElementsIndirect = load.invoke("glDrawElementsIndirect", IIPV);
         caps.glDrawTransformFeedback = load.invoke("glDrawTransformFeedback", IIV);
         caps.glDrawTransformFeedbackStream = load.invoke("glDrawTransformFeedbackStream", IIIV);
         caps.glEndQueryIndexed = load.invoke("glEndQueryIndexed", IIV);
-        caps.glGenTransformFeedbacks = load.trivialHandle("glGenTransformFeedbacks", IPV);
-        caps.glGetActiveSubroutineName = load.trivialHandle("glGetActiveSubroutineName", IIIIPPV);
-        caps.glGetActiveSubroutineUniformName = load.trivialHandle("glGetActiveSubroutineUniformName", IIIIPPV);
-        caps.glGetActiveSubroutineUniformiv = load.trivialHandle("glGetActiveSubroutineUniformiv", IIIIPV);
-        caps.glGetProgramStageiv = load.trivialHandle("glGetProgramStageiv", IIIPV);
-        caps.glGetQueryIndexediv = load.trivialHandle("glGetQueryIndexediv", IIIPV);
-        caps.glGetSubroutineIndex = load.trivialHandle("glGetSubroutineIndex", IIPI);
-        caps.glGetSubroutineUniformLocation = load.trivialHandle("glGetSubroutineUniformLocation", IIPI);
-        caps.glGetUniformSubroutineuiv = load.trivialHandle("glGetUniformSubroutineuiv", IIPV);
-        caps.glGetUniformdv = load.trivialHandle("glGetUniformdv", IIPV);
-        caps.glIsTransformFeedback = load.trivialHandle("glIsTransformFeedback", IZ);
-        caps.glMinSampleShading = load.trivialHandle("glMinSampleShading", FV);
-        caps.glPatchParameterfv = load.trivialHandle("glPatchParameterfv", IPV);
-        caps.glPatchParameteri = load.trivialHandle("glPatchParameteri", IIV);
+        caps.glGenTransformFeedbacks = load.invoke("glGenTransformFeedbacks", IPV);
+        caps.glGetActiveSubroutineName = load.invoke("glGetActiveSubroutineName", IIIIPPV);
+        caps.glGetActiveSubroutineUniformName = load.invoke("glGetActiveSubroutineUniformName", IIIIPPV);
+        caps.glGetActiveSubroutineUniformiv = load.invoke("glGetActiveSubroutineUniformiv", IIIIPV);
+        caps.glGetProgramStageiv = load.invoke("glGetProgramStageiv", IIIPV);
+        caps.glGetQueryIndexediv = load.invoke("glGetQueryIndexediv", IIIPV);
+        caps.glGetSubroutineIndex = load.invoke("glGetSubroutineIndex", IIPI);
+        caps.glGetSubroutineUniformLocation = load.invoke("glGetSubroutineUniformLocation", IIPI);
+        caps.glGetUniformSubroutineuiv = load.invoke("glGetUniformSubroutineuiv", IIPV);
+        caps.glGetUniformdv = load.invoke("glGetUniformdv", IIPV);
+        caps.glIsTransformFeedback = load.invoke("glIsTransformFeedback", IZ);
+        caps.glMinSampleShading = load.invoke("glMinSampleShading", FV);
+        caps.glPatchParameterfv = load.invoke("glPatchParameterfv", IPV);
+        caps.glPatchParameteri = load.invoke("glPatchParameteri", IIV);
         caps.glPauseTransformFeedback = load.invoke("glPauseTransformFeedback", V);
         caps.glResumeTransformFeedback = load.invoke("glResumeTransformFeedback", V);
         caps.glUniform1d = load.invoke("glUniform1d", IDV);
@@ -253,7 +253,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void deleteTransformFeedbacks(SegmentAllocator allocator, int[] ids) {
-        deleteTransformFeedbacks(ids.length, allocator.allocateArray(JAVA_INT, ids));
+        deleteTransformFeedbacks(ids.length, allocator.allocateFrom(JAVA_INT, ids));
     }
 
     public static void deleteTransformFeedback(int id) {
@@ -280,7 +280,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawArraysIndirect(SegmentAllocator allocator, int mode, int[] indirect) {
-        drawArraysIndirect(mode, allocator.allocateArray(JAVA_INT, indirect));
+        drawArraysIndirect(mode, allocator.allocateFrom(JAVA_INT, indirect));
     }
 
     public static void drawElementsIndirect(int mode, int type, MemorySegment indirect) {
@@ -297,7 +297,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawElementsIndirect(SegmentAllocator allocator, int mode, int type, int[] indirect) {
-        drawElementsIndirect(mode, type, allocator.allocateArray(JAVA_INT, indirect));
+        drawElementsIndirect(mode, type, allocator.allocateFrom(JAVA_INT, indirect));
     }
 
     public static void drawTransformFeedback(int mode, int id) {
@@ -337,7 +337,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void genTransformFeedbacks(SegmentAllocator allocator, int[] ids) {
-        var seg = allocator.allocateArray(JAVA_INT, ids.length);
+        var seg = allocator.allocateFrom(JAVA_INT, ids);
         genTransformFeedbacks(ids.length, seg);
         RuntimeHelper.toArray(seg, ids);
     }
@@ -364,9 +364,9 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static String getActiveSubroutineName(SegmentAllocator allocator, int program, int shaderType, int index, int bufSize) {
-        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var seg = allocator.allocate(JAVA_BYTE, bufSize);
         getActiveSubroutineName(program, shaderType, index, bufSize, MemorySegment.NULL, seg);
-        return seg.getUtf8String(0);
+        return seg.getString(0);
     }
 
     public static void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
@@ -379,9 +379,9 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static String getActiveSubroutineUniformName(SegmentAllocator allocator, int program, int shaderType, int index, int bufSize) {
-        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var seg = allocator.allocate(JAVA_BYTE, bufSize);
         getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemorySegment.NULL, seg);
-        return seg.getUtf8String(0);
+        return seg.getString(0);
     }
 
     public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, MemorySegment values) {
@@ -394,7 +394,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getActiveSubroutineUniformiv(SegmentAllocator allocator, int program, int shaderType, int index, int pname, int[] values) {
-        var seg = allocator.allocateArray(JAVA_INT, values.length);
+        var seg = allocator.allocateFrom(JAVA_INT, values);
         getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
         RuntimeHelper.toArray(seg, values);
     }
@@ -466,7 +466,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getSubroutineIndex(program, shaderType, stack.allocateUtf8String(name));
+            return getSubroutineIndex(program, shaderType, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -485,7 +485,7 @@ public sealed class GL40C extends GL33C permits GL41C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getSubroutineUniformLocation(program, shaderType, stack.allocateUtf8String(name));
+            return getSubroutineUniformLocation(program, shaderType, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -501,7 +501,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getUniformSubroutineuiv(SegmentAllocator allocator, int shaderType, int location, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         getUniformSubroutineuiv(shaderType, location, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -516,7 +516,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void getUniformdv(SegmentAllocator allocator, int program, int location, double[] params) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, params.length);
+        var seg = allocator.allocateFrom(JAVA_DOUBLE, params);
         getUniformdv(program, location, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -561,7 +561,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void patchParameterfv(SegmentAllocator allocator, int pname, float[] values) {
-        patchParameterfv(pname, allocator.allocateArray(JAVA_FLOAT, values));
+        patchParameterfv(pname, allocator.allocateFrom(JAVA_FLOAT, values));
     }
 
     public static void patchParameteri(int pname, int value) {
@@ -610,7 +610,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform1dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform1dv(location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform1dv(location, value.length, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniform2d(int location, double x, double y) {
@@ -632,7 +632,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform2dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform2dv(location, value.length >> 1, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform2dv(location, value.length >> 1, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniform3d(int location, double x, double y, double z) {
@@ -654,7 +654,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform3dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform3dv(location, value.length / 3, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform3dv(location, value.length / 3, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniform4d(int location, double x, double y, double z, double w) {
@@ -676,7 +676,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniform4dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform4dv(location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniform4dv(location, value.length >> 2, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
@@ -689,7 +689,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix2dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix2dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -706,7 +706,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix2x3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix2x3dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix2x3dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix2x3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -723,7 +723,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix2x4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix2x4dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix2x4dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix2x4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -740,7 +740,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix3dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix3dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -757,7 +757,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix3x2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix3x2dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix3x2dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix3x2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -774,7 +774,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix3x4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix3x4dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix3x4dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix3x4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -791,7 +791,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix4dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix4dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -808,7 +808,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix4x2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix4x2dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix4x2dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix4x2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -825,7 +825,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformMatrix4x3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix4x3dv(location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        uniformMatrix4x3dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void uniformMatrix4x3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
@@ -842,6 +842,6 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void uniformSubroutinesuiv(SegmentAllocator allocator, int shaderType, int[] indices) {
-        uniformSubroutinesuiv(shaderType, indices.length, allocator.allocateArray(JAVA_INT, indices));
+        uniformSubroutinesuiv(shaderType, indices.length, allocator.allocateFrom(JAVA_INT, indices));
     }
 }

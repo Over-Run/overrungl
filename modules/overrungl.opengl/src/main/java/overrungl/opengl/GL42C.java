@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -170,8 +170,8 @@ public sealed class GL42C extends GL41C permits GL43C {
         caps.glDrawElementsInstancedBaseVertexBaseInstance = load.invoke("glDrawElementsInstancedBaseVertexBaseInstance", IIIPIIIV);
         caps.glDrawTransformFeedbackInstanced = load.invoke("glDrawTransformFeedbackInstanced", IIIV);
         caps.glDrawTransformFeedbackStreamInstanced = load.invoke("glDrawTransformFeedbackStreamInstanced", IIIIV);
-        caps.glGetActiveAtomicCounterBufferiv = load.trivialHandle("glGetActiveAtomicCounterBufferiv", IIIPV);
-        caps.glGetInternalformativ = load.trivialHandle("glGetInternalformativ", IIIIPV);
+        caps.glGetActiveAtomicCounterBufferiv = load.invoke("glGetActiveAtomicCounterBufferiv", IIIPV);
+        caps.glGetInternalformativ = load.invoke("glGetInternalformativ", IIIIPV);
         caps.glMemoryBarrier = load.invoke("glMemoryBarrier", IV);
         caps.glTexStorage1D = load.invoke("glTexStorage1D", IIIIV);
         caps.glTexStorage2D = load.invoke("glTexStorage2D", IIIIIV);
@@ -206,15 +206,15 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void drawElementsInstancedBaseInstance(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount, int baseInstance) {
-        drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), instanceCount, baseInstance);
+        drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateFrom(JAVA_BYTE, indices), instanceCount, baseInstance);
     }
 
     public static void drawElementsInstancedBaseInstance(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount, int baseInstance) {
-        drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), instanceCount, baseInstance);
+        drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateFrom(JAVA_SHORT, indices), instanceCount, baseInstance);
     }
 
     public static void drawElementsInstancedBaseInstance(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount, int baseInstance) {
-        drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount, baseInstance);
+        drawElementsInstancedBaseInstance(mode, count, type, allocator.allocateFrom(JAVA_INT, indices), instanceCount, baseInstance);
     }
 
     public static void drawElementsInstancedBaseVertexBaseInstance(int mode, int count, int type, MemorySegment indices, int instanceCount, int baseVertex, int baseInstance) {
@@ -227,15 +227,15 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void drawElementsInstancedBaseVertexBaseInstance(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount, int baseVertex, int baseInstance) {
-        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, allocator.allocateArray(JAVA_BYTE, indices), instanceCount, baseVertex, baseInstance);
+        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, allocator.allocateFrom(JAVA_BYTE, indices), instanceCount, baseVertex, baseInstance);
     }
 
     public static void drawElementsInstancedBaseVertexBaseInstance(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount, int baseVertex, int baseInstance) {
-        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, allocator.allocateArray(JAVA_SHORT, indices), instanceCount, baseVertex, baseInstance);
+        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, allocator.allocateFrom(JAVA_SHORT, indices), instanceCount, baseVertex, baseInstance);
     }
 
     public static void drawElementsInstancedBaseVertexBaseInstance(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount, int baseVertex, int baseInstance) {
-        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, allocator.allocateArray(JAVA_INT, indices), instanceCount, baseVertex, baseInstance);
+        drawElementsInstancedBaseVertexBaseInstance(mode, count, type, allocator.allocateFrom(JAVA_INT, indices), instanceCount, baseVertex, baseInstance);
     }
 
     public static void drawTransformFeedbackInstanced(int mode, int id, int instanceCount) {
@@ -266,7 +266,7 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void getActiveAtomicCounterBufferiv(SegmentAllocator allocator, int program, int bufferIndex, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -293,7 +293,7 @@ public sealed class GL42C extends GL41C permits GL43C {
     }
 
     public static void getInternalformativ(SegmentAllocator allocator, int target, int internalFormat, int pname, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         getInternalformativ(target, internalFormat, pname, params.length, seg);
         RuntimeHelper.toArray(seg, params);
     }

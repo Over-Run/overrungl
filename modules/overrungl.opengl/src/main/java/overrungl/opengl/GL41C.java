@@ -18,6 +18,7 @@ package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.internal.RuntimeHelper;
+import overrungl.opengl.ext.arb.GLARBViewportArray;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -36,7 +37,7 @@ import static overrungl.opengl.GLLoader.*;
  *     <li>GL_ARB_get_program_binary</li>
  *     <li>GL_ARB_separate_shader_objects</li>
  *     <li>GL_ARB_vertex_attrib_64bit</li>
- *     <li>GL_ARB_viewport_array</li>
+ *     <li>{@link GLARBViewportArray GL_ARB_viewport_array}</li>
  * </ul>
  *
  * @author squid233
@@ -100,21 +101,21 @@ public sealed class GL41C extends GL40C permits GL42C {
     static void load(GLCapabilities caps, GLLoadFunc load) {
         caps.glActiveShaderProgram = load.invoke("glActiveShaderProgram", IIV);
         caps.glBindProgramPipeline = load.invoke("glBindProgramPipeline", IV);
-        caps.glClearDepthf = load.trivialHandle("glClearDepthf", FV);
-        caps.glCreateShaderProgramv = load.trivialHandle("glCreateShaderProgramv", IIPI);
-        caps.glDeleteProgramPipelines = load.trivialHandle("glDeleteProgramPipelines", IPV);
-        caps.glDepthRangeArrayv = load.trivialHandle("glDepthRangeArrayv", IIPV);
-        caps.glDepthRangeIndexed = load.trivialHandle("glDepthRangeIndexed", IDDV);
-        caps.glDepthRangef = load.trivialHandle("glDepthRangef", FFV);
-        caps.glGenProgramPipelines = load.trivialHandle("glGenProgramPipelines", IPV);
-        caps.glGetDoublei_v = load.trivialHandle("glGetDoublei_v", IIPV);
-        caps.glGetFloati_v = load.trivialHandle("glGetFloati_v", IIPV);
+        caps.glClearDepthf = load.invoke("glClearDepthf", FV);
+        caps.glCreateShaderProgramv = load.invoke("glCreateShaderProgramv", IIPI);
+        caps.glDeleteProgramPipelines = load.invoke("glDeleteProgramPipelines", IPV);
+        caps.glDepthRangeArrayv = load.invoke("glDepthRangeArrayv", IIPV);
+        caps.glDepthRangeIndexed = load.invoke("glDepthRangeIndexed", IDDV);
+        caps.glDepthRangef = load.invoke("glDepthRangef", FFV);
+        caps.glGenProgramPipelines = load.invoke("glGenProgramPipelines", IPV);
+        caps.glGetDoublei_v = load.invoke("glGetDoublei_v", IIPV);
+        caps.glGetFloati_v = load.invoke("glGetFloati_v", IIPV);
         caps.glGetProgramBinary = load.invoke("glGetProgramBinary", IIPPPV);
         caps.glGetProgramPipelineInfoLog = load.invoke("glGetProgramPipelineInfoLog", IIPPV);
-        caps.glGetProgramPipelineiv = load.trivialHandle("glGetProgramPipelineiv", IIPV);
-        caps.glGetShaderPrecisionFormat = load.trivialHandle("glGetShaderPrecisionFormat", IIPPV);
-        caps.glGetVertexAttribLdv = load.trivialHandle("glGetVertexAttribLdv", IIPV);
-        caps.glIsProgramPipeline = load.trivialHandle("glIsProgramPipeline", IZ);
+        caps.glGetProgramPipelineiv = load.invoke("glGetProgramPipelineiv", IIPV);
+        caps.glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
+        caps.glGetVertexAttribLdv = load.invoke("glGetVertexAttribLdv", IIPV);
+        caps.glIsProgramPipeline = load.invoke("glIsProgramPipeline", IZ);
         caps.glProgramBinary = load.invoke("glProgramBinary", IIPIV);
         caps.glProgramParameteri = load.invoke("glProgramParameteri", IIIV);
         caps.glProgramUniform1d = load.invoke("glProgramUniform1d", IIDV);
@@ -169,8 +170,8 @@ public sealed class GL41C extends GL40C permits GL42C {
         caps.glProgramUniformMatrix4x3fv = load.invoke("glProgramUniformMatrix4x3fv", IIIZPV);
         caps.glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
         caps.glScissorArrayv = load.invoke("glScissorArrayv", IIPV);
-        caps.glScissorIndexed = load.trivialHandle("glScissorIndexed", IIIIIV);
-        caps.glScissorIndexedv = load.trivialHandle("glScissorIndexedv", IPV);
+        caps.glScissorIndexed = load.invoke("glScissorIndexed", IIIIIV);
+        caps.glScissorIndexedv = load.invoke("glScissorIndexedv", IPV);
         caps.glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
         caps.glUseProgramStages = load.invoke("glUseProgramStages", IIIV);
         caps.glValidateProgramPipeline = load.invoke("glValidateProgramPipeline", IV);
@@ -225,9 +226,9 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static int createShaderProgramv(SegmentAllocator allocator, int type, String[] strings) {
-        var seg = allocator.allocateArray(ADDRESS, strings.length);
+        var seg = allocator.allocate(ADDRESS, strings.length);
         for (int i = 0; i < strings.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateUtf8String(strings[i]));
+            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(strings[i]));
         }
         return createShaderProgramv(type, strings.length, seg);
     }
@@ -236,7 +237,7 @@ public sealed class GL41C extends GL40C permits GL42C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return createShaderProgramv(type, 1, stack.allocate(ADDRESS, stack.allocateUtf8String(string)));
+            return createShaderProgramv(type, 1, stack.allocateFrom(ADDRESS, stack.allocateFrom(string)));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -252,7 +253,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void deleteProgramPipelines(SegmentAllocator allocator, int[] pipelines) {
-        deleteProgramPipelines(pipelines.length, allocator.allocateArray(JAVA_INT, pipelines));
+        deleteProgramPipelines(pipelines.length, allocator.allocateFrom(JAVA_INT, pipelines));
     }
 
     public static void deleteProgramPipeline(int pipeline) {
@@ -275,7 +276,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void depthRangeArrayv(SegmentAllocator allocator, int first, double[] v) {
-        depthRangeArrayv(first, v.length, allocator.allocateArray(JAVA_DOUBLE, v));
+        depthRangeArrayv(first, v.length, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void depthRangeIndexed(int index, double n, double f) {
@@ -306,7 +307,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void genProgramPipelines(SegmentAllocator allocator, int[] pipelines) {
-        var seg = allocator.allocateArray(JAVA_INT, pipelines.length);
+        var seg = allocator.allocate(JAVA_INT, pipelines.length);
         genProgramPipelines(pipelines.length, seg);
         RuntimeHelper.toArray(seg, pipelines);
     }
@@ -333,7 +334,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getDoublei_v(SegmentAllocator allocator, int target, int index, double[] data) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, data.length);
+        var seg = allocator.allocate(JAVA_DOUBLE, data.length);
         getDoublei_v(target, index, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -360,7 +361,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getFloati_v(SegmentAllocator allocator, int target, int index, float[] data) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, data.length);
+        var seg = allocator.allocate(JAVA_FLOAT, data.length);
         getFloati_v(target, index, seg);
         RuntimeHelper.toArray(seg, data);
     }
@@ -417,19 +418,19 @@ public sealed class GL41C extends GL40C permits GL42C {
 
     public static void getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline, int bufSize, int @Nullable [] length, String[] infoLog) {
         var pl = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pi = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var pi = allocator.allocate(JAVA_BYTE, bufSize);
         getProgramPipelineInfoLog(pipeline, bufSize, pl, pi);
         if (length != null && length.length > 0) {
             length[0] = pl.get(JAVA_INT, 0);
         }
-        infoLog[0] = pi.getUtf8String(0);
+        infoLog[0] = pi.getString(0);
     }
 
     public static String getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline) {
         final int sz = getProgramPipelinei(pipeline, INFO_LOG_LENGTH);
-        var pi = allocator.allocateArray(JAVA_BYTE, sz);
+        var pi = allocator.allocate(JAVA_BYTE, sz);
         getProgramPipelineInfoLog(pipeline, sz, MemorySegment.NULL, pi);
-        return pi.getUtf8String(0);
+        return pi.getString(0);
     }
 
     public static void getProgramPipelineiv(int pipeline, int pname, MemorySegment params) {
@@ -463,7 +464,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getShaderPrecisionFormat(SegmentAllocator allocator, int shaderType, int precisionType, int[] range, int[] precision) {
-        var pr = allocator.allocateArray(JAVA_INT, range.length);
+        var pr = allocator.allocate(JAVA_INT, range.length);
         var pp = allocator.allocate(JAVA_INT);
         getShaderPrecisionFormat(shaderType, precisionType, pr, pp);
         RuntimeHelper.toArray(pr, range);
@@ -480,7 +481,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void getVertexAttribLdv(SegmentAllocator allocator, int index, int pname, double[] params) {
-        var seg = allocator.allocateArray(JAVA_DOUBLE, params.length);
+        var seg = allocator.allocate(JAVA_DOUBLE, params.length);
         getVertexAttribLdv(index, pname, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -535,7 +536,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform1dv(program, location, value.length, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform1dv(program, location, value.length, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniform1f(int program, int location, float v0) {
@@ -557,7 +558,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform1fv(program, location, value.length, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform1fv(program, location, value.length, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniform1i(int program, int location, int v0) {
@@ -579,7 +580,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform1iv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform1iv(program, location, value.length, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform1ui(int program, int location, int v0) {
@@ -601,7 +602,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform1uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform1uiv(program, location, value.length, allocator.allocateArray(JAVA_INT, value));
+        programUniform1uiv(program, location, value.length, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform2d(int program, int location, double v0, double v1) {
@@ -623,7 +624,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform2dv(program, location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform2dv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniform2f(int program, int location, float v0, float v1) {
@@ -645,7 +646,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform2fv(program, location, value.length >> 2, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform2fv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniform2i(int program, int location, int v0, int v1) {
@@ -667,7 +668,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform2iv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
+        programUniform2iv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform2ui(int program, int location, int v0, int v1) {
@@ -689,7 +690,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform2uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform2uiv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
+        programUniform2uiv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform3d(int program, int location, double v0, double v1, double v2) {
@@ -711,7 +712,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform3dv(program, location, value.length / 3, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform3dv(program, location, value.length / 3, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniform3f(int program, int location, float v0, float v1, float v2) {
@@ -733,7 +734,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform3fv(program, location, value.length / 3, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform3fv(program, location, value.length / 3, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniform3i(int program, int location, int v0, int v1, int v2) {
@@ -755,7 +756,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform3iv(program, location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
+        programUniform3iv(program, location, value.length / 3, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform3ui(int program, int location, int v0, int v1, int v2) {
@@ -777,7 +778,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform3uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform3uiv(program, location, value.length / 3, allocator.allocateArray(JAVA_INT, value));
+        programUniform3uiv(program, location, value.length / 3, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform4d(int program, int location, double v0, double v1, double v2, double v3) {
@@ -799,7 +800,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform4dv(program, location, value.length >> 2, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniform4dv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniform4f(int program, int location, float v0, float v1, float v2, float v3) {
@@ -821,7 +822,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform4fv(program, location, value.length >> 2, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniform4fv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniform4i(int program, int location, int v0, int v1, int v2, int v3) {
@@ -843,7 +844,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform4iv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
+        programUniform4iv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniform4ui(int program, int location, int v0, int v1, int v2, int v3) {
@@ -865,7 +866,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniform4uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform4uiv(program, location, value.length >> 2, allocator.allocateArray(JAVA_INT, value));
+        programUniform4uiv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
     }
 
     public static void programUniformMatrix2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
@@ -878,7 +879,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix2dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix2dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -895,7 +896,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix2fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix2fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -912,7 +913,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix2x3dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix2x3dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix2x3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -929,7 +930,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix2x3fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix2x3fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix2x3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -946,7 +947,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix2x4dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix2x4dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix2x4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -963,7 +964,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix2x4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix2x4fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix2x4fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix2x4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -980,7 +981,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix3dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix3dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -997,7 +998,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix3fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix3fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -1014,7 +1015,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix3x2dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix3x2dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix3x2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -1031,7 +1032,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix3x2fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix3x2fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix3x2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -1048,7 +1049,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix3x4dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix3x4dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix3x4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -1065,7 +1066,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix3x4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix3x4fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix3x4fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix3x4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -1082,7 +1083,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix4dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix4dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -1099,7 +1100,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix4fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix4fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -1116,7 +1117,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix4x2dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix4x2dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix4x2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -1133,7 +1134,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix4x2fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix4x2fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix4x2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -1150,7 +1151,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix4x3dv(program, location, count, transpose, allocator.allocateArray(JAVA_DOUBLE, value));
+        programUniformMatrix4x3dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
     }
 
     public static void programUniformMatrix4x3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
@@ -1167,7 +1168,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void programUniformMatrix4x3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix4x3fv(program, location, count, transpose, allocator.allocateArray(JAVA_FLOAT, value));
+        programUniformMatrix4x3fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
     }
 
     public static void programUniformMatrix4x3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
@@ -1193,7 +1194,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void scissorArrayv(SegmentAllocator allocator, int first, int count, int[] v) {
-        scissorArrayv(first, count, allocator.allocateArray(JAVA_INT, v));
+        scissorArrayv(first, count, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void scissorIndexed(int index, int left, int bottom, int width, int height) {
@@ -1215,7 +1216,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void scissorIndexedv(SegmentAllocator allocator, int index, int[] v) {
-        scissorIndexedv(index, allocator.allocateArray(JAVA_INT, v));
+        scissorIndexedv(index, allocator.allocateFrom(JAVA_INT, v));
     }
 
     public static void shaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
@@ -1228,7 +1229,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void shaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary, int length) {
-        shaderBinary(shaders.length, allocator.allocateArray(JAVA_INT, shaders), binaryFormat, binary, length);
+        shaderBinary(shaders.length, allocator.allocateFrom(JAVA_INT, shaders), binaryFormat, binary, length);
     }
 
     public static void shaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary) {
@@ -1272,7 +1273,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL1dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL1dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttribL1dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttribL2d(int index, double x, double y) {
@@ -1294,7 +1295,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL2dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL2dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttribL2dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttribL3d(int index, double x, double y, double z) {
@@ -1316,7 +1317,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL3dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL3dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttribL3dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttribL4d(int index, double x, double y, double z, double w) {
@@ -1338,7 +1339,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribL4dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL4dv(index, allocator.allocateArray(JAVA_DOUBLE, v));
+        vertexAttribL4dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
     }
 
     public static void vertexAttribLPointer(int index, int size, int type, int stride, MemorySegment pointer) {
@@ -1351,7 +1352,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void vertexAttribLPointer(SegmentAllocator allocator, int index, int size, int type, int stride, double[] pointer) {
-        vertexAttribLPointer(index, size, type, stride, allocator.allocateArray(JAVA_DOUBLE, pointer));
+        vertexAttribLPointer(index, size, type, stride, allocator.allocateFrom(JAVA_DOUBLE, pointer));
     }
 
     public static void viewportArrayv(int first, int count, MemorySegment v) {
@@ -1364,7 +1365,7 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportArrayv(SegmentAllocator allocator, int first, int count, float[] v) {
-        viewportArrayv(first, count, allocator.allocateArray(JAVA_FLOAT, v));
+        viewportArrayv(first, count, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 
     public static void viewportIndexedf(int index, float x, float y, float w, float h) {
@@ -1386,6 +1387,6 @@ public sealed class GL41C extends GL40C permits GL42C {
     }
 
     public static void viewportIndexedfv(SegmentAllocator allocator, int index, float[] v) {
-        viewportIndexedfv(index, allocator.allocateArray(JAVA_FLOAT, v));
+        viewportIndexedfv(index, allocator.allocateFrom(JAVA_FLOAT, v));
     }
 }

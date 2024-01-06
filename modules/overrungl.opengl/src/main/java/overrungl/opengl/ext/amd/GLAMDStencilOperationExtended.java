@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,31 +14,34 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.FunctionDescriptors;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_stencil_operation_extended}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLAMDStencilOperationExtended {
+    public static final int GL_SET_AMD = 0x874A;
+    public static final int GL_REPLACE_VALUE_AMD = 0x874B;
+    public static final int GL_STENCIL_OP_VALUE_AMD = 0x874C;
+    public static final int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_AMD_stencil_operation_extended) return;
-        ext.glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", FunctionDescriptors.IIV);
+        ext.glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", ofVoid(JAVA_INT, JAVA_INT));
     }
 
     public static void glStencilOpValueAMD(int face, int value) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glStencilOpValueAMD).invokeExact(face, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glStencilOpValueAMD).invokeExact(face, value);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
 }

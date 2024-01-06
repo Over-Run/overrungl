@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,8 +50,8 @@ public final class NFDTest {
             final NFDResult result = NFD.openDialogN(outPath, filterItem, null);
 
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> System.out.println("Success! " + outPath[0]);
+                case ERROR -> System.err.println(STR."Error: \{NFD.getError()}");
+                case OKAY -> System.out.println(STR."Success! \{outPath[0]}");
                 case CANCEL -> System.out.println("User pressed cancel.");
             }
         }
@@ -81,13 +81,13 @@ public final class NFDTest {
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
+                case ERROR -> System.err.println(STR."Error: \{NFD.getError()}");
                 case OKAY -> {
                     System.out.println("Success!");
 
                     for (long i = 0, numPaths = NFD.pathSetGetCount(outPaths).y(); i < numPaths; i++) {
                         NFD.pathSetGetPathN(outPaths, i, outPath);
-                        System.out.println("Path " + i + ": " + outPath[0]);
+                        System.out.println(STR."Path \{i}: \{outPath[0]}");
                     }
 
                     // remember to free the path-set memory (since NFDResult::OKAY is returned)
@@ -121,14 +121,14 @@ public final class NFDTest {
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
+                case ERROR -> System.err.println(STR."Error: \{NFD.getError()}");
                 case OKAY -> {
                     System.out.println("Success!");
 
                     try (NFDEnumerator enumerator = NFDEnumerator.fromPathSetN(stack, outPaths).y()) {
                         int i = 0;
                         for (String path : enumerator) {
-                            System.out.println("Path " + i + ": " + path);
+                            System.out.println(STR."Path \{i}: \{path}");
                             i++;
                         }
                     }
@@ -151,16 +151,14 @@ public final class NFDTest {
         // or before/after every time you want to show a file dialog.
         NFD.init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            String[] outPath = new String[1];
+        String[] outPath = new String[1];
 
-            // show the dialog
-            final NFDResult result = NFD.pickFolderN(outPath, null);
-            switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> System.out.println("Success! " + outPath[0]);
-                case CANCEL -> System.out.println("User pressed cancel.");
-            }
+        // show the dialog
+        final NFDResult result = NFD.pickFolderN(outPath, null);
+        switch (result) {
+            case ERROR -> System.err.println(STR."Error: \{NFD.getError()}");
+            case OKAY -> System.out.println(STR."Success! \{outPath[0]}");
+            case CANCEL -> System.out.println("User pressed cancel.");
         }
 
         // Quit NFD
@@ -185,8 +183,8 @@ public final class NFDTest {
             // show the dialog
             final NFDResult result = NFD.saveDialogN(savePath, filterItem, null, "Untitled.java");
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> System.out.println("Success! " + savePath[0]);
+                case ERROR -> System.err.println(STR."Error: \{NFD.getError()}");
+                case OKAY -> System.out.println(STR."Success! \{savePath[0]}");
                 case CANCEL -> System.out.println("User pressed cancel.");
             }
         }

@@ -1,5 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -17,14 +17,17 @@ val projName: String by project
 val projVersion: String by project
 val projVcs: String by project
 val projBranch: String by project
+val projLicenseYear: String by project
 val orgName: String by project
 val orgUrl: String by project
 val developers: String by project
 
-val jdkEABuildDoc: String? = "jdk21"
-val targetJavaVersion = 21
-val enablePreview = true
-rootProject.ext["enablePreview"] = enablePreview
+val jdkVersion: String by rootProject
+val jdkEnablePreview: String by rootProject
+val jdkEarlyAccessDoc: String? by rootProject
+val kotlinTargetJdkVersion: String by rootProject
+
+val targetJavaVersion = jdkVersion.toInt()
 
 group = projGroupId
 version = projVersion
@@ -116,7 +119,7 @@ enum class Artifact(
 
     fun nativeFileName(platform: NativePlatform): String? {
         return if (nativeBinding == null) null
-        else "$nativeBinding/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
+        else "${nativeBinding.bindingName}/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
     }
 }
 
@@ -125,6 +128,7 @@ subprojects {
     apply(plugin = "java-library")
     apply(plugin = "idea")
     apply(plugin = "me.champeau.jmh")
+    apply(plugin = "org.jetbrains.kotlin.jvm")
 
     group = projGroupId
     version = projVersion
@@ -141,7 +145,7 @@ subprojects {
     val compileOnly by configurations
     val implementation by configurations
     dependencies {
-        compileOnly("org.jetbrains:annotations:24.0.1")
+        compileOnly("org.jetbrains:annotations:24.1.0")
         if (project.name != "core") {
             implementation(project(":core"))
         }
@@ -149,12 +153,16 @@ subprojects {
 
     tasks.withType<JavaCompile> {
         options.encoding = "UTF-8"
-        if (enablePreview) options.compilerArgs.add("--enable-preview")
+        if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
         options.release.set(targetJavaVersion)
     }
 
+    tasks.withType<KotlinCompile> {
+        kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
+    }
+
     tasks.withType<Test> {
-        if (enablePreview) jvmArgs("--enable-preview")
+        if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
     }
 
     extensions.configure<JavaPluginExtension>("java") {
@@ -202,8 +210,6 @@ subprojects {
     }
 
     the<IdeaModel>().module.inheritOutputDirs = true
-
-    the<KotlinJvmProjectExtension>().jvmToolchain(20)
 }
 
 tasks.register("assembleJavadocArgs") {
@@ -214,10 +220,12 @@ tasks.register("assembleJavadocArgs") {
     doLast {
         Files.deleteIfExists(mspFile)
 
-        Files.writeString(mspFile, """
+        Files.writeString(
+            mspFile, """
             --module-source-path
             ${rootProject.projectDir.path}/modules/*/src/main/java
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 }
 
@@ -241,16 +249,18 @@ allprojects {
     tasks.withType<Javadoc> {
         options {
             if (this is CoreJavadocOptions) {
-                addBooleanOption("-enable-preview", true)
+                if (jdkEnablePreview.toBoolean()) {
+                    addBooleanOption("-enable-preview", true)
+                }
                 addStringOption("source", targetJavaVersion.toString())
                 if (this is StandardJavadocDocletOptions) {
                     charSet = "UTF-8"
                     docEncoding = "UTF-8"
                     isAuthor = true
-                    if (jdkEABuildDoc == null) {
+                    if (jdkEarlyAccessDoc == null) {
                         links("https://docs.oracle.com/en/java/javase/$targetJavaVersion/docs/api/")
                     } else {
-                        links("https://download.java.net/java/early_access/$jdkEABuildDoc/docs/api/")
+                        links("https://download.java.net/java/early_access/$jdkEarlyAccessDoc/docs/api/")
                     }
 
                     tags(
@@ -264,9 +274,10 @@ allprojects {
                         "glfw.note:m:Note:"
                     )
 
-                    bottom = "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
-                        "Copyright © 2022-2023 Overrun Organization<br>" +
-                        "<b>$projVersion</b>"
+                    bottom =
+                        "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
+                            "Copyright © 2022-$projLicenseYear Overrun Organization<br>" +
+                            "<b>$projVersion</b>"
                 }
             }
             encoding = "UTF-8"
@@ -293,17 +304,6 @@ publishing.publications {
         organization {
             name.set(orgName)
             url.set(orgUrl)
-        }
-        developers {
-            developers.split(',')
-                .map { it.split(':', limit = 3) }
-                .forEach { (id1, name1, email1) ->
-                    developer {
-                        id.set(id1)
-                        name.set(name1)
-                        email.set(email1)
-                    }
-                }
         }
         scm {
             connection.set("scm:git:https://github.com/${projVcs}.git")

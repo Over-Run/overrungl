@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,13 +77,13 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
         caps.glCopyTexImage2D = load.invoke("glCopyTexImage2D", IIIIIIIIV);
         caps.glCopyTexSubImage1D = load.invoke("glCopyTexSubImage1D", IIIIIIV);
         caps.glCopyTexSubImage2D = load.invoke("glCopyTexSubImage2D", IIIIIIIIV);
-        caps.glDeleteTextures = load.trivialHandle("glDeleteTextures", IPV);
+        caps.glDeleteTextures = load.invoke("glDeleteTextures", IPV);
         caps.glDrawArrays = load.invoke("glDrawArrays", IIIV);
         caps.glDrawElements = load.invoke("glDrawElements", IIIPV);
-        caps.glGenTextures = load.trivialHandle("glGenTextures", IPV);
-        caps.glGetPointerv = load.trivialHandle("glGetPointerv", IPV);
-        caps.glIsTexture = load.trivialHandle("glIsTexture", IZ);
-        caps.glPolygonOffset = load.trivialHandle("glPolygonOffset", FFV);
+        caps.glGenTextures = load.invoke("glGenTextures", IPV);
+        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
+        caps.glIsTexture = load.invoke("glIsTexture", IZ);
+        caps.glPolygonOffset = load.invoke("glPolygonOffset", FFV);
         caps.glTexSubImage1D = load.invoke("glTexSubImage1D", IIIIIIPV);
         caps.glTexSubImage2D = load.invoke("glTexSubImage2D", IIIIIIIIPV);
     }
@@ -143,7 +143,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void deleteTextures(SegmentAllocator allocator, int[] textures) {
-        deleteTextures(textures.length, allocator.allocateArray(JAVA_INT, textures));
+        deleteTextures(textures.length, allocator.allocateFrom(JAVA_INT, textures));
     }
 
     public static void deleteTexture(int texture) {
@@ -175,17 +175,17 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, byte[] indices) {
-        var seg = allocator.allocateArray(JAVA_BYTE, indices);
+        var seg = allocator.allocateFrom(JAVA_BYTE, indices);
         drawElements(mode, count, type, seg);
     }
 
     public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, short[] indices) {
-        var seg = allocator.allocateArray(JAVA_SHORT, indices);
+        var seg = allocator.allocateFrom(JAVA_SHORT, indices);
         drawElements(mode, count, type, seg);
     }
 
     public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, int[] indices) {
-        var seg = allocator.allocateArray(JAVA_INT, indices);
+        var seg = allocator.allocateFrom(JAVA_INT, indices);
         drawElements(mode, count, type, seg);
     }
 
@@ -200,7 +200,7 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
 
     public static void genTextures(SegmentAllocator allocator, int[] textures) {
         final int n = textures.length;
-        var pTex = allocator.allocateArray(JAVA_INT, n);
+        var pTex = allocator.allocate(JAVA_INT, n);
         genTextures(n, pTex);
         RuntimeHelper.toArray(pTex, textures);
     }
@@ -266,19 +266,19 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_BYTE, pixels));
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_SHORT, pixels));
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_INT, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_INT, pixels));
     }
 
     public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
+        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_FLOAT, pixels));
     }
 
     public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
@@ -291,18 +291,18 @@ public sealed class GL11C extends GL10C permits GL11, GL12C {
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_BYTE, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_BYTE, pixels));
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_SHORT, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_SHORT, pixels));
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_INT, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_INT, pixels));
     }
 
     public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateArray(JAVA_FLOAT, pixels));
+        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_FLOAT, pixels));
     }
 }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,107 +14,85 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import overrungl.opengl.GLExtCaps;
-import overrungl.opengl.GLLoadFunc;
-import overrungl.opengl.GLLoader;
-import overrungl.internal.RuntimeHelper;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
-
-import static overrungl.FunctionDescriptors.*;
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_HP_image_transform}
- *
- * @author squid233
- * @since 0.1.0
  */
 public final class GLHPImageTransform {
+    public static final int GL_IMAGE_SCALE_X_HP = 0x8155;
+    public static final int GL_IMAGE_SCALE_Y_HP = 0x8156;
+    public static final int GL_IMAGE_TRANSLATE_X_HP = 0x8157;
+    public static final int GL_IMAGE_TRANSLATE_Y_HP = 0x8158;
+    public static final int GL_IMAGE_ROTATE_ANGLE_HP = 0x8159;
+    public static final int GL_IMAGE_ROTATE_ORIGIN_X_HP = 0x815A;
+    public static final int GL_IMAGE_ROTATE_ORIGIN_Y_HP = 0x815B;
+    public static final int GL_IMAGE_MAG_FILTER_HP = 0x815C;
+    public static final int GL_IMAGE_MIN_FILTER_HP = 0x815D;
+    public static final int GL_IMAGE_CUBIC_WEIGHT_HP = 0x815E;
+    public static final int GL_CUBIC_HP = 0x815F;
+    public static final int GL_AVERAGE_HP = 0x8160;
+    public static final int GL_IMAGE_TRANSFORM_2D_HP = 0x8161;
+    public static final int GL_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8162;
+    public static final int GL_PROXY_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8163;
     public static void load(GLExtCaps ext, GLLoadFunc load) {
         if (!ext.GL_HP_image_transform) return;
-        ext.glGetImageTransformParameterfvHP = load.invoke("glGetImageTransformParameterfvHP", IIPV);
-        ext.glGetImageTransformParameterivHP = load.invoke("glGetImageTransformParameterivHP", IIPV);
-        ext.glImageTransformParameterfHP = load.invoke("glImageTransformParameterfHP", IIFV);
-        ext.glImageTransformParameterfvHP = load.invoke("glImageTransformParameterfvHP", IIPV);
-        ext.glImageTransformParameteriHP = load.invoke("glImageTransformParameteriHP", IIIV);
-        ext.glImageTransformParameterivHP = load.invoke("glImageTransformParameterivHP", IIPV);
-    }
-
-    public static void glGetImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glGetImageTransformParameterfvHP).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glGetImageTransformParameterfvHP(SegmentAllocator allocator, int target, int pname, float[] params) {
-        var seg = allocator.allocateArray(ValueLayout.JAVA_FLOAT, params.length);
-        glGetImageTransformParameterfvHP(target, pname, seg);
-        RuntimeHelper.toArray(seg, params);
-    }
-
-    public static void glGetImageTransformParameterivHP(int target, int pname, MemorySegment params) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glGetImageTransformParameterivHP).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glGetImageTransformParameterivHP(SegmentAllocator allocator, int target, int pname, int[] params) {
-        var seg = allocator.allocateArray(ValueLayout.JAVA_INT, params.length);
-        glGetImageTransformParameterivHP(target, pname, seg);
-        RuntimeHelper.toArray(seg, params);
-    }
-
-    public static void glImageTransformParameterfHP(int target, int pname, float param) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glImageTransformParameterfHP).invokeExact(target, pname, param);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
-        var ext = GLLoader.getExtCapabilities();
-        try {
-            GLLoader.check(ext.glImageTransformParameterfvHP).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void glImageTransformParameterfvHP(SegmentAllocator allocator, int target, int pname, float[] params) {
-        glImageTransformParameterfvHP(target, pname, allocator.allocateArray(ValueLayout.JAVA_FLOAT, params));
+        ext.glImageTransformParameteriHP = load.invoke("glImageTransformParameteriHP", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
+        ext.glImageTransformParameterfHP = load.invoke("glImageTransformParameterfHP", ofVoid(JAVA_INT, JAVA_INT, JAVA_FLOAT));
+        ext.glImageTransformParameterivHP = load.invoke("glImageTransformParameterivHP", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glImageTransformParameterfvHP = load.invoke("glImageTransformParameterfvHP", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glGetImageTransformParameterivHP = load.invoke("glGetImageTransformParameterivHP", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+        ext.glGetImageTransformParameterfvHP = load.invoke("glGetImageTransformParameterfvHP", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
     }
 
     public static void glImageTransformParameteriHP(int target, int pname, int param) {
-        var ext = GLLoader.getExtCapabilities();
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glImageTransformParameteriHP).invokeExact(target, pname, param);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glImageTransformParameteriHP).invokeExact(target, pname, param);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glImageTransformParameterivHP(int target, int pname, MemorySegment params) {
-        var ext = GLLoader.getExtCapabilities();
+    public static void glImageTransformParameterfHP(int target, int pname, float param) {
+        final var ext = getExtCapabilities();
         try {
-            GLLoader.check(ext.glImageTransformParameterivHP).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+            check(ext.glImageTransformParameterfHP).invokeExact(target, pname, param);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
 
-    public static void glImageTransformParameterivHP(SegmentAllocator allocator, int target, int pname, int[] params) {
-        glImageTransformParameterivHP(target, pname, allocator.allocateArray(ValueLayout.JAVA_INT, params));
+    public static void glImageTransformParameterivHP(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glImageTransformParameterivHP).invokeExact(target, pname, params);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
     }
+
+    public static void glImageTransformParameterfvHP(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glImageTransformParameterfvHP).invokeExact(target, pname, params);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glGetImageTransformParameterivHP(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glGetImageTransformParameterivHP).invokeExact(target, pname, params);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
+    public static void glGetImageTransformParameterfvHP(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        final var ext = getExtCapabilities();
+        try {
+            check(ext.glGetImageTransformParameterfvHP).invokeExact(target, pname, params);
+        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    }
+
 }

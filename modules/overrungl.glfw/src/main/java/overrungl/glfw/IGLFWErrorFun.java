@@ -17,6 +17,7 @@
 package overrungl.glfw;
 
 import overrungl.Callback;
+import overrungl.NativeType;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -43,7 +44,7 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 public interface IGLFWErrorFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, RuntimeHelper.ADDRESS_UNBOUNDED);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
     MethodType MTYPE = DESC.toMethodType();
 
     /**
@@ -54,8 +55,8 @@ public interface IGLFWErrorFun extends Callback {
      */
     void invoke(int errorCode, String description);
 
-    default void ninvoke(int errorCode, MemorySegment description) {
-        invoke(errorCode, description.getUtf8String(0));
+    default void ninvoke(int errorCode, @NativeType("const char*") MemorySegment description) {
+        invoke(errorCode, RuntimeHelper.getString(description));
     }
 
     /**

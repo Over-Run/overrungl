@@ -59,31 +59,17 @@ import static overrungl.stb.Handles.*;
  * @since 0.1.0
  */
 public final class STBEasyFont {
-    private static MethodHandle
-        stb_easy_font_get_spacing, stb_easy_font_spacing, stb_easy_font_print, stb_easy_font_width, stb_easy_font_height;
-
-    static {
-        initialize();
-        create();
-    }
+    private static final MethodHandle
+        stb_easy_font_get_spacing = downcall("stb_easy_font_get_spacing", F),
+        stb_easy_font_spacing = downcall("stb_easy_font_spacing", FV),
+        stb_easy_font_print = downcall("stb_easy_font_print", FFPPPII),
+        stb_easy_font_width = downcall("stb_easy_font_width", fd_PI),
+        stb_easy_font_height = downcall("stb_easy_font_height", fd_PI);
 
     private STBEasyFont() {
         //no instance
     }
 
-    private static void create() {
-        stb_easy_font_get_spacing = downcallTrivial("stb_easy_font_get_spacing", F);
-        stb_easy_font_spacing = downcallTrivial("stb_easy_font_spacing", FV);
-        stb_easy_font_print = downcall("stb_easy_font_print", FFPPPII);
-        stb_easy_font_width = downcallTrivial("stb_easy_font_width", fd_PI);
-        stb_easy_font_height = downcallTrivial("stb_easy_font_height", fd_PI);
-    }
-
-    /**
-     * {@return spacing}
-     *
-     * @see #setSpacing(float)
-     */
     public static float getSpacing() {
         try {
             return (float) stb_easy_font_get_spacing.invokeExact();
@@ -176,7 +162,7 @@ public final class STBEasyFont {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nprint(x, y, stack.allocateUtf8String(text), color == null ? MemorySegment.NULL : stack.bytes(color), vertexBuffer, vbufSize);
+            return nprint(x, y, stack.allocateFrom(text), color == null ? MemorySegment.NULL : stack.bytes(color), vertexBuffer, vbufSize);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -207,7 +193,7 @@ public final class STBEasyFont {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nwidth(stack.allocateUtf8String(text));
+            return nwidth(stack.allocateFrom(text));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -238,7 +224,7 @@ public final class STBEasyFont {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nheight(stack.allocateUtf8String(text));
+            return nheight(stack.allocateFrom(text));
         } finally {
             stack.setPointer(stackPointer);
         }

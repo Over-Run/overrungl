@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,6 +16,7 @@
 
 package overrungl.stb;
 
+import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
@@ -24,6 +25,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
+import java.util.function.Supplier;
 
 /**
  * The STB method handles.
@@ -32,8 +34,13 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 final class Handles {
-    private static boolean loaded = false;
-    private static SymbolLookup lookup;
+    private static final SymbolLookup lookup;
+
+    static {
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
+        final var function = Configurations.STB_SYMBOL_LOOKUP.get();
+        lookup = function != null ? function.apply(lib) : lib.get();
+    }
 
     private Handles() {
         //no instance
@@ -53,12 +60,6 @@ final class Handles {
 
     static MethodHandle downcallTrivial(String name,
                                         FunctionDescriptors function) {
-        return downcall(name, function, Linker.Option.isTrivial());
-    }
-
-    public static void initialize() {
-        if (loaded) return;
-        loaded = true;
-        lookup = RuntimeHelper.load("stb", "stb", OverrunGL.VERSION);
+        return downcall(name, function, Linker.Option.critical(false));
     }
 }

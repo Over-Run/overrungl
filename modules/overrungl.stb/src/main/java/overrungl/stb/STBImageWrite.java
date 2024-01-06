@@ -35,39 +35,26 @@ import static overrungl.stb.Handles.*;
  * @since 0.1.0
  */
 public final class STBImageWrite {
-    private static MethodHandle
-        stbi_flip_vertically_on_write, stbi_get_write_force_png_filter, stbi_get_write_png_compression_level,
-        stbi_get_write_tga_with_rle, stbi_set_write_force_png_filter, stbi_set_write_png_compression_level,
-        stbi_set_write_tga_with_rle, stbi_write_bmp, stbi_write_bmp_to_func, stbi_write_hdr, stbi_write_hdr_to_func,
-        stbi_write_jpg, stbi_write_jpg_to_func, stbi_write_png, stbi_write_png_to_func, stbi_write_png_to_mem,
-        stbi_write_tga, stbi_write_tga_to_func, stbi_zlib_compress;
-
-    static {
-        initialize();
-        create();
-    }
-
-    private static void create() {
-        stbi_flip_vertically_on_write = downcallTrivial("stbi_flip_vertically_on_write", IV);
-        stbi_get_write_force_png_filter = downcallTrivial("stbi_get_write_force_png_filter", I);
-        stbi_get_write_png_compression_level = downcallTrivial("stbi_get_write_png_compression_level", I);
-        stbi_get_write_tga_with_rle = downcallTrivial("stbi_get_write_tga_with_rle", I);
-        stbi_set_write_force_png_filter = downcallTrivial("stbi_set_write_force_png_filter", IV);
-        stbi_set_write_png_compression_level = downcallTrivial("stbi_set_write_png_compression_level", IV);
-        stbi_set_write_tga_with_rle = downcallTrivial("stbi_set_write_tga_with_rle", IV);
-        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI);
-        stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP);
-        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI);
-        stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP);
-        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII);
-        stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI);
-        stbi_write_png = downcall("stbi_write_png", PIIIPII);
-        stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI);
-        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp);
-        stbi_write_tga = downcall("stbi_write_tga", PIIIP);
-        stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP);
+    private static final MethodHandle
+        stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV),
+        stbi_get_write_force_png_filter = downcall("stbi_get_write_force_png_filter", I),
+        stbi_get_write_png_compression_level = downcall("stbi_get_write_png_compression_level", I),
+        stbi_get_write_tga_with_rle = downcall("stbi_get_write_tga_with_rle", I),
+        stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV),
+        stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV),
+        stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV),
+        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI),
+        stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP),
+        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI),
+        stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP),
+        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII),
+        stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI),
+        stbi_write_png = downcall("stbi_write_png", PIIIPII),
+        stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI),
+        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp),
+        stbi_write_tga = downcall("stbi_write_tga", PIIIP),
+        stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP),
         stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIp);
-    }
 
     private STBImageWrite() {
         throw new IllegalStateException("Do not construct instance");
@@ -165,7 +152,7 @@ public final class STBImageWrite {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return npng(stack.allocateUtf8String(filename), w, h, comp, data, strideInBytes);
+            return npng(stack.allocateFrom(filename), w, h, comp, data, strideInBytes);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -175,7 +162,7 @@ public final class STBImageWrite {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nbmp(stack.allocateUtf8String(filename), w, h, comp, data);
+            return nbmp(stack.allocateFrom(filename), w, h, comp, data);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -185,21 +172,21 @@ public final class STBImageWrite {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return ntga(stack.allocateUtf8String(filename), w, h, comp, data);
+            return ntga(stack.allocateFrom(filename), w, h, comp, data);
         } finally {
             stack.setPointer(stackPointer);
         }
     }
 
     public static boolean hdr(SegmentAllocator allocator, String filename, int w, int h, int comp, float[] data) {
-        return nhdr(allocator.allocateUtf8String(filename), w, h, comp, allocator.allocateArray(JAVA_FLOAT, data));
+        return nhdr(allocator.allocateFrom(filename), w, h, comp, allocator.allocateFrom(JAVA_FLOAT, data));
     }
 
     public static boolean jpg(String filename, int x, int y, int comp, MemorySegment data, int quality) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return njpg(stack.allocateUtf8String(filename), x, y, comp, data, quality);
+            return njpg(stack.allocateFrom(filename), x, y, comp, data, quality);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -258,7 +245,7 @@ public final class STBImageWrite {
     }
 
     public static boolean hdrToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(arena), context, w, h, comp, arena.allocateArray(JAVA_FLOAT, data));
+        return nhdrToFunc(func.address(arena), context, w, h, comp, arena.allocateFrom(JAVA_FLOAT, data));
     }
 
     public static boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
@@ -283,7 +270,7 @@ public final class STBImageWrite {
 
     public static byte[] pngToMem(SegmentAllocator allocator, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
         var pl = allocator.allocate(JAVA_INT);
-        var p = npngToMem(allocator.allocateArray(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
+        var p = npngToMem(allocator.allocateFrom(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);
@@ -299,7 +286,7 @@ public final class STBImageWrite {
 
     public static byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int[] outLen, int quality) {
         var pl = allocator.allocate(JAVA_INT);
-        var p = nzlibCompress(allocator.allocateArray(JAVA_BYTE, data), data.length, pl, quality);
+        var p = nzlibCompress(allocator.allocateFrom(JAVA_BYTE, data), data.length, pl, quality);
         final int len = pl.get(JAVA_INT, 0);
         outLen[0] = len;
         return RuntimeHelper.toArray(p, new byte[len]);

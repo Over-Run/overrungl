@@ -83,8 +83,8 @@ public sealed class NFDU8FilterItem extends Struct {
      */
     public static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
         final NFDU8FilterItem item = new NFDU8FilterItem(allocator.allocate(LAYOUT));
-        pName.set(item.segment(), allocator.allocateUtf8String(name));
-        pSpec.set(item.segment(), allocator.allocateUtf8String(spec));
+        pName.set(item.segment(), allocator.allocateFrom(name));
+        pSpec.set(item.segment(), allocator.allocateFrom(spec));
         return item;
     }
 
@@ -97,11 +97,11 @@ public sealed class NFDU8FilterItem extends Struct {
      */
     @SafeVarargs
     public static Buffer create(SegmentAllocator allocator, Pair<String>... items) {
-        final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), items.length);
+        final Buffer buffer = new Buffer(allocator.allocate(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
-            buffer.pName.set(buffer.segment(), (long) i, allocator.allocateUtf8String(item.key()));
-            buffer.pSpec.set(buffer.segment(), (long) i, allocator.allocateUtf8String(item.value()));
+            buffer.pName.set(buffer.segment(), (long) i, allocator.allocateFrom(item.key()));
+            buffer.pSpec.set(buffer.segment(), (long) i, allocator.allocateFrom(item.value()));
         }
         return buffer;
     }
@@ -119,7 +119,7 @@ public sealed class NFDU8FilterItem extends Struct {
      * @see #nname()
      */
     public String name() {
-        return nname().getUtf8String(0);
+        return nname().getString(0);
     }
 
     /**
@@ -135,7 +135,7 @@ public sealed class NFDU8FilterItem extends Struct {
      * @see #nspec()
      */
     public String spec() {
-        return nspec().getUtf8String(0);
+        return nspec().getString(0);
     }
 
     /**
@@ -172,7 +172,7 @@ public sealed class NFDU8FilterItem extends Struct {
          * @param index the index
          */
         public String nameAt(long index) {
-            return nnameAt(index).getUtf8String(0);
+            return nnameAt(index).getString(0);
         }
 
         /**
@@ -190,7 +190,7 @@ public sealed class NFDU8FilterItem extends Struct {
          * @param index the index
          */
         public String specAt(long index) {
-            return nspecAt(index).getUtf8String(0);
+            return nspecAt(index).getString(0);
         }
 
         @Override

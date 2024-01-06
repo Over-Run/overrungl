@@ -97,7 +97,7 @@ public sealed class NFDNFilterItem extends Struct {
      */
     @SafeVarargs
     public static Buffer create(SegmentAllocator allocator, Pair<String>... items) {
-        final Buffer buffer = new Buffer(allocator.allocateArray(LAYOUT, items.length), items.length);
+        final Buffer buffer = new Buffer(allocator.allocate(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
             buffer.pName.set(buffer.segment(), (long) i, NFD.allocateString(item.key()));

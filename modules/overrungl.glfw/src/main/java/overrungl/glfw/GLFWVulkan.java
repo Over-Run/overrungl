@@ -30,10 +30,6 @@ import static overrungl.glfw.Handles.*;
  * @since 0.1.0
  */
 public final class GLFWVulkan {
-    static {
-        create();
-    }
-
     /**
      * constructor
      */
@@ -96,7 +92,7 @@ public final class GLFWVulkan {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nglfwGetInstanceProcAddress(instance, stack.allocateUtf8String(procName));
+            return nglfwGetInstanceProcAddress(instance, stack.allocateFrom(procName));
         } finally {
             stack.setPointer(stackPointer);
         }

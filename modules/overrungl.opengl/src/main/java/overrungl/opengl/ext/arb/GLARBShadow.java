@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2022-present Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,14 +14,21 @@
  * copies or substantial portions of the Software.
  */
 
-// this file is auto-generated. DO NOT EDIT!
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
+
+import overrungl.*;
+import overrungl.opengl.*;
+import java.lang.foreign.*;
+import static java.lang.foreign.FunctionDescriptor.*;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_shadow}
  */
 public final class GLARBShadow {
+    public static final int GL_TEXTURE_COMPARE_MODE_ARB = 0x884C;
     public static final int GL_TEXTURE_COMPARE_FUNC_ARB = 0x884D;
     public static final int GL_COMPARE_R_TO_TEXTURE_ARB = 0x884E;
-    public static final int GL_TEXTURE_COMPARE_MODE_ARB = 0x884C;
 }

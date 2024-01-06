@@ -25,7 +25,6 @@ import java.lang.invoke.MethodHandle;
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.FunctionDescriptors.*;
 import static overrungl.stb.Handles.downcall;
-import static overrungl.stb.Handles.initialize;
 
 /**
  * The STB image resizer.
@@ -34,28 +33,17 @@ import static overrungl.stb.Handles.initialize;
  * @since 0.1.0
  */
 public final class STBImageResize {
-    private static MethodHandle
-        stbir_resize, stbir_resize_float, stbir_resize_float_generic, stbir_resize_region, stbir_resize_subpixel,
-        stbir_resize_uint16_generic, stbir_resize_uint8, stbir_resize_uint8_generic, stbir_resize_uint8_srgb,
-        stbir_resize_uint8_srgb_edgemode;
-
-    static {
-        initialize();
-        create();
-    }
-
-    private static void create() {
-        stbir_resize = downcall("stbir_resize", PIIIPIIIIIIIIIIIIPI);
-        stbir_resize_float = downcall("stbir_resize_float", PIIIPIIIII);
-        stbir_resize_float_generic = downcall("stbir_resize_float_generic", PIIIPIIIIIIIIIPI);
-        stbir_resize_region = downcall("stbir_resize_region", PIIIPIIIIIIIIIIIIPFFFFI);
-        stbir_resize_subpixel = downcall("stbir_resize_subpixel", PIIIPIIIIIIIIIIIIPFFFFI);
-        stbir_resize_uint16_generic = downcall("stbir_resize_uint16_generic", PIIIPIIIIIIIIIPI);
-        stbir_resize_uint8 = downcall("stbir_resize_uint8", PIIIPIIIII);
-        stbir_resize_uint8_generic = downcall("stbir_resize_uint8_generic", PIIIPIIIIIIIIIPI);
-        stbir_resize_uint8_srgb = downcall("stbir_resize_uint8_srgb", PIIIPIIIIIII);
+    private static final MethodHandle
+        stbir_resize = downcall("stbir_resize", PIIIPIIIIIIIIIIIIPI),
+        stbir_resize_float = downcall("stbir_resize_float", PIIIPIIIII),
+        stbir_resize_float_generic = downcall("stbir_resize_float_generic", PIIIPIIIIIIIIIPI),
+        stbir_resize_region = downcall("stbir_resize_region", PIIIPIIIIIIIIIIIIPFFFFI),
+        stbir_resize_subpixel = downcall("stbir_resize_subpixel", PIIIPIIIIIIIIIIIIPFFFFI),
+        stbir_resize_uint16_generic = downcall("stbir_resize_uint16_generic", PIIIPIIIIIIIIIPI),
+        stbir_resize_uint8 = downcall("stbir_resize_uint8", PIIIPIIIII),
+        stbir_resize_uint8_generic = downcall("stbir_resize_uint8_generic", PIIIPIIIIIIIIIPI),
+        stbir_resize_uint8_srgb = downcall("stbir_resize_uint8_srgb", PIIIPIIIIIII),
         stbir_resize_uint8_srgb_edgemode = downcall("stbir_resize_uint8_srgb_edgemode", PIIIPIIIIIIII);
-    }
 
     private STBImageResize() {
         throw new IllegalStateException("Do not construct instance");
@@ -77,8 +65,8 @@ public final class STBImageResize {
                                       byte[] inputPixels, int inputW, int inputH, int inputStrideInBytes,
                                       byte[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                       int numChannels) {
-        var seg = allocator.allocateArray(JAVA_BYTE, outputPixels.length);
-        boolean b = resizeUint8(allocator.allocateArray(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_BYTE, outputPixels);
+        boolean b = resizeUint8(allocator.allocateFrom(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels);
         RuntimeHelper.toArray(seg, outputPixels);
@@ -101,8 +89,8 @@ public final class STBImageResize {
                                       float[] inputPixels, int inputW, int inputH, int inputStrideInBytes,
                                       float[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                       int numChannels) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, outputPixels.length);
-        boolean b = resizeFloat(allocator.allocateArray(JAVA_FLOAT, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_FLOAT, outputPixels);
+        boolean b = resizeFloat(allocator.allocateFrom(JAVA_FLOAT, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels);
         RuntimeHelper.toArray(seg, outputPixels);
@@ -125,8 +113,8 @@ public final class STBImageResize {
                                           byte[] inputPixels, int inputW, int inputH, int inputStrideInBytes,
                                           byte[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                           int numChannels, int alphaChannel, int flags) {
-        var seg = allocator.allocateArray(JAVA_BYTE, outputPixels.length);
-        boolean b = resizeUint8Srgb(allocator.allocateArray(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_BYTE, outputPixels);
+        boolean b = resizeUint8Srgb(allocator.allocateFrom(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels, alphaChannel, flags);
         RuntimeHelper.toArray(seg, outputPixels);
@@ -152,8 +140,8 @@ public final class STBImageResize {
                                                   byte[] outputPixels, int outputW, int outputH, int outputStrideInBytes,
                                                   int numChannels, int alphaChannel, int flags,
                                                   STBIREdge edgeWrapMode) {
-        var seg = allocator.allocateArray(JAVA_BYTE, outputPixels.length);
-        boolean b = resizeUint8SrgbEdgemode(allocator.allocateArray(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_BYTE, outputPixels);
+        boolean b = resizeUint8SrgbEdgemode(allocator.allocateFrom(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels, alphaChannel, flags,
             edgeWrapMode.getValue());
@@ -183,8 +171,8 @@ public final class STBImageResize {
                                              int numChannels, int alphaChannel, int flags,
                                              STBIREdge edgeWrapMode, STBIRFilter filter, STBIRColorspace space,
                                              MemorySegment allocContext) {
-        var seg = allocator.allocateArray(JAVA_BYTE, outputPixels.length);
-        boolean b = resizeUint8Generic(allocator.allocateArray(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_BYTE, outputPixels);
+        boolean b = resizeUint8Generic(allocator.allocateFrom(JAVA_BYTE, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels, alphaChannel, flags,
             edgeWrapMode.getValue(), filter.getValue(), space.ordinal(),
@@ -215,8 +203,8 @@ public final class STBImageResize {
                                               int numChannels, int alphaChannel, int flags,
                                               STBIREdge edgeWrapMode, STBIRFilter filter, STBIRColorspace space,
                                               MemorySegment allocContext) {
-        var seg = allocator.allocateArray(JAVA_SHORT, outputPixels.length);
-        boolean b = resizeUint16Generic(allocator.allocateArray(JAVA_SHORT, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_SHORT, outputPixels);
+        boolean b = resizeUint16Generic(allocator.allocateFrom(JAVA_SHORT, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels, alphaChannel, flags,
             edgeWrapMode.getValue(), filter.getValue(), space.ordinal(),
@@ -247,8 +235,8 @@ public final class STBImageResize {
                                              int numChannels, int alphaChannel, int flags,
                                              STBIREdge edgeWrapMode, STBIRFilter filter, STBIRColorspace space,
                                              MemorySegment allocContext) {
-        var seg = allocator.allocateArray(JAVA_FLOAT, outputPixels.length);
-        boolean b = resizeFloatGeneric(allocator.allocateArray(JAVA_FLOAT, inputPixels), inputW, inputH, inputStrideInBytes,
+        var seg = allocator.allocateFrom(JAVA_FLOAT, outputPixels);
+        boolean b = resizeFloatGeneric(allocator.allocateFrom(JAVA_FLOAT, inputPixels), inputW, inputH, inputStrideInBytes,
             seg, outputW, outputH, outputStrideInBytes,
             numChannels, alphaChannel, flags,
             edgeWrapMode.getValue(), filter.getValue(), space.ordinal(),
