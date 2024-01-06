@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,7 +17,7 @@
 package overrungl;
 
 import overrungl.internal.Exceptions;
-import overrungl.util.MemoryUtil;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
@@ -38,13 +38,14 @@ import static java.lang.foreign.ValueLayout.*;
  *     case 'F' -> JAVA_FLOAT;
  *     case 'D' -> JAVA_DOUBLE;
  *     case 'P' -> ADDRESS;
- *     case 'p' -> MemoryUtil.ADDRESS_UNBOUNDED;
  *     default -> throw new IllegalArgumentException();
  * }}
  *
  * @author squid233
  * @since 0.1.0
+ * @deprecated This class is going to be removed (but is not marked as removal).
  */
+@Deprecated(since = "0.1.0")
 public enum FunctionDescriptors {
     // 1
     D, F, I, J, P, p, V,
@@ -123,9 +124,9 @@ public enum FunctionDescriptors {
             case 'F' -> JAVA_FLOAT;
             case 'D' -> JAVA_DOUBLE;
             case 'P' -> ADDRESS;
-            case 'p' -> MemoryUtil.ADDRESS_UNBOUNDED;
+            case 'p' -> RuntimeHelper.ADDRESS_UNBOUNDED;
             default ->
-                throw Exceptions.IAE. "Invalid argument c: expected one of B, S, I, J, C, Z, F, D, P or p; got '\{ c }'" ;
+                throw Exceptions.IAE."Invalid argument c: expected one of B, S, I, J, C, Z, F, D or P; got '\{c}'";
         };
     }
 

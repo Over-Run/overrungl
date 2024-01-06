@@ -2,11 +2,11 @@
 
 ## Supported Versions
 
-We are currently working on 0.x versions
+We are currently working on 0.x versions, 
 and only the latest version will be supported.
 
 | Version | Supported          |
-| ------- | ------------------ |
+|---------|--------------------|
 | 0.1.x   | :white_check_mark: |
 
 ## Reporting a Vulnerability

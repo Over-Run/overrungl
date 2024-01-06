@@ -65,7 +65,7 @@ public sealed class GLFWVidMode extends Struct {
     /**
      * Create a {@code GLFWvidmode} instance.
      *
-     * @param address   the address.
+     * @param address the address.
      */
     public GLFWVidMode(MemorySegment address) {
         super(address, LAYOUT);
@@ -106,7 +106,7 @@ public sealed class GLFWVidMode extends Struct {
      * @return the instance
      */
     public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocateArray(LAYOUT, count), count);
+        return new Buffer(allocator.allocate(LAYOUT, count), count);
     }
 
     /**
@@ -120,42 +120,42 @@ public sealed class GLFWVidMode extends Struct {
      * {@return the width, in screen coordinates, of the video mode}
      */
     public int width() {
-        return (int) pWidth.get(segment());
+        return (int) pWidth.get(segment(), 0L);
     }
 
     /**
      * {@return the height, in screen coordinates, of the video mode}
      */
     public int height() {
-        return (int) pHeight.get(segment());
+        return (int) pHeight.get(segment(), 0L);
     }
 
     /**
      * {@return the bit depth of the red channel of the video mode}
      */
     public int redBits() {
-        return (int) pRedBits.get(segment());
+        return (int) pRedBits.get(segment(), 0L);
     }
 
     /**
      * {@return the bit depth of the green channel of the video mode}
      */
     public int greenBits() {
-        return (int) pGreenBits.get(segment());
+        return (int) pGreenBits.get(segment(), 0L);
     }
 
     /**
      * {@return the bit depth of the blue channel of the video mode}
      */
     public int blueBits() {
-        return (int) pBlueBits.get(segment());
+        return (int) pBlueBits.get(segment(), 0L);
     }
 
     /**
      * {@return the refresh rate, in Hz, of the video mode}
      */
     public int refreshRate() {
-        return (int) pRefreshRate.get(segment());
+        return (int) pRefreshRate.get(segment(), 0L);
     }
 
     /**

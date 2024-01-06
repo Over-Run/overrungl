@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,6 +19,7 @@ package overrungl.glfw;
 import org.jetbrains.annotations.Nullable;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
+import overrungl.util.MemoryUtil;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;
 import overrungl.util.value.Triplet;
@@ -1090,7 +1091,7 @@ public final class GLFW {
      * @see #ngetVersionString() ngetVersionString
      */
     public static String getVersionString() {
-        return ngetVersionString().getUtf8String(0);
+        return ngetVersionString().getString(0);
     }
 
     /**
@@ -1629,7 +1630,7 @@ public final class GLFW {
     @Nullable
     public static String getMonitorName(MemorySegment monitor) {
         var pName = ngetMonitorName(monitor);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -2045,7 +2046,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nwindowHintString(hint, stack.allocateUtf8String(value));
+            nwindowHintString(hint, stack.allocateFrom(value));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2230,7 +2231,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return ncreateWindow(width, height, stack.allocateUtf8String(title), monitor, share);
+            return ncreateWindow(width, height, stack.allocateFrom(title), monitor, share);
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -2335,7 +2336,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nsetWindowTitle(window, stack.allocateUtf8String(title));
+            nsetWindowTitle(window, stack.allocateFrom(title));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -4135,7 +4136,7 @@ public final class GLFW {
     @Nullable
     public static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -5063,7 +5064,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -5116,7 +5117,7 @@ public final class GLFW {
     @Nullable
     public static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
-        return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getString(0);
     }
 
     /**
@@ -5285,7 +5286,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nupdateGamepadMappings(stack.allocateUtf8String(string));
+            return nupdateGamepadMappings(stack.allocateFrom(string));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5333,7 +5334,7 @@ public final class GLFW {
     @Nullable
     public static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
 
     /**
@@ -5419,7 +5420,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nsetClipboardString(stack.allocateUtf8String(string));
+            nsetClipboardString(stack.allocateFrom(string));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5463,7 +5464,7 @@ public final class GLFW {
     @Nullable
     public static String getClipboardString(@Deprecated MemorySegment window) {
         var pString = ngetClipboardString();
-        return RuntimeHelper.isNullptr(pString) ? null : pString.getUtf8String(0);
+        return RuntimeHelper.isNullptr(pString) ? null : pString.getString(0);
     }
 
     /**
@@ -5749,7 +5750,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nextensionSupported(stack.allocateUtf8String(extension));
+            return nextensionSupported(stack.allocateFrom(extension));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -5807,7 +5808,7 @@ public final class GLFW {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return ngetProcAddress(stack.allocateUtf8String(procName));
+            return ngetProcAddress(stack.allocateFrom(procName));
         } finally {
             stack.setPointer(stackPointer);
         }

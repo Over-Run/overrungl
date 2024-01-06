@@ -49,14 +49,14 @@ final class GLExtFinder {
             int numExtsI = GL10C.getInteger(GL30C.NUM_EXTENSIONS);
             var extsI = MemorySegment.NULL;
             if (numExtsI > 0) {
-                extsI = allocator.allocateArray(ADDRESS, numExtsI);
+                extsI = allocator.allocate(ADDRESS, numExtsI);
             }
             if (RuntimeHelper.isNullptr(extsI)) {
                 return false;
             }
             for (int index = 0; index < numExtsI; index++) {
                 var glStrTmp = GL30C.getStringi(GL10C.EXTENSIONS, index);
-                extsI.setAtIndex(ADDRESS, index, allocator.allocateUtf8String(glStrTmp));
+                extsI.setAtIndex(ADDRESS, index, allocator.allocateFrom(glStrTmp));
             }
             outNumExtsI.set(JAVA_INT, 0, numExtsI);
             outExtsI[0] = extsI;

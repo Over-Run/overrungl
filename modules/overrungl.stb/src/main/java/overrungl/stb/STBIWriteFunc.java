@@ -17,7 +17,6 @@
 package overrungl.stb;
 
 import overrungl.Callback;
-import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
@@ -34,10 +33,14 @@ import java.lang.invoke.MethodType;
  */
 @FunctionalInterface
 public interface STBIWriteFunc extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, RuntimeHelper.ADDRESS_UNBOUNDED, ValueLayout.JAVA_INT);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
     MethodType MTYPE = DESC.toMethodType();
 
-    void invoke(MemorySegment context, MemorySegment data, int size);
+    void invoke(MemorySegment context, MemorySegment data);
+
+    default void ninvoke(MemorySegment context, MemorySegment data, int size) {
+        invoke(context, data.reinterpret(size));
+    }
 
     @Override
     default FunctionDescriptor descriptor() {
@@ -46,6 +49,6 @@ public interface STBIWriteFunc extends Callback {
 
     @Override
     default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(STBIWriteFunc.class, "invoke", MTYPE);
+        return lookup.findVirtual(STBIWriteFunc.class, "ninvoke", MTYPE);
     }
 }

@@ -1,5 +1,6 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.utils.addToStdlib.ifTrue
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -219,10 +220,12 @@ tasks.register("assembleJavadocArgs") {
     doLast {
         Files.deleteIfExists(mspFile)
 
-        Files.writeString(mspFile, """
+        Files.writeString(
+            mspFile, """
             --module-source-path
             ${rootProject.projectDir.path}/modules/*/src/main/java
-        """.trimIndent())
+        """.trimIndent()
+        )
     }
 }
 
@@ -246,7 +249,9 @@ allprojects {
     tasks.withType<Javadoc> {
         options {
             if (this is CoreJavadocOptions) {
-                addBooleanOption("-enable-preview", true)
+                if (jdkEnablePreview.toBoolean()) {
+                    addBooleanOption("-enable-preview", true)
+                }
                 addStringOption("source", targetJavaVersion.toString())
                 if (this is StandardJavadocDocletOptions) {
                     charSet = "UTF-8"
@@ -269,9 +274,10 @@ allprojects {
                         "glfw.note:m:Note:"
                     )
 
-                    bottom = "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
-                        "Copyright © 2022-$projLicenseYear Overrun Organization<br>" +
-                        "<b>$projVersion</b>"
+                    bottom =
+                        "<a href=\"https://github.com/Over-Run/overrungl/issues\">Report a bug or suggest an enhancement</a><br>" +
+                            "Copyright © 2022-$projLicenseYear Overrun Organization<br>" +
+                            "<b>$projVersion</b>"
                 }
             }
             encoding = "UTF-8"

@@ -92,7 +92,7 @@ public final class GLFWVulkan {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return nglfwGetInstanceProcAddress(instance, stack.allocateUtf8String(procName));
+            return nglfwGetInstanceProcAddress(instance, stack.allocateFrom(procName));
         } finally {
             stack.setPointer(stackPointer);
         }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,7 @@ public final class GLFWNative {
      * @see #ngetWin32Adapter(MemorySegment) ngetWin32Adapter
      */
     public static String getWin32Adapter(MemorySegment monitor) {
-        return ngetWin32Adapter(monitor).getUtf8String(0);
+        return ngetWin32Adapter(monitor).getString(0);
     }
 
     /**
@@ -100,7 +100,7 @@ public final class GLFWNative {
      * @see #ngetWin32Monitor(MemorySegment) ngetWin32Monitor
      */
     public static String getWin32Monitor(MemorySegment monitor) {
-        return ngetWin32Monitor(monitor).getUtf8String(0);
+        return ngetWin32Monitor(monitor).getString(0);
     }
 
     /**
@@ -303,7 +303,7 @@ public final class GLFWNative {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            nsetX11SelectionString(stack.allocateUtf8String(string));
+            nsetX11SelectionString(stack.allocateFrom(string));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -343,7 +343,7 @@ public final class GLFWNative {
      */
     public static String getX11SelectionString() {
         final MemorySegment seg = ngetX11SelectionString();
-        return seg != null ? seg.getUtf8String(0) : null;
+        return seg != null ? seg.getString(0) : null;
     }
 
     /**

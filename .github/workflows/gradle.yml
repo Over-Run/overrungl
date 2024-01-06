@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         java: [
-          21
+          22-ea
         ]
         os: [ ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
@@ -25,7 +25,7 @@ jobs:
         with:
           java-version: |
             ${{ matrix.java }}
-#            20
+            21
           distribution: 'temurin'
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}
@@ -42,7 +42,7 @@ jobs:
           path: |
             modules/**/build/reports/
       - name: Capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '21' }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '22-ea' }}
         uses: actions/upload-artifact@v3
         with:
           name: Artifacts

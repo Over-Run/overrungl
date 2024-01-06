@@ -36,7 +36,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  */
 @FunctionalInterface
 public interface GLDebugProcAMD extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, RuntimeHelper.ADDRESS_UNBOUNDED);
+    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS);
     MethodType MTYPE = DESC.toMethodType();
 
     /**
@@ -52,7 +52,7 @@ public interface GLDebugProcAMD extends Callback {
     void invoke(int id, int category, int severity, String message, MemorySegment userParam);
 
     default void ninvoke(int id, int category, int severity, int length, MemorySegment message, MemorySegment userParam) {
-        invoke(id, category, severity, message.reinterpret(length + 1).getUtf8String(0), userParam);
+        invoke(id, category, severity, message.reinterpret(length + 1).getString(0), userParam.reinterpret(Long.MAX_VALUE));
     }
 
     @Override

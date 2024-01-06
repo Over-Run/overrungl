@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,19 +19,23 @@ package overrungl.internal;
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
 import org.jetbrains.annotations.Nullable;
+import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
+import overrungl.NativeType;
+import overrungl.OverrunGL;
 import overrungl.util.MemoryUtil;
 
 import java.io.File;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.ToLongFunction;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -50,8 +54,12 @@ public final class RuntimeHelper {
     /**
      * An unbounded address layout.
      */
-    public static final AddressLayout ADDRESS_UNBOUNDED = MemoryUtil.ADDRESS_UNBOUNDED;
+    public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Long.MAX_VALUE, JAVA_BYTE));
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+    private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
+    public static final MemoryLayout LONG = CANONICAL_LAYOUTS.get("long"),
+        SIZE_T = CANONICAL_LAYOUTS.get("size_t"),
+        WCHAR_T = CANONICAL_LAYOUTS.get("wchar_t");
 
     /**
      * constructor
@@ -60,63 +68,40 @@ public final class RuntimeHelper {
         throw new IllegalStateException("Do not construct instance");
     }
 
-    @Deprecated(since = "22")
-    public static MemorySegment allocateUtf16LEString(SegmentAllocator allocator, String str) {
-        Objects.requireNonNull(allocator);
-        Objects.requireNonNull(str);
-        final byte[] bytes = str.getBytes(StandardCharsets.UTF_16LE);
-        final MemorySegment seg = allocator.allocate(bytes.length + 2);
-        MemorySegment.copy(bytes, 0, seg, JAVA_BYTE, 0, bytes.length);
-        return seg;
-    }
-
-    @Deprecated(since = "22")
-    public static String getUtf16LEString(MemorySegment segment, long offset) {
-        long len = strlen(segment, offset);
-        byte[] bytes = new byte[(int) len];
-        MemorySegment.copy(segment, JAVA_BYTE, offset, bytes, 0, (int) len);
-        return new String(bytes, StandardCharsets.UTF_16LE);
-    }
-
-    private static int strlen(MemorySegment segment, long start) {
-        for (int offset = 0; offset >= 0; offset += 2) {
-            short curr = segment.get(JAVA_SHORT, start + offset);
-            if (curr == 0) {
-                return offset;
-            }
-        }
-        throw new IllegalArgumentException("String too large");
+    private static MemorySegment reinterpreting(MemorySegment pointerToPointer, int index, ToLongFunction<MemorySegment> size) {
+        final MemorySegment seg = pointerToPointer.getAtIndex(ADDRESS, index);
+        return seg.reinterpret(size.applyAsLong(seg));
     }
 
     /**
-     * Gets a string from the given pointer of a string.
+     * Gets a UTF-8 string from the given pointer of a string.
      *
      * @param segment the memory segment.
      * @return the string.
      */
     public static String unboundPointerString(MemorySegment segment) {
-        return segment.get(ADDRESS_UNBOUNDED, 0).getUtf8String(0);
+        return unboundPointerString(segment, 0);
     }
 
     /**
-     * Gets a string from the given pointer of a string at the given index.
+     * Gets a UTF-8 string from the given pointer of a string at the given index.
      *
      * @param segment the memory segment.
      * @param index   the index.
      * @return the string.
      */
     public static String unboundPointerString(MemorySegment segment, int index) {
-        return segment.getAtIndex(ADDRESS_UNBOUNDED, index).getUtf8String(0);
+        return reinterpreting(segment, index, str -> MemoryUtil.strlen(str) + 1).getString(0);
     }
 
     /**
-     * Make sure a method handle is returned as the specified type to deal with {@code MethodHandle::invokeExact}.
+     * Converts the segment into a string.
      *
-     * @param t   the invoking method.
-     * @param <T> the return type.
+     * @param segment the segment
+     * @return the string
      */
-    @SuppressWarnings("unused")
-    public static <T> void consume(T t) {
+    public static String getString(MemorySegment segment) {
+        return segment.reinterpret(MemoryUtil.strlen(segment) + 1).getString(0);
     }
 
     /**
@@ -137,7 +122,7 @@ public final class RuntimeHelper {
      * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
      */
     public static String unknownToken(String description, int token) {
-        return STR. "\{ description } [0x\{ Integer.toHexString(token) }]" ;
+        return STR."\{description} [0x\{Integer.toHexString(token)}]";
     }
 
     /**
@@ -161,7 +146,7 @@ public final class RuntimeHelper {
             uri = localFile.toURI();
         } else {
             // 2. Load from classpath
-            var file = new File(tmpdir, STR. "overrungl\{ System.getProperty("user.name") }" );
+            var file = new File(tmpdir, STR."overrungl\{System.getProperty("user.name")}");
             if (!file.exists()) {
                 // Create directory
                 file.mkdir();
@@ -171,18 +156,21 @@ public final class RuntimeHelper {
                 // Create directory
                 file.mkdir();
             }
-            var libFile = new File(file, STR. "\{ basename }-\{ version }\{ suffix }" );
+            var libFile = new File(file, STR."\{basename}-\{version}\{suffix}");
             if (!libFile.exists()) {
                 // Extract
-                final String fromPath = STR. "\{ module }/\{ os.familyName() }/\{ Architecture.current() }/\{ path }" ;
+                final String fromPath = STR."\{module}/\{os.familyName()}/\{Architecture.current()}/\{path}";
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
-                    Files.copy(Objects.requireNonNull(is, STR. "File not found: \{ fromPath }" ),
+                    Files.copy(Objects.requireNonNull(is, STR."File not found: \{fromPath}"),
                         Path.of(libFile.getAbsolutePath()));
                 } catch (Exception e) {
-                    throw new IllegalStateException(STR. "File not found: \{ file }; try setting property -Doverrungl.natives to a valid path" , e);
+                    throw new IllegalStateException(STR."File not found: \{file}; try setting property -Doverrungl.natives to a valid path", e);
                 }
             }
             uri = libFile.toURI();
+        }
+        if (Configurations.DEBUG.get()) {
+            OverrunGL.apiLog(STR."[OverrunGL] Loading native library from: \{uri}");
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());
@@ -194,7 +182,7 @@ public final class RuntimeHelper {
      * @param segment the segment.
      */
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return MemoryUtil.isNullptr(segment);
+        return segment == null || segment.equals(MemorySegment.NULL);
     }
 
     /**
@@ -265,23 +253,6 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Gets the objects from an address array.
-     *
-     * @param <T>       the array type
-     * @param seg       the memory segment contained objects. native type: {@code void**}
-     * @param arr       the array to hold the result
-     * @param generator the generator, from an unbounded address to the array type
-     * @return arr
-     */
-    public static <T> T[] toUnboundedArray(MemorySegment seg, T[] arr,
-                                           Function<MemorySegment, T> generator) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = generator.apply(seg.getAtIndex(ADDRESS_UNBOUNDED, i));
-        }
-        return arr;
-    }
-
-    /**
      * Gets the addresses from an address array.
      *
      * @param seg the memory segment contained addresses. native type: {@code void**}
@@ -295,12 +266,15 @@ public final class RuntimeHelper {
     /**
      * Gets the strings from an unbounded address array.
      *
-     * @param seg the memory segment contained strings. native type: {@code char**}
+     * @param seg the memory segment contained strings
      * @param arr the array to hold the result
      * @return arr
      */
-    public static String[] toUnboundedArray(MemorySegment seg, String[] arr) {
-        return toUnboundedArray(seg, arr, p -> p.getUtf8String(0));
+    public static String[] toUnboundedArray(@NativeType("char**") MemorySegment seg, String[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = unboundPointerString(seg, i);
+        }
+        return arr;
     }
 
     /**

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -432,7 +432,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageControl(SegmentAllocator allocator, int source, int type, int severity, int count, int[] ids, boolean enabled) {
-        debugMessageControl(source, type, severity, count, allocator.allocateArray(JAVA_INT, ids), enabled);
+        debugMessageControl(source, type, severity, count, allocator.allocateFrom(JAVA_INT, ids), enabled);
     }
 
     public static void debugMessageInsert(int source, int type, int id, int severity, int length, MemorySegment buf) {
@@ -448,7 +448,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            debugMessageInsert(source, type, id, severity, buf.length(), stack.allocateUtf8String(buf));
+            debugMessageInsert(source, type, id, severity, buf.length(), stack.allocateFrom(buf));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -495,19 +495,19 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static int getDebugMessageLog(SegmentAllocator allocator, int count, int bufSize, int[] sources, int[] types, int[] ids, int[] severities, int[] lengths, String[] messageLog) {
-        var pSrc = allocator.allocateArray(JAVA_INT, sources.length);
-        var pTypes = allocator.allocateArray(JAVA_INT, types.length);
-        var pIds = allocator.allocateArray(JAVA_INT, ids.length);
-        var pSvr = allocator.allocateArray(JAVA_INT, severities.length);
-        var pLen = allocator.allocateArray(JAVA_INT, lengths.length);
-        var pLog = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var pSrc = allocator.allocateFrom(JAVA_INT, sources);
+        var pTypes = allocator.allocateFrom(JAVA_INT, types);
+        var pIds = allocator.allocateFrom(JAVA_INT, ids);
+        var pSvr = allocator.allocateFrom(JAVA_INT, severities);
+        var pLen = allocator.allocateFrom(JAVA_INT, lengths);
+        var pLog = allocator.allocate(JAVA_BYTE, bufSize);
         int num = getDebugMessageLog(count, bufSize, pSrc, pTypes, pIds, pSvr, pLen, pLog);
         RuntimeHelper.toArray(pSrc, sources);
         RuntimeHelper.toArray(pTypes, types);
         RuntimeHelper.toArray(pIds, ids);
         RuntimeHelper.toArray(pSvr, severities);
         RuntimeHelper.toArray(pLen, lengths);
-        messageLog[0] = pLog.getUtf8String(0);
+        messageLog[0] = pLog.getString(0);
         return num;
     }
 
@@ -542,7 +542,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getInternalformati64v(SegmentAllocator allocator, int target, int internalFormat, int pname, long[] params) {
-        var seg = allocator.allocateArray(JAVA_LONG, params.length);
+        var seg = allocator.allocateFrom(JAVA_LONG, params);
         getInternalformati64v(target, internalFormat, pname, params.length, seg);
         RuntimeHelper.toArray(seg, params);
     }
@@ -573,13 +573,13 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static String getObjectLabel(SegmentAllocator allocator, int identifier, int name, int bufSize, int @Nullable [] length) {
-        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var seg = allocator.allocate(JAVA_BYTE, bufSize);
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getObjectLabel(identifier, name, bufSize, seg, pLen);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
-        return seg.getUtf8String(0);
+        return seg.getString(0);
     }
 
     public static String getObjectLabel(SegmentAllocator allocator, int identifier, int name, int @Nullable [] length) {
@@ -600,13 +600,13 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static String getObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, int bufSize, int @Nullable [] length) {
-        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var seg = allocator.allocate(JAVA_BYTE, bufSize);
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getObjectPtrLabel(ptr, bufSize, seg, pLen);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
-        return seg.getUtf8String(0);
+        return seg.getString(0);
     }
 
     public static String getObjectPtrLabel(SegmentAllocator allocator, MemorySegment ptr, int @Nullable [] length) {
@@ -647,7 +647,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getProgramResourceIndex(program, programInterface, stack.allocateUtf8String(name));
+            return getProgramResourceIndex(program, programInterface, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -666,7 +666,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getProgramResourceLocation(program, programInterface, stack.allocateUtf8String(name));
+            return getProgramResourceLocation(program, programInterface, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -685,7 +685,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            return getProgramResourceLocationIndex(program, programInterface, stack.allocateUtf8String(name));
+            return getProgramResourceLocationIndex(program, programInterface, stack.allocateFrom(name));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -705,13 +705,13 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static String getProgramResourceName(SegmentAllocator allocator, int program, int programInterface, int index, int bufSize, int @Nullable [] length) {
-        var seg = allocator.allocateArray(JAVA_BYTE, bufSize);
+        var seg = allocator.allocate(JAVA_BYTE, bufSize);
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
         getProgramResourceName(program, programInterface, index, bufSize, pLen, seg);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
-        return seg.getUtf8String(0);
+        return seg.getString(0);
     }
 
     public static String getProgramResourceName(SegmentAllocator allocator, int program, int programInterface, int index, int @Nullable [] length) {
@@ -732,9 +732,9 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void getProgramResourceiv(SegmentAllocator allocator, int program, int programInterface, int index, int[] props, int @Nullable [] length, int[] params) {
-        var seg = allocator.allocateArray(JAVA_INT, params.length);
+        var seg = allocator.allocateFrom(JAVA_INT, params);
         var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateArray(JAVA_INT, props), params.length, pLen, seg);
+        getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateFrom(JAVA_INT, props), params.length, pLen, seg);
         if (length != null && length.length > 0) {
             length[0] = pLen.get(JAVA_INT, 0);
         }
@@ -743,7 +743,7 @@ public sealed class GL43C extends GL42C permits GL44C {
 
     public static int getProgramResourceiv(SegmentAllocator allocator, int program, int programInterface, int index, int[] props) {
         var seg = allocator.allocate(JAVA_INT);
-        getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateArray(JAVA_INT, props), 1, MemorySegment.NULL, seg);
+        getProgramResourceiv(program, programInterface, index, props.length, allocator.allocateFrom(JAVA_INT, props), 1, MemorySegment.NULL, seg);
         return seg.get(JAVA_INT, 0);
     }
 
@@ -775,7 +775,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateFramebuffer(SegmentAllocator allocator, int target, int[] attachments) {
-        invalidateFramebuffer(target, attachments.length, allocator.allocateArray(JAVA_INT, attachments));
+        invalidateFramebuffer(target, attachments.length, allocator.allocateFrom(JAVA_INT, attachments));
     }
 
     public static void invalidateFramebuffer(int target, int attachment) {
@@ -798,7 +798,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void invalidateSubFramebuffer(SegmentAllocator allocator, int target, int[] attachments, int x, int y, int width, int height) {
-        invalidateSubFramebuffer(target, attachments.length, allocator.allocateArray(JAVA_INT, attachments), x, y, width, height);
+        invalidateSubFramebuffer(target, attachments.length, allocator.allocateFrom(JAVA_INT, attachments), x, y, width, height);
     }
 
     public static void invalidateSubFramebuffer(int target, int attachment, int x, int y, int width, int height) {
@@ -868,7 +868,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            objectLabel(identifier, name, label.length(), stack.allocateUtf8String(label));
+            objectLabel(identifier, name, label.length(), stack.allocateFrom(label));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -887,7 +887,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            objectPtrLabel(ptr, label.length(), stack.allocateUtf8String(label));
+            objectPtrLabel(ptr, label.length(), stack.allocateFrom(label));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -915,7 +915,7 @@ public sealed class GL43C extends GL42C permits GL44C {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
-            pushDebugGroup(source, id, message.length(), stack.allocateUtf8String(message));
+            pushDebugGroup(source, id, message.length(), stack.allocateFrom(message));
         } finally {
             stack.setPointer(stackPointer);
         }

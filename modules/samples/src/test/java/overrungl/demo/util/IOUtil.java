@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,7 +55,7 @@ public final class IOUtil {
         final boolean isHttp = resource.startsWith("http");
         final Path path = isHttp ? null : Path.of(resource);
 
-        // Check whether on local
+        // Check if the path is on local
         if (path != null && Files.isReadable(path)) {
             try (var fc = FileChannel.open(path)) {
                 return fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena);
