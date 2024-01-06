@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,8 +19,10 @@ package overrungl.internal;
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
 import org.jetbrains.annotations.Nullable;
+import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 import overrungl.NativeType;
+import overrungl.OverrunGL;
 import overrungl.util.MemoryUtil;
 
 import java.io.File;
@@ -166,6 +168,9 @@ public final class RuntimeHelper {
                 }
             }
             uri = libFile.toURI();
+        }
+        if (Configurations.DEBUG.get()) {
+            OverrunGL.apiLog(STR."[OverrunGL] Loading native library from: \{uri}");
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());
