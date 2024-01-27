@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,16 +16,12 @@
 
 package overrungl.stb;
 
-import overrungl.NativeType;
-import overrungl.internal.Checks;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
+import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Downcall;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Sized;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
-
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.stb.Handles.*;
 
 /**
  * Easy-to-deploy,
@@ -44,9 +40,9 @@ import static overrungl.stb.Handles.*;
  * to make work on modern APIs, and that's your problem.
  * {@snippet lang = java:
  * import java.lang.foreign.Arena;
- * static MemorySegment buffer = Arena.ofAuto().allocate(99999);
+ * static MemorySegment buffer = Arena.ofAuto().allocate(99999); // ~500 chars
  * void printString(float x, float y, String text, float r, float g, float b) {
- *     int numQuads = STBEasyFont.print(x, y, text, MemorySegment.NULL, buffer, (int) buffer.byteSize());
+ *     int numQuads = STBEasyFont.INSTANCE.print(x, y, text, MemorySegment.NULL, buffer, (int) buffer.byteSize());
  *     GL10.color3f(r, g, b);
  *     GL11.enableClientState(GL.VERTEX_ARRAY);
  *     GL11.vertexPointer(2, GL.FLOAT, 16, buffer);
@@ -58,25 +54,17 @@ import static overrungl.stb.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBEasyFont {
-    private static final MethodHandle
-        stb_easy_font_get_spacing = downcall("stb_easy_font_get_spacing", F),
-        stb_easy_font_spacing = downcall("stb_easy_font_spacing", FV),
-        stb_easy_font_print = downcall("stb_easy_font_print", FFPPPII),
-        stb_easy_font_width = downcall("stb_easy_font_width", fd_PI),
-        stb_easy_font_height = downcall("stb_easy_font_height", fd_PI);
+interface STBEasyFont {
+    /**
+     * The instance of STBEasyFont.
+     */
+    STBEasyFont INSTANCE = Downcall.load(Handles.lookup);
 
-    private STBEasyFont() {
-        //no instance
-    }
-
-    public static float getSpacing() {
-        try {
-            return (float) stb_easy_font_get_spacing.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    /**
+     * {@return spacing}
+     */
+    @Entrypoint("stb_easy_font_get_spacing")
+    float getSpacing();
 
     /**
      * Use positive values to expand the space between characters,
@@ -91,13 +79,8 @@ public final class STBEasyFont {
      *
      * @param spacing spacing
      */
-    public static void setSpacing(float spacing) {
-        try {
-            stb_easy_font_spacing.invokeExact(spacing);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stb_easy_font_spacing")
+    void setSpacing(float spacing);
 
     /**
      * Takes a string (which can contain '\n') and fills out a
@@ -126,47 +109,55 @@ public final class STBEasyFont {
      * If your API doesn't draw quads, build a reusable index
      * list that allows you to render quads as indexed triangles.
      *
-     * @param x            x
-     * @param y            y
-     * @param text         text
-     * @param color        If you pass in NULL for color, it becomes 255,255,255,255.
-     * @param vertexBuffer vertex buffer
-     * @param vbufSize     buffer size
+     * @param x             x
+     * @param y             y
+     * @param text          text
+     * @param color         If you pass in NULL for color, it becomes 255,255,255,255.
+     * @param vertex_buffer vertex buffer
+     * @param vbuf_size     buffer size
      * @return the number of quads.
      */
-    public static int nprint(float x, float y, @NativeType("char*") MemorySegment text, @NativeType("unsigned char[4]") MemorySegment color, @NativeType("void*") MemorySegment vertexBuffer, int vbufSize) {
-        try {
-            return (int) stb_easy_font_print.invokeExact(x, y, text, color, vertexBuffer, vbufSize);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stb_easy_font_print")
+    int print(float x, float y, MemorySegment text, MemorySegment color, MemorySegment vertex_buffer, int vbuf_size);
 
     /**
      * Takes a string (which can contain '\n') and fills out a
      * vertex buffer with renderable data to draw the string.
+     * Output data assumes increasing x is rightwards, increasing y
+     * is downwards.
+     * <p>
+     * The vertex data is divided into quads, i.e. there are four
+     * vertices in the vertex buffer for each quad.
+     * <p>
+     * The vertices are stored in an interleaved format:
+     * <ol>
+     *     <li>x:float</li>
+     *     <li>y:float</li>
+     *     <li>z:float</li>
+     *     <li>color:uint8[4]</li>
+     * </ol>
+     * <p>
+     * You can ignore z and color if you get them from elsewhere.
+     * This format was chosen in the hopes it would make it
+     * easier for you to reuse existing vertex-buffer-drawing code.
+     * <p>
+     * If the buffer isn't large enough, it will truncate.
+     * Expect it to use an average of ~270 bytes per character.
+     * <p>
+     * If your API doesn't draw quads, build a reusable index
+     * list that allows you to render quads as indexed triangles.
      *
-     * @param x            x
-     * @param y            y
-     * @param text         text
-     * @param color        If you pass in NULL for color, it becomes 255,255,255,255.
-     * @param vertexBuffer vertex buffer
-     * @param vbufSize     buffer size
+     * @param x             x
+     * @param y             y
+     * @param text          text
+     * @param color         If you pass in NULL for color, it becomes 255,255,255,255.
+     * @param vertex_buffer vertex buffer
+     * @param vbuf_size     buffer size
      * @return the number of quads.
-     * @see #nprint(float, float, MemorySegment, MemorySegment, MemorySegment, int) nprint
+     * @see #print(float, float, MemorySegment, MemorySegment, MemorySegment, int) print
      */
-    public static int print(float x, float y, String text, byte[] color, @NativeType("void*") MemorySegment vertexBuffer, int vbufSize) {
-        if (color != null && RuntimeHelper.CHECKS) {
-            Checks.arraySize(color, 4);
-        }
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nprint(x, y, stack.allocateFrom(text), color == null ? MemorySegment.NULL : stack.bytes(color), vertexBuffer, vbufSize);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("stb_easy_font_print")
+    int print(float x, float y, String text, @Sized(4) byte @Nullable [] color, MemorySegment vertex_buffer, int vbuf_size);
 
     /**
      * Takes a string and returns the horizontal size (which can vary if 'text' has newlines).
@@ -174,30 +165,18 @@ public final class STBEasyFont {
      * @param text the text.
      * @return the size.
      */
-    public static int nwidth(@NativeType("char*") MemorySegment text) {
-        try {
-            return (int) stb_easy_font_width.invokeExact(text);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stb_easy_font_width")
+    int width(MemorySegment text);
 
     /**
      * Takes a string and returns the horizontal size (which can vary if 'text' has newlines).
      *
      * @param text the text.
      * @return the size.
-     * @see #nwidth(MemorySegment) nwidth
+     * @see #width(MemorySegment) width
      */
-    public static int width(String text) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nwidth(stack.allocateFrom(text));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("stb_easy_font_width")
+    int width(String text);
 
     /**
      * Takes a string and returns the vertical size (which can vary if 'text' has newlines).
@@ -205,28 +184,16 @@ public final class STBEasyFont {
      * @param text the text.
      * @return the size.
      */
-    public static int nheight(@NativeType("char*") MemorySegment text) {
-        try {
-            return (int) stb_easy_font_height.invokeExact(text);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stb_easy_font_height")
+    int height(MemorySegment text);
 
     /**
      * Takes a string and returns the vertical size (which can vary if 'text' has newlines).
      *
      * @param text the text.
      * @return the size.
-     * @see #nheight(MemorySegment) nheight
+     * @see #height(MemorySegment) height
      */
-    public static int height(String text) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nheight(stack.allocateFrom(text));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("stb_easy_font_height")
+    int height(String text);
 }

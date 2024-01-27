@@ -112,10 +112,11 @@ public final class GL15Test {
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
         try {
+            final STBImage stbImage = STBImage.INSTANCE;
             var px = arena.allocate(JAVA_INT);
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
-            var data = STBImage.loadFromMemory(
+            var data = stbImage.loadFromMemory(
                 IOUtil.ioResourceToSegment(arena, "image.png", 256, 128),
                 px, py, pc, STBImage.RGB
             );
@@ -128,7 +129,7 @@ public final class GL15Test {
                 GL.RGB,
                 GL.UNSIGNED_BYTE,
                 data);
-            STBImage.free(data);
+            stbImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

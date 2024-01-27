@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,13 +16,15 @@
 
 package overrungl.stb;
 
-import overrungl.Struct;
-import overrungl.internal.RuntimeHelper;
+import overrun.marshal.Marshal;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.StructLayout;
-import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -31,10 +33,10 @@ import static java.lang.foreign.ValueLayout.*;
  * <pre><code>
  * typedef struct
  * {
- *    char *{@link #vendor() vendor};
+ *    char *{@link #vendor vendor};
  *
- *    int {@link #commentListLength() comment_list_length};
- *    char **{@link #commentList() comment_list};
+ *    int {@link #commentListLength comment_list_length};
+ *    char **{@link #commentList comment_list};
  * } stb_vorbis_comment;
  * </code></pre>
  *
@@ -46,41 +48,58 @@ public final class STBVorbisComment extends Struct {
      * The struct layout.
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE)).withName("vendor"),
+        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(0L, JAVA_BYTE)).withName("vendor"),
         JAVA_INT.withName("comment_list_length"),
-        ADDRESS.withTargetLayout(ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE))).withName("comment_list")
+        ADDRESS.withTargetLayout(ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, JAVA_BYTE))).withName("comment_list")
     );
-    private static final VarHandle
-        vendor = LAYOUT.varHandle(PathElement.groupElement("vendor")),
-        comment_list_length = LAYOUT.varHandle(PathElement.groupElement("comment_list_length")),
-        comment_list = LAYOUT.varHandle(PathElement.groupElement("comment_list"));
+    /**
+     * vendor
+     */
+    public final StructHandle.Array<byte[]> vendor = StructHandle.ofArray(this, "vendor", Marshal::marshal, Unmarshal::unmarshalAsByteArray);
+    /**
+     * comment_list_length
+     */
+    public final StructHandle.Int commentListLength = StructHandle.ofInt(this, "comment_list_length");
+    /**
+     * comment_list
+     */
+    public final StructHandle.Array<String[]> commentList = StructHandle.ofArray(this, "comment_list", Marshal::marshal, Unmarshal::unmarshalAsStringArray);
 
-    public STBVorbisComment(MemorySegment address) {
-        super(address, LAYOUT);
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment      the segment
+     * @param elementCount the element count
+     */
+    public STBVorbisComment(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
-    public String vendor() {
-        return nvendor().getUtf8String(0);
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
+     */
+    public STBVorbisComment(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
-    public int commentListLength() {
-        return (int) comment_list_length.get(segment());
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
+     */
+    public STBVorbisComment(MemorySegment segment) {
+        super(segment, LAYOUT);
     }
 
-    public String[] commentList() {
-        final MemorySegment list = ncommentList();
-        String[] arr = new String[commentListLength()];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = list.getAtIndex(RuntimeHelper.ADDRESS_UNBOUNDED, i).getUtf8String(0);
-        }
-        return arr;
-    }
-
-    public MemorySegment nvendor() {
-        return (MemorySegment) vendor.get(segment());
-    }
-
-    public MemorySegment ncommentList() {
-        return (MemorySegment) comment_list.get(segment());
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator the allocator
+     */
+    public STBVorbisComment(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 }

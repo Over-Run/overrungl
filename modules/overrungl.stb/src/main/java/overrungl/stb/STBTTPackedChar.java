@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,14 +16,13 @@
 
 package overrungl.stb;
 
-import overrungl.ArrayPointer;
-import overrungl.Struct;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.StructLayout;
-import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -32,16 +31,16 @@ import static java.lang.foreign.ValueLayout.*;
  * <pre><code>
  * typedef struct
  * {
- *    unsigned short {@link #x0() x0},{@link #y0() y0},{@link #x1() x1},{@link #y1() y1}; // coordinates of bbox in bitmap
- *    float {@link #xoff() xoff},{@link #yoff() yoff},{@link #xadvance() xadvance};
- *    float {@link #xoff2() xoff2},{@link #yoff2() yoff2};
+ *    unsigned short {@link #x0},{@link #y0},{@link #x1},{@link #y1}; // coordinates of bbox in bitmap
+ *    float {@link #xoff},{@link #yoff},{@link #xadvance};
+ *    float {@link #xoff2},{@link #yoff2};
  * } stbtt_packedchar;
  * </code></pre>
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed class STBTTPackedChar extends Struct {
+public final class STBTTPackedChar extends Struct {
     /**
      * The struct layout.
      */
@@ -56,86 +55,78 @@ public sealed class STBTTPackedChar extends Struct {
         JAVA_FLOAT.withName("xoff2"),
         JAVA_FLOAT.withName("yoff2")
     );
-    private static final VarHandle
-        x0 = LAYOUT.varHandle(PathElement.groupElement("x0")),
-        y0 = LAYOUT.varHandle(PathElement.groupElement("y0")),
-        x1 = LAYOUT.varHandle(PathElement.groupElement("x1")),
-        y1 = LAYOUT.varHandle(PathElement.groupElement("y1")),
-        xoff = LAYOUT.varHandle(PathElement.groupElement("xoff")),
-        yoff = LAYOUT.varHandle(PathElement.groupElement("yoff")),
-        xadvance = LAYOUT.varHandle(PathElement.groupElement("xadvance")),
-        xoff2 = LAYOUT.varHandle(PathElement.groupElement("xoff2")),
-        yoff2 = LAYOUT.varHandle(PathElement.groupElement("yoff2"));
+    /**
+     * x0
+     */
+    public final StructHandle.Short x0 = StructHandle.ofShort(this, "x0");
+    /**
+     * y0
+     */
+    public final StructHandle.Short y0 = StructHandle.ofShort(this, "y0");
+    /**
+     * x1
+     */
+    public final StructHandle.Short x1 = StructHandle.ofShort(this, "x1");
+    /**
+     * y1
+     */
+    public final StructHandle.Short y1 = StructHandle.ofShort(this, "y1");
+    /**
+     * xoff
+     */
+    public final StructHandle.Float xoff = StructHandle.ofFloat(this, "xoff");
+    /**
+     * yoff
+     */
+    public final StructHandle.Float yoff = StructHandle.ofFloat(this, "yoff");
+    /**
+     * xadvance
+     */
+    public final StructHandle.Float xadvance = StructHandle.ofFloat(this, "xadvance");
+    /**
+     * xoff2
+     */
+    public final StructHandle.Float xoff2 = StructHandle.ofFloat(this, "xoff2");
+    /**
+     * yoff2
+     */
+    public final StructHandle.Float yoff2 = StructHandle.ofFloat(this, "yoff2");
 
-    protected STBTTPackedChar(MemorySegment address, MemoryLayout layout) {
-        super(address, layout);
-    }
-
-    public STBTTPackedChar(MemorySegment address) {
-        super(address, LAYOUT);
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment      the segment
+     * @param elementCount the element count
+     */
+    public STBTTPackedChar(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
     /**
-     * {@return the elements size of this struct in bytes}
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
      */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
-    }
-
-    public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocateArray(LAYOUT, count), count);
-    }
-
-    public short x0() {
-        return (short) x0.get(segment());
-    }
-
-    public short y0() {
-        return (short) y0.get(segment());
-    }
-
-    public short x1() {
-        return (short) x1.get(segment());
-    }
-
-    public short y1() {
-        return (short) y1.get(segment());
-    }
-
-    public float xoff() {
-        return (float) xoff.get(segment());
-    }
-
-    public float yoff() {
-        return (float) yoff.get(segment());
-    }
-
-    public float xadvance() {
-        return (float) xadvance.get(segment());
-    }
-
-    public float xoff2() {
-        return (float) xoff2.get(segment());
-    }
-
-    public float yoff2() {
-        return (float) yoff2.get(segment());
+    public STBTTPackedChar(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
     /**
-     * @author squid233
-     * @since 0.1.0
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
      */
-    public static final class Buffer extends STBTTPackedChar implements ArrayPointer {
-        private final VarHandle pChar;
+    public STBTTPackedChar(MemorySegment segment) {
+        super(segment, LAYOUT);
+    }
 
-        public Buffer(MemorySegment address, long elementCount) {
-            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-            pChar = layout().varHandle(PathElement.sequenceElement());
-        }
-
-        public STBTTPackedChar get(long index) {
-            return new STBTTPackedChar((MemorySegment) pChar.get(segment(), index));
-        }
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator the allocator
+     */
+    public STBTTPackedChar(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 }

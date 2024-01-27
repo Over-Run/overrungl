@@ -34,7 +34,7 @@ import java.util.function.Supplier;
  * @since 0.1.0
  */
 final class Handles {
-    private static final SymbolLookup lookup;
+    static final SymbolLookup lookup;
 
     static {
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);

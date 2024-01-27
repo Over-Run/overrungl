@@ -66,10 +66,11 @@ public final class GLFWWindowIconTest {
         CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
 
         try {
+            final STBImage stbImage = STBImage.INSTANCE;
             var px = arena.allocate(JAVA_INT);
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
-            var data = STBImage.loadFromMemory(
+            var data = stbImage.loadFromMemory(
                 IOUtil.ioResourceToSegment(arena, "image.png", 256),
                 px, py, pc, STBImage.RGB_ALPHA
             );
@@ -77,7 +78,7 @@ public final class GLFWWindowIconTest {
                 .width(px.get(JAVA_INT, 0))
                 .height(py.get(JAVA_INT, 0))
                 .pixels(data));
-            STBImage.free(data);
+            stbImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,13 +16,13 @@
 
 package overrungl.stb;
 
-import overrungl.Struct;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.StructLayout;
-import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 
@@ -31,14 +31,14 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * <pre><code>
  * typedef struct
  * {
- *    unsigned int {@link #sampleRate() sample_rate};
- *    int {@link #channels() channels};
+ *    unsigned int {@link #sampleRate sample_rate};
+ *    int {@link #channels channels};
  *
- *    unsigned int {@link #setupMemoryRequired() setup_memory_required};
- *    unsigned int {@link #setupTempMemoryRequired() setup_temp_memory_required};
- *    unsigned int {@link #tempMemoryRequired() temp_memory_required};
+ *    unsigned int {@link #setupMemoryRequired setup_memory_required};
+ *    unsigned int {@link #setupTempMemoryRequired setup_temp_memory_required};
+ *    unsigned int {@link #tempMemoryRequired temp_memory_required};
  *
- *    int {@link #maxFrameSize() max_frame_size};
+ *    int {@link #maxFrameSize max_frame_size};
  * } stb_vorbis_info;
  * </code></pre>
  *
@@ -57,39 +57,66 @@ public final class STBVorbisInfo extends Struct {
         JAVA_INT.withName("temp_memory_required"),
         JAVA_INT.withName("max_frame_size")
     );
-    private static final VarHandle
-        sample_rate = LAYOUT.varHandle(PathElement.groupElement("sample_rate")),
-        channels = LAYOUT.varHandle(PathElement.groupElement("channels")),
-        setup_memory_required = LAYOUT.varHandle(PathElement.groupElement("setup_memory_required")),
-        setup_temp_memory_required = LAYOUT.varHandle(PathElement.groupElement("setup_temp_memory_required")),
-        temp_memory_required = LAYOUT.varHandle(PathElement.groupElement("temp_memory_required")),
-        max_frame_size = LAYOUT.varHandle(PathElement.groupElement("max_frame_size"));
+    /**
+     * sample_rate
+     */
+    public final StructHandle.Int sampleRate = StructHandle.ofInt(this, "sample_rate");
+    /**
+     * channels
+     */
+    public final StructHandle.Int channels = StructHandle.ofInt(this, "channels");
+    /**
+     * setup_memory_required
+     */
+    public final StructHandle.Int setupMemoryRequired = StructHandle.ofInt(this, "setup_memory_required");
+    /**
+     * setup_temp_memory_required
+     */
+    public final StructHandle.Int setupTempMemoryRequired = StructHandle.ofInt(this, "setup_temp_memory_required");
+    /**
+     * temp_memory_required
+     */
+    public final StructHandle.Int tempMemoryRequired = StructHandle.ofInt(this, "temp_memory_required");
+    /**
+     * max_frame_size
+     */
+    public final StructHandle.Int maxFrameSize = StructHandle.ofInt(this, "max_frame_size");
 
-    public STBVorbisInfo(MemorySegment address) {
-        super(address, LAYOUT);
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment      the segment
+     * @param elementCount the element count
+     */
+    public STBVorbisInfo(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
-    public int sampleRate() {
-        return (int) sample_rate.get(segment());
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
+     */
+    public STBVorbisInfo(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
-    public int channels() {
-        return (int) channels.get(segment());
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
+     */
+    public STBVorbisInfo(MemorySegment segment) {
+        super(segment, LAYOUT);
     }
 
-    public int setupMemoryRequired() {
-        return (int) setup_memory_required.get(segment());
-    }
-
-    public int setupTempMemoryRequired() {
-        return (int) setup_temp_memory_required.get(segment());
-    }
-
-    public int tempMemoryRequired() {
-        return (int) temp_memory_required.get(segment());
-    }
-
-    public int maxFrameSize() {
-        return (int) max_frame_size.get(segment());
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator the allocator
+     */
+    public STBVorbisInfo(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 }

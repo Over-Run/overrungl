@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,31 +16,26 @@
 
 package overrungl.stb;
 
-import overrungl.ArrayPointer;
-import overrungl.Struct;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemoryLayout.PathElement;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.StructLayout;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.VarHandle;
+import java.lang.foreign.*;
 
 /**
  * <h2>Layout</h2>
  * <pre><code>
  * typedef struct stbtt_kerningentry
  * {
- *    int {@link #glyph1() glyph1}; // use stbtt_FindGlyphIndex
- *    int {@link #glyph2() glyph2};
- *    int {@link #advance() advance};
+ *    int {@link #glyph1}; // use stbtt_FindGlyphIndex
+ *    int {@link #glyph2};
+ *    int {@link #advance};
  * } stbtt_kerningentry;
  * </code></pre>
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed class STBTTKerningEntry extends Struct {
+public final class STBTTKerningEntry extends Struct {
     /**
      * The struct layout.
      */
@@ -49,51 +44,54 @@ public sealed class STBTTKerningEntry extends Struct {
         ValueLayout.JAVA_INT.withName("glyph2"),
         ValueLayout.JAVA_INT.withName("advance")
     );
-    private static final VarHandle
-        glyph1 = LAYOUT.varHandle(PathElement.groupElement("glyph1")),
-        glyph2 = LAYOUT.varHandle(PathElement.groupElement("glyph2")),
-        advance = LAYOUT.varHandle(PathElement.groupElement("advance"));
+    /**
+     * glyph1
+     */
+    public final StructHandle.Int glyph1 = StructHandle.ofInt(this, "glyph1");
+    /**
+     * glyph2
+     */
+    public final StructHandle.Int glyph2 = StructHandle.ofInt(this, "glyph2");
+    /**
+     * advance
+     */
+    public final StructHandle.Int advance = StructHandle.ofInt(this, "advance");
 
-    protected STBTTKerningEntry(MemorySegment address, MemoryLayout layout) {
-        super(address, layout);
-    }
-
-    public STBTTKerningEntry(MemorySegment address) {
-        super(address, LAYOUT);
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment      the segment
+     * @param elementCount the element count
+     */
+    public STBTTKerningEntry(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
     /**
-     * {@return the elements size of this struct in bytes}
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
      */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
-    }
-
-    public int glyph1() {
-        return (int) glyph1.get(segment());
-    }
-
-    public int glyph2() {
-        return (int) glyph2.get(segment());
-    }
-
-    public int advance() {
-        return (int) advance.get(segment());
+    public STBTTKerningEntry(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
     /**
-     * @author squid233
-     * @since 0.1.0
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
      */
-    public static final class Buffer extends STBTTKerningEntry implements ArrayPointer {
-        private final VarHandle pEntry = layout().varHandle(PathElement.sequenceElement());
+    public STBTTKerningEntry(MemorySegment segment) {
+        super(segment, LAYOUT);
+    }
 
-        public Buffer(MemorySegment address, long elementCount) {
-            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-        }
-
-        public STBTTKerningEntry get(long index) {
-            return new STBTTKerningEntry((MemorySegment) pEntry.get(segment(), index));
-        }
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator the allocator
+     */
+    public STBTTKerningEntry(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 }

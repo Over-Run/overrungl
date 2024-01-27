@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,10 +16,7 @@
 
 package overrungl.stb;
 
-import java.lang.invoke.MethodHandle;
-
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.stb.Handles.*;
+import overrun.marshal.Downcall;
 
 /**
  * The STB perlin noise generator.
@@ -27,18 +24,11 @@ import static overrungl.stb.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBPerlin {
-    private static final MethodHandle
-        stb_perlin_noise3 = downcall("stb_perlin_noise3", FFFIIIF),
-        stb_perlin_noise3_seed = downcall("stb_perlin_noise3_seed", FFFIIIIF),
-        stb_perlin_ridge_noise3 = downcall("stb_perlin_ridge_noise3", FFFFFFIF),
-        stb_perlin_fbm_noise3 = downcall("stb_perlin_fbm_noise3", FFFFFIF),
-        stb_perlin_turbulence_noise3 = downcall("stb_perlin_turbulence_noise3", FFFFFIF),
-        stb_perlin_noise3_wrap_nonpow2 = downcall("stb_perlin_noise3_wrap_nonpow2", FFFIIIBF);
-
-    private STBPerlin() {
-        throw new IllegalStateException("Do not construct instance");
-    }
+public interface STBPerlin {
+    /**
+     * The instance of STBPerlin.
+     */
+    STBPerlin INSTANCE = Downcall.load(Handles.lookup);
 
     /**
      * This function computes a random value at the coordinate (x,y,z).<br>
@@ -61,13 +51,7 @@ public final class STBPerlin {
      * @param wrapZ wrap z
      * @return the value
      */
-    public static float noise3(float x, float y, float z, int wrapX, int wrapY, int wrapZ) {
-        try {
-            return (float) stb_perlin_noise3.invokeExact(x, y, z, wrapX, wrapY, wrapZ);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    float noise3(float x, float y, float z, int wrapX, int wrapY, int wrapZ);
 
     /**
      * As {@link #noise3}, but 'seed' selects from multiple different variations of the
@@ -83,13 +67,7 @@ public final class STBPerlin {
      * @param seed  the seed
      * @return the value
      */
-    public static float noise3seed(float x, float y, float z, int wrapX, int wrapY, int wrapZ, int seed) {
-        try {
-            return (float) stb_perlin_noise3_seed.invokeExact(x, y, z, wrapX, wrapY, wrapZ, seed);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    float noise3seed(float x, float y, float z, int wrapX, int wrapY, int wrapZ, int seed);
 
     /**
      * Three common fractal noise functions are included, which produce
@@ -106,13 +84,7 @@ public final class STBPerlin {
      * @param octaves    = 6     -- number of "octaves" of noise3() to sum
      * @return the value
      */
-    public static float ridgeNoise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves) {
-        try {
-            return (float) stb_perlin_ridge_noise3.invokeExact(x, y, z, lacunarity, gain, offset, octaves);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    float ridgeNoise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
 
     /**
      * Three common fractal noise functions are included, which produce
@@ -128,13 +100,7 @@ public final class STBPerlin {
      * @param octaves    = 6     -- number of "octaves" of noise3() to sum
      * @return the value
      */
-    public static float fbmNoise3(float x, float y, float z, float lacunarity, float gain, int octaves) {
-        try {
-            return (float) stb_perlin_fbm_noise3.invokeExact(x, y, z, lacunarity, gain, octaves);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    float fbmNoise3(float x, float y, float z, float lacunarity, float gain, int octaves);
 
     /**
      * Three common fractal noise functions are included, which produce
@@ -150,19 +116,18 @@ public final class STBPerlin {
      * @param octaves    = 6     -- number of "octaves" of noise3() to sum
      * @return the value
      */
-    public static float turbulenceNoise3(float x, float y, float z, float lacunarity, float gain, int octaves) {
-        try {
-            return (float) stb_perlin_turbulence_noise3.invokeExact(x, y, z, lacunarity, gain, octaves);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    float turbulenceNoise3(float x, float y, float z, float lacunarity, float gain, int octaves);
 
-    public static float noise3wrapNonpow2(float x, float y, float z, int wrapX, int wrapY, int wrapZ, byte seed) {
-        try {
-            return (float) stb_perlin_noise3_wrap_nonpow2.invokeExact(x, y, z, wrapX, wrapY, wrapZ, seed);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    /**
+     * {@return noise3wrapNonpow2}
+     *
+     * @param x     x
+     * @param y     y
+     * @param z     z
+     * @param wrapX wrapX
+     * @param wrapY wrapY
+     * @param wrapZ wrapZ
+     * @param seed  seed
+     */
+    float noise3wrapNonpow2(float x, float y, float z, int wrapX, int wrapY, int wrapZ, byte seed);
 }

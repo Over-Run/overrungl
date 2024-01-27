@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,25 +16,20 @@
 
 package overrungl.stb;
 
-import overrungl.Callback;
-import overrungl.internal.RuntimeHelper;
-import overrungl.Struct;
+import overrun.marshal.Upcall;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.*;
-import java.lang.foreign.MemoryLayout.PathElement;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.lang.invoke.VarHandle;
 
 /**
  * The IO callback of STB image.
  * <h2>Layout</h2>
  * <pre><code>
  * struct stbi_io_callbacks {
- *     int (*{@link #read() read})(void* user, char* data, int size);
- *     void (*{@link #skip() skip})(void* user, int n);
- *     int (*{@link #eof() eof})(void* user);
+ *     int (*{@link #read})(void* user, char* data, int size);
+ *     void (*{@link #skip})(void* user, int n);
+ *     int (*{@link #eof})(void* user);
  * }</code></pre>
  *
  * @author squid233
@@ -49,18 +44,55 @@ public final class STBIIoCallbacks extends Struct {
         ValueLayout.ADDRESS.withName("skip"),
         ValueLayout.ADDRESS.withName("eof")
     );
-    private static final VarHandle
-        pRead = LAYOUT.varHandle(PathElement.groupElement("read")),
-        pSkip = LAYOUT.varHandle(PathElement.groupElement("skip")),
-        pEof = LAYOUT.varHandle(PathElement.groupElement("eof"));
+    /**
+     * the read callback
+     */
+    public final StructHandle.Upcall<Read> read = StructHandle.ofUpcall(this, "read", Read::wrap);
+    /**
+     * the skip callback
+     */
+    public final StructHandle.Upcall<Skip> skip = StructHandle.ofUpcall(this, "skip", Skip::wrap);
+    /**
+     * the eof callback
+     */
+    public final StructHandle.Upcall<Eof> eof = StructHandle.ofUpcall(this, "eof", Eof::wrap);
 
     /**
-     * Create a {@code stbi_io_callbacks} instance.
+     * Creates a struct with the given layout.
      *
-     * @param address the address.
+     * @param segment      the segment
+     * @param elementCount the element count
      */
-    public STBIIoCallbacks(MemorySegment address) {
-        super(address, LAYOUT);
+    public STBIIoCallbacks(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
+    }
+
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
+     */
+    public STBIIoCallbacks(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
+    }
+
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
+     */
+    public STBIIoCallbacks(MemorySegment segment) {
+        super(segment, LAYOUT);
+    }
+
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator the allocator
+     */
+    public STBIIoCallbacks(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 
     /**
@@ -70,9 +102,11 @@ public final class STBIIoCallbacks extends Struct {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Read extends Callback {
-        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        MethodType MTYPE = DESC.toMethodType();
+    public interface Read extends Upcall {
+        /**
+         * the type
+         */
+        Type<Read> TYPE = Upcall.type();
 
         /**
          * Fill {@code data} with {@code size} bytes.
@@ -91,18 +125,25 @@ public final class STBIIoCallbacks extends Struct {
          * @param size byte size to fill
          * @return number of bytes actually read
          */
+        @Stub
         default int ninvoke(MemorySegment user, MemorySegment data, int size) {
-            return invoke(user.reinterpret(Long.MAX_VALUE), data.reinterpret(size));
+            return invoke(user, data.reinterpret(size));
         }
 
         @Override
-        default FunctionDescriptor descriptor() {
-            return DESC;
+        default MemorySegment stub(Arena arena) {
+            return TYPE.of(arena, this);
         }
 
-        @Override
-        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Read.class, "ninvoke", MTYPE);
+        @Wrapper
+        static Read wrap(Arena arena, MemorySegment stub) {
+            return TYPE.wrap(stub, handle -> (user, data) -> {
+                try {
+                    return (int) handle.invokeExact(user, data, Math.toIntExact(data.byteSize()));
+                } catch (Throwable e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
     }
 
@@ -113,9 +154,11 @@ public final class STBIIoCallbacks extends Struct {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Skip extends Callback {
-        FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        MethodType MTYPE = DESC.toMethodType();
+    public interface Skip extends Upcall {
+        /**
+         * the type
+         */
+        Type<Skip> TYPE = Upcall.type();
 
         /**
          * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
@@ -123,26 +166,24 @@ public final class STBIIoCallbacks extends Struct {
          * @param user userdata
          * @param n    byte size to skip
          */
+        @Stub
         void invoke(MemorySegment user, int n);
 
-        /**
-         * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
-         *
-         * @param user userdata
-         * @param n    byte size to skip
-         */
-        default void ninvoke(MemorySegment user, int n) {
-            invoke(user.reinterpret(Long.MAX_VALUE), n);
-        }
 
         @Override
-        default FunctionDescriptor descriptor() {
-            return DESC;
+        default MemorySegment stub(Arena arena) {
+            return TYPE.of(arena, this);
         }
 
-        @Override
-        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Skip.class, "ninvoke", MTYPE);
+        @Wrapper
+        static Skip wrap(Arena arena, MemorySegment stub) {
+            return TYPE.wrap(stub, handle -> (user, n) -> {
+                try {
+                    handle.invokeExact(user, n);
+                } catch (Throwable e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
     }
 
@@ -153,108 +194,34 @@ public final class STBIIoCallbacks extends Struct {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Eof extends Callback {
-        FunctionDescriptor DESC = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        MethodType MTYPE = DESC.toMethodType();
+    public interface Eof extends Upcall {
+        /**
+         * the type
+         */
+        Type<Eof> TYPE = Upcall.type();
 
         /**
          * {@return nonzero if we are at end of file/data}
          *
          * @param user userdata
          */
+        @Stub
         int invoke(MemorySegment user);
 
-        /**
-         * {@return nonzero if we are at end of file/data}
-         *
-         * @param user userdata
-         */
-        default int ninvoke(MemorySegment user) {
-            return invoke(user.reinterpret(Long.MAX_VALUE));
-        }
-
         @Override
-        default FunctionDescriptor descriptor() {
-            return DESC;
+        default MemorySegment stub(Arena arena) {
+            return TYPE.of(arena, this);
         }
 
-        @Override
-        default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-            return lookup.findVirtual(Eof.class, "ninvoke", MTYPE);
+        @Wrapper
+        static Eof wrap(Arena arena, MemorySegment segment) {
+            return TYPE.wrap(segment, handle -> user -> {
+                try {
+                    return (int) handle.invokeExact(user);
+                } catch (Throwable e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
-    }
-
-    /**
-     * {@return the elements size of this struct in bytes}
-     */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
-    }
-
-    /**
-     * Creates a {@code stbi_io_callbacks} instance with the given allocator.
-     *
-     * @param allocator the allocator
-     * @return the instance
-     */
-    public static STBIIoCallbacks create(SegmentAllocator allocator) {
-        return new STBIIoCallbacks(allocator.allocate(LAYOUT));
-    }
-
-    /**
-     * {@return the read callback}
-     */
-    public MemorySegment read() {
-        return (MemorySegment) pRead.get(segment());
-    }
-
-    /**
-     * {@return the skip callback}
-     */
-    public MemorySegment skip() {
-        return (MemorySegment) pSkip.get(segment());
-    }
-
-    /**
-     * {@return the eof callback}
-     */
-    public MemorySegment eof() {
-        return (MemorySegment) pEof.get(segment());
-    }
-
-    /**
-     * Sets the read callback.
-     *
-     * @param arena the arena of the callback.
-     * @param read  the read callback
-     * @return this
-     */
-    public STBIIoCallbacks read(Arena arena, Read read) {
-        pRead.set(segment(), read.address(arena));
-        return this;
-    }
-
-    /**
-     * Sets the skip callback.
-     *
-     * @param arena the arena of the callback.
-     * @param skip  the skip callback
-     * @return this
-     */
-    public STBIIoCallbacks skip(Arena arena, Skip skip) {
-        pSkip.set(segment(), skip.address(arena));
-        return this;
-    }
-
-    /**
-     * Sets the eof callback.
-     *
-     * @param arena the arena of the callback.
-     * @param eof   the eof callback
-     * @return this
-     */
-    public STBIIoCallbacks eof(Arena arena, Eof eof) {
-        pEof.set(segment(), eof.address(arena));
-        return this;
     }
 }

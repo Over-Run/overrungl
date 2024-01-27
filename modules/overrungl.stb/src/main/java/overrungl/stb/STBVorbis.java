@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ import java.lang.invoke.MethodHandle;
 
 import static overrungl.FunctionDescriptors.*;
 import static overrungl.stb.Handles.downcall;
-import static overrungl.stb.Handles.initialize;
 
 /**
  * @author squid233
@@ -41,7 +40,6 @@ public final class STBVorbis {
         stb_vorbis_get_samples_float, stb_vorbis_get_samples_short_interleaved, stb_vorbis_get_samples_short;
 
     static {
-        initialize();
         create();
     }
 

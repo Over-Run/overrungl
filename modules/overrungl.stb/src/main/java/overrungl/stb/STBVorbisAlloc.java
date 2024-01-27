@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,13 +16,13 @@
 
 package overrungl.stb;
 
-import overrungl.Struct;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.StructLayout;
-import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -50,8 +50,8 @@ import static java.lang.foreign.ValueLayout.*;
  * <pre><code>
  * typedef struct
  * {
- *    char *{@link #allocBuffer() alloc_buffer};
- *    int   {@link #allocBufferLength() alloc_buffer_length_in_bytes};
+ *    char *{@link #allocBuffer alloc_buffer};
+ *    int   {@link #allocBufferLengthInBytes alloc_buffer_length_in_bytes};
  * } stb_vorbis_alloc;
  * </code></pre>
  *
@@ -63,47 +63,53 @@ public final class STBVorbisAlloc extends Struct {
      * The struct layout.
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE)).withName("alloc_buffer"),
+        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(0L, JAVA_BYTE)).withName("alloc_buffer"),
         JAVA_INT.withName("alloc_buffer_length_in_bytes")
     );
-    private static final VarHandle
-        ppAllocBuffer = LAYOUT.varHandle(PathElement.groupElement("alloc_buffer")),
-        pAllocBufferLengthInBytes = LAYOUT.varHandle(PathElement.groupElement("alloc_buffer_length_in_bytes"));
+    /**
+     * alloc_buffer
+     */
+    public final StructHandle.Address allocBuffer = StructHandle.ofAddress(this, "alloc_buffer");
+    /**
+     * alloc_buffer_length_in_bytes
+     */
+    public final StructHandle.Int allocBufferLengthInBytes = StructHandle.ofInt(this, "alloc_buffer_length_in_bytes");
 
     /**
-     * Creates a {@code STBVorbisAlloc} instance.
+     * Creates a struct with the given layout.
      *
-     * @param address the address.
+     * @param segment      the segment
+     * @param elementCount the element count
      */
-    public STBVorbisAlloc(MemorySegment address) {
-        super(address, LAYOUT);
+    public STBVorbisAlloc(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
     /**
-     * Creates a {@code STBVorbisAlloc} instance with the given allocator.
+     * Allocates a struct with the given layout.
      *
-     * @param allocator the allocator.
-     * @return the allocator.
+     * @param allocator    the allocator
+     * @param elementCount the element count
      */
-    public static STBVorbisAlloc create(SegmentAllocator allocator) {
-        return new STBVorbisAlloc(allocator.allocate(LAYOUT));
+    public STBVorbisAlloc(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
-    public STBVorbisAlloc allocBuffer(MemorySegment allocBuffer) {
-        ppAllocBuffer.set(segment(), allocBuffer);
-        return this;
+    /**
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
+     */
+    public STBVorbisAlloc(MemorySegment segment) {
+        super(segment, LAYOUT);
     }
 
-    public STBVorbisAlloc allocBufferLength(int allocBufferLength) {
-        pAllocBufferLengthInBytes.set(segment(), allocBufferLength);
-        return this;
-    }
-
-    public MemorySegment allocBuffer() {
-        return (MemorySegment) ppAllocBuffer.get(segment());
-    }
-
-    public int allocBufferLength() {
-        return (int) pAllocBufferLengthInBytes.get(segment());
+    /**
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator the allocator
+     */
+    public STBVorbisAlloc(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 }
