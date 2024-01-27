@@ -16,120 +16,132 @@
 
 package overrungl.stb;
 
+import overrun.marshal.ByValue;
+import overrun.marshal.gen.Entrypoint;
 import overrungl.NativeType;
 
-import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.stb.Handles.downcall;
 
 /**
+ * normally stb_vorbis uses malloc() to allocate memory at startup,
+ * and alloca() to allocate temporary memory during a frame on the
+ * stack.
+ * (Memory consumption will depend on the amount of setup
+ * data in the file and how you set the compile flags for speed
+ * vs. size. In my test files the maximal-size usage is ~150KB.)
+ * <p>
+ * You can modify the wrapper functions in the source (setup_malloc,
+ * setup_temp_malloc, temp_malloc) to change this behavior, or you
+ * can use a simpler allocation model: you pass in a buffer from
+ * which stb_vorbis will allocate _all_ its memory (including the
+ * temp memory).
+ * "open" may fail with a VORBIS_outofmem if you
+ * do not pass in enough data; there is no way to determine how
+ * much you do need except to succeed (at which point you can
+ * query get_info to find the exact amount required. yes I know
+ * this is lame).
+ * <p>
+ * If you pass in a non-NULL buffer of the type below, allocation
+ * will occur from it as described above.
+ * Otherwise just pass NULL
+ * to use malloc()/alloca()
+ *
  * @author squid233
  * @since 0.1.0
  */
-public final class STBVorbis {
-    private static MethodHandle
-        stb_vorbis_get_info, stb_vorbis_get_comment, stb_vorbis_get_error, stb_vorbis_close, stb_vorbis_get_sample_offset, stb_vorbis_get_file_offset,
-        stb_vorbis_open_pushdata, stb_vorbis_decode_frame_pushdata, stb_vorbis_flush_pushdata, stb_vorbis_decode_filename, stb_vorbis_decode_memory, stb_vorbis_open_memory,
-        stb_vorbis_open_filename, stb_vorbis_open_file, stb_vorbis_open_file_section, stb_vorbis_seek_frame, stb_vorbis_seek, stb_vorbis_seek_start,
-        stb_vorbis_stream_length_in_samples, stb_vorbis_stream_length_in_seconds, stb_vorbis_get_frame_float, stb_vorbis_get_frame_short_interleaved, stb_vorbis_get_frame_short, stb_vorbis_get_samples_float_interleaved,
-        stb_vorbis_get_samples_float, stb_vorbis_get_samples_short_interleaved, stb_vorbis_get_samples_short;
+public interface STBVorbis {
+    /**
+     * get general information about the file
+     *
+     * @param allocator allocator
+     * @param f         f
+     * @return general information about the file
+     */
+    @ByValue
+    @Entrypoint("stb_vorbis_get_info")
+    STBVorbisInfo getInfo(SegmentAllocator allocator, @NativeType("stb_vorbis *") MemorySegment f);
 
-    static {
-        create();
-    }
+    /**
+     * get ogg comments
+     *
+     * @param allocator allocator
+     * @param f         f
+     * @return ogg comments
+     */
+    @ByValue
+    @Entrypoint("stb_vorbis_get_comment")
+    STBVorbisComment getComment(SegmentAllocator allocator, @NativeType("stb_vorbis *") MemorySegment f);
 
-    private static void create() {
-        stb_vorbis_get_info = downcall("stb_vorbis_get_info", FunctionDescriptor.of(STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS));
-        stb_vorbis_get_comment = downcall("stb_vorbis_get_comment", FunctionDescriptor.of(STBVorbisComment.LAYOUT, ValueLayout.ADDRESS));
-        stb_vorbis_get_error = downcall("stb_vorbis_get_error", fd_PI);
-        stb_vorbis_close = downcall("stb_vorbis_close", PV);
-        stb_vorbis_get_sample_offset = downcall("stb_vorbis_get_sample_offset", fd_PI);
-        stb_vorbis_get_file_offset = downcall("stb_vorbis_get_file_offset", fd_PI);
-        stb_vorbis_open_pushdata = downcall("stb_vorbis_open_pushdata", PIPPPP);
-        stb_vorbis_decode_frame_pushdata = downcall("stb_vorbis_decode_frame_pushdata", PPIPPPI);
-        stb_vorbis_flush_pushdata = downcall("stb_vorbis_flush_pushdata", PV);
-        stb_vorbis_decode_filename = downcall("stb_vorbis_decode_filename", PPPPI);
-        stb_vorbis_decode_memory = downcall("stb_vorbis_decode_memory", PIPPPI);
-        stb_vorbis_open_memory = downcall("stb_vorbis_open_memory", PIPPP);
-        stb_vorbis_open_filename = downcall("stb_vorbis_open_filename", PPPP);
-        stb_vorbis_open_file = downcall("stb_vorbis_open_file", PIPPP);
-        stb_vorbis_open_file_section = downcall("stb_vorbis_open_file_section", PIPPIP);
-        stb_vorbis_seek_frame = downcall("stb_vorbis_seek_frame", PII);
-        stb_vorbis_seek = downcall("stb_vorbis_seek", PII);
-        stb_vorbis_seek_start = downcall("stb_vorbis_seek_start", fd_PI);
-        stb_vorbis_stream_length_in_samples = downcall("stb_vorbis_stream_length_in_samples", fd_PI);
-        stb_vorbis_stream_length_in_seconds = downcall("stb_vorbis_stream_length_in_seconds", PF);
-        stb_vorbis_get_frame_float = downcall("stb_vorbis_get_frame_float", PPPI);
-        stb_vorbis_get_frame_short_interleaved = downcall("stb_vorbis_get_frame_short_interleaved", PIPII);
-        stb_vorbis_get_frame_short = downcall("stb_vorbis_get_frame_short", PIPII);
-        stb_vorbis_get_samples_float_interleaved = downcall("stb_vorbis_get_samples_float_interleaved", PIPII);
-        stb_vorbis_get_samples_float = downcall("stb_vorbis_get_samples_float", PIPII);
-        stb_vorbis_get_samples_short_interleaved = downcall("stb_vorbis_get_samples_short_interleaved", PIPII);
-        stb_vorbis_get_samples_short = downcall("stb_vorbis_get_samples_short", PIPII);
-    }
+    /**
+     * get the last error detected (clears it, too)
+     *
+     * @param f f
+     * @return the last error detected
+     */
+    @Entrypoint("stb_vorbis_get_error")
+    int getError(@NativeType("stb_vorbis *") MemorySegment f);
 
-    private STBVorbis() {
-        //no instance
-    }
+    /**
+     * close an ogg vorbis file and free all memory in use
+     *
+     * @param f f
+     */
+    @Entrypoint("stb_vorbis_close")
+    void close(@NativeType("stb_vorbis *") MemorySegment f);
 
-    public static @NativeType("stb_vorbis_info") MemorySegment ngetInfo(SegmentAllocator allocator, @NativeType("stb_vorbis*") MemorySegment f) {
-        try {
-            return (MemorySegment) stb_vorbis_get_info.invokeExact(allocator, f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    /**
+     * this function returns the offset (in samples) from the beginning of the
+     * file that will be returned by the next decode, if it is known, or -1
+     * otherwise.
+     * after a flush_pushdata() call, this may take a while before
+     * it becomes valid again.
+     * NOT WORKING YET after a seek with PULLDATA API
+     *
+     * @param f f
+     * @return the offset
+     */
+    @Entrypoint("stb_vorbis_get_sample_offset")
+    int getSampleOffset(@NativeType("stb_vorbis *") MemorySegment f);
 
-    public static STBVorbisInfo getInfo(SegmentAllocator allocator, @NativeType("stb_vorbis*") MemorySegment f) {
-        return new STBVorbisInfo(ngetInfo(allocator, f));
-    }
+    /**
+     * {@return the current seek point within the file, or offset from the beginning
+     * of the memory buffer}
+     * In pushdata mode it returns 0.
+     *
+     * @param f f
+     */
+    @Entrypoint("stb_vorbis_get_file_offset")
+    int getFileOffset(@NativeType("stb_vorbis *") MemorySegment f);
 
-    public static @NativeType("stb_vorbis_comment") MemorySegment ngetComment(SegmentAllocator allocator, @NativeType("stb_vorbis*") MemorySegment f) {
-        try {
-            return (MemorySegment) stb_vorbis_get_comment.invokeExact(allocator, f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    // this API allows you to get blocks of data from any source and hand
+    // them to stb_vorbis. you have to buffer them; stb_vorbis will tell
+    // you how much it used, and you have to give it the rest next time;
+    // and stb_vorbis may not have enough data to work with and you will
+    // need to give it the same data again PLUS more. Note that the Vorbis
+    // specification does not bound the size of an individual frame.
 
-    public static STBVorbisComment getComment(SegmentAllocator allocator, @NativeType("stb_vorbis*") MemorySegment f) {
-        return new STBVorbisComment(ngetComment(allocator, f));
-    }
-
-    public static int getError(@NativeType("stb_vorbis*") MemorySegment f) {
-        try {
-            return (int) stb_vorbis_get_error.invokeExact(f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void close(@NativeType("stb_vorbis*") MemorySegment f) {
-        try {
-            stb_vorbis_close.invokeExact(f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static int getSampleOffset(@NativeType("stb_vorbis*") MemorySegment f) {
-        try {
-            return (int) stb_vorbis_get_sample_offset.invokeExact(f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static int getFileOffset(@NativeType("stb_vorbis*") MemorySegment f) {
-        try {
-            return (int) stb_vorbis_get_file_offset.invokeExact(f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    /**
+     * create a vorbis decoder by passing in the initial data block containing
+     * the ogg&vorbis headers (you don't need to do parse them, just provide
+     * the first N bytes of the file--you're told if it's not enough, see below)
+     *
+     * @param datablock                          datablock
+     * @param datablock_length_in_bytes          datablock_length_in_bytes
+     * @param datablock_memory_consumed_in_bytes datablock_memory_consumed_in_bytes
+     * @param error                              error
+     * @param alloc_buffer                       alloc_buffer
+     * @return on success, returns an stb_vorbis *, does not set error, returns the amount of
+     * data parsed/consumed on this call in *datablock_memory_consumed_in_bytes;
+     * on failure, returns NULL on error and sets *error, does not change *datablock_memory_consumed
+     * if returns NULL and *error is VORBIS_need_more_data, then the input block was
+     * incomplete and you need to pass in a larger block from the start of the file
+     */
+    @Entrypoint("stb_vorbis_open_pushdata")
+    @NativeType("stb_vorbis *")
+    MemorySegment openPushdata(
+        @NativeType("const unsigned char *") MemorySegment datablock, int datablock_length_in_bytes,
+        @NativeType("int *") MemorySegment datablock_memory_consumed_in_bytes,
+        @NativeType("int *") MemorySegment error,
+        STBVorbisAlloc alloc_buffer);
 }
