@@ -133,7 +133,7 @@ import java.lang.foreign.MemorySegment;
  * That's because getting it out of the .ttf file is really hard, because
  * the names in the file can appear in many possible encodings, in many
  * possible languages, and e.g. if you need a case-insensitive comparison,
- * the details of that depend on the encoding & language in a complex way
+ * the details of that depend on the encoding &amp; language in a complex way
  * (actually underspecified in truetype, but also gigantic).
  * <p>
  * But you can use the provided functions in two possible ways:
@@ -418,7 +418,7 @@ public interface STBTrueType {
      * Characters will extend both above and below the current position;
      * see discussion of "BASELINE" above.
      * <p>
-     * It's inefficient; you might want to c&p it and optimize it.
+     * It's inefficient; you might want to c&amp;p it and optimize it.
      *
      * @param chardata        same data as {@link #bakeFontBitmap(MemorySegment, int, float, MemorySegment, int, int, int, int, STBTTBakedChar) above}
      * @param pw              same data as above
@@ -879,7 +879,7 @@ public interface STBTrueType {
      * Retrieves a complete list of all of the kerning pairs provided by the font
      * stbtt_GetKerningTable never writes more than table_length entries and returns how many entries it did write.
      * <p>
-     * The table will be sorted by (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)
+     * The table will be sorted by {@code (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)}
      *
      * @param info info
      * @return how many entries it did write
@@ -891,7 +891,7 @@ public interface STBTrueType {
      * Retrieves a complete list of all of the kerning pairs provided by the font
      * stbtt_GetKerningTable never writes more than table_length entries and returns how many entries it did write.
      * <p>
-     * The table will be sorted by (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)
+     * The table will be sorted by {@code (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)}
      *
      * @param info         info
      * @param table        table
@@ -1013,7 +1013,7 @@ public interface STBTrueType {
      * allocates a large-enough single-channel 8bpp bitmap and renders the
      * specified character/glyph at the specified scale into it, with
      * antialiasing. 0 is no coverage (transparent), 255 is fully covered (opaque).
-     * *width & *height are filled out with the width & height of the bitmap,
+     * *width &amp; *height are filled out with the width &amp; height of the bitmap,
      * which is stored left-to-right, top-to-bottom.
      *
      * @param info      info
@@ -1319,7 +1319,7 @@ public interface STBTrueType {
      * in a single-channel texture, sampling with bilinear filtering, and testing against
      * larger than some threshold to produce scalable fonts.
      * <p>
-     * pixel_dist_scale & onedge_value are a scale & bias that allows you to make
+     * pixel_dist_scale &amp; onedge_value are a scale &amp; bias that allows you to make
      * optimal use of the limited 0..255 for your application, trading off precision
      * and special effects. SDF values outside the range 0..255 are clamped to 0..255.
      * <h4>Example</h4>
@@ -1333,7 +1333,7 @@ public interface STBTrueType {
      * shape, sample the SDF at each pixel and fill the pixel if the SDF value
      * is greater than or equal to 180/255. (You'll actually want to antialias,
      * which is beyond the scope of this example.) Additionally, you can compute
-     * offset outlines (e.g. to stroke the character border inside & outside,
+     * offset outlines (e.g. to stroke the character border inside &amp; outside,
      * or only outside). For example, to fill outside the character up to 3 SDF
      * pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
      * choice of variables maps a range from 5 pixels outside the shape to
@@ -1343,7 +1343,7 @@ public interface STBTrueType {
      * <p>
      * The function computes the SDF analytically at each SDF pixel, not by e.g.
      * building a higher-res bitmap and approximating it. In theory the quality
-     * should be as high as possible for an SDF of this size & representation, but
+     * should be as high as possible for an SDF of this size &amp; representation, but
      * unclear if this is true in practice (perhaps building a higher-res bitmap
      * and computing from that can allow drop-out prevention).
      * <p>
@@ -1357,7 +1357,7 @@ public interface STBTrueType {
      *                         which allows effects like bit outlines
      * @param onedge_value     value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
      * @param pixel_dist_scale what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
-     *                         if positive, > onedge_value is inside; if negative, < onedge_value is inside
+     *                         if positive, {@code > onedge_value} is inside; if negative, {@code < onedge_value} is inside
      * @param width            output width of the SDF bitmap (including padding)
      * @param height           output height of the SDF bitmap (including padding)
      * @param xoff             output origin of the character
@@ -1373,7 +1373,7 @@ public interface STBTrueType {
      * in a single-channel texture, sampling with bilinear filtering, and testing against
      * larger than some threshold to produce scalable fonts.
      * <p>
-     * pixel_dist_scale & onedge_value are a scale & bias that allows you to make
+     * pixel_dist_scale &amp; onedge_value are a scale &amp; bias that allows you to make
      * optimal use of the limited 0..255 for your application, trading off precision
      * and special effects. SDF values outside the range 0..255 are clamped to 0..255.
      * <h4>Example</h4>
@@ -1387,7 +1387,7 @@ public interface STBTrueType {
      * shape, sample the SDF at each pixel and fill the pixel if the SDF value
      * is greater than or equal to 180/255. (You'll actually want to antialias,
      * which is beyond the scope of this example.) Additionally, you can compute
-     * offset outlines (e.g. to stroke the character border inside & outside,
+     * offset outlines (e.g. to stroke the character border inside &amp; outside,
      * or only outside). For example, to fill outside the character up to 3 SDF
      * pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
      * choice of variables maps a range from 5 pixels outside the shape to
@@ -1397,7 +1397,7 @@ public interface STBTrueType {
      * <p>
      * The function computes the SDF analytically at each SDF pixel, not by e.g.
      * building a higher-res bitmap and approximating it. In theory the quality
-     * should be as high as possible for an SDF of this size & representation, but
+     * should be as high as possible for an SDF of this size &amp; representation, but
      * unclear if this is true in practice (perhaps building a higher-res bitmap
      * and computing from that can allow drop-out prevention).
      * <p>
@@ -1411,7 +1411,7 @@ public interface STBTrueType {
      *                         which allows effects like bit outlines
      * @param onedge_value     value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
      * @param pixel_dist_scale what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
-     *                         if positive, > onedge_value is inside; if negative, < onedge_value is inside
+     *                         if positive, {@code > onedge_value} is inside; if negative, {@code < onedge_value} is inside
      * @param width            output width of the SDF bitmap (including padding)
      * @param height           output height of the SDF bitmap (including padding)
      * @param xoff             output origin of the character

@@ -188,7 +188,7 @@ public interface STBVorbis {
 
     /**
      * create a vorbis decoder by passing in the initial data block containing
-     * the ogg&vorbis headers (you don't need to do parse them, just provide
+     * the ogg&amp;vorbis headers (you don't need to do parse them, just provide
      * the first N bytes of the file--you're told if it's not enough, see below)
      *
      * @param datablock                          datablock
