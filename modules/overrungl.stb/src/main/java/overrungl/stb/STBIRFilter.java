@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,13 +16,15 @@
 
 package overrungl.stb;
 
+import overrun.marshal.CEnum;
+
 /**
  * The STB image resizer filter
  *
  * @author squid233
  * @since 0.1.0
  */
-public enum STBIRFilter {
+public enum STBIRFilter implements CEnum {
     /**
      * use same filter type that easy-to-use API chooses
      */
@@ -46,7 +48,15 @@ public enum STBIRFilter {
     /**
      * Mitchell-Netrevalli filter with B=1/3, C=1/3
      */
-    MITCHELL(5);
+    MITCHELL(5),
+    /**
+     * Simple point sampling
+     */
+    POINT_SAMPLE(6),
+    /**
+     * User callback specified
+     */
+    OTHER(7);
 
     private final int value;
 
@@ -54,10 +64,8 @@ public enum STBIRFilter {
         this.value = value;
     }
 
-    /**
-     * {@return the enum value}
-     */
-    public int getValue() {
+    @Override
+    public int value() {
         return value;
     }
 }

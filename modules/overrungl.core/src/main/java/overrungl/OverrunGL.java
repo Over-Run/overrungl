@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ public final class OverrunGL {
     /**
      * The version of STB native libraries.
      */
-    public static final String STB_VERSION = "0.1.0.0";
+    public static final String STB_VERSION = "0.1.0.1";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 

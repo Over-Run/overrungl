@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,17 +16,15 @@
 
 package overrungl.stb;
 
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
+import overrun.marshal.Downcall;
+import overrun.marshal.gen.Convert;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Skip;
+import overrun.marshal.gen.Type;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.invoke.MethodHandle;
-
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.stb.Handles.*;
 
 /**
  * The STB image writer.
@@ -34,261 +32,128 @@ import static overrungl.stb.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBImageWrite {
-    private static final MethodHandle
-        stbi_flip_vertically_on_write = downcall("stbi_flip_vertically_on_write", IV),
-        stbi_get_write_force_png_filter = downcall("stbi_get_write_force_png_filter", I),
-        stbi_get_write_png_compression_level = downcall("stbi_get_write_png_compression_level", I),
-        stbi_get_write_tga_with_rle = downcall("stbi_get_write_tga_with_rle", I),
-        stbi_set_write_force_png_filter = downcall("stbi_set_write_force_png_filter", IV),
-        stbi_set_write_png_compression_level = downcall("stbi_set_write_png_compression_level", IV),
-        stbi_set_write_tga_with_rle = downcall("stbi_set_write_tga_with_rle", IV),
-        stbi_write_bmp = downcall("stbi_write_bmp", PIIIPI),
-        stbi_write_bmp_to_func = downcall("stbi_write_bmp_to_func", PPIIIP),
-        stbi_write_hdr = downcall("stbi_write_hdr", PIIIPI),
-        stbi_write_hdr_to_func = downcall("stbi_write_hdr_to_func", PPIIIP),
-        stbi_write_jpg = downcall("stbi_write_jpg", PIIIPII),
-        stbi_write_jpg_to_func = downcall("stbi_write_jpg_to_func", PPIIIPI),
-        stbi_write_png = downcall("stbi_write_png", PIIIPII),
-        stbi_write_png_to_func = downcall("stbi_write_png_to_func", PPIIIPI),
-        stbi_write_png_to_mem = downcall("stbi_write_png_to_mem", PIIIIPp),
-        stbi_write_tga = downcall("stbi_write_tga", PIIIP),
-        stbi_write_tga_to_func = downcall("stbi_write_tga_to_func", PPIIIP),
-        stbi_zlib_compress = downcall("stbi_zlib_compress", PIPIp);
+public interface STBImageWrite {
+    /**
+     * The instance of STBImageWrite.
+     */
+    STBImageWrite INSTANCE = Downcall.load(Handles.lookup);
 
-    private STBImageWrite() {
-        throw new IllegalStateException("Do not construct instance");
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_get_write_tga_with_rle")
+    boolean getWriteTgaWithRle();
 
-    public static boolean getWriteTgaWithRle() {
-        try {
-            return (int) stbi_get_write_tga_with_rle.invokeExact() != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_get_write_png_compression_level")
+    int getWritePngCompressionLevel();
 
-    public static int getWritePngCompressionLevel() {
-        try {
-            return (int) stbi_get_write_png_compression_level.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_get_write_force_png_filter")
+    int getWriteForcePngFilter();
 
-    public static int getWriteForcePngFilter() {
-        try {
-            return (int) stbi_get_write_force_png_filter.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_set_write_tga_with_rle")
+    void setWriteTgaWithRle(@Convert(Type.INT) boolean rle);
 
-    public static void setWriteTgaWithRle(boolean rle) {
-        try {
-            stbi_set_write_tga_with_rle.invokeExact(rle ? 1 : 0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_set_write_png_compression_level")
+    void setWritePngCompressionLevel(int level);
 
-    public static void setWritePngCompressionLevel(int level) {
-        try {
-            stbi_set_write_png_compression_level.invokeExact(level);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_set_write_force_png_filter")
+    void setWriteForcePngFilter(int filter);
 
-    public static void setWriteForcePngFilter(int filter) {
-        try {
-            stbi_set_write_force_png_filter.invokeExact(filter);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_png")
+    boolean npng(MemorySegment filename, int w, int h, int comp, MemorySegment data, int strideInBytes);
 
-    public static boolean npng(MemorySegment filename, int w, int h, int comp, MemorySegment data, int strideInBytes) {
-        try {
-            return (int) stbi_write_png.invokeExact(filename, w, h, comp, data, strideInBytes) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_bmp")
+    boolean nbmp(MemorySegment filename, int w, int h, int comp, MemorySegment data);
 
-    public static boolean nbmp(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) stbi_write_bmp.invokeExact(filename, w, h, comp, data) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_tga")
+    boolean ntga(MemorySegment filename, int w, int h, int comp, MemorySegment data);
 
-    public static boolean ntga(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) stbi_write_tga.invokeExact(filename, w, h, comp, data) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_hdr")
+    boolean nhdr(MemorySegment filename, int w, int h, int comp, MemorySegment data);
 
-    public static boolean nhdr(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) stbi_write_hdr.invokeExact(filename, w, h, comp, data) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_jpg")
+    boolean njpg(MemorySegment filename, int x, int y, int comp, MemorySegment data, int quality);
 
-    public static boolean njpg(MemorySegment filename, int x, int y, int comp, MemorySegment data, int quality) {
-        try {
-            return (int) stbi_write_jpg.invokeExact(filename, x, y, comp, data, quality) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_png")
+    boolean png(String filename, int w, int h, int comp, MemorySegment data, int strideInBytes);
 
-    public static boolean png(String filename, int w, int h, int comp, MemorySegment data, int strideInBytes) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return npng(stack.allocateFrom(filename), w, h, comp, data, strideInBytes);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_bmp")
+    boolean bmp(String filename, int w, int h, int comp, MemorySegment data);
 
-    public static boolean bmp(String filename, int w, int h, int comp, MemorySegment data) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nbmp(stack.allocateFrom(filename), w, h, comp, data);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_tga")
+    boolean tga(String filename, int w, int h, int comp, MemorySegment data);
 
-    public static boolean tga(String filename, int w, int h, int comp, MemorySegment data) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return ntga(stack.allocateFrom(filename), w, h, comp, data);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_hdr")
+    boolean hdr(SegmentAllocator allocator, String filename, int w, int h, int comp, float[] data);
 
-    public static boolean hdr(SegmentAllocator allocator, String filename, int w, int h, int comp, float[] data) {
-        return nhdr(allocator.allocateFrom(filename), w, h, comp, allocator.allocateFrom(JAVA_FLOAT, data));
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_jpg")
+    boolean jpg(String filename, int x, int y, int comp, MemorySegment data, int quality);
 
-    public static boolean jpg(String filename, int x, int y, int comp, MemorySegment data, int quality) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return njpg(stack.allocateFrom(filename), x, y, comp, data, quality);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_png_to_func")
+    boolean npngToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes);
 
-    public static boolean npngToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {
-        try {
-            return (int) stbi_write_png_to_func.invokeExact(func, context, w, h, comp, data, strideInBytes) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_bmp_to_func")
+    boolean nbmpToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data);
 
-    public static boolean nbmpToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) stbi_write_bmp_to_func.invokeExact(func, context, w, h, comp, data) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_tga_to_func")
+    boolean ntgaToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data);
 
-    public static boolean ntgaToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) stbi_write_tga_to_func.invokeExact(func, context, w, h, comp, data) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_hdr_to_func")
+    boolean nhdrToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data);
 
-    public static boolean nhdrToFunc(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try {
-            return (int) stbi_write_hdr_to_func.invokeExact(func, context, w, h, comp, data) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_jpg_to_func")
+    boolean njpgToFunc(MemorySegment func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality);
 
-    public static boolean njpgToFunc(MemorySegment func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
-        try {
-            return (int) stbi_write_jpg_to_func.invokeExact(func, context, x, y, comp, data, quality) != 0;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_png_to_func")
+    boolean pngToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes);
 
-    public static boolean pngToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data, int strideInBytes) {
-        return npngToFunc(func.address(arena), context, w, h, comp, data, strideInBytes);
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_bmp_to_func")
+    boolean bmpToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data);
 
-    public static boolean bmpToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        return nbmpToFunc(func.address(arena), context, w, h, comp, data);
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_tga_to_func")
+    boolean tgaToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data);
 
-    public static boolean tgaToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        return ntgaToFunc(func.address(arena), context, w, h, comp, data);
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_hdr_to_func")
+    boolean hdrToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data);
 
-    public static boolean hdrToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int w, int h, int comp, float[] data) {
-        return nhdrToFunc(func.address(arena), context, w, h, comp, arena.allocateFrom(JAVA_FLOAT, data));
-    }
+    @Convert(Type.INT)
+    @Entrypoint("stbi_write_jpg_to_func")
+    boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality);
 
-    public static boolean jpgToFunc(Arena arena, STBIWriteFunc func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
-        return njpgToFunc(func.address(arena), context, x, y, comp, data, quality);
-    }
+    @Entrypoint("stbi_flip_vertically_on_write")
+    void flipVerticallyOnWrite(@Convert(Type.INT) boolean flip);
 
-    public static void flipVerticallyOnWrite(boolean flip) {
-        try {
-            stbi_flip_vertically_on_write.invokeExact(flip ? 1 : 0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_write_png_to_mem")
+    MemorySegment npngToMem(MemorySegment pixels, int strideInBytes, int x, int y, int n, MemorySegment outLen);
 
-    public static MemorySegment npngToMem(MemorySegment pixels, int strideInBytes, int x, int y, int n, MemorySegment outLen) {
-        try {
-            return (MemorySegment) stbi_write_png_to_mem.invokeExact(pixels, strideInBytes, x, y, n, outLen);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_write_png_to_mem")
+    byte[] pngToMem(SegmentAllocator allocator, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen);
 
-    public static byte[] pngToMem(SegmentAllocator allocator, byte[] pixels, int strideInBytes, int x, int y, int n, int[] outLen) {
-        var pl = allocator.allocate(JAVA_INT);
-        var p = npngToMem(allocator.allocateFrom(JAVA_BYTE, pixels), strideInBytes, x, y, n, pl);
-        final int len = pl.get(JAVA_INT, 0);
-        outLen[0] = len;
-        return RuntimeHelper.toArray(p, new byte[len]);
-    }
+    @Entrypoint("stbi_zlib_compress")
+    MemorySegment nzlibCompress(MemorySegment data, int dataLen, MemorySegment outLen, int quality);
 
-    public static MemorySegment nzlibCompress(MemorySegment data, int dataLen, MemorySegment outLen, int quality) {
-        try {
-            return (MemorySegment) stbi_zlib_compress.invokeExact(data, dataLen, outLen, quality);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("stbi_zlib_compress")
+    byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int dataLen, int[] outLen, int quality);
 
-    public static byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int[] outLen, int quality) {
-        var pl = allocator.allocate(JAVA_INT);
-        var p = nzlibCompress(allocator.allocateFrom(JAVA_BYTE, data), data.length, pl, quality);
-        final int len = pl.get(JAVA_INT, 0);
-        outLen[0] = len;
-        return RuntimeHelper.toArray(p, new byte[len]);
+    @Skip
+    default byte[] zlibCompress(SegmentAllocator allocator, byte[] data, int[] outLen, int quality) {
+        return zlibCompress(allocator, data, data.length, outLen, quality);
     }
 }

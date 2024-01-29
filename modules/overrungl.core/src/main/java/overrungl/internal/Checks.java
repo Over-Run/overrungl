@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2023 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,35 +14,19 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.stb;
-
-import overrun.marshal.CEnum;
+package overrungl.internal;
 
 /**
- * The STB image resizer datatype
- *
  * @author squid233
  * @since 0.1.0
  */
-public enum STBIRDatatype implements CEnum {
-    UINT8(0),
-    UINT8_SRGB(1),
-    /**
-     * alpha channel, when present, should also be SRGB (this is very unusual)
-     */
-    UINT8_SRGB_ALPHA(2),
-    UINT16(3),
-    FLOAT(4),
-    HALF_FLOAT(5);
-
-    private final int value;
-
-    STBIRDatatype(int value) {
-        this.value = value;
-    }
-
-    @Override
-    public int value() {
-        return value;
+public final class Checks {
+    public static void arraySize(byte[] arr, int size) {
+        if (arr == null) {
+            throw new IllegalArgumentException("Expected size " + size + ", got null");
+        }
+        if (arr.length != size) {
+            throw new IllegalArgumentException("Expected size " + size + ", got " + arr.length);
+        }
     }
 }

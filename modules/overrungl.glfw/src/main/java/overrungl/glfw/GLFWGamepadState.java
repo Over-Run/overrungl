@@ -24,7 +24,6 @@ import java.lang.invoke.VarHandle;
 
 /**
  * This describes the input state of a gamepad.
- *
  * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWgamepadstate {

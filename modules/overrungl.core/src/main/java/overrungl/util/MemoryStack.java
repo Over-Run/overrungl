@@ -19,6 +19,7 @@ package overrungl.util;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.Pointer;
+import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.util.Arrays;
@@ -39,7 +40,6 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public sealed class MemoryStack extends Pointer implements Arena {
-    private static final boolean CHECKS = Configurations.CHECKS.get();
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();
     private static final long DEFAULT_STACK_SIZE = Configurations.STACK_SIZE.get() * 1024;
@@ -289,7 +289,7 @@ public sealed class MemoryStack extends Pointer implements Arena {
      * cases or in auto-generated code.</p>
      */
     public void setPointer(long pointer) {
-        if (CHECKS) {
+        if (RuntimeHelper.CHECKS) {
             checkPointer(pointer);
         }
 
@@ -320,7 +320,7 @@ public sealed class MemoryStack extends Pointer implements Arena {
         long address = (rawLong + pointer - size) & -alignment;
 
         pointer = address - rawLong;
-        if (CHECKS && pointer < 0) {
+        if (RuntimeHelper.CHECKS && pointer < 0) {
             throw new OutOfMemoryError("Out of stack space.");
         }
 

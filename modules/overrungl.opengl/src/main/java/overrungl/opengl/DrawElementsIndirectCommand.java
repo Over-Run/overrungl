@@ -25,7 +25,6 @@ import java.lang.invoke.VarHandle;
 
 /**
  * The OpenGL 4.2 draw elements indirect command.
- *
  * <h2>Layout</h2>
  * <pre><code>
  * struct DrawElementsIndirectCommand {

@@ -1,6 +1,5 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.utils.addToStdlib.ifTrue
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -29,6 +28,8 @@ val jdkEarlyAccessDoc: String? by rootProject
 val kotlinTargetJdkVersion: String by rootProject
 
 val targetJavaVersion = jdkVersion.toInt()
+
+val overrunMarshalVersion: String by rootProject
 
 group = projGroupId
 version = projVersion
@@ -125,10 +126,10 @@ enum class Artifact(
 }
 
 subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "java-library")
     apply(plugin = "idea")
     apply(plugin = "me.champeau.jmh")
-    apply(plugin = "org.jetbrains.kotlin.jvm")
 
     group = projGroupId
     version = projVersion
@@ -136,16 +137,19 @@ subprojects {
 
     repositories {
         mavenCentral()
-        maven { url = uri("https://maven.aliyun.com/repository/central") }
         // temporary maven repositories
-        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/releases") }
         maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
+        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/releases") }
+        maven { url = uri("https://maven.aliyun.com/repository/central") }
     }
 
+    val annotationProcessor by configurations
+    val api by configurations
     val compileOnly by configurations
     val implementation by configurations
     dependencies {
         compileOnly("org.jetbrains:annotations:24.1.0")
+        api("io.github.over-run:marshal:$overrunMarshalVersion")
         if (project.name != "core") {
             implementation(project(":core"))
         }

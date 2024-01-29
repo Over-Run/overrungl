@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,17 +16,22 @@
 
 package overrungl.stb;
 
+import overrun.marshal.CEnum;
+
 /**
  * The STB image resizer edge
  *
  * @author squid233
  * @since 0.1.0
  */
-public enum STBIREdge {
-    CLAMP(1),
-    REFLECT(2),
-    WRAP(3),
-    ZERO(4);
+public enum STBIREdge implements CEnum {
+    CLAMP(0),
+    REFLECT(1),
+    /**
+     * this edge mode is slower and uses more memory
+     */
+    WRAP(2),
+    ZERO(3);
 
     private final int value;
 
@@ -34,10 +39,8 @@ public enum STBIREdge {
         this.value = value;
     }
 
-    /**
-     * {@return the enum value}
-     */
-    public int getValue() {
+    @Override
+    public int value() {
         return value;
     }
 }

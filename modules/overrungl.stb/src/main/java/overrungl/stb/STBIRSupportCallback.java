@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,33 +16,31 @@
 
 package overrungl.stb;
 
-import overrun.marshal.CEnum;
+import overrun.marshal.Upcall;
+import overrungl.NativeType;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 /**
- * The STB image resizer datatype
+ * callbacks for user installed filters
  *
  * @author squid233
  * @since 0.1.0
  */
-public enum STBIRDatatype implements CEnum {
-    UINT8(0),
-    UINT8_SRGB(1),
+@FunctionalInterface
+public interface STBIRSupportCallback extends Upcall {
     /**
-     * alpha channel, when present, should also be SRGB (this is very unusual)
+     * the type
      */
-    UINT8_SRGB_ALPHA(2),
-    UINT16(3),
-    FLOAT(4),
-    HALF_FLOAT(5);
+    Type<STBIRSupportCallback> TYPE = Upcall.type();
 
-    private final int value;
-
-    STBIRDatatype(int value) {
-        this.value = value;
-    }
+    // centered at zero
+    @Stub
+    float invoke(float scale, @NativeType("void *") MemorySegment user_data);
 
     @Override
-    public int value() {
-        return value;
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

@@ -25,10 +25,9 @@ import overrungl.NativeType;
 import overrungl.OverrunGL;
 import overrungl.util.MemoryUtil;
 
-import java.io.File;
+import java.io.IOException;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
-import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
@@ -50,11 +49,15 @@ public final class RuntimeHelper {
      * The native linker.
      */
     public static final Linker LINKER = Linker.nativeLinker();
-    private static final File tmpdir = new File(System.getProperty("java.io.tmpdir"));
+    private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"));
     /**
      * An unbounded address layout.
      */
     public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Long.MAX_VALUE, JAVA_BYTE));
+    /**
+     * @see Configurations#CHECKS
+     */
+    public static final boolean CHECKS = Configurations.CHECKS.get();
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
     private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
     public static final MemoryLayout LONG = CANONICAL_LAYOUTS.get("long"),
@@ -139,41 +142,44 @@ public final class RuntimeHelper {
         final Platform os = Platform.current();
         final var suffix = os.sharedLibrarySuffix();
         final var path = os.sharedLibraryName(basename);
-        URI uri;
+        Path uri;
         // 1. Load from natives directory
-        var localFile = new File(System.getProperty("overrungl.natives", "."), path);
-        if (localFile.exists()) {
-            uri = localFile.toURI();
+        var localFile = Path.of(System.getProperty("overrungl.natives", "."), path);
+        if (Files.exists(localFile)) {
+            uri = localFile;
         } else {
             // 2. Load from classpath
-            var file = new File(tmpdir, STR."overrungl\{System.getProperty("user.name")}");
-            if (!file.exists()) {
-                // Create directory
-                file.mkdir();
-            } else if (file.isFile()) {
-                // Remove
-                file.delete();
-                // Create directory
-                file.mkdir();
+            var file = tmpdir.resolve(STR."overrungl\{System.getProperty("user.name")}");
+            try {
+                if (!Files.exists(file)) {
+                    // Create directory
+                    Files.createDirectories(file);
+                } else if (!Files.isDirectory(file)) {
+                    // Remove
+                    Files.delete(file);
+                    // Create directory
+                    Files.createDirectories(file);
+                }
+            } catch (IOException e) {
+                throw new IllegalStateException(STR."Couldn't create directory: \{file}; try setting -Doverrungl.natives to a valid path", e);
             }
-            var libFile = new File(file, STR."\{basename}-\{version}\{suffix}");
-            if (!libFile.exists()) {
+            var libFile = file.resolve(STR."\{basename}-\{version}\{suffix}");
+            if (!Files.exists(libFile)) {
                 // Extract
                 final String fromPath = STR."\{module}/\{os.familyName()}/\{Architecture.current()}/\{path}";
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
-                    Files.copy(Objects.requireNonNull(is, STR."File not found: \{fromPath}"),
-                        Path.of(libFile.getAbsolutePath()));
+                    Files.copy(Objects.requireNonNull(is, STR."File not found in classpath: \{fromPath}"), libFile);
                 } catch (Exception e) {
-                    throw new IllegalStateException(STR."File not found: \{file}; try setting property -Doverrungl.natives to a valid path", e);
+                    throw new IllegalStateException(STR."Couldn't load file: \{libFile} or \{localFile}; try setting -Doverrungl.natives to a valid path", e);
                 }
             }
-            uri = libFile.toURI();
+            uri = libFile;
         }
         if (Configurations.DEBUG.get()) {
             OverrunGL.apiLog(STR."[OverrunGL] Loading native library from: \{uri}");
         }
         // Load the library by the path with the global arena
-        return SymbolLookup.libraryLookup(Path.of(uri), Arena.global());
+        return SymbolLookup.libraryLookup(uri, Arena.global());
     }
 
     /**

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,29 +17,37 @@
 package overrungl.stb;
 
 import overrun.marshal.Upcall;
+import overrungl.NativeType;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
 /**
- * The write-callback.
+ * OUTPUT CALLBACK: this callback is used for output scanlines
+ * <p>
+ * The output callback is considerably simpler - it just calls you so that you can dump
+ * out each scanline. You could even directly copy out to disk if you have a simple format
+ * like TGA or BMP. You can also convert to other output types here if you want.
+ * <p>
+ * Simple example:
+ * <pre>{@code void const * my_output( void * output_ptr, int num_pixels, int y, void * context )
+ * {
+ *    percentage_done = y / output_height;
+ *    fwrite( output_ptr, pixel_width_in_bytes, num_pixels, output_file );
+ * }}</pre>
  *
  * @author squid233
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface STBIWriteFunc extends Upcall {
+public interface STBIROutputCallback extends Upcall {
     /**
      * the type
      */
-    Type<STBIWriteFunc> TYPE = Upcall.type();
-
-    void invoke(MemorySegment context, MemorySegment data);
+    Type<STBIROutputCallback> TYPE = Upcall.type();
 
     @Stub
-    default void ninvoke(MemorySegment context, MemorySegment data, int size) {
-        invoke(context, data.reinterpret(size));
-    }
+    void invoke(@NativeType("void const *") MemorySegment output_ptr, int num_pixels, int y, @NativeType("void *") MemorySegment context);
 
     @Override
     default MemorySegment stub(Arena arena) {

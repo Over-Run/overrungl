@@ -29,7 +29,6 @@ import static java.lang.foreign.ValueLayout.*;
 /**
  * This describes a single 2D image. See the documentation for each related
  * function what the expected pixel format is.
- *
  * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWimage {

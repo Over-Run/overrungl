@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,14 +16,31 @@
 
 package overrungl.stb;
 
+import overrun.marshal.Upcall;
+import overrungl.NativeType;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+
 /**
- * The STB image resizer color-space
+ * callbacks for user installed filters
  *
  * @author squid233
  * @since 0.1.0
  */
-public enum STBIRColorspace {
-    LINEAR,
-    SRGB,
-    MAX_COLORSPACES
+@FunctionalInterface
+public interface STBIRKernelCallback extends Upcall {
+    /**
+     * the type
+     */
+    Type<STBIRKernelCallback> TYPE = Upcall.type();
+
+    // centered at zero
+    @Stub
+    float invoke(float x, float scale, @NativeType("void *") MemorySegment user_data);
+
+    @Override
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
+    }
 }
