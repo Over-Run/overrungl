@@ -54,37 +54,19 @@ public final class STBTTAlignedQuad extends Struct {
         JAVA_FLOAT.withName("t1")
     );
     /**
-     * x0
+     * top-left
      */
-    public final StructHandle.Float x0 = StructHandle.ofFloat(this, "x0");
+    public final StructHandle.Float x0 = StructHandle.ofFloat(this, "x0"),
+        y0 = StructHandle.ofFloat(this, "y0"),
+        s0 = StructHandle.ofFloat(this, "s0"),
+        t0 = StructHandle.ofFloat(this, "t0");
     /**
-     * y0
+     * bottom-right
      */
-    public final StructHandle.Float y0 = StructHandle.ofFloat(this, "y0");
-    /**
-     * s0
-     */
-    public final StructHandle.Float s0 = StructHandle.ofFloat(this, "s0");
-    /**
-     * t0
-     */
-    public final StructHandle.Float t0 = StructHandle.ofFloat(this, "t0");
-    /**
-     * x1
-     */
-    public final StructHandle.Float x1 = StructHandle.ofFloat(this, "x1");
-    /**
-     * y1
-     */
-    public final StructHandle.Float y1 = StructHandle.ofFloat(this, "y1");
-    /**
-     * s1
-     */
-    public final StructHandle.Float s1 = StructHandle.ofFloat(this, "s1");
-    /**
-     * t1
-     */
-    public final StructHandle.Float t1 = StructHandle.ofFloat(this, "t1");
+    public final StructHandle.Float x1 = StructHandle.ofFloat(this, "x1"),
+        y1 = StructHandle.ofFloat(this, "y1"),
+        s1 = StructHandle.ofFloat(this, "s1"),
+        t1 = StructHandle.ofFloat(this, "t1");
 
     /**
      * Creates a struct with the given layout.

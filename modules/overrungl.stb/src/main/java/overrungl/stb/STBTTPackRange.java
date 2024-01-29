@@ -66,11 +66,11 @@ public final class STBTTPackRange extends Struct {
      */
     public final StructHandle.Float fontSize = StructHandle.ofFloat(this, "font_size");
     /**
-     * first_unicode_codepoint_in_range
+     * if non-zero, then the chars are continuous, and this is the first codepoint
      */
     public final StructHandle.Int firstUnicodeCodepointInRange = StructHandle.ofInt(this, "first_unicode_codepoint_in_range");
     /**
-     * array_of_unicode_codepoints
+     * if non-zero, then this is an array of unicode codepoints
      */
     public final StructHandle.Array<int[]> arrayOfUnicodeCodepoints = StructHandle.ofArray(this, "array_of_unicode_codepoints", Marshal::marshal, Unmarshal::unmarshalAsIntArray);
     /**
@@ -78,18 +78,15 @@ public final class STBTTPackRange extends Struct {
      */
     public final StructHandle.Int numChars = StructHandle.ofInt(this, "num_chars");
     /**
-     * chardata_for_range
+     * output
      */
     public final StructHandle.Array<STBTTPackedChar[]> chardataForRange = StructHandle.ofArray(this, "chardata_for_range", Marshal::marshal,
         segment -> Unmarshal.unmarshal(ADDRESS, segment, STBTTPackedChar[]::new, s -> new STBTTPackedChar(s.get(ADDRESS.withTargetLayout(STBTTPackedChar.LAYOUT), 0L), 1L)));
     /**
-     * h_oversample
+     * don't set these, they're used internally
      */
-    public final StructHandleView.Byte hOversample = StructHandle.ofByte(this, "h_oversample");
-    /**
-     * v_oversample
-     */
-    public final StructHandleView.Byte vOversample = StructHandle.ofByte(this, "v_oversample");
+    public final StructHandleView.Byte hOversample = StructHandle.ofByte(this, "h_oversample"),
+        vOversample = StructHandle.ofByte(this, "v_oversample");
 
     /**
      * Creates a struct with the given layout.

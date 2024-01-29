@@ -56,21 +56,12 @@ public final class STBTTPackedChar extends Struct {
         JAVA_FLOAT.withName("yoff2")
     );
     /**
-     * x0
+     * coordinates of bbox in bitmap
      */
-    public final StructHandle.Short x0 = StructHandle.ofShort(this, "x0");
-    /**
-     * y0
-     */
-    public final StructHandle.Short y0 = StructHandle.ofShort(this, "y0");
-    /**
-     * x1
-     */
-    public final StructHandle.Short x1 = StructHandle.ofShort(this, "x1");
-    /**
-     * y1
-     */
-    public final StructHandle.Short y1 = StructHandle.ofShort(this, "y1");
+    public final StructHandle.Short x0 = StructHandle.ofShort(this, "x0"),
+        y0 = StructHandle.ofShort(this, "y0"),
+        x1 = StructHandle.ofShort(this, "x1"),
+        y1 = StructHandle.ofShort(this, "y1");
     /**
      * xoff
      */

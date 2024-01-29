@@ -45,7 +45,7 @@ public final class STBTTKerningEntry extends Struct {
         ValueLayout.JAVA_INT.withName("advance")
     );
     /**
-     * glyph1
+     * use stbtt_FindGlyphIndex
      */
     public final StructHandle.Int glyph1 = StructHandle.ofInt(this, "glyph1");
     /**

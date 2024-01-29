@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,29 +16,23 @@
 
 package overrungl.stb;
 
-import overrungl.Configurations;
-import overrungl.OverrunGL;
-import overrungl.internal.RuntimeHelper;
-
-import java.lang.foreign.SymbolLookup;
-import java.util.function.Supplier;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.StructLayout;
+import java.lang.foreign.ValueLayout;
 
 /**
- * The STB method handles.
+ * private structure
  *
  * @author squid233
  * @since 0.1.0
  */
-final class Handles {
-    static final SymbolLookup lookup;
-
-    static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
-        final var function = Configurations.STB_SYMBOL_LOOKUP.get();
-        lookup = function != null ? function.apply(lib) : lib.get();
-    }
-
-    private Handles() {
-        //no instance
-    }
+public final class STBTTBuf {
+    /**
+     * The layout.
+     */
+    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
+        ValueLayout.ADDRESS.withName("data"),
+        ValueLayout.JAVA_INT.withName("cursor"),
+        ValueLayout.JAVA_INT.withName("size")
+    );
 }
