@@ -114,8 +114,6 @@ To publish this library, you need a GPG key and the write permission of Maven Ce
 
 #### Packing Natives
 
-You can download native libraries by running Gradle task `downloadNatives`.
-
 The build script can put the native libraries into jars.
 
 The tree structure of libraries is:
