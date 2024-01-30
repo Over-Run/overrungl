@@ -41,7 +41,7 @@ public final class OverrunGL {
     /**
      * The version of STB native libraries.
      */
-    public static final String STB_VERSION = "0.1.0.1";
+    public static final String STB_VERSION = "0.1.0.2";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 

@@ -16,9 +16,9 @@
 
 package overrungl.stb;
 
-import overrun.marshal.ByValue;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.struct.ByValue;
 import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;

@@ -621,7 +621,7 @@ public interface STBTrueType {
      * @return int
      */
     @Entrypoint("stbtt_PackFontRangesGatherRects")
-    int packFontRangesGatherRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const stbtt_fontinfo *") MemorySegment info, STBTTPackRange ranges, int num_ranges, @NativeType("stbrp_rect *") MemorySegment rects);
+    int packFontRangesGatherRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const stbtt_fontinfo *") MemorySegment info, STBTTPackRange ranges, int num_ranges, STBRPRect rects);
 
     /**
      * Calling these functions in sequence is roughly equivalent to calling
@@ -639,7 +639,7 @@ public interface STBTrueType {
      * @param num_rects num_rects
      */
     @Entrypoint("stbtt_PackFontRangesPackRects")
-    void packFontRangesPackRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("stbrp_rect *") MemorySegment rects, int num_rects);
+    void packFontRangesPackRects(@NativeType("stbtt_pack_context *") MemorySegment spc, STBRPRect rects, int num_rects);
 
     /**
      * Calling these functions in sequence is roughly equivalent to calling
@@ -660,7 +660,7 @@ public interface STBTrueType {
      * @return int
      */
     @Entrypoint("stbtt_PackFontRangesRenderIntoRects")
-    int packFontRangesRenderIntoRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const stbtt_fontinfo *") MemorySegment info, STBTTPackRange ranges, int num_ranges, @NativeType("stbrp_rect *") MemorySegment rects);
+    int packFontRangesRenderIntoRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const stbtt_fontinfo *") MemorySegment info, STBTTPackRange ranges, int num_ranges, STBRPRect rects);
 
     //////////////////////////////////////////////////////////////////////////////
     //

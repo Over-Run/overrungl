@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,34 +16,53 @@
 
 package overrungl.nfd;
 
+import overrun.marshal.CEnum;
+
 /**
+ * NFD result
+ *
  * @author squid233
  * @since 0.1.0
  */
-public enum NFDResult {
+public enum NFDResult implements CEnum {
     /**
      * programmatic error
      */
-    ERROR,
+    ERROR(0),
     /**
      * user pressed okay, or successful return
      */
-    OKAY,
+    OKAY(1),
     /**
      * user pressed cancel
      */
-    CANCEL;
+    CANCEL(2);
 
-    private static final NFDResult[] VALUES = values();
+    private final int value;
+
+    NFDResult(int value) {
+        this.value = value;
+    }
 
     /**
      * Gets the {@link NFDResult} by the given integer value.
      *
      * @param i the value
      * @return the result
-     * @throws ArrayIndexOutOfBoundsException if the result is not found
+     * @throws IllegalArgumentException if the result is not found
      */
+    @Wrapper
     public static NFDResult of(int i) {
-        return VALUES[i];
+        return switch (i) {
+            case 0 -> ERROR;
+            case 1 -> OKAY;
+            case 2 -> CANCEL;
+            default -> throw new IllegalArgumentException(STR."Unexpected value: \{i}");
+        };
+    }
+
+    @Override
+    public int value() {
+        return value;
     }
 }
