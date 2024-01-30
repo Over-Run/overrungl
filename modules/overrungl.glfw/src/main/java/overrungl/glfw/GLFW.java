@@ -18,8 +18,10 @@ package overrungl.glfw;
 
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.Downcall;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.*;
 import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;
 import overrungl.util.value.Triplet;
@@ -41,7 +43,7 @@ public interface GLFW {
     /**
      * The instance of GLFW.
      */
-    GLFW INSTANCE = Downcall.load(Handles.lookup);
+    GLFW INSTANCE = Downcall.load(lookup);
 
     /**
      * The major version number of the GLFW header.
@@ -914,13 +916,9 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #terminate
      */
-    static boolean init() {
-        try {
-            return (int) glfwInit.invokeExact() != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwInit")
+    boolean init();
 
     /**
      * Terminates the GLFW library.
@@ -945,13 +943,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #init
      */
-    static void terminate() {
-        try {
-            glfwTerminate.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwTerminate")
+    void terminate();
 
     /**
      * Sets the specified init hint to the desired value.
@@ -973,13 +966,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #init() init
      */
-    static void initHint(int hint, int value) {
-        try {
-            glfwInitHint.invokeExact(hint, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwInitHint")
+    void initHint(int hint, int value);
 
     /**
      * Retrieves the version of the GLFW library.
@@ -998,13 +986,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetVersionString() getVersionString
      */
-    static void ngetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev) {
-        try {
-            glfwGetVersion.invokeExact(major, minor, rev);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetVersion")
+    void ngetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev);
 
     /**
      * Retrieves the version of the GLFW library.
@@ -1014,27 +997,8 @@ public interface GLFW {
      * @param rev   Where to store the revision number, or {@code null}.
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) ngetVersion
      */
-    static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pMajor = major != null ? stack.callocInt() : MemorySegment.NULL;
-            var pMinor = minor != null ? stack.callocInt() : MemorySegment.NULL;
-            var pRev = rev != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetVersion(pMajor, pMinor, pRev);
-            if (major != null && major.length > 0) {
-                major[0] = pMajor.get(JAVA_INT, 0);
-            }
-            if (minor != null && minor.length > 0) {
-                minor[0] = pMinor.get(JAVA_INT, 0);
-            }
-            if (rev != null && rev.length > 0) {
-                rev[0] = pRev.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetVersion")
+    void getVersion(@Ref int @Nullable [] major, @Ref int @Nullable [] minor, @Ref int @Nullable [] rev);
 
     /**
      * Retrieves the version of the GLFW library.
@@ -1042,19 +1006,16 @@ public interface GLFW {
      * @return the major, minor and revision version number
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) ngetVersion
      */
-    static Triplet.OfInt getVersion() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pMajor = stack.callocInt();
-            var pMinor = stack.callocInt();
-            var pRev = stack.callocInt();
+    @Skip
+    default Triplet.OfInt getVersion() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pMajor = stack.ints(0);
+            var pMinor = stack.ints(0);
+            var pRev = stack.ints(0);
             ngetVersion(pMajor, pMinor, pRev);
             return new Triplet.OfInt(pMajor.get(JAVA_INT, 0),
                 pMinor.get(JAVA_INT, 0),
                 pRev.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -1077,13 +1038,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) getVersion
      */
-    static MemorySegment ngetVersionString() {
-        try {
-            return (MemorySegment) glfwGetVersionString.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetVersionString")
+    MemorySegment ngetVersionString();
 
     /**
      * Returns a string describing the compile-time configuration.
@@ -1091,9 +1047,10 @@ public interface GLFW {
      * @return The ASCII encoded GLFW version string.
      * @see #ngetVersionString() ngetVersionString
      */
-    static String getVersionString() {
-        return ngetVersionString().getString(0);
-    }
+    @Entrypoint("glfwGetVersionString")
+    @SizedSeg(Unmarshal.STR_SIZE)
+    @StrCharset("US-ASCII")
+    String getVersionString();
 
     /**
      * Returns and clears the last error for the calling thread.
@@ -1114,13 +1071,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #nsetErrorCallback(MemorySegment) setErrorCallback
      */
-    static int ngetError(MemorySegment description) {
-        try {
-            return (int) glfwGetError.invokeExact(description);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetError")
+    int ngetError(MemorySegment description);
 
     /**
      * Returns and clears the last error for the calling thread.
@@ -1129,20 +1081,8 @@ public interface GLFW {
      * @return The last error code for the calling thread, or {@link #NO_ERROR} (zero).
      * @see #ngetError(MemorySegment) ngetError
      */
-    static int getError(String @Nullable [] description) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = description != null ? stack.mallocPointer() : MemorySegment.NULL;
-            final int err = ngetError(seg);
-            if (description != null && description.length > 0) {
-                description[0] = RuntimeHelper.unboundPointerString(seg);
-            }
-            return err;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetError")
+    int getError(@Ref String @Nullable [] description);
 
     /**
      * Returns and clears the last error for the calling thread.
@@ -1150,15 +1090,12 @@ public interface GLFW {
      * @return the error description pointer. and the last error code for the calling thread, or {@link #NO_ERROR} (zero)
      * @see #ngetError(MemorySegment) ngetError
      */
-    static Tuple2.OfObjInt<String> getError() {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.mallocPointer();
+    @Skip
+    default Tuple2.OfObjInt<String> getError() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = stack.allocate(ADDRESS);
             final int err = ngetError(seg);
-            return new Tuple2.OfObjInt<>(RuntimeHelper.unboundPointerString(seg), err);
-        } finally {
-            stack.setPointer(stackPointer);
+            return new Tuple2.OfObjInt<>(Unmarshal.unmarshalAsString(seg.get(Unmarshal.STR_LAYOUT, 0L)), err);
         }
     }
 
@@ -1190,13 +1127,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetError(MemorySegment) getError
      */
-    static MemorySegment nsetErrorCallback(MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetErrorCallback.invokeExact(callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetErrorCallback")
+    MemorySegment nsetErrorCallback(MemorySegment callback);
 
     /**
      * Sets the error callback.
@@ -1205,7 +1137,8 @@ public interface GLFW {
      * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      * @see #nsetErrorCallback(MemorySegment) nsetErrorCallback
      */
-    static MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
+    @Skip
+    default MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
         return nsetErrorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
@@ -1227,13 +1160,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getPrimaryMonitor() getPrimaryMonitor
      */
-    static MemorySegment ngetMonitors(MemorySegment count) {
-        try {
-            return (MemorySegment) glfwGetMonitors.invokeExact(count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitors")
+    MemorySegment ngetMonitors(MemorySegment count);
 
     /**
      * Returns the currently connected monitors.
@@ -1242,17 +1170,12 @@ public interface GLFW {
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetMonitors(MemorySegment) ngetMonitors
      */
-    static MemorySegment @Nullable [] getMonitors() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pCount = stack.callocInt();
+    @Skip
+    default MemorySegment @Nullable [] getMonitors() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pCount = stack.ints(0);
             var pMonitors = ngetMonitors(pCount);
-            return RuntimeHelper.isNullptr(pMonitors) ?
-                null :
-                RuntimeHelper.toArray(pMonitors, new MemorySegment[pCount.get(JAVA_INT, 0)]);
-        } finally {
-            stack.setPointer(stackPointer);
+            return Unmarshal.unmarshalAsAddressArray(pMonitors.reinterpret(ADDRESS.scale(0L, pCount.get(JAVA_INT, 0L))));
         }
     }
 
@@ -1270,13 +1193,8 @@ public interface GLFW {
      * {@link #ngetMonitors(MemorySegment) getMonitors}.
      * @see #ngetMonitors(MemorySegment) getMonitors
      */
-    static MemorySegment getPrimaryMonitor() {
-        try {
-            return (MemorySegment) glfwGetPrimaryMonitor.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetPrimaryMonitor")
+    MemorySegment getPrimaryMonitor();
 
     /**
      * Returns the position of the monitor's viewport on the virtual screen.
@@ -1294,13 +1212,8 @@ public interface GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void ngetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos) {
-        try {
-            glfwGetMonitorPos.invokeExact(monitor, xpos, ypos);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitorPos")
+    void ngetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos);
 
     /**
      * Returns the position of the monitor's viewport on the virtual screen.
@@ -1310,23 +1223,8 @@ public interface GLFW {
      * @param ypos    Where to store the monitor y-coordinate, or {@code null}.
      * @see #ngetMonitorPos(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPos
      */
-    static void getMonitorPos(MemorySegment monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = xpos != null ? stack.callocInt() : MemorySegment.NULL;
-            var py = ypos != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetMonitorPos(monitor, px, py);
-            if (xpos != null && xpos.length > 0) {
-                xpos[0] = px.get(JAVA_INT, 0);
-            }
-            if (ypos != null && ypos.length > 0) {
-                ypos[0] = py.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetMonitorPos")
+    void getMonitorPos(MemorySegment monitor, @Ref int @Nullable [] xpos, @Ref int @Nullable [] ypos);
 
     /**
      * Returns the position of the monitor's viewport on the virtual screen.
@@ -1335,16 +1233,13 @@ public interface GLFW {
      * @return the monitor xy-coordinate
      * @see #ngetMonitorPos(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPos
      */
-    static Pair.OfInt getMonitorPos(MemorySegment monitor) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.callocInt();
-            var py = stack.callocInt();
+    @Skip
+    default Pair.OfInt getMonitorPos(MemorySegment monitor) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.ints(0);
+            var py = stack.ints(0);
             ngetMonitorPos(monitor, px, py);
             return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -1370,13 +1265,8 @@ public interface GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void ngetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height) {
-        try {
-            glfwGetMonitorWorkarea.invokeExact(monitor, xpos, ypos, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitorWorkarea")
+    void ngetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height);
 
     /**
      * Retrieves the work area of the monitor.
@@ -1388,31 +1278,8 @@ public interface GLFW {
      * @param height  Where to store the monitor height, or {@code null}.
      * @see #ngetMonitorWorkarea(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetMonitorWorkarea
      */
-    static void getMonitorWorkarea(MemorySegment monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = xpos != null ? stack.callocInt() : MemorySegment.NULL;
-            var py = ypos != null ? stack.callocInt() : MemorySegment.NULL;
-            var pw = width != null ? stack.callocInt() : MemorySegment.NULL;
-            var ph = height != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetMonitorWorkarea(monitor, px, py, pw, ph);
-            if (xpos != null && xpos.length > 0) {
-                xpos[0] = px.get(JAVA_INT, 0);
-            }
-            if (ypos != null && ypos.length > 0) {
-                ypos[0] = py.get(JAVA_INT, 0);
-            }
-            if (width != null && width.length > 0) {
-                width[0] = pw.get(JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = ph.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetMonitorWorkarea")
+    void getMonitorWorkarea(MemorySegment monitor, @Ref int @Nullable [] xpos, @Ref int @Nullable [] ypos, @Ref int @Nullable [] width, @Ref int @Nullable [] height);
 
     /**
      * Retrieves the work area of the monitor.
@@ -1421,21 +1288,18 @@ public interface GLFW {
      * @return the monitor xy-coordinate, the monitor width and the monitor height
      * @see #ngetMonitorWorkarea(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetMonitorWorkarea
      */
-    static Quad.OfInt getMonitorWorkarea(MemorySegment monitor) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.callocInt();
-            var py = stack.callocInt();
-            var pw = stack.callocInt();
-            var ph = stack.callocInt();
+    @Skip
+    default Quad.OfInt getMonitorWorkarea(MemorySegment monitor) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.ints(0);
+            var py = stack.ints(0);
+            var pw = stack.ints(0);
+            var ph = stack.ints(0);
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             return new Quad.OfInt(px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
                 pw.get(JAVA_INT, 0),
                 ph.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -1463,13 +1327,8 @@ public interface GLFW {
      * the current resolution and system DPI instead of querying the monitor EDID data.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void ngetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM) {
-        try {
-            glfwGetMonitorPhysicalSize.invokeExact(monitor, widthMM, heightMM);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitorPhysicalSize")
+    void ngetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM);
 
     /**
      * Returns the physical size of the monitor.
@@ -1481,23 +1340,8 @@ public interface GLFW {
      *                 monitor's display area, or {@code null}.
      * @see #ngetMonitorPhysicalSize(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPhysicalSize
      */
-    static void getMonitorPhysicalSize(MemorySegment monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pw = widthMM != null ? stack.callocInt() : MemorySegment.NULL;
-            var ph = heightMM != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetMonitorPhysicalSize(monitor, pw, ph);
-            if (widthMM != null && widthMM.length > 0) {
-                widthMM[0] = pw.get(JAVA_INT, 0);
-            }
-            if (heightMM != null && heightMM.length > 0) {
-                heightMM[0] = ph.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetMonitorPhysicalSize")
+    void getMonitorPhysicalSize(MemorySegment monitor, @Ref int @Nullable [] widthMM, @Ref int @Nullable [] heightMM);
 
     /**
      * Returns the physical size of the monitor.
@@ -1506,16 +1350,13 @@ public interface GLFW {
      * @return the width and height, in millimetres, of the monitor's display area.
      * @see #ngetMonitorPhysicalSize(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPhysicalSize
      */
-    static Pair.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pw = stack.callocInt();
-            var ph = stack.callocInt();
+    @Skip
+    default Pair.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pw = stack.ints(0);
+            var ph = stack.ints(0);
             ngetMonitorPhysicalSize(monitor, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -1542,13 +1383,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) getWindowContentScale
      */
-    static void ngetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale) {
-        try {
-            glfwGetMonitorContentScale.invokeExact(monitor, xscale, yscale);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitorContentScale")
+    void ngetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale);
 
     /**
      * Retrieves the content scale for the specified monitor.
@@ -1558,23 +1394,8 @@ public interface GLFW {
      * @param yscale  Where to store the y-axis content scale, or {@code null}.
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) ngetMonitorContentScale
      */
-    static void getMonitorContentScale(MemorySegment monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = xscale != null ? stack.callocFloat() : MemorySegment.NULL;
-            var py = yscale != null ? stack.callocFloat() : MemorySegment.NULL;
-            ngetMonitorContentScale(monitor, px, py);
-            if (xscale != null && xscale.length > 0) {
-                xscale[0] = px.get(JAVA_FLOAT, 0);
-            }
-            if (yscale != null && yscale.length > 0) {
-                yscale[0] = py.get(JAVA_FLOAT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetMonitorContentScale")
+    void getMonitorContentScale(MemorySegment monitor, @Ref float @Nullable [] xscale, @Ref float @Nullable [] yscale);
 
     /**
      * Retrieves the content scale for the specified monitor.
@@ -1583,16 +1404,13 @@ public interface GLFW {
      * @return the xy-axis content scale
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) ngetMonitorContentScale
      */
-    static Pair.OfFloat getMonitorContentScale(MemorySegment monitor) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.callocFloat();
-            var py = stack.callocFloat();
+    @Skip
+    default Pair.OfFloat getMonitorContentScale(MemorySegment monitor) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.floats(0F);
+            var py = stack.floats(0F);
             ngetMonitorContentScale(monitor, px, py);
             return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -1612,13 +1430,8 @@ public interface GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetMonitorName(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetMonitorName.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitorName")
+    MemorySegment ngetMonitorName(MemorySegment monitor);
 
     /**
      * Returns the name of the specified monitor.
@@ -1628,11 +1441,10 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetMonitorName(MemorySegment) ngetMonitorName
      */
+    @Entrypoint("glfwGetMonitorName")
     @Nullable
-    static String getMonitorName(MemorySegment monitor) {
-        var pName = ngetMonitorName(monitor);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
-    }
+    @SizedSeg(Unmarshal.STR_SIZE)
+    String getMonitorName(MemorySegment monitor);
 
     /**
      * Sets the user pointer of the specified monitor.
@@ -1651,13 +1463,8 @@ public interface GLFW {
      * synchronized.
      * @see #getMonitorUserPointer(MemorySegment) getMonitorUserPointer
      */
-    static void setMonitorUserPointer(MemorySegment monitor, MemorySegment pointer) {
-        try {
-            glfwSetMonitorUserPointer.invokeExact(monitor, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetMonitorUserPointer")
+    void setMonitorUserPointer(MemorySegment monitor, MemorySegment pointer);
 
     /**
      * {@return the user pointer of the specified monitor}
@@ -1674,13 +1481,8 @@ public interface GLFW {
      * synchronized.
      * @see #setMonitorUserPointer(MemorySegment, MemorySegment) setMonitorUserPointer
      */
-    static MemorySegment getMonitorUserPointer(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetMonitorUserPointer.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMonitorUserPointer")
+    MemorySegment getMonitorUserPointer(MemorySegment monitor);
 
     /**
      * Sets the monitor configuration callback.
@@ -1699,13 +1501,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetMonitorCallback(MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetMonitorCallback.invokeExact(callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetMonitorCallback")
+    MemorySegment nsetMonitorCallback(MemorySegment callback);
 
     /**
      * Sets the monitor configuration callback.
@@ -1716,7 +1513,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMonitorCallback(MemorySegment) nsetMonitorCallback
      */
-    static MemorySegment setMonitorCallback(@Nullable GLFWMonitorFun callback) {
+    @Skip
+    default MemorySegment setMonitorCallback(@Nullable GLFWMonitorFun callback) {
         return nsetMonitorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
@@ -1743,13 +1541,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetVideoMode(MemorySegment) getVideoMode
      */
-    static MemorySegment ngetVideoModes(MemorySegment monitor, MemorySegment count) {
-        try {
-            return (MemorySegment) glfwGetVideoModes.invokeExact(monitor, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetVideoModes")
+    MemorySegment ngetVideoModes(MemorySegment monitor, MemorySegment count);
 
     /**
      * Returns the available video modes for the specified monitor.
@@ -1759,17 +1552,16 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    static @Nullable GLFWVidMode getVideoModes(MemorySegment monitor) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pCount = stack.callocInt();
+    @Skip
+    default @Nullable GLFWVidMode getVideoModes(MemorySegment monitor) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pCount = stack.ints(0);
             var pModes = ngetVideoModes(monitor, pCount);
-            return RuntimeHelper.isNullptr(pModes) ?
-                null :
-                new GLFWVidMode(pModes, pCount.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
+            if (Unmarshal.isNullPointer(pModes)) {
+                return null;
+            }
+            final int count = pCount.get(JAVA_INT, 0);
+            return new GLFWVidMode(pModes.reinterpret(GLFWVidMode.LAYOUT.scale(0L, count)), count);
         }
     }
 
@@ -1791,13 +1583,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) getVideoModes
      */
-    static MemorySegment ngetVideoMode(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetVideoMode.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetVideoMode")
+    MemorySegment ngetVideoMode(MemorySegment monitor);
 
     /**
      * Returns the current mode of the specified monitor.
@@ -1808,10 +1595,11 @@ public interface GLFW {
      * @see #ngetVideoMode(MemorySegment) ngetVideoMode
      */
     @Nullable
-    static GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
+    @Skip
+    default GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
-        if (RuntimeHelper.isNullptr(pMode)) return null;
-        return new GLFWVidMode(pMode).value();
+        if (Unmarshal.isNullPointer(pMode)) return null;
+        return new GLFWVidMode(pMode.reinterpret(GLFWVidMode.LAYOUT.byteSize())).value();
     }
 
     /**
@@ -1837,13 +1625,8 @@ public interface GLFW {
      * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void setGamma(MemorySegment monitor, float gamma) {
-        try {
-            glfwSetGamma.invokeExact(monitor, gamma);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetGamma")
+    void setGamma(MemorySegment monitor, float gamma);
 
     /**
      * Returns the current gamma ramp for the specified monitor.
@@ -1864,13 +1647,8 @@ public interface GLFW {
      * monitor or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetGammaRamp(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetGammaRamp.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetGammaRamp")
+    MemorySegment ngetGammaRamp(MemorySegment monitor);
 
     /**
      * Returns the current gamma ramp for the specified monitor.
@@ -1880,12 +1658,9 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetGammaRamp(MemorySegment) ngetGammaRamp
      */
+    @Entrypoint("glfwGetGammaRamp")
     @Nullable
-    static GLFWGammaRamp getGammaRamp(MemorySegment monitor) {
-        var pRamp = ngetGammaRamp(monitor);
-        if (RuntimeHelper.isNullptr(pRamp)) return null;
-        return new GLFWGammaRamp(pRamp);
-    }
+    GLFWGammaRamp getGammaRamp(MemorySegment monitor);
 
     /**
      * Sets the current gamma ramp for the specified monitor.
@@ -1917,13 +1692,8 @@ public interface GLFW {
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void nsetGammaRamp(MemorySegment monitor, MemorySegment ramp) {
-        try {
-            glfwSetGammaRamp.invokeExact(monitor, ramp);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetGammaRamp")
+    void nsetGammaRamp(MemorySegment monitor, MemorySegment ramp);
 
     /**
      * Sets the current gamma ramp for the specified monitor.
@@ -1932,9 +1702,8 @@ public interface GLFW {
      * @param ramp    The gamma ramp to use.
      * @see #nsetGammaRamp(MemorySegment, MemorySegment) nsetGammaRamp
      */
-    static void setGammaRamp(MemorySegment monitor, GLFWGammaRamp ramp) {
-        nsetGammaRamp(monitor, ramp.segment());
-    }
+    @Entrypoint("glfwSetGammaRamp")
+    void setGammaRamp(MemorySegment monitor, GLFWGammaRamp ramp);
 
     /**
      * Resets all window hints to their default values.
@@ -1947,13 +1716,8 @@ public interface GLFW {
      * @see #windowHint(int, int) windowHint
      * @see #nwindowHintString(int, MemorySegment) windowHintString
      */
-    static void defaultWindowHints() {
-        try {
-            glfwDefaultWindowHints.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwDefaultWindowHints")
+    void defaultWindowHints();
 
     /**
      * Sets the specified window hint to the desired value.
@@ -1981,13 +1745,8 @@ public interface GLFW {
      * @see #nwindowHintString(int, MemorySegment) windowHintString
      * @see #defaultWindowHints
      */
-    static void windowHint(int hint, int value) {
-        try {
-            glfwWindowHint.invokeExact(hint, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwWindowHint")
+    void windowHint(int hint, int value);
 
     /**
      * Sets the specified window hint to the desired value.
@@ -1996,9 +1755,8 @@ public interface GLFW {
      * @param value The new value of the window hint.
      * @see #windowHint(int, int)
      */
-    static void windowHint(int hint, boolean value) {
-        windowHint(hint, value ? TRUE : FALSE);
-    }
+    @Entrypoint("glfwWindowHint")
+    void windowHint(int hint, @Convert(Type.INT) boolean value);
 
     /**
      * Sets the specified window hint to the desired value.
@@ -2028,13 +1786,8 @@ public interface GLFW {
      * @see #windowHint(int, int) windowHint
      * @see #defaultWindowHints
      */
-    static void nwindowHintString(int hint, MemorySegment value) {
-        try {
-            glfwWindowHintString.invokeExact(hint, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwWindowHintString")
+    void nwindowHintString(int hint, MemorySegment value);
 
     /**
      * Sets the specified window hint to the desired value.
@@ -2043,15 +1796,8 @@ public interface GLFW {
      * @param value The new value of the window hint.
      * @see #nwindowHintString(int, MemorySegment) nwindowHintString
      */
-    static void windowHintString(int hint, String value) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            nwindowHintString(hint, stack.allocateFrom(value));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwWindowHintString")
+    void windowHintString(int hint, String value);
 
     /**
      * Creates a window and its associated context.
@@ -2204,13 +1950,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #destroyWindow
      */
-    static MemorySegment ncreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share) {
-        try {
-            return (MemorySegment) glfwCreateWindow.invokeExact(width, height, title, monitor, share);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwCreateWindow")
+    MemorySegment ncreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share);
 
     /**
      * Creates a window and its associated context.
@@ -2228,15 +1969,8 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateWindow(int, int, MemorySegment, MemorySegment, MemorySegment) ncreateWindow
      */
-    static MemorySegment createWindow(int width, int height, String title, MemorySegment monitor, MemorySegment share) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return ncreateWindow(width, height, stack.allocateFrom(title), monitor, share);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwCreateWindow")
+    MemorySegment createWindow(int width, int height, String title, MemorySegment monitor, MemorySegment share);
 
     /**
      * Destroys the specified window and its context.
@@ -2256,13 +1990,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateWindow(int, int, MemorySegment, MemorySegment, MemorySegment) createWindow
      */
-    static void destroyWindow(MemorySegment window) {
-        try {
-            glfwDestroyWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwDestroyWindow")
+    void destroyWindow(MemorySegment window);
 
     /**
      * Checks the close flag of the specified window.
@@ -2275,13 +2004,9 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    static boolean windowShouldClose(MemorySegment window) {
-        try {
-            return (int) glfwWindowShouldClose.invokeExact(window) != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwWindowShouldClose")
+    boolean windowShouldClose(MemorySegment window);
 
     /**
      * Sets the close flag of the specified window.
@@ -2296,13 +2021,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    static void setWindowShouldClose(MemorySegment window, boolean value) {
-        try {
-            glfwSetWindowShouldClose.invokeExact(window, value ? TRUE : FALSE);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowShouldClose")
+    void setWindowShouldClose(MemorySegment window, @Convert(Type.INT) boolean value);
 
     /**
      * Sets the title of the specified window.
@@ -2318,13 +2038,8 @@ public interface GLFW {
      * process events.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void nsetWindowTitle(MemorySegment window, MemorySegment title) {
-        try {
-            glfwSetWindowTitle.invokeExact(window, title);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowTitle")
+    void nsetWindowTitle(MemorySegment window, MemorySegment title);
 
     /**
      * Sets the title of the specified window.
@@ -2333,15 +2048,8 @@ public interface GLFW {
      * @param title  The UTF-8 encoded window title.
      * @see #nsetWindowTitle(MemorySegment, MemorySegment) nsetWindowTitle
      */
-    static void setWindowTitle(MemorySegment window, String title) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            nsetWindowTitle(window, stack.allocateFrom(title));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwSetWindowTitle")
+    void setWindowTitle(MemorySegment window, String title);
 
     /**
      * Sets the icon for the specified window.
@@ -2379,13 +2087,8 @@ public interface GLFW {
      * This function always emits {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void nsetWindowIcon(MemorySegment window, int count, MemorySegment images) {
-        try {
-            glfwSetWindowIcon.invokeExact(window, count, images);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowIcon")
+    void nsetWindowIcon(MemorySegment window, int count, MemorySegment images);
 
     /**
      * Sets the icon for the specified window.
@@ -2397,7 +2100,8 @@ public interface GLFW {
      *               count is zero.
      * @see #nsetWindowIcon(MemorySegment, int, MemorySegment) nsetWindowIcon
      */
-    static void setWindowIcon(MemorySegment window, int count, GLFWImage images) {
+    @Skip
+    default void setWindowIcon(MemorySegment window, int count, GLFWImage images) {
         if (images == null || count == 0) {
             nsetWindowIcon(window, 0, MemorySegment.NULL);
         } else {
@@ -2413,7 +2117,8 @@ public interface GLFW {
      *               revert to the default window icon.
      * @see #nsetWindowIcon(MemorySegment, int, MemorySegment) nsetWindowIcon
      */
-    static void setWindowIcon(MemorySegment window, @Nullable GLFWImage images) {
+    @Skip
+    default void setWindowIcon(MemorySegment window, @Nullable GLFWImage images) {
         setWindowIcon(window, images == null ? 0 : Math.toIntExact(images.elementCount()), images);
     }
 
@@ -2439,13 +2144,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowPos(MemorySegment, int, int) setWindowPos
      */
-    static void ngetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
-        try {
-            glfwGetWindowPos.invokeExact(window, xpos, ypos);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowPos")
+    void ngetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos);
 
     /**
      * Retrieves the position of the content area of the specified window.
@@ -2456,23 +2156,8 @@ public interface GLFW {
      * @param ypos   Where to store the y-coordinate of the upper-left corner of
      *               the content area, or {@code null}.
      */
-    static void getWindowPos(MemorySegment window, int @Nullable [] xpos, int @Nullable [] ypos) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = xpos != null ? stack.callocInt() : MemorySegment.NULL;
-            var py = ypos != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetWindowPos(window, px, py);
-            if (xpos != null && xpos.length > 1) {
-                xpos[0] = px.get(JAVA_INT, 0);
-            }
-            if (ypos != null && ypos.length > 1) {
-                ypos[0] = py.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetWindowPos")
+    void getWindowPos(MemorySegment window, @Ref int @Nullable [] xpos, @Ref int @Nullable [] ypos);
 
     /**
      * Retrieves the position of the content area of the specified window.
@@ -2480,16 +2165,13 @@ public interface GLFW {
      * @param window The window to query.
      * @return the xy-coordinate of the upper-left corner of the content area.
      */
-    static Pair.OfInt getWindowPos(MemorySegment window) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.callocInt();
-            var py = stack.callocInt();
+    @Skip
+    default Pair.OfInt getWindowPos(MemorySegment window) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.ints(0);
+            var py = stack.ints(0);
             ngetWindowPos(window, px, py);
             return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -2517,13 +2199,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowPos(MemorySegment, MemorySegment, MemorySegment) getWindowPos
      */
-    static void setWindowPos(MemorySegment window, int xpos, int ypos) {
-        try {
-            glfwSetWindowPos.invokeExact(window, xpos, ypos);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowPos")
+    void setWindowPos(MemorySegment window, int xpos, int ypos);
 
     /**
      * Retrieves the size of the content area of the specified window.
@@ -2546,13 +2223,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowSize(MemorySegment, int, int) setWindowSize
      */
-    static void ngetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height) {
-        try {
-            glfwGetWindowSize.invokeExact(window, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowSize")
+    void ngetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height);
 
     /**
      * Retrieves the size of the content area of the specified window.
@@ -2564,23 +2236,8 @@ public interface GLFW {
      *               content area, or {@code null}.
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) ngetWindowSize
      */
-    static void getWindowSize(MemorySegment window, int @Nullable [] width, int @Nullable [] height) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pw = width != null ? stack.callocInt() : MemorySegment.NULL;
-            var ph = height != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetWindowSize(window, pw, ph);
-            if (width != null && width.length > 0) {
-                width[0] = pw.get(JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = ph.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetWindowSize")
+    void getWindowSize(MemorySegment window, @Ref int @Nullable [] width, @Ref int @Nullable [] height);
 
     /**
      * Retrieves the size of the content area of the specified window.
@@ -2589,16 +2246,13 @@ public interface GLFW {
      * @return the width and height, in screen coordinates, of the content area.
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) ngetWindowSize
      */
-    static Pair.OfInt getWindowSize(MemorySegment window) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pw = stack.callocInt();
-            var ph = stack.callocInt();
+    @Skip
+    default Pair.OfInt getWindowSize(MemorySegment window) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pw = stack.ints(0);
+            var ph = stack.ints(0);
             ngetWindowSize(window, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -2635,13 +2289,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowAspectRatio(MemorySegment, int, int) setWindowAspectRatio
      */
-    static void setWindowSizeLimits(MemorySegment window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
-        try {
-            glfwSetWindowSizeLimits.invokeExact(window, minWidth, minHeight, maxWidth, maxHeight);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowSizeLimits")
+    void setWindowSizeLimits(MemorySegment window, int minWidth, int minHeight, int maxWidth, int maxHeight);
 
     /**
      * Sets the aspect ratio of the specified window.
@@ -2676,13 +2325,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowSizeLimits(MemorySegment, int, int, int, int) setWindowSizeLimits
      */
-    static void setWindowAspectRatio(MemorySegment window, int numer, int denom) {
-        try {
-            glfwSetWindowAspectRatio.invokeExact(window, numer, denom);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowAspectRatio")
+    void setWindowAspectRatio(MemorySegment window, int numer, int denom);
 
     /**
      * Sets the size of the content area of the specified window.
@@ -2715,13 +2359,8 @@ public interface GLFW {
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) getWindowSize
      * @see #setWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int) setWindowMonitor
      */
-    static void setWindowSize(MemorySegment window, int width, int height) {
-        try {
-            glfwSetWindowSize.invokeExact(window, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowSize")
+    void setWindowSize(MemorySegment window, int width, int height);
 
     /**
      * Retrieves the size of the framebuffer of the specified window.
@@ -2743,13 +2382,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) setFramebufferSizeCallback
      */
-    static void ngetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height) {
-        try {
-            glfwGetFramebufferSize.invokeExact(window, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetFramebufferSize")
+    void ngetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height);
 
     /**
      * Retrieves the size of the framebuffer of the specified window.
@@ -2761,23 +2395,8 @@ public interface GLFW {
      *               or {@code null}.
      * @see #ngetFramebufferSize(MemorySegment, MemorySegment, MemorySegment) ngetFramebufferSize
      */
-    static void getFramebufferSize(MemorySegment window, int @Nullable [] width, int @Nullable [] height) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pw = width != null ? stack.callocInt() : MemorySegment.NULL;
-            var ph = height != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetFramebufferSize(window, pw, ph);
-            if (width != null && width.length > 0) {
-                width[0] = pw.get(JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = ph.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetFramebufferSize")
+    void getFramebufferSize(MemorySegment window, @Ref int @Nullable [] width, @Ref int @Nullable [] height);
 
     /**
      * Retrieves the size of the framebuffer of the specified window.
@@ -2786,16 +2405,13 @@ public interface GLFW {
      * @return the width and height, in pixels, of the framebuffer.
      * @see #ngetFramebufferSize(MemorySegment, MemorySegment, MemorySegment) ngetFramebufferSize
      */
-    static Pair.OfInt getFramebufferSize(MemorySegment window) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pw = stack.callocInt();
-            var ph = stack.callocInt();
+    @Skip
+    default Pair.OfInt getFramebufferSize(MemorySegment window) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pw = stack.ints(0);
+            var ph = stack.ints(0);
             ngetFramebufferSize(window, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -2828,13 +2444,8 @@ public interface GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void ngetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom) {
-        try {
-            glfwGetWindowFrameSize.invokeExact(window, left, top, right, bottom);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowFrameSize")
+    void ngetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom);
 
     /**
      * Retrieves the size of the frame of the window.
@@ -2850,31 +2461,8 @@ public interface GLFW {
      *               bottom edge of the window frame, or {@code null}.
      * @see #ngetWindowFrameSize(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetWindowFrameSize
      */
-    static void getWindowFrameSize(MemorySegment window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pl = left != null ? stack.callocInt() : MemorySegment.NULL;
-            var pt = top != null ? stack.callocInt() : MemorySegment.NULL;
-            var pr = right != null ? stack.callocInt() : MemorySegment.NULL;
-            var pb = bottom != null ? stack.callocInt() : MemorySegment.NULL;
-            ngetWindowFrameSize(window, pl, pt, pr, pb);
-            if (left != null && left.length > 0) {
-                left[0] = pl.get(JAVA_INT, 0);
-            }
-            if (top != null && top.length > 0) {
-                top[0] = pt.get(JAVA_INT, 0);
-            }
-            if (right != null && right.length > 0) {
-                right[0] = pr.get(JAVA_INT, 0);
-            }
-            if (bottom != null && bottom.length > 0) {
-                bottom[0] = pb.get(JAVA_INT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetWindowFrameSize")
+    void getWindowFrameSize(MemorySegment window, @Ref int @Nullable [] left, @Ref int @Nullable [] top, @Ref int @Nullable [] right, @Ref int @Nullable [] bottom);
 
     /**
      * Retrieves the size of the frame of the window.
@@ -2884,21 +2472,18 @@ public interface GLFW {
      * edge of the window frame.
      * @see #ngetWindowFrameSize(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetWindowFrameSize
      */
-    static Quad.OfInt getWindowFrameSize(MemorySegment window) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pl = stack.callocInt();
-            var pt = stack.callocInt();
-            var pr = stack.callocInt();
-            var pb = stack.callocInt();
+    @Skip
+    default Quad.OfInt getWindowFrameSize(MemorySegment window) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pl = stack.ints(0);
+            var pt = stack.ints(0);
+            var pr = stack.ints(0);
+            var pb = stack.ints(0);
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             return new Quad.OfInt(pl.get(JAVA_INT, 0),
                 pt.get(JAVA_INT, 0),
                 pr.get(JAVA_INT, 0),
                 pb.get(JAVA_INT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -2926,13 +2511,8 @@ public interface GLFW {
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) setWindowContentScaleCallback
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) getMonitorContentScale
      */
-    static void ngetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale) {
-        try {
-            glfwGetWindowContentScale.invokeExact(window, xscale, yscale);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowContentScale")
+    void ngetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale);
 
     /**
      * Retrieves the content scale for the specified window.
@@ -2942,23 +2522,8 @@ public interface GLFW {
      * @param yscale Where to store the y-axis content scale, or {@code null}.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) ngetWindowContentScale
      */
-    static void getWindowContentScale(MemorySegment window, float @Nullable [] xscale, float @Nullable [] yscale) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = xscale != null ? stack.callocFloat() : MemorySegment.NULL;
-            var py = yscale != null ? stack.callocFloat() : MemorySegment.NULL;
-            ngetWindowContentScale(window, px, py);
-            if (xscale != null && xscale.length > 0) {
-                xscale[0] = px.get(JAVA_FLOAT, 0);
-            }
-            if (yscale != null && yscale.length > 0) {
-                yscale[0] = py.get(JAVA_FLOAT, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetWindowContentScale")
+    void getWindowContentScale(MemorySegment window, @Ref float @Nullable [] xscale, @Ref float @Nullable [] yscale);
 
     /**
      * Retrieves the content scale for the specified window.
@@ -2967,16 +2532,13 @@ public interface GLFW {
      * @return the xy-axis content scale.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) ngetWindowContentScale
      */
-    static Pair.OfFloat getWindowContentScale(MemorySegment window) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.callocFloat();
-            var py = stack.callocFloat();
+    @Skip
+    default Pair.OfFloat getWindowContentScale(MemorySegment window) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.floats(0F);
+            var py = stack.floats(0F);
             ngetWindowContentScale(window, px, py);
             return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -2998,13 +2560,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowOpacity(MemorySegment, float) setWindowOpacity
      */
-    static float getWindowOpacity(MemorySegment window) {
-        try {
-            return (float) glfwGetWindowOpacity.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowOpacity")
+    float getWindowOpacity(MemorySegment window);
 
     /**
      * Sets the opacity of the whole window.
@@ -3026,13 +2583,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowOpacity(MemorySegment) getWindowOpacity
      */
-    static void setWindowOpacity(MemorySegment window, float opacity) {
-        try {
-            glfwSetWindowOpacity.invokeExact(window, opacity);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowOpacity")
+    void setWindowOpacity(MemorySegment window, float opacity);
 
     /**
      * Iconifies the specified window.
@@ -3052,13 +2604,8 @@ public interface GLFW {
      * @see #restoreWindow(MemorySegment) restoreWindow
      * @see #maximizeWindow(MemorySegment) maximizeWindow
      */
-    static void iconifyWindow(MemorySegment window) {
-        try {
-            glfwIconifyWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwIconifyWindow")
+    void iconifyWindow(MemorySegment window);
 
     /**
      * Restores the specified window.
@@ -3077,13 +2624,8 @@ public interface GLFW {
      * @see #iconifyWindow(MemorySegment) iconifyWindow
      * @see #maximizeWindow(MemorySegment) maximizeWindow
      */
-    static void restoreWindow(MemorySegment window) {
-        try {
-            glfwRestoreWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwRestoreWindow")
+    void restoreWindow(MemorySegment window);
 
     /**
      * Maximizes the specified window.
@@ -3100,13 +2642,8 @@ public interface GLFW {
      * @see #iconifyWindow(MemorySegment) iconifyWindow
      * @see #restoreWindow(MemorySegment) restoreWindow
      */
-    static void maximizeWindow(MemorySegment window) {
-        try {
-            glfwMaximizeWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwMaximizeWindow")
+    void maximizeWindow(MemorySegment window);
 
     /**
      * Makes the specified window visible.
@@ -3130,13 +2667,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #hideWindow(MemorySegment) hideWindow
      */
-    static void showWindow(MemorySegment window) {
-        try {
-            glfwShowWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwShowWindow")
+    void showWindow(MemorySegment window);
 
     /**
      * Hides the specified window.
@@ -3151,13 +2683,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #showWindow(MemorySegment) showWindow
      */
-    static void hideWindow(MemorySegment window) {
-        try {
-            glfwHideWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwHideWindow")
+    void hideWindow(MemorySegment window);
 
     /**
      * Brings the specified window to front and sets input focus.
@@ -3187,13 +2714,8 @@ public interface GLFW {
      * to front, this function will always emit {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void focusWindow(MemorySegment window) {
-        try {
-            glfwFocusWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwFocusWindow")
+    void focusWindow(MemorySegment window);
 
     /**
      * Requests user attention to the specified window.
@@ -3212,13 +2734,8 @@ public interface GLFW {
      * specific window.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void requestWindowAttention(MemorySegment window) {
-        try {
-            glfwRequestWindowAttention.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwRequestWindowAttention")
+    void requestWindowAttention(MemorySegment window);
 
     /**
      * Returns the monitor that the window uses for full screen mode.
@@ -3233,13 +2750,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int) setWindowMonitor
      */
-    static MemorySegment getWindowMonitor(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetWindowMonitor.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowMonitor")
+    MemorySegment getWindowMonitor(MemorySegment window);
 
     /**
      * Sets the mode, monitor, video mode and placement of a window.
@@ -3289,13 +2801,8 @@ public interface GLFW {
      * @see #getWindowMonitor(MemorySegment) getWindowMonitor
      * @see #setWindowSize(MemorySegment, int, int) setWindowSize
      */
-    static void setWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
-        try {
-            glfwSetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowMonitor")
+    void setWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate);
 
     /**
      * Returns an attribute of the specified window.
@@ -3324,13 +2831,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowAttrib(MemorySegment, int, boolean) setWindowAttrib
      */
-    static int getWindowAttrib(MemorySegment window, int attrib) {
-        try {
-            return (int) glfwGetWindowAttrib.invokeExact(window, attrib);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowAttrib")
+    int getWindowAttrib(MemorySegment window, int attrib);
 
     /**
      * Sets an attribute of the specified window.
@@ -3359,13 +2861,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowAttrib(MemorySegment, int) getWindowAttrib
      */
-    static void setWindowAttrib(MemorySegment window, int attrib, boolean value) {
-        try {
-            glfwSetWindowAttrib.invokeExact(window, attrib, value ? TRUE : FALSE);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowAttrib")
+    void setWindowAttrib(MemorySegment window, int attrib, @Convert(Type.INT) boolean value);
 
     /**
      * Sets the user pointer of the specified window.
@@ -3381,13 +2878,8 @@ public interface GLFW {
      * synchronized.
      * @see #getWindowUserPointer(MemorySegment) getWindowUserPointer
      */
-    static void setWindowUserPointer(MemorySegment window, MemorySegment pointer) {
-        try {
-            glfwSetWindowUserPointer.invokeExact(window, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowUserPointer")
+    void setWindowUserPointer(MemorySegment window, MemorySegment pointer);
 
     /**
      * {@return the user pointer of the specified window}
@@ -3401,13 +2893,8 @@ public interface GLFW {
      * synchronized.
      * @see #setWindowUserPointer(MemorySegment, MemorySegment) setWindowUserPointer
      */
-    static MemorySegment getWindowUserPointer(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetWindowUserPointer.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetWindowUserPointer")
+    MemorySegment getWindowUserPointer(MemorySegment window);
 
     /**
      * Sets the position callback for the specified window.
@@ -3430,13 +2917,8 @@ public interface GLFW {
      * an application to know its global position.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowPosCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowPosCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowPosCallback")
+    MemorySegment nsetWindowPosCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the position callback for the specified window.
@@ -3448,7 +2930,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowPosCallback(MemorySegment, MemorySegment) nsetWindowPosCallback
      */
-    static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable GLFWWindowPosFun callback) {
+    @Skip
+    default MemorySegment setWindowPosCallback(MemorySegment window, @Nullable GLFWWindowPosFun callback) {
         return nsetWindowPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3470,13 +2953,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowSizeCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowSizeCallback")
+    MemorySegment nsetWindowSizeCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the size callback for the specified window.
@@ -3488,7 +2966,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowSizeCallback(MemorySegment, MemorySegment) nsetWindowSizeCallback
      */
-    static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable GLFWWindowSizeFun callback) {
+    @Skip
+    default MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable GLFWWindowSizeFun callback) {
         return nsetWindowSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3517,13 +2996,8 @@ public interface GLFW {
      * close callback for all windows.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowCloseCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowCloseCallback")
+    MemorySegment nsetWindowCloseCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the close callback for the specified window.
@@ -3535,7 +3009,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowCloseCallback(MemorySegment, MemorySegment) nsetWindowCloseCallback
      */
-    static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable GLFWWindowCloseFun callback) {
+    @Skip
+    default MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable GLFWWindowCloseFun callback) {
         return nsetWindowCloseCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3561,13 +3036,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowRefreshCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowRefreshCallback")
+    MemorySegment nsetWindowRefreshCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the refresh callback for the specified window.
@@ -3579,7 +3049,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowRefreshCallback(MemorySegment, MemorySegment) nsetWindowRefreshCallback
      */
-    static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable GLFWWindowRefreshFun callback) {
+    @Skip
+    default MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable GLFWWindowRefreshFun callback) {
         return nsetWindowRefreshCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3606,13 +3077,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowFocusCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowFocusCallback")
+    MemorySegment nsetWindowFocusCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the focus callback for the specified window.
@@ -3624,7 +3090,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowFocusCallback(MemorySegment, MemorySegment) nsetWindowFocusCallback
      */
-    static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable GLFWWindowFocusFun callback) {
+    @Skip
+    default MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable GLFWWindowFocusFun callback) {
         return nsetWindowFocusCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3647,13 +3114,8 @@ public interface GLFW {
      * this callback will never be called.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowIconifyCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowIconifyCallback")
+    MemorySegment nsetWindowIconifyCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the iconify callback for the specified window.
@@ -3665,7 +3127,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowIconifyCallback(MemorySegment, MemorySegment) nsetWindowIconifyCallback
      */
-    static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable GLFWWindowIconifyFun callback) {
+    @Skip
+    default MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable GLFWWindowIconifyFun callback) {
         return nsetWindowIconifyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3686,13 +3149,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowMaximizeCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowMaximizeCallback")
+    MemorySegment nsetWindowMaximizeCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the maximize callback for the specified window.
@@ -3704,7 +3162,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowMaximizeCallback(MemorySegment, MemorySegment) nsetWindowMaximizeCallback
      */
-    static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable GLFWWindowMaximizeFun callback) {
+    @Skip
+    default MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable GLFWWindowMaximizeFun callback) {
         return nsetWindowMaximizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3725,13 +3184,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetFramebufferSizeCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetFramebufferSizeCallback")
+    MemorySegment nsetFramebufferSizeCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the framebuffer resize callback for the specified window.
@@ -3743,7 +3197,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) nsetFramebufferSizeCallback
      */
-    static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable GLFWFramebufferSizeFun callback) {
+    @Skip
+    default MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable GLFWFramebufferSizeFun callback) {
         return nsetFramebufferSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3765,13 +3220,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) getWindowContentScale
      */
-    static MemorySegment nsetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetWindowContentScaleCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetWindowContentScaleCallback")
+    MemorySegment nsetWindowContentScaleCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the window content scale callback for the specified window.
@@ -3783,7 +3233,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) nsetWindowContentScaleCallback
      */
-    static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable GLFWWindowContentScaleFun callback) {
+    @Skip
+    default MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable GLFWWindowContentScaleFun callback) {
         return nsetWindowContentScaleCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3817,13 +3268,8 @@ public interface GLFW {
      * @see #waitEvents() waitEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
-    static void pollEvents() {
-        try {
-            glfwPollEvents.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwPollEvents")
+    void pollEvents();
 
     /**
      * Waits until events are queued and processes them.
@@ -3861,13 +3307,8 @@ public interface GLFW {
      * @see #pollEvents() pollEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
-    static void waitEvents() {
-        try {
-            glfwWaitEvents.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwWaitEvents")
+    void waitEvents();
 
     /**
      * Waits with timeout until events are queued and processes them.
@@ -3908,13 +3349,8 @@ public interface GLFW {
      * @see #pollEvents() pollEvents
      * @see #waitEvents() waitEvents
      */
-    static void waitEventsTimeout(double timeout) {
-        try {
-            glfwWaitEventsTimeout.invokeExact(timeout);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwWaitEventsTimeout")
+    void waitEventsTimeout(double timeout);
 
     /**
      * Posts an empty event to the event queue.
@@ -3928,13 +3364,8 @@ public interface GLFW {
      * @see #waitEvents() waitEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
-    static void postEmptyEvents() {
-        try {
-            glfwPostEmptyEvent.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwPostEmptyEvent")
+    void postEmptyEvents();
 
     /**
      * {@return the value of an input option for the specified window}
@@ -3953,13 +3384,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(MemorySegment, int, int) setInputMode
      */
-    static int getInputMode(MemorySegment window, int mode) {
-        try {
-            return (int) glfwGetInputMode.invokeExact(window, mode);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetInputMode")
+    int getInputMode(MemorySegment window, int mode);
 
     /**
      * Sets an input option for the specified window.
@@ -4017,13 +3443,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getInputMode(MemorySegment, int) getInputMode
      */
-    static void setInputMode(MemorySegment window, int mode, int value) {
-        try {
-            glfwSetInputMode.invokeExact(window, mode, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetInputMode")
+    void setInputMode(MemorySegment window, int mode, int value);
 
     /**
      * Returns whether raw mouse motion is supported.
@@ -4045,13 +3466,9 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(MemorySegment, int, int) setInputMode
      */
-    static boolean rawMouseMotionSupported() {
-        try {
-            return (int) glfwRawMouseMotionSupported.invokeExact() != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwRawMouseMotionSupported")
+    boolean rawMouseMotionSupported();
 
     /**
      * Returns the layout-specific name of the specified printable key.
@@ -4114,13 +3531,8 @@ public interface GLFW {
      * should not free it yourself.  It is valid until the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetKeyName(int key, int scancode) {
-        try {
-            return (MemorySegment) glfwGetKeyName.invokeExact(key, scancode);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetKeyName")
+    MemorySegment ngetKeyName(int key, int scancode);
 
     /**
      * Returns the layout-specific name of the specified printable key.
@@ -4130,11 +3542,9 @@ public interface GLFW {
      * @return The UTF-8 encoded, layout-specific name of the key, or {@code null}.
      * @see #ngetKeyName(int, int) ngetKeyName
      */
+    @Entrypoint("glfwGetKeyName")
     @Nullable
-    static String getKeyName(int key, int scancode) {
-        var pName = ngetKeyName(key, scancode);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
-    }
+    String getKeyName(int key, int scancode);
 
     /**
      * Returns the platform-specific scancode of the specified key.
@@ -4153,13 +3563,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    static int getKeyScancode(int key) {
-        try {
-            return (int) glfwGetKeyScancode.invokeExact(key);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetKeyScancode")
+    int getKeyScancode(int key);
 
     /**
      * Returns the last reported state of a keyboard key for the specified
@@ -4192,13 +3597,8 @@ public interface GLFW {
      * {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static int getKey(MemorySegment window, int key) {
-        try {
-            return (int) glfwGetKey.invokeExact(window, key);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetKey")
+    int getKey(MemorySegment window, int key);
 
     /**
      * Returns the last reported state of a mouse button for the specified
@@ -4219,13 +3619,8 @@ public interface GLFW {
      * {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static int getMouseButton(MemorySegment window, int button) {
-        try {
-            return (int) glfwGetMouseButton.invokeExact(window, button);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetMouseButton")
+    int getMouseButton(MemorySegment window, int button);
 
     /**
      * Retrieves the position of the cursor relative to the content area of
@@ -4256,13 +3651,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setCursorPos(MemorySegment, double, double) setCursorPos
      */
-    static void ngetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
-        try {
-            glfwGetCursorPos.invokeExact(window, xpos, ypos);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetCursorPos")
+    void ngetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos);
 
     /**
      * Retrieves the position of the cursor relative to the content area of
@@ -4275,23 +3665,8 @@ public interface GLFW {
      *               top edge of the content area, or {@code null}.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) ngetCursorPos
      */
-    static void getCursorPos(MemorySegment window, double @Nullable [] xpos, double @Nullable [] ypos) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = xpos != null ? stack.callocDouble() : MemorySegment.NULL;
-            var py = ypos != null ? stack.callocDouble() : MemorySegment.NULL;
-            ngetCursorPos(window, px, py);
-            if (xpos != null && xpos.length > 0) {
-                xpos[0] = px.get(JAVA_DOUBLE, 0);
-            }
-            if (ypos != null && ypos.length > 0) {
-                ypos[0] = py.get(JAVA_DOUBLE, 0);
-            }
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetCursorPos")
+    void getCursorPos(MemorySegment window, @Ref double @Nullable [] xpos, @Ref double @Nullable [] ypos);
 
     /**
      * Retrieves the position of the cursor relative to the content area of
@@ -4301,16 +3676,13 @@ public interface GLFW {
      * @return the cursor xy-coordinate, relative to the left and top edge of the content area.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) ngetCursorPos
      */
-    static Pair.OfDouble getCursorPos(MemorySegment window) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var px = stack.callocDouble();
-            var py = stack.callocDouble();
+    @Skip
+    default Pair.OfDouble getCursorPos(MemorySegment window) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var px = stack.doubles(0D);
+            var py = stack.doubles(0D);
             ngetCursorPos(window, px, py);
             return new Pair.OfDouble(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -4344,13 +3716,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) getCursorPos
      */
-    static void setCursorPos(MemorySegment window, double xpos, double ypos) {
-        try {
-            glfwSetCursorPos.invokeExact(window, xpos, ypos);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetCursorPos")
+    void setCursorPos(MemorySegment window, double xpos, double ypos);
 
     /**
      * Creates a custom cursor.
@@ -4380,13 +3747,8 @@ public interface GLFW {
      * @see #destroyCursor(MemorySegment) destroyCursor
      * @see #createStandardCursor(int) createStandardCursor
      */
-    static MemorySegment ncreateCursor(MemorySegment image, int xhot, int yhot) {
-        try {
-            return (MemorySegment) glfwCreateCursor.invokeExact(image, xhot, yhot);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwCreateCursor")
+    MemorySegment ncreateCursor(MemorySegment image, int xhot, int yhot);
 
     /**
      * Creates a custom cursor.
@@ -4398,9 +3760,8 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateCursor(MemorySegment, int, int) ncreateCursor
      */
-    static MemorySegment createCursor(GLFWImage image, int xhot, int yhot) {
-        return ncreateCursor(image.segment(), xhot, yhot);
-    }
+    @Entrypoint("glfwCreateCursor")
+    MemorySegment createCursor(GLFWImage image, int xhot, int yhot);
 
     /**
      * Creates a cursor with a standard shape.
@@ -4417,13 +3778,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(MemorySegment, int, int) createCursor
      */
-    static MemorySegment createStandardCursor(int shape) {
-        try {
-            return (MemorySegment) glfwCreateStandardCursor.invokeExact(shape);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwCreateStandardCursor")
+    MemorySegment createStandardCursor(int shape);
 
     /**
      * Destroys a cursor.
@@ -4442,13 +3798,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(MemorySegment, int, int) createCursor
      */
-    static void destroyCursor(MemorySegment cursor) {
-        try {
-            glfwDestroyCursor.invokeExact(cursor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwDestroyCursor")
+    void destroyCursor(MemorySegment cursor);
 
     /**
      * Sets the cursor for the window.
@@ -4468,13 +3819,8 @@ public interface GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static void setCursor(MemorySegment window, MemorySegment cursor) {
-        try {
-            glfwSetCursor.invokeExact(window, cursor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetCursor")
+    void setCursor(MemorySegment window, MemorySegment cursor);
 
     /**
      * Sets the key callback.
@@ -4513,13 +3859,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetKeyCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetKeyCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetKeyCallback")
+    MemorySegment nsetKeyCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the key callback.
@@ -4531,7 +3872,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetKeyCallback(MemorySegment, MemorySegment) nsetKeyCallback
      */
-    static MemorySegment setKeyCallback(MemorySegment window, @Nullable GLFWKeyFun callback) {
+    @Skip
+    default MemorySegment setKeyCallback(MemorySegment window, @Nullable GLFWKeyFun callback) {
         return nsetKeyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4564,13 +3906,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetCharCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetCharCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetCharCallback")
+    MemorySegment nsetCharCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the Unicode character callback.
@@ -4582,7 +3919,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCharCallback(MemorySegment, MemorySegment) nsetCharCallback
      */
-    static MemorySegment setCharCallback(MemorySegment window, @Nullable GLFWCharFun callback) {
+    @Skip
+    default MemorySegment setCharCallback(MemorySegment window, @Nullable GLFWCharFun callback) {
         return nsetCharCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4609,13 +3947,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetMouseButtonCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetMouseButtonCallback")
+    MemorySegment nsetMouseButtonCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the mouse button callback.
@@ -4627,7 +3960,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMouseButtonCallback(MemorySegment, MemorySegment) nsetMouseButtonCallback
      */
-    static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable GLFWMouseButtonFun callback) {
+    @Skip
+    default MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable GLFWMouseButtonFun callback) {
         return nsetMouseButtonCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4650,13 +3984,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetCursorPosCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetCursorPosCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetCursorPosCallback")
+    MemorySegment nsetCursorPosCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the cursor position callback.
@@ -4668,7 +3997,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorPosCallback(MemorySegment, MemorySegment) nsetCursorPosCallback
      */
-    static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable GLFWCursorPosFun callback) {
+    @Skip
+    default MemorySegment setCursorPosCallback(MemorySegment window, @Nullable GLFWCursorPosFun callback) {
         return nsetCursorPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4690,13 +4020,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetCursorEnterCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetCursorEnterCallback")
+    MemorySegment nsetCursorEnterCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the cursor enter/leave callback.
@@ -4708,7 +4033,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorEnterCallback(MemorySegment, MemorySegment) nsetCursorEnterCallback
      */
-    static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable GLFWCursorEnterFun callback) {
+    @Skip
+    default MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable GLFWCursorEnterFun callback) {
         return nsetCursorEnterCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4733,13 +4059,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetScrollCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetScrollCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetScrollCallback")
+    MemorySegment nsetScrollCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the scroll callback.
@@ -4751,7 +4072,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetScrollCallback(MemorySegment, MemorySegment) nsetScrollCallback
      */
-    static MemorySegment setScrollCallback(MemorySegment window, @Nullable GLFWScrollFun callback) {
+    @Skip
+    default MemorySegment setScrollCallback(MemorySegment window, @Nullable GLFWScrollFun callback) {
         return nsetScrollCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4778,13 +4100,8 @@ public interface GLFW {
      * @glfw.remark <b>Wayland:</b> File drop is currently unimplemented.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetDropCallback(MemorySegment window, MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetDropCallback.invokeExact(window, callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetDropCallback")
+    MemorySegment nsetDropCallback(MemorySegment window, MemorySegment callback);
 
     /**
      * Sets the path drop callback.
@@ -4796,7 +4113,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetDropCallback(MemorySegment, MemorySegment) nsetDropCallback
      */
-    static MemorySegment setDropCallback(MemorySegment window, @Nullable GLFWDropFun callback) {
+    @Skip
+    default MemorySegment setDropCallback(MemorySegment window, @Nullable GLFWDropFun callback) {
         return nsetDropCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4815,13 +4133,9 @@ public interface GLFW {
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static boolean joystickPresent(int jid) {
-        try {
-            return (int) glfwJoystickPresent.invokeExact(jid) != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwJoystickPresent")
+    boolean joystickPresent(int jid);
 
     /**
      * Returns the values of all axes of the specified joystick.
@@ -4847,13 +4161,8 @@ public interface GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetJoystickAxes(int jid, MemorySegment count) {
-        try {
-            return (MemorySegment) glfwGetJoystickAxes.invokeExact(jid, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetJoystickAxes")
+    MemorySegment ngetJoystickAxes(int jid, MemorySegment count);
 
     /**
      * Returns the values of all axes of the specified joystick.
@@ -4864,20 +4173,15 @@ public interface GLFW {
      * occurred.
      * @see #ngetJoystickAxes(int, MemorySegment) ngetJoystickAxes
      */
-    static float @Nullable [] getJoystickAxes(int jid) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        MemorySegment pAxes;
-        final int count;
-        try {
-            var pCount = stack.callocInt();
-            pAxes = ngetJoystickAxes(jid, pCount);
-            count = pCount.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+    @Skip
+    default float @Nullable [] getJoystickAxes(int jid) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pCount = stack.ints(0);
+            MemorySegment pAxes = ngetJoystickAxes(jid, pCount);
+            final int count = pCount.get(JAVA_INT, 0);
+            if (count == 0) return null;
+            return Unmarshal.unmarshalAsFloatArray(pAxes.reinterpret(JAVA_FLOAT.scale(0L, count)));
         }
-        if (count == 0) return null;
-        return RuntimeHelper.toArray(pAxes, new float[count]);
     }
 
     /**
@@ -4910,13 +4214,8 @@ public interface GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetJoystickButtons(int jid, MemorySegment count) {
-        try {
-            return (MemorySegment) glfwGetJoystickButtons.invokeExact(jid, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetJoystickButtons")
+    MemorySegment ngetJoystickButtons(int jid, MemorySegment count);
 
     /**
      * Returns the state of all buttons of the specified joystick.
@@ -4926,24 +4225,15 @@ public interface GLFW {
      * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetJoystickButtons(int, MemorySegment) ngetJoystickButtons
      */
-    static boolean @Nullable [] getJoystickButtons(int jid) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        MemorySegment pButtons;
-        final int count;
-        try {
-            var pCount = stack.callocInt();
-            pButtons = ngetJoystickButtons(jid, pCount);
-            count = pCount.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+    @Skip
+    default int @Nullable [] getJoystickButtons(int jid) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pCount = stack.ints(0);
+            MemorySegment pButtons = ngetJoystickButtons(jid, pCount);
+            final int count = pCount.get(JAVA_INT, 0);
+            if (count == 0) return null;
+            return Unmarshal.unmarshalAsIntArray(pButtons.reinterpret(JAVA_INT.scale(0L, count)));
         }
-        if (count == 0) return null;
-        boolean[] buttons = new boolean[count];
-        for (int i = 0; i < count; i++) {
-            buttons[i] = pButtons.getAtIndex(JAVA_INT, i) == PRESS;
-        }
-        return buttons;
     }
 
     /**
@@ -4969,7 +4259,6 @@ public interface GLFW {
      * The diagonal directions are bitwise combinations of the primary (up, right,
      * down and left) directions, and you can test for these individually by ANDing
      * it with the corresponding direction.
-     *
      * {@snippet lang = java:
      * if (hats[2] & HAT_RIGHT) {
      *     // State of hat 2 could be right-up, right or right-down
@@ -4993,13 +4282,8 @@ public interface GLFW {
      * is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetJoystickHats(int jid, MemorySegment count) {
-        try {
-            return (MemorySegment) glfwGetJoystickHats.invokeExact(jid, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetJoystickHats")
+    MemorySegment ngetJoystickHats(int jid, MemorySegment count);
 
     /**
      * Returns the state of all hats of the specified joystick.
@@ -5009,15 +4293,12 @@ public interface GLFW {
      * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetJoystickHats(int, MemorySegment) ngetJoystickHats
      */
-    static byte[] getJoystickHats(int jid) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pCount = stack.callocInt();
+    @Skip
+    default byte[] getJoystickHats(int jid) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pCount = stack.ints(0);
             var pHats = ngetJoystickHats(jid, pCount);
-            return RuntimeHelper.toArray(pHats, new byte[pCount.get(JAVA_INT, 0)]);
-        } finally {
-            stack.setPointer(stackPointer);
+            return Unmarshal.unmarshalAsByteArray(pHats.reinterpret(JAVA_BYTE.scale(0L, pCount.get(JAVA_INT, 0))));
         }
     }
 
@@ -5042,13 +4323,8 @@ public interface GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetJoystickName(int jid) {
-        try {
-            return (MemorySegment) glfwGetJoystickName.invokeExact(jid);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetJoystickName")
+    MemorySegment ngetJoystickName(int jid);
 
     /**
      * Returns the name of the specified joystick.
@@ -5058,11 +4334,9 @@ public interface GLFW {
      * is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetJoystickName(int) ngetJoystickName
      */
+    @Entrypoint("glfwGetJoystickName")
     @Nullable
-    static String getJoystickName(int jid) {
-        var pName = ngetJoystickName(jid);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
-    }
+    String getJoystickName(int jid);
 
     /**
      * Returns the SDL compatible GUID of the specified joystick.
@@ -5095,13 +4369,8 @@ public interface GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment ngetJoystickGUID(int jid) {
-        try {
-            return (MemorySegment) glfwGetJoystickGUID.invokeExact(jid);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetJoystickGUID")
+    MemorySegment ngetJoystickGUID(int jid);
 
     /**
      * Returns the SDL compatible GUID of the specified joystick.
@@ -5111,11 +4380,9 @@ public interface GLFW {
      * is not present or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetJoystickGUID(int) ngetJoystickGUID
      */
+    @Entrypoint("glfwGetJoystickGUID")
     @Nullable
-    static String getJoystickGUID(int jid) {
-        var pGUID = ngetJoystickGUID(jid);
-        return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getString(0);
-    }
+    String getJoystickGUID(int jid);
 
     /**
      * Sets the user pointer of the specified joystick.
@@ -5134,13 +4401,8 @@ public interface GLFW {
      * synchronized.
      * @see #getJoystickUserPointer(int) getJoystickUserPointer
      */
-    static void setJoystickUserPointer(int jid, MemorySegment pointer) {
-        try {
-            glfwSetJoystickUserPointer.invokeExact(jid, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetJoystickUserPointer")
+    void setJoystickUserPointer(int jid, MemorySegment pointer);
 
     /**
      * {@return the user pointer of the specified joystick}
@@ -5157,13 +4419,8 @@ public interface GLFW {
      * synchronized.
      * @see #setJoystickUserPointer(int, MemorySegment) setJoystickUserPointer
      */
-    static MemorySegment getJoystickUserPointer(int jid) {
-        try {
-            return (MemorySegment) glfwGetJoystickUserPointer.invokeExact(jid);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetJoystickUserPointer")
+    MemorySegment getJoystickUserPointer(int jid);
 
     /**
      * Returns whether the specified joystick has a gamepad mapping.
@@ -5184,13 +4441,9 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetGamepadState(int, MemorySegment) getGamepadState
      */
-    static boolean joystickIsGamepad(int jid) {
-        try {
-            return (int) glfwJoystickIsGamepad.invokeExact(jid) != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwJoystickIsGamepad")
+    boolean joystickIsGamepad(int jid);
 
     /**
      * Sets the joystick configuration callback.
@@ -5216,13 +4469,8 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    static MemorySegment nsetJoystickCallback(MemorySegment callback) {
-        try {
-            return (MemorySegment) glfwSetJoystickCallback.invokeExact(callback);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetJoystickCallback")
+    MemorySegment nsetJoystickCallback(MemorySegment callback);
 
     /**
      * Sets the joystick configuration callback.
@@ -5233,7 +4481,8 @@ public interface GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetJoystickCallback(MemorySegment) nsetJoystickCallback
      */
-    static MemorySegment setJoystickCallback(@Nullable GLFWJoystickFun callback) {
+    @Skip
+    default MemorySegment setJoystickCallback(@Nullable GLFWJoystickFun callback) {
         return nsetJoystickCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
@@ -5263,13 +4512,9 @@ public interface GLFW {
      * @see #joystickIsGamepad(int) joystickIsGamepad
      * @see #ngetGamepadName(int) getGamepadName
      */
-    static boolean nupdateGamepadMappings(MemorySegment string) {
-        try {
-            return (int) glfwUpdateGamepadMappings.invokeExact(string) != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwUpdateGamepadMappings")
+    boolean nupdateGamepadMappings(MemorySegment string);
 
     /**
      * Adds the specified SDL_GameControllerDB gamepad mappings.
@@ -5279,15 +4524,9 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(MemorySegment) nupdateGamepadMappings
      */
-    static boolean updateGamepadMappings(String string) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nupdateGamepadMappings(stack.allocateFrom(string));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwUpdateGamepadMappings")
+    boolean updateGamepadMappings(String string);
 
     /**
      * Returns the human-readable gamepad name for the specified joystick.
@@ -5311,13 +4550,8 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
-    static MemorySegment ngetGamepadName(int jid) {
-        try {
-            return (MemorySegment) glfwGetGamepadName.invokeExact(jid);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetGamepadName")
+    MemorySegment ngetGamepadName(int jid);
 
     /**
      * Returns the human-readable gamepad name for the specified joystick.
@@ -5328,11 +4562,9 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetGamepadName(int) ngetGamepadName
      */
+    @Entrypoint("glfwGetGamepadName")
     @Nullable
-    static String getGamepadName(int jid) {
-        var pName = ngetGamepadName(jid);
-        return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
-    }
+    String getGamepadName(int jid);
 
     /**
      * Retrieves the state of the specified joystick remapped as a gamepad.
@@ -5363,13 +4595,9 @@ public interface GLFW {
      * @see #nupdateGamepadMappings(MemorySegment) updateGamepadMappings
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
-    static boolean ngetGamepadState(int jid, MemorySegment state) {
-        try {
-            return (int) glfwGetGamepadState.invokeExact(jid, state) != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetGamepadState")
+    boolean ngetGamepadState(int jid, MemorySegment state);
 
     /**
      * Retrieves the state of the specified joystick remapped as a gamepad.
@@ -5381,9 +4609,27 @@ public interface GLFW {
      * occurred.
      * @see #ngetGamepadState(int, MemorySegment) ngetGamepadState
      */
-    static boolean getGamepadState(int jid, GLFWGamepadState state) {
-        return ngetGamepadState(jid, state.segment());
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetGamepadState")
+    boolean getGamepadState(int jid, GLFWGamepadState state);
+
+    /**
+     * Sets the clipboard to the specified string.
+     * <p>
+     * This function sets the system clipboard to the specified, UTF-8 encoded
+     * string.
+     *
+     * @param window window Deprecated.  Any valid window or {@code NULL}.
+     * @param string A UTF-8 encoded string.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
+     * {@link #PLATFORM_ERROR}.
+     * @glfw.pointer_lifetime The specified string is copied before this function
+     * returns.
+     * @glfw.thread_safety This function must only be called from the main thread.
+     * @see #ngetClipboardString() getClipboardString
+     */
+    @Entrypoint("glfwSetClipboardString")
+    void nsetClipboardString(MemorySegment window, MemorySegment string);
 
     /**
      * Sets the clipboard to the specified string.
@@ -5399,12 +4645,9 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetClipboardString() getClipboardString
      */
-    static void nsetClipboardString(MemorySegment string) {
-        try {
-            glfwSetClipboardString.invokeExact(MemorySegment.NULL, string);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default void nsetClipboardString(MemorySegment string) {
+        nsetClipboardString(MemorySegment.NULL, string);
     }
 
     /**
@@ -5413,15 +4656,37 @@ public interface GLFW {
      * @param string A UTF-8 encoded string.
      * @see #nsetClipboardString(MemorySegment) nsetClipboardString
      */
-    static void setClipboardString(String string) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
+    @Skip
+    default void setClipboardString(String string) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
             nsetClipboardString(stack.allocateFrom(string));
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
+
+    /**
+     * Returns the contents of the clipboard as a string.
+     * <p>
+     * This function returns the contents of the system clipboard, if it contains
+     * or is convertible to a UTF-8 encoded string.  If the clipboard is empty or
+     * if its contents cannot be converted, {@link MemorySegment#NULL NULL} is returned and a
+     * {@link #FORMAT_UNAVAILABLE} error is generated.
+     *
+     * @param window Deprecated.  Any valid window or {@code NULL}.
+     * @return The contents of the clipboard as a UTF-8 encoded string, or {@link MemorySegment#NULL NULL}
+     * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #FORMAT_UNAVAILABLE} and {@link #PLATFORM_ERROR}.
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the next call to
+     * {@code getClipboardString} or
+     * {@link #nsetClipboardString(MemorySegment) setClipboardString},
+     * or until the library is terminated.
+     * @glfw.thread_safety This function must only be called from the main thread.
+     * @see #nsetClipboardString(MemorySegment) setClipboardString
+     */
+    @Entrypoint("glfwGetClipboardString")
+    @SizedSeg(Unmarshal.STR_SIZE)
+    MemorySegment ngetClipboardString(MemorySegment window);
 
     /**
      * Returns the contents of the clipboard as a string.
@@ -5443,12 +4708,9 @@ public interface GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetClipboardString(MemorySegment) setClipboardString
      */
-    static MemorySegment ngetClipboardString() {
-        try {
-            return (MemorySegment) glfwGetClipboardString.invokeExact(MemorySegment.NULL);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default MemorySegment ngetClipboardString() {
+        return ngetClipboardString(MemorySegment.NULL);
     }
 
     /**
@@ -5458,10 +4720,10 @@ public interface GLFW {
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetClipboardString() ngetClipboardString
      */
+    @Skip
     @Nullable
-    static String getClipboardString(@Deprecated MemorySegment window) {
-        var pString = ngetClipboardString();
-        return RuntimeHelper.isNullptr(pString) ? null : pString.getString(0);
+    default String getClipboardString() {
+        return ngetClipboardString().getString(0L);
     }
 
     /**
@@ -5485,13 +4747,8 @@ public interface GLFW {
      * writing of the internal base time is not atomic, so it needs to be
      * externally synchronized with calls to {@link #setTime}.
      */
-    static double getTime() {
-        try {
-            return (double) glfwGetTime.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetTime")
+    double getTime();
 
     /**
      * Sets the GLFW time.
@@ -5513,13 +4770,8 @@ public interface GLFW {
      * writing of the internal base time is not atomic, so it needs to be
      * externally synchronized with calls to {@link #getTime}.
      */
-    static void setTime(double time) {
-        try {
-            glfwSetTime.invokeExact(time);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSetTime")
+    void setTime(double time);
 
     /**
      * Returns the current value of the raw timer.
@@ -5534,13 +4786,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getTimerFrequency
      */
-    static long getTimerValue() {
-        try {
-            return (long) glfwGetTimerValue.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetTimerValue")
+    long getTimerValue();
 
     /**
      * Returns the frequency, in Hz, of the raw timer.
@@ -5553,13 +4800,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getTimerValue
      */
-    static long getTimerFrequency() {
-        try {
-            return (long) glfwGetTimerFrequency.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetTimerFrequency")
+    long getTimerFrequency();
 
     /**
      * Makes the context of the specified window current for the calling
@@ -5597,13 +4839,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getCurrentContext
      */
-    static void makeContextCurrent(MemorySegment window) {
-        try {
-            glfwMakeContextCurrent.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwMakeContextCurrent")
+    void makeContextCurrent(MemorySegment window);
 
     /**
      * Returns the window whose context is current on the calling thread.
@@ -5617,13 +4854,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #makeContextCurrent
      */
-    static MemorySegment getCurrentContext() {
-        try {
-            return (MemorySegment) glfwGetCurrentContext.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetCurrentContext")
+    MemorySegment getCurrentContext();
 
     /**
      * Swaps the front and back buffers of the specified window.
@@ -5647,13 +4879,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #swapInterval
      */
-    static void swapBuffers(MemorySegment window) {
-        try {
-            glfwSwapBuffers.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSwapBuffers")
+    void swapBuffers(MemorySegment window);
 
     /**
      * Sets the swap interval for the current context.
@@ -5690,13 +4917,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #swapBuffers
      */
-    static void swapInterval(int interval) {
-        try {
-            glfwSwapInterval.invokeExact(interval);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwSwapInterval")
+    void swapInterval(int interval);
 
     /**
      * Returns whether the specified extension is available.
@@ -5727,13 +4949,9 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetProcAddress
      */
-    static boolean nextensionSupported(MemorySegment extension) {
-        try {
-            return (int) glfwExtensionSupported.invokeExact(extension) != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwExtensionSupported")
+    boolean nextensionSupported(MemorySegment extension);
 
     /**
      * Returns whether the specified extension is available.
@@ -5743,15 +4961,9 @@ public interface GLFW {
      * otherwise.
      * @see #nextensionSupported(MemorySegment) nextensionSupported
      */
-    static boolean extensionSupported(String extension) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nextensionSupported(stack.allocateFrom(extension));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwExtensionSupported")
+    boolean extensionSupported(@StrCharset("US-ASCII") String extension);
 
     /**
      * Returns the address of the specified function for the current
@@ -5784,13 +4996,8 @@ public interface GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #nextensionSupported
      */
-    static MemorySegment ngetProcAddress(MemorySegment procName) {
-        try {
-            return (MemorySegment) glfwGetProcAddress.invokeExact(procName);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetProcAddress")
+    MemorySegment ngetProcAddress(MemorySegment procName);
 
     /**
      * Returns the address of the specified function for the current
@@ -5801,15 +5008,8 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetProcAddress(MemorySegment) ngetProcAddress
      */
-    static MemorySegment getProcAddress(String procName) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return ngetProcAddress(stack.allocateFrom(procName));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetProcAddress")
+    MemorySegment getProcAddress(String procName);
 
     /**
      * Returns whether the Vulkan loader and an ICD have been found.
@@ -5829,13 +5029,9 @@ public interface GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    static boolean vulkanSupported() {
-        try {
-            return (int) glfwVulkanSupported.invokeExact() != FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwVulkanSupported")
+    boolean vulkanSupported();
 
     /**
      * Returns the Vulkan instance extensions required by GLFW.
@@ -5869,13 +5065,8 @@ public interface GLFW {
      * library is terminated.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    static MemorySegment ngetRequiredInstanceExtensions(MemorySegment count) {
-        try {
-            return (MemorySegment) glfwGetRequiredInstanceExtensions.invokeExact(count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetRequiredInstanceExtensions")
+    MemorySegment ngetRequiredInstanceExtensions(MemorySegment count);
 
     /**
      * Returns the Vulkan instance extensions required by GLFW.
@@ -5884,19 +5075,14 @@ public interface GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetRequiredInstanceExtensions(MemorySegment) ngetRequiredInstanceExtensions
      */
-    static String @Nullable [] getRequiredInstanceExtensions() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        MemorySegment pExt;
-        final int count;
-        try {
-            var pCount = stack.callocInt();
-            pExt = ngetRequiredInstanceExtensions(pCount);
-            count = pCount.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+    @Skip
+    default String @Nullable [] getRequiredInstanceExtensions() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pCount = stack.ints(0);
+            MemorySegment pExt = ngetRequiredInstanceExtensions(pCount);
+            final int count = pCount.get(JAVA_INT, 0);
+            if (count == 0) return null;
+            return Unmarshal.unmarshalAsStringArray(pExt.reinterpret(ADDRESS.scale(0L, count)));
         }
-        if (count == 0) return null;
-        return RuntimeHelper.toUnboundedArray(pExt, new String[count]);
     }
 }

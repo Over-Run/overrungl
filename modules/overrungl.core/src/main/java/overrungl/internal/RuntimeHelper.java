@@ -74,19 +74,10 @@ public final class RuntimeHelper {
         throw new IllegalStateException("Do not construct instance");
     }
 
+    @Deprecated(since = "0.1.0")
     private static MemorySegment reinterpreting(MemorySegment pointerToPointer, int index, ToLongFunction<MemorySegment> size) {
         final MemorySegment seg = pointerToPointer.getAtIndex(ADDRESS, index);
         return seg.reinterpret(size.applyAsLong(seg));
-    }
-
-    /**
-     * Gets a UTF-8 string from the given pointer of a string.
-     *
-     * @param segment the memory segment.
-     * @return the string.
-     */
-    public static String unboundPointerString(MemorySegment segment) {
-        return unboundPointerString(segment, 0);
     }
 
     /**
@@ -96,6 +87,7 @@ public final class RuntimeHelper {
      * @param index   the index.
      * @return the string.
      */
+    @Deprecated(since = "0.1.0")
     public static String unboundPointerString(MemorySegment segment, int index) {
         return reinterpreting(segment, index, str -> MemoryUtil.strlen(str) + 1).getString(0);
     }
@@ -180,6 +172,7 @@ public final class RuntimeHelper {
      *
      * @param segment the segment.
      */
+    @Deprecated(since = "0.1.0")
     public static boolean isNullptr(@Nullable MemorySegment segment) {
         return segment == null || segment.equals(MemorySegment.NULL);
     }
@@ -193,6 +186,7 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
+    @Deprecated(since = "0.1.0")
     public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function, Linker.Option... options) {
         return isNullptr(symbol) ? null : LINKER.downcallHandle(symbol, function, options);
     }
@@ -205,6 +199,7 @@ public final class RuntimeHelper {
      * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle.
      */
+    @Deprecated(since = "0.1.0")
     public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptor function, Linker.Option... options) {
         return LINKER.downcallHandle(optional.orElseThrow(), function, options);
     }
@@ -218,6 +213,7 @@ public final class RuntimeHelper {
      * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
      */
     @Nullable
+    @Deprecated(since = "0.1.0")
     public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptors function, Linker.Option... options) {
         return downcallSafe(symbol, function.descriptor(), options);
     }
@@ -230,6 +226,7 @@ public final class RuntimeHelper {
      * @param options  the linker options associated with this linkage request.
      * @return a downcall method handle.
      */
+    @Deprecated(since = "0.1.0")
     public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptors function, Linker.Option... options) {
         return downcallThrow(optional, function.descriptor(), options);
     }
@@ -243,6 +240,7 @@ public final class RuntimeHelper {
      * @param generator the generator, from a zero-length address to the array type
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static <T> T[] toArray(MemorySegment seg, T[] arr,
                                   Function<MemorySegment, T> generator) {
         for (int i = 0; i < arr.length; i++) {
@@ -258,6 +256,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return an array of the zero-length addresses.
      */
+    @Deprecated(since = "0.1.0")
     public static MemorySegment[] toArray(MemorySegment seg, MemorySegment[] arr) {
         return toArray(seg, arr, Function.identity());
     }
@@ -269,6 +268,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static String[] toUnboundedArray(@NativeType("char**") MemorySegment seg, String[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = unboundPointerString(seg, i);
@@ -283,6 +283,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static boolean[] toArray(MemorySegment seg, boolean[] arr) {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = seg.get(JAVA_BOOLEAN, i);
@@ -297,6 +298,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static byte[] toArray(MemorySegment seg, byte[] arr) {
         MemorySegment.copy(seg, JAVA_BYTE, 0, arr, 0, arr.length);
         return arr;
@@ -309,6 +311,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static short[] toArray(MemorySegment seg, short[] arr) {
         MemorySegment.copy(seg, JAVA_SHORT, 0, arr, 0, arr.length);
         return arr;
@@ -321,6 +324,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static int[] toArray(MemorySegment seg, int[] arr) {
         MemorySegment.copy(seg, JAVA_INT, 0, arr, 0, arr.length);
         return arr;
@@ -333,6 +337,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static long[] toArray(MemorySegment seg, long[] arr) {
         MemorySegment.copy(seg, JAVA_LONG, 0, arr, 0, arr.length);
         return arr;
@@ -345,6 +350,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static float[] toArray(MemorySegment seg, float[] arr) {
         MemorySegment.copy(seg, JAVA_FLOAT, 0, arr, 0, arr.length);
         return arr;
@@ -357,6 +363,7 @@ public final class RuntimeHelper {
      * @param arr the array to hold the result
      * @return arr
      */
+    @Deprecated(since = "0.1.0")
     public static double[] toArray(MemorySegment seg, double[] arr) {
         MemorySegment.copy(seg, JAVA_DOUBLE, 0, arr, 0, arr.length);
         return arr;

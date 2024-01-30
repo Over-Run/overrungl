@@ -34,6 +34,7 @@ import java.util.Objects;
  * @since 0.1.0
  */
 public final class GL10Test {
+    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
 
     public void run() {
@@ -42,51 +43,51 @@ public final class GL10Test {
         loop();
 
         GLFWCallbacks.free(window);
-        GLFW.destroyWindow(window);
+        glfw.destroyWindow(window);
 
-        GLFW.terminate();
-        GLFW.setErrorCallback(null);
+        glfw.terminate();
+        glfw.setErrorCallback(null);
     }
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
-        GLFW.defaultWindowHints();
-        GLFW.windowHint(GLFW.VISIBLE, false);
-        GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
+        CheckUtil.check(glfw.init(), "Unable to initialize GLFW");
+        glfw.defaultWindowHints();
+        glfw.windowHint(GLFW.VISIBLE, false);
+        glfw.windowHint(GLFW.RESIZABLE, true);
+        window = glfw.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
         CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
-        GLFW.setKeyCallback(window, (_, key, _, action, _) -> {
+        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                GLFW.setWindowShouldClose(window, true);
+                glfw.setWindowShouldClose(window, true);
             }
         });
-        GLFW.setFramebufferSizeCallback(window, (_, width, height) ->
+        glfw.setFramebufferSizeCallback(window, (_, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
-            var size = GLFW.getWindowSize(window);
-            GLFW.setWindowPos(
+            var size = glfw.getWindowSize(window);
+            glfw.setWindowPos(
                 window,
                 (vidMode.width() - size.x()) / 2,
                 (vidMode.height() - size.y()) / 2
             );
         }
 
-        GLFW.makeContextCurrent(window);
-        GLFW.swapInterval(1);
+        glfw.makeContextCurrent(window);
+        glfw.swapInterval(1);
 
-        GLFW.showWindow(window);
+        glfw.showWindow(window);
     }
 
     private void load() {
-        Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }
 
     private void loop() {
-        while (!GLFW.windowShouldClose(window)) {
+        while (!glfw.windowShouldClose(window)) {
             GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
@@ -99,9 +100,9 @@ public final class GL10Test {
             GL10.vertex2f(0.5f, -0.5f);
             GL10.end();
 
-            GLFW.swapBuffers(window);
+            glfw.swapBuffers(window);
 
-            GLFW.pollEvents();
+            glfw.pollEvents();
         }
     }
 

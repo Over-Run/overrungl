@@ -68,10 +68,10 @@ public interface GLFWErrorFun extends Upcall {
     /**
      * Sets the error callback.
      *
-     * @return The previous callback or {@code NULL}.
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      */
     default MemorySegment set() {
-        return GLFW.setErrorCallback(this);
+        return GLFW.INSTANCE.setErrorCallback(this);
     }
 
     @Override

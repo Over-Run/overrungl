@@ -52,22 +52,23 @@ public final class GLFWCallbacks {
      */
     public static void free(MemorySegment window) {
         if (ARENA_MAP.containsKey(window)) {
-            GLFW.setCharCallback(window, null);
-            GLFW.setCursorEnterCallback(window, null);
-            GLFW.setCursorPosCallback(window, null);
-            GLFW.setDropCallback(window, null);
-            GLFW.setFramebufferSizeCallback(window, null);
-            GLFW.setKeyCallback(window, null);
-            GLFW.setMouseButtonCallback(window, null);
-            GLFW.setScrollCallback(window, null);
-            GLFW.setWindowCloseCallback(window, null);
-            GLFW.setWindowContentScaleCallback(window, null);
-            GLFW.setWindowFocusCallback(window, null);
-            GLFW.setWindowIconifyCallback(window, null);
-            GLFW.setWindowMaximizeCallback(window, null);
-            GLFW.setWindowPosCallback(window, null);
-            GLFW.setWindowRefreshCallback(window, null);
-            GLFW.setWindowSizeCallback(window, null);
+            final GLFW glfw = GLFW.INSTANCE;
+            glfw.setCharCallback(window, null);
+            glfw.setCursorEnterCallback(window, null);
+            glfw.setCursorPosCallback(window, null);
+            glfw.setDropCallback(window, null);
+            glfw.setFramebufferSizeCallback(window, null);
+            glfw.setKeyCallback(window, null);
+            glfw.setMouseButtonCallback(window, null);
+            glfw.setScrollCallback(window, null);
+            glfw.setWindowCloseCallback(window, null);
+            glfw.setWindowContentScaleCallback(window, null);
+            glfw.setWindowFocusCallback(window, null);
+            glfw.setWindowIconifyCallback(window, null);
+            glfw.setWindowMaximizeCallback(window, null);
+            glfw.setWindowPosCallback(window, null);
+            glfw.setWindowRefreshCallback(window, null);
+            glfw.setWindowSizeCallback(window, null);
             ARENA_MAP.remove(window).close();
         }
     }
