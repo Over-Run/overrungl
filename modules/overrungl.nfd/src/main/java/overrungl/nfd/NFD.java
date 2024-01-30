@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,22 +16,23 @@
 
 package overrungl.nfd;
 
-import io.github.overrun.platform.Platform;
-import overrungl.Configurations;
-import overrungl.FunctionDescriptors;
+import overrun.marshal.Downcall;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.SizedSeg;
+import overrun.marshal.gen.Skip;
 import overrungl.NativeType;
-import overrungl.OverrunGL;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
 import overrungl.util.value.Tuple2;
 
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
-import java.nio.charset.StandardCharsets;
-import java.util.function.Supplier;
+import java.util.Map;
 
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
 
 /**
  * <h2>Native File Dialog Extended</h2>
@@ -121,87 +122,85 @@ import static overrungl.FunctionDescriptors.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class NFD {
-    private static final SymbolLookup LOOKUP;
-
-    static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
-        final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
-        LOOKUP = function != null ? function.apply(lib) : lib.get();
-    }
-
-    private static final Platform os = Platform.current();
-    private static final boolean isOsWin = os instanceof Platform.Windows;
-    private static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOS;
+public interface NFD {
     /**
      * The type of the path-set size ({@code long} for Windows and Mac OS X, {@code int} for others).
      */
-    public static final ValueLayout PATH_SET_SIZE;
+    ValueLayout PATH_SET_SIZE = NFDInternal.isOsWinOrApple ? JAVA_LONG : JAVA_INT;
+    /**
+     * The instance of NFD.
+     */
+    NFD INSTANCE = Downcall.load(NFDInternal.LOOKUP, Map.of(
+        "NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
+        "NFD_PathSet_FreePathN", FunctionDescriptor.ofVoid(ADDRESS),
+        "NFD_FreePathU8", FunctionDescriptor.ofVoid(ADDRESS),
+        "NFD_OpenDialogU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS, JAVA_INT, ADDRESS),
+        "NFD_OpenDialogMultipleU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS, JAVA_INT, ADDRESS),
+        "NFD_SaveDialogU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS, JAVA_INT, ADDRESS, ADDRESS),
+        "NFD_PickFolderU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS),
+        "NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
+        "NFD_PathSet_EnumNextU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS)
+    ));
 
-    static {
-        PATH_SET_SIZE = isOsWinOrApple ? JAVA_LONG : JAVA_INT;
+    /**
+     * {@return NFD_PathSet_GetPathN}
+     */
+    MethodHandle NFD_PathSet_GetPathN();
+
+    /**
+     * {@return NFD_PathSet_FreePathN}
+     */
+    default MethodHandle NFD_PathSet_FreePathN() {
+        return null;
     }
 
-    private static final MethodHandle
-        NFD_FreePathN = downcall("NFD_FreePathN", PV),
-        NFD_Init = downcall("NFD_Init", I),
-        NFD_Quit = downcall("NFD_Quit", V),
-        NFD_OpenDialogN = downcall("NFD_OpenDialogN", PPIPI),
-        NFD_OpenDialogMultipleN = downcall("NFD_OpenDialogMultipleN", PPIPI),
-        NFD_SaveDialogN = downcall("NFD_SaveDialogN", PPIPPI),
-        NFD_PickFolderN = downcall("NFD_PickFolderN", PPI),
-        NFD_GetError = downcall("NFD_GetError", p),
-        NFD_ClearError = downcall("NFD_ClearError", V),
-        NFD_PathSet_GetCount = downcall("NFD_PathSet_GetCount", PPI),
-        NFD_PathSet_GetPathN = downcall("NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)),
-        NFD_PathSet_FreePathN = downcallSafe("NFD_PathSet_FreePathN", PV),
-        NFD_PathSet_GetEnum = downcall("NFD_PathSet_GetEnum", PPI),
-        NFD_PathSet_FreeEnum = downcall("NFD_PathSet_FreeEnum", PV),
-        NFD_PathSet_EnumNextN = downcall("NFD_PathSet_EnumNextN", PPI),
-        NFD_PathSet_Free = downcall("NFD_PathSet_Free", PV),
-        NFD_FreePathU8 = downcallSafe("NFD_FreePathU8", PV),
-        NFD_OpenDialogU8 = downcallSafe("NFD_OpenDialogU8", PPIPI),
-        NFD_OpenDialogMultipleU8 = downcallSafe("NFD_OpenDialogMultipleU8", PPIPI),
-        NFD_SaveDialogU8 = downcallSafe("NFD_SaveDialogU8", PPIPPI),
-        NFD_PickFolderU8 = downcallSafe("NFD_PickFolderU8", PPI),
-        NFD_PathSet_GetPathU8 = downcallSafe("NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)),
-        NFD_PathSet_EnumNextU8 = downcallSafe("NFD_PathSet_EnumNextU8", PPI);
-
-    private NFD() {
-        //no instance
+    /**
+     * {@return NFD_FreePathU8}
+     */
+    default MethodHandle NFD_FreePathU8() {
+        return null;
     }
 
-    private static MethodHandle downcall(String name, FunctionDescriptors function, Linker.Option... options) {
-        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function, options);
+    /**
+     * {@return NFD_OpenDialogU8}
+     */
+    default MethodHandle NFD_OpenDialogU8() {
+        return null;
     }
 
-    private static MethodHandle downcall(String name, FunctionDescriptor function) {
-        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
+    /**
+     * {@return NFD_OpenDialogMultipleU8}
+     */
+    default MethodHandle NFD_OpenDialogMultipleU8() {
+        return null;
     }
 
-    private static MethodHandle downcallSafe(String name, FunctionDescriptors function, Linker.Option... options) {
-        return RuntimeHelper.downcallSafe(LOOKUP.find(name).orElse(MemorySegment.NULL), function, options);
+    /**
+     * {@return NFD_SaveDialogU8}
+     */
+    default MethodHandle NFD_SaveDialogU8() {
+        return null;
     }
 
-    private static MethodHandle downcallSafe(String name, FunctionDescriptor function) {
-        return RuntimeHelper.downcallSafe(LOOKUP.find(name).orElse(MemorySegment.NULL), function);
+    /**
+     * {@return NFD_PickFolderU8}
+     */
+    default MethodHandle NFD_PickFolderU8() {
+        return null;
     }
 
-    static MemorySegment allocateString(String str) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            if (isOsWin) return stack.allocateFrom(str, StandardCharsets.UTF_16LE);
-            return stack.allocateFrom(str);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    /**
+     * {@return NFD_PathSet_GetPathU8}
+     */
+    default MethodHandle NFD_PathSet_GetPathU8() {
+        return null;
     }
 
-    static String getString(MemorySegment segment, long offset) {
-        final MemorySegment segment1 = segment.byteSize() == 0 ? segment.reinterpret(Long.MAX_VALUE) : segment;
-        if (isOsWin) return segment1.getString(offset, StandardCharsets.UTF_16LE);
-        return segment1.getString(offset);
+    /**
+     * {@return NFD_PathSet_EnumNextU8}
+     */
+    default MethodHandle NFD_PathSet_EnumNextU8() {
+        return null;
     }
 
     /**
@@ -211,13 +210,8 @@ public final class NFD {
      *
      * @param filePath the file path
      */
-    public static void freePathN(@NativeType("nfdnchar_t*") MemorySegment filePath) {
-        try {
-            NFD_FreePathN.invokeExact(filePath);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_FreePathN")
+    void freePathN(@NativeType("nfdnchar_t*") MemorySegment filePath);
 
     /**
      * initialize NFD - call this for every thread that might use NFD, before calling any other NFD
@@ -225,24 +219,14 @@ public final class NFD {
      *
      * @return the result
      */
-    public static NFDResult init() {
-        try {
-            return NFDResult.of((int) NFD_Init.invokeExact());
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_Init")
+    NFDResult init();
 
     /**
      * call this to de-initialize NFD, if {@link #init} returned {@link NFDResult#OKAY}
      */
-    public static void quit() {
-        try {
-            NFD_Quit.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_Quit")
+    void quit();
 
     /**
      * single file open dialog
@@ -254,13 +238,9 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      */
-    public static NFDResult nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnfilteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath) {
-        try {
-            return NFDResult.of((int) NFD_OpenDialogN.invokeExact(outPath, filterList, filterCount, defaultPath));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_OpenDialogN")
+    NFDResult nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
+
 
     /**
      * single file open dialog
@@ -269,25 +249,22 @@ public final class NFD {
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
-     * @see #nopenDialogN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogN
+     * @see #nopenDialogN(MemorySegment, NFDNFilterItem, int, MemorySegment) nopenDialogN
      */
-    public static NFDResult openDialogN(String[] outPath, NFDNFilterItem.Buffer filterList, String defaultPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult openDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = nopenDialogN(seg,
-                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
+                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = getString(path, 0);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0L);
+                outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
                 freePathN(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -301,13 +278,8 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      */
-    public static NFDResult nopenDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, @NativeType("const nfdnfilteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath) {
-        try {
-            return NFDResult.of((int) NFD_OpenDialogMultipleN.invokeExact(outPaths, filterList, filterCount, defaultPath));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_OpenDialogMultipleN")
+    NFDResult nopenDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
 
     /**
      * multiple file open dialog
@@ -317,13 +289,16 @@ public final class NFD {
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
-     * @see #nopenDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleN
+     * @see #nopenDialogMultipleN(MemorySegment, NFDNFilterItem, int, MemorySegment) nopenDialogMultipleN
      */
-    public static NFDResult openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem.Buffer filterList, String defaultPath) {
-        return nopenDialogMultipleN(outPaths,
-            filterList != null ? filterList.address() : MemorySegment.NULL,
-            filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-            defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
+    @Skip
+    default NFDResult openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, String defaultPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            return nopenDialogMultipleN(outPaths,
+                filterList,
+                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
+                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+        }
     }
 
     /**
@@ -337,13 +312,8 @@ public final class NFD {
      * @param defaultName the default name of the file
      * @return the result
      */
-    public static NFDResult nsaveDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnfilteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath, @NativeType("const nfdnchar_t*") MemorySegment defaultName) {
-        try {
-            return NFDResult.of((int) NFD_SaveDialogN.invokeExact(outPath, filterList, filterCount, defaultPath, defaultName));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_SaveDialogN")
+    NFDResult nsaveDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath, @NativeType("const nfdnchar_t*") MemorySegment defaultName);
 
     /**
      * save dialog
@@ -353,26 +323,23 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @param defaultName the default name of the file
      * @return the result
-     * @see #nopenDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleN
+     * @see #nsaveDialogN(MemorySegment, NFDNFilterItem, int, MemorySegment, MemorySegment) nsaveDialogN
      */
-    public static NFDResult saveDialogN(String[] outPath, NFDNFilterItem.Buffer filterList, String defaultPath, String defaultName) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult saveDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath, String defaultName) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = nsaveDialogN(seg,
-                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL,
-                defaultName != null ? allocateString(defaultName) : MemorySegment.NULL);
+                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset),
+                Marshal.marshal(stack, defaultName, NFDInternal.nfdCharset));
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = getString(path, 0);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0L);
+                outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
                 freePathN(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -384,13 +351,8 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      */
-    public static NFDResult npickFolderN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnchar_t*") MemorySegment defaultPath) {
-        try {
-            return NFDResult.of((int) NFD_PickFolderN.invokeExact(outPath, defaultPath));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_PickFolderN")
+    NFDResult npickFolderN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
 
     /**
      * select folder dialog
@@ -400,20 +362,17 @@ public final class NFD {
      * @return the result
      * @see #npickFolderN(MemorySegment, MemorySegment) npickFolderN
      */
-    public static NFDResult pickFolderN(String[] outPath, String defaultPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
-            final NFDResult result = npickFolderN(seg, defaultPath != null ? allocateString(defaultPath) : MemorySegment.NULL);
+    @Skip
+    default NFDResult pickFolderN(String[] outPath, String defaultPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
+            final NFDResult result = npickFolderN(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = getString(path, 0);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                outPath[0] = path.getString(0, NFDInternal.nfdCharset);
                 freePathN(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -426,13 +385,9 @@ public final class NFD {
      *
      * @return the last error that was set, or NULL if there is no error.
      */
-    public static @NativeType("const char*") MemorySegment ngetError() {
-        try {
-            return (MemorySegment) NFD_GetError.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_GetError")
+    @NativeType("const char*")
+    MemorySegment ngetError();
 
     /**
      * Get last error -- set when {@link NFDResult} returns {@link NFDResult#ERROR}
@@ -440,21 +395,15 @@ public final class NFD {
      * @return the last error that was set, or NULL if there is no error.
      * @see #ngetError() ngetError
      */
-    public static String getError() {
-        final MemorySegment seg = ngetError();
-        return RuntimeHelper.isNullptr(seg) ? null : seg.getString(0);
-    }
+    @Entrypoint("NFD_GetError")
+    @SizedSeg(Unmarshal.STR_SIZE)
+    String getError();
 
     /**
      * clear the error
      */
-    public static void clearError() {
-        try {
-            NFD_ClearError.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_ClearError")
+    void clearError();
 
     /**
      * Gets the number of entries stored in pathSet
@@ -466,13 +415,8 @@ public final class NFD {
      * @param count   the count
      * @return the result
      */
-    public static NFDResult npathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetsize_t*") MemorySegment count) {
-        try {
-            return NFDResult.of((int) NFD_PathSet_GetCount.invokeExact(pathSet, count));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_PathSet_GetCount")
+    NFDResult npathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetsize_t*") MemorySegment count);
 
     /**
      * Gets the number of entries stored in pathSet
@@ -482,11 +426,10 @@ public final class NFD {
      * @return the result
      * @see #npathSetGetCount(MemorySegment, MemorySegment) npathSetGetCount
      */
-    public static NFDResult pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long[] count) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.calloc(PATH_SET_SIZE);
+    @Skip
+    default NFDResult pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long[] count) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = stack.allocate(PATH_SET_SIZE);
             final NFDResult result = npathSetGetCount(pathSet, seg);
             count[0] = switch (PATH_SET_SIZE) {
                 case ValueLayout.OfLong layout -> seg.get(layout, 0);
@@ -494,8 +437,6 @@ public final class NFD {
                 default -> throw new AssertionError("should not reach here");
             };
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -506,19 +447,16 @@ public final class NFD {
      * @return the result and the count
      * @see #npathSetGetCount(MemorySegment, MemorySegment) npathSetGetCount
      */
-    public static Tuple2.OfObjLong<NFDResult> pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.calloc(PATH_SET_SIZE);
+    @Skip
+    default Tuple2.OfObjLong<NFDResult> pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = stack.allocate(PATH_SET_SIZE);
             final NFDResult result = npathSetGetCount(pathSet, seg);
             return new Tuple2.OfObjLong<>(result, switch (PATH_SET_SIZE) {
                 case ValueLayout.OfLong layout -> seg.get(layout, 0);
                 case ValueLayout.OfInt layout -> Integer.toUnsignedLong(seg.get(layout, 0));
                 default -> throw new AssertionError("should not reach here");
             });
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -531,12 +469,13 @@ public final class NFD {
      *                via {@link #pathSetFreePathN} if this function returns {@link NFDResult#OKAY}
      * @return the result
      */
-    public static NFDResult npathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdnchar_t**") MemorySegment outPath) {
+    @Skip
+    default NFDResult npathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdnchar_t**") MemorySegment outPath) {
         try {
             return switch (PATH_SET_SIZE) {
-                case OfLong _ -> NFDResult.of((int) NFD_PathSet_GetPathN.invokeExact(pathSet, index, outPath));
+                case OfLong _ -> NFDResult.of((int) NFD_PathSet_GetPathN().invokeExact(pathSet, index, outPath));
                 case OfInt _ ->
-                    NFDResult.of((int) NFD_PathSet_GetPathN.invokeExact(pathSet, Math.toIntExact(index), outPath));
+                    NFDResult.of((int) NFD_PathSet_GetPathN().invokeExact(pathSet, Math.toIntExact(index), outPath));
                 default -> throw new AssertionError("should not reach here");
             };
         } catch (Throwable e) {
@@ -553,20 +492,17 @@ public final class NFD {
      * @return the result
      * @see #npathSetGetPathN(MemorySegment, long, MemorySegment) npathSetGetPathN
      */
-    public static NFDResult pathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult pathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = npathSetGetPathN(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = getString(path, 0);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                outPath[0] = path.getString(0, NFDInternal.nfdCharset);
                 pathSetFreePathN(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -575,11 +511,12 @@ public final class NFD {
      *
      * @param filePath the path
      */
-    public static void pathSetFreePathN(@NativeType("const nfdnchar_t*") MemorySegment filePath) {
-        if (isOsWinOrApple) {
+    @Skip
+    default void pathSetFreePathN(@NativeType("const nfdnchar_t*") MemorySegment filePath) {
+        if (NFDInternal.isOsWinOrApple) {
             freePathN(filePath);
         } else try {
-            NFD_PathSet_FreePathN.invokeExact(filePath);
+            NFD_PathSet_FreePathN().invokeExact(filePath);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -594,26 +531,16 @@ public final class NFD {
      *                      and it should be freed before freeing the path-set.
      * @return the result
      */
-    public static NFDResult pathSetGetEnum(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetenum_t*") MemorySegment outEnumerator) {
-        try {
-            return NFDResult.of((int) NFD_PathSet_GetEnum.invokeExact(pathSet, outEnumerator));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_PathSet_GetEnum")
+    NFDResult pathSetGetEnum(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetenum_t*") MemorySegment outEnumerator);
 
     /**
      * Frees an enumerator of the path set.
      *
      * @param enumerator the enumerator
      */
-    public static void pathSetFreeEnum(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator) {
-        try {
-            NFD_PathSet_FreeEnum.invokeExact(enumerator);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_PathSet_FreeEnum")
+    void pathSetFreeEnum(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator);
 
     /**
      * Gets the next item from the path set enumerator.
@@ -626,13 +553,8 @@ public final class NFD {
      *                   if this function returns {@link NFDResult#OKAY} and <i>{@code *outPath}</i> is not null
      * @return the result
      */
-    public static NFDResult npathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdnchar_t**") MemorySegment outPath) {
-        try {
-            return NFDResult.of((int) NFD_PathSet_EnumNextN.invokeExact(enumerator, outPath));
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_PathSet_EnumNextN")
+    NFDResult npathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdnchar_t**") MemorySegment outPath);
 
     /**
      * Gets the next item from the path set enumerator.
@@ -642,22 +564,19 @@ public final class NFD {
      * @return the result
      * @see #npathSetEnumNextN(MemorySegment, MemorySegment) npathSetEnumNextN
      */
-    public static NFDResult pathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult pathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = npathSetEnumNextN(enumerator, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                if (!RuntimeHelper.isNullptr(path)) {
-                    outPath[0] = getString(path, 0);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                if (!Unmarshal.isNullPointer(path)) {
+                    Unmarshal.copy(path, outPath, NFDInternal.nfdCharset);
                     pathSetFreePathN(path);
                 }
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -666,23 +585,19 @@ public final class NFD {
      *
      * @param pathSet the pathSet
      */
-    public static void pathSetFree(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
-        try {
-            NFD_PathSet_Free.invokeExact(pathSet);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("NFD_PathSet_Free")
+    void pathSetFree(@NativeType("const nfdpathset_t*") MemorySegment pathSet);
 
     /**
      * free a file path that was returned
      *
      * @param filePath the file path
      */
-    public static void freePathU8(@NativeType("nfdu8char_t*") MemorySegment filePath) {
-        if (isOsWin) {
+    @Skip
+    default void freePathU8(@NativeType("nfdu8char_t*") MemorySegment filePath) {
+        if (NFDInternal.isOsWin) {
             try {
-                NFD_FreePathU8.invokeExact(filePath);
+                NFD_FreePathU8().invokeExact(filePath);
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
@@ -699,14 +614,15 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      */
-    public static NFDResult nopenDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8filteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
-        if (isOsWin) {
+    @Skip
+    default NFDResult nopenDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
+        if (NFDInternal.isOsWin) {
             try {
-                return NFDResult.of((int) NFD_OpenDialogU8.invokeExact(outPath, filterList, filterCount, defaultPath));
+                return NFDResult.of((int) NFD_OpenDialogU8().invokeExact(outPath, Marshal.marshal(filterList), filterCount, defaultPath));
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
-        } else return nopenDialogN(outPath, filterList, filterCount, defaultPath);
+        } else return nopenDialogN(outPath, new NFDNFilterItem(filterList.segment()), filterCount, defaultPath);
     }
 
     /**
@@ -716,25 +632,22 @@ public final class NFD {
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
-     * @see #nopenDialogU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogU8
+     * @see #nopenDialogU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogU8
      */
-    public static NFDResult openDialogU8(String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult openDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = nopenDialogU8(seg,
-                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL);
+                Marshal.marshal(stack, defaultPath));
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = RuntimeHelper.getString(path);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                outPath[0] = path.getString(0L);
                 freePathU8(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -748,14 +661,16 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      */
-    public static NFDResult nopenDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, @NativeType("const nfdu8filteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
-        if (isOsWin) {
+    @Skip
+    default NFDResult nopenDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
+        if (NFDInternal.isOsWin) {
             try {
-                return NFDResult.of((int) NFD_OpenDialogMultipleU8.invokeExact(outPaths, filterList, filterCount, defaultPath));
+                return NFDResult.of((int) NFD_OpenDialogMultipleU8().invokeExact(outPaths, Marshal.marshal(filterList), filterCount, defaultPath));
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
-        } else return nopenDialogMultipleN(outPaths, filterList, filterCount, defaultPath);
+        } else
+            return nopenDialogMultipleN(outPaths, new NFDNFilterItem(filterList.segment()), filterCount, defaultPath);
     }
 
     /**
@@ -766,18 +681,15 @@ public final class NFD {
      * @param filterList  the filter list
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
-     * @see #nopenDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleU8
+     * @see #nopenDialogMultipleU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogMultipleU8
      */
-    public static NFDResult openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem.Buffer filterList, String defaultPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
+    @Skip
+    default NFDResult openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, String defaultPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
             return nopenDialogMultipleU8(outPaths,
-                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL);
-        } finally {
-            stack.setPointer(stackPointer);
+                Marshal.marshal(stack, defaultPath));
         }
     }
 
@@ -792,14 +704,16 @@ public final class NFD {
      * @param defaultName the default name of the file
      * @return the result
      */
-    public static NFDResult nsaveDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8filteritem_t*") MemorySegment filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath, @NativeType("const nfdu8char_t*") MemorySegment defaultName) {
-        if (isOsWin) {
+    @Skip
+    default NFDResult nsaveDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath, @NativeType("const nfdu8char_t*") MemorySegment defaultName) {
+        if (NFDInternal.isOsWin) {
             try {
-                return NFDResult.of((int) NFD_SaveDialogU8.invokeExact(outPath, filterList, filterCount, defaultPath, defaultName));
+                return NFDResult.of((int) NFD_SaveDialogU8().invokeExact(outPath, Marshal.marshal(filterList), filterCount, defaultPath, defaultName));
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
-        } else return nsaveDialogN(outPath, filterList, filterCount, defaultPath, defaultName);
+        } else
+            return nsaveDialogN(outPath, new NFDNFilterItem(filterList.segment()), filterCount, defaultPath, defaultName);
     }
 
     /**
@@ -810,26 +724,23 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @param defaultName the default name of the file
      * @return the result
-     * @see #nopenDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleU8
+     * @see #nopenDialogMultipleU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogMultipleU8
      */
-    public static NFDResult saveDialogU8(String[] outPath, NFDU8FilterItem.Buffer filterList, String defaultPath, String defaultName) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult saveDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath, String defaultName) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = nsaveDialogU8(seg,
-                filterList != null ? filterList.address() : MemorySegment.NULL,
+                filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL,
-                defaultName != null ? stack.allocateFrom(defaultName) : MemorySegment.NULL);
+                Marshal.marshal(stack, defaultPath),
+                Marshal.marshal(stack, defaultName));
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = RuntimeHelper.getString(path);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                outPath[0] = path.getString(0L);
                 freePathU8(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -841,10 +752,11 @@ public final class NFD {
      * @param defaultPath If defaultPath is NULL, the operating system will decide
      * @return the result
      */
-    public static NFDResult npickFolderU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
-        if (isOsWin) {
+    @Skip
+    default NFDResult npickFolderU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8char_t*") MemorySegment defaultPath) {
+        if (NFDInternal.isOsWin) {
             try {
-                return NFDResult.of((int) NFD_PickFolderU8.invokeExact(outPath, defaultPath));
+                return NFDResult.of((int) NFD_PickFolderU8().invokeExact(outPath, defaultPath));
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
@@ -859,20 +771,17 @@ public final class NFD {
      * @return the result
      * @see #npickFolderU8(MemorySegment, MemorySegment) npickFolderU8
      */
-    public static NFDResult pickFolderU8(String[] outPath, String defaultPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
-            final NFDResult result = npickFolderU8(seg, defaultPath != null ? stack.allocateFrom(defaultPath) : MemorySegment.NULL);
+    @Skip
+    default NFDResult pickFolderU8(String[] outPath, String defaultPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
+            final NFDResult result = npickFolderU8(seg, Marshal.marshal(stack, defaultPath));
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = RuntimeHelper.getString(path);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                outPath[0] = path.getString(0L);
                 freePathU8(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -885,13 +794,14 @@ public final class NFD {
      *                via {@link #pathSetFreePathU8} if this function returns {@link NFDResult#OKAY}
      * @return the result
      */
-    public static NFDResult npathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdu8char_t**") MemorySegment outPath) {
-        if (isOsWin) {
+    @Skip
+    default NFDResult npathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdu8char_t**") MemorySegment outPath) {
+        if (NFDInternal.isOsWin) {
             try {
                 return switch (PATH_SET_SIZE) {
-                    case OfLong _ -> NFDResult.of((int) NFD_PathSet_GetPathU8.invokeExact(pathSet, index, outPath));
+                    case OfLong _ -> NFDResult.of((int) NFD_PathSet_GetPathU8().invokeExact(pathSet, index, outPath));
                     case OfInt _ ->
-                        NFDResult.of((int) NFD_PathSet_GetPathU8.invokeExact(pathSet, Math.toIntExact(index), outPath));
+                        NFDResult.of((int) NFD_PathSet_GetPathU8().invokeExact(pathSet, Math.toIntExact(index), outPath));
                     default -> throw new AssertionError("should not reach here");
                 };
             } catch (Throwable e) {
@@ -909,20 +819,17 @@ public final class NFD {
      * @return the result
      * @see #npathSetGetPathU8(MemorySegment, long, MemorySegment) npathSetGetPathU8
      */
-    public static NFDResult pathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult pathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = npathSetGetPathU8(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                outPath[0] = RuntimeHelper.getString(path);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                outPath[0] = path.getString(0L);
                 pathSetFreePathU8(path);
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -937,10 +844,11 @@ public final class NFD {
      *                   if this function returns {@link NFDResult#OKAY} and <i>{@code *outPath}</i> is not null
      * @return the result
      */
-    public static NFDResult npathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdu8char_t**") MemorySegment outPath) {
-        if (isOsWin) {
+    @Skip
+    default NFDResult npathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdu8char_t**") MemorySegment outPath) {
+        if (NFDInternal.isOsWin) {
             try {
-                return NFDResult.of((int) NFD_PathSet_EnumNextU8.invokeExact(enumerator, outPath));
+                return NFDResult.of((int) NFD_PathSet_EnumNextU8().invokeExact(enumerator, outPath));
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
@@ -955,22 +863,19 @@ public final class NFD {
      * @return the result
      * @see #npathSetEnumNextU8(MemorySegment, MemorySegment) npathSetEnumNextU8
      */
-    public static NFDResult pathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment seg = stack.callocPointer();
+    @Skip
+    default NFDResult pathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment seg = Marshal.marshal(stack, outPath);
             final NFDResult result = npathSetEnumNextU8(enumerator, seg);
             if (result == NFDResult.OKAY) {
-                final MemorySegment path = seg.get(ADDRESS, 0);
-                if (!RuntimeHelper.isNullptr(path)) {
-                    outPath[0] = RuntimeHelper.getString(path);
+                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
+                if (!Unmarshal.isNullPointer(path)) {
+                    outPath[0] = path.getString(0L);
                     pathSetFreePathU8(path);
                 }
             }
             return result;
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
@@ -979,8 +884,9 @@ public final class NFD {
      *
      * @param filePath the path
      */
-    public static void pathSetFreePathU8(MemorySegment filePath) {
-        if (isOsWin) freePathU8(filePath);
+    @Skip
+    default void pathSetFreePathU8(MemorySegment filePath) {
+        if (NFDInternal.isOsWin) freePathU8(filePath);
         else pathSetFreePathN(filePath);
     }
 }

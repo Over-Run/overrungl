@@ -8,14 +8,11 @@ pluginManagement {
 }
 
 val projName: String by settings
-val projModules: String by settings
 
 rootProject.name = projName
 
-projModules.split(',').map { it.trim() }.forEach {
-    include(it)
-    project(":$it").projectDir = File("modules/overrungl.$it/")
+file("modules").listFiles().forEach {
+    val s = it.name.substringAfterLast("overrungl.")
+    include(s)
+    project(":$s").projectDir = it
 }
-
-include("samples")
-project(":samples").projectDir = File("modules/samples/")

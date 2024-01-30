@@ -7,7 +7,7 @@ plugins {
     `java-platform`
     `maven-publish`
     signing
-    id("me.champeau.jmh") version "0.7.1" apply false
+    id("me.champeau.jmh") version "0.7.2" apply false
     embeddedKotlin("jvm") apply false
 }
 
@@ -33,10 +33,6 @@ val overrunMarshalVersion: String by rootProject
 
 group = projGroupId
 version = projVersion
-
-project(":core").ext["subName"] = ""
-Artifact.values().forEach { project(it.subprojectName).ext["subName"] = "-${it.subprojectName.substring(1)}" }
-project(":samples").ext["subName"] = "-samples"
 
 enum class NativePlatform(
     val osFamilyName: String,
@@ -82,7 +78,8 @@ enum class Artifact(
     val projectDescription: String,
     val subprojectName: String,
     val mavenName: String,
-    val nativeBinding: NativeBinding? = null
+    val nativeBinding: NativeBinding? = null,
+    val nativeCIVersion: String? = null
 ) {
     CORE(
         "overrungl", "OverrunGL",
@@ -112,7 +109,7 @@ enum class Artifact(
     STB(
         "overrungl-stb", "OverrunGL - stb bindings",
         "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
-        ":stb", "Stb", NativeBinding.STB
+        ":stb", "Stb", NativeBinding.STB, nativeCIVersion = "0.1.0-alpha.6"
     ),
     //VULKAN("overrungl-vulkan", "OverrunGL - Vulkan bindings",
     //    "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
@@ -125,95 +122,104 @@ enum class Artifact(
     }
 }
 
-subprojects {
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "java-library")
-    apply(plugin = "idea")
-    apply(plugin = "me.champeau.jmh")
+Artifact.values().forEach { project(it.subprojectName).ext["subName"] = "-${it.subprojectName.substring(1)}" }
+project(Artifact.CORE.subprojectName).ext["subName"] = ""
+project(":samples").ext["subName"] = "-samples"
 
-    group = projGroupId
-    version = projVersion
-    val artifactName = "$projArtifactId${ext["subName"]}"
+buildList {
+    addAll(Artifact.values().map { it.subprojectName })
+    add(":samples")
+}.forEach {
+    project(it) {
+        apply(plugin = "org.jetbrains.kotlin.jvm")
+        apply(plugin = "java-library")
+        apply(plugin = "idea")
+        apply(plugin = "me.champeau.jmh")
 
-    repositories {
-        mavenCentral()
-        // temporary maven repositories
-        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
-        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/releases") }
-        maven { url = uri("https://maven.aliyun.com/repository/central") }
-    }
+        group = projGroupId
+        version = projVersion
+        val artifactName = "$projArtifactId${ext["subName"]}"
 
-    val annotationProcessor by configurations
-    val api by configurations
-    val compileOnly by configurations
-    val implementation by configurations
-    dependencies {
-        compileOnly("org.jetbrains:annotations:24.1.0")
-        api("io.github.over-run:marshal:$overrunMarshalVersion")
-        if (project.name != "core") {
-            implementation(project(":core"))
+        repositories {
+            mavenCentral()
+            // temporary maven repositories
+            maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots") }
+            maven { url = uri("https://s01.oss.sonatype.org/content/repositories/releases") }
+            maven { url = uri("https://maven.aliyun.com/repository/central") }
         }
-    }
 
-    tasks.withType<JavaCompile> {
-        options.encoding = "UTF-8"
-        if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
-        options.release.set(targetJavaVersion)
-    }
-
-    tasks.withType<KotlinCompile> {
-        kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
-    }
-
-    tasks.withType<Test> {
-        if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
-    }
-
-    extensions.configure<JavaPluginExtension>("java") {
-        val javaVersion = JavaVersion.toVersion(targetJavaVersion)
-        if (JavaVersion.current() < javaVersion) {
-            toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
+        val annotationProcessor by configurations
+        val api by configurations
+        val compileOnly by configurations
+        val implementation by configurations
+        dependencies {
+            compileOnly("org.jetbrains:annotations:24.1.0")
+            api("io.github.over-run:marshal:$overrunMarshalVersion")
+            if (project.name != "core") {
+                implementation(project(Artifact.CORE.subprojectName))
+            }
         }
-        withJavadocJar()
-        withSourcesJar()
-    }
 
-    tasks.named<Jar>("jar") {
-        manifestContentCharset = "utf-8"
-        metadataCharset = "utf-8"
-        manifest.attributes(
-            "Specification-Title" to projName,
-            "Specification-Vendor" to "Overrun Organization",
-            "Specification-Version" to projVersion.split('.', limit = 2)[0],
-            "Implementation-Title" to projName,
-            "Implementation-Vendor" to "Overrun Organization",
-            "Implementation-Version" to projVersion
-        )
-        archiveBaseName.set(artifactName)
-        from("LICENSE")
-    }
+        tasks.withType<JavaCompile> {
+            options.encoding = "UTF-8"
+            if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
+            options.release.set(targetJavaVersion)
+        }
 
-    tasks.named<Jar>("sourcesJar") {
-        dependsOn(tasks["classes"])
-        archiveBaseName.set(artifactName)
-        archiveClassifier.set("sources")
-        from(sourceSets["main"].allSource, "LICENSE")
-    }
+        tasks.withType<KotlinCompile> {
+            kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
+        }
 
-    tasks.named<Jar>("javadocJar") {
-        val javadoc by tasks
-        dependsOn(javadoc)
-        archiveBaseName.set(artifactName)
-        archiveClassifier.set("javadoc")
-        from(javadoc, "LICENSE")
-    }
+        tasks.withType<Test> {
+            if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
+        }
 
-    artifacts {
-        archives(tasks["sourcesJar"])
-        archives(tasks["javadocJar"])
-    }
+        extensions.configure<JavaPluginExtension>("java") {
+            val javaVersion = JavaVersion.toVersion(targetJavaVersion)
+            if (JavaVersion.current() < javaVersion) {
+                toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
+            }
+            withJavadocJar()
+            withSourcesJar()
+        }
 
-    the<IdeaModel>().module.inheritOutputDirs = true
+        tasks.named<Jar>("jar") {
+            manifestContentCharset = "utf-8"
+            metadataCharset = "utf-8"
+            manifest.attributes(
+                "Specification-Title" to projName,
+                "Specification-Vendor" to "Overrun Organization",
+                "Specification-Version" to projVersion.split('.', limit = 2)[0],
+                "Implementation-Title" to projName,
+                "Implementation-Vendor" to "Overrun Organization",
+                "Implementation-Version" to projVersion
+            )
+            archiveBaseName.set(artifactName)
+            from("LICENSE")
+        }
+
+        tasks.named<Jar>("sourcesJar") {
+            dependsOn(tasks["classes"])
+            archiveBaseName.set(artifactName)
+            archiveClassifier.set("sources")
+            from(sourceSets["main"].allSource, "LICENSE")
+        }
+
+        tasks.named<Jar>("javadocJar") {
+            val javadoc by tasks
+            dependsOn(javadoc)
+            archiveBaseName.set(artifactName)
+            archiveClassifier.set("javadoc")
+            from(javadoc, "LICENSE")
+        }
+
+        artifacts {
+            archives(tasks["sourcesJar"])
+            archives(tasks["javadocJar"])
+        }
+
+        the<IdeaModel>().module.inheritOutputDirs = true
+    }
 }
 
 tasks.register("assembleJavadocArgs") {
