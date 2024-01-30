@@ -57,7 +57,7 @@ public enum NFDResult implements CEnum {
             case 0 -> ERROR;
             case 1 -> OKAY;
             case 2 -> CANCEL;
-            default -> throw new IllegalArgumentException(i);
+            default -> throw new IllegalArgumentException(STR."Unexpected value: \{i}");
         };
     }
 

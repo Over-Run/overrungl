@@ -59,22 +59,23 @@ import static java.lang.foreign.ValueLayout.*;
  * {@snippet lang = java:
  * import overrungl.util.value.Pair;
  * void main() {
- *     NFD.init();
+ *     var nfd = NFD.INSTANCE;
+ *     nfd.init();
  *
  *     try (MemoryStack stack = MemoryStack.stackPush()) {
  *         String[] outPath = new String[1];
  *         var filterItem = NFDNFilterItem.create(stack,
  *             new Pair<>("Source code", "java"),
  *             new Pair<>("Image file", "png,jpg"));
- *         var result = NFD.openDialogN(outPath, filterItem, null);
+ *         var result = nfd.openDialogN(outPath, filterItem, null);
  *         switch (result) {
- *             case ERROR -> System.err.println(STR."Error: \{NFD.getError()}");
+ *             case ERROR -> System.err.println(STR."Error: \{nfd.getError()}");
  *             case OKAY -> System.out.println(STR."Success! \{outPath[0]}");
  *             case CANCEL -> System.out.println("User pressed cancel.");
  *         }
  *     }
  *
- *     NFD.quit();
+ *     nfd.quit();
  * }}
  *
  * <h3>File Filter Syntax</h3>
