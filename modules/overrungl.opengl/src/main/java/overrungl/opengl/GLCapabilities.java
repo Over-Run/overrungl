@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,7 +16,6 @@
 
 package overrungl.opengl;
 
-import overrungl.Configurations;
 import overrungl.FunctionDescriptors;
 
 import java.lang.foreign.Arena;
@@ -30,7 +29,7 @@ import java.util.regex.Pattern;
  * @author squid233
  * @since 0.1.0
  */
-public class GLCapabilities {
+public final class GLCapabilities {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
 
     /**
@@ -324,7 +323,7 @@ public class GLCapabilities {
         GL45C.load(this, load);
         GL46C.load(this, load);
 
-        int version = findCoreGL(false);
+        int version = findCoreGL();
         if (!forwardCompatible) {
             GL10.load(this, load);
             GL11.load(this, load);
@@ -336,7 +335,6 @@ public class GLCapabilities {
 
         try (var arena = Arena.ofConfined()) {
             if (!ext.findExtensionsGL(version, arena)) return 0;
-            findCoreGL(true);
         }
         ext.load(load);
 
@@ -349,31 +347,7 @@ public class GLCapabilities {
         return checkAll ? checkFunc.test(this) : (b || checkFunc.test(this));
     }
 
-    private int findCoreGL(boolean checkAll) {
-        if (checkAll) {
-            boolean forceCheckAll = Configurations.GL_FORCE_CHECK_ALL.get();
-            // Note: use Predicate to avoid side effects
-            Ver10 = check(forceCheckAll, Ver10, GL10C::isSupported);
-            Ver11 = check(forceCheckAll, Ver11, GL11C::isSupported);
-            Ver12 = check(forceCheckAll, Ver12, GL12C::isSupported);
-            Ver13 = check(forceCheckAll, Ver13, GL13C::isSupported);
-            Ver14 = check(forceCheckAll, Ver14, GL14C::isSupported);
-            Ver15 = check(forceCheckAll, Ver15, GL15C::isSupported);
-            Ver20 = check(forceCheckAll, Ver20, GL20C::isSupported);
-            Ver21 = check(forceCheckAll, Ver21, GL21C::isSupported);
-            Ver30 = check(forceCheckAll, Ver30, GL30C::isSupported);
-            Ver31 = check(forceCheckAll, Ver31, GL31C::isSupported);
-            Ver32 = check(forceCheckAll, Ver32, GL32C::isSupported);
-            Ver33 = check(forceCheckAll, Ver33, GL33C::isSupported);
-            Ver40 = check(forceCheckAll, Ver40, GL40C::isSupported);
-            Ver41 = check(forceCheckAll, Ver41, GL41C::isSupported);
-            Ver42 = check(forceCheckAll, Ver42, GL42C::isSupported);
-            Ver43 = check(forceCheckAll, Ver43, GL43C::isSupported);
-            Ver44 = check(forceCheckAll, Ver44, GL44C::isSupported);
-            Ver45 = check(forceCheckAll, Ver45, GL45C::isSupported);
-            Ver46 = check(forceCheckAll, Ver46, GL46C::isSupported);
-            return -1;
-        }
+    private int findCoreGL() {
         final String[] prefixes = {
             "OpenGL ES-CM ",
             "OpenGL ES-CL ",

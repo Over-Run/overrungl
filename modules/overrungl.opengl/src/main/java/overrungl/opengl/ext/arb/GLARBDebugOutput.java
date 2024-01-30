@@ -80,7 +80,7 @@ public final class GLARBDebugOutput {
     }
 
     public static void glDebugMessageCallbackARB(Arena arena, GLDebugProc callback, @NativeType("const void *") MemorySegment userParam) {
-        glDebugMessageCallbackARB(callback.address(arena), userParam);
+        glDebugMessageCallbackARB(callback.stub(arena), userParam);
     }
 
     public static int glGetDebugMessageLogARB(int count, int bufSize, @NativeType("GLenum *") MemorySegment sources, @NativeType("GLenum *") MemorySegment types, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment messageLog) {

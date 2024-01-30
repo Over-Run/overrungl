@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -69,12 +69,6 @@ public final class Configurations {
      * The default value is {@code true}.
      */
     public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
-    /**
-     * Forcing to check all method handles for OpenGL.
-     * <p>
-     * The default value is {@code false}.
-     */
-    public static final Entry<Boolean> GL_FORCE_CHECK_ALL = new Entry<>(() -> false);
     /**
      * The symbol lookup of GLFW.
      * The returned value must not be null.

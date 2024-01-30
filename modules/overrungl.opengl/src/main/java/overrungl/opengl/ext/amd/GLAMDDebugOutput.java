@@ -72,7 +72,7 @@ public final class GLAMDDebugOutput {
     }
 
     public static void glDebugMessageCallbackAMD(Arena arena, GLDebugProcAMD callback, @NativeType("void *") MemorySegment userParam) {
-        glDebugMessageCallbackAMD(callback.address(arena), userParam);
+        glDebugMessageCallbackAMD(callback.stub(arena), userParam);
     }
 
     public static int glGetDebugMessageLogAMD(int count, int bufSize, @NativeType("GLenum *") MemorySegment categories, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment message) {

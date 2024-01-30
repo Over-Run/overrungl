@@ -419,7 +419,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void debugMessageCallback(Arena arena, GLDebugProc callback, MemorySegment userParam) {
-        debugMessageCallback(callback.address(arena), userParam);
+        debugMessageCallback(callback.stub(arena), userParam);
     }
 
     public static void debugMessageControl(int source, int type, int severity, int count, MemorySegment ids, boolean enabled) {
@@ -838,8 +838,8 @@ public sealed class GL43C extends GL42C permits GL44C {
         }
     }
 
-    public static void multiDrawArraysIndirect(int mode, DrawArraysIndirectCommand.Buffer indirect, int drawCount, int stride) {
-        multiDrawArraysIndirect(mode, indirect.address(), drawCount, stride);
+    public static void multiDrawArraysIndirect(int mode, DrawArraysIndirectCommand indirect, int drawCount, int stride) {
+        multiDrawArraysIndirect(mode, indirect.segment(), drawCount, stride);
     }
 
     public static void multiDrawElementsIndirect(int mode, int type, MemorySegment indirect, int drawCount, int stride) {
@@ -852,7 +852,7 @@ public sealed class GL43C extends GL42C permits GL44C {
     }
 
     public static void multiDrawElementsIndirect(int mode, int type, DrawElementsIndirectCommand.Buffer indirect, int drawCount, int stride) {
-        multiDrawElementsIndirect(mode, type, indirect.address(), drawCount, stride);
+        multiDrawElementsIndirect(mode, type, indirect.segment(), drawCount, stride);
     }
 
     public static void objectLabel(int identifier, int name, int length, MemorySegment label) {

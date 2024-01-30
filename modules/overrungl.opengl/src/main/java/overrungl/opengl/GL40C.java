@@ -276,7 +276,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawArraysIndirect(int mode, DrawArraysIndirectCommand indirect) {
-        drawArraysIndirect(mode, indirect.address());
+        drawArraysIndirect(mode, indirect.segment());
     }
 
     public static void drawArraysIndirect(SegmentAllocator allocator, int mode, int[] indirect) {
@@ -293,7 +293,7 @@ public sealed class GL40C extends GL33C permits GL41C {
     }
 
     public static void drawElementsIndirect(int mode, int type, DrawElementsIndirectCommand indirect) {
-        drawElementsIndirect(mode, type, indirect.address());
+        drawElementsIndirect(mode, type, indirect.segment());
     }
 
     public static void drawElementsIndirect(SegmentAllocator allocator, int mode, int type, int[] indirect) {

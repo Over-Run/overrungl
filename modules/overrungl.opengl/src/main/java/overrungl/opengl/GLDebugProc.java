@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,16 +16,10 @@
 
 package overrungl.opengl;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
  * The OpenGL debug message callback.
@@ -34,9 +28,11 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface GLDebugProc extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS, ADDRESS);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLDebugProc extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLDebugProc> TYPE = Upcall.type();
 
     /**
      * debug callback
@@ -51,17 +47,13 @@ public interface GLDebugProc extends Callback {
      */
     void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
 
+    @Stub
     default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
-        invoke(source, type, id, severity, message.reinterpret(length + 1).getString(0), userParam.reinterpret(Long.MAX_VALUE));
+        invoke(source, type, id, severity, message.reinterpret(length + 1).getString(0), userParam);
     }
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(GLDebugProc.class, "ninvoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }
