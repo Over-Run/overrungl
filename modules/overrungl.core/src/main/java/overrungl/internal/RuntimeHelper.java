@@ -60,6 +60,9 @@ public final class RuntimeHelper {
     public static final boolean CHECKS = Configurations.CHECKS.get();
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
     private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
+    /**
+     * Some canonical layouts
+     */
     public static final MemoryLayout LONG = CANONICAL_LAYOUTS.get("long"),
         SIZE_T = CANONICAL_LAYOUTS.get("size_t"),
         WCHAR_T = CANONICAL_LAYOUTS.get("wchar_t");

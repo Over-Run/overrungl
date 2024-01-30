@@ -1757,7 +1757,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode.Buffer getVideoModes(MemorySegment monitor) {
+    public static @Nullable GLFWVidMode getVideoModes(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1765,7 +1765,7 @@ public final class GLFW {
             var pModes = ngetVideoModes(monitor, pCount);
             return RuntimeHelper.isNullptr(pModes) ?
                 null :
-                new GLFWVidMode.Buffer(pModes, pCount.get(JAVA_INT, 0));
+                new GLFWVidMode(pModes, pCount.get(JAVA_INT, 0));
         } finally {
             stack.setPointer(stackPointer);
         }
@@ -1931,7 +1931,7 @@ public final class GLFW {
      * @see #nsetGammaRamp(MemorySegment, MemorySegment) nsetGammaRamp
      */
     public static void setGammaRamp(MemorySegment monitor, GLFWGammaRamp ramp) {
-        nsetGammaRamp(monitor, ramp.address());
+        nsetGammaRamp(monitor, ramp.segment());
     }
 
     /**
@@ -2395,11 +2395,11 @@ public final class GLFW {
      *               count is zero.
      * @see #nsetWindowIcon(MemorySegment, int, MemorySegment) nsetWindowIcon
      */
-    public static void setWindowIcon(MemorySegment window, int count, GLFWImage.Buffer images) {
+    public static void setWindowIcon(MemorySegment window, int count, GLFWImage images) {
         if (images == null || count == 0) {
             nsetWindowIcon(window, 0, MemorySegment.NULL);
         } else {
-            nsetWindowIcon(window, count, images.address());
+            nsetWindowIcon(window, count, images.segment());
         }
     }
 
@@ -2411,12 +2411,8 @@ public final class GLFW {
      *               revert to the default window icon.
      * @see #nsetWindowIcon(MemorySegment, int, MemorySegment) nsetWindowIcon
      */
-    public static void setWindowIcon(MemorySegment window, @Nullable GLFWImage.Buffer images) {
-        if (images == null) {
-            nsetWindowIcon(window, 0, MemorySegment.NULL);
-        } else {
-            setWindowIcon(window, (int) Math.min(images.elementCount(), Integer.MAX_VALUE), images);
-        }
+    public static void setWindowIcon(MemorySegment window, @Nullable GLFWImage images) {
+        setWindowIcon(window, images == null ? 0 : Math.toIntExact(images.elementCount()), images);
     }
 
     /**
@@ -4401,7 +4397,7 @@ public final class GLFW {
      * @see #ncreateCursor(MemorySegment, int, int) ncreateCursor
      */
     public static MemorySegment createCursor(GLFWImage image, int xhot, int yhot) {
-        return ncreateCursor(image.address(), xhot, yhot);
+        return ncreateCursor(image.segment(), xhot, yhot);
     }
 
     /**
@@ -5384,7 +5380,7 @@ public final class GLFW {
      * @see #ngetGamepadState(int, MemorySegment) ngetGamepadState
      */
     public static boolean getGamepadState(int jid, GLFWGamepadState state) {
-        return ngetGamepadState(jid, state.address());
+        return ngetGamepadState(jid, state.segment());
     }
 
     /**
@@ -5767,7 +5763,7 @@ public final class GLFW {
      * without a current context will cause a {@link #NO_CURRENT_CONTEXT} error.
      * <p>
      * This function does not apply to Vulkan.  If you are rendering with Vulkan,
-     * see {@link GLFWVulkan#nglfwGetInstanceProcAddress(MemorySegment, MemorySegment) glfwGetInstanceProcAddress},
+     * see {@link GLFWVulkan#ngetInstanceProcAddress(MemorySegment, MemorySegment) glfwGetInstanceProcAddress},
      * {@code vkGetInstanceProcAddr} and {@code vkGetDeviceProcAddr} instead.
      *
      * @param procName The ASCII encoded name of the function.
@@ -5823,7 +5819,7 @@ public final class GLFW {
      * surface creation or even instance creation is possible.  Call
      * {@link #ngetRequiredInstanceExtensions getRequiredInstanceExtensions} to check whether the
      * extensions necessary for Vulkan surface creation are available and
-     * {@link GLFWVulkan#glfwGetPhysicalDevicePresentationSupport glfwGetPhysicalDevicePresentationSupport}
+     * {@link GLFWVulkan#getPhysicalDevicePresentationSupport glfwGetPhysicalDevicePresentationSupport}
      * to check whether a queue family of a physical device supports image presentation.
      *
      * @return {@code true} if Vulkan is minimally available, or {@code false}

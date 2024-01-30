@@ -38,7 +38,7 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 final class Handles {
-    private static final SymbolLookup lookup;
+    static final SymbolLookup lookup;
 
     static {
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw3", OverrunGL.GLFW_VERSION);
@@ -162,13 +162,6 @@ final class Handles {
         glfwGetProcAddress = downcall("glfwGetProcAddress", PP),
         glfwVulkanSupported = downcall("glfwVulkanSupported", I),
         glfwGetRequiredInstanceExtensions = downcall("glfwGetRequiredInstanceExtensions", Pp);
-
-    // GLFW Vulkan
-    static final MethodHandle
-        glfwGetInstanceProcAddress = downcall("glfwGetInstanceProcAddress", PPP),
-        glfwGetPhysicalDevicePresentationSupport = downcall("glfwGetPhysicalDevicePresentationSupport", PPII),
-        glfwCreateWindowSurface = downcall("glfwCreateWindowSurface", PPPPI);
-
     // GLFW Native
     static final MethodHandle
         glfwGetWin32Adapter = downcallNative("glfwGetWin32Adapter", Pp),

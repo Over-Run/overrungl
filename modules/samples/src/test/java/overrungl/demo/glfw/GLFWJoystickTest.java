@@ -76,10 +76,9 @@ public final class GLFWJoystickTest {
     private void loop() {
         var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
         for (int i = 0; i < states.length; i++) {
-            states[i] = GLFWGamepadState.create(Arena.global());
+            states[i] = new GLFWGamepadState(Arena.ofAuto());
         }
         while (!GLFW.windowShouldClose(window)) {
-//            try (var arena = Arena.openShared()) {
             for (int i = 0; i <= GLFW.JOYSTICK_LAST; i++) {
                 if (GLFW.joystickPresent(i)) {
                     if (GLFW.joystickIsGamepad(i)) {
@@ -97,7 +96,6 @@ public final class GLFWJoystickTest {
                     }
                 }
             }
-//        }
             GLFW.waitEventsTimeout(3);
         }
     }

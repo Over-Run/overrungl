@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,12 +16,10 @@
 
 package overrungl.glfw;
 
-import overrungl.ArrayPointer;
-import overrungl.Struct;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.*;
-import java.lang.foreign.MemoryLayout.PathElement;
-import java.lang.invoke.VarHandle;
 
 /**
  * This describes a single video mode.
@@ -41,7 +39,7 @@ import java.lang.invoke.VarHandle;
  * @see GLFW#getVideoModes
  * @since 0.1.0
  */
-public sealed class GLFWVidMode extends Struct {
+public final class GLFWVidMode extends Struct {
     /**
      * The struct layout.
      */
@@ -53,108 +51,74 @@ public sealed class GLFWVidMode extends Struct {
         ValueLayout.JAVA_INT.withName("blueBits"),
         ValueLayout.JAVA_INT.withName("refreshRate")
     );
-    private static final VarHandle
-        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
-        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
-        pRedBits = LAYOUT.varHandle(PathElement.groupElement("redBits")),
-        pGreenBits = LAYOUT.varHandle(PathElement.groupElement("greenBits")),
-        pBlueBits = LAYOUT.varHandle(PathElement.groupElement("blueBits")),
-        pRefreshRate = LAYOUT.varHandle(PathElement.groupElement("refreshRate"));
+    /**
+     * the width, in screen coordinates, of the video mode
+     */
+    public final StructHandle.Int width = StructHandle.ofInt(this, "width");
+    /**
+     * the height, in screen coordinates, of the video mode
+     */
+    public final StructHandle.Int height = StructHandle.ofInt(this, "height");
+    /**
+     * the bit depth of the red channel of the video mode
+     */
+    public final StructHandle.Int redBits = StructHandle.ofInt(this, "redBits");
+    /**
+     * the bit depth of the green channel of the video mode
+     */
+    public final StructHandle.Int greenBits = StructHandle.ofInt(this, "greenBits");
+    /**
+     * the bit depth of the blue channel of the video mode
+     */
+    public final StructHandle.Int blueBits = StructHandle.ofInt(this, "blueBits");
+    /**
+     * the refresh rate, in Hz, of the video mode
+     */
+    public final StructHandle.Int refreshRate = StructHandle.ofInt(this, "refreshRate");
 
     /**
-     * Create a {@code GLFWvidmode} instance.
+     * Creates a struct with the given layout.
      *
-     * @param address the address.
+     * @param segment      the segment
+     * @param elementCount the element count
      */
-    public GLFWVidMode(MemorySegment address) {
-        super(address, LAYOUT);
+    public GLFWVidMode(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
     /**
-     * Creates a struct instance with the given memory layout.
+     * Allocates a struct with the given layout.
      *
-     * @param address the address.
-     * @param layout  the memory layout of this struct.
+     * @param allocator    the allocator
+     * @param elementCount the element count
      */
-    protected GLFWVidMode(MemorySegment address, MemoryLayout layout) {
-        super(address, layout);
+    public GLFWVidMode(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
     /**
-     * {@return the elements size of this struct in bytes}
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
      */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
+    public GLFWVidMode(MemorySegment segment) {
+        super(segment, LAYOUT);
     }
 
     /**
-     * Creates a {@code GLFWVidMode} instance with the given allocator.
+     * Allocates a struct with the given layout.
      *
      * @param allocator the allocator
-     * @return the instance
      */
-    public static GLFWVidMode create(SegmentAllocator allocator) {
-        return new GLFWVidMode(allocator.allocate(LAYOUT));
-    }
-
-    /**
-     * Creates a {@code GLFWVidMode.Buffer} instance with the given allocator and count.
-     *
-     * @param allocator the allocator
-     * @param count     the count
-     * @return the instance
-     */
-    public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocate(LAYOUT, count), count);
+    public GLFWVidMode(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 
     /**
      * {@return an immutable state of this struct}
      */
     public Value value() {
-        return new Value(width(), height(), redBits(), greenBits(), blueBits(), refreshRate());
-    }
-
-    /**
-     * {@return the width, in screen coordinates, of the video mode}
-     */
-    public int width() {
-        return (int) pWidth.get(segment(), 0L);
-    }
-
-    /**
-     * {@return the height, in screen coordinates, of the video mode}
-     */
-    public int height() {
-        return (int) pHeight.get(segment(), 0L);
-    }
-
-    /**
-     * {@return the bit depth of the red channel of the video mode}
-     */
-    public int redBits() {
-        return (int) pRedBits.get(segment(), 0L);
-    }
-
-    /**
-     * {@return the bit depth of the green channel of the video mode}
-     */
-    public int greenBits() {
-        return (int) pGreenBits.get(segment(), 0L);
-    }
-
-    /**
-     * {@return the bit depth of the blue channel of the video mode}
-     */
-    public int blueBits() {
-        return (int) pBlueBits.get(segment(), 0L);
-    }
-
-    /**
-     * {@return the refresh rate, in Hz, of the video mode}
-     */
-    public int refreshRate() {
-        return (int) pRefreshRate.get(segment(), 0L);
+        return new Value(width.get(), height.get(), redBits.get(), greenBits.get(), blueBits.get(), refreshRate.get());
     }
 
     /**
@@ -177,121 +141,5 @@ public sealed class GLFWVidMode extends Struct {
         int blueBits,
         int refreshRate
     ) {
-    }
-
-    /**
-     * This describes video modes.
-     *
-     * @author squid233
-     * @since 0.1.0
-     */
-    public static final class Buffer extends GLFWVidMode implements ArrayPointer {
-        private final VarHandle pWidth, pHeight, pRedBits, pGreenBits, pBlueBits, pRefreshRate;
-
-        /**
-         * Create a {@code GLFWvidmode.Buffer} instance.
-         *
-         * @param address      the address.
-         * @param elementCount the element count
-         */
-        public Buffer(MemorySegment address, long elementCount) {
-            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-            pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
-            pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
-            pRedBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("redBits"));
-            pGreenBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("greenBits"));
-            pBlueBits = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("blueBits"));
-            pRefreshRate = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("refreshRate"));
-        }
-
-        /**
-         * Gets the width at the given index.
-         *
-         * @param index the index
-         * @return The width, in screen coordinates, of the video mode.
-         */
-        public int widthAt(long index) {
-            return (int) pWidth.get(segment(), index);
-        }
-
-        /**
-         * Gets the height at the given index.
-         *
-         * @param index the index
-         * @return The height, in screen coordinates, of the video mode.
-         */
-        public int heightAt(long index) {
-            return (int) pHeight.get(segment(), index);
-        }
-
-        /**
-         * Gets the red bits at the given index.
-         *
-         * @param index the index
-         * @return The bit depth of the red channel, of the video mode.
-         */
-        public int redBitsAt(long index) {
-            return (int) pRedBits.get(segment(), index);
-        }
-
-        /**
-         * Gets the green bits at the given index.
-         *
-         * @param index the index
-         * @return The bit depth of the green channel, of the video mode.
-         */
-        public int greenBitsAt(long index) {
-            return (int) pGreenBits.get(segment(), index);
-        }
-
-        /**
-         * Gets the blue bits at the given index.
-         *
-         * @param index the index
-         * @return The bit depth of the blue channel, of the video mode.
-         */
-        public int blueBitsAt(long index) {
-            return (int) pBlueBits.get(segment(), index);
-        }
-
-        /**
-         * Gets the refresh rate at the given index.
-         *
-         * @param index the index
-         * @return The refresh rate, in Hz, of the video mode.
-         */
-        public int refreshRateAt(long index) {
-            return (int) pRefreshRate.get(segment(), index);
-        }
-
-        @Override
-        public int width() {
-            return widthAt(0);
-        }
-
-        @Override
-        public int height() {
-            return heightAt(0);
-        }
-
-        @Override
-        public int redBits() {
-            return redBitsAt(0);
-        }
-
-        @Override
-        public int greenBits() {
-            return greenBitsAt(0);
-        }
-
-        @Override
-        public int blueBits() {
-            return blueBitsAt(0);
-        }
-
-        @Override
-        public int refreshRate() {
-            return refreshRateAt(0);
-        }
     }
 }

@@ -17,12 +17,13 @@
 package overrungl.glfw;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.util.MemoryStack;
+import overrun.marshal.Downcall;
+import overrun.marshal.gen.Convert;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Type;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static overrungl.glfw.Handles.*;
 
 /**
  * This is the header file of the native access functions.
@@ -34,10 +35,11 @@ import static overrungl.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFWNative {
-    private GLFWNative() {
-        //no instance
-    }
+public interface GLFWNative {
+    /**
+     * The instance of GLFWNative.
+     */
+    GLFWNative INSTANCE = Downcall.load(Handles.lookup);
 
     /**
      * Returns the adapter device name of the specified monitor.
@@ -49,12 +51,9 @@ public final class GLFWNative {
      * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not synchronized.
      */
-    public static MemorySegment ngetWin32Adapter(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetWin32Adapter.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWin32Adapter")
+    default MemorySegment ngetWin32Adapter(MemorySegment monitor) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -66,8 +65,9 @@ public final class GLFWNative {
      * occurred.
      * @see #ngetWin32Adapter(MemorySegment) ngetWin32Adapter
      */
-    public static String getWin32Adapter(MemorySegment monitor) {
-        return ngetWin32Adapter(monitor).getString(0);
+    @Entrypoint("glfwGetWin32Adapter")
+    default String getWin32Adapter(MemorySegment monitor) {
+        return null;
     }
 
     /**
@@ -81,12 +81,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment ngetWin32Monitor(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetWin32Monitor.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWin32Monitor")
+    default MemorySegment ngetWin32Monitor(MemorySegment monitor) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -98,8 +95,9 @@ public final class GLFWNative {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetWin32Monitor(MemorySegment) ngetWin32Monitor
      */
-    public static String getWin32Monitor(MemorySegment monitor) {
-        return ngetWin32Monitor(monitor).getString(0);
+    @Entrypoint("glfwGetWin32Monitor")
+    default String getWin32Monitor(MemorySegment monitor) {
+        return null;
     }
 
     /**
@@ -117,12 +115,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getWin32Window(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetWin32Window.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWin32Window")
+    default MemorySegment getWin32Window(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -140,12 +135,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getWGLContext(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetWGLContext.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWGLContext")
+    default MemorySegment getWGLContext(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -158,12 +150,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static int getCocoaMonitor(MemorySegment monitor) {
-        try {
-            return (int) glfwGetCocoaMonitor.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetCocoaMonitor")
+    default int getCocoaMonitor(MemorySegment monitor) {
+        return 0;
     }
 
     /**
@@ -176,12 +165,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getCocoaWindow(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetCocoaWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetCocoaWindow")
+    default MemorySegment getCocoaWindow(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -194,12 +180,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getNSGLContext(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetNSGLContext.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetNSGLContext")
+    default MemorySegment getNSGLContext(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -211,12 +194,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getX11Display() {
-        try {
-            return (MemorySegment) glfwGetX11Display.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetX11Display")
+    default MemorySegment getX11Display() {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -229,12 +209,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static long getX11Adapter(MemorySegment monitor) {
-        try {
-            return (long) glfwGetX11Adapter.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetX11Adapter")
+    default long getX11Adapter(MemorySegment monitor) {
+        return 0L;
     }
 
     /**
@@ -247,12 +224,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static long getX11Monitor(MemorySegment monitor) {
-        try {
-            return (long) glfwGetX11Monitor.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetX11Monitor")
+    default long getX11Monitor(MemorySegment monitor) {
+        return 0L;
     }
 
     /**
@@ -265,12 +239,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static long getX11Window(MemorySegment window) {
-        try {
-            return (long) glfwGetX11Window.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetX11Window")
+    default long getX11Window(MemorySegment window) {
+        return 0L;
     }
 
     /**
@@ -284,12 +255,8 @@ public final class GLFWNative {
      * @see #ngetX11SelectionString() getX11SelectionString
      * @see GLFW#nsetClipboardString(MemorySegment) setClipboardString
      */
-    public static void nsetX11SelectionString(MemorySegment string) {
-        try {
-            glfwSetX11SelectionString.invokeExact(string);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwSetX11SelectionString")
+    default void nsetX11SelectionString(MemorySegment string) {
     }
 
     /**
@@ -298,14 +265,8 @@ public final class GLFWNative {
      * @param string A UTF-8 encoded string.
      * @see #nsetX11SelectionString(MemorySegment) nsetX11SelectionString
      */
-    public static void setX11SelectionString(String string) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            nsetX11SelectionString(stack.allocateFrom(string));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glfwSetX11SelectionString")
+    default void setX11SelectionString(String string) {
     }
 
     /**
@@ -325,12 +286,9 @@ public final class GLFWNative {
      * @see #nsetX11SelectionString(MemorySegment) setX11SelectionString
      * @see GLFW#ngetClipboardString() getClipboardString
      */
-    public static MemorySegment ngetX11SelectionString() {
-        try {
-            return (MemorySegment) glfwGetX11SelectionString.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetX11SelectionString")
+    default MemorySegment ngetX11SelectionString() {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -340,9 +298,9 @@ public final class GLFWNative {
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetX11SelectionString() ngetX11SelectionString
      */
-    public static String getX11SelectionString() {
-        final MemorySegment seg = ngetX11SelectionString();
-        return seg != null ? seg.getString(0) : null;
+    @Entrypoint("glfwGetX11SelectionString")
+    default String getX11SelectionString() {
+        return null;
     }
 
     /**
@@ -355,12 +313,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getGLXContext(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetGLXContext.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetGLXContext")
+    default MemorySegment getGLXContext(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -373,12 +328,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static long getGLXWindow(MemorySegment window) {
-        try {
-            return (long) glfwGetGLXWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetGLXWindow")
+    default long getGLXWindow(MemorySegment window) {
+        return 0L;
     }
 
     /**
@@ -390,12 +342,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getWaylandDisplay() {
-        try {
-            return (MemorySegment) glfwGetWaylandDisplay.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWaylandDisplay")
+    default MemorySegment getWaylandDisplay() {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -408,12 +357,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getWaylandMonitor(MemorySegment monitor) {
-        try {
-            return (MemorySegment) glfwGetWaylandMonitor.invokeExact(monitor);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWaylandMonitor")
+    default MemorySegment getWaylandMonitor(MemorySegment monitor) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -426,12 +372,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getWaylandWindow(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetWaylandWindow.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetWaylandWindow")
+    default MemorySegment getWaylandWindow(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -445,12 +388,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getEGLDisplay() {
-        try {
-            return (MemorySegment) glfwGetEGLDisplay.invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetEGLDisplay")
+    default MemorySegment getEGLDisplay() {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -463,12 +403,9 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getEGLContext(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetEGLContext.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetEGLContext")
+    default MemorySegment getEGLContext(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
@@ -481,23 +418,20 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getEGLSurface(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetEGLSurface.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetEGLSurface")
+    default MemorySegment getEGLSurface(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 
     /**
      * Retrieves the color buffer associated with the specified window.
      *
-     * @param window window The window whose color buffer to retrieve.
-     * @param width  width Where to store the width of the color buffer, or {@link MemorySegment#NULL NULL}.
-     * @param height height Where to store the height of the color buffer, or {@link MemorySegment#NULL NULL}.
-     * @param format format Where to store the OSMesa pixel format of the color
+     * @param window The window whose color buffer to retrieve.
+     * @param width  Where to store the width of the color buffer, or {@link MemorySegment#NULL NULL}.
+     * @param height Where to store the height of the color buffer, or {@link MemorySegment#NULL NULL}.
+     * @param format Where to store the OSMesa pixel format of the color
      *               buffer, or {@link MemorySegment#NULL NULL}.
-     * @param buffer buffer Where to store the address of the color buffer, or
+     * @param buffer Where to store the address of the color buffer, or
      *               {@link MemorySegment#NULL NULL}.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
@@ -505,53 +439,30 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static boolean ngetOSMesaColorBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment format, MemorySegment buffer) {
-        try {
-            return (int) glfwGetOSMesaColorBuffer.invokeExact(window, width, height, format, buffer) != GLFW.FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetOSMesaColorBuffer")
+    default boolean ngetOSMesaColorBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment format, MemorySegment buffer) {
+        return false;
     }
 
     /**
      * Retrieves the color buffer associated with the specified window.
      *
-     * @param window window The window whose color buffer to retrieve.
-     * @param width  width Where to store the width of the color buffer, or {@code null}.
-     * @param height height Where to store the height of the color buffer, or {@code null}.
-     * @param format format Where to store the OSMesa pixel format of the color
+     * @param window The window whose color buffer to retrieve.
+     * @param width  Where to store the width of the color buffer, or {@code null}.
+     * @param height Where to store the height of the color buffer, or {@code null}.
+     * @param format Where to store the OSMesa pixel format of the color
      *               buffer, or {@code null}.
-     * @param buffer buffer Where to store the address of the color buffer, or
-     *               {@code null}.
+     * @param buffer Where to store the address of the color buffer, or
+     *               {@code NULL}.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetOSMesaColorBuffer(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetOSMesaColorBuffer
      */
-    public static boolean getOSMesaColorBuffer(MemorySegment window, int @Nullable [] width, int @Nullable [] height, int @Nullable [] format, MemorySegment @Nullable [] buffer) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment pWidth = width != null ? stack.callocInt() : MemorySegment.NULL;
-            final MemorySegment pHeight = height != null ? stack.callocInt() : MemorySegment.NULL;
-            final MemorySegment pFormat = format != null ? stack.callocInt() : MemorySegment.NULL;
-            final MemorySegment pBuffer = buffer != null ? stack.callocPointer() : MemorySegment.NULL;
-            final boolean success = ngetOSMesaColorBuffer(window, pWidth, pHeight, pFormat, pBuffer);
-            if (width != null && width.length > 0) {
-                width[0] = pWidth.get(ValueLayout.JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = pHeight.get(ValueLayout.JAVA_INT, 0);
-            }
-            if (format != null && format.length > 0) {
-                format[0] = pFormat.get(ValueLayout.JAVA_INT, 0);
-            }
-            if (buffer != null && buffer.length > 0) {
-                buffer[0] = pBuffer.get(ValueLayout.ADDRESS, 0);
-            }
-            return success;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetOSMesaColorBuffer")
+    default boolean getOSMesaColorBuffer(MemorySegment window, @Ref int @Nullable [] width, @Ref int @Nullable [] height, @Ref int @Nullable [] format, MemorySegment buffer) {
+        return false;
     }
 
     /**
@@ -570,12 +481,10 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static boolean ngetOSMesaDepthBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment bytesPerValue, MemorySegment buffer) {
-        try {
-            return (int) glfwGetOSMesaDepthBuffer.invokeExact(window, width, height, bytesPerValue, buffer) != GLFW.FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetOSMesaDepthBuffer")
+    default boolean ngetOSMesaDepthBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment bytesPerValue, MemorySegment buffer) {
+        return false;
     }
 
     /**
@@ -592,31 +501,10 @@ public final class GLFWNative {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetOSMesaDepthBuffer(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetOSMesaDepthBuffer
      */
-    public static boolean getOSMesaDepthBuffer(MemorySegment window, int @Nullable [] width, int @Nullable [] height, int @Nullable [] bytesPerValue, MemorySegment @Nullable [] buffer) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            final MemorySegment pWidth = width != null ? stack.callocInt() : MemorySegment.NULL;
-            final MemorySegment pHeight = height != null ? stack.callocInt() : MemorySegment.NULL;
-            final MemorySegment pBPV = bytesPerValue != null ? stack.callocInt() : MemorySegment.NULL;
-            final MemorySegment pBuffer = buffer != null ? stack.callocPointer() : MemorySegment.NULL;
-            final boolean success = ngetOSMesaDepthBuffer(window, pWidth, pHeight, pBPV, pBuffer);
-            if (width != null && width.length > 0) {
-                width[0] = pWidth.get(ValueLayout.JAVA_INT, 0);
-            }
-            if (height != null && height.length > 0) {
-                height[0] = pHeight.get(ValueLayout.JAVA_INT, 0);
-            }
-            if (bytesPerValue != null && bytesPerValue.length > 0) {
-                bytesPerValue[0] = pBPV.get(ValueLayout.JAVA_INT, 0);
-            }
-            if (buffer != null && buffer.length > 0) {
-                buffer[0] = pBuffer.get(ValueLayout.ADDRESS, 0);
-            }
-            return success;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetOSMesaDepthBuffer")
+    default boolean getOSMesaDepthBuffer(MemorySegment window, @Ref int @Nullable [] width, @Ref int @Nullable [] height, @Ref int @Nullable [] bytesPerValue, MemorySegment buffer) {
+        return false;
     }
 
     /**
@@ -629,11 +517,8 @@ public final class GLFWNative {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static MemorySegment getOSMesaContext(MemorySegment window) {
-        try {
-            return (MemorySegment) glfwGetOSMesaContext.invokeExact(window);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glfwGetOSMesaContext")
+    default MemorySegment getOSMesaContext(MemorySegment window) {
+        return MemorySegment.NULL;
     }
 }
