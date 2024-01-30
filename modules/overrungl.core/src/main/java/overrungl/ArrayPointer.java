@@ -24,6 +24,7 @@ import java.lang.foreign.SequenceLayout;
  * @author squid233
  * @since 0.1.0
  */
+@Deprecated(since = "0.1.0")
 public interface ArrayPointer extends Addressable {
     /**
      * {@return the count of the elements in this array}

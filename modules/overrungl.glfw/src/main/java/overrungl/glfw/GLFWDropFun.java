@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,22 +16,17 @@
 
 package overrungl.glfw;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 import overrungl.internal.RuntimeHelper;
 
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 
 /**
  * This is the function pointer type for path drop callbacks. A path drop
  * callback function has the following signature:
- * {@snippet lang=java:
- * @Invoker(IGLFWDropFun::invoke)
- * void functionName(MemorySegment window, String[] paths);
+ * {@snippet lang = java:
+ * void functionName(MemorySegment window, String[] paths); // @link regex="functionName" target="#invoke"
  * }
  * <h2>Pointer lifetime</h2>
  * The path array and its strings are valid until the callback function returns.
@@ -41,29 +36,34 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWDropFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLFWDropFun extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLFWDropFun> TYPE = Upcall.type();
+
+    /**
+     * The function pointer type for path drop callbacks.
+     *
+     * @param window The window that received the event.
+     * @param paths  The UTF-8 encoded file and/or directory path names.
+     */
+    void invoke(MemorySegment window, String[] paths);
 
     /**
      * The function pointer type for path drop callbacks.
      *
      * @param window    The window that received the event.
+     * @param pathCount The number of dropped paths.
      * @param paths     The UTF-8 encoded file and/or directory path names.
      */
-    void invoke(MemorySegment window, String[] paths);
-
+    @Stub
     default void ninvoke(MemorySegment window, int pathCount, MemorySegment paths) {
         invoke(window, RuntimeHelper.toUnboundedArray(paths, new String[pathCount]));
     }
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWDropFun.class, "ninvoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

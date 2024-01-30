@@ -16,11 +16,12 @@
 
 package overrungl.glfw;
 
-import overrungl.internal.RuntimeHelper;
-import overrungl.Struct;
+import overrun.marshal.Marshal;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructHandle;
 
 import java.lang.foreign.*;
-import java.lang.invoke.VarHandle;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -29,9 +30,9 @@ import static java.lang.foreign.ValueLayout.*;
  * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWgammaramp {
- *     unsigned short* {@link #red() red};
- *     unsigned short* {@link #green() green};
- *     unsigned short* {@link #blue() blue};
+ *     unsigned short* {@link #red};
+ *     unsigned short* {@link #green};
+ *     unsigned short* {@link #blue};
  *     unsigned int {@link #size};
  * }</code></pre>
  *
@@ -41,7 +42,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public final class GLFWGammaRamp extends Struct {
-    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Long.MAX_VALUE / JAVA_SHORT.byteSize(), JAVA_SHORT));
+    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(0L, JAVA_SHORT));
     /**
      * The struct layout.
      */
@@ -51,190 +52,58 @@ public final class GLFWGammaRamp extends Struct {
         SHORT_ARRAY.withName("blue"),
         JAVA_INT.withName("size")
     );
-    private static final VarHandle
-        ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
-        ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),
-        ppBlue = LAYOUT.varHandle(PathElement.groupElement("blue")),
-        pRed = LAYOUT.varHandle(PathElement.groupElement("red"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
-        pGreen = LAYOUT.varHandle(PathElement.groupElement("green"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
-        pBlue = LAYOUT.varHandle(PathElement.groupElement("blue"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
-        pSize = LAYOUT.varHandle(PathElement.groupElement("size"));
+    /**
+     * An array of value describing the response of the red channel.
+     */
+    public final StructHandle.Array<short[]> red = StructHandle.ofArray(this, "red", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
+    /**
+     * An array of value describing the response of the green channel.
+     */
+    public final StructHandle.Array<short[]> green = StructHandle.ofArray(this, "green", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
+    /**
+     * An array of value describing the response of the blue channel.
+     */
+    public final StructHandle.Array<short[]> blue = StructHandle.ofArray(this, "blue", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
+    /**
+     * The number of elements in each array.
+     */
+    public final StructHandle.Int size = StructHandle.ofInt(this, "size");
 
     /**
-     * Create a {@code GLFWgammaramp const} instance.
+     * Creates a struct with the given layout.
      *
-     * @param address the address.
+     * @param segment      the segment
+     * @param elementCount the element count
      */
-    public GLFWGammaRamp(MemorySegment address) {
-        super(address, LAYOUT);
+    public GLFWGammaRamp(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
     /**
-     * {@return the elements size of this struct in bytes}
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
      */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
+    public GLFWGammaRamp(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
     /**
-     * Creates a {@code GLFWgammaramp} instance with the given allocator.
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
+     */
+    public GLFWGammaRamp(MemorySegment segment) {
+        super(segment, LAYOUT);
+    }
+
+    /**
+     * Allocates a struct with the given layout.
      *
      * @param allocator the allocator
-     * @return the instance
      */
-    public static GLFWGammaRamp create(SegmentAllocator allocator) {
-        return new GLFWGammaRamp(allocator.allocate(LAYOUT));
-    }
-
-    /**
-     * Sets the red value array.
-     *
-     * @param allocator the allocator of the array.
-     * @param reds      the array
-     * @return this
-     */
-    public GLFWGammaRamp red(SegmentAllocator allocator, short[] reds) {
-        ppRed.set(segment(), allocator.allocateFrom(JAVA_SHORT, reds));
-        return this;
-    }
-
-    /**
-     * Sets the green value array.
-     *
-     * @param allocator the allocator of the array.
-     * @param greens    the array
-     * @return this
-     */
-    public GLFWGammaRamp green(SegmentAllocator allocator, short[] greens) {
-        ppGreen.set(segment(), allocator.allocateFrom(JAVA_SHORT, greens));
-        return this;
-    }
-
-    /**
-     * Sets the blue value array.
-     *
-     * @param allocator the allocator of the array.
-     * @param blues     the array
-     * @return this
-     */
-    public GLFWGammaRamp blue(SegmentAllocator allocator, short[] blues) {
-        ppBlue.set(segment(), allocator.allocateFrom(JAVA_SHORT, blues));
-        return this;
-    }
-
-    /**
-     * Sets the size of arrays.
-     *
-     * @param size The number of elements in each array.
-     * @return this
-     */
-    public GLFWGammaRamp size(int size) {
-        pSize.set(segment(), size);
-        return this;
-    }
-
-    /**
-     * Gets a red value at the given index.
-     *
-     * @param index the index
-     * @return the red value
-     */
-    public short red(int index) {
-        return (short) pRed.get(segment(), (long) index);
-    }
-
-    /**
-     * Gets a green value at the given index.
-     *
-     * @param index the index
-     * @return the green value
-     */
-    public short green(int index) {
-        return (short) pGreen.get(segment(), (long) index);
-    }
-
-    /**
-     * Gets a blue value at the given index.
-     *
-     * @param index the index
-     * @return the blue value
-     */
-    public short blue(int index) {
-        return (short) pBlue.get(segment(), (long) index);
-    }
-
-    /**
-     * {@return the red value array}
-     *
-     * @param size the array size
-     */
-    public short[] reds(int size) {
-        return RuntimeHelper.toArray(nred(), new short[size]);
-    }
-
-    /**
-     * {@return the green value array}
-     *
-     * @param size the array size
-     */
-    public short[] greens(int size) {
-        return RuntimeHelper.toArray(ngreen(), new short[size]);
-    }
-
-    /**
-     * {@return the blue value array}
-     *
-     * @param size the array size
-     */
-    public short[] blues(int size) {
-        return RuntimeHelper.toArray(nblue(), new short[size]);
-    }
-
-    /**
-     * Gets the red value array.
-     *
-     * @return An array of value describing the response of the red channel.
-     */
-    public short[] red() {
-        return reds(size());
-    }
-
-    /**
-     * Gets the green value array.
-     *
-     * @return An array of value describing the response of the green channel.
-     */
-    public short[] green() {
-        return greens(size());
-    }
-
-    /**
-     * Gets the blue value array.
-     *
-     * @return An array of value describing the response of the blue channel.
-     */
-    public short[] blue() {
-        return blues(size());
-    }
-
-    /**
-     * Gets the arrays size.
-     *
-     * @return The number of elements in each array.
-     */
-    public int size() {
-        return (int) pSize.get(segment());
-    }
-
-    public MemorySegment nred() {
-        return (MemorySegment) ppRed.get(segment());
-    }
-
-    public MemorySegment ngreen() {
-        return (MemorySegment) ppGreen.get(segment());
-    }
-
-    public MemorySegment nblue() {
-        return (MemorySegment) ppBlue.get(segment());
+    public GLFWGammaRamp(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 }

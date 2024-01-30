@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,21 +16,16 @@
 
 package overrungl.glfw;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 
 /**
  * This is the function pointer type for window maximize callbacks. A window
  * maximize callback function has the following signature:
  * {@snippet :
- * @Invoker(IGLFWWindowMaximizeFun::invoke)
- * void functionName(MemorySegment window, boolean maximized);
+ * void functionName(MemorySegment window, boolean maximized); // @link regex="functionName" target="#invoke"
  * }
  *
  * @author squid233
@@ -38,9 +33,11 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWWindowMaximizeFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLFWWindowMaximizeFun extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLFWWindowMaximizeFun> TYPE = Upcall.type();
 
     /**
      * The function pointer type for window maximize callbacks.
@@ -51,17 +48,20 @@ public interface IGLFWWindowMaximizeFun extends Callback {
      */
     void invoke(MemorySegment window, boolean maximized);
 
+    /**
+     * The function pointer type for window maximize callbacks.
+     *
+     * @param window    The window that was maximized or restored.
+     * @param maximized {@code true} if the window was maximized, or
+     *                  {@code false} if it was restored.
+     */
+    @Stub
     default void ninvoke(MemorySegment window, int maximized) {
         invoke(window, maximized != GLFW.FALSE);
     }
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWWindowMaximizeFun.class, "ninvoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

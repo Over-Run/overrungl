@@ -99,8 +99,8 @@ public final class NFDU8FilterItem extends Struct {
         final NFDU8FilterItem buffer = new NFDU8FilterItem(allocator.allocate(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
-            buffer._name.set(allocator, i, item.key());
-            buffer._spec.set(allocator, i, item.value());
+            buffer._name.set(i, allocator, item.key());
+            buffer._spec.set(i, allocator, item.value());
         }
         return buffer;
     }

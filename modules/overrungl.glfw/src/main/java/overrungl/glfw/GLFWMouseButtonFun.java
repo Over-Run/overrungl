@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,21 +16,16 @@
 
 package overrungl.glfw;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 
 /**
  * This is the function pointer type for mouse button callback functions.
  * A mouse button callback function has the following signature:
  * {@snippet :
- * @Invoker(IGLFWMouseButtonFun::invoke)
- * void functionName(MemorySegment window, int button, int action, int mods);
+ * void functionName(MemorySegment window, int button, int action, int mods); // @link regex="functionName" target="#invoke"
  * }
  *
  * @author squid233
@@ -38,9 +33,11 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWMouseButtonFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLFWMouseButtonFun extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLFWMouseButtonFun> TYPE = Upcall.type();
 
     /**
      * The function pointer type for mouse button callbacks.
@@ -50,15 +47,11 @@ public interface IGLFWMouseButtonFun extends Callback {
      * @param action One of {@code PRESS} or {@code RELEASE}. Future releases may add more actions.
      * @param mods   Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a> were held down.
      */
+    @Stub
     void invoke(MemorySegment window, int button, int action, int mods);
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWMouseButtonFun.class, "invoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

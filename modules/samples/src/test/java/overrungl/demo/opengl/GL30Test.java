@@ -40,6 +40,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @since 0.1.0
  */
 public final class GL30Test {
+    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
     private int program;
     private int colorFactor;
@@ -60,45 +61,45 @@ public final class GL30Test {
         GL.deleteTexture(tex);
 
         GLFWCallbacks.free(window);
-        GLFW.destroyWindow(window);
+        glfw.destroyWindow(window);
 
-        GLFW.terminate();
-        GLFW.setErrorCallback(null);
+        glfw.terminate();
+        glfw.setErrorCallback(null);
     }
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
-        GLFW.defaultWindowHints();
-        GLFW.windowHint(GLFW.VISIBLE, false);
-        GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
+        CheckUtil.check(glfw.init(), "Unable to initialize GLFW");
+        glfw.defaultWindowHints();
+        glfw.windowHint(GLFW.VISIBLE, false);
+        glfw.windowHint(GLFW.RESIZABLE, true);
+        window = glfw.createWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
         CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
-        GLFW.setKeyCallback(window, (_, key, _, action, _) -> {
+        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                GLFW.setWindowShouldClose(window, true);
+                glfw.setWindowShouldClose(window, true);
             }
         });
-        GLFW.setFramebufferSizeCallback(window, (_, width, height) ->
+        glfw.setFramebufferSizeCallback(window, (_, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
-            var size = GLFW.getWindowSize(window);
-            GLFW.setWindowPos(
+            var size = glfw.getWindowSize(window);
+            glfw.setWindowPos(
                 window,
                 (vidMode.width() - size.x()) / 2,
                 (vidMode.height() - size.y()) / 2
             );
         }
 
-        GLFW.makeContextCurrent(window);
-        GLFW.swapInterval(1);
+        glfw.makeContextCurrent(window);
+        glfw.swapInterval(1);
 
-        GLFW.showWindow(window);
+        glfw.showWindow(window);
     }
 
     private void load(Arena arena) {
-        Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress, true), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
@@ -201,22 +202,22 @@ public final class GL30Test {
     }
 
     private void loop() {
-        while (!GLFW.windowShouldClose(window)) {
+        while (!glfw.windowShouldClose(window)) {
             GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
             GL.bindTexture(GL.TEXTURE_2D, tex);
             GL.useProgram(program);
-            GL.uniform1f(colorFactor, (float) ((Math.sin(GLFW.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
+            GL.uniform1f(colorFactor, (float) ((Math.sin(glfw.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
             GL.bindVertexArray(vao);
             GL.drawElements(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL);
             GL.bindVertexArray(0);
             GL.useProgram(0);
             GL.bindTexture(GL.TEXTURE_2D, 0);
 
-            GLFW.swapBuffers(window);
+            glfw.swapBuffers(window);
 
-            GLFW.pollEvents();
+            glfw.pollEvents();
         }
     }
 

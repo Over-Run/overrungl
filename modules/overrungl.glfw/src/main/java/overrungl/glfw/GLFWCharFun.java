@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,21 +16,16 @@
 
 package overrungl.glfw;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 
 /**
  * This is the function pointer type for Unicode character callbacks.
  * A Unicode character callback function has the following signature:
  * {@snippet :
- * @Invoker(IGLFWCharFun::invoke)
- * void functionName(MemorySegment window, int codepoint);
+ * void functionName(MemorySegment window, int codepoint); // @link regex="functionName" target="#invoke"
  * }
  *
  * @author squid233
@@ -38,9 +33,11 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWCharFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLFWCharFun extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLFWCharFun> TYPE = Upcall.type();
 
     /**
      * The function pointer type for Unicode character callbacks.
@@ -48,15 +45,11 @@ public interface IGLFWCharFun extends Callback {
      * @param window    The window that received the event.
      * @param codepoint The Unicode code point of the character.
      */
+    @Stub
     void invoke(MemorySegment window, int codepoint);
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWCharFun.class, "invoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

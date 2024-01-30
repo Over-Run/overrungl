@@ -69,7 +69,8 @@ public final class IOUtil {
                 Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
                     STR."Failed to load resource '\{resource}'!")
         ) {
-            MemorySegment segment = arena.allocate(segmentSize);
+            Arena readArena = Arena.ofConfined();
+            MemorySegment segment = readArena.allocate(segmentSize);
 
             // Creates a byte array to avoid creating it each loop
             final byte[] bytes = new byte[bufferSize];
@@ -77,13 +78,17 @@ public final class IOUtil {
             int count;
             while ((count = is.read(bytes)) > 0) {
                 if (pos + count >= segment.byteSize()) {
-                    segment = resizeSegment(arena, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
+                    Arena newArena = Arena.ofConfined();
+                    segment = resizeSegment(newArena, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
+                    readArena.close();
+                    readArena = newArena;
                 }
                 MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, count);
                 pos += count;
             }
+            readArena.close();
 
-            return segment.asSlice(0, pos);
+            return segment.asSlice(0, pos).reinterpret(arena, null);
         } catch (URISyntaxException e) {
             throw new IllegalArgumentException(STR."Illegal URI: \{resource}", e);
         }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,23 +16,19 @@
 
 package overrungl.glfw;
 
-import overrungl.Callback;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.Upcall;
+import overrun.marshal.gen.SizedSeg;
 import overrungl.NativeType;
-import overrungl.internal.RuntimeHelper;
 
-import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
 
 /**
  * This is the function pointer type for error callbacks. An error callback
  * function has the following signature:
- * {@snippet lang=java:
- * @Invoker(IGLFWErrorFun::invoke)
- * void callbackName(int errorCode, String description);
+ * {@snippet lang = java:
+ * void callbackName(int errorCode, String description); // @link regex="functionName" target="#invoke"
  * }
  * <h2>Pointer lifetime</h2>
  * The error description string is valid until the callback
@@ -43,9 +39,11 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWErrorFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLFWErrorFun extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLFWErrorFun> TYPE = Upcall.type();
 
     /**
      * The function pointer type for error callbacks.
@@ -55,26 +53,29 @@ public interface IGLFWErrorFun extends Callback {
      */
     void invoke(int errorCode, String description);
 
-    default void ninvoke(int errorCode, @NativeType("const char*") MemorySegment description) {
-        invoke(errorCode, RuntimeHelper.getString(description));
+    /**
+     * The function pointer type for error callbacks.
+     *
+     * @param errorCode   An <a href="https://www.glfw.org/docs/latest/group__errors.html">error code</a>.
+     *                    Future releases may add more error codes.
+     * @param description A UTF-8 encoded string describing the error.
+     */
+    @Stub
+    default void ninvoke(int errorCode, @NativeType("const char*") @SizedSeg(Unmarshal.STR_SIZE) MemorySegment description) {
+        invoke(errorCode, Unmarshal.unmarshalAsString(description));
     }
 
     /**
      * Sets the error callback.
      *
-     * @return The previous callback or {@code NULL}.
+     * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      */
     default MemorySegment set() {
-        return GLFW.setErrorCallback(this);
+        return GLFW.INSTANCE.setErrorCallback(this);
     }
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWErrorFun.class, "ninvoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

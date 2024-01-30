@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,12 +16,13 @@
 
 package overrungl.glfw;
 
-import overrungl.util.MemoryStack;
+import overrun.marshal.Downcall;
+import overrun.marshal.gen.Convert;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Type;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-import static overrungl.glfw.Handles.*;
 
 /**
  * The GLFW Vulkan binding.
@@ -29,13 +30,11 @@ import static overrungl.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFWVulkan {
+public interface GLFWVulkan {
     /**
-     * constructor
+     * The instance of GLFWVulkan.
      */
-    private GLFWVulkan() {
-        throw new IllegalStateException("Do not construct instance");
-    }
+    GLFWVulkan INSTANCE = Downcall.load(Handles.lookup);
 
     /**
      * Returns the address of the specified Vulkan instance function.
@@ -70,13 +69,8 @@ public final class GLFWVulkan {
      * is terminated.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    public static MemorySegment nglfwGetInstanceProcAddress(MemorySegment instance, MemorySegment procName) {
-        try {
-            return (MemorySegment) glfwGetInstanceProcAddress.invokeExact(instance, procName);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwGetInstanceProcAddress")
+    MemorySegment ngetInstanceProcAddress(MemorySegment instance, MemorySegment procName);
 
     /**
      * Returns the address of the specified Vulkan instance function.
@@ -86,17 +80,10 @@ public final class GLFWVulkan {
      * @param procName The ASCII encoded name of the function.
      * @return The address of the function, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @see #nglfwGetInstanceProcAddress(MemorySegment, MemorySegment) nglfwGetInstanceProcAddress
+     * @see #ngetInstanceProcAddress(MemorySegment, MemorySegment) nglfwGetInstanceProcAddress
      */
-    public static MemorySegment glfwGetInstanceProcAddress(MemorySegment instance, String procName) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return nglfwGetInstanceProcAddress(instance, stack.allocateFrom(procName));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwGetInstanceProcAddress")
+    MemorySegment getInstanceProcAddress(MemorySegment instance, String procName);
 
     /**
      * Returns whether the specified queue family can present images.
@@ -125,13 +112,9 @@ public final class GLFWVulkan {
      * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
      */
-    public static boolean glfwGetPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queueFamily) {
-        try {
-            return (int) glfwGetPhysicalDevicePresentationSupport.invokeExact(instance, device, queueFamily) != GLFW.FALSE;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Convert(Type.INT)
+    @Entrypoint("glfwGetPhysicalDevicePresentationSupport")
+    boolean getPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queueFamily);
 
     /**
      * Creates a Vulkan surface for the specified window.
@@ -188,13 +171,8 @@ public final class GLFWVulkan {
      * synchronization details of Vulkan objects, see the Vulkan specification.
      * @see GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions
      */
-    public static int nglfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface) {
-        try {
-            return (int) glfwCreateWindowSurface.invokeExact(instance, window, allocator, surface);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
+    @Entrypoint("glfwCreateWindowSurface")
+    int ncreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, MemorySegment surface);
 
     /**
      * Creates a Vulkan surface for the specified window.
@@ -207,18 +185,8 @@ public final class GLFWVulkan {
      *                  to {@code VK_NULL_HANDLE} if an error occurred.
      * @return {@code VK_SUCCESS} if successful, or a Vulkan error code if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @see #nglfwCreateWindowSurface(MemorySegment, MemorySegment, MemorySegment, MemorySegment) nglfwCreateWindowSurface
+     * @see #ncreateWindowSurface(MemorySegment, MemorySegment, MemorySegment, MemorySegment) nglfwCreateWindowSurface
      */
-    public static int glfwCreateWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, long[] surface) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pSurface = stack.callocLong();
-            int result = nglfwCreateWindowSurface(instance, window, allocator, pSurface);
-            surface[0] = pSurface.get(ValueLayout.JAVA_LONG, 0);
-            return result;
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
+    @Entrypoint("glfwCreateWindowSurface")
+    int createWindowSurface(MemorySegment instance, MemorySegment window, MemorySegment allocator, @Ref long[] surface);
 }

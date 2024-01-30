@@ -43,6 +43,7 @@ public class GL33Test {
     private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
     private static final boolean VSYNC = true;
+    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
     private int program;
     private int rotationMat;
@@ -68,49 +69,49 @@ public class GL33Test {
         }
 
         GLFWCallbacks.free(window);
-        GLFW.destroyWindow(window);
+        glfw.destroyWindow(window);
         debugProc.close();
 
-        GLFW.terminate();
-        GLFW.setErrorCallback(null);
+        glfw.terminate();
+        glfw.setErrorCallback(null);
     }
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
-        GLFW.defaultWindowHints();
-        GLFW.windowHint(GLFW.VISIBLE, false);
-        GLFW.windowHint(GLFW.RESIZABLE, true);
-        GLFW.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
-        GLFW.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
-        GLFW.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-        window = GLFW.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
+        CheckUtil.check(glfw.init(), "Unable to initialize GLFW");
+        glfw.defaultWindowHints();
+        glfw.windowHint(GLFW.VISIBLE, false);
+        glfw.windowHint(GLFW.RESIZABLE, true);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
+        glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
+        glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
+        window = glfw.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
         CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
-        GLFW.setKeyCallback(window, (_, key, _, action, _) -> {
+        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                GLFW.setWindowShouldClose(window, true);
+                glfw.setWindowShouldClose(window, true);
             }
         });
-        GLFW.setFramebufferSizeCallback(window, (_, width, height) ->
+        glfw.setFramebufferSizeCallback(window, (_, width, height) ->
             GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
-            var size = GLFW.getWindowSize(window);
-            GLFW.setWindowPos(
+            var size = glfw.getWindowSize(window);
+            glfw.setWindowPos(
                 window,
                 (vidMode.width() - size.x()) / 2,
                 (vidMode.height() - size.y()) / 2
             );
         }
 
-        GLFW.makeContextCurrent(window);
-        if (VSYNC) GLFW.swapInterval(1);
+        glfw.makeContextCurrent(window);
+        if (VSYNC) glfw.swapInterval(1);
 
-        GLFW.showWindow(window);
+        glfw.showWindow(window);
     }
 
     private void load(Arena arena) {
-        Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress, true), "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback();
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
@@ -222,9 +223,9 @@ public class GL33Test {
         var matrix = new Matrix4f();
         var pRotationMat = Matrixn.allocate(Arena.ofAuto(), matrix);
 
-        var timer = Timer.ofGetter(20, GLFW::getTime);
+        var timer = Timer.ofGetter(20, glfw::getTime);
 
-        while (!GLFW.windowShouldClose(window)) {
+        while (!glfw.windowShouldClose(window)) {
             timer.advanceTime();
             timer.performTicks(null);
 
@@ -243,13 +244,13 @@ public class GL33Test {
             GL.bindVertexArray(0);
             GL.useProgram(0);
 
-            GLFW.swapBuffers(window);
+            glfw.swapBuffers(window);
 
-            GLFW.pollEvents();
+            glfw.pollEvents();
 
             // using lambda gets higher FPS ??
             timer.calcFPS(fps -> {
-                GLFW.setWindowTitle(window, STR."\{WND_TITLE} FPS: \{fps}");
+                glfw.setWindowTitle(window, STR."\{WND_TITLE} FPS: \{fps}");
             });
         }
     }

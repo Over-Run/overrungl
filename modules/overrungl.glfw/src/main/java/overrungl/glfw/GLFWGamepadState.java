@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,19 +16,17 @@
 
 package overrungl.glfw;
 
-import overrungl.Struct;
+import overrun.marshal.struct.Struct;
 
 import java.lang.foreign.*;
-import java.lang.foreign.MemoryLayout.PathElement;
-import java.lang.invoke.VarHandle;
 
 /**
  * This describes the input state of a gamepad.
  * <h2>Layout</h2>
  * <pre><code>
  * struct GLFWgamepadstate {
- *     unsigned char {@link #buttons() buttons}[15];
- *     float {@link #axes() axes}[6];
+ *     unsigned char {@link #buttons}[15];
+ *     float {@link #axes}[6];
  * }</code></pre>
  *
  * @author squid233
@@ -36,61 +34,60 @@ import java.lang.invoke.VarHandle;
  */
 public final class GLFWGamepadState extends Struct {
     /**
-     * The struct member layout.
-     */
-    public static final SequenceLayout
-        BUTTONS_LAYOUT = MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("buttons"),
-        AXES_LAYOUT = MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("axes");
-    /**
      * The struct layout.
      */
     public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        BUTTONS_LAYOUT,
-        MemoryLayout.paddingLayout(8), // padding needed. will FFM API adds padding automatically in the future?
-        AXES_LAYOUT
+        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("buttons"),
+        MemoryLayout.paddingLayout(1L),
+        MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("axes")
     );
-    private static final VarHandle
-        pButtons = LAYOUT.varHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement()),
-        pAxes = LAYOUT.varHandle(PathElement.groupElement("axes"), PathElement.sequenceElement());
+    /**
+     * The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
+     * {@link GLFW#PRESS} or {@link GLFW#RELEASE}.
+     */
+    public final StructHandleSizedByteArray buttons = StructHandleSizedByteArray.of(this, "buttons");
+    /**
+     * The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
+     * in the range -1.0 to 1.0 inclusive.
+     */
+    public final StructHandleSizedFloatArray axes = StructHandleSizedFloatArray.of(this, "axes");
 
     /**
-     * Create a {@code GLFWgamepadstate} instance.
+     * Creates a struct with the given layout.
      *
-     * @param address the address.
+     * @param segment      the segment
+     * @param elementCount the element count
      */
-    public GLFWGamepadState(MemorySegment address) {
-        super(address, LAYOUT);
+    public GLFWGamepadState(MemorySegment segment, long elementCount) {
+        super(segment, elementCount, LAYOUT);
     }
 
     /**
-     * {@return the elements size of this struct in bytes}
+     * Allocates a struct with the given layout.
+     *
+     * @param allocator    the allocator
+     * @param elementCount the element count
      */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
+    public GLFWGamepadState(SegmentAllocator allocator, long elementCount) {
+        super(allocator, elementCount, LAYOUT);
     }
 
     /**
-     * Creates a {@code GLFWgamepadstate} instance with the given allocator.
+     * Creates a struct with the given layout.
+     *
+     * @param segment the segment
+     */
+    public GLFWGamepadState(MemorySegment segment) {
+        super(segment, LAYOUT);
+    }
+
+    /**
+     * Allocates a struct with the given layout.
      *
      * @param allocator the allocator
-     * @return the instance
      */
-    public static GLFWGamepadState create(SegmentAllocator allocator) {
-        return new GLFWGamepadState(allocator.allocate(LAYOUT));
-    }
-
-    /**
-     * Gets the button state array.
-     *
-     * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
-     * {@code PRESS} or {@code RELEASE}.
-     */
-    public byte[] buttons() {
-        byte[] arr = new byte[15];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (byte) pButtons.get(segment(), (long) i);
-        }
-        return arr;
+    public GLFWGamepadState(SegmentAllocator allocator) {
+        super(allocator, LAYOUT);
     }
 
     /**
@@ -100,21 +97,7 @@ public final class GLFWGamepadState extends Struct {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        return (byte) pButtons.get(segment(), (long) index) == GLFW.PRESS;
-    }
-
-    /**
-     * Gets the axe state array.
-     *
-     * @return The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
-     * in the range -1.0 to 1.0 inclusive.
-     */
-    public float[] axes() {
-        float[] arr = new float[6];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (float) pAxes.get(segment(), (long) i);
-        }
-        return arr;
+        return buttons.get(index) == GLFW.PRESS;
     }
 
     /**
@@ -124,6 +107,6 @@ public final class GLFWGamepadState extends Struct {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        return (float) pAxes.get(segment(), (long) index);
+        return axes.get(index);
     }
 }
