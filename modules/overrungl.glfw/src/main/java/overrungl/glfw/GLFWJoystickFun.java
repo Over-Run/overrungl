@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,20 +16,16 @@
 
 package overrungl.glfw;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 /**
  * This is the function pointer type for joystick configuration callbacks.
  * A joystick configuration callback function has the following signature:
  * {@snippet :
- * @Invoker(IGLFWJoystickFun::invoke)
- * void functionName(int jid, int event);
+ * void functionName(int jid, int event); // @link regex="functionName" target="#invoke"
  * }
  *
  * @author squid233
@@ -37,9 +33,11 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IGLFWJoystickFun extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-    MethodType MTYPE = DESC.toMethodType();
+public interface GLFWJoystickFun extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLFWJoystickFun> TYPE = Upcall.type();
 
     /**
      * The function pointer type for joystick configuration callbacks.
@@ -48,15 +46,11 @@ public interface IGLFWJoystickFun extends Callback {
      * @param event One of {@code CONNECTED} or {@code DISCONNECTED}. Future
      *              releases may add more events.
      */
+    @Stub
     void invoke(int jid, int event);
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
-    }
-
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(IGLFWJoystickFun.class, "invoke", MTYPE);
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 }

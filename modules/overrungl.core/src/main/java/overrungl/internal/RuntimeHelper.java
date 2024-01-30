@@ -98,16 +98,6 @@ public final class RuntimeHelper {
     }
 
     /**
-     * Converts the segment into a string.
-     *
-     * @param segment the segment
-     * @return the string
-     */
-    public static String getString(MemorySegment segment) {
-        return segment.reinterpret(MemoryUtil.strlen(segment) + 1).getString(0);
-    }
-
-    /**
      * Generates a string for unknown token.
      *
      * @param token the token.

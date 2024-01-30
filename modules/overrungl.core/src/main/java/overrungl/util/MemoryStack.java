@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @see Configurations#DEBUG_STACK
  * @since 0.1.0
  */
+@Deprecated(since = "0.1.0")
 public sealed class MemoryStack extends Pointer implements Arena {
     private static final boolean DEBUG = Configurations.DEBUG.get();
     private static final boolean DEBUG_STACK = Configurations.DEBUG_STACK.get();

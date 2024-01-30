@@ -32,6 +32,7 @@ import java.util.function.Function;
  * @author squid233
  * @since 0.1.0
  */
+@Deprecated(since = "0.1.0")
 public interface Callback {
     /**
      * Gets the address with the given arena.

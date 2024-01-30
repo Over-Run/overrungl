@@ -24,6 +24,7 @@ import java.lang.foreign.MemorySegment;
  * @author squid233
  * @since 0.1.0
  */
+@Deprecated(since = "0.1.0")
 @FunctionalInterface
 public interface Addressable {
     /**

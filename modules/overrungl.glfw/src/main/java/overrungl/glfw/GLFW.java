@@ -19,7 +19,6 @@ package overrungl.glfw;
 import org.jetbrains.annotations.Nullable;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
-import overrungl.util.MemoryUtil;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;
 import overrungl.util.value.Triplet;
@@ -1204,8 +1203,8 @@ public final class GLFW {
      * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      * @see #nsetErrorCallback(MemorySegment) nsetErrorCallback
      */
-    public static MemorySegment setErrorCallback(@Nullable IGLFWErrorFun callback) {
-        return nsetErrorCallback(callback != null ? callback.address(Arena.global()) : MemorySegment.NULL);
+    public static MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
+        return nsetErrorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
     /**
@@ -1694,7 +1693,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWmonitor* monitor, int event)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWMonitorFun function pointer type}.
+     * {@link GLFWMonitorFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -1715,8 +1714,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMonitorCallback(MemorySegment) nsetMonitorCallback
      */
-    public static MemorySegment setMonitorCallback(@Nullable IGLFWMonitorFun callback) {
-        return nsetMonitorCallback(callback != null ? callback.address(Arena.global()) : MemorySegment.NULL);
+    public static MemorySegment setMonitorCallback(@Nullable GLFWMonitorFun callback) {
+        return nsetMonitorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
     /**
@@ -3427,7 +3426,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int xpos, int ypos)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowPosFun function pointer type}.
+     * {@link GLFWWindowPosFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.remark <b>Wayland:</b> This callback will never be called, as there is no way for
      * an application to know its global position.
@@ -3451,8 +3450,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowPosCallback(MemorySegment, MemorySegment) nsetWindowPosCallback
      */
-    public static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable IGLFWWindowPosFun callback) {
-        return nsetWindowPosCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable GLFWWindowPosFun callback) {
+        return nsetWindowPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3469,7 +3468,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowSizeFun function pointer type}.
+     * {@link GLFWWindowSizeFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -3491,8 +3490,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowSizeCallback(MemorySegment, MemorySegment) nsetWindowSizeCallback
      */
-    public static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable IGLFWWindowSizeFun callback) {
-        return nsetWindowSizeCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable GLFWWindowSizeFun callback) {
+        return nsetWindowSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3514,7 +3513,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowCloseFun function pointer type}.
+     * {@link GLFWWindowCloseFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.remark <b>macOS:</b> Selecting Quit from the application menu will trigger the
      * close callback for all windows.
@@ -3538,8 +3537,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowCloseCallback(MemorySegment, MemorySegment) nsetWindowCloseCallback
      */
-    public static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable IGLFWWindowCloseFun callback) {
-        return nsetWindowCloseCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable GLFWWindowCloseFun callback) {
+        return nsetWindowCloseCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3560,7 +3559,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window);}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowRefreshFun function pointer type}.
+     * {@link GLFWWindowRefreshFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -3582,8 +3581,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowRefreshCallback(MemorySegment, MemorySegment) nsetWindowRefreshCallback
      */
-    public static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable IGLFWWindowRefreshFun callback) {
-        return nsetWindowRefreshCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable GLFWWindowRefreshFun callback) {
+        return nsetWindowRefreshCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3605,7 +3604,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int focused)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowFocusFun function pointer type}.
+     * {@link GLFWWindowFocusFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -3627,8 +3626,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowFocusCallback(MemorySegment, MemorySegment) nsetWindowFocusCallback
      */
-    public static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable IGLFWWindowFocusFun callback) {
-        return nsetWindowFocusCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable GLFWWindowFocusFun callback) {
+        return nsetWindowFocusCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3644,7 +3643,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int iconified)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowIconifyFun function pointer type}.
+     * {@link GLFWWindowIconifyFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.remark <b>Wayland:</b> The XDG-shell protocol has no event for iconification, so
      * this callback will never be called.
@@ -3668,8 +3667,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowIconifyCallback(MemorySegment, MemorySegment) nsetWindowIconifyCallback
      */
-    public static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable IGLFWWindowIconifyFun callback) {
-        return nsetWindowIconifyCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable GLFWWindowIconifyFun callback) {
+        return nsetWindowIconifyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3685,7 +3684,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int maximized)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowMaximizeFun function pointer type}.
+     * {@link GLFWWindowMaximizeFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -3707,8 +3706,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowMaximizeCallback(MemorySegment, MemorySegment) nsetWindowMaximizeCallback
      */
-    public static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable IGLFWWindowMaximizeFun callback) {
-        return nsetWindowMaximizeCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable GLFWWindowMaximizeFun callback) {
+        return nsetWindowMaximizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3724,7 +3723,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int width, int height)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWFramebufferSizeFun function pointer type}.
+     * {@link GLFWFramebufferSizeFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -3746,8 +3745,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) nsetFramebufferSizeCallback
      */
-    public static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable IGLFWFramebufferSizeFun callback) {
-        return nsetFramebufferSizeCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable GLFWFramebufferSizeFun callback) {
+        return nsetFramebufferSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -3763,7 +3762,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, float xscale, float yscale)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWWindowContentScaleFun function pointer type}.
+     * {@link GLFWWindowContentScaleFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) getWindowContentScale
@@ -3786,8 +3785,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) nsetWindowContentScaleCallback
      */
-    public static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable IGLFWWindowContentScaleFun callback) {
-        return nsetWindowContentScaleCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable GLFWWindowContentScaleFun callback) {
+        return nsetWindowContentScaleCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4512,7 +4511,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int key, int scancode, int action, int mods)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWKeyFun function pointer type}.
+     * {@link GLFWKeyFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -4534,8 +4533,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetKeyCallback(MemorySegment, MemorySegment) nsetKeyCallback
      */
-    public static MemorySegment setKeyCallback(MemorySegment window, @Nullable IGLFWKeyFun callback) {
-        return nsetKeyCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setKeyCallback(MemorySegment window, @Nullable GLFWKeyFun callback) {
+        return nsetKeyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4563,7 +4562,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, unsigned int codepoint)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWCharFun function pointer type}.
+     * {@link GLFWCharFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -4585,8 +4584,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCharCallback(MemorySegment, MemorySegment) nsetCharCallback
      */
-    public static MemorySegment setCharCallback(MemorySegment window, @Nullable IGLFWCharFun callback) {
-        return nsetCharCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setCharCallback(MemorySegment window, @Nullable GLFWCharFun callback) {
+        return nsetCharCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4608,7 +4607,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int button, int action, int mods)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWMouseButtonFun function pointer type}.
+     * {@link GLFWMouseButtonFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -4630,8 +4629,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMouseButtonCallback(MemorySegment, MemorySegment) nsetMouseButtonCallback
      */
-    public static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable IGLFWMouseButtonFun callback) {
-        return nsetMouseButtonCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable GLFWMouseButtonFun callback) {
+        return nsetMouseButtonCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4649,7 +4648,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, double xpos, double ypos);}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWCursorPosFun function pointer type}.
+     * {@link GLFWCursorPosFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -4671,8 +4670,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorPosCallback(MemorySegment, MemorySegment) nsetCursorPosCallback
      */
-    public static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable IGLFWCursorPosFun callback) {
-        return nsetCursorPosCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable GLFWCursorPosFun callback) {
+        return nsetCursorPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4689,7 +4688,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int entered)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWCursorEnterFun function pointer type}.
+     * {@link GLFWCursorEnterFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -4711,8 +4710,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorEnterCallback(MemorySegment, MemorySegment) nsetCursorEnterCallback
      */
-    public static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable IGLFWCursorEnterFun callback) {
-        return nsetCursorEnterCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable GLFWCursorEnterFun callback) {
+        return nsetCursorEnterCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4732,7 +4731,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, double xoffset, double yoffset)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWScrollFun function pointer type}.
+     * {@link GLFWScrollFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -4754,8 +4753,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetScrollCallback(MemorySegment, MemorySegment) nsetScrollCallback
      */
-    public static MemorySegment setScrollCallback(MemorySegment window, @Nullable IGLFWScrollFun callback) {
-        return nsetScrollCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setScrollCallback(MemorySegment window, @Nullable GLFWScrollFun callback) {
+        return nsetScrollCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -4776,7 +4775,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(GLFWwindow* window, int path_count, const char* paths[])}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWDropFun function pointer type}.
+     * {@link GLFWDropFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.remark <b>Wayland:</b> File drop is currently unimplemented.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -4799,8 +4798,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetDropCallback(MemorySegment, MemorySegment) nsetDropCallback
      */
-    public static MemorySegment setDropCallback(MemorySegment window, @Nullable IGLFWDropFun callback) {
-        return nsetDropCallback(window, callback != null ? callback.address(GLFWCallbacks.create(window)) : MemorySegment.NULL);
+    public static MemorySegment setDropCallback(MemorySegment window, @Nullable GLFWDropFun callback) {
+        return nsetDropCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
     /**
@@ -5215,7 +5214,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @glfw.callback_signature <pre>{@code void function_name(int jid, int event)}</pre>
      * For more information about the callback parameters, see the
-     * {@link IGLFWJoystickFun function pointer type}.
+     * {@link GLFWJoystickFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
@@ -5236,8 +5235,8 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetJoystickCallback(MemorySegment) nsetJoystickCallback
      */
-    public static MemorySegment setJoystickCallback(@Nullable IGLFWJoystickFun callback) {
-        return nsetJoystickCallback(callback != null ? callback.address(Arena.global()) : MemorySegment.NULL);
+    public static MemorySegment setJoystickCallback(@Nullable GLFWJoystickFun callback) {
+        return nsetJoystickCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
     /**

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,8 +18,8 @@ package overrungl.glfw;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The GLFW window callbacks.
@@ -28,7 +28,7 @@ import java.util.Map;
  * @since 0.1.0
  */
 public final class GLFWCallbacks {
-    private static final Map<MemorySegment, Arena> ARENA_MAP = new HashMap<>();
+    private static final Map<MemorySegment, Arena> ARENA_MAP = new ConcurrentHashMap<>();
 
     private GLFWCallbacks() {
         //no instance
@@ -42,7 +42,7 @@ public final class GLFWCallbacks {
      * @return the arena.
      */
     public static Arena create(MemorySegment window) {
-        return ARENA_MAP.computeIfAbsent(window, k -> Arena.ofConfined());
+        return ARENA_MAP.computeIfAbsent(window, _ -> Arena.ofConfined());
     }
 
     /**
@@ -52,6 +52,22 @@ public final class GLFWCallbacks {
      */
     public static void free(MemorySegment window) {
         if (ARENA_MAP.containsKey(window)) {
+            GLFW.setCharCallback(window, null);
+            GLFW.setCursorEnterCallback(window, null);
+            GLFW.setCursorPosCallback(window, null);
+            GLFW.setDropCallback(window, null);
+            GLFW.setFramebufferSizeCallback(window, null);
+            GLFW.setKeyCallback(window, null);
+            GLFW.setMouseButtonCallback(window, null);
+            GLFW.setScrollCallback(window, null);
+            GLFW.setWindowCloseCallback(window, null);
+            GLFW.setWindowContentScaleCallback(window, null);
+            GLFW.setWindowFocusCallback(window, null);
+            GLFW.setWindowIconifyCallback(window, null);
+            GLFW.setWindowMaximizeCallback(window, null);
+            GLFW.setWindowPosCallback(window, null);
+            GLFW.setWindowRefreshCallback(window, null);
+            GLFW.setWindowSizeCallback(window, null);
             ARENA_MAP.remove(window).close();
         }
     }
