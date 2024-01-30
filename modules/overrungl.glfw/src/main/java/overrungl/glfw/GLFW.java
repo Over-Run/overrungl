@@ -17,6 +17,7 @@
 package overrungl.glfw;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Downcall;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryStack;
 import overrungl.util.value.Pair;
@@ -36,25 +37,30 @@ import static overrungl.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFW {
+public interface GLFW {
+    /**
+     * The instance of GLFW.
+     */
+    GLFW INSTANCE = Downcall.load(Handles.lookup);
+
     /**
      * The major version number of the GLFW header.
      * <p>
      * This is incremented when the API is changed in non-compatible ways.
      */
-    public static final int VERSION_MAJOR = 3;
+    int VERSION_MAJOR = 3;
     /**
      * The minor version number of the GLFW header.
      * <p>
      * This is incremented when features are added to the API, but it remains backward-compatible.
      */
-    public static final int VERSION_MINOR = 3;
+    int VERSION_MINOR = 3;
     /**
      * The revision number of the GLFW header.
      * <p>
      * This is incremented when a bug fix release is made that does not contain any API changes.
      */
-    public static final int VERSION_REVISION = 9;
+    int VERSION_REVISION = 9;
 
     /**
      * One.
@@ -63,7 +69,7 @@ public final class GLFW {
      * {@code true} or {@code _True} or {@code GL_TRUE} or {@code VK_TRUE} or anything else that is equal
      * to one.
      */
-    public static final int TRUE = 1;
+    int TRUE = 1;
     /**
      * Zero.
      * <p>
@@ -71,25 +77,25 @@ public final class GLFW {
      * {@code false} or {@code _False} or {@code GL_FALSE} or {@code VK_FALSE} or anything else that is
      * equal to zero.
      */
-    public static final int FALSE = 0;
+    int FALSE = 0;
 
     /**
      * The key or mouse button was released.
      */
-    public static final int RELEASE = 0;
+    int RELEASE = 0;
     /**
      * The key or mouse button was pressed.
      */
-    public static final int PRESS = 1;
+    int PRESS = 1;
     /**
      * The key was held down until it repeated.
      */
-    public static final int REPEAT = 2;
+    int REPEAT = 2;
 
     /**
      * Joystick hat states.
      */
-    public static final int HAT_CENTERED = 0,
+    int HAT_CENTERED = 0,
         HAT_UP = 1,
         HAT_RIGHT = 2,
         HAT_DOWN = 4,
@@ -103,12 +109,12 @@ public final class GLFW {
     /**
      * The unknown key
      */
-    public static final int KEY_UNKNOWN = -1;
+    int KEY_UNKNOWN = -1;
 
     /**
      * Printable keys
      */
-    public static final int KEY_SPACE = 32,
+    int KEY_SPACE = 32,
         KEY_APOSTROPHE = 39, /* ' */
         KEY_COMMA = 44, /* , */
         KEY_MINUS = 45, /* - */
@@ -162,7 +168,7 @@ public final class GLFW {
     /**
      * Function keys
      */
-    public static final int KEY_ESCAPE = 256,
+    int KEY_ESCAPE = 256,
         KEY_ENTER = 257,
         KEY_TAB = 258,
         KEY_BACKSPACE = 259,
@@ -233,39 +239,39 @@ public final class GLFW {
         KEY_RIGHT_SUPER = 347,
         KEY_MENU = 348;
 
-    public static final int KEY_LAST = KEY_MENU;
+    int KEY_LAST = KEY_MENU;
 
     /**
      * If this bit is set one or more Shift keys were held down.
      */
-    public static final int MOD_SHIFT = 0x0001;
+    int MOD_SHIFT = 0x0001;
     /**
      * If this bit is set one or more Control keys were held down.
      */
-    public static final int MOD_CONTROL = 0x0002;
+    int MOD_CONTROL = 0x0002;
     /**
      * If this bit is set one or more Alt keys were held down.
      */
-    public static final int MOD_ALT = 0x0004;
+    int MOD_ALT = 0x0004;
     /**
      * If this bit is set one or more Super keys were held down.
      */
-    public static final int MOD_SUPER = 0x0008;
+    int MOD_SUPER = 0x0008;
     /**
      * If this bit is set the Caps Lock key is enabled and the
      * {@link #LOCK_KEY_MODS} input mode is set.
      */
-    public static final int MOD_CAPS_LOCK = 0x0010;
+    int MOD_CAPS_LOCK = 0x0010;
     /**
      * If this bit is set the Num Lock key is enabled and the
      * {@link #LOCK_KEY_MODS} input mode is set.
      */
-    public static final int MOD_NUM_LOCK = 0x0020;
+    int MOD_NUM_LOCK = 0x0020;
 
     /**
      * Mouse button IDs.
      */
-    public static final int MOUSE_BUTTON_1 = 0,
+    int MOUSE_BUTTON_1 = 0,
         MOUSE_BUTTON_2 = 1,
         MOUSE_BUTTON_3 = 2,
         MOUSE_BUTTON_4 = 3,
@@ -281,7 +287,7 @@ public final class GLFW {
     /**
      * Joystick IDs.
      **/
-    public static final int JOYSTICK_1 = 0,
+    int JOYSTICK_1 = 0,
         JOYSTICK_2 = 1,
         JOYSTICK_3 = 2,
         JOYSTICK_4 = 3,
@@ -302,7 +308,7 @@ public final class GLFW {
     /**
      * Gamepad buttons.
      */
-    public static final int GAMEPAD_BUTTON_A = 0,
+    int GAMEPAD_BUTTON_A = 0,
         GAMEPAD_BUTTON_B = 1,
         GAMEPAD_BUTTON_X = 2,
         GAMEPAD_BUTTON_Y = 3,
@@ -327,7 +333,7 @@ public final class GLFW {
     /**
      * Gamepad axes.
      **/
-    public static final int GAMEPAD_AXIS_LEFT_X = 0,
+    int GAMEPAD_AXIS_LEFT_X = 0,
         GAMEPAD_AXIS_LEFT_Y = 1,
         GAMEPAD_AXIS_RIGHT_X = 2,
         GAMEPAD_AXIS_RIGHT_Y = 3,
@@ -341,7 +347,7 @@ public final class GLFW {
      * <h4>Analysis</h4>
      * Yay.
      */
-    public static final int NO_ERROR = 0;
+    int NO_ERROR = 0;
     /**
      * GLFW has not been initialized.
      * <p>
@@ -352,7 +358,7 @@ public final class GLFW {
      * Application programmer error. Initialize GLFW before calling any
      * function that requires initialization.
      */
-    public static final int NOT_INITIALIZED = 0x00010001;
+    int NOT_INITIALIZED = 0x00010001;
     /**
      * No context is current for this thread.
      * <p>
@@ -364,7 +370,7 @@ public final class GLFW {
      * Application programmer error. Ensure a context is current before
      * calling functions that require a current context.
      */
-    public static final int NO_CURRENT_CONTEXT = 0x00010002;
+    int NO_CURRENT_CONTEXT = 0x00010002;
     /**
      * One of the arguments to the function was an invalid enum value, for example
      * requesting {@link #RED_BITS} with {@link #getWindowAttrib}.
@@ -372,7 +378,7 @@ public final class GLFW {
      * <h4>Analysis</h4>
      * Application programmer error. Fix the offending call.
      */
-    public static final int INVALID_ENUM = 0x00010003;
+    int INVALID_ENUM = 0x00010003;
     /**
      * One of the arguments to the function was an invalid value, for example
      * requesting a non-existent OpenGL or OpenGL ES version like 2.7.
@@ -383,7 +389,7 @@ public final class GLFW {
      * <h4>Analysis</h4>
      * Application programmer error. Fix the offending call.
      */
-    public static final int INVALID_VALUE = 0x00010004;
+    int INVALID_VALUE = 0x00010004;
     /**
      * A memory allocation failed.
      *
@@ -391,7 +397,7 @@ public final class GLFW {
      * A bug in GLFW or the underlying operating system. Report the bug
      * to the <a href="https://github.com/glfw/glfw/issues">issue tracker</a>.
      */
-    public static final int OUT_OF_MEMORY = 0x00010005;
+    int OUT_OF_MEMORY = 0x00010005;
     /**
      * GLFW could not find support for the requested API on the system.
      *
@@ -406,7 +412,7 @@ public final class GLFW {
      * EGL, OpenGL and OpenGL ES libraries do not interface with the Nvidia binary
      * driver.  Older graphics drivers do not support Vulkan.
      */
-    public static final int API_UNAVAILABLE = 0x00010006;
+    int API_UNAVAILABLE = 0x00010006;
     /**
      * The requested OpenGL or OpenGL ES version (including any requested context
      * or framebuffer hints) is not available on this machine.
@@ -422,7 +428,7 @@ public final class GLFW {
      * not {@link #INVALID_VALUE}, because GLFW cannot know what future versions
      * will exist.
      */
-    public static final int VERSION_UNAVAILABLE = 0x00010007;
+    int VERSION_UNAVAILABLE = 0x00010007;
     /**
      * A platform-specific error occurred that does not match any of the more
      * specific categories.
@@ -432,7 +438,7 @@ public final class GLFW {
      * system or its drivers, or a lack of required resources.  Report the issue to
      * the <a href="https://github.com/glfw/glfw/issues">issue tracker</a>.
      */
-    public static final int PLATFORM_ERROR = 0x00010008;
+    int PLATFORM_ERROR = 0x00010008;
     /**
      * The requested format is not supported or available.
      * <p>
@@ -452,7 +458,7 @@ public final class GLFW {
      * If emitted when querying the clipboard, ignore the error or report it to
      * the user, as appropriate.
      */
-    public static final int FORMAT_UNAVAILABLE = 0x00010009;
+    int FORMAT_UNAVAILABLE = 0x00010009;
     /**
      * The specified window does not have an OpenGL or OpenGL ES context.
      * <p>
@@ -462,7 +468,7 @@ public final class GLFW {
      * <h4>Analysis</h4>
      * Application programmer error. Fix the offending call.
      */
-    public static final int NO_WINDOW_CONTEXT = 0x0001000A;
+    int NO_WINDOW_CONTEXT = 0x0001000A;
 
     /**
      * <h4>Window related hints</h4>
@@ -506,7 +512,7 @@ public final class GLFW {
      * On platforms like macOS the resolution of the framebuffer is changed independently of the window size.</li>
      * </ul>
      */
-    public static final int FOCUSED = 0x00020001,
+    int FOCUSED = 0x00020001,
         ICONIFIED = 0x00020002,
         RESIZABLE = 0x00020003,
         VISIBLE = 0x00020004,
@@ -523,7 +529,7 @@ public final class GLFW {
      * <b>HOVERED</b> indicates whether the cursor is currently directly over the content area of the window, with no other windows between.
      * See <a href="https://www.glfw.org/docs/latest/input_guide.html#cursor_enter">Cursor enter/leave events</a> for details.
      */
-    public static final int HOVERED = 0x0002000B;
+    int HOVERED = 0x0002000B;
 
     /**
      * <h4>Framebuffer related hints</h4>
@@ -558,7 +564,7 @@ public final class GLFW {
      * Possible values are {@link #TRUE} and {@link #FALSE}.</li>
      * </ul>
      */
-    public static final int RED_BITS = 0x00021001,
+    int RED_BITS = 0x00021001,
         GREEN_BITS = 0x00021002,
         BLUE_BITS = 0x00021003,
         ALPHA_BITS = 0x00021004,
@@ -579,7 +585,7 @@ public final class GLFW {
      * A value of {@link #DONT_CARE} means the highest available refresh rate will be used.
      * This hint is ignored for windowed mode windows.
      */
-    public static final int REFRESH_RATE = 0x0002100F;
+    int REFRESH_RATE = 0x0002100F;
 
     /**
      * <h4>Context related hints</h4>
@@ -667,7 +673,7 @@ public final class GLFW {
      * </li>
      * </ul>
      */
-    public static final int CLIENT_API = 0x00022001,
+    int CLIENT_API = 0x00022001,
         CONTEXT_VERSION_MAJOR = 0x00022002,
         CONTEXT_VERSION_MINOR = 0x00022003,
         CONTEXT_ROBUSTNESS = 0x00022005,
@@ -681,7 +687,7 @@ public final class GLFW {
     /**
      * {@link #CONTEXT_VERSION_MAJOR}, {@link #CONTEXT_VERSION_MINOR} and {@code CONTEXT_REVISION} indicate the client API version of the window's context.
      */
-    public static final int CONTEXT_REVISION = 0x00022004;
+    int CONTEXT_REVISION = 0x00022004;
 
     /**
      * <h4>macOS specific window hints</h4>
@@ -705,7 +711,7 @@ public final class GLFW {
      * </li>
      * </ul>
      */
-    public static final int COCOA_RETINA_FRAMEBUFFER = 0x00023001,
+    int COCOA_RETINA_FRAMEBUFFER = 0x00023001,
         COCOA_FRAME_NAME = 0x00023002,
         COCOA_GRAPHICS_SWITCHING = 0x00023003;
 
@@ -714,7 +720,7 @@ public final class GLFW {
      * {@link #X11_CLASS_NAME} and {@link #X11_INSTANCE_NAME} specifies the desired ASCII encoded class and instance parts
      * of the ICCCM {@code WM_CLASS} window property. These are set with {@link #windowHintString}.
      */
-    public static final int X11_CLASS_NAME = 0x00024001,
+    int X11_CLASS_NAME = 0x00024001,
         X11_INSTANCE_NAME = 0x00024002;
 
     /**
@@ -722,7 +728,7 @@ public final class GLFW {
      *
      * @see #CLIENT_API
      */
-    public static final int NO_API = 0,
+    int NO_API = 0,
         OPENGL_API = 0x00030001,
         OPENGL_ES_API = 0x00030002;
 
@@ -731,7 +737,7 @@ public final class GLFW {
      *
      * @see #CONTEXT_ROBUSTNESS
      */
-    public static final int NO_ROBUSTNESS = 0,
+    int NO_ROBUSTNESS = 0,
         NO_RESET_NOTIFICATION = 0x00031001,
         LOSE_CONTEXT_ON_RESET = 0x00031002;
 
@@ -740,15 +746,15 @@ public final class GLFW {
      *
      * @see #OPENGL_PROFILE
      */
-    public static final int OPENGL_ANY_PROFILE = 0,
+    int OPENGL_ANY_PROFILE = 0,
         OPENGL_CORE_PROFILE = 0x00032001,
         OPENGL_COMPAT_PROFILE = 0x00032002;
 
-    public static final int CURSOR = 0x00033001;
-    public static final int STICKY_KEYS = 0x00033002;
-    public static final int STICKY_MOUSE_BUTTONS = 0x00033003;
-    public static final int LOCK_KEY_MODS = 0x00033004;
-    public static final int RAW_MOUSE_MOTION = 0x00033005;
+    int CURSOR = 0x00033001;
+    int STICKY_KEYS = 0x00033002;
+    int STICKY_MOUSE_BUTTONS = 0x00033003;
+    int LOCK_KEY_MODS = 0x00033004;
+    int RAW_MOUSE_MOTION = 0x00033005;
 
     /**
      * <h4>Cursor mode</h4>
@@ -781,55 +787,55 @@ public final class GLFW {
      * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_NORMAL);
      * }
      */
-    public static final int CURSOR_NORMAL = 0x00034001,
+    int CURSOR_NORMAL = 0x00034001,
         CURSOR_HIDDEN = 0x00034002,
         CURSOR_DISABLED = 0x00034003;
 
-    public static final int ANY_RELEASE_BEHAVIOR = 0;
-    public static final int RELEASE_BEHAVIOR_FLUSH = 0x00035001;
-    public static final int RELEASE_BEHAVIOR_NONE = 0x00035002;
+    int ANY_RELEASE_BEHAVIOR = 0;
+    int RELEASE_BEHAVIOR_FLUSH = 0x00035001;
+    int RELEASE_BEHAVIOR_NONE = 0x00035002;
 
-    public static final int NATIVE_CONTEXT_API = 0x00036001;
-    public static final int EGL_CONTEXT_API = 0x00036002;
-    public static final int OSMESA_CONTEXT_API = 0x00036003;
+    int NATIVE_CONTEXT_API = 0x00036001;
+    int EGL_CONTEXT_API = 0x00036002;
+    int OSMESA_CONTEXT_API = 0x00036003;
 
-    public static final int WAYLAND_PREFER_LIBDECOR = 0x00038001;
-    public static final int WAYLAND_DISABLE_LIBDECOR = 0x00038002;
+    int WAYLAND_PREFER_LIBDECOR = 0x00038001;
+    int WAYLAND_DISABLE_LIBDECOR = 0x00038002;
 
     /**
      * The regular arrow cursor.
      */
-    public static final int ARROW_CURSOR = 0x00036001;
+    int ARROW_CURSOR = 0x00036001;
     /**
      * The text input I-beam cursor shape.
      */
-    public static final int IBEAM_CURSOR = 0x00036002;
+    int IBEAM_CURSOR = 0x00036002;
     /**
      * The crosshair shape.
      */
-    public static final int CROSSHAIR_CURSOR = 0x00036003;
+    int CROSSHAIR_CURSOR = 0x00036003;
     /**
      * The hand shape.
      */
-    public static final int HAND_CURSOR = 0x00036004;
+    int HAND_CURSOR = 0x00036004;
     /**
      * The horizontal resize arrow shape.
      */
-    public static final int HRESIZE_CURSOR = 0x00036005;
+    int HRESIZE_CURSOR = 0x00036005;
     /**
      * The vertical resize arrow shape.
      */
-    public static final int VRESIZE_CURSOR = 0x00036006;
+    int VRESIZE_CURSOR = 0x00036006;
 
-    public static final int CONNECTED = 0x00040001;
-    public static final int DISCONNECTED = 0x00040002;
+    int CONNECTED = 0x00040001;
+    int DISCONNECTED = 0x00040002;
 
     /**
      * {@code JOYSTICK_HAT_BUTTONS} specifies whether to also expose joystick hats as buttons,
      * for compatibility with earlier versions of GLFW that did not have {@link #getJoystickHats}.
      * Possible values are {@link #TRUE} and {@link #FALSE}.
      */
-    public static final int JOYSTICK_HAT_BUTTONS = 0x00050001;
+    int JOYSTICK_HAT_BUTTONS = 0x00050001;
     /**
      * <h4>macOS specific init hints</h4>
      * <ul>
@@ -839,7 +845,7 @@ public final class GLFW {
      * when the first window is created, which is when AppKit is initialized. Set this with {@link #initHint}.</li>
      * </ul>
      */
-    public static final int COCOA_CHDIR_RESOURCES = 0x00051001,
+    int COCOA_CHDIR_RESOURCES = 0x00051001,
         COCOA_MENUBAR = 0x00051002;
     /**
      * Wayland specific init hint.
@@ -848,16 +854,12 @@ public final class GLFW {
      * Possible values are {@link #WAYLAND_PREFER_LIBDECOR} and {@link #WAYLAND_DISABLE_LIBDECOR}.
      * This is ignored on other platforms.
      */
-    public static final int WAYLAND_LIBDECOR = 0x00053001;
+    int WAYLAND_LIBDECOR = 0x00053001;
 
     /**
      * Don't care value.
      */
-    public static final int DONT_CARE = -1;
-
-    private GLFW() {
-        throw new IllegalStateException("Do not construct instance");
-    }
+    int DONT_CARE = -1;
 
     /**
      * Converts the given error code to a readable string.
@@ -867,7 +869,7 @@ public final class GLFW {
      * @param errorCode the error code.
      * @return the error string.
      */
-    public static String getErrorString(int errorCode) {
+    static String getErrorString(int errorCode) {
         return switch (errorCode) {
             case NO_ERROR -> "NO_ERROR";
             case NOT_INITIALIZED -> "NOT_INITIALIZED";
@@ -912,7 +914,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #terminate
      */
-    public static boolean init() {
+    static boolean init() {
         try {
             return (int) glfwInit.invokeExact() != FALSE;
         } catch (Throwable e) {
@@ -943,7 +945,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #init
      */
-    public static void terminate() {
+    static void terminate() {
         try {
             glfwTerminate.invokeExact();
         } catch (Throwable e) {
@@ -971,7 +973,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #init() init
      */
-    public static void initHint(int hint, int value) {
+    static void initHint(int hint, int value) {
         try {
             glfwInitHint.invokeExact(hint, value);
         } catch (Throwable e) {
@@ -996,7 +998,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetVersionString() getVersionString
      */
-    public static void ngetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev) {
+    static void ngetVersion(MemorySegment major, MemorySegment minor, MemorySegment rev) {
         try {
             glfwGetVersion.invokeExact(major, minor, rev);
         } catch (Throwable e) {
@@ -1012,7 +1014,7 @@ public final class GLFW {
      * @param rev   Where to store the revision number, or {@code null}.
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) ngetVersion
      */
-    public static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
+    static void getVersion(int @Nullable [] major, int @Nullable [] minor, int @Nullable [] rev) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1040,7 +1042,7 @@ public final class GLFW {
      * @return the major, minor and revision version number
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) ngetVersion
      */
-    public static Triplet.OfInt getVersion() {
+    static Triplet.OfInt getVersion() {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1075,7 +1077,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetVersion(MemorySegment, MemorySegment, MemorySegment) getVersion
      */
-    public static MemorySegment ngetVersionString() {
+    static MemorySegment ngetVersionString() {
         try {
             return (MemorySegment) glfwGetVersionString.invokeExact();
         } catch (Throwable e) {
@@ -1089,7 +1091,7 @@ public final class GLFW {
      * @return The ASCII encoded GLFW version string.
      * @see #ngetVersionString() ngetVersionString
      */
-    public static String getVersionString() {
+    static String getVersionString() {
         return ngetVersionString().getString(0);
     }
 
@@ -1112,7 +1114,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #nsetErrorCallback(MemorySegment) setErrorCallback
      */
-    public static int ngetError(MemorySegment description) {
+    static int ngetError(MemorySegment description) {
         try {
             return (int) glfwGetError.invokeExact(description);
         } catch (Throwable e) {
@@ -1127,7 +1129,7 @@ public final class GLFW {
      * @return The last error code for the calling thread, or {@link #NO_ERROR} (zero).
      * @see #ngetError(MemorySegment) ngetError
      */
-    public static int getError(String @Nullable [] description) {
+    static int getError(String @Nullable [] description) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -1148,7 +1150,7 @@ public final class GLFW {
      * @return the error description pointer. and the last error code for the calling thread, or {@link #NO_ERROR} (zero)
      * @see #ngetError(MemorySegment) ngetError
      */
-    public static Tuple2.OfObjInt<String> getError() {
+    static Tuple2.OfObjInt<String> getError() {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -1188,7 +1190,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetError(MemorySegment) getError
      */
-    public static MemorySegment nsetErrorCallback(MemorySegment callback) {
+    static MemorySegment nsetErrorCallback(MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetErrorCallback.invokeExact(callback);
         } catch (Throwable e) {
@@ -1203,7 +1205,7 @@ public final class GLFW {
      * @return The previously set callback, or {@link MemorySegment#NULL NULL} if no callback was set.
      * @see #nsetErrorCallback(MemorySegment) nsetErrorCallback
      */
-    public static MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
+    static MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
         return nsetErrorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
@@ -1225,7 +1227,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getPrimaryMonitor() getPrimaryMonitor
      */
-    public static MemorySegment ngetMonitors(MemorySegment count) {
+    static MemorySegment ngetMonitors(MemorySegment count) {
         try {
             return (MemorySegment) glfwGetMonitors.invokeExact(count);
         } catch (Throwable e) {
@@ -1240,7 +1242,7 @@ public final class GLFW {
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetMonitors(MemorySegment) ngetMonitors
      */
-    public static MemorySegment @Nullable [] getMonitors() {
+    static MemorySegment @Nullable [] getMonitors() {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1268,7 +1270,7 @@ public final class GLFW {
      * {@link #ngetMonitors(MemorySegment) getMonitors}.
      * @see #ngetMonitors(MemorySegment) getMonitors
      */
-    public static MemorySegment getPrimaryMonitor() {
+    static MemorySegment getPrimaryMonitor() {
         try {
             return (MemorySegment) glfwGetPrimaryMonitor.invokeExact();
         } catch (Throwable e) {
@@ -1292,7 +1294,7 @@ public final class GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void ngetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos) {
+    static void ngetMonitorPos(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos) {
         try {
             glfwGetMonitorPos.invokeExact(monitor, xpos, ypos);
         } catch (Throwable e) {
@@ -1308,7 +1310,7 @@ public final class GLFW {
      * @param ypos    Where to store the monitor y-coordinate, or {@code null}.
      * @see #ngetMonitorPos(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPos
      */
-    public static void getMonitorPos(MemorySegment monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
+    static void getMonitorPos(MemorySegment monitor, int @Nullable [] xpos, int @Nullable [] ypos) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1333,7 +1335,7 @@ public final class GLFW {
      * @return the monitor xy-coordinate
      * @see #ngetMonitorPos(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPos
      */
-    public static Pair.OfInt getMonitorPos(MemorySegment monitor) {
+    static Pair.OfInt getMonitorPos(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1368,7 +1370,7 @@ public final class GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void ngetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height) {
+    static void ngetMonitorWorkarea(MemorySegment monitor, MemorySegment xpos, MemorySegment ypos, MemorySegment width, MemorySegment height) {
         try {
             glfwGetMonitorWorkarea.invokeExact(monitor, xpos, ypos, width, height);
         } catch (Throwable e) {
@@ -1386,7 +1388,7 @@ public final class GLFW {
      * @param height  Where to store the monitor height, or {@code null}.
      * @see #ngetMonitorWorkarea(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetMonitorWorkarea
      */
-    public static void getMonitorWorkarea(MemorySegment monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
+    static void getMonitorWorkarea(MemorySegment monitor, int @Nullable [] xpos, int @Nullable [] ypos, int @Nullable [] width, int @Nullable [] height) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1419,7 +1421,7 @@ public final class GLFW {
      * @return the monitor xy-coordinate, the monitor width and the monitor height
      * @see #ngetMonitorWorkarea(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetMonitorWorkarea
      */
-    public static Quad.OfInt getMonitorWorkarea(MemorySegment monitor) {
+    static Quad.OfInt getMonitorWorkarea(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1461,7 +1463,7 @@ public final class GLFW {
      * the current resolution and system DPI instead of querying the monitor EDID data.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void ngetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM) {
+    static void ngetMonitorPhysicalSize(MemorySegment monitor, MemorySegment widthMM, MemorySegment heightMM) {
         try {
             glfwGetMonitorPhysicalSize.invokeExact(monitor, widthMM, heightMM);
         } catch (Throwable e) {
@@ -1479,7 +1481,7 @@ public final class GLFW {
      *                 monitor's display area, or {@code null}.
      * @see #ngetMonitorPhysicalSize(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPhysicalSize
      */
-    public static void getMonitorPhysicalSize(MemorySegment monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
+    static void getMonitorPhysicalSize(MemorySegment monitor, int @Nullable [] widthMM, int @Nullable [] heightMM) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1504,7 +1506,7 @@ public final class GLFW {
      * @return the width and height, in millimetres, of the monitor's display area.
      * @see #ngetMonitorPhysicalSize(MemorySegment, MemorySegment, MemorySegment) ngetMonitorPhysicalSize
      */
-    public static Pair.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
+    static Pair.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1540,7 +1542,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) getWindowContentScale
      */
-    public static void ngetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale) {
+    static void ngetMonitorContentScale(MemorySegment monitor, MemorySegment xscale, MemorySegment yscale) {
         try {
             glfwGetMonitorContentScale.invokeExact(monitor, xscale, yscale);
         } catch (Throwable e) {
@@ -1556,7 +1558,7 @@ public final class GLFW {
      * @param yscale  Where to store the y-axis content scale, or {@code null}.
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) ngetMonitorContentScale
      */
-    public static void getMonitorContentScale(MemorySegment monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
+    static void getMonitorContentScale(MemorySegment monitor, float @Nullable [] xscale, float @Nullable [] yscale) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1581,7 +1583,7 @@ public final class GLFW {
      * @return the xy-axis content scale
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) ngetMonitorContentScale
      */
-    public static Pair.OfFloat getMonitorContentScale(MemorySegment monitor) {
+    static Pair.OfFloat getMonitorContentScale(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1610,7 +1612,7 @@ public final class GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetMonitorName(MemorySegment monitor) {
+    static MemorySegment ngetMonitorName(MemorySegment monitor) {
         try {
             return (MemorySegment) glfwGetMonitorName.invokeExact(monitor);
         } catch (Throwable e) {
@@ -1627,7 +1629,7 @@ public final class GLFW {
      * @see #ngetMonitorName(MemorySegment) ngetMonitorName
      */
     @Nullable
-    public static String getMonitorName(MemorySegment monitor) {
+    static String getMonitorName(MemorySegment monitor) {
         var pName = ngetMonitorName(monitor);
         return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
@@ -1649,7 +1651,7 @@ public final class GLFW {
      * synchronized.
      * @see #getMonitorUserPointer(MemorySegment) getMonitorUserPointer
      */
-    public static void setMonitorUserPointer(MemorySegment monitor, MemorySegment pointer) {
+    static void setMonitorUserPointer(MemorySegment monitor, MemorySegment pointer) {
         try {
             glfwSetMonitorUserPointer.invokeExact(monitor, pointer);
         } catch (Throwable e) {
@@ -1672,7 +1674,7 @@ public final class GLFW {
      * synchronized.
      * @see #setMonitorUserPointer(MemorySegment, MemorySegment) setMonitorUserPointer
      */
-    public static MemorySegment getMonitorUserPointer(MemorySegment monitor) {
+    static MemorySegment getMonitorUserPointer(MemorySegment monitor) {
         try {
             return (MemorySegment) glfwGetMonitorUserPointer.invokeExact(monitor);
         } catch (Throwable e) {
@@ -1697,7 +1699,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetMonitorCallback(MemorySegment callback) {
+    static MemorySegment nsetMonitorCallback(MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetMonitorCallback.invokeExact(callback);
         } catch (Throwable e) {
@@ -1714,7 +1716,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMonitorCallback(MemorySegment) nsetMonitorCallback
      */
-    public static MemorySegment setMonitorCallback(@Nullable GLFWMonitorFun callback) {
+    static MemorySegment setMonitorCallback(@Nullable GLFWMonitorFun callback) {
         return nsetMonitorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
@@ -1741,7 +1743,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetVideoMode(MemorySegment) getVideoMode
      */
-    public static MemorySegment ngetVideoModes(MemorySegment monitor, MemorySegment count) {
+    static MemorySegment ngetVideoModes(MemorySegment monitor, MemorySegment count) {
         try {
             return (MemorySegment) glfwGetVideoModes.invokeExact(monitor, count);
         } catch (Throwable e) {
@@ -1757,7 +1759,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
      */
-    public static @Nullable GLFWVidMode getVideoModes(MemorySegment monitor) {
+    static @Nullable GLFWVidMode getVideoModes(MemorySegment monitor) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -1789,7 +1791,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) getVideoModes
      */
-    public static MemorySegment ngetVideoMode(MemorySegment monitor) {
+    static MemorySegment ngetVideoMode(MemorySegment monitor) {
         try {
             return (MemorySegment) glfwGetVideoMode.invokeExact(monitor);
         } catch (Throwable e) {
@@ -1806,7 +1808,7 @@ public final class GLFW {
      * @see #ngetVideoMode(MemorySegment) ngetVideoMode
      */
     @Nullable
-    public static GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
+    static GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
         if (RuntimeHelper.isNullptr(pMode)) return null;
         return new GLFWVidMode(pMode).value();
@@ -1835,7 +1837,7 @@ public final class GLFW {
      * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void setGamma(MemorySegment monitor, float gamma) {
+    static void setGamma(MemorySegment monitor, float gamma) {
         try {
             glfwSetGamma.invokeExact(monitor, gamma);
         } catch (Throwable e) {
@@ -1862,7 +1864,7 @@ public final class GLFW {
      * monitor or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetGammaRamp(MemorySegment monitor) {
+    static MemorySegment ngetGammaRamp(MemorySegment monitor) {
         try {
             return (MemorySegment) glfwGetGammaRamp.invokeExact(monitor);
         } catch (Throwable e) {
@@ -1879,7 +1881,7 @@ public final class GLFW {
      * @see #ngetGammaRamp(MemorySegment) ngetGammaRamp
      */
     @Nullable
-    public static GLFWGammaRamp getGammaRamp(MemorySegment monitor) {
+    static GLFWGammaRamp getGammaRamp(MemorySegment monitor) {
         var pRamp = ngetGammaRamp(monitor);
         if (RuntimeHelper.isNullptr(pRamp)) return null;
         return new GLFWGammaRamp(pRamp);
@@ -1915,7 +1917,7 @@ public final class GLFW {
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void nsetGammaRamp(MemorySegment monitor, MemorySegment ramp) {
+    static void nsetGammaRamp(MemorySegment monitor, MemorySegment ramp) {
         try {
             glfwSetGammaRamp.invokeExact(monitor, ramp);
         } catch (Throwable e) {
@@ -1930,7 +1932,7 @@ public final class GLFW {
      * @param ramp    The gamma ramp to use.
      * @see #nsetGammaRamp(MemorySegment, MemorySegment) nsetGammaRamp
      */
-    public static void setGammaRamp(MemorySegment monitor, GLFWGammaRamp ramp) {
+    static void setGammaRamp(MemorySegment monitor, GLFWGammaRamp ramp) {
         nsetGammaRamp(monitor, ramp.segment());
     }
 
@@ -1945,7 +1947,7 @@ public final class GLFW {
      * @see #windowHint(int, int) windowHint
      * @see #nwindowHintString(int, MemorySegment) windowHintString
      */
-    public static void defaultWindowHints() {
+    static void defaultWindowHints() {
         try {
             glfwDefaultWindowHints.invokeExact();
         } catch (Throwable e) {
@@ -1979,7 +1981,7 @@ public final class GLFW {
      * @see #nwindowHintString(int, MemorySegment) windowHintString
      * @see #defaultWindowHints
      */
-    public static void windowHint(int hint, int value) {
+    static void windowHint(int hint, int value) {
         try {
             glfwWindowHint.invokeExact(hint, value);
         } catch (Throwable e) {
@@ -1994,7 +1996,7 @@ public final class GLFW {
      * @param value The new value of the window hint.
      * @see #windowHint(int, int)
      */
-    public static void windowHint(int hint, boolean value) {
+    static void windowHint(int hint, boolean value) {
         windowHint(hint, value ? TRUE : FALSE);
     }
 
@@ -2026,7 +2028,7 @@ public final class GLFW {
      * @see #windowHint(int, int) windowHint
      * @see #defaultWindowHints
      */
-    public static void nwindowHintString(int hint, MemorySegment value) {
+    static void nwindowHintString(int hint, MemorySegment value) {
         try {
             glfwWindowHintString.invokeExact(hint, value);
         } catch (Throwable e) {
@@ -2041,7 +2043,7 @@ public final class GLFW {
      * @param value The new value of the window hint.
      * @see #nwindowHintString(int, MemorySegment) nwindowHintString
      */
-    public static void windowHintString(int hint, String value) {
+    static void windowHintString(int hint, String value) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -2202,7 +2204,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #destroyWindow
      */
-    public static MemorySegment ncreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share) {
+    static MemorySegment ncreateWindow(int width, int height, MemorySegment title, MemorySegment monitor, MemorySegment share) {
         try {
             return (MemorySegment) glfwCreateWindow.invokeExact(width, height, title, monitor, share);
         } catch (Throwable e) {
@@ -2226,7 +2228,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateWindow(int, int, MemorySegment, MemorySegment, MemorySegment) ncreateWindow
      */
-    public static MemorySegment createWindow(int width, int height, String title, MemorySegment monitor, MemorySegment share) {
+    static MemorySegment createWindow(int width, int height, String title, MemorySegment monitor, MemorySegment share) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -2254,7 +2256,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateWindow(int, int, MemorySegment, MemorySegment, MemorySegment) createWindow
      */
-    public static void destroyWindow(MemorySegment window) {
+    static void destroyWindow(MemorySegment window) {
         try {
             glfwDestroyWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -2273,7 +2275,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static boolean windowShouldClose(MemorySegment window) {
+    static boolean windowShouldClose(MemorySegment window) {
         try {
             return (int) glfwWindowShouldClose.invokeExact(window) != FALSE;
         } catch (Throwable e) {
@@ -2294,7 +2296,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    public static void setWindowShouldClose(MemorySegment window, boolean value) {
+    static void setWindowShouldClose(MemorySegment window, boolean value) {
         try {
             glfwSetWindowShouldClose.invokeExact(window, value ? TRUE : FALSE);
         } catch (Throwable e) {
@@ -2316,7 +2318,7 @@ public final class GLFW {
      * process events.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void nsetWindowTitle(MemorySegment window, MemorySegment title) {
+    static void nsetWindowTitle(MemorySegment window, MemorySegment title) {
         try {
             glfwSetWindowTitle.invokeExact(window, title);
         } catch (Throwable e) {
@@ -2331,7 +2333,7 @@ public final class GLFW {
      * @param title  The UTF-8 encoded window title.
      * @see #nsetWindowTitle(MemorySegment, MemorySegment) nsetWindowTitle
      */
-    public static void setWindowTitle(MemorySegment window, String title) {
+    static void setWindowTitle(MemorySegment window, String title) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -2377,7 +2379,7 @@ public final class GLFW {
      * This function always emits {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void nsetWindowIcon(MemorySegment window, int count, MemorySegment images) {
+    static void nsetWindowIcon(MemorySegment window, int count, MemorySegment images) {
         try {
             glfwSetWindowIcon.invokeExact(window, count, images);
         } catch (Throwable e) {
@@ -2395,7 +2397,7 @@ public final class GLFW {
      *               count is zero.
      * @see #nsetWindowIcon(MemorySegment, int, MemorySegment) nsetWindowIcon
      */
-    public static void setWindowIcon(MemorySegment window, int count, GLFWImage images) {
+    static void setWindowIcon(MemorySegment window, int count, GLFWImage images) {
         if (images == null || count == 0) {
             nsetWindowIcon(window, 0, MemorySegment.NULL);
         } else {
@@ -2411,7 +2413,7 @@ public final class GLFW {
      *               revert to the default window icon.
      * @see #nsetWindowIcon(MemorySegment, int, MemorySegment) nsetWindowIcon
      */
-    public static void setWindowIcon(MemorySegment window, @Nullable GLFWImage images) {
+    static void setWindowIcon(MemorySegment window, @Nullable GLFWImage images) {
         setWindowIcon(window, images == null ? 0 : Math.toIntExact(images.elementCount()), images);
     }
 
@@ -2437,7 +2439,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowPos(MemorySegment, int, int) setWindowPos
      */
-    public static void ngetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
+    static void ngetWindowPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
         try {
             glfwGetWindowPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
@@ -2454,7 +2456,7 @@ public final class GLFW {
      * @param ypos   Where to store the y-coordinate of the upper-left corner of
      *               the content area, or {@code null}.
      */
-    public static void getWindowPos(MemorySegment window, int @Nullable [] xpos, int @Nullable [] ypos) {
+    static void getWindowPos(MemorySegment window, int @Nullable [] xpos, int @Nullable [] ypos) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2478,7 +2480,7 @@ public final class GLFW {
      * @param window The window to query.
      * @return the xy-coordinate of the upper-left corner of the content area.
      */
-    public static Pair.OfInt getWindowPos(MemorySegment window) {
+    static Pair.OfInt getWindowPos(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2515,7 +2517,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowPos(MemorySegment, MemorySegment, MemorySegment) getWindowPos
      */
-    public static void setWindowPos(MemorySegment window, int xpos, int ypos) {
+    static void setWindowPos(MemorySegment window, int xpos, int ypos) {
         try {
             glfwSetWindowPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
@@ -2544,7 +2546,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowSize(MemorySegment, int, int) setWindowSize
      */
-    public static void ngetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height) {
+    static void ngetWindowSize(MemorySegment window, MemorySegment width, MemorySegment height) {
         try {
             glfwGetWindowSize.invokeExact(window, width, height);
         } catch (Throwable e) {
@@ -2562,7 +2564,7 @@ public final class GLFW {
      *               content area, or {@code null}.
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) ngetWindowSize
      */
-    public static void getWindowSize(MemorySegment window, int @Nullable [] width, int @Nullable [] height) {
+    static void getWindowSize(MemorySegment window, int @Nullable [] width, int @Nullable [] height) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2587,7 +2589,7 @@ public final class GLFW {
      * @return the width and height, in screen coordinates, of the content area.
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) ngetWindowSize
      */
-    public static Pair.OfInt getWindowSize(MemorySegment window) {
+    static Pair.OfInt getWindowSize(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2633,7 +2635,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowAspectRatio(MemorySegment, int, int) setWindowAspectRatio
      */
-    public static void setWindowSizeLimits(MemorySegment window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
+    static void setWindowSizeLimits(MemorySegment window, int minWidth, int minHeight, int maxWidth, int maxHeight) {
         try {
             glfwSetWindowSizeLimits.invokeExact(window, minWidth, minHeight, maxWidth, maxHeight);
         } catch (Throwable e) {
@@ -2674,7 +2676,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowSizeLimits(MemorySegment, int, int, int, int) setWindowSizeLimits
      */
-    public static void setWindowAspectRatio(MemorySegment window, int numer, int denom) {
+    static void setWindowAspectRatio(MemorySegment window, int numer, int denom) {
         try {
             glfwSetWindowAspectRatio.invokeExact(window, numer, denom);
         } catch (Throwable e) {
@@ -2713,7 +2715,7 @@ public final class GLFW {
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) getWindowSize
      * @see #setWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int) setWindowMonitor
      */
-    public static void setWindowSize(MemorySegment window, int width, int height) {
+    static void setWindowSize(MemorySegment window, int width, int height) {
         try {
             glfwSetWindowSize.invokeExact(window, width, height);
         } catch (Throwable e) {
@@ -2741,7 +2743,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) setFramebufferSizeCallback
      */
-    public static void ngetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height) {
+    static void ngetFramebufferSize(MemorySegment window, MemorySegment width, MemorySegment height) {
         try {
             glfwGetFramebufferSize.invokeExact(window, width, height);
         } catch (Throwable e) {
@@ -2759,7 +2761,7 @@ public final class GLFW {
      *               or {@code null}.
      * @see #ngetFramebufferSize(MemorySegment, MemorySegment, MemorySegment) ngetFramebufferSize
      */
-    public static void getFramebufferSize(MemorySegment window, int @Nullable [] width, int @Nullable [] height) {
+    static void getFramebufferSize(MemorySegment window, int @Nullable [] width, int @Nullable [] height) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2784,7 +2786,7 @@ public final class GLFW {
      * @return the width and height, in pixels, of the framebuffer.
      * @see #ngetFramebufferSize(MemorySegment, MemorySegment, MemorySegment) ngetFramebufferSize
      */
-    public static Pair.OfInt getFramebufferSize(MemorySegment window) {
+    static Pair.OfInt getFramebufferSize(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2826,7 +2828,7 @@ public final class GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void ngetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom) {
+    static void ngetWindowFrameSize(MemorySegment window, MemorySegment left, MemorySegment top, MemorySegment right, MemorySegment bottom) {
         try {
             glfwGetWindowFrameSize.invokeExact(window, left, top, right, bottom);
         } catch (Throwable e) {
@@ -2848,7 +2850,7 @@ public final class GLFW {
      *               bottom edge of the window frame, or {@code null}.
      * @see #ngetWindowFrameSize(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetWindowFrameSize
      */
-    public static void getWindowFrameSize(MemorySegment window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
+    static void getWindowFrameSize(MemorySegment window, int @Nullable [] left, int @Nullable [] top, int @Nullable [] right, int @Nullable [] bottom) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2882,7 +2884,7 @@ public final class GLFW {
      * edge of the window frame.
      * @see #ngetWindowFrameSize(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetWindowFrameSize
      */
-    public static Quad.OfInt getWindowFrameSize(MemorySegment window) {
+    static Quad.OfInt getWindowFrameSize(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2924,7 +2926,7 @@ public final class GLFW {
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) setWindowContentScaleCallback
      * @see #ngetMonitorContentScale(MemorySegment, MemorySegment, MemorySegment) getMonitorContentScale
      */
-    public static void ngetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale) {
+    static void ngetWindowContentScale(MemorySegment window, MemorySegment xscale, MemorySegment yscale) {
         try {
             glfwGetWindowContentScale.invokeExact(window, xscale, yscale);
         } catch (Throwable e) {
@@ -2940,7 +2942,7 @@ public final class GLFW {
      * @param yscale Where to store the y-axis content scale, or {@code null}.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) ngetWindowContentScale
      */
-    public static void getWindowContentScale(MemorySegment window, float @Nullable [] xscale, float @Nullable [] yscale) {
+    static void getWindowContentScale(MemorySegment window, float @Nullable [] xscale, float @Nullable [] yscale) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2965,7 +2967,7 @@ public final class GLFW {
      * @return the xy-axis content scale.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) ngetWindowContentScale
      */
-    public static Pair.OfFloat getWindowContentScale(MemorySegment window) {
+    static Pair.OfFloat getWindowContentScale(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -2996,7 +2998,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowOpacity(MemorySegment, float) setWindowOpacity
      */
-    public static float getWindowOpacity(MemorySegment window) {
+    static float getWindowOpacity(MemorySegment window) {
         try {
             return (float) glfwGetWindowOpacity.invokeExact(window);
         } catch (Throwable e) {
@@ -3024,7 +3026,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowOpacity(MemorySegment) getWindowOpacity
      */
-    public static void setWindowOpacity(MemorySegment window, float opacity) {
+    static void setWindowOpacity(MemorySegment window, float opacity) {
         try {
             glfwSetWindowOpacity.invokeExact(window, opacity);
         } catch (Throwable e) {
@@ -3050,7 +3052,7 @@ public final class GLFW {
      * @see #restoreWindow(MemorySegment) restoreWindow
      * @see #maximizeWindow(MemorySegment) maximizeWindow
      */
-    public static void iconifyWindow(MemorySegment window) {
+    static void iconifyWindow(MemorySegment window) {
         try {
             glfwIconifyWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -3075,7 +3077,7 @@ public final class GLFW {
      * @see #iconifyWindow(MemorySegment) iconifyWindow
      * @see #maximizeWindow(MemorySegment) maximizeWindow
      */
-    public static void restoreWindow(MemorySegment window) {
+    static void restoreWindow(MemorySegment window) {
         try {
             glfwRestoreWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -3098,7 +3100,7 @@ public final class GLFW {
      * @see #iconifyWindow(MemorySegment) iconifyWindow
      * @see #restoreWindow(MemorySegment) restoreWindow
      */
-    public static void maximizeWindow(MemorySegment window) {
+    static void maximizeWindow(MemorySegment window) {
         try {
             glfwMaximizeWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -3128,7 +3130,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #hideWindow(MemorySegment) hideWindow
      */
-    public static void showWindow(MemorySegment window) {
+    static void showWindow(MemorySegment window) {
         try {
             glfwShowWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -3149,7 +3151,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #showWindow(MemorySegment) showWindow
      */
-    public static void hideWindow(MemorySegment window) {
+    static void hideWindow(MemorySegment window) {
         try {
             glfwHideWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -3185,7 +3187,7 @@ public final class GLFW {
      * to front, this function will always emit {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void focusWindow(MemorySegment window) {
+    static void focusWindow(MemorySegment window) {
         try {
             glfwFocusWindow.invokeExact(window);
         } catch (Throwable e) {
@@ -3210,7 +3212,7 @@ public final class GLFW {
      * specific window.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void requestWindowAttention(MemorySegment window) {
+    static void requestWindowAttention(MemorySegment window) {
         try {
             glfwRequestWindowAttention.invokeExact(window);
         } catch (Throwable e) {
@@ -3231,7 +3233,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int) setWindowMonitor
      */
-    public static MemorySegment getWindowMonitor(MemorySegment window) {
+    static MemorySegment getWindowMonitor(MemorySegment window) {
         try {
             return (MemorySegment) glfwGetWindowMonitor.invokeExact(window);
         } catch (Throwable e) {
@@ -3287,7 +3289,7 @@ public final class GLFW {
      * @see #getWindowMonitor(MemorySegment) getWindowMonitor
      * @see #setWindowSize(MemorySegment, int, int) setWindowSize
      */
-    public static void setWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
+    static void setWindowMonitor(MemorySegment window, MemorySegment monitor, int xpos, int ypos, int width, int height, int refreshRate) {
         try {
             glfwSetWindowMonitor.invokeExact(window, monitor, xpos, ypos, width, height, refreshRate);
         } catch (Throwable e) {
@@ -3322,7 +3324,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowAttrib(MemorySegment, int, boolean) setWindowAttrib
      */
-    public static int getWindowAttrib(MemorySegment window, int attrib) {
+    static int getWindowAttrib(MemorySegment window, int attrib) {
         try {
             return (int) glfwGetWindowAttrib.invokeExact(window, attrib);
         } catch (Throwable e) {
@@ -3357,7 +3359,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowAttrib(MemorySegment, int) getWindowAttrib
      */
-    public static void setWindowAttrib(MemorySegment window, int attrib, boolean value) {
+    static void setWindowAttrib(MemorySegment window, int attrib, boolean value) {
         try {
             glfwSetWindowAttrib.invokeExact(window, attrib, value ? TRUE : FALSE);
         } catch (Throwable e) {
@@ -3379,7 +3381,7 @@ public final class GLFW {
      * synchronized.
      * @see #getWindowUserPointer(MemorySegment) getWindowUserPointer
      */
-    public static void setWindowUserPointer(MemorySegment window, MemorySegment pointer) {
+    static void setWindowUserPointer(MemorySegment window, MemorySegment pointer) {
         try {
             glfwSetWindowUserPointer.invokeExact(window, pointer);
         } catch (Throwable e) {
@@ -3399,7 +3401,7 @@ public final class GLFW {
      * synchronized.
      * @see #setWindowUserPointer(MemorySegment, MemorySegment) setWindowUserPointer
      */
-    public static MemorySegment getWindowUserPointer(MemorySegment window) {
+    static MemorySegment getWindowUserPointer(MemorySegment window) {
         try {
             return (MemorySegment) glfwGetWindowUserPointer.invokeExact(window);
         } catch (Throwable e) {
@@ -3428,7 +3430,7 @@ public final class GLFW {
      * an application to know its global position.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowPosCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowPosCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowPosCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3446,7 +3448,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowPosCallback(MemorySegment, MemorySegment) nsetWindowPosCallback
      */
-    public static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable GLFWWindowPosFun callback) {
+    static MemorySegment setWindowPosCallback(MemorySegment window, @Nullable GLFWWindowPosFun callback) {
         return nsetWindowPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3468,7 +3470,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowSizeCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowSizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3486,7 +3488,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowSizeCallback(MemorySegment, MemorySegment) nsetWindowSizeCallback
      */
-    public static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable GLFWWindowSizeFun callback) {
+    static MemorySegment setWindowSizeCallback(MemorySegment window, @Nullable GLFWWindowSizeFun callback) {
         return nsetWindowSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3515,7 +3517,7 @@ public final class GLFW {
      * close callback for all windows.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowCloseCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowCloseCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3533,7 +3535,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowCloseCallback(MemorySegment, MemorySegment) nsetWindowCloseCallback
      */
-    public static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable GLFWWindowCloseFun callback) {
+    static MemorySegment setWindowCloseCallback(MemorySegment window, @Nullable GLFWWindowCloseFun callback) {
         return nsetWindowCloseCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3559,7 +3561,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowRefreshCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowRefreshCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3577,7 +3579,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowRefreshCallback(MemorySegment, MemorySegment) nsetWindowRefreshCallback
      */
-    public static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable GLFWWindowRefreshFun callback) {
+    static MemorySegment setWindowRefreshCallback(MemorySegment window, @Nullable GLFWWindowRefreshFun callback) {
         return nsetWindowRefreshCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3604,7 +3606,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowFocusCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowFocusCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3622,7 +3624,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowFocusCallback(MemorySegment, MemorySegment) nsetWindowFocusCallback
      */
-    public static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable GLFWWindowFocusFun callback) {
+    static MemorySegment setWindowFocusCallback(MemorySegment window, @Nullable GLFWWindowFocusFun callback) {
         return nsetWindowFocusCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3645,7 +3647,7 @@ public final class GLFW {
      * this callback will never be called.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowIconifyCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowIconifyCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3663,7 +3665,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowIconifyCallback(MemorySegment, MemorySegment) nsetWindowIconifyCallback
      */
-    public static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable GLFWWindowIconifyFun callback) {
+    static MemorySegment setWindowIconifyCallback(MemorySegment window, @Nullable GLFWWindowIconifyFun callback) {
         return nsetWindowIconifyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3684,7 +3686,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowMaximizeCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowMaximizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3702,7 +3704,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowMaximizeCallback(MemorySegment, MemorySegment) nsetWindowMaximizeCallback
      */
-    public static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable GLFWWindowMaximizeFun callback) {
+    static MemorySegment setWindowMaximizeCallback(MemorySegment window, @Nullable GLFWWindowMaximizeFun callback) {
         return nsetWindowMaximizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3723,7 +3725,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetFramebufferSizeCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetFramebufferSizeCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3741,7 +3743,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetFramebufferSizeCallback(MemorySegment, MemorySegment) nsetFramebufferSizeCallback
      */
-    public static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable GLFWFramebufferSizeFun callback) {
+    static MemorySegment setFramebufferSizeCallback(MemorySegment window, @Nullable GLFWFramebufferSizeFun callback) {
         return nsetFramebufferSizeCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3763,7 +3765,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) getWindowContentScale
      */
-    public static MemorySegment nsetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetWindowContentScaleCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetWindowContentScaleCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -3781,7 +3783,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetWindowContentScaleCallback(MemorySegment, MemorySegment) nsetWindowContentScaleCallback
      */
-    public static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable GLFWWindowContentScaleFun callback) {
+    static MemorySegment setWindowContentScaleCallback(MemorySegment window, @Nullable GLFWWindowContentScaleFun callback) {
         return nsetWindowContentScaleCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -3815,7 +3817,7 @@ public final class GLFW {
      * @see #waitEvents() waitEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
-    public static void pollEvents() {
+    static void pollEvents() {
         try {
             glfwPollEvents.invokeExact();
         } catch (Throwable e) {
@@ -3859,7 +3861,7 @@ public final class GLFW {
      * @see #pollEvents() pollEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
-    public static void waitEvents() {
+    static void waitEvents() {
         try {
             glfwWaitEvents.invokeExact();
         } catch (Throwable e) {
@@ -3906,7 +3908,7 @@ public final class GLFW {
      * @see #pollEvents() pollEvents
      * @see #waitEvents() waitEvents
      */
-    public static void waitEventsTimeout(double timeout) {
+    static void waitEventsTimeout(double timeout) {
         try {
             glfwWaitEventsTimeout.invokeExact(timeout);
         } catch (Throwable e) {
@@ -3926,7 +3928,7 @@ public final class GLFW {
      * @see #waitEvents() waitEvents
      * @see #waitEventsTimeout(double) waitEventsTimeout
      */
-    public static void postEmptyEvents() {
+    static void postEmptyEvents() {
         try {
             glfwPostEmptyEvent.invokeExact();
         } catch (Throwable e) {
@@ -3951,7 +3953,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(MemorySegment, int, int) setInputMode
      */
-    public static int getInputMode(MemorySegment window, int mode) {
+    static int getInputMode(MemorySegment window, int mode) {
         try {
             return (int) glfwGetInputMode.invokeExact(window, mode);
         } catch (Throwable e) {
@@ -4015,7 +4017,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getInputMode(MemorySegment, int) getInputMode
      */
-    public static void setInputMode(MemorySegment window, int mode, int value) {
+    static void setInputMode(MemorySegment window, int mode, int value) {
         try {
             glfwSetInputMode.invokeExact(window, mode, value);
         } catch (Throwable e) {
@@ -4043,7 +4045,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(MemorySegment, int, int) setInputMode
      */
-    public static boolean rawMouseMotionSupported() {
+    static boolean rawMouseMotionSupported() {
         try {
             return (int) glfwRawMouseMotionSupported.invokeExact() != FALSE;
         } catch (Throwable e) {
@@ -4112,7 +4114,7 @@ public final class GLFW {
      * should not free it yourself.  It is valid until the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetKeyName(int key, int scancode) {
+    static MemorySegment ngetKeyName(int key, int scancode) {
         try {
             return (MemorySegment) glfwGetKeyName.invokeExact(key, scancode);
         } catch (Throwable e) {
@@ -4129,7 +4131,7 @@ public final class GLFW {
      * @see #ngetKeyName(int, int) ngetKeyName
      */
     @Nullable
-    public static String getKeyName(int key, int scancode) {
+    static String getKeyName(int key, int scancode) {
         var pName = ngetKeyName(key, scancode);
         return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
@@ -4151,7 +4153,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    public static int getKeyScancode(int key) {
+    static int getKeyScancode(int key) {
         try {
             return (int) glfwGetKeyScancode.invokeExact(key);
         } catch (Throwable e) {
@@ -4190,7 +4192,7 @@ public final class GLFW {
      * {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static int getKey(MemorySegment window, int key) {
+    static int getKey(MemorySegment window, int key) {
         try {
             return (int) glfwGetKey.invokeExact(window, key);
         } catch (Throwable e) {
@@ -4217,7 +4219,7 @@ public final class GLFW {
      * {@link #INVALID_ENUM}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static int getMouseButton(MemorySegment window, int button) {
+    static int getMouseButton(MemorySegment window, int button) {
         try {
             return (int) glfwGetMouseButton.invokeExact(window, button);
         } catch (Throwable e) {
@@ -4254,7 +4256,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setCursorPos(MemorySegment, double, double) setCursorPos
      */
-    public static void ngetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
+    static void ngetCursorPos(MemorySegment window, MemorySegment xpos, MemorySegment ypos) {
         try {
             glfwGetCursorPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
@@ -4273,7 +4275,7 @@ public final class GLFW {
      *               top edge of the content area, or {@code null}.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) ngetCursorPos
      */
-    public static void getCursorPos(MemorySegment window, double @Nullable [] xpos, double @Nullable [] ypos) {
+    static void getCursorPos(MemorySegment window, double @Nullable [] xpos, double @Nullable [] ypos) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -4299,7 +4301,7 @@ public final class GLFW {
      * @return the cursor xy-coordinate, relative to the left and top edge of the content area.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) ngetCursorPos
      */
-    public static Pair.OfDouble getCursorPos(MemorySegment window) {
+    static Pair.OfDouble getCursorPos(MemorySegment window) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -4342,7 +4344,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) getCursorPos
      */
-    public static void setCursorPos(MemorySegment window, double xpos, double ypos) {
+    static void setCursorPos(MemorySegment window, double xpos, double ypos) {
         try {
             glfwSetCursorPos.invokeExact(window, xpos, ypos);
         } catch (Throwable e) {
@@ -4378,7 +4380,7 @@ public final class GLFW {
      * @see #destroyCursor(MemorySegment) destroyCursor
      * @see #createStandardCursor(int) createStandardCursor
      */
-    public static MemorySegment ncreateCursor(MemorySegment image, int xhot, int yhot) {
+    static MemorySegment ncreateCursor(MemorySegment image, int xhot, int yhot) {
         try {
             return (MemorySegment) glfwCreateCursor.invokeExact(image, xhot, yhot);
         } catch (Throwable e) {
@@ -4396,7 +4398,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ncreateCursor(MemorySegment, int, int) ncreateCursor
      */
-    public static MemorySegment createCursor(GLFWImage image, int xhot, int yhot) {
+    static MemorySegment createCursor(GLFWImage image, int xhot, int yhot) {
         return ncreateCursor(image.segment(), xhot, yhot);
     }
 
@@ -4415,7 +4417,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(MemorySegment, int, int) createCursor
      */
-    public static MemorySegment createStandardCursor(int shape) {
+    static MemorySegment createStandardCursor(int shape) {
         try {
             return (MemorySegment) glfwCreateStandardCursor.invokeExact(shape);
         } catch (Throwable e) {
@@ -4440,7 +4442,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(MemorySegment, int, int) createCursor
      */
-    public static void destroyCursor(MemorySegment cursor) {
+    static void destroyCursor(MemorySegment cursor) {
         try {
             glfwDestroyCursor.invokeExact(cursor);
         } catch (Throwable e) {
@@ -4466,7 +4468,7 @@ public final class GLFW {
      * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static void setCursor(MemorySegment window, MemorySegment cursor) {
+    static void setCursor(MemorySegment window, MemorySegment cursor) {
         try {
             glfwSetCursor.invokeExact(window, cursor);
         } catch (Throwable e) {
@@ -4511,7 +4513,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetKeyCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetKeyCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetKeyCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4529,7 +4531,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetKeyCallback(MemorySegment, MemorySegment) nsetKeyCallback
      */
-    public static MemorySegment setKeyCallback(MemorySegment window, @Nullable GLFWKeyFun callback) {
+    static MemorySegment setKeyCallback(MemorySegment window, @Nullable GLFWKeyFun callback) {
         return nsetKeyCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4562,7 +4564,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetCharCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetCharCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetCharCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4580,7 +4582,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCharCallback(MemorySegment, MemorySegment) nsetCharCallback
      */
-    public static MemorySegment setCharCallback(MemorySegment window, @Nullable GLFWCharFun callback) {
+    static MemorySegment setCharCallback(MemorySegment window, @Nullable GLFWCharFun callback) {
         return nsetCharCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4607,7 +4609,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetMouseButtonCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetMouseButtonCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4625,7 +4627,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetMouseButtonCallback(MemorySegment, MemorySegment) nsetMouseButtonCallback
      */
-    public static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable GLFWMouseButtonFun callback) {
+    static MemorySegment setMouseButtonCallback(MemorySegment window, @Nullable GLFWMouseButtonFun callback) {
         return nsetMouseButtonCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4648,7 +4650,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetCursorPosCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetCursorPosCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetCursorPosCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4666,7 +4668,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorPosCallback(MemorySegment, MemorySegment) nsetCursorPosCallback
      */
-    public static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable GLFWCursorPosFun callback) {
+    static MemorySegment setCursorPosCallback(MemorySegment window, @Nullable GLFWCursorPosFun callback) {
         return nsetCursorPosCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4688,7 +4690,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetCursorEnterCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetCursorEnterCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4706,7 +4708,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetCursorEnterCallback(MemorySegment, MemorySegment) nsetCursorEnterCallback
      */
-    public static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable GLFWCursorEnterFun callback) {
+    static MemorySegment setCursorEnterCallback(MemorySegment window, @Nullable GLFWCursorEnterFun callback) {
         return nsetCursorEnterCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4731,7 +4733,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetScrollCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetScrollCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetScrollCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4749,7 +4751,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetScrollCallback(MemorySegment, MemorySegment) nsetScrollCallback
      */
-    public static MemorySegment setScrollCallback(MemorySegment window, @Nullable GLFWScrollFun callback) {
+    static MemorySegment setScrollCallback(MemorySegment window, @Nullable GLFWScrollFun callback) {
         return nsetScrollCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4776,7 +4778,7 @@ public final class GLFW {
      * @glfw.remark <b>Wayland:</b> File drop is currently unimplemented.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetDropCallback(MemorySegment window, MemorySegment callback) {
+    static MemorySegment nsetDropCallback(MemorySegment window, MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetDropCallback.invokeExact(window, callback);
         } catch (Throwable e) {
@@ -4794,7 +4796,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetDropCallback(MemorySegment, MemorySegment) nsetDropCallback
      */
-    public static MemorySegment setDropCallback(MemorySegment window, @Nullable GLFWDropFun callback) {
+    static MemorySegment setDropCallback(MemorySegment window, @Nullable GLFWDropFun callback) {
         return nsetDropCallback(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);
     }
 
@@ -4813,7 +4815,7 @@ public final class GLFW {
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static boolean joystickPresent(int jid) {
+    static boolean joystickPresent(int jid) {
         try {
             return (int) glfwJoystickPresent.invokeExact(jid) != FALSE;
         } catch (Throwable e) {
@@ -4845,7 +4847,7 @@ public final class GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetJoystickAxes(int jid, MemorySegment count) {
+    static MemorySegment ngetJoystickAxes(int jid, MemorySegment count) {
         try {
             return (MemorySegment) glfwGetJoystickAxes.invokeExact(jid, count);
         } catch (Throwable e) {
@@ -4862,7 +4864,7 @@ public final class GLFW {
      * occurred.
      * @see #ngetJoystickAxes(int, MemorySegment) ngetJoystickAxes
      */
-    public static float @Nullable [] getJoystickAxes(int jid) {
+    static float @Nullable [] getJoystickAxes(int jid) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         MemorySegment pAxes;
@@ -4908,7 +4910,7 @@ public final class GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetJoystickButtons(int jid, MemorySegment count) {
+    static MemorySegment ngetJoystickButtons(int jid, MemorySegment count) {
         try {
             return (MemorySegment) glfwGetJoystickButtons.invokeExact(jid, count);
         } catch (Throwable e) {
@@ -4924,7 +4926,7 @@ public final class GLFW {
      * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetJoystickButtons(int, MemorySegment) ngetJoystickButtons
      */
-    public static boolean @Nullable [] getJoystickButtons(int jid) {
+    static boolean @Nullable [] getJoystickButtons(int jid) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         MemorySegment pButtons;
@@ -4991,7 +4993,7 @@ public final class GLFW {
      * is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetJoystickHats(int jid, MemorySegment count) {
+    static MemorySegment ngetJoystickHats(int jid, MemorySegment count) {
         try {
             return (MemorySegment) glfwGetJoystickHats.invokeExact(jid, count);
         } catch (Throwable e) {
@@ -5007,7 +5009,7 @@ public final class GLFW {
      * or an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetJoystickHats(int, MemorySegment) ngetJoystickHats
      */
-    public static byte[] getJoystickHats(int jid) {
+    static byte[] getJoystickHats(int jid) {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         try {
@@ -5040,7 +5042,7 @@ public final class GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetJoystickName(int jid) {
+    static MemorySegment ngetJoystickName(int jid) {
         try {
             return (MemorySegment) glfwGetJoystickName.invokeExact(jid);
         } catch (Throwable e) {
@@ -5057,7 +5059,7 @@ public final class GLFW {
      * @see #ngetJoystickName(int) ngetJoystickName
      */
     @Nullable
-    public static String getJoystickName(int jid) {
+    static String getJoystickName(int jid) {
         var pName = ngetJoystickName(jid);
         return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
@@ -5093,7 +5095,7 @@ public final class GLFW {
      * disconnected or the library is terminated.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment ngetJoystickGUID(int jid) {
+    static MemorySegment ngetJoystickGUID(int jid) {
         try {
             return (MemorySegment) glfwGetJoystickGUID.invokeExact(jid);
         } catch (Throwable e) {
@@ -5110,7 +5112,7 @@ public final class GLFW {
      * @see #ngetJoystickGUID(int) ngetJoystickGUID
      */
     @Nullable
-    public static String getJoystickGUID(int jid) {
+    static String getJoystickGUID(int jid) {
         var pGUID = ngetJoystickGUID(jid);
         return RuntimeHelper.isNullptr(pGUID) ? null : pGUID.getString(0);
     }
@@ -5132,7 +5134,7 @@ public final class GLFW {
      * synchronized.
      * @see #getJoystickUserPointer(int) getJoystickUserPointer
      */
-    public static void setJoystickUserPointer(int jid, MemorySegment pointer) {
+    static void setJoystickUserPointer(int jid, MemorySegment pointer) {
         try {
             glfwSetJoystickUserPointer.invokeExact(jid, pointer);
         } catch (Throwable e) {
@@ -5155,7 +5157,7 @@ public final class GLFW {
      * synchronized.
      * @see #setJoystickUserPointer(int, MemorySegment) setJoystickUserPointer
      */
-    public static MemorySegment getJoystickUserPointer(int jid) {
+    static MemorySegment getJoystickUserPointer(int jid) {
         try {
             return (MemorySegment) glfwGetJoystickUserPointer.invokeExact(jid);
         } catch (Throwable e) {
@@ -5182,7 +5184,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetGamepadState(int, MemorySegment) getGamepadState
      */
-    public static boolean joystickIsGamepad(int jid) {
+    static boolean joystickIsGamepad(int jid) {
         try {
             return (int) glfwJoystickIsGamepad.invokeExact(jid) != FALSE;
         } catch (Throwable e) {
@@ -5214,7 +5216,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    public static MemorySegment nsetJoystickCallback(MemorySegment callback) {
+    static MemorySegment nsetJoystickCallback(MemorySegment callback) {
         try {
             return (MemorySegment) glfwSetJoystickCallback.invokeExact(callback);
         } catch (Throwable e) {
@@ -5231,7 +5233,7 @@ public final class GLFW {
      * library had not been <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_init">initialized</a>.
      * @see #nsetJoystickCallback(MemorySegment) nsetJoystickCallback
      */
-    public static MemorySegment setJoystickCallback(@Nullable GLFWJoystickFun callback) {
+    static MemorySegment setJoystickCallback(@Nullable GLFWJoystickFun callback) {
         return nsetJoystickCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
 
@@ -5261,7 +5263,7 @@ public final class GLFW {
      * @see #joystickIsGamepad(int) joystickIsGamepad
      * @see #ngetGamepadName(int) getGamepadName
      */
-    public static boolean nupdateGamepadMappings(MemorySegment string) {
+    static boolean nupdateGamepadMappings(MemorySegment string) {
         try {
             return (int) glfwUpdateGamepadMappings.invokeExact(string) != FALSE;
         } catch (Throwable e) {
@@ -5277,7 +5279,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(MemorySegment) nupdateGamepadMappings
      */
-    public static boolean updateGamepadMappings(String string) {
+    static boolean updateGamepadMappings(String string) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -5309,7 +5311,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
-    public static MemorySegment ngetGamepadName(int jid) {
+    static MemorySegment ngetGamepadName(int jid) {
         try {
             return (MemorySegment) glfwGetGamepadName.invokeExact(jid);
         } catch (Throwable e) {
@@ -5327,7 +5329,7 @@ public final class GLFW {
      * @see #ngetGamepadName(int) ngetGamepadName
      */
     @Nullable
-    public static String getGamepadName(int jid) {
+    static String getGamepadName(int jid) {
         var pName = ngetGamepadName(jid);
         return RuntimeHelper.isNullptr(pName) ? null : pName.getString(0);
     }
@@ -5361,7 +5363,7 @@ public final class GLFW {
      * @see #nupdateGamepadMappings(MemorySegment) updateGamepadMappings
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
-    public static boolean ngetGamepadState(int jid, MemorySegment state) {
+    static boolean ngetGamepadState(int jid, MemorySegment state) {
         try {
             return (int) glfwGetGamepadState.invokeExact(jid, state) != FALSE;
         } catch (Throwable e) {
@@ -5379,7 +5381,7 @@ public final class GLFW {
      * occurred.
      * @see #ngetGamepadState(int, MemorySegment) ngetGamepadState
      */
-    public static boolean getGamepadState(int jid, GLFWGamepadState state) {
+    static boolean getGamepadState(int jid, GLFWGamepadState state) {
         return ngetGamepadState(jid, state.segment());
     }
 
@@ -5397,7 +5399,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetClipboardString() getClipboardString
      */
-    public static void nsetClipboardString(MemorySegment string) {
+    static void nsetClipboardString(MemorySegment string) {
         try {
             glfwSetClipboardString.invokeExact(MemorySegment.NULL, string);
         } catch (Throwable e) {
@@ -5411,7 +5413,7 @@ public final class GLFW {
      * @param string A UTF-8 encoded string.
      * @see #nsetClipboardString(MemorySegment) nsetClipboardString
      */
-    public static void setClipboardString(String string) {
+    static void setClipboardString(String string) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -5441,7 +5443,7 @@ public final class GLFW {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #nsetClipboardString(MemorySegment) setClipboardString
      */
-    public static MemorySegment ngetClipboardString() {
+    static MemorySegment ngetClipboardString() {
         try {
             return (MemorySegment) glfwGetClipboardString.invokeExact(MemorySegment.NULL);
         } catch (Throwable e) {
@@ -5457,7 +5459,7 @@ public final class GLFW {
      * @see #ngetClipboardString() ngetClipboardString
      */
     @Nullable
-    public static String getClipboardString(@Deprecated MemorySegment window) {
+    static String getClipboardString(@Deprecated MemorySegment window) {
         var pString = ngetClipboardString();
         return RuntimeHelper.isNullptr(pString) ? null : pString.getString(0);
     }
@@ -5483,7 +5485,7 @@ public final class GLFW {
      * writing of the internal base time is not atomic, so it needs to be
      * externally synchronized with calls to {@link #setTime}.
      */
-    public static double getTime() {
+    static double getTime() {
         try {
             return (double) glfwGetTime.invokeExact();
         } catch (Throwable e) {
@@ -5511,7 +5513,7 @@ public final class GLFW {
      * writing of the internal base time is not atomic, so it needs to be
      * externally synchronized with calls to {@link #getTime}.
      */
-    public static void setTime(double time) {
+    static void setTime(double time) {
         try {
             glfwSetTime.invokeExact(time);
         } catch (Throwable e) {
@@ -5532,7 +5534,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getTimerFrequency
      */
-    public static long getTimerValue() {
+    static long getTimerValue() {
         try {
             return (long) glfwGetTimerValue.invokeExact();
         } catch (Throwable e) {
@@ -5551,7 +5553,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getTimerValue
      */
-    public static long getTimerFrequency() {
+    static long getTimerFrequency() {
         try {
             return (long) glfwGetTimerFrequency.invokeExact();
         } catch (Throwable e) {
@@ -5595,7 +5597,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getCurrentContext
      */
-    public static void makeContextCurrent(MemorySegment window) {
+    static void makeContextCurrent(MemorySegment window) {
         try {
             glfwMakeContextCurrent.invokeExact(window);
         } catch (Throwable e) {
@@ -5615,7 +5617,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #makeContextCurrent
      */
-    public static MemorySegment getCurrentContext() {
+    static MemorySegment getCurrentContext() {
         try {
             return (MemorySegment) glfwGetCurrentContext.invokeExact();
         } catch (Throwable e) {
@@ -5645,7 +5647,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #swapInterval
      */
-    public static void swapBuffers(MemorySegment window) {
+    static void swapBuffers(MemorySegment window) {
         try {
             glfwSwapBuffers.invokeExact(window);
         } catch (Throwable e) {
@@ -5688,7 +5690,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #swapBuffers
      */
-    public static void swapInterval(int interval) {
+    static void swapInterval(int interval) {
         try {
             glfwSwapInterval.invokeExact(interval);
         } catch (Throwable e) {
@@ -5725,7 +5727,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetProcAddress
      */
-    public static boolean nextensionSupported(MemorySegment extension) {
+    static boolean nextensionSupported(MemorySegment extension) {
         try {
             return (int) glfwExtensionSupported.invokeExact(extension) != FALSE;
         } catch (Throwable e) {
@@ -5741,7 +5743,7 @@ public final class GLFW {
      * otherwise.
      * @see #nextensionSupported(MemorySegment) nextensionSupported
      */
-    public static boolean extensionSupported(String extension) {
+    static boolean extensionSupported(String extension) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -5782,7 +5784,7 @@ public final class GLFW {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #nextensionSupported
      */
-    public static MemorySegment ngetProcAddress(MemorySegment procName) {
+    static MemorySegment ngetProcAddress(MemorySegment procName) {
         try {
             return (MemorySegment) glfwGetProcAddress.invokeExact(procName);
         } catch (Throwable e) {
@@ -5799,7 +5801,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetProcAddress(MemorySegment) ngetProcAddress
      */
-    public static MemorySegment getProcAddress(String procName) {
+    static MemorySegment getProcAddress(String procName) {
         final MemoryStack stack = MemoryStack.stackGet();
         final long stackPointer = stack.getPointer();
         try {
@@ -5827,7 +5829,7 @@ public final class GLFW {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    public static boolean vulkanSupported() {
+    static boolean vulkanSupported() {
         try {
             return (int) glfwVulkanSupported.invokeExact() != FALSE;
         } catch (Throwable e) {
@@ -5867,7 +5869,7 @@ public final class GLFW {
      * library is terminated.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    public static MemorySegment ngetRequiredInstanceExtensions(MemorySegment count) {
+    static MemorySegment ngetRequiredInstanceExtensions(MemorySegment count) {
         try {
             return (MemorySegment) glfwGetRequiredInstanceExtensions.invokeExact(count);
         } catch (Throwable e) {
@@ -5882,7 +5884,7 @@ public final class GLFW {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetRequiredInstanceExtensions(MemorySegment) ngetRequiredInstanceExtensions
      */
-    public static String @Nullable [] getRequiredInstanceExtensions() {
+    static String @Nullable [] getRequiredInstanceExtensions() {
         var stack = MemoryStack.stackGet();
         long stackPointer = stack.getPointer();
         MemorySegment pExt;

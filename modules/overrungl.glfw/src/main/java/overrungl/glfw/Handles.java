@@ -23,7 +23,6 @@ import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
-import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
 import java.lang.invoke.MethodHandle;
 import java.util.function.Supplier;
@@ -162,32 +161,6 @@ final class Handles {
         glfwGetProcAddress = downcall("glfwGetProcAddress", PP),
         glfwVulkanSupported = downcall("glfwVulkanSupported", I),
         glfwGetRequiredInstanceExtensions = downcall("glfwGetRequiredInstanceExtensions", Pp);
-    // GLFW Native
-    static final MethodHandle
-        glfwGetWin32Adapter = downcallNative("glfwGetWin32Adapter", Pp),
-        glfwGetWin32Monitor = downcallNative("glfwGetWin32Monitor", Pp),
-        glfwGetWin32Window = downcallNative("glfwGetWin32Window", PP),
-        glfwGetWGLContext = downcallNative("glfwGetWGLContext", PP),
-        glfwGetCocoaMonitor = downcallNative("glfwGetCocoaMonitor", fd_PI),
-        glfwGetCocoaWindow = downcallNative("glfwGetCocoaWindow", PP),
-        glfwGetNSGLContext = downcallNative("glfwGetNSGLContext", PP),
-        glfwGetX11Display = downcallNative("glfwGetX11Display", P),
-        glfwGetX11Adapter = downcallNative("glfwGetX11Adapter", PJ),
-        glfwGetX11Monitor = downcallNative("glfwGetX11Monitor", PJ),
-        glfwGetX11Window = downcallNative("glfwGetX11Window", PJ),
-        glfwSetX11SelectionString = downcallNative("glfwSetX11SelectionString", PV),
-        glfwGetX11SelectionString = downcallNative("glfwGetX11SelectionString", p),
-        glfwGetGLXContext = downcallNative("glfwGetGLXContext", PP),
-        glfwGetGLXWindow = downcallNative("glfwGetGLXWindow", PJ),
-        glfwGetWaylandDisplay = downcallNative("glfwGetWaylandDisplay", P),
-        glfwGetWaylandMonitor = downcallNative("glfwGetWaylandMonitor", PP),
-        glfwGetWaylandWindow = downcallNative("glfwGetWaylandWindow", PP),
-        glfwGetEGLDisplay = downcallNative("glfwGetEGLDisplay", P),
-        glfwGetEGLContext = downcallNative("glfwGetEGLContext", PP),
-        glfwGetEGLSurface = downcallNative("glfwGetEGLSurface", PP),
-        glfwGetOSMesaColorBuffer = downcallNative("glfwGetOSMesaColorBuffer", PPPPPI),
-        glfwGetOSMesaDepthBuffer = downcallNative("glfwGetOSMesaDepthBuffer", PPPPPI),
-        glfwGetOSMesaContext = downcallNative("glfwGetOSMesaContext", PP);
 
     private Handles() {
         //no instance
@@ -208,10 +181,5 @@ final class Handles {
     private static MethodHandle downcallTrivial(String name,
                                                 FunctionDescriptors function) {
         return downcall(name, function, Linker.Option.critical(false));
-    }
-
-    private static MethodHandle downcallNative(String name,
-                                               FunctionDescriptors function) {
-        return RuntimeHelper.downcallSafe(lookup.find(name).orElse(MemorySegment.NULL), function);
     }
 }
