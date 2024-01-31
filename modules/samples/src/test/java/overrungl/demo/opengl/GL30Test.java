@@ -99,7 +99,7 @@ public final class GL30Test {
     }
 
     private void load(Arena arena) {
-        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress, true), "Failed to load OpenGL");
+        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress), "Failed to load OpenGL");
 
         GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 

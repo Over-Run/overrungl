@@ -34,24 +34,6 @@ import java.util.regex.Pattern;
 public final class GLCapabilities {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
     /**
-     * OpenGL 2.0 method handles
-     */
-    public MethodHandle glAttachShader, glBindAttribLocation, glBlendEquationSeparate, glCompileShader, glCreateProgram, glCreateShader,
-        glDeleteProgram, glDeleteShader, glDetachShader, glDisableVertexAttribArray, glDrawBuffers, glEnableVertexAttribArray,
-        glGetActiveAttrib, glGetActiveUniform, glGetAttachedShaders, glGetAttribLocation, glGetProgramInfoLog, glGetProgramiv,
-        glGetShaderInfoLog, glGetShaderSource, glGetShaderiv, glGetUniformLocation, glGetUniformfv, glGetUniformiv,
-        glGetVertexAttribPointerv, glGetVertexAttribdv, glGetVertexAttribfv, glGetVertexAttribiv, glIsProgram, glIsShader,
-        glLinkProgram, glShaderSource, glStencilFuncSeparate, glStencilMaskSeparate, glStencilOpSeparate, glUniform1f,
-        glUniform1fv, glUniform1i, glUniform1iv, glUniform2f, glUniform2fv, glUniform2i, glUniform2iv, glUniform3f,
-        glUniform3fv, glUniform3i, glUniform3iv, glUniform4f, glUniform4fv, glUniform4i, glUniform4iv, glUniformMatrix2fv,
-        glUniformMatrix3fv, glUniformMatrix4fv, glUseProgram, glValidateProgram, glVertexAttrib1d, glVertexAttrib1dv,
-        glVertexAttrib1f, glVertexAttrib1fv, glVertexAttrib1s, glVertexAttrib1sv, glVertexAttrib2d, glVertexAttrib2dv,
-        glVertexAttrib2f, glVertexAttrib2fv, glVertexAttrib2s, glVertexAttrib2sv, glVertexAttrib3d, glVertexAttrib3dv,
-        glVertexAttrib3f, glVertexAttrib3fv, glVertexAttrib3s, glVertexAttrib3sv, glVertexAttrib4Nbv, glVertexAttrib4Niv,
-        glVertexAttrib4Nsv, glVertexAttrib4Nub, glVertexAttrib4Nubv, glVertexAttrib4Nuiv, glVertexAttrib4Nusv, glVertexAttrib4bv,
-        glVertexAttrib4d, glVertexAttrib4dv, glVertexAttrib4f, glVertexAttrib4fv, glVertexAttrib4iv, glVertexAttrib4s,
-        glVertexAttrib4sv, glVertexAttrib4ubv, glVertexAttrib4uiv, glVertexAttrib4usv, glVertexAttribPointer;
-    /**
      * OpenGL 3.0 method handles
      */
     public MethodHandle glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange, glBindFragDataLocation, glBindFramebuffer,
@@ -149,9 +131,6 @@ public final class GLCapabilities {
         final MethodHandle glGetString = load.invoke("glGetString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
         if (glGetString == null) return 0;
 
-        GL20C.load(this, load);
-        GL30C.load(this, load);
-        GL41C.load(this, load);
         GL45C.load(this, load);
 
         int version = findCoreGL(glGetString);

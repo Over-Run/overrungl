@@ -31,7 +31,7 @@ import java.lang.invoke.MethodHandle;
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
  * import java.util.Objects;
- * Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+ * Objects.requireNonNull(GLLoader.load(glfw::getProcAddress), "Failed to load OpenGL");
  * }
  *
  * @author squid233

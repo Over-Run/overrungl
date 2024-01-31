@@ -48,7 +48,8 @@ import java.lang.invoke.MethodHandle;
  * @since 0.1.0
  */
 public final class GLLoader {
-    private static final boolean DEFAULT_COMPATIBLE = false;
+    private static final boolean DEFAULT_COMPATIBLE = true;
+    @Deprecated(since = "0.1.0")
     private static final ThreadLocal<GLCapabilities> capabilitiesTLS = new ThreadLocal<>();
 
     /**
@@ -57,6 +58,7 @@ public final class GLLoader {
      * <p>This {@code GLCapabilities} instance will be used by any OpenGL call in the current thread, until {@code setCapabilities} is called again with a
      * different value.</p>
      */
+    @Deprecated(since = "0.1.0")
     public static void setCapabilities(@Nullable GLCapabilities caps) {
         capabilitiesTLS.set(caps);
     }
@@ -68,6 +70,7 @@ public final class GLLoader {
      *
      * @see #getCapabilities()
      */
+    @Deprecated(since = "0.1.0")
     public static GLCapabilities getCapabilitiesSafe() {
         return capabilitiesTLS.get();
     }
@@ -78,6 +81,7 @@ public final class GLLoader {
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      * @see #getCapabilitiesSafe()
      */
+    @Deprecated(since = "0.1.0")
     public static GLCapabilities getCapabilities() {
         return checkCapabilities(capabilitiesTLS.get());
     }
@@ -92,10 +96,12 @@ public final class GLLoader {
      *
      * @throws IllegalStateException if {@link #setCapabilities} has never been called in the current thread or was last called with a {@code null} value
      */
+    @Deprecated(since = "0.1.0")
     public static GLExtCaps getExtCapabilities() {
         return getCapabilities().ext();
     }
 
+    @Deprecated(since = "0.1.0")
     private static GLCapabilities checkCapabilities(@Nullable GLCapabilities caps) {
         if (RuntimeHelper.CHECKS)
             CheckUtil.check(caps != null, """

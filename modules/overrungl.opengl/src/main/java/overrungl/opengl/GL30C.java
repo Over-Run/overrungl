@@ -17,17 +17,21 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.SizedSeg;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBColorBufferFloat;
 import overrungl.opengl.ext.arb.GLARBTextureFloat;
-import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * The OpenGL 3.0 core profile functions.
@@ -45,1497 +49,1008 @@ import static overrungl.opengl.GLLoader.*;
  * @since 0.1.0
  */
 public sealed interface GL30C extends GL21C permits GL30, GL31C {
-    public static final int COMPARE_REF_TO_TEXTURE = 0x884E;
-    public static final int CLIP_DISTANCE0 = 0x3000;
-    public static final int CLIP_DISTANCE1 = 0x3001;
-    public static final int CLIP_DISTANCE2 = 0x3002;
-    public static final int CLIP_DISTANCE3 = 0x3003;
-    public static final int CLIP_DISTANCE4 = 0x3004;
-    public static final int CLIP_DISTANCE5 = 0x3005;
-    public static final int CLIP_DISTANCE6 = 0x3006;
-    public static final int CLIP_DISTANCE7 = 0x3007;
-    public static final int MAX_CLIP_DISTANCES = 0x0D32;
-    public static final int MAJOR_VERSION = 0x821B;
-    public static final int MINOR_VERSION = 0x821C;
-    public static final int NUM_EXTENSIONS = 0x821D;
-    public static final int CONTEXT_FLAGS = 0x821E;
-    public static final int COMPRESSED_RED = 0x8225;
-    public static final int COMPRESSED_RG = 0x8226;
-    public static final int CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001;
-    public static final int RGBA32F = 0x8814;
-    public static final int RGB32F = 0x8815;
-    public static final int RGBA16F = 0x881A;
-    public static final int RGB16F = 0x881B;
-    public static final int VERTEX_ATTRIB_ARRAY_INTEGER = 0x88FD;
-    public static final int MAX_ARRAY_TEXTURE_LAYERS = 0x88FF;
-    public static final int MIN_PROGRAM_TEXEL_OFFSET = 0x8904;
-    public static final int MAX_PROGRAM_TEXEL_OFFSET = 0x8905;
-    public static final int CLAMP_READ_COLOR = 0x891C;
-    public static final int FIXED_ONLY = 0x891D;
-    public static final int MAX_VARYING_COMPONENTS = 0x8B4B;
-    public static final int TEXTURE_1D_ARRAY = 0x8C18;
-    public static final int PROXY_TEXTURE_1D_ARRAY = 0x8C19;
-    public static final int TEXTURE_2D_ARRAY = 0x8C1A;
-    public static final int PROXY_TEXTURE_2D_ARRAY = 0x8C1B;
-    public static final int TEXTURE_BINDING_1D_ARRAY = 0x8C1C;
-    public static final int TEXTURE_BINDING_2D_ARRAY = 0x8C1D;
-    public static final int R11F_G11F_B10F = 0x8C3A;
-    public static final int UNSIGNED_INT_10F_11F_11F_REV = 0x8C3B;
-    public static final int RGB9_E5 = 0x8C3D;
-    public static final int UNSIGNED_INT_5_9_9_9_REV = 0x8C3E;
-    public static final int TEXTURE_SHARED_SIZE = 0x8C3F;
-    public static final int TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH = 0x8C76;
-    public static final int TRANSFORM_FEEDBACK_BUFFER_MODE = 0x8C7F;
-    public static final int MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS = 0x8C80;
-    public static final int TRANSFORM_FEEDBACK_VARYINGS = 0x8C83;
-    public static final int TRANSFORM_FEEDBACK_BUFFER_START = 0x8C84;
-    public static final int TRANSFORM_FEEDBACK_BUFFER_SIZE = 0x8C85;
-    public static final int PRIMITIVES_GENERATED = 0x8C87;
-    public static final int TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN = 0x8C88;
-    public static final int RASTERIZER_DISCARD = 0x8C89;
-    public static final int MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS = 0x8C8A;
-    public static final int MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS = 0x8C8B;
-    public static final int INTERLEAVED_ATTRIBS = 0x8C8C;
-    public static final int SEPARATE_ATTRIBS = 0x8C8D;
-    public static final int TRANSFORM_FEEDBACK_BUFFER = 0x8C8E;
-    public static final int TRANSFORM_FEEDBACK_BUFFER_BINDING = 0x8C8F;
-    public static final int RGBA32UI = 0x8D70;
-    public static final int RGB32UI = 0x8D71;
-    public static final int RGBA16UI = 0x8D76;
-    public static final int RGB16UI = 0x8D77;
-    public static final int RGBA8UI = 0x8D7C;
-    public static final int RGB8UI = 0x8D7D;
-    public static final int RGBA32I = 0x8D82;
-    public static final int RGB32I = 0x8D83;
-    public static final int RGBA16I = 0x8D88;
-    public static final int RGB16I = 0x8D89;
-    public static final int RGBA8I = 0x8D8E;
-    public static final int RGB8I = 0x8D8F;
-    public static final int RED_INTEGER = 0x8D94;
-    public static final int GREEN_INTEGER = 0x8D95;
-    public static final int BLUE_INTEGER = 0x8D96;
-    public static final int RGB_INTEGER = 0x8D98;
-    public static final int RGBA_INTEGER = 0x8D99;
-    public static final int BGR_INTEGER = 0x8D9A;
-    public static final int BGRA_INTEGER = 0x8D9B;
-    public static final int SAMPLER_1D_ARRAY = 0x8DC0;
-    public static final int SAMPLER_2D_ARRAY = 0x8DC1;
-    public static final int SAMPLER_1D_ARRAY_SHADOW = 0x8DC3;
-    public static final int SAMPLER_2D_ARRAY_SHADOW = 0x8DC4;
-    public static final int SAMPLER_CUBE_SHADOW = 0x8DC5;
-    public static final int UNSIGNED_INT_VEC2 = 0x8DC6;
-    public static final int UNSIGNED_INT_VEC3 = 0x8DC7;
-    public static final int UNSIGNED_INT_VEC4 = 0x8DC8;
-    public static final int INT_SAMPLER_1D = 0x8DC9;
-    public static final int INT_SAMPLER_2D = 0x8DCA;
-    public static final int INT_SAMPLER_3D = 0x8DCB;
-    public static final int INT_SAMPLER_CUBE = 0x8DCC;
-    public static final int INT_SAMPLER_1D_ARRAY = 0x8DCE;
-    public static final int INT_SAMPLER_2D_ARRAY = 0x8DCF;
-    public static final int UNSIGNED_INT_SAMPLER_1D = 0x8DD1;
-    public static final int UNSIGNED_INT_SAMPLER_2D = 0x8DD2;
-    public static final int UNSIGNED_INT_SAMPLER_3D = 0x8DD3;
-    public static final int UNSIGNED_INT_SAMPLER_CUBE = 0x8DD4;
-    public static final int UNSIGNED_INT_SAMPLER_1D_ARRAY = 0x8DD6;
-    public static final int UNSIGNED_INT_SAMPLER_2D_ARRAY = 0x8DD7;
-    public static final int QUERY_WAIT = 0x8E13;
-    public static final int QUERY_NO_WAIT = 0x8E14;
-    public static final int QUERY_BY_REGION_WAIT = 0x8E15;
-    public static final int QUERY_BY_REGION_NO_WAIT = 0x8E16;
-    public static final int BUFFER_ACCESS_FLAGS = 0x911F;
-    public static final int BUFFER_MAP_LENGTH = 0x9120;
-    public static final int BUFFER_MAP_OFFSET = 0x9121;
-    public static final int DEPTH_COMPONENT32F = 0x8CAC;
-    public static final int DEPTH32F_STENCIL8 = 0x8CAD;
-    public static final int FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD;
-    public static final int INVALID_FRAMEBUFFER_OPERATION = 0x0506;
-    public static final int FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 0x8210;
-    public static final int FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE = 0x8211;
-    public static final int FRAMEBUFFER_ATTACHMENT_RED_SIZE = 0x8212;
-    public static final int FRAMEBUFFER_ATTACHMENT_GREEN_SIZE = 0x8213;
-    public static final int FRAMEBUFFER_ATTACHMENT_BLUE_SIZE = 0x8214;
-    public static final int FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE = 0x8215;
-    public static final int FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE = 0x8216;
-    public static final int FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE = 0x8217;
-    public static final int FRAMEBUFFER_DEFAULT = 0x8218;
-    public static final int FRAMEBUFFER_UNDEFINED = 0x8219;
-    public static final int DEPTH_STENCIL_ATTACHMENT = 0x821A;
-    public static final int MAX_RENDERBUFFER_SIZE = 0x84E8;
-    public static final int DEPTH_STENCIL = 0x84F9;
-    public static final int UNSIGNED_INT_24_8 = 0x84FA;
-    public static final int DEPTH24_STENCIL8 = 0x88F0;
-    public static final int TEXTURE_STENCIL_SIZE = 0x88F1;
-    public static final int TEXTURE_RED_TYPE = 0x8C10;
-    public static final int TEXTURE_GREEN_TYPE = 0x8C11;
-    public static final int TEXTURE_BLUE_TYPE = 0x8C12;
-    public static final int TEXTURE_ALPHA_TYPE = 0x8C13;
-    public static final int TEXTURE_DEPTH_TYPE = 0x8C16;
-    public static final int UNSIGNED_NORMALIZED = 0x8C17;
-    public static final int FRAMEBUFFER_BINDING = 0x8CA6;
-    public static final int DRAW_FRAMEBUFFER_BINDING = 0x8CA6;
-    public static final int RENDERBUFFER_BINDING = 0x8CA7;
-    public static final int READ_FRAMEBUFFER = 0x8CA8;
-    public static final int DRAW_FRAMEBUFFER = 0x8CA9;
-    public static final int READ_FRAMEBUFFER_BINDING = 0x8CAA;
-    public static final int RENDERBUFFER_SAMPLES = 0x8CAB;
-    public static final int FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE = 0x8CD0;
-    public static final int FRAMEBUFFER_ATTACHMENT_OBJECT_NAME = 0x8CD1;
-    public static final int FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL = 0x8CD2;
-    public static final int FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE = 0x8CD3;
-    public static final int FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER = 0x8CD4;
-    public static final int FRAMEBUFFER_COMPLETE = 0x8CD5;
-    public static final int FRAMEBUFFER_INCOMPLETE_ATTACHMENT = 0x8CD6;
-    public static final int FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT = 0x8CD7;
-    public static final int FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER = 0x8CDB;
-    public static final int FRAMEBUFFER_INCOMPLETE_READ_BUFFER = 0x8CDC;
-    public static final int FRAMEBUFFER_UNSUPPORTED = 0x8CDD;
-    public static final int MAX_COLOR_ATTACHMENTS = 0x8CDF;
-    public static final int COLOR_ATTACHMENT0 = 0x8CE0;
-    public static final int COLOR_ATTACHMENT1 = 0x8CE1;
-    public static final int COLOR_ATTACHMENT2 = 0x8CE2;
-    public static final int COLOR_ATTACHMENT3 = 0x8CE3;
-    public static final int COLOR_ATTACHMENT4 = 0x8CE4;
-    public static final int COLOR_ATTACHMENT5 = 0x8CE5;
-    public static final int COLOR_ATTACHMENT6 = 0x8CE6;
-    public static final int COLOR_ATTACHMENT7 = 0x8CE7;
-    public static final int COLOR_ATTACHMENT8 = 0x8CE8;
-    public static final int COLOR_ATTACHMENT9 = 0x8CE9;
-    public static final int COLOR_ATTACHMENT10 = 0x8CEA;
-    public static final int COLOR_ATTACHMENT11 = 0x8CEB;
-    public static final int COLOR_ATTACHMENT12 = 0x8CEC;
-    public static final int COLOR_ATTACHMENT13 = 0x8CED;
-    public static final int COLOR_ATTACHMENT14 = 0x8CEE;
-    public static final int COLOR_ATTACHMENT15 = 0x8CEF;
-    public static final int COLOR_ATTACHMENT16 = 0x8CF0;
-    public static final int COLOR_ATTACHMENT17 = 0x8CF1;
-    public static final int COLOR_ATTACHMENT18 = 0x8CF2;
-    public static final int COLOR_ATTACHMENT19 = 0x8CF3;
-    public static final int COLOR_ATTACHMENT20 = 0x8CF4;
-    public static final int COLOR_ATTACHMENT21 = 0x8CF5;
-    public static final int COLOR_ATTACHMENT22 = 0x8CF6;
-    public static final int COLOR_ATTACHMENT23 = 0x8CF7;
-    public static final int COLOR_ATTACHMENT24 = 0x8CF8;
-    public static final int COLOR_ATTACHMENT25 = 0x8CF9;
-    public static final int COLOR_ATTACHMENT26 = 0x8CFA;
-    public static final int COLOR_ATTACHMENT27 = 0x8CFB;
-    public static final int COLOR_ATTACHMENT28 = 0x8CFC;
-    public static final int COLOR_ATTACHMENT29 = 0x8CFD;
-    public static final int COLOR_ATTACHMENT30 = 0x8CFE;
-    public static final int COLOR_ATTACHMENT31 = 0x8CFF;
-    public static final int DEPTH_ATTACHMENT = 0x8D00;
-    public static final int STENCIL_ATTACHMENT = 0x8D20;
-    public static final int FRAMEBUFFER = 0x8D40;
-    public static final int RENDERBUFFER = 0x8D41;
-    public static final int RENDERBUFFER_WIDTH = 0x8D42;
-    public static final int RENDERBUFFER_HEIGHT = 0x8D43;
-    public static final int RENDERBUFFER_INTERNAL_FORMAT = 0x8D44;
-    public static final int STENCIL_INDEX1 = 0x8D46;
-    public static final int STENCIL_INDEX4 = 0x8D47;
-    public static final int STENCIL_INDEX8 = 0x8D48;
-    public static final int STENCIL_INDEX16 = 0x8D49;
-    public static final int RENDERBUFFER_RED_SIZE = 0x8D50;
-    public static final int RENDERBUFFER_GREEN_SIZE = 0x8D51;
-    public static final int RENDERBUFFER_BLUE_SIZE = 0x8D52;
-    public static final int RENDERBUFFER_ALPHA_SIZE = 0x8D53;
-    public static final int RENDERBUFFER_DEPTH_SIZE = 0x8D54;
-    public static final int RENDERBUFFER_STENCIL_SIZE = 0x8D55;
-    public static final int FRAMEBUFFER_INCOMPLETE_MULTISAMPLE = 0x8D56;
-    public static final int MAX_SAMPLES = 0x8D57;
-    public static final int FRAMEBUFFER_SRGB = 0x8DB9;
-    public static final int HALF_FLOAT = 0x140B;
-    public static final int MAP_READ_BIT = 0x0001;
-    public static final int MAP_WRITE_BIT = 0x0002;
-    public static final int MAP_INVALIDATE_RANGE_BIT = 0x0004;
-    public static final int MAP_INVALIDATE_BUFFER_BIT = 0x0008;
-    public static final int MAP_FLUSH_EXPLICIT_BIT = 0x0010;
-    public static final int MAP_UNSYNCHRONIZED_BIT = 0x0020;
-    public static final int COMPRESSED_RED_RGTC1 = 0x8DBB;
-    public static final int COMPRESSED_SIGNED_RED_RGTC1 = 0x8DBC;
-    public static final int COMPRESSED_RG_RGTC2 = 0x8DBD;
-    public static final int COMPRESSED_SIGNED_RG_RGTC2 = 0x8DBE;
-    public static final int RG = 0x8227;
-    public static final int RG_INTEGER = 0x8228;
-    public static final int R8 = 0x8229;
-    public static final int R16 = 0x822A;
-    public static final int RG8 = 0x822B;
-    public static final int RG16 = 0x822C;
-    public static final int R16F = 0x822D;
-    public static final int R32F = 0x822E;
-    public static final int RG16F = 0x822F;
-    public static final int RG32F = 0x8230;
-    public static final int R8I = 0x8231;
-    public static final int R8UI = 0x8232;
-    public static final int R16I = 0x8233;
-    public static final int R16UI = 0x8234;
-    public static final int R32I = 0x8235;
-    public static final int R32UI = 0x8236;
-    public static final int RG8I = 0x8237;
-    public static final int RG8UI = 0x8238;
-    public static final int RG16I = 0x8239;
-    public static final int RG16UI = 0x823A;
-    public static final int RG32I = 0x823B;
-    public static final int RG32UI = 0x823C;
-    public static final int VERTEX_ARRAY_BINDING = 0x85B5;
+    int COMPARE_REF_TO_TEXTURE = 0x884E;
+    int CLIP_DISTANCE0 = 0x3000;
+    int CLIP_DISTANCE1 = 0x3001;
+    int CLIP_DISTANCE2 = 0x3002;
+    int CLIP_DISTANCE3 = 0x3003;
+    int CLIP_DISTANCE4 = 0x3004;
+    int CLIP_DISTANCE5 = 0x3005;
+    int CLIP_DISTANCE6 = 0x3006;
+    int CLIP_DISTANCE7 = 0x3007;
+    int MAX_CLIP_DISTANCES = 0x0D32;
+    int MAJOR_VERSION = 0x821B;
+    int MINOR_VERSION = 0x821C;
+    int NUM_EXTENSIONS = 0x821D;
+    int CONTEXT_FLAGS = 0x821E;
+    int COMPRESSED_RED = 0x8225;
+    int COMPRESSED_RG = 0x8226;
+    int CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001;
+    int RGBA32F = 0x8814;
+    int RGB32F = 0x8815;
+    int RGBA16F = 0x881A;
+    int RGB16F = 0x881B;
+    int VERTEX_ATTRIB_ARRAY_INTEGER = 0x88FD;
+    int MAX_ARRAY_TEXTURE_LAYERS = 0x88FF;
+    int MIN_PROGRAM_TEXEL_OFFSET = 0x8904;
+    int MAX_PROGRAM_TEXEL_OFFSET = 0x8905;
+    int CLAMP_READ_COLOR = 0x891C;
+    int FIXED_ONLY = 0x891D;
+    int MAX_VARYING_COMPONENTS = 0x8B4B;
+    int TEXTURE_1D_ARRAY = 0x8C18;
+    int PROXY_TEXTURE_1D_ARRAY = 0x8C19;
+    int TEXTURE_2D_ARRAY = 0x8C1A;
+    int PROXY_TEXTURE_2D_ARRAY = 0x8C1B;
+    int TEXTURE_BINDING_1D_ARRAY = 0x8C1C;
+    int TEXTURE_BINDING_2D_ARRAY = 0x8C1D;
+    int R11F_G11F_B10F = 0x8C3A;
+    int UNSIGNED_INT_10F_11F_11F_REV = 0x8C3B;
+    int RGB9_E5 = 0x8C3D;
+    int UNSIGNED_INT_5_9_9_9_REV = 0x8C3E;
+    int TEXTURE_SHARED_SIZE = 0x8C3F;
+    int TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH = 0x8C76;
+    int TRANSFORM_FEEDBACK_BUFFER_MODE = 0x8C7F;
+    int MAX_TRANSFORM_FEEDBACK_SEPARATE_COMPONENTS = 0x8C80;
+    int TRANSFORM_FEEDBACK_VARYINGS = 0x8C83;
+    int TRANSFORM_FEEDBACK_BUFFER_START = 0x8C84;
+    int TRANSFORM_FEEDBACK_BUFFER_SIZE = 0x8C85;
+    int PRIMITIVES_GENERATED = 0x8C87;
+    int TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN = 0x8C88;
+    int RASTERIZER_DISCARD = 0x8C89;
+    int MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS = 0x8C8A;
+    int MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS = 0x8C8B;
+    int INTERLEAVED_ATTRIBS = 0x8C8C;
+    int SEPARATE_ATTRIBS = 0x8C8D;
+    int TRANSFORM_FEEDBACK_BUFFER = 0x8C8E;
+    int TRANSFORM_FEEDBACK_BUFFER_BINDING = 0x8C8F;
+    int RGBA32UI = 0x8D70;
+    int RGB32UI = 0x8D71;
+    int RGBA16UI = 0x8D76;
+    int RGB16UI = 0x8D77;
+    int RGBA8UI = 0x8D7C;
+    int RGB8UI = 0x8D7D;
+    int RGBA32I = 0x8D82;
+    int RGB32I = 0x8D83;
+    int RGBA16I = 0x8D88;
+    int RGB16I = 0x8D89;
+    int RGBA8I = 0x8D8E;
+    int RGB8I = 0x8D8F;
+    int RED_INTEGER = 0x8D94;
+    int GREEN_INTEGER = 0x8D95;
+    int BLUE_INTEGER = 0x8D96;
+    int RGB_INTEGER = 0x8D98;
+    int RGBA_INTEGER = 0x8D99;
+    int BGR_INTEGER = 0x8D9A;
+    int BGRA_INTEGER = 0x8D9B;
+    int SAMPLER_1D_ARRAY = 0x8DC0;
+    int SAMPLER_2D_ARRAY = 0x8DC1;
+    int SAMPLER_1D_ARRAY_SHADOW = 0x8DC3;
+    int SAMPLER_2D_ARRAY_SHADOW = 0x8DC4;
+    int SAMPLER_CUBE_SHADOW = 0x8DC5;
+    int UNSIGNED_INT_VEC2 = 0x8DC6;
+    int UNSIGNED_INT_VEC3 = 0x8DC7;
+    int UNSIGNED_INT_VEC4 = 0x8DC8;
+    int INT_SAMPLER_1D = 0x8DC9;
+    int INT_SAMPLER_2D = 0x8DCA;
+    int INT_SAMPLER_3D = 0x8DCB;
+    int INT_SAMPLER_CUBE = 0x8DCC;
+    int INT_SAMPLER_1D_ARRAY = 0x8DCE;
+    int INT_SAMPLER_2D_ARRAY = 0x8DCF;
+    int UNSIGNED_INT_SAMPLER_1D = 0x8DD1;
+    int UNSIGNED_INT_SAMPLER_2D = 0x8DD2;
+    int UNSIGNED_INT_SAMPLER_3D = 0x8DD3;
+    int UNSIGNED_INT_SAMPLER_CUBE = 0x8DD4;
+    int UNSIGNED_INT_SAMPLER_1D_ARRAY = 0x8DD6;
+    int UNSIGNED_INT_SAMPLER_2D_ARRAY = 0x8DD7;
+    int QUERY_WAIT = 0x8E13;
+    int QUERY_NO_WAIT = 0x8E14;
+    int QUERY_BY_REGION_WAIT = 0x8E15;
+    int QUERY_BY_REGION_NO_WAIT = 0x8E16;
+    int BUFFER_ACCESS_FLAGS = 0x911F;
+    int BUFFER_MAP_LENGTH = 0x9120;
+    int BUFFER_MAP_OFFSET = 0x9121;
+    int DEPTH_COMPONENT32F = 0x8CAC;
+    int DEPTH32F_STENCIL8 = 0x8CAD;
+    int FLOAT_32_UNSIGNED_INT_24_8_REV = 0x8DAD;
+    int INVALID_FRAMEBUFFER_OPERATION = 0x0506;
+    int FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING = 0x8210;
+    int FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE = 0x8211;
+    int FRAMEBUFFER_ATTACHMENT_RED_SIZE = 0x8212;
+    int FRAMEBUFFER_ATTACHMENT_GREEN_SIZE = 0x8213;
+    int FRAMEBUFFER_ATTACHMENT_BLUE_SIZE = 0x8214;
+    int FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE = 0x8215;
+    int FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE = 0x8216;
+    int FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE = 0x8217;
+    int FRAMEBUFFER_DEFAULT = 0x8218;
+    int FRAMEBUFFER_UNDEFINED = 0x8219;
+    int DEPTH_STENCIL_ATTACHMENT = 0x821A;
+    int MAX_RENDERBUFFER_SIZE = 0x84E8;
+    int DEPTH_STENCIL = 0x84F9;
+    int UNSIGNED_INT_24_8 = 0x84FA;
+    int DEPTH24_STENCIL8 = 0x88F0;
+    int TEXTURE_STENCIL_SIZE = 0x88F1;
+    int TEXTURE_RED_TYPE = 0x8C10;
+    int TEXTURE_GREEN_TYPE = 0x8C11;
+    int TEXTURE_BLUE_TYPE = 0x8C12;
+    int TEXTURE_ALPHA_TYPE = 0x8C13;
+    int TEXTURE_DEPTH_TYPE = 0x8C16;
+    int UNSIGNED_NORMALIZED = 0x8C17;
+    int FRAMEBUFFER_BINDING = 0x8CA6;
+    int DRAW_FRAMEBUFFER_BINDING = 0x8CA6;
+    int RENDERBUFFER_BINDING = 0x8CA7;
+    int READ_FRAMEBUFFER = 0x8CA8;
+    int DRAW_FRAMEBUFFER = 0x8CA9;
+    int READ_FRAMEBUFFER_BINDING = 0x8CAA;
+    int RENDERBUFFER_SAMPLES = 0x8CAB;
+    int FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE = 0x8CD0;
+    int FRAMEBUFFER_ATTACHMENT_OBJECT_NAME = 0x8CD1;
+    int FRAMEBUFFER_ATTACHMENT_TEXTURE_LEVEL = 0x8CD2;
+    int FRAMEBUFFER_ATTACHMENT_TEXTURE_CUBE_MAP_FACE = 0x8CD3;
+    int FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER = 0x8CD4;
+    int FRAMEBUFFER_COMPLETE = 0x8CD5;
+    int FRAMEBUFFER_INCOMPLETE_ATTACHMENT = 0x8CD6;
+    int FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT = 0x8CD7;
+    int FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER = 0x8CDB;
+    int FRAMEBUFFER_INCOMPLETE_READ_BUFFER = 0x8CDC;
+    int FRAMEBUFFER_UNSUPPORTED = 0x8CDD;
+    int MAX_COLOR_ATTACHMENTS = 0x8CDF;
+    int COLOR_ATTACHMENT0 = 0x8CE0;
+    int COLOR_ATTACHMENT1 = 0x8CE1;
+    int COLOR_ATTACHMENT2 = 0x8CE2;
+    int COLOR_ATTACHMENT3 = 0x8CE3;
+    int COLOR_ATTACHMENT4 = 0x8CE4;
+    int COLOR_ATTACHMENT5 = 0x8CE5;
+    int COLOR_ATTACHMENT6 = 0x8CE6;
+    int COLOR_ATTACHMENT7 = 0x8CE7;
+    int COLOR_ATTACHMENT8 = 0x8CE8;
+    int COLOR_ATTACHMENT9 = 0x8CE9;
+    int COLOR_ATTACHMENT10 = 0x8CEA;
+    int COLOR_ATTACHMENT11 = 0x8CEB;
+    int COLOR_ATTACHMENT12 = 0x8CEC;
+    int COLOR_ATTACHMENT13 = 0x8CED;
+    int COLOR_ATTACHMENT14 = 0x8CEE;
+    int COLOR_ATTACHMENT15 = 0x8CEF;
+    int COLOR_ATTACHMENT16 = 0x8CF0;
+    int COLOR_ATTACHMENT17 = 0x8CF1;
+    int COLOR_ATTACHMENT18 = 0x8CF2;
+    int COLOR_ATTACHMENT19 = 0x8CF3;
+    int COLOR_ATTACHMENT20 = 0x8CF4;
+    int COLOR_ATTACHMENT21 = 0x8CF5;
+    int COLOR_ATTACHMENT22 = 0x8CF6;
+    int COLOR_ATTACHMENT23 = 0x8CF7;
+    int COLOR_ATTACHMENT24 = 0x8CF8;
+    int COLOR_ATTACHMENT25 = 0x8CF9;
+    int COLOR_ATTACHMENT26 = 0x8CFA;
+    int COLOR_ATTACHMENT27 = 0x8CFB;
+    int COLOR_ATTACHMENT28 = 0x8CFC;
+    int COLOR_ATTACHMENT29 = 0x8CFD;
+    int COLOR_ATTACHMENT30 = 0x8CFE;
+    int COLOR_ATTACHMENT31 = 0x8CFF;
+    int DEPTH_ATTACHMENT = 0x8D00;
+    int STENCIL_ATTACHMENT = 0x8D20;
+    int FRAMEBUFFER = 0x8D40;
+    int RENDERBUFFER = 0x8D41;
+    int RENDERBUFFER_WIDTH = 0x8D42;
+    int RENDERBUFFER_HEIGHT = 0x8D43;
+    int RENDERBUFFER_INTERNAL_FORMAT = 0x8D44;
+    int STENCIL_INDEX1 = 0x8D46;
+    int STENCIL_INDEX4 = 0x8D47;
+    int STENCIL_INDEX8 = 0x8D48;
+    int STENCIL_INDEX16 = 0x8D49;
+    int RENDERBUFFER_RED_SIZE = 0x8D50;
+    int RENDERBUFFER_GREEN_SIZE = 0x8D51;
+    int RENDERBUFFER_BLUE_SIZE = 0x8D52;
+    int RENDERBUFFER_ALPHA_SIZE = 0x8D53;
+    int RENDERBUFFER_DEPTH_SIZE = 0x8D54;
+    int RENDERBUFFER_STENCIL_SIZE = 0x8D55;
+    int FRAMEBUFFER_INCOMPLETE_MULTISAMPLE = 0x8D56;
+    int MAX_SAMPLES = 0x8D57;
+    int FRAMEBUFFER_SRGB = 0x8DB9;
+    int HALF_FLOAT = 0x140B;
+    int MAP_READ_BIT = 0x0001;
+    int MAP_WRITE_BIT = 0x0002;
+    int MAP_INVALIDATE_RANGE_BIT = 0x0004;
+    int MAP_INVALIDATE_BUFFER_BIT = 0x0008;
+    int MAP_FLUSH_EXPLICIT_BIT = 0x0010;
+    int MAP_UNSYNCHRONIZED_BIT = 0x0020;
+    int COMPRESSED_RED_RGTC1 = 0x8DBB;
+    int COMPRESSED_SIGNED_RED_RGTC1 = 0x8DBC;
+    int COMPRESSED_RG_RGTC2 = 0x8DBD;
+    int COMPRESSED_SIGNED_RG_RGTC2 = 0x8DBE;
+    int RG = 0x8227;
+    int RG_INTEGER = 0x8228;
+    int R8 = 0x8229;
+    int R16 = 0x822A;
+    int RG8 = 0x822B;
+    int RG16 = 0x822C;
+    int R16F = 0x822D;
+    int R32F = 0x822E;
+    int RG16F = 0x822F;
+    int RG32F = 0x8230;
+    int R8I = 0x8231;
+    int R8UI = 0x8232;
+    int R16I = 0x8233;
+    int R16UI = 0x8234;
+    int R32I = 0x8235;
+    int R32UI = 0x8236;
+    int RG8I = 0x8237;
+    int RG8UI = 0x8238;
+    int RG16I = 0x8239;
+    int RG16UI = 0x823A;
+    int RG32I = 0x823B;
+    int RG32UI = 0x823C;
+    int VERTEX_ARRAY_BINDING = 0x85B5;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return checkAll(caps.glBeginConditionalRender, caps.glBeginTransformFeedback, caps.glBindBufferBase, caps.glBindBufferRange, caps.glBindFragDataLocation, caps.glBindFramebuffer,
-            caps.glBindRenderbuffer, caps.glBindVertexArray, caps.glBlitFramebuffer, caps.glCheckFramebufferStatus, caps.glClampColor, caps.glClearBufferfi,
-            caps.glClearBufferfv, caps.glClearBufferiv, caps.glClearBufferuiv, caps.glColorMaski, caps.glDeleteFramebuffers, caps.glDeleteRenderbuffers,
-            caps.glDeleteVertexArrays, caps.glDisablei, caps.glEnablei, caps.glEndConditionalRender, caps.glEndTransformFeedback, caps.glFlushMappedBufferRange,
-            caps.glFramebufferRenderbuffer, caps.glFramebufferTexture1D, caps.glFramebufferTexture2D, caps.glFramebufferTexture3D, caps.glFramebufferTextureLayer, caps.glGenFramebuffers,
-            caps.glGenRenderbuffers, caps.glGenVertexArrays, caps.glGenerateMipmap, caps.glGetBooleani_v, caps.glGetFragDataLocation, caps.glGetFramebufferAttachmentParameteriv,
-            caps.glGetIntegeri_v, caps.glGetRenderbufferParameteriv, caps.glGetStringi, caps.glGetTexParameterIiv, caps.glGetTexParameterIuiv, caps.glGetTransformFeedbackVarying,
-            caps.glGetUniformuiv, caps.glGetVertexAttribIiv, caps.glGetVertexAttribIuiv, caps.glIsEnabledi, caps.glIsFramebuffer, caps.glIsRenderbuffer,
-            caps.glIsVertexArray, caps.glMapBufferRange, caps.glRenderbufferStorage, caps.glRenderbufferStorageMultisample, caps.glTexParameterIiv, caps.glTexParameterIuiv,
-            caps.glTransformFeedbackVaryings, caps.glUniform1ui, caps.glUniform1uiv, caps.glUniform2ui, caps.glUniform2uiv, caps.glUniform3ui,
-            caps.glUniform3uiv, caps.glUniform4ui, caps.glUniform4uiv, caps.glVertexAttribI1i, caps.glVertexAttribI1iv, caps.glVertexAttribI1ui,
-            caps.glVertexAttribI1uiv, caps.glVertexAttribI2i, caps.glVertexAttribI2iv, caps.glVertexAttribI2ui, caps.glVertexAttribI2uiv, caps.glVertexAttribI3i,
-            caps.glVertexAttribI3iv, caps.glVertexAttribI3ui, caps.glVertexAttribI3uiv, caps.glVertexAttribI4bv, caps.glVertexAttribI4i, caps.glVertexAttribI4iv,
-            caps.glVertexAttribI4sv, caps.glVertexAttribI4ubv, caps.glVertexAttribI4ui, caps.glVertexAttribI4uiv, caps.glVertexAttribI4usv, caps.glVertexAttribIPointer);
+    @Entrypoint("glBeginConditionalRender")
+    default void beginConditionalRender(int id, int mode) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBeginConditionalRender = load.invoke("glBeginConditionalRender", IIV);
-        caps.glBeginTransformFeedback = load.invoke("glBeginTransformFeedback", IV);
-        caps.glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
-        caps.glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
-        caps.glBindFragDataLocation = load.invoke("glBindFragDataLocation", IIPV);
-        caps.glBindFramebuffer = load.invoke("glBindFramebuffer", IIV);
-        caps.glBindRenderbuffer = load.invoke("glBindRenderbuffer", IIV);
-        caps.glBindVertexArray = load.invoke("glBindVertexArray", IV);
-        caps.glBlitFramebuffer = load.invoke("glBlitFramebuffer", IIIIIIIIIIV);
-        caps.glCheckFramebufferStatus = load.invoke("glCheckFramebufferStatus", II);
-        caps.glClampColor = load.invoke("glClampColor", IIV);
-        caps.glClearBufferfi = load.invoke("glClearBufferfi", IIFIV);
-        caps.glClearBufferfv = load.invoke("glClearBufferfv", IIPV);
-        caps.glClearBufferiv = load.invoke("glClearBufferiv", IIPV);
-        caps.glClearBufferuiv = load.invoke("glClearBufferuiv", IIPV);
-        caps.glColorMaski = load.invoke("glColorMaski", IZZZZV);
-        caps.glDeleteFramebuffers = load.invoke("glDeleteFramebuffers", IPV);
-        caps.glDeleteRenderbuffers = load.invoke("glDeleteRenderbuffers", IPV);
-        caps.glDeleteVertexArrays = load.invoke("glDeleteVertexArrays", IPV);
-        caps.glDisablei = load.invoke("glDisablei", IIV);
-        caps.glEnablei = load.invoke("glEnablei", IIV);
-        caps.glEndConditionalRender = load.invoke("glEndConditionalRender", V);
-        caps.glEndTransformFeedback = load.invoke("glEndTransformFeedback", V);
-        caps.glFlushMappedBufferRange = load.invoke("glFlushMappedBufferRange", IJJV);
-        caps.glFramebufferRenderbuffer = load.invoke("glFramebufferRenderbuffer", IIIIV);
-        caps.glFramebufferTexture1D = load.invoke("glFramebufferTexture1D", IIIIIV);
-        caps.glFramebufferTexture2D = load.invoke("glFramebufferTexture2D", IIIIIV);
-        caps.glFramebufferTexture3D = load.invoke("glFramebufferTexture3D", IIIIIIV);
-        caps.glFramebufferTextureLayer = load.invoke("glFramebufferTextureLayer", IIIIIV);
-        caps.glGenFramebuffers = load.invoke("glGenFramebuffers", IPV);
-        caps.glGenRenderbuffers = load.invoke("glGenRenderbuffers", IPV);
-        caps.glGenVertexArrays = load.invoke("glGenVertexArrays", IPV);
-        caps.glGenerateMipmap = load.invoke("glGenerateMipmap", IV);
-        caps.glGetBooleani_v = load.invoke("glGetBooleani_v", IIPV);
-        caps.glGetFragDataLocation = load.invoke("glGetFragDataLocation", IPI);
-        caps.glGetFramebufferAttachmentParameteriv = load.invoke("glGetFramebufferAttachmentParameteriv", IIIPV);
-        caps.glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
-        caps.glGetRenderbufferParameteriv = load.invoke("glGetRenderbufferParameteriv", IIPV);
-        caps.glGetStringi = load.invoke("glGetStringi", IIp);
-        caps.glGetTexParameterIiv = load.invoke("glGetTexParameterIiv", IIPV);
-        caps.glGetTexParameterIuiv = load.invoke("glGetTexParameterIuiv", IIPV);
-        caps.glGetTransformFeedbackVarying = load.invoke("glGetTransformFeedbackVarying", IIIPPPPV);
-        caps.glGetUniformuiv = load.invoke("glGetUniformuiv", IIPV);
-        caps.glGetVertexAttribIiv = load.invoke("glGetVertexAttribIiv", IIPV);
-        caps.glGetVertexAttribIuiv = load.invoke("glGetVertexAttribIuiv", IIPV);
-        caps.glIsEnabledi = load.invoke("glIsEnabledi", IIZ);
-        caps.glIsFramebuffer = load.invoke("glIsFramebuffer", IZ);
-        caps.glIsRenderbuffer = load.invoke("glIsRenderbuffer", IZ);
-        caps.glIsVertexArray = load.invoke("glIsVertexArray", IZ);
-        caps.glMapBufferRange = load.invoke("glMapBufferRange", IJJIP);
-        caps.glRenderbufferStorage = load.invoke("glRenderbufferStorage", IIIIV);
-        caps.glRenderbufferStorageMultisample = load.invoke("glRenderbufferStorageMultisample", IIIIIV);
-        caps.glTexParameterIiv = load.invoke("glTexParameterIiv", IIPV);
-        caps.glTexParameterIuiv = load.invoke("glTexParameterIuiv", IIPV);
-        caps.glTransformFeedbackVaryings = load.invoke("glTransformFeedbackVaryings", IIPIV);
-        caps.glUniform1ui = load.invoke("glUniform1ui", IIV);
-        caps.glUniform1uiv = load.invoke("glUniform1uiv", IIPV);
-        caps.glUniform2ui = load.invoke("glUniform2ui", IIIV);
-        caps.glUniform2uiv = load.invoke("glUniform2uiv", IIPV);
-        caps.glUniform3ui = load.invoke("glUniform3ui", IIIIV);
-        caps.glUniform3uiv = load.invoke("glUniform3uiv", IIPV);
-        caps.glUniform4ui = load.invoke("glUniform4ui", IIIIIV);
-        caps.glUniform4uiv = load.invoke("glUniform4uiv", IIPV);
-        caps.glVertexAttribI1i = load.invoke("glVertexAttribI1i", IIV);
-        caps.glVertexAttribI1iv = load.invoke("glVertexAttribI1iv", IPV);
-        caps.glVertexAttribI1ui = load.invoke("glVertexAttribI1ui", IIV);
-        caps.glVertexAttribI1uiv = load.invoke("glVertexAttribI1uiv", IPV);
-        caps.glVertexAttribI2i = load.invoke("glVertexAttribI2i", IIIV);
-        caps.glVertexAttribI2iv = load.invoke("glVertexAttribI2iv", IPV);
-        caps.glVertexAttribI2ui = load.invoke("glVertexAttribI2ui", IIIV);
-        caps.glVertexAttribI2uiv = load.invoke("glVertexAttribI2uiv", IPV);
-        caps.glVertexAttribI3i = load.invoke("glVertexAttribI3i", IIIIV);
-        caps.glVertexAttribI3iv = load.invoke("glVertexAttribI3iv", IPV);
-        caps.glVertexAttribI3ui = load.invoke("glVertexAttribI3ui", IIIIV);
-        caps.glVertexAttribI3uiv = load.invoke("glVertexAttribI3uiv", IPV);
-        caps.glVertexAttribI4bv = load.invoke("glVertexAttribI4bv", IPV);
-        caps.glVertexAttribI4i = load.invoke("glVertexAttribI4i", IIIIIV);
-        caps.glVertexAttribI4iv = load.invoke("glVertexAttribI4iv", IPV);
-        caps.glVertexAttribI4sv = load.invoke("glVertexAttribI4sv", IPV);
-        caps.glVertexAttribI4ubv = load.invoke("glVertexAttribI4ubv", IPV);
-        caps.glVertexAttribI4ui = load.invoke("glVertexAttribI4ui", IIIIIV);
-        caps.glVertexAttribI4uiv = load.invoke("glVertexAttribI4uiv", IPV);
-        caps.glVertexAttribI4usv = load.invoke("glVertexAttribI4usv", IPV);
-        caps.glVertexAttribIPointer = load.invoke("glVertexAttribIPointer", IIIIPV);
+    @Entrypoint("glBeginTransformFeedback")
+    default void beginTransformFeedback(int primitiveMode) {
+        throw new ContextException();
     }
 
-    public static void beginConditionalRender(int id, int mode) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBeginConditionalRender).invokeExact(id, mode);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glBindBufferBase")
+    default void bindBufferBase(int target, int index, int buffer) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBindBufferRange")
+    default void bindBufferRange(int target, int index, int buffer, long offset, long size) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBindFragDataLocation")
+    default void bindFragDataLocation(int program, int color, MemorySegment name) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBindFragDataLocation")
+    default void bindFragDataLocation(int program, int color, String name) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBindFramebuffer")
+    default void bindFramebuffer(int target, int framebuffer) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBindRenderbuffer")
+    default void bindRenderbuffer(int target, int renderbuffer) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBindVertexArray")
+    default void bindVertexArray(int array) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBlitFramebuffer")
+    default void blitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glCheckFramebufferStatus")
+    default int checkFramebufferStatus(int target) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClampColor")
+    default void clampColor(int target, int clamp) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferfi")
+    default void clearBufferfi(int buffer, int drawBuffer, float depth, int stencil) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferfv")
+    default void clearBufferfv(int buffer, int drawBuffer, MemorySegment value) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferfv")
+    default void clearBufferfv(SegmentAllocator allocator, int buffer, int drawBuffer, float[] value) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferiv")
+    default void clearBufferiv(int buffer, int drawBuffer, MemorySegment value) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferiv")
+    default void clearBufferiv(SegmentAllocator allocator, int buffer, int drawBuffer, int[] value) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferuiv")
+    default void clearBufferuiv(int buffer, int drawBuffer, MemorySegment value) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glClearBufferuiv")
+    default void clearBufferuiv(SegmentAllocator allocator, int buffer, int drawBuffer, int[] value) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glColorMaski")
+    default void colorMaski(int index, boolean r, boolean g, boolean b, boolean a) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glDeleteFramebuffers")
+    default void deleteFramebuffers(int n, MemorySegment framebuffers) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteFramebuffers(int... framebuffers) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteFramebuffers(framebuffers.length, Marshal.marshal(stack, framebuffers));
         }
     }
 
-    public static void beginTransformFeedback(int primitiveMode) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBeginTransformFeedback).invokeExact(primitiveMode);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glDeleteRenderbuffers")
+    default void deleteRenderbuffers(int n, MemorySegment renderbuffers) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteRenderbuffers(int... renderbuffers) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteRenderbuffers(renderbuffers.length, Marshal.marshal(stack, renderbuffers));
         }
     }
 
-    public static void bindBufferBase(int target, int index, int buffer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindBufferBase).invokeExact(target, index, buffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glDeleteVertexArrays")
+    default void deleteVertexArrays(int n, MemorySegment arrays) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteVertexArrays(int... arrays) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteVertexArrays(arrays.length, Marshal.marshal(stack, arrays));
         }
     }
 
-    public static void bindBufferRange(int target, int index, int buffer, long offset, long size) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindBufferRange).invokeExact(target, index, buffer, offset, size);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDisablei")
+    default void disablei(int target, int index) {
+        throw new ContextException();
     }
 
-    public static void bindFragDataLocation(int program, int color, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindFragDataLocation).invokeExact(program, color, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glEnablei")
+    default void enablei(int target, int index) {
+        throw new ContextException();
     }
 
-    public static void bindFragDataLocation(int program, int color, String name) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            bindFragDataLocation(program, color, stack.allocateFrom(name));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glEndConditionalRender")
+    default void endConditionalRender() {
+        throw new ContextException();
     }
 
-    public static void bindFramebuffer(int target, int framebuffer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindFramebuffer).invokeExact(target, framebuffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glEndTransformFeedback")
+    default void endTransformFeedback() {
+        throw new ContextException();
     }
 
-    public static void bindRenderbuffer(int target, int renderbuffer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindRenderbuffer).invokeExact(target, renderbuffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glFlushMappedBufferRange")
+    default void flushMappedBufferRange(int target, long offset, long length) {
+        throw new ContextException();
     }
 
-    public static void bindVertexArray(int array) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindVertexArray).invokeExact(array);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glFramebufferRenderbuffer")
+    default void framebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderbuffer) {
+        throw new ContextException();
     }
 
-    public static void blitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBlitFramebuffer).invokeExact(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glFramebufferTexture1D")
+    default void framebufferTexture1D(int target, int attachment, int texTarget, int texture, int level) {
+        throw new ContextException();
     }
 
-    public static int checkFramebufferStatus(int target) {
-        var caps = getCapabilities();
-        try {
-            return (int) check(caps.glCheckFramebufferStatus).invokeExact(target);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glFramebufferTexture2D")
+    default void framebufferTexture2D(int target, int attachment, int texTarget, int texture, int level) {
+        throw new ContextException();
     }
 
-    public static void clampColor(int target, int clamp) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glClampColor).invokeExact(target, clamp);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glFramebufferTexture3D")
+    default void framebufferTexture3D(int target, int attachment, int texTarget, int texture, int level, int zoffset) {
+        throw new ContextException();
     }
 
-    public static void clearBufferfi(int buffer, int drawBuffer, float depth, int stencil) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glClearBufferfi).invokeExact(buffer, drawBuffer, depth, stencil);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glFramebufferTextureLayer")
+    default void framebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
+        throw new ContextException();
     }
 
-    public static void clearBufferfv(int buffer, int drawBuffer, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glClearBufferfv).invokeExact(buffer, drawBuffer, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGenFramebuffers")
+    default void genFramebuffers(int n, MemorySegment framebuffers) {
+        throw new ContextException();
     }
 
-    public static void clearBufferfv(SegmentAllocator allocator, int buffer, int drawBuffer, float[] value) {
-        clearBufferfv(buffer, drawBuffer, allocator.allocateFrom(JAVA_FLOAT, value));
-    }
-
-    public static void clearBufferiv(int buffer, int drawBuffer, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glClearBufferiv).invokeExact(buffer, drawBuffer, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void clearBufferiv(SegmentAllocator allocator, int buffer, int drawBuffer, int[] value) {
-        clearBufferiv(buffer, drawBuffer, allocator.allocateFrom(JAVA_INT, value));
-    }
-
-    public static void clearBufferuiv(int buffer, int drawBuffer, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glClearBufferuiv).invokeExact(buffer, drawBuffer, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void clearBufferuiv(SegmentAllocator allocator, int buffer, int drawBuffer, int[] value) {
-        clearBufferuiv(buffer, drawBuffer, allocator.allocateFrom(JAVA_INT, value));
-    }
-
-    public static void colorMaski(int index, boolean r, boolean g, boolean b, boolean a) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glColorMaski).invokeExact(index, r, g, b, a);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void deleteFramebuffers(int n, MemorySegment framebuffers) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDeleteFramebuffers).invokeExact(n, framebuffers);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void deleteFramebuffers(SegmentAllocator allocator, int[] framebuffers) {
-        deleteFramebuffers(framebuffers.length, allocator.allocateFrom(JAVA_INT, framebuffers));
-    }
-
-    public static void deleteFramebuffer(int framebuffer) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteFramebuffers(1, stack.ints(framebuffer));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
-
-    public static void deleteRenderbuffers(int n, MemorySegment renderbuffers) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDeleteRenderbuffers).invokeExact(n, renderbuffers);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void deleteRenderbuffers(SegmentAllocator allocator, int[] renderbuffers) {
-        deleteRenderbuffers(renderbuffers.length, allocator.allocateFrom(JAVA_INT, renderbuffers));
-    }
-
-    public static void deleteRenderbuffer(int renderbuffer) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteRenderbuffers(1, stack.ints(renderbuffer));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
-
-    public static void deleteVertexArrays(int n, MemorySegment arrays) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDeleteVertexArrays).invokeExact(n, arrays);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void deleteVertexArrays(SegmentAllocator allocator, int[] arrays) {
-        deleteVertexArrays(arrays.length, allocator.allocateFrom(JAVA_INT, arrays));
-    }
-
-    public static void deleteVertexArray(int array) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteVertexArrays(1, stack.ints(array));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
-
-    public static void disablei(int target, int index) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDisablei).invokeExact(target, index);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void enablei(int target, int index) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glEnablei).invokeExact(target, index);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void endConditionalRender() {
-        var caps = getCapabilities();
-        try {
-            check(caps.glEndConditionalRender).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void endTransformFeedback() {
-        var caps = getCapabilities();
-        try {
-            check(caps.glEndTransformFeedback).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void flushMappedBufferRange(int target, long offset, long length) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glFlushMappedBufferRange).invokeExact(target, offset, length);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void framebufferRenderbuffer(int target, int attachment, int renderbufferTarget, int renderbuffer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glFramebufferRenderbuffer).invokeExact(target, attachment, renderbufferTarget, renderbuffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void framebufferTexture1D(int target, int attachment, int texTarget, int texture, int level) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glFramebufferTexture1D).invokeExact(target, attachment, texTarget, texture, level);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void framebufferTexture2D(int target, int attachment, int texTarget, int texture, int level) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glFramebufferTexture2D).invokeExact(target, attachment, texTarget, texture, level);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void framebufferTexture3D(int target, int attachment, int texTarget, int texture, int level, int zoffset) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glFramebufferTexture3D).invokeExact(target, attachment, texTarget, texture, level, zoffset);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void framebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glFramebufferTextureLayer).invokeExact(target, attachment, texture, level, layer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genFramebuffers(int n, MemorySegment framebuffers) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenFramebuffers).invokeExact(n, framebuffers);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genFramebuffers(SegmentAllocator allocator, int[] framebuffers) {
-        var seg = allocator.allocateFrom(JAVA_INT, framebuffers);
+    @Skip
+    default void genFramebuffers(SegmentAllocator allocator, @Ref int[] framebuffers) {
+        var seg = Marshal.marshal(allocator, framebuffers);
         genFramebuffers(framebuffers.length, seg);
-        RuntimeHelper.toArray(seg, framebuffers);
+        Unmarshal.copy(seg, framebuffers);
     }
 
-    public static int genFramebuffer() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genFramebuffers() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void genRenderbuffers(int n, MemorySegment renderbuffers) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenRenderbuffers).invokeExact(n, renderbuffers);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGenRenderbuffers")
+    default void genRenderbuffers(int n, MemorySegment renderbuffers) {
+        throw new ContextException();
     }
 
-    public static void genRenderbuffers(SegmentAllocator allocator, int[] renderbuffers) {
-        var seg = allocator.allocateFrom(JAVA_INT, renderbuffers);
+    @Skip
+    default void genRenderbuffers(SegmentAllocator allocator, @Ref int[] renderbuffers) {
+        var seg = Marshal.marshal(allocator, renderbuffers);
         genRenderbuffers(renderbuffers.length, seg);
-        RuntimeHelper.toArray(seg, renderbuffers);
+        Unmarshal.copy(seg, renderbuffers);
     }
 
-    public static int genRenderbuffer() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genRenderbuffers() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void genVertexArrays(int n, MemorySegment arrays) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenVertexArrays).invokeExact(n, arrays);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGenVertexArrays")
+    default void genVertexArrays(int n, MemorySegment arrays) {
+        throw new ContextException();
     }
 
-    public static void genVertexArrays(SegmentAllocator allocator, int[] arrays) {
-        var seg = allocator.allocateFrom(JAVA_INT, arrays);
+    @Skip
+    default void genVertexArrays(SegmentAllocator allocator, @Ref int[] arrays) {
+        var seg = Marshal.marshal(allocator, arrays);
         genVertexArrays(arrays.length, seg);
-        RuntimeHelper.toArray(seg, arrays);
+        Unmarshal.copy(seg, arrays);
     }
 
-    public static int genVertexArray() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genVertexArrays() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void generateMipmap(int target) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenerateMipmap).invokeExact(target);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGenerateMipmap")
+    default void generateMipmap(int target) {
+        throw new ContextException();
     }
 
-    public static void getBooleani_v(int target, int index, MemorySegment data) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetBooleani_v).invokeExact(target, index, data);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetBooleani_v")
+    default void getBooleani_v(int target, int index, MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void getBooleani_v(SegmentAllocator allocator, int target, int index, boolean[] data) {
-        var seg = allocator.allocate(JAVA_BOOLEAN, data.length);
-        getBooleani_v(target, index, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Entrypoint("glGetBooleani_v")
+    default void getBooleani_v(SegmentAllocator allocator, int target, int index, @Ref boolean[] data) {
+        throw new ContextException();
     }
 
-    public static boolean getBooleani(int target, int index) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.calloc(JAVA_BOOLEAN);
+    @Skip
+    default boolean getBooleani_v(int target, int index) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.allocate(JAVA_BOOLEAN);
             getBooleani_v(target, index, seg);
             return seg.get(JAVA_BOOLEAN, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static int getFragDataLocation(int program, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            return (int) check(caps.glGetFragDataLocation).invokeExact(program, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetFragDataLocation")
+    default int getFragDataLocation(int program, MemorySegment name) {
+        throw new ContextException();
     }
 
-    public static int getFragDataLocation(int program, String name) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return getFragDataLocation(program, stack.allocateFrom(name));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glGetFragDataLocation")
+    default int getFragDataLocation(int program, String name) {
+        throw new ContextException();
     }
 
-    public static void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetFramebufferAttachmentParameteriv).invokeExact(target, attachment, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetFramebufferAttachmentParameteriv")
+    default void getFramebufferAttachmentParameteriv(int target, int attachment, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getFramebufferAttachmentParameteri(int target, int attachment, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getFramebufferAttachmentParameteriv(int target, int attachment, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getIntegeri_v(int target, int index, MemorySegment data) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetIntegeri_v).invokeExact(target, index, data);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetIntegeri_v")
+    default void getIntegeri_v(int target, int index, MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void getIntegeri_v(SegmentAllocator allocator, int target, int index, int[] data) {
-        var seg = allocator.allocateFrom(JAVA_INT, data);
-        getIntegeri_v(target, index, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Entrypoint("glGetIntegeri_v")
+    default void getIntegeri_v(SegmentAllocator allocator, int target, int index, @Ref int[] data) {
+        throw new ContextException();
     }
 
-    public static int getIntegeri(int target, int index) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getIntegeri_v(int target, int index) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getIntegeri_v(target, index, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getRenderbufferParameteriv(int target, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetRenderbufferParameteriv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetRenderbufferParameteriv")
+    default void getRenderbufferParameteriv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getRenderbufferParameteriv(int target, int pname, int[] params) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
-            getRenderbufferParameteriv(target, pname, seg);
-            params[0] = seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glGetRenderbufferParameteriv")
+    default void getRenderbufferParameteriv(int target, int pname, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static int getRenderbufferParameteri(int target, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getRenderbufferParameteriv(int target, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getRenderbufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static MemorySegment ngetStringi(int pname, int index) {
-        var caps = getCapabilities();
-        try {
-            return (MemorySegment) check(caps.glGetStringi).invokeExact(pname, index);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetStringi")
+    default MemorySegment ngetStringi(int pname, int index) {
+        throw new ContextException();
     }
 
+    @Entrypoint("glGetStringi")
     @Nullable
-    public static String getStringi(int pname, int index) {
-        var pStr = ngetStringi(pname, index);
-        return RuntimeHelper.isNullptr(pStr) ? null : pStr.getString(0);
+    @SizedSeg(Unmarshal.STR_SIZE)
+    default String getStringi(int pname, int index) {
+        throw new ContextException();
     }
 
-    public static void getTexParameterIiv(int target, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetTexParameterIiv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetTexParameterIiv")
+    default void getTexParameterIiv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getTexParameterIiv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getTexParameterIiv(target, pname, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetTexParameterIiv")
+    default void getTexParameterIiv(SegmentAllocator allocator, int target, int pname, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static int getTexParameterIi(int target, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getTexParameterIiv(int target, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getTexParameterIiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getTexParameterIuiv(int target, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetTexParameterIuiv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetTexParameterIuiv")
+    default void getTexParameterIuiv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getTexParameterIuiv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getTexParameterIuiv(target, pname, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetTexParameterIuiv")
+    default void getTexParameterIuiv(SegmentAllocator allocator, int target, int pname, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static int getTexParameterIui(int target, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getTexParameterIuiv(int target, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getTexParameterIuiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getTransformFeedbackVarying(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetTransformFeedbackVarying).invokeExact(program, index, bufSize, length, size, type, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetTransformFeedbackVarying")
+    default void getTransformFeedbackVarying(int program, int index, int bufSize, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
+        throw new ContextException();
     }
 
-    public static void getTransformFeedbackVarying(SegmentAllocator allocator, int program, int index, int bufSize, int @Nullable [] length, int[] size, int[] type, String[] name) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pSz = allocator.allocate(JAVA_INT);
-        var pType = allocator.allocate(JAVA_INT);
+    @Skip
+    default void getTransformFeedbackVarying(SegmentAllocator allocator, int program, int index, int bufSize, @Ref int @Nullable [] length, @Ref int[] size, @Ref int[] type, @Ref String[] name) {
+        var pLen = Marshal.marshal(allocator, length);
+        var pSz = Marshal.marshal(allocator, size);
+        var pType = Marshal.marshal(allocator, type);
         var pName = allocator.allocate(JAVA_BYTE, bufSize);
         getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
-        }
-        size[0] = pSz.get(JAVA_INT, 0);
-        type[0] = pType.get(JAVA_INT, 0);
+        Unmarshal.copy(pLen, length);
+        Unmarshal.copy(pSz, size);
+        Unmarshal.copy(pType, type);
         name[0] = pName.getString(0);
     }
 
-    public static void getUniformuiv(int program, int location, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetUniformuiv).invokeExact(program, location, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetUniformuiv")
+    default void getUniformuiv(int program, int location, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getUniformuiv(SegmentAllocator allocator, int program, int location, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getUniformuiv(program, location, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetUniformuiv")
+    default void getUniformuiv(SegmentAllocator allocator, int program, int location, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static int getUniformui(int program, int location) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getUniformuiv(int program, int location) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getUniformuiv(program, location, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getVertexAttribIiv(int index, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetVertexAttribIiv).invokeExact(index, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetVertexAttribIiv")
+    default void getVertexAttribIiv(int index, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getVertexAttribIiv(SegmentAllocator allocator, int index, int pname, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getVertexAttribIiv(index, pname, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetVertexAttribIiv")
+    default void getVertexAttribIiv(SegmentAllocator allocator, int index, int pname, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static int getVertexAttribIi(int index, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getVertexAttribIiv(int index, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getVertexAttribIiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getVertexAttribIuiv(int index, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetVertexAttribIuiv).invokeExact(index, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetVertexAttribIuiv")
+    default void getVertexAttribIuiv(int index, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getVertexAttribIuiv(SegmentAllocator allocator, int index, int pname, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getVertexAttribIuiv(index, pname, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetVertexAttribIuiv")
+    default void getVertexAttribIuiv(SegmentAllocator allocator, int index, int pname, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static int getVertexAttribIui(int index, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getVertexAttribIuiv(int index, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getVertexAttribIuiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static boolean isEnabledi(int target, int index) {
-        var caps = getCapabilities();
+    @Entrypoint("glIsEnabledi")
+    default boolean isEnabledi(int target, int index) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glIsFramebuffer")
+    default boolean isFramebuffer(int framebuffer) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glIsRenderbuffer")
+    default boolean isRenderbuffer(int renderbuffer) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glIsVertexArray")
+    default boolean isVertexArray(int array) {
+        throw new ContextException();
+    }
+
+    default MethodHandle glMapBufferRange() {
+        throw new ContextException();
+    }
+
+    @Skip
+    default MemorySegment mapBufferRange(int target, long offset, long length, int access) {
         try {
-            return (boolean) check(caps.glIsEnabledi).invokeExact(target, index);
+            return ((MemorySegment) glMapBufferRange().invokeExact(target, offset, length, access)).reinterpret(length);
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+            throw new RuntimeException(e);
         }
     }
 
-    public static boolean isFramebuffer(int framebuffer) {
-        var caps = getCapabilities();
-        try {
-            return (boolean) check(caps.glIsFramebuffer).invokeExact(framebuffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glRenderbufferStorage")
+    default void renderbufferStorage(int target, int internalFormat, int width, int height) {
+        throw new ContextException();
     }
 
-    public static boolean isRenderbuffer(int renderbuffer) {
-        var caps = getCapabilities();
-        try {
-            return (boolean) check(caps.glIsRenderbuffer).invokeExact(renderbuffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glRenderbufferStorageMultisample")
+    default void renderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) {
+        throw new ContextException();
     }
 
-    public static boolean isVertexArray(int array) {
-        var caps = getCapabilities();
-        try {
-            return (boolean) check(caps.glIsVertexArray).invokeExact(array);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexParameterIiv")
+    default void texParameterIiv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static MemorySegment mapBufferRange(int target, long offset, long length, int access) {
-        var caps = getCapabilities();
-        try {
-            return ((MemorySegment) check(caps.glMapBufferRange).invokeExact(target, offset, length, access)).reinterpret(length);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexParameterIiv")
+    default void texParameterIiv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        throw new ContextException();
     }
 
-    public static void renderbufferStorage(int target, int internalFormat, int width, int height) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glRenderbufferStorage).invokeExact(target, internalFormat, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexParameterIuiv")
+    default void texParameterIuiv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void renderbufferStorageMultisample(int target, int samples, int internalFormat, int width, int height) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glRenderbufferStorageMultisample).invokeExact(target, samples, internalFormat, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexParameterIuiv")
+    default void texParameterIuiv(SegmentAllocator allocator, int target, int pname, int[] params) {
+        throw new ContextException();
     }
 
-    public static void texParameterIiv(int target, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glTexParameterIiv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTransformFeedbackVaryings")
+    default void transformFeedbackVaryings(int program, int count, MemorySegment varyings, int bufferMode) {
+        throw new ContextException();
     }
 
-    public static void texParameterIiv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        texParameterIiv(target, pname, allocator.allocateFrom(JAVA_INT, params));
+    @Skip
+    default void transformFeedbackVaryings(SegmentAllocator allocator, int program, String[] varyings, int bufferMode) {
+        transformFeedbackVaryings(program, varyings.length, Marshal.marshal(allocator, varyings), bufferMode);
     }
 
-    public static void texParameterIuiv(int target, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glTexParameterIuiv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform1ui")
+    default void uniform1ui(int location, int v0) {
+        throw new ContextException();
     }
 
-    public static void texParameterIuiv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        texParameterIuiv(target, pname, allocator.allocateFrom(JAVA_INT, params));
+    @Entrypoint("glUniform1uiv")
+    default void uniform1uiv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void transformFeedbackVaryings(int program, int count, MemorySegment varyings, int bufferMode) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glTransformFeedbackVaryings).invokeExact(program, count, varyings, bufferMode);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default void uniform1uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform1uiv(location, value.length, Marshal.marshal(allocator, value));
     }
 
-    public static void transformFeedbackVaryings(SegmentAllocator allocator, int program, String[] varyings, int bufferMode) {
-        var seg = allocator.allocate(ADDRESS, varyings.length);
-        for (int i = 0; i < varyings.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(varyings[i]));
-        }
-        transformFeedbackVaryings(program, varyings.length, seg, bufferMode);
+    @Entrypoint("glUniform2ui")
+    default void uniform2ui(int location, int v0, int v1) {
+        throw new ContextException();
     }
 
-    public static void uniform1ui(int location, int v0) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform1ui).invokeExact(location, v0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform2uiv")
+    default void uniform2uiv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform1uiv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform1uiv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default void uniform2uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform2uiv(location, value.length >> 1, Marshal.marshal(allocator, value));
     }
 
-    public static void uniform1uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform1uiv(location, value.length, allocator.allocateFrom(JAVA_INT, value));
+    @Entrypoint("glUniform3ui")
+    default void uniform3ui(int location, int v0, int v1, int v2) {
+        throw new ContextException();
     }
 
-    public static void uniform2ui(int location, int v0, int v1) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform2ui).invokeExact(location, v0, v1);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform3uiv")
+    default void uniform3uiv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform2uiv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform2uiv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default void uniform3uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform3uiv(location, value.length / 3, Marshal.marshal(allocator, value));
     }
 
-    public static void uniform2uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform2uiv(location, value.length >> 1, allocator.allocateFrom(JAVA_INT, value));
+    @Entrypoint("glUniform4ui")
+    default void uniform4ui(int location, int v0, int v1, int v2, int v3) {
+        throw new ContextException();
     }
 
-    public static void uniform3ui(int location, int v0, int v1, int v2) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform3ui).invokeExact(location, v0, v1, v2);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform4uiv")
+    default void uniform4uiv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform3uiv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform3uiv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default void uniform4uiv(SegmentAllocator allocator, int location, int[] value) {
+        uniform4uiv(location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void uniform3uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform3uiv(location, value.length / 3, allocator.allocateFrom(JAVA_INT, value));
+    @Entrypoint("glVertexAttribI1i")
+    default void vertexAttribI1i(int index, int x) {
+        throw new ContextException();
     }
 
-    public static void uniform4ui(int location, int v0, int v1, int v2, int v3) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform4ui).invokeExact(location, v0, v1, v2, v3);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI1iv")
+    default void vertexAttribI1iv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void uniform4uiv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform4uiv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI1iv")
+    default void vertexAttribI1iv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void uniform4uiv(SegmentAllocator allocator, int location, int[] value) {
-        uniform4uiv(location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
+    @Entrypoint("glVertexAttribI1ui")
+    default void vertexAttribI1ui(int index, int x) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI1i(int index, int x) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI1i).invokeExact(index, x);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI1uiv")
+    default void vertexAttribI1uiv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI1iv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI1iv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI1uiv")
+    default void vertexAttribI1uiv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI1iv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI1iv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI2i")
+    default void vertexAttribI2i(int index, int x, int y) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI1ui(int index, int x) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI1ui).invokeExact(index, x);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI2iv")
+    default void vertexAttribI2iv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI1uiv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI1uiv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI2iv")
+    default void vertexAttribI2iv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI1uiv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI1uiv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI2ui")
+    default void vertexAttribI2ui(int index, int x, int y) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI2i(int index, int x, int y) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI2i).invokeExact(index, x, y);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI2uiv")
+    default void vertexAttribI2uiv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI2iv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI2iv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI2uiv")
+    default void vertexAttribI2uiv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI2iv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI2iv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI3i")
+    default void vertexAttribI3i(int index, int x, int y, int z) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI2ui(int index, int x, int y) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI2ui).invokeExact(index, x, y);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI3iv")
+    default void vertexAttribI3iv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI2uiv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI2uiv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI3iv")
+    default void vertexAttribI3iv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI2uiv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI2uiv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI3ui")
+    default void vertexAttribI3ui(int index, int x, int y, int z) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI3i(int index, int x, int y, int z) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI3i).invokeExact(index, x, y, z);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI3uiv")
+    default void vertexAttribI3uiv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI3iv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI3iv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI3uiv")
+    default void vertexAttribI3uiv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI3iv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI3iv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI4bv")
+    default void vertexAttribI4bv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI3ui(int index, int x, int y, int z) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI3ui).invokeExact(index, x, y, z);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4bv")
+    default void vertexAttribI4bv(SegmentAllocator allocator, int index, byte[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI3uiv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI3uiv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4i")
+    default void vertexAttribI4i(int index, int x, int y, int z, int w) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI3uiv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI3uiv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI4iv")
+    default void vertexAttribI4iv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4bv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4bv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4iv")
+    default void vertexAttribI4iv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4bv(SegmentAllocator allocator, int index, byte[] v) {
-        vertexAttribI4bv(index, allocator.allocateFrom(JAVA_BYTE, v));
+    @Entrypoint("glVertexAttribI4sv")
+    default void vertexAttribI4sv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4i(int index, int x, int y, int z, int w) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4i).invokeExact(index, x, y, z, w);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4sv")
+    default void vertexAttribI4sv(SegmentAllocator allocator, int index, short[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4iv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4iv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4ubv")
+    default void vertexAttribI4ubv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4iv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI4iv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribI4ubv")
+    default void vertexAttribI4ubv(SegmentAllocator allocator, int index, byte[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4sv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4sv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4ui")
+    default void vertexAttribI4ui(int index, int x, int y, int z, int w) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4sv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttribI4sv(index, allocator.allocateFrom(JAVA_SHORT, v));
+    @Entrypoint("glVertexAttribI4uiv")
+    default void vertexAttribI4uiv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4ubv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4ubv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4uiv")
+    default void vertexAttribI4uiv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4ubv(SegmentAllocator allocator, int index, byte[] v) {
-        vertexAttribI4ubv(index, allocator.allocateFrom(JAVA_BYTE, v));
+    @Entrypoint("glVertexAttribI4usv")
+    default void vertexAttribI4usv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4ui(int index, int x, int y, int z, int w) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4ui).invokeExact(index, x, y, z, w);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribI4usv")
+    default void vertexAttribI4usv(SegmentAllocator allocator, int index, short[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4uiv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4uiv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribIPointer")
+    default void vertexAttribIPointer(int index, int size, int type, int stride, MemorySegment pointer) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4uiv(SegmentAllocator allocator, int index, int[] v) {
-        vertexAttribI4uiv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glVertexAttribIPointer")
+    default void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, byte[] pointer) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4usv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribI4usv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribIPointer")
+    default void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, short[] pointer) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribI4usv(SegmentAllocator allocator, int index, short[] v) {
-        vertexAttribI4usv(index, allocator.allocateFrom(JAVA_SHORT, v));
-    }
-
-    public static void vertexAttribIPointer(int index, int size, int type, int stride, MemorySegment pointer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribIPointer).invokeExact(index, size, type, stride, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, byte[] pointer) {
-        vertexAttribIPointer(index, size, type, stride, allocator.allocateFrom(JAVA_BYTE, pointer));
-    }
-
-    public static void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, short[] pointer) {
-        vertexAttribIPointer(index, size, type, stride, allocator.allocateFrom(JAVA_SHORT, pointer));
-    }
-
-    public static void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, int[] pointer) {
-        vertexAttribIPointer(index, size, type, stride, allocator.allocateFrom(JAVA_INT, pointer));
+    @Entrypoint("glVertexAttribIPointer")
+    default void vertexAttribIPointer(SegmentAllocator allocator, int index, int size, int type, int stride, int[] pointer) {
+        throw new ContextException();
     }
 }
