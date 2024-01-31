@@ -19,6 +19,7 @@ package overrungl.opengl;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Downcall;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.CheckUtil;
 
@@ -118,7 +119,7 @@ public final class GLLoader {
      * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
-    public static GLCapabilities load(GLLoadFunc load) {
+    public static GL load(GLLoadFunc load) {
         return load(load, DEFAULT_COMPATIBLE);
     }
 
@@ -130,12 +131,14 @@ public final class GLLoader {
      * @return the OpenGL capabilities, or {@code null} if no OpenGL context found.
      */
     @Nullable
-    public static GLCapabilities load(GLLoadFunc load, boolean forwardCompatible) {
+    public static GL load(GLLoadFunc load, boolean forwardCompatible) {
         var caps = new GLCapabilities(forwardCompatible);
         // set the global capabilities first
         setCapabilities(caps);
         if (caps.load(load) != 0) {
-            return caps;
+            return forwardCompatible ?
+                Downcall.load(GL.class, load.lookup()) :
+                Downcall.load(GLLegacy.class, load.lookup());
         }
         // reset if failed to load
         setCapabilities(null);
@@ -155,15 +158,6 @@ public final class GLLoader {
     public static MethodHandle check(@Nullable MethodHandle handle) throws IllegalStateException {
         CheckUtil.check(handle != null, "handle is null; maybe no context or function exists.");
         return handle;
-    }
-
-    static boolean checkAll(MethodHandle... handles) {
-        for (var handle : handles) {
-            if (handle == null) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**

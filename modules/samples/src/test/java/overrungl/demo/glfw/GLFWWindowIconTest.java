@@ -42,6 +42,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
 public final class GLFWWindowIconTest {
     private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
+    private GL gl;
 
     public void run() {
         try (var arena = Arena.ofShared()) {
@@ -91,7 +92,7 @@ public final class GLFWWindowIconTest {
             }
         });
         glfw.setFramebufferSizeCallback(window, (_, width, height) ->
-            GL.viewport(0, 0, width, height));
+            gl.viewport(0, 0, width, height));
         var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
             var size = glfw.getWindowSize(window);
@@ -109,14 +110,15 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress), "Failed to load OpenGL");
+        gl = GLLoader.load(glfw::getProcAddress);
+        Objects.requireNonNull(gl, "Failed to load OpenGL");
 
-        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }
 
     private void loop() {
         while (!glfw.windowShouldClose(window)) {
-            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+            gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             glfw.swapBuffers(window);
 

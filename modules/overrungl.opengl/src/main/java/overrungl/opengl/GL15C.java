@@ -99,38 +99,32 @@ public sealed interface GL15C extends GL14C permits GL15, GL20C {
 
     @Skip
     default void bufferData(SegmentAllocator allocator, int target, byte[] data, int usage) {
-        final MemorySegment segment = Marshal.marshal(allocator, data);
-        bufferData(target, segment.byteSize(), segment, usage);
+        bufferData(target, Marshal.marshal(allocator, data), usage);
     }
 
     @Skip
     default void bufferData(SegmentAllocator allocator, int target, short[] data, int usage) {
-        final MemorySegment segment = Marshal.marshal(allocator, data);
-        bufferData(target, segment.byteSize(), segment, usage);
+        bufferData(target, Marshal.marshal(allocator, data), usage);
     }
 
     @Skip
     default void bufferData(SegmentAllocator allocator, int target, int[] data, int usage) {
-        final MemorySegment segment = Marshal.marshal(allocator, data);
-        bufferData(target, segment.byteSize(), segment, usage);
+        bufferData(target, Marshal.marshal(allocator, data), usage);
     }
 
     @Skip
     default void bufferData(SegmentAllocator allocator, int target, long[] data, int usage) {
-        final MemorySegment segment = Marshal.marshal(allocator, data);
-        bufferData(target, segment.byteSize(), segment, usage);
+        bufferData(target, Marshal.marshal(allocator, data), usage);
     }
 
     @Skip
     default void bufferData(SegmentAllocator allocator, int target, float[] data, int usage) {
-        final MemorySegment segment = Marshal.marshal(allocator, data);
-        bufferData(target, segment.byteSize(), segment, usage);
+        bufferData(target, Marshal.marshal(allocator, data), usage);
     }
 
     @Skip
     default void bufferData(SegmentAllocator allocator, int target, double[] data, int usage) {
-        final MemorySegment segment = Marshal.marshal(allocator, data);
-        bufferData(target, segment.byteSize(), segment, usage);
+        bufferData(target, Marshal.marshal(allocator, data), usage);
     }
 
     @Entrypoint("glBufferSubData")
@@ -386,7 +380,7 @@ public sealed interface GL15C extends GL14C permits GL15, GL20C {
         long size = 0;
         if (this instanceof GL32C gl32C) {
             try {
-                size = gl32C.getBufferParameteri64v(target, GL30C.BUFFER_MAP_LENGTH);
+                size = gl32C.getBufferParameteri64v(target, BUFFER_SIZE);
             } catch (ContextException e) {
                 size = getBufferParameteriv(target, BUFFER_SIZE);
             }

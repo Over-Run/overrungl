@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,10 +16,14 @@
 
 package overrungl.opengl;
 
-import overrungl.internal.RuntimeHelper;
+import overrun.marshal.Unmarshal;
+import overrungl.NativeType;
 
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.invoke.MethodHandle;
+import java.util.List;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
 import static java.lang.foreign.ValueLayout.JAVA_INT;
@@ -33,50 +37,64 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
 final class GLExtFinder {
     static boolean getExtensions(SegmentAllocator allocator,
                                  int version,
-                                 MemorySegment outExts,
-                                 MemorySegment outNumExtsI,
-                                 MemorySegment[] outExtsI,
-                                 GLCapabilities caps) {
+                                 @NativeType("const char**") MemorySegment outExts,
+                                 List<String> outExtsI,
+                                 GLLoadFunc load) {
+        // < 3.0
         if (GLLoader.versionMajor(version) < 3) {
-            if (caps.glGetString == null) {
+            final MethodHandle glGetString = load.invoke("glGetString", FunctionDescriptor.of(ADDRESS, JAVA_INT));
+            if (glGetString == null) {
                 return false;
             }
-            outExts.set(ADDRESS, 0, GL10C.ngetString(GL10C.EXTENSIONS));
-        } else {
-            if (caps.glGetStringi == null || caps.glGetIntegerv == null) {
-                return false;
+            try {
+                outExts.set(ADDRESS, 0, (MemorySegment) glGetString.invokeExact(GL.EXTENSIONS));
+                return true;
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
             }
-            int numExtsI = GL10C.getInteger(GL30C.NUM_EXTENSIONS);
-            var extsI = MemorySegment.NULL;
-            if (numExtsI > 0) {
-                extsI = allocator.allocate(ADDRESS, numExtsI);
+        }
+
+        // 3.0
+        // method handles
+        final MethodHandle glGetStringi = load.invoke("glGetStringi", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, JAVA_INT, JAVA_INT));
+        if (glGetStringi == null) {
+            return false;
+        }
+        final MethodHandle glGetIntegerv = load.invoke("glGetIntegerv", FunctionDescriptor.ofVoid(JAVA_INT, ADDRESS));
+        if (glGetIntegerv == null) {
+            return false;
+        }
+
+        // extension count
+        final MemorySegment pNumExtsI = allocator.allocate(JAVA_INT);
+        try {
+            glGetIntegerv.invokeExact(GL.NUM_EXTENSIONS, pNumExtsI);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+        int numExtsI = pNumExtsI.get(JAVA_INT, 0L);
+        if (numExtsI <= 0) {
+            return false;
+        }
+
+        // write to the extension array
+        for (int index = 0; index < numExtsI; index++) {
+            MemorySegment glStrTmp;
+            try {
+                glStrTmp = (MemorySegment) glGetStringi.invokeExact(GL.EXTENSIONS, index);
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
             }
-            if (RuntimeHelper.isNullptr(extsI)) {
-                return false;
-            }
-            for (int index = 0; index < numExtsI; index++) {
-                var glStrTmp = GL30C.getStringi(GL10C.EXTENSIONS, index);
-                extsI.setAtIndex(ADDRESS, index, allocator.allocateFrom(glStrTmp));
-            }
-            outNumExtsI.set(JAVA_INT, 0, numExtsI);
-            outExtsI[0] = extsI;
+            outExtsI.add(glStrTmp.getString(0L));
         }
 
         return true;
     }
 
-    static boolean hasExtension(int version, String exts, int numExtsI, MemorySegment extsI, String ext) {
+    static boolean hasExtension(int version, String exts, List<String> extsI, String ext) {
         if (GLLoader.versionMajor(version) < 3) {
-            if (exts == null || ext == null) {
-                return false;
-            }
-            return exts.contains(ext);
+            return exts != null && ext != null && exts.contains(ext);
         }
-        for (int index = 0; index < numExtsI; index++) {
-            if (RuntimeHelper.unboundPointerString(extsI, index).equals(ext)) {
-                return true;
-            }
-        }
-        return false;
+        return extsI.contains(ext);
     }
 }

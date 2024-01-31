@@ -22,6 +22,7 @@ import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GL11;
+import overrungl.opengl.GLLegacy;
 import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
 import overrungl.util.CheckUtil;
@@ -42,6 +43,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
 public final class GL15Test {
     private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
+    private GLLegacy gl;
     private int vbo, tex;
 
     public void run() {
@@ -51,8 +53,8 @@ public final class GL15Test {
         }
         loop();
 
-        GL.deleteBuffer(vbo);
-        GL.deleteTexture(tex);
+        gl.deleteBuffers(vbo);
+        gl.deleteTextures(tex);
 
         GLFWCallbacks.free(window);
         glfw.destroyWindow(window);
@@ -75,7 +77,7 @@ public final class GL15Test {
             }
         });
         glfw.setFramebufferSizeCallback(window, (_, width, height) ->
-            GL.viewport(0, 0, width, height));
+            gl.viewport(0, 0, width, height));
         var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
             var size = glfw.getWindowSize(window);
@@ -93,25 +95,26 @@ public final class GL15Test {
     }
 
     private void load(Arena arena) {
-        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress, false), "Failed to load OpenGL");
+        gl = (GLLegacy) GLLoader.load(glfw::getProcAddress, false);
+        Objects.requireNonNull(gl, "Failed to load OpenGL");
 
-        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        GL.enable(GL.TEXTURE_2D);
+        gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        gl.enable(GL.TEXTURE_2D);
 
-        vbo = GL.genBuffer();
-        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
-        GL.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
+        vbo = gl.genBuffers();
+        gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
+        gl.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
             // Vertex          Color             Tex-coord
             0.0f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f
         }, GL.STATIC_DRAW);
-        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
+        gl.bindBuffer(GL.ARRAY_BUFFER, 0);
 
-        tex = GL.genTexture();
-        GL.bindTexture(GL.TEXTURE_2D, tex);
-        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
-        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
+        tex = gl.genTextures();
+        gl.bindTexture(GL.TEXTURE_2D, tex);
+        gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
+        gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
         try {
             final STBImage stbImage = STBImage.INSTANCE;
             var px = arena.allocate(JAVA_INT);
@@ -121,7 +124,7 @@ public final class GL15Test {
                 IOUtil.ioResourceToSegment(arena, "image.png", 256, 128),
                 px, py, pc, STBImage.RGB
             );
-            GL.texImage2D(GL.TEXTURE_2D,
+            gl.texImage2D(GL.TEXTURE_2D,
                 0,
                 GL.RGB,
                 px.get(JAVA_INT, 0),
@@ -134,30 +137,30 @@ public final class GL15Test {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        GL.bindTexture(GL.TEXTURE_2D, 0);
+        gl.bindTexture(GL.TEXTURE_2D, 0);
     }
 
     private void loop() {
         while (!glfw.windowShouldClose(window)) {
-            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+            gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL.bindTexture(GL.TEXTURE_2D, tex);
-            GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
-            GL11.enableClientState(GL11.VERTEX_ARRAY);
-            GL11.enableClientState(GL11.COLOR_ARRAY);
-            GL11.enableClientState(GL11.TEXTURE_COORD_ARRAY);
+            gl.bindTexture(GL.TEXTURE_2D, tex);
+            gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
+            gl.enableClientState(GL11.VERTEX_ARRAY);
+            gl.enableClientState(GL11.COLOR_ARRAY);
+            gl.enableClientState(GL11.TEXTURE_COORD_ARRAY);
             // 8 double words = 32 bytes
             final int stride = 8 << 2;
-            GL11.vertexPointer(3, GL.FLOAT, stride, MemorySegment.NULL);
-            GL11.colorPointer(3, GL.FLOAT, stride, MemorySegment.ofAddress(3 << 2));
-            GL11.texCoordPointer(2, GL.FLOAT, stride, MemorySegment.ofAddress(6 << 2));
-            GL.drawArrays(GL.TRIANGLES, 0, 3);
-            GL11.disableClientState(GL11.VERTEX_ARRAY);
-            GL11.disableClientState(GL11.COLOR_ARRAY);
-            GL11.disableClientState(GL11.TEXTURE_COORD_ARRAY);
-            GL.bindBuffer(GL.ARRAY_BUFFER, 0);
-            GL.bindTexture(GL.TEXTURE_2D, 0);
+            gl.vertexPointer(3, GL.FLOAT, stride, MemorySegment.NULL);
+            gl.colorPointer(3, GL.FLOAT, stride, MemorySegment.ofAddress(3 << 2));
+            gl.texCoordPointer(2, GL.FLOAT, stride, MemorySegment.ofAddress(6 << 2));
+            gl.drawArrays(GL.TRIANGLES, 0, 3);
+            gl.disableClientState(GL11.VERTEX_ARRAY);
+            gl.disableClientState(GL11.COLOR_ARRAY);
+            gl.disableClientState(GL11.TEXTURE_COORD_ARRAY);
+            gl.bindBuffer(GL.ARRAY_BUFFER, 0);
+            gl.bindTexture(GL.TEXTURE_2D, 0);
 
             glfw.swapBuffers(window);
 

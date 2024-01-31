@@ -3171,10 +3171,12 @@ fun glExtCaps() {
             |import overrungl.opengl.ext.nv.*;
             |import overrungl.opengl.ext.sgi.*;
             |import overrungl.opengl.ext.sun.*;
+            |import overrun.marshal.Unmarshal;
             |
             |import java.lang.foreign.MemorySegment;
             |import java.lang.foreign.SegmentAllocator;
             |import java.lang.invoke.MethodHandle;
+            |import java.util.ArrayList;
             |
             |import static java.lang.foreign.ValueLayout.*;
             |import static overrungl.opengl.GLExtFinder.*;
@@ -3218,17 +3220,14 @@ fun glExtCaps() {
         appendLine("    }\n")
         appendLine(
             """
-            |    boolean findExtensionsGL(int version, SegmentAllocator allocator) {
+            |    boolean findExtensionsGL(SegmentAllocator allocator, GLLoadFunc load, int version) {
             |        var pExts = allocator.allocate(ADDRESS);
-            |        var pNumExtsI = allocator.allocate(JAVA_INT);
-            |        var pExtsI = new MemorySegment[1];
-            |        if (!getExtensions(allocator, version, pExts, pNumExtsI, pExtsI, caps)) return false;
+            |        var list = new ArrayList<String>(700);
+            |        if (!getExtensions(allocator, version, pExts, list, load)) return false;
             |
-            |        String exts = pExts.getString(0);
-            |        int numExtsI = pNumExtsI.get(JAVA_INT, 0);
-            |        var extsI = pExtsI[0];
+            |        String exts = Unmarshal.unmarshalAsString(pExts.get(Unmarshal.STR_LAYOUT, 0));
             |
-            |        ${caps.joinToString(separator = "\n|        ") { "this.$it = hasExtension(version, exts, numExtsI, extsI, \"$it\");" }}
+            |        ${caps.joinToString(separator = "\n|        ") { "this.$it = hasExtension(version, exts, list, \"$it\");" }}
             |
             |        return true;
             |    }

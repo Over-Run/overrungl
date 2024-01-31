@@ -16,11 +16,11 @@
 
 package overrungl.demo.opengl;
 
-import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
-import overrungl.opengl.GL10;
+import overrungl.opengl.GLLegacy;
 import overrungl.opengl.GLLoader;
 import overrungl.util.CheckUtil;
 
@@ -36,6 +36,7 @@ import java.util.Objects;
 public final class GL10Test {
     private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
+    private GLLegacy gl;
 
     public void run() {
         init();
@@ -63,7 +64,7 @@ public final class GL10Test {
             }
         });
         glfw.setFramebufferSizeCallback(window, (_, width, height) ->
-            GL.viewport(0, 0, width, height));
+            gl.viewport(0, 0, width, height));
         var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
             var size = glfw.getWindowSize(window);
@@ -81,24 +82,25 @@ public final class GL10Test {
     }
 
     private void load() {
-        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress, false), "Failed to load OpenGL");
+        gl = (GLLegacy) GLLoader.load(glfw::getProcAddress, false);
+        Objects.requireNonNull(gl, "Failed to load OpenGL");
 
-        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }
 
     private void loop() {
         while (!glfw.windowShouldClose(window)) {
-            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+            gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL10.begin(GL.TRIANGLES);
-            GL10.color3f(1f, 0f, 0f);
-            GL10.vertex2f(0.0f, 0.5f);
-            GL10.color3f(0f, 1f, 0f);
-            GL10.vertex2f(-0.5f, -0.5f);
-            GL10.color3f(0f, 0f, 1f);
-            GL10.vertex2f(0.5f, -0.5f);
-            GL10.end();
+            gl.begin(GL.TRIANGLES);
+            gl.color3f(1f, 0f, 0f);
+            gl.vertex2f(0.0f, 0.5f);
+            gl.color3f(0f, 1f, 0f);
+            gl.vertex2f(-0.5f, -0.5f);
+            gl.color3f(0f, 0f, 1f);
+            gl.vertex2f(0.5f, -0.5f);
+            gl.end();
 
             glfw.swapBuffers(window);
 

@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 
-import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -31,75 +31,9 @@ import java.util.regex.Pattern;
  * @author squid233
  * @since 0.1.0
  */
+@Deprecated(since = "0.1.0")
 public final class GLCapabilities {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
-    /**
-     * OpenGL 3.0 method handles
-     */
-    public MethodHandle glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange, glBindFragDataLocation, glBindFramebuffer,
-        glBindRenderbuffer, glBindVertexArray, glBlitFramebuffer, glCheckFramebufferStatus, glClampColor, glClearBufferfi,
-        glClearBufferfv, glClearBufferiv, glClearBufferuiv, glColorMaski, glDeleteFramebuffers, glDeleteRenderbuffers,
-        glDeleteVertexArrays, glDisablei, glEnablei, glEndConditionalRender, glEndTransformFeedback, glFlushMappedBufferRange,
-        glFramebufferRenderbuffer, glFramebufferTexture1D, glFramebufferTexture2D, glFramebufferTexture3D, glFramebufferTextureLayer, glGenFramebuffers,
-        glGenRenderbuffers, glGenVertexArrays, glGenerateMipmap, glGetBooleani_v, glGetFragDataLocation, glGetFramebufferAttachmentParameteriv,
-        glGetIntegeri_v, glGetRenderbufferParameteriv, glGetStringi, glGetTexParameterIiv, glGetTexParameterIuiv, glGetTransformFeedbackVarying,
-        glGetUniformuiv, glGetVertexAttribIiv, glGetVertexAttribIuiv, glIsEnabledi, glIsFramebuffer, glIsRenderbuffer,
-        glIsVertexArray, glMapBufferRange, glRenderbufferStorage, glRenderbufferStorageMultisample, glTexParameterIiv, glTexParameterIuiv,
-        glTransformFeedbackVaryings, glUniform1ui, glUniform1uiv, glUniform2ui, glUniform2uiv, glUniform3ui, glUniform3uiv,
-        glUniform4ui, glUniform4uiv, glVertexAttribI1i, glVertexAttribI1iv, glVertexAttribI1ui, glVertexAttribI1uiv,
-        glVertexAttribI2i, glVertexAttribI2iv, glVertexAttribI2ui, glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv,
-        glVertexAttribI3ui, glVertexAttribI3uiv, glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv, glVertexAttribI4sv,
-        glVertexAttribI4ubv, glVertexAttribI4ui, glVertexAttribI4uiv, glVertexAttribI4usv, glVertexAttribIPointer;
-    /**
-     * OpenGL 4.1 method handles
-     */
-    public MethodHandle glActiveShaderProgram, glBindProgramPipeline, glClearDepthf, glCreateShaderProgramv, glDeleteProgramPipelines, glDepthRangeArrayv,
-        glDepthRangeIndexed, glDepthRangef, glGenProgramPipelines, glGetDoublei_v, glGetFloati_v, glGetProgramBinary,
-        glGetProgramPipelineInfoLog, glGetProgramPipelineiv, glGetShaderPrecisionFormat, glGetVertexAttribLdv, glIsProgramPipeline, glProgramBinary,
-        glProgramParameteri, glProgramUniform1d, glProgramUniform1dv, glProgramUniform1f, glProgramUniform1fv, glProgramUniform1i,
-        glProgramUniform1iv, glProgramUniform1ui, glProgramUniform1uiv, glProgramUniform2d, glProgramUniform2dv, glProgramUniform2f,
-        glProgramUniform2fv, glProgramUniform2i, glProgramUniform2iv, glProgramUniform2ui, glProgramUniform2uiv, glProgramUniform3d,
-        glProgramUniform3dv, glProgramUniform3f, glProgramUniform3fv, glProgramUniform3i, glProgramUniform3iv, glProgramUniform3ui,
-        glProgramUniform3uiv, glProgramUniform4d, glProgramUniform4dv, glProgramUniform4f, glProgramUniform4fv, glProgramUniform4i,
-        glProgramUniform4iv, glProgramUniform4ui, glProgramUniform4uiv, glProgramUniformMatrix2dv, glProgramUniformMatrix2fv, glProgramUniformMatrix2x3dv,
-        glProgramUniformMatrix2x3fv, glProgramUniformMatrix2x4dv, glProgramUniformMatrix2x4fv, glProgramUniformMatrix3dv, glProgramUniformMatrix3fv, glProgramUniformMatrix3x2dv,
-        glProgramUniformMatrix3x2fv, glProgramUniformMatrix3x4dv, glProgramUniformMatrix3x4fv, glProgramUniformMatrix4dv, glProgramUniformMatrix4fv, glProgramUniformMatrix4x2dv,
-        glProgramUniformMatrix4x2fv, glProgramUniformMatrix4x3dv, glProgramUniformMatrix4x3fv, glReleaseShaderCompiler, glScissorArrayv, glScissorIndexed,
-        glScissorIndexedv, glShaderBinary, glUseProgramStages, glValidateProgramPipeline, glVertexAttribL1d, glVertexAttribL1dv,
-        glVertexAttribL2d, glVertexAttribL2dv, glVertexAttribL3d, glVertexAttribL3dv, glVertexAttribL4d, glVertexAttribL4dv,
-        glVertexAttribLPointer, glViewportArrayv, glViewportIndexedf, glViewportIndexedfv;
-    /**
-     * OpenGL 4.5 method handles
-     */
-    public MethodHandle glBindTextureUnit, glBlitNamedFramebuffer, glCheckNamedFramebufferStatus, glClearNamedBufferData,
-        glClearNamedBufferSubData, glClearNamedFramebufferfi, glClearNamedFramebufferfv, glClearNamedFramebufferiv,
-        glClearNamedFramebufferuiv, glClipControl, glCompressedTextureSubImage1D, glCompressedTextureSubImage2D,
-        glCompressedTextureSubImage3D, glCopyNamedBufferSubData, glCopyTextureSubImage1D, glCopyTextureSubImage2D,
-        glCopyTextureSubImage3D, glCreateBuffers, glCreateFramebuffers, glCreateProgramPipelines, glCreateQueries,
-        glCreateRenderbuffers, glCreateSamplers, glCreateTextures, glCreateTransformFeedbacks, glCreateVertexArrays,
-        glDisableVertexArrayAttrib, glEnableVertexArrayAttrib, glFlushMappedNamedBufferRange, glGenerateTextureMipmap,
-        glGetCompressedTextureImage, glGetCompressedTextureSubImage, glGetGraphicsResetStatus, glGetNamedBufferParameteri64v,
-        glGetNamedBufferParameteriv, glGetNamedBufferPointerv, glGetNamedBufferSubData, glGetNamedFramebufferAttachmentParameteriv,
-        glGetNamedFramebufferParameteriv, glGetNamedRenderbufferParameteriv, glGetQueryBufferObjecti64v, glGetQueryBufferObjectiv,
-        glGetQueryBufferObjectui64v, glGetQueryBufferObjectuiv, glGetTextureImage, glGetTextureLevelParameterfv,
-        glGetTextureLevelParameteriv, glGetTextureParameterIiv, glGetTextureParameterIuiv, glGetTextureParameterfv,
-        glGetTextureParameteriv, glGetTextureSubImage, glGetTransformFeedbacki64_v, glGetTransformFeedbacki_v,
-        glGetTransformFeedbackiv, glGetVertexArrayIndexed64iv,
-        glGetVertexArrayIndexediv, glGetVertexArrayiv, glGetnCompressedTexImage, glGetnTexImage, glGetnUniformdv,
-        glGetnUniformfv, glGetnUniformiv, glGetnUniformuiv, glInvalidateNamedFramebufferData,
-        glInvalidateNamedFramebufferSubData, glMapNamedBuffer, glMapNamedBufferRange, glMemoryBarrierByRegion,
-        glNamedBufferData, glNamedBufferStorage, glNamedBufferSubData, glNamedFramebufferDrawBuffer,
-        glNamedFramebufferDrawBuffers, glNamedFramebufferParameteri, glNamedFramebufferReadBuffer,
-        glNamedFramebufferRenderbuffer, glNamedFramebufferTexture, glNamedFramebufferTextureLayer,
-        glNamedRenderbufferStorage, glNamedRenderbufferStorageMultisample, glReadnPixels, glTextureBarrier,
-        glTextureBuffer, glTextureBufferRange, glTextureParameterIiv, glTextureParameterIuiv, glTextureParameterf,
-        glTextureParameterfv, glTextureParameteri, glTextureParameteriv, glTextureStorage1D, glTextureStorage2D,
-        glTextureStorage2DMultisample, glTextureStorage3D, glTextureStorage3DMultisample, glTextureSubImage1D,
-        glTextureSubImage2D, glTextureSubImage3D, glTransformFeedbackBufferBase, glTransformFeedbackBufferRange,
-        glUnmapNamedBuffer, glVertexArrayAttribBinding, glVertexArrayAttribFormat, glVertexArrayAttribIFormat,
-        glVertexArrayAttribLFormat, glVertexArrayBindingDivisor, glVertexArrayElementBuffer, glVertexArrayVertexBuffer,
-        glVertexArrayVertexBuffers;
-
     /**
      * The OpenGL context version flags.
      */
@@ -131,14 +65,12 @@ public final class GLCapabilities {
         final MethodHandle glGetString = load.invoke("glGetString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
         if (glGetString == null) return 0;
 
-        GL45C.load(this, load);
-
         int version = findCoreGL(glGetString);
 
         ext = new GLExtCaps(this);
 
-        try (var arena = Arena.ofConfined()) {
-            if (!ext.findExtensionsGL(version, arena)) return 0;
+        try (var stack = MemoryStack.stackPush()) {
+            if (!ext.findExtensionsGL(stack, load, version)) return 0;
         }
         ext.load(load);
 
