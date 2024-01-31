@@ -23,7 +23,10 @@ import overrun.marshal.Downcall;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.CheckUtil;
 
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.util.Map;
 
 /**
  * This class must be used before any OpenGL function is called. It has the following responsibilities:
@@ -50,6 +53,12 @@ import java.lang.invoke.MethodHandle;
  */
 public final class GLLoader {
     private static final boolean DEFAULT_COMPATIBLE = true;
+    private static final Map<String, FunctionDescriptor> DESCRIPTOR_MAP = Map.of(
+        "glMapBuffer", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
+        "glMapBufferRange", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT),
+        "glMapNamedBuffer", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
+        "glMapNamedBufferRange", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
+    );
     @Deprecated(since = "0.1.0")
     private static final ThreadLocal<GLCapabilities> capabilitiesTLS = new ThreadLocal<>();
 
@@ -137,8 +146,8 @@ public final class GLLoader {
         setCapabilities(caps);
         if (caps.load(load) != 0) {
             return forwardCompatible ?
-                Downcall.load(GL.class, load.lookup()) :
-                Downcall.load(GLLegacy.class, load.lookup());
+                Downcall.load(GL.class, load.lookup(), DESCRIPTOR_MAP) :
+                Downcall.load(GLLegacy.class, load.lookup(), DESCRIPTOR_MAP);
         }
         // reset if failed to load
         setCapabilities(null);

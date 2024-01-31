@@ -16,7 +16,6 @@
 
 package overrungl.opengl;
 
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -68,10 +67,7 @@ public final class GLCapabilities {
         int version = findCoreGL(glGetString);
 
         ext = new GLExtCaps(this);
-
-        try (var stack = MemoryStack.stackPush()) {
-            if (!ext.findExtensionsGL(stack, load, version)) return 0;
-        }
+        if (!ext.findExtensionsGL(load, version)) return 0;
         ext.load(load);
 
         rawGLVersion = version;

@@ -18,6 +18,7 @@ package overrungl.opengl;
 
 import overrun.marshal.Marshal;
 import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBPointParameters;
 import overrungl.opengl.ext.arb.GLARBShadow;
 import overrungl.opengl.ext.arb.GLARBTextureMirroredRepeat;
@@ -100,7 +101,7 @@ public sealed interface GL14C extends GL13C permits GL14, GL15C {
         throw new ContextException();
     }
 
-    @Entrypoint("glMultiDrawElements")
+    @Skip
     default void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, byte[][] indices, int drawCount) {
         var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
@@ -109,7 +110,7 @@ public sealed interface GL14C extends GL13C permits GL14, GL15C {
         multiDrawElements(mode, Marshal.marshal(allocator, count), type, seg, drawCount);
     }
 
-    @Entrypoint("glMultiDrawElements")
+    @Skip
     default void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, short[][] indices, int drawCount) {
         var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {
@@ -118,7 +119,7 @@ public sealed interface GL14C extends GL13C permits GL14, GL15C {
         multiDrawElements(mode, Marshal.marshal(allocator, count), type, seg, drawCount);
     }
 
-    @Entrypoint("glMultiDrawElements")
+    @Skip
     default void multiDrawElements(SegmentAllocator allocator, int mode, int[] count, int type, int[][] indices, int drawCount) {
         var seg = allocator.allocate(ADDRESS, indices.length);
         for (int i = 0; i < indices.length; i++) {

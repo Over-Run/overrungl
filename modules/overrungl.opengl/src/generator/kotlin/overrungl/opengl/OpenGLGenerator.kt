@@ -3173,7 +3173,6 @@ fun glExtCaps() {
             |import overrungl.opengl.ext.sun.*;
             |import overrun.marshal.Unmarshal;
             |
-            |import java.lang.foreign.MemorySegment;
             |import java.lang.foreign.SegmentAllocator;
             |import java.lang.invoke.MethodHandle;
             |import java.util.ArrayList;
@@ -3220,14 +3219,11 @@ fun glExtCaps() {
         appendLine("    }\n")
         appendLine(
             """
-            |    boolean findExtensionsGL(SegmentAllocator allocator, GLLoadFunc load, int version) {
-            |        var pExts = allocator.allocate(ADDRESS);
+            |    boolean findExtensionsGL(GLLoadFunc load, int version) {
             |        var list = new ArrayList<String>(700);
-            |        if (!getExtensions(allocator, version, pExts, list, load)) return false;
+            |        if (!getExtensions(load, version, list)) return false;
             |
-            |        String exts = Unmarshal.unmarshalAsString(pExts.get(Unmarshal.STR_LAYOUT, 0));
-            |
-            |        ${caps.joinToString(separator = "\n|        ") { "this.$it = hasExtension(version, exts, list, \"$it\");" }}
+            |        ${caps.joinToString(separator = "\n|        ") { "this.$it = list.contains(\"$it\");" }}
             |
             |        return true;
             |    }

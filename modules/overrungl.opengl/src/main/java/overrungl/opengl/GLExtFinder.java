@@ -16,13 +16,13 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
-import overrungl.NativeType;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
+import java.util.Collections;
 import java.util.List;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
@@ -35,19 +35,17 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @since 0.1.0
  */
 final class GLExtFinder {
-    static boolean getExtensions(SegmentAllocator allocator,
+    static boolean getExtensions(GLLoadFunc load,
                                  int version,
-                                 @NativeType("const char**") MemorySegment outExts,
-                                 List<String> outExtsI,
-                                 GLLoadFunc load) {
+                                 List<String> list) {
         // < 3.0
         if (GLLoader.versionMajor(version) < 3) {
-            final MethodHandle glGetString = load.invoke("glGetString", FunctionDescriptor.of(ADDRESS, JAVA_INT));
+            final MethodHandle glGetString = load.invoke("glGetString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, JAVA_INT));
             if (glGetString == null) {
                 return false;
             }
             try {
-                outExts.set(ADDRESS, 0, (MemorySegment) glGetString.invokeExact(GL.EXTENSIONS));
+                Collections.addAll(list, ((MemorySegment) glGetString.invokeExact(GL.EXTENSIONS)).getString(0L).split("\\s+"));
                 return true;
             } catch (Throwable e) {
                 throw new RuntimeException(e);
@@ -66,15 +64,18 @@ final class GLExtFinder {
         }
 
         // extension count
-        final MemorySegment pNumExtsI = allocator.allocate(JAVA_INT);
-        try {
-            glGetIntegerv.invokeExact(GL.NUM_EXTENSIONS, pNumExtsI);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-        int numExtsI = pNumExtsI.get(JAVA_INT, 0L);
-        if (numExtsI <= 0) {
-            return false;
+        int numExtsI;
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment pNumExtsI = stack.allocate(JAVA_INT);
+            try {
+                glGetIntegerv.invokeExact(GL.NUM_EXTENSIONS, pNumExtsI);
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+            numExtsI = pNumExtsI.get(JAVA_INT, 0L);
+            if (numExtsI <= 0) {
+                return false;
+            }
         }
 
         // write to the extension array
@@ -85,16 +86,9 @@ final class GLExtFinder {
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }
-            outExtsI.add(glStrTmp.getString(0L));
+            list.add(glStrTmp.getString(0L));
         }
 
         return true;
-    }
-
-    static boolean hasExtension(int version, String exts, List<String> extsI, String ext) {
-        if (GLLoader.versionMajor(version) < 3) {
-            return exts != null && ext != null && exts.contains(ext);
-        }
-        return extsI.contains(ext);
     }
 }
