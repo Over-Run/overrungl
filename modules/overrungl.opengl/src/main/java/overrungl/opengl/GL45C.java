@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
-import overrungl.opengl.ext.arb.GLARBRobustness;
+import overrun.marshal.MemoryStack;
 import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
+import overrungl.opengl.ext.arb.GLARBRobustness;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -43,7 +43,7 @@ import static overrungl.FunctionDescriptors.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL45C extends GL44C permits GL46C {
+public sealed interface GL45C extends GL44C permits GL46C {
     public static final int CONTEXT_LOST = 0x0507;
     public static final int NEGATIVE_ONE_TO_ONE = 0x935E;
     public static final int ZERO_TO_ONE = 0x935F;

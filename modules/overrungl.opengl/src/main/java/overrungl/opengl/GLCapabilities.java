@@ -16,11 +16,13 @@
 
 package overrungl.opengl;
 
-import overrungl.FunctionDescriptors;
+import overrun.marshal.Unmarshal;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
-import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 /**
@@ -31,100 +33,6 @@ import java.util.regex.Pattern;
  */
 public final class GLCapabilities {
     private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+).*$");
-
-    /**
-     * OpenGL 1.0 method handles
-     */
-    public MethodHandle glBlendFunc, glClear, glClearColor, glClearDepth, glClearStencil, glColorMask, glCullFace, glDepthFunc,
-        glDepthMask, glDepthRange, glDisable, glDrawBuffer, glEnable, glFinish, glFlush, glFrontFace, glGetBooleanv,
-        glGetDoublev, glGetError, glGetFloatv, glGetIntegerv, glGetString, glGetTexImage, glGetTexLevelParameterfv,
-        glGetTexLevelParameteriv, glGetTexParameterfv, glGetTexParameteriv, glHint, glIsEnabled, glLineWidth, glLogicOp,
-        glPixelStoref, glPixelStorei, glPointSize, glPolygonMode, glReadBuffer, glReadPixels, glScissor, glStencilFunc,
-        glStencilMask, glStencilOp, glTexImage1D, glTexImage2D, glTexParameterf, glTexParameterfv, glTexParameteri,
-        glTexParameteriv, glViewport;
-    /**
-     * OpenGL 1.0 compatibility method handles
-     */
-    public MethodHandle glAccum, glAlphaFunc, glBegin, glBitmap, glCallList, glCallLists, glClearAccum, glClearIndex,
-        glClipPlane, glColor3b, glColor3bv, glColor3d, glColor3dv, glColor3f, glColor3fv, glColor3i, glColor3iv, glColor3s,
-        glColor3sv, glColor3ub, glColor3ubv, glColor3ui, glColor3uiv, glColor3us, glColor3usv, glColor4b, glColor4bv,
-        glColor4d, glColor4dv, glColor4f, glColor4fv, glColor4i, glColor4iv, glColor4s, glColor4sv, glColor4ub, glColor4ubv,
-        glColor4ui, glColor4uiv, glColor4us, glColor4usv, glColorMaterial, glCopyPixels, glDeleteLists, glDrawPixels,
-        glEdgeFlag, glEdgeFlagv, glEnd, glEndList, glEvalCoord1d, glEvalCoord1dv, glEvalCoord1f, glEvalCoord1fv,
-        glEvalCoord2d, glEvalCoord2dv, glEvalCoord2f, glEvalCoord2fv, glEvalMesh1, glEvalMesh2, glEvalPoint1, glEvalPoint2,
-        glFeedbackBuffer, glFogf, glFogfv, glFogi, glFogiv, glFrustum, glGenLists, glGetClipPlane, glGetLightfv, glGetLightiv,
-        glGetMapdv, glGetMapfv, glGetMapiv, glGetMaterialfv, glGetMaterialiv, glGetPixelMapfv, glGetPixelMapuiv,
-        glGetPixelMapusv, glGetPolygonStipple, glGetTexEnvfv, glGetTexEnviv, glGetTexGendv, glGetTexGenfv, glGetTexGeniv,
-        glIndexMask, glIndexd, glIndexdv, glIndexf, glIndexfv, glIndexi, glIndexiv, glIndexs, glIndexsv, glInitNames,
-        glIsList, glLightModelf, glLightModelfv, glLightModeli, glLightModeliv, glLightf, glLightfv, glLighti, glLightiv,
-        glLineStipple, glListBase, glLoadIdentity, glLoadMatrixd, glLoadMatrixf, glLoadName, glMap1d, glMap1f, glMap2d,
-        glMap2f, glMapGrid1d, glMapGrid1f, glMapGrid2d, glMapGrid2f, glMaterialf, glMaterialfv, glMateriali, glMaterialiv,
-        glMatrixMode, glMultMatrixd, glMultMatrixf, glNewList, glNormal3b, glNormal3bv, glNormal3d, glNormal3dv, glNormal3f,
-        glNormal3fv, glNormal3i, glNormal3iv, glNormal3s, glNormal3sv, glOrtho, glPassThrough, glPixelMapfv, glPixelMapuiv,
-        glPixelMapusv, glPixelTransferf, glPixelTransferi, glPixelZoom, glPolygonStipple, glPopAttrib, glPopMatrix, glPopName,
-        glPushAttrib, glPushMatrix, glPushName, glRasterPos2d, glRasterPos2dv, glRasterPos2f, glRasterPos2fv, glRasterPos2i,
-        glRasterPos2iv, glRasterPos2s, glRasterPos2sv, glRasterPos3d, glRasterPos3dv, glRasterPos3f, glRasterPos3fv,
-        glRasterPos3i, glRasterPos3iv, glRasterPos3s, glRasterPos3sv, glRasterPos4d, glRasterPos4dv, glRasterPos4f,
-        glRasterPos4fv, glRasterPos4i, glRasterPos4iv, glRasterPos4s, glRasterPos4sv, glRectd, glRectdv, glRectf, glRectfv,
-        glRecti, glRectiv, glRects, glRectsv, glRenderMode, glRotated, glRotatef, glScaled, glScalef, glSelectBuffer,
-        glShadeModel, glTexCoord1d, glTexCoord1dv, glTexCoord1f, glTexCoord1fv, glTexCoord1i, glTexCoord1iv, glTexCoord1s,
-        glTexCoord1sv, glTexCoord2d, glTexCoord2dv, glTexCoord2f, glTexCoord2fv, glTexCoord2i, glTexCoord2iv, glTexCoord2s,
-        glTexCoord2sv, glTexCoord3d, glTexCoord3dv, glTexCoord3f, glTexCoord3fv, glTexCoord3i, glTexCoord3iv, glTexCoord3s,
-        glTexCoord3sv, glTexCoord4d, glTexCoord4dv, glTexCoord4f, glTexCoord4fv, glTexCoord4i, glTexCoord4iv, glTexCoord4s,
-        glTexCoord4sv, glTexEnvf, glTexEnvfv, glTexEnvi, glTexEnviv, glTexGend, glTexGendv, glTexGenf, glTexGenfv, glTexGeni,
-        glTexGeniv, glTranslated, glTranslatef, glVertex2d, glVertex2dv, glVertex2f, glVertex2fv, glVertex2i, glVertex2iv,
-        glVertex2s, glVertex2sv, glVertex3d, glVertex3dv, glVertex3f, glVertex3fv, glVertex3i, glVertex3iv, glVertex3s,
-        glVertex3sv, glVertex4d, glVertex4dv, glVertex4f, glVertex4fv, glVertex4i, glVertex4iv, glVertex4s, glVertex4sv;
-    /**
-     * OpenGL 1.1 method handles
-     */
-    public MethodHandle glBindTexture, glCopyTexImage1D, glCopyTexImage2D, glCopyTexSubImage1D, glCopyTexSubImage2D, glDeleteTextures,
-        glDrawArrays, glDrawElements, glGenTextures, glGetPointerv, glIsTexture, glPolygonOffset, glTexSubImage1D, glTexSubImage2D;
-    /**
-     * OpenGL 1.1 compatibility method handles
-     */
-    public MethodHandle glAreTexturesResident, glArrayElement, glColorPointer, glDisableClientState, glEdgeFlagPointer, glEnableClientState,
-        glIndexPointer, glIndexub, glIndexubv, glInterleavedArrays, glNormalPointer, glPopClientAttrib, glPrioritizeTextures,
-        glPushClientAttrib, glTexCoordPointer, glVertexPointer;
-    /**
-     * OpenGL 1.2 method handles
-     */
-    public MethodHandle glCopyTexSubImage3D, glDrawRangeElements, glTexImage3D, glTexSubImage3D;
-    /**
-     * OpenGL 1.3 method handles
-     */
-    public MethodHandle glActiveTexture, glCompressedTexImage1D, glCompressedTexImage2D, glCompressedTexImage3D, glCompressedTexSubImage1D,
-        glCompressedTexSubImage2D, glCompressedTexSubImage3D, glGetCompressedTexImage, glSampleCoverage;
-    /**
-     * OpenGL 1.3 compatibility method handles
-     */
-    public MethodHandle glClientActiveTexture, glLoadTransposeMatrixd, glLoadTransposeMatrixf, glMultTransposeMatrixd, glMultTransposeMatrixf,
-        glMultiTexCoord1d, glMultiTexCoord1dv, glMultiTexCoord1f, glMultiTexCoord1fv, glMultiTexCoord1i, glMultiTexCoord1iv,
-        glMultiTexCoord1s, glMultiTexCoord1sv, glMultiTexCoord2d, glMultiTexCoord2dv, glMultiTexCoord2f, glMultiTexCoord2fv,
-        glMultiTexCoord2i, glMultiTexCoord2iv, glMultiTexCoord2s, glMultiTexCoord2sv, glMultiTexCoord3d, glMultiTexCoord3dv,
-        glMultiTexCoord3f, glMultiTexCoord3fv, glMultiTexCoord3i, glMultiTexCoord3iv, glMultiTexCoord3s, glMultiTexCoord3sv,
-        glMultiTexCoord4d, glMultiTexCoord4dv, glMultiTexCoord4f, glMultiTexCoord4fv, glMultiTexCoord4i, glMultiTexCoord4iv,
-        glMultiTexCoord4s, glMultiTexCoord4sv;
-    /**
-     * OpenGL 1.4 method handles
-     */
-    public MethodHandle glBlendColor, glBlendEquation, glBlendFuncSeparate, glMultiDrawArrays, glMultiDrawElements, glPointParameterf,
-        glPointParameterfv, glPointParameteri, glPointParameteriv;
-    /**
-     * OpenGL 1.4 compatibility method handles
-     */
-    public MethodHandle glFogCoordPointer, glFogCoordd, glFogCoorddv, glFogCoordf, glFogCoordfv, glSecondaryColor3b,
-        glSecondaryColor3bv, glSecondaryColor3d, glSecondaryColor3dv, glSecondaryColor3f, glSecondaryColor3fv, glSecondaryColor3i,
-        glSecondaryColor3iv, glSecondaryColor3s, glSecondaryColor3sv, glSecondaryColor3ub, glSecondaryColor3ubv, glSecondaryColor3ui,
-        glSecondaryColor3uiv, glSecondaryColor3us, glSecondaryColor3usv, glSecondaryColorPointer, glWindowPos2d, glWindowPos2dv,
-        glWindowPos2f, glWindowPos2fv, glWindowPos2i, glWindowPos2iv, glWindowPos2s, glWindowPos2sv, glWindowPos3d,
-        glWindowPos3dv, glWindowPos3f, glWindowPos3fv, glWindowPos3i, glWindowPos3iv, glWindowPos3s, glWindowPos3sv;
-    /**
-     * OpenGL 1.5 method handles
-     */
-    public MethodHandle glBeginQuery, glBindBuffer, glBufferData, glBufferSubData, glDeleteBuffers, glDeleteQueries, glEndQuery,
-        glGenBuffers, glGenQueries, glGetBufferParameteriv, glGetBufferPointerv, glGetBufferSubData, glGetQueryObjectiv,
-        glGetQueryObjectuiv, glGetQueryiv, glIsBuffer, glIsQuery, glMapBuffer, glUnmapBuffer;
     /**
      * OpenGL 2.0 method handles
      */
@@ -144,10 +52,6 @@ public final class GLCapabilities {
         glVertexAttrib4d, glVertexAttrib4dv, glVertexAttrib4f, glVertexAttrib4fv, glVertexAttrib4iv, glVertexAttrib4s,
         glVertexAttrib4sv, glVertexAttrib4ubv, glVertexAttrib4uiv, glVertexAttrib4usv, glVertexAttribPointer;
     /**
-     * OpenGL 2.1 method handles
-     */
-    public MethodHandle glUniformMatrix2x3fv, glUniformMatrix2x4fv, glUniformMatrix3x2fv, glUniformMatrix3x4fv, glUniformMatrix4x2fv, glUniformMatrix4x3fv;
-    /**
      * OpenGL 3.0 method handles
      */
     public MethodHandle glBeginConditionalRender, glBeginTransformFeedback, glBindBufferBase, glBindBufferRange, glBindFragDataLocation, glBindFramebuffer,
@@ -164,36 +68,6 @@ public final class GLCapabilities {
         glVertexAttribI2i, glVertexAttribI2iv, glVertexAttribI2ui, glVertexAttribI2uiv, glVertexAttribI3i, glVertexAttribI3iv,
         glVertexAttribI3ui, glVertexAttribI3uiv, glVertexAttribI4bv, glVertexAttribI4i, glVertexAttribI4iv, glVertexAttribI4sv,
         glVertexAttribI4ubv, glVertexAttribI4ui, glVertexAttribI4uiv, glVertexAttribI4usv, glVertexAttribIPointer;
-    /**
-     * OpenGL 3.1 method handles
-     */
-    public MethodHandle glCopyBufferSubData, glDrawArraysInstanced, glDrawElementsInstanced, glGetActiveUniformBlockName, glGetActiveUniformBlockiv,
-        glGetActiveUniformName, glGetActiveUniformsiv, glGetUniformBlockIndex, glGetUniformIndices, glPrimitiveRestartIndex, glTexBuffer, glUniformBlockBinding;
-    /**
-     * OpenGL 3.2 method handles
-     */
-    public MethodHandle glClientWaitSync, glDeleteSync, glDrawElementsBaseVertex, glDrawElementsInstancedBaseVertex, glDrawRangeElementsBaseVertex,
-        glFenceSync, glFramebufferTexture, glGetBufferParameteri64v, glGetInteger64i_v, glGetInteger64v, glGetMultisamplefv, glGetSynciv,
-        glIsSync, glMultiDrawElementsBaseVertex, glProvokingVertex, glSampleMaski, glTexImage2DMultisample, glTexImage3DMultisample, glWaitSync;
-    /**
-     * OpenGL 3.3 method handles
-     */
-    public MethodHandle glBindFragDataLocationIndexed, glBindSampler, glDeleteSamplers, glGenSamplers, glGetFragDataIndex, glGetQueryObjecti64v,
-        glGetQueryObjectui64v, glGetSamplerParameterIiv, glGetSamplerParameterIuiv, glGetSamplerParameterfv, glGetSamplerParameteriv, glIsSampler,
-        glQueryCounter, glSamplerParameterIiv, glSamplerParameterIuiv, glSamplerParameterf, glSamplerParameterfv, glSamplerParameteri,
-        glSamplerParameteriv, glVertexAttribDivisor, glVertexAttribP1ui, glVertexAttribP1uiv, glVertexAttribP2ui, glVertexAttribP2uiv,
-        glVertexAttribP3ui, glVertexAttribP3uiv, glVertexAttribP4ui, glVertexAttribP4uiv;
-    /**
-     * OpenGL 4.0 method handles
-     */
-    public MethodHandle glBeginQueryIndexed, glBindTransformFeedback, glBlendEquationSeparatei, glBlendEquationi, glBlendFuncSeparatei, glBlendFunci,
-        glDeleteTransformFeedbacks, glDrawArraysIndirect, glDrawElementsIndirect, glDrawTransformFeedback, glDrawTransformFeedbackStream, glEndQueryIndexed,
-        glGenTransformFeedbacks, glGetActiveSubroutineName, glGetActiveSubroutineUniformName, glGetActiveSubroutineUniformiv, glGetProgramStageiv, glGetQueryIndexediv,
-        glGetSubroutineIndex, glGetSubroutineUniformLocation, glGetUniformSubroutineuiv, glGetUniformdv, glIsTransformFeedback, glMinSampleShading,
-        glPatchParameterfv, glPatchParameteri, glPauseTransformFeedback, glResumeTransformFeedback, glUniform1d, glUniform1dv,
-        glUniform2d, glUniform2dv, glUniform3d, glUniform3dv, glUniform4d, glUniform4dv, glUniformMatrix2dv, glUniformMatrix2x3dv,
-        glUniformMatrix2x4dv, glUniformMatrix3dv, glUniformMatrix3x2dv, glUniformMatrix3x4dv, glUniformMatrix4dv, glUniformMatrix4x2dv,
-        glUniformMatrix4x3dv, glUniformSubroutinesuiv;
     /**
      * OpenGL 4.1 method handles
      */
@@ -212,29 +86,6 @@ public final class GLCapabilities {
         glScissorIndexedv, glShaderBinary, glUseProgramStages, glValidateProgramPipeline, glVertexAttribL1d, glVertexAttribL1dv,
         glVertexAttribL2d, glVertexAttribL2dv, glVertexAttribL3d, glVertexAttribL3dv, glVertexAttribL4d, glVertexAttribL4dv,
         glVertexAttribLPointer, glViewportArrayv, glViewportIndexedf, glViewportIndexedfv;
-    /**
-     * OpenGL 4.2 method handles
-     */
-    public MethodHandle glBindImageTexture, glDrawArraysInstancedBaseInstance, glDrawElementsInstancedBaseInstance,
-        glDrawElementsInstancedBaseVertexBaseInstance, glDrawTransformFeedbackInstanced, glDrawTransformFeedbackStreamInstanced,
-        glGetActiveAtomicCounterBufferiv, glGetInternalformativ, glMemoryBarrier, glTexStorage1D, glTexStorage2D, glTexStorage3D;
-    /**
-     * OpenGL 4.3 method handles
-     */
-    public MethodHandle glBindVertexBuffer, glClearBufferData, glClearBufferSubData, glCopyImageSubData, glDebugMessageCallback,
-        glDebugMessageControl, glDebugMessageInsert, glDispatchCompute, glDispatchComputeIndirect, glFramebufferParameteri,
-        glGetDebugMessageLog, glGetFramebufferParameteriv, glGetInternalformati64v, glGetObjectLabel, glGetObjectPtrLabel,
-        glGetProgramInterfaceiv, glGetProgramResourceIndex, glGetProgramResourceLocation, glGetProgramResourceLocationIndex,
-        glGetProgramResourceName, glGetProgramResourceiv, glInvalidateBufferData, glInvalidateBufferSubData, glInvalidateFramebuffer,
-        glInvalidateSubFramebuffer, glInvalidateTexImage, glInvalidateTexSubImage, glMultiDrawArraysIndirect, glMultiDrawElementsIndirect,
-        glObjectLabel, glObjectPtrLabel, glPopDebugGroup, glPushDebugGroup, glShaderStorageBlockBinding, glTexBufferRange,
-        glTexStorage2DMultisample, glTexStorage3DMultisample, glTextureView, glVertexAttribBinding, glVertexAttribFormat,
-        glVertexAttribIFormat, glVertexAttribLFormat, glVertexBindingDivisor;
-    /**
-     * OpenGL 4.4 method handles
-     */
-    public MethodHandle glBindBuffersBase, glBindBuffersRange, glBindImageTextures, glBindSamplers, glBindTextures,
-        glBindVertexBuffers, glBufferStorage, glClearTexImage, glClearTexSubImage;
     /**
      * OpenGL 4.5 method handles
      */
@@ -266,10 +117,6 @@ public final class GLCapabilities {
         glUnmapNamedBuffer, glVertexArrayAttribBinding, glVertexArrayAttribFormat, glVertexArrayAttribIFormat,
         glVertexArrayAttribLFormat, glVertexArrayBindingDivisor, glVertexArrayElementBuffer, glVertexArrayVertexBuffer,
         glVertexArrayVertexBuffers;
-    /**
-     * OpenGL 4.6 method handles
-     */
-    public MethodHandle glMultiDrawArraysIndirectCount, glMultiDrawElementsIndirectCount, glPolygonOffsetClamp, glSpecializeShader;
 
     /**
      * The OpenGL context version flags.
@@ -299,37 +146,15 @@ public final class GLCapabilities {
      * @return the OpenGL version returned from the graphics driver, or {@code 0} if no OpenGL context found.
      */
     public int load(GLLoadFunc load) {
-        glGetString = load.invoke("glGetString", FunctionDescriptors.Ip);
+        final MethodHandle glGetString = load.invoke("glGetString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
         if (glGetString == null) return 0;
-        if (GL10C.getString(GL10C.VERSION) == null) return 0;
 
-        GL10C.load(this, load);
-        GL11C.load(this, load);
-        GL12C.load(this, load);
-        GL13C.load(this, load);
-        GL14C.load(this, load);
-        GL15C.load(this, load);
         GL20C.load(this, load);
-        GL21C.load(this, load);
         GL30C.load(this, load);
-        GL31C.load(this, load);
-        GL32C.load(this, load);
-        GL33C.load(this, load);
-        GL40C.load(this, load);
         GL41C.load(this, load);
-        GL42C.load(this, load);
-        GL43C.load(this, load);
-        GL44C.load(this, load);
         GL45C.load(this, load);
-        GL46C.load(this, load);
 
-        int version = findCoreGL();
-        if (!forwardCompatible) {
-            GL10.load(this, load);
-            GL11.load(this, load);
-            GL13.load(this, load);
-            GL14.load(this, load);
-        }
+        int version = findCoreGL(glGetString);
 
         ext = new GLExtCaps(this);
 
@@ -343,18 +168,19 @@ public final class GLCapabilities {
         return version;
     }
 
-    private boolean check(boolean checkAll, boolean b, Predicate<GLCapabilities> checkFunc) {
-        return checkAll ? checkFunc.test(this) : (b || checkFunc.test(this));
-    }
-
-    private int findCoreGL() {
+    private int findCoreGL(MethodHandle glGetString) {
         final String[] prefixes = {
             "OpenGL ES-CM ",
             "OpenGL ES-CL ",
             "OpenGL ES ",
             "OpenGL SC "
         };
-        var version = GL10C.getString(GL10C.VERSION);
+        String version;
+        try {
+            version = ((MemorySegment) glGetString.invokeExact(GL10C.VERSION)).getString(0L);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
         if (version == null) return 0;
         for (var prefix : prefixes) {
             int len = prefix.length();

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,5 @@ package overrungl.opengl;
  * @author squid233
  * @since 0.1.0
  */
-public final class GL extends GL46C {
-    private GL() {
-        //no instance
-    }
+public non-sealed interface GL extends GL46C {
 }

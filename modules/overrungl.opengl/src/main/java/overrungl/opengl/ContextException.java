@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,13 +17,16 @@
 package overrungl.opengl;
 
 /**
- * The OpenGL 3.0 constants.
+ * Signals that an OpenGL function has been invoked without its context, or it doesn't exist.
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL30 extends GL30C permits GLLegacy {
-    int CLAMP_VERTEX_COLOR = 0x891A;
-    int CLAMP_FRAGMENT_COLOR = 0x891B;
-    int ALPHA_INTEGER = 0x8D97;
+public class ContextException extends RuntimeException {
+    /**
+     * Constructs a {@code ContextException}.
+     */
+    public ContextException() {
+        super("Couldn't find OpenGL function");
+    }
 }

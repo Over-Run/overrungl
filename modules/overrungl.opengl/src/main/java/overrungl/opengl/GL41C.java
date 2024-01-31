@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,9 +17,9 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.MemoryStack;
 import overrungl.internal.RuntimeHelper;
 import overrungl.opengl.ext.arb.GLARBViewportArray;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -43,7 +43,7 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL41C extends GL40C permits GL42C {
+public sealed interface GL41C extends GL40C permits GL42C {
     public static final int FIXED = 0x140C;
     public static final int IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
     public static final int IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;

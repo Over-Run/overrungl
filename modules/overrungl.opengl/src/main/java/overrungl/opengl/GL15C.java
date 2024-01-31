@@ -16,16 +16,19 @@
 
 package overrungl.opengl;
 
-import overrungl.internal.RuntimeHelper;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
 import overrungl.opengl.ext.arb.GLARBVertexBufferObject;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
 
 /**
  * The OpenGL 1.5 forward compatible functions.
@@ -39,454 +42,370 @@ import static overrungl.FunctionDescriptors.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL15C extends GL14C permits GL15, GL20C {
-    public static final int BUFFER_SIZE = 0x8764;
-    public static final int BUFFER_USAGE = 0x8765;
-    public static final int QUERY_COUNTER_BITS = 0x8864;
-    public static final int CURRENT_QUERY = 0x8865;
-    public static final int QUERY_RESULT = 0x8866;
-    public static final int QUERY_RESULT_AVAILABLE = 0x8867;
-    public static final int ARRAY_BUFFER = 0x8892;
-    public static final int ELEMENT_ARRAY_BUFFER = 0x8893;
-    public static final int ARRAY_BUFFER_BINDING = 0x8894;
-    public static final int ELEMENT_ARRAY_BUFFER_BINDING = 0x8895;
-    public static final int VERTEX_ATTRIB_ARRAY_BUFFER_BINDING = 0x889F;
-    public static final int READ_ONLY = 0x88B8;
-    public static final int WRITE_ONLY = 0x88B9;
-    public static final int READ_WRITE = 0x88BA;
-    public static final int BUFFER_ACCESS = 0x88BB;
-    public static final int BUFFER_MAPPED = 0x88BC;
-    public static final int BUFFER_MAP_POINTER = 0x88BD;
-    public static final int STREAM_DRAW = 0x88E0;
-    public static final int STREAM_READ = 0x88E1;
-    public static final int STREAM_COPY = 0x88E2;
-    public static final int STATIC_DRAW = 0x88E4;
-    public static final int STATIC_READ = 0x88E5;
-    public static final int STATIC_COPY = 0x88E6;
-    public static final int DYNAMIC_DRAW = 0x88E8;
-    public static final int DYNAMIC_READ = 0x88E9;
-    public static final int DYNAMIC_COPY = 0x88EA;
-    public static final int SAMPLES_PASSED = 0x8914;
-    public static final int SRC1_ALPHA = 0x8589;
+public sealed interface GL15C extends GL14C permits GL15, GL20C {
+    int BUFFER_SIZE = 0x8764;
+    int BUFFER_USAGE = 0x8765;
+    int QUERY_COUNTER_BITS = 0x8864;
+    int CURRENT_QUERY = 0x8865;
+    int QUERY_RESULT = 0x8866;
+    int QUERY_RESULT_AVAILABLE = 0x8867;
+    int ARRAY_BUFFER = 0x8892;
+    int ELEMENT_ARRAY_BUFFER = 0x8893;
+    int ARRAY_BUFFER_BINDING = 0x8894;
+    int ELEMENT_ARRAY_BUFFER_BINDING = 0x8895;
+    int VERTEX_ATTRIB_ARRAY_BUFFER_BINDING = 0x889F;
+    int READ_ONLY = 0x88B8;
+    int WRITE_ONLY = 0x88B9;
+    int READ_WRITE = 0x88BA;
+    int BUFFER_ACCESS = 0x88BB;
+    int BUFFER_MAPPED = 0x88BC;
+    int BUFFER_MAP_POINTER = 0x88BD;
+    int STREAM_DRAW = 0x88E0;
+    int STREAM_READ = 0x88E1;
+    int STREAM_COPY = 0x88E2;
+    int STATIC_DRAW = 0x88E4;
+    int STATIC_READ = 0x88E5;
+    int STATIC_COPY = 0x88E6;
+    int DYNAMIC_DRAW = 0x88E8;
+    int DYNAMIC_READ = 0x88E9;
+    int DYNAMIC_COPY = 0x88EA;
+    int SAMPLES_PASSED = 0x8914;
+    int SRC1_ALPHA = 0x8589;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return GLLoader.checkAll(caps.glBeginQuery, caps.glBindBuffer, caps.glBufferData, caps.glBufferSubData, caps.glDeleteBuffers, caps.glDeleteQueries,
-            caps.glEndQuery, caps.glGenBuffers, caps.glGenQueries, caps.glGetBufferParameteriv, caps.glGetBufferPointerv, caps.glGetBufferSubData,
-            caps.glGetQueryObjectiv, caps.glGetQueryObjectuiv, caps.glGetQueryiv, caps.glIsBuffer, caps.glIsQuery, caps.glMapBuffer,
-            caps.glUnmapBuffer);
+    @Entrypoint("glBeginQuery")
+    default void beginQuery(int target, int id) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBeginQuery = load.invoke("glBeginQuery", IIV);
-        caps.glBindBuffer = load.invoke("glBindBuffer", IIV);
-        caps.glBufferData = load.invoke("glBufferData", IJPIV);
-        caps.glBufferSubData = load.invoke("glBufferSubData", IJJPV);
-        caps.glDeleteBuffers = load.invoke("glDeleteBuffers", IPV);
-        caps.glDeleteQueries = load.invoke("glDeleteQueries", IPV);
-        caps.glEndQuery = load.invoke("glEndQuery", IV);
-        caps.glGenBuffers = load.invoke("glGenBuffers", IPV);
-        caps.glGenQueries = load.invoke("glGenQueries", IPV);
-        caps.glGetBufferParameteriv = load.invoke("glGetBufferParameteriv", IIPV);
-        caps.glGetBufferPointerv = load.invoke("glGetBufferPointerv", IIPV);
-        caps.glGetBufferSubData = load.invoke("glGetBufferSubData", IJJPV);
-        caps.glGetQueryObjectiv = load.invoke("glGetQueryObjectiv", IIPV);
-        caps.glGetQueryObjectuiv = load.invoke("glGetQueryObjectuiv", IIPV);
-        caps.glGetQueryiv = load.invoke("glGetQueryiv", IIPV);
-        caps.glIsBuffer = load.invoke("glIsBuffer", IZ);
-        caps.glIsQuery = load.invoke("glIsQuery", IZ);
-        caps.glMapBuffer = load.invoke("glMapBuffer", IIp);
-        caps.glUnmapBuffer = load.invoke("glUnmapBuffer", IZ);
+    @Entrypoint("glBindBuffer")
+    default void bindBuffer(int target, int buffer) {
+        throw new ContextException();
     }
 
-    public static void beginQuery(int target, int id) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glBeginQuery).invokeExact(target, id);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glBufferData")
+    default void bufferData(int target, long size, MemorySegment data, int usage) {
+        throw new ContextException();
     }
 
-    public static void bindBuffer(int target, int buffer) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glBindBuffer).invokeExact(target, buffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void bufferData(int target, long size, MemorySegment data, int usage) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glBufferData).invokeExact(target, size, data, usage);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void bufferData(int target, MemorySegment data, int usage) {
+    @Skip
+    default void bufferData(int target, MemorySegment data, int usage) {
         bufferData(target, data.byteSize(), data, usage);
     }
 
-    public static void bufferData(int target, long size, int usage) {
+    @Skip
+    default void bufferData(int target, long size, int usage) {
         bufferData(target, size, MemorySegment.NULL, usage);
     }
 
-    public static void bufferData(SegmentAllocator allocator, int target, byte[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length), allocator.allocateFrom(JAVA_BYTE, data), usage);
+    @Skip
+    default void bufferData(SegmentAllocator allocator, int target, byte[] data, int usage) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferData(target, segment.byteSize(), segment, usage);
     }
 
-    public static void bufferData(SegmentAllocator allocator, int target, short[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 1, allocator.allocateFrom(JAVA_SHORT, data), usage);
+    @Skip
+    default void bufferData(SegmentAllocator allocator, int target, short[] data, int usage) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferData(target, segment.byteSize(), segment, usage);
     }
 
-    public static void bufferData(SegmentAllocator allocator, int target, int[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 2, allocator.allocateFrom(JAVA_INT, data), usage);
+    @Skip
+    default void bufferData(SegmentAllocator allocator, int target, int[] data, int usage) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferData(target, segment.byteSize(), segment, usage);
     }
 
-    public static void bufferData(SegmentAllocator allocator, int target, long[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateFrom(JAVA_LONG, data), usage);
+    @Skip
+    default void bufferData(SegmentAllocator allocator, int target, long[] data, int usage) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferData(target, segment.byteSize(), segment, usage);
     }
 
-    public static void bufferData(SegmentAllocator allocator, int target, float[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 2, allocator.allocateFrom(JAVA_FLOAT, data), usage);
+    @Skip
+    default void bufferData(SegmentAllocator allocator, int target, float[] data, int usage) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferData(target, segment.byteSize(), segment, usage);
     }
 
-    public static void bufferData(SegmentAllocator allocator, int target, double[] data, int usage) {
-        bufferData(target, Integer.toUnsignedLong(data.length) << 3, allocator.allocateFrom(JAVA_DOUBLE, data), usage);
+    @Skip
+    default void bufferData(SegmentAllocator allocator, int target, double[] data, int usage) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferData(target, segment.byteSize(), segment, usage);
     }
 
-    public static void bufferSubData(int target, long offset, long size, MemorySegment data) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glBufferSubData).invokeExact(target, offset, size, data);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glBufferSubData")
+    default void bufferSubData(int target, long offset, long size, MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void bufferSubData(int target, long offset, MemorySegment data) {
+    @Skip
+    default void bufferSubData(int target, long offset, MemorySegment data) {
         bufferSubData(target, offset, data.byteSize(), data);
     }
 
-    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, byte[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length), allocator.allocateFrom(JAVA_BYTE, data));
+    @Skip
+    default void bufferSubData(SegmentAllocator allocator, int target, long offset, byte[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferSubData(target, offset, segment.byteSize(), segment);
     }
 
-    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, short[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, allocator.allocateFrom(JAVA_SHORT, data));
+    @Skip
+    default void bufferSubData(SegmentAllocator allocator, int target, long offset, short[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferSubData(target, offset, segment.byteSize(), segment);
     }
 
-    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, int[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, allocator.allocateFrom(JAVA_INT, data));
+    @Skip
+    default void bufferSubData(SegmentAllocator allocator, int target, long offset, int[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferSubData(target, offset, segment.byteSize(), segment);
     }
 
-    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, long[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateFrom(JAVA_LONG, data));
+    @Skip
+    default void bufferSubData(SegmentAllocator allocator, int target, long offset, long[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferSubData(target, offset, segment.byteSize(), segment);
     }
 
-    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, float[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, allocator.allocateFrom(JAVA_FLOAT, data));
+    @Skip
+    default void bufferSubData(SegmentAllocator allocator, int target, long offset, float[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferSubData(target, offset, segment.byteSize(), segment);
     }
 
-    public static void bufferSubData(SegmentAllocator allocator, int target, long offset, double[] data) {
-        bufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, allocator.allocateFrom(JAVA_DOUBLE, data));
+    @Skip
+    default void bufferSubData(SegmentAllocator allocator, int target, long offset, double[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        bufferSubData(target, offset, segment.byteSize(), segment);
     }
 
-    public static void deleteBuffers(int n, MemorySegment buffers) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glDeleteBuffers).invokeExact(n, buffers);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glDeleteBuffers")
+    default void deleteBuffers(int n, MemorySegment buffers) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteBuffers(int... buffers) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteBuffers(buffers.length, Marshal.marshal(stack, buffers));
         }
     }
 
-    public static void deleteBuffers(SegmentAllocator allocator, int[] buffers) {
-        deleteBuffers(buffers.length, allocator.allocateFrom(JAVA_INT, buffers));
+    @Entrypoint("glDeleteQueries")
+    default void deleteQueries(int n, MemorySegment ids) {
+        throw new ContextException();
     }
 
-    public static void deleteBuffer(int buffer) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteBuffers(1, stack.ints(buffer));
-        } finally {
-            stack.setPointer(stackPointer);
+    @Skip
+    default void deleteQueries(int... ids) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteQueries(ids.length, Marshal.marshal(stack, ids));
         }
     }
 
-    public static void deleteQueries(int n, MemorySegment ids) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glDeleteQueries).invokeExact(n, ids);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glEndQuery")
+    default void endQuery(int target) {
+        throw new ContextException();
     }
 
-    public static void deleteQueries(SegmentAllocator allocator, int[] ids) {
-        deleteQueries(ids.length, allocator.allocateFrom(JAVA_INT, ids));
+    @Entrypoint("glGenBuffers")
+    default void genBuffers(int n, MemorySegment buffers) {
+        throw new ContextException();
     }
 
-    public static void deleteQuery(int id) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteQueries(1, stack.ints(id));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
-
-    public static void endQuery(int target) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glEndQuery).invokeExact(target);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genBuffers(int n, MemorySegment buffers) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGenBuffers).invokeExact(n, buffers);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genBuffers(SegmentAllocator allocator, int[] buffers) {
-        var seg = allocator.allocateFrom(JAVA_INT, buffers.length);
+    @Skip
+    default void genBuffers(SegmentAllocator allocator, @Ref int[] buffers) {
+        var seg = Marshal.marshal(allocator, buffers);
         genBuffers(buffers.length, seg);
-        RuntimeHelper.toArray(seg, buffers);
+        Unmarshal.copy(seg, buffers);
     }
 
-    public static int genBuffer() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genBuffers() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genBuffers(1, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void genQueries(int n, MemorySegment ids) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGenQueries).invokeExact(n, ids);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGenQueries")
+    default void genQueries(int n, MemorySegment ids) {
+        throw new ContextException();
     }
 
-    public static void genQueries(SegmentAllocator allocator, int[] ids) {
-        var seg = allocator.allocateFrom(JAVA_INT, ids.length);
+    @Skip
+    default void genQueries(SegmentAllocator allocator, @Ref int[] ids) {
+        var seg = Marshal.marshal(allocator, ids);
         genQueries(ids.length, seg);
-        RuntimeHelper.toArray(seg, ids);
+        Unmarshal.copy(seg, ids);
     }
 
-    public static int genQuery() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genQueries() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genQueries(1, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void getBufferParameteriv(int target, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetBufferParameteriv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetBufferParameteriv")
+    default void getBufferParameteriv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getBufferParameteri(int target, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getBufferParameteriv(int target, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getBufferParameteriv(target, pname, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void getBufferPointerv(int target, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetBufferPointerv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetBufferPointerv")
+    default void getBufferPointerv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static MemorySegment getBufferPointer(int target, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocPointer();
+    @Skip
+    default MemorySegment getBufferPointerv(int target, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.segments(MemorySegment.NULL);
             getBufferPointerv(target, pname, seg);
-            return seg.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.ADDRESS, 0);
         }
     }
 
-    public static void getBufferSubData(int target, long offset, long size, MemorySegment data) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetBufferSubData).invokeExact(target, offset, size, data);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetBufferSubData")
+    default void getBufferSubData(int target, long offset, long size, MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, byte[] data) {
-        var seg = allocator.allocate(JAVA_BYTE, data.length);
-        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length), seg);
-        RuntimeHelper.toArray(seg, data);
+    @Skip
+    default void getBufferSubData(SegmentAllocator allocator, int target, long offset, @Ref byte[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        getBufferSubData(target, offset, segment.byteSize(), segment);
+        Unmarshal.copy(segment, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, short[] data) {
-        var seg = allocator.allocate(JAVA_SHORT, data.length);
-        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 1, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Skip
+    default void getBufferSubData(SegmentAllocator allocator, int target, long offset, @Ref short[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        getBufferSubData(target, offset, segment.byteSize(), segment);
+        Unmarshal.copy(segment, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, int[] data) {
-        var seg = allocator.allocate(JAVA_INT, data.length);
-        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Skip
+    default void getBufferSubData(SegmentAllocator allocator, int target, long offset, @Ref int[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        getBufferSubData(target, offset, segment.byteSize(), segment);
+        Unmarshal.copy(segment, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, long[] data) {
-        var seg = allocator.allocate(JAVA_LONG, data.length);
-        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Skip
+    default void getBufferSubData(SegmentAllocator allocator, int target, long offset, @Ref long[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        getBufferSubData(target, offset, segment.byteSize(), segment);
+        Unmarshal.copy(segment, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, float[] data) {
-        var seg = allocator.allocate(JAVA_FLOAT, data.length);
-        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 2, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Skip
+    default void getBufferSubData(SegmentAllocator allocator, int target, long offset, @Ref float[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        getBufferSubData(target, offset, segment.byteSize(), segment);
+        Unmarshal.copy(segment, data);
     }
 
-    public static void getBufferSubData(SegmentAllocator allocator, int target, long offset, double[] data) {
-        var seg = allocator.allocate(JAVA_DOUBLE, data.length);
-        getBufferSubData(target, offset, Integer.toUnsignedLong(data.length) << 3, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Skip
+    default void getBufferSubData(SegmentAllocator allocator, int target, long offset, @Ref double[] data) {
+        final MemorySegment segment = Marshal.marshal(allocator, data);
+        getBufferSubData(target, offset, segment.byteSize(), segment);
+        Unmarshal.copy(segment, data);
     }
 
-    public static void getQueryObjectiv(int id, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetQueryObjectiv).invokeExact(id, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetQueryObjectiv")
+    default void getQueryObjectiv(int id, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getQueryObjecti(int id, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getQueryObjectiv(int id, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getQueryObjectiv(id, pname, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void getQueryObjectuiv(int id, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetQueryObjectuiv).invokeExact(id, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetQueryObjectuiv")
+    default void getQueryObjectuiv(int id, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getQueryObjectui(int id, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getQueryObjectuiv(int id, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getQueryObjectuiv(id, pname, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void getQueryiv(int target, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetQueryiv).invokeExact(target, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetQueryiv")
+    default void getQueryiv(int target, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getQueryi(int target, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getQueryiv(int target, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getQueryiv(target, pname, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static boolean isBuffer(int buffer) {
-        var caps = GLLoader.getCapabilities();
+    @Entrypoint("glIsBuffer")
+    default boolean isBuffer(int buffer) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glIsQuery")
+    default boolean isQuery(int buffer) {
+        throw new ContextException();
+    }
+
+    default MethodHandle glMapBuffer() {
+        throw new ContextException();
+    }
+
+    @Skip
+    default MemorySegment mapBuffer(int target, int access) {
+        long size = 0;
+        if (this instanceof GL32C gl32C) {
+            try {
+                size = gl32C.getBufferParameteri64v(target, GL30C.BUFFER_MAP_LENGTH);
+            } catch (ContextException e) {
+                size = getBufferParameteriv(target, BUFFER_SIZE);
+            }
+        }
+        return mapBuffer(target, access, size);
+    }
+
+    @Skip
+    default MemorySegment mapBuffer(int target, int access, long bufferSize) {
         try {
-            return (boolean) GLLoader.check(caps.glIsBuffer).invokeExact(buffer);
+            final MemorySegment segment = ((MemorySegment) glMapBuffer().invokeExact(target, access)).reinterpret(bufferSize);
+            return access == READ_ONLY ? segment.asReadOnly() : segment;
         } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+            throw new RuntimeException(e);
         }
     }
 
-    public static boolean isQuery(int buffer) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            return (boolean) GLLoader.check(caps.glIsQuery).invokeExact(buffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static MemorySegment mapBuffer(int target, int access) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            final var seg = (MemorySegment) GLLoader.check(caps.glMapBuffer).invokeExact(target, access);
-            return access == READ_ONLY ? seg.asReadOnly() : seg;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static boolean unmapBuffer(int target) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            return (boolean) GLLoader.check(caps.glUnmapBuffer).invokeExact(target);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUnmapBuffer")
+    default boolean unmapBuffer(int target) {
+        throw new ContextException();
     }
 }
