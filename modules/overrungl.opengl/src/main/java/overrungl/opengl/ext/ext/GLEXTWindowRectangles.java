@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,5 +31,8 @@ public interface GLEXTWindowRectangles {
     int GL_MAX_WINDOW_RECTANGLES_EXT = 0x8F14;
     int GL_NUM_WINDOW_RECTANGLES_EXT = 0x8F15;
 
-    void glWindowRectanglesEXT(int mode, int count, @NativeType("const GLint *") MemorySegment box);
+    default void glWindowRectanglesEXT(int mode, int count, @NativeType("const GLint *") MemorySegment box) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,7 +29,16 @@ public interface GLNVDepthBufferFloat {
     int GL_FLOAT_32_UNSIGNED_INT_24_8_REV_NV = 0x8DAD;
     int GL_DEPTH_BUFFER_FLOAT_MODE_NV = 0x8DAF;
 
-    void glDepthRangedNV(double zNear, double zFar);
-    void glClearDepthdNV(double depth);
-    void glDepthBoundsdNV(double zmin, double zmax);
+    default void glDepthRangedNV(double zNear, double zFar) {
+        throw new ContextException();
+    }
+
+    default void glClearDepthdNV(double depth) {
+        throw new ContextException();
+    }
+
+    default void glDepthBoundsdNV(double zmin, double zmax) {
+        throw new ContextException();
+    }
+
 }

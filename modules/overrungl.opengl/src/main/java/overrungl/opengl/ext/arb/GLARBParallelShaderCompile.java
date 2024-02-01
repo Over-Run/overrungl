@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLARBParallelShaderCompile {
     int GL_MAX_SHADER_COMPILER_THREADS_ARB = 0x91B0;
     int GL_COMPLETION_STATUS_ARB = 0x91B1;
 
-    void glMaxShaderCompilerThreadsARB(int count);
+    default void glMaxShaderCompilerThreadsARB(int count) {
+        throw new ContextException();
+    }
+
 }

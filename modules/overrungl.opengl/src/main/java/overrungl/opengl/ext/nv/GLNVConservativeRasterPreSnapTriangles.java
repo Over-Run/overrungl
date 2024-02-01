@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLNVConservativeRasterPreSnapTriangles {
     int GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = 0x954E;
     int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = 0x954F;
 
-    void glConservativeRasterParameteriNV(int pname, int param);
+    default void glConservativeRasterParameteriNV(int pname, int param) {
+        throw new ContextException();
+    }
+
 }

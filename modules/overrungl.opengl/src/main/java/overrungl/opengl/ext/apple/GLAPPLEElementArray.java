@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,9 +28,24 @@ public interface GLAPPLEElementArray {
     int GL_ELEMENT_ARRAY_TYPE_APPLE = 0x8A0D;
     int GL_ELEMENT_ARRAY_POINTER_APPLE = 0x8A0E;
 
-    void glElementPointerAPPLE(int type, @NativeType("const void *") MemorySegment pointer);
-    void glDrawElementArrayAPPLE(int mode, int first, int count);
-    void glDrawRangeElementArrayAPPLE(int mode, int start, int end, int first, int count);
-    void glMultiDrawElementArrayAPPLE(int mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount);
-    void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount);
+    default void glElementPointerAPPLE(int type, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glDrawElementArrayAPPLE(int mode, int first, int count) {
+        throw new ContextException();
+    }
+
+    default void glDrawRangeElementArrayAPPLE(int mode, int start, int end, int first, int count) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawElementArrayAPPLE(int mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawRangeElementArrayAPPLE(int mode, int start, int end, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount) {
+        throw new ContextException();
+    }
+
 }

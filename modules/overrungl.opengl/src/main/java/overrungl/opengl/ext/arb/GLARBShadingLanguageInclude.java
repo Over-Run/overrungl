@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,10 +28,28 @@ public interface GLARBShadingLanguageInclude {
     int GL_NAMED_STRING_LENGTH_ARB = 0x8DE9;
     int GL_NAMED_STRING_TYPE_ARB = 0x8DEA;
 
-    void glNamedStringARB(int type, int nameLen, @NativeType("const GLchar*") MemorySegment name, int stringLen, @NativeType("const GLchar*") MemorySegment string);
-    void glDeleteNamedStringARB(int nameLen, @NativeType("const GLchar*") MemorySegment name);
-    void glCompileShaderIncludeARB(int shader, int count, @NativeType("const GLchar *const*") MemorySegment path, @NativeType("const GLint*") MemorySegment length);
-    boolean glIsNamedStringARB(int nameLen, @NativeType("const GLchar*") MemorySegment name);
-    void glGetNamedStringARB(int nameLen, @NativeType("const GLchar*") MemorySegment name, int bufSize, @NativeType("GLint*") MemorySegment stringLen, @NativeType("GLchar*") MemorySegment string);
-    void glGetNamedStringivARB(int nameLen, @NativeType("const GLchar*") MemorySegment name, int pname, @NativeType("GLint*") MemorySegment params);
+    default void glNamedStringARB(int type, int nameLen, @NativeType("const GLchar*") MemorySegment name, int stringLen, @NativeType("const GLchar*") MemorySegment string) {
+        throw new ContextException();
+    }
+
+    default void glDeleteNamedStringARB(int nameLen, @NativeType("const GLchar*") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glCompileShaderIncludeARB(int shader, int count, @NativeType("const GLchar *const*") MemorySegment path, @NativeType("const GLint*") MemorySegment length) {
+        throw new ContextException();
+    }
+
+    default boolean glIsNamedStringARB(int nameLen, @NativeType("const GLchar*") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glGetNamedStringARB(int nameLen, @NativeType("const GLchar*") MemorySegment name, int bufSize, @NativeType("GLint*") MemorySegment stringLen, @NativeType("GLchar*") MemorySegment string) {
+        throw new ContextException();
+    }
+
+    default void glGetNamedStringivARB(int nameLen, @NativeType("const GLchar*") MemorySegment name, int pname, @NativeType("GLint*") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

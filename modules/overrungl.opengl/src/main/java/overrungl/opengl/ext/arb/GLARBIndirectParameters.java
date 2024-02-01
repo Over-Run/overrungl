@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLARBIndirectParameters {
     int GL_PARAMETER_BUFFER_ARB = 0x80EE;
     int GL_PARAMETER_BUFFER_BINDING_ARB = 0x80EF;
 
-    void glMultiDrawArraysIndirectCountARB(int mode, @NativeType("const void *") MemorySegment indirect, long drawcount, int maxdrawcount, int stride);
-    void glMultiDrawElementsIndirectCountARB(int mode, int type, @NativeType("const void *") MemorySegment indirect, long drawcount, int maxdrawcount, int stride);
+    default void glMultiDrawArraysIndirectCountARB(int mode, @NativeType("const void *") MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawElementsIndirectCountARB(int mode, int type, @NativeType("const void *") MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
+        throw new ContextException();
+    }
+
 }

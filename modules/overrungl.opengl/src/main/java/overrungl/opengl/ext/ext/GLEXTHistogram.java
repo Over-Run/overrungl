@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -40,14 +39,44 @@ public interface GLEXTHistogram {
     int GL_MINMAX_SINK_EXT = 0x8030;
     int GL_TABLE_TOO_LARGE_EXT = 0x8031;
 
-    void glGetHistogramEXT(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values);
-    void glGetHistogramParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetHistogramParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetMinmaxEXT(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values);
-    void glGetMinmaxParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetMinmaxParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glHistogramEXT(int target, int width, int internalformat, boolean sink);
-    void glMinmaxEXT(int target, int internalformat, boolean sink);
-    void glResetHistogramEXT(int target);
-    void glResetMinmaxEXT(int target);
+    default void glGetHistogramEXT(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glGetHistogramParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetHistogramParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMinmaxEXT(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glGetMinmaxParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMinmaxParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glHistogramEXT(int target, int width, int internalformat, boolean sink) {
+        throw new ContextException();
+    }
+
+    default void glMinmaxEXT(int target, int internalformat, boolean sink) {
+        throw new ContextException();
+    }
+
+    default void glResetHistogramEXT(int target) {
+        throw new ContextException();
+    }
+
+    default void glResetMinmaxEXT(int target) {
+        throw new ContextException();
+    }
+
 }

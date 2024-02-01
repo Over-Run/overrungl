@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,21 +32,72 @@ public interface GLEXTSecondaryColor {
     int GL_SECONDARY_COLOR_ARRAY_POINTER_EXT = 0x845D;
     int GL_SECONDARY_COLOR_ARRAY_EXT = 0x845E;
 
-    void glSecondaryColor3bEXT(byte red, byte green, byte blue);
-    void glSecondaryColor3bvEXT(@NativeType("const GLbyte *") MemorySegment v);
-    void glSecondaryColor3dEXT(double red, double green, double blue);
-    void glSecondaryColor3dvEXT(@NativeType("const GLdouble *") MemorySegment v);
-    void glSecondaryColor3fEXT(float red, float green, float blue);
-    void glSecondaryColor3fvEXT(@NativeType("const GLfloat *") MemorySegment v);
-    void glSecondaryColor3iEXT(int red, int green, int blue);
-    void glSecondaryColor3ivEXT(@NativeType("const GLint *") MemorySegment v);
-    void glSecondaryColor3sEXT(short red, short green, short blue);
-    void glSecondaryColor3svEXT(@NativeType("const GLshort *") MemorySegment v);
-    void glSecondaryColor3ubEXT(byte red, byte green, byte blue);
-    void glSecondaryColor3ubvEXT(@NativeType("const GLubyte *") MemorySegment v);
-    void glSecondaryColor3uiEXT(int red, int green, int blue);
-    void glSecondaryColor3uivEXT(@NativeType("const GLuint *") MemorySegment v);
-    void glSecondaryColor3usEXT(short red, short green, short blue);
-    void glSecondaryColor3usvEXT(@NativeType("const GLushort *") MemorySegment v);
-    void glSecondaryColorPointerEXT(int size, int type, int stride, @NativeType("const void *") MemorySegment pointer);
+    default void glSecondaryColor3bEXT(byte red, byte green, byte blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3bvEXT(@NativeType("const GLbyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3dEXT(double red, double green, double blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3dvEXT(@NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3fEXT(float red, float green, float blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3fvEXT(@NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3iEXT(int red, int green, int blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3ivEXT(@NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3sEXT(short red, short green, short blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3svEXT(@NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3ubEXT(byte red, byte green, byte blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3ubvEXT(@NativeType("const GLubyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3uiEXT(int red, int green, int blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3uivEXT(@NativeType("const GLuint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3usEXT(short red, short green, short blue) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColor3usvEXT(@NativeType("const GLushort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColorPointerEXT(int size, int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -109,68 +108,260 @@ public interface GLNVVertexProgram {
     int GL_MAP2_VERTEX_ATTRIB14_4_NV = 0x867E;
     int GL_MAP2_VERTEX_ATTRIB15_4_NV = 0x867F;
 
-    boolean glAreProgramsResidentNV(int n, @NativeType("const GLuint *") MemorySegment programs, @NativeType("GLboolean *") MemorySegment residences);
-    void glBindProgramNV(int target, int id);
-    void glDeleteProgramsNV(int n, @NativeType("const GLuint *") MemorySegment programs);
-    void glExecuteProgramNV(int target, int id, @NativeType("const GLfloat *") MemorySegment params);
-    void glGenProgramsNV(int n, @NativeType("GLuint *") MemorySegment programs);
-    void glGetProgramParameterdvNV(int target, int index, int pname, @NativeType("GLdouble *") MemorySegment params);
-    void glGetProgramParameterfvNV(int target, int index, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetProgramivNV(int id, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetProgramStringNV(int id, int pname, @NativeType("GLubyte *") MemorySegment program);
-    void glGetTrackMatrixivNV(int target, int address, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetVertexAttribdvNV(int index, int pname, @NativeType("GLdouble *") MemorySegment params);
-    void glGetVertexAttribfvNV(int index, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetVertexAttribivNV(int index, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetVertexAttribPointervNV(int index, int pname, @NativeType("void **") MemorySegment pointer);
-    boolean glIsProgramNV(int id);
-    void glLoadProgramNV(int target, int id, int len, @NativeType("const GLubyte *") MemorySegment program);
-    void glProgramParameter4dNV(int target, int index, double x, double y, double z, double w);
-    void glProgramParameter4dvNV(int target, int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glProgramParameter4fNV(int target, int index, float x, float y, float z, float w);
-    void glProgramParameter4fvNV(int target, int index, @NativeType("const GLfloat *") MemorySegment v);
-    void glProgramParameters4dvNV(int target, int index, int count, @NativeType("const GLdouble *") MemorySegment v);
-    void glProgramParameters4fvNV(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glRequestResidentProgramsNV(int n, @NativeType("const GLuint *") MemorySegment programs);
-    void glTrackMatrixNV(int target, int address, int matrix, int transform);
-    void glVertexAttribPointerNV(int index, int fsize, int type, int stride, @NativeType("const void *") MemorySegment pointer);
-    void glVertexAttrib1dNV(int index, double x);
-    void glVertexAttrib1dvNV(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttrib1fNV(int index, float x);
-    void glVertexAttrib1fvNV(int index, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttrib1sNV(int index, short x);
-    void glVertexAttrib1svNV(int index, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttrib2dNV(int index, double x, double y);
-    void glVertexAttrib2dvNV(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttrib2fNV(int index, float x, float y);
-    void glVertexAttrib2fvNV(int index, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttrib2sNV(int index, short x, short y);
-    void glVertexAttrib2svNV(int index, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttrib3dNV(int index, double x, double y, double z);
-    void glVertexAttrib3dvNV(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttrib3fNV(int index, float x, float y, float z);
-    void glVertexAttrib3fvNV(int index, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttrib3sNV(int index, short x, short y, short z);
-    void glVertexAttrib3svNV(int index, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttrib4dNV(int index, double x, double y, double z, double w);
-    void glVertexAttrib4dvNV(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttrib4fNV(int index, float x, float y, float z, float w);
-    void glVertexAttrib4fvNV(int index, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttrib4sNV(int index, short x, short y, short z, short w);
-    void glVertexAttrib4svNV(int index, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttrib4ubNV(int index, byte x, byte y, byte z, byte w);
-    void glVertexAttrib4ubvNV(int index, @NativeType("const GLubyte *") MemorySegment v);
-    void glVertexAttribs1dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribs1fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttribs1svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttribs2dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribs2fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttribs2svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttribs3dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribs3fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttribs3svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttribs4dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribs4fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glVertexAttribs4svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttribs4ubvNV(int index, int count, @NativeType("const GLubyte *") MemorySegment v);
+    default boolean glAreProgramsResidentNV(int n, @NativeType("const GLuint *") MemorySegment programs, @NativeType("GLboolean *") MemorySegment residences) {
+        throw new ContextException();
+    }
+
+    default void glBindProgramNV(int target, int id) {
+        throw new ContextException();
+    }
+
+    default void glDeleteProgramsNV(int n, @NativeType("const GLuint *") MemorySegment programs) {
+        throw new ContextException();
+    }
+
+    default void glExecuteProgramNV(int target, int id, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGenProgramsNV(int n, @NativeType("GLuint *") MemorySegment programs) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramParameterdvNV(int target, int index, int pname, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramParameterfvNV(int target, int index, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramivNV(int id, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramStringNV(int id, int pname, @NativeType("GLubyte *") MemorySegment program) {
+        throw new ContextException();
+    }
+
+    default void glGetTrackMatrixivNV(int target, int address, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribdvNV(int index, int pname, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribfvNV(int index, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribivNV(int index, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribPointervNV(int index, int pname, @NativeType("void **") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default boolean glIsProgramNV(int id) {
+        throw new ContextException();
+    }
+
+    default void glLoadProgramNV(int target, int id, int len, @NativeType("const GLubyte *") MemorySegment program) {
+        throw new ContextException();
+    }
+
+    default void glProgramParameter4dNV(int target, int index, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glProgramParameter4dvNV(int target, int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glProgramParameter4fNV(int target, int index, float x, float y, float z, float w) {
+        throw new ContextException();
+    }
+
+    default void glProgramParameter4fvNV(int target, int index, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glProgramParameters4dvNV(int target, int index, int count, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glProgramParameters4fvNV(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glRequestResidentProgramsNV(int n, @NativeType("const GLuint *") MemorySegment programs) {
+        throw new ContextException();
+    }
+
+    default void glTrackMatrixNV(int target, int address, int matrix, int transform) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribPointerNV(int index, int fsize, int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib1dNV(int index, double x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib1dvNV(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib1fNV(int index, float x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib1fvNV(int index, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib1sNV(int index, short x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib1svNV(int index, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib2dNV(int index, double x, double y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib2dvNV(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib2fNV(int index, float x, float y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib2fvNV(int index, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib2sNV(int index, short x, short y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib2svNV(int index, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib3dNV(int index, double x, double y, double z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib3dvNV(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib3fNV(int index, float x, float y, float z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib3fvNV(int index, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib3sNV(int index, short x, short y, short z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib3svNV(int index, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4dNV(int index, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4dvNV(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4fNV(int index, float x, float y, float z, float w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4fvNV(int index, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4sNV(int index, short x, short y, short z, short w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4svNV(int index, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4ubNV(int index, byte x, byte y, byte z, byte w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttrib4ubvNV(int index, @NativeType("const GLubyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs1dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs1fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs1svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs2dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs2fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs2svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs3dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs3fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs3svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs4dvNV(int index, int count, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs4fvNV(int index, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs4svNV(int index, int count, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribs4ubvNV(int index, int count, @NativeType("const GLubyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
 }

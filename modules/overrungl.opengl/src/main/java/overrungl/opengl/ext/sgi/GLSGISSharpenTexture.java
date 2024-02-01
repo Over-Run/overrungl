@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,6 +29,12 @@ public interface GLSGISSharpenTexture {
     int GL_LINEAR_SHARPEN_COLOR_SGIS = 0x80AF;
     int GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS = 0x80B0;
 
-    void glSharpenTexFuncSGIS(int target, int n, @NativeType("const GLfloat *") MemorySegment points);
-    void glGetSharpenTexFuncSGIS(int target, @NativeType("GLfloat *") MemorySegment points);
+    default void glSharpenTexFuncSGIS(int target, int n, @NativeType("const GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glGetSharpenTexFuncSGIS(int target, @NativeType("GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,8 +25,20 @@ import java.lang.foreign.*;
  */
 public interface GLARBDrawBuffersBlend {
 
-    void glBlendEquationiARB(int buf, int mode);
-    void glBlendEquationSeparateiARB(int buf, int modeRGB, int modeAlpha);
-    void glBlendFunciARB(int buf, int src, int dst);
-    void glBlendFuncSeparateiARB(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha);
+    default void glBlendEquationiARB(int buf, int mode) {
+        throw new ContextException();
+    }
+
+    default void glBlendEquationSeparateiARB(int buf, int modeRGB, int modeAlpha) {
+        throw new ContextException();
+    }
+
+    default void glBlendFunciARB(int buf, int src, int dst) {
+        throw new ContextException();
+    }
+
+    default void glBlendFuncSeparateiARB(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
+        throw new ContextException();
+    }
+
 }

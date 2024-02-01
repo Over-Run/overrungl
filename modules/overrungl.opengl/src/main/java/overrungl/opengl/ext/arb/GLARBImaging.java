@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -78,36 +77,132 @@ public interface GLARBImaging {
     int GL_REPLICATE_BORDER = 0x8153;
     int GL_CONVOLUTION_BORDER_COLOR = 0x8154;
 
-    void glColorTable(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment table);
-    void glColorTableParameterfv(int target, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glColorTableParameteriv(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glCopyColorTable(int target, int internalformat, int x, int y, int width);
-    void glGetColorTable(int target, int format, int type, @NativeType("void *") MemorySegment table);
-    void glGetColorTableParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetColorTableParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glColorSubTable(int target, int start, int count, int format, int type, @NativeType("const void *") MemorySegment data);
-    void glCopyColorSubTable(int target, int start, int x, int y, int width);
-    void glConvolutionFilter1D(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment image);
-    void glConvolutionFilter2D(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment image);
-    void glConvolutionParameterf(int target, int pname, float params);
-    void glConvolutionParameterfv(int target, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glConvolutionParameteri(int target, int pname, int params);
-    void glConvolutionParameteriv(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glCopyConvolutionFilter1D(int target, int internalformat, int x, int y, int width);
-    void glCopyConvolutionFilter2D(int target, int internalformat, int x, int y, int width, int height);
-    void glGetConvolutionFilter(int target, int format, int type, @NativeType("void *") MemorySegment image);
-    void glGetConvolutionParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetConvolutionParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetSeparableFilter(int target, int format, int type, @NativeType("void *") MemorySegment row, @NativeType("void *") MemorySegment column, @NativeType("void *") MemorySegment span);
-    void glSeparableFilter2D(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment row, @NativeType("const void *") MemorySegment column);
-    void glGetHistogram(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values);
-    void glGetHistogramParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetHistogramParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetMinmax(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values);
-    void glGetMinmaxParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetMinmaxParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glHistogram(int target, int width, int internalformat, boolean sink);
-    void glMinmax(int target, int internalformat, boolean sink);
-    void glResetHistogram(int target);
-    void glResetMinmax(int target);
+    default void glColorTable(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment table) {
+        throw new ContextException();
+    }
+
+    default void glColorTableParameterfv(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glColorTableParameteriv(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCopyColorTable(int target, int internalformat, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTable(int target, int format, int type, @NativeType("void *") MemorySegment table) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glColorSubTable(int target, int start, int count, int format, int type, @NativeType("const void *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCopyColorSubTable(int target, int start, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionFilter1D(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment image) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionFilter2D(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment image) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameterf(int target, int pname, float params) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameterfv(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameteri(int target, int pname, int params) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameteriv(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCopyConvolutionFilter1D(int target, int internalformat, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    default void glCopyConvolutionFilter2D(int target, int internalformat, int x, int y, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glGetConvolutionFilter(int target, int format, int type, @NativeType("void *") MemorySegment image) {
+        throw new ContextException();
+    }
+
+    default void glGetConvolutionParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetConvolutionParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetSeparableFilter(int target, int format, int type, @NativeType("void *") MemorySegment row, @NativeType("void *") MemorySegment column, @NativeType("void *") MemorySegment span) {
+        throw new ContextException();
+    }
+
+    default void glSeparableFilter2D(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment row, @NativeType("const void *") MemorySegment column) {
+        throw new ContextException();
+    }
+
+    default void glGetHistogram(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glGetHistogramParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetHistogramParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMinmax(int target, boolean reset, int format, int type, @NativeType("void *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glGetMinmaxParameterfv(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMinmaxParameteriv(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glHistogram(int target, int width, int internalformat, boolean sink) {
+        throw new ContextException();
+    }
+
+    default void glMinmax(int target, int internalformat, boolean sink) {
+        throw new ContextException();
+    }
+
+    default void glResetHistogram(int target) {
+        throw new ContextException();
+    }
+
+    default void glResetMinmax(int target) {
+        throw new ContextException();
+    }
+
 }

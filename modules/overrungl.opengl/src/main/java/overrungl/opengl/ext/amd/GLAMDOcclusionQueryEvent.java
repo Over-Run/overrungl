@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,5 +31,8 @@ public interface GLAMDOcclusionQueryEvent {
     int GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = 0x00000008;
     int GL_QUERY_ALL_EVENT_BITS_AMD = 0xFFFFFFFF;
 
-    void glQueryObjectParameteruiAMD(int target, int id, int pname, int param);
+    default void glQueryObjectParameteruiAMD(int target, int id, int pname, int param) {
+        throw new ContextException();
+    }
+
 }

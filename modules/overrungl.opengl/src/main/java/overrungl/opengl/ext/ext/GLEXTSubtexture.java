@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTSubtexture {
 
-    void glTexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, @NativeType("const void *") MemorySegment pixels);
-    void glTexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NativeType("const void *") MemorySegment pixels);
+    default void glTexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, @NativeType("const void *") MemorySegment pixels) {
+        throw new ContextException();
+    }
+
+    default void glTexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, @NativeType("const void *") MemorySegment pixels) {
+        throw new ContextException();
+    }
+
 }

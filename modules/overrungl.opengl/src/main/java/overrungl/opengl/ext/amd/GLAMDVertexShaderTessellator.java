@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,6 +32,12 @@ public interface GLAMDVertexShaderTessellator {
     int GL_DISCRETE_AMD = 0x9006;
     int GL_CONTINUOUS_AMD = 0x9007;
 
-    void glTessellationFactorAMD(float factor);
-    void glTessellationModeAMD(int mode);
+    default void glTessellationFactorAMD(float factor) {
+        throw new ContextException();
+    }
+
+    default void glTessellationModeAMD(int mode) {
+        throw new ContextException();
+    }
+
 }

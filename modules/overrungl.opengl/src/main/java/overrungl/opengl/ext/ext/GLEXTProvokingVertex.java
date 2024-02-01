@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLEXTProvokingVertex {
     int GL_LAST_VERTEX_CONVENTION_EXT = 0x8E4E;
     int GL_PROVOKING_VERTEX_EXT = 0x8E4F;
 
-    void glProvokingVertexEXT(int mode);
+    default void glProvokingVertexEXT(int mode) {
+        throw new ContextException();
+    }
+
 }

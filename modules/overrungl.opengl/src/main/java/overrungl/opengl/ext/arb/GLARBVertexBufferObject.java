@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -57,15 +56,48 @@ public interface GLARBVertexBufferObject {
     int GL_DYNAMIC_READ_ARB = 0x88E9;
     int GL_DYNAMIC_COPY_ARB = 0x88EA;
 
-    void glBindBufferARB(int target, int buffer);
-    void glDeleteBuffersARB(int n, @NativeType("const GLuint*") MemorySegment buffers);
-    void glGenBuffersARB(int n, @NativeType("GLuint*") MemorySegment buffers);
-    boolean glIsBufferARB(int buffer);
-    void glBufferDataARB(int target, long size, @NativeType("const void*") MemorySegment data, int usage);
-    void glBufferSubDataARB(int target, long offset, long size, @NativeType("const void*") MemorySegment data);
-    void glGetBufferSubDataARB(int target, long offset, long size, @NativeType("void*") MemorySegment data);
-    @NativeType("void*") MemorySegment glMapBufferARB(int target, int access);
-    boolean glUnmapBufferARB(int target);
-    void glGetBufferParameterivARB(int target, int pname, @NativeType("GLint*") MemorySegment params);
-    void glGetBufferPointervARB(int target, int pname, @NativeType("void**") MemorySegment params);
+    default void glBindBufferARB(int target, int buffer) {
+        throw new ContextException();
+    }
+
+    default void glDeleteBuffersARB(int n, @NativeType("const GLuint*") MemorySegment buffers) {
+        throw new ContextException();
+    }
+
+    default void glGenBuffersARB(int n, @NativeType("GLuint*") MemorySegment buffers) {
+        throw new ContextException();
+    }
+
+    default boolean glIsBufferARB(int buffer) {
+        throw new ContextException();
+    }
+
+    default void glBufferDataARB(int target, long size, @NativeType("const void*") MemorySegment data, int usage) {
+        throw new ContextException();
+    }
+
+    default void glBufferSubDataARB(int target, long offset, long size, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetBufferSubDataARB(int target, long offset, long size, @NativeType("void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    @NativeType("void*") default MemorySegment glMapBufferARB(int target, int access) {
+        throw new ContextException();
+    }
+
+    default boolean glUnmapBufferARB(int target) {
+        throw new ContextException();
+    }
+
+    default void glGetBufferParameterivARB(int target, int pname, @NativeType("GLint*") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetBufferPointervARB(int target, int pname, @NativeType("void**") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

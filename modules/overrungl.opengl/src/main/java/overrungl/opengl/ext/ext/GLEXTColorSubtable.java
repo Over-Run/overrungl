@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTColorSubtable {
 
-    void glColorSubTableEXT(int target, int start, int count, int format, int type, @NativeType("const void *") MemorySegment data);
-    void glCopyColorSubTableEXT(int target, int start, int x, int y, int width);
+    default void glColorSubTableEXT(int target, int start, int count, int format, int type, @NativeType("const void *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCopyColorSubTableEXT(int target, int start, int x, int y, int width) {
+        throw new ContextException();
+    }
+
 }

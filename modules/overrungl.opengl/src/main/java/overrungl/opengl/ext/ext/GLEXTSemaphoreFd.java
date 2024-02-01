@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,5 +25,8 @@ import java.lang.foreign.*;
  */
 public interface GLEXTSemaphoreFd {
 
-    void glImportSemaphoreFdEXT(int semaphore, int handleType, int fd);
+    default void glImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
+        throw new ContextException();
+    }
+
 }

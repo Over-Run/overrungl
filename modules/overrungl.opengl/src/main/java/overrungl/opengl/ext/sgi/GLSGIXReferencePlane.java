@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLSGIXReferencePlane {
     int GL_REFERENCE_PLANE_SGIX = 0x817D;
     int GL_REFERENCE_PLANE_EQUATION_SGIX = 0x817E;
 
-    void glReferencePlaneSGIX(@NativeType("const GLdouble *") MemorySegment equation);
+    default void glReferencePlaneSGIX(@NativeType("const GLdouble *") MemorySegment equation) {
+        throw new ContextException();
+    }
+
 }

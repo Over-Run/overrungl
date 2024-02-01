@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,8 +33,20 @@ public interface GLATIEnvmapBumpmap {
     int GL_BUMP_ENVMAP_ATI = 0x877B;
     int GL_BUMP_TARGET_ATI = 0x877C;
 
-    void glTexBumpParameterivATI(int pname, @NativeType("const GLint *") MemorySegment param);
-    void glTexBumpParameterfvATI(int pname, @NativeType("const GLfloat *") MemorySegment param);
-    void glGetTexBumpParameterivATI(int pname, @NativeType("GLint *") MemorySegment param);
-    void glGetTexBumpParameterfvATI(int pname, @NativeType("GLfloat *") MemorySegment param);
+    default void glTexBumpParameterivATI(int pname, @NativeType("const GLint *") MemorySegment param) {
+        throw new ContextException();
+    }
+
+    default void glTexBumpParameterfvATI(int pname, @NativeType("const GLfloat *") MemorySegment param) {
+        throw new ContextException();
+    }
+
+    default void glGetTexBumpParameterivATI(int pname, @NativeType("GLint *") MemorySegment param) {
+        throw new ContextException();
+    }
+
+    default void glGetTexBumpParameterfvATI(int pname, @NativeType("GLfloat *") MemorySegment param) {
+        throw new ContextException();
+    }
+
 }

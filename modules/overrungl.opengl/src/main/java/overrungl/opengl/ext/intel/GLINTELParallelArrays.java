@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.intel;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,8 +30,20 @@ public interface GLINTELParallelArrays {
     int GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F7;
     int GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F8;
 
-    void glVertexPointervINTEL(int size, int type, @NativeType("const void **") MemorySegment pointer);
-    void glNormalPointervINTEL(int type, @NativeType("const void **") MemorySegment pointer);
-    void glColorPointervINTEL(int size, int type, @NativeType("const void **") MemorySegment pointer);
-    void glTexCoordPointervINTEL(int size, int type, @NativeType("const void **") MemorySegment pointer);
+    default void glVertexPointervINTEL(int size, int type, @NativeType("const void **") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glNormalPointervINTEL(int type, @NativeType("const void **") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glColorPointervINTEL(int size, int type, @NativeType("const void **") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glTexCoordPointervINTEL(int size, int type, @NativeType("const void **") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

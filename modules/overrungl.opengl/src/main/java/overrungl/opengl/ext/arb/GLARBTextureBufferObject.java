@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,5 +30,8 @@ public interface GLARBTextureBufferObject {
     int GL_TEXTURE_BUFFER_DATA_STORE_BINDING_ARB = 0x8C2D;
     int GL_TEXTURE_BUFFER_FORMAT_ARB = 0x8C2E;
 
-    void glTexBufferARB(int target, int internalFormat, int buffer);
+    default void glTexBufferARB(int target, int internalFormat, int buffer) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,11 +29,32 @@ public interface GLNVOcculusionQuery {
     int GL_PIXEL_COUNT_NV = 0x8866;
     int GL_PIXEL_COUNT_AVAILABLE_NV = 0x8867;
 
-    void glGenOcclusionQueriesNV(int n, @NativeType("GLuint *") MemorySegment ids);
-    void glDeleteOcclusionQueriesNV(int n, @NativeType("const GLuint *") MemorySegment ids);
-    boolean glIsOcclusionQueryNV(int id);
-    void glBeginOcclusionQueryNV(int id);
-    void glEndOcclusionQueryNV();
-    void glGetOcclusionQueryivNV(int id, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetOcclusionQueryuivNV(int id, int pname, @NativeType("GLuint *") MemorySegment params);
+    default void glGenOcclusionQueriesNV(int n, @NativeType("GLuint *") MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    default void glDeleteOcclusionQueriesNV(int n, @NativeType("const GLuint *") MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    default boolean glIsOcclusionQueryNV(int id) {
+        throw new ContextException();
+    }
+
+    default void glBeginOcclusionQueryNV(int id) {
+        throw new ContextException();
+    }
+
+    default void glEndOcclusionQueryNV() {
+        throw new ContextException();
+    }
+
+    default void glGetOcclusionQueryivNV(int id, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetOcclusionQueryuivNV(int id, int pname, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

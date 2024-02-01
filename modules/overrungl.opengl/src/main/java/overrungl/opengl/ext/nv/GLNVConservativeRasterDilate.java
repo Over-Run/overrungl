@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLNVConservativeRasterDilate {
     int GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV = 0x937A;
     int GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV = 0x937B;
 
-    void glConservativeRasterParameterfNV(int pname, float value);
+    default void glConservativeRasterParameterfNV(int pname, float value) {
+        throw new ContextException();
+    }
+
 }

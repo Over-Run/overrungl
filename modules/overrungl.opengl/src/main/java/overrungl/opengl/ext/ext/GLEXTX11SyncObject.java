@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,5 +26,8 @@ import java.lang.foreign.*;
 public interface GLEXTX11SyncObject {
     int GL_SYNC_X11_FENCE_EXT = 0x90E1;
 
-    @NativeType("GLsync") MemorySegment glImportSyncEXT(int external_sync_type, long external_sync, int flags);
+    @NativeType("GLsync") default MemorySegment glImportSyncEXT(int external_sync_type, long external_sync, int flags) {
+        throw new ContextException();
+    }
+
 }

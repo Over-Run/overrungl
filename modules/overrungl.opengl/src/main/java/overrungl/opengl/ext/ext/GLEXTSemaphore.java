@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,11 +34,32 @@ public interface GLEXTSemaphore {
     int GL_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_EXT = 0x9530;
     int GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT = 0x9531;
 
-    void glGenSemaphoresEXT(int n, @NativeType("GLuint *") MemorySegment semaphores);
-    void glDeleteSemaphoresEXT(int n, @NativeType("const GLuint *") MemorySegment semaphores);
-    boolean glIsSemaphoreEXT(int semaphore);
-    void glSemaphoreParameterui64vEXT(int semaphore, int pname, @NativeType("const GLuint64 *") MemorySegment params);
-    void glGetSemaphoreParameterui64vEXT(int semaphore, int pname, @NativeType("GLuint64 *") MemorySegment params);
-    void glWaitSemaphoreEXT(int semaphore, int numBufferBarriers, @NativeType("const GLuint *") MemorySegment buffers, int numTextureBarriers, @NativeType("const GLuint *") MemorySegment textures, @NativeType("const GLenum *") MemorySegment srcLayouts);
-    void glSignalSemaphoreEXT(int semaphore, int numBufferBarriers, @NativeType("const GLuint *") MemorySegment buffers, int numTextureBarriers, @NativeType("const GLuint *") MemorySegment textures, @NativeType("const GLenum *") MemorySegment dstLayouts);
+    default void glGenSemaphoresEXT(int n, @NativeType("GLuint *") MemorySegment semaphores) {
+        throw new ContextException();
+    }
+
+    default void glDeleteSemaphoresEXT(int n, @NativeType("const GLuint *") MemorySegment semaphores) {
+        throw new ContextException();
+    }
+
+    default boolean glIsSemaphoreEXT(int semaphore) {
+        throw new ContextException();
+    }
+
+    default void glSemaphoreParameterui64vEXT(int semaphore, int pname, @NativeType("const GLuint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetSemaphoreParameterui64vEXT(int semaphore, int pname, @NativeType("GLuint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glWaitSemaphoreEXT(int semaphore, int numBufferBarriers, @NativeType("const GLuint *") MemorySegment buffers, int numTextureBarriers, @NativeType("const GLuint *") MemorySegment textures, @NativeType("const GLenum *") MemorySegment srcLayouts) {
+        throw new ContextException();
+    }
+
+    default void glSignalSemaphoreEXT(int semaphore, int numBufferBarriers, @NativeType("const GLuint *") MemorySegment buffers, int numTextureBarriers, @NativeType("const GLuint *") MemorySegment textures, @NativeType("const GLenum *") MemorySegment dstLayouts) {
+        throw new ContextException();
+    }
+
 }

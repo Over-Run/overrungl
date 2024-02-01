@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLNVAlphaToCoverageDitherControl {
     int GL_ALPHA_TO_COVERAGE_DITHER_DISABLE_NV = 0x934F;
     int GL_ALPHA_TO_COVERAGE_DITHER_MODE_NV = 0x92BF;
 
-    void glAlphaToCoverageDitherControlNV(int mode);
+    default void glAlphaToCoverageDitherControlNV(int mode) {
+        throw new ContextException();
+    }
+
 }

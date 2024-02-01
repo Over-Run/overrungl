@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLATIMapObjectBuffer {
 
-    @NativeType("void*") MemorySegment glMapObjectBufferATI(int buffer);
-    void glUnmapObjectBufferATI(int buffer);
+    @NativeType("void*") default MemorySegment glMapObjectBufferATI(int buffer) {
+        throw new ContextException();
+    }
+
+    default void glUnmapObjectBufferATI(int buffer) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,10 +31,28 @@ public interface GLNVPresentVideo {
     int GL_PRESENT_TIME_NV = 0x8E2A;
     int GL_PRESENT_DURATION_NV = 0x8E2B;
 
-    void glPresentFrameKeyedNV(int video_slot, long minPresentTime, int beginPresentTimeId, int presentDurationId, int type, int target0, int fill0, int key0, int target1, int fill1, int key1);
-    void glPresentFrameDualFillNV(int video_slot, long minPresentTime, int beginPresentTimeId, int presentDurationId, int type, int target0, int fill0, int target1, int fill1, int target2, int fill2, int target3, int fill3);
-    void glGetVideoivNV(int video_slot, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetVideouivNV(int video_slot, int pname, @NativeType("GLuint *") MemorySegment params);
-    void glGetVideoi64vNV(int video_slot, int pname, @NativeType("GLint64EXT *") MemorySegment params);
-    void glGetVideoui64vNV(int video_slot, int pname, @NativeType("GLuint64EXT *") MemorySegment params);
+    default void glPresentFrameKeyedNV(int video_slot, long minPresentTime, int beginPresentTimeId, int presentDurationId, int type, int target0, int fill0, int key0, int target1, int fill1, int key1) {
+        throw new ContextException();
+    }
+
+    default void glPresentFrameDualFillNV(int video_slot, long minPresentTime, int beginPresentTimeId, int presentDurationId, int type, int target0, int fill0, int target1, int fill1, int target2, int fill2, int target3, int fill3) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoivNV(int video_slot, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVideouivNV(int video_slot, int pname, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoi64vNV(int video_slot, int pname, @NativeType("GLint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoui64vNV(int video_slot, int pname, @NativeType("GLuint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

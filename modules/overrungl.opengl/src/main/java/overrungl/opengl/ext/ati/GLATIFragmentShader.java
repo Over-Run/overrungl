@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -130,18 +129,60 @@ public interface GLATIFragmentShader {
     int GL_NEGATE_BIT_ATI = 0x00000004;
     int GL_BIAS_BIT_ATI = 0x00000008;
 
-    int glGenFragmentShadersATI(int range);
-    void glBindFragmentShaderATI(int id);
-    void glDeleteFragmentShaderATI(int id);
-    void glBeginFragmentShaderATI();
-    void glEndFragmentShaderATI();
-    void glPassTexCoordATI(int dst, int coord, int swizzle);
-    void glSampleMapATI(int dst, int interp, int swizzle);
-    void glColorFragmentOp1ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod);
-    void glColorFragmentOp2ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod);
-    void glColorFragmentOp3ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod);
-    void glAlphaFragmentOp1ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod);
-    void glAlphaFragmentOp2ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod);
-    void glAlphaFragmentOp3ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod);
-    void glSetFragmentShaderConstantATI(int dst, @NativeType("const GLfloat *") MemorySegment value);
+    default int glGenFragmentShadersATI(int range) {
+        throw new ContextException();
+    }
+
+    default void glBindFragmentShaderATI(int id) {
+        throw new ContextException();
+    }
+
+    default void glDeleteFragmentShaderATI(int id) {
+        throw new ContextException();
+    }
+
+    default void glBeginFragmentShaderATI() {
+        throw new ContextException();
+    }
+
+    default void glEndFragmentShaderATI() {
+        throw new ContextException();
+    }
+
+    default void glPassTexCoordATI(int dst, int coord, int swizzle) {
+        throw new ContextException();
+    }
+
+    default void glSampleMapATI(int dst, int interp, int swizzle) {
+        throw new ContextException();
+    }
+
+    default void glColorFragmentOp1ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
+        throw new ContextException();
+    }
+
+    default void glColorFragmentOp2ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
+        throw new ContextException();
+    }
+
+    default void glColorFragmentOp3ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
+        throw new ContextException();
+    }
+
+    default void glAlphaFragmentOp1ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
+        throw new ContextException();
+    }
+
+    default void glAlphaFragmentOp2ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
+        throw new ContextException();
+    }
+
+    default void glAlphaFragmentOp3ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
+        throw new ContextException();
+    }
+
+    default void glSetFragmentShaderConstantATI(int dst, @NativeType("const GLfloat *") MemorySegment value) {
+        throw new ContextException();
+    }
+
 }

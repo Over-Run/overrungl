@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sun;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -43,11 +42,32 @@ public interface GLSUNTriangleList {
     int GL_R1UI_T2F_N3F_V3F_SUN = 0x85CA;
     int GL_R1UI_T2F_C4F_N3F_V3F_SUN = 0x85CB;
 
-    void glReplacementCodeuiSUN(int code);
-    void glReplacementCodeusSUN(short code);
-    void glReplacementCodeubSUN(byte code);
-    void glReplacementCodeuivSUN(@NativeType("const GLuint *") MemorySegment code);
-    void glReplacementCodeusvSUN(@NativeType("const GLushort *") MemorySegment code);
-    void glReplacementCodeubvSUN(@NativeType("const GLubyte *") MemorySegment code);
-    void glReplacementCodePointerSUN(int type, int stride, @NativeType("const void **") MemorySegment pointer);
+    default void glReplacementCodeuiSUN(int code) {
+        throw new ContextException();
+    }
+
+    default void glReplacementCodeusSUN(short code) {
+        throw new ContextException();
+    }
+
+    default void glReplacementCodeubSUN(byte code) {
+        throw new ContextException();
+    }
+
+    default void glReplacementCodeuivSUN(@NativeType("const GLuint *") MemorySegment code) {
+        throw new ContextException();
+    }
+
+    default void glReplacementCodeusvSUN(@NativeType("const GLushort *") MemorySegment code) {
+        throw new ContextException();
+    }
+
+    default void glReplacementCodeubvSUN(@NativeType("const GLubyte *") MemorySegment code) {
+        throw new ContextException();
+    }
+
+    default void glReplacementCodePointerSUN(int type, int stride, @NativeType("const void **") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

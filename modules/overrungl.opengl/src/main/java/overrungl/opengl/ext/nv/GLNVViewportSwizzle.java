@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -38,5 +37,8 @@ public interface GLNVViewportSwizzle {
     int GL_VIEWPORT_SWIZZLE_Z_NV = 0x935A;
     int GL_VIEWPORT_SWIZZLE_W_NV = 0x935B;
 
-    void glViewportSwizzleNV(int index, int swizzlex, int swizzley, int swizzlez, int swizzlew);
+    default void glViewportSwizzleNV(int index, int swizzlex, int swizzley, int swizzlez, int swizzlew) {
+        throw new ContextException();
+    }
+
 }

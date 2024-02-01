@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLARBCLEvent {
     int GL_SYNC_CL_EVENT_ARB = 0x8240;
     int GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241;
 
-    @NativeType("GLsync") MemorySegment glCreateSyncFromCLeventARB(@NativeType("struct _cl_context *") MemorySegment context, @NativeType("struct _cl_event *") MemorySegment event, int flags);
+    @NativeType("GLsync") default MemorySegment glCreateSyncFromCLeventARB(@NativeType("struct _cl_context *") MemorySegment context, @NativeType("struct _cl_event *") MemorySegment event, int flags) {
+        throw new ContextException();
+    }
+
 }

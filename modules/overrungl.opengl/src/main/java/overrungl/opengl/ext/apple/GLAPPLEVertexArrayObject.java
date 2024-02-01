@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,8 +26,20 @@ import java.lang.foreign.*;
 public interface GLAPPLEVertexArrayObject {
     int GL_VERTEX_ARRAY_BINDING_APPLE = 0x85B5;
 
-    void glBindVertexArrayAPPLE(int array);
-    void glDeleteVertexArraysAPPLE(int n, @NativeType("const GLuint *") MemorySegment arrays);
-    void glGenVertexArraysAPPLE(int n, @NativeType("GLuint *") MemorySegment arrays);
-    boolean glIsVertexArrayAPPLE(int array);
+    default void glBindVertexArrayAPPLE(int array) {
+        throw new ContextException();
+    }
+
+    default void glDeleteVertexArraysAPPLE(int n, @NativeType("const GLuint *") MemorySegment arrays) {
+        throw new ContextException();
+    }
+
+    default void glGenVertexArraysAPPLE(int n, @NativeType("GLuint *") MemorySegment arrays) {
+        throw new ContextException();
+    }
+
+    default boolean glIsVertexArrayAPPLE(int array) {
+        throw new ContextException();
+    }
+
 }

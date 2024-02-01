@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,6 +28,12 @@ public interface GLEXTCullVertex {
     int GL_CULL_VERTEX_EYE_POSITION_EXT = 0x81AB;
     int GL_CULL_VERTEX_OBJECT_POSITION_EXT = 0x81AC;
 
-    void glCullParameterdvEXT(int pname, @NativeType("GLdouble *") MemorySegment params);
-    void glCullParameterfvEXT(int pname, @NativeType("GLfloat *") MemorySegment params);
+    default void glCullParameterdvEXT(int pname, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCullParameterfvEXT(int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -73,10 +72,28 @@ public interface GLEXTTextureInteger {
     int GL_LUMINANCE_ALPHA_INTEGER_EXT = 0x8D9D;
     int GL_RGBA_INTEGER_MODE_EXT = 0x8D9E;
 
-    void glTexParameterIivEXT(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glTexParameterIuivEXT(int target, int pname, @NativeType("const GLuint *") MemorySegment params);
-    void glGetTexParameterIivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetTexParameterIuivEXT(int target, int pname, @NativeType("GLuint *") MemorySegment params);
-    void glClearColorIiEXT(int red, int green, int blue, int alpha);
-    void glClearColorIuiEXT(int red, int green, int blue, int alpha);
+    default void glTexParameterIivEXT(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glTexParameterIuivEXT(int target, int pname, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetTexParameterIivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetTexParameterIuivEXT(int target, int pname, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glClearColorIiEXT(int red, int green, int blue, int alpha) {
+        throw new ContextException();
+    }
+
+    default void glClearColorIuiEXT(int red, int green, int blue, int alpha) {
+        throw new ContextException();
+    }
+
 }

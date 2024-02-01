@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -41,11 +40,32 @@ public interface GLEXTTransformFeedback {
     int GL_TRANSFORM_FEEDBACK_BUFFER_MODE_EXT = 0x8C7F;
     int GL_TRANSFORM_FEEDBACK_VARYING_MAX_LENGTH_EXT = 0x8C76;
 
-    void glBeginTransformFeedbackEXT(int primitiveMode);
-    void glEndTransformFeedbackEXT();
-    void glBindBufferRangeEXT(int target, int index, int buffer, long offset, long size);
-    void glBindBufferOffsetEXT(int target, int index, int buffer, long offset);
-    void glBindBufferBaseEXT(int target, int index, int buffer);
-    void glTransformFeedbackVaryingsEXT(int program, int count, @NativeType("const GLchar *const*") MemorySegment varyings, int bufferMode);
-    void glGetTransformFeedbackVaryingEXT(int program, int index, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLsizei *") MemorySegment size, @NativeType("GLenum *") MemorySegment type, @NativeType("GLchar *") MemorySegment name);
+    default void glBeginTransformFeedbackEXT(int primitiveMode) {
+        throw new ContextException();
+    }
+
+    default void glEndTransformFeedbackEXT() {
+        throw new ContextException();
+    }
+
+    default void glBindBufferRangeEXT(int target, int index, int buffer, long offset, long size) {
+        throw new ContextException();
+    }
+
+    default void glBindBufferOffsetEXT(int target, int index, int buffer, long offset) {
+        throw new ContextException();
+    }
+
+    default void glBindBufferBaseEXT(int target, int index, int buffer) {
+        throw new ContextException();
+    }
+
+    default void glTransformFeedbackVaryingsEXT(int program, int count, @NativeType("const GLchar *const*") MemorySegment varyings, int bufferMode) {
+        throw new ContextException();
+    }
+
+    default void glGetTransformFeedbackVaryingEXT(int program, int index, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLsizei *") MemorySegment size, @NativeType("GLenum *") MemorySegment type, @NativeType("GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
 }

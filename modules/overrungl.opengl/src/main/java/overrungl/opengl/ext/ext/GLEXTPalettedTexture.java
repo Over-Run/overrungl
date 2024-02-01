@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,8 +32,20 @@ public interface GLEXTPalettedTexture {
     int GL_COLOR_INDEX16_EXT = 0x80E7;
     int GL_TEXTURE_INDEX_SIZE_EXT = 0x80ED;
 
-    void glColorTableEXT(int target, int internalFormat, int width, int format, int type, @NativeType("const void *") MemorySegment table);
-    void glGetColorTableEXT(int target, int format, int type, @NativeType("void *") MemorySegment data);
-    void glGetColorTableParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetColorTableParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
+    default void glColorTableEXT(int target, int internalFormat, int width, int format, int type, @NativeType("const void *") MemorySegment table) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableEXT(int target, int format, int type, @NativeType("void *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

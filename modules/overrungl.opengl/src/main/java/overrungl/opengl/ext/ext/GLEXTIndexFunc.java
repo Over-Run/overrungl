@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLEXTIndexFunc {
     int GL_INDEX_TEST_FUNC_EXT = 0x81B6;
     int GL_INDEX_TEST_REF_EXT = 0x81B7;
 
-    void glIndexFuncEXT(int func, float ref);
+    default void glIndexFuncEXT(int func, float ref) {
+        throw new ContextException();
+    }
+
 }

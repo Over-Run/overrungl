@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -104,23 +103,80 @@ public interface GLARBFragmentProgram {
     int GL_MATRIX30_ARB = 0x88DE;
     int GL_MATRIX31_ARB = 0x88DF;
 
-    void glProgramStringARB(int target, int format, int len, @NativeType("const void *") MemorySegment string);
-    void glBindProgramARB(int target, int program);
-    void glDeleteProgramsARB(int n, @NativeType("const GLuint *") MemorySegment programs);
-    void glGenProgramsARB(int n, @NativeType("GLuint *") MemorySegment programs);
-    void glProgramEnvParameter4dARB(int target, int index, double x, double y, double z, double w);
-    void glProgramEnvParameter4dvARB(int target, int index, @NativeType("const GLdouble *") MemorySegment params);
-    void glProgramEnvParameter4fARB(int target, int index, float x, float y, float z, float w);
-    void glProgramEnvParameter4fvARB(int target, int index, @NativeType("const GLfloat *") MemorySegment params);
-    void glProgramLocalParameter4dARB(int target, int index, double x, double y, double z, double w);
-    void glProgramLocalParameter4dvARB(int target, int index, @NativeType("const GLdouble *") MemorySegment params);
-    void glProgramLocalParameter4fARB(int target, int index, float x, float y, float z, float w);
-    void glProgramLocalParameter4fvARB(int target, int index, @NativeType("const GLfloat *") MemorySegment params);
-    void glGetProgramEnvParameterdvARB(int target, int index, @NativeType("GLdouble *") MemorySegment params);
-    void glGetProgramEnvParameterfvARB(int target, int index, @NativeType("GLfloat *") MemorySegment params);
-    void glGetProgramLocalParameterdvARB(int target, int index, @NativeType("GLdouble *") MemorySegment params);
-    void glGetProgramLocalParameterfvARB(int target, int index, @NativeType("GLfloat *") MemorySegment params);
-    void glGetProgramivARB(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetProgramStringARB(int target, int pname, @NativeType("void *") MemorySegment string);
-    boolean glIsProgramARB(int program);
+    default void glProgramStringARB(int target, int format, int len, @NativeType("const void *") MemorySegment string) {
+        throw new ContextException();
+    }
+
+    default void glBindProgramARB(int target, int program) {
+        throw new ContextException();
+    }
+
+    default void glDeleteProgramsARB(int n, @NativeType("const GLuint *") MemorySegment programs) {
+        throw new ContextException();
+    }
+
+    default void glGenProgramsARB(int n, @NativeType("GLuint *") MemorySegment programs) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameter4dARB(int target, int index, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameter4dvARB(int target, int index, @NativeType("const GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameter4fARB(int target, int index, float x, float y, float z, float w) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameter4fvARB(int target, int index, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameter4dARB(int target, int index, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameter4dvARB(int target, int index, @NativeType("const GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameter4fARB(int target, int index, float x, float y, float z, float w) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameter4fvARB(int target, int index, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramEnvParameterdvARB(int target, int index, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramEnvParameterfvARB(int target, int index, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramLocalParameterdvARB(int target, int index, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramLocalParameterfvARB(int target, int index, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramivARB(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramStringARB(int target, int pname, @NativeType("void *") MemorySegment string) {
+        throw new ContextException();
+    }
+
+    default boolean glIsProgramARB(int program) {
+        throw new ContextException();
+    }
+
 }

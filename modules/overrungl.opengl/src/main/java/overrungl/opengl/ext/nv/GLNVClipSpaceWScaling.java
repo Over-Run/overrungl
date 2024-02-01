@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLNVClipSpaceWScaling {
     int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
     int GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV = 0x937E;
 
-    void glViewportPositionWScaleNV(int index, float xcoeff, float ycoeff);
+    default void glViewportPositionWScaleNV(int index, float xcoeff, float ycoeff) {
+        throw new ContextException();
+    }
+
 }

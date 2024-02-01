@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,6 +26,12 @@ import java.lang.foreign.*;
 public interface GLEXTTimerQuery {
     int GL_TIME_ELAPSED_EXT = 0x88BF;
 
-    void glGetQueryObjecti64vEXT(int id, int pname, @NativeType("GLint64 *") MemorySegment params);
-    void glGetQueryObjectui64vEXT(int id, int pname, @NativeType("GLuint64 *") MemorySegment params);
+    default void glGetQueryObjecti64vEXT(int id, int pname, @NativeType("GLint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetQueryObjectui64vEXT(int id, int pname, @NativeType("GLuint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

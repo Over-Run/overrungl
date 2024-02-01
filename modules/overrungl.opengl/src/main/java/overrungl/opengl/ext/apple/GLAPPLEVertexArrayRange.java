@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,7 +30,16 @@ public interface GLAPPLEVertexArrayRange {
     int GL_VERTEX_ARRAY_RANGE_POINTER_APPLE = 0x8521;
     int GL_STORAGE_CLIENT_APPLE = 0x85B4;
 
-    void glVertexArrayRangeAPPLE(int length, @NativeType("void *") MemorySegment pointer);
-    void glFlushVertexArrayRangeAPPLE(int length, @NativeType("void *") MemorySegment pointer);
-    void glVertexArrayParameteriAPPLE(int pname, int param);
+    default void glVertexArrayRangeAPPLE(int length, @NativeType("void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glFlushVertexArrayRangeAPPLE(int length, @NativeType("void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glVertexArrayParameteriAPPLE(int pname, int param) {
+        throw new ContextException();
+    }
+
 }

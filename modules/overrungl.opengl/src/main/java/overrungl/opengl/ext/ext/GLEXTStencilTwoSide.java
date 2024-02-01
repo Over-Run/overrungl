@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLEXTStencilTwoSide {
     int GL_STENCIL_TEST_TWO_SIDE_EXT = 0x8910;
     int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
 
-    void glActiveStencilFaceEXT(int face);
+    default void glActiveStencilFaceEXT(int face) {
+        throw new ContextException();
+    }
+
 }

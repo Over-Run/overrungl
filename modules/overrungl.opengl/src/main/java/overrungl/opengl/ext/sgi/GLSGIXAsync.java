@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,10 +26,28 @@ import java.lang.foreign.*;
 public interface GLSGIXAsync {
     int GL_ASYNC_MARKER_SGIX = 0x8329;
 
-    void glAsyncMarkerSGIX(int marker);
-    int glFinishAsyncSGIX(@NativeType("GLuint *") MemorySegment markerp);
-    int glPollAsyncSGIX(@NativeType("GLuint *") MemorySegment markerp);
-    int glGenAsyncMarkersSGIX(int range);
-    void glDeleteAsyncMarkersSGIX(int marker, int range);
-    boolean glIsAsyncMarkerSGIX(int marker);
+    default void glAsyncMarkerSGIX(int marker) {
+        throw new ContextException();
+    }
+
+    default int glFinishAsyncSGIX(@NativeType("GLuint *") MemorySegment markerp) {
+        throw new ContextException();
+    }
+
+    default int glPollAsyncSGIX(@NativeType("GLuint *") MemorySegment markerp) {
+        throw new ContextException();
+    }
+
+    default int glGenAsyncMarkersSGIX(int range) {
+        throw new ContextException();
+    }
+
+    default void glDeleteAsyncMarkersSGIX(int marker, int range) {
+        throw new ContextException();
+    }
+
+    default boolean glIsAsyncMarkerSGIX(int marker) {
+        throw new ContextException();
+    }
+
 }

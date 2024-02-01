@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,6 +34,12 @@ public interface GLATIPnTriangles {
     int GL_PN_TRIANGLES_NORMAL_MODE_LINEAR_ATI = 0x87F7;
     int GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATI = 0x87F8;
 
-    void glPNTrianglesiATI(int pname, int param);
-    void glPNTrianglesfATI(int pname, float param);
+    default void glPNTrianglesiATI(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glPNTrianglesfATI(int pname, float param) {
+        throw new ContextException();
+    }
+
 }

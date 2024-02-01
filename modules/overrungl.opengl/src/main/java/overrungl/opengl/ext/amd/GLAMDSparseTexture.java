@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,6 +34,12 @@ public interface GLAMDSparseTexture {
     int GL_MIN_LOD_WARNING_AMD = 0x919C;
     int GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001;
 
-    void glTexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags);
-    void glTextureStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags);
+    default void glTexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
+        throw new ContextException();
+    }
+
+    default void glTextureStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
+        throw new ContextException();
+    }
+
 }

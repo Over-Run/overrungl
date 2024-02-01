@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLEXTBlendFuncSeparate {
     int GL_BLEND_DST_ALPHA_EXT = 0x80CA;
     int GL_BLEND_SRC_ALPHA_EXT = 0x80CB;
 
-    void glBlendFuncSeparateEXT(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha);
+    default void glBlendFuncSeparateEXT(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLNVXConditionalRender {
 
-    void glBeginConditionalRenderNVX(int id);
-    void glEndConditionalRenderNVX();
+    default void glBeginConditionalRenderNVX(int id) {
+        throw new ContextException();
+    }
+
+    default void glEndConditionalRenderNVX() {
+        throw new ContextException();
+    }
+
 }

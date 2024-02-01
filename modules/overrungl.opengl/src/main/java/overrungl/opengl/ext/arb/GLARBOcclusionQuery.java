@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,12 +30,36 @@ public interface GLARBOcclusionQuery {
     int GL_QUERY_RESULT_AVAILABLE_ARB = 0x8867;
     int GL_SAMPLES_PASSED_ARB = 0x8914;
 
-    void glGenQueriesARB(int n, @NativeType("GLuint *") MemorySegment ids);
-    void glDeleteQueriesARB(int n, @NativeType("const GLuint *") MemorySegment ids);
-    boolean glIsQueryARB(int id);
-    void glBeginQueryARB(int target, int id);
-    void glEndQueryARB(int target);
-    void glGetQueryivARB(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetQueryObjectivARB(int id, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetQueryObjectuivARB(int id, int pname, @NativeType("GLuint *") MemorySegment params);
+    default void glGenQueriesARB(int n, @NativeType("GLuint *") MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    default void glDeleteQueriesARB(int n, @NativeType("const GLuint *") MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    default boolean glIsQueryARB(int id) {
+        throw new ContextException();
+    }
+
+    default void glBeginQueryARB(int target, int id) {
+        throw new ContextException();
+    }
+
+    default void glEndQueryARB(int target) {
+        throw new ContextException();
+    }
+
+    default void glGetQueryivARB(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetQueryObjectivARB(int id, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetQueryObjectuivARB(int id, int pname, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,7 +31,16 @@ public interface GLAPPLEObjectPurgeable {
     int GL_UNDEFINED_APPLE = 0x8A1C;
     int GL_PURGEABLE_APPLE = 0x8A1D;
 
-    int glObjectPurgeableAPPLE(int objectType, int name, int option);
-    int glObjectUnpurgeableAPPLE(int objectType, int name, int option);
-    void glGetObjectParameterivAPPLE(int objectType, int name, int pname, @NativeType("GLint *") MemorySegment params);
+    default int glObjectPurgeableAPPLE(int objectType, int name, int option) {
+        throw new ContextException();
+    }
+
+    default int glObjectUnpurgeableAPPLE(int objectType, int name, int option) {
+        throw new ContextException();
+    }
+
+    default void glGetObjectParameterivAPPLE(int objectType, int name, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

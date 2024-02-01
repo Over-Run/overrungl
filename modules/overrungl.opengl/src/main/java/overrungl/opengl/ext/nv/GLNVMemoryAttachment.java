@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -36,10 +35,28 @@ public interface GLNVMemoryAttachment {
     int GL_MAX_DETACHED_TEXTURES_NV = 0x95AC;
     int GL_MAX_DETACHED_BUFFERS_NV = 0x95AD;
 
-    void glGetMemoryObjectDetachedResourcesuivNV(int memory, int pname, int first, int count, @NativeType("GLuint *") MemorySegment params);
-    void glResetMemoryObjectParameterNV(int memory, int pname);
-    void glTexAttachMemoryNV(int target, int memory, long offset);
-    void glBufferAttachMemoryNV(int target, int memory, long offset);
-    void glTextureAttachMemoryNV(int texture, int memory, long offset);
-    void glNamedBufferAttachMemoryNV(int buffer, int memory, long offset);
+    default void glGetMemoryObjectDetachedResourcesuivNV(int memory, int pname, int first, int count, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glResetMemoryObjectParameterNV(int memory, int pname) {
+        throw new ContextException();
+    }
+
+    default void glTexAttachMemoryNV(int target, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glBufferAttachMemoryNV(int target, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTextureAttachMemoryNV(int texture, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glNamedBufferAttachMemoryNV(int buffer, int memory, long offset) {
+        throw new ContextException();
+    }
+
 }

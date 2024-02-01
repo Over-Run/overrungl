@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,7 +33,16 @@ public interface GLNVSampleLocations {
     int GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_NV = 0x9342;
     int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV = 0x9343;
 
-    void glFramebufferSampleLocationsfvNV(int target, int start, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glNamedFramebufferSampleLocationsfvNV(int framebuffer, int start, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glResolveDepthValuesNV();
+    default void glFramebufferSampleLocationsfvNV(int target, int start, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glNamedFramebufferSampleLocationsfvNV(int framebuffer, int start, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glResolveDepthValuesNV() {
+        throw new ContextException();
+    }
+
 }

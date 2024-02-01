@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,10 +27,28 @@ public interface GLSGIXInstruments {
     int GL_INSTRUMENT_BUFFER_POINTER_SGIX = 0x8180;
     int GL_INSTRUMENT_MEASUREMENTS_SGIX = 0x8181;
 
-    int glGetInstrumentsSGIX();
-    void glInstrumentsBufferSGIX(int size, @NativeType("GLint *") MemorySegment buffer);
-    int glPollInstrumentsSGIX(@NativeType("GLint *") MemorySegment marker_p);
-    void glReadInstrumentsSGIX(int marker);
-    void glStartInstrumentsSGIX();
-    void glStopInstrumentsSGIX(int marker);
+    default int glGetInstrumentsSGIX() {
+        throw new ContextException();
+    }
+
+    default void glInstrumentsBufferSGIX(int size, @NativeType("GLint *") MemorySegment buffer) {
+        throw new ContextException();
+    }
+
+    default int glPollInstrumentsSGIX(@NativeType("GLint *") MemorySegment marker_p) {
+        throw new ContextException();
+    }
+
+    default void glReadInstrumentsSGIX(int marker) {
+        throw new ContextException();
+    }
+
+    default void glStartInstrumentsSGIX() {
+        throw new ContextException();
+    }
+
+    default void glStopInstrumentsSGIX(int marker) {
+        throw new ContextException();
+    }
+
 }

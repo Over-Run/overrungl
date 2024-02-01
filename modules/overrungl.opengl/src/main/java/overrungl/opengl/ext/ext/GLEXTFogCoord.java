@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,9 +33,24 @@ public interface GLEXTFogCoord {
     int GL_FOG_COORDINATE_ARRAY_POINTER_EXT = 0x8456;
     int GL_FOG_COORDINATE_ARRAY_EXT = 0x8457;
 
-    void glFogCoordfEXT(float coord);
-    void glFogCoordfvEXT(@NativeType("const GLfloat *") MemorySegment coord);
-    void glFogCoorddEXT(double coord);
-    void glFogCoorddvEXT(@NativeType("const GLdouble *") MemorySegment coord);
-    void glFogCoordPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer);
+    default void glFogCoordfEXT(float coord) {
+        throw new ContextException();
+    }
+
+    default void glFogCoordfvEXT(@NativeType("const GLfloat *") MemorySegment coord) {
+        throw new ContextException();
+    }
+
+    default void glFogCoorddEXT(double coord) {
+        throw new ContextException();
+    }
+
+    default void glFogCoorddvEXT(@NativeType("const GLdouble *") MemorySegment coord) {
+        throw new ContextException();
+    }
+
+    default void glFogCoordPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

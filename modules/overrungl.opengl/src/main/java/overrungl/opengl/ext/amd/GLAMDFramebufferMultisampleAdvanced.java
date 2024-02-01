@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,6 +31,12 @@ public interface GLAMDFramebufferMultisampleAdvanced {
     int GL_NUM_SUPPORTED_MULTISAMPLE_MODES_AMD = 0x91B6;
     int GL_SUPPORTED_MULTISAMPLE_MODES_AMD = 0x91B7;
 
-    void glRenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalformat, int width, int height);
-    void glNamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalformat, int width, int height);
+    default void glRenderbufferStorageMultisampleAdvancedAMD(int target, int samples, int storageSamples, int internalformat, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glNamedRenderbufferStorageMultisampleAdvancedAMD(int renderbuffer, int samples, int storageSamples, int internalformat, int width, int height) {
+        throw new ContextException();
+    }
+
 }

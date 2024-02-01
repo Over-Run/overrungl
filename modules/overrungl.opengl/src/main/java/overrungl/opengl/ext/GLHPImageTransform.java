@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -41,10 +40,28 @@ public interface GLHPImageTransform {
     int GL_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8162;
     int GL_PROXY_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8163;
 
-    void glImageTransformParameteriHP(int target, int pname, int param);
-    void glImageTransformParameterfHP(int target, int pname, float param);
-    void glImageTransformParameterivHP(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glImageTransformParameterfvHP(int target, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glGetImageTransformParameterivHP(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetImageTransformParameterfvHP(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
+    default void glImageTransformParameteriHP(int target, int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glImageTransformParameterfHP(int target, int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glImageTransformParameterivHP(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glImageTransformParameterfvHP(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetImageTransformParameterivHP(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetImageTransformParameterfvHP(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

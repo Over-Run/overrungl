@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,7 +33,16 @@ public interface GLARBSampleLocations {
     int GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_ARB = 0x9342;
     int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_ARB = 0x9343;
 
-    void glEvaluateDepthValuesARB();
-    void glFramebufferSampleLocationsfvARB(int target, int start, int count, @NativeType("const GLfloat *v") MemorySegment v);
-    void glNamedFramebufferSampleLocationsfvARB(int framebuffer, int start, int count, @NativeType("const GLfloat *v") MemorySegment v);
+    default void glEvaluateDepthValuesARB() {
+        throw new ContextException();
+    }
+
+    default void glFramebufferSampleLocationsfvARB(int target, int start, int count, @NativeType("const GLfloat *v") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glNamedFramebufferSampleLocationsfvARB(int framebuffer, int start, int count, @NativeType("const GLfloat *v") MemorySegment v) {
+        throw new ContextException();
+    }
+
 }

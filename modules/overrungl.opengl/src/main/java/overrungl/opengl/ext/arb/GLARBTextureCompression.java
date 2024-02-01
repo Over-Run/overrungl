@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -37,11 +36,32 @@ public interface GLARBTextureCompression {
     int GL_NUM_COMPRESSED_TEXTURE_FORMATS_ARB = 0x86A2;
     int GL_COMPRESSED_TEXTURE_FORMATS_ARB = 0x86A3;
 
-    void glCompressedTexImage3DARB(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, @NativeType("const void*") MemorySegment data);
-    void glCompressedTexImage2DARB(int target, int level, int internalFormat, int width, int height, int border, int imageSize, @NativeType("const void*") MemorySegment data);
-    void glCompressedTexImage1DARB(int target, int level, int internalFormat, int width, int border, int imageSize, @NativeType("const void*") MemorySegment data);
-    void glCompressedTexSubImage3DARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NativeType("const void*") MemorySegment data);
-    void glCompressedTexSubImage2DARB(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NativeType("const void*") MemorySegment data);
-    void glCompressedTexSubImage1DARB(int target, int level, int xoffset, int width, int format, int imageSize, @NativeType("const void*") MemorySegment data);
-    void glGetCompressedTexImageARB(int target, int level, @NativeType("void*") MemorySegment img);
+    default void glCompressedTexImage3DARB(int target, int level, int internalFormat, int width, int height, int depth, int border, int imageSize, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCompressedTexImage2DARB(int target, int level, int internalFormat, int width, int height, int border, int imageSize, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCompressedTexImage1DARB(int target, int level, int internalFormat, int width, int border, int imageSize, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCompressedTexSubImage3DARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int imageSize, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCompressedTexSubImage2DARB(int target, int level, int xoffset, int yoffset, int width, int height, int format, int imageSize, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glCompressedTexSubImage1DARB(int target, int level, int xoffset, int width, int format, int imageSize, @NativeType("const void*") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetCompressedTexImageARB(int target, int level, @NativeType("void*") MemorySegment img) {
+        throw new ContextException();
+    }
+
 }

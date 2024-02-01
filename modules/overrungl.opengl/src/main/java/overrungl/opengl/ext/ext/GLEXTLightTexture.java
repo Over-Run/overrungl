@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,7 +34,16 @@ public interface GLEXTLightTexture {
     int GL_TEXTURE_MATERIAL_FACE_EXT = 0x8351;
     int GL_TEXTURE_MATERIAL_PARAMETER_EXT = 0x8352;
 
-    void glApplyTextureEXT(int mode);
-    void glTextureLightEXT(int pname);
-    void glTextureMaterialEXT(int face, int mode);
+    default void glApplyTextureEXT(int mode) {
+        throw new ContextException();
+    }
+
+    default void glTextureLightEXT(int pname) {
+        throw new ContextException();
+    }
+
+    default void glTextureMaterialEXT(int face, int mode) {
+        throw new ContextException();
+    }
+
 }

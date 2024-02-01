@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -81,6 +80,12 @@ public interface GLEXTShaderImageLoadStore {
     int GL_ATOMIC_COUNTER_BARRIER_BIT_EXT = 0x00001000;
     int GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF;
 
-    void glBindImageTextureEXT(int index, int texture, int level, boolean layered, int layer, int access, int format);
-    void glMemoryBarrierEXT(int barriers);
+    default void glBindImageTextureEXT(int index, int texture, int level, boolean layered, int layer, int access, int format) {
+        throw new ContextException();
+    }
+
+    default void glMemoryBarrierEXT(int barriers) {
+        throw new ContextException();
+    }
+
 }

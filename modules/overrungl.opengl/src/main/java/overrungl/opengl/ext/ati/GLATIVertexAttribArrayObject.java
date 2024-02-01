@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,7 +25,16 @@ import java.lang.foreign.*;
  */
 public interface GLATIVertexAttribArrayObject {
 
-    void glVertexAttribArrayObjectATI(int index, int size, int type, boolean normalized, int stride, int buffer, int offset);
-    void glGetVertexAttribArrayObjectfvATI(int index, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetVertexAttribArrayObjectivATI(int index, int pname, @NativeType("GLint *") MemorySegment params);
+    default void glVertexAttribArrayObjectATI(int index, int size, int type, boolean normalized, int stride, int buffer, int offset) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribArrayObjectfvATI(int index, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribArrayObjectivATI(int index, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

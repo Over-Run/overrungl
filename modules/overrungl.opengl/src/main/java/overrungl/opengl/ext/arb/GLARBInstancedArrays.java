@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,5 +26,8 @@ import java.lang.foreign.*;
 public interface GLARBInstancedArrays {
     int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
 
-    void glVertexAttribDivisorARB(int index, int divisor);
+    default void glVertexAttribDivisorARB(int index, int divisor) {
+        throw new ContextException();
+    }
+
 }

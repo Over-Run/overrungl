@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,6 +29,12 @@ public interface GLNVConditionalRender {
     int GL_QUERY_BY_REGION_WAIT_NV = 0x8E15;
     int GL_QUERY_BY_REGION_NO_WAIT_NV = 0x8E16;
 
-    void glBeginConditionalRenderNV(int id, int mode);
-    void glEndConditionalRenderNV();
+    default void glBeginConditionalRenderNV(int id, int mode) {
+        throw new ContextException();
+    }
+
+    default void glEndConditionalRenderNV() {
+        throw new ContextException();
+    }
+
 }

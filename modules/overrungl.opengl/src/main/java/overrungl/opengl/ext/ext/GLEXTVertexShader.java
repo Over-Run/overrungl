@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -136,46 +135,172 @@ public interface GLEXTVertexShader {
     int GL_LOCAL_CONSTANT_VALUE_EXT = 0x87EC;
     int GL_LOCAL_CONSTANT_DATATYPE_EXT = 0x87ED;
 
-    void glBeginVertexShaderEXT();
-    void glEndVertexShaderEXT();
-    void glBindVertexShaderEXT(int id);
-    int glGenVertexShadersEXT(int range);
-    void glDeleteVertexShaderEXT(int id);
-    void glShaderOp1EXT(int op, int res, int arg1);
-    void glShaderOp2EXT(int op, int res, int arg1, int arg2);
-    void glShaderOp3EXT(int op, int res, int arg1, int arg2, int arg3);
-    void glSwizzleEXT(int res, int in, int outX, int outY, int outZ, int outW);
-    void glWriteMaskEXT(int res, int in, int outX, int outY, int outZ, int outW);
-    void glInsertComponentEXT(int res, int src, int num);
-    void glExtractComponentEXT(int res, int src, int num);
-    int glGenSymbolsEXT(int datatype, int storagetype, int range, int components);
-    void glSetInvariantEXT(int id, int type, @NativeType("const void *") MemorySegment addr);
-    void glSetLocalConstantEXT(int id, int type, @NativeType("const void *") MemorySegment addr);
-    void glVariantbvEXT(int id, @NativeType("const GLbyte *") MemorySegment addr);
-    void glVariantsvEXT(int id, @NativeType("const GLshort *") MemorySegment addr);
-    void glVariantivEXT(int id, @NativeType("const GLint *") MemorySegment addr);
-    void glVariantfvEXT(int id, @NativeType("const GLfloat *") MemorySegment addr);
-    void glVariantdvEXT(int id, @NativeType("const GLdouble *") MemorySegment addr);
-    void glVariantubvEXT(int id, @NativeType("const GLubyte *") MemorySegment addr);
-    void glVariantusvEXT(int id, @NativeType("const GLushort *") MemorySegment addr);
-    void glVariantuivEXT(int id, @NativeType("const GLuint *") MemorySegment addr);
-    void glVariantPointerEXT(int id, int type, int stride, @NativeType("const void *") MemorySegment addr);
-    void glEnableVariantClientStateEXT(int id);
-    void glDisableVariantClientStateEXT(int id);
-    int glBindLightParameterEXT(int light, int value);
-    int glBindMaterialParameterEXT(int face, int value);
-    int glBindTexGenParameterEXT(int unit, int coord, int value);
-    int glBindTextureUnitParameterEXT(int unit, int value);
-    int glBindParameterEXT(int value);
-    boolean glIsVariantEnabledEXT(int id, int cap);
-    void glGetVariantBooleanvEXT(int id, int value, @NativeType("GLboolean *") MemorySegment data);
-    void glGetVariantIntegervEXT(int id, int value, @NativeType("GLint *") MemorySegment data);
-    void glGetVariantFloatvEXT(int id, int value, @NativeType("GLfloat *") MemorySegment data);
-    void glGetVariantPointervEXT(int id, int value, @NativeType("void **") MemorySegment data);
-    void glGetInvariantBooleanvEXT(int id, int value, @NativeType("GLboolean *") MemorySegment data);
-    void glGetInvariantIntegervEXT(int id, int value, @NativeType("GLint *") MemorySegment data);
-    void glGetInvariantFloatvEXT(int id, int value, @NativeType("GLfloat *") MemorySegment data);
-    void glGetLocalConstantBooleanvEXT(int id, int value, @NativeType("GLboolean *") MemorySegment data);
-    void glGetLocalConstantIntegervEXT(int id, int value, @NativeType("GLint *") MemorySegment data);
-    void glGetLocalConstantFloatvEXT(int id, int value, @NativeType("GLfloat *") MemorySegment data);
+    default void glBeginVertexShaderEXT() {
+        throw new ContextException();
+    }
+
+    default void glEndVertexShaderEXT() {
+        throw new ContextException();
+    }
+
+    default void glBindVertexShaderEXT(int id) {
+        throw new ContextException();
+    }
+
+    default int glGenVertexShadersEXT(int range) {
+        throw new ContextException();
+    }
+
+    default void glDeleteVertexShaderEXT(int id) {
+        throw new ContextException();
+    }
+
+    default void glShaderOp1EXT(int op, int res, int arg1) {
+        throw new ContextException();
+    }
+
+    default void glShaderOp2EXT(int op, int res, int arg1, int arg2) {
+        throw new ContextException();
+    }
+
+    default void glShaderOp3EXT(int op, int res, int arg1, int arg2, int arg3) {
+        throw new ContextException();
+    }
+
+    default void glSwizzleEXT(int res, int in, int outX, int outY, int outZ, int outW) {
+        throw new ContextException();
+    }
+
+    default void glWriteMaskEXT(int res, int in, int outX, int outY, int outZ, int outW) {
+        throw new ContextException();
+    }
+
+    default void glInsertComponentEXT(int res, int src, int num) {
+        throw new ContextException();
+    }
+
+    default void glExtractComponentEXT(int res, int src, int num) {
+        throw new ContextException();
+    }
+
+    default int glGenSymbolsEXT(int datatype, int storagetype, int range, int components) {
+        throw new ContextException();
+    }
+
+    default void glSetInvariantEXT(int id, int type, @NativeType("const void *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glSetLocalConstantEXT(int id, int type, @NativeType("const void *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantbvEXT(int id, @NativeType("const GLbyte *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantsvEXT(int id, @NativeType("const GLshort *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantivEXT(int id, @NativeType("const GLint *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantfvEXT(int id, @NativeType("const GLfloat *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantdvEXT(int id, @NativeType("const GLdouble *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantubvEXT(int id, @NativeType("const GLubyte *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantusvEXT(int id, @NativeType("const GLushort *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantuivEXT(int id, @NativeType("const GLuint *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glVariantPointerEXT(int id, int type, int stride, @NativeType("const void *") MemorySegment addr) {
+        throw new ContextException();
+    }
+
+    default void glEnableVariantClientStateEXT(int id) {
+        throw new ContextException();
+    }
+
+    default void glDisableVariantClientStateEXT(int id) {
+        throw new ContextException();
+    }
+
+    default int glBindLightParameterEXT(int light, int value) {
+        throw new ContextException();
+    }
+
+    default int glBindMaterialParameterEXT(int face, int value) {
+        throw new ContextException();
+    }
+
+    default int glBindTexGenParameterEXT(int unit, int coord, int value) {
+        throw new ContextException();
+    }
+
+    default int glBindTextureUnitParameterEXT(int unit, int value) {
+        throw new ContextException();
+    }
+
+    default int glBindParameterEXT(int value) {
+        throw new ContextException();
+    }
+
+    default boolean glIsVariantEnabledEXT(int id, int cap) {
+        throw new ContextException();
+    }
+
+    default void glGetVariantBooleanvEXT(int id, int value, @NativeType("GLboolean *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetVariantIntegervEXT(int id, int value, @NativeType("GLint *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetVariantFloatvEXT(int id, int value, @NativeType("GLfloat *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetVariantPointervEXT(int id, int value, @NativeType("void **") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetInvariantBooleanvEXT(int id, int value, @NativeType("GLboolean *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetInvariantIntegervEXT(int id, int value, @NativeType("GLint *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetInvariantFloatvEXT(int id, int value, @NativeType("GLfloat *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetLocalConstantBooleanvEXT(int id, int value, @NativeType("GLboolean *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetLocalConstantIntegervEXT(int id, int value, @NativeType("GLint *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetLocalConstantFloatvEXT(int id, int value, @NativeType("GLfloat *") MemorySegment data) {
+        throw new ContextException();
+    }
+
 }

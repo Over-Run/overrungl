@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLNVFramebufferMultisampleCoverage {
     int GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E11;
     int GL_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E12;
 
-    void glRenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height);
+    default void glRenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
+        throw new ContextException();
+    }
+
 }

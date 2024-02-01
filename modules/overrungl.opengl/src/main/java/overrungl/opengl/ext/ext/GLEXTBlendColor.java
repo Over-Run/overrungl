@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,5 +30,8 @@ public interface GLEXTBlendColor {
     int GL_ONE_MINUS_CONSTANT_ALPHA_EXT = 0x8004;
     int GL_BLEND_COLOR_EXT = 0x8005;
 
-    void glBlendColorEXT(float red, float green, float blue, float alpha);
+    default void glBlendColorEXT(float red, float green, float blue, float alpha) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,11 +29,32 @@ public interface GLNVTransformFeedback2 {
     int GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE_NV = 0x8E24;
     int GL_TRANSFORM_FEEDBACK_BINDING_NV = 0x8E25;
 
-    void glBindTransformFeedbackNV(int target, int id);
-    void glDeleteTransformFeedbacksNV(int n, @NativeType("const GLuint *") MemorySegment ids);
-    void glGenTransformFeedbacksNV(int n, @NativeType("GLuint *") MemorySegment ids);
-    boolean glIsTransformFeedbackNV(int id);
-    void glPauseTransformFeedbackNV();
-    void glResumeTransformFeedbackNV();
-    void glDrawTransformFeedbackNV(int mode, int id);
+    default void glBindTransformFeedbackNV(int target, int id) {
+        throw new ContextException();
+    }
+
+    default void glDeleteTransformFeedbacksNV(int n, @NativeType("const GLuint *") MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    default void glGenTransformFeedbacksNV(int n, @NativeType("GLuint *") MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    default boolean glIsTransformFeedbackNV(int id) {
+        throw new ContextException();
+    }
+
+    default void glPauseTransformFeedbackNV() {
+        throw new ContextException();
+    }
+
+    default void glResumeTransformFeedbackNV() {
+        throw new ContextException();
+    }
+
+    default void glDrawTransformFeedbackNV(int mode, int id) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ibm;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLIBMStaticData {
     int GL_ALL_STATIC_DATA_IBM = 103060;
     int GL_STATIC_VERTEX_ARRAY_IBM = 103061;
 
-    void glFlushStaticDataIBM(int target);
+    default void glFlushStaticDataIBM(int target) {
+        throw new ContextException();
+    }
+
 }

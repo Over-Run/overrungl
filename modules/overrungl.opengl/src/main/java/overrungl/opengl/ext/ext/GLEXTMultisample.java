@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -43,6 +42,12 @@ public interface GLEXTMultisample {
     int GL_SAMPLE_PATTERN_EXT = 0x80AC;
     int GL_MULTISAMPLE_BIT_EXT = 0x20000000;
 
-    void glSampleMaskEXT(float value, boolean invert);
-    void glSamplePatternEXT(int pattern);
+    default void glSampleMaskEXT(float value, boolean invert) {
+        throw new ContextException();
+    }
+
+    default void glSamplePatternEXT(int pattern) {
+        throw new ContextException();
+    }
+
 }

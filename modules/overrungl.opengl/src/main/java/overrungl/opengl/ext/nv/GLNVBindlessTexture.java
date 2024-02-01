@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,17 +25,56 @@ import java.lang.foreign.*;
  */
 public interface GLNVBindlessTexture {
 
-    long glGetTextureHandleNV(int texture);
-    long glGetTextureSamplerHandleNV(int texture, int sampler);
-    void glMakeTextureHandleResidentNV(long handle);
-    void glMakeTextureHandleNonResidentNV(long handle);
-    long glGetImageHandleNV(int texture, int level, boolean layered, int layer, int format);
-    void glMakeImageHandleResidentNV(long handle, int access);
-    void glMakeImageHandleNonResidentNV(long handle);
-    void glUniformHandleui64NV(int location, long value);
-    void glUniformHandleui64vNV(int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glProgramUniformHandleui64NV(int program, int location, long value);
-    void glProgramUniformHandleui64vNV(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment values);
-    boolean glIsTextureHandleResidentNV(long handle);
-    boolean glIsImageHandleResidentNV(long handle);
+    default long glGetTextureHandleNV(int texture) {
+        throw new ContextException();
+    }
+
+    default long glGetTextureSamplerHandleNV(int texture, int sampler) {
+        throw new ContextException();
+    }
+
+    default void glMakeTextureHandleResidentNV(long handle) {
+        throw new ContextException();
+    }
+
+    default void glMakeTextureHandleNonResidentNV(long handle) {
+        throw new ContextException();
+    }
+
+    default long glGetImageHandleNV(int texture, int level, boolean layered, int layer, int format) {
+        throw new ContextException();
+    }
+
+    default void glMakeImageHandleResidentNV(long handle, int access) {
+        throw new ContextException();
+    }
+
+    default void glMakeImageHandleNonResidentNV(long handle) {
+        throw new ContextException();
+    }
+
+    default void glUniformHandleui64NV(int location, long value) {
+        throw new ContextException();
+    }
+
+    default void glUniformHandleui64vNV(int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniformHandleui64NV(int program, int location, long value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniformHandleui64vNV(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default boolean glIsTextureHandleResidentNV(long handle) {
+        throw new ContextException();
+    }
+
+    default boolean glIsImageHandleResidentNV(long handle) {
+        throw new ContextException();
+    }
+
 }

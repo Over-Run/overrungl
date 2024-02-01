@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,7 +28,16 @@ public interface GLATIElementArray {
     int GL_ELEMENT_ARRAY_TYPE_ATI = 0x8769;
     int GL_ELEMENT_ARRAY_POINTER_ATI = 0x876A;
 
-    void glElementPointerATI(int type, @NativeType("const void *") MemorySegment pointer);
-    void glDrawElementArrayATI(int mode, int count);
-    void glDrawRangeElementArrayATI(int mode, int start, int end, int count);
+    default void glElementPointerATI(int type, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glDrawElementArrayATI(int mode, int count) {
+        throw new ContextException();
+    }
+
+    default void glDrawRangeElementArrayATI(int mode, int start, int end, int count) {
+        throw new ContextException();
+    }
+
 }

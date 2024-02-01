@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,16 +33,52 @@ public interface GLATIVertexArrayObject {
     int GL_ARRAY_OBJECT_BUFFER_ATI = 0x8766;
     int GL_ARRAY_OBJECT_OFFSET_ATI = 0x8767;
 
-    int glNewObjectBufferATI(int size, @NativeType("const void *") MemorySegment pointer, int usage);
-    boolean glIsObjectBufferATI(int buffer);
-    void glUpdateObjectBufferATI(int buffer, int offset, int size, @NativeType("const void *") MemorySegment pointer, int preserve);
-    void glGetObjectBufferfvATI(int buffer, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetObjectBufferivATI(int buffer, int pname, @NativeType("GLint *") MemorySegment params);
-    void glFreeObjectBufferATI(int buffer);
-    void glArrayObjectATI(int array, int size, int type, int stride, int buffer, int offset);
-    void glGetArrayObjectfvATI(int array, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetArrayObjectivATI(int array, int pname, @NativeType("GLint *") MemorySegment params);
-    void glVariantArrayObjectATI(int id, int type, int stride, int buffer, int offset);
-    void glGetVariantArrayObjectfvATI(int id, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetVariantArrayObjectivATI(int id, int pname, @NativeType("GLint *") MemorySegment params);
+    default int glNewObjectBufferATI(int size, @NativeType("const void *") MemorySegment pointer, int usage) {
+        throw new ContextException();
+    }
+
+    default boolean glIsObjectBufferATI(int buffer) {
+        throw new ContextException();
+    }
+
+    default void glUpdateObjectBufferATI(int buffer, int offset, int size, @NativeType("const void *") MemorySegment pointer, int preserve) {
+        throw new ContextException();
+    }
+
+    default void glGetObjectBufferfvATI(int buffer, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetObjectBufferivATI(int buffer, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFreeObjectBufferATI(int buffer) {
+        throw new ContextException();
+    }
+
+    default void glArrayObjectATI(int array, int size, int type, int stride, int buffer, int offset) {
+        throw new ContextException();
+    }
+
+    default void glGetArrayObjectfvATI(int array, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetArrayObjectivATI(int array, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glVariantArrayObjectATI(int id, int type, int stride, int buffer, int offset) {
+        throw new ContextException();
+    }
+
+    default void glGetVariantArrayObjectfvATI(int id, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVariantArrayObjectivATI(int id, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

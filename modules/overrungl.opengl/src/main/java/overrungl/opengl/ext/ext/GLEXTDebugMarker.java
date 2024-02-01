@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,7 +25,16 @@ import java.lang.foreign.*;
  */
 public interface GLEXTDebugMarker {
 
-    void glInsertEventMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker);
-    void glPushGroupMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker);
-    void glPopGroupMarkerEXT();
+    default void glInsertEventMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker) {
+        throw new ContextException();
+    }
+
+    default void glPushGroupMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker) {
+        throw new ContextException();
+    }
+
+    default void glPopGroupMarkerEXT() {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,5 +31,8 @@ public interface GLNVQueryResource {
     int GL_QUERY_RESOURCE_RENDERBUFFER_NV = 0x9546;
     int GL_QUERY_RESOURCE_BUFFEROBJECT_NV = 0x9547;
 
-    int glQueryResourceNV(int queryType, int tagId, int count, @NativeType("GLint *") MemorySegment buffer);
+    default int glQueryResourceNV(int queryType, int tagId, int count, @NativeType("GLint *") MemorySegment buffer) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,7 +27,16 @@ public interface GLARBSparseBuffer {
     int GL_SPARSE_STORAGE_BIT_ARB = 0x0400;
     int GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8;
 
-    void glBufferPageCommitmentARB(int target, long offset, long size, boolean commit);
-    void glNamedBufferPageCommitmentEXT(int buffer, long offset, long size, boolean commit);
-    void glNamedBufferPageCommitmentARB(int buffer, long offset, long size, boolean commit);
+    default void glBufferPageCommitmentARB(int target, long offset, long size, boolean commit) {
+        throw new ContextException();
+    }
+
+    default void glNamedBufferPageCommitmentEXT(int buffer, long offset, long size, boolean commit) {
+        throw new ContextException();
+    }
+
+    default void glNamedBufferPageCommitmentARB(int buffer, long offset, long size, boolean commit) {
+        throw new ContextException();
+    }
+
 }

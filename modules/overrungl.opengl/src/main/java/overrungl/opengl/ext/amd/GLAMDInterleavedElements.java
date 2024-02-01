@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLAMDInterleavedElements {
     int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
     int GL_VERTEX_ID_SWIZZLE_AMD = 0x91A5;
 
-    void glVertexAttribParameteriAMD(int index, int pname, int param);
+    default void glVertexAttribParameteriAMD(int index, int pname, int param) {
+        throw new ContextException();
+    }
+
 }

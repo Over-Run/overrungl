@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLEXTBlendMinmax {
     int GL_FUNC_ADD_EXT = 0x8006;
     int GL_BLEND_EQUATION_EXT = 0x8009;
 
-    void glBlendEquationEXT(int mode);
+    default void glBlendEquationEXT(int mode) {
+        throw new ContextException();
+    }
+
 }

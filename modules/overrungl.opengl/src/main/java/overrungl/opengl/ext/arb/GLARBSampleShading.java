@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLARBSampleShading {
     int GL_SAMPLE_SHADING_ARB = 0x8C36;
     int GL_MIN_SAMPLE_SHADING_VALUE_ARB = 0x8C37;
 
-    void glMinSampleShadingARB(float value);
+    default void glMinSampleShadingARB(float value) {
+        throw new ContextException();
+    }
+
 }

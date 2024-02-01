@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,6 +29,12 @@ public interface GLSGISPointParameters {
     int GL_POINT_FADE_THRESHOLD_SIZE_SGIS = 0x8128;
     int GL_DISTANCE_ATTENUATION_SGIS = 0x8129;
 
-    void glPointParameterfSGIS(int pname, float param);
-    void glPointParameterfvSGIS(int pname, @NativeType("const GLfloat *") MemorySegment params);
+    default void glPointParameterfSGIS(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glPointParameterfvSGIS(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

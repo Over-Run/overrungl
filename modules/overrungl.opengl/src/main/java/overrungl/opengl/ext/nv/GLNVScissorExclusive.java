@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLNVScissorExclusive {
     int GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555;
     int GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556;
 
-    void glScissorExclusiveNV(int x, int y, int width, int height);
-    void glScissorExclusiveArrayvNV(int first, int count, @NativeType("const GLint *") MemorySegment v);
+    default void glScissorExclusiveNV(int x, int y, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glScissorExclusiveArrayvNV(int first, int count, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
 }

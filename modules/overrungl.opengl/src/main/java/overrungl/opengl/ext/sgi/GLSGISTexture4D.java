@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -36,6 +35,12 @@ public interface GLSGISTexture4D {
     int GL_MAX_4D_TEXTURE_SIZE_SGIS = 0x8138;
     int GL_TEXTURE_4D_BINDING_SGIS = 0x814F;
 
-    void glTexImage4DSGIS(int target, int level, int internalformat, int width, int height, int depth, int size4d, int border, int format, int type, @NativeType("const void *") MemorySegment pixels);
-    void glTexSubImage4DSGIS(int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, int format, int type, @NativeType("const void *") MemorySegment pixels);
+    default void glTexImage4DSGIS(int target, int level, int internalformat, int width, int height, int depth, int size4d, int border, int format, int type, @NativeType("const void *") MemorySegment pixels) {
+        throw new ContextException();
+    }
+
+    default void glTexSubImage4DSGIS(int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, int format, int type, @NativeType("const void *") MemorySegment pixels) {
+        throw new ContextException();
+    }
+
 }

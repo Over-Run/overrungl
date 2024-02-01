@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLNVFragmentCoverageToColor {
     int GL_FRAGMENT_COVERAGE_TO_COLOR_NV = 0x92DD;
     int GL_FRAGMENT_COVERAGE_COLOR_NV = 0x92DE;
 
-    void glFragmentCoverageColorNV(int color);
+    default void glFragmentCoverageColorNV(int color) {
+        throw new ContextException();
+    }
+
 }

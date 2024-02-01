@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLEXTCompiledVertexArray {
     int GL_ARRAY_ELEMENT_LOCK_FIRST_EXT = 0x81A8;
     int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
 
-    void glLockArraysEXT(int first, int count);
-    void glUnlockArraysEXT();
+    default void glLockArraysEXT(int first, int count) {
+        throw new ContextException();
+    }
+
+    default void glUnlockArraysEXT() {
+        throw new ContextException();
+    }
+
 }

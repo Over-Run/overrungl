@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -57,16 +56,52 @@ public interface GLNVTransformFeedback {
     int GL_SKIP_COMPONENTS2_NV = -5;
     int GL_SKIP_COMPONENTS1_NV = -6;
 
-    void glBeginTransformFeedbackNV(int primitiveMode);
-    void glEndTransformFeedbackNV();
-    void glTransformFeedbackAttribsNV(int count, @NativeType("const GLint *") MemorySegment attribs, int bufferMode);
-    void glBindBufferRangeNV(int target, int index, int buffer, long offset, long size);
-    void glBindBufferOffsetNV(int target, int index, int buffer, long offset);
-    void glBindBufferBaseNV(int target, int index, int buffer);
-    void glTransformFeedbackVaryingsNV(int program, int count, @NativeType("const GLint *") MemorySegment locations, int bufferMode);
-    void glActiveVaryingNV(int program, @NativeType("const GLchar *") MemorySegment name);
-    int glGetVaryingLocationNV(int program, @NativeType("const GLchar *") MemorySegment name);
-    void glGetActiveVaryingNV(int program, int index, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLsizei *") MemorySegment size, @NativeType("GLenum *") MemorySegment type, @NativeType("GLchar *") MemorySegment name);
-    void glGetTransformFeedbackVaryingNV(int program, int index, @NativeType("GLint *") MemorySegment location);
-    void glTransformFeedbackStreamAttribsNV(int count, @NativeType("const GLint *") MemorySegment attribs, int nbuffers, @NativeType("const GLint *") MemorySegment bufstreams, int bufferMode);
+    default void glBeginTransformFeedbackNV(int primitiveMode) {
+        throw new ContextException();
+    }
+
+    default void glEndTransformFeedbackNV() {
+        throw new ContextException();
+    }
+
+    default void glTransformFeedbackAttribsNV(int count, @NativeType("const GLint *") MemorySegment attribs, int bufferMode) {
+        throw new ContextException();
+    }
+
+    default void glBindBufferRangeNV(int target, int index, int buffer, long offset, long size) {
+        throw new ContextException();
+    }
+
+    default void glBindBufferOffsetNV(int target, int index, int buffer, long offset) {
+        throw new ContextException();
+    }
+
+    default void glBindBufferBaseNV(int target, int index, int buffer) {
+        throw new ContextException();
+    }
+
+    default void glTransformFeedbackVaryingsNV(int program, int count, @NativeType("const GLint *") MemorySegment locations, int bufferMode) {
+        throw new ContextException();
+    }
+
+    default void glActiveVaryingNV(int program, @NativeType("const GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default int glGetVaryingLocationNV(int program, @NativeType("const GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glGetActiveVaryingNV(int program, int index, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLsizei *") MemorySegment size, @NativeType("GLenum *") MemorySegment type, @NativeType("GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glGetTransformFeedbackVaryingNV(int program, int index, @NativeType("GLint *") MemorySegment location) {
+        throw new ContextException();
+    }
+
+    default void glTransformFeedbackStreamAttribsNV(int count, @NativeType("const GLint *") MemorySegment attribs, int nbuffers, @NativeType("const GLint *") MemorySegment bufstreams, int bufferMode) {
+        throw new ContextException();
+    }
+
 }

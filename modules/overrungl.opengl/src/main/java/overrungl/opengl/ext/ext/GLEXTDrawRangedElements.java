@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLEXTDrawRangedElements {
     int GL_MAX_ELEMENTS_VERTICES_EXT = 0x80E8;
     int GL_MAX_ELEMENTS_INDICES_EXT = 0x80E9;
 
-    void glDrawRangeElementsEXT(int mode, int start, int end, int count, int type, @NativeType("const void *") MemorySegment indices);
+    default void glDrawRangeElementsEXT(int mode, int start, int end, int count, int type, @NativeType("const void *") MemorySegment indices) {
+        throw new ContextException();
+    }
+
 }

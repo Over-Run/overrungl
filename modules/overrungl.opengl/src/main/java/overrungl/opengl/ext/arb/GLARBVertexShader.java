@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,7 +32,16 @@ public interface GLARBVertexShader {
     int GL_OBJECT_ACTIVE_ATTRIBUTES_ARB = 0x8B89;
     int GL_OBJECT_ACTIVE_ATTRIBUTE_MAX_LENGTH_ARB = 0x8B8A;
 
-    void glBindAttribLocationARB(int programObj, int index, @NativeType("const GLcharARB *") MemorySegment name);
-    void glGetActiveAttribARB(int programObj, int index, int maxLength, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLint *") MemorySegment size, @NativeType("GLenum *") MemorySegment type, @NativeType("GLcharARB *") MemorySegment name);
-    int glGetAttribLocationARB(int programObj, @NativeType("const GLcharARB *") MemorySegment name);
+    default void glBindAttribLocationARB(int programObj, int index, @NativeType("const GLcharARB *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glGetActiveAttribARB(int programObj, int index, int maxLength, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLint *") MemorySegment size, @NativeType("GLenum *") MemorySegment type, @NativeType("GLcharARB *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default int glGetAttribLocationARB(int programObj, @NativeType("const GLcharARB *") MemorySegment name) {
+        throw new ContextException();
+    }
+
 }

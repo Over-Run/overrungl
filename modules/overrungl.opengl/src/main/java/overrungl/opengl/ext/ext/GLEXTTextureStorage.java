@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -44,7 +43,16 @@ public interface GLEXTTextureStorage {
     int GL_R16F_EXT = 0x822D;
     int GL_RG16F_EXT = 0x822F;
 
-    void glTexStorage1DEXT(int target, int levels, int internalformat, int width);
-    void glTexStorage2DEXT(int target, int levels, int internalformat, int width, int height);
-    void glTexStorage3DEXT(int target, int levels, int internalformat, int width, int height, int depth);
+    default void glTexStorage1DEXT(int target, int levels, int internalformat, int width) {
+        throw new ContextException();
+    }
+
+    default void glTexStorage2DEXT(int target, int levels, int internalformat, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glTexStorage3DEXT(int target, int levels, int internalformat, int width, int height, int depth) {
+        throw new ContextException();
+    }
+
 }

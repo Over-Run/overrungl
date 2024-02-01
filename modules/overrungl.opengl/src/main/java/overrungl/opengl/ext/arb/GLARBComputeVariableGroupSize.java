@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLARBComputeVariableGroupSize {
     int GL_MAX_COMPUTE_VARIABLE_GROUP_SIZE_ARB = 0x9345;
     int GL_MAX_COMPUTE_FIXED_GROUP_SIZE_ARB = 0x91BF;
 
-    void glDispatchComputeGroupSizeARB(int num_groups_x, int num_groups_y, int num_groups_z, int group_size_x, int group_size_y, int group_size_z);
+    default void glDispatchComputeGroupSizeARB(int num_groups_x, int num_groups_y, int num_groups_z, int group_size_x, int group_size_y, int group_size_z) {
+        throw new ContextException();
+    }
+
 }

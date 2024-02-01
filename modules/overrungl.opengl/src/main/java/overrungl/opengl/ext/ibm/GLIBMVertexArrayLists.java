@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ibm;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -42,12 +41,36 @@ public interface GLIBMVertexArrayLists {
     int GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM = 103086;
     int GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM = 103087;
 
-    void glColorPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
-    void glSecondaryColorPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
-    void glEdgeFlagPointerListIBM(int stride, @NativeType("const GLboolean **") MemorySegment pointer, int ptrstride);
-    void glFogCoordPointerListIBM(int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
-    void glIndexPointerListIBM(int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
-    void glNormalPointerListIBM(int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
-    void glTexCoordPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
-    void glVertexPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride);
+    default void glColorPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColorPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glEdgeFlagPointerListIBM(int stride, @NativeType("const GLboolean **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glFogCoordPointerListIBM(int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glIndexPointerListIBM(int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glNormalPointerListIBM(int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glTexCoordPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
+    default void glVertexPointerListIBM(int size, int type, int stride, @NativeType("const void **") MemorySegment pointer, int ptrstride) {
+        throw new ContextException();
+    }
+
 }

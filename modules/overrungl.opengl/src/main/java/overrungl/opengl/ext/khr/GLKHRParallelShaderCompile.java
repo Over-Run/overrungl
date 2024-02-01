@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.khr;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLKHRParallelShaderCompile {
     int GL_MAX_SHADER_COMPILER_THREADS_KHR = 0x91B0;
     int GL_COMPLETION_STATUS_KHR = 0x91B1;
 
-    void glMaxShaderCompilerThreadsKHR(int count);
+    default void glMaxShaderCompilerThreadsKHR(int count) {
+        throw new ContextException();
+    }
+
 }

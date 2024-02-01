@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sun;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLSUNXConstantData {
     int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
     int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
 
-    void glFinishTextureSUNX();
+    default void glFinishTextureSUNX() {
+        throw new ContextException();
+    }
+
 }

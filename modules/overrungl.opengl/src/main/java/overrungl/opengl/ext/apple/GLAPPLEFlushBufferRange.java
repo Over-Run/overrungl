@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLAPPLEFlushBufferRange {
     int GL_BUFFER_SERIALIZED_MODIFY_APPLE = 0x8A12;
     int GL_BUFFER_FLUSHING_UNMAP_APPLE = 0x8A13;
 
-    void glBufferParameteriAPPLE(int target, int pname, int param);
-    void glFlushMappedBufferRangeAPPLE(int target, long offset, long size);
+    default void glBufferParameteriAPPLE(int target, int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glFlushMappedBufferRangeAPPLE(int target, long offset, long size) {
+        throw new ContextException();
+    }
+
 }

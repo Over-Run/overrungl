@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,6 +29,12 @@ public interface GLEXTPointParameters {
     int GL_POINT_FADE_THRESHOLD_SIZE_EXT = 0x8128;
     int GL_DISTANCE_ATTENUATION_EXT = 0x8129;
 
-    void glPointParameterfEXT(int pname, float param);
-    void glPointParameterfvEXT(int pname, @NativeType("const GLfloat *") MemorySegment params);
+    default void glPointParameterfEXT(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glPointParameterfvEXT(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

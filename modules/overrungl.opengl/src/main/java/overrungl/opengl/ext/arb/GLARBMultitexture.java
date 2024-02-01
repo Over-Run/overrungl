@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -61,38 +60,140 @@ public interface GLARBMultitexture {
     int GL_CLIENT_ACTIVE_TEXTURE_ARB = 0x84E1;
     int GL_MAX_TEXTURE_UNITS_ARB = 0x84E2;
 
-    void glActiveTextureARB(int texture);
-    void glClientActiveTextureARB(int texture);
-    void glMultiTexCoord1dARB(int target, double s);
-    void glMultiTexCoord1dvARB(int target, @NativeType("const GLdouble *") MemorySegment v);
-    void glMultiTexCoord1fARB(int target, float s);
-    void glMultiTexCoord1fvARB(int target, @NativeType("const GLfloat *") MemorySegment v);
-    void glMultiTexCoord1iARB(int target, int s);
-    void glMultiTexCoord1ivARB(int target, @NativeType("const GLint *") MemorySegment v);
-    void glMultiTexCoord1sARB(int target, short s);
-    void glMultiTexCoord1svARB(int target, @NativeType("const GLshort *") MemorySegment v);
-    void glMultiTexCoord2dARB(int target, double s, double t);
-    void glMultiTexCoord2dvARB(int target, @NativeType("const GLdouble *") MemorySegment v);
-    void glMultiTexCoord2fARB(int target, float s, float t);
-    void glMultiTexCoord2fvARB(int target, @NativeType("const GLfloat *") MemorySegment v);
-    void glMultiTexCoord2iARB(int target, int s, int t);
-    void glMultiTexCoord2ivARB(int target, @NativeType("const GLint *") MemorySegment v);
-    void glMultiTexCoord2sARB(int target, short s, short t);
-    void glMultiTexCoord2svARB(int target, @NativeType("const GLshort *") MemorySegment v);
-    void glMultiTexCoord3dARB(int target, double s, double t, double r);
-    void glMultiTexCoord3dvARB(int target, @NativeType("const GLdouble *") MemorySegment v);
-    void glMultiTexCoord3fARB(int target, float s, float t, float r);
-    void glMultiTexCoord3fvARB(int target, @NativeType("const GLfloat *") MemorySegment v);
-    void glMultiTexCoord3iARB(int target, int s, int t, int r);
-    void glMultiTexCoord3ivARB(int target, @NativeType("const GLint *") MemorySegment v);
-    void glMultiTexCoord3sARB(int target, short s, short t, short r);
-    void glMultiTexCoord3svARB(int target, @NativeType("const GLshort *") MemorySegment v);
-    void glMultiTexCoord4dARB(int target, double s, double t, double r, double q);
-    void glMultiTexCoord4dvARB(int target, @NativeType("const GLdouble *") MemorySegment v);
-    void glMultiTexCoord4fARB(int target, float s, float t, float r, float q);
-    void glMultiTexCoord4fvARB(int target, @NativeType("const GLfloat *") MemorySegment v);
-    void glMultiTexCoord4iARB(int target, int s, int t, int r, int q);
-    void glMultiTexCoord4ivARB(int target, @NativeType("const GLint *") MemorySegment v);
-    void glMultiTexCoord4sARB(int target, short s, short t, short r, short q);
-    void glMultiTexCoord4svARB(int target, @NativeType("const GLshort *") MemorySegment v);
+    default void glActiveTextureARB(int texture) {
+        throw new ContextException();
+    }
+
+    default void glClientActiveTextureARB(int texture) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1dARB(int target, double s) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1dvARB(int target, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1fARB(int target, float s) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1fvARB(int target, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1iARB(int target, int s) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1ivARB(int target, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1sARB(int target, short s) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord1svARB(int target, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2dARB(int target, double s, double t) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2dvARB(int target, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2fARB(int target, float s, float t) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2fvARB(int target, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2iARB(int target, int s, int t) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2ivARB(int target, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2sARB(int target, short s, short t) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord2svARB(int target, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3dARB(int target, double s, double t, double r) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3dvARB(int target, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3fARB(int target, float s, float t, float r) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3fvARB(int target, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3iARB(int target, int s, int t, int r) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3ivARB(int target, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3sARB(int target, short s, short t, short r) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord3svARB(int target, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4dARB(int target, double s, double t, double r, double q) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4dvARB(int target, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4fARB(int target, float s, float t, float r, float q) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4fvARB(int target, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4iARB(int target, int s, int t, int r, int q) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4ivARB(int target, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4sARB(int target, short s, short t, short r, short q) {
+        throw new ContextException();
+    }
+
+    default void glMultiTexCoord4svARB(int target, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTGpuProgramParameters {
 
-    void glProgramEnvParameters4fvEXT(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment params);
-    void glProgramLocalParameters4fvEXT(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment params);
+    default void glProgramEnvParameters4fvEXT(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameters4fvEXT(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

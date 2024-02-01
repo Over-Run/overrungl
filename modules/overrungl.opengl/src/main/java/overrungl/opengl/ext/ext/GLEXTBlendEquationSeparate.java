@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLEXTBlendEquationSeparate {
     int GL_BLEND_EQUATION_RGB_EXT = 0x8009;
     int GL_BLEND_EQUATION_ALPHA_EXT = 0x883D;
 
-    void glBlendEquationSeparateEXT(int modeRGB, int modeAlpha);
+    default void glBlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
+        throw new ContextException();
+    }
+
 }

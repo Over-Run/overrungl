@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -43,5 +42,8 @@ public interface GLARBDrawBuffers {
     int GL_DRAW_BUFFER14_ARB = 0x8833;
     int GL_DRAW_BUFFER15_ARB = 0x8834;
 
-    void glDrawBuffersARB(int n, @NativeType("const GLenum *") MemorySegment bufs);
+    default void glDrawBuffersARB(int n, @NativeType("const GLenum *") MemorySegment bufs) {
+        throw new ContextException();
+    }
+
 }

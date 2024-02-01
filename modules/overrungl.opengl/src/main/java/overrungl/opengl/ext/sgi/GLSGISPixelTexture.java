@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,10 +29,28 @@ public interface GLSGISPixelTexture {
     int GL_PIXEL_FRAGMENT_ALPHA_SOURCE_SGIS = 0x8355;
     int GL_PIXEL_GROUP_COLOR_SGIS = 0x8356;
 
-    void glPixelTexGenParameteriSGIS(int pname, int param);
-    void glPixelTexGenParameterivSGIS(int pname, @NativeType("const GLint *") MemorySegment params);
-    void glPixelTexGenParameterfSGIS(int pname, float param);
-    void glPixelTexGenParameterfvSGIS(int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glGetPixelTexGenParameterivSGIS(int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetPixelTexGenParameterfvSGIS(int pname, @NativeType("GLfloat *") MemorySegment params);
+    default void glPixelTexGenParameteriSGIS(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glPixelTexGenParameterivSGIS(int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glPixelTexGenParameterfSGIS(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glPixelTexGenParameterfvSGIS(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetPixelTexGenParameterivSGIS(int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetPixelTexGenParameterfvSGIS(int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

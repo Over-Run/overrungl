@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLARBES32Compatibility {
     int GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB = 0x9381;
     int GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB = 0x9382;
 
-    void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW);
+    default void glPrimitiveBoundingBoxARB(float minX, float minY, float minZ, float minW, float maxX, float maxY, float maxZ, float maxW) {
+        throw new ContextException();
+    }
+
 }

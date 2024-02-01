@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTDrawInstanced {
 
-    void glDrawArraysInstancedEXT(int mode, int start, int count, int primcount);
-    void glDrawElementsInstancedEXT(int mode, int count, int type, @NativeType("const void *") MemorySegment indices, int primcount);
+    default void glDrawArraysInstancedEXT(int mode, int start, int count, int primcount) {
+        throw new ContextException();
+    }
+
+    default void glDrawElementsInstancedEXT(int mode, int count, int type, @NativeType("const void *") MemorySegment indices, int primcount) {
+        throw new ContextException();
+    }
+
 }

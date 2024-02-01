@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,9 +25,24 @@ import java.lang.foreign.*;
  */
 public interface GLNVDrawVulkanImage {
 
-    void glDrawVkImageNV(long vkImage, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1);
-    @NativeType("GLVULKANPROCNV") MemorySegment glGetVkProcAddrNV(@NativeType("const GLchar *") MemorySegment name);
-    void glWaitVkSemaphoreNV(long vkSemaphore);
-    void glSignalVkSemaphoreNV(long vkSemaphore);
-    void glSignalVkFenceNV(long vkFence);
+    default void glDrawVkImageNV(long vkImage, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
+        throw new ContextException();
+    }
+
+    @NativeType("GLVULKANPROCNV") default MemorySegment glGetVkProcAddrNV(@NativeType("const GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glWaitVkSemaphoreNV(long vkSemaphore) {
+        throw new ContextException();
+    }
+
+    default void glSignalVkSemaphoreNV(long vkSemaphore) {
+        throw new ContextException();
+    }
+
+    default void glSignalVkFenceNV(long vkFence) {
+        throw new ContextException();
+    }
+
 }

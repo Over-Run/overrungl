@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sun;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLSUNMeshArray {
     int GL_QUAD_MESH_SUN = 0x8614;
     int GL_TRIANGLE_MESH_SUN = 0x8615;
 
-    void glDrawMeshArraysSUN(int mode, int first, int count, int width);
+    default void glDrawMeshArraysSUN(int mode, int first, int count, int width) {
+        throw new ContextException();
+    }
+
 }

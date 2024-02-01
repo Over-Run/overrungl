@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,6 +34,12 @@ public interface GLEXTMemoryObjectWin32 {
     int GL_HANDLE_TYPE_D3D11_IMAGE_EXT = 0x958B;
     int GL_HANDLE_TYPE_D3D11_IMAGE_KMT_EXT = 0x958C;
 
-    void glImportMemoryWin32HandleEXT(int memory, long size, int handleType, @NativeType("void *") MemorySegment handle);
-    void glImportMemoryWin32NameEXT(int memory, long size, int handleType, @NativeType("const void *") MemorySegment name);
+    default void glImportMemoryWin32HandleEXT(int memory, long size, int handleType, @NativeType("void *") MemorySegment handle) {
+        throw new ContextException();
+    }
+
+    default void glImportMemoryWin32NameEXT(int memory, long size, int handleType, @NativeType("const void *") MemorySegment name) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,7 +28,16 @@ public interface GLNVGeometryProgram4 {
     int GL_MAX_PROGRAM_OUTPUT_VERTICES_NV = 0x8C27;
     int GL_MAX_PROGRAM_TOTAL_OUTPUT_COMPONENTS_NV = 0x8C28;
 
-    void glProgramVertexLimitNV(int target, int limit);
-    void glFramebufferTextureEXT(int target, int attachment, int texture, int level);
-    void glFramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face);
+    default void glProgramVertexLimitNV(int target, int limit) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTextureEXT(int target, int attachment, int texture, int level) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
+        throw new ContextException();
+    }
+
 }

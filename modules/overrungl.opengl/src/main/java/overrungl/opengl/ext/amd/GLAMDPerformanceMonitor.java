@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,15 +32,48 @@ public interface GLAMDPerformanceMonitor {
     int GL_PERFMON_RESULT_SIZE_AMD = 0x8BC5;
     int GL_PERFMON_RESULT_AMD = 0x8BC6;
 
-    void glGetPerfMonitorGroupsAMD(@NativeType("GLint *") MemorySegment numGroups, int groupsSize, @NativeType("GLuint *") MemorySegment groups);
-    void glGetPerfMonitorCountersAMD(int group, @NativeType("GLint *") MemorySegment numCounters, @NativeType("GLint *") MemorySegment maxActiveCounters, int counterSize, @NativeType("GLuint *") MemorySegment counters);
-    void glGetPerfMonitorGroupStringAMD(int group, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLchar *") MemorySegment groupString);
-    void glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLchar *") MemorySegment counterString);
-    void glGetPerfMonitorCounterInfoAMD(int group, int counter, int pname, @NativeType("void *") MemorySegment data);
-    void glGenPerfMonitorsAMD(int n, @NativeType("GLuint *") MemorySegment monitors);
-    void glDeletePerfMonitorsAMD(int n, @NativeType("GLuint *") MemorySegment monitors);
-    void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, @NativeType("GLuint *") MemorySegment counterList);
-    void glBeginPerfMonitorAMD(int monitor);
-    void glEndPerfMonitorAMD(int monitor);
-    void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, @NativeType("GLuint *") MemorySegment data, @NativeType("GLint *") MemorySegment bytesWritten);
+    default void glGetPerfMonitorGroupsAMD(@NativeType("GLint *") MemorySegment numGroups, int groupsSize, @NativeType("GLuint *") MemorySegment groups) {
+        throw new ContextException();
+    }
+
+    default void glGetPerfMonitorCountersAMD(int group, @NativeType("GLint *") MemorySegment numCounters, @NativeType("GLint *") MemorySegment maxActiveCounters, int counterSize, @NativeType("GLuint *") MemorySegment counters) {
+        throw new ContextException();
+    }
+
+    default void glGetPerfMonitorGroupStringAMD(int group, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLchar *") MemorySegment groupString) {
+        throw new ContextException();
+    }
+
+    default void glGetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLchar *") MemorySegment counterString) {
+        throw new ContextException();
+    }
+
+    default void glGetPerfMonitorCounterInfoAMD(int group, int counter, int pname, @NativeType("void *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGenPerfMonitorsAMD(int n, @NativeType("GLuint *") MemorySegment monitors) {
+        throw new ContextException();
+    }
+
+    default void glDeletePerfMonitorsAMD(int n, @NativeType("GLuint *") MemorySegment monitors) {
+        throw new ContextException();
+    }
+
+    default void glSelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, @NativeType("GLuint *") MemorySegment counterList) {
+        throw new ContextException();
+    }
+
+    default void glBeginPerfMonitorAMD(int monitor) {
+        throw new ContextException();
+    }
+
+    default void glEndPerfMonitorAMD(int monitor) {
+        throw new ContextException();
+    }
+
+    default void glGetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, @NativeType("GLuint *") MemorySegment data, @NativeType("GLint *") MemorySegment bytesWritten) {
+        throw new ContextException();
+    }
+
 }

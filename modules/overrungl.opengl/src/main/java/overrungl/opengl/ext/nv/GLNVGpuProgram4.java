@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,20 +33,68 @@ public interface GLNVGpuProgram4 {
     int GL_MAX_PROGRAM_GENERIC_ATTRIBS_NV = 0x8DA5;
     int GL_MAX_PROGRAM_GENERIC_RESULTS_NV = 0x8DA6;
 
-    void glProgramLocalParameterI4iNV(int target, int index, int x, int y, int z, int w);
-    void glProgramLocalParameterI4ivNV(int target, int index, @NativeType("const GLint *") MemorySegment params);
-    void glProgramLocalParametersI4ivNV(int target, int index, int count, @NativeType("const GLint *") MemorySegment params);
-    void glProgramLocalParameterI4uiNV(int target, int index, int x, int y, int z, int w);
-    void glProgramLocalParameterI4uivNV(int target, int index, @NativeType("const GLuint *") MemorySegment params);
-    void glProgramLocalParametersI4uivNV(int target, int index, int count, @NativeType("const GLuint *") MemorySegment params);
-    void glProgramEnvParameterI4iNV(int target, int index, int x, int y, int z, int w);
-    void glProgramEnvParameterI4ivNV(int target, int index, @NativeType("const GLint *") MemorySegment params);
-    void glProgramEnvParametersI4ivNV(int target, int index, int count, @NativeType("const GLint *") MemorySegment params);
-    void glProgramEnvParameterI4uiNV(int target, int index, int x, int y, int z, int w);
-    void glProgramEnvParameterI4uivNV(int target, int index, @NativeType("const GLuint *") MemorySegment params);
-    void glProgramEnvParametersI4uivNV(int target, int index, int count, @NativeType("const GLuint *") MemorySegment params);
-    void glGetProgramLocalParameterIivNV(int target, int index, @NativeType("GLint *") MemorySegment params);
-    void glGetProgramLocalParameterIuivNV(int target, int index, @NativeType("GLuint *") MemorySegment params);
-    void glGetProgramEnvParameterIivNV(int target, int index, @NativeType("GLint *") MemorySegment params);
-    void glGetProgramEnvParameterIuivNV(int target, int index, @NativeType("GLuint *") MemorySegment params);
+    default void glProgramLocalParameterI4iNV(int target, int index, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameterI4ivNV(int target, int index, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParametersI4ivNV(int target, int index, int count, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameterI4uiNV(int target, int index, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParameterI4uivNV(int target, int index, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramLocalParametersI4uivNV(int target, int index, int count, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameterI4iNV(int target, int index, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameterI4ivNV(int target, int index, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParametersI4ivNV(int target, int index, int count, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameterI4uiNV(int target, int index, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParameterI4uivNV(int target, int index, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramEnvParametersI4uivNV(int target, int index, int count, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramLocalParameterIivNV(int target, int index, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramLocalParameterIuivNV(int target, int index, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramEnvParameterIivNV(int target, int index, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramEnvParameterIuivNV(int target, int index, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

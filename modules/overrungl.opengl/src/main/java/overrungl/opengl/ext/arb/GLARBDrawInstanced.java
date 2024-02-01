@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLARBDrawInstanced {
 
-    void glDrawArraysInstancedARB(int mode, int first, int count, int primcount);
-    void glDrawElementsInstancedARB(int mode, int count, int type, @NativeType("const void *") MemorySegment indices, int primcount);
+    default void glDrawArraysInstancedARB(int mode, int first, int count, int primcount) {
+        throw new ContextException();
+    }
+
+    default void glDrawElementsInstancedARB(int mode, int count, int type, @NativeType("const void *") MemorySegment indices, int primcount) {
+        throw new ContextException();
+    }
+
 }

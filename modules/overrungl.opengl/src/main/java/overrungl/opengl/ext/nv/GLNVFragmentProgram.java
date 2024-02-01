@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,10 +31,28 @@ public interface GLNVFragmentProgram {
     int GL_FRAGMENT_PROGRAM_BINDING_NV = 0x8873;
     int GL_PROGRAM_ERROR_STRING_NV = 0x8874;
 
-    void glProgramNamedParameter4fNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, float x, float y, float z, float w);
-    void glProgramNamedParameter4fvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("const GLfloat *") MemorySegment v);
-    void glProgramNamedParameter4dNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, double x, double y, double z, double w);
-    void glProgramNamedParameter4dvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("const GLdouble *") MemorySegment v);
-    void glGetProgramNamedParameterfvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("GLfloat *") MemorySegment params);
-    void glGetProgramNamedParameterdvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("GLdouble *") MemorySegment params);
+    default void glProgramNamedParameter4fNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, float x, float y, float z, float w) {
+        throw new ContextException();
+    }
+
+    default void glProgramNamedParameter4fvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glProgramNamedParameter4dNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glProgramNamedParameter4dvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramNamedParameterfvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramNamedParameterdvNV(int id, int len, @NativeType("const GLubyte *") MemorySegment name, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

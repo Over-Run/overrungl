@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLEXTIndexMaterial {
     int GL_INDEX_MATERIAL_PARAMETER_EXT = 0x81B9;
     int GL_INDEX_MATERIAL_FACE_EXT = 0x81BA;
 
-    void glIndexMaterialEXT(int face, int mode);
+    default void glIndexMaterialEXT(int face, int mode) {
+        throw new ContextException();
+    }
+
 }

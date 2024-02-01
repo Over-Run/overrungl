@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -37,23 +36,80 @@ public interface GLEXTMemoryObject {
     int GL_DRIVER_UUID_EXT = 0x9598;
     int GL_UUID_SIZE_EXT = 16;
 
-    void glGetUnsignedBytevEXT(int pname, @NativeType("GLubyte *") MemorySegment data);
-    void glGetUnsignedBytei_vEXT(int target, int index, @NativeType("GLubyte *") MemorySegment data);
-    void glDeleteMemoryObjectsEXT(int n, @NativeType("const GLuint *") MemorySegment memoryObjects);
-    boolean glIsMemoryObjectEXT(int memoryObject);
-    void glCreateMemoryObjectsEXT(int n, @NativeType("GLuint *") MemorySegment memoryObjects);
-    void glMemoryObjectParameterivEXT(int memoryObject, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glGetMemoryObjectParameterivEXT(int memoryObject, int pname, @NativeType("GLint *") MemorySegment params);
-    void glTexStorageMem2DEXT(int target, int levels, int internalFormat, int width, int height, int memory, long offset);
-    void glTexStorageMem2DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset);
-    void glTexStorageMem3DEXT(int target, int levels, int internalFormat, int width, int height, int depth, int memory, long offset);
-    void glTexStorageMem3DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset);
-    void glBufferStorageMemEXT(int target, long size, int memory, long offset);
-    void glTextureStorageMem2DEXT(int texture, int levels, int internalFormat, int width, int height, int memory, long offset);
-    void glTextureStorageMem2DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset);
-    void glTextureStorageMem3DEXT(int texture, int levels, int internalFormat, int width, int height, int depth, int memory, long offset);
-    void glTextureStorageMem3DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset);
-    void glNamedBufferStorageMemEXT(int buffer, long size, int memory, long offset);
-    void glTexStorageMem1DEXT(int target, int levels, int internalFormat, int width, int memory, long offset);
-    void glTextureStorageMem1DEXT(int texture, int levels, int internalFormat, int width, int memory, long offset);
+    default void glGetUnsignedBytevEXT(int pname, @NativeType("GLubyte *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glGetUnsignedBytei_vEXT(int target, int index, @NativeType("GLubyte *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glDeleteMemoryObjectsEXT(int n, @NativeType("const GLuint *") MemorySegment memoryObjects) {
+        throw new ContextException();
+    }
+
+    default boolean glIsMemoryObjectEXT(int memoryObject) {
+        throw new ContextException();
+    }
+
+    default void glCreateMemoryObjectsEXT(int n, @NativeType("GLuint *") MemorySegment memoryObjects) {
+        throw new ContextException();
+    }
+
+    default void glMemoryObjectParameterivEXT(int memoryObject, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMemoryObjectParameterivEXT(int memoryObject, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glTexStorageMem2DEXT(int target, int levels, int internalFormat, int width, int height, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTexStorageMem2DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTexStorageMem3DEXT(int target, int levels, int internalFormat, int width, int height, int depth, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTexStorageMem3DMultisampleEXT(int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glBufferStorageMemEXT(int target, long size, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTextureStorageMem2DEXT(int texture, int levels, int internalFormat, int width, int height, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTextureStorageMem2DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTextureStorageMem3DEXT(int texture, int levels, int internalFormat, int width, int height, int depth, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTextureStorageMem3DMultisampleEXT(int texture, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glNamedBufferStorageMemEXT(int buffer, long size, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTexStorageMem1DEXT(int target, int levels, int internalFormat, int width, int memory, long offset) {
+        throw new ContextException();
+    }
+
+    default void glTextureStorageMem1DEXT(int texture, int levels, int internalFormat, int width, int memory, long offset) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -42,11 +41,32 @@ public interface GLSGIColorTable {
     int GL_COLOR_TABLE_LUMINANCE_SIZE_SGI = 0x80DE;
     int GL_COLOR_TABLE_INTENSITY_SIZE_SGI = 0x80DF;
 
-    void glColorTableSGI(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment table);
-    void glColorTableParameterfvSGI(int target, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glColorTableParameterivSGI(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glCopyColorTableSGI(int target, int internalformat, int x, int y, int width);
-    void glGetColorTableSGI(int target, int format, int type, @NativeType("void *") MemorySegment table);
-    void glGetColorTableParameterfvSGI(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetColorTableParameterivSGI(int target, int pname, @NativeType("GLint *") MemorySegment params);
+    default void glColorTableSGI(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment table) {
+        throw new ContextException();
+    }
+
+    default void glColorTableParameterfvSGI(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glColorTableParameterivSGI(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCopyColorTableSGI(int target, int internalformat, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableSGI(int target, int format, int type, @NativeType("void *") MemorySegment table) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableParameterfvSGI(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetColorTableParameterivSGI(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

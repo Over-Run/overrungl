@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -46,22 +45,76 @@ public interface GLSGIXFragmentLighting {
     int GL_FRAGMENT_LIGHT6_SGIX = 0x8412;
     int GL_FRAGMENT_LIGHT7_SGIX = 0x8413;
 
-    void glFragmentColorMaterialSGIX(int face, int mode);
-    void glFragmentLightfSGIX(int light, int pname, float param);
-    void glFragmentLightfvSGIX(int light, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glFragmentLightiSGIX(int light, int pname, int param);
-    void glFragmentLightivSGIX(int light, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glFragmentLightModelfSGIX(int pname, float param);
-    void glFragmentLightModelfvSGIX(int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glFragmentLightModeliSGIX(int pname, int param);
-    void glFragmentLightModelivSGIX(int pname, @NativeType("const GLint *") MemorySegment params);
-    void glFragmentMaterialfSGIX(int face, int pname, float param);
-    void glFragmentMaterialfvSGIX(int face, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glFragmentMaterialiSGIX(int face, int pname, int param);
-    void glFragmentMaterialivSGIX(int face, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glGetFragmentLightfvSGIX(int light, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetFragmentLightivSGIX(int light, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetFragmentMaterialfvSGIX(int face, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetFragmentMaterialivSGIX(int face, int pname, @NativeType("GLint *") MemorySegment params);
-    void glLightEnviSGIX(int pname, int param);
+    default void glFragmentColorMaterialSGIX(int face, int mode) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightfSGIX(int light, int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightfvSGIX(int light, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightiSGIX(int light, int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightivSGIX(int light, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightModelfSGIX(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightModelfvSGIX(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightModeliSGIX(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glFragmentLightModelivSGIX(int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFragmentMaterialfSGIX(int face, int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glFragmentMaterialfvSGIX(int face, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFragmentMaterialiSGIX(int face, int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glFragmentMaterialivSGIX(int face, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetFragmentLightfvSGIX(int light, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetFragmentLightivSGIX(int light, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetFragmentMaterialfvSGIX(int face, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetFragmentMaterialivSGIX(int face, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glLightEnviSGIX(int pname, int param) {
+        throw new ContextException();
+    }
+
 }

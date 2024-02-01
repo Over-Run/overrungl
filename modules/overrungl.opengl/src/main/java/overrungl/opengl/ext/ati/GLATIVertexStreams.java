@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -36,49 +35,184 @@ public interface GLATIVertexStreams {
     int GL_VERTEX_STREAM7_ATI = 0x8773;
     int GL_VERTEX_SOURCE_ATI = 0x8774;
 
-    void glVertexStream1sATI(int stream, short x);
-    void glVertexStream1svATI(int stream, @NativeType("const GLshort *") MemorySegment coords);
-    void glVertexStream1iATI(int stream, int x);
-    void glVertexStream1ivATI(int stream, @NativeType("const GLint *") MemorySegment coords);
-    void glVertexStream1fATI(int stream, float x);
-    void glVertexStream1fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords);
-    void glVertexStream1dATI(int stream, double x);
-    void glVertexStream1dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords);
-    void glVertexStream2sATI(int stream, short x, short y);
-    void glVertexStream2svATI(int stream, @NativeType("const GLshort *") MemorySegment coords);
-    void glVertexStream2iATI(int stream, int x, int y);
-    void glVertexStream2ivATI(int stream, @NativeType("const GLint *") MemorySegment coords);
-    void glVertexStream2fATI(int stream, float x, float y);
-    void glVertexStream2fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords);
-    void glVertexStream2dATI(int stream, double x, double y);
-    void glVertexStream2dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords);
-    void glVertexStream3sATI(int stream, short x, short y, short z);
-    void glVertexStream3svATI(int stream, @NativeType("const GLshort *") MemorySegment coords);
-    void glVertexStream3iATI(int stream, int x, int y, int z);
-    void glVertexStream3ivATI(int stream, @NativeType("const GLint *") MemorySegment coords);
-    void glVertexStream3fATI(int stream, float x, float y, float z);
-    void glVertexStream3fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords);
-    void glVertexStream3dATI(int stream, double x, double y, double z);
-    void glVertexStream3dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords);
-    void glVertexStream4sATI(int stream, short x, short y, short z, short w);
-    void glVertexStream4svATI(int stream, @NativeType("const GLshort *") MemorySegment coords);
-    void glVertexStream4iATI(int stream, int x, int y, int z, int w);
-    void glVertexStream4ivATI(int stream, @NativeType("const GLint *") MemorySegment coords);
-    void glVertexStream4fATI(int stream, float x, float y, float z, float w);
-    void glVertexStream4fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords);
-    void glVertexStream4dATI(int stream, double x, double y, double z, double w);
-    void glVertexStream4dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords);
-    void glNormalStream3bATI(int stream, byte nx, byte ny, byte nz);
-    void glNormalStream3bvATI(int stream, @NativeType("const GLbyte *") MemorySegment coords);
-    void glNormalStream3sATI(int stream, short nx, short ny, short nz);
-    void glNormalStream3svATI(int stream, @NativeType("const GLshort *") MemorySegment coords);
-    void glNormalStream3iATI(int stream, int nx, int ny, int nz);
-    void glNormalStream3ivATI(int stream, @NativeType("const GLint *") MemorySegment coords);
-    void glNormalStream3fATI(int stream, float nx, float ny, float nz);
-    void glNormalStream3fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords);
-    void glNormalStream3dATI(int stream, double nx, double ny, double nz);
-    void glNormalStream3dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords);
-    void glClientActiveVertexStreamATI(int stream);
-    void glVertexBlendEnviATI(int pname, int param);
-    void glVertexBlendEnvfATI(int pname, float param);
+    default void glVertexStream1sATI(int stream, short x) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1svATI(int stream, @NativeType("const GLshort *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1iATI(int stream, int x) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1ivATI(int stream, @NativeType("const GLint *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1fATI(int stream, float x) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1dATI(int stream, double x) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream1dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2sATI(int stream, short x, short y) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2svATI(int stream, @NativeType("const GLshort *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2iATI(int stream, int x, int y) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2ivATI(int stream, @NativeType("const GLint *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2fATI(int stream, float x, float y) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2dATI(int stream, double x, double y) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream2dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3sATI(int stream, short x, short y, short z) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3svATI(int stream, @NativeType("const GLshort *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3iATI(int stream, int x, int y, int z) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3ivATI(int stream, @NativeType("const GLint *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3fATI(int stream, float x, float y, float z) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3dATI(int stream, double x, double y, double z) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream3dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4sATI(int stream, short x, short y, short z, short w) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4svATI(int stream, @NativeType("const GLshort *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4iATI(int stream, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4ivATI(int stream, @NativeType("const GLint *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4fATI(int stream, float x, float y, float z, float w) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4dATI(int stream, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glVertexStream4dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3bATI(int stream, byte nx, byte ny, byte nz) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3bvATI(int stream, @NativeType("const GLbyte *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3sATI(int stream, short nx, short ny, short nz) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3svATI(int stream, @NativeType("const GLshort *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3iATI(int stream, int nx, int ny, int nz) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3ivATI(int stream, @NativeType("const GLint *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3fATI(int stream, float nx, float ny, float nz) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3fvATI(int stream, @NativeType("const GLfloat *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3dATI(int stream, double nx, double ny, double nz) {
+        throw new ContextException();
+    }
+
+    default void glNormalStream3dvATI(int stream, @NativeType("const GLdouble *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glClientActiveVertexStreamATI(int stream) {
+        throw new ContextException();
+    }
+
+    default void glVertexBlendEnviATI(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glVertexBlendEnvfATI(int pname, float param) {
+        throw new ContextException();
+    }
+
 }

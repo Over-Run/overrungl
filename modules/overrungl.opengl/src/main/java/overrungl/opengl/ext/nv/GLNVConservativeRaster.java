@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLNVConservativeRaster {
     int GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV = 0x9348;
     int GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV = 0x9349;
 
-    void glSubpixelPrecisionBiasNV(int xbits, int ybits);
+    default void glSubpixelPrecisionBiasNV(int xbits, int ybits) {
+        throw new ContextException();
+    }
+
 }

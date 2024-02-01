@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,8 +31,20 @@ public interface GLSGIXPolynomialFFD {
     int GL_DEFORMATIONS_MASK_SGIX = 0x8196;
     int GL_MAX_DEFORMATION_ORDER_SGIX = 0x8197;
 
-    void glDeformationMap3dSGIX(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, @NativeType("const GLdouble *") MemorySegment points);
-    void glDeformationMap3fSGIX(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, @NativeType("const GLfloat *") MemorySegment points);
-    void glDeformSGIX(int mask);
-    void glLoadIdentityDeformationMapSGIX(int mask);
+    default void glDeformationMap3dSGIX(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double w1, double w2, int wstride, int worder, @NativeType("const GLdouble *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glDeformationMap3fSGIX(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float w1, float w2, int wstride, int worder, @NativeType("const GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glDeformSGIX(int mask) {
+        throw new ContextException();
+    }
+
+    default void glLoadIdentityDeformationMapSGIX(int mask) {
+        throw new ContextException();
+    }
+
 }

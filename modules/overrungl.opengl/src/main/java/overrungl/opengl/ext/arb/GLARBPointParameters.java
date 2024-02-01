@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,6 +29,12 @@ public interface GLARBPointParameters {
     int GL_POINT_FADE_THRESHOLD_SIZE_ARB = 0x8128;
     int GL_POINT_DISTANCE_ATTENUATION_ARB = 0x8129;
 
-    void glPointParameterfARB(int pname, float param);
-    void glPointParameterfvARB(int pname, @NativeType("const GLfloat *") MemorySegment params);
+    default void glPointParameterfARB(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glPointParameterfvARB(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

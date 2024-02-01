@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -77,21 +76,72 @@ public interface GLEXTFramebufferObject {
     int GL_RENDERBUFFER_DEPTH_SIZE_EXT = 0x8D54;
     int GL_RENDERBUFFER_STENCIL_SIZE_EXT = 0x8D55;
 
-    boolean glIsRenderbufferEXT(int renderbuffer);
-    void glBindRenderbufferEXT(int target, int renderbuffer);
-    void glDeleteRenderbuffersEXT(int n, @NativeType("const GLuint *") MemorySegment renderbuffers);
-    void glGenRenderbuffersEXT(int n, @NativeType("GLuint *") MemorySegment renderbuffers);
-    void glRenderbufferStorageEXT(int target, int internalformat, int width, int height);
-    void glGetRenderbufferParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    boolean glIsFramebufferEXT(int framebuffer);
-    void glBindFramebufferEXT(int target, int framebuffer);
-    void glDeleteFramebuffersEXT(int n, @NativeType("const GLuint *") MemorySegment framebuffers);
-    void glGenFramebuffersEXT(int n, @NativeType("GLuint *") MemorySegment framebuffers);
-    int glCheckFramebufferStatusEXT(int target);
-    void glFramebufferTexture1DEXT(int target, int attachment, int textarget, int texture, int level);
-    void glFramebufferTexture2DEXT(int target, int attachment, int textarget, int texture, int level);
-    void glFramebufferTexture3DEXT(int target, int attachment, int textarget, int texture, int level, int zoffset);
-    void glFramebufferRenderbufferEXT(int target, int attachment, int renderbuffertarget, int renderbuffer);
-    void glGetFramebufferAttachmentParameterivEXT(int target, int attachment, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGenerateMipmapEXT(int target);
+    default boolean glIsRenderbufferEXT(int renderbuffer) {
+        throw new ContextException();
+    }
+
+    default void glBindRenderbufferEXT(int target, int renderbuffer) {
+        throw new ContextException();
+    }
+
+    default void glDeleteRenderbuffersEXT(int n, @NativeType("const GLuint *") MemorySegment renderbuffers) {
+        throw new ContextException();
+    }
+
+    default void glGenRenderbuffersEXT(int n, @NativeType("GLuint *") MemorySegment renderbuffers) {
+        throw new ContextException();
+    }
+
+    default void glRenderbufferStorageEXT(int target, int internalformat, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glGetRenderbufferParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default boolean glIsFramebufferEXT(int framebuffer) {
+        throw new ContextException();
+    }
+
+    default void glBindFramebufferEXT(int target, int framebuffer) {
+        throw new ContextException();
+    }
+
+    default void glDeleteFramebuffersEXT(int n, @NativeType("const GLuint *") MemorySegment framebuffers) {
+        throw new ContextException();
+    }
+
+    default void glGenFramebuffersEXT(int n, @NativeType("GLuint *") MemorySegment framebuffers) {
+        throw new ContextException();
+    }
+
+    default int glCheckFramebufferStatusEXT(int target) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTexture1DEXT(int target, int attachment, int textarget, int texture, int level) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTexture2DEXT(int target, int attachment, int textarget, int texture, int level) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTexture3DEXT(int target, int attachment, int textarget, int texture, int level, int zoffset) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferRenderbufferEXT(int target, int attachment, int renderbuffertarget, int renderbuffer) {
+        throw new ContextException();
+    }
+
+    default void glGetFramebufferAttachmentParameterivEXT(int target, int attachment, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGenerateMipmapEXT(int target) {
+        throw new ContextException();
+    }
+
 }

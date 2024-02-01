@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -75,6 +74,12 @@ public interface GLNVBlendEquationAdvanced {
     int GL_VIVIDLIGHT_NV = 0x92A6;
     int GL_XOR_NV = 0x1506;
 
-    void glBlendParameteriNV(int pname, int value);
-    void glBlendBarrierNV();
+    default void glBlendParameteriNV(int pname, int value) {
+        throw new ContextException();
+    }
+
+    default void glBlendBarrierNV() {
+        throw new ContextException();
+    }
+
 }

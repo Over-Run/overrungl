@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -46,17 +45,56 @@ public interface GLEXTConvolution {
     int GL_POST_CONVOLUTION_BLUE_BIAS_EXT = 0x8022;
     int GL_POST_CONVOLUTION_ALPHA_BIAS_EXT = 0x8023;
 
-    void glConvolutionFilter1DEXT(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment image);
-    void glConvolutionFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment image);
-    void glConvolutionParameterfEXT(int target, int pname, float params);
-    void glConvolutionParameterfvEXT(int target, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glConvolutionParameteriEXT(int target, int pname, int params);
-    void glConvolutionParameterivEXT(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glCopyConvolutionFilter1DEXT(int target, int internalformat, int x, int y, int width);
-    void glCopyConvolutionFilter2DEXT(int target, int internalformat, int x, int y, int width, int height);
-    void glGetConvolutionFilterEXT(int target, int format, int type, @NativeType("void *") MemorySegment image);
-    void glGetConvolutionParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetConvolutionParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetSeparableFilterEXT(int target, int format, int type, @NativeType("void *") MemorySegment row, @NativeType("void *") MemorySegment column, @NativeType("void *") MemorySegment span);
-    void glSeparableFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment row, @NativeType("const void *") MemorySegment column);
+    default void glConvolutionFilter1DEXT(int target, int internalformat, int width, int format, int type, @NativeType("const void *") MemorySegment image) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment image) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameterfEXT(int target, int pname, float params) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameterfvEXT(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameteriEXT(int target, int pname, int params) {
+        throw new ContextException();
+    }
+
+    default void glConvolutionParameterivEXT(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCopyConvolutionFilter1DEXT(int target, int internalformat, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    default void glCopyConvolutionFilter2DEXT(int target, int internalformat, int x, int y, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glGetConvolutionFilterEXT(int target, int format, int type, @NativeType("void *") MemorySegment image) {
+        throw new ContextException();
+    }
+
+    default void glGetConvolutionParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetConvolutionParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetSeparableFilterEXT(int target, int format, int type, @NativeType("void *") MemorySegment row, @NativeType("void *") MemorySegment column, @NativeType("void *") MemorySegment span) {
+        throw new ContextException();
+    }
+
+    default void glSeparableFilter2DEXT(int target, int internalformat, int width, int height, int format, int type, @NativeType("const void *") MemorySegment row, @NativeType("const void *") MemorySegment column) {
+        throw new ContextException();
+    }
+
 }

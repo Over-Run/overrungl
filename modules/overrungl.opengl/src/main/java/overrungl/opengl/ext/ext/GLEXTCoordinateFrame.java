@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -40,26 +39,92 @@ public interface GLEXTCoordinateFrame {
     int GL_MAP1_BINORMAL_EXT = 0x8446;
     int GL_MAP2_BINORMAL_EXT = 0x8447;
 
-    void glTangent3bEXT(byte tx, byte ty, byte tz);
-    void glTangent3bvEXT(@NativeType("const GLbyte *") MemorySegment v);
-    void glTangent3dEXT(double tx, double ty, double tz);
-    void glTangent3dvEXT(@NativeType("const GLdouble *") MemorySegment v);
-    void glTangent3fEXT(float tx, float ty, float tz);
-    void glTangent3fvEXT(@NativeType("const GLfloat *") MemorySegment v);
-    void glTangent3iEXT(int tx, int ty, int tz);
-    void glTangent3ivEXT(@NativeType("const GLint *") MemorySegment v);
-    void glTangent3sEXT(short tx, short ty, short tz);
-    void glTangent3svEXT(@NativeType("const GLshort *") MemorySegment v);
-    void glBinormal3bEXT(byte bx, byte by, byte bz);
-    void glBinormal3bvEXT(@NativeType("const GLbyte *") MemorySegment v);
-    void glBinormal3dEXT(double bx, double by, double bz);
-    void glBinormal3dvEXT(@NativeType("const GLdouble *") MemorySegment v);
-    void glBinormal3fEXT(float bx, float by, float bz);
-    void glBinormal3fvEXT(@NativeType("const GLfloat *") MemorySegment v);
-    void glBinormal3iEXT(int bx, int by, int bz);
-    void glBinormal3ivEXT(@NativeType("const GLint *") MemorySegment v);
-    void glBinormal3sEXT(short bx, short by, short bz);
-    void glBinormal3svEXT(@NativeType("const GLshort *") MemorySegment v);
-    void glTangentPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer);
-    void glBinormalPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer);
+    default void glTangent3bEXT(byte tx, byte ty, byte tz) {
+        throw new ContextException();
+    }
+
+    default void glTangent3bvEXT(@NativeType("const GLbyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glTangent3dEXT(double tx, double ty, double tz) {
+        throw new ContextException();
+    }
+
+    default void glTangent3dvEXT(@NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glTangent3fEXT(float tx, float ty, float tz) {
+        throw new ContextException();
+    }
+
+    default void glTangent3fvEXT(@NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glTangent3iEXT(int tx, int ty, int tz) {
+        throw new ContextException();
+    }
+
+    default void glTangent3ivEXT(@NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glTangent3sEXT(short tx, short ty, short tz) {
+        throw new ContextException();
+    }
+
+    default void glTangent3svEXT(@NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3bEXT(byte bx, byte by, byte bz) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3bvEXT(@NativeType("const GLbyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3dEXT(double bx, double by, double bz) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3dvEXT(@NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3fEXT(float bx, float by, float bz) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3fvEXT(@NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3iEXT(int bx, int by, int bz) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3ivEXT(@NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3sEXT(short bx, short by, short bz) {
+        throw new ContextException();
+    }
+
+    default void glBinormal3svEXT(@NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glTangentPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glBinormalPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

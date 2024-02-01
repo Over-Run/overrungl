@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLEXTStencilClearTag {
     int GL_STENCIL_TAG_BITS_EXT = 0x88F2;
     int GL_STENCIL_CLEAR_TAG_VALUE_EXT = 0x88F3;
 
-    void glStencilClearTagEXT(int stencilTagBits, int stencilClearTag);
+    default void glStencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ibm;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLIBMMultimodeDrawArrays {
 
-    void glMultiModeDrawArraysIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount, int modestride);
-    void glMultiModeDrawElementsIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLsizei *") MemorySegment count, int type, @NativeType("const void *const*") MemorySegment indices, int primcount, int modestride);
+    default void glMultiModeDrawArraysIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount, int modestride) {
+        throw new ContextException();
+    }
+
+    default void glMultiModeDrawElementsIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLsizei *") MemorySegment count, int type, @NativeType("const void *const*") MemorySegment indices, int primcount, int modestride) {
+        throw new ContextException();
+    }
+
 }

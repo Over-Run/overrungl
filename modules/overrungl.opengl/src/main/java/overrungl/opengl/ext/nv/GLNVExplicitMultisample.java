@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -36,7 +35,16 @@ public interface GLNVExplicitMultisample {
     int GL_UNSIGNED_INT_SAMPLER_RENDERBUFFER_NV = 0x8E58;
     int GL_MAX_SAMPLE_MASK_WORDS_NV = 0x8E59;
 
-    void glGetMultisamplefvNV(int pname, int index, @NativeType("GLfloat *") MemorySegment val);
-    void glSampleMaskIndexedNV(int index, int mask);
-    void glTexRenderbufferNV(int target, int renderbuffer);
+    default void glGetMultisamplefvNV(int pname, int index, @NativeType("GLfloat *") MemorySegment val) {
+        throw new ContextException();
+    }
+
+    default void glSampleMaskIndexedNV(int index, int mask) {
+        throw new ContextException();
+    }
+
+    default void glTexRenderbufferNV(int target, int renderbuffer) {
+        throw new ContextException();
+    }
+
 }

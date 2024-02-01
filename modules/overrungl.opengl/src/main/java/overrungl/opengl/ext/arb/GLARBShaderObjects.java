@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -60,43 +59,160 @@ public interface GLARBShaderObjects {
     int GL_OBJECT_ACTIVE_UNIFORM_MAX_LENGTH_ARB = 0x8B87;
     int GL_OBJECT_SHADER_SOURCE_LENGTH_ARB = 0x8B88;
 
-    void glDeleteObjectARB(int obj);
-    int glGetHandleARB(int pname);
-    void glDetachObjectARB(int containerObj, int attachedObj);
-    int glCreateShaderObjectARB(int shaderType);
-    void glShaderSourceARB(int shaderObj, int count, @NativeType("const GLcharARB**") MemorySegment string, @NativeType("const GLint*") MemorySegment length);
-    void glCompileShaderARB(int shaderObj);
-    int glCreateProgramObjectARB();
-    void glAttachObjectARB(int containerObj, int obj);
-    void glLinkProgramARB(int programObj);
-    void glUseProgramObjectARB(int programObj);
-    void glValidateProgramARB(int programObj);
-    void glUniform1fARB(int location, float v0);
-    void glUniform2fARB(int location, float v0, float v1);
-    void glUniform3fARB(int location, float v0, float v1, float v2);
-    void glUniform4fARB(int location, float v0, float v1, float v2, float v3);
-    void glUniform1iARB(int location, int v0);
-    void glUniform2iARB(int location, int v0, int v1);
-    void glUniform3iARB(int location, int v0, int v1, int v2);
-    void glUniform4iARB(int location, int v0, int v1, int v2, int v3);
-    void glUniform1fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value);
-    void glUniform2fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value);
-    void glUniform3fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value);
-    void glUniform4fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value);
-    void glUniform1ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value);
-    void glUniform2ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value);
-    void glUniform3ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value);
-    void glUniform4ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value);
-    void glUniformMatrix2fvARB(int location, int count, boolean transpose, @NativeType("const GLfloat*") MemorySegment value);
-    void glUniformMatrix3fvARB(int location, int count, boolean transpose, @NativeType("const GLfloat*") MemorySegment value);
-    void glUniformMatrix4fvARB(int location, int count, boolean transpose, @NativeType("const GLfloat*") MemorySegment value);
-    void glGetObjectParameterfvARB(int obj, int pname, @NativeType("GLfloat*") MemorySegment params);
-    void glGetObjectParameterivARB(int obj, int pname, @NativeType("GLint*") MemorySegment params);
-    void glGetInfoLogARB(int obj, int maxLength, @NativeType("GLsizei*") MemorySegment length, @NativeType("GLcharARB*") MemorySegment infoLog);
-    void glGetAttachedObjectsARB(int containerObj, int maxCount, @NativeType("GLsizei*") MemorySegment count, @NativeType("GLhandleARB*") MemorySegment obj);
-    int glGetUniformLocationARB(int programObj, @NativeType("const GLcharARB*") MemorySegment name);
-    void glGetActiveUniformARB(int programObj, int index, int maxLength, @NativeType("GLsizei*") MemorySegment length, @NativeType("GLint*") MemorySegment size, @NativeType("GLenum*") MemorySegment type, @NativeType("GLcharARB*") MemorySegment name);
-    void glGetUniformfvARB(int programObj, int location, @NativeType("GLfloat*") MemorySegment params);
-    void glGetUniformivARB(int programObj, int location, @NativeType("GLint*") MemorySegment params);
-    void glGetShaderSourceARB(int obj, int maxLength, @NativeType("GLsizei*") MemorySegment length, @NativeType("GLcharARB*") MemorySegment source);
+    default void glDeleteObjectARB(int obj) {
+        throw new ContextException();
+    }
+
+    default int glGetHandleARB(int pname) {
+        throw new ContextException();
+    }
+
+    default void glDetachObjectARB(int containerObj, int attachedObj) {
+        throw new ContextException();
+    }
+
+    default int glCreateShaderObjectARB(int shaderType) {
+        throw new ContextException();
+    }
+
+    default void glShaderSourceARB(int shaderObj, int count, @NativeType("const GLcharARB**") MemorySegment string, @NativeType("const GLint*") MemorySegment length) {
+        throw new ContextException();
+    }
+
+    default void glCompileShaderARB(int shaderObj) {
+        throw new ContextException();
+    }
+
+    default int glCreateProgramObjectARB() {
+        throw new ContextException();
+    }
+
+    default void glAttachObjectARB(int containerObj, int obj) {
+        throw new ContextException();
+    }
+
+    default void glLinkProgramARB(int programObj) {
+        throw new ContextException();
+    }
+
+    default void glUseProgramObjectARB(int programObj) {
+        throw new ContextException();
+    }
+
+    default void glValidateProgramARB(int programObj) {
+        throw new ContextException();
+    }
+
+    default void glUniform1fARB(int location, float v0) {
+        throw new ContextException();
+    }
+
+    default void glUniform2fARB(int location, float v0, float v1) {
+        throw new ContextException();
+    }
+
+    default void glUniform3fARB(int location, float v0, float v1, float v2) {
+        throw new ContextException();
+    }
+
+    default void glUniform4fARB(int location, float v0, float v1, float v2, float v3) {
+        throw new ContextException();
+    }
+
+    default void glUniform1iARB(int location, int v0) {
+        throw new ContextException();
+    }
+
+    default void glUniform2iARB(int location, int v0, int v1) {
+        throw new ContextException();
+    }
+
+    default void glUniform3iARB(int location, int v0, int v1, int v2) {
+        throw new ContextException();
+    }
+
+    default void glUniform4iARB(int location, int v0, int v1, int v2, int v3) {
+        throw new ContextException();
+    }
+
+    default void glUniform1fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4fvARB(int location, int count, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform1ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4ivARB(int location, int count, @NativeType("const GLint*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniformMatrix2fvARB(int location, int count, boolean transpose, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniformMatrix3fvARB(int location, int count, boolean transpose, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniformMatrix4fvARB(int location, int count, boolean transpose, @NativeType("const GLfloat*") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetObjectParameterfvARB(int obj, int pname, @NativeType("GLfloat*") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetObjectParameterivARB(int obj, int pname, @NativeType("GLint*") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetInfoLogARB(int obj, int maxLength, @NativeType("GLsizei*") MemorySegment length, @NativeType("GLcharARB*") MemorySegment infoLog) {
+        throw new ContextException();
+    }
+
+    default void glGetAttachedObjectsARB(int containerObj, int maxCount, @NativeType("GLsizei*") MemorySegment count, @NativeType("GLhandleARB*") MemorySegment obj) {
+        throw new ContextException();
+    }
+
+    default int glGetUniformLocationARB(int programObj, @NativeType("const GLcharARB*") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glGetActiveUniformARB(int programObj, int index, int maxLength, @NativeType("GLsizei*") MemorySegment length, @NativeType("GLint*") MemorySegment size, @NativeType("GLenum*") MemorySegment type, @NativeType("GLcharARB*") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glGetUniformfvARB(int programObj, int location, @NativeType("GLfloat*") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetUniformivARB(int programObj, int location, @NativeType("GLint*") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetShaderSourceARB(int obj, int maxLength, @NativeType("GLsizei*") MemorySegment length, @NativeType("GLcharARB*") MemorySegment source) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -75,17 +74,56 @@ public interface GLNVRegisterCombiners {
     int GL_COMBINER6_NV = 0x8556;
     int GL_COMBINER7_NV = 0x8557;
 
-    void glCombinerParameterfvNV(int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glCombinerParameterfNV(int pname, float param);
-    void glCombinerParameterivNV(int pname, @NativeType("const GLint *") MemorySegment params);
-    void glCombinerParameteriNV(int pname, int param);
-    void glCombinerInputNV(int stage, int portion, int variable, int input, int mapping, int componentUsage);
-    void glCombinerOutputNV(int stage, int portion, int abOutput, int cdOutput, int sumOutput, int scale, int bias, boolean abDotProduct, boolean cdDotProduct, boolean muxSum);
-    void glFinalCombinerInputNV(int variable, int input, int mapping, int componentUsage);
-    void glGetCombinerInputParameterfvNV(int stage, int portion, int variable, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetCombinerInputParameterivNV(int stage, int portion, int variable, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetCombinerOutputParameterfvNV(int stage, int portion, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetCombinerOutputParameterivNV(int stage, int portion, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetFinalCombinerInputParameterfvNV(int variable, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetFinalCombinerInputParameterivNV(int variable, int pname, @NativeType("GLint *") MemorySegment params);
+    default void glCombinerParameterfvNV(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCombinerParameterfNV(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glCombinerParameterivNV(int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glCombinerParameteriNV(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glCombinerInputNV(int stage, int portion, int variable, int input, int mapping, int componentUsage) {
+        throw new ContextException();
+    }
+
+    default void glCombinerOutputNV(int stage, int portion, int abOutput, int cdOutput, int sumOutput, int scale, int bias, boolean abDotProduct, boolean cdDotProduct, boolean muxSum) {
+        throw new ContextException();
+    }
+
+    default void glFinalCombinerInputNV(int variable, int input, int mapping, int componentUsage) {
+        throw new ContextException();
+    }
+
+    default void glGetCombinerInputParameterfvNV(int stage, int portion, int variable, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetCombinerInputParameterivNV(int stage, int portion, int variable, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetCombinerOutputParameterfvNV(int stage, int portion, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetCombinerOutputParameterivNV(int stage, int portion, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetFinalCombinerInputParameterfvNV(int variable, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetFinalCombinerInputParameterivNV(int variable, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

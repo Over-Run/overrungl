@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTWin32KeyedMutex {
 
-    boolean glAcquireKeyedMutexWin32EXT(int memory, long key, int timeout);
-    boolean glReleaseKeyedMutexWin32EXT(int memory, long key);
+    default boolean glAcquireKeyedMutexWin32EXT(int memory, long key, int timeout) {
+        throw new ContextException();
+    }
+
+    default boolean glReleaseKeyedMutexWin32EXT(int memory, long key) {
+        throw new ContextException();
+    }
+
 }

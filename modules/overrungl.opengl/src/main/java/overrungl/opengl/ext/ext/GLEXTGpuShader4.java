@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -54,38 +53,140 @@ public interface GLEXTGpuShader4 {
     int GL_MAX_PROGRAM_TEXEL_OFFSET_EXT = 0x8905;
     int GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT = 0x88FD;
 
-    void glGetUniformuivEXT(int program, int location, @NativeType("GLuint *") MemorySegment params);
-    void glBindFragDataLocationEXT(int program, int color, @NativeType("const GLchar *") MemorySegment name);
-    int glGetFragDataLocationEXT(int program, @NativeType("const GLchar *") MemorySegment name);
-    void glUniform1uiEXT(int location, int v0);
-    void glUniform2uiEXT(int location, int v0, int v1);
-    void glUniform3uiEXT(int location, int v0, int v1, int v2);
-    void glUniform4uiEXT(int location, int v0, int v1, int v2, int v3);
-    void glUniform1uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value);
-    void glUniform2uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value);
-    void glUniform3uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value);
-    void glUniform4uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value);
-    void glVertexAttribI1iEXT(int index, int x);
-    void glVertexAttribI2iEXT(int index, int x, int y);
-    void glVertexAttribI3iEXT(int index, int x, int y, int z);
-    void glVertexAttribI4iEXT(int index, int x, int y, int z, int w);
-    void glVertexAttribI1uiEXT(int index, int x);
-    void glVertexAttribI2uiEXT(int index, int x, int y);
-    void glVertexAttribI3uiEXT(int index, int x, int y, int z);
-    void glVertexAttribI4uiEXT(int index, int x, int y, int z, int w);
-    void glVertexAttribI1ivEXT(int index, @NativeType("const GLint *") MemorySegment v);
-    void glVertexAttribI2ivEXT(int index, @NativeType("const GLint *") MemorySegment v);
-    void glVertexAttribI3ivEXT(int index, @NativeType("const GLint *") MemorySegment v);
-    void glVertexAttribI4ivEXT(int index, @NativeType("const GLint *") MemorySegment v);
-    void glVertexAttribI1uivEXT(int index, @NativeType("const GLuint *") MemorySegment v);
-    void glVertexAttribI2uivEXT(int index, @NativeType("const GLuint *") MemorySegment v);
-    void glVertexAttribI3uivEXT(int index, @NativeType("const GLuint *") MemorySegment v);
-    void glVertexAttribI4uivEXT(int index, @NativeType("const GLuint *") MemorySegment v);
-    void glVertexAttribI4bvEXT(int index, @NativeType("const GLbyte *") MemorySegment v);
-    void glVertexAttribI4svEXT(int index, @NativeType("const GLshort *") MemorySegment v);
-    void glVertexAttribI4ubvEXT(int index, @NativeType("const GLubyte *") MemorySegment v);
-    void glVertexAttribI4usvEXT(int index, @NativeType("const GLushort *") MemorySegment v);
-    void glVertexAttribIPointerEXT(int index, int size, int type, int stride, @NativeType("const void *") MemorySegment pointer);
-    void glGetVertexAttribIivEXT(int index, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetVertexAttribIuivEXT(int index, int pname, @NativeType("GLuint *") MemorySegment params);
+    default void glGetUniformuivEXT(int program, int location, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glBindFragDataLocationEXT(int program, int color, @NativeType("const GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default int glGetFragDataLocationEXT(int program, @NativeType("const GLchar *") MemorySegment name) {
+        throw new ContextException();
+    }
+
+    default void glUniform1uiEXT(int location, int v0) {
+        throw new ContextException();
+    }
+
+    default void glUniform2uiEXT(int location, int v0, int v1) {
+        throw new ContextException();
+    }
+
+    default void glUniform3uiEXT(int location, int v0, int v1, int v2) {
+        throw new ContextException();
+    }
+
+    default void glUniform4uiEXT(int location, int v0, int v1, int v2, int v3) {
+        throw new ContextException();
+    }
+
+    default void glUniform1uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4uivEXT(int location, int count, @NativeType("const GLuint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI1iEXT(int index, int x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI2iEXT(int index, int x, int y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI3iEXT(int index, int x, int y, int z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4iEXT(int index, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI1uiEXT(int index, int x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI2uiEXT(int index, int x, int y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI3uiEXT(int index, int x, int y, int z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4uiEXT(int index, int x, int y, int z, int w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI1ivEXT(int index, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI2ivEXT(int index, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI3ivEXT(int index, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4ivEXT(int index, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI1uivEXT(int index, @NativeType("const GLuint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI2uivEXT(int index, @NativeType("const GLuint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI3uivEXT(int index, @NativeType("const GLuint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4uivEXT(int index, @NativeType("const GLuint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4bvEXT(int index, @NativeType("const GLbyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4svEXT(int index, @NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4ubvEXT(int index, @NativeType("const GLubyte *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribI4usvEXT(int index, @NativeType("const GLushort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribIPointerEXT(int index, int size, int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribIivEXT(int index, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribIuivEXT(int index, int pname, @NativeType("GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

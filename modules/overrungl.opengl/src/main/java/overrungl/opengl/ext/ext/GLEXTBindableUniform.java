@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,7 +31,16 @@ public interface GLEXTBindableUniform {
     int GL_UNIFORM_BUFFER_EXT = 0x8DEE;
     int GL_UNIFORM_BUFFER_BINDING_EXT = 0x8DEF;
 
-    void glUniformBufferEXT(int program, int location, int buffer);
-    int glGetUniformBufferSizeEXT(int program, int location);
-    long glGetUniformOffsetEXT(int program, int location);
+    default void glUniformBufferEXT(int program, int location, int buffer) {
+        throw new ContextException();
+    }
+
+    default int glGetUniformBufferSizeEXT(int program, int location) {
+        throw new ContextException();
+    }
+
+    default long glGetUniformOffsetEXT(int program, int location) {
+        throw new ContextException();
+    }
+
 }

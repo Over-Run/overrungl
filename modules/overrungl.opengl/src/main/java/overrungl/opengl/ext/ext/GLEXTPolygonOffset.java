@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLEXTPolygonOffset {
     int GL_POLYGON_OFFSET_FACTOR_EXT = 0x8038;
     int GL_POLYGON_OFFSET_BIAS_EXT = 0x8039;
 
-    void glPolygonOffsetEXT(float factor, float bias);
+    default void glPolygonOffsetEXT(float factor, float bias) {
+        throw new ContextException();
+    }
+
 }

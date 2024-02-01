@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,5 +34,8 @@ public interface GLARBMultisample {
     int GL_SAMPLE_COVERAGE_INVERT_ARB = 0x80AB;
     int GL_MULTISAMPLE_BIT_ARB = 0x20000000;
 
-    void glSampleCoverageARB(float value, boolean invert);
+    default void glSampleCoverageARB(float value, boolean invert) {
+        throw new ContextException();
+    }
+
 }

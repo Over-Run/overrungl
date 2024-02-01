@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLSGIXFramezoom {
     int GL_FRAMEZOOM_FACTOR_SGIX = 0x818C;
     int GL_MAX_FRAMEZOOM_FACTOR_SGIX = 0x818D;
 
-    void glFrameZoomSGIX(int factor);
+    default void glFrameZoomSGIX(int factor) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,11 +28,32 @@ public interface GLNVFence {
     int GL_FENCE_STATUS_NV = 0x84F3;
     int GL_FENCE_CONDITION_NV = 0x84F4;
 
-    void glDeleteFencesNV(int n, @NativeType("const GLuint *") MemorySegment fences);
-    void glGenFencesNV(int n, @NativeType("GLuint *") MemorySegment fences);
-    boolean glIsFenceNV(int fence);
-    boolean glTestFenceNV(int fence);
-    void glGetFenceivNV(int fence, int pname, @NativeType("GLint *") MemorySegment params);
-    void glFinishFenceNV(int fence);
-    void glSetFenceNV(int fence, int condition);
+    default void glDeleteFencesNV(int n, @NativeType("const GLuint *") MemorySegment fences) {
+        throw new ContextException();
+    }
+
+    default void glGenFencesNV(int n, @NativeType("GLuint *") MemorySegment fences) {
+        throw new ContextException();
+    }
+
+    default boolean glIsFenceNV(int fence) {
+        throw new ContextException();
+    }
+
+    default boolean glTestFenceNV(int fence) {
+        throw new ContextException();
+    }
+
+    default void glGetFenceivNV(int fence, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glFinishFenceNV(int fence) {
+        throw new ContextException();
+    }
+
+    default void glSetFenceNV(int fence, int condition) {
+        throw new ContextException();
+    }
+
 }

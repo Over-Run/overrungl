@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -36,9 +35,24 @@ public interface GLARBMatrixPalette {
     int GL_MATRIX_INDEX_ARRAY_STRIDE_ARB = 0x8848;
     int GL_MATRIX_INDEX_ARRAY_POINTER_ARB = 0x8849;
 
-    void glCurrentPaletteMatrixARB(int index);
-    void glMatrixIndexubvARB(int size, @NativeType("const GLubyte *") MemorySegment indices);
-    void glMatrixIndexusvARB(int size, @NativeType("const GLushort *") MemorySegment indices);
-    void glMatrixIndexuivARB(int size, @NativeType("const GLuint *") MemorySegment indices);
-    void glMatrixIndexPointerARB(int size, int type, int stride, @NativeType("const void *") MemorySegment pointer);
+    default void glCurrentPaletteMatrixARB(int index) {
+        throw new ContextException();
+    }
+
+    default void glMatrixIndexubvARB(int size, @NativeType("const GLubyte *") MemorySegment indices) {
+        throw new ContextException();
+    }
+
+    default void glMatrixIndexusvARB(int size, @NativeType("const GLushort *") MemorySegment indices) {
+        throw new ContextException();
+    }
+
+    default void glMatrixIndexuivARB(int size, @NativeType("const GLuint *") MemorySegment indices) {
+        throw new ContextException();
+    }
+
+    default void glMatrixIndexPointerARB(int size, int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

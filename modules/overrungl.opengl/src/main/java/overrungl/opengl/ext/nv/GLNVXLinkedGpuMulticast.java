@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,7 +27,16 @@ public interface GLNVXLinkedGpuMulticast {
     int GL_LGPU_SEPARATE_STORAGE_BIT_NVX = 0x0800;
     int GL_MAX_LGPU_GPUS_NVX = 0x92BA;
 
-    void glLGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, @NativeType("const void *") MemorySegment data);
-    void glLGPUCopyImageSubDataNVX(int sourceGpu, int destinationGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srxY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth);
-    void glLGPUInterlockNVX();
+    default void glLGPUNamedBufferSubDataNVX(int gpuMask, int buffer, long offset, long size, @NativeType("const void *") MemorySegment data) {
+        throw new ContextException();
+    }
+
+    default void glLGPUCopyImageSubDataNVX(int sourceGpu, int destinationGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srxY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int width, int height, int depth) {
+        throw new ContextException();
+    }
+
+    default void glLGPUInterlockNVX() {
+        throw new ContextException();
+    }
+
 }

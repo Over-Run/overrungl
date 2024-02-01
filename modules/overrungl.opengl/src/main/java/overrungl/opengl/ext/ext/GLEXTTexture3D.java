@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -35,6 +34,12 @@ public interface GLEXTTexture3D {
     int GL_TEXTURE_WRAP_R_EXT = 0x8072;
     int GL_MAX_3D_TEXTURE_SIZE_EXT = 0x8073;
 
-    void glTexImage3DEXT(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NativeType("const void *") MemorySegment pixels);
-    void glTexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NativeType("const void *") MemorySegment pixels);
+    default void glTexImage3DEXT(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, @NativeType("const void *") MemorySegment pixels) {
+        throw new ContextException();
+    }
+
+    default void glTexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, @NativeType("const void *") MemorySegment pixels) {
+        throw new ContextException();
+    }
+
 }

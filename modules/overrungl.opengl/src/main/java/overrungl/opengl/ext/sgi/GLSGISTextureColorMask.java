@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,5 +26,8 @@ import java.lang.foreign.*;
 public interface GLSGISTextureColorMask {
     int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
 
-    void glTextureColorMaskSGIS(boolean red, boolean green, boolean blue, boolean alpha);
+    default void glTextureColorMaskSGIS(boolean red, boolean green, boolean blue, boolean alpha) {
+        throw new ContextException();
+    }
+
 }

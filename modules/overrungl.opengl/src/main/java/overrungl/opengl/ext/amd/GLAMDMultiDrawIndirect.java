@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLAMDMultiDrawIndirect {
 
-    void glMultiDrawArraysIndirectAMD(int mode, @NativeType("const void *") MemorySegment indirect, int primcount, int stride);
-    void glMultiDrawElementsIndirectAMD(int mode, int type, @NativeType("const void *") MemorySegment indirect, int primcount, int stride);
+    default void glMultiDrawArraysIndirectAMD(int mode, @NativeType("const void *") MemorySegment indirect, int primcount, int stride) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawElementsIndirectAMD(int mode, int type, @NativeType("const void *") MemorySegment indirect, int primcount, int stride) {
+        throw new ContextException();
+    }
+
 }

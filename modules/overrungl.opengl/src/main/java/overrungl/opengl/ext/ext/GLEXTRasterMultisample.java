@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,5 +31,8 @@ public interface GLEXTRasterMultisample {
     int GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT = 0x932B;
     int GL_EFFECTIVE_RASTER_SAMPLES_EXT = 0x932C;
 
-    void glRasterSamplesEXT(int samples, boolean fixedsamplelocations);
+    default void glRasterSamplesEXT(int samples, boolean fixedsamplelocations) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.mesa;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,6 +26,12 @@ import java.lang.foreign.*;
 public interface GLMESAFramebufferFlipY {
     int GL_FRAMEBUFFER_FLIP_Y_MESA = 0x8BBB;
 
-    void glFramebufferParameteriMESA(int target, int pname, int param);
-    void glGetFramebufferParameterivMESA(int target, int pname, @NativeType("GLint *") MemorySegment params);
+    default void glFramebufferParameteriMESA(int target, int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glGetFramebufferParameterivMESA(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

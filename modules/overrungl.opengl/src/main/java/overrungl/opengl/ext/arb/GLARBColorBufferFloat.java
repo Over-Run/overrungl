@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,5 +30,8 @@ public interface GLARBColorBufferFloat {
     int GL_CLAMP_READ_COLOR_ARB = 0x891C;
     int GL_FIXED_ONLY_ARB = 0x891D;
 
-    void glClampColorARB(int target, int clamp);
+    default void glClampColorARB(int target, int clamp) {
+        throw new ContextException();
+    }
+
 }

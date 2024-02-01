@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -189,68 +188,260 @@ public interface GLNVPathRendering {
     int GL_PATH_TRANSPOSE_PROJECTION_MATRIX_NV = 0x84E4;
     int GL_FRAGMENT_INPUT_NV = 0x936D;
 
-    int glGenPathsNV(int range);
-    void glDeletePathsNV(int path, int range);
-    boolean glIsPathNV(int path);
-    void glPathCommandsNV(int path, int numCommands, @NativeType("const GLubyte *") MemorySegment commands, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords);
-    void glPathCoordsNV(int path, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords);
-    void glPathSubCommandsNV(int path, int commandStart, int commandsToDelete, int numCommands, @NativeType("const GLubyte *") MemorySegment commands, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords);
-    void glPathSubCoordsNV(int path, int coordStart, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords);
-    void glPathStringNV(int path, int format, int length, @NativeType("const void *") MemorySegment pathString);
-    void glPathGlyphsNV(int firstPathName, int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int numGlyphs, int type, @NativeType("const void *") MemorySegment charcodes, int handleMissingGlyphs, int pathParameterTemplate, float emScale);
-    void glPathGlyphRangeNV(int firstPathName, int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int firstGlyph, int numGlyphs, int handleMissingGlyphs, int pathParameterTemplate, float emScale);
-    void glWeightPathsNV(int resultPath, int numPaths, @NativeType("const GLuint *") MemorySegment paths, @NativeType("const GLfloat *") MemorySegment weights);
-    void glCopyPathNV(int resultPath, int srcPath);
-    void glInterpolatePathsNV(int resultPath, int pathA, int pathB, float weight);
-    void glTransformPathNV(int resultPath, int srcPath, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    void glPathParameterivNV(int path, int pname, @NativeType("const GLint *") MemorySegment value);
-    void glPathParameteriNV(int path, int pname, int value);
-    void glPathParameterfvNV(int path, int pname, @NativeType("const GLfloat *") MemorySegment value);
-    void glPathParameterfNV(int path, int pname, float value);
-    void glPathDashArrayNV(int path, int dashCount, @NativeType("const GLfloat *") MemorySegment dashArray);
-    void glPathStencilFuncNV(int func, int ref, int mask);
-    void glPathStencilDepthOffsetNV(float factor, float units);
-    void glStencilFillPathNV(int path, int fillMode, int mask);
-    void glStencilStrokePathNV(int path, int reference, int mask);
-    void glStencilFillPathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int fillMode, int mask, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    void glStencilStrokePathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int reference, int mask, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    void glPathCoverDepthFuncNV(int func);
-    void glCoverFillPathNV(int path, int coverMode);
-    void glCoverStrokePathNV(int path, int coverMode);
-    void glCoverFillPathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    void glCoverStrokePathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    void glGetPathParameterivNV(int path, int pname, @NativeType("GLint *") MemorySegment value);
-    void glGetPathParameterfvNV(int path, int pname, @NativeType("GLfloat *") MemorySegment value);
-    void glGetPathCommandsNV(int path, @NativeType("GLubyte *") MemorySegment commands);
-    void glGetPathCoordsNV(int path, @NativeType("GLfloat *") MemorySegment coords);
-    void glGetPathDashArrayNV(int path, @NativeType("GLfloat *") MemorySegment dashArray);
-    void glGetPathMetricsNV(int metricQueryMask, int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int stride, @NativeType("GLfloat *") MemorySegment metrics);
-    void glGetPathMetricRangeNV(int metricQueryMask, int firstPathName, int numPaths, int stride, @NativeType("GLfloat *") MemorySegment metrics);
-    void glGetPathSpacingNV(int pathListMode, int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, float advanceScale, float kerningScale, int transformType, @NativeType("GLfloat *") MemorySegment returnedSpacing);
-    boolean glIsPointInFillPathNV(int path, int mask, float x, float y);
-    boolean glIsPointInStrokePathNV(int path, float x, float y);
-    float glGetPathLengthNV(int path, int startSegment, int numSegments);
-    boolean glPointAlongPathNV(int path, int startSegment, int numSegments, float distance, @NativeType("GLfloat *") MemorySegment x, @NativeType("GLfloat *") MemorySegment y, @NativeType("GLfloat *") MemorySegment tangentX, @NativeType("GLfloat *") MemorySegment tangentY);
-    void glMatrixLoad3x2fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m);
-    void glMatrixLoad3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m);
-    void glMatrixLoadTranspose3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m);
-    void glMatrixMult3x2fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m);
-    void glMatrixMult3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m);
-    void glMatrixMultTranspose3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m);
-    void glStencilThenCoverFillPathNV(int path, int fillMode, int mask, int coverMode);
-    void glStencilThenCoverStrokePathNV(int path, int reference, int mask, int coverMode);
-    void glStencilThenCoverFillPathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int fillMode, int mask, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    void glStencilThenCoverStrokePathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int reference, int mask, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues);
-    int glPathGlyphIndexRangeNV(int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int pathParameterTemplate, float emScale, @NativeType("GLuint *") MemorySegment baseAndCount);
-    int glPathGlyphIndexArrayNV(int firstPathName, int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int firstGlyphIndex, int numGlyphs, int pathParameterTemplate, float emScale);
-    int glPathMemoryGlyphIndexArrayNV(int firstPathName, int fontTarget, long fontSize, @NativeType("const void *") MemorySegment fontData, int faceIndex, int firstGlyphIndex, int numGlyphs, int pathParameterTemplate, float emScale);
-    void glProgramPathFragmentInputGenNV(int program, int location, int genMode, int components, @NativeType("const GLfloat *") MemorySegment coeffs);
-    void glGetProgramResourcefvNV(int program, int programInterface, int index, int propCount, @NativeType("const GLenum *") MemorySegment props, int count, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLfloat *") MemorySegment params);
-    void glPathColorGenNV(int color, int genMode, int colorFormat, @NativeType("const GLfloat *") MemorySegment coeffs);
-    void glPathTexGenNV(int texCoordSet, int genMode, int components, @NativeType("const GLfloat *") MemorySegment coeffs);
-    void glPathFogGenNV(int genMode);
-    void glGetPathColorGenivNV(int color, int pname, @NativeType("GLint *") MemorySegment value);
-    void glGetPathColorGenfvNV(int color, int pname, @NativeType("GLfloat *") MemorySegment value);
-    void glGetPathTexGenivNV(int texCoordSet, int pname, @NativeType("GLint *") MemorySegment value);
-    void glGetPathTexGenfvNV(int texCoordSet, int pname, @NativeType("GLfloat *") MemorySegment value);
+    default int glGenPathsNV(int range) {
+        throw new ContextException();
+    }
+
+    default void glDeletePathsNV(int path, int range) {
+        throw new ContextException();
+    }
+
+    default boolean glIsPathNV(int path) {
+        throw new ContextException();
+    }
+
+    default void glPathCommandsNV(int path, int numCommands, @NativeType("const GLubyte *") MemorySegment commands, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glPathCoordsNV(int path, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glPathSubCommandsNV(int path, int commandStart, int commandsToDelete, int numCommands, @NativeType("const GLubyte *") MemorySegment commands, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glPathSubCoordsNV(int path, int coordStart, int numCoords, int coordType, @NativeType("const void *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glPathStringNV(int path, int format, int length, @NativeType("const void *") MemorySegment pathString) {
+        throw new ContextException();
+    }
+
+    default void glPathGlyphsNV(int firstPathName, int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int numGlyphs, int type, @NativeType("const void *") MemorySegment charcodes, int handleMissingGlyphs, int pathParameterTemplate, float emScale) {
+        throw new ContextException();
+    }
+
+    default void glPathGlyphRangeNV(int firstPathName, int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int firstGlyph, int numGlyphs, int handleMissingGlyphs, int pathParameterTemplate, float emScale) {
+        throw new ContextException();
+    }
+
+    default void glWeightPathsNV(int resultPath, int numPaths, @NativeType("const GLuint *") MemorySegment paths, @NativeType("const GLfloat *") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glCopyPathNV(int resultPath, int srcPath) {
+        throw new ContextException();
+    }
+
+    default void glInterpolatePathsNV(int resultPath, int pathA, int pathB, float weight) {
+        throw new ContextException();
+    }
+
+    default void glTransformPathNV(int resultPath, int srcPath, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default void glPathParameterivNV(int path, int pname, @NativeType("const GLint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glPathParameteriNV(int path, int pname, int value) {
+        throw new ContextException();
+    }
+
+    default void glPathParameterfvNV(int path, int pname, @NativeType("const GLfloat *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glPathParameterfNV(int path, int pname, float value) {
+        throw new ContextException();
+    }
+
+    default void glPathDashArrayNV(int path, int dashCount, @NativeType("const GLfloat *") MemorySegment dashArray) {
+        throw new ContextException();
+    }
+
+    default void glPathStencilFuncNV(int func, int ref, int mask) {
+        throw new ContextException();
+    }
+
+    default void glPathStencilDepthOffsetNV(float factor, float units) {
+        throw new ContextException();
+    }
+
+    default void glStencilFillPathNV(int path, int fillMode, int mask) {
+        throw new ContextException();
+    }
+
+    default void glStencilStrokePathNV(int path, int reference, int mask) {
+        throw new ContextException();
+    }
+
+    default void glStencilFillPathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int fillMode, int mask, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default void glStencilStrokePathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int reference, int mask, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default void glPathCoverDepthFuncNV(int func) {
+        throw new ContextException();
+    }
+
+    default void glCoverFillPathNV(int path, int coverMode) {
+        throw new ContextException();
+    }
+
+    default void glCoverStrokePathNV(int path, int coverMode) {
+        throw new ContextException();
+    }
+
+    default void glCoverFillPathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default void glCoverStrokePathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default void glGetPathParameterivNV(int path, int pname, @NativeType("GLint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetPathParameterfvNV(int path, int pname, @NativeType("GLfloat *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetPathCommandsNV(int path, @NativeType("GLubyte *") MemorySegment commands) {
+        throw new ContextException();
+    }
+
+    default void glGetPathCoordsNV(int path, @NativeType("GLfloat *") MemorySegment coords) {
+        throw new ContextException();
+    }
+
+    default void glGetPathDashArrayNV(int path, @NativeType("GLfloat *") MemorySegment dashArray) {
+        throw new ContextException();
+    }
+
+    default void glGetPathMetricsNV(int metricQueryMask, int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int stride, @NativeType("GLfloat *") MemorySegment metrics) {
+        throw new ContextException();
+    }
+
+    default void glGetPathMetricRangeNV(int metricQueryMask, int firstPathName, int numPaths, int stride, @NativeType("GLfloat *") MemorySegment metrics) {
+        throw new ContextException();
+    }
+
+    default void glGetPathSpacingNV(int pathListMode, int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, float advanceScale, float kerningScale, int transformType, @NativeType("GLfloat *") MemorySegment returnedSpacing) {
+        throw new ContextException();
+    }
+
+    default boolean glIsPointInFillPathNV(int path, int mask, float x, float y) {
+        throw new ContextException();
+    }
+
+    default boolean glIsPointInStrokePathNV(int path, float x, float y) {
+        throw new ContextException();
+    }
+
+    default float glGetPathLengthNV(int path, int startSegment, int numSegments) {
+        throw new ContextException();
+    }
+
+    default boolean glPointAlongPathNV(int path, int startSegment, int numSegments, float distance, @NativeType("GLfloat *") MemorySegment x, @NativeType("GLfloat *") MemorySegment y, @NativeType("GLfloat *") MemorySegment tangentX, @NativeType("GLfloat *") MemorySegment tangentY) {
+        throw new ContextException();
+    }
+
+    default void glMatrixLoad3x2fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMatrixLoad3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMatrixLoadTranspose3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMatrixMult3x2fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMatrixMult3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMatrixMultTranspose3x3fNV(int matrixMode, @NativeType("const GLfloat *") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glStencilThenCoverFillPathNV(int path, int fillMode, int mask, int coverMode) {
+        throw new ContextException();
+    }
+
+    default void glStencilThenCoverStrokePathNV(int path, int reference, int mask, int coverMode) {
+        throw new ContextException();
+    }
+
+    default void glStencilThenCoverFillPathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int fillMode, int mask, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default void glStencilThenCoverStrokePathInstancedNV(int numPaths, int pathNameType, @NativeType("const void *") MemorySegment paths, int pathBase, int reference, int mask, int coverMode, int transformType, @NativeType("const GLfloat *") MemorySegment transformValues) {
+        throw new ContextException();
+    }
+
+    default int glPathGlyphIndexRangeNV(int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int pathParameterTemplate, float emScale, @NativeType("GLuint *") MemorySegment baseAndCount) {
+        throw new ContextException();
+    }
+
+    default int glPathGlyphIndexArrayNV(int firstPathName, int fontTarget, @NativeType("const void *") MemorySegment fontName, int fontStyle, int firstGlyphIndex, int numGlyphs, int pathParameterTemplate, float emScale) {
+        throw new ContextException();
+    }
+
+    default int glPathMemoryGlyphIndexArrayNV(int firstPathName, int fontTarget, long fontSize, @NativeType("const void *") MemorySegment fontData, int faceIndex, int firstGlyphIndex, int numGlyphs, int pathParameterTemplate, float emScale) {
+        throw new ContextException();
+    }
+
+    default void glProgramPathFragmentInputGenNV(int program, int location, int genMode, int components, @NativeType("const GLfloat *") MemorySegment coeffs) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramResourcefvNV(int program, int programInterface, int index, int propCount, @NativeType("const GLenum *") MemorySegment props, int count, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glPathColorGenNV(int color, int genMode, int colorFormat, @NativeType("const GLfloat *") MemorySegment coeffs) {
+        throw new ContextException();
+    }
+
+    default void glPathTexGenNV(int texCoordSet, int genMode, int components, @NativeType("const GLfloat *") MemorySegment coeffs) {
+        throw new ContextException();
+    }
+
+    default void glPathFogGenNV(int genMode) {
+        throw new ContextException();
+    }
+
+    default void glGetPathColorGenivNV(int color, int pname, @NativeType("GLint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetPathColorGenfvNV(int color, int pname, @NativeType("GLfloat *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetPathTexGenivNV(int texCoordSet, int pname, @NativeType("GLint *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetPathTexGenfvNV(int texCoordSet, int pname, @NativeType("GLfloat *") MemorySegment value) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,6 +33,12 @@ public interface GLNVGpuProgram5 {
     int GL_MAX_PROGRAM_SUBROUTINE_PARAMETERS_NV = 0x8F44;
     int GL_MAX_PROGRAM_SUBROUTINE_NUM_NV = 0x8F45;
 
-    void glProgramSubroutineParametersuivNV(int target, int count, @NativeType("const GLuint *") MemorySegment params);
-    void glGetProgramSubroutineParameteruivNV(int target, int index, @NativeType("GLuint *") MemorySegment param);
+    default void glProgramSubroutineParametersuivNV(int target, int count, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetProgramSubroutineParameteruivNV(int target, int index, @NativeType("GLuint *") MemorySegment param) {
+        throw new ContextException();
+    }
+
 }

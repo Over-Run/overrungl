@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,7 +25,16 @@ import java.lang.foreign.*;
  */
 public interface GLNVQueryResourceTag {
 
-    void glGenQueryResourceTagNV(int n, @NativeType("GLint *") MemorySegment tagIds);
-    void glDeleteQueryResourceTagNV(int n, @NativeType("const GLint *") MemorySegment tagIds);
-    void glQueryResourceTagNV(int tagId, @NativeType("const GLchar *") MemorySegment tagString);
+    default void glGenQueryResourceTagNV(int n, @NativeType("GLint *") MemorySegment tagIds) {
+        throw new ContextException();
+    }
+
+    default void glDeleteQueryResourceTagNV(int n, @NativeType("const GLint *") MemorySegment tagIds) {
+        throw new ContextException();
+    }
+
+    default void glQueryResourceTagNV(int tagId, @NativeType("const GLchar *") MemorySegment tagString) {
+        throw new ContextException();
+    }
+
 }

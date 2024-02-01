@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,5 +33,8 @@ public interface GLEXTTextureArray {
     int GL_MAX_ARRAY_TEXTURE_LAYERS_EXT = 0x88FF;
     int GL_COMPARE_REF_DEPTH_TO_TEXTURE_EXT = 0x884E;
 
-    void glFramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer);
+    default void glFramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,8 +25,20 @@ import java.lang.foreign.*;
  */
 public interface GLNVMemoryObjectSparse {
 
-    void glBufferPageCommitmentMemNV(int target, long offset, long size, int memory, long memOffset, boolean commit);
-    void glTexPageCommitmentMemNV(int target, int layer, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int memory, long offset, boolean commit);
-    void glNamedBufferPageCommitmentMemNV(int buffer, long offset, long size, int memory, long memOffset, boolean commit);
-    void glTexturePageCommitmentMemNV(int texture, int layer, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int memory, long offset, boolean commit);
+    default void glBufferPageCommitmentMemNV(int target, long offset, long size, int memory, long memOffset, boolean commit) {
+        throw new ContextException();
+    }
+
+    default void glTexPageCommitmentMemNV(int target, int layer, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int memory, long offset, boolean commit) {
+        throw new ContextException();
+    }
+
+    default void glNamedBufferPageCommitmentMemNV(int buffer, long offset, long size, int memory, long memOffset, boolean commit) {
+        throw new ContextException();
+    }
+
+    default void glTexturePageCommitmentMemNV(int texture, int layer, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int memory, long offset, boolean commit) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,8 +25,20 @@ import java.lang.foreign.*;
  */
 public interface GLAMDDrawBuffersBlend {
 
-    void glBlendFuncIndexedAMD(int buf, int src, int dst);
-    void glBlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha);
-    void glBlendEquationIndexedAMD(int buf, int mode);
-    void glBlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha);
+    default void glBlendFuncIndexedAMD(int buf, int src, int dst) {
+        throw new ContextException();
+    }
+
+    default void glBlendFuncSeparateIndexedAMD(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
+        throw new ContextException();
+    }
+
+    default void glBlendEquationIndexedAMD(int buf, int mode) {
+        throw new ContextException();
+    }
+
+    default void glBlendEquationSeparateIndexedAMD(int buf, int modeRGB, int modeAlpha) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTExternalBuffer {
 
-    void glBufferStorageExternalEXT(int target, long offset, long size, @NativeType("GLeglClientBufferEXT") MemorySegment clientBuffer, int flags);
-    void glNamedBufferStorageExternalEXT(int buffer, long offset, long size, @NativeType("GLeglClientBufferEXT") MemorySegment clientBuffer, int flags);
+    default void glBufferStorageExternalEXT(int target, long offset, long size, @NativeType("GLeglClientBufferEXT") MemorySegment clientBuffer, int flags) {
+        throw new ContextException();
+    }
+
+    default void glNamedBufferStorageExternalEXT(int buffer, long offset, long size, @NativeType("GLeglClientBufferEXT") MemorySegment clientBuffer, int flags) {
+        throw new ContextException();
+    }
+
 }

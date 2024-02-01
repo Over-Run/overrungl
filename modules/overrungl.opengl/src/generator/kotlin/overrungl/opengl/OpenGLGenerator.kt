@@ -186,9 +186,8 @@ class OpenGLFile(
                     """
                 ${fileHeader.prependIndent("|")}
                 |package overrungl.opengl${ext.packageName};
-
-                |import overrungl.*;
-                |import overrun.marshal.*;
+                |import overrungl.NativeType;
+                |import overrungl.opengl.*;
                 |import java.lang.foreign.*;
 
                 |/**
@@ -208,31 +207,32 @@ class OpenGLFile(
                         append("    ")
                         if (overload) {
                             appendLine("@overrun.marshal.gen.Skip")
-                            append("    default ")
+                            append("    ")
                         }
                         if (f.nativeType != null)
                             append("@NativeType(\"${f.nativeType}\") ")
-                        append("${f.returnType} ${f.name}(")
+                        append("default ${f.returnType} ${f.name}(")
                         f.params.forEachIndexed { index, it ->
                             if (index != 0) append(", ")
                             if (it.nativeType != null)
                                 append("@NativeType(\"${it.nativeType}\") ")
                             append("${it.type} ${it.name}")
                         }
-                        append(")")
+                        appendLine(") {")
                     }
                     functions.forEach { f ->
                         appendFuncHeader(f, false)
-                        append(';')
+                        appendLine("        throw new ContextException();")
+                        appendLine("    }")
                         appendLine()
 
                         // overloads
                         if (f.overloads.isNotEmpty()) {
                             f.overloads.forEach { overload ->
                                 appendFuncHeader(overload, true)
-                                appendLine(" {")
                                 appendLine(overload.content!!.prependIndent("        "))
                                 appendLine("    }")
+                                appendLine()
                             }
                         }
                     }

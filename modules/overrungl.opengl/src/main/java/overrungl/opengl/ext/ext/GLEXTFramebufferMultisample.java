@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,5 +28,8 @@ public interface GLEXTFramebufferMultisample {
     int GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_EXT = 0x8D56;
     int GL_MAX_SAMPLES_EXT = 0x8D57;
 
-    void glRenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height);
+    default void glRenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height) {
+        throw new ContextException();
+    }
+
 }

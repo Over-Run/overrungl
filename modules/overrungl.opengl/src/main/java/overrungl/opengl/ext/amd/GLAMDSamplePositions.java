@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,5 +25,8 @@ import java.lang.foreign.*;
  */
 public interface GLAMDSamplePositions {
 
-    void glSetMultisamplefvAMD(int pname, int index, @NativeType("const GLfloat *") MemorySegment val);
+    default void glSetMultisamplefvAMD(int pname, int index, @NativeType("const GLfloat *") MemorySegment val) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,7 +30,16 @@ public interface GLAMDNameGenDelete {
     int GL_VERTEX_ARRAY_OBJECT_AMD = 0x9154;
     int GL_SAMPLER_OBJECT_AMD = 0x9155;
 
-    void glGenNamesAMD(int identifier, int num, @NativeType("GLuint *") MemorySegment names);
-    void glDeleteNamesAMD(int identifier, int num, @NativeType("const GLuint *") MemorySegment names);
-    boolean glIsNameAMD(int identifier, int name);
+    default void glGenNamesAMD(int identifier, int num, @NativeType("GLuint *") MemorySegment names) {
+        throw new ContextException();
+    }
+
+    default void glDeleteNamesAMD(int identifier, int num, @NativeType("const GLuint *") MemorySegment names) {
+        throw new ContextException();
+    }
+
+    default boolean glIsNameAMD(int identifier, int name) {
+        throw new ContextException();
+    }
+
 }

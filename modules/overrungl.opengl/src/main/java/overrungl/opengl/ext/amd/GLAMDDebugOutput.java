@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -40,12 +39,25 @@ public interface GLAMDDebugOutput {
     int GL_DEBUG_CATEGORY_APPLICATION_AMD = 0x914F;
     int GL_DEBUG_CATEGORY_OTHER_AMD = 0x9150;
 
-    void glDebugMessageEnableAMD(int category, int severity, int count, @NativeType("const GLuint *") MemorySegment ids, boolean enabled);
-    void glDebugMessageInsertAMD(int category, int severity, int id, int length, @NativeType("const GLchar *") MemorySegment buf);
-    void glDebugMessageCallbackAMD(@NativeType("GLDEBUGPROCAMD") MemorySegment callback, @NativeType("void *") MemorySegment userParam);
+    default void glDebugMessageEnableAMD(int category, int severity, int count, @NativeType("const GLuint *") MemorySegment ids, boolean enabled) {
+        throw new ContextException();
+    }
+
+    default void glDebugMessageInsertAMD(int category, int severity, int id, int length, @NativeType("const GLchar *") MemorySegment buf) {
+        throw new ContextException();
+    }
+
+    default void glDebugMessageCallbackAMD(@NativeType("GLDEBUGPROCAMD") MemorySegment callback, @NativeType("void *") MemorySegment userParam) {
+        throw new ContextException();
+    }
+
     @overrun.marshal.gen.Skip
     default void glDebugMessageCallbackAMD(Arena arena, GLDebugProcAMD callback, @NativeType("void *") MemorySegment userParam) {
         glDebugMessageCallbackAMD(callback.stub(arena), userParam);
     }
-    int glGetDebugMessageLogAMD(int count, int bufSize, @NativeType("GLenum *") MemorySegment categories, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment message);
+
+    default int glGetDebugMessageLogAMD(int count, int bufSize, @NativeType("GLenum *") MemorySegment categories, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment message) {
+        throw new ContextException();
+    }
+
 }

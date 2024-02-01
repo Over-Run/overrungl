@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,8 +32,20 @@ public interface GLSGIXSprite {
     int GL_SPRITE_OBJECT_ALIGNED_SGIX = 0x814D;
     int GL_SPRITE_EYE_ALIGNED_SGIX = 0x814E;
 
-    void glSpriteParameterfSGIX(int pname, float param);
-    void glSpriteParameterfvSGIX(int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glSpriteParameteriSGIX(int pname, int param);
-    void glSpriteParameterivSGIX(int pname, @NativeType("const GLint *") MemorySegment params);
+    default void glSpriteParameterfSGIX(int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glSpriteParameterfvSGIX(int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glSpriteParameteriSGIX(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glSpriteParameterivSGIX(int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

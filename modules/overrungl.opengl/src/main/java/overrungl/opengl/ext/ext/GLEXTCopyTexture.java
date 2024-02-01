@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,9 +25,24 @@ import java.lang.foreign.*;
  */
 public interface GLEXTCopyTexture {
 
-    void glCopyTexImage1DEXT(int target, int level, int internalformat, int x, int y, int width, int border);
-    void glCopyTexImage2DEXT(int target, int level, int internalformat, int x, int y, int width, int height, int border);
-    void glCopyTexSubImage1DEXT(int target, int level, int xoffset, int x, int y, int width);
-    void glCopyTexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height);
-    void glCopyTexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height);
+    default void glCopyTexImage1DEXT(int target, int level, int internalformat, int x, int y, int width, int border) {
+        throw new ContextException();
+    }
+
+    default void glCopyTexImage2DEXT(int target, int level, int internalformat, int x, int y, int width, int height, int border) {
+        throw new ContextException();
+    }
+
+    default void glCopyTexSubImage1DEXT(int target, int level, int xoffset, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    default void glCopyTexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
+        throw new ContextException();
+    }
+
+    default void glCopyTexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int x, int y, int width, int height) {
+        throw new ContextException();
+    }
+
 }

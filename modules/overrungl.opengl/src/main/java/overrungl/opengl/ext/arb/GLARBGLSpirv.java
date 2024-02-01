@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLARBGLSpirv {
     int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
     int GL_SPIR_V_BINARY_ARB = 0x9552;
 
-    void glSpecializeShaderARB(int shader, @NativeType("const GLchar *") MemorySegment pEntryPoint, int numSpecializationConstants, @NativeType("const GLuint *") MemorySegment pConstantIndex, @NativeType("const GLuint *") MemorySegment pConstantValue);
+    default void glSpecializeShaderARB(int shader, @NativeType("const GLchar *") MemorySegment pEntryPoint, int numSpecializationConstants, @NativeType("const GLuint *") MemorySegment pConstantIndex, @NativeType("const GLuint *") MemorySegment pConstantValue) {
+        throw new ContextException();
+    }
+
 }

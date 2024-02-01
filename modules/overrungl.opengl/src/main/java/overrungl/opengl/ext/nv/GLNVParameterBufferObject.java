@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,7 +30,16 @@ public interface GLNVParameterBufferObject {
     int GL_GEOMETRY_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA3;
     int GL_FRAGMENT_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA4;
 
-    void glProgramBufferParametersfvNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLfloat *") MemorySegment params);
-    void glProgramBufferParametersIivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLint *") MemorySegment params);
-    void glProgramBufferParametersIuivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLuint *") MemorySegment params);
+    default void glProgramBufferParametersfvNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramBufferParametersIivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramBufferParametersIuivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLuint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

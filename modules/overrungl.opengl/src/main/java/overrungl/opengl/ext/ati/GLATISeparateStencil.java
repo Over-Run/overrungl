@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,6 +29,12 @@ public interface GLATISeparateStencil {
     int GL_STENCIL_BACK_PASS_DEPTH_FAIL_ATI = 0x8802;
     int GL_STENCIL_BACK_PASS_DEPTH_PASS_ATI = 0x8803;
 
-    void glStencilOpSeparateATI(int face, int sfail, int dpfail, int dppass);
-    void glStencilFuncSeparateATI(int frontfunc, int backfunc, int ref, int mask);
+    default void glStencilOpSeparateATI(int face, int sfail, int dpfail, int dppass) {
+        throw new ContextException();
+    }
+
+    default void glStencilFuncSeparateATI(int frontfunc, int backfunc, int ref, int mask) {
+        throw new ContextException();
+    }
+
 }

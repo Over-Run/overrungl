@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -44,8 +43,20 @@ public interface GLARBGeometryShader4 {
     int GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB = 0x8DE0;
     int GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB = 0x8DE1;
 
-    void glProgramParameteriARB(int program, int pname, int value);
-    void glFramebufferTextureARB(int target, int attachment, int texture, int level);
-    void glFramebufferTextureLayerARB(int target, int attachment, int texture, int level, int layer);
-    void glFramebufferTextureFaceARB(int target, int attachment, int texture, int level, int face);
+    default void glProgramParameteriARB(int program, int pname, int value) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTextureARB(int target, int attachment, int texture, int level) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTextureLayerARB(int target, int attachment, int texture, int level, int layer) {
+        throw new ContextException();
+    }
+
+    default void glFramebufferTextureFaceARB(int target, int attachment, int texture, int level, int face) {
+        throw new ContextException();
+    }
+
 }

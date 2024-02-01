@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,6 +31,12 @@ public interface GLNVPixelDataRange {
     int GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV = 0x887C;
     int GL_READ_PIXEL_DATA_RANGE_POINTER_NV = 0x887D;
 
-    void glPixelDataRangeNV(int target, int length, @NativeType("const void *") MemorySegment pointer);
-    void glFlushPixelDataRangeNV(int target);
+    default void glPixelDataRangeNV(int target, int length, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glFlushPixelDataRangeNV(int target) {
+        throw new ContextException();
+    }
+
 }

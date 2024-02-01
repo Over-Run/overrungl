@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,8 +25,20 @@ import java.lang.foreign.*;
  */
 public interface GLNVXProgressFence {
 
-    void glCreateProgressFenceNVX();
-    void glSignalSemaphoreui64NVX(int signalGpu, int fenceObjectCount, @NativeType("const GLuint *") MemorySegment semaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray);
-    void glWaitSemaphoreui64NVX(int waitGpu, int fenceObjectCount, @NativeType("const GLuint *") MemorySegment semaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray);
-    void glClientWaitSemaphoreui64NVX(int fenceObjectCount, @NativeType("const GLuint *") MemorySegment semaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray);
+    default void glCreateProgressFenceNVX() {
+        throw new ContextException();
+    }
+
+    default void glSignalSemaphoreui64NVX(int signalGpu, int fenceObjectCount, @NativeType("const GLuint *") MemorySegment semaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray) {
+        throw new ContextException();
+    }
+
+    default void glWaitSemaphoreui64NVX(int waitGpu, int fenceObjectCount, @NativeType("const GLuint *") MemorySegment semaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray) {
+        throw new ContextException();
+    }
+
+    default void glClientWaitSemaphoreui64NVX(int fenceObjectCount, @NativeType("const GLuint *") MemorySegment semaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray) {
+        throw new ContextException();
+    }
+
 }

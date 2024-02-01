@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,6 +28,12 @@ public interface GLNVPointSprite {
     int GL_COORD_REPLACE_NV = 0x8862;
     int GL_POINT_SPRITE_R_MODE_NV = 0x8863;
 
-    void glPointParameteriNV(int pname, int param);
-    void glPointParameterivNV(int pname, @NativeType("const GLint *") MemorySegment params);
+    default void glPointParameteriNV(int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glPointParameterivNV(int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

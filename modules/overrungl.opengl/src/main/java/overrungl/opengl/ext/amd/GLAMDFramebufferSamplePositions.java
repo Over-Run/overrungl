@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,8 +29,20 @@ public interface GLAMDFramebufferSamplePositions {
     int GL_PIXELS_PER_SAMPLE_PATTERN_Y_AMD = 0x91AF;
     int GL_ALL_PIXELS_AMD = 0xFFFFFFFF;
 
-    void glFramebufferSamplePositionsfvAMD(int target, int numsamples, int pixelindex, @NativeType("const GLfloat *") MemorySegment values);
-    void glNamedFramebufferSamplePositionsfvAMD(int framebuffer, int numsamples, int pixelindex, @NativeType("const GLfloat *") MemorySegment values);
-    void glGetFramebufferParameterfvAMD(int target, int pname, int numsamples, int pixelindex, int size, @NativeType("GLfloat *") MemorySegment values);
-    void glGetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numsamples, int pixelindex, int size, @NativeType("GLfloat *") MemorySegment values);
+    default void glFramebufferSamplePositionsfvAMD(int target, int numsamples, int pixelindex, @NativeType("const GLfloat *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glNamedFramebufferSamplePositionsfvAMD(int framebuffer, int numsamples, int pixelindex, @NativeType("const GLfloat *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glGetFramebufferParameterfvAMD(int target, int pname, int numsamples, int pixelindex, int size, @NativeType("GLfloat *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glGetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numsamples, int pixelindex, int size, @NativeType("GLfloat *") MemorySegment values) {
+        throw new ContextException();
+    }
+
 }

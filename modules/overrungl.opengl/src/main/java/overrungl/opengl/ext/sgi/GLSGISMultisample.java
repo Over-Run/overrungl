@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -42,6 +41,12 @@ public interface GLSGISMultisample {
     int GL_SAMPLE_MASK_INVERT_SGIS = 0x80AB;
     int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
 
-    void glSampleMaskSGIS(float value, boolean invert);
-    void glSamplePatternSGIS(int pattern);
+    default void glSampleMaskSGIS(float value, boolean invert) {
+        throw new ContextException();
+    }
+
+    default void glSamplePatternSGIS(int pattern) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -74,8 +73,20 @@ public interface GLNVMeshShader {
     int GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_MESH_SHADER_NV = 0x959E;
     int GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TASK_SHADER_NV = 0x959F;
 
-    void glDrawMeshTasksNV(int first, int count);
-    void glDrawMeshTasksIndirectNV(long indirect);
-    void glMultiDrawMeshTasksIndirectNV(long indirect, int drawcount, int stride);
-    void glMultiDrawMeshTasksIndirectCountNV(long indirect, long drawcount, int maxdrawcount, int stride);
+    default void glDrawMeshTasksNV(int first, int count) {
+        throw new ContextException();
+    }
+
+    default void glDrawMeshTasksIndirectNV(long indirect) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawMeshTasksIndirectNV(long indirect, int drawcount, int stride) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawMeshTasksIndirectCountNV(long indirect, long drawcount, int maxdrawcount, int stride) {
+        throw new ContextException();
+    }
+
 }

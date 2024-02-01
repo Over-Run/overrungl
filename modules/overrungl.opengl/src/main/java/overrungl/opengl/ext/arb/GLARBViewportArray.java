@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLARBViewportArray {
 
-    void glDepthRangeArraydvNV(int first, int count, @NativeType("const GLdouble *") MemorySegment v);
-    void glDepthRangeIndexeddNV(int index, double n, double f);
+    default void glDepthRangeArraydvNV(int first, int count, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glDepthRangeIndexeddNV(int index, double n, double f) {
+        throw new ContextException();
+    }
+
 }

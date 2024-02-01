@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLEXTTexturePerturbNormal {
     int GL_PERTURB_EXT = 0x85AE;
     int GL_TEXTURE_NORMAL_EXT = 0x85AF;
 
-    void glTextureNormalEXT(int mode);
+    default void glTextureNormalEXT(int mode) {
+        throw new ContextException();
+    }
+
 }

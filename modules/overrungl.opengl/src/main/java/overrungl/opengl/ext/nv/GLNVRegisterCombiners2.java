@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,6 +26,12 @@ import java.lang.foreign.*;
 public interface GLNVRegisterCombiners2 {
     int GL_PER_STAGE_CONSTANTS_NV = 0x8535;
 
-    void glCombinerStageParameterfvNV(int stage, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glGetCombinerStageParameterfvNV(int stage, int pname, @NativeType("GLfloat *") MemorySegment params);
+    default void glCombinerStageParameterfvNV(int stage, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetCombinerStageParameterfvNV(int stage, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -34,7 +33,16 @@ public interface GLNVFramebufferMixedSamples {
     int GL_COVERAGE_MODULATION_NV = 0x9332;
     int GL_COVERAGE_MODULATION_TABLE_SIZE_NV = 0x9333;
 
-    void glCoverageModulationTableNV(int n, @NativeType("const GLfloat *") MemorySegment v);
-    void glGetCoverageModulationTableNV(int bufSize, @NativeType("GLfloat *") MemorySegment v);
-    void glCoverageModulationNV(int components);
+    default void glCoverageModulationTableNV(int n, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glGetCoverageModulationTableNV(int bufSize, @NativeType("GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glCoverageModulationNV(int components) {
+        throw new ContextException();
+    }
+
 }

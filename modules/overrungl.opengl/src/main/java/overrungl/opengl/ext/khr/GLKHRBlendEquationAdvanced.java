@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.khr;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -41,5 +40,8 @@ public interface GLKHRBlendEquationAdvanced {
     int GL_HSL_COLOR_KHR = 0x92AF;
     int GL_HSL_LUMINOSITY_KHR = 0x92B0;
 
-    void glBlendBarrierKHR();
+    default void glBlendBarrierKHR() {
+        throw new ContextException();
+    }
+
 }

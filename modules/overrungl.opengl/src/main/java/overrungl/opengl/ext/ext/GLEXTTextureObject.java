@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,10 +30,28 @@ public interface GLEXTTextureObject {
     int GL_TEXTURE_2D_BINDING_EXT = 0x8069;
     int GL_TEXTURE_3D_BINDING_EXT = 0x806A;
 
-    boolean glAreTexturesResidentEXT(int n, @NativeType("const GLuint *") MemorySegment textures, @NativeType("GLboolean *") MemorySegment residences);
-    void glBindTextureEXT(int target, int texture);
-    void glDeleteTexturesEXT(int n, @NativeType("const GLuint *") MemorySegment textures);
-    void glGenTexturesEXT(int n, @NativeType("GLuint *") MemorySegment textures);
-    boolean glIsTextureEXT(int texture);
-    void glPrioritizeTexturesEXT(int n, @NativeType("const GLuint *") MemorySegment textures, @NativeType("const GLclampf *") MemorySegment priorities);
+    default boolean glAreTexturesResidentEXT(int n, @NativeType("const GLuint *") MemorySegment textures, @NativeType("GLboolean *") MemorySegment residences) {
+        throw new ContextException();
+    }
+
+    default void glBindTextureEXT(int target, int texture) {
+        throw new ContextException();
+    }
+
+    default void glDeleteTexturesEXT(int n, @NativeType("const GLuint *") MemorySegment textures) {
+        throw new ContextException();
+    }
+
+    default void glGenTexturesEXT(int n, @NativeType("GLuint *") MemorySegment textures) {
+        throw new ContextException();
+    }
+
+    default boolean glIsTextureEXT(int texture) {
+        throw new ContextException();
+    }
+
+    default void glPrioritizeTexturesEXT(int n, @NativeType("const GLuint *") MemorySegment textures, @NativeType("const GLclampf *") MemorySegment priorities) {
+        throw new ContextException();
+    }
+
 }

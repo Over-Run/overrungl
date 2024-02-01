@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -33,40 +32,148 @@ public interface GLARBGpuShaderInt64 {
     int GL_UNSIGNED_INT64_VEC3_ARB = 0x8FF6;
     int GL_UNSIGNED_INT64_VEC4_ARB = 0x8FF7;
 
-    void glUniform1i64ARB(int location, long x);
-    void glUniform2i64ARB(int location, long x, long y);
-    void glUniform3i64ARB(int location, long x, long y, long z);
-    void glUniform4i64ARB(int location, long x, long y, long z, long w);
-    void glUniform1i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glUniform2i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glUniform3i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glUniform4i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glUniform1ui64ARB(int location, long x);
-    void glUniform2ui64ARB(int location, long x, long y);
-    void glUniform3ui64ARB(int location, long x, long y, long z);
-    void glUniform4ui64ARB(int location, long x, long y, long z, long w);
-    void glUniform1ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glUniform2ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glUniform3ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glUniform4ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glGetUniformi64vARB(int program, int location, @NativeType("GLint64 *") MemorySegment params);
-    void glGetUniformui64vARB(int program, int location, @NativeType("GLuint64 *") MemorySegment params);
-    void glGetnUniformi64vARB(int program, int location, int bufSize, @NativeType("GLint64 *") MemorySegment params);
-    void glGetnUniformui64vARB(int program, int location, int bufSize, @NativeType("GLuint64 *") MemorySegment params);
-    void glProgramUniform1i64ARB(int program, int location, long x);
-    void glProgramUniform2i64ARB(int program, int location, long x, long y);
-    void glProgramUniform3i64ARB(int program, int location, long x, long y, long z);
-    void glProgramUniform4i64ARB(int program, int location, long x, long y, long z, long w);
-    void glProgramUniform1i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glProgramUniform2i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glProgramUniform3i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glProgramUniform4i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value);
-    void glProgramUniform1ui64ARB(int program, int location, long x);
-    void glProgramUniform2ui64ARB(int program, int location, long x, long y);
-    void glProgramUniform3ui64ARB(int program, int location, long x, long y, long z);
-    void glProgramUniform4ui64ARB(int program, int location, long x, long y, long z, long w);
-    void glProgramUniform1ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glProgramUniform2ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glProgramUniform3ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
-    void glProgramUniform4ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value);
+    default void glUniform1i64ARB(int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glUniform2i64ARB(int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glUniform3i64ARB(int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glUniform4i64ARB(int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glUniform1i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4i64vARB(int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform1ui64ARB(int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glUniform2ui64ARB(int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glUniform3ui64ARB(int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glUniform4ui64ARB(int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glUniform1ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4ui64vARB(int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetUniformi64vARB(int program, int location, @NativeType("GLint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetUniformui64vARB(int program, int location, @NativeType("GLuint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetnUniformi64vARB(int program, int location, int bufSize, @NativeType("GLint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetnUniformui64vARB(int program, int location, int bufSize, @NativeType("GLuint64 *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1i64ARB(int program, int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2i64ARB(int program, int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3i64ARB(int program, int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4i64ARB(int program, int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4i64vARB(int program, int location, int count, @NativeType("const GLint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1ui64ARB(int program, int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2ui64ARB(int program, int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3ui64ARB(int program, int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4ui64ARB(int program, int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4ui64vARB(int program, int location, int count, @NativeType("const GLuint64 *") MemorySegment value) {
+        throw new ContextException();
+    }
+
 }

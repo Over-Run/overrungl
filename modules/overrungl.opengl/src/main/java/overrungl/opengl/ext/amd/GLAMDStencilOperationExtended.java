@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLAMDStencilOperationExtended {
     int GL_STENCIL_OP_VALUE_AMD = 0x874C;
     int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
 
-    void glStencilOpValueAMD(int face, int value);
+    default void glStencilOpValueAMD(int face, int value) {
+        throw new ContextException();
+    }
+
 }

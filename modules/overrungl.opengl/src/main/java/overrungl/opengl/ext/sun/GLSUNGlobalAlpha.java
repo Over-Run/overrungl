@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sun;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,12 +27,36 @@ public interface GLSUNGlobalAlpha {
     int GL_GLOBAL_ALPHA_SUN = 0x81D9;
     int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
 
-    void glGlobalAlphaFactorbSUN(byte factor);
-    void glGlobalAlphaFactorsSUN(short factor);
-    void glGlobalAlphaFactoriSUN(int factor);
-    void glGlobalAlphaFactorfSUN(float factor);
-    void glGlobalAlphaFactordSUN(double factor);
-    void glGlobalAlphaFactorubSUN(byte factor);
-    void glGlobalAlphaFactorusSUN(short factor);
-    void glGlobalAlphaFactoruiSUN(int factor);
+    default void glGlobalAlphaFactorbSUN(byte factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactorsSUN(short factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactoriSUN(int factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactorfSUN(float factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactordSUN(double factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactorubSUN(byte factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactorusSUN(short factor) {
+        throw new ContextException();
+    }
+
+    default void glGlobalAlphaFactoruiSUN(int factor) {
+        throw new ContextException();
+    }
+
 }

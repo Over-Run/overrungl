@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,5 +25,8 @@ import java.lang.foreign.*;
  */
 public interface GLEXTDrawBuffers2 {
 
-    void glColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a);
+    default void glColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
+        throw new ContextException();
+    }
+
 }

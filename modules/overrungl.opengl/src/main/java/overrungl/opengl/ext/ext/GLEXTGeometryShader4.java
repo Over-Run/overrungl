@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -46,5 +45,8 @@ public interface GLEXTGeometryShader4 {
     int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_LAYER_EXT = 0x8CD4;
     int GL_PROGRAM_POINT_SIZE_EXT = 0x8642;
 
-    void glProgramParameteriEXT(int program, int pname, int value);
+    default void glProgramParameteriEXT(int program, int pname, int value) {
+        throw new ContextException();
+    }
+
 }

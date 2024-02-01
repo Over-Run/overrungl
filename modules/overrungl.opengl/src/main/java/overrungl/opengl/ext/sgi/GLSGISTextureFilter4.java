@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLSGISTextureFilter4 {
     int GL_FILTER4_SGIS = 0x8146;
     int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;
 
-    void glGetTexFilterFuncSGIS(int target, int filter, @NativeType("GLfloat *") MemorySegment weights);
-    void glTexFilterFuncSGIS(int target, int filter, int n, @NativeType("const GLfloat *") MemorySegment weights);
+    default void glGetTexFilterFuncSGIS(int target, int filter, @NativeType("GLfloat *") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glTexFilterFuncSGIS(int target, int filter, int n, @NativeType("const GLfloat *") MemorySegment weights) {
+        throw new ContextException();
+    }
+
 }

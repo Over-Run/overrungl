@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -58,13 +57,40 @@ public interface GLEXTVertexArray {
     int GL_TEXTURE_COORD_ARRAY_POINTER_EXT = 0x8092;
     int GL_EDGE_FLAG_ARRAY_POINTER_EXT = 0x8093;
 
-    void glArrayElementEXT(int i);
-    void glColorPointerEXT(int size, int type, int stride, int count, @NativeType("const void *") MemorySegment pointer);
-    void glDrawArraysEXT(int mode, int first, int count);
-    void glEdgeFlagPointerEXT(int stride, int count, @NativeType("const GLboolean *") MemorySegment pointer);
-    void glGetPointervEXT(int pname, @NativeType("void **") MemorySegment params);
-    void glIndexPointerEXT(int type, int stride, int count, @NativeType("const void *") MemorySegment pointer);
-    void glNormalPointerEXT(int type, int stride, int count, @NativeType("const void *") MemorySegment pointer);
-    void glTexCoordPointerEXT(int size, int type, int stride, int count, @NativeType("const void *") MemorySegment pointer);
-    void glVertexPointerEXT(int size, int type, int stride, int count, @NativeType("const void *") MemorySegment pointer);
+    default void glArrayElementEXT(int i) {
+        throw new ContextException();
+    }
+
+    default void glColorPointerEXT(int size, int type, int stride, int count, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glDrawArraysEXT(int mode, int first, int count) {
+        throw new ContextException();
+    }
+
+    default void glEdgeFlagPointerEXT(int stride, int count, @NativeType("const GLboolean *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glGetPointervEXT(int pname, @NativeType("void **") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glIndexPointerEXT(int type, int stride, int count, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glNormalPointerEXT(int type, int stride, int count, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glTexCoordPointerEXT(int size, int type, int stride, int count, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glVertexPointerEXT(int size, int type, int stride, int count, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

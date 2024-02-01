@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,5 +30,8 @@ public interface GLEXTTextureBufferObject {
     int GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D;
     int GL_TEXTURE_BUFFER_FORMAT_EXT = 0x8C2E;
 
-    void glTexBufferEXT(int target, int internalformat, int buffer);
+    default void glTexBufferEXT(int target, int internalformat, int buffer) {
+        throw new ContextException();
+    }
+
 }

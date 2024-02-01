@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLNVBindlessMultiDrawIndirect {
 
-    void glMultiDrawArraysIndirectBindlessNV(int mode, @NativeType("const void *") MemorySegment indirect, int drawCount, int stride, int vertexBufferCount);
-    void glMultiDrawElementsIndirectBindlessNV(int mode, int type, @NativeType("const void *") MemorySegment indirect, int drawCount, int stride, int vertexBufferCount);
+    default void glMultiDrawArraysIndirectBindlessNV(int mode, @NativeType("const void *") MemorySegment indirect, int drawCount, int stride, int vertexBufferCount) {
+        throw new ContextException();
+    }
+
+    default void glMultiDrawElementsIndirectBindlessNV(int mode, int type, @NativeType("const void *") MemorySegment indirect, int drawCount, int stride, int vertexBufferCount) {
+        throw new ContextException();
+    }
+
 }

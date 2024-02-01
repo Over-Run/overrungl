@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,5 +29,8 @@ public interface GLNVInternalformatSampleQuery {
     int GL_SUPERSAMPLE_SCALE_Y_NV = 0x9373;
     int GL_CONFORMANT_NV = 0x9374;
 
-    void glGetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, @NativeType("GLint *") MemorySegment params);
+    default void glGetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

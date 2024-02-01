@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,5 +26,8 @@ import java.lang.foreign.*;
 public interface GLEXTMemoryObjectFd {
     int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
 
-    void glImportMemoryFdEXT(int memory, long size, int handleType, int fd);
+    default void glImportMemoryFdEXT(int memory, long size, int handleType, int fd) {
+        throw new ContextException();
+    }
+
 }

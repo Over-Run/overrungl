@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,23 +25,80 @@ import java.lang.foreign.*;
  */
 public interface GLNVVertexAttribInteger64bit {
 
-    void glVertexAttribL1i64NV(int index, long x);
-    void glVertexAttribL2i64NV(int index, long x, long y);
-    void glVertexAttribL3i64NV(int index, long x, long y, long z);
-    void glVertexAttribL4i64NV(int index, long x, long y, long z, long w);
-    void glVertexAttribL1i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v);
-    void glVertexAttribL2i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v);
-    void glVertexAttribL3i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v);
-    void glVertexAttribL4i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v);
-    void glVertexAttribL1ui64NV(int index, long x);
-    void glVertexAttribL2ui64NV(int index, long x, long y);
-    void glVertexAttribL3ui64NV(int index, long x, long y, long z);
-    void glVertexAttribL4ui64NV(int index, long x, long y, long z, long w);
-    void glVertexAttribL1ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v);
-    void glVertexAttribL2ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v);
-    void glVertexAttribL3ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v);
-    void glVertexAttribL4ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v);
-    void glGetVertexAttribLi64vNV(int index, int pname, @NativeType("GLint64EXT *") MemorySegment params);
-    void glGetVertexAttribLui64vNV(int index, int pname, @NativeType("GLuint64EXT *") MemorySegment params);
-    void glVertexAttribLFormatNV(int index, int size, int type, int stride);
+    default void glVertexAttribL1i64NV(int index, long x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL2i64NV(int index, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL3i64NV(int index, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL4i64NV(int index, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL1i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL2i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL3i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL4i64vNV(int index, @NativeType("const GLint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL1ui64NV(int index, long x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL2ui64NV(int index, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL3ui64NV(int index, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL4ui64NV(int index, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL1ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL2ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL3ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL4ui64vNV(int index, @NativeType("const GLuint64EXT *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribLi64vNV(int index, int pname, @NativeType("GLint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribLui64vNV(int index, int pname, @NativeType("GLuint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribLFormatNV(int index, int size, int type, int stride) {
+        throw new ContextException();
+    }
+
 }

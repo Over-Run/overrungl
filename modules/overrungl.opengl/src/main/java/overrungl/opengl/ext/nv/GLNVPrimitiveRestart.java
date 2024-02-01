@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLNVPrimitiveRestart {
     int GL_PRIMITIVE_RESTART_NV = 0x8558;
     int GL_PRIMITIVE_RESTART_INDEX_NV = 0x8559;
 
-    void glPrimitiveRestartNV();
-    void glPrimitiveRestartIndexNV(int index);
+    default void glPrimitiveRestartNV() {
+        throw new ContextException();
+    }
+
+    default void glPrimitiveRestartIndexNV(int index) {
+        throw new ContextException();
+    }
+
 }

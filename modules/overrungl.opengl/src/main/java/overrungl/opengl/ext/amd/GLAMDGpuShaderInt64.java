@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -50,38 +49,140 @@ public interface GLAMDGpuShaderInt64 {
     int GL_UNSIGNED_INT64_VEC3_NV = 0x8FF6;
     int GL_UNSIGNED_INT64_VEC4_NV = 0x8FF7;
 
-    void glUniform1i64NV(int location, long x);
-    void glUniform2i64NV(int location, long x, long y);
-    void glUniform3i64NV(int location, long x, long y, long z);
-    void glUniform4i64NV(int location, long x, long y, long z, long w);
-    void glUniform1i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glUniform2i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glUniform3i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glUniform4i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glUniform1ui64NV(int location, long x);
-    void glUniform2ui64NV(int location, long x, long y);
-    void glUniform3ui64NV(int location, long x, long y, long z);
-    void glUniform4ui64NV(int location, long x, long y, long z, long w);
-    void glUniform1ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glUniform2ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glUniform3ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glUniform4ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glGetUniformi64vNV(int program, int location, @NativeType("GLint64EXT *") MemorySegment params);
-    void glGetUniformui64vNV(int program, int location, @NativeType("GLuint64EXT *") MemorySegment params);
-    void glProgramUniform1i64NV(int program, int location, long x);
-    void glProgramUniform2i64NV(int program, int location, long x, long y);
-    void glProgramUniform3i64NV(int program, int location, long x, long y, long z);
-    void glProgramUniform4i64NV(int program, int location, long x, long y, long z, long w);
-    void glProgramUniform1i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glProgramUniform2i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glProgramUniform3i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glProgramUniform4i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value);
-    void glProgramUniform1ui64NV(int program, int location, long x);
-    void glProgramUniform2ui64NV(int program, int location, long x, long y);
-    void glProgramUniform3ui64NV(int program, int location, long x, long y, long z);
-    void glProgramUniform4ui64NV(int program, int location, long x, long y, long z, long w);
-    void glProgramUniform1ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glProgramUniform2ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glProgramUniform3ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glProgramUniform4ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
+    default void glUniform1i64NV(int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glUniform2i64NV(int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glUniform3i64NV(int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glUniform4i64NV(int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glUniform1i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4i64vNV(int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform1ui64NV(int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glUniform2ui64NV(int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glUniform3ui64NV(int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glUniform4ui64NV(int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glUniform1ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform2ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform3ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glUniform4ui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glGetUniformi64vNV(int program, int location, @NativeType("GLint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetUniformui64vNV(int program, int location, @NativeType("GLuint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1i64NV(int program, int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2i64NV(int program, int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3i64NV(int program, int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4i64NV(int program, int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4i64vNV(int program, int location, int count, @NativeType("const GLint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1ui64NV(int program, int location, long x) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2ui64NV(int program, int location, long x, long y) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3ui64NV(int program, int location, long x, long y, long z) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4ui64NV(int program, int location, long x, long y, long z, long w) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform1ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform2ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform3ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniform4ui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
 }

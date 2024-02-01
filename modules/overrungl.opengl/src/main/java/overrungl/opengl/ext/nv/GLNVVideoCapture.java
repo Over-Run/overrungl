@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -55,16 +54,52 @@ public interface GLNVVideoCapture {
     int GL_VIDEO_CAPTURE_FIELD_LOWER_HEIGHT_NV = 0x903B;
     int GL_VIDEO_CAPTURE_SURFACE_ORIGIN_NV = 0x903C;
 
-    void glBeginVideoCaptureNV(int video_capture_slot);
-    void glBindVideoCaptureStreamBufferNV(int video_capture_slot, int stream, int frame_region, long offset);
-    void glBindVideoCaptureStreamTextureNV(int video_capture_slot, int stream, int frame_region, int target, int texture);
-    void glEndVideoCaptureNV(int video_capture_slot);
-    void glGetVideoCaptureivNV(int video_capture_slot, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetVideoCaptureStreamivNV(int video_capture_slot, int stream, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetVideoCaptureStreamfvNV(int video_capture_slot, int stream, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetVideoCaptureStreamdvNV(int video_capture_slot, int stream, int pname, @NativeType("GLdouble *") MemorySegment params);
-    int glVideoCaptureNV(int video_capture_slot, @NativeType("GLuint *") MemorySegment sequence_num, @NativeType("GLuint64EXT *") MemorySegment capture_time);
-    void glVideoCaptureStreamParameterivNV(int video_capture_slot, int stream, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glVideoCaptureStreamParameterfvNV(int video_capture_slot, int stream, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glVideoCaptureStreamParameterdvNV(int video_capture_slot, int stream, int pname, @NativeType("const GLdouble *") MemorySegment params);
+    default void glBeginVideoCaptureNV(int video_capture_slot) {
+        throw new ContextException();
+    }
+
+    default void glBindVideoCaptureStreamBufferNV(int video_capture_slot, int stream, int frame_region, long offset) {
+        throw new ContextException();
+    }
+
+    default void glBindVideoCaptureStreamTextureNV(int video_capture_slot, int stream, int frame_region, int target, int texture) {
+        throw new ContextException();
+    }
+
+    default void glEndVideoCaptureNV(int video_capture_slot) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoCaptureivNV(int video_capture_slot, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoCaptureStreamivNV(int video_capture_slot, int stream, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoCaptureStreamfvNV(int video_capture_slot, int stream, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetVideoCaptureStreamdvNV(int video_capture_slot, int stream, int pname, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default int glVideoCaptureNV(int video_capture_slot, @NativeType("GLuint *") MemorySegment sequence_num, @NativeType("GLuint64EXT *") MemorySegment capture_time) {
+        throw new ContextException();
+    }
+
+    default void glVideoCaptureStreamParameterivNV(int video_capture_slot, int stream, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glVideoCaptureStreamParameterfvNV(int video_capture_slot, int stream, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glVideoCaptureStreamParameterdvNV(int video_capture_slot, int stream, int pname, @NativeType("const GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

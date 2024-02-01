@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,12 +27,36 @@ public interface GLAPPLEFence {
     int GL_DRAW_PIXELS_APPLE = 0x8A0A;
     int GL_FENCE_APPLE = 0x8A0B;
 
-    void glGenFencesAPPLE(int n, @NativeType("GLuint *") MemorySegment fences);
-    void glDeleteFencesAPPLE(int n, @NativeType("const GLuint *") MemorySegment fences);
-    void glSetFenceAPPLE(int fence);
-    boolean glIsFenceAPPLE(int fence);
-    boolean glTestFenceAPPLE(int fence);
-    void glFinishFenceAPPLE(int fence);
-    boolean glTestObjectAPPLE(int object, int name);
-    void glFinishObjectAPPLE(int object, int name);
+    default void glGenFencesAPPLE(int n, @NativeType("GLuint *") MemorySegment fences) {
+        throw new ContextException();
+    }
+
+    default void glDeleteFencesAPPLE(int n, @NativeType("const GLuint *") MemorySegment fences) {
+        throw new ContextException();
+    }
+
+    default void glSetFenceAPPLE(int fence) {
+        throw new ContextException();
+    }
+
+    default boolean glIsFenceAPPLE(int fence) {
+        throw new ContextException();
+    }
+
+    default boolean glTestFenceAPPLE(int fence) {
+        throw new ContextException();
+    }
+
+    default void glFinishFenceAPPLE(int fence) {
+        throw new ContextException();
+    }
+
+    default boolean glTestObjectAPPLE(int object, int name) {
+        throw new ContextException();
+    }
+
+    default void glFinishObjectAPPLE(int object, int name) {
+        throw new ContextException();
+    }
+
 }

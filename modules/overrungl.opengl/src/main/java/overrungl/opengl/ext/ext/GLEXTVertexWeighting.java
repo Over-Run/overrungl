@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -39,7 +38,16 @@ public interface GLEXTVertexWeighting {
     int GL_VERTEX_WEIGHT_ARRAY_STRIDE_EXT = 0x850F;
     int GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT = 0x8510;
 
-    void glVertexWeightfEXT(float weight);
-    void glVertexWeightfvEXT(@NativeType("const GLfloat *") MemorySegment weight);
-    void glVertexWeightPointerEXT(int size, int type, int stride, @NativeType("const void *") MemorySegment pointer);
+    default void glVertexWeightfEXT(float weight) {
+        throw new ContextException();
+    }
+
+    default void glVertexWeightfvEXT(@NativeType("const GLfloat *") MemorySegment weight) {
+        throw new ContextException();
+    }
+
+    default void glVertexWeightPointerEXT(int size, int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

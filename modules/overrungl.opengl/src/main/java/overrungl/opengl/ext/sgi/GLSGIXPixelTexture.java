@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLSGIXPixelTexture {
     int GL_PIXEL_TEX_GEN_SGIX = 0x8139;
     int GL_PIXEL_TEX_GEN_MODE_SGIX = 0x832B;
 
-    void glPixelTexGenSGIX(int mode);
+    default void glPixelTexGenSGIX(int mode) {
+        throw new ContextException();
+    }
+
 }

@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,6 +25,12 @@ import java.lang.foreign.*;
  */
 public interface GLEXTEGLImageStorage {
 
-    void glEGLImageTargetTexStorageEXT(int target, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list);
-    void glEGLImageTargetTextureStorageEXT(int texture, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list);
+    default void glEGLImageTargetTexStorageEXT(int target, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list) {
+        throw new ContextException();
+    }
+
+    default void glEGLImageTargetTextureStorageEXT(int texture, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list) {
+        throw new ContextException();
+    }
+
 }

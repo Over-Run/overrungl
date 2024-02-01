@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -36,11 +35,32 @@ public interface GLAPPLEVertexProgramEvaluators {
     int GL_VERTEX_ATTRIB_MAP2_ORDER_APPLE = 0x8A08;
     int GL_VERTEX_ATTRIB_MAP2_DOMAIN_APPLE = 0x8A09;
 
-    void glEnableVertexAttribAPPLE(int index, int pname);
-    void glDisableVertexAttribAPPLE(int index, int pname);
-    boolean glIsVertexAttribEnabledAPPLE(int index, int pname);
-    void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, @NativeType("const GLdouble *") MemorySegment points);
-    void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, @NativeType("const GLfloat *") MemorySegment points);
-    void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, @NativeType("const GLdouble *") MemorySegment points);
-    void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, @NativeType("const GLfloat *") MemorySegment points);
+    default void glEnableVertexAttribAPPLE(int index, int pname) {
+        throw new ContextException();
+    }
+
+    default void glDisableVertexAttribAPPLE(int index, int pname) {
+        throw new ContextException();
+    }
+
+    default boolean glIsVertexAttribEnabledAPPLE(int index, int pname) {
+        throw new ContextException();
+    }
+
+    default void glMapVertexAttrib1dAPPLE(int index, int size, double u1, double u2, int stride, int order, @NativeType("const GLdouble *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glMapVertexAttrib1fAPPLE(int index, int size, float u1, float u2, int stride, int order, @NativeType("const GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glMapVertexAttrib2dAPPLE(int index, int size, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, @NativeType("const GLdouble *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glMapVertexAttrib2fAPPLE(int index, int size, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, @NativeType("const GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
 }

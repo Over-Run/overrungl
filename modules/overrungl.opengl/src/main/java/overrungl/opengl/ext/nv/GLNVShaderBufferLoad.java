@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,17 +28,56 @@ public interface GLNVShaderBufferLoad {
     int GL_GPU_ADDRESS_NV = 0x8F34;
     int GL_MAX_SHADER_BUFFER_ADDRESS_NV = 0x8F35;
 
-    void glMakeBufferResidentNV(int target, int access);
-    void glMakeBufferNonResidentNV(int target);
-    boolean glIsBufferResidentNV(int target);
-    void glMakeNamedBufferResidentNV(int buffer, int access);
-    void glMakeNamedBufferNonResidentNV(int buffer);
-    boolean glIsNamedBufferResidentNV(int buffer);
-    void glGetBufferParameterui64vNV(int target, int pname, @NativeType("GLuint64EXT *") MemorySegment params);
-    void glGetNamedBufferParameterui64vNV(int buffer, int pname, @NativeType("GLuint64EXT *") MemorySegment params);
-    void glGetIntegerui64vNV(int value, @NativeType("GLuint64EXT *") MemorySegment result);
-    void glUniformui64NV(int location, long value);
-    void glUniformui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
-    void glProgramUniformui64NV(int program, int location, long value);
-    void glProgramUniformui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value);
+    default void glMakeBufferResidentNV(int target, int access) {
+        throw new ContextException();
+    }
+
+    default void glMakeBufferNonResidentNV(int target) {
+        throw new ContextException();
+    }
+
+    default boolean glIsBufferResidentNV(int target) {
+        throw new ContextException();
+    }
+
+    default void glMakeNamedBufferResidentNV(int buffer, int access) {
+        throw new ContextException();
+    }
+
+    default void glMakeNamedBufferNonResidentNV(int buffer) {
+        throw new ContextException();
+    }
+
+    default boolean glIsNamedBufferResidentNV(int buffer) {
+        throw new ContextException();
+    }
+
+    default void glGetBufferParameterui64vNV(int target, int pname, @NativeType("GLuint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetNamedBufferParameterui64vNV(int buffer, int pname, @NativeType("GLuint64EXT *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetIntegerui64vNV(int value, @NativeType("GLuint64EXT *") MemorySegment result) {
+        throw new ContextException();
+    }
+
+    default void glUniformui64NV(int location, long value) {
+        throw new ContextException();
+    }
+
+    default void glUniformui64vNV(int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniformui64NV(int program, int location, long value) {
+        throw new ContextException();
+    }
+
+    default void glProgramUniformui64vNV(int program, int location, int count, @NativeType("const GLuint64EXT *") MemorySegment value) {
+        throw new ContextException();
+    }
+
 }

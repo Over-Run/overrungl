@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,10 +26,28 @@ import java.lang.foreign.*;
 public interface GLSGIXListPriority {
     int GL_LIST_PRIORITY_SGIX = 0x8182;
 
-    void glGetListParameterfvSGIX(int list, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetListParameterivSGIX(int list, int pname, @NativeType("GLint *") MemorySegment params);
-    void glListParameterfSGIX(int list, int pname, float param);
-    void glListParameterfvSGIX(int list, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glListParameteriSGIX(int list, int pname, int param);
-    void glListParameterivSGIX(int list, int pname, @NativeType("const GLint *") MemorySegment params);
+    default void glGetListParameterfvSGIX(int list, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetListParameterivSGIX(int list, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glListParameterfSGIX(int list, int pname, float param) {
+        throw new ContextException();
+    }
+
+    default void glListParameterfvSGIX(int list, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glListParameteriSGIX(int list, int pname, int param) {
+        throw new ContextException();
+    }
+
+    default void glListParameterivSGIX(int list, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

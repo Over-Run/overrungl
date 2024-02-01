@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -38,14 +37,44 @@ public interface GLEXTVertexAttrib64bit {
     int GL_DOUBLE_MAT4x2_EXT = 0x8F4D;
     int GL_DOUBLE_MAT4x3_EXT = 0x8F4E;
 
-    void glVertexAttribL1dEXT(int index, double x);
-    void glVertexAttribL2dEXT(int index, double x, double y);
-    void glVertexAttribL3dEXT(int index, double x, double y, double z);
-    void glVertexAttribL4dEXT(int index, double x, double y, double z, double w);
-    void glVertexAttribL1dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribL2dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribL3dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribL4dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v);
-    void glVertexAttribLPointerEXT(int index, int size, int type, int stride, @NativeType("const void *") MemorySegment pointer);
-    void glGetVertexAttribLdvEXT(int index, int pname, @NativeType("GLdouble *") MemorySegment params);
+    default void glVertexAttribL1dEXT(int index, double x) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL2dEXT(int index, double x, double y) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL3dEXT(int index, double x, double y, double z) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL4dEXT(int index, double x, double y, double z, double w) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL1dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL2dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL3dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribL4dvEXT(int index, @NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribLPointerEXT(int index, int size, int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glGetVertexAttribLdvEXT(int index, int pname, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

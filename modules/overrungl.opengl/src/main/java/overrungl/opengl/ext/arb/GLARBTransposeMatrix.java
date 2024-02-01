@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,8 +29,20 @@ public interface GLARBTransposeMatrix {
     int GL_TRANSPOSE_TEXTURE_MATRIX_ARB = 0x84E5;
     int GL_TRANSPOSE_COLOR_MATRIX_ARB = 0x84E6;
 
-    void glLoadTransposeMatrixfARB(@NativeType("const GLfloat*") MemorySegment m);
-    void glLoadTransposeMatrixdARB(@NativeType("const GLdouble*") MemorySegment m);
-    void glMultTransposeMatrixfARB(@NativeType("const GLfloat*") MemorySegment m);
-    void glMultTransposeMatrixdARB(@NativeType("const GLdouble*") MemorySegment m);
+    default void glLoadTransposeMatrixfARB(@NativeType("const GLfloat*") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glLoadTransposeMatrixdARB(@NativeType("const GLdouble*") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMultTransposeMatrixfARB(@NativeType("const GLfloat*") MemorySegment m) {
+        throw new ContextException();
+    }
+
+    default void glMultTransposeMatrixdARB(@NativeType("const GLdouble*") MemorySegment m) {
+        throw new ContextException();
+    }
+
 }

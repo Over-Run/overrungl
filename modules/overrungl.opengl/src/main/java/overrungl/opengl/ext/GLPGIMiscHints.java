@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -46,5 +45,8 @@ public interface GLPGIMiscHints {
     int GL_WIDE_LINE_HINT_PGI = 0x1A222;
     int GL_BACK_NORMALS_HINT_PGI = 0x1A223;
 
-    void glHintPGI(int target, int mode);
+    default void glHintPGI(int target, int mode) {
+        throw new ContextException();
+    }
+
 }

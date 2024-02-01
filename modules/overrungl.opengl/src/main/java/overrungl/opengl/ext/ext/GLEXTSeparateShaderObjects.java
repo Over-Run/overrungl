@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,7 +26,16 @@ import java.lang.foreign.*;
 public interface GLEXTSeparateShaderObjects {
     int GL_ACTIVE_PROGRAM_EXT = 0x8B8D;
 
-    void glUseShaderProgramEXT(int type, int program);
-    void glActiveProgramEXT(int program);
-    int glCreateShaderProgramEXT(int type, @NativeType("const GLchar *") MemorySegment string);
+    default void glUseShaderProgramEXT(int type, int program) {
+        throw new ContextException();
+    }
+
+    default void glActiveProgramEXT(int program) {
+        throw new ContextException();
+    }
+
+    default int glCreateShaderProgramEXT(int type, @NativeType("const GLchar *") MemorySegment string) {
+        throw new ContextException();
+    }
+
 }

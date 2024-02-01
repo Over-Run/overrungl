@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -47,11 +46,32 @@ public interface GLNVShadingRateImage {
     int GL_SHADING_RATE_SAMPLE_ORDER_PIXEL_MAJOR_NV = 0x95AF;
     int GL_SHADING_RATE_SAMPLE_ORDER_SAMPLE_MAJOR_NV = 0x95B0;
 
-    void glBindShadingRateImageNV(int texture);
-    void glGetShadingRateImagePaletteNV(int viewport, int entry, @NativeType("GLenum *") MemorySegment rate);
-    void glGetShadingRateSampleLocationivNV(int rate, int samples, int index, @NativeType("GLint *") MemorySegment location);
-    void glShadingRateImageBarrierNV(boolean synchronize);
-    void glShadingRateImagePaletteNV(int viewport, int first, int count, @NativeType("const GLenum *") MemorySegment rates);
-    void glShadingRateSampleOrderNV(int order);
-    void glShadingRateSampleOrderCustomNV(int rate, int samples, @NativeType("const GLint *") MemorySegment locations);
+    default void glBindShadingRateImageNV(int texture) {
+        throw new ContextException();
+    }
+
+    default void glGetShadingRateImagePaletteNV(int viewport, int entry, @NativeType("GLenum *") MemorySegment rate) {
+        throw new ContextException();
+    }
+
+    default void glGetShadingRateSampleLocationivNV(int rate, int samples, int index, @NativeType("GLint *") MemorySegment location) {
+        throw new ContextException();
+    }
+
+    default void glShadingRateImageBarrierNV(boolean synchronize) {
+        throw new ContextException();
+    }
+
+    default void glShadingRateImagePaletteNV(int viewport, int first, int count, @NativeType("const GLenum *") MemorySegment rates) {
+        throw new ContextException();
+    }
+
+    default void glShadingRateSampleOrderNV(int order) {
+        throw new ContextException();
+    }
+
+    default void glShadingRateSampleOrderCustomNV(int rate, int samples, @NativeType("const GLint *") MemorySegment locations) {
+        throw new ContextException();
+    }
+
 }

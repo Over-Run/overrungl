@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -51,16 +50,52 @@ public interface GLNVVertexBufferUnifiedMemory {
     int GL_DRAW_INDIRECT_ADDRESS_NV = 0x8F41;
     int GL_DRAW_INDIRECT_LENGTH_NV = 0x8F42;
 
-    void glBufferAddressRangeNV(int pname, int index, long address, long length);
-    void glVertexFormatNV(int size, int type, int stride);
-    void glNormalFormatNV(int type, int stride);
-    void glColorFormatNV(int size, int type, int stride);
-    void glIndexFormatNV(int type, int stride);
-    void glTexCoordFormatNV(int size, int type, int stride);
-    void glEdgeFlagFormatNV(int stride);
-    void glSecondaryColorFormatNV(int size, int type, int stride);
-    void glFogCoordFormatNV(int type, int stride);
-    void glVertexAttribFormatNV(int index, int size, int type, boolean normalized, int stride);
-    void glVertexAttribIFormatNV(int index, int size, int type, int stride);
-    void glGetIntegerui64i_vNV(int value, int index, @NativeType("GLuint64EXT *") MemorySegment result);
+    default void glBufferAddressRangeNV(int pname, int index, long address, long length) {
+        throw new ContextException();
+    }
+
+    default void glVertexFormatNV(int size, int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glNormalFormatNV(int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glColorFormatNV(int size, int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glIndexFormatNV(int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glTexCoordFormatNV(int size, int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glEdgeFlagFormatNV(int stride) {
+        throw new ContextException();
+    }
+
+    default void glSecondaryColorFormatNV(int size, int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glFogCoordFormatNV(int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribFormatNV(int index, int size, int type, boolean normalized, int stride) {
+        throw new ContextException();
+    }
+
+    default void glVertexAttribIFormatNV(int index, int size, int type, int stride) {
+        throw new ContextException();
+    }
+
+    default void glGetIntegerui64i_vNV(int value, int index, @NativeType("GLuint64EXT *") MemorySegment result) {
+        throw new ContextException();
+    }
+
 }

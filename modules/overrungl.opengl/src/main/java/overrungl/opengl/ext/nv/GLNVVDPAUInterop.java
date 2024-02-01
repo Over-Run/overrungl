@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,14 +29,44 @@ public interface GLNVVDPAUInterop {
     int GL_SURFACE_MAPPED_NV = 0x8700;
     int GL_WRITE_DISCARD_NV = 0x88BE;
 
-    void glVDPAUInitNV(@NativeType("const void *") MemorySegment vdpDevice, @NativeType("const void *") MemorySegment getProcAddress);
-    void glVDPAUFiniNV();
-    long glVDPAURegisterVideoSurfaceNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames);
-    long glVDPAURegisterOutputSurfaceNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames);
-    boolean glVDPAUIsSurfaceNV(long surface);
-    void glVDPAUUnregisterSurfaceNV(long surface);
-    void glVDPAUGetSurfaceivNV(long surface, int pname, int count, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLint *") MemorySegment values);
-    void glVDPAUSurfaceAccessNV(long surface, int access);
-    void glVDPAUMapSurfacesNV(int numSurfaces, @NativeType("const GLvdpauSurfaceNV *") MemorySegment surfaces);
-    void glVDPAUUnmapSurfacesNV(int numSurface, @NativeType("const GLvdpauSurfaceNV *") MemorySegment surfaces);
+    default void glVDPAUInitNV(@NativeType("const void *") MemorySegment vdpDevice, @NativeType("const void *") MemorySegment getProcAddress) {
+        throw new ContextException();
+    }
+
+    default void glVDPAUFiniNV() {
+        throw new ContextException();
+    }
+
+    default long glVDPAURegisterVideoSurfaceNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames) {
+        throw new ContextException();
+    }
+
+    default long glVDPAURegisterOutputSurfaceNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames) {
+        throw new ContextException();
+    }
+
+    default boolean glVDPAUIsSurfaceNV(long surface) {
+        throw new ContextException();
+    }
+
+    default void glVDPAUUnregisterSurfaceNV(long surface) {
+        throw new ContextException();
+    }
+
+    default void glVDPAUGetSurfaceivNV(long surface, int pname, int count, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLint *") MemorySegment values) {
+        throw new ContextException();
+    }
+
+    default void glVDPAUSurfaceAccessNV(long surface, int access) {
+        throw new ContextException();
+    }
+
+    default void glVDPAUMapSurfacesNV(int numSurfaces, @NativeType("const GLvdpauSurfaceNV *") MemorySegment surfaces) {
+        throw new ContextException();
+    }
+
+    default void glVDPAUUnmapSurfacesNV(int numSurface, @NativeType("const GLvdpauSurfaceNV *") MemorySegment surfaces) {
+        throw new ContextException();
+    }
+
 }

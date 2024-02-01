@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.intel;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -30,7 +29,16 @@ public interface GLINTELMapTexture {
     int GL_LAYOUT_LINEAR_INTEL = 1;
     int GL_LAYOUT_LINEAR_CPU_CACHED_INTEL = 2;
 
-    void glSyncTextureINTEL(int texture);
-    void glUnmapTexture2DINTEL(int texture, int level);
-    @NativeType("void*") MemorySegment glMapTexture2DINTEL(int texture, int level, int access, @NativeType("GLint *") MemorySegment stride, @NativeType("GLenum *") MemorySegment layout);
+    default void glSyncTextureINTEL(int texture) {
+        throw new ContextException();
+    }
+
+    default void glUnmapTexture2DINTEL(int texture, int level) {
+        throw new ContextException();
+    }
+
+    @NativeType("void*") default MemorySegment glMapTexture2DINTEL(int texture, int level, int access, @NativeType("GLint *") MemorySegment stride, @NativeType("GLenum *") MemorySegment layout) {
+        throw new ContextException();
+    }
+
 }

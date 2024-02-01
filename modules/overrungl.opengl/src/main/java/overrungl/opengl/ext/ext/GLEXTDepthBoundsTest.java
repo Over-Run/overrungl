@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,5 +27,8 @@ public interface GLEXTDepthBoundsTest {
     int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
     int GL_DEPTH_BOUNDS_EXT = 0x8891;
 
-    void glDepthBoundsEXT(double zmin, double zmax);
+    default void glDepthBoundsEXT(double zmin, double zmax) {
+        throw new ContextException();
+    }
+
 }

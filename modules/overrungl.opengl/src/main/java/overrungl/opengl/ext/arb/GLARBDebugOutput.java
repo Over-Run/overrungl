@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -48,12 +47,25 @@ public interface GLARBDebugOutput {
     int GL_DEBUG_SEVERITY_MEDIUM_ARB = 0x9147;
     int GL_DEBUG_SEVERITY_LOW_ARB = 0x9148;
 
-    void glDebugMessageControlARB(int source, int type, int severity, int count, @NativeType("const GLuint *") MemorySegment ids, boolean enabled);
-    void glDebugMessageInsertARB(int source, int type, int id, int severity, int length, @NativeType("const GLchar *") MemorySegment buf);
-    void glDebugMessageCallbackARB(@NativeType("GLDEBUGPROCARB") MemorySegment callback, @NativeType("const void *") MemorySegment userParam);
+    default void glDebugMessageControlARB(int source, int type, int severity, int count, @NativeType("const GLuint *") MemorySegment ids, boolean enabled) {
+        throw new ContextException();
+    }
+
+    default void glDebugMessageInsertARB(int source, int type, int id, int severity, int length, @NativeType("const GLchar *") MemorySegment buf) {
+        throw new ContextException();
+    }
+
+    default void glDebugMessageCallbackARB(@NativeType("GLDEBUGPROCARB") MemorySegment callback, @NativeType("const void *") MemorySegment userParam) {
+        throw new ContextException();
+    }
+
     @overrun.marshal.gen.Skip
     default void glDebugMessageCallbackARB(Arena arena, overrungl.opengl.GLDebugProc callback, @NativeType("const void *") MemorySegment userParam) {
         glDebugMessageCallbackARB(callback.stub(arena), userParam);
     }
-    int glGetDebugMessageLogARB(int count, int bufSize, @NativeType("GLenum *") MemorySegment sources, @NativeType("GLenum *") MemorySegment types, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment messageLog);
+
+    default int glGetDebugMessageLogARB(int count, int bufSize, @NativeType("GLenum *") MemorySegment sources, @NativeType("GLenum *") MemorySegment types, @NativeType("GLuint *") MemorySegment ids, @NativeType("GLenum *") MemorySegment severities, @NativeType("GLsizei *") MemorySegment lengths, @NativeType("GLchar *") MemorySegment messageLog) {
+        throw new ContextException();
+    }
+
 }

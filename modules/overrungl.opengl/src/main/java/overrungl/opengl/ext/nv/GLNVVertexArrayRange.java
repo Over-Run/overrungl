@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,6 +30,12 @@ public interface GLNVVertexArrayRange {
     int GL_MAX_VERTEX_ARRAY_RANGE_ELEMENT_NV = 0x8520;
     int GL_VERTEX_ARRAY_RANGE_POINTER_NV = 0x8521;
 
-    void glFlushVertexArrayRangeNV();
-    void glVertexArrayRangeNV(int length, @NativeType("const void *") MemorySegment pointer);
+    default void glFlushVertexArrayRangeNV() {
+        throw new ContextException();
+    }
+
+    default void glVertexArrayRangeNV(int length, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
 }

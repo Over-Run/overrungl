@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -68,14 +67,44 @@ public interface GLARBVertexBlend {
     int GL_MODELVIEW30_ARB = 0x873E;
     int GL_MODELVIEW31_ARB = 0x873F;
 
-    void glWeightbvARB(int size, @NativeType("const GLbyte*") MemorySegment weights);
-    void glWeightsvARB(int size, @NativeType("const GLshort*") MemorySegment weights);
-    void glWeightivARB(int size, @NativeType("const GLint*") MemorySegment weights);
-    void glWeightfvARB(int size, @NativeType("const GLfloat*") MemorySegment weights);
-    void glWeightdvARB(int size, @NativeType("const GLdouble*") MemorySegment weights);
-    void glWeightubvARB(int size, @NativeType("const GLubyte*") MemorySegment weights);
-    void glWeightusvARB(int size, @NativeType("const GLushort*") MemorySegment weights);
-    void glWeightuivARB(int size, @NativeType("const GLuint*") MemorySegment weights);
-    void glWeightPointerARB(int size, int type, int stride, @NativeType("const void*") MemorySegment pointer);
-    void glVertexBlendARB(int count);
+    default void glWeightbvARB(int size, @NativeType("const GLbyte*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightsvARB(int size, @NativeType("const GLshort*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightivARB(int size, @NativeType("const GLint*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightfvARB(int size, @NativeType("const GLfloat*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightdvARB(int size, @NativeType("const GLdouble*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightubvARB(int size, @NativeType("const GLubyte*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightusvARB(int size, @NativeType("const GLushort*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightuivARB(int size, @NativeType("const GLuint*") MemorySegment weights) {
+        throw new ContextException();
+    }
+
+    default void glWeightPointerARB(int size, int type, int stride, @NativeType("const void*") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glVertexBlendARB(int count) {
+        throw new ContextException();
+    }
+
 }

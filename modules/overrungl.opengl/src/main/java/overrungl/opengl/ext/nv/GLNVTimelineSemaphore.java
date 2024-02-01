@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -31,7 +30,16 @@ public interface GLNVTimelineSemaphore {
     int GL_SEMAPHORE_TYPE_TIMELINE_NV = 0x95B5;
     int GL_MAX_TIMELINE_SEMAPHORE_VALUE_DIFFERENCE_NV = 0x95B6;
 
-    void glCreateSemaphoresNV(int n, @NativeType("GLuint *") MemorySegment semaphores);
-    void glSemaphoreParameterivNV(int semaphore, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glGetSemaphoreParameterivNV(int semaphore, int pname, @NativeType("GLint *") MemorySegment params);
+    default void glCreateSemaphoresNV(int n, @NativeType("GLuint *") MemorySegment semaphores) {
+        throw new ContextException();
+    }
+
+    default void glSemaphoreParameterivNV(int semaphore, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetSemaphoreParameterivNV(int semaphore, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }

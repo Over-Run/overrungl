@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.oes;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,10 +25,28 @@ import java.lang.foreign.*;
  */
 public interface GLOESSinglePrecision {
 
-    void glClearDepthfOES(float depth);
-    void glClipPlanefOES(int plane, @NativeType("const GLfloat *") MemorySegment equation);
-    void glDepthRangefOES(float n, float f);
-    void glFrustumfOES(float l, float r, float b, float t, float n, float f);
-    void glGetClipPlanefOES(int plane, @NativeType("GLfloat *") MemorySegment equation);
-    void glOrthofOES(float l, float r, float b, float t, float n, float f);
+    default void glClearDepthfOES(float depth) {
+        throw new ContextException();
+    }
+
+    default void glClipPlanefOES(int plane, @NativeType("const GLfloat *") MemorySegment equation) {
+        throw new ContextException();
+    }
+
+    default void glDepthRangefOES(float n, float f) {
+        throw new ContextException();
+    }
+
+    default void glFrustumfOES(float l, float r, float b, float t, float n, float f) {
+        throw new ContextException();
+    }
+
+    default void glGetClipPlanefOES(int plane, @NativeType("GLfloat *") MemorySegment equation) {
+        throw new ContextException();
+    }
+
+    default void glOrthofOES(float l, float r, float b, float t, float n, float f) {
+        throw new ContextException();
+    }
+
 }

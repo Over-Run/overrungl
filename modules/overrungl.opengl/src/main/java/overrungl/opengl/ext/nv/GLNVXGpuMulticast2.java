@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -27,10 +26,28 @@ import java.lang.foreign.*;
 public interface GLNVXGpuMulticast2 {
     int GL_UPLOAD_GPU_MASK_NVX = 0x954A;
 
-    void glUploadGpuMaskNVX(int mask);
-    void glMulticastViewportArrayvNVX(int gpu, int first, int count, @NativeType("const GLfloat *") MemorySegment v);
-    void glMulticastViewportPositionWScaleNVX(int gpu, int index, float xcoeff, float ycoeff);
-    void glMulticastScissorArrayvNVX(int gpu, int first, int count, @NativeType("const GLint *") MemorySegment v);
-    int glAsyncCopyBufferSubDataNVX(int waitSemaphoreCount, @NativeType("const GLuint *") MemorySegment waitSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray, int readGpu, int writeGpuMask, int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size, int signalSemaphoreCount, @NativeType("const GLuint *") MemorySegment signalSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment signalValueArray);
-    int glAsyncCopyImageSubDataNVX(int waitSemaphoreCount, @NativeType("const GLuint *") MemorySegment waitSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment waitValueArray, int srcGpu, int dstGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, @NativeType("const GLuint *") MemorySegment signalSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment signalValueArray);
+    default void glUploadGpuMaskNVX(int mask) {
+        throw new ContextException();
+    }
+
+    default void glMulticastViewportArrayvNVX(int gpu, int first, int count, @NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glMulticastViewportPositionWScaleNVX(int gpu, int index, float xcoeff, float ycoeff) {
+        throw new ContextException();
+    }
+
+    default void glMulticastScissorArrayvNVX(int gpu, int first, int count, @NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default int glAsyncCopyBufferSubDataNVX(int waitSemaphoreCount, @NativeType("const GLuint *") MemorySegment waitSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment fenceValueArray, int readGpu, int writeGpuMask, int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size, int signalSemaphoreCount, @NativeType("const GLuint *") MemorySegment signalSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment signalValueArray) {
+        throw new ContextException();
+    }
+
+    default int glAsyncCopyImageSubDataNVX(int waitSemaphoreCount, @NativeType("const GLuint *") MemorySegment waitSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment waitValueArray, int srcGpu, int dstGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, @NativeType("const GLuint *") MemorySegment signalSemaphoreArray, @NativeType("const GLuint64 *") MemorySegment signalValueArray) {
+        throw new ContextException();
+    }
+
 }

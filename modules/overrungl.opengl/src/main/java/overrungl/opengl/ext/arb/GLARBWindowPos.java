@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -26,20 +25,68 @@ import java.lang.foreign.*;
  */
 public interface GLARBWindowPos {
 
-    void glWindowPos2dARB(double x, double y);
-    void glWindowPos2dvARB(@NativeType("const GLdouble *") MemorySegment v);
-    void glWindowPos2fARB(float x, float y);
-    void glWindowPos2fvARB(@NativeType("const GLfloat *") MemorySegment v);
-    void glWindowPos2iARB(int x, int y);
-    void glWindowPos2ivARB(@NativeType("const GLint *") MemorySegment v);
-    void glWindowPos2sARB(short x, short y);
-    void glWindowPos2svARB(@NativeType("const GLshort *") MemorySegment v);
-    void glWindowPos3dARB(double x, double y, double z);
-    void glWindowPos3dvARB(@NativeType("const GLdouble *") MemorySegment v);
-    void glWindowPos3fARB(float x, float y, float z);
-    void glWindowPos3fvARB(@NativeType("const GLfloat *") MemorySegment v);
-    void glWindowPos3iARB(int x, int y, int z);
-    void glWindowPos3ivARB(@NativeType("const GLint *") MemorySegment v);
-    void glWindowPos3sARB(short x, short y, short z);
-    void glWindowPos3svARB(@NativeType("const GLshort *") MemorySegment v);
+    default void glWindowPos2dARB(double x, double y) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2dvARB(@NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2fARB(float x, float y) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2fvARB(@NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2iARB(int x, int y) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2ivARB(@NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2sARB(short x, short y) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos2svARB(@NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3dARB(double x, double y, double z) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3dvARB(@NativeType("const GLdouble *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3fARB(float x, float y, float z) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3fvARB(@NativeType("const GLfloat *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3iARB(int x, int y, int z) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3ivARB(@NativeType("const GLint *") MemorySegment v) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3sARB(short x, short y, short z) {
+        throw new ContextException();
+    }
+
+    default void glWindowPos3svARB(@NativeType("const GLshort *") MemorySegment v) {
+        throw new ContextException();
+    }
+
 }

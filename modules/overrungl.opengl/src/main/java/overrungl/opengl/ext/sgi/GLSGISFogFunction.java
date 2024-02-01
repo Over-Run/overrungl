@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -29,6 +28,12 @@ public interface GLSGISFogFunction {
     int GL_FOG_FUNC_POINTS_SGIS = 0x812B;
     int GL_MAX_FOG_FUNC_POINTS_SGIS = 0x812C;
 
-    void glFogFuncSGIS(int n, @NativeType("const GLfloat *") MemorySegment points);
-    void glGetFogFuncSGIS(@NativeType("GLfloat *") MemorySegment points);
+    default void glFogFuncSGIS(int n, @NativeType("const GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glGetFogFuncSGIS(@NativeType("GLfloat *") MemorySegment points) {
+        throw new ContextException();
+    }
+
 }

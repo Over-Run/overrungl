@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -50,13 +49,40 @@ public interface GLNVEvaluators {
     int GL_MAX_MAP_TESSELLATION_NV = 0x86D6;
     int GL_MAX_RATIONAL_EVAL_ORDER_NV = 0x86D7;
 
-    void glMapControlPointsNV(int target, int index, int type, int ustride, int vstride, int uorder, int vorder, boolean packed, @NativeType("const void *") MemorySegment points);
-    void glMapParameterivNV(int target, int pname, @NativeType("const GLint *") MemorySegment params);
-    void glMapParameterfvNV(int target, int pname, @NativeType("const GLfloat *") MemorySegment params);
-    void glGetMapControlPointsNV(int target, int index, int type, int ustride, int vstride, boolean packed, @NativeType("void *") MemorySegment points);
-    void glGetMapParameterivNV(int target, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetMapParameterfvNV(int target, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glGetMapAttribParameterivNV(int target, int index, int pname, @NativeType("GLint *") MemorySegment params);
-    void glGetMapAttribParameterfvNV(int target, int index, int pname, @NativeType("GLfloat *") MemorySegment params);
-    void glEvalMapsNV(int target, int mode);
+    default void glMapControlPointsNV(int target, int index, int type, int ustride, int vstride, int uorder, int vorder, boolean packed, @NativeType("const void *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glMapParameterivNV(int target, int pname, @NativeType("const GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glMapParameterfvNV(int target, int pname, @NativeType("const GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMapControlPointsNV(int target, int index, int type, int ustride, int vstride, boolean packed, @NativeType("void *") MemorySegment points) {
+        throw new ContextException();
+    }
+
+    default void glGetMapParameterivNV(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMapParameterfvNV(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMapAttribParameterivNV(int target, int index, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glGetMapAttribParameterfvNV(int target, int index, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
+    }
+
+    default void glEvalMapsNV(int target, int mode) {
+        throw new ContextException();
+    }
+
 }

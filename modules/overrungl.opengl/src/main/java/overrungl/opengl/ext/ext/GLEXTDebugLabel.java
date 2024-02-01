@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,6 +31,12 @@ public interface GLEXTDebugLabel {
     int GL_QUERY_OBJECT_EXT = 0x9153;
     int GL_VERTEX_ARRAY_OBJECT_EXT = 0x9154;
 
-    void glLabelObjectEXT(int type, int object, int length, @NativeType("const GLchar *") MemorySegment label);
-    void glGetObjectLabelEXT(int type, int object, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLchar *") MemorySegment label);
+    default void glLabelObjectEXT(int type, int object, int length, @NativeType("const GLchar *") MemorySegment label) {
+        throw new ContextException();
+    }
+
+    default void glGetObjectLabelEXT(int type, int object, int bufSize, @NativeType("GLsizei *") MemorySegment length, @NativeType("GLchar *") MemorySegment label) {
+        throw new ContextException();
+    }
+
 }

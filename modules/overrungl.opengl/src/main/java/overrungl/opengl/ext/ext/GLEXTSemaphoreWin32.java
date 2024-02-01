@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -28,6 +27,12 @@ public interface GLEXTSemaphoreWin32 {
     int GL_HANDLE_TYPE_D3D12_FENCE_EXT = 0x9594;
     int GL_D3D12_FENCE_VALUE_EXT = 0x9595;
 
-    void glImportSemaphoreWin32HandleEXT(int semaphore, int handleType, @NativeType("void * ") MemorySegment handle);
-    void glImportSemaphoreWin32NameEXT(int semaphore, int handleType, @NativeType("const void *") MemorySegment name);
+    default void glImportSemaphoreWin32HandleEXT(int semaphore, int handleType, @NativeType("void * ") MemorySegment handle) {
+        throw new ContextException();
+    }
+
+    default void glImportSemaphoreWin32NameEXT(int semaphore, int handleType, @NativeType("const void *") MemorySegment name) {
+        throw new ContextException();
+    }
+
 }

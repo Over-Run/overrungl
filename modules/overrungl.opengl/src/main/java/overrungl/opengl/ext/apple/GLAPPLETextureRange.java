@@ -16,9 +16,8 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
-import overrun.marshal.*;
+import overrungl.NativeType;
+import overrungl.opengl.*;
 import java.lang.foreign.*;
 
 /**
@@ -32,6 +31,12 @@ public interface GLAPPLETextureRange {
     int GL_STORAGE_CACHED_APPLE = 0x85BE;
     int GL_STORAGE_SHARED_APPLE = 0x85BF;
 
-    void glTextureRangeAPPLE(int target, int length, @NativeType("const void *") MemorySegment pointer);
-    void glGetTexParameterPointervAPPLE(int target, int pname, @NativeType("void **") MemorySegment params);
+    default void glTextureRangeAPPLE(int target, int length, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
+    }
+
+    default void glGetTexParameterPointervAPPLE(int target, int pname, @NativeType("void **") MemorySegment params) {
+        throw new ContextException();
+    }
+
 }
