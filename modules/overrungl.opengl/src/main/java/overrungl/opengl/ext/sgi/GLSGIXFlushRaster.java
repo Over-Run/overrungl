@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_flush_raster}
  */
-public final class GLSGIXFlushRaster {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SGIX_flush_raster) return;
-        ext.glFlushRasterSGIX = load.invoke("glFlushRasterSGIX", ofVoid());
-    }
+public interface GLSGIXFlushRaster {
 
-    public static void glFlushRasterSGIX() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFlushRasterSGIX).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFlushRasterSGIX() {
+        throw new ContextException();
     }
 
 }

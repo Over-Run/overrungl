@@ -16,19 +16,15 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_texture_coordinate_clamp}
  */
-public final class GLSGIXTextureCoordinateClamp {
-    public static final int GL_TEXTURE_MAX_CLAMP_S_SGIX = 0x8369;
-    public static final int GL_TEXTURE_MAX_CLAMP_T_SGIX = 0x836A;
-    public static final int GL_TEXTURE_MAX_CLAMP_R_SGIX = 0x836B;
+public interface GLSGIXTextureCoordinateClamp {
+    int GL_TEXTURE_MAX_CLAMP_S_SGIX = 0x8369;
+    int GL_TEXTURE_MAX_CLAMP_T_SGIX = 0x836A;
+    int GL_TEXTURE_MAX_CLAMP_R_SGIX = 0x836B;
 }

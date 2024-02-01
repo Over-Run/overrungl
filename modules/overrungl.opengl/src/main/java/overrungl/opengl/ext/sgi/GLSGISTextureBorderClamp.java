@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIS_texture_border_clamp}
  */
-public final class GLSGISTextureBorderClamp {
-    public static final int GL_CLAMP_TO_BORDER_SGIS = 0x812D;
+public interface GLSGISTextureBorderClamp {
+    int GL_CLAMP_TO_BORDER_SGIS = 0x812D;
 }

@@ -16,34 +16,23 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_window_rectangles}
  */
-public final class GLEXTWindowRectangles {
-    public static final int GL_INCLUSIVE_EXT = 0x8F10;
-    public static final int GL_EXCLUSIVE_EXT = 0x8F11;
-    public static final int GL_WINDOW_RECTANGLE_EXT = 0x8F12;
-    public static final int GL_WINDOW_RECTANGLE_MODE_EXT = 0x8F13;
-    public static final int GL_MAX_WINDOW_RECTANGLES_EXT = 0x8F14;
-    public static final int GL_NUM_WINDOW_RECTANGLES_EXT = 0x8F15;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_window_rectangles) return;
-        ext.glWindowRectanglesEXT = load.invoke("glWindowRectanglesEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLEXTWindowRectangles {
+    int GL_INCLUSIVE_EXT = 0x8F10;
+    int GL_EXCLUSIVE_EXT = 0x8F11;
+    int GL_WINDOW_RECTANGLE_EXT = 0x8F12;
+    int GL_WINDOW_RECTANGLE_MODE_EXT = 0x8F13;
+    int GL_MAX_WINDOW_RECTANGLES_EXT = 0x8F14;
+    int GL_NUM_WINDOW_RECTANGLES_EXT = 0x8F15;
 
-    public static void glWindowRectanglesEXT(int mode, int count, @NativeType("const GLint *") MemorySegment box) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glWindowRectanglesEXT).invokeExact(mode, count, box);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glWindowRectanglesEXT(int mode, int count, @NativeType("const GLint *") MemorySegment box) {
+        throw new ContextException();
     }
 
 }

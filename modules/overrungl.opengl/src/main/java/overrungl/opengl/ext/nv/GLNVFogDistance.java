@@ -16,19 +16,15 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_fog_distance}
  */
-public final class GLNVFogDistance {
-    public static final int GL_FOG_DISTANCE_MODE_NV = 0x855A;
-    public static final int GL_EYE_RADIAL_NV = 0x855B;
-    public static final int GL_EYE_PLANE_ABSOLUTE_NV = 0x855C;
+public interface GLNVFogDistance {
+    int GL_FOG_DISTANCE_MODE_NV = 0x855A;
+    int GL_EYE_RADIAL_NV = 0x855B;
+    int GL_EYE_PLANE_ABSOLUTE_NV = 0x855C;
 }

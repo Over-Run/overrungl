@@ -16,22 +16,18 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.mesa;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_MESAX_texture_stack}
  */
-public final class GLMESAXTextureStack {
-    public static final int GL_TEXTURE_1D_STACK_MESAX = 0x8759;
-    public static final int GL_TEXTURE_2D_STACK_MESAX = 0x875A;
-    public static final int GL_PROXY_TEXTURE_1D_STACK_MESAX = 0x875B;
-    public static final int GL_PROXY_TEXTURE_2D_STACK_MESAX = 0x875C;
-    public static final int GL_TEXTURE_1D_STACK_BINDING_MESAX = 0x875D;
-    public static final int GL_TEXTURE_2D_STACK_BINDING_MESAX = 0x875E;
+public interface GLMESAXTextureStack {
+    int GL_TEXTURE_1D_STACK_MESAX = 0x8759;
+    int GL_TEXTURE_2D_STACK_MESAX = 0x875A;
+    int GL_PROXY_TEXTURE_1D_STACK_MESAX = 0x875B;
+    int GL_PROXY_TEXTURE_2D_STACK_MESAX = 0x875C;
+    int GL_TEXTURE_1D_STACK_BINDING_MESAX = 0x875D;
+    int GL_TEXTURE_2D_STACK_BINDING_MESAX = 0x875E;
 }

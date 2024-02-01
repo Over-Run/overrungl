@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_texture_barrier}
  */
-public final class GLNVTextureBarrier {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_texture_barrier) return;
-        ext.glTextureBarrierNV = load.invoke("glTextureBarrierNV", ofVoid());
-    }
+public interface GLNVTextureBarrier {
 
-    public static void glTextureBarrierNV() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glTextureBarrierNV).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glTextureBarrierNV() {
+        throw new ContextException();
     }
 
 }

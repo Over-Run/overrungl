@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_shader_buffer_store}
  */
-public final class GLNVShaderBufferStore {
-    public static final int GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV = 0x00000010;
+public interface GLNVShaderBufferStore {
+    int GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV = 0x00000010;
 }

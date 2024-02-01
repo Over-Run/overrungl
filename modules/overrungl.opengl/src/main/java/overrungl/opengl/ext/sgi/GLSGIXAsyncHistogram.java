@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_async_histogram}
  */
-public final class GLSGIXAsyncHistogram {
-    public static final int GL_ASYNC_HISTOGRAM_SGIX = 0x832C;
-    public static final int GL_MAX_ASYNC_HISTOGRAM_SGIX = 0x832D;
+public interface GLSGIXAsyncHistogram {
+    int GL_ASYNC_HISTOGRAM_SGIX = 0x832C;
+    int GL_MAX_ASYNC_HISTOGRAM_SGIX = 0x832D;
 }

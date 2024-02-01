@@ -16,20 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_shadow}
  */
-public final class GLSGIXShadow {
-    public static final int GL_TEXTURE_COMPARE_SGIX = 0x819A;
-    public static final int GL_TEXTURE_COMPARE_OPERATOR_SGIX = 0x819B;
-    public static final int GL_TEXTURE_LEQUAL_R_SGIX = 0x819C;
-    public static final int GL_TEXTURE_GEQUAL_R_SGIX = 0x819D;
+public interface GLSGIXShadow {
+    int GL_TEXTURE_COMPARE_SGIX = 0x819A;
+    int GL_TEXTURE_COMPARE_OPERATOR_SGIX = 0x819B;
+    int GL_TEXTURE_LEQUAL_R_SGIX = 0x819C;
+    int GL_TEXTURE_GEQUAL_R_SGIX = 0x819D;
 }

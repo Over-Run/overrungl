@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,12 +16,10 @@
 
 package overrungl.opengl.ext.nv;
 
-import overrungl.Callback;
+import overrun.marshal.Upcall;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 
 /**
  * {@link GLNVDrawVulkanImage}
@@ -30,29 +28,28 @@ import java.lang.invoke.MethodType;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface GLVulkanProcNV extends Callback {
-    FunctionDescriptor DESC = FunctionDescriptor.ofVoid();
-    MethodType MTYPE = DESC.toMethodType();
-    Native<GLVulkanProcNV> NATIVE = segment -> new GLVulkanProcNV() {
-        @Override
-        public void invoke() {
-            try {
-                nativeHandle(segment).invokeExact();
-            } catch (Throwable e) {
-                throw new AssertionError("should not reach here", e);
-            }
-        }
-    };
+public interface GLVulkanProcNV extends Upcall {
+    /**
+     * The type.
+     */
+    Type<GLVulkanProcNV> TYPE = Upcall.type();
 
+    @Stub
     void invoke();
 
     @Override
-    default FunctionDescriptor descriptor() {
-        return DESC;
+    default MemorySegment stub(Arena arena) {
+        return TYPE.of(arena, this);
     }
 
-    @Override
-    default MethodHandle handle(MethodHandles.Lookup lookup) throws NoSuchMethodException, IllegalAccessException {
-        return lookup.findVirtual(GLVulkanProcNV.class, "invoke", MTYPE);
+    @Wrapper
+    static GLVulkanProcNV wrap(Arena arena, MemorySegment stub) {
+        return TYPE.wrap(stub, handle -> () -> {
+            try {
+                handle.invokeExact();
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }

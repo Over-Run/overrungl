@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_ir_instrument1}
  */
-public final class GLSGIXIrInstrument1 {
-    public static final int GL_IR_INSTRUMENT1_SGIX = 0x817F;
+public interface GLSGIXIrInstrument1 {
+    int GL_IR_INSTRUMENT1_SGIX = 0x817F;
 }

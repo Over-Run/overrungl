@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,7 +17,7 @@
 package overrungl.joml;
 
 import org.joml.*;
-import overrungl.util.MemoryStack;
+import overrun.marshal.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemoryLayout;

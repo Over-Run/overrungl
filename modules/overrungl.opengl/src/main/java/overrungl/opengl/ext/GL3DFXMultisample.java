@@ -16,20 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_3DFX_multisample}
  */
-public final class GL3DFXMultisample {
-    public static final int GL_MULTISAMPLE_3DFX = 0x86B2;
-    public static final int GL_SAMPLE_BUFFERS_3DFX = 0x86B3;
-    public static final int GL_SAMPLES_3DFX = 0x86B4;
-    public static final int GL_MULTISAMPLE_BIT_3DFX = 0x20000000;
+public interface GL3DFXMultisample {
+    int GL_MULTISAMPLE_3DFX = 0x86B2;
+    int GL_SAMPLE_BUFFERS_3DFX = 0x86B3;
+    int GL_SAMPLES_3DFX = 0x86B4;
+    int GL_MULTISAMPLE_BIT_3DFX = 0x20000000;
 }

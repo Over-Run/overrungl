@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_GREMEDY_string_marker}
  */
-public final class GLGREMEDYStringMarker {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_GREMEDY_string_marker) return;
-        ext.glStringMarkerGREMEDY = load.invoke("glStringMarkerGREMEDY", ofVoid(JAVA_INT, ADDRESS));
-    }
+public interface GLGREMEDYStringMarker {
 
-    public static void glStringMarkerGREMEDY(int len, @NativeType("const void *") MemorySegment string) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glStringMarkerGREMEDY).invokeExact(len, string);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glStringMarkerGREMEDY(int len, @NativeType("const void *") MemorySegment string) {
+        throw new ContextException();
     }
 
 }

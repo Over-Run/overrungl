@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_texture_shader2}
  */
-public final class GLNVTextureShader2 {
-    public static final int GL_DOT_PRODUCT_TEXTURE_3D_NV = 0x86EF;
+public interface GLNVTextureShader2 {
+    int GL_DOT_PRODUCT_TEXTURE_3D_NV = 0x86EF;
 }

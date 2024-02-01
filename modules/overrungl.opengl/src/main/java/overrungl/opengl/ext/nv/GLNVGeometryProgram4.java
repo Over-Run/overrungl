@@ -16,47 +16,28 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_geometry_program4}
  */
-public final class GLNVGeometryProgram4 {
-    public static final int GL_GEOMETRY_PROGRAM_NV = 0x8C26;
-    public static final int GL_MAX_PROGRAM_OUTPUT_VERTICES_NV = 0x8C27;
-    public static final int GL_MAX_PROGRAM_TOTAL_OUTPUT_COMPONENTS_NV = 0x8C28;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_geometry_program4) return;
-        ext.glProgramVertexLimitNV = load.invoke("glProgramVertexLimitNV", ofVoid(JAVA_INT, JAVA_INT));
-        ext.glFramebufferTextureEXT = load.invoke("glFramebufferTextureEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-        ext.glFramebufferTextureFaceEXT = load.invoke("glFramebufferTextureFaceEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
+public interface GLNVGeometryProgram4 {
+    int GL_GEOMETRY_PROGRAM_NV = 0x8C26;
+    int GL_MAX_PROGRAM_OUTPUT_VERTICES_NV = 0x8C27;
+    int GL_MAX_PROGRAM_TOTAL_OUTPUT_COMPONENTS_NV = 0x8C28;
+
+    default void glProgramVertexLimitNV(int target, int limit) {
+        throw new ContextException();
     }
 
-    public static void glProgramVertexLimitNV(int target, int limit) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glProgramVertexLimitNV).invokeExact(target, limit);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFramebufferTextureEXT(int target, int attachment, int texture, int level) {
+        throw new ContextException();
     }
 
-    public static void glFramebufferTextureEXT(int target, int attachment, int texture, int level) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFramebufferTextureEXT).invokeExact(target, attachment, texture, level);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glFramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFramebufferTextureFaceEXT).invokeExact(target, attachment, texture, level, face);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
+        throw new ContextException();
     }
 
 }

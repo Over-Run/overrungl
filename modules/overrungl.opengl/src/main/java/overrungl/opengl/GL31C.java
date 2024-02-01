@@ -16,16 +16,17 @@
 
 package overrungl.opengl;
 
-import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBTextureRectangle;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
+import java.lang.foreign.ValueLayout;
 
 /**
  * The OpenGL 3.1 core profile functions.
@@ -40,299 +41,203 @@ import static overrungl.FunctionDescriptors.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL31C extends GL30C permits GL32C {
-    public static final int SAMPLER_2D_RECT = 0x8B63;
-    public static final int SAMPLER_2D_RECT_SHADOW = 0x8B64;
-    public static final int SAMPLER_BUFFER = 0x8DC2;
-    public static final int INT_SAMPLER_2D_RECT = 0x8DCD;
-    public static final int INT_SAMPLER_BUFFER = 0x8DD0;
-    public static final int UNSIGNED_INT_SAMPLER_2D_RECT = 0x8DD5;
-    public static final int UNSIGNED_INT_SAMPLER_BUFFER = 0x8DD8;
-    public static final int TEXTURE_BUFFER = 0x8C2A;
-    public static final int MAX_TEXTURE_BUFFER_SIZE = 0x8C2B;
-    public static final int TEXTURE_BINDING_BUFFER = 0x8C2C;
-    public static final int TEXTURE_BUFFER_DATA_STORE_BINDING = 0x8C2D;
-    public static final int TEXTURE_RECTANGLE = 0x84F5;
-    public static final int TEXTURE_BINDING_RECTANGLE = 0x84F6;
-    public static final int PROXY_TEXTURE_RECTANGLE = 0x84F7;
-    public static final int MAX_RECTANGLE_TEXTURE_SIZE = 0x84F8;
-    public static final int R8_SNORM = 0x8F94;
-    public static final int RG8_SNORM = 0x8F95;
-    public static final int RGB8_SNORM = 0x8F96;
-    public static final int RGBA8_SNORM = 0x8F97;
-    public static final int R16_SNORM = 0x8F98;
-    public static final int RG16_SNORM = 0x8F99;
-    public static final int RGB16_SNORM = 0x8F9A;
-    public static final int RGBA16_SNORM = 0x8F9B;
-    public static final int SIGNED_NORMALIZED = 0x8F9C;
-    public static final int PRIMITIVE_RESTART = 0x8F9D;
-    public static final int PRIMITIVE_RESTART_INDEX = 0x8F9E;
-    public static final int COPY_READ_BUFFER = 0x8F36;
-    public static final int COPY_WRITE_BUFFER = 0x8F37;
-    public static final int UNIFORM_BUFFER = 0x8A11;
-    public static final int UNIFORM_BUFFER_BINDING = 0x8A28;
-    public static final int UNIFORM_BUFFER_START = 0x8A29;
-    public static final int UNIFORM_BUFFER_SIZE = 0x8A2A;
-    public static final int MAX_VERTEX_UNIFORM_BLOCKS = 0x8A2B;
-    public static final int MAX_GEOMETRY_UNIFORM_BLOCKS = 0x8A2C;
-    public static final int MAX_FRAGMENT_UNIFORM_BLOCKS = 0x8A2D;
-    public static final int MAX_COMBINED_UNIFORM_BLOCKS = 0x8A2E;
-    public static final int MAX_UNIFORM_BUFFER_BINDINGS = 0x8A2F;
-    public static final int MAX_UNIFORM_BLOCK_SIZE = 0x8A30;
-    public static final int MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS = 0x8A31;
-    public static final int MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS = 0x8A32;
-    public static final int MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS = 0x8A33;
-    public static final int UNIFORM_BUFFER_OFFSET_ALIGNMENT = 0x8A34;
-    public static final int ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH = 0x8A35;
-    public static final int ACTIVE_UNIFORM_BLOCKS = 0x8A36;
-    public static final int UNIFORM_TYPE = 0x8A37;
-    public static final int UNIFORM_SIZE = 0x8A38;
-    public static final int UNIFORM_NAME_LENGTH = 0x8A39;
-    public static final int UNIFORM_BLOCK_INDEX = 0x8A3A;
-    public static final int UNIFORM_OFFSET = 0x8A3B;
-    public static final int UNIFORM_ARRAY_STRIDE = 0x8A3C;
-    public static final int UNIFORM_MATRIX_STRIDE = 0x8A3D;
-    public static final int UNIFORM_IS_ROW_MAJOR = 0x8A3E;
-    public static final int UNIFORM_BLOCK_BINDING = 0x8A3F;
-    public static final int UNIFORM_BLOCK_DATA_SIZE = 0x8A40;
-    public static final int UNIFORM_BLOCK_NAME_LENGTH = 0x8A41;
-    public static final int UNIFORM_BLOCK_ACTIVE_UNIFORMS = 0x8A42;
-    public static final int UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x8A43;
-    public static final int UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x8A44;
-    public static final int UNIFORM_BLOCK_REFERENCED_BY_GEOMETRY_SHADER = 0x8A45;
-    public static final int UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x8A46;
-    public static final int INVALID_INDEX = 0xFFFFFFFF;
+public sealed interface GL31C extends GL30C permits GL32C {
+    int SAMPLER_2D_RECT = 0x8B63;
+    int SAMPLER_2D_RECT_SHADOW = 0x8B64;
+    int SAMPLER_BUFFER = 0x8DC2;
+    int INT_SAMPLER_2D_RECT = 0x8DCD;
+    int INT_SAMPLER_BUFFER = 0x8DD0;
+    int UNSIGNED_INT_SAMPLER_2D_RECT = 0x8DD5;
+    int UNSIGNED_INT_SAMPLER_BUFFER = 0x8DD8;
+    int TEXTURE_BUFFER = 0x8C2A;
+    int MAX_TEXTURE_BUFFER_SIZE = 0x8C2B;
+    int TEXTURE_BINDING_BUFFER = 0x8C2C;
+    int TEXTURE_BUFFER_DATA_STORE_BINDING = 0x8C2D;
+    int TEXTURE_RECTANGLE = 0x84F5;
+    int TEXTURE_BINDING_RECTANGLE = 0x84F6;
+    int PROXY_TEXTURE_RECTANGLE = 0x84F7;
+    int MAX_RECTANGLE_TEXTURE_SIZE = 0x84F8;
+    int R8_SNORM = 0x8F94;
+    int RG8_SNORM = 0x8F95;
+    int RGB8_SNORM = 0x8F96;
+    int RGBA8_SNORM = 0x8F97;
+    int R16_SNORM = 0x8F98;
+    int RG16_SNORM = 0x8F99;
+    int RGB16_SNORM = 0x8F9A;
+    int RGBA16_SNORM = 0x8F9B;
+    int SIGNED_NORMALIZED = 0x8F9C;
+    int PRIMITIVE_RESTART = 0x8F9D;
+    int PRIMITIVE_RESTART_INDEX = 0x8F9E;
+    int COPY_READ_BUFFER = 0x8F36;
+    int COPY_WRITE_BUFFER = 0x8F37;
+    int UNIFORM_BUFFER = 0x8A11;
+    int UNIFORM_BUFFER_BINDING = 0x8A28;
+    int UNIFORM_BUFFER_START = 0x8A29;
+    int UNIFORM_BUFFER_SIZE = 0x8A2A;
+    int MAX_VERTEX_UNIFORM_BLOCKS = 0x8A2B;
+    int MAX_GEOMETRY_UNIFORM_BLOCKS = 0x8A2C;
+    int MAX_FRAGMENT_UNIFORM_BLOCKS = 0x8A2D;
+    int MAX_COMBINED_UNIFORM_BLOCKS = 0x8A2E;
+    int MAX_UNIFORM_BUFFER_BINDINGS = 0x8A2F;
+    int MAX_UNIFORM_BLOCK_SIZE = 0x8A30;
+    int MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS = 0x8A31;
+    int MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS = 0x8A32;
+    int MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS = 0x8A33;
+    int UNIFORM_BUFFER_OFFSET_ALIGNMENT = 0x8A34;
+    int ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH = 0x8A35;
+    int ACTIVE_UNIFORM_BLOCKS = 0x8A36;
+    int UNIFORM_TYPE = 0x8A37;
+    int UNIFORM_SIZE = 0x8A38;
+    int UNIFORM_NAME_LENGTH = 0x8A39;
+    int UNIFORM_BLOCK_INDEX = 0x8A3A;
+    int UNIFORM_OFFSET = 0x8A3B;
+    int UNIFORM_ARRAY_STRIDE = 0x8A3C;
+    int UNIFORM_MATRIX_STRIDE = 0x8A3D;
+    int UNIFORM_IS_ROW_MAJOR = 0x8A3E;
+    int UNIFORM_BLOCK_BINDING = 0x8A3F;
+    int UNIFORM_BLOCK_DATA_SIZE = 0x8A40;
+    int UNIFORM_BLOCK_NAME_LENGTH = 0x8A41;
+    int UNIFORM_BLOCK_ACTIVE_UNIFORMS = 0x8A42;
+    int UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES = 0x8A43;
+    int UNIFORM_BLOCK_REFERENCED_BY_VERTEX_SHADER = 0x8A44;
+    int UNIFORM_BLOCK_REFERENCED_BY_GEOMETRY_SHADER = 0x8A45;
+    int UNIFORM_BLOCK_REFERENCED_BY_FRAGMENT_SHADER = 0x8A46;
+    int INVALID_INDEX = 0xFFFFFFFF;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return GLLoader.checkAll(caps.glBindBufferBase, caps.glBindBufferRange, caps.glCopyBufferSubData, caps.glDrawArraysInstanced, caps.glDrawElementsInstanced, caps.glGetActiveUniformBlockName,
-            caps.glGetActiveUniformBlockiv, caps.glGetActiveUniformName, caps.glGetActiveUniformsiv, caps.glGetIntegeri_v, caps.glGetUniformBlockIndex, caps.glGetUniformIndices,
-            caps.glPrimitiveRestartIndex, caps.glTexBuffer, caps.glUniformBlockBinding);
+    @Entrypoint("glCopyBufferSubData")
+    default void copyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBindBufferBase = load.invoke("glBindBufferBase", IIIV);
-        caps.glBindBufferRange = load.invoke("glBindBufferRange", IIIJJV);
-        caps.glCopyBufferSubData = load.invoke("glCopyBufferSubData", IIJJJV);
-        caps.glDrawArraysInstanced = load.invoke("glDrawArraysInstanced", IIIIV);
-        caps.glDrawElementsInstanced = load.invoke("glDrawElementsInstanced", IIIPIV);
-        caps.glGetActiveUniformBlockName = load.invoke("glGetActiveUniformBlockName", IIIPPV);
-        caps.glGetActiveUniformBlockiv = load.invoke("glGetActiveUniformBlockiv", IIIPV);
-        caps.glGetActiveUniformName = load.invoke("glGetActiveUniformName", IIIPPV);
-        caps.glGetActiveUniformsiv = load.invoke("glGetActiveUniformsiv", IIPIPV);
-        caps.glGetIntegeri_v = load.invoke("glGetIntegeri_v", IIPV);
-        caps.glGetUniformBlockIndex = load.invoke("glGetUniformBlockIndex", IPI);
-        caps.glGetUniformIndices = load.invoke("glGetUniformIndices", IIPPV);
-        caps.glPrimitiveRestartIndex = load.invoke("glPrimitiveRestartIndex", IV);
-        caps.glTexBuffer = load.invoke("glTexBuffer", IIIV);
-        caps.glUniformBlockBinding = load.invoke("glUniformBlockBinding", IIIV);
+    @Entrypoint("glDrawArraysInstanced")
+    default void drawArraysInstanced(int mode, int first, int count, int instanceCount) {
+        throw new ContextException();
     }
 
-    public static void copyBufferSubData(int readTarget, int writeTarget, long readOffset, long writeOffset, long size) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glCopyBufferSubData).invokeExact(readTarget, writeTarget, readOffset, writeOffset, size);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glDrawElementsInstanced")
+    default void drawElementsInstanced(int mode, int count, int type, MemorySegment indices, int instanceCount) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glDrawElementsInstanced")
+    default void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glDrawElementsInstanced")
+    default void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glDrawElementsInstanced")
+    default void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glGetActiveUniformBlockName")
+    default void getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, MemorySegment length, MemorySegment uniformBlockName) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default String getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment length = stack.ints(0);
+            var pName = stack.allocate(ValueLayout.JAVA_BYTE, bufSize);
+            getActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, pName);
+            return pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1).getString(0);
         }
     }
 
-    public static void drawArraysInstanced(int mode, int first, int count, int instanceCount) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glDrawArraysInstanced).invokeExact(mode, first, count, instanceCount);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glGetActiveUniformBlockiv")
+    default void getActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, MemorySegment params) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glGetActiveUniformBlockiv")
+    default void getActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, @Ref int[] params) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glGetActiveUniformName")
+    default void getActiveUniformName(int program, int uniformIndex, int bufSize, MemorySegment length, MemorySegment uniformName) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default String getActiveUniformName(int program, int uniformIndex, int bufSize) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment length = stack.ints(0);
+            var pName = stack.allocate(ValueLayout.JAVA_BYTE, bufSize);
+            getActiveUniformName(program, uniformIndex, bufSize, length, pName);
+            return pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1).getString(0);
         }
     }
 
-    public static void drawElementsInstanced(int mode, int count, int type, MemorySegment indices, int instanceCount) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glDrawElementsInstanced).invokeExact(mode, count, type, indices, instanceCount);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetActiveUniformsiv")
+    default void getActiveUniformsiv(int program, int uniformCount, MemorySegment uniformIndices, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, byte[] indices, int instanceCount) {
-        drawElementsInstanced(mode, count, type, allocator.allocateFrom(JAVA_BYTE, indices), instanceCount);
+    @Skip
+    default void getActiveUniformsiv(SegmentAllocator allocator, int program, int[] uniformIndices, int pname, @Ref int[] params) {
+        var seg = Marshal.marshal(allocator, params);
+        getActiveUniformsiv(program, uniformIndices.length, Marshal.marshal(allocator, uniformIndices), pname, seg);
+        Unmarshal.copy(seg, params);
     }
 
-    public static void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, short[] indices, int instanceCount) {
-        drawElementsInstanced(mode, count, type, allocator.allocateFrom(JAVA_SHORT, indices), instanceCount);
-    }
-
-    public static void drawElementsInstanced(SegmentAllocator allocator, int mode, int count, int type, int[] indices, int instanceCount) {
-        drawElementsInstanced(mode, count, type, allocator.allocateFrom(JAVA_INT, indices), instanceCount);
-    }
-
-    public static void getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize, MemorySegment length, MemorySegment uniformBlockName) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetActiveUniformBlockName).invokeExact(program, uniformBlockIndex, bufSize, length, uniformBlockName);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void getActiveUniformBlockName(SegmentAllocator allocator, int program, int uniformBlockIndex, int bufSize, int @Nullable [] length, String[] uniformBlockName) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pName = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveUniformBlockName(program, uniformBlockIndex, bufSize, pLen, pName);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
-        }
-        uniformBlockName[0] = pName.getString(0);
-    }
-
-    public static String getActiveUniformBlockName(SegmentAllocator allocator, int program, int uniformBlockIndex, int bufSize) {
-        var pName = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveUniformBlockName(program, uniformBlockIndex, bufSize, MemorySegment.NULL, pName);
-        return pName.getString(0);
-    }
-
-    public static void getActiveUniformBlockiv(int program, int uniformBlockIndex, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetActiveUniformBlockiv).invokeExact(program, uniformBlockIndex, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void getActiveUniformBlockiv(SegmentAllocator allocator, int program, int uniformBlockIndex, int pname, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getActiveUniformBlockiv(program, uniformBlockIndex, pname, seg);
-        RuntimeHelper.toArray(seg, params);
-    }
-
-    public static void getActiveUniformName(int program, int uniformIndex, int bufSize, MemorySegment length, MemorySegment uniformName) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetActiveUniformName).invokeExact(program, uniformIndex, bufSize, length, uniformName);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void getActiveUniformName(SegmentAllocator allocator, int program, int uniformIndex, int bufSize, int @Nullable [] length, String[] uniformName) {
-        var pLen = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
-        var pName = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveUniformName(program, uniformIndex, bufSize, pLen, pName);
-        if (length != null && length.length > 0) {
-            length[0] = pLen.get(JAVA_INT, 0);
-        }
-        uniformName[0] = pName.getString(0);
-    }
-
-    public static String getActiveUniformName(SegmentAllocator allocator, int program, int uniformIndex, int bufSize) {
-        var pName = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveUniformName(program, uniformIndex, bufSize, MemorySegment.NULL, pName);
-        return pName.getString(0);
-    }
-
-    public static void getActiveUniformsiv(int program, int uniformCount, MemorySegment uniformIndices, int pname, MemorySegment params) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetActiveUniformsiv).invokeExact(program, uniformCount, uniformIndices, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void getActiveUniformsiv(SegmentAllocator allocator, int program, int[] uniformIndices, int pname, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getActiveUniformsiv(program, uniformIndices.length, allocator.allocateFrom(JAVA_INT, uniformIndices), pname, seg);
-        RuntimeHelper.toArray(seg, params);
-    }
-
-    public static int getActiveUniformi(int program, int uniformIndex, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getActiveUniformsiv(int program, int uniformIndex, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getActiveUniformsiv(program, 1, stack.ints(uniformIndex), pname, seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static int getUniformBlockIndex(int program, MemorySegment uniformBlockName) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            return (int) GLLoader.check(caps.glGetUniformBlockIndex).invokeExact(program, uniformBlockName);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetUniformBlockIndex")
+    default int getUniformBlockIndex(int program, MemorySegment uniformBlockName) {
+        throw new ContextException();
     }
 
-    public static int getUniformBlockIndex(int program, String uniformBlockName) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return getUniformBlockIndex(program, stack.allocateFrom(uniformBlockName));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glGetUniformBlockIndex")
+    default int getUniformBlockIndex(int program, String uniformBlockName) {
+        throw new ContextException();
     }
 
-    public static void getUniformIndices(int program, int uniformCount, MemorySegment uniformNames, MemorySegment uniformIndices) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glGetUniformIndices).invokeExact(program, uniformCount, uniformNames, uniformIndices);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetUniformIndices")
+    default void getUniformIndices(int program, int uniformCount, MemorySegment uniformNames, MemorySegment uniformIndices) {
+        throw new ContextException();
     }
 
-    public static void getUniformIndices(SegmentAllocator allocator, int program, String[] uniformNames, int[] uniformIndices) {
-        final int count = uniformNames.length;
-        var pNames = allocator.allocate(ADDRESS, count);
-        for (int i = 0; i < count; i++) {
-            pNames.setAtIndex(ADDRESS, i, allocator.allocateFrom(uniformNames[i]));
-        }
-        var pIndices = allocator.allocate(JAVA_INT, count);
-        getUniformIndices(program, count, pNames, pIndices);
-        RuntimeHelper.toArray(pIndices, uniformIndices);
+    @Skip
+    default void getUniformIndices(SegmentAllocator allocator, int program, String[] uniformNames, @Ref int[] uniformIndices) {
+        var pIndices = allocator.allocate(ValueLayout.JAVA_INT, uniformNames.length);
+        getUniformIndices(program, uniformNames.length, Marshal.marshal(allocator, uniformNames), pIndices);
+        Unmarshal.copy(pIndices, uniformIndices);
     }
 
-    public static int getUniformIndex(int program, String uniformName) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.allocate(JAVA_INT);
+    @Skip
+    default int getUniformIndices(int program, String uniformName) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getUniformIndices(program, 1, stack.allocateFrom(uniformName), seg);
-            return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void primitiveRestartIndex(int index) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glPrimitiveRestartIndex).invokeExact(index);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glPrimitiveRestartIndex")
+    default void primitiveRestartIndex(int index) {
+        throw new ContextException();
     }
 
-    public static void texBuffer(int target, int internalFormat, int buffer) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glTexBuffer).invokeExact(target, internalFormat, buffer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexBuffer")
+    default void texBuffer(int target, int internalFormat, int buffer) {
+        throw new ContextException();
     }
 
-    public static void uniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding) {
-        var caps = GLLoader.getCapabilities();
-        try {
-            GLLoader.check(caps.glUniformBlockBinding).invokeExact(program, uniformBlockIndex, uniformBlockBinding);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformBlockBinding")
+    default void uniformBlockBinding(int program, int uniformBlockIndex, int uniformBlockBinding) {
+        throw new ContextException();
     }
 }

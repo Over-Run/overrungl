@@ -16,31 +16,20 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_clip_space_w_scaling}
  */
-public final class GLNVClipSpaceWScaling {
-    public static final int GL_VIEWPORT_POSITION_W_SCALE_NV = 0x937C;
-    public static final int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
-    public static final int GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV = 0x937E;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_clip_space_w_scaling) return;
-        ext.glViewportPositionWScaleNV = load.invoke("glViewportPositionWScaleNV", ofVoid(JAVA_INT, JAVA_FLOAT, JAVA_FLOAT));
-    }
+public interface GLNVClipSpaceWScaling {
+    int GL_VIEWPORT_POSITION_W_SCALE_NV = 0x937C;
+    int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
+    int GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV = 0x937E;
 
-    public static void glViewportPositionWScaleNV(int index, float xcoeff, float ycoeff) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glViewportPositionWScaleNV).invokeExact(index, xcoeff, ycoeff);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glViewportPositionWScaleNV(int index, float xcoeff, float ycoeff) {
+        throw new ContextException();
     }
 
 }

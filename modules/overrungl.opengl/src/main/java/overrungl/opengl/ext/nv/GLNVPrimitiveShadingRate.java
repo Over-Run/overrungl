@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_primitive_shading_rate}
  */
-public final class GLNVPrimitiveShadingRate {
-    public static final int GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1;
-    public static final int GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2;
+public interface GLNVPrimitiveShadingRate {
+    int GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1;
+    int GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2;
 }

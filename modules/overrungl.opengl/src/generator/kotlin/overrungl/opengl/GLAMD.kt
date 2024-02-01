@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -62,7 +62,7 @@ fun amd() {
         ("glDebugMessageCallbackAMD"(void, address("callback", "GLDEBUGPROCAMD"), address("userParam", "void *"))) {
             "glDebugMessageCallbackAMD"(
                 void,
-                "glDebugMessageCallbackAMD(callback.address(arena), userParam);",
+                "glDebugMessageCallbackAMD(callback.stub(arena), userParam);",
                 arena("arena"),
                 Type("GLDebugProcAMD", null)("callback"),
                 address("userParam", "void *")

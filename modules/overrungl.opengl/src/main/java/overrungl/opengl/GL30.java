@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,8 @@ package overrungl.opengl;
  * @author squid233
  * @since 0.1.0
  */
-public final class GL30 extends GL30C {
-    public static final int CLAMP_VERTEX_COLOR = 0x891A;
-    public static final int CLAMP_FRAGMENT_COLOR = 0x891B;
-    public static final int ALPHA_INTEGER = 0x8D97;
+public sealed interface GL30 extends GL30C permits GLLegacy {
+    int CLAMP_VERTEX_COLOR = 0x891A;
+    int CLAMP_FRAGMENT_COLOR = 0x891B;
+    int ALPHA_INTEGER = 0x8D97;
 }

@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_fog_offset}
  */
-public final class GLSGIXFogOffset {
-    public static final int GL_FOG_OFFSET_SGIX = 0x8198;
-    public static final int GL_FOG_OFFSET_VALUE_SGIX = 0x8199;
+public interface GLSGIXFogOffset {
+    int GL_FOG_OFFSET_SGIX = 0x8198;
+    int GL_FOG_OFFSET_VALUE_SGIX = 0x8199;
 }

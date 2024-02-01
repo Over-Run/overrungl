@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,16 +17,18 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.internal.RuntimeHelper;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBViewportArray;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * The OpenGL 4.1 core profile functions.
@@ -43,1350 +45,914 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL41C extends GL40C permits GL42C {
-    public static final int FIXED = 0x140C;
-    public static final int IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
-    public static final int IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;
-    public static final int LOW_FLOAT = 0x8DF0;
-    public static final int MEDIUM_FLOAT = 0x8DF1;
-    public static final int HIGH_FLOAT = 0x8DF2;
-    public static final int LOW_INT = 0x8DF3;
-    public static final int MEDIUM_INT = 0x8DF4;
-    public static final int HIGH_INT = 0x8DF5;
-    public static final int SHADER_COMPILER = 0x8DFA;
-    public static final int SHADER_BINARY_FORMATS = 0x8DF8;
-    public static final int NUM_SHADER_BINARY_FORMATS = 0x8DF9;
-    public static final int MAX_VERTEX_UNIFORM_VECTORS = 0x8DFB;
-    public static final int MAX_VARYING_VECTORS = 0x8DFC;
-    public static final int MAX_FRAGMENT_UNIFORM_VECTORS = 0x8DFD;
-    public static final int RGB565 = 0x8D62;
-    public static final int PROGRAM_BINARY_RETRIEVABLE_HINT = 0x8257;
-    public static final int PROGRAM_BINARY_LENGTH = 0x8741;
-    public static final int NUM_PROGRAM_BINARY_FORMATS = 0x87FE;
-    public static final int PROGRAM_BINARY_FORMATS = 0x87FF;
-    public static final int VERTEX_SHADER_BIT = 0x00000001;
-    public static final int FRAGMENT_SHADER_BIT = 0x00000002;
-    public static final int GEOMETRY_SHADER_BIT = 0x00000004;
-    public static final int TESS_CONTROL_SHADER_BIT = 0x00000008;
-    public static final int TESS_EVALUATION_SHADER_BIT = 0x00000010;
-    public static final int ALL_SHADER_BITS = 0xFFFFFFFF;
-    public static final int PROGRAM_SEPARABLE = 0x8258;
-    public static final int ACTIVE_PROGRAM = 0x8259;
-    public static final int PROGRAM_PIPELINE_BINDING = 0x825A;
-    public static final int MAX_VIEWPORTS = 0x825B;
-    public static final int VIEWPORT_SUBPIXEL_BITS = 0x825C;
-    public static final int VIEWPORT_BOUNDS_RANGE = 0x825D;
-    public static final int LAYER_PROVOKING_VERTEX = 0x825E;
-    public static final int VIEWPORT_INDEX_PROVOKING_VERTEX = 0x825F;
-    public static final int UNDEFINED_VERTEX = 0x8260;
+public sealed interface GL41C extends GL40C permits GL42C {
+    int FIXED = 0x140C;
+    int IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
+    int IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;
+    int LOW_FLOAT = 0x8DF0;
+    int MEDIUM_FLOAT = 0x8DF1;
+    int HIGH_FLOAT = 0x8DF2;
+    int LOW_INT = 0x8DF3;
+    int MEDIUM_INT = 0x8DF4;
+    int HIGH_INT = 0x8DF5;
+    int SHADER_COMPILER = 0x8DFA;
+    int SHADER_BINARY_FORMATS = 0x8DF8;
+    int NUM_SHADER_BINARY_FORMATS = 0x8DF9;
+    int MAX_VERTEX_UNIFORM_VECTORS = 0x8DFB;
+    int MAX_VARYING_VECTORS = 0x8DFC;
+    int MAX_FRAGMENT_UNIFORM_VECTORS = 0x8DFD;
+    int RGB565 = 0x8D62;
+    int PROGRAM_BINARY_RETRIEVABLE_HINT = 0x8257;
+    int PROGRAM_BINARY_LENGTH = 0x8741;
+    int NUM_PROGRAM_BINARY_FORMATS = 0x87FE;
+    int PROGRAM_BINARY_FORMATS = 0x87FF;
+    int VERTEX_SHADER_BIT = 0x00000001;
+    int FRAGMENT_SHADER_BIT = 0x00000002;
+    int GEOMETRY_SHADER_BIT = 0x00000004;
+    int TESS_CONTROL_SHADER_BIT = 0x00000008;
+    int TESS_EVALUATION_SHADER_BIT = 0x00000010;
+    int ALL_SHADER_BITS = 0xFFFFFFFF;
+    int PROGRAM_SEPARABLE = 0x8258;
+    int ACTIVE_PROGRAM = 0x8259;
+    int PROGRAM_PIPELINE_BINDING = 0x825A;
+    int MAX_VIEWPORTS = 0x825B;
+    int VIEWPORT_SUBPIXEL_BITS = 0x825C;
+    int VIEWPORT_BOUNDS_RANGE = 0x825D;
+    int LAYER_PROVOKING_VERTEX = 0x825E;
+    int VIEWPORT_INDEX_PROVOKING_VERTEX = 0x825F;
+    int UNDEFINED_VERTEX = 0x8260;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return checkAll(caps.glActiveShaderProgram, caps.glBindProgramPipeline, caps.glClearDepthf, caps.glCreateShaderProgramv, caps.glDeleteProgramPipelines, caps.glDepthRangeArrayv,
-            caps.glDepthRangeIndexed, caps.glDepthRangef, caps.glGenProgramPipelines, caps.glGetDoublei_v, caps.glGetFloati_v, caps.glGetProgramBinary,
-            caps.glGetProgramPipelineInfoLog, caps.glGetProgramPipelineiv, caps.glGetShaderPrecisionFormat, caps.glGetVertexAttribLdv, caps.glIsProgramPipeline, caps.glProgramBinary,
-            caps.glProgramParameteri, caps.glProgramUniform1d, caps.glProgramUniform1dv, caps.glProgramUniform1f, caps.glProgramUniform1fv, caps.glProgramUniform1i,
-            caps.glProgramUniform1iv, caps.glProgramUniform1ui, caps.glProgramUniform1uiv, caps.glProgramUniform2d, caps.glProgramUniform2dv, caps.glProgramUniform2f,
-            caps.glProgramUniform2fv, caps.glProgramUniform2i, caps.glProgramUniform2iv, caps.glProgramUniform2ui, caps.glProgramUniform2uiv, caps.glProgramUniform3d,
-            caps.glProgramUniform3dv, caps.glProgramUniform3f, caps.glProgramUniform3fv, caps.glProgramUniform3i, caps.glProgramUniform3iv, caps.glProgramUniform3ui,
-            caps.glProgramUniform3uiv, caps.glProgramUniform4d, caps.glProgramUniform4dv, caps.glProgramUniform4f, caps.glProgramUniform4fv, caps.glProgramUniform4i,
-            caps.glProgramUniform4iv, caps.glProgramUniform4ui, caps.glProgramUniform4uiv, caps.glProgramUniformMatrix2dv, caps.glProgramUniformMatrix2fv, caps.glProgramUniformMatrix2x3dv,
-            caps.glProgramUniformMatrix2x3fv, caps.glProgramUniformMatrix2x4dv, caps.glProgramUniformMatrix2x4fv, caps.glProgramUniformMatrix3dv, caps.glProgramUniformMatrix3fv, caps.glProgramUniformMatrix3x2dv,
-            caps.glProgramUniformMatrix3x2fv, caps.glProgramUniformMatrix3x4dv, caps.glProgramUniformMatrix3x4fv, caps.glProgramUniformMatrix4dv, caps.glProgramUniformMatrix4fv, caps.glProgramUniformMatrix4x2dv,
-            caps.glProgramUniformMatrix4x2fv, caps.glProgramUniformMatrix4x3dv, caps.glProgramUniformMatrix4x3fv, caps.glReleaseShaderCompiler, caps.glScissorArrayv, caps.glScissorIndexed,
-            caps.glScissorIndexedv, caps.glShaderBinary, caps.glUseProgramStages, caps.glValidateProgramPipeline, caps.glVertexAttribL1d, caps.glVertexAttribL1dv,
-            caps.glVertexAttribL2d, caps.glVertexAttribL2dv, caps.glVertexAttribL3d, caps.glVertexAttribL3dv, caps.glVertexAttribL4d, caps.glVertexAttribL4dv,
-            caps.glVertexAttribLPointer, caps.glViewportArrayv, caps.glViewportIndexedf, caps.glViewportIndexedfv);
+    @Entrypoint("glActiveShaderProgram")
+    default void activeShaderProgram(int pipeline, int program) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glActiveShaderProgram = load.invoke("glActiveShaderProgram", IIV);
-        caps.glBindProgramPipeline = load.invoke("glBindProgramPipeline", IV);
-        caps.glClearDepthf = load.invoke("glClearDepthf", FV);
-        caps.glCreateShaderProgramv = load.invoke("glCreateShaderProgramv", IIPI);
-        caps.glDeleteProgramPipelines = load.invoke("glDeleteProgramPipelines", IPV);
-        caps.glDepthRangeArrayv = load.invoke("glDepthRangeArrayv", IIPV);
-        caps.glDepthRangeIndexed = load.invoke("glDepthRangeIndexed", IDDV);
-        caps.glDepthRangef = load.invoke("glDepthRangef", FFV);
-        caps.glGenProgramPipelines = load.invoke("glGenProgramPipelines", IPV);
-        caps.glGetDoublei_v = load.invoke("glGetDoublei_v", IIPV);
-        caps.glGetFloati_v = load.invoke("glGetFloati_v", IIPV);
-        caps.glGetProgramBinary = load.invoke("glGetProgramBinary", IIPPPV);
-        caps.glGetProgramPipelineInfoLog = load.invoke("glGetProgramPipelineInfoLog", IIPPV);
-        caps.glGetProgramPipelineiv = load.invoke("glGetProgramPipelineiv", IIPV);
-        caps.glGetShaderPrecisionFormat = load.invoke("glGetShaderPrecisionFormat", IIPPV);
-        caps.glGetVertexAttribLdv = load.invoke("glGetVertexAttribLdv", IIPV);
-        caps.glIsProgramPipeline = load.invoke("glIsProgramPipeline", IZ);
-        caps.glProgramBinary = load.invoke("glProgramBinary", IIPIV);
-        caps.glProgramParameteri = load.invoke("glProgramParameteri", IIIV);
-        caps.glProgramUniform1d = load.invoke("glProgramUniform1d", IIDV);
-        caps.glProgramUniform1dv = load.invoke("glProgramUniform1dv", IIIPV);
-        caps.glProgramUniform1f = load.invoke("glProgramUniform1f", IIFV);
-        caps.glProgramUniform1fv = load.invoke("glProgramUniform1fv", IIIPV);
-        caps.glProgramUniform1i = load.invoke("glProgramUniform1i", IIIV);
-        caps.glProgramUniform1iv = load.invoke("glProgramUniform1iv", IIIPV);
-        caps.glProgramUniform1ui = load.invoke("glProgramUniform1ui", IIIV);
-        caps.glProgramUniform1uiv = load.invoke("glProgramUniform1uiv", IIIPV);
-        caps.glProgramUniform2d = load.invoke("glProgramUniform2d", IIDDV);
-        caps.glProgramUniform2dv = load.invoke("glProgramUniform2dv", IIIPV);
-        caps.glProgramUniform2f = load.invoke("glProgramUniform2f", IIFFV);
-        caps.glProgramUniform2fv = load.invoke("glProgramUniform2fv", IIIPV);
-        caps.glProgramUniform2i = load.invoke("glProgramUniform2i", IIIIV);
-        caps.glProgramUniform2iv = load.invoke("glProgramUniform2iv", IIIPV);
-        caps.glProgramUniform2ui = load.invoke("glProgramUniform2ui", IIIIV);
-        caps.glProgramUniform2uiv = load.invoke("glProgramUniform2uiv", IIIPV);
-        caps.glProgramUniform3d = load.invoke("glProgramUniform3d", IIDDDV);
-        caps.glProgramUniform3dv = load.invoke("glProgramUniform3dv", IIIPV);
-        caps.glProgramUniform3f = load.invoke("glProgramUniform3f", IIFFFV);
-        caps.glProgramUniform3fv = load.invoke("glProgramUniform3fv", IIIPV);
-        caps.glProgramUniform3i = load.invoke("glProgramUniform3i", IIIIIV);
-        caps.glProgramUniform3iv = load.invoke("glProgramUniform3iv", IIIPV);
-        caps.glProgramUniform3ui = load.invoke("glProgramUniform3ui", IIIIIV);
-        caps.glProgramUniform3uiv = load.invoke("glProgramUniform3uiv", IIIPV);
-        caps.glProgramUniform4d = load.invoke("glProgramUniform4d", IIDDDDV);
-        caps.glProgramUniform4dv = load.invoke("glProgramUniform4dv", IIIPV);
-        caps.glProgramUniform4f = load.invoke("glProgramUniform4f", IIFFFFV);
-        caps.glProgramUniform4fv = load.invoke("glProgramUniform4fv", IIIPV);
-        caps.glProgramUniform4i = load.invoke("glProgramUniform4i", IIIIIIV);
-        caps.glProgramUniform4iv = load.invoke("glProgramUniform4iv", IIIPV);
-        caps.glProgramUniform4ui = load.invoke("glProgramUniform4ui", IIIIIIV);
-        caps.glProgramUniform4uiv = load.invoke("glProgramUniform4uiv", IIIPV);
-        caps.glProgramUniformMatrix2dv = load.invoke("glProgramUniformMatrix2dv", IIIZPV);
-        caps.glProgramUniformMatrix2fv = load.invoke("glProgramUniformMatrix2fv", IIIZPV);
-        caps.glProgramUniformMatrix2x3dv = load.invoke("glProgramUniformMatrix2x3dv", IIIZPV);
-        caps.glProgramUniformMatrix2x3fv = load.invoke("glProgramUniformMatrix2x3fv", IIIZPV);
-        caps.glProgramUniformMatrix2x4dv = load.invoke("glProgramUniformMatrix2x4dv", IIIZPV);
-        caps.glProgramUniformMatrix2x4fv = load.invoke("glProgramUniformMatrix2x4fv", IIIZPV);
-        caps.glProgramUniformMatrix3dv = load.invoke("glProgramUniformMatrix3dv", IIIZPV);
-        caps.glProgramUniformMatrix3fv = load.invoke("glProgramUniformMatrix3fv", IIIZPV);
-        caps.glProgramUniformMatrix3x2dv = load.invoke("glProgramUniformMatrix3x2dv", IIIZPV);
-        caps.glProgramUniformMatrix3x2fv = load.invoke("glProgramUniformMatrix3x2fv", IIIZPV);
-        caps.glProgramUniformMatrix3x4dv = load.invoke("glProgramUniformMatrix3x4dv", IIIZPV);
-        caps.glProgramUniformMatrix3x4fv = load.invoke("glProgramUniformMatrix3x4fv", IIIZPV);
-        caps.glProgramUniformMatrix4dv = load.invoke("glProgramUniformMatrix4dv", IIIZPV);
-        caps.glProgramUniformMatrix4fv = load.invoke("glProgramUniformMatrix4fv", IIIZPV);
-        caps.glProgramUniformMatrix4x2dv = load.invoke("glProgramUniformMatrix4x2dv", IIIZPV);
-        caps.glProgramUniformMatrix4x2fv = load.invoke("glProgramUniformMatrix4x2fv", IIIZPV);
-        caps.glProgramUniformMatrix4x3dv = load.invoke("glProgramUniformMatrix4x3dv", IIIZPV);
-        caps.glProgramUniformMatrix4x3fv = load.invoke("glProgramUniformMatrix4x3fv", IIIZPV);
-        caps.glReleaseShaderCompiler = load.invoke("glReleaseShaderCompiler", V);
-        caps.glScissorArrayv = load.invoke("glScissorArrayv", IIPV);
-        caps.glScissorIndexed = load.invoke("glScissorIndexed", IIIIIV);
-        caps.glScissorIndexedv = load.invoke("glScissorIndexedv", IPV);
-        caps.glShaderBinary = load.invoke("glShaderBinary", IPIPIV);
-        caps.glUseProgramStages = load.invoke("glUseProgramStages", IIIV);
-        caps.glValidateProgramPipeline = load.invoke("glValidateProgramPipeline", IV);
-        caps.glVertexAttribL1d = load.invoke("glVertexAttribL1d", IDV);
-        caps.glVertexAttribL1dv = load.invoke("glVertexAttribL1dv", IPV);
-        caps.glVertexAttribL2d = load.invoke("glVertexAttribL2d", IDDV);
-        caps.glVertexAttribL2dv = load.invoke("glVertexAttribL2dv", IPV);
-        caps.glVertexAttribL3d = load.invoke("glVertexAttribL3d", IDDDV);
-        caps.glVertexAttribL3dv = load.invoke("glVertexAttribL3dv", IPV);
-        caps.glVertexAttribL4d = load.invoke("glVertexAttribL4d", IDDDDV);
-        caps.glVertexAttribL4dv = load.invoke("glVertexAttribL4dv", IPV);
-        caps.glVertexAttribLPointer = load.invoke("glVertexAttribLPointer", IIIIPV);
-        caps.glViewportArrayv = load.invoke("glViewportArrayv", IIPV);
-        caps.glViewportIndexedf = load.invoke("glViewportIndexedf", IFFFFV);
-        caps.glViewportIndexedfv = load.invoke("glViewportIndexedfv", IPV);
+    @Entrypoint("glBindProgramPipeline")
+    default void bindProgramPipeline(int pipeline) {
+        throw new ContextException();
     }
 
-    public static void activeShaderProgram(int pipeline, int program) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glActiveShaderProgram).invokeExact(pipeline, program);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glClearDepthf")
+    default void clearDepthf(float d) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glCreateShaderProgramv")
+    default int createShaderProgramv(int type, int count, MemorySegment strings) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default int createShaderProgramv(SegmentAllocator allocator, int type, String[] strings) {
+        return createShaderProgramv(type, strings.length, Marshal.marshal(allocator, strings));
+    }
+
+    @Skip
+    default int createShaderProgramv(int type, String string) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            return createShaderProgramv(type, 1, stack.allocateFrom(ADDRESS, Marshal.marshal(stack, string)));
         }
     }
 
-    public static void bindProgramPipeline(int pipeline) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindProgramPipeline).invokeExact(pipeline);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glDeleteProgramPipelines")
+    default void deleteProgramPipelines(int n, MemorySegment pipelines) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteProgramPipelines(int... pipelines) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteProgramPipelines(pipelines.length, Marshal.marshal(stack, pipelines));
         }
     }
 
-    public static void clearDepthf(float d) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glClearDepthf).invokeExact(d);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDepthRangeArrayv")
+    default void depthRangeArrayv(int first, int count, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static int createShaderProgramv(int type, int count, MemorySegment strings) {
-        var caps = getCapabilities();
-        try {
-            return (int) check(caps.glCreateShaderProgramv).invokeExact(type, count, strings);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Skip
+    default void depthRangeArrayv(SegmentAllocator allocator, int first, double[] v) {
+        depthRangeArrayv(first, v.length, Marshal.marshal(allocator, v));
     }
 
-    public static int createShaderProgramv(SegmentAllocator allocator, int type, String[] strings) {
-        var seg = allocator.allocate(ADDRESS, strings.length);
-        for (int i = 0; i < strings.length; i++) {
-            seg.setAtIndex(ADDRESS, i, allocator.allocateFrom(strings[i]));
-        }
-        return createShaderProgramv(type, strings.length, seg);
+    @Entrypoint("glDepthRangeIndexed")
+    default void depthRangeIndexed(int index, double n, double f) {
+        throw new ContextException();
     }
 
-    public static int createShaderProgram(int type, String string) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return createShaderProgramv(type, 1, stack.allocateFrom(ADDRESS, stack.allocateFrom(string)));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glDepthRangef")
+    default void depthRangef(float n, float f) {
+        throw new ContextException();
     }
 
-    public static void deleteProgramPipelines(int n, MemorySegment pipelines) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDeleteProgramPipelines).invokeExact(n, pipelines);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGenProgramPipelines")
+    default void genProgramPipelines(int n, MemorySegment pipelines) {
+        throw new ContextException();
     }
 
-    public static void deleteProgramPipelines(SegmentAllocator allocator, int[] pipelines) {
-        deleteProgramPipelines(pipelines.length, allocator.allocateFrom(JAVA_INT, pipelines));
-    }
-
-    public static void deleteProgramPipeline(int pipeline) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteProgramPipelines(1, stack.ints(pipeline));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
-    }
-
-    public static void depthRangeArrayv(int first, int count, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDepthRangeArrayv).invokeExact(first, count, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void depthRangeArrayv(SegmentAllocator allocator, int first, double[] v) {
-        depthRangeArrayv(first, v.length, allocator.allocateFrom(JAVA_DOUBLE, v));
-    }
-
-    public static void depthRangeIndexed(int index, double n, double f) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDepthRangeIndexed).invokeExact(index, n, f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void depthRangef(float n, float f) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDepthRangef).invokeExact(n, f);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genProgramPipelines(int n, MemorySegment pipelines) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenProgramPipelines).invokeExact(n, pipelines);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genProgramPipelines(SegmentAllocator allocator, int[] pipelines) {
-        var seg = allocator.allocate(JAVA_INT, pipelines.length);
+    @Skip
+    default void genProgramPipelines(SegmentAllocator allocator, @Ref int[] pipelines) {
+        var seg = Marshal.marshal(allocator, pipelines);
         genProgramPipelines(pipelines.length, seg);
-        RuntimeHelper.toArray(seg, pipelines);
+        Unmarshal.copy(seg, pipelines);
     }
 
-    public static int genProgramPipeline() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genProgramPipelines() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getDoublei_v(int target, int index, MemorySegment data) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetDoublei_v).invokeExact(target, index, data);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetDoublei_v")
+    default void getDoublei_v(int target, int index, MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void getDoublei_v(SegmentAllocator allocator, int target, int index, double[] data) {
-        var seg = allocator.allocate(JAVA_DOUBLE, data.length);
-        getDoublei_v(target, index, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Entrypoint("glGetDoublei_v")
+    default void getDoublei_v(SegmentAllocator allocator, int target, int index, @Ref double[] data) {
+        throw new ContextException();
     }
 
-    public static double getDoublei(int target, int index) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocDouble();
+    @Skip
+    default double getDoublei_v(int target, int index) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.doubles(0D);
             getDoublei_v(target, index, seg);
             return seg.get(JAVA_DOUBLE, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getFloati_v(int target, int index, MemorySegment data) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetFloati_v).invokeExact(target, index, data);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetFloati_v")
+    default void getFloati_v(int target, int index, MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void getFloati_v(SegmentAllocator allocator, int target, int index, float[] data) {
-        var seg = allocator.allocate(JAVA_FLOAT, data.length);
-        getFloati_v(target, index, seg);
-        RuntimeHelper.toArray(seg, data);
+    @Entrypoint("glGetFloati_v")
+    default void getFloati_v(SegmentAllocator allocator, int target, int index, @Ref float[] data) {
+        throw new ContextException();
     }
 
-    public static float getFloati(int target, int index) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocFloat();
+    @Skip
+    default float getFloati_v(int target, int index) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.floats(0F);
             getFloati_v(target, index, seg);
             return seg.get(JAVA_FLOAT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getProgramBinary(int program, int bufSize, MemorySegment length, MemorySegment binaryFormat, MemorySegment binary) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetProgramBinary).invokeExact(program, bufSize, length, binaryFormat, binary);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetProgramBinary")
+    default void getProgramBinary(int program, int bufSize, MemorySegment length, MemorySegment binaryFormat, MemorySegment binary) {
+        throw new ContextException();
     }
 
-    public static void getProgramBinary(int program, int bufSize, int @Nullable [] length, int[] binaryFormat, MemorySegment binary) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pl = length != null ? stack.callocInt() : MemorySegment.NULL;
-            var pf = stack.callocInt();
-            getProgramBinary(program, bufSize, pl, pf, binary);
-            if (length != null && length.length > 0) {
-                length[0] = pl.get(JAVA_INT, 0);
-            }
-            binaryFormat[0] = pf.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glGetProgramBinary")
+    default void getProgramBinary(int program, int bufSize, @Ref int @Nullable [] length, @Ref int[] binaryFormat, MemorySegment binary) {
+        throw new ContextException();
     }
 
-    public static void getProgramBinary(int program, int @Nullable [] length, int[] binaryFormat, MemorySegment binary) {
-        getProgramBinary(program, (int) binary.byteSize(), length, binaryFormat, binary);
+    @Skip
+    default void getProgramBinary(int program, @Ref int @Nullable [] length, @Ref int[] binaryFormat, MemorySegment binary) {
+        getProgramBinary(program, Math.toIntExact(binary.byteSize()), length, binaryFormat, binary);
     }
 
-    public static void getProgramPipelineInfoLog(int pipeline, int bufSize, MemorySegment length, MemorySegment infoLog) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetProgramPipelineInfoLog).invokeExact(pipeline, bufSize, length, infoLog);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetProgramPipelineInfoLog")
+    default void getProgramPipelineInfoLog(int pipeline, int bufSize, MemorySegment length, MemorySegment infoLog) {
+        throw new ContextException();
     }
 
-    public static void getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline, int bufSize, int @Nullable [] length, String[] infoLog) {
-        var pl = length != null ? allocator.allocate(JAVA_INT) : MemorySegment.NULL;
+    @Skip
+    default void getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline, int bufSize, @Ref int @Nullable [] length, @Ref String[] infoLog) {
+        var pl = Marshal.marshal(allocator, length);
         var pi = allocator.allocate(JAVA_BYTE, bufSize);
         getProgramPipelineInfoLog(pipeline, bufSize, pl, pi);
-        if (length != null && length.length > 0) {
-            length[0] = pl.get(JAVA_INT, 0);
-        }
+        Unmarshal.copy(pl, length);
         infoLog[0] = pi.getString(0);
     }
 
-    public static String getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline) {
-        final int sz = getProgramPipelinei(pipeline, INFO_LOG_LENGTH);
+    @Skip
+    default String getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline) {
+        final int sz = getProgramPipelineiv(pipeline, INFO_LOG_LENGTH);
         var pi = allocator.allocate(JAVA_BYTE, sz);
         getProgramPipelineInfoLog(pipeline, sz, MemorySegment.NULL, pi);
         return pi.getString(0);
     }
 
-    public static void getProgramPipelineiv(int pipeline, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetProgramPipelineiv).invokeExact(pipeline, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetProgramPipelineiv")
+    default void getProgramPipelineiv(int pipeline, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getProgramPipelinei(int pipeline, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getProgramPipelineiv(int pipeline, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getProgramPipelineiv(pipeline, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getShaderPrecisionFormat(int shaderType, int precisionType, MemorySegment range, MemorySegment precision) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetShaderPrecisionFormat).invokeExact(shaderType, precisionType, range, precision);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetShaderPrecisionFormat")
+    default void getShaderPrecisionFormat(int shaderType, int precisionType, MemorySegment range, MemorySegment precision) {
+        throw new ContextException();
     }
 
-    public static void getShaderPrecisionFormat(SegmentAllocator allocator, int shaderType, int precisionType, int[] range, int[] precision) {
-        var pr = allocator.allocate(JAVA_INT, range.length);
-        var pp = allocator.allocate(JAVA_INT);
-        getShaderPrecisionFormat(shaderType, precisionType, pr, pp);
-        RuntimeHelper.toArray(pr, range);
-        precision[0] = pp.get(JAVA_INT, 0);
+    @Entrypoint("glGetShaderPrecisionFormat")
+    default void getShaderPrecisionFormat(SegmentAllocator allocator, int shaderType, int precisionType, @Ref int[] range, @Ref int[] precision) {
+        throw new ContextException();
     }
 
-    public static void getVertexAttribLdv(int index, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetVertexAttribLdv).invokeExact(index, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetVertexAttribLdv")
+    default void getVertexAttribLdv(int index, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getVertexAttribLdv(SegmentAllocator allocator, int index, int pname, double[] params) {
-        var seg = allocator.allocate(JAVA_DOUBLE, params.length);
-        getVertexAttribLdv(index, pname, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetVertexAttribLdv")
+    default void getVertexAttribLdv(SegmentAllocator allocator, int index, int pname, @Ref double[] params) {
+        throw new ContextException();
     }
 
-    public static boolean isProgramPipeline(int pipeline) {
-        var caps = getCapabilities();
-        try {
-            return (boolean) check(caps.glIsProgramPipeline).invokeExact(pipeline);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glIsProgramPipeline")
+    default boolean isProgramPipeline(int pipeline) {
+        throw new ContextException();
     }
 
-    public static void programBinary(int program, int binaryFormat, MemorySegment binary, int length) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramBinary).invokeExact(program, binaryFormat, binary, length);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramBinary")
+    default void programBinary(int program, int binaryFormat, MemorySegment binary, int length) {
+        throw new ContextException();
     }
 
-    public static void programBinary(int program, int binaryFormat, MemorySegment binary) {
-        programBinary(program, binaryFormat, binary, (int) binary.byteSize());
+    @Skip
+    default void programBinary(int program, int binaryFormat, MemorySegment binary) {
+        programBinary(program, binaryFormat, binary, Math.toIntExact(binary.byteSize()));
     }
 
-    public static void programParameteri(int program, int pname, int value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramParameteri).invokeExact(program, pname, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramParameteri")
+    default void programParameteri(int program, int pname, int value) {
+        throw new ContextException();
     }
 
-    public static void programUniform1d(int program, int location, double v0) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1d).invokeExact(program, location, v0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1d")
+    default void programUniform1d(int program, int location, double v0) {
+        throw new ContextException();
     }
 
-    public static void programUniform1dv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1dv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1dv")
+    default void programUniform1dv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform1dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform1dv(program, location, value.length, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void programUniform1dv(SegmentAllocator allocator, int program, int location, double[] value) {
+        programUniform1dv(program, location, value.length, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform1f(int program, int location, float v0) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1f).invokeExact(program, location, v0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1f")
+    default void programUniform1f(int program, int location, float v0) {
+        throw new ContextException();
     }
 
-    public static void programUniform1fv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1fv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1fv")
+    default void programUniform1fv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform1fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform1fv(program, location, value.length, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Skip
+    default void programUniform1fv(SegmentAllocator allocator, int program, int location, float[] value) {
+        programUniform1fv(program, location, value.length, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform1i(int program, int location, int v0) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1i).invokeExact(program, location, v0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1i")
+    default void programUniform1i(int program, int location, int v0) {
+        throw new ContextException();
     }
 
-    public static void programUniform1iv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1iv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1iv")
+    default void programUniform1iv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform1iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform1iv(program, location, value.length, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform1iv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform1iv(program, location, value.length, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform1ui(int program, int location, int v0) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1ui).invokeExact(program, location, v0);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1ui")
+    default void programUniform1ui(int program, int location, int v0) {
+        throw new ContextException();
     }
 
-    public static void programUniform1uiv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform1uiv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform1uiv")
+    default void programUniform1uiv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform1uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform1uiv(program, location, value.length, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform1uiv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform1uiv(program, location, value.length, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform2d(int program, int location, double v0, double v1) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2d).invokeExact(program, location, v0, v1);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2d")
+    default void programUniform2d(int program, int location, double v0, double v1) {
+        throw new ContextException();
     }
 
-    public static void programUniform2dv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2dv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2dv")
+    default void programUniform2dv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform2dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform2dv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void programUniform2dv(SegmentAllocator allocator, int program, int location, double[] value) {
+        programUniform2dv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform2f(int program, int location, float v0, float v1) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2f).invokeExact(program, location, v0, v1);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2f")
+    default void programUniform2f(int program, int location, float v0, float v1) {
+        throw new ContextException();
     }
 
-    public static void programUniform2fv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2fv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2fv")
+    default void programUniform2fv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform2fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform2fv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Skip
+    default void programUniform2fv(SegmentAllocator allocator, int program, int location, float[] value) {
+        programUniform2fv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform2i(int program, int location, int v0, int v1) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2i).invokeExact(program, location, v0, v1);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2i")
+    default void programUniform2i(int program, int location, int v0, int v1) {
+        throw new ContextException();
     }
 
-    public static void programUniform2iv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2iv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2iv")
+    default void programUniform2iv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform2iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform2iv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform2iv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform2iv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform2ui(int program, int location, int v0, int v1) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2ui).invokeExact(program, location, v0, v1);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2ui")
+    default void programUniform2ui(int program, int location, int v0, int v1) {
+        throw new ContextException();
     }
 
-    public static void programUniform2uiv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform2uiv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform2uiv")
+    default void programUniform2uiv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform2uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform2uiv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform2uiv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform2uiv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform3d(int program, int location, double v0, double v1, double v2) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3d).invokeExact(program, location, v0, v1, v2);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3d")
+    default void programUniform3d(int program, int location, double v0, double v1, double v2) {
+        throw new ContextException();
     }
 
-    public static void programUniform3dv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3dv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3dv")
+    default void programUniform3dv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform3dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform3dv(program, location, value.length / 3, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void programUniform3dv(SegmentAllocator allocator, int program, int location, double[] value) {
+        programUniform3dv(program, location, value.length / 3, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform3f(int program, int location, float v0, float v1, float v2) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3f).invokeExact(program, location, v0, v1, v2);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3f")
+    default void programUniform3f(int program, int location, float v0, float v1, float v2) {
+        throw new ContextException();
     }
 
-    public static void programUniform3fv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3fv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3fv")
+    default void programUniform3fv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform3fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform3fv(program, location, value.length / 3, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Skip
+    default void programUniform3fv(SegmentAllocator allocator, int program, int location, float[] value) {
+        programUniform3fv(program, location, value.length / 3, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform3i(int program, int location, int v0, int v1, int v2) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3i).invokeExact(program, location, v0, v1, v2);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3i")
+    default void programUniform3i(int program, int location, int v0, int v1, int v2) {
+        throw new ContextException();
     }
 
-    public static void programUniform3iv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3iv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3iv")
+    default void programUniform3iv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform3iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform3iv(program, location, value.length / 3, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform3iv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform3iv(program, location, value.length / 3, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform3ui(int program, int location, int v0, int v1, int v2) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3ui).invokeExact(program, location, v0, v1, v2);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3ui")
+    default void programUniform3ui(int program, int location, int v0, int v1, int v2) {
+        throw new ContextException();
     }
 
-    public static void programUniform3uiv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform3uiv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform3uiv")
+    default void programUniform3uiv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform3uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform3uiv(program, location, value.length / 3, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform3uiv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform3uiv(program, location, value.length / 3, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform4d(int program, int location, double v0, double v1, double v2, double v3) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4d).invokeExact(program, location, v0, v1, v2, v3);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4d")
+    default void programUniform4d(int program, int location, double v0, double v1, double v2, double v3) {
+        throw new ContextException();
     }
 
-    public static void programUniform4dv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4dv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4dv")
+    default void programUniform4dv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform4dv(SegmentAllocator allocator, int program, int location, double[] value) {
-        programUniform4dv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void programUniform4dv(SegmentAllocator allocator, int program, int location, double[] value) {
+        programUniform4dv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform4f(int program, int location, float v0, float v1, float v2, float v3) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4f).invokeExact(program, location, v0, v1, v2, v3);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4f")
+    default void programUniform4f(int program, int location, float v0, float v1, float v2, float v3) {
+        throw new ContextException();
     }
 
-    public static void programUniform4fv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4fv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4fv")
+    default void programUniform4fv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform4fv(SegmentAllocator allocator, int program, int location, float[] value) {
-        programUniform4fv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Skip
+    default void programUniform4fv(SegmentAllocator allocator, int program, int location, float[] value) {
+        programUniform4fv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform4i(int program, int location, int v0, int v1, int v2, int v3) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4i).invokeExact(program, location, v0, v1, v2, v3);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4i")
+    default void programUniform4i(int program, int location, int v0, int v1, int v2, int v3) {
+        throw new ContextException();
     }
 
-    public static void programUniform4iv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4iv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4iv")
+    default void programUniform4iv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform4iv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform4iv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform4iv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform4iv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniform4ui(int program, int location, int v0, int v1, int v2, int v3) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4ui).invokeExact(program, location, v0, v1, v2, v3);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4ui")
+    default void programUniform4ui(int program, int location, int v0, int v1, int v2, int v3) {
+        throw new ContextException();
     }
 
-    public static void programUniform4uiv(int program, int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniform4uiv).invokeExact(program, location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniform4uiv")
+    default void programUniform4uiv(int program, int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniform4uiv(SegmentAllocator allocator, int program, int location, int[] value) {
-        programUniform4uiv(program, location, value.length >> 2, allocator.allocateFrom(JAVA_INT, value));
+    @Skip
+    default void programUniform4uiv(SegmentAllocator allocator, int program, int location, int[] value) {
+        programUniform4uiv(program, location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void programUniformMatrix2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix2dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix2dv")
+    default void programUniformMatrix2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix2dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix2dv")
+    default void programUniformMatrix2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix2dv(allocator, program, location, value.length >> 2, transpose, value);
     }
 
-    public static void programUniformMatrix2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix2fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix2fv")
+    default void programUniformMatrix2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix2fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix2fv")
+    default void programUniformMatrix2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix2fv(allocator, program, location, value.length >> 2, transpose, value);
     }
 
-    public static void programUniformMatrix2x3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix2x3dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix2x3dv")
+    default void programUniformMatrix2x3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix2x3dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix2x3dv")
+    default void programUniformMatrix2x3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix2x3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix2x3dv(allocator, program, location, value.length / 6, transpose, value);
     }
 
-    public static void programUniformMatrix2x3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix2x3fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix2x3fv")
+    default void programUniformMatrix2x3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix2x3fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix2x3fv")
+    default void programUniformMatrix2x3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix2x3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix2x3fv(allocator, program, location, value.length / 6, transpose, value);
     }
 
-    public static void programUniformMatrix2x4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix2x4dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix2x4dv")
+    default void programUniformMatrix2x4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix2x4dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix2x4dv")
+    default void programUniformMatrix2x4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix2x4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix2x4dv(allocator, program, location, value.length >> 3, transpose, value);
     }
 
-    public static void programUniformMatrix2x4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix2x4fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix2x4fv")
+    default void programUniformMatrix2x4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix2x4fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix2x4fv")
+    default void programUniformMatrix2x4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix2x4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix2x4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix2x4fv(allocator, program, location, value.length >> 3, transpose, value);
     }
 
-    public static void programUniformMatrix3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix3dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix3dv")
+    default void programUniformMatrix3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix3dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix3dv")
+    default void programUniformMatrix3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix3dv(allocator, program, location, value.length / 9, transpose, value);
     }
 
-    public static void programUniformMatrix3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix3fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix3fv")
+    default void programUniformMatrix3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix3fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix3fv")
+    default void programUniformMatrix3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix3fv(allocator, program, location, value.length / 9, transpose, value);
     }
 
-    public static void programUniformMatrix3x2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix3x2dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix3x2dv")
+    default void programUniformMatrix3x2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix3x2dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix3x2dv")
+    default void programUniformMatrix3x2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix3x2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix3x2dv(allocator, program, location, value.length / 6, transpose, value);
     }
 
-    public static void programUniformMatrix3x2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix3x2fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix3x2fv")
+    default void programUniformMatrix3x2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix3x2fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix3x2fv")
+    default void programUniformMatrix3x2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix3x2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix3x2fv(allocator, program, location, value.length / 6, transpose, value);
     }
 
-    public static void programUniformMatrix3x4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix3x4dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix3x4dv")
+    default void programUniformMatrix3x4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix3x4dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix3x4dv")
+    default void programUniformMatrix3x4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix3x4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix3x4dv(allocator, program, location, value.length / 12, transpose, value);
     }
 
-    public static void programUniformMatrix3x4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix3x4fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix3x4fv")
+    default void programUniformMatrix3x4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix3x4fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix3x4fv")
+    default void programUniformMatrix3x4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix3x4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix3x4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix3x4fv(allocator, program, location, value.length / 12, transpose, value);
     }
 
-    public static void programUniformMatrix4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix4dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix4dv")
+    default void programUniformMatrix4dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix4dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix4dv")
+    default void programUniformMatrix4dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix4dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix4dv(allocator, program, location, value.length >> 4, transpose, value);
     }
 
-    public static void programUniformMatrix4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix4fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix4fv")
+    default void programUniformMatrix4fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix4fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix4fv")
+    default void programUniformMatrix4fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix4fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix4fv(allocator, program, location, value.length >> 4, transpose, value);
     }
 
-    public static void programUniformMatrix4x2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix4x2dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix4x2dv")
+    default void programUniformMatrix4x2dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix4x2dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix4x2dv")
+    default void programUniformMatrix4x2dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix4x2dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix4x2dv(allocator, program, location, value.length >> 3, transpose, value);
     }
 
-    public static void programUniformMatrix4x2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix4x2fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix4x2fv")
+    default void programUniformMatrix4x2fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix4x2fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix4x2fv")
+    default void programUniformMatrix4x2fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix4x2fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix4x2fv(allocator, program, location, value.length >> 3, transpose, value);
     }
 
-    public static void programUniformMatrix4x3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix4x3dv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix4x3dv")
+    default void programUniformMatrix4x3dv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
-        programUniformMatrix4x3dv(program, location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glProgramUniformMatrix4x3dv")
+    default void programUniformMatrix4x3dv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
+    @Skip
+    default void programUniformMatrix4x3dv(SegmentAllocator allocator, int program, int location, boolean transpose, double[] value) {
         programUniformMatrix4x3dv(allocator, program, location, value.length / 12, transpose, value);
     }
 
-    public static void programUniformMatrix4x3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glProgramUniformMatrix4x3fv).invokeExact(program, location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glProgramUniformMatrix4x3fv")
+    default void programUniformMatrix4x3fv(int program, int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
-        programUniformMatrix4x3fv(program, location, count, transpose, allocator.allocateFrom(JAVA_FLOAT, value));
+    @Entrypoint("glProgramUniformMatrix4x3fv")
+    default void programUniformMatrix4x3fv(SegmentAllocator allocator, int program, int location, int count, boolean transpose, float[] value) {
+        throw new ContextException();
     }
 
-    public static void programUniformMatrix4x3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
+    @Skip
+    default void programUniformMatrix4x3fv(SegmentAllocator allocator, int program, int location, boolean transpose, float[] value) {
         programUniformMatrix4x3fv(allocator, program, location, value.length / 12, transpose, value);
     }
 
-    public static void releaseShaderCompiler() {
-        var caps = getCapabilities();
-        try {
-            check(caps.glReleaseShaderCompiler).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glReleaseShaderCompiler")
+    default void releaseShaderCompiler() {
+        throw new ContextException();
     }
 
-    public static void scissorArrayv(int first, int count, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glScissorArrayv).invokeExact(first, count, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glScissorArrayv")
+    default void scissorArrayv(int first, int count, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void scissorArrayv(SegmentAllocator allocator, int first, int count, int[] v) {
-        scissorArrayv(first, count, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glScissorArrayv")
+    default void scissorArrayv(SegmentAllocator allocator, int first, int count, int[] v) {
+        throw new ContextException();
     }
 
-    public static void scissorIndexed(int index, int left, int bottom, int width, int height) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glScissorIndexed).invokeExact(index, left, bottom, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glScissorIndexed")
+    default void scissorIndexed(int index, int left, int bottom, int width, int height) {
+        throw new ContextException();
     }
 
-    public static void scissorIndexedv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glScissorIndexedv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glScissorIndexedv")
+    default void scissorIndexedv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void scissorIndexedv(SegmentAllocator allocator, int index, int[] v) {
-        scissorIndexedv(index, allocator.allocateFrom(JAVA_INT, v));
+    @Entrypoint("glScissorIndexedv")
+    default void scissorIndexedv(SegmentAllocator allocator, int index, int[] v) {
+        throw new ContextException();
     }
 
-    public static void shaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glShaderBinary).invokeExact(count, shaders, binaryFormat, binary, length);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glShaderBinary")
+    default void shaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
+        throw new ContextException();
     }
 
-    public static void shaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary, int length) {
-        shaderBinary(shaders.length, allocator.allocateFrom(JAVA_INT, shaders), binaryFormat, binary, length);
+    @Skip
+    default void shaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary, int length) {
+        shaderBinary(shaders.length, Marshal.marshal(allocator, shaders), binaryFormat, binary, length);
     }
 
-    public static void shaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary) {
-        shaderBinary(allocator, shaders, binaryFormat, binary, (int) binary.byteSize());
+    @Skip
+    default void shaderBinary(SegmentAllocator allocator, int[] shaders, int binaryFormat, MemorySegment binary) {
+        shaderBinary(allocator, shaders, binaryFormat, binary, Math.toIntExact(binary.byteSize()));
     }
 
-    public static void useProgramStages(int pipeline, int stages, int program) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUseProgramStages).invokeExact(pipeline, stages, program);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUseProgramStages")
+    default void useProgramStages(int pipeline, int stages, int program) {
+        throw new ContextException();
     }
 
-    public static void validateProgramPipeline(int pipeline) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glValidateProgramPipeline).invokeExact(pipeline);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glValidateProgramPipeline")
+    default void validateProgramPipeline(int pipeline) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL1d(int index, double x) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL1d).invokeExact(index, x);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL1d")
+    default void vertexAttribL1d(int index, double x) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL1dv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL1dv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL1dv")
+    default void vertexAttribL1dv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL1dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL1dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
+    @Entrypoint("glVertexAttribL1dv")
+    default void vertexAttribL1dv(SegmentAllocator allocator, int index, double[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL2d(int index, double x, double y) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL2d).invokeExact(index, x, y);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL2d")
+    default void vertexAttribL2d(int index, double x, double y) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL2dv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL2dv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL2dv")
+    default void vertexAttribL2dv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL2dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL2dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
+    @Entrypoint("glVertexAttribL2dv")
+    default void vertexAttribL2dv(SegmentAllocator allocator, int index, double[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL3d(int index, double x, double y, double z) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL3d).invokeExact(index, x, y, z);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL3d")
+    default void vertexAttribL3d(int index, double x, double y, double z) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL3dv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL3dv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL3dv")
+    default void vertexAttribL3dv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL3dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL3dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
+    @Entrypoint("glVertexAttribL3dv")
+    default void vertexAttribL3dv(SegmentAllocator allocator, int index, double[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL4d(int index, double x, double y, double z, double w) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL4d).invokeExact(index, x, y, z, w);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL4d")
+    default void vertexAttribL4d(int index, double x, double y, double z, double w) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL4dv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribL4dv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribL4dv")
+    default void vertexAttribL4dv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribL4dv(SegmentAllocator allocator, int index, double[] v) {
-        vertexAttribL4dv(index, allocator.allocateFrom(JAVA_DOUBLE, v));
+    @Entrypoint("glVertexAttribL4dv")
+    default void vertexAttribL4dv(SegmentAllocator allocator, int index, double[] v) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribLPointer(int index, int size, int type, int stride, MemorySegment pointer) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glVertexAttribLPointer).invokeExact(index, size, type, stride, pointer);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glVertexAttribLPointer")
+    default void vertexAttribLPointer(int index, int size, int type, int stride, MemorySegment pointer) {
+        throw new ContextException();
     }
 
-    public static void vertexAttribLPointer(SegmentAllocator allocator, int index, int size, int type, int stride, double[] pointer) {
-        vertexAttribLPointer(index, size, type, stride, allocator.allocateFrom(JAVA_DOUBLE, pointer));
+    @Entrypoint("glVertexAttribLPointer")
+    default void vertexAttribLPointer(SegmentAllocator allocator, int index, int size, int type, int stride, double[] pointer) {
+        throw new ContextException();
     }
 
-    public static void viewportArrayv(int first, int count, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glViewportArrayv).invokeExact(first, count, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glViewportArrayv")
+    default void viewportArrayv(int first, int count, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void viewportArrayv(SegmentAllocator allocator, int first, int count, float[] v) {
-        viewportArrayv(first, count, allocator.allocateFrom(JAVA_FLOAT, v));
+    @Entrypoint("glViewportArrayv")
+    default void viewportArrayv(SegmentAllocator allocator, int first, int count, float[] v) {
+        throw new ContextException();
     }
 
-    public static void viewportIndexedf(int index, float x, float y, float w, float h) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glViewportIndexedf).invokeExact(index, x, y, w, h);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glViewportIndexedf")
+    default void viewportIndexedf(int index, float x, float y, float w, float h) {
+        throw new ContextException();
     }
 
-    public static void viewportIndexedfv(int index, MemorySegment v) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glViewportIndexedfv).invokeExact(index, v);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glViewportIndexedfv")
+    default void viewportIndexedfv(int index, MemorySegment v) {
+        throw new ContextException();
     }
 
-    public static void viewportIndexedfv(SegmentAllocator allocator, int index, float[] v) {
-        viewportIndexedfv(index, allocator.allocateFrom(JAVA_FLOAT, v));
+    @Entrypoint("glViewportIndexedfv")
+    default void viewportIndexedfv(SegmentAllocator allocator, int index, float[] v) {
+        throw new ContextException();
     }
 }

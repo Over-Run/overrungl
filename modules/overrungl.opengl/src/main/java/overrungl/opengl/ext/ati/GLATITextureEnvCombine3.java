@@ -16,19 +16,15 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_texture_env_combine3}
  */
-public final class GLATITextureEnvCombine3 {
-    public static final int GL_MODULATE_ADD_ATI = 0x8744;
-    public static final int GL_MODULATE_SIGNED_ADD_ATI = 0x8745;
-    public static final int GL_MODULATE_SUBTRACT_ATI = 0x8746;
+public interface GLATITextureEnvCombine3 {
+    int GL_MODULATE_ADD_ATI = 0x8744;
+    int GL_MODULATE_SIGNED_ADD_ATI = 0x8745;
+    int GL_MODULATE_SUBTRACT_ATI = 0x8746;
 }

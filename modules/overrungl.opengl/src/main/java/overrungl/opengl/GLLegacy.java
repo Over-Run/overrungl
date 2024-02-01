@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,21 +14,13 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl;
-
-import java.lang.foreign.MemorySegment;
+package overrungl.opengl;
 
 /**
- * An object that has a {@link MemorySegment} value.
+ * The latest OpenGL functions, with legacy.
  *
  * @author squid233
  * @since 0.1.0
  */
-@Deprecated(since = "0.1.0")
-@FunctionalInterface
-public interface Addressable {
-    /**
-     * {@return the raw address value}
-     */
-    MemorySegment address();
+public non-sealed interface GLLegacy extends GL, GL10, GL11, GL12, GL13, GL14, GL15, GL20, GL21, GL30 {
 }

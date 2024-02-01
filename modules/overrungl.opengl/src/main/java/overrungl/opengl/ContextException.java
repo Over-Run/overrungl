@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,29 +14,19 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.internal;
+package overrungl.opengl;
 
 /**
- * Quick create exceptions
+ * Signals that an OpenGL function has been invoked without its context, or it doesn't exist.
  *
  * @author squid233
  * @since 0.1.0
  */
-@Deprecated(since = "0.1.0")
-public final class Exceptions {
+public class ContextException extends RuntimeException {
     /**
-     * {@link IllegalStateException}
+     * Constructs a {@code ContextException}.
      */
-    public static final StringTemplate.Processor<IllegalStateException, RuntimeException> ISE = stringTemplate ->
-        new IllegalStateException(stringTemplate.interpolate());
-
-    /**
-     * {@link IllegalArgumentException}
-     */
-    public static final StringTemplate.Processor<IllegalArgumentException, RuntimeException> IAE = stringTemplate ->
-        new IllegalArgumentException(stringTemplate.interpolate());
-
-    private Exceptions() {
-        //no instance
+    public ContextException() {
+        super("Couldn't find OpenGL function");
     }
 }

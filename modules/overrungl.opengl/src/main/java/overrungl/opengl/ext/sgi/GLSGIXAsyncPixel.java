@@ -16,22 +16,18 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_async_pixel}
  */
-public final class GLSGIXAsyncPixel {
-    public static final int GL_ASYNC_TEX_IMAGE_SGIX = 0x835C;
-    public static final int GL_ASYNC_DRAW_PIXELS_SGIX = 0x835D;
-    public static final int GL_ASYNC_READ_PIXELS_SGIX = 0x835E;
-    public static final int GL_MAX_ASYNC_TEX_IMAGE_SGIX = 0x835F;
-    public static final int GL_MAX_ASYNC_DRAW_PIXELS_SGIX = 0x8360;
-    public static final int GL_MAX_ASYNC_READ_PIXELS_SGIX = 0x8361;
+public interface GLSGIXAsyncPixel {
+    int GL_ASYNC_TEX_IMAGE_SGIX = 0x835C;
+    int GL_ASYNC_DRAW_PIXELS_SGIX = 0x835D;
+    int GL_ASYNC_READ_PIXELS_SGIX = 0x835E;
+    int GL_MAX_ASYNC_TEX_IMAGE_SGIX = 0x835F;
+    int GL_MAX_ASYNC_DRAW_PIXELS_SGIX = 0x8360;
+    int GL_MAX_ASYNC_READ_PIXELS_SGIX = 0x8361;
 }

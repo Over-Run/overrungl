@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_point_sprite}
  */
-public final class GLARBPointSprite {
-    public static final int GL_POINT_SPRITE_ARB = 0x8861;
-    public static final int GL_COORD_REPLACE_ARB = 0x8862;
+public interface GLARBPointSprite {
+    int GL_POINT_SPRITE_ARB = 0x8861;
+    int GL_COORD_REPLACE_ARB = 0x8862;
 }

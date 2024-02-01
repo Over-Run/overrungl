@@ -16,59 +16,36 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_paletted_texture}
  */
-public final class GLEXTPalettedTexture {
-    public static final int GL_COLOR_INDEX1_EXT = 0x80E2;
-    public static final int GL_COLOR_INDEX2_EXT = 0x80E3;
-    public static final int GL_COLOR_INDEX4_EXT = 0x80E4;
-    public static final int GL_COLOR_INDEX8_EXT = 0x80E5;
-    public static final int GL_COLOR_INDEX12_EXT = 0x80E6;
-    public static final int GL_COLOR_INDEX16_EXT = 0x80E7;
-    public static final int GL_TEXTURE_INDEX_SIZE_EXT = 0x80ED;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_paletted_texture) return;
-        ext.glColorTableEXT = load.invoke("glColorTableEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glGetColorTableEXT = load.invoke("glGetColorTableEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glGetColorTableParameterivEXT = load.invoke("glGetColorTableParameterivEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glGetColorTableParameterfvEXT = load.invoke("glGetColorTableParameterfvEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+public interface GLEXTPalettedTexture {
+    int GL_COLOR_INDEX1_EXT = 0x80E2;
+    int GL_COLOR_INDEX2_EXT = 0x80E3;
+    int GL_COLOR_INDEX4_EXT = 0x80E4;
+    int GL_COLOR_INDEX8_EXT = 0x80E5;
+    int GL_COLOR_INDEX12_EXT = 0x80E6;
+    int GL_COLOR_INDEX16_EXT = 0x80E7;
+    int GL_TEXTURE_INDEX_SIZE_EXT = 0x80ED;
+
+    default void glColorTableEXT(int target, int internalFormat, int width, int format, int type, @NativeType("const void *") MemorySegment table) {
+        throw new ContextException();
     }
 
-    public static void glColorTableEXT(int target, int internalFormat, int width, int format, int type, @NativeType("const void *") MemorySegment table) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glColorTableEXT).invokeExact(target, internalFormat, width, format, type, table);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGetColorTableEXT(int target, int format, int type, @NativeType("void *") MemorySegment data) {
+        throw new ContextException();
     }
 
-    public static void glGetColorTableEXT(int target, int format, int type, @NativeType("void *") MemorySegment data) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetColorTableEXT).invokeExact(target, format, type, data);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGetColorTableParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void glGetColorTableParameterivEXT(int target, int pname, @NativeType("GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetColorTableParameterivEXT).invokeExact(target, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGetColorTableParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetColorTableParameterfvEXT).invokeExact(target, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGetColorTableParameterfvEXT(int target, int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
     }
 
 }

@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_pixel_texture}
  */
-public final class GLSGIXPixelTexture {
-    public static final int GL_PIXEL_TEX_GEN_SGIX = 0x8139;
-    public static final int GL_PIXEL_TEX_GEN_MODE_SGIX = 0x832B;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SGIX_pixel_texture) return;
-        ext.glPixelTexGenSGIX = load.invoke("glPixelTexGenSGIX", ofVoid(JAVA_INT));
-    }
+public interface GLSGIXPixelTexture {
+    int GL_PIXEL_TEX_GEN_SGIX = 0x8139;
+    int GL_PIXEL_TEX_GEN_MODE_SGIX = 0x832B;
 
-    public static void glPixelTexGenSGIX(int mode) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPixelTexGenSGIX).invokeExact(mode);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glPixelTexGenSGIX(int mode) {
+        throw new ContextException();
     }
 
 }

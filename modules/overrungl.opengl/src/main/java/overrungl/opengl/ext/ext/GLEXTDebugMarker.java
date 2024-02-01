@@ -16,44 +16,25 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_debug_marker}
  */
-public final class GLEXTDebugMarker {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_debug_marker) return;
-        ext.glInsertEventMarkerEXT = load.invoke("glInsertEventMarkerEXT", ofVoid(JAVA_INT, ADDRESS));
-        ext.glPushGroupMarkerEXT = load.invoke("glPushGroupMarkerEXT", ofVoid(JAVA_INT, ADDRESS));
-        ext.glPopGroupMarkerEXT = load.invoke("glPopGroupMarkerEXT", ofVoid());
+public interface GLEXTDebugMarker {
+
+    default void glInsertEventMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker) {
+        throw new ContextException();
     }
 
-    public static void glInsertEventMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glInsertEventMarkerEXT).invokeExact(length, marker);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glPushGroupMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker) {
+        throw new ContextException();
     }
 
-    public static void glPushGroupMarkerEXT(int length, @NativeType("const GLchar *") MemorySegment marker) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPushGroupMarkerEXT).invokeExact(length, marker);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glPopGroupMarkerEXT() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPopGroupMarkerEXT).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glPopGroupMarkerEXT() {
+        throw new ContextException();
     }
 
 }

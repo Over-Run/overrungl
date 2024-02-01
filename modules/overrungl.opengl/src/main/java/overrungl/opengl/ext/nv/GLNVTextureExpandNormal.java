@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_texture_expand_normal}
  */
-public final class GLNVTextureExpandNormal {
-    public static final int GL_TEXTURE_UNSIGNED_REMAP_MODE_NV = 0x888F;
+public interface GLNVTextureExpandNormal {
+    int GL_TEXTURE_UNSIGNED_REMAP_MODE_NV = 0x888F;
 }

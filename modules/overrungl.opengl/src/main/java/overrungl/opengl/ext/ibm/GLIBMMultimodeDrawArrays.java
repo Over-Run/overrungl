@@ -16,36 +16,21 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ibm;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_IBM_multimode_draw_arrays}
  */
-public final class GLIBMMultimodeDrawArrays {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_IBM_multimode_draw_arrays) return;
-        ext.glMultiModeDrawArraysIBM = load.invoke("glMultiModeDrawArraysIBM", ofVoid(ADDRESS, ADDRESS, ADDRESS, JAVA_INT, JAVA_INT));
-        ext.glMultiModeDrawElementsIBM = load.invoke("glMultiModeDrawElementsIBM", ofVoid(ADDRESS, ADDRESS, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT));
+public interface GLIBMMultimodeDrawArrays {
+
+    default void glMultiModeDrawArraysIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount, int modestride) {
+        throw new ContextException();
     }
 
-    public static void glMultiModeDrawArraysIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLint *") MemorySegment first, @NativeType("const GLsizei *") MemorySegment count, int primcount, int modestride) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glMultiModeDrawArraysIBM).invokeExact(mode, first, count, primcount, modestride);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glMultiModeDrawElementsIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLsizei *") MemorySegment count, int type, @NativeType("const void *const*") MemorySegment indices, int primcount, int modestride) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glMultiModeDrawElementsIBM).invokeExact(mode, count, type, indices, primcount, modestride);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glMultiModeDrawElementsIBM(@NativeType("const GLenum *") MemorySegment mode, @NativeType("const GLsizei *") MemorySegment count, int type, @NativeType("const void *const*") MemorySegment indices, int primcount, int modestride) {
+        throw new ContextException();
     }
 
 }

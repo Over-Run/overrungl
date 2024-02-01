@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_shader_framebuffer_fetch_non_coherent}
  */
-public final class GLEXTShaderFramebufferFetchNonCoherent {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_shader_framebuffer_fetch_non_coherent) return;
-        ext.glFramebufferFetchBarrierEXT = load.invoke("glFramebufferFetchBarrierEXT", ofVoid());
-    }
+public interface GLEXTShaderFramebufferFetchNonCoherent {
 
-    public static void glFramebufferFetchBarrierEXT() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFramebufferFetchBarrierEXT).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFramebufferFetchBarrierEXT() {
+        throw new ContextException();
     }
 
 }

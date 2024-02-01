@@ -16,11 +16,11 @@
 
 package overrungl.demo.nfd;
 
+import overrun.marshal.MemoryStack;
 import overrungl.nfd.NFD;
 import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDNFilterItem;
 import overrungl.nfd.NFDResult;
-import overrungl.util.MemoryStack;
 import overrungl.util.value.Pair;
 
 import java.lang.foreign.MemorySegment;
@@ -70,7 +70,7 @@ public final class NFDTest {
         nfd.init();
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.callocPointer();
+            MemorySegment pOutPaths = stack.segments(MemorySegment.NULL);
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
@@ -111,7 +111,7 @@ public final class NFDTest {
         nfd.init();
 
         try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.callocPointer();
+            MemorySegment pOutPaths = stack.segments(MemorySegment.NULL);
 
             // prepare filters for the dialog
             final NFDNFilterItem filterItem = NFDNFilterItem.create(stack,
@@ -196,10 +196,10 @@ public final class NFDTest {
     }
 
     public static void main(String[] args) {
-//        openDialog();
-//        openDialogMultiple();
-//        openDialogMultipleEnum();
-//        pickFolder();
+        openDialog();
+        openDialogMultiple();
+        openDialogMultipleEnum();
+        pickFolder();
         saveDialog();
     }
 }

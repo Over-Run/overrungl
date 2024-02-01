@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_semaphore_fd}
  */
-public final class GLEXTSemaphoreFd {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_semaphore_fd) return;
-        ext.glImportSemaphoreFdEXT = load.invoke("glImportSemaphoreFdEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTSemaphoreFd {
 
-    public static void glImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glImportSemaphoreFdEXT).invokeExact(semaphore, handleType, fd);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
+        throw new ContextException();
     }
 
 }

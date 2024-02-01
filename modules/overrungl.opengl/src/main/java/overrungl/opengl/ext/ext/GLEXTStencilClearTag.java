@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_stencil_clear_tag}
  */
-public final class GLEXTStencilClearTag {
-    public static final int GL_STENCIL_TAG_BITS_EXT = 0x88F2;
-    public static final int GL_STENCIL_CLEAR_TAG_VALUE_EXT = 0x88F3;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_stencil_clear_tag) return;
-        ext.glStencilClearTagEXT = load.invoke("glStencilClearTagEXT", ofVoid(JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTStencilClearTag {
+    int GL_STENCIL_TAG_BITS_EXT = 0x88F2;
+    int GL_STENCIL_CLEAR_TAG_VALUE_EXT = 0x88F3;
 
-    public static void glStencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glStencilClearTagEXT).invokeExact(stencilTagBits, stencilClearTag);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glStencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
+        throw new ContextException();
     }
 
 }

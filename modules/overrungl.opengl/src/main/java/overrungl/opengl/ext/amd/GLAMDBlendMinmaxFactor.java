@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_blend_minmax_factor}
  */
-public final class GLAMDBlendMinmaxFactor {
-    public static final int GL_FACTOR_MIN_AMD = 0x901C;
-    public static final int GL_FACTOR_MAX_AMD = 0x901D;
+public interface GLAMDBlendMinmaxFactor {
+    int GL_FACTOR_MIN_AMD = 0x901C;
+    int GL_FACTOR_MAX_AMD = 0x901D;
 }

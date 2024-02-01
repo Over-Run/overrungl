@@ -16,81 +16,44 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_fence}
  */
-public final class GLNVFence {
-    public static final int GL_ALL_COMPLETED_NV = 0x84F2;
-    public static final int GL_FENCE_STATUS_NV = 0x84F3;
-    public static final int GL_FENCE_CONDITION_NV = 0x84F4;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_fence) return;
-        ext.glDeleteFencesNV = load.invoke("glDeleteFencesNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glGenFencesNV = load.invoke("glGenFencesNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glIsFenceNV = load.invoke("glIsFenceNV", of(JAVA_BYTE, JAVA_INT));
-        ext.glTestFenceNV = load.invoke("glTestFenceNV", of(JAVA_BYTE, JAVA_INT));
-        ext.glGetFenceivNV = load.invoke("glGetFenceivNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glFinishFenceNV = load.invoke("glFinishFenceNV", ofVoid(JAVA_INT));
-        ext.glSetFenceNV = load.invoke("glSetFenceNV", ofVoid(JAVA_INT, JAVA_INT));
+public interface GLNVFence {
+    int GL_ALL_COMPLETED_NV = 0x84F2;
+    int GL_FENCE_STATUS_NV = 0x84F3;
+    int GL_FENCE_CONDITION_NV = 0x84F4;
+
+    default void glDeleteFencesNV(int n, @NativeType("const GLuint *") MemorySegment fences) {
+        throw new ContextException();
     }
 
-    public static void glDeleteFencesNV(int n, @NativeType("const GLuint *") MemorySegment fences) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDeleteFencesNV).invokeExact(n, fences);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGenFencesNV(int n, @NativeType("GLuint *") MemorySegment fences) {
+        throw new ContextException();
     }
 
-    public static void glGenFencesNV(int n, @NativeType("GLuint *") MemorySegment fences) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGenFencesNV).invokeExact(n, fences);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default boolean glIsFenceNV(int fence) {
+        throw new ContextException();
     }
 
-    public static boolean glIsFenceNV(int fence) {
-        final var ext = getExtCapabilities();
-        try {
-            return (boolean)
-            check(ext.glIsFenceNV).invokeExact(fence);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default boolean glTestFenceNV(int fence) {
+        throw new ContextException();
     }
 
-    public static boolean glTestFenceNV(int fence) {
-        final var ext = getExtCapabilities();
-        try {
-            return (boolean)
-            check(ext.glTestFenceNV).invokeExact(fence);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGetFenceivNV(int fence, int pname, @NativeType("GLint *") MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void glGetFenceivNV(int fence, int pname, @NativeType("GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetFenceivNV).invokeExact(fence, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFinishFenceNV(int fence) {
+        throw new ContextException();
     }
 
-    public static void glFinishFenceNV(int fence) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFinishFenceNV).invokeExact(fence);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glSetFenceNV(int fence, int condition) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSetFenceNV).invokeExact(fence, condition);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glSetFenceNV(int fence, int condition) {
+        throw new ContextException();
     }
 
 }

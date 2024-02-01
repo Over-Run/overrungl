@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_depth_bounds_test}
  */
-public final class GLEXTDepthBoundsTest {
-    public static final int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
-    public static final int GL_DEPTH_BOUNDS_EXT = 0x8891;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_depth_bounds_test) return;
-        ext.glDepthBoundsEXT = load.invoke("glDepthBoundsEXT", ofVoid(JAVA_DOUBLE, JAVA_DOUBLE));
-    }
+public interface GLEXTDepthBoundsTest {
+    int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
+    int GL_DEPTH_BOUNDS_EXT = 0x8891;
 
-    public static void glDepthBoundsEXT(double zmin, double zmax) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDepthBoundsEXT).invokeExact(zmin, zmax);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glDepthBoundsEXT(double zmin, double zmax) {
+        throw new ContextException();
     }
 
 }

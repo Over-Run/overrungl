@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_stencil_two_side}
  */
-public final class GLEXTStencilTwoSide {
-    public static final int GL_STENCIL_TEST_TWO_SIDE_EXT = 0x8910;
-    public static final int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_stencil_two_side) return;
-        ext.glActiveStencilFaceEXT = load.invoke("glActiveStencilFaceEXT", ofVoid(JAVA_INT));
-    }
+public interface GLEXTStencilTwoSide {
+    int GL_STENCIL_TEST_TWO_SIDE_EXT = 0x8910;
+    int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
 
-    public static void glActiveStencilFaceEXT(int face) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glActiveStencilFaceEXT).invokeExact(face);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glActiveStencilFaceEXT(int face) {
+        throw new ContextException();
     }
 
 }

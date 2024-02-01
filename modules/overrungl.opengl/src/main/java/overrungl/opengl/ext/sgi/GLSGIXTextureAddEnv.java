@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_texture_add_env}
  */
-public final class GLSGIXTextureAddEnv {
-    public static final int GL_TEXTURE_ENV_BIAS_SGIX = 0x80BE;
+public interface GLSGIXTextureAddEnv {
+    int GL_TEXTURE_ENV_BIAS_SGIX = 0x80BE;
 }

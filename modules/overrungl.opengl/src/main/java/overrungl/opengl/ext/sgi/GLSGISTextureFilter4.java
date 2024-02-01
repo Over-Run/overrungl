@@ -16,38 +16,23 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIS_texture_filter4}
  */
-public final class GLSGISTextureFilter4 {
-    public static final int GL_FILTER4_SGIS = 0x8146;
-    public static final int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SGIS_texture_filter4) return;
-        ext.glGetTexFilterFuncSGIS = load.invoke("glGetTexFilterFuncSGIS", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glTexFilterFuncSGIS = load.invoke("glTexFilterFuncSGIS", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
+public interface GLSGISTextureFilter4 {
+    int GL_FILTER4_SGIS = 0x8146;
+    int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;
+
+    default void glGetTexFilterFuncSGIS(int target, int filter, @NativeType("GLfloat *") MemorySegment weights) {
+        throw new ContextException();
     }
 
-    public static void glGetTexFilterFuncSGIS(int target, int filter, @NativeType("GLfloat *") MemorySegment weights) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetTexFilterFuncSGIS).invokeExact(target, filter, weights);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glTexFilterFuncSGIS(int target, int filter, int n, @NativeType("const GLfloat *") MemorySegment weights) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glTexFilterFuncSGIS).invokeExact(target, filter, n, weights);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glTexFilterFuncSGIS(int target, int filter, int n, @NativeType("const GLfloat *") MemorySegment weights) {
+        throw new ContextException();
     }
 
 }

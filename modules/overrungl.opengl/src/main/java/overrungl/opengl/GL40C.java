@@ -16,19 +16,21 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBDrawBuffersBlend;
 import overrungl.opengl.ext.arb.GLARBSampleShading;
 import overrungl.opengl.ext.arb.GLARBTextureCubeMapArray;
 import overrungl.opengl.ext.arb.GLARBTextureGather;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * The OpenGL 4.0 core profile functions.
@@ -50,798 +52,556 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL40C extends GL33C permits GL41C {
-    public static final int SAMPLE_SHADING = 0x8C36;
-    public static final int MIN_SAMPLE_SHADING_VALUE = 0x8C37;
-    public static final int MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E;
-    public static final int MAX_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5F;
-    public static final int TEXTURE_CUBE_MAP_ARRAY = 0x9009;
-    public static final int TEXTURE_BINDING_CUBE_MAP_ARRAY = 0x900A;
-    public static final int PROXY_TEXTURE_CUBE_MAP_ARRAY = 0x900B;
-    public static final int SAMPLER_CUBE_MAP_ARRAY = 0x900C;
-    public static final int SAMPLER_CUBE_MAP_ARRAY_SHADOW = 0x900D;
-    public static final int INT_SAMPLER_CUBE_MAP_ARRAY = 0x900E;
-    public static final int UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F;
-    public static final int DRAW_INDIRECT_BUFFER = 0x8F3F;
-    public static final int DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
-    public static final int GEOMETRY_SHADER_INVOCATIONS = 0x887F;
-    public static final int MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A;
-    public static final int MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B;
-    public static final int MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C;
-    public static final int FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D;
-    public static final int MAX_VERTEX_STREAMS = 0x8E71;
-    public static final int DOUBLE_VEC2 = 0x8FFC;
-    public static final int DOUBLE_VEC3 = 0x8FFD;
-    public static final int DOUBLE_VEC4 = 0x8FFE;
-    public static final int DOUBLE_MAT2 = 0x8F46;
-    public static final int DOUBLE_MAT3 = 0x8F47;
-    public static final int DOUBLE_MAT4 = 0x8F48;
-    public static final int DOUBLE_MAT2x3 = 0x8F49;
-    public static final int DOUBLE_MAT2x4 = 0x8F4A;
-    public static final int DOUBLE_MAT3x2 = 0x8F4B;
-    public static final int DOUBLE_MAT3x4 = 0x8F4C;
-    public static final int DOUBLE_MAT4x2 = 0x8F4D;
-    public static final int DOUBLE_MAT4x3 = 0x8F4E;
-    public static final int ACTIVE_SUBROUTINES = 0x8DE5;
-    public static final int ACTIVE_SUBROUTINE_UNIFORMS = 0x8DE6;
-    public static final int ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS = 0x8E47;
-    public static final int ACTIVE_SUBROUTINE_MAX_LENGTH = 0x8E48;
-    public static final int ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH = 0x8E49;
-    public static final int MAX_SUBROUTINES = 0x8DE7;
-    public static final int MAX_SUBROUTINE_UNIFORM_LOCATIONS = 0x8DE8;
-    public static final int NUM_COMPATIBLE_SUBROUTINES = 0x8E4A;
-    public static final int COMPATIBLE_SUBROUTINES = 0x8E4B;
-    public static final int PATCHES = 0x000E;
-    public static final int PATCH_VERTICES = 0x8E72;
-    public static final int PATCH_DEFAULT_INNER_LEVEL = 0x8E73;
-    public static final int PATCH_DEFAULT_OUTER_LEVEL = 0x8E74;
-    public static final int TESS_CONTROL_OUTPUT_VERTICES = 0x8E75;
-    public static final int TESS_GEN_MODE = 0x8E76;
-    public static final int TESS_GEN_SPACING = 0x8E77;
-    public static final int TESS_GEN_VERTEX_ORDER = 0x8E78;
-    public static final int TESS_GEN_POINT_MODE = 0x8E79;
-    public static final int ISOLINES = 0x8E7A;
-    public static final int FRACTIONAL_ODD = 0x8E7B;
-    public static final int FRACTIONAL_EVEN = 0x8E7C;
-    public static final int MAX_PATCH_VERTICES = 0x8E7D;
-    public static final int MAX_TESS_GEN_LEVEL = 0x8E7E;
-    public static final int MAX_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E7F;
-    public static final int MAX_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E80;
-    public static final int MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS = 0x8E81;
-    public static final int MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS = 0x8E82;
-    public static final int MAX_TESS_CONTROL_OUTPUT_COMPONENTS = 0x8E83;
-    public static final int MAX_TESS_PATCH_COMPONENTS = 0x8E84;
-    public static final int MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS = 0x8E85;
-    public static final int MAX_TESS_EVALUATION_OUTPUT_COMPONENTS = 0x8E86;
-    public static final int MAX_TESS_CONTROL_UNIFORM_BLOCKS = 0x8E89;
-    public static final int MAX_TESS_EVALUATION_UNIFORM_BLOCKS = 0x8E8A;
-    public static final int MAX_TESS_CONTROL_INPUT_COMPONENTS = 0x886C;
-    public static final int MAX_TESS_EVALUATION_INPUT_COMPONENTS = 0x886D;
-    public static final int MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E1E;
-    public static final int MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E1F;
-    public static final int UNIFORM_BLOCK_REFERENCED_BY_TESS_CONTROL_SHADER = 0x84F0;
-    public static final int UNIFORM_BLOCK_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x84F1;
-    public static final int TESS_EVALUATION_SHADER = 0x8E87;
-    public static final int TESS_CONTROL_SHADER = 0x8E88;
-    public static final int TRANSFORM_FEEDBACK = 0x8E22;
-    public static final int TRANSFORM_FEEDBACK_BUFFER_PAUSED = 0x8E23;
-    public static final int TRANSFORM_FEEDBACK_BUFFER_ACTIVE = 0x8E24;
-    public static final int TRANSFORM_FEEDBACK_BINDING = 0x8E25;
-    public static final int MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
+public sealed interface GL40C extends GL33C permits GL41C {
+    int SAMPLE_SHADING = 0x8C36;
+    int MIN_SAMPLE_SHADING_VALUE = 0x8C37;
+    int MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E;
+    int MAX_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5F;
+    int TEXTURE_CUBE_MAP_ARRAY = 0x9009;
+    int TEXTURE_BINDING_CUBE_MAP_ARRAY = 0x900A;
+    int PROXY_TEXTURE_CUBE_MAP_ARRAY = 0x900B;
+    int SAMPLER_CUBE_MAP_ARRAY = 0x900C;
+    int SAMPLER_CUBE_MAP_ARRAY_SHADOW = 0x900D;
+    int INT_SAMPLER_CUBE_MAP_ARRAY = 0x900E;
+    int UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = 0x900F;
+    int DRAW_INDIRECT_BUFFER = 0x8F3F;
+    int DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
+    int GEOMETRY_SHADER_INVOCATIONS = 0x887F;
+    int MAX_GEOMETRY_SHADER_INVOCATIONS = 0x8E5A;
+    int MIN_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5B;
+    int MAX_FRAGMENT_INTERPOLATION_OFFSET = 0x8E5C;
+    int FRAGMENT_INTERPOLATION_OFFSET_BITS = 0x8E5D;
+    int MAX_VERTEX_STREAMS = 0x8E71;
+    int DOUBLE_VEC2 = 0x8FFC;
+    int DOUBLE_VEC3 = 0x8FFD;
+    int DOUBLE_VEC4 = 0x8FFE;
+    int DOUBLE_MAT2 = 0x8F46;
+    int DOUBLE_MAT3 = 0x8F47;
+    int DOUBLE_MAT4 = 0x8F48;
+    int DOUBLE_MAT2x3 = 0x8F49;
+    int DOUBLE_MAT2x4 = 0x8F4A;
+    int DOUBLE_MAT3x2 = 0x8F4B;
+    int DOUBLE_MAT3x4 = 0x8F4C;
+    int DOUBLE_MAT4x2 = 0x8F4D;
+    int DOUBLE_MAT4x3 = 0x8F4E;
+    int ACTIVE_SUBROUTINES = 0x8DE5;
+    int ACTIVE_SUBROUTINE_UNIFORMS = 0x8DE6;
+    int ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS = 0x8E47;
+    int ACTIVE_SUBROUTINE_MAX_LENGTH = 0x8E48;
+    int ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH = 0x8E49;
+    int MAX_SUBROUTINES = 0x8DE7;
+    int MAX_SUBROUTINE_UNIFORM_LOCATIONS = 0x8DE8;
+    int NUM_COMPATIBLE_SUBROUTINES = 0x8E4A;
+    int COMPATIBLE_SUBROUTINES = 0x8E4B;
+    int PATCHES = 0x000E;
+    int PATCH_VERTICES = 0x8E72;
+    int PATCH_DEFAULT_INNER_LEVEL = 0x8E73;
+    int PATCH_DEFAULT_OUTER_LEVEL = 0x8E74;
+    int TESS_CONTROL_OUTPUT_VERTICES = 0x8E75;
+    int TESS_GEN_MODE = 0x8E76;
+    int TESS_GEN_SPACING = 0x8E77;
+    int TESS_GEN_VERTEX_ORDER = 0x8E78;
+    int TESS_GEN_POINT_MODE = 0x8E79;
+    int ISOLINES = 0x8E7A;
+    int FRACTIONAL_ODD = 0x8E7B;
+    int FRACTIONAL_EVEN = 0x8E7C;
+    int MAX_PATCH_VERTICES = 0x8E7D;
+    int MAX_TESS_GEN_LEVEL = 0x8E7E;
+    int MAX_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E7F;
+    int MAX_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E80;
+    int MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS = 0x8E81;
+    int MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS = 0x8E82;
+    int MAX_TESS_CONTROL_OUTPUT_COMPONENTS = 0x8E83;
+    int MAX_TESS_PATCH_COMPONENTS = 0x8E84;
+    int MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS = 0x8E85;
+    int MAX_TESS_EVALUATION_OUTPUT_COMPONENTS = 0x8E86;
+    int MAX_TESS_CONTROL_UNIFORM_BLOCKS = 0x8E89;
+    int MAX_TESS_EVALUATION_UNIFORM_BLOCKS = 0x8E8A;
+    int MAX_TESS_CONTROL_INPUT_COMPONENTS = 0x886C;
+    int MAX_TESS_EVALUATION_INPUT_COMPONENTS = 0x886D;
+    int MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS = 0x8E1E;
+    int MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS = 0x8E1F;
+    int UNIFORM_BLOCK_REFERENCED_BY_TESS_CONTROL_SHADER = 0x84F0;
+    int UNIFORM_BLOCK_REFERENCED_BY_TESS_EVALUATION_SHADER = 0x84F1;
+    int TESS_EVALUATION_SHADER = 0x8E87;
+    int TESS_CONTROL_SHADER = 0x8E88;
+    int TRANSFORM_FEEDBACK = 0x8E22;
+    int TRANSFORM_FEEDBACK_BUFFER_PAUSED = 0x8E23;
+    int TRANSFORM_FEEDBACK_BUFFER_ACTIVE = 0x8E24;
+    int TRANSFORM_FEEDBACK_BINDING = 0x8E25;
+    int MAX_TRANSFORM_FEEDBACK_BUFFERS = 0x8E70;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return checkAll(caps.glBeginQueryIndexed, caps.glBindTransformFeedback, caps.glBlendEquationSeparatei, caps.glBlendEquationi, caps.glBlendFuncSeparatei, caps.glBlendFunci,
-            caps.glDeleteTransformFeedbacks, caps.glDrawArraysIndirect, caps.glDrawElementsIndirect, caps.glDrawTransformFeedback, caps.glDrawTransformFeedbackStream, caps.glEndQueryIndexed,
-            caps.glGenTransformFeedbacks, caps.glGetActiveSubroutineName, caps.glGetActiveSubroutineUniformName, caps.glGetActiveSubroutineUniformiv, caps.glGetProgramStageiv, caps.glGetQueryIndexediv,
-            caps.glGetSubroutineIndex, caps.glGetSubroutineUniformLocation, caps.glGetUniformSubroutineuiv, caps.glGetUniformdv, caps.glIsTransformFeedback, caps.glMinSampleShading,
-            caps.glPatchParameterfv, caps.glPatchParameteri, caps.glPauseTransformFeedback, caps.glResumeTransformFeedback, caps.glUniform1d, caps.glUniform1dv,
-            caps.glUniform2d, caps.glUniform2dv, caps.glUniform3d, caps.glUniform3dv, caps.glUniform4d, caps.glUniform4dv,
-            caps.glUniformMatrix2dv, caps.glUniformMatrix2x3dv, caps.glUniformMatrix2x4dv, caps.glUniformMatrix3dv, caps.glUniformMatrix3x2dv, caps.glUniformMatrix3x4dv,
-            caps.glUniformMatrix4dv, caps.glUniformMatrix4x2dv, caps.glUniformMatrix4x3dv, caps.glUniformSubroutinesuiv);
+    @Entrypoint("glBeginQueryIndexed")
+    default void beginQueryIndexed(int target, int index, int id) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBeginQueryIndexed = load.invoke("glBeginQueryIndexed", IIIV);
-        caps.glBindTransformFeedback = load.invoke("glBindTransformFeedback", IIV);
-        caps.glBlendEquationSeparatei = load.invoke("glBlendEquationSeparatei", IIIV);
-        caps.glBlendEquationi = load.invoke("glBlendEquationi", IIV);
-        caps.glBlendFuncSeparatei = load.invoke("glBlendFuncSeparatei", IIIIIV);
-        caps.glBlendFunci = load.invoke("glBlendFunci", IIIV);
-        caps.glDeleteTransformFeedbacks = load.invoke("glDeleteTransformFeedbacks", IPV);
-        caps.glDrawArraysIndirect = load.invoke("glDrawArraysIndirect", IPV);
-        caps.glDrawElementsIndirect = load.invoke("glDrawElementsIndirect", IIPV);
-        caps.glDrawTransformFeedback = load.invoke("glDrawTransformFeedback", IIV);
-        caps.glDrawTransformFeedbackStream = load.invoke("glDrawTransformFeedbackStream", IIIV);
-        caps.glEndQueryIndexed = load.invoke("glEndQueryIndexed", IIV);
-        caps.glGenTransformFeedbacks = load.invoke("glGenTransformFeedbacks", IPV);
-        caps.glGetActiveSubroutineName = load.invoke("glGetActiveSubroutineName", IIIIPPV);
-        caps.glGetActiveSubroutineUniformName = load.invoke("glGetActiveSubroutineUniformName", IIIIPPV);
-        caps.glGetActiveSubroutineUniformiv = load.invoke("glGetActiveSubroutineUniformiv", IIIIPV);
-        caps.glGetProgramStageiv = load.invoke("glGetProgramStageiv", IIIPV);
-        caps.glGetQueryIndexediv = load.invoke("glGetQueryIndexediv", IIIPV);
-        caps.glGetSubroutineIndex = load.invoke("glGetSubroutineIndex", IIPI);
-        caps.glGetSubroutineUniformLocation = load.invoke("glGetSubroutineUniformLocation", IIPI);
-        caps.glGetUniformSubroutineuiv = load.invoke("glGetUniformSubroutineuiv", IIPV);
-        caps.glGetUniformdv = load.invoke("glGetUniformdv", IIPV);
-        caps.glIsTransformFeedback = load.invoke("glIsTransformFeedback", IZ);
-        caps.glMinSampleShading = load.invoke("glMinSampleShading", FV);
-        caps.glPatchParameterfv = load.invoke("glPatchParameterfv", IPV);
-        caps.glPatchParameteri = load.invoke("glPatchParameteri", IIV);
-        caps.glPauseTransformFeedback = load.invoke("glPauseTransformFeedback", V);
-        caps.glResumeTransformFeedback = load.invoke("glResumeTransformFeedback", V);
-        caps.glUniform1d = load.invoke("glUniform1d", IDV);
-        caps.glUniform1dv = load.invoke("glUniform1dv", IIPV);
-        caps.glUniform2d = load.invoke("glUniform2d", IDDV);
-        caps.glUniform2dv = load.invoke("glUniform2dv", IIPV);
-        caps.glUniform3d = load.invoke("glUniform3d", IDDDV);
-        caps.glUniform3dv = load.invoke("glUniform3dv", IIPV);
-        caps.glUniform4d = load.invoke("glUniform4d", IDDDDV);
-        caps.glUniform4dv = load.invoke("glUniform4dv", IIPV);
-        caps.glUniformMatrix2dv = load.invoke("glUniformMatrix2dv", IIZPV);
-        caps.glUniformMatrix2x3dv = load.invoke("glUniformMatrix2x3dv", IIZPV);
-        caps.glUniformMatrix2x4dv = load.invoke("glUniformMatrix2x4dv", IIZPV);
-        caps.glUniformMatrix3dv = load.invoke("glUniformMatrix3dv", IIZPV);
-        caps.glUniformMatrix3x2dv = load.invoke("glUniformMatrix3x2dv", IIZPV);
-        caps.glUniformMatrix3x4dv = load.invoke("glUniformMatrix3x4dv", IIZPV);
-        caps.glUniformMatrix4dv = load.invoke("glUniformMatrix4dv", IIZPV);
-        caps.glUniformMatrix4x2dv = load.invoke("glUniformMatrix4x2dv", IIZPV);
-        caps.glUniformMatrix4x3dv = load.invoke("glUniformMatrix4x3dv", IIZPV);
-        caps.glUniformSubroutinesuiv = load.invoke("glUniformSubroutinesuiv", IIPV);
+    @Entrypoint("glBindTransformFeedback")
+    default void bindTransformFeedback(int target, int id) {
+        throw new ContextException();
     }
 
-    public static void beginQueryIndexed(int target, int index, int id) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBeginQueryIndexed).invokeExact(target, index, id);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glBlendEquationSeparatei")
+    default void blendEquationSeparatei(int buf, int modeRGB, int modeAlpha) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBlendEquationi")
+    default void blendEquationi(int buf, int mode) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBlendEquationSeparatei")
+    default void blendEquationSeparatei(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glBlendFunci")
+    default void blendFunci(int buf, int src, int dst) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glDeleteTransformFeedbacks")
+    default void deleteTransformFeedbacks(int n, MemorySegment ids) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteTransformFeedbacks(int... ids) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteTransformFeedbacks(ids.length, Marshal.marshal(stack, ids));
         }
     }
 
-    public static void bindTransformFeedback(int target, int id) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindTransformFeedback).invokeExact(target, id);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawArraysIndirect")
+    default void drawArraysIndirect(int mode, MemorySegment indirect) {
+        throw new ContextException();
     }
 
-    public static void blendEquationSeparatei(int buf, int modeRGB, int modeAlpha) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBlendEquationSeparatei).invokeExact(buf, modeRGB, modeAlpha);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawArraysIndirect")
+    default void drawArraysIndirect(int mode, DrawArraysIndirectCommand indirect) {
+        throw new ContextException();
     }
 
-    public static void blendEquationi(int buf, int mode) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBlendEquationi).invokeExact(buf, mode);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawArraysIndirect")
+    default void drawArraysIndirect(SegmentAllocator allocator, int mode, int[] indirect) {
+        throw new ContextException();
     }
 
-    public static void blendEquationSeparatei(int buf, int srcRGB, int dstRGB, int srcAlpha, int dstAlpha) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBlendEquationSeparatei).invokeExact(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElementsIndirect")
+    default void drawElementsIndirect(int mode, int type, MemorySegment indirect) {
+        throw new ContextException();
     }
 
-    public static void blendFunci(int buf, int src, int dst) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBlendFunci).invokeExact(buf, src, dst);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElementsIndirect")
+    default void drawElementsIndirect(int mode, int type, DrawElementsIndirectCommand indirect) {
+        throw new ContextException();
     }
 
-    public static void deleteTransformFeedbacks(int n, MemorySegment ids) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDeleteTransformFeedbacks).invokeExact(n, ids);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElementsIndirect")
+    default void drawElementsIndirect(SegmentAllocator allocator, int mode, int type, int[] indirect) {
+        throw new ContextException();
     }
 
-    public static void deleteTransformFeedbacks(SegmentAllocator allocator, int[] ids) {
-        deleteTransformFeedbacks(ids.length, allocator.allocateFrom(JAVA_INT, ids));
+    @Entrypoint("glDrawTransformFeedback")
+    default void drawTransformFeedback(int mode, int id) {
+        throw new ContextException();
     }
 
-    public static void deleteTransformFeedback(int id) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteTransformFeedbacks(1, stack.ints(id));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glDrawTransformFeedbackStream")
+    default void drawTransformFeedbackStream(int mode, int id, int stream) {
+        throw new ContextException();
     }
 
-    public static void drawArraysIndirect(int mode, MemorySegment indirect) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDrawArraysIndirect).invokeExact(mode, indirect);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glEndQueryIndexed")
+    default void endQueryIndexed(int target, int index) {
+        throw new ContextException();
     }
 
-    public static void drawArraysIndirect(int mode, DrawArraysIndirectCommand indirect) {
-        drawArraysIndirect(mode, indirect.address());
+    @Entrypoint("glGenTransformFeedbacks")
+    default void genTransformFeedbacks(int n, MemorySegment ids) {
+        throw new ContextException();
     }
 
-    public static void drawArraysIndirect(SegmentAllocator allocator, int mode, int[] indirect) {
-        drawArraysIndirect(mode, allocator.allocateFrom(JAVA_INT, indirect));
-    }
-
-    public static void drawElementsIndirect(int mode, int type, MemorySegment indirect) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDrawElementsIndirect).invokeExact(mode, type, indirect);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void drawElementsIndirect(int mode, int type, DrawElementsIndirectCommand indirect) {
-        drawElementsIndirect(mode, type, indirect.address());
-    }
-
-    public static void drawElementsIndirect(SegmentAllocator allocator, int mode, int type, int[] indirect) {
-        drawElementsIndirect(mode, type, allocator.allocateFrom(JAVA_INT, indirect));
-    }
-
-    public static void drawTransformFeedback(int mode, int id) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDrawTransformFeedback).invokeExact(mode, id);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void drawTransformFeedbackStream(int mode, int id, int stream) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDrawTransformFeedbackStream).invokeExact(mode, id, stream);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void endQueryIndexed(int target, int index) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glEndQueryIndexed).invokeExact(target, index);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genTransformFeedbacks(int n, MemorySegment ids) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenTransformFeedbacks).invokeExact(n, ids);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genTransformFeedbacks(SegmentAllocator allocator, int[] ids) {
-        var seg = allocator.allocateFrom(JAVA_INT, ids);
+    @Skip
+    default void genTransformFeedbacks(SegmentAllocator allocator, @Ref int[] ids) {
+        var seg = Marshal.marshal(allocator, ids);
         genTransformFeedbacks(ids.length, seg);
-        RuntimeHelper.toArray(seg, ids);
+        Unmarshal.copy(seg, ids);
     }
 
-    public static int genTransformFeedback() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int genTransformFeedbacks() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             genTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getActiveSubroutineName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetActiveSubroutineName).invokeExact(program, shaderType, index, bufSize, length, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glGetActiveSubroutineName")
+    default void getActiveSubroutineName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default String getActiveSubroutineName(int program, int shaderType, int index, int bufSize) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment length = stack.ints(0);
+            var seg = stack.allocate(JAVA_BYTE, bufSize);
+            getActiveSubroutineName(program, shaderType, index, bufSize, length, seg);
+            return seg.reinterpret(length.get(JAVA_INT, 0L) + 1).getString(0);
         }
     }
 
-    public static String getActiveSubroutineName(SegmentAllocator allocator, int program, int shaderType, int index, int bufSize) {
-        var seg = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveSubroutineName(program, shaderType, index, bufSize, MemorySegment.NULL, seg);
-        return seg.getString(0);
+    @Entrypoint("glGetActiveSubroutineUniformName")
+    default void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
+        throw new ContextException();
     }
 
-    public static void getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize, MemorySegment length, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetActiveSubroutineUniformName).invokeExact(program, shaderType, index, bufSize, length, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Skip
+    default String getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            final MemorySegment length = stack.ints(0);
+            var seg = stack.allocate(JAVA_BYTE, bufSize);
+            getActiveSubroutineUniformName(program, shaderType, index, bufSize, length, seg);
+            return seg.reinterpret(length.get(JAVA_INT, 0L) + 1).getString(0);
         }
     }
 
-    public static String getActiveSubroutineUniformName(SegmentAllocator allocator, int program, int shaderType, int index, int bufSize) {
-        var seg = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveSubroutineUniformName(program, shaderType, index, bufSize, MemorySegment.NULL, seg);
-        return seg.getString(0);
+    @Entrypoint("glGetActiveSubroutineUniformiv")
+    default void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, MemorySegment values) {
+        throw new ContextException();
     }
 
-    public static void getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname, MemorySegment values) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetActiveSubroutineUniformiv).invokeExact(program, shaderType, index, pname, values);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetActiveSubroutineUniformiv")
+    default void getActiveSubroutineUniformiv(SegmentAllocator allocator, int program, int shaderType, int index, int pname, @Ref int[] values) {
+        throw new ContextException();
     }
 
-    public static void getActiveSubroutineUniformiv(SegmentAllocator allocator, int program, int shaderType, int index, int pname, int[] values) {
-        var seg = allocator.allocateFrom(JAVA_INT, values);
-        getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
-        RuntimeHelper.toArray(seg, values);
-    }
-
-    public static int getActiveSubroutineUniformi(int program, int shaderType, int index, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getProgramStageiv(int program, int shaderType, int pname, MemorySegment values) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetProgramStageiv).invokeExact(program, shaderType, pname, values);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetProgramStageiv")
+    default void getProgramStageiv(int program, int shaderType, int pname, MemorySegment values) {
+        throw new ContextException();
     }
 
-    public static int getProgramStagei(int program, int shaderType, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getProgramStageiv(int program, int shaderType, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getProgramStageiv(program, shaderType, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static void getQueryIndexediv(int target, int index, int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetQueryIndexediv).invokeExact(target, index, pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetQueryIndexediv")
+    default void getQueryIndexediv(int target, int index, int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static int getQueryIndexedi(int target, int index, int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocInt();
+    @Skip
+    default int getQueryIndexediv(int target, int index, int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.ints(0);
             getQueryIndexediv(target, index, pname, seg);
             return seg.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static int getSubroutineIndex(int program, int shaderType, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            return (int) check(caps.glGetSubroutineIndex).invokeExact(program, shaderType, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetSubroutineIndex")
+    default int getSubroutineIndex(int program, int shaderType, MemorySegment name) {
+        throw new ContextException();
     }
 
-    public static int getSubroutineIndex(int program, int shaderType, String name) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return getSubroutineIndex(program, shaderType, stack.allocateFrom(name));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glGetSubroutineIndex")
+    default int getSubroutineIndex(int program, int shaderType, String name) {
+        throw new ContextException();
     }
 
-    public static int getSubroutineUniformLocation(int program, int shaderType, MemorySegment name) {
-        var caps = getCapabilities();
-        try {
-            return (int) check(caps.glGetSubroutineUniformLocation).invokeExact(program, shaderType, name);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetSubroutineUniformLocation")
+    default int getSubroutineUniformLocation(int program, int shaderType, MemorySegment name) {
+        throw new ContextException();
     }
 
-    public static int getSubroutineUniformLocation(int program, int shaderType, String name) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
-            return getSubroutineUniformLocation(program, shaderType, stack.allocateFrom(name));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Entrypoint("glGetSubroutineUniformLocation")
+    default int getSubroutineUniformLocation(int program, int shaderType, String name) {
+        throw new ContextException();
     }
 
-    public static void getUniformSubroutineuiv(int shaderType, int location, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetUniformSubroutineuiv).invokeExact(shaderType, location, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetUniformSubroutineuiv")
+    default void getUniformSubroutineuiv(int shaderType, int location, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getUniformSubroutineuiv(SegmentAllocator allocator, int shaderType, int location, int[] params) {
-        var seg = allocator.allocateFrom(JAVA_INT, params);
-        getUniformSubroutineuiv(shaderType, location, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetUniformSubroutineuiv")
+    default void getUniformSubroutineuiv(SegmentAllocator allocator, int shaderType, int location, @Ref int[] params) {
+        throw new ContextException();
     }
 
-    public static void getUniformdv(int program, int location, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetUniformdv).invokeExact(program, location, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetUniformdv")
+    default void getUniformdv(int program, int location, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void getUniformdv(SegmentAllocator allocator, int program, int location, double[] params) {
-        var seg = allocator.allocateFrom(JAVA_DOUBLE, params);
-        getUniformdv(program, location, seg);
-        RuntimeHelper.toArray(seg, params);
+    @Entrypoint("glGetUniformdv")
+    default void getUniformdv(SegmentAllocator allocator, int program, int location, @Ref double[] params) {
+        throw new ContextException();
     }
 
-    public static double getUniformd(int program, int location) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var seg = stack.callocDouble();
+    @Skip
+    default double getUniformd(int program, int location) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var seg = stack.doubles(0D);
             getUniformdv(program, location, seg);
             return seg.get(JAVA_DOUBLE, 0);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 
-    public static boolean isTransformFeedback(int id) {
-        var caps = getCapabilities();
-        try {
-            return (boolean) check(caps.glIsTransformFeedback).invokeExact(id);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glIsTransformFeedback")
+    default boolean isTransformFeedback(int id) {
+        throw new ContextException();
     }
 
-    public static void minSampleShading(float value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glMinSampleShading).invokeExact(value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glMinSampleShading")
+    default void minSampleShading(float value) {
+        throw new ContextException();
     }
 
-    public static void patchParameterfv(int pname, MemorySegment values) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glPatchParameterfv).invokeExact(pname, values);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glPatchParameterfv")
+    default void patchParameterfv(int pname, MemorySegment values) {
+        throw new ContextException();
     }
 
-    public static void patchParameterfv(SegmentAllocator allocator, int pname, float[] values) {
-        patchParameterfv(pname, allocator.allocateFrom(JAVA_FLOAT, values));
+    @Entrypoint("glPatchParameterfv")
+    default void patchParameterfv(SegmentAllocator allocator, int pname, float[] values) {
+        throw new ContextException();
     }
 
-    public static void patchParameteri(int pname, int value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glPatchParameteri).invokeExact(pname, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glPatchParameteri")
+    default void patchParameteri(int pname, int value) {
+        throw new ContextException();
     }
 
-    public static void pauseTransformFeedback() {
-        var caps = getCapabilities();
-        try {
-            check(caps.glPauseTransformFeedback).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glPauseTransformFeedback")
+    default void pauseTransformFeedback() {
+        throw new ContextException();
     }
 
-    public static void resumeTransformFeedback() {
-        var caps = getCapabilities();
-        try {
-            check(caps.glResumeTransformFeedback).invokeExact();
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glResumeTransformFeedback")
+    default void resumeTransformFeedback() {
+        throw new ContextException();
     }
 
-    public static void uniform1d(int location, double x) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform1d).invokeExact(location, x);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform1d")
+    default void uniform1d(int location, double x) {
+        throw new ContextException();
     }
 
-    public static void uniform1dv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform1dv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform1dv")
+    default void uniform1dv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform1dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform1dv(location, value.length, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void uniform1dv(SegmentAllocator allocator, int location, double[] value) {
+        uniform1dv(location, value.length, Marshal.marshal(allocator, value));
     }
 
-    public static void uniform2d(int location, double x, double y) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform2d).invokeExact(location, x, y);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform2d")
+    default void uniform2d(int location, double x, double y) {
+        throw new ContextException();
     }
 
-    public static void uniform2dv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform2dv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform2dv")
+    default void uniform2dv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform2dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform2dv(location, value.length >> 1, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void uniform2dv(SegmentAllocator allocator, int location, double[] value) {
+        uniform2dv(location, value.length >> 1, Marshal.marshal(allocator, value));
     }
 
-    public static void uniform3d(int location, double x, double y, double z) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform3d).invokeExact(location, x, y, z);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform3d")
+    default void uniform3d(int location, double x, double y, double z) {
+        throw new ContextException();
     }
 
-    public static void uniform3dv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform3dv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform3dv")
+    default void uniform3dv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform3dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform3dv(location, value.length / 3, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void uniform3dv(SegmentAllocator allocator, int location, double[] value) {
+        uniform3dv(location, value.length / 3, Marshal.marshal(allocator, value));
     }
 
-    public static void uniform4d(int location, double x, double y, double z, double w) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform4d).invokeExact(location, x, y, z, w);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform4d")
+    default void uniform4d(int location, double x, double y, double z, double w) {
+        throw new ContextException();
     }
 
-    public static void uniform4dv(int location, int count, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniform4dv).invokeExact(location, count, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniform4dv")
+    default void uniform4dv(int location, int count, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniform4dv(SegmentAllocator allocator, int location, double[] value) {
-        uniform4dv(location, value.length >> 2, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Skip
+    default void uniform4dv(SegmentAllocator allocator, int location, double[] value) {
+        uniform4dv(location, value.length >> 2, Marshal.marshal(allocator, value));
     }
 
-    public static void uniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix2dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix2dv")
+    default void uniformMatrix2dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix2dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix2dv")
+    default void uniformMatrix2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix2dv(allocator, location, value.length >> 2, transpose, value);
     }
 
-    public static void uniformMatrix2x3dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix2x3dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix2x3dv")
+    default void uniformMatrix2x3dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix2x3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix2x3dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix2x3dv")
+    default void uniformMatrix2x3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix2x3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix2x3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix2x3dv(allocator, location, value.length / 6, transpose, value);
     }
 
-    public static void uniformMatrix2x4dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix2x4dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix2x4dv")
+    default void uniformMatrix2x4dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix2x4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix2x4dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix2x4dv")
+    default void uniformMatrix2x4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix2x4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix2x4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix2x4dv(allocator, location, value.length >> 3, transpose, value);
     }
 
-    public static void uniformMatrix3dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix3dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix3dv")
+    default void uniformMatrix3dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix3dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix3dv")
+    default void uniformMatrix3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix3dv(allocator, location, value.length / 9, transpose, value);
     }
 
-    public static void uniformMatrix3x2dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix3x2dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix3x2dv")
+    default void uniformMatrix3x2dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix3x2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix3x2dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix3x2dv")
+    default void uniformMatrix3x2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix3x2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix3x2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix3x2dv(allocator, location, value.length / 6, transpose, value);
     }
 
-    public static void uniformMatrix3x4dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix3x4dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix3x4dv")
+    default void uniformMatrix3x4dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix3x4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix3x4dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix3x4dv")
+    default void uniformMatrix3x4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix3x4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix3x4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix3x4dv(allocator, location, value.length / 12, transpose, value);
     }
 
-    public static void uniformMatrix4dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix4dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix4dv")
+    default void uniformMatrix4dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix4dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix4dv")
+    default void uniformMatrix4dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix4dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix4dv(allocator, location, value.length >> 4, transpose, value);
     }
 
-    public static void uniformMatrix4x2dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix4x2dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix4x2dv")
+    default void uniformMatrix4x2dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix4x2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix4x2dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix4x2dv")
+    default void uniformMatrix4x2dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix4x2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix4x2dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix4x2dv(allocator, location, value.length >> 3, transpose, value);
     }
 
-    public static void uniformMatrix4x3dv(int location, int count, boolean transpose, MemorySegment value) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformMatrix4x3dv).invokeExact(location, count, transpose, value);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformMatrix4x3dv")
+    default void uniformMatrix4x3dv(int location, int count, boolean transpose, MemorySegment value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix4x3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
-        uniformMatrix4x3dv(location, count, transpose, allocator.allocateFrom(JAVA_DOUBLE, value));
+    @Entrypoint("glUniformMatrix4x3dv")
+    default void uniformMatrix4x3dv(SegmentAllocator allocator, int location, int count, boolean transpose, double[] value) {
+        throw new ContextException();
     }
 
-    public static void uniformMatrix4x3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
+    @Skip
+    default void uniformMatrix4x3dv(SegmentAllocator allocator, int location, boolean transpose, double[] value) {
         uniformMatrix4x3dv(allocator, location, value.length / 12, transpose, value);
     }
 
-    public static void uniformSubroutinesuiv(int shaderType, int count, MemorySegment indices) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glUniformSubroutinesuiv).invokeExact(shaderType, count, indices);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glUniformSubroutinesuiv")
+    default void uniformSubroutinesuiv(int shaderType, int count, MemorySegment indices) {
+        throw new ContextException();
     }
 
-    public static void uniformSubroutinesuiv(SegmentAllocator allocator, int shaderType, int[] indices) {
-        uniformSubroutinesuiv(shaderType, indices.length, allocator.allocateFrom(JAVA_INT, indices));
+    @Skip
+    default void uniformSubroutinesuiv(SegmentAllocator allocator, int shaderType, int[] indices) {
+        uniformSubroutinesuiv(shaderType, indices.length, Marshal.marshal(allocator, indices));
     }
 }

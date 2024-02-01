@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ati;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_text_fragment_shader}
  */
-public final class GLATITextFragmentShader {
-    public static final int GL_TEXT_FRAGMENT_SHADER_ATI = 0x8200;
+public interface GLATITextFragmentShader {
+    int GL_TEXT_FRAGMENT_SHADER_ATI = 0x8200;
 }

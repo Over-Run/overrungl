@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_shader_subgroup_partitioned}
  */
-public final class GLNVShaderSubgroupPartitioned {
-    public static final int GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = 0x00000100;
+public interface GLNVShaderSubgroupPartitioned {
+    int GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = 0x00000100;
 }

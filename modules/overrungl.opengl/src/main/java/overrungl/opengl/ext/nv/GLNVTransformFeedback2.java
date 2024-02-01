@@ -16,81 +16,45 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_transform_feedback2}
  */
-public final class GLNVTransformFeedback2 {
-    public static final int GL_TRANSFORM_FEEDBACK_NV = 0x8E22;
-    public static final int GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED_NV = 0x8E23;
-    public static final int GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE_NV = 0x8E24;
-    public static final int GL_TRANSFORM_FEEDBACK_BINDING_NV = 0x8E25;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_transform_feedback2) return;
-        ext.glBindTransformFeedbackNV = load.invoke("glBindTransformFeedbackNV", ofVoid(JAVA_INT, JAVA_INT));
-        ext.glDeleteTransformFeedbacksNV = load.invoke("glDeleteTransformFeedbacksNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glGenTransformFeedbacksNV = load.invoke("glGenTransformFeedbacksNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glIsTransformFeedbackNV = load.invoke("glIsTransformFeedbackNV", of(JAVA_BYTE, JAVA_INT));
-        ext.glPauseTransformFeedbackNV = load.invoke("glPauseTransformFeedbackNV", ofVoid());
-        ext.glResumeTransformFeedbackNV = load.invoke("glResumeTransformFeedbackNV", ofVoid());
-        ext.glDrawTransformFeedbackNV = load.invoke("glDrawTransformFeedbackNV", ofVoid(JAVA_INT, JAVA_INT));
+public interface GLNVTransformFeedback2 {
+    int GL_TRANSFORM_FEEDBACK_NV = 0x8E22;
+    int GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED_NV = 0x8E23;
+    int GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE_NV = 0x8E24;
+    int GL_TRANSFORM_FEEDBACK_BINDING_NV = 0x8E25;
+
+    default void glBindTransformFeedbackNV(int target, int id) {
+        throw new ContextException();
     }
 
-    public static void glBindTransformFeedbackNV(int target, int id) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBindTransformFeedbackNV).invokeExact(target, id);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glDeleteTransformFeedbacksNV(int n, @NativeType("const GLuint *") MemorySegment ids) {
+        throw new ContextException();
     }
 
-    public static void glDeleteTransformFeedbacksNV(int n, @NativeType("const GLuint *") MemorySegment ids) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDeleteTransformFeedbacksNV).invokeExact(n, ids);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGenTransformFeedbacksNV(int n, @NativeType("GLuint *") MemorySegment ids) {
+        throw new ContextException();
     }
 
-    public static void glGenTransformFeedbacksNV(int n, @NativeType("GLuint *") MemorySegment ids) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGenTransformFeedbacksNV).invokeExact(n, ids);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default boolean glIsTransformFeedbackNV(int id) {
+        throw new ContextException();
     }
 
-    public static boolean glIsTransformFeedbackNV(int id) {
-        final var ext = getExtCapabilities();
-        try {
-            return (boolean)
-            check(ext.glIsTransformFeedbackNV).invokeExact(id);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glPauseTransformFeedbackNV() {
+        throw new ContextException();
     }
 
-    public static void glPauseTransformFeedbackNV() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPauseTransformFeedbackNV).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glResumeTransformFeedbackNV() {
+        throw new ContextException();
     }
 
-    public static void glResumeTransformFeedbackNV() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glResumeTransformFeedbackNV).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glDrawTransformFeedbackNV(int mode, int id) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDrawTransformFeedbackNV).invokeExact(mode, id);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glDrawTransformFeedbackNV(int mode, int id) {
+        throw new ContextException();
     }
 
 }

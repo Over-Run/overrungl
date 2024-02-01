@@ -16,32 +16,21 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_framebuffer_multisample_coverage}
  */
-public final class GLNVFramebufferMultisampleCoverage {
-    public static final int GL_RENDERBUFFER_COVERAGE_SAMPLES_NV = 0x8CAB;
-    public static final int GL_RENDERBUFFER_COLOR_SAMPLES_NV = 0x8E10;
-    public static final int GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E11;
-    public static final int GL_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E12;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_framebuffer_multisample_coverage) return;
-        ext.glRenderbufferStorageMultisampleCoverageNV = load.invoke("glRenderbufferStorageMultisampleCoverageNV", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLNVFramebufferMultisampleCoverage {
+    int GL_RENDERBUFFER_COVERAGE_SAMPLES_NV = 0x8CAB;
+    int GL_RENDERBUFFER_COLOR_SAMPLES_NV = 0x8E10;
+    int GL_MAX_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E11;
+    int GL_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E12;
 
-    public static void glRenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glRenderbufferStorageMultisampleCoverageNV).invokeExact(target, coverageSamples, colorSamples, internalformat, width, height);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glRenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
+        throw new ContextException();
     }
 
 }

@@ -16,24 +16,20 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIS_point_line_texgen}
  */
-public final class GLSGISPointLineTexgen {
-    public static final int GL_EYE_DISTANCE_TO_POINT_SGIS = 0x81F0;
-    public static final int GL_OBJECT_DISTANCE_TO_POINT_SGIS = 0x81F1;
-    public static final int GL_EYE_DISTANCE_TO_LINE_SGIS = 0x81F2;
-    public static final int GL_OBJECT_DISTANCE_TO_LINE_SGIS = 0x81F3;
-    public static final int GL_EYE_POINT_SGIS = 0x81F4;
-    public static final int GL_OBJECT_POINT_SGIS = 0x81F5;
-    public static final int GL_EYE_LINE_SGIS = 0x81F6;
-    public static final int GL_OBJECT_LINE_SGIS = 0x81F7;
+public interface GLSGISPointLineTexgen {
+    int GL_EYE_DISTANCE_TO_POINT_SGIS = 0x81F0;
+    int GL_OBJECT_DISTANCE_TO_POINT_SGIS = 0x81F1;
+    int GL_EYE_DISTANCE_TO_LINE_SGIS = 0x81F2;
+    int GL_OBJECT_DISTANCE_TO_LINE_SGIS = 0x81F3;
+    int GL_EYE_POINT_SGIS = 0x81F4;
+    int GL_OBJECT_POINT_SGIS = 0x81F5;
+    int GL_EYE_LINE_SGIS = 0x81F6;
+    int GL_OBJECT_LINE_SGIS = 0x81F7;
 }

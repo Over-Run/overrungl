@@ -16,54 +16,30 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_vertex_array_object}
  */
-public final class GLAPPLEVertexArrayObject {
-    public static final int GL_VERTEX_ARRAY_BINDING_APPLE = 0x85B5;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_APPLE_vertex_array_object) return;
-        ext.glBindVertexArrayAPPLE = load.invoke("glBindVertexArrayAPPLE", ofVoid(JAVA_INT));
-        ext.glDeleteVertexArraysAPPLE = load.invoke("glDeleteVertexArraysAPPLE", ofVoid(JAVA_INT, ADDRESS));
-        ext.glGenVertexArraysAPPLE = load.invoke("glGenVertexArraysAPPLE", ofVoid(JAVA_INT, ADDRESS));
-        ext.glIsVertexArrayAPPLE = load.invoke("glIsVertexArrayAPPLE", of(JAVA_BYTE, JAVA_INT));
+public interface GLAPPLEVertexArrayObject {
+    int GL_VERTEX_ARRAY_BINDING_APPLE = 0x85B5;
+
+    default void glBindVertexArrayAPPLE(int array) {
+        throw new ContextException();
     }
 
-    public static void glBindVertexArrayAPPLE(int array) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBindVertexArrayAPPLE).invokeExact(array);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glDeleteVertexArraysAPPLE(int n, @NativeType("const GLuint *") MemorySegment arrays) {
+        throw new ContextException();
     }
 
-    public static void glDeleteVertexArraysAPPLE(int n, @NativeType("const GLuint *") MemorySegment arrays) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDeleteVertexArraysAPPLE).invokeExact(n, arrays);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGenVertexArraysAPPLE(int n, @NativeType("GLuint *") MemorySegment arrays) {
+        throw new ContextException();
     }
 
-    public static void glGenVertexArraysAPPLE(int n, @NativeType("GLuint *") MemorySegment arrays) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGenVertexArraysAPPLE).invokeExact(n, arrays);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static boolean glIsVertexArrayAPPLE(int array) {
-        final var ext = getExtCapabilities();
-        try {
-            return (boolean)
-            check(ext.glIsVertexArrayAPPLE).invokeExact(array);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default boolean glIsVertexArrayAPPLE(int array) {
+        throw new ContextException();
     }
 
 }

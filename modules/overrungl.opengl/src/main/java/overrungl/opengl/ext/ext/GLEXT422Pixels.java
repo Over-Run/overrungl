@@ -16,20 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_422_pixels}
  */
-public final class GLEXT422Pixels {
-    public static final int GL_422_EXT = 0x80CC;
-    public static final int GL_422_REV_EXT = 0x80CD;
-    public static final int GL_422_AVERAGE_EXT = 0x80CE;
-    public static final int GL_422_REV_AVERAGE_EXT = 0x80CF;
+public interface GLEXT422Pixels {
+    int GL_422_EXT = 0x80CC;
+    int GL_422_REV_EXT = 0x80CD;
+    int GL_422_AVERAGE_EXT = 0x80CE;
+    int GL_422_REV_AVERAGE_EXT = 0x80CF;
 }

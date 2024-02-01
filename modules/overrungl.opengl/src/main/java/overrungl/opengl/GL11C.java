@@ -16,15 +16,16 @@
 
 package overrungl.opengl;
 
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.MemoryStack;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
+import overrun.marshal.gen.Skip;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.opengl.GLLoader.*;
+import java.lang.foreign.ValueLayout;
 
 /**
  * The OpenGL 1.1 forward compatible functions.
@@ -32,277 +33,193 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL11C extends GL10C permits GL11, GL12C {
-    public static final int COLOR_LOGIC_OP = 0x0BF2;
-    public static final int POLYGON_OFFSET_UNITS = 0x2A00;
-    public static final int POLYGON_OFFSET_POINT = 0x2A01;
-    public static final int POLYGON_OFFSET_LINE = 0x2A02;
-    public static final int POLYGON_OFFSET_FILL = 0x8037;
-    public static final int POLYGON_OFFSET_FACTOR = 0x8038;
-    public static final int TEXTURE_BINDING_1D = 0x8068;
-    public static final int TEXTURE_BINDING_2D = 0x8069;
-    public static final int TEXTURE_INTERNAL_FORMAT = 0x1003;
-    public static final int TEXTURE_RED_SIZE = 0x805C;
-    public static final int TEXTURE_GREEN_SIZE = 0x805D;
-    public static final int TEXTURE_BLUE_SIZE = 0x805E;
-    public static final int TEXTURE_ALPHA_SIZE = 0x805F;
-    public static final int DOUBLE = 0x140A;
-    public static final int PROXY_TEXTURE_1D = 0x8063;
-    public static final int PROXY_TEXTURE_2D = 0x8064;
-    public static final int R3_G3_B2 = 0x2A10;
-    public static final int RGB4 = 0x804F;
-    public static final int RGB5 = 0x8050;
-    public static final int RGB8 = 0x8051;
-    public static final int RGB10 = 0x8052;
-    public static final int RGB12 = 0x8053;
-    public static final int RGB16 = 0x8054;
-    public static final int RGBA2 = 0x8055;
-    public static final int RGBA4 = 0x8056;
-    public static final int RGB5_A1 = 0x8057;
-    public static final int RGBA8 = 0x8058;
-    public static final int RGB10_A2 = 0x8059;
-    public static final int RGBA12 = 0x805A;
-    public static final int RGBA16 = 0x805B;
-    public static final int VERTEX_ARRAY = 0x8074;
+public sealed interface GL11C extends GL10C permits GL11, GL12C {
+    int COLOR_LOGIC_OP = 0x0BF2;
+    int POLYGON_OFFSET_UNITS = 0x2A00;
+    int POLYGON_OFFSET_POINT = 0x2A01;
+    int POLYGON_OFFSET_LINE = 0x2A02;
+    int POLYGON_OFFSET_FILL = 0x8037;
+    int POLYGON_OFFSET_FACTOR = 0x8038;
+    int TEXTURE_BINDING_1D = 0x8068;
+    int TEXTURE_BINDING_2D = 0x8069;
+    int TEXTURE_INTERNAL_FORMAT = 0x1003;
+    int TEXTURE_RED_SIZE = 0x805C;
+    int TEXTURE_GREEN_SIZE = 0x805D;
+    int TEXTURE_BLUE_SIZE = 0x805E;
+    int TEXTURE_ALPHA_SIZE = 0x805F;
+    int DOUBLE = 0x140A;
+    int PROXY_TEXTURE_1D = 0x8063;
+    int PROXY_TEXTURE_2D = 0x8064;
+    int R3_G3_B2 = 0x2A10;
+    int RGB4 = 0x804F;
+    int RGB5 = 0x8050;
+    int RGB8 = 0x8051;
+    int RGB10 = 0x8052;
+    int RGB12 = 0x8053;
+    int RGB16 = 0x8054;
+    int RGBA2 = 0x8055;
+    int RGBA4 = 0x8056;
+    int RGB5_A1 = 0x8057;
+    int RGBA8 = 0x8058;
+    int RGB10_A2 = 0x8059;
+    int RGBA12 = 0x805A;
+    int RGBA16 = 0x805B;
+    int VERTEX_ARRAY = 0x8074;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return checkAll(caps.glBindTexture, caps.glCopyTexImage1D, caps.glCopyTexImage2D, caps.glCopyTexSubImage1D, caps.glCopyTexSubImage2D, caps.glDeleteTextures,
-            caps.glDrawArrays, caps.glDrawElements, caps.glGenTextures, caps.glGetPointerv, caps.glIsTexture, caps.glPolygonOffset,
-            caps.glTexSubImage1D, caps.glTexSubImage2D);
+    @Entrypoint("glBindTexture")
+    default void bindTexture(int target, int texture) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glBindTexture = load.invoke("glBindTexture", IIV);
-        caps.glCopyTexImage1D = load.invoke("glCopyTexImage1D", IIIIIIIV);
-        caps.glCopyTexImage2D = load.invoke("glCopyTexImage2D", IIIIIIIIV);
-        caps.glCopyTexSubImage1D = load.invoke("glCopyTexSubImage1D", IIIIIIV);
-        caps.glCopyTexSubImage2D = load.invoke("glCopyTexSubImage2D", IIIIIIIIV);
-        caps.glDeleteTextures = load.invoke("glDeleteTextures", IPV);
-        caps.glDrawArrays = load.invoke("glDrawArrays", IIIV);
-        caps.glDrawElements = load.invoke("glDrawElements", IIIPV);
-        caps.glGenTextures = load.invoke("glGenTextures", IPV);
-        caps.glGetPointerv = load.invoke("glGetPointerv", IPV);
-        caps.glIsTexture = load.invoke("glIsTexture", IZ);
-        caps.glPolygonOffset = load.invoke("glPolygonOffset", FFV);
-        caps.glTexSubImage1D = load.invoke("glTexSubImage1D", IIIIIIPV);
-        caps.glTexSubImage2D = load.invoke("glTexSubImage2D", IIIIIIIIPV);
+    @Entrypoint("glCopyTexImage1D")
+    default void copyTexImage1D(int target, int level, int internalFormat, int x, int y, int width, int border) {
+        throw new ContextException();
     }
 
-    public static void bindTexture(int target, int texture) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glBindTexture).invokeExact(target, texture);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
+    @Entrypoint("glCopyTexImage2D")
+    default void copyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height, int border) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glCopyTexSubImage1D")
+    default void copyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glCopyTexSubImage2D")
+    default void copyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
+        throw new ContextException();
+    }
+
+    @Entrypoint("glDeleteTextures")
+    default void deleteTextures(int n, MemorySegment textures) {
+        throw new ContextException();
+    }
+
+    @Skip
+    default void deleteTextures(int... textures) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            deleteTextures(textures.length, Marshal.marshal(stack, textures));
         }
     }
 
-    public static void copyTexImage1D(int target, int level, int internalFormat, int x, int y, int width, int border) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glCopyTexImage1D).invokeExact(target, level, internalFormat, x, y, width, border);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawArrays")
+    default void drawArrays(int mode, int first, int count) {
+        throw new ContextException();
     }
 
-    public static void copyTexImage2D(int target, int level, int internalFormat, int x, int y, int width, int height, int border) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glCopyTexImage2D).invokeExact(target, level, internalFormat, x, y, width, height, border);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElements")
+    default void drawElements(int mode, int count, int type, MemorySegment indices) {
+        throw new ContextException();
     }
 
-    public static void copyTexSubImage1D(int target, int level, int xoffset, int x, int y, int width) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glCopyTexSubImage1D).invokeExact(target, level, xoffset, x, y, width);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElements")
+    default void drawElements(SegmentAllocator allocator, int mode, int count, int type, byte[] indices) {
+        throw new ContextException();
     }
 
-    public static void copyTexSubImage2D(int target, int level, int xoffset, int yoffset, int x, int y, int width, int height) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glCopyTexSubImage2D).invokeExact(target, level, xoffset, yoffset, x, y, width, height);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElements")
+    default void drawElements(SegmentAllocator allocator, int mode, int count, int type, short[] indices) {
+        throw new ContextException();
     }
 
-    public static void deleteTextures(int n, MemorySegment textures) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDeleteTextures).invokeExact(n, textures);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glDrawElements")
+    default void drawElements(SegmentAllocator allocator, int mode, int count, int type, int[] indices) {
+        throw new ContextException();
     }
 
-    public static void deleteTextures(SegmentAllocator allocator, int[] textures) {
-        deleteTextures(textures.length, allocator.allocateFrom(JAVA_INT, textures));
+    @Entrypoint("glGenTextures")
+    default void genTextures(int n, MemorySegment textures) {
+        throw new ContextException();
     }
 
-    public static void deleteTexture(int texture) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            deleteTextures(1, stack.ints(texture));
-        } finally {
-            stack.setPointer(stackPointer);
-        }
+    @Skip
+    default void genTextures(SegmentAllocator allocator, @Ref int[] textures) {
+        var pTex = Marshal.marshal(allocator, textures);
+        genTextures(textures.length, pTex);
+        Unmarshal.copy(pTex, textures);
     }
 
-    public static void drawArrays(int mode, int first, int count) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDrawArrays).invokeExact(mode, first, count);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void drawElements(int mode, int count, int type, MemorySegment indices) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glDrawElements).invokeExact(mode, count, type, indices);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, byte[] indices) {
-        var seg = allocator.allocateFrom(JAVA_BYTE, indices);
-        drawElements(mode, count, type, seg);
-    }
-
-    public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, short[] indices) {
-        var seg = allocator.allocateFrom(JAVA_SHORT, indices);
-        drawElements(mode, count, type, seg);
-    }
-
-    public static void drawElements(SegmentAllocator allocator, int mode, int count, int type, int[] indices) {
-        var seg = allocator.allocateFrom(JAVA_INT, indices);
-        drawElements(mode, count, type, seg);
-    }
-
-    public static void genTextures(int n, MemorySegment textures) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGenTextures).invokeExact(n, textures);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void genTextures(SegmentAllocator allocator, int[] textures) {
-        final int n = textures.length;
-        var pTex = allocator.allocate(JAVA_INT, n);
-        genTextures(n, pTex);
-        RuntimeHelper.toArray(pTex, textures);
-    }
-
-    public static int genTexture() {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pTex = stack.callocInt();
+    @Skip
+    default int genTextures() {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pTex = stack.ints(0);
             genTextures(1, pTex);
-            return pTex.get(JAVA_INT, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return pTex.get(ValueLayout.JAVA_INT, 0);
         }
     }
 
-    public static void getPointerv(int pname, MemorySegment params) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glGetPointerv).invokeExact(pname, params);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glGetPointerv")
+    default void getPointerv(int pname, MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static MemorySegment getPointer(int pname) {
-        var stack = MemoryStack.stackGet();
-        long stackPointer = stack.getPointer();
-        try {
-            var pParams = stack.callocPointer();
+    @Skip
+    default MemorySegment getPointer(int pname) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            var pParams = stack.segments(MemorySegment.NULL);
             getPointerv(pname, pParams);
-            return pParams.get(RuntimeHelper.ADDRESS_UNBOUNDED, 0);
-        } finally {
-            stack.setPointer(stackPointer);
+            return pParams.get(ValueLayout.ADDRESS, 0);
         }
     }
 
-    public static boolean isTexture(int texture) {
-        var caps = getCapabilities();
-        try {
-            return (boolean) check(caps.glIsTexture).invokeExact(texture);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glIsTexture")
+    default boolean isTexture(int texture) {
+        throw new ContextException();
     }
 
-    public static void polygonOffset(float factor, float units) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glPolygonOffset).invokeExact(factor, units);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glPolygonOffset")
+    default void polygonOffset(float factor, float units) {
+        throw new ContextException();
     }
 
-    public static void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glTexSubImage1D).invokeExact(target, level, xoffset, width, format, type, pixels);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexSubImage1D")
+    default void texSubImage1D(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_BYTE, pixels));
+    @Entrypoint("glTexSubImage1D")
+    default void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, byte[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_SHORT, pixels));
+    @Entrypoint("glTexSubImage1D")
+    default void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, short[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_INT, pixels));
+    @Entrypoint("glTexSubImage1D")
+    default void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, int[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
-        texSubImage1D(target, level, xoffset, width, format, type, allocator.allocateFrom(JAVA_FLOAT, pixels));
+    @Entrypoint("glTexSubImage1D")
+    default void texSubImage1D(SegmentAllocator allocator, int target, int level, int xoffset, int width, int format, int type, float[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glTexSubImage2D).invokeExact(target, level, xoffset, yoffset, width, height, format, type, pixels);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glTexSubImage2D")
+    default void texSubImage2D(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_BYTE, pixels));
+    @Entrypoint("glTexSubImage2D")
+    default void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, byte[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_SHORT, pixels));
+    @Entrypoint("glTexSubImage2D")
+    default void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, short[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_INT, pixels));
+    @Entrypoint("glTexSubImage2D")
+    default void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, int[] pixels) {
+        throw new ContextException();
     }
 
-    public static void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
-        texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, allocator.allocateFrom(JAVA_FLOAT, pixels));
+    @Entrypoint("glTexSubImage2D")
+    default void texSubImage2D(SegmentAllocator allocator, int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, float[] pixels) {
+        throw new ContextException();
     }
 }

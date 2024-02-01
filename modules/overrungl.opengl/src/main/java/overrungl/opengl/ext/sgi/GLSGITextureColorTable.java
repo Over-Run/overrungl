@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGI_texture_color_table}
  */
-public final class GLSGITextureColorTable {
-    public static final int GL_TEXTURE_COLOR_TABLE_SGI = 0x80BC;
-    public static final int GL_PROXY_TEXTURE_COLOR_TABLE_SGI = 0x80BD;
+public interface GLSGITextureColorTable {
+    int GL_TEXTURE_COLOR_TABLE_SGI = 0x80BC;
+    int GL_PROXY_TEXTURE_COLOR_TABLE_SGI = 0x80BD;
 }

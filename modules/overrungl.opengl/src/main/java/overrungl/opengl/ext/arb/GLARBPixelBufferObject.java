@@ -16,20 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_pixel_buffer_object}
  */
-public final class GLARBPixelBufferObject {
-    public static final int GL_PIXEL_PACK_BUFFER_ARB = 0x88EB;
-    public static final int GL_PIXEL_UNPACK_BUFFER_ARB = 0x88EC;
-    public static final int GL_PIXEL_PACK_BUFFER_BINDING_ARB = 0x88ED;
-    public static final int GL_PIXEL_UNPACK_BUFFER_BINDING_ARB = 0x88EF;
+public interface GLARBPixelBufferObject {
+    int GL_PIXEL_PACK_BUFFER_ARB = 0x88EB;
+    int GL_PIXEL_UNPACK_BUFFER_ARB = 0x88EC;
+    int GL_PIXEL_PACK_BUFFER_BINDING_ARB = 0x88ED;
+    int GL_PIXEL_UNPACK_BUFFER_BINDING_ARB = 0x88EF;
 }

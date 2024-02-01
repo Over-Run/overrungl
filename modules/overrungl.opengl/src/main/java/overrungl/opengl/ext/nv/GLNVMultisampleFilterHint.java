@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_multisample_filter_hint}
  */
-public final class GLNVMultisampleFilterHint {
-    public static final int GL_MULTISAMPLE_FILTER_HINT_NV = 0x8534;
+public interface GLNVMultisampleFilterHint {
+    int GL_MULTISAMPLE_FILTER_HINT_NV = 0x8534;
 }

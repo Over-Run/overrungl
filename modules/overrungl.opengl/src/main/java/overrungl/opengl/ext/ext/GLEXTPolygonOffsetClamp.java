@@ -16,29 +16,18 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_polygon_offset_clamp}
  */
-public final class GLEXTPolygonOffsetClamp {
-    public static final int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_polygon_offset_clamp) return;
-        ext.glPolygonOffsetClampEXT = load.invoke("glPolygonOffsetClampEXT", ofVoid(JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT));
-    }
+public interface GLEXTPolygonOffsetClamp {
+    int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
 
-    public static void glPolygonOffsetClampEXT(float factor, float units, float clamp) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPolygonOffsetClampEXT).invokeExact(factor, units, clamp);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glPolygonOffsetClampEXT(float factor, float units, float clamp) {
+        throw new ContextException();
     }
 
 }

@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_client_storage}
  */
-public final class GLAPPLEClientStorage {
-    public static final int GL_UNPACK_CLIENT_STORAGE_APPLE = 0x85B2;
+public interface GLAPPLEClientStorage {
+    int GL_UNPACK_CLIENT_STORAGE_APPLE = 0x85B2;
 }

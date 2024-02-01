@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_texture_multi_buffer}
  */
-public final class GLSGIXTextureMultiBuffer {
-    public static final int GL_TEXTURE_MULTI_BUFFER_HINT_SGIX = 0x812E;
+public interface GLSGIXTextureMultiBuffer {
+    int GL_TEXTURE_MULTI_BUFFER_HINT_SGIX = 0x812E;
 }

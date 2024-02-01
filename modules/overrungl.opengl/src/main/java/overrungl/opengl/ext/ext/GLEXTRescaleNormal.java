@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_rescale_normal}
  */
-public final class GLEXTRescaleNormal {
-    public static final int GL_RESCALE_NORMAL_EXT = 0x803A;
+public interface GLEXTRescaleNormal {
+    int GL_RESCALE_NORMAL_EXT = 0x803A;
 }

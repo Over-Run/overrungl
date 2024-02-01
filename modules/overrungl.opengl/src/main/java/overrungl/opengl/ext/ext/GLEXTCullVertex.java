@@ -16,39 +16,24 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_cull_vertex}
  */
-public final class GLEXTCullVertex {
-    public static final int GL_CULL_VERTEX_EXT = 0x81AA;
-    public static final int GL_CULL_VERTEX_EYE_POSITION_EXT = 0x81AB;
-    public static final int GL_CULL_VERTEX_OBJECT_POSITION_EXT = 0x81AC;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_cull_vertex) return;
-        ext.glCullParameterdvEXT = load.invoke("glCullParameterdvEXT", ofVoid(JAVA_INT, ADDRESS));
-        ext.glCullParameterfvEXT = load.invoke("glCullParameterfvEXT", ofVoid(JAVA_INT, ADDRESS));
+public interface GLEXTCullVertex {
+    int GL_CULL_VERTEX_EXT = 0x81AA;
+    int GL_CULL_VERTEX_EYE_POSITION_EXT = 0x81AB;
+    int GL_CULL_VERTEX_OBJECT_POSITION_EXT = 0x81AC;
+
+    default void glCullParameterdvEXT(int pname, @NativeType("GLdouble *") MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void glCullParameterdvEXT(int pname, @NativeType("GLdouble *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glCullParameterdvEXT).invokeExact(pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glCullParameterfvEXT(int pname, @NativeType("GLfloat *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glCullParameterfvEXT).invokeExact(pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glCullParameterfvEXT(int pname, @NativeType("GLfloat *") MemorySegment params) {
+        throw new ContextException();
     }
 
 }

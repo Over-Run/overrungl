@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_transform_hint}
  */
-public final class GLAPPLETransformHint {
-    public static final int GL_TRANSFORM_HINT_APPLE = 0x85B1;
+public interface GLAPPLETransformHint {
+    int GL_TRANSFORM_HINT_APPLE = 0x85B1;
 }

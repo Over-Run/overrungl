@@ -16,20 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_packed_depth_stencil}
  */
-public final class GLEXTPackedDepthStencil {
-    public static final int GL_DEPTH_STENCIL_EXT = 0x84F9;
-    public static final int GL_UNSIGNED_INT_24_8_EXT = 0x84FA;
-    public static final int GL_DEPTH24_STENCIL8_EXT = 0x88F0;
-    public static final int GL_TEXTURE_STENCIL_SIZE_EXT = 0x88F1;
+public interface GLEXTPackedDepthStencil {
+    int GL_DEPTH_STENCIL_EXT = 0x84F9;
+    int GL_UNSIGNED_INT_24_8_EXT = 0x84FA;
+    int GL_DEPTH24_STENCIL8_EXT = 0x88F0;
+    int GL_TEXTURE_STENCIL_SIZE_EXT = 0x88F1;
 }

@@ -16,33 +16,22 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_buffer_object}
  */
-public final class GLEXTTextureBufferObject {
-    public static final int GL_TEXTURE_BUFFER_EXT = 0x8C2A;
-    public static final int GL_MAX_TEXTURE_BUFFER_SIZE_EXT = 0x8C2B;
-    public static final int GL_TEXTURE_BINDING_BUFFER_EXT = 0x8C2C;
-    public static final int GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D;
-    public static final int GL_TEXTURE_BUFFER_FORMAT_EXT = 0x8C2E;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_texture_buffer_object) return;
-        ext.glTexBufferEXT = load.invoke("glTexBufferEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTTextureBufferObject {
+    int GL_TEXTURE_BUFFER_EXT = 0x8C2A;
+    int GL_MAX_TEXTURE_BUFFER_SIZE_EXT = 0x8C2B;
+    int GL_TEXTURE_BINDING_BUFFER_EXT = 0x8C2C;
+    int GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT = 0x8C2D;
+    int GL_TEXTURE_BUFFER_FORMAT_EXT = 0x8C2E;
 
-    public static void glTexBufferEXT(int target, int internalformat, int buffer) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glTexBufferEXT).invokeExact(target, internalformat, buffer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glTexBufferEXT(int target, int internalformat, int buffer) {
+        throw new ContextException();
     }
 
 }

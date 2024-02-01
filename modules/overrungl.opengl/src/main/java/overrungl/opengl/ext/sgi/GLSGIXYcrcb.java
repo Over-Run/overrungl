@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_ycrcb}
  */
-public final class GLSGIXYcrcb {
-    public static final int GL_YCRCB_422_SGIX = 0x81BB;
-    public static final int GL_YCRCB_444_SGIX = 0x81BC;
+public interface GLSGIXYcrcb {
+    int GL_YCRCB_422_SGIX = 0x81BB;
+    int GL_YCRCB_444_SGIX = 0x81BC;
 }

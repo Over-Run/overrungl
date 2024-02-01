@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_OML_interlace}
  */
-public final class GLOMLInterlace {
-    public static final int GL_INTERLACE_OML = 0x8980;
-    public static final int GL_INTERLACE_READ_OML = 0x8981;
+public interface GLOMLInterlace {
+    int GL_INTERLACE_OML = 0x8980;
+    int GL_INTERLACE_READ_OML = 0x8981;
 }

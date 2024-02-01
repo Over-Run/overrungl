@@ -16,20 +16,16 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_compression_latc}
  */
-public final class GLEXTTextureCompressionLatc {
-    public static final int GL_COMPRESSED_LUMINANCE_LATC1_EXT = 0x8C70;
-    public static final int GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT = 0x8C71;
-    public static final int GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT = 0x8C72;
-    public static final int GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT = 0x8C73;
+public interface GLEXTTextureCompressionLatc {
+    int GL_COMPRESSED_LUMINANCE_LATC1_EXT = 0x8C70;
+    int GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT = 0x8C71;
+    int GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT = 0x8C72;
+    int GL_COMPRESSED_SIGNED_LUMINANCE_ALPHA_LATC2_EXT = 0x8C73;
 }

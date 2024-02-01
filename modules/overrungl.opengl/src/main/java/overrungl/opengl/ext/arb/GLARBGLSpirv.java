@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.arb;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_gl_spirv}
  */
-public final class GLARBGLSpirv {
-    public static final int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
-    public static final int GL_SPIR_V_BINARY_ARB = 0x9552;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_gl_spirv) return;
-        ext.glSpecializeShaderARB = load.invoke("glSpecializeShaderARB", ofVoid(JAVA_INT, ADDRESS, JAVA_INT, ADDRESS, ADDRESS));
-    }
+public interface GLARBGLSpirv {
+    int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
+    int GL_SPIR_V_BINARY_ARB = 0x9552;
 
-    public static void glSpecializeShaderARB(int shader, @NativeType("const GLchar *") MemorySegment pEntryPoint, int numSpecializationConstants, @NativeType("const GLuint *") MemorySegment pConstantIndex, @NativeType("const GLuint *") MemorySegment pConstantValue) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSpecializeShaderARB).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glSpecializeShaderARB(int shader, @NativeType("const GLchar *") MemorySegment pEntryPoint, int numSpecializationConstants, @NativeType("const GLuint *") MemorySegment pConstantIndex, @NativeType("const GLuint *") MemorySegment pConstantValue) {
+        throw new ContextException();
     }
 
 }

@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_path_rendering_shared_edge}
  */
-public final class GLNVPathRenderingSharedEdge {
-    public static final int GL_SHARED_EDGE_NV = 0xC0;
+public interface GLNVPathRenderingSharedEdge {
+    int GL_SHARED_EDGE_NV = 0xC0;
 }

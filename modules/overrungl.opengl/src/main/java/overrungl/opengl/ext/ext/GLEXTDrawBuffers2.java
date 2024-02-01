@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_draw_buffers2}
  */
-public final class GLEXTDrawBuffers2 {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_draw_buffers2) return;
-        ext.glColorMaskIndexedEXT = load.invoke("glColorMaskIndexedEXT", ofVoid(JAVA_INT, JAVA_BYTE, JAVA_BYTE, JAVA_BYTE, JAVA_BYTE));
-    }
+public interface GLEXTDrawBuffers2 {
 
-    public static void glColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glColorMaskIndexedEXT).invokeExact(index, r, g, b, a);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
+        throw new ContextException();
     }
 
 }

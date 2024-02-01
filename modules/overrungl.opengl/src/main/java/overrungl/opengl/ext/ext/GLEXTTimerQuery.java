@@ -16,37 +16,22 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_timer_query}
  */
-public final class GLEXTTimerQuery {
-    public static final int GL_TIME_ELAPSED_EXT = 0x88BF;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_timer_query) return;
-        ext.glGetQueryObjecti64vEXT = load.invoke("glGetQueryObjecti64vEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glGetQueryObjectui64vEXT = load.invoke("glGetQueryObjectui64vEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+public interface GLEXTTimerQuery {
+    int GL_TIME_ELAPSED_EXT = 0x88BF;
+
+    default void glGetQueryObjecti64vEXT(int id, int pname, @NativeType("GLint64 *") MemorySegment params) {
+        throw new ContextException();
     }
 
-    public static void glGetQueryObjecti64vEXT(int id, int pname, @NativeType("GLint64 *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetQueryObjecti64vEXT).invokeExact(id, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGetQueryObjectui64vEXT(int id, int pname, @NativeType("GLuint64 *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetQueryObjectui64vEXT).invokeExact(id, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glGetQueryObjectui64vEXT(int id, int pname, @NativeType("GLuint64 *") MemorySegment params) {
+        throw new ContextException();
     }
 
 }

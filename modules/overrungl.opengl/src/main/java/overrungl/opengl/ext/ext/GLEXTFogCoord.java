@@ -16,68 +16,41 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_fog_coord}
  */
-public final class GLEXTFogCoord {
-    public static final int GL_FOG_COORDINATE_SOURCE_EXT = 0x8450;
-    public static final int GL_FOG_COORDINATE_EXT = 0x8451;
-    public static final int GL_FRAGMENT_DEPTH_EXT = 0x8452;
-    public static final int GL_CURRENT_FOG_COORDINATE_EXT = 0x8453;
-    public static final int GL_FOG_COORDINATE_ARRAY_TYPE_EXT = 0x8454;
-    public static final int GL_FOG_COORDINATE_ARRAY_STRIDE_EXT = 0x8455;
-    public static final int GL_FOG_COORDINATE_ARRAY_POINTER_EXT = 0x8456;
-    public static final int GL_FOG_COORDINATE_ARRAY_EXT = 0x8457;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_fog_coord) return;
-        ext.glFogCoordfEXT = load.invoke("glFogCoordfEXT", ofVoid(JAVA_FLOAT));
-        ext.glFogCoordfvEXT = load.invoke("glFogCoordfvEXT", ofVoid(ADDRESS));
-        ext.glFogCoorddEXT = load.invoke("glFogCoorddEXT", ofVoid(JAVA_DOUBLE));
-        ext.glFogCoorddvEXT = load.invoke("glFogCoorddvEXT", ofVoid(ADDRESS));
-        ext.glFogCoordPointerEXT = load.invoke("glFogCoordPointerEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
+public interface GLEXTFogCoord {
+    int GL_FOG_COORDINATE_SOURCE_EXT = 0x8450;
+    int GL_FOG_COORDINATE_EXT = 0x8451;
+    int GL_FRAGMENT_DEPTH_EXT = 0x8452;
+    int GL_CURRENT_FOG_COORDINATE_EXT = 0x8453;
+    int GL_FOG_COORDINATE_ARRAY_TYPE_EXT = 0x8454;
+    int GL_FOG_COORDINATE_ARRAY_STRIDE_EXT = 0x8455;
+    int GL_FOG_COORDINATE_ARRAY_POINTER_EXT = 0x8456;
+    int GL_FOG_COORDINATE_ARRAY_EXT = 0x8457;
+
+    default void glFogCoordfEXT(float coord) {
+        throw new ContextException();
     }
 
-    public static void glFogCoordfEXT(float coord) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFogCoordfEXT).invokeExact(coord);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFogCoordfvEXT(@NativeType("const GLfloat *") MemorySegment coord) {
+        throw new ContextException();
     }
 
-    public static void glFogCoordfvEXT(@NativeType("const GLfloat *") MemorySegment coord) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFogCoordfvEXT).invokeExact(coord);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFogCoorddEXT(double coord) {
+        throw new ContextException();
     }
 
-    public static void glFogCoorddEXT(double coord) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFogCoorddEXT).invokeExact(coord);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFogCoorddvEXT(@NativeType("const GLdouble *") MemorySegment coord) {
+        throw new ContextException();
     }
 
-    public static void glFogCoorddvEXT(@NativeType("const GLdouble *") MemorySegment coord) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFogCoorddvEXT).invokeExact(coord);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glFogCoordPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFogCoordPointerEXT).invokeExact(type, stride, pointer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glFogCoordPointerEXT(int type, int stride, @NativeType("const void *") MemorySegment pointer) {
+        throw new ContextException();
     }
 
 }

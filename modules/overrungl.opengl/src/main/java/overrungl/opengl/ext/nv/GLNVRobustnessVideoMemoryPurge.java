@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_robustness_video_memory_purge}
  */
-public final class GLNVRobustnessVideoMemoryPurge {
-    public static final int GL_PURGED_CONTEXT_RESET_NV = 0x92BB;
+public interface GLNVRobustnessVideoMemoryPurge {
+    int GL_PURGED_CONTEXT_RESET_NV = 0x92BB;
 }

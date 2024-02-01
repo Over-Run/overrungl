@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.sgi;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_scalebias_hint}
  */
-public final class GLSGIXScalebiasHint {
-    public static final int GL_SCALEBIAS_HINT_SGIX = 0x8322;
+public interface GLSGIXScalebiasHint {
+    int GL_SCALEBIAS_HINT_SGIX = 0x8322;
 }

@@ -16,28 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_INGR_blend_func_separate}
  */
-public final class GLINGRBlendFuncSeparate {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_INGR_blend_func_separate) return;
-        ext.glBlendFuncSeparateINGR = load.invoke("glBlendFuncSeparateINGR", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLINGRBlendFuncSeparate {
 
-    public static void glBlendFuncSeparateINGR(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBlendFuncSeparateINGR).invokeExact(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glBlendFuncSeparateINGR(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
+        throw new ContextException();
     }
 
 }

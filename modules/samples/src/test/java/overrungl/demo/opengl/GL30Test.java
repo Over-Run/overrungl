@@ -16,14 +16,14 @@
 
 package overrungl.demo.opengl;
 
+import overrun.marshal.MemoryStack;
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
-import overrungl.util.MemoryStack;
 import overrungl.util.CheckUtil;
 
 import java.io.IOException;
@@ -42,6 +42,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
 public final class GL30Test {
     private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
+    private GL gl;
     private int program;
     private int colorFactor;
     private int vao, vbo, ebo;
@@ -54,11 +55,10 @@ public final class GL30Test {
         }
         loop();
 
-        GL.deleteProgram(program);
-        GL.deleteVertexArray(vao);
-        GL.deleteBuffer(vbo);
-        GL.deleteBuffer(ebo);
-        GL.deleteTexture(tex);
+        gl.deleteProgram(program);
+        gl.deleteVertexArrays(vao);
+        gl.deleteBuffers(vbo, ebo);
+        gl.deleteTextures(tex);
 
         GLFWCallbacks.free(window);
         glfw.destroyWindow(window);
@@ -81,7 +81,7 @@ public final class GL30Test {
             }
         });
         glfw.setFramebufferSizeCallback(window, (_, width, height) ->
-            GL.viewport(0, 0, width, height));
+            gl.viewport(0, 0, width, height));
         var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
         if (vidMode != null) {
             var size = glfw.getWindowSize(window);
@@ -99,14 +99,14 @@ public final class GL30Test {
     }
 
     private void load(Arena arena) {
-        Objects.requireNonNull(GLLoader.load(glfw::getProcAddress, true), "Failed to load OpenGL");
+        gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(glfw::getProcAddress)), "Failed to load OpenGL");
 
-        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
-        tex = GL.genTexture();
-        GL.bindTexture(GL.TEXTURE_2D, tex);
-        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
-        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
+        tex = gl.genTextures();
+        gl.bindTexture(GL.TEXTURE_2D, tex);
+        gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
+        gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
         try (MemoryStack stack = MemoryStack.stackPush()) {
             final STBImage stbImage = STBImage.INSTANCE;
             var px = stack.allocate(JAVA_INT);
@@ -116,7 +116,7 @@ public final class GL30Test {
                 IOUtil.ioResourceToSegment(arena, "image.png", 256),
                 px, py, pc, STBImage.RGB
             );
-            GL.texImage2D(GL.TEXTURE_2D,
+            gl.texImage2D(GL.TEXTURE_2D,
                 0,
                 GL.RGB,
                 px.get(JAVA_INT, 0),
@@ -129,11 +129,11 @@ public final class GL30Test {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        GL.bindTexture(GL.TEXTURE_2D, 0);
-        program = GL.createProgram();
-        int vsh = GL.createShader(GL.VERTEX_SHADER);
-        int fsh = GL.createShader(GL.FRAGMENT_SHADER);
-        GL.shaderSource(vsh, """
+        gl.bindTexture(GL.TEXTURE_2D, 0);
+        program = gl.createProgram();
+        int vsh = gl.createShader(GL.VERTEX_SHADER);
+        int fsh = gl.createShader(GL.FRAGMENT_SHADER);
+        gl.shaderSource(vsh, """
             #version 130
 
             in vec3 position;
@@ -146,7 +146,7 @@ public final class GL30Test {
                 texCoord = uv;
             }
             """);
-        GL.shaderSource(fsh, """
+        gl.shaderSource(fsh, """
             #version 130
 
             in vec2 texCoord;
@@ -160,60 +160,60 @@ public final class GL30Test {
                 fragColor = colorFactor * texture(sampler, texCoord);
             }
             """);
-        GL.compileShader(vsh);
-        GL.compileShader(fsh);
-        GL.attachShader(program, vsh);
-        GL.attachShader(program, fsh);
-        GL.bindAttribLocation(program, 0, "position");
-        GL.bindAttribLocation(program, 1, "uv");
-        GL.linkProgram(program);
-        GL.detachShader(program, vsh);
-        GL.detachShader(program, fsh);
-        GL.deleteShader(vsh);
-        GL.deleteShader(fsh);
-        GL.useProgram(program);
-        GL.uniform1i(GL.getUniformLocation(program, "sampler"), 0);
-        GL.useProgram(0);
+        gl.compileShader(vsh);
+        gl.compileShader(fsh);
+        gl.attachShader(program, vsh);
+        gl.attachShader(program, fsh);
+        gl.bindAttribLocation(program, 0, "position");
+        gl.bindAttribLocation(program, 1, "uv");
+        gl.linkProgram(program);
+        gl.detachShader(program, vsh);
+        gl.detachShader(program, fsh);
+        gl.deleteShader(vsh);
+        gl.deleteShader(fsh);
+        gl.useProgram(program);
+        gl.uniform1i(gl.getUniformLocation(program, "sampler"), 0);
+        gl.useProgram(0);
 
-        vao = GL.genVertexArray();
-        GL.bindVertexArray(vao);
-        vbo = GL.genBuffer();
-        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
-        GL.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
+        vao = gl.genVertexArrays();
+        gl.bindVertexArray(vao);
+        vbo = gl.genBuffers();
+        gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
+        gl.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
             // Vertex          UV
             -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
             0.5f, 0.5f, 0.0f, 1.0f, 0.0f
         }, GL.STATIC_DRAW);
-        ebo = GL.genBuffer();
-        GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, ebo);
-        GL.bufferData(arena, GL.ELEMENT_ARRAY_BUFFER, new byte[]{
+        ebo = gl.genBuffers();
+        gl.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, ebo);
+        gl.bufferData(arena, GL.ELEMENT_ARRAY_BUFFER, new byte[]{
             0, 1, 2, 0, 2, 3
         }, GL.STATIC_DRAW);
-        GL.enableVertexAttribArray(0);
-        GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 20, MemorySegment.NULL);
-        GL.vertexAttribPointer(1, 2, GL.FLOAT, false, 20, MemorySegment.ofAddress(12));
-        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
-        GL.bindVertexArray(0);
+        gl.enableVertexAttribArray(0);
+        gl.enableVertexAttribArray(1);
+        gl.vertexAttribPointer(0, 3, GL.FLOAT, false, 20, MemorySegment.NULL);
+        gl.vertexAttribPointer(1, 2, GL.FLOAT, false, 20, MemorySegment.ofAddress(12));
+        gl.bindBuffer(GL.ARRAY_BUFFER, 0);
+        gl.bindVertexArray(0);
 
-        colorFactor = GL.getUniformLocation(program, "colorFactor");
+        colorFactor = gl.getUniformLocation(program, "colorFactor");
     }
 
     private void loop() {
         while (!glfw.windowShouldClose(window)) {
-            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+            gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL.bindTexture(GL.TEXTURE_2D, tex);
-            GL.useProgram(program);
-            GL.uniform1f(colorFactor, (float) ((Math.sin(glfw.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
-            GL.bindVertexArray(vao);
-            GL.drawElements(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL);
-            GL.bindVertexArray(0);
-            GL.useProgram(0);
-            GL.bindTexture(GL.TEXTURE_2D, 0);
+            gl.bindTexture(GL.TEXTURE_2D, tex);
+            gl.useProgram(program);
+            gl.uniform1f(colorFactor, (float) ((Math.sin(glfw.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
+            gl.bindVertexArray(vao);
+            gl.drawElements(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL);
+            gl.bindVertexArray(0);
+            gl.useProgram(0);
+            gl.bindTexture(GL.TEXTURE_2D, 0);
 
             glfw.swapBuffers(window);
 

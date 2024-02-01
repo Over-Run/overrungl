@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_interleaved_elements}
  */
-public final class GLAMDInterleavedElements {
-    public static final int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
-    public static final int GL_VERTEX_ID_SWIZZLE_AMD = 0x91A5;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_interleaved_elements) return;
-        ext.glVertexAttribParameteriAMD = load.invoke("glVertexAttribParameteriAMD", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLAMDInterleavedElements {
+    int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
+    int GL_VERTEX_ID_SWIZZLE_AMD = 0x91A5;
 
-    public static void glVertexAttribParameteriAMD(int index, int pname, int param) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glVertexAttribParameteriAMD).invokeExact(index, pname, param);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glVertexAttribParameteriAMD(int index, int pname, int param) {
+        throw new ContextException();
     }
 
 }

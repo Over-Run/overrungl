@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_depth_clamp}
  */
-public final class GLNVDepthClamp {
-    public static final int GL_DEPTH_CLAMP_NV = 0x864F;
+public interface GLNVDepthClamp {
+    int GL_DEPTH_CLAMP_NV = 0x864F;
 }

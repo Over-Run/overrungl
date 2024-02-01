@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,14 +16,11 @@
 
 package overrungl.opengl;
 
-import org.jetbrains.annotations.Nullable;
-import overrungl.FunctionDescriptors;
-import overrungl.internal.RuntimeHelper;
+import overrun.marshal.Unmarshal;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.SymbolLookup;
+import java.util.Optional;
 
 /**
  * The OpenGL loading function.
@@ -31,7 +28,7 @@ import java.lang.invoke.MethodHandle;
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
  * import java.util.Objects;
- * Objects.requireNonNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+ * Objects.requireNonNull(GLLoader.load(glfw::getProcAddress), "Failed to load OpenGL");
  * }
  *
  * @author squid233
@@ -48,28 +45,12 @@ public interface GLLoadFunc {
     MemorySegment invoke(String string);
 
     /**
-     * Load a function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
+     * {@return a symbol lookup of this}
      */
-    @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptor function, Linker.Option... options) {
-        return RuntimeHelper.downcallSafe(invoke(procName), function, options);
-    }
-
-    /**
-     * Load a function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
-     */
-    @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
-        return RuntimeHelper.downcallSafe(invoke(procName), function, options);
+    default SymbolLookup lookup() {
+        return name -> {
+            final MemorySegment segment = invoke(name);
+            return Unmarshal.isNullPointer(segment) ? Optional.empty() : Optional.of(segment);
+        };
     }
 }

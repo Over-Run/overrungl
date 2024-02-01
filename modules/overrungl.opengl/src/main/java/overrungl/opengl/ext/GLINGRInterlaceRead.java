@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_INGR_interlace_read}
  */
-public final class GLINGRInterlaceRead {
-    public static final int GL_INTERLACE_READ_INGR = 0x8568;
+public interface GLINGRInterlaceRead {
+    int GL_INTERLACE_READ_INGR = 0x8568;
 }

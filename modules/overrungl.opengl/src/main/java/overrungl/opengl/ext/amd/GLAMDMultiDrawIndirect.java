@@ -16,36 +16,21 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.amd;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_multi_draw_indirect}
  */
-public final class GLAMDMultiDrawIndirect {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_multi_draw_indirect) return;
-        ext.glMultiDrawArraysIndirectAMD = load.invoke("glMultiDrawArraysIndirectAMD", ofVoid(JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT));
-        ext.glMultiDrawElementsIndirectAMD = load.invoke("glMultiDrawElementsIndirectAMD", ofVoid(JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT));
+public interface GLAMDMultiDrawIndirect {
+
+    default void glMultiDrawArraysIndirectAMD(int mode, @NativeType("const void *") MemorySegment indirect, int primcount, int stride) {
+        throw new ContextException();
     }
 
-    public static void glMultiDrawArraysIndirectAMD(int mode, @NativeType("const void *") MemorySegment indirect, int primcount, int stride) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glMultiDrawArraysIndirectAMD).invokeExact(mode, indirect, primcount, stride);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glMultiDrawElementsIndirectAMD(int mode, int type, @NativeType("const void *") MemorySegment indirect, int primcount, int stride) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glMultiDrawElementsIndirectAMD).invokeExact(mode, type, indirect, primcount, stride);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glMultiDrawElementsIndirectAMD(int mode, int type, @NativeType("const void *") MemorySegment indirect, int primcount, int stride) {
+        throw new ContextException();
     }
 
 }

@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_framebuffer_sRGB}
  */
-public final class GLEXTSrgb {
-    public static final int GL_FRAMEBUFFER_SRGB_EXT = 0x8DB9;
-    public static final int GL_FRAMEBUFFER_SRGB_CAPABLE_EXT = 0x8DBA;
+public interface GLEXTSrgb {
+    int GL_FRAMEBUFFER_SRGB_EXT = 0x8DB9;
+    int GL_FRAMEBUFFER_SRGB_CAPABLE_EXT = 0x8DBA;
 }

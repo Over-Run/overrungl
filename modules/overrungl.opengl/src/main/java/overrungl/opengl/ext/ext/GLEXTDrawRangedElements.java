@@ -16,30 +16,19 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_draw_range_elements}
  */
-public final class GLEXTDrawRangedElements {
-    public static final int GL_MAX_ELEMENTS_VERTICES_EXT = 0x80E8;
-    public static final int GL_MAX_ELEMENTS_INDICES_EXT = 0x80E9;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_draw_range_elements) return;
-        ext.glDrawRangeElementsEXT = load.invoke("glDrawRangeElementsEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLEXTDrawRangedElements {
+    int GL_MAX_ELEMENTS_VERTICES_EXT = 0x80E8;
+    int GL_MAX_ELEMENTS_INDICES_EXT = 0x80E9;
 
-    public static void glDrawRangeElementsEXT(int mode, int start, int end, int count, int type, @NativeType("const void *") MemorySegment indices) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDrawRangeElementsEXT).invokeExact(mode, start, end, count, type, indices);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glDrawRangeElementsEXT(int mode, int start, int end, int count, int type, @NativeType("const void *") MemorySegment indices) {
+        throw new ContextException();
     }
 
 }

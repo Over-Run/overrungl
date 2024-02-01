@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ibm;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_IBM_rasterpos_clip}
  */
-public final class GLIBMRasterposClip {
-    public static final int GL_RASTER_POSITION_UNCLIPPED_IBM = 0x19262;
+public interface GLIBMRasterposClip {
+    int GL_RASTER_POSITION_UNCLIPPED_IBM = 0x19262;
 }

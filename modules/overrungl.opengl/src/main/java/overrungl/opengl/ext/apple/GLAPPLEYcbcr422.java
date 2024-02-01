@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.apple;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_ycbcr_422}
  */
-public final class GLAPPLEYcbcr422 {
-    public static final int GL_YCBCR_422_APPLE = 0x85B9;
+public interface GLAPPLEYcbcr422 {
+    int GL_YCBCR_422_APPLE = 0x85B9;
 }

@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_conservative_raster_pre_snap}
  */
-public final class GLNVConservativeRasterPreSnap {
-    public static final int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_NV = 0x9550;
+public interface GLNVConservativeRasterPreSnap {
+    int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_NV = 0x9550;
 }

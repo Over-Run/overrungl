@@ -16,22 +16,18 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_OML_resample}
  */
-public final class GLOMLResample {
-    public static final int GL_PACK_RESAMPLE_OML = 0x8984;
-    public static final int GL_UNPACK_RESAMPLE_OML = 0x8985;
-    public static final int GL_RESAMPLE_REPLICATE_OML = 0x8986;
-    public static final int GL_RESAMPLE_ZERO_FILL_OML = 0x8987;
-    public static final int GL_RESAMPLE_AVERAGE_OML = 0x8988;
-    public static final int GL_RESAMPLE_DECIMATE_OML = 0x8989;
+public interface GLOMLResample {
+    int GL_PACK_RESAMPLE_OML = 0x8984;
+    int GL_UNPACK_RESAMPLE_OML = 0x8985;
+    int GL_RESAMPLE_REPLICATE_OML = 0x8986;
+    int GL_RESAMPLE_ZERO_FILL_OML = 0x8987;
+    int GL_RESAMPLE_AVERAGE_OML = 0x8988;
+    int GL_RESAMPLE_DECIMATE_OML = 0x8989;
 }

@@ -18,25 +18,18 @@ package overrungl.internal;
 
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
-import org.jetbrains.annotations.Nullable;
 import overrungl.Configurations;
-import overrungl.FunctionDescriptors;
-import overrungl.NativeType;
 import overrungl.OverrunGL;
-import overrungl.util.MemoryUtil;
 
 import java.io.IOException;
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandle;
+import java.lang.foreign.Arena;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemoryLayout;
+import java.lang.foreign.SymbolLookup;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.ToLongFunction;
-
-import static java.lang.foreign.ValueLayout.*;
 
 /**
  * The runtime helper, for internal use.
@@ -48,16 +41,8 @@ public final class RuntimeHelper {
     /**
      * The native linker.
      */
-    public static final Linker LINKER = Linker.nativeLinker();
+    private static final Linker LINKER = Linker.nativeLinker();
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"));
-    /**
-     * An unbounded address layout.
-     */
-    public static final AddressLayout ADDRESS_UNBOUNDED = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Long.MAX_VALUE, JAVA_BYTE));
-    /**
-     * @see Configurations#CHECKS
-     */
-    public static final boolean CHECKS = Configurations.CHECKS.get();
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
     private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
     /**
@@ -72,24 +57,6 @@ public final class RuntimeHelper {
      */
     private RuntimeHelper() {
         throw new IllegalStateException("Do not construct instance");
-    }
-
-    @Deprecated(since = "0.1.0")
-    private static MemorySegment reinterpreting(MemorySegment pointerToPointer, int index, ToLongFunction<MemorySegment> size) {
-        final MemorySegment seg = pointerToPointer.getAtIndex(ADDRESS, index);
-        return seg.reinterpret(size.applyAsLong(seg));
-    }
-
-    /**
-     * Gets a UTF-8 string from the given pointer of a string at the given index.
-     *
-     * @param segment the memory segment.
-     * @param index   the index.
-     * @return the string.
-     */
-    @Deprecated(since = "0.1.0")
-    public static String unboundPointerString(MemorySegment segment, int index) {
-        return reinterpreting(segment, index, str -> MemoryUtil.strlen(str) + 1).getString(0);
     }
 
     /**
@@ -165,207 +132,5 @@ public final class RuntimeHelper {
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(uri, Arena.global());
-    }
-
-    /**
-     * {@return {@code true} if <i>{@code segment}</i> is a null pointer}
-     *
-     * @param segment the segment.
-     */
-    @Deprecated(since = "0.1.0")
-    public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return segment == null || segment.equals(MemorySegment.NULL);
-    }
-
-    /**
-     * Creates a downcall handle or {@code null}.
-     *
-     * @param symbol   the address of the target function.
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
-     */
-    @Nullable
-    @Deprecated(since = "0.1.0")
-    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptor function, Linker.Option... options) {
-        return isNullptr(symbol) ? null : LINKER.downcallHandle(symbol, function, options);
-    }
-
-    /**
-     * Creates a downcall handle or throws exception.
-     *
-     * @param optional the optional contained the address of the target function.
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle.
-     */
-    @Deprecated(since = "0.1.0")
-    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptor function, Linker.Option... options) {
-        return LINKER.downcallHandle(optional.orElseThrow(), function, options);
-    }
-
-    /**
-     * Creates a downcall handle or {@code null}.
-     *
-     * @param symbol   the address of the target function.
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle. or {@code null} if the symbol {@link MemorySegment#NULL}
-     */
-    @Nullable
-    @Deprecated(since = "0.1.0")
-    public static MethodHandle downcallSafe(@Nullable MemorySegment symbol, FunctionDescriptors function, Linker.Option... options) {
-        return downcallSafe(symbol, function.descriptor(), options);
-    }
-
-    /**
-     * Creates a downcall handle or throws exception.
-     *
-     * @param optional the optional contained the address of the target function.
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle.
-     */
-    @Deprecated(since = "0.1.0")
-    public static MethodHandle downcallThrow(Optional<MemorySegment> optional, FunctionDescriptors function, Linker.Option... options) {
-        return downcallThrow(optional, function.descriptor(), options);
-    }
-
-    /**
-     * Gets the objects from an address array.
-     *
-     * @param <T>       the array type
-     * @param seg       the memory segment contained objects. native type: {@code void**}
-     * @param arr       the array to hold the result
-     * @param generator the generator, from a zero-length address to the array type
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static <T> T[] toArray(MemorySegment seg, T[] arr,
-                                  Function<MemorySegment, T> generator) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = generator.apply(seg.getAtIndex(ADDRESS, i));
-        }
-        return arr;
-    }
-
-    /**
-     * Gets the addresses from an address array.
-     *
-     * @param seg the memory segment contained addresses. native type: {@code void**}
-     * @param arr the array to hold the result
-     * @return an array of the zero-length addresses.
-     */
-    @Deprecated(since = "0.1.0")
-    public static MemorySegment[] toArray(MemorySegment seg, MemorySegment[] arr) {
-        return toArray(seg, arr, Function.identity());
-    }
-
-    /**
-     * Gets the strings from an unbounded address array.
-     *
-     * @param seg the memory segment contained strings
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static String[] toUnboundedArray(@NativeType("char**") MemorySegment seg, String[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = unboundPointerString(seg, i);
-        }
-        return arr;
-    }
-
-    /**
-     * Gets the booleans from a boolean array.
-     *
-     * @param seg the memory segment contained booleans. native type: {@code boolean*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static boolean[] toArray(MemorySegment seg, boolean[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = seg.get(JAVA_BOOLEAN, i);
-        }
-        return arr;
-    }
-
-    /**
-     * Gets the bytes from a byte array.
-     *
-     * @param seg the memory segment contained bytes. native type: {@code byte*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static byte[] toArray(MemorySegment seg, byte[] arr) {
-        MemorySegment.copy(seg, JAVA_BYTE, 0, arr, 0, arr.length);
-        return arr;
-    }
-
-    /**
-     * Gets the shorts from a short array.
-     *
-     * @param seg the memory segment contained shorts. native type: {@code short*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static short[] toArray(MemorySegment seg, short[] arr) {
-        MemorySegment.copy(seg, JAVA_SHORT, 0, arr, 0, arr.length);
-        return arr;
-    }
-
-    /**
-     * Gets the ints from an int array.
-     *
-     * @param seg the memory segment contained ints. native type: {@code int*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static int[] toArray(MemorySegment seg, int[] arr) {
-        MemorySegment.copy(seg, JAVA_INT, 0, arr, 0, arr.length);
-        return arr;
-    }
-
-    /**
-     * Gets the longs from a long array.
-     *
-     * @param seg the memory segment contained longs. native type: {@code long*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static long[] toArray(MemorySegment seg, long[] arr) {
-        MemorySegment.copy(seg, JAVA_LONG, 0, arr, 0, arr.length);
-        return arr;
-    }
-
-    /**
-     * Gets the floats from a float array.
-     *
-     * @param seg the memory segment contained floats. native type: {@code float*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static float[] toArray(MemorySegment seg, float[] arr) {
-        MemorySegment.copy(seg, JAVA_FLOAT, 0, arr, 0, arr.length);
-        return arr;
-    }
-
-    /**
-     * Gets the doubles from a double array.
-     *
-     * @param seg the memory segment contained doubles. native type: {@code double*}
-     * @param arr the array to hold the result
-     * @return arr
-     */
-    @Deprecated(since = "0.1.0")
-    public static double[] toArray(MemorySegment seg, double[] arr) {
-        MemorySegment.copy(seg, JAVA_DOUBLE, 0, arr, 0, arr.length);
-        return arr;
     }
 }

@@ -17,18 +17,17 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBGLSpirv;
 import overrungl.opengl.ext.arb.GLARBIndirectParameters;
 import overrungl.opengl.ext.arb.GLARBPipelineStatisticsQuery;
 import overrungl.opengl.ext.arb.GLARBTransformFeedbackOverflowQuery;
-import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
-
-import static overrungl.FunctionDescriptors.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * The OpenGL 4.6 core profile functions.
@@ -45,96 +44,63 @@ import static overrungl.opengl.GLLoader.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed class GL46C extends GL45C permits GL {
-    public static final int SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
-    public static final int SPIR_V_BINARY = 0x9552;
-    public static final int PARAMETER_BUFFER = 0x80EE;
-    public static final int PARAMETER_BUFFER_BINDING = 0x80EF;
-    public static final int CONTEXT_FLAG_NO_ERROR_BIT = 0x00000008;
-    public static final int VERTICES_SUBMITTED = 0x82EE;
-    public static final int PRIMITIVES_SUBMITTED = 0x82EF;
-    public static final int VERTEX_SHADER_INVOCATIONS = 0x82F0;
-    public static final int TESS_CONTROL_SHADER_PATCHES = 0x82F1;
-    public static final int TESS_EVALUATION_SHADER_INVOCATIONS = 0x82F2;
-    public static final int GEOMETRY_SHADER_PRIMITIVES_EMITTED = 0x82F3;
-    public static final int FRAGMENT_SHADER_INVOCATIONS = 0x82F4;
-    public static final int COMPUTE_SHADER_INVOCATIONS = 0x82F5;
-    public static final int CLIPPING_INPUT_PRIMITIVES = 0x82F6;
-    public static final int CLIPPING_OUTPUT_PRIMITIVES = 0x82F7;
-    public static final int POLYGON_OFFSET_CLAMP = 0x8E1B;
-    public static final int SPIR_V_EXTENSIONS = 0x9553;
-    public static final int NUM_SPIR_V_EXTENSIONS = 0x9554;
-    public static final int TEXTURE_MAX_ANISOTROPY = 0x84FE;
-    public static final int MAX_TEXTURE_MAX_ANISOTROPY = 0x84FF;
-    public static final int TRANSFORM_FEEDBACK_OVERFLOW = 0x82EC;
-    public static final int TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
+public sealed interface GL46C extends GL45C permits GL {
+    int SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
+    int SPIR_V_BINARY = 0x9552;
+    int PARAMETER_BUFFER = 0x80EE;
+    int PARAMETER_BUFFER_BINDING = 0x80EF;
+    int CONTEXT_FLAG_NO_ERROR_BIT = 0x00000008;
+    int VERTICES_SUBMITTED = 0x82EE;
+    int PRIMITIVES_SUBMITTED = 0x82EF;
+    int VERTEX_SHADER_INVOCATIONS = 0x82F0;
+    int TESS_CONTROL_SHADER_PATCHES = 0x82F1;
+    int TESS_EVALUATION_SHADER_INVOCATIONS = 0x82F2;
+    int GEOMETRY_SHADER_PRIMITIVES_EMITTED = 0x82F3;
+    int FRAGMENT_SHADER_INVOCATIONS = 0x82F4;
+    int COMPUTE_SHADER_INVOCATIONS = 0x82F5;
+    int CLIPPING_INPUT_PRIMITIVES = 0x82F6;
+    int CLIPPING_OUTPUT_PRIMITIVES = 0x82F7;
+    int POLYGON_OFFSET_CLAMP = 0x8E1B;
+    int SPIR_V_EXTENSIONS = 0x9553;
+    int NUM_SPIR_V_EXTENSIONS = 0x9554;
+    int TEXTURE_MAX_ANISOTROPY = 0x84FE;
+    int MAX_TEXTURE_MAX_ANISOTROPY = 0x84FF;
+    int TRANSFORM_FEEDBACK_OVERFLOW = 0x82EC;
+    int TRANSFORM_FEEDBACK_STREAM_OVERFLOW = 0x82ED;
 
-    static boolean isSupported(GLCapabilities caps) {
-        return checkAll(caps.glMultiDrawArraysIndirectCount, caps.glMultiDrawElementsIndirectCount, caps.glPolygonOffsetClamp, caps.glSpecializeShader);
+    @Entrypoint("glMultiDrawArraysIndirectCount")
+    default void multiDrawArraysIndirectCount(int mode, MemorySegment indirect, long drawCount, int maxDrawCount, int stride) {
+        throw new ContextException();
     }
 
-    static void load(GLCapabilities caps, GLLoadFunc load) {
-        caps.glMultiDrawArraysIndirectCount = load.invoke("glMultiDrawArraysIndirectCount", IPJIIV);
-        caps.glMultiDrawElementsIndirectCount = load.invoke("glMultiDrawElementsIndirectCount", IIPJIIV);
-        caps.glPolygonOffsetClamp = load.invoke("glPolygonOffsetClamp", FFFV);
-        caps.glSpecializeShader = load.invoke("glSpecializeShader", IPIPPV);
+    @Entrypoint("glMultiDrawElementsIndirectCount")
+    default void multiDrawElementsIndirectCount(int mode, int type, MemorySegment indirect, long drawCount, int maxDrawCount, int stride) {
+        throw new ContextException();
     }
 
-    public static void multiDrawArraysIndirectCount(int mode, MemorySegment indirect, long drawCount, int maxDrawCount, int stride) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glMultiDrawArraysIndirectCount).invokeExact(mode, indirect, drawCount, maxDrawCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glPolygonOffsetClamp")
+    default void polygonOffsetClamp(float factor, float units, float clamp) {
+        throw new ContextException();
     }
 
-    public static void multiDrawElementsIndirectCount(int mode, int type, MemorySegment indirect, long drawCount, int maxDrawCount, int stride) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glMultiDrawElementsIndirectCount).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glSpecializeShader")
+    default void specializeShader(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
+        throw new ContextException();
     }
 
-    public static void polygonOffsetClamp(float factor, float units, float clamp) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glPolygonOffsetClamp).invokeExact(factor, units, clamp);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @Entrypoint("glSpecializeShader")
+    default void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint, int numSpecializationConstants, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
+        throw new ContextException();
     }
 
-    public static void specializeShader(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
-        var caps = getCapabilities();
-        try {
-            check(caps.glSpecializeShader).invokeExact(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    public static void specializeShader(SegmentAllocator allocator, int shader, @Nullable String pEntryPoint, int @Nullable [] pConstantIndex, int @Nullable [] pConstantValue) {
-        specializeShader(shader,
-            pEntryPoint != null ? allocator.allocateFrom(pEntryPoint) : MemorySegment.NULL,
-            pConstantIndex != null ? pConstantIndex.length : (pConstantValue != null ? pConstantValue.length : 0),
-            pConstantIndex != null ? allocator.allocateFrom(ValueLayout.JAVA_INT, pConstantIndex) : MemorySegment.NULL,
-            pConstantValue != null ? allocator.allocateFrom(ValueLayout.JAVA_INT, pConstantValue) : MemorySegment.NULL);
-    }
-
-    public static void specializeShader(int shader, @Nullable String pEntryPoint) {
-        final MemoryStack stack = MemoryStack.stackGet();
-        final long stackPointer = stack.getPointer();
-        try {
+    @Skip
+    default void specializeShader(int shader, @Nullable String pEntryPoint) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
             specializeShader(shader,
-                pEntryPoint != null ? stack.allocateFrom(pEntryPoint) : MemorySegment.NULL,
+                Marshal.marshal(stack, pEntryPoint),
                 0,
                 MemorySegment.NULL,
                 MemorySegment.NULL);
-        } finally {
-            stack.setPointer(stackPointer);
         }
     }
 }

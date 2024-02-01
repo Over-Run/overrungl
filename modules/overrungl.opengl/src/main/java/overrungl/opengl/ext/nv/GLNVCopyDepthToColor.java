@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_copy_depth_to_color}
  */
-public final class GLNVCopyDepthToColor {
-    public static final int GL_DEPTH_STENCIL_TO_RGBA_NV = 0x886E;
-    public static final int GL_DEPTH_STENCIL_TO_BGRA_NV = 0x886F;
+public interface GLNVCopyDepthToColor {
+    int GL_DEPTH_STENCIL_TO_RGBA_NV = 0x886E;
+    int GL_DEPTH_STENCIL_TO_BGRA_NV = 0x886F;
 }

@@ -16,32 +16,21 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_blend_minmax}
  */
-public final class GLEXTBlendMinmax {
-    public static final int GL_MIN_EXT = 0x8007;
-    public static final int GL_MAX_EXT = 0x8008;
-    public static final int GL_FUNC_ADD_EXT = 0x8006;
-    public static final int GL_BLEND_EQUATION_EXT = 0x8009;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_blend_minmax) return;
-        ext.glBlendEquationEXT = load.invoke("glBlendEquationEXT", ofVoid(JAVA_INT));
-    }
+public interface GLEXTBlendMinmax {
+    int GL_MIN_EXT = 0x8007;
+    int GL_MAX_EXT = 0x8008;
+    int GL_FUNC_ADD_EXT = 0x8006;
+    int GL_BLEND_EQUATION_EXT = 0x8009;
 
-    public static void glBlendEquationEXT(int mode) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBlendEquationEXT).invokeExact(mode);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glBlendEquationEXT(int mode) {
+        throw new ContextException();
     }
 
 }

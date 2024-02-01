@@ -16,31 +16,20 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.nv;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_conservative_raster_dilate}
  */
-public final class GLNVConservativeRasterDilate {
-    public static final int GL_CONSERVATIVE_RASTER_DILATE_NV = 0x9379;
-    public static final int GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV = 0x937A;
-    public static final int GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV = 0x937B;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_conservative_raster_dilate) return;
-        ext.glConservativeRasterParameterfNV = load.invoke("glConservativeRasterParameterfNV", ofVoid(JAVA_INT, JAVA_FLOAT));
-    }
+public interface GLNVConservativeRasterDilate {
+    int GL_CONSERVATIVE_RASTER_DILATE_NV = 0x9379;
+    int GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV = 0x937A;
+    int GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV = 0x937B;
 
-    public static void glConservativeRasterParameterfNV(int pname, float value) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glConservativeRasterParameterfNV).invokeExact(pname, value);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glConservativeRasterParameterfNV(int pname, float value) {
+        throw new ContextException();
     }
 
 }

@@ -16,17 +16,13 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ibm;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_IBM_cull_vertex}
  */
-public final class GLIBMCullVertex {
-    public static final int GL_CULL_VERTEX_IBM = 103050;
+public interface GLIBMCullVertex {
+    int GL_CULL_VERTEX_IBM = 103050;
 }

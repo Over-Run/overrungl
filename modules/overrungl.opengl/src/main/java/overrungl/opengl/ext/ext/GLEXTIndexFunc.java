@@ -16,31 +16,20 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_index_func}
  */
-public final class GLEXTIndexFunc {
-    public static final int GL_INDEX_TEST_EXT = 0x81B5;
-    public static final int GL_INDEX_TEST_FUNC_EXT = 0x81B6;
-    public static final int GL_INDEX_TEST_REF_EXT = 0x81B7;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_index_func) return;
-        ext.glIndexFuncEXT = load.invoke("glIndexFuncEXT", ofVoid(JAVA_INT, JAVA_FLOAT));
-    }
+public interface GLEXTIndexFunc {
+    int GL_INDEX_TEST_EXT = 0x81B5;
+    int GL_INDEX_TEST_FUNC_EXT = 0x81B6;
+    int GL_INDEX_TEST_REF_EXT = 0x81B7;
 
-    public static void glIndexFuncEXT(int func, float ref) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glIndexFuncEXT).invokeExact(func, ref);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
+    default void glIndexFuncEXT(int func, float ref) {
+        throw new ContextException();
     }
 
 }

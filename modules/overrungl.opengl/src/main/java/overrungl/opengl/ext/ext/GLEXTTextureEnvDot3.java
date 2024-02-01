@@ -16,18 +16,14 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_env_dot3}
  */
-public final class GLEXTTextureEnvDot3 {
-    public static final int GL_DOT3_RGB_EXT = 0x8740;
-    public static final int GL_DOT3_RGBA_EXT = 0x8741;
+public interface GLEXTTextureEnvDot3 {
+    int GL_DOT3_RGB_EXT = 0x8740;
+    int GL_DOT3_RGBA_EXT = 0x8741;
 }

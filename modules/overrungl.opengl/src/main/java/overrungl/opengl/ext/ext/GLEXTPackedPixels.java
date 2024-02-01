@@ -16,21 +16,17 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext.ext;
-
-import overrungl.*;
+import overrungl.NativeType;
 import overrungl.opengl.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_packed_pixels}
  */
-public final class GLEXTPackedPixels {
-    public static final int GL_UNSIGNED_BYTE_3_3_2_EXT = 0x8032;
-    public static final int GL_UNSIGNED_SHORT_4_4_4_4_EXT = 0x8033;
-    public static final int GL_UNSIGNED_SHORT_5_5_5_1_EXT = 0x8034;
-    public static final int GL_UNSIGNED_INT_8_8_8_8_EXT = 0x8035;
-    public static final int GL_UNSIGNED_INT_10_10_10_2_EXT = 0x8036;
+public interface GLEXTPackedPixels {
+    int GL_UNSIGNED_BYTE_3_3_2_EXT = 0x8032;
+    int GL_UNSIGNED_SHORT_4_4_4_4_EXT = 0x8033;
+    int GL_UNSIGNED_SHORT_5_5_5_1_EXT = 0x8034;
+    int GL_UNSIGNED_INT_8_8_8_8_EXT = 0x8035;
+    int GL_UNSIGNED_INT_10_10_10_2_EXT = 0x8036;
 }
