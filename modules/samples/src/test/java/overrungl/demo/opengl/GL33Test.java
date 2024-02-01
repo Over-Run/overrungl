@@ -18,6 +18,7 @@ package overrungl.demo.opengl;
 
 import org.joml.Matrix4f;
 import org.overrun.timer.Timer;
+import overrun.marshal.Unmarshal;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
@@ -26,7 +27,6 @@ import overrungl.opengl.GL;
 import overrungl.opengl.GLFlags;
 import overrungl.opengl.GLLoader;
 import overrungl.opengl.GLUtil;
-import overrungl.util.CheckUtil;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
@@ -76,7 +76,7 @@ public class GL33Test {
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(glfw.init(), "Unable to initialize GLFW");
+        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
         glfw.defaultWindowHints();
         glfw.windowHint(GLFW.VISIBLE, false);
         glfw.windowHint(GLFW.RESIZABLE, true);
@@ -85,7 +85,7 @@ public class GL33Test {
         glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
         glfw.windowHint(GLFW.OPENGL_DEBUG_CONTEXT, true);
         window = glfw.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
-        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
+        if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
         glfw.setKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 glfw.setWindowShouldClose(window, true);

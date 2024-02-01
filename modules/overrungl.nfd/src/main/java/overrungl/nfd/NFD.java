@@ -84,7 +84,7 @@ import static java.lang.foreign.ValueLayout.*;
  * var filterItem = NFDNFilterItem.create(allocator,
  *     new Pair<>("Source code", "java"),
  *     new Pair<>("Image file", "png,jpg"));
- * }
+ *}
  * <p>
  * A file filter is a pair of strings comprising the friendly name and the specification
  * (multiple file extensions are comma-separated).
@@ -573,7 +573,7 @@ public interface NFD {
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
                 if (!Unmarshal.isNullPointer(path)) {
-                    Unmarshal.copy(path, outPath, NFDInternal.nfdCharset);
+                    outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
                     pathSetFreePathN(path);
                 }
             }
