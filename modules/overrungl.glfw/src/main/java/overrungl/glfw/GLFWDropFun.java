@@ -16,11 +16,12 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.Unmarshal;
 import overrun.marshal.Upcall;
-import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for path drop callbacks. A path drop
@@ -59,7 +60,7 @@ public interface GLFWDropFun extends Upcall {
      */
     @Stub
     default void ninvoke(MemorySegment window, int pathCount, MemorySegment paths) {
-        invoke(window, RuntimeHelper.toUnboundedArray(paths, new String[pathCount]));
+        invoke(window, Unmarshal.unmarshalAsStringArray(paths.reinterpret(ValueLayout.ADDRESS.scale(0L, pathCount))));
     }
 
     @Override

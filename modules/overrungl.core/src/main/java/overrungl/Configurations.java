@@ -28,29 +28,11 @@ import java.util.function.Supplier;
  */
 public final class Configurations {
     /**
-     * The default stack size in KiB of {@link overrungl.util.MemoryStack MemoryStack}.
-     * <p>
-     * The default value is {@code 64}.
-     */
-    public static final Entry<Long> STACK_SIZE = new Entry<>(() -> 64L);
-    /**
-     * The default stack frames of {@link overrungl.util.MemoryStack MemoryStack}.
-     * <p>
-     * The default value is {@code 8}.
-     */
-    public static final Entry<Integer> STACK_FRAMES = new Entry<>(() -> 8);
-    /**
      * Enable debug messages and prints to {@link OverrunGL#apiLogger()}.
      * <p>
      * The default value is {@code false}.
      */
     public static final Entry<Boolean> DEBUG = new Entry<>(() -> false);
-    /**
-     * Enable using debug memory stack.
-     * <p>
-     * The default value is {@code false}.
-     */
-    public static final Entry<Boolean> DEBUG_STACK = new Entry<>(() -> false);
     /**
      * Enable debug memory util to check memory leaks.
      * <p>
@@ -63,12 +45,6 @@ public final class Configurations {
      * The default value is {@code false}.
      */
     public static final Entry<Boolean> DEBUG_MEM_UTIL_FAST = new Entry<>(() -> false);
-    /**
-     * Enable checks.
-     * <p>
-     * The default value is {@code true}.
-     */
-    public static final Entry<Boolean> CHECKS = new Entry<>(() -> true);
     /**
      * The symbol lookup of GLFW.
      * The returned value must not be null.

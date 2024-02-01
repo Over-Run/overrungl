@@ -16,15 +16,10 @@
 
 package overrungl.opengl;
 
-import org.jetbrains.annotations.Nullable;
 import overrun.marshal.Unmarshal;
-import overrungl.internal.RuntimeHelper;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
-import java.lang.invoke.MethodHandle;
 import java.util.Optional;
 
 /**
@@ -57,19 +52,5 @@ public interface GLLoadFunc {
             final MemorySegment segment = invoke(name);
             return Unmarshal.isNullPointer(segment) ? Optional.empty() : Optional.of(segment);
         };
-    }
-
-    /**
-     * Load a function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
-     */
-    @Nullable
-    @Deprecated(since = "0.1.0")
-    default MethodHandle invoke(String procName, FunctionDescriptor function, Linker.Option... options) {
-        return RuntimeHelper.downcallSafe(invoke(procName), function, options);
     }
 }

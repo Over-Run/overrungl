@@ -16,14 +16,14 @@
 
 package overrungl.demo.opengl;
 
+import overrun.marshal.MemoryStack;
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
-import overrungl.util.MemoryStack;
 import overrungl.util.CheckUtil;
 
 import java.io.IOException;

@@ -34,7 +34,8 @@ import static java.lang.foreign.ValueLayout.ADDRESS;
  * @since 0.1.0
  */
 public final class MemoryUtil {
-    private static final SymbolLookup LOOKUP = RuntimeHelper.LINKER.defaultLookup();
+    private static final Linker LINKER = Linker.nativeLinker();
+    private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
     private static final MethodHandle
         m_malloc = downcall("malloc", of(ADDRESS, RuntimeHelper.SIZE_T)),
         m_calloc = downcall("calloc", of(ADDRESS, RuntimeHelper.SIZE_T, RuntimeHelper.SIZE_T)),
@@ -51,7 +52,7 @@ public final class MemoryUtil {
     public static final long NULL = 0x0L;
 
     private static MethodHandle downcall(String name, FunctionDescriptor function) {
-        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
+        return LINKER.downcallHandle(LOOKUP.find(name).orElseThrow(), function);
     }
 
     private MemoryUtil() {
@@ -64,7 +65,7 @@ public final class MemoryUtil {
      * @param segment the segment.
      */
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return RuntimeHelper.isNullptr(segment);
+        return segment == null || segment.equals(MemorySegment.NULL);
     }
 
     /**
