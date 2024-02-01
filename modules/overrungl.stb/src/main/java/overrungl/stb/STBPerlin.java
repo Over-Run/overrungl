@@ -17,6 +17,7 @@
 package overrungl.stb;
 
 import overrun.marshal.Downcall;
+import overrun.marshal.gen.Entrypoint;
 
 /**
  * The STB perlin noise generator.
@@ -51,6 +52,7 @@ public interface STBPerlin {
      * @param wrapZ wrap z
      * @return the value
      */
+    @Entrypoint("stb_perlin_noise3")
     float noise3(float x, float y, float z, int wrapX, int wrapY, int wrapZ);
 
     /**
@@ -67,6 +69,7 @@ public interface STBPerlin {
      * @param seed  the seed
      * @return the value
      */
+    @Entrypoint("stb_perlin_noise3_seed")
     float noise3seed(float x, float y, float z, int wrapX, int wrapY, int wrapZ, int seed);
 
     /**
@@ -84,6 +87,7 @@ public interface STBPerlin {
      * @param octaves    = 6     -- number of "octaves" of noise3() to sum
      * @return the value
      */
+    @Entrypoint("stb_perlin_ridge_noise3")
     float ridgeNoise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
 
     /**
@@ -100,6 +104,7 @@ public interface STBPerlin {
      * @param octaves    = 6     -- number of "octaves" of noise3() to sum
      * @return the value
      */
+    @Entrypoint("stb_perlin_fbm_noise3")
     float fbmNoise3(float x, float y, float z, float lacunarity, float gain, int octaves);
 
     /**
@@ -116,6 +121,7 @@ public interface STBPerlin {
      * @param octaves    = 6     -- number of "octaves" of noise3() to sum
      * @return the value
      */
+    @Entrypoint("stb_perlin_turbulence_noise3")
     float turbulenceNoise3(float x, float y, float z, float lacunarity, float gain, int octaves);
 
     /**
@@ -129,5 +135,6 @@ public interface STBPerlin {
      * @param wrapZ wrapZ
      * @param seed  seed
      */
+    @Entrypoint("stb_perlin_noise3_wrap_nonpow2")
     float noise3wrapNonpow2(float x, float y, float z, int wrapX, int wrapY, int wrapZ, byte seed);
 }

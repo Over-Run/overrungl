@@ -255,11 +255,11 @@ public interface STBImage {
     }
 
     @Entrypoint("stbi_load_from_memory")
-    MemorySegment loadFromMemory(SegmentAllocator allocator, int len, byte[] buffer, @Ref int[] x, @Ref int[] y, @Ref int[] channelsInFile, int desiredChannels);
+    MemorySegment loadFromMemory(SegmentAllocator allocator, byte[] buffer, int len, @Ref int[] x, @Ref int[] y, @Ref int[] channelsInFile, int desiredChannels);
 
     @Skip
     default MemorySegment loadFromMemory(SegmentAllocator allocator, byte[] buffer, @Ref int[] x, @Ref int[] y, @Ref int[] channelsInFile, int desiredChannels) {
-        return loadFromMemory(allocator, buffer.length, buffer, x, y, channelsInFile, desiredChannels);
+        return loadFromMemory(allocator, buffer, buffer.length, x, y, channelsInFile, desiredChannels);
     }
 
     @Entrypoint("stbi_load_gif_from_memory")

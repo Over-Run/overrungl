@@ -37,21 +37,15 @@ public final class IOUtil {
     private IOUtil() {
     }
 
-    private static MemorySegment resizeSegment(Arena arena, MemorySegment segment, long newCapacity) {
-        return arena.allocate(newCapacity).copyFrom(segment);
-    }
-
     /**
      * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
      *
-     * @param arena       the arena. must be {@link MemorySegment.Scope#isAlive() alive} until the data is no longer used.
-     * @param resource    the resource to read.
-     * @param segmentSize the initial segment size.
-     * @param bufferSize  the buffer size for reading file.
+     * @param arena    the arena. must be {@link MemorySegment.Scope#isAlive() alive} until the data is no longer used.
+     * @param resource the resource to read.
      * @return the resource data.
      * @throws IOException if an IO error occurs.
      */
-    public static MemorySegment ioResourceToSegment(Arena arena, String resource, long segmentSize, int bufferSize) throws IOException {
+    public static MemorySegment ioResourceToSegment(Arena arena, String resource) throws IOException {
         final boolean isHttp = resource.startsWith("http");
         final Path path = isHttp ? null : Path.of(resource);
 
@@ -69,41 +63,9 @@ public final class IOUtil {
                 Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
                     STR."Failed to load resource '\{resource}'!")
         ) {
-            Arena readArena = Arena.ofConfined();
-            MemorySegment segment = readArena.allocate(segmentSize);
-
-            // Creates a byte array to avoid creating it each loop
-            final byte[] bytes = new byte[bufferSize];
-            long pos = 0;
-            int count;
-            while ((count = is.read(bytes)) > 0) {
-                if (pos + count >= segment.byteSize()) {
-                    Arena newArena = Arena.ofConfined();
-                    segment = resizeSegment(newArena, segment, Math.ceilDiv(segment.byteSize() * 3, 2)); // 50%
-                    readArena.close();
-                    readArena = newArena;
-                }
-                MemorySegment.copy(bytes, 0, segment, ValueLayout.JAVA_BYTE, pos, count);
-                pos += count;
-            }
-            readArena.close();
-
-            return segment.asSlice(0, pos).reinterpret(arena, null);
+            return arena.allocateFrom(ValueLayout.JAVA_BYTE, is.readAllBytes());
         } catch (URISyntaxException e) {
             throw new IllegalArgumentException(STR."Illegal URI: \{resource}", e);
         }
-    }
-
-    /**
-     * Reads the specified resource and returns the raw data as a {@link MemorySegment}.
-     *
-     * @param arena       the arena. must be {@link MemorySegment.Scope#isAlive() alive} until the data is no longer used.
-     * @param resource    the resource to read.
-     * @param segmentSize the initial segment size.
-     * @return the resource data.
-     * @throws IOException if an IO error occurs.
-     */
-    public static MemorySegment ioResourceToSegment(Arena arena, String resource, long segmentSize) throws IOException {
-        return ioResourceToSegment(arena, resource, segmentSize, 8192);
     }
 }

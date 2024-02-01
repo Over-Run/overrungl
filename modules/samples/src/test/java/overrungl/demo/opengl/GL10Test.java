@@ -16,13 +16,13 @@
 
 package overrungl.demo.opengl;
 
+import overrun.marshal.Unmarshal;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLegacy;
 import overrungl.opengl.GLLoader;
-import overrungl.util.CheckUtil;
 
 import java.lang.foreign.MemorySegment;
 import java.util.Objects;
@@ -52,12 +52,12 @@ public final class GL10Test {
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(glfw.init(), "Unable to initialize GLFW");
+        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
         glfw.defaultWindowHints();
         glfw.windowHint(GLFW.VISIBLE, false);
         glfw.windowHint(GLFW.RESIZABLE, true);
         window = glfw.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
-        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
+        if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
         glfw.setKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 glfw.setWindowShouldClose(window, true);

@@ -17,8 +17,8 @@
 package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.Unmarshal;
 import overrungl.Configurations;
-import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -26,6 +26,7 @@ import java.util.Objects;
 
 import static java.lang.foreign.FunctionDescriptor.of;
 import static java.lang.foreign.ValueLayout.ADDRESS;
+import static overrungl.internal.RuntimeHelper.SIZE_T;
 
 /**
  * The standard-C memory allocator.
@@ -37,14 +38,13 @@ public final class MemoryUtil {
     private static final Linker LINKER = Linker.nativeLinker();
     private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", of(ADDRESS, RuntimeHelper.SIZE_T)),
-        m_calloc = downcall("calloc", of(ADDRESS, RuntimeHelper.SIZE_T, RuntimeHelper.SIZE_T)),
-        m_realloc = downcall("realloc", of(ADDRESS, ADDRESS, RuntimeHelper.SIZE_T)),
+        m_malloc = downcall("malloc", of(ADDRESS, SIZE_T)),
+        m_calloc = downcall("calloc", of(ADDRESS, SIZE_T, SIZE_T)),
+        m_realloc = downcall("realloc", of(ADDRESS, ADDRESS, SIZE_T)),
         m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
-        m_memcpy = downcall("memcpy", of(ADDRESS, ADDRESS, ADDRESS, RuntimeHelper.SIZE_T)),
-        m_memmove = downcall("memmove", of(ADDRESS, ADDRESS, ADDRESS, RuntimeHelper.SIZE_T)),
-        m_memset = downcall("memset", of(ADDRESS, ADDRESS, ValueLayout.JAVA_INT, RuntimeHelper.SIZE_T)),
-        strlen = downcall("strlen", of(RuntimeHelper.SIZE_T, ADDRESS));
+        m_memcpy = downcall("memcpy", of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
+        m_memmove = downcall("memmove", of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
+        m_memset = downcall("memset", of(ADDRESS, ADDRESS, ValueLayout.JAVA_INT, SIZE_T));
     private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
     /**
      * The address of {@code NULL}.
@@ -65,7 +65,7 @@ public final class MemoryUtil {
      * @param segment the segment.
      */
     public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return segment == null || segment.equals(MemorySegment.NULL);
+        return Unmarshal.isNullPointer(segment);
     }
 
     /**
@@ -320,25 +320,6 @@ public final class MemoryUtil {
         try {
             final var _ = (MemorySegment) m_memset.invokeExact(dest, c, count);
             return dest;
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    /**
-     * Gets the length of a string, by using the current locale or a specified locale.
-     * <p>
-     * {@code strlen} interprets the string as a single-byte character string,
-     * so its return value is always equal to the number of bytes,
-     * even if the string contains multibyte characters.
-     *
-     * @param str Null-terminated string.
-     * @return the number of characters in <i>{@code str}</i>, excluding the terminal null.
-     * No return value is reserved to indicate an error.
-     */
-    public static long strlen(MemorySegment str) {
-        try {
-            return (long) strlen.invokeExact(str);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }

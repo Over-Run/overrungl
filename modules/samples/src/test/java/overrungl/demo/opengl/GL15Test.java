@@ -16,16 +16,16 @@
 
 package overrungl.demo.opengl;
 
+import overrun.marshal.Unmarshal;
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GL11;
 import overrungl.opengl.GLLegacy;
 import overrungl.opengl.GLLoader;
 import overrungl.stb.STBImage;
-import overrungl.util.CheckUtil;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -65,12 +65,12 @@ public final class GL15Test {
 
     private void init() {
         GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(glfw.init(), "Unable to initialize GLFW");
+        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
         glfw.defaultWindowHints();
         glfw.windowHint(GLFW.VISIBLE, false);
         glfw.windowHint(GLFW.RESIZABLE, true);
         window = glfw.createWindow(640, 480, "OpenGL 1.5", MemorySegment.NULL, MemorySegment.NULL);
-        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
+        if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
         glfw.setKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
                 glfw.setWindowShouldClose(window, true);
@@ -120,9 +120,12 @@ public final class GL15Test {
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
             var data = stbImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena, "image.png", 256, 128),
+                IOUtil.ioResourceToSegment(arena, "image.png"),
                 px, py, pc, STBImage.RGB
             );
+            if (Unmarshal.isNullPointer(data)) {
+                System.err.println(STR."Failed to load image.png: \{stbImage.failureReason()}");
+            }
             gl.texImage2D(GL.TEXTURE_2D,
                 0,
                 GL.RGB,
@@ -149,7 +152,7 @@ public final class GL15Test {
             gl.enableClientState(GL11.VERTEX_ARRAY);
             gl.enableClientState(GL11.COLOR_ARRAY);
             gl.enableClientState(GL11.TEXTURE_COORD_ARRAY);
-            // 8 double words = 32 bytes
+            // 8 floats = 32 bytes
             final int stride = 8 << 2;
             gl.vertexPointer(3, GL.FLOAT, stride, MemorySegment.NULL);
             gl.colorPointer(3, GL.FLOAT, stride, MemorySegment.ofAddress(3 << 2));
