@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_blend_subtract}
  */
-public final class GLEXTBlendSubtract {
-    public static final int GL_FUNC_SUBTRACT_EXT = 0x800A;
-    public static final int GL_FUNC_REVERSE_SUBTRACT_EXT = 0x800B;
+public interface GLEXTBlendSubtract {
+    int GL_FUNC_SUBTRACT_EXT = 0x800A;
+    int GL_FUNC_REVERSE_SUBTRACT_EXT = 0x800B;
 }

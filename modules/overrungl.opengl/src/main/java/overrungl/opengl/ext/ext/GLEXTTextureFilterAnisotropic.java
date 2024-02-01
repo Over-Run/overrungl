@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_filter_anisotropic}
  */
-public final class GLEXTTextureFilterAnisotropic {
-    public static final int GL_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FE;
-    public static final int GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FF;
+public interface GLEXTTextureFilterAnisotropic {
+    int GL_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FE;
+    int GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT = 0x84FF;
 }

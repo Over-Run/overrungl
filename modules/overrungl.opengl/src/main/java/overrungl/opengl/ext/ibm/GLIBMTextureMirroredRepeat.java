@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.ibm;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_IBM_texture_mirrored_repeat}
  */
-public final class GLIBMTextureMirroredRepeat {
-    public static final int GL_MIRRORED_REPEAT_IBM = 0x8370;
+public interface GLIBMTextureMirroredRepeat {
+    int GL_MIRRORED_REPEAT_IBM = 0x8370;
 }

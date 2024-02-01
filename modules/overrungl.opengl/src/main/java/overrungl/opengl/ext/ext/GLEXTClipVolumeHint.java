@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_clip_volume_hint}
  */
-public final class GLEXTClipVolumeHint {
-    public static final int GL_CLIP_VOLUME_CLIPPING_HINT_EXT = 0x80F0;
+public interface GLEXTClipVolumeHint {
+    int GL_CLIP_VOLUME_CLIPPING_HINT_EXT = 0x80F0;
 }

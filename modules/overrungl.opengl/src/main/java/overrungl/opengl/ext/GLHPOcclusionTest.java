@@ -18,16 +18,13 @@
 package overrungl.opengl.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_HP_occlusion_test}
  */
-public final class GLHPOcclusionTest {
-    public static final int GL_OCCLUSION_TEST_HP = 0x8165;
-    public static final int GL_OCCLUSION_TEST_RESULT_HP = 0x8166;
+public interface GLHPOcclusionTest {
+    int GL_OCCLUSION_TEST_HP = 0x8165;
+    int GL_OCCLUSION_TEST_RESULT_HP = 0x8166;
 }

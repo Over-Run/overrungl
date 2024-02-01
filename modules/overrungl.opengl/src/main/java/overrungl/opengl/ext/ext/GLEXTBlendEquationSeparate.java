@@ -18,28 +18,15 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_blend_equation_separate}
  */
-public final class GLEXTBlendEquationSeparate {
-    public static final int GL_BLEND_EQUATION_RGB_EXT = 0x8009;
-    public static final int GL_BLEND_EQUATION_ALPHA_EXT = 0x883D;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_blend_equation_separate) return;
-        ext.glBlendEquationSeparateEXT = load.invoke("glBlendEquationSeparateEXT", ofVoid(JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTBlendEquationSeparate {
+    int GL_BLEND_EQUATION_RGB_EXT = 0x8009;
+    int GL_BLEND_EQUATION_ALPHA_EXT = 0x883D;
 
-    public static void glBlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBlendEquationSeparateEXT).invokeExact(modeRGB, modeAlpha);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glBlendEquationSeparateEXT(int modeRGB, int modeAlpha);
 }

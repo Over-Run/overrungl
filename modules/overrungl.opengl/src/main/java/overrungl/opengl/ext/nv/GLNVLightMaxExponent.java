@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_light_max_exponent}
  */
-public final class GLNVLightMaxExponent {
-    public static final int GL_MAX_SHININESS_NV = 0x8504;
-    public static final int GL_MAX_SPOT_EXPONENT_NV = 0x8505;
+public interface GLNVLightMaxExponent {
+    int GL_MAX_SHININESS_NV = 0x8504;
+    int GL_MAX_SPOT_EXPONENT_NV = 0x8505;
 }

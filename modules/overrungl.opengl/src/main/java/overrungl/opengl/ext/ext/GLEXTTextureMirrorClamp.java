@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_mirror_clamp}
  */
-public final class GLEXTTextureMirrorClamp {
-    public static final int GL_MIRROR_CLAMP_EXT = 0x8742;
-    public static final int GL_MIRROR_CLAMP_TO_EDGE_EXT = 0x8743;
-    public static final int GL_MIRROR_CLAMP_TO_BORDER_EXT = 0x8912;
+public interface GLEXTTextureMirrorClamp {
+    int GL_MIRROR_CLAMP_EXT = 0x8742;
+    int GL_MIRROR_CLAMP_TO_EDGE_EXT = 0x8743;
+    int GL_MIRROR_CLAMP_TO_BORDER_EXT = 0x8912;
 }

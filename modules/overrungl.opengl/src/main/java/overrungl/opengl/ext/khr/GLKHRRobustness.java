@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.khr;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_KHR_robustness}
  */
-public final class GLKHRRobustness {
-    public static final int GL_CONTEXT_ROBUST_ACCESS = 0x90F3;
+public interface GLKHRRobustness {
+    int GL_CONTEXT_ROBUST_ACCESS = 0x90F3;
 }

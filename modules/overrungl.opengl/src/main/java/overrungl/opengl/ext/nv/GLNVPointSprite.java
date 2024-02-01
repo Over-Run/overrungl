@@ -18,37 +18,17 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_point_sprite}
  */
-public final class GLNVPointSprite {
-    public static final int GL_POINT_SPRITE_NV = 0x8861;
-    public static final int GL_COORD_REPLACE_NV = 0x8862;
-    public static final int GL_POINT_SPRITE_R_MODE_NV = 0x8863;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_point_sprite) return;
-        ext.glPointParameteriNV = load.invoke("glPointParameteriNV", ofVoid(JAVA_INT, JAVA_INT));
-        ext.glPointParameterivNV = load.invoke("glPointParameterivNV", ofVoid(JAVA_INT, ADDRESS));
-    }
+public interface GLNVPointSprite {
+    int GL_POINT_SPRITE_NV = 0x8861;
+    int GL_COORD_REPLACE_NV = 0x8862;
+    int GL_POINT_SPRITE_R_MODE_NV = 0x8863;
 
-    public static void glPointParameteriNV(int pname, int param) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPointParameteriNV).invokeExact(pname, param);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glPointParameterivNV(int pname, @NativeType("const GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPointParameterivNV).invokeExact(pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glPointParameteriNV(int pname, int param);
+    void glPointParameterivNV(int pname, @NativeType("const GLint *") MemorySegment params);
 }

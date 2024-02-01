@@ -18,34 +18,14 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_EGL_image_storage}
  */
-public final class GLEXTEGLImageStorage {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_EGL_image_storage) return;
-        ext.glEGLImageTargetTexStorageEXT = load.invoke("glEGLImageTargetTexStorageEXT", ofVoid(JAVA_INT, ADDRESS, ADDRESS));
-        ext.glEGLImageTargetTextureStorageEXT = load.invoke("glEGLImageTargetTextureStorageEXT", ofVoid(JAVA_INT, ADDRESS, ADDRESS));
-    }
+public interface GLEXTEGLImageStorage {
 
-    public static void glEGLImageTargetTexStorageEXT(int target, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glEGLImageTargetTexStorageEXT).invokeExact(target, image, attrib_list);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glEGLImageTargetTextureStorageEXT(int texture, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glEGLImageTargetTextureStorageEXT).invokeExact(texture, image, attrib_list);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glEGLImageTargetTexStorageEXT(int target, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list);
+    void glEGLImageTargetTextureStorageEXT(int texture, @NativeType("GLeglImageOES") MemorySegment image, @NativeType("const GLint*") MemorySegment attrib_list);
 }

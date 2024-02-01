@@ -95,8 +95,7 @@ public final class GL15Test {
     }
 
     private void load(Arena arena) {
-        gl = (GLLegacy) GLLoader.load(glfw::getProcAddress, false);
-        Objects.requireNonNull(gl, "Failed to load OpenGL");
+        gl = Objects.requireNonNull(GLLoader.loadLegacy(GLLoader.loadFlags(glfw::getProcAddress)), "Failed to load OpenGL");
 
         gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         gl.enable(GL.TEXTURE_2D);

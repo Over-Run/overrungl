@@ -18,18 +18,15 @@
 package overrungl.opengl.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_HP_convolution_border_modes}
  */
-public final class GLHPConvolutionBorderModes {
-    public static final int GL_IGNORE_BORDER_HP = 0x8150;
-    public static final int GL_CONSTANT_BORDER_HP = 0x8151;
-    public static final int GL_REPLICATE_BORDER_HP = 0x8153;
-    public static final int GL_CONVOLUTION_BORDER_COLOR_HP = 0x8154;
+public interface GLHPConvolutionBorderModes {
+    int GL_IGNORE_BORDER_HP = 0x8150;
+    int GL_CONSTANT_BORDER_HP = 0x8151;
+    int GL_REPLICATE_BORDER_HP = 0x8153;
+    int GL_CONVOLUTION_BORDER_COLOR_HP = 0x8154;
 }

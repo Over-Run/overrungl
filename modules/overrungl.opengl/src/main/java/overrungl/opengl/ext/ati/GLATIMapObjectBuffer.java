@@ -18,35 +18,14 @@
 package overrungl.opengl.ext.ati;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_map_object_buffer}
  */
-public final class GLATIMapObjectBuffer {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ATI_map_object_buffer) return;
-        ext.glMapObjectBufferATI = load.invoke("glMapObjectBufferATI", of(ADDRESS, JAVA_INT));
-        ext.glUnmapObjectBufferATI = load.invoke("glUnmapObjectBufferATI", ofVoid(JAVA_INT));
-    }
+public interface GLATIMapObjectBuffer {
 
-    public static @NativeType("void*") MemorySegment glMapObjectBufferATI(int buffer) {
-        final var ext = getExtCapabilities();
-        try {
-            return (MemorySegment)
-            check(ext.glMapObjectBufferATI).invokeExact(buffer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glUnmapObjectBufferATI(int buffer) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glUnmapObjectBufferATI).invokeExact(buffer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    @NativeType("void*") MemorySegment glMapObjectBufferATI(int buffer);
+    void glUnmapObjectBufferATI(int buffer);
 }

@@ -18,47 +18,20 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_timeline_semaphore}
  */
-public final class GLNVTimelineSemaphore {
-    public static final int GL_TIMELINE_SEMAPHORE_VALUE_NV = 0x9595;
-    public static final int GL_SEMAPHORE_TYPE_NV = 0x95B3;
-    public static final int GL_SEMAPHORE_TYPE_BINARY_NV = 0x95B4;
-    public static final int GL_SEMAPHORE_TYPE_TIMELINE_NV = 0x95B5;
-    public static final int GL_MAX_TIMELINE_SEMAPHORE_VALUE_DIFFERENCE_NV = 0x95B6;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_timeline_semaphore) return;
-        ext.glCreateSemaphoresNV = load.invoke("glCreateSemaphoresNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glSemaphoreParameterivNV = load.invoke("glSemaphoreParameterivNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glGetSemaphoreParameterivNV = load.invoke("glGetSemaphoreParameterivNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLNVTimelineSemaphore {
+    int GL_TIMELINE_SEMAPHORE_VALUE_NV = 0x9595;
+    int GL_SEMAPHORE_TYPE_NV = 0x95B3;
+    int GL_SEMAPHORE_TYPE_BINARY_NV = 0x95B4;
+    int GL_SEMAPHORE_TYPE_TIMELINE_NV = 0x95B5;
+    int GL_MAX_TIMELINE_SEMAPHORE_VALUE_DIFFERENCE_NV = 0x95B6;
 
-    public static void glCreateSemaphoresNV(int n, @NativeType("GLuint *") MemorySegment semaphores) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glCreateSemaphoresNV).invokeExact(n, semaphores);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glSemaphoreParameterivNV(int semaphore, int pname, @NativeType("const GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSemaphoreParameterivNV).invokeExact(semaphore, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGetSemaphoreParameterivNV(int semaphore, int pname, @NativeType("GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetSemaphoreParameterivNV).invokeExact(semaphore, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glCreateSemaphoresNV(int n, @NativeType("GLuint *") MemorySegment semaphores);
+    void glSemaphoreParameterivNV(int semaphore, int pname, @NativeType("const GLint *") MemorySegment params);
+    void glGetSemaphoreParameterivNV(int semaphore, int pname, @NativeType("GLint *") MemorySegment params);
 }

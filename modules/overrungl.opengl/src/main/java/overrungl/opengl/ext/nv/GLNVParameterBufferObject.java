@@ -18,47 +18,20 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_parameter_buffer_object}
  */
-public final class GLNVParameterBufferObject {
-    public static final int GL_MAX_PROGRAM_PARAMETER_BUFFER_BINDINGS_NV = 0x8DA0;
-    public static final int GL_MAX_PROGRAM_PARAMETER_BUFFER_SIZE_NV = 0x8DA1;
-    public static final int GL_VERTEX_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA2;
-    public static final int GL_GEOMETRY_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA3;
-    public static final int GL_FRAGMENT_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA4;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_parameter_buffer_object) return;
-        ext.glProgramBufferParametersfvNV = load.invoke("glProgramBufferParametersfvNV", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glProgramBufferParametersIivNV = load.invoke("glProgramBufferParametersIivNV", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glProgramBufferParametersIuivNV = load.invoke("glProgramBufferParametersIuivNV", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLNVParameterBufferObject {
+    int GL_MAX_PROGRAM_PARAMETER_BUFFER_BINDINGS_NV = 0x8DA0;
+    int GL_MAX_PROGRAM_PARAMETER_BUFFER_SIZE_NV = 0x8DA1;
+    int GL_VERTEX_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA2;
+    int GL_GEOMETRY_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA3;
+    int GL_FRAGMENT_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA4;
 
-    public static void glProgramBufferParametersfvNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLfloat *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glProgramBufferParametersfvNV).invokeExact(target, bindingIndex, wordIndex, count, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glProgramBufferParametersIivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glProgramBufferParametersIivNV).invokeExact(target, bindingIndex, wordIndex, count, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glProgramBufferParametersIuivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLuint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glProgramBufferParametersIuivNV).invokeExact(target, bindingIndex, wordIndex, count, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glProgramBufferParametersfvNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLfloat *") MemorySegment params);
+    void glProgramBufferParametersIivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLint *") MemorySegment params);
+    void glProgramBufferParametersIuivNV(int target, int bindingIndex, int wordIndex, int count, @NativeType("const GLuint *") MemorySegment params);
 }

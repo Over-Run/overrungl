@@ -18,30 +18,17 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_internalformat_sample_query}
  */
-public final class GLNVInternalformatSampleQuery {
-    public static final int GL_MULTISAMPLES_NV = 0x9371;
-    public static final int GL_SUPERSAMPLE_SCALE_X_NV = 0x9372;
-    public static final int GL_SUPERSAMPLE_SCALE_Y_NV = 0x9373;
-    public static final int GL_CONFORMANT_NV = 0x9374;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_internalformat_sample_query) return;
-        ext.glGetInternalformatSampleivNV = load.invoke("glGetInternalformatSampleivNV", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLNVInternalformatSampleQuery {
+    int GL_MULTISAMPLES_NV = 0x9371;
+    int GL_SUPERSAMPLE_SCALE_X_NV = 0x9372;
+    int GL_SUPERSAMPLE_SCALE_Y_NV = 0x9373;
+    int GL_CONFORMANT_NV = 0x9374;
 
-    public static void glGetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, @NativeType("GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetInternalformatSampleivNV).invokeExact(target, internalformat, samples, pname, count, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glGetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, @NativeType("GLint *") MemorySegment params);
 }

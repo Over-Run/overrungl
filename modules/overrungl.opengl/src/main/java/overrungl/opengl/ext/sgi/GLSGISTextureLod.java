@@ -18,18 +18,15 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIS_texture_lod}
  */
-public final class GLSGISTextureLod {
-    public static final int GL_TEXTURE_MIN_LOD_SGIS = 0x813A;
-    public static final int GL_TEXTURE_MAX_LOD_SGIS = 0x813B;
-    public static final int GL_TEXTURE_BASE_LEVEL_SGIS = 0x813C;
-    public static final int GL_TEXTURE_MAX_LEVEL_SGIS = 0x813D;
+public interface GLSGISTextureLod {
+    int GL_TEXTURE_MIN_LOD_SGIS = 0x813A;
+    int GL_TEXTURE_MAX_LOD_SGIS = 0x813B;
+    int GL_TEXTURE_BASE_LEVEL_SGIS = 0x813C;
+    int GL_TEXTURE_MAX_LEVEL_SGIS = 0x813D;
 }

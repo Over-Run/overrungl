@@ -18,29 +18,16 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_polygon_offset}
  */
-public final class GLEXTPolygonOffset {
-    public static final int GL_POLYGON_OFFSET_EXT = 0x8037;
-    public static final int GL_POLYGON_OFFSET_FACTOR_EXT = 0x8038;
-    public static final int GL_POLYGON_OFFSET_BIAS_EXT = 0x8039;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_polygon_offset) return;
-        ext.glPolygonOffsetEXT = load.invoke("glPolygonOffsetEXT", ofVoid(JAVA_FLOAT, JAVA_FLOAT));
-    }
+public interface GLEXTPolygonOffset {
+    int GL_POLYGON_OFFSET_EXT = 0x8037;
+    int GL_POLYGON_OFFSET_FACTOR_EXT = 0x8038;
+    int GL_POLYGON_OFFSET_BIAS_EXT = 0x8039;
 
-    public static void glPolygonOffsetEXT(float factor, float bias) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPolygonOffsetEXT).invokeExact(factor, bias);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glPolygonOffsetEXT(float factor, float bias);
 }

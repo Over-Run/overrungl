@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.arb;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_half_float_pixel}
  */
-public final class GLARBHalfFloatPixel {
-    public static final int GL_HALF_FLOAT_ARB = 0x140B;
+public interface GLARBHalfFloatPixel {
+    int GL_HALF_FLOAT_ARB = 0x140B;
 }

@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_ycrcba}
  */
-public final class GLSGIXYcrcba {
-    public static final int GL_YCRCB_SGIX = 0x8318;
-    public static final int GL_YCRCBA_SGIX = 0x8319;
+public interface GLSGIXYcrcba {
+    int GL_YCRCB_SGIX = 0x8318;
+    int GL_YCRCBA_SGIX = 0x8319;
 }

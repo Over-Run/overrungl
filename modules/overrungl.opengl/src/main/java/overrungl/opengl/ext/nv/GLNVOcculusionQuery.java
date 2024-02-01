@@ -18,79 +18,23 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_occlusion_query}
  */
-public final class GLNVOcculusionQuery {
-    public static final int GL_PIXEL_COUNTER_BITS_NV = 0x8864;
-    public static final int GL_CURRENT_OCCLUSION_QUERY_ID_NV = 0x8865;
-    public static final int GL_PIXEL_COUNT_NV = 0x8866;
-    public static final int GL_PIXEL_COUNT_AVAILABLE_NV = 0x8867;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_occlusion_query) return;
-        ext.glGenOcclusionQueriesNV = load.invoke("glGenOcclusionQueriesNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glDeleteOcclusionQueriesNV = load.invoke("glDeleteOcclusionQueriesNV", ofVoid(JAVA_INT, ADDRESS));
-        ext.glIsOcclusionQueryNV = load.invoke("glIsOcclusionQueryNV", of(JAVA_BYTE, JAVA_INT));
-        ext.glBeginOcclusionQueryNV = load.invoke("glBeginOcclusionQueryNV", ofVoid(JAVA_INT));
-        ext.glEndOcclusionQueryNV = load.invoke("glEndOcclusionQueryNV", ofVoid());
-        ext.glGetOcclusionQueryivNV = load.invoke("glGetOcclusionQueryivNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glGetOcclusionQueryuivNV = load.invoke("glGetOcclusionQueryuivNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLNVOcculusionQuery {
+    int GL_PIXEL_COUNTER_BITS_NV = 0x8864;
+    int GL_CURRENT_OCCLUSION_QUERY_ID_NV = 0x8865;
+    int GL_PIXEL_COUNT_NV = 0x8866;
+    int GL_PIXEL_COUNT_AVAILABLE_NV = 0x8867;
 
-    public static void glGenOcclusionQueriesNV(int n, @NativeType("GLuint *") MemorySegment ids) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGenOcclusionQueriesNV).invokeExact(n, ids);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glDeleteOcclusionQueriesNV(int n, @NativeType("const GLuint *") MemorySegment ids) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDeleteOcclusionQueriesNV).invokeExact(n, ids);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static boolean glIsOcclusionQueryNV(int id) {
-        final var ext = getExtCapabilities();
-        try {
-            return (boolean)
-            check(ext.glIsOcclusionQueryNV).invokeExact(id);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glBeginOcclusionQueryNV(int id) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBeginOcclusionQueryNV).invokeExact(id);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glEndOcclusionQueryNV() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glEndOcclusionQueryNV).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGetOcclusionQueryivNV(int id, int pname, @NativeType("GLint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetOcclusionQueryivNV).invokeExact(id, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGetOcclusionQueryuivNV(int id, int pname, @NativeType("GLuint *") MemorySegment params) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGetOcclusionQueryuivNV).invokeExact(id, pname, params);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glGenOcclusionQueriesNV(int n, @NativeType("GLuint *") MemorySegment ids);
+    void glDeleteOcclusionQueriesNV(int n, @NativeType("const GLuint *") MemorySegment ids);
+    boolean glIsOcclusionQueryNV(int id);
+    void glBeginOcclusionQueryNV(int id);
+    void glEndOcclusionQueryNV();
+    void glGetOcclusionQueryivNV(int id, int pname, @NativeType("GLint *") MemorySegment params);
+    void glGetOcclusionQueryuivNV(int id, int pname, @NativeType("GLuint *") MemorySegment params);
 }

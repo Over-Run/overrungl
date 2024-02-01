@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.ati;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_meminfo}
  */
-public final class GLATIMeminfo {
-    public static final int GL_VBO_FREE_MEMORY_ATI = 0x87FB;
-    public static final int GL_TEXTURE_FREE_MEMORY_ATI = 0x87FC;
-    public static final int GL_RENDERBUFFER_FREE_MEMORY_ATI = 0x87FD;
+public interface GLATIMeminfo {
+    int GL_VBO_FREE_MEMORY_ATI = 0x87FB;
+    int GL_TEXTURE_FREE_MEMORY_ATI = 0x87FC;
+    int GL_RENDERBUFFER_FREE_MEMORY_ATI = 0x87FD;
 }

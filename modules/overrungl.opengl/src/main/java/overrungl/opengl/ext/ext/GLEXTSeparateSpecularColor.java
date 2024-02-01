@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_separate_specular_color}
  */
-public final class GLEXTSeparateSpecularColor {
-    public static final int GL_LIGHT_MODEL_COLOR_CONTROL_EXT = 0x81F8;
-    public static final int GL_SINGLE_COLOR_EXT = 0x81F9;
-    public static final int GL_SEPARATE_SPECULAR_COLOR_EXT = 0x81FA;
+public interface GLEXTSeparateSpecularColor {
+    int GL_LIGHT_MODEL_COLOR_CONTROL_EXT = 0x81F8;
+    int GL_SINGLE_COLOR_EXT = 0x81F9;
+    int GL_SEPARATE_SPECULAR_COLOR_EXT = 0x81FA;
 }

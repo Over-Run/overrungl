@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.apple;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_row_bytes}
  */
-public final class GLAPPLERowBytes {
-    public static final int GL_PACK_ROW_BYTES_APPLE = 0x8A15;
-    public static final int GL_UNPACK_ROW_BYTES_APPLE = 0x8A16;
+public interface GLAPPLERowBytes {
+    int GL_PACK_ROW_BYTES_APPLE = 0x8A15;
+    int GL_UNPACK_ROW_BYTES_APPLE = 0x8A16;
 }

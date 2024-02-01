@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_filter_minmax}
  */
-public final class GLEXTTextureFilterMinmax {
-    public static final int GL_TEXTURE_REDUCTION_MODE_EXT = 0x9366;
-    public static final int GL_WEIGHTED_AVERAGE_EXT = 0x9367;
+public interface GLEXTTextureFilterMinmax {
+    int GL_TEXTURE_REDUCTION_MODE_EXT = 0x9366;
+    int GL_WEIGHTED_AVERAGE_EXT = 0x9367;
 }

@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_stencil_wrap}
  */
-public final class GLEXTStencilWrap {
-    public static final int GL_INCR_WRAP_EXT = 0x8507;
-    public static final int GL_DECR_WRAP_EXT = 0x8508;
+public interface GLEXTStencilWrap {
+    int GL_INCR_WRAP_EXT = 0x8507;
+    int GL_DECR_WRAP_EXT = 0x8508;
 }

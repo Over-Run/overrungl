@@ -18,36 +18,16 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_semaphore_win32}
  */
-public final class GLEXTSemaphoreWin32 {
-    public static final int GL_HANDLE_TYPE_D3D12_FENCE_EXT = 0x9594;
-    public static final int GL_D3D12_FENCE_VALUE_EXT = 0x9595;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_semaphore_win32) return;
-        ext.glImportSemaphoreWin32HandleEXT = load.invoke("glImportSemaphoreWin32HandleEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glImportSemaphoreWin32NameEXT = load.invoke("glImportSemaphoreWin32NameEXT", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLEXTSemaphoreWin32 {
+    int GL_HANDLE_TYPE_D3D12_FENCE_EXT = 0x9594;
+    int GL_D3D12_FENCE_VALUE_EXT = 0x9595;
 
-    public static void glImportSemaphoreWin32HandleEXT(int semaphore, int handleType, @NativeType("void * ") MemorySegment handle) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glImportSemaphoreWin32HandleEXT).invokeExact(semaphore, handleType, handle);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glImportSemaphoreWin32NameEXT(int semaphore, int handleType, @NativeType("const void *") MemorySegment name) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glImportSemaphoreWin32NameEXT).invokeExact(semaphore, handleType, name);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glImportSemaphoreWin32HandleEXT(int semaphore, int handleType, @NativeType("void * ") MemorySegment handle);
+    void glImportSemaphoreWin32NameEXT(int semaphore, int handleType, @NativeType("const void *") MemorySegment name);
 }

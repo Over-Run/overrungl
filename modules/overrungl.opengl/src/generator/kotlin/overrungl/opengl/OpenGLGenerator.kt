@@ -188,41 +188,28 @@ class OpenGLFile(
                 |package overrungl.opengl${ext.packageName};
 
                 |import overrungl.*;
-                |import overrungl.opengl.*;
+                |import overrun.marshal.*;
                 |import java.lang.foreign.*;
-                |import static java.lang.foreign.FunctionDescriptor.*;
-                |import static java.lang.foreign.ValueLayout.*;
-                |import static overrungl.opengl.GLLoader.*;
 
                 |/**
                 | * {@code $extName}
                 | */
-                |public final class GL${ext.extName}$name {
+                |public interface GL${ext.extName}$name {
             """.trimMargin()
                 )
                 // constants
                 constants.forEach { (name, value) ->
-                    appendLine("    public static final int $name = $value;")
+                    appendLine("    int $name = $value;")
                 }
                 if (functions.isNotEmpty()) {
-                    // loader
-                    appendLine("    public static void load(GLExtCaps ext, GLLoadFunc load) {")
-                    appendLine("        if (!ext.$extName) return;")
-                    functions.forEach { f ->
-                        append("        ext.${f.name} = load.invoke(\"${f.name}\", ${if (f.returnType == void) "ofVoid" else "of"}(")
-                        if (f.returnType != void)
-                            append(f.returnType.layout)
-                        f.params.forEachIndexed { index, it ->
-                            if (index != 0 || f.returnType != void) append(", ")
-                            append(it.type.layout)
-                        }
-                        appendLine("));")
-                    }
-                    appendLine("    }")
                     appendLine()
                     // functions
-                    fun appendFuncHeader(f: Function) {
-                        append("    public static ")
+                    fun appendFuncHeader(f: Function, overload: Boolean) {
+                        append("    ")
+                        if (overload) {
+                            appendLine("@overrun.marshal.gen.Skip")
+                            append("    default ")
+                        }
                         if (f.nativeType != null)
                             append("@NativeType(\"${f.nativeType}\") ")
                         append("${f.returnType} ${f.name}(")
@@ -232,33 +219,20 @@ class OpenGLFile(
                                 append("@NativeType(\"${it.nativeType}\") ")
                             append("${it.type} ${it.name}")
                         }
-                        appendLine(") {")
+                        append(")")
                     }
                     functions.forEach { f ->
-                        appendFuncHeader(f)
-                        appendLine("        final var ext = getExtCapabilities();")
-                        appendLine("        try {")
-                        if (f.returnType != void)
-                            appendLine("            return (${f.returnType})")
-                        append("            check(ext.${f.name}).invokeExact(")
-                        f.params.forEachIndexed { index, it ->
-                            if (index != 0) append(", ")
-                            append(it.name)
-                        }
-                        appendLine(
-                            """);
-                    |        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-                    |    }
-                """.trimMargin()
-                        )
+                        appendFuncHeader(f, false)
+                        append(';')
                         appendLine()
 
                         // overloads
                         if (f.overloads.isNotEmpty()) {
                             f.overloads.forEach { overload ->
-                                appendFuncHeader(overload)
+                                appendFuncHeader(overload, true)
+                                appendLine(" {")
                                 appendLine(overload.content!!.prependIndent("        "))
-                                appendLine("    }\n")
+                                appendLine("    }")
                             }
                         }
                     }
@@ -2529,7 +2503,39 @@ fun win() {
     )
 }
 
-fun glExtCaps() {
+fun glExtension() {
+    Files.writeString(Path("ext/GLExtension.java"), buildString {
+        appendLine("""
+            ${fileHeader.prependIndent("|")}
+            |package overrungl.opengl.ext;
+            |import overrungl.opengl.ext.arb.*;
+            |import overrungl.opengl.ext.khr.*;
+            |import overrungl.opengl.ext.oes.*;
+            |import overrungl.opengl.ext.amd.*;
+            |import overrungl.opengl.ext.apple.*;
+            |import overrungl.opengl.ext.ati.*;
+            |import overrungl.opengl.ext.ext.*;
+            |import overrungl.opengl.ext.ibm.*;
+            |import overrungl.opengl.ext.intel.*;
+            |import overrungl.opengl.ext.mesa.*;
+            |import overrungl.opengl.ext.nv.*;
+            |import overrungl.opengl.ext.sgi.*;
+            |import overrungl.opengl.ext.sun.*;
+            |
+            |/**
+            | * The OpenGL extension functions.
+            | *
+            | * @since 0.1.0
+            | */
+            |public interface GLExtension extends
+        """.trimMargin())
+        generatedExtClasses.joinTo(this, ",\n") { "    GL${it.ext.extName}${it.name}" }
+        appendLine(" {")
+        appendLine("}")
+    })
+}
+
+fun glFlags() {
     val caps = arrayOf(
         "GL_ARB_ES2_compatibility",
         "GL_ARB_ES3_1_compatibility",
@@ -3151,86 +3157,65 @@ fun glExtCaps() {
         "GL_WIN_phong_shading",
         "GL_WIN_specular_fog"
     )
-    Files.writeString(Path("GLExtCaps.java"), buildString {
-        append(
-            """
+    Files.writeString(
+        Path("GLFlags.java"),
+        """
             ${fileHeader.prependIndent("|")}
             |package overrungl.opengl;
             |
-            |import overrungl.opengl.ext.*;
-            |import overrungl.opengl.ext.arb.*;
-            |import overrungl.opengl.ext.khr.*;
-            |import overrungl.opengl.ext.oes.*;
-            |import overrungl.opengl.ext.amd.*;
-            |import overrungl.opengl.ext.apple.*;
-            |import overrungl.opengl.ext.ati.*;
-            |import overrungl.opengl.ext.ext.*;
-            |import overrungl.opengl.ext.ibm.*;
-            |import overrungl.opengl.ext.intel.*;
-            |import overrungl.opengl.ext.mesa.*;
-            |import overrungl.opengl.ext.nv.*;
-            |import overrungl.opengl.ext.sgi.*;
-            |import overrungl.opengl.ext.sun.*;
-            |import overrun.marshal.Unmarshal;
-            |
-            |import java.lang.foreign.SegmentAllocator;
-            |import java.lang.invoke.MethodHandle;
-            |import java.util.ArrayList;
-            |
-            |import static java.lang.foreign.ValueLayout.*;
-            |import static overrungl.opengl.GLExtFinder.*;
-            |
             |/**
-            | * The OpenGL extension capabilities.
+            | * The OpenGL flags.
             | *
             | * @since 0.1.0
             | */
-            |public final class GLExtCaps {
+            |public final class GLFlags {
+            |    final GLLoadFunc load;
+            |    final boolean foundExtension;
+            |    /** The OpenGL core flags. */
+            |    public final boolean GL10, GL11, GL12, GL13, GL14, GL15,
+            |        GL20, GL21,
+            |        GL30, GL31, GL32, GL33,
+            |        GL40, GL41, GL42, GL43, GL44, GL45, GL46;
             |    /** The OpenGL extension flags. */
-            |    public boolean ${caps.joinToString()};
-            |
-            |    /** GLCapabilities */
-            |    public final GLCapabilities caps;
+            |    public final boolean ${caps.joinToString()};
             |
             |    /**
-            |     * Construct <i>incomplete</i> OpenGL extension capabilities.
+            |     * Construct OpenGL flags.
             |     *
-            |     * @param caps The parent capabilities.
+            |     * @param load the function where to find OpenGL functions.
             |     */
-            |    public GLExtCaps(GLCapabilities caps) {
-            |        this.caps = caps;
+            |    GLFlags(GLLoadFunc load) {
+            |        this.load = load;
+            |        var core = GLFinder.findCoreGL(load);
+            |        int major = core.x();
+            |        int minor = core.y();
+            |        this.GL10 = (major == 1 && minor >= 0) || major > 1;
+            |        this.GL11 = (major == 1 && minor >= 1) || major > 1;
+            |        this.GL12 = (major == 1 && minor >= 2) || major > 1;
+            |        this.GL13 = (major == 1 && minor >= 3) || major > 1;
+            |        this.GL14 = (major == 1 && minor >= 4) || major > 1;
+            |        this.GL15 = (major == 1 && minor >= 5) || major > 1;
+            |        this.GL20 = (major == 2 && minor >= 0) || major > 2;
+            |        this.GL21 = (major == 2 && minor >= 1) || major > 2;
+            |        this.GL30 = (major == 3 && minor >= 0) || major > 3;
+            |        this.GL31 = (major == 3 && minor >= 1) || major > 3;
+            |        this.GL32 = (major == 3 && minor >= 2) || major > 3;
+            |        this.GL33 = (major == 3 && minor >= 3) || major > 3;
+            |        this.GL40 = (major == 4 && minor >= 0) || major > 4;
+            |        this.GL41 = (major == 4 && minor >= 1) || major > 4;
+            |        this.GL42 = (major == 4 && minor >= 2) || major > 4;
+            |        this.GL43 = (major == 4 && minor >= 3) || major > 4;
+            |        this.GL44 = (major == 4 && minor >= 4) || major > 4;
+            |        this.GL45 = (major == 4 && minor >= 5) || major > 4;
+            |        this.GL46 = (major == 4 && minor >= 6) || major > 4;
+            |        var list = new java.util.ArrayList<String>(700);
+            |        this.foundExtension = GLFinder.getExtensions(load, major, list);
+            |        ${caps.joinToString("\n|        ") { "this.$it = this.foundExtension && list.contains(\"$it\");" }}
             |    }
+            |}
             |
-            |    /** Method handles. */
-            |    public MethodHandle
-            """.trimMargin()
-        )
-        generatedExtFunctions.forEachIndexed { index, function ->
-            if (index.rem(16) == 0) {
-                if (index == 0) append("\n        ")
-                else append(",\n        ")
-            } else append(", ")
-            append(function.name)
-        }
-        appendLine(";\n\n    void load(GLLoadFunc load) {")
-        generatedExtClasses.forEach {
-            if (it.hasFunction) appendLine("        GL${it.ext.extName}${it.name}.load(this, load);")
-        }
-        appendLine("    }\n")
-        appendLine(
-            """
-            |    boolean findExtensionsGL(GLLoadFunc load, int version) {
-            |        var list = new ArrayList<String>(700);
-            |        if (!getExtensions(load, version, list)) return false;
-            |
-            |        ${caps.joinToString(separator = "\n|        ") { "this.$it = list.contains(\"$it\");" }}
-            |
-            |        return true;
-            |    }
         """.trimMargin()
-        )
-        appendLine("}")
-    })
+    )
 }
 
 /**
@@ -3261,5 +3246,6 @@ fun main() {
     sgi()
     sun()
     win()
-    glExtCaps()
+    glExtension()
+    glFlags()
 }

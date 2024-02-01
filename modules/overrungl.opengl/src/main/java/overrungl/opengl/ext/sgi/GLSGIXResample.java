@@ -18,19 +18,16 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_resample}
  */
-public final class GLSGIXResample {
-    public static final int GL_PACK_RESAMPLE_SGIX = 0x842E;
-    public static final int GL_UNPACK_RESAMPLE_SGIX = 0x842F;
-    public static final int GL_RESAMPLE_REPLICATE_SGIX = 0x8433;
-    public static final int GL_RESAMPLE_ZERO_FILL_SGIX = 0x8434;
-    public static final int GL_RESAMPLE_DECIMATE_SGIX = 0x8430;
+public interface GLSGIXResample {
+    int GL_PACK_RESAMPLE_SGIX = 0x842E;
+    int GL_UNPACK_RESAMPLE_SGIX = 0x842F;
+    int GL_RESAMPLE_REPLICATE_SGIX = 0x8433;
+    int GL_RESAMPLE_ZERO_FILL_SGIX = 0x8434;
+    int GL_RESAMPLE_DECIMATE_SGIX = 0x8430;
 }

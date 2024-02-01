@@ -18,26 +18,13 @@
 package overrungl.opengl.ext.intel;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_INTEL_framebuffer_CMAA}
  */
-public final class GLINTELFramebufferCMAA {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_INTEL_framebuffer_CMAA) return;
-        ext.glApplyFramebufferAttachmentCMAAINTEL = load.invoke("glApplyFramebufferAttachmentCMAAINTEL", ofVoid());
-    }
+public interface GLINTELFramebufferCMAA {
 
-    public static void glApplyFramebufferAttachmentCMAAINTEL() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glApplyFramebufferAttachmentCMAAINTEL).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glApplyFramebufferAttachmentCMAAINTEL();
 }

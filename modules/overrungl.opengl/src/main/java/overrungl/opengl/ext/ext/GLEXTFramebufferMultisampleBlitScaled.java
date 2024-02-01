@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_framebuffer_multisample_blit_scaled}
  */
-public final class GLEXTFramebufferMultisampleBlitScaled {
-    public static final int GL_SCALED_RESOLVE_FASTEST_EXT = 0x90BA;
-    public static final int GL_SCALED_RESOLVE_NICEST_EXT = 0x90BB;
+public interface GLEXTFramebufferMultisampleBlitScaled {
+    int GL_SCALED_RESOLVE_FASTEST_EXT = 0x90BA;
+    int GL_SCALED_RESOLVE_NICEST_EXT = 0x90BB;
 }

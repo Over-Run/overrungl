@@ -18,34 +18,21 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_array}
  */
-public final class GLEXTTextureArray {
-    public static final int GL_TEXTURE_1D_ARRAY_EXT = 0x8C18;
-    public static final int GL_PROXY_TEXTURE_1D_ARRAY_EXT = 0x8C19;
-    public static final int GL_TEXTURE_2D_ARRAY_EXT = 0x8C1A;
-    public static final int GL_PROXY_TEXTURE_2D_ARRAY_EXT = 0x8C1B;
-    public static final int GL_TEXTURE_BINDING_1D_ARRAY_EXT = 0x8C1C;
-    public static final int GL_TEXTURE_BINDING_2D_ARRAY_EXT = 0x8C1D;
-    public static final int GL_MAX_ARRAY_TEXTURE_LAYERS_EXT = 0x88FF;
-    public static final int GL_COMPARE_REF_DEPTH_TO_TEXTURE_EXT = 0x884E;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_texture_array) return;
-        ext.glFramebufferTextureLayerEXT = load.invoke("glFramebufferTextureLayerEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTTextureArray {
+    int GL_TEXTURE_1D_ARRAY_EXT = 0x8C18;
+    int GL_PROXY_TEXTURE_1D_ARRAY_EXT = 0x8C19;
+    int GL_TEXTURE_2D_ARRAY_EXT = 0x8C1A;
+    int GL_PROXY_TEXTURE_2D_ARRAY_EXT = 0x8C1B;
+    int GL_TEXTURE_BINDING_1D_ARRAY_EXT = 0x8C1C;
+    int GL_TEXTURE_BINDING_2D_ARRAY_EXT = 0x8C1D;
+    int GL_MAX_ARRAY_TEXTURE_LAYERS_EXT = 0x88FF;
+    int GL_COMPARE_REF_DEPTH_TO_TEXTURE_EXT = 0x884E;
 
-    public static void glFramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFramebufferTextureLayerEXT).invokeExact(target, attachment, texture, level, layer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glFramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer);
 }

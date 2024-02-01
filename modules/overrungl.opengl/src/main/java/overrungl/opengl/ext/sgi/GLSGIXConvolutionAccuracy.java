@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_convolution_accuracy}
  */
-public final class GLSGIXConvolutionAccuracy {
-    public static final int GL_CONVOLUTION_HINT_SGIX = 0x8316;
+public interface GLSGIXConvolutionAccuracy {
+    int GL_CONVOLUTION_HINT_SGIX = 0x8316;
 }

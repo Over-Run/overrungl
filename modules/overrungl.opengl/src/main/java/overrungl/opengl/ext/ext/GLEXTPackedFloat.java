@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_packed_float}
  */
-public final class GLEXTPackedFloat {
-    public static final int GL_R11F_G11F_B10F_EXT = 0x8C3A;
-    public static final int GL_UNSIGNED_INT_10F_11F_11F_REV_EXT = 0x8C3B;
-    public static final int GL_RGBA_SIGNED_COMPONENTS_EXT = 0x8C3C;
+public interface GLEXTPackedFloat {
+    int GL_R11F_G11F_B10F_EXT = 0x8C3A;
+    int GL_UNSIGNED_INT_10F_11F_11F_REV_EXT = 0x8C3B;
+    int GL_RGBA_SIGNED_COMPONENTS_EXT = 0x8C3C;
 }

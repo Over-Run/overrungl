@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.apple;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_aux_depth_stencil}
  */
-public final class GLAPPLEAuxDepthStencil {
-    public static final int GL_AUX_DEPTH_STENCIL_APPLE = 0x8A14;
+public interface GLAPPLEAuxDepthStencil {
+    int GL_AUX_DEPTH_STENCIL_APPLE = 0x8A14;
 }

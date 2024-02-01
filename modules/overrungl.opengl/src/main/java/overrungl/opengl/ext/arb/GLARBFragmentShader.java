@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.arb;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_fragment_shader}
  */
-public final class GLARBFragmentShader {
-    public static final int GL_FRAGMENT_SHADER_ARB = 0x8B30;
-    public static final int GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB = 0x8B49;
-    public static final int GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB = 0x8B8B;
+public interface GLARBFragmentShader {
+    int GL_FRAGMENT_SHADER_ARB = 0x8B30;
+    int GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB = 0x8B49;
+    int GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB = 0x8B8B;
 }

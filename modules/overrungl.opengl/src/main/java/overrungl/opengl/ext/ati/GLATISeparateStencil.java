@@ -18,38 +18,18 @@
 package overrungl.opengl.ext.ati;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_separate_stencil}
  */
-public final class GLATISeparateStencil {
-    public static final int GL_STENCIL_BACK_FUNC_ATI = 0x8800;
-    public static final int GL_STENCIL_BACK_FAIL_ATI = 0x8801;
-    public static final int GL_STENCIL_BACK_PASS_DEPTH_FAIL_ATI = 0x8802;
-    public static final int GL_STENCIL_BACK_PASS_DEPTH_PASS_ATI = 0x8803;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ATI_separate_stencil) return;
-        ext.glStencilOpSeparateATI = load.invoke("glStencilOpSeparateATI", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-        ext.glStencilFuncSeparateATI = load.invoke("glStencilFuncSeparateATI", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLATISeparateStencil {
+    int GL_STENCIL_BACK_FUNC_ATI = 0x8800;
+    int GL_STENCIL_BACK_FAIL_ATI = 0x8801;
+    int GL_STENCIL_BACK_PASS_DEPTH_FAIL_ATI = 0x8802;
+    int GL_STENCIL_BACK_PASS_DEPTH_PASS_ATI = 0x8803;
 
-    public static void glStencilOpSeparateATI(int face, int sfail, int dpfail, int dppass) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glStencilOpSeparateATI).invokeExact(face, sfail, dpfail, dppass);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glStencilFuncSeparateATI(int frontfunc, int backfunc, int ref, int mask) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glStencilFuncSeparateATI).invokeExact(frontfunc, backfunc, ref, mask);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glStencilOpSeparateATI(int face, int sfail, int dpfail, int dppass);
+    void glStencilFuncSeparateATI(int frontfunc, int backfunc, int ref, int mask);
 }

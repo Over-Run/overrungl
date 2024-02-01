@@ -18,18 +18,15 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_texture_scale_bias}
  */
-public final class GLSGIXTextureScaleBias {
-    public static final int GL_POST_TEXTURE_FILTER_BIAS_SGIX = 0x8179;
-    public static final int GL_POST_TEXTURE_FILTER_SCALE_SGIX = 0x817A;
-    public static final int GL_POST_TEXTURE_FILTER_BIAS_RANGE_SGIX = 0x817B;
-    public static final int GL_POST_TEXTURE_FILTER_SCALE_RANGE_SGIX = 0x817C;
+public interface GLSGIXTextureScaleBias {
+    int GL_POST_TEXTURE_FILTER_BIAS_SGIX = 0x8179;
+    int GL_POST_TEXTURE_FILTER_SCALE_SGIX = 0x817A;
+    int GL_POST_TEXTURE_FILTER_BIAS_RANGE_SGIX = 0x817B;
+    int GL_POST_TEXTURE_FILTER_SCALE_RANGE_SGIX = 0x817C;
 }

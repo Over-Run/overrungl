@@ -18,50 +18,21 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_bindable_uniform}
  */
-public final class GLEXTBindableUniform {
-    public static final int GL_MAX_VERTEX_BINDABLE_UNIFORMS_EXT = 0x8DE2;
-    public static final int GL_MAX_FRAGMENT_BINDABLE_UNIFORMS_EXT = 0x8DE3;
-    public static final int GL_MAX_GEOMETRY_BINDABLE_UNIFORMS_EXT = 0x8DE4;
-    public static final int GL_MAX_BINDABLE_UNIFORM_SIZE_EXT = 0x8DED;
-    public static final int GL_UNIFORM_BUFFER_EXT = 0x8DEE;
-    public static final int GL_UNIFORM_BUFFER_BINDING_EXT = 0x8DEF;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_bindable_uniform) return;
-        ext.glUniformBufferEXT = load.invoke("glUniformBufferEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT));
-        ext.glGetUniformBufferSizeEXT = load.invoke("glGetUniformBufferSizeEXT", of(JAVA_INT, JAVA_INT, JAVA_INT));
-        ext.glGetUniformOffsetEXT = load.invoke("glGetUniformOffsetEXT", of(JAVA_LONG, JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTBindableUniform {
+    int GL_MAX_VERTEX_BINDABLE_UNIFORMS_EXT = 0x8DE2;
+    int GL_MAX_FRAGMENT_BINDABLE_UNIFORMS_EXT = 0x8DE3;
+    int GL_MAX_GEOMETRY_BINDABLE_UNIFORMS_EXT = 0x8DE4;
+    int GL_MAX_BINDABLE_UNIFORM_SIZE_EXT = 0x8DED;
+    int GL_UNIFORM_BUFFER_EXT = 0x8DEE;
+    int GL_UNIFORM_BUFFER_BINDING_EXT = 0x8DEF;
 
-    public static void glUniformBufferEXT(int program, int location, int buffer) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glUniformBufferEXT).invokeExact(program, location, buffer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static int glGetUniformBufferSizeEXT(int program, int location) {
-        final var ext = getExtCapabilities();
-        try {
-            return (int)
-            check(ext.glGetUniformBufferSizeEXT).invokeExact(program, location);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static long glGetUniformOffsetEXT(int program, int location) {
-        final var ext = getExtCapabilities();
-        try {
-            return (long)
-            check(ext.glGetUniformOffsetEXT).invokeExact(program, location);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glUniformBufferEXT(int program, int location, int buffer);
+    int glGetUniformBufferSizeEXT(int program, int location);
+    long glGetUniformOffsetEXT(int program, int location);
 }

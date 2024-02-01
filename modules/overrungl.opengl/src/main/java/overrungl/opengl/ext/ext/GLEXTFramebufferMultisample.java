@@ -18,29 +18,16 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_framebuffer_multisample}
  */
-public final class GLEXTFramebufferMultisample {
-    public static final int GL_RENDERBUFFER_SAMPLES_EXT = 0x8CAB;
-    public static final int GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_EXT = 0x8D56;
-    public static final int GL_MAX_SAMPLES_EXT = 0x8D57;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_framebuffer_multisample) return;
-        ext.glRenderbufferStorageMultisampleEXT = load.invoke("glRenderbufferStorageMultisampleEXT", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLEXTFramebufferMultisample {
+    int GL_RENDERBUFFER_SAMPLES_EXT = 0x8CAB;
+    int GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_EXT = 0x8D56;
+    int GL_MAX_SAMPLES_EXT = 0x8D57;
 
-    public static void glRenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glRenderbufferStorageMultisampleEXT).invokeExact(target, samples, internalformat, width, height);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glRenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height);
 }

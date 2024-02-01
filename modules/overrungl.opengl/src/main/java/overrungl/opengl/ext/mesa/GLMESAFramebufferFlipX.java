@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.mesa;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_MESA_framebuffer_flip_x}
  */
-public final class GLMESAFramebufferFlipX {
-    public static final int GL_FRAMEBUFFER_FLIP_X_MESA = 0x8BBC;
+public interface GLMESAFramebufferFlipX {
+    int GL_FRAMEBUFFER_FLIP_X_MESA = 0x8BBC;
 }

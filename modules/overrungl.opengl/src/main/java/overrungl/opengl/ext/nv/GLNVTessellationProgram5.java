@@ -18,19 +18,16 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_tessellation_program5}
  */
-public final class GLNVTessellationProgram5 {
-    public static final int GL_MAX_PROGRAM_PATCH_ATTRIBS_NV = 0x86D8;
-    public static final int GL_TESS_CONTROL_PROGRAM_NV = 0x891E;
-    public static final int GL_TESS_EVALUATION_PROGRAM_NV = 0x891F;
-    public static final int GL_TESS_CONTROL_PROGRAM_PARAMETER_BUFFER_NV = 0x8C74;
-    public static final int GL_TESS_EVALUATION_PROGRAM_PARAMETER_BUFFER_NV = 0x8C75;
+public interface GLNVTessellationProgram5 {
+    int GL_MAX_PROGRAM_PATCH_ATTRIBS_NV = 0x86D8;
+    int GL_TESS_CONTROL_PROGRAM_NV = 0x891E;
+    int GL_TESS_EVALUATION_PROGRAM_NV = 0x891F;
+    int GL_TESS_CONTROL_PROGRAM_PARAMETER_BUFFER_NV = 0x8C74;
+    int GL_TESS_EVALUATION_PROGRAM_PARAMETER_BUFFER_NV = 0x8C75;
 }

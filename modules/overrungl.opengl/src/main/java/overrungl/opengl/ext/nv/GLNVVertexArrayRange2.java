@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_vertex_array_range2}
  */
-public final class GLNVVertexArrayRange2 {
-    public static final int GL_VERTEX_ARRAY_RANGE_WITHOUT_FLUSH_NV = 0x8533;
+public interface GLNVVertexArrayRange2 {
+    int GL_VERTEX_ARRAY_RANGE_WITHOUT_FLUSH_NV = 0x8533;
 }

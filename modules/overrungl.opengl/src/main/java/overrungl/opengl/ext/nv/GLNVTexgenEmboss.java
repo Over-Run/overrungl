@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_texgen_emboss}
  */
-public final class GLNVTexgenEmboss {
-    public static final int GL_EMBOSS_LIGHT_NV = 0x855D;
-    public static final int GL_EMBOSS_CONSTANT_NV = 0x855E;
-    public static final int GL_EMBOSS_MAP_NV = 0x855F;
+public interface GLNVTexgenEmboss {
+    int GL_EMBOSS_LIGHT_NV = 0x855D;
+    int GL_EMBOSS_CONSTANT_NV = 0x855E;
+    int GL_EMBOSS_MAP_NV = 0x855F;
 }

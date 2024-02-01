@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_shader_thread_group}
  */
-public final class GLNVShaderThreadGroup {
-    public static final int GL_WARP_SIZE_NV = 0x9339;
-    public static final int GL_WARPS_PER_SM_NV = 0x933A;
-    public static final int GL_SM_COUNT_NV = 0x933B;
+public interface GLNVShaderThreadGroup {
+    int GL_WARP_SIZE_NV = 0x9339;
+    int GL_WARPS_PER_SM_NV = 0x933A;
+    int GL_SM_COUNT_NV = 0x933B;
 }

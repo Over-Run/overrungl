@@ -18,26 +18,23 @@
 package overrungl.opengl.ext.ati;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_texture_float}
  */
-public final class GLATITextureFloat {
-    public static final int GL_RGBA_FLOAT32_ATI = 0x8814;
-    public static final int GL_RGB_FLOAT32_ATI = 0x8815;
-    public static final int GL_ALPHA_FLOAT32_ATI = 0x8816;
-    public static final int GL_INTENSITY_FLOAT32_ATI = 0x8817;
-    public static final int GL_LUMINANCE_FLOAT32_ATI = 0x8818;
-    public static final int GL_LUMINANCE_ALPHA_FLOAT32_ATI = 0x8819;
-    public static final int GL_RGBA_FLOAT16_ATI = 0x881A;
-    public static final int GL_RGB_FLOAT16_ATI = 0x881B;
-    public static final int GL_ALPHA_FLOAT16_ATI = 0x881C;
-    public static final int GL_INTENSITY_FLOAT16_ATI = 0x881D;
-    public static final int GL_LUMINANCE_FLOAT16_ATI = 0x881E;
-    public static final int GL_LUMINANCE_ALPHA_FLOAT16_ATI = 0x881F;
+public interface GLATITextureFloat {
+    int GL_RGBA_FLOAT32_ATI = 0x8814;
+    int GL_RGB_FLOAT32_ATI = 0x8815;
+    int GL_ALPHA_FLOAT32_ATI = 0x8816;
+    int GL_INTENSITY_FLOAT32_ATI = 0x8817;
+    int GL_LUMINANCE_FLOAT32_ATI = 0x8818;
+    int GL_LUMINANCE_ALPHA_FLOAT32_ATI = 0x8819;
+    int GL_RGBA_FLOAT16_ATI = 0x881A;
+    int GL_RGB_FLOAT16_ATI = 0x881B;
+    int GL_ALPHA_FLOAT16_ATI = 0x881C;
+    int GL_INTENSITY_FLOAT16_ATI = 0x881D;
+    int GL_LUMINANCE_FLOAT16_ATI = 0x881E;
+    int GL_LUMINANCE_ALPHA_FLOAT16_ATI = 0x881F;
 }

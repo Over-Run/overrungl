@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_fill_rectangle}
  */
-public final class GLNVFillRectangle {
-    public static final int GL_FILL_RECTANGLE_NV = 0x933C;
+public interface GLNVFillRectangle {
+    int GL_FILL_RECTANGLE_NV = 0x933C;
 }

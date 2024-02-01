@@ -18,27 +18,13 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_vdpau_interop2}
  */
-public final class GLNVVDPAUInterop2 {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_vdpau_interop2) return;
-        ext.glVDPAURegisterVideoSurfaceWithPictureStructureNV = load.invoke("glVDPAURegisterVideoSurfaceWithPictureStructureNV", of(JAVA_LONG, ADDRESS, JAVA_INT, JAVA_INT, ADDRESS, JAVA_BYTE));
-    }
+public interface GLNVVDPAUInterop2 {
 
-    public static long glVDPAURegisterVideoSurfaceWithPictureStructureNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames, boolean isFrameStructure) {
-        final var ext = getExtCapabilities();
-        try {
-            return (long)
-            check(ext.glVDPAURegisterVideoSurfaceWithPictureStructureNV).invokeExact(vdpSurface, target, numTextureNames, textureNames, isFrameStructure);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    long glVDPAURegisterVideoSurfaceWithPictureStructureNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames, boolean isFrameStructure);
 }

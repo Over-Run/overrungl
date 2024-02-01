@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_deep_texture3D}
  */
-public final class GLNVDeepTexture3D {
-    public static final int GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV = 0x90D0;
-    public static final int GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV = 0x90D1;
+public interface GLNVDeepTexture3D {
+    int GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV = 0x90D0;
+    int GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV = 0x90D1;
 }

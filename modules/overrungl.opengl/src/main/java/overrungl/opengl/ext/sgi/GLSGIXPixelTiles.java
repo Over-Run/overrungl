@@ -18,22 +18,19 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_pixel_tiles}
  */
-public final class GLSGIXPixelTiles {
-    public static final int GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX = 0x813E;
-    public static final int GL_PIXEL_TILE_CACHE_INCREMENT_SGIX = 0x813F;
-    public static final int GL_PIXEL_TILE_WIDTH_SGIX = 0x8140;
-    public static final int GL_PIXEL_TILE_HEIGHT_SGIX = 0x8141;
-    public static final int GL_PIXEL_TILE_GRID_WIDTH_SGIX = 0x8142;
-    public static final int GL_PIXEL_TILE_GRID_HEIGHT_SGIX = 0x8143;
-    public static final int GL_PIXEL_TILE_GRID_DEPTH_SGIX = 0x8144;
-    public static final int GL_PIXEL_TILE_CACHE_SIZE_SGIX = 0x8145;
+public interface GLSGIXPixelTiles {
+    int GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX = 0x813E;
+    int GL_PIXEL_TILE_CACHE_INCREMENT_SGIX = 0x813F;
+    int GL_PIXEL_TILE_WIDTH_SGIX = 0x8140;
+    int GL_PIXEL_TILE_HEIGHT_SGIX = 0x8141;
+    int GL_PIXEL_TILE_GRID_WIDTH_SGIX = 0x8142;
+    int GL_PIXEL_TILE_GRID_HEIGHT_SGIX = 0x8143;
+    int GL_PIXEL_TILE_GRID_DEPTH_SGIX = 0x8144;
+    int GL_PIXEL_TILE_CACHE_SIZE_SGIX = 0x8145;
 }

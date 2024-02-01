@@ -18,18 +18,15 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_texture_rectangle}
  */
-public final class GLNVTextureRectangle {
-    public static final int GL_TEXTURE_RECTANGLE_NV = 0x84F5;
-    public static final int GL_TEXTURE_BINDING_RECTANGLE_NV = 0x84F6;
-    public static final int GL_PROXY_TEXTURE_RECTANGLE_NV = 0x84F7;
-    public static final int GL_MAX_RECTANGLE_TEXTURE_SIZE_NV = 0x84F8;
+public interface GLNVTextureRectangle {
+    int GL_TEXTURE_RECTANGLE_NV = 0x84F5;
+    int GL_TEXTURE_BINDING_RECTANGLE_NV = 0x84F6;
+    int GL_PROXY_TEXTURE_RECTANGLE_NV = 0x84F7;
+    int GL_MAX_RECTANGLE_TEXTURE_SIZE_NV = 0x84F8;
 }

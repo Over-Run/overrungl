@@ -18,36 +18,16 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_primitive_restart}
  */
-public final class GLNVPrimitiveRestart {
-    public static final int GL_PRIMITIVE_RESTART_NV = 0x8558;
-    public static final int GL_PRIMITIVE_RESTART_INDEX_NV = 0x8559;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_primitive_restart) return;
-        ext.glPrimitiveRestartNV = load.invoke("glPrimitiveRestartNV", ofVoid());
-        ext.glPrimitiveRestartIndexNV = load.invoke("glPrimitiveRestartIndexNV", ofVoid(JAVA_INT));
-    }
+public interface GLNVPrimitiveRestart {
+    int GL_PRIMITIVE_RESTART_NV = 0x8558;
+    int GL_PRIMITIVE_RESTART_INDEX_NV = 0x8559;
 
-    public static void glPrimitiveRestartNV() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPrimitiveRestartNV).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glPrimitiveRestartIndexNV(int index) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPrimitiveRestartIndexNV).invokeExact(index);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glPrimitiveRestartNV();
+    void glPrimitiveRestartIndexNV(int index);
 }

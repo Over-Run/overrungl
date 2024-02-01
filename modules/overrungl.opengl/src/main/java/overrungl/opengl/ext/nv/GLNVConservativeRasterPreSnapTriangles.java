@@ -18,29 +18,16 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_conservative_raster_pre_snap_triangles}
  */
-public final class GLNVConservativeRasterPreSnapTriangles {
-    public static final int GL_CONSERVATIVE_RASTER_MODE_NV = 0x954D;
-    public static final int GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = 0x954E;
-    public static final int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = 0x954F;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_conservative_raster_pre_snap_triangles) return;
-        ext.glConservativeRasterParameteriNV = load.invoke("glConservativeRasterParameteriNV", ofVoid(JAVA_INT, JAVA_INT));
-    }
+public interface GLNVConservativeRasterPreSnapTriangles {
+    int GL_CONSERVATIVE_RASTER_MODE_NV = 0x954D;
+    int GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = 0x954E;
+    int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = 0x954F;
 
-    public static void glConservativeRasterParameteriNV(int pname, int param) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glConservativeRasterParameteriNV).invokeExact(pname, param);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glConservativeRasterParameteriNV(int pname, int param);
 }

@@ -18,30 +18,17 @@
 package overrungl.opengl.ext.amd;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_stencil_operation_extended}
  */
-public final class GLAMDStencilOperationExtended {
-    public static final int GL_SET_AMD = 0x874A;
-    public static final int GL_REPLACE_VALUE_AMD = 0x874B;
-    public static final int GL_STENCIL_OP_VALUE_AMD = 0x874C;
-    public static final int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_stencil_operation_extended) return;
-        ext.glStencilOpValueAMD = load.invoke("glStencilOpValueAMD", ofVoid(JAVA_INT, JAVA_INT));
-    }
+public interface GLAMDStencilOperationExtended {
+    int GL_SET_AMD = 0x874A;
+    int GL_REPLACE_VALUE_AMD = 0x874B;
+    int GL_STENCIL_OP_VALUE_AMD = 0x874C;
+    int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
 
-    public static void glStencilOpValueAMD(int face, int value) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glStencilOpValueAMD).invokeExact(face, value);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glStencilOpValueAMD(int face, int value);
 }

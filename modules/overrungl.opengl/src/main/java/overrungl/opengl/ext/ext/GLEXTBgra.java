@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_bgra}
  */
-public final class GLEXTBgra {
-    public static final int GL_BGR_EXT = 0x80E0;
-    public static final int GL_BGRA_EXT = 0x80E1;
+public interface GLEXTBgra {
+    int GL_BGR_EXT = 0x80E0;
+    int GL_BGRA_EXT = 0x80E1;
 }

@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_blend_alpha_minmax}
  */
-public final class GLSGIXBlendAlphaMinmax {
-    public static final int GL_ALPHA_MIN_SGIX = 0x8320;
-    public static final int GL_ALPHA_MAX_SGIX = 0x8321;
+public interface GLSGIXBlendAlphaMinmax {
+    int GL_ALPHA_MIN_SGIX = 0x8320;
+    int GL_ALPHA_MAX_SGIX = 0x8321;
 }

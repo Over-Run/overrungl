@@ -18,50 +18,30 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIS_multisample}
  */
-public final class GLSGISMultisample {
-    public static final int GL_MULTISAMPLE_SGIS = 0x809D;
-    public static final int GL_SAMPLE_ALPHA_TO_MASK_SGIS = 0x809E;
-    public static final int GL_SAMPLE_ALPHA_TO_ONE_SGIS = 0x809F;
-    public static final int GL_SAMPLE_MASK_SGIS = 0x80A0;
-    public static final int GL_1PASS_SGIS = 0x80A1;
-    public static final int GL_2PASS_0_SGIS = 0x80A2;
-    public static final int GL_2PASS_1_SGIS = 0x80A3;
-    public static final int GL_4PASS_0_SGIS = 0x80A4;
-    public static final int GL_4PASS_1_SGIS = 0x80A5;
-    public static final int GL_4PASS_2_SGIS = 0x80A6;
-    public static final int GL_4PASS_3_SGIS = 0x80A7;
-    public static final int GL_SAMPLE_BUFFERS_SGIS = 0x80A8;
-    public static final int GL_SAMPLES_SGIS = 0x80A9;
-    public static final int GL_SAMPLE_MASK_VALUE_SGIS = 0x80AA;
-    public static final int GL_SAMPLE_MASK_INVERT_SGIS = 0x80AB;
-    public static final int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SGIS_multisample) return;
-        ext.glSampleMaskSGIS = load.invoke("glSampleMaskSGIS", ofVoid(JAVA_FLOAT, JAVA_BYTE));
-        ext.glSamplePatternSGIS = load.invoke("glSamplePatternSGIS", ofVoid(JAVA_INT));
-    }
+public interface GLSGISMultisample {
+    int GL_MULTISAMPLE_SGIS = 0x809D;
+    int GL_SAMPLE_ALPHA_TO_MASK_SGIS = 0x809E;
+    int GL_SAMPLE_ALPHA_TO_ONE_SGIS = 0x809F;
+    int GL_SAMPLE_MASK_SGIS = 0x80A0;
+    int GL_1PASS_SGIS = 0x80A1;
+    int GL_2PASS_0_SGIS = 0x80A2;
+    int GL_2PASS_1_SGIS = 0x80A3;
+    int GL_4PASS_0_SGIS = 0x80A4;
+    int GL_4PASS_1_SGIS = 0x80A5;
+    int GL_4PASS_2_SGIS = 0x80A6;
+    int GL_4PASS_3_SGIS = 0x80A7;
+    int GL_SAMPLE_BUFFERS_SGIS = 0x80A8;
+    int GL_SAMPLES_SGIS = 0x80A9;
+    int GL_SAMPLE_MASK_VALUE_SGIS = 0x80AA;
+    int GL_SAMPLE_MASK_INVERT_SGIS = 0x80AB;
+    int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
 
-    public static void glSampleMaskSGIS(float value, boolean invert) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSampleMaskSGIS).invokeExact(value, invert);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glSamplePatternSGIS(int pattern) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSamplePatternSGIS).invokeExact(pattern);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glSampleMaskSGIS(float value, boolean invert);
+    void glSamplePatternSGIS(int pattern);
 }

@@ -18,27 +18,14 @@
 package overrungl.opengl.ext.arb;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_instanced_arrays}
  */
-public final class GLARBInstancedArrays {
-    public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_instanced_arrays) return;
-        ext.glVertexAttribDivisorARB = load.invoke("glVertexAttribDivisorARB", ofVoid(JAVA_INT, JAVA_INT));
-    }
+public interface GLARBInstancedArrays {
+    int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
 
-    public static void glVertexAttribDivisorARB(int index, int divisor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glVertexAttribDivisorARB).invokeExact(index, divisor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glVertexAttribDivisorARB(int index, int divisor);
 }

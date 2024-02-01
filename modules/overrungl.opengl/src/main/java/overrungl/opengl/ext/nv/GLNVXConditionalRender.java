@@ -18,34 +18,14 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NVX_conditional_render}
  */
-public final class GLNVXConditionalRender {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NVX_conditional_render) return;
-        ext.glBeginConditionalRenderNVX = load.invoke("glBeginConditionalRenderNVX", ofVoid(JAVA_INT));
-        ext.glEndConditionalRenderNVX = load.invoke("glEndConditionalRenderNVX", ofVoid());
-    }
+public interface GLNVXConditionalRender {
 
-    public static void glBeginConditionalRenderNVX(int id) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBeginConditionalRenderNVX).invokeExact(id);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glEndConditionalRenderNVX() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glEndConditionalRenderNVX).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glBeginConditionalRenderNVX(int id);
+    void glEndConditionalRenderNVX();
 }

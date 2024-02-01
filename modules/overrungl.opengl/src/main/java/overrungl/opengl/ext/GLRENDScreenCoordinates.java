@@ -18,16 +18,13 @@
 package overrungl.opengl.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_REND_screen_coordinates}
  */
-public final class GLRENDScreenCoordinates {
-    public static final int GL_SCREEN_COORDINATES_REND = 0x8490;
-    public static final int GL_INVERTED_SCREEN_W_REND = 0x8491;
+public interface GLRENDScreenCoordinates {
+    int GL_SCREEN_COORDINATES_REND = 0x8490;
+    int GL_INVERTED_SCREEN_W_REND = 0x8491;
 }

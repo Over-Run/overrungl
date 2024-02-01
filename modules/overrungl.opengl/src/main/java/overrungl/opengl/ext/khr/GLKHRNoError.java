@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.khr;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_KHR_no_error}
  */
-public final class GLKHRNoError {
-    public static final int GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = 0x00000008;
+public interface GLKHRNoError {
+    int GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = 0x00000008;
 }

@@ -18,17 +18,14 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_texture_sRGB_decode}
  */
-public final class GLEXTTextureSrgbDecode {
-    public static final int GL_TEXTURE_SRGB_DECODE_EXT = 0x8A48;
-    public static final int GL_DECODE_EXT = 0x8A49;
-    public static final int GL_SKIP_DECODE_EXT = 0x8A4A;
+public interface GLEXTTextureSrgbDecode {
+    int GL_TEXTURE_SRGB_DECODE_EXT = 0x8A48;
+    int GL_DECODE_EXT = 0x8A49;
+    int GL_SKIP_DECODE_EXT = 0x8A4A;
 }

@@ -18,41 +18,21 @@
 package overrungl.opengl.ext.amd;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_vertex_shader_tessellator}
  */
-public final class GLAMDVertexShaderTessellator {
-    public static final int GL_SAMPLER_BUFFER_AMD = 0x9001;
-    public static final int GL_INT_SAMPLER_BUFFER_AMD = 0x9002;
-    public static final int GL_UNSIGNED_INT_SAMPLER_BUFFER_AMD = 0x9003;
-    public static final int GL_TESSELLATION_MODE_AMD = 0x9004;
-    public static final int GL_TESSELLATION_FACTOR_AMD = 0x9005;
-    public static final int GL_DISCRETE_AMD = 0x9006;
-    public static final int GL_CONTINUOUS_AMD = 0x9007;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_vertex_shader_tessellator) return;
-        ext.glTessellationFactorAMD = load.invoke("glTessellationFactorAMD", ofVoid(JAVA_FLOAT));
-        ext.glTessellationModeAMD = load.invoke("glTessellationModeAMD", ofVoid(JAVA_INT));
-    }
+public interface GLAMDVertexShaderTessellator {
+    int GL_SAMPLER_BUFFER_AMD = 0x9001;
+    int GL_INT_SAMPLER_BUFFER_AMD = 0x9002;
+    int GL_UNSIGNED_INT_SAMPLER_BUFFER_AMD = 0x9003;
+    int GL_TESSELLATION_MODE_AMD = 0x9004;
+    int GL_TESSELLATION_FACTOR_AMD = 0x9005;
+    int GL_DISCRETE_AMD = 0x9006;
+    int GL_CONTINUOUS_AMD = 0x9007;
 
-    public static void glTessellationFactorAMD(float factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glTessellationFactorAMD).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glTessellationModeAMD(int mode) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glTessellationModeAMD).invokeExact(mode);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glTessellationFactorAMD(float factor);
+    void glTessellationModeAMD(int mode);
 }

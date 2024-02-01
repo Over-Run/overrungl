@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_shared_texture_palette}
  */
-public final class GLEXTSharedTexturePalette {
-    public static final int GL_SHARED_TEXTURE_PALETTE_EXT = 0x81FB;
+public interface GLEXTSharedTexturePalette {
+    int GL_SHARED_TEXTURE_PALETTE_EXT = 0x81FB;
 }

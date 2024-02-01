@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.sun;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SUN_convolution_border_modes}
  */
-public final class GLSUNConvolutionBorderModes {
-    public static final int GL_WRAP_BORDER_SUN = 0x81D4;
+public interface GLSUNConvolutionBorderModes {
+    int GL_WRAP_BORDER_SUN = 0x81D4;
 }

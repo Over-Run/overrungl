@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.ati;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ATI_texture_mirror_once}
  */
-public final class GLATITextureMirrorOnce {
-    public static final int GL_MIRROR_CLAMP_ATI = 0x8742;
-    public static final int GL_MIRROR_CLAMP_TO_EDGE_ATI = 0x8743;
+public interface GLATITextureMirrorOnce {
+    int GL_MIRROR_CLAMP_ATI = 0x8742;
+    int GL_MIRROR_CLAMP_TO_EDGE_ATI = 0x8743;
 }

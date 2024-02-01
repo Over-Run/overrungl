@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIS_generate_mipmap}
  */
-public final class GLSGISGenerateMipmap {
-    public static final int GL_GENERATE_MIPMAP_SGIS = 0x8191;
-    public static final int GL_GENERATE_MIPMAP_HINT_SGIS = 0x8192;
+public interface GLSGISGenerateMipmap {
+    int GL_GENERATE_MIPMAP_SGIS = 0x8191;
+    int GL_GENERATE_MIPMAP_HINT_SGIS = 0x8192;
 }

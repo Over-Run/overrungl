@@ -23,6 +23,7 @@ import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.joml.Matrixn;
 import overrungl.opengl.GL;
+import overrungl.opengl.GLFlags;
 import overrungl.opengl.GLLoader;
 import overrungl.opengl.GLUtil;
 import overrungl.util.CheckUtil;
@@ -82,6 +83,7 @@ public class GL33Test {
         glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
         glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
         glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
+        glfw.windowHint(GLFW.OPENGL_DEBUG_CONTEXT, true);
         window = glfw.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
         CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
         glfw.setKeyCallback(window, (_, key, _, action, _) -> {
@@ -108,10 +110,10 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        gl = GLLoader.load(glfw::getProcAddress);
-        Objects.requireNonNull(gl, "Failed to load OpenGL");
+        final GLFlags flags = GLLoader.loadFlags(glfw::getProcAddress);
+        gl = Objects.requireNonNull(GLLoader.load(flags), "Failed to load OpenGL");
 
-        debugProc = GLUtil.setupDebugMessageCallback(gl);
+        debugProc = GLUtil.setupDebugMessageCallback(gl, flags, () -> GLLoader.loadExtension(flags));
         gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = gl.createProgram();
         int vsh = gl.createShader(GL.VERTEX_SHADER);

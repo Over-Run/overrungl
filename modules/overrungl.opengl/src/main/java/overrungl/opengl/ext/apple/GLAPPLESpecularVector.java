@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.apple;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_specular_vector}
  */
-public final class GLAPPLESpecularVector {
-    public static final int GL_LIGHT_MODEL_SPECULAR_VECTOR_APPLE = 0x85B0;
+public interface GLAPPLESpecularVector {
+    int GL_LIGHT_MODEL_SPECULAR_VECTOR_APPLE = 0x85B0;
 }

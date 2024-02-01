@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.amd;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_depth_clamp_separate}
  */
-public final class GLAMDDepthClampSeparate {
-    public static final int GL_DEPTH_CLAMP_NEAR_AMD = 0x901E;
-    public static final int GL_DEPTH_CLAMP_FAR_AMD = 0x901F;
+public interface GLAMDDepthClampSeparate {
+    int GL_DEPTH_CLAMP_NEAR_AMD = 0x901E;
+    int GL_DEPTH_CLAMP_FAR_AMD = 0x901F;
 }

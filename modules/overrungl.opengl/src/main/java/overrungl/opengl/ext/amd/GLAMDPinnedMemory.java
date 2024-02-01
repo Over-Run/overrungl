@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.amd;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_pinned_memory}
  */
-public final class GLAMDPinnedMemory {
-    public static final int GL_EXTERNAL_VIRTUAL_MEMORY_BUFFER_AMD = 0x9160;
+public interface GLAMDPinnedMemory {
+    int GL_EXTERNAL_VIRTUAL_MEMORY_BUFFER_AMD = 0x9160;
 }

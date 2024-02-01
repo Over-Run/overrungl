@@ -18,30 +18,17 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_provoking_vertex}
  */
-public final class GLEXTProvokingVertex {
-    public static final int GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION_EXT = 0x8E4C;
-    public static final int GL_FIRST_VERTEX_CONVENTION_EXT = 0x8E4D;
-    public static final int GL_LAST_VERTEX_CONVENTION_EXT = 0x8E4E;
-    public static final int GL_PROVOKING_VERTEX_EXT = 0x8E4F;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_provoking_vertex) return;
-        ext.glProvokingVertexEXT = load.invoke("glProvokingVertexEXT", ofVoid(JAVA_INT));
-    }
+public interface GLEXTProvokingVertex {
+    int GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION_EXT = 0x8E4C;
+    int GL_FIRST_VERTEX_CONVENTION_EXT = 0x8E4D;
+    int GL_LAST_VERTEX_CONVENTION_EXT = 0x8E4E;
+    int GL_PROVOKING_VERTEX_EXT = 0x8E4F;
 
-    public static void glProvokingVertexEXT(int mode) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glProvokingVertexEXT).invokeExact(mode);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glProvokingVertexEXT(int mode);
 }

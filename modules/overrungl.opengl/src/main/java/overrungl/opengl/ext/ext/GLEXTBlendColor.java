@@ -18,31 +18,18 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_blend_color}
  */
-public final class GLEXTBlendColor {
-    public static final int GL_CONSTANT_COLOR_EXT = 0x8001;
-    public static final int GL_ONE_MINUS_CONSTANT_COLOR_EXT = 0x8002;
-    public static final int GL_CONSTANT_ALPHA_EXT = 0x8003;
-    public static final int GL_ONE_MINUS_CONSTANT_ALPHA_EXT = 0x8004;
-    public static final int GL_BLEND_COLOR_EXT = 0x8005;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_blend_color) return;
-        ext.glBlendColorEXT = load.invoke("glBlendColorEXT", ofVoid(JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT, JAVA_FLOAT));
-    }
+public interface GLEXTBlendColor {
+    int GL_CONSTANT_COLOR_EXT = 0x8001;
+    int GL_ONE_MINUS_CONSTANT_COLOR_EXT = 0x8002;
+    int GL_CONSTANT_ALPHA_EXT = 0x8003;
+    int GL_ONE_MINUS_CONSTANT_ALPHA_EXT = 0x8004;
+    int GL_BLEND_COLOR_EXT = 0x8005;
 
-    public static void glBlendColorEXT(float red, float green, float blue, float alpha) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glBlendColorEXT).invokeExact(red, green, blue, alpha);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glBlendColorEXT(float red, float green, float blue, float alpha);
 }

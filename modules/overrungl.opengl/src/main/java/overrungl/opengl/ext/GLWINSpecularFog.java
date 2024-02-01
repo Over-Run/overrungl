@@ -18,15 +18,12 @@
 package overrungl.opengl.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_WIN_specular_fog}
  */
-public final class GLWINSpecularFog {
-    public static final int GL_FOG_SPECULAR_TEXTURE_WIN = 0x80EC;
+public interface GLWINSpecularFog {
+    int GL_FOG_SPECULAR_TEXTURE_WIN = 0x80EC;
 }

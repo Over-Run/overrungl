@@ -18,40 +18,20 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_pixel_data_range}
  */
-public final class GLNVPixelDataRange {
-    public static final int GL_WRITE_PIXEL_DATA_RANGE_NV = 0x8878;
-    public static final int GL_READ_PIXEL_DATA_RANGE_NV = 0x8879;
-    public static final int GL_WRITE_PIXEL_DATA_RANGE_LENGTH_NV = 0x887A;
-    public static final int GL_READ_PIXEL_DATA_RANGE_LENGTH_NV = 0x887B;
-    public static final int GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV = 0x887C;
-    public static final int GL_READ_PIXEL_DATA_RANGE_POINTER_NV = 0x887D;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_pixel_data_range) return;
-        ext.glPixelDataRangeNV = load.invoke("glPixelDataRangeNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-        ext.glFlushPixelDataRangeNV = load.invoke("glFlushPixelDataRangeNV", ofVoid(JAVA_INT));
-    }
+public interface GLNVPixelDataRange {
+    int GL_WRITE_PIXEL_DATA_RANGE_NV = 0x8878;
+    int GL_READ_PIXEL_DATA_RANGE_NV = 0x8879;
+    int GL_WRITE_PIXEL_DATA_RANGE_LENGTH_NV = 0x887A;
+    int GL_READ_PIXEL_DATA_RANGE_LENGTH_NV = 0x887B;
+    int GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV = 0x887C;
+    int GL_READ_PIXEL_DATA_RANGE_POINTER_NV = 0x887D;
 
-    public static void glPixelDataRangeNV(int target, int length, @NativeType("const void *") MemorySegment pointer) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glPixelDataRangeNV).invokeExact(target, length, pointer);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glFlushPixelDataRangeNV(int target) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFlushPixelDataRangeNV).invokeExact(target);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glPixelDataRangeNV(int target, int length, @NativeType("const void *") MemorySegment pointer);
+    void glFlushPixelDataRangeNV(int target);
 }

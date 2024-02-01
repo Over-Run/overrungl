@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.sun;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SUN_slice_accum}
  */
-public final class GLSUNSliceAccum {
-    public static final int GL_SLICE_ACCUM_SUN = 0x85CC;
+public interface GLSUNSliceAccum {
+    int GL_SLICE_ACCUM_SUN = 0x85CC;
 }

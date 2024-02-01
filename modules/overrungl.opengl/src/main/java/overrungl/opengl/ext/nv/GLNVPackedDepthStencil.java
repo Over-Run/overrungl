@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_packed_depth_stencil}
  */
-public final class GLNVPackedDepthStencil {
-    public static final int GL_DEPTH_STENCIL_NV = 0x84F9;
-    public static final int GL_UNSIGNED_INT_24_8_NV = 0x84FA;
+public interface GLNVPackedDepthStencil {
+    int GL_DEPTH_STENCIL_NV = 0x84F9;
+    int GL_UNSIGNED_INT_24_8_NV = 0x84FA;
 }

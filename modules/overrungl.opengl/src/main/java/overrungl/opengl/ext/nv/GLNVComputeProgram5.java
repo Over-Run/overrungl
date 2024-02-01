@@ -18,16 +18,13 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_compute_program5}
  */
-public final class GLNVComputeProgram5 {
-    public static final int GL_COMPUTE_PROGRAM_NV = 0x90FB;
-    public static final int GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV = 0x90FC;
+public interface GLNVComputeProgram5 {
+    int GL_COMPUTE_PROGRAM_NV = 0x90FB;
+    int GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV = 0x90FC;
 }

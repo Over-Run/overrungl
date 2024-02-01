@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.mesa;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_MESA_program_binary_formats}
  */
-public final class GLMESAProgramBinaryFormats {
-    public static final int GL_PROGRAM_BINARY_FORMAT_MESA = 0x875F;
+public interface GLMESAProgramBinaryFormats {
+    int GL_PROGRAM_BINARY_FORMAT_MESA = 0x875F;
 }

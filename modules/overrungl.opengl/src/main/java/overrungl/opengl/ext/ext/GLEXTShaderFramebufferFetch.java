@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_shader_framebuffer_fetch}
  */
-public final class GLEXTShaderFramebufferFetch {
-    public static final int GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT = 0x8A52;
+public interface GLEXTShaderFramebufferFetch {
+    int GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT = 0x8A52;
 }

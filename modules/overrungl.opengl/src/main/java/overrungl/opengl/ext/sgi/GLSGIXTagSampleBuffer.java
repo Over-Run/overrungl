@@ -18,26 +18,13 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_tag_sample_buffer}
  */
-public final class GLSGIXTagSampleBuffer {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SGIX_tag_sample_buffer) return;
-        ext.glTagSampleBufferSGIX = load.invoke("glTagSampleBufferSGIX", ofVoid());
-    }
+public interface GLSGIXTagSampleBuffer {
 
-    public static void glTagSampleBufferSGIX() {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glTagSampleBufferSGIX).invokeExact();
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glTagSampleBufferSGIX();
 }

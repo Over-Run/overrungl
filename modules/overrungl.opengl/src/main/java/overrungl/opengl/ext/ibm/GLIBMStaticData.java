@@ -18,28 +18,15 @@
 package overrungl.opengl.ext.ibm;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_IBM_static_data}
  */
-public final class GLIBMStaticData {
-    public static final int GL_ALL_STATIC_DATA_IBM = 103060;
-    public static final int GL_STATIC_VERTEX_ARRAY_IBM = 103061;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_IBM_static_data) return;
-        ext.glFlushStaticDataIBM = load.invoke("glFlushStaticDataIBM", ofVoid(JAVA_INT));
-    }
+public interface GLIBMStaticData {
+    int GL_ALL_STATIC_DATA_IBM = 103060;
+    int GL_STATIC_VERTEX_ARRAY_IBM = 103061;
 
-    public static void glFlushStaticDataIBM(int target) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glFlushStaticDataIBM).invokeExact(target);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glFlushStaticDataIBM(int target);
 }

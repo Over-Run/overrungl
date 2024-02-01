@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_vertex_program4}
  */
-public final class GLNVVertexProgram4 {
-    public static final int GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV = 0x88FD;
+public interface GLNVVertexProgram4 {
+    int GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV = 0x88FD;
 }

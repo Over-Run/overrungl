@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.intel;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_INTEL_blackhole_render}
  */
-public final class GLINTELBlackholeRender {
-    public static final int GL_BLACKHOLE_RENDER_INTEL = 0x83FC;
+public interface GLINTELBlackholeRender {
+    int GL_BLACKHOLE_RENDER_INTEL = 0x83FC;
 }

@@ -18,44 +18,16 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_separate_shader_objects}
  */
-public final class GLEXTSeparateShaderObjects {
-    public static final int GL_ACTIVE_PROGRAM_EXT = 0x8B8D;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_EXT_separate_shader_objects) return;
-        ext.glUseShaderProgramEXT = load.invoke("glUseShaderProgramEXT", ofVoid(JAVA_INT, JAVA_INT));
-        ext.glActiveProgramEXT = load.invoke("glActiveProgramEXT", ofVoid(JAVA_INT));
-        ext.glCreateShaderProgramEXT = load.invoke("glCreateShaderProgramEXT", of(JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLEXTSeparateShaderObjects {
+    int GL_ACTIVE_PROGRAM_EXT = 0x8B8D;
 
-    public static void glUseShaderProgramEXT(int type, int program) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glUseShaderProgramEXT).invokeExact(type, program);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glActiveProgramEXT(int program) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glActiveProgramEXT).invokeExact(program);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static int glCreateShaderProgramEXT(int type, @NativeType("const GLchar *") MemorySegment string) {
-        final var ext = getExtCapabilities();
-        try {
-            return (int)
-            check(ext.glCreateShaderProgramEXT).invokeExact(type, string);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glUseShaderProgramEXT(int type, int program);
+    void glActiveProgramEXT(int program);
+    int glCreateShaderProgramEXT(int type, @NativeType("const GLchar *") MemorySegment string);
 }

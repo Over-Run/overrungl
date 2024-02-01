@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.amd;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_transform_feedback4}
  */
-public final class GLAMDTransformFeedback4 {
-    public static final int GL_STREAM_RASTERIZATION_AMD = 0x91A0;
+public interface GLAMDTransformFeedback4 {
+    int GL_STREAM_RASTERIZATION_AMD = 0x91A0;
 }

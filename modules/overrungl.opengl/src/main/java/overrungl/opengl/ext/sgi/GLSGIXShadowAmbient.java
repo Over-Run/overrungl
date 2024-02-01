@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.sgi;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SGIX_shadow_ambient}
  */
-public final class GLSGIXShadowAmbient {
-    public static final int GL_SHADOW_AMBIENT_SGIX = 0x80BF;
+public interface GLSGIXShadowAmbient {
+    int GL_SHADOW_AMBIENT_SGIX = 0x80BF;
 }

@@ -18,84 +18,22 @@
 package overrungl.opengl.ext.sun;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SUN_global_alpha}
  */
-public final class GLSUNGlobalAlpha {
-    public static final int GL_GLOBAL_ALPHA_SUN = 0x81D9;
-    public static final int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SUN_global_alpha) return;
-        ext.glGlobalAlphaFactorbSUN = load.invoke("glGlobalAlphaFactorbSUN", ofVoid(JAVA_BYTE));
-        ext.glGlobalAlphaFactorsSUN = load.invoke("glGlobalAlphaFactorsSUN", ofVoid(JAVA_SHORT));
-        ext.glGlobalAlphaFactoriSUN = load.invoke("glGlobalAlphaFactoriSUN", ofVoid(JAVA_INT));
-        ext.glGlobalAlphaFactorfSUN = load.invoke("glGlobalAlphaFactorfSUN", ofVoid(JAVA_FLOAT));
-        ext.glGlobalAlphaFactordSUN = load.invoke("glGlobalAlphaFactordSUN", ofVoid(JAVA_DOUBLE));
-        ext.glGlobalAlphaFactorubSUN = load.invoke("glGlobalAlphaFactorubSUN", ofVoid(JAVA_BYTE));
-        ext.glGlobalAlphaFactorusSUN = load.invoke("glGlobalAlphaFactorusSUN", ofVoid(JAVA_SHORT));
-        ext.glGlobalAlphaFactoruiSUN = load.invoke("glGlobalAlphaFactoruiSUN", ofVoid(JAVA_INT));
-    }
+public interface GLSUNGlobalAlpha {
+    int GL_GLOBAL_ALPHA_SUN = 0x81D9;
+    int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
 
-    public static void glGlobalAlphaFactorbSUN(byte factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactorbSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactorsSUN(short factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactorsSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactoriSUN(int factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactoriSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactorfSUN(float factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactorfSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactordSUN(double factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactordSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactorubSUN(byte factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactorubSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactorusSUN(short factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactorusSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glGlobalAlphaFactoruiSUN(int factor) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glGlobalAlphaFactoruiSUN).invokeExact(factor);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glGlobalAlphaFactorbSUN(byte factor);
+    void glGlobalAlphaFactorsSUN(short factor);
+    void glGlobalAlphaFactoriSUN(int factor);
+    void glGlobalAlphaFactorfSUN(float factor);
+    void glGlobalAlphaFactordSUN(double factor);
+    void glGlobalAlphaFactorubSUN(byte factor);
+    void glGlobalAlphaFactorusSUN(short factor);
+    void glGlobalAlphaFactoruiSUN(int factor);
 }

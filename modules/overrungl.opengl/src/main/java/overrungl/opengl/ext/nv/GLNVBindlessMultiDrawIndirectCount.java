@@ -18,34 +18,14 @@
 package overrungl.opengl.ext.nv;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_NV_bindless_multi_draw_indirect_count}
  */
-public final class GLNVBindlessMultiDrawIndirectCount {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_NV_bindless_multi_draw_indirect_count) return;
-        ext.glMultiDrawArraysIndirectBindlessCountNV = load.invoke("glMultiDrawArraysIndirectBindlessCountNV", ofVoid(JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-        ext.glMultiDrawElementsIndirectBindlessCountNV = load.invoke("glMultiDrawElementsIndirectBindlessCountNV", ofVoid(JAVA_INT, JAVA_INT, ADDRESS, JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLNVBindlessMultiDrawIndirectCount {
 
-    public static void glMultiDrawArraysIndirectBindlessCountNV(int mode, @NativeType("const void *") MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glMultiDrawArraysIndirectBindlessCountNV).invokeExact(mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
-    public static void glMultiDrawElementsIndirectBindlessCountNV(int mode, int type, @NativeType("const void *") MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glMultiDrawElementsIndirectBindlessCountNV).invokeExact(mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glMultiDrawArraysIndirectBindlessCountNV(int mode, @NativeType("const void *") MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount);
+    void glMultiDrawElementsIndirectBindlessCountNV(int mode, int type, @NativeType("const void *") MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount);
 }

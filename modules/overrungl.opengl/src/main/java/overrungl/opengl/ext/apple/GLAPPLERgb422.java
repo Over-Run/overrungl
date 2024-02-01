@@ -18,18 +18,15 @@
 package overrungl.opengl.ext.apple;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_APPLE_rgb_422}
  */
-public final class GLAPPLERgb422 {
-    public static final int GL_RGB_422_APPLE = 0x8A1F;
-    public static final int GL_UNSIGNED_SHORT_8_8_APPLE = 0x85BA;
-    public static final int GL_UNSIGNED_SHORT_8_8_REV_APPLE = 0x85BB;
-    public static final int GL_RGB_RAW_422_APPLE = 0x8A51;
+public interface GLAPPLERgb422 {
+    int GL_RGB_422_APPLE = 0x8A1F;
+    int GL_UNSIGNED_SHORT_8_8_APPLE = 0x85BA;
+    int GL_UNSIGNED_SHORT_8_8_REV_APPLE = 0x85BB;
+    int GL_RGB_RAW_422_APPLE = 0x8A51;
 }

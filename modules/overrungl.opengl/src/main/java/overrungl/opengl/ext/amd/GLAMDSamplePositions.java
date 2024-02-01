@@ -18,26 +18,13 @@
 package overrungl.opengl.ext.amd;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_AMD_sample_positions}
  */
-public final class GLAMDSamplePositions {
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_AMD_sample_positions) return;
-        ext.glSetMultisamplefvAMD = load.invoke("glSetMultisamplefvAMD", ofVoid(JAVA_INT, JAVA_INT, ADDRESS));
-    }
+public interface GLAMDSamplePositions {
 
-    public static void glSetMultisamplefvAMD(int pname, int index, @NativeType("const GLfloat *") MemorySegment val) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSetMultisamplefvAMD).invokeExact(pname, index, val);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glSetMultisamplefvAMD(int pname, int index, @NativeType("const GLfloat *") MemorySegment val);
 }

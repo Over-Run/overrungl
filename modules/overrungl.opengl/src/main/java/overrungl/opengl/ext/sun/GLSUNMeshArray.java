@@ -18,28 +18,15 @@
 package overrungl.opengl.ext.sun;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_SUN_mesh_array}
  */
-public final class GLSUNMeshArray {
-    public static final int GL_QUAD_MESH_SUN = 0x8614;
-    public static final int GL_TRIANGLE_MESH_SUN = 0x8615;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_SUN_mesh_array) return;
-        ext.glDrawMeshArraysSUN = load.invoke("glDrawMeshArraysSUN", ofVoid(JAVA_INT, JAVA_INT, JAVA_INT, JAVA_INT));
-    }
+public interface GLSUNMeshArray {
+    int GL_QUAD_MESH_SUN = 0x8614;
+    int GL_TRIANGLE_MESH_SUN = 0x8615;
 
-    public static void glDrawMeshArraysSUN(int mode, int first, int count, int width) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glDrawMeshArraysSUN).invokeExact(mode, first, count, width);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glDrawMeshArraysSUN(int mode, int first, int count, int width);
 }

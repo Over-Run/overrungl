@@ -18,16 +18,13 @@
 package overrungl.opengl.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_OML_subsample}
  */
-public final class GLOMLSubsample {
-    public static final int GL_FORMAT_SUBSAMPLE_24_24_OML = 0x8982;
-    public static final int GL_FORMAT_SUBSAMPLE_244_244_OML = 0x8983;
+public interface GLOMLSubsample {
+    int GL_FORMAT_SUBSAMPLE_24_24_OML = 0x8982;
+    int GL_FORMAT_SUBSAMPLE_244_244_OML = 0x8983;
 }

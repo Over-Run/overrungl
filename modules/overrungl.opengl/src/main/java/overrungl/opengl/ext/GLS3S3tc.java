@@ -18,20 +18,17 @@
 package overrungl.opengl.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_S3_s3tc}
  */
-public final class GLS3S3tc {
-    public static final int GL_RGB_S3TC = 0x83A0;
-    public static final int GL_RGB4_S3TC = 0x83A1;
-    public static final int GL_RGBA_S3TC = 0x83A2;
-    public static final int GL_RGBA4_S3TC = 0x83A3;
-    public static final int GL_RGBA_DXT5_S3TC = 0x83A4;
-    public static final int GL_RGBA4_DXT5_S3TC = 0x83A5;
+public interface GLS3S3tc {
+    int GL_RGB_S3TC = 0x83A0;
+    int GL_RGB4_S3TC = 0x83A1;
+    int GL_RGBA_S3TC = 0x83A2;
+    int GL_RGBA4_S3TC = 0x83A3;
+    int GL_RGBA_DXT5_S3TC = 0x83A4;
+    int GL_RGBA4_DXT5_S3TC = 0x83A5;
 }

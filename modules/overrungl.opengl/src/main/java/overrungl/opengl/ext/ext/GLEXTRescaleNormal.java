@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.ext;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_EXT_rescale_normal}
  */
-public final class GLEXTRescaleNormal {
-    public static final int GL_RESCALE_NORMAL_EXT = 0x803A;
+public interface GLEXTRescaleNormal {
+    int GL_RESCALE_NORMAL_EXT = 0x803A;
 }

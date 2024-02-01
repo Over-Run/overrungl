@@ -18,15 +18,12 @@
 package overrungl.opengl.ext.intel;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_INTEL_conservative_rasterization}
  */
-public final class GLINTELConservativeRasterization {
-    public static final int GL_CONSERVATIVE_RASTERIZATION_INTEL = 0x83FE;
+public interface GLINTELConservativeRasterization {
+    int GL_CONSERVATIVE_RASTERIZATION_INTEL = 0x83FE;
 }

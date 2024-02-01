@@ -18,24 +18,21 @@
 package overrungl.opengl.ext.oes;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_OES_compressed_paletted_texture}
  */
-public final class GLOESCompressedPalettedTexture {
-    public static final int GL_PALETTE4_RGB8_OES = 0x8B90;
-    public static final int GL_PALETTE4_RGBA8_OES = 0x8B91;
-    public static final int GL_PALETTE4_R5_G6_B5_OES = 0x8B92;
-    public static final int GL_PALETTE4_RGBA4_OES = 0x8B93;
-    public static final int GL_PALETTE4_RGB5_A1_OES = 0x8B94;
-    public static final int GL_PALETTE8_RGB8_OES = 0x8B95;
-    public static final int GL_PALETTE8_RGBA8_OES = 0x8B96;
-    public static final int GL_PALETTE8_R5_G6_B5_OES = 0x8B97;
-    public static final int GL_PALETTE8_RGBA4_OES = 0x8B98;
-    public static final int GL_PALETTE8_RGB5_A1_OES = 0x8B99;
+public interface GLOESCompressedPalettedTexture {
+    int GL_PALETTE4_RGB8_OES = 0x8B90;
+    int GL_PALETTE4_RGBA8_OES = 0x8B91;
+    int GL_PALETTE4_R5_G6_B5_OES = 0x8B92;
+    int GL_PALETTE4_RGBA4_OES = 0x8B93;
+    int GL_PALETTE4_RGB5_A1_OES = 0x8B94;
+    int GL_PALETTE8_RGB8_OES = 0x8B95;
+    int GL_PALETTE8_RGBA8_OES = 0x8B96;
+    int GL_PALETTE8_R5_G6_B5_OES = 0x8B97;
+    int GL_PALETTE8_RGBA4_OES = 0x8B98;
+    int GL_PALETTE8_RGB5_A1_OES = 0x8B99;
 }

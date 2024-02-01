@@ -18,35 +18,22 @@
 package overrungl.opengl.ext.arb;
 
 import overrungl.*;
-import overrungl.opengl.*;
+import overrun.marshal.*;
 import java.lang.foreign.*;
-import static java.lang.foreign.FunctionDescriptor.*;
-import static java.lang.foreign.ValueLayout.*;
-import static overrungl.opengl.GLLoader.*;
 
 /**
  * {@code GL_ARB_multisample}
  */
-public final class GLARBMultisample {
-    public static final int GL_MULTISAMPLE_ARB = 0x809D;
-    public static final int GL_SAMPLE_ALPHA_TO_COVERAGE_ARB = 0x809E;
-    public static final int GL_SAMPLE_ALPHA_TO_ONE_ARB = 0x809F;
-    public static final int GL_SAMPLE_COVERAGE_ARB = 0x80A0;
-    public static final int GL_SAMPLE_BUFFERS_ARB = 0x80A8;
-    public static final int GL_SAMPLES_ARB = 0x80A9;
-    public static final int GL_SAMPLE_COVERAGE_VALUE_ARB = 0x80AA;
-    public static final int GL_SAMPLE_COVERAGE_INVERT_ARB = 0x80AB;
-    public static final int GL_MULTISAMPLE_BIT_ARB = 0x20000000;
-    public static void load(GLExtCaps ext, GLLoadFunc load) {
-        if (!ext.GL_ARB_multisample) return;
-        ext.glSampleCoverageARB = load.invoke("glSampleCoverageARB", ofVoid(JAVA_FLOAT, JAVA_BYTE));
-    }
+public interface GLARBMultisample {
+    int GL_MULTISAMPLE_ARB = 0x809D;
+    int GL_SAMPLE_ALPHA_TO_COVERAGE_ARB = 0x809E;
+    int GL_SAMPLE_ALPHA_TO_ONE_ARB = 0x809F;
+    int GL_SAMPLE_COVERAGE_ARB = 0x80A0;
+    int GL_SAMPLE_BUFFERS_ARB = 0x80A8;
+    int GL_SAMPLES_ARB = 0x80A9;
+    int GL_SAMPLE_COVERAGE_VALUE_ARB = 0x80AA;
+    int GL_SAMPLE_COVERAGE_INVERT_ARB = 0x80AB;
+    int GL_MULTISAMPLE_BIT_ARB = 0x20000000;
 
-    public static void glSampleCoverageARB(float value, boolean invert) {
-        final var ext = getExtCapabilities();
-        try {
-            check(ext.glSampleCoverageARB).invokeExact(value, invert);
-        } catch (Throwable e) { throw new AssertionError("should not reach here", e); }
-    }
-
+    void glSampleCoverageARB(float value, boolean invert);
 }

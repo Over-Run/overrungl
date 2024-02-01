@@ -68,6 +68,7 @@ public interface GLLoadFunc {
      * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
      */
     @Nullable
+    @Deprecated(since = "0.1.0")
     default MethodHandle invoke(String procName, FunctionDescriptor function, Linker.Option... options) {
         return RuntimeHelper.downcallSafe(invoke(procName), function, options);
     }

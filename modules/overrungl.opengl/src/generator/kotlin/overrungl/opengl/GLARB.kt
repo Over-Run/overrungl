@@ -155,7 +155,7 @@ fun arb() {
                 void,
                 "glDebugMessageCallbackARB(callback.stub(arena), userParam);",
                 arena("arena"),
-                Type("GLDebugProc", null)("callback"),
+                Type("overrungl.opengl.GLDebugProc", null)("callback"),
                 address("userParam", "const void *")
             )
         }

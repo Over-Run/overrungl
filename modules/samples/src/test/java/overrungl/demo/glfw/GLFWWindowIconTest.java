@@ -110,8 +110,7 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        gl = GLLoader.load(glfw::getProcAddress);
-        Objects.requireNonNull(gl, "Failed to load OpenGL");
+        gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(glfw::getProcAddress)), "Failed to load OpenGL");
 
         gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }
