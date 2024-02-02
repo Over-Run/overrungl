@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,17 @@ module overrungl.opengl {
     exports overrungl.opengl.ext.amd;
     exports overrungl.opengl.ext.apple;
     exports overrungl.opengl.ext.arb;
+    exports overrungl.opengl.ext.ati;
+    exports overrungl.opengl.ext.ext;
+    exports overrungl.opengl.ext.ibm;
+    exports overrungl.opengl.ext.intel;
+    exports overrungl.opengl.ext.khr;
+    exports overrungl.opengl.ext.mesa;
+    exports overrungl.opengl.ext.nv;
+    exports overrungl.opengl.ext.oes;
+    exports overrungl.opengl.ext.sgi;
     exports overrungl.opengl.ext.sun;
 
-    requires overrungl.core;
+    requires transitive overrungl.core;
     requires static org.jetbrains.annotations;
 }

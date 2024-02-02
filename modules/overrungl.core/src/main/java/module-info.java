@@ -31,6 +31,6 @@ module overrungl.core {
         overrungl.stb;
 
     requires transitive io.github.overrun.marshal;
-    requires io.github.overrun.platform;
+    requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;
 }

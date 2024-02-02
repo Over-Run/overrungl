@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,6 @@
 module overrungl.nfd {
     exports overrungl.nfd;
 
-    requires overrungl.core;
-    requires io.github.overrun.platform;
+    requires transitive overrungl.core;
     requires static org.jetbrains.annotations;
 }
