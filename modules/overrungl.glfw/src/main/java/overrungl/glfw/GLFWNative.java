@@ -24,6 +24,7 @@ import overrun.marshal.gen.Ref;
 import overrun.marshal.gen.Type;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * This is the header file of the native access functions.
@@ -39,7 +40,7 @@ public interface GLFWNative {
     /**
      * The instance of GLFWNative.
      */
-    GLFWNative INSTANCE = Downcall.load(Handles.lookup);
+    GLFWNative INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     /**
      * Returns the adapter device name of the specified monitor.

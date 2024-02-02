@@ -30,6 +30,7 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 import java.util.Map;
 
 import static java.lang.foreign.ValueLayout.*;
@@ -131,7 +132,7 @@ public interface NFD {
     /**
      * The instance of NFD.
      */
-    NFD INSTANCE = Downcall.load(NFDInternal.LOOKUP, Map.of(
+    NFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP, Map.of(
         "NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
         "NFD_PathSet_FreePathN", FunctionDescriptor.ofVoid(ADDRESS),
         "NFD_FreePathU8", FunctionDescriptor.ofVoid(ADDRESS),

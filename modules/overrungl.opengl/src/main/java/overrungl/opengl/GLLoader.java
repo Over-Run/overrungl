@@ -22,6 +22,7 @@ import overrungl.opengl.ext.GLExtension;
 
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
 import java.util.Map;
 
 /**
@@ -49,6 +50,7 @@ public final class GLLoader {
         "glMapNamedBuffer", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT),
         "glMapNamedBufferRange", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT)
     );
+    private static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
 
     /**
      * Loads OpenGL flags.
@@ -68,7 +70,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GL load(GLFlags flags) {
-        return flags.GL10 ? Downcall.load(GL.class, flags.load.lookup(), DESCRIPTOR_MAP) : null;
+        return flags.GL10 ? Downcall.load(LOOKUP, GL.class, flags.load.lookup(), DESCRIPTOR_MAP) : null;
     }
 
     /**
@@ -79,7 +81,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLLegacy loadLegacy(GLFlags flags) {
-        return flags.GL10 ? Downcall.load(GLLegacy.class, flags.load.lookup(), DESCRIPTOR_MAP) : null;
+        return flags.GL10 ? Downcall.load(LOOKUP, GLLegacy.class, flags.load.lookup(), DESCRIPTOR_MAP) : null;
     }
 
     /**
@@ -90,6 +92,6 @@ public final class GLLoader {
      */
     @Nullable
     public static GLExtension loadExtension(GLFlags flags) {
-        return flags.foundExtension ? Downcall.load(GLExtension.class, flags.load.lookup(), DESCRIPTOR_MAP) : null;
+        return flags.foundExtension ? Downcall.load(LOOKUP, GLExtension.class, flags.load.lookup(), DESCRIPTOR_MAP) : null;
     }
 }

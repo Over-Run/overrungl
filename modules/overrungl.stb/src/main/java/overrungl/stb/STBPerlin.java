@@ -19,6 +19,8 @@ package overrungl.stb;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
 
+import java.lang.invoke.MethodHandles;
+
 /**
  * The STB perlin noise generator.
  *
@@ -29,7 +31,7 @@ public interface STBPerlin {
     /**
      * The instance of STBPerlin.
      */
-    STBPerlin INSTANCE = Downcall.load(Handles.lookup);
+    STBPerlin INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     /**
      * This function computes a random value at the coordinate (x,y,z).<br>

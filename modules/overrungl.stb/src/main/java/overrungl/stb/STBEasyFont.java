@@ -22,6 +22,7 @@ import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Sized;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * Easy-to-deploy,
@@ -58,7 +59,7 @@ interface STBEasyFont {
     /**
      * The instance of STBEasyFont.
      */
-    STBEasyFont INSTANCE = Downcall.load(Handles.lookup);
+    STBEasyFont INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     /**
      * {@return spacing}

@@ -29,6 +29,7 @@ import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.glfw.Handles.*;
@@ -43,7 +44,7 @@ public interface GLFW {
     /**
      * The instance of GLFW.
      */
-    GLFW INSTANCE = Downcall.load(lookup);
+    GLFW INSTANCE = Downcall.load(MethodHandles.lookup(), lookup);
 
     /**
      * The major version number of the GLFW header.

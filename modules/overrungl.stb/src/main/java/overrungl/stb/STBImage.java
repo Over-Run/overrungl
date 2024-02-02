@@ -25,6 +25,7 @@ import overrun.marshal.gen.*;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The STB image reader.
@@ -36,7 +37,7 @@ public interface STBImage {
     /**
      * The instance of STBImage.
      */
-    STBImage INSTANCE = Downcall.load(Handles.lookup);
+    STBImage INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
     // only used for desiredChannels
     /**
      * Image channels

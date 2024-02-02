@@ -1,5 +1,4 @@
 import org.gradle.plugins.ide.idea.model.IdeaModel
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -8,7 +7,6 @@ plugins {
     `maven-publish`
     signing
     id("me.champeau.jmh") version "0.7.2" apply false
-    embeddedKotlin("jvm") apply false
 }
 
 val projGroupId: String by project
@@ -28,8 +26,6 @@ val jdkEarlyAccessDoc: String? by rootProject
 val kotlinTargetJdkVersion: String by rootProject
 
 val targetJavaVersion = jdkVersion.toInt()
-
-val overrunMarshalVersion: String by rootProject
 
 group = projGroupId
 version = projVersion
@@ -122,23 +118,19 @@ enum class Artifact(
     }
 }
 
-Artifact.values().forEach { project(it.subprojectName).ext["subName"] = "-${it.subprojectName.substring(1)}" }
-project(Artifact.CORE.subprojectName).ext["subName"] = ""
-project(":samples").ext["subName"] = "-samples"
+val artifactNameMap = buildMap {
+    Artifact.values().forEach { put(it.subprojectName, it.artifactName) }
+    put(":samples", "overrungl-samples")
+}
 
-buildList {
-    addAll(Artifact.values().map { it.subprojectName })
-    add(":samples")
-}.forEach {
-    project(it) {
-        apply(plugin = "org.jetbrains.kotlin.jvm")
+artifactNameMap.forEach { (subprojectName, artifactName) ->
+    project(subprojectName) {
         apply(plugin = "java-library")
         apply(plugin = "idea")
         apply(plugin = "me.champeau.jmh")
 
         group = projGroupId
         version = projVersion
-        val artifactName = "$projArtifactId${ext["subName"]}"
 
         repositories {
             mavenCentral()
@@ -148,15 +140,12 @@ buildList {
             maven { url = uri("https://maven.aliyun.com/repository/central") }
         }
 
-        val annotationProcessor by configurations
-        val api by configurations
         val compileOnly by configurations
-        val implementation by configurations
         dependencies {
             compileOnly("org.jetbrains:annotations:24.1.0")
-            api("io.github.over-run:marshal:$overrunMarshalVersion")
             if (project.name != "core") {
-                implementation(project(Artifact.CORE.subprojectName))
+                compileOnly(project(Artifact.CORE.subprojectName))
+                constraints { api("io.github.over-run:overrungl:$projVersion") }
             }
         }
 
@@ -164,10 +153,6 @@ buildList {
             options.encoding = "UTF-8"
             if (jdkEnablePreview.toBoolean()) options.compilerArgs.add("--enable-preview")
             options.release.set(targetJavaVersion)
-        }
-
-        tasks.withType<KotlinCompile> {
-            kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
         }
 
         tasks.withType<Test> {
@@ -329,16 +314,14 @@ publishing.publications {
             version = projVersion
             description = module.projectDescription
             project(module.subprojectName) {
-                artifact(tasks["jar"])
-                artifact(tasks["sourcesJar"]) { classifier = "sources" }
-                artifact(tasks["javadocJar"]) { classifier = "javadoc" }
+                from(components["java"])
             }
             module.nativeBinding?.platforms?.forEach {
                 val nativeName = module.nativeFileName(it)!!
                 val file = File("${rootProject.projectDir}/natives/$nativeName")
                 if (file.exists()) {
                     val nativeParent = File(nativeName).parent
-                    artifact(tasks.create<Jar>("nativeJar${module.mavenName}${it.taskSuffix}") {
+                    artifact(tasks.register<Jar>("nativeJar${module.mavenName}${it.taskSuffix}") {
                         archiveBaseName.set(module.artifactName)
                         archiveClassifier.set(it.classifier)
                         from(file) { into(nativeParent) }
@@ -347,16 +330,6 @@ publishing.publications {
             }
             pom {
                 setupPom(module.projectName, module.projectDescription, "jar")
-                if (module != Artifact.CORE) {
-                    withXml {
-                        asNode().appendNode("dependencies").appendNode("dependency").apply {
-                            appendNode("groupId", "io.github.over-run")
-                            appendNode("artifactId", "overrungl")
-                            appendNode("version", projVersion)
-                            appendNode("scope", "compile")
-                        }
-                    }
-                }
             }
         }
     }
@@ -421,6 +394,7 @@ publishing.repositories {
             else "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
         )
     }
+    mavenLocal()
 }
 
 signing {

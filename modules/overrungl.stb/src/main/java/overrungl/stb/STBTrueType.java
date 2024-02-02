@@ -23,6 +23,7 @@ import overrun.marshal.gen.Type;
 import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * =======================================================================
@@ -312,7 +313,7 @@ public interface STBTrueType {
     /**
      * The instance of STBTrueType.
      */
-    STBTrueType INSTANCE = Downcall.load(Handles.lookup);
+    STBTrueType INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
     /**
      * STBTT_vmove
      */

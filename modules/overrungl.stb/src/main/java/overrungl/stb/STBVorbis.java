@@ -23,6 +23,7 @@ import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.invoke.MethodHandles;
 
 /**
  * normally stb_vorbis uses malloc() to allocate memory at startup,
@@ -55,7 +56,7 @@ public interface STBVorbis {
     /**
      * The instance of STBVorbis.
      */
-    STBVorbis INSTANCE = Downcall.load(Handles.lookup);
+    STBVorbis INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
     /**
      * ERROR CODES
      */

@@ -1,9 +1,19 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+    embeddedKotlin("jvm") apply false
+}
+
 val jdkVersion: String by rootProject
 val jdkEnablePreview: String by rootProject
 val kotlinTargetJdkVersion: String by rootProject
 
 sourceSets {
     create("generator")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
 }
 
 tasks.named<JavaCompile>("compileGeneratorJava") {

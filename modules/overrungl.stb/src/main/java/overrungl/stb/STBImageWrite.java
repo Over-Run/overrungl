@@ -25,6 +25,7 @@ import overrun.marshal.gen.Type;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The STB image writer.
@@ -36,7 +37,7 @@ public interface STBImageWrite {
     /**
      * The instance of STBImageWrite.
      */
-    STBImageWrite INSTANCE = Downcall.load(Handles.lookup);
+    STBImageWrite INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     @Convert(Type.INT)
     @Entrypoint("stbi_get_write_tga_with_rle")

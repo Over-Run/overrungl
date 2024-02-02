@@ -21,6 +21,7 @@ import overrun.marshal.gen.Entrypoint;
 import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The STB image resizer.
@@ -32,7 +33,7 @@ public interface STBImageResize2 {
     /**
      * The instance of STBImageResize2.
      */
-    STBImageResize2 INSTANCE = Downcall.load(Handles.lookup);
+    STBImageResize2 INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     //===============================================================
     //  Simple-complexity API

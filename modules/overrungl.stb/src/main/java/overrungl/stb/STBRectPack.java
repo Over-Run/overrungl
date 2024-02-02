@@ -19,6 +19,8 @@ package overrungl.stb;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
 
+import java.lang.invoke.MethodHandles;
+
 /**
  * Useful for e.g. packing rectangular textures into an atlas.
  * Does not do rotation.
@@ -32,7 +34,7 @@ public interface STBRectPack {
     /**
      * The instance of STBRectPack.
      */
-    STBRectPack INSTANCE = Downcall.load(Handles.lookup);
+    STBRectPack INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
     /**
      * Mostly for internal use, but this is the maximum supported coordinate value.
      */

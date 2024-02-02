@@ -23,6 +23,7 @@ import overrun.marshal.gen.Ref;
 import overrun.marshal.gen.Type;
 
 import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The GLFW Vulkan binding.
@@ -34,7 +35,7 @@ public interface GLFWVulkan {
     /**
      * The instance of GLFWVulkan.
      */
-    GLFWVulkan INSTANCE = Downcall.load(Handles.lookup);
+    GLFWVulkan INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     /**
      * Returns the address of the specified Vulkan instance function.
