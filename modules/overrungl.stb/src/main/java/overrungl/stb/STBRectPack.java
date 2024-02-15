@@ -25,7 +25,7 @@ import java.lang.invoke.MethodHandles;
  * Useful for e.g. packing rectangular textures into an atlas.
  * Does not do rotation.
  * <p>
- * his library currently uses the Skyline Bottom-Left algorithm.
+ * This library currently uses the Skyline Bottom-Left algorithm.
  *
  * @author squid233
  * @since 0.1.0
