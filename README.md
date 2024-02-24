@@ -26,23 +26,15 @@ but OverrunGL uses [FFM API](https://openjdk.org/jeps/454), which has better per
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
 the [samples](modules/samples/src/test/java/overrungl/demo).
 
-### Enable native access
-
-You must enable the access of OverrunGL by adding a VM argument or a manifest attribute.
-
-```
---enable-preview-access=overrungl.core,...
-```
-
 ## Import as a Dependency
+
+We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
 
 Currently, we are developing with the first version,
 and it uses preview features, which prevent users from using newer JDKs,
 so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
-
-We have provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
 
 ### Using -SNAPSHOT Versions
 
@@ -54,6 +46,14 @@ and include this maven repository:
 
 ```groovy
 maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
+```
+
+### Enable native access
+
+You must enable the access of OverrunGL by adding a VM argument or a manifest attribute.
+
+```
+--enable-preview-access=overrungl.core,...
 ```
 
 ## List of Supported Bindings
@@ -104,6 +104,8 @@ See [doc/notes](doc/notes/README.md).
 Javadoc can be found [here](https://over-run.github.io/overrungl-doc/).
 
 The documentation of OpenGL can be found from [references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
+
+OverrunGL uses [Marshal](https://github.com/Over-Run/marshal).
 
 ### Credits
 
