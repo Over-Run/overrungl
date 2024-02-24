@@ -34,14 +34,15 @@ You must enable the access of OverrunGL by adding a VM argument or a manifest at
 --enable-preview-access=overrungl.core,...
 ```
 
-## Using as a Dependency
+## Import as a Dependency
 
-~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very
-unstable, so you have to use `-SNAPSHOT` version.
+Currently, we are developing with the first version,
+and it uses preview features, which prevent users from using newer JDKs,
+so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
 
-We have provided an artifacts customizer [here](https://over-run.github.io/overrungl-gen/).
+We have provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
 
 ### Using -SNAPSHOT Versions
 
@@ -102,72 +103,8 @@ See [doc/notes](doc/notes/README.md).
 
 Javadoc can be found [here](https://over-run.github.io/overrungl-doc/).
 
-The documentation of OpenGL can be found [here](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [here](https://docs.gl/).
+The documentation of OpenGL can be found from [references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
 
 ### Credits
 
 [<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)
-
-### Publishing (for internal member)
-
-To publish this library, you need a GPG key and the write permission of Maven Central.
-
-#### Packing Natives
-
-The build script can put the native libraries into jars.
-
-The tree structure of libraries is:
-
-```text
-natives
-├─ glfw
-│  ├─ linux
-│  │  ├─ arm64
-│  │  │  └─ libglfw3.so
-│  │  └─ x64
-│  │     └─ libglfw3.so
-│  ├─ macos
-│  │  ├─ arm64
-│  │  │  └─ libglfw3.dylib
-│  │  └─ x64
-│  │     └─ libglfw3.dylib
-│  └─ windows
-│     └─ x64
-│        └─ glfw3.dll
-├─ nfd https://github.com/Over-Run/nfd-ci
-│  ├─ linux
-│  │  ├─ arm32
-│  │  │  └─ libnfd.so
-│  │  ├─ arm64
-│  │  │  └─ libnfd.so
-│  │  └─ x64
-│  │     └─ libnfd.so
-│  ├─ macos
-│  │  ├─ arm64
-│  │  │  └─ libnfd.dylib
-│  │  └─ x64
-│  │     └─ libnfd.dylib
-│  └─ windows
-│     ├─ arm64
-│     │  └─ nfd.dll
-│     └─ x64
-│        └─ nfd.dll
-└─ stb https://github.com/Over-Run/stb-ci
-   ├─ linux
-   │  ├─ arm32
-   │  │  └─ libstb.so
-   │  ├─ arm64
-   │  │  └─ libstb.so
-   │  └─ x64
-   │     └─ libstb.so
-   ├─ macos
-   │  ├─ arm64
-   │  │  └─ libstb.dylib
-   │  └─ x64
-   │     └─ libstb.dylib
-   └─ windows
-      ├─ arm64
-      │  └─ stb.dll
-      └─ x64
-         └─ stb.dll
-```
