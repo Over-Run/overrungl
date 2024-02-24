@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.Entrypoint;
 
 import java.lang.foreign.MemorySegment;
@@ -27,7 +28,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL12C extends GL11C permits GL12, GL13C {
+public interface GL12C extends DirectAccess {
     int UNSIGNED_BYTE_3_3_2 = 0x8032;
     int UNSIGNED_SHORT_4_4_4_4 = 0x8033;
     int UNSIGNED_SHORT_5_5_5_1 = 0x8034;

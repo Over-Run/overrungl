@@ -16,6 +16,7 @@
 
 package overrungl.stb;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
 import overrungl.NativeType;
@@ -29,7 +30,7 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface STBImageResize2 {
+public interface STBImageResize2 extends DirectAccess {
     /**
      * The instance of STBImageResize2.
      */

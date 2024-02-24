@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for keyboard key callbacks. A keyboard
@@ -37,7 +39,7 @@ public interface GLFWKeyFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWKeyFun> TYPE = Upcall.type();
+    Type<GLFWKeyFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for keyboard key callbacks.
@@ -50,7 +52,6 @@ public interface GLFWKeyFun extends Upcall {
      * @param mods     Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a>
      *                 were held down.
      */
-    @Stub
     void invoke(MemorySegment window, int key, int scancode, int action, int mods);
 
     @Override

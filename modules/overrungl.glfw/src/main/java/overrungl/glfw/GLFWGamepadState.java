@@ -45,12 +45,12 @@ public final class GLFWGamepadState extends Struct {
      * The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
      * {@link GLFW#PRESS} or {@link GLFW#RELEASE}.
      */
-    public final StructHandleSizedByteArray buttons = StructHandleSizedByteArray.of(this, "buttons");
+    public static final StructHandleSizedByteArray buttons = StructHandleSizedByteArray.of(LAYOUT, "buttons");
     /**
      * The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
      * in the range -1.0 to 1.0 inclusive.
      */
-    public final StructHandleSizedFloatArray axes = StructHandleSizedFloatArray.of(this, "axes");
+    public static final StructHandleSizedFloatArray axes = StructHandleSizedFloatArray.of(LAYOUT, "axes");
 
     /**
      * Creates a struct with the given layout.
@@ -97,7 +97,7 @@ public final class GLFWGamepadState extends Struct {
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
     public boolean button(int index) {
-        return buttons.get(index) == GLFW.PRESS;
+        return buttons.get(this, index) == GLFW.PRESS;
     }
 
     /**
@@ -107,6 +107,6 @@ public final class GLFWGamepadState extends Struct {
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
     public float axe(int index) {
-        return axes.get(index);
+        return axes.get(this, index);
     }
 }

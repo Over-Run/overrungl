@@ -16,16 +16,16 @@
 
 package overrungl.demo.mem;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemorySegment;
-import java.util.concurrent.TimeUnit;
-
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import overrungl.util.MemoryUtil;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Tests memory util

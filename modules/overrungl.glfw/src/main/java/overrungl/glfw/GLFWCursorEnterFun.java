@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for cursor enter/leave callbacks.
@@ -37,7 +39,7 @@ public interface GLFWCursorEnterFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWCursorEnterFun> TYPE = Upcall.type();
+    Type<GLFWCursorEnterFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for cursor enter/leave callbacks.
@@ -55,7 +57,6 @@ public interface GLFWCursorEnterFun extends Upcall {
      * @param entered {@code true} if the cursor entered the window's content
      *                area, or {@code false} if it left it.
      */
-    @Stub
     default void ninvoke(MemorySegment window, int entered) {
         invoke(window, entered != GLFW.FALSE);
     }

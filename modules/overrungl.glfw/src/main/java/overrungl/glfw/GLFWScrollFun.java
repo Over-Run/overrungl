@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for scroll callbacks. A scroll callback
@@ -37,7 +39,7 @@ public interface GLFWScrollFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWScrollFun> TYPE = Upcall.type();
+    Type<GLFWScrollFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
 
     /**
      * The function pointer type for scroll callbacks.
@@ -46,7 +48,6 @@ public interface GLFWScrollFun extends Upcall {
      * @param xoffset The scroll offset along the x-axis.
      * @param yoffset The scroll offset along the y-axis.
      */
-    @Stub
     void invoke(MemorySegment window, double xoffset, double yoffset);
 
     @Override

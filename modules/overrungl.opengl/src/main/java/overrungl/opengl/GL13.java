@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.Entrypoint;
 import overrungl.opengl.ext.arb.GLARBTransposeMatrix;
 
@@ -33,7 +34,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL13 extends GL13C permits GLLegacy {
+public interface GL13 extends DirectAccess {
     int CLIENT_ACTIVE_TEXTURE = 0x84E1;
     int MAX_TEXTURE_UNITS = 0x84E2;
     int TRANSPOSE_MODELVIEW_MATRIX = 0x84E3;

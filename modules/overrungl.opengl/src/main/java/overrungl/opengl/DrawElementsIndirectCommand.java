@@ -50,23 +50,23 @@ public final class DrawElementsIndirectCommand extends Struct {
     /**
      * the count
      */
-    public final StructHandle.Int count = StructHandle.ofInt(this, "count");
+    public static final StructHandle.Int count = StructHandle.ofInt(LAYOUT, "count");
     /**
      * the primCount
      */
-    public final StructHandle.Int primCount = StructHandle.ofInt(this, "primCount");
+    public static final StructHandle.Int primCount = StructHandle.ofInt(LAYOUT, "primCount");
     /**
      * the firstIndex
      */
-    public final StructHandle.Int firstIndex = StructHandle.ofInt(this, "firstIndex");
+    public static final StructHandle.Int firstIndex = StructHandle.ofInt(LAYOUT, "firstIndex");
     /**
      * the baseVertex
      */
-    public final StructHandle.Int baseVertex = StructHandle.ofInt(this, "baseVertex");
+    public static final StructHandle.Int baseVertex = StructHandle.ofInt(LAYOUT, "baseVertex");
     /**
      * the baseInstance
      */
-    public final StructHandle.Int baseInstance = StructHandle.ofInt(this, "baseInstance");
+    public static final StructHandle.Int baseInstance = StructHandle.ofInt(LAYOUT, "baseInstance");
 
     /**
      * Creates a struct with the given layout.

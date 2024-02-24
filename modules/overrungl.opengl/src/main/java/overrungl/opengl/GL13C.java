@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.Entrypoint;
 import overrungl.opengl.ext.arb.*;
 
@@ -36,7 +37,7 @@ import java.lang.foreign.MemorySegment;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL13C extends GL12C permits GL13, GL14C {
+public interface GL13C extends DirectAccess {
     int TEXTURE0 = 0x84C0;
     int TEXTURE1 = 0x84C1;
     int TEXTURE2 = 0x84C2;

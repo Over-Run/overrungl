@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for window content scale callbacks.
@@ -37,7 +39,7 @@ public interface GLFWWindowContentScaleFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWWindowContentScaleFun> TYPE = Upcall.type();
+    Type<GLFWWindowContentScaleFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
 
     /**
      * The function pointer type for window content scale callbacks.
@@ -46,7 +48,6 @@ public interface GLFWWindowContentScaleFun extends Upcall {
      * @param xscale The new x-axis content scale of the window.
      * @param yscale The new y-axis content scale of the window.
      */
-    @Stub
     void invoke(MemorySegment window, float xscale, float yscale);
 
     @Override

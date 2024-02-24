@@ -47,15 +47,15 @@ public final class STBTTKerningEntry extends Struct {
     /**
      * use stbtt_FindGlyphIndex
      */
-    public final StructHandle.Int glyph1 = StructHandle.ofInt(this, "glyph1");
+    public static final StructHandle.Int glyph1 = StructHandle.ofInt(LAYOUT, "glyph1");
     /**
      * glyph2
      */
-    public final StructHandle.Int glyph2 = StructHandle.ofInt(this, "glyph2");
+    public static final StructHandle.Int glyph2 = StructHandle.ofInt(LAYOUT, "glyph2");
     /**
      * advance
      */
-    public final StructHandle.Int advance = StructHandle.ofInt(this, "advance");
+    public static final StructHandle.Int advance = StructHandle.ofInt(LAYOUT, "advance");
 
     /**
      * Creates a struct with the given layout.

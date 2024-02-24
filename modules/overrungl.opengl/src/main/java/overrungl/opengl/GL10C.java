@@ -17,6 +17,7 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
@@ -35,7 +36,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL10C permits GL10, GL11C {
+public interface GL10C extends DirectAccess {
     int DEPTH_BUFFER_BIT = 0x00000100;
     int STENCIL_BUFFER_BIT = 0x00000400;
     int COLOR_BUFFER_BIT = 0x00004000;

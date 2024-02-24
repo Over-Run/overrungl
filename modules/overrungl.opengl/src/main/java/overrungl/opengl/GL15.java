@@ -16,13 +16,15 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
  * The OpenGL 1.5 constants.
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL15 extends GL15C permits GLLegacy {
+public interface GL15 extends DirectAccess {
     int VERTEX_ARRAY_BUFFER_BINDING = 0x8896;
     int NORMAL_ARRAY_BUFFER_BINDING = 0x8897;
     int COLOR_ARRAY_BUFFER_BINDING = 0x8898;

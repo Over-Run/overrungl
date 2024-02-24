@@ -16,13 +16,15 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
  * The OpenGL 2.0 constants.
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL20 extends GL20C permits GLLegacy {
+public interface GL20 extends DirectAccess {
     int VERTEX_PROGRAM_TWO_SIDE = 0x8643;
     int POINT_SPRITE = 0x8861;
     int COORD_REPLACE = 0x8862;

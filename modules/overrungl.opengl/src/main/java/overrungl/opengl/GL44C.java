@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Skip;
@@ -36,7 +37,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL44C extends GL43C permits GL45C {
+public interface GL44C extends DirectAccess {
     int MAX_VERTEX_ATTRIB_STRIDE = 0x82E5;
     int PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221;
     int TEXTURE_BUFFER_BINDING = 0x8C2A;

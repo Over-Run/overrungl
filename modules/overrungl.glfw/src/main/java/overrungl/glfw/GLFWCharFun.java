@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for Unicode character callbacks.
@@ -37,7 +39,7 @@ public interface GLFWCharFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWCharFun> TYPE = Upcall.type();
+    Type<GLFWCharFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for Unicode character callbacks.
@@ -45,7 +47,6 @@ public interface GLFWCharFun extends Upcall {
      * @param window    The window that received the event.
      * @param codepoint The Unicode code point of the character.
      */
-    @Stub
     void invoke(MemorySegment window, int codepoint);
 
     @Override

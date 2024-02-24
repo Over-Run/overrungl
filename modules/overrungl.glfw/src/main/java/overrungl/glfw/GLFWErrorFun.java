@@ -18,11 +18,14 @@ package overrungl.glfw;
 
 import overrun.marshal.Unmarshal;
 import overrun.marshal.Upcall;
-import overrun.marshal.gen.SizedSeg;
 import overrungl.NativeType;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
+
+import static java.lang.foreign.ValueLayout.*;
 
 /**
  * This is the function pointer type for error callbacks. An error callback
@@ -43,7 +46,7 @@ public interface GLFWErrorFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWErrorFun> TYPE = Upcall.type();
+    Type<GLFWErrorFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(JAVA_INT, ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, JAVA_BYTE))));
 
     /**
      * The function pointer type for error callbacks.
@@ -60,8 +63,7 @@ public interface GLFWErrorFun extends Upcall {
      *                    Future releases may add more error codes.
      * @param description A UTF-8 encoded string describing the error.
      */
-    @Stub
-    default void ninvoke(int errorCode, @NativeType("const char*") @SizedSeg(Unmarshal.STR_SIZE) MemorySegment description) {
+    default void ninvoke(int errorCode, @NativeType("const char*") MemorySegment description) {
         invoke(errorCode, Unmarshal.unmarshalAsString(description));
     }
 

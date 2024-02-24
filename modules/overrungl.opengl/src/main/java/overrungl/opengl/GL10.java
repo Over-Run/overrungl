@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -34,7 +35,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL10 extends GL10C permits GLLegacy {
+public interface GL10 extends DirectAccess {
     @Entrypoint("glAccum")
     default void accum(int op, float value) {
         throw new ContextException();

@@ -58,30 +58,30 @@ public final class STBTTPackedChar extends Struct {
     /**
      * coordinates of bbox in bitmap
      */
-    public final StructHandle.Short x0 = StructHandle.ofShort(this, "x0"),
-        y0 = StructHandle.ofShort(this, "y0"),
-        x1 = StructHandle.ofShort(this, "x1"),
-        y1 = StructHandle.ofShort(this, "y1");
+    public static final StructHandle.Short x0 = StructHandle.ofShort(LAYOUT, "x0"),
+        y0 = StructHandle.ofShort(LAYOUT, "y0"),
+        x1 = StructHandle.ofShort(LAYOUT, "x1"),
+        y1 = StructHandle.ofShort(LAYOUT, "y1");
     /**
      * xoff
      */
-    public final StructHandle.Float xoff = StructHandle.ofFloat(this, "xoff");
+    public static final StructHandle.Float xoff = StructHandle.ofFloat(LAYOUT, "xoff");
     /**
      * yoff
      */
-    public final StructHandle.Float yoff = StructHandle.ofFloat(this, "yoff");
+    public static final StructHandle.Float yoff = StructHandle.ofFloat(LAYOUT, "yoff");
     /**
      * xadvance
      */
-    public final StructHandle.Float xadvance = StructHandle.ofFloat(this, "xadvance");
+    public static final StructHandle.Float xadvance = StructHandle.ofFloat(LAYOUT, "xadvance");
     /**
      * xoff2
      */
-    public final StructHandle.Float xoff2 = StructHandle.ofFloat(this, "xoff2");
+    public static final StructHandle.Float xoff2 = StructHandle.ofFloat(LAYOUT, "xoff2");
     /**
      * yoff2
      */
-    public final StructHandle.Float yoff2 = StructHandle.ofFloat(this, "yoff2");
+    public static final StructHandle.Float yoff2 = StructHandle.ofFloat(LAYOUT, "yoff2");
 
     /**
      * Creates a struct with the given layout.

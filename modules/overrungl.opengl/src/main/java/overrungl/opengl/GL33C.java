@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -44,7 +45,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL33C extends GL32C permits GL40C {
+public interface GL33C extends DirectAccess {
     int VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE;
     int SRC1_COLOR = 0x88F9;
     int ONE_MINUS_SRC1_COLOR = 0x88FA;

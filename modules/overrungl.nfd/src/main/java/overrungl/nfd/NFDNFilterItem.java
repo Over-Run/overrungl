@@ -42,16 +42,16 @@ public final class NFDNFilterItem extends Struct {
         ValueLayout.ADDRESS.withName("name"),
         ValueLayout.ADDRESS.withName("spec")
     );
-    private final StructHandle.Str _name = StructHandle.ofString(this, "name", NFDInternal.nfdCharset);
-    private final StructHandle.Str _spec = StructHandle.ofString(this, "spec", NFDInternal.nfdCharset);
+    private static final StructHandle.Str _name = StructHandle.ofString(LAYOUT, "name", NFDInternal.nfdCharset);
+    private static final StructHandle.Str _spec = StructHandle.ofString(LAYOUT, "spec", NFDInternal.nfdCharset);
     /**
      * name
      */
-    public final StructHandleView.Str name = _name;
+    public static final StructHandleView.Str name = _name;
     /**
      * spec
      */
-    public final StructHandleView.Str spec = _spec;
+    public static final StructHandleView.Str spec = _spec;
 
     /**
      * Create a {@code NFDNFilterItem} instance.
@@ -82,8 +82,8 @@ public final class NFDNFilterItem extends Struct {
      */
     public static NFDNFilterItem create(SegmentAllocator allocator, String name, String spec) {
         final NFDNFilterItem item = new NFDNFilterItem(allocator.allocate(LAYOUT));
-        item._name.set(allocator, name);
-        item._spec.set(allocator, spec);
+        _name.set(item, allocator, name);
+        _spec.set(item, allocator, spec);
         return item;
     }
 
@@ -99,8 +99,8 @@ public final class NFDNFilterItem extends Struct {
         final NFDNFilterItem buffer = new NFDNFilterItem(allocator.allocate(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
-            buffer._name.set(i, allocator, item.key());
-            buffer._spec.set(i, allocator, item.value());
+            _name.set(buffer, i, allocator, item.key());
+            _spec.set(buffer, i, allocator, item.value());
         }
         return buffer;
     }

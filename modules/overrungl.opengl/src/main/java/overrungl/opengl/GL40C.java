@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -52,7 +53,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL40C extends GL33C permits GL41C {
+public interface GL40C extends DirectAccess {
     int SAMPLE_SHADING = 0x8C36;
     int MIN_SAMPLE_SHADING_VALUE = 0x8C37;
     int MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E;

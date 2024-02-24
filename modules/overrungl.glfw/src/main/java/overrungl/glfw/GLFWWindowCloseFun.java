@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for window close callbacks. A window
@@ -37,14 +39,13 @@ public interface GLFWWindowCloseFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWWindowCloseFun> TYPE = Upcall.type();
+    Type<GLFWWindowCloseFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
 
     /**
      * The function pointer type for window close callbacks.
      *
      * @param window The window that the user attempted to close.
      */
-    @Stub
     void invoke(MemorySegment window);
 
     @Override

@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -33,7 +34,7 @@ import java.lang.foreign.ValueLayout;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL11C extends GL10C permits GL11, GL12C {
+public interface GL11C extends DirectAccess {
     int COLOR_LOGIC_OP = 0x0BF2;
     int POLYGON_OFFSET_UNITS = 0x2A00;
     int POLYGON_OFFSET_POINT = 0x2A01;

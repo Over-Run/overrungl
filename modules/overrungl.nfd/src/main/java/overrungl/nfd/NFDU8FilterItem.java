@@ -42,16 +42,16 @@ public final class NFDU8FilterItem extends Struct {
         ValueLayout.ADDRESS.withName("name"),
         ValueLayout.ADDRESS.withName("spec")
     );
-    private final StructHandle.Str _name = StructHandle.ofString(this, "name");
-    private final StructHandle.Str _spec = StructHandle.ofString(this, "spec");
+    private static final StructHandle.Str _name = StructHandle.ofString(LAYOUT, "name");
+    private static final StructHandle.Str _spec = StructHandle.ofString(LAYOUT, "spec");
     /**
      * name
      */
-    public final StructHandleView.Str name = _name;
+    public static final StructHandleView.Str name = _name;
     /**
      * spec
      */
-    public final StructHandleView.Str spec = _spec;
+    public static final StructHandleView.Str spec = _spec;
 
     /**
      * Create a {@code NFDU8FilterItem} instance.
@@ -82,8 +82,8 @@ public final class NFDU8FilterItem extends Struct {
      */
     public static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
         final NFDU8FilterItem item = new NFDU8FilterItem(allocator.allocate(LAYOUT));
-        item._name.set(allocator, name);
-        item._spec.set(allocator, spec);
+        _name.set(item, allocator, name);
+        _spec.set(item, allocator, spec);
         return item;
     }
 
@@ -99,8 +99,8 @@ public final class NFDU8FilterItem extends Struct {
         final NFDU8FilterItem buffer = new NFDU8FilterItem(allocator.allocate(LAYOUT, items.length), items.length);
         for (int i = 0, len = items.length; i < len; i++) {
             Pair<String> item = items[i];
-            buffer._name.set(i, allocator, item.key());
-            buffer._spec.set(i, allocator, item.value());
+            _name.set(buffer, i, allocator, item.key());
+            _spec.set(buffer, i, allocator, item.value());
         }
         return buffer;
     }

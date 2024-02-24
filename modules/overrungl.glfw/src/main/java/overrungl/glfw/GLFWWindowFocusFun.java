@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for window focus callbacks.  A window
@@ -37,7 +39,7 @@ public interface GLFWWindowFocusFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWWindowFocusFun> TYPE = Upcall.type();
+    Type<GLFWWindowFocusFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for window focus callbacks.
@@ -55,7 +57,6 @@ public interface GLFWWindowFocusFun extends Upcall {
      * @param focused {@code true} if the window was given input focus, or
      *                {@code false} if it lost it.
      */
-    @Stub
     default void ninvoke(MemorySegment window, int focused) {
         invoke(window, focused != GLFW.FALSE);
     }

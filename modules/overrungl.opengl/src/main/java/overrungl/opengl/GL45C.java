@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -47,7 +48,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL45C extends GL44C permits GL46C {
+public interface GL45C extends DirectAccess {
     int CONTEXT_LOST = 0x0507;
     int NEGATIVE_ONE_TO_ONE = 0x935E;
     int ZERO_TO_ONE = 0x935F;
@@ -931,14 +932,14 @@ public sealed interface GL45C extends GL44C permits GL46C {
 
     @Skip
     default MemorySegment mapNamedBuffer(int buffer, int access) {
-        return mapNamedBuffer(buffer, access, getNamedBufferParameteri64v(buffer, BUFFER_SIZE));
+        return mapNamedBuffer(buffer, access, getNamedBufferParameteri64v(buffer, GL15C.BUFFER_SIZE));
     }
 
     @Skip
     default MemorySegment mapNamedBuffer(int buffer, int access, long bufferSize) {
         try {
             final MemorySegment segment = ((MemorySegment) glMapNamedBuffer().invokeExact(buffer, access)).reinterpret(bufferSize);
-            return access == READ_ONLY ? segment.asReadOnly() : segment;
+            return access == GL15C.READ_ONLY ? segment.asReadOnly() : segment;
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }

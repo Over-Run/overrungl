@@ -56,17 +56,17 @@ public final class STBTTAlignedQuad extends Struct {
     /**
      * top-left
      */
-    public final StructHandle.Float x0 = StructHandle.ofFloat(this, "x0"),
-        y0 = StructHandle.ofFloat(this, "y0"),
-        s0 = StructHandle.ofFloat(this, "s0"),
-        t0 = StructHandle.ofFloat(this, "t0");
+    public static final StructHandle.Float x0 = StructHandle.ofFloat(LAYOUT, "x0"),
+        y0 = StructHandle.ofFloat(LAYOUT, "y0"),
+        s0 = StructHandle.ofFloat(LAYOUT, "s0"),
+        t0 = StructHandle.ofFloat(LAYOUT, "t0");
     /**
      * bottom-right
      */
-    public final StructHandle.Float x1 = StructHandle.ofFloat(this, "x1"),
-        y1 = StructHandle.ofFloat(this, "y1"),
-        s1 = StructHandle.ofFloat(this, "s1"),
-        t1 = StructHandle.ofFloat(this, "t1");
+    public static final StructHandle.Float x1 = StructHandle.ofFloat(LAYOUT, "x1"),
+        y1 = StructHandle.ofFloat(LAYOUT, "y1"),
+        s1 = StructHandle.ofFloat(LAYOUT, "s1"),
+        t1 = StructHandle.ofFloat(LAYOUT, "t1");
 
     /**
      * Creates a struct with the given layout.

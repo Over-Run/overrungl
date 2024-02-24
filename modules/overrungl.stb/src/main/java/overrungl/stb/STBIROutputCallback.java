@@ -20,7 +20,9 @@ import overrun.marshal.Upcall;
 import overrungl.NativeType;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * OUTPUT CALLBACK: this callback is used for output scanlines
@@ -44,9 +46,8 @@ public interface STBIROutputCallback extends Upcall {
     /**
      * the type
      */
-    Type<STBIROutputCallback> TYPE = Upcall.type();
+    Type<STBIROutputCallback> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
 
-    @Stub
     void invoke(@NativeType("void const *") MemorySegment output_ptr, int num_pixels, int y, @NativeType("void *") MemorySegment context);
 
     @Override

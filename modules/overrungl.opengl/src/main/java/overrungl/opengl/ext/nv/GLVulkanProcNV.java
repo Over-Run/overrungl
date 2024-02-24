@@ -19,6 +19,7 @@ package overrungl.opengl.ext.nv;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 
 /**
@@ -32,9 +33,8 @@ public interface GLVulkanProcNV extends Upcall {
     /**
      * The type.
      */
-    Type<GLVulkanProcNV> TYPE = Upcall.type();
+    Type<GLVulkanProcNV> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid());
 
-    @Stub
     void invoke();
 
     @Override
@@ -42,14 +42,11 @@ public interface GLVulkanProcNV extends Upcall {
         return TYPE.of(arena, this);
     }
 
-    @Wrapper
-    static GLVulkanProcNV wrap(Arena arena, MemorySegment stub) {
-        return TYPE.wrap(stub, handle -> () -> {
-            try {
-                handle.invokeExact();
-            } catch (Throwable e) {
-                throw new RuntimeException(e);
-            }
-        });
+    static void invoke(MemorySegment stub) {
+        try {
+            TYPE.downcallTarget().invokeExact(stub);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
     }
 }

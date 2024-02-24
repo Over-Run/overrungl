@@ -30,10 +30,10 @@ jobs:
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x gradlew
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build --no-daemon -x :samples:test
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Execute Gradle build
+        run: ./gradlew build --no-daemon -x :samples:test
       - name: Upload build reports
         if: ${{ runner.os == 'Linux' && matrix.java == '22-ea' && failure() }}
         uses: actions/upload-artifact@v4

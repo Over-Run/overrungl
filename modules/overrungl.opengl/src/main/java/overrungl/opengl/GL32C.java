@@ -17,6 +17,7 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -43,7 +44,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL32C extends GL31C permits GL33C {
+public interface GL32C extends DirectAccess {
     int CONTEXT_CORE_PROFILE_BIT = 0x00000001;
     int CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002;
     int LINES_ADJACENCY = 0x000A;

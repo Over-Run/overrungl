@@ -19,7 +19,9 @@ package overrungl.opengl;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * The OpenGL debug message callback.
@@ -32,7 +34,7 @@ public interface GLDebugProc extends Upcall {
     /**
      * The type.
      */
-    Type<GLDebugProc> TYPE = Upcall.type();
+    Type<GLDebugProc> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
 
     /**
      * debug callback
@@ -47,7 +49,6 @@ public interface GLDebugProc extends Upcall {
      */
     void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
 
-    @Stub
     default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
         invoke(source, type, id, severity, message.reinterpret(length + 1).getString(0), userParam);
     }

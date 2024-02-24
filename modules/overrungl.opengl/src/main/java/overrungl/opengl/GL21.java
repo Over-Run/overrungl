@@ -16,13 +16,15 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
  * The OpenGL 2.1 constants.
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL21 extends GL21C permits GLLegacy {
+public interface GL21 extends DirectAccess {
     int CURRENT_RASTER_SECONDARY_COLOR = 0x845F;
     int SLUMINANCE_ALPHA = 0x8C44;
     int SLUMINANCE8_ALPHA8 = 0x8C45;

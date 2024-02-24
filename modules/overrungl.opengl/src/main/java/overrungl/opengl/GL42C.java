@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -45,7 +46,7 @@ import java.lang.foreign.ValueLayout;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL42C extends GL41C permits GL43C {
+public interface GL42C extends DirectAccess {
     int COPY_READ_BUFFER_BINDING = 0x8F36;
     int COPY_WRITE_BUFFER_BINDING = 0x8F37;
     int TRANSFORM_FEEDBACK_ACTIVE = 0x8E24;

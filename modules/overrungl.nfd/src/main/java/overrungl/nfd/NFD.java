@@ -16,10 +16,7 @@
 
 package overrungl.nfd;
 
-import overrun.marshal.Downcall;
-import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
-import overrun.marshal.Unmarshal;
+import overrun.marshal.*;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
@@ -124,7 +121,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public interface NFD {
+public interface NFD extends DirectAccess {
     /**
      * The type of the path-set size ({@code long} for Windows and Mac OS X, {@code int} for others).
      */
@@ -132,7 +129,7 @@ public interface NFD {
     /**
      * The instance of NFD.
      */
-    NFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP, Map.of(
+    NFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP, DowncallOption.descriptors(Map.of(
         "NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
         "NFD_PathSet_FreePathN", FunctionDescriptor.ofVoid(ADDRESS),
         "NFD_FreePathU8", FunctionDescriptor.ofVoid(ADDRESS),
@@ -142,7 +139,7 @@ public interface NFD {
         "NFD_PickFolderU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS),
         "NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
         "NFD_PathSet_EnumNextU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, ADDRESS)
-    ));
+    )));
 
     /**
      * {@return NFD_PathSet_GetPathN}

@@ -17,6 +17,7 @@
 package overrungl.stb;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Sized;
@@ -55,7 +56,7 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-interface STBEasyFont {
+public interface STBEasyFont extends DirectAccess {
     /**
      * The instance of STBEasyFont.
      */

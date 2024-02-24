@@ -17,6 +17,7 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.gen.Entrypoint;
@@ -44,7 +45,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL46C extends GL45C permits GL {
+public interface GL46C extends DirectAccess {
     int SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
     int SPIR_V_BINARY = 0x9552;
     int PARAMETER_BUFFER = 0x80EE;

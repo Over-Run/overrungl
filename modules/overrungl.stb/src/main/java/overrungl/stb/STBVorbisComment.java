@@ -55,15 +55,15 @@ public final class STBVorbisComment extends Struct {
     /**
      * vendor
      */
-    public final StructHandle.Array<byte[]> vendor = StructHandle.ofArray(this, "vendor", Marshal::marshal, Unmarshal::unmarshalAsByteArray);
+    public static final StructHandle.Array<byte[]> vendor = StructHandle.ofArray(LAYOUT, "vendor", Marshal::marshal, Unmarshal::unmarshalAsByteArray);
     /**
      * comment_list_length
      */
-    public final StructHandle.Int commentListLength = StructHandle.ofInt(this, "comment_list_length");
+    public static final StructHandle.Int commentListLength = StructHandle.ofInt(LAYOUT, "comment_list_length");
     /**
      * comment_list
      */
-    public final StructHandle.Array<String[]> commentList = StructHandle.ofArray(this, "comment_list", Marshal::marshal, Unmarshal::unmarshalAsStringArray);
+    public static final StructHandle.Array<String[]> commentList = StructHandle.ofArray(LAYOUT, "comment_list", Marshal::marshal, Unmarshal::unmarshalAsStringArray);
 
     /**
      * Creates a struct with the given layout.
