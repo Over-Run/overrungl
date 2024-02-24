@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,10 +32,9 @@ import overrungl.opengl.ext.sun.*;
 
 /**
  * The OpenGL extension functions.
- *
  * @since 0.1.0
  */
-public interface GLExtension extends
+public interface GLExtension extends overrun.marshal.DirectAccess,
     GLARBES32Compatibility,
     GLARBBindlessTexture,
     GLARBCLEvent,

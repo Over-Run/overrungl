@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_texgen_reflection}
  */
-public interface GLNVTexgenReflection {
+public interface GLNVTexgenReflection extends overrun.marshal.DirectAccess {
     int GL_NORMAL_MAP_NV = 0x8511;
     int GL_REFLECTION_MAP_NV = 0x8512;
 }

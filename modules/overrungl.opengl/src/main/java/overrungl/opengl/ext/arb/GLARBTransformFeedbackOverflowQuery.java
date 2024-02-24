@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_transform_feedback_overflow_query}
  */
-public interface GLARBTransformFeedbackOverflowQuery {
+public interface GLARBTransformFeedbackOverflowQuery extends overrun.marshal.DirectAccess {
     int GL_TRANSFORM_FEEDBACK_OVERFLOW_ARB = 0x82EC;
     int GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW_ARB = 0x82ED;
 }

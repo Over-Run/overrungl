@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_conservative_raster_pre_snap_triangles}
  */
-public interface GLNVConservativeRasterPreSnapTriangles {
+public interface GLNVConservativeRasterPreSnapTriangles extends overrun.marshal.DirectAccess {
     int GL_CONSERVATIVE_RASTER_MODE_NV = 0x954D;
     int GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = 0x954E;
     int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = 0x954F;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_present_video}
  */
-public interface GLNVPresentVideo {
+public interface GLNVPresentVideo extends overrun.marshal.DirectAccess {
     int GL_FRAME_NV = 0x8E26;
     int GL_FIELDS_NV = 0x8E27;
     int GL_CURRENT_TIME_NV = 0x8E28;

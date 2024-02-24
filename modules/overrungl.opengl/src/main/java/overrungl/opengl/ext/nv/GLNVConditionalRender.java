@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_conditional_render}
  */
-public interface GLNVConditionalRender {
+public interface GLNVConditionalRender extends overrun.marshal.DirectAccess {
     int GL_QUERY_WAIT_NV = 0x8E13;
     int GL_QUERY_NO_WAIT_NV = 0x8E14;
     int GL_QUERY_BY_REGION_WAIT_NV = 0x8E15;

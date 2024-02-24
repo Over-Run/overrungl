@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_pixel_texture}
  */
-public interface GLSGIXPixelTexture {
+public interface GLSGIXPixelTexture extends overrun.marshal.DirectAccess {
     int GL_PIXEL_TEX_GEN_SGIX = 0x8139;
     int GL_PIXEL_TEX_GEN_MODE_SGIX = 0x832B;
 

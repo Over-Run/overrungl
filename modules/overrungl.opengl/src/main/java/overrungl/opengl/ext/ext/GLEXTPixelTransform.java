@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_pixel_transform}
  */
-public interface GLEXTPixelTransform {
+public interface GLEXTPixelTransform extends overrun.marshal.DirectAccess {
     int GL_PIXEL_TRANSFORM_2D_EXT = 0x8330;
     int GL_PIXEL_MAG_FILTER_EXT = 0x8331;
     int GL_PIXEL_MIN_FILTER_EXT = 0x8332;

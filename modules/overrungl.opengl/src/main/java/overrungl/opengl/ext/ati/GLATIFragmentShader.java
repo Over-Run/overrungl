@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_fragment_shader}
  */
-public interface GLATIFragmentShader {
+public interface GLATIFragmentShader extends overrun.marshal.DirectAccess {
     int GL_FRAGMENT_SHADER_ATI = 0x8920;
     int GL_REG_0_ATI = 0x8921;
     int GL_REG_1_ATI = 0x8922;

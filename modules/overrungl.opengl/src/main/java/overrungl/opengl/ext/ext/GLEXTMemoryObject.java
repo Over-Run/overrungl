@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_memory_object}
  */
-public interface GLEXTMemoryObject {
+public interface GLEXTMemoryObject extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_TILING_EXT = 0x9580;
     int GL_DEDICATED_MEMORY_OBJECT_EXT = 0x9581;
     int GL_PROTECTED_MEMORY_OBJECT_EXT = 0x959B;

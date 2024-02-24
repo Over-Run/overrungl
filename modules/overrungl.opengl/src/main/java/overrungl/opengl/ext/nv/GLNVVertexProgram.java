@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_vertex_program}
  */
-public interface GLNVVertexProgram {
+public interface GLNVVertexProgram extends overrun.marshal.DirectAccess {
     int GL_VERTEX_PROGRAM_NV = 0x8620;
     int GL_VERTEX_STATE_PROGRAM_NV = 0x8621;
     int GL_ATTRIB_ARRAY_SIZE_NV = 0x8623;

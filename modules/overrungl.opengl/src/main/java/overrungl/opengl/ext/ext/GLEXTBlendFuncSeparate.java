@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_blend_func_separate}
  */
-public interface GLEXTBlendFuncSeparate {
+public interface GLEXTBlendFuncSeparate extends overrun.marshal.DirectAccess {
     int GL_BLEND_DST_RGB_EXT = 0x80C8;
     int GL_BLEND_SRC_RGB_EXT = 0x80C9;
     int GL_BLEND_DST_ALPHA_EXT = 0x80CA;

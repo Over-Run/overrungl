@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_transform_feedback}
  */
-public interface GLNVTransformFeedback {
+public interface GLNVTransformFeedback extends overrun.marshal.DirectAccess {
     int GL_BACK_PRIMARY_COLOR_NV = 0x8C77;
     int GL_BACK_SECONDARY_COLOR_NV = 0x8C78;
     int GL_TEXTURE_COORD_NV = 0x8C79;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_separate_shader_objects}
  */
-public interface GLEXTSeparateShaderObjects {
+public interface GLEXTSeparateShaderObjects extends overrun.marshal.DirectAccess {
     int GL_ACTIVE_PROGRAM_EXT = 0x8B8D;
 
     default void glUseShaderProgramEXT(int type, int program) {

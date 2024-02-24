@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_memory_object_fd}
  */
-public interface GLEXTMemoryObjectFd {
+public interface GLEXTMemoryObjectFd extends overrun.marshal.DirectAccess {
     int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
 
     default void glImportMemoryFdEXT(int memory, long size, int handleType, int fd) {

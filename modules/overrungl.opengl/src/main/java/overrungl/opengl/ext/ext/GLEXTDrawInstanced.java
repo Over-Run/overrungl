@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_draw_instanced}
  */
-public interface GLEXTDrawInstanced {
+public interface GLEXTDrawInstanced extends overrun.marshal.DirectAccess {
 
     default void glDrawArraysInstancedEXT(int mode, int start, int count, int primcount) {
         throw new ContextException();

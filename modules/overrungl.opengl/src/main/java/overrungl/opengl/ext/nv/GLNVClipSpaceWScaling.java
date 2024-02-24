@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_clip_space_w_scaling}
  */
-public interface GLNVClipSpaceWScaling {
+public interface GLNVClipSpaceWScaling extends overrun.marshal.DirectAccess {
     int GL_VIEWPORT_POSITION_W_SCALE_NV = 0x937C;
     int GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV = 0x937D;
     int GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV = 0x937E;

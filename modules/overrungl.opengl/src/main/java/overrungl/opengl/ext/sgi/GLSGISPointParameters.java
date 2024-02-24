@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_point_parameters}
  */
-public interface GLSGISPointParameters {
+public interface GLSGISPointParameters extends overrun.marshal.DirectAccess {
     int GL_POINT_SIZE_MIN_SGIS = 0x8126;
     int GL_POINT_SIZE_MAX_SGIS = 0x8127;
     int GL_POINT_FADE_THRESHOLD_SIZE_SGIS = 0x8128;

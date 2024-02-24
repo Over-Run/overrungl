@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_x11_sync_object}
  */
-public interface GLEXTX11SyncObject {
+public interface GLEXTX11SyncObject extends overrun.marshal.DirectAccess {
     int GL_SYNC_X11_FENCE_EXT = 0x90E1;
 
     @NativeType("GLsync") default MemorySegment glImportSyncEXT(int external_sync_type, long external_sync, int flags) {

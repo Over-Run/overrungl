@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_light_texture}
  */
-public interface GLEXTLightTexture {
+public interface GLEXTLightTexture extends overrun.marshal.DirectAccess {
     int GL_FRAGMENT_MATERIAL_EXT = 0x8349;
     int GL_FRAGMENT_NORMAL_EXT = 0x834A;
     int GL_FRAGMENT_COLOR_EXT = 0x834C;

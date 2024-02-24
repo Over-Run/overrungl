@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_texture_rectangle}
  */
-public interface GLNVTextureRectangle {
+public interface GLNVTextureRectangle extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_RECTANGLE_NV = 0x84F5;
     int GL_TEXTURE_BINDING_RECTANGLE_NV = 0x84F6;
     int GL_PROXY_TEXTURE_RECTANGLE_NV = 0x84F7;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,6 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_shader_subgroup_partitioned}
  */
-public interface GLNVShaderSubgroupPartitioned {
+public interface GLNVShaderSubgroupPartitioned extends overrun.marshal.DirectAccess {
     int GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV = 0x00000100;
 }

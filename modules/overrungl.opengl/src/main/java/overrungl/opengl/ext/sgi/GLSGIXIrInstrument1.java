@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,6 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_ir_instrument1}
  */
-public interface GLSGIXIrInstrument1 {
+public interface GLSGIXIrInstrument1 extends overrun.marshal.DirectAccess {
     int GL_IR_INSTRUMENT1_SGIX = 0x817F;
 }

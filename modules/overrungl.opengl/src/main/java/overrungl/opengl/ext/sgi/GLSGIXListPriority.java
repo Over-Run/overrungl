@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_list_priority}
  */
-public interface GLSGIXListPriority {
+public interface GLSGIXListPriority extends overrun.marshal.DirectAccess {
     int GL_LIST_PRIORITY_SGIX = 0x8182;
 
     default void glGetListParameterfvSGIX(int list, int pname, @NativeType("GLfloat *") MemorySegment params) {

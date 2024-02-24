@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_command_list}
  */
-public interface GLNVCommandList {
+public interface GLNVCommandList extends overrun.marshal.DirectAccess {
     int GL_TERMINATE_SEQUENCE_COMMAND_NV = 0x0000;
     int GL_NOP_COMMAND_NV = 0x0001;
     int GL_DRAW_ELEMENTS_COMMAND_NV = 0x0002;

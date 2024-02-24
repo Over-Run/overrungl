@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_debug_label}
  */
-public interface GLEXTDebugLabel {
+public interface GLEXTDebugLabel extends overrun.marshal.DirectAccess {
     int GL_PROGRAM_PIPELINE_OBJECT_EXT = 0x8A4F;
     int GL_PROGRAM_OBJECT_EXT = 0x8B40;
     int GL_SHADER_OBJECT_EXT = 0x8B48;

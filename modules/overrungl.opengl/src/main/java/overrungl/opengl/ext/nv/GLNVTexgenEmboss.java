@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_texgen_emboss}
  */
-public interface GLNVTexgenEmboss {
+public interface GLNVTexgenEmboss extends overrun.marshal.DirectAccess {
     int GL_EMBOSS_LIGHT_NV = 0x855D;
     int GL_EMBOSS_CONSTANT_NV = 0x855E;
     int GL_EMBOSS_MAP_NV = 0x855F;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_texture_array}
  */
-public interface GLEXTTextureArray {
+public interface GLEXTTextureArray extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_1D_ARRAY_EXT = 0x8C18;
     int GL_PROXY_TEXTURE_1D_ARRAY_EXT = 0x8C19;
     int GL_TEXTURE_2D_ARRAY_EXT = 0x8C1A;

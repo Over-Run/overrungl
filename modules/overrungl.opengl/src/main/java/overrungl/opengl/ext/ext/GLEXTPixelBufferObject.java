@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_pixel_buffer_object}
  */
-public interface GLEXTPixelBufferObject {
+public interface GLEXTPixelBufferObject extends overrun.marshal.DirectAccess {
     int GL_PIXEL_PACK_BUFFER_EXT = 0x88EB;
     int GL_PIXEL_UNPACK_BUFFER_EXT = 0x88EC;
     int GL_PIXEL_PACK_BUFFER_BINDING_EXT = 0x88ED;

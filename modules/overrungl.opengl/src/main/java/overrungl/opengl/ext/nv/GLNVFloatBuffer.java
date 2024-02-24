@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_float_buffer}
  */
-public interface GLNVFloatBuffer {
+public interface GLNVFloatBuffer extends overrun.marshal.DirectAccess {
     int GL_FLOAT_R_NV = 0x8880;
     int GL_FLOAT_RG_NV = 0x8881;
     int GL_FLOAT_RGB_NV = 0x8882;

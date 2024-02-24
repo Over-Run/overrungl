@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_internalformat_query2}
  */
-public interface GLARBInternalformatQuery2 {
+public interface GLARBInternalformatQuery2 extends overrun.marshal.DirectAccess {
     int GL_SRGB_DECODE_ARB = 0x8299;
     int GL_VIEW_CLASS_EAC_R11 = 0x9383;
     int GL_VIEW_CLASS_EAC_RG11 = 0x9384;

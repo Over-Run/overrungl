@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_viewport_swizzle}
  */
-public interface GLNVViewportSwizzle {
+public interface GLNVViewportSwizzle extends overrun.marshal.DirectAccess {
     int GL_VIEWPORT_SWIZZLE_POSITIVE_X_NV = 0x9350;
     int GL_VIEWPORT_SWIZZLE_NEGATIVE_X_NV = 0x9351;
     int GL_VIEWPORT_SWIZZLE_POSITIVE_Y_NV = 0x9352;

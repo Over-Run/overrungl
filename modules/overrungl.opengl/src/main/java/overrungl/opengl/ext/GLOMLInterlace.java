@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_OML_interlace}
  */
-public interface GLOMLInterlace {
+public interface GLOMLInterlace extends overrun.marshal.DirectAccess {
     int GL_INTERLACE_OML = 0x8980;
     int GL_INTERLACE_READ_OML = 0x8981;
 }

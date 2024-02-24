@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_texture_shader3}
  */
-public interface GLNVTextureShader3 {
+public interface GLNVTextureShader3 extends overrun.marshal.DirectAccess {
     int GL_OFFSET_PROJECTIVE_TEXTURE_2D_NV = 0x8850;
     int GL_OFFSET_PROJECTIVE_TEXTURE_2D_SCALE_NV = 0x8851;
     int GL_OFFSET_PROJECTIVE_TEXTURE_RECTANGLE_NV = 0x8852;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_framebuffer_blit}
  */
-public interface GLEXTFramebufferBlit {
+public interface GLEXTFramebufferBlit extends overrun.marshal.DirectAccess {
     int GL_READ_FRAMEBUFFER_EXT = 0x8CA8;
     int GL_DRAW_FRAMEBUFFER_EXT = 0x8CA9;
     int GL_DRAW_FRAMEBUFFER_BINDING_EXT = 0x8CA6;

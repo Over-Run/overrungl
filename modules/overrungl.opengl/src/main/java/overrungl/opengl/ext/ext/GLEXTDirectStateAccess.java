@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_direct_state_access}
  */
-public interface GLEXTDirectStateAccess {
+public interface GLEXTDirectStateAccess extends overrun.marshal.DirectAccess {
     int GL_PROGRAM_MATRIX_EXT = 0x8E2D;
     int GL_TRANSPOSE_PROGRAM_MATRIX_EXT = 0x8E2E;
     int GL_PROGRAM_MATRIX_STACK_DEPTH_EXT = 0x8E2F;

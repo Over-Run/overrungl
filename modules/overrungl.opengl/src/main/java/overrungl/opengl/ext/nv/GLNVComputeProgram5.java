@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_compute_program5}
  */
-public interface GLNVComputeProgram5 {
+public interface GLNVComputeProgram5 extends overrun.marshal.DirectAccess {
     int GL_COMPUTE_PROGRAM_NV = 0x90FB;
     int GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV = 0x90FC;
 }

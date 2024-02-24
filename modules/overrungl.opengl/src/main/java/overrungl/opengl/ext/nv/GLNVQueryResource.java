@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_query_resource}
  */
-public interface GLNVQueryResource {
+public interface GLNVQueryResource extends overrun.marshal.DirectAccess {
     int GL_QUERY_RESOURCE_TYPE_VIDMEM_ALLOC_NV = 0x9540;
     int GL_QUERY_RESOURCE_MEMTYPE_VIDMEM_NV = 0x9542;
     int GL_QUERY_RESOURCE_SYS_RESERVED_NV = 0x9544;

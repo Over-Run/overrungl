@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_APPLE_object_purgeable}
  */
-public interface GLAPPLEObjectPurgeable {
+public interface GLAPPLEObjectPurgeable extends overrun.marshal.DirectAccess {
     int GL_BUFFER_OBJECT_APPLE = 0x85B3;
     int GL_RELEASED_APPLE = 0x8A19;
     int GL_VOLATILE_APPLE = 0x8A1A;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_gpu_shader_int64}
  */
-public interface GLARBGpuShaderInt64 {
+public interface GLARBGpuShaderInt64 extends overrun.marshal.DirectAccess {
     int GL_INT64_ARB = 0x140E;
     int GL_INT64_VEC2_ARB = 0x8FE9;
     int GL_INT64_VEC3_ARB = 0x8FEA;

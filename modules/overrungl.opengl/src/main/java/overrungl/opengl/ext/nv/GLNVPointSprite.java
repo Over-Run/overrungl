@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_point_sprite}
  */
-public interface GLNVPointSprite {
+public interface GLNVPointSprite extends overrun.marshal.DirectAccess {
     int GL_POINT_SPRITE_NV = 0x8861;
     int GL_COORD_REPLACE_NV = 0x8862;
     int GL_POINT_SPRITE_R_MODE_NV = 0x8863;

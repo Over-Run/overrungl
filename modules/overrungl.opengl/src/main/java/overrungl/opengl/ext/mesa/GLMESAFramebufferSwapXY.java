@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,6 @@ import java.lang.foreign.*;
 /**
  * {@code GL_MESA_framebuffer_swap_xy}
  */
-public interface GLMESAFramebufferSwapXY {
+public interface GLMESAFramebufferSwapXY extends overrun.marshal.DirectAccess {
     int GL_FRAMEBUFFER_SWAP_XY_MESA = 0x8BBD;
 }

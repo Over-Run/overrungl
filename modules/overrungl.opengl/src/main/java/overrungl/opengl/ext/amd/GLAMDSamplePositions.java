@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_sample_positions}
  */
-public interface GLAMDSamplePositions {
+public interface GLAMDSamplePositions extends overrun.marshal.DirectAccess {
 
     default void glSetMultisamplefvAMD(int pname, int index, @NativeType("const GLfloat *") MemorySegment val) {
         throw new ContextException();

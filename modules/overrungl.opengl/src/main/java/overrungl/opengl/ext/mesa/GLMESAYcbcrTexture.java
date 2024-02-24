@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_MESA_ycbcr_texture}
  */
-public interface GLMESAYcbcrTexture {
+public interface GLMESAYcbcrTexture extends overrun.marshal.DirectAccess {
     int GL_UNSIGNED_SHORT_8_8_MESA = 0x85BA;
     int GL_UNSIGNED_SHORT_8_8_REV_MESA = 0x85BB;
     int GL_YCBCR_MESA = 0x8757;

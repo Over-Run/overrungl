@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_index_func}
  */
-public interface GLEXTIndexFunc {
+public interface GLEXTIndexFunc extends overrun.marshal.DirectAccess {
     int GL_INDEX_TEST_EXT = 0x81B5;
     int GL_INDEX_TEST_FUNC_EXT = 0x81B6;
     int GL_INDEX_TEST_REF_EXT = 0x81B7;

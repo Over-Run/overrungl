@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_sharpen_texture}
  */
-public interface GLSGISSharpenTexture {
+public interface GLSGISSharpenTexture extends overrun.marshal.DirectAccess {
     int GL_LINEAR_SHARPEN_SGIS = 0x80AD;
     int GL_LINEAR_SHARPEN_ALPHA_SGIS = 0x80AE;
     int GL_LINEAR_SHARPEN_COLOR_SGIS = 0x80AF;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_gpu_shader_half_float}
  */
-public interface GLAMDGpuShaderHalfFloat {
+public interface GLAMDGpuShaderHalfFloat extends overrun.marshal.DirectAccess {
     int GL_FLOAT16_NV = 0x8FF8;
     int GL_FLOAT16_VEC2_NV = 0x8FF9;
     int GL_FLOAT16_VEC3_NV = 0x8FFA;

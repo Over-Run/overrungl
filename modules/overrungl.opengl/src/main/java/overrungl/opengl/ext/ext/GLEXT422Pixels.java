@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_422_pixels}
  */
-public interface GLEXT422Pixels {
+public interface GLEXT422Pixels extends overrun.marshal.DirectAccess {
     int GL_422_EXT = 0x80CC;
     int GL_422_REV_EXT = 0x80CD;
     int GL_422_AVERAGE_EXT = 0x80CE;

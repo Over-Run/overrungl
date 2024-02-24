@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_OES_compressed_paletted_texture}
  */
-public interface GLOESCompressedPalettedTexture {
+public interface GLOESCompressedPalettedTexture extends overrun.marshal.DirectAccess {
     int GL_PALETTE4_RGB8_OES = 0x8B90;
     int GL_PALETTE4_RGBA8_OES = 0x8B91;
     int GL_PALETTE4_R5_G6_B5_OES = 0x8B92;

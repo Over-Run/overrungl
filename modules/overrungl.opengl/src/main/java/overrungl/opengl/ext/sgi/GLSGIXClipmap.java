@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_clipmap}
  */
-public interface GLSGIXClipmap {
+public interface GLSGIXClipmap extends overrun.marshal.DirectAccess {
     int GL_LINEAR_CLIPMAP_LINEAR_SGIX = 0x8170;
     int GL_TEXTURE_CLIPMAP_CENTER_SGIX = 0x8171;
     int GL_TEXTURE_CLIPMAP_FRAME_SGIX = 0x8172;

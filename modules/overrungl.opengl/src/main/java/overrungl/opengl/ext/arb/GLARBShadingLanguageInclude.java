@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_shading_language_include}
  */
-public interface GLARBShadingLanguageInclude {
+public interface GLARBShadingLanguageInclude extends overrun.marshal.DirectAccess {
     int GL_SHADER_INCLUDE_ARB = 0x8DAE;
     int GL_NAMED_STRING_LENGTH_ARB = 0x8DE9;
     int GL_NAMED_STRING_TYPE_ARB = 0x8DEA;

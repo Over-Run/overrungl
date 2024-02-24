@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,6 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_texture_border_clamp}
  */
-public interface GLARBTextureBorderClamp {
+public interface GLARBTextureBorderClamp extends overrun.marshal.DirectAccess {
     int GL_CLAMP_TO_BORDER_ARB = 0x812D;
 }

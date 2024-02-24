@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SUN_triangle_list}
  */
-public interface GLSUNTriangleList {
+public interface GLSUNTriangleList extends overrun.marshal.DirectAccess {
     int GL_RESTART_SUN = 0x0001;
     int GL_REPLACE_MIDDLE_SUN = 0x0002;
     int GL_REPLACE_OLDEST_SUN = 0x0003;

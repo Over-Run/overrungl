@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_INTEL_parallel_arrays}
  */
-public interface GLINTELParallelArrays {
+public interface GLINTELParallelArrays extends overrun.marshal.DirectAccess {
     int GL_PARALLEL_ARRAYS_INTEL = 0x83F4;
     int GL_VERTEX_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F5;
     int GL_NORMAL_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F6;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_sample_shading}
  */
-public interface GLARBSampleShading {
+public interface GLARBSampleShading extends overrun.marshal.DirectAccess {
     int GL_SAMPLE_SHADING_ARB = 0x8C36;
     int GL_MIN_SAMPLE_SHADING_VALUE_ARB = 0x8C37;
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_gpu_program_parameters}
  */
-public interface GLEXTGpuProgramParameters {
+public interface GLEXTGpuProgramParameters extends overrun.marshal.DirectAccess {
 
     default void glProgramEnvParameters4fvEXT(int target, int index, int count, @NativeType("const GLfloat *") MemorySegment params) {
         throw new ContextException();

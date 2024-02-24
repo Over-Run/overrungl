@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_MESA_tile_raster_order}
  */
-public interface GLMESATileRasterOrder {
+public interface GLMESATileRasterOrder extends overrun.marshal.DirectAccess {
     int GL_TILE_RASTER_ORDER_FIXED_MESA = 0x8BB8;
     int GL_TILE_RASTER_ORDER_INCREASING_X_MESA = 0x8BB9;
     int GL_TILE_RASTER_ORDER_INCREASING_Y_MESA = 0x8BBA;

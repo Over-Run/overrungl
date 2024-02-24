@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_polygon_offset}
  */
-public interface GLEXTPolygonOffset {
+public interface GLEXTPolygonOffset extends overrun.marshal.DirectAccess {
     int GL_POLYGON_OFFSET_EXT = 0x8037;
     int GL_POLYGON_OFFSET_FACTOR_EXT = 0x8038;
     int GL_POLYGON_OFFSET_BIAS_EXT = 0x8039;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_conservative_raster}
  */
-public interface GLNVConservativeRaster {
+public interface GLNVConservativeRaster extends overrun.marshal.DirectAccess {
     int GL_CONSERVATIVE_RASTERIZATION_NV = 0x9346;
     int GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV = 0x9347;
     int GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV = 0x9348;

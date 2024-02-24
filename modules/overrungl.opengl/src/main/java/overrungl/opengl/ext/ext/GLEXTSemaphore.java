@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_semaphore}
  */
-public interface GLEXTSemaphore {
+public interface GLEXTSemaphore extends overrun.marshal.DirectAccess {
     int GL_LAYOUT_GENERAL_EXT = 0x958D;
     int GL_LAYOUT_COLOR_ATTACHMENT_EXT = 0x958E;
     int GL_LAYOUT_DEPTH_STENCIL_ATTACHMENT_EXT = 0x958F;

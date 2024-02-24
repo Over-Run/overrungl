@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_3DFX_tbuffer}
  */
-public interface GL3DFXTbuffer {
+public interface GL3DFXTbuffer extends overrun.marshal.DirectAccess {
 
     default void glTbufferMask3DFX(int mask) {
         throw new ContextException();

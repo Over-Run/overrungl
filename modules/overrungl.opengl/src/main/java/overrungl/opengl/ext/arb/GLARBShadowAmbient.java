@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,6 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_shadow_ambient}
  */
-public interface GLARBShadowAmbient {
+public interface GLARBShadowAmbient extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_COMPARE_FAIL_VALUE_ARB = 0x80BF;
 }

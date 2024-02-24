@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_pn_triangles}
  */
-public interface GLATIPnTriangles {
+public interface GLATIPnTriangles extends overrun.marshal.DirectAccess {
     int GL_PN_TRIANGLES_ATI = 0x87F0;
     int GL_MAX_PN_TRIANGLES_TESSELATION_LEVEL_ATI = 0x87F1;
     int GL_PN_TRIANGLES_POINT_MODE_ATI = 0x87F2;

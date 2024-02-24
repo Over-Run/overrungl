@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_texture_storage}
  */
-public interface GLEXTTextureStorage {
+public interface GLEXTTextureStorage extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_IMMUTABLE_FORMAT_EXT = 0x912F;
     int GL_RGBA32F_EXT = 0x8814;
     int GL_RGB32F_EXT = 0x8815;

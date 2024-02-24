@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_pixel_tiles}
  */
-public interface GLSGIXPixelTiles {
+public interface GLSGIXPixelTiles extends overrun.marshal.DirectAccess {
     int GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX = 0x813E;
     int GL_PIXEL_TILE_CACHE_INCREMENT_SGIX = 0x813F;
     int GL_PIXEL_TILE_WIDTH_SGIX = 0x8140;

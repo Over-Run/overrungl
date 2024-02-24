@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_histogram}
  */
-public interface GLEXTHistogram {
+public interface GLEXTHistogram extends overrun.marshal.DirectAccess {
     int GL_HISTOGRAM_EXT = 0x8024;
     int GL_PROXY_HISTOGRAM_EXT = 0x8025;
     int GL_HISTOGRAM_WIDTH_EXT = 0x8026;

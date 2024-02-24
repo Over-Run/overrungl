@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_OML_resample}
  */
-public interface GLOMLResample {
+public interface GLOMLResample extends overrun.marshal.DirectAccess {
     int GL_PACK_RESAMPLE_OML = 0x8984;
     int GL_UNPACK_RESAMPLE_OML = 0x8985;
     int GL_RESAMPLE_REPLICATE_OML = 0x8986;

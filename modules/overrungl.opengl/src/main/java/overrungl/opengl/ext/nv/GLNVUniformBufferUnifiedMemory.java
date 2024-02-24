@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_uniform_buffer_unified_memory}
  */
-public interface GLNVUniformBufferUnifiedMemory {
+public interface GLNVUniformBufferUnifiedMemory extends overrun.marshal.DirectAccess {
     int GL_UNIFORM_BUFFER_UNIFIED_NV = 0x936E;
     int GL_UNIFORM_BUFFER_ADDRESS_NV = 0x936F;
     int GL_UNIFORM_BUFFER_LENGTH_NV = 0x9370;

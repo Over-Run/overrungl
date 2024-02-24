@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_S3_s3tc}
  */
-public interface GLS3S3tc {
+public interface GLS3S3tc extends overrun.marshal.DirectAccess {
     int GL_RGB_S3TC = 0x83A0;
     int GL_RGB4_S3TC = 0x83A1;
     int GL_RGBA_S3TC = 0x83A2;

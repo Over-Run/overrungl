@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_framebuffer_multisample_advanced}
  */
-public interface GLAMDFramebufferMultisampleAdvanced {
+public interface GLAMDFramebufferMultisampleAdvanced extends overrun.marshal.DirectAccess {
     int GL_RENDERBUFFER_STORAGE_SAMPLES_AMD = 0x91B2;
     int GL_MAX_COLOR_FRAMEBUFFER_SAMPLES_AMD = 0x91B3;
     int GL_MAX_COLOR_FRAMEBUFFER_STORAGE_SAMPLES_AMD = 0x91B4;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_vdpau_interop2}
  */
-public interface GLNVVDPAUInterop2 {
+public interface GLNVVDPAUInterop2 extends overrun.marshal.DirectAccess {
 
     default long glVDPAURegisterVideoSurfaceWithPictureStructureNV(@NativeType("const void *") MemorySegment vdpSurface, int target, int numTextureNames, @NativeType("const GLuint *") MemorySegment textureNames, boolean isFrameStructure) {
         throw new ContextException();

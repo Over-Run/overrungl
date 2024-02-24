@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_texture}
  */
-public interface GLEXTTexture {
+public interface GLEXTTexture extends overrun.marshal.DirectAccess {
     int GL_ALPHA4_EXT = 0x803B;
     int GL_ALPHA8_EXT = 0x803C;
     int GL_ALPHA12_EXT = 0x803D;

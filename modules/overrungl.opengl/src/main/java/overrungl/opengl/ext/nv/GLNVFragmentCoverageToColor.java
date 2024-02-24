@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_fragment_coverage_to_color}
  */
-public interface GLNVFragmentCoverageToColor {
+public interface GLNVFragmentCoverageToColor extends overrun.marshal.DirectAccess {
     int GL_FRAGMENT_COVERAGE_TO_COLOR_NV = 0x92DD;
     int GL_FRAGMENT_COVERAGE_COLOR_NV = 0x92DE;
 

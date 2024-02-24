@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_stencil_operation_extended}
  */
-public interface GLAMDStencilOperationExtended {
+public interface GLAMDStencilOperationExtended extends overrun.marshal.DirectAccess {
     int GL_SET_AMD = 0x874A;
     int GL_REPLACE_VALUE_AMD = 0x874B;
     int GL_STENCIL_OP_VALUE_AMD = 0x874C;

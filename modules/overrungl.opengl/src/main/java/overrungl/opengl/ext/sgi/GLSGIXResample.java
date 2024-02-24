@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_resample}
  */
-public interface GLSGIXResample {
+public interface GLSGIXResample extends overrun.marshal.DirectAccess {
     int GL_PACK_RESAMPLE_SGIX = 0x842E;
     int GL_UNPACK_RESAMPLE_SGIX = 0x842F;
     int GL_RESAMPLE_REPLICATE_SGIX = 0x8433;

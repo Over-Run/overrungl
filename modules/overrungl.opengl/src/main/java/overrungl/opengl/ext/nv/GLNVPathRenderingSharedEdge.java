@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,6 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_path_rendering_shared_edge}
  */
-public interface GLNVPathRenderingSharedEdge {
+public interface GLNVPathRenderingSharedEdge extends overrun.marshal.DirectAccess {
     int GL_SHARED_EDGE_NV = 0xC0;
 }

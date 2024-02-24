@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_memory_attachment}
  */
-public interface GLNVMemoryAttachment {
+public interface GLNVMemoryAttachment extends overrun.marshal.DirectAccess {
     int GL_ATTACHED_MEMORY_OBJECT_NV = 0x95A4;
     int GL_ATTACHED_MEMORY_OFFSET_NV = 0x95A5;
     int GL_MEMORY_ATTACHABLE_ALIGNMENT_NV = 0x95A6;

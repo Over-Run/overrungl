@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_occlusion_query}
  */
-public interface GLNVOcculusionQuery {
+public interface GLNVOcculusionQuery extends overrun.marshal.DirectAccess {
     int GL_PIXEL_COUNTER_BITS_NV = 0x8864;
     int GL_CURRENT_OCCLUSION_QUERY_ID_NV = 0x8865;
     int GL_PIXEL_COUNT_NV = 0x8866;

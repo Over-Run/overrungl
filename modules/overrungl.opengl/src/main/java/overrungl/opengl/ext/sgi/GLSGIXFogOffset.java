@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_fog_offset}
  */
-public interface GLSGIXFogOffset {
+public interface GLSGIXFogOffset extends overrun.marshal.DirectAccess {
     int GL_FOG_OFFSET_SGIX = 0x8198;
     int GL_FOG_OFFSET_VALUE_SGIX = 0x8199;
 }

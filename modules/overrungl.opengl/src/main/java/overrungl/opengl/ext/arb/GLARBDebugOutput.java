@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_debug_output}
  */
-public interface GLARBDebugOutput {
+public interface GLARBDebugOutput extends overrun.marshal.DirectAccess {
     int GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB = 0x8242;
     int GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB = 0x8243;
     int GL_DEBUG_CALLBACK_FUNCTION_ARB = 0x8244;

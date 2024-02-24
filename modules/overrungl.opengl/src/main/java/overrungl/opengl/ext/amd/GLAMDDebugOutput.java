@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_debug_output}
  */
-public interface GLAMDDebugOutput {
+public interface GLAMDDebugOutput extends overrun.marshal.DirectAccess {
     int GL_MAX_DEBUG_MESSAGE_LENGTH_AMD = 0x9143;
     int GL_MAX_DEBUG_LOGGED_MESSAGES_AMD = 0x9144;
     int GL_DEBUG_LOGGED_MESSAGES_AMD = 0x9145;

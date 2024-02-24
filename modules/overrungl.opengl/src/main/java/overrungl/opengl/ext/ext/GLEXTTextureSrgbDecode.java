@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_texture_sRGB_decode}
  */
-public interface GLEXTTextureSrgbDecode {
+public interface GLEXTTextureSrgbDecode extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_SRGB_DECODE_EXT = 0x8A48;
     int GL_DECODE_EXT = 0x8A49;
     int GL_SKIP_DECODE_EXT = 0x8A4A;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_memory_object_sparse}
  */
-public interface GLNVMemoryObjectSparse {
+public interface GLNVMemoryObjectSparse extends overrun.marshal.DirectAccess {
 
     default void glBufferPageCommitmentMemNV(int target, long offset, long size, int memory, long memOffset, boolean commit) {
         throw new ContextException();

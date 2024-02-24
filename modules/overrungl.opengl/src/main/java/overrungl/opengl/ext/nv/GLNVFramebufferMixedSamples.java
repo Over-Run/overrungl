@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_framebuffer_mixed_samples}
  */
-public interface GLNVFramebufferMixedSamples {
+public interface GLNVFramebufferMixedSamples extends overrun.marshal.DirectAccess {
     int GL_COVERAGE_MODULATION_TABLE_NV = 0x9331;
     int GL_COLOR_SAMPLES_NV = 0x8E20;
     int GL_DEPTH_SAMPLES_NV = 0x932D;

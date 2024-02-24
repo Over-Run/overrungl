@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_copy_depth_to_color}
  */
-public interface GLNVCopyDepthToColor {
+public interface GLNVCopyDepthToColor extends overrun.marshal.DirectAccess {
     int GL_DEPTH_STENCIL_TO_RGBA_NV = 0x886E;
     int GL_DEPTH_STENCIL_TO_BGRA_NV = 0x886F;
 }

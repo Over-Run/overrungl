@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_texture_lod_bias}
  */
-public interface GLEXTTextureLodBias {
+public interface GLEXTTextureLodBias extends overrun.marshal.DirectAccess {
     int GL_MAX_TEXTURE_LOD_BIAS_EXT = 0x84FD;
     int GL_TEXTURE_FILTER_CONTROL_EXT = 0x8500;
     int GL_TEXTURE_LOD_BIAS_EXT = 0x8501;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_detail_texture}
  */
-public interface GLSGISDetailTexture {
+public interface GLSGISDetailTexture extends overrun.marshal.DirectAccess {
     int GL_DETAIL_TEXTURE_2D_SGIS = 0x8095;
     int GL_DETAIL_TEXTURE_2D_BINDING_SGIS = 0x8096;
     int GL_LINEAR_DETAIL_SGIS = 0x8097;

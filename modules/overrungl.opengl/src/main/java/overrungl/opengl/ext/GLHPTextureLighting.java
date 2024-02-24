@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_HP_texture_lighting}
  */
-public interface GLHPTextureLighting {
+public interface GLHPTextureLighting extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_LIGHTING_MODE_HP = 0x8167;
     int GL_TEXTURE_POST_SPECULAR_HP = 0x8168;
     int GL_TEXTURE_PRE_SPECULAR_HP = 0x8169;

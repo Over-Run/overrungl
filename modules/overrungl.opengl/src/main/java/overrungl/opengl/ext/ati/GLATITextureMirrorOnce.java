@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_texture_mirror_once}
  */
-public interface GLATITextureMirrorOnce {
+public interface GLATITextureMirrorOnce extends overrun.marshal.DirectAccess {
     int GL_MIRROR_CLAMP_ATI = 0x8742;
     int GL_MIRROR_CLAMP_TO_EDGE_ATI = 0x8743;
 }

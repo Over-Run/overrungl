@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    embeddedKotlin("jvm") apply false
+    embeddedKotlin("jvm")
 }
 
 val jdkVersion: String by rootProject

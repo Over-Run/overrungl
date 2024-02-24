@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_paletted_texture}
  */
-public interface GLEXTPalettedTexture {
+public interface GLEXTPalettedTexture extends overrun.marshal.DirectAccess {
     int GL_COLOR_INDEX1_EXT = 0x80E2;
     int GL_COLOR_INDEX2_EXT = 0x80E3;
     int GL_COLOR_INDEX4_EXT = 0x80E4;

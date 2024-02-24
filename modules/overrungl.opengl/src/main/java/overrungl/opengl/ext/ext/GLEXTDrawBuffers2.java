@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_draw_buffers2}
  */
-public interface GLEXTDrawBuffers2 {
+public interface GLEXTDrawBuffers2 extends overrun.marshal.DirectAccess {
 
     default void glColorMaskIndexedEXT(int index, boolean r, boolean g, boolean b, boolean a) {
         throw new ContextException();

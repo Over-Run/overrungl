@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_gpu_shader_int64}
  */
-public interface GLAMDGpuShaderInt64 {
+public interface GLAMDGpuShaderInt64 extends overrun.marshal.DirectAccess {
     int GL_INT64_NV = 0x140E;
     int GL_UNSIGNED_INT64_NV = 0x140F;
     int GL_INT8_NV = 0x8FE0;

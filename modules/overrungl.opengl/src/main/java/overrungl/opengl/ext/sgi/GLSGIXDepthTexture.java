@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_depth_texture}
  */
-public interface GLSGIXDepthTexture {
+public interface GLSGIXDepthTexture extends overrun.marshal.DirectAccess {
     int GL_DEPTH_COMPONENT16_SGIX = 0x81A5;
     int GL_DEPTH_COMPONENT24_SGIX = 0x81A6;
     int GL_DEPTH_COMPONENT32_SGIX = 0x81A7;

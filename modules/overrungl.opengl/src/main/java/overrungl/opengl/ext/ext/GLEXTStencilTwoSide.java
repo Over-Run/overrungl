@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_stencil_two_side}
  */
-public interface GLEXTStencilTwoSide {
+public interface GLEXTStencilTwoSide extends overrun.marshal.DirectAccess {
     int GL_STENCIL_TEST_TWO_SIDE_EXT = 0x8910;
     int GL_ACTIVE_STENCIL_FACE_EXT = 0x8911;
 

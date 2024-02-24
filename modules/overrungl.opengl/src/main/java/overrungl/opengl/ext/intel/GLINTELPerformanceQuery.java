@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_INTEL_performance_query}
  */
-public interface GLINTELPerformanceQuery {
+public interface GLINTELPerformanceQuery extends overrun.marshal.DirectAccess {
     int GL_PERFQUERY_SINGLE_CONTEXT_INTEL = 0x00000000;
     int GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = 0x00000001;
     int GL_PERFQUERY_WAIT_INTEL = 0x83FB;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SUN_global_alpha}
  */
-public interface GLSUNGlobalAlpha {
+public interface GLSUNGlobalAlpha extends overrun.marshal.DirectAccess {
     int GL_GLOBAL_ALPHA_SUN = 0x81D9;
     int GL_GLOBAL_ALPHA_FACTOR_SUN = 0x81DA;
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_geometry_shader4}
  */
-public interface GLEXTGeometryShader4 {
+public interface GLEXTGeometryShader4 extends overrun.marshal.DirectAccess {
     int GL_GEOMETRY_SHADER_EXT = 0x8DD9;
     int GL_GEOMETRY_VERTICES_OUT_EXT = 0x8DDA;
     int GL_GEOMETRY_INPUT_TYPE_EXT = 0x8DDB;

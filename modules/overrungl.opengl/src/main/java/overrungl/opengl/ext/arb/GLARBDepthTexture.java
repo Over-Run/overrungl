@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_depth_texture}
  */
-public interface GLARBDepthTexture {
+public interface GLARBDepthTexture extends overrun.marshal.DirectAccess {
     int GL_DEPTH_COMPONENT16_ARB = 0x81A5;
     int GL_DEPTH_COMPONENT24_ARB = 0x81A6;
     int GL_DEPTH_COMPONENT32_ARB = 0x81A7;

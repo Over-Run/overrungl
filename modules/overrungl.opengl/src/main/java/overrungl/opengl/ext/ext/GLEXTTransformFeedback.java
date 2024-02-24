@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_transform_feedback}
  */
-public interface GLEXTTransformFeedback {
+public interface GLEXTTransformFeedback extends overrun.marshal.DirectAccess {
     int GL_TRANSFORM_FEEDBACK_BUFFER_EXT = 0x8C8E;
     int GL_TRANSFORM_FEEDBACK_BUFFER_START_EXT = 0x8C84;
     int GL_TRANSFORM_FEEDBACK_BUFFER_SIZE_EXT = 0x8C85;

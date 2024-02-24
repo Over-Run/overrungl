@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_alpha_to_coverage_dither_control}
  */
-public interface GLNVAlphaToCoverageDitherControl {
+public interface GLNVAlphaToCoverageDitherControl extends overrun.marshal.DirectAccess {
     int GL_ALPHA_TO_COVERAGE_DITHER_DEFAULT_NV = 0x934D;
     int GL_ALPHA_TO_COVERAGE_DITHER_ENABLE_NV = 0x934E;
     int GL_ALPHA_TO_COVERAGE_DITHER_DISABLE_NV = 0x934F;

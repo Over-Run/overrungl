@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_geometry_shader4}
  */
-public interface GLARBGeometryShader4 {
+public interface GLARBGeometryShader4 extends overrun.marshal.DirectAccess {
     int GL_LINES_ADJACENCY_ARB = 0x000A;
     int GL_LINE_STRIP_ADJACENCY_ARB = 0x000B;
     int GL_TRIANGLES_ADJACENCY_ARB = 0x000C;

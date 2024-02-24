@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_query_resource_tag}
  */
-public interface GLNVQueryResourceTag {
+public interface GLNVQueryResourceTag extends overrun.marshal.DirectAccess {
 
     default void glGenQueryResourceTagNV(int n, @NativeType("GLint *") MemorySegment tagIds) {
         throw new ContextException();

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_texture_float}
  */
-public interface GLATITextureFloat {
+public interface GLATITextureFloat extends overrun.marshal.DirectAccess {
     int GL_RGBA_FLOAT32_ATI = 0x8814;
     int GL_RGB_FLOAT32_ATI = 0x8815;
     int GL_ALPHA_FLOAT32_ATI = 0x8816;

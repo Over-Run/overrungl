@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_primitive_restart}
  */
-public interface GLNVPrimitiveRestart {
+public interface GLNVPrimitiveRestart extends overrun.marshal.DirectAccess {
     int GL_PRIMITIVE_RESTART_NV = 0x8558;
     int GL_PRIMITIVE_RESTART_INDEX_NV = 0x8559;
 

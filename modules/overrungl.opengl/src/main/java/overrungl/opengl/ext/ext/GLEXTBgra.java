@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_bgra}
  */
-public interface GLEXTBgra {
+public interface GLEXTBgra extends overrun.marshal.DirectAccess {
     int GL_BGR_EXT = 0x80E0;
     int GL_BGRA_EXT = 0x80E1;
 }

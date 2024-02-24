@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_vertex_buffer_object}
  */
-public interface GLARBVertexBufferObject {
+public interface GLARBVertexBufferObject extends overrun.marshal.DirectAccess {
     int GL_BUFFER_SIZE_ARB = 0x8764;
     int GL_BUFFER_USAGE_ARB = 0x8765;
     int GL_ARRAY_BUFFER_ARB = 0x8892;

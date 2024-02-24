@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_sparse_texture}
  */
-public interface GLARBSparseTexture {
+public interface GLARBSparseTexture extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_SPARSE_ARB = 0x91A6;
     int GL_VIRTUAL_PAGE_SIZE_INDEX_ARB = 0x91A7;
     int GL_NUM_SPARSE_LEVELS_ARB = 0x91AA;

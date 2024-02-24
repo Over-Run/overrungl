@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_shader_thread_group}
  */
-public interface GLNVShaderThreadGroup {
+public interface GLNVShaderThreadGroup extends overrun.marshal.DirectAccess {
     int GL_WARP_SIZE_NV = 0x9339;
     int GL_WARPS_PER_SM_NV = 0x933A;
     int GL_SM_COUNT_NV = 0x933B;

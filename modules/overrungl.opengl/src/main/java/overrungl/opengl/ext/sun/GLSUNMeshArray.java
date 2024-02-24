@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SUN_mesh_array}
  */
-public interface GLSUNMeshArray {
+public interface GLSUNMeshArray extends overrun.marshal.DirectAccess {
     int GL_QUAD_MESH_SUN = 0x8614;
     int GL_TRIANGLE_MESH_SUN = 0x8615;
 

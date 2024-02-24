@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_texture_lod}
  */
-public interface GLSGISTextureLod {
+public interface GLSGISTextureLod extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_MIN_LOD_SGIS = 0x813A;
     int GL_TEXTURE_MAX_LOD_SGIS = 0x813B;
     int GL_TEXTURE_BASE_LEVEL_SGIS = 0x813C;

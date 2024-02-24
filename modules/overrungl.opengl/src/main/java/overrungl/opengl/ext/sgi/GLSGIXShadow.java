@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_shadow}
  */
-public interface GLSGIXShadow {
+public interface GLSGIXShadow extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_COMPARE_SGIX = 0x819A;
     int GL_TEXTURE_COMPARE_OPERATOR_SGIX = 0x819B;
     int GL_TEXTURE_LEQUAL_R_SGIX = 0x819C;

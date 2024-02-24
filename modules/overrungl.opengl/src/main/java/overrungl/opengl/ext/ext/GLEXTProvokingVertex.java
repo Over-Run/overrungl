@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_provoking_vertex}
  */
-public interface GLEXTProvokingVertex {
+public interface GLEXTProvokingVertex extends overrun.marshal.DirectAccess {
     int GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION_EXT = 0x8E4C;
     int GL_FIRST_VERTEX_CONVENTION_EXT = 0x8E4D;
     int GL_LAST_VERTEX_CONVENTION_EXT = 0x8E4E;

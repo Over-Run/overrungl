@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_texture_select}
  */
-public interface GLSGISTextureSelect {
+public interface GLSGISTextureSelect extends overrun.marshal.DirectAccess {
     int GL_DUAL_ALPHA4_SGIS = 0x8110;
     int GL_DUAL_ALPHA8_SGIS = 0x8111;
     int GL_DUAL_ALPHA12_SGIS = 0x8112;

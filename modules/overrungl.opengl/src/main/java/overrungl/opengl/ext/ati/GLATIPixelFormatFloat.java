@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_pixel_format_float}
  */
-public interface GLATIPixelFormatFloat {
+public interface GLATIPixelFormatFloat extends overrun.marshal.DirectAccess {
     int GL_RGBA_FLOAT_MODE_ATI = 0x8820;
     int GL_COLOR_CLEAR_UNCLAMPED_VALUE_ATI = 0x8835;
 }

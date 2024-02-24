@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_robustness}
  */
-public interface GLARBRobustness {
+public interface GLARBRobustness extends overrun.marshal.DirectAccess {
     int GL_NO_RESET_NOTIFICATION_ARB = 0x8261;
     int GL_RESET_NOTIFICATION_STRATEGY_ARB = 0x8256;
     int GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = 0x00000004;
