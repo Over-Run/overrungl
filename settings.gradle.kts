@@ -16,3 +16,5 @@ file("modules").listFiles().forEach {
     include(s)
     project(":$s").projectDir = it
 }
+
+include("generators:opengl")
