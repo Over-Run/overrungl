@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_vdpau_interop}
  */
-public interface GLNVVDPAUInterop {
+public interface GLNVVDPAUInterop extends overrun.marshal.DirectAccess {
     int GL_SURFACE_STATE_NV = 0x86EB;
     int GL_SURFACE_REGISTERED_NV = 0x86FD;
     int GL_SURFACE_MAPPED_NV = 0x8700;

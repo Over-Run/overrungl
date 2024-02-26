@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_fragment_shader}
  */
-public interface GLARBFragmentShader {
+public interface GLARBFragmentShader extends overrun.marshal.DirectAccess {
     int GL_FRAGMENT_SHADER_ARB = 0x8B30;
     int GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB = 0x8B49;
     int GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB = 0x8B8B;

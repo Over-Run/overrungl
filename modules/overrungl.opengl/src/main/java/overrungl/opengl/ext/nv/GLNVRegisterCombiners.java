@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_register_combiners}
  */
-public interface GLNVRegisterCombiners {
+public interface GLNVRegisterCombiners extends overrun.marshal.DirectAccess {
     int GL_REGISTER_COMBINERS_NV = 0x8522;
     int GL_VARIABLE_A_NV = 0x8523;
     int GL_VARIABLE_B_NV = 0x8524;

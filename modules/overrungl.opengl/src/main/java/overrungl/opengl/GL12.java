@@ -16,13 +16,15 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
  * The OpenGL 1.2 constants.
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL12 extends GL12C permits GLLegacy {
+public interface GL12 extends DirectAccess {
     int RESCALE_NORMAL = 0x803A;
     int LIGHT_MODEL_COLOR_CONTROL = 0x81F8,
         SINGLE_COLOR = 0x81F9,

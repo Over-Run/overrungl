@@ -16,6 +16,7 @@
 
 package overrungl.stb;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
 
@@ -27,7 +28,7 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface STBPerlin {
+public interface STBPerlin extends DirectAccess {
     /**
      * The instance of STBPerlin.
      */

@@ -60,27 +60,27 @@ public final class STBVorbisInfo extends Struct {
     /**
      * sample_rate
      */
-    public final StructHandle.Int sampleRate = StructHandle.ofInt(this, "sample_rate");
+    public static final StructHandle.Int sampleRate = StructHandle.ofInt(LAYOUT, "sample_rate");
     /**
      * channels
      */
-    public final StructHandle.Int channels = StructHandle.ofInt(this, "channels");
+    public static final StructHandle.Int channels = StructHandle.ofInt(LAYOUT, "channels");
     /**
      * setup_memory_required
      */
-    public final StructHandle.Int setupMemoryRequired = StructHandle.ofInt(this, "setup_memory_required");
+    public static final StructHandle.Int setupMemoryRequired = StructHandle.ofInt(LAYOUT, "setup_memory_required");
     /**
      * setup_temp_memory_required
      */
-    public final StructHandle.Int setupTempMemoryRequired = StructHandle.ofInt(this, "setup_temp_memory_required");
+    public static final StructHandle.Int setupTempMemoryRequired = StructHandle.ofInt(LAYOUT, "setup_temp_memory_required");
     /**
      * temp_memory_required
      */
-    public final StructHandle.Int tempMemoryRequired = StructHandle.ofInt(this, "temp_memory_required");
+    public static final StructHandle.Int tempMemoryRequired = StructHandle.ofInt(LAYOUT, "temp_memory_required");
     /**
      * max_frame_size
      */
-    public final StructHandle.Int maxFrameSize = StructHandle.ofInt(this, "max_frame_size");
+    public static final StructHandle.Int maxFrameSize = StructHandle.ofInt(LAYOUT, "max_frame_size");
 
     /**
      * Creates a struct with the given layout.

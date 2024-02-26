@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_matrix_palette}
  */
-public interface GLARBMatrixPalette {
+public interface GLARBMatrixPalette extends overrun.marshal.DirectAccess {
     int GL_MATRIX_PALETTE_ARB = 0x8840;
     int GL_MAX_MATRIX_PALETTE_STACK_DEPTH_ARB = 0x8841;
     int GL_MAX_PALETTE_MATRICES_ARB = 0x8842;

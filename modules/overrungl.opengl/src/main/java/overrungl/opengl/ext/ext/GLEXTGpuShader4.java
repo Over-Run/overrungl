@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_gpu_shader4}
  */
-public interface GLEXTGpuShader4 {
+public interface GLEXTGpuShader4 extends overrun.marshal.DirectAccess {
     int GL_SAMPLER_1D_ARRAY_EXT = 0x8DC0;
     int GL_SAMPLER_2D_ARRAY_EXT = 0x8DC1;
     int GL_SAMPLER_BUFFER_EXT = 0x8DC2;

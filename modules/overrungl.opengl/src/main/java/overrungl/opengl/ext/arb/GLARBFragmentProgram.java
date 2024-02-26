@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_fragment_program}
  */
-public interface GLARBFragmentProgram {
+public interface GLARBFragmentProgram extends overrun.marshal.DirectAccess {
     int GL_FRAGMENT_PROGRAM_ARB = 0x8804;
     int GL_PROGRAM_FORMAT_ASCII_ARB = 0x8875;
     int GL_PROGRAM_LENGTH_ARB = 0x8627;

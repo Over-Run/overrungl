@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_mesh_shader}
  */
-public interface GLNVMeshShader {
+public interface GLNVMeshShader extends overrun.marshal.DirectAccess {
     int GL_MESH_SHADER_NV = 0x9559;
     int GL_TASK_SHADER_NV = 0x955A;
     int GL_MAX_MESH_UNIFORM_BLOCKS_NV = 0x8E60;

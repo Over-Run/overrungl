@@ -64,7 +64,7 @@ data class Type(val name: String, val layout: String?) {
 const val fileHeader = """/*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -193,7 +193,7 @@ class OpenGLFile(
                 |/**
                 | * {@code $extName}
                 | */
-                |public interface GL${ext.extName}$name {
+                |public interface GL${ext.extName}$name extends overrun.marshal.DirectAccess {
             """.trimMargin()
                 )
                 // constants
@@ -2524,10 +2524,9 @@ fun glExtension() {
             |
             |/**
             | * The OpenGL extension functions.
-            | *
             | * @since 0.1.0
             | */
-            |public interface GLExtension extends
+            |public interface GLExtension extends overrun.marshal.DirectAccess,
         """.trimMargin())
         generatedExtClasses.joinTo(this, ",\n") { "    GL${it.ext.extName}${it.name}" }
         appendLine(" {")
@@ -3165,7 +3164,6 @@ fun glFlags() {
             |
             |/**
             | * The OpenGL flags.
-            | *
             | * @since 0.1.0
             | */
             |public final class GLFlags {
@@ -3177,7 +3175,7 @@ fun glFlags() {
             |        GL30, GL31, GL32, GL33,
             |        GL40, GL41, GL42, GL43, GL44, GL45, GL46;
             |    /** The OpenGL extension flags. */
-            |    public final boolean ${caps.joinToString()};
+            |    public final boolean ${caps.joinToString(separator = ",\n|        ")};
             |
             |    /**
             |     * Construct OpenGL flags.

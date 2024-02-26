@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_ycrcba}
  */
-public interface GLSGIXYcrcba {
+public interface GLSGIXYcrcba extends overrun.marshal.DirectAccess {
     int GL_YCRCB_SGIX = 0x8318;
     int GL_YCRCBA_SGIX = 0x8319;
 }

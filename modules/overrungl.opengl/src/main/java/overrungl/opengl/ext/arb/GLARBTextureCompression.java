@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_texture_compression}
  */
-public interface GLARBTextureCompression {
+public interface GLARBTextureCompression extends overrun.marshal.DirectAccess {
     int GL_COMPRESSED_ALPHA_ARB = 0x84E9;
     int GL_COMPRESSED_LUMINANCE_ARB = 0x84EA;
     int GL_COMPRESSED_LUMINANCE_ALPHA_ARB = 0x84EB;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_indirect_parameters}
  */
-public interface GLARBIndirectParameters {
+public interface GLARBIndirectParameters extends overrun.marshal.DirectAccess {
     int GL_PARAMETER_BUFFER_ARB = 0x80EE;
     int GL_PARAMETER_BUFFER_BINDING_ARB = 0x80EF;
 

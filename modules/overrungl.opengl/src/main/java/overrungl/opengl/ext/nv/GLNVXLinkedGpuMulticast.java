@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NVX_linked_gpu_multicast}
  */
-public interface GLNVXLinkedGpuMulticast {
+public interface GLNVXLinkedGpuMulticast extends overrun.marshal.DirectAccess {
     int GL_LGPU_SEPARATE_STORAGE_BIT_NVX = 0x0800;
     int GL_MAX_LGPU_GPUS_NVX = 0x92BA;
 

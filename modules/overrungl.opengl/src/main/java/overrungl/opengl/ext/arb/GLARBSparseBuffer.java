@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_sparse_buffer}
  */
-public interface GLARBSparseBuffer {
+public interface GLARBSparseBuffer extends overrun.marshal.DirectAccess {
     int GL_SPARSE_STORAGE_BIT_ARB = 0x0400;
     int GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8;
 

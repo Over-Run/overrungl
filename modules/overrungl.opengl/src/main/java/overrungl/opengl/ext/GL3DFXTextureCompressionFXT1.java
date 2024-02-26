@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_3DFX_texture_compression_FXT1}
  */
-public interface GL3DFXTextureCompressionFXT1 {
+public interface GL3DFXTextureCompressionFXT1 extends overrun.marshal.DirectAccess {
     int GL_COMPRESSED_RGB_FXT1_3DFX = 0x86B0;
     int GL_COMPRESSED_RGBA_FXT1_3DFX = 0x86B1;
 }

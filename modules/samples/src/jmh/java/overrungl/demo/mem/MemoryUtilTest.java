@@ -16,16 +16,18 @@
 
 package overrungl.demo.mem;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemorySegment;
-import java.util.concurrent.TimeUnit;
-
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import overrun.marshal.MemoryStack;
 import overrungl.util.MemoryUtil;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Tests memory util
@@ -36,57 +38,55 @@ import overrungl.util.MemoryUtil;
 @BenchmarkMode(Mode.Throughput)
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.SECONDS)
-@Warmup(iterations = 5, time = 1)
-@Measurement(iterations = 5, time = 1)
+@Warmup(iterations = 5, time = 250, timeUnit = TimeUnit.MILLISECONDS, batchSize = 100)
+@Measurement(iterations = 5, time = 250, timeUnit = TimeUnit.MILLISECONDS, batchSize = 100)
 @Threads(Threads.MAX)
 @Fork(1)
 public class MemoryUtilTest {
     @Param({"0", "1", "10", "128", "1024"})
     private long size;
-    private Arena arena;
-
-    @Setup(Level.Iteration)
-    public void setup() {
-        arena = Arena.ofConfined();
-    }
 
     @Benchmark
-    public MemorySegment testArenaInside() {
-        try (Arena arena1 = Arena.ofConfined()) {
-            return arena1.allocate(size);
+    public void measureArena(Blackhole bh) {
+        try (Arena arena = Arena.ofConfined()) {
+            bh.consume(arena.allocate(size));
         }
     }
 
     @Benchmark
-    public MemorySegment testArenaOutside() {
-        return arena.allocate(size);
-    }
-
-    @Benchmark
-    public MemorySegment memoryUtilMalloc() {
-        MemorySegment seg = null;
+    public void measureMalloc(Blackhole bh) {
+        MemorySegment segment = MemorySegment.NULL;
         try {
-            seg = MemoryUtil.malloc(size);
-            return seg;
+            segment = MemoryUtil.malloc(size);
+            bh.consume(segment);
         } finally {
-            MemoryUtil.free(seg);
+            MemoryUtil.free(segment);
         }
     }
 
     @Benchmark
-    public MemorySegment memoryUtilCalloc() {
-        MemorySegment seg = null;
+    public void measureCalloc(Blackhole bh) {
+        MemorySegment segment = MemorySegment.NULL;
         try {
-            seg = MemoryUtil.calloc(1, size);
-            return seg;
+            segment = MemoryUtil.calloc(1L, size);
+            bh.consume(segment);
         } finally {
-            MemoryUtil.free(seg);
+            MemoryUtil.free(segment);
         }
     }
 
-    @TearDown(Level.Iteration)
-    public void dispose() {
-        arena.close();
+    @Benchmark
+    public void measureStackMalloc(Blackhole bh) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            bh.consume(stack.malloc(size, 1L));
+        }
+    }
+
+    @Benchmark
+    public void measureStackCalloc(Blackhole bh) {
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            bh.consume(stack.allocate(size));
+        }
     }
 
     public static void main(String[] args) throws RunnerException {

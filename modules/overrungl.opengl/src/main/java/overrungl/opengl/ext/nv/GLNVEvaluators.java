@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_evaluators}
  */
-public interface GLNVEvaluators {
+public interface GLNVEvaluators extends overrun.marshal.DirectAccess {
     int GL_EVAL_2D_NV = 0x86C0;
     int GL_EVAL_TRIANGULAR_2D_NV = 0x86C1;
     int GL_MAP_TESSELLATION_NV = 0x86C2;

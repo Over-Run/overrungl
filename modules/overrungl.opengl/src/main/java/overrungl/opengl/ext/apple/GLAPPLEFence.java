@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_APPLE_fence}
  */
-public interface GLAPPLEFence {
+public interface GLAPPLEFence extends overrun.marshal.DirectAccess {
     int GL_DRAW_PIXELS_APPLE = 0x8A0A;
     int GL_FENCE_APPLE = 0x8A0B;
 

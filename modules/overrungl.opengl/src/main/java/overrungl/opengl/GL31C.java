@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -41,7 +42,7 @@ import java.lang.foreign.ValueLayout;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL31C extends GL30C permits GL32C {
+public interface GL31C extends DirectAccess {
     int SAMPLER_2D_RECT = 0x8B63;
     int SAMPLER_2D_RECT_SHADOW = 0x8B64;
     int SAMPLER_BUFFER = 0x8DC2;

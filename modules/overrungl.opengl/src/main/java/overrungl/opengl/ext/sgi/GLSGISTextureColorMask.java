@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_texture_color_mask}
  */
-public interface GLSGISTextureColorMask {
+public interface GLSGISTextureColorMask extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
 
     default void glTextureColorMaskSGIS(boolean red, boolean green, boolean blue, boolean alpha) {

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_framebuffer_multisample_blit_scaled}
  */
-public interface GLEXTFramebufferMultisampleBlitScaled {
+public interface GLEXTFramebufferMultisampleBlitScaled extends overrun.marshal.DirectAccess {
     int GL_SCALED_RESOLVE_FASTEST_EXT = 0x90BA;
     int GL_SCALED_RESOLVE_NICEST_EXT = 0x90BB;
 }

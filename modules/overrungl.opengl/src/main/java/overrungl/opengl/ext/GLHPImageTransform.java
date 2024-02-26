@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_HP_image_transform}
  */
-public interface GLHPImageTransform {
+public interface GLHPImageTransform extends overrun.marshal.DirectAccess {
     int GL_IMAGE_SCALE_X_HP = 0x8155;
     int GL_IMAGE_SCALE_Y_HP = 0x8156;
     int GL_IMAGE_TRANSLATE_X_HP = 0x8157;

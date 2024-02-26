@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for joystick configuration callbacks.
@@ -37,7 +39,7 @@ public interface GLFWJoystickFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWJoystickFun> TYPE = Upcall.type();
+    Type<GLFWJoystickFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for joystick configuration callbacks.
@@ -46,7 +48,6 @@ public interface GLFWJoystickFun extends Upcall {
      * @param event One of {@code CONNECTED} or {@code DISCONNECTED}. Future
      *              releases may add more events.
      */
-    @Stub
     void invoke(int jid, int event);
 
     @Override

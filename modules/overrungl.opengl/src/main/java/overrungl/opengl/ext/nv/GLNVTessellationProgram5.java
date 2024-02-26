@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_tessellation_program5}
  */
-public interface GLNVTessellationProgram5 {
+public interface GLNVTessellationProgram5 extends overrun.marshal.DirectAccess {
     int GL_MAX_PROGRAM_PATCH_ATTRIBS_NV = 0x86D8;
     int GL_TESS_CONTROL_PROGRAM_NV = 0x891E;
     int GL_TESS_EVALUATION_PROGRAM_NV = 0x891F;

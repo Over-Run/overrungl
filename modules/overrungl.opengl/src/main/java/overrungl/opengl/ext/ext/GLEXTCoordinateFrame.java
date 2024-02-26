@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_coordinate_frame}
  */
-public interface GLEXTCoordinateFrame {
+public interface GLEXTCoordinateFrame extends overrun.marshal.DirectAccess {
     int GL_TANGENT_ARRAY_EXT = 0x8439;
     int GL_BINORMAL_ARRAY_EXT = 0x843A;
     int GL_CURRENT_TANGENT_EXT = 0x843B;

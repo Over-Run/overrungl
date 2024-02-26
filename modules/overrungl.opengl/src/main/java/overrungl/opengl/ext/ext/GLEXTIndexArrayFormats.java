@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_index_array_formats}
  */
-public interface GLEXTIndexArrayFormats {
+public interface GLEXTIndexArrayFormats extends overrun.marshal.DirectAccess {
     int GL_IUI_V2F_EXT = 0x81AD;
     int GL_IUI_V3F_EXT = 0x81AE;
     int GL_IUI_N3F_V2F_EXT = 0x81AF;

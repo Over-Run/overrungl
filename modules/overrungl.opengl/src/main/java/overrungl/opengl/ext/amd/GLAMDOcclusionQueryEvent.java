@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_occlusion_query_event}
  */
-public interface GLAMDOcclusionQueryEvent {
+public interface GLAMDOcclusionQueryEvent extends overrun.marshal.DirectAccess {
     int GL_OCCLUSION_QUERY_EVENT_MASK_AMD = 0x874F;
     int GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD = 0x00000001;
     int GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD = 0x00000002;

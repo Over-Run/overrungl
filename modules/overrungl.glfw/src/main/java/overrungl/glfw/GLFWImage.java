@@ -47,15 +47,15 @@ public final class GLFWImage extends Struct {
     /**
      * The width, in pixels, of this image.
      */
-    public final StructHandle.Int width = StructHandle.ofInt(this, "width");
+    public static final StructHandle.Int width = StructHandle.ofInt(LAYOUT, "width");
     /**
      * The height, in pixels, of this image.
      */
-    public final StructHandle.Int height = StructHandle.ofInt(this, "height");
+    public static final StructHandle.Int height = StructHandle.ofInt(LAYOUT, "height");
     /**
      * The pixel data address of this image, arranged left-to-right, top-to-bottom.
      */
-    public final StructHandle.Address pixels = StructHandle.ofAddress(this, "pixels");
+    public static final StructHandle.Address pixels = StructHandle.ofAddress(LAYOUT, "pixels");
 
     /**
      * Creates a struct with the given layout.

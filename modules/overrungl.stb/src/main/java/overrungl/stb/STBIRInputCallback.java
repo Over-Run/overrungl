@@ -20,7 +20,9 @@ import overrun.marshal.Upcall;
 import overrungl.NativeType;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * INPUT CALLBACK: this callback is used for input scanlines
@@ -67,10 +69,9 @@ public interface STBIRInputCallback extends Upcall {
     /**
      * the type
      */
-    Type<STBIRInputCallback> TYPE = Upcall.type();
+    Type<STBIRInputCallback> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
 
     @NativeType("void const *")
-    @Stub
     MemorySegment invoke(@NativeType("void *") MemorySegment optional_output, @NativeType("void const *") MemorySegment input_ptr, int num_pixels, int x, int y, @NativeType("void *") MemorySegment context);
 
     @Override

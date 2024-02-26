@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.Entrypoint;
 import overrungl.opengl.ext.arb.GLARBWindowPos;
 
@@ -33,7 +34,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL14 extends GL14C permits GLLegacy {
+public interface GL14 extends DirectAccess {
     @Entrypoint("glFogCoordPointer")
     default void fogCoordPointer(int type, int stride, MemorySegment pointer) {
         throw new ContextException();

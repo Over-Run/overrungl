@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_texture_filter_minmax}
  */
-public interface GLARBTextureFilterMinmax {
+public interface GLARBTextureFilterMinmax extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_REDUCTION_MODE_ARB = 0x9366;
     int GL_WEIGHTED_AVERAGE_ARB = 0x9367;
 }

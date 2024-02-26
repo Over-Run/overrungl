@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_transpose_matrix}
  */
-public interface GLARBTransposeMatrix {
+public interface GLARBTransposeMatrix extends overrun.marshal.DirectAccess {
     int GL_TRANSPOSE_MODELVIEW_MATRIX_ARB = 0x84E3;
     int GL_TRANSPOSE_PROJECTION_MATRIX_ARB = 0x84E4;
     int GL_TRANSPOSE_TEXTURE_MATRIX_ARB = 0x84E5;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_path_rendering}
  */
-public interface GLNVPathRendering {
+public interface GLNVPathRendering extends overrun.marshal.DirectAccess {
     int GL_PATH_FORMAT_SVG_NV = 0x9070;
     int GL_PATH_FORMAT_PS_NV = 0x9071;
     int GL_STANDARD_FONT_NAME_NV = 0x9072;

@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for window position callbacks.
@@ -37,7 +39,7 @@ public interface GLFWWindowPosFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWWindowPosFun> TYPE = Upcall.type();
+    Type<GLFWWindowPosFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for window position callbacks.
@@ -48,7 +50,6 @@ public interface GLFWWindowPosFun extends Upcall {
      * @param ypos   The new y-coordinate, in screen coordinates, of the
      *               upper-left corner of the content area of the window.
      */
-    @Stub
     void invoke(MemorySegment window, int xpos, int ypos);
 
     @Override

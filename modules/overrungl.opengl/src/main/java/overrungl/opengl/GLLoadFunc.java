@@ -28,7 +28,7 @@ import java.util.Optional;
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
  * import java.util.Objects;
- * Objects.requireNonNull(GLLoader.load(glfw::getProcAddress), "Failed to load OpenGL");
+ * Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(glfw::getProcAddress)), "Failed to load OpenGL");
  * }
  *
  * @author squid233

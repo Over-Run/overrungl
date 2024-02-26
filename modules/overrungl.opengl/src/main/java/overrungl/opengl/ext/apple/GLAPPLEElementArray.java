@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_APPLE_element_array}
  */
-public interface GLAPPLEElementArray {
+public interface GLAPPLEElementArray extends overrun.marshal.DirectAccess {
     int GL_ELEMENT_ARRAY_APPLE = 0x8A0C;
     int GL_ELEMENT_ARRAY_TYPE_APPLE = 0x8A0D;
     int GL_ELEMENT_ARRAY_POINTER_APPLE = 0x8A0E;

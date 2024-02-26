@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_draw_buffers}
  */
-public interface GLATIDrawBuffers {
+public interface GLATIDrawBuffers extends overrun.marshal.DirectAccess {
     int GL_MAX_DRAW_BUFFERS_ATI = 0x8824;
     int GL_DRAW_BUFFER0_ATI = 0x8825;
     int GL_DRAW_BUFFER1_ATI = 0x8826;

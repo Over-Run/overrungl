@@ -16,9 +16,11 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.Marshal;
 import overrun.marshal.struct.Struct;
 import overrun.marshal.struct.StructHandle;
 
+import java.lang.foreign.StructLayout;
 import java.lang.invoke.VarHandle;
 
 /**
@@ -39,49 +41,53 @@ public final class StructHandleSizedFloatArray extends StructHandle {
      * @param name   name
      * @return handle
      */
-    static StructHandleSizedFloatArray of(Struct struct, String name) {
+    static StructHandleSizedFloatArray of(StructLayout struct, String name) {
         return new StructHandleSizedFloatArray(StructHandle.ofSizedArray(struct, name));
     }
 
     /**
      * Sets the value at the given index.
      *
-     * @param index the index
+     * @param struct     the struct
+     * @param index      the index
      * @param arrayIndex the array index
-     * @param value the value
+     * @param value      the value
      */
-    public void set(long index, long arrayIndex, float value) {
-        varHandle.set(0L, index, arrayIndex, value);
+    public void set(Struct struct, long index, long arrayIndex, float value) {
+        varHandle.set(Marshal.marshal(struct), 0L, index, arrayIndex, value);
     }
 
     /**
      * Sets the value.
      *
+     * @param struct     the struct
      * @param arrayIndex the array index
-     * @param value the value
+     * @param value      the value
      */
-    public void set(long arrayIndex, float value) {
-        set(0L, arrayIndex, value);
+    public void set(Struct struct, long arrayIndex, float value) {
+        set(struct, 0L, arrayIndex, value);
     }
 
     /**
      * Gets the value at the given index.
      *
-     * @param index the index
+     * @param struct     the struct
+     * @param index      the index
      * @param arrayIndex the array index
      * @return the value
      */
-    public float get(long index, long arrayIndex) {
-        return (short) varHandle.get(0L, index, arrayIndex);
+    public float get(Struct struct, long index, long arrayIndex) {
+        return (short) varHandle.get(Marshal.marshal(struct), 0L, index, arrayIndex);
     }
 
     /**
      * Gets the value.
      *
+     * @param struct     the struct
      * @param arrayIndex the array index
      * @return the value
      */
-    public float get(long arrayIndex) {
-        return get(0L, arrayIndex);
+    public float get(Struct struct, long arrayIndex) {
+        return get(struct, 0L, arrayIndex);
     }
 }

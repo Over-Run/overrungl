@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_half_float}
  */
-public interface GLNVHalfFloat {
+public interface GLNVHalfFloat extends overrun.marshal.DirectAccess {
     int GL_HALF_FLOAT_NV = 0x140B;
 
     default void glVertex2hNV(short x, short y) {

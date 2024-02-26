@@ -6,7 +6,6 @@ plugins {
     `java-platform`
     `maven-publish`
     signing
-    id("me.champeau.jmh") version "0.7.2" apply false
 }
 
 val projGroupId: String by project
@@ -127,7 +126,6 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
     project(subprojectName) {
         apply(plugin = "java-library")
         apply(plugin = "idea")
-        apply(plugin = "me.champeau.jmh")
 
         group = projGroupId
         version = projVersion

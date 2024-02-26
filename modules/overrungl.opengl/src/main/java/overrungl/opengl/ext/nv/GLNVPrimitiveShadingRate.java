@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_primitive_shading_rate}
  */
-public interface GLNVPrimitiveShadingRate {
+public interface GLNVPrimitiveShadingRate extends overrun.marshal.DirectAccess {
     int GL_SHADING_RATE_IMAGE_PER_PRIMITIVE_NV = 0x95B1;
     int GL_SHADING_RATE_IMAGE_PALETTE_COUNT_NV = 0x95B2;
 }

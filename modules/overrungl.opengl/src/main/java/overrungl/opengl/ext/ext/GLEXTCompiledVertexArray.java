@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_compiled_vertex_array}
  */
-public interface GLEXTCompiledVertexArray {
+public interface GLEXTCompiledVertexArray extends overrun.marshal.DirectAccess {
     int GL_ARRAY_ELEMENT_LOCK_FIRST_EXT = 0x81A8;
     int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
 

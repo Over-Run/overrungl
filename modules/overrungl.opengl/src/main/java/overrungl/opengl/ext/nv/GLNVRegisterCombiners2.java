@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_register_combiners2}
  */
-public interface GLNVRegisterCombiners2 {
+public interface GLNVRegisterCombiners2 extends overrun.marshal.DirectAccess {
     int GL_PER_STAGE_CONSTANTS_NV = 0x8535;
 
     default void glCombinerStageParameterfvNV(int stage, int pname, @NativeType("const GLfloat *") MemorySegment params) {

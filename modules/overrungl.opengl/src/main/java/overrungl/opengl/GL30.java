@@ -16,13 +16,15 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
  * The OpenGL 3.0 constants.
  *
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL30 extends GL30C permits GLLegacy {
+public interface GL30 extends DirectAccess {
     int CLAMP_VERTEX_COLOR = 0x891A;
     int CLAMP_FRAGMENT_COLOR = 0x891B;
     int ALPHA_INTEGER = 0x8D97;

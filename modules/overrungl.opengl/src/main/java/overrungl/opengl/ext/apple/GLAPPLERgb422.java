@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_APPLE_rgb_422}
  */
-public interface GLAPPLERgb422 {
+public interface GLAPPLERgb422 extends overrun.marshal.DirectAccess {
     int GL_RGB_422_APPLE = 0x8A1F;
     int GL_UNSIGNED_SHORT_8_8_APPLE = 0x85BA;
     int GL_UNSIGNED_SHORT_8_8_REV_APPLE = 0x85BB;

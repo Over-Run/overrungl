@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_pixel_texture}
  */
-public interface GLSGISPixelTexture {
+public interface GLSGISPixelTexture extends overrun.marshal.DirectAccess {
     int GL_PIXEL_TEXTURE_SGIS = 0x8353;
     int GL_PIXEL_FRAGMENT_RGB_SOURCE_SGIS = 0x8354;
     int GL_PIXEL_FRAGMENT_ALPHA_SOURCE_SGIS = 0x8355;

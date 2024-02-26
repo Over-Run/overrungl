@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_INGR_color_clamp}
  */
-public interface GLINGRColorClamp {
+public interface GLINGRColorClamp extends overrun.marshal.DirectAccess {
     int GL_RED_MIN_CLAMP_INGR = 0x8560;
     int GL_GREEN_MIN_CLAMP_INGR = 0x8561;
     int GL_BLUE_MIN_CLAMP_INGR = 0x8562;

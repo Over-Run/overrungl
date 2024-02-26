@@ -16,6 +16,7 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
@@ -31,7 +32,7 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface GLFWVulkan {
+public interface GLFWVulkan extends DirectAccess {
     /**
      * The instance of GLFWVulkan.
      */

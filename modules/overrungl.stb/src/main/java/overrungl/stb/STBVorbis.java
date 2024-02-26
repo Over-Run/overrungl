@@ -16,6 +16,7 @@
 
 package overrungl.stb;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.struct.ByValue;
@@ -52,7 +53,7 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface STBVorbis {
+public interface STBVorbis extends DirectAccess {
     /**
      * The instance of STBVorbis.
      */

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_occlusion_query}
  */
-public interface GLARBOcclusionQuery {
+public interface GLARBOcclusionQuery extends overrun.marshal.DirectAccess {
     int GL_QUERY_COUNTER_BITS_ARB = 0x8864;
     int GL_CURRENT_QUERY_ARB = 0x8865;
     int GL_QUERY_RESULT_ARB = 0x8866;

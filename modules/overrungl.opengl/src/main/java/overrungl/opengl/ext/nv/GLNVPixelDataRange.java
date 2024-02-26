@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_pixel_data_range}
  */
-public interface GLNVPixelDataRange {
+public interface GLNVPixelDataRange extends overrun.marshal.DirectAccess {
     int GL_WRITE_PIXEL_DATA_RANGE_NV = 0x8878;
     int GL_READ_PIXEL_DATA_RANGE_NV = 0x8879;
     int GL_WRITE_PIXEL_DATA_RANGE_LENGTH_NV = 0x887A;

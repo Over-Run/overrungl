@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_cl_event}
  */
-public interface GLARBCLEvent {
+public interface GLARBCLEvent extends overrun.marshal.DirectAccess {
     int GL_SYNC_CL_EVENT_ARB = 0x8240;
     int GL_SYNC_CL_EVENT_COMPLETE_ARB = 0x8241;
 

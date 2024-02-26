@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_packed_depth_stencil}
  */
-public interface GLNVPackedDepthStencil {
+public interface GLNVPackedDepthStencil extends overrun.marshal.DirectAccess {
     int GL_DEPTH_STENCIL_NV = 0x84F9;
     int GL_UNSIGNED_INT_24_8_NV = 0x84FA;
 }

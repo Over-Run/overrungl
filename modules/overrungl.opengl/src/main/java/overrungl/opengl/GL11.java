@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
@@ -31,7 +32,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL11 extends GL11C permits GLLegacy {
+public interface GL11 extends DirectAccess {
     int CURRENT_BIT = 0x00000001,
         POINT_BIT = 0x00000002,
         LINE_BIT = 0x00000004,

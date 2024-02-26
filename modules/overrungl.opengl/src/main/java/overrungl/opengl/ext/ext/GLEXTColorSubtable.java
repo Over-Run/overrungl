@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_color_subtable}
  */
-public interface GLEXTColorSubtable {
+public interface GLEXTColorSubtable extends overrun.marshal.DirectAccess {
 
     default void glColorSubTableEXT(int target, int start, int count, int format, int type, @NativeType("const void *") MemorySegment data) {
         throw new ContextException();

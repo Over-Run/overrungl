@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_shader_image_load_store}
  */
-public interface GLEXTShaderImageLoadStore {
+public interface GLEXTShaderImageLoadStore extends overrun.marshal.DirectAccess {
     int GL_MAX_IMAGE_UNITS_EXT = 0x8F38;
     int GL_MAX_COMBINED_IMAGE_UNITS_AND_FRAGMENT_OUTPUTS_EXT = 0x8F39;
     int GL_IMAGE_BINDING_NAME_EXT = 0x8F3A;

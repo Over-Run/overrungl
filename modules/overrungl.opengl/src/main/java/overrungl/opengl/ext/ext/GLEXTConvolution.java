@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_convolution}
  */
-public interface GLEXTConvolution {
+public interface GLEXTConvolution extends overrun.marshal.DirectAccess {
     int GL_CONVOLUTION_1D_EXT = 0x8010;
     int GL_CONVOLUTION_2D_EXT = 0x8011;
     int GL_SEPARABLE_2D_EXT = 0x8012;

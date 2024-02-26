@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_framebuffer_object}
  */
-public interface GLEXTFramebufferObject {
+public interface GLEXTFramebufferObject extends overrun.marshal.DirectAccess {
     int GL_INVALID_FRAMEBUFFER_OPERATION_EXT = 0x0506;
     int GL_MAX_RENDERBUFFER_SIZE_EXT = 0x84E8;
     int GL_FRAMEBUFFER_BINDING_EXT = 0x8CA6;

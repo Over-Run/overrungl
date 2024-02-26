@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_texture_scale_bias}
  */
-public interface GLSGIXTextureScaleBias {
+public interface GLSGIXTextureScaleBias extends overrun.marshal.DirectAccess {
     int GL_POST_TEXTURE_FILTER_BIAS_SGIX = 0x8179;
     int GL_POST_TEXTURE_FILTER_SCALE_SGIX = 0x817A;
     int GL_POST_TEXTURE_FILTER_BIAS_RANGE_SGIX = 0x817B;

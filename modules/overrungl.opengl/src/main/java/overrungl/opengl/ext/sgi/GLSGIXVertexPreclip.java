@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_vertex_preclip}
  */
-public interface GLSGIXVertexPreclip {
+public interface GLSGIXVertexPreclip extends overrun.marshal.DirectAccess {
     int GL_VERTEX_PRECLIP_SGIX = 0x83EE;
     int GL_VERTEX_PRECLIP_HINT_SGIX = 0x83EF;
 }

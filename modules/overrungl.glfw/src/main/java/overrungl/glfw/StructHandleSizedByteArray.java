@@ -16,9 +16,11 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.Marshal;
 import overrun.marshal.struct.Struct;
 import overrun.marshal.struct.StructHandle;
 
+import java.lang.foreign.StructLayout;
 import java.lang.invoke.VarHandle;
 
 /**
@@ -39,49 +41,53 @@ public final class StructHandleSizedByteArray extends StructHandle {
      * @param name   name
      * @return handle
      */
-    static StructHandleSizedByteArray of(Struct struct, String name) {
+    static StructHandleSizedByteArray of(StructLayout struct, String name) {
         return new StructHandleSizedByteArray(StructHandle.ofSizedArray(struct, name));
     }
 
     /**
      * Sets the value at the given index.
      *
+     * @param struct     the struct
      * @param index      the index
      * @param arrayIndex the array index
      * @param value      the value
      */
-    public void set(long index, long arrayIndex, byte value) {
-        varHandle.set(0L, index, arrayIndex, value);
+    public void set(Struct struct, long index, long arrayIndex, byte value) {
+        varHandle.set(Marshal.marshal(struct), 0L, index, arrayIndex, value);
     }
 
     /**
      * Sets the value.
      *
+     * @param struct     the struct
      * @param arrayIndex the array index
      * @param value      the value
      */
-    public void set(long arrayIndex, byte value) {
-        set(0L, arrayIndex, value);
+    public void set(Struct struct, long arrayIndex, byte value) {
+        set(struct, 0L, arrayIndex, value);
     }
 
     /**
      * Gets the value at the given index.
      *
+     * @param struct     the struct
      * @param index      the index
      * @param arrayIndex the array index
      * @return the value
      */
-    public byte get(long index, long arrayIndex) {
-        return (byte) varHandle.get(0L, index, arrayIndex);
+    public byte get(Struct struct, long index, long arrayIndex) {
+        return (byte) varHandle.get(Marshal.marshal(struct), 0L, index, arrayIndex);
     }
 
     /**
      * Gets the value.
      *
+     * @param struct     the struct
      * @param arrayIndex the array index
      * @return the value
      */
-    public byte get(long arrayIndex) {
-        return get(0L, arrayIndex);
+    public byte get(Struct struct, long arrayIndex) {
+        return get(struct, 0L, arrayIndex);
     }
 }

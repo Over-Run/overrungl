@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_PGI_misc_hints}
  */
-public interface GLPGIMiscHints {
+public interface GLPGIMiscHints extends overrun.marshal.DirectAccess {
     int GL_PREFER_DOUBLEBUFFER_HINT_PGI = 0x1A1F8;
     int GL_CONSERVE_MEMORY_HINT_PGI = 0x1A1FD;
     int GL_RECLAIM_MEMORY_HINT_PGI = 0x1A1FE;

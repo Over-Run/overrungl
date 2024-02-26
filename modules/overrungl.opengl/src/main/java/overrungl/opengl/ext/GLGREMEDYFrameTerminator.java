@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_GREMEDY_frame_terminator}
  */
-public interface GLGREMEDYFrameTerminator {
+public interface GLGREMEDYFrameTerminator extends overrun.marshal.DirectAccess {
 
     default void glFrameTerminatorGREMEDY() {
         throw new ContextException();

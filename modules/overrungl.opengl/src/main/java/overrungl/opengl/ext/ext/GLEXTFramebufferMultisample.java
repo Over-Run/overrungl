@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_framebuffer_multisample}
  */
-public interface GLEXTFramebufferMultisample {
+public interface GLEXTFramebufferMultisample extends overrun.marshal.DirectAccess {
     int GL_RENDERBUFFER_SAMPLES_EXT = 0x8CAB;
     int GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_EXT = 0x8D56;
     int GL_MAX_SAMPLES_EXT = 0x8D57;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_vertex_array_object}
  */
-public interface GLATIVertexArrayObject {
+public interface GLATIVertexArrayObject extends overrun.marshal.DirectAccess {
     int GL_STATIC_ATI = 0x8760;
     int GL_DYNAMIC_ATI = 0x8761;
     int GL_PRESERVE_ATI = 0x8762;

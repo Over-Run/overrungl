@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_gpu_program5}
  */
-public interface GLNVGpuProgram5 {
+public interface GLNVGpuProgram5 extends overrun.marshal.DirectAccess {
     int GL_MAX_GEOMETRY_PROGRAM_INVOCATIONS_NV = 0x8E5A;
     int GL_MIN_FRAGMENT_INTERPOLATION_OFFSET_NV = 0x8E5B;
     int GL_MAX_FRAGMENT_INTERPOLATION_OFFSET_NV = 0x8E5C;

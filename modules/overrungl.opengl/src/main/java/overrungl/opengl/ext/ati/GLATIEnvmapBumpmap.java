@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_envmap_bumpmap}
  */
-public interface GLATIEnvmapBumpmap {
+public interface GLATIEnvmapBumpmap extends overrun.marshal.DirectAccess {
     int GL_BUMP_ROT_MATRIX_ATI = 0x8775;
     int GL_BUMP_ROT_MATRIX_SIZE_ATI = 0x8776;
     int GL_BUMP_NUM_TEX_UNITS_ATI = 0x8777;

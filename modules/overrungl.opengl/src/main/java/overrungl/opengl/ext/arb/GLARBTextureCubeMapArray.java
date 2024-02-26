@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_texture_cube_map_array}
  */
-public interface GLARBTextureCubeMapArray {
+public interface GLARBTextureCubeMapArray extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_CUBE_MAP_ARRAY_ARB = 0x9009;
     int GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_ARB = 0x900A;
     int GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB = 0x900B;

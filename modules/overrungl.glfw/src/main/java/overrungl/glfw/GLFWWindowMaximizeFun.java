@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for window maximize callbacks. A window
@@ -37,7 +39,7 @@ public interface GLFWWindowMaximizeFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWWindowMaximizeFun> TYPE = Upcall.type();
+    Type<GLFWWindowMaximizeFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for window maximize callbacks.
@@ -55,7 +57,6 @@ public interface GLFWWindowMaximizeFun extends Upcall {
      * @param maximized {@code true} if the window was maximized, or
      *                  {@code false} if it was restored.
      */
-    @Stub
     default void ninvoke(MemorySegment window, int maximized) {
         invoke(window, maximized != GLFW.FALSE);
     }

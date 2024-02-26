@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_3DFX_multisample}
  */
-public interface GL3DFXMultisample {
+public interface GL3DFXMultisample extends overrun.marshal.DirectAccess {
     int GL_MULTISAMPLE_3DFX = 0x86B2;
     int GL_SAMPLE_BUFFERS_3DFX = 0x86B3;
     int GL_SAMPLES_3DFX = 0x86B4;

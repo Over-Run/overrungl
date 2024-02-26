@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_KHR_blend_equation_advanced}
  */
-public interface GLKHRBlendEquationAdvanced {
+public interface GLKHRBlendEquationAdvanced extends overrun.marshal.DirectAccess {
     int GL_MULTIPLY_KHR = 0x9294;
     int GL_SCREEN_KHR = 0x9295;
     int GL_OVERLAY_KHR = 0x9296;

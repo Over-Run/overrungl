@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for framebuffer size callbacks.
@@ -37,7 +39,7 @@ public interface GLFWFramebufferSizeFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWFramebufferSizeFun> TYPE = Upcall.type();
+    Type<GLFWFramebufferSizeFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for framebuffer size callbacks.
@@ -46,7 +48,6 @@ public interface GLFWFramebufferSizeFun extends Upcall {
      * @param width  The new width, in pixels, of the framebuffer.
      * @param height The new height, in pixels, of the framebuffer.
      */
-    @Stub
     void invoke(MemorySegment window, int width, int height);
 
     @Override

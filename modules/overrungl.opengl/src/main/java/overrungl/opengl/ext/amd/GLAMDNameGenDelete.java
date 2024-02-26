@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_name_gen_delete}
  */
-public interface GLAMDNameGenDelete {
+public interface GLAMDNameGenDelete extends overrun.marshal.DirectAccess {
     int GL_DATA_BUFFER_AMD = 0x9151;
     int GL_PERFORMANCE_MONITOR_AMD = 0x9152;
     int GL_QUERY_OBJECT_AMD = 0x9153;

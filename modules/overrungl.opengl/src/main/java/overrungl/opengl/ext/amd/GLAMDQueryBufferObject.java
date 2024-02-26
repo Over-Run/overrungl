@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_query_buffer_object}
  */
-public interface GLAMDQueryBufferObject {
+public interface GLAMDQueryBufferObject extends overrun.marshal.DirectAccess {
     int GL_QUERY_BUFFER_AMD = 0x9192;
     int GL_QUERY_BUFFER_BINDING_AMD = 0x9193;
     int GL_QUERY_RESULT_NO_WAIT_AMD = 0x9194;

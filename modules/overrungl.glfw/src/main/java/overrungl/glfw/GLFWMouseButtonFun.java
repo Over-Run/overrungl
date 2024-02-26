@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for mouse button callback functions.
@@ -37,7 +39,7 @@ public interface GLFWMouseButtonFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWMouseButtonFun> TYPE = Upcall.type();
+    Type<GLFWMouseButtonFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
 
     /**
      * The function pointer type for mouse button callbacks.
@@ -47,7 +49,6 @@ public interface GLFWMouseButtonFun extends Upcall {
      * @param action One of {@code PRESS} or {@code RELEASE}. Future releases may add more actions.
      * @param mods   Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a> were held down.
      */
-    @Stub
     void invoke(MemorySegment window, int button, int action, int mods);
 
     @Override

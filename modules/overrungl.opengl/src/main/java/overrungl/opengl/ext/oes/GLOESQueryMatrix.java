@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_OES_query_matrix}
  */
-public interface GLOESQueryMatrix {
+public interface GLOESQueryMatrix extends overrun.marshal.DirectAccess {
 
     default int glQueryMatrixxOES(@NativeType("GLfixed *") MemorySegment mantissa, @NativeType("GLint *") MemorySegment exponent) {
         throw new ContextException();

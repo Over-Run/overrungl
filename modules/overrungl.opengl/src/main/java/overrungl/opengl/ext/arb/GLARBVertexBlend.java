@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_vertex_blend}
  */
-public interface GLARBVertexBlend {
+public interface GLARBVertexBlend extends overrun.marshal.DirectAccess {
     int GL_MAX_VERTEX_UNITS_ARB = 0x86A4;
     int GL_ACTIVE_VERTEX_UNITS_ARB = 0x86A5;
     int GL_WEIGHT_SUM_UNITY_ARB = 0x86A6;

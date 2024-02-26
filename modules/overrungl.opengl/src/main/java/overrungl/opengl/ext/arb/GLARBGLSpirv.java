@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_gl_spirv}
  */
-public interface GLARBGLSpirv {
+public interface GLARBGLSpirv extends overrun.marshal.DirectAccess {
     int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
     int GL_SPIR_V_BINARY_ARB = 0x9552;
 

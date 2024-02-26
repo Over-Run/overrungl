@@ -17,6 +17,7 @@
 package overrungl.glfw;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -40,7 +41,7 @@ import static overrungl.glfw.Handles.*;
  * @author squid233
  * @since 0.1.0
  */
-public interface GLFW {
+public interface GLFW extends DirectAccess {
     /**
      * The instance of GLFW.
      */

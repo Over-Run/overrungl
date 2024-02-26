@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_texture_env_combine4}
  */
-public interface GLNVTextureEnvCombine4 {
+public interface GLNVTextureEnvCombine4 extends overrun.marshal.DirectAccess {
     int GL_COMBINE4_NV = 0x8503;
     int GL_SOURCE3_RGB_NV = 0x8583;
     int GL_SOURCE3_ALPHA_NV = 0x858B;

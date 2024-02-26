@@ -20,7 +20,9 @@ import overrun.marshal.Upcall;
 import overrungl.NativeType;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * callbacks for user installed filters
@@ -33,10 +35,9 @@ public interface STBIRKernelCallback extends Upcall {
     /**
      * the type
      */
-    Type<STBIRKernelCallback> TYPE = Upcall.type();
+    Type<STBIRKernelCallback> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
 
     // centered at zero
-    @Stub
     float invoke(float x, float scale, @NativeType("void *") MemorySegment user_data);
 
     @Override

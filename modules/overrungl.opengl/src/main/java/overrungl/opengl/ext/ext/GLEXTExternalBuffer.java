@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_external_buffer}
  */
-public interface GLEXTExternalBuffer {
+public interface GLEXTExternalBuffer extends overrun.marshal.DirectAccess {
 
     default void glBufferStorageExternalEXT(int target, long offset, long size, @NativeType("GLeglClientBufferEXT") MemorySegment clientBuffer, int flags) {
         throw new ContextException();

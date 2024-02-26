@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_transform_feedback2}
  */
-public interface GLNVTransformFeedback2 {
+public interface GLNVTransformFeedback2 extends overrun.marshal.DirectAccess {
     int GL_TRANSFORM_FEEDBACK_NV = 0x8E22;
     int GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED_NV = 0x8E23;
     int GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE_NV = 0x8E24;

@@ -16,11 +16,18 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
  * The latest OpenGL functions.
  *
  * @author squid233
  * @since 0.1.0
  */
-public non-sealed interface GL extends GL46C {
+public interface GL extends
+    DirectAccess,
+    GL10C, GL11C, GL12C, GL13C, GL14C, GL15C,
+    GL20C, GL21C,
+    GL30C, GL31C, GL32C, GL33C,
+    GL40C, GL41C, GL42C, GL43C, GL44C, GL45C, GL46C {
 }

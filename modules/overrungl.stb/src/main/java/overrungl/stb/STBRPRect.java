@@ -42,21 +42,21 @@ public final class STBRPRect extends Struct {
     /**
      * reserved for your use
      */
-    public final StructHandle.Int id = StructHandle.ofInt(this, "id");
+    public static final StructHandle.Int id = StructHandle.ofInt(LAYOUT, "id");
     /**
      * input
      */
-    public final StructHandle.Int w = StructHandle.ofInt(this, "w"),
-        h = StructHandle.ofInt(this, "h");
+    public static final StructHandle.Int w = StructHandle.ofInt(LAYOUT, "w"),
+        h = StructHandle.ofInt(LAYOUT, "h");
     /**
      * output
      */
-    public final StructHandle.Int x = StructHandle.ofInt(this, "x"),
-        y = StructHandle.ofInt(this, "y"),
+    public static final StructHandle.Int x = StructHandle.ofInt(LAYOUT, "x"),
+        y = StructHandle.ofInt(LAYOUT, "y"),
     /**
      * non-zero if valid packing
      */
-    wasPacked = StructHandle.ofInt(this, "was_packed");
+    wasPacked = StructHandle.ofInt(LAYOUT, "was_packed");
 
     /**
      * Creates a struct with the given layout.

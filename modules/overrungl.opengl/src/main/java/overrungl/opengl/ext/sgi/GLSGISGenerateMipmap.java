@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_generate_mipmap}
  */
-public interface GLSGISGenerateMipmap {
+public interface GLSGISGenerateMipmap extends overrun.marshal.DirectAccess {
     int GL_GENERATE_MIPMAP_SGIS = 0x8191;
     int GL_GENERATE_MIPMAP_HINT_SGIS = 0x8192;
 }

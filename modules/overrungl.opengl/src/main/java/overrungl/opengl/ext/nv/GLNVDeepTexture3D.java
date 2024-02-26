@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_deep_texture3D}
  */
-public interface GLNVDeepTexture3D {
+public interface GLNVDeepTexture3D extends overrun.marshal.DirectAccess {
     int GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV = 0x90D0;
     int GL_MAX_DEEP_3D_TEXTURE_DEPTH_NV = 0x90D1;
 }

@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for window content refresh callbacks.
@@ -37,14 +39,13 @@ public interface GLFWWindowRefreshFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWWindowRefreshFun> TYPE = Upcall.type();
+    Type<GLFWWindowRefreshFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
 
     /**
      * The function pointer type for window content refresh callbacks.
      *
      * @param window The window whose content needs to be refreshed.
      */
-    @Stub
     void invoke(MemorySegment window);
 
     @Override

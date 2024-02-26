@@ -58,35 +58,35 @@ public final class STBTTVertex extends Struct {
     /**
      * x
      */
-    public final StructHandle.Short x = StructHandle.ofShort(this, "x");
+    public static final StructHandle.Short x = StructHandle.ofShort(LAYOUT, "x");
     /**
      * y
      */
-    public final StructHandle.Short y = StructHandle.ofShort(this, "y");
+    public static final StructHandle.Short y = StructHandle.ofShort(LAYOUT, "y");
     /**
      * cx
      */
-    public final StructHandle.Short cx = StructHandle.ofShort(this, "cx");
+    public static final StructHandle.Short cx = StructHandle.ofShort(LAYOUT, "cx");
     /**
      * cy
      */
-    public final StructHandle.Short cy = StructHandle.ofShort(this, "cy");
+    public static final StructHandle.Short cy = StructHandle.ofShort(LAYOUT, "cy");
     /**
      * cx1
      */
-    public final StructHandle.Short cx1 = StructHandle.ofShort(this, "cx1");
+    public static final StructHandle.Short cx1 = StructHandle.ofShort(LAYOUT, "cx1");
     /**
      * cy1
      */
-    public final StructHandle.Short cy1 = StructHandle.ofShort(this, "cy1");
+    public static final StructHandle.Short cy1 = StructHandle.ofShort(LAYOUT, "cy1");
     /**
      * type
      */
-    public final StructHandle.Byte type = StructHandle.ofByte(this, "type");
+    public static final StructHandle.Byte type = StructHandle.ofByte(LAYOUT, "type");
     /**
      * padding
      */
-    public final StructHandle.Byte padding = StructHandle.ofByte(this, "padding");
+    public static final StructHandle.Byte padding = StructHandle.ofByte(LAYOUT, "padding");
 
     /**
      * Creates a struct with the given layout.

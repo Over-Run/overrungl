@@ -48,19 +48,19 @@ public final class DrawArraysIndirectCommand extends Struct {
     /**
      * the count
      */
-    public final StructHandle.Int count = StructHandle.ofInt(this, "count");
+    public static final StructHandle.Int count = StructHandle.ofInt(LAYOUT, "count");
     /**
      * the primCount
      */
-    public final StructHandle.Int primCount = StructHandle.ofInt(this, "primCount");
+    public static final StructHandle.Int primCount = StructHandle.ofInt(LAYOUT, "primCount");
     /**
      * the first
      */
-    public final StructHandle.Int first = StructHandle.ofInt(this, "first");
+    public static final StructHandle.Int first = StructHandle.ofInt(LAYOUT, "first");
     /**
      * the baseInstance
      */
-    public final StructHandle.Int baseInstance = StructHandle.ofInt(this, "baseInstance");
+    public static final StructHandle.Int baseInstance = StructHandle.ofInt(LAYOUT, "baseInstance");
 
     /**
      * Creates a struct with the given layout.

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_APPLE_texture_range}
  */
-public interface GLAPPLETextureRange {
+public interface GLAPPLETextureRange extends overrun.marshal.DirectAccess {
     int GL_TEXTURE_RANGE_LENGTH_APPLE = 0x85B7;
     int GL_TEXTURE_RANGE_POINTER_APPLE = 0x85B8;
     int GL_TEXTURE_STORAGE_HINT_APPLE = 0x85BC;

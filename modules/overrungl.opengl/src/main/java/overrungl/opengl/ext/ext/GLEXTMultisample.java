@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_multisample}
  */
-public interface GLEXTMultisample {
+public interface GLEXTMultisample extends overrun.marshal.DirectAccess {
     int GL_MULTISAMPLE_EXT = 0x809D;
     int GL_SAMPLE_ALPHA_TO_MASK_EXT = 0x809E;
     int GL_SAMPLE_ALPHA_TO_ONE_EXT = 0x809F;

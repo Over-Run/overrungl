@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_gpu_multicast}
  */
-public interface GLNVGpuMulticast {
+public interface GLNVGpuMulticast extends overrun.marshal.DirectAccess {
     int GL_PER_GPU_STORAGE_BIT_NV = 0x0800;
     int GL_MULTICAST_GPUS_NV = 0x92BA;
     int GL_RENDER_GPU_MASK_NV = 0x9558;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_separate_specular_color}
  */
-public interface GLEXTSeparateSpecularColor {
+public interface GLEXTSeparateSpecularColor extends overrun.marshal.DirectAccess {
     int GL_LIGHT_MODEL_COLOR_CONTROL_EXT = 0x81F8;
     int GL_SINGLE_COLOR_EXT = 0x81F9;
     int GL_SEPARATE_SPECULAR_COLOR_EXT = 0x81FA;

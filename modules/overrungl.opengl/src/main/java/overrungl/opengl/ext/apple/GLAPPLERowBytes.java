@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_APPLE_row_bytes}
  */
-public interface GLAPPLERowBytes {
+public interface GLAPPLERowBytes extends overrun.marshal.DirectAccess {
     int GL_PACK_ROW_BYTES_APPLE = 0x8A15;
     int GL_UNPACK_ROW_BYTES_APPLE = 0x8A16;
 }

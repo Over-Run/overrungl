@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_interleaved_elements}
  */
-public interface GLAMDInterleavedElements {
+public interface GLAMDInterleavedElements extends overrun.marshal.DirectAccess {
     int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
     int GL_VERTEX_ID_SWIZZLE_AMD = 0x91A5;
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIX_blend_alpha_minmax}
  */
-public interface GLSGIXBlendAlphaMinmax {
+public interface GLSGIXBlendAlphaMinmax extends overrun.marshal.DirectAccess {
     int GL_ALPHA_MIN_SGIX = 0x8320;
     int GL_ALPHA_MAX_SGIX = 0x8321;
 }

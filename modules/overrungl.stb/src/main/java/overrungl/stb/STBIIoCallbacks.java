@@ -47,15 +47,15 @@ public final class STBIIoCallbacks extends Struct {
     /**
      * the read callback
      */
-    public final StructHandle.Upcall<Read> read = StructHandle.ofUpcall(this, "read", Read::wrap);
+    public static final StructHandle.Upcall<Read> read = StructHandle.ofUpcall(LAYOUT, "read", Read::wrap);
     /**
      * the skip callback
      */
-    public final StructHandle.Upcall<Skip> skip = StructHandle.ofUpcall(this, "skip", Skip::wrap);
+    public static final StructHandle.Upcall<Skip> skip = StructHandle.ofUpcall(LAYOUT, "skip", Skip::wrap);
     /**
      * the eof callback
      */
-    public final StructHandle.Upcall<Eof> eof = StructHandle.ofUpcall(this, "eof", Eof::wrap);
+    public static final StructHandle.Upcall<Eof> eof = StructHandle.ofUpcall(LAYOUT, "eof", Eof::wrap);
 
     /**
      * Creates a struct with the given layout.
@@ -106,7 +106,7 @@ public final class STBIIoCallbacks extends Struct {
         /**
          * the type
          */
-        Type<Read> TYPE = Upcall.type();
+        Type<Read> TYPE = Upcall.type("ninvoke", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
         /**
          * Fill {@code data} with {@code size} bytes.
@@ -125,7 +125,6 @@ public final class STBIIoCallbacks extends Struct {
          * @param size byte size to fill
          * @return number of bytes actually read
          */
-        @Stub
         default int ninvoke(MemorySegment user, MemorySegment data, int size) {
             return invoke(user, data.reinterpret(size));
         }
@@ -135,15 +134,16 @@ public final class STBIIoCallbacks extends Struct {
             return TYPE.of(arena, this);
         }
 
-        @Wrapper
-        static Read wrap(Arena arena, MemorySegment stub) {
-            return TYPE.wrap(stub, handle -> (user, data) -> {
-                try {
-                    return (int) handle.invokeExact(user, data, Math.toIntExact(data.byteSize()));
-                } catch (Throwable e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        static int invoke(MemorySegment stub, MemorySegment user, MemorySegment data, int size) {
+            try {
+                return (int) TYPE.downcallTarget().invokeExact(stub, user, data, size);
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static Read wrap(MemorySegment stub) {
+            return (user, data) -> invoke(stub, user, data, Math.toIntExact(data.byteSize()));
         }
     }
 
@@ -158,7 +158,7 @@ public final class STBIIoCallbacks extends Struct {
         /**
          * the type
          */
-        Type<Skip> TYPE = Upcall.type();
+        Type<Skip> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
         /**
          * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
@@ -166,7 +166,6 @@ public final class STBIIoCallbacks extends Struct {
          * @param user userdata
          * @param n    byte size to skip
          */
-        @Stub
         void invoke(MemorySegment user, int n);
 
 
@@ -175,15 +174,16 @@ public final class STBIIoCallbacks extends Struct {
             return TYPE.of(arena, this);
         }
 
-        @Wrapper
-        static Skip wrap(Arena arena, MemorySegment stub) {
-            return TYPE.wrap(stub, handle -> (user, n) -> {
-                try {
-                    handle.invokeExact(user, n);
-                } catch (Throwable e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        static void invoke(MemorySegment stub, MemorySegment user, int n) {
+            try {
+                TYPE.downcallTarget().invokeExact(stub, user, n);
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static Skip wrap(MemorySegment stub) {
+            return (user, n) -> invoke(stub, user, n);
         }
     }
 
@@ -198,14 +198,13 @@ public final class STBIIoCallbacks extends Struct {
         /**
          * the type
          */
-        Type<Eof> TYPE = Upcall.type();
+        Type<Eof> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
 
         /**
          * {@return nonzero if we are at end of file/data}
          *
          * @param user userdata
          */
-        @Stub
         int invoke(MemorySegment user);
 
         @Override
@@ -213,15 +212,16 @@ public final class STBIIoCallbacks extends Struct {
             return TYPE.of(arena, this);
         }
 
-        @Wrapper
-        static Eof wrap(Arena arena, MemorySegment segment) {
-            return TYPE.wrap(segment, handle -> user -> {
-                try {
-                    return (int) handle.invokeExact(user);
-                } catch (Throwable e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        static int invoke(MemorySegment stub, MemorySegment user) {
+            try {
+                return (int) TYPE.downcallTarget().invokeExact(stub, user);
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        static Eof wrap(MemorySegment stub) {
+            return user -> invoke(stub, user);
         }
     }
 }

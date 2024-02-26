@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_blend_equation_advanced}
  */
-public interface GLNVBlendEquationAdvanced {
+public interface GLNVBlendEquationAdvanced extends overrun.marshal.DirectAccess {
     int GL_BLEND_OVERLAP_NV = 0x9281;
     int GL_BLEND_PREMULTIPLIED_SRC_NV = 0x9280;
     int GL_BLUE_NV = 0x1905;

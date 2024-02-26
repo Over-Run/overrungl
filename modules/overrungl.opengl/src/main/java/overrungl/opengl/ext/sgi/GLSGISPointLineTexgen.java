@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGIS_point_line_texgen}
  */
-public interface GLSGISPointLineTexgen {
+public interface GLSGISPointLineTexgen extends overrun.marshal.DirectAccess {
     int GL_EYE_DISTANCE_TO_POINT_SGIS = 0x81F0;
     int GL_OBJECT_DISTANCE_TO_POINT_SGIS = 0x81F1;
     int GL_EYE_DISTANCE_TO_LINE_SGIS = 0x81F2;

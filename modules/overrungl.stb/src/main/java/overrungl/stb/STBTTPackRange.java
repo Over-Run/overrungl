@@ -64,29 +64,29 @@ public final class STBTTPackRange extends Struct {
     /**
      * font_size
      */
-    public final StructHandle.Float fontSize = StructHandle.ofFloat(this, "font_size");
+    public static final StructHandle.Float fontSize = StructHandle.ofFloat(LAYOUT, "font_size");
     /**
      * if non-zero, then the chars are continuous, and this is the first codepoint
      */
-    public final StructHandle.Int firstUnicodeCodepointInRange = StructHandle.ofInt(this, "first_unicode_codepoint_in_range");
+    public static final StructHandle.Int firstUnicodeCodepointInRange = StructHandle.ofInt(LAYOUT, "first_unicode_codepoint_in_range");
     /**
      * if non-zero, then this is an array of unicode codepoints
      */
-    public final StructHandle.Array<int[]> arrayOfUnicodeCodepoints = StructHandle.ofArray(this, "array_of_unicode_codepoints", Marshal::marshal, Unmarshal::unmarshalAsIntArray);
+    public static final StructHandle.Array<int[]> arrayOfUnicodeCodepoints = StructHandle.ofArray(LAYOUT, "array_of_unicode_codepoints", Marshal::marshal, Unmarshal::unmarshalAsIntArray);
     /**
      * num_chars
      */
-    public final StructHandle.Int numChars = StructHandle.ofInt(this, "num_chars");
+    public static final StructHandle.Int numChars = StructHandle.ofInt(LAYOUT, "num_chars");
     /**
      * output
      */
-    public final StructHandle.Array<STBTTPackedChar[]> chardataForRange = StructHandle.ofArray(this, "chardata_for_range", Marshal::marshal,
+    public static final StructHandle.Array<STBTTPackedChar[]> chardataForRange = StructHandle.ofArray(LAYOUT, "chardata_for_range", Marshal::marshal,
         segment -> Unmarshal.unmarshal(ADDRESS, segment, STBTTPackedChar[]::new, s -> new STBTTPackedChar(s.get(ADDRESS.withTargetLayout(STBTTPackedChar.LAYOUT), 0L), 1L)));
     /**
      * don't set these, they're used internally
      */
-    public final StructHandleView.Byte hOversample = StructHandle.ofByte(this, "h_oversample"),
-        vOversample = StructHandle.ofByte(this, "v_oversample");
+    public static final StructHandleView.Byte hOversample = StructHandle.ofByte(LAYOUT, "h_oversample"),
+        vOversample = StructHandle.ofByte(LAYOUT, "v_oversample");
 
     /**
      * Creates a struct with the given layout.

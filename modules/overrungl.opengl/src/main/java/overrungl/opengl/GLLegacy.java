@@ -16,11 +16,13 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
+
 /**
- * The latest OpenGL functions, with legacy.
+ * The latest OpenGL functions, with legacy ones.
  *
  * @author squid233
  * @since 0.1.0
  */
-public non-sealed interface GLLegacy extends GL, GL10, GL11, GL12, GL13, GL14, GL15, GL20, GL21, GL30 {
+public interface GLLegacy extends DirectAccess, GL, GL10, GL11, GL12, GL13, GL14, GL15, GL20, GL21, GL30 {
 }

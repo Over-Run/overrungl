@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_ES3_2_compatibility}
  */
-public interface GLARBES32Compatibility {
+public interface GLARBES32Compatibility extends overrun.marshal.DirectAccess {
     int GL_PRIMITIVE_BOUNDING_BOX_ARB = 0x92BE;
     int GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB = 0x9381;
     int GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB = 0x9382;

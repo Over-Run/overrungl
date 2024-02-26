@@ -69,11 +69,11 @@ public final class STBVorbisAlloc extends Struct {
     /**
      * alloc_buffer
      */
-    public final StructHandle.Address allocBuffer = StructHandle.ofAddress(this, "alloc_buffer");
+    public static final StructHandle.Address allocBuffer = StructHandle.ofAddress(LAYOUT, "alloc_buffer");
     /**
      * alloc_buffer_length_in_bytes
      */
-    public final StructHandle.Int allocBufferLengthInBytes = StructHandle.ofInt(this, "alloc_buffer_length_in_bytes");
+    public static final StructHandle.Int allocBufferLengthInBytes = StructHandle.ofInt(LAYOUT, "alloc_buffer_length_in_bytes");
 
     /**
      * Creates a struct with the given layout.

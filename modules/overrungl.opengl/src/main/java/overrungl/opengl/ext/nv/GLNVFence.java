@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_fence}
  */
-public interface GLNVFence {
+public interface GLNVFence extends overrun.marshal.DirectAccess {
     int GL_ALL_COMPLETED_NV = 0x84F2;
     int GL_FENCE_STATUS_NV = 0x84F3;
     int GL_FENCE_CONDITION_NV = 0x84F4;

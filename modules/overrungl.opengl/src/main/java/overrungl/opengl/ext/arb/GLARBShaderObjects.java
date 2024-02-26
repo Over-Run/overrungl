@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_shader_objects}
  */
-public interface GLARBShaderObjects {
+public interface GLARBShaderObjects extends overrun.marshal.DirectAccess {
     int GL_PROGRAM_OBJECT_ARB = 0x8B40;
     int GL_SHADER_OBJECT_ARB = 0x8B48;
     int GL_OBJECT_TYPE_ARB = 0x8B4E;

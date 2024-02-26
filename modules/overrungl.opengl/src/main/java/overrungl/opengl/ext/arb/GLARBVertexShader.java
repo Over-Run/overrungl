@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_vertex_shader}
  */
-public interface GLARBVertexShader {
+public interface GLARBVertexShader extends overrun.marshal.DirectAccess {
     int GL_VERTEX_SHADER_ARB = 0x8B31;
     int GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB = 0x8B4A;
     int GL_MAX_VARYING_FLOATS_ARB = 0x8B4B;

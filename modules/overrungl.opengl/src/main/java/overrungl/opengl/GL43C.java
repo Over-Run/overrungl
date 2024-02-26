@@ -17,6 +17,7 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -57,7 +58,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL43C extends GL42C permits GL44C {
+public interface GL43C extends DirectAccess {
     int NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9;
     int VERTEX_ATTRIB_ARRAY_LONG = 0x874E;
     int COMPRESSED_RGB8_ETC2 = 0x9274;

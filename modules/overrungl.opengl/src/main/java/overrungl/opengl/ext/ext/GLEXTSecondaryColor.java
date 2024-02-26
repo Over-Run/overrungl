@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_secondary_color}
  */
-public interface GLEXTSecondaryColor {
+public interface GLEXTSecondaryColor extends overrun.marshal.DirectAccess {
     int GL_COLOR_SUM_EXT = 0x8458;
     int GL_CURRENT_SECONDARY_COLOR_EXT = 0x8459;
     int GL_SECONDARY_COLOR_ARRAY_SIZE_EXT = 0x845A;

@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -42,7 +43,7 @@ import java.lang.invoke.MethodHandle;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL15C extends GL14C permits GL15, GL20C {
+public interface GL15C extends DirectAccess {
     int BUFFER_SIZE = 0x8764;
     int BUFFER_USAGE = 0x8765;
     int QUERY_COUNTER_BITS = 0x8864;

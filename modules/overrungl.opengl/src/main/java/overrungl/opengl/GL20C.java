@@ -17,6 +17,7 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -47,7 +48,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL20C extends GL15C permits GL20, GL21C {
+public interface GL20C extends DirectAccess {
     int BLEND_EQUATION_RGB = 0x8009;
     int VERTEX_ATTRIB_ARRAY_ENABLED = 0x8622;
     int VERTEX_ATTRIB_ARRAY_SIZE = 0x8623;

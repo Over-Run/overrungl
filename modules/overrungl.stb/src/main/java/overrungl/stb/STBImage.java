@@ -17,6 +17,7 @@
 package overrungl.stb;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -33,7 +34,7 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface STBImage {
+public interface STBImage extends DirectAccess {
     /**
      * The instance of STBImage.
      */

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_subtexture}
  */
-public interface GLEXTSubtexture {
+public interface GLEXTSubtexture extends overrun.marshal.DirectAccess {
 
     default void glTexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, @NativeType("const void *") MemorySegment pixels) {
         throw new ContextException();

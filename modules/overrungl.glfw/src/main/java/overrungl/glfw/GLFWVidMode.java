@@ -54,27 +54,27 @@ public final class GLFWVidMode extends Struct {
     /**
      * the width, in screen coordinates, of the video mode
      */
-    public final StructHandle.Int width = StructHandle.ofInt(this, "width");
+    public static final StructHandle.Int width = StructHandle.ofInt(LAYOUT, "width");
     /**
      * the height, in screen coordinates, of the video mode
      */
-    public final StructHandle.Int height = StructHandle.ofInt(this, "height");
+    public static final StructHandle.Int height = StructHandle.ofInt(LAYOUT, "height");
     /**
      * the bit depth of the red channel of the video mode
      */
-    public final StructHandle.Int redBits = StructHandle.ofInt(this, "redBits");
+    public static final StructHandle.Int redBits = StructHandle.ofInt(LAYOUT, "redBits");
     /**
      * the bit depth of the green channel of the video mode
      */
-    public final StructHandle.Int greenBits = StructHandle.ofInt(this, "greenBits");
+    public static final StructHandle.Int greenBits = StructHandle.ofInt(LAYOUT, "greenBits");
     /**
      * the bit depth of the blue channel of the video mode
      */
-    public final StructHandle.Int blueBits = StructHandle.ofInt(this, "blueBits");
+    public static final StructHandle.Int blueBits = StructHandle.ofInt(LAYOUT, "blueBits");
     /**
      * the refresh rate, in Hz, of the video mode
      */
-    public final StructHandle.Int refreshRate = StructHandle.ofInt(this, "refreshRate");
+    public static final StructHandle.Int refreshRate = StructHandle.ofInt(LAYOUT, "refreshRate");
 
     /**
      * Creates a struct with the given layout.
@@ -118,7 +118,12 @@ public final class GLFWVidMode extends Struct {
      * {@return an immutable state of this struct}
      */
     public Value value() {
-        return new Value(width.get(), height.get(), redBits.get(), greenBits.get(), blueBits.get(), refreshRate.get());
+        return new Value(width.get(this),
+            height.get(this),
+            redBits.get(this),
+            greenBits.get(this),
+            blueBits.get(this),
+            refreshRate.get(this));
     }
 
     /**

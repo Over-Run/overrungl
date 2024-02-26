@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_sample_locations}
  */
-public interface GLARBSampleLocations {
+public interface GLARBSampleLocations extends overrun.marshal.DirectAccess {
     int GL_SAMPLE_LOCATION_SUBPIXEL_BITS_ARB = 0x933D;
     int GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_ARB = 0x933E;
     int GL_SAMPLE_LOCATION_PIXEL_GRID_HEIGHT_ARB = 0x933F;

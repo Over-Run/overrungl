@@ -20,6 +20,7 @@ import overrun.marshal.Unmarshal;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
@@ -41,7 +42,7 @@ public interface GLFWDropFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWDropFun> TYPE = Upcall.type();
+    Type<GLFWDropFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
 
     /**
      * The function pointer type for path drop callbacks.
@@ -58,7 +59,6 @@ public interface GLFWDropFun extends Upcall {
      * @param pathCount The number of dropped paths.
      * @param paths     The UTF-8 encoded file and/or directory path names.
      */
-    @Stub
     default void ninvoke(MemorySegment window, int pathCount, MemorySegment paths) {
         invoke(window, Unmarshal.unmarshalAsStringArray(paths.reinterpret(ValueLayout.ADDRESS.scale(0L, pathCount))));
     }

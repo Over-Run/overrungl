@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_pipeline_statistics_query}
  */
-public interface GLARBPipelineStatisticsQuery {
+public interface GLARBPipelineStatisticsQuery extends overrun.marshal.DirectAccess {
     int GL_VERTICES_SUBMITTED_ARB = 0x82EE;
     int GL_PRIMITIVES_SUBMITTED_ARB = 0x82EF;
     int GL_VERTEX_SHADER_INVOCATIONS_ARB = 0x82F0;

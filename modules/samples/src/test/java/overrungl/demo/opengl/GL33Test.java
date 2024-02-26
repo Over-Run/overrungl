@@ -27,6 +27,8 @@ import overrungl.opengl.GL;
 import overrungl.opengl.GLFlags;
 import overrungl.opengl.GLLoader;
 import overrungl.opengl.GLUtil;
+import overrungl.opengl.ext.amd.GLAMDDebugOutput;
+import overrungl.opengl.ext.arb.GLARBDebugOutput;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
@@ -113,7 +115,10 @@ public class GL33Test {
         final GLFlags flags = GLLoader.loadFlags(glfw::getProcAddress);
         gl = Objects.requireNonNull(GLLoader.load(flags), "Failed to load OpenGL");
 
-        debugProc = GLUtil.setupDebugMessageCallback(gl, flags, () -> GLLoader.loadExtension(flags));
+        debugProc = GLUtil.setupDebugMessageCallback(gl,
+            flags,
+            () -> GLLoader.loadContext(flags, GLARBDebugOutput.class),
+            () -> GLLoader.loadContext(flags, GLAMDDebugOutput.class));
         gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = gl.createProgram();
         int vsh = gl.createShader(GL.VERTEX_SHADER);

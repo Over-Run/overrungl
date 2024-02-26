@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_depth_clamp_separate}
  */
-public interface GLAMDDepthClampSeparate {
+public interface GLAMDDepthClampSeparate extends overrun.marshal.DirectAccess {
     int GL_DEPTH_CLAMP_NEAR_AMD = 0x901E;
     int GL_DEPTH_CLAMP_FAR_AMD = 0x901F;
 }

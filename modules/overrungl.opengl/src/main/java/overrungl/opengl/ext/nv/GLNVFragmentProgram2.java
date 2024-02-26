@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_fragment_program2}
  */
-public interface GLNVFragmentProgram2 {
+public interface GLNVFragmentProgram2 extends overrun.marshal.DirectAccess {
     int GL_MAX_PROGRAM_EXEC_INSTRUCTIONS_NV = 0x88F4;
     int GL_MAX_PROGRAM_CALL_DEPTH_NV = 0x88F5;
     int GL_MAX_PROGRAM_IF_DEPTH_NV = 0x88F6;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SGI_color_table}
  */
-public interface GLSGIColorTable {
+public interface GLSGIColorTable extends overrun.marshal.DirectAccess {
     int GL_COLOR_TABLE_SGI = 0x80D0;
     int GL_POST_CONVOLUTION_COLOR_TABLE_SGI = 0x80D1;
     int GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI = 0x80D2;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_conservative_raster_dilate}
  */
-public interface GLNVConservativeRasterDilate {
+public interface GLNVConservativeRasterDilate extends overrun.marshal.DirectAccess {
     int GL_CONSERVATIVE_RASTER_DILATE_NV = 0x9379;
     int GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV = 0x937A;
     int GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV = 0x937B;

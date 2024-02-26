@@ -19,7 +19,9 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * This is the function pointer type for cursor position callbacks. A cursor
@@ -37,7 +39,7 @@ public interface GLFWCursorPosFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWCursorPosFun> TYPE = Upcall.type();
+    Type<GLFWCursorPosFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
 
     /**
      * The function pointer type for cursor position callbacks.
@@ -46,7 +48,6 @@ public interface GLFWCursorPosFun extends Upcall {
      * @param xpos   The new cursor x-coordinate, relative to the left edge of the content area.
      * @param ypos   The new cursor y-coordinate, relative to the top edge of the content area.
      */
-    @Stub
     void invoke(MemorySegment window, double xpos, double ypos);
 
     @Override

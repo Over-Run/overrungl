@@ -19,7 +19,9 @@ package overrungl.stb;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 
 /**
  * The write-callback.
@@ -32,11 +34,10 @@ public interface STBIWriteFunc extends Upcall {
     /**
      * the type
      */
-    Type<STBIWriteFunc> TYPE = Upcall.type();
+    Type<STBIWriteFunc> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
 
     void invoke(MemorySegment context, MemorySegment data);
 
-    @Stub
     default void ninvoke(MemorySegment context, MemorySegment data, int size) {
         invoke(context, data.reinterpret(size));
     }

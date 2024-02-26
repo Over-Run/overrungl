@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_vertex_shader}
  */
-public interface GLEXTVertexShader {
+public interface GLEXTVertexShader extends overrun.marshal.DirectAccess {
     int GL_VERTEX_SHADER_EXT = 0x8780;
     int GL_VERTEX_SHADER_BINDING_EXT = 0x8781;
     int GL_OP_INDEX_EXT = 0x8782;

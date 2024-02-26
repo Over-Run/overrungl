@@ -17,6 +17,7 @@
 package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
@@ -45,7 +46,7 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL41C extends GL40C permits GL42C {
+public interface GL41C extends DirectAccess {
     int FIXED = 0x140C;
     int IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
     int IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;
@@ -236,7 +237,7 @@ public sealed interface GL41C extends GL40C permits GL42C {
 
     @Skip
     default String getProgramPipelineInfoLog(SegmentAllocator allocator, int pipeline) {
-        final int sz = getProgramPipelineiv(pipeline, INFO_LOG_LENGTH);
+        final int sz = getProgramPipelineiv(pipeline, GL20C.INFO_LOG_LENGTH);
         var pi = allocator.allocate(JAVA_BYTE, sz);
         getProgramPipelineInfoLog(pipeline, sz, MemorySegment.NULL, pi);
         return pi.getString(0);

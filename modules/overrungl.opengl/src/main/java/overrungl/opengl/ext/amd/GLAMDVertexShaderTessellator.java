@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_vertex_shader_tessellator}
  */
-public interface GLAMDVertexShaderTessellator {
+public interface GLAMDVertexShaderTessellator extends overrun.marshal.DirectAccess {
     int GL_SAMPLER_BUFFER_AMD = 0x9001;
     int GL_INT_SAMPLER_BUFFER_AMD = 0x9002;
     int GL_UNSIGNED_INT_SAMPLER_BUFFER_AMD = 0x9003;

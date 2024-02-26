@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_vertex_program}
  */
-public interface GLARBVertexProgram {
+public interface GLARBVertexProgram extends overrun.marshal.DirectAccess {
     int GL_COLOR_SUM_ARB = 0x8458;
     int GL_VERTEX_PROGRAM_ARB = 0x8620;
     int GL_VERTEX_ATTRIB_ARRAY_ENABLED_ARB = 0x8622;

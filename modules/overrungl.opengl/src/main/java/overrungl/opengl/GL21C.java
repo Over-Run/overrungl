@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBPixelBufferObject;
@@ -34,7 +35,7 @@ import java.lang.foreign.SegmentAllocator;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL21C extends GL20C permits GL21, GL30C {
+public interface GL21C extends DirectAccess {
     int PIXEL_PACK_BUFFER = 0x88EB;
     int PIXEL_UNPACK_BUFFER = 0x88EC;
     int PIXEL_PACK_BUFFER_BINDING = 0x88ED;

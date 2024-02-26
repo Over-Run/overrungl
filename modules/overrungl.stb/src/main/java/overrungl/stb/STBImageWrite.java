@@ -16,6 +16,7 @@
 
 package overrungl.stb;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
@@ -25,6 +26,7 @@ import overrun.marshal.gen.Type;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandles;
 
 /**
@@ -33,30 +35,41 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface STBImageWrite {
+public interface STBImageWrite extends DirectAccess {
     /**
      * The instance of STBImageWrite.
      */
     STBImageWrite INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
-    @Convert(Type.INT)
-    @Entrypoint("stbi_get_write_tga_with_rle")
-    boolean getWriteTgaWithRle();
+    @Skip
+    default boolean getWriteTgaWithRle() {
+        return Handles.stbi_write_tga_with_rle.get(ValueLayout.JAVA_INT, 0L) != 0;
+    }
 
-    @Entrypoint("stbi_get_write_png_compression_level")
-    int getWritePngCompressionLevel();
+    @Skip
+    default void setWriteTgaWithRle(boolean rle) {
+        Handles.stbi_write_tga_with_rle.set(ValueLayout.JAVA_INT, 0L, rle ? 1 : 0);
+    }
 
-    @Entrypoint("stbi_get_write_force_png_filter")
-    int getWriteForcePngFilter();
+    @Skip
+    default int getWritePngCompressionLevel() {
+        return Handles.stbi_write_png_compression_level.get(ValueLayout.JAVA_INT, 0L);
+    }
 
-    @Entrypoint("stbi_set_write_tga_with_rle")
-    void setWriteTgaWithRle(@Convert(Type.INT) boolean rle);
+    @Skip
+    default void setWritePngCompressionLevel(int level) {
+        Handles.stbi_write_png_compression_level.set(ValueLayout.JAVA_INT, 0L, level);
+    }
 
-    @Entrypoint("stbi_set_write_png_compression_level")
-    void setWritePngCompressionLevel(int level);
+    @Skip
+    default int getWriteForcePngFilter() {
+        return Handles.stbi_write_force_png_filter.get(ValueLayout.JAVA_INT, 0L);
+    }
 
-    @Entrypoint("stbi_set_write_force_png_filter")
-    void setWriteForcePngFilter(int filter);
+    @Skip
+    default void setWriteForcePngFilter(int filter) {
+        Handles.stbi_write_force_png_filter.set(ValueLayout.JAVA_INT, 0L, filter);
+    }
 
     @Convert(Type.INT)
     @Entrypoint("stbi_write_png")

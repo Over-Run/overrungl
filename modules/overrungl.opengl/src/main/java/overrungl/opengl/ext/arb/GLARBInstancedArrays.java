@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_instanced_arrays}
  */
-public interface GLARBInstancedArrays {
+public interface GLARBInstancedArrays extends overrun.marshal.DirectAccess {
     int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
 
     default void glVertexAttribDivisorARB(int index, int divisor) {

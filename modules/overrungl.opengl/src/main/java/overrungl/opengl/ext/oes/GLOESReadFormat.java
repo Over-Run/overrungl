@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_OES_read_format}
  */
-public interface GLOESReadFormat {
+public interface GLOESReadFormat extends overrun.marshal.DirectAccess {
     int GL_IMPLEMENTATION_COLOR_READ_TYPE_OES = 0x8B9A;
     int GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES = 0x8B9B;
 }

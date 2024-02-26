@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Skip;
@@ -42,7 +43,7 @@ import static java.lang.foreign.ValueLayout.ADDRESS;
  * @author squid233
  * @since 0.1.0
  */
-public sealed interface GL14C extends GL13C permits GL14, GL15C {
+public interface GL14C extends DirectAccess {
     int BLEND_DST_RGB = 0x80C8;
     int BLEND_SRC_RGB = 0x80C9;
     int BLEND_DST_ALPHA = 0x80CA;

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_PGI_vertex_hints}
  */
-public interface GLPGIVertexHints {
+public interface GLPGIVertexHints extends overrun.marshal.DirectAccess {
     int GL_VERTEX_DATA_HINT_PGI = 0x1A22A;
     int GL_VERTEX_CONSISTENT_HINT_PGI = 0x1A22B;
     int GL_MATERIAL_SIDE_HINT_PGI = 0x1A22C;

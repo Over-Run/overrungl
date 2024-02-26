@@ -55,19 +55,19 @@ public final class GLFWGammaRamp extends Struct {
     /**
      * An array of value describing the response of the red channel.
      */
-    public final StructHandle.Array<short[]> red = StructHandle.ofArray(this, "red", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
+    public static final StructHandle.Array<short[]> red = StructHandle.ofArray(LAYOUT, "red", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
     /**
      * An array of value describing the response of the green channel.
      */
-    public final StructHandle.Array<short[]> green = StructHandle.ofArray(this, "green", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
+    public static final StructHandle.Array<short[]> green = StructHandle.ofArray(LAYOUT, "green", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
     /**
      * An array of value describing the response of the blue channel.
      */
-    public final StructHandle.Array<short[]> blue = StructHandle.ofArray(this, "blue", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
+    public static final StructHandle.Array<short[]> blue = StructHandle.ofArray(LAYOUT, "blue", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
     /**
      * The number of elements in each array.
      */
-    public final StructHandle.Int size = StructHandle.ofInt(this, "size");
+    public static final StructHandle.Int size = StructHandle.ofInt(LAYOUT, "size");
 
     /**
      * Creates a struct with the given layout.

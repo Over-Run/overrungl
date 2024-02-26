@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_HP_convolution_border_modes}
  */
-public interface GLHPConvolutionBorderModes {
+public interface GLHPConvolutionBorderModes extends overrun.marshal.DirectAccess {
     int GL_IGNORE_BORDER_HP = 0x8150;
     int GL_CONSTANT_BORDER_HP = 0x8151;
     int GL_REPLICATE_BORDER_HP = 0x8153;

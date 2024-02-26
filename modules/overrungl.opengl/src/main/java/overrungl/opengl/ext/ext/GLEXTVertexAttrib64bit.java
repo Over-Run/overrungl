@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_EXT_vertex_attrib_64bit}
  */
-public interface GLEXTVertexAttrib64bit {
+public interface GLEXTVertexAttrib64bit extends overrun.marshal.DirectAccess {
     int GL_DOUBLE_VEC2_EXT = 0x8FFC;
     int GL_DOUBLE_VEC3_EXT = 0x8FFD;
     int GL_DOUBLE_VEC4_EXT = 0x8FFE;

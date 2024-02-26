@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_timeline_semaphore}
  */
-public interface GLNVTimelineSemaphore {
+public interface GLNVTimelineSemaphore extends overrun.marshal.DirectAccess {
     int GL_TIMELINE_SEMAPHORE_VALUE_NV = 0x9595;
     int GL_SEMAPHORE_TYPE_NV = 0x95B3;
     int GL_SEMAPHORE_TYPE_BINARY_NV = 0x95B4;

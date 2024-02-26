@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ATI_vertex_streams}
  */
-public interface GLATIVertexStreams {
+public interface GLATIVertexStreams extends overrun.marshal.DirectAccess {
     int GL_MAX_VERTEX_STREAMS_ATI = 0x876B;
     int GL_VERTEX_STREAM0_ATI = 0x876C;
     int GL_VERTEX_STREAM1_ATI = 0x876D;

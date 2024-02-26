@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_NV_vertex_attrib_integer_64bit}
  */
-public interface GLNVVertexAttribInteger64bit {
+public interface GLNVVertexAttribInteger64bit extends overrun.marshal.DirectAccess {
 
     default void glVertexAttribL1i64NV(int index, long x) {
         throw new ContextException();

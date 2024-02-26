@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_KHR_shader_subgroup}
  */
-public interface GLKHRShaderSubgroup {
+public interface GLKHRShaderSubgroup extends overrun.marshal.DirectAccess {
     int GL_SUBGROUP_SIZE_KHR = 0x9532;
     int GL_SUBGROUP_SUPPORTED_STAGES_KHR = 0x9533;
     int GL_SUBGROUP_SUPPORTED_FEATURES_KHR = 0x9534;

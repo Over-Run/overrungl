@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_HP_occlusion_test}
  */
-public interface GLHPOcclusionTest {
+public interface GLHPOcclusionTest extends overrun.marshal.DirectAccess {
     int GL_OCCLUSION_TEST_HP = 0x8165;
     int GL_OCCLUSION_TEST_RESULT_HP = 0x8166;
 }

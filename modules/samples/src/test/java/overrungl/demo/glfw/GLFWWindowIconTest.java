@@ -77,9 +77,9 @@ public final class GLFWWindowIconTest {
                 px, py, pc, STBImage.RGB_ALPHA
             );
             final GLFWImage image = new GLFWImage(arena);
-            image.width.set(px.get(JAVA_INT, 0));
-            image.height.set(py.get(JAVA_INT, 0));
-            image.pixels.set(data);
+            GLFWImage.width.set(image, px.get(JAVA_INT, 0));
+            GLFWImage.height.set(image, py.get(JAVA_INT, 0));
+            GLFWImage.pixels.set(image, data);
             glfw.setWindowIcon(window, image);
             stbImage.free(data);
         } catch (IOException e) {

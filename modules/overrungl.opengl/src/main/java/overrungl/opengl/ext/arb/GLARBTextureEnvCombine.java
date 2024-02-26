@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_ARB_texture_env_combine}
  */
-public interface GLARBTextureEnvCombine {
+public interface GLARBTextureEnvCombine extends overrun.marshal.DirectAccess {
     int GL_COMBINE_ARB = 0x8570;
     int GL_COMBINE_RGB_ARB = 0x8571;
     int GL_COMBINE_ALPHA_ARB = 0x8572;

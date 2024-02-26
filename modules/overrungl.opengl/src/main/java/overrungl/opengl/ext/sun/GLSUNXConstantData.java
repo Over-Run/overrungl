@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_SUNX_constant_data}
  */
-public interface GLSUNXConstantData {
+public interface GLSUNXConstantData extends overrun.marshal.DirectAccess {
     int GL_UNPACK_CONSTANT_DATA_SUNX = 0x81D5;
     int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
 

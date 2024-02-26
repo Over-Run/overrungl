@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-present Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@ import java.lang.foreign.*;
 /**
  * {@code GL_AMD_sparse_texture}
  */
-public interface GLAMDSparseTexture {
+public interface GLAMDSparseTexture extends overrun.marshal.DirectAccess {
     int GL_VIRTUAL_PAGE_SIZE_X_AMD = 0x9195;
     int GL_VIRTUAL_PAGE_SIZE_Y_AMD = 0x9196;
     int GL_VIRTUAL_PAGE_SIZE_Z_AMD = 0x9197;
