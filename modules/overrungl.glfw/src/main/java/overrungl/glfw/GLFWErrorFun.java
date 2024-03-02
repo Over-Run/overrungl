@@ -22,10 +22,9 @@ import overrungl.NativeType;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 
-import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
  * This is the function pointer type for error callbacks. An error callback
@@ -46,7 +45,7 @@ public interface GLFWErrorFun extends Upcall {
     /**
      * The type.
      */
-    Type<GLFWErrorFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(JAVA_INT, ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, JAVA_BYTE))));
+    Type<GLFWErrorFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(JAVA_INT, Unmarshal.STR_LAYOUT));
 
     /**
      * The function pointer type for error callbacks.

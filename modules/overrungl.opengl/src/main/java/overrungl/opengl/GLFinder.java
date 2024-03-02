@@ -27,6 +27,7 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -56,7 +57,7 @@ final class GLFinder {
 
         String version;
         try {
-            version = ((MemorySegment) glGetString.invokeExact(GL.VERSION)).getString(0L);
+            version = Unmarshal.unmarshalAsString((MemorySegment) glGetString.invokeExact(GL.VERSION));
         } catch (Throwable e) {
             throw new RuntimeException(e);
         }
@@ -87,7 +88,8 @@ final class GLFinder {
                 return false;
             }
             try {
-                Collections.addAll(list, ((MemorySegment) glGetString.invokeExact(GL.EXTENSIONS)).getString(0L).split("\\s+"));
+                Collections.addAll(list, Objects.requireNonNull(Unmarshal.unmarshalAsString((MemorySegment) glGetString.invokeExact(GL.EXTENSIONS)))
+                    .split("\\s+"));
                 return true;
             } catch (Throwable e) {
                 throw new RuntimeException(e);
@@ -128,7 +130,7 @@ final class GLFinder {
             } catch (Throwable e) {
                 throw new RuntimeException(e);
             }
-            list.add(glStrTmp.getString(0L));
+            list.add(Unmarshal.unmarshalAsString(glStrTmp));
         }
 
         return true;

@@ -464,7 +464,7 @@ public interface GL43C extends DirectAccess {
         var pLen = Marshal.marshal(allocator, length);
         getObjectLabel(identifier, name, bufSize, seg, pLen);
         Unmarshal.copy(pLen, length);
-        return seg.getString(0);
+        return Unmarshal.unmarshalAsString(seg);
     }
 
     @Skip
@@ -488,7 +488,7 @@ public interface GL43C extends DirectAccess {
         var pLen = Marshal.marshal(allocator, length);
         getObjectPtrLabel(ptr, bufSize, seg, pLen);
         Unmarshal.copy(pLen, length);
-        return seg.getString(0);
+        return Unmarshal.unmarshalAsString(seg);
     }
 
     @Skip
@@ -556,7 +556,7 @@ public interface GL43C extends DirectAccess {
         var pLen = Marshal.marshal(allocator, length);
         getProgramResourceName(program, programInterface, index, bufSize, pLen, seg);
         Unmarshal.copy(pLen, length);
-        return seg.getString(0);
+        return Unmarshal.unmarshalAsString(seg);
     }
 
     @Skip

@@ -16,6 +16,7 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.Unmarshal;
 import overrun.marshal.Upcall;
 
 import java.lang.foreign.Arena;
@@ -50,7 +51,7 @@ public interface GLDebugProc extends Upcall {
     void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
 
     default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
-        invoke(source, type, id, severity, message.reinterpret(length + 1).getString(0), userParam);
+        invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message.reinterpret(length + 1)), userParam);
     }
 
     @Override
