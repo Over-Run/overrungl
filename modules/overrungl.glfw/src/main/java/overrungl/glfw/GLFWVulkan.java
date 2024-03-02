@@ -22,6 +22,7 @@ import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
 import overrun.marshal.gen.Type;
+import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
@@ -37,6 +38,40 @@ public interface GLFWVulkan extends DirectAccess {
      * The instance of GLFWVulkan.
      */
     GLFWVulkan INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
+
+    /**
+     * Sets the desired Vulkan {@code vkGetInstanceProcAddr} function.
+     * <p>
+     * This function sets the {@code vkGetInstanceProcAddr} function that GLFW will use for all
+     * Vulkan related entry point queries.
+     * <p>
+     * This feature is mostly useful on macOS, if your copy of the Vulkan loader is in
+     * a location where GLFW cannot find it through dynamic loading, or if you are still
+     * using the static library version of the loader.
+     * <p>
+     * If set to {@link MemorySegment#NULL}, GLFW will try to load the Vulkan loader dynamically by its standard
+     * name and get this function from there.  This is the default behavior.
+     * <p>
+     * The standard name of the loader is {@code vulkan-1.dll} on Windows, {@code libvulkan.so.1} on
+     * Linux and other Unix-like systems and {@code libvulkan.1.dylib} on macOS.  If your code is
+     * also loading it via these names then you probably don't need to use this function.
+     * <p>
+     * The function address you set is never reset by GLFW, but it only takes effect during
+     * initialization.  Once GLFW has been initialized, any updates will be ignored until the
+     * library is terminated and initialized again.
+     *
+     * @param loader The address of the function to use, or {@link MemorySegment#NULL}.
+     *               Loader function signature
+     *               <pre><code>PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, const char* name)</code></pre>
+     *               For more information about this function,
+     *               see the <a href="https://www.khronos.org/registry/vulkan/">Vulkan Registry</a>.
+     * @glfw.errors None.
+     * @glfw.remark This function may be called before {@link GLFW#init}.
+     * @glfw.thread_safety This function must only be called from the main thread.
+     * @see GLFW#init
+     */
+    @Entrypoint("glfwInitVulkanLoader")
+    void initVulkanLoader(@NativeType("PFN_vkGetInstanceProcAddr") MemorySegment loader);
 
     /**
      * Returns the address of the specified Vulkan instance function.
@@ -161,14 +196,25 @@ public interface GLFWVulkan extends DirectAccess {
      * {@link GLFW#vulkanSupported() vulkanSupported} and
      * {@link GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions} should
      * eliminate almost all occurrences of these errors.
-     * <p>
+     * <ul>
+     * <li>
      * <b>macOS:</b> GLFW prefers the {@code VK_EXT_metal_surface} extension, with the
      * {@code VK_MVK_macos_surface} extension as a fallback.  The name of the selected
      * extension, if any, is included in the array returned by
      * {@link GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions}.
      * <p>
-     * <b>macOS:</b> This function creates and sets a {@code CAMetalLayer} instance for
+     * This function creates and sets a {@code CAMetalLayer} instance for
      * the window content view, which is required for MoltenVK to function.
+     * </li>
+     * <li>
+     * <b>X11:</b> By default GLFW prefers the {@code VK_KHR_xcb_surface} extension,
+     * with the {@code VK_KHR_xlib_surface} extension as a fallback.  You can make
+     * {@code VK_KHR_xlib_surface} the preferred extension by setting the
+     * {@link GLFW#X11_XCB_VULKAN_SURFACE} init
+     * hint.  The name of the selected extension, if any, is included in the array
+     * returned by {@link GLFW#ngetRequiredInstanceExtensions getRequiredInstanceExtensions}.
+     * </li>
+     * </ul>
      * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
      * @see GLFW#ngetRequiredInstanceExtensions(MemorySegment) getRequiredInstanceExtensions
