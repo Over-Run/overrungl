@@ -33,7 +33,7 @@ public final class OverrunGL {
     /**
      * The version of GLFW native libraries.
      */
-    public static final String GLFW_VERSION = "3.3.9.0";
+    public static final String GLFW_VERSION = "3.4.0.0";
     /**
      * The version of NFD native libraries.
      */
