@@ -1228,7 +1228,6 @@ public interface GLFW extends DirectAccess {
      * This function will set the {@code LC_CTYPE} category of the
      * application locale according to the current environment if that category is
      * still "C".  This is because the "C" locale breaks Unicode text input.
-     * <p>
      * </li>
      * </ul>
      * @glfw.thread_safety This function must only be called from the main thread.
