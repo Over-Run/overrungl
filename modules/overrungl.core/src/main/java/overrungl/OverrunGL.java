@@ -16,8 +16,12 @@
 
 package overrungl;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.jar.Manifest;
 
 /**
  * Constants of OverrunGL.
@@ -47,6 +51,24 @@ public final class OverrunGL {
 
     private OverrunGL() {
         //no instance
+    }
+
+    /**
+     * {@return the actual version of OverrunGL from the jar file}
+     */
+    public static String actualVersion() {
+        try {
+            final URL url = ((URLClassLoader) OverrunGL.class.getClassLoader()).findResource("META-INF/MANIFEST.MF");
+            if (url == null) {
+                return VERSION;
+            }
+            try (InputStream stream = url.openStream()) {
+                final String value = new Manifest(stream).getMainAttributes().getValue("Implementation-Version");
+                return value != null ? value : VERSION;
+            }
+        } catch (Exception e) {
+            return VERSION;
+        }
     }
 
     /**
