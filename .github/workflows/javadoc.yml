@@ -1,0 +1,34 @@
+name: Javadoc
+
+on: [ release, workflow_dispatch ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        java: [
+          22-ea
+        ]
+        os: [ ubuntu-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: |
+            ${{ matrix.java }}
+            21
+          distribution: 'temurin'
+      - name: Grant execute permission for gradlew
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x gradlew
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Execute Gradle build
+        run: ./gradlew aggregateJavadoc
+      - name: Capture Javadoc
+        uses: actions/upload-artifact@v4
+        with:
+          name: javadoc
+          path: build/docs/javadoc/

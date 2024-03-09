@@ -31,6 +31,7 @@ import overrungl.util.value.Tuple2;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
+import java.nio.charset.StandardCharsets;
 
 import static java.lang.foreign.ValueLayout.*;
 import static overrungl.glfw.Handles.*;
@@ -58,13 +59,13 @@ public interface GLFW extends DirectAccess {
      * <p>
      * This is incremented when features are added to the API, but it remains backward-compatible.
      */
-    int VERSION_MINOR = 3;
+    int VERSION_MINOR = 4;
     /**
      * The revision number of the GLFW header.
      * <p>
      * This is incremented when a bug fix release is made that does not contain any API changes.
      */
-    int VERSION_REVISION = 9;
+    int VERSION_REVISION = 0;
 
     /**
      * One.
@@ -407,7 +408,7 @@ public interface GLFW extends DirectAccess {
      *
      * <h4>Analysis</h4>
      * The installed graphics driver does not support the requested
-     * API, or does not support it via the chosen context creation backend.
+     * API, or does not support it via the chosen context creation API.
      * Below are a few examples.
      * <p>
      * Some pre-installed Windows graphics drivers do not support OpenGL.  AMD only
@@ -473,6 +474,69 @@ public interface GLFW extends DirectAccess {
      * Application programmer error. Fix the offending call.
      */
     int NO_WINDOW_CONTEXT = 0x0001000A;
+    /**
+     * The specified cursor shape is not available.
+     * <p>
+     * The specified standard cursor shape is not available, either because the
+     * current platform cursor theme does not provide it or because it is not
+     * available on the platform.
+     * <h4>Analysis</h4>
+     * Platform or system settings limitation.  Pick another
+     * <a href="https://www.glfw.org/docs/latest/group__shapes.html">standard cursor shape</a> or create a
+     * <a href="https://www.glfw.org/docs/latest/input_guide.html#cursor_custom">custom cursor</a>.
+     */
+    int CURSOR_UNAVAILABLE = 0x0001000B;
+    /**
+     * The requested feature is not provided by the platform.
+     * <p>
+     * The requested feature is not provided by the platform, so GLFW is unable to
+     * implement it.  The documentation for each function notes if it could emit
+     * this error.
+     * <h4>Analysis</h4>
+     * Platform or platform version limitation.  The error can be ignored
+     * unless the feature is critical to the application.
+     * <p>
+     * A function call that emits this error has no effect other than the error and
+     * updating any existing out parameters.
+     */
+    int FEATURE_UNAVAILABLE = 0x0001000C;
+    /**
+     * The requested feature is not implemented for the platform.
+     * <p>
+     * The requested feature has not yet been implemented in GLFW for this platform.
+     * <h4>Analysis</h4>
+     * An incomplete implementation of GLFW for this platform, hopefully
+     * fixed in a future release.  The error can be ignored unless the feature is
+     * critical to the application.
+     * <p>
+     * A function call that emits this error has no effect other than the error and
+     * updating any existing out parameters.
+     */
+    int FEATURE_UNIMPLEMENTED = 0x0001000D;
+    /**
+     * Platform unavailable or no matching platform was found.
+     * <p>
+     * If emitted during initialization, no matching platform was found.  If the
+     * {@link #PLATFORM} init hint was set to {@link #ANY_PLATFORM}, GLFW could not detect any of
+     * the platforms supported by this library binary, except for the Null platform.  If the
+     * init hint was set to a specific platform, it is either not supported by this library
+     * binary or GLFW was not able to detect it.
+     * <p>
+     * If emitted by a native access function, GLFW was initialized for a different platform
+     * than the function is for.
+     *
+     * <h4>Analysis</h4>
+     * Failure to detect any platform usually only happens on non-macOS Unix
+     * systems, either when no window system is running or the program was run from
+     * a terminal that does not have the necessary environment variables.  Fall back to
+     * a different platform if possible or notify the user that no usable platform was
+     * detected.
+     * <p>
+     * Failure to detect a specific platform may have the same cause as above or be because
+     * support for that platform was not compiled in.  Call {@link #platformSupported} to
+     * check whether a specific platform is supported by a library binary.
+     */
+    int PLATFORM_UNAVAILABLE = 0x0001000E;
 
     /**
      * <h4>Window related hints</h4>
@@ -514,6 +578,27 @@ public interface GLFW extends DirectAccess {
      * <p>
      * This hint only has an effect on platforms where screen coordinates and pixels always map 1:1 such as Windows and X11.
      * On platforms like macOS the resolution of the framebuffer is changed independently of the window size.</li>
+     * <li>{@link #SCALE_FRAMEBUFFER}: specifies whether the framebuffer should be resized based on
+     * <a href="https://www.glfw.org/docs/latest/window_guide.html#window_scale">content scale</a> changes.
+     * This can be because of a global user settings change or because the window was moved to a monitor with different scale settings.
+     * <p>
+     * This hint only has an effect on platforms where screen coordinates can be scaled relative to pixel coordinates,
+     * such as macOS and Wayland.
+     * On platforms like Windows and X11 the framebuffer and window content area sizes always map 1:1.
+     * <p>
+     * This is the new name, introduced in GLFW 3.4.
+     * The older {@link #COCOA_RETINA_FRAMEBUFFER} name is also available for compatibility.
+     * Both names modify the same hint value.</li>
+     * <li>{@link #MOUSE_PASSTHROUGH}: specifies whether the window is transparent to mouse input,
+     * letting any mouse events pass through to whatever window is behind it.
+     * This is only supported for undecorated windows.
+     * Decorated windows with this enabled will behave differently between platforms.
+     * Possible values are {@link #TRUE} and {@link #FALSE}.</li>
+     * <li>{@link #POSITION_X} and {@link #POSITION_Y}: specify the desired initial position of the window.
+     * The window manager may modify or ignore these coordinates.
+     * If either or both of these hints are set to {@link #ANY_POSITION}
+     * then the window manager will position the window where it thinks the user will prefer it.
+     * Possible values are any valid screen coordinates and {@link #ANY_POSITION}.</li>
      * </ul>
      */
     int FOCUSED = 0x00020001,
@@ -527,7 +612,11 @@ public interface GLFW extends DirectAccess {
         CENTER_CURSOR = 0x00020009,
         TRANSPARENT_FRAMEBUFFER = 0x0002000A,
         FOCUS_ON_SHOW = 0x0002000C,
-        SCALE_TO_MONITOR = 0x0002200C;
+        MOUSE_PASSTHROUGH = 0x0002000D,
+        POSITION_X = 0x0002000E,
+        POSITION_Y = 0x0002000F,
+        SCALE_TO_MONITOR = 0x0002200C,
+        SCALE_FRAMEBUFFER = 0x0002200D;
 
     /**
      * <b>HOVERED</b> indicates whether the cursor is currently directly over the content area of the window, with no other windows between.
@@ -644,11 +733,15 @@ public interface GLFW extends DirectAccess {
      * <p>
      * Forward-compatibility is described in detail in the <a href="https://www.opengl.org/registry/">OpenGL Reference Manual</a>.
      * </li>
-     * <li>{@link #OPENGL_DEBUG_CONTEXT}: specifies whether the context should be created in debug mode,
+     * <li>{@link #CONTEXT_DEBUG}: specifies whether the context should be created in debug mode,
      * which may provide additional error and diagnostic reporting functionality. Possible values are {@link #TRUE} and {@link #FALSE}.
      * <p>
      * Debug contexts for OpenGL and OpenGL ES are described in detail
      * by the <a href="https://www.khronos.org/registry/OpenGL/extensions/KHR/KHR_debug.txt">GL_KHR_debug</a> extension.
+     * <p>
+     * <b>Note</b><br>
+     * {@code CONTEXT_DEBUG} is the new name introduced in GLFW 3.4.
+     * The older {@code OPENGL_DEBUG_CONTEXT} name is also available for compatibility.
      * </li>
      * <li>{@link #OPENGL_PROFILE}: specifies which OpenGL profile to create the context for.
      * Possible values are one of {@link #OPENGL_CORE_PROFILE} or {@link #OPENGL_COMPAT_PROFILE},
@@ -682,7 +775,8 @@ public interface GLFW extends DirectAccess {
         CONTEXT_VERSION_MINOR = 0x00022003,
         CONTEXT_ROBUSTNESS = 0x00022005,
         OPENGL_FORWARD_COMPAT = 0x00022006,
-        OPENGL_DEBUG_CONTEXT = 0x00022007,
+        CONTEXT_DEBUG = 0x00022007,
+        OPENGL_DEBUG_CONTEXT = CONTEXT_DEBUG,
         OPENGL_PROFILE = 0x00022008,
         CONTEXT_RELEASE_BEHAVIOR = 0x00022009,
         CONTEXT_NO_ERROR = 0x0002200A,
@@ -696,8 +790,12 @@ public interface GLFW extends DirectAccess {
     /**
      * <h4>macOS specific window hints</h4>
      * <ul>
-     * <li>{@link #COCOA_RETINA_FRAMEBUFFER}: specifies whether to use full resolution framebuffers on Retina displays.
-     * Possible values are {@link #TRUE} and {@link #FALSE}. This is ignored on other platforms.</li>
+     * <li>{@link #COCOA_RETINA_FRAMEBUFFER}: Legacy name for compatibility.
+     * <p>
+     * This is an alias for the
+     * {@link #SCALE_FRAMEBUFFER} window hint for
+     * compatibility with earlier versions.
+     * </li>
      * <li>{@link #COCOA_FRAME_NAME}: specifies the UTF-8 encoded name to use for autosaving the window frame,
      * or if empty disables frame autosaving for the window.
      * This is ignored on other platforms. This is set with {@link #windowHintString}.</li>
@@ -726,6 +824,29 @@ public interface GLFW extends DirectAccess {
      */
     int X11_CLASS_NAME = 0x00024001,
         X11_INSTANCE_NAME = 0x00024002;
+
+    /**
+     * <h4>Win32 specific hints</h4>
+     * <ul>
+     * <li>{@link #WIN32_KEYBOARD_MENU}: specifies whether to allow access to the window menu via the Alt+Space and Alt-and-then-Space keyboard shortcuts.
+     * This is ignored on other platforms.</li>
+     * <li>{@link #WIN32_SHOWDEFAULT}: specifies whether to show the window the way specified in the program's {@code STARTUPINFO} when it is shown for the first time.
+     * This is the same information as the {@code Run} option in the shortcut properties window.
+     * If this information was not specified when the program was started,
+     * GLFW behaves as if this hint was set to {@link #FALSE}.
+     * Possible values are {@link #TRUE} and {@link #FALSE}.
+     * This is ignored on other platforms.</li>
+     * </ul>
+     */
+    int WIN32_KEYBOARD_MENU = 0x00025001,
+        WIN32_SHOWDEFAULT = 0x00025002;
+    /**
+     * <h4>Wayland specific window hints</h4>
+     * <ul>
+     * <li>{@link #WAYLAND_APP_ID} specifies the Wayland app_id for a window, used by window managers to identify types of windows. This is set with {@link #windowHintString}.</li>
+     * </ul>
+     */
+    int WAYLAND_APP_ID = 0x00026001;
 
     /**
      * value for CLIENT_API
@@ -765,12 +886,11 @@ public interface GLFW extends DirectAccess {
      * The {@code CURSOR} input mode provides several cursor modes for special forms of mouse motion input.
      * By default, the cursor mode is {@code CURSOR_NORMAL}, meaning the regular arrow cursor
      * (or another cursor set with {@link #setCursor}) is used and cursor motion is not limited.
+     *
      * <p>
      * If you wish to implement mouse motion based camera controls or other input schemes
      * that require unlimited mouse movement, set the cursor mode to {@code CURSOR_DISABLED}.
-     * {@snippet lang = java:
-     * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_DISABLED);
-     * }
+     * <pre>{@code glfw.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_DISABLED);}</pre>
      * This will hide the cursor and lock it to the specified window. GLFW will then take care of all the details of cursor re-centering
      * and offset calculation and providing the application with a virtual cursor position. This virtual position is provided normally
      * via both the cursor position callback and through polling.
@@ -778,22 +898,27 @@ public interface GLFW extends DirectAccess {
      * <b>Note</b><br>
      * You should not implement your own version of this functionality using other features of GLFW.
      * It is not supported and will not work as robustly as {@code CURSOR_DISABLED}.
+     *
      * <p>
      * If you only wish the cursor to become hidden when it is over a window but still want it to behave normally,
      * set the cursor mode to {@code CURSOR_HIDDEN}.
-     * {@snippet lang = java:
-     * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_HIDDEN);
-     * }
+     * <pre>{@code glfw.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_HIDDEN);}</pre>
      * This mode puts no limit on the motion of the cursor.
+     *
+     * <p>
+     * If you wish the cursor to be visible but confined to the content area of the window, set the cursor mode to {@code CURSOR_CAPTURED}.
+     * <pre>{@code glfw.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_CAPTURED);}</pre>
+     * The cursor will behave normally inside the content area but will not be able to leave unless the window loses focus.
+     *
      * <p>
      * To exit out of either of these special modes, restore the {@code CURSOR_NORMAL} cursor mode.
-     * {@snippet lang = java:
-     * GLFW.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_NORMAL);
-     * }
+     * <pre>{@code glfw.setInputMode(window, GLFW.CURSOR, GLFW.CURSOR_NORMAL);}</pre>
+     * If the cursor was disabled, this will move it back to its last visible position.
      */
     int CURSOR_NORMAL = 0x00034001,
         CURSOR_HIDDEN = 0x00034002,
-        CURSOR_DISABLED = 0x00034003;
+        CURSOR_DISABLED = 0x00034003,
+        CURSOR_CAPTURED = 0x00034004;
 
     int ANY_RELEASE_BEHAVIOR = 0;
     int RELEASE_BEHAVIOR_FLUSH = 0x00035001;
@@ -803,11 +928,21 @@ public interface GLFW extends DirectAccess {
     int EGL_CONTEXT_API = 0x00036002;
     int OSMESA_CONTEXT_API = 0x00036003;
 
+    int ANGLE_PLATFORM_TYPE_NONE = 0x00037001,
+        ANGLE_PLATFORM_TYPE_OPENGL = 0x00037002,
+        ANGLE_PLATFORM_TYPE_OPENGLES = 0x00037003,
+        ANGLE_PLATFORM_TYPE_D3D9 = 0x00037004,
+        ANGLE_PLATFORM_TYPE_D3D11 = 0x00037005,
+        ANGLE_PLATFORM_TYPE_VULKAN = 0x00037007,
+        ANGLE_PLATFORM_TYPE_METAL = 0x00037008;
+
     int WAYLAND_PREFER_LIBDECOR = 0x00038001;
     int WAYLAND_DISABLE_LIBDECOR = 0x00038002;
 
+    int ANY_POSITION = 0x80000000;
+
     /**
-     * The regular arrow cursor.
+     * The regular arrow cursor shape.
      */
     int ARROW_CURSOR = 0x00036001;
     /**
@@ -815,21 +950,88 @@ public interface GLFW extends DirectAccess {
      */
     int IBEAM_CURSOR = 0x00036002;
     /**
-     * The crosshair shape.
+     * The crosshair cursor shape.
      */
     int CROSSHAIR_CURSOR = 0x00036003;
     /**
-     * The hand shape.
+     * The pointing hand cursor shape.
      */
-    int HAND_CURSOR = 0x00036004;
+    int POINTING_HAND_CURSOR = 0x00036004;
     /**
-     * The horizontal resize arrow shape.
+     * The horizontal resize/move arrow shape.
+     * <p>
+     * The horizontal resize/move arrow shape.  This is usually a horizontal
+     * double-headed arrow.
      */
-    int HRESIZE_CURSOR = 0x00036005;
+    int RESIZE_EW_CURSOR = 0x00036005;
     /**
-     * The vertical resize arrow shape.
+     * The vertical resize/move arrow shape.
+     * <p>
+     * The vertical resize/move arrow shape.  This is usually a horizontal
+     * double-headed arrow.
      */
-    int VRESIZE_CURSOR = 0x00036006;
+    int RESIZE_NS_CURSOR = 0x00036006;
+    /**
+     * The top-left to bottom-right diagonal resize/move arrow shape.
+     * <p>
+     * The top-left to bottom-right diagonal resize/move shape.  This is usually
+     * a diagonal double-headed arrow.
+     * <h4>Note</h4>
+     * <ul>
+     * <li><b>macOS:</b> This shape is provided by a private system API and may fail
+     * with {@link #CURSOR_UNAVAILABLE} in the future.</li>
+     * <li><b>Wayland:</b> This shape is provided by a newer standard not supported by
+     * all cursor themes.</li>
+     * <li><b>X11:</b> This shape is provided by a newer standard not supported by all
+     * cursor themes.</li>
+     * </ul>
+     */
+    int RESIZE_NWSE_CURSOR = 0x00036007;
+    /**
+     * The top-right to bottom-left diagonal resize/move arrow shape.
+     * <p>
+     * The top-right to bottom-left diagonal resize/move shape.  This is usually
+     * a diagonal double-headed arrow.
+     * <h4>Note</h4>
+     * <ul>
+     * <li><b>macOS:</b> This shape is provided by a private system API and may fail
+     * with {@link #CURSOR_UNAVAILABLE} in the future.</li>
+     * <li><b>Wayland:</b> This shape is provided by a newer standard not supported by
+     * all cursor themes.</li>
+     * <li><b>X11:</b> This shape is provided by a newer standard not supported by all
+     * cursor themes.</li>
+     * </ul>
+     */
+    int RESIZE_NESW_CURSOR = 0x00036008;
+    /**
+     * The omni-directional resize/move cursor shape.
+     * <p>
+     * The omni-directional resize cursor/move shape.  This is usually either
+     * a combined horizontal and vertical double-headed arrow or a grabbing hand.
+     */
+    int RESIZE_ALL_CURSOR = 0x00036009;
+    /**
+     * The operation-not-allowed shape.
+     * <p>
+     * The operation-not-allowed shape.  This is usually a circle with a diagonal
+     * line through it.
+     * <h4>Note</h4>
+     * <ul>
+     * <li><b>Wayland:</b> This shape is provided by a newer standard not supported by
+     * all cursor themes.</li>
+     * <li><b>X11:</b> This shape is provided by a newer standard not supported by all
+     * cursor themes.</li>
+     * </ul>
+     */
+    int NOT_ALLOWED_CURSOR = 0x0003600A;
+    /**
+     * Legacy name for compatibility.
+     * <p>
+     * This is an alias for compatibility with earlier versions.
+     */
+    int HRESIZE_CURSOR = RESIZE_EW_CURSOR,
+        VRESIZE_CURSOR = RESIZE_NS_CURSOR,
+        HAND_CURSOR = POINTING_HAND_CURSOR;
 
     int CONNECTED = 0x00040001;
     int DISCONNECTED = 0x00040002;
@@ -840,6 +1042,27 @@ public interface GLFW extends DirectAccess {
      * Possible values are {@link #TRUE} and {@link #FALSE}.
      */
     int JOYSTICK_HAT_BUTTONS = 0x00050001;
+    /**
+     * {@code ANGLE_PLATFORM_TYPE} specifies the platform type (rendering backend) to request when using OpenGL ES and EGL via ANGLE.
+     * If the requested platform type is unavailable, ANGLE will use its default.
+     * Possible values are one of {@code ANGLE_PLATFORM_TYPE_NONE}, {@code ANGLE_PLATFORM_TYPE_OPENGL},
+     * {@code ANGLE_PLATFORM_TYPE_OPENGLES}, {@code ANGLE_PLATFORM_TYPE_D3D9},
+     * {@code ANGLE_PLATFORM_TYPE_D3D11}, {@code ANGLE_PLATFORM_TYPE_VULKAN}
+     * and {@code ANGLE_PLATFORM_TYPE_METAL}.
+     * <p>
+     * The ANGLE platform type is specified via the {@code EGL_ANGLE_platform_angle} extension.
+     * This extension is not used if this hint is {@code ANGLE_PLATFORM_TYPE_NONE}, which is the default value.
+     */
+    int ANGLE_PLATFORM_TYPE = 0x00050002;
+    /**
+     * {@code PLATFORM} specifies the platform to use for windowing and input.
+     * Possible values are {@code ANY_PLATFORM}, {@code PLATFORM_WIN32},
+     * {@code PLATFORM_COCOA}, {@code PLATFORM_WAYLAND},
+     * {@code PLATFORM_X11} and {@code PLATFORM_NULL}.
+     * The default value is {@code ANY_PLATFORM},
+     * which will choose any platform the library includes support for except for the Null backend.
+     */
+    int PLATFORM = 0x00050003;
     /**
      * <h4>macOS specific init hints</h4>
      * <ul>
@@ -852,6 +1075,16 @@ public interface GLFW extends DirectAccess {
     int COCOA_CHDIR_RESOURCES = 0x00051001,
         COCOA_MENUBAR = 0x00051002;
     /**
+     * <h4>X11 specific init hints</h4>
+     * <ul>
+     * <li>{@link #X11_XCB_VULKAN_SURFACE} specifies whether to prefer the {@code VK_KHR_xcb_surface} extension for creating Vulkan surfaces,
+     * or whether to use the {@code VK_KHR_xlib_surface} extension.
+     * Possible values are {@link #TRUE} and {@link #FALSE}.
+     * This is ignored on other platforms.</li>
+     * </ul>
+     */
+    int X11_XCB_VULKAN_SURFACE = 0x00052001;
+    /**
      * Wayland specific init hint.
      * <p>
      * {@link #WAYLAND_LIBDECOR} specifies whether to use <a href="https://gitlab.freedesktop.org/libdecor/libdecor">libdecor</a> for window decorations where available.
@@ -859,6 +1092,18 @@ public interface GLFW extends DirectAccess {
      * This is ignored on other platforms.
      */
     int WAYLAND_LIBDECOR = 0x00053001;
+
+    /**
+     * Hint value that enables automatic platform selection.
+     * <p>
+     * Hint value for {@link #PLATFORM} that enables automatic platform selection.
+     */
+    int ANY_PLATFORM = 0x00060000,
+        PLATFORM_WIN32 = 0x00060001,
+        PLATFORM_COCOA = 0x00060002,
+        PLATFORM_WAYLAND = 0x00060003,
+        PLATFORM_X11 = 0x00060004,
+        PLATFORM_NULL = 0x00060005;
 
     /**
      * Don't care value.
@@ -886,7 +1131,49 @@ public interface GLFW extends DirectAccess {
             case PLATFORM_ERROR -> "PLATFORM_ERROR";
             case FORMAT_UNAVAILABLE -> "FORMAT_UNAVAILABLE";
             case NO_WINDOW_CONTEXT -> "NO_WINDOW_CONTEXT";
+            case CURSOR_UNAVAILABLE -> "CURSOR_UNAVAILABLE";
+            case FEATURE_UNAVAILABLE -> "FEATURE_UNAVAILABLE";
+            case FEATURE_UNIMPLEMENTED -> "FEATURE_UNIMPLEMENTED";
+            case PLATFORM_UNAVAILABLE -> "PLATFORM_UNAVAILABLE";
             default -> RuntimeHelper.unknownToken(errorCode);
+        };
+    }
+
+    /**
+     * Converts the given platform code to a debug string.
+     * <p>
+     * This method is created by OverrunGL and does not belong to the original GLFW library.
+     *
+     * @param platformCode the platform code.
+     * @return the platform string.
+     */
+    static String getPlatformDebugString(int platformCode) {
+        return switch (platformCode) {
+            case PLATFORM_WIN32 -> "PLATFORM_WIN32";
+            case PLATFORM_COCOA -> "PLATFORM_COCOA";
+            case PLATFORM_WAYLAND -> "PLATFORM_WAYLAND";
+            case PLATFORM_X11 -> "PLATFORM_X11";
+            case PLATFORM_NULL -> "PLATFORM_NULL";
+            default -> RuntimeHelper.unknownToken(platformCode);
+        };
+    }
+
+    /**
+     * Converts the given platform code to a readable string.
+     * <p>
+     * This method is created by OverrunGL and does not belong to the original GLFW library.
+     *
+     * @param platformCode the platform code.
+     * @return the platform string.
+     */
+    static String getPlatformString(int platformCode) {
+        return switch (platformCode) {
+            case PLATFORM_WIN32 -> "Win32";
+            case PLATFORM_COCOA -> "Cocoa";
+            case PLATFORM_WAYLAND -> "Wayland";
+            case PLATFORM_X11 -> "X11";
+            case PLATFORM_NULL -> "Null";
+            default -> RuntimeHelper.unknownToken(platformCode);
         };
     }
 
@@ -903,19 +1190,49 @@ public interface GLFW extends DirectAccess {
      * <p>
      * Additional calls to this function after successful initialization but before
      * termination will return {@code true} immediately.
+     * <p>
+     * The {@link #PLATFORM} init hint controls which platforms are considered during
+     * initialization.  This also depends on which platforms the library was compiled to
+     * support.
      *
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link #PLATFORM_ERROR}.
-     * @glfw.remark <b>macOS:</b> This function will change the current directory of the
+     * @glfw.errors Possible errors include {@link #PLATFORM_UNAVAILABLE} and {@link #PLATFORM_ERROR}.
+     * @glfw.remark <ul>
+     * <li>
+     * <b>macOS:</b>
+     * This function will change the current directory of the
      * application to the {@code Contents/Resources} subdirectory of the application's
      * bundle, if present.  This can be disabled with the
-     * {@link #COCOA_CHDIR_RESOURCES} init hint.<br>
-     *
-     * <b>X11:</b> This function will set the {@code LC_CTYPE} category of the
+     * {@link #COCOA_CHDIR_RESOURCES} init hint.
+     * <p>
+     * This function will create the main menu and dock icon for the
+     * application.  If GLFW finds a {@code MainMenu.nib} it is loaded and assumed to
+     * contain a menu bar.  Otherwise a minimal menu bar is created manually with
+     * common commands like Hide, Quit and About.  The About entry opens a minimal
+     * about dialog with information from the application's bundle.  The menu bar
+     * and dock icon can be disabled entirely with the {@link #COCOA_MENUBAR} init
+     * hint.
+     * </li>
+     * <li>
+     * <b>Wayland, X11:</b>
+     * If the library was compiled with support for both
+     * Wayland and X11, and the {@link #PLATFORM} init hint is set to
+     * {@link #ANY_PLATFORM}, the {@code XDG_SESSION_TYPE} environment variable affects
+     * which platform is picked.  If the environment variable is not set, or is set
+     * to something other than {@code wayland} or {@code x11}, the regular detection mechanism
+     * will be used instead.
+     * </li>
+     * <li>
+     * <b>X11:</b>
+     * This function will set the {@code LC_CTYPE} category of the
      * application locale according to the current environment if that category is
      * still "C".  This is because the "C" locale breaks Unicode text input.
+     * </li>
+     * </ul>
      * @glfw.thread_safety This function must only be called from the main thread.
+     * @see #initHint
+     * @see #initAllocator
      * @see #terminate
      */
     @Convert(Type.INT)
@@ -972,6 +1289,40 @@ public interface GLFW extends DirectAccess {
     void initHint(int hint, int value);
 
     /**
+     * Sets the init allocator to the desired value.
+     * <p>
+     * To use the default allocator, call this function with a {@link MemorySegment#NULL} argument.
+     * <p>
+     * If you specify an allocator struct, every member must be a valid function
+     * pointer.  If any member is {@link MemorySegment#NULL}, this function will emit
+     * {@link #INVALID_VALUE} and the init allocator will be unchanged.
+     * <p>
+     * The functions in the allocator must fulfil a number of requirements.  See the
+     * documentation for {@link GLFWAllocateFun}, {@link GLFWReallocateFun} and
+     * {@link GLFWDeallocateFun} for details.
+     *
+     * @param allocator The allocator to use at the next initialization, or
+     *                  {@link MemorySegment#NULL} to use the default one.
+     * @glfw.errors Possible errors include {@link #INVALID_VALUE}.
+     * @glfw.pointer_lifetime The specified allocator is copied before this function
+     * returns.
+     * @glfw.thread_safety This function must only be called from the main thread.
+     * @see #init
+     */
+    @Entrypoint("glfwInitAllocator")
+    void ninitAllocator(MemorySegment allocator);
+
+    /**
+     * Sets the init allocator to the desired value.
+     *
+     * @param allocator The allocator to use at the next initialization, or
+     *                  {@code null} to use the default one.
+     * @see #ninitAllocator(MemorySegment)
+     */
+    @Entrypoint("glfwInitAllocator")
+    void initAllocator(@Nullable GLFWAllocator allocator);
+
+    /**
      * Retrieves the version of the GLFW library.
      * <p>
      * This function retrieves the major, minor and revision numbers of the GLFW
@@ -1026,13 +1377,17 @@ public interface GLFW extends DirectAccess {
      * <p>
      * This function returns the compile-time generated
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#intro_version_string">version string</a>
-     * of the GLFW library binary.  It describes the version, platform, compiler and any platform-specific
+     * of the GLFW library binary.
+     * It describes the version, platforms, compiler and any platform or operating system specific
      * compile-time options.  It should not be confused with the OpenGL or OpenGL
      * ES version string, queried with {@code GL.getString}.
      * <p>
      * <b>Do not use the version string</b> to parse the GLFW library version.  The
      * {@link #ngetVersion getVersion} function provides the version of the running library
      * binary in numerical format.
+     * <p>
+     * <b>Do not use the version string</b> to parse what platforms are supported.  The
+     * {@link #platformSupported} function lets you query platform support.
      *
      * @return The ASCII encoded GLFW version string.
      * @glfw.errors None.
@@ -1097,7 +1452,7 @@ public interface GLFW extends DirectAccess {
         try (MemoryStack stack = MemoryStack.stackPush()) {
             final MemorySegment seg = stack.allocate(ADDRESS);
             final int err = ngetError(seg);
-            return new Tuple2.OfObjInt<>(Unmarshal.unmarshalAsString(seg.get(Unmarshal.STR_LAYOUT, 0L)), err);
+            return new Tuple2.OfObjInt<>(Unmarshal.unmarshalStringPointer(seg), err);
         }
     }
 
@@ -1143,6 +1498,39 @@ public interface GLFW extends DirectAccess {
     default MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
         return nsetErrorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
     }
+
+    /**
+     * Returns the currently selected platform.
+     * <p>
+     * This function returns the platform that was selected during initialization.  The
+     * returned value will be one of {@code PLATFORM_WIN32}, {@code PLATFORM_COCOA},
+     * {@code PLATFORM_WAYLAND}, {@code PLATFORM_X11} or {@code PLATFORM_NULL}.
+     *
+     * @return The currently selected platform, or zero if an error occurred.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.thread_safety This function may be called from any thread.
+     * @see #platformSupported
+     */
+    @Entrypoint("glfwGetPlatform")
+    int getPlatform();
+
+    /**
+     * Returns whether the library includes support for the specified platform.
+     * <p>
+     * This function returns whether the library was compiled with support for the specified
+     * platform.  The platform must be one of {@link #PLATFORM_WIN32}, {@link #PLATFORM_COCOA},
+     * {@link #PLATFORM_WAYLAND}, {@link #PLATFORM_X11} or {@link #PLATFORM_NULL}.
+     *
+     * @param platform The platform to query.
+     * @return {@code true} if the platform is supported, or {@code false} otherwise.
+     * @glfw.errors Possible errors include {@link #INVALID_ENUM}.
+     * @glfw.remark This function may be called before {@link #init}.
+     * @glfw.thread_safety This function may be called from any thread.
+     * @see #getPlatform
+     */
+    @Convert(Type.INT)
+    @Entrypoint("glfwPlatformSupported")
+    boolean platformSupported(int platform);
 
     /**
      * Returns the currently connected monitors.
@@ -1251,7 +1639,7 @@ public interface GLFW extends DirectAccess {
      * This function returns the position, in screen coordinates, of the upper-left
      * corner of the work area of the specified monitor along with the work area
      * size in screen coordinates. The work area is defined as the area of the
-     * monitor not occluded by the operating system task bar where present. If no
+     * monitor not occluded by the window system task bar where present. If no
      * task bar exists then the work area is the monitor resolution in screen
      * coordinates.
      * <p>
@@ -1311,7 +1699,7 @@ public interface GLFW extends DirectAccess {
      * This function returns the size, in millimetres, of the display area of the
      * specified monitor.
      * <p>
-     * Some systems do not provide accurate monitor size information, either
+     * Some platforms do not provide accurate monitor size information, either
      * because the monitor
      * <a href="https://en.wikipedia.org/wiki/Extended_display_identification_data">EDID</a>
      * data is incorrect or because the driver does not report it accurately.
@@ -1382,6 +1770,8 @@ public interface GLFW extends DirectAccess {
      * @param yscale  Where to store the y-axis content scale, or {@link MemorySegment#NULL NULL}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
+     * @glfw.remark <b>Wayland:</b> Fractional scaling information is not yet available for
+     * monitors, so this function only returns integer content scales.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowContentScale(MemorySegment, MemorySegment, MemorySegment) getWindowContentScale
      */
@@ -1549,7 +1939,7 @@ public interface GLFW extends DirectAccess {
     /**
      * Returns the available video modes for the specified monitor.
      *
-     * @param monitor   The monitor to query.
+     * @param monitor The monitor to query.
      * @return An array of video modes, or {@code null} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetVideoModes(MemorySegment, MemorySegment) ngetVideoModes
@@ -1621,10 +2011,10 @@ public interface GLFW extends DirectAccess {
      *
      * @param monitor The monitor whose gamma ramp to set.
      * @param gamma   The desired exponent.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}, {@link #INVALID_VALUE},
+     * {@link #PLATFORM_ERROR} and {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
-     * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
+     * will thus never be implemented and emits {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
     @Entrypoint("glfwSetGamma")
@@ -1638,10 +2028,10 @@ public interface GLFW extends DirectAccess {
      * @param monitor The monitor to query.
      * @return The current gamma ramp, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}, {@link #PLATFORM_ERROR}
+     * and {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark <b>Wayland:</b> Gamma handling is a privileged protocol, this function
-     * will thus never be implemented and emits {@link #PLATFORM_ERROR} while
+     * will thus never be implemented and emits {@link #FEATURE_UNAVAILABLE} while
      * returning {@link MemorySegment#NULL NULL}.
      * @glfw.pointer_lifetime The returned structure and its arrays are allocated and
      * freed by GLFW.  You should not free them yourself.  They are valid until the
@@ -1681,15 +2071,15 @@ public interface GLFW extends DirectAccess {
      *
      * @param monitor The monitor whose gamma ramp to set.
      * @param ramp    The gamma ramp to use.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}, {@link #PLATFORM_ERROR}
+     * and {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark The size of the specified gamma ramp should match the size of the
      * current ramp for that monitor.
      * <p>
      * <b>Windows:</b> The gamma ramp size must be 256.
      * <p>
      * <b>Wayland:</b> Gamma handling is a privileged protocol, this function
-     * will thus never be implemented and emits {@link #PLATFORM_ERROR}.
+     * will thus never be implemented and emits {@link #FEATURE_UNAVAILABLE}.
      * @glfw.pointer_lifetime The specified gamma ramp is copied before this function
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -1873,82 +2263,81 @@ public interface GLFW extends DirectAccess {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #INVALID_ENUM}, {@link #INVALID_VALUE}, {@link #API_UNAVAILABLE},
-     * {@link #VERSION_UNAVAILABLE}, {@link #FORMAT_UNAVAILABLE} and
-     * {@link #PLATFORM_ERROR}.
-     * @glfw.remark <b>Windows:</b> Window creation will fail if the Microsoft GDI software
+     * {@link #VERSION_UNAVAILABLE}, {@link #FORMAT_UNAVAILABLE},
+     * {@link #NO_WINDOW_CONTEXT} and {@link #PLATFORM_ERROR}.
+     * @glfw.remark
+     * <ul>
+     * <li>
+     * <b>Windows:</b> Window creation will fail if the Microsoft GDI software
      * OpenGL implementation is the only one available.
      * <p>
-     * <b>Windows:</b> If the executable has an icon resource named {@code GLFW_ICON}, it
+     * If the executable has an icon resource named {@code GLFW_ICON}, it
      * will be set as the initial icon for the window.  If no such icon is present,
      * the {@code IDI_APPLICATION} icon will be used instead.  To set a different icon,
      * see {@link #nsetWindowIcon(MemorySegment, int, MemorySegment) setWindowIcon}.
      * <p>
-     * <b>Windows:</b> The context to share resources with must not be current on
+     * The context to share resources with must not be current on
      * any other thread.
-     * <p>
-     * <b>macOS:</b> The OS only supports forward-compatible core profile contexts
-     * for OpenGL versions 3.2 and later.  Before creating an OpenGL context of
-     * version 3.2, or later you must set the
-     * {@link #OPENGL_FORWARD_COMPAT} and
-     * {@link #OPENGL_PROFILE} hints accordingly.
+     * </li>
+     * <li>
+     * <b>macOS:</b> The OS only supports core profile contexts for OpenGL
+     * versions 3.2 and later.  Before creating an OpenGL context of version 3.2 or
+     * later you must set the {@link #OPENGL_PROFILE} hints accordingly.
      * OpenGL 3.0 and 3.1 contexts are not supported at all on macOS.
      * <p>
-     * <b>macOS:</b> The GLFW window has no icon, as it is not a document
+     * The GLFW window has no icon, as it is not a document
      * window, but the dock icon will be the same as the application bundle's icon.
      * For more information on bundles, see the
      * <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/">Bundle Programming Guide</a>
      * in the Mac Developer Library.
      * <p>
-     * <b>macOS:</b> The first time a window is created the menu bar is created.
+     * The first time a window is created the menu bar is created.
      * If GLFW finds a {@code MainMenu.nib} it is loaded and assumed to contain a menu
      * bar.  Otherwise, a minimal menu bar is created manually with common commands
      * like Hide, Quit and About.  The "About" entry opens a minimal about dialog
      * with information from the application's bundle.  Menu bar creation can be
      * disabled entirely with the {@link #COCOA_MENUBAR} init hint.
      * <p>
-     * <b>macOS:</b> On OS X 10.10 and later the window frame will not be rendered
+     * On OS X 10.10 and later the window frame will not be rendered
      * at full resolution on Retina displays unless the
-     * {@link #COCOA_RETINA_FRAMEBUFFER}
+     * {@link #SCALE_FRAMEBUFFER}
      * hint is {@link #TRUE} and the {@code NSHighResolutionCapable} key is enabled in the
      * application bundle's {@code Info.plist}.  For more information, see
      * <a href="https://developer.apple.com/library/mac/documentation/GraphicsAnimation/Conceptual/HighResolutionOSX/Explained/Explained.html">High Resolution Guidelines for OS X</a>
-     * in the Mac Developer Library.  The GLFW test and example programs use
-     * a custom {@code Info.plist} template for this, which can be found as
-     * {@code CMake/MacOSXBundleInfo.plist.in} in the source tree.
+     * in the Mac Developer Library.  The GLFW test and example programs use a custom {@code Info.plist}
+     * template for this, which can be found as {@code CMake/Info.plist.in} in the source tree.
      * <p>
-     * <b>macOS:</b> When activating frame autosaving with
+     * When activating frame autosaving with
      * {@link #COCOA_FRAME_NAME}, the specified
      * window size and position may be overridden by previously saved values.
-     * <p>
+     * </li>
+     * <li>
+     * <b>Wayland:</b> GLFW uses <a href="https://gitlab.freedesktop.org/libdecor/libdecor">libdecor</a>
+     * where available to create its window
+     * decorations.  This in turn uses server-side XDG decorations where available
+     * and provides high quality client-side decorations on compositors like GNOME.
+     * If both XDG decorations and libdecor are unavailable, GLFW falls back to
+     * a very simple set of window decorations that only support moving, resizing
+     * and the window manager's right-click menu.
+     * </li>
+     * <li>
      * <b>X11:</b> Some window managers will not respect the placement of
      * initially hidden windows.
      * <p>
-     * <b>X11:</b> Due to the asynchronous nature of X11, it may take a moment for
+     * Due to the asynchronous nature of X11, it may take a moment for
      * a window to reach its requested state.  This means you may not be able to
      * query the final size, position or other attributes directly after window
      * creation.
      * <p>
-     * <b>X11:</b> The class part of the {@code WM_CLASS} window property will by
+     * The class part of the {@code WM_CLASS} window property will by
      * default be set to the window title passed to this function.  The instance
      * part will use the contents of the {@code RESOURCE_NAME} environment variable, if
      * present and not empty, or fall back to the window title.  Set the
      * {@link #X11_CLASS_NAME} and
      * {@link #X11_INSTANCE_NAME} window hints to
      * override this.
-     * <p>
-     * <b>Wayland:</b> Compositors should implement the xdg-decoration protocol
-     * for GLFW to decorate the window properly.  If this protocol isn't
-     * supported, or if the compositor prefers client-side decorations, a very
-     * simple fallback frame will be drawn using the wp_viewporter protocol.  A
-     * compositor can still emit close, maximize or fullscreen events, using for
-     * instance a keybind mechanism.  If neither of these protocols is supported,
-     * the window won't be decorated.
-     * <p>
-     * <b>Wayland:</b> A full screen window will not attempt to change the mode,
-     * no matter what the requested size or refresh rate.
-     * <p>
-     * <b>Wayland:</b> Screensaver inhibition requires the idle-inhibit protocol
-     * to be implemented in the user's compositor.
+     * </li>
+     * </ul>
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #destroyWindow
      */
@@ -2027,6 +2416,43 @@ public interface GLFW extends DirectAccess {
     void setWindowShouldClose(MemorySegment window, @Convert(Type.INT) boolean value);
 
     /**
+     * Returns the title of the specified window.
+     * <p>
+     * This function returns the window title, encoded as UTF-8, of the specified
+     * window.  This is the title set previously by {@link #ncreateWindow createWindow}
+     * or {@link #nsetWindowTitle setWindowTitle}.
+     *
+     * @param window The window to query.
+     * @return The UTF-8 encoded window title, or {@code null} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
+     * @glfw.remark The returned title is currently a copy of the title last set by
+     * {@link #ncreateWindow createWindow} or {@link #nsetWindowTitle setWindowTitle}.
+     * It does not include any
+     * additional text which may be appended by the platform or another program.
+     * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
+     * should not free it yourself.  It is valid until the next call to
+     * {@code getWindowTitle} or {@link #nsetWindowTitle setWindowTitle}, or until the library is
+     * terminated.
+     * @glfw.thread_safety This function must only be called from the main thread.
+     * @see #nsetWindowTitle(MemorySegment, MemorySegment) setWindowTitle
+     */
+    @Entrypoint("glfwGetWindowTitle")
+    MemorySegment ngetWindowTitle(MemorySegment window);
+
+    /**
+     * Returns the title of the specified window.
+     *
+     * @param window The window to query.
+     * @return The UTF-8 encoded window title, or {@code null} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @see #ngetWindowTitle(MemorySegment)
+     */
+    @Entrypoint("glfwGetWindowTitle")
+    @SizedSeg(Unmarshal.STR_SIZE)
+    String getWindowTitle(MemorySegment window);
+
+    /**
      * Sets the title of the specified window.
      * <p>
      * This function sets the window title, encoded as UTF-8, of the specified
@@ -2039,6 +2465,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.remark <b>macOS:</b> The window title will not be updated until the next time you
      * process events.
      * @glfw.thread_safety This function must only be called from the main thread.
+     * @see #ngetWindowTitle(MemorySegment) getWindowTitle
      */
     @Entrypoint("glfwSetWindowTitle")
     void nsetWindowTitle(MemorySegment window, MemorySegment title);
@@ -2075,18 +2502,19 @@ public interface GLFW extends DirectAccess {
      * @param images The images to create the icon from.  This is ignored if
      *               count is zero.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     * {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * {@link #INVALID_VALUE}, {@link #PLATFORM_ERROR} and
+     * {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.pointer_lifetime The specified image data is copied before this function
      * returns.
-     * @glfw.remark <b>macOS:</b> The GLFW window has no icon, as it is not a document
-     * window, so this function does nothing.  The dock icon will be the same as
+     * @glfw.remark <b>macOS:</b> Regular windows do not have icons on macOS.  This function
+     * will emit {@link #FEATURE_UNAVAILABLE}.  The dock icon will be the same as
      * the application bundle's icon.  For more information on bundles, see the
      * <a href="https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/">Bundle Programming Guide</a>
      * in the Mac Developer Library.
      * <p>
      * <b>Wayland:</b> There is no existing protocol to change an icon, the
      * window will thus inherit the one defined in the application's desktop file.
-     * This function always emits {@link #PLATFORM_ERROR}.
+     * This function will emit {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
     @Entrypoint("glfwSetWindowIcon")
@@ -2138,11 +2566,11 @@ public interface GLFW extends DirectAccess {
      *               the content area, or {@link MemorySegment#NULL NULL}.
      * @param ypos   Where to store the y-coordinate of the upper-left corner of
      *               the content area, or {@link MemorySegment#NULL NULL}.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #PLATFORM_ERROR} and {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark <b>Wayland:</b> There is no way for an application to retrieve the global
-     * position of its windows, this function will always emit
-     * {@link #PLATFORM_ERROR}.
+     * position of its windows.  This function will emit
+     * {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setWindowPos(MemorySegment, int, int) setWindowPos
      */
@@ -2193,11 +2621,11 @@ public interface GLFW extends DirectAccess {
      * @param window The window to query.
      * @param xpos   The x-coordinate of the upper-left corner of the content area.
      * @param ypos   The y-coordinate of the upper-left corner of the content area.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #PLATFORM_ERROR} and {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark <b>Wayland:</b> There is no way for an application to set the global
-     * position of its windows, this function will always emit
-     * {@link #PLATFORM_ERROR}.
+     * position of its windows.  This function will emit
+     * {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowPos(MemorySegment, MemorySegment, MemorySegment) getWindowPos
      */
@@ -2355,8 +2783,6 @@ public interface GLFW extends DirectAccess {
      *               content area.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @glfw.remark <b>Wayland:</b> A full screen window will not attempt to change the mode,
-     * no matter what the requested size.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetWindowSize(MemorySegment, MemorySegment, MemorySegment) getWindowSize
      * @see #setWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int) setWindowMonitor
@@ -2500,7 +2926,7 @@ public interface GLFW extends DirectAccess {
      * regardless of their DPI and scaling settings.  This relies on the system DPI
      * and scaling settings being somewhat correct.
      * <p>
-     * On systems where each monitors can have its own content scale, the window
+     * On platforms where each monitors can have its own content scale, the window
      * content scale will depend on which monitor the system considers the window
      * to be on.
      *
@@ -2580,8 +3006,10 @@ public interface GLFW extends DirectAccess {
      *
      * @param window  The window to set the opacity for.
      * @param opacity The desired opacity of the specified window.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}
+     * {@link #PLATFORM_ERROR} and {@link #FEATURE_UNAVAILABLE} (see remarks).
+     * @glfw.remark <b>Wayland:</b> There is no way to set an opacity factor for a window.
+     * This function will emit {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowOpacity(MemorySegment) getWindowOpacity
      */
@@ -2602,6 +3030,9 @@ public interface GLFW extends DirectAccess {
      * @param window The window to iconify.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
+     * @glfw.remark <b>Wayland:</b> Once a window is iconified, {@link #restoreWindow} won’t
+     * be able to restore it.  This is a design decision of the xdg-shell
+     * protocol.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #restoreWindow(MemorySegment) restoreWindow
      * @see #maximizeWindow(MemorySegment) maximizeWindow
@@ -2712,8 +3143,8 @@ public interface GLFW extends DirectAccess {
      * @param window The window to give input focus.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
-     * @glfw.remark <b>Wayland:</b> It is not possible for an application to bring its windows
-     * to front, this function will always emit {@link #PLATFORM_ERROR}.
+     * @glfw.remark <b>Wayland:</b> The compositor will likely ignore focus requests unless
+     * another window created by the same application already has input focus.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
     @Entrypoint("glfwFocusWindow")
@@ -2796,9 +3227,6 @@ public interface GLFW extends DirectAccess {
      * <p>
      * <b>Wayland:</b> The desired window position is ignored, as there is no way
      * for an application to set this property.
-     * <p>
-     * <b>Wayland:</b> Setting the window to full screen will not attempt to
-     * change the mode, no matter what the requested size or refresh rate.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowMonitor(MemorySegment) getWindowMonitor
      * @see #setWindowSize(MemorySegment, int, int) setWindowSize
@@ -2844,8 +3272,9 @@ public interface GLFW extends DirectAccess {
      * The supported attributes are {@link #DECORATED},
      * {@link #RESIZABLE},
      * {@link #FLOATING},
-     * {@link #AUTO_ICONIFY} and
-     * {@link #FOCUS_ON_SHOW}.
+     * {@link #AUTO_ICONIFY},
+     * {@link #FOCUS_ON_SHOW} and
+     * {@link #MOUSE_PASSTHROUGH}.
      * <p>
      * Some of these attributes are ignored for full screen windows.  The new
      * value will take effect if the window is later made windowed.
@@ -2857,9 +3286,13 @@ public interface GLFW extends DirectAccess {
      * @param attrib A supported window attribute.
      * @param value  {@code true} of {@code false}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     * {@link #INVALID_ENUM}, {@link #INVALID_VALUE} and {@link #PLATFORM_ERROR}.
+     * {@link #INVALID_ENUM}, {@link #INVALID_VALUE}, {@link #PLATFORM_ERROR} and
+     * {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark Calling {@link #getWindowAttrib} will always return the latest
      * value, even if that value is ignored by the current mode of the window.
+     * <p>
+     * <b>Wayland:</b> The {@link #FLOATING} window attribute is
+     * not supported.  Setting this will emit {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getWindowAttrib(MemorySegment, int) getWindowAttrib
      */
@@ -3112,8 +3545,6 @@ public interface GLFW extends DirectAccess {
      * For more information about the callback parameters, see the
      * {@link GLFWWindowIconifyFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @glfw.remark <b>Wayland:</b> The XDG-shell protocol has no event for iconification, so
-     * this callback will never be called.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
     @Entrypoint("glfwSetWindowIconifyCallback")
@@ -3406,6 +3837,8 @@ public interface GLFW extends DirectAccess {
      *     <li>{@link #CURSOR_DISABLED} hides and grabs the cursor, providing virtual
      *         and unlimited cursor movement.  This is useful for implementing for
      *         example 3D camera controls.</li>
+     *     <li>{@link #CURSOR_CAPTURED} makes the cursor visible and confines it to the
+     *         content area of the window.</li>
      * </ul>
      * <p>
      * If the mode is {@code STICKY_KEYS}, the value must be either {@link #TRUE} to
@@ -3432,7 +3865,7 @@ public interface GLFW extends DirectAccess {
      * If the mode is {@code RAW_MOUSE_MOTION}, the value must be either {@link #TRUE}
      * to enable raw (unscaled and unaccelerated) mouse motion when the cursor is
      * disabled, or {@link #FALSE} to disable it.  If raw motion is not supported,
-     * attempting to set this will emit {@link #PLATFORM_ERROR}.  Call
+     * attempting to set this will emit {@link #FEATURE_UNAVAILABLE}.  Call
      * {@link #rawMouseMotionSupported} to check for support.
      *
      * @param window The window whose input mode to set.
@@ -3441,7 +3874,8 @@ public interface GLFW extends DirectAccess {
      *               {@code RAW_MOUSE_MOTION}.
      * @param value  The new value of the specified input mode.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * {@link #INVALID_ENUM}, {@link #PLATFORM_ERROR} and
+     * {@link #FEATURE_UNAVAILABLE} (see above).
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #getInputMode(MemorySegment, int) getInputMode
      */
@@ -3711,10 +4145,10 @@ public interface GLFW extends DirectAccess {
      *               content area.
      * @param ypos   The desired y-coordinate, relative to the top edge of the
      *               content area.
-     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
-     * {@link #PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
+     * {@link #PLATFORM_ERROR} and {@link #FEATURE_UNAVAILABLE} (see remarks).
      * @glfw.remark <b>Wayland:</b> This function will only work when the cursor mode is
-     * {@link #CURSOR_DISABLED}, otherwise it will do nothing.
+     * {@link #CURSOR_DISABLED}, otherwise it will emit {@link #FEATURE_UNAVAILABLE}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetCursorPos(MemorySegment, MemorySegment, MemorySegment) getCursorPos
      */
@@ -3768,15 +4202,41 @@ public interface GLFW extends DirectAccess {
     /**
      * Creates a cursor with a standard shape.
      * <p>
-     * Returns a cursor with a <a href="https://www.glfw.org/docs/latest/group__shapes.html">standard shape</a>,
-     * that can be set for a window with {@link #setCursor}.
+     * Returns a cursor with a standard shape, that can be set for a window with
+     * {@link #setCursor}.  The images for these cursors come from the system
+     * cursor theme and their exact appearance will vary between platforms.
+     * <p>
+     * Most of these shapes are guaranteed to exist on every supported platform but
+     * a few may not be present.  See the table below for details.
+     * <table>
+     *     <caption>Cursor Shapes</caption>
+     *     <tr><th>Cursor shape</th>                  <th>Windows</th> <th>macOS</th>           <th>X11</th>               <th>Wayland</th>           </tr>
+     *     <tr><td>{@link #ARROW_CURSOR}</td>         <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #IBEAM_CURSOR}</td>         <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #CROSSHAIR_CURSOR}</td>     <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #POINTING_HAND_CURSOR}</td> <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #RESIZE_EW_CURSOR}</td>     <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #RESIZE_NS_CURSOR}</td>     <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #RESIZE_NWSE_CURSOR}</td>   <td>Yes</td>     <td>Yes<sup>1</sup></td> <td>Maybe<sup>2</sup></td> <td>Maybe<sup>2</sup></td> </tr>
+     *     <tr><td>{@link #RESIZE_NESW_CURSOR}</td>   <td>Yes</td>     <td>Yes<sup>1</sup></td> <td>Maybe<sup>2</sup></td> <td>Maybe<sup>2</sup></td> </tr>
+     *     <tr><td>{@link #RESIZE_ALL_CURSOR}</td>    <td>Yes</td>     <td>Yes</td>             <td>Yes</td>               <td>Yes</td>               </tr>
+     *     <tr><td>{@link #NOT_ALLOWED_CURSOR}</td>   <td>Yes</td>     <td>Yes</td>             <td>Maybe<sup>2</sup></td> <td>Maybe<sup>2</sup></td> </tr>
+     * </table>
+     * <ol>
+     * <li>This uses a private system API and may fail in the future.</li>
+     * <li>This uses a newer standard that not all cursor themes support.</li>
+     * </ol>
+     *
+     * If the requested shape is not available, this function emits a
+     * {@link #CURSOR_UNAVAILABLE} error and returns {@link MemorySegment#NULL}.
      *
      * @param shape One of the <a href="https://www.glfw.org/docs/latest/group__shapes.html">standard shapes</a>.
      * @return A new cursor ready to use or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
-     * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
+     * {@link #INVALID_ENUM}, {@link #CURSOR_UNAVAILABLE} and
+     * {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ncreateCursor(MemorySegment, int, int) createCursor
      */
@@ -4099,7 +4559,6 @@ public interface GLFW extends DirectAccess {
      * For more information about the callback parameters, see the
      * {@link GLFWDropFun function pointer type}.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
-     * @glfw.remark <b>Wayland:</b> File drop is currently unimplemented.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
     @Entrypoint("glfwSetDropCallback")
@@ -4621,10 +5080,14 @@ public interface GLFW extends DirectAccess {
      * This function sets the system clipboard to the specified, UTF-8 encoded
      * string.
      *
-     * @param window window Deprecated.  Any valid window or {@code NULL}.
+     * @param window Deprecated.  Any valid window or {@code NULL}.
      * @param string A UTF-8 encoded string.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED} and
      * {@link #PLATFORM_ERROR}.
+     * @glfw.remark <b>Windows:</b> The clipboard on Windows has a single global lock for reading and
+     * writing.  GLFW tries to acquire it a few times, which is almost always enough.  If it
+     * cannot acquire the lock then this function emits {@link #PLATFORM_ERROR} and returns.
+     * It is safe to try this multiple times.
      * @glfw.pointer_lifetime The specified string is copied before this function
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -4678,6 +5141,10 @@ public interface GLFW extends DirectAccess {
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #FORMAT_UNAVAILABLE} and {@link #PLATFORM_ERROR}.
+     * @glfw.remark <b>Windows:</b> The clipboard on Windows has a single global lock for reading and
+     * writing.  GLFW tries to acquire it a few times, which is almost always enough.  If it
+     * cannot acquire the lock then this function emits {@link #PLATFORM_ERROR} and returns.
+     * It is safe to try this multiple times.
      * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
      * should not free it yourself.  It is valid until the next call to
      * {@code getClipboardString} or
@@ -4725,7 +5192,7 @@ public interface GLFW extends DirectAccess {
     @Skip
     @Nullable
     default String getClipboardString() {
-        return ngetClipboardString().getString(0L);
+        return Unmarshal.unmarshalAsString(ngetClipboardString());
     }
 
     /**
@@ -4740,7 +5207,7 @@ public interface GLFW extends DirectAccess {
      * <p>
      * The resolution of the timer is system dependent, but is usually on the order
      * of a few micro- or nanoseconds.  It uses the highest-resolution monotonic
-     * time source on each supported platform.
+     * time source on each operating system.
      *
      * @return The current time, in seconds, or zero if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
@@ -4910,7 +5377,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED},
      * {@link #NO_CURRENT_CONTEXT} and {@link #PLATFORM_ERROR}.
      * @glfw.remark This function is not called during context creation, leaving the
-     * swap interval set to whatever is the default on that platform.  This is done
+     * swap interval set to whatever is the default for that API.  This is done
      * because some swap interval extensions used by GLFW do not allow the swap
      * interval to be reset to zero once it has been set to a non-zero value.
      * @glfw.remark Some GPU drivers do not honor the requested swap interval, either
@@ -5084,7 +5551,7 @@ public interface GLFW extends DirectAccess {
             MemorySegment pExt = ngetRequiredInstanceExtensions(pCount);
             final int count = pCount.get(JAVA_INT, 0);
             if (count == 0) return null;
-            return Unmarshal.unmarshalAsStringArray(pExt.reinterpret(ADDRESS.scale(0L, count)));
+            return Unmarshal.unmarshalAsStringArray(pExt.reinterpret(ADDRESS.scale(0L, count)), StandardCharsets.US_ASCII);
         }
     }
 }

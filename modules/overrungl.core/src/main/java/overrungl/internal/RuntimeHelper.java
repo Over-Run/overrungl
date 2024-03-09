@@ -22,10 +22,7 @@ import overrungl.Configurations;
 import overrungl.OverrunGL;
 
 import java.io.IOException;
-import java.lang.foreign.Arena;
-import java.lang.foreign.Linker;
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
@@ -51,6 +48,10 @@ public final class RuntimeHelper {
     public static final MemoryLayout LONG = CANONICAL_LAYOUTS.get("long"),
         SIZE_T = CANONICAL_LAYOUTS.get("size_t"),
         WCHAR_T = CANONICAL_LAYOUTS.get("wchar_t");
+    /**
+     * Is {@code size_t} of {@code long}?
+     */
+    public static final boolean SIZE_T_LONG = SIZE_T instanceof ValueLayout.OfLong;
 
     /**
      * constructor

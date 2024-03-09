@@ -50,7 +50,7 @@ public interface GLFWNative extends DirectAccess {
      * @return The UTF-8 encoded adapter device name (for example {@code \\.\DISPLAY1}) of the specified monitor, or
      * {@link MemorySegment#NULL NULL} if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a>
      * occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not synchronized.
      */
     @Entrypoint("glfwGetWin32Adapter")
@@ -79,7 +79,7 @@ public interface GLFWNative extends DirectAccess {
      * @return The UTF-8 encoded display device name (for example
      * {@code \\.\DISPLAY1\Monitor0}) of the specified monitor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -108,7 +108,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code HWND} of the specified window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.remark The {@code HDC} associated with the window can be queried with the
      * <a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc">GetDC</a>
      * function.
@@ -128,7 +128,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code HGLRC} of the specified window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}, {@link GLFW#PLATFORM_UNAVAILABLE} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.remark The {@code HDC} associated with the window can be queried with the
      * <a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc">GetDC</a>
      * function.
@@ -148,7 +148,7 @@ public interface GLFWNative extends DirectAccess {
      * @param monitor the monitor.
      * @return The {@code CGDirectDisplayID} of the specified monitor, or
      * {@code kCGNullDirectDisplay} if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -163,7 +163,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code NSWindow} of the specified window, or {@code nil} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -173,12 +173,26 @@ public interface GLFWNative extends DirectAccess {
     }
 
     /**
+     * Returns the {@code NSView} of the specified window.
+     *
+     * @param window the window.
+     * @return The {@code NSView} of the specified window, or {@code nil} if an
+     * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
+     * @glfw.thread_safety This function may be called from any thread.  Access is not
+     * synchronized.
+     */
+    default MemorySegment getCocoaView(MemorySegment window) {
+        return MemorySegment.NULL;
+    }
+
+    /**
      * Returns the {@code NSOpenGLContext} of the specified window.
      *
      * @param window the window.
      * @return The {@code NSOpenGLContext} of the specified window, or {@code nil} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}, {@link GLFW#PLATFORM_UNAVAILABLE} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -192,7 +206,7 @@ public interface GLFWNative extends DirectAccess {
      *
      * @return The {@code Display} used by GLFW, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -207,7 +221,7 @@ public interface GLFWNative extends DirectAccess {
      * @param monitor the monitor.
      * @return The {@code RRCrtc} of the specified monitor, or {@code None} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -222,7 +236,7 @@ public interface GLFWNative extends DirectAccess {
      * @param monitor the monitor.
      * @return The {@code RROutput} of the specified monitor, or {@code None} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -237,7 +251,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code Window} of the specified window, or {@code None} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -250,7 +264,7 @@ public interface GLFWNative extends DirectAccess {
      * Sets the current primary selection to the specified string.
      *
      * @param string string A UTF-8 encoded string.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}, {@link GLFW#PLATFORM_UNAVAILABLE} and {@link GLFW#PLATFORM_ERROR}.
      * @glfw.pointer_lifetime The specified string is copied before this function
      * returns.
      * @glfw.thread_safety This function must only be called from the main thread.
@@ -279,7 +293,7 @@ public interface GLFWNative extends DirectAccess {
      *
      * @return The contents of the selection as a UTF-8 encoded string, or {@link MemorySegment#NULL NULL}
      * if an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_ERROR}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}, {@link GLFW#PLATFORM_UNAVAILABLE} and {@link GLFW#PLATFORM_ERROR}.
      * @glfw.pointer_lifetime The returned string is allocated and freed by GLFW. You
      * should not free it yourself. It is valid until the next call to
      * {@code ngetX11SelectionString} or {@link #nsetX11SelectionString(MemorySegment) setX11SelectionString}, or until the
@@ -311,7 +325,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code GLXContext} of the specified window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}, {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -326,7 +340,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code GLXWindow} of the specified window, or {@code None} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}, {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -340,7 +354,7 @@ public interface GLFWNative extends DirectAccess {
      *
      * @return The {@code struct wl_display*} used by GLFW, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -355,7 +369,7 @@ public interface GLFWNative extends DirectAccess {
      * @param monitor the monitor.
      * @return The {@code struct wl_output*} of the specified monitor, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -370,7 +384,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The main {@code struct wl_surface*} of the specified window, or {@link MemorySegment#NULL NULL} if
      * an <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#PLATFORM_UNAVAILABLE}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -401,7 +415,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code EGLContext} of the specified window, or {@code EGL_NO_CONTEXT} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -416,7 +430,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window
      * @return The {@code EGLSurface} of the specified window, or {@code EGL_NO_SURFACE} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -437,7 +451,7 @@ public interface GLFWNative extends DirectAccess {
      *               {@link MemorySegment#NULL NULL}.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -479,7 +493,7 @@ public interface GLFWNative extends DirectAccess {
      *                      {@link MemorySegment#NULL NULL}.
      * @return {@code true} if successful, or {@code false} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
@@ -515,7 +529,7 @@ public interface GLFWNative extends DirectAccess {
      * @param window the window.
      * @return The {@code OSMesaContext} of the specified window, or {@link MemorySegment#NULL NULL} if an
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
-     * @glfw.errors Possible errors include {@link GLFW#NO_WINDOW_CONTEXT} and {@link GLFW#NOT_INITIALIZED}.
+     * @glfw.errors Possible errors include {@link GLFW#NOT_INITIALIZED} and {@link GLFW#NO_WINDOW_CONTEXT}.
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */

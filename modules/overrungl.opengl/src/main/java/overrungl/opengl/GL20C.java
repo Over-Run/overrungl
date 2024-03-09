@@ -215,7 +215,7 @@ public interface GL20C extends DirectAccess {
         Unmarshal.copy(pLen, length);
         Unmarshal.copy(pSz, size);
         Unmarshal.copy(pType, type);
-        name[0] = pName.getString(0);
+        name[0] = Unmarshal.unmarshalAsString(pName);
     }
 
     @Entrypoint("glGetActiveUniform")
@@ -223,17 +223,9 @@ public interface GL20C extends DirectAccess {
         throw new ContextException();
     }
 
-    @Skip
+    @Entrypoint("glGetActiveUniform")
     default void getActiveUniform(SegmentAllocator allocator, int program, int index, int bufSize, @Ref int @Nullable [] length, @Ref int[] size, @Ref int[] type, @Ref String[] name) {
-        var pLen = Marshal.marshal(allocator, length);
-        var pSz = Marshal.marshal(allocator, size);
-        var pType = Marshal.marshal(allocator, type);
-        var pName = allocator.allocate(JAVA_BYTE, bufSize);
-        getActiveUniform(program, index, bufSize, pLen, pSz, pType, pName);
-        Unmarshal.copy(pLen, length);
-        Unmarshal.copy(pSz, size);
-        Unmarshal.copy(pType, type);
-        name[0] = pName.getString(0);
+        throw new ContextException();
     }
 
     @Entrypoint("glGetAttachedShaders")
@@ -268,7 +260,7 @@ public interface GL20C extends DirectAccess {
             var pLog = stack.allocate(JAVA_BYTE, bufSize);
             getProgramInfoLog(program, bufSize, pLen, pLog);
             Unmarshal.copy(pLen, length);
-            return pLog.getString(0);
+            return Unmarshal.unmarshalAsString(pLog);
         }
     }
 
@@ -308,7 +300,7 @@ public interface GL20C extends DirectAccess {
             var pLog = stack.allocate(JAVA_BYTE, bufSize);
             getShaderInfoLog(shader, bufSize, pLen, pLog);
             Unmarshal.copy(pLen, length);
-            return pLog.getString(0);
+            return Unmarshal.unmarshalAsString(pLog);
         }
     }
 
@@ -329,7 +321,7 @@ public interface GL20C extends DirectAccess {
             var pSrc = stack.allocate(JAVA_BYTE, bufSize);
             getShaderSource(shader, bufSize, pLen, pSrc);
             Unmarshal.copy(pLen, length);
-            return pSrc.getString(0);
+            return Unmarshal.unmarshalAsString(pSrc);
         }
     }
 

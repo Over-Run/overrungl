@@ -232,7 +232,7 @@ public interface GL41C extends DirectAccess {
         var pi = allocator.allocate(JAVA_BYTE, bufSize);
         getProgramPipelineInfoLog(pipeline, bufSize, pl, pi);
         Unmarshal.copy(pl, length);
-        infoLog[0] = pi.getString(0);
+        infoLog[0] = Unmarshal.unmarshalAsString(pi);
     }
 
     @Skip
@@ -240,7 +240,7 @@ public interface GL41C extends DirectAccess {
         final int sz = getProgramPipelineiv(pipeline, GL20C.INFO_LOG_LENGTH);
         var pi = allocator.allocate(JAVA_BYTE, sz);
         getProgramPipelineInfoLog(pipeline, sz, MemorySegment.NULL, pi);
-        return pi.getString(0);
+        return Unmarshal.unmarshalAsString(pi);
     }
 
     @Entrypoint("glGetProgramPipelineiv")

@@ -146,7 +146,7 @@ public interface GL31C extends DirectAccess {
             final MemorySegment length = stack.ints(0);
             var pName = stack.allocate(ValueLayout.JAVA_BYTE, bufSize);
             getActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, pName);
-            return pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1).getString(0);
+            return Unmarshal.unmarshalAsString(pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1));
         }
     }
 
@@ -171,7 +171,7 @@ public interface GL31C extends DirectAccess {
             final MemorySegment length = stack.ints(0);
             var pName = stack.allocate(ValueLayout.JAVA_BYTE, bufSize);
             getActiveUniformName(program, uniformIndex, bufSize, length, pName);
-            return pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1).getString(0);
+            return Unmarshal.unmarshalAsString(pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1));
         }
     }
 

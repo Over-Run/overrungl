@@ -643,7 +643,7 @@ public interface NFD extends DirectAccess {
                 Marshal.marshal(stack, defaultPath));
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0L);
+                outPath[0] = Unmarshal.unmarshalAsString(path);
                 freePathU8(path);
             }
             return result;
@@ -736,7 +736,7 @@ public interface NFD extends DirectAccess {
                 Marshal.marshal(stack, defaultName));
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0L);
+                outPath[0] = Unmarshal.unmarshalAsString(path);
                 freePathU8(path);
             }
             return result;
@@ -777,7 +777,7 @@ public interface NFD extends DirectAccess {
             final NFDResult result = npickFolderU8(seg, Marshal.marshal(stack, defaultPath));
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0L);
+                outPath[0] = Unmarshal.unmarshalAsString(path);
                 freePathU8(path);
             }
             return result;
@@ -825,7 +825,7 @@ public interface NFD extends DirectAccess {
             final NFDResult result = npathSetGetPathU8(pathSet, index, seg);
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0L);
+                outPath[0] = Unmarshal.unmarshalAsString(path);
                 pathSetFreePathU8(path);
             }
             return result;
@@ -870,7 +870,7 @@ public interface NFD extends DirectAccess {
             if (result == NFDResult.OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
                 if (!Unmarshal.isNullPointer(path)) {
-                    outPath[0] = path.getString(0L);
+                    outPath[0] = Unmarshal.unmarshalAsString(path);
                     pathSetFreePathU8(path);
                 }
             }

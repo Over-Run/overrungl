@@ -47,7 +47,7 @@ public interface GLFWKeyFun extends Upcall {
      * @param window   The window that received the event.
      * @param key      The <a href="https://www.glfw.org/docs/latest/group__keys.html">keyboard key</a>
      *                 that was pressed or released.
-     * @param scancode The system-specific scancode of the key.
+     * @param scancode The platform-specific scancode of the key.
      * @param action   {@code PRESS}, {@code RELEASE} or {@code REPEAT}. Future releases may add more actions.
      * @param mods     Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a>
      *                 were held down.

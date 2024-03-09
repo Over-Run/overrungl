@@ -251,7 +251,7 @@ public interface GL40C extends DirectAccess {
             final MemorySegment length = stack.ints(0);
             var seg = stack.allocate(JAVA_BYTE, bufSize);
             getActiveSubroutineName(program, shaderType, index, bufSize, length, seg);
-            return seg.reinterpret(length.get(JAVA_INT, 0L) + 1).getString(0);
+            return Unmarshal.unmarshalAsString(seg.reinterpret(length.get(JAVA_INT, 0L) + 1));
         }
     }
 
@@ -266,7 +266,7 @@ public interface GL40C extends DirectAccess {
             final MemorySegment length = stack.ints(0);
             var seg = stack.allocate(JAVA_BYTE, bufSize);
             getActiveSubroutineUniformName(program, shaderType, index, bufSize, length, seg);
-            return seg.reinterpret(length.get(JAVA_INT, 0L) + 1).getString(0);
+            return Unmarshal.unmarshalAsString(seg.reinterpret(length.get(JAVA_INT, 0L) + 1));
         }
     }
 

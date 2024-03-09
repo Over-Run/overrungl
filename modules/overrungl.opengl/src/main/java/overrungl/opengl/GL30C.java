@@ -672,17 +672,9 @@ public interface GL30C extends DirectAccess {
         throw new ContextException();
     }
 
-    @Skip
+    @Entrypoint("glGetTransformFeedbackVarying")
     default void getTransformFeedbackVarying(SegmentAllocator allocator, int program, int index, int bufSize, @Ref int @Nullable [] length, @Ref int[] size, @Ref int[] type, @Ref String[] name) {
-        var pLen = Marshal.marshal(allocator, length);
-        var pSz = Marshal.marshal(allocator, size);
-        var pType = Marshal.marshal(allocator, type);
-        var pName = allocator.allocate(JAVA_BYTE, bufSize);
-        getTransformFeedbackVarying(program, index, bufSize, pLen, pSz, pType, pName);
-        Unmarshal.copy(pLen, length);
-        Unmarshal.copy(pSz, size);
-        Unmarshal.copy(pType, type);
-        name[0] = pName.getString(0);
+        throw new ContextException();
     }
 
     @Entrypoint("glGetUniformuiv")
