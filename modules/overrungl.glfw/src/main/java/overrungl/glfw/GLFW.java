@@ -1453,7 +1453,7 @@ public interface GLFW extends DirectAccess {
         try (MemoryStack stack = MemoryStack.stackPush()) {
             final MemorySegment seg = stack.allocate(ADDRESS);
             final int err = ngetError(seg);
-            return new Tuple2.OfObjInt<>(Unmarshal.unmarshalAsString(seg.get(Unmarshal.STR_LAYOUT, 0L)), err);
+            return new Tuple2.OfObjInt<>(Unmarshal.unmarshalStringPointer(seg), err);
         }
     }
 
