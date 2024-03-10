@@ -17,7 +17,6 @@ val projBranch: String by project
 val projLicenseYear: String by project
 val orgName: String by project
 val orgUrl: String by project
-val developers: String by project
 
 val jdkVersion: String by rootProject
 val jdkEnablePreview: String by rootProject
@@ -296,6 +295,14 @@ publishing.publications {
         organization {
             name.set(orgName)
             url.set(orgUrl)
+        }
+        developers {
+            developer {
+                id = "squid233"
+                url = "https://github.com/squid233"
+                organization = orgName
+                organizationUrl = orgUrl
+            }
         }
         scm {
             connection.set("scm:git:https://github.com/${projVcs}.git")

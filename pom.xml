@@ -32,7 +32,7 @@
     <licenses>
         <license>
             <name>MIT</name>
-            <url>https://raw.githubusercontent.com/Over-Run/overrungl/0.x/LICENSE</url>
+            <url>https://raw.githubusercontent.com/Over-Run/overrungl/main/LICENSE</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -40,8 +40,6 @@
     <developers>
         <developer>
             <id>squid233</id>
-            <name>squid233</name>
-            <email>513508220@qq.com</email>
             <url>https://github.com/squid233</url>
         </developer>
     </developers>
