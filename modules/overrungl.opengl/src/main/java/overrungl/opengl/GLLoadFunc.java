@@ -53,4 +53,13 @@ public interface GLLoadFunc {
             return Unmarshal.isNullPointer(segment) ? Optional.empty() : Optional.of(segment);
         };
     }
+
+    /**
+     * {@return a loading function with alias supports}
+     *
+     * @param load the original loading function
+     */
+    static GLLoadFunc withAlias(GLLoadFunc load) {
+        return string -> GLAliasResolver.resolve(load, string);
+    }
 }

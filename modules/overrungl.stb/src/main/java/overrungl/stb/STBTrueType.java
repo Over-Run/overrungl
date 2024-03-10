@@ -602,8 +602,6 @@ public interface STBTrueType extends DirectAccess {
                        STBTTAlignedQuad q,
                        int align_to_integer);
 
-    // TODO: 2024/1/28 squid233: Support STBRPRect
-
     /**
      * Calling these functions in sequence is roughly equivalent to calling
      * stbtt_PackFontRanges(). If you more control over the packing of multiple

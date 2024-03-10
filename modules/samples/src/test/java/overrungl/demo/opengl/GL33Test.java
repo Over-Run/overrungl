@@ -23,10 +23,7 @@ import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.joml.Matrixn;
-import overrungl.opengl.GL;
-import overrungl.opengl.GLFlags;
-import overrungl.opengl.GLLoader;
-import overrungl.opengl.GLUtil;
+import overrungl.opengl.*;
 import overrungl.opengl.ext.amd.GLAMDDebugOutput;
 import overrungl.opengl.ext.arb.GLARBDebugOutput;
 
@@ -112,7 +109,7 @@ public class GL33Test {
     }
 
     private void load(Arena arena) {
-        final GLFlags flags = GLLoader.loadFlags(glfw::getProcAddress);
+        final GLFlags flags = GLLoader.loadFlags(GLLoadFunc.withAlias(glfw::getProcAddress));
         gl = Objects.requireNonNull(GLLoader.load(flags), "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback(gl,

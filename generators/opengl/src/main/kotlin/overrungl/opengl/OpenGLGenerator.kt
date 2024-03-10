@@ -14,7 +14,10 @@
  * copies or substantial portions of the Software.
  */
 
-/* note: adding a new extension
+/*
+ * last updated on 2024/3/9
+ *
+ * note: adding a new extension
  * you need to add the extension in glExtCaps::caps
  */
 
