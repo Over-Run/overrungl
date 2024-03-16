@@ -72,7 +72,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GL load(GLFlags flags) {
-        return flags.GL10 ? loadContext(flags, GL.class) : null;
+        return flags.GL10 ? loadBuiltin(flags, GL.class) : null;
     }
 
     /**
@@ -83,7 +83,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLLegacy loadLegacy(GLFlags flags) {
-        return flags.GL10 ? loadContext(flags, GLLegacy.class) : null;
+        return flags.GL10 ? loadBuiltin(flags, GLLegacy.class) : null;
     }
 
     /**
@@ -94,7 +94,7 @@ public final class GLLoader {
      */
     @Nullable
     public static GLExtension loadExtension(GLFlags flags) {
-        return flags.foundExtension ? loadContext(flags, GLExtension.class) : null;
+        return flags.foundExtension ? loadBuiltin(flags, GLExtension.class) : null;
     }
 
     /**
@@ -105,8 +105,21 @@ public final class GLLoader {
      * @param <T>         the type of the instance
      * @return an instance that wraps OpenGL context
      */
-    public static <T> T loadContext(GLFlags flags, Class<T> targetClass) {
-        return Downcall.load(LOOKUP,
+    public static <T> T loadBuiltin(GLFlags flags, Class<T> targetClass) {
+        return loadContext(LOOKUP, flags, targetClass);
+    }
+
+    /**
+     * Loads OpenGL context with the given flags.
+     *
+     * @param caller      the lookup object for the caller
+     * @param flags       the OpenGL flags
+     * @param targetClass the target class
+     * @param <T>         the type of the instance
+     * @return an instance that wraps OpenGL context
+     */
+    public static <T> T loadContext(MethodHandles.Lookup caller, GLFlags flags, Class<T> targetClass) {
+        return Downcall.load(caller,
             flags.load.lookup(),
             DowncallOption.targetClass(targetClass),
             DowncallOption.descriptors(DESCRIPTOR_MAP));

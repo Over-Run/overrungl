@@ -114,8 +114,8 @@ public class GL33Test {
 
         debugProc = GLUtil.setupDebugMessageCallback(gl,
             flags,
-            () -> GLLoader.loadContext(flags, GLARBDebugOutput.class),
-            () -> GLLoader.loadContext(flags, GLAMDDebugOutput.class));
+            () -> GLLoader.loadBuiltin(flags, GLARBDebugOutput.class),
+            () -> GLLoader.loadBuiltin(flags, GLAMDDebugOutput.class));
         gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = gl.createProgram();
         int vsh = gl.createShader(GL.VERTEX_SHADER);
