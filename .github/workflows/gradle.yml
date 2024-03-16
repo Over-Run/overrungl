@@ -38,7 +38,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Execute Gradle build
-        run: ./gradlew build -x :samples:test
+        run: ./gradlew build
       - name: Upload build reports
         if: ${{ runner.os == 'Linux' && matrix.java == '22-ea' && failure() }}
         uses: actions/upload-artifact@v4
