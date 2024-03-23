@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         java: [
-          22-ea
+          22
         ]
         os: [ ubuntu-latest, windows-latest ]
     runs-on: ${{ matrix.os }}
@@ -39,17 +39,16 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
       - name: Execute Gradle build
         run: ./gradlew build
-      - name: Upload build reports
-        if: ${{ runner.os == 'Linux' && matrix.java == '22-ea' && failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-reports
-          path: |
-            modules/**/build/reports/
+#      - name: Upload build reports
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: build-reports-${{ matrix.java }}-${{ runner.os }}
+#          path: |
+#            modules/**/build/reports/
       - name: Capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '22-ea' }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '22' }}
         uses: actions/upload-artifact@v4
         with:
-          name: Artifacts
+          name: artifacts
           path: |
             modules/**/build/libs/

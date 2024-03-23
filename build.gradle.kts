@@ -15,6 +15,7 @@ val projVersion: String by project
 val projVcs: String by project
 val projBranch: String by project
 val projLicenseYear: String by project
+val projLicenseFileName: String by project
 val orgName: String by project
 val orgUrl: String by project
 
@@ -166,7 +167,7 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
 
         tasks.named<Jar>("jar") {
             manifestContentCharset = "utf-8"
-            metadataCharset = "utf-8"
+            setMetadataCharset("utf-8")
             manifest.attributes(
                 "Specification-Title" to projName,
                 "Specification-Vendor" to "Overrun Organization",
@@ -176,14 +177,14 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
                 "Implementation-Version" to projVersion
             )
             archiveBaseName.set(artifactName)
-            from("LICENSE")
+            from(rootProject.file(projLicenseFileName)).rename(projLicenseFileName, "${projLicenseFileName}_$artifactName")
         }
 
         tasks.named<Jar>("sourcesJar") {
             dependsOn(tasks["classes"])
             archiveBaseName.set(artifactName)
             archiveClassifier.set("sources")
-            from(sourceSets["main"].allSource, "LICENSE")
+            from(sourceSets["main"].allSource)
         }
 
         tasks.named<Jar>("javadocJar") {
@@ -191,7 +192,7 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
             dependsOn(javadoc)
             archiveBaseName.set(artifactName)
             archiveClassifier.set("javadoc")
-            from(javadoc, "LICENSE")
+            from(javadoc)
         }
 
         artifacts {
@@ -227,7 +228,7 @@ tasks.register<Javadoc>("aggregateJavadoc") {
     val projectsToDoc = Artifact.values().map { project(it.subprojectName) }
     dependsOn(projectsToDoc.map { it.getTasksByName("classes", true) })
     source(projectsToDoc.map { it.sourceSets["main"].java })
-    destinationDir = File("${layout.buildDirectory.get().asFile}/docs/javadoc")
+    setDestinationDir(File("${layout.buildDirectory.get().asFile}/docs/javadoc"))
 
     classpath = files(projectsToDoc.map { it.configurations["compileClasspath"].files })
 
