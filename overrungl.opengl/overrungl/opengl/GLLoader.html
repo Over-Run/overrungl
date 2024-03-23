@@ -84,14 +84,14 @@ loadScripts(document, 'script');</script>
 <div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">overrungl.opengl</a></div>
 <h1 title="Class GLLoader" class="title">Class GLLoader</h1>
 </div>
-<div class="inheritance" title="Inheritance Tree"><a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
+<div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
 <div class="inheritance">overrungl.opengl.GLLoader</div>
 </div>
 <section class="class-description" id="class-description">
 <div class="horizontal-scroll">
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">GLLoader</span>
-<span class="extends-implements">extends <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">This class must be used before any OpenGL function is called. It has the following responsibilities:
  <ul>
  <li>Loads the OpenGL native library into the JVM process.</li>
@@ -150,32 +150,39 @@ loadScripts(document, 'script');</script>
 <div class="block">Loads OpenGL core profile with the given flags.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;T</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadContext(overrungl.opengl.GLFlags,java.lang.Class)" class="member-name-link">loadContext</a><wbr>(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags,
- <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;targetClass)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadBuiltin(overrungl.opengl.GLFlags,java.lang.Class)" class="member-name-link">loadBuiltin</a><wbr>(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags,
+ <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;targetClass)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Loads OpenGL context with the given flags.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static @Nullable <a href="ext/GLExtension.html" title="interface in overrungl.opengl.ext">GLExtension</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadExtension(overrungl.opengl.GLFlags)" class="member-name-link">loadExtension</a><wbr>(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;T</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadContext(java.lang.invoke.MethodHandles.Lookup,overrungl.opengl.GLFlags,java.lang.Class)" class="member-name-link">loadContext</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/invoke/MethodHandles.Lookup.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandles.Lookup</a>&nbsp;caller,
+ <a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags,
+ <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;targetClass)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads OpenGL context with the given flags.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static @Nullable <a href="ext/GLExtension.html" title="interface in overrungl.opengl.ext">GLExtension</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadExtension(overrungl.opengl.GLFlags)" class="member-name-link">loadExtension</a><wbr>(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Loads OpenGL extensions with the given flags.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadFlags(overrungl.opengl.GLLoadFunc)" class="member-name-link">loadFlags</a><wbr>(<a href="GLLoadFunc.html" title="interface in overrungl.opengl">GLLoadFunc</a>&nbsp;load)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadFlags(overrungl.opengl.GLLoadFunc)" class="member-name-link">loadFlags</a><wbr>(<a href="GLLoadFunc.html" title="interface in overrungl.opengl">GLLoadFunc</a>&nbsp;load)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Loads OpenGL flags.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static @Nullable <a href="GLLegacy.html" title="interface in overrungl.opengl">GLLegacy</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadLegacy(overrungl.opengl.GLFlags)" class="member-name-link">loadLegacy</a><wbr>(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static @Nullable <a href="GLLegacy.html" title="interface in overrungl.opengl">GLLegacy</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadLegacy(overrungl.opengl.GLFlags)" class="member-name-link">loadLegacy</a><wbr>(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Loads OpenGL compatibility profile with the given flags.</div>
 </div>
 </div>
 </div>
 </div>
 <div class="inherited-list">
-<h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
-<code><a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
+<h3 id="methods-inherited-from-class-java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
+<code><a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
 </section>
 </li>
 </ul>
@@ -267,16 +274,37 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="loadContext(overrungl.opengl.GLFlags,java.lang.Class)">
-<h3>loadContext</h3>
+<section class="detail" id="loadBuiltin(overrungl.opengl.GLFlags,java.lang.Class)">
+<h3>loadBuiltin</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">loadContext</span><wbr><span class="parameters">(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags,
- <a href="https://download.java.net/java/early_access/jdk22/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;targetClass)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">loadBuiltin</span><wbr><span class="parameters">(<a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags,
+ <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;targetClass)</span></div>
 <div class="block">Loads OpenGL context with the given flags.</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
 <dd><code>T</code> - the type of the instance</dd>
 <dt>Parameters:</dt>
+<dd><code>flags</code> - the OpenGL flags</dd>
+<dd><code>targetClass</code> - the target class</dd>
+<dt>Returns:</dt>
+<dd>an instance that wraps OpenGL context</dd>
+</dl>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="loadContext(java.lang.invoke.MethodHandles.Lookup,overrungl.opengl.GLFlags,java.lang.Class)">
+<h3>loadContext</h3>
+<div class="horizontal-scroll">
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">loadContext</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/invoke/MethodHandles.Lookup.html" title="class or interface in java.lang.invoke" class="external-link">MethodHandles.Lookup</a>&nbsp;caller,
+ <a href="GLFlags.html" title="class in overrungl.opengl">GLFlags</a>&nbsp;flags,
+ <a href="https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;targetClass)</span></div>
+<div class="block">Loads OpenGL context with the given flags.</div>
+<dl class="notes">
+<dt>Type Parameters:</dt>
+<dd><code>T</code> - the type of the instance</dd>
+<dt>Parameters:</dt>
+<dd><code>caller</code> - the lookup object for the caller</dd>
 <dd><code>flags</code> - the OpenGL flags</dd>
 <dd><code>targetClass</code> - the target class</dd>
 <dt>Returns:</dt>
