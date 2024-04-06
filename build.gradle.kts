@@ -177,7 +177,10 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
                 "Implementation-Version" to projVersion
             )
             archiveBaseName.set(artifactName)
-            from(rootProject.file(projLicenseFileName)).rename(projLicenseFileName, "${projLicenseFileName}_$artifactName")
+            from(rootProject.file(projLicenseFileName)).rename(
+                projLicenseFileName,
+                "${projLicenseFileName}_$artifactName"
+            )
         }
 
         tasks.named<Jar>("sourcesJar") {
@@ -222,6 +225,9 @@ tasks.register("assembleJavadocArgs") {
 }
 
 tasks.register<Javadoc>("aggregateJavadoc") {
+    javadocTool = the<JavaToolchainService>().javadocToolFor {
+        languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
     dependsOn(tasks["assembleJavadocArgs"])
     group = "documentation"
     outputs.upToDateWhen { false }
@@ -239,6 +245,9 @@ tasks.register<Javadoc>("aggregateJavadoc") {
 
 allprojects {
     tasks.withType<Javadoc> {
+        javadocTool = the<JavaToolchainService>().javadocToolFor {
+            languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+        }
         options {
             if (this is CoreJavadocOptions) {
                 if (jdkEnablePreview.toBoolean()) {
