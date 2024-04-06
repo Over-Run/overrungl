@@ -18,12 +18,12 @@ which enables cross-platform access to a set of C/C++ library bindings, and prov
 [LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
 
 LWJGL 3 uses JNI to access native functions,
-but OverrunGL uses [FFM API](https://openjdk.org/jeps/454), which has better performance.
+but OverrunGL uses [FFM API](https://openjdk.org/jeps/454), which provides better memory management.
 
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/test/java/overrungl/demo).
+the [samples](modules/samples/src/main/java/overrungl/demo).
 
 ## Import as a Dependency
 
@@ -93,6 +93,7 @@ You must enable the access of OverrunGL by adding a VM argument or a manifest at
 
 - [Discussions](https://github.com/Over-Run/overrungl/discussions)
 - [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
+- [QQ群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ahhT6p-D0HlrGat3lFDLlSB953umWh5Z&authKey=KP0UtgQg1rW8MGNV20zmxRI7OxzijOproIRsCxe8mrWD6CHBiVo0Lhr0vvrnDYAH&noverify=0&group_code=1078745269)
 
 ## Release Notes
 

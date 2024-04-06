@@ -240,7 +240,6 @@ public interface NFD extends DirectAccess {
     @Entrypoint("NFD_OpenDialogN")
     NFDResult nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
 
-
     /**
      * single file open dialog
      *
