@@ -27,6 +27,7 @@ jobs:
         with:
           java-version: |
             22
+            21
           distribution: 'temurin'
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}
