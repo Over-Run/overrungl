@@ -1,6 +1,5 @@
+
 import org.gradle.plugins.ide.idea.model.IdeaModel
-import java.nio.file.Files
-import kotlin.io.path.Path
 
 plugins {
     `java-platform`
@@ -28,94 +27,6 @@ val targetJavaVersion = jdkVersion.toInt()
 
 group = projGroupId
 version = projVersion
-
-enum class NativePlatform(
-    val osFamilyName: String,
-    val osArch: String,
-    classifier: String,
-    val nativeLibPrefix: String,
-    val nativeLibSuffix: String,
-    val taskSuffix: String
-) {
-    WIN_64("windows", "x64", "windows", "", ".dll", "Win64"),
-    WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
-    LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
-    LINUX_ARM32("linux", "arm32", "linux-arm32", "lib", ".so", "LinuxArm32"),
-    LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
-    MACOS("macos", "x64", "macos", "lib", ".dylib", "Macos"),
-    MACOS_ARM64("macos", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
-
-    companion object {
-        val ALL = values()
-    }
-
-    val classifier = "natives-$classifier"
-}
-
-enum class NativeBinding(
-    val bindingName: String,
-    val basename: String,
-    vararg val platforms: NativePlatform
-) {
-    GLFW(
-        "glfw", "glfw3",
-        NativePlatform.WIN_64,
-        NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
-        NativePlatform.MACOS, NativePlatform.MACOS_ARM64
-    ),
-    NFD("nfd", "nfd", *NativePlatform.ALL),
-    STB("stb", "stb", *NativePlatform.ALL)
-}
-
-enum class Artifact(
-    val artifactName: String,
-    val projectName: String,
-    val projectDescription: String,
-    val subprojectName: String,
-    val mavenName: String,
-    val nativeBinding: NativeBinding? = null,
-    val nativeCIVersion: String? = null
-) {
-    CORE(
-        "overrungl", "OverrunGL",
-        "The OverrunGL core library.",
-        ":core", "Core"
-    ),
-    GLFW(
-        "overrungl-glfw", "OverrunGL - GLFW bindings",
-        "A multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.",
-        ":glfw", "Glfw", NativeBinding.GLFW
-    ),
-    JOML(
-        "overrungl-joml", "OverrunGL - JOML native access",
-        "A Java math library for OpenGL rendering calculations",
-        ":joml", "Joml"
-    ),
-    NFD(
-        "overrungl-nfd", "OverrunGL - Native File Dialog",
-        "A tiny, neat C library that portably invokes native file open and save dialogs.",
-        ":nfd", "Nfd", NativeBinding.NFD
-    ),
-    OPENGL(
-        "overrungl-opengl", "OverrunGL - OpenGL bindings",
-        "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
-        ":opengl", "Opengl"
-    ),
-    STB(
-        "overrungl-stb", "OverrunGL - stb bindings",
-        "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
-        ":stb", "Stb", NativeBinding.STB, nativeCIVersion = "0.1.0-alpha.6"
-    ),
-    //VULKAN("overrungl-vulkan", "OverrunGL - Vulkan bindings",
-    //    "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
-    //    ":vulkan", "Vulkan", null),
-    ;
-
-    fun nativeFileName(platform: NativePlatform): String? {
-        return if (nativeBinding == null) null
-        else "${nativeBinding.bindingName}/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
-    }
-}
 
 val artifactNameMap = buildMap {
     Artifact.values().forEach { put(it.subprojectName, it.artifactName) }
@@ -157,10 +68,7 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
         }
 
         extensions.configure<JavaPluginExtension>("java") {
-            val javaVersion = JavaVersion.toVersion(targetJavaVersion)
-            if (JavaVersion.current() < javaVersion) {
-                toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
-            }
+            toolchain.languageVersion.set(JavaLanguageVersion.of(targetJavaVersion))
             withJavadocJar()
             withSourcesJar()
         }
@@ -207,48 +115,10 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
     }
 }
 
-tasks.register("assembleJavadocArgs") {
-    group = "build"
-    val mspFile = Path("${rootProject.layout.buildDirectory.get().asFile}/tmp/modulesourcepath.args")
-    outputs.file(mspFile)
-
-    doLast {
-        Files.deleteIfExists(mspFile)
-
-        Files.writeString(
-            mspFile, """
-            --module-source-path
-            ${rootProject.projectDir.path}/modules/*/src/main/java
-        """.trimIndent()
-        )
-    }
-}
-
-tasks.register<Javadoc>("aggregateJavadoc") {
-    javadocTool = the<JavaToolchainService>().javadocToolFor {
-        languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
-    dependsOn(tasks["assembleJavadocArgs"])
-    group = "documentation"
-    outputs.upToDateWhen { false }
-    val projectsToDoc = Artifact.values().map { project(it.subprojectName) }
-    dependsOn(projectsToDoc.map { it.getTasksByName("classes", true) })
-    source(projectsToDoc.map { it.sourceSets["main"].java })
-    setDestinationDir(File("${layout.buildDirectory.get().asFile}/docs/javadoc"))
-
-    classpath = files(projectsToDoc.map { it.configurations["compileClasspath"].files })
-
-    executable = project.findProperty("javadocExecutable") as String?
-
-    options.optionFiles = listOf(File("${rootProject.layout.buildDirectory.get().asFile}/tmp/modulesourcepath.args"))
-}
-
 allprojects {
     tasks.withType<Javadoc> {
-        javadocTool = the<JavaToolchainService>().javadocToolFor {
-            languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-        }
         options {
+            verbose()
             if (this is CoreJavadocOptions) {
                 if (jdkEnablePreview.toBoolean()) {
                     addBooleanOption("-enable-preview", true)
@@ -377,7 +247,7 @@ publishing.publications {
                     asElement().getElementsByTagName("dependencies").item(0).apply {
                         Artifact.values().forEach { module ->
                             if (module.nativeBinding != null) {
-                                module.nativeBinding.platforms.forEach { appendBOM(it, module) }
+                                module.nativeBinding!!.platforms.forEach { appendBOM(it, module) }
                             } else {
                                 appendBOM(null, module)
                             }
