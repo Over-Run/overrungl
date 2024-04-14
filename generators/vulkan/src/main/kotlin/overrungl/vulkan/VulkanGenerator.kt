@@ -30,7 +30,11 @@ import kotlin.io.path.Path
 val UPPERCASE = Regex("([A-Z])")
 
 fun indent(indent: Int) = " ".repeat(indent)
-fun removeConstPrefix(string: String) = string.removePrefix("VK_")
+fun String.removeConstPrefix(): String {
+    val s = this.removePrefix("VK_")
+    return if (!s.first().isJavaIdentifierStart()) "_$s" else s
+}
+
 fun formatNumber(string: String) = string
     .removeSurrounding("(", ")")
     .removeSuffix("LL")
@@ -161,13 +165,13 @@ class VKFile(
  * @since 0.1.0
  */
 fun main() {
-    val VK10 = VKFile(
-        "VK10", document = """
+    val Vk10 = VKFile(
+        "Vk10", document = """
         The Vulkan binding.
         @since 0.1.0
     """.trimIndent()
     )
-    VK10.superclasses.add("overrun.marshal.DirectAccess")
+    Vk10.superclasses.add("overrun.marshal.DirectAccess")
 
     val builder = DocumentBuilderFactory.newInstance().newDocumentBuilder()
     ClassLoader.getSystemResourceAsStream("vk.xml")!!.use { stream ->
@@ -183,8 +187,11 @@ fun main() {
             }
         }
 
+        fun endsWithVendor(string: String) =
+            vendors.firstOrNull(string::endsWith)
+
         fun removeVendorSuffix(string: String) =
-            vendors.firstOrNull { string.endsWith(it) }
+            endsWithVendor(string)
                 ?.let { string.removeSuffix(it) }
                 ?: string
 
@@ -196,8 +203,8 @@ fun main() {
                     enumsNode.childNodes.forEach { node ->
                         if (node.nodeName == "enum") {
                             val attrib = node.attributes
-                            val name = removeConstPrefix(attrib["name"].nodeValue)
-                            val alias = attrib["alias"]?.nodeValue?.let { removeConstPrefix(it) }
+                            val name = attrib["name"].nodeValue.removeConstPrefix()
+                            val alias = attrib["alias"]?.nodeValue?.removeConstPrefix()
                             if (alias != null) {
                                 list.add(Constant(list.find { it.name == alias }!!.type, name, alias))
                             } else {
@@ -206,7 +213,7 @@ fun main() {
                             }
                         }
                     }
-                    list.forEach(VK10::addComponent)
+                    list.forEach(Vk10::addComponent)
                 }
 
                 else -> {
@@ -214,6 +221,7 @@ fun main() {
                         "enum" -> {
                             val clazz = VKFile(enumName, classType = "enum")
                             clazz.superinterfaces.add("overrun.marshal.CEnum")
+                            val endsWithVendor = endsWithVendor(enumName) != null
                             val prefix = "${
                                 removeVendorSuffix(enumName)
                                     .replace(UPPERCASE) { "_${it.groupValues[1]}" }
@@ -224,14 +232,15 @@ fun main() {
                                 if (node.nodeName == "enum") {
                                     val attrib = node.attributes
                                     val name =
-                                        removeVendorSuffix(attrib["name"].nodeValue.removePrefix(prefix))
+                                        attrib["name"].nodeValue.removePrefix(prefix)
+                                            .let { if (endsWithVendor) removeVendorSuffix(it) else it }
                                             .removeSuffix("_")
-                                            .removePrefix("VK_")
+                                            .removeConstPrefix()
                                     val alias = attrib["alias"]?.nodeValue
                                         ?.removePrefix(prefix)
-                                        ?.let { removeVendorSuffix(it) }
+                                        ?.let { if (endsWithVendor) removeVendorSuffix(it) else it }
                                         ?.removeSuffix("_")
-                                        ?.removePrefix("VK_")
+                                        ?.removeConstPrefix()
                                     if (alias != null) {
                                         clazz.addComponent(
                                             EnumValue(
@@ -268,7 +277,7 @@ fun main() {
             }
         }
     }
-    VK10.generate()
+    Vk10.generate()
 }
 
 private inline fun NodeList.forEach(action: (Node) -> Unit) {

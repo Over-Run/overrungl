@@ -18,8 +18,8 @@
 package overrungl.vulkan;
 
 public enum VkOpacityMicromapFormatEXT implements overrun.marshal.CEnum {
-    2_STATE(1),
-    4_STATE(2),
+    _2_STATE(1),
+    _4_STATE(2),
     ;
     private final int value;
     VkOpacityMicromapFormatEXT(int value) { this.value = value; }

@@ -18,7 +18,7 @@
 package overrungl.vulkan;
 
 public enum VkShaderFloatControlsIndependence implements overrun.marshal.CEnum {
-    32_BIT_ONLY(0),
+    _32_BIT_ONLY(0),
     ALL(1),
     NONE(2),
     ;

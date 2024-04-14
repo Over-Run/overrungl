@@ -21,7 +21,7 @@ package overrungl.vulkan;
  * The Vulkan binding.
  * @since 0.1.0
  */
-public interface VK10 extends overrun.marshal.DirectAccess {
+public interface Vk10 extends overrun.marshal.DirectAccess {
     int MAX_PHYSICAL_DEVICE_NAME_SIZE = 256;
     int UUID_SIZE = 16;
     int LUID_SIZE = 8;

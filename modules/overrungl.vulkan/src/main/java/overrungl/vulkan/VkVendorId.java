@@ -21,11 +21,11 @@ public enum VkVendorId implements overrun.marshal.CEnum {
     /**
      * Vivante vendor ID
      */
-    (0x10001),
+    VIV(0x10001),
     /**
      * VeriSilicon vendor ID
      */
-    (0x10002),
+    VSI(0x10002),
     /**
      * Kazan Software Renderer
      */
@@ -37,7 +37,7 @@ public enum VkVendorId implements overrun.marshal.CEnum {
     /**
      * Mesa vendor ID
      */
-    (0x10005),
+    MESA(0x10005),
     /**
      * PoCL vendor ID
      */

@@ -118,7 +118,6 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
 allprojects {
     tasks.withType<Javadoc> {
         options {
-            verbose()
             if (this is CoreJavadocOptions) {
                 if (jdkEnablePreview.toBoolean()) {
                     addBooleanOption("-enable-preview", true)
