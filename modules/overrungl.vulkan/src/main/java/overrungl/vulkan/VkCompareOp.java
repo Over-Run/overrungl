@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,24 +14,20 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The core module of OverrunGL.
- *
- * @author squid233
- * @since 0.1.0
- */
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.util;
-    exports overrungl.util.value;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan;
 
-    requires transitive io.github.overrun.marshal;
-    requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+public enum VkCompareOp implements overrun.marshal.CEnum {
+    NEVER(0),
+    LESS(1),
+    EQUAL(2),
+    LESS_OR_EQUAL(3),
+    GREATER(4),
+    NOT_EQUAL(5),
+    GREATER_OR_EQUAL(6),
+    ALWAYS(7),
+    ;
+    private final int value;
+    VkCompareOp(int value) { this.value = value; }
+    @Override public int value() { return value; }
 }

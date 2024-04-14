@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,24 +14,23 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The core module of OverrunGL.
- *
- * @author squid233
- * @since 0.1.0
- */
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.util;
-    exports overrungl.util.value;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan;
 
-    requires transitive io.github.overrun.marshal;
-    requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+public enum VkDescriptorType implements overrun.marshal.CEnum {
+    SAMPLER(0),
+    COMBINED_IMAGE_SAMPLER(1),
+    SAMPLED_IMAGE(2),
+    STORAGE_IMAGE(3),
+    UNIFORM_TEXEL_BUFFER(4),
+    STORAGE_TEXEL_BUFFER(5),
+    UNIFORM_BUFFER(6),
+    STORAGE_BUFFER(7),
+    UNIFORM_BUFFER_DYNAMIC(8),
+    STORAGE_BUFFER_DYNAMIC(9),
+    INPUT_ATTACHMENT(10),
+    ;
+    private final int value;
+    VkDescriptorType(int value) { this.value = value; }
+    @Override public int value() { return value; }
 }

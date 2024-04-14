@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,24 +14,19 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The core module of OverrunGL.
- *
- * @author squid233
- * @since 0.1.0
- */
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.util;
-    exports overrungl.util.value;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan;
 
-    requires transitive io.github.overrun.marshal;
-    requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+public enum VkFaultType implements overrun.marshal.CEnum {
+    INVALID(0),
+    UNASSIGNED(1),
+    IMPLEMENTATION(2),
+    SYSTEM(3),
+    PHYSICAL_DEVICE(4),
+    COMMAND_BUFFER_FULL(5),
+    INVALID_API_USAGE(6),
+    ;
+    private final int value;
+    VkFaultType(int value) { this.value = value; }
+    @Override public int value() { return value; }
 }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,24 +14,22 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The core module of OverrunGL.
- *
- * @author squid233
- * @since 0.1.0
- */
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.util;
-    exports overrungl.util.value;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan;
 
-    requires transitive io.github.overrun.marshal;
-    requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+public enum VkDeviceFaultAddressTypeEXT implements overrun.marshal.CEnum {
+    /**
+     * Currently unused
+     */
+    NONE(0),
+    READ_INVALID(1),
+    WRITE_INVALID(2),
+    EXECUTE_INVALID(3),
+    INSTRUCTION_POINTER_UNKNOWN(4),
+    INSTRUCTION_POINTER_INVALID(5),
+    INSTRUCTION_POINTER_FAULT(6),
+    ;
+    private final int value;
+    VkDeviceFaultAddressTypeEXT(int value) { this.value = value; }
+    @Override public int value() { return value; }
 }

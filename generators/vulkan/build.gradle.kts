@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,24 +14,15 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The core module of OverrunGL.
- *
- * @author squid233
- * @since 0.1.0
- */
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.util;
-    exports overrungl.util.value;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
+val jdkVersion: String by rootProject
+val jdkEnablePreview: String by rootProject
 
-    requires transitive io.github.overrun.marshal;
-    requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+tasks.register<JavaExec>("generate") {
+    classpath(sourceSets["main"].runtimeClasspath)
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion.set(JavaLanguageVersion.of(jdkVersion))
+    })
+    if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
+    mainClass.set("overrungl.vulkan.VulkanGeneratorKt")
+    workingDir = project(":vulkan").projectDir.resolve("src/main/java/overrungl/vulkan")
 }

@@ -90,9 +90,9 @@ enum class Artifact(
         "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
         ":stb", "Stb", NativeBinding.STB
     ),
-    //VULKAN("overrungl-vulkan", "OverrunGL - Vulkan bindings",
-    //    "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
-    //    ":vulkan", "Vulkan", null),
+    VULKAN("overrungl-vulkan", "OverrunGL - Vulkan bindings",
+        "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
+        ":vulkan", "Vulkan", null),
     ;
 
     fun nativeFileName(platform: NativePlatform): String? {

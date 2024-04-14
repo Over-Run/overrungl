@@ -5,15 +5,8 @@ plugins {
 val projModules: String by project
 
 dependencies {
-    listOf(
-        "core",
-        "glfw",
-        "joml",
-        "nfd",
-        "opengl",
-        "stb"
-    ).forEach {
-        implementation(project(":$it"))
+    Artifact.values().forEach {
+        implementation(project(it.subprojectName))
     }
     implementation("io.github.over-run:timer:0.3.0")
     jmh("org.openjdk.jmh:jmh-core:1.37")
