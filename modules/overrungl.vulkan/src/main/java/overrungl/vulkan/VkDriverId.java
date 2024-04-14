@@ -75,7 +75,7 @@ public enum VkDriverId implements overrun.marshal.CEnum {
      */
     MOLTENVK(14),
     /**
-     * Core Avionics & Industrial Inc.
+     * Core Avionics &amp; Industrial Inc.
      */
     COREAVI_PROPRIETARY(15),
     /**

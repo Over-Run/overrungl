@@ -55,7 +55,7 @@ public enum VkResult implements overrun.marshal.CEnum {
      */
     ERROR_INITIALIZATION_FAILED(-3),
     /**
-     * The logical device has been lost. See <<devsandqueues-lost-device>>
+     * The logical device has been lost. See &lt;&lt;devsandqueues-lost-device&gt;&gt;
      */
     ERROR_DEVICE_LOST(-4),
     /**

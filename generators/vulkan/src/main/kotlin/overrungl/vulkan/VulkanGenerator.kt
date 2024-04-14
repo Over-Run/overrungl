@@ -221,7 +221,7 @@ fun main() {
                         "enum" -> {
                             val clazz = VKFile(enumName, classType = "enum")
                             clazz.superinterfaces.add("overrun.marshal.CEnum")
-                            val endsWithVendor = endsWithVendor(enumName) != null
+                            val clazzVendor = endsWithVendor(enumName)
                             val prefix = "${
                                 removeVendorSuffix(enumName)
                                     .replace(UPPERCASE) { "_${it.groupValues[1]}" }
@@ -233,12 +233,12 @@ fun main() {
                                     val attrib = node.attributes
                                     val name =
                                         attrib["name"].nodeValue.removePrefix(prefix)
-                                            .let { if (endsWithVendor) removeVendorSuffix(it) else it }
+                                            .let { if (clazzVendor == endsWithVendor(it)) removeVendorSuffix(it) else it }
                                             .removeSuffix("_")
                                             .removeConstPrefix()
                                     val alias = attrib["alias"]?.nodeValue
                                         ?.removePrefix(prefix)
-                                        ?.let { if (endsWithVendor) removeVendorSuffix(it) else it }
+                                        ?.let { if (clazzVendor == endsWithVendor(it)) removeVendorSuffix(it) else it }
                                         ?.removeSuffix("_")
                                         ?.removeConstPrefix()
                                     if (alias != null) {
@@ -255,6 +255,9 @@ fun main() {
                                                 name = name,
                                                 args = listOf(attrib["value"].nodeValue),
                                                 document = attrib["comment"]?.nodeValue
+                                                    ?.replace("&", "&amp;")
+                                                    ?.replace("<", "&lt;")
+                                                    ?.replace(">", "&gt;")
                                             )
                                         )
                                     }
