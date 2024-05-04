@@ -16,15 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
+import java.lang.invoke.MethodHandles;
 
 /**
  * <h2>Layout</h2>
@@ -39,70 +35,141 @@ import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBTTAlignedQuad extends Struct {
+public interface STBTTAlignedQuad extends Struct<STBTTAlignedQuad> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        JAVA_FLOAT.withName("x0"),
-        JAVA_FLOAT.withName("y0"),
-        JAVA_FLOAT.withName("s0"),
-        JAVA_FLOAT.withName("t0"),
-        JAVA_FLOAT.withName("x1"),
-        JAVA_FLOAT.withName("y1"),
-        JAVA_FLOAT.withName("s1"),
-        JAVA_FLOAT.withName("t1")
+    StructAllocator<STBTTAlignedQuad> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cFloat("x0")
+            .cFloat("y0")
+            .cFloat("s0")
+            .cFloat("t0")
+            .cFloat("x1")
+            .cFloat("y1")
+            .cFloat("s1")
+            .cFloat("t1")
+            .build()
     );
+
     /**
+     * {@return x0}
+     * <p>
      * top-left
      */
-    public static final StructHandle.Float x0 = StructHandle.ofFloat(LAYOUT, "x0"),
-        y0 = StructHandle.ofFloat(LAYOUT, "y0"),
-        s0 = StructHandle.ofFloat(LAYOUT, "s0"),
-        t0 = StructHandle.ofFloat(LAYOUT, "t0");
+    float x0();
+
     /**
+     * Sets {@link #x0()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTAlignedQuad x0(float val);
+
+    /**
+     * {@return y0}
+     * <p>
+     * top-left
+     */
+    float y0();
+
+    /**
+     * Sets {@link #y0()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTAlignedQuad y0(float val);
+
+    /**
+     * {@return s0}
+     * <p>
+     * top-left
+     */
+    float s0();
+
+    /**
+     * Sets {@link #s0()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTAlignedQuad s0(float val);
+
+    /**
+     * {@return t0}
+     * <p>
+     * top-left
+     */
+    float t0();
+
+    /**
+     * Sets {@link #t0()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTAlignedQuad t0(float val);
+
+    /**
+     * {@return x1}
+     * <p>
      * bottom-right
      */
-    public static final StructHandle.Float x1 = StructHandle.ofFloat(LAYOUT, "x1"),
-        y1 = StructHandle.ofFloat(LAYOUT, "y1"),
-        s1 = StructHandle.ofFloat(LAYOUT, "s1"),
-        t1 = StructHandle.ofFloat(LAYOUT, "t1");
+    float x1();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #x1()}.
      *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBTTAlignedQuad(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    STBTTAlignedQuad x1(float val);
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * {@return y1}
+     * <p>
+     * bottom-right
      */
-    public STBTTAlignedQuad(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    float y1();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #y1()}.
      *
-     * @param segment the segment
+     * @param val the value
+     * @return this
      */
-    public STBTTAlignedQuad(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    STBTTAlignedQuad y1(float val);
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
+     * {@return s1}
+     * <p>
+     * bottom-right
      */
-    public STBTTAlignedQuad(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    float s1();
+
+    /**
+     * Sets {@link #s1()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTAlignedQuad s1(float val);
+
+    /**
+     * {@return t1}
+     * <p>
+     * bottom-right
+     */
+    float t1();
+
+    /**
+     * Sets {@link #t1()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTAlignedQuad t1(float val);
 }

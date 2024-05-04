@@ -16,90 +16,118 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.*;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
 
 /**
  * <h2>Layout</h2>
  * <pre><code>
  * typedef struct
  * {
- *    char *{@link #vendor vendor};
+ *    char *{@link #vendor};
  *
- *    int {@link #commentListLength comment_list_length};
- *    char **{@link #commentList comment_list};
+ *    int {@link #comment_list_length};
+ *    char **{@link #comment_list};
  * } stb_vorbis_comment;
  * </code></pre>
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class STBVorbisComment extends Struct {
+public interface STBVorbisComment extends Struct<STBVorbisComment> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(0L, JAVA_BYTE)).withName("vendor"),
-        JAVA_INT.withName("comment_list_length"),
-        ADDRESS.withTargetLayout(ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, JAVA_BYTE))).withName("comment_list")
+    StructAllocator<STBVorbisComment> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("vendor", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
+            .cInt("comment_list_length")
+            .cAddress("comment_list", ValueLayout.ADDRESS)
+            .build()
     );
-    /**
-     * vendor
-     */
-    public static final StructHandle.Array<byte[]> vendor = StructHandle.ofArray(LAYOUT, "vendor", Marshal::marshal, Unmarshal::unmarshalAsByteArray);
-    /**
-     * comment_list_length
-     */
-    public static final StructHandle.Int commentListLength = StructHandle.ofInt(LAYOUT, "comment_list_length");
-    /**
-     * comment_list
-     */
-    public static final StructHandle.Array<String[]> commentList = StructHandle.ofArray(LAYOUT, "comment_list", Marshal::marshal, Unmarshal::unmarshalAsStringArray);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return vendor}
      */
-    public STBVorbisComment(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
+    MemorySegment vendor();
+
+    /**
+     * Sets {@link #vendor()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBVorbisComment vendor(MemorySegment val);
+
+    /**
+     * {@return {@link #vendor()}}
+     */
+    default String javaVendor() {
+        return Unmarshal.unmarshalAsString(vendor());
     }
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public STBVorbisComment(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public STBVorbisComment(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #vendor()}.
      *
      * @param allocator the allocator
+     * @param val       the value
+     * @return this
      */
-    public STBVorbisComment(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
+    default STBVorbisComment javaVendor(SegmentAllocator allocator, String val) {
+        return vendor(Marshal.marshal(allocator, val));
+    }
+
+    /**
+     * {@return comment_list_length}
+     */
+    int comment_list_length();
+
+    /**
+     * Sets {@link #comment_list_length()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBVorbisComment comment_list_length(int val);
+
+    /**
+     * {@return comment_list}
+     */
+    MemorySegment comment_list();
+
+    /**
+     * Sets {@link #comment_list()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBVorbisComment comment_list(MemorySegment val);
+
+    /**
+     * {@return {@link #comment_list()}}
+     */
+    default String[] javaCommentList() {
+        return Unmarshal.unmarshalAsStringArray(comment_list().reinterpret(ValueLayout.ADDRESS.scale(0L, comment_list_length())));
+    }
+
+    /**
+     * Sets {@link #comment_list()}.
+     *
+     * @param allocator the allocator
+     * @param val       the value
+     * @return this
+     */
+    default STBVorbisComment javaCommentList(SegmentAllocator allocator, String[] val) {
+        return comment_list(Marshal.marshal(allocator, val));
     }
 }

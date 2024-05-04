@@ -16,11 +16,17 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Marshal;
 import overrun.marshal.Upcall;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The IO callback of STB image.
@@ -35,64 +41,107 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBIIoCallbacks extends Struct {
+public interface STBIIoCallbacks extends Struct<STBIIoCallbacks> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.ADDRESS.withName("read"),
-        ValueLayout.ADDRESS.withName("skip"),
-        ValueLayout.ADDRESS.withName("eof")
+    StructAllocator<STBIIoCallbacks> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("read")
+            .cAddress("skip")
+            .cAddress("eof")
+            .build()
     );
-    /**
-     * the read callback
-     */
-    public static final StructHandle.Upcall<Read> read = StructHandle.ofUpcall(LAYOUT, "read", Read::wrap);
-    /**
-     * the skip callback
-     */
-    public static final StructHandle.Upcall<Skip> skip = StructHandle.ofUpcall(LAYOUT, "skip", Skip::wrap);
-    /**
-     * the eof callback
-     */
-    public static final StructHandle.Upcall<Eof> eof = StructHandle.ofUpcall(LAYOUT, "eof", Eof::wrap);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return the read callback}
      */
-    public STBIIoCallbacks(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
+    MemorySegment read();
+
+    /**
+     * Sets {@link #read()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBIIoCallbacks read(MemorySegment val);
+
+    /**
+     * {@return the skip callback}
+     */
+    MemorySegment skip();
+
+    /**
+     * Sets {@link #skip()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBIIoCallbacks skip(MemorySegment val);
+
+    /**
+     * {@return the eof callback}
+     */
+    MemorySegment eof();
+
+    /**
+     * Sets {@link #eof()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBIIoCallbacks eof(MemorySegment val);
+
+    /**
+     * {@return the read callback}
+     */
+    default Read javaRead() {
+        return Read.wrap(read());
     }
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #read()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBIIoCallbacks(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
+    default STBIIoCallbacks javaRead(Arena arena, Read val) {
+        return read(Marshal.marshal(arena, val));
     }
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return the skip callback}
      */
-    public STBIIoCallbacks(MemorySegment segment) {
-        super(segment, LAYOUT);
+    default Skip javaSkip() {
+        return Skip.wrap(skip());
     }
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #skip()}.
      *
-     * @param allocator the allocator
+     * @param val the value
+     * @return this
      */
-    public STBIIoCallbacks(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
+    default STBIIoCallbacks javaSkip(Arena arena, Skip val) {
+        return skip(Marshal.marshal(arena, val));
+    }
+
+    /**
+     * {@return the eof callback}
+     */
+    default Eof javaEof() {
+        return Eof.wrap(eof());
+    }
+
+    /**
+     * Sets {@link #eof()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    default STBIIoCallbacks javaEof(Arena arena, Eof val) {
+        return eof(Marshal.marshal(arena, val));
     }
 
     /**
@@ -102,7 +151,7 @@ public final class STBIIoCallbacks extends Struct {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Read extends Upcall {
+    interface Read extends Upcall {
         /**
          * the type
          */
@@ -154,7 +203,7 @@ public final class STBIIoCallbacks extends Struct {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Skip extends Upcall {
+    interface Skip extends Upcall {
         /**
          * the type
          */
@@ -194,7 +243,7 @@ public final class STBIIoCallbacks extends Struct {
      * @since 0.1.0
      */
     @FunctionalInterface
-    public interface Eof extends Upcall {
+    interface Eof extends Upcall {
         /**
          * the type
          */

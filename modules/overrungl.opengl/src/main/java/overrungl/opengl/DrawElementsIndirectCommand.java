@@ -16,10 +16,11 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The OpenGL 4.2 draw elements indirect command.
@@ -36,73 +37,83 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class DrawElementsIndirectCommand extends Struct {
+public interface DrawElementsIndirectCommand extends Struct<DrawElementsIndirectCommand> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("count"),
-        ValueLayout.JAVA_INT.withName("primCount"),
-        ValueLayout.JAVA_INT.withName("firstIndex"),
-        ValueLayout.JAVA_INT.withName("baseVertex"),
-        ValueLayout.JAVA_INT.withName("baseInstance")
+    StructAllocator<DrawElementsIndirectCommand> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("count")
+            .cInt("primCount")
+            .cInt("firstIndex")
+            .cInt("baseVertex")
+            .cInt("baseInstance")
+            .build()
     );
-    /**
-     * the count
-     */
-    public static final StructHandle.Int count = StructHandle.ofInt(LAYOUT, "count");
-    /**
-     * the primCount
-     */
-    public static final StructHandle.Int primCount = StructHandle.ofInt(LAYOUT, "primCount");
-    /**
-     * the firstIndex
-     */
-    public static final StructHandle.Int firstIndex = StructHandle.ofInt(LAYOUT, "firstIndex");
-    /**
-     * the baseVertex
-     */
-    public static final StructHandle.Int baseVertex = StructHandle.ofInt(LAYOUT, "baseVertex");
-    /**
-     * the baseInstance
-     */
-    public static final StructHandle.Int baseInstance = StructHandle.ofInt(LAYOUT, "baseInstance");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return count}
      */
-    public DrawElementsIndirectCommand(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    int count();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #count()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public DrawElementsIndirectCommand(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    DrawElementsIndirectCommand count(int val);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return primCount}
      */
-    public DrawElementsIndirectCommand(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    int primCount();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #primCount()}.
      *
-     * @param allocator the allocator
+     * @param val the value
+     * @return this
      */
-    public DrawElementsIndirectCommand(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    DrawElementsIndirectCommand primCount(int val);
+
+    /**
+     * {@return firstIndex}
+     */
+    int firstIndex();
+
+    /**
+     * Sets {@link #firstIndex()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    DrawElementsIndirectCommand firstIndex(int val);
+
+    /**
+     * {@return baseVertex}
+     */
+    int baseVertex();
+
+    /**
+     * Sets {@link #baseVertex()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    DrawElementsIndirectCommand baseVertex(int val);
+
+    /**
+     * {@return baseInstance}
+     */
+    int baseInstance();
+
+    /**
+     * Sets {@link #baseInstance()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    DrawElementsIndirectCommand baseInstance(int val);
 }

@@ -158,7 +158,7 @@ import java.lang.invoke.MethodHandles;
  * STBTrueType stbtt = STBTrueType.INSTANCE;
  * Arena arena = Arena.ofAuto();
  *
- * STBTTBakedChar cdata = new STBTTBakedChar(arena, 96);
+ * STBTTBakedChar cdata = STBTTBakedChar.OF.of(arena, 96);
  * int ftex = 0;
  *
  * void my_stbtt_initfont() {
@@ -185,17 +185,17 @@ import java.lang.invoke.MethodHandles;
  *     gl.bindTexture(GL.TEXTURE_2D, ftex);
  *     gl.begin(GL.QUADS);
  *     try (var stack = MemoryStack.stackPush()) {
- *         var q = new STBTTAlignedQuad(stack);
+ *         var q = STBTTAlignedQuad.OF.of(stack);
  *         var px = stack.floats(x);
  *         var py = stack.floats(y);
  *         for (int i = 0, c = text.codePointCount(0, text.length()); i < c; i++) {
  *             int p = text.codePointAt(i);
  *             if (p >= 32 && p < 128) {
  *                 stbtt.getBakedQuad(cdata, 512, 512, p - 32, px, py, q, true); //true=opengl & d3d10+,false=d3d9
- *                 gl.texCoord2f(q.s0.get(), q.t0.get()); gl.vertex2f(q.x0.get(), q.y0.get());
- *                 gl.texCoord2f(q.s1.get(), q.t0.get()); gl.vertex2f(q.x1.get(), q.y0.get());
- *                 gl.texCoord2f(q.s1.get(), q.t1.get()); gl.vertex2f(q.x1.get(), q.y1.get());
- *                 gl.texCoord2f(q.s0.get(), q.t1.get()); gl.vertex2f(q.x0.get(), q.y1.get());
+ *                 gl.texCoord2f(q.s0(), q.t0()); gl.vertex2f(q.x0(), q.y0());
+ *                 gl.texCoord2f(q.s1(), q.t0()); gl.vertex2f(q.x1(), q.y0());
+ *                 gl.texCoord2f(q.s1(), q.t1()); gl.vertex2f(q.x1(), q.y1());
+ *                 gl.texCoord2f(q.s0(), q.t1()); gl.vertex2f(q.x0(), q.y1());
  *             }
  *         }
  *     }
@@ -221,7 +221,7 @@ import java.lang.invoke.MethodHandles;
  *     var stbtt = STBTrueType.INSTANCE;
  *     var arena = Arena.ofAuto();
  *
- *     var font = new STBTTFontInfo(arena);
+ *     var font = STBTTFontInfo.OF.of(arena);
  *     int c = (args.length > 0 ? Integer.parseInt(args[0]) : 'a');
  *     int s = (args.length > 1 ? Integer.parseInt(args[1]) : 20);
  *

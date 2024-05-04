@@ -16,15 +16,12 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * normally stb_vorbis uses malloc() to allocate memory at startup,
@@ -50,66 +47,49 @@ import static java.lang.foreign.ValueLayout.*;
  * <pre><code>
  * typedef struct
  * {
- *    char *{@link #allocBuffer alloc_buffer};
- *    int   {@link #allocBufferLengthInBytes alloc_buffer_length_in_bytes};
+ *    char *{@link #alloc_buffer};
+ *    int   {@link #alloc_buffer_length_in_bytes};
  * } stb_vorbis_alloc;
  * </code></pre>
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class STBVorbisAlloc extends Struct {
+public interface STBVorbisAlloc extends Struct<STBVorbisAlloc> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(0L, JAVA_BYTE)).withName("alloc_buffer"),
-        JAVA_INT.withName("alloc_buffer_length_in_bytes")
+    StructAllocator<STBVorbisAlloc> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("alloc_buffer")
+            .cInt("alloc_buffer_length_in_bytes")
+            .build()
     );
-    /**
-     * alloc_buffer
-     */
-    public static final StructHandle.Address allocBuffer = StructHandle.ofAddress(LAYOUT, "alloc_buffer");
-    /**
-     * alloc_buffer_length_in_bytes
-     */
-    public static final StructHandle.Int allocBufferLengthInBytes = StructHandle.ofInt(LAYOUT, "alloc_buffer_length_in_bytes");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return alloc_buffer}
      */
-    public STBVorbisAlloc(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    MemorySegment alloc_buffer();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #alloc_buffer()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBVorbisAlloc(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    STBVorbisAlloc alloc_buffer(MemorySegment val);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return alloc_buffer_length_in_bytes}
      */
-    public STBVorbisAlloc(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    int alloc_buffer_length_in_bytes();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #alloc_buffer_length_in_bytes()}.
      *
-     * @param allocator the allocator
+     * @param val the value
+     * @return this
      */
-    public STBVorbisAlloc(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    STBVorbisAlloc alloc_buffer_length_in_bytes(int val);
 }

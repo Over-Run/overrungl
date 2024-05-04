@@ -16,10 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * 16 bytes, nominally
@@ -27,72 +28,111 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBRPRect extends Struct {
+public interface STBRPRect extends Struct<STBRPRect> {
     /**
-     * The layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("id"),
-        ValueLayout.JAVA_INT.withName("w"),
-        ValueLayout.JAVA_INT.withName("h"),
-        ValueLayout.JAVA_INT.withName("x"),
-        ValueLayout.JAVA_INT.withName("y"),
-        ValueLayout.JAVA_INT.withName("was_packed")
+    StructAllocator<STBRPRect> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("id")
+            .cInt("w")
+            .cInt("h")
+            .cInt("x")
+            .cInt("y")
+            .cInt("was_packed")
+            .build()
     );
+
     /**
      * reserved for your use
+     *
+     * @return id
      */
-    public static final StructHandle.Int id = StructHandle.ofInt(LAYOUT, "id");
+    int id();
+
+    /**
+     * Sets {@link #id()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBRPRect id(int val);
+
     /**
      * input
+     *
+     * @return w
      */
-    public static final StructHandle.Int w = StructHandle.ofInt(LAYOUT, "w"),
-        h = StructHandle.ofInt(LAYOUT, "h");
+    int w();
+
+    /**
+     * Sets {@link #w()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBRPRect w(int val);
+
+    /**
+     * input
+     *
+     * @return h
+     */
+    int h();
+
+    /**
+     * Sets {@link #h()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBRPRect h(int val);
+
     /**
      * output
+     *
+     * @return x
      */
-    public static final StructHandle.Int x = StructHandle.ofInt(LAYOUT, "x"),
-        y = StructHandle.ofInt(LAYOUT, "y"),
+    int x();
+
     /**
+     * Sets {@link #x()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBRPRect x(int val);
+
+    /**
+     * output
+     *
+     * @return y
+     */
+    int y();
+
+    /**
+     * Sets {@link #y()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBRPRect y(int val);
+
+    /**
+     * output
+     * <p>
      * non-zero if valid packing
+     *
+     * @return was_packed
      */
-    wasPacked = StructHandle.ofInt(LAYOUT, "was_packed");
+    int was_packed();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #was_packed()}.
      *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBRPRect(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public STBRPRect(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public STBRPRect(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
-     */
-    public STBRPRect(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    STBRPRect was_packed(int val);
 }

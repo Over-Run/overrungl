@@ -16,15 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The following structure is defined publicly so you can declare one on
@@ -33,68 +29,33 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBTTFontInfo extends Struct {
+public interface STBTTFontInfo extends Struct<STBTTFontInfo> {
     /**
-     * The layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withName("userdata"),
-        ADDRESS.withName("data"),
-        JAVA_INT.withName("fontstart"),
-        JAVA_INT.withName("numGlyphs"),
-        JAVA_INT.withName("loca"),
-        JAVA_INT.withName("head"),
-        JAVA_INT.withName("glyf"),
-        JAVA_INT.withName("hhea"),
-        JAVA_INT.withName("hmtx"),
-        JAVA_INT.withName("kern"),
-        JAVA_INT.withName("gpos"),
-        JAVA_INT.withName("svg"),
-        JAVA_INT.withName("index_map"),
-        JAVA_INT.withName("indexToLocFormat"),
-        STBTTBuf.LAYOUT.withName("cff"),
-        STBTTBuf.LAYOUT.withName("charstrings"),
-        STBTTBuf.LAYOUT.withName("gsubrs"),
-        STBTTBuf.LAYOUT.withName("subrs"),
-        STBTTBuf.LAYOUT.withName("fontdicts"),
-        STBTTBuf.LAYOUT.withName("fdselect")
+    StructAllocator<STBTTFontInfo> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("userdata")
+            .cAddress("data")
+            .cInt("fontstart")
+            .cInt("numGlyphs")
+            .cInt("loca")
+            .cInt("head")
+            .cInt("glyf")
+            .cInt("hhea")
+            .cInt("hmtx")
+            .cInt("kern")
+            .cInt("gpos")
+            .cInt("svg")
+            .cInt("index_map")
+            .cInt("indexToLocFormat")
+            .cStruct("cff", STBTTBuf.LAYOUT)
+            .cStruct("charstrings", STBTTBuf.LAYOUT)
+            .cStruct("gsubrs", STBTTBuf.LAYOUT)
+            .cStruct("subrs", STBTTBuf.LAYOUT)
+            .cStruct("fontdicts", STBTTBuf.LAYOUT)
+            .cStruct("fdselect", STBTTBuf.LAYOUT)
+            .build()
     );
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
-     */
-    public STBTTFontInfo(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public STBTTFontInfo(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public STBTTFontInfo(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
-     */
-    public STBTTFontInfo(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
 }

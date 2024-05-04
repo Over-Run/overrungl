@@ -620,7 +620,7 @@ public interface NFD extends DirectAccess {
             } catch (Throwable e) {
                 throw new AssertionError("should not reach here", e);
             }
-        } else return nopenDialogN(outPath, new NFDNFilterItem(filterList.segment()), filterCount, defaultPath);
+        } else return nopenDialogN(outPath, NFDNFilterItem.OF.of(filterList.segment()), filterCount, defaultPath);
     }
 
     /**
@@ -668,7 +668,7 @@ public interface NFD extends DirectAccess {
                 throw new AssertionError("should not reach here", e);
             }
         } else
-            return nopenDialogMultipleN(outPaths, new NFDNFilterItem(filterList.segment()), filterCount, defaultPath);
+            return nopenDialogMultipleN(outPaths, NFDNFilterItem.OF.of(filterList.segment()), filterCount, defaultPath);
     }
 
     /**
@@ -711,7 +711,7 @@ public interface NFD extends DirectAccess {
                 throw new AssertionError("should not reach here", e);
             }
         } else
-            return nsaveDialogN(outPath, new NFDNFilterItem(filterList.segment()), filterCount, defaultPath, defaultName);
+            return nsaveDialogN(outPath, NFDNFilterItem.OF.of(filterList.segment()), filterCount, defaultPath, defaultName);
     }
 
     /**

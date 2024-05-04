@@ -16,10 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * <h2>Layout</h2>
@@ -35,63 +36,57 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBTTKerningEntry extends Struct {
+public interface STBTTKerningEntry extends Struct<STBTTKerningEntry> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("glyph1"),
-        ValueLayout.JAVA_INT.withName("glyph2"),
-        ValueLayout.JAVA_INT.withName("advance")
+    StructAllocator<STBTTKerningEntry> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("glyph1")
+            .cInt("glyph2")
+            .cInt("advance")
+            .build()
     );
+
     /**
      * use stbtt_FindGlyphIndex
+     *
+     * @return glyph1
      */
-    public static final StructHandle.Int glyph1 = StructHandle.ofInt(LAYOUT, "glyph1");
-    /**
-     * glyph2
-     */
-    public static final StructHandle.Int glyph2 = StructHandle.ofInt(LAYOUT, "glyph2");
-    /**
-     * advance
-     */
-    public static final StructHandle.Int advance = StructHandle.ofInt(LAYOUT, "advance");
+    int glyph1();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #glyph1()}.
      *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBTTKerningEntry(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    STBTTKerningEntry glyph1(int val);
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * {@return glyph2}
      */
-    public STBTTKerningEntry(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    int glyph2();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #glyph2()}.
      *
-     * @param segment the segment
+     * @param val the value
+     * @return this
      */
-    public STBTTKerningEntry(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    STBTTKerningEntry glyph2(int val);
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
+     * {@return advance}
      */
-    public STBTTKerningEntry(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    int advance();
+
+    /**
+     * Sets {@link #advance()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTKerningEntry advance(int val);
 }

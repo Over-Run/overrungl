@@ -18,12 +18,13 @@ package overrungl.nfd;
 
 import org.jetbrains.annotations.NotNull;
 import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
+import java.lang.invoke.MethodHandles;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -36,11 +37,17 @@ import static java.lang.foreign.ValueLayout.ADDRESS;
  * @see NFD#pathSetGetEnum(MemorySegment, MemorySegment)
  * @since 0.1.0
  */
-public final class NFDEnumerator extends Struct implements Iterable<String>, AutoCloseable {
-    /**
-     * The struct layout.
-     */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(ADDRESS.withName("ptr"));
+public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
+    private interface Segment extends Struct<Segment> {
+        /**
+         * The allocator
+         */
+        StructAllocator<Segment> OF = new StructAllocator<>(
+            MethodHandles.lookup(),
+            MemoryLayout.structLayout(ADDRESS.withName("ptr"))
+        );
+    }
+
     private static final Iterator<String> EMPTY_ITERATOR = new Iterator<>() {
         @Override
         public boolean hasNext() {
@@ -54,10 +61,11 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
     };
     private final NFD nfd = NFD.INSTANCE;
     private final Kind kind;
+    private final Segment segment;
 
-    private NFDEnumerator(Kind kind, MemorySegment address) {
-        super(address, LAYOUT);
+    private NFDEnumerator(Kind kind, Segment segment) {
         this.kind = kind;
+        this.segment = segment;
     }
 
     /**
@@ -101,8 +109,8 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
             }
             String[] s = new String[1];
             final NFDResult result = switch (kind) {
-                case N -> nfd.pathSetEnumNextN(segment(), s);
-                case U8 -> nfd.pathSetEnumNextU8(segment(), s);
+                case N -> nfd.pathSetEnumNextN(segment.segment(), s);
+                case U8 -> nfd.pathSetEnumNextU8(segment.segment(), s);
             };
             if (result == NFDResult.ERROR) throw errorIterating(nfd);
             nextPath = s[0];
@@ -115,7 +123,7 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
         final NFDResult result = NFD.INSTANCE.pathSetGetEnum(pathSet, seg);
         return new Tuple2<>(result,
             result == NFDResult.OKAY ?
-                new NFDEnumerator(kind, seg) :
+                new NFDEnumerator(kind, Segment.OF.of(seg)) :
                 null);
     }
 
@@ -151,8 +159,8 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
         // TODO: 2023/7/6 Value object
         String[] s = new String[1];
         final NFDResult result = switch (kind) {
-            case N -> nfd.pathSetEnumNextN(segment(), s);
-            case U8 -> nfd.pathSetEnumNextU8(segment(), s);
+            case N -> nfd.pathSetEnumNextN(segment.segment(), s);
+            case U8 -> nfd.pathSetEnumNextU8(segment.segment(), s);
         };
         final String path = s[0];
         if (path == null || result != NFDResult.OKAY) {
@@ -166,6 +174,6 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
 
     @Override
     public void close() {
-        nfd.pathSetFreeEnum(segment());
+        nfd.pathSetFreeEnum(segment.segment());
     }
 }

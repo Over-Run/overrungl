@@ -16,16 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.JAVA_BYTE;
-import static java.lang.foreign.ValueLayout.JAVA_SHORT;
+import java.lang.invoke.MethodHandles;
 
 /**
  * <h2>Layout</h2>
@@ -40,89 +35,125 @@ import static java.lang.foreign.ValueLayout.JAVA_SHORT;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBTTVertex extends Struct {
+public interface STBTTVertex extends Struct<STBTTVertex> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        JAVA_SHORT.withName("x"),
-        JAVA_SHORT.withName("y"),
-        JAVA_SHORT.withName("cx"),
-        JAVA_SHORT.withName("cy"),
-        JAVA_SHORT.withName("cx1"),
-        JAVA_SHORT.withName("cy1"),
-        JAVA_BYTE.withName("type"),
-        JAVA_BYTE.withName("padding")
-
+    StructAllocator<STBTTVertex> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cShort("x")
+            .cShort("y")
+            .cShort("cx")
+            .cShort("cy")
+            .cShort("cx1")
+            .cShort("cy1")
+            .cByte("type")
+            .cByte("padding")
+            .build()
     );
-    /**
-     * x
-     */
-    public static final StructHandle.Short x = StructHandle.ofShort(LAYOUT, "x");
-    /**
-     * y
-     */
-    public static final StructHandle.Short y = StructHandle.ofShort(LAYOUT, "y");
-    /**
-     * cx
-     */
-    public static final StructHandle.Short cx = StructHandle.ofShort(LAYOUT, "cx");
-    /**
-     * cy
-     */
-    public static final StructHandle.Short cy = StructHandle.ofShort(LAYOUT, "cy");
-    /**
-     * cx1
-     */
-    public static final StructHandle.Short cx1 = StructHandle.ofShort(LAYOUT, "cx1");
-    /**
-     * cy1
-     */
-    public static final StructHandle.Short cy1 = StructHandle.ofShort(LAYOUT, "cy1");
-    /**
-     * type
-     */
-    public static final StructHandle.Byte type = StructHandle.ofByte(LAYOUT, "type");
-    /**
-     * padding
-     */
-    public static final StructHandle.Byte padding = StructHandle.ofByte(LAYOUT, "padding");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return x}
      */
-    public STBTTVertex(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    short x();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #x()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBTTVertex(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    STBTTVertex x(short val);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return y}
      */
-    public STBTTVertex(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    short y();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #y()}.
      *
-     * @param allocator the allocator
+     * @param val the value
+     * @return this
      */
-    public STBTTVertex(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    STBTTVertex y(short val);
+
+    /**
+     * {@return cx}
+     */
+    short cx();
+
+    /**
+     * Sets {@link #cx()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTVertex cx(short val);
+
+    /**
+     * {@return cy}
+     */
+    short cy();
+
+    /**
+     * Sets {@link #cy()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTVertex cy(short val);
+
+    /**
+     * {@return cx1}
+     */
+    short cx1();
+
+    /**
+     * Sets {@link #cx1()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTVertex cx1(short val);
+
+    /**
+     * {@return cy1}
+     */
+    short cy1();
+
+    /**
+     * Sets {@link #cy1()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTVertex cy1(short val);
+
+    /**
+     * {@return type}
+     */
+    byte type();
+
+    /**
+     * Sets {@link #type()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTVertex type(byte val);
+
+    /**
+     * {@return padding}
+     */
+    byte padding();
+
+    /**
+     * Sets {@link #padding()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTVertex padding(byte val);
 }

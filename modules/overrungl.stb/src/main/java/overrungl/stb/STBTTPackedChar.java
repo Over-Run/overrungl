@@ -16,15 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.MemoryLayout;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.StructLayout;
-
-import static java.lang.foreign.ValueLayout.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * <h2>Layout</h2>
@@ -40,84 +36,147 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBTTPackedChar extends Struct {
+public interface STBTTPackedChar extends Struct<STBTTPackedChar> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        JAVA_SHORT.withName("x0"),
-        JAVA_SHORT.withName("y0"),
-        JAVA_SHORT.withName("x1"),
-        JAVA_SHORT.withName("y1"),
-        JAVA_FLOAT.withName("xoff"),
-        JAVA_FLOAT.withName("yoff"),
-        JAVA_FLOAT.withName("xadvance"),
-        JAVA_FLOAT.withName("xoff2"),
-        JAVA_FLOAT.withName("yoff2")
+    StructAllocator<STBTTPackedChar> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cShort("x0")
+            .cShort("y0")
+            .cShort("x1")
+            .cShort("y1")
+            .cFloat("xoff")
+            .cFloat("yoff")
+            .cFloat("xadvance")
+            .cFloat("xoff2")
+            .cFloat("yoff2")
+            .build()
     );
+
     /**
      * coordinates of bbox in bitmap
+     *
+     * @return x0
      */
-    public static final StructHandle.Short x0 = StructHandle.ofShort(LAYOUT, "x0"),
-        y0 = StructHandle.ofShort(LAYOUT, "y0"),
-        x1 = StructHandle.ofShort(LAYOUT, "x1"),
-        y1 = StructHandle.ofShort(LAYOUT, "y1");
-    /**
-     * xoff
-     */
-    public static final StructHandle.Float xoff = StructHandle.ofFloat(LAYOUT, "xoff");
-    /**
-     * yoff
-     */
-    public static final StructHandle.Float yoff = StructHandle.ofFloat(LAYOUT, "yoff");
-    /**
-     * xadvance
-     */
-    public static final StructHandle.Float xadvance = StructHandle.ofFloat(LAYOUT, "xadvance");
-    /**
-     * xoff2
-     */
-    public static final StructHandle.Float xoff2 = StructHandle.ofFloat(LAYOUT, "xoff2");
-    /**
-     * yoff2
-     */
-    public static final StructHandle.Float yoff2 = StructHandle.ofFloat(LAYOUT, "yoff2");
+    short x0();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #x0()}.
      *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public STBTTPackedChar(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    STBTTPackedChar x0(short val);
 
     /**
-     * Allocates a struct with the given layout.
+     * coordinates of bbox in bitmap
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @return y0
      */
-    public STBTTPackedChar(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    short y0();
 
     /**
-     * Creates a struct with the given layout.
+     * Sets {@link #y0()}.
      *
-     * @param segment the segment
+     * @param val the value
+     * @return this
      */
-    public STBTTPackedChar(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    STBTTPackedChar y0(short val);
 
     /**
-     * Allocates a struct with the given layout.
+     * coordinates of bbox in bitmap
      *
-     * @param allocator the allocator
+     * @return x1
      */
-    public STBTTPackedChar(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    short x1();
+
+    /**
+     * Sets {@link #x1()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar x1(short val);
+
+    /**
+     * coordinates of bbox in bitmap
+     *
+     * @return y1
+     */
+    short y1();
+
+    /**
+     * Sets {@link #y1()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar y1(short val);
+
+    /**
+     * {@return xoff}
+     */
+    float xoff();
+
+    /**
+     * Sets {@link #xoff()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar xoff(float val);
+
+    /**
+     * {@return yoff}
+     */
+    float yoff();
+
+    /**
+     * Sets {@link #yoff()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar yoff(float val);
+
+    /**
+     * {@return xadvance}
+     */
+    float xadvance();
+
+    /**
+     * Sets {@link #xadvance()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar xadvance(float val);
+
+    /**
+     * {@return xoff2}
+     */
+    float xoff2();
+
+    /**
+     * Sets {@link #xoff2()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar xoff2(float val);
+
+    /**
+     * {@return yoff2}
+     */
+    float yoff2();
+
+    /**
+     * Sets {@link #yoff2()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    STBTTPackedChar yoff2(float val);
 }

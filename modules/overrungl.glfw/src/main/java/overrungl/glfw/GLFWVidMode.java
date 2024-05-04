@@ -16,10 +16,11 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * This describes a single video mode.
@@ -39,112 +40,49 @@ import java.lang.foreign.*;
  * @see GLFW#getVideoModes
  * @since 0.1.0
  */
-public final class GLFWVidMode extends Struct {
+public interface GLFWVidMode extends Struct<GLFWVidMode> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.JAVA_INT.withName("redBits"),
-        ValueLayout.JAVA_INT.withName("greenBits"),
-        ValueLayout.JAVA_INT.withName("blueBits"),
-        ValueLayout.JAVA_INT.withName("refreshRate")
+    StructAllocator<GLFWVidMode> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("width")
+            .cInt("height")
+            .cInt("redBits")
+            .cInt("greenBits")
+            .cInt("blueBits")
+            .cInt("refreshRate")
+            .build()
     );
-    /**
-     * the width, in screen coordinates, of the video mode
-     */
-    public static final StructHandle.Int width = StructHandle.ofInt(LAYOUT, "width");
-    /**
-     * the height, in screen coordinates, of the video mode
-     */
-    public static final StructHandle.Int height = StructHandle.ofInt(LAYOUT, "height");
-    /**
-     * the bit depth of the red channel of the video mode
-     */
-    public static final StructHandle.Int redBits = StructHandle.ofInt(LAYOUT, "redBits");
-    /**
-     * the bit depth of the green channel of the video mode
-     */
-    public static final StructHandle.Int greenBits = StructHandle.ofInt(LAYOUT, "greenBits");
-    /**
-     * the bit depth of the blue channel of the video mode
-     */
-    public static final StructHandle.Int blueBits = StructHandle.ofInt(LAYOUT, "blueBits");
-    /**
-     * the refresh rate, in Hz, of the video mode
-     */
-    public static final StructHandle.Int refreshRate = StructHandle.ofInt(LAYOUT, "refreshRate");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return the width, in screen coordinates, of the video mode}
      */
-    public GLFWVidMode(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    int width();
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * {@return the height, in screen coordinates, of the video mode}
      */
-    public GLFWVidMode(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    int height();
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return the bit depth of the red channel of the video mode}
      */
-    public GLFWVidMode(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    int redBits();
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
+     * {@return the bit depth of the green channel of the video mode}
      */
-    public GLFWVidMode(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    int greenBits();
 
     /**
-     * {@return an immutable state of this struct}
+     * {@return the bit depth of the blue channel of the video mode}
      */
-    public Value value() {
-        return new Value(width.get(this),
-            height.get(this),
-            redBits.get(this),
-            greenBits.get(this),
-            blueBits.get(this),
-            refreshRate.get(this));
-    }
+    int blueBits();
 
     /**
-     * The immutable state of {@link GLFWVidMode}.
-     *
-     * @param width       the width, in screen coordinates, of the video mode
-     * @param height      the height, in screen coordinates, of the video mode
-     * @param redBits     the bit depth of the red channel, of the video mode
-     * @param greenBits   the bit depth of the green channel, of the video mode
-     * @param blueBits    the bit depth of the blue channel, of the video mode
-     * @param refreshRate the refresh rate, in Hz, of the video mode
-     * @author squid233
-     * @since 0.1.0
+     * {@return the refresh rate, in Hz, of the video mode}
      */
-    public /* value */ record Value(
-        int width,
-        int height,
-        int redBits,
-        int greenBits,
-        int blueBits,
-        int refreshRate
-    ) {
-    }
+    int refreshRate();
 }

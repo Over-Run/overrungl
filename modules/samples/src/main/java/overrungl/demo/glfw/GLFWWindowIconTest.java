@@ -76,11 +76,10 @@ public final class GLFWWindowIconTest {
                 IOUtil.ioResourceToSegment(arena, "image.png"),
                 px, py, pc, STBImage.RGB_ALPHA
             );
-            final GLFWImage image = new GLFWImage(arena);
-            GLFWImage.width.set(image, px.get(JAVA_INT, 0));
-            GLFWImage.height.set(image, py.get(JAVA_INT, 0));
-            GLFWImage.pixels.set(image, data);
-            glfw.setWindowIcon(window, image);
+            glfw.setWindowIcon(window, GLFWImage.OF.of(arena)
+                .width(px.get(JAVA_INT, 0))
+                .height(py.get(JAVA_INT, 0))
+                .pixels(data));
             stbImage.free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);

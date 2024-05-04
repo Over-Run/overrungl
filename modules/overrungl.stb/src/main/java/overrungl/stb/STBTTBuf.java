@@ -16,9 +16,9 @@
 
 package overrungl.stb;
 
-import java.lang.foreign.MemoryLayout;
+import overrun.marshal.LayoutBuilder;
+
 import java.lang.foreign.StructLayout;
-import java.lang.foreign.ValueLayout;
 
 /**
  * private structure
@@ -30,9 +30,9 @@ public final class STBTTBuf {
     /**
      * The layout.
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.ADDRESS.withName("data"),
-        ValueLayout.JAVA_INT.withName("cursor"),
-        ValueLayout.JAVA_INT.withName("size")
-    );
+    public static final StructLayout LAYOUT = LayoutBuilder.struct()
+        .cAddress("data")
+        .cInt("cursor")
+        .cInt("size")
+        .build();
 }
