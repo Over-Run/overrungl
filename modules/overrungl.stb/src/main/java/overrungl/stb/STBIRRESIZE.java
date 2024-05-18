@@ -16,11 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * {@code STBIR_RESIZE}
@@ -28,84 +28,49 @@ import static java.lang.foreign.ValueLayout.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBIRRESIZE extends Struct {
+public interface STBIRRESIZE extends Struct<STBIRRESIZE> {
     /**
-     * Layout
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ADDRESS.withName("user_data"),
-        ADDRESS.withName("input_pixels"),
-        JAVA_INT.withName("input_w"),
-        JAVA_INT.withName("input_h"),
-        JAVA_DOUBLE.withName("input_s0"),
-        JAVA_DOUBLE.withName("input_t0"),
-        JAVA_DOUBLE.withName("input_s1"),
-        JAVA_DOUBLE.withName("input_t1"),
-        ADDRESS.withName("input_cb"),
-        ADDRESS.withName("output_pixels"),
-        JAVA_INT.withName("output_w"),
-        JAVA_INT.withName("output_h"),
-        JAVA_INT.withName("output_subx"),
-        JAVA_INT.withName("output_suby"),
-        JAVA_INT.withName("output_subw"),
-        JAVA_INT.withName("output_subh"),
-        ADDRESS.withName("output_cb"),
-        JAVA_INT.withName("input_stride_in_bytes"),
-        JAVA_INT.withName("output_stride_in_bytes"),
-        JAVA_INT.withName("splits"),
-        JAVA_INT.withName("fast_alpha"),
-        JAVA_INT.withName("needs_rebuild"),
-        JAVA_INT.withName("called_alloc"),
-        JAVA_INT.withName("input_pixel_layout_public"),
-        JAVA_INT.withName("output_pixel_layout_public"),
-        JAVA_INT.withName("input_data_type"),
-        JAVA_INT.withName("output_data_type"),
-        JAVA_INT.withName("horizontal_filter"),
-        JAVA_INT.withName("vertical_filter"),
-        JAVA_INT.withName("horizontal_edge"),
-        JAVA_INT.withName("vertical_edge"),
-        ADDRESS.withName("horizontal_filter_kernel"),
-        ADDRESS.withName("horizontal_filter_support"),
-        ADDRESS.withName("vertical_filter_kernel"),
-        ADDRESS.withName("vertical_filter_support"),
-        ADDRESS.withName("samplers")
+    StructAllocator<STBIRRESIZE> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("user_data")
+            .cAddress("input_pixels")
+            .cInt("input_w")
+            .cInt("input_h")
+            .cDouble("input_s0")
+            .cDouble("input_t0")
+            .cDouble("input_s1")
+            .cDouble("input_t1")
+            .cAddress("input_cb")
+            .cAddress("output_pixels")
+            .cInt("output_w")
+            .cInt("output_h")
+            .cInt("output_subx")
+            .cInt("output_suby")
+            .cInt("output_subw")
+            .cInt("output_subh")
+            .cAddress("output_cb")
+            .cInt("input_stride_in_bytes")
+            .cInt("output_stride_in_bytes")
+            .cInt("splits")
+            .cInt("fast_alpha")
+            .cInt("needs_rebuild")
+            .cInt("called_alloc")
+            .cInt("input_pixel_layout_public")
+            .cInt("output_pixel_layout_public")
+            .cInt("input_data_type")
+            .cInt("output_data_type")
+            .cInt("horizontal_filter")
+            .cInt("vertical_filter")
+            .cInt("horizontal_edge")
+            .cInt("vertical_edge")
+            .cAddress("horizontal_filter_kernel")
+            .cAddress("horizontal_filter_support")
+            .cAddress("vertical_filter_kernel")
+            .cAddress("vertical_filter_support")
+            .cAddress("samplers")
+            .build()
     );
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
-     */
-    public STBIRRESIZE(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public STBIRRESIZE(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public STBIRRESIZE(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
-     */
-    public STBIRRESIZE(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
 }

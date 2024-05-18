@@ -1953,7 +1953,7 @@ public interface GLFW extends DirectAccess {
                 return null;
             }
             final int count = pCount.get(JAVA_INT, 0);
-            return new GLFWVidMode(pModes.reinterpret(GLFWVidMode.LAYOUT.scale(0L, count)), count);
+            return GLFWVidMode.OF.of(pModes.reinterpret(GLFWVidMode.OF.layout().scale(0L, count)), count);
         }
     }
 
@@ -1988,10 +1988,10 @@ public interface GLFW extends DirectAccess {
      */
     @Nullable
     @Skip
-    default GLFWVidMode.Value getVideoMode(MemorySegment monitor) {
+    default GLFWVidMode getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
         if (Unmarshal.isNullPointer(pMode)) return null;
-        return new GLFWVidMode(pMode.reinterpret(GLFWVidMode.LAYOUT.byteSize())).value();
+        return GLFWVidMode.OF.of(pMode.reinterpret(GLFWVidMode.OF.layout().byteSize()));
     }
 
     /**

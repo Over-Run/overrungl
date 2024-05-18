@@ -16,10 +16,14 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Marshal;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * Custom heap memory allocator.
@@ -31,72 +35,127 @@ import java.lang.foreign.*;
  * @see GLFW#initAllocator
  * @since 0.1.0
  */
-public final class GLFWAllocator extends Struct {
+public interface GLFWAllocator extends Struct<GLFWAllocator> {
     /**
-     * The layout of this struct.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.ADDRESS.withName("allocate"),
-        ValueLayout.ADDRESS.withName("reallocate"),
-        ValueLayout.ADDRESS.withName("deallocate"),
-        ValueLayout.ADDRESS.withName("user")
+    StructAllocator<GLFWAllocator> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("allocate")
+            .cAddress("reallocate")
+            .cAddress("deallocate")
+            .cAddress("user")
+            .build()
     );
-    /**
-     * The memory allocation function.  See {@link GLFWAllocateFun} for details about
-     * allocation function.
-     */
-    public static final StructHandle.Upcall<GLFWAllocateFun> allocate = StructHandle.ofUpcall(LAYOUT, "allocate", GLFWAllocateFun::wrap);
-    /**
-     * The memory reallocation function.  See {@link GLFWReallocateFun} for details about
-     * reallocation function.
-     */
-    public static final StructHandle.Upcall<GLFWReallocateFun> reallocate = StructHandle.ofUpcall(LAYOUT, "reallocate", GLFWReallocateFun::wrap);
-    /**
-     * The memory deallocation function.  See {@link GLFWDeallocateFun} for details about
-     * deallocation function.
-     */
-    public static final StructHandle.Upcall<GLFWDeallocateFun> deallocate = StructHandle.ofUpcall(LAYOUT, "deallocate", GLFWDeallocateFun::wrap);
-    /**
-     * The user pointer for this custom allocator.  This value will be passed to the
-     * allocator functions.
-     */
-    public static final StructHandle.Address user = StructHandle.ofAddress(LAYOUT, "user");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return the memory allocation function}
+     * See {@link GLFWAllocateFun} for details about allocation function.
      */
-    public GLFWAllocator(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
+    MemorySegment allocate();
+
+    /**
+     * Sets {@link #allocate()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWAllocator allocate(MemorySegment val);
+
+    /**
+     * {@return the memory reallocation function}
+     * See {@link GLFWReallocateFun} for details about reallocation function.
+     */
+    MemorySegment reallocate();
+
+    /**
+     * Sets {@link #reallocate()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWAllocator reallocate(MemorySegment val);
+
+    /**
+     * {@return the memory deallocation function}
+     * See {@link GLFWDeallocateFun} for details about deallocation function.
+     */
+    MemorySegment deallocate();
+
+    /**
+     * Sets {@link #deallocate()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWAllocator deallocate(MemorySegment val);
+
+    /**
+     * {@return the user pointer for this custom allocator}
+     * This value will be passed to the allocator functions.
+     */
+    MemorySegment user();
+
+    /**
+     * Sets {@link #user()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWAllocator user(MemorySegment val);
+
+    /**
+     * {@return {@link #allocate()}}
+     */
+    default GLFWAllocateFun javaAllocate() {
+        return GLFWAllocateFun.wrap(allocate());
     }
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #allocate()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param arena the arena
+     * @param val   the value
+     * @return this
      */
-    public GLFWAllocator(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
+    default GLFWAllocator javaAllocate(Arena arena, GLFWAllocateFun val) {
+        return allocate(Marshal.marshal(arena, val));
     }
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return {@link #reallocate()}}
      */
-    public GLFWAllocator(MemorySegment segment) {
-        super(segment, LAYOUT);
+    default GLFWReallocateFun javaReallocate() {
+        return GLFWReallocateFun.wrap(reallocate());
     }
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #reallocate()}.
      *
-     * @param allocator the allocator
+     * @param arena the arena
+     * @param val   the value
+     * @return this
      */
-    public GLFWAllocator(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
+    default GLFWAllocator javaReallocate(Arena arena, GLFWReallocateFun val) {
+        return reallocate(Marshal.marshal(arena, val));
+    }
+
+    /**
+     * {@return {@link #deallocate()}}
+     */
+    default GLFWDeallocateFun javaDeallocate() {
+        return GLFWDeallocateFun.wrap(deallocate());
+    }
+
+    /**
+     * Sets {@link #deallocate()}.
+     *
+     * @param arena the arena
+     * @param val   the value
+     * @return this
+     */
+    default GLFWAllocator javaDeallocate(Arena arena, GLFWDeallocateFun val) {
+        return deallocate(Marshal.marshal(arena, val));
     }
 }

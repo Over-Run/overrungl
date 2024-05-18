@@ -16,10 +16,11 @@
 
 package overrungl.opengl;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * The OpenGL 4.2 draw arrays indirect command.
@@ -35,68 +36,69 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class DrawArraysIndirectCommand extends Struct {
+public interface DrawArraysIndirectCommand extends Struct<DrawArraysIndirectCommand> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("count"),
-        ValueLayout.JAVA_INT.withName("primCount"),
-        ValueLayout.JAVA_INT.withName("first"),
-        ValueLayout.JAVA_INT.withName("baseInstance")
+    StructAllocator<DrawArraysIndirectCommand> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("count")
+            .cInt("primCount")
+            .cInt("first")
+            .cInt("baseInstance")
+            .build()
     );
-    /**
-     * the count
-     */
-    public static final StructHandle.Int count = StructHandle.ofInt(LAYOUT, "count");
-    /**
-     * the primCount
-     */
-    public static final StructHandle.Int primCount = StructHandle.ofInt(LAYOUT, "primCount");
-    /**
-     * the first
-     */
-    public static final StructHandle.Int first = StructHandle.ofInt(LAYOUT, "first");
-    /**
-     * the baseInstance
-     */
-    public static final StructHandle.Int baseInstance = StructHandle.ofInt(LAYOUT, "baseInstance");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return count}
      */
-    public DrawArraysIndirectCommand(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    int count();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #count()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public DrawArraysIndirectCommand(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    DrawArraysIndirectCommand count(int val);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return primCount}
      */
-    public DrawArraysIndirectCommand(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    int primCount();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #primCount()}.
      *
-     * @param allocator the allocator
+     * @param val the value
+     * @return this
      */
-    public DrawArraysIndirectCommand(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    DrawArraysIndirectCommand primCount(int val);
+
+    /**
+     * {@return first}
+     */
+    int first();
+
+    /**
+     * Sets {@link #first()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    DrawArraysIndirectCommand first(int val);
+
+    /**
+     * {@return baseInstance}
+     */
+    int baseInstance();
+
+    /**
+     * Sets {@link #baseInstance()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    DrawArraysIndirectCommand baseInstance(int val);
 }

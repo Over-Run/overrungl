@@ -16,67 +16,35 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * the details of the following structures don't matter to you, but they must
  * be visible so you can handle the memory allocations for them
+ *
  * @author squid233
  * @since 0.1.0
  */
-public final class STBRPContext extends Struct {
+public interface STBRPContext extends Struct<STBRPContext> {
     /**
-     * The layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT= MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.JAVA_INT.withName("align"),
-        ValueLayout.JAVA_INT.withName("init_mode"),
-        ValueLayout.JAVA_INT.withName("heuristic"),
-        ValueLayout.JAVA_INT.withName("num_nodes"),
-        ValueLayout.ADDRESS.withName("active_head").withTargetLayout(MemoryLayout.sequenceLayout(0L, STBRPNode.LAYOUT)),
-        ValueLayout.ADDRESS.withName("free_head").withTargetLayout(MemoryLayout.sequenceLayout(0L, STBRPNode.LAYOUT)),
-        MemoryLayout.sequenceLayout(2L, STBRPNode.LAYOUT)
+    StructAllocator<STBRPContext> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("width")
+            .cInt("height")
+            .cInt("align")
+            .cInt("init_mode")
+            .cInt("heuristic")
+            .cInt("num_nodes")
+            .cAddress("active_head")
+            .cAddress("free_head")
+            .cArray("extra", 2, STBRPNode.OF.layout())
+            .build()
     );
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
-     */
-    public STBRPContext(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public STBRPContext(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public STBRPContext(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
-     */
-    public STBRPContext(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
 }

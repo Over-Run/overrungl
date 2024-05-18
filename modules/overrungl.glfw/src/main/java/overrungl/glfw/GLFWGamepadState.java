@@ -16,9 +16,12 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
 import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * This describes the input state of a gamepad.
@@ -32,63 +35,35 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFWGamepadState extends Struct {
+public interface GLFWGamepadState extends Struct<GLFWGamepadState> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("buttons"),
-        MemoryLayout.paddingLayout(1L),
-        MemoryLayout.sequenceLayout(6, ValueLayout.JAVA_FLOAT).withName("axes")
+    StructAllocator<GLFWGamepadState> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cArray("buttons", 15, ValueLayout.JAVA_BYTE)
+            .cArray("axes", 6, ValueLayout.JAVA_FLOAT)
+            .build()
     );
+
     /**
      * The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__buttons.html">gamepad button</a>,
      * {@link GLFW#PRESS} or {@link GLFW#RELEASE}.
+     *
+     * @param index the index
+     * @return the state
      */
-    public static final StructHandleSizedByteArray buttons = StructHandleSizedByteArray.of(LAYOUT, "buttons");
+    byte buttons(long index);
+
     /**
      * The states of each <a href="https://www.glfw.org/docs/latest/group__gamepad__axes.html">gamepad axis</a>,
      * in the range -1.0 to 1.0 inclusive.
-     */
-    public static final StructHandleSizedFloatArray axes = StructHandleSizedFloatArray.of(LAYOUT, "axes");
-
-    /**
-     * Creates a struct with the given layout.
      *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * @param index the index
+     * @return the state
      */
-    public GLFWGamepadState(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public GLFWGamepadState(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public GLFWGamepadState(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
-     */
-    public GLFWGamepadState(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    float axes(long index);
 
     /**
      * Gets the button state at the given index.
@@ -96,8 +71,8 @@ public final class GLFWGamepadState extends Struct {
      * @param index the index
      * @return the state, {@code PRESS} or {@code RELEASE}
      */
-    public boolean button(int index) {
-        return buttons.get(this, index) == GLFW.PRESS;
+    default boolean button(int index) {
+        return buttons(index) == GLFW.PRESS;
     }
 
     /**
@@ -106,7 +81,7 @@ public final class GLFWGamepadState extends Struct {
      * @param index the index
      * @return the state, in the range -1.0 to 1.0 inclusive
      */
-    public float axe(int index) {
-        return axes.get(this, index);
+    default float axe(int index) {
+        return axes(index);
     }
 }

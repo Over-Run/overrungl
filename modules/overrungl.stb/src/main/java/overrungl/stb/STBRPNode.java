@@ -16,9 +16,11 @@
 
 package overrungl.stb;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * the details of the following structures don't matter to you, but they must
@@ -27,51 +29,16 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class STBRPNode extends Struct {
+public interface STBRPNode extends Struct<STBRPNode> {
     /**
-     * The layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("x"),
-        ValueLayout.JAVA_INT.withName("y"),
-        ValueLayout.ADDRESS.withName("next") // self-reference
+    StructAllocator<STBRPNode> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("x")
+            .cInt("y")
+            .cAddress("next")
+            .build()
     );
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
-     */
-    public STBRPNode(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public STBRPNode(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public STBRPNode(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator the allocator
-     */
-    public STBRPNode(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
 }

@@ -16,12 +16,15 @@
 
 package overrungl.nfd;
 
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Marshal;
+import overrun.marshal.Unmarshal;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
-import overrun.marshal.struct.StructHandleView;
+import overrun.marshal.struct.StructAllocator;
 import overrungl.util.value.Pair;
 
 import java.lang.foreign.*;
+import java.lang.invoke.MethodHandles;
 
 /**
  * <h2>Layout</h2>
@@ -34,42 +37,67 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class NFDU8FilterItem extends Struct {
+public interface NFDU8FilterItem<T extends NFDU8FilterItem<T>> extends Struct<T> {
     /**
      * The struct layout.
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.ADDRESS.withName("name"),
-        ValueLayout.ADDRESS.withName("spec")
-    );
-    private static final StructHandle.Str _name = StructHandle.ofString(LAYOUT, "name");
-    private static final StructHandle.Str _spec = StructHandle.ofString(LAYOUT, "spec");
+    StructLayout LAYOUT = LayoutBuilder.struct()
+        .cAddress("name", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
+        .cAddress("spec", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
+        .build();
     /**
-     * name
+     * The allocator
      */
-    public static final StructHandleView.Str name = _name;
-    /**
-     * spec
-     */
-    public static final StructHandleView.Str spec = _spec;
+    StructAllocator<NFDU8FilterItem<?>> OF = new StructAllocator<>(MethodHandles.lookup(), LAYOUT);
 
     /**
-     * Create a {@code NFDU8FilterItem} instance.
-     *
-     * @param address the address.
+     * Mutable
      */
-    public NFDU8FilterItem(MemorySegment address) {
-        super(address, LAYOUT);
+    interface Mutable extends NFDU8FilterItem<Mutable>, Struct<Mutable> {
+        /**
+         * The allocator
+         */
+        StructAllocator<Mutable> OF = new StructAllocator<>(MethodHandles.lookup(), LAYOUT);
+
+        /**
+         * Sets {@link #name()}.
+         *
+         * @param val the value
+         * @return this
+         */
+        Mutable name(MemorySegment val);
+
+        /**
+         * Sets {@link #spec()}.
+         *
+         * @param val the value
+         * @return this
+         */
+        Mutable spec(MemorySegment val);
     }
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return name}
      */
-    public NFDU8FilterItem(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
+    MemorySegment name();
+
+    /**
+     * {@return spec}
+     */
+    MemorySegment spec();
+
+    /**
+     * {@return {@link #name()}}
+     */
+    default String javaName() {
+        return Unmarshal.unmarshalAsString(name());
+    }
+
+    /**
+     * {@return {@link #spec()}}
+     */
+    default String javaSpec() {
+        return Unmarshal.unmarshalAsString(spec());
     }
 
     /**
@@ -80,11 +108,10 @@ public final class NFDU8FilterItem extends Struct {
      * @param spec      the specification of the filter
      * @return the instance
      */
-    public static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
-        final NFDU8FilterItem item = new NFDU8FilterItem(allocator.allocate(LAYOUT));
-        _name.set(item, allocator, name);
-        _spec.set(item, allocator, spec);
-        return item;
+    static NFDU8FilterItem<?> create(SegmentAllocator allocator, String name, String spec) {
+        return Mutable.OF.of(allocator)
+            .name(Marshal.marshal(allocator, name))
+            .spec(Marshal.marshal(allocator, spec));
     }
 
     /**
@@ -95,12 +122,13 @@ public final class NFDU8FilterItem extends Struct {
      * @return the instance
      */
     @SafeVarargs
-    public static NFDU8FilterItem create(SegmentAllocator allocator, Pair<String>... items) {
-        final NFDU8FilterItem buffer = new NFDU8FilterItem(allocator.allocate(LAYOUT, items.length), items.length);
+    static NFDU8FilterItem<?> create(SegmentAllocator allocator, Pair<String>... items) {
+        final var buffer = Mutable.OF.of(allocator, items.length);
         for (int i = 0, len = items.length; i < len; i++) {
-            Pair<String> item = items[i];
-            _name.set(buffer, i, allocator, item.key());
-            _spec.set(buffer, i, allocator, item.value());
+            var item = items[i];
+            buffer.slice(i)
+                .name(Marshal.marshal(allocator, item.key()))
+                .spec(Marshal.marshal(allocator, item.value()));
         }
         return buffer;
     }

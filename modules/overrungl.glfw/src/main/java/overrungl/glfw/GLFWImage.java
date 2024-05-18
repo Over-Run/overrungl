@@ -16,10 +16,12 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
 
 /**
  * This describes a single 2D image. See the documentation for each related
@@ -35,63 +37,55 @@ import java.lang.foreign.*;
  * @author squid233
  * @since 0.1.0
  */
-public final class GLFWImage extends Struct {
+public interface GLFWImage extends Struct<GLFWImage> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        ValueLayout.JAVA_INT.withName("width"),
-        ValueLayout.JAVA_INT.withName("height"),
-        ValueLayout.ADDRESS.withName("pixels")
+    StructAllocator<GLFWImage> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cInt("width")
+            .cInt("height")
+            .cAddress("pixels")
+            .build()
     );
-    /**
-     * The width, in pixels, of this image.
-     */
-    public static final StructHandle.Int width = StructHandle.ofInt(LAYOUT, "width");
-    /**
-     * The height, in pixels, of this image.
-     */
-    public static final StructHandle.Int height = StructHandle.ofInt(LAYOUT, "height");
-    /**
-     * The pixel data address of this image, arranged left-to-right, top-to-bottom.
-     */
-    public static final StructHandle.Address pixels = StructHandle.ofAddress(LAYOUT, "pixels");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return the width, in pixels, of this image}
      */
-    public GLFWImage(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
-    }
+    int width();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #width()}.
      *
-     * @param allocator    the allocator
-     * @param elementCount the element count
+     * @param val the value
+     * @return this
      */
-    public GLFWImage(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
+    GLFWImage width(int val);
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
+     * {@return the height, in pixels, of this image}
      */
-    public GLFWImage(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
+    int height();
 
     /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #height()}.
      *
-     * @param allocator the allocator
+     * @param val the value
+     * @return this
      */
-    public GLFWImage(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
-    }
+    GLFWImage height(int val);
+
+    /**
+     * {@return the pixel data address of this image, arranged left-to-right, top-to-bottom}
+     */
+    MemorySegment pixels();
+
+    /**
+     * Sets {@link #pixels()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWImage pixels(MemorySegment val);
 }

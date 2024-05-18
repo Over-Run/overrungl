@@ -16,14 +16,16 @@
 
 package overrungl.glfw;
 
+import overrun.marshal.LayoutBuilder;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructHandle;
+import overrun.marshal.struct.StructAllocator;
 
-import java.lang.foreign.*;
-
-import static java.lang.foreign.ValueLayout.*;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
 
 /**
  * This describes the gamma ramp for a monitor.
@@ -41,69 +43,129 @@ import static java.lang.foreign.ValueLayout.*;
  * @see GLFW#setGammaRamp
  * @since 0.1.0
  */
-public final class GLFWGammaRamp extends Struct {
-    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(0L, JAVA_SHORT));
+public interface GLFWGammaRamp extends Struct<GLFWGammaRamp> {
     /**
-     * The struct layout.
+     * The allocator
      */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        SHORT_ARRAY.withName("red"),
-        SHORT_ARRAY.withName("green"),
-        SHORT_ARRAY.withName("blue"),
-        JAVA_INT.withName("size")
+    StructAllocator<GLFWGammaRamp> OF = new StructAllocator<>(
+        MethodHandles.lookup(),
+        LayoutBuilder.struct()
+            .cAddress("red")
+            .cAddress("green")
+            .cAddress("blue")
+            .cInt("size")
+            .build()
     );
-    /**
-     * An array of value describing the response of the red channel.
-     */
-    public static final StructHandle.Array<short[]> red = StructHandle.ofArray(LAYOUT, "red", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
-    /**
-     * An array of value describing the response of the green channel.
-     */
-    public static final StructHandle.Array<short[]> green = StructHandle.ofArray(LAYOUT, "green", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
-    /**
-     * An array of value describing the response of the blue channel.
-     */
-    public static final StructHandle.Array<short[]> blue = StructHandle.ofArray(LAYOUT, "blue", Marshal::marshal, Unmarshal::unmarshalAsShortArray);
-    /**
-     * The number of elements in each array.
-     */
-    public static final StructHandle.Int size = StructHandle.ofInt(LAYOUT, "size");
 
     /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment      the segment
-     * @param elementCount the element count
+     * {@return an array of value describing the response of the red channel}
      */
-    public GLFWGammaRamp(MemorySegment segment, long elementCount) {
-        super(segment, elementCount, LAYOUT);
+    MemorySegment red();
+
+    /**
+     * Sets {@link #red()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWGammaRamp red(MemorySegment val);
+
+    /**
+     * {@return an array of value describing the response of the green channel}
+     */
+    MemorySegment green();
+
+    /**
+     * Sets {@link #green()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWGammaRamp green(MemorySegment val);
+
+    /**
+     * {@return an array of value describing the response of the blue channel}
+     */
+    MemorySegment blue();
+
+    /**
+     * Sets {@link #blue()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWGammaRamp blue(MemorySegment val);
+
+    /**
+     * {@return the number of elements in each array}
+     */
+    int size();
+
+    /**
+     * Sets {@link #size()}.
+     *
+     * @param val the value
+     * @return this
+     */
+    GLFWGammaRamp size(int val);
+
+    /**
+     * {@return {@link #red()}}
+     *
+     * @param size the size
+     */
+    default short[] javaRed(int size) {
+        return Unmarshal.unmarshalAsShortArray(red().reinterpret(ValueLayout.JAVA_SHORT.scale(0L, size)));
     }
 
     /**
-     * Allocates a struct with the given layout.
-     *
-     * @param allocator    the allocator
-     * @param elementCount the element count
-     */
-    public GLFWGammaRamp(SegmentAllocator allocator, long elementCount) {
-        super(allocator, elementCount, LAYOUT);
-    }
-
-    /**
-     * Creates a struct with the given layout.
-     *
-     * @param segment the segment
-     */
-    public GLFWGammaRamp(MemorySegment segment) {
-        super(segment, LAYOUT);
-    }
-
-    /**
-     * Allocates a struct with the given layout.
+     * Sets {@link #red()}.
      *
      * @param allocator the allocator
+     * @param val       the value
+     * @return this
      */
-    public GLFWGammaRamp(SegmentAllocator allocator) {
-        super(allocator, LAYOUT);
+    default GLFWGammaRamp javaRed(SegmentAllocator allocator, short[] val) {
+        return red(Marshal.marshal(allocator, val));
+    }
+
+    /**
+     * {@return {@link #green()}}
+     *
+     * @param size the size
+     */
+    default short[] javaGreen(int size) {
+        return Unmarshal.unmarshalAsShortArray(green().reinterpret(ValueLayout.JAVA_SHORT.scale(0L, size)));
+    }
+
+    /**
+     * Sets {@link #green()}.
+     *
+     * @param allocator the allocator
+     * @param val       the value
+     * @return this
+     */
+    default GLFWGammaRamp javaGreen(SegmentAllocator allocator, short[] val) {
+        return green(Marshal.marshal(allocator, val));
+    }
+
+    /**
+     * {@return {@link #blue()}}
+     *
+     * @param size the size
+     */
+    default short[] javaBlue(int size) {
+        return Unmarshal.unmarshalAsShortArray(blue().reinterpret(ValueLayout.JAVA_SHORT.scale(0L, size)));
+    }
+
+    /**
+     * Sets {@link #blue()}.
+     *
+     * @param allocator the allocator
+     * @param val       the value
+     * @return this
+     */
+    default GLFWGammaRamp javaBlue(SegmentAllocator allocator, short[] val) {
+        return blue(Marshal.marshal(allocator, val));
     }
 }

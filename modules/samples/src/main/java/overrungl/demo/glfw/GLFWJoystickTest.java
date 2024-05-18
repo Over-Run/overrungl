@@ -77,7 +77,7 @@ public final class GLFWJoystickTest {
     private void loop() {
         var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
         for (int i = 0; i < states.length; i++) {
-            states[i] = new GLFWGamepadState(Arena.ofAuto());
+            states[i] = GLFWGamepadState.OF.of(Arena.ofAuto());
         }
         while (!glfw.windowShouldClose(window)) {
             for (int i = 0; i <= GLFW.JOYSTICK_LAST; i++) {
