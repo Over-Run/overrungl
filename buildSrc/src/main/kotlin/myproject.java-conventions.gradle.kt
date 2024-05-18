@@ -22,13 +22,16 @@ enum class NativePlatform(
     val nativeLibSuffix: String,
     val taskSuffix: String
 ) {
-    WIN_64("windows", "x64", "windows", "", ".dll", "Win64"),
-    WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64"),
+    FREEBSD_X64("freebsd", "x64", "freebsd", "lib", ".so", "FreeBSD64"),
     LINUX_64("linux", "x64", "linux", "lib", ".so", "Linux64"),
     LINUX_ARM32("linux", "arm32", "linux-arm32", "lib", ".so", "LinuxArm32"),
     LINUX_ARM64("linux", "arm64", "linux-arm64", "lib", ".so", "LinuxArm64"),
+    LINUX_PPC64LE("linux", "ppc64le", "linux-ppc64le", "lib", ".so", "LinuxPpc64le"),
+    LINUX_RISCV64("linux", "riscv64", "linux-riscv64", "lib", ".so", "LinuxRiscv64"),
     MACOS("macos", "x64", "macos", "lib", ".dylib", "Macos"),
-    MACOS_ARM64("macos", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64");
+    MACOS_ARM64("macos", "arm64", "macos-arm64", "lib", ".dylib", "MacosArm64"),
+    WIN_64("windows", "x64", "windows", "", ".dll", "Win64"),
+    WIN_ARM64("windows", "arm64", "windows-arm64", "", ".dll", "WinArm64");
 
     companion object {
         val ALL = values()
@@ -42,12 +45,7 @@ enum class NativeBinding(
     val basename: String,
     vararg val platforms: NativePlatform
 ) {
-    GLFW(
-        "glfw", "glfw3",
-        NativePlatform.WIN_64,
-        NativePlatform.LINUX_64, NativePlatform.LINUX_ARM64,
-        NativePlatform.MACOS, NativePlatform.MACOS_ARM64
-    ),
+    GLFW("glfw", "glfw", *NativePlatform.ALL),
     NFD("nfd", "nfd", *NativePlatform.ALL),
     STB("stb", "stb", *NativePlatform.ALL)
 }
@@ -97,6 +95,6 @@ enum class Artifact(
 
     fun nativeFileName(platform: NativePlatform): String? {
         return if (nativeBinding == null) null
-        else "${nativeBinding.bindingName}/${platform.osFamilyName}/${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
+        else "${nativeBinding.bindingName}/${platform.osFamilyName}-${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
     }
 }
