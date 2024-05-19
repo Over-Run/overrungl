@@ -1,4 +1,3 @@
-
 import org.gradle.plugins.ide.idea.model.IdeaModel
 
 plugins {
@@ -75,7 +74,7 @@ artifactNameMap.forEach { (subprojectName, artifactName) ->
 
         tasks.named<Jar>("jar") {
             manifestContentCharset = "utf-8"
-            setMetadataCharset("utf-8")
+            metadataCharset = "utf-8"
             manifest.attributes(
                 "Specification-Title" to projName,
                 "Specification-Vendor" to "Overrun Organization",
@@ -159,6 +158,47 @@ allprojects {
     }
 }
 
+Artifact.values().forEach {
+    project(it.subprojectName) {
+        val javaComponent = components.findByName("java") as AdhocComponentWithVariants
+        // Add a different runtime variant for each platform
+        it.nativeBinding?.platforms?.forEach { platform ->
+            val nativeFileName = it.nativeFileName(platform)
+            val file = File("${rootProject.projectDir}/natives/$nativeFileName")
+
+            if (file.exists()) {
+                val archiveTaskName = "${it.nativeBinding?.bindingName}${platform.classifier}Jar"
+
+                val nativeJar = tasks.register<Jar>(archiveTaskName) {
+                    archiveBaseName.set(it.artifactName)
+                    archiveClassifier.set(platform.classifier)
+                    from(file) { into(File(nativeFileName).parent) }
+                }
+
+                val nativeRuntimeElements = configurations.create(platform.classifier + "RuntimeElements") {
+                    isCanBeConsumed = true; isCanBeResolved = false
+                    attributes {
+                        attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.LIBRARY))
+                        attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling.EXTERNAL))
+                        attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, targetJavaVersion)
+                        attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named(LibraryElements.JAR))
+                        attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_RUNTIME))
+                        attributes.attribute(
+                            OperatingSystemFamily.OPERATING_SYSTEM_ATTRIBUTE,
+                            objects.named(platform.osFamilyName)
+                        )
+                        attributes.attribute(MachineArchitecture.ARCHITECTURE_ATTRIBUTE, objects.named(platform.osArch))
+                    }
+                    outgoing.artifact(tasks.named("jar"))
+                    outgoing.artifact(nativeJar)
+                    extendsFrom(configurations["runtimeElements"])
+                }
+                javaComponent.addVariantsFromConfiguration(nativeRuntimeElements) {}
+            }
+        }
+    }
+}
+
 publishing.publications {
     fun MavenPom.setupPom(pomName: String, pomDescription: String, pomPackaging: String) {
         name.set(pomName)
@@ -191,26 +231,12 @@ publishing.publications {
     }
 
     Artifact.values().forEach { module ->
-        create<MavenPublication>("maven${module.mavenName}") {
+        create<MavenPublication>("maven${module.name}") {
             groupId = projGroupId
             artifactId = module.artifactName
             version = projVersion
             description = module.projectDescription
-            project(module.subprojectName) {
-                from(components["java"])
-            }
-            module.nativeBinding?.platforms?.forEach {
-                val nativeName = module.nativeFileName(it)!!
-                val file = File("${rootProject.projectDir}/natives/$nativeName")
-                if (file.exists()) {
-                    val nativeParent = File(nativeName).parent
-                    artifact(tasks.register<Jar>("nativeJar${module.mavenName}${it.taskSuffix}") {
-                        archiveBaseName.set(module.artifactName)
-                        archiveClassifier.set(it.classifier)
-                        from(file) { into(nativeParent) }
-                    })
-                }
-            }
+            from(project(module.subprojectName).components["java"])
             pom {
                 setupPom(module.projectName, module.projectDescription, "jar")
             }
