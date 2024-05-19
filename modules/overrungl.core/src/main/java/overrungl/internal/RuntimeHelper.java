@@ -39,7 +39,8 @@ public final class RuntimeHelper {
      * The native linker.
      */
     private static final Linker LINKER = Linker.nativeLinker();
-    private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"));
+    private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
+        .resolve(STR."overrungl\{System.getProperty("user.name")}");
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
     private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
     /**
@@ -102,24 +103,23 @@ public final class RuntimeHelper {
             uri = localFile;
         } else {
             // 2. Load from classpath
-            var file = tmpdir.resolve(STR."overrungl\{System.getProperty("user.name")}");
             try {
-                if (!Files.exists(file)) {
+                if (!Files.exists(tmpdir)) {
                     // Create directory
-                    Files.createDirectories(file);
-                } else if (!Files.isDirectory(file)) {
+                    Files.createDirectories(tmpdir);
+                } else if (!Files.isDirectory(tmpdir)) {
                     // Remove
-                    Files.delete(file);
+                    Files.delete(tmpdir);
                     // Create directory
-                    Files.createDirectories(file);
+                    Files.createDirectories(tmpdir);
                 }
             } catch (IOException e) {
-                throw new IllegalStateException(STR."Couldn't create directory: \{file}; try setting -Doverrungl.natives to a valid path", e);
+                throw new IllegalStateException(STR."Couldn't create directory: \{tmpdir}; try setting -Doverrungl.natives to a valid path", e);
             }
-            var libFile = file.resolve(STR."\{basename}-\{version}\{suffix}");
+            var libFile = tmpdir.resolve(STR."\{basename}-\{version}\{suffix}");
             if (!Files.exists(libFile)) {
                 // Extract
-                final String fromPath = STR."\{module}/\{os.familyName()}/\{Architecture.current()}/\{path}";
+                final String fromPath = STR."\{module}/\{os.familyName()}-\{Architecture.current()}/\{path}";
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, STR."File not found in classpath: \{fromPath}"), libFile);
                 } catch (Exception e) {

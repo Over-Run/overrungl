@@ -33,7 +33,7 @@ final class Handles {
     static final SymbolLookup lookup;
 
     static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw3", OverrunGL.GLFW_VERSION);
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw", OverrunGL.GLFW_VERSION);
         final var function = Configurations.GLFW_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();
     }
