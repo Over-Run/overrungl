@@ -53,7 +53,7 @@ public interface NFDNFilterItem<T extends NFDNFilterItem<T>> extends Struct<T> {
     /**
      * Mutable
      */
-    interface Mutable extends NFDNFilterItem<Mutable>, Struct<Mutable> {
+    interface Mutable extends NFDNFilterItem<Mutable> {
         /**
          * The allocator
          */
@@ -110,8 +110,8 @@ public interface NFDNFilterItem<T extends NFDNFilterItem<T>> extends Struct<T> {
      */
     static NFDNFilterItem<?> create(SegmentAllocator allocator, String name, String spec) {
         return Mutable.OF.of(allocator)
-            .name(Marshal.marshal(allocator, name))
-            .spec(Marshal.marshal(allocator, spec));
+            .name(Marshal.marshal(allocator, name, NFDInternal.nfdCharset))
+            .spec(Marshal.marshal(allocator, spec, NFDInternal.nfdCharset));
     }
 
     /**
@@ -127,8 +127,8 @@ public interface NFDNFilterItem<T extends NFDNFilterItem<T>> extends Struct<T> {
         for (int i = 0, len = items.length; i < len; i++) {
             var item = items[i];
             buffer.slice(i)
-                .name(Marshal.marshal(allocator, item.key()))
-                .spec(Marshal.marshal(allocator, item.value()));
+                .name(Marshal.marshal(allocator, item.key(), NFDInternal.nfdCharset))
+                .spec(Marshal.marshal(allocator, item.value(), NFDInternal.nfdCharset));
         }
         return buffer;
     }

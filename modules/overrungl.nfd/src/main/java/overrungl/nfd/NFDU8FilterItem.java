@@ -53,7 +53,7 @@ public interface NFDU8FilterItem<T extends NFDU8FilterItem<T>> extends Struct<T>
     /**
      * Mutable
      */
-    interface Mutable extends NFDU8FilterItem<Mutable>, Struct<Mutable> {
+    interface Mutable extends NFDU8FilterItem<Mutable> {
         /**
          * The allocator
          */
