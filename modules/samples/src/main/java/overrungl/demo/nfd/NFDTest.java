@@ -44,7 +44,7 @@ public final class NFDTest {
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final NFDNFilterItem filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDNFilterItem.create(stack,
                 new Pair<>("Source code", "java"),
                 new Pair<>("Image file", "png,jpg"));
 
@@ -74,7 +74,7 @@ public final class NFDTest {
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final NFDNFilterItem filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDNFilterItem.create(stack,
                 new Pair<>("Source code", "java"),
                 new Pair<>("Image file", "png,jpg"));
 
@@ -114,7 +114,7 @@ public final class NFDTest {
             MemorySegment pOutPaths = stack.segments(MemorySegment.NULL);
 
             // prepare filters for the dialog
-            final NFDNFilterItem filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDNFilterItem.create(stack,
                 new Pair<>("Source code", "java"),
                 new Pair<>("Image file", "png,jpg"));
 
@@ -178,7 +178,7 @@ public final class NFDTest {
             String[] savePath = new String[1];
 
             // prepare filters for the dialog
-            final NFDNFilterItem filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDNFilterItem.create(stack,
                 new Pair<>("Source code", "java"),
                 new Pair<>("Image file", "png,jpg"));
 
