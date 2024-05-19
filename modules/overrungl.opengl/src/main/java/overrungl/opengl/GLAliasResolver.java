@@ -899,14 +899,15 @@ final class GLAliasResolver {
             case "glWindowPos3sv" -> resolve(load, name, "glWindowPos3svARB", "glWindowPos3svMESA");
             case "glWindowPos3svARB" -> resolve(load, name, "glWindowPos3sv", "glWindowPos3svMESA");
             case "glWindowPos3svMESA" -> resolve(load, name, "glWindowPos3sv", "glWindowPos3svARB");
-            case null, default -> MemorySegment.NULL;
+            case null -> MemorySegment.NULL;
+            default -> load.invoke(name);
         };
     }
 
     private static MemorySegment resolve(GLLoadFunc load, String name, String... aliases) {
         final MemorySegment segment = load.invoke(name);
         if (!Unmarshal.isNullPointer(segment)) {
-            return MemorySegment.NULL;
+            return segment;
         }
         for (String alias : aliases) {
             final MemorySegment aliasSeg = load.invoke(alias);
