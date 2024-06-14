@@ -19,13 +19,13 @@ package overrungl.vulkan;
 
 public enum VkLineRasterizationModeKHR implements overrun.marshal.CEnum {
     DEFAULT(0),
-    DEFAULT(DEFAULT.value),
+    DEFAULT_EXT(DEFAULT.value),
     RECTANGULAR(1),
-    RECTANGULAR(RECTANGULAR.value),
+    RECTANGULAR_EXT(RECTANGULAR.value),
     BRESENHAM(2),
-    BRESENHAM(BRESENHAM.value),
+    BRESENHAM_EXT(BRESENHAM.value),
     RECTANGULAR_SMOOTH(3),
-    RECTANGULAR_SMOOTH(RECTANGULAR_SMOOTH.value),
+    RECTANGULAR_SMOOTH_EXT(RECTANGULAR_SMOOTH.value),
     ;
     private final int value;
     VkLineRasterizationModeKHR(int value) { this.value = value; }

@@ -18,9 +18,9 @@
 package overrungl.vulkan;
 
 public enum VkDisplacementMicromapFormatNV implements overrun.marshal.CEnum {
-    64_TRIANGLES_64_BYTES(1),
-    256_TRIANGLES_128_BYTES(2),
-    1024_TRIANGLES_128_BYTES(3),
+    _64_TRIANGLES_64_BYTES(1),
+    _256_TRIANGLES_128_BYTES(2),
+    _1024_TRIANGLES_128_BYTES(3),
     ;
     private final int value;
     VkDisplacementMicromapFormatNV(int value) { this.value = value; }
