@@ -222,38 +222,40 @@ public class GL33Test {
     }
 
     private void loop() {
-        var matrix = new Matrix4f();
-        var pRotationMat = Matrixn.allocate(Arena.ofAuto(), matrix);
+        try (var arena = Arena.ofConfined()) {
+            var matrix = new Matrix4f();
+            var pRotationMat = Matrixn.allocate(arena, matrix);
 
-        var timer = Timer.ofGetter(20, glfw::getTime);
+            var timer = Timer.ofGetter(20, glfw::getTime);
 
-        while (!glfw.windowShouldClose(window)) {
-            timer.advanceTime();
-            timer.performTicks(null);
+            while (!glfw.windowShouldClose(window)) {
+                timer.advanceTime();
+                timer.performTicks(null);
 
-            gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+                gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
-            // Draw triangle
-            gl.useProgram(program);
+                // Draw triangle
+                gl.useProgram(program);
 
-            // rotate 90deg per second
-            matrix.rotateZ((float) Math.toRadians(90 * timer.deltaTime()));
-            Matrixn.put(matrix, pRotationMat);
+                // rotate 90deg per second
+                matrix.rotateZ((float) Math.toRadians(90 * timer.deltaTime()));
+                Matrixn.put(matrix, pRotationMat);
 
-            gl.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
-            gl.bindVertexArray(vao);
-            gl.drawElementsInstanced(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
-            gl.bindVertexArray(0);
-            gl.useProgram(0);
+                gl.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
+                gl.bindVertexArray(vao);
+                gl.drawElementsInstanced(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
+                gl.bindVertexArray(0);
+                gl.useProgram(0);
 
-            glfw.swapBuffers(window);
+                glfw.swapBuffers(window);
 
-            glfw.pollEvents();
+                glfw.pollEvents();
 
-            // using lambda gets higher FPS ??
-            timer.calcFPS(fps -> {
-                glfw.setWindowTitle(window, STR."\{WND_TITLE} FPS: \{fps}");
-            });
+                // using lambda gets higher FPS ??
+                timer.calcFPS(fps -> {
+                    glfw.setWindowTitle(window, STR."\{WND_TITLE} FPS: \{fps}");
+                });
+            }
         }
     }
 

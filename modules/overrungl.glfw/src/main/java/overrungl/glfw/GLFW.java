@@ -1496,7 +1496,7 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default MemorySegment setErrorCallback(@Nullable GLFWErrorFun callback) {
-        return nsetErrorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
+        return nsetErrorCallback(callback != null ? callback.stub(Arena.global()) : MemorySegment.NULL);
     }
 
     /**
@@ -1907,7 +1907,7 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default MemorySegment setMonitorCallback(@Nullable GLFWMonitorFun callback) {
-        return nsetMonitorCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
+        return nsetMonitorCallback(callback != null ? callback.stub(Arena.global()) : MemorySegment.NULL);
     }
 
     /**
@@ -4944,7 +4944,7 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default MemorySegment setJoystickCallback(@Nullable GLFWJoystickFun callback) {
-        return nsetJoystickCallback(callback != null ? callback.stub(Arena.ofAuto()) : MemorySegment.NULL);
+        return nsetJoystickCallback(callback != null ? callback.stub(Arena.global()) : MemorySegment.NULL);
     }
 
     /**
