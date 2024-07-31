@@ -75,29 +75,31 @@ public final class GLFWJoystickTest {
     }
 
     private void loop() {
-        var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
-        for (int i = 0; i < states.length; i++) {
-            states[i] = GLFWGamepadState.OF.of(Arena.ofAuto());
-        }
-        while (!glfw.windowShouldClose(window)) {
-            for (int i = 0; i <= GLFW.JOYSTICK_LAST; i++) {
-                if (glfw.joystickPresent(i)) {
-                    if (glfw.joystickIsGamepad(i)) {
-                        var state = states[i];
-                        if (glfw.getGamepadState(i, state)) {
-                            System.out.println(STR."""
-                                Get gamepad state for [jid=\{i},name=\{glfw.getGamepadName(i)}] successful:
-                                Buttons: [A(Cross)=\{state.button(GLFW.GAMEPAD_BUTTON_A)}, B(Circle)=\{state.button(GLFW.GAMEPAD_BUTTON_B)}, X(Square)=\{state.button(GLFW.GAMEPAD_BUTTON_X)}, Y(Triangle)=\{state.button(GLFW.GAMEPAD_BUTTON_Y)},
-                                Left bumper=\{state.button(GLFW.GAMEPAD_BUTTON_LEFT_BUMPER)}, Right bumper=\{state.button(GLFW.GAMEPAD_BUTTON_RIGHT_BUMPER)}, Back=\{state.button(GLFW.GAMEPAD_BUTTON_BACK)}, Start=\{state.button(GLFW.GAMEPAD_BUTTON_START)},
-                                Guide=\{state.button(GLFW.GAMEPAD_BUTTON_GUIDE)}, Left thumb=\{state.button(GLFW.GAMEPAD_BUTTON_LEFT_THUMB)}, Right thumb=\{state.button(GLFW.GAMEPAD_BUTTON_RIGHT_THUMB)},
-                                DPAD(up=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_UP)}, right=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_RIGHT)}, down=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_DOWN)}, left=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_LEFT)})],
-                                Axis: [Left(x=\{state.axe(GLFW.GAMEPAD_AXIS_LEFT_X)}, y=\{state.axe(GLFW.GAMEPAD_AXIS_LEFT_Y)}), Right(x=\{state.axe(GLFW.GAMEPAD_AXIS_RIGHT_X)}, y=\{state.axe(GLFW.GAMEPAD_AXIS_RIGHT_Y)}), Trigger(left=\{state.axe(GLFW.GAMEPAD_AXIS_LEFT_TRIGGER)}, right\{state.axe(GLFW.GAMEPAD_AXIS_RIGHT_TRIGGER)})]
-                                """);
+        try (Arena arena = Arena.ofConfined()) {
+            var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
+            for (int i = 0; i < states.length; i++) {
+                states[i] = GLFWGamepadState.OF.of(arena);
+            }
+            while (!glfw.windowShouldClose(window)) {
+                for (int i = 0; i <= GLFW.JOYSTICK_LAST; i++) {
+                    if (glfw.joystickPresent(i)) {
+                        if (glfw.joystickIsGamepad(i)) {
+                            var state = states[i];
+                            if (glfw.getGamepadState(i, state)) {
+                                System.out.println(STR."""
+                                    Get gamepad state for [jid=\{i},name=\{glfw.getGamepadName(i)}] successful:
+                                    Buttons: [A(Cross)=\{state.button(GLFW.GAMEPAD_BUTTON_A)}, B(Circle)=\{state.button(GLFW.GAMEPAD_BUTTON_B)}, X(Square)=\{state.button(GLFW.GAMEPAD_BUTTON_X)}, Y(Triangle)=\{state.button(GLFW.GAMEPAD_BUTTON_Y)},
+                                    Left bumper=\{state.button(GLFW.GAMEPAD_BUTTON_LEFT_BUMPER)}, Right bumper=\{state.button(GLFW.GAMEPAD_BUTTON_RIGHT_BUMPER)}, Back=\{state.button(GLFW.GAMEPAD_BUTTON_BACK)}, Start=\{state.button(GLFW.GAMEPAD_BUTTON_START)},
+                                    Guide=\{state.button(GLFW.GAMEPAD_BUTTON_GUIDE)}, Left thumb=\{state.button(GLFW.GAMEPAD_BUTTON_LEFT_THUMB)}, Right thumb=\{state.button(GLFW.GAMEPAD_BUTTON_RIGHT_THUMB)},
+                                    DPAD(up=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_UP)}, right=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_RIGHT)}, down=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_DOWN)}, left=\{state.button(GLFW.GAMEPAD_BUTTON_DPAD_LEFT)})],
+                                    Axis: [Left(x=\{state.axe(GLFW.GAMEPAD_AXIS_LEFT_X)}, y=\{state.axe(GLFW.GAMEPAD_AXIS_LEFT_Y)}), Right(x=\{state.axe(GLFW.GAMEPAD_AXIS_RIGHT_X)}, y=\{state.axe(GLFW.GAMEPAD_AXIS_RIGHT_Y)}), Trigger(left=\{state.axe(GLFW.GAMEPAD_AXIS_LEFT_TRIGGER)}, right\{state.axe(GLFW.GAMEPAD_AXIS_RIGHT_TRIGGER)})]
+                                    """);
+                            }
                         }
                     }
                 }
+                glfw.waitEventsTimeout(3);
             }
-            glfw.waitEventsTimeout(3);
         }
     }
 
