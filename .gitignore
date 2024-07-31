@@ -1,42 +1,49 @@
-/.idea/workspace.xml
-/.idea/usage.statistics.xml
-/nbproject/private/
-/bin
-/wiki
-.DS_Store
-*.bat
-*.conf
-*.dll
-*.dylib
-*.jar
-*.jpg
-*.mhr
-*.obj
-*.ogg
-*.sh
-*.so
-*.ttf
-*.wav
-*.zip
-touch.txt
+.run/
+run/
 
 .gradle
 build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-!gradlew.bat
-
-# Cache of project
-.gradletasknamecache
-
-# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
-# gradle/wrapper/gradle-wrapper.properties
-
+### IntelliJ IDEA ###
 .idea/
+#.idea/modules.xml
+#.idea/jarRepositories.xml
+#.idea/compiler.xml
+#.idea/libraries/
+*.iws
+*.iml
+*.ipr
 out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
-run/
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+natives/
+.kotlin/

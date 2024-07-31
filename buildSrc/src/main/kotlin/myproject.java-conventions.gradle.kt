@@ -32,21 +32,17 @@ enum class NativePlatform(
     WIN_64("windows", "x64", classifier = "windows", nativeLibPrefix = "", nativeLibSuffix = ".dll"),
     WIN_ARM64("windows", "arm64", nativeLibPrefix = "", nativeLibSuffix = ".dll");
 
-    companion object {
-        val ALL = values()
-    }
-
     val classifier = "natives-$classifier"
 }
 
 enum class NativeBinding(
     val bindingName: String,
     val basename: String,
-    vararg val platforms: NativePlatform
+    val platforms: List<NativePlatform>
 ) {
-    GLFW("glfw", "glfw", *NativePlatform.ALL),
-    NFD("nfd", "nfd", *NativePlatform.ALL),
-    STB("stb", "stb", *NativePlatform.ALL)
+    GLFW("glfw", "glfw", NativePlatform.entries),
+    NFD("nfd", "nfd", NativePlatform.entries),
+    STB("stb", "stb", NativePlatform.entries)
 }
 
 enum class Artifact(

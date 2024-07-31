@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /*
@@ -16,7 +17,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * copies or substantial portions of the Software.
  */
 
-plugins { embeddedKotlin("jvm") }
+plugins { kotlin("jvm") version "2.0.0" }
 
 allprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
@@ -28,7 +29,7 @@ allprojects {
     repositories { mavenCentral() }
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions { jvmTarget = kotlinTargetJdkVersion }
+        compilerOptions { jvmTarget.set(JvmTarget.fromTarget(kotlinTargetJdkVersion)) }
     }
 
     tasks.withType<JavaCompile> {
