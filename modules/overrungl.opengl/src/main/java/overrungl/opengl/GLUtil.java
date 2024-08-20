@@ -60,8 +60,8 @@ public final class GLUtil {
     Arena setupDebugMessageCallback(
         T gl,
         GLFlags flags,
-        Supplier<? extends GLARBDebugOutput> fallbackARB,
-        Supplier<? extends GLAMDDebugOutput> fallbackAMD
+        @Nullable Supplier<? extends GLARBDebugOutput> fallbackARB,
+        @Nullable Supplier<? extends GLAMDDebugOutput> fallbackAMD
     ) {
         return setupDebugMessageCallback(gl, flags, fallbackARB, fallbackAMD, OverrunGL.apiLogger());
     }
@@ -85,8 +85,8 @@ public final class GLUtil {
     Arena setupDebugMessageCallback(
         T gl,
         GLFlags flags,
-        Supplier<? extends GLARBDebugOutput> fallbackARB,
-        Supplier<? extends GLAMDDebugOutput> fallbackAMD,
+        @Nullable Supplier<? extends GLARBDebugOutput> fallbackARB,
+        @Nullable Supplier<? extends GLAMDDebugOutput> fallbackAMD,
         Consumer<String> logger
     ) {
         if (flags.GL43 || flags.GL_KHR_debug) {
@@ -119,7 +119,7 @@ public final class GLUtil {
             return arena;
         }
 
-        if (flags.GL_ARB_debug_output) {
+        if (flags.GL_ARB_debug_output && fallbackARB != null) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
             var arena = Arena.ofConfined();
             fallbackARB.get().glDebugMessageCallbackARB(arena, (source, type, id, severity, message, _) -> {
@@ -139,7 +139,7 @@ public final class GLUtil {
             return arena;
         }
 
-        if (flags.GL_AMD_debug_output) {
+        if (flags.GL_AMD_debug_output && fallbackAMD != null) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
             var arena = Arena.ofConfined();
             fallbackAMD.get().glDebugMessageCallbackAMD(arena, (id, category, severity, message, _) -> {
