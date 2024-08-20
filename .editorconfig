@@ -13,6 +13,3 @@ trim_trailing_whitespace = false
 
 [*.{yml,json}]
 indent_size = 2
-
-[doc/legal/LICENSE_lwjgl3.md]
-insert_final_newline = false

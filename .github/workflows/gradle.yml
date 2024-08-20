@@ -21,7 +21,7 @@ jobs:
         java: [
           22
         ]
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +30,6 @@ jobs:
         with:
           java-version: |
             ${{ matrix.java }}
-            21
           distribution: 'temurin'
       - name: Grant execute permission for gradlew
         if: ${{ runner.os != 'Windows' }}
@@ -38,13 +37,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Execute Gradle build
-        run: ./gradlew build
-#      - name: Upload build reports
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: build-reports-${{ matrix.java }}-${{ runner.os }}
-#          path: |
-#            modules/**/build/reports/
+        run: ./gradlew build --parallel
       - name: Capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '22' }}
         uses: actions/upload-artifact@v4
