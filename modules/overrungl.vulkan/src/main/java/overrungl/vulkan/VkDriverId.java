@@ -41,7 +41,7 @@ public enum VkDriverId implements overrun.marshal.CEnum {
     /**
      * Intel Corporation
      */
-    INTEL_OPEN_SOURCE(6),
+    INTEL_OPEN_SOURCE_MESA(6),
     /**
      * Imagination Technologies
      */
@@ -75,7 +75,7 @@ public enum VkDriverId implements overrun.marshal.CEnum {
      */
     MOLTENVK(14),
     /**
-     * Core Avionics & Industrial Inc.
+     * Core Avionics &amp; Industrial Inc.
      */
     COREAVI_PROPRIETARY(15),
     /**
@@ -117,7 +117,7 @@ public enum VkDriverId implements overrun.marshal.CEnum {
     /**
      * Imagination Technologies
      */
-    IMAGINATION_OPEN_SOURCE(25),
+    IMAGINATION_OPEN_SOURCE_MESA(25),
     /**
      * Mesa open source project
      */

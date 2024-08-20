@@ -18,12 +18,12 @@
 package overrungl.vulkan;
 
 public enum VkImageViewType implements overrun.marshal.CEnum {
-    1D(0),
-    2D(1),
-    3D(2),
+    _1D(0),
+    _2D(1),
+    _3D(2),
     CUBE(3),
-    1D_ARRAY(4),
-    2D_ARRAY(5),
+    _1D_ARRAY(4),
+    _2D_ARRAY(5),
     CUBE_ARRAY(6),
     ;
     private final int value;

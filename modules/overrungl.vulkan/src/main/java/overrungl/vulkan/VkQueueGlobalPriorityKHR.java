@@ -22,10 +22,10 @@ public enum VkQueueGlobalPriorityKHR implements overrun.marshal.CEnum {
     MEDIUM(256),
     HIGH(512),
     REALTIME(1024),
-    LOW(LOW.value),
-    MEDIUM(MEDIUM.value),
-    HIGH(HIGH.value),
-    REALTIME(REALTIME.value),
+    LOW_EXT(LOW.value),
+    MEDIUM_EXT(MEDIUM.value),
+    HIGH_EXT(HIGH.value),
+    REALTIME_EXT(REALTIME.value),
     ;
     private final int value;
     VkQueueGlobalPriorityKHR(int value) { this.value = value; }

@@ -18,9 +18,9 @@
 package overrungl.vulkan;
 
 public enum VkImageType implements overrun.marshal.CEnum {
-    1D(0),
-    2D(1),
-    3D(2),
+    _1D(0),
+    _2D(1),
+    _3D(2),
     ;
     private final int value;
     VkImageType(int value) { this.value = value; }
