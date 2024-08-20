@@ -124,7 +124,7 @@ public final class GL15Test {
                 px, py, pc, STBImage.RGB
             );
             if (Unmarshal.isNullPointer(data)) {
-                System.err.println(STR."Failed to load image.png: \{stbImage.failureReason()}");
+                System.err.println("Failed to load image.png: " + stbImage.failureReason());
             }
             gl.texImage2D(GL.TEXTURE_2D,
                 0,

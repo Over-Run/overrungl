@@ -61,11 +61,11 @@ public final class IOUtil {
             var is = isHttp ?
                 new URI(resource).toURL().openStream() :
                 Objects.requireNonNull(IOUtil.class.getClassLoader().getResourceAsStream(resource),
-                    STR."Failed to load resource '\{resource}'!")
+                    "Failed to load resource '" + resource + "'!")
         ) {
             return arena.allocateFrom(ValueLayout.JAVA_BYTE, is.readAllBytes());
         } catch (URISyntaxException e) {
-            throw new IllegalArgumentException(STR."Illegal URI: \{resource}", e);
+            throw new IllegalArgumentException("Illegal URI: " + resource, e);
         }
     }
 }
