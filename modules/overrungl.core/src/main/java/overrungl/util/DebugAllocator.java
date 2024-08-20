@@ -44,16 +44,15 @@ final class DebugAllocator {
             for (Allocation allocation : ALLOCATIONS.keySet()) {
                 StringBuilder sb = new StringBuilder(512);
 
-                sb.append(STR."""
-                    [OverrunGL] \{allocation.size} bytes leaked,\
-                     thread \{allocation.threadId} (\{THREADS.get(allocation.threadId)}),\
-                     address: 0x\{Long.toHexString(allocation.address).toUpperCase()}
-                    """);
+                sb.append("[OverrunGL] ").append(allocation.size).append(" bytes leaked, thread ")
+                    .append(allocation.threadId).append(" (").append(THREADS.get(allocation.threadId)).append("), address: 0x")
+                    .append(Long.toHexString(allocation.address).toUpperCase())
+                    .append("\n");
 
                 StackTraceElement[] stackTrace = allocation.getElements();
                 if (stackTrace != null) {
                     for (Object el : stackTrace) {
-                        sb.append(STR."\tat \{el.toString()}\n");
+                        sb.append("    at ").append(el.toString()).append("\n");
                     }
                 } else {
                     missingStacktrace = true;
@@ -98,22 +97,21 @@ final class DebugAllocator {
         trackAbortPrint(allocationOld, "Old", addressHex);
         trackAbortPrint(allocationNew, "New", addressHex);
 
-        throw new IllegalStateException(STR."The memory address specified is already being tracked: 0x\{addressHex}");
+        throw new IllegalStateException("The memory address specified is already being tracked: 0x" + addressHex);
     }
 
     private static void trackAbortPrint(Allocation allocation, String name, String address) {
         StringBuilder sb = new StringBuilder(512);
 
-        sb.append(STR."""
-            [OverrunGL] \{name} allocation with size \{allocation.size},\
-             thread \{allocation.threadId} (\{THREADS.get(allocation.threadId)}),\
-             address: 0x\{address}
-            """);
+        sb.append("[OverrunGL] ").append(name).append(" allocation with size ").append(allocation.size)
+            .append(", thread ").append(allocation.threadId).append(" (").append(THREADS.get(allocation.threadId)).append("), address: 0x")
+            .append(address)
+            .append("\n");
 
         StackTraceElement[] stackTrace = allocation.getElements();
         if (stackTrace != null) {
             for (Object el : stackTrace) {
-                sb.append(STR."\tat \{el.toString()}\n");
+                sb.append("    at ").append(el.toString()).append("\n");
             }
         }
 
@@ -137,7 +135,7 @@ final class DebugAllocator {
     private static void untrackAbort(long address) {
         String addressHex = Long.toHexString(address).toUpperCase();
 
-        throw new IllegalStateException(STR."The memory address specified is not being tracked: 0x\{addressHex}");
+        throw new IllegalStateException("The memory address specified is not being tracked: 0x" + addressHex);
     }
 
     private record Allocation(long address, long size, long threadId, @Nullable Object[] stacktrace) {

@@ -68,8 +68,8 @@ import static java.lang.foreign.ValueLayout.*;
  *             new Pair<>("Image file", "png,jpg"));
  *         var result = nfd.openDialogN(outPath, filterItem, null);
  *         switch (result) {
- *             case ERROR -> System.err.println(STR."Error: \{nfd.getError()}");
- *             case OKAY -> System.out.println(STR."Success! \{outPath[0]}");
+ *             case ERROR -> System.err.println("Error: " + nfd.getError());
+ *             case OKAY -> System.out.println("Success! " + outPath[0]);
  *             case CANCEL -> System.out.println("User pressed cancel.");
  *         }
  *     }

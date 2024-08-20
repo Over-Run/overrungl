@@ -37,7 +37,7 @@ public final class GLFWErrorCallback {
      */
     public static GLFWErrorFun createThrow() {
         return (errorCode, description) -> {
-            throw new IllegalStateException(STR."GLFW error [0x\{Integer.toHexString(errorCode)}]: \{description}");
+            throw new IllegalStateException("GLFW error [0x" + Integer.toHexString(errorCode) + "]: " + description);
         };
     }
 
@@ -49,10 +49,10 @@ public final class GLFWErrorCallback {
     public static GLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
-            sb.append(STR."[OverrunGL] GLFW \{GLFW.getErrorString(errorCode)} error: \{description}\n");
+            sb.append("[OverrunGL] GLFW ").append(GLFW.getErrorString(errorCode)).append(" error: ").append(description).append("\n");
             var stack = Thread.currentThread().getStackTrace();
             for (int i = 3; i < stack.length; i++) {
-                sb.append(STR."    at \{stack[i]}\n");
+                sb.append("    at ").append(stack[i]).append("\n");
             }
             logger.accept(sb.toString());
         };

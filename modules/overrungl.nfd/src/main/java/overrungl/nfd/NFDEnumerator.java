@@ -150,7 +150,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
     }
 
     private static IllegalStateException errorIterating(NFD nfd) {
-        return new IllegalStateException(STR."Error iterating: \{nfd.getError()}");
+        return new IllegalStateException("Error iterating: " + nfd.getError());
     }
 
     @NotNull

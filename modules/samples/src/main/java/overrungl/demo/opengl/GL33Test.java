@@ -251,10 +251,7 @@ public class GL33Test {
 
                 glfw.pollEvents();
 
-                // using lambda gets higher FPS ??
-                timer.calcFPS(fps -> {
-                    glfw.setWindowTitle(window, STR."\{WND_TITLE} FPS: \{fps}");
-                });
+                timer.calcFPS(fps -> glfw.setWindowTitle(window, WND_TITLE + " FPS: " + fps));
             }
         }
     }

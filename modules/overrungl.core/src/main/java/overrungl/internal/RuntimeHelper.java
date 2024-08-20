@@ -40,7 +40,7 @@ public final class RuntimeHelper {
      */
     private static final Linker LINKER = Linker.nativeLinker();
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
-        .resolve(STR."overrungl\{System.getProperty("user.name")}");
+        .resolve("overrungl" + System.getProperty("user.name"));
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
     private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
     /**
@@ -65,7 +65,8 @@ public final class RuntimeHelper {
      * Generates a string for unknown token.
      *
      * @param token the token.
-     * @return the string formatted in {@code Unknown [0x\{toHexString(token)}]}.
+     * @return the string formatted in {@code Unknown [0xHex(token)]}.
+     * @see #unknownToken(String, int)
      */
     public static String unknownToken(int token) {
         return unknownToken("Unknown", token);
@@ -76,10 +77,10 @@ public final class RuntimeHelper {
      *
      * @param description the description. default to {@code Unknown}
      * @param token       the token.
-     * @return the string is formatted in {@code STR."\{description} [0x\{toHexString(token)}]"}.
+     * @return the string is formatted in {@code description [0xHex(token)]}.
      */
     public static String unknownToken(String description, int token) {
-        return STR."\{description} [0x\{Integer.toHexString(token)}]";
+        return description + " [0x" + Integer.toHexString(token) + "]";
     }
 
     /**
@@ -114,22 +115,22 @@ public final class RuntimeHelper {
                     Files.createDirectories(tmpdir);
                 }
             } catch (IOException e) {
-                throw new IllegalStateException(STR."Couldn't create directory: \{tmpdir}; try setting -Doverrungl.natives to a valid path", e);
+                throw new IllegalStateException("Couldn't create directory: " + tmpdir + "; try setting -Doverrungl.natives to a valid path", e);
             }
-            var libFile = tmpdir.resolve(STR."\{basename}-\{version}\{suffix}");
+            var libFile = tmpdir.resolve(basename + "-" + version + suffix);
             if (!Files.exists(libFile)) {
                 // Extract
-                final String fromPath = STR."\{module}/\{os.familyName()}-\{Architecture.current()}/\{path}";
+                final String fromPath = module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
-                    Files.copy(Objects.requireNonNull(is, STR."File not found in classpath: \{fromPath}"), libFile);
+                    Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
-                    throw new IllegalStateException(STR."Couldn't load file: \{libFile} or \{localFile}; try setting -Doverrungl.natives to a valid path", e);
+                    throw new IllegalStateException("Couldn't load file: " + libFile + " or " + localFile + "; try setting -Doverrungl.natives to a valid path", e);
                 }
             }
             uri = libFile;
         }
         if (Configurations.DEBUG.get()) {
-            OverrunGL.apiLog(STR."[OverrunGL] Loading native library from: \{uri}");
+            OverrunGL.apiLog("[OverrunGL] Loading native library from: " + uri);
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(uri, Arena.global());
