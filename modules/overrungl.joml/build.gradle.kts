@@ -1,3 +1,5 @@
+val jomlVersion: String by project
+
 dependencies {
-    api("org.joml:joml:1.10.5")
+    api("org.joml:joml:$jomlVersion")
 }
