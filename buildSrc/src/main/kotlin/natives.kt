@@ -34,49 +34,45 @@ enum class NativeBinding(
 }
 
 enum class Artifact(
-    val artifactName: String,
     val projectName: String,
     val projectDescription: String,
-    val subprojectName: String,
-    val nativeBinding: NativeBinding? = null
+    val subprojectName: String
 ) {
     CORE(
-        "overrungl", "OverrunGL",
+        "OverrunGL",
         "The OverrunGL core library.",
         ":core"
     ),
     GLFW(
-        "overrungl-glfw", "OverrunGL - GLFW bindings",
+        "OverrunGL - GLFW bindings",
         "A multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.",
-        ":glfw", NativeBinding.GLFW
+        ":glfw"
     ),
     JOML(
-        "overrungl-joml", "OverrunGL - JOML native access",
+        "OverrunGL - JOML native access",
         "A Java math library for OpenGL rendering calculations",
         ":joml"
     ),
     NFD(
-        "overrungl-nfd", "OverrunGL - Native File Dialog",
+        "OverrunGL - Native File Dialog",
         "A tiny, neat C library that portably invokes native file open and save dialogs.",
-        ":nfd", NativeBinding.NFD
+        ":nfd"
     ),
     OPENGL(
-        "overrungl-opengl", "OverrunGL - OpenGL bindings",
+        "OverrunGL - OpenGL bindings",
         "The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.",
         ":opengl"
     ),
     STB(
-        "overrungl-stb", "OverrunGL - stb bindings",
+        "OverrunGL - stb bindings",
         "Single-file public domain libraries for fonts, images, ogg vorbis files and more.",
-        ":stb", NativeBinding.STB
+        ":stb"
     ),
 //    VULKAN("overrungl-vulkan", "OverrunGL - Vulkan bindings",
 //        "A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms.",
 //        ":vulkan", "Vulkan", null),
-    ;
+}
 
-    fun nativeFileName(platform: NativePlatform): String? {
-        return if (nativeBinding == null) null
-        else "${nativeBinding.bindingName}/${platform.osFamilyName}-${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
-    }
+fun nativeFileName(nativeBinding: NativeBinding, platform: NativePlatform): String {
+    return "${nativeBinding.bindingName}/${platform.osFamilyName}-${platform.osArch}/${platform.nativeLibPrefix}${nativeBinding.basename}${platform.nativeLibSuffix}"
 }

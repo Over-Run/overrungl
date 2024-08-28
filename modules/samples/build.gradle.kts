@@ -1,8 +1,12 @@
 plugins {
     id("me.champeau.jmh") version "0.7.2"
+    id("module.conventions")
+    id("submodule.conventions")
 }
 
-val projModules: String by project
+overrunglModule {
+    artifactName = "overrungl-samples"
+}
 
 dependencies {
     Artifact.values().forEach {
