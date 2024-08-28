@@ -16,7 +16,10 @@
 
 package overrungl.nfd;
 
-import overrun.marshal.*;
+import overrun.marshal.DirectAccess;
+import overrun.marshal.Marshal;
+import overrun.marshal.MemoryStack;
+import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
@@ -24,12 +27,9 @@ import overrungl.NativeType;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.value.Tuple2;
 
-import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.util.Map;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -124,6 +124,28 @@ import static java.lang.foreign.ValueLayout.*;
  */
 public interface NFD extends DirectAccess {
     /**
+     * The native window handle type.
+     */
+    int WINDOW_HANDLE_TYPE_UNSET = 0,
+    /**
+     * Windows: handle is HWND (the Windows API typedefs this to void*)
+     */
+    WINDOW_HANDLE_TYPE_WINDOWS = 1,
+    /**
+     * Cocoa: handle is NSWindow*
+     */
+    WINDOW_HANDLE_TYPE_COCOA = 2,
+    /**
+     * X11: handle is Window
+     */
+    WINDOW_HANDLE_TYPE_X11 = 3;
+    /**
+     * This is a unique identifier tagged to all the NFD_*With() function calls, for backward
+     * compatibility purposes.  There is usually no need to use this directly, unless you want to use
+     * NFD differently depending on the version you're building with.
+     */
+    long INTERFACE_VERSION = 1;
+    /**
      * The type of the path-set size ({@code unsigned long} for Windows and Mac OS X,
      * {@code unsigned int} for others).
      */
@@ -131,10 +153,7 @@ public interface NFD extends DirectAccess {
     /**
      * The instance of NFD.
      */
-    NFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP, DowncallOption.descriptors(Map.of(
-        "NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
-        "NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)
-    )));
+    NFD INSTANCE = NFDInternal.instance;
 
     /**
      * {@return NFD_PathSet_GetPathN}
@@ -259,6 +278,18 @@ public interface NFD extends DirectAccess {
         }
     }
 
+    @Entrypoint("NFD_OpenDialogN_With_Impl")
+    int openDialogNWithImpl(long version, MemorySegment outPath, MemorySegment args);
+
+    @Entrypoint("NFD_OpenDialogN_With")
+    int openDialogNWith(MemorySegment outPath, MemorySegment args);
+
+    @Entrypoint("NFD_OpenDialogU8_With_Impl")
+    int openDialogU8WithImpl(long version, MemorySegment outPath, MemorySegment args);
+
+    @Entrypoint("NFD_OpenDialogU8_With")
+    int openDialogU8With(MemorySegment outPath, MemorySegment args);
+
     /**
      * Multiple file open dialog
      *
@@ -324,6 +355,18 @@ public interface NFD extends DirectAccess {
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
         }
     }
+
+    @Entrypoint("NFD_OpenDialogMultipleN_With_Impl")
+    int openDialogMultipleNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_OpenDialogMultipleN_With")
+    int openDialogMultipleNWith(MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_OpenDialogMultipleU8_With_Impl")
+    int openDialogMultipleU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_OpenDialogMultipleU8_With")
+    int openDialogMultipleU8With(MemorySegment outPaths, MemorySegment args);
 
     /**
      * Save dialog
@@ -409,6 +452,18 @@ public interface NFD extends DirectAccess {
         }
     }
 
+    @Entrypoint("NFD_SaveDialogN_With_Impl")
+    int saveDialogNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_SaveDialogN_With")
+    int saveDialogNWith(MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_SaveDialogU8_With_Impl")
+    int saveDialogU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_SaveDialogU8_With")
+    int saveDialogU8With(MemorySegment outPaths, MemorySegment args);
+
     /**
      * Select folder dialog
      *
@@ -474,6 +529,36 @@ public interface NFD extends DirectAccess {
             return result;
         }
     }
+
+    @Entrypoint("NFD_PickFolderN_With_Impl")
+    int pickFolderNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderN_With")
+    int pickFolderNWith(MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderU8_With_Impl")
+    int pickFolderU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderU8_With")
+    int pickFolderU8With(MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderMultipleN")
+    int pickFolderMultipleN(MemorySegment outPaths, MemorySegment defaultPath);
+
+    @Entrypoint("NFD_PickFolderMultipleU8")
+    int pickFolderMultipleU8(MemorySegment outPaths, MemorySegment defaultPath);
+
+    @Entrypoint("NFD_PickFolderMultipleN_With_Impl")
+    int pickFolderMultipleNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderMultipleN_With")
+    int pickFolderMultipleNWith(MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderMultipleU8_With_Impl")
+    int pickFolderMultipleU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
+
+    @Entrypoint("NFD_PickFolderMultipleU8_With")
+    int pickFolderMultipleU8With(MemorySegment outPaths, MemorySegment args);
 
     /**
      * Get the last error

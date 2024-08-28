@@ -17,4 +17,8 @@ file("modules").listFiles().forEach {
     project(":$s").projectDir = it
 }
 
-include("generators:opengl", "generators:vulkan")
+include(
+    "generators:nfd",
+    "generators:opengl",
+    "generators:vulkan"
+)

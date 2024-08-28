@@ -1,4 +1,4 @@
-package overrungl.gen/*
+/*
  * MIT License
  *
  * Copyright (c) 2024 Overrun Organization
@@ -13,6 +13,7 @@ package overrungl.gen/*
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  */
+package overrungl.gen
 
 const val fileHeader = """/*
  * MIT License

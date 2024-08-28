@@ -7,6 +7,6 @@ dependencies {
 }
 
 tasks.register<GenerateTask>("generate") {
-    mainClass.set("overrungl.opengl.OpenGLGeneratorKt")
-    workingDir = project(":opengl").projectDir.resolve("src/main/java/overrungl/opengl")
+    mainClass = "overrungl.nfd.NFDGeneratorKt"
+    workingDir = project(":nfd").projectDir.resolve("src/main/java/overrungl/nfd")
 }
