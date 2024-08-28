@@ -34,7 +34,6 @@ import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.glfw.Handles.*;
 
 /**
  * The GLFW binding.
@@ -43,11 +42,6 @@ import static overrungl.glfw.Handles.*;
  * @since 0.1.0
  */
 public interface GLFW extends DirectAccess {
-    /**
-     * The instance of GLFW.
-     */
-    GLFW INSTANCE = Downcall.load(MethodHandles.lookup(), lookup);
-
     /**
      * The major version number of the GLFW header.
      * <p>
@@ -1109,6 +1103,11 @@ public interface GLFW extends DirectAccess {
      * Don't care value.
      */
     int DONT_CARE = -1;
+
+    /**
+     * The instance of GLFW.
+     */
+    GLFW INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
 
     /**
      * Converts the given error code to a readable string.

@@ -16,10 +16,7 @@
 
 package overrungl.nfd;
 
-import overrun.marshal.DirectAccess;
-import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
-import overrun.marshal.Unmarshal;
+import overrun.marshal.*;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
@@ -30,6 +27,7 @@ import overrungl.util.value.Tuple2;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -153,7 +151,7 @@ public interface NFD extends DirectAccess {
     /**
      * The instance of NFD.
      */
-    NFD INSTANCE = NFDInternal.instance;
+    NFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP);
 
     /**
      * {@return NFD_PathSet_GetPathN}
