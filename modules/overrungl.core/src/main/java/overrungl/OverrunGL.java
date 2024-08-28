@@ -41,11 +41,11 @@ public final class OverrunGL {
     /**
      * The version of NFD native libraries.
      */
-    public static final String NFD_VERSION = "1.1.1.0";
+    public static final String NFD_VERSION = "1.2.1.0";
     /**
      * The version of STB native libraries.
      */
-    public static final String STB_VERSION = "0.1.0.4";
+    public static final String STB_VERSION = "0.1.0.5";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 
