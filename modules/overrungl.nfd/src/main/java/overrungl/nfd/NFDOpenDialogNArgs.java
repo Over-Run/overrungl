@@ -20,7 +20,7 @@ import overrun.marshal.LayoutBuilder;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.struct.Struct;
 import overrun.marshal.struct.StructAllocator;
-import overrungl.internal.RuntimeHelper;
+import overrungl.util.PlatformLayouts;
 
 /**
  * {@code NFDOpenDialogNArgs}
@@ -32,7 +32,7 @@ public interface NFDOpenDialogNArgs extends Struct<NFDOpenDialogNArgs> {
     StructAllocator<NFDOpenDialogNArgs> OF = new StructAllocator<>(java.lang.invoke.MethodHandles.lookup(),
         LayoutBuilder.struct()
             .cAddress("filterList")
-            .add(RuntimeHelper.SIZE_T, "filterCount")
+            .add(PlatformLayouts.SIZE_T, "filterCount")
             .add(Unmarshal.STR_LAYOUT, "defaultPath")
             .cAddress("parentWindow", NFDWindowHandle.OF.layout())
             .build()

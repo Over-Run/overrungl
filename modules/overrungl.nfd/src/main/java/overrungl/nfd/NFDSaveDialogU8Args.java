@@ -20,7 +20,7 @@ import overrun.marshal.LayoutBuilder;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.struct.Struct;
 import overrun.marshal.struct.StructAllocator;
-import overrungl.internal.RuntimeHelper;
+import overrungl.util.PlatformLayouts;
 
 /**
  * {@code NFDSaveDialogU8Args}
@@ -32,7 +32,7 @@ public interface NFDSaveDialogU8Args extends Struct<NFDSaveDialogU8Args> {
     StructAllocator<NFDSaveDialogU8Args> OF = new StructAllocator<>(java.lang.invoke.MethodHandles.lookup(),
         LayoutBuilder.struct()
             .cAddress("filterList")
-            .add(RuntimeHelper.SIZE_T, "filterCount")
+            .add(PlatformLayouts.SIZE_T, "filterCount")
             .add(Unmarshal.STR_LAYOUT, "defaultPath")
             .add(Unmarshal.STR_LAYOUT, "defaultName")
             .cAddress("parentWindow", NFDWindowHandle.OF.layout())

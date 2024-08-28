@@ -24,7 +24,7 @@ import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
 import overrungl.NativeType;
-import overrungl.internal.RuntimeHelper;
+import overrungl.util.PlatformLayouts;
 import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.MemorySegment;
@@ -149,7 +149,7 @@ public interface NFD extends DirectAccess {
      * The type of the path-set size ({@code unsigned long} for Windows and Mac OS X,
      * {@code unsigned int} for others).
      */
-    ValueLayout PATH_SET_SIZE = NFDInternal.isOsWinOrApple ? (ValueLayout) RuntimeHelper.LONG : JAVA_INT;
+    ValueLayout PATH_SET_SIZE = NFDInternal.isOsWinOrApple ? (ValueLayout) PlatformLayouts.LONG : JAVA_INT;
     /**
      * The instance of NFD.
      */

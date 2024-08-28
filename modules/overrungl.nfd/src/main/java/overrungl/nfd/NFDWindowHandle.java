@@ -19,7 +19,7 @@ package overrungl.nfd;
 import overrun.marshal.LayoutBuilder;
 import overrun.marshal.struct.Struct;
 import overrun.marshal.struct.StructAllocator;
-import overrungl.internal.RuntimeHelper;
+import overrungl.util.PlatformLayouts;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
@@ -39,7 +39,7 @@ public interface NFDWindowHandle extends Struct<NFDWindowHandle> {
      */
     StructAllocator<NFDWindowHandle> OF = new StructAllocator<>(MethodHandles.lookup(),
         LayoutBuilder.struct()
-            .add(RuntimeHelper.SIZE_T, "type")
+            .add(PlatformLayouts.SIZE_T, "type")
             .cAddress("handle")
             .build());
 

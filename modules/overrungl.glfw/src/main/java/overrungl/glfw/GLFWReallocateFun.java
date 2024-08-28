@@ -19,6 +19,7 @@ package overrungl.glfw;
 import overrun.marshal.Upcall;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryUtil;
+import overrungl.util.PlatformLayouts;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
@@ -44,7 +45,7 @@ public interface GLFWReallocateFun extends Upcall {
      * The type of the upcall.
      */
     Type<GLFWReallocateFun> TYPE = Upcall.type(RuntimeHelper.SIZE_T_LONG ? "invoke" : "invoke_int",
-        FunctionDescriptor.of(ValueLayout.ADDRESS, RuntimeHelper.SIZE_T, ValueLayout.ADDRESS));
+        FunctionDescriptor.of(ValueLayout.ADDRESS, PlatformLayouts.SIZE_T, ValueLayout.ADDRESS));
 
     /**
      * This function must return a memory block at least {@code size} bytes long, or
