@@ -23,7 +23,6 @@ import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBColorBufferFloat;
 import overrungl.opengl.ext.arb.GLARBTextureFloat;
@@ -625,7 +624,6 @@ public interface GL30C extends DirectAccess {
 
     @Entrypoint("glGetStringi")
     @Nullable
-    @SizedSeg(Unmarshal.STR_SIZE)
     default String getStringi(int pname, int index) {
         throw new ContextException();
     }

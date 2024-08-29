@@ -22,6 +22,7 @@ import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.*;
+import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;
@@ -1234,7 +1235,7 @@ public interface GLFW extends DirectAccess {
      * @see #initAllocator
      * @see #terminate
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwInit")
     boolean init();
 
@@ -1404,7 +1405,6 @@ public interface GLFW extends DirectAccess {
      * @see #ngetVersionString() ngetVersionString
      */
     @Entrypoint("glfwGetVersionString")
-    @SizedSeg(Unmarshal.STR_SIZE)
     @StrCharset("US-ASCII")
     String getVersionString();
 
@@ -1527,7 +1527,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getPlatform
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwPlatformSupported")
     boolean platformSupported(int platform);
 
@@ -1834,7 +1834,6 @@ public interface GLFW extends DirectAccess {
      */
     @Entrypoint("glfwGetMonitorName")
     @Nullable
-    @SizedSeg(Unmarshal.STR_SIZE)
     String getMonitorName(MemorySegment monitor);
 
     /**
@@ -2147,7 +2146,7 @@ public interface GLFW extends DirectAccess {
      * @see #windowHint(int, int)
      */
     @Entrypoint("glfwWindowHint")
-    void windowHint(int hint, @Convert(Type.INT) boolean value);
+    void windowHint(int hint, @Convert(BoolConvert.INT) boolean value);
 
     /**
      * Sets the specified window hint to the desired value.
@@ -2394,7 +2393,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwWindowShouldClose")
     boolean windowShouldClose(MemorySegment window);
 
@@ -2412,7 +2411,7 @@ public interface GLFW extends DirectAccess {
      * synchronized.
      */
     @Entrypoint("glfwSetWindowShouldClose")
-    void setWindowShouldClose(MemorySegment window, @Convert(Type.INT) boolean value);
+    void setWindowShouldClose(MemorySegment window, @Convert(BoolConvert.INT) boolean value);
 
     /**
      * Returns the title of the specified window.
@@ -2448,7 +2447,6 @@ public interface GLFW extends DirectAccess {
      * @see #ngetWindowTitle(MemorySegment)
      */
     @Entrypoint("glfwGetWindowTitle")
-    @SizedSeg(Unmarshal.STR_SIZE)
     String getWindowTitle(MemorySegment window);
 
     /**
@@ -3296,7 +3294,7 @@ public interface GLFW extends DirectAccess {
      * @see #getWindowAttrib(MemorySegment, int) getWindowAttrib
      */
     @Entrypoint("glfwSetWindowAttrib")
-    void setWindowAttrib(MemorySegment window, int attrib, @Convert(Type.INT) boolean value);
+    void setWindowAttrib(MemorySegment window, int attrib, @Convert(BoolConvert.INT) boolean value);
 
     /**
      * Sets the user pointer of the specified window.
@@ -3901,7 +3899,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(MemorySegment, int, int) setInputMode
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwRawMouseMotionSupported")
     boolean rawMouseMotionSupported();
 
@@ -4593,7 +4591,7 @@ public interface GLFW extends DirectAccess {
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwJoystickPresent")
     boolean joystickPresent(int jid);
 
@@ -4901,7 +4899,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetGamepadState(int, MemorySegment) getGamepadState
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwJoystickIsGamepad")
     boolean joystickIsGamepad(int jid);
 
@@ -4972,7 +4970,7 @@ public interface GLFW extends DirectAccess {
      * @see #joystickIsGamepad(int) joystickIsGamepad
      * @see #ngetGamepadName(int) getGamepadName
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwUpdateGamepadMappings")
     boolean nupdateGamepadMappings(MemorySegment string);
 
@@ -4984,7 +4982,7 @@ public interface GLFW extends DirectAccess {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(MemorySegment) nupdateGamepadMappings
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwUpdateGamepadMappings")
     boolean updateGamepadMappings(String string);
 
@@ -5055,7 +5053,7 @@ public interface GLFW extends DirectAccess {
      * @see #nupdateGamepadMappings(MemorySegment) updateGamepadMappings
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetGamepadState")
     boolean ngetGamepadState(int jid, MemorySegment state);
 
@@ -5069,7 +5067,7 @@ public interface GLFW extends DirectAccess {
      * occurred.
      * @see #ngetGamepadState(int, MemorySegment) ngetGamepadState
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetGamepadState")
     boolean getGamepadState(int jid, GLFWGamepadState state);
 
@@ -5153,7 +5151,6 @@ public interface GLFW extends DirectAccess {
      * @see #nsetClipboardString(MemorySegment) setClipboardString
      */
     @Entrypoint("glfwGetClipboardString")
-    @SizedSeg(Unmarshal.STR_SIZE)
     MemorySegment ngetClipboardString(MemorySegment window);
 
     /**
@@ -5417,7 +5414,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetProcAddress
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwExtensionSupported")
     boolean nextensionSupported(MemorySegment extension);
 
@@ -5429,7 +5426,7 @@ public interface GLFW extends DirectAccess {
      * otherwise.
      * @see #nextensionSupported(MemorySegment) nextensionSupported
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwExtensionSupported")
     boolean extensionSupported(@StrCharset("US-ASCII") String extension);
 
@@ -5497,7 +5494,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwVulkanSupported")
     boolean vulkanSupported();
 

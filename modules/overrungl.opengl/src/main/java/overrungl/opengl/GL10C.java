@@ -19,10 +19,8 @@ package overrungl.opengl;
 import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
-import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
 
 import java.lang.foreign.MemorySegment;
@@ -379,7 +377,6 @@ public interface GL10C extends DirectAccess {
 
     @Entrypoint("glGetString")
     @Nullable
-    @SizedSeg(Unmarshal.STR_SIZE)
     default String getString(int name) {
         throw new ContextException();
     }

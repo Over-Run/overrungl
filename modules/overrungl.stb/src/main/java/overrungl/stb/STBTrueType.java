@@ -20,7 +20,7 @@ import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
-import overrun.marshal.gen.Type;
+import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
 import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
@@ -436,7 +436,7 @@ public interface STBTrueType extends DirectAccess {
                       int char_index,
                       @NativeType("float *") MemorySegment xpos, @NativeType("float *") MemorySegment ypos,
                       STBTTAlignedQuad q,
-                      @Convert(Type.INT) boolean opengl_fillrule);
+                      @Convert(BoolConvert.INT) boolean opengl_fillrule);
 
     /**
      * Query the font vertical metrics without having to create a font first.
@@ -573,7 +573,7 @@ public interface STBTrueType extends DirectAccess {
      * @param skip skip
      */
     @Entrypoint("stbtt_PackSetSkipMissingCodepoints")
-    void packSetSkipMissingCodepoints(@NativeType("stbtt_pack_context *") MemorySegment spc, @Convert(Type.INT) boolean skip);
+    void packSetSkipMissingCodepoints(@NativeType("stbtt_pack_context *") MemorySegment spc, @Convert(BoolConvert.INT) boolean skip);
 
     /**
      * Calling these functions in sequence is roughly equivalent to calling
@@ -706,7 +706,7 @@ public interface STBTrueType extends DirectAccess {
      * @param offset offset
      * @return {@code false} on failure.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("stbtt_InitFont")
     boolean initFont(STBTTFontInfo info, @NativeType("const unsigned char *") MemorySegment data, int offset);
 
@@ -788,7 +788,7 @@ public interface STBTrueType extends DirectAccess {
      * @param typoLineGap typoLineGap
      * @return {@code true} on success (table present), {@code false} on failure.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("stbtt_GetFontVMetricsOS2")
     boolean getFontVMetricsOS2(STBTTFontInfo info, @NativeType("int *") MemorySegment typoAscent, @NativeType("int *") MemorySegment typoDescent, @NativeType("int *") MemorySegment typoLineGap);
 
@@ -913,7 +913,7 @@ public interface STBTrueType extends DirectAccess {
      * @param info        info
      * @param glyph_index glyph_index
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("stbtt_IsGlyphEmpty")
     boolean isGlyphEmpty(STBTTFontInfo info, int glyph_index);
 

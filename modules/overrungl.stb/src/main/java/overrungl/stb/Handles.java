@@ -25,6 +25,8 @@ import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
 import java.util.function.Supplier;
 
+import static overrun.marshal.gen.processor.ProcessorTypes.registerStruct;
+
 /**
  * The STB method handles.
  *
@@ -38,6 +40,22 @@ final class Handles {
         stbi_write_force_png_filter;
 
     static {
+        registerStruct(STBIIoCallbacks.class, STBIIoCallbacks.OF);
+        registerStruct(STBIRRESIZE.class, STBIRRESIZE.OF);
+        registerStruct(STBRPContext.class, STBRPContext.OF);
+        registerStruct(STBRPNode.class, STBRPNode.OF);
+        registerStruct(STBRPRect.class, STBRPRect.OF);
+        registerStruct(STBTTAlignedQuad.class, STBTTAlignedQuad.OF);
+        registerStruct(STBTTBakedChar.class, STBTTBakedChar.OF);
+        registerStruct(STBTTFontInfo.class, STBTTFontInfo.OF);
+        registerStruct(STBTTKerningEntry.class, STBTTKerningEntry.OF);
+        registerStruct(STBTTPackedChar.class, STBTTPackedChar.OF);
+        registerStruct(STBTTPackRange.class, STBTTPackRange.OF);
+        registerStruct(STBTTVertex.class, STBTTVertex.OF);
+        registerStruct(STBVorbisAlloc.class, STBVorbisAlloc.OF);
+        registerStruct(STBVorbisComment.class, STBVorbisComment.OF);
+        registerStruct(STBVorbisInfo.class, STBVorbisInfo.OF);
+
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
         final var function = Configurations.STB_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();

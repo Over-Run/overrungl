@@ -21,7 +21,7 @@ import overrun.marshal.Downcall;
 import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.Type;
+import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
 import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
@@ -149,7 +149,7 @@ public interface GLFWVulkan extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.  For
      * synchronization details of Vulkan objects, see the Vulkan specification.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetPhysicalDevicePresentationSupport")
     boolean getPhysicalDevicePresentationSupport(MemorySegment instance, MemorySegment device, int queueFamily);
 

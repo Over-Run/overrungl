@@ -23,6 +23,8 @@ import overrungl.internal.RuntimeHelper;
 import java.lang.foreign.SymbolLookup;
 import java.util.function.Supplier;
 
+import static overrun.marshal.gen.processor.ProcessorTypes.registerStruct;
+
 /**
  * The GLFW method handles.
  *
@@ -33,6 +35,12 @@ final class Handles {
     static final SymbolLookup lookup;
 
     static {
+        registerStruct(GLFWAllocator.class, GLFWAllocator.OF);
+        registerStruct(GLFWGamepadState.class, GLFWGamepadState.OF);
+        registerStruct(GLFWGammaRamp.class, GLFWGammaRamp.OF);
+        registerStruct(GLFWImage.class, GLFWImage.OF);
+        registerStruct(GLFWVidMode.class, GLFWVidMode.OF);
+
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw", OverrunGL.GLFW_VERSION);
         final var function = Configurations.GLFW_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();

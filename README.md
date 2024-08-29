@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/github/license/Over-Run/overrungl)
 
-![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
+[//]: # (![Maven Central]&#40;https://img.shields.io/maven-central/v/io.github.over-run/overrungl&#41;)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org)
 
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-Overrun Game Library is a high-performance library implemented with Java 22,
+Overrun Game Library is a high-performance library implemented with Java 23,
 which enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
 
 ### OverrunGL vs. LWJGL
@@ -29,8 +29,7 @@ the [samples](modules/samples/src/main/java/overrungl/demo).
 
 We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
 
-Currently, we are developing with the first version,
-and it uses preview features, which prevent users from using newer JDKs,
+Currently, OverrunGL uses preview features, which prevent users from using newer JDKs,
 so you have to use `-SNAPSHOT` version.
 
 You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.

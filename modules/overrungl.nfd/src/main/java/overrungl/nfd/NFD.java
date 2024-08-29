@@ -16,9 +16,12 @@
 
 package overrungl.nfd;
 
-import overrun.marshal.*;
+import io.github.overrun.memstack.MemoryStack;
+import overrun.marshal.DirectAccess;
+import overrun.marshal.Downcall;
+import overrun.marshal.Marshal;
+import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
-import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
 import overrungl.NativeType;
 import overrungl.util.PlatformLayouts;
@@ -234,7 +237,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int openDialogN(String[] outPath, NFDNFilterItem<?> filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nopenDialogN(seg,
                 filterList,
@@ -273,7 +276,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int openDialogU8(String[] outPath, NFDU8FilterItem<?> filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nopenDialogU8(seg,
                 filterList,
@@ -325,7 +328,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem<?> filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             return nopenDialogMultipleN(outPaths,
                 filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
@@ -358,7 +361,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem<?> filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             return nopenDialogMultipleU8(outPaths,
                 filterList,
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
@@ -404,7 +407,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int saveDialogN(String[] outPath, NFDNFilterItem<?> filterList, String defaultPath, String defaultName) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nsaveDialogN(seg,
                 filterList,
@@ -446,7 +449,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int saveDialogU8(String[] outPath, NFDU8FilterItem<?> filterList, String defaultPath, String defaultName) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nsaveDialogU8(seg,
                 filterList,
@@ -495,7 +498,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pickFolderN(String[] outPath, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = npickFolderN(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == OKAY) {
@@ -528,7 +531,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pickFolderU8(String[] outPath, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = npickFolderU8(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == OKAY) {
@@ -595,7 +598,6 @@ public interface NFD extends DirectAccess {
      * @see #ngetError() ngetError
      */
     @Entrypoint("NFD_GetError")
-    @SizedSeg(Unmarshal.STR_SIZE)
     String getError();
 
     /**
@@ -627,7 +629,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long[] count) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = stack.allocate(PATH_SET_SIZE);
             final int result = npathSetGetCount(pathSet, seg);
             count[0] = switch (PATH_SET_SIZE) {
@@ -648,7 +650,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default Tuple2.OfIntLong pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = stack.allocate(PATH_SET_SIZE);
             final int result = npathSetGetCount(pathSet, seg);
             return new Tuple2.OfIntLong(result, switch (PATH_SET_SIZE) {
@@ -692,7 +694,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = npathSetGetPathN(pathSet, index, seg);
             if (result == OKAY) {
@@ -737,7 +739,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = npathSetGetPathU8(pathSet, index, seg);
             if (result == OKAY) {
@@ -810,7 +812,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = npathSetEnumNextN(enumerator, seg);
             if (result == OKAY) {
@@ -849,7 +851,7 @@ public interface NFD extends DirectAccess {
      */
     @Skip
     default int pathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = npathSetEnumNextU8(enumerator, seg);
             if (result == OKAY) {
