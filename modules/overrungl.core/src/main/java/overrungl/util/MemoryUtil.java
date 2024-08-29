@@ -23,7 +23,6 @@ import overrungl.Configurations;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import static java.lang.foreign.FunctionDescriptor.of;
 import static java.lang.foreign.ValueLayout.ADDRESS;
 import static overrungl.internal.RuntimeHelper.SIZE_T_LONG;
 import static overrungl.util.PlatformLayouts.SIZE_T;
@@ -38,13 +37,13 @@ public final class MemoryUtil {
     private static final Linker LINKER = Linker.nativeLinker();
     private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", of(ADDRESS, SIZE_T)),
-        m_calloc = downcall("calloc", of(ADDRESS, SIZE_T, SIZE_T)),
-        m_realloc = downcall("realloc", of(ADDRESS, ADDRESS, SIZE_T)),
+        m_malloc = downcall("malloc", FunctionDescriptor.of(ADDRESS, SIZE_T)),
+        m_calloc = downcall("calloc", FunctionDescriptor.of(ADDRESS, SIZE_T, SIZE_T)),
+        m_realloc = downcall("realloc", FunctionDescriptor.of(ADDRESS, ADDRESS, SIZE_T)),
         m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
-        m_memcpy = downcall("memcpy", of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
-        m_memmove = downcall("memmove", of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
-        m_memset = downcall("memset", of(ADDRESS, ADDRESS, ValueLayout.JAVA_INT, SIZE_T));
+        m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
+        m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
+        m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, ValueLayout.JAVA_INT, SIZE_T));
     private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
     /**
      * The address of {@code NULL}.
@@ -337,7 +336,7 @@ public final class MemoryUtil {
         return (byteSize, byteAlignment) -> {
             checkByteSize(byteSize);
             checkAlignment(byteAlignment);
-            return calloc(1, byteSize).reinterpret(arena, MemoryUtil::free);
+            return calloc(byteSize, 1).reinterpret(arena, MemoryUtil::free);
         };
     }
 }

@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 5, time = 250, timeUnit = TimeUnit.MILLISECONDS, batchSize = 100)
 @Threads(Threads.MAX)
 @Fork(1)
-public class MemoryUtilTest {
+public class MemoryUtilBenchmark {
     @Param({"0", "1", "10", "128", "1024"})
     private long size;
 
@@ -92,8 +92,8 @@ public class MemoryUtilTest {
     public static void main(String[] args) throws RunnerException {
         new Runner(
             new OptionsBuilder()
-                .include(MemoryUtilTest.class.getSimpleName())
-                .result("MemoryUtilTest.json")
+                .include(MemoryUtilBenchmark.class.getSimpleName())
+                .result("MemoryUtilBenchmark.json")
                 .resultFormat(ResultFormatType.JSON)
                 .build()
         ).run();
