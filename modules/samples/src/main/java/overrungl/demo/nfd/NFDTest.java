@@ -16,7 +16,7 @@
 
 package overrungl.demo.nfd;
 
-import overrun.marshal.MemoryStack;
+import io.github.overrun.memstack.MemoryStack;
 import overrungl.nfd.NFD;
 import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDNFilterItem;
@@ -39,7 +39,7 @@ public final class NFDTest {
         // or before/after every time you want to show a file dialog.
         nfd.init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
@@ -68,8 +68,8 @@ public final class NFDTest {
         // or before/after every time you want to show a file dialog.
         nfd.init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.segments(MemorySegment.NULL);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
@@ -109,8 +109,8 @@ public final class NFDTest {
         // or before/after every time you want to show a file dialog.
         nfd.init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.segments(MemorySegment.NULL);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
 
             // prepare filters for the dialog
             final var filterItem = NFDNFilterItem.create(stack,
@@ -173,7 +173,7 @@ public final class NFDTest {
         // or before/after every time you want to show a file dialog.
         nfd.init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             String[] savePath = new String[1];
 
             // prepare filters for the dialog

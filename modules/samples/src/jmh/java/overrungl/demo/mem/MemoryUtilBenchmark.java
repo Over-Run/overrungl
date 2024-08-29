@@ -16,13 +16,13 @@
 
 package overrungl.demo.mem;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-import overrun.marshal.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.Arena;
@@ -76,15 +76,8 @@ public class MemoryUtilBenchmark {
     }
 
     @Benchmark
-    public void measureStackMalloc(Blackhole bh) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            bh.consume(stack.malloc(size, 1L));
-        }
-    }
-
-    @Benchmark
     public void measureStackCalloc(Blackhole bh) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             bh.consume(stack.allocate(size));
         }
     }

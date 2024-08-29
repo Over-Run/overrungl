@@ -16,10 +16,11 @@
 
 package overrungl.stb;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
-import overrun.marshal.MemoryStack;
+import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.*;
 
@@ -274,12 +275,12 @@ public interface STBImage extends DirectAccess {
 
     @Skip
     default MemorySegment loadGifFromMemory(SegmentAllocator allocator, byte[] buffer, @Ref int[][] delays, @Ref int[] x, @Ref int[] y, @Ref int[] z, @Ref int[] comp, int reqComp) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var pd = stack.allocate(ValueLayout.ADDRESS);
-            var px = stack.ints(x);
-            var py = stack.ints(y);
-            var pz = stack.ints(z);
-            var pc = stack.ints(comp);
+            var px = Marshal.marshal(stack, x);
+            var py = Marshal.marshal(stack, y);
+            var pz = Marshal.marshal(stack, z);
+            var pc = Marshal.marshal(stack, comp);
             var addr = loadGifFromMemory(allocator.allocateFrom(ValueLayout.JAVA_BYTE, buffer), pd, px, py, pz, pc, reqComp);
             Unmarshal.copy(px, x);
             Unmarshal.copy(py, y);

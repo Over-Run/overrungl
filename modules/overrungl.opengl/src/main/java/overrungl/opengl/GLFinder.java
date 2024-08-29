@@ -16,7 +16,7 @@
 
 package overrungl.opengl;
 
-import overrun.marshal.MemoryStack;
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrungl.util.value.Pair;
 
@@ -109,7 +109,7 @@ final class GLFinder {
 
         // extension count
         int numExtsI;
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment pNumExtsI = stack.allocate(ValueLayout.JAVA_INT);
             try {
                 glGetIntegerv.invokeExact(GL.NUM_EXTENSIONS, pNumExtsI);

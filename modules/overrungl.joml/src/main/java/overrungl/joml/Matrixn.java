@@ -17,7 +17,6 @@
 package overrungl.joml;
 
 import org.joml.*;
-import overrun.marshal.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemoryLayout;
@@ -288,116 +287,6 @@ public final class Matrixn {
      */
     public static MemorySegment malloc(Matrix4dc mat) {
         return put(mat, MemoryUtil.malloc(MAT4D));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix2fc mat) {
-        return put(mat, stack.malloc(MAT2F));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix2dc mat) {
-        return put(mat, stack.malloc(MAT2D));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix3x2fc mat) {
-        return put(mat, stack.malloc(MAT3X2F));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix3x2dc mat) {
-        return put(mat, stack.malloc(MAT3X2D));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix3fc mat) {
-        return put(mat, stack.malloc(MAT3F));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix3dc mat) {
-        return put(mat, stack.malloc(MAT3D));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix4x3fc mat) {
-        return put(mat, stack.malloc(MAT4X3F));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix4x3dc mat) {
-        return put(mat, stack.malloc(MAT4X3D));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix4fc mat) {
-        return put(mat, stack.malloc(MAT4F));
-    }
-
-    /**
-     * Allocates the matrix on stack.
-     *
-     * @param stack the memory stack
-     * @param mat   the matrix
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Matrix4dc mat) {
-        return put(mat, stack.malloc(MAT4D));
     }
 
     /**

@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -508,7 +508,7 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default double[] getClipPlane(int plane) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var pEq = stack.allocate(JAVA_DOUBLE, 4);
             getClipPlane(plane, pEq);
             return Unmarshal.unmarshalAsDoubleArray(pEq);
@@ -527,8 +527,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default float getLightfv(int light, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getLightfv(light, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -546,8 +546,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default int getLightiv(int light, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getLightiv(light, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }
@@ -565,8 +565,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default double getMapdv(int target, int query) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pv = stack.doubles(0D);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pv = stack.allocate(JAVA_DOUBLE);
             getMapdv(target, query, pv);
             return pv.get(JAVA_DOUBLE, 0);
         }
@@ -584,8 +584,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default float getMapfv(int target, int query) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pv = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pv = stack.allocate(JAVA_FLOAT);
             getMapfv(target, query, pv);
             return pv.get(JAVA_FLOAT, 0);
         }
@@ -603,8 +603,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default int getMapiv(int target, int query) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pv = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pv = stack.allocate(JAVA_INT);
             getMapiv(target, query, pv);
             return pv.get(JAVA_INT, 0);
         }
@@ -622,8 +622,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default float getMaterialfv(int face, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getMaterialfv(face, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -641,8 +641,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default int getMaterialiv(int face, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getMaterialiv(face, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }
@@ -700,8 +700,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default float getTexEnvfv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getTexEnvfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -719,8 +719,8 @@ public interface GL10 extends DirectAccess {
 
     @Skip
     default int getTexEnviv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getTexEnviv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }

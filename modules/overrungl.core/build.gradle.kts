@@ -19,6 +19,8 @@ val targetJavaVersion = jdkVersion.toInt()
 dependencies {
     api("io.github.over-run:marshal:$overrunMarshalVersion")
     api("io.github.over-run:platform:$overrunPlatformVersion")
+    //TODO
+    api("io.github.over-run:memstack:0.2.0")
 }
 
 tasks.register("assembleJavadocArgs") {

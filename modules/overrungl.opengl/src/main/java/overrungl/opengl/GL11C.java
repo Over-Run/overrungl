@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -99,7 +99,7 @@ public interface GL11C extends DirectAccess {
 
     @Skip
     default void deleteTextures(int... textures) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteTextures(textures.length, Marshal.marshal(stack, textures));
         }
     }
@@ -143,8 +143,8 @@ public interface GL11C extends DirectAccess {
 
     @Skip
     default int genTextures() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pTex = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pTex = stack.allocate(ValueLayout.JAVA_INT);
             genTextures(1, pTex);
             return pTex.get(ValueLayout.JAVA_INT, 0);
         }
@@ -157,8 +157,8 @@ public interface GL11C extends DirectAccess {
 
     @Skip
     default MemorySegment getPointer(int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.segments(MemorySegment.NULL);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(ValueLayout.ADDRESS);
             getPointerv(pname, pParams);
             return pParams.get(ValueLayout.ADDRESS, 0);
         }

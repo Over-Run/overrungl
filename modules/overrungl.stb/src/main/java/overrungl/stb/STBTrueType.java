@@ -150,7 +150,7 @@ import java.lang.invoke.MethodHandles;
  * <h2>SAMPLE PROGRAMS</h2>
  * Incomplete text-in-3d-api example, which draws quads properly aligned to be lossless.
  * {@snippet lang = java:
- * import overrun.marshal.MemoryStack;
+ * import io.github.overrun.memstack.MemoryStack;
  * import java.lang.foreign.Arena;
  * import java.nio.channels.FileChannel;
  * import java.nio.file.Path;
@@ -184,7 +184,7 @@ import java.lang.invoke.MethodHandles;
  *     gl.enable(GL.TEXTURE_2D);
  *     gl.bindTexture(GL.TEXTURE_2D, ftex);
  *     gl.begin(GL.QUADS);
- *     try (var stack = MemoryStack.stackPush()) {
+ *     try (var stack = MemoryStack.pushLocal()) {
  *         var q = STBTTAlignedQuad.OF.of(stack);
  *         var px = stack.floats(x);
  *         var py = stack.floats(y);
@@ -205,7 +205,7 @@ import java.lang.invoke.MethodHandles;
  * <p>
  * Complete program (this compiles): get a single bitmap, print as ASCII art
  * {@snippet lang = java:
- * import overrun.marshal.MemoryStack;
+ * import io.github.overrun.memstack.MemoryStack;
  * import overrungl.stb.STBTTFontInfo;
  * import overrungl.stb.STBTrueType;
  *
@@ -230,7 +230,7 @@ import java.lang.invoke.MethodHandles;
  *         stbtt.initFont(font, ttf_buffer, stbtt.getFontOffsetForIndex(ttf_buffer, 0));
  *     }
  *
- *     try (var stack = MemoryStack.stackPush()) {
+ *     try (var stack = MemoryStack.pushLocal()) {
  *         var pw = stack.ints(0);
  *         var ph = stack.ints(0);
  *         var bitmap = stbtt.getCodepointBitmap(font, 0, stbtt.scaleForPixelHeight(font, s), c, pw, ph, MemorySegment.NULL, MemorySegment.NULL);

@@ -16,7 +16,7 @@
 
 package overrungl.demo.opengl;
 
-import overrun.marshal.MemoryStack;
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrungl.demo.util.IOUtil;
 import overrungl.glfw.GLFW;
@@ -107,7 +107,7 @@ public final class GL30Test {
         gl.bindTexture(GL.TEXTURE_2D, tex);
         gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
         gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final STBImage stbImage = STBImage.INSTANCE;
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);

@@ -16,10 +16,10 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -32,7 +32,8 @@ import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.lang.invoke.MethodHandle;
 
-import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.ValueLayout.JAVA_BOOLEAN;
+import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
  * The OpenGL 3.0 core profile functions.
@@ -389,7 +390,7 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default void deleteFramebuffers(int... framebuffers) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteFramebuffers(framebuffers.length, Marshal.marshal(stack, framebuffers));
         }
     }
@@ -401,7 +402,7 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default void deleteRenderbuffers(int... renderbuffers) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteRenderbuffers(renderbuffers.length, Marshal.marshal(stack, renderbuffers));
         }
     }
@@ -413,7 +414,7 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default void deleteVertexArrays(int... arrays) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteVertexArrays(arrays.length, Marshal.marshal(stack, arrays));
         }
     }
@@ -482,8 +483,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int genFramebuffers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             genFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -503,8 +504,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int genRenderbuffers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             genRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -524,8 +525,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int genVertexArrays() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             genVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -548,7 +549,7 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default boolean getBooleani_v(int target, int index) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var seg = stack.allocate(JAVA_BOOLEAN);
             getBooleani_v(target, index, seg);
             return seg.get(JAVA_BOOLEAN, 0);
@@ -572,8 +573,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getFramebufferAttachmentParameteriv(int target, int attachment, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getFramebufferAttachmentParameteriv(target, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -591,8 +592,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getIntegeri_v(int target, int index) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getIntegeri_v(target, index, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -610,8 +611,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getRenderbufferParameteriv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getRenderbufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -641,8 +642,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getTexParameterIiv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getTexParameterIiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -660,8 +661,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getTexParameterIuiv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getTexParameterIuiv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -689,8 +690,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getUniformuiv(int program, int location) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getUniformuiv(program, location, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -708,8 +709,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getVertexAttribIiv(int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getVertexAttribIiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -727,8 +728,8 @@ public interface GL30C extends DirectAccess {
 
     @Skip
     default int getVertexAttribIuiv(int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getVertexAttribIuiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
         }

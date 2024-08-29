@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -169,7 +169,7 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default void deleteTransformFeedbacks(int... ids) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteTransformFeedbacks(ids.length, Marshal.marshal(stack, ids));
         }
     }
@@ -233,8 +233,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default int genTransformFeedbacks() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             genTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -247,8 +247,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default String getActiveSubroutineName(int program, int shaderType, int index, int bufSize) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            final MemorySegment length = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            final MemorySegment length = stack.allocate(JAVA_INT);
             var seg = stack.allocate(JAVA_BYTE, bufSize);
             getActiveSubroutineName(program, shaderType, index, bufSize, length, seg);
             return Unmarshal.unmarshalAsString(seg.reinterpret(length.get(JAVA_INT, 0L) + 1));
@@ -262,8 +262,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default String getActiveSubroutineUniformName(int program, int shaderType, int index, int bufSize) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            final MemorySegment length = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            final MemorySegment length = stack.allocate(JAVA_INT);
             var seg = stack.allocate(JAVA_BYTE, bufSize);
             getActiveSubroutineUniformName(program, shaderType, index, bufSize, length, seg);
             return Unmarshal.unmarshalAsString(seg.reinterpret(length.get(JAVA_INT, 0L) + 1));
@@ -282,8 +282,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default int getActiveSubroutineUniformiv(int program, int shaderType, int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getActiveSubroutineUniformiv(program, shaderType, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -296,8 +296,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default int getProgramStageiv(int program, int shaderType, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getProgramStageiv(program, shaderType, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -310,8 +310,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default int getQueryIndexediv(int target, int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getQueryIndexediv(target, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -359,8 +359,8 @@ public interface GL40C extends DirectAccess {
 
     @Skip
     default double getUniformd(int program, int location) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.doubles(0D);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_DOUBLE);
             getUniformdv(program, location, seg);
             return seg.get(JAVA_DOUBLE, 0);
         }

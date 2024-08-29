@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -142,8 +142,8 @@ public interface GL31C extends DirectAccess {
 
     @Skip
     default String getActiveUniformBlockName(int program, int uniformBlockIndex, int bufSize) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            final MemorySegment length = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            final MemorySegment length = stack.allocate(ValueLayout.JAVA_INT);
             var pName = stack.allocate(ValueLayout.JAVA_BYTE, bufSize);
             getActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, pName);
             return Unmarshal.unmarshalAsString(pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1));
@@ -167,8 +167,8 @@ public interface GL31C extends DirectAccess {
 
     @Skip
     default String getActiveUniformName(int program, int uniformIndex, int bufSize) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            final MemorySegment length = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            final MemorySegment length = stack.allocate(ValueLayout.JAVA_INT);
             var pName = stack.allocate(ValueLayout.JAVA_BYTE, bufSize);
             getActiveUniformName(program, uniformIndex, bufSize, length, pName);
             return Unmarshal.unmarshalAsString(pName.reinterpret(length.get(ValueLayout.JAVA_INT, 0L) + 1));
@@ -189,9 +189,9 @@ public interface GL31C extends DirectAccess {
 
     @Skip
     default int getActiveUniformsiv(int program, int uniformIndex, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
-            getActiveUniformsiv(program, 1, stack.ints(uniformIndex), pname, seg);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
+            getActiveUniformsiv(program, 1, stack.allocateFrom(ValueLayout.JAVA_INT, uniformIndex), pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
     }
@@ -220,8 +220,8 @@ public interface GL31C extends DirectAccess {
 
     @Skip
     default int getUniformIndices(int program, String uniformName) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getUniformIndices(program, 1, stack.allocateFrom(uniformName), seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
