@@ -66,7 +66,7 @@ final class Handles {
     }
 
     private static MemorySegment findIntOrThrow(String name) {
-        return lookup.find(name).orElseThrow().reinterpret(ValueLayout.JAVA_INT.byteSize());
+        return lookup.findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
     }
 
     private Handles() {

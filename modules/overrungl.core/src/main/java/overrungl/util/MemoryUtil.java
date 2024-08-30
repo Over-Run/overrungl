@@ -51,7 +51,7 @@ public final class MemoryUtil {
     public static final long NULL = 0x0L;
 
     private static MethodHandle downcall(String name, FunctionDescriptor function) {
-        return LINKER.downcallHandle(LOOKUP.find(name).orElseThrow(), function);
+        return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
     }
 
     private MemoryUtil() {
