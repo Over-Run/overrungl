@@ -26,6 +26,7 @@ import java.lang.invoke.MethodHandles;
 import java.util.Map;
 
 import static java.lang.foreign.ValueLayout.*;
+import static overrun.marshal.gen.processor.ProcessorTypes.registerStruct;
 
 /**
  * This class must be used before any OpenGL function is called. It has the following responsibilities:
@@ -53,6 +54,11 @@ public final class GLLoader {
         "glMapNamedBufferRange", FunctionDescriptor.of(ADDRESS, JAVA_INT, JAVA_LONG, JAVA_LONG, JAVA_INT)
     );
     private static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
+
+    static {
+        registerStruct(DrawArraysIndirectCommand.class, DrawArraysIndirectCommand.OF);
+        registerStruct(DrawElementsIndirectCommand.class, DrawElementsIndirectCommand.OF);
+    }
 
     /**
      * Loads OpenGL flags.

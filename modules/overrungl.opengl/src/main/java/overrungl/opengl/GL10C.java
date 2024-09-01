@@ -16,13 +16,11 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
-import overrun.marshal.MemoryStack;
-import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.SizedSeg;
 import overrun.marshal.gen.Skip;
 
 import java.lang.foreign.MemorySegment;
@@ -303,7 +301,7 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default boolean getBooleanv(int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var pData = stack.allocate(JAVA_BOOLEAN);
             getBooleanv(pname, pData);
             return pData.get(JAVA_BOOLEAN, 0);
@@ -322,8 +320,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default double getDoublev(int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pData = stack.doubles(0D);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pData = stack.allocate(JAVA_DOUBLE);
             getDoublev(pname, pData);
             return pData.get(JAVA_DOUBLE, 0);
         }
@@ -346,8 +344,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default float getFloatv(int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pData = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pData = stack.allocate(JAVA_FLOAT);
             getFloatv(pname, pData);
             return pData.get(JAVA_FLOAT, 0);
         }
@@ -365,8 +363,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default int getIntegerv(int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pData = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pData = stack.allocate(JAVA_INT);
             getIntegerv(pname, pData);
             return pData.get(JAVA_INT, 0);
         }
@@ -379,7 +377,6 @@ public interface GL10C extends DirectAccess {
 
     @Entrypoint("glGetString")
     @Nullable
-    @SizedSeg(Unmarshal.STR_SIZE)
     default String getString(int name) {
         throw new ContextException();
     }
@@ -401,8 +398,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default float getTexLevelParameterfv(int target, int level, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getTexLevelParameterfv(target, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -420,8 +417,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default int getTexLevelParameteriv(int target, int level, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getTexLevelParameteriv(target, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }
@@ -439,8 +436,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default float getTexParameterfv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getTexParameterfv(target, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -458,8 +455,8 @@ public interface GL10C extends DirectAccess {
 
     @Skip
     default int getTexParameteriv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getTexParameteriv(target, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }

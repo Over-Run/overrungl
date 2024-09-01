@@ -22,7 +22,7 @@ import overrun.marshal.Downcall;
 import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.Type;
+import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandles;
@@ -455,7 +455,7 @@ public interface GLFWNative extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetOSMesaColorBuffer")
     default boolean ngetOSMesaColorBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment format, MemorySegment buffer) {
         return false;
@@ -475,7 +475,7 @@ public interface GLFWNative extends DirectAccess {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetOSMesaColorBuffer(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetOSMesaColorBuffer
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetOSMesaColorBuffer")
     default boolean getOSMesaColorBuffer(MemorySegment window, @Ref int @Nullable [] width, @Ref int @Nullable [] height, @Ref int @Nullable [] format, MemorySegment buffer) {
         return false;
@@ -497,7 +497,7 @@ public interface GLFWNative extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetOSMesaDepthBuffer")
     default boolean ngetOSMesaDepthBuffer(MemorySegment window, MemorySegment width, MemorySegment height, MemorySegment bytesPerValue, MemorySegment buffer) {
         return false;
@@ -517,7 +517,7 @@ public interface GLFWNative extends DirectAccess {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #ngetOSMesaDepthBuffer(MemorySegment, MemorySegment, MemorySegment, MemorySegment, MemorySegment) ngetOSMesaDepthBuffer
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetOSMesaDepthBuffer")
     default boolean getOSMesaDepthBuffer(MemorySegment window, @Ref int @Nullable [] width, @Ref int @Nullable [] height, @Ref int @Nullable [] bytesPerValue, MemorySegment buffer) {
         return false;

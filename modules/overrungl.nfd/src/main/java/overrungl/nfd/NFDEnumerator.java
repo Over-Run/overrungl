@@ -108,23 +108,23 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
                 throw new NoSuchElementException();
             }
             String[] s = new String[1];
-            final NFDResult result = switch (kind) {
+            final int result = switch (kind) {
                 case N -> nfd.pathSetEnumNextN(segment.segment(), s);
                 case U8 -> nfd.pathSetEnumNextU8(segment.segment(), s);
             };
-            if (result == NFDResult.ERROR) throw errorIterating(nfd);
+            if (result == NFD.ERROR) throw errorIterating(nfd);
             nextPath = s[0];
             return curr;
         }
     }
 
-    private static Tuple2<NFDResult, NFDEnumerator> fromPathSet(Kind kind, SegmentAllocator allocator, MemorySegment pathSet) {
+    private static Tuple2.OfObjInt<NFDEnumerator> fromPathSet(Kind kind, SegmentAllocator allocator, MemorySegment pathSet) {
         final MemorySegment seg = allocator.allocate(ADDRESS);
-        final NFDResult result = NFD.INSTANCE.pathSetGetEnum(pathSet, seg);
-        return new Tuple2<>(result,
-            result == NFDResult.OKAY ?
+        final int result = NFD.INSTANCE.pathSetGetEnum(pathSet, seg);
+        return new Tuple2.OfObjInt<>(result == NFD.OKAY ?
                 new NFDEnumerator(kind, Segment.OF.of(seg)) :
-                null);
+                null,
+            result);
     }
 
     /**
@@ -134,7 +134,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
      * @param pathSet   the path set.
      * @return the result and the enumerator.
      */
-    public static Tuple2<NFDResult, NFDEnumerator> fromPathSetN(SegmentAllocator allocator, MemorySegment pathSet) {
+    public static Tuple2.OfObjInt<NFDEnumerator> fromPathSetN(SegmentAllocator allocator, MemorySegment pathSet) {
         return fromPathSet(Kind.N, allocator, pathSet);
     }
 
@@ -145,7 +145,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
      * @param pathSet   the path set.
      * @return the result and the enumerator.
      */
-    public static Tuple2<NFDResult, NFDEnumerator> fromPathSetU8(SegmentAllocator allocator, MemorySegment pathSet) {
+    public static Tuple2.OfObjInt<NFDEnumerator> fromPathSetU8(SegmentAllocator allocator, MemorySegment pathSet) {
         return fromPathSet(Kind.U8, allocator, pathSet);
     }
 
@@ -158,13 +158,13 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
     public Iterator<String> iterator() {
         // TODO: 2023/7/6 Value object
         String[] s = new String[1];
-        final NFDResult result = switch (kind) {
+        final int result = switch (kind) {
             case N -> nfd.pathSetEnumNextN(segment.segment(), s);
             case U8 -> nfd.pathSetEnumNextU8(segment.segment(), s);
         };
         final String path = s[0];
-        if (path == null || result != NFDResult.OKAY) {
-            if (result == NFDResult.ERROR) {
+        if (path == null || result != NFD.OKAY) {
+            if (result == NFD.ERROR) {
                 throw errorIterating(nfd);
             }
             return EMPTY_ITERATOR;

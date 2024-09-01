@@ -16,10 +16,10 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -110,7 +110,7 @@ public interface GL41C extends DirectAccess {
 
     @Skip
     default int createShaderProgramv(int type, String string) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             return createShaderProgramv(type, 1, stack.allocateFrom(ADDRESS, Marshal.marshal(stack, string)));
         }
     }
@@ -122,7 +122,7 @@ public interface GL41C extends DirectAccess {
 
     @Skip
     default void deleteProgramPipelines(int... pipelines) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteProgramPipelines(pipelines.length, Marshal.marshal(stack, pipelines));
         }
     }
@@ -161,8 +161,8 @@ public interface GL41C extends DirectAccess {
 
     @Skip
     default int genProgramPipelines() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             genProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -180,8 +180,8 @@ public interface GL41C extends DirectAccess {
 
     @Skip
     default double getDoublei_v(int target, int index) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.doubles(0D);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_DOUBLE);
             getDoublei_v(target, index, seg);
             return seg.get(JAVA_DOUBLE, 0);
         }
@@ -199,8 +199,8 @@ public interface GL41C extends DirectAccess {
 
     @Skip
     default float getFloati_v(int target, int index) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_FLOAT);
             getFloati_v(target, index, seg);
             return seg.get(JAVA_FLOAT, 0);
         }
@@ -250,8 +250,8 @@ public interface GL41C extends DirectAccess {
 
     @Skip
     default int getProgramPipelineiv(int pipeline, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getProgramPipelineiv(pipeline, pname, seg);
             return seg.get(JAVA_INT, 0);
         }

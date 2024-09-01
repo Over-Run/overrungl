@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -85,7 +85,7 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default void deleteSamplers(int... samplers) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteSamplers(samplers.length, Marshal.marshal(stack, samplers));
         }
     }
@@ -104,8 +104,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default int genSamplers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             genSamplers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -128,8 +128,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default long getQueryObjecti64v(int id, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getQueryObjecti64v(id, pname, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -142,8 +142,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default long getQueryObjectui64v(int id, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getQueryObjectui64v(id, pname, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -161,8 +161,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default int getSamplerParameterIiv(int sampler, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getSamplerParameterIiv(sampler, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -180,8 +180,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default int getSamplerParameterIuiv(int sampler, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getSamplerParameterIuiv(sampler, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -199,8 +199,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default float getSamplerParameterf(int sampler, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_FLOAT);
             getSamplerParameterfv(sampler, pname, seg);
             return seg.get(JAVA_FLOAT, 0);
         }
@@ -218,8 +218,8 @@ public interface GL33C extends DirectAccess {
 
     @Skip
     default int getSamplerParameteri(int sampler, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getSamplerParameteriv(sampler, pname, seg);
             return seg.get(JAVA_INT, 0);
         }

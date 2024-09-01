@@ -17,23 +17,16 @@
 package overrungl.nfd;
 
 import io.github.overrun.platform.Platform;
-import overrun.marshal.Downcall;
-import overrun.marshal.DowncallOption;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
-import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.SymbolLookup;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 import java.util.function.Supplier;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static java.lang.foreign.ValueLayout.JAVA_INT;
-import static overrungl.nfd.NFD.PATH_SET_SIZE;
+import static overrun.marshal.gen.processor.ProcessorTypes.registerStruct;
 
 /**
  * internal
@@ -43,16 +36,23 @@ import static overrungl.nfd.NFD.PATH_SET_SIZE;
  */
 final class NFDInternal {
     static final SymbolLookup LOOKUP;
-    static final NFD instance;
 
     static {
+        registerStruct(NFDNFilterItem.class, NFDNFilterItem.OF);
+        registerStruct(NFDNFilterItem.Mutable.class, NFDNFilterItem.Mutable.OF);
+        registerStruct(NFDOpenDialogNArgs.class, NFDOpenDialogNArgs.OF);
+        registerStruct(NFDOpenDialogU8Args.class, NFDOpenDialogU8Args.OF);
+        registerStruct(NFDPickFolderNArgs.class, NFDPickFolderNArgs.OF);
+        registerStruct(NFDPickFolderU8Args.class, NFDPickFolderU8Args.OF);
+        registerStruct(NFDSaveDialogNArgs.class, NFDSaveDialogNArgs.OF);
+        registerStruct(NFDSaveDialogU8Args.class, NFDSaveDialogU8Args.OF);
+        registerStruct(NFDU8FilterItem.class, NFDU8FilterItem.OF);
+        registerStruct(NFDU8FilterItem.Mutable.class, NFDU8FilterItem.Mutable.OF);
+        registerStruct(NFDWindowHandle.class, NFDWindowHandle.OF);
+
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
         final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
         LOOKUP = function != null ? function.apply(lib) : lib.get();
-        instance = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP, DowncallOption.descriptors(Map.of(
-            "NFD_PathSet_GetPathN", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS),
-            "NFD_PathSet_GetPathU8", FunctionDescriptor.of(JAVA_INT, ADDRESS, PATH_SET_SIZE, ADDRESS)
-        )));
     }
 
     static final Platform os = Platform.current();

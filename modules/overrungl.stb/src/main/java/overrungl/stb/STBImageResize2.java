@@ -32,6 +32,108 @@ import java.lang.invoke.MethodHandles;
  */
 public interface STBImageResize2 extends DirectAccess {
     /**
+     * {@code stbir_pixel_layout}
+     */
+    int _1CHANNEL = 1,
+        _2CHANNEL = 2,
+    /**
+     * 3-chan, with order specified (for channel flipping)
+     */
+    RGB = 3,
+    /**
+     * 3-chan, with order specified (for channel flipping)
+     */
+    BGR = 0,
+        _4CHANNEL = 5,
+    /**
+     * alpha formats, where alpha is NOT premultiplied into color channels
+     */
+    RGBA = 4,
+        BGRA = 6,
+        ARGB = 7,
+        ABGR = 8,
+        RA = 9,
+        AR = 10,
+    /**
+     * alpha formats, where alpha is premultiplied into color channels
+     */
+    RGBA_PM = 11,
+        BGRA_PM = 12,
+        ARGB_PM = 13,
+        ABGR_PM = 14,
+        RA_PM = 15,
+        AR_PM = 16,
+    /**
+     * alpha formats, where NO alpha weighting is applied at all!
+     * these are just synonyms for the _PM flags (which also do
+     * no alpha weighting). These names just make it more clear
+     * for some folks).
+     */
+    RGBA_NO_AW = 11,
+        BGRA_NO_AW = 12,
+        ARGB_NO_AW = 13,
+        ABGR_NO_AW = 14,
+        RA_NO_AW = 15,
+        AR_NO_AW = 16;
+
+    /**
+     * {@code stbir_edge}
+     */
+    int EDGE_CLAMP = 0,
+        EDGE_REFLECT = 1,
+    /**
+     * this edge mode is slower and uses more memory
+     */
+    EDGE_WRAP = 2,
+        EDGE_ZERO = 3;
+
+    /**
+     * use same filter type that easy-to-use API chooses
+     */
+    int FILTER_DEFAULT = 0;
+    /**
+     * A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios
+     */
+    int FILTER_BOX = 1;
+    /**
+     * On upsampling, produces same results as bilinear texture filtering
+     */
+    int FILTER_TRIANGLE = 2;
+    /**
+     * The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque
+     */
+    int FILTER_CUBICBSPLINE = 3;
+    /**
+     * An interpolating cubic spline
+     */
+    int FILTER_CATMULLROM = 4;
+    /**
+     * Mitchell-Netrevalli filter with B=1/3, C=1/3
+     */
+    int FILTER_MITCHELL = 5;
+    /**
+     * Simple point sampling
+     */
+    int FILTER_POINT_SAMPLE = 6;
+    /**
+     * User callback specified
+     */
+    int FILTER_OTHER = 7;
+
+    /**
+     * {@code stbir_datatype}
+     */
+    int TYPE_UINT8 = 0,
+        TYPE_UINT8_SRGB = 1,
+    /**
+     * alpha channel, when present, should also be SRGB (this is very unusual)
+     */
+    TYPE_UINT8_SRGB_ALPHA = 2,
+        TYPE_UINT16 = 3,
+        TYPE_FLOAT = 4,
+        TYPE_HALF_FLOAT = 5;
+
+    /**
      * The instance of STBImageResize2.
      */
     STBImageResize2 INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
@@ -45,19 +147,19 @@ public interface STBImageResize2 extends DirectAccess {
     @Entrypoint("stbir_resize_uint8_srgb")
     MemorySegment resizeUint8Srgb(@NativeType("const unsigned char *") MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes,
                                   @NativeType("unsigned char *") MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                                  STBIRPixelLayout pixel_type);
+                                  int pixel_type);
 
     @Entrypoint("stbir_resize_uint8_linear")
     @NativeType("unsigned char *")
     MemorySegment resizeUint8Linear(@NativeType("const unsigned char *") MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes,
                                     @NativeType("unsigned char *") MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                                    STBIRPixelLayout pixel_type);
+                                    int pixel_type);
 
     @Entrypoint("stbir_resize_uint8_linear")
     @NativeType("float *")
     MemorySegment resizeFloatLinear(@NativeType("const float *") MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes,
                                     @NativeType("float *") MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                                    STBIRPixelLayout pixel_type);
+                                    int pixel_type);
 
     //===============================================================
     // Medium-complexity API
@@ -74,8 +176,8 @@ public interface STBImageResize2 extends DirectAccess {
     @NativeType("void *")
     MemorySegment resize(@NativeType("const void *") MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes,
                          @NativeType("void *") MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                         STBIRPixelLayout pixel_layout, STBIRDatatype data_type,
-                         STBIREdge edge, STBIRFilter filter);
+                         int pixel_layout, int data_type,
+                         int edge, int filter);
 
     //===============================================================
     // Extended-complexity API
@@ -120,10 +222,10 @@ public interface STBImageResize2 extends DirectAccess {
     void resizeInit(STBIRRESIZE resize,
                     @NativeType("const void *") MemorySegment input_pixels, int input_w, int input_h, int input_stride_in_bytes,
                     @NativeType("void *") MemorySegment output_pixels, int output_w, int output_h, int output_stride_in_bytes,
-                    STBIRPixelLayout pixel_layout, STBIRDatatype data_type);
+                    int pixel_layout, int data_type);
 
     @Entrypoint("stbir_set_datatypes")
-    void setDatatypes(STBIRRESIZE resize, STBIRDatatype input_type, STBIRDatatype output_type);
+    void setDatatypes(STBIRRESIZE resize, int input_type, int output_type);
 
     /**
      * no callbacks by default
@@ -160,7 +262,7 @@ public interface STBImageResize2 extends DirectAccess {
      * @return int
      */
     @Entrypoint("stbir_set_pixel_layouts")
-    int setPixelLayouts(STBIRRESIZE resize, STBIRPixelLayout input_pixel_layout, STBIRPixelLayout output_pixel_layout);
+    int setPixelLayouts(STBIRRESIZE resize, int input_pixel_layout, int output_pixel_layout);
 
     /**
      * CLAMP by default
@@ -171,7 +273,7 @@ public interface STBImageResize2 extends DirectAccess {
      * @return int
      */
     @Entrypoint("stbir_set_edgemodes")
-    int setEdgemodes(STBIRRESIZE resize, STBIREdge horizontal_edge, STBIREdge vertical_edge);
+    int setEdgemodes(STBIRRESIZE resize, int horizontal_edge, int vertical_edge);
 
     /**
      * STBIR_DEFAULT_FILTER_UPSAMPLE/DOWNSAMPLE by default
@@ -182,7 +284,7 @@ public interface STBImageResize2 extends DirectAccess {
      * @return int
      */
     @Entrypoint("stbir_set_filters")
-    int setFilters(STBIRRESIZE resize, STBIRFilter horizontal_filter, STBIRFilter vertical_filter);
+    int setFilters(STBIRRESIZE resize, int horizontal_filter, int vertical_filter);
 
     @Entrypoint("stbir_set_filter_callbacks")
     int setFilterCallbacks(STBIRRESIZE resize, STBIRKernelCallback horizontal_filter, STBIRSupportCallback horizontal_support, STBIRKernelCallback vertical_filter, STBIRSupportCallback vertical_support);

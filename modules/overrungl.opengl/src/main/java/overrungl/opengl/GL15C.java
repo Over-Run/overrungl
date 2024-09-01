@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -181,7 +181,7 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default void deleteBuffers(int... buffers) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteBuffers(buffers.length, Marshal.marshal(stack, buffers));
         }
     }
@@ -193,7 +193,7 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default void deleteQueries(int... ids) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             deleteQueries(ids.length, Marshal.marshal(stack, ids));
         }
     }
@@ -217,8 +217,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default int genBuffers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             genBuffers(1, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
@@ -238,8 +238,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default int genQueries() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             genQueries(1, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
@@ -252,8 +252,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default int getBufferParameteriv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getBufferParameteriv(target, pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
@@ -266,8 +266,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default MemorySegment getBufferPointerv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.segments(MemorySegment.NULL);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.ADDRESS);
             getBufferPointerv(target, pname, seg);
             return seg.get(ValueLayout.ADDRESS, 0);
         }
@@ -327,8 +327,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default int getQueryObjectiv(int id, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getQueryObjectiv(id, pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
@@ -341,8 +341,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default int getQueryObjectuiv(int id, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getQueryObjectuiv(id, pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
@@ -355,8 +355,8 @@ public interface GL15C extends DirectAccess {
 
     @Skip
     default int getQueryiv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getQueryiv(target, pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }

@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -232,8 +232,8 @@ public interface GL42C extends DirectAccess {
 
     @Skip
     default int getActiveAtomicCounterBufferiv(int program, int bufferIndex, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getActiveAtomicCounterBufferiv(program, bufferIndex, pname, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }
@@ -253,8 +253,8 @@ public interface GL42C extends DirectAccess {
 
     @Skip
     default int getInternalformativ(int target, int internalFormat, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ValueLayout.JAVA_INT);
             getInternalformativ(target, internalFormat, pname, 1, seg);
             return seg.get(ValueLayout.JAVA_INT, 0);
         }

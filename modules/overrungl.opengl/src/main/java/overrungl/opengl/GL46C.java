@@ -16,10 +16,10 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBGLSpirv;
@@ -96,7 +96,7 @@ public interface GL46C extends DirectAccess {
 
     @Skip
     default void specializeShader(int shader, @Nullable String pEntryPoint) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             specializeShader(shader,
                 Marshal.marshal(stack, pEntryPoint),
                 0,

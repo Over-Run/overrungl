@@ -16,10 +16,10 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -197,8 +197,8 @@ public interface GL32C extends DirectAccess {
 
     @Skip
     default long getBufferParameteri64v(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getBufferParameteri64v(target, pname, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -216,8 +216,8 @@ public interface GL32C extends DirectAccess {
 
     @Skip
     default long getInteger64i_v(int target, int index) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getInteger64i_v(target, index, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -235,8 +235,8 @@ public interface GL32C extends DirectAccess {
 
     @Skip
     default long getInteger64v(int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pData = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pData = stack.allocate(JAVA_LONG);
             getInteger64v(pname, pData);
             return pData.get(JAVA_LONG, 0);
         }
@@ -254,7 +254,7 @@ public interface GL32C extends DirectAccess {
 
     @Skip
     default float[] getMultisamplefv(int pname, int index) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             float[] val = new float[2];
             getMultisamplefv(stack, pname, index, val);
             return val;
@@ -277,8 +277,8 @@ public interface GL32C extends DirectAccess {
 
     @Skip
     default int getSynciv(MemorySegment sync, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getSynciv(sync, pname, 1, MemorySegment.NULL, seg);
             return seg.get(JAVA_INT, 0);
         }

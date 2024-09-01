@@ -32,6 +32,7 @@ module overrungl.core {
         overrungl.vulkan;
 
     requires transitive io.github.overrun.marshal;
+    requires transitive io.github.overrun.memstack;
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;
 }

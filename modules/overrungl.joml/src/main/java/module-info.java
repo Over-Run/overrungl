@@ -25,4 +25,5 @@ module overrungl.joml {
 
     requires transitive overrungl.core;
     requires transitive org.joml;
+    requires io.github.overrun.memstack;
 }

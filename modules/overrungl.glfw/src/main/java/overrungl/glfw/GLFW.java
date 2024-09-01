@@ -16,12 +16,13 @@
 
 package overrungl.glfw;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.*;
+import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.value.Pair;
 import overrungl.util.value.Quad;
@@ -34,7 +35,6 @@ import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 
 import static java.lang.foreign.ValueLayout.*;
-import static overrungl.glfw.Handles.*;
 
 /**
  * The GLFW binding.
@@ -43,11 +43,6 @@ import static overrungl.glfw.Handles.*;
  * @since 0.1.0
  */
 public interface GLFW extends DirectAccess {
-    /**
-     * The instance of GLFW.
-     */
-    GLFW INSTANCE = Downcall.load(MethodHandles.lookup(), lookup);
-
     /**
      * The major version number of the GLFW header.
      * <p>
@@ -1111,6 +1106,11 @@ public interface GLFW extends DirectAccess {
     int DONT_CARE = -1;
 
     /**
+     * The instance of GLFW.
+     */
+    GLFW INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
+
+    /**
      * Converts the given error code to a readable string.
      * <p>
      * This method is created by OverrunGL and does not belong to the original GLFW library.
@@ -1235,7 +1235,7 @@ public interface GLFW extends DirectAccess {
      * @see #initAllocator
      * @see #terminate
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwInit")
     boolean init();
 
@@ -1361,10 +1361,10 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Triplet.OfInt getVersion() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pMajor = stack.ints(0);
-            var pMinor = stack.ints(0);
-            var pRev = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pMajor = stack.allocate(JAVA_INT);
+            var pMinor = stack.allocate(JAVA_INT);
+            var pRev = stack.allocate(JAVA_INT);
             ngetVersion(pMajor, pMinor, pRev);
             return new Triplet.OfInt(pMajor.get(JAVA_INT, 0),
                 pMinor.get(JAVA_INT, 0),
@@ -1405,7 +1405,6 @@ public interface GLFW extends DirectAccess {
      * @see #ngetVersionString() ngetVersionString
      */
     @Entrypoint("glfwGetVersionString")
-    @SizedSeg(Unmarshal.STR_SIZE)
     @StrCharset("US-ASCII")
     String getVersionString();
 
@@ -1449,7 +1448,7 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Tuple2.OfObjInt<String> getError() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = stack.allocate(ADDRESS);
             final int err = ngetError(seg);
             return new Tuple2.OfObjInt<>(Unmarshal.unmarshalStringPointer(seg), err);
@@ -1528,7 +1527,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #getPlatform
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwPlatformSupported")
     boolean platformSupported(int platform);
 
@@ -1562,8 +1561,8 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default MemorySegment @Nullable [] getMonitors() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pCount = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pCount = stack.allocate(JAVA_INT);
             var pMonitors = ngetMonitors(pCount);
             return Unmarshal.unmarshalAsAddressArray(pMonitors.reinterpret(ADDRESS.scale(0L, pCount.get(JAVA_INT, 0L))));
         }
@@ -1625,9 +1624,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfInt getMonitorPos(MemorySegment monitor) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var px = stack.ints(0);
-            var py = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
             ngetMonitorPos(monitor, px, py);
             return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         }
@@ -1680,11 +1679,11 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Quad.OfInt getMonitorWorkarea(MemorySegment monitor) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var px = stack.ints(0);
-            var py = stack.ints(0);
-            var pw = stack.ints(0);
-            var ph = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
+            var pw = stack.allocate(JAVA_INT);
+            var ph = stack.allocate(JAVA_INT);
             ngetMonitorWorkarea(monitor, px, py, pw, ph);
             return new Quad.OfInt(px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
@@ -1742,9 +1741,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfInt getMonitorPhysicalSize(MemorySegment monitor) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pw = stack.ints(0);
-            var ph = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pw = stack.allocate(JAVA_INT);
+            var ph = stack.allocate(JAVA_INT);
             ngetMonitorPhysicalSize(monitor, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         }
@@ -1798,9 +1797,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfFloat getMonitorContentScale(MemorySegment monitor) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var px = stack.floats(0F);
-            var py = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var px = stack.allocate(JAVA_FLOAT);
+            var py = stack.allocate(JAVA_FLOAT);
             ngetMonitorContentScale(monitor, px, py);
             return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         }
@@ -1835,7 +1834,6 @@ public interface GLFW extends DirectAccess {
      */
     @Entrypoint("glfwGetMonitorName")
     @Nullable
-    @SizedSeg(Unmarshal.STR_SIZE)
     String getMonitorName(MemorySegment monitor);
 
     /**
@@ -1946,8 +1944,8 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default @Nullable GLFWVidMode getVideoModes(MemorySegment monitor) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pCount = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pCount = stack.allocate(JAVA_INT);
             var pModes = ngetVideoModes(monitor, pCount);
             if (Unmarshal.isNullPointer(pModes)) {
                 return null;
@@ -2148,7 +2146,7 @@ public interface GLFW extends DirectAccess {
      * @see #windowHint(int, int)
      */
     @Entrypoint("glfwWindowHint")
-    void windowHint(int hint, @Convert(Type.INT) boolean value);
+    void windowHint(int hint, @Convert(BoolConvert.INT) boolean value);
 
     /**
      * Sets the specified window hint to the desired value.
@@ -2395,7 +2393,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.  Access is not
      * synchronized.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwWindowShouldClose")
     boolean windowShouldClose(MemorySegment window);
 
@@ -2413,7 +2411,7 @@ public interface GLFW extends DirectAccess {
      * synchronized.
      */
     @Entrypoint("glfwSetWindowShouldClose")
-    void setWindowShouldClose(MemorySegment window, @Convert(Type.INT) boolean value);
+    void setWindowShouldClose(MemorySegment window, @Convert(BoolConvert.INT) boolean value);
 
     /**
      * Returns the title of the specified window.
@@ -2449,7 +2447,6 @@ public interface GLFW extends DirectAccess {
      * @see #ngetWindowTitle(MemorySegment)
      */
     @Entrypoint("glfwGetWindowTitle")
-    @SizedSeg(Unmarshal.STR_SIZE)
     String getWindowTitle(MemorySegment window);
 
     /**
@@ -2597,9 +2594,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfInt getWindowPos(MemorySegment window) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var px = stack.ints(0);
-            var py = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var px = stack.allocate(JAVA_INT);
+            var py = stack.allocate(JAVA_INT);
             ngetWindowPos(window, px, py);
             return new Pair.OfInt(px.get(JAVA_INT, 0), py.get(JAVA_INT, 0));
         }
@@ -2678,9 +2675,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfInt getWindowSize(MemorySegment window) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pw = stack.ints(0);
-            var ph = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pw = stack.allocate(JAVA_INT);
+            var ph = stack.allocate(JAVA_INT);
             ngetWindowSize(window, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         }
@@ -2835,9 +2832,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfInt getFramebufferSize(MemorySegment window) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pw = stack.ints(0);
-            var ph = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pw = stack.allocate(JAVA_INT);
+            var ph = stack.allocate(JAVA_INT);
             ngetFramebufferSize(window, pw, ph);
             return new Pair.OfInt(pw.get(JAVA_INT, 0), ph.get(JAVA_INT, 0));
         }
@@ -2902,11 +2899,11 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Quad.OfInt getWindowFrameSize(MemorySegment window) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pl = stack.ints(0);
-            var pt = stack.ints(0);
-            var pr = stack.ints(0);
-            var pb = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pl = stack.allocate(JAVA_INT);
+            var pt = stack.allocate(JAVA_INT);
+            var pr = stack.allocate(JAVA_INT);
+            var pb = stack.allocate(JAVA_INT);
             ngetWindowFrameSize(window, pl, pt, pr, pb);
             return new Quad.OfInt(pl.get(JAVA_INT, 0),
                 pt.get(JAVA_INT, 0),
@@ -2962,9 +2959,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfFloat getWindowContentScale(MemorySegment window) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var px = stack.floats(0F);
-            var py = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var px = stack.allocate(JAVA_FLOAT);
+            var py = stack.allocate(JAVA_FLOAT);
             ngetWindowContentScale(window, px, py);
             return new Pair.OfFloat(px.get(JAVA_FLOAT, 0), py.get(JAVA_FLOAT, 0));
         }
@@ -3297,7 +3294,7 @@ public interface GLFW extends DirectAccess {
      * @see #getWindowAttrib(MemorySegment, int) getWindowAttrib
      */
     @Entrypoint("glfwSetWindowAttrib")
-    void setWindowAttrib(MemorySegment window, int attrib, @Convert(Type.INT) boolean value);
+    void setWindowAttrib(MemorySegment window, int attrib, @Convert(BoolConvert.INT) boolean value);
 
     /**
      * Sets the user pointer of the specified window.
@@ -3902,7 +3899,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #setInputMode(MemorySegment, int, int) setInputMode
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwRawMouseMotionSupported")
     boolean rawMouseMotionSupported();
 
@@ -4114,9 +4111,9 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default Pair.OfDouble getCursorPos(MemorySegment window) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var px = stack.doubles(0D);
-            var py = stack.doubles(0D);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var px = stack.allocate(JAVA_DOUBLE);
+            var py = stack.allocate(JAVA_DOUBLE);
             ngetCursorPos(window, px, py);
             return new Pair.OfDouble(px.get(JAVA_DOUBLE, 0), py.get(JAVA_DOUBLE, 0));
         }
@@ -4594,7 +4591,7 @@ public interface GLFW extends DirectAccess {
      * {@link #INVALID_ENUM} and {@link #PLATFORM_ERROR}.
      * @glfw.thread_safety This function must only be called from the main thread.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwJoystickPresent")
     boolean joystickPresent(int jid);
 
@@ -4636,8 +4633,8 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default float @Nullable [] getJoystickAxes(int jid) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pCount = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pCount = stack.allocate(JAVA_INT);
             MemorySegment pAxes = ngetJoystickAxes(jid, pCount);
             final int count = pCount.get(JAVA_INT, 0);
             if (count == 0) return null;
@@ -4688,8 +4685,8 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default int @Nullable [] getJoystickButtons(int jid) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pCount = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pCount = stack.allocate(JAVA_INT);
             MemorySegment pButtons = ngetJoystickButtons(jid, pCount);
             final int count = pCount.get(JAVA_INT, 0);
             if (count == 0) return null;
@@ -4756,8 +4753,8 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default byte[] getJoystickHats(int jid) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pCount = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pCount = stack.allocate(JAVA_INT);
             var pHats = ngetJoystickHats(jid, pCount);
             return Unmarshal.unmarshalAsByteArray(pHats.reinterpret(JAVA_BYTE.scale(0L, pCount.get(JAVA_INT, 0))));
         }
@@ -4902,7 +4899,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function must only be called from the main thread.
      * @see #ngetGamepadState(int, MemorySegment) getGamepadState
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwJoystickIsGamepad")
     boolean joystickIsGamepad(int jid);
 
@@ -4973,7 +4970,7 @@ public interface GLFW extends DirectAccess {
      * @see #joystickIsGamepad(int) joystickIsGamepad
      * @see #ngetGamepadName(int) getGamepadName
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwUpdateGamepadMappings")
     boolean nupdateGamepadMappings(MemorySegment string);
 
@@ -4985,7 +4982,7 @@ public interface GLFW extends DirectAccess {
      * <a href="https://www.glfw.org/docs/latest/intro_guide.html#error_handling">error</a> occurred.
      * @see #nupdateGamepadMappings(MemorySegment) nupdateGamepadMappings
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwUpdateGamepadMappings")
     boolean updateGamepadMappings(String string);
 
@@ -5056,7 +5053,7 @@ public interface GLFW extends DirectAccess {
      * @see #nupdateGamepadMappings(MemorySegment) updateGamepadMappings
      * @see #joystickIsGamepad(int) joystickIsGamepad
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetGamepadState")
     boolean ngetGamepadState(int jid, MemorySegment state);
 
@@ -5070,7 +5067,7 @@ public interface GLFW extends DirectAccess {
      * occurred.
      * @see #ngetGamepadState(int, MemorySegment) ngetGamepadState
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwGetGamepadState")
     boolean getGamepadState(int jid, GLFWGamepadState state);
 
@@ -5123,7 +5120,7 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default void setClipboardString(String string) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             nsetClipboardString(stack.allocateFrom(string));
         }
     }
@@ -5154,7 +5151,6 @@ public interface GLFW extends DirectAccess {
      * @see #nsetClipboardString(MemorySegment) setClipboardString
      */
     @Entrypoint("glfwGetClipboardString")
-    @SizedSeg(Unmarshal.STR_SIZE)
     MemorySegment ngetClipboardString(MemorySegment window);
 
     /**
@@ -5418,7 +5414,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.thread_safety This function may be called from any thread.
      * @see #ngetProcAddress
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwExtensionSupported")
     boolean nextensionSupported(MemorySegment extension);
 
@@ -5430,7 +5426,7 @@ public interface GLFW extends DirectAccess {
      * otherwise.
      * @see #nextensionSupported(MemorySegment) nextensionSupported
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwExtensionSupported")
     boolean extensionSupported(@StrCharset("US-ASCII") String extension);
 
@@ -5498,7 +5494,7 @@ public interface GLFW extends DirectAccess {
      * @glfw.errors Possible errors include {@link #NOT_INITIALIZED}.
      * @glfw.thread_safety This function may be called from any thread.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("glfwVulkanSupported")
     boolean vulkanSupported();
 
@@ -5546,8 +5542,8 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default String @Nullable [] getRequiredInstanceExtensions() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pCount = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pCount = stack.allocate(JAVA_INT);
             MemorySegment pExt = ngetRequiredInstanceExtensions(pCount);
             final int count = pCount.get(JAVA_INT, 0);
             if (count == 0) return null;

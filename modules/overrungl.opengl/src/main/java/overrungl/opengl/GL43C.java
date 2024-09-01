@@ -16,10 +16,10 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -365,7 +365,7 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default void debugMessageInsert(int source, int type, int id, int severity, String buf) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             debugMessageInsert(source, type, id, severity, -1, Marshal.marshal(stack, buf));
         }
     }
@@ -420,8 +420,8 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default int getFramebufferParameteriv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getFramebufferParameteriv(target, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -441,8 +441,8 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default long getInternalformati64v(int target, int internalFormat, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getInternalformati64v(target, internalFormat, pname, 1, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -503,8 +503,8 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default int getProgramInterfaceiv(int program, int programInterface, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getProgramInterfaceiv(program, programInterface, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -607,7 +607,7 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default void invalidateFramebuffer(int target, int... attachments) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             invalidateFramebuffer(target, attachments.length, Marshal.marshal(stack, attachments));
         }
     }
@@ -624,8 +624,8 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default void invalidateSubFramebuffer(int target, int attachment, int x, int y, int width, int height) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            invalidateSubFramebuffer(target, 1, stack.ints(attachment), x, y, width, height);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            invalidateSubFramebuffer(target, 1, stack.allocateFrom(JAVA_INT, attachment), x, y, width, height);
         }
     }
 
@@ -666,7 +666,7 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default void objectLabel(int identifier, int name, String label) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             objectLabel(identifier, name, -1, Marshal.marshal(stack, label));
         }
     }
@@ -678,7 +678,7 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default void objectPtrLabel(MemorySegment ptr, String label) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             objectPtrLabel(ptr, -1, Marshal.marshal(stack, label));
         }
     }
@@ -695,7 +695,7 @@ public interface GL43C extends DirectAccess {
 
     @Skip
     default void pushDebugGroup(int source, int id, String message) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             pushDebugGroup(source, id, -1, Marshal.marshal(stack, message));
         }
     }

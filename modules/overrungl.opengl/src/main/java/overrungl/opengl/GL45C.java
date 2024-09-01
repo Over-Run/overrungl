@@ -16,9 +16,9 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -186,8 +186,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createBuffers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createBuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -207,8 +207,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createFramebuffers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createFramebuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -228,8 +228,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createProgramPipelines() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createProgramPipelines(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -249,8 +249,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createQueries(int target) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createQueries(target, 1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -270,8 +270,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createRenderbuffers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createRenderbuffers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -291,8 +291,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createSamplers() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createSamplers(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -312,8 +312,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createTextures(int target) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pTex = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pTex = stack.allocate(JAVA_INT);
             createTextures(target, 1, pTex);
             return pTex.get(JAVA_INT, 0);
         }
@@ -333,8 +333,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createTransformFeedbacks() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createTransformFeedbacks(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -354,8 +354,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int createVertexArrays() {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             createVertexArrays(1, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -403,8 +403,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default long getNamedBufferParameteri64v(int buffer, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getNamedBufferParameteri64v(buffer, pname, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -417,8 +417,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getNamedBufferParameteriv(int buffer, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getNamedBufferParameteriv(buffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -431,8 +431,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default MemorySegment getNamedBufferPointerv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.segments(MemorySegment.NULL);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(ADDRESS);
             getNamedBufferPointerv(target, pname, seg);
             return seg.get(ADDRESS, 0);
         }
@@ -492,8 +492,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getNamedFramebufferAttachmentParameteriv(int framebuffer, int attachment, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -506,8 +506,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getNamedFramebufferParameteriv(int framebuffer, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getNamedFramebufferParameteriv(framebuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -525,8 +525,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getNamedRenderbufferParameteriv(int renderbuffer, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getNamedRenderbufferParameteriv(renderbuffer, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -569,8 +569,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default float getTextureLevelParameterfv(int texture, int level, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getTextureLevelParameterfv(texture, level, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -588,8 +588,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getTextureLevelParameteriv(int texture, int level, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getTextureLevelParameteriv(texture, level, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }
@@ -607,8 +607,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getTextureParameterIiv(int texture, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getTextureParameterIiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -626,8 +626,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getTextureParameterIuiv(int texture, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getTextureParameterIuiv(texture, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -645,8 +645,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default float getTextureParameterfv(int texture, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_FLOAT);
             getTextureParameterfv(texture, pname, pParams);
             return pParams.get(JAVA_FLOAT, 0);
         }
@@ -664,8 +664,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getTextureParameteriv(int texture, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var pParams = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var pParams = stack.allocate(JAVA_INT);
             getTextureParameteriv(texture, pname, pParams);
             return pParams.get(JAVA_INT, 0);
         }
@@ -741,8 +741,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default long getVertexArrayIndexed64iv(int vaobj, int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.longs(0L);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_LONG);
             getVertexArrayIndexed64iv(vaobj, index, pname, seg);
             return seg.get(JAVA_LONG, 0);
         }
@@ -755,8 +755,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getVertexArrayIndexediv(int vaobj, int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getVertexArrayIndexediv(vaobj, index, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -769,8 +769,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default int getVertexArrayiv(int vaobj, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getVertexArrayiv(vaobj, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -904,8 +904,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default void invalidateNamedFramebufferData(int framebuffer, int attachment) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            invalidateNamedFramebufferData(framebuffer, 1, stack.ints(attachment));
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            invalidateNamedFramebufferData(framebuffer, 1, stack.allocateFrom(JAVA_INT, attachment));
         }
     }
 
@@ -921,8 +921,8 @@ public interface GL45C extends DirectAccess {
 
     @Skip
     default void invalidateNamedFramebufferSubData(int framebuffer, int attachment, int x, int y, int width, int height) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            invalidateNamedFramebufferSubData(framebuffer, 1, stack.ints(attachment), x, y, width, height);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            invalidateNamedFramebufferSubData(framebuffer, 1, stack.allocateFrom(JAVA_INT, attachment), x, y, width, height);
         }
     }
 

@@ -11,7 +11,7 @@ val projName: String by settings
 
 rootProject.name = projName
 
-file("modules").listFiles().forEach {
+file("modules").listFiles()?.forEach {
     val s = it.name.substringAfterLast("overrungl.")
     include(s)
     project(":$s").projectDir = it

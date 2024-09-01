@@ -1,6 +1,15 @@
 import java.nio.file.Files
 import kotlin.io.path.Path
 
+plugins {
+    id("module.conventions")
+}
+
+overrunglModule {
+    artifactName = "overrungl"
+    publishInfo = Artifact.CORE
+}
+
 val overrunMarshalVersion: String by rootProject
 val overrunPlatformVersion: String by rootProject
 

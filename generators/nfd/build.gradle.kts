@@ -1,5 +1,5 @@
 plugins {
-    id("generator.java-conventions")
+    id("generator.conventions")
 }
 
 dependencies {

@@ -16,10 +16,10 @@
 
 package overrungl.opengl;
 
+import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
-import overrun.marshal.MemoryStack;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Ref;
@@ -255,7 +255,7 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default String getProgramInfoLog(int program, int bufSize, @Ref int @Nullable [] length) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var pLen = Marshal.marshal(stack, length);
             var pLog = stack.allocate(JAVA_BYTE, bufSize);
             getProgramInfoLog(program, bufSize, pLen, pLog);
@@ -281,8 +281,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default int getProgramiv(int program, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getProgramiv(program, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -295,7 +295,7 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default String getShaderInfoLog(int shader, int bufSize, @Ref int @Nullable [] length) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var pLen = Marshal.marshal(stack, length);
             var pLog = stack.allocate(JAVA_BYTE, bufSize);
             getShaderInfoLog(shader, bufSize, pLen, pLog);
@@ -316,7 +316,7 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default String getShaderSource(int shader, int bufSize, @Ref int @Nullable [] length) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var pLen = Marshal.marshal(stack, length);
             var pSrc = stack.allocate(JAVA_BYTE, bufSize);
             getShaderSource(shader, bufSize, pLen, pSrc);
@@ -342,8 +342,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default int getShaderiv(int shader, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getShaderiv(shader, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -371,8 +371,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default float getUniformfv(int program, int location) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_FLOAT);
             getUniformfv(program, location, seg);
             return seg.get(JAVA_FLOAT, 0);
         }
@@ -390,8 +390,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default int getUniformiv(int program, int location) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getUniformiv(program, location, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -439,8 +439,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default double getVertexAttribdv(int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.doubles(0D);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_DOUBLE);
             getVertexAttribdv(index, pname, seg);
             return seg.get(JAVA_DOUBLE, 0);
         }
@@ -458,8 +458,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default float getVertexAttribfv(int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.floats(0F);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_FLOAT);
             getVertexAttribfv(index, pname, seg);
             return seg.get(JAVA_FLOAT, 0);
         }
@@ -477,8 +477,8 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default int getVertexAttribiv(int index, int pname) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            var seg = stack.ints(0);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            var seg = stack.allocate(JAVA_INT);
             getVertexAttribiv(index, pname, seg);
             return seg.get(JAVA_INT, 0);
         }
@@ -511,7 +511,7 @@ public interface GL20C extends DirectAccess {
 
     @Skip
     default void shaderSource(int shader, String string) {
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             shaderSource(shader, 1, stack.allocateFrom(ADDRESS, Marshal.marshal(stack, string)), MemorySegment.NULL);
         }
     }

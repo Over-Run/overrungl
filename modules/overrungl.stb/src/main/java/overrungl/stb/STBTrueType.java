@@ -20,7 +20,7 @@ import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.gen.Convert;
 import overrun.marshal.gen.Entrypoint;
-import overrun.marshal.gen.Type;
+import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
 import overrungl.NativeType;
 
 import java.lang.foreign.MemorySegment;
@@ -150,7 +150,7 @@ import java.lang.invoke.MethodHandles;
  * <h2>SAMPLE PROGRAMS</h2>
  * Incomplete text-in-3d-api example, which draws quads properly aligned to be lossless.
  * {@snippet lang = java:
- * import overrun.marshal.MemoryStack;
+ * import io.github.overrun.memstack.MemoryStack;
  * import java.lang.foreign.Arena;
  * import java.nio.channels.FileChannel;
  * import java.nio.file.Path;
@@ -184,7 +184,7 @@ import java.lang.invoke.MethodHandles;
  *     gl.enable(GL.TEXTURE_2D);
  *     gl.bindTexture(GL.TEXTURE_2D, ftex);
  *     gl.begin(GL.QUADS);
- *     try (var stack = MemoryStack.stackPush()) {
+ *     try (var stack = MemoryStack.pushLocal()) {
  *         var q = STBTTAlignedQuad.OF.of(stack);
  *         var px = stack.floats(x);
  *         var py = stack.floats(y);
@@ -205,7 +205,7 @@ import java.lang.invoke.MethodHandles;
  * <p>
  * Complete program (this compiles): get a single bitmap, print as ASCII art
  * {@snippet lang = java:
- * import overrun.marshal.MemoryStack;
+ * import io.github.overrun.memstack.MemoryStack;
  * import overrungl.stb.STBTTFontInfo;
  * import overrungl.stb.STBTrueType;
  *
@@ -230,7 +230,7 @@ import java.lang.invoke.MethodHandles;
  *         stbtt.initFont(font, ttf_buffer, stbtt.getFontOffsetForIndex(ttf_buffer, 0));
  *     }
  *
- *     try (var stack = MemoryStack.stackPush()) {
+ *     try (var stack = MemoryStack.pushLocal()) {
  *         var pw = stack.ints(0);
  *         var ph = stack.ints(0);
  *         var bitmap = stbtt.getCodepointBitmap(font, 0, stbtt.scaleForPixelHeight(font, s), c, pw, ph, MemorySegment.NULL, MemorySegment.NULL);
@@ -436,7 +436,7 @@ public interface STBTrueType extends DirectAccess {
                       int char_index,
                       @NativeType("float *") MemorySegment xpos, @NativeType("float *") MemorySegment ypos,
                       STBTTAlignedQuad q,
-                      @Convert(Type.INT) boolean opengl_fillrule);
+                      @Convert(BoolConvert.INT) boolean opengl_fillrule);
 
     /**
      * Query the font vertical metrics without having to create a font first.
@@ -573,7 +573,7 @@ public interface STBTrueType extends DirectAccess {
      * @param skip skip
      */
     @Entrypoint("stbtt_PackSetSkipMissingCodepoints")
-    void packSetSkipMissingCodepoints(@NativeType("stbtt_pack_context *") MemorySegment spc, @Convert(Type.INT) boolean skip);
+    void packSetSkipMissingCodepoints(@NativeType("stbtt_pack_context *") MemorySegment spc, @Convert(BoolConvert.INT) boolean skip);
 
     /**
      * Calling these functions in sequence is roughly equivalent to calling
@@ -706,7 +706,7 @@ public interface STBTrueType extends DirectAccess {
      * @param offset offset
      * @return {@code false} on failure.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("stbtt_InitFont")
     boolean initFont(STBTTFontInfo info, @NativeType("const unsigned char *") MemorySegment data, int offset);
 
@@ -788,7 +788,7 @@ public interface STBTrueType extends DirectAccess {
      * @param typoLineGap typoLineGap
      * @return {@code true} on success (table present), {@code false} on failure.
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("stbtt_GetFontVMetricsOS2")
     boolean getFontVMetricsOS2(STBTTFontInfo info, @NativeType("int *") MemorySegment typoAscent, @NativeType("int *") MemorySegment typoDescent, @NativeType("int *") MemorySegment typoLineGap);
 
@@ -913,7 +913,7 @@ public interface STBTrueType extends DirectAccess {
      * @param info        info
      * @param glyph_index glyph_index
      */
-    @Convert(Type.INT)
+    @Convert(BoolConvert.INT)
     @Entrypoint("stbtt_IsGlyphEmpty")
     boolean isGlyphEmpty(STBTTFontInfo info, int glyph_index);
 
