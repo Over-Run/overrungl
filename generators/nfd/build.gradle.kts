@@ -8,5 +8,5 @@ dependencies {
 
 tasks.register<GenerateTask>("generate") {
     mainClass = "overrungl.nfd.NFDGeneratorKt"
-    workingDir = project(":nfd").projectDir.resolve("src/main/java/overrungl/nfd")
+    workingDir = project(":nfd").projectDir.resolve("src/main/java/")
 }

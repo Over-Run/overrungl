@@ -24,15 +24,16 @@ import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Skip;
 import overrungl.NativeType;
-import overrungl.util.PlatformLayouts;
 import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
+import java.nio.charset.Charset;
 
-import static java.lang.foreign.ValueLayout.*;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
  * <h2>Native File Dialog Extended</h2>
@@ -57,7 +58,6 @@ import static java.lang.foreign.ValueLayout.*;
  *
  * <h3>Basic Usages</h3>
  * {@snippet lang = java:
- * import overrungl.util.value.Pair;
  * void main() {
  *     var nfd = NFD.INSTANCE;
  *     nfd.init();
@@ -65,8 +65,8 @@ import static java.lang.foreign.ValueLayout.*;
  *     try (MemoryStack stack = MemoryStack.stackPush()) {
  *         String[] outPath = new String[1];
  *         var filterItem = NFDNFilterItem.create(stack,
- *             new Pair<>("Source code", "java"),
- *             new Pair<>("Image file", "png,jpg"));
+ *             Map.entry("Source code", "java"),
+ *             Map.entry("Image file", "png,jpg"));
  *         var result = nfd.openDialogN(outPath, filterItem, null);
  *         switch (result) {
  *             case ERROR -> System.err.println("Error: " + nfd.getError());
@@ -82,8 +82,8 @@ import static java.lang.foreign.ValueLayout.*;
  * Files can be filtered by file extension groups:
  * {@snippet lang = java:
  * var filterItem = NFDNFilterItem.create(allocator,
- *     new Pair<>("Source code", "java"),
- *     new Pair<>("Image file", "png,jpg"));
+ *     Map.entry("Source code", "java"),
+ *     Map.entry("Image file", "png,jpg"));
  *}
  * <p>
  * A file filter is a pair of strings comprising the friendly name and the specification
@@ -162,7 +162,11 @@ public interface NFD extends DirectAccess {
      * The type of the path-set size ({@code unsigned long} for Windows and Mac OS X,
      * {@code unsigned int} for others).
      */
-    ValueLayout PATH_SET_SIZE = NFDInternal.isOsWinOrApple ? (ValueLayout) PlatformLayouts.LONG : JAVA_INT;
+    ValueLayout PATH_SET_SIZE = NFDInternal.pathSetSize;
+    /**
+     * The charset of NFD for current platform.
+     */
+    Charset NFD_CHARSET = NFDInternal.nfdCharset;
     /**
      * The instance of NFD.
      */
@@ -224,7 +228,7 @@ public interface NFD extends DirectAccess {
      * @return the result
      */
     @Entrypoint("NFD_OpenDialogN")
-    int nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem<?> filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
+    int nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
 
     /**
      * Single file open dialog
@@ -236,7 +240,7 @@ public interface NFD extends DirectAccess {
      * @see #nopenDialogN(MemorySegment, NFDNFilterItem, int, MemorySegment) nopenDialogN
      */
     @Skip
-    default int openDialogN(String[] outPath, NFDNFilterItem<?> filterList, String defaultPath) {
+    default int openDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nopenDialogN(seg,
@@ -263,7 +267,7 @@ public interface NFD extends DirectAccess {
      * @return the result
      */
     @Entrypoint("NFD_OpenDialogU8")
-    int nopenDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem<?> filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
+    int nopenDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
 
     /**
      * Single file open dialog
@@ -275,7 +279,7 @@ public interface NFD extends DirectAccess {
      * @see #nopenDialogU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogU8
      */
     @Skip
-    default int openDialogU8(String[] outPath, NFDU8FilterItem<?> filterList, String defaultPath) {
+    default int openDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nopenDialogU8(seg,
@@ -294,14 +298,18 @@ public interface NFD extends DirectAccess {
     @Entrypoint("NFD_OpenDialogN_With_Impl")
     int openDialogNWithImpl(long version, MemorySegment outPath, MemorySegment args);
 
-    @Entrypoint("NFD_OpenDialogN_With")
-    int openDialogNWith(MemorySegment outPath, MemorySegment args);
+    @Skip
+    default int openDialogNWith(MemorySegment outPath, MemorySegment args) {
+        return openDialogNWithImpl(INTERFACE_VERSION, outPath, args);
+    }
 
     @Entrypoint("NFD_OpenDialogU8_With_Impl")
     int openDialogU8WithImpl(long version, MemorySegment outPath, MemorySegment args);
 
-    @Entrypoint("NFD_OpenDialogU8_With")
-    int openDialogU8With(MemorySegment outPath, MemorySegment args);
+    @Skip
+    default int openDialogU8With(MemorySegment outPath, MemorySegment args) {
+        return openDialogU8WithImpl(INTERFACE_VERSION, outPath, args);
+    }
 
     /**
      * Multiple file open dialog
@@ -314,7 +322,7 @@ public interface NFD extends DirectAccess {
      * @return the result
      */
     @Entrypoint("NFD_OpenDialogMultipleN")
-    int nopenDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem<?> filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
+    int nopenDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
 
     /**
      * Multiple file open dialog
@@ -327,7 +335,7 @@ public interface NFD extends DirectAccess {
      * @see #nopenDialogMultipleN(MemorySegment, NFDNFilterItem, int, MemorySegment) nopenDialogMultipleN
      */
     @Skip
-    default int openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem<?> filterList, String defaultPath) {
+    default int openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             return nopenDialogMultipleN(outPaths,
                 filterList,
@@ -347,7 +355,7 @@ public interface NFD extends DirectAccess {
      * @return the result
      */
     @Entrypoint("NFD_OpenDialogMultipleU8")
-    int nopenDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem<?> filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
+    int nopenDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
 
     /**
      * Multiple file open dialog
@@ -360,7 +368,7 @@ public interface NFD extends DirectAccess {
      * @see #nopenDialogMultipleU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogMultipleU8
      */
     @Skip
-    default int openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem<?> filterList, String defaultPath) {
+    default int openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             return nopenDialogMultipleU8(outPaths,
                 filterList,
@@ -372,14 +380,18 @@ public interface NFD extends DirectAccess {
     @Entrypoint("NFD_OpenDialogMultipleN_With_Impl")
     int openDialogMultipleNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_OpenDialogMultipleN_With")
-    int openDialogMultipleNWith(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int openDialogMultipleNWith(MemorySegment outPaths, MemorySegment args) {
+        return openDialogMultipleNWithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     @Entrypoint("NFD_OpenDialogMultipleU8_With_Impl")
     int openDialogMultipleU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_OpenDialogMultipleU8_With")
-    int openDialogMultipleU8With(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int openDialogMultipleU8With(MemorySegment outPaths, MemorySegment args) {
+        return openDialogMultipleU8WithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     /**
      * Save dialog
@@ -393,7 +405,7 @@ public interface NFD extends DirectAccess {
      * @return the result
      */
     @Entrypoint("NFD_SaveDialogN")
-    int nsaveDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem<?> filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath, @NativeType("const nfdnchar_t*") MemorySegment defaultName);
+    int nsaveDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath, @NativeType("const nfdnchar_t*") MemorySegment defaultName);
 
     /**
      * Save dialog
@@ -406,7 +418,7 @@ public interface NFD extends DirectAccess {
      * @see #nsaveDialogN(MemorySegment, NFDNFilterItem, int, MemorySegment, MemorySegment) nsaveDialogN
      */
     @Skip
-    default int saveDialogN(String[] outPath, NFDNFilterItem<?> filterList, String defaultPath, String defaultName) {
+    default int saveDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath, String defaultName) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nsaveDialogN(seg,
@@ -435,7 +447,7 @@ public interface NFD extends DirectAccess {
      * @return the result
      */
     @Entrypoint("NFD_SaveDialogU8")
-    int nsaveDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem<?> filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath, @NativeType("const nfdu8char_t*") MemorySegment defaultName);
+    int nsaveDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath, @NativeType("const nfdu8char_t*") MemorySegment defaultName);
 
     /**
      * Save dialog
@@ -448,7 +460,7 @@ public interface NFD extends DirectAccess {
      * @see #nsaveDialogU8(MemorySegment, NFDU8FilterItem, int, MemorySegment, MemorySegment) nsaveDialogU8
      */
     @Skip
-    default int saveDialogU8(String[] outPath, NFDU8FilterItem<?> filterList, String defaultPath, String defaultName) {
+    default int saveDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath, String defaultName) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
             final int result = nsaveDialogU8(seg,
@@ -468,14 +480,18 @@ public interface NFD extends DirectAccess {
     @Entrypoint("NFD_SaveDialogN_With_Impl")
     int saveDialogNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_SaveDialogN_With")
-    int saveDialogNWith(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int saveDialogNWith(MemorySegment outPaths, MemorySegment args) {
+        return saveDialogNWithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     @Entrypoint("NFD_SaveDialogU8_With_Impl")
     int saveDialogU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_SaveDialogU8_With")
-    int saveDialogU8With(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int saveDialogU8With(MemorySegment outPaths, MemorySegment args) {
+        return saveDialogU8WithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     /**
      * Select folder dialog
@@ -546,14 +562,18 @@ public interface NFD extends DirectAccess {
     @Entrypoint("NFD_PickFolderN_With_Impl")
     int pickFolderNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_PickFolderN_With")
-    int pickFolderNWith(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int pickFolderNWith(MemorySegment outPaths, MemorySegment args) {
+        return pickFolderNWithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     @Entrypoint("NFD_PickFolderU8_With_Impl")
     int pickFolderU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_PickFolderU8_With")
-    int pickFolderU8With(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int pickFolderU8With(MemorySegment outPaths, MemorySegment args) {
+        return pickFolderU8WithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     @Entrypoint("NFD_PickFolderMultipleN")
     int pickFolderMultipleN(MemorySegment outPaths, MemorySegment defaultPath);
@@ -564,14 +584,18 @@ public interface NFD extends DirectAccess {
     @Entrypoint("NFD_PickFolderMultipleN_With_Impl")
     int pickFolderMultipleNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_PickFolderMultipleN_With")
-    int pickFolderMultipleNWith(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int pickFolderMultipleNWith(MemorySegment outPaths, MemorySegment args) {
+        return pickFolderMultipleNWithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     @Entrypoint("NFD_PickFolderMultipleU8_With_Impl")
     int pickFolderMultipleU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
 
-    @Entrypoint("NFD_PickFolderMultipleU8_With")
-    int pickFolderMultipleU8With(MemorySegment outPaths, MemorySegment args);
+    @Skip
+    default int pickFolderMultipleU8With(MemorySegment outPaths, MemorySegment args) {
+        return pickFolderMultipleU8WithImpl(INTERFACE_VERSION, outPaths, args);
+    }
 
     /**
      * Get the last error

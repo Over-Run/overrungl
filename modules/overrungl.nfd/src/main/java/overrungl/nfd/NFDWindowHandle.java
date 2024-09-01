@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,58 +14,41 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
+import module java.base;
+import module overrungl.core;
 
-import overrun.marshal.LayoutBuilder;
-import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructAllocator;
-import overrungl.util.PlatformLayouts;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandles;
-
-/**
- * The native window handle.
- * <p>
- * If using a platform abstraction framework (e.g. SDL2), this should be
- * obtained using the corresponding NFD glue header (e.g. nfd_sdl2.h).
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The native window handle.  If using a platform abstraction framework (e.g. SDL2), this should be
+/// obtained using the corresponding NFD glue header (e.g. nfd_sdl2.h).
+/// ## Layout
+/// ```
+/// struct nfdwindowhandle_t {
+///     size_t type;
+///     void* handle;
+/// }
+/// ```
 public interface NFDWindowHandle extends Struct<NFDWindowHandle> {
-    /**
-     * The struct allocator.
-     */
-    StructAllocator<NFDWindowHandle> OF = new StructAllocator<>(MethodHandles.lookup(),
-        LayoutBuilder.struct()
-            .add(PlatformLayouts.SIZE_T, "type")
-            .cAddress("handle")
-            .build());
+    /// The struct allocator.
+    StructAllocator<NFDWindowHandle> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
+        .add(PlatformLayouts.SIZE_T, "type")
+        .add(ValueLayout.ADDRESS, "handle")
+    .build());
 
-    /**
-     * {@return type}
-     */
-    long type();
+    /// {@return `type`}
+    @NativeType("size_t") long type();
 
-    /**
-     * Sets {@code type}.
-     *
-     * @param type type
-     * @return {@code this}
-     */
-    NFDWindowHandle type(long type);
+    /// Sets `type` with the given value.
+    /// @param type the value
+    /// @return `this`
+    NFDWindowHandle type(@NativeType("size_t") long type);
 
-    /**
-     * {@return handle}
-     */
-    MemorySegment handle();
+    /// {@return `handle`}
+    @NativeType("void*") MemorySegment handle();
 
-    /**
-     * Sets {@code handle}
-     *
-     * @param handle handle
-     * @return {@code this}
-     */
-    NFDWindowHandle handle(MemorySegment handle);
+    /// Sets `handle` with the given value.
+    /// @param handle the value
+    /// @return `this`
+    NFDWindowHandle handle(@NativeType("void*") MemorySegment handle);
+
 }

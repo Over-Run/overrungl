@@ -32,3 +32,7 @@ const val fileHeader = """/*
  */
 
 // This file is auto-generated. DO NOT EDIT!"""
+
+const val imports = """import module java.base;
+import module overrungl.core;
+"""

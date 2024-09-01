@@ -20,13 +20,15 @@ import io.github.overrun.platform.Platform;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
+import overrungl.util.PlatformLayouts;
 
 import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.ValueLayout;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
 
-import static overrun.marshal.gen.processor.ProcessorTypes.registerStruct;
+import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
  * internal
@@ -38,17 +40,7 @@ final class NFDInternal {
     static final SymbolLookup LOOKUP;
 
     static {
-        registerStruct(NFDNFilterItem.class, NFDNFilterItem.OF);
-        registerStruct(NFDNFilterItem.Mutable.class, NFDNFilterItem.Mutable.OF);
-        registerStruct(NFDOpenDialogNArgs.class, NFDOpenDialogNArgs.OF);
-        registerStruct(NFDOpenDialogU8Args.class, NFDOpenDialogU8Args.OF);
-        registerStruct(NFDPickFolderNArgs.class, NFDPickFolderNArgs.OF);
-        registerStruct(NFDPickFolderU8Args.class, NFDPickFolderU8Args.OF);
-        registerStruct(NFDSaveDialogNArgs.class, NFDSaveDialogNArgs.OF);
-        registerStruct(NFDSaveDialogU8Args.class, NFDSaveDialogU8Args.OF);
-        registerStruct(NFDU8FilterItem.class, NFDU8FilterItem.OF);
-        registerStruct(NFDU8FilterItem.Mutable.class, NFDU8FilterItem.Mutable.OF);
-        registerStruct(NFDWindowHandle.class, NFDWindowHandle.OF);
+        NFDStructTypes.registerAll();
 
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
         final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
@@ -58,5 +50,6 @@ final class NFDInternal {
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
     static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOS;
+    static final ValueLayout pathSetSize = isOsWinOrApple ? (ValueLayout) PlatformLayouts.LONG : JAVA_INT;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
 }

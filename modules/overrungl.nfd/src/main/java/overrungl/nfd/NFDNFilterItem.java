@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,122 +14,53 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
+import module java.base;
+import module overrungl.core;
 
-import overrun.marshal.LayoutBuilder;
-import overrun.marshal.Marshal;
-import overrun.marshal.Unmarshal;
-import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructAllocator;
-import overrungl.util.value.Pair;
+/// UTF-16 Filter Item
+/// ## Layout
+/// ```
+/// struct nfdnfilteritem_t {
+///     const nfdu8char_t* name;
+///     const nfdu8char_t* spec;
+/// }
+/// ```
+public interface NFDNFilterItem extends Struct<NFDNFilterItem> {
+    /// The struct allocator.
+    StructAllocator<NFDNFilterItem> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
+        .add(Unmarshal.STR_LAYOUT, "name")
+        .add(Unmarshal.STR_LAYOUT, "spec")
+    .build());
 
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandles;
+    /// {@return `name`}
+    @NativeType("const nfdu8char_t*") MemorySegment name();
 
-/**
- * <h2>Layout</h2>
- * <pre><code>
- * struct nfdnfilteritem_t {
- *     const nfdnchar_t* {@link #name};
- *     const nfdnchar_t* {@link #spec};
- * }</code></pre>
- *
- * @author squid233
- * @since 0.1.0
- */
-public interface NFDNFilterItem<T extends NFDNFilterItem<T>> extends Struct<T> {
-    /**
-     * The struct layout.
-     */
-    StructLayout LAYOUT = LayoutBuilder.struct()
-        .cAddress("name", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
-        .cAddress("spec", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
-        .build();
-    /**
-     * The allocator
-     */
-    StructAllocator<NFDNFilterItem<?>> OF = new StructAllocator<>(MethodHandles.lookup(), LAYOUT);
+    /// Sets `name` with the given value.
+    /// @param name the value
+    /// @return `this`
+    NFDNFilterItem name(@NativeType("const nfdu8char_t*") MemorySegment name);
 
-    /**
-     * Mutable
-     */
-    interface Mutable extends NFDNFilterItem<Mutable> {
-        /**
-         * The allocator
-         */
-        StructAllocator<Mutable> OF = new StructAllocator<>(MethodHandles.lookup(), LAYOUT);
+    /// {@return `spec`}
+    @NativeType("const nfdu8char_t*") MemorySegment spec();
 
-        /**
-         * Sets {@link #name()}.
-         *
-         * @param val the value
-         * @return this
-         */
-        Mutable name(MemorySegment val);
+    /// Sets `spec` with the given value.
+    /// @param spec the value
+    /// @return `this`
+    NFDNFilterItem spec(@NativeType("const nfdu8char_t*") MemorySegment spec);
 
-        /**
-         * Sets {@link #spec()}.
-         *
-         * @param val the value
-         * @return this
-         */
-        Mutable spec(MemorySegment val);
+    static NFDNFilterItem create(SegmentAllocator allocator, String name, String spec) {
+        return OF.of(allocator).name(Marshal.marshal(allocator, name, NFDInternal.nfdCharset)).spec(Marshal.marshal(allocator, spec, NFDInternal.nfdCharset));
     }
-
-    /**
-     * {@return name}
-     */
-    MemorySegment name();
-
-    /**
-     * {@return spec}
-     */
-    MemorySegment spec();
-
-    /**
-     * {@return {@link #name()}}
-     */
-    default String javaName() {
-        return Unmarshal.unmarshalAsString(name(), NFDInternal.nfdCharset);
-    }
-
-    /**
-     * {@return {@link #spec()}}
-     */
-    default String javaSpec() {
-        return Unmarshal.unmarshalAsString(spec(), NFDInternal.nfdCharset);
-    }
-
-    /**
-     * Creates a {@code NFDNFilterItem} instance with the given allocator.
-     *
-     * @param allocator the allocator
-     * @param name      the name of the filter
-     * @param spec      the specification of the filter
-     * @return the instance
-     */
-    static NFDNFilterItem<?> create(SegmentAllocator allocator, String name, String spec) {
-        return Mutable.OF.of(allocator)
-            .name(Marshal.marshal(allocator, name, NFDInternal.nfdCharset))
-            .spec(Marshal.marshal(allocator, spec, NFDInternal.nfdCharset));
-    }
-
-    /**
-     * Creates a {@code NFDNFilterItem.Buffer} instance with the given allocator and items.
-     *
-     * @param allocator the allocator
-     * @param items     the items
-     * @return the instance
-     */
+    
     @SafeVarargs
-    static NFDNFilterItem<?> create(SegmentAllocator allocator, Pair<String>... items) {
-        final var buffer = Mutable.OF.of(allocator, items.length);
-        for (int i = 0, len = items.length; i < len; i++) {
-            var item = items[i];
-            buffer.slice(i)
-                .name(Marshal.marshal(allocator, item.key(), NFDInternal.nfdCharset))
-                .spec(Marshal.marshal(allocator, item.value(), NFDInternal.nfdCharset));
+    static NFDNFilterItem create(SegmentAllocator allocator, Map.Entry<String, String>... entries) {
+        var of = OF.of(allocator, entries.length);
+        for (int i = 0; i < entries.length; i++) {
+            var e = entries[i];
+            of.slice(i).name(Marshal.marshal(allocator, e.getKey(), NFDInternal.nfdCharset)).spec(Marshal.marshal(allocator, e.getValue(), NFDInternal.nfdCharset));
         }
-        return buffer;
+        return of;
     }
 }

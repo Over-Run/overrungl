@@ -20,10 +20,10 @@ import io.github.overrun.memstack.MemoryStack;
 import overrungl.nfd.NFD;
 import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDNFilterItem;
-import overrungl.util.value.Pair;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.util.Map;
 
 /**
  * @author squid233
@@ -44,8 +44,8 @@ public final class NFDTest {
 
             // prepare filters for the dialog
             final var filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
             final int result = nfd.openDialogN(outPath, filterItem, null);
@@ -74,8 +74,8 @@ public final class NFDTest {
 
             // prepare filters for the dialog
             final var filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
             final int result = nfd.openDialogMultipleN(pOutPaths, filterItem, null);
@@ -114,8 +114,8 @@ public final class NFDTest {
 
             // prepare filters for the dialog
             final var filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
             final int result = nfd.openDialogMultipleN(pOutPaths, filterItem, null);
@@ -178,8 +178,8 @@ public final class NFDTest {
 
             // prepare filters for the dialog
             final var filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
             final int result = nfd.saveDialogN(savePath, filterItem, null, "Untitled.java");
