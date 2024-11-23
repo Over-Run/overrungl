@@ -14,15 +14,21 @@
  * copies or substantial portions of the Software.
  */
 
-package io.github.overrun.marshalgen
+package overrungl.gen
 
-@MarshalGen
-interface Spec {
-    fun appendString(indent: Int, builder: StringBuilder, classRefs: ClassRefs)
-}
+import com.palantir.javapoet.CodeBlock
 
-fun literal(string: String): Spec = object : Spec {
-    override fun appendString(indent: Int, builder: StringBuilder, classRefs: ClassRefs) {
-        builder.appendLine(string.prependIndent(" ".repeat(indent)))
+class JavadocProvider {
+    var doFirst: CodeBlock.Builder.() -> Unit = {}
+        private set
+    var doLast: CodeBlock.Builder.() -> Unit = {}
+        private set
+
+    fun doFirst(action: CodeBlock.Builder.() -> Unit) {
+        doFirst = action
+    }
+
+    fun doLast(action: CodeBlock.Builder.() -> Unit) {
+        doLast = action
     }
 }

@@ -23,7 +23,6 @@ The pull request will be reviewed in undetermined time, usually in active iterat
 The formatted code:
 
 - The header of Java files **MUST** contain a copy of [LICENSE](LICENSE).
-  The copy **MUST** be ended without an empty line and commented with block style, like this below:
   ```text
   /*
    * MIT License

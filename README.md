@@ -105,6 +105,8 @@ The documentation of OpenGL can be found from [references](https://registry.khro
 
 OverrunGL uses [Marshal](https://github.com/Over-Run/marshal).
 
+[JavaPoet](https://github.com/palantir/javapoet) is used to generate source files.
+
 ### Credits
 
 [<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)

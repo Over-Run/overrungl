@@ -16,130 +16,202 @@
 
 package overrungl.nfd
 
-import io.github.overrun.marshalgen.*
+import com.palantir.javapoet.ArrayTypeName
+import com.palantir.javapoet.ClassName
+import com.palantir.javapoet.MethodSpec
+import com.palantir.javapoet.ParameterizedTypeName
+import overrungl.gen.*
+import java.lang.foreign.SegmentAllocator
+import javax.lang.model.element.Modifier
 
-val const_nfdu8char_t_pointer = const_char_pointer c "const nfdu8char_t*"
-val const_nfdnchar_t_pointer = const_char_pointer c "const nfdnchar_t*"
-val const_nfdu8filteritem_t_pointer = address c "const nfdu8filteritem_t*"
-val const_nfdnfilteritem_t_pointer = address c "const nfdnfilteritem_t*"
+val const_nfdu8char_t_ptr = string c "const nfdu8char_t*"
+val const_nfdnchar_t_ptr = string c "const nfdnchar_t*"
 val nfdfiltersize_t by int
-val nfdresult_t by int
 val nfdversion_t by size_t
-val nfdu8char_t_pointer = address c "nfdu8char_t*"
-val nfdnchar_t_pointer = address c "nfdnchar_t*"
-val nfdu8char_t_pointer_pointer = address c "nfdu8char_t**"
-val nfdnchar_t_pointer_pointer = address c "nfdnchar_t**"
+val const_nfdu8filteritem_t_ptr = address c "const nfdu8filteritem_t*"
+val const_nfdnfilteritem_t_ptr = address c "const nfdnfilteritem_t*"
 
 /**
  * @author squid233
  * @since 0.1.0
  */
 fun main() {
-    struct("overrungl.nfd.NFDU8FilterItem", "nfdu8filteritem_t", javadoc {
-        +"UTF-8 Filter Item"
-        see("NFDHelper")
+    val NFDInternal = ClassName.get("overrungl.nfd", "NFDInternal")
+
+    struct("overrungl.nfd", "NFDU8FilterItem", "nfdu8filteritem_t", javadoc = {
+        doFirst { add("UTF-8 Filter Item") }
     }) {
-        const_nfdu8char_t_pointer("name")
-        const_nfdu8char_t_pointer("spec")
+        const_nfdu8char_t_ptr("name")
+        const_nfdu8char_t_ptr("spec")
+        doLast {
+            addMethod(
+                MethodSpec.methodBuilder("create")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(selfClassName)
+                    .addParameter(SegmentAllocator::class.java, "allocator")
+                    .addParameter(String::class.java, "name")
+                    .addParameter(String::class.java, "spec")
+                    .addStatement(
+                        "return $1T.OF.of($2N).name($5T.marshal($2N, $3N)).spec($5T.marshal($2N, $4N))",
+                        this@struct.selfClassName,
+                        "allocator",
+                        "name",
+                        "spec",
+                        Marshal
+                    )
+                    .build()
+            )
+            addMethod(
+                MethodSpec.methodBuilder("create")
+                    .addAnnotation(SafeVarargs::class.java)
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(selfClassName)
+                    .addParameter(SegmentAllocator::class.java, "allocator")
+                    .addParameter(
+                        ArrayTypeName.of(
+                            ParameterizedTypeName.get(
+                                Map.Entry::class.java,
+                                String::class.java,
+                                String::class.java
+                            )
+                        ), "entries"
+                    )
+                    .varargs()
+                    .addStatement("var of = \$T.OF.of(\$N, \$N.length)", selfClassName, "allocator", "entries")
+                    .beginControlFlow("for (int i = 0; i < \$N.length; i++)", "entries")
+                    .addStatement("var e = \$N[i]", "entries")
+                    .addStatement(
+                        "of.slice(i).name(\$1T.marshal(allocator, e.getKey())).spec(\$1T.marshal(allocator, e.getValue()))",
+                        Marshal
+                    )
+                    .endControlFlow()
+                    .addStatement("return of")
+                    .build()
+            )
+        }
     }
-    struct("overrungl.nfd.NFDNFilterItem", "nfdnfilteritem_t", javadoc {
-        +"UTF-16 Filter Item"
-        see("NFDHelper")
+    struct("overrungl.nfd", "NFDNFilterItem", "nfdnfilteritem_t", javadoc = {
+        doFirst { add("UTF-16 Filter Item") }
     }) {
-        const_nfdnchar_t_pointer("name")
-        const_nfdnchar_t_pointer("spec")
+        const_nfdnchar_t_ptr("name")
+        const_nfdnchar_t_ptr("spec")
+        doLast {
+            addMethod(
+                MethodSpec.methodBuilder("create")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(selfClassName)
+                    .addParameter(SegmentAllocator::class.java, "allocator")
+                    .addParameter(String::class.java, "name")
+                    .addParameter(String::class.java, "spec")
+                    .addStatement(
+                        "return $1T.OF.of($2N).name($5T.marshal($2N, $3N, $6T.nfdCharset)).spec($5T.marshal($2N, $4N, $6T.nfdCharset))",
+                        this@struct.selfClassName,
+                        "allocator",
+                        "name",
+                        "spec",
+                        Marshal,
+                        NFDInternal
+                    )
+                    .build()
+            )
+            addMethod(
+                MethodSpec.methodBuilder("create")
+                    .addAnnotation(SafeVarargs::class.java)
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(selfClassName)
+                    .addParameter(SegmentAllocator::class.java, "allocator")
+                    .addParameter(
+                        ArrayTypeName.of(
+                            ParameterizedTypeName.get(
+                                Map.Entry::class.java,
+                                String::class.java,
+                                String::class.java
+                            )
+                        ), "entries"
+                    )
+                    .varargs()
+                    .addStatement("var of = \$T.OF.of(\$N, \$N.length)", selfClassName, "allocator", "entries")
+                    .beginControlFlow("for (int i = 0; i < \$N.length; i++)", "entries")
+                    .addStatement("var e = \$N[i]", "entries")
+                    .addStatement(
+                        "of.slice(i).name($1T.marshal(allocator, e.getKey(), $2T.nfdCharset)).spec($1T.marshal(allocator, e.getValue(), $2T.nfdCharset))",
+                        Marshal,
+                        NFDInternal
+                    )
+                    .endControlFlow()
+                    .addStatement("return of")
+                    .build()
+            )
+        }
     }
-    val nfdwindowhandle_t = struct("overrungl.nfd.NFDWindowHandle", "nfdwindowhandle_t", javadoc {
-        +"""
-            The native window handle.  If using a platform abstraction framework (e.g. SDL2), this should be
-            obtained using the corresponding NFD glue header (e.g. nfd_sdl2.h).
-        """.trimIndent()
+    val nfdwindowhandle_t = struct("overrungl.nfd", "NFDWindowHandle", "nfdwindowhandle_t", javadoc = {
+        doFirst {
+            add(
+                """
+                    The native window handle. <p>If using a platform abstraction framework (e.g. SDL2), this should be
+                    obtained using the corresponding NFD glue header (e.g. nfd_sdl2.h).
+                """.trimIndent()
+            )
+        }
     }) {
         size_t("type")
-        void_pointer("handle")
+        void_ptr("handle")
     }
-    struct("overrungl.nfd.NFDOpenDialogU8Args", "nfdopendialogu8args_t") {
-        const_nfdu8filteritem_t_pointer("filterList")
+    struct("overrungl.nfd", "NFDOpenDialogU8Args", "nfdopendialogu8args_t") {
+        const_nfdu8filteritem_t_ptr("filterList")
         nfdfiltersize_t("filterCount")
-        const_nfdu8char_t_pointer("defaultPath")
-        nfdwindowhandle_t("parentWindow")
+        const_nfdu8char_t_ptr("defaultPath")
+        byValueStruct(nfdwindowhandle_t.structSpec, "parentWindow")
     }
-    struct("overrungl.nfd.NFDOpenDialogNArgs", "nfdopendialognargs_t") {
-        const_nfdnfilteritem_t_pointer("filterList")
+    struct("overrungl.nfd", "NFDOpenDialogNArgs", "nfdopendialognargs_t") {
+        const_nfdnfilteritem_t_ptr("filterList")
         nfdfiltersize_t("filterCount")
-        const_nfdnchar_t_pointer("defaultPath")
-        nfdwindowhandle_t("parentWindow")
+        const_nfdnchar_t_ptr("defaultPath")
+        byValueStruct(nfdwindowhandle_t.structSpec, "parentWindow")
     }
-    struct("overrungl.nfd.NFDSaveDialogU8Args", "nfdsavedialogu8args_t") {
-        const_nfdu8filteritem_t_pointer("filterList")
+    struct("overrungl.nfd", "NFDSaveDialogU8Args", "nfdsavedialogu8args_t") {
+        const_nfdu8filteritem_t_ptr("filterList")
         nfdfiltersize_t("filterCount")
-        const_nfdu8char_t_pointer("defaultPath")
-        const_nfdu8char_t_pointer("defaultName")
-        nfdwindowhandle_t("parentWindow")
+        const_nfdu8char_t_ptr("defaultPath")
+        const_nfdu8char_t_ptr("defaultName")
+        byValueStruct(nfdwindowhandle_t.structSpec, "parentWindow")
     }
-    struct("overrungl.nfd.NFDSaveDialogNArgs", "nfdsavedialognargs_t") {
-        const_nfdnfilteritem_t_pointer("filterList")
+    struct("overrungl.nfd", "NFDSaveDialogNArgs", "nfdsavedialognargs_t") {
+        const_nfdnfilteritem_t_ptr("filterList")
         nfdfiltersize_t("filterCount")
-        const_nfdnchar_t_pointer("defaultPath")
-        const_nfdnchar_t_pointer("defaultName")
-        nfdwindowhandle_t("parentWindow")
+        const_nfdnchar_t_ptr("defaultPath")
+        const_nfdnchar_t_ptr("defaultName")
+        byValueStruct(nfdwindowhandle_t.structSpec, "parentWindow")
     }
-    struct("overrungl.nfd.NFDPickFolderU8Args", "nfdpickfolderu8args_t") {
-        const_nfdu8char_t_pointer("defaultPath")
-        nfdwindowhandle_t("parentWindow")
+    struct("overrungl.nfd", "NFDPickFolderU8Args", "nfdpickfolderu8args_t") {
+        const_nfdu8char_t_ptr("defaultPath")
+        byValueStruct(nfdwindowhandle_t.structSpec, "parentWindow")
     }
-    struct("overrungl.nfd.NFDPickFolderNArgs", "nfdpickfoldernargs_t") {
-        const_nfdnchar_t_pointer("defaultPath")
-        nfdwindowhandle_t("parentWindow")
+    struct("overrungl.nfd", "NFDPickFolderNArgs", "nfdpickfoldernargs_t") {
+        const_nfdnchar_t_ptr("defaultPath")
+        byValueStruct(nfdwindowhandle_t.structSpec, "parentWindow")
     }
-    StructRegistration.generate("overrungl.nfd.NFDStructTypes")
+    StructRegistration.generate("overrungl.nfd", "NFDStructTypes")
 
-    downcall("overrungl.nfd.CNFD", javadoc {
-        +"Base functions of [NFD]."
+    downcall("overrungl.nfd", "CNFD", javadoc = {
+        doFirst { add("Base functions of {@link \$T}.", ClassName.get("overrungl.nfd", "NFD")) }
     }) {
         extends(DirectAccess)
-        int("ERROR" to "0", javadoc { +"Programmatic error" })
-        int("OKAY" to "1", javadoc { +"User pressed okay, or successful return" })
-        int("CANCEL" to "2", javadoc { +"User pressed cancel" })
-        int(javadoc { +"The native window handle type." }) {
-            "WINDOW_HANDLE_TYPE_UNSET"("0")
-            "WINDOW_HANDLE_TYPE_WINDOWS"(
-                "1",
-                javadoc { +"Windows: handle is HWND (the Windows API typedefs this to void*)" })
-            // Cocoa: handle is NSWindow*
-            "WINDOW_HANDLE_TYPE_COCOA"("2", javadoc { +"Cocoa: handle is NSWindow*" })
-            // X11: handle is Window
-            "WINDOW_HANDLE_TYPE_X11"("3", javadoc { +"X11: handle is Window" })
+        jint("ERROR" to "0") { addJavadoc("Programmatic error") }
+        jint("OKAY" to "1") { addJavadoc("User pressed okay, or successful return") }
+        jint("CANCEL" to "2") { addJavadoc("User pressed cancel") }
+        jint("WINDOW_HANDLE_TYPE_UNSET" to "0") { addJavadoc("The native window handle type.") }
+        jint("WINDOW_HANDLE_TYPE_WINDOWS" to "1") { addJavadoc("Windows: handle is HWND (the Windows API typedefs this to void*)") }
+        jint("WINDOW_HANDLE_TYPE_COCOA" to "2") { addJavadoc("Cocoa: handle is NSWindow*") }
+        jint("WINDOW_HANDLE_TYPE_X11" to "3") { addJavadoc("X11: handle is Window") }
+        jint("INTERFACE_VERSION" to "1") {
+            addJavadoc(
+                """
+                    This is a unique identifier tagged to all the NFD_*With() function calls, for backward
+                    compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
+                    NFD differently depending on the version you're building with.
+                """.trimIndent()
+            )
         }
-
-        void("FreePathN", nfdnchar_t_pointer * "filePath", entrypoint = "NFD_FreePathN", javadoc = javadoc {
-            +"Free a file path that was returned by the dialogs."
-            +"Note: use NFD_PathSet_FreePathN() to free path from pathset instead of this function."
-        })
-        void("FreePathU8", nfdu8char_t_pointer * "filePath", entrypoint = "NFD_FreePathU8", javadoc = javadoc {
-            +"Free a file path that was returned by the dialogs."
-            +"Note: use NFD_PathSet_FreePathU8() to free path from pathset instead of this function."
-        })
-        nfdresult_t("Init", entrypoint = "NFD_Init", javadoc = javadoc {
-            +"Initialize NFD. Call this for every thread that might use NFD, before calling any other NFD functions on that thread."
-        })
-        void(
-            "Quit",
-            entrypoint = "NFD_Quit",
-            javadoc = javadoc { +"Call this to de-initialize NFD, if NFD_Init returned NFD_OKAY." })
-        /*nfdresult_t(
-            "OpenDialogN",
-            nfdnchar_t_pointer_pointer * "outPath",
-            const_nfdnfilteritem_t_pointer * "filterList",
-            nfdfiltersize_t * "filterCount",
-            const_nfdnchar_t_pointer * "defaultPath",
-            entrypoint = "NFD_OpenDialogN",
-            javadoc = javadoc {
-                +"Single file open dialog"
-                +"It's the caller's responsibility to free `outPath` via NFD_FreePathN() if this function returns NFD_OKAY."
-                "filterCount" param "If zero, filterList is ignored (you can use null)."
-                "defaultPath" param "If null, the operating system will decide."
-            }
-        )*/
     }
 }
