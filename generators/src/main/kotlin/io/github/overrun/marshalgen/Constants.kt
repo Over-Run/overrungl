@@ -13,7 +13,8 @@
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  */
-package overrungl.gen
+
+package io.github.overrun.marshalgen
 
 const val fileHeader = """/*
  * MIT License
@@ -32,7 +33,3 @@ const val fileHeader = """/*
  */
 
 // This file is auto-generated. DO NOT EDIT!"""
-
-const val imports = """import module java.base;
-import module overrungl.core;
-"""

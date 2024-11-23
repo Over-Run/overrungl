@@ -6,7 +6,13 @@ plugins { kotlin("jvm") }
 val jdkVersion: String by rootProject
 val kotlinTargetJdkVersion: String by rootProject
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.palantir.javapoet:javapoet:0.5.0")
+}
 
 tasks.withType<KotlinCompile> {
     compilerOptions { jvmTarget.set(JvmTarget.fromTarget(kotlinTargetJdkVersion)) }

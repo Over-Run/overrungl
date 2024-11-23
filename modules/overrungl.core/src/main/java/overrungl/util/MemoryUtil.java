@@ -24,8 +24,8 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
+import static overrun.marshal.CanonicalLayouts.SIZE_T;
 import static overrungl.internal.RuntimeHelper.SIZE_T_LONG;
-import static overrungl.util.PlatformLayouts.SIZE_T;
 
 /**
  * The standard-C memory allocator.

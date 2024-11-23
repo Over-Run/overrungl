@@ -14,32 +14,15 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.util;
+package io.github.overrun.marshalgen
 
-import overrungl.internal.RuntimeHelper;
+@MarshalGen
+interface Spec {
+    fun appendString(indent: Int, builder: StringBuilder, classRefs: ClassRefs)
+}
 
-import java.lang.foreign.MemoryLayout;
-
-/**
- * Platform-specific value layouts.
- *
- * @author squid233
- * @since 0.1.0
- */
-public final class PlatformLayouts {
-    /**
-     * {@code long} type in C
-     */
-    public static final MemoryLayout LONG = RuntimeHelper.LONG;
-    /**
-     * {@code size_t} type in C
-     */
-    public static final MemoryLayout SIZE_T = RuntimeHelper.SIZE_T;
-    /**
-     * {@code wchar_t} type in C
-     */
-    public static final MemoryLayout WCHAR_T = RuntimeHelper.WCHAR_T;
-
-    private PlatformLayouts() {
+fun literal(string: String): Spec = object : Spec {
+    override fun appendString(indent: Int, builder: StringBuilder, classRefs: ClassRefs) {
+        builder.appendLine(string.prependIndent(" ".repeat(indent)))
     }
 }

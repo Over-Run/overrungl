@@ -16,75 +16,122 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
-import module java.base;
-import module overrungl.core;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
+import overrun.marshal.CanonicalLayouts;
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.CType;
+import overrun.marshal.gen.CanonicalType;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
+import overrungl.nfd.NFDWindowHandle;
 
+/// ## Members
+/// 
+/// ### filterList
+/// 
+/// [Getter](#filterList()) - [Setter](#filterList(java.lang.foreign.MemorySegment))
+/// 
+/// ### filterCount
+/// 
+/// [Getter](#filterCount()) - [Setter](#filterCount(int))
+/// 
+/// ### defaultPath
+/// 
+/// [Getter](#defaultPath()) - [Setter](#defaultPath(java.lang.foreign.MemorySegment))
+/// 
+/// ### defaultName
+/// 
+/// [Getter](#defaultName()) - [Setter](#defaultName(java.lang.foreign.MemorySegment))
+/// 
+/// ### parentWindow
+/// 
+/// Definition of [overrungl.nfd.NFDWindowHandle]
+/// 
 /// ## Layout
+/// 
 /// ```
-/// struct nfdsavedialognargs_t {
+/// typedef struct nfdsavedialognargs_t {
 ///     const nfdnfilteritem_t* filterList;
 ///     nfdfiltersize_t filterCount;
-///     const nfdu8char_t* defaultPath;
-///     const nfdu8char_t* defaultName;
+///     const nfdnchar_t* defaultPath;
+///     const nfdnchar_t* defaultName;
 ///     nfdwindowhandle_t parentWindow;
-/// }
+/// } NFDSaveDialogNArgs;
 /// ```
+/// 
 public interface NFDSaveDialogNArgs extends Struct<NFDSaveDialogNArgs> {
     /// The struct allocator.
     StructAllocator<NFDSaveDialogNArgs> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
         .add(ValueLayout.ADDRESS, "filterList")
-        .add(ValueLayout.JAVA_INT, "filterCount")
+        .add(CanonicalLayouts.INT, "filterCount")
         .add(Unmarshal.STR_LAYOUT, "defaultPath")
         .add(Unmarshal.STR_LAYOUT, "defaultName")
         .add(NFDWindowHandle.OF.layout(), "parentWindow")
-    .build());
+        .build());
+    
+    @Override
+    NFDSaveDialogNArgs slice(long index, long count);
+
+    @Override
+    NFDSaveDialogNArgs slice(long index);
 
     /// {@return `filterList`}
-    @NativeType("const nfdnfilteritem_t*") MemorySegment filterList();
+    @CType("const nfdnfilteritem_t*")
+    MemorySegment filterList();
 
     /// Sets `filterList` with the given value.
     /// @param filterList the value
     /// @return `this`
-    NFDSaveDialogNArgs filterList(@NativeType("const nfdnfilteritem_t*") MemorySegment filterList);
+    NFDSaveDialogNArgs filterList(@CType("const nfdnfilteritem_t*") MemorySegment filterList);
 
     /// {@return `filterCount`}
-    @NativeType("nfdfiltersize_t") int filterCount();
+    @CType("nfdfiltersize_t")
+    @CanonicalType("int")
+    int filterCount();
 
     /// Sets `filterCount` with the given value.
     /// @param filterCount the value
     /// @return `this`
-    NFDSaveDialogNArgs filterCount(@NativeType("nfdfiltersize_t") int filterCount);
+    NFDSaveDialogNArgs filterCount(@CType("nfdfiltersize_t") @CanonicalType("int") int filterCount);
 
     /// {@return `defaultPath`}
-    @NativeType("const nfdu8char_t*") MemorySegment defaultPath();
+    @CType("const nfdnchar_t*")
+    MemorySegment defaultPath();
 
     /// Sets `defaultPath` with the given value.
     /// @param defaultPath the value
     /// @return `this`
-    NFDSaveDialogNArgs defaultPath(@NativeType("const nfdu8char_t*") MemorySegment defaultPath);
+    NFDSaveDialogNArgs defaultPath(@CType("const nfdnchar_t*") MemorySegment defaultPath);
 
     /// {@return `defaultName`}
-    @NativeType("const nfdu8char_t*") MemorySegment defaultName();
+    @CType("const nfdnchar_t*")
+    MemorySegment defaultName();
 
     /// Sets `defaultName` with the given value.
     /// @param defaultName the value
     /// @return `this`
-    NFDSaveDialogNArgs defaultName(@NativeType("const nfdu8char_t*") MemorySegment defaultName);
+    NFDSaveDialogNArgs defaultName(@CType("const nfdnchar_t*") MemorySegment defaultName);
 
-    /// {@return `parentWindow.type`}
-    @NativeType("size_t") long parentWindow$type();
+    /// {@return `parentWindow$type`}
+    @CType("size_t")
+    @CanonicalType("size_t")
+    long parentWindow$type();
 
-    /// Sets `parentWindow.type` with the given value.
+    /// Sets `parentWindow$type` with the given value.
     /// @param parentWindow$type the value
     /// @return `this`
-    NFDSaveDialogNArgs parentWindow$type(@NativeType("size_t") long parentWindow$type);
+    NFDSaveDialogNArgs parentWindow$type(@CType("size_t") @CanonicalType("size_t") long parentWindow$type);
 
-    /// {@return `parentWindow.handle`}
-    @NativeType("void*") MemorySegment parentWindow$handle();
+    /// {@return `parentWindow$handle`}
+    @CType("void*")
+    MemorySegment parentWindow$handle();
 
-    /// Sets `parentWindow.handle` with the given value.
+    /// Sets `parentWindow$handle` with the given value.
     /// @param parentWindow$handle the value
     /// @return `this`
-    NFDSaveDialogNArgs parentWindow$handle(@NativeType("void*") MemorySegment parentWindow$handle);
+    NFDSaveDialogNArgs parentWindow$handle(@CType("void*") MemorySegment parentWindow$handle);
 
 }

@@ -35,6 +35,11 @@ allprojects {
                         links("https://download.java.net/java/early_access/$jdkEarlyAccessDoc/docs/api/")
                     }
 
+                    links(
+                        "https://over-run.github.io/memstack/",
+                        "https://over-run.github.io/marshal/"
+                    )
+
                     tags(
                         "glfw.errors:m:Errors:",
                         "glfw.remark:m:Remarks:",

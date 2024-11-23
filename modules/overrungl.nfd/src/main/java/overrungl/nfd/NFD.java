@@ -17,7 +17,6 @@
 package overrungl.nfd;
 
 import io.github.overrun.memstack.MemoryStack;
-import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
@@ -38,7 +37,7 @@ import static java.lang.foreign.ValueLayout.OfLong;
 /**
  * <h2>Native File Dialog Extended</h2>
  * <p>
- * A small C library with that portably invokes native file open, folder select and file save dialogs.
+ * A small C library that portably invokes native file open, folder select and file save dialogs.
  * Write dialog code once and have it pop up native dialogs on all supported platforms.
  * Avoid linking large dependencies like wxWidgets and Qt.
  * <p>
@@ -123,7 +122,7 @@ import static java.lang.foreign.ValueLayout.OfLong;
  * @author squid233
  * @since 0.1.0
  */
-public interface NFD extends DirectAccess {
+public interface NFD extends CNFD {
     /**
      * programmatic error
      */

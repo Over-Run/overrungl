@@ -92,7 +92,6 @@ You must enable the access of OverrunGL by adding a VM argument or a manifest at
 
 - [Discussions](https://github.com/Over-Run/overrungl/discussions)
 - [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
-- [QQ群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ahhT6p-D0HlrGat3lFDLlSB953umWh5Z&authKey=KP0UtgQg1rW8MGNV20zmxRI7OxzijOproIRsCxe8mrWD6CHBiVo0Lhr0vvrnDYAH&noverify=0&group_code=1078745269)
 
 ## Release Notes
 

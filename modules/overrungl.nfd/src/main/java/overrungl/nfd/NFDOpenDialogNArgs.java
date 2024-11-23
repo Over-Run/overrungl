@@ -16,65 +16,107 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
-import module java.base;
-import module overrungl.core;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandles;
+import overrun.marshal.CanonicalLayouts;
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.CType;
+import overrun.marshal.gen.CanonicalType;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
+import overrungl.nfd.NFDWindowHandle;
 
+/// ## Members
+/// 
+/// ### filterList
+/// 
+/// [Getter](#filterList()) - [Setter](#filterList(java.lang.foreign.MemorySegment))
+/// 
+/// ### filterCount
+/// 
+/// [Getter](#filterCount()) - [Setter](#filterCount(int))
+/// 
+/// ### defaultPath
+/// 
+/// [Getter](#defaultPath()) - [Setter](#defaultPath(java.lang.foreign.MemorySegment))
+/// 
+/// ### parentWindow
+/// 
+/// Definition of [overrungl.nfd.NFDWindowHandle]
+/// 
 /// ## Layout
+/// 
 /// ```
-/// struct nfdopendialognargs_t {
+/// typedef struct nfdopendialognargs_t {
 ///     const nfdnfilteritem_t* filterList;
 ///     nfdfiltersize_t filterCount;
-///     const nfdu8char_t* defaultPath;
+///     const nfdnchar_t* defaultPath;
 ///     nfdwindowhandle_t parentWindow;
-/// }
+/// } NFDOpenDialogNArgs;
 /// ```
+/// 
 public interface NFDOpenDialogNArgs extends Struct<NFDOpenDialogNArgs> {
     /// The struct allocator.
     StructAllocator<NFDOpenDialogNArgs> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
         .add(ValueLayout.ADDRESS, "filterList")
-        .add(ValueLayout.JAVA_INT, "filterCount")
+        .add(CanonicalLayouts.INT, "filterCount")
         .add(Unmarshal.STR_LAYOUT, "defaultPath")
         .add(NFDWindowHandle.OF.layout(), "parentWindow")
-    .build());
+        .build());
+    
+    @Override
+    NFDOpenDialogNArgs slice(long index, long count);
+
+    @Override
+    NFDOpenDialogNArgs slice(long index);
 
     /// {@return `filterList`}
-    @NativeType("const nfdnfilteritem_t*") MemorySegment filterList();
+    @CType("const nfdnfilteritem_t*")
+    MemorySegment filterList();
 
     /// Sets `filterList` with the given value.
     /// @param filterList the value
     /// @return `this`
-    NFDOpenDialogNArgs filterList(@NativeType("const nfdnfilteritem_t*") MemorySegment filterList);
+    NFDOpenDialogNArgs filterList(@CType("const nfdnfilteritem_t*") MemorySegment filterList);
 
     /// {@return `filterCount`}
-    @NativeType("nfdfiltersize_t") int filterCount();
+    @CType("nfdfiltersize_t")
+    @CanonicalType("int")
+    int filterCount();
 
     /// Sets `filterCount` with the given value.
     /// @param filterCount the value
     /// @return `this`
-    NFDOpenDialogNArgs filterCount(@NativeType("nfdfiltersize_t") int filterCount);
+    NFDOpenDialogNArgs filterCount(@CType("nfdfiltersize_t") @CanonicalType("int") int filterCount);
 
     /// {@return `defaultPath`}
-    @NativeType("const nfdu8char_t*") MemorySegment defaultPath();
+    @CType("const nfdnchar_t*")
+    MemorySegment defaultPath();
 
     /// Sets `defaultPath` with the given value.
     /// @param defaultPath the value
     /// @return `this`
-    NFDOpenDialogNArgs defaultPath(@NativeType("const nfdu8char_t*") MemorySegment defaultPath);
+    NFDOpenDialogNArgs defaultPath(@CType("const nfdnchar_t*") MemorySegment defaultPath);
 
-    /// {@return `parentWindow.type`}
-    @NativeType("size_t") long parentWindow$type();
+    /// {@return `parentWindow$type`}
+    @CType("size_t")
+    @CanonicalType("size_t")
+    long parentWindow$type();
 
-    /// Sets `parentWindow.type` with the given value.
+    /// Sets `parentWindow$type` with the given value.
     /// @param parentWindow$type the value
     /// @return `this`
-    NFDOpenDialogNArgs parentWindow$type(@NativeType("size_t") long parentWindow$type);
+    NFDOpenDialogNArgs parentWindow$type(@CType("size_t") @CanonicalType("size_t") long parentWindow$type);
 
-    /// {@return `parentWindow.handle`}
-    @NativeType("void*") MemorySegment parentWindow$handle();
+    /// {@return `parentWindow$handle`}
+    @CType("void*")
+    MemorySegment parentWindow$handle();
 
-    /// Sets `parentWindow.handle` with the given value.
+    /// Sets `parentWindow$handle` with the given value.
     /// @param parentWindow$handle the value
     /// @return `this`
-    NFDOpenDialogNArgs parentWindow$handle(@NativeType("void*") MemorySegment parentWindow$handle);
+    NFDOpenDialogNArgs parentWindow$handle(@CType("void*") MemorySegment parentWindow$handle);
 
 }

@@ -21,12 +21,14 @@ import java.lang.annotation.*;
 /**
  * Annotates native types.
  *
+ * @deprecated replace with {@link overrun.marshal.gen.CType}
  * @author squid233
  * @since 0.1.0
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE_USE)
+@Deprecated(since = "0.1.0")
 public @interface NativeType {
     /**
      * {@return the name of the native type}

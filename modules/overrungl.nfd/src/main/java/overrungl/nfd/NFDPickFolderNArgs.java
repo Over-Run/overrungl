@@ -16,45 +16,74 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
-import module java.base;
-import module overrungl.core;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.CType;
+import overrun.marshal.gen.CanonicalType;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
+import overrungl.nfd.NFDWindowHandle;
 
+/// ## Members
+/// 
+/// ### defaultPath
+/// 
+/// [Getter](#defaultPath()) - [Setter](#defaultPath(java.lang.foreign.MemorySegment))
+/// 
+/// ### parentWindow
+/// 
+/// Definition of [overrungl.nfd.NFDWindowHandle]
+/// 
 /// ## Layout
+/// 
 /// ```
-/// struct nfdpickfoldernargs_t {
-///     const nfdu8char_t* defaultPath;
+/// typedef struct nfdpickfoldernargs_t {
+///     const nfdnchar_t* defaultPath;
 ///     nfdwindowhandle_t parentWindow;
-/// }
+/// } NFDPickFolderNArgs;
 /// ```
+/// 
 public interface NFDPickFolderNArgs extends Struct<NFDPickFolderNArgs> {
     /// The struct allocator.
     StructAllocator<NFDPickFolderNArgs> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
         .add(Unmarshal.STR_LAYOUT, "defaultPath")
         .add(NFDWindowHandle.OF.layout(), "parentWindow")
-    .build());
+        .build());
+    
+    @Override
+    NFDPickFolderNArgs slice(long index, long count);
+
+    @Override
+    NFDPickFolderNArgs slice(long index);
 
     /// {@return `defaultPath`}
-    @NativeType("const nfdu8char_t*") MemorySegment defaultPath();
+    @CType("const nfdnchar_t*")
+    MemorySegment defaultPath();
 
     /// Sets `defaultPath` with the given value.
     /// @param defaultPath the value
     /// @return `this`
-    NFDPickFolderNArgs defaultPath(@NativeType("const nfdu8char_t*") MemorySegment defaultPath);
+    NFDPickFolderNArgs defaultPath(@CType("const nfdnchar_t*") MemorySegment defaultPath);
 
-    /// {@return `parentWindow.type`}
-    @NativeType("size_t") long parentWindow$type();
+    /// {@return `parentWindow$type`}
+    @CType("size_t")
+    @CanonicalType("size_t")
+    long parentWindow$type();
 
-    /// Sets `parentWindow.type` with the given value.
+    /// Sets `parentWindow$type` with the given value.
     /// @param parentWindow$type the value
     /// @return `this`
-    NFDPickFolderNArgs parentWindow$type(@NativeType("size_t") long parentWindow$type);
+    NFDPickFolderNArgs parentWindow$type(@CType("size_t") @CanonicalType("size_t") long parentWindow$type);
 
-    /// {@return `parentWindow.handle`}
-    @NativeType("void*") MemorySegment parentWindow$handle();
+    /// {@return `parentWindow$handle`}
+    @CType("void*")
+    MemorySegment parentWindow$handle();
 
-    /// Sets `parentWindow.handle` with the given value.
+    /// Sets `parentWindow$handle` with the given value.
     /// @param parentWindow$handle the value
     /// @return `this`
-    NFDPickFolderNArgs parentWindow$handle(@NativeType("void*") MemorySegment parentWindow$handle);
+    NFDPickFolderNArgs parentWindow$handle(@CType("void*") MemorySegment parentWindow$handle);
 
 }

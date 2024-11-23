@@ -8,23 +8,27 @@ You must respect the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Issues
 
-To start with [issues](https://github.com/Over-Run/overrungl/issues), we recommend you to use the issue template.
+Issues are only for discussing bugs and proposing new features. For other discussions such as usages,
+use [discussions](https://github.com/Over-Run/overrungl/discussions).
+
+To start with [issues](https://github.com/Over-Run/overrungl/issues), you are recommended to use the issue template.
 
 ## Pull Requests
 
-We are not sure when we will review the pull request. Please note that the code must be formatted.
+The pull request will be reviewed in undetermined time, usually in active iterations which is specified in the
+[Security Policy](SECURITY.md). Please note that the code must be formatted.
 
 ### Formatted Code
 
 The formatted code:
 
-- Except auto-generated files, Java files header **MUST** contain the copy of [LICENSE](LICENSE).
+- The header of Java files **MUST** contain a copy of [LICENSE](LICENSE).
   The copy **MUST** be ended without an empty line and commented with block style, like this below:
   ```text
   /*
    * MIT License
    *
-   * Copyright (c) 2022-2024 Overrun Organization
+   * Copyright (c) <YEAR> Overrun Organization
    *
    * Permission is hereby granted, free of charge, to any person obtaining a copy
    * of this software and associated documentation files (the "Software"), to deal
@@ -39,10 +43,10 @@ The formatted code:
   ```
   ;
 - The class names **MUST** be CamelCase;
-- The method and field names _should_ be camelCase;
-- Other rules specified by [.editorconfig](.editorconfig).
+- The method and field names _should_ be camelCase; this restriction can be widened for non-public APIs;
+- Other rules specified in [.editorconfig](.editorconfig).
 
 ## Discussions
 
-You can visit our [forum](https://github.com/Over-Run/overrungl/discussions) and create your post, share your experience
+You can visit [discussions](https://github.com/Over-Run/overrungl/discussions) and create your post, share your experience
 or just ask some questions.

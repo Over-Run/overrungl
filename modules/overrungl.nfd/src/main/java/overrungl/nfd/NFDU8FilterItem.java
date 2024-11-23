@@ -16,51 +16,65 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
-import module java.base;
-import module overrungl.core;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.CType;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
 /// UTF-8 Filter Item
+/// 
+/// ## Members
+/// 
+/// ### name
+/// 
+/// [Getter](#name()) - [Setter](#name(java.lang.foreign.MemorySegment))
+/// 
+/// ### spec
+/// 
+/// [Getter](#spec()) - [Setter](#spec(java.lang.foreign.MemorySegment))
+/// 
 /// ## Layout
+/// 
 /// ```
-/// struct nfdu8filteritem_t {
+/// typedef struct nfdu8filteritem_t {
 ///     const nfdu8char_t* name;
 ///     const nfdu8char_t* spec;
-/// }
+/// } NFDU8FilterItem;
 /// ```
+/// 
+/// @see NFDHelper
 public interface NFDU8FilterItem extends Struct<NFDU8FilterItem> {
     /// The struct allocator.
     StructAllocator<NFDU8FilterItem> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
         .add(Unmarshal.STR_LAYOUT, "name")
         .add(Unmarshal.STR_LAYOUT, "spec")
-    .build());
+        .build());
+    
+    @Override
+    NFDU8FilterItem slice(long index, long count);
+
+    @Override
+    NFDU8FilterItem slice(long index);
 
     /// {@return `name`}
-    @NativeType("const nfdu8char_t*") MemorySegment name();
+    @CType("const nfdu8char_t*")
+    MemorySegment name();
 
     /// Sets `name` with the given value.
     /// @param name the value
     /// @return `this`
-    NFDU8FilterItem name(@NativeType("const nfdu8char_t*") MemorySegment name);
+    NFDU8FilterItem name(@CType("const nfdu8char_t*") MemorySegment name);
 
     /// {@return `spec`}
-    @NativeType("const nfdu8char_t*") MemorySegment spec();
+    @CType("const nfdu8char_t*")
+    MemorySegment spec();
 
     /// Sets `spec` with the given value.
     /// @param spec the value
     /// @return `this`
-    NFDU8FilterItem spec(@NativeType("const nfdu8char_t*") MemorySegment spec);
+    NFDU8FilterItem spec(@CType("const nfdu8char_t*") MemorySegment spec);
 
-    static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
-        return OF.of(allocator).name(Marshal.marshal(allocator, name)).spec(Marshal.marshal(allocator, spec));
-    }
-    
-    @SafeVarargs
-    static NFDU8FilterItem create(SegmentAllocator allocator, Map.Entry<String, String>... entries) {
-        var of = OF.of(allocator, entries.length);
-        for (int i = 0; i < entries.length; i++) {
-            var e = entries[i];
-            of.slice(i).name(Marshal.marshal(allocator, e.getKey())).spec(Marshal.marshal(allocator, e.getValue()));
-        }
-        return of;
-    }
 }

@@ -16,51 +16,65 @@
 
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
-import module java.base;
-import module overrungl.core;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandles;
+import overrun.marshal.LayoutBuilder;
+import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.CType;
+import overrun.marshal.struct.Struct;
+import overrun.marshal.struct.StructAllocator;
 
 /// UTF-16 Filter Item
+/// 
+/// ## Members
+/// 
+/// ### name
+/// 
+/// [Getter](#name()) - [Setter](#name(java.lang.foreign.MemorySegment))
+/// 
+/// ### spec
+/// 
+/// [Getter](#spec()) - [Setter](#spec(java.lang.foreign.MemorySegment))
+/// 
 /// ## Layout
+/// 
 /// ```
-/// struct nfdnfilteritem_t {
-///     const nfdu8char_t* name;
-///     const nfdu8char_t* spec;
-/// }
+/// typedef struct nfdnfilteritem_t {
+///     const nfdnchar_t* name;
+///     const nfdnchar_t* spec;
+/// } NFDNFilterItem;
 /// ```
+/// 
+/// @see NFDHelper
 public interface NFDNFilterItem extends Struct<NFDNFilterItem> {
     /// The struct allocator.
     StructAllocator<NFDNFilterItem> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
         .add(Unmarshal.STR_LAYOUT, "name")
         .add(Unmarshal.STR_LAYOUT, "spec")
-    .build());
+        .build());
+    
+    @Override
+    NFDNFilterItem slice(long index, long count);
+
+    @Override
+    NFDNFilterItem slice(long index);
 
     /// {@return `name`}
-    @NativeType("const nfdu8char_t*") MemorySegment name();
+    @CType("const nfdnchar_t*")
+    MemorySegment name();
 
     /// Sets `name` with the given value.
     /// @param name the value
     /// @return `this`
-    NFDNFilterItem name(@NativeType("const nfdu8char_t*") MemorySegment name);
+    NFDNFilterItem name(@CType("const nfdnchar_t*") MemorySegment name);
 
     /// {@return `spec`}
-    @NativeType("const nfdu8char_t*") MemorySegment spec();
+    @CType("const nfdnchar_t*")
+    MemorySegment spec();
 
     /// Sets `spec` with the given value.
     /// @param spec the value
     /// @return `this`
-    NFDNFilterItem spec(@NativeType("const nfdu8char_t*") MemorySegment spec);
+    NFDNFilterItem spec(@CType("const nfdnchar_t*") MemorySegment spec);
 
-    static NFDNFilterItem create(SegmentAllocator allocator, String name, String spec) {
-        return OF.of(allocator).name(Marshal.marshal(allocator, name, NFDInternal.nfdCharset)).spec(Marshal.marshal(allocator, spec, NFDInternal.nfdCharset));
-    }
-    
-    @SafeVarargs
-    static NFDNFilterItem create(SegmentAllocator allocator, Map.Entry<String, String>... entries) {
-        var of = OF.of(allocator, entries.length);
-        for (int i = 0; i < entries.length; i++) {
-            var e = entries[i];
-            of.slice(i).name(Marshal.marshal(allocator, e.getKey(), NFDInternal.nfdCharset)).spec(Marshal.marshal(allocator, e.getValue(), NFDInternal.nfdCharset));
-        }
-        return of;
-    }
 }
