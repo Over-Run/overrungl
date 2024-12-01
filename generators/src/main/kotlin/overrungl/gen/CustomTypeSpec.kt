@@ -37,11 +37,14 @@ data class CustomTypeSpec(
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
 
 val CanonicalLayouts = ClassName.get("overrun.marshal", "CanonicalLayouts")
+val CanonicalType = ClassName.get("overrun.marshal.gen", "CanonicalType")
 val CType = ClassName.get("overrun.marshal.gen", "CType")
 val DirectAccess = ClassName.get("overrun.marshal", "DirectAccess")
+val Entrypoint = ClassName.get("overrun.marshal.gen", "Entrypoint")
 val LayoutBuilder = ClassName.get("overrun.marshal", "LayoutBuilder")
 val Marshal = ClassName.get("overrun.marshal", "Marshal")
 val ProcessorTypes = ClassName.get("overrun.marshal.gen.processor", "ProcessorTypes")
+val Skip = ClassName.get("overrun.marshal.gen", "Skip")
 val Struct = ClassName.get("overrun.marshal.struct", "Struct")
 val StructAllocator = ClassName.get("overrun.marshal.struct", "StructAllocator")
 val Unmarshal = ClassName.get("overrun.marshal", "Unmarshal")
@@ -72,6 +75,9 @@ val jint = javaPrimitive(TypeName.INT, "JAVA_INT")
 val jlong = javaPrimitive(TypeName.LONG, "JAVA_LONG")
 val jfloat = javaPrimitive(TypeName.FLOAT, "JAVA_FLOAT")
 val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE")
+val void = CustomTypeSpec(TypeName.VOID, layout = CodeBlock.of(""))
 
 val address = javaPrimitive(MemorySegment_, "ADDRESS")
 val string = CustomTypeSpec(MemorySegment_, null, null, CodeBlock.of("\$T.STR_LAYOUT", Unmarshal))
+
+val const_char_ptr = string c "const char*"

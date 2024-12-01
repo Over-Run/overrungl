@@ -25,7 +25,7 @@ import kotlin.io.path.Path
  * @since 0.1.0
  */
 class DowncallSpec(private val packageName: String, className: String, javadoc: JavadocProvider?) {
-    private val typeSpecBuilder = TypeSpec.interfaceBuilder(className)
+    val typeSpecBuilder: TypeSpec.Builder = TypeSpec.interfaceBuilder(className)
 
     init {
         if (javadoc != null) {
@@ -53,6 +53,49 @@ class DowncallSpec(private val packageName: String, className: String, javadoc: 
     @JvmName("addFieldStringString")
     operator fun CustomTypeSpec.invoke(pair: Pair<String, String>, action: (FieldSpec.Builder.() -> Unit)? = null) {
         invoke(pair.first to CodeBlock.of(pair.second), action)
+    }
+
+    operator fun CustomTypeSpec.invoke(
+        name: String,
+        action: (NamedParameterSpec.Builder.() -> Unit)? = null
+    ): NamedParameterSpec = NamedParameterSpec.Builder(this, name).also { action?.invoke(it) }.build()
+
+    operator fun String.invoke(
+        returnType: CustomTypeSpec,
+        vararg parameters: NamedParameterSpec,
+        entrypoint: String?,
+        javadoc: (CodeBlock.Builder.() -> Unit)? = null,
+        default: Boolean = false,
+        action: (MethodSpec.Builder.() -> Unit)? = null
+    ): MethodSpec {
+        return MethodSpec.methodBuilder(this)
+            .addModifiers(Modifier.PUBLIC)
+            .returns(returnType.carrier)
+            .also {
+                it.addModifiers(if (default) Modifier.DEFAULT else Modifier.ABSTRACT)
+                returnType.canonicalType?.also { s ->
+                    it.addAnnotation(
+                        AnnotationSpec.builder(CanonicalType).addMember("value", "$1S", s).build()
+                    )
+                }
+                returnType.cType?.also { s ->
+                    it.addAnnotation(
+                        AnnotationSpec.builder(CType).addMember("value", "$1S", s).build()
+                    )
+                }
+                parameters.forEach { p -> it.addParameter(p.toSpec()) }
+                entrypoint?.also { s ->
+                    it.addAnnotation(
+                        AnnotationSpec.builder(Entrypoint).addMember("value", "$1S", s).build()
+                    )
+                }
+                javadoc?.also { d ->
+                    it.addJavadoc(CodeBlock.builder().also(d).build())
+                }
+                action?.invoke(it)
+            }
+            .build()
+            .also(typeSpecBuilder::addMethod)
     }
 
     fun generate() {

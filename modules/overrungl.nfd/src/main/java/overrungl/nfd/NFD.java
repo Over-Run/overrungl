@@ -68,9 +68,9 @@ import static java.lang.foreign.ValueLayout.OfLong;
  *             Map.entry("Image file", "png,jpg"));
  *         var result = nfd.openDialogN(outPath, filterItem, null);
  *         switch (result) {
- *             case ERROR -> System.err.println("Error: " + nfd.getError());
- *             case OKAY -> System.out.println("Success! " + outPath[0]);
- *             case CANCEL -> System.out.println("User pressed cancel.");
+ *             case ERROR -> println("Error: " + nfd.getError());
+ *             case OKAY -> println("Success! " + outPath[0]);
+ *             case CANCEL -> println("User pressed cancel.");
  *         }
  *     }
  *
@@ -122,41 +122,8 @@ import static java.lang.foreign.ValueLayout.OfLong;
  * @author squid233
  * @since 0.1.0
  */
+// TODO: 2024/12/1 squid233: Make this static
 public interface NFD extends CNFD {
-    /**
-     * programmatic error
-     */
-    int ERROR = 0;
-    /**
-     * user pressed okay, or successful return
-     */
-    int OKAY = 1;
-    /**
-     * user pressed cancel
-     */
-    int CANCEL = 2;
-    /**
-     * The native window handle type.
-     */
-    int WINDOW_HANDLE_TYPE_UNSET = 0,
-    /**
-     * Windows: handle is HWND (the Windows API typedefs this to void*)
-     */
-    WINDOW_HANDLE_TYPE_WINDOWS = 1,
-    /**
-     * Cocoa: handle is NSWindow*
-     */
-    WINDOW_HANDLE_TYPE_COCOA = 2,
-    /**
-     * X11: handle is Window
-     */
-    WINDOW_HANDLE_TYPE_X11 = 3;
-    /**
-     * This is a unique identifier tagged to all the NFD_*With() function calls, for backward
-     * compatibility purposes.  There is usually no need to use this directly, unless you want to use
-     * NFD differently depending on the version you're building with.
-     */
-    long INTERFACE_VERSION = 1;
     /**
      * The type of the path-set size ({@code unsigned long} for Windows and Mac OS X,
      * {@code unsigned int} for others).
@@ -182,68 +149,20 @@ public interface NFD extends CNFD {
     MethodHandle NFD_PathSet_GetPathU8();
 
     /**
-     * Free a file path that was returned by the dialogs.
-     * <p>
-     * Note: use {@link #pathSetFreePathN(MemorySegment)} to free path from pathset instead of this function.
-     *
-     * @param filePath the file path
-     */
-    @Entrypoint("NFD_FreePathN")
-    void freePathN(@NativeType("nfdnchar_t*") MemorySegment filePath);
-
-    /**
-     * Free a file path that was returned by the dialogs.
-     * <p>
-     * Note: use {@link #pathSetFreePathU8(MemorySegment)} to free path from pathset instead of this function.
-     *
-     * @param filePath the file path
-     */
-    @Entrypoint("NFD_FreePathU8")
-    void freePathU8(@NativeType("nfdu8char_t*") MemorySegment filePath);
-
-    /**
-     * Initialize NFD. Call this for every thread that might use NFD, before calling any other NFD
-     * functions on that thread.
-     *
-     * @return the result
-     */
-    @Entrypoint("NFD_Init")
-    int init();
-
-    /**
-     * Call this to de-initialize NFD, if {@link #init} returned {@link #OKAY}.
-     */
-    @Entrypoint("NFD_Quit")
-    void quit();
-
-    /**
-     * Single file open dialog
-     *
-     * @param outPath     It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                    via {@link #freePathN} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
-     * @param filterCount If zero, filterList is ignored (you can use null).
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     */
-    @Entrypoint("NFD_OpenDialogN")
-    int nopenDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
-
-    /**
      * Single file open dialog
      *
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If null, the operating system will decide.
      * @return the result
-     * @see #nopenDialogN(MemorySegment, NFDNFilterItem, int, MemorySegment) nopenDialogN
+     * @see #openDialogN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogN
      */
     @Skip
     default int openDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = nopenDialogN(seg,
-                filterList,
+            final int result = openDialogN(seg,
+                Marshal.marshal(filterList),
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == OKAY) {
@@ -258,31 +177,18 @@ public interface NFD extends CNFD {
     /**
      * Single file open dialog
      *
-     * @param outPath     It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                    via {@link #freePathN} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
-     * @param filterCount If zero, filterList is ignored (you can use null).
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     */
-    @Entrypoint("NFD_OpenDialogU8")
-    int nopenDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
-
-    /**
-     * Single file open dialog
-     *
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If null, the operating system will decide.
      * @return the result
-     * @see #nopenDialogU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogU8
+     * @see #openDialogU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogU8
      */
     @Skip
     default int openDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = nopenDialogU8(seg,
-                filterList,
+            final int result = openDialogU8(seg,
+                Marshal.marshal(filterList),
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == OKAY) {
@@ -294,35 +200,6 @@ public interface NFD extends CNFD {
         }
     }
 
-    @Entrypoint("NFD_OpenDialogN_With_Impl")
-    int openDialogNWithImpl(long version, MemorySegment outPath, MemorySegment args);
-
-    @Skip
-    default int openDialogNWith(MemorySegment outPath, MemorySegment args) {
-        return openDialogNWithImpl(INTERFACE_VERSION, outPath, args);
-    }
-
-    @Entrypoint("NFD_OpenDialogU8_With_Impl")
-    int openDialogU8WithImpl(long version, MemorySegment outPath, MemorySegment args);
-
-    @Skip
-    default int openDialogU8With(MemorySegment outPath, MemorySegment args) {
-        return openDialogU8WithImpl(INTERFACE_VERSION, outPath, args);
-    }
-
-    /**
-     * Multiple file open dialog
-     *
-     * @param outPaths    It is the caller's responsibility to free <i>{@code outPaths}</i>
-     *                    via {@link #pathSetFree} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
-     * @param filterCount If zero, filterList is ignored (you can use null).
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     */
-    @Entrypoint("NFD_OpenDialogMultipleN")
-    int nopenDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
-
     /**
      * Multiple file open dialog
      *
@@ -331,13 +208,13 @@ public interface NFD extends CNFD {
      * @param filterList  the filter list
      * @param defaultPath If null, the operating system will decide.
      * @return the result
-     * @see #nopenDialogMultipleN(MemorySegment, NFDNFilterItem, int, MemorySegment) nopenDialogMultipleN
+     * @see #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleN
      */
     @Skip
     default int openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return nopenDialogMultipleN(outPaths,
-                filterList,
+            return openDialogMultipleN(outPaths,
+                Marshal.marshal(filterList),
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
         }
@@ -349,62 +226,19 @@ public interface NFD extends CNFD {
      * @param outPaths    It is the caller's responsibility to free <i>{@code outPaths}</i>
      *                    via {@link #pathSetFree} if this function returns {@link #OKAY}
      * @param filterList  the filter list
-     * @param filterCount If zero, filterList is ignored (you can use null).
      * @param defaultPath If null, the operating system will decide.
      * @return the result
-     */
-    @Entrypoint("NFD_OpenDialogMultipleU8")
-    int nopenDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
-
-    /**
-     * Multiple file open dialog
-     *
-     * @param outPaths    It is the caller's responsibility to free <i>{@code outPaths}</i>
-     *                    via {@link #pathSetFree} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #nopenDialogMultipleU8(MemorySegment, NFDU8FilterItem, int, MemorySegment) nopenDialogMultipleU8
+     * @see #openDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleU8
      */
     @Skip
     default int openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return nopenDialogMultipleU8(outPaths,
-                filterList,
+            return openDialogMultipleU8(outPaths,
+                Marshal.marshal(filterList),
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
         }
     }
-
-    @Entrypoint("NFD_OpenDialogMultipleN_With_Impl")
-    int openDialogMultipleNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int openDialogMultipleNWith(MemorySegment outPaths, MemorySegment args) {
-        return openDialogMultipleNWithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    @Entrypoint("NFD_OpenDialogMultipleU8_With_Impl")
-    int openDialogMultipleU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int openDialogMultipleU8With(MemorySegment outPaths, MemorySegment args) {
-        return openDialogMultipleU8WithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    /**
-     * Save dialog
-     *
-     * @param outPath     It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                    via {@link #freePathN} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
-     * @param filterCount If zero, filterList is ignored (you can use null).
-     * @param defaultPath If null, the operating system will decide.
-     * @param defaultName the default name of the file
-     * @return the result
-     */
-    @Entrypoint("NFD_SaveDialogN")
-    int nsaveDialogN(@NativeType("nfdnchar_t**") MemorySegment outPath, NFDNFilterItem filterList, int filterCount, @NativeType("const nfdnchar_t*") MemorySegment defaultPath, @NativeType("const nfdnchar_t*") MemorySegment defaultName);
 
     /**
      * Save dialog
@@ -414,14 +248,14 @@ public interface NFD extends CNFD {
      * @param defaultPath If null, the operating system will decide.
      * @param defaultName the default name of the file
      * @return the result
-     * @see #nsaveDialogN(MemorySegment, NFDNFilterItem, int, MemorySegment, MemorySegment) nsaveDialogN
+     * @see #saveDialogN(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment) nsaveDialogN
      */
     @Skip
     default int saveDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath, String defaultName) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = nsaveDialogN(seg,
-                filterList,
+            final int result = saveDialogN(seg,
+                Marshal.marshal(filterList),
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset),
                 Marshal.marshal(stack, defaultName, NFDInternal.nfdCharset));
@@ -437,33 +271,19 @@ public interface NFD extends CNFD {
     /**
      * Save dialog
      *
-     * @param outPath     It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                    via {@link #freePathU8} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
-     * @param filterCount If zero, filterList is ignored (you can use null).
-     * @param defaultPath If null, the operating system will decide.
-     * @param defaultName the default name of the file
-     * @return the result
-     */
-    @Entrypoint("NFD_SaveDialogU8")
-    int nsaveDialogU8(@NativeType("nfdu8char_t**") MemorySegment outPath, NFDU8FilterItem filterList, int filterCount, @NativeType("const nfdu8char_t*") MemorySegment defaultPath, @NativeType("const nfdu8char_t*") MemorySegment defaultName);
-
-    /**
-     * Save dialog
-     *
      * @param outPath     the out path
      * @param filterList  the filter list
      * @param defaultPath If null, the operating system will decide.
      * @param defaultName the default name of the file
      * @return the result
-     * @see #nsaveDialogU8(MemorySegment, NFDU8FilterItem, int, MemorySegment, MemorySegment) nsaveDialogU8
+     * @see #saveDialogU8(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment) nsaveDialogU8
      */
     @Skip
     default int saveDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath, String defaultName) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = nsaveDialogU8(seg,
-                filterList,
+            final int result = saveDialogU8(seg,
+                Marshal.marshal(filterList),
                 filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
                 Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset),
                 Marshal.marshal(stack, defaultName, NFDInternal.nfdCharset));
@@ -476,46 +296,19 @@ public interface NFD extends CNFD {
         }
     }
 
-    @Entrypoint("NFD_SaveDialogN_With_Impl")
-    int saveDialogNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int saveDialogNWith(MemorySegment outPaths, MemorySegment args) {
-        return saveDialogNWithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    @Entrypoint("NFD_SaveDialogU8_With_Impl")
-    int saveDialogU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int saveDialogU8With(MemorySegment outPaths, MemorySegment args) {
-        return saveDialogU8WithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    /**
-     * Select folder dialog
-     *
-     * @param outPath     It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                    via {@link #freePathN} if this function returns {@link #OKAY}
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     */
-    @Entrypoint("NFD_PickFolderN")
-    int npickFolderN(@NativeType("nfdnchar_t**") MemorySegment outPath, @NativeType("const nfdnchar_t*") MemorySegment defaultPath);
-
     /**
      * Select folder dialog
      *
      * @param outPath     the out path
      * @param defaultPath If null, the operating system will decide.
      * @return the result
-     * @see #npickFolderN(MemorySegment, MemorySegment) npickFolderN
+     * @see #pickFolderN(MemorySegment, MemorySegment) npickFolderN
      */
     @Skip
     default int pickFolderN(String[] outPath, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = npickFolderN(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+            final int result = pickFolderN(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
                 outPath[0] = path.getString(0, NFDInternal.nfdCharset);
@@ -528,27 +321,16 @@ public interface NFD extends CNFD {
     /**
      * Select folder dialog
      *
-     * @param outPath     It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                    via {@link #freePathN} if this function returns {@link #OKAY}
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     */
-    @Entrypoint("NFD_PickFolderU8")
-    int npickFolderU8(@NativeType("nfdu8char_t**") MemorySegment outPath, @NativeType("const nfdu8char_t*") MemorySegment defaultPath);
-
-    /**
-     * Select folder dialog
-     *
      * @param outPath     the out path
      * @param defaultPath If null, the operating system will decide.
      * @return the result
-     * @see #npickFolderU8(MemorySegment, MemorySegment) npickFolderU8
+     * @see #pickFolderU8(MemorySegment, MemorySegment) npickFolderU8
      */
     @Skip
     default int pickFolderU8(String[] outPath, String defaultPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = npickFolderU8(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+            final int result = pickFolderU8(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
             if (result == OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
                 outPath[0] = path.getString(0, NFDInternal.nfdCharset);
@@ -557,77 +339,6 @@ public interface NFD extends CNFD {
             return result;
         }
     }
-
-    @Entrypoint("NFD_PickFolderN_With_Impl")
-    int pickFolderNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int pickFolderNWith(MemorySegment outPaths, MemorySegment args) {
-        return pickFolderNWithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    @Entrypoint("NFD_PickFolderU8_With_Impl")
-    int pickFolderU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int pickFolderU8With(MemorySegment outPaths, MemorySegment args) {
-        return pickFolderU8WithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    @Entrypoint("NFD_PickFolderMultipleN")
-    int pickFolderMultipleN(MemorySegment outPaths, MemorySegment defaultPath);
-
-    @Entrypoint("NFD_PickFolderMultipleU8")
-    int pickFolderMultipleU8(MemorySegment outPaths, MemorySegment defaultPath);
-
-    @Entrypoint("NFD_PickFolderMultipleN_With_Impl")
-    int pickFolderMultipleNWithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int pickFolderMultipleNWith(MemorySegment outPaths, MemorySegment args) {
-        return pickFolderMultipleNWithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    @Entrypoint("NFD_PickFolderMultipleU8_With_Impl")
-    int pickFolderMultipleU8WithImpl(long version, MemorySegment outPaths, MemorySegment args);
-
-    @Skip
-    default int pickFolderMultipleU8With(MemorySegment outPaths, MemorySegment args) {
-        return pickFolderMultipleU8WithImpl(INTERFACE_VERSION, outPaths, args);
-    }
-
-    /**
-     * Get the last error
-     * <p>
-     * This is set when a function returns {@link #ERROR}.
-     * <p>
-     * The memory is owned by NFD and should not be freed by user code.
-     * <p>
-     * This is <b>always</b> ASCII printable characters,
-     * so it can be interpreted as UTF-8 without any conversion.
-     *
-     * @return The last error that was set, or null if there is no error.
-     */
-    @Entrypoint("NFD_GetError")
-    @NativeType("const char*")
-    MemorySegment ngetError();
-
-    /**
-     * Get the last error
-     * <p>
-     * This is set when a function returns {@link #ERROR}.
-     *
-     * @return The last error that was set, or null if there is no error.
-     * @see #ngetError() ngetError
-     */
-    @Entrypoint("NFD_GetError")
-    String getError();
-
-    /**
-     * clear the error
-     */
-    @Entrypoint("NFD_ClearError")
-    void clearError();
 
     /**
      * Get the number of entries stored in pathSet.
