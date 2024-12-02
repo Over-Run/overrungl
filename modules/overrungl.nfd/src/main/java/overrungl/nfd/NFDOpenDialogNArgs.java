@@ -19,7 +19,6 @@ import java.lang.Override;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandles;
-import overrun.marshal.CanonicalLayouts;
 import overrun.marshal.LayoutBuilder;
 import overrun.marshal.Unmarshal;
 import overrun.marshal.gen.CType;
@@ -60,7 +59,7 @@ public interface NFDOpenDialogNArgs extends Struct<NFDOpenDialogNArgs> {
    * The struct allocator.
    */
   StructAllocator<NFDOpenDialogNArgs> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
-      .add(ValueLayout.ADDRESS, "filterList").add(CanonicalLayouts.INT, "filterCount")
+      .add(ValueLayout.ADDRESS, "filterList").add(ValueLayout.JAVA_INT, "filterCount")
       .add(Unmarshal.STR_LAYOUT, "defaultPath").add(NFDWindowHandle.OF.layout(), "parentWindow")
       .build());
 

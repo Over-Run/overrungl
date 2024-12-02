@@ -29,11 +29,6 @@ class NamedParameterSpec(val type: CustomTypeSpec, val name: String, val javadoc
 
     fun toSpec(): ParameterSpec = ParameterSpec.builder(type.carrier, name)
         .also {
-            type.canonicalType?.also { s ->
-                it.addAnnotation(
-                    AnnotationSpec.builder(CanonicalType).addMember("value", "$1S", s).build()
-                )
-            }
             type.cType?.also { s ->
                 it.addAnnotation(
                     AnnotationSpec.builder(CType).addMember("value", "$1S", s).build()

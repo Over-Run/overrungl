@@ -73,11 +73,6 @@ class DowncallSpec(private val packageName: String, className: String, javadoc: 
             .returns(returnType.carrier)
             .also {
                 it.addModifiers(if (default) Modifier.DEFAULT else Modifier.ABSTRACT)
-                returnType.canonicalType?.also { s ->
-                    it.addAnnotation(
-                        AnnotationSpec.builder(CanonicalType).addMember("value", "$1S", s).build()
-                    )
-                }
                 returnType.cType?.also { s ->
                     it.addAnnotation(
                         AnnotationSpec.builder(CType).addMember("value", "$1S", s).build()
@@ -98,8 +93,9 @@ class DowncallSpec(private val packageName: String, className: String, javadoc: 
             .also(typeSpecBuilder::addMethod)
     }
 
-    fun generate() {
-        JavaFile.builder(packageName, typeSpecBuilder.build()).addFileComment(fileHeader).build().writeTo(Path("."))
+    fun generate(): TypeSpec {
+        return typeSpecBuilder.build()
+            .also { JavaFile.builder(packageName, it).addFileComment(fileHeader).build().writeTo(Path(".")) }
     }
 }
 
@@ -108,8 +104,8 @@ fun downcall(
     className: String,
     javadoc: (JavadocProvider.() -> Unit)? = null,
     action: DowncallSpec.() -> Unit
-) {
-    DowncallSpec(packageName, className, javadoc?.let { JavadocProvider().also(it) })
+): TypeSpec {
+    return DowncallSpec(packageName, className, javadoc?.let { JavadocProvider().also(it) })
         .also(action)
         .generate()
 }

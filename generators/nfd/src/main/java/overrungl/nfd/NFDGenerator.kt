@@ -19,12 +19,18 @@ package overrungl.nfd
 import com.palantir.javapoet.*
 import overrungl.gen.*
 import java.lang.foreign.SegmentAllocator
+import java.nio.file.Files
 import javax.lang.model.element.Modifier
+import kotlin.io.path.Path
 
 val nfdfiltersize_t by int
 val nfdversion_t by size_t
 val nfdresult_t by int
 val const_nfdpathset_t_ptr_ptr = address c "const nfdpathset_t**"
+val const_nfdpathset_t_ptr = address c "const nfdpathset_t*"
+val nfdpathsetsize_t_ptr = address c "nfdpathsetsize_t*"
+val nfdpathsetsize_t = jlong c "nfdpathsetsize_t"
+val nfdpathsetenum_t_ptr = address c "nfdpathsetenum_t*"
 
 class CharVariant(
     val uppercaseName: String,
@@ -322,7 +328,7 @@ fun main() {
                         """
                         Multiple file open dialog
                         <p>
-                        It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree${variant.uppercaseName}} if this function
+                        It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
                         returns NFD_OKAY.
                     """.trimIndent()
                     )
@@ -358,7 +364,7 @@ fun main() {
                         """
                             Multiple file open dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree${variant.uppercaseName}} if this function
+                            It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDOpenDialog${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -504,7 +510,7 @@ fun main() {
                         """
                         Select multiple folder dialog
                         <p>
-                        It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree${variant.uppercaseName}} if this function
+                        It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
                         returns NFD_OKAY.
                     """.trimIndent()
                     )
@@ -540,7 +546,7 @@ fun main() {
                         """
                             Multiple file open dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree${variant.uppercaseName}} if this function
+                            It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDPickFolder${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -574,5 +580,145 @@ fun main() {
         typeSpecBuilder.addMethod(getError_.toBuilder().setName("getError").returns(String::class.java).build())
 
         "clearError"(void, entrypoint = "NFD_ClearError", javadoc = { add("Clear the error.") })
+
+        "pathSetGetCount"(
+            nfdresult_t,
+            const_nfdpathset_t_ptr("pathSet"),
+            nfdpathsetsize_t_ptr("count"),
+            entrypoint = "NFD_PathSet_GetCount",
+            javadoc = {
+                add(
+                    """
+                        Get the number of entries stored in pathSet.
+                        <p>
+                        Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
+                        so we might not actually have this number of usable paths.
+                    """.trimIndent()
+                )
+            }
+        )
+
+        fun pathSetGetPath(variant: CharVariant, pathType: String) {
+            "pathSetGetPath${variant.uppercaseName}"(
+                nfdresult_t,
+                const_nfdpathset_t_ptr("pathSet"),
+                nfdpathsetsize_t("index"),
+                variant.nfdchar_t_ptr_ptr("outPath"),
+                entrypoint = "NFD_PathSet_GetPath${variant.uppercaseName}",
+                javadoc = {
+                    add(
+                        """
+                            Get the $pathType path at offset index.
+                            <p>
+                            It is the caller's responsibility to free `outPath` via {@link #pathSetFreePath${variant.uppercaseName}} if this function
+                            returns NFD_OKAY.
+                        """.trimIndent()
+                    )
+                }
+            )
+        }
+        pathSetGetPath(Nchar, "native")
+        pathSetGetPath(U8char, "UTF-8")
+
+        fun pathSetFreePath(variant: CharVariant) {
+            "pathSetFreePath${variant.uppercaseName}"(
+                void,
+                variant.const_nfdchar_t_ptr("filePath"),
+                entrypoint = "NFD_PathSet_FreePath${variant.uppercaseName}",
+                javadoc = { add("Free the path gotten by {@link #pathSetGetPath${variant.uppercaseName}}.") }
+            )
+        }
+        pathSetFreePath(Nchar)
+        pathSetFreePath(U8char)
+
+        "pathSetGetEnum"(
+            nfdresult_t,
+            const_nfdpathset_t_ptr("pathSet"),
+            nfdpathsetenum_t_ptr("outEnumerator"),
+            entrypoint = "NFD_PathSet_GetEnum",
+            javadoc = {
+                add(
+                    """
+                        Gets an enumerator of the path set.
+                        <p>
+                        It is the caller's responsibility to free {@code enumerator} via {@link #pathSetFreeEnum}
+                        if this function returns NFD_OKAY, and it should be freed before freeing the pathset.
+                    """.trimIndent()
+                )
+            }
+        )
+        "pathSetFreeEnum"(
+            void,
+            nfdpathsetenum_t_ptr("enumerator"),
+            entrypoint = "NFD_PathSet_FreeEnum",
+            javadoc = { add("Frees an enumerator of the path set.") }
+        )
+
+        fun pathSetEnumNext(variant: CharVariant) {
+            "pathSetEnumNext${variant.uppercaseName}"(
+                nfdresult_t,
+                nfdpathsetenum_t_ptr("enumerator"),
+                variant.nfdchar_t_ptr_ptr("outPath"),
+                entrypoint = "NFD_PathSet_EnumNext${variant.uppercaseName}",
+                javadoc = {
+                    add(
+                        """
+                            Gets the next item from the path set enumerator.
+                            <p>
+                            If there are no more items, then *outPaths will be set to null.
+                            It is the caller's responsibility to free {@code *outPath} via {@link #pathSetFreePath${variant.uppercaseName}}
+                            if this function returns NFD_OKAY and {@code *outPath} is not null.
+                        """.trimIndent()
+                    )
+                }
+            )
+        }
+        pathSetEnumNext(Nchar)
+        pathSetEnumNext(U8char)
+
+        "pathSetFree"(
+            void,
+            const_nfdpathset_t_ptr("pathSet"),
+            entrypoint = "NFD_PathSet_Free",
+            javadoc = { add("Free the pathSet") }
+        )
+    }.also {
+        // TODO
+        val path = Path("overrungl", "nfd", "NFDstatic.java")
+        val content = Files.readString(path)
+        check(content.indexOf(GENERATOR_BEGIN) != -1 && content.indexOf(GENERATOR_END) != -1) { "Generator region not found" }
+        val split = content.split(GENERATOR_BEGIN, GENERATOR_END)
+        val codeBuilder = CodeBlock.builder()
+        it.fieldSpecs().forEach { s ->
+            codeBuilder.add(
+                "$1L",
+                FieldSpec.builder(s.type(), s.name())
+                    .addJavadoc(s.javadoc())
+                    .addModifiers(*s.modifiers().toTypedArray())
+                    .initializer("$1N.$2N", "CNFD", s).build()
+            )
+        }
+        it.methodSpecs().forEach { s ->
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder(s.name())
+                    .addJavadoc(s.javadoc())
+                    .addAnnotations(s.annotations())
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(s.returnType())
+                    .addParameters(s.parameters())
+                    .addStatement(
+                        "${if (s.returnType() == TypeName.VOID) "" else "return "}getInstance().$1N($2L)",
+                        s,
+                        s.parameters().joinToString(separator = ", ") { ps -> ps.name() })
+                    .build()
+            )
+        }
+        Files.writeString(
+            path,
+            "${split[0]}$GENERATOR_BEGIN\n${
+                codeBuilder.build().toString().prependIndent("    ")
+            }\n    $GENERATOR_END${split[2]}"
+        )
     }
 }

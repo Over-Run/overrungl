@@ -41,7 +41,6 @@ class StructSpec(
         CustomTypeSpec(
             MemorySegment_,
             cType,
-            null,
             CodeBlock.of("\$T.OF.layout()", selfClassName)
         )
     }

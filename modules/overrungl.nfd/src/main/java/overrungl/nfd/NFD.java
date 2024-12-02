@@ -486,69 +486,18 @@ public interface NFD extends CNFD {
     }
 
     /**
-     * Free the path gotten by {@link #pathSetGetPathN}.
-     *
-     * @param filePath the path
-     */
-    @Entrypoint("NFD_PathSet_FreePathN")
-    void pathSetFreePathN(@NativeType("const nfdnchar_t*") MemorySegment filePath);
-
-    /**
-     * Free the path gotten by {@link #pathSetGetPathU8}.
-     *
-     * @param filePath the path
-     */
-    @Entrypoint("NFD_PathSet_FreePathU8")
-    void pathSetFreePathU8(@NativeType("const nfdu8char_t*") MemorySegment filePath);
-
-    /**
-     * Gets an enumerator of the path set.
-     *
-     * @param pathSet       the path set
-     * @param outEnumerator It is the caller's responsibility to free <i>{@code enumerator}</i>
-     *                      via {@link #pathSetFreeEnum} if this function returns {@link #OKAY},
-     *                      and it should be freed before freeing the path-set.
-     * @return the result
-     */
-    @Entrypoint("NFD_PathSet_GetEnum")
-    int pathSetGetEnum(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetenum_t*") MemorySegment outEnumerator);
-
-    /**
-     * Frees an enumerator of the path set.
-     *
-     * @param enumerator the enumerator
-     */
-    @Entrypoint("NFD_PathSet_FreeEnum")
-    void pathSetFreeEnum(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator);
-
-    /**
-     * Gets the next item from the path set enumerator.
-     * <p>
-     * If there are no more items, then *outPaths will be set to null.
-     *
-     * @param enumerator the enumerator
-     * @param outPath    It is the caller's responsibility
-     *                   to free <i>{@code *outPath}</i> via {@link #pathSetFreePathN}
-     *                   if this function returns {@link #OKAY}
-     *                   and <i>{@code *outPath}</i> is not null.
-     * @return the result
-     */
-    @Entrypoint("NFD_PathSet_EnumNextN")
-    int npathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdnchar_t**") MemorySegment outPath);
-
-    /**
      * Gets the next item from the path set enumerator.
      *
      * @param enumerator the enumerator
      * @param outPath    the out path
      * @return the result
-     * @see #npathSetEnumNextN(MemorySegment, MemorySegment) npathSetEnumNextN
+     * @see #pathSetEnumNextN(MemorySegment, MemorySegment) npathSetEnumNextN
      */
     @Skip
     default int pathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = npathSetEnumNextN(enumerator, seg);
+            final int result = pathSetEnumNextN(enumerator, seg);
             if (result == OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
                 if (!Unmarshal.isNullPointer(path)) {
@@ -562,32 +511,17 @@ public interface NFD extends CNFD {
 
     /**
      * Gets the next item from the path set enumerator.
-     * <p>
-     * If there are no more items, then *outPaths will be set to null.
-     *
-     * @param enumerator the enumerator
-     * @param outPath    It is the caller's responsibility
-     *                   to free <i>{@code *outPath}</i> via {@link #pathSetFreePathU8}
-     *                   if this function returns {@link #OKAY}
-     *                   and <i>{@code *outPath}</i> is not null.
-     * @return the result
-     */
-    @Entrypoint("NFD_PathSet_EnumNextU8")
-    int npathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, @NativeType("nfdu8char_t**") MemorySegment outPath);
-
-    /**
-     * Gets the next item from the path set enumerator.
      *
      * @param enumerator the enumerator
      * @param outPath    the out path
      * @return the result
-     * @see #npathSetEnumNextU8(MemorySegment, MemorySegment) npathSetEnumNextU8
+     * @see #pathSetEnumNextU8(MemorySegment, MemorySegment) npathSetEnumNextU8
      */
     @Skip
     default int pathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = npathSetEnumNextU8(enumerator, seg);
+            final int result = pathSetEnumNextU8(enumerator, seg);
             if (result == OKAY) {
                 final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
                 if (!Unmarshal.isNullPointer(path)) {
@@ -598,12 +532,4 @@ public interface NFD extends CNFD {
             return result;
         }
     }
-
-    /**
-     * Free the pathSet
-     *
-     * @param pathSet the pathSet
-     */
-    @Entrypoint("NFD_PathSet_Free")
-    void pathSetFree(@NativeType("const nfdpathset_t*") MemorySegment pathSet);
 }

@@ -19,7 +19,6 @@ import java.lang.String;
 import java.lang.foreign.MemorySegment;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.CType;
-import overrun.marshal.gen.CanonicalType;
 import overrun.marshal.gen.Entrypoint;
 import overrun.marshal.gen.Skip;
 
@@ -89,7 +88,6 @@ public interface CNFD extends DirectAccess {
    * Initialize NFD. Call this for every thread that might use NFD, before calling any other NFD
    * functions on that thread.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_Init")
   int init();
@@ -107,12 +105,11 @@ public interface CNFD extends DirectAccess {
    * NFD_OKAY.
    * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogN")
   int openDialogN(@CType("nfdnchar_t**") MemorySegment outPath,
       @CType("const nfdnfilteritem_t*") MemorySegment filterList,
-      @CanonicalType("int") @CType("nfdfiltersize_t") int filterCount,
+      @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdnchar_t*") MemorySegment defaultPath);
 
   /**
@@ -122,21 +119,19 @@ public interface CNFD extends DirectAccess {
    * NFD_OKAY.
    * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogU8")
   int openDialogU8(@CType("nfdu8char_t**") MemorySegment outPath,
       @CType("const nfdu8filteritem_t*") MemorySegment filterList,
-      @CanonicalType("int") @CType("nfdfiltersize_t") int filterCount,
+      @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdu8char_t*") MemorySegment defaultPath);
 
   /**
    * This function is a library implementation detail.  Please use {@link #openDialogNWith} instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogN_With_Impl")
-  int openDialogNWithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int openDialogNWithImpl(@CType("nfdversion_t") long version,
       @CType("nfdnchar_t**") MemorySegment outPath,
       @CType("const nfdopendialognargs_t*") MemorySegment args);
 
@@ -146,7 +141,6 @@ public interface CNFD extends DirectAccess {
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogNArgs} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogN_With")
   @Skip
@@ -158,10 +152,9 @@ public interface CNFD extends DirectAccess {
   /**
    * This function is a library implementation detail.  Please use {@link #openDialogU8With} instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogU8_With_Impl")
-  int openDialogU8WithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int openDialogU8WithImpl(@CType("nfdversion_t") long version,
       @CType("nfdu8char_t**") MemorySegment outPath,
       @CType("const nfdopendialogu8args_t*") MemorySegment args);
 
@@ -171,7 +164,6 @@ public interface CNFD extends DirectAccess {
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogU8Args} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogU8_With")
   @Skip
@@ -183,51 +175,47 @@ public interface CNFD extends DirectAccess {
   /**
    * Multiple file open dialog
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeN} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.
    * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleN")
   int openDialogMultipleN(@CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdnfilteritem_t*") MemorySegment filterList,
-      @CanonicalType("int") @CType("nfdfiltersize_t") int filterCount,
+      @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdnchar_t*") MemorySegment defaultPath);
 
   /**
    * Multiple file open dialog
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeU8} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.
    * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleU8")
   int openDialogMultipleU8(@CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdu8filteritem_t*") MemorySegment filterList,
-      @CanonicalType("int") @CType("nfdfiltersize_t") int filterCount,
+      @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdu8char_t*") MemorySegment defaultPath);
 
   /**
    * This function is a library implementation detail.  Please use {@link #openDialogMultipleNWith}
    * instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleN_With_Impl")
-  int openDialogMultipleNWithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int openDialogMultipleNWithImpl(@CType("nfdversion_t") long version,
       @CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdopendialognargs_t*") MemorySegment args);
 
   /**
    * Multiple file open dialog, with additional parameters.
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeN} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogNArgs} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleN_With")
   @Skip
@@ -240,20 +228,18 @@ public interface CNFD extends DirectAccess {
    * This function is a library implementation detail.  Please use {@link #openDialogMultipleU8With}
    * instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleU8_With_Impl")
-  int openDialogMultipleU8WithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int openDialogMultipleU8WithImpl(@CType("nfdversion_t") long version,
       @CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdopendialogu8args_t*") MemorySegment args);
 
   /**
    * Multiple file open dialog, with additional parameters.
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeU8} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogU8Args} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleU8_With")
   @Skip
@@ -269,12 +255,11 @@ public interface CNFD extends DirectAccess {
    * NFD_OKAY.
    * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogN")
   int saveDialogN(@CType("nfdnchar_t**") MemorySegment outPath,
       @CType("const nfdnfilteritem_t*") MemorySegment filterList,
-      @CanonicalType("int") @CType("nfdfiltersize_t") int filterCount,
+      @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdnchar_t*") MemorySegment defaultPath,
       @CType("const nfdnchar_t*") MemorySegment defaultName);
 
@@ -285,22 +270,20 @@ public interface CNFD extends DirectAccess {
    * NFD_OKAY.
    * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogU8")
   int saveDialogU8(@CType("nfdu8char_t**") MemorySegment outPath,
       @CType("const nfdu8filteritem_t*") MemorySegment filterList,
-      @CanonicalType("int") @CType("nfdfiltersize_t") int filterCount,
+      @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdu8char_t*") MemorySegment defaultPath,
       @CType("const nfdu8char_t*") MemorySegment defaultName);
 
   /**
    * This function is a library implementation detail.  Please use {@link #saveDialogNWith} instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogN_With_Impl")
-  int saveDialogNWithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int saveDialogNWithImpl(@CType("nfdversion_t") long version,
       @CType("nfdnchar_t**") MemorySegment outPath,
       @CType("const nfdsavedialognargs_t*") MemorySegment args);
 
@@ -310,7 +293,6 @@ public interface CNFD extends DirectAccess {
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDSaveDialogNArgs} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogN_With")
   @Skip
@@ -322,10 +304,9 @@ public interface CNFD extends DirectAccess {
   /**
    * This function is a library implementation detail.  Please use {@link #saveDialogU8With} instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogU8_With_Impl")
-  int saveDialogU8WithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int saveDialogU8WithImpl(@CType("nfdversion_t") long version,
       @CType("nfdu8char_t**") MemorySegment outPath,
       @CType("const nfdsavedialogu8args_t*") MemorySegment args);
 
@@ -335,7 +316,6 @@ public interface CNFD extends DirectAccess {
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDSaveDialogU8Args} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogU8_With")
   @Skip
@@ -351,7 +331,6 @@ public interface CNFD extends DirectAccess {
    * NFD_OKAY.
    * @param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderN")
   int pickFolderN(@CType("nfdnchar_t**") MemorySegment outPath,
@@ -364,7 +343,6 @@ public interface CNFD extends DirectAccess {
    * NFD_OKAY.
    * @param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderU8")
   int pickFolderU8(@CType("nfdu8char_t**") MemorySegment outPath,
@@ -373,10 +351,9 @@ public interface CNFD extends DirectAccess {
   /**
    * This function is a library implementation detail.  Please use {@link #pickFolderNWith} instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderN_With_Impl")
-  int pickFolderNWithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int pickFolderNWithImpl(@CType("nfdversion_t") long version,
       @CType("nfdnchar_t**") MemorySegment outPath,
       @CType("const nfdpickfoldernargs_t*") MemorySegment args);
 
@@ -386,7 +363,6 @@ public interface CNFD extends DirectAccess {
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDPickFolderNArgs} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderN_With")
   @Skip
@@ -398,10 +374,9 @@ public interface CNFD extends DirectAccess {
   /**
    * This function is a library implementation detail.  Please use {@link #pickFolderU8With} instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderU8_With_Impl")
-  int pickFolderU8WithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int pickFolderU8WithImpl(@CType("nfdversion_t") long version,
       @CType("nfdu8char_t**") MemorySegment outPath,
       @CType("const nfdpickfolderu8args_t*") MemorySegment args);
 
@@ -411,7 +386,6 @@ public interface CNFD extends DirectAccess {
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDPickFolderU8Args} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderU8_With")
   @Skip
@@ -423,11 +397,10 @@ public interface CNFD extends DirectAccess {
   /**
    * Select multiple folder dialog
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeN} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.
    * @param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderMultipleN")
   int pickFolderMultipleN(@CType("const nfdpathset_t**") MemorySegment outPaths,
@@ -436,11 +409,10 @@ public interface CNFD extends DirectAccess {
   /**
    * Select multiple folder dialog
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeU8} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.
    * @param defaultPath If null, the operating system will decide.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderMultipleU8")
   int pickFolderMultipleU8(@CType("const nfdpathset_t**") MemorySegment outPaths,
@@ -450,20 +422,18 @@ public interface CNFD extends DirectAccess {
    * This function is a library implementation detail.  Please use {@link #pickFolderMultipleNWith}
    * instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderMultipleN_With_Impl")
-  int pickFolderMultipleNWithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int pickFolderMultipleNWithImpl(@CType("nfdversion_t") long version,
       @CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdpickfoldernargs_t*") MemorySegment args);
 
   /**
    * Multiple file open dialog, with additional parameters.
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeN} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDPickFolderNArgs} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderMultipleN_With")
   @Skip
@@ -476,20 +446,18 @@ public interface CNFD extends DirectAccess {
    * This function is a library implementation detail.  Please use {@link #pickFolderMultipleU8With}
    * instead.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderMultipleU8_With_Impl")
-  int pickFolderMultipleU8WithImpl(@CanonicalType("size_t") @CType("nfdversion_t") long version,
+  int pickFolderMultipleU8WithImpl(@CType("nfdversion_t") long version,
       @CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdpickfolderu8args_t*") MemorySegment args);
 
   /**
    * Multiple file open dialog, with additional parameters.
    * <p>
-   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFreeU8} if this function
+   * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.  See documentation of {@link NFDPickFolderU8Args} for details.
    */
-  @CanonicalType("int")
   @CType("nfdresult_t")
   @Entrypoint("NFD_PickFolderMultipleU8_With")
   @Skip
@@ -529,4 +497,96 @@ public interface CNFD extends DirectAccess {
    */
   @Entrypoint("NFD_ClearError")
   void clearError();
+
+  /**
+   * Get the number of entries stored in pathSet.
+   * <p>
+   * Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
+   * so we might not actually have this number of usable paths.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_GetCount")
+  int pathSetGetCount(@CType("const nfdpathset_t*") MemorySegment pathSet,
+      @CType("nfdpathsetsize_t*") MemorySegment count);
+
+  /**
+   * Get the native path at offset index.
+   * <p>
+   * It is the caller's responsibility to free `outPath` via {@link #pathSetFreePathN} if this function
+   * returns NFD_OKAY.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_GetPathN")
+  int pathSetGetPathN(@CType("const nfdpathset_t*") MemorySegment pathSet,
+      @CType("nfdpathsetsize_t") long index, @CType("nfdnchar_t**") MemorySegment outPath);
+
+  /**
+   * Get the UTF-8 path at offset index.
+   * <p>
+   * It is the caller's responsibility to free `outPath` via {@link #pathSetFreePathU8} if this function
+   * returns NFD_OKAY.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_GetPathU8")
+  int pathSetGetPathU8(@CType("const nfdpathset_t*") MemorySegment pathSet,
+      @CType("nfdpathsetsize_t") long index, @CType("nfdu8char_t**") MemorySegment outPath);
+
+  /**
+   * Free the path gotten by {@link #pathSetGetPathN}.
+   */
+  @Entrypoint("NFD_PathSet_FreePathN")
+  void pathSetFreePathN(@CType("const nfdnchar_t*") MemorySegment filePath);
+
+  /**
+   * Free the path gotten by {@link #pathSetGetPathU8}.
+   */
+  @Entrypoint("NFD_PathSet_FreePathU8")
+  void pathSetFreePathU8(@CType("const nfdu8char_t*") MemorySegment filePath);
+
+  /**
+   * Gets an enumerator of the path set.
+   * <p>
+   * It is the caller's responsibility to free {@code enumerator} via {@link #pathSetFreeEnum}
+   * if this function returns NFD_OKAY, and it should be freed before freeing the pathset.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_GetEnum")
+  int pathSetGetEnum(@CType("const nfdpathset_t*") MemorySegment pathSet,
+      @CType("nfdpathsetenum_t*") MemorySegment outEnumerator);
+
+  /**
+   * Frees an enumerator of the path set.
+   */
+  @Entrypoint("NFD_PathSet_FreeEnum")
+  void pathSetFreeEnum(@CType("nfdpathsetenum_t*") MemorySegment enumerator);
+
+  /**
+   * Gets the next item from the path set enumerator.
+   * <p>
+   * If there are no more items, then *outPaths will be set to null.
+   * It is the caller's responsibility to free {@code *outPath} via {@link #pathSetFreePathN}
+   * if this function returns NFD_OKAY and {@code *outPath} is not null.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_EnumNextN")
+  int pathSetEnumNextN(@CType("nfdpathsetenum_t*") MemorySegment enumerator,
+      @CType("nfdnchar_t**") MemorySegment outPath);
+
+  /**
+   * Gets the next item from the path set enumerator.
+   * <p>
+   * If there are no more items, then *outPaths will be set to null.
+   * It is the caller's responsibility to free {@code *outPath} via {@link #pathSetFreePathU8}
+   * if this function returns NFD_OKAY and {@code *outPath} is not null.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_EnumNextU8")
+  int pathSetEnumNextU8(@CType("nfdpathsetenum_t*") MemorySegment enumerator,
+      @CType("nfdu8char_t**") MemorySegment outPath);
+
+  /**
+   * Free the pathSet
+   */
+  @Entrypoint("NFD_PathSet_Free")
+  void pathSetFree(@CType("const nfdpathset_t*") MemorySegment pathSet);
 }

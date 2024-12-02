@@ -26,7 +26,6 @@ import kotlin.reflect.KProperty
 data class CustomTypeSpec(
     val carrier: TypeName,
     val cType: String? = null,
-    val canonicalType: String? = null,
     val layout: CodeBlock
 ) {
     infix fun c(cType: String?): CustomTypeSpec = copy(cType = cType)
@@ -36,8 +35,6 @@ data class CustomTypeSpec(
 
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
 
-val CanonicalLayouts = ClassName.get("overrun.marshal", "CanonicalLayouts")
-val CanonicalType = ClassName.get("overrun.marshal.gen", "CanonicalType")
 val CType = ClassName.get("overrun.marshal.gen", "CType")
 val DirectAccess = ClassName.get("overrun.marshal", "DirectAccess")
 val Entrypoint = ClassName.get("overrun.marshal.gen", "Entrypoint")
@@ -49,23 +46,8 @@ val Struct = ClassName.get("overrun.marshal.struct", "Struct")
 val StructAllocator = ClassName.get("overrun.marshal.struct", "StructAllocator")
 val Unmarshal = ClassName.get("overrun.marshal", "Unmarshal")
 
-private fun cPrimitive(carrier: TypeName, name: String, layoutName: String): CustomTypeSpec =
-    CustomTypeSpec(carrier, name, name, CodeBlock.of("\$T.\$L", CanonicalLayouts, layoutName))
-
 private fun javaPrimitive(carrier: TypeName, layoutName: String): CustomTypeSpec =
     CustomTypeSpec(carrier, layout = CodeBlock.of("\$T.\$L", ValueLayout::class.java, layoutName))
-
-val bool = cPrimitive(TypeName.BOOLEAN, "bool", "BOOL")
-val char = cPrimitive(TypeName.BYTE, "char", "CHAR")
-val short = cPrimitive(TypeName.SHORT, "short", "SHORT")
-val int = cPrimitive(TypeName.INT, "int", "INT")
-val long = cPrimitive(TypeName.LONG, "long", "LONG")
-val long_long = cPrimitive(TypeName.LONG, "long long", "LONG_LONG")
-val float = cPrimitive(TypeName.FLOAT, "float", "FLOAT")
-val double = cPrimitive(TypeName.DOUBLE, "double", "DOUBLE")
-val void_ptr = cPrimitive(MemorySegment_, "void*", "VOID_POINTER")
-val size_t = cPrimitive(TypeName.LONG, "size_t", "SIZE_T")
-val wchar_t = cPrimitive(TypeName.CHAR, "wchar_t", "WCHART_T")
 
 val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN")
 val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR")
@@ -78,6 +60,18 @@ val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE")
 val void = CustomTypeSpec(TypeName.VOID, layout = CodeBlock.of(""))
 
 val address = javaPrimitive(MemorySegment_, "ADDRESS")
-val string = CustomTypeSpec(MemorySegment_, null, null, CodeBlock.of("\$T.STR_LAYOUT", Unmarshal))
+val string = CustomTypeSpec(MemorySegment_, null, CodeBlock.of("\$T.STR_LAYOUT", Unmarshal))
+
+val bool = jboolean c "bool"
+val char = jbyte c "char"
+val short = jshort c "short"
+val int = jint c "int"
+val long = jlong c "long"
+val long_long = jlong c "long long"
+val float = jfloat c "float"
+val double = jdouble c "double"
+val void_ptr = address c "void*"
+val size_t = jlong c "size_t"
+val wchar_t = jint c "wchar_t"
 
 val const_char_ptr = string c "const char*"

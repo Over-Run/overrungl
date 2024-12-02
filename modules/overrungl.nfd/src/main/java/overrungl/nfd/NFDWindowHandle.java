@@ -17,8 +17,8 @@ package overrungl.nfd;
 
 import java.lang.Override;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandles;
-import overrun.marshal.CanonicalLayouts;
 import overrun.marshal.LayoutBuilder;
 import overrun.marshal.gen.CType;
 import overrun.marshal.struct.Struct;
@@ -48,7 +48,7 @@ public interface NFDWindowHandle extends Struct<NFDWindowHandle> {
    * The struct allocator.
    */
   StructAllocator<NFDWindowHandle> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
-      .add(CanonicalLayouts.SIZE_T, "type").add(CanonicalLayouts.VOID_POINTER, "handle").build());
+      .add(ValueLayout.JAVA_LONG, "type").add(ValueLayout.ADDRESS, "handle").build());
 
   @Override
   NFDWindowHandle slice(long index, long count);
