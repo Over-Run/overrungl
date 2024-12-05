@@ -175,32 +175,6 @@ public interface NFD extends CNFD {
     }
 
     /**
-     * Single file open dialog
-     *
-     * @param outPath     the out path
-     * @param filterList  the filter list
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #openDialogU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogU8
-     */
-    @Skip
-    default int openDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = openDialogU8(seg,
-                Marshal.marshal(filterList),
-                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0L);
-                outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
-                freePathU8(path);
-            }
-            return result;
-        }
-    }
-
-    /**
      * Multiple file open dialog
      *
      * @param outPaths    It is the caller's responsibility to free <i>{@code outPaths}</i>

@@ -21,6 +21,7 @@ import overrungl.nfd.NFD;
 import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDNFilterItem;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.util.Map;
@@ -79,7 +80,7 @@ public final class NFDTest {
 
             // show the dialog
             final int result = nfd.openDialogMultipleN(pOutPaths, filterItem, null);
-            MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
+            MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0).reinterpret(Arena.global(), nfd::pathSetFreePathN);
 
             switch (result) {
                 case NFD.ERROR -> System.err.println("Error: " + nfd.getError());

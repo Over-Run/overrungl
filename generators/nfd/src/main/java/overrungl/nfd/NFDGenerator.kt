@@ -72,6 +72,7 @@ val U8char = CharVariant(
 fun main() {
     val NFDInternal = ClassName.get("overrungl.nfd", "NFDInternal")
 
+    //region Structs
     fun NFDFilterItem(variant: CharVariant, utf: String, charset: CodeBlock) {
         struct(
             "overrungl.nfd",
@@ -195,6 +196,7 @@ fun main() {
     NFDPickFolderArgs(U8char)
     NFDPickFolderArgs(Nchar)
     StructRegistration.generate("overrungl.nfd", "NFDStructTypes")
+    //endregion
 
     downcall("overrungl.nfd", "CNFD", javadoc = {
         doFirst { add("Base functions of {@link \$T}.", ClassName.get("overrungl.nfd", "NFD")) }
@@ -217,6 +219,7 @@ fun main() {
             )
         }
 
+        //region methods
         fun freePath(variant: CharVariant) {
             "freePath${variant.uppercaseName}"(
                 void,
@@ -257,10 +260,10 @@ fun main() {
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
                 nfdfiltersize_t("filterCount") {
-                    javadoc = CodeBlock.of("If zero, filterList is ignored (you can use null).")
+                    javadoc = CodeBlock.of("If zero, filterList is ignored (you can use null).\n")
                 },
                 variant.const_nfdchar_t_ptr("defaultPath") {
-                    javadoc = CodeBlock.of("If null, the operating system will decide.")
+                    javadoc = CodeBlock.of("If null, the operating system will decide.\n")
                 },
                 entrypoint = "NFD_OpenDialog${variant.uppercaseName}",
                 javadoc = {
@@ -317,10 +320,10 @@ fun main() {
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
                 nfdfiltersize_t("filterCount") {
-                    javadoc = CodeBlock.of("If zero, filterList is ignored (you can use null).")
+                    javadoc = CodeBlock.of("If zero, filterList is ignored (you can use null).\n")
                 },
                 variant.const_nfdchar_t_ptr("defaultPath") {
-                    javadoc = CodeBlock.of("If null, the operating system will decide.")
+                    javadoc = CodeBlock.of("If null, the operating system will decide.\n")
                 },
                 entrypoint = "NFD_OpenDialogMultiple${variant.uppercaseName}",
                 javadoc = {
@@ -385,10 +388,10 @@ fun main() {
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
                 nfdfiltersize_t("filterCount") {
-                    javadoc = CodeBlock.of("If zero, filterList is ignored (you can use null).")
+                    javadoc = CodeBlock.of("If zero, filterList is ignored (you can use null).\n")
                 },
                 variant.const_nfdchar_t_ptr("defaultPath") {
-                    javadoc = CodeBlock.of("If null, the operating system will decide.")
+                    javadoc = CodeBlock.of("If null, the operating system will decide.\n")
                 },
                 variant.const_nfdchar_t_ptr("defaultName"),
                 entrypoint = "NFD_SaveDialog${variant.uppercaseName}",
@@ -446,7 +449,7 @@ fun main() {
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdchar_t_ptr("defaultPath") {
-                    javadoc = CodeBlock.of("If null, the operating system will decide.")
+                    javadoc = CodeBlock.of("If null, the operating system will decide.\n")
                 },
                 entrypoint = "NFD_PickFolder${variant.uppercaseName}",
                 javadoc = {
@@ -502,7 +505,7 @@ fun main() {
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdchar_t_ptr("defaultPath") {
-                    javadoc = CodeBlock.of("If null, the operating system will decide.")
+                    javadoc = CodeBlock.of("If null, the operating system will decide.\n")
                 },
                 entrypoint = "NFD_PickFolderMultiple${variant.uppercaseName}",
                 javadoc = {
@@ -682,6 +685,7 @@ fun main() {
             entrypoint = "NFD_PathSet_Free",
             javadoc = { add("Free the pathSet") }
         )
+        //endregion
     }.also {
         // TODO
         val path = Path("overrungl", "nfd", "NFDstatic.java")
@@ -714,11 +718,179 @@ fun main() {
                     .build()
             )
         }
+
+        val nfdCharset = ", NFDInternal.nfdCharset"
+        val StringArray = ArrayTypeName.of(String::class.java)
+
+        fun openDialog(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("openDialog${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #openDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(StringArray, "outPath")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
+                    .addParameter(String::class.java, "defaultPath")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement(
+                        "int result = openDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
+                        charset
+                    )
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        openDialog(Nchar, nfdCharset)
+        openDialog(U8char, "")
+
+        fun openDialogWith(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("openDialog${variant.uppercaseName}With")
+                    .addJavadoc("Overloads {@link #openDialog${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(StringArray, "outPath")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFDOpenDialog${variant.uppercaseName}Args"), "args")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement("int result = openDialog${variant.uppercaseName}With(seg, Marshal.marshal(args))")
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        openDialogWith(Nchar, nfdCharset)
+        openDialogWith(U8char, "")
+
+        fun openDialogMultiple(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(MemorySegment_, "outPaths")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
+                    .addParameter(String::class.java, "defaultPath")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement(
+                        "return openDialogMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
+                        charset
+                    )
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        openDialogMultiple(Nchar, nfdCharset)
+        openDialogMultiple(U8char, "")
+
+        fun openDialogMultipleWith(variant: CharVariant) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}With")
+                    .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}With(MemorySegment, MemorySegment)")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(MemorySegment_, "outPaths")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFDOpenDialog${variant.uppercaseName}Args"), "args")
+                    .addStatement("return openDialogMultiple${variant.uppercaseName}With(outPaths, Marshal.marshal(args))")
+                    .build()
+            )
+        }
+        openDialogMultipleWith(Nchar)
+        openDialogMultipleWith(U8char)
+
+
+        fun saveDialog(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("saveDialog${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #saveDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(StringArray, "outPath")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
+                    .addParameter(String::class.java, "defaultPath")
+                    .addParameter(String::class.java, "defaultName")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement(
+                        "int result = saveDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L), Marshal.marshal(stack, defaultName$1L))",
+                        charset
+                    )
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        saveDialog(Nchar, nfdCharset)
+        saveDialog(U8char, "")
+
+        fun saveDialogWith(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("saveDialog${variant.uppercaseName}With")
+                    .addJavadoc("Overloads {@link #saveDialog${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(StringArray, "outPath")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFDSaveDialog${variant.uppercaseName}Args"), "args")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement("int result = saveDialog${variant.uppercaseName}With(seg, Marshal.marshal(args))")
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        saveDialogWith(Nchar, nfdCharset)
+        saveDialogWith(U8char, "")
+
+
+        fun pickFolder(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(StringArray, "outPath")
+                    .addParameter(String::class.java, "defaultPath")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement("int result = pickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))", charset)
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        pickFolder(Nchar, nfdCharset)
+        pickFolder(U8char, "")
+
         Files.writeString(
             path,
             "${split[0]}$GENERATOR_BEGIN\n${
                 codeBuilder.build().toString().prependIndent("    ")
-            }\n    $GENERATOR_END${split[2]}"
+            }$GENERATOR_END${split[2]}"
         )
     }
 }

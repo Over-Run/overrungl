@@ -103,7 +103,8 @@ public interface CNFD extends DirectAccess {
    * <p>
    * It's the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function returns
    * NFD_OKAY.
-   * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
    */
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogN")
@@ -117,7 +118,8 @@ public interface CNFD extends DirectAccess {
    * <p>
    * It's the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
    * NFD_OKAY.
-   * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
    */
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogU8")
@@ -177,7 +179,8 @@ public interface CNFD extends DirectAccess {
    * <p>
    * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.
-   * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
    */
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleN")
@@ -191,7 +194,8 @@ public interface CNFD extends DirectAccess {
    * <p>
    * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
    * returns NFD_OKAY.
-   * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
    */
   @CType("nfdresult_t")
   @Entrypoint("NFD_OpenDialogMultipleU8")
@@ -253,7 +257,8 @@ public interface CNFD extends DirectAccess {
    * <p>
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function returns
    * NFD_OKAY.
-   * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
    */
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogN")
@@ -268,7 +273,8 @@ public interface CNFD extends DirectAccess {
    * <p>
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
    * NFD_OKAY.
-   * @param filterCount If zero, filterList is ignored (you can use null).@param defaultPath If null, the operating system will decide.
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
    */
   @CType("nfdresult_t")
   @Entrypoint("NFD_SaveDialogU8")

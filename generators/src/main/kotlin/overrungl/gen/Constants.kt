@@ -32,5 +32,5 @@ copies or substantial portions of the Software.
 
 This file is auto-generated. DO NOT EDIT!"""
 
-const val GENERATOR_BEGIN = "// ---[BEGIN GENERATOR BEGIN]---"
-const val GENERATOR_END = "// ---[END GENERATOR END]---"
+const val GENERATOR_BEGIN = "//region ---[BEGIN GENERATOR BEGIN]---"
+const val GENERATOR_END = "//endregion ---[END GENERATOR END]---"
