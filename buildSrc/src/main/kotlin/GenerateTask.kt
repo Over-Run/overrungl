@@ -1,7 +1,8 @@
-import gradle.kotlin.dsl.accessors._8758bf21ec0488ee6f70886b9f0e8378.sourceSets
 import org.gradle.api.tasks.JavaExec
+import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.kotlin.dsl.get
+import org.gradle.kotlin.dsl.getByName
 import org.gradle.kotlin.dsl.provideDelegate
 
 /*
@@ -29,7 +30,7 @@ open class GenerateTask : JavaExec() {
     private val jdkEnablePreview: String by project
 
     init {
-        classpath(project.sourceSets["main"].runtimeClasspath)
+        classpath(project.extensions.getByName<SourceSetContainer>("sourceSets")["main"].runtimeClasspath)
         javaLauncher.set(javaToolchainService.launcherFor {
             languageVersion.set(JavaLanguageVersion.of(jdkVersion))
         })

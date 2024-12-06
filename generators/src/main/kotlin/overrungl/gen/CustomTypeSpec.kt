@@ -16,6 +16,7 @@
 
 package overrungl.gen
 
+import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
 import com.palantir.javapoet.CodeBlock
 import com.palantir.javapoet.TypeName
@@ -28,12 +29,17 @@ data class CustomTypeSpec(
     val cType: String? = null,
     val layout: CodeBlock
 ) {
+    val array: CustomTypeSpec
+        get() = copy(carrier = ArrayTypeName.of(carrier))
+
     infix fun c(cType: String?): CustomTypeSpec = copy(cType = cType)
+    infix fun c(cType: CustomTypeSpec): CustomTypeSpec = copy(cType = cType.cType)
 
     operator fun getValue(thisRef: Any?, property: KProperty<*>): CustomTypeSpec = copy(cType = property.name)
 }
 
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
+val String_: ClassName = ClassName.get(String::class.java)
 
 val CType = ClassName.get("overrun.marshal.gen", "CType")
 val DirectAccess = ClassName.get("overrun.marshal", "DirectAccess")
@@ -41,6 +47,7 @@ val Entrypoint = ClassName.get("overrun.marshal.gen", "Entrypoint")
 val LayoutBuilder = ClassName.get("overrun.marshal", "LayoutBuilder")
 val Marshal = ClassName.get("overrun.marshal", "Marshal")
 val ProcessorTypes = ClassName.get("overrun.marshal.gen.processor", "ProcessorTypes")
+val Ref = ClassName.get("overrun.marshal.gen", "Ref")
 val Skip = ClassName.get("overrun.marshal.gen", "Skip")
 val Struct = ClassName.get("overrun.marshal.struct", "Struct")
 val StructAllocator = ClassName.get("overrun.marshal.struct", "StructAllocator")

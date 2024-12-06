@@ -17,18 +17,14 @@
 package overrungl.nfd;
 
 import io.github.overrun.platform.Platform;
-import overrun.marshal.CanonicalLayouts;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.SymbolLookup;
-import java.lang.foreign.ValueLayout;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
-
-import static java.lang.foreign.ValueLayout.JAVA_INT;
 
 /**
  * internal
@@ -49,7 +45,5 @@ final class NFDInternal {
 
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
-    static final boolean isOsWinOrApple = isOsWin || os instanceof Platform.MacOS;
-    static final ValueLayout pathSetSize = isOsWinOrApple ? (ValueLayout) CanonicalLayouts.LONG : JAVA_INT;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
 }

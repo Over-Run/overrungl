@@ -16,9 +16,7 @@
 
 package overrungl.glfw;
 
-import overrun.marshal.CanonicalLayouts;
 import overrun.marshal.Upcall;
-import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.Arena;
@@ -44,8 +42,7 @@ public interface GLFWAllocateFun extends Upcall {
     /**
      * The type of the upcall.
      */
-    Type<GLFWAllocateFun> TYPE = Upcall.type(RuntimeHelper.SIZE_T_LONG ? "invoke" : "invoke_int",
-        FunctionDescriptor.of(ValueLayout.ADDRESS, CanonicalLayouts.SIZE_T, ValueLayout.ADDRESS));
+    Type<GLFWAllocateFun> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
 
     /**
      * This function must return either a memory block at least {@code size} bytes long,
@@ -82,18 +79,6 @@ public interface GLFWAllocateFun extends Upcall {
      * functions.
      */
     MemorySegment invoke(long size, MemorySegment user);
-
-    /**
-     * Integer version of {@link #invoke(long, MemorySegment)}
-     *
-     * @param size The minimum size, in bytes, of the memory block.
-     * @param user The user-defined pointer from the allocator.
-     * @return The address of the newly allocated memory block, or {@link MemorySegment#NULL} if an
-     * error occurred.
-     */
-    default MemorySegment invoke_int(int size, MemorySegment user) {
-        return invoke(size, user);
-    }
 
     /**
      * Downcall version of {@link #invoke(long, MemorySegment)}

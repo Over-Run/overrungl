@@ -20,6 +20,7 @@ import java.lang.foreign.MemorySegment;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.gen.CType;
 import overrun.marshal.gen.Entrypoint;
+import overrun.marshal.gen.Ref;
 import overrun.marshal.gen.Skip;
 
 /**
@@ -514,6 +515,17 @@ public interface CNFD extends DirectAccess {
   @Entrypoint("NFD_PathSet_GetCount")
   int pathSetGetCount(@CType("const nfdpathset_t*") MemorySegment pathSet,
       @CType("nfdpathsetsize_t*") MemorySegment count);
+
+  /**
+   * Get the number of entries stored in pathSet.
+   * <p>
+   * Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
+   * so we might not actually have this number of usable paths.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_GetCount")
+  int pathSetGetCount(@CType("const nfdpathset_t*") MemorySegment pathSet,
+      @CType("nfdpathsetsize_t*") @Ref long[] count);
 
   /**
    * Get the native path at offset index.

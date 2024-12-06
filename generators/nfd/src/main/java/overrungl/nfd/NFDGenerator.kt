@@ -584,7 +584,7 @@ fun main() {
 
         "clearError"(void, entrypoint = "NFD_ClearError", javadoc = { add("Clear the error.") })
 
-        "pathSetGetCount"(
+        val pathSetGetCount = "pathSetGetCount"(
             nfdresult_t,
             const_nfdpathset_t_ptr("pathSet"),
             nfdpathsetsize_t_ptr("count"),
@@ -599,6 +599,13 @@ fun main() {
                     """.trimIndent()
                 )
             }
+        )
+        pathSetGetCount.name()(
+            nfdresult_t,
+            const_nfdpathset_t_ptr("pathSet"),
+            (jlong.array c nfdpathsetsize_t_ptr)("count").ref,
+            entrypoint = "NFD_PathSet_GetCount",
+            javadoc = { add(pathSetGetCount.javadoc()) }
         )
 
         fun pathSetGetPath(variant: CharVariant, pathType: String) {
@@ -687,8 +694,7 @@ fun main() {
         )
         //endregion
     }.also {
-        // TODO
-        val path = Path("overrungl", "nfd", "NFDstatic.java")
+        val path = Path("overrungl", "nfd", "NFD.java")
         val content = Files.readString(path)
         check(content.indexOf(GENERATOR_BEGIN) != -1 && content.indexOf(GENERATOR_END) != -1) { "Generator region not found" }
         val split = content.split(GENERATOR_BEGIN, GENERATOR_END)
@@ -874,7 +880,10 @@ fun main() {
                     .addParameter(String::class.java, "defaultPath")
                     .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                     .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement("int result = pickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))", charset)
+                    .addStatement(
+                        "int result = pickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))",
+                        charset
+                    )
                     .beginControlFlow("if (result == OKAY)")
                     .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                     .endControlFlow()
@@ -885,6 +894,114 @@ fun main() {
         }
         pickFolder(Nchar, nfdCharset)
         pickFolder(U8char, "")
+
+        fun pickFolderWith(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}With")
+                    .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}With(MemorySegment, MemorySegment)")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(StringArray, "outPath")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFDPickFolder${variant.uppercaseName}Args"), "args")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement("int result = pickFolder${variant.uppercaseName}With(seg, Marshal.marshal(args))")
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        pickFolderWith(Nchar, nfdCharset)
+        pickFolderWith(U8char, "")
+
+        fun pickFolderMultiple(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("pickFolderMultiple${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #pickFolderMultiple${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(MemorySegment_, "outPaths")
+                    .addParameter(String::class.java, "defaultPath")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement(
+                        "return pickFolderMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(stack, defaultPath$1L))",
+                        charset
+                    )
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        pickFolderMultiple(Nchar, nfdCharset)
+        pickFolderMultiple(U8char, "")
+
+        fun pickFolderMultipleWith(variant: CharVariant) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("pickFolderMultiple${variant.uppercaseName}With")
+                    .addJavadoc("Overloads {@link #pickFolderMultiple${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(MemorySegment_, "outPaths")
+                    .addParameter(ClassName.get("overrungl.nfd", "NFDPickFolder${variant.uppercaseName}Args"), "args")
+                    .addStatement("return pickFolderMultiple${variant.uppercaseName}With(outPaths, Marshal.marshal(args))")
+                    .build()
+            )
+        }
+        pickFolderMultipleWith(Nchar)
+        pickFolderMultipleWith(U8char)
+
+
+        fun pathSetGetPath(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("pathSetGetPath${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #pathSetGetPath${variant.uppercaseName}(MemorySegment, long, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(MemorySegment_, "pathSet")
+                    .addParameter(TypeName.LONG, "index")
+                    .addParameter(StringArray, "outPath")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement("int result = pathSetGetPath${variant.uppercaseName}(pathSet, index, seg)")
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        pathSetGetPath(Nchar, nfdCharset)
+        pathSetGetPath(U8char, "")
+
+        fun pathSetEnumNext(variant: CharVariant, charset: String) {
+            codeBuilder.add(
+                "$1L",
+                MethodSpec.methodBuilder("pathSetEnumNext${variant.uppercaseName}")
+                    .addJavadoc("Overloads {@link #pathSetEnumNext${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                    .returns(TypeName.INT)
+                    .addParameter(MemorySegment_, "enumerator")
+                    .addParameter(StringArray, "outPath")
+                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                    .addStatement("int result = pathSetEnumNext${variant.uppercaseName}(enumerator, seg)")
+                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
+                    .endControlFlow()
+                    .addStatement("return result")
+                    .endControlFlow()
+                    .build()
+            )
+        }
+        pathSetEnumNext(Nchar, nfdCharset)
+        pathSetEnumNext(U8char, "")
 
         Files.writeString(
             path,

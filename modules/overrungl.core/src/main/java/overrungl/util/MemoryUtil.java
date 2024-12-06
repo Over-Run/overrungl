@@ -23,9 +23,7 @@ import overrungl.Configurations;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-import static java.lang.foreign.ValueLayout.ADDRESS;
-import static overrun.marshal.CanonicalLayouts.SIZE_T;
-import static overrungl.internal.RuntimeHelper.SIZE_T_LONG;
+import static java.lang.foreign.ValueLayout.*;
 
 /**
  * The standard-C memory allocator.
@@ -37,13 +35,13 @@ public final class MemoryUtil {
     private static final Linker LINKER = Linker.nativeLinker();
     private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", FunctionDescriptor.of(ADDRESS, SIZE_T)),
-        m_calloc = downcall("calloc", FunctionDescriptor.of(ADDRESS, SIZE_T, SIZE_T)),
-        m_realloc = downcall("realloc", FunctionDescriptor.of(ADDRESS, ADDRESS, SIZE_T)),
+        m_malloc = downcall("malloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG)),
+        m_calloc = downcall("calloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG, JAVA_LONG)),
+        m_realloc = downcall("realloc", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_LONG)),
         m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
-        m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
-        m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T)),
-        m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, ValueLayout.JAVA_INT, SIZE_T));
+        m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
+        m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
+        m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG));
     private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
     /**
      * The address of {@code NULL}.
@@ -120,7 +118,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            final MemorySegment seg = (SIZE_T_LONG ? (MemorySegment) m_malloc.invokeExact(size) : (MemorySegment) m_malloc.invokeExact(Math.toIntExact(size)))
+            final MemorySegment seg = ((MemorySegment) m_malloc.invokeExact(size))
                 .reinterpret(size);
             if (DEBUG) DebugAllocator.track(seg.address(), size);
             return seg;
@@ -155,7 +153,7 @@ public final class MemoryUtil {
     public static MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
-            final MemorySegment seg = (SIZE_T_LONG ? (MemorySegment) m_calloc.invokeExact(number, size) : (MemorySegment) m_calloc.invokeExact(Math.toIntExact(number), Math.toIntExact(size)))
+            final MemorySegment seg = ((MemorySegment) m_calloc.invokeExact(number, size))
                 .reinterpret(byteSize);
             if (DEBUG) DebugAllocator.track(seg.address(), byteSize);
             return seg;
@@ -217,7 +215,7 @@ public final class MemoryUtil {
         }
         try {
             final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
-            MemorySegment segment = (SIZE_T_LONG ? (MemorySegment) m_realloc.invokeExact(mem, size) : (MemorySegment) m_realloc.invokeExact(mem, Math.toIntExact(size)))
+            MemorySegment segment = ((MemorySegment) m_realloc.invokeExact(mem, size))
                 .reinterpret(size);
             if (DEBUG) {
                 if (!isNullptr(segment)) {
@@ -271,7 +269,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = SIZE_T_LONG ? (MemorySegment) m_memcpy.invokeExact(dest, src, count) : (MemorySegment) m_memcpy.invokeExact(dest, src, Math.toIntExact(count));
+            final var _ = (MemorySegment) m_memcpy.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -296,7 +294,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = SIZE_T_LONG ? (MemorySegment) m_memmove.invokeExact(dest, src, count) : (MemorySegment) m_memmove.invokeExact(dest, src, Math.toIntExact(count));
+            final var _ = (MemorySegment) m_memmove.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -319,7 +317,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            final var _ = SIZE_T_LONG ? (MemorySegment) m_memset.invokeExact(dest, c, count) : (MemorySegment) m_memset.invokeExact(dest, c, Math.toIntExact(count));
+            final var _ = (MemorySegment) m_memset.invokeExact(dest, c, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);

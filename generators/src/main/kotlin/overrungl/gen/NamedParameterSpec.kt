@@ -20,7 +20,14 @@ import com.palantir.javapoet.AnnotationSpec
 import com.palantir.javapoet.CodeBlock
 import com.palantir.javapoet.ParameterSpec
 
-class NamedParameterSpec(val type: CustomTypeSpec, val name: String, val javadoc: CodeBlock?) {
+data class NamedParameterSpec(
+    val type: CustomTypeSpec,
+    val name: String,
+    val javadoc: CodeBlock?,
+    private val _ref: Boolean = false
+) {
+    val ref get() = copy(_ref = true)
+
     class Builder(val type: CustomTypeSpec, val name: String) {
         var javadoc: CodeBlock? = null
 
@@ -33,6 +40,9 @@ class NamedParameterSpec(val type: CustomTypeSpec, val name: String, val javadoc
                 it.addAnnotation(
                     AnnotationSpec.builder(CType).addMember("value", "$1S", s).build()
                 )
+            }
+            if (_ref) {
+                it.addAnnotation(Ref)
             }
             javadoc?.also(it::addJavadoc)
         }

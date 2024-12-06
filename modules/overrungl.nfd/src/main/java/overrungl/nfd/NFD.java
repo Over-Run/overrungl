@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,21 +18,14 @@ package overrungl.nfd;
 
 import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.Downcall;
+import overrun.marshal.DowncallOption;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
-import overrun.marshal.gen.Entrypoint;
-import overrun.marshal.gen.Skip;
-import overrungl.NativeType;
-import overrungl.util.value.Tuple2;
+import overrun.marshal.struct.Struct;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
-import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
-import java.nio.charset.Charset;
-
-import static java.lang.foreign.ValueLayout.OfInt;
-import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
  * <h2>Native File Dialog Extended</h2>
@@ -58,23 +51,22 @@ import static java.lang.foreign.ValueLayout.OfLong;
  * <h3>Basic Usages</h3>
  * {@snippet lang = java:
  * void main() {
- *     var nfd = NFD.INSTANCE;
- *     nfd.init();
+ *     NFD.init();
  *
  *     try (MemoryStack stack = MemoryStack.stackPush()) {
  *         String[] outPath = new String[1];
  *         var filterItem = NFDNFilterItem.create(stack,
  *             Map.entry("Source code", "java"),
  *             Map.entry("Image file", "png,jpg"));
- *         var result = nfd.openDialogN(outPath, filterItem, null);
+ *         var result = NFD.openDialogN(outPath, filterItem, null);
  *         switch (result) {
- *             case ERROR -> println("Error: " + nfd.getError());
+ *             case ERROR -> println("Error: " + NFD.getError());
  *             case OKAY -> println("Success! " + outPath[0]);
  *             case CANCEL -> println("User pressed cancel.");
  *         }
  *     }
  *
- *     nfd.quit();
+ *     NFD.quit();
  * }}
  *
  * <h3>File Filter Syntax</h3>
@@ -122,388 +114,978 @@ import static java.lang.foreign.ValueLayout.OfLong;
  * @author squid233
  * @since 0.1.0
  */
-// TODO: 2024/12/1 squid233: Make this static
-public interface NFD extends CNFD {
+public final class NFD {
+    //@formatter:off
+    //region ---[BEGIN GENERATOR BEGIN]---
     /**
-     * The type of the path-set size ({@code unsigned long} for Windows and Mac OS X,
-     * {@code unsigned int} for others).
+     * Programmatic error
      */
-    ValueLayout PATH_SET_SIZE = NFDInternal.pathSetSize;
+    public static final int ERROR = CNFD.ERROR;
     /**
-     * The charset of NFD for current platform.
+     * User pressed okay, or successful return
      */
-    Charset NFD_CHARSET = NFDInternal.nfdCharset;
+    public static final int OKAY = CNFD.OKAY;
     /**
-     * The instance of NFD.
+     * User pressed cancel
      */
-    NFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP);
-
+    public static final int CANCEL = CNFD.CANCEL;
     /**
-     * {@return NFD_PathSet_GetPathN}
+     * The native window handle type.
      */
-    MethodHandle NFD_PathSet_GetPathN();
-
+    public static final int WINDOW_HANDLE_TYPE_UNSET = CNFD.WINDOW_HANDLE_TYPE_UNSET;
     /**
-     * {@return NFD_PathSet_GetPathU8}
+     * Windows: handle is HWND (the Windows API typedefs this to void*)
      */
-    MethodHandle NFD_PathSet_GetPathU8();
-
+    public static final int WINDOW_HANDLE_TYPE_WINDOWS = CNFD.WINDOW_HANDLE_TYPE_WINDOWS;
+    /**
+     * Cocoa: handle is NSWindow*
+     */
+    public static final int WINDOW_HANDLE_TYPE_COCOA = CNFD.WINDOW_HANDLE_TYPE_COCOA;
+    /**
+     * X11: handle is Window
+     */
+    public static final int WINDOW_HANDLE_TYPE_X11 = CNFD.WINDOW_HANDLE_TYPE_X11;
+    /**
+     * This is a unique identifier tagged to all the NFD_*With() function calls, for backward
+     * compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
+     * NFD differently depending on the version you're building with.
+     */
+    public static final int INTERFACE_VERSION = CNFD.INTERFACE_VERSION;
+    /**
+     * Free a file path that was returned by the dialogs.
+     * <p>
+     * Note: use {@link #pathSetFreePathN} to free path from pathset instead of this function.
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_FreePathN")
+    public static void freePathN(
+        @overrun.marshal.gen.CType("nfdnchar_t*") java.lang.foreign.MemorySegment filePath) {
+      getInstance().freePathN(filePath);
+    }
+    /**
+     * Free a file path that was returned by the dialogs.
+     * <p>
+     * Note: use {@link #pathSetFreePathU8} to free path from pathset instead of this function.
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_FreePathU8")
+    public static void freePathU8(
+        @overrun.marshal.gen.CType("nfdu8char_t*") java.lang.foreign.MemorySegment filePath) {
+      getInstance().freePathU8(filePath);
+    }
+    /**
+     * Initialize NFD. Call this for every thread that might use NFD, before calling any other NFD
+     * functions on that thread.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_Init")
+    public static int init() {
+      return getInstance().init();
+    }
+    /**
+     * Call this to de-initialize NFD, if {@link #init()} returned NFD_OKAY.
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_Quit")
+    public static void quit() {
+      getInstance().quit();
+    }
     /**
      * Single file open dialog
-     *
-     * @param outPath     the out path
-     * @param filterList  the filter list
+     * <p>
+     * It's the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function returns
+     * NFD_OKAY.
+     * @param filterCount If zero, filterList is ignored (you can use null).
      * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #openDialogN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogN
      */
-    @Skip
-    default int openDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = openDialogN(seg,
-                Marshal.marshal(filterList),
-                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0L);
-                outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
-                freePathN(path);
-            }
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogN")
+    public static int openDialogN(
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList,
+        @overrun.marshal.gen.CType("nfdfiltersize_t") int filterCount,
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().openDialogN(outPath, filterList, filterCount, defaultPath);
     }
-
+    /**
+     * Single file open dialog
+     * <p>
+     * It's the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
+     * NFD_OKAY.
+     * @param filterCount If zero, filterList is ignored (you can use null).
+     * @param defaultPath If null, the operating system will decide.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogU8")
+    public static int openDialogU8(
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdu8filteritem_t*") java.lang.foreign.MemorySegment filterList,
+        @overrun.marshal.gen.CType("nfdfiltersize_t") int filterCount,
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().openDialogU8(outPath, filterList, filterCount, defaultPath);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #openDialogNWith} instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogN_With_Impl")
+    public static int openDialogNWithImpl(@overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogNWithImpl(version, outPath, args);
+    }
+    /**
+     * Single file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogNArgs} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogN_With")
+    @overrun.marshal.gen.Skip
+    public static int openDialogNWith(
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogNWith(outPath, args);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #openDialogU8With} instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogU8_With_Impl")
+    public static int openDialogU8WithImpl(@overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdopendialogu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogU8WithImpl(version, outPath, args);
+    }
+    /**
+     * Single file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogU8Args} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogU8_With")
+    @overrun.marshal.gen.Skip
+    public static int openDialogU8With(
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdopendialogu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogU8With(outPath, args);
+    }
     /**
      * Multiple file open dialog
-     *
-     * @param outPaths    It is the caller's responsibility to free <i>{@code outPaths}</i>
-     *                    via {@link #pathSetFree} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.
+     * @param filterCount If zero, filterList is ignored (you can use null).
      * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleN
      */
-    @Skip
-    default int openDialogMultipleN(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDNFilterItem filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return openDialogMultipleN(outPaths,
-                Marshal.marshal(filterList),
-                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogMultipleN")
+    public static int openDialogMultipleN(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList,
+        @overrun.marshal.gen.CType("nfdfiltersize_t") int filterCount,
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().openDialogMultipleN(outPaths, filterList, filterCount, defaultPath);
     }
-
     /**
      * Multiple file open dialog
-     *
-     * @param outPaths    It is the caller's responsibility to free <i>{@code outPaths}</i>
-     *                    via {@link #pathSetFree} if this function returns {@link #OKAY}
-     * @param filterList  the filter list
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.
+     * @param filterCount If zero, filterList is ignored (you can use null).
      * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #openDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment) nopenDialogMultipleU8
      */
-    @Skip
-    default int openDialogMultipleU8(@NativeType("const nfdpathset_t**") MemorySegment outPaths, NFDU8FilterItem filterList, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            return openDialogMultipleU8(outPaths,
-                Marshal.marshal(filterList),
-                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogMultipleU8")
+    public static int openDialogMultipleU8(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdu8filteritem_t*") java.lang.foreign.MemorySegment filterList,
+        @overrun.marshal.gen.CType("nfdfiltersize_t") int filterCount,
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().openDialogMultipleU8(outPaths, filterList, filterCount, defaultPath);
     }
-
+    /**
+     * This function is a library implementation detail.  Please use {@link #openDialogMultipleNWith}
+     * instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogMultipleN_With_Impl")
+    public static int openDialogMultipleNWithImpl(
+        @overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogMultipleNWithImpl(version, outPaths, args);
+    }
+    /**
+     * Multiple file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogNArgs} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogMultipleN_With")
+    @overrun.marshal.gen.Skip
+    public static int openDialogMultipleNWith(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdopendialognargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogMultipleNWith(outPaths, args);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #openDialogMultipleU8With}
+     * instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogMultipleU8_With_Impl")
+    public static int openDialogMultipleU8WithImpl(
+        @overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdopendialogu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogMultipleU8WithImpl(version, outPaths, args);
+    }
+    /**
+     * Multiple file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDOpenDialogU8Args} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_OpenDialogMultipleU8_With")
+    @overrun.marshal.gen.Skip
+    public static int openDialogMultipleU8With(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdopendialogu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().openDialogMultipleU8With(outPaths, args);
+    }
     /**
      * Save dialog
-     *
-     * @param outPath     the out path
-     * @param filterList  the filter list
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function returns
+     * NFD_OKAY.
+     * @param filterCount If zero, filterList is ignored (you can use null).
      * @param defaultPath If null, the operating system will decide.
-     * @param defaultName the default name of the file
-     * @return the result
-     * @see #saveDialogN(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment) nsaveDialogN
      */
-    @Skip
-    default int saveDialogN(String[] outPath, NFDNFilterItem filterList, String defaultPath, String defaultName) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = saveDialogN(seg,
-                Marshal.marshal(filterList),
-                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset),
-                Marshal.marshal(stack, defaultName, NFDInternal.nfdCharset));
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0L);
-                outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
-                freePathN(path);
-            }
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_SaveDialogN")
+    public static int saveDialogN(
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdnfilteritem_t*") java.lang.foreign.MemorySegment filterList,
+        @overrun.marshal.gen.CType("nfdfiltersize_t") int filterCount,
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath,
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultName) {
+      return getInstance().saveDialogN(outPath, filterList, filterCount, defaultPath, defaultName);
     }
-
     /**
      * Save dialog
-     *
-     * @param outPath     the out path
-     * @param filterList  the filter list
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
+     * NFD_OKAY.
+     * @param filterCount If zero, filterList is ignored (you can use null).
      * @param defaultPath If null, the operating system will decide.
-     * @param defaultName the default name of the file
-     * @return the result
-     * @see #saveDialogU8(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment) nsaveDialogU8
      */
-    @Skip
-    default int saveDialogU8(String[] outPath, NFDU8FilterItem filterList, String defaultPath, String defaultName) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = saveDialogU8(seg,
-                Marshal.marshal(filterList),
-                filterList != null ? Math.toIntExact(filterList.elementCount()) : 0,
-                Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset),
-                Marshal.marshal(stack, defaultName, NFDInternal.nfdCharset));
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0L);
-                outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
-                freePathU8(path);
-            }
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_SaveDialogU8")
+    public static int saveDialogU8(
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdu8filteritem_t*") java.lang.foreign.MemorySegment filterList,
+        @overrun.marshal.gen.CType("nfdfiltersize_t") int filterCount,
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment defaultPath,
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment defaultName) {
+      return getInstance().saveDialogU8(outPath, filterList, filterCount, defaultPath, defaultName);
     }
-
     /**
-     * Select folder dialog
-     *
-     * @param outPath     the out path
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #pickFolderN(MemorySegment, MemorySegment) npickFolderN
+     * This function is a library implementation detail.  Please use {@link #saveDialogNWith} instead.
      */
-    @Skip
-    default int pickFolderN(String[] outPath, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = pickFolderN(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0, NFDInternal.nfdCharset);
-                freePathN(path);
-            }
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_SaveDialogN_With_Impl")
+    public static int saveDialogNWithImpl(@overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdsavedialognargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().saveDialogNWithImpl(version, outPath, args);
     }
-
     /**
-     * Select folder dialog
-     *
-     * @param outPath     the out path
-     * @param defaultPath If null, the operating system will decide.
-     * @return the result
-     * @see #pickFolderU8(MemorySegment, MemorySegment) npickFolderU8
+     * Single file save dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDSaveDialogNArgs} for details.
      */
-    @Skip
-    default int pickFolderU8(String[] outPath, String defaultPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = pickFolderU8(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0, NFDInternal.nfdCharset);
-                freePathU8(path);
-            }
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_SaveDialogN_With")
+    @overrun.marshal.gen.Skip
+    public static int saveDialogNWith(
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdsavedialognargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().saveDialogNWith(outPath, args);
     }
-
+    /**
+     * This function is a library implementation detail.  Please use {@link #saveDialogU8With} instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_SaveDialogU8_With_Impl")
+    public static int saveDialogU8WithImpl(@overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdsavedialogu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().saveDialogU8WithImpl(version, outPath, args);
+    }
+    /**
+     * Single file save dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDSaveDialogU8Args} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_SaveDialogU8_With")
+    @overrun.marshal.gen.Skip
+    public static int saveDialogU8With(
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdsavedialogu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().saveDialogU8With(outPath, args);
+    }
+    /**
+     * Select single folder dialog
+     * <p>
+     * It's the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function returns
+     * NFD_OKAY.
+     * @param defaultPath If null, the operating system will decide.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderN")
+    public static int pickFolderN(
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().pickFolderN(outPath, defaultPath);
+    }
+    /**
+     * Select single folder dialog
+     * <p>
+     * It's the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
+     * NFD_OKAY.
+     * @param defaultPath If null, the operating system will decide.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderU8")
+    public static int pickFolderU8(
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().pickFolderU8(outPath, defaultPath);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #pickFolderNWith} instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderN_With_Impl")
+    public static int pickFolderNWithImpl(@overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderNWithImpl(version, outPath, args);
+    }
+    /**
+     * Single file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathN} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDPickFolderNArgs} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderN_With")
+    @overrun.marshal.gen.Skip
+    public static int pickFolderNWith(
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderNWith(outPath, args);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #pickFolderU8With} instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderU8_With_Impl")
+    public static int pickFolderU8WithImpl(@overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdpickfolderu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderU8WithImpl(version, outPath, args);
+    }
+    /**
+     * Single file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDPickFolderU8Args} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderU8_With")
+    @overrun.marshal.gen.Skip
+    public static int pickFolderU8With(
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath,
+        @overrun.marshal.gen.CType("const nfdpickfolderu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderU8With(outPath, args);
+    }
+    /**
+     * Select multiple folder dialog
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.
+     * @param defaultPath If null, the operating system will decide.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderMultipleN")
+    public static int pickFolderMultipleN(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().pickFolderMultipleN(outPaths, defaultPath);
+    }
+    /**
+     * Select multiple folder dialog
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.
+     * @param defaultPath If null, the operating system will decide.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderMultipleU8")
+    public static int pickFolderMultipleU8(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment defaultPath) {
+      return getInstance().pickFolderMultipleU8(outPaths, defaultPath);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #pickFolderMultipleNWith}
+     * instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderMultipleN_With_Impl")
+    public static int pickFolderMultipleNWithImpl(
+        @overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderMultipleNWithImpl(version, outPaths, args);
+    }
+    /**
+     * Multiple file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDPickFolderNArgs} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderMultipleN_With")
+    @overrun.marshal.gen.Skip
+    public static int pickFolderMultipleNWith(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdpickfoldernargs_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderMultipleNWith(outPaths, args);
+    }
+    /**
+     * This function is a library implementation detail.  Please use {@link #pickFolderMultipleU8With}
+     * instead.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderMultipleU8_With_Impl")
+    public static int pickFolderMultipleU8WithImpl(
+        @overrun.marshal.gen.CType("nfdversion_t") long version,
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdpickfolderu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderMultipleU8WithImpl(version, outPaths, args);
+    }
+    /**
+     * Multiple file open dialog, with additional parameters.
+     * <p>
+     * It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+     * returns NFD_OKAY.  See documentation of {@link NFDPickFolderU8Args} for details.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PickFolderMultipleU8_With")
+    @overrun.marshal.gen.Skip
+    public static int pickFolderMultipleU8With(
+        @overrun.marshal.gen.CType("const nfdpathset_t**") java.lang.foreign.MemorySegment outPaths,
+        @overrun.marshal.gen.CType("const nfdpickfolderu8args_t*") java.lang.foreign.MemorySegment args) {
+      return getInstance().pickFolderMultipleU8With(outPaths, args);
+    }
+    /**
+     * Get the last error
+     * <p>
+     * This is set when a function returns NFD_ERROR.
+     * The memory is owned by NFD and should not be freed by user code.
+     * This is <strong>always</strong> ASCII printable characters, so it can be interpreted as UTF-8 without any
+     * conversion.
+     * @return The last error that was set, or null if there is no error.
+     */
+    @overrun.marshal.gen.CType("const char*")
+    @overrun.marshal.gen.Entrypoint("NFD_GetError")
+    public static java.lang.foreign.MemorySegment getError_() {
+      return getInstance().getError_();
+    }
+    /**
+     * Get the last error
+     * <p>
+     * This is set when a function returns NFD_ERROR.
+     * The memory is owned by NFD and should not be freed by user code.
+     * This is <strong>always</strong> ASCII printable characters, so it can be interpreted as UTF-8 without any
+     * conversion.
+     * @return The last error that was set, or null if there is no error.
+     */
+    @overrun.marshal.gen.CType("const char*")
+    @overrun.marshal.gen.Entrypoint("NFD_GetError")
+    public static java.lang.String getError() {
+      return getInstance().getError();
+    }
+    /**
+     * Clear the error.
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_ClearError")
+    public static void clearError() {
+      getInstance().clearError();
+    }
     /**
      * Get the number of entries stored in pathSet.
      * <p>
      * Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
      * so we might not actually have this number of usable paths.
-     *
-     * @param pathSet the path-set
-     * @param count   the count
-     * @return the result
      */
-    @Entrypoint("NFD_PathSet_GetCount")
-    int npathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, @NativeType("nfdpathsetsize_t*") MemorySegment count);
-
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_GetCount")
+    public static int pathSetGetCount(
+        @overrun.marshal.gen.CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet,
+        @overrun.marshal.gen.CType("nfdpathsetsize_t*") java.lang.foreign.MemorySegment count) {
+      return getInstance().pathSetGetCount(pathSet, count);
+    }
     /**
      * Get the number of entries stored in pathSet.
-     *
-     * @param pathSet the path-set
-     * @param count   the count
-     * @return the result
-     * @see #npathSetGetCount(MemorySegment, MemorySegment) npathSetGetCount
+     * <p>
+     * Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
+     * so we might not actually have this number of usable paths.
      */
-    @Skip
-    default int pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long[] count) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = stack.allocate(PATH_SET_SIZE);
-            final int result = npathSetGetCount(pathSet, seg);
-            count[0] = switch (PATH_SET_SIZE) {
-                case ValueLayout.OfLong layout -> seg.get(layout, 0);
-                case ValueLayout.OfInt layout -> Integer.toUnsignedLong(seg.get(layout, 0));
-                default -> throw new AssertionError("should not reach here");
-            };
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_GetCount")
+    public static int pathSetGetCount(
+        @overrun.marshal.gen.CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet,
+        @overrun.marshal.gen.CType("nfdpathsetsize_t*") @overrun.marshal.gen.Ref long[] count) {
+      return getInstance().pathSetGetCount(pathSet, count);
     }
-
-    /**
-     * Get the number of entries stored in pathSet.
-     *
-     * @param pathSet the path-set
-     * @return the result and the count
-     * @see #npathSetGetCount(MemorySegment, MemorySegment) npathSetGetCount
-     */
-    @Skip
-    default Tuple2.OfIntLong pathSetGetCount(@NativeType("const nfdpathset_t*") MemorySegment pathSet) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = stack.allocate(PATH_SET_SIZE);
-            final int result = npathSetGetCount(pathSet, seg);
-            return new Tuple2.OfIntLong(result, switch (PATH_SET_SIZE) {
-                case ValueLayout.OfLong layout -> seg.get(layout, 0);
-                case ValueLayout.OfInt layout -> Integer.toUnsignedLong(seg.get(layout, 0));
-                default -> throw new AssertionError("should not reach here");
-            });
-        }
-    }
-
-    /**
-     * Get the UTF-8 path at offset index.
-     *
-     * @param pathSet the path-set
-     * @param index   the index
-     * @param outPath It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                via {@link #pathSetFreePathN} if this function returns {@link #OKAY}
-     * @return the result
-     */
-    @Skip
-    default int npathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdnchar_t**") MemorySegment outPath) {
-        try {
-            return switch (PATH_SET_SIZE) {
-                case OfLong _ -> (int) NFD_PathSet_GetPathN().invokeExact(pathSet, index, outPath);
-                case OfInt _ -> (int) NFD_PathSet_GetPathN().invokeExact(pathSet, Math.toIntExact(index), outPath);
-                default -> throw new AssertionError("should not reach here");
-            };
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
-    }
-
-    /**
-     * Get the UTF-8 path at offset index.
-     *
-     * @param pathSet the path-set
-     * @param index   the index
-     * @param outPath the out path
-     * @return the result
-     * @see #npathSetGetPathN(MemorySegment, long, MemorySegment) npathSetGetPathN
-     */
-    @Skip
-    default int pathSetGetPathN(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = npathSetGetPathN(pathSet, index, seg);
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0, NFDInternal.nfdCharset);
-                pathSetFreePathN(path);
-            }
-            return result;
-        }
-    }
-
     /**
      * Get the native path at offset index.
-     *
-     * @param pathSet the path-set
-     * @param index   the index
-     * @param outPath It is the caller's responsibility to free <i>{@code outPath}</i>
-     *                via {@link #pathSetFreePathU8} if this function returns {@link #OKAY}
-     * @return the result
+     * <p>
+     * It is the caller's responsibility to free `outPath` via {@link #pathSetFreePathN} if this function
+     * returns NFD_OKAY.
      */
-    @Skip
-    default int npathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, @NativeType("nfdu8char_t**") MemorySegment outPath) {
-        try {
-            return switch (PATH_SET_SIZE) {
-                case OfLong _ -> (int) NFD_PathSet_GetPathU8().invokeExact(pathSet, index, outPath);
-                case OfInt _ -> (int) NFD_PathSet_GetPathU8().invokeExact(pathSet, Math.toIntExact(index), outPath);
-                default -> throw new AssertionError("should not reach here");
-            };
-        } catch (Throwable e) {
-            throw new AssertionError("should not reach here", e);
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_GetPathN")
+    public static int pathSetGetPathN(
+        @overrun.marshal.gen.CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet,
+        @overrun.marshal.gen.CType("nfdpathsetsize_t") long index,
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath) {
+      return getInstance().pathSetGetPathN(pathSet, index, outPath);
     }
-
     /**
-     * Get the native path at offset index.
-     *
-     * @param pathSet the path-set
-     * @param index   the index
-     * @param outPath the out path
-     * @return the result
-     * @see #npathSetGetPathU8(MemorySegment, long, MemorySegment) npathSetGetPathU8
+     * Get the UTF-8 path at offset index.
+     * <p>
+     * It is the caller's responsibility to free `outPath` via {@link #pathSetFreePathU8} if this function
+     * returns NFD_OKAY.
      */
-    @Skip
-    default int pathSetGetPathU8(@NativeType("const nfdpathset_t*") MemorySegment pathSet, long index, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = npathSetGetPathU8(pathSet, index, seg);
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                outPath[0] = path.getString(0, NFDInternal.nfdCharset);
-                pathSetFreePathU8(path);
-            }
-            return result;
-        }
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_GetPathU8")
+    public static int pathSetGetPathU8(
+        @overrun.marshal.gen.CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet,
+        @overrun.marshal.gen.CType("nfdpathsetsize_t") long index,
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath) {
+      return getInstance().pathSetGetPathU8(pathSet, index, outPath);
     }
-
     /**
-     * Gets the next item from the path set enumerator.
-     *
-     * @param enumerator the enumerator
-     * @param outPath    the out path
-     * @return the result
-     * @see #pathSetEnumNextN(MemorySegment, MemorySegment) npathSetEnumNextN
+     * Free the path gotten by {@link #pathSetGetPathN}.
      */
-    @Skip
-    default int pathSetEnumNextN(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = pathSetEnumNextN(enumerator, seg);
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                if (!Unmarshal.isNullPointer(path)) {
-                    outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
-                    pathSetFreePathN(path);
-                }
-            }
-            return result;
-        }
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_FreePathN")
+    public static void pathSetFreePathN(
+        @overrun.marshal.gen.CType("const nfdnchar_t*") java.lang.foreign.MemorySegment filePath) {
+      getInstance().pathSetFreePathN(filePath);
     }
-
+    /**
+     * Free the path gotten by {@link #pathSetGetPathU8}.
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_FreePathU8")
+    public static void pathSetFreePathU8(
+        @overrun.marshal.gen.CType("const nfdu8char_t*") java.lang.foreign.MemorySegment filePath) {
+      getInstance().pathSetFreePathU8(filePath);
+    }
+    /**
+     * Gets an enumerator of the path set.
+     * <p>
+     * It is the caller's responsibility to free {@code enumerator} via {@link #pathSetFreeEnum}
+     * if this function returns NFD_OKAY, and it should be freed before freeing the pathset.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_GetEnum")
+    public static int pathSetGetEnum(
+        @overrun.marshal.gen.CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet,
+        @overrun.marshal.gen.CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment outEnumerator) {
+      return getInstance().pathSetGetEnum(pathSet, outEnumerator);
+    }
+    /**
+     * Frees an enumerator of the path set.
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_FreeEnum")
+    public static void pathSetFreeEnum(
+        @overrun.marshal.gen.CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment enumerator) {
+      getInstance().pathSetFreeEnum(enumerator);
+    }
     /**
      * Gets the next item from the path set enumerator.
-     *
-     * @param enumerator the enumerator
-     * @param outPath    the out path
-     * @return the result
-     * @see #pathSetEnumNextU8(MemorySegment, MemorySegment) npathSetEnumNextU8
+     * <p>
+     * If there are no more items, then *outPaths will be set to null.
+     * It is the caller's responsibility to free {@code *outPath} via {@link #pathSetFreePathN}
+     * if this function returns NFD_OKAY and {@code *outPath} is not null.
      */
-    @Skip
-    default int pathSetEnumNextU8(@NativeType("nfdpathsetenum_t*") MemorySegment enumerator, String[] outPath) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final MemorySegment seg = Marshal.marshal(stack, outPath);
-            final int result = pathSetEnumNextU8(enumerator, seg);
-            if (result == OKAY) {
-                final MemorySegment path = seg.get(Unmarshal.STR_LAYOUT, 0);
-                if (!Unmarshal.isNullPointer(path)) {
-                    outPath[0] = path.getString(0L, NFDInternal.nfdCharset);
-                    pathSetFreePathU8(path);
-                }
-            }
-            return result;
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_EnumNextN")
+    public static int pathSetEnumNextN(
+        @overrun.marshal.gen.CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment enumerator,
+        @overrun.marshal.gen.CType("nfdnchar_t**") java.lang.foreign.MemorySegment outPath) {
+      return getInstance().pathSetEnumNextN(enumerator, outPath);
+    }
+    /**
+     * Gets the next item from the path set enumerator.
+     * <p>
+     * If there are no more items, then *outPaths will be set to null.
+     * It is the caller's responsibility to free {@code *outPath} via {@link #pathSetFreePathU8}
+     * if this function returns NFD_OKAY and {@code *outPath} is not null.
+     */
+    @overrun.marshal.gen.CType("nfdresult_t")
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_EnumNextU8")
+    public static int pathSetEnumNextU8(
+        @overrun.marshal.gen.CType("nfdpathsetenum_t*") java.lang.foreign.MemorySegment enumerator,
+        @overrun.marshal.gen.CType("nfdu8char_t**") java.lang.foreign.MemorySegment outPath) {
+      return getInstance().pathSetEnumNextU8(enumerator, outPath);
+    }
+    /**
+     * Free the pathSet
+     */
+    @overrun.marshal.gen.Entrypoint("NFD_PathSet_Free")
+    public static void pathSetFree(
+        @overrun.marshal.gen.CType("const nfdpathset_t*") java.lang.foreign.MemorySegment pathSet) {
+      getInstance().pathSetFree(pathSet);
+    }
+    /**
+     * Overloads {@link #openDialogN(MemorySegment, MemorySegment, int, MemorySegment)}
+     */
+    public static int openDialogN(java.lang.String[] outPath, overrungl.nfd.NFDNFilterItem filterList,
+        java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = openDialogN(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+        if (result == OKAY) {
+          copyOutPathN(seg, outPath);
         }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #openDialogU8(MemorySegment, MemorySegment, int, MemorySegment)}
+     */
+    public static int openDialogU8(java.lang.String[] outPath, overrungl.nfd.NFDU8FilterItem filterList,
+        java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = openDialogU8(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath));
+        if (result == OKAY) {
+          copyOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #openDialogNWith(MemorySegment, MemorySegment)}
+     */
+    public static int openDialogNWith(java.lang.String[] outPath,
+        overrungl.nfd.NFDOpenDialogNArgs args) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = openDialogNWith(seg, Marshal.marshal(args));
+        if (result == OKAY) {
+          copyOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #openDialogU8With(MemorySegment, MemorySegment)}
+     */
+    public static int openDialogU8With(java.lang.String[] outPath,
+        overrungl.nfd.NFDOpenDialogU8Args args) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = openDialogU8With(seg, Marshal.marshal(args));
+        if (result == OKAY) {
+          copyOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment)
+     */
+    public static int openDialogMultipleN(java.lang.foreign.MemorySegment outPaths,
+        overrungl.nfd.NFDNFilterItem filterList, java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        return openDialogMultipleN(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+      }
+    }
+    /**
+     * Overloads {@link #openDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment)
+     */
+    public static int openDialogMultipleU8(java.lang.foreign.MemorySegment outPaths,
+        overrungl.nfd.NFDU8FilterItem filterList, java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        return openDialogMultipleU8(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath));
+      }
+    }
+    /**
+     * Overloads {@link #openDialogMultipleNWith(MemorySegment, MemorySegment)
+     */
+    public static int openDialogMultipleNWith(java.lang.foreign.MemorySegment outPaths,
+        overrungl.nfd.NFDOpenDialogNArgs args) {
+      return openDialogMultipleNWith(outPaths, Marshal.marshal(args));
+    }
+    /**
+     * Overloads {@link #openDialogMultipleU8With(MemorySegment, MemorySegment)
+     */
+    public static int openDialogMultipleU8With(java.lang.foreign.MemorySegment outPaths,
+        overrungl.nfd.NFDOpenDialogU8Args args) {
+      return openDialogMultipleU8With(outPaths, Marshal.marshal(args));
+    }
+    /**
+     * Overloads {@link #saveDialogN(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}
+     */
+    public static int saveDialogN(java.lang.String[] outPath, overrungl.nfd.NFDNFilterItem filterList,
+        java.lang.String defaultPath, java.lang.String defaultName) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = saveDialogN(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset), Marshal.marshal(stack, defaultName, NFDInternal.nfdCharset));
+        if (result == OKAY) {
+          copyOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #saveDialogU8(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}
+     */
+    public static int saveDialogU8(java.lang.String[] outPath, overrungl.nfd.NFDU8FilterItem filterList,
+        java.lang.String defaultPath, java.lang.String defaultName) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = saveDialogU8(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath), Marshal.marshal(stack, defaultName));
+        if (result == OKAY) {
+          copyOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #saveDialogNWith(MemorySegment, MemorySegment)}
+     */
+    public static int saveDialogNWith(java.lang.String[] outPath,
+        overrungl.nfd.NFDSaveDialogNArgs args) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = saveDialogNWith(seg, Marshal.marshal(args));
+        if (result == OKAY) {
+          copyOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #saveDialogU8With(MemorySegment, MemorySegment)}
+     */
+    public static int saveDialogU8With(java.lang.String[] outPath,
+        overrungl.nfd.NFDSaveDialogU8Args args) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = saveDialogU8With(seg, Marshal.marshal(args));
+        if (result == OKAY) {
+          copyOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderN(MemorySegment, MemorySegment)
+     */
+    public static int pickFolderN(java.lang.String[] outPath, java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = pickFolderN(seg, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+        if (result == OKAY) {
+          copyOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderU8(MemorySegment, MemorySegment)
+     */
+    public static int pickFolderU8(java.lang.String[] outPath, java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = pickFolderU8(seg, Marshal.marshal(stack, defaultPath));
+        if (result == OKAY) {
+          copyOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderNWith(MemorySegment, MemorySegment)
+     */
+    public static int pickFolderNWith(java.lang.String[] outPath,
+        overrungl.nfd.NFDPickFolderNArgs args) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = pickFolderNWith(seg, Marshal.marshal(args));
+        if (result == OKAY) {
+          copyOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderU8With(MemorySegment, MemorySegment)
+     */
+    public static int pickFolderU8With(java.lang.String[] outPath,
+        overrungl.nfd.NFDPickFolderU8Args args) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = pickFolderU8With(seg, Marshal.marshal(args));
+        if (result == OKAY) {
+          copyOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderMultipleN(MemorySegment, MemorySegment)}
+     */
+    public static int pickFolderMultipleN(java.lang.foreign.MemorySegment outPaths,
+        java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        return pickFolderMultipleN(outPaths, Marshal.marshal(stack, defaultPath, NFDInternal.nfdCharset));
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderMultipleU8(MemorySegment, MemorySegment)}
+     */
+    public static int pickFolderMultipleU8(java.lang.foreign.MemorySegment outPaths,
+        java.lang.String defaultPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        return pickFolderMultipleU8(outPaths, Marshal.marshal(stack, defaultPath));
+      }
+    }
+    /**
+     * Overloads {@link #pickFolderMultipleNWith(MemorySegment, MemorySegment)}
+     */
+    public static int pickFolderMultipleNWith(java.lang.foreign.MemorySegment outPaths,
+        overrungl.nfd.NFDPickFolderNArgs args) {
+      return pickFolderMultipleNWith(outPaths, Marshal.marshal(args));
+    }
+    /**
+     * Overloads {@link #pickFolderMultipleU8With(MemorySegment, MemorySegment)}
+     */
+    public static int pickFolderMultipleU8With(java.lang.foreign.MemorySegment outPaths,
+        overrungl.nfd.NFDPickFolderU8Args args) {
+      return pickFolderMultipleU8With(outPaths, Marshal.marshal(args));
+    }
+    /**
+     * Overloads {@link #pathSetGetPathN(MemorySegment, long, MemorySegment)}
+     */
+    public static int pathSetGetPathN(java.lang.foreign.MemorySegment pathSet, long index,
+        java.lang.String[] outPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = pathSetGetPathN(pathSet, index, seg);
+        if (result == OKAY) {
+          copyPathSetOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pathSetGetPathU8(MemorySegment, long, MemorySegment)}
+     */
+    public static int pathSetGetPathU8(java.lang.foreign.MemorySegment pathSet, long index,
+        java.lang.String[] outPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = pathSetGetPathU8(pathSet, index, seg);
+        if (result == OKAY) {
+          copyPathSetOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pathSetEnumNextN(MemorySegment, MemorySegment)}
+     */
+    public static int pathSetEnumNextN(java.lang.foreign.MemorySegment enumerator,
+        java.lang.String[] outPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath, NFDInternal.nfdCharset);
+        int result = pathSetEnumNextN(enumerator, seg);
+        if (result == OKAY) {
+          copyPathSetOutPathN(seg, outPath);
+        }
+        return result;
+      }
+    }
+    /**
+     * Overloads {@link #pathSetEnumNextU8(MemorySegment, MemorySegment)}
+     */
+    public static int pathSetEnumNextU8(java.lang.foreign.MemorySegment enumerator,
+        java.lang.String[] outPath) {
+      try (MemoryStack stack = MemoryStack.pushLocal()) {
+        var seg = Marshal.marshal(stack, outPath);
+        int result = pathSetEnumNextU8(enumerator, seg);
+        if (result == OKAY) {
+          copyPathSetOutPathU8(seg, outPath);
+        }
+        return result;
+      }
+    }
+    //endregion ---[END GENERATOR END]---
+    //@formatter:on
+
+    private static int filterItemCount(Struct<?> struct) {
+        return struct != null ? Math.toIntExact(struct.elementCount()) : 0;
+    }
+
+    private static void copyOutPathN(MemorySegment src, String[] outPath) {
+        Unmarshal.copy(src, outPath, NFDInternal.nfdCharset);
+        MemorySegment segment = src.get(ValueLayout.ADDRESS, 0);
+        if (!Unmarshal.isNullPointer(segment)) {
+            freePathN(segment);
+        }
+    }
+
+    private static void copyOutPathU8(MemorySegment src, String[] outPath) {
+        Unmarshal.copy(src, outPath);
+        MemorySegment segment = src.get(ValueLayout.ADDRESS, 0);
+        if (!Unmarshal.isNullPointer(segment)) {
+            freePathU8(segment);
+        }
+    }
+
+    private static void copyPathSetOutPathN(MemorySegment src, String[] outPath) {
+        Unmarshal.copy(src, outPath, NFDInternal.nfdCharset);
+        MemorySegment segment = src.get(ValueLayout.ADDRESS, 0);
+        if (!Unmarshal.isNullPointer(segment)) {
+            pathSetFreePathN(segment);
+        }
+    }
+
+    private static void copyPathSetOutPathU8(MemorySegment src, String[] outPath) {
+        Unmarshal.copy(src, outPath);
+        MemorySegment segment = src.get(ValueLayout.ADDRESS, 0);
+        if (!Unmarshal.isNullPointer(segment)) {
+            pathSetFreePathU8(segment);
+        }
+    }
+
+    public static CNFD getInstance() {
+        final class Holder {
+            private static final CNFD INSTANCE = Downcall.load(MethodHandles.lookup(), NFDInternal.LOOKUP, DowncallOption.targetClass(CNFD.class));
+        }
+        return Holder.INSTANCE;
     }
 }

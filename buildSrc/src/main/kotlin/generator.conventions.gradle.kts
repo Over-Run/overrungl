@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins { kotlin("jvm") }
 
+val javaPoetVersion: String by rootProject
 val jdkVersion: String by rootProject
 val kotlinTargetJdkVersion: String by rootProject
 
@@ -11,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.palantir.javapoet:javapoet:0.5.0")
+    implementation("com.palantir.javapoet:javapoet:$javaPoetVersion")
 }
 
 tasks.withType<KotlinCompile> {

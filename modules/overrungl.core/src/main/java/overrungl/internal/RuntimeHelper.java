@@ -18,7 +18,6 @@ package overrungl.internal;
 
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
-import overrun.marshal.CanonicalLayouts;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 
@@ -38,10 +37,6 @@ public final class RuntimeHelper {
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
         .resolve("overrungl" + System.getProperty("user.name"));
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
-    /**
-     * Is {@code size_t} of {@code long}?
-     */
-    public static final boolean SIZE_T_LONG = CanonicalLayouts.SIZE_T instanceof ValueLayout.OfLong;
 
     /**
      * constructor
