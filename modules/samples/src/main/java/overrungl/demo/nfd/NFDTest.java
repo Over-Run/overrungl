@@ -21,7 +21,6 @@ import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDNFilterItem;
 import overrungl.nfd.NFD;
 
-import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.util.Map;
@@ -47,7 +46,7 @@ public final class NFDTest {
                 Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final int result = NFD.openDialogN(outPath, filterItem, null);
+            final int result = NFD.openDialog(outPath, filterItem, null);
 
             switch (result) {
                 case NFD.ERROR -> System.err.println("Error: " + NFD.getError());
@@ -77,7 +76,7 @@ public final class NFDTest {
                 Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final int result = NFD.openDialogMultipleN(pOutPaths, filterItem, null);
+            final int result = NFD.openDialogMultiple(pOutPaths, filterItem, null);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
@@ -88,7 +87,7 @@ public final class NFDTest {
                     long[] pNumPaths = new long[1];
                     NFD.pathSetGetCount(outPaths, pNumPaths);
                     for (long i = 0, numPaths = pNumPaths[0]; i < numPaths; i++) {
-                        NFD.pathSetGetPathN(outPaths, i, outPath);
+                        NFD.pathSetGetPath(outPaths, i, outPath);
                         System.out.println("Path " + i + ": " + outPath[0]);
                     }
 
@@ -119,7 +118,7 @@ public final class NFDTest {
                 Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final int result = NFD.openDialogMultipleN(pOutPaths, filterItem, null);
+            final int result = NFD.openDialogMultiple(pOutPaths, filterItem, null);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
@@ -127,7 +126,7 @@ public final class NFDTest {
                 case NFD.OKAY -> {
                     System.out.println("Success!");
 
-                    try (NFDEnumerator enumerator = NFDEnumerator.fromPathSetN(stack, outPaths).x()) {
+                    try (NFDEnumerator enumerator = NFDEnumerator.fromPathSet(stack, outPaths).x()) {
                         int i = 0;
                         for (String path : enumerator) {
                             System.out.println("Path " + i + ": " + path);
@@ -156,7 +155,7 @@ public final class NFDTest {
         String[] outPath = new String[1];
 
         // show the dialog
-        final int result = NFD.pickFolderN(outPath, null);
+        final int result = NFD.pickFolder(outPath, null);
         switch (result) {
             case NFD.ERROR -> System.err.println("Error: " + NFD.getError());
             case NFD.OKAY -> System.out.println("Success! " + outPath[0]);
@@ -183,7 +182,7 @@ public final class NFDTest {
                 Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final int result = NFD.saveDialogN(savePath, filterItem, null, "Untitled.java");
+            final int result = NFD.saveDialog(savePath, filterItem, null, "Untitled.java");
             switch (result) {
                 case NFD.ERROR -> System.err.println("Error: " + NFD.getError());
                 case NFD.OKAY -> System.out.println("Success! " + savePath[0]);

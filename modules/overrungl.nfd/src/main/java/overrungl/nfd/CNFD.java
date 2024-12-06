@@ -78,6 +78,15 @@ public interface CNFD extends DirectAccess {
   void freePathN(@CType("nfdnchar_t*") MemorySegment filePath);
 
   /**
+   * Overloads {@link #freePathN(java.lang.foreign.MemorySegment)}
+   */
+  @Entrypoint("NFD_FreePathN")
+  @Skip
+  default void freePath(@CType("nfdnchar_t*") MemorySegment filePath) {
+    this.freePathN(filePath);
+  }
+
+  /**
    * Free a file path that was returned by the dialogs.
    * <p>
    * Note: use {@link #pathSetFreePathU8} to free path from pathset instead of this function.
@@ -113,6 +122,21 @@ public interface CNFD extends DirectAccess {
       @CType("const nfdnfilteritem_t*") MemorySegment filterList,
       @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdnchar_t*") MemorySegment defaultPath);
+
+  /**
+   * Overloads {@link #openDialogN(java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment, int, java.lang.foreign.MemorySegment)}
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_OpenDialogN")
+  @Skip
+  default int openDialog(@CType("nfdnchar_t**") MemorySegment outPath,
+      @CType("const nfdnfilteritem_t*") MemorySegment filterList,
+      @CType("nfdfiltersize_t") int filterCount,
+      @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    return this.openDialogN(outPath, filterList, filterCount, defaultPath);
+  }
 
   /**
    * Single file open dialog
@@ -189,6 +213,21 @@ public interface CNFD extends DirectAccess {
       @CType("const nfdnfilteritem_t*") MemorySegment filterList,
       @CType("nfdfiltersize_t") int filterCount,
       @CType("const nfdnchar_t*") MemorySegment defaultPath);
+
+  /**
+   * Overloads {@link #openDialogMultipleN(java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment, int, java.lang.foreign.MemorySegment)}
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_OpenDialogMultipleN")
+  @Skip
+  default int openDialogMultiple(@CType("const nfdpathset_t**") MemorySegment outPaths,
+      @CType("const nfdnfilteritem_t*") MemorySegment filterList,
+      @CType("nfdfiltersize_t") int filterCount,
+      @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    return this.openDialogMultipleN(outPaths, filterList, filterCount, defaultPath);
+  }
 
   /**
    * Multiple file open dialog
@@ -270,6 +309,22 @@ public interface CNFD extends DirectAccess {
       @CType("const nfdnchar_t*") MemorySegment defaultName);
 
   /**
+   * Overloads {@link #saveDialogN(java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment, int, java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment)}
+   * @param filterCount If zero, filterList is ignored (you can use null).
+   * @param defaultPath If null, the operating system will decide.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_SaveDialogN")
+  @Skip
+  default int saveDialog(@CType("nfdnchar_t**") MemorySegment outPath,
+      @CType("const nfdnfilteritem_t*") MemorySegment filterList,
+      @CType("nfdfiltersize_t") int filterCount,
+      @CType("const nfdnchar_t*") MemorySegment defaultPath,
+      @CType("const nfdnchar_t*") MemorySegment defaultName) {
+    return this.saveDialogN(outPath, filterList, filterCount, defaultPath, defaultName);
+  }
+
+  /**
    * Save dialog
    * <p>
    * It is the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
@@ -344,6 +399,18 @@ public interface CNFD extends DirectAccess {
       @CType("const nfdnchar_t*") MemorySegment defaultPath);
 
   /**
+   * Overloads {@link #pickFolderN(java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment)}
+   * @param defaultPath If null, the operating system will decide.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PickFolderN")
+  @Skip
+  default int pickFolder(@CType("nfdnchar_t**") MemorySegment outPath,
+      @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    return this.pickFolderN(outPath, defaultPath);
+  }
+
+  /**
    * Select single folder dialog
    * <p>
    * It's the caller's responsibility to free {@code outPath} via {@link #freePathU8} if this function returns
@@ -412,6 +479,18 @@ public interface CNFD extends DirectAccess {
   @Entrypoint("NFD_PickFolderMultipleN")
   int pickFolderMultipleN(@CType("const nfdpathset_t**") MemorySegment outPaths,
       @CType("const nfdnchar_t*") MemorySegment defaultPath);
+
+  /**
+   * Overloads {@link #pickFolderMultipleN(java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment)}
+   * @param defaultPath If null, the operating system will decide.
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PickFolderMultipleN")
+  @Skip
+  default int pickFolderMultiple(@CType("const nfdpathset_t**") MemorySegment outPaths,
+      @CType("const nfdnchar_t*") MemorySegment defaultPath) {
+    return this.pickFolderMultipleN(outPaths, defaultPath);
+  }
 
   /**
    * Select multiple folder dialog
@@ -539,6 +618,17 @@ public interface CNFD extends DirectAccess {
       @CType("nfdpathsetsize_t") long index, @CType("nfdnchar_t**") MemorySegment outPath);
 
   /**
+   * Overloads {@link #pathSetGetPathN(java.lang.foreign.MemorySegment, long, java.lang.foreign.MemorySegment)}
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_GetPathN")
+  @Skip
+  default int pathSetGetPath(@CType("const nfdpathset_t*") MemorySegment pathSet,
+      @CType("nfdpathsetsize_t") long index, @CType("nfdnchar_t**") MemorySegment outPath) {
+    return this.pathSetGetPathN(pathSet, index, outPath);
+  }
+
+  /**
    * Get the UTF-8 path at offset index.
    * <p>
    * It is the caller's responsibility to free `outPath` via {@link #pathSetFreePathU8} if this function
@@ -554,6 +644,15 @@ public interface CNFD extends DirectAccess {
    */
   @Entrypoint("NFD_PathSet_FreePathN")
   void pathSetFreePathN(@CType("const nfdnchar_t*") MemorySegment filePath);
+
+  /**
+   * Overloads {@link #pathSetFreePathN(java.lang.foreign.MemorySegment)}
+   */
+  @Entrypoint("NFD_PathSet_FreePathN")
+  @Skip
+  default void pathSetFreePath(@CType("const nfdnchar_t*") MemorySegment filePath) {
+    this.pathSetFreePathN(filePath);
+  }
 
   /**
    * Free the path gotten by {@link #pathSetGetPathU8}.
@@ -589,6 +688,17 @@ public interface CNFD extends DirectAccess {
   @Entrypoint("NFD_PathSet_EnumNextN")
   int pathSetEnumNextN(@CType("nfdpathsetenum_t*") MemorySegment enumerator,
       @CType("nfdnchar_t**") MemorySegment outPath);
+
+  /**
+   * Overloads {@link #pathSetEnumNextN(java.lang.foreign.MemorySegment, java.lang.foreign.MemorySegment)}
+   */
+  @CType("nfdresult_t")
+  @Entrypoint("NFD_PathSet_EnumNextN")
+  @Skip
+  default int pathSetEnumNext(@CType("nfdpathsetenum_t*") MemorySegment enumerator,
+      @CType("nfdnchar_t**") MemorySegment outPath) {
+    return this.pathSetEnumNextN(enumerator, outPath);
+  }
 
   /**
    * Gets the next item from the path set enumerator.

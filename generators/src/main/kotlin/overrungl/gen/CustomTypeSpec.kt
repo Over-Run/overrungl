@@ -39,7 +39,6 @@ data class CustomTypeSpec(
 }
 
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
-val String_: ClassName = ClassName.get(String::class.java)
 
 val CType = ClassName.get("overrun.marshal.gen", "CType")
 val DirectAccess = ClassName.get("overrun.marshal", "DirectAccess")

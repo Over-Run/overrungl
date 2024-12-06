@@ -32,7 +32,7 @@ val nfdpathsetsize_t_ptr = address c "nfdpathsetsize_t*"
 val nfdpathsetsize_t = jlong c "nfdpathsetsize_t"
 val nfdpathsetenum_t_ptr = address c "nfdpathsetenum_t*"
 
-class CharVariant(
+data class CharVariant(
     val uppercaseName: String,
     val lowercaseName: String,
     val const_nfdchar_t_ptr: CustomTypeSpec,
@@ -220,8 +220,31 @@ fun main() {
         }
 
         //region methods
+        fun provideOverload(variant: CharVariant, spec: MethodSpec, name: String) {
+            if (variant == Nchar) {
+                typeSpecBuilder.addMethod(
+                    MethodSpec.methodBuilder(name)
+                        .addJavadoc(
+                            "Overloads {@link #$1N($2L)}",
+                            spec,
+                            spec.parameters().joinToString(separator = ", ") { s -> s.type().toString() })
+                        .addAnnotations(spec.annotations())
+                        .addAnnotation(Skip)
+                        .addModifiers(Modifier.PUBLIC, Modifier.DEFAULT)
+                        .returns(spec.returnType())
+                        .addParameters(spec.parameters())
+                        .addStatement(
+                            "$1Lthis.$2N($3L)",
+                            if (spec.returnType() == TypeName.VOID) "" else "return ",
+                            spec,
+                            spec.parameters().joinToString(separator = ", ") { s -> s.name() })
+                        .build()
+                )
+            }
+        }
+
         fun freePath(variant: CharVariant) {
-            "freePath${variant.uppercaseName}"(
+            val spec = "freePath${variant.uppercaseName}"(
                 void,
                 variant.nfdchar_t_ptr("filePath"),
                 entrypoint = "NFD_FreePath${variant.uppercaseName}",
@@ -234,6 +257,7 @@ fun main() {
                     """.trimIndent()
                     )
                 })
+            provideOverload(variant, spec, "freePath")
         }
         freePath(Nchar)
         freePath(U8char)
@@ -255,7 +279,7 @@ fun main() {
         })
 
         fun openDialog(variant: CharVariant) {
-            "openDialog${variant.uppercaseName}"(
+            val spec = "openDialog${variant.uppercaseName}"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
@@ -277,6 +301,7 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "openDialog")
         }
         openDialog(Nchar)
         openDialog(U8char)
@@ -315,7 +340,7 @@ fun main() {
         openDialogWith(U8char)
 
         fun openDialogMultiple(variant: CharVariant) {
-            "openDialogMultiple${variant.uppercaseName}"(
+            val spec = "openDialogMultiple${variant.uppercaseName}"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
@@ -337,6 +362,7 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "openDialogMultiple")
         }
         openDialogMultiple(Nchar)
         openDialogMultiple(U8char)
@@ -383,7 +409,7 @@ fun main() {
 
 
         fun saveDialog(variant: CharVariant) {
-            "saveDialog${variant.uppercaseName}"(
+            val spec = "saveDialog${variant.uppercaseName}"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
@@ -406,6 +432,7 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "saveDialog")
         }
         saveDialog(Nchar)
         saveDialog(U8char)
@@ -445,7 +472,7 @@ fun main() {
 
 
         fun pickFolder(variant: CharVariant) {
-            "pickFolder${variant.uppercaseName}"(
+            val spec = "pickFolder${variant.uppercaseName}"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdchar_t_ptr("defaultPath") {
@@ -463,6 +490,7 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "pickFolder")
         }
         pickFolder(Nchar)
         pickFolder(U8char)
@@ -501,7 +529,7 @@ fun main() {
         pickFolderWith(U8char)
 
         fun pickFolderMultiple(variant: CharVariant) {
-            "pickFolderMultiple${variant.uppercaseName}"(
+            val spec = "pickFolderMultiple${variant.uppercaseName}"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdchar_t_ptr("defaultPath") {
@@ -519,6 +547,7 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "pickFolderMultiple")
         }
         pickFolderMultiple(Nchar)
         pickFolderMultiple(U8char)
@@ -609,7 +638,7 @@ fun main() {
         )
 
         fun pathSetGetPath(variant: CharVariant, pathType: String) {
-            "pathSetGetPath${variant.uppercaseName}"(
+            val spec = "pathSetGetPath${variant.uppercaseName}"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr("pathSet"),
                 nfdpathsetsize_t("index"),
@@ -626,17 +655,19 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "pathSetGetPath")
         }
         pathSetGetPath(Nchar, "native")
         pathSetGetPath(U8char, "UTF-8")
 
         fun pathSetFreePath(variant: CharVariant) {
-            "pathSetFreePath${variant.uppercaseName}"(
+            val spec = "pathSetFreePath${variant.uppercaseName}"(
                 void,
                 variant.const_nfdchar_t_ptr("filePath"),
                 entrypoint = "NFD_PathSet_FreePath${variant.uppercaseName}",
                 javadoc = { add("Free the path gotten by {@link #pathSetGetPath${variant.uppercaseName}}.") }
             )
+            provideOverload(variant, spec, "pathSetFreePath")
         }
         pathSetFreePath(Nchar)
         pathSetFreePath(U8char)
@@ -665,7 +696,7 @@ fun main() {
         )
 
         fun pathSetEnumNext(variant: CharVariant) {
-            "pathSetEnumNext${variant.uppercaseName}"(
+            val spec = "pathSetEnumNext${variant.uppercaseName}"(
                 nfdresult_t,
                 nfdpathsetenum_t_ptr("enumerator"),
                 variant.nfdchar_t_ptr_ptr("outPath"),
@@ -682,6 +713,7 @@ fun main() {
                     )
                 }
             )
+            provideOverload(variant, spec, "pathSetEnumNext")
         }
         pathSetEnumNext(Nchar)
         pathSetEnumNext(U8char)
@@ -718,7 +750,8 @@ fun main() {
                     .returns(s.returnType())
                     .addParameters(s.parameters())
                     .addStatement(
-                        "${if (s.returnType() == TypeName.VOID) "" else "return "}getInstance().$1N($2L)",
+                        "$1LgetInstance().$2N($3L)",
+                        if (s.returnType() == TypeName.VOID) "" else "return ",
                         s,
                         s.parameters().joinToString(separator = ", ") { ps -> ps.name() })
                     .build()
@@ -728,29 +761,47 @@ fun main() {
         val nfdCharset = ", NFDInternal.nfdCharset"
         val StringArray = ArrayTypeName.of(String::class.java)
 
+        fun provideOverload(variant: CharVariant, spec: MethodSpec, name: String) {
+            if (variant == Nchar) {
+                codeBuilder.add(
+                    "$1L",
+                    MethodSpec.methodBuilder(name)
+                        .addJavadoc(spec.javadoc())
+                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                        .returns(spec.returnType())
+                        .addParameters(spec.parameters())
+                        .addStatement(
+                            "$1L$2N($3L)",
+                            if (spec.returnType() == TypeName.VOID) "" else "return ",
+                            spec,
+                            spec.parameters().joinToString(separator = ", ") { ps -> ps.name() })
+                        .build()
+                )
+            }
+        }
+
         fun openDialog(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("openDialog${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #openDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(StringArray, "outPath")
-                    .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
-                    .addParameter(String::class.java, "defaultPath")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement(
-                        "int result = openDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
-                        charset
-                    )
-                    .beginControlFlow("if (result == OKAY)")
-                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
-                    .endControlFlow()
-                    .addStatement("return result")
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("openDialog${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #openDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(StringArray, "outPath")
+                .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
+                .addParameter(String::class.java, "defaultPath")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                .addStatement(
+                    "int result = openDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
+                    charset
+                )
+                .beginControlFlow("if (result == OKAY)")
+                .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                .endControlFlow()
+                .addStatement("return result")
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "openDialog")
         }
         openDialog(Nchar, nfdCharset)
         openDialog(U8char, "")
@@ -779,23 +830,22 @@ fun main() {
         openDialogWith(U8char, "")
 
         fun openDialogMultiple(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(MemorySegment_, "outPaths")
-                    .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
-                    .addParameter(String::class.java, "defaultPath")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement(
-                        "return openDialogMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
-                        charset
-                    )
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(MemorySegment_, "outPaths")
+                .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
+                .addParameter(String::class.java, "defaultPath")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement(
+                    "return openDialogMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
+                    charset
+                )
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "openDialogMultiple")
         }
         openDialogMultiple(Nchar, nfdCharset)
         openDialogMultiple(U8char, "")
@@ -818,29 +868,28 @@ fun main() {
 
 
         fun saveDialog(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("saveDialog${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #saveDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(StringArray, "outPath")
-                    .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
-                    .addParameter(String::class.java, "defaultPath")
-                    .addParameter(String::class.java, "defaultName")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement(
-                        "int result = saveDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L), Marshal.marshal(stack, defaultName$1L))",
-                        charset
-                    )
-                    .beginControlFlow("if (result == OKAY)")
-                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
-                    .endControlFlow()
-                    .addStatement("return result")
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("saveDialog${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #saveDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(StringArray, "outPath")
+                .addParameter(ClassName.get("overrungl.nfd", "NFD${variant.uppercaseName}FilterItem"), "filterList")
+                .addParameter(String::class.java, "defaultPath")
+                .addParameter(String::class.java, "defaultName")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                .addStatement(
+                    "int result = saveDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L), Marshal.marshal(stack, defaultName$1L))",
+                    charset
+                )
+                .beginControlFlow("if (result == OKAY)")
+                .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                .endControlFlow()
+                .addStatement("return result")
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "saveDialog")
         }
         saveDialog(Nchar, nfdCharset)
         saveDialog(U8char, "")
@@ -870,27 +919,26 @@ fun main() {
 
 
         fun pickFolder(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(StringArray, "outPath")
-                    .addParameter(String::class.java, "defaultPath")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement(
-                        "int result = pickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))",
-                        charset
-                    )
-                    .beginControlFlow("if (result == OKAY)")
-                    .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
-                    .endControlFlow()
-                    .addStatement("return result")
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(StringArray, "outPath")
+                .addParameter(String::class.java, "defaultPath")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                .addStatement(
+                    "int result = pickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))",
+                    charset
+                )
+                .beginControlFlow("if (result == OKAY)")
+                .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
+                .endControlFlow()
+                .addStatement("return result")
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "pickFolder")
         }
         pickFolder(Nchar, nfdCharset)
         pickFolder(U8char, "")
@@ -919,22 +967,21 @@ fun main() {
         pickFolderWith(U8char, "")
 
         fun pickFolderMultiple(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("pickFolderMultiple${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #pickFolderMultiple${variant.uppercaseName}(MemorySegment, MemorySegment)}")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(MemorySegment_, "outPaths")
-                    .addParameter(String::class.java, "defaultPath")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement(
-                        "return pickFolderMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(stack, defaultPath$1L))",
-                        charset
-                    )
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("pickFolderMultiple${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #pickFolderMultiple${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(MemorySegment_, "outPaths")
+                .addParameter(String::class.java, "defaultPath")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement(
+                    "return pickFolderMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(stack, defaultPath$1L))",
+                    charset
+                )
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "pickFolderMultiple")
         }
         pickFolderMultiple(Nchar, nfdCharset)
         pickFolderMultiple(U8char, "")
@@ -957,48 +1004,46 @@ fun main() {
 
 
         fun pathSetGetPath(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("pathSetGetPath${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #pathSetGetPath${variant.uppercaseName}(MemorySegment, long, MemorySegment)}")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(MemorySegment_, "pathSet")
-                    .addParameter(TypeName.LONG, "index")
-                    .addParameter(StringArray, "outPath")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement("int result = pathSetGetPath${variant.uppercaseName}(pathSet, index, seg)")
-                    .beginControlFlow("if (result == OKAY)")
-                    .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
-                    .endControlFlow()
-                    .addStatement("return result")
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("pathSetGetPath${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #pathSetGetPath${variant.uppercaseName}(MemorySegment, long, MemorySegment)}")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(MemorySegment_, "pathSet")
+                .addParameter(TypeName.LONG, "index")
+                .addParameter(StringArray, "outPath")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                .addStatement("int result = pathSetGetPath${variant.uppercaseName}(pathSet, index, seg)")
+                .beginControlFlow("if (result == OKAY)")
+                .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
+                .endControlFlow()
+                .addStatement("return result")
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "pathSetGetPath")
         }
         pathSetGetPath(Nchar, nfdCharset)
         pathSetGetPath(U8char, "")
 
         fun pathSetEnumNext(variant: CharVariant, charset: String) {
-            codeBuilder.add(
-                "$1L",
-                MethodSpec.methodBuilder("pathSetEnumNext${variant.uppercaseName}")
-                    .addJavadoc("Overloads {@link #pathSetEnumNext${variant.uppercaseName}(MemorySegment, MemorySegment)}")
-                    .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                    .returns(TypeName.INT)
-                    .addParameter(MemorySegment_, "enumerator")
-                    .addParameter(StringArray, "outPath")
-                    .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
-                    .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement("int result = pathSetEnumNext${variant.uppercaseName}(enumerator, seg)")
-                    .beginControlFlow("if (result == OKAY)")
-                    .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
-                    .endControlFlow()
-                    .addStatement("return result")
-                    .endControlFlow()
-                    .build()
-            )
+            val spec = MethodSpec.methodBuilder("pathSetEnumNext${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #pathSetEnumNext${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
+                .returns(TypeName.INT)
+                .addParameter(MemorySegment_, "enumerator")
+                .addParameter(StringArray, "outPath")
+                .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
+                .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
+                .addStatement("int result = pathSetEnumNext${variant.uppercaseName}(enumerator, seg)")
+                .beginControlFlow("if (result == OKAY)")
+                .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
+                .endControlFlow()
+                .addStatement("return result")
+                .endControlFlow()
+                .build()
+            codeBuilder.add("$1L", spec)
+            provideOverload(variant, spec, "pathSetEnumNext")
         }
         pathSetEnumNext(Nchar, nfdCharset)
         pathSetEnumNext(U8char, "")
