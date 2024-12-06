@@ -831,7 +831,7 @@ fun main() {
 
         fun openDialogMultiple(variant: CharVariant, charset: String) {
             val spec = MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)")
+                .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(MemorySegment_, "outPaths")
@@ -854,7 +854,7 @@ fun main() {
             codeBuilder.add(
                 "$1L",
                 MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}With(MemorySegment, MemorySegment)")
+                    .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(MemorySegment_, "outPaths")
@@ -920,7 +920,7 @@ fun main() {
 
         fun pickFolder(variant: CharVariant, charset: String) {
             val spec = MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)")
+                .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(StringArray, "outPath")
@@ -947,7 +947,7 @@ fun main() {
             codeBuilder.add(
                 "$1L",
                 MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}With(MemorySegment, MemorySegment)")
+                    .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(StringArray, "outPath")

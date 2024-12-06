@@ -932,7 +932,7 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment)
+     * Overloads {@link #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment)}
      */
     public static int openDialogMultipleN(java.lang.foreign.MemorySegment outPaths,
         overrungl.nfd.NFDNFilterItem filterList, java.lang.String defaultPath) {
@@ -941,14 +941,14 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment)
+     * Overloads {@link #openDialogMultipleN(MemorySegment, MemorySegment, int, MemorySegment)}
      */
     public static int openDialogMultiple(java.lang.foreign.MemorySegment outPaths,
         overrungl.nfd.NFDNFilterItem filterList, java.lang.String defaultPath) {
       return openDialogMultipleN(outPaths, filterList, defaultPath);
     }
     /**
-     * Overloads {@link #openDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment)
+     * Overloads {@link #openDialogMultipleU8(MemorySegment, MemorySegment, int, MemorySegment)}
      */
     public static int openDialogMultipleU8(java.lang.foreign.MemorySegment outPaths,
         overrungl.nfd.NFDU8FilterItem filterList, java.lang.String defaultPath) {
@@ -957,14 +957,14 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #openDialogMultipleNWith(MemorySegment, MemorySegment)
+     * Overloads {@link #openDialogMultipleNWith(MemorySegment, MemorySegment)}
      */
     public static int openDialogMultipleNWith(java.lang.foreign.MemorySegment outPaths,
         overrungl.nfd.NFDOpenDialogNArgs args) {
       return openDialogMultipleNWith(outPaths, Marshal.marshal(args));
     }
     /**
-     * Overloads {@link #openDialogMultipleU8With(MemorySegment, MemorySegment)
+     * Overloads {@link #openDialogMultipleU8With(MemorySegment, MemorySegment)}
      */
     public static int openDialogMultipleU8With(java.lang.foreign.MemorySegment outPaths,
         overrungl.nfd.NFDOpenDialogU8Args args) {
@@ -1034,7 +1034,7 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #pickFolderN(MemorySegment, MemorySegment)
+     * Overloads {@link #pickFolderN(MemorySegment, MemorySegment)}
      */
     public static int pickFolderN(java.lang.String[] outPath, java.lang.String defaultPath) {
       try (MemoryStack stack = MemoryStack.pushLocal()) {
@@ -1047,13 +1047,13 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #pickFolderN(MemorySegment, MemorySegment)
+     * Overloads {@link #pickFolderN(MemorySegment, MemorySegment)}
      */
     public static int pickFolder(java.lang.String[] outPath, java.lang.String defaultPath) {
       return pickFolderN(outPath, defaultPath);
     }
     /**
-     * Overloads {@link #pickFolderU8(MemorySegment, MemorySegment)
+     * Overloads {@link #pickFolderU8(MemorySegment, MemorySegment)}
      */
     public static int pickFolderU8(java.lang.String[] outPath, java.lang.String defaultPath) {
       try (MemoryStack stack = MemoryStack.pushLocal()) {
@@ -1066,7 +1066,7 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #pickFolderNWith(MemorySegment, MemorySegment)
+     * Overloads {@link #pickFolderNWith(MemorySegment, MemorySegment)}
      */
     public static int pickFolderNWith(java.lang.String[] outPath,
         overrungl.nfd.NFDPickFolderNArgs args) {
@@ -1080,7 +1080,7 @@ public final class NFD {
       }
     }
     /**
-     * Overloads {@link #pickFolderU8With(MemorySegment, MemorySegment)
+     * Overloads {@link #pickFolderU8With(MemorySegment, MemorySegment)}
      */
     public static int pickFolderU8With(java.lang.String[] outPath,
         overrungl.nfd.NFDPickFolderU8Args args) {
