@@ -10,9 +10,3 @@ repositories {
 dependencies {
     implementation("com.palantir.javapoet:javapoet:$javaPoetVersion")
 }
-
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(kotlinTargetJdkVersion))
-    }
-}

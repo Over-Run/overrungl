@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins { `kotlin-dsl` }
 
 val kotlinPluginVersion: String by rootProject
@@ -11,8 +14,10 @@ dependencies {
     implementation("org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:$kotlinPluginVersion")
 }
 
-kotlin {
-    jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(kotlinTargetJdkVersion))
-    }
+tasks.withType<JavaCompile>().configureEach {
+    targetCompatibility = kotlinTargetJdkVersion
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    compilerOptions { jvmTarget = JvmTarget.fromTarget(kotlinTargetJdkVersion) }
 }
