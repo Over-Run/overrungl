@@ -1,135 +1,102 @@
-/*
- * MIT License
- *
- * Copyright (c) 2023-2024 Overrun Organization
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- */
-
+// MIT License
+//
+// Copyright (c) 2022-2024 Overrun Organization
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.nfd;
 
+import java.lang.Override;
+import java.lang.SafeVarargs;
+import java.lang.String;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
+import java.lang.invoke.MethodHandles;
+import java.util.Map;
 import overrun.marshal.LayoutBuilder;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
+import overrun.marshal.gen.CType;
 import overrun.marshal.struct.Struct;
 import overrun.marshal.struct.StructAllocator;
-import overrungl.util.value.Pair;
-
-import java.lang.foreign.*;
-import java.lang.invoke.MethodHandles;
 
 /**
- * <h2>Layout</h2>
- * <pre><code>
- * struct nfdu8filteritem_t {
- *     const nfdu8char_t* {@link #name};
- *     const nfdu8char_t* {@link #spec};
- * }</code></pre>
+ * UTF-8 Filter Item
+ * <h2>Members</h2>
  *
- * @author squid233
- * @since 0.1.0
+ * <h3>name</h3>
+ * <p>{@linkplain #name() Getter} - {@linkplain #name(MemorySegment) Setter}
+ *
+ * <h3>spec</h3>
+ * <p>{@linkplain #spec() Getter} - {@linkplain #spec(MemorySegment) Setter}
+ *
+ * <h2>Layout</h2>
+ * {@snippet lang=c:
+ * typedef struct nfdu8filteritem_t {
+ *     const nfdu8char_t* name; // @link substring="name" target=#name()
+ *     const nfdu8char_t* spec; // @link substring="spec" target=#spec()
+ * } NFDU8FilterItem;
+ * }
  */
-public interface NFDU8FilterItem<T extends NFDU8FilterItem<T>> extends Struct<T> {
-    /**
-     * The struct layout.
-     */
-    StructLayout LAYOUT = LayoutBuilder.struct()
-        .cAddress("name", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
-        .cAddress("spec", MemoryLayout.sequenceLayout(Unmarshal.STR_SIZE, ValueLayout.JAVA_BYTE))
-        .build();
-    /**
-     * The allocator
-     */
-    StructAllocator<NFDU8FilterItem<?>> OF = new StructAllocator<>(MethodHandles.lookup(), LAYOUT);
+public interface NFDU8FilterItem extends Struct<NFDU8FilterItem> {
+  /**
+   * The struct allocator.
+   */
+  StructAllocator<NFDU8FilterItem> OF = new StructAllocator<>(MethodHandles.lookup(), LayoutBuilder.struct()
+      .add(Unmarshal.STR_LAYOUT, "name").add(Unmarshal.STR_LAYOUT, "spec").build());
 
-    /**
-     * Mutable
-     */
-    interface Mutable extends NFDU8FilterItem<Mutable> {
-        /**
-         * The allocator
-         */
-        StructAllocator<Mutable> OF = new StructAllocator<>(MethodHandles.lookup(), LAYOUT);
+  @Override
+  NFDU8FilterItem slice(long index, long count);
 
-        /**
-         * Sets {@link #name()}.
-         *
-         * @param val the value
-         * @return this
-         */
-        Mutable name(MemorySegment val);
+  @Override
+  NFDU8FilterItem slice(long index);
 
-        /**
-         * Sets {@link #spec()}.
-         *
-         * @param val the value
-         * @return this
-         */
-        Mutable spec(MemorySegment val);
+  /**
+   * {@return {@code name}}
+   */
+  @CType("const nfdu8char_t*")
+  MemorySegment name();
+
+  /**
+   * Sets {@code name} with the given value.
+   * @return {@code this}
+   * @param name the value
+   */
+  NFDU8FilterItem name(@CType("const nfdu8char_t*") MemorySegment name);
+
+  /**
+   * {@return {@code spec}}
+   */
+  @CType("const nfdu8char_t*")
+  MemorySegment spec();
+
+  /**
+   * Sets {@code spec} with the given value.
+   * @return {@code this}
+   * @param spec the value
+   */
+  NFDU8FilterItem spec(@CType("const nfdu8char_t*") MemorySegment spec);
+
+  static NFDU8FilterItem create(SegmentAllocator allocator, String name, String spec) {
+    return NFDU8FilterItem.OF.of(allocator).name(Marshal.marshal(allocator, name)).spec(Marshal.marshal(allocator, spec));
+  }
+
+  @SafeVarargs
+  static NFDU8FilterItem create(SegmentAllocator allocator, Map.Entry<String, String>... entries) {
+    var of = NFDU8FilterItem.OF.of(allocator, entries.length);
+    for (int i = 0; i < entries.length; i++) {
+      var e = entries[i];
+      of.slice(i).name(Marshal.marshal(allocator, e.getKey())).spec(Marshal.marshal(allocator, e.getValue()));
     }
-
-    /**
-     * {@return name}
-     */
-    MemorySegment name();
-
-    /**
-     * {@return spec}
-     */
-    MemorySegment spec();
-
-    /**
-     * {@return {@link #name()}}
-     */
-    default String javaName() {
-        return Unmarshal.unmarshalAsString(name());
-    }
-
-    /**
-     * {@return {@link #spec()}}
-     */
-    default String javaSpec() {
-        return Unmarshal.unmarshalAsString(spec());
-    }
-
-    /**
-     * Creates a {@code NFDU8FilterItem} instance with the given allocator.
-     *
-     * @param allocator the allocator
-     * @param name      the name of the filter
-     * @param spec      the specification of the filter
-     * @return the instance
-     */
-    static NFDU8FilterItem<?> create(SegmentAllocator allocator, String name, String spec) {
-        return Mutable.OF.of(allocator)
-            .name(Marshal.marshal(allocator, name))
-            .spec(Marshal.marshal(allocator, spec));
-    }
-
-    /**
-     * Creates a {@code NFDU8FilterItem.Buffer} instance with the given allocator and items.
-     *
-     * @param allocator the allocator
-     * @param items     the items
-     * @return the instance
-     */
-    @SafeVarargs
-    static NFDU8FilterItem<?> create(SegmentAllocator allocator, Pair<String>... items) {
-        final var buffer = Mutable.OF.of(allocator, items.length);
-        for (int i = 0, len = items.length; i < len; i++) {
-            var item = items[i];
-            buffer.slice(i)
-                .name(Marshal.marshal(allocator, item.key()))
-                .spec(Marshal.marshal(allocator, item.value()));
-        }
-        return buffer;
-    }
+    return of;
+  }
 }

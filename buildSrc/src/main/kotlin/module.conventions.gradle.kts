@@ -16,6 +16,8 @@ val jdkEnablePreview: String by rootProject
 
 val targetJavaVersion = jdkVersion.toInt()
 
+val jetbrainsAnnotationsVersion: String by rootProject
+
 group = projGroupId
 version = projVersion
 
@@ -27,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:24.1.0")
+    compileOnly("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
 }
 
 tasks.withType<JavaCompile> {

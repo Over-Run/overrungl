@@ -14,32 +14,21 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.util;
+package overrungl.gen
 
-import overrungl.internal.RuntimeHelper;
+import com.palantir.javapoet.CodeBlock
 
-import java.lang.foreign.MemoryLayout;
+class JavadocProvider {
+    var doFirst: CodeBlock.Builder.() -> Unit = {}
+        private set
+    var doLast: CodeBlock.Builder.() -> Unit = {}
+        private set
 
-/**
- * Platform-specific value layouts.
- *
- * @author squid233
- * @since 0.1.0
- */
-public final class PlatformLayouts {
-    /**
-     * {@code long} type in C
-     */
-    public static final MemoryLayout LONG = RuntimeHelper.LONG;
-    /**
-     * {@code size_t} type in C
-     */
-    public static final MemoryLayout SIZE_T = RuntimeHelper.SIZE_T;
-    /**
-     * {@code wchar_t} type in C
-     */
-    public static final MemoryLayout WCHAR_T = RuntimeHelper.WCHAR_T;
+    fun doFirst(action: CodeBlock.Builder.() -> Unit) {
+        doFirst = action
+    }
 
-    private PlatformLayouts() {
+    fun doLast(action: CodeBlock.Builder.() -> Unit) {
+        doLast = action
     }
 }

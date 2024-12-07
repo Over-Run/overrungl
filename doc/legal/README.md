@@ -10,4 +10,4 @@ Files:
 
 - modules/lwjgl/core/src/main/java/org/lwjgl/system/MemoryManage.java -> [modules/overrungl.core/src/main/java/overrungl/util/DebugAllocator.java](../../modules/overrungl.core/src/main/java/overrungl/util/DebugAllocator.java)
 - modules/lwjgl/core/src/main/java9/org/lwjgl/system/StackWalkUtil.java -> [modules/overrungl.core/src/main/java/overrungl/util/StackWalkUtil.java](../../modules/overrungl.core/src/main/java/overrungl/util/StackWalkUtil.java)
-- modules/samples/src/test/java/org/lwjgl/demo/util/IOUtil.java -> [modules/samples/src/main/java/overrungl/demo/util/IOUtil.java](../../modules/samples/src/main/java/overrungl/demo/util/IOUtil.java)
+- modules/samples/src/test/java/org/lwjgl/demo/util/IOUtil.java -> [modules/samples/src/test/java/overrungl/demo/util/IOUtil.java](../../modules/samples/src/test/java/overrungl/demo/util/IOUtil.java)

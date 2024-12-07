@@ -22,11 +22,7 @@ import overrun.marshal.DirectAccess;
 import overrun.marshal.Downcall;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
-import overrun.marshal.gen.Convert;
-import overrun.marshal.gen.Entrypoint;
-import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.Skip;
-import overrun.marshal.gen.processor.ProcessorType.BoolConvert;
+import overrun.marshal.gen.*;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -55,10 +51,10 @@ public interface STBImage extends DirectAccess {
         RGB_ALPHA = 4;
 
     @Entrypoint("stbi_convert_iphone_png_to_rgb")
-    void convertIphonePngToRgb(@Convert(BoolConvert.INT) boolean shouldConvert);
+    void convertIphonePngToRgb(@Convert(AsBool.INT) boolean shouldConvert);
 
     @Entrypoint("stbi_convert_iphone_png_to_rgb_thread")
-    void convertIphonePngToRgbThread(@Convert(BoolConvert.INT) boolean shouldConvert);
+    void convertIphonePngToRgbThread(@Convert(AsBool.INT) boolean shouldConvert);
 
     @Entrypoint("stbi_failure_reason")
     MemorySegment nfailureReason();
@@ -76,31 +72,31 @@ public interface STBImage extends DirectAccess {
     @Entrypoint("stbi_image_free")
     void free(MemorySegment retValFromLoad);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info")
     boolean ninfo(MemorySegment filename, MemorySegment x, MemorySegment y, MemorySegment comp);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info")
     boolean info(String filename, @Ref int[] x, @Ref int[] y, @Ref int[] comp);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info_from_callbacks")
     boolean ninfoFromCallbacks(MemorySegment clbk, MemorySegment user, MemorySegment x, MemorySegment y, MemorySegment comp);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info_from_callbacks")
     boolean infoFromCallbacks(STBIIoCallbacks clbk, MemorySegment user, @Ref int[] x, @Ref int[] y, @Ref int[] comp);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info_from_file")
     boolean ninfoFromFile(MemorySegment f, MemorySegment x, MemorySegment y, MemorySegment comp);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info_from_file")
     boolean infoFromFile(MemorySegment f, @Ref int[] x, @Ref int[] y, @Ref int[] comp);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info_from_memory")
     boolean ninfoFromMemory(MemorySegment buffer, int len, MemorySegment x, MemorySegment y, MemorySegment comp);
 
@@ -109,7 +105,7 @@ public interface STBImage extends DirectAccess {
         return ninfoFromMemory(buffer, Math.toIntExact(buffer.byteSize()), x, y, comp);
     }
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_info_from_memory")
     boolean infoFromMemory(SegmentAllocator allocator, int len, byte[] buffer, @Ref int[] x, @Ref int[] y, @Ref int[] comp);
 
@@ -118,27 +114,27 @@ public interface STBImage extends DirectAccess {
         return infoFromMemory(allocator, buffer.length, buffer, x, y, comp);
     }
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit")
     boolean nis16Bit(MemorySegment filename);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit")
     boolean nis16Bit(String filename);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit_from_callbacks")
     boolean nis16BitFromCallbacks(MemorySegment clbk, MemorySegment user);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit_from_callbacks")
     boolean nis16BitFromCallbacks(STBIIoCallbacks clbk, MemorySegment user);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit_from_file")
     boolean nis16BitFromFile(MemorySegment f);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit_from_memory")
     boolean nis16BitFromMemory(MemorySegment buffer, int len);
 
@@ -147,7 +143,7 @@ public interface STBImage extends DirectAccess {
         return nis16BitFromMemory(buffer, Math.toIntExact(buffer.byteSize()));
     }
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_16_bit_from_memory")
     boolean is16BitFromMemory(SegmentAllocator allocator, byte[] buffer, int len);
 
@@ -156,27 +152,27 @@ public interface STBImage extends DirectAccess {
         return is16BitFromMemory(allocator, buffer, buffer.length);
     }
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr")
     boolean isHdr(MemorySegment filename);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr")
     boolean isHdr(String filename);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr_from_callbacks")
     boolean nisHdrFromCallbacks(MemorySegment clbk, MemorySegment user);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr_from_callbacks")
     boolean isHdrFromCallbacks(STBIIoCallbacks clbk, MemorySegment user);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr_from_file")
     boolean isHdrFromFile(MemorySegment f);
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr_from_memory")
     boolean nisHdrFromMemory(MemorySegment buffer, int len);
 
@@ -185,7 +181,7 @@ public interface STBImage extends DirectAccess {
         return nisHdrFromMemory(buffer, Math.toIntExact(buffer.byteSize()));
     }
 
-    @Convert(BoolConvert.INT)
+    @Convert(AsBool.INT)
     @Entrypoint("stbi_is_hdr_from_memory")
     boolean isHdrFromMemory(SegmentAllocator allocator, byte[] buffer, int len);
 
@@ -332,16 +328,16 @@ public interface STBImage extends DirectAccess {
     }
 
     @Entrypoint("stbi_set_flip_vertically_on_load")
-    void setFlipVerticallyOnLoad(@Convert(BoolConvert.INT) boolean shouldFlip);
+    void setFlipVerticallyOnLoad(@Convert(AsBool.INT) boolean shouldFlip);
 
     @Entrypoint("stbi_set_flip_vertically_on_load_thread")
-    void setFlipVerticallyOnLoadThread(@Convert(BoolConvert.INT) boolean shouldFlip);
+    void setFlipVerticallyOnLoadThread(@Convert(AsBool.INT) boolean shouldFlip);
 
     @Entrypoint("stbi_set_unpremultiply_on_load")
-    void nsetUnpremultiplyOnLoad(@Convert(BoolConvert.INT) boolean shouldUnpremultiply);
+    void nsetUnpremultiplyOnLoad(@Convert(AsBool.INT) boolean shouldUnpremultiply);
 
     @Entrypoint("stbi_set_unpremultiply_on_load_thread")
-    void nsetUnpremultiplyOnLoadThread(@Convert(BoolConvert.INT) boolean shouldUnpremultiply);
+    void nsetUnpremultiplyOnLoadThread(@Convert(AsBool.INT) boolean shouldUnpremultiply);
 
     @Entrypoint("stbi_zlib_decode_buffer")
     int zlibDecodeBuffer(MemorySegment obuffer, int olen, MemorySegment ibuffer, int ilen);

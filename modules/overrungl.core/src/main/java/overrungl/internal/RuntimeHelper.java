@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.lang.foreign.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -35,24 +34,9 @@ import java.util.Objects;
  * @since 0.1.0
  */
 public final class RuntimeHelper {
-    /**
-     * The native linker.
-     */
-    private static final Linker LINKER = Linker.nativeLinker();
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
         .resolve("overrungl" + System.getProperty("user.name"));
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
-    private static final Map<String, MemoryLayout> CANONICAL_LAYOUTS = LINKER.canonicalLayouts();
-    /**
-     * Some canonical layouts
-     */
-    public static final MemoryLayout LONG = CANONICAL_LAYOUTS.get("long"),
-        SIZE_T = CANONICAL_LAYOUTS.get("size_t"),
-        WCHAR_T = CANONICAL_LAYOUTS.get("wchar_t");
-    /**
-     * Is {@code size_t} of {@code long}?
-     */
-    public static final boolean SIZE_T_LONG = SIZE_T instanceof ValueLayout.OfLong;
 
     /**
      * constructor

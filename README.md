@@ -11,47 +11,58 @@
 ## Introduction
 
 Overrun Game Library is a high-performance library implemented with Java 23,
-which enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
+which enables cross-platform access to a set of C/C++ library bindings, providing various useful utilities.
 
-### OverrunGL vs. LWJGL
+### Comparing with LWJGL 3
 
-[LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
+[LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables cross-platform access.
 
-LWJGL 3 uses JNI to access native functions,
-but OverrunGL uses [FFM API](https://openjdk.org/jeps/454), which provides better memory management.
+LWJGL 3 uses JNI to access native functions, in OverrunGL, however,
+the [FFM API](https://openjdk.org/jeps/454) is used, which makes the linking to native functions more convenient
+as well as providing better memory management.
 
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
-the [samples](modules/samples/src/main/java/overrungl/demo).
+the [samples](modules/samples/src/test/java/overrungl/demo).
+
+Check [discussions](https://github.com/Over-Run/overrungl/discussions) in case you have trouble in setup works, such as environment configuring.
+
+Feel free to ask questions as long as you have searched in discussions and found no one had the same question.
 
 ## Import as a Dependency
 
 We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
+A documentation of the customizer is [here](doc/customizer/doc_on_customizer.md).
 
-Currently, OverrunGL uses preview features, which prevent users from using newer JDKs,
-so you have to use `-SNAPSHOT` version.
+- Platform Maven coordinate: `io.github.over-run:overrungl-bom`
+- Core module Maven coordinate: `io.github.over-run:overrungl`
+- For others: `io.github.over-run:overrungl-<module-name>`
 
-You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
+Currently, OverrunGL uses preview features preventing users from using newer JDKs,
+so only `-SNAPSHOT` versions are provided at this time.
 
 ### Using -SNAPSHOT Versions
 
 We publish `-SNAPSHOT` versions frequently.
 
-For `-SNAPSHOT` versions, you can use
+For `-SNAPSHOT` versions, you can check
 the [list of available versions](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/over-run/overrungl/maven-metadata.xml)
 and include this maven repository:
 
-```groovy
-maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
+```kotlin
+repositories {
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
+}
 ```
 
 ### Enable native access
 
-You must enable the access of OverrunGL by adding a VM argument or a manifest attribute.
+You must enable the access to restricted methods by adding a VM argument or a manifest attribute.
+The customizer has already included this.
 
 ```
---enable-preview-access=overrungl.core,...
+--enable-native-access=overrungl.core,...
 ```
 
 ## List of Supported Bindings
@@ -88,23 +99,19 @@ You must enable the access of OverrunGL by adding a VM argument or a manifest at
 |-----------------------------------------|-------------------------------------------------------|
 | [JOML](https://github.com/JOML-CI/JOML) | A Java math library for OpenGL rendering calculations |
 
-## Contact
-
-- [Discussions](https://github.com/Over-Run/overrungl/discussions)
-- [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
-- [QQ群](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ahhT6p-D0HlrGat3lFDLlSB953umWh5Z&authKey=KP0UtgQg1rW8MGNV20zmxRI7OxzijOproIRsCxe8mrWD6CHBiVo0Lhr0vvrnDYAH&noverify=0&group_code=1078745269)
-
 ## Release Notes
 
 See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
-Javadoc can be found [here](https://over-run.github.io/overrungl/).
+The latest Javadoc can be found [here](https://over-run.github.io/overrungl/).
 
-The documentation of OpenGL can be found from [references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
+The documentation of OpenGL can be found from [Khronos' references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
 
 OverrunGL uses [Marshal](https://github.com/Over-Run/marshal).
+
+[JavaPoet](https://github.com/palantir/javapoet) is used to generate source files.
 
 ### Credits
 

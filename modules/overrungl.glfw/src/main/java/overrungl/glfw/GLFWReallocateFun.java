@@ -17,9 +17,7 @@
 package overrungl.glfw;
 
 import overrun.marshal.Upcall;
-import overrungl.internal.RuntimeHelper;
 import overrungl.util.MemoryUtil;
-import overrungl.util.PlatformLayouts;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.FunctionDescriptor;
@@ -44,8 +42,7 @@ public interface GLFWReallocateFun extends Upcall {
     /**
      * The type of the upcall.
      */
-    Type<GLFWReallocateFun> TYPE = Upcall.type(RuntimeHelper.SIZE_T_LONG ? "invoke" : "invoke_int",
-        FunctionDescriptor.of(ValueLayout.ADDRESS, PlatformLayouts.SIZE_T, ValueLayout.ADDRESS));
+    Type<GLFWReallocateFun> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
 
     /**
      * This function must return a memory block at least {@code size} bytes long, or
@@ -85,19 +82,6 @@ public interface GLFWReallocateFun extends Upcall {
      * functions.
      */
     MemorySegment invoke(MemorySegment block, long size, MemorySegment user);
-
-    /**
-     * Integer version of {@link #invoke(MemorySegment, long, MemorySegment)}
-     *
-     * @param block The address of the memory block to reallocate.
-     * @param size  The new minimum size, in bytes, of the memory block.
-     * @param user  The user-defined pointer from the allocator.
-     * @return The address of the newly allocated or resized memory block, or
-     * {@link MemorySegment#NULL} if an error occurred.
-     */
-    default MemorySegment invoke_int(MemorySegment block, int size, MemorySegment user) {
-        return invoke(block, size, user);
-    }
 
     /**
      * Downcall version of {@link #invoke(MemorySegment, long, MemorySegment)}
