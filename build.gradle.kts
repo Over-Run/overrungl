@@ -4,9 +4,9 @@ plugins {
     signing
 }
 
-val projGroupId: String by project
-val projVersion: String by project
-val projLicenseYear: String by project
+val projGroupId: String by rootProject
+val projVersion: String by rootProject
+val projLicenseYear: String by rootProject
 
 val jdkVersion: String by rootProject
 val jdkEnablePreview: String by rootProject
