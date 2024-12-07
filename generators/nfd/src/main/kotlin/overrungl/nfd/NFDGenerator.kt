@@ -202,14 +202,14 @@ fun main() {
         doFirst { add("Base functions of {@link \$T}.", ClassName.get("overrungl.nfd", "NFD")) }
     }) {
         extends(DirectAccess)
-        jint("ERROR" to "0") { addJavadoc("Programmatic error") }
-        jint("OKAY" to "1") { addJavadoc("User pressed okay, or successful return") }
-        jint("CANCEL" to "2") { addJavadoc("User pressed cancel") }
-        jint("WINDOW_HANDLE_TYPE_UNSET" to "0") { addJavadoc("The native window handle type.") }
-        jint("WINDOW_HANDLE_TYPE_WINDOWS" to "1") { addJavadoc("Windows: handle is HWND (the Windows API typedefs this to void*)") }
-        jint("WINDOW_HANDLE_TYPE_COCOA" to "2") { addJavadoc("Cocoa: handle is NSWindow*") }
-        jint("WINDOW_HANDLE_TYPE_X11" to "3") { addJavadoc("X11: handle is Window") }
-        jint("INTERFACE_VERSION" to "1") {
+        jint("NFD_ERROR" to "0") { addJavadoc("Programmatic error") }
+        jint("NFD_OKAY" to "1") { addJavadoc("User pressed okay, or successful return") }
+        jint("NFD_CANCEL" to "2") { addJavadoc("User pressed cancel") }
+        jint("NFD_WINDOW_HANDLE_TYPE_UNSET" to "0") { addJavadoc("The native window handle type.") }
+        jint("NFD_WINDOW_HANDLE_TYPE_WINDOWS" to "1") { addJavadoc("Windows: handle is HWND (the Windows API typedefs this to void*)") }
+        jint("NFD_WINDOW_HANDLE_TYPE_COCOA" to "2") { addJavadoc("Cocoa: handle is NSWindow*") }
+        jint("NFD_WINDOW_HANDLE_TYPE_X11" to "3") { addJavadoc("X11: handle is Window") }
+        jint("NFD_INTERFACE_VERSION" to "1") {
             addJavadoc(
                 """
                     This is a unique identifier tagged to all the NFD_*With() function calls, for backward
@@ -244,7 +244,7 @@ fun main() {
         }
 
         fun freePath(variant: CharVariant) {
-            val spec = "freePath${variant.uppercaseName}"(
+            val spec = "NFD_FreePath${variant.uppercaseName}"(
                 void,
                 variant.nfdchar_t_ptr("filePath"),
                 entrypoint = "NFD_FreePath${variant.uppercaseName}",
@@ -253,16 +253,16 @@ fun main() {
                         """
                         Free a file path that was returned by the dialogs.
                         <p>
-                        Note: use {@link #pathSetFreePath${variant.uppercaseName}} to free path from pathset instead of this function.
+                        Note: use {@link #NFD_PathSet_FreePath${variant.uppercaseName}} to free path from pathset instead of this function.
                     """.trimIndent()
                     )
                 })
-            provideOverload(variant, spec, "freePath")
+            provideOverload(variant, spec, "NFD_FreePath")
         }
         freePath(Nchar)
         freePath(U8char)
 
-        "init"(nfdresult_t, entrypoint = "NFD_Init", javadoc = {
+        "NFD_Init"(nfdresult_t, entrypoint = "NFD_Init", javadoc = {
             add(
                 """
                     Initialize NFD. Call this for every thread that might use NFD, before calling any other NFD
@@ -270,16 +270,16 @@ fun main() {
                 """.trimIndent()
             )
         })
-        "quit"(void, entrypoint = "NFD_Quit", javadoc = {
+        "NFD_Quit"(void, entrypoint = "NFD_Quit", javadoc = {
             add(
                 """
-                    Call this to de-initialize NFD, if {@link #init()} returned NFD_OKAY.
+                    Call this to de-initialize NFD, if {@link #NFD_Init()} returned NFD_OKAY.
                 """.trimIndent()
             )
         })
 
         fun openDialog(variant: CharVariant) {
-            val spec = "openDialog${variant.uppercaseName}"(
+            val spec = "NFD_OpenDialog${variant.uppercaseName}"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
@@ -295,27 +295,27 @@ fun main() {
                         """
                             Single file open dialog
                             <p>
-                            It's the caller's responsibility to free {@code outPath} via {@link #freePath${variant.uppercaseName}} if this function returns
+                            It's the caller's responsibility to free {@code outPath} via {@link #NFD_FreePath${variant.uppercaseName}} if this function returns
                             NFD_OKAY.
                         """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "openDialog")
+            provideOverload(variant, spec, "NFD_OpenDialog")
         }
         openDialog(Nchar)
         openDialog(U8char)
 
         fun openDialogWith(variant: CharVariant) {
-            val openDialogWithImpl = "openDialog${variant.uppercaseName}WithImpl"(
+            val openDialogWithImpl = "NFD_OpenDialog${variant.uppercaseName}_With_Impl"(
                 nfdresult_t,
                 nfdversion_t("version"),
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdopendialogargs_t_ptr("args"),
                 entrypoint = "NFD_OpenDialog${variant.uppercaseName}_With_Impl",
-                javadoc = { add("This function is a library implementation detail.  Please use {@link #openDialog${variant.uppercaseName}With} instead.") }
+                javadoc = { add("This function is a library implementation detail.  Please use {@link #NFD_OpenDialog${variant.uppercaseName}_With} instead.") }
             )
-            "openDialog${variant.uppercaseName}With"(
+            "NFD_OpenDialog${variant.uppercaseName}_With"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdopendialogargs_t_ptr("args"),
@@ -325,7 +325,7 @@ fun main() {
                         """
                             Single file open dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPath} via {@link #freePath${variant.uppercaseName}} if this function
+                            It is the caller's responsibility to free {@code outPath} via {@link #NFD_FreePath${variant.uppercaseName}} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDOpenDialog${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -333,14 +333,14 @@ fun main() {
                 default = true,
             ) {
                 addAnnotation(Skip)
-                addStatement("return $1N(INTERFACE_VERSION, outPath, args)", openDialogWithImpl)
+                addStatement("return $1N(NFD_INTERFACE_VERSION, outPath, args)", openDialogWithImpl)
             }
         }
         openDialogWith(Nchar)
         openDialogWith(U8char)
 
         fun openDialogMultiple(variant: CharVariant) {
-            val spec = "openDialogMultiple${variant.uppercaseName}"(
+            val spec = "NFD_OpenDialogMultiple${variant.uppercaseName}"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
@@ -356,19 +356,19 @@ fun main() {
                         """
                         Multiple file open dialog
                         <p>
-                        It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+                        It is the caller's responsibility to free {@code outPaths} via {@link #NFD_PathSet_Free} if this function
                         returns NFD_OKAY.
                     """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "openDialogMultiple")
+            provideOverload(variant, spec, "NFD_OpenDialogMultiple")
         }
         openDialogMultiple(Nchar)
         openDialogMultiple(U8char)
 
         fun openDialogMultipleWith(variant: CharVariant) {
-            val openDialogMultipleWithImpl = "openDialogMultiple${variant.uppercaseName}WithImpl"(
+            val openDialogMultipleWithImpl = "NFD_OpenDialogMultiple${variant.uppercaseName}_With_Impl"(
                 nfdresult_t,
                 nfdversion_t("version"),
                 const_nfdpathset_t_ptr_ptr("outPaths"),
@@ -377,13 +377,13 @@ fun main() {
                 javadoc = {
                     add(
                         """
-                            This function is a library implementation detail.  Please use {@link #openDialogMultiple${variant.uppercaseName}With}
+                            This function is a library implementation detail.  Please use {@link #NFD_OpenDialogMultiple${variant.uppercaseName}_With}
                             instead.
                         """.trimIndent()
                     )
                 }
             )
-            "openDialogMultiple${variant.uppercaseName}With"(
+            "NFD_OpenDialogMultiple${variant.uppercaseName}_With"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdopendialogargs_t_ptr("args"),
@@ -393,7 +393,7 @@ fun main() {
                         """
                             Multiple file open dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+                            It is the caller's responsibility to free {@code outPaths} via {@link #NFD_PathSet_Free} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDOpenDialog${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -401,7 +401,7 @@ fun main() {
                 default = true
             ) {
                 addAnnotation(Skip)
-                addStatement("return $1N(INTERFACE_VERSION, outPaths, args)", openDialogMultipleWithImpl)
+                addStatement("return $1N(NFD_INTERFACE_VERSION, outPaths, args)", openDialogMultipleWithImpl)
             }
         }
         openDialogMultipleWith(Nchar)
@@ -409,7 +409,7 @@ fun main() {
 
 
         fun saveDialog(variant: CharVariant) {
-            val spec = "saveDialog${variant.uppercaseName}"(
+            val spec = "NFD_SaveDialog${variant.uppercaseName}"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdfilteritem_t_ptr("filterList"),
@@ -426,27 +426,27 @@ fun main() {
                         """
                             Save dialog
                             <p>
-                            It is the caller's responsibility to free {@code outPath} via {@link #freePath${variant.uppercaseName}} if this function returns
+                            It is the caller's responsibility to free {@code outPath} via {@link #NFD_FreePath${variant.uppercaseName}} if this function returns
                             NFD_OKAY.
                         """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "saveDialog")
+            provideOverload(variant, spec, "NFD_SaveDialog")
         }
         saveDialog(Nchar)
         saveDialog(U8char)
 
         fun saveDialogWith(variant: CharVariant) {
-            val saveDialogWithImpl = "saveDialog${variant.uppercaseName}WithImpl"(
+            val saveDialogWithImpl = "NFD_SaveDialog${variant.uppercaseName}_WithImpl"(
                 nfdresult_t,
                 nfdversion_t("version"),
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdsavedialogargs_t_ptr("args"),
                 entrypoint = "NFD_SaveDialog${variant.uppercaseName}_With_Impl",
-                javadoc = { add("This function is a library implementation detail.  Please use {@link #saveDialog${variant.uppercaseName}With} instead.") }
+                javadoc = { add("This function is a library implementation detail.  Please use {@link #NFD_SaveDialog${variant.uppercaseName}_With} instead.") }
             )
-            "saveDialog${variant.uppercaseName}With"(
+            "NFD_SaveDialog${variant.uppercaseName}_With"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdsavedialogargs_t_ptr("args"),
@@ -456,7 +456,7 @@ fun main() {
                         """
                             Single file save dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPath} via {@link #freePath${variant.uppercaseName}} if this function
+                            It is the caller's responsibility to free {@code outPath} via {@link #NFD_FreePath${variant.uppercaseName}} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDSaveDialog${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -464,7 +464,7 @@ fun main() {
                 default = true
             ) {
                 addAnnotation(Skip)
-                addStatement("return $1N(INTERFACE_VERSION, outPath, args)", saveDialogWithImpl)
+                addStatement("return $1N(NFD_INTERFACE_VERSION, outPath, args)", saveDialogWithImpl)
             }
         }
         saveDialogWith(Nchar)
@@ -472,7 +472,7 @@ fun main() {
 
 
         fun pickFolder(variant: CharVariant) {
-            val spec = "pickFolder${variant.uppercaseName}"(
+            val spec = "NFD_PickFolder${variant.uppercaseName}"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdchar_t_ptr("defaultPath") {
@@ -484,27 +484,27 @@ fun main() {
                         """
                             Select single folder dialog
                             <p>
-                            It's the caller's responsibility to free {@code outPath} via {@link #freePath${variant.uppercaseName}} if this function returns
+                            It's the caller's responsibility to free {@code outPath} via {@link #NFD_FreePath${variant.uppercaseName}} if this function returns
                             NFD_OKAY.
                         """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "pickFolder")
+            provideOverload(variant, spec, "NFD_PickFolder")
         }
         pickFolder(Nchar)
         pickFolder(U8char)
 
         fun pickFolderWith(variant: CharVariant) {
-            val pickFolderWithImpl = "pickFolder${variant.uppercaseName}WithImpl"(
+            val pickFolderWithImpl = "NFD_PickFolder${variant.uppercaseName}_With_Impl"(
                 nfdresult_t,
                 nfdversion_t("version"),
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdpickfolderargs_t_ptr("args"),
                 entrypoint = "NFD_PickFolder${variant.uppercaseName}_With_Impl",
-                javadoc = { add("This function is a library implementation detail.  Please use {@link #pickFolder${variant.uppercaseName}With} instead.") }
+                javadoc = { add("This function is a library implementation detail.  Please use {@link #NFD_PickFolder${variant.uppercaseName}_With} instead.") }
             )
-            "pickFolder${variant.uppercaseName}With"(
+            "NFD_PickFolder${variant.uppercaseName}_With"(
                 nfdresult_t,
                 variant.nfdchar_t_ptr_ptr("outPath"),
                 variant.const_nfdpickfolderargs_t_ptr("args"),
@@ -514,7 +514,7 @@ fun main() {
                         """
                             Single file open dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPath} via {@link #freePath${variant.uppercaseName}} if this function
+                            It is the caller's responsibility to free {@code outPath} via {@link #NFD_FreePath${variant.uppercaseName}} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDPickFolder${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -522,14 +522,14 @@ fun main() {
                 default = true,
             ) {
                 addAnnotation(Skip)
-                addStatement("return $1N(INTERFACE_VERSION, outPath, args)", pickFolderWithImpl)
+                addStatement("return $1N(NFD_INTERFACE_VERSION, outPath, args)", pickFolderWithImpl)
             }
         }
         pickFolderWith(Nchar)
         pickFolderWith(U8char)
 
         fun pickFolderMultiple(variant: CharVariant) {
-            val spec = "pickFolderMultiple${variant.uppercaseName}"(
+            val spec = "NFD_PickFolderMultiple${variant.uppercaseName}"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdchar_t_ptr("defaultPath") {
@@ -541,19 +541,19 @@ fun main() {
                         """
                         Select multiple folder dialog
                         <p>
-                        It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+                        It is the caller's responsibility to free {@code outPaths} via {@link #NFD_PathSet_Free} if this function
                         returns NFD_OKAY.
                     """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "pickFolderMultiple")
+            provideOverload(variant, spec, "NFD_PickFolderMultiple")
         }
         pickFolderMultiple(Nchar)
         pickFolderMultiple(U8char)
 
         fun pickFolderMultipleWith(variant: CharVariant) {
-            val pickFolderMultipleWithImpl = "pickFolderMultiple${variant.uppercaseName}WithImpl"(
+            val pickFolderMultipleWithImpl = "NFD_PickFolderMultiple${variant.uppercaseName}_With_Impl"(
                 nfdresult_t,
                 nfdversion_t("version"),
                 const_nfdpathset_t_ptr_ptr("outPaths"),
@@ -562,13 +562,13 @@ fun main() {
                 javadoc = {
                     add(
                         """
-                            This function is a library implementation detail.  Please use {@link #pickFolderMultiple${variant.uppercaseName}With}
+                            This function is a library implementation detail.  Please use {@link #NFD_PickFolderMultiple${variant.uppercaseName}_With}
                             instead.
                         """.trimIndent()
                     )
                 }
             )
-            "pickFolderMultiple${variant.uppercaseName}With"(
+            "NFD_PickFolderMultiple${variant.uppercaseName}_With"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr_ptr("outPaths"),
                 variant.const_nfdpickfolderargs_t_ptr("args"),
@@ -578,7 +578,7 @@ fun main() {
                         """
                             Multiple file open dialog, with additional parameters.
                             <p>
-                            It is the caller's responsibility to free {@code outPaths} via {@link #pathSetFree} if this function
+                            It is the caller's responsibility to free {@code outPaths} via {@link #NFD_PathSet_Free} if this function
                             returns NFD_OKAY.  See documentation of {@link NFDPickFolder${variant.uppercaseName}Args} for details.
                         """.trimIndent()
                     )
@@ -586,13 +586,13 @@ fun main() {
                 default = true
             ) {
                 addAnnotation(Skip)
-                addStatement("return $1N(INTERFACE_VERSION, outPaths, args)", pickFolderMultipleWithImpl)
+                addStatement("return $1N(NFD_INTERFACE_VERSION, outPaths, args)", pickFolderMultipleWithImpl)
             }
         }
         pickFolderMultipleWith(Nchar)
         pickFolderMultipleWith(U8char)
 
-        val getError_ = "getError_"(
+        val getError_ = "NFD_GetError_"(
             const_char_ptr,
             entrypoint = "NFD_GetError",
             javadoc = {
@@ -609,11 +609,11 @@ fun main() {
                 )
             }
         )
-        typeSpecBuilder.addMethod(getError_.toBuilder().setName("getError").returns(String::class.java).build())
+        typeSpecBuilder.addMethod(getError_.toBuilder().setName("NFD_GetError").returns(String::class.java).build())
 
-        "clearError"(void, entrypoint = "NFD_ClearError", javadoc = { add("Clear the error.") })
+        "NFD_ClearError"(void, entrypoint = "NFD_ClearError", javadoc = { add("Clear the error.") })
 
-        val pathSetGetCount = "pathSetGetCount"(
+        val pathSetGetCount = "NFD_PathSet_GetCount"(
             nfdresult_t,
             const_nfdpathset_t_ptr("pathSet"),
             nfdpathsetsize_t_ptr("count"),
@@ -638,7 +638,7 @@ fun main() {
         )
 
         fun pathSetGetPath(variant: CharVariant, pathType: String) {
-            val spec = "pathSetGetPath${variant.uppercaseName}"(
+            val spec = "NFD_PathSet_GetPath${variant.uppercaseName}"(
                 nfdresult_t,
                 const_nfdpathset_t_ptr("pathSet"),
                 nfdpathsetsize_t("index"),
@@ -649,30 +649,30 @@ fun main() {
                         """
                             Get the $pathType path at offset index.
                             <p>
-                            It is the caller's responsibility to free `outPath` via {@link #pathSetFreePath${variant.uppercaseName}} if this function
+                            It is the caller's responsibility to free `outPath` via {@link #NFD_PathSet_FreePath${variant.uppercaseName}} if this function
                             returns NFD_OKAY.
                         """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "pathSetGetPath")
+            provideOverload(variant, spec, "NFD_PathSet_GetPath")
         }
         pathSetGetPath(Nchar, "native")
         pathSetGetPath(U8char, "UTF-8")
 
         fun pathSetFreePath(variant: CharVariant) {
-            val spec = "pathSetFreePath${variant.uppercaseName}"(
+            val spec = "NFD_PathSet_FreePath${variant.uppercaseName}"(
                 void,
                 variant.const_nfdchar_t_ptr("filePath"),
                 entrypoint = "NFD_PathSet_FreePath${variant.uppercaseName}",
-                javadoc = { add("Free the path gotten by {@link #pathSetGetPath${variant.uppercaseName}}.") }
+                javadoc = { add("Free the path gotten by {@link #NFD_PathSet_GetPath${variant.uppercaseName}}.") }
             )
-            provideOverload(variant, spec, "pathSetFreePath")
+            provideOverload(variant, spec, "NFD_PathSet_FreePath")
         }
         pathSetFreePath(Nchar)
         pathSetFreePath(U8char)
 
-        "pathSetGetEnum"(
+        "NFD_PathSet_GetEnum"(
             nfdresult_t,
             const_nfdpathset_t_ptr("pathSet"),
             nfdpathsetenum_t_ptr("outEnumerator"),
@@ -682,13 +682,13 @@ fun main() {
                     """
                         Gets an enumerator of the path set.
                         <p>
-                        It is the caller's responsibility to free {@code enumerator} via {@link #pathSetFreeEnum}
+                        It is the caller's responsibility to free {@code enumerator} via {@link #NFD_PathSet_FreeEnum}
                         if this function returns NFD_OKAY, and it should be freed before freeing the pathset.
                     """.trimIndent()
                 )
             }
         )
-        "pathSetFreeEnum"(
+        "NFD_PathSet_FreeEnum"(
             void,
             nfdpathsetenum_t_ptr("enumerator"),
             entrypoint = "NFD_PathSet_FreeEnum",
@@ -696,7 +696,7 @@ fun main() {
         )
 
         fun pathSetEnumNext(variant: CharVariant) {
-            val spec = "pathSetEnumNext${variant.uppercaseName}"(
+            val spec = "NFD_PathSet_EnumNext${variant.uppercaseName}"(
                 nfdresult_t,
                 nfdpathsetenum_t_ptr("enumerator"),
                 variant.nfdchar_t_ptr_ptr("outPath"),
@@ -707,18 +707,18 @@ fun main() {
                             Gets the next item from the path set enumerator.
                             <p>
                             If there are no more items, then *outPaths will be set to null.
-                            It is the caller's responsibility to free {@code *outPath} via {@link #pathSetFreePath${variant.uppercaseName}}
+                            It is the caller's responsibility to free {@code *outPath} via {@link #NFD_PathSet_FreePath${variant.uppercaseName}}
                             if this function returns NFD_OKAY and {@code *outPath} is not null.
                         """.trimIndent()
                     )
                 }
             )
-            provideOverload(variant, spec, "pathSetEnumNext")
+            provideOverload(variant, spec, "NFD_PathSet_EnumNext")
         }
         pathSetEnumNext(Nchar)
         pathSetEnumNext(U8char)
 
-        "pathSetFree"(
+        "NFD_PathSet_Free"(
             void,
             const_nfdpathset_t_ptr("pathSet"),
             entrypoint = "NFD_PathSet_Free",
@@ -758,6 +758,8 @@ fun main() {
             )
         }
 
+        //region custom overloads
+
         val nfdCharset = ", NFDInternal.nfdCharset"
         val StringArray = ArrayTypeName.of(String::class.java)
 
@@ -781,8 +783,8 @@ fun main() {
         }
 
         fun openDialog(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("openDialog${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #openDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_OpenDialog${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_OpenDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(StringArray, "outPath")
@@ -791,17 +793,17 @@ fun main() {
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
                 .addStatement(
-                    "int result = openDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
+                    "int result = NFD_OpenDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
                     charset
                 )
-                .beginControlFlow("if (result == OKAY)")
+                .beginControlFlow("if (result == NFD_OKAY)")
                 .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                 .endControlFlow()
                 .addStatement("return result")
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "openDialog")
+            provideOverload(variant, spec, "NFD_OpenDialog")
         }
         openDialog(Nchar, nfdCharset)
         openDialog(U8char, "")
@@ -809,16 +811,16 @@ fun main() {
         fun openDialogWith(variant: CharVariant, charset: String) {
             codeBuilder.add(
                 "$1L",
-                MethodSpec.methodBuilder("openDialog${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #openDialog${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                MethodSpec.methodBuilder("NFD_OpenDialog${variant.uppercaseName}_With")
+                    .addJavadoc("Overloads {@link #NFD_OpenDialog${variant.uppercaseName}_With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(StringArray, "outPath")
                     .addParameter(ClassName.get("overrungl.nfd", "NFDOpenDialog${variant.uppercaseName}Args"), "args")
                     .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                     .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement("int result = openDialog${variant.uppercaseName}With(seg, Marshal.marshal(args))")
-                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("int result = NFD_OpenDialog${variant.uppercaseName}_With(seg, Marshal.marshal(args))")
+                    .beginControlFlow("if (result == NFD_OKAY)")
                     .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                     .endControlFlow()
                     .addStatement("return result")
@@ -830,8 +832,8 @@ fun main() {
         openDialogWith(U8char, "")
 
         fun openDialogMultiple(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_OpenDialogMultiple${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_OpenDialogMultiple${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(MemorySegment_, "outPaths")
@@ -839,13 +841,13 @@ fun main() {
                 .addParameter(String::class.java, "defaultPath")
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement(
-                    "return openDialogMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
+                    "return NFD_OpenDialogMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L))",
                     charset
                 )
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "openDialogMultiple")
+            provideOverload(variant, spec, "NFD_OpenDialogMultiple")
         }
         openDialogMultiple(Nchar, nfdCharset)
         openDialogMultiple(U8char, "")
@@ -853,13 +855,13 @@ fun main() {
         fun openDialogMultipleWith(variant: CharVariant) {
             codeBuilder.add(
                 "$1L",
-                MethodSpec.methodBuilder("openDialogMultiple${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #openDialogMultiple${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                MethodSpec.methodBuilder("NFD_OpenDialogMultiple${variant.uppercaseName}_With")
+                    .addJavadoc("Overloads {@link #NFD_OpenDialogMultiple${variant.uppercaseName}_With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(MemorySegment_, "outPaths")
                     .addParameter(ClassName.get("overrungl.nfd", "NFDOpenDialog${variant.uppercaseName}Args"), "args")
-                    .addStatement("return openDialogMultiple${variant.uppercaseName}With(outPaths, Marshal.marshal(args))")
+                    .addStatement("return NFD_OpenDialogMultiple${variant.uppercaseName}_With(outPaths, Marshal.marshal(args))")
                     .build()
             )
         }
@@ -868,8 +870,8 @@ fun main() {
 
 
         fun saveDialog(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("saveDialog${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #saveDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_SaveDialog${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_SaveDialog${variant.uppercaseName}(MemorySegment, MemorySegment, int, MemorySegment, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(StringArray, "outPath")
@@ -879,17 +881,17 @@ fun main() {
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
                 .addStatement(
-                    "int result = saveDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L), Marshal.marshal(stack, defaultName$1L))",
+                    "int result = NFD_SaveDialog${variant.uppercaseName}(seg, Marshal.marshal(filterList), filterItemCount(filterList), Marshal.marshal(stack, defaultPath$1L), Marshal.marshal(stack, defaultName$1L))",
                     charset
                 )
-                .beginControlFlow("if (result == OKAY)")
+                .beginControlFlow("if (result == NFD_OKAY)")
                 .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                 .endControlFlow()
                 .addStatement("return result")
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "saveDialog")
+            provideOverload(variant, spec, "NFD_SaveDialog")
         }
         saveDialog(Nchar, nfdCharset)
         saveDialog(U8char, "")
@@ -897,16 +899,16 @@ fun main() {
         fun saveDialogWith(variant: CharVariant, charset: String) {
             codeBuilder.add(
                 "$1L",
-                MethodSpec.methodBuilder("saveDialog${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #saveDialog${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                MethodSpec.methodBuilder("NFD_SaveDialog${variant.uppercaseName}_With")
+                    .addJavadoc("Overloads {@link #NFD_SaveDialog${variant.uppercaseName}_With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(StringArray, "outPath")
                     .addParameter(ClassName.get("overrungl.nfd", "NFDSaveDialog${variant.uppercaseName}Args"), "args")
                     .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                     .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement("int result = saveDialog${variant.uppercaseName}With(seg, Marshal.marshal(args))")
-                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("int result = NFD_SaveDialog${variant.uppercaseName}_With(seg, Marshal.marshal(args))")
+                    .beginControlFlow("if (result == NFD_OKAY)")
                     .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                     .endControlFlow()
                     .addStatement("return result")
@@ -919,8 +921,8 @@ fun main() {
 
 
         fun pickFolder(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_PickFolder${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_PickFolder${variant.uppercaseName}(MemorySegment, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(StringArray, "outPath")
@@ -928,17 +930,17 @@ fun main() {
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
                 .addStatement(
-                    "int result = pickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))",
+                    "int result = NFD_PickFolder${variant.uppercaseName}(seg, Marshal.marshal(stack, defaultPath$1L))",
                     charset
                 )
-                .beginControlFlow("if (result == OKAY)")
+                .beginControlFlow("if (result == NFD_OKAY)")
                 .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                 .endControlFlow()
                 .addStatement("return result")
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "pickFolder")
+            provideOverload(variant, spec, "NFD_PickFolder")
         }
         pickFolder(Nchar, nfdCharset)
         pickFolder(U8char, "")
@@ -946,16 +948,16 @@ fun main() {
         fun pickFolderWith(variant: CharVariant, charset: String) {
             codeBuilder.add(
                 "$1L",
-                MethodSpec.methodBuilder("pickFolder${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #pickFolder${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                MethodSpec.methodBuilder("NFD_PickFolder${variant.uppercaseName}_With")
+                    .addJavadoc("Overloads {@link #NFD_PickFolder${variant.uppercaseName}_With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(StringArray, "outPath")
                     .addParameter(ClassName.get("overrungl.nfd", "NFDPickFolder${variant.uppercaseName}Args"), "args")
                     .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                     .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                    .addStatement("int result = pickFolder${variant.uppercaseName}With(seg, Marshal.marshal(args))")
-                    .beginControlFlow("if (result == OKAY)")
+                    .addStatement("int result = NFD_PickFolder${variant.uppercaseName}_With(seg, Marshal.marshal(args))")
+                    .beginControlFlow("if (result == NFD_OKAY)")
                     .addStatement("copyOutPath${variant.uppercaseName}(seg, outPath)")
                     .endControlFlow()
                     .addStatement("return result")
@@ -967,21 +969,21 @@ fun main() {
         pickFolderWith(U8char, "")
 
         fun pickFolderMultiple(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("pickFolderMultiple${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #pickFolderMultiple${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_PickFolderMultiple${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_PickFolderMultiple${variant.uppercaseName}(MemorySegment, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(MemorySegment_, "outPaths")
                 .addParameter(String::class.java, "defaultPath")
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement(
-                    "return pickFolderMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(stack, defaultPath$1L))",
+                    "return NFD_PickFolderMultiple${variant.uppercaseName}(outPaths, Marshal.marshal(stack, defaultPath$1L))",
                     charset
                 )
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "pickFolderMultiple")
+            provideOverload(variant, spec, "NFD_PickFolderMultiple")
         }
         pickFolderMultiple(Nchar, nfdCharset)
         pickFolderMultiple(U8char, "")
@@ -989,13 +991,13 @@ fun main() {
         fun pickFolderMultipleWith(variant: CharVariant) {
             codeBuilder.add(
                 "$1L",
-                MethodSpec.methodBuilder("pickFolderMultiple${variant.uppercaseName}With")
-                    .addJavadoc("Overloads {@link #pickFolderMultiple${variant.uppercaseName}With(MemorySegment, MemorySegment)}")
+                MethodSpec.methodBuilder("NFD_PickFolderMultiple${variant.uppercaseName}_With")
+                    .addJavadoc("Overloads {@link #NFD_PickFolderMultiple${variant.uppercaseName}_With(MemorySegment, MemorySegment)}")
                     .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                     .returns(TypeName.INT)
                     .addParameter(MemorySegment_, "outPaths")
                     .addParameter(ClassName.get("overrungl.nfd", "NFDPickFolder${variant.uppercaseName}Args"), "args")
-                    .addStatement("return pickFolderMultiple${variant.uppercaseName}With(outPaths, Marshal.marshal(args))")
+                    .addStatement("return NFD_PickFolderMultiple${variant.uppercaseName}_With(outPaths, Marshal.marshal(args))")
                     .build()
             )
         }
@@ -1004,8 +1006,8 @@ fun main() {
 
 
         fun pathSetGetPath(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("pathSetGetPath${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #pathSetGetPath${variant.uppercaseName}(MemorySegment, long, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_PathSet_GetPath${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_PathSet_GetPath${variant.uppercaseName}(MemorySegment, long, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(MemorySegment_, "pathSet")
@@ -1013,40 +1015,42 @@ fun main() {
                 .addParameter(StringArray, "outPath")
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                .addStatement("int result = pathSetGetPath${variant.uppercaseName}(pathSet, index, seg)")
-                .beginControlFlow("if (result == OKAY)")
+                .addStatement("int result = NFD_PathSet_GetPath${variant.uppercaseName}(pathSet, index, seg)")
+                .beginControlFlow("if (result == NFD_OKAY)")
                 .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
                 .endControlFlow()
                 .addStatement("return result")
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "pathSetGetPath")
+            provideOverload(variant, spec, "NFD_PathSet_GetPath")
         }
         pathSetGetPath(Nchar, nfdCharset)
         pathSetGetPath(U8char, "")
 
         fun pathSetEnumNext(variant: CharVariant, charset: String) {
-            val spec = MethodSpec.methodBuilder("pathSetEnumNext${variant.uppercaseName}")
-                .addJavadoc("Overloads {@link #pathSetEnumNext${variant.uppercaseName}(MemorySegment, MemorySegment)}")
+            val spec = MethodSpec.methodBuilder("NFD_PathSet_EnumNext${variant.uppercaseName}")
+                .addJavadoc("Overloads {@link #NFD_PathSet_EnumNext${variant.uppercaseName}(MemorySegment, MemorySegment)}")
                 .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
                 .returns(TypeName.INT)
                 .addParameter(MemorySegment_, "enumerator")
                 .addParameter(StringArray, "outPath")
                 .beginControlFlow("try (MemoryStack stack = MemoryStack.pushLocal())")
                 .addStatement("var seg = Marshal.marshal(stack, outPath$1L)", charset)
-                .addStatement("int result = pathSetEnumNext${variant.uppercaseName}(enumerator, seg)")
-                .beginControlFlow("if (result == OKAY)")
+                .addStatement("int result = NFD_PathSet_EnumNext${variant.uppercaseName}(enumerator, seg)")
+                .beginControlFlow("if (result == NFD_OKAY)")
                 .addStatement("copyPathSetOutPath${variant.uppercaseName}(seg, outPath)")
                 .endControlFlow()
                 .addStatement("return result")
                 .endControlFlow()
                 .build()
             codeBuilder.add("$1L", spec)
-            provideOverload(variant, spec, "pathSetEnumNext")
+            provideOverload(variant, spec, "NFD_PathSet_EnumNext")
         }
         pathSetEnumNext(Nchar, nfdCharset)
         pathSetEnumNext(U8char, "")
+
+        //endregion
 
         Files.writeString(
             path,

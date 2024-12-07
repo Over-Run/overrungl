@@ -28,6 +28,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
+import static overrungl.nfd.NFD.*;
 
 /**
  * A wrapper of NFD path set enumerator.
@@ -35,7 +36,7 @@ import static java.lang.foreign.ValueLayout.ADDRESS;
  * Users are responsible to close the instance after the iteration finished.
  *
  * @author squid233
- * @see NFD#pathSetGetEnum(MemorySegment, MemorySegment)
+ * @see NFD#NFD_PathSet_GetEnum(MemorySegment, MemorySegment) NFD_PathSet_GetEnum
  * @since 0.1.0
  */
 public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
@@ -80,11 +81,11 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
             }
             try (MemoryStack stack = MemoryStack.pushLocal()) {
                 MemorySegment outPath = stack.allocate(ADDRESS);
-                int result = NFD.pathSetEnumNext(segment, outPath);
-                if (result == NFD.ERROR) throw errorIterating();
+                int result = NFD_PathSet_EnumNext(segment, outPath);
+                if (result == NFD_ERROR) throw errorIterating();
                 nextPath = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
                 if (nextPath != null) {
-                    NFD.pathSetFreePath(outPath.get(ADDRESS, 0));
+                    NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                 }
             }
             return curr;
@@ -92,7 +93,8 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
     }
 
     /**
-     * Creates an enumerator from the given path set that is created with {@link NFD#openDialogMultiple}.
+     * Creates an enumerator from the given path set created with
+     * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, NFDNFilterItem, String) NFD_OpenDialogMultiple}.
      *
      * @param allocator the allocator of the enumerator.
      * @param pathSet   the path set.
@@ -100,15 +102,15 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
      */
     public static Tuple2.OfObjInt<NFDEnumerator> fromPathSet(SegmentAllocator allocator, MemorySegment pathSet) {
         MemorySegment struct = allocator.allocate(MemoryLayout.structLayout(ADDRESS));
-        int result = NFD.pathSetGetEnum(pathSet, struct);
-        return new Tuple2.OfObjInt<>(result == NFD.OKAY ?
+        int result = NFD_PathSet_GetEnum(pathSet, struct);
+        return new Tuple2.OfObjInt<>(result == NFD_OKAY ?
             new NFDEnumerator(struct) :
             null,
             result);
     }
 
     private static IllegalStateException errorIterating() {
-        return new IllegalStateException("Error iterating: " + NFD.getError());
+        return new IllegalStateException("Error iterating: " + NFD_GetError());
     }
 
     @NotNull
@@ -117,16 +119,16 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
         // TODO: 2023/7/6 Value object
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             MemorySegment outPath = stack.allocate(ADDRESS);
-            int result = NFD.pathSetEnumNext(segment, outPath);
+            int result = NFD_PathSet_EnumNext(segment, outPath);
             switch (result) {
-                case NFD.OKAY -> {
+                case NFD_OKAY -> {
                     String path = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
                     if (path != null) {
-                        NFD.pathSetFreePath(outPath.get(ADDRESS, 0));
+                        NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                     }
                     return new EnumIterator(path);
                 }
-                case NFD.CANCEL -> {
+                case NFD_CANCEL -> {
                     return EMPTY_ITERATOR;
                 }
                 default -> throw errorIterating();
@@ -136,6 +138,6 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
 
     @Override
     public void close() {
-        NFD.pathSetFreeEnum(segment);
+        NFD_PathSet_FreeEnum(segment);
     }
 }

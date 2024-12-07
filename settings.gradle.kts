@@ -20,5 +20,6 @@ file("modules").listFiles()?.forEach {
 include(
     "generators:nfd",
     "generators:opengl",
+    "generators:stb",
     "generators:vulkan"
 )
