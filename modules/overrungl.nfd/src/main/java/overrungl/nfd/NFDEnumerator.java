@@ -94,7 +94,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
 
     /**
      * Creates an enumerator from the given path set created with
-     * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, NFDNFilterItem, String) NFD_OpenDialogMultiple}.
+     * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, NFDFilterItem, String) NFD_OpenDialogMultiple}.
      *
      * @param allocator the allocator of the enumerator.
      * @param pathSet   the path set.
@@ -120,19 +120,17 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             MemorySegment outPath = stack.allocate(ADDRESS);
             int result = NFD_PathSet_EnumNext(segment, outPath);
-            switch (result) {
+            return switch (result) {
                 case NFD_OKAY -> {
                     String path = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
                     if (path != null) {
                         NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
                     }
-                    return new EnumIterator(path);
+                    yield new EnumIterator(path);
                 }
-                case NFD_CANCEL -> {
-                    return EMPTY_ITERATOR;
-                }
+                case NFD_CANCEL -> EMPTY_ITERATOR;
                 default -> throw errorIterating();
-            }
+            };
         }
     }
 

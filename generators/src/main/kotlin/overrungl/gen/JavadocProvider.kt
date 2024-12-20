@@ -21,14 +21,8 @@ import com.palantir.javapoet.CodeBlock
 class JavadocProvider {
     var doFirst: CodeBlock.Builder.() -> Unit = {}
         private set
-    var doLast: CodeBlock.Builder.() -> Unit = {}
-        private set
 
     fun doFirst(action: CodeBlock.Builder.() -> Unit) {
         doFirst = action
-    }
-
-    fun doLast(action: CodeBlock.Builder.() -> Unit) {
-        doLast = action
     }
 }

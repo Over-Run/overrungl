@@ -109,8 +109,6 @@ The latest Javadoc can be found [here](https://over-run.github.io/overrungl/).
 
 The documentation of OpenGL can be found from [Khronos' references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
 
-OverrunGL uses [Marshal](https://github.com/Over-Run/marshal).
-
 [JavaPoet](https://github.com/palantir/javapoet) is used to generate source files.
 
 ### Credits

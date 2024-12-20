@@ -41,22 +41,14 @@ data class CustomTypeSpec(
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
 
 val CType = ClassName.get("overrun.marshal.gen", "CType")
-val DirectAccess = ClassName.get("overrun.marshal", "DirectAccess")
 val Entrypoint = ClassName.get("overrun.marshal.gen", "Entrypoint")
-val LayoutBuilder = ClassName.get("overrun.marshal", "LayoutBuilder")
-val Marshal = ClassName.get("overrun.marshal", "Marshal")
-val ProcessorTypes = ClassName.get("overrun.marshal.gen.processor", "ProcessorTypes")
 val Ref = ClassName.get("overrun.marshal.gen", "Ref")
-val Skip = ClassName.get("overrun.marshal.gen", "Skip")
 val Struct = ClassName.get("overrun.marshal.struct", "Struct")
-val StructAllocator = ClassName.get("overrun.marshal.struct", "StructAllocator")
 val Unmarshal = ClassName.get("overrun.marshal", "Unmarshal")
 
 private fun javaPrimitive(carrier: TypeName, layoutName: String): CustomTypeSpec =
     CustomTypeSpec(carrier, layout = CodeBlock.of("\$T.\$L", ValueLayout::class.java, layoutName))
 
-val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN")
-val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR")
 val jbyte = javaPrimitive(TypeName.BYTE, "JAVA_BYTE")
 val jshort = javaPrimitive(TypeName.SHORT, "JAVA_SHORT")
 val jint = javaPrimitive(TypeName.INT, "JAVA_INT")
@@ -68,16 +60,9 @@ val void = CustomTypeSpec(TypeName.VOID, layout = CodeBlock.of(""))
 val address = javaPrimitive(MemorySegment_, "ADDRESS")
 val string = CustomTypeSpec(MemorySegment_, null, CodeBlock.of("\$T.STR_LAYOUT", Unmarshal))
 
-val bool = jboolean c "bool"
 val char = jbyte c "char"
 val short = jshort c "short"
 val int = jint c "int"
-val long = jlong c "long"
-val long_long = jlong c "long long"
 val float = jfloat c "float"
 val double = jdouble c "double"
-val void_ptr = address c "void*"
 val size_t = jlong c "size_t"
-val wchar_t = jint c "wchar_t"
-
-val const_char_ptr = string c "const char*"

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,27 +14,17 @@
  * copies or substantial portions of the Software.
  */
 
+package overrungl.annotation;
+
+import java.lang.annotation.*;
+
 /**
- * The core module of OverrunGL.
- *
+ * Marks a parameter as a holder of returned value from native code.
  * @author squid233
  * @since 0.1.0
  */
-module overrungl.core {
-    exports overrungl;
-    exports overrungl.annotation;
-    exports overrungl.struct;
-    exports overrungl.util;
-    exports overrungl.util.value;
-    exports overrungl.internal
-        to overrungl.glfw,
-        overrungl.nfd,
-        overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
-
-    requires transitive io.github.overrun.marshal;
-    requires transitive io.github.overrun.memstack;
-    requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+@Documented
+@Retention(RetentionPolicy.SOURCE)
+@Target(ElementType.PARAMETER)
+public @interface Out {
 }

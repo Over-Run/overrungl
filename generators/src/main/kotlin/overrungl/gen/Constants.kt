@@ -16,7 +16,7 @@
 
 package overrungl.gen
 
-const val fileHeader = """MIT License
+const val LICENSE = """MIT License
 
 Copyright (c) 2022-2024 Overrun Organization
 
@@ -28,9 +28,12 @@ copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+copies or substantial portions of the Software."""
+const val GENERATOR_NOTICE = "This file is auto-generated. DO NOT EDIT!"
+const val fileHeader = """$LICENSE
 
-This file is auto-generated. DO NOT EDIT!"""
+$GENERATOR_NOTICE"""
+val commentedFileHeader = "/*\n${LICENSE.prependIndent(" * ")}\n */\n\n// $GENERATOR_NOTICE"
 
 const val GENERATOR_BEGIN = "//region ---[BEGIN GENERATOR BEGIN]---"
 const val GENERATOR_END = "//endregion ---[END GENERATOR END]---"

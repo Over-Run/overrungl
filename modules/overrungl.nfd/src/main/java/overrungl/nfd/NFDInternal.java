@@ -20,7 +20,11 @@ import io.github.overrun.platform.Platform;
 import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
+import overrungl.util.Marshal;
+import overrungl.util.Unmarshal;
 
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.SegmentAllocator;
 import java.lang.foreign.SymbolLookup;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -36,8 +40,6 @@ final class NFDInternal {
     static final SymbolLookup LOOKUP;
 
     static {
-        NFDStructTypes.registerAll();
-
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
         final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
         LOOKUP = function != null ? function.apply(lib) : lib.get();
@@ -46,4 +48,12 @@ final class NFDInternal {
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
+
+    static MemorySegment marshalString(SegmentAllocator allocator, String s) {
+        return Marshal.marshal(allocator, s, nfdCharset);
+    }
+
+    static String unmarshalString(MemorySegment s) {
+        return Unmarshal.unmarshalAsString(s, nfdCharset);
+    }
 }

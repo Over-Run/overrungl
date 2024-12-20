@@ -23,6 +23,7 @@ import overrungl.OverrunGL;
 
 import java.io.IOException;
 import java.lang.foreign.*;
+import java.lang.invoke.MethodHandle;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
@@ -37,6 +38,7 @@ public final class RuntimeHelper {
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
         .resolve("overrungl" + System.getProperty("user.name"));
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+    private static final Linker LINKER = Linker.nativeLinker();
 
     /**
      * constructor
@@ -118,5 +120,14 @@ public final class RuntimeHelper {
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(uri, Arena.global());
+    }
+
+    /// Finds the address of the symbol with the given symbol lookup and name.
+    ///
+    /// @param lookup     the symbol lookup
+    /// @param name       the name of the symbol
+    /// @param descriptor the function descriptor
+    public static MethodHandle downcall(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
+        return LINKER.downcallHandle(lookup.findOrThrow(name), descriptor);
     }
 }
