@@ -18,6 +18,17 @@ package overrungl.gen.refactor
 
 import com.palantir.javapoet.TypeName
 
+enum class AllocatorRequirement {
+    NO,
+    STACK,
+    SEGMENT_ALLOCATOR,
+    ARENA;
+
+    fun stricter(other: AllocatorRequirement): AllocatorRequirement {
+        return if (other > this) other else this
+    }
+}
+
 data class DowncallMethod(
     val returnType: CustomTypeSpecNew,
     val name: String,
@@ -27,6 +38,18 @@ data class DowncallMethod(
     val code: String?,
     val overload: Boolean
 ) {
+    val allocatorRequirement: AllocatorRequirement by lazy {
+        parameters.map { p ->
+            if (p.ref) p.type.allocatorRequirement.stricter(AllocatorRequirement.STACK)
+            else p.type.allocatorRequirement
+        }.reduceOrNull(AllocatorRequirement::stricter) ?: AllocatorRequirement.NO
+    }
+
+    fun overload(
+        name: String = this.name,
+        parameters: List<DowncallParameter> = this.parameters
+    ): DowncallMethod = copy(name = name, parameters = parameters, overload = true)
+
     fun functionDescriptor(): String {
         val sb = StringBuilder()
         sb.append("FunctionDescriptor.of")
@@ -53,4 +76,17 @@ data class DowncallParameter(
     val ref: Boolean = false
 ) {
     fun ref(): DowncallParameter = copy(ref = true)
+
+    fun marshalRef(overload: Boolean): Boolean = ref && type.selectTypeName(overload) != MemorySegment_
+
+    fun toString(typeName: TypeName): String {
+        return buildString {
+            if (ref) {
+                append("@Out ")
+            }
+            append(type.typeNameWithC(typeName))
+            append(" ")
+            append(name)
+        }
+    }
 }

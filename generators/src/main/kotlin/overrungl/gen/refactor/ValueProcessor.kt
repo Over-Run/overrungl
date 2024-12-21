@@ -16,35 +16,66 @@
 
 package overrungl.gen.refactor
 
-import com.palantir.javapoet.CodeBlock
-
 data class ProcessorContext(
-    val allocatorName: String?
+    val allocatorName: String?,
+    val builder: StringBuilder,
+    val action: (StringBuilder) -> Unit
 )
 
 interface ValueProcessor {
-    fun marshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit)
-    fun unmarshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit)
+    fun marshal(context: ProcessorContext)
+    fun unmarshal(context: ProcessorContext)
+    fun copy(context: ProcessorContext)
 }
 
 object IdentityValueProcessor : ValueProcessor {
-    override fun marshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit) =
-        action(builder)
-
-    override fun unmarshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit) =
-        action(builder)
+    override fun marshal(context: ProcessorContext) = context.action(context.builder)
+    override fun unmarshal(context: ProcessorContext) = context.action(context.builder)
+    override fun copy(context: ProcessorContext) = context.action(context.builder)
 }
 
 object StringU8ValueProcessor : ValueProcessor {
-    override fun marshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit) {
-        builder.add("$1T.marshal($2L, ", Marshal, context.allocatorName)
+    override fun marshal(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("Marshal.marshal(${context.allocatorName}, ")
         action(builder)
-        builder.add(")")
+        builder.append(")")
     }
 
-    override fun unmarshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit) {
-        builder.add("$1T.unmarshalAsString(", Unmarshal)
+    override fun unmarshal(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("Unmarshal.unmarshalAsString(")
         action(builder)
-        builder.add(")")
+        builder.append(")")
+    }
+
+    override fun copy(context: ProcessorContext) = IdentityValueProcessor.copy(context)
+}
+
+class ArrayValueProcessor(private val asType: String) : ValueProcessor {
+    override fun marshal(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("Marshal.marshal(${context.allocatorName}, ")
+        action(builder)
+        builder.append(")")
+    }
+
+    override fun unmarshal(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("Unmarshal.unmarshalAs${asType}Array(")
+        action(builder)
+        builder.append(")")
+    }
+
+    override fun copy(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("Unmarshal.copy(")
+        action(builder)
+        builder.append(")")
     }
 }

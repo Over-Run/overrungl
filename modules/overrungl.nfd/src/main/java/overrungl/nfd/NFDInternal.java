@@ -21,7 +21,6 @@ import overrungl.Configurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
-import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
@@ -53,7 +52,7 @@ final class NFDInternal {
         return Marshal.marshal(allocator, s, nfdCharset);
     }
 
-    static String unmarshalString(MemorySegment s) {
-        return Unmarshal.unmarshalAsString(s, nfdCharset);
+    static MemorySegment marshalString(SegmentAllocator allocator, String[] arr) {
+        return Marshal.marshal(allocator, arr, nfdCharset);
     }
 }

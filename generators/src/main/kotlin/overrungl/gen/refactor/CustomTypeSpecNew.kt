@@ -28,34 +28,36 @@ data class CustomTypeSpecNew(
     val javaType: TypeName,
     val processor: ValueProcessor = IdentityValueProcessor,
     val layout: String?,
-    val cType: String? = null
+    val cType: String? = null,
+    val allocatorRequirement: AllocatorRequirement = AllocatorRequirement.NO
 ) {
     val array: CustomTypeSpecNew by lazy {
-        CustomTypeSpecNew(MemorySegment_, ArrayTypeName.of(javaType), processor, layout, cType)
+        CustomTypeSpecNew(
+            MemorySegment_,
+            ArrayTypeName.of(javaType),
+            processor,
+            layout,
+            cType,
+            AllocatorRequirement.STACK
+        )
     }
 
     infix fun c(cType: String?): CustomTypeSpecNew = copy(cType = cType)
 
-    fun carrierWithC(): String {
-        if (cType != null)
-            return """@CType("$cType") $carrier"""
-        return carrier.toString()
-    }
+    fun typeNameWithC(typeName: TypeName): String =
+        if (cType != null) """@CType("$cType") $typeName""" else typeName.toString()
 
-    fun javaTypeWithC(): String {
-        if (cType != null)
-            return """@CType("$cType") $javaType"""
-        return javaType.toString()
-    }
+    fun selectTypeName(overload: Boolean): TypeName =
+        if (overload) javaType else carrier
+
+    fun carrierWithC(): String = typeNameWithC(carrier)
+    fun javaTypeWithC(): String = typeNameWithC(javaType)
 }
 
 val Arena_: ClassName = ClassName.get(Arena::class.java)
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
 val SegmentAllocator_: ClassName = ClassName.get(SegmentAllocator::class.java)
 val String_: ClassName = ClassName.get(String::class.java)
-
-val Marshal: ClassName = ClassName.get("overrungl.util", "Marshal")
-val Unmarshal: ClassName = ClassName.get("overrungl.util", "Unmarshal")
 
 private fun javaPrimitive(typeName: TypeName, layoutName: String): CustomTypeSpecNew =
     CustomTypeSpecNew(typeName, typeName, layout = "ValueLayout.$layoutName")
@@ -74,8 +76,21 @@ val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE")
 val void = CustomTypeSpecNew(TypeName.VOID, TypeName.VOID, layout = "No layout for void")
 
 val address = javaPrimitive(MemorySegment_, "ADDRESS")
-val string_u8 =
-    CustomTypeSpecNew(MemorySegment_, String_, processor = StringU8ValueProcessor, layout = "Unmarshal.STR_LAYOUT")
+val string_u8 = CustomTypeSpecNew(
+    MemorySegment_,
+    String_,
+    processor = StringU8ValueProcessor,
+    layout = "Unmarshal.STR_LAYOUT",
+    allocatorRequirement = AllocatorRequirement.STACK
+)
+
+val jchar_array = jchar.array.copy(processor = ArrayValueProcessor("Char"), layout = address.layout)
+val jbyte_array = jbyte.array.copy(processor = ArrayValueProcessor("Byte"), layout = address.layout)
+val jshort_array = jshort.array.copy(processor = ArrayValueProcessor("Short"), layout = address.layout)
+val jint_array = jint.array.copy(processor = ArrayValueProcessor("Int"), layout = address.layout)
+val jlong_array = jlong.array.copy(processor = ArrayValueProcessor("Long"), layout = address.layout)
+val jfloat_array = jfloat.array.copy(processor = ArrayValueProcessor("Float"), layout = address.layout)
+val jdouble_array = jdouble.array.copy(processor = ArrayValueProcessor("Double"), layout = address.layout)
 
 val bool = jboolean c "bool"
 val char = jbyte c "char"

@@ -16,22 +16,33 @@
 
 package overrungl.nfd
 
-import com.palantir.javapoet.CodeBlock
 import overrungl.gen.refactor.*
 
 const val nfdPackage = "overrungl.nfd"
 
 object NFDStringProcessor : ValueProcessor {
-    override fun marshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit) {
-        builder.add("NFDInternal.marshalString($1L, ", context.allocatorName)
+    override fun marshal(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("NFDInternal.marshalString(")
         action(builder)
-        builder.add(")")
+        builder.append(")")
     }
 
-    override fun unmarshal(context: ProcessorContext, builder: CodeBlock.Builder, action: (CodeBlock.Builder) -> Unit) {
-        builder.add("NFDInternal.unmarshalString(")
+    override fun unmarshal(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("NFDInternal.unmarshalString(")
         action(builder)
-        builder.add(")")
+        builder.append(")")
+    }
+
+    override fun copy(context: ProcessorContext) {
+        val builder = context.builder
+        val action = context.action
+        builder.append("NFDInternal.unmarshalString(")
+        action(builder)
+        builder.append(", NFDInternal.nfdCharset)")
     }
 }
 
@@ -349,7 +360,7 @@ fun main() {
             code = "return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
         )
 
-        val NFD_GetError_ = "NFD_GetError_"(
+        +"NFD_GetError_"(
             const_char_ptr,
             entrypoint = "NFD_GetError",
             javadoc = """
@@ -361,30 +372,17 @@ fun main() {
                 conversion.
                 @return The last error that was set, or null if there is no error.
             """.trimIndent()
-        )
-        "NFD_GetError"(
-            const_char_ptr,
-            entrypoint = null,
-            javadoc = NFD_GetError_.javadoc,
-            code = "return ${
-                CodeBlock.builder().also { b ->
-                    const_char_ptr.processor.unmarshal(
-                        ProcessorContext(null), b
-                    ) { it.add("NFD_GetError_()") }
-                }.build()
-            };",
-            overload = true
-        )
+        ).overload("NFD_GetError")
         "NFD_ClearError"(
             void,
             entrypoint = "NFD_ClearError",
             javadoc = "Clear the error."
         )
 
-        val NFD_PathSet_GetCount = "NFD_PathSet_GetCount"(
+        +"NFD_PathSet_GetCount"(
             nfdresult_t,
             const_nfdpathset_t_ptr("pathSet"),
-            nfdpathsetsize_t_ptr("count"),
+            nfdpathsetsize_t_ptr("count").ref(),
             entrypoint = "NFD_PathSet_GetCount",
             javadoc = """
                 Get the number of entries stored in pathSet.
@@ -392,15 +390,11 @@ fun main() {
                 Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
                 so we might not actually have this number of usable paths.
             """.trimIndent()
-        )
-        "NFD_PathSet_GetCount"(
-            nfdresult_t,
-            allocator("allocator"),
-            const_nfdpathset_t_ptr("pathSet"),
-            jlong.array("count").ref(),
-            entrypoint = "NFD_PathSet_GetCount",
-            javadoc = NFD_PathSet_GetCount.javadoc,
-            overload = true
+        ).overload(
+            parameters = listOf(
+                const_nfdpathset_t_ptr("pathSet"),
+                jlong_array("count").ref()
+            )
         )
         "NFD_PathSet_GetPath"(
             nfdresult_t,
