@@ -14,10 +14,9 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.gen.refactor
+package overrungl.gen
 
 import com.palantir.javapoet.ClassName
-import overrungl.gen.commentedFileHeader
 import java.nio.file.Files
 import kotlin.io.path.Path
 
@@ -29,9 +28,9 @@ class Struct(
     action: Struct.() -> Unit
 ) {
     private val members = mutableListOf<StructMember>()
-    val type: CustomTypeSpecNew by lazy {
+    val type: CustomTypeSpec by lazy {
         val className = ClassName.get(packageName, name)
-        CustomTypeSpecNew(MemorySegment_, className, layout = "$className.LAYOUT", cType = cType)
+        CustomTypeSpec(MemorySegment_, className, layout = "$className.LAYOUT", cType = cType)
     }
     private var doLast: (StringBuilder) -> Unit = {}
     val byValue: ByValueWrapper by lazy { ByValueWrapper(this) }
@@ -48,7 +47,7 @@ class Struct(
         doLast = action
     }
 
-    operator fun CustomTypeSpecNew.invoke(name: String) {
+    operator fun CustomTypeSpec.invoke(name: String) {
         members.add(ValueStructMember(this, name))
     }
 
@@ -221,11 +220,11 @@ class Struct(
 }
 
 sealed interface StructMember {
-    val type: CustomTypeSpecNew
+    val type: CustomTypeSpec
     val name: String
 }
 
-data class ValueStructMember(override val type: CustomTypeSpecNew, override val name: String) : StructMember
+data class ValueStructMember(override val type: CustomTypeSpec, override val name: String) : StructMember
 data class ByValueStructStructMember(val struct: Struct, override val name: String) : StructMember {
-    override val type: CustomTypeSpecNew = struct.type
+    override val type: CustomTypeSpec = struct.type
 }

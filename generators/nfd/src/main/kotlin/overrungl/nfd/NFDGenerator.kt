@@ -16,7 +16,7 @@
 
 package overrungl.nfd
 
-import overrungl.gen.refactor.*
+import overrungl.gen.*
 
 const val nfdPackage = "overrungl.nfd"
 

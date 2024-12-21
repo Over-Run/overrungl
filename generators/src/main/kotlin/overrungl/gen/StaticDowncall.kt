@@ -14,7 +14,7 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.gen.refactor
+package overrungl.gen
 
 import com.palantir.javapoet.TypeName
 import java.nio.file.Files
@@ -34,16 +34,16 @@ class StaticDowncall(
         write(packageName, name)
     }
 
-    operator fun CustomTypeSpecNew.invoke(nameAndValue: Pair<String, String>, javadoc: String? = null) {
+    operator fun CustomTypeSpec.invoke(nameAndValue: Pair<String, String>, javadoc: String? = null) {
         fields.add(DowncallField(this, nameAndValue.first, nameAndValue.second, javadoc))
     }
 
-    operator fun CustomTypeSpecNew.invoke(name: String, javadoc: String? = null): DowncallParameter {
+    operator fun CustomTypeSpec.invoke(name: String, javadoc: String? = null): DowncallParameter {
         return DowncallParameter(this, name, javadoc)
     }
 
     operator fun String.invoke(
-        returnType: CustomTypeSpecNew,
+        returnType: CustomTypeSpec,
         vararg params: DowncallParameter,
         entrypoint: String?,
         javadoc: String? = null,
@@ -198,4 +198,4 @@ class StaticDowncall(
     }
 }
 
-data class DowncallField(val type: CustomTypeSpecNew, val name: String, val value: String, val javadoc: String?)
+data class DowncallField(val type: CustomTypeSpec, val name: String, val value: String, val javadoc: String?)

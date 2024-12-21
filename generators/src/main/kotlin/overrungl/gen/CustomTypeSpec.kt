@@ -14,7 +14,7 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.gen.refactor
+package overrungl.gen
 
 import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
@@ -23,7 +23,7 @@ import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
 import java.lang.foreign.SegmentAllocator
 
-data class CustomTypeSpecNew(
+data class CustomTypeSpec(
     val carrier: TypeName,
     val javaType: TypeName,
     val processor: ValueProcessor = IdentityValueProcessor,
@@ -31,8 +31,8 @@ data class CustomTypeSpecNew(
     val cType: String? = null,
     val allocatorRequirement: AllocatorRequirement = AllocatorRequirement.NO
 ) {
-    val array: CustomTypeSpecNew by lazy {
-        CustomTypeSpecNew(
+    val array: CustomTypeSpec by lazy {
+        CustomTypeSpec(
             MemorySegment_,
             ArrayTypeName.of(javaType),
             processor,
@@ -42,7 +42,7 @@ data class CustomTypeSpecNew(
         )
     }
 
-    infix fun c(cType: String?): CustomTypeSpecNew = copy(cType = cType)
+    infix fun c(cType: String?): CustomTypeSpec = copy(cType = cType)
 
     fun typeNameWithC(typeName: TypeName): String =
         if (cType != null) """@CType("$cType") $typeName""" else typeName.toString()
@@ -59,11 +59,11 @@ val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
 val SegmentAllocator_: ClassName = ClassName.get(SegmentAllocator::class.java)
 val String_: ClassName = ClassName.get(String::class.java)
 
-private fun javaPrimitive(typeName: TypeName, layoutName: String): CustomTypeSpecNew =
-    CustomTypeSpecNew(typeName, typeName, layout = "ValueLayout.$layoutName")
+private fun javaPrimitive(typeName: TypeName, layoutName: String): CustomTypeSpec =
+    CustomTypeSpec(typeName, typeName, layout = "ValueLayout.$layoutName")
 
-val arena = CustomTypeSpecNew(Arena_, Arena_, layout = null)
-val allocator = CustomTypeSpecNew(SegmentAllocator_, SegmentAllocator_, layout = null)
+val arena = CustomTypeSpec(Arena_, Arena_, layout = null)
+val allocator = CustomTypeSpec(SegmentAllocator_, SegmentAllocator_, layout = null)
 
 val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN")
 val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR")
@@ -73,10 +73,10 @@ val jint = javaPrimitive(TypeName.INT, "JAVA_INT")
 val jlong = javaPrimitive(TypeName.LONG, "JAVA_LONG")
 val jfloat = javaPrimitive(TypeName.FLOAT, "JAVA_FLOAT")
 val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE")
-val void = CustomTypeSpecNew(TypeName.VOID, TypeName.VOID, layout = "No layout for void")
+val void = CustomTypeSpec(TypeName.VOID, TypeName.VOID, layout = "No layout for void")
 
 val address = javaPrimitive(MemorySegment_, "ADDRESS")
-val string_u8 = CustomTypeSpecNew(
+val string_u8 = CustomTypeSpec(
     MemorySegment_,
     String_,
     processor = StringU8ValueProcessor,

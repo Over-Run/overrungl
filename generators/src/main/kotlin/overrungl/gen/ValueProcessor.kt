@@ -14,7 +14,7 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.gen.refactor
+package overrungl.gen
 
 data class ProcessorContext(
     val allocatorName: String?,

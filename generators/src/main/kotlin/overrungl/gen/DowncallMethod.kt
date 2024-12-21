@@ -14,7 +14,7 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.gen.refactor
+package overrungl.gen
 
 import com.palantir.javapoet.TypeName
 
@@ -30,7 +30,7 @@ enum class AllocatorRequirement {
 }
 
 data class DowncallMethod(
-    val returnType: CustomTypeSpecNew,
+    val returnType: CustomTypeSpec,
     val name: String,
     val parameters: List<DowncallParameter>,
     val entrypoint: String?,
@@ -70,7 +70,7 @@ data class DowncallMethod(
 }
 
 data class DowncallParameter(
-    val type: CustomTypeSpecNew,
+    val type: CustomTypeSpec,
     val name: String,
     val javadoc: String?,
     val ref: Boolean = false

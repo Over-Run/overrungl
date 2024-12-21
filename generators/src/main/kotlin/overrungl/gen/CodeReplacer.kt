@@ -14,10 +14,7 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.gen.refactor
-
-import overrungl.gen.GENERATOR_BEGIN
-import overrungl.gen.GENERATOR_END
+package overrungl.gen
 
 fun replaceCode(originalCode: String, replacingCode: String): String {
     check(originalCode.indexOf(GENERATOR_BEGIN) != -1 && originalCode.indexOf(GENERATOR_END) != -1) { "Generator region not found" }
