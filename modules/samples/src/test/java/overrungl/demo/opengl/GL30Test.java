@@ -17,14 +17,13 @@
 package overrungl.demo.opengl;
 
 import io.github.overrun.memstack.MemoryStack;
-import overrun.marshal.Unmarshal;
 import overrungl.demo.util.IOUtil;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLoader;
-import overrungl.stb.STBImage;
+import overrungl.util.Unmarshal;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -32,6 +31,7 @@ import java.lang.foreign.MemorySegment;
 import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static overrungl.stb.STBImage.*;
 
 /**
  * Tests OpenGL 3.0 vertex arrays
@@ -108,13 +108,12 @@ public final class GL30Test {
         gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
         gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            final STBImage stbImage = STBImage.INSTANCE;
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
-            var data = stbImage.loadFromMemory(
+            var data = stbi_load_from_memory(
                 IOUtil.ioResourceToSegment(arena, "image.png"),
-                px, py, pc, STBImage.RGB
+                px, py, pc, STBI_rgb
             );
             gl.texImage2D(GL.TEXTURE_2D,
                 0,
@@ -125,7 +124,7 @@ public final class GL30Test {
                 GL.RGB,
                 GL.UNSIGNED_BYTE,
                 data);
-            stbImage.free(data);
+            stbi_image_free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

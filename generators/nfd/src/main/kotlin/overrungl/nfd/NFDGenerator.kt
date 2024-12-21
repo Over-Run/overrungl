@@ -76,12 +76,12 @@ fun main() {
             it.appendLine(
                 """
                     public static NFDFilterItem create(SegmentAllocator allocator, String name, String spec) {
-                        return new NFDFilterItem(allocator).name(NFDInternal.marshalString(allocator, name)).spec(NFDInternal.marshalString(allocator, spec));
+                        return alloc(allocator).name(NFDInternal.marshalString(allocator, name)).spec(NFDInternal.marshalString(allocator, spec));
                     }
 
                     @SafeVarargs
                     public static NFDFilterItem create(SegmentAllocator allocator, java.util.Map.Entry<String, String>... entries) {
-                        var of = new NFDFilterItem(allocator, entries.length);
+                        var of = alloc(allocator, entries.length);
                         for (int i = 0; i < entries.length; i++) {
                             var e = entries[i];
                             of.nameAt(i, NFDInternal.marshalString(allocator, e.getKey())).specAt(i, NFDInternal.marshalString(allocator, e.getValue()));
@@ -128,17 +128,17 @@ fun main() {
     //endregion
 
     StaticDowncall(nfdPackage, "NFD", "NFDInternal.LOOKUP") {
-        jint("NFD_ERROR" to "0", javadoc = "Programmatic error")
-        jint("NFD_OKAY" to "1", javadoc = "User pressed okay, or successful return")
-        jint("NFD_CANCEL" to "2", javadoc = "User pressed cancel")
-        jint("NFD_WINDOW_HANDLE_TYPE_UNSET" to "0", javadoc = "The native window handle type.")
-        jint(
+        int("NFD_ERROR" to "0", javadoc = "Programmatic error")
+        int("NFD_OKAY" to "1", javadoc = "User pressed okay, or successful return")
+        int("NFD_CANCEL" to "2", javadoc = "User pressed cancel")
+        int("NFD_WINDOW_HANDLE_TYPE_UNSET" to "0", javadoc = "The native window handle type.")
+        int(
             "NFD_WINDOW_HANDLE_TYPE_WINDOWS" to "1",
             javadoc = "Windows: handle is HWND (the Windows API typedefs this to void*)"
         )
-        jint("NFD_WINDOW_HANDLE_TYPE_COCOA" to "2", javadoc = "Cocoa: handle is NSWindow*")
-        jint("NFD_WINDOW_HANDLE_TYPE_X11" to "3", javadoc = "X11: handle is Window")
-        jint(
+        int("NFD_WINDOW_HANDLE_TYPE_COCOA" to "2", javadoc = "Cocoa: handle is NSWindow*")
+        int("NFD_WINDOW_HANDLE_TYPE_X11" to "3", javadoc = "X11: handle is Window")
+        int(
             "NFD_INTERFACE_VERSION" to "1", javadoc =
                 """
                     This is a unique identifier tagged to all the NFD_*With() function calls, for backward

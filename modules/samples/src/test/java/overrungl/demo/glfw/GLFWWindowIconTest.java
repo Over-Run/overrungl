@@ -16,7 +16,6 @@
 
 package overrungl.demo.glfw;
 
-import overrun.marshal.Unmarshal;
 import overrungl.demo.util.IOUtil;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
@@ -24,7 +23,7 @@ import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWImage;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLoader;
-import overrungl.stb.STBImage;
+import overrungl.util.Unmarshal;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
@@ -32,6 +31,7 @@ import java.lang.foreign.MemorySegment;
 import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static overrungl.stb.STBImage.*;
 
 /**
  * Tests GLFW window icon and STB image
@@ -68,19 +68,18 @@ public final class GLFWWindowIconTest {
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
 
         try {
-            final STBImage stbImage = STBImage.INSTANCE;
             var px = arena.allocate(JAVA_INT);
             var py = arena.allocate(JAVA_INT);
             var pc = arena.allocate(JAVA_INT);
-            var data = stbImage.loadFromMemory(
+            var data = stbi_load_from_memory(
                 IOUtil.ioResourceToSegment(arena, "image.png"),
-                px, py, pc, STBImage.RGB_ALPHA
+                px, py, pc, STBI_rgb_alpha
             );
             glfw.setWindowIcon(window, GLFWImage.OF.of(arena)
                 .width(px.get(JAVA_INT, 0))
                 .height(py.get(JAVA_INT, 0))
                 .pixels(data));
-            stbImage.free(data);
+            stbi_image_free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

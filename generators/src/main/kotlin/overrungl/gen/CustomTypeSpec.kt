@@ -77,8 +77,8 @@ val void = CustomTypeSpec(TypeName.VOID, TypeName.VOID, layout = "No layout for 
 
 val address = javaPrimitive(MemorySegment_, "ADDRESS")
 val string_u8 = CustomTypeSpec(
-    MemorySegment_,
-    String_,
+    carrier = MemorySegment_,
+    javaType = String_,
     processor = StringU8ValueProcessor,
     layout = "Unmarshal.STR_LAYOUT",
     allocatorRequirement = AllocatorRequirement.STACK
@@ -105,3 +105,8 @@ val size_t = jlong c "size_t"
 val wchar_t = jint c "wchar_t"
 
 val const_char_ptr = string_u8 c "const char*"
+val const_void_ptr = address c "const void*"
+
+val char_ptr = string_u8 c "char*"
+val int_ptr = jint_array c "int*"
+val float_ptr = jfloat_array c "float*"

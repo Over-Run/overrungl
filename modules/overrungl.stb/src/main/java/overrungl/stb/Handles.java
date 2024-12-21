@@ -40,8 +40,6 @@ final class Handles {
         stbi_write_force_png_filter;
 
     static {
-        registerStruct(STBIIoCallbacks.class, STBIIoCallbacks.OF);
-        registerStruct(STBIRRESIZE.class, STBIRRESIZE.OF);
         registerStruct(STBRPContext.class, STBRPContext.OF);
         registerStruct(STBRPNode.class, STBRPNode.OF);
         registerStruct(STBRPRect.class, STBRPRect.OF);

@@ -311,6 +311,8 @@ import java.lang.invoke.MethodHandles;
  * @since 0.1.0
  */
 public interface STBTrueType extends DirectAccess {
+    //region ---[BEGIN GENERATOR BEGIN]---
+    //endregion ---[END GENERATOR END]---
     /**
      * The instance of STBTrueType.
      */

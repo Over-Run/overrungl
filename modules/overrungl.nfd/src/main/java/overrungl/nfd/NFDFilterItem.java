@@ -42,7 +42,7 @@ import overrungl.util.*;
 public final class NFDFilterItem extends Struct {
     /// The struct layout of `nfdnfilteritem_t`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        Unmarshal.STR_LAYOUT.withName("name"), 
+        Unmarshal.STR_LAYOUT.withName("name"),
         Unmarshal.STR_LAYOUT.withName("spec")
     );
     /// The [VarHandle] of `name` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
@@ -56,12 +56,14 @@ public final class NFDFilterItem extends Struct {
 
     /// Allocates a `NFDFilterItem` with the given segment allocator.
     /// @param allocator the segment allocator
-    public NFDFilterItem(SegmentAllocator allocator) { this(allocator.allocate(LAYOUT)); }
+    /// @return the allocated `NFDFilterItem`
+    public static NFDFilterItem alloc(SegmentAllocator allocator) { return new NFDFilterItem(allocator.allocate(LAYOUT)); }
 
     /// Allocates a `NFDFilterItem` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
-    public NFDFilterItem(SegmentAllocator allocator, long count) { this(allocator.allocate(LAYOUT, count)); }
+    /// @return the allocated `NFDFilterItem`
+    public static NFDFilterItem alloc(SegmentAllocator allocator, long count) { return new NFDFilterItem(allocator.allocate(LAYOUT, count)); }
 
     /// {@return `name` at the given index}
     /// @param index the index
@@ -94,12 +96,12 @@ public final class NFDFilterItem extends Struct {
     public NFDFilterItem spec(@CType("const nfdnchar_t*") java.lang.foreign.MemorySegment value) { return this.specAt(0L, value); }
 
     public static NFDFilterItem create(SegmentAllocator allocator, String name, String spec) {
-        return new NFDFilterItem(allocator).name(NFDInternal.marshalString(allocator, name)).spec(NFDInternal.marshalString(allocator, spec));
+        return alloc(allocator).name(NFDInternal.marshalString(allocator, name)).spec(NFDInternal.marshalString(allocator, spec));
     }
     
     @SafeVarargs
     public static NFDFilterItem create(SegmentAllocator allocator, java.util.Map.Entry<String, String>... entries) {
-        var of = new NFDFilterItem(allocator, entries.length);
+        var of = alloc(allocator, entries.length);
         for (int i = 0; i < entries.length; i++) {
             var e = entries[i];
             of.nameAt(i, NFDInternal.marshalString(allocator, e.getKey())).specAt(i, NFDInternal.marshalString(allocator, e.getValue()));

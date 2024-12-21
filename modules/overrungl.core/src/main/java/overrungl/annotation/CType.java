@@ -25,7 +25,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
-@Target({ElementType.METHOD, ElementType.PARAMETER})
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 public @interface CType {
     /**
      * {@return the name of the native type}

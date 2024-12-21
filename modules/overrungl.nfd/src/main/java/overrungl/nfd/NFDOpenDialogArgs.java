@@ -32,7 +32,7 @@ import overrungl.util.*;
 /// ### defaultPath
 /// [VarHandle][#VH_defaultPath] - [Getter][#defaultPath()] - [Setter][#defaultPath(java.lang.foreign.MemorySegment)]
 /// ### parentWindow
-/// [Byte offset][#OFFSET_parentWindow] - [Getter][#parentWindow()] - [Setter][#parentWindow(java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_parentWindow] - [Memory layout][#ML_parentWindow] - [Getter][#parentWindow()] - [Setter][#parentWindow(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -46,9 +46,9 @@ import overrungl.util.*;
 public final class NFDOpenDialogArgs extends Struct {
     /// The struct layout of `nfdopendialognargs_t`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.ADDRESS.withName("filterList"), 
-        ValueLayout.JAVA_INT.withName("filterCount"), 
-        Unmarshal.STR_LAYOUT.withName("defaultPath"), 
+        ValueLayout.ADDRESS.withName("filterList"),
+        ValueLayout.JAVA_INT.withName("filterCount"),
+        Unmarshal.STR_LAYOUT.withName("defaultPath"),
         overrungl.nfd.NFDWindowHandle.LAYOUT.withName("parentWindow")
     );
     /// The [VarHandle] of `filterList` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
@@ -59,6 +59,8 @@ public final class NFDOpenDialogArgs extends Struct {
     public static final VarHandle VH_defaultPath = LAYOUT.arrayElementVarHandle(PathElement.groupElement("defaultPath"));
     /// The byte offset of `parentWindow`.
     public static final long OFFSET_parentWindow = LAYOUT.byteOffset(PathElement.groupElement("parentWindow"));
+    /// The memory layout of `parentWindow`.
+    public static final MemoryLayout ML_parentWindow = LAYOUT.select(PathElement.groupElement("parentWindow"));
 
     /// Creates `NFDOpenDialogArgs` with the given segment.
     /// @param segment the memory segment
@@ -66,12 +68,14 @@ public final class NFDOpenDialogArgs extends Struct {
 
     /// Allocates a `NFDOpenDialogArgs` with the given segment allocator.
     /// @param allocator the segment allocator
-    public NFDOpenDialogArgs(SegmentAllocator allocator) { this(allocator.allocate(LAYOUT)); }
+    /// @return the allocated `NFDOpenDialogArgs`
+    public static NFDOpenDialogArgs alloc(SegmentAllocator allocator) { return new NFDOpenDialogArgs(allocator.allocate(LAYOUT)); }
 
     /// Allocates a `NFDOpenDialogArgs` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
-    public NFDOpenDialogArgs(SegmentAllocator allocator, long count) { this(allocator.allocate(LAYOUT, count)); }
+    /// @return the allocated `NFDOpenDialogArgs`
+    public static NFDOpenDialogArgs alloc(SegmentAllocator allocator, long count) { return new NFDOpenDialogArgs(allocator.allocate(LAYOUT, count)); }
 
     /// {@return `filterList` at the given index}
     /// @param index the index
@@ -120,14 +124,14 @@ public final class NFDOpenDialogArgs extends Struct {
 
     /// {@return `parentWindow` at the given index}
     /// @param index the index
-    public @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment parentWindowAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_parentWindow, index), overrungl.nfd.NFDWindowHandle.LAYOUT); }
+    public @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment parentWindowAt(long index) { return this.segment().asSlice(LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow); }
     /// {@return `parentWindow`}
     public @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment parentWindow() { return this.parentWindowAt(0L); }
     /// Sets `parentWindow` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public NFDOpenDialogArgs parentWindowAt(long index, @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, this.segment(), LAYOUT.scale(OFFSET_parentWindow, index), value.byteSize()); return this; }
+    public NFDOpenDialogArgs parentWindowAt(long index, @CType("nfdwindowhandle_t") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, this.segment(), LAYOUT.scale(OFFSET_parentWindow, index), ML_parentWindow.byteSize()); return this; }
     /// Sets `parentWindow` with the given value.
     /// @param value the value
     /// @return `this`

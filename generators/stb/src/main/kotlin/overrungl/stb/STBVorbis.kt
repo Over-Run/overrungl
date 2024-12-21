@@ -16,20 +16,4 @@
 
 package overrungl.stb
 
-import overrungl.gen.jboolean
-
-const val stbPackage = "overrungl.stb"
-const val stbLookup = "Handles.lookup"
-
-val boolean_int = jboolean c "int"
-
-fun main() {
-    STBEasyFont()
-    STBImage()
-    STBImageResize2()
-    STBImageWrite()
-    STBPerlin()
-    STBRectPack()
-    STBTruetype()
-    STBVorbis()
-}
+fun STBVorbis() {}

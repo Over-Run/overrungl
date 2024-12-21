@@ -16,6 +16,8 @@
 
 package overrungl.gen
 
+import com.palantir.javapoet.TypeName
+
 data class ProcessorContext(
     val allocatorName: String?,
     val builder: StringBuilder,
@@ -37,17 +39,15 @@ object IdentityValueProcessor : ValueProcessor {
 object StringU8ValueProcessor : ValueProcessor {
     override fun marshal(context: ProcessorContext) {
         val builder = context.builder
-        val action = context.action
         builder.append("Marshal.marshal(${context.allocatorName}, ")
-        action(builder)
+        context.action(builder)
         builder.append(")")
     }
 
     override fun unmarshal(context: ProcessorContext) {
         val builder = context.builder
-        val action = context.action
         builder.append("Unmarshal.unmarshalAsString(")
-        action(builder)
+        context.action(builder)
         builder.append(")")
     }
 
@@ -57,25 +57,42 @@ object StringU8ValueProcessor : ValueProcessor {
 class ArrayValueProcessor(private val asType: String) : ValueProcessor {
     override fun marshal(context: ProcessorContext) {
         val builder = context.builder
-        val action = context.action
         builder.append("Marshal.marshal(${context.allocatorName}, ")
-        action(builder)
+        context.action(builder)
         builder.append(")")
     }
 
     override fun unmarshal(context: ProcessorContext) {
         val builder = context.builder
-        val action = context.action
         builder.append("Unmarshal.unmarshalAs${asType}Array(")
-        action(builder)
+        context.action(builder)
         builder.append(")")
     }
 
     override fun copy(context: ProcessorContext) {
         val builder = context.builder
-        val action = context.action
         builder.append("Unmarshal.copy(")
-        action(builder)
+        context.action(builder)
         builder.append(")")
+    }
+}
+
+class StructProcessor(private val typeName: TypeName) : ValueProcessor {
+    override fun marshal(context: ProcessorContext) {
+        val builder = context.builder
+        builder.append("Marshal.marshal(")
+        context.action(builder)
+        builder.append(")")
+    }
+
+    override fun unmarshal(context: ProcessorContext) {
+        val builder = context.builder
+        builder.append("new $typeName(")
+        context.action(builder)
+        builder.append(")")
+    }
+
+    override fun copy(context: ProcessorContext) {
+        TODO("Not yet implemented")
     }
 }

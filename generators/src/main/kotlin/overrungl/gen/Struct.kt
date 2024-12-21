@@ -16,6 +16,7 @@
 
 package overrungl.gen
 
+import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
 import java.nio.file.Files
 import kotlin.io.path.Path
@@ -28,9 +29,25 @@ class Struct(
     action: Struct.() -> Unit
 ) {
     private val members = mutableListOf<StructMember>()
-    val type: CustomTypeSpec by lazy {
+    val pointerType: CustomTypeSpec by lazy {
         val className = ClassName.get(packageName, name)
-        CustomTypeSpec(MemorySegment_, className, layout = "$className.LAYOUT", cType = cType)
+        CustomTypeSpec(
+            MemorySegment_,
+            className,
+            processor = StructProcessor(className),
+            layout = "ValueLayout.ADDRESS.withTargetLayout($className.LAYOUT)",
+            cType = cType
+        )
+    }
+    val byValueType: CustomTypeSpec by lazy {
+        val className = ClassName.get(packageName, name)
+        CustomTypeSpec(
+            MemorySegment_,
+            className,
+            processor = StructProcessor(className),
+            layout = "$className.LAYOUT",
+            cType = cType
+        )
     }
     private var doLast: (StringBuilder) -> Unit = {}
     val byValue: ByValueWrapper by lazy { ByValueWrapper(this) }
@@ -47,12 +64,16 @@ class Struct(
         doLast = action
     }
 
-    operator fun CustomTypeSpec.invoke(name: String) {
-        members.add(ValueStructMember(this, name))
+    operator fun CustomTypeSpec.invoke(name: String, javadoc: String? = null) {
+        members.add(ValueStructMember(this, name, javadoc))
     }
 
-    operator fun ByValueWrapper.invoke(name: String) {
-        members.add(ByValueStructStructMember(this.struct, name))
+    operator fun ByValueWrapper.invoke(name: String, javadoc: String? = null) {
+        members.add(ByValueStructStructMember(this.struct, name, javadoc))
+    }
+
+    fun fixedSize(type: CustomTypeSpec, name: String, size: Long, javadoc: String? = null) {
+        members.add(FixedSizeStructMember(type, size, name, javadoc))
     }
 
     fun write() {
@@ -79,17 +100,20 @@ class Struct(
         }
         sb.appendLine("/// ## Members")
         members.forEach {
+            sb.appendLine("/// ### ${it.name}")
             sb.appendLine(
-                """
-                    /// ### ${it.name}
-                    /// ${
-                    when (it) {
-                        is ValueStructMember -> "[VarHandle][#VH_${it.name}]"
-                        is ByValueStructStructMember -> "[Byte offset][#OFFSET_${it.name}]"
-                    }
-                } - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]
-                """.trimIndent()
+                when (it) {
+                    is ValueStructMember -> "/// [VarHandle][#VH_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
+                    is ByValueStructStructMember -> "/// [Byte offset][#OFFSET_${it.name}] - [Memory layout][#ML_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
+                    is FixedSizeStructMember -> "/// TODO [Byte offset handle][#MH_${it.name}] - [Memory layout][#ML_${it.name}] - Getter - Setter"
+                }
             )
+            if (it.javadoc != null) {
+                sb.appendLine("///")
+                sb.appendLine(it.javadoc!!.prependIndent("/// "))
+                sb.append("///")
+                sb.appendLine()
+            }
         }
         sb.appendLine(
             """
@@ -116,7 +140,7 @@ class Struct(
                     public static final StructLayout LAYOUT = LayoutBuilder.struct(
             """.trimIndent()
         )
-        sb.appendLine(members.joinToString(", \n") {
+        sb.appendLine(members.joinToString(",\n") {
             """        ${it.type.layout}.withName("${it.name}")"""
         })
         sb.appendLine("    );")
@@ -135,12 +159,23 @@ class Struct(
                     """
                         |    /// The byte offset of `${it.name}`.
                         |    public static final long OFFSET_${it.name} = LAYOUT.byteOffset(PathElement.groupElement("${it.name}"));
+                        |    /// The memory layout of `${it.name}`.
+                        |    public static final MemoryLayout ML_${it.name} = LAYOUT.select(PathElement.groupElement("${it.name}"));
+                    """.trimMargin()
+                )
+
+                is FixedSizeStructMember -> sb.appendLine(
+                    """
+                        |    /// The byte offset handle of `${it.name}` of type `(long baseOffset, long elementIndex)long`.
+                        |    public static final MethodHandle MH_${it.name} = LAYOUT.byteOffsetHandle(PathElement.sequenceElement(), PathElement.groupElement("${it.name}"));
+                        |    /// The memory layout of `${it.name}`.
+                        |    public static final MemoryLayout ML_${it.name} = LAYOUT.select(PathElement.groupElement("${it.name}"));
                     """.trimMargin()
                 )
             }
         }
 
-        // constructors
+        // constructor
         sb.appendLine(
             """
                 |
@@ -148,66 +183,130 @@ class Struct(
                 |    /// @param segment the memory segment
                 |    public $name(MemorySegment segment) { super(segment, LAYOUT); }
                 |
+            """.trimMargin()
+        )
+
+        // allocators
+        sb.appendLine(
+            """
                 |    /// Allocates a `$name` with the given segment allocator.
                 |    /// @param allocator the segment allocator
-                |    public $name(SegmentAllocator allocator) { this(allocator.allocate(LAYOUT)); }
+                |    /// @return the allocated `$name`
+                |    public static $name alloc(SegmentAllocator allocator) { return new $name(allocator.allocate(LAYOUT)); }
                 |
                 |    /// Allocates a `$name` with the given segment allocator and count.
                 |    /// @param allocator the segment allocator
                 |    /// @param count     the count
-                |    public $name(SegmentAllocator allocator, long count) { this(allocator.allocate(LAYOUT, count)); }
+                |    /// @return the allocated `$name`
+                |    public static $name alloc(SegmentAllocator allocator, long count) { return new $name(allocator.allocate(LAYOUT, count)); }
                 |
             """.trimMargin()
         )
 
         members.forEach {
             // getters
-            sb.appendLine(
-                """
-                    |    /// {@return `${it.name}` at the given index}
-                    |    /// @param index the index
-                    |    public ${it.type.carrierWithC()} ${it.name}At(long index) { ${
-                    when (it) {
-                        is ValueStructMember ->
-                            "return (${it.type.carrier}) VH_${it.name}.get(this.segment(), 0L, index);"
+            when (it) {
+                is ValueStructMember, is ByValueStructStructMember -> {
+                    sb.appendLine(
+                        """
+                            |    /// {@return `${it.name}` at the given index}
+                            |    /// @param index the index
+                            |    public ${it.type.carrierWithC()} ${it.name}At(long index) { ${
+                            when (it) {
+                                is ValueStructMember ->
+                                    "return (${it.type.carrier}) VH_${it.name}.get(this.segment(), 0L, index);"
 
-                        is ByValueStructStructMember ->
-                            """return this.segment().asSlice(LAYOUT.scale(OFFSET_${it.name}, index), ${it.struct.type.javaType}.LAYOUT);"""
-                    }
-                } }
-                """.trimMargin()
-            )
+                                is ByValueStructStructMember ->
+                                    """return this.segment().asSlice(LAYOUT.scale(OFFSET_${it.name}, index), ML_${it.name});"""
 
-            sb.appendLine(
-                """
-                    |    /// {@return `${it.name}`}
-                    |    public ${it.type.carrierWithC()} ${it.name}() { return this.${it.name}At(0L); }
-                """.trimMargin()
-            )
+                                else -> error("should not reach here")
+                            }
+                        } }
+                        """.trimMargin()
+                    )
+                    sb.appendLine(
+                        """
+                            |    /// {@return `${it.name}`}
+                            |    public ${it.type.carrierWithC()} ${it.name}() { return this.${it.name}At(0L); }
+                        """.trimMargin()
+                    )
+                }
+
+                is FixedSizeStructMember -> {
+                    sb.appendLine(
+                        """
+                            |    /// {@return `${it.name}` at the given index}
+                            |    /// @param index the index of the struct buffer
+                            |    /// @param elementIndex the index of the element
+                            |    public ${it.type.carrierWithC()} ${it.name}At(long index, long elementIndex) {
+                            |        try { return this.segment().asSlice(LAYOUT.scale((long) MH_${it.name}.invokeExact(0L, elementIndex), index), ML_${it.name}); }
+                            |        catch (Throwable e) { throw new RuntimeException(e); }
+                            |    }
+                        """.trimMargin()
+                    )
+                    sb.appendLine(
+                        """
+                            |    /// {@return `${it.name}`}
+                            |    public ${it.type.carrierWithC()} ${it.name}At(long elementIndex) { return this.${it.name}At(0L, elementIndex); }
+                        """.trimMargin()
+                    )
+                }
+            }
 
             // setters
-            sb.appendLine(
-                """
-                    |    /// Sets `${it.name}` with the given value at the given index.
-                    |    /// @param index the index
-                    |    /// @param value the value
-                    |    /// @return `this`
-                    |    public $name ${it.name}At(long index, ${it.type.carrierWithC()} value) { ${
-                    when (it) {
-                        is ValueStructMember -> "VH_${it.name}.set(this.segment(), 0L, index, value);"
-                        is ByValueStructStructMember -> """MemorySegment.copy(value, 0L, this.segment(), LAYOUT.scale(OFFSET_${it.name}, index), value.byteSize());"""
-                    }
-                } return this; }
-                """.trimMargin()
-            )
-            sb.appendLine(
-                """
-                    |    /// Sets `${it.name}` with the given value.
-                    |    /// @param value the value
-                    |    /// @return `this`
-                    |    public $name ${it.name}(${it.type.carrierWithC()} value) { return this.${it.name}At(0L, value); }
-                """.trimMargin()
-            )
+            when (it) {
+                is ValueStructMember, is ByValueStructStructMember -> {
+                    sb.appendLine(
+                        """
+                            |    /// Sets `${it.name}` with the given value at the given index.
+                            |    /// @param index the index
+                            |    /// @param value the value
+                            |    /// @return `this`
+                            |    public $name ${it.name}At(long index, ${it.type.carrierWithC()} value) { ${
+                            when (it) {
+                                is ValueStructMember -> "VH_${it.name}.set(this.segment(), 0L, index, value);"
+                                is ByValueStructStructMember -> """MemorySegment.copy(value, 0L, this.segment(), LAYOUT.scale(OFFSET_${it.name}, index), ML_${it.name}.byteSize());"""
+                                else -> error("should not reach here")
+                            }
+                        } return this; }
+                        """.trimMargin()
+                    )
+                    sb.appendLine(
+                        """
+                            |    /// Sets `${it.name}` with the given value.
+                            |    /// @param value the value
+                            |    /// @return `this`
+                            |    public $name ${it.name}(${it.type.carrierWithC()} value) { return this.${it.name}At(0L, value); }
+                        """.trimMargin()
+                    )
+                }
+
+                is FixedSizeStructMember -> {
+                    sb.appendLine(
+                        """
+                            |    /// Sets `${it.name}` with the given value at the given index.
+                            |    /// @param index the index of the struct buffer
+                            |    /// @param elementIndex the index of the element
+                            |    /// @param value the value
+                            |    /// @return `this`
+                            |    public $name ${it.name}At(long index, long elementIndex, ${it.type.carrierWithC()} value) {
+                            |        try { MemorySegment.copy(value, 0L, this.segment(), LAYOUT.scale((long) MH_${it.name}.invokeExact(0L, elementIndex), index), ML_${it.name}.byteSize()); }
+                            |        catch (Throwable e) { throw new RuntimeException(e); }
+                            |        return this;
+                            |    }
+                        """.trimMargin()
+                    )
+                    sb.appendLine(
+                        """
+                            |    /// Sets `${it.name}` with the given value.
+                            |    /// @param elementIndex the index of the element
+                            |    /// @param value the value
+                            |    /// @return `this`
+                            |    public $name ${it.name}(long elementIndex, ${it.type.carrierWithC()} value) { return this.${it.name}At(0L, elementIndex, value); }
+                        """.trimMargin()
+                    )
+                }
+            }
 
             sb.appendLine()
         }
@@ -222,9 +321,36 @@ class Struct(
 sealed interface StructMember {
     val type: CustomTypeSpec
     val name: String
+    val javadoc: String?
 }
 
-data class ValueStructMember(override val type: CustomTypeSpec, override val name: String) : StructMember
-data class ByValueStructStructMember(val struct: Struct, override val name: String) : StructMember {
-    override val type: CustomTypeSpec = struct.type
+data class ValueStructMember(
+    override val type: CustomTypeSpec,
+    override val name: String,
+    override val javadoc: String?
+) : StructMember
+
+data class ByValueStructStructMember(
+    val struct: Struct,
+    override val name: String,
+    override val javadoc: String?
+) : StructMember {
+    override val type: CustomTypeSpec = struct.byValueType
+}
+
+data class FixedSizeStructMember(
+    val componentType: CustomTypeSpec,
+    val size: Long,
+    override val name: String,
+    override val javadoc: String?
+) : StructMember {
+    override val type: CustomTypeSpec
+        get() = CustomTypeSpec(
+            carrier = MemorySegment_,
+            javaType = ArrayTypeName.of(componentType.javaType),
+            processor = IdentityValueProcessor,
+            layout = "MemoryLayout.sequenceLayout(${size}L, ${componentType.layout})",
+            cType = "${componentType.cType}[$size]",
+            allocatorRequirement = AllocatorRequirement.STACK
+        )
 }

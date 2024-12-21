@@ -82,16 +82,16 @@ The customizer has already included this.
 
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 
-| Library          | Description                                                                     |
-|------------------|---------------------------------------------------------------------------------|
-| stb_easy_font    | Quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc.        |
-| stb_image        | Image loading/decoding from file/memory: JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC |
-| stb_image_resize | Resize images larger/smaller with good quality.                                 |
-| stb_image_write  | Image writing to disk: PNG, TGA, BMP                                            |
-| stb_perlin       | Revised Perlin noise (3D input, 1D output).                                     |
-| stb_rect_pack    | Simple 2D rectangle packer with decent quality.                                 |
-| stb_truetype     | Parse, decode, and rasterize characters from truetype fonts.                    |
-| stb_vorbis       | Decode ogg vorbis files from file/memory to float/16-bit signed output.         |
+| Library           | Description                                                                     |
+|-------------------|---------------------------------------------------------------------------------|
+| stb_easy_font     | Quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc.        |
+| stb_image         | Image loading/decoding from file/memory: JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC |
+| stb_image_resize2 | Resize images larger/smaller with good quality.                                 |
+| stb_image_write   | Image writing to disk: PNG, TGA, BMP                                            |
+| stb_perlin        | Revised Perlin noise (3D input, 1D output).                                     |
+| stb_rect_pack     | Simple 2D rectangle packer with decent quality.                                 |
+| stb_truetype      | Parse, decode, and rasterize characters from truetype fonts.                    |
+| stb_vorbis        | Decode ogg vorbis files from file/memory to float/16-bit signed output.         |
 
 ### Other
 

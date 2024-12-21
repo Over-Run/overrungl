@@ -16,13 +16,13 @@
 
 package overrungl.demo.opengl;
 
-import overrun.marshal.Unmarshal;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLegacy;
 import overrungl.opengl.GLLoader;
+import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
 import java.util.Objects;

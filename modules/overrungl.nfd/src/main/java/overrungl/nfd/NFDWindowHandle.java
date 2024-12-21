@@ -45,7 +45,7 @@ import overrungl.util.*;
 public final class NFDWindowHandle extends Struct {
     /// The struct layout of `nfdwindowhandle_t`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.JAVA_LONG.withName("type"), 
+        ValueLayout.JAVA_LONG.withName("type"),
         ValueLayout.ADDRESS.withName("handle")
     );
     /// The [VarHandle] of `type` of type `(MemorySegment base, long baseOffset, long index)long`.
@@ -59,12 +59,14 @@ public final class NFDWindowHandle extends Struct {
 
     /// Allocates a `NFDWindowHandle` with the given segment allocator.
     /// @param allocator the segment allocator
-    public NFDWindowHandle(SegmentAllocator allocator) { this(allocator.allocate(LAYOUT)); }
+    /// @return the allocated `NFDWindowHandle`
+    public static NFDWindowHandle alloc(SegmentAllocator allocator) { return new NFDWindowHandle(allocator.allocate(LAYOUT)); }
 
     /// Allocates a `NFDWindowHandle` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
-    public NFDWindowHandle(SegmentAllocator allocator, long count) { this(allocator.allocate(LAYOUT, count)); }
+    /// @return the allocated `NFDWindowHandle`
+    public static NFDWindowHandle alloc(SegmentAllocator allocator, long count) { return new NFDWindowHandle(allocator.allocate(LAYOUT, count)); }
 
     /// {@return `type` at the given index}
     /// @param index the index

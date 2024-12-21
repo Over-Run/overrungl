@@ -16,11 +16,11 @@
 
 package overrungl.demo.glfw;
 
-import overrun.marshal.Unmarshal;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWGamepadState;
+import overrungl.util.Unmarshal;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;

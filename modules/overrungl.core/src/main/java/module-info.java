@@ -33,7 +33,7 @@ module overrungl.core {
         overrungl.stb,
         overrungl.vulkan;
 
-    requires transitive io.github.overrun.marshal;
+    requires transitive io.github.overrun.marshal; //TODO remove this
     requires transitive io.github.overrun.memstack;
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;

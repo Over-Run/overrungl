@@ -54,6 +54,8 @@ import java.lang.invoke.MethodHandles;
  * @since 0.1.0
  */
 public interface STBVorbis extends DirectAccess {
+    //region ---[BEGIN GENERATOR BEGIN]---
+    //endregion ---[END GENERATOR END]---
     /**
      * The instance of STBVorbis.
      */

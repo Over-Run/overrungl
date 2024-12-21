@@ -71,15 +71,18 @@ class StaticDowncall(
         val path = Path("${packageName.replace('.', '/')}/$name.java")
         val sb = StringBuilder()
 
+        sb.appendLine("    //@formatter:off")
+
         // fields
         fields.forEach {
             if (it.javadoc != null) {
-                sb.appendLine(it.javadoc.prependIndent("    /// ").trimEnd())
+                sb.appendLine(it.javadoc.prependIndent("    ///"))
             }
             sb.appendLine("    public static final ${it.type.javaType} ${it.name} = ${it.value};")
         }
 
         // method handles
+        sb.appendLine("    //region Method handles")
         mutableListOf<String>().also { l ->
             methods.forEach {
                 if (it.entrypoint != null && it.entrypoint !in l) {
@@ -93,6 +96,7 @@ class StaticDowncall(
                 }
             }
         }
+        sb.appendLine("    //endregion")
 
         sb.appendLine()
 
@@ -101,7 +105,7 @@ class StaticDowncall(
             val chosenReturnType = m.returnType.selectTypeName(m.overload)
             val returnVoid = chosenReturnType == TypeName.VOID
             if (m.javadoc != null) {
-                sb.appendLine(m.javadoc.prependIndent("    /// ").trimEnd())
+                sb.appendLine(m.javadoc.prependIndent("    ///"))
             }
             sb.appendLine(
                 "    public static ${m.returnType.typeNameWithC(chosenReturnType)} ${m.name}(${
@@ -167,7 +171,19 @@ class StaticDowncall(
                     if (!returnVoid) {
                         b.append("(${m.returnType.carrier}) ")
                     }
-                    b.append("MH_${m.entrypoint}.invokeExact(${writtenParams.joinToString { p -> p.name }})")
+                    b.append("MH_${m.entrypoint}.invokeExact(")
+                    b.append(writtenParams.joinToString { p ->
+                        if (m.overload) {
+                            buildString {
+                                p.type.processor.marshal(
+                                    ProcessorContext(
+                                        allocatorName = allocatorName,
+                                        this
+                                    ) { it.append(p.name) })
+                            }
+                        } else p.name
+                    })
+                    b.append(")")
                     Unit
                 }
                 if (m.overload) {
@@ -181,7 +197,11 @@ class StaticDowncall(
                 if (refParams.isNotEmpty()) {
                     refParams.forEach { p ->
                         sb.append("            ")
-                        p.type.processor.copy(ProcessorContext(allocatorName = null, sb) { it.append("__overrungl_ref_${p.name}, ${p.name}") })
+                        p.type.processor.copy(
+                            ProcessorContext(
+                                allocatorName = null,
+                                sb
+                            ) { it.append("__overrungl_ref_${p.name}, ${p.name}") })
                         sb.appendLine(";")
                     }
                     if (!returnVoid) {
@@ -193,6 +213,8 @@ class StaticDowncall(
             }
             sb.appendLine("    }")
         }
+
+        sb.appendLine("    //@formatter:on")
 
         Files.writeString(path, replaceCode(Files.readString(path), sb.toString()))
     }
