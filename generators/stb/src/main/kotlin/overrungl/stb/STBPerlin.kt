@@ -17,11 +17,9 @@
 package overrungl.stb
 
 import overrungl.gen.StaticDowncall
-import overrungl.gen.char
 import overrungl.gen.float
 import overrungl.gen.int
-
-val uchar = char c "unsigned char"
+import overrungl.gen.uchar
 
 fun STBPerlin() {
     StaticDowncall(stbPackage, "STBPerlin", symbolLookup = stbLookup) {

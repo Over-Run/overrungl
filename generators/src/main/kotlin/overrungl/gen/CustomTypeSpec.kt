@@ -104,6 +104,14 @@ val void_ptr = address c "void*"
 val size_t = jlong c "size_t"
 val wchar_t = jint c "wchar_t"
 
+val uchar = jbyte c "unsigned char"
+val ushort = jshort c "unsigned short"
+val uint = jint c "unsigned int"
+val ulong = jlong c "unsigned long"
+val ulong_long = jlong c "unsigned long long"
+val ufloat = jfloat c "unsigned float"
+val udouble = jdouble c "unsigned double"
+
 val const_char_ptr = string_u8 c "const char*"
 val const_void_ptr = address c "const void*"
 

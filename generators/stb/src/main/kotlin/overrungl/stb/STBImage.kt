@@ -28,8 +28,6 @@ val stbi_io_read_fp = address c "<FP int (*read)(void *user,char *data,int size)
 val stbi_io_skip_fp = address c "<FP void (*skip)(void *user,int n)>"
 val stbi_io_eof_fp = address c "<FP int (*eof)(void *user)>"
 
-val int_ptr_ptr = address c "int**"
-
 fun STBImage() {
     val stbi_io_callbacks = Struct(stbPackage, "STBIIOCallbacks", cType = "stbi_io_callbacks") {
         stbi_io_read_fp("read")

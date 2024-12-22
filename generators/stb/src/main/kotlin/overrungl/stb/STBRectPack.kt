@@ -41,7 +41,8 @@ fun STBRectPack() {
         javadoc = """
             the details of the following structures don't matter to you, but they must
             be visible so you can handle the memory allocations for them
-        """.trimIndent()
+        """.trimIndent(),
+        opaque = true
     ) {
         stbrp_coord("x")
         stbrp_coord("y")
@@ -55,7 +56,8 @@ fun STBRectPack() {
         javadoc = """
             the details of the following structures don't matter to you, but they must
             be visible so you can handle the memory allocations for them
-        """.trimIndent()
+        """.trimIndent(),
+        opaque = true
     ) {
         int("width")
         int("height")

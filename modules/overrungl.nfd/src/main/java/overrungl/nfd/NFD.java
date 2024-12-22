@@ -119,20 +119,31 @@ import java.lang.invoke.MethodHandle;
 public final class NFD {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    ///#### Documentation of fields
+    ///##### NFD_ERROR
     ///Programmatic error
-    public static final int NFD_ERROR = 0;
+    ///##### NFD_OKAY
     ///User pressed okay, or successful return
-    public static final int NFD_OKAY = 1;
+    ///##### NFD_CANCEL
     ///User pressed cancel
-    public static final int NFD_CANCEL = 2;
+    public static final int
+        NFD_ERROR = 0,
+        NFD_OKAY = 1,
+        NFD_CANCEL = 2;
     ///The native window handle type.
-    public static final int NFD_WINDOW_HANDLE_TYPE_UNSET = 0;
+    ///Wayland support will be implemented separately in the future
+    ///#### Documentation of fields
+    ///##### NFD_WINDOW_HANDLE_TYPE_WINDOWS
     ///Windows: handle is HWND (the Windows API typedefs this to void*)
-    public static final int NFD_WINDOW_HANDLE_TYPE_WINDOWS = 1;
+    ///##### NFD_WINDOW_HANDLE_TYPE_COCOA
     ///Cocoa: handle is NSWindow*
-    public static final int NFD_WINDOW_HANDLE_TYPE_COCOA = 2;
+    ///##### NFD_WINDOW_HANDLE_TYPE_X11
     ///X11: handle is Window
-    public static final int NFD_WINDOW_HANDLE_TYPE_X11 = 3;
+    public static final int
+        NFD_WINDOW_HANDLE_TYPE_UNSET = 0,
+        NFD_WINDOW_HANDLE_TYPE_WINDOWS = 1,
+        NFD_WINDOW_HANDLE_TYPE_COCOA = 2,
+        NFD_WINDOW_HANDLE_TYPE_X11 = 3;
     ///This is a unique identifier tagged to all the NFD_*With() function calls, for backward
     ///compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
     ///NFD differently depending on the version you're building with.

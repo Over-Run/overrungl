@@ -16,12 +16,16 @@
 
 package overrungl.stb
 
+import overrungl.gen.address
 import overrungl.gen.jboolean
 
 const val stbPackage = "overrungl.stb"
 const val stbLookup = "Handles.lookup"
 
 val boolean_int = jboolean c "int"
+val uchar_ptr = address c "unsigned char *"
+
+val int_ptr_ptr = address c "int**"
 
 fun main() {
     STBEasyFont()

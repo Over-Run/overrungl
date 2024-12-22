@@ -24,43 +24,42 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// the details of the following structures don't matter to you, but they must
-/// be visible so you can handle the memory allocations for them
+/// private structure
 ///
 /// ## Members
-/// ### x
-/// ### y
-/// ### next
+/// ### data
+/// ### cursor
+/// ### size
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
-/// typedef struct stbrp_node {
-///     stbrp_coord x;
-///     stbrp_coord y;
-///     stbrp_node * next;
-/// } STBRPNode;
+/// typedef struct stbtt__buf {
+///     unsigned char * data;
+///     int cursor;
+///     int size;
+/// } STBTT__buf;
 /// ```
-public final class STBRPNode extends Struct {
-    /// The struct layout of `stbrp_node`.
+public final class STBTT__buf extends Struct {
+    /// The struct layout of `stbtt__buf`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.JAVA_INT.withName("x"),
-        ValueLayout.JAVA_INT.withName("y"),
-        ValueLayout.ADDRESS.withName("next")
+        ValueLayout.ADDRESS.withName("data"),
+        ValueLayout.JAVA_INT.withName("cursor"),
+        ValueLayout.JAVA_INT.withName("size")
     );
 
-    /// Creates `STBRPNode` with the given segment.
+    /// Creates `STBTT__buf` with the given segment.
     /// @param segment the memory segment
-    public STBRPNode(MemorySegment segment) { super(segment, LAYOUT); }
+    public STBTT__buf(MemorySegment segment) { super(segment, LAYOUT); }
 
-    /// Allocates a `STBRPNode` with the given segment allocator.
+    /// Allocates a `STBTT__buf` with the given segment allocator.
     /// @param allocator the segment allocator
-    /// @return the allocated `STBRPNode`
-    public static STBRPNode alloc(SegmentAllocator allocator) { return new STBRPNode(allocator.allocate(LAYOUT)); }
+    /// @return the allocated `STBTT__buf`
+    public static STBTT__buf alloc(SegmentAllocator allocator) { return new STBTT__buf(allocator.allocate(LAYOUT)); }
 
-    /// Allocates a `STBRPNode` with the given segment allocator and count.
+    /// Allocates a `STBTT__buf` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
-    /// @return the allocated `STBRPNode`
-    public static STBRPNode alloc(SegmentAllocator allocator, long count) { return new STBRPNode(allocator.allocate(LAYOUT, count)); }
+    /// @return the allocated `STBTT__buf`
+    public static STBTT__buf alloc(SegmentAllocator allocator, long count) { return new STBTT__buf(allocator.allocate(LAYOUT, count)); }
 
 }

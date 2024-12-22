@@ -40,16 +40,6 @@ final class Handles {
         stbi_write_force_png_filter;
 
     static {
-        registerStruct(STBRPContext.class, STBRPContext.OF);
-        registerStruct(STBRPNode.class, STBRPNode.OF);
-        registerStruct(STBRPRect.class, STBRPRect.OF);
-        registerStruct(STBTTAlignedQuad.class, STBTTAlignedQuad.OF);
-        registerStruct(STBTTBakedChar.class, STBTTBakedChar.OF);
-        registerStruct(STBTTFontInfo.class, STBTTFontInfo.OF);
-        registerStruct(STBTTKerningEntry.class, STBTTKerningEntry.OF);
-        registerStruct(STBTTPackedChar.class, STBTTPackedChar.OF);
-        registerStruct(STBTTPackRange.class, STBTTPackRange.OF);
-        registerStruct(STBTTVertex.class, STBTTVertex.OF);
         registerStruct(STBVorbisAlloc.class, STBVorbisAlloc.OF);
         registerStruct(STBVorbisComment.class, STBVorbisComment.OF);
         registerStruct(STBVorbisInfo.class, STBVorbisInfo.OF);

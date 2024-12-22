@@ -128,23 +128,27 @@ fun main() {
     //endregion
 
     StaticDowncall(nfdPackage, "NFD", "NFDInternal.LOOKUP") {
-        int("NFD_ERROR" to "0", javadoc = "Programmatic error")
-        int("NFD_OKAY" to "1", javadoc = "User pressed okay, or successful return")
-        int("NFD_CANCEL" to "2", javadoc = "User pressed cancel")
-        int("NFD_WINDOW_HANDLE_TYPE_UNSET" to "0", javadoc = "The native window handle type.")
+        int {
+            "NFD_ERROR"("0", javadoc = "Programmatic error")
+            "NFD_OKAY"("1", javadoc = "User pressed okay, or successful return")
+            "NFD_CANCEL"("2", javadoc = "User pressed cancel")
+        }
+        int(javadoc = "The native window handle type.\nWayland support will be implemented separately in the future") {
+            "NFD_WINDOW_HANDLE_TYPE_UNSET"("0")
+            "NFD_WINDOW_HANDLE_TYPE_WINDOWS"(
+                "1",
+                javadoc = "Windows: handle is HWND (the Windows API typedefs this to void*)"
+            )
+            "NFD_WINDOW_HANDLE_TYPE_COCOA"("2", javadoc = "Cocoa: handle is NSWindow*")
+            "NFD_WINDOW_HANDLE_TYPE_X11"("3", javadoc = "X11: handle is Window")
+        }
         int(
-            "NFD_WINDOW_HANDLE_TYPE_WINDOWS" to "1",
-            javadoc = "Windows: handle is HWND (the Windows API typedefs this to void*)"
-        )
-        int("NFD_WINDOW_HANDLE_TYPE_COCOA" to "2", javadoc = "Cocoa: handle is NSWindow*")
-        int("NFD_WINDOW_HANDLE_TYPE_X11" to "3", javadoc = "X11: handle is Window")
-        int(
-            "NFD_INTERFACE_VERSION" to "1", javadoc =
-                """
-                    This is a unique identifier tagged to all the NFD_*With() function calls, for backward
-                    compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
-                    NFD differently depending on the version you're building with.
-                """.trimIndent()
+            "NFD_INTERFACE_VERSION" to "1",
+            javadoc = """
+                This is a unique identifier tagged to all the NFD_*With() function calls, for backward
+                compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
+                NFD differently depending on the version you're building with.
+            """.trimIndent()
         )
 
         //region methods
