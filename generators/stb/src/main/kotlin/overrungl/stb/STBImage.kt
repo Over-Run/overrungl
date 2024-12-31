@@ -16,6 +16,7 @@
 
 package overrungl.stb
 
+import com.palantir.javapoet.TypeName
 import overrungl.gen.*
 
 val stbi_uc = char c "stbi_uc"
@@ -27,6 +28,7 @@ val stbi_us_const_ptr = address c "stbi_us_const *"
 val stbi_io_read_fp = address c "<FP int (*read)(void *user,char *data,int size)>"
 val stbi_io_skip_fp = address c "<FP void (*skip)(void *user,int n)>"
 val stbi_io_eof_fp = address c "<FP int (*eof)(void *user)>"
+private val char_ptr = address c "char *"
 
 fun STBImage() {
     val stbi_io_callbacks = Struct(stbPackage, "STBIIOCallbacks", cType = "stbi_io_callbacks") {
@@ -35,6 +37,61 @@ fun STBImage() {
         stbi_io_eof_fp("eof")
     }
     val stbi_io_callbacks_const_ptr = stbi_io_callbacks.pointerType c "stbi_io_callbacks const *"
+
+    Upcall(stbPackage, "STBIIORead", javadoc = "The read callback") {
+        targetMethod = "invoke"(
+            int,
+            void_ptr("user"),
+            char_ptr("data"),
+            int("size"),
+            javadoc = """
+                fill 'data' with 'size' bytes.
+                @return number of bytes actually read
+            """.trimIndent()
+        )
+    }
+    Upcall(stbPackage, "STBIIOSkip", javadoc = "The skip callback") {
+        targetMethod = "invoke"(
+            void,
+            void_ptr("user"),
+            int("n"),
+            javadoc = "skip the next 'n' bytes, or 'unget' the last -n bytes if negative"
+        )
+    }
+    Upcall(stbPackage, "STBIIOEof", javadoc = "The eof callback") {
+        val doc = "@return nonzero if we are at end of file/data"
+        interfaceMethod = "invoke"(
+            jboolean,
+            void_ptr("user"),
+            javadoc = doc
+        )
+        targetMethod = "invoke_"(
+            CustomTypeSpec(
+                carrier = TypeName.INT,
+                javaType = TypeName.BOOLEAN,
+                processor = object : ValueProcessor {
+                    override fun marshal(context: ProcessorContext) {
+                        val builder = context.builder
+                        context.action(builder)
+                        builder.append(" ? 1 : 0")
+                    }
+
+                    override fun unmarshal(context: ProcessorContext) {
+                        val builder = context.builder
+                        context.action(builder)
+                        builder.append(" != 0")
+                    }
+
+                    override fun copy(context: ProcessorContext) = Unit
+                },
+                layout = int.layout,
+                cType = int.cType
+            ),
+            void_ptr("user"),
+            javadoc = doc,
+            overload = "invoke"
+        )
+    }
 
     StaticDowncall(stbPackage, "STBImage", symbolLookup = stbLookup) {
         int("STBI_default" to "0", javadoc = "only used for desired_channels")

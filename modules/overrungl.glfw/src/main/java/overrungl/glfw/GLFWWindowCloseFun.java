@@ -14,42 +14,58 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * This is the function pointer type for window close callbacks. A window
- * close callback function has the following signature:
- * {@snippet :
- * void functionName(MemorySegment window); // @link regex="functionName" target="#invoke"
- * }
- *
- * @author squid233
- * @see GLFW#setWindowCloseCallback
- * @since 0.1.0
- */
+/// The function pointer type for window close callbacks.
+/// 
+/// This is the function pointer type for window close callbacks.  A window
+/// close callback function has the following signature:
+/// ```java
+/// void function_name(MemorySegment window)
+/// ```
+/// 
+/// TODO
+/// @see GLFW#glfwSetWindowCloseCallback()
 @FunctionalInterface
 public interface GLFWWindowCloseFun extends Upcall {
-    /**
-     * The type.
-     */
-    Type<GLFWWindowCloseFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(GLFWWindowCloseFun.class, "invoke", DESCRIPTOR);
 
-    /**
-     * The function pointer type for window close callbacks.
-     *
-     * @param window The window that the user attempted to close.
-     */
-    void invoke(MemorySegment window);
+    ///The target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that the user attempted to close.
+    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that the user attempted to close.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window) {
+        try { HANDLE.invokeExact(stub, window); }
+        catch (Throwable e) { throw new RuntimeException("error in GLFWWindowCloseFun::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static GLFWWindowCloseFun wrap(MemorySegment stub) {
+        return (window) ->
+            invoke(stub, window);
     }
 }

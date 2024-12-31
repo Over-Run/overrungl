@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,49 +14,52 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * The eof callback interface
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The eof callback
 @FunctionalInterface
 public interface STBIIOEof extends Upcall {
-    /**
-     * the type
-     */
-    Type<STBIIOEof> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(STBIIOEof.class, "invoke_", DESCRIPTOR);
 
-    /**
-     * {@return nonzero if we are at end of file/data}
-     *
-     * @param user userdata
-     */
-    int invoke(MemorySegment user);
+    ///The interface target method of the upcall.
+    ///
+    ///@return nonzero if we are at end of file/data
+    boolean invoke(@CType("void*") java.lang.foreign.MemorySegment user);
+
+    ///The target method of the upcall.
+    ///
+    ///@return nonzero if we are at end of file/data
+    default @CType("int") int invoke_(@CType("void*") java.lang.foreign.MemorySegment user) {
+        return invoke(user) ? 1 : 0;
+    }
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///@return nonzero if we are at end of file/data
+    ///@param stub the upcall stub
+    static @CType("int") int invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user) {
+        try { return (int) HANDLE.invokeExact(stub, user); }
+        catch (Throwable e) { throw new RuntimeException("error in STBIIOEof::invoke (static invoker)", e); }
     }
 
-    static int invoke(MemorySegment stub, MemorySegment user) {
-        try {
-            return (int) TYPE.downcallTarget().invokeExact(stub, user);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
     static STBIIOEof wrap(MemorySegment stub) {
-        return user -> invoke(stub, user);
+        return (user) ->
+            invoke(stub, user) != 0;
     }
 }

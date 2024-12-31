@@ -14,55 +14,73 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * This is the function pointer type for window maximize callbacks. A window
- * maximize callback function has the following signature:
- * {@snippet :
- * void functionName(MemorySegment window, boolean maximized); // @link regex="functionName" target="#invoke"
- * }
- *
- * @author squid233
- * @see GLFW#setWindowMaximizeCallback
- * @since 0.1.0
- */
+/// The function pointer type for window maximize callbacks.
+/// 
+/// This is the function pointer type for window maximize callbacks.  A window
+/// maximize callback function has the following signature:
+/// ```java
+/// void function_name(MemorySegment window, boolean maximized)
+/// ```
+/// 
+/// TODO
+/// @see GLFW#glfwSetWindowMaximizeCallback()
 @FunctionalInterface
 public interface GLFWWindowMaximizeFun extends Upcall {
-    /**
-     * The type.
-     */
-    Type<GLFWWindowMaximizeFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(GLFWWindowMaximizeFun.class, "invoke", DESCRIPTOR);
 
-    /**
-     * The function pointer type for window maximize callbacks.
-     *
-     * @param window    The window that was maximized or restored.
-     * @param maximized {@code true} if the window was maximized, or
-     *                  {@code false} if it was restored.
-     */
-    void invoke(MemorySegment window, boolean maximized);
+    ///The interface target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that was maximized or restored.
+    ///@param maximized `true` if the window was maximized, or
+    ///`false` if it was restored.
+    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean maximized);
 
-    /**
-     * The function pointer type for window maximize callbacks.
-     *
-     * @param window    The window that was maximized or restored.
-     * @param maximized {@code true} if the window was maximized, or
-     *                  {@code false} if it was restored.
-     */
-    default void ninvoke(MemorySegment window, int maximized) {
-        invoke(window, maximized != GLFW.FALSE);
+    ///The target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that was maximized or restored.
+    ///@param maximized `GLFW_TRUE` if the window was maximized, or
+    ///`GLFW_FALSE` if it was restored.
+    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int maximized) {
+        invoke(window, maximized != GLFW.GLFW_FALSE);
     }
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that was maximized or restored.
+    ///@param maximized `GLFW_TRUE` if the window was maximized, or
+    ///`GLFW_FALSE` if it was restored.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int maximized) {
+        try { HANDLE.invokeExact(stub, window, maximized); }
+        catch (Throwable e) { throw new RuntimeException("error in GLFWWindowMaximizeFun::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static GLFWWindowMaximizeFun wrap(MemorySegment stub) {
+        return (window, maximized) ->
+            invoke(stub, window, maximized ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE);
     }
 }

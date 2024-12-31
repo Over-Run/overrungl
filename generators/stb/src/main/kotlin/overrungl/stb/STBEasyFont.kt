@@ -18,6 +18,7 @@ package overrungl.stb
 
 import overrungl.gen.*
 
+private val char_ptr = string_u8 c "char *"
 val uchar_4 = jbyte_array c "unsigned char[4]"
 
 fun STBEasyFont() {

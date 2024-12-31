@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,51 +14,45 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * The skip callback interface
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The skip callback
 @FunctionalInterface
 public interface STBIIOSkip extends Upcall {
-    /**
-     * the type
-     */
-    Type<STBIIOSkip> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(STBIIOSkip.class, "invoke", DESCRIPTOR);
 
-    /**
-     * Skip the next {@code n} bytes, or “unget” the last {@code -n} bytes if negative
-     *
-     * @param user userdata
-     * @param n    byte size to skip
-     */
-    void invoke(MemorySegment user, int n);
-
+    ///The target method of the upcall.
+    ///
+    ///skip the next 'n' bytes, or 'unget' the last -n bytes if negative
+    void invoke(@CType("void*") java.lang.foreign.MemorySegment user, @CType("int") int n);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///skip the next 'n' bytes, or 'unget' the last -n bytes if negative
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user, @CType("int") int n) {
+        try { HANDLE.invokeExact(stub, user, n); }
+        catch (Throwable e) { throw new RuntimeException("error in STBIIOSkip::invoke (static invoker)", e); }
     }
 
-    static void invoke(MemorySegment stub, MemorySegment user, int n) {
-        try {
-            TYPE.downcallTarget().invokeExact(stub, user, n);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
     static STBIIOSkip wrap(MemorySegment stub) {
-        return (user, n) -> invoke(stub, user, n);
+        return (user, n) ->
+            invoke(stub, user, n);
     }
 }

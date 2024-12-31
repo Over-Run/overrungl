@@ -1117,7 +1117,7 @@ public interface GLFW extends DirectAccess {
      * @param errorCode the error code.
      * @return the error string.
      */
-    static String getErrorString(int errorCode) {
+    public static String glfwGetErrorString(int errorCode) {
         return switch (errorCode) {
             case NO_ERROR -> "NO_ERROR";
             case NOT_INITIALIZED -> "NOT_INITIALIZED";
@@ -1146,7 +1146,7 @@ public interface GLFW extends DirectAccess {
      * @param platformCode the platform code.
      * @return the platform string.
      */
-    static String getPlatformDebugString(int platformCode) {
+    public static String glfwGetPlatformDebugString(int platformCode) {
         return switch (platformCode) {
             case PLATFORM_WIN32 -> "PLATFORM_WIN32";
             case PLATFORM_COCOA -> "PLATFORM_COCOA";
@@ -1165,7 +1165,7 @@ public interface GLFW extends DirectAccess {
      * @param platformCode the platform code.
      * @return the platform string.
      */
-    static String getPlatformString(int platformCode) {
+    public static String glfwGetPlatformString(int platformCode) {
         return switch (platformCode) {
             case PLATFORM_WIN32 -> "Win32";
             case PLATFORM_COCOA -> "Cocoa";
@@ -1950,7 +1950,7 @@ public interface GLFW extends DirectAccess {
                 return null;
             }
             final int count = pCount.get(JAVA_INT, 0);
-            return GLFWVidMode.OF.of(pModes.reinterpret(GLFWVidMode.OF.layout().scale(0L, count)), count);
+            return new GLFWVidMode(pModes.reinterpret(GLFWVidMode.LAYOUT.scale(0L, count)));
         }
     }
 
@@ -1988,7 +1988,7 @@ public interface GLFW extends DirectAccess {
     default GLFWVidMode getVideoMode(MemorySegment monitor) {
         var pMode = ngetVideoMode(monitor);
         if (Unmarshal.isNullPointer(pMode)) return null;
-        return GLFWVidMode.OF.of(pMode.reinterpret(GLFWVidMode.OF.layout().byteSize()));
+        return new GLFWVidMode(pMode.reinterpret(GLFWVidMode.LAYOUT.byteSize()));
     }
 
     /**
@@ -2545,7 +2545,7 @@ public interface GLFW extends DirectAccess {
      */
     @Skip
     default void setWindowIcon(MemorySegment window, @Nullable GLFWImage images) {
-        setWindowIcon(window, images == null ? 0 : Math.toIntExact(images.elementCount()), images);
+        setWindowIcon(window, images == null ? 0 : Math.toIntExact(images.estimateCount()), images);
     }
 
     /**

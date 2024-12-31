@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,63 +14,47 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * The read callback interface
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The read callback
 @FunctionalInterface
 public interface STBIIORead extends Upcall {
-    /**
-     * the type
-     */
-    Type<STBIIORead> TYPE = Upcall.type("ninvoke", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(STBIIORead.class, "invoke", DESCRIPTOR);
 
-    /**
-     * Fill {@code data} with {@code size} bytes.
-     *
-     * @param user userdata
-     * @param data data buffer to be filled
-     * @return number of bytes actually read
-     */
-    int invoke(MemorySegment user, MemorySegment data);
-
-    /**
-     * Fill {@code data} with {@code size} bytes.
-     *
-     * @param user userdata
-     * @param data data buffer to be filled
-     * @param size byte size to fill
-     * @return number of bytes actually read
-     */
-    default int ninvoke(MemorySegment user, MemorySegment data, int size) {
-        return invoke(user, data.reinterpret(size));
-    }
+    ///The target method of the upcall.
+    ///
+    ///fill 'data' with 'size' bytes.
+    ///@return number of bytes actually read
+    @CType("int") int invoke(@CType("void*") java.lang.foreign.MemorySegment user, @CType("char *") java.lang.foreign.MemorySegment data, @CType("int") int size);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///fill 'data' with 'size' bytes.
+    ///@return number of bytes actually read
+    ///@param stub the upcall stub
+    static @CType("int") int invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user, @CType("char *") java.lang.foreign.MemorySegment data, @CType("int") int size) {
+        try { return (int) HANDLE.invokeExact(stub, user, data, size); }
+        catch (Throwable e) { throw new RuntimeException("error in STBIIORead::invoke (static invoker)", e); }
     }
 
-    static int invoke(MemorySegment stub, MemorySegment user, MemorySegment data, int size) {
-        try {
-            return (int) TYPE.downcallTarget().invokeExact(stub, user, data, size);
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
     static STBIIORead wrap(MemorySegment stub) {
-        return (user, data) -> invoke(stub, user, data, Math.toIntExact(data.byteSize()));
+        return (user, data, size) ->
+            invoke(stub, user, data, size);
     }
 }

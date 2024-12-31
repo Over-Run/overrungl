@@ -24,6 +24,7 @@ module overrungl.core {
     exports overrungl;
     exports overrungl.annotation;
     exports overrungl.struct;
+    exports overrungl.upcall;
     exports overrungl.util;
     exports overrungl.util.value;
     exports overrungl.internal
@@ -33,7 +34,6 @@ module overrungl.core {
         overrungl.stb,
         overrungl.vulkan;
 
-    requires transitive io.github.overrun.marshal; //TODO remove this
     requires transitive io.github.overrun.memstack;
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;

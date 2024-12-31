@@ -18,7 +18,9 @@ package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.struct.Struct;
+import overrungl.upcall.Upcall;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 import java.nio.charset.Charset;
@@ -72,7 +74,17 @@ public final class Marshal {
         return struct.segment();
     }
 
-    //TODO upcall
+    /**
+     * Converts the given upcall to a segment.
+     *
+     * @param arena  the arena
+     * @param upcall the upcall
+     * @return the segment
+     */
+    public static MemorySegment marshal(Arena arena, @Nullable Upcall upcall) {
+        if (upcall == null) return MemorySegment.NULL;
+        return upcall.stub(arena);
+    }
 
     /**
      * Converts the given array to a segment.

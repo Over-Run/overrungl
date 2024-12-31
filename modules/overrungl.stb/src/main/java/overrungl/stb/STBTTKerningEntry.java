@@ -1,15 +1,15 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2022-2024 Overrun Organization
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  */
@@ -73,48 +73,96 @@ public final class STBTTKerningEntry extends Struct {
     public static STBTTKerningEntry alloc(SegmentAllocator allocator, long count) { return new STBTTKerningEntry(allocator.allocate(LAYOUT, count)); }
 
     /// {@return `glyph1` at the given index}
-    /// @param index the index
-    public @CType("int") int glyph1At(long index) { return (int) VH_glyph1.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_glyph1(MemorySegment segment, long index) { return (int) VH_glyph1.get(segment, 0L, index); }
     /// {@return `glyph1`}
-    public @CType("int") int glyph1() { return this.glyph1At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_glyph1(MemorySegment segment) { return STBTTKerningEntry.get_glyph1(segment, 0L); }
+    /// {@return `glyph1` at the given index}
+    /// @param index the index
+    public @CType("int") int glyph1At(long index) { return STBTTKerningEntry.get_glyph1(this.segment(), index); }
+    /// {@return `glyph1`}
+    public @CType("int") int glyph1() { return STBTTKerningEntry.get_glyph1(this.segment()); }
+    /// Sets `glyph1` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_glyph1(MemorySegment segment, long index, @CType("int") int value) { VH_glyph1.set(segment, 0L, index, value); }
+    /// Sets `glyph1` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_glyph1(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_glyph1(segment, 0L, value); }
     /// Sets `glyph1` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTKerningEntry glyph1At(long index, @CType("int") int value) { VH_glyph1.set(this.segment(), 0L, index, value); return this; }
+    public STBTTKerningEntry glyph1At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph1(this.segment(), index, value); return this; }
     /// Sets `glyph1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTKerningEntry glyph1(@CType("int") int value) { return this.glyph1At(0L, value); }
+    public STBTTKerningEntry glyph1(@CType("int") int value) { STBTTKerningEntry.set_glyph1(this.segment(), value); return this; }
 
     /// {@return `glyph2` at the given index}
-    /// @param index the index
-    public @CType("int") int glyph2At(long index) { return (int) VH_glyph2.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_glyph2(MemorySegment segment, long index) { return (int) VH_glyph2.get(segment, 0L, index); }
     /// {@return `glyph2`}
-    public @CType("int") int glyph2() { return this.glyph2At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_glyph2(MemorySegment segment) { return STBTTKerningEntry.get_glyph2(segment, 0L); }
+    /// {@return `glyph2` at the given index}
+    /// @param index the index
+    public @CType("int") int glyph2At(long index) { return STBTTKerningEntry.get_glyph2(this.segment(), index); }
+    /// {@return `glyph2`}
+    public @CType("int") int glyph2() { return STBTTKerningEntry.get_glyph2(this.segment()); }
+    /// Sets `glyph2` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_glyph2(MemorySegment segment, long index, @CType("int") int value) { VH_glyph2.set(segment, 0L, index, value); }
+    /// Sets `glyph2` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_glyph2(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_glyph2(segment, 0L, value); }
     /// Sets `glyph2` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTKerningEntry glyph2At(long index, @CType("int") int value) { VH_glyph2.set(this.segment(), 0L, index, value); return this; }
+    public STBTTKerningEntry glyph2At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph2(this.segment(), index, value); return this; }
     /// Sets `glyph2` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTKerningEntry glyph2(@CType("int") int value) { return this.glyph2At(0L, value); }
+    public STBTTKerningEntry glyph2(@CType("int") int value) { STBTTKerningEntry.set_glyph2(this.segment(), value); return this; }
 
     /// {@return `advance` at the given index}
-    /// @param index the index
-    public @CType("int") int advanceAt(long index) { return (int) VH_advance.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_advance(MemorySegment segment, long index) { return (int) VH_advance.get(segment, 0L, index); }
     /// {@return `advance`}
-    public @CType("int") int advance() { return this.advanceAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_advance(MemorySegment segment) { return STBTTKerningEntry.get_advance(segment, 0L); }
+    /// {@return `advance` at the given index}
+    /// @param index the index
+    public @CType("int") int advanceAt(long index) { return STBTTKerningEntry.get_advance(this.segment(), index); }
+    /// {@return `advance`}
+    public @CType("int") int advance() { return STBTTKerningEntry.get_advance(this.segment()); }
+    /// Sets `advance` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_advance(MemorySegment segment, long index, @CType("int") int value) { VH_advance.set(segment, 0L, index, value); }
+    /// Sets `advance` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_advance(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_advance(segment, 0L, value); }
     /// Sets `advance` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTKerningEntry advanceAt(long index, @CType("int") int value) { VH_advance.set(this.segment(), 0L, index, value); return this; }
+    public STBTTKerningEntry advanceAt(long index, @CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), index, value); return this; }
     /// Sets `advance` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTKerningEntry advance(@CType("int") int value) { return this.advanceAt(0L, value); }
+    public STBTTKerningEntry advance(@CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), value); return this; }
 
 }

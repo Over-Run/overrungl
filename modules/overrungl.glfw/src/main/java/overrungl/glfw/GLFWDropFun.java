@@ -14,57 +14,85 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
 
-import overrun.marshal.Unmarshal;
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
+import io.github.overrun.memstack.MemoryStack;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * This is the function pointer type for path drop callbacks. A path drop
- * callback function has the following signature:
- * {@snippet lang = java:
- * void functionName(MemorySegment window, String[] paths); // @link regex="functionName" target="#invoke"
- * }
- * <h2>Pointer lifetime</h2>
- * The path array and its strings are valid until the callback function returns.
- *
- * @author squid233
- * @see GLFW#setDropCallback
- * @since 0.1.0
- */
+/// The function pointer type for path drop callbacks.
+/// 
+/// This is the function pointer type for path drop callbacks.  A path drop
+/// callback function has the following signature:
+/// ```
+/// void function_name(MemorySegment window, String[] paths)
+/// ```
+/// 
+/// TODO
+/// @see GLFW#glfwSetDropCallback()
 @FunctionalInterface
 public interface GLFWDropFun extends Upcall {
-    /**
-     * The type.
-     */
-    Type<GLFWDropFun> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(GLFWDropFun.class, "invoke", DESCRIPTOR);
 
-    /**
-     * The function pointer type for path drop callbacks.
-     *
-     * @param window The window that received the event.
-     * @param paths  The UTF-8 encoded file and/or directory path names.
-     */
-    void invoke(MemorySegment window, String[] paths);
+    ///The interface target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that received the event.
+    ///@param paths The UTF-8 encoded file and/or directory path names.
+    ///
+    ///@glfw.pointer_lifetime The path array and its strings are valid until the
+    ///callback function returns.
+    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, java.lang.String[] paths);
 
-    /**
-     * The function pointer type for path drop callbacks.
-     *
-     * @param window    The window that received the event.
-     * @param pathCount The number of dropped paths.
-     * @param paths     The UTF-8 encoded file and/or directory path names.
-     */
-    default void ninvoke(MemorySegment window, int pathCount, MemorySegment paths) {
-        invoke(window, Unmarshal.unmarshalAsStringArray(paths.reinterpret(ValueLayout.ADDRESS.scale(0L, pathCount))));
+    ///The target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that received the event.
+    ///@param path_count The number of dropped paths.
+    ///@param paths The UTF-8 encoded file and/or directory path names.
+    ///
+    ///@glfw.pointer_lifetime The path array and its strings are valid until the
+    ///callback function returns.
+    default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int path_count, java.lang.foreign.MemorySegment paths) {
+        var a = new String[path_count];
+        Unmarshal.copy(paths, a);
+        invoke(window, a);
     }
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that received the event.
+    ///@param path_count The number of dropped paths.
+    ///@param paths The UTF-8 encoded file and/or directory path names.
+    ///
+    ///@glfw.pointer_lifetime The path array and its strings are valid until the
+    ///callback function returns.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int path_count, java.lang.foreign.MemorySegment paths) {
+        try { HANDLE.invokeExact(stub, window, path_count, paths); }
+        catch (Throwable e) { throw new RuntimeException("error in GLFWDropFun::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static GLFWDropFun wrap(MemorySegment stub) {
+        return (window, paths) -> { try (var stack = MemoryStack.pushLocal()) {
+            invoke(stub, window, paths.length, Marshal.marshal(stack, paths));
+        } };
     }
 }

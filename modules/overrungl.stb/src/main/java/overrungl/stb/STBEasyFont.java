@@ -81,6 +81,7 @@ public final class STBEasyFont {
             return (float) MH_stb_easy_font_get_spacing.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
     }
+
     ///Use positive values to expand the space between characters,
     ///and small negative values (no smaller than -1.5) to contract
     ///the space between characters.
@@ -95,6 +96,7 @@ public final class STBEasyFont {
             MH_stb_easy_font_spacing.invokeExact(spacing);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
     }
+
     ///Takes a string (which can contain '\n') and fills out a
     ///vertex buffer with renderable data to draw the string.
     ///Output data assumes increasing x is rightwards, increasing y
@@ -123,19 +125,21 @@ public final class STBEasyFont {
     ///list that allows you to render quads as indexed triangles.
     ///
     ///@return the number of quads.
-    public static @CType("int") int stb_easy_font_print(@CType("float") float x, @CType("float") float y, @CType("char*") java.lang.foreign.MemorySegment text, @CType("unsigned char[4]") java.lang.foreign.MemorySegment color, @CType("void*") java.lang.foreign.MemorySegment vertex_buffer, @CType("int") int vbuf_size) {
+    public static @CType("int") int stb_easy_font_print(@CType("float") float x, @CType("float") float y, @CType("char *") java.lang.foreign.MemorySegment text, @CType("unsigned char[4]") java.lang.foreign.MemorySegment color, @CType("void*") java.lang.foreign.MemorySegment vertex_buffer, @CType("int") int vbuf_size) {
         try {
             return (int) MH_stb_easy_font_print.invokeExact(x, y, text, color, vertex_buffer, vbuf_size);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
     }
+
     ///Takes a string and returns the horizontal size and the
     ///vertical size (which can vary if 'text' has newlines).
     ///@return the horizontal size
-    public static @CType("int") int stb_easy_font_width(@CType("char*") java.lang.foreign.MemorySegment width) {
+    public static @CType("int") int stb_easy_font_width(@CType("char *") java.lang.foreign.MemorySegment width) {
         try {
             return (int) MH_stb_easy_font_width.invokeExact(width);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
+
     ///Takes a string and returns the horizontal size and the
     ///vertical size (which can vary if 'text' has newlines).
     ///@return the horizontal size
@@ -144,14 +148,16 @@ public final class STBEasyFont {
             return (int) MH_stb_easy_font_width.invokeExact(Marshal.marshal(__overrungl_stack, width));
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
+
     ///Takes a string and returns the horizontal size and the
     ///vertical size (which can vary if 'text' has newlines).
     ///@return the vertical size
-    public static @CType("int") int stb_easy_font_height(@CType("char*") java.lang.foreign.MemorySegment height) {
+    public static @CType("int") int stb_easy_font_height(@CType("char *") java.lang.foreign.MemorySegment height) {
         try {
             return (int) MH_stb_easy_font_height.invokeExact(height);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
     }
+
     ///Takes a string and returns the horizontal size and the
     ///vertical size (which can vary if 'text' has newlines).
     ///@return the vertical size
@@ -160,6 +166,7 @@ public final class STBEasyFont {
             return (int) MH_stb_easy_font_height.invokeExact(Marshal.marshal(__overrungl_stack, height));
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
     }
+
     //@formatter:on
     //endregion ---[END GENERATOR END]---
 

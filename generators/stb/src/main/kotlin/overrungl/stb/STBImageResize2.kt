@@ -22,7 +22,6 @@ val stbir_pixel_layout = int c "stbir_pixel_layout"
 val stbir_edge = int c "stbir_edge"
 val stbir_filter = int c "stbir_filter"
 val stbir_datatype = int c "stbir_datatype"
-val const_uchar_ptr = address c "const unsigned char *"
 val const_float_ptr = address c "const float *"
 val void_const_ptr = address c "void const *"
 val stbir_input_callback_ptr = address c "stbir_input_callback *"
@@ -71,48 +70,88 @@ fun STBImageResize2() {
         stbir__info_ptr("samplers")
     }
 
+    Upcall(stbPackage, "STBIRInputCallback", javadoc = "INPUT CALLBACK: this callback is used for input scanlines") {
+        targetMethod = "invoke"(
+            void_const_ptr,
+            void_ptr("optional_output"),
+            void_const_ptr("input_ptr"),
+            int("num_pixels"),
+            int("x"),
+            int("y"),
+            void_ptr("context")
+        )
+    }
+    Upcall(stbPackage, "STBIROutputCallback", javadoc = "OUTPUT CALLBACK: this callback is used for output scanlines") {
+        targetMethod = "invoke"(
+            void,
+            void_const_ptr("output_ptr"),
+            int("num_pixels"),
+            int("y"),
+            void_ptr("context")
+        )
+    }
+    Upcall(stbPackage, "STBIRKernelCallback", javadoc = "callbacks for user installed filters") {
+        targetMethod = "invoke"(
+            float,
+            float("x"),
+            float("scale"),
+            void_ptr("user_data")
+        )
+    }
+    Upcall(stbPackage, "STBIRSupportCallback", javadoc = "callbacks for user installed filters") {
+        targetMethod = "invoke"(
+            float,
+            float("scale"),
+            void_ptr("user_data")
+        )
+    }
+
     StaticDowncall(stbPackage, "STBImageResize2", symbolLookup = stbLookup) {
         // Easy-to-use API
-        stbir_pixel_layout("STBIR_1CHANNEL" to "1")
-        stbir_pixel_layout("STBIR_2CHANNEL" to "2")
-        stbir_pixel_layout("STBIR_RGB" to "3", javadoc = "3-chan, with order specified (for channel flipping)")
-        stbir_pixel_layout("STBIR_BGR" to "0", javadoc = "3-chan, with order specified (for channel flipping)")
-        stbir_pixel_layout("STBIR_4CHANNEL" to "5")
-
         stbir_pixel_layout(
-            "STBIR_RGBA" to "4",
-            javadoc = "alpha formats, where alpha is NOT premultiplied into color channels"
-        )
-        stbir_pixel_layout("STBIR_BGRA" to "6")
-        stbir_pixel_layout("STBIR_ARGB" to "7")
-        stbir_pixel_layout("STBIR_ABGR" to "8")
-        stbir_pixel_layout("STBIR_RA" to "9")
-        stbir_pixel_layout("STBIR_AR" to "10")
-
-        stbir_pixel_layout(
-            "STBIR_RGBA_PM" to "11",
-            javadoc = "alpha formats, where alpha is premultiplied into color channels"
-        )
-        stbir_pixel_layout("STBIR_BGRA_PM" to "12")
-        stbir_pixel_layout("STBIR_ARGB_PM" to "13")
-        stbir_pixel_layout("STBIR_ABGR_PM" to "14")
-        stbir_pixel_layout("STBIR_RA_PM" to "15")
-        stbir_pixel_layout("STBIR_AR_PM" to "16")
-
-        stbir_pixel_layout(
-            "STBIR_RGBA_NO_AW" to "11",
             javadoc = """
-                alpha formats, where NO alpha weighting is applied at all!
-                these are just synonyms for the _PM flags (which also do
-                no alpha weighting). These names just make it more clear
-                for some folks).
+                stbir_pixel_layout specifies:
+                - number of channels
+                - order of channels
+                - whether color is premultiplied by alpha
+                for back compatibility, you can cast the old channel count to an stbir_pixel_layout
             """.trimIndent()
-        )
-        stbir_pixel_layout("STBIR_BGRA_NO_AW" to "12")
-        stbir_pixel_layout("STBIR_ARGB_NO_AW" to "13")
-        stbir_pixel_layout("STBIR_ABGR_NO_AW" to "14")
-        stbir_pixel_layout("STBIR_RA_NO_AW" to "15")
-        stbir_pixel_layout("STBIR_AR_NO_AW" to "16")
+        ) {
+            "STBIR_1CHANNEL"("1")
+            "STBIR_2CHANNEL"("2")
+            "STBIR_RGB"("3", javadoc = "3-chan, with order specified (for channel flipping)")
+            "STBIR_BGR"("0", javadoc = "3-chan, with order specified (for channel flipping)")
+            "STBIR_4CHANNEL"("5")
+
+            "STBIR_RGBA"("4", javadoc = "alpha formats, where alpha is NOT premultiplied into color channels")
+            "STBIR_BGRA"("6")
+            "STBIR_ARGB"("7")
+            "STBIR_ABGR"("8")
+            "STBIR_RA"("9")
+            "STBIR_AR"("10")
+
+            "STBIR_RGBA_PM"("11", javadoc = "alpha formats, where alpha is premultiplied into color channels")
+            "STBIR_BGRA_PM"("12")
+            "STBIR_ARGB_PM"("13")
+            "STBIR_ABGR_PM"("14")
+            "STBIR_RA_PM"("15")
+            "STBIR_AR_PM"("16")
+
+            "STBIR_RGBA_NO_AW"(
+                "11",
+                javadoc = """
+                    alpha formats, where NO alpha weighting is applied at all!
+                    these are just synonyms for the _PM flags (which also do
+                    no alpha weighting). These names just make it more clear
+                    for some folks).
+                """.trimIndent()
+            )
+            "STBIR_BGRA_NO_AW"("12")
+            "STBIR_ARGB_NO_AW"("13")
+            "STBIR_ABGR_NO_AW"("14")
+            "STBIR_RA_NO_AW"("15")
+            "STBIR_AR_NO_AW"("16")
+        }
 
         "stbir_resize_uint8_srgb"(
             uchar_ptr,
@@ -138,38 +177,41 @@ fun STBImageResize2() {
 
 
         // Medium-complexity API
-        stbir_edge("STBIR_EDGE_CLAMP" to "0")
-        stbir_edge("STBIR_EDGE_REFLECT" to "1")
-        stbir_edge("STBIR_EDGE_WRAP" to "2", javadoc = "this edge mode is slower and uses more memory")
-        stbir_edge("STBIR_EDGE_ZERO" to "3")
+        stbir_edge(javadoc = "stbir_edge") {
+            "STBIR_EDGE_CLAMP"("0")
+            "STBIR_EDGE_REFLECT"("1")
+            "STBIR_EDGE_WRAP"("2", javadoc = "this edge mode is slower and uses more memory")
+            "STBIR_EDGE_ZERO"("3")
+        }
 
-        stbir_filter("STBIR_FILTER_DEFAULT" to "0", javadoc = "use same filter type that easy-to-use API chooses")
-        stbir_filter(
-            "STBIR_FILTER_BOX" to "1",
-            javadoc = "A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios"
-        )
-        stbir_filter(
-            "STBIR_FILTER_TRIANGLE" to "2",
-            javadoc = "On upsampling, produces same results as bilinear texture filtering"
-        )
-        stbir_filter(
-            "STBIR_FILTER_CUBICBSPLINE" to "3",
-            javadoc = "The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque"
-        )
-        stbir_filter("STBIR_FILTER_CATMULLROM" to "4", javadoc = "An interpolating cubic spline")
-        stbir_filter("STBIR_FILTER_MITCHELL" to "5", javadoc = "Mitchell-Netrevalli filter with B=1/3, C=1/3")
-        stbir_filter("STBIR_FILTER_POINT_SAMPLE" to "6", javadoc = "Simple point sampling")
-        stbir_filter("STBIR_FILTER_OTHER" to "7", javadoc = "User callback specified")
+        stbir_filter(javadoc = "stbir_filter") {
+            "STBIR_FILTER_DEFAULT"("0", javadoc = "use same filter type that easy-to-use API chooses")
+            "STBIR_FILTER_BOX"(
+                "1",
+                javadoc = "A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios"
+            )
+            "STBIR_FILTER_TRIANGLE"("2", javadoc = "On upsampling, produces same results as bilinear texture filtering")
+            "STBIR_FILTER_CUBICBSPLINE"(
+                "3",
+                javadoc = "The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque"
+            )
+            "STBIR_FILTER_CATMULLROM"("4", javadoc = "An interpolating cubic spline")
+            "STBIR_FILTER_MITCHELL"("5", javadoc = "Mitchell-Netrevalli filter with B=1/3, C=1/3")
+            "STBIR_FILTER_POINT_SAMPLE"("6", javadoc = "Simple point sampling")
+            "STBIR_FILTER_OTHER"("7", javadoc = "User callback specified")
+        }
 
-        stbir_datatype("STBIR_TYPE_UINT8" to "0")
-        stbir_datatype("STBIR_TYPE_UINT8_SRGB" to "1")
-        stbir_datatype(
-            "STBIR_TYPE_UINT8_SRGB_ALPHA" to "2",
-            javadoc = "alpha channel, when present, should also be SRGB (this is very unusual)"
-        )
-        stbir_datatype("STBIR_TYPE_UINT16" to "3")
-        stbir_datatype("STBIR_TYPE_FLOAT" to "4")
-        stbir_datatype("STBIR_TYPE_HALF_FLOAT" to "5")
+        stbir_datatype(javadoc = "stbir_datatype") {
+            "STBIR_TYPE_UINT8"("0")
+            "STBIR_TYPE_UINT8_SRGB"("1")
+            "STBIR_TYPE_UINT8_SRGB_ALPHA"(
+                "2",
+                javadoc = "alpha channel, when present, should also be SRGB (this is very unusual)"
+            )
+            "STBIR_TYPE_UINT16"("3")
+            "STBIR_TYPE_FLOAT"("4")
+            "STBIR_TYPE_HALF_FLOAT"("5")
+        }
 
         "stbir_resize"(
             void_ptr,

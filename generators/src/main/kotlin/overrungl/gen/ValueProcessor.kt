@@ -93,6 +93,26 @@ class StructProcessor(private val typeName: TypeName) : ValueProcessor {
     }
 
     override fun copy(context: ProcessorContext) {
-        TODO("Not yet implemented")
+        TODO("Not yet implemented: copy $typeName")
+    }
+}
+
+class UpcallProcessor(private val typeName: TypeName) : ValueProcessor {
+    override fun marshal(context: ProcessorContext) {
+        val builder = context.builder
+        builder.append("Marshal.marshal(${context.allocatorName}, ")
+        context.action(builder)
+        builder.append(")")
+    }
+
+    override fun unmarshal(context: ProcessorContext) {
+        val builder = context.builder
+        builder.append("$typeName.wrap(")
+        context.action(builder)
+        builder.append(")")
+    }
+
+    override fun copy(context: ProcessorContext) {
+        TODO("Not yet implemented: copy $typeName")
     }
 }

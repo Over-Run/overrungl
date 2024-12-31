@@ -18,7 +18,7 @@ package overrungl.nfd;
 
 import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.NotNull;
-import overrun.marshal.Unmarshal;
+import overrungl.util.Unmarshal;
 import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.MemoryLayout;

@@ -80,6 +80,7 @@ public final class STBRectPack {
             return (int) MH_stbrp_pack_rects.invokeExact(context, rects, num_rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
+
     ///Assign packed locations to rectangles. The rectangles are of type
     ///'stbrp_rect' defined below, stored in the array 'rects', and there
     ///are 'num_rects' many of them.
@@ -108,6 +109,7 @@ public final class STBRectPack {
             return (int) MH_stbrp_pack_rects.invokeExact(Marshal.marshal(context), Marshal.marshal(rects), num_rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
+
     ///Initialize a rectangle packer to:
     ///pack a rectangle that is 'width' by 'height' in dimensions
     ///using temporary storage provided by the array 'nodes', which is 'num_nodes' long
@@ -132,6 +134,7 @@ public final class STBRectPack {
             MH_stbrp_init_target.invokeExact(context, width, height, nodes, num_nodes);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
+
     ///Initialize a rectangle packer to:
     ///pack a rectangle that is 'width' by 'height' in dimensions
     ///using temporary storage provided by the array 'nodes', which is 'num_nodes' long
@@ -156,6 +159,7 @@ public final class STBRectPack {
             MH_stbrp_init_target.invokeExact(Marshal.marshal(context), width, height, Marshal.marshal(nodes), num_nodes);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
+
     ///Optionally call this function after init but before doing any packing to
     ///change the handling of the out-of-temp-memory scenario, described above.
     ///If you call init again, this will be reset to the default (false).
@@ -164,6 +168,7 @@ public final class STBRectPack {
             MH_stbrp_setup_allow_out_of_mem.invokeExact(context, allow_out_of_mem);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
+
     ///Optionally call this function after init but before doing any packing to
     ///change the handling of the out-of-temp-memory scenario, described above.
     ///If you call init again, this will be reset to the default (false).
@@ -172,6 +177,7 @@ public final class STBRectPack {
             MH_stbrp_setup_allow_out_of_mem.invokeExact(Marshal.marshal(context), allow_out_of_mem);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
+
     ///Optionally select which packing heuristic the library should use. Different
     ///heuristics will produce better/worse results for different data sets.
     ///If you call init again, this will be reset to the default.
@@ -180,6 +186,7 @@ public final class STBRectPack {
             MH_stbrp_setup_heuristic.invokeExact(context, heuristic);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }
     }
+
     ///Optionally select which packing heuristic the library should use. Different
     ///heuristics will produce better/worse results for different data sets.
     ///If you call init again, this will be reset to the default.
@@ -188,6 +195,7 @@ public final class STBRectPack {
             MH_stbrp_setup_heuristic.invokeExact(Marshal.marshal(context), heuristic);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }
     }
+
     //@formatter:on
     //endregion ---[END GENERATOR END]---
 

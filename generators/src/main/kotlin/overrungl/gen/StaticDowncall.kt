@@ -20,6 +20,9 @@ import com.palantir.javapoet.TypeName
 import java.nio.file.Files
 import kotlin.io.path.Path
 
+const val formatter_off = "    //@formatter:off"
+const val formatter_on = "    //@formatter:on"
+
 class StaticDowncall(
     packageName: String,
     name: String,
@@ -50,8 +53,8 @@ class StaticDowncall(
         fields.add(DowncallFieldGroup(this, javadoc, FieldGroupBuilder().also(builder).fields))
     }
 
-    operator fun CustomTypeSpec.invoke(name: String, javadoc: String? = null): DowncallParameter {
-        return DowncallParameter(this, name, javadoc)
+    operator fun CustomTypeSpec.invoke(name: String): DowncallParameter {
+        return DowncallParameter(this, name)
     }
 
     operator fun String.invoke(
@@ -83,7 +86,7 @@ class StaticDowncall(
         val path = Path("${packageName.replace('.', '/')}/$name.java")
         val sb = StringBuilder()
 
-        sb.appendLine("    //@formatter:off")
+        sb.appendLine(formatter_off)
 
         // fields
         fields.forEach {
@@ -92,16 +95,25 @@ class StaticDowncall(
 
         // method handles
         sb.appendLine("    //region Method handles")
-        mutableListOf<String>().also { l ->
+        mutableListOf<DowncallMethod>().also { l ->
             methods.forEach {
-                if (it.entrypoint != null && it.entrypoint !in l) {
-                    sb.appendLine(
-                        """
-                            |    /// The method handle of `${it.entrypoint}`.
-                            |    public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.downcall($symbolLookup, "${it.entrypoint}", ${it.functionDescriptor()});
-                        """.trimMargin()
-                    )
-                    l.add(it.entrypoint)
+                if (it.entrypoint != null) {
+                    val functionDescriptor = it.functionDescriptor
+                    val indexOf = l.indexOfFirst { e -> e.entrypoint == it.entrypoint }
+                    val m1 = if (indexOf != -1) l[indexOf] else null
+                    if (m1 != null) {
+                        if (functionDescriptor != m1.functionDescriptor) {
+                            error("Redefining method ${it.name} (entrypoint ${it.entrypoint}, descriptor $functionDescriptor) with method ${m1.name} (entrypoint ${m1.entrypoint}, descriptor ${m1.functionDescriptor})")
+                        }
+                    } else {
+                        sb.appendLine(
+                            """
+                                |    /// The method handle of `${it.entrypoint}`.
+                                |    public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.downcall($symbolLookup, "${it.entrypoint}", $functionDescriptor);
+                            """.trimMargin()
+                        )
+                        l.add(it)
+                    }
                 }
             }
         }
@@ -130,11 +142,15 @@ class StaticDowncall(
                 val allocatorParam: DowncallParameter? = if (m.overload) when (finalAllocatorRequirement) {
                     AllocatorRequirement.NO -> null
 
-                    AllocatorRequirement.STACK, AllocatorRequirement.SEGMENT_ALLOCATOR ->
+                    AllocatorRequirement.STACK ->
                         m.parameters.firstOrNull { p ->
                             p.type.javaType == Arena_ || p.type.javaType == SegmentAllocator_
-                        } ?: (if (finalAllocatorRequirement == AllocatorRequirement.STACK) null
-                        else error("A segment allocator or an Arena is required by ${m.name}"))
+                        }
+
+                    AllocatorRequirement.BY_VALUE_SEGMENT_ALLOCATOR, AllocatorRequirement.SEGMENT_ALLOCATOR ->
+                        m.parameters.firstOrNull { p ->
+                            p.type.javaType == Arena_ || p.type.javaType == SegmentAllocator_
+                        } ?: error("A segment allocator or an Arena is required by ${m.name}")
 
                     AllocatorRequirement.ARENA ->
                         m.parameters.firstOrNull { p ->
@@ -146,7 +162,7 @@ class StaticDowncall(
                 val refParams = m.parameters.filter { p -> p.marshalRef(m.overload) }
                 val writtenParams =
                     m.parameters.map { p ->
-                        if (p.marshalRef(m.overload)) DowncallParameter(address, "__overrungl_ref_${p.name}", null)
+                        if (p.marshalRef(m.overload)) DowncallParameter(address, "__overrungl_ref_${p.name}")
                         else p
                     }
 
@@ -221,9 +237,10 @@ class StaticDowncall(
                 sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
             }
             sb.appendLine("    }")
+            sb.appendLine()
         }
 
-        sb.appendLine("    //@formatter:on")
+        sb.appendLine(formatter_on)
 
         Files.writeString(path, replaceCode(Files.readString(path), sb.toString()))
     }

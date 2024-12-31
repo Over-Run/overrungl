@@ -18,9 +18,16 @@ package overrungl.stb
 
 import overrungl.gen.*
 
-val stbi_write_func_ptr = address c "stbi_write_func *"
-
 fun STBImageWrite() {
+    val stbi_write_func_ptr = Upcall(stbPackage, "STBIWriteFunc") {
+        targetMethod = "invoke"(
+            void,
+            void_ptr("context"),
+            void_ptr("data"),
+            int("size")
+        )
+    }.pointerType c "stbi_write_func *"
+
     StaticDowncall(stbPackage, "STBImageWrite", symbolLookup = stbLookup) {
         +"stbi_write_png"(
             boolean_int,
@@ -70,7 +77,7 @@ fun STBImageWrite() {
             entrypoint = "stbi_write_jpg"
         ).overload()
 
-        "stbi_write_png_to_func"(
+        +"stbi_write_png_to_func"(
             boolean_int,
             stbi_write_func_ptr("func"),
             void_ptr("context"),
@@ -80,8 +87,8 @@ fun STBImageWrite() {
             const_void_ptr("data"),
             int("stride_in_bytes"),
             entrypoint = "stbi_write_png_to_func"
-        )
-        "stbi_write_bmp_to_func"(
+        ).insertArena()
+        +"stbi_write_bmp_to_func"(
             boolean_int,
             stbi_write_func_ptr("func"),
             void_ptr("context"),
@@ -90,8 +97,8 @@ fun STBImageWrite() {
             int("comp"),
             const_void_ptr("data"),
             entrypoint = "stbi_write_bmp_to_func"
-        )
-        "stbi_write_tga_to_func"(
+        ).insertArena()
+        +"stbi_write_tga_to_func"(
             boolean_int,
             stbi_write_func_ptr("func"),
             void_ptr("context"),
@@ -100,8 +107,8 @@ fun STBImageWrite() {
             int("comp"),
             const_void_ptr("data"),
             entrypoint = "stbi_write_tga_to_func"
-        )
-        "stbi_write_hdr_to_func"(
+        ).insertArena()
+        +"stbi_write_hdr_to_func"(
             boolean_int,
             stbi_write_func_ptr("func"),
             void_ptr("context"),
@@ -110,8 +117,8 @@ fun STBImageWrite() {
             int("comp"),
             const_void_ptr("data"),
             entrypoint = "stbi_write_hdr_to_func"
-        )
-        "stbi_write_jpg_to_func"(
+        ).insertArena()
+        +"stbi_write_jpg_to_func"(
             boolean_int,
             stbi_write_func_ptr("func"),
             void_ptr("context"),
@@ -121,7 +128,7 @@ fun STBImageWrite() {
             const_void_ptr("data"),
             int("quality"),
             entrypoint = "stbi_write_jpg_to_func"
-        )
+        ).insertArena()
 
         "stbi_flip_vertically_on_write"(
             void,
@@ -129,4 +136,12 @@ fun STBImageWrite() {
             entrypoint = "stbi_flip_vertically_on_write"
         )
     }
+}
+
+private fun <T> List<T>.insertFirst(t: T): List<T> {
+    return toMutableList().also { it.addFirst(t) }
+}
+
+private fun DowncallMethod.insertArena(): DowncallMethod {
+    return let { it.overload(parameters = it.parameters.insertFirst(DowncallParameter(arena, "arena"))) }
 }

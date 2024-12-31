@@ -91,6 +91,7 @@ val jint_array = jint.array.copy(processor = ArrayValueProcessor("Int"), layout 
 val jlong_array = jlong.array.copy(processor = ArrayValueProcessor("Long"), layout = address.layout)
 val jfloat_array = jfloat.array.copy(processor = ArrayValueProcessor("Float"), layout = address.layout)
 val jdouble_array = jdouble.array.copy(processor = ArrayValueProcessor("Double"), layout = address.layout)
+val string_u8_array = string_u8.array.copy(processor = ArrayValueProcessor("String"), layout = address.layout)
 
 val bool = jboolean c "bool"
 val char = jbyte c "char"
@@ -115,6 +116,6 @@ val udouble = jdouble c "unsigned double"
 val const_char_ptr = string_u8 c "const char*"
 val const_void_ptr = address c "const void*"
 
-val char_ptr = string_u8 c "char*"
+val short_ptr = jshort_array c "short*"
 val int_ptr = jint_array c "int*"
 val float_ptr = jfloat_array c "float*"

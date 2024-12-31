@@ -24,6 +24,7 @@ const val stbLookup = "Handles.lookup"
 
 val boolean_int = jboolean c "int"
 val uchar_ptr = address c "unsigned char *"
+val const_uchar_ptr = address c "const unsigned char *"
 
 val int_ptr_ptr = address c "int**"
 

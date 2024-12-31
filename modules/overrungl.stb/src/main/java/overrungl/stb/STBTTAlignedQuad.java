@@ -1,15 +1,15 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2022-2024 Overrun Organization
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  */
@@ -124,123 +124,251 @@ public final class STBTTAlignedQuad extends Struct {
     public static STBTTAlignedQuad alloc(SegmentAllocator allocator, long count) { return new STBTTAlignedQuad(allocator.allocate(LAYOUT, count)); }
 
     /// {@return `x0` at the given index}
-    /// @param index the index
-    public @CType("float") float x0At(long index) { return (float) VH_x0.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_x0(MemorySegment segment, long index) { return (float) VH_x0.get(segment, 0L, index); }
     /// {@return `x0`}
-    public @CType("float") float x0() { return this.x0At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_x0(MemorySegment segment) { return STBTTAlignedQuad.get_x0(segment, 0L); }
+    /// {@return `x0` at the given index}
+    /// @param index the index
+    public @CType("float") float x0At(long index) { return STBTTAlignedQuad.get_x0(this.segment(), index); }
+    /// {@return `x0`}
+    public @CType("float") float x0() { return STBTTAlignedQuad.get_x0(this.segment()); }
+    /// Sets `x0` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_x0(MemorySegment segment, long index, @CType("float") float value) { VH_x0.set(segment, 0L, index, value); }
+    /// Sets `x0` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_x0(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_x0(segment, 0L, value); }
     /// Sets `x0` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad x0At(long index, @CType("float") float value) { VH_x0.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad x0At(long index, @CType("float") float value) { STBTTAlignedQuad.set_x0(this.segment(), index, value); return this; }
     /// Sets `x0` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad x0(@CType("float") float value) { return this.x0At(0L, value); }
+    public STBTTAlignedQuad x0(@CType("float") float value) { STBTTAlignedQuad.set_x0(this.segment(), value); return this; }
 
     /// {@return `y0` at the given index}
-    /// @param index the index
-    public @CType("float") float y0At(long index) { return (float) VH_y0.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_y0(MemorySegment segment, long index) { return (float) VH_y0.get(segment, 0L, index); }
     /// {@return `y0`}
-    public @CType("float") float y0() { return this.y0At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_y0(MemorySegment segment) { return STBTTAlignedQuad.get_y0(segment, 0L); }
+    /// {@return `y0` at the given index}
+    /// @param index the index
+    public @CType("float") float y0At(long index) { return STBTTAlignedQuad.get_y0(this.segment(), index); }
+    /// {@return `y0`}
+    public @CType("float") float y0() { return STBTTAlignedQuad.get_y0(this.segment()); }
+    /// Sets `y0` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_y0(MemorySegment segment, long index, @CType("float") float value) { VH_y0.set(segment, 0L, index, value); }
+    /// Sets `y0` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_y0(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_y0(segment, 0L, value); }
     /// Sets `y0` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad y0At(long index, @CType("float") float value) { VH_y0.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad y0At(long index, @CType("float") float value) { STBTTAlignedQuad.set_y0(this.segment(), index, value); return this; }
     /// Sets `y0` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad y0(@CType("float") float value) { return this.y0At(0L, value); }
+    public STBTTAlignedQuad y0(@CType("float") float value) { STBTTAlignedQuad.set_y0(this.segment(), value); return this; }
 
     /// {@return `s0` at the given index}
-    /// @param index the index
-    public @CType("float") float s0At(long index) { return (float) VH_s0.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_s0(MemorySegment segment, long index) { return (float) VH_s0.get(segment, 0L, index); }
     /// {@return `s0`}
-    public @CType("float") float s0() { return this.s0At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_s0(MemorySegment segment) { return STBTTAlignedQuad.get_s0(segment, 0L); }
+    /// {@return `s0` at the given index}
+    /// @param index the index
+    public @CType("float") float s0At(long index) { return STBTTAlignedQuad.get_s0(this.segment(), index); }
+    /// {@return `s0`}
+    public @CType("float") float s0() { return STBTTAlignedQuad.get_s0(this.segment()); }
+    /// Sets `s0` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_s0(MemorySegment segment, long index, @CType("float") float value) { VH_s0.set(segment, 0L, index, value); }
+    /// Sets `s0` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_s0(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_s0(segment, 0L, value); }
     /// Sets `s0` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad s0At(long index, @CType("float") float value) { VH_s0.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad s0At(long index, @CType("float") float value) { STBTTAlignedQuad.set_s0(this.segment(), index, value); return this; }
     /// Sets `s0` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad s0(@CType("float") float value) { return this.s0At(0L, value); }
+    public STBTTAlignedQuad s0(@CType("float") float value) { STBTTAlignedQuad.set_s0(this.segment(), value); return this; }
 
     /// {@return `t0` at the given index}
-    /// @param index the index
-    public @CType("float") float t0At(long index) { return (float) VH_t0.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_t0(MemorySegment segment, long index) { return (float) VH_t0.get(segment, 0L, index); }
     /// {@return `t0`}
-    public @CType("float") float t0() { return this.t0At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_t0(MemorySegment segment) { return STBTTAlignedQuad.get_t0(segment, 0L); }
+    /// {@return `t0` at the given index}
+    /// @param index the index
+    public @CType("float") float t0At(long index) { return STBTTAlignedQuad.get_t0(this.segment(), index); }
+    /// {@return `t0`}
+    public @CType("float") float t0() { return STBTTAlignedQuad.get_t0(this.segment()); }
+    /// Sets `t0` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_t0(MemorySegment segment, long index, @CType("float") float value) { VH_t0.set(segment, 0L, index, value); }
+    /// Sets `t0` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_t0(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_t0(segment, 0L, value); }
     /// Sets `t0` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad t0At(long index, @CType("float") float value) { VH_t0.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad t0At(long index, @CType("float") float value) { STBTTAlignedQuad.set_t0(this.segment(), index, value); return this; }
     /// Sets `t0` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad t0(@CType("float") float value) { return this.t0At(0L, value); }
+    public STBTTAlignedQuad t0(@CType("float") float value) { STBTTAlignedQuad.set_t0(this.segment(), value); return this; }
 
     /// {@return `x1` at the given index}
-    /// @param index the index
-    public @CType("float") float x1At(long index) { return (float) VH_x1.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_x1(MemorySegment segment, long index) { return (float) VH_x1.get(segment, 0L, index); }
     /// {@return `x1`}
-    public @CType("float") float x1() { return this.x1At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_x1(MemorySegment segment) { return STBTTAlignedQuad.get_x1(segment, 0L); }
+    /// {@return `x1` at the given index}
+    /// @param index the index
+    public @CType("float") float x1At(long index) { return STBTTAlignedQuad.get_x1(this.segment(), index); }
+    /// {@return `x1`}
+    public @CType("float") float x1() { return STBTTAlignedQuad.get_x1(this.segment()); }
+    /// Sets `x1` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_x1(MemorySegment segment, long index, @CType("float") float value) { VH_x1.set(segment, 0L, index, value); }
+    /// Sets `x1` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_x1(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_x1(segment, 0L, value); }
     /// Sets `x1` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad x1At(long index, @CType("float") float value) { VH_x1.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad x1At(long index, @CType("float") float value) { STBTTAlignedQuad.set_x1(this.segment(), index, value); return this; }
     /// Sets `x1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad x1(@CType("float") float value) { return this.x1At(0L, value); }
+    public STBTTAlignedQuad x1(@CType("float") float value) { STBTTAlignedQuad.set_x1(this.segment(), value); return this; }
 
     /// {@return `y1` at the given index}
-    /// @param index the index
-    public @CType("float") float y1At(long index) { return (float) VH_y1.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_y1(MemorySegment segment, long index) { return (float) VH_y1.get(segment, 0L, index); }
     /// {@return `y1`}
-    public @CType("float") float y1() { return this.y1At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_y1(MemorySegment segment) { return STBTTAlignedQuad.get_y1(segment, 0L); }
+    /// {@return `y1` at the given index}
+    /// @param index the index
+    public @CType("float") float y1At(long index) { return STBTTAlignedQuad.get_y1(this.segment(), index); }
+    /// {@return `y1`}
+    public @CType("float") float y1() { return STBTTAlignedQuad.get_y1(this.segment()); }
+    /// Sets `y1` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_y1(MemorySegment segment, long index, @CType("float") float value) { VH_y1.set(segment, 0L, index, value); }
+    /// Sets `y1` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_y1(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_y1(segment, 0L, value); }
     /// Sets `y1` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad y1At(long index, @CType("float") float value) { VH_y1.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad y1At(long index, @CType("float") float value) { STBTTAlignedQuad.set_y1(this.segment(), index, value); return this; }
     /// Sets `y1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad y1(@CType("float") float value) { return this.y1At(0L, value); }
+    public STBTTAlignedQuad y1(@CType("float") float value) { STBTTAlignedQuad.set_y1(this.segment(), value); return this; }
 
     /// {@return `s1` at the given index}
-    /// @param index the index
-    public @CType("float") float s1At(long index) { return (float) VH_s1.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_s1(MemorySegment segment, long index) { return (float) VH_s1.get(segment, 0L, index); }
     /// {@return `s1`}
-    public @CType("float") float s1() { return this.s1At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_s1(MemorySegment segment) { return STBTTAlignedQuad.get_s1(segment, 0L); }
+    /// {@return `s1` at the given index}
+    /// @param index the index
+    public @CType("float") float s1At(long index) { return STBTTAlignedQuad.get_s1(this.segment(), index); }
+    /// {@return `s1`}
+    public @CType("float") float s1() { return STBTTAlignedQuad.get_s1(this.segment()); }
+    /// Sets `s1` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_s1(MemorySegment segment, long index, @CType("float") float value) { VH_s1.set(segment, 0L, index, value); }
+    /// Sets `s1` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_s1(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_s1(segment, 0L, value); }
     /// Sets `s1` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad s1At(long index, @CType("float") float value) { VH_s1.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad s1At(long index, @CType("float") float value) { STBTTAlignedQuad.set_s1(this.segment(), index, value); return this; }
     /// Sets `s1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad s1(@CType("float") float value) { return this.s1At(0L, value); }
+    public STBTTAlignedQuad s1(@CType("float") float value) { STBTTAlignedQuad.set_s1(this.segment(), value); return this; }
 
     /// {@return `t1` at the given index}
-    /// @param index the index
-    public @CType("float") float t1At(long index) { return (float) VH_t1.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float") float get_t1(MemorySegment segment, long index) { return (float) VH_t1.get(segment, 0L, index); }
     /// {@return `t1`}
-    public @CType("float") float t1() { return this.t1At(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("float") float get_t1(MemorySegment segment) { return STBTTAlignedQuad.get_t1(segment, 0L); }
+    /// {@return `t1` at the given index}
+    /// @param index the index
+    public @CType("float") float t1At(long index) { return STBTTAlignedQuad.get_t1(this.segment(), index); }
+    /// {@return `t1`}
+    public @CType("float") float t1() { return STBTTAlignedQuad.get_t1(this.segment()); }
+    /// Sets `t1` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_t1(MemorySegment segment, long index, @CType("float") float value) { VH_t1.set(segment, 0L, index, value); }
+    /// Sets `t1` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_t1(MemorySegment segment, @CType("float") float value) { STBTTAlignedQuad.set_t1(segment, 0L, value); }
     /// Sets `t1` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad t1At(long index, @CType("float") float value) { VH_t1.set(this.segment(), 0L, index, value); return this; }
+    public STBTTAlignedQuad t1At(long index, @CType("float") float value) { STBTTAlignedQuad.set_t1(this.segment(), index, value); return this; }
     /// Sets `t1` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBTTAlignedQuad t1(@CType("float") float value) { return this.t1At(0L, value); }
+    public STBTTAlignedQuad t1(@CType("float") float value) { STBTTAlignedQuad.set_t1(this.segment(), value); return this; }
 
 }

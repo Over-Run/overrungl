@@ -21,6 +21,7 @@ import com.palantir.javapoet.TypeName
 enum class AllocatorRequirement {
     NO,
     STACK,
+    BY_VALUE_SEGMENT_ALLOCATOR,
     SEGMENT_ALLOCATOR,
     ARENA;
 
@@ -39,40 +40,40 @@ data class DowncallMethod(
     val overload: Boolean
 ) {
     val allocatorRequirement: AllocatorRequirement by lazy {
-        parameters.map { p ->
+        val req1 = parameters.map { p ->
             if (p.ref) p.type.allocatorRequirement.stricter(AllocatorRequirement.STACK)
             else p.type.allocatorRequirement
         }.reduceOrNull(AllocatorRequirement::stricter) ?: AllocatorRequirement.NO
+        returnType.allocatorRequirement.stricter(req1)
+    }
+    val functionDescriptor: String by lazy {
+        buildString {
+            append("FunctionDescriptor.of")
+            if (returnType.carrier == TypeName.VOID) {
+                append("Void")
+            }
+            append("(")
+            if (returnType.carrier != TypeName.VOID) {
+                append(returnType.layout)
+                if (parameters.isNotEmpty()) {
+                    append(", ")
+                }
+            }
+            append(parameters.filter { it.type.layout != null }.joinToString { it.type.layout!! })
+            append(")")
+        }
     }
 
     fun overload(
         name: String = this.name,
-        parameters: List<DowncallParameter> = this.parameters
-    ): DowncallMethod = copy(name = name, parameters = parameters, overload = true)
-
-    fun functionDescriptor(): String {
-        val sb = StringBuilder()
-        sb.append("FunctionDescriptor.of")
-        if (returnType.carrier == TypeName.VOID) {
-            sb.append("Void")
-        }
-        sb.append("(")
-        if (returnType.carrier != TypeName.VOID) {
-            sb.append(returnType.layout)
-            if (parameters.isNotEmpty()) {
-                sb.append(", ")
-            }
-        }
-        sb.append(parameters.filter { it.type.layout != null }.joinToString { it.type.layout!! })
-        sb.append(")")
-        return sb.toString()
-    }
+        parameters: List<DowncallParameter> = this.parameters,
+        javadoc: String? = this.javadoc,
+    ): DowncallMethod = copy(name = name, parameters = parameters, javadoc = javadoc, overload = true)
 }
 
 data class DowncallParameter(
     val type: CustomTypeSpec,
     val name: String,
-    val javadoc: String?,
     val ref: Boolean = false
 ) {
     fun ref(): DowncallParameter = copy(ref = true)

@@ -1,15 +1,15 @@
 /*
  * MIT License
- * 
+ *
  * Copyright (c) 2022-2024 Overrun Organization
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  */
@@ -108,93 +108,189 @@ public final class STBRPRect extends Struct {
     public static STBRPRect alloc(SegmentAllocator allocator, long count) { return new STBRPRect(allocator.allocate(LAYOUT, count)); }
 
     /// {@return `id` at the given index}
-    /// @param index the index
-    public @CType("int") int idAt(long index) { return (int) VH_id.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_id(MemorySegment segment, long index) { return (int) VH_id.get(segment, 0L, index); }
     /// {@return `id`}
-    public @CType("int") int id() { return this.idAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_id(MemorySegment segment) { return STBRPRect.get_id(segment, 0L); }
+    /// {@return `id` at the given index}
+    /// @param index the index
+    public @CType("int") int idAt(long index) { return STBRPRect.get_id(this.segment(), index); }
+    /// {@return `id`}
+    public @CType("int") int id() { return STBRPRect.get_id(this.segment()); }
+    /// Sets `id` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_id(MemorySegment segment, long index, @CType("int") int value) { VH_id.set(segment, 0L, index, value); }
+    /// Sets `id` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_id(MemorySegment segment, @CType("int") int value) { STBRPRect.set_id(segment, 0L, value); }
     /// Sets `id` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBRPRect idAt(long index, @CType("int") int value) { VH_id.set(this.segment(), 0L, index, value); return this; }
+    public STBRPRect idAt(long index, @CType("int") int value) { STBRPRect.set_id(this.segment(), index, value); return this; }
     /// Sets `id` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBRPRect id(@CType("int") int value) { return this.idAt(0L, value); }
+    public STBRPRect id(@CType("int") int value) { STBRPRect.set_id(this.segment(), value); return this; }
 
     /// {@return `w` at the given index}
-    /// @param index the index
-    public @CType("stbrp_coord") int wAt(long index) { return (int) VH_w.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("stbrp_coord") int get_w(MemorySegment segment, long index) { return (int) VH_w.get(segment, 0L, index); }
     /// {@return `w`}
-    public @CType("stbrp_coord") int w() { return this.wAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("stbrp_coord") int get_w(MemorySegment segment) { return STBRPRect.get_w(segment, 0L); }
+    /// {@return `w` at the given index}
+    /// @param index the index
+    public @CType("stbrp_coord") int wAt(long index) { return STBRPRect.get_w(this.segment(), index); }
+    /// {@return `w`}
+    public @CType("stbrp_coord") int w() { return STBRPRect.get_w(this.segment()); }
+    /// Sets `w` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_w(MemorySegment segment, long index, @CType("stbrp_coord") int value) { VH_w.set(segment, 0L, index, value); }
+    /// Sets `w` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_w(MemorySegment segment, @CType("stbrp_coord") int value) { STBRPRect.set_w(segment, 0L, value); }
     /// Sets `w` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBRPRect wAt(long index, @CType("stbrp_coord") int value) { VH_w.set(this.segment(), 0L, index, value); return this; }
+    public STBRPRect wAt(long index, @CType("stbrp_coord") int value) { STBRPRect.set_w(this.segment(), index, value); return this; }
     /// Sets `w` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBRPRect w(@CType("stbrp_coord") int value) { return this.wAt(0L, value); }
+    public STBRPRect w(@CType("stbrp_coord") int value) { STBRPRect.set_w(this.segment(), value); return this; }
 
     /// {@return `h` at the given index}
-    /// @param index the index
-    public @CType("stbrp_coord") int hAt(long index) { return (int) VH_h.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("stbrp_coord") int get_h(MemorySegment segment, long index) { return (int) VH_h.get(segment, 0L, index); }
     /// {@return `h`}
-    public @CType("stbrp_coord") int h() { return this.hAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("stbrp_coord") int get_h(MemorySegment segment) { return STBRPRect.get_h(segment, 0L); }
+    /// {@return `h` at the given index}
+    /// @param index the index
+    public @CType("stbrp_coord") int hAt(long index) { return STBRPRect.get_h(this.segment(), index); }
+    /// {@return `h`}
+    public @CType("stbrp_coord") int h() { return STBRPRect.get_h(this.segment()); }
+    /// Sets `h` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_h(MemorySegment segment, long index, @CType("stbrp_coord") int value) { VH_h.set(segment, 0L, index, value); }
+    /// Sets `h` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_h(MemorySegment segment, @CType("stbrp_coord") int value) { STBRPRect.set_h(segment, 0L, value); }
     /// Sets `h` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBRPRect hAt(long index, @CType("stbrp_coord") int value) { VH_h.set(this.segment(), 0L, index, value); return this; }
+    public STBRPRect hAt(long index, @CType("stbrp_coord") int value) { STBRPRect.set_h(this.segment(), index, value); return this; }
     /// Sets `h` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBRPRect h(@CType("stbrp_coord") int value) { return this.hAt(0L, value); }
+    public STBRPRect h(@CType("stbrp_coord") int value) { STBRPRect.set_h(this.segment(), value); return this; }
 
     /// {@return `x` at the given index}
-    /// @param index the index
-    public @CType("stbrp_coord") int xAt(long index) { return (int) VH_x.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("stbrp_coord") int get_x(MemorySegment segment, long index) { return (int) VH_x.get(segment, 0L, index); }
     /// {@return `x`}
-    public @CType("stbrp_coord") int x() { return this.xAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("stbrp_coord") int get_x(MemorySegment segment) { return STBRPRect.get_x(segment, 0L); }
+    /// {@return `x` at the given index}
+    /// @param index the index
+    public @CType("stbrp_coord") int xAt(long index) { return STBRPRect.get_x(this.segment(), index); }
+    /// {@return `x`}
+    public @CType("stbrp_coord") int x() { return STBRPRect.get_x(this.segment()); }
+    /// Sets `x` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_x(MemorySegment segment, long index, @CType("stbrp_coord") int value) { VH_x.set(segment, 0L, index, value); }
+    /// Sets `x` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_x(MemorySegment segment, @CType("stbrp_coord") int value) { STBRPRect.set_x(segment, 0L, value); }
     /// Sets `x` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBRPRect xAt(long index, @CType("stbrp_coord") int value) { VH_x.set(this.segment(), 0L, index, value); return this; }
+    public STBRPRect xAt(long index, @CType("stbrp_coord") int value) { STBRPRect.set_x(this.segment(), index, value); return this; }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBRPRect x(@CType("stbrp_coord") int value) { return this.xAt(0L, value); }
+    public STBRPRect x(@CType("stbrp_coord") int value) { STBRPRect.set_x(this.segment(), value); return this; }
 
     /// {@return `y` at the given index}
-    /// @param index the index
-    public @CType("stbrp_coord") int yAt(long index) { return (int) VH_y.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("stbrp_coord") int get_y(MemorySegment segment, long index) { return (int) VH_y.get(segment, 0L, index); }
     /// {@return `y`}
-    public @CType("stbrp_coord") int y() { return this.yAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("stbrp_coord") int get_y(MemorySegment segment) { return STBRPRect.get_y(segment, 0L); }
+    /// {@return `y` at the given index}
+    /// @param index the index
+    public @CType("stbrp_coord") int yAt(long index) { return STBRPRect.get_y(this.segment(), index); }
+    /// {@return `y`}
+    public @CType("stbrp_coord") int y() { return STBRPRect.get_y(this.segment()); }
+    /// Sets `y` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_y(MemorySegment segment, long index, @CType("stbrp_coord") int value) { VH_y.set(segment, 0L, index, value); }
+    /// Sets `y` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_y(MemorySegment segment, @CType("stbrp_coord") int value) { STBRPRect.set_y(segment, 0L, value); }
     /// Sets `y` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBRPRect yAt(long index, @CType("stbrp_coord") int value) { VH_y.set(this.segment(), 0L, index, value); return this; }
+    public STBRPRect yAt(long index, @CType("stbrp_coord") int value) { STBRPRect.set_y(this.segment(), index, value); return this; }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBRPRect y(@CType("stbrp_coord") int value) { return this.yAt(0L, value); }
+    public STBRPRect y(@CType("stbrp_coord") int value) { STBRPRect.set_y(this.segment(), value); return this; }
 
     /// {@return `was_packed` at the given index}
-    /// @param index the index
-    public @CType("int") int was_packedAt(long index) { return (int) VH_was_packed.get(this.segment(), 0L, index); }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_was_packed(MemorySegment segment, long index) { return (int) VH_was_packed.get(segment, 0L, index); }
     /// {@return `was_packed`}
-    public @CType("int") int was_packed() { return this.was_packedAt(0L); }
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_was_packed(MemorySegment segment) { return STBRPRect.get_was_packed(segment, 0L); }
+    /// {@return `was_packed` at the given index}
+    /// @param index the index
+    public @CType("int") int was_packedAt(long index) { return STBRPRect.get_was_packed(this.segment(), index); }
+    /// {@return `was_packed`}
+    public @CType("int") int was_packed() { return STBRPRect.get_was_packed(this.segment()); }
+    /// Sets `was_packed` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_was_packed(MemorySegment segment, long index, @CType("int") int value) { VH_was_packed.set(segment, 0L, index, value); }
+    /// Sets `was_packed` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_was_packed(MemorySegment segment, @CType("int") int value) { STBRPRect.set_was_packed(segment, 0L, value); }
     /// Sets `was_packed` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public STBRPRect was_packedAt(long index, @CType("int") int value) { VH_was_packed.set(this.segment(), 0L, index, value); return this; }
+    public STBRPRect was_packedAt(long index, @CType("int") int value) { STBRPRect.set_was_packed(this.segment(), index, value); return this; }
     /// Sets `was_packed` with the given value.
     /// @param value the value
     /// @return `this`
-    public STBRPRect was_packed(@CType("int") int value) { return this.was_packedAt(0L, value); }
+    public STBRPRect was_packed(@CType("int") int value) { STBRPRect.set_was_packed(this.segment(), value); return this; }
 
 }
