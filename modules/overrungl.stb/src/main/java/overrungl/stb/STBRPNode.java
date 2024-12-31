@@ -52,6 +52,11 @@ public final class STBRPNode extends Struct {
     /// @param segment the memory segment
     public STBRPNode(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBRPNode` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPNode of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPNode(segment); }
+
     /// Allocates a `STBRPNode` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBRPNode`

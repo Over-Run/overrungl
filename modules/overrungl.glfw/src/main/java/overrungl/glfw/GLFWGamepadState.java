@@ -72,6 +72,11 @@ public final class GLFWGamepadState extends Struct {
     /// @param segment the memory segment
     public GLFWGamepadState(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `GLFWGamepadState` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static GLFWGamepadState of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWGamepadState(segment); }
+
     /// Allocates a `GLFWGamepadState` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWGamepadState`

@@ -22,7 +22,6 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
-import io.github.overrun.memstack.MemoryStack;
 
 /// The function pointer type for error callbacks.
 /// 
@@ -32,7 +31,6 @@ import io.github.overrun.memstack.MemoryStack;
 /// void callback_name(int error_code, String description)
 /// ```
 /// 
-/// TODO
 /// @see GLFW#glfwSetErrorCallback(MemorySegment)
 @FunctionalInterface
 public interface GLFWErrorFun extends Upcall {

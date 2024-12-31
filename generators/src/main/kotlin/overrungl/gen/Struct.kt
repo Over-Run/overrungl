@@ -189,6 +189,11 @@ class Struct(
                 |    /// @param segment the memory segment
                 |    public $name(MemorySegment segment) { super(segment, LAYOUT); }
                 |
+                |    /// Creates `$name` with the given segment.
+                |    /// @param segment the memory segment
+                |    /// @return the created instance or `null` if the segment is `NULL`
+                |    public static $name of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment); }
+                |
             """.trimMargin()
         )
 

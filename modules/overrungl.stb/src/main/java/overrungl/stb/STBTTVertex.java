@@ -88,6 +88,11 @@ public final class STBTTVertex extends Struct {
     /// @param segment the memory segment
     public STBTTVertex(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBTTVertex` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBTTVertex of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTVertex(segment); }
+
     /// Allocates a `STBTTVertex` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTVertex`

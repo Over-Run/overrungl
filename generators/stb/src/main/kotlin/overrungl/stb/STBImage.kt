@@ -331,9 +331,10 @@ fun STBImage() {
             entrypoint = "stbi_set_flip_vertically_on_load"
         )
 
+        val const_char_ptr1 = address c "const char *"
         "stbi_zlib_decode_malloc_guesssize"(
             char_ptr,
-            const_char_ptr("buffer"),
+            const_char_ptr1("buffer"),
             int("len"),
             int("initial_size"),
             int_ptr("outlen").ref(),
@@ -341,7 +342,7 @@ fun STBImage() {
         )
         "stbi_zlib_decode_malloc_guesssize_headerflag"(
             char_ptr,
-            const_char_ptr("buffer"),
+            const_char_ptr1("buffer"),
             int("len"),
             int("initial_size"),
             int_ptr("outlen").ref(),
@@ -350,7 +351,7 @@ fun STBImage() {
         )
         "stbi_zlib_decode_malloc"(
             char_ptr,
-            const_char_ptr("buffer"),
+            const_char_ptr1("buffer"),
             int("len"),
             int_ptr("outlen").ref(),
             entrypoint = "stbi_zlib_decode_malloc"
@@ -359,13 +360,13 @@ fun STBImage() {
             int,
             char_ptr("obuffer"),
             int("olen"),
-            const_char_ptr("ibuffer"),
+            const_char_ptr1("ibuffer"),
             int("ilen"),
             entrypoint = "stbi_zlib_decode_buffer"
         )
         "stbi_zlib_decode_noheader_malloc"(
             char_ptr,
-            const_char_ptr("buffer"),
+            const_char_ptr1("buffer"),
             int("len"),
             int_ptr("outlen"),
             entrypoint = "stbi_zlib_decode_noheader_malloc"
@@ -374,7 +375,7 @@ fun STBImage() {
             int,
             char_ptr("obuffer"),
             int("olen"),
-            const_char_ptr("ibuffer"),
+            const_char_ptr1("ibuffer"),
             int("ilen"),
             entrypoint = "stbi_zlib_decode_noheader_buffer"
         )

@@ -16,8 +16,8 @@
 
 package overrungl.opengl;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.Unmarshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.value.Pair;
 
 import java.lang.foreign.FunctionDescriptor;

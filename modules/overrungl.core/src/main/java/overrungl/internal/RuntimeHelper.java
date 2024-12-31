@@ -18,7 +18,7 @@ package overrungl.internal;
 
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
-import overrungl.Configurations;
+import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
 
 import java.io.IOException;
@@ -115,7 +115,7 @@ public final class RuntimeHelper {
             }
             uri = libFile;
         }
-        if (Configurations.DEBUG.get()) {
+        if (OverrunGLConfigurations.DEBUG.get()) {
             OverrunGL.apiLog("[OverrunGL] Loading native library from: " + uri);
         }
         // Load the library by the path with the global arena

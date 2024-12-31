@@ -16,13 +16,13 @@
 
 package overrungl.demo.mem;
 
-import io.github.overrun.memstack.MemoryStack;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import overrungl.util.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.Arena;

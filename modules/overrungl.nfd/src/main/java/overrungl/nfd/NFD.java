@@ -16,12 +16,12 @@
 
 package overrungl.nfd;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.annotation.CType;
 import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
 import overrungl.struct.Struct;
 import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -119,6 +119,7 @@ import java.lang.invoke.MethodHandle;
 public final class NFD {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
     ///#### Documentation of fields
     ///##### NFD_ERROR
     ///Programmatic error
@@ -148,6 +149,7 @@ public final class NFD {
     ///compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
     ///NFD differently depending on the version you're building with.
     public static final int NFD_INTERFACE_VERSION = 1;
+    //endregion
     //region Method handles
     /// The method handle of `NFD_FreePathN`.
     public static final MethodHandle MH_NFD_FreePathN = RuntimeHelper.downcall(NFDInternal.LOOKUP, "NFD_FreePathN", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
@@ -374,7 +376,7 @@ public final class NFD {
     ///conversion.
     ///@return The last error that was set, or null if there is no error.
     public static @CType("const char*") java.lang.String NFD_GetError() {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+        try {
             return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) MH_NFD_GetError.invokeExact());
         } catch (Throwable e) { throw new RuntimeException("error in NFD_GetError", e); }
     }

@@ -16,8 +16,8 @@
 
 package overrungl.nfd;
 
-import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.NotNull;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 import overrungl.util.value.Tuple2;
 

@@ -88,9 +88,6 @@ class Upcall(
                 import overrungl.util.*;
             """.trimIndent()
         )
-        if (allocatorRequirement == AllocatorRequirement.STACK) {
-            sb.appendLine("import io.github.overrun.memstack.MemoryStack;")
-        }
         sb.appendLine()
 
         // javadoc

@@ -20,9 +20,6 @@ import com.palantir.javapoet.TypeName
 import java.nio.file.Files
 import kotlin.io.path.Path
 
-const val formatter_off = "    //@formatter:off"
-const val formatter_on = "    //@formatter:on"
-
 class StaticDowncall(
     packageName: String,
     name: String,
@@ -63,7 +60,8 @@ class StaticDowncall(
         entrypoint: String?,
         javadoc: String? = null,
         code: String? = null,
-        overload: Boolean = false
+        overload: Boolean = false,
+        addNow: Boolean = true
     ): DowncallMethod {
         val method = DowncallMethod(
             returnType,
@@ -74,7 +72,7 @@ class StaticDowncall(
             code,
             overload
         )
-        methods.add(method)
+        if (addNow) methods.add(method)
         return method
     }
 
@@ -89,9 +87,11 @@ class StaticDowncall(
         sb.appendLine(formatter_off)
 
         // fields
+        sb.appendLine("    //region Fields")
         fields.forEach {
             it.append(sb)
         }
+        sb.appendLine("    //endregion")
 
         // method handles
         sb.appendLine("    //region Method handles")

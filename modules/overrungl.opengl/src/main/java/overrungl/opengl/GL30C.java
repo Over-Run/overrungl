@@ -16,7 +16,6 @@
 
 package overrungl.opengl;
 
-import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
@@ -26,6 +25,7 @@ import overrun.marshal.gen.Ref;
 import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBColorBufferFloat;
 import overrungl.opengl.ext.arb.GLARBTextureFloat;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;

@@ -85,6 +85,11 @@ public final class GLFWAllocator extends Struct {
     /// @param segment the memory segment
     public GLFWAllocator(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `GLFWAllocator` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static GLFWAllocator of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWAllocator(segment); }
+
     /// Allocates a `GLFWAllocator` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWAllocator`

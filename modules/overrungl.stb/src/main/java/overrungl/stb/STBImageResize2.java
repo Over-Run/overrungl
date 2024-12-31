@@ -32,6 +32,7 @@ import java.lang.invoke.MethodHandle;
 public final class STBImageResize2 {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
     ///stbir_pixel_layout specifies:
     ///- number of channels
     ///- order of channels
@@ -122,6 +123,7 @@ public final class STBImageResize2 {
         STBIR_TYPE_UINT16 = 3,
         STBIR_TYPE_FLOAT = 4,
         STBIR_TYPE_HALF_FLOAT = 5;
+    //endregion
     //region Method handles
     /// The method handle of `stbir_resize_uint8_srgb`.
     public static final MethodHandle MH_stbir_resize_uint8_srgb = RuntimeHelper.downcall(Handles.lookup, "stbir_resize_uint8_srgb", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));

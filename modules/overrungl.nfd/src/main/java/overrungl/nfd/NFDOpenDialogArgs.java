@@ -66,6 +66,11 @@ public final class NFDOpenDialogArgs extends Struct {
     /// @param segment the memory segment
     public NFDOpenDialogArgs(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `NFDOpenDialogArgs` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static NFDOpenDialogArgs of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new NFDOpenDialogArgs(segment); }
+
     /// Allocates a `NFDOpenDialogArgs` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `NFDOpenDialogArgs`

@@ -16,10 +16,10 @@
 
 package overrungl.stb;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.annotation.CType;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.*;
@@ -34,6 +34,8 @@ import java.lang.invoke.MethodHandle;
 public final class STBImageWrite {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
+    //endregion
     //region Method handles
     /// The method handle of `stbi_write_png`.
     public static final MethodHandle MH_stbi_write_png = RuntimeHelper.downcall(Handles.lookup, "stbi_write_png", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));

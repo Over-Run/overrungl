@@ -16,7 +16,6 @@
 
 package overrungl.opengl;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
@@ -25,6 +24,7 @@ import overrun.marshal.gen.Ref;
 import overrun.marshal.gen.Skip;
 import overrungl.opengl.ext.arb.GLARBOcclusionQuery;
 import overrungl.opengl.ext.arb.GLARBVertexBufferObject;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;

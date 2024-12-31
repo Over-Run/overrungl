@@ -16,11 +16,11 @@
 
 package overrungl.stb;
 
-import io.github.overrun.memstack.MemoryStack;
 import org.jetbrains.annotations.Nullable;
 import overrungl.annotation.CType;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -62,6 +62,8 @@ import java.lang.invoke.MethodHandle;
 public final class STBEasyFont {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
+    //endregion
     //region Method handles
     /// The method handle of `stb_easy_font_get_spacing`.
     public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(Handles.lookup, "stb_easy_font_get_spacing", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT));

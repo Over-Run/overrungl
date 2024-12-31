@@ -197,4 +197,20 @@ public final class Marshal {
         }
         return segment;
     }
+
+    /**
+     * Converts the given array to a segment.
+     *
+     * @param allocator the allocator
+     * @param arr       the array
+     * @return the segment
+     */
+    public static MemorySegment marshal(SegmentAllocator allocator, MemorySegment @Nullable [] arr) {
+        if (arr == null) return MemorySegment.NULL;
+        MemorySegment segment = allocator.allocate(ADDRESS, arr.length);
+        for (int i = 0; i < arr.length; i++) {
+            segment.setAtIndex(ADDRESS, i, arr[i]);
+        }
+        return segment;
+    }
 }

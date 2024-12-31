@@ -16,7 +16,6 @@
 
 package overrungl.opengl;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrun.marshal.DirectAccess;
 import overrun.marshal.Marshal;
 import overrun.marshal.Unmarshal;
@@ -27,6 +26,7 @@ import overrungl.opengl.ext.arb.GLARBDrawBuffersBlend;
 import overrungl.opengl.ext.arb.GLARBSampleShading;
 import overrungl.opengl.ext.arb.GLARBTextureCubeMapArray;
 import overrungl.opengl.ext.arb.GLARBTextureGather;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;

@@ -16,9 +16,9 @@
 
 package overrungl.demo.nfd;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.nfd.NFDEnumerator;
 import overrungl.nfd.NFDFilterItem;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;

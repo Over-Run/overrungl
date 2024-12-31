@@ -137,11 +137,3 @@ fun STBImageWrite() {
         )
     }
 }
-
-private fun <T> List<T>.insertFirst(t: T): List<T> {
-    return toMutableList().also { it.addFirst(t) }
-}
-
-private fun DowncallMethod.insertArena(): DowncallMethod {
-    return let { it.overload(parameters = it.parameters.insertFirst(DowncallParameter(arena, "arena"))) }
-}

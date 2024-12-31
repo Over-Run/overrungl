@@ -195,6 +195,17 @@ public final class Unmarshal {
     /**
      * Unmarshal the given segment as an array.
      *
+     * @param elementLayout the source element layout
+     * @param segment       the segment
+     * @return the array
+     */
+    public static MemorySegment @Nullable [] unmarshal(AddressLayout elementLayout, MemorySegment segment) {
+        return isNullPointer(segment) ? null : segment.elements(elementLayout).toArray(MemorySegment[]::new);
+    }
+
+    /**
+     * Unmarshal the given segment as an array.
+     *
      * @param segment the segment
      * @return the array
      */
@@ -260,6 +271,16 @@ public final class Unmarshal {
      */
     public static double @Nullable [] unmarshalAsDoubleArray(MemorySegment segment) {
         return unmarshal(JAVA_DOUBLE, segment);
+    }
+
+    /**
+     * Unmarshal the given segment as an array.
+     *
+     * @param segment the segment
+     * @return the array
+     */
+    public static MemorySegment @Nullable [] unmarshalAsAddressArray(MemorySegment segment) {
+        return unmarshal(ADDRESS, segment);
     }
 
     /**

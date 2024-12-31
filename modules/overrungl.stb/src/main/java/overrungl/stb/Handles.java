@@ -16,7 +16,7 @@
 
 package overrungl.stb;
 
-import overrungl.Configurations;
+import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
@@ -39,7 +39,7 @@ final class Handles {
 
     static {
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
-        final var function = Configurations.STB_SYMBOL_LOOKUP.get();
+        final var function = OverrunGLConfigurations.STB_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();
 
         stbi_write_tga_with_rle = findIntOrThrow("stbi_write_tga_with_rle");

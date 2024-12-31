@@ -256,6 +256,11 @@ public final class STBIR_RESIZE extends Struct {
     /// @param segment the memory segment
     public STBIR_RESIZE(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBIR_RESIZE` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBIR_RESIZE of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBIR_RESIZE(segment); }
+
     /// Allocates a `STBIR_RESIZE` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBIR_RESIZE`

@@ -36,11 +36,13 @@ import java.lang.invoke.MethodHandle;
 public final class STBRectPack {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
     ///Mostly for internal use, but this is the maximum supported coordinate value.
     public static final int STBRP__MAXVAL = 0x7fffffff;
     public static final int STBRP_HEURISTIC_Skyline_default = 0;
     public static final int STBRP_HEURISTIC_Skyline_BL_sortHeight = STBRP_HEURISTIC_Skyline_default;
     public static final int STBRP_HEURISTIC_Skyline_BF_sortHeight = 1;
+    //endregion
     //region Method handles
     /// The method handle of `stbrp_pack_rects`.
     public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(Handles.lookup, "stbrp_pack_rects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPRect.LAYOUT), ValueLayout.JAVA_INT));

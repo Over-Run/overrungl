@@ -51,6 +51,11 @@ public final class STBTT__buf extends Struct {
     /// @param segment the memory segment
     public STBTT__buf(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBTT__buf` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBTT__buf of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTT__buf(segment); }
+
     /// Allocates a `STBTT__buf` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTT__buf`

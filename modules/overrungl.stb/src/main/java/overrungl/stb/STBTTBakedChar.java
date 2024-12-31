@@ -94,6 +94,11 @@ public final class STBTTBakedChar extends Struct {
     /// @param segment the memory segment
     public STBTTBakedChar(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBTTBakedChar` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBTTBakedChar of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTBakedChar(segment); }
+
     /// Allocates a `STBTTBakedChar` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTBakedChar`

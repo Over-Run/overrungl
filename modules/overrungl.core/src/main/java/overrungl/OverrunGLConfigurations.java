@@ -26,13 +26,23 @@ import java.util.function.Supplier;
  * @author squid233
  * @since 0.1.0
  */
-public final class Configurations {
+public final class OverrunGLConfigurations {
     /**
      * Enable debug messages and prints to {@link OverrunGL#apiLogger()}.
      * <p>
      * The default value is {@code false}.
      */
     public static final Entry<Boolean> DEBUG = new Entry<>(() -> false);
+    /**
+     * The default stack size in bytes.
+     * Default value: 65536 (64 KiB)
+     */
+    public static final Entry<Long> STACK_SIZE = new Entry<>(() -> 64L * 1024);
+    /**
+     * The default {@linkplain overrungl.util.MemoryStack#frameCount() frame count} for a memory stack.
+     * Default value: 8
+     */
+    public static final Entry<Integer> STACK_FRAME_COUNT = new Entry<>(() -> 8);
     /**
      * The symbol lookup of GLFW.
      * The returned value must not be null.
@@ -55,7 +65,7 @@ public final class Configurations {
      */
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
 
-    private Configurations() {
+    private OverrunGLConfigurations() {
         //no instance
     }
 

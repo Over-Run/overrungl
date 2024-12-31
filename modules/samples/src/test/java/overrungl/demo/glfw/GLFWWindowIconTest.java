@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySegment;
 import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static overrungl.glfw.GLFW.*;
 import static overrungl.stb.STBImage.*;
 
 /**
@@ -52,19 +53,19 @@ public final class GLFWWindowIconTest {
         loop();
 
         GLFWCallbacks.free(window);
-        glfw.destroyWindow(window);
+        glfwDestroyWindow(window);
 
-        glfw.terminate();
-        glfw.setErrorCallback(null);
+        glfwTerminate();
+        glfwSetErrorCallback(MemorySegment.NULL);
     }
 
     private void init(Arena arena) {
-        GLFWErrorCallback.createPrint().set();
-        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
-        glfw.defaultWindowHints();
-        glfw.windowHint(GLFW.VISIBLE, false);
-        glfw.windowHint(GLFW.RESIZABLE, true);
-        window = glfw.createWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
+        glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        window = glfwCreateWindow(300, 300, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
 
         try {
@@ -75,7 +76,7 @@ public final class GLFWWindowIconTest {
                 IOUtil.ioResourceToSegment(arena, "image.png"),
                 px, py, pc, STBI_rgb_alpha
             );
-            glfw.setWindowIcon(window, GLFWImage.OF.of(arena)
+            glfwSetWindowIcon(window, GLFWImage.alloc(arena)
                 .width(px.get(JAVA_INT, 0))
                 .height(py.get(JAVA_INT, 0))
                 .pixels(data));
@@ -85,16 +86,16 @@ public final class GLFWWindowIconTest {
         }
 
         glfw.setKeyCallback(window, (_, key, _, action, _) -> {
-            if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                glfw.setWindowShouldClose(window, true);
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                glfwSetWindowShouldClose(window, true);
             }
         });
-        glfw.setFramebufferSizeCallback(window, (_, width, height) ->
+        glfwSetFramebufferSizeCallback(window, (_, width, height) ->
             gl.viewport(0, 0, width, height));
-        var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
+        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (vidMode != null) {
-            var size = glfw.getWindowSize(window);
-            glfw.setWindowPos(
+            var size = glfwGetWindowSize(window);
+            glfwSetWindowPos(
                 window,
                 (vidMode.width() - size.x()) / 2,
                 (vidMode.height() - size.y()) / 2
@@ -104,7 +105,7 @@ public final class GLFWWindowIconTest {
         glfw.makeContextCurrent(window);
         glfw.swapInterval(1);
 
-        glfw.showWindow(window);
+        glfwShowWindow(window);
     }
 
     private void load() {
@@ -114,12 +115,12 @@ public final class GLFWWindowIconTest {
     }
 
     private void loop() {
-        while (!glfw.windowShouldClose(window)) {
+        while (!glfwWindowShouldClose(window)) {
             gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             glfw.swapBuffers(window);
 
-            glfw.pollEvents();
+            glfwPollEvents();
         }
     }
 

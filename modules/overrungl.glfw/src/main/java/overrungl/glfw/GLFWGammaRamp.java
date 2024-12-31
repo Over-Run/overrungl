@@ -29,9 +29,8 @@ import overrungl.util.*;
 /// This describes the gamma ramp for a monitor.
 /// 
 /// ## See Also
-/// TODO
-/// - [glfwGetGammaRamp][GLFW#glfwGetGammaRamp()]
-/// - [glfwSetGammaRamp][GLFW#glfwSetGammaRamp()]
+/// - [glfwGetGammaRamp][GLFW#glfwGetGammaRamp(MemorySegment)]
+/// - [glfwSetGammaRamp][GLFW#glfwSetGammaRamp(MemorySegment, MemorySegment)]
 ///
 /// ## Members
 /// ### red
@@ -84,6 +83,11 @@ public final class GLFWGammaRamp extends Struct {
     /// Creates `GLFWGammaRamp` with the given segment.
     /// @param segment the memory segment
     public GLFWGammaRamp(MemorySegment segment) { super(segment, LAYOUT); }
+
+    /// Creates `GLFWGammaRamp` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static GLFWGammaRamp of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWGammaRamp(segment); }
 
     /// Allocates a `GLFWGammaRamp` with the given segment allocator.
     /// @param allocator the segment allocator

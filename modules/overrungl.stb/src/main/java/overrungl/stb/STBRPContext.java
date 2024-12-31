@@ -73,6 +73,11 @@ public final class STBRPContext extends Struct {
     /// @param segment the memory segment
     public STBRPContext(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBRPContext` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPContext of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPContext(segment); }
+
     /// Allocates a `STBRPContext` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBRPContext`

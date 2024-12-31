@@ -54,6 +54,11 @@ public final class NFDFilterItem extends Struct {
     /// @param segment the memory segment
     public NFDFilterItem(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `NFDFilterItem` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static NFDFilterItem of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new NFDFilterItem(segment); }
+
     /// Allocates a `NFDFilterItem` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `NFDFilterItem`

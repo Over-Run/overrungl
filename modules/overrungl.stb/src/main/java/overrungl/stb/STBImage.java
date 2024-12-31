@@ -16,11 +16,11 @@
 
 package overrungl.stb;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.annotation.CType;
 import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.*;
@@ -35,12 +35,14 @@ import java.lang.invoke.MethodHandle;
 public final class STBImage {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
     ///only used for desired_channels
     public static final int STBI_default = 0;
     public static final int STBI_grey = 1;
     public static final int STBI_grey_alpha = 2;
     public static final int STBI_rgb = 3;
     public static final int STBI_rgb_alpha = 4;
+    //endregion
     //region Method handles
     /// The method handle of `stbi_load_from_memory`.
     public static final MethodHandle MH_stbi_load_from_memory = RuntimeHelper.downcall(Handles.lookup, "stbi_load_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
@@ -99,17 +101,17 @@ public final class STBImage {
     /// The method handle of `stbi_set_flip_vertically_on_load`.
     public static final MethodHandle MH_stbi_set_flip_vertically_on_load = RuntimeHelper.downcall(Handles.lookup, "stbi_set_flip_vertically_on_load", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
     /// The method handle of `stbi_zlib_decode_malloc_guesssize`.
-    public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_malloc_guesssize", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_malloc_guesssize", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
     /// The method handle of `stbi_zlib_decode_malloc_guesssize_headerflag`.
-    public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize_headerflag = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_malloc_guesssize_headerflag", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize_headerflag = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_malloc_guesssize_headerflag", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
     /// The method handle of `stbi_zlib_decode_malloc`.
-    public static final MethodHandle MH_stbi_zlib_decode_malloc = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_stbi_zlib_decode_malloc = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
     /// The method handle of `stbi_zlib_decode_buffer`.
-    public static final MethodHandle MH_stbi_zlib_decode_buffer = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+    public static final MethodHandle MH_stbi_zlib_decode_buffer = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
     /// The method handle of `stbi_zlib_decode_noheader_malloc`.
-    public static final MethodHandle MH_stbi_zlib_decode_noheader_malloc = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_noheader_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_stbi_zlib_decode_noheader_malloc = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_noheader_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
     /// The method handle of `stbi_zlib_decode_noheader_buffer`.
-    public static final MethodHandle MH_stbi_zlib_decode_noheader_buffer = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_noheader_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+    public static final MethodHandle MH_stbi_zlib_decode_noheader_buffer = RuntimeHelper.downcall(Handles.lookup, "stbi_zlib_decode_noheader_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
     //endregion
 
     public static @CType("stbi_uc*") java.lang.foreign.MemorySegment stbi_load_from_memory(@CType("stbi_uc const *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment x, @Out @CType("int*") java.lang.foreign.MemorySegment y, @Out @CType("int*") java.lang.foreign.MemorySegment channels_in_file, @CType("int") int desired_channels) {
@@ -317,7 +319,7 @@ public final class STBImage {
     ///
     ///on most compilers (and ALL modern mainstream compilers) this is threadsafe
     public static @CType("const char*") java.lang.String stbi_failure_reason() {
-        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+        try {
             return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) MH_stbi_failure_reason.invokeExact());
         } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
@@ -439,37 +441,37 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_flip_vertically_on_load", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc_guesssize(@CType("const char*") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") java.lang.foreign.MemorySegment outlen) {
+    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc_guesssize(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") java.lang.foreign.MemorySegment outlen) {
         try {
             return (java.lang.foreign.MemorySegment) MH_stbi_zlib_decode_malloc_guesssize.invokeExact(buffer, len, initial_size, outlen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(@CType("const char*") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") java.lang.foreign.MemorySegment outlen, @CType("int") int parse_header) {
+    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc_guesssize_headerflag(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int") int initial_size, @Out @CType("int*") java.lang.foreign.MemorySegment outlen, @CType("int") int parse_header) {
         try {
             return (java.lang.foreign.MemorySegment) MH_stbi_zlib_decode_malloc_guesssize_headerflag.invokeExact(buffer, len, initial_size, outlen, parse_header);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc_guesssize_headerflag", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc(@CType("const char*") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment outlen) {
+    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_malloc(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment outlen) {
         try {
             return (java.lang.foreign.MemorySegment) MH_stbi_zlib_decode_malloc.invokeExact(buffer, len, outlen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_malloc", e); }
     }
 
-    public static @CType("int") int stbi_zlib_decode_buffer(@CType("char *") java.lang.foreign.MemorySegment obuffer, @CType("int") int olen, @CType("const char*") java.lang.foreign.MemorySegment ibuffer, @CType("int") int ilen) {
+    public static @CType("int") int stbi_zlib_decode_buffer(@CType("char *") java.lang.foreign.MemorySegment obuffer, @CType("int") int olen, @CType("const char *") java.lang.foreign.MemorySegment ibuffer, @CType("int") int ilen) {
         try {
             return (int) MH_stbi_zlib_decode_buffer.invokeExact(obuffer, olen, ibuffer, ilen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_buffer", e); }
     }
 
-    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_noheader_malloc(@CType("const char*") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int*") java.lang.foreign.MemorySegment outlen) {
+    public static @CType("char *") java.lang.foreign.MemorySegment stbi_zlib_decode_noheader_malloc(@CType("const char *") java.lang.foreign.MemorySegment buffer, @CType("int") int len, @CType("int*") java.lang.foreign.MemorySegment outlen) {
         try {
             return (java.lang.foreign.MemorySegment) MH_stbi_zlib_decode_noheader_malloc.invokeExact(buffer, len, outlen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_malloc", e); }
     }
 
-    public static @CType("int") int stbi_zlib_decode_noheader_buffer(@CType("char *") java.lang.foreign.MemorySegment obuffer, @CType("int") int olen, @CType("const char*") java.lang.foreign.MemorySegment ibuffer, @CType("int") int ilen) {
+    public static @CType("int") int stbi_zlib_decode_noheader_buffer(@CType("char *") java.lang.foreign.MemorySegment obuffer, @CType("int") int olen, @CType("const char *") java.lang.foreign.MemorySegment ibuffer, @CType("int") int ilen) {
         try {
             return (int) MH_stbi_zlib_decode_noheader_buffer.invokeExact(obuffer, olen, ibuffer, ilen);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_zlib_decode_noheader_buffer", e); }

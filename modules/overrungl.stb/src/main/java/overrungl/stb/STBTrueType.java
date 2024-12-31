@@ -16,11 +16,11 @@
 
 package overrungl.stb;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.annotation.CType;
 import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -153,7 +153,6 @@ import java.nio.charset.StandardCharsets;
  * <h2>SAMPLE PROGRAMS</h2>
  * Incomplete text-in-3d-api example, which draws quads properly aligned to be lossless.
  * {@snippet lang = java:
- * import io.github.overrun.memstack.MemoryStack;
  * import java.lang.foreign.Arena;
  * import java.nio.channels.FileChannel;
  * import java.nio.file.Path;
@@ -207,7 +206,6 @@ import java.nio.charset.StandardCharsets;
  * <p>
  * Complete program (this compiles): get a single bitmap, print as ASCII art
  * {@snippet lang = java:
- * import io.github.overrun.memstack.MemoryStack;
  * import overrungl.stb.STBTTFontInfo;
  * import overrungl.stb.STBTrueType;
  *
@@ -314,6 +312,7 @@ import java.nio.charset.StandardCharsets;
 public final class STBTrueType {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
     public static final int
         STBTT_vmove = 1,
         STBTT_vline = 2,
@@ -375,6 +374,7 @@ public final class STBTrueType {
     public static final int STBTT_MAC_LANG_SWEDISH = 5;
     public static final int STBTT_MAC_LANG_CHINESE_SIMPLIFIED = 33;
     public static final int STBTT_MAC_LANG_CHINESE_TRAD = 19;
+    //endregion
     //region Method handles
     /// The method handle of `stbtt_BakeFontBitmap`.
     public static final MethodHandle MH_stbtt_BakeFontBitmap = RuntimeHelper.downcall(Handles.lookup, "stbtt_BakeFontBitmap", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT)));

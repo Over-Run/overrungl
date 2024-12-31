@@ -52,6 +52,11 @@ public final class STBVorbisAlloc extends Struct {
     /// @param segment the memory segment
     public STBVorbisAlloc(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBVorbisAlloc` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBVorbisAlloc of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBVorbisAlloc(segment); }
+
     /// Allocates a `STBVorbisAlloc` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBVorbisAlloc`

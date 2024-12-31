@@ -87,7 +87,7 @@ class StructProcessor(private val typeName: TypeName) : ValueProcessor {
 
     override fun unmarshal(context: ProcessorContext) {
         val builder = context.builder
-        builder.append("new $typeName(")
+        builder.append("$typeName.of(")
         context.action(builder)
         builder.append(")")
     }

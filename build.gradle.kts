@@ -41,14 +41,14 @@ allprojects {
                     )
 
                     tags(
+                        "glfw.callback_signature:m:Callback signature:",
                         "glfw.errors:m:Errors:",
+                        "glfw.note:m:Note:",
+                        "glfw.pointer_lifetime:m:Pointer lifetime:",
                         "glfw.remark:m:Remarks:",
+                        "glfw.reentrancy:m:Reentrancy:",
                         "glfw.thread_safety:m:Thread safety:",
                         "glfw.warning:m:Warning:",
-                        "glfw.reentrancy:m:Reentrancy:",
-                        "glfw.pointer_lifetime:m:Pointer lifetime:",
-                        "glfw.callback_signature:m:Callback signature:",
-                        "glfw.note:m:Note:"
                     )
 
                     bottom =

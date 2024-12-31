@@ -22,7 +22,6 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
-import io.github.overrun.memstack.MemoryStack;
 
 /// The function pointer type for path drop callbacks.
 /// 

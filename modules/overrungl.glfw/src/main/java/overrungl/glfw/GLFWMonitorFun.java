@@ -31,8 +31,7 @@ import overrungl.util.*;
 /// void function_name(MemorySegment monitor, int event)
 /// ```
 /// 
-/// TODO
-/// @see GLFW#glfwSetMonitorCallback()
+/// @see GLFW#glfwSetMonitorCallback(MemorySegment)
 @FunctionalInterface
 public interface GLFWMonitorFun extends Upcall {
     /// The function descriptor.

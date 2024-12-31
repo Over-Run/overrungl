@@ -40,11 +40,10 @@ data class DowncallMethod(
     val overload: Boolean
 ) {
     val allocatorRequirement: AllocatorRequirement by lazy {
-        val req1 = parameters.map { p ->
+        parameters.map { p ->
             if (p.ref) p.type.allocatorRequirement.stricter(AllocatorRequirement.STACK)
             else p.type.allocatorRequirement
         }.reduceOrNull(AllocatorRequirement::stricter) ?: AllocatorRequirement.NO
-        returnType.allocatorRequirement.stricter(req1)
     }
     val functionDescriptor: String by lazy {
         buildString {
@@ -69,6 +68,14 @@ data class DowncallMethod(
         parameters: List<DowncallParameter> = this.parameters,
         javadoc: String? = this.javadoc,
     ): DowncallMethod = copy(name = name, parameters = parameters, javadoc = javadoc, overload = true)
+
+    private fun <T> List<T>.insertFirst(t: T): List<T> {
+        return toMutableList().also { it.addFirst(t) }
+    }
+
+    fun insertArena(): DowncallMethod {
+        return let { it.overload(parameters = it.parameters.insertFirst(DowncallParameter(arena, "arena"))) }
+    }
 }
 
 data class DowncallParameter(

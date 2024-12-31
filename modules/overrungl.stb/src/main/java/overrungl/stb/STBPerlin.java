@@ -47,6 +47,8 @@ import java.lang.invoke.MethodHandle;
 public final class STBPerlin {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
+    //endregion
     //region Method handles
     /// The method handle of `stb_perlin_noise3`.
     public static final MethodHandle MH_stb_perlin_noise3 = RuntimeHelper.downcall(Handles.lookup, "stb_perlin_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));

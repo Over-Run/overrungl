@@ -17,7 +17,7 @@
 package overrungl.nfd;
 
 import io.github.overrun.platform.Platform;
-import overrungl.Configurations;
+import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
@@ -40,7 +40,7 @@ final class NFDInternal {
 
     static {
         final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
-        final var function = Configurations.NFD_SYMBOL_LOOKUP.get();
+        final var function = OverrunGLConfigurations.NFD_SYMBOL_LOOKUP.get();
         LOOKUP = function != null ? function.apply(lib) : lib.get();
     }
 

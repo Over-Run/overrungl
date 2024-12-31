@@ -106,6 +106,11 @@ public final class STBTTPackedChar extends Struct {
     /// @param segment the memory segment
     public STBTTPackedChar(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBTTPackedChar` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBTTPackedChar of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTPackedChar(segment); }
+
     /// Allocates a `STBTTPackedChar` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTPackedChar`

@@ -16,13 +16,13 @@
 
 package overrungl.demo.opengl;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.demo.util.IOUtil;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
 import overrungl.opengl.GLLoader;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.io.IOException;
@@ -31,6 +31,7 @@ import java.lang.foreign.MemorySegment;
 import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static overrungl.glfw.GLFW.*;
 import static overrungl.stb.STBImage.*;
 
 /**
@@ -61,31 +62,31 @@ public final class GL30Test {
         gl.deleteTextures(tex);
 
         GLFWCallbacks.free(window);
-        glfw.destroyWindow(window);
+        glfwDestroyWindow(window);
 
-        glfw.terminate();
-        glfw.setErrorCallback(null);
+        glfwTerminate();
+        glfwSetErrorCallback(MemorySegment.NULL);
     }
 
     private void init() {
-        GLFWErrorCallback.createPrint().set();
-        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
-        glfw.defaultWindowHints();
-        glfw.windowHint(GLFW.VISIBLE, false);
-        glfw.windowHint(GLFW.RESIZABLE, true);
-        window = glfw.createWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
+        glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        window = glfwCreateWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
         glfw.setKeyCallback(window, (_, key, _, action, _) -> {
-            if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                glfw.setWindowShouldClose(window, true);
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                glfwSetWindowShouldClose(window, true);
             }
         });
-        glfw.setFramebufferSizeCallback(window, (_, width, height) ->
+        glfwSetFramebufferSizeCallback(window, (_, width, height) ->
             gl.viewport(0, 0, width, height));
-        var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
+        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (vidMode != null) {
-            var size = glfw.getWindowSize(window);
-            glfw.setWindowPos(
+            var size = glfwGetWindowSize(window);
+            glfwSetWindowPos(
                 window,
                 (vidMode.width() - size.x()) / 2,
                 (vidMode.height() - size.y()) / 2
@@ -95,7 +96,7 @@ public final class GL30Test {
         glfw.makeContextCurrent(window);
         glfw.swapInterval(1);
 
-        glfw.showWindow(window);
+        glfwShowWindow(window);
     }
 
     private void load(Arena arena) {
@@ -201,7 +202,7 @@ public final class GL30Test {
     }
 
     private void loop() {
-        while (!glfw.windowShouldClose(window)) {
+        while (!glfwWindowShouldClose(window)) {
             gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
             // Draw triangle
@@ -216,7 +217,7 @@ public final class GL30Test {
 
             glfw.swapBuffers(window);
 
-            glfw.pollEvents();
+            glfwPollEvents();
         }
     }
 

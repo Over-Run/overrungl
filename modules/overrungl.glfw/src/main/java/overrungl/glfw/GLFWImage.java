@@ -72,6 +72,11 @@ public final class GLFWImage extends Struct {
     /// @param segment the memory segment
     public GLFWImage(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `GLFWImage` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static GLFWImage of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWImage(segment); }
+
     /// Allocates a `GLFWImage` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWImage`

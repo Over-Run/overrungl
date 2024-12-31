@@ -54,6 +54,11 @@ public final class STBTT__bitmap extends Struct {
     /// @param segment the memory segment
     public STBTT__bitmap(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBTT__bitmap` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBTT__bitmap of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTT__bitmap(segment); }
+
     /// Allocates a `STBTT__bitmap` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTT__bitmap`

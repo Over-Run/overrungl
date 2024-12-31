@@ -24,6 +24,8 @@ import overrungl.util.Unmarshal;
 import java.lang.foreign.MemorySegment;
 import java.util.Objects;
 
+import static overrungl.glfw.GLFW.*;
+
 final int INIT_WIDTH = 300;
 final int INIT_HEIGHT = 300;
 
@@ -36,42 +38,42 @@ GL gl = null;
 void start() {
     // Set up an error callback. The default implementation
     // will print the error message in System.err.
-    GLFWErrorCallback.createPrint().set();
+    glfwSetErrorCallback(GLFWErrorCallback.createPrint());
 
     // Initialize GLFW. Most GLFW functions will not work before doing this.
     // If you are using Kotlin, you can use the builtin check function
-    if (!glfw.init()) {
+    if (!glfwInit()) {
         throw new IllegalStateException("Failed to initialize GLFW");
     }
 
     // Configure GLFW
     // optional, the current window hints are already the default
-    glfw.defaultWindowHints();
+    glfwDefaultWindowHints();
     // the window will be resizable
-    glfw.windowHint(GLFW.RESIZABLE, true);
+    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
     // Get the resolution of the primary monitor
-    var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
+    var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     if (vidMode != null) {
         // Center the window
-        glfw.windowHint(GLFW.POSITION_X, (vidMode.width() - INIT_WIDTH) / 2);
-        glfw.windowHint(GLFW.POSITION_Y, (vidMode.height() - INIT_HEIGHT) / 2);
+        glfwWindowHint(GLFW_POSITION_X, (vidMode.width() - INIT_WIDTH) / 2);
+        glfwWindowHint(GLFW_POSITION_Y, (vidMode.height() - INIT_HEIGHT) / 2);
     }
 
     // Create the window
-    window = glfw.createWindow(INIT_WIDTH, INIT_HEIGHT, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
+    window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
     if (Unmarshal.isNullPointer(window)) {
         throw new IllegalStateException("Failed to create the GLFW window");
     }
 
     // Set up a key callback. It will be called every time a key is pressed, repeated or released.
     glfw.setKeyCallback(window, (handle, key, _, action, _) -> {
-        if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
+        if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
             // We will detect this in the rendering loop
-            glfw.setWindowShouldClose(handle, true);
+            glfwSetWindowShouldClose(handle, true);
         }
     });
-    glfw.setFramebufferSizeCallback(window, (_, width, height) -> {
+    glfwSetFramebufferSizeCallback(window, (_, width, height) -> {
         // Resize the viewport
         if (gl != null) {
             gl.viewport(0, 0, width, height);
@@ -100,10 +102,10 @@ void initGL(GL gl) {
 void run() {
     // Run the rendering loop until the user has attempted to close
     // the window or has pressed the ESCAPE key.
-    while (!glfw.windowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window)) {
         // Poll for window events. The key callback above will only be
         // invoked during this call.
-        glfw.pollEvents();
+        glfwPollEvents();
         render(gl);
     }
 }
@@ -118,11 +120,11 @@ void render(GL gl) {
 void dispose() {
     // Free the window callbacks and destroy the window
     GLFWCallbacks.free(window);
-    glfw.destroyWindow(window);
+    glfwDestroyWindow(window);
 
     // Terminate GLFW and remove the error callback
-    glfw.terminate();
-    glfw.setErrorCallback(null);
+    glfwTerminate();
+    glfwSetErrorCallback(MemorySegment.NULL);
 }
 
 void main() {

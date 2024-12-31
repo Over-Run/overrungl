@@ -58,6 +58,11 @@ public final class STBVorbisComment extends Struct {
     /// @param segment the memory segment
     public STBVorbisComment(MemorySegment segment) { super(segment, LAYOUT); }
 
+    /// Creates `STBVorbisComment` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBVorbisComment of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBVorbisComment(segment); }
+
     /// Allocates a `STBVorbisComment` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBVorbisComment`

@@ -16,11 +16,11 @@
 
 package overrungl.stb;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.annotation.CType;
 import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -91,6 +91,7 @@ import java.lang.invoke.MethodHandle;
 public final class STBVorbis {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
+    //region Fields
     ///STBVorbisError
     ///
     ///from 20: decoding errors (corrupt/invalid stream) -- you probably
@@ -158,6 +159,7 @@ public final class STBVorbis {
         VORBIS_cant_find_last_page = 36,
         VORBIS_seek_failed = 37,
         VORBIS_ogg_skeleton_not_supported = 38;
+    //endregion
     //region Method handles
     /// The method handle of `stb_vorbis_get_info`.
     public static final MethodHandle MH_stb_vorbis_get_info = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_info", FunctionDescriptor.of(overrungl.stb.STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS));
@@ -221,7 +223,7 @@ public final class STBVorbis {
     ///get general information about the file
     public static @CType("stb_vorbis_info") overrungl.stb.STBVorbisInfo stb_vorbis_get_info(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return new overrungl.stb.STBVorbisInfo((java.lang.foreign.MemorySegment) MH_stb_vorbis_get_info.invokeExact(allocator, f));
+            return overrungl.stb.STBVorbisInfo.of((java.lang.foreign.MemorySegment) MH_stb_vorbis_get_info.invokeExact(allocator, f));
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
@@ -235,7 +237,7 @@ public final class STBVorbis {
     ///get ogg comments
     public static @CType("stb_vorbis_comment") overrungl.stb.STBVorbisComment stb_vorbis_get_comment(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return new overrungl.stb.STBVorbisComment((java.lang.foreign.MemorySegment) MH_stb_vorbis_get_comment.invokeExact(allocator, f));
+            return overrungl.stb.STBVorbisComment.of((java.lang.foreign.MemorySegment) MH_stb_vorbis_get_comment.invokeExact(allocator, f));
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
